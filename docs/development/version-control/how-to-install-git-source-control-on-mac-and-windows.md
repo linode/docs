@@ -2,22 +2,24 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to using git, managing git repositories, and gitolite.'
+description: 'An introduction to Git version control
+software including installation and configuration on Linux distributions, Mac OS X and Windows.'
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/']
+alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','git-source-control-management/']
 modified: Tuesday, March 1, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, September 4th, 2009'
 title: Git Source Control Management
 ---
+# Setting Up and Configuring Git Source Control Management
 
 Git is version control software, which is used to keep track of changes to a file or group of files. Version control is usually associated with source code, but can be used on any file type. For example, a technical document may be placed in version control in order to keep track of changes made to the document. Version control can also be applied to graphics. You can rollback to a previous version to keep track of the changes made on a particular file.
 
 This document will provide rudimentary installation instructions as well as some basics for getting started. However, the way you use Git is entirely up to you.
 
-## Installing Git
+## Install Git
 
 Git can be installed on a variety of operating systems. It can also be downloaded and compiled. However, it is recommended that you use your Linux distribution's repository installer as this is usually the most reliable installation method.
 
@@ -25,7 +27,7 @@ Git can be installed on a variety of operating systems. It can also be downloade
 >
 > The steps in this guide are written using a non-root user. If you are logged in as root you will not need `sudo` for certain steps.
 
-### Linux Installation
+### Install Git on Linux
 
 For Debian and Ubuntu systems, the command is as follows:
 
@@ -51,11 +53,11 @@ For a Gentoo system, the command is as follows:
 
 Git may also be installed on a local machine. The installation procedure for both Mac OS X and Windows operating systems is outlined below.
 
-#### Mac OS X
+### Install Git on Mac OS X
 
 There are different ways to install Git on OS X. This may be achieved by installing Homebrew or MacPorts before Git or by downloading the Git installer package. Regardless of the method you choose, make sure you verify which operating system version you are currently running.
 
-##### Installing Git via Homebrew
+##### Install Git via Homebrew
 
 1.  Go to the [Homebrew](http://brew.sh/) website.
 2.  Copy and paste the command on that page, under **Install Homebrew** into a terminal window.
@@ -84,7 +86,7 @@ There are different ways to install Git on OS X. This may be achieved by install
 
         brew install git
 
-##### Installing Git via MacPorts
+##### Install Git via MacPorts
 
 1.  Go to [MacPorts](http://www.macports.org/) website.
 2.  Click on the link for your operating system.
@@ -114,7 +116,7 @@ There are different ways to install Git on OS X. This may be achieved by install
 
         $ sudo port install git +svn +doc +bash_completion +gitweb
 
-##### Installing Git via Package Installer
+##### Install Git via Package Installer
 
 1.  Go to the [Git](http://git-scm.com/downloads) website and download the current installer for your operating system.
 2.  Double click on the downloaded file to begin the install.
@@ -138,7 +140,7 @@ There are different ways to install Git on OS X. This may be achieved by install
 
     ![Click close to exit.](/docs/assets/1585-MacGit_5.png)
 
-#### Windows
+### Install Git on Windows
 
 To install Git on Windows you will need to download the installer from the [Git](http://git-scm.com/downloads) website:
 
@@ -202,7 +204,7 @@ To install Git on Windows you will need to download the installer from the [Git]
 
     ![Blank repository.](/docs/assets/1608-Git-Win-14.png)
 
-## Configuring Git
+## Configure Git
 
 After the installation is complete, you will need to configure Git for first time use. There is a built-in tool called `git config` that obtains and sets configuration variables for how Git functions and appears. These configuration variables are located in three different places on a Linux system:
 
@@ -235,7 +237,7 @@ Your output should show the information you entered. Sample output is below:
     user.email=user@email.com
     core.editor=editor-name
 
-## Working with the Repository
+## Work with the Repository
 
 There are two ways to obtain a Git repository, either by importing or copying. If you have an existing project and you want to start using Git to keep track of its changes, you will need to run the command from the existing project's directory:
 
@@ -347,7 +349,7 @@ Below are some basic commands for working with remote repositories:
 | `git remote rm [name]`                    | removes the remote you specified                                    |
 |-------------------------------------------|---------------------------------------------------------------------|
 
-## Installing Gitolite
+## Install Gitolite
 
 1.  Gitolite works on top of Git, and allows access to remote users without having to give them shell access. Install Gitolite with the command:
 
@@ -393,7 +395,7 @@ For Windows users consult the [Windows Operating System](/docs/security/ssh-keys
 
     ![Viewing the gitolite.rc file.](/docs/assets/1610-gitolite.rc.png)
 
-### Adding Users 
+### Add Users 
 
 #### Prerequisites
 
@@ -436,7 +438,7 @@ In order to add a new user, you will need their name, email, and public key. For
 
         git push
 
-## More Information
+## More Information on Git
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
