@@ -2,15 +2,16 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-description: Deploy a Chef Server, Workstation and Node
+description: Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu
+14.04
 keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife.rb,version control'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
+alias: ['applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
 modified: Wednesday, June 10th, 2015
 modified_by:
   name: Elle Krout
 published: 'Wednesday, June 10th, 2015'
-title: Deploy a Chef Server, Workstation and Node on Ubuntu 14.04
+title: Install a Chef Server Workstation on Ubuntu 14.04
 alias: ['applications/chef/setting-up-chef-ubuntu-14-04/']
 external_resources:
  - '[Chef](http://www.chef.io)'
@@ -21,6 +22,7 @@ Chef is an automation platform that "turns infrastructure into code," allowing u
 Chef is comprised of a Chef server, one or more workstations, and a number of nodes that are managed by the chef-client installed on each node.
 
 [![/docs/assets/chef_graph-small.png](/docs/assets/chef_graph-small.png)](/docs/assets/chef_graph.png)
+
 
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
