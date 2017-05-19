@@ -2,17 +2,17 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to Git version control
-software including installation and configuration on Linux distributions, Mac OS X and Windows.'
+description: 'An introduction to Git version control software including installation and configuration on Linux distributions, Mac OS X and Windows.'
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','git-source-control-management/']
+alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
 modified: Tuesday, March 1, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, September 4th, 2009'
 title: Git Source Control Management
 ---
+
 # Setting Up and Configuring Git Source Control Management
 
 Git is version control software, which is used to keep track of changes to a file or group of files. Version control is usually associated with source code, but can be used on any file type. For example, a technical document may be placed in version control in order to keep track of changes made to the document. Version control can also be applied to graphics. You can rollback to a previous version to keep track of the changes made on a particular file.
