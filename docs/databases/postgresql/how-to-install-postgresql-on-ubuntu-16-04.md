@@ -15,6 +15,7 @@ external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 ---
+
 #A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. 
