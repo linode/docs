@@ -2,11 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'An introduction to Git version control
-software including installation and configuration on Linux distributions, Mac OS X and Windows.'
+description: 'An introduction to Git version control software including installation and configuration on Linux distributions, Mac OS X and Windows.'
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','git-source-control-management/']
+alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
 modified: Tuesday, March 1, 2016
 modified_by:
   name: Phil Zona
