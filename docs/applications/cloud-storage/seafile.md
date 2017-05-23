@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: Install Seafile with nginx on Ubuntu 16.04
-keywords: 'subsonic, music, audio'
+keywords: 'Seafile, nginx, Ubuntu 16.04, file server, media, sharing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, February 2, 2015
+modified: Tuesday, May 23rd, 2017
 modified_by:
   name: Linode
-published: 'Monday, February 2, 2015'
+published: 'Tuesday, May 23rd, 2017'
 title: Install Seafile with nginx on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
@@ -73,9 +73,16 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
         sudo hostnamectl set-hostname seafile
 		
-7. Add the new hostname to `/etc/hosts` using `sudo nano /etc/hosts` to change the second line in the file to look like this:
+7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this:
 
-	    127.0.1.1    members.linode.com     seafile
+{: .file-excerpt}
+    /etc/hosts
+    :   ~~~ conf
+
+        127.0.1.1    members.linode.com     seafile
+
+        ~~~
+
 
 8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
 
@@ -84,14 +91,10 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 ## Install and Configure MySQL
 
-1.  During Installation, you will be asked to assign a password for the root mysql user:
+1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
 
         sudo apt install mysql-server-5.7
     
-    {: .note}
-    >
-    > Be sure to install the package `mysql-server-5.7`, not `mysql-server`. 
-
 2.  Run the *mysql_secure_installation* script:
 
         sudo mysql_secure_installation
@@ -232,7 +235,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
         ![Seafile login prompt](/docs/assets/seafile-login.png)
 
 
-## Start Seafile Automatically on Sever Bootup
+## Automatically Start Seafile on Sever Bootup
 
 The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode were to reboot.
 
