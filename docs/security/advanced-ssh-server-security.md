@@ -102,7 +102,7 @@ The default behavior of SSH is to allow *any* user to log in to the server, but 
 
 ### Custom Rules Example
 
-{. :file-excerpt}
+{: .file-excerpt}
 /etc/ssh/sshd_config
 :   ~~~ conf
     DenyUsers adam ben clark@198.51.100.0/24
