@@ -75,7 +75,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 		
 7. Add the new hostname to `/etc/hosts` using `sudo nano /etc/hosts` to change the second line in the file to look like this:
 
-	    127.0.1.1    ubuntu.members.linode.com     seafile
+	    127.0.1.1    members.linode.com     seafile
 
 8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
 
@@ -100,11 +100,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 ## Create a TLS Certificate for use with nginx
 
-If you don't already have an SSL/TLS certificate, you can create one. 
-
-{:.note}
->
->The certificate we create will be self-signed, and will cause web browsers to protest about an insecure connection. 
+If you don't already have an SSL/TLS certificate, you can create one. This certificate will be self-signed, and will cause web browsers to protest about a non-private connection. You should verify the SHA256 fingerprint of the certificate in the browser versus that on the server, and add a permanent exception to the browser to trust this certificate.
 
 1.  Change to the location where we'll store the certificate files and create server's certificate with key:
 
