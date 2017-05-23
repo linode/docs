@@ -5,18 +5,19 @@ author:
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus) by following this guide.'
 keywords: 'apache tomcat ubuntu 16.04,tomcat java,java ubuntu 16.04,tomcat ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/frameworks/apache-tomcat-on-ubuntu-16-04/']
+alias: ['websites/frameworks/apache-tomcat-on-ubuntu-16-04/' 'development/frameworks/apache-tomcat-on-ubuntu-16-04/']
 modified: Monday, May 9th 2016
 modified_by:
   name: Phil Zona
 published: 'Monday, May 9th 2016'
-title: 'Apache Tomcat on Ubuntu 16.04'
+title: 'Install Apache Tomcat on Ubuntu 16.04 Using Apt-Get'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
  - '[Tomcat FAQ](http://wiki.apache.org/tomcat/FAQ)'
 ---
+# How to Install Apache Tomcat 8 on Ubuntu 16.04 Using Apt-Get
 
-Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment.
+Apache Tomcat is an open-source software implementation of the Java Servlet and Java Server Pages technologies. With this guide, you'll run applications within Tomcat using the OpenJDK implementation of the Java development environment. This guide assumes you have Java's OpenJDK already installed on your server.
 
 ![Apache Tomcat on Ubuntu 16.04](/docs/assets/tomcat-on-ubuntu-1604.png "Apache Tomcat on Ubuntu 16.04")
 
