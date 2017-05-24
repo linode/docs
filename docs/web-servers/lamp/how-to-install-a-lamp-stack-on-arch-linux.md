@@ -5,7 +5,7 @@ author:
 description: 'A simple tutorial on installing a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered server.'
 keywords: 'arch lamp,arch lamp stack,lamp linux,arch linode,arch linux lamp,arch linux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/','web-servers/lamp/lamp-server-on-arch-linux/]
+alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/','web-servers/lamp/lamp-server-on-arch-linux/']
 modified: Monday, December 7th, 2015
 modified_by:
     name: Alex Fornuto
