@@ -2,18 +2,21 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use PostgreSQL Relational Databases on Ubuntu 16.04 LTS (Xenial Xerus).'
+description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.'
 keywords: 'postgresql,ubuntu 16.04,postgresql database,open source database,relational database'
+alias: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, May 20th, 2016
 modified_by:
   name: Phil Zona
 published: 'Friday, May 20th, 2016'
-title: 'Use PostgreSQL Relational Databases on Ubuntu 16.04'
+title: 'How to Install PostgreSQL On Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 ---
+
+#A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. 
 
