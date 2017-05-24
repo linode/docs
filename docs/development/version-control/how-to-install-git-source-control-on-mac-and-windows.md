@@ -12,6 +12,7 @@ modified_by:
 published: 'Friday, September 4th, 2009'
 title: Git Source Control Management
 ---
+
 # Setting Up and Configuring Git Source Control Management
 
 Git is version control software, which is used to keep track of changes to a file or group of files. Version control is usually associated with source code, but can be used on any file type. For example, a technical document may be placed in version control in order to keep track of changes made to the document. Version control can also be applied to graphics. You can rollback to a previous version to keep track of the changes made on a particular file.

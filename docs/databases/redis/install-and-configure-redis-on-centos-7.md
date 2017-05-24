@@ -2,8 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using
-master/slave replication on CentOS 7.'
+description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
 keywords: 'redis, centos 7, redis cluster, centos'
 alias: ['databases/redis/deploy-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -18,6 +17,7 @@ external_resources:
  - '[Redis Persistence](http://redis.io/topics/persistence)'
  - '[Redis Security](http://redis.io/topics/security)'
 ---
+
 # Install Redis & Set Up Master/Slave Replication on CentOS 7
 
 Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
