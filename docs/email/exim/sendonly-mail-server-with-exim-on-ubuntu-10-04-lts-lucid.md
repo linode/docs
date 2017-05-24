@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 10.04 LTS (Lucid).'
 keywords: 'exim,exim ubuntu 10.04,send email ubuntu,mail server,linux mail,smtp server,ubuntu exim'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/exim/send-only-mta-ubuntu-10-04-lucid/']
 modified: Thursday, September 26th, 2013
 modified_by:
@@ -16,7 +16,7 @@ title: 'Send-only Mail Server with Exim on Ubuntu 10.04 LTS (Lucid)'
 
 
 
-Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 10.04 LTS (Lucid) Linux VPS.
+Many Linux server applications need to send email; cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 10.04 LTS (Lucid) Linode.
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
@@ -107,7 +107,7 @@ Issue the following command to send a test email, substituting an external email
 
     echo "This is a test." | mail -s Testing someone@somedomain.com
 
-Congratulations! You've configured Exim to send email from your Linux VPS.
+Congratulations! You've configured Exim to send email from your Linode.
 
 More Information
 ----------------

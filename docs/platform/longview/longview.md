@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to installing and using Linode Longview.
 keywords: 'system monitoring,longview,troubleshooting'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/']
 modified: Tuesday, November 26th, 2013
 modified_by:
@@ -13,14 +13,16 @@ published: 'Wednesday, March 27th, 2013'
 title: Longview
 ---
 
-Longview is our Linux system statistics graphing service. It tracks important metrics for CPU, memory, and network use, both aggregate and per-process, and it provides real-time graphs that can help you pinpoint performance problems. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. Features include:
+Longview is our Linux system statistics graphing service. It tracks important metrics for CPU, memory, and network use, both aggregate and per-process, and it provides real-time graphs that can help you pinpoint performance problems. This guide shows you how to start monitoring systems with Longview.
+
+![Our guide to installing and using Linode Longview.](/docs/assets/longview_smg.png "Our guide to installing and using Linode Longview.")
+
+Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. Features include:
 
 -   Up-to-the-minute information about each system
 -   Open-source client application
 -   Zoomable graphs with contextual data
 -   Process statistics including CPU, memory, and IO usage
-
-This guide shows you how to start monitoring systems with Longview.
 
 To access Longview, log in to the [Linode Manager](https://manager.linode.com) and click the **Longview** tab.
 
@@ -38,10 +40,10 @@ To add a Longview system, first add a system to the Longview interface in the Li
 
 Before adding your system to Longview, you should verify that your Linux distribution is supported. Longview is currently supported on the following distributions:
 
--   Ubuntu 10.04 and 12.04
--   Debian 6 and 7
+-   Ubuntu 10.04, 12.04, 14.04, and 16.04
+-   Debian 6, 7, and 8
+-   CentOS 5, 6, and 7
 -   Fedora 17, 18, and 19
--   CentOS 5 and 6
 
 The Longview client may work on other distributions, but at this time we cannot provide support for distributions other than the ones listed here.
 

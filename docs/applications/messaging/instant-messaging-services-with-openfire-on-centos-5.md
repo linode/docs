@@ -1,10 +1,11 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with Openfire on CentOS 5, an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: 'openfire,openfire centos,openfire on linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/openfire/centos-5/']
 modified: Monday, August 22nd, 2011
 modified_by:
@@ -17,7 +18,7 @@ external_resources:
  - '[XMPP Software Clients](http://xmpp.org/software/clients.shtml)'
 ---
 
-[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linux VPS.
+[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your CentOS 5 Linode.
 
 If you haven't done so already, please follow the steps outlined in our [getting started guide](/docs/getting-started/) before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
@@ -45,7 +46,7 @@ You should see a message in your terminal describing the version of Java install
 
 ## Adjust Firewall Settings
 
-If you employ a firewall to specify what ports can be accessed on your VPS, please make sure you have the following ports open:
+If you employ a firewall to specify what ports can be accessed on your Linode, please make sure you have the following ports open:
 
 -   3478 - STUN Service (NAT connectivity)
 -   3479 - STUN Service (NAT connectivity)

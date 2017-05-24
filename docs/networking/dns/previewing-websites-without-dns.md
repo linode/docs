@@ -4,7 +4,7 @@ author:
   email: afornuto@linode.com
 description: 'A guide to testing a website for a domain before the DNS records are adjusted.'
 keywords: 'dns, website, preview'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/preview-websites/']
 modified: Monday, June 22, 2015
 modified_by:
@@ -87,7 +87,9 @@ Please note that on some systems pressing tab will align to the previous lines, 
 
 On OS X systems, you will need to flush the DNS cache if you've already visited or looked up the domain before. The [command to do so varies according to your version of Mac OS X](https://support.apple.com/en-us/HT202516). In Terminal from a shell prompt:
 
-    # Yosemite (10.10)
+    # Yosemite, El Capitan, Sierra (10.10.4 and later)
+    killall -HUP mDNSResponder
+    # Yosemite (up to 10.10.3)
     discoveryutil mdnsflushcache
     # Mavericks, Mountain Lion, and Lion (10.7 - 10.9)
     killall -HUP mDNSResponder

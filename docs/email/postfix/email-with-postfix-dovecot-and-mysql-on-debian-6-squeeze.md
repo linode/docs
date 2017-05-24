@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Debian 6 (Squeeze).'
 keywords: 'postfix debian 6,dovecot debian 6,debian 6 mail server,dovecot,email,debian,squeeze'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/dovecot-mysql-debian-6-squeeze/']
 modified: Friday, July 1st, 2011
 modified_by:
@@ -38,21 +38,21 @@ Issue the following commands to install any outstanding package updates:
     apt-get update
     apt-get upgrade
 
-Issue the following command to get the required packages installed on your VPS:
+Issue the following command to get the required packages installed on your Linode:
 
     apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server dovecot-common dovecot-imapd dovecot-pop3d libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl telnet mailutils
 
 This will install the Postfix mail server, the MySQL database server, the Dovecot IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on a Linux VPS.](/docs/assets/751-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/751-postfix-courier-mysql-01-mysql-root-password.png)
+[![Setting the root password for MySQL on a Linode.](/docs/assets/751-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/751-postfix-courier-mysql-01-mysql-root-password.png)
 
-Next, you'll be prompted to select the type of mail server configuration you want for your VPS. Select "Internet Site" and continue.
+Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on a Debian 6 (Squeeze) Linux VPS.](/docs/assets/752-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/752-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on a Debian 6 (Squeeze) Linode.](/docs/assets/752-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/752-postfix-courier-mysql-02-mail-server-type-2.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. This example uses an example organization's domain. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled later through virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on a Debian 6 (Squeeze) Linux VPS.](/docs/assets/753-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/753-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on a Debian 6 (Squeeze) Linode.](/docs/assets/753-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/753-postfix-courier-mysql-02-mail-server-type-3.png)
 
 This completes the initial package configuration steps. Next, you'll set up a MySQL database to handle virtual domains and users.
 

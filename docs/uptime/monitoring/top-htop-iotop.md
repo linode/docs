@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'How to use top to monitor a server''s performance.'
 keywords: 'top,htop,iotop,monitoring,server monitoring'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, February 19th, 2015
 modified_by:
   name: Elle Krout

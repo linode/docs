@@ -4,7 +4,7 @@ author:
   email: ekrout@linode.com
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
 keywords: 'siege,load testing,benchmarking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, February 18th, 2015
 modified_by:
   name: Elle Krout
@@ -15,6 +15,8 @@ external_resources:
 ---
 
 Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.
+
+![Load Testing Web Servers with Siege](/docs/assets/load-testing-web-servers-with-siege.png)
 
 This guide is for Debian or Ubuntu systems.
 
@@ -58,7 +60,7 @@ This guide is for Debian or Ubuntu systems.
 	~/.siegerc
 	:	~~~
         ...
-        
+
 		#
 		# Variable declarations. You can set variables here
 		# for use in the directives below. Example:
@@ -173,7 +175,7 @@ Siege features a number of command line options to use when you want to deviate 
 
 -  **`-i`**: Used in conjunction with a URLs file, this causes each user to randomly hit one of the URLs, with no predetermined pattern. Similar to real life (the 'i' stands for "internet"), where you will not know where site visitors go, not all pages may be hit.
 
--  **`-v`**: Verbose output. This outputs the results Siege gets in real time before printing the final results. 
+-  **`-v`**: Verbose output. This outputs the results Siege gets in real time before printing the final results.
 
 -  **`-f [file]`**: Run Siege with a file containing a list of URLs that is not the default `urls.txt` file.
 -  **`-g [url]`**: Pull down the HTTP headers.

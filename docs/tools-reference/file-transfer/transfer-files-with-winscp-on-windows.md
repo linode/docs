@@ -5,7 +5,7 @@ author:
 deprecated: yes
 description: 'Securely copying files to and from your Linode with WinSCP, a free and open source file transfer client for Microsoft Windows systems.'
 keywords: 'winscp,ftp,windows scp,sftp,windows sftp program'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-winscp/']
 modified: Monday, August 22nd, 2011
 modified_by:
@@ -16,7 +16,7 @@ title: Transfer Files with WinSCP on Windows
 
 WinSCP is a free, open source file transfer program written for Microsoft Windows. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. WinSCP sends both your login credentials and file transfers over the network securely encrypted, while standard FTP clients send this information as plaintext.
 
-You'll need to make sure your VPS is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. You may wish to verify that you can log into your VPS via SSH using a tool like the [PuTTY SSH client](/docs/networking/using-putty) before continuing.
+You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. You may wish to verify that you can log into your Linode via SSH using a tool like the [PuTTY SSH client](/docs/networking/using-putty) before continuing.
 
 Obtaining and Installing WinSCP
 -------------------------------
@@ -50,7 +50,7 @@ Enter your Linode's fully qualified hostname or IP address in the "Host name" fi
 
 You'll need to specify account credentials that have access to the filesystem location you'd like to transfer files to and/or from on your Linode; in this case, we've specified the "root" user, which has administrative access to the system. It's advisable to create separate user accounts on your system in lieu of using "root" for common tasks; you can learn more about Linux/UNIX users and groups in our [users and groups tutorial](/docs/tools-reference/linux-users-and-groups).
 
-If you haven't previously logged into your VPS from this workstation with WinSCP, you'll be presented with a warning dialog similar to the following:
+If you haven't previously logged into your Linode from this workstation with WinSCP, you'll be presented with a warning dialog similar to the following:
 
 [![WinSCP host key verification dialog.](/docs/assets/169-winscp-key-warning.png)](/docs/assets/169-winscp-key-warning.png)
 

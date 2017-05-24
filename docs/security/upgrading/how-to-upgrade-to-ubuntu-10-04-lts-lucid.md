@@ -3,9 +3,9 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to avoid common pitfalls when upgrading your Linux VPS to Ubuntu 10.04 LTS.'
+description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
 keywords: 'ubuntu upgrade,distro upgrade,linux upgrade howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-ubuntu-10-04-lucid/']
 modified: Tuesday, October 1st, 2013
 modified_by:
@@ -16,7 +16,7 @@ title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 
 
 
-This guide explains how to upgrade your Linode VPS to Ubuntu 10.04 LTS (Lucid). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures.
+This guide explains how to upgrade your Linode to Ubuntu 10.04 LTS (Lucid). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures.
 
 Ubuntu recommends waiting until the ".1" release of any version increment before upgrading production systems. Additionally, Ubuntu only officially supports upgrades between LTS releases. However, you may follow the steps below to upgrade your system if you're willing to handle any potential snags that may occur.
 

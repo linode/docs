@@ -2,9 +2,9 @@
 author:
   name: Amanda Folson
   email: docs@linode.com
-description: 'Manage your VPS with the Kloxo control panel on CentOS 5.'
+description: 'Manage your Linode with the Kloxo control panel on CentOS 5.'
 keywords: 'kloxo,control panel,cpanel,plesk'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/kloxo/installation/']
 modified: Thursday, October 3rd, 2013
 modified_by:

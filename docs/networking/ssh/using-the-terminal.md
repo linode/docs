@@ -4,9 +4,9 @@ author:
   email: docs@linode.com
 description: 'Accomplishing system administration tasks from a command prompt.'
 keywords: 'Linux terminal,terminal HOWTO,Linode terminal tutorial'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/using-the-terminal/']
-modified: Monday, July 28, 2014
+modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Sunday, August 2nd, 2009'
@@ -16,6 +16,8 @@ external_resources:
 ---
 
 The shell, also known as the "command line interface" or "CLI"", is the primary method for interacting with remote Linux servers. The shell is a rich interface for manipulating your files, managing your system, and scripting common tasks. If you use Linux on your local machine you are likely already familiar with the terminal; Mac OS X users may be familiar with the command line from Terminal.app.
+
+![Using the Terminal](/docs/assets/using-the-terminal.png "Using the Terminal")
 
 This document provides an overview of common operations and actions in the terminal environment, with some helpful hints for making your terminal experience more successful and rewarding. When you open a terminal either locally or over SSH, you'll be greeted with a message and presented with a prompt. Depending on your system's configuration, the prompt will end with either a dollar sign (`$`) for regular users and a hash (`#`) for root. We're now ready to begin this guide.
 

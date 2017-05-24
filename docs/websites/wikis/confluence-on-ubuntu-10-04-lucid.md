@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Confluence on Ubuntu 10.04 (Lucid) to power a full-featured wiki system.'
 keywords: 'confluence ubuntu 10.04,confluence,confluence wiki,confluence linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/confluence/ubuntu-10-04-lucid/']
 modified: Tuesday, June 7th, 2011
 modified_by:
@@ -14,7 +14,7 @@ published: 'Sunday, September 5th, 2010'
 title: 'Confluence on Ubuntu 10.04 (Lucid)'
 ---
 
-[Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Ubuntu 10.04 (Lucid) Linux VPS. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
+[Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Ubuntu 10.04 (Lucid) Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
 
 Set the Hostname
 ----------------

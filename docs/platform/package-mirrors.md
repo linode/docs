@@ -4,17 +4,21 @@ author:
   email: docs@linode.com
 description: Setting Linode Package Mirrors.
 keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['package-mirrors/']
-modified: Wednesday, September 24, 2014
+modified: Monday, November 21st, 2016
 modified_by:
-  name: Kenyon Ralph
+  name: Linode
 published: 'Tuesday, February 11th, 2014'
 title: Package Mirrors
 ---
 
-Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you install updates and new packages, you must download them from package mirrors. The primary advantage of using the Linode package mirrors versus other public package mirrors is speed. Linode package mirrors are available in all of our datacenters. The mirrors can be found at:
+Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you install updates and new packages, you must download them from package mirrors. The primary advantage of using the Linode package mirrors versus other public package mirrors is speed.
 
+![Setting Linode Package Mirrors.](/docs/assets/package_mirrors_smg.png "Setting Linode Package Mirrors.")
+
+ Linode package mirrors are available in all of our datacenters. The mirrors can be found at:
+ 
 - <http://atlanta.mirrors.linode.com/>
 - <http://dallas.mirrors.linode.com/>
 - <http://frankfurt.mirrors.linode.com/>
@@ -23,6 +27,8 @@ Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you in
 - <http://newark.mirrors.linode.com/>
 - <http://singapore.mirrors.linode.com/>
 - <http://tokyo.mirrors.linode.com/>
+- <http://tokyo2.mirrors.linode.com/>
+
 
 ## Package Mirror Settings
 

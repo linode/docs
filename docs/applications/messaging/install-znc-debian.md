@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Install the ZNC bouncer on Debian to retain an IRC connection.'
 keywords: 'install znc,irc bouncer,znc on debian,configure znc,znc'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, June 4th, 2015
 modified_by:
     name: 'Elle Krout'
@@ -168,6 +168,8 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
 ## Connect to The Client
 
+### HexChat ###
+
 You can use any preferred GUI or CLI client to connect to ZNC. For the example below, we'll be using [HexChat](https://hexchat.github.io/index.html).
 
 1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
@@ -184,6 +186,20 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 3.  Press **Connect**. You should be connected to your ZNC server and from there to any networks and channels you've configured to autojoin.
 
+### Konversation ###
+
+1. Open Konversation, click 'New...' 
+
+    [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
+
+2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
+
+    [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
+    
+3. Now enter your network details such as IP Address, Port number, and password.
+
+    [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
+    
 
 ## SSL Encryption with a Signed Certificate (Optional)
 

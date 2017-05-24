@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on CentOS.'
 keywords: 'apache ssl,ssl on centos,web server,centos 5,centos 6,centos 7'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/ssl-guides/centos/','security/ssl/ssl-certificates-with-apache-2-on-centos-5-6','web-servers/ssl/ssl-certificates-with-apache-2-on-centos-5-6']
 modified: Tuesday, October 21st, 2014
 modified_by:
@@ -19,7 +19,7 @@ This guide will assist you with enabling SSL for websites served under the Apach
 Use a Self-Signed SSL Certificate with Apache
 ---------------------------------------------
 
-These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your VPS. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
+These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
 
 ### Generate a Self-Signed Certificate
 
@@ -29,7 +29,7 @@ At the shell prompt, issue the following commands to install SSL for Apache and 
     mkdir /etc/httpd/ssl
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/httpd/ssl/httpd.pem -keyout /etc/httpd/ssl/httpd.key
 
-You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
+You will be asked for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the Linode for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
     Generating a 1024 bit RSA private key
     ...................................++++++

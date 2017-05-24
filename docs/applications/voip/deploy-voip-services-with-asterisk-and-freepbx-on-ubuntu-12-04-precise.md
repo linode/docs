@@ -1,10 +1,11 @@
 ---
+deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Install Asterisk and FreePBX on Your Linux VPS to Use and Manage a Telephone Exchange.'
+description: 'Install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange.'
 keywords: 'ubuntu 12.04,asterisk,freepbx,pbx,voip,google voice,grub,lamp stack,apache,php'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: [ 'communications/voip-services-ubuntu-12-04/' ]
 modified: Tuesday, June 17th, 2014
 modified_by:

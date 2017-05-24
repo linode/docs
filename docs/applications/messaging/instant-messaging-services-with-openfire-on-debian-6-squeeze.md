@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Get started with Openfire on Debian 6 (Squeeze), an open source instant messaging server built on the XMPP/Jabber protocol.'
 keywords: 'openfire debian 6,openfire debian squeeze,openfire linux,linux xmpp,instant messaging,real-time messaging,xmpp server,chat software,linux jabber server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/openfire/debian-6-squeeze/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -14,7 +14,7 @@ published: 'Thursday, February 24th, 2011'
 title: 'Instant Messaging Services with Openfire on Debian 6 (Squeeze)'
 ---
 
-[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linux VPS.
+[Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Debian 6 (Squeeze) Linode.
 
 If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
@@ -59,7 +59,7 @@ The Java6 JRE will be installed, along with a series of dependencies it requires
 Adjust Firewall Settings
 ------------------------
 
-If you employ a firewall to specify what ports can be accessed on your VPS, please make sure you have the following ports open:
+If you employ a firewall to specify what ports can be accessed on your Linode, please make sure you have the following ports open:
 
 -   3478 - STUN Service (NAT connectivity)
 -   3479 - STUN Service (NAT connectivity)

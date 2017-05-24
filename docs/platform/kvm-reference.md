@@ -5,15 +5,15 @@ author:
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
 keywords: 'kvm,kvm reference,virtual machine mode,kvm linode,xen'
 alias: ['platform/kvm/']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, June 15th, 2015
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Wednesday, September 14th, 2016
 modified_by:
-  name: Josh Sager
+  name: Alex Fornuto
 published: 'Monday, June 15, 2015'
-title:  KVM Reference
+title: 'KVM Reference'
 ---
 
-Linode's virtualization stack supports KVM as well as Xen. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
+Linode's current virtualization stack is built on KVM. Previously, Linode used Xen, and older Linodes may still be on the Xen platform. Along with the increased performance of KVM virtualization, several details are different between Xen and KVM Linodes.
 
 ## What's Changed?
 
@@ -64,6 +64,7 @@ For standard paravirtualized KVM Linodes, add the following to your kernel `.con
     CONFIG_KVM_GUEST=y
     CONFIG_VIRTIO_PCI=y
     CONFIG_VIRTIO_PCI_LEGACY=y
+    CONFIG_BLK_DEV_SD=y
     CONFIG_SCSI_VIRTIO=y
     CONFIG_VIRTIO_NET=y
     CONFIG_SERIAL_8250=y
@@ -86,19 +87,34 @@ An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Cho
 
 ## How to Enable KVM
 
-There are two ways to enable KVM mode for your Linodes:
+All new Linodes are created as KVM guests. Older Xen Linodes will need to migrate to KVM before receiving other plan upgrades.
 
-* **Existing Linode:** If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
+If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
   [![The KVM Upgrade Button.](/docs/assets/kvm_upgrade_context.png)](/docs/assets/kvm_upgrade_context.png)
-
-* **Future Linodes:** You can configure your user account to automatically create new Linodes using KVM. To do this, go to your [Linode Manager](https://manager.linode.com), then the **Account** tab, and then click on the **Account Settings** link. On the Account Settings page is a section called **Hypervisor Preference**. Set the preference to *KVM* and submit the form.
-
-  [![Setting the account settings for the KVM hypervisor.](/docs/assets/kvm_account_setting_small.png)](/docs/assets/kvm_account_setting.png)
 
 ## Troubleshooting
 
 There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
+
+### Migration from Xen
+
+If you are using a kernel other than the one provided by Linode and you migrate from Xen to KVM, you may encounter this error on boot:
+
+![KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."](/docs/assets/kvm-kernel-error.png "KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."")
+
+This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
+
+1.  Edit your Linode's configuration profile to use the Linode-supplied kernel.
+
+2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+
+3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
+
+3.  Edit your Linode's configuration profile back to the previous setting.
+
+{: .note }
+> Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 
 ### CentOS 6
 

@@ -4,11 +4,11 @@ author:
   email: docs@linode.com
 description: Our guide to monitoring and maintaining your server.
 keywords: 'monitor,monitoring,maintaining,maintenance'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['monitoring-and-maintaining/']
-modified: Tuesday, June 17th, 2014
+modified: Wednesday, February 22nd, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Wednesday, August 22nd, 2012'
 title: Monitoring and Maintaining Your Server
 ---
@@ -25,13 +25,13 @@ Not everyone needs to monitor the availability of their server. For example, if 
 
 If you depend on your website or web application for your livelihood, an availability monitoring tool is practically a necessity. Once set up, the tool actively watches your servers and services and alerts you when they're unavailable. You'll be able to troubleshoot the problem and restore service as quickly as possible.
 
-Whether you use one virtual private server or dozens of them, mission-critical servers and services should be watched by an independent monitoring tool that can keep tabs on their availability. The tool should have an automated method of detecting service-related incidents and be able to notify you via email, text message, or SMS. That way you'll know that a server or service is down within minutes of it having failed.
+Whether you use one Linode or dozens of them, mission-critical servers and services should be watched by an independent monitoring tool that can keep tabs on their availability. The tool should have an automated method of detecting service-related incidents and be able to notify you via email, text message, or SMS. That way you'll know that a server or service is down within minutes of it having failed.
 
 ### Finding the Right Tool
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, [Nagios](/docs/server-monitoring/nagios) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
+-   **Multiple Servers**: If you run more than one server, [Nagios](/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
 -   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
 -   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 
@@ -44,7 +44,7 @@ Shutdown Watchdog, also known as *Lassie*, is a Linode Manager feature capable o
 Here's how to turn Lassie on and off:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
@@ -77,7 +77,7 @@ The Linode Manager allows you to configure *email alerts* that automatically not
 Here's how to turn on and customize the alerts:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
 
@@ -159,7 +159,7 @@ Here's how to check for a new kernel and start using it on your Linode:
         Linux version 3.15.4-x86_64-linode45 (maker@build) (gcc version 4.4.5 (Debian 4.4.5-8) ) #1 SMP Mon Jul 7 08:42:36 EDT 2014
 
 3.  Log in to the [Linode Manager](https://manager.linode.com).
-4.  Click the **Linodes** tab. A list of your virtual private servers appears.
+4.  Click the **Linodes** tab.
 5.  Select your Linode. The Linode's dashboard appears.
 6.  Select the active configuration profile by clicking the link, as shown below.
 

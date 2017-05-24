@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install and configure the Postfix MTA to work with Courier and MySQL for virtual domains on Fedora 13.'
 keywords: 'postfix,courier,mail server,imap,postfix on fedora 13,postfix on linux,postfix with courier,postfix with mysql,mysql virtual domains'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/courier-mysql-fedora-13/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -16,7 +16,7 @@ title: 'Email with Postfix, Courier and MySQL on Fedora 13'
 
 
 
-The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linux VPS, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
+The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 
 Secure IMAPS and POP3S services are supported with this configuration, along with support for encrypted SMTP connections. This guide is largely based on Falko Timme's excellent [How To Install courier-imap, courier-authlib, And maildrop On Fedora, RedHat, CentOS guide](http://www.howtoforge.com/installing-courier-imap-courier-authlib-maildrop-fedora-redhat-centos), with some packages omitted (such as quota support, as this requires rebuilding Postfix and many organizations have no need for quotas). Other steps have been clarified with additional explanations. This guide does not cover SpamAssassin or webmail software installation, although you may reference other resources to add support for these features.
 
@@ -31,7 +31,7 @@ Make sure your package repositories and installed programs are up to date by iss
 
     yum update
 
-Issue the following command to get the required packages installed on your VPS:
+Issue the following command to get the required packages installed on your Linode:
 
     yum install rpm-build make libtool openldap-devel cyrus-sasl-devel mysql-devel zlib-devel postgresql-devel  \
     gdbm-devel pam-devel expect gcc-c++ redhat-rpm-config libtool-ltdl-devel libidn-devel gamin-devel \
@@ -417,7 +417,7 @@ You'll need to send a welcome message to new email accounts before they can be a
 
 Press `Ctrl+D` to complete the message. This completes the configuration for a new domain and email user.
 
-Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linux VPS. When configuring your local email client, use the full email address for the mailbox you wish to connect to as the username. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
+Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linode. When configuring your local email client, use the full email address for the mailbox you wish to connect to as the username. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
 More Information
 ----------------

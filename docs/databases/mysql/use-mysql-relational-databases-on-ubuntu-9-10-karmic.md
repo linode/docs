@@ -4,8 +4,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 9.10 (Karmic).'
-keywords: 'mysql on linux,mysql ubuntu,mysql karmic,mysql vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'mysql on linux,mysql ubuntu,mysql karmic,mysql Linode'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/ubuntu-9-10-karmic/']
 modified: Monday, October 8th, 2012
 modified_by:
@@ -16,7 +16,7 @@ title: 'Use MySQL Relational Databases on Ubuntu 9.10 (Karmic)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Karmic Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Karmic Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
 Installing MySQL
 ----------------

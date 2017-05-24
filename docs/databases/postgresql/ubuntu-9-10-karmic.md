@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
 keywords: 'postgresql,postgresql database,postgresql ubuntu,postgresql ubuntu 9.10,postgresql ubuntu karmic,relational database'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
@@ -15,7 +15,7 @@ title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.10 (Karmic). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.10 (Karmic). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
 Installing PostgreSQL
 ---------------------

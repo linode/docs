@@ -5,11 +5,11 @@ author:
   email: docs@linode.com
 description: Our guide to billing and payments
 keywords: 'prepaid,billing,payments,credit,referral,invoice'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['prepaid-billing/']
-modified: Wednesday, April 9th, 2014
+modified: Wednesday, February 15th, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Thursday, April 5th, 2012'
 title: 'Prepaid Billing and Payments (Legacy)'
 ---
@@ -18,51 +18,11 @@ Use this guide to learn how our prepaid billing system works and how to make pay
 
 This guide applies to customers using Linode's prepaid billing system. For current information, please see [the current billing guide](/docs/billing-and-payments).
 
-## Updating to Metered Billing
-
-To update to the new Metered billing system, follow the instructions here:
-
-1.  Log in to the [Linode Manager](http://manager.linode.com).
-2.  Click the **Account** tab.
-3.  From the **Account** tab, select the **Convert to Metered billing** link in the lower right.
-
-    [![Select the Convert to Metered billing link towards the end of the page.](/docs/assets/1612-metered_convert_marked_sm.png)](/docs/assets/1613-metered_convert_marked.png)
-
-4.  You'll be taken to a page with a brief overview of the Metered billing system. If you have any prepaid amounts on your account from the current month or year, you will receive that amount as a credit on your account to be used toward future invoices. Click the **Convert me to Metered NOW!** button to finalize the conversion.
-
-    [![Review the Metered billing details and your possible credit amount.](/docs/assets/1620-metered_refund_marked_sm.png)](/docs/assets/1621-metered_refund_marked.png)
-
-5.  You will receive a confirmation message that your account has been converted to Metered billing.
-
-    [![You will receive the confirmation message "Welcome to Metered billing! You're all set."](/docs/assets/1614-metered_done_cropped_sm.png)](/docs/assets/1615-metered_done_cropped.png)
-
-6.  Refer to the [the current billing guide](/docs/billing-and-payments) for Metered billing details.
-
- {: .note }
+{: .note }
 >
-- Customers are not required to update to the new billing method
-- Prepaid discounts will not carry over to the new system
-- Those who remain on the prepaid billing system will not experience any changes
+> To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/upgrade-to-hourly-billing).
 
-**Possible notices:**
-
-When you select the **Convert to Metered billing** link in Step 3 above, you may receive an error or notice. For example, this account has several notices that **This package needs to be paid**:
-
-[![You may receive some notices that "This package needs to be paid."](/docs/assets/1616-metered_errors_cropped_sm.png)](/docs/assets/1617-metered_errors_cropped.png)
-
-To resolve unpaid packages, you can:
-
--   Check for unpaid invoices, and attempt to pay them immediately. Use the **click to charge** link on the main **Account** tab
--   Check for **extras** packages, and [remove](#removing-services) them manually
--   [Contact support](/docs/support) for other notices on this page
-
-You will no longer receive the annual discount when you switch to Metered billing. If you have a current discounted package on your account, you will receive this notice:
-
-[![Please note the annual discounts will go away when converting to metered.](/docs/assets/1618-metered_no_discount_marked_sm.png)](/docs/assets/1619-metered_no_discount_marked.png)
-
-If you want to stay on the old billing system, just don't click the final button.
-
-## How Our Billing Works
+## How Prepaid Billing Works
 
 All services are billed automatically on the first of the month, and all fees billed to your account are prorated for the current billing cycle. This means that if you sign up or purchase extras in the middle of the billing cycle, you will be charged a prorated amount for the amount of time left in the cycle. At the beginning of the next billing cycle, your account will be billed the full cost of your Linode and any extra services.
 

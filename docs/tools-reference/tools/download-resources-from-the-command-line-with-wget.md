@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Use wget to download files on the command line
 keywords: 'wget,command line,linux common commands'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/wget/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -38,8 +38,8 @@ When issued at the command line without options, `wget` will download the file s
 
     $ cat wget-example.txt
     This is an example resource for the `wget` document
-    <http://library.linode.com/using-linux/common-commands/wget/>, located
-    in the Linode Library. 
+    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    in the Linode Docs.
 
     There are four lines of random characters at the end of this file. 
 
@@ -58,8 +58,8 @@ The `-O` option controls the location and name of the file where `wget` writes t
 
     $ wget -q -O - http://www.linode.com/docs/assets/695-wget-example.txt
     This is an example resource for the `wget` document
-    <http://library.linode.com/using-linux/common-commands/wget/>, located
-    in the Linode Library. 
+    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    in the Linode Docs.
 
     There are four lines of random characters at the end of this file. 
 

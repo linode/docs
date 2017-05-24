@@ -1,10 +1,11 @@
 ---
+deprecated: true
 author:
   name: Lukas Sabota
   email: docs@linode.com
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
 keywords: 'exim,ubuntu 12.04,send-only email,mail server,linux mail,smtp server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
 modified: Tuesday, January 21st, 2014
 modified_by:
@@ -16,7 +17,7 @@ external_resources:
  - '[Email Guides](/docs/email/)'
 ---
 
-Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linux VPS.
+Many Linux server applications need to send email. Cron jobs use mail services to deliver reports on jobs that have run, web applications require mail support for user registration functions, and other applications may need to send alerts via SMTP. This guide will help you install and configure the lightweight Exim MTA (Mail Transfer Agent) on your Ubuntu 12.04 LTS (Precise Pangolin) Linode.
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
@@ -105,4 +106,4 @@ Issue the following command to send a test email, substituting an external email
 
     echo "This is a test." | mail -s Testing someone@somedomain.com
 
-Congratulations! You've configured Exim to send email from your Linux VPS.
+Congratulations! You've configured Exim to send email from your Linode.

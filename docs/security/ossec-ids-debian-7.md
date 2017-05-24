@@ -7,7 +7,7 @@ contributor:
   link: https://github.com/finid
 description: 'Install and configure OSSEC HIDS on Debian 7'
 keywords: 'IDS, Intrusion Detection System'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 5th, 2015
 modified_by:
   name: James Stewart
@@ -43,32 +43,32 @@ This guide covers how to install and configure OSSEC on a single Linode running 
 
 ## Download and Verify OSSEC
 
-Debian 7 does not have an installation candidate for OSSEC in its repository, so it will need to be downloaded from the project's [download page](http://www.ossec.net/?page_id=19). 
+Debian 7 does not have an installation candidate for OSSEC in its repository, so it will need to be downloaded from the project's [download page](http://ossec.github.io/downloads.html). 
 
-1.  Download the latest OSSEC tarball (2.8.1 at the time of this guide's publication):
+1.  Download the latest OSSEC tarball (2.8.3 at the time of this guide's publication):
 
-        wget -U http://www.ossec.net/files/ossec-hids-2.8.1.tar.gz
+        wget -U https://bintray.com/artifact/download/ossec/ossec-hids/ossec-hids-2.8.3.tar.gz
 
 2.  Download the checksum file:
 
-        wget -U http://www.ossec.net/files/ossec-hids-2.8.1-checksum.txt
+        wget -U http://ossec.wazuh.com/vm/ossec-vm-2.8.3-checksum.txt
 
 3.  Verify that the downloaded tarball has not been tampered with using the MD5 checksum:
 
-        md5sum -c ossec-hids-2.8.1-checksum.txt
+        md5sum -c ossec-vm-2.8.3-checksum.txt
 
     The expected output is:
 
-        ossec-hids-2.8.1.tar.gz: OK
+        ossec-hids-2.8.3.tar.gz: OK
         md5sum: WARNING: 1 line is improperly formatted
 
 4.  Verify the SHA1 checksum:
 
-        sha1sum -c ossec-hids-2.8.1-checksum.txt
+        sha1sum -c ossec-hids-2.8.3-checksum.txt
 
     The expected output is:
 
-        ossec-hids-2.8.1.tar.gz: OK
+        ossec-hids-2.8.3.tar.gz: OK
         sha1sum: WARNING: 1 line is improperly formatted
 
 
@@ -82,16 +82,16 @@ Debian 7 does not have an installation candidate for OSSEC in its repository, so
 
 1.  Untar the file:
 
-        tar xf ossec-hids-2.8.1.tar.gz
+        tar xf ossec-hids-2.8.3.tar.gz
 
 2.  Change to the newly-created directory, then run the install:
 
-        cd ossec-hids-2.8.1
+        cd ossec-hids-2.8.3
         sudo ./install.sh
 
 3.  Select your language. If your language is the default (English - [en]),  press `Return`; otherwise, type in the 2-letter code for your language from the list of supported languages:
 
-        OSSEC HIDS v2.8 Installation Script - http://www.ossec.net
+        OSSEC HIDS v2.8 Installation Script - http://ossec.github.io/
 
          You are about to start the installation process of the OSSEC HIDS.
          You must have a C compiler pre-installed in your system.

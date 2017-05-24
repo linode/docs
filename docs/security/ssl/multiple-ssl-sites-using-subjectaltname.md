@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to serve multiple SSL-enabled websites from a single public IP using the SubjectAltName feature of OpenSSL.'
 keywords: 'openssl,apache ssl,subjectaltname,ssl linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/ssl-certificates/subject-alternate-names/']
 modified: Wednesday, November 14th, 2012
 modified_by:
@@ -63,7 +63,7 @@ Issue the following command to generate the certificate itself. Note that this c
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/localcerts/apache.pem\
          -keyout /etc/ssl/localcerts/apache.key
 
-OpenSSL will ask you for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the VPS for the "Common Name" entry, as this certificate will be used for generic SSL service.
+OpenSSL will ask you for several configuration values. Enter values appropriate for your organization and server, as shown here. This example will create a certificate valid for 365 days; you may wish to increase this value. We've specified the FQDN (fully qualified domain name) of the Linode for the "Common Name" entry, as this certificate will be used for generic SSL service.
 
     Generating a 1024 bit RSA private key
     ...................................++++++

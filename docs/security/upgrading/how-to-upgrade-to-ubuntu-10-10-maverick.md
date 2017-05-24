@@ -3,9 +3,9 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to avoid common pitfalls when upgrading your Linux VPS to Ubuntu 10.10.'
+description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.10.'
 keywords: 'ubuntu 10.10 upgrade,ubuntu maverick upgrade,distro upgrade,linux upgrade howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-ubuntu-10-10-maverick/']
 modified: Friday, May 10th, 2013
 modified_by:
@@ -16,7 +16,7 @@ title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
 
 
 
-This guide explains how to upgrade your Linode VPS to Ubuntu 10.10 (Maverick). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures. Ubuntu only officially supports direct upgrades between LTS releases. However, you may follow these steps to upgrade your system if you're willing to handle any potential snags that may occur.
+This guide explains how to upgrade your Linode to Ubuntu 10.10 (Maverick). As with any task involving major system changes, you are strongly encouraged to make backups of your data before proceeding. You should be logged in as root for these procedures. Ubuntu only officially supports direct upgrades between LTS releases. However, you may follow these steps to upgrade your system if you're willing to handle any potential snags that may occur.
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed).
 

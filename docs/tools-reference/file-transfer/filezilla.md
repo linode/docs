@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Securely copying files to and from your Linode with FileZilla, a free and open source file transfer client for Linux, OS X, and Windows systems.'
 keywords: 'filezilla,ftp,linux scp,sftp,linux sftp program,linux ftp'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-filezilla/']
 modified: Monday, October 13, 2014
 modified_by:
@@ -18,6 +18,8 @@ external_resources:
 ---
 
 FileZilla is a free, open source file transfer program written for Linux, MacOS X, and Windows systems. It implements several file transfer protocols, most notably SFTP via SSH. This tool allows you to securely transfer files to and from your Linode using an encrypted channel, avoiding the security problems and usability issues inherent in traditional FTP client/server systems. FileZilla can send both your login credentials and file transfers over the network securely encrypted (provided you're using SFTP), while standard FTP clients send this information as plaintext.
+
+![Transfer Files with FileZilla](/docs/assets/transfer-files-with-filezilla.png "Transfer Files with FileZilla")
 
 ## Prerequisites
 

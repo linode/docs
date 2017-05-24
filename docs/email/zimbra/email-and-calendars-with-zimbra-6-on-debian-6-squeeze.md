@@ -3,9 +3,9 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Get started with the open source edition of Zimbra groupware on your Debian 6 (Squeeze) Linux VPS.'
+description: 'Get started with the open source edition of Zimbra groupware on your Debian 6 (Squeeze) Linode.'
 keywords: 'zimbra debian 6,zimbra squeeze,zimbra on debian,zimbra groupware,zimbra mail server,linux mail server'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/zimbra/install-zimbra-debian-6-squeeze/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -14,9 +14,9 @@ published: 'Tuesday, February 15th, 2011'
 title: 'Email and Calendars with Zimbra 6 on Debian 6 (Squeeze)'
 ---
 
-Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get Zimbra Collaboration Suite - Open Source Edition installed on your Debian 6 (Squeeze) Linux VPS.
+Zimbra is a groupware system that provides email, calendaring, integrated antivirus and spam filtering, and more for multiple domains. Available in several editions, this guide will help you get Zimbra Collaboration Suite - Open Source Edition installed on your Debian 6 (Squeeze) Linode.
 
-Please note that Zimbra is a fairly "heavy" (resource-intensive) product compared to some other groupware offerings. We recommend a Linode 2048 or higher for best results; you may encounter issues using Zimbra with plans with less resources. Additionally, note that Zimbra works best as a standalone product on your VPS; installation alongside other software is not advised. Zimbra is deprecating support for 32-bit systems, and therefore it is assumed you have deployed the 64-bit version of Debian 6. If this is not the case, you will want to redeploy with the 64-bit version before continuing. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+Please note that Zimbra is a fairly "heavy" (resource-intensive) product compared to some other groupware offerings. We recommend a Linode 2048 or higher for best results; you may encounter issues using Zimbra with plans with less resources. Additionally, note that Zimbra works best as a standalone product on your Linode; installation alongside other software is not advised. Zimbra is deprecating support for 32-bit systems, and therefore it is assumed you have deployed the 64-bit version of Debian 6. If this is not the case, you will want to redeploy with the 64-bit version before continuing. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 Please note that as of this writing, Zimbra is not officially supported on Debian 6. The software should function as expected, but your support options may be limited by choosing to install it on Debian 6. If this is a concern for you, you may wish to consider following our [Debian 5 (Lenny) Zimbra guide](/docs/email/zimbra/install-zimbra-debian-5-lenny) instead.
 

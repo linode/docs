@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
 keywords: 'sftp,sftp jail,openssh,ssh jail'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/sftp-jails/']
 modified: Tuesday, April 16th, 2014
 modified_by:
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 As the system administrator for your Linode, you may want to give your users the ability to securely upload files to your server. The most common way to do this is to allow file transfers via SFTP, which uses SSH to provide encryption. This means you need to give your users SSH logins. But, by default, SSH users are able to view your Linode's entire filesystem, which may not be desirable.
+
+![Limiting Access with SFTP Jails on Debian and Ubuntu](/docs/assets/limiting-access-with-sftp-jails-on-debian-and-ubuntu.png)
 
 This guide will help you configure OpenSSH to restrict users to their home directories, and to SFTP access only. Please note that these instructions are not intended to support shell logins; any user accounts modified in accordance with this guide will have the ability to transfer files, but not the ability to log into a remote shell session.
 

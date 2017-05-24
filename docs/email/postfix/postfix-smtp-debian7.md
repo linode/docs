@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
 keywords: 'Postfix, Debian 7, SMTP, Email, Mail'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 location: ['email/postfix/postfix-smtp-debian7/']
 contributor:
     name: Santiago Ti
@@ -13,13 +13,22 @@ modified_by:
   name: Linode
 published: 'Friday, May 30th, 2014'
 title: Configure Postfix to Send Mail Using an External SMTP Server
+image: https://linode.com/docs/assets/external_smtp_tg.png
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Google Apps (Gmail), Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
+There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 
-In this tutorial, you will learn how to install and configure a Postfix server to send email through Google Apps, Mandrill, or SendGrid.
+![Configure Postfix to Send Mail Using an External SMTP Server](/docs/assets/external_smtp_tg.png "Configure Postfix to Send Mail Using an External SMTP Server")
+
+In this tutorial, you will learn how to install and configure a Postfix server to send email through Mandrill, or SendGrid.
+
+##Updated Guide for Gmail and Google Apps
+
+We've got an updated version of this guide that works with Gmail's new security features!
+
+If you're using Gmail or Google Apps, see our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu) guide instead.
 
 ## Prerequisites
 
@@ -31,7 +40,7 @@ Before starting this tutorial, you should have:
 
         sudo apt-get update
 
--   A valid username and password for the SMTP mail provider, such as Google Apps, Mandrill, or SendGrid
+-   A valid username and password for the SMTP mail provider, such as Mandrill, or SendGrid
 -   Make sure the libsasl2-modules package is installed and up to date:
 
         sudo apt-get install libsasl2-modules
@@ -74,7 +83,7 @@ In this section, you will install Postfix and set the domain and hostname.
 
 Usernames and passwords are generally stored in a file called `sasl_passwd` in the `/etc/postfix/` directory. In this section, you'll add your external mail provider credentials to this file and to Postfix.
 
-If you want to use [Google Apps](#settings-for-google-apps), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) as your SMTP provider, you may want to reference the appropriate example while working on this section.
+If you want to use [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) as your SMTP provider, you may want to reference the appropriate example while working on this section. For Google Apps and Gmail-specific settings, check out our [Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu) guide.
 
 1.  Open or create the `/etc/postfix/sasl_passwd` file, using your favorite text editor:
 
@@ -172,42 +181,6 @@ Alternatively, you can use Postfix's own sendmail implementation, by entering li
 ## Examples of Postfix Configurations with Different Providers
 
 This section shows you settings for some popular mail services you can use as external SMTP servers. You may have to do some fine-tuning on your own to avoid Postfix logins being flagged as suspicious.
-
-### Settings for Google Apps
-
-Use these settings for Google Apps.
-
-1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
-
-    {: .file }
-    /etc/postfix/sasl\_passwd
-    :   ~~~
-        [smtp.gmail.com]:587 <USERNAME@gmail.com>:PASSWORD
-        ~~~
-
-    If you are using Google Apps with your own domain, configure `/etc/postfix/sasl_passwd` with:
-
-    {: .file }
-    /etc/postfix/sasl\_passwd
-    :   ~~~
-        [smtp.gmail.com]:587 <USERNAME@yourdomain.com>:PASSWORD
-        ~~~
-
-2.  For `/etc/postfix/main.cf`, use the following **relayhost**:
-
-    {: .file }
-    /etc/postfix/main.cf
-    :   ~~~
-        relayhost = [smtp.gmail.com]:587
-        ~~~
-
-3.  Create the hash db file for Postfix by running the `postmap` command:
-
-        sudo postmap /etc/postfix/sasl_passwd
-
-4.  Restart Postfix:
-
-        sudo service postfix restart
 
 ### Settings for Mandrill
 

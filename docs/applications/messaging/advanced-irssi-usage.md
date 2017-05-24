@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Advanced tips and tricks for using the Irssi IRC client.'
 keywords: 'irssi,irc,oftc,freenode,real time,chat'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/irc/advanced-irssi/']
 modified: Monday, April 15th, 2013
 modified_by:
@@ -15,7 +15,7 @@ external_resources:
  - '[Irssi Script Repository](http://scripts.irssi.org/)'
  - '[Irssi Themes Page](http://irssi.org/themes/)'
  - '[An Effective Guide for Using Screen and Irssi](http://quadpoint.org/articles/irssi)'
- - '[The Open and Free Technology Community](http://www.oftc.net/oftc/)'
+ - '[The Open and Free Technology Community](https://www.oftc.net/)'
  - '[The Freenode IRC Network](http://freenode.net/)'
  - '[GNU Screen](http://www.gnu.org/software/screen/)'
 ---

@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Debian 5 (Lenny) systems.'
 keywords: 'couchdb,nosql,json,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/couchdb/debian-5-lenny/']
 modified: Wednesday, October 3rd, 2012
 modified_by:

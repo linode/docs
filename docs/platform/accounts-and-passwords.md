@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: Our guide to managing accounts and passwords.
 keywords: 'accounts,passwords,linode manager,manager'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['accounts-and-passwords/']
 modified: Monday, February 10th, 2014
 modified_by:
@@ -13,7 +13,7 @@ published: 'Tuesday, April 3rd, 2012'
 title: Accounts and Passwords
 ---
 
-Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode VPS. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
+Maintaining your accounts, passwords, and contact information in the Linode Manager is just as important as administering your Linode. This guide shows you how to control access to the Linode Manager, update your contact information, and modify account passwords. Note that the information in this guide applies to the Linode Manager only, except for the section on resetting the root password.
 
 ## Users and Permissions
 
@@ -26,6 +26,11 @@ You can grant other users access to the Linode Manager by creating *accounts* an
 ### Adding a User
 
 When you add a user, you give that individual permission to log in to the Linode Manager and, depending on the access level they are assigned, receive email notifications. There are two types of users: *Restricted users*, who have limited access to the Linode Manager, and *unrestricted users*, who have full access.
+
+This video will show you how to add a new user:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/QF5FNxWbtUQ?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
+
 
 Here's how to add a user to your Linode account:
 

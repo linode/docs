@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install and configure NSD to handle DNS queries.'
 keywords: 'NSD,DNS,resolving,Ubuntu,networking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/nsd-authoritative-dns-ubuntu-11-04-natty/']
 modified: Monday, February 18th, 2013
 modified_by:

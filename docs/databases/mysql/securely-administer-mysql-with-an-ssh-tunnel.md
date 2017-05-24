@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Accessing MySQL databases remotely using an SSH tunnel.'
 keywords: 'MySQL tunnel,MySQL over SSH,SSH tunnel'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/mysql-ssh-tunnel/']
 modified: Thursday, August 22nd, 2013
 modified_by:
@@ -19,6 +19,8 @@ external_resources:
 ---
 
 This guide will show you how to make a secure connection to your remote MySQL or MariaDB server from your local computer, using an *SSH tunnel*. This is useful if you want to use administration tools on your local computer to do work on your server.
+
+![Securely Administer MySQL with an SSH Tunnel](/docs/assets/securely-administer-mysql-with-an-ssh-tunnel.png)
 
 After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.
 

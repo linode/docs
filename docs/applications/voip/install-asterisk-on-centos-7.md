@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Installing Asterisk 13 on CentOS 7'
 keywords: 'asterisk 13,centos 7,centos,open source,private branch exchange,pbx,asterisk pbx,sip,session initiation protocol,sip protocol,IP PBX systems,VoIP gateways'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, September 30th, 2015'
 modified: Wednesday, September 30th, 2015
 modified_by:
@@ -29,7 +29,7 @@ This guide covers the steps necessary to provision a new CentOS 7 Linode as a de
 
 ## Before You Begin
 
-1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 1GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
+1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
 2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
 

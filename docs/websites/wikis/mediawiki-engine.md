@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
 keywords: 'mediawiki,wiki,web-applications'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/mediawiki/']
 modified: Tuesday, November 1st, 2011
 modified_by:
@@ -20,7 +20,7 @@ external_resources:
 
 MediaWiki is a popular free wiki software package, and is the same software used by Wikipedia. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured dynamic wiki engine.
 
-For this guide, we'll assume you've already read the [getting started](/docs/getting-started/) guide and have configured a working [LAMP stack](/docs/lamp-guides/) for your chosen distribution of Linux on your Linode VPS. You should be connected to your server via SSH and logged in as root.
+For this guide, we'll assume you've already read the [getting started](/docs/getting-started/) guide and have configured a working [LAMP stack](/docs/lamp-guides/) for your chosen distribution of Linux on your Linode. You should be connected to your server via SSH and logged in as root.
 
 ## Downloading and Unpacking
 

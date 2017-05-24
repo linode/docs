@@ -4,27 +4,27 @@ author:
   email: docs@linode.com
 description: 'How to diagnose network speed issues using Iperf.'
 keywords: 'networking,diagnostic,speed,iperf'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, January 12, 2015
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Tuesday, February 28th, 2017
 modified_by:
-  name: Linode
+  name: Nick Brewer
 published: 'Monday, January 12, 2015'
 title: Diagnosing Network Speed with Iperf
 external_resources:
   - '[Iperf Official Website](https://iperf.fr)'
 ---
 
-Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. Iperf is a command-line tool used in the diagnostics of network speed issues. 
+Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. Iperf is a command-line tool used in the diagnostics of network speed issues.
+
+![Diagnosing Network Speed with Iperf](/docs/assets/diagnosing-network-speed-with-iperf.png)
 
 Iperf measures the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use Iperf to determine which server is unable to reach maximum throughput.
 
-{:.note}
-> 
-> This guide assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
-
 ## Installing Iperf
 
-&nbsp;
+{:.note}
+>
+> The installation section assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
 
 ### Debian and Ubuntu
 
@@ -34,33 +34,11 @@ You can use `apt-get` to install Iperf on Debian and Ubuntu:
 
 ### CentOS
 
-CentOS repositories do not have Iperf by defaul. Use the RPMForge repository, which is a repository used to install third-party software packages on RedHat systems such as RHEL and CentOS.
+CentOS repositories do not have Iperf by default. Use the [EPEL](https://fedoraproject.org/wiki/EPEL) repository, which is a repository used to install third-party software packages on RedHat systems such as RHEL and CentOS:
 
-The RPMForge repository is not produced or maintained by RedHat, but is designed to work with RedHat and supplies over 5,000 software packages in the RPM format.
-
-#### CentOS 7
-
-1.  Use `wget` and `rpm` to prepare your system for the installation:
-
-        wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm
-        rpm -Uvh rpmforge-release-1.5.3-1.el7.rf.x86_64.rpm
-
-2.  Use `yum` to install Iperf:
-
-        yum update
-        yum install iperf
-
-#### CentOS 6
-
-1.  Use `wget` and `rpm` to prepare your system for the installation:
-
-        wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-1.el6.rf.x86_64.rpm
-        rpm -Uvh rpmforge-release-0.5.2-1.el6.rf.x86_64.rpm
-
-2.  Use `yum` to install Iperf:
-
-        yum update
-        yum install iperf
+    yum install epel-release
+	yum update
+	yum install iperf
 
 ### Fedora
 
@@ -91,7 +69,7 @@ Iperf must be installed on both computers you are testing the connection between
 
 ### TCP Clients & Servers
 
-Iperf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you're testing the speed of. 
+Iperf requires two systems because one system must act as a server, while the other acts as a client. The client connects to the server you're testing the speed of.
 
 1.  On the Linode you wish to test, launch Iperf in server mode:
 
@@ -110,23 +88,24 @@ Iperf requires two systems because one system must act as a server, while the ot
 
     The output should be similar to:
 
+
         ------------------------------------------------------------
-        Client connecting to 198.51.100.5, TCP port 5001
+		Client connecting to 198.51.100.5, TCP port 5001
         TCP window size: 45.0 KByte (default)
-        ------------------------------------------------------------
-        [  3] local 198.51.100.6 port 50549 connected with 198.51.100.5 port 5001
-        [ ID] Interval       Transfer     Bandwidth
-        [  3]  0.0-10.0 sec   142 MBytes   119 Mbits/sec
+		------------------------------------------------------------
+		[  3] local 198.51.100.6 port 50616 connected with 198.51.100.5 port 5001
+		[ ID] Interval       Transfer     Bandwidth
+		[  3]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
 
 3.  You will also see the connection and results on your Iperf server. This will look similar to:
 
         ------------------------------------------------------------
-        Server listening on TCP port 5001
+		Server listening on TCP port 5001
         TCP window size: 85.3 KByte (default)
         ------------------------------------------------------------
-        [  4] local 198.51.100.5 port 5001 connected with 198.51.100.6 port 50549
-        [ ID] Interval       Transfer     Bandwidth
-        [  4]  0.0-10.2 sec   142 MBytes   117 Mbits/sec
+		[  4] local 198.51.100.5 port 5001 connected with 198.51.100.6 port 50616
+		[ ID] Interval       Transfer     Bandwidth
+		[  4]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
 
 4.  To stop the Iperf server process, press `CTRL + c`.
 
@@ -164,27 +143,28 @@ Using Iperf, you can also test the maximum throughput achieved via UDP connectio
         [  3] Server Report:
         [  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec   0.084 ms    0/  893 (0%)
 
-    Looking at the output we have received, `1.05 Mbits/sec` is considerably less than what we received on the TCP tests. It is also considerably less than the maximum outbound bandwidth cap provided by the 1 GB Linode. This is because Iperf limits the bandwidth for UDP clients to 1 Mbit per second by default.
+    Looking at the output we have received, `1.05 Mbits/sec` is considerably less than what we received on the TCP tests. It is also considerably less than the maximum outbound bandwidth cap provided by the 1GB Linode. This is because Iperf limits the bandwidth for UDP clients to 1 Mbit per second by default.
 
-4.  You can change this with the `-b` flag, replacing the number after with the maximum bandwidth rate you wish to test against. If you are testing for network speed, we recommend setting this number above the maximum bandwidth cap provided by Linode. For example, this test was run on a 1 GB Linode:
+4.  You can change this with the `-b` flag, replacing the number after with the maximum bandwidth rate you wish to test against. If you are testing for network speed, we recommend setting this number above the maximum bandwidth cap provided by Linode. For example, this test was run on a 1GB Linode:
 
-        iperf -c 198.51.100.5 -u -b 150m
+        iperf -c 198.51.100.5 -u -b 1000m
 
-    This tells the client that we want to achieve a maximum of 150 Mbits per second if possible. The `-b` flag only works when using UDP connections, since Iperf does not set a bandwidth limit on the TCP clients. 
+    This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The `-b` flag only works when using UDP connections, since Iperf does not set a bandwidth limit on the TCP clients.
 
     The output should be similar to:
 
-        -----------------------------------------------------------
-        Client connecting to 198.51.100.5, UDP port 5001
-        Sending 1470 byte datagrams
-        UDP buffer size:  208 KByte (default)
         ------------------------------------------------------------
-        [  3] local 198.51.100.6 port 41083 connected with 198.51.100.5 port 5001
-        [ ID] Interval       Transfer     Bandwidth
-        [  3]  0.0-10.0 sec   145 MBytes   122 Mbits/sec
-        [  3] Sent 103625 datagrams
-        [  3] Server Report:
-        [  3]  0.0-10.3 sec   136 MBytes   111 Mbits/sec  13.488 ms 6464/103623 (6.2%)
+		Client connecting to 198.51.100.5, UDP port 5001
+		Sending 1470 byte datagrams
+        UDP buffer size:  208 KByte (default)
+		------------------------------------------------------------
+		[  3] local 198.51.100.5 port 52308 connected with 198.51.100.5 port 5001
+		[ ID] Interval       Transfer     Bandwidth
+		[  3]  0.0-10.0 sec   966 MBytes   810 Mbits/sec
+		[  3] Sent 688897 datagrams
+		[  3] Server Report:
+		[  3]  0.0-10.0 sec   966 MBytes   810 Mbits/sec   0.001 ms    0/688896 (0%)
+		[  3]  0.0-10.0 sec  1 datagrams received out-of-order
 
     Now that is considerably better than the 1.05 Mbits/sec we were seeing earlier!
 
@@ -196,33 +176,32 @@ Run the following command to test both connections:
 
 	iperf -c 198.51.100.5 -d
 
-The result is that Iperf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, Iperf will connect the original Iperf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar to:
+The result is that Iperf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, Iperf will connect the original Iperf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar
 
-	------------------------------------------------------------
-	Server listening on TCP port 5001
-	TCP window size: 85.3 KByte (default)
-	------------------------------------------------------------
-	------------------------------------------------------------
-	Client connecting to 198.51.100.5, TCP port 5001
-	TCP window size: 45.0 KByte (default)
-	------------------------------------------------------------
-	[  3] local 198.51.100.6 port 50550 connected with 198.51.100.5 port 5001
-	[  5] local 198.51.100.6 port 5001 connected with 198.51.100.5 port 36916
-	[ ID] Interval       Transfer     Bandwidth
-	[  3]  0.0-10.0 sec   142 MBytes   118 Mbits/sec
-	[  5]  0.0-10.1 sec   198 MBytes   165 Mbits/sec
+    ------------------------------------------------------------
+    Server listening on TCP port 5001
+    TCP window size: 85.3 KByte (default)
+    ------------------------------------------------------------
+    ------------------------------------------------------------
+    Client connecting to 198.51.100.5, TCP port 5001
+    TCP window size:  351 KByte (default)
+    ------------------------------------------------------------
+    [  3] local 198.51.100.6 port 50618 connected with 198.51.100.5 port 5001
+    [  5] local 198.51.100.6 port 5001 connected with 198.51.100.5 port 58650
+    [ ID] Interval       Transfer     Bandwidth
+    [  5]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+    [  3]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec
 
 On the original Iperf server, you will see:
 
 	------------------------------------------------------------
 	Client connecting to 198.51.100.6, TCP port 5001
-	TCP window size: 45.0 KByte (default)
+    TCP window size:  153 KByte (default)
 	------------------------------------------------------------
-	[  6] local 198.51.100.5 port 36916 connected with 198.51.100.6 port 5001
-	[  6]  0.0-10.0 sec   198 MBytes   166 Mbits/sec
-	[  5]  0.0-10.2 sec   142 MBytes   117 Mbits/sec
+    [  6] local 198.51.100.5 port 58650 connected with 198.51.100.6 port 5001
+	[  6]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
+	[  5]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec
 
-It is important to note the IDs next to the connection notices. These IDs will allow you to separate the speed results of each server. In this example, the original Iperf server (198.51.100.5) is a 2 GB Linode, whereas the original Iperf client connection (198.51.100.6) is a 1 GB Linode. This explains why we are seeing different maximum throughputs from the servers. 
 
 ### Options
 
@@ -235,4 +214,3 @@ It is important to note the IDs next to the connection notices. These IDs will a
 | -p                                 | Changes the port. When not specified, the default port is 5001. You must use this flag on both the client and server.  															   |
 | -B 			             | Binds Iperf to a specific interface or address. If passed through the server command, the incoming interface will be set. If passed through the client command, the outgoing interface will be set.           |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
-

@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Accessing Oracle databases remotely using an SSH tunnel.'
 keywords: 'Oracle tunnel,Oracle over SSH,SSH tunnel'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/oracle/ssh-tunnel/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -20,7 +20,7 @@ Server administrators may wish to use local administration tools to connect to r
 
 ## Create a Tunnel with PuTTY on Windows
 
-### Connecting to your VPS
+### Connecting to your Linode
 
 You can obtain PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater (practically any modern Windows computer can run it). Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 

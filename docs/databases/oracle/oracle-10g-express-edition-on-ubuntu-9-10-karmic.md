@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Install Oracle 10g to power server-side applications and web apps on Ubuntu 9.10 (Karmic).'
 keywords: 'oracle ubuntu 9.10,oracle ubuntu,oracle linux,sql database,relational database,rdbms,oracle 10g'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/oracle/10g-ubuntu-9-10-karmic/']
 modified: Wednesday, August 13, 2014
 modified_by:
@@ -16,7 +16,7 @@ title: 'Oracle 10g Express Edition on Ubuntu 9.10 (Karmic)'
 
 
 
-Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 9.10 (Karmic) Linux VPS.
+Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 9.10 (Karmic) Linode.
 
 It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 

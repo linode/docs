@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
 keywords: 'ubuntu 11.04 upgrade, ubuntu natty upgrade, distro upgrade, linux upgrade howto'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['upgrading/upgrade-to-ubuntu-11-04-natty/']
 modified: Friday, May 10th, 2013
 modified_by:

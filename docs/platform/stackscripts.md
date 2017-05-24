@@ -2,9 +2,9 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'Create Custom Instances and Automate Deployment with StackScritps.'
+description: 'Create Custom Instances and Automate Deployment with StackScripts.'
 keywords: 'ami,automation,elasticity,cloud,custom instance'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['stackscripts/']
 modified: Wednesday, November 12, 2014
 modified_by:
@@ -39,6 +39,10 @@ StackScripts are usually Bash scripts, stored in the Linode Manager, and can be 
 4.  At this point we have the option of using a Community StackScript or one of our own.
 
     [![Our StackScript options.](/docs/assets/1508-stackscripts_step3_small.png)](/docs/assets/1503-stackscripts_step3.png)
+
+Alternatively, you can follow along with this video, which will show you how to deploy from a StackScript:
+
+<iframe width="825" height="465" src="https://www.youtube.com/embed/XviHHyXVH20?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
 
 ### Using a Community StackScript
 
@@ -269,6 +273,9 @@ StackScript
     <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
     # [...]
     ~~~
+
+{: .note }
+> If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
 
 There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 

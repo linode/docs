@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Configurations for common DNS records.'
 keywords: 'linode dns,linode manager dns,dns configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: Tuesday, January 20, 2015
 modified_by:
@@ -33,7 +33,7 @@ To configure a subdomain, such as `staging.example.org`, create an A record with
 
  {: .note }
 >
-> You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) for more information.
+> You will also need to create a name-based virtual host for the subdomain. If you're using Apache, see [Configure Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) for more information.
 
 ##Hosting Multiple Domains on a Single Server
 
@@ -43,7 +43,7 @@ To host multiple domain names on a single server, create a separate domain zone 
 
  {: .note }
 >
-> You will also need to create a name-based virtual host for each domain name. If you're using Apache, see [Configuring Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configuring-name-based-virtual-hosts) for more information.
+> You will also need to create a name-based virtual host for each domain name. If you're using Apache, see [Configure Name-Based Virtual Hosts](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) for more information.
 
 ##Using One Domain on Multiple Servers
 

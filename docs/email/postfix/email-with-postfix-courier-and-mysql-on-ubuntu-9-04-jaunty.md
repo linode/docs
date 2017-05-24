@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Ubuntu 9.04 (Jaunty).'
 keywords: 'postfix,courier,mail server,imap,postfix on ubuntu,postfix on linux,postfix with courier,postfix with mysql,mysql virtual domains'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/courier-mysql-ubuntu-9-04-jaunty/']
 modified: Tuesday, May 17th, 2011
 modified_by:
@@ -16,7 +16,7 @@ title: 'Email with Postfix, Courier and MySQL on Ubuntu 9.04 (Jaunty)'
 
 
 
-The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linux VPS, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
+The Postfix mail transfer agent (MTA) is a high performance, open source email server system. This guide will help you get Postfix running on your Linode, using Courier for IMAP/POP3 service and MySQL to store information on virtual domains and users.
 
 Secure IMAPS and POP3S services are supported with this configuration, along with support for encrypted SMTP connections. This guide is largely based on Falko Timme's excellent [Postfix and Courier guide](http://www.howtoforge.com/virtual-users-domains-postfix-courier-mysql-squirrelmail-ubuntu9.04), with some packages omitted (such as quota support, as this requires rebuilding Postfix and many organizations have no need for quotas). Other steps have been clarified with additional explanations. This guide does not cover SpamAssassin or webmail software installation, although you may reference other resources to add support for these features.
 
@@ -45,7 +45,7 @@ If you had to enable new repositories, issue the following command to update you
     apt-get update
     apt-get upgrade
 
-Issue the following command to get the required packages installed on your VPS:
+Issue the following command to get the required packages installed on your Linode:
 
     apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon \
             courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl postfix-tls \
@@ -53,19 +53,19 @@ Issue the following command to get the required packages installed on your VPS:
 
 This will install the Postfix mail server, the MySQL database server, the Courier IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on a Linux VPS.](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)
+[![Setting the root password for MySQL on a Linode.](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/435-postfix-courier-mysql-01-mysql-root-password.png)
 
 When prompted, select "No" for web-based administration.
 
-[![Declining web-based administration for the Postfix mail server on an Ubuntu 9.04 (Jaunty) Linux VPS.](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)
+[![Declining web-based administration for the Postfix mail server on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)](/docs/assets/436-postfix-courier-mysql-02-mail-server-type-4.png)
 
-Next, you'll be prompted to select the type of mail server configuration you want for your VPS. Select "Internet Site" and continue.
+Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on an Ubuntu 9.04 (Jaunty) Linux VPS.](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/437-postfix-courier-mysql-02-mail-server-type-2.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using an example organization's domain for our mail server. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled through later virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on an Ubuntu 9.04 (Jaunty) Linux VPS.](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on an Ubuntu 9.04 (Jaunty) Linode.](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/438-postfix-courier-mysql-02-mail-server-type-3.png)
 
 This completes the initial package configuration steps. Next, we'll set up a MySQL database to handle our virtual domains and users.
 
@@ -415,7 +415,7 @@ You'll need to send a welcome message to new email accounts before they can be a
 
 Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:" blank. This completes the configuration for a new domain and email user.
 
-Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linux VPS. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
+Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linode. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
 More Information
 ----------------

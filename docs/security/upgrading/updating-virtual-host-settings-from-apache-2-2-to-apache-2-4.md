@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4'
 keywords: 'Apache 2.2, Apache 2.4, Ubuntu, Debian, CentOS, Fedora, Arch, Gentoo, update, upgrade'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/2-2-2-4-upgrade/']
 modified: Wednesday, March 12th, 2014
 modified_by:
@@ -16,6 +16,8 @@ external_resources:
 ---
 
 This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/hosting-website#sph_configuring-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
+
+![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](/docs/assets/updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
 
 Before you upgrade, you should make a backup of your main Apache 2.2 configuration file so you don't lose any settings. However, keep in mind that if you try to use it as-is with Apache 2.4, incompatibilities can prevent Apache from starting or running.
 

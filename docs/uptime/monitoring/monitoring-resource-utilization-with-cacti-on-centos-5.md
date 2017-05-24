@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on CentOS 5.'
 keywords: 'Cacti,CentOS,Monitoring,SNMP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/cacti/centos-5/']
 modified: Friday, April 29th, 2011
 modified_by:

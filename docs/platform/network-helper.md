@@ -5,10 +5,10 @@ author:
   email: docs@linode.com
 description: 'Information on the Network Helper option.'
 keywords: 'network, networking, network helper, ip, ip address, static ip,'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
-modified: Monday, January 19, 2014
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Friday, April 28, 2017
 modified_by:
-  name: James Stewart
+  name: Linode
 published: ''
 title: Network Helper
 ---
@@ -24,7 +24,7 @@ Network Helper automatically deposits a static networking configuration in to yo
 
 
 {: .note }
-> Network Helper does not affect IPv6 networking. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) for more information on IPv6.
+> If you intend to manually configure IPv6 addresses from a supplied pool, you should [disable](/docs/networking/linux-static-ip-configuration#disable-network-helper) Network Helper so that it doesn't overwrite your configuration file on reboot. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) guide for more information on IPv6. 
 
 ## What Does It Do?
 
@@ -47,30 +47,6 @@ Even with the global setting for Network Helper set to **OFF**, you can enable N
     [![The Auto-configure Networking option](/docs/assets/network-helper-hilighted_small.png)](/docs/assets/network-helper-hilighted.png)
 
 3. Click on **Save Changes**.
-
-### Failure to Run
-
-If Network Helper is unable to determine the operating system during boot, it will not attempt to write any new configuration files. When this happens, Network Helper will let you know in the Host Job Queue:
-
-[![Network Helper Failure Message](/docs/assets/network-helper-failure_small.png)](/docs/assets/network-helper-failure.png)
-
-Similarly, if you boot an unsupported older distribution while Network Helper is enabled, you'll see a warning in the Host Job Queue:
-
-[![Network Helper Failure Message](/docs/assets/network-helper-unsupported_small.png)](/docs/assets/network-helper-unsupported.png)
-
-##Modify Global Network Helper Settings
-
-Network helper is enabled on all new configuration profiles by default. To modify this behavior as default follow the steps below.
-
-1.  From the Linode Manager, click on the **Account** tab:
-
-    ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
-
-2.  Click on the **Account Settings** tab. You can modify the default behavior under the network helper section:
-
-    [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
-
-3. Click the **Save** button.
 
 ## What Files are Affected
 
@@ -131,11 +107,11 @@ Network helper configures `/etc/network/interfaces` & `/etc/resolv.conf`.
 
 ### CentOS & Fedora
 
-Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0` & `/etc/resolv.conf`.
+Network Helper configures `/etc/sysconfig/network-scripts/ifcfg-eth0`.
 
 ### Arch
 
-Network Helper configures `/etc/systemd/network/05-eth0.network` & `/etc/resolv.conf`.
+Network Helper configures `/etc/systemd/network/05-eth0.network`.
 
 ### Gentoo
 
@@ -149,4 +125,26 @@ Network Helper configures `/etc/sysconfig/network/ifcfg-eth0`, `/etc/sysconfig/n
 
 Network Helper configures `/etc/rc.d/rc.inet1.conf` & `/etc/resolv.conf`.
 
+## Failure to Run
 
+If Network Helper is unable to determine the operating system during boot, it will not attempt to write any new configuration files. When this happens, Network Helper will let you know in the Host Job Queue:
+
+[![Network Helper Failure Message](/docs/assets/network-helper-failure_small.png)](/docs/assets/network-helper-failure.png)
+
+Similarly, if you boot an unsupported older distribution while Network Helper is enabled, you'll see a warning in the Host Job Queue:
+
+[![Network Helper Failure Message](/docs/assets/network-helper-unsupported_small.png)](/docs/assets/network-helper-unsupported.png)
+
+##Modify Global Network Helper Settings
+
+Network helper is enabled on all new configuration profiles by default. To modify this behavior as default follow the steps below.
+
+1.  From the Linode Manager, click on the **Account** tab:
+
+    ![The Account tab in the Linode Manager](/docs/assets/account-tab.png)
+
+2.  Click on the **Account Settings** tab. You can modify the default behavior under the network helper section:
+
+    [![The Network Helper Default Behavior option](/docs/assets/account-settings_small.png)](/docs/assets/account-settings.png)
+
+3. Click the **Save** button.

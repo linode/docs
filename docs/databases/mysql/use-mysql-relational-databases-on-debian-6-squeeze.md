@@ -4,8 +4,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
-keywords: 'mysql debian 6,mysql debian,mysql debian squeeze,mysql linux,mysql linux vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'mysql debian 6,mysql debian,mysql debian squeeze,mysql linux,mysql linux Linode'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-6-squeeze/']
 modified: Tuesday, January 14th, 2014
 modified_by:
@@ -16,7 +16,7 @@ title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linux VPS. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 Install MySQL
 -------------

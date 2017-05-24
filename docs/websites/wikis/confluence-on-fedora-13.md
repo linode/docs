@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Use Confluence on Fedora 13 to power a full-featured wiki system.'
 keywords: 'confluence fedora 13,confluence,confluence wiki,confluence linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/confluence/fedora-13/']
 modified: Friday, October 4th, 2013
 modified_by:
@@ -16,7 +16,7 @@ title: Confluence on Fedora 13
 
 
 
-[Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Fedora 13 Linux VPS. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
+[Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Fedora 13 Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
 
 Set the Hostname
 ----------------
@@ -244,7 +244,7 @@ If you elected to install the example site, you'll be greeted with a screen rese
 
 [![Confluence example site home page.](/docs/assets/348-confluence-config-07-large.png)](/docs/assets/348-confluence-config-07-large.png)
 
-Congratulations! You've successfully installed Confluence on your Fedora 13 Linux VPS.
+Congratulations! You've successfully installed Confluence on your Fedora 13 Linode.
 
 More Information
 ----------------

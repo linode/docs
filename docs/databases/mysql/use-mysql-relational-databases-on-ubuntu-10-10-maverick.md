@@ -4,8 +4,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
-keywords: 'mysql ubuntu 10.10,mysql maverick,mysql ubuntu,mysql on linux,mysql vps'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'mysql ubuntu 10.10,mysql maverick,mysql ubuntu,mysql on linux,mysql Linode'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/ubuntu-10-10-maverick/']
 modified: Monday, October 8th, 2012
 modified_by:
@@ -16,7 +16,7 @@ title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linux VPS. It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 Basic System Configuration
 --------------------------

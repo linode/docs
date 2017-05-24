@@ -4,7 +4,7 @@ author:
     email: ekrout@linode.com
 description: 'Use Vagrant to manage development environments and content on Linode.'
 keywords: 'linode,vagrant,content management,management,automation,development,ruby,vagrantfile,api,apache'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: [ 'web-applications/cloud-storage/dropbox/debian-7.4' ]
 modified: Thursday, June 25th, 2015 
 modified_by:
@@ -22,7 +22,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
 ## Prerequisites
 
-1.  [Install Vagrant](http://www.vagrantup.com/downloads) on your local computer or other workspace.
+1.  [Install Vagrant](https://www.vagrantup.com/downloads.html) on your local computer or other workspace.
 
 2.  Generate an API Key. This will be used to create Linodes based upon your Vagrant profile:
 
@@ -128,7 +128,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
             #Linode Settings
             provider.distribution = 'Ubuntu 14.04 LTS'
             provider.datacenter = 'newark'
-            provider.plan = '1024'
+            provider.plan = '2048'
             provider.label = 'vagrant-ubuntu-lts'
 
           end
@@ -136,7 +136,7 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
         end
         ~~~
 
-    In this instance, a 1GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The `provider.label` is the name that the Linode will show up as in the Linode Manager.
+    In this instance, a 2GB Ubuntu 14.04 LTS Linode is being created in the Newark data center. The `provider.label` is the name that the Linode will show up as in the Linode Manager.
 
     To see more options regarding the vagrant-linode plugin see the documentation on the plugin's [GitHub repository](https://github.com/displague/vagrant-linode).
 

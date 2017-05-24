@@ -3,9 +3,9 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) VPS.'
+description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: 'redmine,redmine ubuntu 9.10,project management software,redmine postgresql,redmine linux'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:

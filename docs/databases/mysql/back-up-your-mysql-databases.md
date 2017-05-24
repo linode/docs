@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Instructions for backing up MySQL databases using various methods.'
 keywords: 'mysql,backup,mysqldump'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/backup-options/']
 modified: Wednesday, September 11th, 2013
 modified_by:
@@ -20,6 +20,8 @@ external_resources:
 ---
 
 MySQL is an open source relational database management system (DBMS) which is frequently deployed in a wide assortment of contexts. Most frequently it is deployed as part of the [LAMP Stack](/docs/lamp-guides). The database system is also easy to use and highly portable and is, in the context of many applications, extremely efficient. As MySQL is often a centralized data store for large amounts of mission critical data, making regular backups of your MySQL database is one of the most important disaster recovery tasks a system administrator can perform. This guide addresses a number of distinct methods for creating back ups of your database as well as restoring databases from backups.
+
+![Back Up Your MySQL Databases](/docs/assets/back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
 Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 

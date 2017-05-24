@@ -3,15 +3,15 @@ deprecated: true
 author:
   name: Amanda Folson
   email: docs@linode.com
-description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) VPS.'
+description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) Linode.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/']
 modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
 published: 'Wednesday, May 19th, 2010'
-title: 'Manage an Ubuntu 10.04 (Lucid) VPS with ISPConfig'
+title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 ---
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
@@ -94,7 +94,7 @@ This script will configure services that you installed above to be monitored and
 
 Once it has completed, you may login to the control panel. By default, ISPConfig runs on port 8080, so you may find it at `http://12.34.56.78:8080/`. Replace `12.34.56.78` with your Linode's IP. The default login uses "admin" as the username and "admin" as the password. You will want to change these to prevent someone from accessing your system.
 
-Congratulations! You now have ISPConfig installed on your Ubuntu 10.04 (Lucid) VPS. You are highly encouraged to see the links in the "More Information" section to help you install extra applications that may help you manage your system better. Additionally, we highly recommend becoming familiar with our [SFTP guides](/docs/networking/file-transfer), as you'll need to use this method for uploading files to your Linode.
+Congratulations! You now have ISPConfig installed on your Ubuntu 10.04 (Lucid) Linode. You are highly encouraged to see the links in the "More Information" section to help you install extra applications that may help you manage your system better. Additionally, we highly recommend becoming familiar with our [SFTP guides](/docs/networking/file-transfer), as you'll need to use this method for uploading files to your Linode.
 
 Monitor for Software Updates and Security Notices
 -------------------------------------------------

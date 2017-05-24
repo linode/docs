@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
 keywords: 'redis fedora 14,redis,nosql,database,key-value store'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/redis/fedora-14/']
 modified: Tuesday, September 24th, 2013
 modified_by:

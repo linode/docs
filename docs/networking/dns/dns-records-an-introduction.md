@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
 modified: Tuesday, January 20, 2015
 modified_by:
@@ -19,6 +19,8 @@ external_resources:
 ---
 
 The Domain Name System (DNS) is the Internet's address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like `example.com` to IP addresses like `12.34.56.78` or `0123:4567:89ab:cdef:0123:4567:89ab:cdef`. This guide introduces basic DNS concepts and the different types of DNS records.
+
+![DNS Records: an Introduction](/docs/assets/dns-records-an-introduction.png "DNS Records: an Introduction")
 
 ##How DNS Works
 

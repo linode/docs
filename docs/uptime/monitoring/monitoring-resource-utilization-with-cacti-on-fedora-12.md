@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on Fedora 12.'
 keywords: 'Cacti,Fedora,Monitoring,SNMP'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/cacti/fedora-12/']
 modified: Tuesday, October 1st, 2013
 modified_by:

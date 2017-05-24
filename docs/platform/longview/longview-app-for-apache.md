@@ -4,13 +4,17 @@ author:
   email: docs@linode.com
 description: Longview App for Apache
 keywords: 'Longview, Apache, statistics, mod\_status'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/longview-for-apache/']
 modified: Monday, January 6th, 2014
 modified_by:
   name: Linode
 published: 'Monday, November 4th, 2013'
 title: Longview App for Apache
+external_resources:
+ - '[cPanel Products News](https://news.cpanel.com/category/products/)'
+ - '[cPanel Security News](https://news.cpanel.com/category/security/)'
+ - '[Unix Toolbox](http://cb.vu/unixtoolbox.xhtml)'
 ---
 
 Longview for Apache is a Longview App. The Longview Apache tab appears in the Linode Manager when Longview detects that you have Apache installed on your Linode. With the Longview Apache App, you'll be able to view statistics for Apache on your Linode. It can help you keep track of Apache's settings, workers and requests, system resource consumption, and other information.
@@ -229,6 +233,16 @@ To fix this, follow these steps:
             SetHandler server-status
         ~~~
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
+
+    #####On cPanel/WHM
+
+    To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following: 
+
+    {: .file}
+    /etc/linode/longview.d/Apache.conf
+    :   ~~~
+        location http://localhost/whm-server-status?auto
+        ~~~
 
 4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:

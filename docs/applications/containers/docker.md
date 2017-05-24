@@ -5,7 +5,7 @@ author:
   email: docs@linode.com
 description: 'An overview of Installing Docker, with an example use case for Nginx'
 keywords: 'docker, ubuntu, 12.04, centos, container'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['containers/docker/']
 modified: Tuesday, January 28th, 2014
 modified_by:

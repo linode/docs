@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use TLS/SSL to Provide Transport Layer Encryption for HTTP Connections with Nginx.'
 keywords: 'ssl,tls,nginx,https,secure http,encryption for HTTP,SSL certificates with Nginx,certificate signing request'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/']
 modified: Tuesday, June 10th, 2014
 modified_by:
@@ -51,7 +51,7 @@ If you wish to use a 2048-bit certificate, add the following option to the above
 
     -newkey rsa:2048
 
-This produces a self-signed certificate that is valid for 365 days. You you may wish to increase this value in the command above. During this process, you will be asked several questions. Provide information that reflects your organization and server, as shown below. Specify the FQDN (fully qualified domain name) for your server in the "Common Name" entry as this certificate will be used for generic SSL service.
+This produces a self-signed certificate that is valid for 365 days. You may wish to increase this value in the command above. During this process, you will be asked several questions. Provide information that reflects your organization and server, as shown below. Specify the FQDN (fully qualified domain name) for your server in the "Common Name" entry as this certificate will be used for generic SSL service.
 
     Generating a 1024 bit RSA private key
     ...................................++++++

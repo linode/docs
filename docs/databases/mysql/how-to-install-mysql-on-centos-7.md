@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Getting started with MySQL on CentOS 7'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, August 27th, 2015
 modified_by:
   name: Linode
@@ -21,6 +21,8 @@ external_resources:
 MySQL is a popular database management system used for web and server applications. However, MySQL is no longer in CentOS's repositories and MariaDB has become the default database system offered. MariaDB is considered a [drop-in replacement ](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/) for MySQL and would be sufficient if you just need a database system in general. See our [MariaDB in CentOS 7](/docs/databases/mariadb/how-to-install-mariadb-on-centos-7) guide for installation instructions.
 
 If you nonetheless prefer MySQL, this guide will introduce how to install, configure and manage it on a Linode running CentOS 7.
+
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
 
 {: .note}
 >
@@ -127,14 +129,14 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         create database testdb;
         create user 'testuser'@'localhost' identified by 'password';
         grant all on testdb.* to 'testuser' identified by 'password';
-    
+
     You can shorten this process by creating the user *while* assigning database permissions:
 
         create database testdb;
         grant all on testdb.* to 'testuser' identified by 'password';
 
 2.  Then exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -149,7 +151,7 @@ The standard tool for interacting with MySQL is the `mysql` client which install
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

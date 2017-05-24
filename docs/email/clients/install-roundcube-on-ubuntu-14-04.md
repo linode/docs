@@ -4,7 +4,7 @@ author:
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
 keywords: 'Roundcube,webmail,email,Ubuntu,Postfix,Dovecot'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, February 1st, 2016'
 modified: 'Monday, February 1st, 2016'
 modified_by:
@@ -29,7 +29,7 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) tutorial, but you **can** use a different mail server.
 
-4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](docs/networking/dns/introduction-to-dns-records) guide if you need help creating this record.
+4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide if you need help creating this record.
 
 5.  Update your server's software packages:
 
@@ -41,7 +41,7 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 ## Linux, Apache, MySQL and PHP (LAMP) Stack
 
-This section will cover installing Apache, MySQL, PHP and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the section for [Creating an Apache Virtual Host with SSL](docs/email/clients/installing-roundcube-on-ubuntu-14-04#creating-an-apache-virtual-host-with-ssl).
+This section will cover installing Apache, MySQL, PHP and SSL on your Linode from scratch. If you already have a functioning LAMP stack, skip ahead to the section for [Creating an Apache Virtual Host with SSL](#create-an-apache-virtual-host-with-ssl).
 
 ### Install LAMP Stack Packages
 

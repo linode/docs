@@ -1,10 +1,11 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 12.04 (Lucid).'
 keywords: 'prosody,prosody ubuntu,prosody.im,xmpp,real time messaging,lua'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/prosody/ubuntu-12-04-precise-pangolin/']
 modified: Wednesday, October 3rd, 2012
 modified_by:
@@ -29,7 +30,7 @@ The developers of Prosody provide software repositories for Debian and Ubuntu to
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
-    deb http://packages.prosody.im/debian lucid main
+    deb http://packages.prosody.im/debian precise main
     ~~~
 
 Now, to download the public key for the Prosody package repository, issue the following `wget` command. You may need to install `wget` first by running `apt-get install wget`. This will allow you to authenticate and verify packages:
@@ -45,7 +46,7 @@ Issue the following command to refresh the package database:
 
 With the proper repository enabled, we're now ready to install the Prosody server. Use the following command:
 
-    apt-get install prosody liblua5.1-sec0
+    apt-get install prosody lua-sec-prosody
 
 When `apt` finishes, the Prosody server will have been successfully installed (with support for TLS/SSL), and will be ready for configuration. Prosody provides an init script that allows you to reload the configuration file, start, stop, or restart the XMPP server. Issue one of the following commands as appropriate:
 

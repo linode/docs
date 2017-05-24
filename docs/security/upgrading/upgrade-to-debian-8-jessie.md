@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
 keywords: 'debian,upgrade,wheezy,jessie'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, April 29th, 2015
 modified_by:
   name: Alex Fornuto
@@ -13,6 +13,8 @@ title: 'Upgrading to Debian 8 (Jessie)'
 ---
 
 Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. This guide explains how to upgrade your system from Debian 7 (Wheezy) to Debian 8.
+
+Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possiblity of something not working out as planned. This is one reason why backing up your data is so important.
 
 {: .note }
 > If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](https://www.linode.com/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4) guide before continuing.
@@ -122,6 +124,3 @@ Errors about packages that are removed and not purged may be resolved by install
 If the above step does not work for the package you are trying to install, you may purge the package with the following command after **ensuring that you have a backup** of the program's data and configuration:
 
     apt-get remove --purge mysql-server
-
-
-

@@ -1,25 +1,27 @@
 ---
 title:  Linode Platform
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linode-platform/']
 description: 'Learn about everything Linode!'
 featured:
  - linode-beginners-guide.md
- - backup-service.md
+ - linode-backup-service.md
  - accounts-and-passwords.md
- - linode-cli.md
  - linode-images.md
  - linode-managed.md
- - kvm.md
+ - kvm-reference.md
  - package-mirrors.md
  - automating-server-builds.md
  - stackscripts.md
  - billing-and-payments.md
+ - upgrade-to-hourly-billing.md
  - support.md
  - network-helper.md
+ - linode-cli.md
 categories:
+ - migrate-to-linode
  - longview
  - nodebalancer
+ - disk-images
  - api
 ---
-

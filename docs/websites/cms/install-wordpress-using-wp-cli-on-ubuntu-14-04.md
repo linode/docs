@@ -5,11 +5,11 @@ author:
 description: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
 keywords: 'install WP-CLI,ubuntu,wordpress,apache,bash completion,plugin,WP-CLI,themes'
 alias: ['websites/cms/install-and-configure-wordpress-using-wp-cli']
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, March 11th, 2016'
-modified: Friday, March 11th, 2016
+modified: Wednesday, February 15th, 2017
 modified_by:
-    name: Alex Fornuto
+    name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
 contributor:
     name: Navjot Singh
@@ -25,6 +25,8 @@ external_resources:
 
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.
+
+![Install WordPress Using WP-CLI on Ubuntu 14.04](/docs/assets/install-wordpress-using-wpcli-on-ubuntu-14-04.png "Install WordPress Using WP-CLI on Ubuntu 14.04")
 
 This is where WP-CLI, a powerful command line tool with which you can manage WordPress, can help. This tutorial covers how to install WP-CLI and how to perform some common, practical tasks using it.
 
@@ -268,7 +270,7 @@ To uninstall a theme, you can use:
 
 You can update your blog through the following commands:
 
-    www-data wp core update
+    wp core update
     wp core update-db
 
 The first command updates the files. The second one completes the database upgrade.

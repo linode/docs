@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'Use the logrotate tool to manage logfiles.'
 keywords: 'logrotate,log rotation,log files,access logs,linux systems administration,basic systems administration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/logrotate/']
 modified: Tuesday, May 17th, 2011
 modified_by:

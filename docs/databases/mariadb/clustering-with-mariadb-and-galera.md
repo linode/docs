@@ -4,7 +4,7 @@ author:
   email: jstewart@linode.com
 description: 'Configuring a MariaDB Cluster with Galera.'
 keywords: 'mariadb,mysql,highavailability,high availability,HA,cluster,debian,ubuntu'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, February 18th, 2015
 modified_by:
   name: James Stewart

@@ -2,9 +2,9 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Protecting access to your Linux VPS with the arno-iptables-firewall package.'
+description: 'Protecting access to your Linode with the arno-iptables-firewall package.'
 keywords: 'arno-iptables-firewall,Debian firewall,Linux firewall,networking'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['security/firewalls/arno-iptables-debian-5-lenny/']
 modified: Tuesday, October 1st, 2013
 modified_by:
@@ -14,7 +14,7 @@ title: 'Configure a Firewall with Arno Iptables in Debian 5 (Lenny)'
 deprecated: true
 ---
 
-Firewall software is designed to limit access to network resources running on your Linux VPS to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.
+Firewall software is designed to limit access to network resources running on your Linode to authorized parties. Some services, such as a public web server, may be accessible to anyone. Others might be more restricted, such as an SSH daemon for remote system administration.
 
 This guide will help you get the `arno-iptables-firewall` package installed and configured under Debian 5 (Lenny). For purposes of this tutorial, we assume the user is logged in as root via SSH, and that the prerequisite steps in the [getting started guide](/docs/getting-started/) have already been followed.
 
@@ -30,7 +30,7 @@ Issue the following command in your terminal:
 
     apt-get install arno-iptables-firewall
 
-You will be led through a series of configuration dialogs. In the example below, we're assuming your VPS has one public IP address on `eth0` and one private IP address on the alias `eth0:0` (a private IP is not required). Please be sure to refer to the "Remote Access" tab in the Linode Manager for your specific settings.
+You will be led through a series of configuration dialogs. In the example below, we're assuming your Linode has one public IP address on `eth0` and one private IP address on the alias `eth0:0` (a private IP is not required). Please be sure to refer to the "Remote Access" tab in the Linode Manager for your specific settings.
 
 Configuring the Firewall
 ------------------------
@@ -43,7 +43,7 @@ Enter the name of your external network interface. Linodes have `eth0` by defaul
 
 [![arno-iptables-firewall external interface definition](/docs/assets/153-arno-02-iptables-external-interface.png)](/docs/assets/153-arno-02-iptables-external-interface.png)
 
-Enter a list of TCP ports you'd like to be accessible through your Linode's public IP address, separated by spaces. In this example we've specified SSH, SMTP, HTTP, HTTPS, IMAPS and POP3S. You may wish to open additional ports if you run other public services on your VPS.
+Enter a list of TCP ports you'd like to be accessible through your Linode's public IP address, separated by spaces. In this example we've specified SSH, SMTP, HTTP, HTTPS, IMAPS and POP3S. You may wish to open additional ports if you run other public services on your Linode.
 
 [![arno-iptables-firewall open TCP ports definition](/docs/assets/154-arno-03-iptables-open-tcp-ports.png)](/docs/assets/154-arno-03-iptables-open-tcp-ports.png)
 

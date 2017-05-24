@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'A docker quick reference guide or cheat sheet.'
 keywords: 'docker,quick reference,cheat sheet,commands'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, March 30th, 2015
 modified_by:
   name: Linode

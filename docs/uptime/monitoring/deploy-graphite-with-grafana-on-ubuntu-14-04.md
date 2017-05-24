@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Graphite is an enterprise-level monitoring tool renowned for its performance on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to the installation and basic setup of Graphite together with Grafana.'
 keywords: 'graphite,grafana,monitor,monitoring,monitoring tool,analytics'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Wednesday, December 2nd, 2015'
 modified_by:
   name: Sergey Pariev

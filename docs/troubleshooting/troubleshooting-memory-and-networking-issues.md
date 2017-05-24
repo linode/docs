@@ -3,8 +3,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Help with common Linode memory use and networking issues.'
-keywords: 'Linode troubleshooting,VPS troubleshooting,Linux configuration'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'Linode troubleshooting,Linode troubleshooting,Linux configuration'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['troubleshooting/memory-networking/']
 modified: Tuesday, November 19th, 2013
 modified_by:
@@ -17,7 +17,7 @@ Many common issues with Linodes are caused by excessive memory consumption or ne
 
 ## Diagnosing and Fixing Memory Issues
 
-When your VPS is running low on physical memory, it may start to "swap thrash." This means it's attempting to use your swap partition heavily instead of real RAM. We recommend you limit your swap partition size to 256 MB; heavy use of swap in a virtualized environment will cause major performance problems.
+When your Linode is running low on physical memory, it may start to "swap thrash." This means it's attempting to use your swap partition heavily instead of real RAM. We recommend you limit your swap partition size to 256 MB; heavy use of swap in a virtualized environment will cause major performance problems.
 
 ### Determining Free Memory and Swap Activity
 
@@ -29,11 +29,11 @@ You can use the following snippet to see a list of your running processes sorted
 
     ps -eo pmem,pcpu,rss,vsize,args | sort -k 1 -r | less
 
-To see IO activity on your VPS, you may use the following command (you may need to install the `sysstat` package under Debian or Ubuntu first):
+To see IO activity on your Linode, you may use the following command (you may need to install the `sysstat` package under Debian or Ubuntu first):
 
     iostat -d -x 2 5
 
-This will give an extended device utilization report five times at two second intervals. If your VPS is OOMing (running out of memory), Apache, MySQL, and SpamAssassin are the usual suspects.
+This will give an extended device utilization report five times at two second intervals. If your Linode is OOMing (running out of memory), Apache, MySQL, and SpamAssassin are the usual suspects.
 
 ### MySQL Low-Memory Settings
 

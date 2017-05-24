@@ -1,10 +1,11 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
 keywords: 'apache,proxypass,apache on centos,multiple web servers'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/']
 modified: Friday, July 22nd, 2011
 modified_by:
@@ -16,7 +17,7 @@ external_resources:
  - '[Apache HTTP Server Version 2.2 Docs](http://httpd.apache.org/docs/2.2/)'
 ---
 
-In some cases, administrators find that while Apache meets most of their general-purpose web-serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same VPS or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
+In some cases, administrators find that while Apache meets most of their general-purpose web-serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 
 We assume you have followed our [getting started guide](/docs/getting-started/) and already have Apache running on your Linode. If you don't, you may wish to review our [Apache on CentOS 5 guide](/docs/web-servers/apache/installation/centos-5) before proceeding. These steps should be performed as root via a shell session.
 
@@ -72,7 +73,7 @@ We already have a site called "www.firstsite.org" running under Apache as a norm
     </VirtualHost>
     ~~~
 
-The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server were running on another VPS (as with a server that only answers on a back-end, private network), we could just specify that address, instead. For now, we'll enable the site with the following command:
+The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server were running on another Linode (as with a server that only answers on a back-end, private network), we could just specify that address, instead. For now, we'll enable the site with the following command:
 
     /etc/init.d/httpd reload
 

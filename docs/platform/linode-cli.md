@@ -4,9 +4,9 @@ author:
   email: docs@linode.com
 description: 'An introduction to the Linode command line interface.'
 keywords: 'linode cli, command line interface, man pages, api key'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['cli/']
-modified: Monday, June 16th, 2014
+modified: Monday, June 20th, 2016
 modified_by:
   name: Alex Fornuto
 published: 'Monday, January 27th, 2014'
@@ -26,8 +26,6 @@ You can install the Linode CLI on any Mac OS X or Linux computer. You can instal
 
 ### Mac OS X
 
-In this section, you will learn how to install the Mac OS X package for the Linode CLI.
-
 Prerequisites:
 
 -   [Homebrew](http://brew.sh)
@@ -43,11 +41,9 @@ Run the following commands to install the Linode CLI:
 
 ### Debian and Ubuntu
 
-In this section, you will learn how to install the Debian and Ubuntu package for the Linode CLI.
-
 1.  Add the Linode repository to your list:
 
-        sudo bash -c 'echo "deb http://apt.linode.com/ stable main" > /etc/apt/sources.list.d/linode.list'
+        sudo bash -c 'echo "deb http://apt.linode.com/ $(lsb_release -cs) main" > /etc/apt/sources.list.d/linode.list'
 
 2.  Get the Linode GPG key:
 
@@ -61,12 +57,19 @@ In this section, you will learn how to install the Debian and Ubuntu package for
 
         sudo apt-get install linode-cli
 
+### Fedora
+
+linode-cli included in Fedora's standard package database:
+
+    dnf install linode-cli
+
 ### Manual Installation for Linux (All Distros)
 
 In this section, you will learn how to install the Linode CLI manually on any Linux system. Use a package manager, CPAN, [cpanminus](https://github.com/miyagawa/cpanminus), or your preferred method to install the following Perl modules:
 
 -   Crypt::SSLeay
 -   JSON
+-   LWP::Protocol::https
 -   LWP::UserAgent
 -   Mozilla::CA
 -   Try::Tiny
@@ -103,62 +106,71 @@ To start with, most users will want to run the configuration utility:
         $ linode configure
         This will walk you through setting default values for common options.
 
-        Linode Manager user name
-        >> user1
+         Linode Manager user name
+         >> user1
 
-        Linode Manager password for user1
-        >>
+         Linode Manager password for user1
+         >>
 
-        Default distribution when deploying a new Linode or rebuilding an existing one. (Optional)
-        Valid options are:
-           1 - Arch Linux 2013.06
-           2 - Arch Linux 2013.06 32bit
-           3 - CentOS 6.4
-           4 - CentOS 6.5
-           5 - Debian 7 32bit
-           6 - Debian 7.4
-           7 - Debian 7.5
-           8 - Fedora 19
-           9 - Fedora 20
-          10 - Gentoo 2013-11-26
-          11 - Slackware 13.37
-          12 - Slackware 13.37 32bit
-          13 - Slackware 14.1
-          14 - Ubuntu 10.04 LTS
-          15 - Ubuntu 10.04 LTS 32bit
-          16 - Ubuntu 12.04 LTS
-          17 - Ubuntu 13.10
-          18 - Ubuntu 14.04 LTS
-          19 - openSUSE 13.1
-         Choose[ 1-19 ] or Enter to skip>> 18
 
-        Default datacenter when deploying a new Linode. (Optional)
-        Valid options are:
-          1 - atlanta
-          2 - dallas
-          3 - fremont
-          4 - london
-          5 - newark
-          6 - tokyo
-        Choose[ 1-6 ] or Enter to skip>> 5
+         Default distribution when deploying a new Linode or rebuilding an existing one. (Optional)
+         Valid options are:
+           1 - Arch 2017.01.01
+           2 - CentOS 5.6
+           3 - CentOS 6.5
+           4 - CentOS 7
+           5 - Debian 7
+           6 - Debian 8
+           7 - Fedora 24
+           8 - Fedora 25
+           9 - Gentoo 2017-01-05
+          10 - Slackware 13.37
+          11 - Slackware 13.37 32bit
+          12 - Slackware 14.1
+          13 - Slackware 14.2
+          14 - Ubuntu 12.04 LTS
+          15 - Ubuntu 14.04 LTS
+          16 - Ubuntu 16.04 LTS
+          17 - Ubuntu 16.10
+          18 - openSUSE Leap 42.1
+          19 - openSUSE Leap 42.2
+         Choose[ 1-19 ] or Enter to skip>>
 
-        Default plan when deploying a new Linode. (Optional)
-        Valid options are:
-          1 - Linode 1024
-          2 - Linode 2048
-          3 - Linode 4096
-          4 - Linode 8192
-          5 - Linode 16384
-          6 - Linode 32768
-          7 - Linode 49152
-          8 - Linode 65536
-          9 - Linode 98304
-        Choose[ 1-9 ] or Enter to skip>> 2
+         Default datacenter when deploying a new Linode. (Optional)
+         Valid options are:
+           1 - atlanta
+           2 - dallas
+           3 - frankfurt
+           4 - fremont
+           5 - london
+           6 - newark
+           7 - shinagawa1
+           8 - singapore
+           9 - tokyo
+         Choose[ 1-9 ] or Enter to skip>>
 
-        Path to an SSH public key to install when deploying a new Linode. (Optional)
-        >>
+         Default plan when deploying a new Linode. (Optional)
+         Valid options are:
+           1 - Linode 1024
+           2 - Linode 2048
+           3 - Linode 4096
+           4 - Linode 8192
+           5 - Linode 12288
+           6 - Linode 16384
+           7 - Linode 24576
+           8 - Linode 32768
+           9 - Linode 49152
+          10 - Linode 61440
+          11 - Linode 65536
+          12 - Linode 81920
+          13 - Linode 102400
+          14 - Linode 204800
+         Choose[ 1-14 ] or Enter to skip>>
 
-        Config written to /Users/user1/.linodecli/config
+          Path to an SSH public key to install when deploying a new Linode. (Optional)
+          >> /home/user1/.ssh/id_rsa.pub
+
+          Config written to /Users/user1/.linodecli/config
 
 Once the CLI has your Linode Manager username and password, it will generate and use a new API key automatically.
 
@@ -186,20 +198,20 @@ The Linode CLI requires your API key to function. If you need to generate an API
     {: .file-excerpt }
     .linodecli/config
     :   ~~~
-        ... api-key SampleKey123456 ...
+        api-key SampleKey123456...
         ~~~
 
 -   As an environment variable:
 
-        LINODE_API_KEY=SampleKey123456
+        LINODE_API_KEY=SampleKey123456...
 
 -   Passed directly in the command:
 
-        linode --api-key SampleKey123456
+        linode --api-key SampleKey123456...
 
-If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will automatically have access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command when you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
+If you add your API key in the `.linodecli/config` file, or if you set it as an environment variable, the Linode CLI will have persistent access to your account. If you don't save or set the API key beforehand, you will have to enter it in the command whenever you use the CLI. The `--api-key` option should come at the end of the command. For example, your command would look like:
 
-    linode options --api-key SampleKey123456
+    linode options --api-key SampleKey123456...
 
 ### Multiple Users
 
@@ -215,7 +227,7 @@ Invoke the CLI by prefacing your commands with `linode`. Make sure the `linode-c
 
     linode [object] [action] [action-options...] [options...]
 
-If no object is given, the **linode** object is assumed. Available objects:
+If no object is given, the **linode** object is assumed. Available objects include:
 
     linode
     domain
@@ -250,7 +262,7 @@ Listing Linodes:
 
 Creating a new Linode:
 
-    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label>
+    linode create <linode-label> --location <data center> --plan <linodeXXXX> --payment-term <X> --distribution "<Distribution>" --group <group-label> --stackscript "<stackscript-label>"
 
 Restarting a Linode:
 
@@ -276,15 +288,20 @@ To view available [Linode plan sizes](https://www.linode.com/pricing/) for the `
 
 Choose from the options below:
 
--   Linode 1024
--   Linode 2048
--   Linode 4096
--   Linode 8192
--   Linode 16384
--   Linode 24576
--   Linode 32768
--   Linode 40960
--   Linode 98304
+- Linode 1024
+- Linode 2048
+- Linode 4096
+- Linode 8192
+- Linode 12288
+- Linode 16384
+- Linode 24576
+- Linode 32768
+- Linode 49152
+- Linode 61440
+- Linode 65536
+- Linode 81920
+- Linode 102400
+- Linode 204800
 
 #### --location options
 
@@ -295,12 +312,15 @@ To view available data centers for new Linodes for the `--location` option, use 
 
 Choose from the options below:
 
--   atlanta
--   dallas
--   fremont
--   london
--   newark
--   tokyo
+- atlanta
+- dallas
+- frankfurt
+- fremont
+- london
+- newark
+- shinagawa1
+- singapore
+- tokyo
 
 #### --distribution options
 
@@ -311,25 +331,25 @@ To view available distributions for new Linodes for the `--distribution` option,
 
 Choose from the options below:
 
--   Arch Linux 2013.06
--   Arch Linux 2013.06 32bit
--   CentOS 6.4
--   CentOS 6.5
--   Debian 7 32bit
--   Debian 7.4
--   Debian 7.5
--   Fedora 19
--   Fedora 20
--   Gentoo 2013-11-26
--   Slackware 13.37
--   Slackware 13.37 32bit
--   Slackware 14.1
--   Ubuntu 10.04 LTS
--   Ubuntu 10.04 LTS 32bit
--   Ubuntu 12.04 LTS
--   Ubuntu 13.10
--   Ubuntu 14.04 LTS
--   openSUSE 13.1
+- Arch 2017.01.01
+- CentOS 5.6
+- CentOS 6.5
+- CentOS 7
+- Debian 7
+- Debian 8
+- Fedora 24
+- Fedora 25
+- Gentoo 2017-01-05
+- Slackware 13.37
+- Slackware 13.37 32bit
+- Slackware 14.1
+- Slackware 14.2
+- Ubuntu 12.04 LTS
+- Ubuntu 14.04 LTS
+- Ubuntu 16.04 LTS
+- Ubuntu 16.10
+- openSUSE Leap 42.1
+- openSUSE Leap 42.2
 
 ### Domains
 
@@ -407,11 +427,10 @@ Sample output:
 
     managed: yes
     balance: $ 0.00
-    transfer pool: 6732.00GB 
+    transfer pool: 6732.00GB
     transfer used: 13.02GB
     transfer billable: 0.00GB
     billing method: prepay
-
 
 To see all the available options, check the man pages:
 

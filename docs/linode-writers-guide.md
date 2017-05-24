@@ -3,10 +3,10 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
-keywords: 'writing,open source software,contribute linode library, submissions,linode guides and tutorials,guides,tutorials'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'writing,open source software,contribute linode docs, submissions,linode guides and tutorials,guides,tutorials'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['contribute/']
-modified: Wednesday, January 13th, 2016
+modified: Tuesday, December 20th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, May 19th, 2014'
@@ -17,6 +17,16 @@ external_resources:
 ---
 
 Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
+
+## Update
+
+Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
+
+As a four-person team responsible for both internally and externally sourced docs, we're in a bit over our collective head. That's why - until further notice - we're no longer accepting new submissions for the Linode bounty program. Any new guides submitted, whether through GitHub or email, will be rejected without review.
+
+Rest assured, this is a temporary moratorium. Once we've cleared through the backlog and given the appropriate time and consideration (and, hopefully, payout) to the authors already patiently waiting, we'll resume the bounty program and with it, introduce a revised set of topic requirements. Further updates will be posted here or on our [Github page](https://github.com/linode/docs).
+
+Please note, if you see the need for a correction in an existing guide, feel free to make a pull request. We still want to improve and update our existing guides, even as we review new ones.
 
 ## Content Guidelines
 
@@ -86,7 +96,7 @@ As much as we would like to support all writers, we can not accept every guide w
 
 ## Contributed Guides
 
-Here are some examples of exceptional community-contributed guides. Use these as gudielines for your own submission.
+Here are some examples of exceptional community-contributed guides. Use these as guidelines for your own submission.
 
 [Install Odoo 9 ERP on Ubuntu 14.04](/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
 

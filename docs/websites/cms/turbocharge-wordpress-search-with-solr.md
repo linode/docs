@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'Turbocharge your WordPress blog search using Solr search engine.'
 keywords: 'wordpress,search,solr,ubuntu,debian'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Karthik Shiraly
     link: https://twitter.com/pathbreaksoft

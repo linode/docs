@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide provides an introduction to rsync, the incremental file transfer utility.'
 keywords: 'rsync,unix,liunx,samba,utilities,backup'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/rsync/']
 modified: Friday, August 31st, 2012
 modified_by:
@@ -20,7 +20,7 @@ external_resources:
 
 There are many great tools and workflows that can be implemented using rsync. This includes deploying updated content from a development machine to production hosts, backing up files to a remote file server, and keeping two production servers synchronized. You can even use rsync to [migrate servers to Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from other providers.
 
-This document provides an introductory overview of rsync along with example applications of rsync. We assume you've already reviewed our [getting started guide](/docs/getting-started/), and that you're logged into your Linode VPS as root via SSH.
+This document provides an introductory overview of rsync along with example applications of rsync. We assume you've already reviewed our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
 ## Installing Rsync
 

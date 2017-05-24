@@ -4,8 +4,8 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on CentOS 5.'
-keywords: 'MySQL on Linux,MySQL CentOS,MySQL VPS'
-license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
+keywords: 'MySQL on Linux,MySQL CentOS,MySQL Linode'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/centos-5/']
 modified: Wednesday, January 22nd, 2014
 modified_by:
@@ -16,7 +16,7 @@ title: Use MySQL Relational Databases on CentOS 5
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linux VPS. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a CentOS 5 Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 System Configuration
 --------------------
