@@ -104,7 +104,6 @@ The ca-certificates package comes with a bundle of root certs located under `/et
 -   [Verisign](https://knowledge.verisign.com/support/ssl-certificates-support/index.html)
 -   [Thawte](http://www.thawte.com/roots/index.html)
 -   [Globalsign](http://www.globalsign.com/en//)
--   [Comodo](https://support.comodo.com/index.php?_m=downloads&_a=view&parentcategoryid=1&pcid=0&nav=0)
 
 ## Add Your Root Certificate to the CA Bundle
 
