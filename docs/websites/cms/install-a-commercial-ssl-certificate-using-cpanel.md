@@ -6,46 +6,59 @@ description: 'Generate a CSR and install a commercial SSL certificate through th
 keywords: 'cpanel, ssl, ip'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/cpanel/ssl-on-cpanel/']
-modified: Friday, March 9th, 2012
+modified: Friday, April 28th, 2017
 modified_by:
-  name: Linode
+  name: Jonathan Chun
 published: 'Tuesday, September 27th, 2011'
 title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
- - '[cPanel Home Page](http://cpanel.net)'
- - '[cPanel Support](http://cpanel.net/support.html)'
+ - '[cPanel Home Page](https://cpanel.com)'
+ - '[cPanel Support](https://cpanel.com/support)'
+ - '[cPanel Documentation](https://documentation.cpanel.net)'
 ---
 
-[cPanel](http://cpanel.net) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your server using cPanel. These instructions should be done through your root WHM interface.
+[cPanel](https://cpanel.com/) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will show you how to install SSL certificates on your Linode using cPanel, through the cPanel interface. This guide was made on a cPanel server using the default *paper_lantern* theme.
+
+## Before You Begin
+
+1.  This guide requires that you have cPanel/WHM installed and configured on your system. If you do not have it installed, follow our instructions on how to [Install cPanel on CentOS](/docs/websites/cms/install-cpanel-on-centos).
+
+2.  You should have a cPanel account created. If you have not created an account yet, reference the cPanel Documentation to learn how to [Create a New Account](https://documentation.cpanel.net/display/ALD/Create+a+New+Account).
+
+
+When you're ready to proceed, log into your cPanel account, go to the **Security** section, and click on **SSL/TLS**.
+
+[![cPanel SSL/TLS section.](/docs/assets/SSLTLS-scaled.png)](/docs/assets/SSLTLS.png)
 
 ## Create a Certificate Signing Request
 
-You will need a Certificate Signing Request to obtain an SSL certificate from any issuer. To generate your CSR, log into WHM as root, go to the SSL/TLS section, and click on "Generate an SSL Certificate and Signing Request." On the next page, you will need to fill out the form with your information as requested and click on the "Create" button at the bottom:
+You will need a Certificate Signing Request to obtain an SSL certificate from any issuer. To generate your CSR, click on **Generate, view, or delete SSL certificate signing requests**. On this page, you will need to fill out the form with your information as requested and click on the **Create** button at the bottom:
 
-[![cPanel CSR form.](/docs/assets/815-CSR.png)](/docs/assets/815-CSR.png)
+[![cPanel CSR form.](/docs/assets/CSR-scaled.png)](/docs/assets/CSR.png)
 
-Make sure you enter an email address at the bottom in the "Contact Info" section so you will get the CSR and key emailed to you. After you generate your CSR, you can contact your SSL issuer of choice to obtain a certificate.
+After you submit the CSR form, you will see several different sections. The ones you will need are:
+
+- **Encoded Certificate Signing Request**: This is your CSR.
+- **Encoded Key**: This is the private key that you will need to install the certificate once generated.
+
+With this information on hand, you can contact the certificate authority of choice to obtain a certificate. Some certificate authorities include:
+- [Verisign](http://www.verisign.com/)
+- [GeoTrust](https://www.geotrust.com/)
+- [Comodo](https://www.comodo.com/)
+- [DigiCert](https://www.digicert.com/)
+- [Thawte](https://www.thawte.com/)
 
 ## Install a Commercial SSL Certificate
 
-Once you have obtained an SSL certificate from your issuer of choice, you can proceed to the installation. If you are not installing the certificate on your main IP, continue with this section. If you do need to install a certificate on your main IP, skip down to the next section, "Installing a SSL on your Main IP."
+Once you have obtained an SSL certificate from your issuer of choice, you can proceed to the installation by clicking **Manage SSL sites**. On this page, you will need to scroll down and select the domain you wish to install an SSL certificate on.
 
-To install your SSL certificate, the domain you are installing it to must have its own IP address that is not currently being used by another domain for SSL. You can change the IP assigned to your domain through your root WHM's "IP Functions" section under the "Change a Site's IP Address" area. On the "Change a Site's IP Address" page, select the domain you are installing the certificate on and click the "Change" button at the bottom. On the next page, you will be able to select a new IP for the domain. If IPs are being used by other domains on the server, they will be grayed out and marked "(dedicated to DOMAIN)." Once you select the new IP, you will be able to install your SSL certificate.
+[![cPanel Install SSL form.](/docs/assets/InstallSSL-scaled.png)](/docs/assets/InstallSSL.png)
 
-You will now need to go to the SSL/TLS section and click on "Install an SSL Certificate and Setup the Domain." On this page, you will need to paste the contents of your .crt file into the top box. When you click outside the box, it will autofill the domain, user, and IP address as shown here:
+Paste the contents of your `.crt` file into the top box. Next, paste the encoded key from before into the **Private Key** section. Finally, if your Certificate Authority (SSL Issuer) provided you with intermediate certificates (usually a `.cabundle` file), paste the contents of that file into the final box labeled **Certificate Authority Bundle**.
 
-[![cPanel SSL install form.](/docs/assets/821-Install-userb.png)](/docs/assets/821-Install-userb.png)
+Click on **Install Certificate**, and cPanel will automatically install your certificate and configure SNI as necessary. The process can take a few minutes, so don't worry if it doesn't complete instantly. On occasion, the installation bar will hang and not complete even after several minutes. In this case, simply refresh the page and you should see that the certificate has been installed.
 
-After you verify the domain, user, and IP are correct, just click the "Submit" button at the top of the box. Your domain may need a bit of time to propagate for the new IP, but you should be able to check the SSL installation through the IP as well, using `https://12.34.56.78`, where `12.34.56.78` is the IP address of your Linode.
-
-## Install a Commercial SSL Certificate on your Main IP
-
-Installing an SSL certificate on your cPanel server's main IP requires a slight adjustment from the method described above. In the SSL installation form, switch the username from the domains actual username to "nobody" as shown here:
-
-[![cPanel SSL install form.](/docs/assets/822-Install-nobodyb.png)](/docs/assets/822-Install-nobodyb.png)
-
-Note: If you enabled suPHP during your EasyApache configuration, you will need to use a certificate for your hostname. If you try to use this method with a user's website, it will require other modifications that will essentially break your users' access to their own files.
 
 ## Troubleshooting
 
-Some people experience problems after installing SSL certificates using cPanel. If your server is returning a `500 Internal Server Error`, please see [this post in the cPanel forums](http://forums.cpanel.net/f5/ssl-cert-500-internal-server-error-162653.html) for additional information.
+In general, this process is very straightforward and should not result in any complications. If something does go wrong, the best place to get help would be either at the [cPanel Forums](https://forums.cpanel.net/) or by contacting [cPanel Support](https://cpanel.com/support) directly.
