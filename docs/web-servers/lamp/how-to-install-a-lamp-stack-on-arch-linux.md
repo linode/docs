@@ -2,15 +2,15 @@
 author:
     name: Alex Fornuto
     email: afornuto@linode.com
-description: 'Creating a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered Linode.'
+description: 'A simple tutorial on installing a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered server.'
 keywords: 'arch lamp,arch lamp stack,lamp linux,arch linode,arch linux lamp,arch linux,arch,lamp,lamp stack,apache,mysql,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/']
+alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/','web-servers/lamp/lamp-server-on-arch-linux/']
 modified: Monday, December 7th, 2015
 modified_by:
     name: Alex Fornuto
 published: 'Monday, October 7th, 2013'
-title: LAMP Server on Arch Linux
+title: How to Install a LAMP Stack on Arch Linux
 external_resources:
  - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -18,6 +18,8 @@ external_resources:
  - '[Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
+
+# Install and Configure LAMP (Linux, Apache, MySQL, PHP) on an Arch Linux Server
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack an Arch Linux server.
 
