@@ -47,11 +47,11 @@ When using your BIND install on cPanel as your master nameserver and the Linode 
 
 -   `ns1.example.com`
 -   `ns2.example.com`
--   `ns1.linode.com`
--   `ns2.linode.com`
--   `ns3.linode.com`
--   `ns4.linode.com`
--   `ns5.linode.com`
+-   `axfr1.linode.com`
+-   `axfr2.linode.com`
+-   `axfr3.linode.com`
+-   `axfr4.linode.com`
+-   `axfr5.linode.com`
 
 The DNS changes can take up to 48 hours to propagate.
 
