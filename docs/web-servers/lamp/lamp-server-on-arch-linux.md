@@ -218,11 +218,12 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
     /etc/httpd/conf/httpd.conf
     :   ~~~ conf
         # Dynamic Shared Object (DSO) Support
-        LoadModule php5_module modules/libphp5.so
+        LoadModule php7_module modules/libphp7.so
+        AddHandler php7-script php
 
         # Supplemental configuration
-        # PHP 5
-        Include conf/extra/php5_module.conf
+        # PHP 7
+        Include conf/extra/php7_module.conf
 
         # Located in the <IfModule mime_module>
         AddType application/x-httpd-php .php
