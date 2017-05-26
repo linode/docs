@@ -3,11 +3,12 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'Configuring a highly available WordPress installation.'
-keywords: 'wordpress,mysql,replication,master-master,high availability'
+keywords: 'wordpress,mysql,mariadb,replication,master-master,high availability'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, January 21, 2015
+modified: 'Friday, December 2, 2016'
 modified_by:
   name: James Stewart
+  name: Daniel Aleksandersen
 published: 'Friday, January 9, 2015'
 title: High Availability WordPress Hosting
 ---
@@ -115,9 +116,9 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
 2.  On Server 2, at the MySQL prompt, set up the slave functionality for that database. Replace `x.x.x.x` with the private IP from the first server. Also replace the values for `master_log_file` and `master_log_pos` with the values from the previous step:
 
-        SLAVE STOP;
+        STOP SLAVE;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
-        SLAVE START;
+        START SLAVE;
 
 3.  On Server 2, query the master status. Note the file and position values:
 
@@ -125,11 +126,15 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
 4.  Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2:
 
-        SLAVE STOP;
+        STOP SLAVE;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
-        SLAVE START;
+        START SLAVE;
 
-5.  Exit MySQL on both of your Linodes:
+5. Check that everything is working on both of your Linodes with:
+
+        SHOW SLAVE STATUS\G;
+
+6.  Exit MySQL on both of your Linodes:
 
         exit
 
