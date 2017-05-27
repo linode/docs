@@ -1,0 +1,94 @@
+---
+author:
+    name: Linode Community
+    email: docs@linode.com
+description: 'This Dota2 server guide contains instructions on how to install SteamCMD, download the dedicated server, and launch the game server.'
+keywords: 'dota2, dota 2 server, dota 2 server hosting, steam servers,game servers,games,ubuntu,ubuntu 14.04'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Monday, March 20th, 2017'
+modified: Monday, March 20th, 2017
+modified_by:
+    name: Daksh
+title: 'Launch a Dota 2 server on Ubuntu 14.04'
+contributor:
+    name: Daksh Miglani
+alias: ['applications/game-servers/dota2-server-debian-ubuntu/']
+external_resources:
+ - '[Valve Developer Community - Dota2 Dedicated Servers](https://developer.valvesoftware.com/wiki/Dota2)'
+---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+<hr>
+
+[Dota2](http://store.steampowered.com/app/570) (Dota2) is a competitive game of action and strategy, played both professionally and casually by millions of passionate fans worldwide. Players pick from a pool of over a hundred heroes, forming two teams of five players. In this guide We'll Help you setup SteamCMD, We'll setup the Dota2 Dedicated Server over Ubuntu.
+
+## Before You Begin
+
+1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Dota2](http://store.steampowered.com/app/570/).
+
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+
+{: .note}
+>
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+## Install Dota 2
+
+1.  Be sure you are in the directory `~/Steam`, then access the `Steam>` prompt.
+
+        cd ~/Steam && ./steamcmd.sh
+
+2.  From the SteamCMD prompt, login anonymously:
+
+        login anonymous
+
+    Or log in with your Steam username:
+
+        login user_name
+
+3.  Install Dota2 to the `Steam` user's home directory:
+
+        force_install_dir ./dota2_gameserver
+        app_update 570 validate
+
+    This can take some time. If the download looks as if it has frozen, be patient. Once the download is complete, you should see this output:
+
+        Success! App '570' fully installed.
+
+        Steam>
+
+4.  Exit SteamCMD.
+
+        quit
+
+    {: .note}
+    >
+    >To update Dota 2, run the above 4 commands again.
+
+## Configure the Server
+
+ Now, Lets install MetaMod for Dota-2 to Run Properly.
+    1. Go into Dota 2 Directory
+
+        cd ~/Steam/steamapps/common/dota 2 beta/game/dota
+
+    2. Download the source and extract it:
+
+        wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git952-linux.tar.gz
+        tar -xvf mmsource-1.10.7-git952-linux.tar.gz
+
+    3. As Dota 2 requires a program called srcds to run properly, we'll grab that now:
+
+        wget -O srcds.tar.gz https://forums.alliedmods.net/attachment.php?attachmentid=140208&d=1416970992
+        cd ~/Steam/steamapps/common/dota 2 beta/game/dota
+        tar -xvf srcds.tar.gz
+
+
+
+## Start the Server
+
+Create a `screen session` and start the server inside of it.
+        screen -dmS dota2server "/home/Steam/steamapps/common/dota 2 beta/game/dota/srcds_run -game dota -console"
+
+    You can put that in `/etc/rc.local` to have your Dota 2 server start when your instance boots up. Do that by opening it ( nano /etc/rc.local ), paste the command above and save the file.
