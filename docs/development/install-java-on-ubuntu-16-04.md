@@ -5,18 +5,23 @@ author:
 description: 'Install the Oracle Java development kit'
 keywords: 'oracle,java,JDK,install java,ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, May 22nd, 2014'
-title: Install Java on Ubuntu 16.04
+alias: ['applications/development/install-java-on-ubuntu-16-04/']
+modified: 'Tuesday, May 30th, 2017'
+modified_by:
+  name: Phil Zona
+published: 'Tuesday, May 30th, 2017'
+title: 'Install Java on Ubuntu 16.04'
 contributor:
   name: Phil Zona
   link: https://github.com/pbzona
 external_resources:
  - '[Oracle Java](https://www.oracle.com/java/index.html)'
+
 ---
 
-[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. It can be used to create applications ranging from IoT software to basic web applications, and has consistenly shown to be a high-demand skill in the tech industry.
+[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Java can be used to create anything from software to basic web applications. 
 
-In this guide, we'll learn to install the Oracle Java development kit for building Java applications. We'll also cover OpenJDK, an open-source alternative.
+In this guide, we'll install the Oracle Java development kit for building Java applications. We'll also cover OpenJDK, an open-source alternative to the Oracle Java development kit. 
 
 ## Before You Begin
 
@@ -30,7 +35,7 @@ In this guide, we'll learn to install the Oracle Java development kit for buildi
 
 ## Install Oracle JDK
 
-The Oracle JDK, or *Java Development Kit*, includes a development environment for building applications with the Java programming language. Please be aware that some elements of the Oracle JDK are proprietary, meaning that there may be licensing implications with respect to applications you develop with it.
+The Oracle JDK, includes a development environment for building applications with the Java programming language. Please be aware that some elements of the Oracle JDK are proprietary, meaning that there may be licensing implications with respect to applications you develop with it.
 
 1.  Install the `software-properties-common` package if you don't already have it. This provides an easier way to add new repositories:
 
@@ -58,7 +63,7 @@ The Oracle JDK, or *Java Development Kit*, includes a development environment fo
         java -version
         javac -version
 
-    As of this publication, these commands should return the following, respectively:
+    As of this publication, these commands should return the following:
 
         java version "1.8.0_131"
         Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
@@ -86,13 +91,11 @@ Many applications include code or configuration that references the `JAVA_HOME` 
 
         echo $JAVA_HOME
 
-    This should return the path to the Java binary, which applications can use when executing commands.
+    This should return the path to the Java binary. 
 
 ## OpenJDK
 
-The above installation methods allow you to use the Oracle JDK, which is be bound by licensing terms and includes proprietary components. If you're not careful, this can pose an issue when developing production applications.
-
-Fortunately, OpenJDK provides an open-source alternative that is just as easy to install.
+The above installation methods allow you to use the Oracle JDK, which is be bound by licensing terms and includes proprietary components. OpenJDK provides an open-source alternative that is just as easy to install.
 
 To install OpenJDK:
 
