@@ -1,15 +1,40 @@
-# Update: 07/22/16
+# Become a Linode Community Contributor!
+ 
+Linode is looking for awesome technical writers and subject matter experts to contribute to our comprehensive selection of tutorials about Linux and cloud infrastructure. If you have technical knowledge and the ability to explain things clearly, our editors will help you copy edit and publish your guide to our rich knowledge base with over a million unique page views each month. You may make up to $400 depending on topic difficulty.
+ 
+Simply choose a topic from the list below and submit a writing sample. If we accept your submission after a review, one of our editors will help you get started, and you’ll be on your way. 
+ 
+## List of available topics
 
-Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
+- one
+- two
+- three
 
-As a small team responsible for both internally *and* externally sourced docs, we're in a bit over our collective head. That's why - until further notice - we're no longer accepting new submissions for the Linode bounty program. Any new guides submitted, whether through GitHub or email, after today will be rejected without review.
+## Submit a writing sample
 
-Rest assured, this is a temporary moratorium. Once we've cleared through the backlog and given the appropriate time and consideration (and, hopefully, payout) to the authors already patiently waiting, we'll resume the bounty program and with it, a revised set of topic requirements.
+The quality of the writing sample is the primary way we evaluate Linode Community Contributor applications.
+While you don’t have to be an experienced technical writer, you are the subject matter expert, and your guide should explain the steps and options clearly.
 
-Please note, if you see the need for a correction in an existing guide, feel free to make a pull request. We still want to improve and update our existing guides, even as we review new ones.
+To be considered, submit your sample in one of the following ways:
 
-Write Your Article
-------------------
+1)  Submit the introduction and first two steps of the tutorial you selected from the list above.
+
+2) Submit a technical article (e.g. blog post, tutorial) you’ve written in the past that demonstrates your abilities on a different topic. Please make sure your sample has a similar level of technical content and explanations as the tutorials found in Linode's Guides and Tutorials.
+
+At this time we are only accepting articles written in English. Don’t worry if your language isn’t perfect, we’ll fix that up in the editing stage.
+
+### Include the following information
+
+*  Your full name
+*  Your email (this is for us. It won't be published.)
+*  Topic / Document title
+*  A link to other writing samples or work
+
+### Send it to
+
+Email your application to <contribute@linode.com>
+
+# How to write a good Community Guide
 
 Use the [Linode writers' guide](docs/linode-writers-guide.md). While you're writing, make sure your content is:
 
@@ -17,12 +42,9 @@ Use the [Linode writers' guide](docs/linode-writers-guide.md). While you're writ
 -   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Docs [style guide](docs/linode-writers-formatting-guide.md).
 -   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
-Want to make sure you don't waste time writing a long article we can't use? First, submit a writing sample to <contribute@linode.com>.
+# How to submit your article
 
-Submit Your Article
--------------------
-
-Submit your article as a pull request or by emailing <contribute@linode.com>. Articles should be sent as a plain text or PHP Markdown Extra file attachment. When submitting through GitHub, please create a new branch for your changes. Writing samples are welcome as well.
+Submit your article as a pull request or by email to <contribute@linode.com>. Articles should be sent as a plain text or PHP Markdown Extra file attachment. When submitting through GitHub, please create a new branch for your changes.
 
 Got images? Attach them as **.png** or **.jpg** files. If an image is greater than 650 pixels wide, please send both the original and a 650-pixel-wide version.
 
@@ -46,8 +68,4 @@ Legal Information
 
 COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode’s sole, absolute and unfettered discretion, Linode may make any changes in, deletions from, or additions to the Work.
 
-CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read “This is a Linode Community guide by author 'writer’s name.'”
-
-
-
-
+CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with the Digital Library or otherwise. Credit for the Work shall read “This is a Linode Community guide by 'writer’s name.'”

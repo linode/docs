@@ -18,16 +18,6 @@ external_resources:
 
 Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
-## Update
-
-Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
-
-As a four-person team responsible for both internally and externally sourced docs, we're in a bit over our collective head. That's why - until further notice - we're no longer accepting new submissions for the Linode bounty program. Any new guides submitted, whether through GitHub or email, will be rejected without review.
-
-Rest assured, this is a temporary moratorium. Once we've cleared through the backlog and given the appropriate time and consideration (and, hopefully, payout) to the authors already patiently waiting, we'll resume the bounty program and with it, introduce a revised set of topic requirements. Further updates will be posted here or on our [Github page](https://github.com/linode/docs).
-
-Please note, if you see the need for a correction in an existing guide, feel free to make a pull request. We still want to improve and update our existing guides, even as we review new ones.
-
 ## Content Guidelines
 
 Guides should instruct readers how to accomplish a task on, or relating to, a Linode or Linodes. When writing, think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should consist of about 90% instruction with 10% explanation.
