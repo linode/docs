@@ -12,17 +12,19 @@ published: 'Tuesday, May 23rd, 2017'
 title: How to Use Block Storage with Your Linode
 ---
 
-Linode's block storage service allows additional storage volumes from 20 to 1024 gigabytes. They can be partitioned however you like and can accommodate any filesystem type you choose. They can also be attached to any currently-existing linode so you do not need to recreate your server to add a block storage volume.
+Linode's block storage service allows you to attach additional storage volumes to your linode ranging from 1 to 1024 gigabytes in size. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to four volumes can be attached to a single linode, be it new or currently-existing, so you do not need to recreate your server to add a block storage volume.
 
 Block storage pricing is *****
 
-LImitations **
+{: .note}
+> The Linode backup service does not cover block storage volumes. You should back up this data to your own local storage.
+
 
 ## How to Attach a Block Storage Volume to Your Linode
 
-This guide will use a Linode with the root disk mounted as */dev/sda*, and swap space mounted as */dev/sdb*. In this scenario, the block storage volume will be available to the operating system as */dev/sdc*.
+This guide will use a linode with the root disk mounted as */dev/sda*, and swap space mounted as */dev/sdb*. In this scenario, the block storage volume will be available to the operating system as */dev/sdc*.
 
-1.  Go to your acct in the Manager and select **Manage Volumes**.
+1.  Go to your account in the Linode Manager and select **Manage Volumes**.
 
     [![Linode Manager manage volumes](/docs/assets/bs-manager-manage-volumes-small.png)](/docs/assets/bs-manager-manage-volumes.png)
 
@@ -34,7 +36,7 @@ This guide will use a Linode with the root disk mounted as */dev/sda*, and swap 
 
     [![Linode Manager add volume](/docs/assets/bs-volume-created-but-detached-small.png)](/docs/assets/bs-volume-created-but-detached.png)
 
-   Click **Settings**. This will take you to the Block Storage Volume Settings. The *Attachment* dropdown will say *Detatched*. From that dropdown, select the label of the linode you want to attach this volume to. Then click **Save Changes**. This will return you to the volume list from the previous step.
+   Click **Settings**. This will take you to the Block Storage Volume Settings. The *Attachment* dropdown will say *Detached*. From that dropdown, select the label of the linode you want to attach this volume to. Then click **Save Changes**. This will return you to the volume list from the previous step.
 
     [![Linode Manager add volume](/docs/assets/bs-volume-created-but-detached-small.png)](/docs/assets/bs-volume-created-but-detached.png)
 
@@ -43,13 +45,13 @@ This guide will use a Linode with the root disk mounted as */dev/sda*, and swap 
     [![Linode Manager add volume](/docs/assets/bs-volume-attaching-small.png)](/docs/assets/bs-volume-attaching.png)
 
 
-## Provisioning Your Linode's Block Storage Volume
+## Partitioning Your Linode's Block Storage Volume
 
-With your new block storage volume created and attached to your booted Linode, you now have a raw disk device which needs to be partitioned as you choose and filesystems created.
+With your new block storage volume created and attached to your booted linode, you now have a raw disk device which needs to be partitioned as you choose and filesystems created.
 
-1.  Log into your Linode via SSH or Lish.
+1.  Log into your linode via SSH or Lish.
 
-2.  Identify the device name of the block storage volume. In the case of this example walkthrough, it's */dev/sdc*. It may be different for you depending on the amount of disks you've configured your Linode with.
+2.  Identify the device name of the block storage volume. In the case of this example walkthrough, it's */dev/sdc*. It may be different for you depending on the amount of disks you've configured your linode with.
 
         lsblk
 
@@ -113,10 +115,10 @@ With your new block storage volume created and attached to your booted Linode, y
     {: .file-excerpt}
     /etc/fstab
     :   ~~~ conf
-        /dev/sdc1	/bsvolume	ext4	defaults 0 0
+        /dev/sdc1 /bsvolume ext4  defaults 0 0
         ~~~
 
-5.  Confirm that the volume auto-mounts correctly by rebooting your Linode. When it comes back up, log back in and you should be able to change directory to the volume's location and begin working in it. So for example, our block storage volume was mounted at `/bsvolume` above. We would then:
+6.  Confirm that the volume auto-mounts correctly by rebooting your Linode. When it comes back up, log back in and you should be able to change directory to the volume's location and begin working in it. So for example, our block storage volume was mounted at `/bsvolume` above. We would then:
 
         cd /bsvolume
         touch testfile
@@ -128,13 +130,37 @@ With your new block storage volume created and attached to your booted Linode, y
         lost+found  testfile
 
 
+## How to Unattach a Block Storage Volume from a Linode
+
+1.  Go back to your linode account in the Manager and click **Manage Volumes**.
+
+    [![Linode Manager manage volumes](/docs/assets/bs-manager-manage-volumes-small.png)](/docs/assets/bs-manager-manage-volumes.png)
+
+2.  In the volume list, the status of the volume you want to detach should show as *attached*. Click on the volume's label to go to the *Block Storage Volume Settings* screen.
+
+    [![Linode Manager add volume](/docs/assets/bs-volume-attached-small.png)](/docs/assets/bs-volume-attached.png)
+
+3.  The *Attachment* dropdown will show the label of the linode that the volume is attached to. From that dropdown, select *Detached* at the top of the menu. Then click **Save Changes**. This will return you to the volume list from the previous step.
+
+4.  Under the *Status* heading, you'll see the volume is listed as *detaching*. Click the linode's label under *Attached To* to be taken to its dashboard.
+
+    [![Linode Manager add volume](/docs/assets/bs-volume-detaching-small.png)](/docs/assets/bs-volume-detaching.png)
+
+5.  Reboot the linode to complete the detachment process.
+
+    [![Linode Manager add volume](/docs/assets/bs-volume-detached-small.png)](/docs/assets/bs-volume-detached.png)
+
 
 ## Where to go From Here?
 
 Need ideas for what to do with space? We have several guides which walk you through installing software that would make a great pairing with large storage volumes:
 
-  [Install Seafile with nginx on Ubuntu 16.04](https://linode.com/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604)
+  [Install Seafile with nginx on Ubuntu 16.04](/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604)
 
-  [Install Plex Media Server on Ubuntu 16.04](https://www.linode.com/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04)
+  [Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04)
 
-  ***MOAR!***
+  [Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm)
+
+  [Using Subsonic to Stream Media From Your Linode](/docs/applications/media-servers/subsonic)
+  
+  [Install GitLab on Ubuntu 14.04](/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr)
