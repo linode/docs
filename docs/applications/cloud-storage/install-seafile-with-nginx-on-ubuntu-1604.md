@@ -18,11 +18,14 @@ Seafile is a cross-platform file hosting tool with server applications for Linux
 
 Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend.
 
+![Install Seafile with nginx on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
+
+
+## Prepare Ubuntu
+
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
-## Prepare Ubuntu
 
 1.  Update the system:
 
