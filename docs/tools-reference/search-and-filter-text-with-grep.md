@@ -17,6 +17,9 @@ The `grep` utility provides users of most Unix-like operating systems with a too
 
 This document provides an overview of `grep` usage, accompanied by a number of practical applications of `grep`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference section](/docs/tools-reference/).
 
+![Using Grep](/docs/assets/search_and_filter_text_with_grep_smg.png)
+
+
 ## Using Grep
 
 This `grep` guide references recent versions of `GNU grep`, which are included by default in all images provided by Linode. It is also provided as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
