@@ -6,9 +6,9 @@ Simply choose a topic from the list below and submit a writing sample. If we acc
  
 ## List of available topics
 
-- one
-- two
-- three
+* one
+* two
+* three
 
 ## Submit a writing sample
 
@@ -26,7 +26,7 @@ At this time we are only accepting articles written in English. Don’t worry if
 ### Include the following information
 
 *  Your full name
-*  Your email (this is for us. It won't be published.)
+*  Your email (this is for us. It won't be shared or published.)
 *  Topic / Document title
 *  A link to other writing samples or work
 
@@ -38,9 +38,9 @@ Email your application to <contribute@linode.com>
 
 Use the [Linode writers' guide](docs/linode-writers-guide.md). While you're writing, make sure your content is:
 
--   Accurate. Your instructions should be straightforward and technically sound.
--   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Docs [style guide](docs/linode-writers-formatting-guide.md).
--   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
+*   Accurate. Your instructions should be straightforward and technically sound.
+*   Formatted. Your style should use [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/) formatting and match the Linode Docs [style guide](docs/linode-writers-formatting-guide.md).
+*   Original. Your content should be original material written for Linode. We will not accept submissions that have been copied from other sources.
 
 # How to submit your article
 
@@ -50,9 +50,9 @@ Got images? Attach them as **.png** or **.jpg** files. If an image is greater th
 
 Submission checklist:
 
--   Article in **.txt** or **.md** format
--   Images
--   Your name, as you want it to appear on the site
+*   Article in **.txt** or **.md** format
+*   Images
+*   Your name, as you want it to appear on the site
 
 Once you've submitted your article, here's what you can expect:
 
@@ -63,8 +63,17 @@ Once you've submitted your article, here's what you can expect:
 5.  We will let you know that your article has been chosen for publication and send you the final version we are planning to publish. You will have 36 hours to respond and approve our publication of the final version.
 6.  If you respond positively (non-response will be taken as consent to publish), we will publish the article.
 
-Legal Information
------------------
+# Reasons Your Guide May Be Rejected
+As much as we would like to support all writers, we can not accept every application we receive. Here are some negatives you can eliminate in your work to ensure a strong submission:
+
+*  Not enough content, or lacking original content. For example, if the guide too closely resembles a current guide either by Linode or on another source.
+*  Guide is a duplicate of your own content from your personal blog, wiki submissions or forum posts.
+*  Topic is sufficiently documented in official wikis, manual pages, etc.
+*  Content and formatting guidelines were clearly not followed.
+*  We already have plenty of guides on the topic. Examples: LAMP & LEMP stacks, MySQL.
+*  Inappropriate topic for the Linode Community.
+
+# Legal Information
 
 COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides and Tutorials Repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode’s sole, absolute and unfettered discretion, Linode may make any changes in, deletions from, or additions to the Work.
 

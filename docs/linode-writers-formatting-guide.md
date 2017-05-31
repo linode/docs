@@ -15,11 +15,11 @@ title: Linode Writer's Formatting Guide
 
 This guide provides templates to use when creating or updating a guide for [Linode Docs](/docs).
 
-Submissions that adhere to the following formatting guidelines are more likely to be accepted than those that do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
+[Community submitted guides](https://github.com/linode/docs/blob/master/CONTRIBUTING.md) that adhere to the following formatting guidelines are more likely to be accepted than those that do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be an `.md` file.
+Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be in plain text or an `.md` file.
 
 ### Header
 
