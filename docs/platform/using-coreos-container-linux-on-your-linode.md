@@ -14,16 +14,7 @@ title: Using CoreOS Container Linux on Linode
 
 Container Linux is a Linux distribution which focuses on containerization and ***. The operating system is considered heavily streamlined and minimal compared to traditional distributions like Debian or Ubuntu, but the purpose of this is to **
 
-
-{: .note}
-> The following features can not be used with Container Linux:
->
->  Filesystem and boot helpers.
->
->  Linode Backups.
->
->  The Linode kernel
-
+At this time, Container Linux should be considered experimental and 
 
 
 ## Container Linux Configuration Profile
@@ -34,7 +25,7 @@ When you deploy a Container Linux image from the Linode Manager, you'll notice t
 
 1.  Boot Settings
 
-  Container Linux boots with the Direct Disk setting as opposed to GRUB 2 or any other. Container Linux also must use its own kernel, so will not with any of the Linode kernels.
+  Container Linux boots with the Direct Disk setting as opposed to GRUB 2 or any other. Container Linux also is not compatible with the Linode kernels.
 
 2.  Block Device Assignment
 
@@ -42,15 +33,26 @@ When you deploy a Container Linux image from the Linode Manager, you'll notice t
 
 3.  Filesystem/Boot Helpers
 
-  These are not needed for Container Linux so they are disabled. See our [static networking](https://www.linode.com/docs/networking/linux-static-ip-configuration/#coreos) guide if you wish to configure multiple IP addresses for your Container Linux deployment.
+  These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. See our [static networking](https://www.linode.com/docs/networking/linux-static-ip-configuration/#arch--coreos) guide if you wish to configure multiple IP addresses for your Container Linux deployment.
 
 
 ## Logging into Container Linux
 
-The default user is the *core* user, so you must log in as *core* rather than *root*. Once logged in as *core*, you can change to the root user with full sudo privileges using:
+The default user is the *core* user, so you must log in as *core* rather than *root*. Once logged in as *core*, you can change to the root user with full privileges using:
 
         sudo su - root
 
 ## Automatic Updating
 
 Container Linux has no package manager such as *apt* or *Pacman*, and updates take place automatically. Instead, updates are pushed to the distribution and reboots take place depending on your [reboot strategy](https://coreos.com/os/docs/latest/update-strategies.html). Update checks will take place about 10 minutes after bootup and about every hour afterwards. Should you need to trigger a manual update, see [these instructions](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update) for doing so.
+
+
+## Clustering Multiple Linodes Running Container Linux
+
+
+## Limitations
+
+The following features can not be used with Container Linux:
+
+Filesystem and boot helpers.
+Linode Backups
