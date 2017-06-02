@@ -5,7 +5,7 @@ author:
 description: 'Install the Apache Tomcat Java servlet engine on Ubuntu 16.04 (Xenial Xerus) by following this guide.'
 keywords: 'apache tomcat ubuntu 16.04,tomcat java,java ubuntu 16.04,tomcat ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/frameworks/apache-tomcat-on-ubuntu-16-04/','development/frameworks/apache-tomcat-on-ubuntu-16-04/']
+alias: ['websites/frameworks/apache-tomcat-on-ubuntu-16-04/']
 modified: Monday, May 9th 2016
 modified_by:
   name: Phil Zona
