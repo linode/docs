@@ -7,18 +7,18 @@ Simply choose a topic from the list below and submit a writing sample. If we acc
 ## List of available topics
 
 *  Install and configure SQLite on your server
-*  Tuning MySQL on your server
+*  Tune MySQL on your server
 *  Install and configure Redis on your server
 *  Install and configure Apache Cassandra on Ubuntu
 *  Enable SELinux on Ubuntu/Debian/CentOS
-*  Using Hiera to accelerate Puppet
+*  Use Hiera to accelerate Puppet
 *  Install, set up and use Vagrant to manage VM lifecycles from the command line
 *  Install, configure and use Oracle’s cross-platform virtualization app, Virtualbox
 *  Backup your Postgresql database
 *  Install and run Flask, Python’s web dev framework
 *  Install, configure and run Laravel’s server manager, Forge
-*  SaltStack
-*  ShadowSocks
+*  Install and configure SaltStack Open/Enterprise
+*  Install and configure ShadowSocks and protect your internet traffic
 
 ## Submit a writing sample
 
