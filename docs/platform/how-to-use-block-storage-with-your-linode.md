@@ -14,7 +14,7 @@ title: How to Use Block Storage with Your Linode
 
 Linode's block storage service allows you to attach additional storage volumes to your linode up to 1024 gigabytes. Up to four volumes can be attached to a single new or currently existing linode.
 
-Block storage pricing is *****
+Block storage pricing is ****
 
 {: .note}
 > The Linode backup service does not cover block storage volumes. This data should be stored locally for backups. 
