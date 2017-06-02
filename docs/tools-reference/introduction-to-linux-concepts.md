@@ -24,6 +24,8 @@ Linux is a very hands-on operating system. If running Windows is like driving an
 
 This guide is intended to be very beginner-friendly. It takes a Linux 101 approach to explanations for basic concepts. There are a few how-to sections as well, which are intended to get you on your feet with your Linode. At times we'll link off to a different guide that has more details on a particular topic.
 
+![Title graphic](/docs/assets/introduction_to_linux_concepts_smg.png)
+
  {: .note }
 >
 > Everything on a Linux system is case-sensitive. That means that `photo.jpg`, `photo.JPG`, and `Photo.jpg` are all different files. Usernames and passwords are also case-sensitive.

@@ -20,6 +20,8 @@ Unix-like systems, including the Linux systems that run on the Linode platform, 
 
 This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
+![Title graphic](/docs/assets/modify_file_permissions_with_chmod_smg.png)
+
 ## Using Chmod
 
 In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, chmod is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.

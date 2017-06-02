@@ -26,7 +26,7 @@ Verify that the receiving computer has SSH installed. (Most Linux/Unix-like syst
 Before you initiate the transfer, start your Linode in *Rescue Mode* and start SSH by following these guides:
 
 1.  [Start your Linode in Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
-2.  [Connecting to a Linode Running in Rescue Mode via LISH](/docs/networking/using-the-linode-shell-lish/#connecting-to-lish).
+2.  [Connecting to a Linode Running in Rescue Mode via LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
 3.  [Start the SSH server on your Linode](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
 
 ##Copying the Disk

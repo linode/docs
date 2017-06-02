@@ -20,6 +20,8 @@ external_resources:
 
 This document provides an overview of `tar` and `gzip` usage, accompanied by a number of practical applications of these utilities. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference](/docs/tools-reference/) series.
 
+![Title graphic](/docs/assets/archiving_and_compressing_files_with_gnu_tar_and_gnu_zip_smg.png)
+
 ## Using Tar and Gzip
 
 In this guide, `tar` and `gzip` refer to recent versions of "GNU tar" and "GNU gzip" which are included by default in all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
