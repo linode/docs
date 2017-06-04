@@ -60,6 +60,10 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
             quit
 
+-   Install the PHP GD package. This will be necessary for modifying images you upload to your site:
+
+        sudo apt-get install php7.0-gd
+
 ## Install WordPress
 
 1.  Create a directory called `src` under your website's directory to store fresh copies of WordPress's source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
