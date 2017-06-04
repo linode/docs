@@ -84,11 +84,8 @@ Please note that the following steps are performed on your remote location/Linod
 
 3.  Copy the *public key* into the `~/.ssh/authorized_keys` file on the **remote machine**, using the following command. Substitute your own SSH user and host names:
 
-        scp ~/.ssh/id_rsa.pub user@example.com:/home/user/.ssh/uploaded_key.pub
+       $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@example.org
 
-4.  Run the following command to copy the key to the `authorized_keys` file. Substitute your own SSH user and host names:
-
-        ssh user@example.com "echo `cat ~/.ssh/uploaded_key.pub` >> ~/.ssh/authorized_keys"
 
 ### Connecting to the Remote Server
 
