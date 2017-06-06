@@ -33,7 +33,7 @@ If you don't plan on using Java to write programs, the JRE is all you need. In D
 	
 	sudo apt install default-jre
 	
-After the installation finishes, you can verify that the JRE was installed by running `dpkg -s default-jre`. The output will conatin information about the Java installation, some of which is a status line informing that Java is installed:
+After the installation finishes, you can verify that the JRE was installed by running `dpkg -s default-jre`. The output will contain information about the Java installation, some of which is a status line informing that Java is installed:
 	
         Package: default-jre
         Status: install ok installed
