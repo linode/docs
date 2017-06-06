@@ -173,15 +173,19 @@ For these next sections, you need a root shell.
 
         gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
 
-3.  Run the `make-cadir` script to copy over the necessary files from `/usr/share/doc/openvpn/examples/` and create our working directory. Then change location into it:
+3. Install the `easy-rsa` scripts to manage keys and certificates:
+
+        apt-get install easy-rsa
+
+4.  Run the `make-cadir` script to copy over the necessary files from `/usr/share/doc/openvpn/examples/` and create our working directory. Then change location into it:
 
         make-cadir /etc/openvpn/easy-rsa && cd /etc/openvpn/easy-rsa/
 
-4.  Create a symbolic link from `openssl-1.0.0.cnf` to `openssl.cnf`:
+5.  Create a symbolic link from `openssl-1.0.0.cnf` to `openssl.cnf`:
 
         ln -s openssl-1.0.0.cnf openssl.cnf
 
-5.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which do not allow for group or world access to the key and certificate files. For this reason, keep `keys` as the storage location for server credentials by specifying the absolute paths in OpenVPN's `server.conf`.
+6.  The permissions of `/etc/openvpn/easy-rsa/keys` are `0700`, which do not allow for group or world access to the key and certificate files. For this reason, keep `keys` as the storage location for server credentials by specifying the absolute paths in OpenVPN's `server.conf`.
 
     {: .file-excerpt}
     /etc/openvpn/server.conf
@@ -201,7 +205,7 @@ For these next sections, you need a root shell.
         dh /etc/openvpn/dh4096.pem
         ~~~
 
-6.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets used by the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). Here you can specify identification information for your OpenVPN server's certificate authority, which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
+7.  The `vars` file in `/etc/openvpn/easy-rsa` contains presets used by the [easy-rsa scripts](https://github.com/OpenVPN/easy-rsa). Here you can specify identification information for your OpenVPN server's certificate authority, which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
 
     {: .file-excerpt}
     /etc/openvpn/easy-rsa/vars
@@ -217,7 +221,7 @@ For these next sections, you need a root shell.
         export KEY_OU="MyOrganizationalUnit"
         ~~~
 
-7.  From the `easy-rsa`directory, [source](http://stackoverflow.com/a/9326746) the `vars` script:
+8.  From the `easy-rsa`directory, [source](http://stackoverflow.com/a/9326746) the `vars` script:
 
         cd /etc/openvpn/easy-rsa && source ./vars
 
@@ -225,7 +229,7 @@ For these next sections, you need a root shell.
 
         NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys
 
-8.  Run the `clean-all` script to be sure you're starting with no samples or templates in your `keys` folder.
+9.  Run the `clean-all` script to be sure you're starting with no samples or templates in your `keys` folder.
 
         ./clean-all
 
