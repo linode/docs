@@ -10,7 +10,7 @@ modified: Thursday, November 12th, 2015
 modified_by:
     name: Elle Krout
 published: 'Thursday, November 12th, 2015'
-title: Use Puppet Modules to Create A LAMP Stack – Linode
+title: Use Puppet Modules to Create a LAMP Stack
 ---
 
 Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks and improve the module's readability for any future users.
