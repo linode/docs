@@ -65,3 +65,13 @@ The default configuration is to follow the *etcd-lock* strategy if [etcd](https:
 If you find an update has undesirable effects, then you can roll back to the previous Container Linux version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
 
         update_engine_client -check_for_update
+
+
+## Recoevery Mode
+
+Should you need to access your Container Linux disk using Rescue Mode, you'll want to boot as shown in our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`, so to access it, enter:
+
+        mount /dev/sda9 && cd /media/sda9
+
+That will put you at the root of your Container Linux filesystem. For more information on the partition layout of Container Linux, see [here](https://coreos.com/os/docs/latest/sdk-disk-partitions.html).
+
