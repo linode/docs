@@ -2,15 +2,15 @@
 author:
     name: Elle Krout
     email: ekrout@linode.com
-description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera. This guide walks users through the creation of a LAMP stack to learn various techniques for building a working Puppet configuration.'
+description: 'Learn how to efficiently use Puppet modules to manage files and services, create templates, and store data in Hiera in this simple tutorial.'
 keywords: 'puppet,automation,puppet master,puppet agent,modules,server automation,configuration management'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/puppet/create-puppet-module/']
+alias: ['applications/puppet/create-puppet-module/','applications/configuration-management/create-puppet-module/']
 modified: Thursday, November 12th, 2015
 modified_by:
     name: Elle Krout
 published: 'Thursday, November 12th, 2015'
-title: Using Puppet Modules to Create a LAMP Stack
+title: Use Puppet Modules to Create A LAMP Stack – Linode
 ---
 
 Within Puppet, modules are the building blocks of your servers' configurations. Modules install and configure packages, create directories, and generate any other server changes that the user includes in the module. A Puppet module aims to perform all parts of a certain task, such as downloading the Apache package, configuring all files, changing the MPM data, and setting up virtual hosts. Modules are, in turn, broken down into classes that are `.pp` files meant to simplify the module into various tasks and improve the module's readability for any future users.
