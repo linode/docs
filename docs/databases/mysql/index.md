@@ -2,9 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-keywords: 'MySQL,MySQL server,Linux MySQL HOWTO,MySQL guide'
+keywords: 'MySQL,MySQL tutorial,Linux MySQL HOWTO,MySQL guide'
+description: 'Learn how to use, install, configure and perform tasks on database-management platform MySQL in these tutorials.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-title: MySQL
+title: MySQL Tutorials, Installation Guides, Resources – Linode
 featured:
  - deploy-mysql-workbench-for-database-administration.md
  - securely-administer-mysql-with-an-ssh-tunnel.md
@@ -22,4 +23,6 @@ featured:
  - install-mysql-phpmyadmin-on-ubuntu-12-04.md
 ---
 
-MySQL is a popular open source database system, powering thousands of web and server applications. Available in all major Linux distributions, this package provides a high performance storage engine for a wide variety of databases.
+MySQL is a popular open-source database system, powering thousands of web and server applications. Available in all major Linux distributions, this package provides a high-performance storage engine for a wide variety of databases.
+
+# MySQL Tutorials:
