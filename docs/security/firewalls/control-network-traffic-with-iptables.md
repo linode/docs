@@ -661,7 +661,7 @@ You can also use `journalctl -xn` to see that systemd can not load the `loop` mo
 
 To fix this, comment out the line `loop` in `/etc/modules`:
 
-    sed -i 's/loop/#loop/g' /etc/apt/sources.list
+    sed -i 's/loop/#loop/g' /etc/modules
 
 Then restart netfilter-persistent:
 
