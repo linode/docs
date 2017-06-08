@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: Using CoreOS Container Linux on Linode
-keywords: 'block storage, volume, disk, media'
+keywords: 'block storage, volume, disk, media, recovery, finnix'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, May 23rd, 2017
+modified: Thursday, June 8th, 2017
 modified_by:
   name: Linode
-published: 'Tuesday, May 23rd, 2017'
+published: 'Thursday, June 8th, 2017'
 title: Using CoreOS Container Linux on Linode
 ---
 
@@ -21,7 +21,7 @@ At this time, Container Linux is a brand new release on the Linode platform and 
 
 When you deploy a Container Linux image, you'll notice the default settings in the configuration profile are different from those of other distributions.
 
-    [![CoreOS configuration profile](/docs/assets/bs-manager-manage-volumes-small.png)](/docs/assets/bs-manager-manage-volumes.png)
+    [![CoreOS configuration profile](/docs/assets/container-linux-config-profile-small.png)](/docs/assets/container-linux-config-profile.png)
 
 ### Boot Settings
 
@@ -42,18 +42,7 @@ These are not needed for Container Linux, and Network Helper is not compatible s
 
 ## Logging into Container Linux
 
-The default user is the *core* user, so you must log in as *core* rather than *root*.
-
-
-## Accessing the Root User Account
-
-The *root* account is not accessible by default, by console nor by SSH. If you wish to, you must log in as *core* and then assign *root* a password with:
-
-        sudo passwd root
-
-Then you can change to the root user:
-
-        sudo su - root
+The default user is the `core` user, so you must log in as `core` rather than `root`. The `root` user does not have a password assigned to it by default. This is the intended use of Container Linux.
 
 
 ## Updating and Reboot Strategies
@@ -62,12 +51,12 @@ Container Linux has no package manager such as *apt* or *yum*, and in fact the o
 
 The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (i.e., if you are clustering linodes running Container Linux). If not, then the system will reboot immediately after applying the update. For the linode to boot back up automatically, you will want [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) enabled in the Linode Manager.
 
-If you find an update has undesirable effects, then you can roll back to the previous Container Linux version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
+If you find an update has undesirable effects, then you can [roll back](https://coreos.com/os/docs/latest/manual-rollbacks.html) to the previous version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
 
         update_engine_client -check_for_update
 
 
-## Recoevery Mode
+## Recovery Mode
 
 Should you need to access your Container Linux disk using Rescue Mode, you'll want to boot as shown in our [Rescue and Rebuild](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) guide. The root partition is located on `/dev/sda9`, so to access it, enter:
 
@@ -75,3 +64,30 @@ Should you need to access your Container Linux disk using Rescue Mode, you'll wa
 
 That will put you at the root of your Container Linux filesystem. For more information on the partition layout of Container Linux, see [here](https://coreos.com/os/docs/latest/sdk-disk-partitions.html).
 
+
+## Password Resets
+
+If you need to reset the login password to your Container Linux disk image, this must be done in Recovery Mode. Here are the steps to do that:
+
+
+1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode).
+
+2.  Mount the partition /usr/share/oem is attached to so you can edit the Grub configuration:
+
+        mount -o exec /dev/sda6
+
+3.  Add the string to the Grub config:
+
+        echo 'set linux_append="coreos.autologin=ttyS0"' >> /media/sda6/grub.cfg
+
+4.  Reboot into Container Linux. You will automatically be logged in as the `core` user.
+
+5.  Reset your password with:
+
+        sudo passwd core
+
+6.  Remove the line from `grub.cfg` which you added in step 3 above:
+
+        sudo sed -i '$ d' /usr/share/oem/grub.cfg
+
+7. Reboot the linode again and log in with your new password.
