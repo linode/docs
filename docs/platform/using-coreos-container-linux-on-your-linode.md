@@ -16,8 +16,6 @@ CoreOS Container Linux is a distribution which focuses on containerization. The 
 
 Container Linux supports running [Docker](https://coreos.com/os/docs/latest/getting-started-with-docker.html), [Kubernetes](https://coreos.com/kubernetes/docs/latest/) and [rkt](https://coreos.com/rkt) container environments.
 
-Container Linux is a brand new release on the Linode platform and is currently only available through an opt-in test program for the distribution. If you'd like to use Container Linux, open a [support ticket](/docs/platform/support#contacting-linode-support) and ask to be added to the trial. Once you've been added, Container Linux will be accessible from the *Deploy an Image* screen of the Linode Manager.
-
 ## Container Linux Configuration Profile
 
 When you deploy a Container Linux image, you'll notice the default settings in the configuration profile are different from those of other distributions.
@@ -34,7 +32,7 @@ Container Linux does not use a swap space, so while Linode's other distributions
 
 ### Filesystem/Boot Helpers
 
-Because all the options in the Filesystem/Boot Helpers section are not compatible with Container Linux, all should be disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](https://www.linode.com/docs/networking/linux-static-ip-configuration/#arch--coreos) guide if you want to configure static and/or multiple IP addresses for your deployment.
+These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](https://www.linode.com/docs/networking/linux-static-ip-configuration/#arch--coreos) guide if you want to configure static and/or multiple IP addresses for your deployment.
 
 {: .note}
 >
@@ -66,7 +64,7 @@ That will put you at the root of your Container Linux filesystem. For more infor
 
 Recovery Mode must be used to reset the login password to your Container Linux disk image:
 
-1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) using Lish.
+1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) using [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish).
 
 2.  Mount the partition /usr/share/oem is attached to so you can edit the Grub configuration:
 
@@ -76,7 +74,7 @@ Recovery Mode must be used to reset the login password to your Container Linux d
 
         echo 'set linux_append="coreos.autologin=ttyS0"' >> /media/sda6/grub.cfg
 
-4.  Reboot into Container Linux. If using Lish, you will automatically be logged in as the `core` user.
+4.  Reboot into Container Linux. You still want to be in Lish, and you will automatically be logged in as the `core` user.
 
 5.  Reset your password:
 
