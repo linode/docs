@@ -58,7 +58,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). Replace the URL in this example to match the current version:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.11.2/minecraft_server.1.11.2.jar
+        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar
 
     Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
 
@@ -71,7 +71,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms1024M -Xmx1536M -jar minecraft_server.1.11.2.jar -o true
+        java -Xms1024M -Xmx1536M -jar minecraft_server.1.12.jar -o true
         ~~~
 
     {: .note }
@@ -111,7 +111,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
 
-        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.11.2
+        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.12
         [22:00:06] [Server thread/INFO]: Loading properties
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair
