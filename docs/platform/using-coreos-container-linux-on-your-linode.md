@@ -16,6 +16,8 @@ CoreOS Container Linux is a distribution which focuses on containerization. The 
 
 Container Linux supports running [Docker](https://coreos.com/os/docs/latest/getting-started-with-docker.html), [Kubernetes](https://coreos.com/kubernetes/docs/latest/) and [rkt](https://coreos.com/rkt) container environments.
 
+![Linode Beginners Guide](/docs/assets/container-linux-title-graphic.png)
+
 ## Container Linux Configuration Profile
 
 When you deploy a Container Linux image, you'll notice the default settings in the configuration profile are different from those of other distributions.
