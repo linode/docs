@@ -2,17 +2,18 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Using CoreOS Container Linux on Linode
-keywords: 'block storage,volume,disk,media,recovery,finnix'
+description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
+keywords: 'linux containers,docker,CoreOS'
+alias: ['platform/using-coreos-container-linux-on-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, June 8th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, June 8th, 2017'
-title: Using CoreOS Container Linux on Linode
+title: Use CoreOS Container Linux on Linode
 ---
 
-CoreOS Container Linux is a distribution which focuses on containerization. The operating system is heavily streamlined and considered minimal compared to traditional distributions like Debian or Ubuntu. Rather than being part of the host operating system, the runtime or development environment takes place inside a container.
+CoreOS Container Linux is a container-focused distribution, designed for clustered deployments, that provides automation, security, and scalability for applications. The operating system is heavily streamlined and considered minimal compared to traditional distributions, like Debian or Ubuntu. Rather than being part of the host operating system, CoreOS's runtime or development environment takes place inside a Linux container.
 
 Container Linux supports running [Docker](https://coreos.com/os/docs/latest/getting-started-with-docker.html), [Kubernetes](https://coreos.com/kubernetes/docs/latest/) and [rkt](https://coreos.com/rkt) container environments.
 
@@ -40,7 +41,7 @@ These are not needed for Container Linux, and Network Helper is not compatible s
 >
 > The [Linode backup service](/docs/platform/linode-backup-service) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/docs/security/backups/backing-up-your-data).
 
-## Logging into Container Linux
+## Log into Container Linux
 
 The default user is the `core` user, so you must log in as `core` rather than `root`. The `root` user does not have a password assigned to it by default. This is the intended use of Container Linux.
 
@@ -48,7 +49,7 @@ The default user is the `core` user, so you must log in as `core` rather than `r
 
 Container Linux has no package manager such as *apt* or *yum*, and in fact the operating system is not upgraded with individual package updates like most distributions. Instead, entire [system updates](https://coreos.com/why#updates) are pushed to the distribution and the system reboots in accordance with one of three [reboot strategies](https://coreos.com/os/docs/latest/update-strategies.html).
 
-The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the linode to boot back up automatically, you will want [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) enabled in the Linode Manager.
+The default configuration is to follow the *etcd-lock* strategy if [etcd](https://coreos.com/etcd/) is being used (such as if you are clustering Linodes running Container Linux). If not, the system will reboot immediately after applying the update. For the Linode to boot back up automatically, you will want [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) enabled in the Linode Manager.
 
 If you find an update has undesirable effects, [roll back](https://coreos.com/os/docs/latest/manual-rollbacks.html) to the previous version you were using. Update checks will take place about 10 minutes after Container Linux boots and about every hour afterwards. Should you need to trigger a [manual update](https://coreos.com/os/docs/latest/update-strategies.html#manually-triggering-an-update), use:
 
@@ -86,4 +87,4 @@ Recovery Mode must be used to reset the login password to your Container Linux d
 
         sudo sed -i '$ d' /usr/share/oem/grub.cfg
 
-7. Reboot the linode again and log in with your new password.
+7. Reboot the Linode again, and log in with your new password.
