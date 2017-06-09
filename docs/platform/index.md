@@ -12,7 +12,7 @@ featured:
  - kvm-reference.md
  - package-mirrors.md
  - automating-server-builds.md
- - using-coreos-container-linux-on-your-linode.md
+ - use-coreos-container-linux-on-linode.md
  - stackscripts.md
  - billing-and-payments.md
  - upgrade-to-hourly-billing.md
