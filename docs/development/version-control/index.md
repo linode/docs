@@ -1,12 +1,4 @@
 ---
-author:
-  name: Linode
-  email: docs@linode.com
-description: 'Managing software and other content with version control systems.'
-keywords: 'version control,VCS,git,cvs,bazaar,svn'
-license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/']
-published: 'Thursday, July 16th, 2009'
 title: 'Version Control'
 ---
 
