@@ -16,6 +16,8 @@ Linode's block storage service allows you to attach additional storage volumes t
 
 Block storage pricing is *****
 
+![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
+
 {: .note}
 > The Linode backup service does not cover block storage volumes. You should back up this data to your own local storage.
 
