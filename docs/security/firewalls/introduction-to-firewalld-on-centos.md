@@ -36,7 +36,7 @@ earn $250 per published guide.*
 
 ## Installing and Managing FirewallD
 
-FirewallD is included by default with CentOS 7 and Fedora 20+ but it's inactive. Controlling it is the same as with other systemd units.
+FirewallD is included by default with CentOS 7 but it's inactive. Controlling it is the same as with other systemd units.
 
 1.  To start the service and enable FirewallD on boot:
 

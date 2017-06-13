@@ -27,8 +27,8 @@ Before you enable two-factor authentication in the Linode Manager, you should se
 
 -   [Google Authenticator](http://support.google.com/accounts/bin/answer.py?hl=en&answer=1066447) (iPhone/Android/BlackBerry)
 -   [Duo Mobile](http://guide.duosecurity.com/third-party-accounts) (iPhone/Android)
--   [Amazon AWS MFA](http://www.amazon.com/gp/product/B0061MU68M) (Android)
--   [Authomator](http://www.authomator.com/) (BlackBerry 10)
+-   [Amazon AWS MFA](https://aws.amazon.com/iam/details/mfa/) (Android)
+-   [Authomator](https://appworld.blackberry.com/webstore/content/22517879/?lang=en) (BlackBerry 10)
 
 Install one of these applications on your smartphone before continuing.
 
@@ -143,8 +143,8 @@ If you lose your token and get locked out of the Linode Manager, email <support@
 
 Should you need us to disable your Two-Factor Authentication, the following information is required:
 
-1. An image of the front and back of the payment card on file, which clearly shows both the last 6 digits and owner of the card.
-2. An image of the front and back of the matching government-issued photo ID.
+1. An image of the front and back of the payment card currently associated with your account, which clearly shows the last 6 digits, expiration date, and cardholder name.
+2. An image of the front and back of a matching government-issued photo ID.
 
 ## IP Address Whitelisting
 

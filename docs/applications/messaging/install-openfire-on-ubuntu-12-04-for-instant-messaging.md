@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
@@ -35,7 +36,7 @@ OpenJDK will be installed, along with a series of dependencies it requires.
 
 ## Adjust Firewall Settings
 
-If you employ a firewall to specify what ports can be accessed on your VPS, verify that you have the following ports open:
+If you employ a firewall to specify what ports can be accessed on your Linode, verify that you have the following ports open:
 
 -   3478 - STUN Service (NAT connectivity)
 -   3479 - STUN Service (NAT connectivity)

@@ -5,7 +5,7 @@ author:
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday August 24th, 2015
+modified: Friday, March 3rd, 2017
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -13,6 +13,8 @@ title: Getting Started with Linode
 ---
 
 Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
+
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Sign Up
 
@@ -22,7 +24,7 @@ If you haven't already signed up for a Linode account, start here.
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 3.  Select a Linode plan and data center location
 
-    [![Available Linode plans](/docs/assets/linode-manager-select-plan_small.png)](/docs/assets/linode-manager-select-plan.png)
+    ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
 If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
 
@@ -35,7 +37,7 @@ After your Linode is created, you'll need to prepare it for operation by deployi
 The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
 
 * Boot and shut down your virtual server,
-* Access monitoring statistics, 
+* Access monitoring statistics,
 * Update your billing and account information,
 * Request support and perform other administrative tasks.
 
@@ -154,7 +156,7 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 > If you recently rebuilt an existing Linode, you might receive an error message when you try to
 > reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
 >
->To reconnect via SSH, revoke the key for that IP address. 
+>To reconnect via SSH, revoke the key for that IP address.
 >
 >For Linux and Mac OS X:
 >
@@ -176,9 +178,18 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
-### CentOS / Fedora
+{: .note }
+>
+>Ubuntu may prompt you when the Grub package is updated.
+>If prompted, select `keep the local version currently installed`.
+
+### CentOS
 
     yum update
+
+### Fedora
+
+    dnf upgrade
 
 ### Arch Linux
 
@@ -186,12 +197,21 @@ Installing software updates should be performed *regularly*. If you need help re
 
 ### Gentoo
 
-    emerge --sync
-    emerge-webrsync
+    emaint sync
+
+{: .note}
+>emaint is a [plugin](https://gentoo.org/support/news-items/2015-02-04-portage-sync-changes.html) for emerge, so `emerge --sync` is no longer used and that command now just calls `emaint sync`. The sync command uses the `auto` option by default. See [here](https://wiki.gentoo.org/wiki/Project:Portage/Sync#Operation) for more info on what that means and when you may want to change it. For more information on how to use `emaint`, refer to its [man page](https://dev.gentoo.org/~zmedico/portage/doc/man/emaint.1.html).
+
+After running a sync, it may end with a message that you should upgrade Portage using a *--oneshot* emerge comand. If so, run the Portage update. Then update the rest of the system:
+    
+    emerge --uDN @world
 
 ### Slackware
 
-Slackpkg is the easiest way to update Slackware installations. See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for installation and upgrade instructions.
+    slackpkg update
+    slackpkg upgrade-all
+
+See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for more information on package management in Slackware.
 
 ## Setting the Hostname
 
@@ -256,7 +276,7 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
 
 ### Update /etc/hosts
 
-Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS. 
+Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS.
 
 1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
 
@@ -268,7 +288,7 @@ As with the hostname, the domain name part of your FQDN does not necessarily nee
 
 {:.file }
 /etc/hosts
-: ~~~ 
+: ~~~
   127.0.0.1 localhost.localdomain localhost
   203.0.113.10 hostname.example.com hostname
   ~~~
@@ -305,6 +325,22 @@ To set the time zone:
 
     timedatectl set-timezone 'America/New_York'
 
+### Gentoo
+
+View the list of available time zones.
+
+    ls /usr/share/zoneinfo
+
+Write the selected time zone to the `/etc/timezone` file.
+
+*Example (for Eastern Standard Time)*:
+
+    echo "EST" > /etc/timezone
+
+Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` appropriately.
+
+    emerge --config sys-libs/timezone-data
+
 ### All Other Distributions
 
 Manually symlink a zone file in `/usr/share/zoneinfo` to `/etc/localtime`.
@@ -330,4 +366,3 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 ## Next Steps
 
 Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
-

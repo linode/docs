@@ -15,6 +15,8 @@ title: View and Follow the End of Text Files with tail
 
 The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head).
 
+![Title graphic](/docs/assets/view_and_follow_the_end_of_text_files_with_tail_smg.png)
+
 ## Using tail
 
 Consider the following invocation:

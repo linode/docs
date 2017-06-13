@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linux VPS.'
+description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
 keywords: 'openvpn,networking,vpn,ubuntu,ubuntu karmic,ubuntu 9.10'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-9-10-karmic/']

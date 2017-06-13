@@ -7,19 +7,22 @@ featured:
  - linode-beginners-guide.md
  - linode-backup-service.md
  - accounts-and-passwords.md
- - linode-cli.md
  - linode-images.md
  - linode-managed.md
  - kvm-reference.md
  - package-mirrors.md
  - automating-server-builds.md
+ - use-coreos-container-linux-on-linode.md
  - stackscripts.md
  - billing-and-payments.md
+ - upgrade-to-hourly-billing.md
  - support.md
  - network-helper.md
+ - linode-cli.md
 categories:
+ - migrate-to-linode
  - longview
  - nodebalancer
+ - disk-images
  - api
 ---
-

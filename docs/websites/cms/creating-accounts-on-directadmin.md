@@ -61,9 +61,9 @@ Make sure you use a valid email address as the DirectAdminsystem will email your
     You must use these dns servers for your domain. They can be changed through your domain registrar.
 
     NS1:    ns1.linode.com
-    NS1 IP: 69.93.127.10
+    NS1 IP: 162.159.27.72
     NS2:    ns2.linode.com
-    NS2 IP: 65.19.178.10
+    NS2 IP: 162.159.24.39
 
     POP Email Accounts:     100
     Email Forwarders:       0

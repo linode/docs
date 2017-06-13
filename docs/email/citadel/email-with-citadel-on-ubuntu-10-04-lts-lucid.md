@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up an email and groupware server using Citadel on an Ubuntu 10.04 LTS (Lucid) Linode VPS.'
+description: 'Setting up an email and groupware server using Citadel on an Ubuntu 10.04 LTS (Lucid) Linode.'
 keywords: 'citadel,citadel ubuntu 10.04,ubuntu 10.04 mail server,groupware,email server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/ubuntu-10-04-lucid/']

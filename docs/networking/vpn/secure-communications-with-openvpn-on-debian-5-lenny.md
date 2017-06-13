@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linux VPS.'
+description: 'Use OpenVPN to securely connect separate networks on a Debian 5 (Lenny) Linode.'
 keywords: 'openvpn,networking,vpn,debian,lenny'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/debian-5-lenny/']

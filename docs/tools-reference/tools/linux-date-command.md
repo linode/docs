@@ -3,50 +3,57 @@ author:
   name: Christopher S. Aker
   email: caker@linode.com
 description: 'Generate and manipulate dates with the date command.'
-keywords: 'date,time,linux commands,shell'
+keywords: 'date,time,linux commands,shell,timey wimey'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/date/']
-modified: Tuesday, April 19th, 2011
+modified: Thursday, April 13th, 2017
 modified_by:
   name: Linode
 published: 'Monday, August 23rd, 2010'
-title: Linux Date Command
+title: Linux date Command
 ---
 
-The `date` command displays the current date and time. It can also be used to display a date in a format you specify. The super-user (root) can use it to set the system clock.
+The `date` command displays the current date and time. It can also be used to display or calculate a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-## Usage
+![Using_Date](/docs/assets/linux_date_command_smg.png)
 
-With no options, the `date` command displays the current system date and time, including day-of-week, month, time, timezone, and year. For example:
+## Use the Linux date Command
 
-    $ date
-    Wed Aug 18 16:24:44 EDT 2010
+When used without options, the `date` command displays the current system date and time, including the day of the week, month, time, timezone, and year:
 
-To operate on a specific date, you can provide one with the -d flag. For example:
+    date
+    Thu Apr 13 10:04:04 EDT 2017
 
-    $ date -d "1974-01-04"
+To operate on a specific date, you can provide one with the `-d` flag:
+
+    date -d "1974-01-04"
     Fri Jan  4 00:00:00 EST 1974
 
-`date` has many display formatting options. Provide `date` with the formatting string by prefixing it with a plus sign as follows:
+`date` has many display formatting options. Provide `date` with the formatting string by prefixing it with a plus sign:
 
-    $ date +"Week number: %V Year: %y"
+    date +"Week number: %V Year: %y"
     Week number: 33 Year: 10
 
-The format string is then outputted with each formatting token substituted by its value. %V is the formatting option to display the current week number, and %y represents the last two digits of the year.
+The format string is then output with each formatting token substituted by its value. `%V` is the formatting option to display the current week number, and `%y` represents the last two digits of the year.
 
 ### Formatting Options
 
+Run `date --help` to display a list of formatting options.
+
 Here's a small sample of the formatting tokens `date` supports:
 
-    %a   locale's abbreviated weekday name (e.g., Sun)
-    %A   locale's full weekday name (e.g., Sunday)
-    %b   locale's abbreviated month name (e.g., Jan)
-    %B   locale's full month name (e.g., January)
-    %c   locale's date and time (e.g., Thu Mar  3 23:05:25 2005)
-    %F   full date; same as %Y-%m-%d
-    %s   seconds since 1970-01-01 00:00:00 UTC
+{: .table .table-striped} 
+| Token | Output |
+| ------| ------------|
+| %a    | locale's abbreviated weekday name (e.g., Sun) |
+| %A    | locale's full weekday name (e.g., Sunday) |
+| %b    | locale's abbreviated month name (e.g., Jan) |
+| %B    | locale's full month name (e.g., January) |
+| %c    | locale's date and time (e.g., Thu Mar  3 23:05:25 2005) |
+| %F    | full date; same as %Y-%m-%d |
+| %s    | seconds since 1970-01-01 00:00:00 UTC |
 
-Running `date --help` will display the list of formatting options, while `man date` will show you the entire man page with much more detail.
+For more details, run `man date` to view the entire man page.
 
 ### Override the Timezone
 
@@ -117,14 +124,14 @@ You can assign the output of `date` to a shell variable and then use it later in
     $ echo $STARTTIME
     Fri Aug 20 11:46:48 EDT 2010
 
-You can also use date to create filenames that contain the current day.
+You can also use date to create filenames that contain the current day:
 
     tar cfz /backup-`date +%F`.tar.gz /home/caker/
 
 This would tar and gzip the files in `/home/caker/` into a filename called `backup-2010-08-20.tar.gz`.
 
-## Setting the Date
+## Set the Date Manually from the Linux Terminal
 
-Setting the date should not be needed if you're running ntpd to keep good time and have set your timezone correctly. However, if you find you need to set the system clock, here's an example:
+If your system is running `ntpd`, and you've [set your timezone correctly](/docs/getting-started#setting-the-timezone), you shouldn't have to change this setting. However, if you find you need to set the system clock manually, use the `--set` option. In this example, we're setting the date and time to 9:14pm on Thursday, April 13, 2017:
 
-    date --set="20101231 23:59"
+    date --set="20170413 21:14"

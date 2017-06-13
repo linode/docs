@@ -3,11 +3,11 @@ author:
     name: Linode Community
     email: contribute@linode.com
 description: 'Configure SPF and DKIM in Postfix on Debian 8.'
-keywords: 'email,postfix,spf,dkim,debian 8,opendkim,dns'
+keywords: 'email,postfix,spf,dkim,debian 8,opendkim,dns,dmarc'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, February 3rd, 2016
+modified: Monday, March 27th, 2017
 modified_by:
-    name: Todd Knarr
+    name: Linode
 published: 'Wednesday, February 3rd, 2016'
 title: 'Configure SPF and DKIM in Postfix on Debian 8'
 contributor:
@@ -16,8 +16,11 @@ contributor:
 external_resources:
  - '[Sender Policy Framework](http://www.openspf.org/)'
  - '[DomainKeys Identified Mail](http://www.dkim.org/)'
+ - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
- - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discusson and additional references.'
+ - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.'
+ - '[How to eliminate spam and protect your name with DMARC](https://www.skelleton.net/2015/03/21/how-to-eliminate-spam-and-protect-your-name-with-dmarc/#dmarc) provides additional help with DMARC records.'
+ - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
@@ -25,9 +28,11 @@ external_resources:
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
-[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail hass been tampered with in transit.
+[DKIM (DomainKeys Identified Mail)](http://www.dkim.org/) is a system that lets your official mail servers add a signature to headers of outgoing email and identifies your domain's public key so other mail servers can verify the signature. As with SPF, DKIM helps keep your mail from being considered spam. It also lets mail servers detect when your mail has been tampered with in transit.
 
-The instructions for setting up DNS for SPF and DKIM are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool and to identify the exact path to OpenDKIM's socket file in Postfix.
+[DMARC (Domain Message Authentication, Reporting & Conformance)](http://dmarc.org/) allows you to advertise to mail servers what your domain's policies are regarding mail that fails SPF and/or DKIM validations. It additionally allows you to request reports on failed messages from receiving mail servers.
+
+The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instructions for configuring the SPF policy agent and OpenDKIM into Postfix should work on any distribution after making respective code adjustments for the package tool, and identifying the exact path to the Unix socket file.
 
 {: .note}
 >
@@ -41,9 +46,9 @@ The instructions for setting up DNS for SPF and DKIM are generic. The instructio
 
 ## Install DKIM, SPF and Postfix
 
-1.  Install the three required packages:
+1.  Install the four required packages:
 
-        apt-get install opendkim opendkim-tools postfix-policyd-spf-python
+        apt-get install opendkim opendkim-tools postfix-policyd-spf-python postfix-pcre
 
 2.  Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
 
@@ -57,11 +62,11 @@ The value in an SPF DNS record will look something like the following examples. 
 
 **Example 1**  Allow mail from all hosts listed in the MX records for the domain:
 
-        v=spf1 mx -all
+    v=spf1 mx -all
 
 **Example 2**  Allow mail from a specific host:
 
-        v=spf1 a:mail.example.com -all
+    v=spf1 a:mail.example.com -all
 
 - The `v=spf1` tag is required and has to be the first tag.
 
@@ -69,7 +74,7 @@ The value in an SPF DNS record will look something like the following examples. 
 
 The tags between identify eligible servers from which email to your domain can originate.
 
-- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email althought it will probably never send any.
+- `mx` is a shorthand for all the hosts listed in MX records for your domain. If you've got a solitary mail server, `mx` is probably the best option. If you've got a backup mail server (a second MX record), using `mx` won't cause any problems. Your backup mail server will be identified as an authorized source for email although it will probably never send any.
 
 - The `a` tag lets you identify a specific host by name or IP address, letting you specify which hosts are authorized. You'd use `a` if you wanted to prevent the backup mail server from sending outgoing mail or if you wanted to identify hosts other than your own mail server that could send mail from your domain (e.g., putting your ISP's outgoing mail servers in the list so they'd be recognized when you had to send mail through them).
 
@@ -186,7 +191,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
         # Always oversign From (sign using actual From and a null From to prevent
         # malicious signatures header fields (From and/or others) between the signer
-        # and the verifier.  From is oversigned by default in the Debian pacakge
+        # and the verifier.  From is oversigned by default in the Debian package
         # because it is often the identity key used by reputation systems and thus
         # somewhat security sensitive.
         OversignHeaders     From
@@ -257,7 +262,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
 
 8.  Generate keys for each domain:
 
-        opendkim-genkey -b 2048 -r -s YYYYMM
+        opendkim-genkey -b 2048 -h rsa-sha256 -r -s YYYYMM -d example.com -v
 
     Replace `YYYYMM` with the current year and month as in the key table. This will give you two files, `YYYYMM.private` containing the key and `YYYYMM.txt` containing the TXT record you'll need to set up DNS. Rename the files so they have names matching the third section of the second field of the key table for the domain:
 
@@ -289,18 +294,18 @@ As with SPF, DKIM uses TXT records to hold information about the signing key for
 {: .file}
 example.txt
 :   ~~~ text
-    201510._domainkey  IN  TXT ( "**v=DKIM1; k=rsa; s=email; "
+    201510._domainkey  IN  TXT ( "**v=DKIM1; h=rsa-sha256; k=rsa; s=email; "
         "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXR"
         "ZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB**" )  ; ----- DKIM key 201510 for example.com
 
     ~~~
 
-The value inside the parentheses is what you want. Select and copy the entire region from (but not including) the double-quote before `v=DKIM1` on up to (but not including) the final double-quote before the closing parentheses. Then edit out the double-quotes within the copied text and the whitespace between them. From the above file the result would be:
+The value inside the parentheses is what you want. Select and copy the entire region from (but not including) the double-quote before `v=DKIM1` on up to (but not including) the final double-quote before the closing parentheses. Then edit out the double-quotes within the copied text and the whitespace between them. Also change `h=rsa-sha256` to `h=sha256`. From the above file the result would be:
 
 {: .file-excerpt}
 example-copied.txt
 :   ~~~ text
-    v=DKIM1; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXRZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB
+    v=DKIM1; h=sha256; k=rsa; s=email; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAu5oIUrFDWZK7F4thFxpZa2or6jBEX3cSL6b2TJdPkO5iNn9vHNXhNX31nOefN8FksX94YbLJ8NHcFPbaZTW8R2HthYxRaCyqodxlLHibg8aHdfa+bxKeiI/xABRuAM0WG0JEDSyakMFqIO40ghj/h7DUc/4OXNdeQhrKDTlgf2bd+FjpJ3bNAFcMYa3Oeju33b2Tp+PdtqIwXRZksfuXh7m30kuyavp3Uaso145DRBaJZA55lNxmHWMgMjO+YjNeuR6j4oQqyGwzPaVcSdOG8Js2mXt+J3Hr+nNmJGxZUUW4Uw5ws08wT9opRgSpn+ThX2d1AgQePpGrWOamC3PdcwIDAQAB
     ~~~
 
 Paste that into the value for the TXT record.
@@ -354,7 +359,8 @@ If everything is OK you shouldn't get any output. If you want to see more inform
         # Milter configuration
         # OpenDKIM
         milter_default_action = accept
-        milter_protocol = 2
+        # Postfix ≥ 2.6 milter_protocol = 6, Postfix ≤ 2.5 milter_protocol = 2
+        milter_protocol = 6
         smtpd_milters = local:/opendkim/opendkim.sock
         non_smtpd_milters = local:/opendkim/opendkim.sock
         ~~~
@@ -373,15 +379,57 @@ If everything is OK you shouldn't get any output. If you want to see more inform
 
 The easiest way to verify that everything's working is to send a test e-mail to `check-auth@verifier.port25.com` using an email client configured to submit mail to the submission port on your mail server. It will analyze your message and mail you a report indicating whether your email was signed correctly or not. It also reports on a number of other things such as SPF configuration and SpamAssassin flagging of your domain. If there's a problem, it'll report what the problem was.
 
-### Set up Author Domain Signing Practices (ADSP) (optional)
+## **Optional:** Set up Author Domain Signing Practices (ADSP)
 
 As a final item, you can add an ADSP policy to your domain saying that all emails from your domain should be DKIM-signed. As usual, it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `dkim=all`. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
-![Linode DNS manager add TXT record](/docs/assets/Postfix_ADSP_TXT_record.png)
+![Linode DNS Manager add TXT record](/docs/assets/Postfix_ADSP_TXT_record.png)
 
 You don't need to set this up, but doing so makes it harder for anyone to forge email from your domains because recipient mail servers will see the lack of a DKIM signature and reject the message.
 
-### Key rotation
+## **Optional:** Set up Domain Message Authentication, Reporting & Conformance (DMARC)
+
+The DMARC DNS record can be added to advise mail servers what you think they should do with emails claiming to be from your domain that fail validation with SPF and/or DKIM. DMARC also allows you to request reports about mail that fails to pass one or more validation check.  DMARC should only be set up if you have SPF and DKIM set up and operating successfully. If you add the DMARC DNS record without having both SPF and DKIM in place, messages from your domain will fail validation which may cause them to be discarded or relegated to a spam folder.
+
+The DMARC record is a TXT record for host `_dmarc` in your domain containing the following recommended values:
+
+    v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r
+
+This requests mail servers to quarantine (do not discard, but separate from regular messages) any email that fails either SPF or DKIM checks. No reporting is requested. Very few mail servers implement the software to generate reports on failed messages, so it is often unnecessary to request them. If you do wish to request reports, the value would be similar to this example, added as a single string:
+
+    v=DMARC1;p=quarantine;sp=quarantine;adkim=r;aspf=r;fo=1;rf=afrf;rua=mailto:user@example.com
+
+Replace `user@example.com` in the `mailto:` URL with your own email or an email address you own dedicated to receiving reports (an address such as `dmarc@example.com`). This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
+
+![Linode DNS Manager add TXT record](/docs/assets/Postfix_DMARC_TXT_record.png)
+
+DMARC records have a number of available tags and options. These tags are used to control your authentication settings:
+
+* `v` specifies the protocol version, in this case `DMARC1`.
+* `p` determines the policy for the root domain, such as "example.com." The available options:
+    * `quarantine` instructs that if an email fails validation, the recipient should set it aside for processing.
+    * `reject` requests that the receiving mail server reject the emails that fail validation.
+    * `none` requests that the receiver take no action if an email does not pass validation.
+* `sp` determines the policy for subdomains, such as "subdomain.example.com." It takes the same arguments as the `p` tag.
+* `adkim` specifies the alignment mode for DKIM, which determines how strictly DKIM records are validated. The available options are:
+    * `r` relaxed alignment mode, DKIM authentication is less strictly enforced.
+    * `s` strict alignment mode. Only an exact match with the DKIM entry for the root domain will be seen as validated.
+* `aspf` determines the alignment mode for SPF verification. It takes the same arguments as `adkim`.
+
+If you wish to receive authentication failure reports, DMARC provides a number of configuration options. You can use the following tags to customize the formatting of your reports, as well as the criteria for report creation. 
+
+* `rua` specifies the email address that will receive aggregate reports. This uses the `mailto:user@example.com` syntax, and accepts multiple addresses separated by commas. Aggregate reports are usually generated once per day.
+* `ruf` specifies the email address that will receive detailed authentication failure reports. This takes the same arguments as `rua`. With this option, each authentication failure would result in a separate report.
+* `fo` allows you to specify which failed authentication methods will be reported. One or more of the following options can be used:
+    * `0` will request a report if *all* authentication methods fail. For example, if an SPF check were to fail but DKIM authentication was successful, a report would not be sent.
+    * `1` requests a report if *any* authentication check fails.
+    * `d` requests a report if a DKIM check fails.
+    * `s` requests a report if an SPF check fails.  
+* `rf` determines the format used for authentication failure reports. Available options:
+    * `afrf` uses the Abuse Report format as defined by [RFC 5965](https://www.ietf.org/rfc/rfc5965.txt).
+    * `iodef` uses the Incident Object Description Exchange format as defined by [RFC 5070](https://www.ietf.org/rfc/rfc5070.txt).
+
+## Key rotation
 
 The reason the YYYYMM format is used for the selector is that best practice calls for changing the DKIM signing keys every so often (monthly is recommended, and no longer than every 6 months). To do that without disrupting messages in transit, you generate the new keys using a new selector. The process is:
 
@@ -401,7 +449,7 @@ The reason the YYYYMM format is used for the selector is that best practice call
         chown opendkim:opendkim /etc/opendkim/keys/*
         chmod go-rw /etc/opendkim/keys/*
 
-    Use the `opendkim-testkey` command as described above to ensure that your new record is propogated before you continue.
+    Use the `opendkim-testkey` command as described above to ensure that your new record is propagated before you continue.
 
 5.  Edit `/etc/opendkim/key.table` and change the old YYYYMM values to the new selector, reflecting the current year and month. Save the file.
 

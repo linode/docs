@@ -28,11 +28,13 @@ Enter the hostname or IP address of the system you'd like to log into and click 
 
 [![An unknown host key warning in PuTTY on Windows.](/docs/assets/161-putty-02-host-key-warning.png)](/docs/assets/161-putty-02-host-key-warning.png)
 
-In this case, PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Remote Access" tab in the Linode Manager) and executing the following command:
+In this case, PuTTY is asking you to verify that the server you're logging in to is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log in to.
 
-    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
+You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. To find the ssh-ed25519 key fingerprint as shown in the warning, log in to your Linode [via the AJAX console](/docs/networking/using-the-linode-shell-lish/) (see the "Remote Access" tab in the Linode Manager) and execute the following command:
 
-The key fingerprints should match; click "Yes" to accept the warning and cache this host key in the registry. You won't receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server's operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
+    ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E md5
+
+The key fingerprints should match. Click "Yes" to accept the warning and cache this host key in the registry. You won't receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server's operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
 The default port for SSH is 22. If the SSH daemon is running on a different port, you'll need to specify it after the hostname on the "Session" screen. PuTTY may also be used to connect to telnet servers, although this protocol isn't commonly deployed on modern Linux servers. Telnet is an insecure protocol, as it transmits all data in cleartext over the network (including login credentials) and includes no method of verifying the identity of remote servers.
 

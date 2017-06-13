@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Amanda Folson
   email: docs@linode.com
-description: 'Use Nagios to monitor services and send status updates on your Gentoo VPS.'
+description: 'Use Nagios to monitor services and send status updates on your Gentoo Linode.'
 keywords: 'nagios,monitoring'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/nagios/gentoo/']

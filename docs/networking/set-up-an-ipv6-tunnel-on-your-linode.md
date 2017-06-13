@@ -32,7 +32,7 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 {: .note}
 >Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
 
-1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
+1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
 
 2.  Use the `ip` tool to add the tunnel device. Ours is called `he-ipv6` to match the device described in Hurricane Electric's examples. Replace `203.0.113.10` with the endpoint of your tunnel, and `198.51.100.5` with your Linode's IP address. The information for the endpoint can be found in your tunnel broker's web interface, and your Linode's IP address can be found under the [Remote Access](/docs/networking/remote-access) tab of the Linode Manager:
 

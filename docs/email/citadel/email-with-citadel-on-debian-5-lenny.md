@@ -3,7 +3,7 @@ deprecated: true
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode VPS.'
+description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode.'
 keywords: 'citadel,debian mail server,groupware,email server,email howto'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/debian-5-lenny/']

@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['remote-access/']
 modified: Saturday, September 6th, 2014
 modified_by:
-  name: Linode
-published: 'Tuesday, May 3rd, 2016'
+  name: Phil Zona
+published: 'Tuesday, August 23rd, 2016'
 title: Remote Access
 ---
 
@@ -30,7 +30,7 @@ Here's how to set reverse DNS for your domain names:
 > Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
@@ -60,7 +60,7 @@ You have successfully configured reverse DNS.
 To reset reverse DNS to the Linode domain, which will be something like **li12-345.members.linode.com**, follow these instructions:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
@@ -77,10 +77,10 @@ You'll see a confirmation message that the reverse DNS has been reset.
 
 ## Configuring IP Failover
 
-If you're using two Linodes to make a website highly available with Heartbeat and Pacemaker , you can use the Linode Manager to configure IP failover. Here's how:
+*IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab. A list of your available nodes will appear.
 3.  Select the Linode on which you wish to configure failover. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Failover** link. The webpage shown below appears.
@@ -90,7 +90,7 @@ If you're using two Linodes to make a website highly available with Heartbeat an
 6.  Select the checkboxes of all IP addresses that need to fail over to the chosen Linode.
 7.  Click **Save Changes**.
 
-You have successfully configured IP failover.
+You have successfully configured IP failover. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability).
 
 ## Networking Restrictions
 
@@ -111,7 +111,7 @@ If you have two Linodes in the same data center, you can use the *IP swap* featu
 Here's how to swap IP addresses:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Swap** link. The webpage shown below appears.
@@ -130,18 +130,27 @@ Here's how to swap IP addresses:
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
-10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode VPS.
+10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode.
 
     Network Helper automatically configures static IP address configuration files, and will update them with the new IP address. It's turned on by default for newer Linodes. For older Linodes, unless you've modified the networking configuration, DHCP assigns the IP address on boot.
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
+
+    {: .note }
+    >
+    > If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command:
+    >
+    >     arping -c5 -I eth0 -b -A -s 198.51.100.10 198.51.100.1
+    >     ping -c5 -I 198.51.100.10 198.51.100.1
+    >
+    > Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
 
 ## Adding Private IP Addresses
 
 The Linode Manager allows you to add private IP addresses for fast and secure connections between Linodes located in the same data center. Here's how to add a private IP address:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Add a Private IP** link, as shown below.
@@ -166,7 +175,7 @@ The Lish console allows you to access your Linode at any time, even if you've me
 If you need to quickly access Lish, use the Ajax Console to open it directly from your web browser. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section.
 5.  Select the **Launch Lish Ajax Console** link.
@@ -179,7 +188,7 @@ You are now logged in to the Lish Ajax console.
 You can also access Lish with an SSH client application installed on your computer. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
-2.  Click the **Linodes** tab. A list of your virtual private servers appears.
+2.  Click the **Linodes** tab.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section, as shown below.
 
