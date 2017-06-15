@@ -9,29 +9,29 @@ modified: 'Monday, May 8th, 2017'
 modified_by:
   name: Linode
 published: 'Monday, May 8th, 2017'
-title: Logging in to CoreOS Container Linux
+title: How to Log in to CoreOS Container Linux on Linode
 ---
 
-The `root` user is not active by default in Container Linux, so naturally, root login is not possible. You must instead log in as the `core` user.
+The `root` user is not active by default in Container Linux, so root log in is not available. Instead log in as the `core` user.
 
-## Logging in Over SSH
+## Log in to CoreOS Over SSH
 
 ![Log in as core user SSH](/docs/assets/container-linux-login-ssh.png)
 
-1.  From your local computer's terminal, enter:
+1.  From your local terminal, enter:
 
         ssh core@<your_linode's_IP>
 
-2.  Next will be the `password:` prompt. Enter the `core` user's password you assigned when deploying Container Linux.
+2.  At the `password:` prompt, enter the `core` user's password you assigned when deploying Container Linux.
 
-## Logging in Through the Console (Lish or Glish)
+## Log in to CoreOS Through the Console (Lish or Glish)
 
 ![Log in as core user Lish](/docs/assets/container-linux-login-lish.png)
 
-1.  When at the `login:` prompt, enter `core`.
+1.  At the `login:` prompt, enter `core`.
 
-2.  Next will be the `password:` prompt. Enter the `core` user's password you assigned when deploying Container Linux.
+2.  At the `password:` prompt, enter the `core` user's password you assigned when deploying Container Linux.
 
 {: .note}
 >
-> If you are not already familiar with the serial and graphical Linode shells, see [Using the Linode Shell (Lish)](https://linode.com/docs/networking/using-the-linode-shell-lish) and  [Use the Graphic Shell, Glish, to Manage Graphic Environments on Your Linode](/docs/networking/use-the-graphic-shell-glish).
+> If you are not already familiar with the serial and graphical Linode shells, see the [Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) and [Use the Graphic Shell, Glish, to Manage Graphic Environments on Your Linode](/docs/networking/use-the-graphic-shell-glish) guides.
