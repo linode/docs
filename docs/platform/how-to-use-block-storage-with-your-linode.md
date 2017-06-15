@@ -2,42 +2,39 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Using block storage devices with your Linode
+description: How to use Linode's block storage service with your Linode
 keywords: 'block storage, volume, media, resize, storage, disk'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, May 23rd, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, May 23rd, 2017'
-title: Using Block Storage with Your Linode
+title: How to Use Block Storage with Your Linode
 ---
 
-Linode's block storage service allows you to attach additional storage volumes to your linode ranging from 1 to 1024 gigabytes in size. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to four volumes can be attached to a single linode, be it new or currently-existing, so you do not need to recreate your server to add a block storage volume. Bear in mind that the Linode backup service does not cover block storage volumes. You should back up this data to your own local storage.
+Linode's block storage service allows you to attach additional storage volumes to your Linode. Block storage volumes can range from 1 to 1024 gigabytes in size. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to four volumes can be attached to a single linode, be it new or currently-existing, so you do not need to recreate your server to add a block storage volume. Keep in mind that the Linode backup service does not cover block storage volumes. You should back up this data to your own local storage.
 
-Block Storage is currently in public beta. If you'd like to gain access, open a [support ticket](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) to be added. Any feedback you can give on the service would also be helpful and appreciated.
+Block Storage is currently in public beta for Linodes in our Newark datacenter. If you'd like to gain access, open a [support ticket](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) to be added. Any feedback you can give on the service would also be helpful and is appreciated.
 
 ![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
 
-
 ## How to Add a Block Storage Volume to a Linode
 
-This guide will use a linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the block storage volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_*`, where `*` is a name you assign the volume. Storage volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
+This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap space mounted as `/dev/sdb`. In this scenario, the block storage volume will be available to the operating system as `/dev/disk/by-id/scsi-0Linode_Volume_EXAMPLE`, where `EXAMPLE` is a name you assign the volume. Storage volumes can be added when your Linode is already running, and will show immediately in `/dev/disk/by-id/`.
 
+### Add a Volume from the Linode Dashboard
 
-### Add a Volume from a Linode's Dashboard
-
-1.  Go to the dashboard page of the linode you want to attach a block storage volume to. Then select **Create a new Volumes**.
+1.  Go to the dashboard page of the Linode you want to attach a block storage volume to. Select **Create a new Volume**:
 
     [![Linode Manager create a volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
 
+2.  Assign the block storage volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 1024 GB (1 terabyte). When finished, click *Add this Volume!*:
 
-2.  Assign the block storage volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters 'a-z0-9.-_'. The maximum volume size is 1024 GB (1 terabyte). When finished, click *Add this Volume!*
+    [![Linode Manager add a volume](/docs/assets/bs-add-a-volume-small.png)](/docs/assets/bs-add-a-volume.png)
 
-    [![Linode Manager add volume](/docs/assets/bs-add-a-volume-small.png)](/docs/assets/bs-add-a-volume.png)
-
-  {: .note }
-  >
-  > At this time, block storage is only available to linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like your linode migrated to Newark from another location.
+    {: .note }
+    >
+    > At this time, block storage is only available to linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like your linode migrated to Newark from another location.
 
 3.  You'll then be taken to a basic instructions page which shows you how to make a filesystem in your volume from any of our supported Linux distributions. You'll be shown how to mount it, and how to add the volume to `/etc/fstab` so it's mounted automatically whenever you reboot your linode.
 
@@ -62,9 +59,9 @@ This guide will use a linode with the root disk mounted as `/dev/sda` and swap s
 
     [![Linode Manager add volume](/docs/assets/bs-volume-detaching-small.png)](/docs/assets/bs-volume-attach.png)
 
-  {: .note }
-  >
-  > At this time, block storage is only available to linodes in our Newark datacenter. Contact Linode Support if you would like your linode migrated to Newark from another location.
+    {: .note }
+     >
+     > At this time, block storage is only available to linodes in our Newark datacenter. Contact Linode Support if you would like your linode migrated to Newark from another location.
 
 4.  You'll then be taken to a basic instructions page which shows you how to make a filesystem in your volume from any of our supported Linux distributions. You'll be shown how to mount it, and how to add the volume to `/etc/fstab` so it's mounted automatically whenever you reboot your linode.
 
