@@ -116,11 +116,11 @@ Install Python libraries using the following commands:
 
 1.  Download the `nodejs` installation script from [nodesource](https://nodesource.com/):
 
-        wget -qO- https://deb.nodesource.com/setup | sudo bash -
+        curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 
 2.  Now that our repository list is updated install `nodejs` using `apt-get`:
 
-        sudo apt-get install nodejs
+        sudo apt-get install -y nodejs
 
 3.  Time to install a newer version of Less via `npm`:
 
