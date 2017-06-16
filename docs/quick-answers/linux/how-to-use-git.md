@@ -1,0 +1,106 @@
+---
+author:
+  name: Angel Guarisma
+  email: aguarisma@linode.com
+description: 'Use Git to create a repo, stage a commit, and push the commit'
+keywords: 'Linux, how to use Git, github'
+alias: ['quick-answers/how-to-use-git/']
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: 'Monday, June 12th, 2017'
+modified_by:
+  name: Angel Guarisma
+published: 'Monday, June 19th, 2017'
+title: How to use Git
+external_resources:
+- '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
+- '[Pro Git Book](https://git-scm.com/book/en/v2)'
+- '[Github Guides](https://guides.github.com/)'
+---
+
+Git is a version control system, you can use Git to manage your software projects. This guide will teach you how to intialize a git repository, stage files for commit, and commit the files to a local git repository. 
+
+
+1.  Create a folder to store your files and intiliaize a git repository. 
+	  
+		mkdir testgit 
+		cd testgit
+		git init
+
+2. Create some files for Git to keep track of. Then append some text to one file.  
+
+		touch file.txt file2.txt file3.txt
+		echo "hello Linode" >> file.txt
+
+3.  Now type `git status` to return information about the current git repository. 
+
+		
+		$ git status
+		On branch master
+
+		Initial commit
+
+		Untracked files:
+		 (use "git add <file>..." to include in what will be committed)
+  
+		file.txt
+		file2.txt
+		file3.txt
+				
+		nothing added to commit but untracked files present (use "git add" to track)
+
+
+4. Since there is text in `file.txt`, you want Git to track any possible changes to the file, this is done using `git add`. Typing `git status` after the addition, will confirm that Git is tracking the new file. 
+		
+		git add file.txt
+		git status
+
+	This returns: 
+
+		On branch master
+
+		Initial commit
+
+		Changes to be committed:
+		(use "git rm --cached <file>..." to unstage)
+  
+		new file:   file.txt
+	  
+		Untracked files:
+			(use "git add <file>..." to include in what will be committed)
+		
+			file2.txt
+			file3.txt
+
+5. To commit the changes of `file.txt` to the Git version control system, you have to use `git commit`. Git requires you to write a commit message, a message will help you remember what changes you are writing to git. 
+		
+		git commit -am "Added Hello Linode to file.txt"
+
+   Git will return the following message, confirming your new changes:  
+	
+		[master (root-commit) e8cc496] added new file
+		1 file changed, 1 insertion(+)
+		create mode 100644 file.txt
+
+6. Track the remaining files in the directory using `git add -A`, and commit them with a message.
+		
+		$ git add -A
+		$ git status
+		On branch master
+		Changes to be committed:
+		(use "git reset HEAD <file>..." to unstage)
+
+		modified:   file.txt
+		new file:   file2.txt
+		new file:   file3.txt
+				
+	    $ git commit -am "The end!"
+		[master 52a9240] The End
+		4 files changed, 1 insertion(+)
+		create mode 100644 file1.txt
+		create mode 100644 file2.txt
+		create mode 100644 file3.txt
+
+{: .note}
+
+>`git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit. 
+> `git add -A` stages ALL of the files in the directory. `git add .` stages only the new and modified files, and omiting any  deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.
