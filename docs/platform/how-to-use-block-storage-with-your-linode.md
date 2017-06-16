@@ -50,7 +50,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 1.  In the **Linodes** tab of Linode manager, click **Manage Volumes** to see your account's volume list:
 
-    [![Linode Manager add volume](/docs/assets/bs-mmanage-volumes-small.png)](/docs/assets/bs-mmanage-volumes.png)
+    [![Linode Manager add volume](/docs/assets/bs-manage-volumes-small.png)](/docs/assets/bs-manage-volumes.png)
 
 2.  Click the **Attach** option for the volume you want to attach to a Linode:
 
