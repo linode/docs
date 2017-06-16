@@ -6,7 +6,7 @@ description: 'Getting Started with Git'
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
-modified: Thursday, June 6, 2016
+modified: Thursday, June 6, 2017
 modified_by:
   name: Linode
 published: 'Friday, September 4th, 2009'
