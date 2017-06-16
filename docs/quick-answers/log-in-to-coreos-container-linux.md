@@ -2,14 +2,14 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This quick answer guide will show you how to log in to CoreOS Container Linux on a Linode.'
+description: 'This quick answer guide will show you how to log in to CoreOS Container Linux.'
 keywords: 'coreos, container linux, login, core'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Monday, May 8th, 2017'
 modified_by:
   name: Linode
 published: 'Monday, May 8th, 2017'
-title: Log in to CoreOS Container Linux - Linode
+title: Log in to CoreOS Container Linux
 ---
 
 The `root` user is not active by default in Container Linux, so root login is not available. Instead, log in as the `core` user.
