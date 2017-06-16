@@ -53,7 +53,7 @@ Verify that your system is up to date. Install `ntopng` and supporting services.
        
 	apt update && apt upgrade -yuf
 	apt install pfring nprobe ntopng ntopng-data n2disk
-	
+ethtool	ufw
 
 ### Add System User for ntopng
 
@@ -83,7 +83,7 @@ Ntopng has a built in web server and initializer. Configuration options can be s
 
 2.	Check and verify TCP segmentation is disabled. 
 
-		ethtool -K eth0
+		ethtool -k eth0
 
 3.	In your subsequent output, verify this section matches the following:
 
