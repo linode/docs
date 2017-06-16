@@ -5,10 +5,10 @@ author:
 description: How to use Linode's block storage service with your Linode
 keywords: 'block storage, volume, media, resize, storage, disk'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, May 23rd, 2017
+modified: Friday, June 16, 2017
 modified_by:
   name: Linode
-published: 'Tuesday, May 23rd, 2017'
+published: 'Friday, June 16, 2017'
 title: How to Use Block Storage with Your Linode
 ---
 
@@ -30,7 +30,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 2.  Assign the block storage volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 1024 GB (1 terabyte). When finished, click *Add this Volume!*:
 
-    [![Linode Manager add a volume](/docs/assets/bs-add-a-volume-small.png)](/docs/assets/bs-add-a-volume.png)
+    [![Linode Manager add a volume](/docs/assets/bs-add-a-volume.png)](/docs/assets/bs-add-a-volume.png)
 
     {: .note }
     >
