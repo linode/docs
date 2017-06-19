@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: How to use Linode's block storage service with your Linode
+description: This tutorial explains how to use Linode's block storage service.
 keywords: 'block storage, volume, media, resize, storage, disk'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, June 16, 2017
@@ -24,7 +24,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 ### Add a Volume from the Linode Dashboard
 
-1.  Go to the dashboard page of the Linode you want to attach a block storage volume to. Select **Create a new Volume**:
+1.  Go to the dashboard page of the Linode to which you want to attach a block storage volume. Select **Create a new Volume**:
 
     [![Linode Manager create a volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
 
@@ -36,7 +36,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
     >
     > Block storage is currently only available to Linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark from another location.
 
-     If you receive the message "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration." Reply to the ticket opened earlier and quote the error's text.
+     If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
 3.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
@@ -64,7 +64,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
      >
      > Block storage is currently only available to Linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark from another location.
 
-     If you receive the message "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration." Reply to the ticket opened earlier and quote the error's text.
+     If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
 4.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
@@ -120,9 +120,9 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
       [![Linode Manager edit volume](/docs/assets/bs-volume-resizing-small.png)](/docs/assets/bs-volume-resizing-volume.png)
 
-5.  Reboot your linode and your volume resize will be completed.
+5.  Reboot your Linode and your volume resize will be completed.
 
-## Where to go From Here?
+## Where to Go From Here?
 
 Need ideas for what to do with space? We have several guides which walk you through installing software that would make a great pairing with large storage volumes:
 
