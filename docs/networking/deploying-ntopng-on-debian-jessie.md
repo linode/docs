@@ -4,28 +4,28 @@ author:
   email: docs@linode.com
 description: 'ntopng is a powerful and lightweight network monitoring tool that can be used to monitor and analyze web traffic and packet flows on installed machines. It is accessed through a graphical interface which is hosted by a built-in web server. The real-time data collected is presented in visually appealing charts and graphs that provide meaningful drill down capabilities and can be exported in JSON format for further report building and analysis.'
 keywords: 'ntopng, network, debian 8, debian jessie'
-alias: ['/docs/networking']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, June 12th, 2017'
-modified: 'Monday, June 12th, 2017'
+alias: ['/docs/networking/']
+modified: Monday, June 19th, 2017
 modified_by:
-  name: ' ' 
+  name: 'Andrew Lescher ' 
 title: 'Deploy NTOPNG On Debian 8'
 contributor:
-  name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+   name: Andrew Lescher
+   link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources: 
- - '[ntop MainWebsite](http://www.ntop.org/products/traffic-analysis/ntop/)'
- - '[ntop NetworkSecurity Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf)'
----
+- '[ntop MainWebsite](http://www.ntop.org/products/traffic-analysis/ntop/)'
+- '[ntop NetworkSecurity Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf)'
 
+---
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-----
+---
 
 ## Overview of Ntopng, the Network Monitoring System
 
-In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web admin interface. You'll be able to:
+In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web admin interface. After finishing the tutorial you'll be able to:
 	
 -	Monitor and analyze traffic from your Linode.
 -	Create Host Pools to group connected devices together based on your own criteria.
@@ -45,6 +45,13 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 >This guide assumes that the reader is logged in as root. If you will be using an elevated user account, you will need to prefix the commands with `sudo`
 
 
+### Add ntopng Repository ###
+
+	wget http://apt-stable.ntop.org/jessie/all/apt-ntop-stable.deb
+	dpkg -i apt-ntop-stable.deb
+	apt-get clean all
+	apt-get update
+
 ### Update the System and Install ntopng
 
 
@@ -52,8 +59,8 @@ Verify that your system is up to date. Install `ntopng` and supporting services.
 
        
 	apt update && apt upgrade -yuf
-	apt install pfring nprobe ntopng ntopng-data n2disk
-ethtool	ufw
+	apt install pfring nprobe ntopng ntopng-data n2disk ethtool
+	
 
 ### Add System User for ntopng
 
@@ -64,6 +71,8 @@ By default, ntopng is run as the user **nobody**. This is a good choice for daem
 		useradd -r -s /bin/false ntopng
 
 2. Set permissions for user `ntopng` and installation files/directories as shown.
+		
+		mkdir /var/tmp/ntopng
 
 		chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
 
@@ -94,16 +103,16 @@ Ntopng has a built in web server and initializer. Configuration options can be s
 		tx-tcp6-segmentation: off
 
 	
-4. Navigate to `/etc/ntopng/ntopng.conf` and match the contents of your file to the example listed below. Replace [domain_or_ip] with your Linode’s domain or public IP address. Replace `eth0` with your primary network interface (if not eth0). If you want to review available configuration parameters, run `man ntopng` from the terminal.
+4. Create file `/etc/ntopng/ntopng.conf` using nano or an alternative text editor and match the contents of your file to the example listed below. Replace [domain_or_ip] with your Linode’s domain or public IP address. Replace `eth0` with your primary network interface (if not eth0). If you want to review available configuration parameters, run `man ntopng` from the terminal.
 
 
 {: .file }
 **/etc/ntopng/ntopng.conf**
 : ~~~ conf
--G=/var/run/ntopng.pid
 --user=ntopng
 --interface=eth0
--w = [domain_or_ip]:3005
+-w=3005
+-m="ipaddress"
 --community
 --daemon
 --dump-flows=logstash # optional
@@ -121,11 +130,10 @@ Ntopng has a built in web server and initializer. Configuration options can be s
 {:. table .table-striped .table-bordered }
 |Flags       |  Features|
 |:----------:|---------- :|
-| -G    | Process ID file path. |
 | --user | Designates the user `ntopng` will run under. Leaving this flag out of the configuration file will default to `nobody`  |
 | --interface | The network interface ntopng will montior  |
 | -w | Http address and port used to connect to the admin interface. Port 3005 is the default, you may define any.  |
-| -W | ntopng will use the ports for SSL connections |
+| -m | Sets the local network |
 | --community | The license ntopng will run under. |
 |--daemon | ntpong can be used as a forward service or as a background daemon. | 
 |--dump-flows | logged traffic can be shared with other services | 
@@ -136,7 +144,7 @@ Ntopng has a built in web server and initializer. Configuration options can be s
 
 1.	**For UFW:**
 
-      ufw allow ports 3005:3006/tcp
+      ufw allow 3005:3006/tcp
 
 2.	**For iptables:**
 
@@ -159,9 +167,13 @@ If you want to group devices over the same network or host a home media server, 
 
 2.	Click on the `+` icon on the far right of the screen. Give your pool a descriptive name and save. 
 
+    ![ntopng](/docs/assets/ntopng/ntopng2.png)
+
 3.	Now click on the **Unassigned Devices** tab. This is a list of devices currently transmitting data through the Linode (you should at least see the computer you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Don’t forget to click on **Save Settings** when you’re finished. 
 
 4.	To view data from your host pool, you’ll need to mouse over the **Hosts** dropdown and select **Host Pools**. You’ll find the pool name you created listed on this page. Click on it. Here, you’ll see all currently open connections from each of the hosts in your host pool. 
+
+![ntopng2](/docs/assets/ntopng/ntopng3.png)
 
 {: .note}
 >
