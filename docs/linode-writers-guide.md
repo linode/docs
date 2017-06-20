@@ -116,7 +116,7 @@ As much as we would like to support all writers, we can not accept every guide w
 
 ## Contributed Guides
 
-Here are some examples of exceptional community-contributed guides. Use these as guidelines for your own submission.
+Here are some examples of exceptional community-contributed guides. The instructions in each are accurate, complete, original and thorough. Use these as guidelines for your own submission.
 
 *  [Install Odoo 9 ERP on Ubuntu 14.04](/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04) by Damaso Sanoja.
 *  [How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/) by Nashruddin Amin.
