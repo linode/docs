@@ -17,24 +17,22 @@ external_resources:
 - '[Github Guides](https://guides.github.com/)'
 ---
 
-Git is a version control system, you can use Git to manage your software projects. This guide will teach you how to intialize a git repository, stage files for commit, and commit the files to a local git repository. 
+Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that helps you manage your software projects. This guide will teach you how to initialize a git repository, stage files for commit, and commit the files to a local git repository. For more information, checkout our longer guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-source-control-on-mac-and-windows).
 
+1.  Create a folder to store your files and initialize a git repository from that folder:
 
-1.  Create a folder to store your files and intiliaize a git repository. 
-	  
 		mkdir testgit 
 		cd testgit
 		git init
 
-2. Create some files for Git to keep track of. Then append some text to one file.  
+2. Create some files for Git to keep track of. Then append some text to one file:
 
 		touch file.txt file2.txt file3.txt
 		echo "hello Linode" >> file.txt
 
-3.  Now type `git status` to return information about the current git repository. 
+3.  Enter `git status` to return information about the current git repository:
 
-		
-		$ git status
+		git status
 		On branch master
 
 		Initial commit
@@ -48,9 +46,8 @@ Git is a version control system, you can use Git to manage your software project
 				
 		nothing added to commit but untracked files present (use "git add" to track)
 
+4. Since there is text in `file.txt`, you want Git to track any future changes to the file. Use `git add file.txt` to add the file. Type `git status` after the addition to confirm that Git is tracking the new file:
 
-4. Since there is text in `file.txt`, you want Git to track any possible changes to the file, this is done using `git add`. Typing `git status` after the addition, will confirm that Git is tracking the new file. 
-		
 		git add file.txt
 		git status
 
@@ -71,20 +68,23 @@ Git is a version control system, you can use Git to manage your software project
 			file2.txt
 			file3.txt
 
-5. To commit the changes of `file.txt` to the Git version control system, you have to use `git commit`. Git requires you to write a commit message, a message will help you remember what changes you are writing to git. 
-		
+5. To commit the changes of `file.txt` to the version control system, use `git commit`. Git requires you to write a commit message, a message will help you remember what changes you are writing to Git. In this example, we'll use the `-am` options to **a**ll untracked files and include a commit **m**essage:
+
 		git commit -am "Added Hello Linode to file.txt"
 
-   Git will return the following message, confirming your new changes:  
+    Git will return the following message, confirming your new changes:  
 	
 		[master (root-commit) e8cc496] added new file
 		1 file changed, 1 insertion(+)
 		create mode 100644 file.txt
 
-6. Track the remaining files in the directory using `git add -A`, and commit them with a message.
-		
-		$ git add -A
-		$ git status
+6. Track the remaining files in the directory using `git add -A`, and commit them with a message:
+
+		git add -A
+		git status
+    
+    Returns:
+    
 		On branch master
 		Changes to be committed:
 		(use "git reset HEAD <file>..." to unstage)
@@ -92,8 +92,11 @@ Git is a version control system, you can use Git to manage your software project
 		modified:   file.txt
 		new file:   file2.txt
 		new file:   file3.txt
-				
-	    $ git commit -am "The end!"
+
+    Commit the changes:
+
+        git commit -am "The end!"
+
 		[master 52a9240] The End
 		4 files changed, 1 insertion(+)
 		create mode 100644 file1.txt
@@ -102,5 +105,5 @@ Git is a version control system, you can use Git to manage your software project
 
 {: .note}
 
->`git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit. 
-> `git add -A` stages ALL of the files in the directory. `git add .` stages only the new and modified files, and omiting any  deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.
+>`git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit.
+> `git add -A` stages **a**ll of the files in the directory. `git add .` stages only the new and modified files, and omits any deleted files. `git add -u` stages only the modified and deleted files, omitting any new files.
