@@ -6,7 +6,7 @@ description: SHOUTcast
 keywords: 'shoutcast, radio, internet radio, stream, streaming, audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/media-servers/shoutcast/']
-modified: Tuesday, April 9th, 2013
+modified: Wednesday, June 21st, 2017
 modified_by:
   name: Linode
 published: 'Thursday, June 7th, 2012'
@@ -18,7 +18,7 @@ external_resources:
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 ---
 
-SHOUTcast is software designed for streaming media over the Internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server.
+SHOUTcast is software designed for streaming media over the Internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
  {: .note }
 >
