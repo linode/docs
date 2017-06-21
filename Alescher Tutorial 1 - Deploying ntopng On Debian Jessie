@@ -1,0 +1,200 @@
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'ntopng is a powerful and lightweight network monitoring tool that can be used to monitor and analyze web traffic and packet flows on installed machines. It is accessed through a graphical interface which is hosted by a built-in web server. The real-time data collected is presented in visually appealing charts and graphs that provide meaningful drill down capabilities and can be exported in JSON format for further report building and analysis.'
+keywords: 'ntopng, network, debian 8, debian jessie'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Monday, June 12th, 2017'
+modified:
+modified_by:
+  name: Linode
+title: 'Deploy ntopng On Debian 8'
+contributor:
+  name: Andrew Lescher
+  link: https://www.linkedin.com/in/andrew-lescher-87027940/
+
+---
+
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+----
+
+## Introduction
+
+The end goal of this tutorial is to have ntopng set up and running on your Linode. We'll also look at some configuration examples and suggestions for the web admin interface.  When finished, you'll be able to:
+•	Monitor and analyze traffic from your machine.
+•	Create Host Pools to group connected devices together based on your own criteria.
+•	Have a general idea of how to work in the user interface and view statistics, as well as making your own configurations.
+•	Monitor security threats on your machine.
+
+## Before You Begin
+
+1. You should have completed the [Getting Started](/docs/getting-started) guide for setting up a fresh Linode.
+2. You’ll have secured your server by following the steps outlined in the [Securing Your Server](/docs/security/securing-you-server) guide.
+3. We’ll be using UFW (Uncomplicated Firewall) to set the firewall rules, although you may use iptables as well. Instructions will be presented for both. If you aren’t familiar with UFW, follow the guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
+4. OpenVPN will be used as an example to demonstrate ntopng setup and its capabilities. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about it, you can read through the [Set up a Hardened OpenVPN Server on Debian 8]( /docs/networking/vpn/set-up-a-hardened-openvpn-server) guide.
+
+{: .note}
+>
+> Completing this guide requires the user to be logged in as root or to have access to an account linked to the sudo group. In this guide, we’ll  issuing       > commands assuming the user is logged in as root for  > simplicity. If you will be using a sudo elevated user > account, you will need to prefix the commands below with `sudo`. More information on `sudo` privileges can be found in the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+## Update the System and Install ntopng
+
+1.	Verify that your system is up to date.
+
+      apt-get update && apt-get upgrade -yuf
+
+# Install ntopng
+
+2.	Install ntopng and supporting services
+
+      apt-get install pfring nprobe ntopng ntopng-data n2disk
+
+
+
+# Add System User for ntopng
+
+By default, ntopng is run as the user *nobody*. This is a good choice for daemons requiring minimal access to the system. However, ntopng installs files in directories that the user *nobody* may not have access to, depending on how your system is configured. We’ll mitigate this by creating a new user for it. 
+
+1.	Add user `ntopng`.
+
+ 		  useradd -r -s /bin/false ntopng
+
+2.Set permissions for user `ntopng` and installation files/directories as shown.
+
+      chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
+
+      chmod 1770 -R /var/tmp/ntopng
+
+      find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
+
+      find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
+
+## Configure ntopng
+
+1.	Disable TCP segmentation offload. Replace eth0 with your primary connection interface (usually eth0).
+
+      ethtool -K eth0 gro off gso off tso off
+
+2.	Check and verify TCP segmentation is disabled. 
+
+      ethtool -K eth0
+
+3.	In your subsequent output, verify this section matches the following:
+
+      tcp-segmentation-offload: off
+      tx-tcp-segmentation: off
+      tx-tcp-ecn-segmentation: off
+      tx-tcp-mangleid-segmentation: off
+      tx-tcp6-segmentation: off
+
+4.	In addition to having its own built in web server, ntopng contains its own initializer as well. Its configuration options can be set from the command line during initialization on a per-use basis, or set via a config file. If both methods are used, options set in the config file will take priority. We will set the configuration in a config file so our parameters can be stored and retained for future calls. Navigate to `**/etc/ntopng/ntopng.conf**` and match the contents of your file to the following. Replace [domain_or_ip] with your Linode’s domain or public IP address. Replace `eth0` with your primary network interface (if not eth0). If you want to review available configuration parameters, run `man ntopng` from the terminal.
+
+{: .note}
+>
+> The flags marked `optional` **are not mandatory.** All flags requiring input must be followed by `=` and then the value. Replace `eth0` with your network interface below, if not eth0.
+
+{: .file }
+**/etc/ntopng/ntopng.conf**
+: ~~~ conf
+	-G=/var/run/ntopng.pid
+--user=ntopng
+--interface=eth0
+-w=[domain_or_ip]:3005
+--community
+--daemon
+--dump-flows=logstash # optional
+--disable-autologout # optional
+--disable-login=1 # optional
+  ~~~
+
+# Configuration File Breakdown
+
+*	-G: Pid file path (included by default in the file).
+*	--user: The designated user ntopng will run as. Leaving this flag out will default to user `nobody`.
+*	--interface: The network interface ntopng will monitor.
+*	-w: Http address and port we’ll use to connect to the admin interface. Port 3005 is used here, although you may use any open port on your system. Unless designated by the `-W` flag, ntopng will use the subsequent port for SSL connections.
+*	--community: The type of license ntopng will run under. Community is the free version, so we’ll be using it here.
+*	--daemon: ntopng can be run as a forward service or as a background daemon. We will want to daemonize it to allow use of the terminal.
+*	--dump-flows: Logged traffic can be shared with other services running in tandem with ntopng. This includes Logstash, Elasticsearch, and MySQL. I’ve set mine to share its information with Logstash which runs as part of an ELK stack. If you’re interested in learning about and installing Logstash/Elasticsearch, you can view the [Visualizing Apache Webserver Logs in the ELK Stack on Debian 8]( /docs/databases/elasticsearch/visualizing-apache-webserver-logs-in-the-elk-stack-on-debian-8) guide here.
+*	--disable-autologout: This forces ntopng to allow users to remain logged into the web interface without being deactivated for inactivity.
+*	--disable-login: Since I’m the sole administrator of my Linode, I’ve chosen to set this flag to 1 to disable password authentication. Setting the flag to 0 will require users to login with a username/password combination.
+
+# Open Ports For ntopng
+
+1.	**For UFW:**
+
+      ufw allow ports 3005:3006/tcp
+
+2.	**For iptables:**
+
+      iptables -A INPUT -p tcp --match multiport --dports 3005:3006 -j ACCEPT
+
+## Introduction To The Web Interface
+
+1.	From the terminal, initialize ntopng by typing `ntopng /etc/ntopng/ntopng.conf` where the file path represents the location of the config file.
+
+2.	Navigate to `[domain_or_ip:3005]`. If you elected to enable autologin, you’ll be routed to the *Welcome* page. If you did not enable autologin, enter `username:admin` and `password:admin` in the popup window. The system will then prompt you to set a new password.
+
+# Enable GeoLocation
+
+In order to familiarize yourself with the admin interface, we’ll complete a few setup tasks. The first will be enabling GeoLocation. ntopng uses Google’s map service to display this data, and we’ll need to obtain an API key from Google to make the connection.
+
+1.	 In the web interface, click on the *Settings* gear button adjacent to the search field located in the top right of the page. Select *Preferences*.
+
+2.	Click on *Misc* near the bottom left corner. Click on the link contained in the **Web User Interface** section and you will be redirected to Google’s API page.
+
+3.	Scroll down the page until you find a link which reads *requests made with an API Key*. Follow the instructions given to obtain a key. Copy the key and paste it into the text field in the **Web User Interface** section in ntopng.
+
+# Test GeoLocation
+
+Now let’s test our setup to confirm the ntopng instance can connect to google. 
+
+1.	Mouse over the *Hosts* dropdown list at the top of the page. Click on *Hosts*. 
+
+2.	You’ll be routed to a page which displays the current traffic flowing through your server. Locate the public IP address of the machine you’re using to SSH into your Linode. Click on the IP address.
+
+3.	The next page will display various information about your device. Note at the top menu the assortment of options available to analyze and drill down into your connection data. Click on the globe button. You’ll be taken to a world map displaying your various data connections. The below screenshot displays my connection from Seattle to Fremont, California, where Linode hosts my VPS.
+
+# Create a Host Pool
+
+ntopng allows you to group devices which transmit data through the monitored machine together for enhanced reporting and management. Perhaps you’re a systems administrator and want to group devices together by department, or device type. Maybe you host a media server and want to set up a group for your home devices. I host OpenVPN on my Linode, so in the following example I’m going to group my connected devices together. 
+
+1.	In the *Interfaces* dropdown menu, select your main connetion interface. In my case, it’s `eth0`. In the menu directly below the *ntop* logo, select the icon that resembles a group of 3 people. Now, select *Manage Pools*
+
+2.	Click on the `+` icon on the far right of the screen. Give your pool a descriptive name and save. 
+
+3.	Now click on the *Unassigned Devices* tab. Here, you’ll see a list of devices currently transmitting data through the Linode (you should at least see the PC you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Don’t forget to click on *Save Settings* when you’re finished. 
+
+4.	To view data from your host pool, you’ll need to mouse over the *Hosts* dropdown and select *Host Pools*. You’ll find the pool name you created listed on this page. Click on it. Here, you’ll see all currently open connections from each of the hosts in your host pool. 
+
+{: .Note}
+>
+> If you want to see all the host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
+
+# Enable Security Alerts
+
+Although there is a broad array of software capable of managing and escalating security issues, ntopng provides a simple and convenient method for monitoring threats.
+
+{: .Note}
+>
+> ntopng does not replace core security features such as a properly configured firewall, but is best run in tandem with an existing internal setup. 
+
+1.	Near the top of the web interface, scroll over *Settings* and select *Preferences*. Click on *Alerts* in the menu to the left. Click on *Enable Alerts* and choose which alerts you’d like to enable. On my instance, I have all alert types turned on and the default alert retention set. 
+
+2.	Now scroll over the alert-looking icon with the exclamation point in the top menu bar. Click on *Alerts*. All network alerts will be recorded and displayed here. In my experience, this page fills up fast due to the fondness our fellow peers on the internet have for launching probing attacks. If you locked down all ports on your machine excluding those needed for connections, ntopng will log all attempts to bypass those ports. In addition, ntopng receives nightly updates to a blacklisted hosts file, which are supplied by spamhaus.org and dshield.org. Connections made to and from these blacklisted hosts will be blocked outright by ntopng. This is a very good method for counteracting malware and spam from infecting systems on your network.
+
+## Conclusion and Next Steps
+
+Now that you have some basic knowledge of how ntop is used and some idea of its capabilities, you may want to further explore configurations for your specific situation. You can find very detailed information at the ntopng official website. The site also hosts a very thorough guide on using ntopng to enhance the security of your network. Both links are included below in the **External Resources** section.
+
+external_resources:
+
+- ‘[ntop Main
+Website](http://www.ntop.org/products/traffic-analysis/ntop/)’
+
+- ‘[ntop Network Security Guide]
+http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf’
+
+
+
