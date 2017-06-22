@@ -18,6 +18,9 @@ external_resources:
  - '[Timewarrior](https://taskwarrior.org/docs/timewarrior/what.html)'
 ---
 
+
+![Tasklogo](/docs/assets/taskwarrior/Taskwarrior.png)
+
 [Taskwarrior](https://taskwarrior.org/) is an open source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide will walk you through installing Taskwarrior on a Linode.
 
 
@@ -40,7 +43,7 @@ Install Taskwarriror with:
 	
 After the packages are installed, run the command `task`.
 
-If a Taskwarrior a configuration file does not already exist, you'll be asked if you want to create a sample file for your user. 
+You'll be asked if you want to create a configuration file for your user. 
 
 Answer `yes`.
 
@@ -50,7 +53,7 @@ You'll find the sample configuration file at `~/.taskrc`. To learn more about co
 
 ### Add a Task
 
-This is done with [task add](https://taskwarrior.org/docs/commands/add.html), so for example:
+To add a task use [task add](https://taskwarrior.org/docs/commands/add.html), so for example:
 	
     task add Add block storage volume to my Linode
 
@@ -58,12 +61,12 @@ That will return:
 
     Created task 1.
 
-If you then run `task` again, you'll see the job information. Taskwarrior assigns the newly added task an ID, and tracks the time elapsed since you input the command.
+If you then run `task` again, you'll see the job information. Taskwarrior assigns the newly added task an ID, and tracks the time elapsed since you inputted the command.
 
     taskwarrior@localhost:~$ task
     [task next]
     
-    ID Age Description                    Urg
+    ID Age Description                             Urg
      1 14s Add block storage volume to my Linode    0
 
     1 task
@@ -95,7 +98,7 @@ To remove a task you can use `task <task_number> delete`.
 
 ### Assign Tasks a Due Date
 
-This is done using the `due` argument:
+Using the `due` argument, you can assign a due date for a task: 
 
 	task add write Taskwarrior guide for the Linode community due:tomorrow
 
