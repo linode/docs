@@ -2,7 +2,7 @@
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: 'This Quick Answer guide explains how to use version control system Git to create a repository, stage a commit, and then push that commit.'
+description: 'This Quick Answer guide explains how to use Git to create a repository, stage a commit, and then push that commit.'
 keywords: 'Linux, how to use Git, github, create git repo'
 alias: ['quick-answers/how-to-use-git/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,14 +10,14 @@ modified: 'Monday, June 12th, 2017'
 modified_by:
   name: Angel Guarisma
 published: 'Monday, June 19th, 2017'
-title: How to Use Git Version Control System
+title: How to Use Git the Version Control System
 external_resources:
 - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
 - '[Pro Git Book](https://git-scm.com/book/en/v2)'
 - '[Github Guides](https://guides.github.com/)'
 ---
 
-Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can also be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-source-control-on-mac-and-windows).
+Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-source-control-on-mac-and-windows).
 
 1.  Create a folder in which to store your files, then initialize a Git repository in that folder:
 
