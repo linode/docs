@@ -58,7 +58,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 3.  Select the label of the Linode you want to attach the volume to. Then click **Attach**:
 
-    [![Linode Manager add volume](/docs/assets/bs-volume-detaching-small.png)](/docs/assets/bs-volume-attach.png)
+    [![Linode Manager add volume](/docs/assets/bs-volume-attach-small.png)](/docs/assets/bs-volume-attach.png)
 
     {: .note }
      >
