@@ -100,7 +100,7 @@ To remove a task you can run the `task <task_number> delete` command.
 
 ### Assign Tasks a Due Date
 
-Using the `due:` argument, you can assign a due date for a task: 
+Using the `due` argument, you can assign a due date for a task: 
 
 	task add write Taskwarrior guide for the Linode community due:tomorrow
 
@@ -113,9 +113,9 @@ Using the `due:` argument, you can assign a due date for a task:
 	
 	2 tasks
 
-The [due;] argument (https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html) 
+The `due` [argument](https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html) 
 
-Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) by using the `recur:` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
+Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) by using the `recur` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
 
 	task add update ubuntu recur:daily due:daily
 
