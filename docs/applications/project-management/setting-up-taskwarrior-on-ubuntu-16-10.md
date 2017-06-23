@@ -1,6 +1,6 @@
 ---
 author:
-  name: Angel
+  name: Linode
   email: aguarisma@linode.com
 description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.04' 
 keywords: 'Install Taskwarrior,Taskwarrior on Ubuntu,Taskwarrior server' 
