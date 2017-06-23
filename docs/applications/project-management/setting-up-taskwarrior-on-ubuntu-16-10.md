@@ -2,15 +2,15 @@
 author:
   name: Angel
   email: aguarisma@linode.com
-description: 'Install Taskwarrior on Ubuntu 16.04' 
-keywords: 'Install Taskwarrior, Install Taskwarrior on Ubuntu, Install Taskwarrior server ' 
+description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.04' 
+keywords: 'Install Taskwarrior,Taskwarrior on Ubuntu,Taskwarrior server' 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16-10/']
 modified: Tuesday, May 23, 2017
 modified_by:
   name: Angel
 Published: Tuesday, July 1, 2017
-title: 'Getting Started with Taskwarrior'
+title: 'Install Taskwarrior on Ubuntu 16.04'
 external_resources:
  - '[Taskwarrior Official Documentation](https://taskwarrior.org/docs/)'
  - '[Taskwarrior Official Repository](https://github.com/taskwarrior)'
@@ -21,8 +21,7 @@ external_resources:
 
 ![Tasklogo](/docs/assets/taskwarrior/Taskwarrior.png)
 
-[Taskwarrior](https://taskwarrior.org/) is an open source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide will walk you through installing Taskwarrior on a Linode.
-
+[Taskwarrior](https://taskwarrior.org/) is an open-source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.04.
 
 ## Before You Begin
 
@@ -34,34 +33,37 @@ external_resources:
 
         sudo apt update && sudo apt upgrade
 
+## Install Taskwarrior 
 
-## Installing Taskwarrior 
-
-Install Taskwarriror with:
+Install Taskwarriror with the command:
 		
 	sudo apt install task
 	
-After the packages are installed, run the command `task`.
+After the packages are installed, run the command, `task`.
 
-You'll be asked if you want to create a configuration file for your user. 
+The system will ask if you want to create a configuration file for your user. 
 
 Answer `yes`.
 
 You'll find the sample configuration file at `~/.taskrc`. To learn more about configuring `task.rc`, see the [official documentation](https://taskwarrior.org/docs/configuration.html).
 
-## Managing Tasks 
+## Manage Tasks with Taskwarrior
+
+You can manage your tasks and effectively use Taskwarrior with a handful of simple commands. Taskwarrior recommends spending time prioritizing your analog task list before applying the following commands to automate it.
 
 ### Add a Task
 
-To add a task use [task add](https://taskwarrior.org/docs/commands/add.html), so for example:
+To add a task, run the command, [task add](https://taskwarrior.org/docs/commands/add.html). 
+
+For example:
 	
     task add Add block storage volume to my Linode
 
-That will return:
+will return:
 
     Created task 1.
 
-If you then run `task` again, you'll see the job information. Taskwarrior assigns the newly added task an ID, and tracks the time elapsed since you inputted the command.
+If you then run `task` again, you'll see the job information. Taskwarrior assigns the newly added task an ID, and tracks the time elapsed since you ran the command.
 
     taskwarrior@localhost:~$ task
     [task next]
@@ -81,7 +83,7 @@ You can add as many tasks as you want.
 
 ### Complete a Task
 
-After you complete a task, you can mark it done using the [done](https://taskwarrior.org/docs/commands/done.html) command. The syntax is `task <task_number> done`.
+After you complete a task, you can mark it "done" using the [done] command (https://taskwarrior.org/docs/commands/done.html). The syntax is `task <task_number> done`.
 
 	taskwarrior@localhost:~$ task 1 done
     Completed task 1 'Add block storage volume to my Linode'.
@@ -89,7 +91,7 @@ After you complete a task, you can mark it done using the [done](https://taskwar
 
 ### Remove a Task
 
-To remove a task you can use `task <task_number> delete`.
+To remove a task you can run the `task <task_number> delete` command.
 
 	taskwarrior@localhost:~$ task 2 delete
 	Permanently delete task 2 'Attend Linux Users group'? (yes/no) yes
@@ -98,7 +100,7 @@ To remove a task you can use `task <task_number> delete`.
 
 ### Assign Tasks a Due Date
 
-Using the `due` argument, you can assign a due date for a task: 
+Using the `due:` argument, you can assign a due date for a task: 
 
 	task add write Taskwarrior guide for the Linode community due:tomorrow
 
@@ -111,9 +113,9 @@ Using the `due` argument, you can assign a due date for a task:
 	
 	2 tasks
 
-The [due](https://taskwarrior.org/docs/dates.html#due) argument allows a significant amount of freedom for input. Read more about the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html) 
+The [due;] argument (https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html) 
 
-Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) using the `recur` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
+Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) by using the `recur:` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
 
 	task add update ubuntu recur:daily due:daily
 
@@ -130,14 +132,14 @@ Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.h
 
 ### Visualization 
 
-Taskwarrior does a lot more than just list the tasks you've added on the command line. The [burndown](https://taskwarrior.org/docs/commands/burndown.html) feature outputs graphical representations of your Taskwarrior workflow.
+Taskwarrior does much more than just list the tasks you've added on the command line. The [burndown](https://taskwarrior.org/docs/commands/burndown.html) feature outputs graphical representations of your Taskwarrior workflow.
 
 ![taskwarburndown](/docs/assets/taskwarrior/tw-burndown.png)
 
-The `calendar` feature shows a calendar that contains all of your tasks, and their due dates. 
+The `calendar` feature shows a calendar that contains all your tasks and due dates. 
 ![taskcalendar](/docs/assets/taskwarrior/tw-calendar.png)
 
 
-### Next Steps
+### Next Steps with Taskwarrior
 
- The next step in incorporating the Taskwarrior workflow into your life is to install `task server` on your Linode. Because Taskwarrior can be used across all of your devices, including your phones, there needs to be a central place to sync the data. Taskwarrior offers documentation on setting up a task server on your own: [Installing Taskserver](https://taskwarrior.org/docs/taskserver/setup.html)
+The next step to incorporate a Taskwarrior workflow into your life is to install `task server` on your Linode. Because Taskwarrior can be used across all your devices, including your phone, a central server in which to sync the data is needed. Taskwarrior offers do-it-yourself documentation on setting up such a task server: [Installing Taskserver](https://taskwarrior.org/docs/taskserver/setup.html).
