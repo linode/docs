@@ -35,9 +35,9 @@ After completing this guide, you will have a single-node, production-ready insta
 ## Before You Begin
 
 1. Complete the [Getting Started](/docs/getting-started) guide for setting up a new Linode.
-2. While it is recommended to complete the entire [Securing Your Server](/docs/security/securing-you-server) guide, it will be necessary to at least posess a limited user account.
+2. While it is recommended to complete the entire [Securing Your Server](/docs/security/securing-you-server) guide, it will be necessary to at least possess a limited user account.
 
-## Add Apache Repository and GPG Keys
+## Add Repositories and GPG Keys
 
 Add required repositories/gpg keys. Be sure to run the key add commands in the order shown. 
 
