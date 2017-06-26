@@ -3,21 +3,19 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'A step-by-step guide to assessing your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
-keywords: 'mysql,mysqltuner,resource tuning'
-alias: ['databases/mysql/tuning-your-mysql-database/']
+keywords: 'mysql, mysqltuner, performance, tune mysql, resource tuning'
+alias: ['databases/mysql/tuning-your-mysql-database/' 'databases/mysql/mysql-performance-tuning-tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 27th, 2015
 modified_by:
   name: Linode
 published: 'Friday, February 27th, 2015'
-title: MySQL Performance Tuning Tutorial
+title: How to Optimize MySQL Performance using MySQLTuner
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
-
-# How to Optimize MySQL Performance using MySQLTuner
 
 Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
@@ -102,13 +100,13 @@ The file you are changing is located at `/etc/mysql/my.cnf`.
 >
 >Best practices suggest that you make small changes at a time and monitor the server after each change. After each change restart MySQL:
 >
->-	On Debian/Ubuntu:
+>-	For systems without systemd:
+>
+>		systemctl restart mysqld
+>
+>-	For distributions which don't use systemd:
 >
 >		service mysql restart
->
->-	On CentOS/Fedora:
->
->		/etc/init.d/mysqld restart
 >
 >When changing values in the `my.cnf` file be sure that the line you are changing is not commented out with the pound (`#`) prefix.
 
