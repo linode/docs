@@ -92,15 +92,14 @@ ntopng has a built in web server and initializer. Configuration options can be d
                 tx-tcp-mangleid-segmentation: off
                 tx-tcp6-segmentation: off
 
-4.  Create `/etc/ntopng/ntopng.conf` and match the contents to the example listed below. Replace `example.com` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. If you want to review available configuration parameters, run `man ntopng` from the terminal.
+4.  Create `/etc/ntopng/ntopng.conf` and match the contents to the example listed below. Replace `192.0.2.0` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. If you want to review available configuration parameters, run `man ntopng` from the terminal.
 
     {: .file }
     **/etc/ntopng/ntopng.conf**
     : ~~~ conf
       --user=ntopng
       --interface=eth0
-      -w=3005
-      -m="example.com"
+      -w=192.0.2.0:3005
       --community
       --daemon
       --dump-flows=logstash # optional
@@ -110,7 +109,7 @@ ntopng has a built in web server and initializer. Configuration options can be d
 
     {: .note}
     >
-    > The flags commented with `# optional` are **not mandatory.** All flags requiring input must be followed by a `=`, and a value. Replace `eth0` with your network interface below, if you are not using `eth0`.
+    > The option flag commented with `# optional` are **not mandatory.** All flags requiring input must be followed by a `=`, and a value. Replace `eth0` with your network interface below, if you are not using `eth0`.
 
 ##### Configuration File Breakdown
 
@@ -120,7 +119,6 @@ ntopng has a built in web server and initializer. Configuration options can be d
 | --user | Designates the user `ntopng` will run under. Leaving this flag out of the configuration file will default to `nobody`.  |
 | --interface | The network interface ntopng will monitor.  |
 | -w | HTTP address and port used to connect to the admin interface. While port `3005` is the default, you may define any.  |
-| -m | Sets the local network. |
 | --community | The license ntopng will run under. |
 | --daemon | ntpong can be used as a forward service or as a background daemon. |
 | --dump-flows | Logged traffic can be shared with other services |
@@ -141,7 +139,7 @@ ntopng has a built in web server and initializer. Configuration options can be d
 
 1.  From the terminal, initialize ntopng by typing `ntopng /etc/ntopng/ntopng.conf`. If your config file is in a different directory, adjust the command accordingly.
 
-2.  Use a web browser to navigate to `example.com:3005`, replacing `example.com` with your domain or IP. If you enabled autologin, you’ll be routed to the *Welcome* page. If you did not enable autologin, enter `username:admin` and `password:admin` in the popup window. The system will then prompt you to set a new password.
+2.  Use a web browser to navigate to `192.0.2.0:3005`, replacing `192.0.2.0` with your domain or IP. If you enabled autologin, you’ll be routed to the *Welcome* page. If you did not enable autologin, enter `username:admin` and `password:admin` in the popup window. The system will then prompt you to set a new password.
 
 ## Create a Host Pool
 
