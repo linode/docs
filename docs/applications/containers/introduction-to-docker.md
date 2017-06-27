@@ -44,7 +44,7 @@ A Dockerfile uses the following commands for building the images:
 *  **ENV** - set environment variables
 *  **EXPOSE** - expose a specific port to enable networking between the container and the outside world
 *  **FROM** - define the base image used to start the build process
-*  **MAINTAINER** - define a full name and email address of the image creator
+*  **MAINTAINER** - define the full name and email address of the image creator
 *  **RUN** - central executing directive for Dockerfiles
 *  **USER** - set the UID (the username) which is to run the container
 *  **VOLUME** - enable access from the container to a directory on the host machine
@@ -70,3 +70,7 @@ Docker makes it easy to join servers together to form a cluster, called a Docker
 *  Perform rolling updates across containers
 *  Provide redundancy and failover
 *  Add or subtract container iterations as demands change
+
+## Next Steps
+
+To explore Docker further, visit our [Docker Quick Reference](docs/applications/containers/docker-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](docs/applications/containers/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide.
