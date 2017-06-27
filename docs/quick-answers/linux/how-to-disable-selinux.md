@@ -2,8 +2,8 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to disable SELinux'
-keywords: 'terminal, selinux, nsa, disable selinux'
+description: 'Security-Enhanced Linux works to filter system access. On occasion, recently installed apps run poorly on SELinux. This Quick Answer will show you how to disable SELinux when you need to.'
+keywords: 'terminal, selinux, disable selinux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
 modified: 'Friday, June 23, 2017'
@@ -19,7 +19,9 @@ external_resources:
 
 ### Security Enhanced Linux
 
-Security-Enhanced Linux (SELinux) is a security module developed by the National Security Agency (NSA) and Red Hat. With SELinux, the administrator can enforce a set of policies for the users of a system. The policies provide a virtual sandbox for applications to run. SELinux is like a firewall for applications: SELinux policies function as a set of rules to filter system access.
+Security-Enhanced Linux (SELinux) is a security module developed by the National Security Agency (NSA) and Red Hat. With SELinux, an  administrator can enforce a set of policies for the system users. These policies can provide a virtual sandbox in which applications can run. SELinux is like a firewall for applications; its policies function as a set of rules to filter system access.
+
+At times, SELinux can disupt the functionality of a recently installed app, and therefore, may need to be disabled. This Quick Answer guides you through the steps necessary to shut it down (but not uninstall). 
 
 {: .note}
 >
@@ -29,9 +31,9 @@ Security-Enhanced Linux (SELinux) is a security module developed by the National
 
 {: .caution}
 > Disabling SELinux removes a security feature on your system, and doing so may expose your data.
-> If you are considering disabling SELinux to fix an application on your system, consider fixing the application to work within SELinux instead.
+> If you are considering disabling SELinux to fix an application on your system, consider fixing the application to work within SELinux, instead.
 
-Uninstalling SELinux is not recommended. However, in certain instance it might be easier to disable SELinux than it is to write policies that support SELinux in your environment.
+However, in certain instances it might be easier to disable SELinux than it is to write policies that support SELinux in your environment. Uninstalling SELinux is not recommended. 
 
 To disable SELinux on your Linode:
 
