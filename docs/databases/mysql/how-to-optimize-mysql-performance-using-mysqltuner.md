@@ -6,7 +6,7 @@ description: 'A step-by-step guide to assessing your MySQL database performance 
 keywords: 'mysql, mysqltuner, performance, tune mysql, resource tuning'
 alias: ['databases/mysql/tuning-your-mysql-database/' 'databases/mysql/mysql-performance-tuning-tutorial']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, February 27th, 2015
+modified: Tuesday, June 27th, 2017
 modified_by:
   name: Linode
 published: 'Friday, February 27th, 2015'
@@ -17,11 +17,11 @@ external_resources:
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
 
-Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
+Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration.
+![MySQL tuning title graphic](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
 
 {: .note}
 >
