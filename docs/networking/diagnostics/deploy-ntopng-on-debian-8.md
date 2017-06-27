@@ -175,4 +175,4 @@ ntopng provides a simple and convenient method for monitoring threats.
 
 ### Next Steps
 
-Now that you have some basic knowledge of how ntop is used and some idea of its capabilities, you may want to further explore configurations for your specific situation. You can find detailed information at the ntopng official website. The site also hosts a very thorough guide on using ntopng to enhance the security of your network. Both links are included below in the **More Information** section.
+Now that you have some basic knowledge of how ntop is used and some idea of its capabilities, you may want to further explore configurations for your specific situation. You can find detailed information at the ntopng official website. The site also hosts a thorough guide on using ntopng to enhance the security of your network. Both links are included below in the **More Information** section.
