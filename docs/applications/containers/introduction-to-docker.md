@@ -19,6 +19,8 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
+![An introduction to Docker](/docs/assets/docker-introduction.png "An introduction to Docker")
+
 ## What is Docker?
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages that contain everything needed to run an application (code, libraries, runtime, system settings, and dependencies). These packages are called containers. 
