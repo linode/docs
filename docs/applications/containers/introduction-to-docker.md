@@ -8,16 +8,17 @@ contributor:
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
 keywords: 'docker,container,dockerfile'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, June 30, 2017
+modified: Wednesday, June 28, 2017
 modified_by:
   name: Linode
-published: 'Friday, June 30, 2017'
+published: 'Wednesday, June 28, 2017'
 title: 'An Introduction to Docker'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 ---
+
 ## What is Docker?
 
 Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages that contain everything needed to run an application (code, libraries, runtime, system settings, and dependencies). These packages are called containers. 
