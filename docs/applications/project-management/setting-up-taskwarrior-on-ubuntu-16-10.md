@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: aguarisma@linode.com
-description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.04' 
+description: 'This tutorial shows you how to install Taskwarrior on Ubuntu 16.10' 
 keywords: 'Install Taskwarrior,Taskwarrior on Ubuntu,Taskwarrior server' 
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16-10/']
+alias: ['docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16-04/']
 modified: Tuesday, May 23, 2017
 modified_by:
   name: Angel
 Published: Tuesday, July 1, 2017
-title: 'Install Taskwarrior on Ubuntu 16.04'
+title: 'Install Taskwarrior on Ubuntu 16.10'
 external_resources:
  - '[Taskwarrior Official Documentation](https://taskwarrior.org/docs/)'
  - '[Taskwarrior Official Repository](https://github.com/taskwarrior)'
@@ -21,7 +21,7 @@ external_resources:
 
 ![Tasklogo](/docs/assets/taskwarrior/Taskwarrior.png)
 
-[Taskwarrior](https://taskwarrior.org/) is an open-source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.04.
+[Taskwarrior](https://taskwarrior.org/) is an open-source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.10.
 
 ## Before You Begin
 
