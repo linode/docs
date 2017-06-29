@@ -3,25 +3,27 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'A step-by-step guide to assessing your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
-keywords: 'mysql, mysqltuner, performance, tune mysql, resource tuning'
-alias: ['databases/mysql/tuning-your-mysql-database/' 'databases/mysql/mysql-performance-tuning-tutorial']
+keywords: 'mysql,mysqltuner,resource tuning'
+alias: ['databases/mysql/tuning-your-mysql-database/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, June 27th, 2017
+modified: Friday, February 27th, 2015
 modified_by:
   name: Linode
 published: 'Friday, February 27th, 2015'
-title: How to Optimize MySQL Performance using MySQLTuner
+title: MySQL Performance Tuning Tutorial
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
  - '[MySQL Tuning Server Parameters](http://dev.mysql.com/doc/refman/5.7/en/server-parameters.html)'
  - '[MySQLTuner](http://mysqltuner.com/)'
 ---
 
-Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
+# How to Optimize MySQL Performance using MySQLTuner
 
-![MySQL tuning title graphic](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
+Running MySQL at optimal settings for specific resources helps in handling larger server loads and prevents any server slow-down. Generally, after [tuning Apache](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server) to handle larger loads it is beneficial to tune MySQL to additional connections.
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration.
+
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
 
 {: .note}
 >
@@ -100,13 +102,13 @@ The file you are changing is located at `/etc/mysql/my.cnf`.
 >
 >Best practices suggest that you make small changes at a time and monitor the server after each change. After each change restart MySQL:
 >
->-	For systems without systemd:
->
->		systemctl restart mysqld
->
->-	For distributions which don't use systemd:
+>-	On Debian/Ubuntu:
 >
 >		service mysql restart
+>
+>-	On CentOS/Fedora:
+>
+>		/etc/init.d/mysqld restart
 >
 >When changing values in the `my.cnf` file be sure that the line you are changing is not commented out with the pound (`#`) prefix.
 
