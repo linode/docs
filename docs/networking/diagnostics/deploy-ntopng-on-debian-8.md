@@ -22,6 +22,8 @@ external_resources:
 
 ---
 
+![ntopngbanner](/docs/assets/ntopng/ntopng__Debian8.png)
+
 ## Overview of ntopng, the Network Monitoring System
 
 In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you'll be able to perform the following:
