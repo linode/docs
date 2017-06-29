@@ -2,27 +2,27 @@
 author:
   name: Andrew Lescher
   email: docs@linode.com
-description: 'Linode's tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows, on Debian 8.'
-keywords: 'ntopng, network monitor, debian 8, debian jessie'
+description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows, on Debian 8.'
+keywords: 'ntopng,network monitor,debian 8,debian jessie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, June 28, 2017'
 modified: Wednesday, June 28, 2017
 modified_by:
-  name: 'Andrew Lescher'
-title: 'Deploy Network Monitoring Tool, Ntopng, on Debian 8'
+  name: Andrew Lescher
+title: 'Deploy Network Monitoring Tool, ntopng, on Debian 8'
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940/
-external_resources: 
-- '[ntop Main Website](http://www.ntop.org/products/traffic-analysis/ntop/)'
-- '[ntop Network Security Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf)'
+external_resources:
+ - '[ntop Main Website](http://www.ntop.org/products/traffic-analysis/ntop/)'
+ - '[ntop Network Security Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 ---
 
-![ntopngbanner](/docs/assets/ntopng/ntopng__Debian8.png)
+![Deploy network monitoring tool, ntopng, on Debian 8](/docs/assets/ntopng/ntopng-on-debian8.png "Deploy network monitoring tool, ntopng, on Debian 8")
 
 ## Overview of ntopng, the Network Monitoring System
 

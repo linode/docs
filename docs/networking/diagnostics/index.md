@@ -1,7 +1,7 @@
 ---
 deprecated: false
 author:
-  name: Dave Russell
+  name: Linode
   email: docs@linode.com
 description: 'How to diagnose network-related issues.'
 keywords: 'networking,network guide,networking howto'
