@@ -169,13 +169,13 @@ Databases store data in a structured and easily accessible manner, serving as th
 
         sudo apt-get install mysql-server
 
-2.  You will be prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes.
+2.  In older versions, you would have been prompted to enter a password for the MySQL root user. This is not related to the root user for your Linode, so be sure to choose a different password for security purposes. Proceed to set the initial root password in the next step.
 
 3.  Secure MySQL using the `mysql_secure_installation` utility:
 
         sudo mysql_secure_installation
 
-4.  The `mysql_secure_installation` utility appears. Follow the instructions to remove anonymous user accounts, disable remote root login, and remove the test database.
+4.  The `mysql_secure_installation` utility appears. You will be asked to enter the root password, which is empty, so just hit return and proceed to set the initial password. Further follow the instructions to remove anonymous user accounts, disable remote root login, and remove the test database.
 
 That's it! MySQL is now installed and running on your Linode.
 
@@ -276,11 +276,11 @@ PHP is a general-purpose scripting language that allows you to produce dynamic a
 
 1.  Install the base PHP package:
 
-        sudo apt-get install php5 php-pear
+        sudo apt-get install php7.0 php-pear
 
 2.  Add the MySQL support extension for PHP:
 
-        sudo apt-get install php5-mysql
+        sudo apt-get install php7.0-mysql
 
 ### Optimize PHP for a Linode 2GB
 
