@@ -13,6 +13,8 @@ published: 'Monday, April 10th, 2017'
 title: How to Use the Grep Command
 ---
 
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/pz2xgdch29?videoFoam=true" title="Linode - How to use the grep command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+
 In this guide, you'll learn how to use the `grep` command. When performing administrative tasks on your Linode, many commands will give you more information than you need. Using `grep` allows you to filter that output in order to find only the data that's relevant.
 
 1.  To search a file for a particular string, provide the string and filename as arguments:

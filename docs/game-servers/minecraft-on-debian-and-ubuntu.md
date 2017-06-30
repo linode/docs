@@ -8,20 +8,21 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
-modified: Tuesday, January 17th, 2017
+ - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
+ - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
+modified: Monday, June 12th, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Angel Guarisma
 published: 'Wednesday, January 28, 2015'
 title: 'Minecraft on Debian and Ubuntu'
 alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/']
 ---
 
-This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS.
+This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update. 
 
 ##Prerequisites
 
-{: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as a limited user with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
@@ -29,17 +30,22 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 3.  Update your Linode's software:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 3.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
+	{: .note}
+	> Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
+	> `sudo apt remove openjdk-7-\*` before continuing with this guide.
+ 
+
     - In Ubuntu 16.04:
 
-          sudo apt-get install openjdk-8-jre-headless screen
+          sudo apt install openjdk-8-jre-headless screen
 
     - In Debian 8:
  
-          sudo apt-get install openjdk-7-jre-headless screen
+          sudo apt install openjdk-8-jre-headless screen
 
 4.  Create a new user for Minecraft to run as:
 
@@ -58,7 +64,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 2.  Download the latest version of the Minecraft Multiplayer Server from [Minecraft.net](https://minecraft.net/). Replace the URL in this example to match the current version:
 
-        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.11.2/minecraft_server.1.11.2.jar
+        wget https://s3.amazonaws.com/Minecraft.Download/versions/1.12/minecraft_server.1.12.jar
 
     Refer to the [Minecraft server page](https://minecraft.net/en/download/server) to check for the latest release.
 
@@ -71,7 +77,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         BINDIR=$(dirname "$(readlink -fn "$0")")
         cd "$BINDIR"
 
-        java -Xms1024M -Xmx1536M -jar minecraft_server.1.11.2.jar -o true
+        java -Xms1024M -Xmx1536M -jar minecraft_server.1.12.jar -o true
         ~~~
 
     {: .note }
@@ -86,7 +92,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
 
         $ ./run.sh
-        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.11.2
+        [21:39:43] [Server thread/INFO]: Starting minecraft server version 1.12
         [21:39:43] [Server thread/INFO]: Loading properties
         [21:39:43] [Server thread/WARN]: server.properties does not exist
         [21:39:43] [Server thread/INFO]: Generating new properties file
@@ -111,7 +117,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     This time the Minecraft server console will generate a lot of output as it creates required configuration files and generates the Minecraft world:
 
-        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.11.2
+        [22:00:06] [Server thread/INFO]: Starting minecraft server version 1.12
         [22:00:06] [Server thread/INFO]: Loading properties
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair
