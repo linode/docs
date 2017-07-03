@@ -9,9 +9,11 @@ featured:
  - accounts-and-passwords.md
  - linode-images.md
  - linode-managed.md
+ - how-to-use-block-storage-with-your-linode.md
  - kvm-reference.md
  - package-mirrors.md
  - automating-server-builds.md
+ - use-coreos-container-linux-on-linode.md
  - stackscripts.md
  - billing-and-payments.md
  - upgrade-to-hourly-billing.md

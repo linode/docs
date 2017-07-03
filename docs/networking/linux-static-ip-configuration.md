@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Tuesday, March 11th, 2017
+modified: Thursday, June 8th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -72,7 +72,7 @@ For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5
 >
 >Using the examples below, be sure the IP addresses you enter reflect those shown under the **Remote Access** tab of the Linode Manager.
 
-### Arch
+### Arch / CoreOS Container Linux
 
 Add the following addressing to the interface's configuration:
 
