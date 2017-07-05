@@ -15,6 +15,8 @@ external_resources:
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
 ---
 
+![How to Install NixOS on Linode](/docs/assets/nixos-title.png "How to Install NixOS on Linode")
+
 [NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix is a package manager with a focus on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques. While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages which can make deploying software and application updates easier.
 
 {: .caution}
