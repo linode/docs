@@ -175,7 +175,7 @@ Ntopng provides a simple and convenient method for monitoring threats.
 
 2.  Scroll over the alert icon with the exclamation point in the top menu bar. Click on **Alerts**. All network alerts are recorded and displayed here. This page fills up quickly due to internet traffic and bot probes. If you locked down all ports on your machine excluding those needed for connections, ntopng will log all attempts to bypass those ports. 
 
-In addition, ntopng receives nightly updates to a blacklisted hosts file, supplied by [spamhaus.org](spamhaus.org) and [dshield.org](dshield.org). Connections made to and from these blacklisted hosts will be blocked outright by ntopng. While this should not be considered a full security solution, this is a good start to counteract malware and spam from infecting systems on your network.
+In addition, ntopng receives nightly updates to a blacklisted hosts file, supplied by [spamhaus.org](https://spamhaus.org) and [dshield.org](https://dshield.org). Connections made to and from these blacklisted hosts will be blocked outright by ntopng. While this should not be considered a full security solution, this is a good start to counteract malware and spam from infecting systems on your network.
 
 ### Next Steps with ntopng
 
