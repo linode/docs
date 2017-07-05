@@ -36,7 +36,7 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 ### Before You Begin
 
 1. Complete the [Getting Started](/docs/getting-started) guide for setting up a fresh Linode.
-2. Secure your server by following the steps outlined in the [Securing Your Server](/docs/security/securing-you-server) guide.
+2. Secure your server by following the steps outlined in the [Securing Your Server](/docs/security/securing-your-server) guide.
 3. This guide will use UFW (Uncomplicated Firewall) to set the firewall rules, but you may use iptables instead. Instructions will be presented for both. If you aren’t familiar with UFW, follow the guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
 4. OpenVPN will be used as an example to demonstrate the capabilities of ntopng. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about OpenVPN, read the [Setting up a Hardened OpenVPN Server on Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server) guide.
 
