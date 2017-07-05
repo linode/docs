@@ -20,7 +20,9 @@ The Linode Command Line Interface (**CLI**) is an [open-source](https://github.c
 
 Your Linode [API key](/docs/api/key) is required for the CLI to function.
 
-## Installing the CLI
+![Linode CLI](/docs/assets/linode-cli.png "Linode CLI")
+
+## Install the CLI
 
 You can install the Linode CLI on any Mac OS X or Linux computer. You can install it on a Linode if you want to, but the typical use case for the CLI is to run it from your home or office workstation. You can use it to manage your Linode account quickly, without the use of a GUI.
 

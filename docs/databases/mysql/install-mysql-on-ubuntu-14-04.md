@@ -18,6 +18,8 @@ external_resources:
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
 
+![Install MySQL on Ubuntu 14.04](/docs/assets/install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")
+
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
 We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide. 

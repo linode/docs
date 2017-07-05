@@ -13,6 +13,8 @@ published: 'Friday, October 18th, 2013'
 title: Migrate from Shared Hosting to Linode
 ---
 
+![Migrate from Shared Hosting to Linode](/docs/assets/migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")
+
 This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.
 
 The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/security/backups/backing-up-your-data).
