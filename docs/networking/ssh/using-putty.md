@@ -16,6 +16,8 @@ external_resources:
  - '[Xming Manual](http://www.straightrunning.com/XmingNotes/manual.php)'
 ---
 
+![Using PuTTY](/docs/assets/using-putty.png "Using PuTTY")
+
 PuTTY is a free, open source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon (usually provided by OpenSSH). With this software, you can work as if you were logged into a console session on the remote system.
 
 ## Obtaining and Running PuTTY

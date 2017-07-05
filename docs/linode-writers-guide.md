@@ -16,6 +16,8 @@ external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
 ---
 
+![Linode Writer's Guide](/docs/assets/linode-writers-guide.png "Linode Writer's Guide")
+
 Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
 
 ## Update
