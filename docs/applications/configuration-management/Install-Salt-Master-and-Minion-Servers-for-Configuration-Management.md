@@ -2,18 +2,18 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'How to Install a Salt Master and Salt Minions.'
-keywords: 'salt, saltstack, open source configuration management, cloud orchestration, infrastructure automation, systems management software, dev ops, install, beginner, Debian 8'
+description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
+keywords: 'Install salt, salt configuration management, salt master'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/salt/install-salt/']
+alias: ['applications/salt/install-salt/','applications/configuration-management/install-salt/]
 modified: Thursday, July 2nd, 2015
 modified_by:
     name: James Stewart
 published: 'Tuesday, September 22nd, 2015'
-title: Install Salt
+title: Install Salt Master and Minion Servers for Configuration Management
 ---
 
-[Salt](https://saltstack.com/) is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a salt master and multiple salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.
+[Salt](https://saltstack.com/) is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a Salt master and multiple Salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.
 
 {: .note}
 >
