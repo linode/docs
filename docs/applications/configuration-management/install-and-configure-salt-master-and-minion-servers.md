@@ -5,7 +5,7 @@ author:
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
 keywords: 'Install salt, salt configuration management, salt master'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/salt/install-salt/','applications/configuration-management/install-salt/]
+alias: ['applications/salt/install-salt/','applications/configuration-management/install-salt/']
 modified: Monday, July 10th, 2017
 modified_by:
     name: Linode
