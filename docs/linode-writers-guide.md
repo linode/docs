@@ -5,7 +5,6 @@ author:
 description: 'Information on submitting articles to Linode Guides & Tutorials, including benefits and procedures.'
 keywords: 'writing,open source software,contribute linode docs, submissions,linode guides and tutorials,guides,tutorials'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['contribute/']
 modified: Tuesday, December 20th, 2016
 modified_by:
   name: Linode
