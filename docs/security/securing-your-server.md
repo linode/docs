@@ -215,51 +215,30 @@ Most Linux distributions install with running network services which listen for 
 
 To see your Linode's running network services:
 
-    sudo netstat -tulpn
+    sudo ss -tulpn
 
 {: .note}
 >
->If netstat isn't included in your Linux distribution by default, install the package `net-tools` or use the `ss -tulpn` command instead.
+>netstat has been deprecated, so use `ss -tulpn` command instead.
 
-The following is an example of netstat's output. Note that because distributions run different services by default, your output will differ. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
+Example of ss output. Distributions run different services by default, so your output will differ. If you are unsure of what a service does, search to learn what it is before disabling it.
 
 ~~~
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      7315/rpcbind
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3277/sshd
-tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      3179/exim4
-tcp        0      0 0.0.0.0:42526           0.0.0.0:*               LISTEN      2845/rpc.statd
-tcp6       0      0 :::48745                :::*                    LISTEN      2845/rpc.statd
-tcp6       0      0 :::111                  :::*                    LISTEN      7315/rpcbind
-tcp6       0      0 :::22                   :::*                    LISTEN      3277/sshd
-tcp6       0      0 ::1:25                  :::*                    LISTEN      3179/exim4
-udp        0      0 127.0.0.1:901           0.0.0.0:*                           2845/rpc.statd
-udp        0      0 0.0.0.0:47663           0.0.0.0:*                           2845/rpc.statd
-udp        0      0 0.0.0.0:111             0.0.0.0:*                           7315/rpcbind
-udp        0      0 192.0.2.1:123           0.0.0.0:*                           3327/ntpd
-udp        0      0 127.0.0.1:123           0.0.0.0:*                           3327/ntpd
-udp        0      0 0.0.0.0:123             0.0.0.0:*                           3327/ntpd
-udp        0      0 0.0.0.0:705             0.0.0.0:*                           7315/rpcbind
-udp6       0      0 :::111                  :::*                                7315/rpcbind
-udp6       0      0 fe80::f03c:91ff:fec:123 :::*                                3327/ntpd
-udp6       0      0 2001:DB8::123           :::*                                3327/ntpd
-udp6       0      0 ::1:123                 :::*                                3327/ntpd
-udp6       0      0 :::123                  :::*                                3327/ntpd
-udp6       0      0 :::705                  :::*                                7315/rpcbind
-udp6       0      0 :::60671                :::*                                2845/rpc.statd
-~~~
+Netid  State      Recv-Q Send-Q Local Address:Port               Peer Address:Port              
+tcp    LISTEN     0      128       *:22                    *:*                  
+	 cubic rto:1000 mss:536 cwnd:10 lastsnd:6226403 lastrcv:6226403 lastack:6226403~~~
 
-Netstat tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
+ss tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 
 #### TCP
 
-See the **Local Address** column of the netstat readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+See the **Local Address** column of the ss readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
 
 #### UDP
 
 UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*.
 
-Our netstat output shows that NTPdate is: 1) accepting incoming connections on the Linode's public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.
+Our ss output shows that NTPdate is: 1) accepting incoming connections on the Linode's public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.
 
 ### Determine Which Services to Remove
 
@@ -292,7 +271,7 @@ How to remove the offending packages will differ depending on your distribution'
 
     sudo dnf remove package_name
 
-Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
+Run `sudo ss -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
 
 ## Configure a Firewall
 
