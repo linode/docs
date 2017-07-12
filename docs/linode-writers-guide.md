@@ -17,25 +17,19 @@ external_resources:
 
 ![Linode Writer's Guide](/docs/assets/linode-writers-guide.png "Linode Writer's Guide")
 
-Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for guides on popular, trending topics, and updates to existing guides. If you're interested in writing for Linode, this page describes the process for submitting your work. If your guide is published, you'll receive $250 per article by PayPal or in Linode credit.
+Linode has a thriving community of authors who contribute to Linode Guides and Tutorials. We are always looking for qualified technical writers who can create guides associated with those topics we list (and update) on our [Contribute](/docs/contribute) page, and/or update popular existing guides. 
 
-## Update
-
-Linode's bounty program has been an overwhelming success. Too succesful, in fact! Our inbox and repository are overflowing with proposed articles.
-
-As a four-person team responsible for both internally and externally sourced docs, we're in a bit over our collective head. That's why - until further notice - we're no longer accepting new submissions for the Linode bounty program. Any new guides submitted, whether through GitHub or email, will be rejected without review.
-
-Rest assured, this is a temporary moratorium. Once we've cleared through the backlog and given the appropriate time and consideration (and, hopefully, payout) to the authors already patiently waiting, we'll resume the bounty program and with it, introduce a revised set of topic requirements. Further updates will be posted here or on our [Github page](https://github.com/linode/docs).
-
-Please note, if you see the need for a correction in an existing guide, feel free to make a pull request. We still want to improve and update our existing guides, even as we review new ones.
+If you're interested in writing for Linode, the [Contribute](/docs/contribute) page describes the process for submitting your work. If your guide is accepted and then published, you'll receive up to $300 per article by check, wire, or in Linode credit.
 
 ## Content Guidelines
 
 Guides should instruct readers how to accomplish a task on, or relating to, a Linode or Linodes. When writing, think of both *what* the guide should accomplish and *why* the reader would want to use your guide. A guide should consist of about 90% instruction with 10% explanation.
 
-Guides should be informational but friendly. Use the active voice whenever possible, and the pronouns *you* or *we* instead of *I*. Avoid unnecessary information. Brief, to-the-point explanations are preferred, but also consider the audience and the level of technical ability needed to complete each task. A beginner's topic usually will require more detailed explanations than one for an advanced user.
+A succinct, two or three sentence overview of your topic should begin the guide.
 
-To be considered, submissions must be written in English and adhere to the formatting described in our [Writer's Formatting Guide](/docs/linode-writers-formatting-guide). The primary qualities we look for in a guide are:
+Guides should be informational but friendly. Use the active voice whenever possible, and the pronouns *you* or (to a much lesser extent) *we* instead of *I*. Avoid unnecessary information. Brief, to-the-point explanations are preferred, but also consider the audience and the level of technical ability needed to complete each task. A beginner's topic usually will require more detailed explanations than one for an advanced user.
+
+Accepted submissions will be written in English and must adhere to the formatting described in our [Writer's Formatting Guide](/docs/linode-writers-formatting-guide). The primary qualities we look for in a guide are:
 
 *   **Accuracy:** Instructions should be straightforward, technically correct and thoroughly tested. Include brief explanations of each step to explain the purpose of each action. Guides can use technical jargon pertinent to Linode, Linux, and related topics, but use common sense--if a term implies an advanced concept that fewer people would know, take a sentence or two to explain it, or link to a wiki or manual page.
 
@@ -47,24 +41,24 @@ If you would like to see whether your work is in line with our requirements befo
 
 ## The Submission Process
 
-Submit your article as a pull request to [Linode/Docs](https://github.com/linode/docs/) on GitHub. If you are new to GitHub, see our [GitHub Beginners Guide](/docs/github-guide) which will walk you through the process.
+All writers interested in writing a guide for our library must FIRST complete the form on our [Contribute](/docs/contribute) page. Once our editors have reviewed your application, we will let you know whether or not to proceed with your guide proposal. 
 
-We also accept guides sent to <contribute@linode.com>, though they are assigned a lower priority than GitHub submissions. If submitting by email, be sure to include the **guide title** in the subject line, and your PayPal **or** Linode account information in the message body so we can properly compensate you for your work.
+If your submission is accepted, please submit your article as a pull request to [Linode/Docs](https://github.com/linode/docs/) on GitHub. If you are new to GitHub, see our [GitHub Beginners Guide](/docs/github-guide), which will walk you through the process.
 
-If you have any questions about either submission method, contact <contribute@linode.com>.
+For the foreseeable future, we will no longer accept unsolicited guides sent to <contribute@linode.com>. However, if you have difficulty using GitHub, you can submit the approved guide by email (in .docx, Google Doc, or plain text format). Please be sure to include the **guide title** in the subject line.
+
+If you have any questions about submissions, let us know at <contribute@linode.com>. We will reply.
 
 ## The Review Process
 
-All guides will remain on GitHub for up to 2 weeks for the Linode community to comment on or submit pull requests of their own. If you submitted your article through email, it will be added to GitHub by Linode. After the initial review period, your article will be accepted or rejected.
+If accepted, we will do an internal technical review of your material, which can take from a few days to about a week. Following the technical review, we perform a copy edit, which will take a few days more. During the editing  process, you may receive questions or comments from us, pull requests with edits, or a request for a resubmission with changes.
 
-If accepted, we will do an internal technical review of your material which can take from a few days to about a week. Following the technical review is a copy edit of the article; this will take a few days further. Along the process, you may receive questions or comments from us, pull requests with edits, or a request for a resubmission with changes.
-
-Depending on your submission method, we will either submit the final version to your GitHub fork as a pull request or email it to you. You will have 36 hours to respond and approve our publication of the final version. If you respond positively, we will publish the article and you'll receive payment. Non-response will be taken as a go-ahead to publish.
+Depending on your submission method, we will either submit the final version to your GitHub fork as a pull request or email it to you. You will have 36 hours to respond and approve the final version. If you respond positively, we will publish the article and you'll receive payment. Non-response will be taken as your implied consent to publish.
 
 
 ### General Tips to Consider
 
-*   Choose topics on relevant technology; guides on emerging tech that is not yet well-documented are preferred.
+*   Topics chosen MUST come from the list on our [Contribute](/docs/contribute) page. These topics are relevant, current and in-demand. We reserve the right to consider guides on emerging tech that has not been well documented or is not on this list. But please, discuss with us first. Remember, unsolicited guides will NOT be accepted.
 
 *   Use other Linode guides as building blocks.	For example, if your guide requires a system with a working LAMP stack, you can link to our [LAMP guides](/docs/websites/lamp) instead of duplicating that information in your own writing.
 
@@ -74,15 +68,13 @@ Depending on your submission method, we will either submit the final version to 
 
 *   Unless there is a major advantage, use distro repositories rather than compiling and installing from source code.
 
-*   We generally decline guides on tweaking or performance tuning. For a guide of this theme to be considered, it must first designate a use scenario. The changes *must* show a measurable, reliably reproducible improvement between a control group and an experiment group, both operating in the given scenario.
-
 *   Use proper capitalization for software. For example, nginx is the web server, NGINX Inc. is the company behind it, and Nginx would only be used to start a sentence, title or heading.
 
 ### Reasons Your Guide May Be Rejected
 
-As much as we would like to support all writers, we can not accept every guide we receive. Here are some negatives you can eliminate in your own work to ensure a strong submission:
+As much as we would like to support all writers and their favored topics, we can't. We don't have the bandwidth to review them all, nor does a small and partial audience for an esoteric, arcane topic justify allocating those resources. If your submission has been declined, the following could be reasons why:
 
-*   Not enough content, or lacking original content. For example, if the guide too closely resembles a current guide either by Linode or on another source.
+*   Not enough content, or lacking original content. For example, if the guide too closely resembles a current guide either by Linode or from another source.
 
 *   Guide is a duplicate of your own content from your personal blog, wiki submissions or forum posts.
 
