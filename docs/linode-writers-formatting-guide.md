@@ -340,4 +340,4 @@ COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer 
 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
 
-PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid the sum of USD $250.00 either in the form of a credit to their Linode account or as an electronic payment.
+PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid a sum of up to USD $300.00 either in the form of a credit to their Linode account, a hardcopy check, or as an electronic payment.
