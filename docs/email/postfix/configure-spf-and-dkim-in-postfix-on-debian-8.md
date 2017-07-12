@@ -46,9 +46,9 @@ The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instruc
 
 ## Install DKIM, SPF and Postfix
 
-1.  Install the three required packages:
+1.  Install the four required packages:
 
-        apt-get install opendkim opendkim-tools postfix-policyd-spf-python
+        apt-get install opendkim opendkim-tools postfix-policyd-spf-python postfix-pcre
 
 2.  Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
 

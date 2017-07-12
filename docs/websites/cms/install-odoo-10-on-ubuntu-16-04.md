@@ -137,7 +137,7 @@ These commands use the `requirements.txt` files provided with your Odoo installa
 
 2.  Download the recommended version of wkhtmltopdf for Odoo server. In this example, we use **0.12.1**. See the [Odoo repository](https://github.com/odoo/odoo/wiki/Wkhtmltopdf) for an up-to-date list of compatible versions:
 
-        sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+        sudo wget https://downloads.wkhtmltopdf.org/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 3.  Install the package using `dpkg`:
 

@@ -2,18 +2,18 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'How to Install a Salt Master and Salt Minions.'
-keywords: 'salt, saltstack, open source configuration management, cloud orchestration, infrastructure automation, systems management software, dev ops, install, beginner, Debian 8'
+description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
+keywords: 'Install salt, salt configuration management, salt master'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/salt/install-salt/']
-modified: Thursday, July 2nd, 2015
+alias: ['applications/salt/install-salt/','applications/configuration-management/install-salt/']
+modified: Monday, July 10th, 2017
 modified_by:
-    name: James Stewart
+    name: Linode
 published: 'Tuesday, September 22nd, 2015'
-title: Install Salt
+title: Install and Configure Salt Master and Minion Servers
 ---
 
-[Salt](https://saltstack.com/) is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a salt master and multiple salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.
+[Salt](https://saltstack.com/) is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a Salt master and multiple Salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.
 
 {: .note}
 >
@@ -139,7 +139,7 @@ title: Install Salt
 
     It should return the value `True` for each minion.
 
-##Installing Individal Packages with Salt
+##Installing Individual Packages with Salt
 
 Once you have completed the previous configuration steps, you can install packages using Salt on all of your minions. Packages can be targeted to individual minions, or installed to all minions via simple commands. For these examples we will use Apache.
 
@@ -162,7 +162,7 @@ Once you have completed the previous configuration steps, you can install packag
 
 ##Deploy Your First Salt Formula
 
-Salt Formulas create a framework of software and configurations to be deployed to your minions. Multiple Salt Formulas can be deployed to your minions and this will allow you to manage package configuration and maintenance from the Salt Master. These steps will walk you through installing one of the premade formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
+Salt Formulas create a framework of software and configurations to be deployed to your minions. Multiple Salt Formulas can be deployed to your minions and this will allow you to manage package configuration and maintenance from the Salt Master. These steps will walk you through installing one of the pre-made formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
 1.  Create the directory for storing your Salt states and navigate to that directory:
 
@@ -179,7 +179,7 @@ Salt Formulas create a framework of software and configurations to be deployed t
             - installed
         ~~~
 
-3.  To install the packages containted within the SLS file and enable the state, execute the following command. You can replace `*` with the ID of a specific minion:
+3.  To install the packages contained within the SLS file and enable the state, execute the following command. You can replace `*` with the ID of a specific minion:
 
         salt '*' state.apply apache
 

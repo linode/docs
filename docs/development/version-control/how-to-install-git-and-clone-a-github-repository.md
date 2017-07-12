@@ -1,11 +1,11 @@
 ---
 author:
-  name: Joe D. 
+  name: Joe D.
   email: docs@linode.com
-description: 'Using Git and Github start to finish.'
+description: 'This tutorial is an introduction to developing with Git and GitHub with instructions on installing Git and creating your first GitHub test repository.'
 keywords: 'git,dvcs,vcs,scm,gitweb,github'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/development/developing-git-github/']
+alias: ['applications/development/developing-git-github/','development/version-control/developing-git-github/']
 modified: Friday, February 6th, 2015
 external_resources:
  - '[Working with the Git Repository](/docs/applications/development/git-source-control-management#working-with-the-repository)'
@@ -13,10 +13,10 @@ external_resources:
 modified_by:
   name: Linode
 published: 'Friday, February 6th, 2015'
-title: Developing with Git and GitHub for Beginners
+title: How to Install Git and Clone a GitHub Repository
 ---
 
-Git is a file tracking application, or version control system. GitHub is a website that allows collaboration between developers who use Git. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
+GitHub is a website that allows collaboration between developers using the Git version control system. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
 ##Install and Configure Git
 The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management#installing-git) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
@@ -28,33 +28,32 @@ The directions below are for Debian or Ubuntu. For installation on Mac, Windows,
 
 2.  Configure the username, replace `First Last`:
 
-        git config --global user.name "First Last" 
-        
-3.  Configure the email, replace `example@example.com`:
-        
-        git config --global user.email "example@example.com"
+        git config --global user.name "First Last"
 
+3.  Configure the email, replace `example@example.com`:
+
+        git config --global user.email "example@example.com"
 
     Now that Git has been installed, refer to the image below for help with using Git and GitHub together.
 
     [![Workflow for using Git with GitHub.](/docs/assets/git-github-workflow-650w.png)](/docs/assets/git-github-workflow-1000w.png)
 
-##Clone a Test Repository
+##Clone a GitHub Test Repository
 A repository, or repo, is a Git project. For tutorial purposes, there is a test repository setup on GitHub, which is listed below.
 
-1.  Go to the <a href="https://www.github.com" target="_blank">GitHub homepage</a>. At the top, search for `test-repo-789`. If you would like to contribute to Linode's guides, search for `linode docs`.
+1.  Go to the [GitHub homepage](https://www.github.com). At the top, search for `test-repo-789`. If you would like to contribute to Linode's guides, search for `linode docs`.
 
     [![GitHub homepage search.](/docs/assets/github-search.png)](/docs/assets/github-search.png)
 
-2.  Select `test-repo-789`, it should be the first result, listed as `AccForTesting1/test-repo-789`.
+2.  Select `test-repo-789`, it should be the first result, listed as `NwayNway/test-repo-789`.
 
-3.  Copy the "HTTPS clone URL" link using the clipboard icon at the bottom right of the page's side-bar, pictured below. 
+3.  Copy the "HTTPS clone URL" link using the clipboard icon at the bottom right of the page's side-bar, pictured below.
 
     [![GitHub clone clipboard.](/docs/assets/github-clone-arrow.png)](/docs/assets/github-clone-arrow.png)
 
 4.  In the Linode terminal **from the home directory**, use the command `git clone`, then paste the link from your clipboard, or copy the command and link from below:
 
-        git clone https://github.com/AccForTesting1/test-repo-789.git
+        git clone https://github.com/NwayNway/test-repo-789.git
 
 5.  Change directories to the new `~/test-repo-789` directory:
 
@@ -62,7 +61,7 @@ A repository, or repo, is a Git project. For tutorial purposes, there is a test 
 
 5.  To ensure that your master branch is up-to-date, use the pull command:
 
-        git pull https://github.com/AccForTesting1/test-repo-789.git master
+        git pull https://github.com/NwayNway/test-repo-789.git master
 
 ##Create a GitHub Account and Fork the Test Repo
 To share new files or file revisions, you'll need a GitHub account and a project fork. A fork is a copy of a repo held on your GitHub account. 
@@ -75,7 +74,7 @@ To share new files or file revisions, you'll need a GitHub account and a project
 
 3.  To fork `test-repo-789`, use the search bar at the top left of the page. Search for `test-repo-789`. 
 
-4. After you select `AccForTesting1/test-repo-789`, fork the repo using the **"Fork"** button on the top right of the page. The **"Fork"** button is under the username icon pictured in step 2 above.
+4. After you select `NwayNway/test-repo-789`, fork the repo using the **"Fork"** button on the top right of the page. The **"Fork"** button is under the username icon pictured in step 2 above.
 
     [![GitHub Fork Button.](/docs/assets/github-fork.png)](/docs/assets/github-fork.png)
 
@@ -86,10 +85,10 @@ Create files on the development Linode and push them to the forked repository on
 
 1.  From the `~/test-repo-789` directory, create and checkout a new branch:
 
-        git checkout -b newbranch 
+        git checkout -b newbranch
 
 2.  Create a project directory:
-        
+
         mkdir project
 
 3.  Create sample files:
@@ -111,7 +110,7 @@ Create files on the development Linode and push them to the forked repository on
 
 5.  Add all the files in `~/test-repo-789` to the Git staging area:
 
-        git add . 
+        git add .
 
      {: .note }
     >
@@ -147,17 +146,13 @@ So far, Git was installed on a development Linode, a repo project was cloned to 
 
     [![GitHub branches.](/docs/assets/github-new-pull-request.png)](/docs/assets/github-new-pull-request.png)
 
-5.  Check that the branch filters are set correctly. 
- 
+5.  Check that the branch filters are set correctly.
+
     [![GitHub branch filters.](/docs/assets/github-branch-filters.png)](/docs/assets/github-branch-filters.png)
 
 6.  Select the **"Create pull request"** button. 
- 
+
     [![GitHub branch filters.](/docs/assets/github-create-pull-request.png)](/docs/assets/github-create-pull-request.png)
 
 
 Congratulations, you have used Git and GitHub for file sharing and version control. There are still many Git commands to learn, but you are off to a great start.
-
-
-
-

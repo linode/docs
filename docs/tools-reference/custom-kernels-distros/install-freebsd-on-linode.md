@@ -18,6 +18,8 @@ external_resources:
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 ---
 
+![Install FreeBSD on Linode](/docs/assets/install-freebsd-on-linode.png "Install FreeBSD on Linode")
+
 ## Introduction to FreeBSD
 
 [FreeBSD](https://www.freebsd.org/) is a free and open-source operating system based on the [Berkeley Software Distribution](https://en.wikipedia.org/wiki/Berkeley_Software_Distribution) originally developed at Berkeley Computer Systems Research Group from the late 1970's. BSD originally started as a series of addon programs and tweaks to Bell Labs UNIX, implementing features and new programs like the venerable [vi](https://en.wikipedia.org/wiki/Vi) editor's first release. Today FreeBSD is used all over the world, including in some major video game consoles!

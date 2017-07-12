@@ -5,14 +5,14 @@ author:
 description: Subsonic
 keywords: 'subsonic, music, audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, February 2, 2015
+modified: Wednesday, June 21st, 2017
 modified_by:
   name: Alex Fornuto
 published: 'Monday, February 2, 2015'
 title: Using Subsonic to Stream Media From Your Linode
 ---
 
-This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode. Subsonic is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users.  This guide is for Debian and Ubuntu.
+This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu. Subsonic is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
