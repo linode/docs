@@ -6,7 +6,7 @@ description: 'This is a starting point of best practices for hardening a product
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['securing-your-server/','security/linux-security-basics/','security/basics']
-modified: 'Wednesday, March 29th, 2017'
+modified: 'Wednesday, July 12th, 2017'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
@@ -61,11 +61,11 @@ To add a new user, first [log in to your Linode](/docs/getting-started#logging-i
 
 2.  Add the user to the `sudo` group so you'll have administrative privileges:
 
-        add user example_user sudo
+        adduser example_user sudo
 
 ### Debian
 
-1.  Debian does not include `sudo` among their default packages. Use `apt-get` to install it:
+1.  Debian does not include `sudo` by default so it must be installed:
 
         apt install sudo
 
@@ -218,7 +218,7 @@ To see your Linode's running network services:
     sudo ss -lnp
 
 
-The following is an example of the output of `ss`. Note that because distributions run different services by default, your output will differ.
+The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
 
 ~~~
 Active Internet connections (only servers)
@@ -246,7 +246,7 @@ unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               
 
 #### TCP
 
-See the **Local Address** column of the `ss` readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP conn ections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+See the **Local Address** column of the `ss` readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
 
 #### UDP
 
