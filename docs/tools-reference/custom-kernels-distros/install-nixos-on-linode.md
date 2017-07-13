@@ -3,13 +3,13 @@ author:
   name: Andrew Miller
   email: docs@linode.com
 published: 'Friday, June 16, 2017'
-description: 'Install NixOS on your Linode.'
-keywords: 'custom distro,custom distribution,advanced Linux,kvm'
+description: 'This guide shows you how to install and configure NixOS on your Linode.'
+keywords: 'custom distro,NixOS,advanced Linux,kvm'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Andrew Miller
 modified: 'Friday, June 16, 2017'
-title: Install NixOS on a Linode
+title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
@@ -17,17 +17,19 @@ external_resources:
 
 ![How to Install NixOS on Linode](/docs/assets/nixos-title.png "How to Install NixOS on Linode")
 
-[NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix is a package manager with a focus on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques. While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages which can make deploying software and application updates easier.
+[NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix focuses on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques. 
+
+While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.
 
 {: .caution}
 >
->NixOS is not officially supported by Linode at this time. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools such as Network and Boot Helpers will not work with NixOS.
+>NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.
 
 ## Before You Begin
 
 Familiarize yourself with [LISH](/docs/networking/using-the-linode-shell-lish) and [GLISH](/docs/networking/use-the-graphic-shell-glish) to connect to your Linode. You will use them throughout this guide.
 
-The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are glossed over. For more in-depth information, visit the [NixOS](https://nixos.org/nixos/manual/) and [Nixpkgs](https://nixos.org/nixpkgs/manual/) manuals.
+The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are not thoroughly addressed. For more in-depth information, visit the [NixOS](https://nixos.org/nixos/manual/) and [Nixpkgs](https://nixos.org/nixpkgs/manual/) manuals.
 
 ## Prepare Your Linode
 
@@ -41,7 +43,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles/): one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following for each: 
+[Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles/), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following: 
 
   * **Installer profile**
     * **Label:** Installer
@@ -74,7 +76,7 @@ In your Linode's dashboard, boot into your *Installer* configuration profile. Si
 
 ### Set up the Install Environment
 
-Mount the NixOS disk you are installing to as `/mnt`:
+Mount the NixOS disk to which you are installing the distro as `/mnt`:
 
     mount /dev/sda /mnt
 
@@ -96,7 +98,9 @@ Within this directory there are two files: `configuration.nix` and `hardware-con
 
 ### Rewrite Device Identifiers
 
-The `nixos-generate-config` command in the [Set up the Install Environment](#set-up-the-install-environment) section, generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers disks get attached to. Since you can modify these later, it is better to use the `/dev/sdX` identifiers (where `X` is the assigned volume, like `sda` or `sdb`) to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:
+The `nixos-generate-config` command in the [Set up the Install Environment](#set-up-the-install-environment) section generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers that disks get attached to. 
+
+Since you can modify these later, it is better to use the `/dev/sdX` identifiers (where `X` is the assigned volume, like `sda` or `sdb`) to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:
 
 Replace the contents of the `filesystems` and `swapDevices` sections with the following:
 
@@ -126,9 +130,9 @@ The LISH console requires certain kernel and GRUB options to be configured in th
 
 ### Configure GRUB
 
-When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS ignore the warning and continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
+When GRUB detects a partitionless disk, it will warn about the unreliability of blocklists. To force NixOS to ignore the warning and then continue, configure GRUB to use the `forceInstall` option. GRUB will run from the host machine and will read the GRUB file from the disk, so the GRUB on disk will never be used.
 
-Set the timeout for GRUB to be long enough to accommodate LISH connection delays. The following hardware configuration example uses 10 seconds:
+Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:
 
     boot.loader.grub.device = "/dev/sda";
     boot.loader.grub.forceInstall = true;
@@ -136,7 +140,7 @@ Set the timeout for GRUB to be long enough to accommodate LISH connection delays
 
 ### Edit NixOS Configuration
 
-At the end of the guide we are going to create an image from this disk, which will allow us to deploy NixOS on Linode like any other distribution. For this purpose it is better to make a general all-purpose image, so we won't make any system specific configuration changes like adding users and SSH keys.
+At the end of the guide, you will create an image from this disk, which will allow us to deploy NixOS on Linode like any other distro. For this purpose it is better to make a general all-purpose image, so you won't make any system-specific configuration changes, like adding users and SSH keys.
 
 Most of these changes bring the NixOS defaults in line with how Linode's standard images work for most distributions. These aren't necessarily best practices, but they make a system that works as expected.
 
@@ -167,17 +171,17 @@ NixOS has a firewall that blocks all incoming connections and unexpected packets
 
 Once you understand which ports are being used by your application you can enable the firewall and use the `networking.firewall.allowedTCPPorts` and `networking.firewall.allowedUDPPorts` options to enable your application ports.
 
-After testing, reenable the firewall:
+After testing, re-enable the firewall:
 
     networking.firewall.enable = true;
 
 ### Disable Predictable Interface Names
 
-Most of Linode's default images have systemd's predictable interface names disabled. Because of this, most of [Linode's networking guides](/docs/networking/) assume an interface of `eth0`. Since your Linode runs in a virtual environment and will have a single interface, it won't encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:
+Most of Linode's default images have had systemd's predictable interface names disabled. Because of this, most of [Linode's networking guides](/docs/networking/) assume an interface of `eth0`. Since your Linode runs in a virtual environment and will have a single interface, it won't encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:
 
     networking.usePredictableInterfaceNames = false;
 
-### Installing Diagnostic Tools
+### Install Diagnostic Tools
 
 These tools are included on most Linode images, and are frequently used by Linode support when troubleshooting networking and host level issues. Add the following to your configuration to ensure these tools are installed:
 
@@ -193,7 +197,9 @@ Install NixOS using the settings you configured:
 
     nixos-install
 
-Once complete, the installer will prompt you to set a root password. NixOS is now installed and can be booted from the **Boot** profile created in [Create Configuration Profiles](#create-configuration-profiles).
+Once complete, the installer will prompt you to set a root password. 
+
+NixOS is now installed and can be booted from the **Boot** profile created in [Create Configuration Profiles](#create-configuration-profiles).
 
 ## Create an Image of your Linode
 
@@ -203,9 +209,9 @@ In this optional section, you'll create a deployable disk image of NixOS.
 
     nix-collect-garbage -d
 
-The `nix-collect-garbage` command tells Nix to "garbage collect," to remove any packages that the running system isn't depending on. Usually when you upgrade or install packages Nix will leave old versions intact so that you can easily roll back to them. The `nix-collect-garbage` command invokes Nix's garbage collector which automatically cleans up old packages.
+The `nix-collect-garbage` command tells Nix to "garbage collect," to remove any packages that the running system isn't depending on. Usually when you upgrade or install packages, Nix will leave old versions intact so that you can easily roll back to them. The `nix-collect-garbage` command invokes Nix's garbage collector which automatically cleans up old packages.
 
-You may also want to go through and remove any log files that may be in `/var/log`. While These are usually pretty small, but since we are creating an image it's good to have as blank of a disk as possible:
+You may also want to go through and remove any log files that may be in `/var/log`. While these are usually pretty small, because you are creating an image, it's good to have as blank of a disk as possible:
 
     cd /var/log
 
