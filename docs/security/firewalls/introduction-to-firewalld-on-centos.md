@@ -174,7 +174,7 @@ work
 
 ### Working with Services
 
-FirewallD can allow traffic based on predefined rules for specific network services. You can create your own custom serivce rules and add them to any zone. The configuration files for the default supported services are located at `/usr/lib/firewalld/services` and user-created service files would be in `/etc/firewalld/services`.
+FirewallD can allow traffic based on predefined rules for specific network services. You can create your own custom service rules and add them to any zone. The configuration files for the default supported services are located at `/usr/lib/firewalld/services` and user-created service files would be in `/etc/firewalld/services`.
 
 To view the default available services:
 
