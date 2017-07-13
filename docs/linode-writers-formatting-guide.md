@@ -16,6 +16,8 @@ external_resources:
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 ---
 
+![Linode Writer's Formatting Guide](/docs/assets/linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
+
 This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs).
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
