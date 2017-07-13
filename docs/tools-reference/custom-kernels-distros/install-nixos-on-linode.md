@@ -60,7 +60,9 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Prepare the Installer
 
-[Boot into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
+In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
+
+[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
 
     curl https://d3g5gsiof5omrk.cloudfront.net/nixos/17.03/nixos-17.03.1437.a2c7482319/nixos-minimal-17.03.1437.a2c7482319-x86_64-linux.iso | dd of=/dev/sda
 
