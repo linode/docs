@@ -17,8 +17,6 @@ external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
- 
-
 ---
 
 
@@ -26,6 +24,8 @@ external_resources:
 
 This tutorial will walk you through the installation of Docker, and the first steps of pulling down images with the intention of spinning them up as containers. 
 
+{: .note}
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### Getting Started
 
