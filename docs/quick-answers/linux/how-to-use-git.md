@@ -6,7 +6,7 @@ description: 'This Quick Answer guide explains how to use Git to create a reposi
 keywords: 'Linux, how to use Git, github, create git repo'
 alias: ['quick-answers/how-to-use-git/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Monday, June 12th, 2017'
+modified: 'Monday, July 17th, 2017'
 modified_by:
   name: Angel Guarisma
 published: 'Monday, June 19th, 2017'
