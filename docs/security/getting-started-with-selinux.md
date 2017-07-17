@@ -18,6 +18,8 @@ external_resources:
  - '[CentOS SELinux Wiki](https://wiki.centos.org/HowTos/SELinux)'
 ---
 
+![SELinuxbanner](/docs/assets/selinux/selinuxcentos.png)
+
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.
 
@@ -69,7 +71,7 @@ SELinux has two modes: `Enforcing` and  `Permissive`
 You can check what mode your system is in by running the `getenforce` command:
 
 	[root@centos ~ ]# getenforce
-	Enabled
+	Enforcing
 
 You can also retrieve even more information using `sestatus`: 
 
@@ -132,7 +134,7 @@ Before switching to the `enforce` state in SELinux, You have to understand conte
 
 	[root@centos ~]# useradd user
 	[root@centos ~]# su user
-	[user@centos ~]$ mkdir test
+	[user@centos ~]$ cd ~/ && mkdir test
 	[user@centos ~]$ ls -Z 
 	drwxrwxr-x. user user unconfined_u:object_r:user_home_t:s0 test
 
@@ -158,7 +160,9 @@ You can change the value of any variable using the `setsebool` command, if you s
 	openvpn_can_network_connect --> on
 	openvpn_enable_homedirs --> on
 	openvpn_run_unconfined --> off
+	
 	[root@centos ~]# setsebool -P openvpn_run_unconfined ON
+	
 	[root@centos ~]# getsebool -a  | grep "vpn"
 	openvpn_can_network_connect --> on
 	openvpn_enable_homedirs --> on
