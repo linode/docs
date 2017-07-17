@@ -9,6 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Alex Fornuto
+alias: ['containers/docker/','applications/containers/docker.md']
 published: 'Tuesday, January 28th, 2014'
 title: Docker
 ---
