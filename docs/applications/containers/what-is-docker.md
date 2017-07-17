@@ -6,7 +6,6 @@ author:
 description: 'An overview of Installing Docker, with an example use case for Nginx'
 keywords: 'docker, ubuntu, 12.04, centos, container'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['containers/docker/']
 modified: Tuesday, January 28th, 2014
 modified_by:
   name: Alex Fornuto
