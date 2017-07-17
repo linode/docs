@@ -113,9 +113,9 @@ The next step is to build the software environment needed for your site to funct
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 
-    [![Wait for the jobs to finish, then boot the Linode.](/docs/assets/1437-stackscripts_lamp_boot_sm.png)](/docs/assets/1421-stackscripts_lamp_boot.png)
+    [![Wait for the jobs to finish, then boot the Linode.](/docs/assets/1421-stackscripts_lamp_boot.png)](/docs/assets/1421-stackscripts_lamp_boot.png)
 
-5.  When the **Create Filesystem** job is done, click the **Boot** button under your Linode.
+5.  When the **Create Disk** job is done, click the **Boot** button under your Linode.
 
 6.  To verify that LAMP installed correctly, check that a basic website framework has been added to your server. To do that, your IP address must be used, since your domain isn't pointing to Linode yet.
 
