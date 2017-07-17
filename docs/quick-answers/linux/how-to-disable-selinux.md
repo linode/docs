@@ -6,7 +6,7 @@ description: 'Security-Enhanced Linux works to filter system access. On occasion
 keywords: 'terminal, selinux, disable selinux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
-modified: 'Friday, June 23, 2017'
+modified: 'Tuesday, Jul 17, 2017'
 modified_by: 
   name: Angel
 title: 'Disable SELinux' 
