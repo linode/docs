@@ -6,13 +6,13 @@ contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
-keywords: 'docker,container,dockerfile'
+keywords: 'docker,container,dockerfile,install docker'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, July 17, 2017
 modified_by:
   name: Linode
 published: 'Monday, July 17, 2017'
-title: 'How to Install Docker and Pull Images'
+title: 'How to Install Docker and Pull Images for Container Deployment'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
@@ -38,7 +38,7 @@ Install Docker:
 
     apt install docker.io
 
-You will be presented with all of the necessary dependencies and asked to accept the installation. Type `y` to accept and complete the installation.
+You will be presented with all necessary dependencies and asked to accept the installation. Type `y` to accept and complete the installation.
 
 {:.note}
 >
@@ -78,13 +78,13 @@ The first thing you are going to want to do is pull down an image to be used as 
 
     ![docker images Shows the nginx Image](/docs/assets/docker/docker-install-image-nginx-installed.jpg "docker images now shows the nginx image")
 
-### Unofficial Images
+### Find Unofficial nginx Images
 
 Alternatively, if you don't want to install the official nginx image, use `docker search` to find other nginx images: 
 
     docker search nginx
 
-This will list all of the variant images along with a description, and whether or not they are official.
+This command will list all variant images, along with a respective description, and whether or not they are official.
 
 ![Run docker search nginx to Show Other nginx Options](/docs/assets/docker/docker-install-image-nginx-options.jpg "Run docker search nginx to Show Other nginx Options")
 
@@ -94,4 +94,4 @@ Use `docker pull` to pull one of the other images:
 
 ## Ready to Keep Going? 
 
-At this point, you should know how to install Docker and pull down images. With those images, you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/docs/applications/containers/) learn more.
+At this point, you should know how to install Docker and pull down images with which you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/docs/applications/containers/) to learn more.
