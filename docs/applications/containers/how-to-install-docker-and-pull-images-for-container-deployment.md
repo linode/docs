@@ -19,6 +19,9 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
+
+![docker_banner](/docs/assets/Install_Docker.png)
+
 In this guide, you'll install Docker and pull down images that can be deployed as containers.
 
 ## Before You Begin
