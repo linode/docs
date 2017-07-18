@@ -6,10 +6,10 @@ description: 'This guide will walk you through the basics of SELinux'
 keywords: 'Security, secure, firewall, SELinux, getting-started,' 
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 alias: 
-modified: 'Monday, June 26th, 2017'
+modified: 'Friday July 18th, 2017'
 modified_by: 
   name: Angel
-published: 'Friday June 28th, 2017' 
+published: 'Friday July 18th, 2017' 
 title: Getting Started with SELinux
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
