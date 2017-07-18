@@ -2,14 +2,14 @@
 author: 
   name: Angel
   email: docs@linode.com
-description: 'This guide will walk you through the basics of SELinux' 
-keywords: 'Security, secure, firewall, SELinux, getting-started,' 
+description: 'This guide will walk you through the basics of installing and running SELinux.' 
+keywords: 'Security-enhanced Linux, secure open source, firewall, SELinux, getting-started' 
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 alias: 
-modified: 'Friday July 18th, 2017'
+modified: 'Friday July 21, 2017'
 modified_by: 
   name: Angel
-published: 'Friday July 18th, 2017' 
+published: 'Friday July 21, 2017' 
 title: Getting Started with SELinux
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -23,18 +23,20 @@ external_resources:
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.
 
-The difference between Discretionary Access Controls and Mandatory Access Controls is the way users and applications gain access to machines. Traditionally, the command `sudo` gives a user the ability to heighten their permission to `root`-level. Root access on a DAC system gives the person, or program, with root access permission to do whatever they want to the machine. In most cases, the person with root access should be trusted with it, but if security has been compromised so has the system. SELinux and MACs resolve this issue by confining privleged proccesses and automating security policy creation. 
+The difference between Discretionary Access Controls and Mandatory Access Controls is the means by which users and applications gain access to machines. Traditionally, the command `sudo` gives a user the ability to heighten permissions to `root`-level. Root access on a DAC system gives the person or program with root access permission to perform as desired on a machine. 
 
-SELinux defaults to denying anything that is not explicitly allowed. SELinux has global modes, `permissive` and `enforcing`. `Permissive` mode allows the system to function like a Discretionary Access Control system, while logging every violation to SELinux. The `enforcing` mode, enforces a strict denial of access to anything that isn't explicitly allowed. To explicitly allow certain behavior on a machine, you as the system administrator have to write policies that allow it.
+Ideally, the person with root access should be trusted with it. But if security has been compromised, so too has the system. SELinux and MACs resolve this issue by both confining privleged proccesses and automating security policy creation. 
+
+SELinux defaults to denying anything that is not explicitly allowed. SELinux has global modes, `permissive` and `enforcing`. `Permissive` mode allows the system to function like a Discretionary Access Control system, while logging every violation to SELinux. The `enforcing` mode enforces a strict denial of access to anything that isn't explicitly allowed. To explicitly allow certain behavior on a machine, you, as the system administrator, have to write policies that allow it.
 
 {: .note} 
 >
-> We do not recommend you disable SELinux, but if you wish to disable SELinux, please check out our quick-answer guide on [disabling SELinux](/docs/quick-answer/how-to-disable-selinux.md)
+> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [disabling SELinux](/docs/quick-answer/how-to-disable-selinux.md)
 
 ## Before You Begin
 
-1. This guide requires you to **OWN** the box you are going to use. SELinux is a security control system, a small misconfiguration could cause your system to be compromised. 
-2. Linode uses a custom Kernel by defualt. This Kernel does not support SELinux. If you are using a Linode, switch to a distribution supplied Kernel using this guide: [Run a non-custom Kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm)
+1. This guide requires you to **OWN** the box you are going to use. SELinux is a security-control system; a small misconfiguration could cause your system to be compromised. 
+2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm)
 3.  Update your system:
 
         yum update
@@ -59,14 +61,14 @@ Install the following packages and their associated dependencies:
 
 	yum install policycoreutils policycoreutils-python selinux-policy selinux-policy-targeted libselinux-utils setools setools-console
 
-Optionally, install `setroubleshoot-server` and `mctrans`. The `setroubleshoot-server` allows, among many other things, for E-mail notifications to be sent from the server to notify you of any policy violations. The `mctrans` daemon translates the output of SELinux to human readable text. 
+Optionally, install `setroubleshoot-server` and `mctrans`. The `setroubleshoot-server` allows, among many other things, for email notifications to be sent from the server to notify you of any policy violations. The `mctrans` daemon translates the output of SELinux to human readable text. 
 
 ### SELinux Modes
 
-SELinux has two modes: `Enforcing` and  `Permissive`
+SELinux has two modes: `Enforcing` and  `Permissive`:
 
- * `Enforcing`: In `Enforcing` mode, SELinux enforces strict polcies on the system. Things that are not allowed, will not be allowed to run under any circumstance. 
- * `Permissive`: In `Permissive` mode, your system is **not** protected by SELinux, instead SELinux just logs any violation to a log file. 
+ * `Enforcing`: In `Enforcing` mode, SELinux enforces strict policies on the system. Things that are not allowed, will not be allowed to run under any circumstance. 
+ * `Permissive`: In `Permissive` mode, your system is **not** protected by SELinux; instead, SELinux just records any violation to a log file. 
  
 You can check what mode your system is in by running the `getenforce` command:
 
@@ -125,12 +127,12 @@ The file that contains the security states of the system is located at `/etc/sel
 	#     mls - Multi Level Security protection.
 	SELINUXTYPE=targeted
 
-The uncommented lines can be changed to any state. After changing the state of SELinux, `reboot` the machine for the changes to take place. 
+The uncommented lines can be changed to any state. After changing the state of SELinux, `reboot` the machine for the changes to take effect. 
 
 
 ### SELinux Context
 
-Before switching to the `enforce` state in SELinux, You have to understand contexts, as they pertain to SELinux. 
+Before switching to the `enforce` state in SELinux, you have to understand contexts, as they pertain to SELinux. 
 
 	[root@centos ~]# useradd user
 	[root@centos ~]# su user
@@ -138,14 +140,14 @@ Before switching to the `enforce` state in SELinux, You have to understand conte
 	[user@centos ~]$ ls -Z 
 	drwxrwxr-x. user user unconfined_u:object_r:user_home_t:s0 test
 
-The output of of `ls -Z` may look familiar, but the `-Z` context flag, prints out the SELinux security context of any file. 
+The output of of `ls -Z` may look familiar, but the `-Z` context flag prints out the SELinux security context of any file. 
 
-SELinux marks every single object on a machine with a *context*. That means, every file, daemon, process has a context, according to SELinux. The context is broken into three parts: User, Role and Type. In SELinux, a policy controls which users can get which roles, the role a user has places a constrain on what `type` of files a user can enter. When a user logs in to a system, they are given a role, this can be seen in the `ls -Z` example above: the output `unconfined_u` is a user role. 
+SELinux marks every single object on a machine with a *context*. That means every file, daemon, and process has a context, according to SELinux. The context is broken into three parts: user, role and type. In SELinux, a policy controls which users can get which roles. Each specific role places a constraint on what `type` of files that user can enter. When a user logs in to a system, a role is assigned, which can be seen in the `ls -Z` example above: the output `unconfined_u` is a user role. 
 
 
 ### SELinux Boolean
 
-An SELinux Boolean is a variable that can be turned on and off without needing to reload or recompile an SELinux polcy. You can view the list of boolean variables using the `getsebool -a` command. It's a long list, so you can pipe it through `grep` to narrow down the results: 
+An SELinux Boolean is a variable that can be toggled on and off without needing to reload or recompile an SELinux polcy. You can view the list of boolean variables using the `getsebool -a` command. It's a long list, so you can pipe it through `grep` to narrow down the results: 
 
 	
 	[root@centos ~]# getsebool -a | grep xdm
@@ -154,7 +156,7 @@ An SELinux Boolean is a variable that can be turned on and off without needing t
 	xdm_sysadm_login --> off
 	xdm_write_home --> off
 
-You can change the value of any variable using the `setsebool` command, if you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](https://www.linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) to run unconfined in your system, you have to edit the policies boolean variable: 
+You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](https://www.linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) to run unconfined in your system, you have to edit the policies boolean variable: 
 
 	[root@centos ~]# getsebool -a  | grep "vpn"
 	openvpn_can_network_connect --> on
@@ -168,7 +170,7 @@ You can change the value of any variable using the `setsebool` command, if you s
 	openvpn_enable_homedirs --> on
 	openvpn_run_unconfined --> on
 
-Now on your system you are able to use OpenVPN **unconfined** or in **permissive** mode, even if your system is actively in **enforcing** mode. Set your system to `enforce`, and let SELinux protect your system. 
+Now, you are able to use OpenVPN **unconfined** or in **permissive** mode on your system, even if it is actively in **enforcing** mode. Set your system to `enforce`, and let SELinux protect your system. 
 
 	[root@centos ~]# setenforce 1
 	[root@centos ~]# getenforce
@@ -176,4 +178,4 @@ Now on your system you are able to use OpenVPN **unconfined** or in **permissive
 
 ### Next Steps
 
-SELinux is complicated. Please see the links under **More Information** to gather a deeper understanding of the subject. SELinux can play a critical role in system administration, and security, especially if it is mastered. 
+SELinux is complicated. Please see the links under **More Information** to gather a deeper understanding of the subject. SELinux can play a critical role in system administration and security, especially once it is mastered. 
