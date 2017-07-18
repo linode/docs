@@ -22,7 +22,7 @@ Be different with some one-step script in Internet, you will setup a Shadowsocks
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 {: .P.S}
-> Linode 1024 is enough. And in this post we will use Ubuntu 16.04 LTS fkr example.
+> Linode 1024 is enough. And in this post we will use Ubuntu 16.04 LTS as a simple.
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an ShadowsocksR server.
 
@@ -170,22 +170,22 @@ The last arg is a symbol to identify the port.
 
 And connection info is:
 
-> Port: 80
-> Obfs: http_simple
-> Protocol: auth_chain_a
-> Method: none
-> Password: Linode
+> Port: 80 
+> Obfs: http_simple 
+> Protocol: auth_chain_a 
+> Method: none 
+> Password: Linode 
 
 {: .note}
-> There are some suggest port and config. It will make the proxy server hard to discover and protect your server from the monitor of your ISP and government.
-> Port: 80, Obfs: http_simple, Protocol: auth_chain_a, Method: none, Password: Linode
-> Port: 443, Obfs: tls1.2_auth_ticket, Protocol: auth_chain_a, Method: none, Password: Linode
-> The traffic to these port will seem like http/https traffic, it will hide the server to protect it.
-
-> And if you want to use the other port, you should only take care of the protocol setting, recommend protocols are auth_chain_a/auth_aes128_md5/auth_aes128_sha1. About the difference you can see [here](https://github.com/breakwa11/shadowsocks-rss/blob/master/ssr.md)(Chinese version only).
-
-> You can see more advanced usage(Speed limit, and forbbiden user to access some port by your proxy) by type:
-> python mujson_mgr.py -h
+> There are some suggest port and config. It will make the proxy server hard to discover and protect your server from the monitor of your ISP and government. 
+> Port: 80, Obfs: http_simple, Protocol: auth_chain_a, Method: none, Password: Linode 
+> Port: 443, Obfs: tls1.2_auth_ticket, Protocol: auth_chain_a, Method: none, Password: Linode 
+> The traffic to these port will seem like http/https traffic, it will hide the server to protect it. 
+>
+> And if you want to use the other port, you should only take care of the protocol setting, recommend protocols are auth_chain_a/auth_aes128_md5/auth_aes128_sha1. About the difference you can see [here](https://github.com/breakwa11/shadowsocks-rss/blob/master/ssr.md)(Chinese version only).  
+>
+> You can see more advanced usage(Speed limit, and forbbiden user to access some port by your proxy) by type: 
+> python mujson_mgr.py -h 
 
 
 3. Now, you can run ShadowsocksR by start the service.
