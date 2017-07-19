@@ -2,23 +2,25 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accessing CouchDB databases remotely using an SSH tunnel.'
+description: 'This tutorial will teach you how to access your CouchDB database remotely by creating an SSH tunnel with PuTTY.'
 keywords: 'couchdb tunnel,couchdb over SSH,SSH tunnel'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/couchdb/ssh-tunnel/']
+alias: ['databases/couchdb/ssh-tunnel/','databases/couchdb/securely-administer-couchdb-with-ssh-tunnel']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
 published: 'Thursday, February 4th, 2010'
-title: Securely Administer CouchDB with an SSH Tunnel
+title: CouchDB Remote Access with PuTTY
 external_resources:
  - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
  - '[CouchDB Documentation](/docs/databases/couchdb/)'
 ---
 
-During the development and administration of your CouchDB server and application you may wish to access the "Futon" interface, or interact with the data store from the local machine. This guide shows you how to connect to your CouchDB instance in a secure manner using an SSH tunnel. We assume you have CouchDB up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1) on the server, which is the default configuration. After following these instructions, you'll be able to connect to `localhost` on your local workstation. The connection will be securely forwarded to your Linode over the Internet.
+During the development and administration of your CouchDB server and application you may wish to access the "Futon" interface, or interact with the data store from the local machine. This guide shows you how to connect to your CouchDB instance in a secure manner using an SSH tunnel. 
 
-## Create a Tunnel with PuTTY on Windows
+We assume you have CouchDB up and running on your Linode, and that it is configured to listen on `localhost` (127.0.0.1) on the server, which is the default configuration. After following these instructions, you'll be able to connect to `localhost` on your local workstation. The connection will be securely forwarded to your Linode over the internet.
+
+## SSH Port Tunneling with PuTTY on CouchDB
 
 ### Connecting to your Linode
 
