@@ -36,16 +36,16 @@ Deploy a Docker container using the following syntax:
 
     docker run –name CONTAINER-NAME -p NETWORK_PORT:CONTAINER_PORT IMAGE NAME
 	
-	It consists of:
+It consists of:
 	
-	*  `CONTAINER-NAME`: The name you give the container.
- *  *  `NETWORK_PORT`: A port to expose to the network.
- *  *  `CONTAINER_PORT`: The port the container will listen on.
- *  *  `IMAGE NAME`: The name of the image to be used for the container.
+*  `CONTAINER-NAME`: The name you give the container.
+*  `NETWORK_PORT`: A port to expose to the network.
+*  `CONTAINER_PORT`: The port the container will listen on.
+*  `IMAGE NAME`: The name of the image to be used for the container.
 
 ## Deploy a Container
 
-This example will create an nginx container with port `80` exposed, using the official nginx image. 
+This example will create an nginx container with port 80 exposed, using the official nginx image. 
 
 1.  Confirm the current existing official image:
 
