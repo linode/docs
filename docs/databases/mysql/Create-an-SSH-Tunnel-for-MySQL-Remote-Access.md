@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accessing MySQL databases remotely using an SSH tunnel.'
+description: 'This guide will teach you how to gain remote access to your MySQL Database using an SSH tunnel.'
 keywords: 'MySQL tunnel,MySQL over SSH,SSH tunnel'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/mysql-ssh-tunnel/']
+alias: ['databases/mysql/mysql-ssh-tunnel/','databases/mysql/securely-administer-mysql-with-an-ssh-tunnel']
 modified: Thursday, August 22nd, 2013
 modified_by:
   name: Linode
 published: 'Wednesday, January 6th, 2010'
-title: Securely Administer MySQL with an SSH Tunnel
+title: Create an SSH Tunnel for MySQL Remote Access
 external_resources:
  - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
@@ -33,7 +33,7 @@ After following these instructions, you'll be able to connect to `localhost` on 
 -   [MySQL](/docs/hosting-website#sph_installing-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
-## Create a Tunnel with PuTTY on Windows
+## How to Access MySQL Remotely by Creating an SSH Tunnel
 
 This section will show you how to create an SSH tunnel to MySQL on Windows, using the PuTTY tool.
 
