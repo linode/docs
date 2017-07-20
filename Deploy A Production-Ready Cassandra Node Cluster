@@ -130,7 +130,7 @@ Start Cassandra on each node, one after another with `systemctl start cassandra`
 
 ### Enable Node to Node Encryption
 
-Setting up encryption between nodes offers additional security and protects the data that is transferred between Cassandra datacenters. The following commands will need to be executed once for each node in your cluster. Use one machine to generate all the necessary files, then follow the instructions listed to copy the relevant certificates to each node. Replace any text within [brackets] with the indicated information. The commands in this section need only to be run on one node in your cluster with the appropriate files then distributed across the rest of the cluster.
+Setting up encryption between nodes offers additional security and protects the data that is transferred between Cassandra datacenters. The commands in this section need only to be run on one node in your cluster, with the appropriate files then distributed across the rest of the cluster.
 
 ## Generate SSL Files
 
