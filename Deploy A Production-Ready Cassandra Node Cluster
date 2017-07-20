@@ -35,6 +35,8 @@ This guide is part 2 in a series detailing the implementation of Apache Cassandr
 	
 2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
+3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
+
 ### Initial Node Preparation
 
 ## Prepare The Nodes For Clustering
