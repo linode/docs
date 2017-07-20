@@ -214,7 +214,7 @@ Setting up encryption between nodes offers additional security and protects the 
 	
 			scp ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
 			
-			scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name].jks
+			scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name]-keystore.jks
 			
 	Use the "-i" option if your destination server requires a certificate to login. 
 	
