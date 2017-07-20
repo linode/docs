@@ -43,13 +43,13 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 1. Clear the default data from the Cassandra system table in order to import new values set in the *cassandra.yaml* config file.
 
-			systemctl stop cassandra
+		systemctl stop cassandra
 
-			rm -rf /var/lib/cassandra/data/system/*
+		rm -rf /var/lib/cassandra/data/system/*
 	
 2. Edit the *cassandra.yaml* file. Set the appropriate values for each variable indicated below.
 
-			vim /etc/cassandra/conf/cassandra.yaml
+		vim /etc/cassandra/conf/cassandra.yaml
 			
 
 {: .table .table-striped .table-bordered}
@@ -93,7 +93,38 @@ The instructions here must be executed on each Cassandra node to be clustered. A
   rack=RACK1
   ~~~
 
-4. Start Cassandra on each node, one after another with `systemctl start cassandra`. Run `nodetool status`, and you should see each node in your cluster listed in the output.
+### Edit Firewall Settings
+
+## Open Cassandra Communication Ports
+
+1. Ports 7000 and 9042 must be available for outside nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
+
+	**UFW**
+	
+		ufw allow proto tcp from [external_node_ip_address] to any port 7000,9042 comment "Cassandra TCP"
+	
+	**FirewallD**
+		firewall-cmd --permanent --zone=public --add-rich-rule='
+			rule family="ipv4"
+			source address="[external_node_ip_address]"
+			port protocol="tcp" port="7000" accept'
+				
+		firewall-cmd --permanent --zone=public --add-rich-rule='
+			rule family="ipv4"
+			source address="[external_node_ip_address]"
+			port protocol="tcp" port="9042" accept'
+			
+		firewall-cmd --reload
+	
+	**iptables**
+	
+	-A INPUT -p tcp -s [external_node_ip_address] -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+### Test The Cluster Setup
+
+## Boot Cassandra
+
+Start Cassandra on each node, one after another with `systemctl start cassandra`. Run `nodetool status`, and you should see each node in your cluster listed in the output.
 
 ### Enable Node to Node Encryption
 
