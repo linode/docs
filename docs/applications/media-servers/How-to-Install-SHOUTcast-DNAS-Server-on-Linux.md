@@ -2,15 +2,15 @@
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: SHOUTcast
-keywords: 'shoutcast, radio, internet radio, stream, streaming, audio'
+description: 'This tutorial will guide you through setup and configuration of a SHOUTcast DNAS server for media streaming on Linux.'
+keywords: 'shoutcast, internet radio, streaming media, streaming audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/media-servers/shoutcast/']
+alias: ['communications/media-servers/shoutcast/','applications/media-servers/shoutcast/']
 modified: Wednesday, June 21st, 2017
 modified_by:
   name: Linode
 published: 'Thursday, June 7th, 2012'
-title: SHOUTcast
+title: How to Install A SHOUTcast DNAS Server on Linux
 external_resources:
  - '[SHOUTcast Home Page](http://www.shoutcast.com)'
  - '[SHOUTcast Getting Started Guide](http://wiki.winamp.com/wiki/SHOUTcast_Getting_Started_Guide)'
@@ -18,7 +18,7 @@ external_resources:
  - '[SHOUTcast Transcoder MP3 Licensing](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding)'
 ---
 
-SHOUTcast is software designed for streaming media over the Internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+SHOUTcast is software designed for streaming media over the internet. The SHOUTcast system uses a classic client-server configuration. You can install SHOUTcast on your server and use it to broadcast a stream of music to clients connected to the server. A Shoutcast media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
  {: .note }
 >
@@ -28,7 +28,7 @@ SHOUTcast is software designed for streaming media over the Internet. The SHOUTc
 
 The SHOUTcast DNAS (Distributed Network Audio Server) software is the server version of the software that allows you to broadcast to listeners. To use SHOUTcast, you'll need to download and install SHOUTcast DNAS on your Linode.
 
-### Downloading and Installing
+### Download and Install SHOUTcast
 
 There are several versions of this software, so make sure you are downloading the correct one. The Linux version is offered in both 32-bit and 64-bit versions. You'll need to [download](http://www.shoutcast.com/broadcast-tools) whichever version corresponds to the operating system you have installed on your Linode.
 
@@ -58,11 +58,11 @@ There are several versions of this software, so make sure you are downloading th
 
 The SHOUTcast DNAS software is now installed on your Linode.
 
-### Configuring
+### Configure SHOUTcast
 
-Now you'll want to modify the configuration. This is necessary to specify passwords and set the SHOUTcast port. Here's how to configure SHOUTcast:
+Now, you'll want to modify the configuration. This is necessary to specify passwords and set the SHOUTcast port. Here's how to configure SHOUTcast:
 
-1.  Open the SHOUTcast configuration file by entering the following command:
+1.  Open the SHOUTcast configuration file:
 
         nano sc/sc_serv_basic.conf
 
@@ -134,9 +134,9 @@ Now you'll want to modify the configuration. This is necessary to specify passwo
 
 Now that the configuration is set and saved, we can start the server.
 
-### Starting
+### Start SHOUTcast
 
-Now it's time to start the SHOUTcast server. Here's how:
+Now, you can start the SHOUTcast server. Here's how:
 
 1.  You'll want to run your shoutcast in a [screen session](/docs/linux-tools/utilities/screen). Let's jump into a screen session by entering the following command:
 
@@ -166,9 +166,9 @@ The SHOUTcast Transcoder allows you to schedule DJ play times, broadcast an auto
 >
 > To encode your streams in MP3 format, you *must* [purchase a license key from WinAmp, which costs \$5 USD](http://wiki.winamp.com/wiki/SHOUTcast_DNAS_Transcoder_2#Registering_for_MP3_Stream_Encoding).
 
-### Downloading and Installing
+### Download and Install SHOUTcast Transcoder
 
-First, download and install the SHOUTcast transcoder. We'll use the same shoutcast user to set up the Transcoder software. Here's how to download and install the transcoder:
+We'll use the same shoutcast user to set up the Transcoder software. Here's how to download and install the transcoder:
 
 1.  Change directories by entering the following command:
 
@@ -200,9 +200,9 @@ First, download and install the SHOUTcast transcoder. We'll use the same shoutca
 
 The SHOUTcast transcoder is now installed on your Linode.
 
-### Configuring
+### Configure the SHOUTcast Transcoder
 
-Now we need to configure the SHOUTcast transcoder. This example will walk you through a basic configuration.
+This example will walk you through a basic configuration.
 
 1.  Open the configuration file by entering the following command:
 
@@ -311,7 +311,7 @@ Now we need to configure the SHOUTcast transcoder. This example will walk you th
       # the sc_trans_playlist.conf example which is best tried with full length files
     ~~~
 
-### Starting
+### Start SHOUTcast Transcoder
 
 Once you have the transcoder configured and ready to go, you need to start it. To run the transcoder as a daemon, simply run this command, substituting `sc_trans_basic.conf` for whatever configuration file you are using:
 
