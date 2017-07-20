@@ -2,8 +2,10 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: 'A basic Minecraft server installation guide for Debian and Ubuntu'
-keywords: 'minecraft,ubuntu,debian'
+description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian
+distributions'
+keywords: 'minecraft server,ubuntu,debian'
+alias: ['game-servers/minecraft-on-debian-and-ubuntu.md']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
@@ -14,15 +16,13 @@ modified: Monday, June 12th, 2017
 modified_by:
   name: Angel Guarisma
 published: 'Wednesday, January 28, 2015'
-title: 'Minecraft on Debian and Ubuntu'
+title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
 alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/']
 ---
 
 This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update. 
 
 ##Prerequisites
-
-
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
