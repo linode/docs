@@ -27,7 +27,7 @@ external_resources:
  
 ## Introduction To This Tutorial
 
-This guide is part 2 in a series detailing the implementation of Apache Cassandra on Ubuntu 14.04 and CentOS 7 machines. In order to complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following the instructions here, you will learn how to link your Cassandra nodes together to form a true cluster. You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
+This guide is part 2 in a series detailing the implementation of Apache Cassandra on Ubuntu 17.04 and CentOS 7 distributions. In order to complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following the instructions here, you will learn how to link your Cassandra nodes together to form a true cluster. You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
 
 ## Before You Begin
 
