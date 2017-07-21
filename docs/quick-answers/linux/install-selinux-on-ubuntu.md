@@ -2,7 +2,7 @@
 author:
   name: Angel
   email: docs@linode.com
-description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you've uninstalled apparmor'
+description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you uninstall apparmor'
 keywords: 'linux,selinux,apparmor,Mandatory Access Control system'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Sunday, June 30th, 2017'
@@ -13,15 +13,15 @@ title: How to Install SELinux on Ubuntu
 ---
 
 
-### Install SELinux on Ubuntu
+
 
 Ubuntu has a Mandatory Access Control (MAC) system similar to SELinux, named AppArmor. Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu, are already familiar with SELinux and would like to use it to enforce security on your system, you can install it by following this brief tutorial. 
 
-#### Before You Begin
+### Before You Begin
 
 Linode does not support SELinux by default. To boot a distribution-specific kernel, follow this [guide](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm), and select GRUB2 in the manager's kernel menu. 
 
-#### Remove AppArmor
+### Remove AppArmor
 
 {:.caution}
 >
@@ -43,7 +43,7 @@ Linode does not support SELinux by default. To boot a distribution-specific kern
 		apt update && upgrade -yuf
 		reboot
 
-#### Install SELinux
+### Install SELinux
 
 1. Install the SELinux package and reboot the system:
 
