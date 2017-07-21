@@ -9,14 +9,14 @@ modified: Thursday, May 12th, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, April 28th, 2010'
-title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows
-alias: ['databases/postgresql/pgadmin-windows/']
+title: How to Access PostgreSQL Database Remotely Using pgAdmin on Windows
+alias: ['databases/postgresql/pgadmin-windows/','databases/postgresql/securely-manage-remote-postgresql-servers-with-pgadmin-on-windows/]
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
 ---
 
-pgAdmin is a free, open source PostgreSQL database administration GUI for Microsoft Windows, Apple MacOS X and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure access to remote PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
+PgAdmin is a free, open-source PostgreSQL database administration GUI for Microsoft Windows, Apple MacOS X and Linux systems. It offers database server information retrieval, development, testing, and ongoing maintenance. This guide will help you install pgAdmin on Windows, providing secure, remote access to PostgreSQL databases. It is assumed that you have already installed PostgreSQL on your Linode in accordance with our [PostgreSQL installation guides](/docs/databases/postgresql/).
 
 ## Install pgAdmin
 
@@ -78,4 +78,4 @@ You will be presented with a full view of the databases that your user account h
 
 [![pgAdmin III full database view](/docs/assets/374-pgadmin-windows-use-3-database-view.png)](/docs/assets/374-pgadmin-windows-use-3-database-view.png)
 
-Congratulations! You've securely connected to your remote PostgreSQL server with pgAdmin III.
+Congratulations! You've gained secure, remote access to your PostgreSQL server with pgAdmin III.
