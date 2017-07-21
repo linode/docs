@@ -2,14 +2,15 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'How to configure IPv6 networking natively on your Linode.'
+description: 'This guide will show you how to configure a native IPv6 network on Ubuntu, Debian, CentOS, Fedora, Arch Linux and Gentoo.'
 keywords: 'ipv6, networking'
+alias: ['networking/native-ipv6-networking/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, June 24, 2016
 modified_by:
     name: Phil Zona
 published: 'Tuesday, May 3rd, 2011'
-title: Native IPv6 Networking
+title: How to Enable Native IPv6 on Linux Distributions
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
@@ -17,13 +18,16 @@ external_resources:
 
 Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To find your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
 
-It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses. 
+It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses.
+
+## What is IPv6?
+Internet Protocoal version 6 carries data packets from source to destination over disparate networks. Evolved from IPv4, IPv6 developed in hexadecimal format and contains 8 octets, accommodating up to 2128 possible node, or address, combinations, which facilitate expansive scalability. 
 
 {: .note }
 >
 > The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to prefix most commands with `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
 
-## Setting up IPv6
+## Set up IPv6
 
 The IPv6 address provided with your Linode will automatically assign itself to your Linode via SLAAC. Our system is set up to do this so that you will not need to statically configure your IPv6 address unless you have an IPv6 address pool.
 
@@ -70,7 +74,7 @@ Each /56 or /64 IPv6 address pool is routed to a specific Linode. If you want to
 
 Unlike the other pools available, /116 IPv6 address pools route to all of the Linodes on your account within the same data center as the Linode to which the pool is assigned. This means there is no single point of failure.
 
-## Adding IPv6 Addresses
+## Add IPv6 Addresses
 
 While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. 
 
