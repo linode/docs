@@ -269,7 +269,7 @@ Run the following commands on each server node.
 			
 3. Check log file to verify ssl encryption status.
 
-			sudo grep SSL /var/log/cassandra/system.log 2>&1 | tail -1
+			grep SSL /var/log/cassandra/system.log 2>&1 | tail -1
 			
 If successful, your console output should read similar to the following:
 
