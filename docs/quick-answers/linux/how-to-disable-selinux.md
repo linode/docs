@@ -19,9 +19,7 @@ external_resources:
 
 ### Security Enhanced Linux
 
-Security-Enhanced Linux (SELinux) is a security module developed by the National Security Agency (NSA) and Red Hat. With SELinux, an  administrator can enforce a set of policies for the system users. These policies can provide a virtual sandbox in which applications can run. SELinux is like a firewall for applications; its policies function as a set of rules to filter system access.
-
-At times, SELinux can disupt the functionality of a recently installed app, and therefore, may need to be disabled. This Quick Answer guides you through the steps necessary to shut it down (but not uninstall). 
+SELinux can disupt the functionality of a recently installed application and may need to be disabled. This Quick Answer guides you through the steps necessary to disable it. 
 
 {: .note}
 >
@@ -30,17 +28,17 @@ At times, SELinux can disupt the functionality of a recently installed app, and 
 ### Disable SELinux
 
 {: .caution}
-> Disabling SELinux removes a security feature on your system, and doing so may expose your data.
+> Disabling SELinux removes a security feature on your system, doing so may expose your data.
 > If you are considering disabling SELinux to fix an application on your system, consider fixing the application to work within SELinux, instead.
 
-However, in certain instances it might be easier to disable SELinux than it is to write policies that support SELinux in your environment. Uninstalling SELinux is not recommended. 
+In certain instances it might be easier to disable SELinux than it is to write policies that support SELinux in your environment. Uninstalling SELinux is not recommended. 
 
 To disable SELinux on your Linode:
 
 1. Navigate to the SELinux configuration directory at `/etc/sysconfig/selinux`:
 
         cd /etc/sysconfig/selinux
-        cat /etc/sysconfig/selinux
+        
 
     {:.file-excerpt}
     /etc/sysconfig/selinux
