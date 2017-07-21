@@ -254,34 +254,6 @@ You may want to configure the *internode_encryption* setting to better meet the 
  | none | No traffic is encrypted. |
  | dc | Only traffic between datacenters is encrypted. |
  | rack | Only traffic between server racks is encrypted. |
-
-### Edit Firewall Settings
-
-## Open Cassandra Communication Ports
-
-1. Ports 7000 and 9042 must be available for outside nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
-
-	**UFW**
-	
-      ufw allow proto tcp from [external_node_ip_address] to any port 7000,9042 comment "Cassandra TCP"
-	
-	**FirewallD**
-	
-			firewall-cmd --permanent --zone=public --add-rich-rule='
-				rule family="ipv4"
-				source address="[external_node_ip_address]"
-				port protocol="tcp" port="7000" accept'
-				
-			firewall-cmd --permanent --zone=public --add-rich-rule='
-				rule family="ipv4"
-				source address="[external_node_ip_address]"
-				port protocol="tcp" port="9042" accept'
-			
-			firewall-cmd --reload
-	
-	**iptables**
-	
-      -A INPUT -p tcp -s [external_node_ip_address] -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
 	
 ## Verify SSL Setup
 
