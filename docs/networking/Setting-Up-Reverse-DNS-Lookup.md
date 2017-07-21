@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Setting Reverse DNS Resolves an IP Address to a Designated Domain Name (Instead of Vice Versa).'
-keywords: 'reverse dns,linode dns,dns manager,dns configuration,IP address,PTR record,dns'
+description: 'Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up.'
+keywords: 'reverse dns,dns manager,dns configuration,IP address,PTR record'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
+alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/setting-reverse-dns/']
 modified: Tuesday, January 20, 2015
 modified_by:
   name: James Stewart
 published: 'Thursday, July 9, 2015'
-title: Reverse DNS
+title: Setting Up Reverse DNS Lookup
 ---
 
 Your desktop computer uses DNS to determine the IP address associated with a domain name. *Reverse* DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain name.
@@ -19,7 +19,7 @@ Before setting up the reverse DNS for your Linode, be sure to set up your domain
 
 {: .note}
 >
->Reverse DNS uses a *PTR Record* or *pointer record* to match up the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode you will always set the reverse DNS within the Linode Manager using the method detailed below.
+>Reverse DNS uses a *PTR Record* or *pointer record* to match the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode, you will always set the reverse DNS within the Linode Manager, using the method detailed below.
 >
 >For more information about [PTR records](/docs/networking/dns/introduction-to-dns-records#ptr) and DNS in general please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
 
