@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Accessing remote servers with PuTTY, a free and open source SSH client for Windows and UNIX systems.'
+description: 'Learn how to access remote servers with PuTTY, a free open source client for Windows and UNIX systems.'
 keywords: 'putty,putty ssh,windows ssh client'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/using-putty/']
+alias: ['networking/using-putty/','networking/ssh/using-putty/']
 modified: Sunday, October 14th, 2012
 modified_by:
   name: Doug Freed
 published: 'Sunday, September 20th, 2009'
-title: Using PuTTY
+title: How to Install PuTTY for SSH Tunneling
 external_resources:
  - '[PuTTY Documentation](http://www.chiark.greenend.org.uk/~sgtatham/putty/docs.html)'
  - '[Xming Manual](http://www.straightrunning.com/XmingNotes/manual.php)'
@@ -18,9 +18,9 @@ external_resources:
 
 ![Using PuTTY](/docs/assets/using-putty.png "Using PuTTY")
 
-PuTTY is a free, open source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon (usually provided by OpenSSH). With this software, you can work as if you were logged into a console session on the remote system.
+PuTTY is a free, open-source SSH client for Windows and UNIX systems. It provides easy connectivity to any server running an SSH daemon (usually provided by OpenSSH). With this software, you can work as if you were logged into a console session on the remote system.
 
-## Obtaining and Running PuTTY
+## Obtain and Run PuTTY
 
 You can obtain the software from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater: nearly every modern Windows computer can run PuTTY. Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 
@@ -32,7 +32,7 @@ Enter the hostname or IP address of the system you'd like to log into and click 
 
 In this case, PuTTY is asking you to verify that the server you're logging in to is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log in to.
 
-You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. To find the ssh-ed25519 key fingerprint as shown in the warning, log in to your Linode [via the AJAX console](/docs/networking/using-the-linode-shell-lish/) (see the "Remote Access" tab in the Linode Manager) and execute the following command:
+You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log in to. To find the ssh-ed25519 key fingerprint as shown in the warning, log in to your Linode [via the AJAX console](/docs/networking/using-the-linode-shell-lish/) (see the "Remote Access" tab in the Linode Manager) and execute the following command:
 
     ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub -E md5
 
