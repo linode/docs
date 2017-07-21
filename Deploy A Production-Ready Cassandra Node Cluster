@@ -159,11 +159,11 @@ Setting up encryption between nodes offers additional security and protects the 
 	
 	~~~
 
-2. Create the certificate and key files. Run this command on each server which hosts a node in your cluster.
+2. Create the public and private key files.
 
 			openssl req -config rootCAcert.conf -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
 			
-3. Generate a keystore for each node in your cluster. Run this command on each server for each  node in the cluster. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+3. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
 
 			keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"
 			
