@@ -6,13 +6,13 @@ contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
 description: 'An introduction to deploying and using Docker containers on your Linode.'
-keywords: 'docker,container,dockerfile'
+keywords: 'docker,container,dockerfile,nginx container'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, July 19, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, July 19, 2017'
-title: 'How to Deploy a Docker Container on Linode'
+title: 'How to Deploy an nginx Container with Docker on Linode'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  -  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
@@ -24,11 +24,11 @@ external_resources:
 
 ## Before You Begin
 
-This guide is part of a series on Docker that includes [An Introduction to Docker](/docs/applications/containers/introduction-to-docker) and [How to Install Docker Images](/docs/applications/containers/how-to-install-docker-images). This guide shows how to deploy an nginx container as an example.
+This guide is part of a series on Docker that includes [An Introduction to Docker](/docs/applications/containers/introduction-to-docker) and [How to Install Docker Images](/docs/applications/containers/how-to-install-docker-images). This guide shows how to deploy an nginx container on a Linode, as a general example.
 
 ## What is a Docker Container?
 
-A container is a lightweight, stand-alone, executable package that includes everything needed to run it: code, runtime, system tools, system libraries, and settings. Containers are created from the images pulled from a Docker registry. For example, you can pull the nginx image and create as many containers from it as needed.
+According to Docker.com, a container is a "lightweight, stand-alone, executable piece of a software package that includes everything needed to run it: code, runtime, system tools, system libraries, and settings." A containers isolates software from its surroundings and is created from the images pulled from a Docker registry. For example, you can pull the nginx image and create as many containers from it as needed.
 
 ## Docker Command Syntax
 
@@ -39,7 +39,7 @@ Deploy a Docker container using the following syntax:
 It consists of:
 	
 *  `CONTAINER-NAME`: The name you give the container.
-*  `NETWORK_PORT`: A port to expose to the network.
+*  `NETWORK_PORT`: A port available to the network.
 *  `CONTAINER_PORT`: The port the container will listen on.
 *  `IMAGE NAME`: The name of the image to be used for the container.
 
@@ -47,7 +47,7 @@ It consists of:
 
 This example will create an nginx container with port 80 exposed, using the official nginx image. 
 
-1.  Confirm the current existing official image:
+1.  Confirm the current, existing official image:
 
         docker images
 
@@ -77,10 +77,10 @@ This example will create an nginx container with port 80 exposed, using the offi
 
 ## How to Stop and Delete Containers
 
-1.  Stop the container using the first few characters of the container ID (`e468` in this example):
+1.  Stop the container by using the first few characters of the container ID (`e468` in this example):
 
         docker stop e468
 
-2.  Delete the container using the `rm` command and the same container ID:
+2.  Delete the container by using the `rm` command and the same container ID:
 
         docker rm e468
