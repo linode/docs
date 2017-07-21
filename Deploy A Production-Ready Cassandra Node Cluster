@@ -99,7 +99,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 ## Open Cassandra Communication Ports
 
-1. Ports 7000 and 9042 must be available for outside nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
+1. Ports 7000 and 9042 must be available for external nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
 
 	**UFW**
 	
