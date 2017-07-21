@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use TLS/SSL to Provide Transport Layer Encryption for HTTP Connections with Nginx.'
+description: 'This guide will teach you how to provide encrypted access to resources using TSL/SSL for HTTP connections on Nginx.'
 keywords: 'ssl,tls,nginx,https,secure http,encryption for HTTP,SSL certificates with Nginx,certificate signing request'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/']
+alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
 modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 8th, 2010'
-title: 'Provide Encrypted Resource Access Using SSL Certificates on Nginx'
+title: 'Enable SSL for HTTPS Configuration on Nginx'
 external_resources:
  - '[Nginx Project Home Page](http://nginx.org)'
  - '[Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)'
