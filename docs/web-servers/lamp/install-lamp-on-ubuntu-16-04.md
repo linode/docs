@@ -34,7 +34,7 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 2.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 ## Apache
 
@@ -42,9 +42,10 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 1.  Install Apache 2.4 from the Ubuntu repository:
 
-        sudo apt-get install apache2
+        sudo apt install apache2
 
-2.  Edit the main Apache configuration file, `apache2.conf`, to adjust the `KeepAlive` setting:
+2. The `keepalive` setting allows web servers to utilize server-side bandwidth and reduce the latency of users connecting to the site. Open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+
 
     {: .file }
     /etc/apache2/apache2.conf
