@@ -224,7 +224,7 @@ Setting up encryption between nodes offers additional security and protects the 
 			
 ## Configure Encryption Settings
 
-1. Edit the `cassandra.yaml` file on each node to match the following.
+1. Edit the `cassandra.yaml` file on each node to match the following. Replace text in [brackets] with the indicated information.
 
 {: .file}
 **/etc/cassandra/conf/cassandra.yaml**
@@ -232,9 +232,9 @@ Setting up encryption between nodes offers additional security and protects the 
   
 server_encryption_options:
     internode_encryption: all
-    keystore: /usr/local/lib/cassandra/conf/[keystore_file.jks]
+    keystore: /etc/cassandra/conf/[keystore_file.jks]
     keystore_password: cassandra
-    truststore: /usr/local/lib/cassandra/conf/[truststore_file.jks]
+    truststore: /etc/cassandra/conf/[truststore_file.jks]
     truststore_password: cassandra
     # More advanced defaults below:
     protocol: TLS
