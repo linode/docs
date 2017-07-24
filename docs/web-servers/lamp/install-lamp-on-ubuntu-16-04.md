@@ -44,14 +44,21 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
         sudo apt install apache2
 
-2. The `keepalive` setting allows web servers to utilize server-side bandwidth and reduce the latency of users connecting to the site. Open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+2. The `KeepAlive` setting allows apache to utilize server-side memory reducing latency for users on the hosted site. `KeepAlive` will make a website faster, if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. The state of `keepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
 
     {: .file }
     /etc/apache2/apache2.conf
     :   ~~~ conf
-        KeepAlive Off
-        ~~~
+        KeepAlive On
+		MaxKeepAliveRequests 50
+		KeepAliveTimeout 5
+		~~~
+
+{: .note}
+>
+> The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistant connection. 50 is a conservative amount, you may need to set this higher depending on your use-case. The `KeepAliveTimeout ` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+
 
 3.  The default *multi-processing module* (MPM) for Apache is the *event* module but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
