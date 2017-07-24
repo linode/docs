@@ -165,7 +165,7 @@ The next section of the `nginx.conf` file covers the universal directives for ng
 Most of the `http { }` block should work as-is for most nginx configurations. We do, however, want to draw your attention to the following configuration options:
 
 include
-:   The `include` statement at the beginning of this section *includes* the file `mime.types` located at `/opt/nginx/conf/mime.types`. What this means is that anything written in the file `mime.types` is interpreted as if it was written inside the `http { }` block. This lets you include a lengthy amount of information in the `http { }` block without having it clutter up the main configuration file.
+:   The `include` statement at the beginning of this section *includes* the file `mime.types` located at `/etc/nginx/mime.types`. What this means is that anything written in the file `mime.types` is interpreted as if it was written inside the `http { }` block. This lets you include a lengthy amount of information in the `http { }` block without having it clutter up the main configuration file.
     Try to avoid too many chained inclusions (i.e., including a file that itself includes a file, etc.) Keep it to one or two levels of inclusion if possible, for readability purposes. You can always include all files in a certain directory with the directive:
 
         include /etc/nginx/sites-enabled/*;
