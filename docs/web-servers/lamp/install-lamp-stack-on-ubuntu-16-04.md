@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
+description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
 keywords: 'install lamp ubuntu 16.04,apache install,mysql install,php 7.0, ubuntu 16.04 '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/']
+alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/','websites/lamp/install-lamp-on-ubuntu-16-04/']
 modified: Thursday, April 28th, 2016
 modified_by:
   name: Edward Angert
 published: 'Thursday, April 28th, 2016'
-title: 'Install LAMP on Ubuntu 16.04'
+title: 'Install a LAMP Stack on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -18,7 +18,9 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps. 
+
+This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](/docs/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
@@ -38,13 +40,15 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 ## Apache
 
-### Install and Configure
+### Install and Configure Apache
 
 1.  Install Apache 2.4 from the Ubuntu repository:
 
         sudo apt install apache2
 
-2. The `KeepAlive` setting allows apache to utilize server-side memory reducing latency for users on the hosted site. `KeepAlive` will make a website faster, if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. The state of `keepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster, if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. 
+
+The state of `keepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
 
     {: .file }
@@ -57,10 +61,10 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
 {: .note}
 >
-> The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistant connection. 50 is a conservative amount, you may need to set this higher depending on your use-case. The `KeepAliveTimeout ` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+> The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistant connection. 50 is a conservative amount; you may need to set this higher depending on your use-case. The `KeepAliveTimeout ` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
 
 
-3.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default one. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
+3.  The default *multi-processing module* (MPM) is the **prefork** module. `Mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default one. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
@@ -135,7 +139,7 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 	{: .note}
     >
-    >The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step are after the examples section and are uncommented.
+    >The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 
 3.  Create the log directory for PHP and give ownership to the Apache system user:
 
@@ -149,11 +153,11 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 	{:.note}
 	> 
-	>If you plan on using your LAMP stack to host a wordpress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
+	>If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
 
 ### Optional: Test and Troubleshoot the LAMP Stack
 
-In this section, we'll create a test page that shows whether Apache can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
+In this section, you'll create a test page that shows whether Apache can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Create a MySQL Database** section above:
 
@@ -194,7 +198,7 @@ In this section, we'll create a test page that shows whether Apache can render P
         systemctl status apache2
         sudo systemctl restart apache2
 
-*   If the site loads, but the page returned is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above, and check that the `DocumentRoot` matches your `example.com/public_html` folder.
+*   If the site loads, but the page returned is the default "Congratulations" page, return to the **Configure Virtual Hosts** section above and check that the `DocumentRoot` matches your `example.com/public_html` folder.
 
 *   If the page returned says "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
 
