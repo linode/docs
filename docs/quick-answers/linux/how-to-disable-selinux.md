@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Angel Guarisma
   email: docs@linode.com
 description: 'Security-Enhanced Linux works to filter system access. On occasion, recently installed apps run poorly on SELinux. This Quick Answer will show you how to disable SELinux when you need to.'
 keywords: 'terminal, selinux, disable selinux'
