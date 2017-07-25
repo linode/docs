@@ -18,7 +18,7 @@ external_resources:
 ---
 
 
-Fish the Friendly Interctive Shell, is a replacement shell, which, out of the box, offers auto-suggestions; programmable completions based on installed man pages; a fully functional, readable, scripting language; and colored text support.
+Fish the Friendly Interactive Shell, is a replacement shell, which, out of the box, offers auto-suggestions; programmable completions based on installed man pages; a fully functional, readable, scripting language; and colored text support.
 
 
 ### Installing Fish
@@ -34,7 +34,7 @@ Start the Fish shell with the `fish` command:
 	
 #### Customizing Fish
 
-The configuration file for Fish is located at: `~/.config/fish/config.fish`. You can write commands, or Fish functions to this file. The `fish_config` command, will load a customization server on the browser, ![fish_config](docs/assets/fish/fish_config.png)
+The configuration file for Fish is located at: `~/.config/fish/config.fish`. You can write commands or Fish functions to this file. The `fish_config` command, will load a customization server on the browser, ![fish_config](docs/assets/fish/fish_config.png)
 
 
 ### Regarding Fish
@@ -63,7 +63,7 @@ Fish boasts a full featured scripting language. You can use scripts written in F
 
 
 #### Functions
-Fish does not support aliasing, in it's place Fish uses `functions`. Typing `functions` into Fish will output a list of functions that exist by default:
+Fish does not support aliasing. Instead Fish uses `functions`. Typing `functions` into Fish will output a list of functions that exist by default:
 
 
 	root@localhost ~/.c/fish# functions
@@ -94,17 +94,17 @@ If you are a long time bash user, you may have a lifetime of bash scripts and on
 	fish: for ((k=1; k<=10; ++k)); do echo $k; done
 	                             ^
 
-Using `bash -c`, you can take that same script and run it without leaving Fish. 
+Using `bash -c`, you can take that same script as a string and run it without leaving Fish. 
 
 ![fish_script](/docs/assets/fish/fish_script.png)
 	
 	
 ### Next Steps 
 
-The best way to learn Fish, is to use it. Fish is designed with **The Law Of Discoverability** in mind
+The best way to learn Fish is to use it. Fish is designed with **The Law Of Discoverability** in mind
 
 	A program should be designed to make its features as easy as possible to discover for the user.
 	Rationale: A program whose features are discoverable turns a new user into an expert in a shorter span of time,
 	since the user will become an expert on the program simply by using it.
 	
-Check out the links in the More Information section, pick something and go.
+Check out the links in the More Information section.
