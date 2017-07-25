@@ -60,17 +60,17 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 > The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistant connection. 50 is a conservative amount, you may need to set this higher depending on your use-case. The `KeepAliveTimeout ` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
 
 
-3.  The default *multi-processing module* (MPM) for Apache is the *event* module but by default PHP uses the *prefork* module. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
+3.  The default *multi-processing module* (MPM) is the **prefork** module. `mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default one. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
     :   ~~~ conf
         <IfModule mpm_prefork_module>
                 StartServers            4
-                MinSpareServers         20
+                MinSpareServers         3
                 MaxSpareServers         40
                 MaxRequestWorkers       200
-                MaxConnectionsPerChild  4500
+                MaxConnectionsPerChild  10000
         </IfModule>
         ~~~
 
@@ -83,64 +83,6 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting 
 
         sudo systemctl restart apache2
 
-### Configure Virtual Hosts
-
-You can set up virtual hosts several ways; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name.
-
-1.  Create a copy of the default Apache configuration file for your site:
-
-        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
-
-2.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path and log directories as shown below, and add a `Directory` block before `</VirtualHost>`:
-
-    {: .file }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ apache
-        <Directory /var/www/html/example.com/public_html>
-            Require all granted
-        </Directory>
-        <VirtualHost *:80>
-                ServerName example.com
-                ServerAlias www.example.com
-                ServerAdmin webmaster@localhost
-                DocumentRoot /var/www/html/example.com/public_html
-
-                ErrorLog /var/www/html/example.com/logs/error.log
-                CustomLog /var/www/html/example.com/logs/access.log combined
-
-        </VirtualHost>
-        ~~~
-
-    {: .note}
-    > The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
-    >
-    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
-
-3.  Create the directories referenced above:
-
-        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
-
-4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
-
-        sudo a2ensite example.com.conf
-
-    {: .note}
-    >
-    >If you need to disable your website, run:
-    >
-    >     a2dissite example.com.conf
-
-5.  Disable the default virtual host to minimize security risks:
-
-        sudo a2dissite 000-default.conf
-
-6.  Reload Apache:
-
-        sudo systemctl reload apache2
-
-    Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
-
-    If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
 ## MySQL
 
@@ -148,7 +90,7 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
 Install the `mysql-server` package and choose a secure password when prompted:
 
-    sudo apt-get install mysql-server
+    sudo apt install mysql-server
 
 ### Create a MySQL Database
 
@@ -175,11 +117,11 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 1.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
 
-        sudo apt-get install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql
+        sudo apt install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql
 
     Optionally, install additional cURL, JSON, and CGI support:
 
-        sudo apt-get install php7.0-curl php7.0-json php7.0-cgi
+        sudo apt install php7.0-curl php7.0-json php7.0-cgi
 
 2.  Once PHP7.0 is installed, edit the configuration file located in `/etc/php/7.0/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
@@ -191,7 +133,7 @@ Install the `mysql-server` package and choose a secure password when prompted:
         error_log = /var/log/php/error.log
         ~~~
 
-    {: .note}
+	{: .note}
     >
     >The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step are after the examples section and are uncommented.
 
@@ -204,7 +146,12 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
         sudo systemctl restart apache2
 
-## Optional: Test and Troubleshoot the LAMP Stack
+
+	{:.note}
+	> 
+	>If you plan on using your LAMP stack to host a wordpress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
+
+### Optional: Test and Troubleshoot the LAMP Stack
 
 In this section, we'll create a test page that shows whether Apache can render PHP and connect to the MySQL database. This can be helpful in locating the source of an error if one of the elements of your LAMP stack is not communicating with the others.
 
