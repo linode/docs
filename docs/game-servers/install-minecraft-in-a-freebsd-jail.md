@@ -5,7 +5,7 @@ author:
 description: 'FreeBSD''s advanced security features can be used to safely provide a secured container for hosting game servers, like Minecraft.'
 keywords: 'freebsd,bsd,minecraft'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, July, 08, 2016
+modified: Tuesday, July, 25, 2017
 modified_by:
   name: Rainbow
 published: 'Monday, March, 14, 2016'
