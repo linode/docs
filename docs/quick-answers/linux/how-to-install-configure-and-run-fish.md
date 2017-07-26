@@ -110,4 +110,4 @@ The best way to learn Fish is to use it. Fish is designed with **The Law Of Disc
 	Rationale: A program whose features are discoverable turns a new user into an expert in a shorter span of time,
 	since the user will become an expert on the program simply by using it.
 	
-Follow the links in the More Information section to quickly explore the power and functionality Fish.
+Follow the links in the More Information section to quickly explore the power and functionality of Fish.
