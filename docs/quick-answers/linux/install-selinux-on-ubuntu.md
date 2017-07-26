@@ -58,11 +58,7 @@ Linode does not support SELinux by default. To boot a distribution-specific kern
 
     {: .note}
     >
-<<<<<<< HEAD
     >If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If not, ensure the selected kernel is GRUB2 and try installing SELinux again.
-=======
-    >If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If so, disable the custom kernel and try installing SELinux again.
->>>>>>> 28836458... Fixed YAML header; Added config step
 
 3. To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
