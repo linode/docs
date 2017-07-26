@@ -2,7 +2,7 @@
 author:
   name: Angel
   email: docs@linode.com
-description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you uninstall apparmor'
+description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you uninstall AppArmor'
 keywords: 'linux,selinux,apparmor,Mandatory Access Control system'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Sunday, June 30th, 2017'
@@ -56,9 +56,26 @@ Linode does not support SELinux by default. To boot a distribution-specific kern
 		root@ubuntu:~# getenforce
 		Enforcing
 
-{:.note}
->
->If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If so, disable the custom kernel and try installing SELinux again.
+    {: .note}
+    >
+<<<<<<< HEAD
+    >If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If not, ensure the selected kernel is GRUB2 and try installing SELinux again.
+=======
+    >If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If so, disable the custom kernel and try installing SELinux again.
+>>>>>>> 28836458... Fixed YAML header; Added config step
+
+3. To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
+
+    {: .file-excerpt }
+    /etc/selinx/config
+    :   ~~~
+        # This file controls the state of SELinux on the system.
+        # SELINUX= can take one of these three values:
+        # enforcing - SELinux security policy is enforced.
+        # permissive - SELinux prints warnings instead of enforcing.
+        # disabled - No SELinux policy is loaded.
+        SELINUX=enforcing
+        ~~~
 
 ## Next Steps 
 After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux) to learn the basics of SELinux security. 
