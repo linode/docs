@@ -20,7 +20,9 @@ external_resources:
   
 ---
 
-![How to Deploy Docker Containers](/docs/assets/Deploy_Docker_Container.png)
+
+![How to Deploy Docker Containers](/docs/assets/docker/Deploy_Docker_Container.png)
+
 
 ## Before You Begin
 
