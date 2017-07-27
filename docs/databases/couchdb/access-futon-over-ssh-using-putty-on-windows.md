@@ -18,34 +18,36 @@ external_resources:
 
 [Futon](http://docs.couchdb.org/en/1.6.1/intro/futon.html) is a web-based administrative interface for [Apache CouchDB](https://couchdb.apache.org/). You can use SSH to connect to your Linode's CouchDB server and then access Futon securely through your web browser. This quick answer assumes you already have CouchDB running on your Linode.
 
-1.  Establish an SSH connection:
+![Futon title graphic.](/docs/assets/couchdb-with-futon-over-ssh-titlegraphic.png)
 
-    **SSH with Windows Using PuTTY**
+## Establish an SSH connection
 
-    If you need to get set up with PuTTY, see [our guide](/docs/assets/couchdb-futon.p/docs/networking/ssh/ssh-connections-using-putty-on-windows) on using it and verifying your Linode's SSH key fingerprint.
+**SSH with Windows Using PuTTY**
 
-    To set up the SSH tunnel:
+If you need to get set up with PuTTY, see [our guide](/docs/networking/ssh/ssh-connections-using-putty-on-windows) on using it and verifying your Linode's SSH key fingerprint.
 
-    - In PuTTY's configuration window, go to the **Connection** category.
-    - Go to **SSH**, then **Tunnels**.
-    - Enter **5984** in the Source Port field and **127.0.0.1:5984** in the Destination field.
-    - Click **Add**, then click **Open** to log in.
+To set up the SSH tunnel:
 
-        ![PuTTY, CouchDB, Futon](/docs/assets/putty-couchdb-futon.png)
+- In PuTTY's configuration window, go to the **Connection** category.
+- Go to **SSH**, then **Tunnels**.
+- Enter **5984** in the Source Port field and **127.0.0.1:5984** in the Destination field.
+- Click **Add**, then click **Open** to log in.
 
-    **SSH with Mac OS X or Linux**
+![PuTTY, CouchDB, Futon](/docs/assets/putty-couchdb-futon.png)
 
-    Enter the following into the terminal of your local computer:
+**SSH with Mac OS X or Linux**
 
-        ssh -L5984:127.0.0.1:5984 user@your_Linode's_IP
+Enter the following into the terminal of your local computer:
+
+    ssh -L5984:127.0.0.1:5984 user@your_Linode's_IP
 
 
-2.  Access Futon from a Web Browser:
+## Access Futon from a Web Browser
 
-    Once the SSH connection is established, open a web browser on your local computer and go to `http://localhost:5984/_utils/`. You'll see the Futon overview page and despite it being an http URL, you're actually connecting to your server securely through an SSH tunnel.
+Once the SSH connection is established, open a web browser on your local computer and go to `http://localhost:5984/_utils/`. You'll see the Futon overview page and despite it being an http URL, you're actually connecting to your server securely through an SSH tunnel.
 
-    ![Futon interface](/docs/assets/couchdb-futon.png)
+![Futon interface](/docs/assets/couchdb-futon.png)
 
-    {: .note}
-    >
-    > You will also be able to access CouchDB directly over its HTTP interface at `http://localhost:5984` without needing to access the server over a public IP.
+{: .note}
+>
+> You will also be able to access CouchDB directly over its HTTP interface at `http://localhost:5984` without needing to access the server over a public IP.
