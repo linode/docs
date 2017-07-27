@@ -5,12 +5,12 @@ author:
 description: 'Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up.'
 keywords: 'reverse dns,dns manager,dns configuration,IP address,PTR record'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/setting-reverse-dns/']
-modified: Tuesday, January 20, 2015
+alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/setting-reverse-dns/','networking/Setting-Up-Reverse-DNS-Lookup/']
+modified: Thursday, July 27th, 2017
 modified_by:
-  name: James Stewart
+  name: Linode
 published: 'Thursday, July 9, 2015'
-title: Setting Up Reverse DNS Lookup
+title: Configure Your Linode for Reverse DNS (rDNS)
 ---
 
 Your desktop computer uses DNS to determine the IP address associated with a domain name. *Reverse* DNS lookup does the opposite by resolving an IP address to a designated domain name. You should always set the reverse DNS, even if your Linode hosts more than one domain name.
