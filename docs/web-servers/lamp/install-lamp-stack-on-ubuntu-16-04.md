@@ -10,7 +10,7 @@ modified: Friday, July 28th, 2017
 modified_by:
   name: Edward Angert
 published: 'Thursday, April 28th, 2016'
-title: 'Install a LAMP Stack on Ubuntu 16.04'
+title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free, and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps. 
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps. 
 
 This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
@@ -39,7 +39,7 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
         sudo apt update && sudo apt upgrade
 
 ## Quick Install Using Tasksel
-Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to have a LAMP stack running quickly. 
+Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to get a LAMP stack running quickly. 
 
 1.  Install tasksel if not already installed by default.
 
@@ -59,7 +59,7 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
         sudo apt install apache2
 
-2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster, if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. 
+2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. 
 
     The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
@@ -73,10 +73,10 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
     {: .note}
     >
-    > The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+    > The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
 
 
-3.  The default *multi-processing module* (MPM) is the **prefork** module. `Mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default one. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
+3.  The default *multi-processing module* (MPM) is the **prefork** module. `Mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
     {: .file}
     /etc/apache2/mods-available/mpm_prefork.conf
