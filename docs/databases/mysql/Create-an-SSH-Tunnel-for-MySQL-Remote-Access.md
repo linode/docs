@@ -22,6 +22,7 @@ This guide will show you how to make a secure connection to your remote MySQL or
 
 ![Securely Administer MySQL with an SSH Tunnel](/docs/assets/securely-administer-mysql-with-an-ssh-tunnel.png)
 
+An SSH tunnel is an encrypted tunnel made through an SSH protocol connection. You can use an SSH tunnel to communicate remotely with the MySQL database.
 After following these instructions, you'll be able to connect to `localhost` on your workstation using your favorite MySQL management tool. The connection will be securely forwarded to your Linode over the Internet.
 
 {:.note}
@@ -33,7 +34,7 @@ After following these instructions, you'll be able to connect to `localhost` on 
 -   [MySQL](/docs/hosting-website#sph_installing-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
-## How to Access MySQL Remotely by Creating an SSH Tunnel
+## How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY
 
 This section will show you how to create an SSH tunnel to MySQL on Windows, using the PuTTY tool.
 
