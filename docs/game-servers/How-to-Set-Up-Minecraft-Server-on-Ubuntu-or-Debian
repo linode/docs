@@ -5,19 +5,19 @@ author:
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian
 distributions'
 keywords: 'minecraft server,ubuntu,debian'
-alias: ['game-servers/minecraft-on-debian-and-ubuntu.md']
+alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu.md', ]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-external_resources:
- - '[Minecraft.net](https://minecraft.net/)'
- - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
- - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
- - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 modified: Monday, June 12th, 2017
 modified_by:
   name: Angel Guarisma
 published: 'Wednesday, January 28, 2015'
 title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
 alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/']
+external_resources:
+ - '[Minecraft.net](https://minecraft.net/)'
+ - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
+ - '[Official MineCraft Install Guide](http://minecraft.gamepedia.com/Tutorials/Setting_up_a_server#Debian)'
+ - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 ---
 
 This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update. 
