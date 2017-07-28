@@ -132,6 +132,32 @@ You can set up virtual hosts several ways; however, below is the recommended met
     >
     > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
 
+3.  Create the directories referenced above:
+
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
+
+4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
+
+        sudo a2ensite example.com.conf
+
+    {: .note}
+    >
+    >If you need to disable your website, run:
+    >
+    >     a2dissite example.com.conf
+
+5.  Disable the default virtual host to minimize security risks:
+
+	sudo a2dissite 000-default.conf
+
+6.  Reload Apache:
+
+	sudo systemctl reload apache2
+
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
+
+If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
+
 ## MySQL
 
 ### Install MySQL
