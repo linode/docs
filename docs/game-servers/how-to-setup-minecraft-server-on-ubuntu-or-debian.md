@@ -20,9 +20,11 @@ external_resources:
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 ---
 
-This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update. 
+Minecraft is one of the most popular games in the world with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game. 
 
-##Prerequisites
+This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update.
+
+## Prerequisites
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
@@ -58,7 +60,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 >
 >     -A INPUT -p tcp --dport 25565 -j ACCEPT
 
-##Install Minecraft
+## Install Minecraft
 
 1.  Exit your current SSH session and log back in to your Linode as the `minecraft` user.
 
@@ -87,7 +89,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
         chmod +x /home/minecraft/run.sh
 
-##Run Minecraft
+## Run Minecraft
 
 1.  The first time you run the Minecraft server it will create an EULA file and then exit:
 
@@ -141,7 +143,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
     
     After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
-##Connect to your Minecraft Server
+## Connect to your Minecraft Server
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
