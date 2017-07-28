@@ -148,11 +148,11 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
 5.  Disable the default virtual host to minimize security risks:
 
-	sudo a2dissite 000-default.conf
+        sudo a2dissite 000-default.conf
 
 6.  Reload Apache:
 
-	sudo systemctl reload apache2
+        sudo systemctl reload apache2
 
 Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
 
