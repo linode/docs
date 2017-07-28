@@ -65,7 +65,7 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 
 {: .note}
 >
-> You may want to follow the link to the Apache repository to confirm that "39x" is the latest availble version. 
+> You may want to follow the link to the Apache repository to confirm that "39x" is the latest available version. 
 
 3. Download the two public keys needed to access these repositories:
 		
@@ -143,7 +143,7 @@ If you are receiving connection errors, open the `cassandra-env.sh` file in a te
   
           vim /etc/cassandra/conf/cassandra-env.sh
 
-Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing <public name> at the end of the line:
+Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
 				
           JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
@@ -249,7 +249,7 @@ Since your Cassandra username and password can be stored here in plaintext, this
 	header=true
 	;; The string literal format for boolean values
 	boolstyle = True,False
-	login credentials here to automatically login to the Cassandra command line without entering them each time. When this 
+	;; Input login credentials here to automatically login to the Cassandra command line without entering them each time. When this 
 	;; is enabled, just type "cqlsh" to start Cassandra.
 	[authentication]
 	username=[superuser]
@@ -297,7 +297,7 @@ Update your default cluster name from "Test Cluster" to your desired name.
 	
 	vim /etc/cassandra/conf/cassandra.yaml
 
-3. From the terminal, run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
+3. From the cqlsh terminal, run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
 
 4. Restart Cassandra. Log in with cqlsh and verify the new cluster name is visible.
 
