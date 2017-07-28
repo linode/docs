@@ -5,8 +5,8 @@ author:
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
 keywords: 'install lamp ubuntu 16.04,apache install,mysql install,php 7.0, ubuntu 16.04 '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/','websites/lamp/install-lamp-on-ubuntu-16-04/']
-modified: Thursday, April 28th, 2016
+alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/']
+modified: Friday, July 28th, 2017
 modified_by:
   name: Edward Angert
 published: 'Thursday, April 28th, 2016'
@@ -38,6 +38,19 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
         sudo apt update && sudo apt upgrade
 
+## Quick Install Using Tasksel
+Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to have a LAMP stack running quickly. 
+
+1.  Install tasksel if not already installed by default.
+
+        sudo apt install tasksel
+
+2.  Use tasksel to install the LAMP stack.
+
+        sudo tasksel install lamp-server
+
+3.  Enter the prompt for a MySQL root password. See the steps below for Apache configurations, creating a virtual host, and installation of PHP modules for Wordpress installation.
+
 ## Apache
 
 ### Install and Configure Apache
@@ -48,20 +61,19 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster, if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. 
 
-The state of `keepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+    The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
-
-    {: .file }
+    {: .file}
     /etc/apache2/apache2.conf
-    :   ~~~ conf
+    : ~~~ conf
         KeepAlive On
-		MaxKeepAliveRequests 50
-		KeepAliveTimeout 5
-		~~~
+        MaxKeepAliveRequests 50
+        KeepAliveTimeout 5
+      ~~~
 
-{: .note}
->
-> The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistant connection. 50 is a conservative amount; you may need to set this higher depending on your use-case. The `KeepAliveTimeout ` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+    {: .note}
+    >
+    > The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
 
 
 3.  The default *multi-processing module* (MPM) is the **prefork** module. `Mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default one. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
@@ -87,6 +99,64 @@ The state of `keepAlive` depends on the type of site you plan to run. Please rea
 
         sudo systemctl restart apache2
 
+### Configure Virtual Hosts
+
+You can set up virtual hosts several ways; however, below is the recommended method. By default, Apache listens on all IP addresses available to it. For all steps below, replace `example.com` with your domain name.
+
+1.  Create a copy of the default Apache configuration file for your site:
+
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+
+2.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path and log directories as shown below, and add a `Directory` block before `</VirtualHost>`:
+
+    {: .file }
+    /etc/apache2/sites-available/example.com.conf
+    :   ~~~ apache
+        <Directory /var/www/html/example.com/public_html>
+                Require all granted
+        </Directory>
+        <VirtualHost *:80>
+                ServerName example.com
+                ServerAlias www.example.com
+                ServerAdmin webmaster@localhost
+                DocumentRoot /var/www/html/example.com/public_html
+
+                ErrorLog /var/www/html/example.com/logs/error.log
+                CustomLog /var/www/html/example.com/logs/access.log combined
+
+        </VirtualHost>
+        ~~~
+
+    {: .note }
+    > The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
+    >
+    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
+
+3.  Create the directories referenced above:
+
+        sudo mkdir -p /var/www/html/example.com/{public_html,logs}
+
+4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
+
+        sudo a2ensite example.com.conf
+
+    {: .note}
+    >
+    >If you need to disable your website, run:
+    >
+    >     a2dissite example.com.conf
+
+5.  Disable the default virtual host to minimize security risks:
+
+        sudo a2dissite 000-default.conf
+
+6.  Reload Apache:
+
+        sudo systemctl reload apache2
+
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
+
+If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 
 ## MySQL
 
@@ -121,7 +191,7 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 1.  Install PHP, the PHP Extension and Application Repository, Apache support, and MySQL support:
 
-        sudo apt install php7.0 php-pear libapache2-mod-php7.0 php7.0-mysql
+        sudo apt install php7.0 libapache2-mod-php7.0 php7.0-mysql
 
     Optionally, install additional cURL, JSON, and CGI support:
 
@@ -137,7 +207,7 @@ Install the `mysql-server` package and choose a secure password when prompted:
         error_log = /var/log/php/error.log
         ~~~
 
-	{: .note}
+    {: .note}
     >
     >The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
 
