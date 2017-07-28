@@ -248,6 +248,7 @@ You may want to configure the *internode_encryption* setting to better meet the 
  | dc | Only traffic between datacenters is encrypted. |
  | rack | Only traffic between server racks is encrypted. |
 	
+
 ## Verify SSL Setup
 
 Run the following commands on each server node.
@@ -272,3 +273,7 @@ If successful, your console output should read similar to the following:
 ### Where To Go From Here
 
 Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with `cqlsh` can also be accomplished with encryption. See the "[Client-to-node encryption]" link the the external resources section for information on setting that up. 
+
+
+
+
