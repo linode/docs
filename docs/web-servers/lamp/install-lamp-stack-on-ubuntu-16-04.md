@@ -6,7 +6,7 @@ description: 'This tutorial outlines the steps needed to install a LAMP (Linux, 
 keywords: 'install lamp ubuntu 16.04,apache install,mysql install,php 7.0, ubuntu 16.04 '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/']
-modified: Friday, July 28th, 2016
+modified: Friday, July 28th, 2017
 modified_by:
   name: Edward Angert
 published: 'Thursday, April 28th, 2016'
