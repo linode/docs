@@ -42,7 +42,7 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 
 
 {: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### Add the ntopng Repository
 
@@ -55,7 +55,7 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 
 Verify that your system is up to date. Install `ntopng` and supporting services:
 
-    update && apt upgrade -yuf
+    apt update && apt upgrade -yuf
     apt install pfring nprobe ntopng ntopng-data n2disk ethtool
 
 ### Add System User for ntopng
