@@ -270,6 +270,45 @@ If successful, your console output should read similar to the following:
 			INFO  [main] 2017-07-19 14:35:14,212 MessagingService.java:521 - Starting Encrypted Messaging Service on SSL port 7001
 			
 
+### Automate SSL Certificate Generation
+
+
+If you have many Cassandra nodes to create and distribute certificates for, the process outlined above can quickly become very tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. Depending on the number of Cassandra nodes running, the process for generating SSL certificates can become tedious. You can automate the process with a [script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
+
+1. Navigate to any folder and pull the script from Github: 
+
+        git pull https://github.com/Darkstar90/cassandra-keygen.git
+
+2. Run the script with the `-h` or `--help` option
+    
+	    bash cassandra-keygen.sh --help
+
+3. The output of the command will demonstrate the capabilities of the script and define its usage. The script has 3 modes:
+
+        a. Generate Node Certificates
+	    b. Import Node Certificates
+        c. Generate Truststore
+
+
+An example usage of each mode is demonstrated below, for a cluster of 6 nodes:
+
+**Generate Node Certificates**
+	
+	bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+	
+**Import Node Certificates**
+			
+	bash cassandra-keygen.sh -n 6 -d /etc/cassandra/conf/.keystore -p cassandra
+	
+**Generate Truststore**
+			
+	bash cassandra-keygen.sh --directory /etc/cassandra/conf/.keystore --truststore cassandra
+	
+**Do All Actions**
+			
+	bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --truststore cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+
+
 ### Where To Go From Here
 
 Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with `cqlsh` can also be accomplished with encryption. See the "[Client-to-node encryption]" link the the external resources section for information on setting that up. 
