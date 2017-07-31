@@ -20,13 +20,8 @@ external_resources:
   
 ---
 
-
 ![How to Deploy Docker Containers](/docs/assets/docker/Deploy_Docker_Container.png)
 
-
-## Before You Begin
-
-This guide is part of a series on Docker that includes [An Introduction to Docker](/docs/applications/containers/introduction-to-docker) and [How to Install Docker Images](/docs/applications/containers/how-to-install-docker-images). This guide shows how to deploy an nginx container on a Linode, as a general example.
 
 ## What is a Docker Container?
 
