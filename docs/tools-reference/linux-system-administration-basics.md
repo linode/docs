@@ -610,7 +610,7 @@ In order to provide these resources to users, your Linode needs to be running a 
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
-If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/websites/frameworks/).
+If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
 
 ### How to Choose a Web Server
 
