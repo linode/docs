@@ -119,4 +119,4 @@ This entry would mount the home directory for "user" on the server "usersLinode.
 
 ### Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide:'[Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla'), and see what method you prefer. 
+After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla), and see what method you prefer. 

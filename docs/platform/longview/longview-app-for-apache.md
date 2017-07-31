@@ -24,7 +24,7 @@ Longview for Apache is a Longview App. The Longview Apache tab appears in the Li
 Prerequisites:
 
 -   Install and start [Apache](/docs/web-servers/apache)
--   Install the [Longview client](/docs/longview#sph_installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
