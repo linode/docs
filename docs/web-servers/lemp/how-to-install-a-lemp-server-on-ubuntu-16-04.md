@@ -234,7 +234,7 @@ In this section, you'll create a test page that shows whether nginx can render P
         systemctl status nginx
         sudo systemctl restart nginx
 
-*   If the site loads, but the page it returns is the default nginx page, return to the [Configure Nginx Virtual Hosting](lemp-server-on-ubuntu-16-04/#configure-nginx-virtual-hosting) section above and check that the `root` directive matches your `example.com/public_html` folder.
+*   If the site loads, but the page it returns is the default nginx page, return to the [Configure Nginx Virtual Hosting](#configure-nginx-virtual-hosting) section above and check that the `root` directive matches your `example.com/public_html` folder.
 
 *   If the page it returns displays "Index of /" or has a similar folder tree structure, create a test `index.html` file or a test file as shown above.
 

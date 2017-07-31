@@ -18,7 +18,7 @@ Linode Guides and Tutorials manages bounty guides through the use of GitHub. In 
 
 ## Before You Begin
 
-This guide assumes that you've signed up for a [GitHub Account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-source-control-on-mac-and-windows/) guide.
+This guide assumes that you've signed up for a [GitHub Account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
 
 {: .note}
 >

@@ -124,7 +124,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 4.  You'll be returned to the volume list and the **Status** column for the volume should say **resizing**.
 
-      [![Linode Manager edit volume](/docs/assets/bs-volume-resizing-small.png)](/docs/assets/bs-volume-resizing-volume.png)
+      [![Linode Manager edit volume](/docs/assets/bs-volume-resizing-small.png)](/docs/assets/bs-volume-resizing.png)
 
 5.  Reboot your Linode and your volume resize will be completed.
 

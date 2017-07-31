@@ -34,7 +34,7 @@ To access Longview, log in to the [Linode Manager](https://manager.linode.com) a
 
 2.  This guide will use `sudo` wherever possible.
 
-3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewall/configure-firewall-with-ufw.md) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.   
+3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.   
 
 ## Adding Systems
 
