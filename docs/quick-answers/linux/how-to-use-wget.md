@@ -2,7 +2,7 @@
 author:
   name: Angel
   email: docs@linode.com
-description: 'This Quick Answer guide will explain how to use wget to download resources to your Linode.'
+description: 'This Quick Answer guide will explain how to use wget.'
 keywords: 'linux,how to,grep,wget'
 alias: ['quick-answers/how-to-use-wget/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
