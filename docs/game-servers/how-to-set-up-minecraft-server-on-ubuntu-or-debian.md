@@ -5,9 +5,9 @@ author:
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian
 distributions'
 keywords: 'minecraft server,ubuntu,debian'
-alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu.md', ]
+alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu' ]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, June 12th, 2017
+modified: Monday, July 30th, 2017
 modified_by:
   name: Angel Guarisma
 published: 'Wednesday, January 28, 2015'
