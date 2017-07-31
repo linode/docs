@@ -12,7 +12,7 @@ featured:
  - use-the-graphic-shell-glish.md
  - linux-static-ip-configuration.md
  - remote-access.md
- - native-ipv6-networking.md
+ - how-to-enable-native-ipv6-on-linux.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
 categories:

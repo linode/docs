@@ -10,7 +10,7 @@ modified: Friday, June 24, 2016
 modified_by:
     name: Phil Zona
 published: 'Tuesday, May 3rd, 2011'
-title: How to Enable Native IPv6 on Linux Distributions
+title: How to Enable Native IPv6 on Linux
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
