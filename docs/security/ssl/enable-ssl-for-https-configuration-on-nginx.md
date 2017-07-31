@@ -10,7 +10,7 @@ modified: Tuesday, June 10th, 2014
 modified_by:
   name: Alex Fornuto
 published: 'Monday, November 8th, 2010'
-title: 'Enable SSL for HTTPS Configuration on Nginx'
+title: 'Enable SSL for HTTPS Configuration on nginx'
 external_resources:
  - '[Nginx Project Home Page](http://nginx.org)'
  - '[Nginx Project SSL Documentation](http://wiki.nginx.org/NginxHttpSslModule)'

@@ -12,7 +12,6 @@ modified_by:
   name: Angel Guarisma
 published: 'Wednesday, January 28, 2015'
 title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
-alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/']
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
