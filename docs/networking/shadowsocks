@@ -2,7 +2,7 @@
  author:
  name: Linode Community
  email: docs@linode.com
-description: 'Shadowsocks is a lightweight SOCKS5 web proxy that is primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode VPS server to host the Shadowsocks daemon and a client installed on the user's personal PC. Unlike other proxy software, Shadowsocks is designed to be indiscernible to third party monitoring tools, and able to disguise itself as a normal direct connection. Data passing through it is also encrypted for additional security and privacy.'
+description: 'Shadowsocks is a lightweight SOCKS5 web proxy tool that is primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode VPS server to host the Shadowsocks daemon and a client installed on the user's personal PC. Unlike other proxy software, Shadowsocks is designed to be indiscernible to third party monitoring tools, and able to disguise itself as a normal direct connection. Data passing through it is also encrypted for additional security and privacy.'
 keywords: 'shadowsocks, proxy, socks, ubuntu, centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published:
