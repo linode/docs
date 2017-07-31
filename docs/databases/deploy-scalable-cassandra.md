@@ -297,7 +297,7 @@ Update your default cluster name from "Test Cluster" to your desired name.
 	
 	vim /etc/cassandra/conf/cassandra.yaml
 
-3. From the cqlsh terminal, run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
+3. From the Linux terminal (not cqlsh), run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
 
 4. Restart Cassandra. Log in with cqlsh and verify the new cluster name is visible.
 
