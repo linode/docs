@@ -20,7 +20,7 @@ Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Lino
 Prerequisites:
 
 -   Install and start [MySQL](/docs/databases/mysql)
--   Install the [Longview client](/docs/longview#sph_installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 

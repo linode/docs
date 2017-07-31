@@ -20,7 +20,7 @@ Longview for Nginx is a Longview App. The Longview Nginx tab appears in the Lino
 Prerequisites:
 
 -   Install and start [Nginx](/docs/websites/nginx)
--   Install the [Longview client](/docs/platform/longview/longview#installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
