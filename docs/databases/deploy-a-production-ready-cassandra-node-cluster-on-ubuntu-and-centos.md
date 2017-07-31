@@ -2,14 +2,14 @@
 author:
   name: Andrew Lescher
   email: docs@linode.com
-description: 'Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or Cassandra Query Language is syntactically similar to the Structured Query Language, making it easy to pick up for those familiar with SQL.'
+description: This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.
 keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 14.04, database, nosql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Saturday, June 24th, 2017'
 modified: 'Saturday, June 24th, 2017'
 modified_by:
   name: Andrew Lescher
-title: 'Deploy A Production-Ready Cassandra Node Cluster'
+title: 'How to Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -22,26 +22,35 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
  
 ---
- 
+
+## What is Apache Cassandra
+
+Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or Cassandra Query Language, is syntactically similar to  Structured Query Language, making it easy to pick up for those familiar with SQL.
+
+Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations. 
+
+
 ## Introduction To This Tutorial
 
-This guide is part 2 in a series detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. In order to complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following the instructions here, you will learn how to link your Cassandra nodes together to form a true cluster. You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
+This guide is Part 2 in a series detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster. 
+
+You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
 
 ## Before You Begin
 
-1. You must have at least two Cassandra nodes set up and configured according to the instructions in the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](https://linode.com/docs/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs, or bottlenecks can occur.
+1. You must have at least two Cassandra nodes set up and configured according to the instructions in the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](https://linode.com/docs/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
 	
 2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
 3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
 
-### Initial Node Preparation
+## Initial Node Preparation
 
-## Prepare The Nodes For Clustering
+### Prepare The Nodes For Clustering
 
-The instructions here must be executed on each Cassandra node to be clustered. Apply the exact same configuration to each node unless otherwise indicated.
+The instructions here must be executed on each Cassandra node to be clustered. Apply the exact same configuration to each node, unless otherwise indicated.
 
-1. Clear the default data from the Cassandra system table in order to import new values set in the *cassandra.yaml* config file.
+1. Clear the default data from the Cassandra system table in order to import a new values set in the *cassandra.yaml* config file.
 
 		systemctl stop cassandra
 
@@ -59,8 +68,8 @@ The instructions here must be executed on each Cassandra node to be clustered. A
  | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
  | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from "localhost" to the specific node's public IP address. |
  | rpc_address | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
- | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch", as this is more suitable to a multi-datacenter configuration. |
- | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes, that is, you are starting with a fresh cluster, set this to "false". If your node(s) already contain data, **do not** add this property. |
+ | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-datacenter configuration. |
+ | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
  | num_tokens | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |     
 
 **Example**
@@ -93,9 +102,9 @@ The instructions here must be executed on each Cassandra node to be clustered. A
   rack=RACK1
   ~~~
 
-### Edit Firewall Settings
+## Edit Firewall Settings
 
-## Open Cassandra Communication Ports
+### Open Cassandra Communication Ports
 
 1. Ports 7000 and 9042 must be available for external nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
 
@@ -121,17 +130,17 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 	
 		-A INPUT -p tcp -s [external_node_ip_address] -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
 
-### Test The Cluster Setup
+## Test the Cluster Setup
 
-## Boot Cassandra
+### Boot Cassandra
 
-Start Cassandra on each node, one after another with `systemctl start cassandra`. Run `nodetool status`, and you should see each node in your cluster listed in the output.
+Start Cassandra on each node, one after another, with `systemctl start cassandra`. Run `nodetool status`, and you should see each node in your cluster listed in the output.
 
-### Enable Node to Node Encryption
+## Enable Node to Node Encryption
 
 Setting up encryption between nodes offers additional security and protects the data that is transferred between Cassandra nodes. The commands in this section need only to be run on one node in your cluster, with the appropriate files then distributed across the rest of the cluster.
 
-## Generate SSL Files
+### Generate SSL Files
 
 1. Create a new directory called ".keystore" in the Cassandra config directory. Navigate to the newly created directory.
 	
@@ -161,23 +170,22 @@ Setting up encryption between nodes offers additional security and protects the 
 
 		openssl req -config rootCAcert.conf -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
 			
-3. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+3. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
 		keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"	
 	    keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node2, OU=[cluster_name]"
-			
-			
+						
 4. Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
 
 		keytool -list -keystore node1-keystore.jks -storepass [password]
 			
-5. Generate the signing request file. Repeat this command for each node in your cluster, using each .jks file for the `-keystore` option. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+5. Generate the signing request file. Repeat this command for each node in your cluster, using each .jks file for the `-keystore` option. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
 		keytool -certreq -keystore node1-keystore.jks -alias node1 -file node1-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node1, OU=[cluster_name]"
 			
 	    keytool -certreq -keystore node2-keystore.jks -alias node2 -file node2-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node2, OU=[cluster_name]"
 			
-6. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+6. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
 		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra	
 		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
@@ -186,12 +194,12 @@ Setting up encryption between nodes offers additional security and protects the 
 
 		openssl verify -CAfile ca-cert.cert node1-signed.cert
 			
-8. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+8. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
 		keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra	
 		keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 			
-9. Now, Import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+9. Now, Import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
 		keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra	
 		keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra 
@@ -202,7 +210,7 @@ Setting up encryption between nodes offers additional security and protects the 
 			
 ## Copy Files To Each Node In The Cluster
 
-1. Copy the truststore file and keystore files into cassandra's `conf` directory for each node. Depending on your installation, the `conf` directory could be located at `/etc/cassandra/conf`, or `/etc/cassandra`.
+1. Copy the truststore file and keystore files into Cassandra's `conf` directory for each node. Depending on your installation, the `conf` directory could be located at `/etc/cassandra/conf`, or `/etc/cassandra`.
 
 	{: .note}
 	>
@@ -273,7 +281,7 @@ If successful, your console output should read similar to the following:
 ### Automate SSL Certificate Generation
 
 
-If you have many Cassandra nodes to create and distribute certificates for, the process outlined above can quickly become very tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. Depending on the number of Cassandra nodes running, the process for generating SSL certificates can become tedious. You can automate the process with a [script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
+If you have many Cassandra nodes to create and distribute certificates for, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can automate the process with a [script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
 
 1. Navigate to any folder and pull the script from Github: 
 
@@ -286,7 +294,7 @@ If you have many Cassandra nodes to create and distribute certificates for, the 
 3. The output of the command will demonstrate the capabilities of the script and define its usage. The script has 3 modes:
 
         a. Generate Node Certificates
-	    b. Import Node Certificates
+	b. Import Node Certificates
         c. Generate Truststore
 
 
