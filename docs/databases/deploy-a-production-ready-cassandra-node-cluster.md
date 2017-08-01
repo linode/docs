@@ -146,15 +146,15 @@ Setting up encryption between nodes offers additional security and protects the 
 	[ req ]
 	distinguished_name     = req_distinguished_name
 	prompt                 = no
-	output_password        = **set_strong_password_here**
+	output_password        = set_strong_password_here
 	default_bits           = 4096
 
 	[ req_distinguished_name ]
-	C                      = **US**
-	ST                     = **WA**
-	L                      = **Seattle**
-	OU                     = **Cluster_Name**
-	CN                     = **Cluster_Name_MasterCA**
+	C                      = US
+	ST                     = WA
+	L                      = Seattle
+	OU                     = Cluster_Name
+	CN                     = Cluster_Name_MasterCA
   ~~~
 
 2. Create the public and private key files.
@@ -255,19 +255,19 @@ Run the following commands on each server node.
 
 1. Reboot Cassandra
 
-			systemctl restart cassandra
+       systemctl restart cassandra
 			
 2. Verify the nodes are online and communicating.
 
-			nodetool status
+        nodetool status
 			
 3. Check log file to verify ssl encryption status.
 
-			grep SSL /var/log/cassandra/system.log 2>&1 | tail -1
+        grep SSL /var/log/cassandra/system.log 2>&1 | tail -1
 			
 If successful, your console output should read similar to the following:
 
-			INFO  [main] 2017-07-19 14:35:14,212 MessagingService.java:521 - Starting Encrypted Messaging Service on SSL port 7001
+    INFO  [main] 2017-07-19 14:35:14,212 MessagingService.java:521 - Starting Encrypted Messaging Service on SSL port 7001
 			
 
 ### Automate SSL Certificate Generation
