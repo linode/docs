@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on CentOS 7'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, August 27th, 2015
+modified: 'Tuesday, August 1st, 2017'
 modified_by:
   name: Linode
 published: 'Thursday, August 27th, 2015'

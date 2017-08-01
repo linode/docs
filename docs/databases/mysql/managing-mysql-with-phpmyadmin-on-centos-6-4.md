@@ -6,7 +6,7 @@ description: 'Use phpMyAdmin to manage MySQL databases and users though a web in
 keywords: 'mysql,phpmyadmin,sql,centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-centos-6/']
-modified: Tuesday, February 4th, 2014
+modified: 'Tuesday, August 1st, 2017'
 modified_by:
     name: Linode
 published: 'Tuesday, February 4th, 2014'
