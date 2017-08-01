@@ -53,7 +53,7 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
 
 {: .note}
 >

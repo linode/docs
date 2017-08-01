@@ -137,7 +137,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
     To access the console, type `screen -r` as your **minecraft** user (note if you `su` to the user, you will need to run `script /dev/null` before you can attach to the Screen session).
 
-    You can now follow the [Connecting to your Minecraft Server](minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
+    You can now follow the [Connecting to your Minecraft Server](how-to-set-up-minecraft-server-on-ubuntu-or-debian#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
 
     To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server!
 

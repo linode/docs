@@ -24,7 +24,7 @@ Longview for Apache is a Longview App. The Longview Apache tab appears in the Li
 Prerequisites:
 
 -   Install and start [Apache](/docs/web-servers/apache)
--   Install the [Longview client](/docs/longview#sph_installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -44,7 +44,7 @@ For most people, Longview should be able to configure itself automatically, and 
 
 Once you see this successful message, the Longview Apache App should automatically start collecting Apache data. Refresh the Longview Apache tab in the Linode Manager to start viewing your stats.
 
-If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#id3) section at the end of this article.
+If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 [![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1451-longview_apache_popup_crop.png)](/docs/assets/1451-longview_apache_popup_crop.png)
 
@@ -94,7 +94,7 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 6.  Refresh the Longview Apache tab in the Linode Manager.
 
-You should now be able to see Longview data for Apache. If that's not the case, proceed to the [Troubleshooting](#id3) section at the end of this article.
+You should now be able to see Longview data for Apache. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## Viewing Statistics
 

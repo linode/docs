@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  You should set up [LAMP on CentOS 7](docs/web-servers/lamp/lamp-on-centos-7). 
+1.  You should set up [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7). 
 
 2.  Install the Extra Packages for Enterprise Linux (EPEL) repository.
         sudo yum install epel-release
@@ -123,7 +123,7 @@ Make sure that you see the green checkmark for every section before proceeding. 
 
 [![OpenCart Installer Page 3.](/docs/assets/opencart-3-scaled.png)](/docs/assets/opencart-3.png)
 
-Here, select the **MySQLi** driver and fill out the form with the relevant information from the [Create a Database and User]('/docs/websites/ecommerce/opencart-on-centos-7#create-a-database-and-user') section of this guide. You also need to select a username and password for the default administrator account for this OpenCart installation.
+Here, select the **MySQLi** driver and fill out the form with the relevant information from the [Create a Database and User](#create-a-database-and-user) section of this guide. You also need to select a username and password for the default administrator account for this OpenCart installation.
 
 Finally, press the **CONTINUE** button and you should now see the _**Installation complete**_ screen. You will also see a warning box telling you to remove your installation directory. We can do this by going back to your web root directory and running:
 
