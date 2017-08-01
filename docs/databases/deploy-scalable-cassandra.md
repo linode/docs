@@ -3,7 +3,6 @@ author:
    name: Andrew Lescher
    email: docs@linode.com
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 14.04 and CentOS 7 distros.'
-og:description: 'Apache Cassandra, the open source NoSQL database, is ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and rapidly evolving project demands. This guide will show you how to install it onto your Linode server.'
 keywords: 'cassandra, apache cassandra, centos 7, ubuntu 14.04, database, nosql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, June 12th, 2017'
