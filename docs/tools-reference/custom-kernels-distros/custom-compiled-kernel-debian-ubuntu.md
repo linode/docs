@@ -2,15 +2,17 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: ''
+description: 'Instructions for compiling and configuring a custom kernel your Debian or Ubuntu Linode'
 keywords: 'compile kernel,kernel compiling,custom linux kernel,custom linode, debian,ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, March 23rd, 2017
+modified: Tuesday, August 1st, 2017
 modified_by:
   name: Linode
-published: ''
+published: 'Tuesday, August 1st, 2017'
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 ---
+
+![Custom Compiled Kernel on Debian & Ubuntu](/docs/assets/custom-compiled-kernel-on-debian-and-ubuntu.png "Custom Compiled Kernel on Debian & Ubuntu")
 
 Compiling your own Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 

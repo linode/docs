@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on CentOS 7'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, August 27th, 2015
+modified: 'Tuesday, August 1st, 2017'
 modified_by:
   name: Linode
 published: 'Thursday, August 27th, 2015'
@@ -17,6 +17,8 @@ external_resources:
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
 ---
+
+![Install MySQL on CentOS 7](/docs/assets/how-to-install-mysql-on-centos-7.png "Install MySQL on CentOS 7")
 
 MySQL is a popular database management system used for web and server applications. However, MySQL is no longer in CentOS's repositories and MariaDB has become the default database system offered. MariaDB is considered a [drop-in replacement ](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/) for MySQL and would be sufficient if you just need a database system in general. See our [MariaDB in CentOS 7](/docs/databases/mariadb/how-to-install-mariadb-on-centos-7) guide for installation instructions.
 
