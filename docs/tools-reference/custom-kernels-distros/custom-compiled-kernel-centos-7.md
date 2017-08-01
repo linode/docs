@@ -12,6 +12,8 @@ published: ''
 title: 'Custom Compiled Kernel on CentOS 7'
 ---
 
+![Custom Compiled Kernel on CentOS](/docs/assets/custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")
+
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
 If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).

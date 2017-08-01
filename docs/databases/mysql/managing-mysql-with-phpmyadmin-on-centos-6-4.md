@@ -16,6 +16,8 @@ external_resources:
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
 
+![Install and Configure phpMyAdmin on CentOS 6](/docs/assets/how-to-install-and-configure-phpmyadmin-on-centos-6.png "Install and Configure phpMyAdmin on CentOS 6")
+
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
 {: .note}

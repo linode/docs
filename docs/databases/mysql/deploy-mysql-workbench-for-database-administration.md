@@ -20,6 +20,8 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
+![Deploy MySQL Workbench for Database Administration](/docs/assets/deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
+
 This guide will show you how to get started using [MySQL Workbench](https://www.mysql.com/products/workbench/), a graphical tool for working with MySQL databases. Workbench is available for Linux, OS X and Windows, and runs directly on your desktop in a client/server model with your MySQL backend.
 
 MySQL Workbench is a very handy tool for database administration. This guide is only a start to its capabilities. As you explore and manipulate your data using this tool, you'll discover many more features and shortcuts that can make managing your databases that much easier.
