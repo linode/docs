@@ -20,7 +20,7 @@ Linode's block storage service allows you to attach additional storage volumes t
 >Linode's backup services do NOT cover block storage volumes. 
 >You MUST execute your own backups for this data.
 
-Block Storage is currently in a free public beta for Linodes in our Newark datacenter. If you'd like to gain access, open a [support ticket](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) to be added. Any feedback you can give on the service would also be helpful and is appreciated.
+Block Storage is currently in a free public beta for Linodes in our Newark datacenter. Any feedback you can give on the service would also be helpful and is appreciated.
 
 ![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
 
