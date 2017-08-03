@@ -22,6 +22,7 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
  
 ---
+![css](/docs/assets/cass.png)
 
 ## What is Apache Cassandra
 
