@@ -15,7 +15,8 @@ external_resources:
 
 ---
 
-ownCloud is an open source, cloud-based, file hosting service. 
+ownCloud is an open source, cloud-based, file hosting service. ownCloud offers a quick installation process, works out of the box, and hosts an extensive library of plugins. It's compatability with platforms means you can access your files from most major operating systems, browsers, and mobile devices. 
+
 
 ## Before You Begin
 
@@ -37,7 +38,7 @@ ownCloud is a hosted service, in this guide we will host ownCloud with with a LA
 
 The easiest way to install ownCloud is to visit the [ownCloud](http://download.owncloud.org/download/repositories/9.1/owncloud/) install page and follow the instructions for your distribution. On Ubuntu 16.04, you add the repository key to apt, and then install:
 
-	curl https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key | apt-key add -
+	wget https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key | apt-key add -
 	sh -c "echo 'deb http://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/ /' > /etc/apt/sources.list.d/owncloud.list"
 	apt update 
 	apt install owncloud
@@ -51,7 +52,8 @@ Login to your MySQL database, and enter your root password:
 Create a new database for ownCloud:
 
 	CREATE DATABASE ownCloud;
-	CREATE USER ownCloud@localhost
+	CREATE USER ownCloud@localhost;
+	SET PASSWORD FOR 'ownCloud'@'localhost' = PASSWORD('strong_password');
 
 Assign the user to the database:
 
@@ -75,14 +77,19 @@ You can check the current user in MySQL using the `SELECT current_user();` comma
 	1 row in set (0.00 sec)
 
 ### Create an Admin Account
-
-After ownCloud is installed, and MySQL is configured, point your browser to `ip_address_or_domain/owncloud`. 
+ 
+After ownCloud is installed, and MySQL is configured, point your browser to `ip_address_or_domain/owncloud`, and create an administrator account:
 
 ![owncloudlogin](/docs/assets/ownCloud/login.png)
 
-Create an admin account, and click on the `Finish Setup` button. 
+Click `storage & database` and enter the database information:
+
+![ownCloudDBINFO](/docs/assets/ownCloud/dbinfo.png)
+
+Welcome to ownCloud.
 
 ![ownCloudgreeting](/docs/assets/ownCloud/owncloud.png)
+
 
 ### Configure ownCloud
 
@@ -98,7 +105,7 @@ Enable the antivirus app in ownCloud:
 
 Configure your antivirus mode, in ownCloud, to reflect the changes to your system:
 
-![socket](/docs/assets/ownCloud/owncloudsocket.png)
+![socket](/docs/assets/ownCloud/owncloud_socket.png)
 
 You can add new users and groups through the top-right dropdown menu by selecting `Users`::
 
