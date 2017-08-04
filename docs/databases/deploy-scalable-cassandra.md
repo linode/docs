@@ -47,7 +47,7 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 
 {: .caution} 
 >
-> If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in steps 3 & 4. As of this publish date, the only keys required are listed below.
+>  (Ubuntu only) If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.
 
 **Ubuntu 17.04**
 
@@ -67,7 +67,7 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 >
 > You may want to follow the link to the Apache repository to confirm that "39x" is the latest available version. 
 
-3. Download the two public keys needed to access these repositories:
+4. Download the two public keys needed to access these repositories:
 		
 		      gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
 		      gpg --export --armor 749D6EEC0353B12C | apt-key add -
