@@ -15,6 +15,7 @@ featured:
  - how-to-enable-native-ipv6-on-linux.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
+ - shadowsocks.md
 categories:
  - diagnostics
  - ssh

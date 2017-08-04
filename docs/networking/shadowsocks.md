@@ -1,0 +1,289 @@
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'this guide covers shadowsocks'
+keywords: 'shadowsocks, proxy, socks, ubuntu, centos'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Tuesday, August 1st, 2017'
+modified: Tuesday, August 1st, 2017
+modified_by:
+  name: Linode
+title: Create a SOCKS5 Proxy Server With Shadowsocks on Ubuntu 14.04 and CentOS 7
+contributor:
+  name: Andrew Lescher
+  link: '[Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)'
+external_resouces:
+- '[Google](http://www.google.com)'
+---
+
+*This is a Linode Community guide. 
+
+---
+
+## Introduction To This Tutorial
+
+Upon completing this guide, you will have configured a Shadowsocks proxy server and installed the counterpart client software on a personal device. This tutorial will detail the installation of Shadowsocks-libev, which is a full featured port of Shadowsocks designed to require minimal system resources to operate. The following instructions will outline installation from the Shadowsocks-libev source code available on Github, as the package installation via Package Manager will not implement the latest version of Shadowsocks.
+
+Shadowsocks is a lightweight SOCKS5 web proxy tool that is primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode VPS server to host the Shadowsocks daemon and a client installed on your personal PC. Unlike other proxy software, Shadowsocks is designed to be indiscernible to third party monitoring tools, and able to disguise itself as a normal direct connection. Data passing through it is also encrypted for additional security and privacy.
+## Before You Begin
+
+1. the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`).
+
+2. A working firewall is a necessary security measure. Firewall instructions will be presented for UFW, FirewallD, and Iptables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+
+#### Shadowsocks Server Installation
+
+The first stage of a Shadowsocks setup is installing the server daemon on a Linux VPS. This guide will present instructions for the Ubuntu 17.04 and CentOS 7 distributions.
+
+## Download Source Code and Dependencies
+
+1. Update system and download and install dependencies.
+
+**Ubuntu 17.04**
+ 
+            apt-get update && apt-get upgrade -yuf
+
+            apt-get install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev libsodium-dev git python-m2crypto
+
+**CentOS 7**
+
+
+            yum update && yum upgrade -y
+
+			      yum install epel-release -y
+
+			      yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel git m2crypto
+
+2. Navigate to the `/opt` directory and download the Shadowsocks git module.
+
+			      git clone https://github.com/shadowsocks/shadowsocks-libev.git
+
+			      cd shadowsocks-libev
+
+			      git submodule update --init --recursive
+
+3. Install Shadowsocks-libev.
+
+			      ./autogen.sh
+			      ./configure
+			      make && make install
+
+
+## Configure Shadowsocks
+
+1. Create a new system user for Shadowsocks.
+
+**Ubuntu 17.04**
+
+			      adduser --system --no-create-home --group shadowsocks
+
+**CentOS 7**
+
+			      adduser --system --no-create-home -s /bin/false shadowsocks
+
+
+2. Create a new directory for the configuration file.
+
+
+						mkdir -m 755 /etc/shadowsocks
+
+
+3. Create the Shadowsocks config file. Copy the contents listed below into the file, noting the instructions in the **shadowsocks.json Breakdown** table for each property. Follow these instructions to determine the value you should set.
+
+
+						vim /etc/shadowsocks/shadowsocks.json
+
+
+## shadowsocks.json Breakdown
+
+
+{: .table .table-striped .table-bordered}
+ |  **Property**  | **Explanation** | **Possible Values** |
+ |:----------:|:-----------:|:---------------:|
+ | server | Enter your server's public IP address here. | User determined |
+ | server_port | Shadowsocks will listen on this port. Use the default value of 8388. | User determined |
+ | local_address | Local listening address. Use your loopback address, 127.0.0.1. | Loopback address |
+ | local_port | Local listening port. Use the default value of 1080. | User determined |
+ | password | Connection password. Set a strong password here. | User determined |
+ | timeout | Connection timeout, in seconds. The default value should be sufficient here. | User determined |
+ | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
+ | fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Execute this command to check your kernel version: `umame -r`. | true, false |
+
+
+
+{: .file}
+**/etc/shadowsocks/shadowsocks.json**
+: ~~~ json
+  {
+      "server":"192.0.0.1",
+      "server_port":8388,
+      "local_address": "127.0.0.1",
+      "local_port":1080,
+      "password":"mypassword",
+      "timeout":300,
+      "method":"aes-256-gcm",
+      "fast_open": true
+  }
+  ~~~
+
+
+## Optimize Shadowsocks
+
+Apply the following optimizations to your system kernel to provide for a smooth running Shadowsocks installation.
+
+1. Create the system optimization file. Copy and paste the contents shown below into your file.
+
+{: .caution}
+> These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
+
+
+						vim /etc/sysctl.d/local.conf
+
+
+{: .file}
+**/etc/sysctl.d/local.conf**
+: ~~~ conf
+  # max open files
+  fs.file-max = 51200
+  # max read buffer
+  net.core.rmem_max = 67108864
+  # max write buffer
+  net.core.wmem_max = 67108864
+  # default read buffer
+  net.core.rmem_default = 65536
+  # default write buffer
+  net.core.wmem_default = 65536
+  # max processor input queue
+  net.core.netdev_max_backlog = 4096
+  # max backlog
+  net.core.somaxconn = 4096
+
+  # resist SYN flood attacks
+  net.ipv4.tcp_syncookies = 1
+  # reuse timewait sockets when safe
+  net.ipv4.tcp_tw_reuse = 1
+  # turn off fast timewait sockets recycling
+  net.ipv4.tcp_tw_recycle = 0
+  # short FIN timeout
+  net.ipv4.tcp_fin_timeout = 30
+  # short keepalive time
+  net.ipv4.tcp_keepalive_time = 1200
+  # outbound port range
+  net.ipv4.ip_local_port_range = 10000 65000
+  # max SYN backlog
+  net.ipv4.tcp_max_syn_backlog = 4096
+  # max timewait sockets held by system simultaneously
+  net.ipv4.tcp_max_tw_buckets = 5000
+  # turn on TCP Fast Open on both client and server side
+  net.ipv4.tcp_fastopen = 3
+  # TCP receive buffer
+  net.ipv4.tcp_rmem = 4096 87380 67108864
+  # TCP write buffer
+  net.ipv4.tcp_wmem = 4096 65536 67108864
+  # turn on path MTU discovery
+  net.ipv4.tcp_mtu_probing = 1
+
+  # for high-latency network
+  # net.ipv4.tcp_congestion_control = hybla
+
+  # for low-latency network, use cubic instead
+  net.ipv4.tcp_congestion_control = cubic
+  ~~~
+
+2. Apply optimizations.
+
+
+					sysctl --system
+
+
+## Create a Shadowsocks Systemd Service
+
+Creating a systemd service for Shadowsocks allows the daemon to be automatically started on system boot and ran in the background.
+
+1. Create a systemd file. Copy and paste the following content into your file.
+
+
+					vim /etc/systemd/system/shadowsocks.service
+
+
+{: .file}
+**/etc/systemd/system/shadowsocks.service**
+: ~~~ service
+  [Unit]
+  Description=Shadowsocks proxy server
+
+  [Service]
+  User=root
+  Group=root
+  Type=simple
+  ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v start
+  ExecStop=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v stop
+
+  [Install]
+  WantedBy=multi-user.target
+  ~~~
+
+2. Enable and start shadowsocks.service.
+
+
+					systemctl daemon-reload
+
+					systemctl enable shadowsocks
+
+					systemctl start shadowsocks
+
+
+## Open Firewall Port For Shadowsocks Client
+
+Depending on your preference, you may use either the iptables, UFW, or firewallD (CentOS 7 only) commands to complete this section.
+
+1. Open port 8388 for the Shadowsocks Client.
+
+**Iptables**
+
+	iptables -4 -A INPUT -p tcp --dport 8388 -m comment --comment "Shadowsocks server listen port" -j ACCEPT
+
+**UFW**
+
+	ufw allow proto tcp to 0.0.0.0/0 port 8388 comment "Shadowsocks server listen port"
+
+**FirewallD**
+
+					firewall-cmd --permanent --zone=public --add-rich-rule='
+						rule family="ipv4"
+						port protocol="tcp" port="8388" accept'
+
+					firewall-cmd --reload
+
+
+# Shadowsocks Client Installation
+
+The second stage to a Shadowsocks setup is the installation of the client on the user's device. This could include a PC, mobile device or tablet, an Apple device, and even home network routers. Supported operating systems include Windows, OS X, iOS, Linux, Android, and OpenWRT.  
+
+
+# Browser Configuration
+
+The final stage in a Shadowsocks installation is to direct your default web browser to pass URL requests to the Shadowsocks server you setup. Any browser should be capable of accepting a proxy configuration, but the Google Chrome browser will be demonstrated below.
+
+## Configure a Proxy on Google Chrome
+
+You may choose to invoke the proxy on all visited websites, or only specific websites which may be blocked on your network. If you only need a proxy connection on specific websites you visit, enabling Shadowsocks on only those sites will allow you to visit any other website without enduring the higher latency and slower loading times associated with proxy connections.
+
+1. Add the [SwitchyOmega](https://chrome.google.com/webstore/detail/proxy-switchyomega/padekgcemlokbadohgkifijomclgjgif) plugin to your Chrome browser. When installed, click on the SwitchyOmega icon and click on **Options**.
+
+2. Under *Profiles* on the left side of the screen, select **New Profile**. Select the **Proxy Profile** radio button, name your profile, and click the **Create** button. Input the values as shown in the below screenshot.
+
+![Shadowsocks02](/docs/assets/shadowsocks/shadowsocks_02.png)
+
+3. Click on the **Apply changes** button on the bottom left when you are finished.
+
+4. Under *Profiles* on the left side of the screen, select **Auto Switch**.
+
+5. In the **Switch rules** section, you may specify any condition you like for when a proxy connection should be used, and which connection profile it should be used with. If you need a proxy for a specific website, be sure to set the connection profile to the one you created for your Shadowsocks server in step two. Click on **Apply Changes** when finished.
+
+6. With both profiles set, click again on the SwitchyOmega icon. If you would like to invoke the proxy on all connections, select the profile you created in step two to activate the proxy. If you are planning to proxy only certain connections, select the **Auto Switch** profile.
+
+# Where To Go From here
+
+Now with your Shadowsocks server online, you may want to configure your mobile phone, tablet, or any other devices you own. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms. If you are accessing the internet in China and would like to bypass the Golden Shield, you may add [this URL](https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt) to the **Auto Switch** profile in SwitchyOmega in the *Rule List URL* form. Adding this URL will trigger SwitchyOmega to download a rule list text file containing all websites currently blocked by the Golden Shield. Using this configuration, your browser will automatically invoke a proxy connection to your Shadowsocks server whenever you visit a blocked site.
