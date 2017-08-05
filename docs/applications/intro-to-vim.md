@@ -23,6 +23,6 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-Upon completing this guide, you will have configured a Shadowsocks proxy server and installed the counterpart client software on a personal device. This tutorial will detail the installation of Shadowsocks-libev, which is a full featured port of Shadowsocks designed to require minimal system resources to operate. The following instructions will outline installation from the Shadowsocks-libev source code available on Github, as the package installation via Package Manager will not implement the latest version of Shadowsocks.
+This guide is part 1 in a two part series on the usage and configuration of the Vim text editor. Basic editing commands will be will be introduced as well as methods and tips to improve your efficiency while using Vim and demonstrate its versatility.
 
 ## Before You Begin
