@@ -40,6 +40,12 @@ CentOS repositories do not have Iperf by default. Use the [EPEL](https://fedorap
 	yum update
 	yum install iperf
 
+### openSUSE
+
+You can use `zypper` to install Iperf on openSUSE:
+
+	zypper install iperf
+
 ### Fedora
 
 To install Iperf on your Fedora instance run:
