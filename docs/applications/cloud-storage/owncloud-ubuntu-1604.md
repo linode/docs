@@ -2,20 +2,20 @@
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'This guide will explain how to get started with OwnCloud'
-keywords: 'owncloud, install owncloud'
+description: 'Securely setup a cloud hosting service on Ubuntu 16.04 to share files across multiple devices'
+keywords: 'owncloud, install owncloud, cloud storage ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, August 7th, 2017'
 modified: 'Monday, August 7th, 2017'
 modified_by:
   name: Linode
-title: 'Install OwnCloud'
+title: 'Install and Configure OwnCloud on Ubuntu 16.04'
 external_resources:
   - '[ownCloud Official Documentation](https://doc.owncloud.org/)'
 
 ---
 
-ownCloud is an open source, cloud-based, file hosting service. ownCloud offers a quick installation process, works out of the box, and hosts an extensive library of plugins. It's compatability with platforms means you can access your files from most major operating systems, browsers, and mobile devices. 
+ownCloud is an open source, cloud-based, file hosting service. ownCloud offers a quick installation process, works out of the box, and hosts an extensive library of plugins. Its compatibility across platforms means you can access your files from most major operating systems, browsers, and mobile devices. 
 
 
 ## Before You Begin
@@ -38,32 +38,33 @@ ownCloud is a hosted service, in this guide we will host ownCloud with with a LA
 
 The easiest way to install ownCloud is to visit the [ownCloud](http://download.owncloud.org/download/repositories/9.1/owncloud/) install page and follow the instructions for your distribution. On Ubuntu 16.04, you add the repository key to apt, and then install:
 
-	wget https://download.owncloud.org/download/repositories/stable/Ubuntu_16.04/Release.key | apt-key add -
-	sh -c "echo 'deb http://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/ /' > /etc/apt/sources.list.d/owncloud.list"
-	apt update 
-	apt install owncloud
+    sudo wget -nv https://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/Release.key -O Release.key
+    sudo apt-key add - < Release.key
+    sudo sh -c "echo 'deb http://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/ /' > /etc/apt/sources.list.d/owncloud.list"
+    sudo apt update 
+    sudo apt install owncloud
 
 ### Configure MySQL
 
 Login to your MySQL database, and enter your root password: 
 
-	mysql -u root -p
+    mysql -u root -p
 
 Create a new database for ownCloud:
 
-	CREATE DATABASE ownCloud;
-	CREATE USER ownCloud@localhost;
-	SET PASSWORD FOR 'ownCloud'@'localhost' = PASSWORD('strong_password');
+    CREATE DATABASE ownCloud;
+    CREATE USER ownCloud@localhost;
+    SET PASSWORD FOR 'ownCloud'@'localhost' = PASSWORD('strong_password');
 
 Assign the user to the database:
 
-	GRANT ALL PRIVILEGES ON ownCloud.* to ownCloud@localhost;
-	FLUSH PRIVILEGES;
-	exit
+    GRANT ALL PRIVILEGES ON ownCloud.* to ownCloud@localhost;
+    FLUSH PRIVILEGES;
+    exit
 
 Log into MySQL as the newly created user:
 
-	mysql -u ownCloud
+    mysql -u ownCloud -p
 
 You can check the current user in MySQL using the `SELECT current_user();` command. 
 
@@ -82,7 +83,7 @@ After ownCloud is installed, and MySQL is configured, point your browser to `ip_
 
 ![owncloudlogin](/docs/assets/ownCloud/login.png)
 
-Click `storage & database` and enter the database information:
+Click `storage & database` and enter the database login information:
 
 ![ownCloudDBINFO](/docs/assets/ownCloud/dbinfo.png)
 
@@ -95,7 +96,7 @@ Welcome to ownCloud.
 
 You should install [ClamAV](https://www.clamav.net/). The open source antivirus engine works with the antivirus plugin in ownCloud.
 
-	apt install clamav clamav-daemon
+    sudo apt install clamav clamav-daemon
 
 The `clamav` package starts a daemon on your system. 
 
@@ -103,11 +104,11 @@ Enable the antivirus app in ownCloud:
 
 ![antivirus](/docs/assets/ownCloud/antivirus.png)
 
-Configure your antivirus mode, in ownCloud, to reflect the changes to your system:
+Configure your antivirus mode in ownCloud to reflect the changes to your system:
 
 ![socket](/docs/assets/ownCloud/owncloud_socket.png)
 
-You can add new users and groups through the top-right dropdown menu by selecting `Users`::
+You can add new users and groups through the top-right dropdown menu by selecting `Users`:
 
 ![userpanel](/docs/assets/ownCloud/owncloudusers.png)
 
