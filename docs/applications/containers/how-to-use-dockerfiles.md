@@ -20,7 +20,7 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![How to Use Dockerfiles](/docs/assets/docker-how-to-use-dockerfiles.png "How to Use Dockerfiles")
+![How to Use Dockerfiles](/docs/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
 
 [Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same multiple virtual machines.
 Use a Dockerfile to automate installing and configuring an image and its dependencies.
@@ -63,17 +63,18 @@ Note that in the example below, multiple packages are installed on separate line
         mkdir ~/mydockerbuild && cd ~/mydockerbuild
         touch Dockerfile
 
-2.  Open `Dockerfile` using a text editor and enter the following example to create a Dockerfile that installs `build=essential`, `curl`, and `make` onto a Ubuntu image:
+2.  Open `Dockerfile` using a text editor and enter the following example to create a Dockerfile that installs `build-essential`, `curl`, and `make` onto a Ubuntu image:
 
     {: .file }
     Dockerfile
     :   ~~~ docker
+        FROM ubuntu
         MAINTAINER NAME EMAIL
-        FROM ubuntu:latest
-        RUN apt-get -y update && apt-get -y upgrade && apt-get install -y \
-        build-essential \
-        curl \
-        make
+        RUN apt-get update && apt-get install -y \
+            build-essential \
+            gcc \
+            curl \
+            make
         ~~~
 
         In this example:
@@ -87,7 +88,7 @@ Note that in the example below, multiple packages are installed on separate line
 
 Build the `Dockerfile` using the `docker build` command within the same directory. Substitute `NAME` in the following example with the name of the image to create:
 
-    docker build -t “NAME:Dockerfile” .
+    docker build --tag=“Build-Essential:Dockerfile” /path/to/file .
 
 To build three images using the same Dockerfile, give each image a new name. In this example, `webdev1`, `webdev2`, `webdev3`:
 
