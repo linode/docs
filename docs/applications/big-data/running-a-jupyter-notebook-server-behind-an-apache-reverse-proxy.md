@@ -3,7 +3,7 @@ author:
     name: Sam Foo 
     email: docs@linode.com
 description: 'How to access a Jupyter notebook remotely and securely through an Apache reverse proxy'
-keywords: 'storm,analytics,big data,zookeeper'
+keywords: 'Apache2,Jupyter notebook,SSL,websocket'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Friday August 4th, 2017'
 modified: Friday August 4th, 2017
@@ -16,7 +16,7 @@ external_resources:
  - '[Certbot](https://certbot.eff.org/)'
 ---
 
-Jupyter Notebook is an interactive enhanced shell that can be run in the web browser that is popular among data scientists. The Notebook supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to setup a Jupyter Notebook server on a Linode to allow access to your computation needs remotely.
+Jupyter Notebook is an interactive enhanced shell that can be run in the web browser that is popular among data scientists. The Notebook supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to setup a public Jupyter Notebook server on a Linode to allow access to your computation needs remotely using Apache as a reverse proxy. 
 
 ## Before You Begin
 
@@ -24,6 +24,8 @@ You will need:
 
  - [A Linode you can connect to via SSH](/docs/getting-started)
  - [Anaconda](https://www.continuum.io/what-is-anaconda)
+ - [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html)
+ - [Ubuntu 16.04](https://www.ubuntu.com/) or adjust commands for your Linux distribution
 
 ## Install Jupyter Notebook 
 
@@ -43,88 +45,21 @@ Anaconda is a package manager with built in support for virtual environments tha
 
         exec bash
 
-5.  Start the server by running:
-
-        jupyter notebook
-
-    The server will start on `localhost:8888`. To stop running, press `ctrl`+`c` and press enter **yes** when prompted.
-
-## Setting Up Apache Reverse Proxy
-
-1.  Install Apache 2.4:
-
-        sudo apt install apache2
-
-2.  Enable mod_proxy, mod_proxy_http, mod_proxy_wstunnel, ssl
-
-        sudo a2enmod
-
-    {: . note}
-    >Your choices are: access_compat actions alias allowmethods asis auth_basic auth_digest auth_form authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authnz_fcgi authnz_ldap authz_core authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex buffer cache cache_disk cache_socache cgi cgid charset_lite data dav dav_fs dav_lock dbd deflate dialup dir dump_io echo env expires ext_filter file_cache filter headers heartbeat heartmonitor ident include info lbmethod_bybusyness lbmethod_byrequests lbmethod_bytraffic lbmethod_heartbeat ldap log_debug log_forensic lua macro mime mime_magic mpm_event mpm_prefork mpm_worker negotiation proxy proxy_ajp proxy_balancer proxy_connect proxy_express proxy_fcgi proxy_fdpass proxy_ftp proxy_html proxy_http proxy_scgi proxy_wstunnel ratelimit reflector remoteip reqtimeout request rewrite sed session session_cookie session_crypto session_dbd setenvif slotmem_plain slotmem_shm socache_dbm socache_memcache socache_shmcb speling ssl status substitute suexec unique_id userdir usertrack vhost_alias xml2enc
-    >Which module(s) do you want to enable (wildcards ok)?
-
-    proxy proxy_http proxy_https proxy_wstunnel ssl headers
-
-3.  Navigate to `/etc/apache2/sites-available` director. Copy the default configuration file then add directives on virtualhost:
-
-        cp 000-default.conf jupyter.conf
-
-    {: .file-excerpt}
-    /etc/apache2/sites-available/jupyter.conf
-    :   ~~~conf
-        <VirtualHost *:443>
-            ServerAdmin webmaster@localhost
-            DocumentRoot /var/www/html
-
-            ErrorLog ${APACHE_LOG_DIR}.error.log
-            CustomLog ${APACHE_LOG_DIR}/access.log combined
-
-            SSLProxyEngine On
-            ServerName localhost
-            ProxyPreserveHost On
-            LogLevel debug
-
-            <Location "/jupyter">
-                ProxyPass   http://localhost:8888/jupyter
-                ProxyPassReverse   http://localhost:8888/jupyter
-                ProxyPassReverseCookieDomain localhost your.linode.ip
-                RequestHeader set Origin "http://localhost:8888"
-            </Location>
-
-            <Location "/jupyter/api/kernels">
-                ProxyPass   wss://localhost:8888/jupyter/api/kernels
-                ProxyPassReverse    wss://localhost:8888/jupyter/api/kernels
-            </Location>
-
-            <Location "/jupyter/terminals/websocket">
-                ProxyPass   wss://localhost:8888/jupyter/terminals/websocket
-                ProxyPassReverse    wss://localhost:8888/jupyter/terminals/websocket
-            </Location>
-        </VirtualHost>
-        ~~~
-
-4.  Enable the newly created configuration:
-
-        sudo a2ensite jupyter.conf
-
-5.   Restart the Apache server:
-
-        sudo service apache2 restart
-
-## Create SSL Certificate with OpenSSL 
+## Jupyter Notebook Configurations
+The official documentation recommends generating a self-signed SSL certificate to prevent passwords on the notebook being sent unecrypted from the browser. This is especially important because Jupyter notebooks can run bash scripts. If you have a domain name, consider using [Certbot](https://certbot.eff.org/#ubuntuxenial-apache) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days.
 
-        openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out certificate.pem
+        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem 
 
-    This command will create a `key.pem` and `certificate.pem`
+    This command will create a `mykey.key` and `mycert.pem`
 
 2.  Restrict the files to only be read from the owner.
 
-        chmod 400 key.pem
-        chmod 400 certificate.pem
+        chmod 400 mykey.key
+        chmod 400 mycert.pem
 
-## Jupyter Notebook Configurations
+## Create SSL Certificate with OpenSSL 
 
 1.  Generate a new configuration file. This will create a `~/.jupyter` directory:
 
@@ -134,25 +69,114 @@ Anaconda is a package manager with built in support for virtual environments tha
 
         jupyter notebook password
 
-3.  Copy the password from the newly created `jupyter_notebook_config.py` file.
+3.  Copy the password from the newly created `jupyter_notebook_config.json` file.
 
-2.  Uncomment lines from the Jupyter Notebook configuration file. Paste the password from the previous step:
+4.  Uncomment the following lines in the configuration file. Paste the password from the previous step into `c.NotebookApp.password = ''`:
 
-    {: .file-excerpt }
+    {: .file-excerpt}
     /.jupyter/jupyter-notebook-config.py
     :   ~~~ conf
-        c.NotebookApp.keyfile = '/path/to/key.pem'
-        c.NotebookApp.certfile = '/path/to/certificate.pem'
-        c.NotebookApp.ip = '*'
-        c.NotebookApp.password = 'paste_hashed_password_here'
+        c.NotebookApp.allow_origin = '*'
         c.NotebookApp.base_url = '/jupyter'
+        c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
+        c.NotebookApp.ip = 'localhost'
+        c.NotebookApp.keyfile = '/absolute/path/to/mykey.key'
         c.NotebookApp.open_browser = False
+        c.NotebookApp.password = 'paste_hashed_password_here'
+        c.NotebookApp.trust_xheaders = True
         ~~~
 
-2.  Do you need to point back to path of certs?
+## Setting Up Apache Reverse Proxy
 
+1.  Install Apache 2.4:
 
+        sudo apt install apache2
 
+2.  Enable mod_proxy, mod_proxy_http, mod_proxy_wstunnel, mod_ssl, mod_headers.
 
+        sudo a2enmod
 
+    A prompt will appear with a list of mods for Apache. Enter the selected mods separated by a space as shown below:
+
+    {: . note}
+    >Your choices are: access_compat actions alias allowmethods asis auth_basic auth_digest auth_form authn_anon authn_core authn_dbd authn_dbm authn_file authn_socache authnz_fcgi authnz_ldap authz_core authz_dbd authz_dbm authz_groupfile authz_host authz_owner authz_user autoindex buffer cache cache_disk cache_socache cgi cgid charset_lite data dav dav_fs dav_lock dbd deflate dialup dir dump_io echo env expires ext_filter file_cache filter headers heartbeat heartmonitor ident include info lbmethod_bybusyness lbmethod_byrequests lbmethod_bytraffic lbmethod_heartbeat ldap log_debug log_forensic lua macro mime mime_magic mpm_event mpm_prefork mpm_worker negotiation proxy proxy_ajp proxy_balancer proxy_connect proxy_express proxy_fcgi proxy_fdpass proxy_ftp proxy_html proxy_http proxy_scgi proxy_wstunnel ratelimit reflector remoteip reqtimeout request rewrite sed session session_cookie session_crypto session_dbd setenvif slotmem_plain slotmem_shm socache_dbm socache_memcache socache_shmcb speling ssl status substitute suexec unique_id userdir usertrack vhost_alias xml2enc
+    >
+    >Which module(s) do you want to enable (wildcards ok)?
+
+        proxy proxy_http proxy_https proxy_wstunnel ssl headers
+
+3.  Navigate to `/etc/apache2/sites-available` directory. Copy the default configuration file then add directives on virtualhost. Commenting out `DocumentRoot` will allow `https://your-domain-name/` to redirect as `https://your-domain-name/jupyter`. The `<Location>` directive connects the websocket in order to allow the default kernel to run.
+
+        sudo cp 000-default.conf jupyter.conf
+
+    {: .file-excerpt}
+    /etc/apache2/sites-available/jupyter.conf
+    :   ~~~conf
+        <VirtualHost *:443>
+            ServerAdmin webmaster@localhost
+        #   DocumentRoot /var/www/html
+
+            ErrorLog ${APACHE_LOG_DIR}.error.log
+            CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+            SSLCertificateFile /absolute/path/to/mycert.pem
+            SSLCertificateKeyFile /absolute/path/to/mykey.key
+            SSLProxyEngine On
+            SSLProxyVerify none
+            SSLProxyCheckPeerCN off
+            SSLProxyCheckPeerName off
+            SSLProxyCheckPeerExpire off
+
+            ServerName localhost
+            ProxyPreserveHost On
+            ProxyRequests Off
+            LogLevel debug
+
+            ProxyPass /jupyter https://localhost:8888/jupyter
+            ProxyPassReverse /jupyter https://localhost:8888/jupyter
+            RequestHeader set Origin "https://localhost:8888"
+            Redirect permanent / https://your-domain-name/jupyter
+
+            <Location "/jupyter/api/kernels">
+                ProxyPass wss://localhost:8888/jupyter/api/kernels
+                ProxyPassReverse wss://localhost:8888/jupyter/api/kernels
+            </Location>
+
+        </VirtualHost>
+        ~~~
+
+    {: .note}
+    >The `/jupyter` url path can arbitrarily named as long as it matches the base url path defined in the Jupyter notebook configuration file.
+
+4.  Enable the newly created configuration:
+
+        sudo a2ensite jupyter.conf
+
+5.  Restart the Apache server:
+
+        sudo service apache2 restart
+
+6.  Start running the Jupyter notebook.
+
+        jupyter notebook
+
+## Running Jupyter Notebook Remotely
+
+1.  On your local machine, open a browser and navigate to `https://your-domain-name/` where `your-domain-name` is the IP address of your Linode or your selected domain name. If using self-signed certificate, your browser might require confirming a security exception.
+
+    ![OpenSSL Browser Error](/docs/assets/jupyter-add-exception.png)
+
+2.  If Apache is configured properly, there will be a login page.
+
+    ![Jupyter Login Page](/docs/assets/jupyter-login-page.png)
+
+3.  Create a new notebook using a Python kernel.
+
+    ![Jupyter Python Kernel](/docs/assets/jupyter-new-notebook.png)
+
+4.  The notebook is ready to run Python code or additional kernels addded in the future.
+
+    ![Jupyter Notebook Code](/docs/assets/jupyter-code-sample.png)
+
+Note this setup is for a single-user only; simultaneous users on the same notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.
 
