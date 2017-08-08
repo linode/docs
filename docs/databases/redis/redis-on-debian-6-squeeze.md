@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/redis/debian-6-squeeze/']
 modified: Sunday, July 7th, 2013
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, April 5th, 2011'
 title: 'Redis on Debian 6 (Squeeze)'
 ---

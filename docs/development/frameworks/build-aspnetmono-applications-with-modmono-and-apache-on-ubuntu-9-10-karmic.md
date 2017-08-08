@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/mod-mono/ubuntu-9-10-karmic/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/']
 modified: Wednesday, June 15th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Sunday, August 1st, 2010'
 title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 9.10 (Karmic)'
 ---

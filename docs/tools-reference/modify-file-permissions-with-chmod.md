@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/chmod/']
 modified: Thursday, July 7th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 1st, 2010'
 title: Modify File Permissions with chmod
 external_resources:

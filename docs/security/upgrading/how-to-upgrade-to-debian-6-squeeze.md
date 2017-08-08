@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
 keywords: 'debian upgrade,upgrade distro,squeeze upgrade,squeeze'

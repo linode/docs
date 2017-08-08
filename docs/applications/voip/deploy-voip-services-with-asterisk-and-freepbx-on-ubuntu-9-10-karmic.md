@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Install Asterisk and FreePBX on your Linode to use and manage a telephone exchange.'
 keywords: 'asterisk ubuntu 9.10,asterisk,asterisk linux,freepbx,freepbx ubuntu,pbx,voip'

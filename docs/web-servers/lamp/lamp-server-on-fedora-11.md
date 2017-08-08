@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/fedora-11/','websites/lamp/lamp-server-on-fedora-11/']
 modified: Monday, May 2nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, September 29th, 2009'
 title: LAMP Server on Fedora 11
 external_resources:

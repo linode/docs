@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
 modified: Monday, May 23rd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, January 18th, 2010'
 title: Manage Distributed Source Branches with Bazaar
 external_resources:

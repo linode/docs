@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/redis/centos-5/']
 modified: Sunday, July 7th, 2013
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 5th, 2010'
 title: Redis on CentOS 5
 external_resources:

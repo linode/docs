@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Set up and maintain services on your Linode with the Kloxo control panel.'
 keywords: 'kloxo,control panel,cpanel,plesk'

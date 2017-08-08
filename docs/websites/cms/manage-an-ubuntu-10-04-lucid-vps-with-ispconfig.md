@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) Linode.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'
