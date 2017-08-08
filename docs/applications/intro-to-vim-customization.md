@@ -43,6 +43,20 @@ This guide is part 1 in a two part series on the usage and configuration of the 
 
 2. A working knowledge of Vim's editing commands is not required to complete this tutorial, but may be helpful. An excellent method of gaining familiarization with the basics of Vim is to work through its built-in tutorial. The tutorial provides a hands-on introduction to Vim's editing commands, and allows you to practice what you learn within the Vim environment. To begin, type `vimtutor` from the terminal.
 
+3. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+
 # Customizing Your Vim Instance
 
+It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible, and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
+## Customizing The Global vimrc File
+
+The configurations in this section will apply system-wide across all user accounts.
+
+1. A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`. Start by opening the Vim editor.
+
+        sudo vim
+
+2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the *vimrc* file location, and press `<Enter>` to open the file.
+
+3. The *vimrc* file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
