@@ -49,7 +49,7 @@ This guide is part 1 in a two part series on the usage and configuration of the 
 
 It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible, and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customizing The Global vimrc File
+## Customizing The Global *vimrc* File
 
 The configurations in this section will apply system-wide across all user accounts.
 
@@ -60,3 +60,9 @@ The configurations in this section will apply system-wide across all user accoun
 2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the *vimrc* file location, and press `<Enter>` to open the file.
 
 3. The *vimrc* file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
+
+## Customizing The Local *vimrc* File
+
+The configurations in this section will apply only to the active user account.
+
+1. During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified here will override any previously loaded config files, which in this case is the global *vimrc* file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`.
