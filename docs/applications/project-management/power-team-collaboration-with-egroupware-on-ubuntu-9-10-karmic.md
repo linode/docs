@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, February 1st, 2010'
 title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 ---

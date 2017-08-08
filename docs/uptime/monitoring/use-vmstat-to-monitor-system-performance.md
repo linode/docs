@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/vmstat/']
 modified: Friday, July 8th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, October 13th, 2010'
 title: Use vmstat to Monitor System Performance
 external_resources:

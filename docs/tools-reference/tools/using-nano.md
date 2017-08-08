@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Use nano to edit and create files on your Linode.'
 keywords: 'nano,editor'

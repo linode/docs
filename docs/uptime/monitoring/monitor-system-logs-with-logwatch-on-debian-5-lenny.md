@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Use logwatch to monitor system logs and generate reports.'
 keywords: 'logwatch,security,logging,audit'
