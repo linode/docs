@@ -61,7 +61,7 @@ The configurations in this section will apply system-wide across all user accoun
 
 3. The *vimrc* file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
 
-## Customizing The Local *vimrc* File
+## Customizing The Local *.vimrc* File
 
 The configurations in this section will apply only to the active user account.
 
