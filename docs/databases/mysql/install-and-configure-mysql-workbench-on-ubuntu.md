@@ -89,4 +89,4 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
     ![MySQL Workbench Query](/docs/assets/mysql-workbench-query.png "MySQL Workbench Query")
 
-The sample database provides a sandbox to test configurations and how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are a lot of features, there are free and commercial lightweight alternatives available depending on needs of the user.
+The sample database provides a sandbox to test configurations and how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are a lot of features, there are free and commercial lightweight alternatives available depending on needs of the user. MySQL Workbench remains a great choice for most database administration tasks.
