@@ -15,7 +15,9 @@ contributor:
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
   - '[Vim official home page](http://www.vim.org)'
-  - '[Vim Config home page](http://vimconfig.com/)'
+  - '[Vim-Config](http://vimconfig.com/)'
+  - '[VimAwesome](http://vimawesome.com/)'
+  - '[Vim-Plug Project Github Page](https://github.com/junegunn/vim-plug)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -160,7 +162,7 @@ vnoremap <Space> zf
 " Automatically save and load folds
 autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
- ~~~
+~~~
 
 2. Each customization in the **.vimrc** file is paired with an explanation specifying its impact on the Vim editor. You may want to read through line by line and disable any customizations you feel are not necessary by commenting them out (comments are defined by the "`"`" character).
 
@@ -174,7 +176,7 @@ The **.vimrc** file can quickly become cluttered and disorganized as more and mo
 - Type `15j` to block select all of the display related customizations
 - Type `zf` to create the fold
 
-2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Save and close the **.vimrc** file when you are finished. More commands to interact with the fold are detailed below.
+2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Save and close the **.vimrc** file when you are finished. Your customizations will take effect the next time Vim is opened. More commands to interact with folds are detailed below.
 
 - `zo`: Open the fold
 - `zc`: Close the fold
@@ -183,4 +185,76 @@ The **.vimrc** file can quickly become cluttered and disorganized as more and mo
 
 ## Integrate Plugins
 
-Plugins are a powerful way to customize your Vim instance. They can expand Vim's 
+Plugins are a powerful way to customize your Vim instance. They can exponentially expand Vim's capabilities and allow the user to perform tasks which would traditionally require specialized software. This entire guide was written, previewed, and uploaded to Github using Vim.
+
+### Install The Vim-Plug Plugin Manager
+
+The most effective way to install and manage plugins requires the use of a plugin management tool. Vim-Plug will be used here, but there are a handful of others to choose from.
+
+1. Install *curl*.
+
+    **Fedora/RHEL based**
+
+        sudo yum install curl
+
+    **Debian based**
+
+        sudo apt install curl
+
+    **Arch Linux**
+
+        sudo pacman -Syy curl
+
+2. Create the installation directories, download, and install VimPlug from Github.
+
+        sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+### Install Your First Plugin With Vim-Plug
+
+Installing plugins with Vim-Plug is very simple. Once you identify a plugin you would like to add to Vim, it is as easy as adding a line of code to your **.vimrc** file. Below, installing the NERDTree file system explorer plugin will be demonstrated. All other plugins are installed in exactly the same manner.
+
+1. Create a separate file to manage your plugins, and a new directory to store them.
+
+        touch ~/.vimrc.plug
+        mkdir ~/vimplug-plugins
+
+2. Open **.vimrc** in the Vim editor and add the following text at the bottom to call the **.vimrc.plug** file.
+
+        " Call the .vimrc.plug file
+            if filereadable(expand("~/.vimrc.plug"))
+                source ~/.vimrc.plug
+            endif
+
+3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below. Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+
+{: file.}
+**~/.vimrc.plug**
+: ~~~ vimrc
+call plug#begin('~/.vim/plugged')
+
+    " NERDTree   
+    Plug 'scrooloose/nerdtree'
+
+call plug#end()
+~~~
+
+4. After saving and closing the **.vimrc.plug** file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plugin manager within Vim and proceed to install all plugins listed in the **.vimrc.plug** file. Installed plugins will automatically load the next time Vim is started.
+
+        :PlugInstall
+
+5. Additional commands for managing plugins are listed below.
+
+{: .table .table-striped .table-bordered}
+ | Command                        | Description                                   |
+ | :----------:                   | :-----------:                                 |
+ | PlugInstall                    | Install plugins                               |
+ | PlugUpdate                     | Install or update plugins                     |
+ | PlugClean[!]                   | Delete removed plugins                        |
+ | PlugUpgrade                    | Upgrade Vim-Plug                              |
+ | PlugStatus                     | List plugins and current status               |
+ | PlugDiff                       | Display changes made during updates           |
+ | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
+
+# Where To Go From Here
+
+Many tools exist 
