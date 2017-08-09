@@ -18,6 +18,7 @@ external_resources:
   - '[Vim-Config](http://vimconfig.com/)'
   - '[VimAwesome](http://vimawesome.com/)'
   - '[Vim-Plug Project Github Page](https://github.com/junegunn/vim-plug)'
+  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -242,7 +243,7 @@ call plug#end()
 
         :PlugInstall
 
-5. Additional commands for managing plugins are listed below.
+5. Additional commands for managing plugins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
@@ -257,4 +258,4 @@ call plug#end()
 
 # Where To Go From Here
 
-Many tools exist 
+Many additional plugins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file. One of the best places to search for additional plugins is on the VimAwesome website. Most of the plugins available for Vim are hosted there in a well organized and easily searchable environment, along with instructions for installation for all the most popular plugin management tools. Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the **External Resources** section.
