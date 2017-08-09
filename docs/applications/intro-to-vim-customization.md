@@ -50,26 +50,28 @@ This guide details the configuration of the Vim text editor and seeks to provide
 
 It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible, and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customizing The Global *vimrc* File
+## Customizing The Global **vimrc** File
 
 The configurations in this section will apply system-wide across all user accounts.
 
-1. A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`. Start by opening the Vim editor.
+1. A default Vim installation will feature a file containing Vim's core global settings called **vimrc**. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`. Start by opening the Vim editor.
 
         sudo vim
 
 {: .note}
 > Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 
-2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the *vimrc* file location, and press `<Enter>` to open the file.
+2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the **vimrc** file location, and press `<Enter>` to open the file.
 
-3. The *vimrc* file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
+3. The **vimrc** file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
 
-## Customizing The Local *.vimrc* File
+## Customizing The Local **.vimrc** File
 
 The configurations in this section will apply only to the active user account.
 
-1. During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global *vimrc* file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`. This will open the *.vimrc* file in a new Vim tab. For those just starting out, it can be helpful to have a template on which to build on. Copy the sample *.vimrc* file below and paste it into your own file.
+### Create **.vimrc**
+
+1. During Vim's loading sequence, it will automatically check the current user's home directory for a **.vimrc** file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global **vimrc** file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`. This will open the **.vimrc** file in a new Vim tab. For those just starting out, it can be helpful to have a template on which to build on. Copy the sample **.vimrc** file below and paste it into your own file.
 
 {: .file}
 **~/.vimrc**
@@ -88,14 +90,6 @@ filetype plugin indent on
 
 " Turn off modelines
 set modelines=0
-
-" Show line numbers
-set number
-
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
-" Encoding
-set encoding=utf-8
 
 " Automatically wrap text that extends beyond the screen length.
 set wrap
@@ -118,9 +112,6 @@ set scrolloff=5
 " Fixes common backspace problems
 set backspace=indent,eol,start
 
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-set matchpairs+=<:>
-
 " Allow hidden buffers
 set hidden
 
@@ -134,9 +125,22 @@ set laststatus=2
 set showmode
 set showcmd
 
+" Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set matchpairs+=<:>
+
 " Display different types of white spaces.
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+
+" Show line numbers
+set number
+
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+
+" Encoding
+set encoding=utf-8
+
 " Highlight matching search patterns
 set hlsearch
 " Enable incremental search
@@ -158,6 +162,25 @@ autocmd BufWinLeave *.* mkview
 autocmd BufWinEnter *.* silent loadview
  ~~~
 
-2. Each customization in the *.vimrc* file is paired with an explanation specifying its impact on the Vim editor. You may want to read through line by line and disable any customizations you feel are not necessary by commenting them out (comments are defined by the "`"`" character). When you are finished, save and close any open Vim tabs with `:wq`.
+2. Each customization in the **.vimrc** file is paired with an explanation specifying its impact on the Vim editor. You may want to read through line by line and disable any customizations you feel are not necessary by commenting them out (comments are defined by the "`"`" character).
 
+### Organize The *.vimrc* File With Folds
 
+The **.vimrc** file can quickly become cluttered and disorganized as more and more customizations are added. An excellent approach to file management is using Vim's *Fold* feature. 
+
+1. From the still active **.vimrc** file, navigate your cursor to the line that reads "Display options". Type the following sequence of commands in the order listed.
+
+- Enter visual line mode by holding the `<shift>` key and pressing `v`
+- Type `15j` to block select all of the display related customizations
+- Type `zf` to create the fold
+
+2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Save and close the **.vimrc** file when you are finished. More commands to interact with the fold are detailed below.
+
+- `zo`: Open the fold
+- `zc`: Close the fold
+- `zf`: Create a new fold
+- `zd`: Delete a fold
+
+## Integrate Plugins
+
+Plugins are a powerful way to customize your Vim instance. They can expand Vim's 
