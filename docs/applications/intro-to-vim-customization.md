@@ -58,6 +58,9 @@ The configurations in this section will apply system-wide across all user accoun
 
         sudo vim
 
+{: .note}
+> Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
+
 2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the *vimrc* file location, and press `<Enter>` to open the file.
 
 3. The *vimrc* file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
@@ -71,5 +74,90 @@ The configurations in this section will apply only to the active user account.
 {: .file}
 **~/.vimrc**
 : ~~~ vimrc
- 
+" Set compatibility to Vim only.
+set nocompatible
+
+" Helps force plugins to load correctly when it is turned back on below.
+filetype off
+
+" Turn on syntax highlighting.
+syntax on
+
+" For plugins to load correctly.
+filetype plugin indent on
+
+" Turn off modelines
+set modelines=0
+
+" Show line numbers
+set number
+
+" Set status line display
+set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+" Encoding
+set encoding=utf-8
+
+" Automatically wrap text that extends beyond the screen length.
+set wrap
+" Vim's auto indentation feature does not work properly with text copied from outisde of Vim. Press the <F2> key to toggle paste mode on/off.
+nnoremap <F2> :set invpaste paste?<CR>
+imap <F2> <C-O>:set invpaste paste?<CR>
+set pastetoggle=<F2>
+
+" Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
+" set textwidth=79
+set formatoptions=tcqrn1
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
+set expandtab
+set noshiftround
+
+" Display 5 lines above/below the cursor when scrolling with a mouse.
+set scrolloff=5
+" Fixes common backspace problems
+set backspace=indent,eol,start
+
+" Highlight matching pairs of brackets. Use the '%' character to jump between them.
+set matchpairs+=<:>
+
+" Allow hidden buffers
+set hidden
+
+" Speed up scrolling in Vim
+set ttyfast
+
+" Status bar
+set laststatus=2
+
+" Display options
+set showmode
+set showcmd
+
+" Display different types of white spaces.
+set list
+set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+" Highlight matching search patterns
+set hlsearch
+" Enable incremental search
+set incsearch
+" Include matching uppercase words with lowercase search term
+set ignorecase
+" Include only uppercase words with uppercase search term
+set smartcase
+
+" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
+set viminfo='100,<9999,s100
+
+" Map the <Space> key to toggle a selected fold opened/closed.
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+
+" Automatically save and load folds
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview
  ~~~
+
+2. Each customization in the *.vimrc* file is paired with an explanation specifying its impact on the Vim editor. You may want to read through line by line and disable any customizations you feel are not necessary by commenting them out (comments are defined by the "`"`" character). When you are finished, save and close any open Vim tabs with `:wq`.
+
+
