@@ -15,6 +15,7 @@ contributor:
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
   - '[Vim official home page](http://www.vim.org)'
+  - '[Vim Config home page](http://vimconfig.com/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -23,7 +24,7 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-This guide is part 1 in a two part series on the usage and configuration of the Vim text editor. Basic editing commands will be introduced in addition to methods and tips to improve your efficiency while using Vim and demonstrate its versatility. 
+This guide details the configuration of the Vim text editor and seeks to provide practical knowledge to those just starting out with Vim as well as those already familiar with the tool. An array of methods for customizing the way your Vim editor performs and handles certain tasks will be introduced, along with a powerful and simple plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently to boost your productivity, as well as learned how to manage external plugins by installing a popular and useful plugin on your Vim platform.
 
 ## Before You Begin
 
@@ -41,7 +42,7 @@ This guide is part 1 in a two part series on the usage and configuration of the 
 
         sudo pacman -Syy vim
 
-2. A working knowledge of Vim's editing commands is not required to complete this tutorial, but may be helpful. An excellent method of gaining familiarization with the basics of Vim is to work through its built-in tutorial. The tutorial provides a hands-on introduction to Vim's editing commands, and allows you to practice what you learn within the Vim environment. To begin, type `vimtutor` from the terminal.
+2. A working knowledge of Vim's editing commands is not required to complete this tutorial, but may be helpful. Any Vim-specific commands required to complete the steps in this guide will be clarifed, however an overview of basic editing commands is beyond the scope of this tutorial. An excellent method of gaining familiarization with the basics of Vim is to work through its built-in tutorial. The tutorial provides a hands-on introduction to Vim's editing commands, and allows you to practice what you learn within the Vim environment. To begin, type `vimtutor` from the terminal.
 
 3. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
@@ -65,4 +66,10 @@ The configurations in this section will apply system-wide across all user accoun
 
 The configurations in this section will apply only to the active user account.
 
-1. During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified here will override any previously loaded config files, which in this case is the global *vimrc* file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`.
+1. During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global *vimrc* file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`. This will open the *.vimrc* file in a new Vim tab. For those just starting out, it can be helpful to have a template on which to build on. Copy the sample *.vimrc* file below and paste it into your own file.
+
+{: .file}
+**~/.vimrc**
+: ~~~ vimrc
+ 
+ ~~~
