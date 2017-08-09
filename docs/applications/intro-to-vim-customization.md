@@ -243,7 +243,32 @@ call plug#end()
 
         :PlugInstall
 
-5. Additional commands for managing plugins via Vim-Plug are listed below.
+5. To switch to the NERDTree file explorer anytime during an open Vim window, enter command mode with the `:` key and type `NERDTree`. Press `<Enter>` and the NERDTree window will pop open on the left side. This command can also be bound to a free key on the keyboard (such as one of the "F" keys) to simplify and speed up calling. Adding the following to your **.vimrc** file will bind the F3 key as a toggle switch for NERDTree.
+
+{: .file}
+**~/.vimrc**
+~~~ vimrc
+. . .
+
+map <F3> :NERDTreeToggle<CR>
+
+. . .
+~~~
+
+6. Instead of typing out a long filepath when editing a file in Vim, some prefer to open Vim with the `vim` command, then use NERDTree to browse system directories and locate a file. Adding the following to your **.vimrc** file will automatically open NERDTree when Vim is started without a file specified.
+
+{: .file}
+**~/.vimrc**
+~~~ vimrc
+. . .
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+. . .
+~~~
+
+7. Additional commands for managing plugins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
