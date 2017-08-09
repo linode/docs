@@ -78,7 +78,7 @@ The configurations in this section will apply only to the active user account.
 
 {: .file}
 **~/.vimrc**
-: ~~~ vimrc
+~~~ vimrc
 " Set compatibility to Vim only.
 set nocompatible
 
@@ -221,16 +221,21 @@ Installing plugins with Vim-Plug is very simple. Once you identify a plugin you 
 
 2. Open **.vimrc** in the Vim editor and add the following text at the bottom to call the **.vimrc.plug** file.
 
-        " Call the .vimrc.plug file
-            if filereadable(expand("~/.vimrc.plug"))
-                source ~/.vimrc.plug
-            endif
+{: file.}
+**~/.vimrc**
+~~~ vimrc
+. . .
 
+" Call the .vimrc.plug file
+    if filereadable(expand("~/.vimrc.plug"))
+        source ~/.vimrc.plug
+    endif
+~~~
 3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below. Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
 
 {: file.}
 **~/.vimrc.plug**
-: ~~~ vimrc
+~~~ vimrc
 call plug#begin('~/.vim/plugged')
 
     " NERDTree   
