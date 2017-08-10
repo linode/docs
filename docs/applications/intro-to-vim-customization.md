@@ -9,7 +9,7 @@ published:
 modified:
 modified_by:
   name: Linode
-title: 'Introduction To Vim'
+title: 'Introduction To Vim Customization'
 contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
@@ -286,6 +286,15 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
  | PlugDiff                       | Display changes made during updates           |
  | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
 
-# Where To Go From Here
+8. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed. To access support for both Vim and plugin functions, enter command mode by typing the `:` key and then typing `help` and pressing `<Enter>`. Vim will open the help window in a new buffer. Documentation for plugins should be located in the **Local Additions** section. Basic commands to navigate the help section are listed below.
+
+{: .note}
+> The "+" symbol indicates two keys that need to be pressed in tandem.
+
+        - <CTRL + ]>: Opens the help topic in which the cursor is directly positioned on.
+        - <CTRL + T>: Navigate back to the previous window.
+        - <:q + Enter>: Exit help window.
+
+## Where To Go From Here
 
 Many additional plugins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file. One of the best places to search for additional plugins is on the VimAwesome website. Most of the plugins available for Vim are hosted there in a well organized and easily searchable environment, along with instructions for installation for all the most popular plugin management tools. Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the **External Resources** section.
