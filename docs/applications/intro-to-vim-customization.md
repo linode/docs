@@ -248,7 +248,11 @@ call plug#end()
 
         :PlugInstall
 
-5. To switch to the NERDTree file explorer anytime during an open Vim window, enter command mode with the `:` key and type `NERDTree`. Press `<Enter>` and the NERDTree window will pop open on the left side. This command can also be bound to a free key on the keyboard (such as one of the "F" keys) to simplify and speed up calling. Adding the following to your **.vimrc** file will bind the F3 key as a toggle switch for NERDTree.
+### Configuring Plugins
+
+Installed plugins can additionally be configured to perform divergently depending on the set of circumstances. The circumstances and actions to take are defined programmatically in the **.vimrc** file. More often than not, configuration options can be found online on a plugin by plugin basis by utilizing a number of different resources, including the resources in the **External Resources** section.
+
+1. Many configurations are implemented primarily to simplify the number of keystrokes required to perform certain actions. To switch to the NERDTree file explorer anytime during an open Vim window, enter command mode with the `:` key and type `NERDTree`. Press `<Enter>` and the NERDTree window will pop open on the left side. This command can also be bound to a free key on the keyboard (such as one of the "F" keys) to simplify and speed up calling. Adding the following to your **.vimrc** file will bind the F3 key as a toggle switch for NERDTree.
 
 {: .file}
 **~/.vimrc**
@@ -260,7 +264,7 @@ map <F3> :NERDTreeToggle<CR>
 . . .
 ~~~
 
-6. Instead of typing out a long filepath when editing a file in Vim, some prefer to open Vim with the `vim` command, then use NERDTree to browse system directories and locate a file. Adding the following to your **.vimrc** file will automatically open NERDTree when Vim is started without a file specified.
+2. Instead of typing out a long filepath when editing a file in Vim, some prefer to open Vim with the `vim` command, then use NERDTree to browse system directories and locate a file. Adding the following to your **.vimrc** file will automatically open NERDTree when Vim is started without a file specified.
 
 {: .file}
 **~/.vimrc**
@@ -273,7 +277,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 . . .
 ~~~
 
-7. Additional commands for managing plugins via Vim-Plug are listed below.
+3. Additional commands for managing plugins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
@@ -286,7 +290,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
  | PlugDiff                       | Display changes made during updates           |
  | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
 
-8. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed. To access support for both Vim and plugin functions, enter command mode by typing the `:` key and then typing `help` and pressing `<Enter>`. Vim will open the help window in a new buffer. Documentation for plugins should be located in the **Local Additions** section. Basic commands to navigate the help section are listed below.
+4. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed. To access support for both Vim and plugin functions, enter command mode by typing the `:` key and then typing `help` and pressing `<Enter>`. Vim will open the help window in a new buffer. Documentation for plugins should be located in the **Local Additions** section. Basic commands to navigate the help section are listed below.
 
 {: .note}
 > The "+" symbol indicates two keys that need to be pressed in tandem.
