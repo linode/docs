@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, February 5th, 2010'
 title: 'Django, Apache and mod_python on Ubuntu 9.10 (Karmic)'
 ---

@@ -13,6 +13,8 @@ published: 'Friday, October 18th, 2013'
 title: Migrate from Shared Hosting to Linode
 ---
 
+![Migrate from Shared Hosting to Linode](/docs/assets/migrate-from-shared-hosting-to-linode.png "Migrate from Shared Hosting to Linode")
+
 This guide walks you through the steps to migrate your website from a shared hosting provider to a Linode running a LAMP stack. A Linode server gives you much more power and flexibility than a shared host, but these advantages come at the cost of increased complexity and system administration responsibility.
 
 The biggest change between shared hosting and Linode's cloud is that with Linode you have full administrative access to the server without intervention. This means that you will be solely responsible for keeping your software updated and your valuable data backed up. Our [Guides and Tutorials](/docs/) area contains all of the information you'll need for basic [server administration](/docs/tools-reference/linux-system-administration-basics), [security hardening](/docs/security/securing-your-server) and [system backups](/docs/security/backups/backing-up-your-data).
@@ -111,9 +113,9 @@ The next step is to build the software environment needed for your site to funct
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 
-    [![Wait for the jobs to finish, then boot the Linode.](/docs/assets/1437-stackscripts_lamp_boot_sm.png)](/docs/assets/1421-stackscripts_lamp_boot.png)
+    [![Wait for the jobs to finish, then boot the Linode.](/docs/assets/1421-stackscripts_lamp_boot.png)](/docs/assets/1421-stackscripts_lamp_boot.png)
 
-5.  When the **Create Filesystem** job is done, click the **Boot** button under your Linode.
+5.  When the **Create Disk** job is done, click the **Boot** button under your Linode.
 
 6.  To verify that LAMP installed correctly, check that a basic website framework has been added to your server. To do that, your IP address must be used, since your domain isn't pointing to Linode yet.
 

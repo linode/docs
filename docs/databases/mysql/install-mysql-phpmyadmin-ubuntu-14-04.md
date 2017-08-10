@@ -6,7 +6,7 @@ description: 'Use phpMyAdmin to manage MySQL databases and users though a web in
 keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 14.04,lts,ubuntu lts,localhost phpmyadmin,php mysql,http localhost phpmyadmin'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/','databases/mysql/mysql-phpmyadmin-ubuntu-14-04']
-modified: Wednesday, September 16th, 2015
+modified: 'Tuesday, August 1st, 2017'
 modified_by:
     name: Linode
 published: 'Thursday, September 12th, 2013'
@@ -15,6 +15,8 @@ external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
+
+![Install MySQL phpMyAdmin on Ubuntu 14.04](/docs/assets/how-to-install-mysql-phpmyadmin-on-ubuntu-1404.png "Install MySQL phpMyAdmin on Ubuntu 14.04")
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 

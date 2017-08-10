@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/ejabberd/centos-5/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, December 8th, 2009'
 title: Instant Messaging Services with ejabberd on CentOS 5
 external_resources:

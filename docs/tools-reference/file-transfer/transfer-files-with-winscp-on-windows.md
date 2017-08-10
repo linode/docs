@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-winscp/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, October 19th, 2009'
 title: Transfer Files with WinSCP on Windows
 ---

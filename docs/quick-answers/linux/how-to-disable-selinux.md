@@ -1,12 +1,12 @@
 ---
 author:
-  name: Angel
+  name: Angel Guarisma
   email: docs@linode.com
-description: 'How to disable SELinux'
-keywords: 'terminal, selinux, nsa, disable selinux'
+description: 'Security-Enhanced Linux works to filter system access. On occasion, recently installed apps run poorly on SELinux. This Quick Answer will show you how to disable SELinux when you need to.'
+keywords: 'terminal, selinux, disable selinux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
-modified: 'Friday, June 23, 2017'
+modified: 'Tuesday, Jul 17, 2017'
 modified_by: 
   name: Linode
 title: 'Disable SELinux' 
@@ -14,12 +14,11 @@ external_resources:
 - '[SELinux Red Hat Wiki](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux.html)'
 - '[SELinux Arch Wiki](https://wiki.archlinux.org/index.php/SELinux)'
 - '[SELinux CentOS Docs](https://www.centos.org/docs/5/html/5.1/Deployment_Guide/sec-sel-enable-disable.html)'
-
 ---
 
 ## Security Enhanced Linux
 
-Security-Enhanced Linux (SELinux) is a security module developed by the National Security Agency (NSA) and Red Hat. With SELinux, the administrator can enforce a set of policies for the users of a system. The policies provide a virtual sandbox for applications to run. SELinux is like a firewall for applications: SELinux policies function as a set of rules to filter system access.
+SELinux can disupt the functionality of a recently installed application and may need to be disabled. This Quick Answer guides you through the steps necessary to disable it. 
 
 {: .note}
 >
@@ -43,7 +42,7 @@ To disable SELinux on your Linode follow along with this video and the steps bel
 1. Navigate to the SELinux configuration directory at `/etc/sysconfig/selinux`:
 
         cd /etc/sysconfig/selinux
-        cat /etc/sysconfig/selinux
+        
 
     {:.file-excerpt}
     /etc/sysconfig/selinux

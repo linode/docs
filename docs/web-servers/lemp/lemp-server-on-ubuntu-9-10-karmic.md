@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lemp-guides/ubuntu-9-10-karmic/','websites/lemp/lemp-server-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 3rd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, December 1st, 2010'
 title: 'LEMP Server on Ubuntu 9.10 (Karmic)'
 ---

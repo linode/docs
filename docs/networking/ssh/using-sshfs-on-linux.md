@@ -18,7 +18,7 @@ external_resources:
 ---
 
 # Using SSHFS To Mount Remote Directories
-SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will get you started with SSHFS on your Linode. SSHFS can eliminate the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH deamon running on your Linode. If you do not have the SSH deamon visit [Securing Your Server](/docs/security/securing-your-server.md) before returning to this guide. 
+SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will get you started with SSHFS on your Linode. SSHFS can eliminate the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH daemon running on your Linode. If you do not have the SSH daemon visit [Securing Your Server](/docs/security/securing-your-server) before returning to this guide. 
 For this guide we used two Ubuntu 16.10 systems, but `sshfs` can be installed on any Linode image. 
 
 
@@ -34,7 +34,7 @@ Issue the following command to install sshfs:
 	
 
 {: .note}
-> The `sshfs` package is availble on every package manager, use the commands specific to your distribution. 
+> The `sshfs` package is available on every package manager, use the commands specific to your distribution. 
 
 ### Setting up your Linux Client
 
@@ -119,4 +119,4 @@ This entry would mount the home directory for "user" on the server "usersLinode.
 
 ### Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide:'[Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla'), and see what method you prefer. 
+After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla), and see what method you prefer. 

@@ -2,35 +2,35 @@
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: 'Use Git to create a repo, stage a commit, and push the commit'
-keywords: 'Linux, how to use Git, github'
+description: 'This Quick Answer guide explains how to use Git to create a repository, stage a commit, and then push that commit.'
+keywords: 'Linux, how to use Git, github, create git repo'
 alias: ['quick-answers/how-to-use-git/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Monday, June 12th, 2017'
+modified: 'Monday, July 17th, 2017'
 modified_by:
   name: Angel Guarisma
 published: 'Monday, June 19th, 2017'
-title: How to use Git
+title: How to Use Git the Version Control System
 external_resources:
 - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
 - '[Pro Git Book](https://git-scm.com/book/en/v2)'
 - '[Github Guides](https://guides.github.com/)'
 ---
 
-Git is a [version control system](https://en.wikipedia.org/wiki/Version_control). You can use Git to manage software projects. This guide will teach you how to initialize a git repository, stage files for commit, and commit the files to a local git repository. For more information, checkout our longer guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-source-control-on-mac-and-windows).
+Git is a [version control system](https://en.wikipedia.org/wiki/Version_control) that can be used to manage software projects. This guide's six steps will show you how to initialize a Git repository, stage files for a commit, and commit these files to a local Git repository. For fuller instruction, refer to our more robust guide on [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows).
 
-1.  Create a folder to store your files and initialize a git repository in that folder.
+1.  Create a folder in which to store your files, then initialize a Git repository in that folder:
 
 		mkdir testgit 
 		cd testgit
 		git init
 
-2. Create files for Git to keep track of, then append some text to a file.
+2. Create files for Git to track, then append some text to a file:
 
 		touch file.txt file2.txt file3.txt
 		echo "hello Linode" >> file.txt
 
-3.  Use `git status` to return information about the current git repository.
+3.  Use command, `git status`, to return information about the current Git repository:
 
 		git status
 		On branch master
@@ -46,7 +46,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 				
 		nothing added to commit but untracked files present (use "git add" to track)
 
-4. Since there is text in `file.txt`, you want Git to track any future changes to the file. Use `git add file.txt` to add `file.txt` to the list of files git keeps track of. Type `git status` after the addition to confirm that Git is tracking the new file.
+4. Since `file.txt`contains text, you want Git to track any future changes to that file. Use `git add file.txt` to add `file.txt` to the list of files Git monitors. Type `git status` after the addition to confirm that Git is tracking the new file.
 
 		git add file.txt
 		git status
@@ -68,7 +68,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 			file2.txt
 			file3.txt
 
-5. To commit the changes of `file.txt` to the version control system, use `git commit`. Git requires you to write a commit message, a message will help you remember the changes you have made to your files. In this example, use the `-am` options to commit `a`ll modified files, specifically the ones Git is tracking, and include a commit `m`essage.
+5. To commit the changes of `file.txt` to the version control system, use `git commit`. Git requires you to write a commit message, a message will help you remember the changes you have made to your files. In this example, use the `-am` options to commit `a`ll modified files, specifically the ones Git is tracking, and include a commit `m`essage:
 
 		git commit -am "Added Hello Linode to file.txt"
 
@@ -78,7 +78,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 		1 file changed, 1 insertion(+)
 		create mode 100644 file.txt
 
-6. Track the remaining files in the directory using `git add -A`, and commit them with a message.
+6. Track the remaining files in the directory using `git add -A`, and commit them with a message:
 
 		git add -A
 		git status
@@ -93,7 +93,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 		new file:   file2.txt
 		new file:   file3.txt
 
-   Now, commit the changes.
+   Now, commit the changes:
 
         git commit -am "The end!"
 

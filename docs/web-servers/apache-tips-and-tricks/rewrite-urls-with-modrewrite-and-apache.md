@@ -13,7 +13,7 @@ published: 'Friday, November 6th, 2009'
 title: 'Rewrite URLs with mod_rewrite and Apache'
 external_resources:
  - '[Installing Apache](/docs/websites/apache/)'
- - '[LAMP stack guides](/docs/lamp/)'
+ - '[LAMP stack guides](/docs/websites/lamp/)'
  - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
  - '[Redirect URLs with the Apache Web Server](/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server)'
 ---

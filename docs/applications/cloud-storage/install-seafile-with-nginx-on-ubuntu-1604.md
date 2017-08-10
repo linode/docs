@@ -5,7 +5,7 @@ author:
 description: Install Seafile with nginx on Ubuntu 16.04
 keywords: 'Seafile, nginx, Ubuntu 16.04, file server, media, sharing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, May 23rd, 2017
+modified: Wednesday, June 21st, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, May 23rd, 2017'
@@ -16,7 +16,7 @@ external_resources:
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with nginx or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 ![Install Seafile with nginx on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
 
@@ -99,7 +99,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
         sudo mysql_secure_installation
 
-	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04.md)
+	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with nginx
 

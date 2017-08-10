@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/ruby-on-rails-apache/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-apache-on-ubuntu-9-04-jaunty/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 13th, 2009'
 title: 'Ruby on Rails with Apache on Ubuntu 9.04 (Jaunty)'
 external_resources:

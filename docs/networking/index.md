@@ -9,10 +9,10 @@ published: 'Thursday, July 16th, 2009'
 title: IPs, Networking & Domains
 featured:
  - using-the-linode-shell-lish.md
- - use-the-graphic-shell-glish.md
+ - using-the-linode-graphical-shell-glish.md
  - linux-static-ip-configuration.md
  - remote-access.md
- - native-ipv6-networking.md
+ - how-to-enable-native-ipv6-on-linux.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
 categories:

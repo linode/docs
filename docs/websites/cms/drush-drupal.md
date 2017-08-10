@@ -191,8 +191,7 @@ To create a new user for the site owner position, review the [Securing Your Serv
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
-When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) section of the [Hosting a Website](/docs/websites/hosting-
-a-website) guide.
+When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/docs/websites/lamp/lamp-server-on-debian-7-wheezy#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
 
 ##Additional Options
 
