@@ -34,7 +34,13 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     [![Linode Manager create a volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
 
-2.  Assign the block storage volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 1024 GB (1 terabyte). When finished, click *Add this Volume!*:
+2.  Assign the block storage volume a label, size, location, and Linode to attach to. 
+-   The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`.
+-   The maximum volume size is 1024 GB (1 terabyte).
+-   Datacenter location *(available in our Newark datacenter)*.
+-   Select a Linode in Newark DC to attach to.
+
+When finished, click *Add this Volume!*:
 
     [![Linode Manager add a volume](/docs/assets/bs-add-a-volume.png)](/docs/assets/bs-add-a-volume.png)
 
