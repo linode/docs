@@ -1,3 +1,22 @@
+---
+author:
+  name: Christopher Piccini
+  email: cpiccini11@gmail.com   
+description: 'The purpose of this guide is to allow you to create and run python virtual environments in your Ubuntu 16.10 linode.  A Python Virtual environment or `virtualenv` is a tool to create an isolated Python environment within your VPS.  '
+keywords: 'python,python virtual environment,keywords,and key phrases'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Weekday, Month 00st, 2015'
+modified: Weekday, Month 00th, 2015
+modified_by:
+  name: Linode
+title: 'Create a Python Virtual Environment in Ubuntu 16.10'
+contributor:
+  name: Christopher Piccini
+  link: https://twitter.com/chrispiccini11
+  external_resources:
+- '[Link Title 1](http://www.powerfastwebsites.com)'
+---
+
 # About the Author
 #### Name:  
 Chris Piccini
