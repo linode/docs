@@ -177,7 +177,7 @@ The **.vimrc** file can quickly become cluttered and disorganized as more and mo
 - Type `15j` to block select all of the display related customizations
 - Type `zf` to create the fold
 
-2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Save and close the **.vimrc** file when you are finished. Your customizations will take effect the next time Vim is opened. More commands to interact with folds are detailed below.
+2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Normally, any created Folds would be deleted when Vim is closed, even if the file was saved. However, the text block added at the very end of the **.vimrc** file automatically saves and reproduces the state of any folds made in a file. Save and close the **.vimrc** file when you are finished editing. Your added customizations will take effect the next time Vim is opened. More commands to interact with folds are detailed below.
 
 - `zo`: Open the fold
 - `zc`: Close the fold
