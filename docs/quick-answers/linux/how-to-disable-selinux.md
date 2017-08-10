@@ -1,6 +1,6 @@
 ---
 author:
-  name: Linode
+  name: Angel
   email: docs@linode.com
 description: 'How to disable SELinux'
 keywords: 'terminal, selinux, nsa, disable selinux'
@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
 modified: 'Friday, June 23, 2017'
 modified_by: 
-  name: Angel
+  name: Linode
 title: 'Disable SELinux' 
 external_resources:
 - '[SELinux Red Hat Wiki](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux.html)'
@@ -17,23 +17,28 @@ external_resources:
 
 ---
 
-### Security Enhanced Linux
+## Security Enhanced Linux
 
 Security-Enhanced Linux (SELinux) is a security module developed by the National Security Agency (NSA) and Red Hat. With SELinux, the administrator can enforce a set of policies for the users of a system. The policies provide a virtual sandbox for applications to run. SELinux is like a firewall for applications: SELinux policies function as a set of rules to filter system access.
 
 {: .note}
 >
->This guide requires an unconfined root account. You will only be able to disable SELinux if you have the highest level of permissions on your machine. 
+>This guide requires an unconfined root account. You will only be able to disable SELinux if you have the highest level of permissions on your machine.
 
-### Disable SELinux
+## Disable SELinux
 
 {: .caution}
 > Disabling SELinux removes a security feature on your system, and doing so may expose your data.
 > If you are considering disabling SELinux to fix an application on your system, consider fixing the application to work within SELinux instead.
+>
+> **We do not recommend disabling SELinux.**
+>
+> However, in certain instances it might be easier to disable SELinux than it is to write policies that support SELinux in your environment. Proceed at your own risk.
 
-Uninstalling SELinux is not recommended. However, in certain instance it might be easier to disable SELinux than it is to write policies that support SELinux in your environment.
+To disable SELinux on your Linode follow along with this video and the steps below:
 
-To disable SELinux on your Linode:
+<iframe src="https://fast.wistia.net/embed/iframe/1xsx0kx783" title="Wistia video player" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="752.5" height="422.5"></iframe>
+<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 
 1. Navigate to the SELinux configuration directory at `/etc/sysconfig/selinux`:
 
