@@ -19,11 +19,23 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---    
 
-AskBot is an open source question and answer forum written in Django web framework that is based on Python programming language. It provides rich features similarly provided in StackOverflow including Karma based system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-Fedoraproject, Ask-Openstack, etc. In this guide, you'll install and configure AskBot after that, you'll secure it using LetsEncrypt SSL certificates to deploy it on your Ubuntu 16.04 Linode.
+[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python programming language. It provides rich features similarly like StackOverflow including Karma based forum system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-Fedoraproject, Ask-Openstack and others. In this guide, you'll install and configure AskBot after that, you'll secure it using LetsEncrypt SSL certificates to deploy it on your Ubuntu 16.04 Linode.
 
-apt-get update;
-apt-get -y upgrade;
+## Before You Begin
 
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+
+3.  Update your system:
+
+  sudo apt-get update && sudo apt-get upgrade
+
+4.  Update your system:
+
+{: .note}
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+ 
 apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
 
 /usr/bin/mysqladmin -u root -h localhost password $rootmysqlpass;
