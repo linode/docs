@@ -2,7 +2,7 @@
  author:
  name: Linode Community
  email: docs@linode.com
-description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. It is designed based off of the earlier releaed Vi text editor, and is advertised as an improved version. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions. The core distribution of Vim is preloaded with powerful text manipulation capabilities which provide users with tools to address a diverse range of situations without any pre-configuration required. Much more than a simple text editor, Vim transcends its deceptively straightforward user interface and offers unlimited customization opportunities, with the potential to be transformed into a full-featured programming I.D.E. with integrated Github support, and features rivaling the very best free and paid I.D.E.'s on the market today.
+description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. It is designed based off of the earlier released Vi text editor, and is advertised as an improved version. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions. The core distribution of Vim is pre-loaded with powerful text manipulation capabilities which provide users with tools to address a diverse range of situations without any pre-configuration required. Much more than a simple text editor, Vim transcends its deceptively straightforward user interface and offers unlimited customization opportunities, probing the apex of its potential when transformed into a full-featured programming I.D.E. with integrated Github support, and features rivaling the very best free and paid I.D.E.'s on the market today.
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published:
@@ -27,7 +27,7 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-This guide details the configuration of the Vim text editor and seeks to provide practical knowledge to those just starting out with Vim as well as those already familiar with the tool. An array of methods for customizing the way your Vim editor performs and handles certain tasks will be introduced, along with a powerful and simple plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently to boost your productivity, as well as learned how to manage external plugins by installing a popular and useful plugin on your Vim platform.
+This guide details the configuration of the Vim text editor and seeks to provide practical knowledge to those just starting out with Vim as well as those already familiar with the tool. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a powerful and simple plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, boosting your productivity, as well as acquired exposure to managing external plugins through the installation of your first plugin.
 
 ## Before You Begin
 
