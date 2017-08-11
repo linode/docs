@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---    
 
-[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python programming language. It provides rich features similarly like StackOverflow including Karma based forum system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-Fedoraproject, Ask-Openstack and others. In this guide, you'll install and configure AskBot after that, you'll secure it using LetsEncrypt SSL certificates to deploy it on your Ubuntu 16.04 Linode.
+[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python. It provides rich features similarly like StackOverflow including Karma based forum system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-Fedoraproject, Ask-Openstack and others. In this guide, you'll install and configure AskBot after that, you'll secure it using LetsEncrypt SSL certificates to deploy it on your Ubuntu 16.04 Linode.
 
 ## Before You Begin
 
