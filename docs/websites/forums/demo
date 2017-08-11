@@ -1,0 +1,138 @@
+How to Install and Deploy Askbot Question and Answer Forum with LetsEncrypt SSL on Ubuntu 16.04
+
+apt-get update;
+apt-get -y upgrade;
+
+apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
+
+/usr/bin/mysqladmin -u root -h localhost password $rootmysqlpass;
+/usr/bin/mysql -uroot -p$rootmysqlpass -e "CREATE DATABASE askbotdb CHARACTER SET UTF8";
+/usr/bin/mysql -uroot -p$rootmysqlpass -e "CREATE USER askbotuser@localhost IDENTIFIED BY '"$askbotmysqlpass"'";
+/usr/bin/mysql -uroot -p$rootmysqlpass -e "GRANT ALL PRIVILEGES ON askbotdb.* TO askbotuser@localhost";
+/usr/bin/mysql -uroot -p$rootmysqlpass -e "FLUSH PRIVILEGES";
+
+systemctl restart mysql;
+
+mkdir -p /var/www/html
+
+pip install --upgrade pip;
+
+set -e
+
+pip install virtualenv;
+virtualenv /var/www/html/askbotenv;
+source /var/www/html/askbotenv/bin/activate;
+
+pip install askbot mysqlclient mysql-python gunicorn;
+
+askbot-setup -n /var/www/html/ -e 3 -d askbotdb -u askbotuser -p $askbotmysqlpass;
+
+python /var/www/html/manage.py collectstatic --noinput;
+python /var/www/html/manage.py makemigrations;
+python /var/www/html/manage.py migrate;
+
+
+sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py;  
+sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py;
+
+cat > /var/www/html/wsgi.py << "EOF"
+import os
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+EOF
+
+cat > /etc/systemd/system/gunicorn.service << "EOF"
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=root
+Group=www-data
+WorkingDirectory=/var/www/html
+ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/html/askbot.sock wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+# Workers Count Formula = (2 Workers * CPU Cores) + 1
+# ---------------------------
+# For 1 core  -> (2*1)+1 = 3
+# For 2 cores -> (2*2)+1 = 5
+# For 4 cores -> (2*4)+1 = 9
+
+rm -rf /etc/nginx/sites-available/default;
+rm -rf /etc/nginx/sites-enabled/default;
+
+cat > /etc/nginx/sites-available/default << "EOF"
+server {
+    listen 80;
+    server_name techbrown.net;
+
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /var/www/html;
+    }
+
+	location ~ /.well-known {
+    allow all;
+    root /var/www/html;
+    }
+	
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/html/askbot.sock;
+    }
+}
+EOF
+
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default;
+
+systemctl start gunicorn;
+systemctl restart nginx;
+systemctl enable gunicorn;
+systemctl enable nginx;
+systemctl daemon-reload;
+rm -rf /var/www/html/index.nginx-debian.html;
+
+letsencrypt certonly -a webroot --agree-tos --email techbrown@hotmail.com --webroot-path=/var/www/html -d techbrown.net -d www.techbrown.net;
+
+rm -rf /etc/nginx/sites-available/default;
+
+cat > /etc/nginx/sites-available/default << "EOF"
+server {
+        listen 80;
+        server_name techbrown.net;
+        return    301 https://www.$server_name$request_uri;
+}
+
+server {
+        listen 443;
+        server_name techbrown.net www.techbrown.net;
+        
+		ssl on;
+        ssl_certificate /etc/letsencrypt/live/techbrown.net/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/techbrown.net/privkey.pem;
+        add_header Strict-Transport-Security max-age=31536000;
+        ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+        
+		location ~ /.well-known {
+        allow all;
+        root /var/www/html;
+        }
+
+		location = /favicon.ico { access_log off; log_not_found off; }
+        location /static/ {
+        root /var/www/html;
+        }
+		
+        location / {
+        include proxy_params;
+        proxy_pass http://unix:/var/www/html/askbot.sock;
+        }
+}
+EOF
+
+systemctl restart nginx;
