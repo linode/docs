@@ -15,8 +15,8 @@ contributor:
   link: https://github.com/gopalraha
 external_resources:
  - '[AskBot Documentation](https://askbot.org/doc/index.html)'
- - '[AskBot Official Q&A Forum](http://askbot.org)'
- - '[AskBot Official Website](http://www.askbot.com)'
+ - '[AskBot Official Q&A Forum](https://askbot.org)'
+ - '[AskBot Official Website](https://askbot.com)'
 ---    
 
 How to Install and Deploy Askbot Question and Answer Forum with LetsEncrypt SSL on Ubuntu 16.04
