@@ -36,7 +36,32 @@ external_resources:
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
  
-apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
+sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
+
+## Using MySQL
+
+1.  Log in to MySQL as the root user:
+        sudo mysql -u root -p
+
+2.  When prompted, enter the root password.
+
+### Create a New MySQL User and Database
+
+1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+
+        create database testdb;
+        grant all on testdb.* to 'testuser' identified by 'password';
+
+2.  Exit MySQL.
+
+        exit
+
+### Create a Sample Table
+
+1.  Log back in as `testuser`:
+
+        mysql -u testuser -p
+
 
 /usr/bin/mysqladmin -u root -h localhost password $rootmysqlpass;
 /usr/bin/mysql -uroot -p$rootmysqlpass -e "CREATE DATABASE askbotdb CHARACTER SET UTF8";
