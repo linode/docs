@@ -36,40 +36,38 @@ external_resources:
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
  
+## Installing Required Packages
+
+1.  Log in to MySQL as the root user:
+
 sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
 
 ## Using MySQL
 
 1.  Log in to MySQL as the root user:
-        sudo mysql -u root -p
+        
+	sudo mysql -u root -p
 
 2.  When prompted, enter the root password.
 
 ### Create a New MySQL User and Database
 
-1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user’s password.
+1.  In the example below, `askbotdb` is the name of the database, `askbotdbuser` is the user, and `askbotdbpassword` is the user’s password.
 
-        create database testdb;
-        grant all on testdb.* to 'testuser' identified by 'password';
-
+        CREATE DATABASE askbotdb CHARACTER SET UTF8;
+	CREATE USER askbotuser@localhost IDENTIFIED BY 'askbotdbpassword';
+	GRANT ALL PRIVILEGES ON askbotdb.* TO askbotuser@localhost;
+	FLUSH PRIVILEGES;
+	
 2.  Exit MySQL.
 
         exit
 
-### Create a Sample Table
+### Restart MySQL service
 
-1.  Log back in as `testuser`:
+1.  Now Restart MySQL service:
 
-        mysql -u testuser -p
-
-
-/usr/bin/mysqladmin -u root -h localhost password $rootmysqlpass;
-/usr/bin/mysql -uroot -p$rootmysqlpass -e "CREATE DATABASE askbotdb CHARACTER SET UTF8";
-/usr/bin/mysql -uroot -p$rootmysqlpass -e "CREATE USER askbotuser@localhost IDENTIFIED BY '"$askbotmysqlpass"'";
-/usr/bin/mysql -uroot -p$rootmysqlpass -e "GRANT ALL PRIVILEGES ON askbotdb.* TO askbotuser@localhost";
-/usr/bin/mysql -uroot -p$rootmysqlpass -e "FLUSH PRIVILEGES";
-
-systemctl restart mysql;
+	systemctl restart mysql;
 
 mkdir -p /var/www/html
 
