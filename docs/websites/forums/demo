@@ -55,8 +55,8 @@ sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-
 1.  In the example below, `askbotdb` is the name of the database, `askbotdbuser` is the user, and `askbotdbpassword` is the user’s password.
 
         CREATE DATABASE askbotdb CHARACTER SET UTF8;
-	CREATE USER askbotuser@localhost IDENTIFIED BY 'askbotdbpassword';
-	GRANT ALL PRIVILEGES ON askbotdb.* TO askbotuser@localhost;
+	CREATE USER askbotdbuser@localhost IDENTIFIED BY 'askbotdbpassword';
+	GRANT ALL PRIVILEGES ON askbotdb.* TO askbotdbuser@localhost;
 	FLUSH PRIVILEGES;
 	
 2.  Exit MySQL.
