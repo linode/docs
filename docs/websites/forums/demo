@@ -31,7 +31,7 @@ external_resources:
 
   sudo apt-get update && sudo apt-get upgrade
 
-4.  Update your system:
+4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
