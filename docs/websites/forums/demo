@@ -1,3 +1,24 @@
+---
+author:
+  name: Gopal Raha
+  email: gopalraha@outlook.com
+description: 'How to Install and Deploy Askbot Question and Answer Forum with LetsEncrypt SSL on Ubuntu 16.04'
+keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+modified: Monday, August 14th, 2017
+modified_by:
+  name: Gopal Raha
+published: 'Monday, August 14th, 2017'
+title: 'How to Install and Deploy AskBot with LetsEncrypt SSL on Ubuntu 16.04'
+contributor:
+  name: Gopal Raha
+  link: https://www.github.com/gopalraha
+external_resources:
+ - '[AskBot Documentation](https://www.askbot.com)'
+ - '[AskBot Official Q&A Forum](http://askbot.org)'
+ - '[AskBot Official Website](http://www.askbot.com)'
+---    
+
 How to Install and Deploy Askbot Question and Answer Forum with LetsEncrypt SSL on Ubuntu 16.04
 
 apt-get update;
