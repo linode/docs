@@ -19,8 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---    
 
-How to Install and Deploy Askbot Question and Answer Forum with LetsEncrypt SSL on Ubuntu 16.04
-
+Askbot(https://askbot.com) is an open source question and answer forum software. It is written in Django web framework based on Python programming language. It is an open source question and answer forum developed by Evgeny Fadeev and inspired by YahooAnswers and StackOverflow. It is easy to install and deploy AskBot
 apt-get update;
 apt-get -y upgrade;
 
