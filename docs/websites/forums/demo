@@ -38,9 +38,9 @@ external_resources:
  
 ## Installing Required Packages
 
-1.  Log in to MySQL as the root user:
+1.  First Install the required packages including Nginx, MySQL, Python PIP, etc.
 
-sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt;
+	sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
 ## Using MySQL
 
@@ -67,7 +67,7 @@ sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-
 
 1.  Now Restart MySQL service:
 
-	systemctl restart mysql;
+	sudo systemctl restart mysql;
 
 mkdir -p /var/www/html
 
