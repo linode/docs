@@ -8,7 +8,7 @@ contributor:
 description: 'An introduction to using Dockerfiles on your Linode.'
 keywords: 'docker,container,dockerfile'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, August 4, 2017
+modified: Friday, August 11, 2017
 modified_by:
   name: Linode
 published: 'Friday, August 4, 2017'
