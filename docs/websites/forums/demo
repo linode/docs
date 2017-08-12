@@ -52,7 +52,7 @@ external_resources:
 
 ### Create a New MySQL User and Database
 
-1.  In the example below, `askbotdb` is the name of the database, `askbotdbuser` is the user, and `askbotdbpassword` is the user’s password.
+1.  In below, `askbotdb` is the name of the database, `askbotdbuser` is the user, and `askbotdbpassword` is the user’s password.
 
         CREATE DATABASE askbotdb CHARACTER SET UTF8;
 	CREATE USER askbotdbuser@localhost IDENTIFIED BY 'askbotdbpassword';
@@ -65,21 +65,35 @@ external_resources:
 
 ### Restart MySQL service
 
-1.  Now Restart MySQL service:
+1.  Now Restart MySQL service to make changes in effect:
 
-	sudo systemctl restart mysql;
+	sudo systemctl restart mysql
 
-mkdir -p /var/www/html
+## Installing AskBot
 
-pip install --upgrade pip;
+1.  Create a Directory to install the AskBot. In below, `/var/www/html` is the location of AskBot installation directory.
 
-set -e
+	mkdir -p /var/www/html
 
-pip install virtualenv;
-virtualenv /var/www/html/askbotenv;
-source /var/www/html/askbotenv/bin/activate;
+2.  Upgarde the `pip` to latest version 
 
-pip install askbot mysqlclient mysql-python gunicorn;
+	sudo pip install --upgrade pip
+
+3.  Setup isolated Python virtual environment by installing the `virtualenv` using pip.
+
+	sudo pip install virtualenv
+
+4.  Create a Python virtual environment using `virtualenv` command. In below, `/var/www/html/askbotenv` is the location of Python virtual environment.
+	
+	sudo virtualenv /var/www/html/askbotenv
+
+5.  Now Activate the Python virtual environment using source command 
+
+	source /var/www/html/askbotenv/bin/activate
+
+6.  The best tool to install Askbot and its dependencies is `pip` 
+
+	sudo pip install askbot mysqlclient mysql-python gunicorn
 
 askbot-setup -n /var/www/html/ -e 3 -d askbotdb -u askbotuser -p $askbotmysqlpass;
 
