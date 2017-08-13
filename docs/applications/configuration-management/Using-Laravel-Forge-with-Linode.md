@@ -15,21 +15,10 @@ external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 ---
 
-Developers tend to have incredible workflows. So showing the world what they have been building within some minute and then focus on their code instead of spending more time setting up a server environment to host their code will help them to be more productive. The more efficient and streamlined your development process is, the easier it is to do your job.
-
-
-## what is laravel Forge
-
- [Laravel Forge](https://forge.laravel.com) is not all about the [Laravel framework](https://laravel.com). Forge is an incredible tool that provides a GUI interface for interacting with our server seamlessly. It’s in the family of Laravel products that help developers focus on developing, not deploying and hosting. I personally use it when deploying most of my Laravel apps and other PHP related projects and it really does make life easier.   You can deploy any of your PHP related project easily with Linode with the help of Forge which provides a GUI feature for managing and running commands on Linode server.
+ [Laravel Forge](https://forge.laravel.com) is not all about the [Laravel framework](https://laravel.com). Forge is an incredible tool that provides a GUI interface for interacting with our server seamlessly. It’s in the family of Laravel products that help developers focus on developing and not deploying and hosting. You can deploy any of your PHP related project easily on Linode with the help of Forge which provides a GUI feature for managing and running commands on your Linode server.
 
  By default, when deploying our project, we usually install Nginx, PHPMyAdmin, PHP and many other things needed. Laravel Forge does all the necessary installation and configuration for you, you just need to do a little configuration and your website will be up.
-
-
-## About Linode
-
-Linode is a simple, powerful and cloud server with incredibly fast hardware and network in the industry with scalable environments.
-
-
+ 
 
 ## Prerequisite
 
