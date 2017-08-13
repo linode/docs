@@ -2,7 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'A guide using Puppet to install, deploy, and manage a MySQL server. Example Puppet manifests and configuration files explaining how to manage Puppet using Hiera.'
+description: 'A guide using Puppet to install, deploy, and manage a MySQL server. Example Puppet manifests and configuration files explaining integrate Hiera in Puppet.'
 keywords: 'puppet installation,configuration change management,server automation,mysql,database,hiera'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Monday, August 14th, 2017
@@ -23,7 +23,7 @@ external_resources:
 
 [Puppet](https://puppetlabs.com/) is a configuration management system that can help simplify the use and deployment of many different types of software, making system administration more reliable and repeatable. In this guide, Puppet will be used to manage an installation of [MySQL](https://www.mysql.com/), a popular relational database used for applications such as [Wordpress](https://www.mysql.com/), Ruby on Rails, and others. [Hiera](https://docs.puppet.com/hiera/) is a powerful method of defining configuration values that will also be used to simplify configuring MySQL.
 
-This guide will walk through the steps of setting up Puppet for use in deploying [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the conclusion of this walkthrough, MySQL will be installed, configured, and ready to use for a wide variety of applications that require a database backend.
+This guide will walk through the steps to set up Puppet for deploying [modules](https://docs.puppet.com/puppet/latest/modules_fundamentals.html) on your server. At the conclusion of this walkthrough, MySQL will be installed, configured, and ready to use for a wide variety of applications that require a database backend.
 
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -42,7 +42,7 @@ This guide will walk through the steps of setting up Puppet for use in deploying
 
 ## Puppet
 
-The following steps will set up Puppet for a single, local-only deployment. If you require more than one server or a setup including a Puppet master, considering following [our multi-server Puppet guide](docs/applications/configuration-management/install-and-configure-puppet).
+The following steps will set up Puppet for a single-host, local-only deployment. If you need to configure more than one server or a deploy a Puppet master, considering following [our multi-server Puppet guide](docs/applications/configuration-management/install-and-configure-puppet).
 
 ### Package Installation
 
@@ -73,10 +73,12 @@ The [Puppet Forge](https://forge.puppet.com/) is a collection of _modules_ that 
 1.  Install the MySQL module:
 
         sudo -i puppet module install puppetlabs-mysql --version 3.11
+        
+    This will install the `mysql` module into the default path `/etc/puppetlabs/code/environments/production/modules/`.
 
 ### Puppet MySQL Manifest
 
-The actual process of instructing Puppet to install and configure software can happen in a few different ways, including communicating with a Puppet master or by applying a manifest file. In this tutorial, a simple manifest will be used.
+The actual method of instructing Puppet to install and configure software can happen in a few different ways, including communicating with a Puppet master or by applying a manifest file. In this tutorial, a simple manifest will be used.
 
 While the entirety of a Puppet _manifest_ can contain the desired configuration for a host, values for Puppet _classes_ or _types_ can also be defined in a Hiera configuration file, which greatly simplifies writing Puppet manifests in most use cases. In this exercise, the `mysql::server` class parameters will be defined in Hiera, but the class must first be applied our host.
 
@@ -109,7 +111,7 @@ The following configuration will define Puppet variables in `common.yaml` to inj
 
 ### Initial Hiera Configuration
 
-Hiera configuraiton files are formatted as yaml, with keys defining which Puppet parameters to inject their associated values into. To get started, consider how to set the MySQL root password. The following Puppet manifest is one way to control this password (there is no need to create this file anywhere, it only serves to illustrate an example):
+Hiera configuration files are formatted as yaml, with keys defining which Puppet parameters to inject their associated values into. To get started, consider how to set the MySQL root password. The following Puppet manifest is one way to control this password (there is no need to create this file anywhere, it only serves to illustrate an example):
 
 :   ~~~ pp
     class { '::mysql::server':
@@ -174,7 +176,7 @@ With the precomputed MySQL password hash ready, Hiera values can be defined. The
         user: wpuser@localhost
     ~~~
 
-With the Hiera yaml defined, re-run the Puppet manifest:
+With the Hiera yaml defined, re-run Puppet:
 
     sudo -i puppet apply /etc/puppetlabs/code/environments/production/manifests/site.pp
 
@@ -221,7 +223,7 @@ Now create the following yaml file:
 
 Though similar to the `common.yaml` file defined in previous steps, this file will add the `ubuntu-backup` database _only_ on Debian-based hosts (which Ubuntu is). In addition, the `lookup_options` setting ensures that the `mysql::server:databases` parameter is _merged_ between `Debian.yaml` and `common.yaml` so that all databases are managed. Without `lookup_options` set to deeply merge these hashes, only the _most specific_ hierarchy file (in this case, `Debian.yaml`) will be applied to the host.
 
-Run Puppet once again and observe the changes:
+Run Puppet once again and observe the changes. Note that because our Puppet manifest is so short, we can alternatively get the same effect by using the `-e` flag to apply an inline manifest:
 
     sudo -i puppet apply -e 'include ::mysql::server'
 
@@ -229,7 +231,7 @@ Another database should be created. Run some simple SQL verifying that the datab
 
     mysql -u root -p -e 'show databases;'
 
-Which should return:
+Which should include the new `ubuntu-backup` database:
 
     +---------------------+
     | Database            |
@@ -246,7 +248,7 @@ Congratulations! You can now control your Puppet configuration via highly config
 
 ## Further Reading
 
-The Puppet ecosystem contains a wide array of tools and libraries. To learn more about the topics covered in this tutorial, consider the following pages:
+The Puppet ecosystem contains a wide array of tools and libraries. To learn more about the topics covered in this tutorial, consider the following documentation:
 
 - [Hiera's documentation](https://docs.puppet.com/hiera/) explains additional concepts regarding how to best use it in conjunction with Puppet.
 - [Facter](https://docs.puppet.com/facter/) is the tool used to determine "facts" such as the operating system family used earlier.
