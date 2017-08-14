@@ -75,11 +75,11 @@ external_resources:
 
 	sudo mkdir -p /var/www/html
 
-2.  Upgrade the **pip** to latest version 
+2.  In below we are using the pip to install the python packages now upgrade the **pip** to latest version. 
 
 	sudo pip install --upgrade pip
 
-3.  Setup isolated Python virtual environment by installing the **virtualenv** using pip.
+3.  Now setup the isolated Python virtual environment by installing the **virtualenv** using pip.
 
 	sudo pip install virtualenv
 
@@ -87,11 +87,11 @@ external_resources:
 	
 	sudo virtualenv /var/www/html/askbotenv
 
-5.  Now Activate the Python virtual environment using **source** command 
+5.  After that Activate the Python virtual environment using **source** command. In below, `/var/www/html/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
 
 	source /var/www/html/askbotenv/bin/activate
 
-6.  To install Askbot and its dependencies **pip** is the best tool. 
+6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn **pip** is the best tool. 
 
 	sudo pip install askbot mysqlclient mysql-python gunicorn
 
@@ -153,43 +153,11 @@ EOF
 
 rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-sudo nano /etc/nginx/sites-available/example.com
-
-server {
-    listen 80;
-    server_name techbrown.net;
-
-    location = /favicon.ico { access_log off; log_not_found off; }
-    location /static/ {
-    root /var/www/html;
-    }
-
-    location ~ /.well-known {
-    allow all;
-    root /var/www/html;
-    }
-	
-    location / {
-    include proxy_params;
-    proxy_pass http://unix:/var/www/html/askbot.sock;
-    }
-}
-
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
-
-sudo systemctl start gunicorn
-sudo systemctl restart nginx
-sudo systemctl enable gunicorn
-sudo systemctl enable nginx
-sudo systemctl daemon-reload
-
 rm -rf /var/www/html/index.nginx-debian.html
 
 letsencrypt certonly -a webroot --agree-tos --email techbrown@hotmail.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-rm -rf /etc/nginx/sites-available/default
-
-sudo nano /etc/nginx/sites-available/default 
+sudo nano /etc/nginx/sites-available/example.com 
 
 server {
         listen 80;
@@ -223,4 +191,11 @@ server {
         }
 }
 
-systemctl restart nginx
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+
+sudo systemctl restart nginx
+sudo systemctl start gunicorn
+sudo systemctl restart nginx
+sudo systemctl enable gunicorn
+sudo systemctl enable nginx
+sudo systemctl daemon-reload
