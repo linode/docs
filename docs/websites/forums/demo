@@ -42,7 +42,7 @@ external_resources:
 
 	sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
-## Using MySQL
+## Create Database for AskBot
 
 1.  Log in to MySQL as the root user:
         
@@ -50,22 +50,18 @@ external_resources:
 
 2.  When prompted, enter the root password.
 
-### Create a New MySQL User and Database
-
-1.  In below, `askbotdb` is the name of the database, `askbotdbuser` is the database user, and `askbotdbpassword` is the database user’s password.
+3.  Create a New MySQL User and Database. In below, `askbotdb` is the name of the database, `askbotdbuser` is the database user, and `askbotdbpassword` is the database user’s password.
 
         CREATE DATABASE askbotdb CHARACTER SET UTF8;
 	CREATE USER askbotdbuser@localhost IDENTIFIED BY 'askbotdbpassword';
 	GRANT ALL PRIVILEGES ON askbotdb.* TO askbotdbuser@localhost;
 	FLUSH PRIVILEGES;
 	
-2.  Exit MySQL.
+4.  Exit MySQL.
 
         exit
 
-### Restart MySQL service
-
-1.  Now Restart MySQL service to make changes in effect:
+5.  Now Restart MySQL service to make changes in effect:
 
 	sudo systemctl restart mysql
 
@@ -135,6 +131,9 @@ Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 sudo nano /etc/systemd/system/gunicorn.service
 
+{: .file-excerpt}
+/etc/systemd/system/gunicorn.service
+:   ~~~ conf
 [Unit]
 Description=gunicorn daemon
 After=network.target
@@ -147,17 +146,21 @@ ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/
 
 [Install]
 WantedBy=multi-user.target
+~~~
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
-rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-rm -rf /var/www/html/index.nginx-debian.html
+sudo rm -rf /var/www/html/index.nginx-debian.html
 
-letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 sudo nano /etc/nginx/sites-available/example.com 
 
+{: .file-excerpt}
+/etc/nginx/sites-available/example.com
+:   ~~~ conf
 server {
         listen 80;
         server_name example.com www.example.com;
@@ -189,6 +192,7 @@ server {
         proxy_pass http://unix:/var/www/html/askbot.sock;
         }
 }
+~~~
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
