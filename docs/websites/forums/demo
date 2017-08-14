@@ -158,11 +158,15 @@ WantedBy=multi-user.target
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
-sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+3.  Now Remove the default Nginx Server Blocks (Virtual Host) and default HTML pages
 
-sudo rm -rf /var/www/html/index.nginx-debian.html
+sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
+
+4.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your subdomain.
 
 sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+
+5.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below replace `example.com` with your domain name.
 
 sudo nano /etc/nginx/sites-available/example.com 
 
@@ -206,12 +210,24 @@ server {
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
-sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+6.  Add symbolic link between nginx server blocks
 
-sudo chown -R www-data:www-data /var/www/html 
+	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
-sudo systemctl start gunicorn
-sudo systemctl enable gunicorn
+7.  Now change the ownersip of Askbot installation directory to `www-data` 
 
-sudo systemctl daemon-reload
-sudo systemctl restart nginx
+	sudo chown -R www-data:www-data /var/www/html
+
+8.  Now start the Gunicorn service and enable it so that it starts automatically at every boot:
+
+	sudo systemctl start gunicorn
+	sudo systemctl enable gunicorn
+
+9. Finally restart the nginx and reload the daemon
+
+	sudo systemctl daemon-reload
+	sudo systemctl restart nginx
+
+## Setup Askbot
+
+
