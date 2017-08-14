@@ -114,7 +114,7 @@ external_resources:
 
 	sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
 
-## Deploy Askbot
+## Deploy Askbot with Letsencrypt SSL
 
 1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
 
