@@ -91,7 +91,7 @@ external_resources:
 
 	source /var/www/html/askbotenv/bin/activate
 
-6.  To install Askbot and its dependencies is **pip** is the best tool. 
+6.  To install Askbot and its dependencies **pip** is the best tool. 
 
 	sudo pip install askbot mysqlclient mysql-python gunicorn
 
@@ -112,11 +112,13 @@ external_resources:
 
 4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/var/www/html/settings.py` is the location of **settings.py** file.
 
-sudo sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py
+	sudo sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py
 
 5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/var/www/html/settings.py` is the location of **settings.py** file.
 
-sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
+	sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
+
+## Deploy Askbot 
 
 sudo nano /var/www/html/wsgi.py 
 
@@ -125,6 +127,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
+chown www-data:www-data /var/www/html 
+
 sudo nano /etc/systemd/system/gunicorn.service
 
 [Unit]
@@ -132,7 +136,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=root
+User=www-data
 Group=www-data
 WorkingDirectory=/var/www/html
 ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/html/askbot.sock wsgi:application
@@ -147,67 +151,68 @@ EOF
 # For 2 cores -> (2*2)+1 = 5
 # For 4 cores -> (2*4)+1 = 9
 
-rm -rf /etc/nginx/sites-available/default;
-rm -rf /etc/nginx/sites-enabled/default;
+rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-cat > /etc/nginx/sites-available/default << "EOF"
+sudo nano /etc/nginx/sites-available/example.com
+
 server {
     listen 80;
     server_name techbrown.net;
 
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /var/www/html;
+    root /var/www/html;
     }
 
-	location ~ /.well-known {
+    location ~ /.well-known {
     allow all;
     root /var/www/html;
     }
 	
     location / {
-        include proxy_params;
-        proxy_pass http://unix:/var/www/html/askbot.sock;
+    include proxy_params;
+    proxy_pass http://unix:/var/www/html/askbot.sock;
     }
 }
-EOF
 
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default;
+sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
-systemctl start gunicorn;
-systemctl restart nginx;
-systemctl enable gunicorn;
-systemctl enable nginx;
-systemctl daemon-reload;
-rm -rf /var/www/html/index.nginx-debian.html;
+sudo systemctl start gunicorn
+sudo systemctl restart nginx
+sudo systemctl enable gunicorn
+sudo systemctl enable nginx
+sudo systemctl daemon-reload
 
-letsencrypt certonly -a webroot --agree-tos --email techbrown@hotmail.com --webroot-path=/var/www/html -d techbrown.net -d www.techbrown.net;
+rm -rf /var/www/html/index.nginx-debian.html
 
-rm -rf /etc/nginx/sites-available/default;
+letsencrypt certonly -a webroot --agree-tos --email techbrown@hotmail.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-cat > /etc/nginx/sites-available/default << "EOF"
+rm -rf /etc/nginx/sites-available/default
+
+sudo nano /etc/nginx/sites-available/default 
+
 server {
         listen 80;
-        server_name techbrown.net;
-        return    301 https://www.$server_name$request_uri;
+        server_name example.com www.example.com;
+        return    301 https://$server_name$request_uri;
 }
 
 server {
         listen 443;
-        server_name techbrown.net www.techbrown.net;
+        server_name example.com www.example.com;
         
-		ssl on;
-        ssl_certificate /etc/letsencrypt/live/techbrown.net/fullchain.pem;
-        ssl_certificate_key /etc/letsencrypt/live/techbrown.net/privkey.pem;
+	ssl on;
+        ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
+        ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
         add_header Strict-Transport-Security max-age=31536000;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         
-		location ~ /.well-known {
+	location ~ /.well-known {
         allow all;
         root /var/www/html;
         }
 
-		location = /favicon.ico { access_log off; log_not_found off; }
+        location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
         root /var/www/html;
         }
@@ -217,6 +222,5 @@ server {
         proxy_pass http://unix:/var/www/html/askbot.sock;
         }
 }
-EOF
 
-systemctl restart nginx;
+systemctl restart nginx
