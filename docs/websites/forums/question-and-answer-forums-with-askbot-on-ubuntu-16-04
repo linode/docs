@@ -131,7 +131,7 @@ from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 ~~~
 
-Press **CTRL+O** to save then **CTRL+X** to exit the program.
+Press **CTRL+O** to save then hit **ENTER** then **CTRL+X** to exit the program.
 
 2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/var/www/html/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
