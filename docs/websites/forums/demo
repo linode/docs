@@ -52,7 +52,7 @@ external_resources:
 
 ### Create a New MySQL User and Database
 
-1.  In below, `askbotdb` is the name of the database, `askbotdbuser` is the user, and `askbotdbpassword` is the user’s password.
+1.  In below, `askbotdb` is the name of the database, `askbotdbuser` is the database user, and `askbotdbpassword` is the database user’s password.
 
         CREATE DATABASE askbotdb CHARACTER SET UTF8;
 	CREATE USER askbotdbuser@localhost IDENTIFIED BY 'askbotdbpassword';
@@ -73,7 +73,7 @@ external_resources:
 
 1.  Create a Directory to install the AskBot. In below, `/var/www/html` is the location of AskBot installation directory.
 
-	mkdir -p /var/www/html
+	sudo mkdir -p /var/www/html
 
 2.  Upgrade the **pip** to latest version 
 
