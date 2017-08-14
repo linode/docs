@@ -127,7 +127,7 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-chown www-data:www-data /var/www/html 
+chown -R www-data:www-data /var/www/html 
 
 sudo nano /etc/systemd/system/gunicorn.service
 
