@@ -118,7 +118,9 @@ external_resources:
 
 	sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
 
-## Deploy Askbot 
+## Deploy Askbot
+
+1.  We passed Gunicorn a module by specifying the relative directory path to wsgi.py file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
 
 sudo nano /var/www/html/wsgi.py 
 
@@ -127,7 +129,9 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
 
-chown -R www-data:www-data /var/www/html 
+Press **CTRL+O** to save then **CTRL+X** to exit the program.
+
+sudo chown -R www-data:www-data /var/www/html 
 
 sudo nano /etc/systemd/system/gunicorn.service
 
