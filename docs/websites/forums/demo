@@ -193,9 +193,8 @@ server {
 
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
-sudo systemctl restart nginx
 sudo systemctl start gunicorn
-sudo systemctl restart nginx
 sudo systemctl enable gunicorn
-sudo systemctl enable nginx
+
 sudo systemctl daemon-reload
+sudo systemctl restart nginx
