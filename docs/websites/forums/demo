@@ -120,16 +120,24 @@ external_resources:
 
 sudo nano /var/www/html/wsgi.py 
 
+Add the given lines
+
+{: .file-excerpt}
+/var/www/html/wsgi.py
+:   ~~~ conf
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
+~~~
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/var/www/html/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
 sudo nano /etc/systemd/system/gunicorn.service
+
+Add the given lines
 
 {: .file-excerpt}
 /etc/systemd/system/gunicorn.service
@@ -157,6 +165,8 @@ sudo rm -rf /var/www/html/index.nginx-debian.html
 sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 sudo nano /etc/nginx/sites-available/example.com 
+
+Add the given lines
 
 {: .file-excerpt}
 /etc/nginx/sites-available/example.com
