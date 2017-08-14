@@ -143,7 +143,8 @@ ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/
 
 [Install]
 WantedBy=multi-user.target
-EOF
+
+Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 # Workers Count Formula = (2 Workers * CPU Cores) + 1
 # ---------------------------
@@ -155,7 +156,7 @@ rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 rm -rf /var/www/html/index.nginx-debian.html
 
-letsencrypt certonly -a webroot --agree-tos --email techbrown@hotmail.com --webroot-path=/var/www/html -d example.com -d www.example.com
+letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 sudo nano /etc/nginx/sites-available/example.com 
 
@@ -190,6 +191,8 @@ server {
         proxy_pass http://unix:/var/www/html/askbot.sock;
         }
 }
+
+Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
