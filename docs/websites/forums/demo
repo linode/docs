@@ -118,7 +118,7 @@ external_resources:
 
 1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
 
-sudo nano /var/www/html/wsgi.py 
+	sudo nano /var/www/html/wsgi.py 
 
 Add the given lines
 
@@ -135,7 +135,7 @@ Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/var/www/html/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
-sudo nano /etc/systemd/system/gunicorn.service
+	sudo nano /etc/systemd/system/gunicorn.service
 
 Add the given lines
 
@@ -160,15 +160,18 @@ Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 3.  Now Remove the default Nginx Server Blocks (Virtual Host) and default HTML pages
 
-sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
+	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
 4.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
 
-sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+{: .note}
+>You should point your Fully-Qualified Domain Name to your Linode otherwise you won't get Letsencrypt SSL certificates. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
+
+	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 5.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
-sudo nano /etc/nginx/sites-available/example.com 
+	sudo nano /etc/nginx/sites-available/example.com 
 
 Add the given lines
 
