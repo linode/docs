@@ -162,11 +162,11 @@ Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-4.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your subdomain.
+4.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
 
 sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-5.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below replace `example.com` with your domain name.
+5.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
 sudo nano /etc/nginx/sites-available/example.com 
 
