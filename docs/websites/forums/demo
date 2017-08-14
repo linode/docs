@@ -120,7 +120,7 @@ external_resources:
 
 ## Deploy Askbot
 
-1.  We passed Gunicorn a module by specifying the relative directory path to wsgi.py file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
+1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
 
 sudo nano /var/www/html/wsgi.py 
 
@@ -131,7 +131,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
-sudo chown -R www-data:www-data /var/www/html 
+2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/var/www/html/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
 sudo nano /etc/systemd/system/gunicorn.service
 
@@ -149,12 +149,6 @@ ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/
 WantedBy=multi-user.target
 
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
-
-# Workers Count Formula = (2 Workers * CPU Cores) + 1
-# ---------------------------
-# For 1 core  -> (2*1)+1 = 3
-# For 2 cores -> (2*2)+1 = 5
-# For 4 cores -> (2*4)+1 = 9
 
 rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
@@ -199,6 +193,8 @@ server {
 Press **CTRL+O** to save then **CTRL+X** to exit the program.
 
 sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+
+sudo chown -R www-data:www-data /var/www/html 
 
 sudo systemctl start gunicorn
 sudo systemctl enable gunicorn
