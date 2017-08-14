@@ -69,50 +69,64 @@ external_resources:
 
 	sudo systemctl restart mysql
 
-## Installing AskBot
+## Install AskBot
 
 1.  Create a Directory to install the AskBot. In below, `/var/www/html` is the location of AskBot installation directory.
 
 	mkdir -p /var/www/html
 
-2.  Upgarde the `pip` to latest version 
+2.  Upgrade the **pip** to latest version 
 
 	sudo pip install --upgrade pip
 
-3.  Setup isolated Python virtual environment by installing the `virtualenv` using pip.
+3.  Setup isolated Python virtual environment by installing the **virtualenv** using pip.
 
 	sudo pip install virtualenv
 
-4.  Create a Python virtual environment using `virtualenv` command. In below, `/var/www/html/askbotenv` is the location of Python virtual environment.
+4.  Create a Python virtual environment using **virtualenv** command. In below, `/var/www/html/askbotenv` is the location of Python virtual environment.
 	
 	sudo virtualenv /var/www/html/askbotenv
 
-5.  Now Activate the Python virtual environment using source command 
+5.  Now Activate the Python virtual environment using **source** command 
 
 	source /var/www/html/askbotenv/bin/activate
 
-6.  The best tool to install Askbot and its dependencies is `pip` 
+6.  To install Askbot and its dependencies is **pip** is the best tool. 
 
 	sudo pip install askbot mysqlclient mysql-python gunicorn
 
-askbot-setup -n /var/www/html/ -e 3 -d askbotdb -u askbotuser -p $askbotmysqlpass;
+## Configure Askbot 
 
-python /var/www/html/manage.py collectstatic --noinput;
-python /var/www/html/manage.py makemigrations;
-python /var/www/html/manage.py migrate;
+1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/var/www/html/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `askbotdbuser` is the database user, and **-p** `askbotdbpassword` is the database user’s password.
 
+	sudo askbot-setup -n /var/www/html/ -e 3 -d askbotdb -u askbotdbuser -p askbotdbpassword
 
-sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py;  
-sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py;
+2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/var/www/html/manage.py` is the location of **manage.py** file.
 
-cat > /var/www/html/wsgi.py << "EOF"
+	sudo python /var/www/html/manage.py collectstatic --noinput
+
+3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/var/www/html/manage.py` is the location of **manage.py** file.
+
+	sudo python /var/www/html/manage.py makemigrations
+	sudo python /var/www/html/manage.py migrate
+
+4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/var/www/html/settings.py` is the location of **settings.py** file.
+
+sudo sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py
+
+5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/var/www/html/settings.py` is the location of **settings.py** file.
+
+sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
+
+sudo nano /var/www/html/wsgi.py 
+
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-EOF
 
-cat > /etc/systemd/system/gunicorn.service << "EOF"
+sudo nano /etc/systemd/system/gunicorn.service
+
 [Unit]
 Description=gunicorn daemon
 After=network.target
