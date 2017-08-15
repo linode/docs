@@ -143,7 +143,7 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=www-data
+User=linode
 Group=www-data
 WorkingDirectory=/var/www/html
 ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/html/askbot.sock wsgi:application
@@ -223,10 +223,10 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
-9.  Now change the ownersip of Askbot installation directory to `www-data` 
+9.  Add the www-data user to your group with the following command. Replace your own `username` in the given command: 
 
-	sudo chown -R www-data:www-data /var/www/html
-
+	sudo usermod -a -G username www-data
+	
 10.  Finally restart the nginx to make changes in effect
 
 	sudo systemctl restart nginx
