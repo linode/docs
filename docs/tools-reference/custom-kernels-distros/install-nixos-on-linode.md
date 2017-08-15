@@ -159,22 +159,6 @@ Root logins via SSH are disabled by default. To access your Linode, enable root 
 
 After installation, create a user with limited permissions, then set `permitRootLogin` to `"no"`.
 
-### Disable the Firewall
-
-{: .caution}
->
->The steps in this section disable the firewall and expose your Linode to potential attacks. Use this section for testing only.
-
-NixOS has a firewall that blocks all incoming connections and unexpected packets by default. Certain services, such as SSH, will open the ports they use automatically when enabled. However, this behavior isn't consistent across services in NixOS. To avoid confusion and to make troubleshooting easier, disable the firewall:
-
-    networking.firewall.enable = false;
-
-Once you understand which ports are being used by your application you can enable the firewall and use the `networking.firewall.allowedTCPPorts` and `networking.firewall.allowedUDPPorts` options to enable your application ports.
-
-After testing, re-enable the firewall:
-
-    networking.firewall.enable = true;
-
 ### Disable Predictable Interface Names
 
 Most of Linode's default images have had systemd's predictable interface names disabled. Because of this, most of [Linode's networking guides](/docs/networking/) assume an interface of `eth0`. Since your Linode runs in a virtual environment and will have a single interface, it won't encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:
