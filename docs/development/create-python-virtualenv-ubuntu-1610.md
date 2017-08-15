@@ -55,7 +55,7 @@ The purpose of this guide is to allow you to create and run Python virtual envir
 
         cd python-environments
 
-## Create a Virtual Envrionment in Python3
+## Create a Virtual Environment in Python3
 1.  Enter command to create a virtual environment in Python 3 with the environment name of *env*
         
         virtualenv -p python3 env
