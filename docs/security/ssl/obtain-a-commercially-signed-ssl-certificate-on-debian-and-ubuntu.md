@@ -27,7 +27,7 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
 - Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-- Ensure that your packages are up to date by running `apt-get update && apt-get upgrade`.
+- Ensure that your packages are up to date by running `apt-get update`, and then `apt-get upgrade`.
 
 {: .note}
 >
