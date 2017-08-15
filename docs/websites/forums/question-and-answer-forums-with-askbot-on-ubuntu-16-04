@@ -154,34 +154,28 @@ WantedBy=multi-user.target
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-	
-
-5.  Now start the Gunicorn service and enable it so that it starts automatically at every boot:
+3.  Now start the Gunicorn service and enable it so that it starts automatically at every boot:
 
 	sudo systemctl start gunicorn
 	sudo systemctl enable gunicorn
 
-6.  After that restart the nginx and reload the daemon
+4.  After that restart the nginx and reload the daemon
 
 	sudo systemctl daemon-reload
 	sudo systemctl restart nginx
 
-8.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
+5.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
 
 {: .note}
 >You should point your Fully-Qualified Domain Name to your Linode otherwise you won't get Letsencrypt SSL certificates. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
 	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-3.  Now Remove the default Nginx Server Blocks (Virtual Host)
+6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file
 
-	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Remove the default Nginx index file
-
-	sudo rm -rf /var/www/html/index.nginx-debian.html;
-
-9.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
+7.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
 	sudo nano /etc/nginx/sites-available/example.com 
 
@@ -225,18 +219,17 @@ server {
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-10.  Add symbolic link between nginx server blocks
+8.  Add symbolic link between nginx server blocks
 
 	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
 
-11.  Now change the ownersip of Askbot installation directory to `www-data` 
+9.  Now change the ownersip of Askbot installation directory to `www-data` 
 
 	sudo chown -R www-data:www-data /var/www/html
 
-12.  Finally restart the nginx to make changes in effect
+10.  Finally restart the nginx to make changes in effect
 
 	sudo systemctl restart nginx
-
 
 ## Setup Askbot
 
