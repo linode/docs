@@ -27,7 +27,7 @@ You will need:
  - [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html)
  - [Ubuntu 16.04](https://www.ubuntu.com/) or adjust commands for your Linux distribution
 
-## Install Jupyter Notebook 
+## Install Anaconda 
 
 Anaconda is a package manager with built in support for virtual environments that also comes with installation of Jupyter notebooks. This is the recommended method of installation from the documentation.
 
@@ -45,7 +45,7 @@ Anaconda is a package manager with built in support for virtual environments tha
 
         exec bash
 
-## Jupyter Notebook Configurations
+## Create a Self-Signed Certificate
 The official documentation recommends generating a self-signed SSL certificate to prevent passwords on the notebook being sent unencrypted from the browser. This is especially important because Jupyter notebooks can run bash scripts. If you have a domain name, consider using [Certbot](https://certbot.eff.org/#ubuntuxenial-apache) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days.
@@ -59,7 +59,7 @@ The official documentation recommends generating a self-signed SSL certificate t
         chmod 400 mykey.key
         chmod 400 mycert.pem
 
-## Create SSL Certificate with OpenSSL 
+## Configure Jupyter Notebook
 
 1.  Generate a new configuration file. This will create a `~/.jupyter` directory:
 
@@ -71,7 +71,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 3.  Copy the password from the newly created `jupyter_notebook_config.json` file.
 
-4.  Uncomment the following lines in the configuration file. Paste the password from the previous step into `c.NotebookApp.password = ''`:
+4.  Uncomment the following lines in the configuration file.
 
     {: .file-excerpt}
     /.jupyter/jupyter-notebook-config.py
@@ -146,7 +146,7 @@ The official documentation recommends generating a self-signed SSL certificate t
         ~~~
 
     {: .note}
-    >The `/jupyter` url path can arbitrarily named as long as it matches the base url path defined in the Jupyter notebook configuration file.
+    >The `/jupyter` url path can be arbitrarily named as long as it matches the base url path defined in the Jupyter notebook configuration file.
 
 4.  Enable the newly created configuration:
 
