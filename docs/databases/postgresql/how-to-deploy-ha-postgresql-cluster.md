@@ -5,7 +5,7 @@ author:
 description: 'Deploy PostgreSQL in a highly available setup'
 keywords: 'postgresql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, August 16th, 2017
+modified: Wednesday, August 16th, 2017
 modified_by:
   name: Kulshekhar Kabra
 published: 'Thursday, August 31st, 2017'
