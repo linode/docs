@@ -9,7 +9,7 @@ modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, December 18th, 2014'
-title: How to Set Up and Install Nod.js 
+title: How to Set Up and Install Node.js 
 alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/','development/nodjs/a-nodejs-installation-crash-course/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
