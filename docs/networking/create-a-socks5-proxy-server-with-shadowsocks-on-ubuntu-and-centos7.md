@@ -28,9 +28,9 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account with `sudo` privileges.
+1.  The commands in this guide require root privileges. To run the steps as an elevated user with sudo privileges, prepend each command with `sudo`. If two commands are presented in the same instance (separated by `&&`), remember to use `sudo` after the `&&` (ex. `sudo [command] && sudo [command]`). To create a standard user account with `sudo` privileges, complete the [Add a Limited User Account](/docs/security/securing-your-server#add-a-limited-user-account) section of our Securing your Server guide.
 
-2.  A working firewall is a necessary security measure. Firewall instructions will be presented for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
+2.  A working firewall is a necessary security measure. Firewall instructions [will be presented](#open-firewall-port-for-shadowsocks-client) for UFW, FirewallD, and Iptables. To configure a firewall on your Linode, visit one of our guides:
 
     *  [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw)
     *  [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos)
@@ -43,16 +43,16 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **Ubuntu 17.04**
  
-        sudo apt-get update && sudo apt-get upgrade -yuf
-        sudo apt-get install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev libsodium-dev git python-m2crypto
+        apt-get update && apt-get upgrade -yuf
+        apt-get install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev libsodium-dev git python-m2crypto
 
     **CentOS 7**
 
-        sudo yum update && sudo yum upgrade -y
-        sudo yum install epel-release -y
-        sudo yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel git m2crypto
+        yum update && yum upgrade -y
+        yum install epel-release -y
+        yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel git m2crypto
 
-2.  Navigate to the `/opt` directory and download the Shadowsocks git module:
+2.  Navigate to the `/opt` directory and download the Shadowsocks Git module:
 
         git clone https://github.com/shadowsocks/shadowsocks-libev.git
         cd shadowsocks-libev
@@ -62,7 +62,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
         ./autogen.sh
         ./configure
-        sudo make && sudo make install
+        make && make install
 
 ## Configure Shadowsocks
 
@@ -70,15 +70,15 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **Ubuntu 17.04**
 
-        sudo adduser --system --no-create-home --group shadowsocks
+        adduser --system --no-create-home --group shadowsocks
 
     **CentOS 7**
 
-	    sudo adduser --system --no-create-home -s /bin/false shadowsocks
+	    adduser --system --no-create-home -s /bin/false shadowsocks
 
 2. Create a new directory for the configuration file:
 
-        sudo mkdir -m 755 /etc/shadowsocks
+        mkdir -m 755 /etc/shadowsocks
 
 3. Create the Shadowsocks config file. Paste the contents listed below into the file, noting the instructions in the **shadowsocks.json Breakdown** table for each property. Follow these instructions to determine the value you should set for each property.
 
