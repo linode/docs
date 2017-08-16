@@ -2,18 +2,21 @@
 author:
   name: Nick Brewer
   email: docs@linode.com
-description: Create a secure, LUKS-encrypted Debian Installation.
+description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
+alias: ['security/full-disk-encryption/']
 keywords: full disk encryption, debian, luks
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, November 2nd, 2016
 modified_by:
   name: Linode
 published: 'Wednesday, November 2nd, 2016'
-title: Full Disk Encryption
+title: How to Use LUKS for Full Disk Encryption on Linux
 image: https://linode.com/docs/assets/full_disk_encryption.png
 ---
+## Using LUKS encryption to Create a Secure Disk on Debian 8
+Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. 
 
-Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
+This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
 
