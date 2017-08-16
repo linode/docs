@@ -61,7 +61,7 @@ Patroni, as used in this guide, will:
 
 ### HAProxy
 
-When developing an application that uses a database, it can be cumbersome to keep track of the databse endpoints if they keep changing. Using HAProxy simplifies this by giving us a single endpoint that we can connect our application to.
+When developing an application that uses a database, it can be cumbersome to keep track of the database endpoints if they keep changing. Using HAProxy simplifies this by giving us a single endpoint that we can connect our application to.
 
 HAProxy takes care of forwarding the connection to whichever node is currently the master. It does this by using a REST endpoint that Patroni provides. Patroni ensures that, at any given time, only one Postgres node (the master) will appear as online, forcing HAProxy to connect to the correct node.
 
@@ -183,7 +183,7 @@ After saving the file, restart the etcd service:
 
 ### Configuring Patroni
 
-Patroni can be configured using a YAML file which can be placed anywhere. In this guide, we'll place this file at `/etc/patroni.yaml`.
+Patroni can be configured using a YAML file which can be placed anywhere. In this guide, we'll place this file at `/etc/patroni.yml`.
 
 Edit this file to have the following content:
 
