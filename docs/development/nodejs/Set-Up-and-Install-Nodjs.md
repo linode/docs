@@ -9,8 +9,8 @@ modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, December 18th, 2014'
-title: A Node.js Installation Crash Course
-alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/']
+title: How to Set Up and Install Nod.js 
+alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/','development/nodjs/a-nodejs-installation-crash-course/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/creationix/nvm)'
