@@ -5,11 +5,11 @@ author:
 description: 'Deploy PostgreSQL in a highly available setup'
 keywords: 'postgresql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, July 29th, 2017
+modified: Friday, August 16th, 2017
 modified_by:
   name: Kulshekhar Kabra
 published: 'Thursday, August 31st, 2017'
-title: Deploying an HA PostgreSQL Cluster
+title: Deploying a Highly Available PostgreSQL Cluster
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
@@ -42,6 +42,28 @@ This setup will involve the installation and configuration of:
 - [etcd](https://coreos.com/etcd) (on one Linode)
 - Patroni (on each of the Postgres Linodes)
 - [HAProxy](https://www.haproxy.org/) (on one Linode)
+
+While it's obvious why we're using Postgres, let's take a quick look at why we need the other tools.
+
+### etcd
+
+etcd is a fault-tolerant, distributed key-value store that is used to store the state of the Postgres cluster. All the Postgres nodes, via Patroni, make use of etcd to keep the Postgres cluster up and running.
+
+### Patroni
+
+Patroni is an open source python package that manages Postgres configuration. It is installed on the same servers as Postgres and can be configured to handle tasks like replication, backups and restorations.
+
+Patroni, as used in this guide, will:
+
+- Configure the Postgres instance running on the same server
+- Configure replication from master to slaves
+- Automatically failover to the best slave in case the master goes down.
+
+### HAProxy
+
+When developing an application that uses a database, it can be cumbersome to keep track of the databse endpoints if they keep changing. Using HAProxy simplifies this by giving us a single endpoint that we can connect our application to.
+
+HAProxy takes care of forwarding the connection to whichever node is currently the master. It does this by using a REST endpoint that Patroni provides. Patroni ensures that, at any given time, only one Postgres node (the master) will appear as online, forcing HAProxy to connect to the correct node.
 
 ## Installing the Required Tools
 
