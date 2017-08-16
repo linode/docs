@@ -2,20 +2,20 @@
 author:
   name: Christopher S. Aker
   email: caker@linode.com
-description: 'Generate and manipulate dates with the date command.'
+description: This tutorial will teach you how to generate and manipulate dates using the Linux date command including examples and help with formatting.
 keywords: 'date,time,linux commands,shell,timey wimey'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/date/']
+alias: ['linux-tools/common-commands/date/','tools-reference/tools/linux-date-command/']
 modified: Thursday, April 13th, 2017
 modified_by:
   name: Linode
 published: 'Monday, August 23rd, 2010'
-title: Linux date Command
+title: How to Use the Date Command in Linux 
 ---
 
 The `date` command displays the current date and time. It can also be used to display or calculate a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-![Using_Date](/docs/assets/linux_date_command_smg.png)
+![Learn how to use the linux date command](/docs/assets/linux_date_command_smg.png)
 
 ## Use the Linux date Command
 
@@ -113,7 +113,7 @@ Other valid date time strings include: `last-week`, `next-week`, `last-month`, `
     $ date -d "1974-01-04" +"%A"
     Friday
 
-## Using date in Scripts and Commands
+## Use date in Scripts and Commands
 
 You can assign the output of `date` to a shell variable and then use it later in your scripts. For instance:
 
