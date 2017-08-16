@@ -2,15 +2,15 @@
 author:
   name: Quintin Riis
   email: docs@linode.com
-description: Mosh usage and Installation
+description: Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.
 keywords: 'mosh, ssh,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/mosh/']
+alias: ['networking/mosh/','networking/ssh/mosh/']
 modified: Saturday, August 3rd, 2013
 modified_by:
   name: Will Blew
 published: 'Sunday, January 20th, 2013'
-title: Mosh
+title: Install a Mosh Server as SSH Alternative on Linux
 ---
 
 [Mosh](http://mosh.mit.edu/) is a free replacement for SSH that allows roaming and supports intermittent connectivity. Unlike regular SSH connections, Mosh continuously syncs your local and remote sessions to ensure that your client automatically reconnects to the server when you switch between wireless networks or wake your computer from sleep. This guide explains how to install Mosh on your Linode and your personal computer.
@@ -19,7 +19,7 @@ title: Mosh
 >
 > Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You'll still need to use SSH for these tasks.
 
-## Benefits
+## Mosh SSH Benefits
 
 There are several benefits of using Mosh to connect to your Linode:
 
@@ -45,7 +45,7 @@ Activate the new firewall rule by entering the following command:
 
 Mosh can now communicate with your Linode.
 
-## Installing Mosh on Your Linode
+## Install Mosh on Your Linode
 
 First, you need to install Mosh on your Linode. Find the instructions for your Linux distribution below.
 
@@ -91,7 +91,7 @@ Mosh is now installed on your Linode.
 
 If you have another Linux distribution installed on your Linode, see the [Mosh website](http://mosh.mit.edu/) for installation instructions.
 
-## Installing Mosh on Your Desktop Computer
+## Install Mosh on Your Desktop Computer
 
 Now you need to install Mosh on your desktop computer. Find the instructions for your computer's operating system below.
 
