@@ -5,8 +5,8 @@ author:
 description: 'This guide explains how to setup a server on Debian/Ubuntu for the game Half-Life 2: Deathmatch'
 keywords: 'half-life 2,deathmatch,game,server,steam,steamcmd,sourcemod,metamod,bots'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Tuesday, August 8, 2017
-modified: Tuesday, August 8, 2017
+published: Thursday, August 17, 2017
+modified: Thursday, August 17, 2017
 modified_by:
   name: Linode
 title: 'Install Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
@@ -21,41 +21,30 @@ external_resources:
 - '[Botrix](http://www.famaf.unc.edu.ar/~godin/botrix)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
-----
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-<hr>
+----
 
 This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://steamcommunity.com/app/320) server on a Linode running Debian or Ubuntu.
 
-##Before You Begin
+## Before You Begin
 
-Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+1.  Complete our [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server) guide. 
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+2.  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-{: .note}
->
-> After #run-the-server, the guide assumes that the game server's folder is your working directory.
-
-##Prerequisites
-
-From the SteamCMD guide, one additional step is needed specifically for Half-Life 2: Deathmatch Dedicated Server.
-
-1.  Add two firewall rules to slightly extend the port range available to the server. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide.
+3.  Add two firewall rules to extend the port range available to the server. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. If not, find the corresponding lines and replace the numbers in `INPUT 5` and `INPUT 7` below:
 
         sudo iptables -R INPUT 5 -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
         sudo iptables -I INPUT 7 -p udp -m udp --dport 27000:27030 -j ACCEPT
 
-##Install the server
+## Install the Server
 
-1.  Execute SteamCMD:
+1.  Execute `steamcmd`:
 
         steamcmd
-        
-2.  Login as anonymous:
+
+2.  Login as `anonymous`:
 
         login anonymous
 
@@ -67,15 +56,11 @@ From the SteamCMD guide, one additional step is needed specifically for Half-Lif
 
         quit
 
-{: .note}
->
-> You may have to repeat the installation process multiple times in order to retrieve all of the game data, even if SteamCMD succeedes.
-> 
-> The simplest way to verify that all of the data has been downloaded is to run the server and see if it works as expected.
+Occasionally, SteamCMD encounters an unreported error but completes successfully. If the steps in the Run the Server section are not successful, repeat the installation process to retrieve all of the game data, then run the server again.
 
-##Run the server
+## Run the Server
 
-1.  Go into the server folder:
+1.  `cd` into the server folder:
 
         cd .steam/SteamApps/common/Half-Life\ 2\ Deathmatch\ Dedicated\ Server/
 
@@ -83,45 +68,50 @@ From the SteamCMD guide, one additional step is needed specifically for Half-Lif
 
         ./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff
 
-{: .note}
->
-> The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
-> The **sv_password** parameter specifies the password required to enter your server. If this parameter is not set, the server is accessible without a password.
-> The **mp_teamplay** parameter specifies if the game mode is team deathmatch or deathmatch.<br />
-> The **maxplayers** parameter specifies the maximum number of players allowed to play on the server. Half-Life 2: Deathmatch officially supports a maximum of 16 players.<br />
-> The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the extension (.bsp).<br />
->
-> You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
+    In the above command:
 
-{: .note}
->
-> To keep the server running, execute it using [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
->
->     screen ./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff
+    *  `game`: The game's files directory. This is the only parameter you can't write in `server.cfg` because it specifies the game folder, where the `server.cfg` file itself is.
+    *  `sv_password`: Password required to enter your server. If this parameter is not set, the server is accessible without a password.
+    *  `mp_teamplay`: Specifies whether the game mode is *team deathmatch* or *deathmatch*.
+    *  `maxplayers`: Maximum number of simultaneous players allowed on the server. Half-Life 2: Deathmatch officially supports a maximum of 16 players.
+    *  `map`: The map with which to start the server. Write the name of the map file without the `.bsp` extension.
 
-###Stop the server
+        For more parameter options, visit the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 
-The best way to stop a running server is by pressing CTRL+C while in its console. If everything went fine, you should see an output like:
+### Stop the server
 
-        Thu Jul 25 04:06:48 CEST 2017: Server Quit
-        
+To stop the server, hold the **CTRL** key on your keyboard and press **C** (**CTRL+C**). The output will resemble:
 
-Forcibly killing the server shouldn't be harmful, but it can cause data corruption if you have plugins which write to a database, for example. 
+    Thu Jul 25 04:06:48 CEST 2017: Server Quit
 
-###Autostart with screen script
+Forcibly killing the server shouldn't be harmful, but it can cause data corruption if you have plugins which write to a database.
 
-This script automatically starts your server into a **Screen session**.
+### Run the Server within a Screen Socket
 
-1.  Create the file to contain the script:
+To keep the server running, execute it using Screen:
 
-{: .file}
-~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/run.sh
-: ~~~ sh
-#!/bin/sh
-cd "$HOME/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server"
-screen -S "HL2DM" -d -m
-screen -r "HL2DM" -X stuff "./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff\n"
-~~~
+    screen ./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff
+
+To exit the screen:
+
+    exit
+
+For more information on Screen sockets, visit our guide on [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+
+### Autostart with screen script
+
+This script automatically starts your server in a Screen session.
+
+1.  Create the script:
+
+    {: .file}
+    ~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/run.sh
+    : ~~~ sh
+      #!/bin/sh
+      cd "$HOME/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server"
+      screen -S "HL2DM" -d -m
+      screen -r "HL2DM" -X stuff "./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff\n"
+      ~~~
 
 2.  Mark the file as executable:
 
@@ -131,12 +121,13 @@ screen -r "HL2DM" -X stuff "./srcds_run -game hl2mp +sv_password MyLinode +mp_te
 
         ./run.sh
 
-##Configure the server
+## Configure the server
 
-###Server.cfg
-The **server.cfg** file contains the settings of your server. It is not present by default because you can start the server every time by specifying the desidered settings using parameters.
+The `server.cfg` file contains the settings of your server. It is not present by default because you can start the server using the parameters from the command line.
 
-Below is a server configuration with the most important settings.
+Note that if `server.cfg` is present, its settings override any parameters that are set when you start the server through the command line.
+
+Below is a sample server configuration:
 
 {: .file-excerpt}
 ~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg
@@ -154,7 +145,7 @@ Below is a server configuration with the most important settings.
   mp_teamplay 0
 
   // Allow friendly fire [Default: 0]
- mp_friendlyfire 0
+  mp_friendlyfire 0
 
   // Automatically respawn a player after death [Default: 0]
   mp_forcerespawn 1
@@ -211,13 +202,10 @@ Below is a server configuration with the most important settings.
   sv_password "MyLinode"
   ~~~
 
-{: .caution}
->
-> The settings in **server.cfg** will override the ones that you specify (using parameters) when you start the server.
+## Maps
 
-###Maps
+There are 8 official maps in Half-Life 2: Deathmatch. A preview of each map is available on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps):
 
-There are 8 official maps in Half-Life 2: Deathmatch:
 *   dm_lockdown
 *   dm_overwatch
 *   dm_powerhouse
@@ -227,23 +215,19 @@ There are 8 official maps in Half-Life 2: Deathmatch:
 *   dm_underpass
 *   halls3
 
-You can see every map's preview on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps).
+Half-Life 2 Deathmatch requires that custom maps be in specific locations based on their type:
 
-*   Custom maps in **VPK** format need to be put in the **custom** folder: `~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/custom`.
+*  **VPK**: `~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/custom`
 
-*   Custom maps in **BSP** format need to be put in a specific folder inside **custom**: `~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/custom/maps`
+*  **BSP**: `~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/custom/maps`
 
-Once the maps are in the right folder, the server will be able to load them as if they were original maps already present in the game.
-The resources upload system is enabled by default, meaning that if a client doesn't have the map it will automatically download it from your server, including any extra content required to load it.
+The resources upload system is enabled by default, and any player who doesn't have the selected map will automatically download it and any required extra content from your server. Check [GAMEBANANA](http://gamebanana.com/games/5) for additional custom maps.
 
-{: .note}
-> 
-> You can find custom maps on [GAMEBANANA](http://gamebanana.com/games/5).
+### Maps Rotation
 
-###Maps Rotation
+When a match ends, the server starts a new match with the next map in the rotation list.
 
-When a match ends, the server starts a new one with the next map in the rotation list.
-The default map rotation list is in **mapcycle_default.txt**, which is used as fallback in case **mapcycle.txt** isn't present.
+If `mapcycle.txt` is not available, the system uses the default map rotation list in `mapcycle_default.txt`.
 
 {: .file-excerpt}
 ~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt
@@ -264,14 +248,14 @@ The default map rotation list is in **mapcycle_default.txt**, which is used as f
   dm_steamlab
   dm_underpass
   ~~~
-    
+
 To add a custom map to the rotation:
 
-1.  Copy **mapcycle_default.txt** to **mapcycle.txt**:
+1.  Copy `mapcycle_default.txt` to `mapcycle.txt`:
 
         cp hl2mp/cfg/mapcycle_default.txt hl2mp/cfg/mapcycle.txt
 
-2.  Write the custom map's name inside the **mapcycle.txt**. For example: if you have the map **dm_custom.bsp**:
+2.  Write the custom map's name inside `mapcycle.txt`. For example: if you have the map `dm_custom.bsp`:
 
 {: .file-excerpt}
 ~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle.txt
@@ -294,20 +278,18 @@ To add a custom map to the rotation:
   dm_underpass
   ~~~
 
+## Connect to your server
 
+1.  Open Half-Life 2 Deathmatch, and click **FIND SERVERS**:
 
-### Connect to your server
-
-1.  Open Half-Life 2 Deathmatch, and click on the **FIND SERVERS** option:
-
-[![Main menu](/docs/assets/half-life-2-deathmatch-menu_small.png)](/docs/assets/half-life-2-deathmatch-menu.png)
+    [![Half-Life 2 Main menu](/docs/assets/half-life-2-deathmatch-menu_small.png)](/docs/assets/half-life-2-deathmatch-menu.png)
 
 2.  Find your server in the servers list:
 
-[![Server browser](/docs/assets/half-life-2-deathmatch-server-browser_small.png)](/docs/assets/half-life-2-deathmatch-server-browser.png)
+    [![Server browser](/docs/assets/half-life-2-deathmatch-server-browser_small.png)](/docs/assets/half-life-2-deathmatch-server-browser.png)
 
 3.  Double click on it to connect:
 
-[![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](/docs/assets/half-life-2-deathmatch-in-game.png)
+    [![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](/docs/assets/half-life-2-deathmatch-in-game.png)
 
-Enjoy!
+[GLHF](http://onlineslangdictionary.com/meaning-definition-of/glhf).
