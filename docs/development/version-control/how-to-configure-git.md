@@ -17,6 +17,8 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 ---
 
+![Git Started Today](/docs/assets/git_getting_started.png)
+
 # What is Git?
 
 Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).

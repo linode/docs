@@ -17,6 +17,8 @@ external_resources:
  - '[Use Public Key Authentication with SSH](/docs/tools-reference/ssh/use-public-key-authentication-with-ssh)'
 ---
 
+![SSHFS](/docs/assets/sshfs_mount_remote.png)
+
 # Using SSHFS To Mount Remote Directories
 SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will get you started with SSHFS on your Linode. SSHFS can eliminate the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH daemon running on your Linode. If you do not have the SSH daemon visit [Securing Your Server](/docs/security/securing-your-server) before returning to this guide. 
 For this guide we used two Ubuntu 16.10 systems, but `sshfs` can be installed on any Linode image. 
