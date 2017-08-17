@@ -2,7 +2,7 @@
  author:
  name: Linode Community
  email: docs@linode.com
-description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. It is designed based off of the earlier released Vi text editor, and is advertised as an improved version. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions. The core distribution of Vim is pre-loaded with powerful text manipulation capabilities which provide users with tools to address a diverse range of situations without any pre-configuration required. Much more than a simple text editor, Vim transcends its deceptively straightforward user interface and offers unlimited customization opportunities, probing the apex of its potential when transformed into a full-featured programming I.D.E. with integrated Github support, and features rivaling the very best free and paid I.D.E.'s on the market today.
+description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions.
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published:
@@ -27,25 +27,11 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-This guide details the configuration of the Vim text editor and seeks to provide practical knowledge to those just starting out with Vim as well as those already familiar with the tool. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a powerful and simple plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, boosting your productivity, as well as acquired exposure to managing external plugins through the installation of your first plugin.
+This guide details the configuration of the Vim text editor and is targeted at those who are interested in taking the next step into customization. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, as well as acquired exposure to managing external plugins.
 
 ## Before You Begin
 
-1. Most Unix distributions come pre-packaged with Vim. To check, simply type `vim` in the terminal. If you receive an error message, install Vim using your Linux distribution's package manager.
-
-  **Fedora/RHEL based**
-
-        sudo yum install vim
-
-  **Debian based**
-
-        sudo apt install vim
-
-  **Arch Linux**
-
-        sudo pacman -Syy vim
-
-2. A working knowledge of Vim's editing commands is not required to complete this tutorial, but may be helpful. Any Vim-specific commands required to complete the steps in this guide will be clarifed, however an overview of basic editing commands is beyond the scope of this tutorial. An excellent method of gaining familiarization with the basics of Vim is to work through its built-in tutorial. The tutorial provides a hands-on introduction to Vim's editing commands, and allows you to practice what you learn within the Vim environment. To begin, type `vimtutor` from the terminal.
+1. A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with editing documents with Vim.
 
 3. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
@@ -57,16 +43,25 @@ It is possible to customize Vim on a per-user basis or set configurations to app
 
 The configurations in this section will apply system-wide across all user accounts.
 
-1. A default Vim installation will feature a file containing Vim's core global settings called **vimrc**. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`. Start by opening the Vim editor.
-
-        sudo vim
+1. A default Vim installation will feature a file containing Vim's core global settings called **vimrc**. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
 
 {: .note}
 > Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 
-2. Inside the Vim editor, enter command mode by typing `:`. Now type the `Explore` command (caps necessary) and press `<Enter>`. A directory tree should be clearly visible. Navigate to the **vimrc** file location, and press `<Enter>` to open the file.
+3. Open the **vimrc** file for editing. The file may syntactically differ between Linux distributions, but the core settings remain the same. In the file below, the segment containing the bulk of the configuration options is shown. Uncomment the lines whose behavior you wish to enable. 
 
-3. The **vimrc** file may syntactically differ between Linux distributions, but the core settings remain the same. Above or next to each setting there will be a brief description of how it impacts the Vim environment and behavior. Most of the settings can be enabled by simply uncommenting them. Choose which settings you would like to apply system-wide and save the file by entering command mode `:`. Type `w` (for "write") and press `<Enter>`.
+{: .file}
+**/etc/vimrc**
+~~~ vimrc
+set showcmd› › " Show (partial) command in status line.
+set showmatch› › " Show matching brackets.
+set ignorecase›› " Do case insensitive matching
+set smartcase› › " Do smart case matching
+set incsearch› › " Incremental search
+set autowrite› › " Automatically save before commands like :next and :make
+set hidden›› " Hide buffers when they are abandoned
+set mouse=a› › " Enable mouse usage (all modes)
+~~~
 
 ## Customizing The Local **.vimrc** File
 
@@ -74,7 +69,7 @@ The configurations in this section will apply only to the active user account.
 
 ### Create **.vimrc**
 
-1. During Vim's loading sequence, it will automatically check the current user's home directory for a **.vimrc** file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global **vimrc** file. From your active Vim session, create a *.vimrc* file by entering command mode with `:`, and typing `tabedit ~/.vimrc`. This will open the **.vimrc** file in a new Vim tab. For those just starting out, it can be helpful to have a template on which to build on. Copy the sample **.vimrc** file below and paste it into your own file.
+1. During Vim's loading sequence, it will automatically check the current user's home directory for a **.vimrc** file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global **vimrc** file. From your active Vim session, create a *.vimrc* file in your home directory. The contents below consist of basic configuration settings most users would find helpful when utilizing Vim in any circumstance. You may pick and choose which settings you would like to add to your personal **.vimrc** file.
 
 {: .file}
 **~/.vimrc**
@@ -114,9 +109,6 @@ set noshiftround
 set scrolloff=5
 " Fixes common backspace problems
 set backspace=indent,eol,start
-
-" Allow hidden buffers
-set hidden
 
 " Speed up scrolling in Vim
 set ttyfast
@@ -162,39 +154,20 @@ vnoremap <Space> zf
 
 " Automatically save and load folds
 autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview
+autocmd BufWinEnter *.* silent loadview))'"
 ~~~
-
-2. Each customization in the **.vimrc** file is paired with an explanation specifying its impact on the Vim editor. You may want to read through line by line and disable any customizations you feel are not necessary by commenting them out (comments are defined by the "`"`" character).
-
-### Organize The *.vimrc* File With Folds
-
-The **.vimrc** file can quickly become cluttered and disorganized as more and more customizations are added. An excellent approach to file management is using Vim's *Fold* feature. 
-
-1. From the still active **.vimrc** file, navigate your cursor to the line that reads "Display options". Type the following sequence of commands in the order listed.
-
-- Enter visual line mode by holding the `<shift>` key and pressing `v`
-- Type `15j` to block select all of the display related customizations
-- Type `zf` to create the fold
-
-2. This collapses all of the display related options neatly into a single row, with *Display options* visible for later identification. Normally, any created Folds would be deleted when Vim is closed, even if the file was saved. However, the text block added at the very end of the **.vimrc** file automatically saves and reproduces the state of any folds made in a file. Save and close the **.vimrc** file when you are finished editing. Your added customizations will take effect the next time Vim is opened. More commands to interact with folds are detailed below.
-
-- `zo`: Open the fold
-- `zc`: Close the fold
-- `zf`: Create a new fold
-- `zd`: Delete a fold
 
 ## Integrate Plugins
 
-Plugins are a powerful way to customize your Vim instance. They can exponentially expand Vim's capabilities and allow the user to perform tasks which would traditionally require specialized software. This entire guide was written, previewed, and uploaded to Github using Vim.
+Plugins are a powerful way to customize your Vim instance; they can grant you additional capabilities which can help address more specific usage needs.
 
 ### Install The Vim-Plug Plugin Manager
 
-The most effective way to install and manage plugins requires the use of a plugin management tool. Vim-Plug will be used here, but there are a handful of others to choose from.
+The most effective way to install and manage plugins requires the use of a plugin management tool. Instructions for installing Vim-Plug are provided below.
 
-1. Install *curl*.
+1. Install curl.
 
-    **Fedora/RHEL based**
+   **Fedora/RHEL based**
 
         sudo yum install curl
 
@@ -206,13 +179,13 @@ The most effective way to install and manage plugins requires the use of a plugi
 
         sudo pacman -Syy curl
 
-2. Create the installation directories, download, and install VimPlug from Github.
+2. Create the installation directories, download, and install Vim-Plug from Github.
 
         sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 ### Install Your First Plugin With Vim-Plug
 
-Installing plugins with Vim-Plug is very simple. Once you identify a plugin you would like to add to Vim, it is as easy as adding a line of code to your **.vimrc** file. Below, installing the NERDTree file system explorer plugin will be demonstrated. All other plugins are installed in exactly the same manner.
+Using a plugin manager automates both the installation and setup of any plugins you choose to add.
 
 1. Create a separate file to manage your plugins, and a new directory to store them.
 
@@ -231,15 +204,19 @@ Installing plugins with Vim-Plug is very simple. Once you identify a plugin you 
         source ~/.vimrc.plug
     endif
 ~~~
-3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below. Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+
+3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plugin, a Github wrapper. With this plugin installed, you can now run a Git terminal from within Vim!
+
+{: .note}
+> Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
 
 {: file.}
 **~/.vimrc.plug**
 ~~~ vimrc
 call plug#begin('~/.vim/plugged')
 
-    " NERDTree   
-    Plug 'scrooloose/nerdtree'
+    "Fugitive Vim Github Wrapper
+    Plug 'tpope/vim-fugitive'
 
 call plug#end()
 ~~~
@@ -248,36 +225,7 @@ call plug#end()
 
         :PlugInstall
 
-### Configuring Plugins
-
-Installed plugins can additionally be configured to perform divergently depending on the set of circumstances. The circumstances and actions to take are defined programmatically in the **.vimrc** file. More often than not, configuration options can be found online on a plugin by plugin basis by utilizing a number of different resources, including the resources in the **External Resources** section.
-
-1. Many configurations are implemented primarily to simplify the number of keystrokes required to perform certain actions. To switch to the NERDTree file explorer anytime during an open Vim window, enter command mode with the `:` key and type `NERDTree`. Press `<Enter>` and the NERDTree window will pop open on the left side. This command can also be bound to a free key on the keyboard (such as one of the "F" keys) to simplify and speed up calling. Adding the following to your **.vimrc** file will bind the F3 key as a toggle switch for NERDTree.
-
-{: .file}
-**~/.vimrc**
-~~~ vimrc
-. . .
-
-map <F3> :NERDTreeToggle<CR>
-
-. . .
-~~~
-
-2. Instead of typing out a long filepath when editing a file in Vim, some prefer to open Vim with the `vim` command, then use NERDTree to browse system directories and locate a file. Adding the following to your **.vimrc** file will automatically open NERDTree when Vim is started without a file specified.
-
-{: .file}
-**~/.vimrc**
-~~~ vimrc
-. . .
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-. . .
-~~~
-
-3. Additional commands for managing plugins via Vim-Plug are listed below.
+5. Additional commands for managing plugins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
@@ -290,14 +238,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
  | PlugDiff                       | Display changes made during updates           |
  | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
 
-4. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed. To access support for both Vim and plugin functions, enter command mode by typing the `:` key and then typing `help` and pressing `<Enter>`. Vim will open the help window in a new buffer. Documentation for plugins should be located in the **Local Additions** section. Basic commands to navigate the help section are listed below.
-
-{: .note}
-> The "+" symbol indicates two keys that need to be pressed in tandem.
-
-        - <CTRL + ]>: Opens the help topic in which the cursor is directly positioned on.
-        - <CTRL + T>: Navigate back to the previous window.
-        - <:q + Enter>: Exit help window.
+4. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed, which can be accessed by typing `help` in command mode and browsing the *Local Additions* section.
 
 ## Where To Go From Here
 
