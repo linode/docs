@@ -83,8 +83,8 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
     {: .note}
     > If you would prefer to write the installer directly to the disk as it downloads, use:
-    > 
-    > curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    >
+    >     curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 
 3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
