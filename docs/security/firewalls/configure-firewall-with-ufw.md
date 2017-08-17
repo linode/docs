@@ -187,7 +187,7 @@ The initial values list the date, time, and hostname of your Linode. Additional 
 
 -   **TTL:** The packet TTL, or *time to live*. How long it will bounce between routers until it expires, if no destination is found.
 
--   **PROTO:** The packet's protocal
+-   **PROTO:** The packet's protocol
 
 -   **SPT:** The source port of the package
 
