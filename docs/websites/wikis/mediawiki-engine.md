@@ -29,11 +29,10 @@ If you followed our [LAMP guide](/docs/web-servers/lamp/install-lamp-stack-on-ub
 
     cd /var/www/example.com/
 
-
-
 {:.note}
 >
 >Depending on your distribution, you may need to replaced `/var/www/` with `/srv/www/`
+
 
 Use `wget` to download the latest package. You may need to install the `wget` program first by issuing the command `apt-get install wget` under Debian/Ubuntu, or `yum install wget` under CentOS/Fedora.
 
@@ -52,6 +51,7 @@ The name of the directory beneath the `public_html/` will determine the path to 
 
 ### Database Configuration
 
+
 Mediawiki needs to communicate with a database to store information. Create a database, a user, and grant all privileges on the new database to the user.
 
 
@@ -67,7 +67,7 @@ You will need to know the database name, username, and password of the MySQL dat
 
 After the instalattion is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/example.com/public_html/mediawiki/`
 
-Restrict access to `LocalSettings.php`, to protect your database password from being read:
+Restrict access tp `LocalSettings.php`, to protect your database password from being read:
 
     chmod 700 /var/www/example.com/public_html/media/wiki/LocalSettings.php
 
