@@ -151,6 +151,35 @@ Once the file has been created, you will need to reload the systemd daemons, ena
 
 Now PHP-FastCGI is installed as a systemd service!
 
+### Tell Nginx how to handle .php files 
+
+Now that PHP-FastCGI is configured you have to tell Nginx how to handle files with .php extension. Add these commands to the configuration file `/etc/nginx/conf.d/example.com.conf`
+
+~~~ nginx
+
+  location ~ \.php$ {
+      include /etc/nginx/fastcgi_params;
+      if ($uri !~ "^/images/") {
+      fastcgi_pass 127.0.0.1:9000;
+      }
+      fastcgi_index index.php;
+      fastcgi_param SCRIPT_FILENAME /var/www/example.com/public_html$fastcgi_script_name;
+  }
+~~~ 
+
+After this addition, don't forget to restart nginx with: 
+
+    systemctl restart nginx.service
+
+Now create a test file `info.php` locate at `/var/www/example.com/public_html` with 
+
+~~~ php 
+<?php phpinfo(); ?>
+
+~~~
+
+Finally, test the configuration by navigating to http://example.com/info.php 
+
 ## Installing MariaDB
 
 Last but not least, your LEMP stack needs a database.  MySQL is no longer supported in CentOS 7, so you need to use MySQL's drop in replacement, MariaDB.
