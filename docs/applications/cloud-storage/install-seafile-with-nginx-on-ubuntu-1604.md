@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We'll show you how to install it on Ubuntu 16.04.'
+description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.'
 keywords: 'Seafile, nginx, Ubuntu 16.04, file server, media, sharing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, June 21st, 2017
