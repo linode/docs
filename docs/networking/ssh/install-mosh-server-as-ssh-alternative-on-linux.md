@@ -2,15 +2,15 @@
 author:
   name: Quintin Riis
   email: docs@linode.com
-description: Mosh usage and Installation
+description: Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.
 keywords: 'mosh, ssh,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/mosh/']
-modified: Saturday, August 3rd, 2013
+alias: ['networking/mosh/','networking/ssh/mosh/']
+modified: Friday, August 18th, 2017
 modified_by:
-  name: Will Blew
+  name: Linode
 published: 'Sunday, January 20th, 2013'
-title: Mosh
+title: Install a Mosh Server as SSH Alternative on Linux
 ---
 
 [Mosh](http://mosh.mit.edu/) is a free replacement for SSH that allows roaming and supports intermittent connectivity. Unlike regular SSH connections, Mosh continuously syncs your local and remote sessions to ensure that your client automatically reconnects to the server when you switch between wireless networks or wake your computer from sleep. This guide explains how to install Mosh on your Linode and your personal computer.
@@ -19,7 +19,7 @@ title: Mosh
 >
 > Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You'll still need to use SSH for these tasks.
 
-## Benefits
+## Mosh SSH Benefits
 
 There are several benefits of using Mosh to connect to your Linode:
 
@@ -37,7 +37,7 @@ Before installing Mosh, you should verify that your Linode's firewall will allow
 /etc/iptables.firewall.rules
 : ~~~
 	-A INPUT -p udp --dport 60000:61000 -j ACCEPT
-~~~
+  ~~~
 
 Activate the new firewall rule by entering the following command:
 
@@ -45,7 +45,7 @@ Activate the new firewall rule by entering the following command:
 
 Mosh can now communicate with your Linode.
 
-## Installing Mosh on Your Linode
+## Install Mosh on Your Linode
 
 First, you need to install Mosh on your Linode. Find the instructions for your Linux distribution below.
 
@@ -66,11 +66,11 @@ Mosh is available in Debian's backports repositories. You'll need to add squeeze
 
 1.  Edit `/etc/apt/sources.list` and add the following line:
 
-	{: .file-excerpt }
-	/etc/apt/sources.list
-	: ~~~
-		deb <http://backports.debian.org/debian-backports> squeeze-backports main
-	~~~
+    {: .file-excerpt }
+    /etc/apt/sources.list
+    : ~~~
+        deb <http://backports.debian.org/debian-backports> squeeze-backports main
+      ~~~
 
 2.  Run `apt-get update`.
 3.  Install mosh from squeeze-backports by entering the following command:
@@ -91,7 +91,7 @@ Mosh is now installed on your Linode.
 
 If you have another Linux distribution installed on your Linode, see the [Mosh website](http://mosh.mit.edu/) for installation instructions.
 
-## Installing Mosh on Your Desktop Computer
+## Install Mosh on Your Desktop Computer
 
 Now you need to install Mosh on your desktop computer. Find the instructions for your computer's operating system below.
 
