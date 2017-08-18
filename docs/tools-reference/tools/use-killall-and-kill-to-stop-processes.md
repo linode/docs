@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the utilities killall and kill to manage processes on Linux systems.'
-keywords: 'kill,killall,processes,linux,process management,common linux commands'
+description: Learn how to use Linux commands Killall and Kill to manage and kill processes on Linux distributions in this simple tutorial.
+keywords: 'kill,killall,linux,common linux commands'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/killall-kill/']
+alias: ['linux-tools/common-commands/killall-kill/','tools-reference/tools/manage-processes-with-killall-and-kill/']
 modified: Thursday, March 23rd, 2017
 modified_by:
   name: Linode
 published: 'Monday, November 29th, 2010'
-title: Manage Processes with killall and kill
+title: Use Killall and Kill Commands to Stop Processes on Linux 
 ---
 
 `killall` is a tool for ending running processes on your system based on name. In contrast, `kill` terminates processes based on process ID number or "PID." `kill` and `killall` can also send specific system signals to processes. Use `killall` and `kill` in conjunction with tools including `ps` to manage processes and end processes that have become stuck or unresponsive when necessary.
@@ -97,7 +97,7 @@ If you need to convert a signal name into a signal number, or a signal number in
     $ kill -l kill
     9 
 
-## Finding Running Processes
+## Find Running Processes
 
 You may use a utility like [htop](/docs/tools-reference/linux-system-administration-basics/#monitor-processes-memory-and-cpu-usage-with-htop) or `top` to view a real time list of process and their consumption of system resources. You may also use the `ps` command to view processes that are currently running and their PIDs.
 
@@ -111,7 +111,7 @@ This command filters the list of all processes that are currently running for th
 
 Once you have obtained the PID or process name, use `killall` or `kill` to terminate the process as above.
 
-## Verifying Process Termination
+## Verify Process Termination
 
 The `-w` option to the `killall` command causes `killall` to wait until the process terminates before exiting. Consider the following command:
 
