@@ -79,7 +79,17 @@ Default location for roster file is `/etc/salt/roster`.
     >
     > Using ssh keys is much more safer way to access your minions, as you can avoid storing password in plaintext.
  
-3.  To set up connection to minion as a regular user, you will have to add a few extra lines.In this case Salt will leverage privileges via sudo. Just set sudo value to True in host definition like in the example below. You may also have to add tty option if `/etc/sudoers` on your minion is configured with requiretty option:
+3.  To set up connection to minion as a regular user, you will have to add a few extra lines. In this case Salt will leverage privileges via sudo. In order to achieve this set `sudo: True` option in roster file in your host definition. One important thing to consider is that by default sudo will only work when real user is logged in(and allocated with a tty). We can overcome this in 2 ways:
+
+    1. Disable tty check by commenting a line in sudoers file on you minion:
+
+    {: .file-excerpt}
+    /etc/sudoers
+    :  ~~~ config
+    # Defaults requiretty
+       ~~~
+
+    2. Force tty allocation by setting up `tty: True` option in your roster file:
 
     {: .file-excerpt}
     /etc/salt/roster
@@ -91,6 +101,11 @@ Default location for roster file is `/etc/salt/roster`.
         sudo: True
         tty: True
        ~~~
+ 
+    {: .note}
+    >
+    > Permissions leverage via sudo works only if NOPASSWD option is set up for the user, which will be used to connect to the minion, in `/etc/sudoers`.
+    > More information on roster files can be found at [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster)
 
 4.  Check that master server have access to client using salt-ssh command:
 
@@ -102,9 +117,7 @@ Default location for roster file is `/etc/salt/roster`.
             True
 
     {: .note}
-    >
-    > Permissions leverage via sudo works only if NOPASSWD option is set up for the user, which will be used to connect to the minion, in `/etc/sudoers`.
-    > More information on roster files can be found at [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster)
+    > If SSH keys weren't deplyed, you may face "The host key needs to be accepted.." message. In this case just run `salt-ssh` with -i key. This key will let Salt automatically accept minion's public key. This has to be done only once, during initial SSH keys exchange.
 
 ##Remote Command Execution via Salt SSH
 
