@@ -48,23 +48,31 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
 1.  Ensure that your Android device is fully updated, then install OpenVPN for Android from whichever source you prefer. Here we'll use the Google Play Store.
 
-    ![Google Play Store OpenVPN Connect](/docs/assets/google-play-openvpn-connect.png)
+    ![Google Play Store OpenVPN for Android](/docs/assets/google-play-openvpn-for-android.png)
 
-2.  Ensure that [Media Transfer Protocol](https://en.wikipedia.org/wiki/Media_Transfer_Protocol) is enabled. In **Settings** > **Storage**, open the **overflow menu** (the three vertical dots) and tap **USB computer connection**; **Media device (MTP)** should be checked. Connect your Android device by USB to your computer and copy over the folder containing the client credentials.
+2.  Connect your Android device by USB to your computer. From the USB settings notification, put the device into file transfer mode. See [here](https://support.google.com/nexus/answer/2840804) for more information on that. Copy over the folder containing the VPN client credentials. You can put it into the `/../Internal storage/` area.
 
-3.  Import the VPN profile from **Menu** > **Import** > **Import Profile from SD card**. Navigate to the profile location, tap it and then tap **SELECT**.
+3.  Disconnect the device from USB and launch OpenVPN for Android. To import the VPN profile, tap the Import icon at the top right.
 
-4.  Tap **Connect** to connect to the VPN server, then **OK** at the Connection request prompt for OpenVPN. Shortly after, Android will be connected.
+    ![OpenVPN for Android import profile](/docs/assets/openvpn-for-android-import-profile.png)
 
-    ![OpenVPN Connect profile imported](/docs/assets/openvpn-connect-android-profiile-imported.png)
+    You'll then be shown the file browser. Navigate to the folder you copied to the device in the previous step and tap the client.ovpn file to import it as a VPN profile.
 
-    ![OpenVPN Connect profile imported](/docs/assets/openvpn-connect-android-connected.png)
+    ![OpenVPN for Android file browser](/docs/assets/openvpn-for-android-file-browser.png)
 
-5.  OpenVPN Connect's app settings can be used to further tweak the connection. Here you can specify whether the VPN is to be used over WiFi connections, cellular, or both; disable Google DNS if you want to only receive DNS addresses from the VPN server.
+4.  At the *Convert Config File* screen, verify the certificate and key file names are correct. Then tap the check mark at the top right of the screen to complete the process.
 
-    For detailed explanations of each choice, see the [OpenVPN Connect Android FAQ](https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-android-faq.html).
+    ![OpenVPN for Android profile imported](/docs/assets/openvpn-for-android-imported.png)
 
-    ![OpenVPN Connect Android settings.](/docs/assets/openvpn-settings-android.png)
+5.  To connect to the VPN server, tap the profile you just created and confirm the connection request. The log screen will show the connection status and shortly after, Android will be connected.
+
+    ![OpenVPN for Android](/docs/assets/openvpn-for-android-profile.png)
+
+    ![OpenVPN for Android](/docs/assets/openvpn-for-android-connection-request.png)
+
+    ![OpenVPN for Android](/docs/assets/openvpn-for-android-log.png)
+
+    You can customize the profile further in the app's Settings tab.
 
 6.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
 
@@ -118,13 +126,9 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
 ### Linux
 
-{: .note }
->
->The following example was performed using OpenVPN 2.3.2-7ubuntu3.1 and `network-manager-openvpn` 0.9.8.2-1ubuntu4 on Ubuntu 14.04.
+These steps assume your distribution uses NetworkManager. Depending on the NetworkManager version your distribution packages, the windows and prompts may look slightly different than the screenshots below.
 
-These steps assume your distribution uses Network Manager.
-
-1.  Install the package `network-manager-openvpn` or `networkmanager-openvpn`, depending on your distribution. This will bring in the necessary dependencies with it, including the package `openvpn`.
+1.  Be sure you have the package `network-manager-openvpn` or `networkmanager-openvpn` installed, depending on your distribution. This will bring in the necessary dependencies with it, including the `openvpn` pacakge.
 
 2.  Some Linux distributions start services automatically after installation and on reboot. If yours does not, start and enable the OpenVPN Service.
 
@@ -136,31 +140,30 @@ These steps assume your distribution uses Network Manager.
 
         sudo service openvpn start
 
-3.  Go to the **System Settings** menu and open the **Network** settings to add a new connection to NetworkManager. In the **Choose a Connection Type** window, select **OpenVPN** from the dropdown.
+3.  Go to the **System Settings** menu and open the **Network** settings to add a new connection to NetworkManager. In the network connections window, select the plus sign at the bottom of the window to add a new connection.
 
-    ![Choose a Connection Type](/docs/assets/networkmanager-openvpn-connectiontype.png)
+    ![NetworkManager OpenVPN](/docs/assets/networkmanager-openvpn-new-connection.png)
 
-    You'll then see the window shown below. **Gateway** must be your Linode's public IPv4 address; multiple IPs can be entered. For each entry under **Authentication**, point NetworkManager to the correct files in `/etc/openvpn/keys`. Then click **Advanced**.
+4.  You'll then see the window shown below. Choose **VPN**, and then **Import from file**.
 
-    ![NetworkManager VPN tab](/docs/assets/networkmanager-openvpn-vpn.png)
+    ![NetworkManager OpenVPN](/docs/assets/networkmanager-openvpn-vpn.png)
 
-4.  In the **Security** tab, set the **Cipher** to AES-256-CBC and **HMAC Authentication** to SHA512.  THen choose the **TLS Authentication** tab.
+    ![NetworkManager OpenVPN](/docs/assets/networkmanager-openvpn-vpn-import-ovpn.png)
 
-    ![OpenVPN Advanced Options Security tab](/docs/assets/networkmanager-openvpn-vpn-advanced-security.png)
+5.  The file browser will then open. Navigate to the computer's `client.ovpn` file and click *Open* to import it.    
 
-    If you had set the OpenVPN server's Common Name when generating the certificates in part one, it can be used in the **Subject Match** field. Check the box to verify certificate usage signature and make sure the dropdown menu is set to **Server**.
+6.  At the **Add Network Connection** window, select IPv6 in the left column. Switch IPv6 from **On**, to **Off**. Then click **Add**.
 
-    Check the box for additional TLS authentication. This is the HMAC signature checking from [Part One, Step 1](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8#harden-openvpn) of the *Harden OpenVPN* area. Locate your key file and make sure the **Key Direction** is set to **1**. Click **OK** to exit the window.
+    ![NetworkManager OpenVPN](/docs/assets/networkmanager-openvpn-imported.png)
 
-    ![OpenVPN Advanced Options TLS Authentication tab](/docs/assets/networkmanager-openvpn-vpn-advanced-tlsauthentication.png)
-
-5.  The VPN client is now configured and ready to connect. How you do this will differ by desktop environment and NetworkManager version, but after configuring the VPN, an entry for it will appear in the desktop environment's network connection menu.
+7.  The VPN client is now configured and ready to connect. How you do this will differ by desktop environment and NetworkManager version, but after configuring the VPN, an entry for it will appear in the desktop environment's network connection menu.
 
     {: .note }
     >
     >Before first connection, it's a good idea to run `journalctl -f | grep vpn` or `tail -f /var/log/syslog | grep vpn` in a terminal on your client. This gives you a real-time output of OpenVPN's logging so if anything goes wrong or there are any errors or warning messags, they'll be visible here.
 
-6.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
+8.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
+
 
 ### OS X
 
