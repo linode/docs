@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Ubuntu 10.10 (Maverick) Linode.'
 keywords: 'nagios,monitoring'

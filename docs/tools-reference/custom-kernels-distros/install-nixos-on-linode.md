@@ -3,7 +3,7 @@ author:
   name: Andrew Miller
   email: docs@linode.com
 published: 'Friday, June 16, 2017'
-description: 'This guide shows you how to install and configure NixOS on your Linode.'
+description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
 keywords: 'custom distro,NixOS,advanced Linux,kvm'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
@@ -158,22 +158,6 @@ Root logins via SSH are disabled by default. To access your Linode, enable root 
     ~~~
 
 After installation, create a user with limited permissions, then set `permitRootLogin` to `"no"`.
-
-### Disable the Firewall
-
-{: .caution}
->
->The steps in this section disable the firewall and expose your Linode to potential attacks. Use this section for testing only.
-
-NixOS has a firewall that blocks all incoming connections and unexpected packets by default. Certain services, such as SSH, will open the ports they use automatically when enabled. However, this behavior isn't consistent across services in NixOS. To avoid confusion and to make troubleshooting easier, disable the firewall:
-
-    networking.firewall.enable = false;
-
-Once you understand which ports are being used by your application you can enable the firewall and use the `networking.firewall.allowedTCPPorts` and `networking.firewall.allowedUDPPorts` options to enable your application ports.
-
-After testing, re-enable the firewall:
-
-    networking.firewall.enable = true;
 
 ### Disable Predictable Interface Names
 

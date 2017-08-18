@@ -44,7 +44,7 @@ Once you see this successful message, the Longview MySQL App should automaticall
 >
 > Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
 
-If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#id3) section at the end of this article.
+If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 [![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
 
@@ -74,7 +74,7 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 
 4.  Refresh the Longview MySQL tab in the Linode Manager.
 
-You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#id3) section at the end of this article.
+You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## Viewing Statistics
 

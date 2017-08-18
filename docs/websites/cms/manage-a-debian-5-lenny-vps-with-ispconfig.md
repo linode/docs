@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 5 (Lenny) Linode.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'

@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Use phpFox to create and maintain a social networking platform on Debian 5 (Lenny).'
 keywords: 'phpfox,social networking,community'

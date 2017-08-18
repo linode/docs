@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
 keywords: 'nagios,monitoring'
@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/nagios/debian-5-lenny/']
 modified: Thursday, June 30th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, April 21st, 2010'
 title: 'Monitor Services with Nagios on Debian 5 (Lenny)'
 ---

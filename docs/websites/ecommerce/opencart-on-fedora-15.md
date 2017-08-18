@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Set up and manage an online storefront with OpenCart.'
 keywords: 'opencart,ecommerce,commerce,store,fedora'

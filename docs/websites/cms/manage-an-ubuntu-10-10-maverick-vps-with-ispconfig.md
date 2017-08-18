@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.10 (Maverick) Linode.'
 keywords: 'ispconfig,control panel,cpanel,plesk,gui'

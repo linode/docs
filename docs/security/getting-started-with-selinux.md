@@ -31,7 +31,7 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 {: .note} 
 >
-> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [disabling SELinux](/docs/quick-answer/how-to-disable-selinux.md)
+> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [disabling SELinux](/docs/quick-answers/linux/how-to-disable-selinux)
 
 ## Before You Begin
 

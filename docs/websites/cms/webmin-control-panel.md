@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Webmin control panel to maintain your Linode.'
 keywords: 'webmin,webmin debian,webmin centos,webmin ubuntu,webmin fedora,linux control panel,debian,ubuntu,centos,fedora,control panel,admin panel'
