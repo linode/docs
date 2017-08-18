@@ -2,15 +2,20 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'A docker quick reference guide or cheat sheet.'
+description: 'A quick reference cheat sheet on Docker commands for installation, containers, images and more.'
 keywords: 'docker,quick reference,cheat sheet,commands'
+alias: ['applications/containers/docker-quick-reference-cheat-sheet/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, March 30th, 2015
 modified_by:
   name: Linode
 published: 'Monday, March 30th, 2015'
-title: Docker Quick Reference
+title: A Docker Commands Quick Reference Cheat Sheet
 ---
+Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a shared operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient self-contained systems that run identically wherever deployed.
+
+Optimizing the platform's functionality begins with mastery of requisite Docker commands, especially those listed on this cheat sheet that address installation, Hub interaction, and container and image creation and use.
+
 
 ##Installation
 
@@ -32,8 +37,7 @@ title: Docker Quick Reference
 | **sudo docker push** user/image | Uploads an image to Docker Hub. <br> A Docker Hub username is necessary. |
 
 
-##Using Containers and Images
-
+##Use Containers and Images
 
 {: .table .table-striped .table-bordered} 
 | Docker Syntax | Description | 
