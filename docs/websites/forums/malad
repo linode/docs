@@ -147,7 +147,7 @@ User=yourusername
 Group=www-data
 WorkingDirectory=/home/yourusername/askbotforum
 Environment="PATH=/home/yourusername/askbotforum/askbotenv/bin"
-ExecStart=/home/yourusername/askbotforum/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock -m 007 wsgi:application
+ExecStart=/home/yourusername/askbotforum/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock wsgi:application
 
 [Install]
 WantedBy=multi-user.target
