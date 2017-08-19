@@ -65,7 +65,7 @@ external_resources:
 
 1.  Create a Directory to install the AskBot. In below, `/home/yourusername/askbotforum` is the location of AskBot installation directory.
 
-	sudo mkdir -p /home/yourusername/askbotforum
+	mkdir -p /home/yourusername/askbotforum
 
 2.  In below we are using the pip to install the python packages now upgrade the **pip** to latest version. 
 
@@ -170,7 +170,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 {: .note}
 >You should point your Fully-Qualified Domain Name to your Linode otherwise you won't get Letsencrypt SSL certificates. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
-	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/home/yourusername/askbotforum -d example.com -d www.example.com
+	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file
 
