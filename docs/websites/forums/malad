@@ -79,9 +79,9 @@ external_resources:
 	
 	virtualenv /home/yourusername/askbotforum/askbotenv
 
-5.  After that Activate the Python virtual environment using **source** command. In below, `/var/www/html/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
+5.  After that Activate the Python virtual environment using **source** command. In below, `/home/yourusername/askbotforum/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
 
-	source /var/www/html/askbotenv/bin/activate
+	source /home/yourusername/askbotforum/askbotenv/bin/activate
 
 6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn **pip** is the best tool. 
 
@@ -146,7 +146,8 @@ After=network.target
 User=yourusername
 Group=www-data
 WorkingDirectory=/home/yourusername/askbotforum
-ExecStart=/home/yourusername/askbotforum/askbotenv/bin/gunicorn --workers 3 --bind unix:/home/yourusername/askbotforum/askbot.sock wsgi:application
+Environment="PATH=/home/yourusername/askbotforum/askbotenv/bin"
+ExecStart=/home/yourusername/askbotforum/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock -m 007 wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -177,12 +178,12 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 7.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
 
-	sudo nano /etc/nginx/sites-available/example.com 
+	sudo nano /etc/nginx/sites-available/askbot 
 
 Add the given lines
 
 {: .file-excerpt}
-/etc/nginx/sites-available/example.com
+/etc/nginx/sites-available/askbot
 :   ~~~ conf
 server {
         listen 80;
@@ -221,7 +222,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 8.  Add symbolic link between nginx server blocks
 
-	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
+	sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled
 
 9.  Add the www-data user to your group with the following command. Replace your own `username` in the given command: 
 
@@ -234,5 +235,3 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 ## Setup Askbot
 
 1. Now open web browser and type `example.com` (your domain name)
-
-
