@@ -63,9 +63,9 @@ external_resources:
 
 ## Install AskBot
 
-1.  Create a Directory to install the AskBot. In below, `/var/www/html` is the location of AskBot installation directory.
+1.  Create a Directory to install the AskBot. In below, `/home/yourusername/askbotforum` is the location of AskBot installation directory.
 
-	sudo mkdir -p /var/www/html
+	sudo mkdir -p /home/yourusername/askbotforum
 
 2.  In below we are using the pip to install the python packages now upgrade the **pip** to latest version. 
 
@@ -75,9 +75,9 @@ external_resources:
 
 	sudo pip install virtualenv
 
-4.  Create a Python virtual environment using **virtualenv** command. In below, `/var/www/html/askbotenv` is the location of Python virtual environment.
+4.  Create a Python virtual environment using **virtualenv** command. In below, `/home/yourusername/askbotforum/askbotenv` is the location of Python virtual environment.
 	
-	sudo virtualenv /var/www/html/askbotenv
+	virtualenv /home/yourusername/askbotforum/askbotenv
 
 5.  After that Activate the Python virtual environment using **source** command. In below, `/var/www/html/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
 
@@ -85,41 +85,41 @@ external_resources:
 
 6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn **pip** is the best tool. 
 
-	sudo pip install askbot mysqlclient mysql-python gunicorn
+	pip install askbot mysqlclient mysql-python gunicorn
 
 ## Configure Askbot 
 
-1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/var/www/html/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `askbotdbuser` is the database user, and **-p** `askbotdbpassword` is the database user’s password.
+1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/yourusername/askbotforum/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `askbotdbuser` is the database user, and **-p** `askbotdbpassword` is the database user’s password.
 
-	sudo askbot-setup -n /var/www/html/ -e 3 -d askbotdb -u askbotdbuser -p askbotdbpassword
+	askbot-setup -n /home/yourusername/askbotforum/ -e 3 -d askbotdb -u askbotdbuser -p askbotdbpassword
 
-2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/var/www/html/manage.py` is the location of **manage.py** file.
+2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/yourusername/askbotforum/manage.py` is the location of **manage.py** file.
 
-	sudo python /var/www/html/manage.py collectstatic --noinput
+	python /home/yourusername/askbotforum/manage.py collectstatic --noinput
 
-3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/var/www/html/manage.py` is the location of **manage.py** file.
+3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/home/yourusername/askbotforum/manage.py` is the location of **manage.py** file.
 
-	sudo python /var/www/html/manage.py makemigrations
-	sudo python /var/www/html/manage.py migrate
+	python /home/yourusername/askbotforum/manage.py makemigrations
+	python /home/yourusername/askbotforum/manage.py migrate
 
-4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/var/www/html/settings.py` is the location of **settings.py** file.
+4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/home/yourusername/askbotforum/settings.py` is the location of **settings.py** file.
 
-	sudo sed -i "s|DEBUG = True|DEBUG = False|" /var/www/html/settings.py
+	sed -i "s|DEBUG = True|DEBUG = False|" /home/yourusername/askbotforum/settings.py
 
-5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/var/www/html/settings.py` is the location of **settings.py** file.
+5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/home/yourusername/askbotforum/settings.py` is the location of **settings.py** file.
 
-	sudo sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /var/www/html/settings.py
+	sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/yourusername/askbotforum/settings.py
 
 ## Deploy Askbot with Letsencrypt SSL
 
-1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/var/www/html/wsgi.py` is the location of **wsgi.py** file.
+1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/yourusername/askbotforum/wsgi.py` is the location of **wsgi.py** file.
 
-	sudo nano /var/www/html/wsgi.py 
+	nano /home/yourusername/askbotforum/wsgi.py 
 
 Add the given lines
 
 {: .file-excerpt}
-/var/www/html/wsgi.py
+/home/yourusername/askbotforum/wsgi.py
 :   ~~~ conf
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
@@ -143,10 +143,10 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=linode
+User=yourusername
 Group=www-data
-WorkingDirectory=/var/www/html
-ExecStart=/var/www/html/askbotenv/bin/gunicorn --workers 3 --bind unix:/var/www/html/askbot.sock wsgi:application
+WorkingDirectory=/home/yourusername/askbotforum
+ExecStart=/home/yourusername/askbotforum/askbotenv/bin/gunicorn --workers 3 --bind unix:/home/yourusername/askbotforum/askbot.sock wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -169,7 +169,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 {: .note}
 >You should point your Fully-Qualified Domain Name to your Linode otherwise you won't get Letsencrypt SSL certificates. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
-	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/home/yourusername/askbotforum -d example.com -d www.example.com
 
 6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file
 
@@ -207,12 +207,12 @@ server {
 
         location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
-        root /var/www/html;
+        root /home/yourusername/askbotforum;
         }
 		
         location / {
         include proxy_params;
-        proxy_pass http://unix:/var/www/html/askbot.sock;
+        proxy_pass http://unix:/home/yourusername/askbotforum/askbot.sock;
         }
 }
 ~~~
@@ -225,7 +225,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 9.  Add the www-data user to your group with the following command. Replace your own `username` in the given command: 
 
-	sudo usermod -a -G username www-data
+	sudo usermod -a -G yourusername www-data
 	
 10.  Finally restart the nginx to make changes in effect
 
