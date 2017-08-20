@@ -141,4 +141,15 @@ As of the publishing date, the latest version on Apache's website is *6.6.0*.
 
 ## Open The Solr Firewall Port
 
-1.
+Solr listens on port 8983 by default, and it must be opened to allow access to the web interface. Execute the commands using your preferred firewall manager from the options below.
+
+1. Open port 8983.
+
+    **FirewallD**
+
+            sudo firewall-cmd --zone=public --add-port=8983/tcp --permanent
+            sudo firewall-cmd --reload
+
+    **UFW**
+
+            ufw allow 8983/tcp comment "Solr port"
