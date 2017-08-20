@@ -268,3 +268,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 6. Finally access the askbot forum is all set up and ready. Now ask questions, access to askbot admin interface customize it according to your usages. 
 
 ![access askbot forum](/docs/assets/askbot-6.png)
+
+##Next Steps
+
+Now that you have an Askbot Question and Answer forum running on your Linode, it’s time to ask some questions, add some users, and configure the various options that are available with AskBot. For detailed instructions, check out the [AskBot Documentation](https://askbot.org/doc/index.html).
