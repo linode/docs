@@ -153,3 +153,12 @@ Solr listens on port 8983 by default, and it must be opened to allow access to t
     **UFW**
 
             ufw allow 8983/tcp comment "Solr port"
+
+    **Iptables**
+
+            iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
+
+{: .note}
+> Don't forget to save your Iptables rule using *iptables-persistent*, otherwise it will be lost following an ensuing server reboot.
+
+## 
