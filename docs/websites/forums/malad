@@ -213,6 +213,11 @@ server {
         location /static/ {
         root /home/example_user/askbot;
         }
+	
+        location /upfiles/ {
+        root /home/example_user/askbot/askbot;
+        }
+
 		
         location / {
         include proxy_params;
