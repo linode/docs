@@ -232,7 +232,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
-9.  Add the www-data user to your group with the following command. In below replace `example_user` with your username: 
+9.  Add the www-data user to your group with the following command. In below replace `example_user` with your desired username: 
 
 	sudo usermod -aG www-data example_user
 	
