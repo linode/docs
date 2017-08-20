@@ -125,9 +125,25 @@ As of the publishing date, the latest version on Apache's website is *6.6.0*.
 
         tar xzf solr-6.6.0.tgz solr-6.6.0/bin/install_solr_service.sh --strip-components=2
 
-3. Execute the Solr installation script.
+3. Execute the Solr installation script. For Arch Linux users, follow the steps under **Arch Linux**.
 
         bash ./install_solr_service.sh solr-6.6.0.tgz
+
+    **Arch Linux**
+
+    1. Create a directory for written files
+
+            mkdir /var/solr
+
+    2. Create system user "Solr".
+
+            useradd -d /var/solr -rM -s /bin/bash
+
+    3. Assign permissions to `/var/solr`
+
+            chown solr:solr /var/solr
+
+            chmod 750 /var/solr
 
 ## Open The Solr Firewall Port
 
