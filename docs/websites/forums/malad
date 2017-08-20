@@ -63,9 +63,9 @@ external_resources:
 
 ## Install AskBot
 
-1.  Create a Directory to install the AskBot. In below, `/home/yourusername/askbot` is the location of AskBot installation directory.
+1.  Create a Directory to install the AskBot. In below, `/home/example_user/askbot` is the location of AskBot installation directory.
 
-	mkdir -p /home/yourusername/askbot
+	mkdir -p /home/example_user/askbot
 
 2.  In below we are using the pip to install the python packages now upgrade the **pip** to latest version. 
 
@@ -75,51 +75,51 @@ external_resources:
 
 	sudo pip install virtualenv
 
-4.  Create a Python virtual environment using **virtualenv** command. In below, `/home/yourusername/askbot/askbotenv` is the location of Python virtual environment.
+4.  Create a Python virtual environment using **virtualenv** command. In below, `/home/example_user/askbot/askbotenv` is the location of Python virtual environment.
 	
-	virtualenv /home/yourusername/askbot/askbotenv
+	virtualenv /home/example_user/askbot/askbotenv
 
-5.  After that Activate the Python virtual environment using **source** command. In below, `/home/yourusername/askbot/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
+5.  After that Activate the Python virtual environment using **source** command. In below, `/home/example_user/askbot/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
 
-	source /home/yourusername/askbot/askbotenv/bin/activate
+	source /home/example_user/askbot/askbotenv/bin/activate
 
-6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn **pip** is the best tool. 
+6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn the **pip** is the best tool. 
 
 	pip install askbot mysqlclient mysql-python gunicorn
 
 ## Configure Askbot 
 
-1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/yourusername/askbot/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `askbotdbuser` is the database user, and **-p** `askbotdbpassword` is the database user’s password.
+1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/example_user/askbot/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `dbuser` is the database user, and **-p** `dbpassword` is the database user’s password.
 
-	askbot-setup -n /home/yourusername/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
+	askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
-2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/yourusername/askbot/manage.py` is the location of **manage.py** file.
+2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
-	python /home/yourusername/askbot/manage.py collectstatic --noinput
+	python /home/example_user/askbot/manage.py collectstatic --noinput
 
-3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/home/yourusername/askbot/manage.py` is the location of **manage.py** file.
+3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
-	python /home/yourusername/askbot/manage.py makemigrations
-	python /home/yourusername/askbot/manage.py migrate
+	python /home/example_user/askbot/manage.py makemigrations
+	python /home/example_user/askbot/manage.py migrate
 
-4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/home/yourusername/askbot/settings.py` is the location of **settings.py** file.
+4.  Now Turn off the Debug settings to use AskBot in production environment. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
 
-	sed -i "s|DEBUG = True|DEBUG = False|" /home/yourusername/askbot/settings.py
+	sed -i "s|DEBUG = True|DEBUG = False|" /home/example_user/askbot/settings.py
 
-5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/home/yourusername/askbot/settings.py` is the location of **settings.py** file.
+5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
 
-	sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/yourusername/askbot/settings.py
+	sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
 ## Deploy Askbot with Letsencrypt SSL
 
-1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/yourusername/askbot/wsgi.py` is the location of **wsgi.py** file.
+1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/example_user/askbot/wsgi.py` is the location of **wsgi.py** file.
 
-	nano /home/yourusername/askbot/wsgi.py 
+	nano /home/example_user/askbot/wsgi.py 
 
 Add the given lines
 
 {: .file-excerpt}
-/home/yourusername/askbot/wsgi.py
+/home/example_user/askbot/wsgi.py
 :   ~~~ conf
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
@@ -129,7 +129,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/var/www/html/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
+2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file.
 
 	sudo nano /etc/systemd/system/gunicorn.service
 
@@ -143,11 +143,11 @@ Description=gunicorn daemon
 After=network.target
 
 [Service]
-User=yourusername
+User=example_user
 Group=www-data
-WorkingDirectory=/home/yourusername/askbot
-Environment="PATH=/home/yourusername/askbot/askbotenv/bin"
-ExecStart=/home/yourusername/askbot/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock wsgi:application
+WorkingDirectory=/home/example_user/askbot
+Environment="PATH=/home/example_user/askbot/askbotenv/bin"
+ExecStart=/home/example_user/askbot/askbotenv/bin/gunicorn --workers 3 --bind unix:askbot.sock wsgi:application
 
 [Install]
 WantedBy=multi-user.target
@@ -208,12 +208,12 @@ server {
 
         location = /favicon.ico { access_log off; log_not_found off; }
         location /static/ {
-        root /home/yourusername/askbot;
+        root /home/example_user/askbot;
         }
 		
         location / {
         include proxy_params;
-        proxy_pass http://unix:/home/yourusername/askbot/askbot.sock;
+        proxy_pass http://unix:/home/example_user/askbot/askbot.sock;
         }
 }
 ~~~
@@ -224,9 +224,9 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
-9.  Add the www-data user to your group with the following command. Replace your own `username` in the given command: 
+9.  Add the www-data user to your group with the following command. Replace your own `example_user` in the given command: 
 
-	sudo usermod -a -G yourusername www-data
+	sudo usermod -aG www-data example_user
 	
 10.  Finally restart the nginx to make changes in effect
 
