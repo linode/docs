@@ -118,6 +118,9 @@ As of the publishing date, the latest version on Apache's website is *6.6.0*.
 
         wget http://apache.claz.org/lucene/solr/6.6.0/solr-6.6.0.tgz
 
+{: .note}
+> If `wget` is not yet installed on your distribution, install it via your distribution's package manager.
+
 2. Extract the Solr installation script from the downloaded archive.
 
         tar xzf solr-6.6.0.tgz solr-6.6.0/bin/install_solr_service.sh --strip-components=2
