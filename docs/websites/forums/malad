@@ -129,7 +129,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/var/www/html` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file.
+2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file.
 
 	sudo nano /etc/systemd/system/gunicorn.service
 
@@ -176,7 +176,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/var/www/html` is the working directory of AskBot, `unix:/var/www/html/askbot.sock` is the location of askbot sock file.
+7.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file.
 
 	sudo nano /etc/nginx/sites-available/askbot 
 
@@ -224,11 +224,11 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
-9.  Add the www-data user to your group with the following command. Replace your own `example_user` in the given command: 
+9.  Add the www-data user to your group with the following command. In below replace `example_user` with your username: 
 
 	sudo usermod -aG www-data example_user
 	
-10.  Finally restart the nginx to make changes in effect
+10.  Finally restart nginx to make changes in effect
 
 	sudo systemctl restart nginx
 
