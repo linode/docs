@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---    
 
-[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python. It provides features similarly like StackOverflow including Karma based system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-Fedoraproject, Ask-Openstack and others. In this guide, you'll install and configure AskBot with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** for free SSL certificates on your Ubuntu 16.04 Linode.
+[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python. It provides features similarly like StackOverflow including Karma based system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by most popular opensource community like Ask-FedoraProject, Ask-OpenStack and others. In this guide, you'll install Askbot and deploy with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
 
 ## Before You Begin
 
@@ -82,11 +82,11 @@ external_resources:
 	
 	virtualenv /home/example_user/askbot/askbotenv
 
-5.  After that Activate the Python virtual environment using **source** command. In below, `/home/example_user/askbot/askbotenv/bin/activate` is the location of source file it is used to activate the Python virtual environment
+5.  After that Activate the Python virtual environment using **source** command. In below, `/home/example_user/askbot/askbotenv/bin/activate` is the location of source file that is used to activate the Python virtual environment
 
 	source /home/example_user/askbot/askbotenv/bin/activate
 
-6.  To install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn the **pip** is the best tool. 
+6.  The **pip** is the best tool to install Askbot and its dependencies like mysqlclient, mysql-python and gunicorn. 
 
 	pip install askbot mysqlclient mysql-python gunicorn
 
@@ -100,7 +100,7 @@ external_resources:
 
 	python /home/example_user/askbot/manage.py collectstatic --noinput
 
-3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these two commands. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
+3.  When you install Askbot the first time and any time you upgrade the Askbot, you should run these **makemigrations** and **migrate** commands. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
 	python /home/example_user/askbot/manage.py makemigrations
 	python /home/example_user/askbot/manage.py migrate
@@ -115,7 +115,7 @@ external_resources:
 
 ## Deploy Askbot with Letsencrypt SSL
 
-1.  We passed Gunicorn a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/example_user/askbot/wsgi.py` is the location of **wsgi.py** file.
+1.  We passed **Gunicorn** a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/example_user/askbot/wsgi.py` is the location of **wsgi.py** file.
 
 	nano /home/example_user/askbot/wsgi.py 
 
@@ -132,7 +132,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-2.  Gunicorn can interact with our Askbot application, but we should implement starting and stopping it. To do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file.
+2.  **Gunicorn** can interact with our Askbot application, but we should implement starting and stopping to do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file. Mke sure you should replace the `example_user` with your desired username.
 
 	sudo nano /etc/systemd/system/gunicorn.service
 
@@ -175,11 +175,11 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file
+6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file to add new new `askbot` Nginx server blocks.
 
 	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Add the Nginx server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file.
+7.  Add the Nginx Server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file and `/home/example_user/askbot/askbot` is the location of askbot media files (Images, Attachments, etc.).
 
 	sudo nano /etc/nginx/sites-available/askbot 
 
@@ -217,8 +217,7 @@ server {
         location /upfiles/ {
         root /home/example_user/askbot/askbot;
         }
-
-		
+	
         location / {
         include proxy_params;
         proxy_pass http://unix:/home/example_user/askbot/askbot.sock;
@@ -242,7 +241,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 ## Setup Askbot Admin Account
 
-1.  Now open web browser and type your domain name (ie. example.com OR www.example.com)
+1.  Now open web browser and type your domain name eg. `example.com` OR sub-domain eg. `www.example.com`
 
 ![askbot-on-browser](/docs/assets/askbot-1.png)
 	
@@ -261,7 +260,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 ![set askbot base url](/docs/assets/askbot-4.png)
 
-5.  In below Add your domain name like eg. `https://example.com/` OR sub-domain eg. `https://www.example.com/` in the place of Base URL box after that hit on **Save** to save the settings.
+5.  In below Add your domain name like eg. `https://example.com/` OR sub-domain eg. `https://www.example.com/` in the place of Base URL box after that hit on **Save** to save the configuration.
 
 ![add askbot base url](/docs/assets/askbot-5.png)
 
@@ -271,4 +270,4 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 ##Next Steps
 
-Now that you have an Askbot Question and Answer forum running on your Linode, it’s time to ask some questions, add some users, and configure the various options that are available with AskBot. For detailed instructions, check out the [AskBot Documentation](https://askbot.org/doc/index.html).
+Now you have an Askbot question and answer forum running on your Linode, it’s time to ask some questions, add some answers, and configure the various options that are available with AskBot. For detailed instructions, check out the [AskBot Documentation](https://askbot.org/doc/index.html).
