@@ -64,7 +64,7 @@ external_resources:
 ## Install AskBot
 
 {: .note}
-> In this guide `example_user` is [non-root user with sudo privileges](/docs/security/securing-your-server#ubuntu). You should replace `example_user` with your desired username and `/home/example_user/` is the location of home directory with your desired username.
+> In this guide `example_user` is [non-root user with sudo privileges](/docs/security/securing-your-server#ubuntu). You should replace `example_user` with your desired username.
 
 1.  Create a Directory to install the AskBot. In below, `/home/example_user/askbot` is the location of AskBot installation directory.
 
