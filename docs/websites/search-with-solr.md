@@ -49,7 +49,7 @@ While various ways of installing Solr exist, downloading from the Apache website
 
     **Arch linux**
 
-        pacman -Syu
+        pacman -Syyu
 
     **OpenSuse**
 
@@ -73,7 +73,7 @@ While various ways of installing Solr exist, downloading from the Apache website
 
     2. In most systems, the *oracle-java8-set-default* package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to step 3. Otherwise, Java 8 installation is complete.
 
-        dpkg --list | grep oracle
+            dpkg --list | grep oracle
 
     *Output*
         
@@ -90,6 +90,22 @@ While various ways of installing Solr exist, downloading from the Apache website
 
     **Arch linux**
 
-        pacman -Syu
+        pacman -S jre8-openjdk 
 
-    **OpenSuse**
+    **openSUSE**
+
+        zypper in java-1_8_0-openjdk
+
+    Once Java is installed, verify the installation by running the following command:
+
+        java -version
+
+    Your output should be similar to the lines below:
+
+    *Output*
+
+        openjdk version "1.8.0_144"
+        OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
+        OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
+
+3. 
