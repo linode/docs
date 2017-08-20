@@ -38,7 +38,7 @@ external_resources:
  
 ## Installing Required Packages for AskBot
 
-1.  First Install the required packages including Nginx, MySQL, Python PIP, etc.
+1.  First Install the required packages including Nginx web server, MySQL database server, Python PIP, and Letsencrypt.
 
 	sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
@@ -52,7 +52,7 @@ external_resources:
 
 3.  Create a New MySQL User and Database. In below, `askbotdb` is the name of the database, `dbuser` is the database user, and `dbpassword` is the database user’s password.
 
-        CREATE DATABASE askbotdb CHARACTER SET UTF8;
+	CREATE DATABASE askbotdb CHARACTER SET UTF8;
 	CREATE USER dbuser@localhost IDENTIFIED BY 'dbpassword';
 	GRANT ALL PRIVILEGES ON askbotdb.* TO dbuser@localhost;
 	FLUSH PRIVILEGES;
@@ -132,7 +132,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-2.  **Gunicorn** can interact with our Askbot application, but we should implement starting and stopping to do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file. Mke sure you should replace the `example_user` with your desired username.
+2.  **Gunicorn** can interact with our Askbot application, but we should implement starting and stopping to do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file. Make sure you should replace the `example_user` with your desired username.
 
 	sudo nano /etc/systemd/system/gunicorn.service
 
@@ -231,7 +231,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
-9.  Add the www-data user to your group with the following command. In below replace `example_user` with your desired username: 
+9.  Add the `example_user` user to **www-data** group with the following command. In below replace `example_user` with your desired username: 
 
 	sudo usermod -aG www-data example_user
 	
