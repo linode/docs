@@ -22,7 +22,7 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-In following the steps in this guide, 
+Upon completing the steps in this guide, you will have a fully installed Solr instance ready to integrate with your website, as well as performed some basic configuration.
 
 ## Before You Begin
 
@@ -32,3 +32,51 @@ In following the steps in this guide,
 > Some of the commands below require elevated privilidges to execute, and must be prefixed with `sudo` when necessary.
 
 # Install Solr
+
+While various ways of installing Solr exist, downloading from the Apache website ensures you will receive the latest version.
+
+## Update System And Install Pre-requisites
+
+1. Update system packages.
+
+    **Debian-based**
+
+        apt update -y && apt upgrade -y
+
+    **Fedora & RHEL based**
+
+        yum update -y && yum upgrade -y
+
+    **Arch linux**
+
+        pacman -Syu
+
+    **OpenSuse**
+
+        zypper dup
+
+2. Install Java
+
+    **Debian-based**
+
+    a.
+
+        echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+
+        echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+
+        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+
+        apt-get update
+
+        apt-get install oracle-java8-installer 
+
+    **Fedora & RHEL based**
+
+        yum install java-1.8.0-openjdk.x86_64
+
+    **Arch linux**
+
+        pacman -Syu
+
+    **OpenSuse**
