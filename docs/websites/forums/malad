@@ -242,7 +242,35 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 ## Setup Askbot Admin Account
 
-1. Now open web browser and type your domain name (ie. example.com OR www.example.com)
+1.  Now open web browser and type your domain name (ie. example.com OR www.example.com)
 
-	![askbot-on-browser](/docs/assets/askbot-1.png) 
+![askbot-on-browser](/docs/assets/askbot-1.png)
+	
+2.  After that hit on **create a password-protected account** to create a Admin Account
+
+![create a askbot admin account](/docs/assets/askbot-2.png)
+
+{: .note}
+>  The First account created using above method will be treated as **admin account** rest of them are normal accounts.
+
+3.  Create Login name and password of your choice. In below replace `screen name` with your desired `username`, `Email Address` with your desired `email address`, `Password` with your desired `password`, 
+
+![create a login name and password](/docs/assets/askbot-3.png)
+
+4.  Now set your domain name with Askbot base url settings by hitting on **APP_URL** above:
+
+![set askbot base url](/docs/assets/askbot-4.png)
+
+5.  In below Add your domain name like eg. `https://example.com/` OR sub-domain eg. `https://www.example.com/` in the place of Base URL box after that hit on **Save** to save the settings.
+
+![add askbot base url](/docs/assets/askbot-5.png)
+
+6. Finally access the askbot forum to ask questions add customize it according to your usage.
+
+![access askbot forum](/docs/assets/askbot-6.png)
+
+
+
+
+
 
