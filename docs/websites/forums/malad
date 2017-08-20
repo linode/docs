@@ -82,7 +82,7 @@ external_resources:
 	
 	virtualenv /home/example_user/askbot/askbotenv
 
-5.  After that Activate the Python virtual environment using **source** command. In below, `/home/example_user/askbot/askbotenv/bin/activate` is the location of source file to activate the Python virtual environment
+5.  After that Activate the Python virtual environment using **source** command. In below, `/home/example_user/askbot/askbotenv/bin/activate` is the location of source file it is used to activate the Python virtual environment
 
 	source /home/example_user/askbot/askbotenv/bin/activate
 
@@ -92,7 +92,7 @@ external_resources:
 
 ## Configure Askbot 
 
-1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/example_user/askbot/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `dbuser` is the database user, and **-p** `dbpassword` is the database user’s password.
+1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/example_user/askbot/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `dbuser` is the database user, and **-p** `dbpassword` is the database password.
 
 	askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
@@ -109,7 +109,7 @@ external_resources:
 
 	sed -i "s|DEBUG = True|DEBUG = False|" /home/example_user/askbot/settings.py
 
-5.  After that change the static files (css,js,etc) URL from `/m/` to `/static/`. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
+5.  After that change the URL of static files (css,js,etc) from `/m/` to `/static/`. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
 
 	sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
