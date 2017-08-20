@@ -61,15 +61,15 @@ While various ways of installing Solr exist, downloading from the Apache website
 
     1. Add the Java 8 repository, download the gpg key, and install Java 8. 
 
-        echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
+            echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
 
-        echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
+            echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
 
-        apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+            apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
-        apt update
+            apt update
 
-        apt install oracle-java8-installer 
+            apt install oracle-java8-installer 
 
     2. In most systems, the *oracle-java8-set-default* package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to step 3. Otherwise, Java 8 installation is complete.
 
