@@ -47,11 +47,11 @@ While various ways of installing Solr exist, downloading from the Apache website
 
         yum update -y && yum upgrade -y
 
-    **Arch linux**
+    **Arch Linux**
 
         pacman -Syyu
 
-    **OpenSuse**
+    **openSUSE**
 
         zypper up
 
@@ -88,7 +88,7 @@ While various ways of installing Solr exist, downloading from the Apache website
 
         yum install java-1.8.0-openjdk.x86_64
 
-    **Arch linux**
+    **Arch Linux**
 
         pacman -S jre8-openjdk 
 
