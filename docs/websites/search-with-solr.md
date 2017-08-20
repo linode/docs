@@ -39,7 +39,7 @@ While various ways of installing Solr exist, downloading from the Apache website
 
 1. Update system packages.
 
-    **Debian-based**
+    **Debian & Ubuntu**
 
         apt update -y && apt upgrade -y
 
@@ -53,11 +53,11 @@ While various ways of installing Solr exist, downloading from the Apache website
 
     **OpenSuse**
 
-        zypper dup
+        zypper up
 
-2. Install Java
+2. Install Java 8 JDK.
 
-    **Debian-based**
+    **Debian & Ubuntu**
 
     1. Add the Java 8 repository, download the gpg key, and install Java 8. 
 
@@ -108,4 +108,24 @@ While various ways of installing Solr exist, downloading from the Apache website
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
 
-3. 
+## Download And Install The Latest Version Of Apache Solr
+
+As of the publishing date, the latest version on Apache's website is *6.6.0*. 
+
+1. Navigate to the `/opt` directory and download Solr.
+
+        cd /opt
+
+        wget http://apache.claz.org/lucene/solr/6.6.0/solr-6.6.0.tgz
+
+2. Extract the Solr installation script from the downloaded archive.
+
+        tar xzf solr-6.6.0.tgz solr-6.6.0/bin/install_solr_service.sh --strip-components=2
+
+3. Execute the Solr installation script.
+
+        bash ./install_solr_service.sh solr-6.6.0.tgz
+
+## Open The Solr Firewall Port
+
+1. 
