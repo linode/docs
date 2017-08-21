@@ -1,24 +1,24 @@
 ---
- author:
- name: Linode Community
- email: docs@linode.com
-description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions.
+author:
+  name: Linode
+  email: docs@linode.com
+description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions.'
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published:
-modified:
+published: Monday, August 21, 2017
+modified: Tuesday, August 22, 2017
 modified_by:
-  name: Linode
+  name: 'Linode'
 title: 'Introduction To Vim Customization'
 contributor:
-   name: Andrew Lescher
-   link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
+  name: 'Andrew Lescher'
+  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
-  - '[Vim official home page](http://www.vim.org)'
-  - '[Vim-Config](http://vimconfig.com/)'
-  - '[VimAwesome](http://vimawesome.com/)'
-  - '[Vim-Plug Project Github Page](https://github.com/junegunn/vim-plug)'
-  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
+ - '[Vim official home page](http://www.vim.org)'
+ - '[Vim-Config](http://vimconfig.com/)'
+ - '[VimAwesome](http://vimawesome.com/)'
+ - '[Vim-Plug Project Github Page](https://github.com/junegunn/vim-plug)'
+ - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -45,23 +45,23 @@ The configurations in this section will apply system-wide across all user accoun
 
 1. A default Vim installation will feature a file containing Vim's core global settings called **vimrc**. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
 
-{: .note}
-> Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
+    {: .note}
+    > Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 
 3. Open the **vimrc** file for editing. The file may syntactically differ between Linux distributions, but the core settings remain the same. In the file below, the segment containing the bulk of the configuration options is shown. Uncomment the lines whose behavior you wish to enable. 
 
-{: .file}
-**/etc/vimrc**
-~~~ vimrc
-set showcmd› › " Show (partial) command in status line.
-set showmatch› › " Show matching brackets.
-set ignorecase›› " Do case insensitive matching
-set smartcase› › " Do smart case matching
-set incsearch› › " Incremental search
-set autowrite› › " Automatically save before commands like :next and :make
-set hidden›› " Hide buffers when they are abandoned
-set mouse=a› › " Enable mouse usage (all modes)
-~~~
+{:.file}
+/etc/vimrc
+: ~~~ vimrc
+  set showcmd› › " Show (partial) command in status line.
+  set showmatch› › " Show matching brackets.
+  set ignorecase›› " Do case insensitive matching
+  set smartcase› › " Do smart case matching
+  set incsearch› › " Incremental search
+  set autowrite› › " Automatically save before commands like :next and :make
+  set hidden›› " Hide buffers when they are abandoned
+  set mouse=a› › " Enable mouse usage (all modes)
+  ~~~
 
 ## Customizing The Local **.vimrc** File
 
@@ -71,91 +71,91 @@ The configurations in this section will apply only to the active user account.
 
 1. During Vim's loading sequence, it will automatically check the current user's home directory for a **.vimrc** file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global **vimrc** file. From your active Vim session, create a *.vimrc* file in your home directory. The contents below consist of basic configuration settings most users would find helpful when utilizing Vim in any circumstance. You may pick and choose which settings you would like to add to your personal **.vimrc** file.
 
-{: .file}
-**~/.vimrc**
-~~~ vimrc
-" Set compatibility to Vim only.
-set nocompatible
+{:.file}
+~/.vimrc
+: ~~~ vimrc
+  " Set compatibility to Vim only.
+  set nocompatible
 
-" Helps force plugins to load correctly when it is turned back on below.
-filetype off
+  " Helps force plugins to load correctly when it is turned back on below.
+  filetype off
 
-" Turn on syntax highlighting.
-syntax on
+  " Turn on syntax highlighting.
+  syntax on
+  
+  " For plugins to load correctly. 
+  filetype plugin indent on
 
-" For plugins to load correctly.
-filetype plugin indent on
+  " Turn off modelines
+  set modelines=0
 
-" Turn off modelines
-set modelines=0
+  " Automatically wrap text that extends beyond the screen length.
+  set wrap
+  " Vim's auto indentation feature does not work properly with text copied from outisde of Vim. Press the <F2> key to toggle paste mode on/off.
+  nnoremap <F2> :set invpaste paste?<CR>
+  imap <F2> <C-O>:set invpaste paste?<CR>
+  set pastetoggle=<F2>
+  
+  " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
+  " set textwidth=79
+  set formatoptions=tcqrn1
+  set tabstop=2
+  set shiftwidth=2
+  set softtabstop=2
+  set expandtab
+  set noshiftround
 
-" Automatically wrap text that extends beyond the screen length.
-set wrap
-" Vim's auto indentation feature does not work properly with text copied from outisde of Vim. Press the <F2> key to toggle paste mode on/off.
-nnoremap <F2> :set invpaste paste?<CR>
-imap <F2> <C-O>:set invpaste paste?<CR>
-set pastetoggle=<F2>
+  " Display 5 lines above/below the cursor when scrolling with a mouse.
+  set scrolloff=5
+  " Fixes common backspace problems
+  set backspace=indent,eol,start
 
-" Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen.
-" set textwidth=79
-set formatoptions=tcqrn1
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set noshiftround
+  " Speed up scrolling in Vim
+  set ttyfast
 
-" Display 5 lines above/below the cursor when scrolling with a mouse.
-set scrolloff=5
-" Fixes common backspace problems
-set backspace=indent,eol,start
+  " Status bar
+  set laststatus=2
 
-" Speed up scrolling in Vim
-set ttyfast
+  " Display options
+  set showmode
+  set showcmd
 
-" Status bar
-set laststatus=2
+  " Highlight matching pairs of brackets. Use the '%' character to jump between them.
+  set matchpairs+=<:>
 
-" Display options
-set showmode
-set showcmd
+  " Display different types of white spaces.
+  set list
+  set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-" Highlight matching pairs of brackets. Use the '%' character to jump between them.
-set matchpairs+=<:>
+  " Show line numbers
+  set number
 
-" Display different types of white spaces.
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+  " Set status line display
+  set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
 
-" Show line numbers
-set number
+  " Encoding
+  set encoding=utf-8
 
-" Set status line display
-set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')}
+  " Highlight matching search patterns
+  set hlsearch
+  " Enable incremental search
+  set incsearch
+  " Include matching uppercase words with lowercase search term
+  set ignorecase
+  " Include only uppercase words with uppercase search term
+  set smartcase
 
-" Encoding
-set encoding=utf-8
+  " Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
+  set viminfo='100,<9999,s100
 
-" Highlight matching search patterns
-set hlsearch
-" Enable incremental search
-set incsearch
-" Include matching uppercase words with lowercase search term
-set ignorecase
-" Include only uppercase words with uppercase search term
-set smartcase
+  " Map the <Space> key to toggle a selected fold opened/closed.
+  nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+  vnoremap <Space> zf
 
-" Store info from no more than 100 files at a time, 9999 lines of text, 100kb of data. Useful for copying large amounts of data between files.
-set viminfo='100,<9999,s100
-
-" Map the <Space> key to toggle a selected fold opened/closed.
-nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
-vnoremap <Space> zf
-
-" Automatically save and load folds
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview))'"
-~~~
+  " Automatically save and load folds
+  autocmd BufWinLeave *.* mkview
+  autocmd BufWinEnter *.* silent loadview"
+  ~~~
 
 ## Integrate Plugins
 
@@ -194,32 +194,37 @@ Using a plugin manager automates both the installation and setup of any plugins 
 
 2. Open **.vimrc** in the Vim editor and add the following text at the bottom to call the **.vimrc.plug** file.
 
-{: file.}
-**~/.vimrc**
-~~~ vimrc
-. . .
+    {: .file}
+    ~/.vimrc
+    : ~~~ Vimrc
+         . . .
+          " Call the .vimrc.plug file
+          if filereadable(expand("~/.vimrc.plug"))
+              source ~/.vimrc.plug
+          endif
+      ~~~
 
-" Call the .vimrc.plug file
-    if filereadable(expand("~/.vimrc.plug"))
-        source ~/.vimrc.plug
-    endif
-~~~
 
 3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plugin, a Github wrapper. With this plugin installed, you can now run a Git terminal from within Vim!
 
-{: .note}
-> Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+     {: .note}
+     > Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
 
-{: file.}
-**~/.vimrc.plug**
-~~~ vimrc
-call plug#begin('~/.vim/plugged')
+    {:.file}
+    ~/.vimrc.plug
+    : ~~~ vimrc
+        call plug#begin('~/.vim/plugged')
 
-    "Fugitive Vim Github Wrapper
-    Plug 'tpope/vim-fugitive'
+        "Fugitive Vim Github Wrapper
+        Plug 'tpope/vim-fugitive'
 
-call plug#end()
-~~~
+        call plug#end()
+      ~~~
+
+     {:.note}
+     > If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
+     
+
 
 4. After saving and closing the **.vimrc.plug** file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plugin manager within Vim and proceed to install all plugins listed in the **.vimrc.plug** file. Installed plugins will automatically load the next time Vim is started.
 
