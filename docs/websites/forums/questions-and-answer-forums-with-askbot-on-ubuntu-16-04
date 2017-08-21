@@ -96,6 +96,9 @@ external_resources:
 
 	askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
+{: .note}
+> Above command is to setup askbot using command line arguments and more info about this can be get by typing command **askbot-setup –h** 
+
 2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
 	python /home/example_user/askbot/manage.py collectstatic --noinput
@@ -105,7 +108,7 @@ external_resources:
 	python /home/example_user/askbot/manage.py makemigrations
 	python /home/example_user/askbot/manage.py migrate
 
-4.  Now Turn off the Debug settings to use AskBot in the production environment. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
+4.  Now Turn off the Debug mode in **settings.py** from `True` to `False` to run AskBot in the production environment. In below `/home/example_user/askbot/settings.py` is the location of **settings.py** file.
 
 	sed -i "s|DEBUG = True|DEBUG = False|" /home/example_user/askbot/settings.py
 
@@ -132,7 +135,7 @@ application = get_wsgi_application()
 
 Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to exit the program.
 
-2.  **Gunicorn** can interact with our Askbot application, but we should implement starting and stopping to do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file. Make sure you should replace the `example_user` with your desired username.
+2.  **Gunicorn** can interact with our Askbot application, but we should implement starting and stopping of Gunicorn app. To do this, we'll make a Systemd service file. In below `/home/example_user/askbot` is the working directory of AskBot, `/home/example_user/askbot/askbotenv/bin/gunicorn` is the location of Gunicorn application, `unix:askbot.sock` is the askbot sock file. Make sure you should replace the `example_user` with your desired username.
 
 	sudo nano /etc/systemd/system/gunicorn.service
 
@@ -168,18 +171,21 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 	sudo systemctl daemon-reload
 	sudo systemctl restart nginx
 
-5.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
+5.  Now get the Letsencrypt SSL for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
 
 {: .note}
 >You should point your Fully-Qualified Domain Name to your Linode this is the required step to get Letsencrypt SSL certificates for your domain name. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
 	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
-6.  Now Remove the default Nginx Server Blocks (Virtual Host) and Nginix index file to add new `askbot` Nginx server blocks.
+{: .note}
+> Above command is to get Letsencrypy SSL certificates using command line arguments and more info about [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) using guide. 
+
+6.  Now Remove the default Nginx Server Blocks (Virtual Host) and default Nginix index file to add new `askbot` Nginx server blocks.
 
 	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Add the Nginx Server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file and `/home/example_user/askbot/askbot` is the location of askbot media files (Images, Attachments, etc.).
+7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file, `/home/example_user/askbot/askbot` is the location of askbot media files in directory `/upfiles/` (Images, Attachments, etc.) and `/home/example_user/askbot` is the location of askbot static files in directory `/static/` (CSS, JS, etc.).
 
 	sudo nano /etc/nginx/sites-available/askbot 
 
@@ -231,7 +237,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
-9.  Add the `example_user` user to **www-data** group with the following command. In below replace `example_user` with your desired username: 
+9.  The **www-data** group must have access to Askbot installation directory so that nginx can serve static files, media files, access the socket files, etc. So we will add the `example_user` to **www-data** group so that it can open up with necessary permissions. In below replace `example_user` with your desired username: 
 
 	sudo usermod -aG www-data example_user
 	
@@ -252,11 +258,11 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 {: .note}
 >  The First account created using above method will be treated as **admin account** rest of them are normal accounts.
 
-3.  Create Login name and password of your choice. In below replace `screen name` with your desired `username`, `Email Address` with your desired `email address`, `Password` with your desired `password`, 
+3.  Create Login name and password of your choice. In below replace `screen name` with your desired `username`, `Email Address` with your desired `email address`, `Password` with your desired `password` as per your choice:
 
 ![create a login name and password](/docs/assets/askbot-3.png)
 
-4.  Now set your domain name with Askbot base url settings by hitting on **APP_URL** above:
+4.  Now set your domain name with Askbot using base url settings by hitting on **APP_URL** from Askbot app:
 
 ![set askbot base url](/docs/assets/askbot-4.png)
 
