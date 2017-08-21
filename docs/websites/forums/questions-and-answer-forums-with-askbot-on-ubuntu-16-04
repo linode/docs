@@ -97,7 +97,7 @@ external_resources:
 	askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
 {: .note}
-> Above command is to setup askbot using command line arguments and more info about this can be get by typing command **askbot-setup –h** 
+> Above **askbot-setup** command is to setup askbot using command line arguments and more info about each parameters by you can get by typing command **askbot-setup –h**
 
 2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
@@ -171,15 +171,12 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 	sudo systemctl daemon-reload
 	sudo systemctl restart nginx
 
-5.  Now get the Letsencrypt SSL for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
+5.  Now get the [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) for your Domain . In below, `admin@example.com` is your email address and `example.com` is your domain name and `www.example.com` is your sub-domain name.
 
 {: .note}
 >You should point your Fully-Qualified Domain Name to your Linode this is the required step to get Letsencrypt SSL certificates for your domain name. You can learn how to point domain names to Linode by following the How to [Add DNS records with Linode](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
 	sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
-
-{: .note}
-> Above command is to get Letsencrypy SSL certificates using command line arguments and more info about [Letsencrypt SSL](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) using guide. 
 
 6.  Now Remove the default Nginx Server Blocks (Virtual Host) and default Nginix index file to add new `askbot` Nginx server blocks.
 
