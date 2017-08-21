@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---    
 
-[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python. It provides features similarly like StackOverflow including Karma based system, voting, question and answer workflow, e-mail updates, content moderation, etc. It is used by the most popular open source community like Ask-FedoraProject, Ask-OpenStack and others. In this guide, you'll install Askbot and deploy with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
+[AskBot](https://askbot.com) is an open source question and answer forum written in Django web framework and Python. It provides features similarly like StackOverflow including Karma based system, voting, question and answer workflow, tags and categorize, show best answers first, content moderation, etc. It is used by the most popular open source community like Ask-FedoraProject, Ask-OpenStack and some others. In this guide, you'll install Askbot and deploy with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
 
 ## Before You Begin
 
@@ -270,7 +270,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 ![add askbot base url](/docs/assets/askbot-5.png)
 
-6. Finally, access the askbot forum is all setup and ready. Now ask questions, access to askbot admin interface customize it according to your usages. 
+6. Finally, Askbot is ready to run. Now get access to askbot admin interface customize it according to your usages. 
 
 ![access askbot forum](/docs/assets/askbot-6.png)
 
