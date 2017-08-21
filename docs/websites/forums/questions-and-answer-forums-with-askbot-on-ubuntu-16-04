@@ -97,7 +97,7 @@ external_resources:
 	askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
 {: .note}
-> Above **askbot-setup** command is to setup askbot using command line arguments and more info about each parameters by you can get by typing command **askbot-setup –h**
+> **askbot-setup** command line arguments with more detail for each parameter is available when you type command **askbot-setup –h** 
 
 2.  After that run command collectstatic to place all the static files like (css,js,etc) into AskBot installation directory. In below `/home/example_user/askbot/manage.py` is the location of **manage.py** file.
 
