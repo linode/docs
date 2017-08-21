@@ -31,10 +31,56 @@ title: 'Install Turtl on Ubuntu'
 
 The Turtl server has to be built from source. Download all of the dependencies
 
-    apt install  wget curl libtool subversion make automate
+    apt install  wget curl libtool subversion make automake
    
 
 ### Clozure Common Lisp, QuickLisp , Libuv, RethinkDB:
+
+
+#### Libuv
+
+Download the Libuv package from the official repository:
+
+    
+	wget https://dist.libuv.org/dist/v1.13.0/libuv-v1.13.0.tar.gz
+	tar -xvf libuv-v1.13.0.tar.gz
+	
+Build the package from source:
+
+    sudo sh autogen.sh
+	sudo ./configure
+	sudo make
+	sudo make install
+
+After the package is built, run `ldconfig` to maintain the shared libracy cache.
+
+#### RethinkDB
+
+[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to [Turtl](https://turtlapp.com/docs/server/), RethinkDB needs to only be installed, and Turtl will take care of the rest.
+
+RehinkDB has community maintained packages on most distrubtions. On Ubuntu, you have to add the RethinkDB repo to your list of repositories:
+
+    source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $xenial main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+    wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+
+Navigate to your `sources.list` folder, and add your version of Ubuntu: 
+
+    vi /etc/apt/sources.list.d/rethinkdb.list
+    deb http://download.rethinkdb.com/apt xenial main
+
+Update apt and install RethinkDB:
+
+     sudo apt update
+     sudo apt install rethinkdb
+
+Navigate to `/etc/rethinkdb/` and rename `default.conf.sample` to `default.conf`
+   
+    sudo mv /etc/rethinkdb/default.conf.sample /etc/rethinkdb/default.conf
+	 
+Restart the `rethinkdb.service` deamon:
+
+    sudo systemctl restart rethinkdb.service
+
 
 
 #### Clozure Common Lisp
@@ -71,6 +117,12 @@ To exit the environment type `(quit)`
 
 #### QuickLisp
 
+Create a user named `turtl`:
+
+    adduser turtl
+    su turtl
+    
+    
 QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for the server through Quicklisp.
 
     wget https://beta.quicklisp.org/quicklisp.lisp
@@ -113,45 +165,6 @@ Load and install `asdf.lisp` in your CCL environment:
 	(quit)
 	
 	
-#### Libuv
-
-Download the Libuv package from the official repository:
-
-    wget http://dist.libuv.org/dist/v1.9.1/libuv-v1.9.1.tar.gz
-	
-	tar -xvf libuv-v1.9.1.tar.gz
-	
-Build the package from source:
-
-    sudo sh autogen.sh
-	sudo ./configure
-	sudo make
-	sudo make install
-
-After the package is built, run `ldconfig` to maintain the shared libracy cache.
-
-#### RethinkDB
-
-[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to [Turtl](https://turtlapp.com/docs/server/), RethinkDB needs to only be installed, and Turtl will take care of the rest.
-
-RehinkDB has community maintained packages on most distrubtions. On Ubuntu, you have to add the RethinkDB repo to your list of repositories:
-
-    source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $xenial main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
-    wget -O https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
-	
-Update apt and install RethinkDB:
-
-     sudo apt update
-     sudo apt install rethinkdb
-
-Navigate to `/etc/rethinkdb/` and rename `default.conf.sample` to `default.conf`
-   
-    sudo mv /etc/rethinkdb/default.conf.sample /etc/rethinkdb/default.conf
-	 
-Restart the `rethinkdb.service` deamon:
-
-    sudo systemctl restart rethinkdb.service
-	 
 ### Installing Turtl 
     
 Clone Turtl from the Github repo:
