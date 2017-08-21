@@ -2,7 +2,7 @@
 author:
   name: Angel Guarisma
   email: docs@linode.com
-description: 'Securely setup a cloud hosting service on Ubuntu 16.04 to share files across multiple devices.'
+description: 'This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04.'
 keywords: 'owncloud, install owncloud, cloud storage ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, August 7th, 2017'
@@ -15,7 +15,8 @@ external_resources:
   - '[ownCloud Marketplace](https://marketplace.owncloud.com/)'
 ---
 
-ownCloud is an open source, cloud-based, file hosting service you can install on your Linode. ownCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices. 
+
+OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices. 
 
 ## Before You Begin
 
@@ -76,7 +77,7 @@ Add the repository key to apt, and install ownCloud:
 
 ## Create an Administrator Account
  
-1. After ownCloud is installed and MySQL is configured, point your browser to `ip_address_or_domain/owncloud` (where, `ip_address_or_domain` is your IP or FQDN), and create an administrator account:
+1. After ownCloud is installed and MySQL is configured, point your browser to `ip_address_or_domain/owncloud` (where, `ip_address_or_domain` is your IP or FQDN) and create an administrator account:
 
     ![ownCloud login screen](/docs/assets/ownCloud/login.png)
 
@@ -110,4 +111,4 @@ Add the repository key to apt, and install ownCloud:
 
 ## Secure the System
 
-Now that ownCloud is installed and configured, you should secure your system. The official documentation has a well written section on [hardening your server](https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/harden_server.html). This manual will cover everything from using HTTPS, to JavaScript Asset Managing.
+Now that ownCloud is installed and configured, you should secure your system. The official documentation has a well-written section on [hardening your server](https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/harden_server.html), which covers everything from using HTTPS, to JavaScript Asset Managing.
