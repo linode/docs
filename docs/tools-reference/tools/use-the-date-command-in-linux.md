@@ -2,11 +2,11 @@
 author:
   name: Christopher S. Aker
   email: caker@linode.com
-description: This tutorial will teach you how to generate and manipulate dates using the Linux date command including examples and help with formatting.
+description: 'This tutorial will teach you how to generate and manipulate dates using the Linux date command including examples and help with formatting.'
 keywords: 'date,time,linux commands,shell,timey wimey'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/date/','tools-reference/tools/linux-date-command/']
-modified: Thursday, April 13th, 2017
+modified: Monday, August 21st, 2017
 modified_by:
   name: Linode
 published: 'Monday, August 23rd, 2010'
@@ -15,7 +15,7 @@ title: How to Use the Date Command in Linux
 
 The `date` command displays the current date and time. It can also be used to display or calculate a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-![Learn how to use the linux date command](/docs/assets/linux_date_command_smg.png)
+![Learn how to use the linux date command](/docs/assets/linux_date_command_smg.jpg)
 
 ## Use the Linux date Command
 
