@@ -5,7 +5,7 @@ author:
 description: 'A guide for getting started with the popular MediaWiki engine for powering wiki sites.'
 keywords: 'mediawiki,wiki,web-applications'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/mediawiki/']
+alias: ['web-applications/wikis/mediawiki/','websites/wikis/mediawiki-engine/']
 modified: Wednesday, August 16, 2017
 modified_by:
   name: Linode
