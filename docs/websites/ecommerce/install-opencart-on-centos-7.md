@@ -6,7 +6,7 @@ description: 'This tutorial will guide you through basic installation and set-up
 keywords: 'opencart,ecommerce,commerce,store,centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/e-commerce/opencart/centos-7/','websites/ecommerce/opencart-on-centos-7/']
-modified: Saturday, April 29th, 2017
+modified: Monday, August 21st, 2017
 modified_by:
   name: Jonathan Chun
 published: 'Saturday, April 29th, 2017'
