@@ -202,7 +202,6 @@ server {
 	ssl on;
         ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
-        add_header Strict-Transport-Security max-age=31536000;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
         
 	location ~ /.well-known {
