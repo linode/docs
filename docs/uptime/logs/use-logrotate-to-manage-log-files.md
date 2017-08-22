@@ -2,32 +2,34 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Use the logrotate tool to manage logfiles.'
-keywords: 'logrotate,log rotation,log files,access logs,linux systems administration,basic systems administration'
+description: 'This guide will show you how to use the logrotate tool to manage logfiles.'
+keywords: 'logrotate,log files,access logs'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/logrotate/']
 modified: Tuesday, August 22nd, 2017
 modified_by:
   name: Linode
 published: 'Monday, October 11th, 2010'
-title: Use logrotate to Manage Log Files
+title: How to Use logrotate to Manage Log Files
 ---
 
-`logrotate` is a tool for managing log files created by system processes. This tool automatically compresses and removes logs to maximize the convenience of logs and conserve system resources, and allows users extensive control over how log rotation is processed.
+## What is logrotate?
+
+`Logrotate` is a tool for managing log files which have been created by system processes. This tool automatically compresses and removes logs to maximize the convenience of logs and conserve system resources. It gives users extensive control over how log rotation is processed.
 
 ![logrotate](/docs/assets/logrotate.jpg)
 
-## Using Log Rotate
+## Use Logrotate
 
 `logrotate`'s behavior is determined by options set in a configuration file, typically located at `/etc/logrotate.conf`.
 
     logrotate /etc/logrotate.conf
 
-Beyond the system wide log rotation configuration, you may run `logrotate` in a per-user setup with distinct configuration files if your deployment requires that non-privileged users be able to rotate their own logs.
+Beyond the system-wide log rotation configuration, you may run `logrotate` in a per-user setup with distinct configuration files if your deployment requires that non-privileged users can rotate their own logs.
 
-### Running Log Rotate
+### Run Logrotate
 
-Running `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day but `logrotate` only runs every week, the logs will only be rotated every week.
+Running `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
 
 For most daemon processes, logs should be rotated by the root user. In most cases, `logrotate` is invoked from a script in the `/etc/cron.daily/` directory. If one does not exist, create a script that resembles the following in the `/etc/cron.daily/` folder:
 
@@ -40,7 +42,7 @@ For most daemon processes, logs should be rotated by the root user. In most case
 
 You may also use an entry in the root user's `crontab`.
 
-### Understanding logrotate.conf
+### Understand logrotate.conf
 
 The configuration file for log rotation begins with a number of global directives that control how log rotation is applied globally. Most configuration of log rotation does not occur in the `/etc/logrotate.conf` file, but rather in files located in the `/etc/logrotate.d` directory. Every daemon process or log file will have its own file for configuration in this directory. The `/etc/logrotate.d` configurations are loaded with the following directive in `logrotate.conf`
 
@@ -94,7 +96,7 @@ logrotate.conf
     weekly
     ~~~
 
-When `weekly` is set, logs are rotated if the current week day is lower than the week day of the last rotation (i.e. Monday is less than Friday) or if the last rotation occurred more than a week before the present.
+When `weekly` is set, logs are rotated if the current week day is lower than the week day of the last rotation (i.e., Monday is less than Friday) or if the last rotation occurred more than a week before the present.
 
 To configure monthly log rotation, use the following directive:
 
@@ -156,7 +158,7 @@ In some situations it is not ideal to compress a log file immediately after rota
 
 ## Maintain Log File Extension
 
-`logrotate` will append a number to a file name so the `access.log` file will be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive.
+`Logrotate` will append a number to a file name so the `access.log` file will be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive:
 
 {: .file-excerpt }
 logrotate.conf
@@ -168,7 +170,7 @@ If you enable compression, the compressed log will be named `access.1.log.gz`.
 
 ## Control Log File Permissions
 
-If your daemon process requires that a log file exist to function properly, `logrotate` may interfere when it rotates logs. As a result, it is possible to have `logrotate` create new empty log files after rotation. Consider the following example:
+If your daemon process requires that a log file exist to function properly, `logrotate` may interfere when it rotates logs. As a result, it is possible to have `logrotate` create new, empty log files after rotation. Consider the following example:
 
 {: .file-excerpt }
 logrotate.conf
@@ -178,9 +180,9 @@ logrotate.conf
 
 In this example, a blank file is created with the permissions `640` (owner read/write, group read, other none) owned by the user `www-data` and in the `users` group. This directive specifies options in the form: `create [mode(octal)] [owner] [group]`.
 
-## Running Commands
+## Run Commands
 
-`logrotate` can run commands before and after rotation to ensure that routine tasks associated with log ration are run such as restarting or reloading daemons and passing other kinds of signals. To run a command before rotation begins, use a directive similar to the following:
+`Logrotate` can run commands before and after rotation to ensure that routine tasks associated with log ration, such as restarting or reloading daemons and passing other kinds of signals, are run. To run a command before rotation begins, use a directive similar to the following:
 
 {: .file-excerpt }
 logrotate.conf
@@ -190,7 +192,7 @@ logrotate.conf
     endscript
     ~~~
 
-The command `touch /srv/www/example.com/application/tmp/stop` runs before rotating the logs. Ensure that there are no errant directives or commands on the lines that contain `prerotate` and `endscript`. Also be aware that all lines *between* these directives will be executed. To run a command or set of commands after log rotation, consider the following example:
+The command `touch /srv/www/example.com/application/tmp/stop` runs before rotating the logs. Ensure that there are no errant directives or commands on the lines that contain `prerotate` and `endscript`. Also, be aware that all lines *between* these directives will be executed. To run a command or set of commands after log rotation, consider the following example:
 
 {: .file-excerpt }
 logrotate.conf
