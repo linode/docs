@@ -31,24 +31,24 @@ This guide details the configuration of the Vim text editor and is targeted at t
 
 ## Before You Begin
 
-1. A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with editing documents with Vim.
+1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with editing documents with Vim.
 
-3. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
 
 # Customizing Your Vim Instance
 
 It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible, and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customizing The Global **vimrc** File
+## Customizing the Global *vimrc* File
 
 The configurations in this section will apply system-wide across all user accounts.
 
-1. A default Vim installation will feature a file containing Vim's core global settings called **vimrc**. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
+1.  A default Vim installation will feature a file containing Vim's core global settings called *vimrc*. This file will be located at either `/etc/vim/vimrc` or `etc/vimrc`, depending on your linux distribution.
 
     {: .note}
     > Prefixing the `sudo` command is necessary when editing files where read and/or write permissions are not granted to your user account.
 
-3. Open the **vimrc** file for editing. The file may syntactically differ between Linux distributions, but the core settings remain the same. In the file below, the segment containing the bulk of the configuration options is shown. Uncomment the lines whose behavior you wish to enable. 
+2.  Open the *vimrc* file for editing. The file may syntactically differ between Linux distributions, but the core settings remain the same. In the file below, the segment containing the bulk of the configuration options is shown. Uncomment the lines whose behavior you wish to enable. 
 
 {:.file}
 /etc/vimrc
@@ -63,13 +63,15 @@ The configurations in this section will apply system-wide across all user accoun
   set mouse=a› › " Enable mouse usage (all modes)
   ~~~
 
-## Customizing The Local **.vimrc** File
+## Customizing the Local *.vimrc* File
 
 The configurations in this section will apply only to the active user account.
 
 ### Create **.vimrc**
 
-1. During Vim's loading sequence, it will automatically check the current user's home directory for a **.vimrc** file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global **vimrc** file. From your active Vim session, create a *.vimrc* file in your home directory. The contents below consist of basic configuration settings most users would find helpful when utilizing Vim in any circumstance. You may pick and choose which settings you would like to add to your personal **.vimrc** file.
+1.  During Vim's loading sequence, it will automatically check the current user's home directory for a *.vimrc* file. All settings specified in this file will override explicitly contradicted settings in any previously loaded config files, which in this case is the global *vimrc* file.
+
+From your active Vim session, create a *.vimrc* file in your home directory. The contents below consist of basic configuration settings most users would find helpful when utilizing Vim in any circumstance. You may pick and choose which settings you would like to add to your personal *.vimrc* file.
 
 {:.file}
 ~/.vimrc
@@ -161,11 +163,11 @@ The configurations in this section will apply only to the active user account.
 
 Plugins are a powerful way to customize your Vim instance; they can grant you additional capabilities which can help address more specific usage needs.
 
-### Install The Vim-Plug Plugin Manager
+### Install the Vim-Plug Plugin Manager
 
 The most effective way to install and manage plugins requires the use of a plugin management tool. Instructions for installing Vim-Plug are provided below.
 
-1. Install curl.
+1.  Install curl.
 
    **Fedora/RHEL based**
 
@@ -179,7 +181,7 @@ The most effective way to install and manage plugins requires the use of a plugi
 
         sudo pacman -Syy curl
 
-2. Create the installation directories, download, and install Vim-Plug from Github.
+2.  Create the installation directories, download, and install Vim-Plug from Github.
 
         sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -187,12 +189,12 @@ The most effective way to install and manage plugins requires the use of a plugi
 
 Using a plugin manager automates both the installation and setup of any plugins you choose to add.
 
-1. Create a separate file to manage your plugins, and a new directory to store them.
+1.  Create a separate file to manage your plugins, and a new directory to store them.
 
         touch ~/.vimrc.plug
         mkdir ~/vimplug-plugins
 
-2. Open **.vimrc** in the Vim editor and add the following text at the bottom to call the **.vimrc.plug** file.
+2.  Open *.vimrc* in the Vim editor and add the following text at the bottom to call the *.vimrc.plug* file.
 
     {: .file}
     ~/.vimrc
@@ -205,7 +207,7 @@ Using a plugin manager automates both the installation and setup of any plugins 
       ~~~
 
 
-3. Now open the **.vimrc.plug** file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plugin, a Github wrapper. With this plugin installed, you can now run a Git terminal from within Vim!
+3.  Now open the *.vimrc.plug* file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plugin, a Github wrapper. With this plugin installed, you can now run a Git terminal from within Vim!
 
      {: .note}
      > Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
@@ -224,13 +226,11 @@ Using a plugin manager automates both the installation and setup of any plugins 
      {:.note}
      > If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
      
-
-
-4. After saving and closing the **.vimrc.plug** file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plugin manager within Vim and proceed to install all plugins listed in the **.vimrc.plug** file. Installed plugins will automatically load the next time Vim is started.
+4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plugin manager within Vim and proceed to install all plugins listed in the **vimrc.plug* file. Installed plugins will automatically load the next time Vim is started.
 
         :PlugInstall
 
-5. Additional commands for managing plugins via Vim-Plug are listed below.
+5.  Additional commands for managing plugins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
@@ -247,4 +247,6 @@ Using a plugin manager automates both the installation and setup of any plugins 
 
 ## Where To Go From Here
 
-Many additional plugins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file. One of the best places to search for additional plugins is on the VimAwesome website. Most of the plugins available for Vim are hosted there in a well organized and easily searchable environment, along with instructions for installation for all the most popular plugin management tools. Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the **External Resources** section.
+Many additional plugins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file.
+
+One of the best places to search for additional plugins is on the VimAwesome website. Most of the plugins available for Vim are hosted there in a well organized and easily searchable environment, along with instructions for installation for all the most popular plugin management tools. Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the *External Resources* section.
