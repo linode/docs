@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Learn how to install and configure MySQL Workbench. Includes a sample MySQL database for testing.'
+description: 'This guide shows how to install and configure MySQL Workbench and includes a sample MySQL database for testing.'
 keywords: 'mysql,mysql workbench,mysql sample database'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/mysql-workbench']
@@ -89,4 +89,4 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
     ![MySQL Workbench Query](/docs/assets/mysql-workbench-query.png "MySQL Workbench Query")
 
-The sample database provides a sandbox to test configurations and how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are a lot of features, there are free and commercial lightweight alternatives available depending on needs of the user. MySQL Workbench remains a great choice for most database administration tasks.
+The sample database provides a sandbox in which to test configurations and show how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are plenty of features, free and commercial, lightweight alternatives are available, depending on needs of the user. MySQL Workbench remains a great choice for most database administration tasks.
