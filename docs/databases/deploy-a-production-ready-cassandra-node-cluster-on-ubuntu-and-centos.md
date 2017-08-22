@@ -16,13 +16,13 @@ contributor:
 external_resources: 
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
-
 ---
  
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
  
 ---
-![css](/docs/assets/cass.png)
+
+![Banner Image](/docs/assets/Casssandra/cass.png)
 
 ## What is Apache Cassandra
 
