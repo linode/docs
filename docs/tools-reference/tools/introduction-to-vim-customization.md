@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'The Vim editor is one in a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is present, Vim aims to be a hyper efficient text editor and provides an extensive plugin system which can be configured to user preferences, as well as support for hundreds of programming languages and file extentions.'
+description: 'This how-to guide shows you how to configure the VIM text editor and begin to customize it.'
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Monday, August 21, 2017
@@ -26,21 +26,25 @@ external_resources:
 ---
 ![Vim_banner](/docs/assets/Vim_Customization.jpg)
 
-## Introduction To This Tutorial
+## What Is Vim?
 
-This guide details the configuration of the Vim text editor and is targeted at those who are interested in taking the next step into customization. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a plugin management system. Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, as well as acquired exposure to managing external plugins.
+Vim is one of a handful of text editors ubiquitous in nearly all Unix systems. While an initial learning curve is unavoidable, Vim aims to be a hyperefficient text editor and provides an extensive plug-in system which can be configured to user preferences. It also supports  hundreds of programming languages and file extentions.
+
+This guide details the configuration of the Vim text editor and aims at those who are interested in taking the next step into customization. An array of methods for customizing Vim's execution of certain tasks and response to user input will be introduced, along with a plug-in management system. 
+
+Upon the completion of this tutorial, you will have fine-tuned your Vim editor to behave more intelligently, as well as acquired exposure to managing external plug-ins.
 
 ## Before You Begin
 
-1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with editing documents with Vim.
+1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
 2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
 
-# Customizing Your Vim Instance
+# Customize Your Vim Instance
 
-It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible, and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
+It is possible to customize Vim on a per-user basis or set configurations to apply system-wide. Integrating both options is also possible - and useful in situations where you would like some settings to apply to all accounts on the system, and other settings to apply to your own user account exclusively.
 
-## Customizing the Global *vimrc* File
+## Customize the Global *vimrc* File
 
 The configurations in this section will apply system-wide across all user accounts.
 
@@ -64,7 +68,7 @@ The configurations in this section will apply system-wide across all user accoun
   set mouse=a› › " Enable mouse usage (all modes)
   ~~~
 
-## Customizing the Local *.vimrc* File
+## Customize the Local *.vimrc* File
 
 The configurations in this section will apply only to the active user account.
 
@@ -80,14 +84,14 @@ From your active Vim session, create a *.vimrc* file in your home directory. The
   " Set compatibility to Vim only.
   set nocompatible
 
-  " Helps force plugins to load correctly when it is turned back on below.
+  " Helps force plug-ins to load correctly when it is turned back on below.
   filetype off
 
   " Turn on syntax highlighting.
   syntax on
   
-  " For plugins to load correctly. 
-  filetype plugin indent on
+  " For plug-ins to load correctly. 
+  filetype plug-in indent on
 
   " Turn off modelines
   set modelines=0
@@ -160,13 +164,13 @@ From your active Vim session, create a *.vimrc* file in your home directory. The
   autocmd BufWinEnter *.* silent loadview"
   ~~~
 
-## Integrate Plugins
+## Integrate Plug-Ins
 
-Plugins are a powerful way to customize your Vim instance; they can grant you additional capabilities which can help address more specific usage needs.
+Plug-ins are a powerful way to customize your Vim instance; they can grant you additional capabilities which can help address more specific usage needs.
 
-### Install the Vim-Plug Plugin Manager
+### Install the Vim-Plug Plug-In Manager
 
-The most effective way to install and manage plugins requires the use of a plugin management tool. Instructions for installing Vim-Plug are provided below.
+The most effective way to install and manage plug-ins requires the use of a plug-in management tool. Instructions for installing Vim-Plug are provided below.
 
 1.  Install curl.
 
@@ -186,11 +190,11 @@ The most effective way to install and manage plugins requires the use of a plugi
 
         sudo curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-### Install Your First Plugin With Vim-Plug
+### Install Your First Plug-In With Vim-Plug
 
-Using a plugin manager automates both the installation and setup of any plugins you choose to add.
+Using a plug-in manager automates both the installation and setup of any plug-ins you choose to add.
 
-1.  Create a separate file to manage your plugins, and a new directory to store them.
+1.  Create a separate file to manage your plug-ins, and a new directory to store them.
 
         touch ~/.vimrc.plug
         mkdir ~/vimplug-plugins
@@ -208,10 +212,10 @@ Using a plugin manager automates both the installation and setup of any plugins 
       ~~~
 
 
-3.  Now open the *.vimrc.plug* file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plugin, a Github wrapper. With this plugin installed, you can now run a Git terminal from within Vim!
+3.  Now, open the *.vimrc.plug* file in Vim. Populate the file with the contents below to add the *Fugitive Vim* plug-in, a Github wrapper. With this plug-in installed, you can now run a Git terminal from within Vim!
 
      {: .note}
-     > Any additional plugins to be installed need to be added between the "plug#begin" and "plug#end" lines.
+     > Any additional plug-ins to be installed need to be added between the "plug#begin" and "plug#end" lines.
 
     {:.file}
     ~/.vimrc.plug
@@ -227,11 +231,11 @@ Using a plugin manager automates both the installation and setup of any plugins 
      {:.note}
      > If after this step you receive an error similar to `E117 Unknown Function: plug#end` check the user permissions over `~/.vim/` you may need to `chmod -R 0755
      
-4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plugin manager within Vim and proceed to install all plugins listed in the **vimrc.plug* file. Installed plugins will automatically load the next time Vim is started.
+4.  After saving and closing the *.vimrc.plug* file, exit and restart Vim. The final installation procedure is to issue the `PlugInstall` command in command mode. This will open the plug-in manager within Vim and proceed to install all plug-ins listed in the **vimrc.plug* file. Installed plug-ins will automatically load the next time Vim is started.
 
         :PlugInstall
 
-5.  Additional commands for managing plugins via Vim-Plug are listed below.
+5.  Additional commands for managing plug-ins via Vim-Plug are listed below.
 
 {: .table .table-striped .table-bordered}
  | Command                        | Description                                   |
@@ -244,10 +248,12 @@ Using a plugin manager automates both the installation and setup of any plugins 
  | PlugDiff                       | Display changes made during updates           |
  | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
 
-4. The commands listed above are by no means exhaustive. Most plugins also offer support documentation when installed, which can be accessed by typing `help` in command mode and browsing the *Local Additions* section.
+4. The commands listed above are by no means exhaustive. Most plug-ins also offer support documentation when installed, which can be accessed by typing `help` in command mode and browsing the *Local Additions* section.
 
 ## Where To Go From Here
 
-Many additional plugins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file.
+Many additional plug-ins and tools exist to enhance your Vim experience. The Vim official website and online wiki offer additional ways to customize Vim as well as fully documenting its available features and commands. If a visual and interactive approach to creating your .vimrc file is desired, the Vim-Config website simplifies the process and auto generates the file.
 
-One of the best places to search for additional plugins is on the VimAwesome website. Most of the plugins available for Vim are hosted there in a well organized and easily searchable environment, along with instructions for installation for all the most popular plugin management tools. Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the *External Resources* section.
+One of the best places to search for additional plug-ins is on the VimAwesome website. Most of the plug-ins available for Vim are hosted there in a well-organized and easily searchable environment, along with instructions for installation for all the most popular plug-in management tools. 
+
+Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the *External Resources* section.
