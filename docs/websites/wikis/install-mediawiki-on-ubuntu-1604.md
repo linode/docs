@@ -25,18 +25,18 @@ This guide assumes that you already have a working [LAMP stack](/docs/web-server
 
 1.  Change your working directory to Apache's `DocumentRoot` and download the latest release of MediaWiki. As of this writing, the latest stable release of MediaWiki is version 1.29.0.
 
-    cd /var/www/html/example.com/
-    curl -O https://releases.wikimedia.org/mediawiki/1.29/mediawiki-1.29.0.tar.gz
+        cd /var/www/html/example.com/
+        curl -O https://releases.wikimedia.org/mediawiki/1.29/mediawiki-1.29.0.tar.gz
 
 You will want to check for the latest version of this software regularly and upgrade to avoid allowing your site to become vulnerable to known security bugs. You can find the download location for the latest release by visiting the [MediaWiki homepage](http://www.mediawiki.org/wiki/MediaWiki).
 
 2.  Decompress the package:
 
-    tar -xvf mediawiki-1.29.0.tar.gz
+        tar -xvf mediawiki-1.29.0.tar.gz
 
 3.  Move the uncompressed `mediawiki-1.29.0` directory into your site's `public_html/` folder, renaming the directory to `mediawiki/` in the process.
 
-    mv mediawiki-1.29.0/ public_html/mediawiki/
+        mv mediawiki-1.29.0/ public_html/mediawiki/
 
 The name of the directory beneath the `public_html/` will determine the path to your wiki. In this case, the wiki would be located at `example.com/mediawiki/`. You can copy the wiki to any publicly accessible location in the `public_html/` hierarchy.
 
@@ -53,7 +53,7 @@ Mediawiki needs to communicate with a database to store information. Create a da
 
 ## Configure MediaWiki
 
-1.  Point your browser to the URL of your wiki, for example: `example.com/mediawiki/` and click the "Please set up the wiki first" link. The setup page contains everything you need to complete the installation.
+Point your browser to the URL of your wiki, for example: `example.com/mediawiki/` and click the "Please set up the wiki first" link. The setup page contains everything you need to complete the installation.
 
 From the database section above, you will need:
 - The database name
@@ -62,7 +62,7 @@ From the database section above, you will need:
 
 Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/databases/mysql/standalone-mysql-server).
 
-2.  After the installation is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
+ After the installation is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
 
     chmod 700 /var/www/html/example.com/public_html/media/wiki/LocalSettings.php
 
