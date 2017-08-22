@@ -17,13 +17,13 @@ external_resources:
  - '[Media Wiki Extensions Blog](https://phabricator.wikimedia.org/source/extensions/browse/)'
 ---
 
-MediaWiki is a popular free wiki software package. It's the same software used by Wikipedia. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured dynamic wiki engine.
+MediaWiki is a popular, free wiki software package. It's the same software Wikipedia uses. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured, dynamic wiki engine.
 
 This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
 
 ## Download and Unpack MediaWiki
 
-1.  Change your working directory to Apache's `DocumentRoot` and ownload the latest release of MediaWiki. As of this writing, the latest stable release of MediaWiki is version 1.29.0.
+1.  Change your working directory to Apache's `DocumentRoot` and download the latest release of MediaWiki. As of this writing, the latest stable release of MediaWiki is version 1.29.0.
 
     cd /var/www/html/example.com/
     curl -O https://releases.wikimedia.org/mediawiki/1.29/mediawiki-1.29.0.tar.gz
@@ -43,7 +43,7 @@ The name of the directory beneath the `public_html/` will determine the path to 
 
 ### Configure MySQL
 
-Mediawiki needs to communicate with a database to store information. Create a database, a user with a secure password, and grant all privileges on the new database to the user.
+Mediawiki needs to communicate with a database to store information. Create a database and a user with a secure password, then grant all privileges on the new database to the user.
 
 
     CREATE DATABASE my_wiki;
@@ -56,19 +56,19 @@ Mediawiki needs to communicate with a database to store information. Create a da
 1.  Point your browser to the URL of your wiki, for example: `example.com/mediawiki/` and click the "Please set up the wiki first" link. The setup page contains everything you need to complete the installation.
 
 From the database section above, you will need:
-- The database's name
+- The database name
 - DB username
 - DB user's password
 
-Giving MediaWiki superuser access to your MySQL database allows it to create new accounts and If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/databases/mysql/standalone-mysql-server).
+Giving MediaWiki superuser access to your MySQL database allows it to create new accounts. If you plan on having a large number of users or content, consider setting up a second Linode as a [dedicated database server](/docs/databases/mysql/standalone-mysql-server).
 
-2.  After the instalattion is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
+2.  After the installation is finished, MediaWiki will create a `LocalSettings.php` file, with the configurations from the installation process. Move the `LocalSettings.php` file to `/var/www/html/example.com/public_html/mediawiki/` and restrict access to the file:
 
     chmod 700 /var/www/html/example.com/public_html/media/wiki/LocalSettings.php
 
 MediaWiki is now successfully installed and configured!
 
 
-## Upgrading MediaWiki
+## Upgrade MediaWiki
 
 You can monitor the [MediaWiki development mailing list](https://lists.wikimedia.org/mailman/listinfo/mediawiki-announce) to ensure that you are aware of all updates to the software. When upstream sources offer new releases, repeat the instructions for installing the MediaWiki software as needed.
