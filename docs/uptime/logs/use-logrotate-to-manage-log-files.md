@@ -6,7 +6,7 @@ description: 'Use the logrotate tool to manage logfiles.'
 keywords: 'logrotate,log rotation,log files,access logs,linux systems administration,basic systems administration'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/logrotate/']
-modified: Tuesday, May 17th, 2011
+modified: Tuesday, August 22nd, 2017
 modified_by:
   name: Linode
 published: 'Monday, October 11th, 2010'
@@ -25,7 +25,7 @@ Beyond the system wide log rotation configuration, you may run `logrotate` in a 
 
 ### Running Log Rotate
 
-Running `logrotate` as a cronjob ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day but `logrotate` only runs every week, the logs will only be rotated every week.
+Running `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day but `logrotate` only runs every week, the logs will only be rotated every week.
 
 For most daemon processes, logs should be rotated by the root user. In most cases, `logrotate` is invoked from a script in the `/etc/cron.daily/` directory. If one does not exist, create a script that resembles the following in the `/etc/cron.daily/` folder:
 
@@ -40,7 +40,7 @@ You may also use an entry in the root user's `crontab`.
 
 ### Understanding logrotate.conf
 
-The configuration file for log rotation begins with a number global directives that control how log rotation is applied globally. Most configuration of log rotation does not occur in the `/etc/logrotate.conf` file, but rather in files located in the `/etc/logrotate.d` directory. Every daemon process or log file will have its own file for configuration in this directory. The `/etc/logrotate.d` configurations are loaded with the following directive in `logrotate.conf`
+The configuration file for log rotation begins with a number of global directives that control how log rotation is applied globally. Most configuration of log rotation does not occur in the `/etc/logrotate.conf` file, but rather in files located in the `/etc/logrotate.d` directory. Every daemon process or log file will have its own file for configuration in this directory. The `/etc/logrotate.d` configurations are loaded with the following directive in `logrotate.conf`
 
 {: .file-excerpt }
 logrotate.conf
@@ -80,7 +80,7 @@ logrotate.conf
     mail <username@example.com>
     ~~~
 
-Your system will need a functioning [MTA](/docs/email/) to be able to send email.
+Your system will need a functioning [Mail Transfer Agent](/docs/email/) to be able to send email.
 
 ## Configure Rotation Intervals
 
@@ -102,7 +102,7 @@ logrotate.conf
     monthly
     ~~~
 
-Logs with this value set will rotate every month on the first day of the month that `logrotate` runs, which is often the first day of the month.
+Logs with this value will rotate every month that `logrotate` runs.
 
 For annual rotation:
 
@@ -122,7 +122,7 @@ logrotate.conf
     size [value]
     ~~~
 
-The `size` directive forces log rotation when a log file grows bigger than the specified `[value]`. By default, `[value]` is assumed to be in bytes. Append a `k` to `[value]` to specify a size in kilobytes, or use `M` or `G` for megabytes or gigabytes.
+The `size` directive forces log rotation when a log file grows bigger than the specified `[value]`. By default, `[value]` is assumed to be in bytes. Append a `k` to `[value]` to specify a size in kilobytes, `M` for megabytes, or `G` for gigabytes. For example, `size 100k` or `size 100M` are valid directives.
 
 ## Configure Log Compression
 
@@ -154,7 +154,7 @@ In some situations it is not ideal to compress a log file immediately after rota
 
 ## Maintain Log File Extension
 
-In typical operation, `logrotate` will append a number to a file name so the `access.log` file would be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive.
+`logrotate` will append a number to a file name so the `access.log` file will be rotated to `access.log.1`. To ensure that an extension is maintained, use the following directive.
 
 {: .file-excerpt }
 logrotate.conf
@@ -162,7 +162,7 @@ logrotate.conf
     extension log
     ~~~
 
-This ensures that `access.log` will be rotated to `access.1.log`. If you enable compression, the compressed log will be located at `access.1.log.gz`.
+If you enable compression, the compressed log will be named `access.1.log.gz`.
 
 ## Control Log File Permissions
 
@@ -198,4 +198,6 @@ logrotate.conf
     endscript
     ~~~
 
-`postrotate` is operationally and functionally identical to `prerotate` except that the commands are run after log rotation.
+`postrotate` is identical to `prerotate` except that the commands are run after log rotation.
+
+For a more comprehensive listing of possible directives, run `man logrotate`.
