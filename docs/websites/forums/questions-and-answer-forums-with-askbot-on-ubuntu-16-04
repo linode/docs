@@ -36,28 +36,26 @@ external_resources:
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
  
-## Installing Required Packages for AskBot
+## Installing Required Packages and Create Database for AskBot
 
 1.  First Install the required packages including Nginx web server, MySQL database server, Python PIP, and Letsencrypt.
 
 	sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
-## Create Database for AskBot
-
-1.  Log in to MySQL as the root user:
+2.  Log in to MySQL as the root user:
         
 	sudo mysql -u root -p
 
-2.  When prompted, enter the root password.
+3.  When prompted, enter the root password.
 
-3.  Create a New MySQL User and Database. In below, `askbotdb` is the name of the database, `dbuser` is the database user, and `dbpassword` is the database user’s password.
+4.  Create a New MySQL User and Database. In below, `askbotdb` is the name of the database, `dbuser` is the database user, and `dbpassword` is the database user’s password.
 
 	CREATE DATABASE askbotdb CHARACTER SET UTF8;
 	CREATE USER dbuser@localhost IDENTIFIED BY 'dbpassword';
 	GRANT ALL PRIVILEGES ON askbotdb.* TO dbuser@localhost;
 	FLUSH PRIVILEGES;
 	
-4.  Exit MySQL.
+5.  Exit MySQL.
 
         exit
 
