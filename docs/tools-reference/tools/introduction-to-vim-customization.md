@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This how-to guide shows you how to configure the VIM text editor and begin to customize it.'
+description: 'This how-to guide shows you how to configure the Vim text editor and begin to customize it.'
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Monday, August 21, 2017
