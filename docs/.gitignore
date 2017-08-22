@@ -19,3 +19,7 @@ Thumbs.dbi
 *.sql
 *.sqlite
 *.swp
+*~
+\#*\#
+*.elc
+.\#*
