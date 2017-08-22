@@ -36,7 +36,7 @@ external_resources:
 {: .note}
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
  
-## Installing Required Packages and Create Database for AskBot
+## Installing Required Packages and Creating Database for AskBot
 
 1.  First Install the required packages including Nginx web server, MySQL database server, Python PIP, and Letsencrypt.
 
@@ -59,7 +59,7 @@ external_resources:
 
         exit
 
-## Install AskBot
+## Installing AskBot
 
 {: .note}
 > In this guide `example_user` is [non-root user with sudo privileges](/docs/security/securing-your-server#ubuntu). You should replace `example_user` with your desired username.
@@ -88,7 +88,7 @@ external_resources:
 
 	pip install askbot mysqlclient mysql-python gunicorn
 
-## Configure Askbot 
+## Configuring AskBot 
 
 1.  Initialize the AskBot setup files by typing command **askbot-setup** . After that In below, **-n** `/home/example_user/askbot/` is the installation location of AskBot, **-e** `3` is the MySQL database type, **-d** `askbotdb` is the name of database, **-u** `dbuser` is the database user, and **-p** `dbpassword` is the database password.
 
