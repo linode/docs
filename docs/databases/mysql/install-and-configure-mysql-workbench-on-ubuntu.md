@@ -18,6 +18,8 @@ external_resources:
 
 MySQL Workbench is a feature-rich graphical tool used to model data, build SQL queries, manage MySQL servers, and more. This guide will show you how to install Workbench using the Ubuntu package manager.
 
+![MySQL Workbench](/docs/assets/mysql_workbench_ubuntu.jpg)
+
 ## Before You Begin
 
 Update repositories and upgrade if necessary:
