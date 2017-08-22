@@ -1,0 +1,630 @@
+---
+ author:
+   name: Andrew Lescher
+   email: docs@linode.com
+description: 'Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or "Cassandra Query Language" is syntactically similar to the Structured Query Language, making it easy to pick up for those familiar with SQL.'
+keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 14.04, database, nosql'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Saturday, June 24th, 2017'
+alias: ['/docs/databases/']
+modified:
+modified_by:
+  name: 'Andrew Lescher' 
+title: 'Deploy A Production-Ready Cassandra Node Cluster'
+contributor:
+   name: Andrew Lescher
+   link: https://www.linkedin.com/in/andrew-lescher-87027940/
+external_resources: 
+   - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
+   - '[Client-to-node encryption]
+(http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
+
+---
+ 
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
+ 
+---
+ 
+## Introduction To This Tutorial
+
+This guide is part 2 in a series detailing the implementation of Apache Cassandra on Ubuntu 17.04 and CentOS 7 distributions. In order to complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following the instructions here, you will learn how to link your Cassandra nodes together to form a true cluster. You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
+
+## Before You Begin
+
+1. You must have at least two Cassandra nodes set up and configured according to the instructions in the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](URL) guide. The Cassandra nodes should have equal or similar hardware specs, or bottlenecks can occur.
+	
+2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+
+3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
+
+### Initial Node Preparation
+
+## Prepare The Nodes For Clustering
+
+The instructions here must be executed on each Cassandra node to be clustered. Apply the exact same configuration to each node unless otherwise indicated.
+
+1. Clear the default data from the Cassandra system table in order to import new values set in the *cassandra.yaml* config file.
+
+		systemctl stop cassandra
+
+		rm -rf /var/lib/cassandra/data/system/*
+	
+2. Edit the *cassandra.yaml* file. Set the appropriate values for each variable indicated below.
+
+		vim /etc/cassandra/conf/cassandra.yaml
+			
+
+{: .table .table-striped .table-bordered}
+ |  Property  | Explanation |
+ |:----------:|:-----------:|
+ | cluster_name | Choose your cluster name here. |
+ | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
+ | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from "localhost" to the specific node's public IP address. |
+ | rpc_address | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
+ | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch", as this is more suitable to a multi-datacenter configuration. |
+ | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes, that is, you are starting with a fresh cluster, set this to "false". If your node(s) already contain data, **do not** add this property. |
+ | num_tokens | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |     
+
+**Example**
+
+{: .file}
+**/etc/cassandra/conf/cassandra.yaml**
+: ~~~ yaml		
+  cluster_name: '[Your Cluster Name'
+  listen_address: [public_ip_address]
+  rpc_address: [public_ip_address]
+  num_tokens: 256
+  seed_provider:
+	- class_name: org.apache.cassandra.locator.SimpleSeedProvider
+	  parameters:
+			- seeds: "[node1_ip_address],[node2_ip_address]"
+  endpoint_snitch: GossipingPropertyFileSnitch
+  auto_bootstrap: false
+  ~~~
+
+3. Edit the *cassandra-rackdc.properties file. Assign each node the same datacenter and rack name.
+
+**Example**
+
+{: .file}
+**/etc/cassandra/conf/cassandra-rackdc.properties**
+: ~~~ properties
+  # These properties are used with GossipingPropertyFileSnitch and will
+  # indicate the rack and dc for this node
+  dc=DC1
+  rack=RACK1
+  ~~~
+
+### Edit Firewall Settings
+
+## Open Cassandra Communication Ports
+
+1. Ports 7000 and 9042 must be available for external nodes to connect to. As a security measure, limit connections to these ports to only the IP addresses of any other nodes in the cluster. Depending on your preference, you may use UFW, FirewallD, or iptables to proceed.
+
+	**UFW**
+	
+		ufw allow proto tcp from [external_node_ip_address] to any port 7000,9042 comment "Cassandra TCP"
+	
+	**FirewallD**
+		firewall-cmd --permanent --zone=public --add-rich-rule='
+			rule family="ipv4"
+			source address="[external_node_ip_address]"
+			port protocol="tcp" port="7000" accept'
+				
+		firewall-cmd --permanent --zone=public --add-rich-rule='
+			rule family="ipv4"
+			source address="[external_node_ip_address]"
+			port protocol="tcp" port="9042" accept'
+			
+		firewall-cmd --reload
+	
+	**iptables**
+	
+	-A INPUT -p tcp -s [external_node_ip_address] -m multiport --dports 7000,9042 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+### Test The Cluster Setup
+
+## Boot Cassandra
+
+Start Cassandra on each node, one after another with `systemctl start cassandra`. Run `nodetool status`, and you should see each node in your cluster listed in the output.
+
+### Enable Node to Node Encryption
+
+Setting up encryption between nodes offers additional security and protects the data that is transferred between Cassandra nodes. The commands in this section need only to be run on one node in your cluster, with the appropriate files then distributed across the rest of the cluster.
+
+## Generate SSL Files
+
+1. Create a new directory called ".keystore" in the Cassandra config directory. Navigate to the newly created directory.
+	
+			mkdir /etc/cassandra/conf/.keystore
+
+2. Create a configuration file for openssl to help automate the certificate creation process. Copy the contents below into a new file and title it *rootCAcert.conf*. The contents in **bold** should be updated with your specific information.
+	
+  {: .file}
+	**~/.keystore/rootCAcert.conf**
+	: ~~~ conf
+	  
+	[ req ]
+	distinguished_name     = req_distinguished_name
+	prompt                 = no
+	output_password        = **set_strong_password_here**
+	default_bits           = 4096
+	
+	[ req_distinguished_name ]
+	C                      = **US**
+	ST                     = **WA**
+	L                      = **Seattle**
+	OU                     = **Cluster_Name**
+	CN                     = **Cluster_Name_MasterCA**
+	
+	~~~
+
+2. Create the public and private key files.
+
+			openssl req -config rootCAcert.conf -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
+			
+3. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+
+			keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"
+			
+			keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node2, OU=[cluster_name]"
+			
+			
+4. Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
+
+			keytool -list -keystore node1-keystore.jks -storepass [password]
+			
+5. Generate the signing request file. Repeat this command for each node in your cluster, using each .jks file for the `-keystore` option. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+
+			keytool -certreq -keystore node1-keystore.jks -alias node1 -file node1-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node1, OU=[cluster_name]"
+			
+			keytool -certreq -keystore node2-keystore.jks -alias node2 -file node2-cert.csr -keypass cassandra -storepass cassandra -dname "CN=node2, OU=[cluster_name]"
+			
+6. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+
+			openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
+			
+			openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
+
+7. Verify the certificates generated for each node.
+
+			openssl verify -CAfile ca-cert.cert node1-signed.cert
+			
+8. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+
+			keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
+			
+			keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
+			
+9. Now, Import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if there were two nodes in this cluster.
+
+			keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
+			
+			keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra 
+
+10. Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
+
+			keytool -importcert -keystore cassandra-truststore.jks -alias truststore -file ca-cert.cert -noprompt -keypass [password] -storepass [password]
+			
+## Copy Files To Each Node In The Cluster
+
+1. Copy the truststore file and keystore files into cassandra's `conf` directory for each node. Depending on your installation, the `conf` directory could be located at `/etc/cassandra/conf`, or `/etc/cassandra`.
+
+	{: .note}
+	>
+	> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory. 
+	
+			scp ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
+			
+			scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name]-keystore.jks
+			
+	Use the "-i" option if your destination server requires a certificate to login. 
+	
+			scp -i /local_path/to/private_key_file ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
+			
+## Configure Encryption Settings
+
+1. Edit the `cassandra.yaml` file on each node to match the following. Replace text in [brackets] with the indicated information.
+
+{: .file}
+**/etc/cassandra/conf/cassandra.yaml**
+: ~~~ yaml
+  
+server_encryption_options:
+    internode_encryption: all
+    keystore: /etc/cassandra/conf/[keystore_file.jks]
+    keystore_password: cassandra
+    truststore: /etc/cassandra/conf/[truststore_file.jks]
+    truststore_password: cassandra
+    # More advanced defaults below:
+    protocol: TLS
+    algorithm: SunX509
+    store_type: JKS
+    cipher_suites: [TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA]
+    require_client_auth: true
+
+~~~
+
+You may want to configure the *internode_encryption* setting to better meet the needs of your specific environment. A breakdown of available values are shown below.
+
+{: .table .table-striped .table-bordered}
+ |  Property  | Property description |
+ |:----------:|:-------------:|
+ | all | All traffic between nodes is encrypted. |
+ | none | No traffic is encrypted. |
+ | dc | Only traffic between datacenters is encrypted. |
+ | rack | Only traffic between server racks is encrypted. |
+	
+## Verify SSL Setup
+
+Run the following commands on each server node.
+
+1. Reboot Cassandra
+
+			systemctl restart cassandra
+			
+2. Verify the nodes are online and communicating.
+
+			nodetool status
+			
+3. Check log file to verify ssl encryption status.
+
+			grep SSL /var/log/cassandra/system.log 2>&1 | tail -1
+			
+If successful, your console output should read similar to the following:
+
+			INFO  [main] 2017-07-19 14:35:14,212 MessagingService.java:521 - Starting Encrypted Messaging Service on SSL port 7001
+			
+### Automate SSL Certificate Generation
+
+If you have many Cassandra nodes to create and distribute certificates for, the process outlined above can quickly become very tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated via bash scripting.
+
+## Create SSL Automation Script
+
+1. Create a new file in any directory of your choosing called *cassandra-keygen.sh*. 
+
+			vim /path/to/dir/cassandra-keygen.sh
+			
+2. Copy and paste the script contents below into *cassandra-keygen.sh*
+
+{: .file}
+**cassandra-keygen.sh**
+: ~~~ sh
+
+###############################################
+## NAME: Cassandra SSL Cert Generator
+## AUTHOR: Andrew Lescher
+## CREATED: 7/18/2017
+## DESCRIPTION: Use this script to generate public and private keys, import them into a java keystore, and create a truststore file for Cassandra nodes to communicate via ssl encryption.
+###############################################
+
+usage() 
+{
+   USAGE=$(
+cat << EOF
+
+**Cassandra SSL Cert Generator**
+
+HOW TO USE THIS SCRIPT:
+
+Decide whether you would like to generate node certificates, import node certfificates into the keystore, or generate a truststore.
+Add all necessary arguments in the command line
+when running the script, depending on the choice you made above. The script will first prompt you to choose the run mode. 
+Enter your choice and press <Enter>. The script will complete your request and output any created files to
+the destination directory you specified in the <-d> argument.
+
+MODES:
+
+Generate Node Certificates)
+   Required arguments: <-n, -d, -c, -p, -s, -k>
+
+Import Node Certificates)
+   Required arguments: <-n, -d, -p>
+
+Generate Truststore)
+   Required arguments: <-d, -t>
+
+OPTIONS:
+
+   --nodes=<number of nodes> | -n=3
+      The number of nodes in your cluster needing certificates.
+
+   --directory=<directory location> | -d=/etc/cassandra/conf/.keystore
+      The directory where certificate files will be generated.
+
+   --cluster=<cluster name> | -c=Cassandra_Cluster
+      Name of the cluster.
+
+   --password=<storepass/keypass password> | -p=cassandra
+      The password to use for the storepass and keypass. Both must be the same in Cassandra.
+
+   --truststore=<truststore password> | -t=cassandra
+      The password to use for the truststore.
+
+   --sslconfig=<openssl config file location> | -s=/etc/cassandra/conf/rootCAcert.conf
+      The location of the config file openssl uses for key generation.
+
+   --keysize=<key size> | -k=2048
+     Set the size of the encryption key. Common sizes include 1024, 2048, or 4096 bits.
+
+EOF
+)
+
+   echo "$USAGE" >&2
+   echo "">&2
+
+   exit 1;
+}
+
+while [[ $# -gt 0 ]]
+do option="$1"
+  case "${option}" in
+     -h|--help)
+        usage
+        shift
+        ;;
+
+     -n|--nodes)
+        nodes="$2"
+        shift
+        ;;
+
+     -d|--directory)
+        keystore_dir="$2"
+        shift
+        ;;
+
+     -c|--cluster)
+        cluster_name="$2"
+        shift
+        ;;
+
+     -p|--password)
+        password="$2"
+        shift
+        ;;
+
+     -t|--truststore)
+        truststore_pass="$2"
+        shift
+        ;;
+    
+     -s|--sslconfig)
+        sslconfig="$2"
+        shift
+        ;;
+
+     -k|--keysize)
+        keysize="$2"
+        shift
+        ;;
+
+     --)
+        break
+        shift
+        ;;
+
+     *)
+        echo -e "Invalid argument: \"${option}\"\n"
+        usage
+        ;;
+
+  esac
+  shift
+done
+
+# Select program mode
+echo -e "\n**Cassandra SSL Cert Generator**\nPlease select one of the following options:\n"
+echo -e "(g) Generate Node Certificates\n(i) Import Node Certificates\n(t) Generate Truststore\n(a) Do All Actions\n"
+read input
+
+if [[ ! "$input" =~ ^(g|i|t|a)$ ]]; then
+   echo -e "\n("$input") is not a valid option. Aborting."
+   exit 1;
+fi
+
+gen_cert()
+{
+echo -e "\n"
+# Remove public and private key files if they exist
+cd ${keystore_dir} && rm -vf {ca-cert.cert,ca-cert.key}
+
+# Create public and private key files
+cd ${keystore_dir} && openssl req -config ${sslconfig} -new -x509 -nodes -keyout ca-cert.key -out ca-cert.cert -days 365
+cd ${keystore_dir} && openssl x509 -in ca-cert.cert -text -noout
+
+for ((i=0; i < nodes; i++))
+do
+   node_id="node${i}"
+   
+   echo -e "\n"
+   echo -e "=========================================="
+   echo -e "Generating certificates for ${node_id}"
+   echo -e "=========================================="
+   echo -e "\n"
+
+   # Remove certificate and keystore files if they exist
+   cd ${keystore_dir} && rm -vf {${node_id}-keystore.jks,${node_id}.cert,${node_id}-cert.csr,${node_id}-signed.crt} 
+
+   # Generate keystore
+   cd ${keystore_dir} && keytool -genkeypair -v -keyalg RSA -alias ${node_id} -keystore ${node_id}-keystore.jks -storepass ${password} -keypass ${password} -validity 365 -keysize ${keysize} -dname "CN=${node_id}, OU=${cluster_name}"
+
+   # Verify key
+   cd ${keystore_dir} && keytool -list -v -keystore ${node_id}-keystore.jks -storepass ${password}
+
+   # Generate signing request file
+   cd ${keystore_dir} && keytool -certreq -v -keystore ${node_id}-keystore.jks -alias ${node_id} -file ${node_id}-cert.csr -keypass ${password} -storepass ${password} -dname "CN=${node_id}, OU=${cluster_name}"
+
+   # Sign each node's certificate
+   cd ${keystore_dir} && openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in ${node_id}-cert.csr -out ${node_id}-signed.cert -days 365 -CAcreateserial -passin pass:${password}
+
+   # Verify each signed certificate
+   cd ${keystore_dir} && openssl verify -CAfile ca-cert.cert ${node_id}-signed.cert 
+
+   echo -e "\n"
+   echo -e "========================================="
+   echo -e "Certificates for ${node_id} completed!"
+   echo -e "========================================="
+   echo -e "\n"
+done
+}
+
+import_keystore()
+{
+for ((i=0; i < nodes; i++))
+do 
+
+   node_id="node${i}"
+
+   echo -e "\n"
+   echo -e "=========================================="
+   echo -e "Importing certificates for ${node_id}"
+   echo -e "=========================================="
+   echo -e "\n"
+
+   # Import the certificate authority into the keystore
+   cd ${keystore_dir} && keytool -v -importcert -keystore ${node_id}-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass ${password} -storepass ${password}
+   
+   # Import the signed certificate into the keystore
+   cd ${keystore_dir} && keytool -v -importcert -keystore ${node_id}-keystore.jks -alias ${node_id} -file ${node_id}-signed.cert -noprompt -keypass ${password} -storepass ${password}
+
+
+   echo -e "\n"
+   echo -e "========================================="
+   echo -e "Certificates for ${node_id} imported!"
+   echo -e "========================================="
+   echo -e "\n"
+
+done
+}
+
+create_truststore()
+{
+   # Remove truststore file if exists
+   cd ${keystore_dir} && rm -fv cassandra-truststore.jks
+
+   echo -e "\n"
+   echo -e "=========================================="
+   echo -e "Generating truststore"
+   echo -e "=========================================="
+   echo -e "\n"
+
+   # Generate truststore file
+   cd ${keystore_dir} && keytool -v -importcert -keystore cassandra-truststore.jks -alias truststore -file ca-cert.cert -noprompt -keypass ${truststore_pass}  -storepass ${truststore_pass}
+
+   # Verify key
+   cd ${keystore_dir} && keytool -list -v -keystore cassandra-truststore.jks -storepass ${truststore_pass}
+
+   echo -e "\n"
+   echo -e "=========================================="
+   echo -e "Truststore created!"
+   echo -e "=========================================="
+   echo -e "\n"
+}
+
+
+if [ "$input" == "g" ]; then
+   gen_cert
+
+   # Display input values
+   echo -e "\n*****************************************\n"
+   printf "NUMBER OF NODES = ${nodes}\n"
+   printf "KEYSTORE DIRECTORY = ${keystore_dir}\n"
+   printf "CLUSTER NAME = ${cluster_name}\n"
+   printf "STOREPASS/KEYPASS PASSWORD = ${password}\n"
+   printf "TRUSTSTORE PASSWORD = ${truststore_pass}\n"
+   printf "OPENSSL CONFIG DIRECTORY = ${sslconfig}\n"
+   printf "KEYSIZE = ${keysize}\n"
+   echo -e "\n*****************************************\n"
+
+   exit 1
+fi
+
+if [ "$input" == "i" ]; then
+   import_keystore
+
+   # Display input values
+   echo -e "\n*****************************************\n"
+   printf "NUMBER OF NODES = ${nodes}\n"
+   printf "KEYSTORE DIRECTORY = ${keystore_dir}\n"
+   printf "CLUSTER NAME = ${cluster_name}\n"
+   printf "STOREPASS/KEYPASS PASSWORD = ${password}\n"
+   printf "TRUSTSTORE PASSWORD = ${truststore_pass}\n"
+   printf "OPENSSL CONFIG DIRECTORY = ${sslconfig}\n"
+   printf "KEYSIZE = ${keysize}\n"
+   echo -e "\n*****************************************\n"
+
+   exit 1
+fi
+
+if [ "$input" == "t" ]; then
+   create_truststore
+
+   # Display input values
+   echo -e "\n*****************************************\n"
+   printf "NUMBER OF NODES = ${nodes}\n"
+   printf "KEYSTORE DIRECTORY = ${keystore_dir}\n"
+   printf "CLUSTER NAME = ${cluster_name}\n"
+   printf "STOREPASS/KEYPASS PASSWORD = ${password}\n"
+   printf "TRUSTSTORE PASSWORD = ${truststore_pass}\n"
+   printf "OPENSSL CONFIG DIRECTORY = ${sslconfig}\n"
+   printf "KEYSIZE = ${keysize}\n"
+   echo -e "\n*****************************************\n"
+
+   exit 1
+fi
+
+if [ "$input" == "a" ]; then
+   gen_cert
+   import_keystore
+   create_truststore
+
+   # Display input values
+   echo -e "\n*****************************************\n"
+   printf "NUMBER OF NODES = ${nodes}\n"
+   printf "KEYSTORE DIRECTORY = ${keystore_dir}\n"
+   printf "CLUSTER NAME = ${cluster_name}\n"
+   printf "STOREPASS/KEYPASS PASSWORD = ${password}\n"
+   printf "TRUSTSTORE PASSWORD = ${truststore_pass}\n"
+   printf "OPENSSL CONFIG DIRECTORY = ${sslconfig}\n"
+   printf "KEYSIZE = ${keysize}\n"
+   echo -e "\n*****************************************\n"
+
+   exit 1
+fi
+  
+~~~
+
+3. Save and close.
+
+4. Run the script with the "-h" or "--help" option.
+
+			bash cassandra-keygen.sh --help
+			
+5. The output of the previous command will demonstrate the capabilities of the script and define its usage. The script has 3 modes:
+
+		a. Generate Node Certificates
+		b. Import Node Certificates
+		c. Generate Truststore
+	
+An example usage of each mode is demonstrated below, for a cluster of 6 nodes.
+	
+  **Generate Node Certificates**
+	
+			bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+			
+	**Import Node Certificates**
+	
+			bash cassandra-keygen.sh -n 6 -d /etc/cassandra/conf/.keystore -p cassandra
+			
+	**Generate Truststore**
+	
+			bash cassandra-keygen.sh --directory /etc/cassandra/conf/.keystore --truststore cassandra
+			
+	**Do All Actions**
+	
+			bash cassandra-keygen.sh  --nodes 6 --directory /etc/cassandra/conf/.keystore --cluster Cassandra_Cluster --password cassandra --truststore cassandra --sslconfig /etc/cassandra/conf/rootCAcert.conf --keysize 4096
+
+### Where To Go From Here
+
+Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with `cqlsh` can also be accomplished with encryption. See the "[Client-to-node encryption]" link the the external resources section for information on setting that up. 
