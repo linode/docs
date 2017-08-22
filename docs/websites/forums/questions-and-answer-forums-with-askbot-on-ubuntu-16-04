@@ -182,7 +182,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 	sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
-7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file, `/home/example_user/askbot/askbot` is the location of askbot media files  (Images, Attachments, etc.) in `/upfiles/` directory and `/home/example_user/askbot` is the location of askbot static files (CSS, JS, etc.) in `/static/` directory.
+7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in Production Environment. In below, `example.com` is your domain name and `www.example.com` is your sub-domain name, `/home/example_user/askbot` is the working directory of AskBot, `unix:/home/example_user/askbot/askbot.sock` is the location of askbot sock file, `/home/example_user/askbot/askbot` is the location of askbot media files  (Images, Attachments, etc.) in **upfiles** directory and `/home/example_user/askbot` is the location of askbot static files (CSS, JS, etc.) in **static** directory.
 
 	sudo nano /etc/nginx/sites-available/askbot 
 
