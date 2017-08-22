@@ -15,6 +15,8 @@ title: Use logrotate to Manage Log Files
 
 `logrotate` is a tool for managing log files created by system processes. This tool automatically compresses and removes logs to maximize the convenience of logs and conserve system resources, and allows users extensive control over how log rotation is processed.
 
+![logrotate](/docs/assets/logrotate.jpg)
+
 ## Using Log Rotate
 
 `logrotate`'s behavior is determined by options set in a configuration file, typically located at `/etc/logrotate.conf`.
