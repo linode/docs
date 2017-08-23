@@ -88,7 +88,7 @@ Restart the `rethinkdb.service` deamon:
 For this installation you will need to install Clozure Common Lisp (CCL):
 
 	
-    svn co http://svn.clozure.com/publicsvn/openmcl/release/1.11/linuxx86/ccl
+   s svn co http://svn.clozure.com/publicsvn/openmcl/release/1.11/linuxx86/ccl
 
 According to the CCL [documentation](https://ccl.clozure.com/download.html), you can replace `linuxx86` with another platform, like `solarisx86`. 
 
@@ -100,7 +100,7 @@ Quickly check if CCL has been installed correctly by updating the sources:
 Move `ccl` to `/usr/bin` so `ccl` can run from the command line:
 
     sudo cp -r ccl/ /usr/local/src
-	sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/bin
+	sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/local/bin
     
 Now, running `ccl64`, or `ccl` depending on your system, will launch a Lisp environment:
 
@@ -169,7 +169,7 @@ Load and install `asdf.lisp` in your CCL environment:
     
 Clone Turtl from the Github repo:
 
-    https:github.com/turtl/api.git
+    git clone https:github.com/turtl/api.git
 
 
 Create a file called `launch.lisp` inside of `/api`and copy the commands below:
@@ -179,12 +179,13 @@ Create a file called `launch.lisp` inside of `/api`and copy the commands below:
 	
 	
 	(pushnew "./" asdf:*central-registry* :test #'equal)
-	(load "start)
+	(load "start")
 
 Turtl does not ship with all of its dependencies. Instead the turtl community has provided a list of dependencies. Clone these into `/home/turtl/quicklisp/local-projects`:
 
-    git clone https://github.com/orethecreedence/cl-hash-util
-    git clone https://github.com/orethecreedence/cl-async
+    git clone https://github.com/orthecreedence/cl-hash-util
+    git clone https://github.com/orthecreedence/cl-async
+   
     git clone https://github.com/orethecreedence/cffi
 	git clone https://github.com/orethecreedence/wookie
     git clone https://github.com/orethecreedence/cl-rethinkdb
