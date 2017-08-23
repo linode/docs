@@ -142,7 +142,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
     -   `socket`: The location of the socket file.
     -   `pidfile`: The location of the PID file.
 
-### Configure jail.local
+## 3) Configure jail.local Settings
 
 1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a `jail.local` for editing:
 
@@ -171,7 +171,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
         enabled = true
         ~~~
 
-#### Whitelist IP
+### Whitelist IP
 
 To ignore specific IPs, add them to the `ignoreip` line. By default, this command will not ban the localhost. If you work from a single IP address often, it may be beneficial to add it to the ignore list:
 
@@ -190,7 +190,7 @@ If you wish to whitelist IPs only for certain jails, this can be done with the `
 
     fail2ban-client set JAIL addignoreip 123.45.67.89   
 
-#### Ban Time and Retry Amount
+### Ban Time and Retry Amount
 
 Set `bantime`, `findtime`, and `maxretry` to define the circumstances and the length of time of a ban:
 
@@ -212,7 +212,7 @@ Set `bantime`, `findtime`, and `maxretry` to define the circumstances and the le
 
 -   `maxretry`: How many attempts can be made to access the server from a single IP before a ban is imposed. The default is set to 3.
 
-#### Email Alerts
+### Email Alerts
 
 To receive email when fail2ban is triggered, adjust the email settings:
 
@@ -360,9 +360,9 @@ With the failregex created, it then needs to be added to a filter.
 
 ## Using the Fail2ban Client
 
-Fail2ban provides a command `fail2ban-client` that can be used to run Fail2ban from the command line. The input should be as follows: 
+Fail2ban provides a command `fail2ban-client` that can be used to run Fail2ban from the command line:
 
-    `fail2ban-client COMMAND`
+    fail2ban-client COMMAND
 
 -   `start`: Starts the Fail2ban server and jails.
 -   `reload`: Reloads Fail2ban's configuration files.
