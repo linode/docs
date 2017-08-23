@@ -17,6 +17,8 @@ external_resources:
  - '[Media Wiki Extensions Blog](https://phabricator.wikimedia.org/source/extensions/browse/)'
 ---
 
+![mediawiki Banner](/docs/assets/MediaWiki.jpg)
+
 MediaWiki is a popular, free wiki software package. It's the same software Wikipedia uses. It is fully dynamic and runs on a LAMP stack, taking advantage of the PHP language and the MySQL database backend. With easy installation and configuration, MediaWiki is a good solution when you need a familiar, full-featured, dynamic wiki engine.
 
 This guide assumes that you already have a working [LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) running on Ubuntu. Your web accessible `DocumentRoot` should be located in `/var/www/html/example.com/public_html/`. You should be connected to your server via SSH and logged in as root.
