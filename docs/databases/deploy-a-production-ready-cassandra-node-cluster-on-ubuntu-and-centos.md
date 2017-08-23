@@ -9,7 +9,7 @@ published: 'Saturday, June 24th, 2017'
 modified: 'Saturday, June 24th, 2017'
 modified_by:
   name: Andrew Lescher
-title: 'How to Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
+title: 'Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -289,7 +289,7 @@ If you have many Cassandra nodes for which to create and distribute certificates
         git pull https://github.com/Darkstar90/cassandra-keygen.git
 
 2. Run the script with the `-h` or `--help` option
-    
+
 	    bash cassandra-keygen.sh --help
 
 3. The output of the command will demonstrate the capabilities of the script and define its usage. The script has 3 modes:
