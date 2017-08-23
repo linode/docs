@@ -6,13 +6,13 @@ description: 'Deploying and configuring granular access control with the Apache 
 keywords: 'apache,access control,security,http,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/rule-based-access-control/','websites/apache-tips-and-tricks/rulebased-access-control-for-apache/']
-modified: Monday, August 22nd, 2011
+modified: Monday, August 22nd, 2017
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
 title: 'Rule-based Access Control for Apache'
 external_resources:
- - '[LAMP Stack Guides](/docs/lamp-guides/)'
+ - '[LAMP Stack Guides](/docs/lamp/)'
  - '[Apache Configuration and Administration](/docs/web-servers/apache/)'
  - '[Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics)'
  - '[Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure)'
@@ -21,6 +21,8 @@ external_resources:
  - '[Apache Documentation](http://httpd.apache.org/docs/2.2/sections.html)'
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 ---
+
+![Banner_Image](/docs/assets/RBAC_Apache.jpg)
 
 Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access control](/docs/web-servers/apache/configuration/http-authentication), which requires that visitors authenticate to the server before gaining access to resources.
 

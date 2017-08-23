@@ -15,39 +15,38 @@ contributor:
 ---
 
 #Introduction
-Salt-ssh allows you to execute Salt commands or states without installing a salt-minion package.
-This allows Salt to work similarly to Ansible, where master is pushing updates to the minions.
-During execution, salt-ssh will copy necessary files to the target system via ssh to the `/tmp` folder, execute command or state and clean up salt temporary files.
-Be aware that Salt SSH is slower than standard Salt with ZeroMQ because it it working via SSH.
+Salt-ssh allows you to execute Salt commands, or states, without installing a salt-minion package.
+During execution, salt-ssh will copy necessary files to the target system's `/tmp` folder with SSH. Then execute commands, and clean up salt temporary files.
+Be aware that Salt SSH is slower than standard Salt with ZeroMQ because it uses SSH.
 
 
 #Before You Begin
 
-1.  This guide assumes that you're using rpm based (CentOS, RedHat, Oracle Enterprise Linux) system.
+1.  This guide assumes that you're using an rpm based (CentOS, RedHat, Oracle Enterprise Linux) system.
 
-2.  Make sure that you have salt and salt-ssh packages installed on your master. You may check if these packages are installed by executing:
+2.  Make sure that you have the `salt` and `salt-ssh` packages installed on your master. Check if these packages are installed by executing:
 
         $rpm -q salt
         $rpm -q salt-ssh
 
     {: .note}
     >
-    > For detailed instruction on how to set up SaltStack repo, please refer to [SaltStack installation](https://www.linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
+    > For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](https://www.linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
 
-3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run salt-ssh in raw mode. If you're running any modern version of CentOS/RedHat, you should already have Python installed on your systems. In raw mode, you execute a raw shell command and cannot use execution modules or apply salt states.
+3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run salt-ssh in raw mode. In raw mode, a raw shell command cannot use execution modules or apply salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems
 
 4.  You must have at least one master server and one minion (client).
 
 ##Set up Salt Roster file
 
-Roster file contains information on target systems, connection details and credentials, which will be used for connection.
-Default location for roster file is `/etc/salt/roster`.
+The Roster file contains target system information, connection details and credentials. 
+The Default location for the Roster file is: `/etc/salt/roster`.
 
    {: .note}
    >
-   > Roster file is configured on master server.
+   > The Roster file is configured on the master server.
 
-1.  Open the file `/etc/salt/roster` with your editor of choice and add following lines to define client systems:
+1.  Open `/etc/salt/roster` with an editor. Define the client systems, by adding the following lines to the file:
 
     This is an example of minimal host definition
 
@@ -62,9 +61,10 @@ Default location for roster file is `/etc/salt/roster`.
 
     {: .note}
     >
-    > Roster file keeps data in YAML format so be careful with the amount of spaces you use.
+    > The Roster file stores data in YAML format. Do not add unnecessary spaces to the config file. 
 
-2.  To set up access to minion using private key. If you already have your public key installed on minion and you have private key on master, add following lines:
+2.  If you have a public key stored on the minion, and a private key on the master system, you can configure access to a minion using a private key. For public key authentication, add the following lines to the Roster file:
+
     {: .file }
     /etc/salt/roster
     :  ~~~ config
@@ -77,11 +77,11 @@ Default location for roster file is `/etc/salt/roster`.
 
     {: .note}
     >
-    > Using ssh keys is much more safer way to access your minions, as you can avoid storing password in plaintext.
+    > Using SSH keys is the safest way to access your minions, because passwords are not being stored in plain text.
 
-3.  To set up connection to minion as a regular user, you will have to add a few extra lines. In this case Salt will leverage privileges via sudo. In order to achieve this set `sudo: True` option in roster file in your host definition. One important thing to consider is that by default sudo will only work when real user is logged in(and allocated with a tty). We can overcome this in 2 ways:
+3.  To set up connection to a minion as a regular user, you have to configure a few files. In this case Salt will leverage privileges via sudo. In order to use sudo, set `sudo: True` in the `host definition` section of the Roster file. By default sudo will only work when the real user is logged in over TTY. You can overcome this in 2 ways:
 
-    **a.** Disable tty check by commenting a line in sudoers file on your minion:
+    **a.** Disable the TTY check by commenting a line in the sudoers file on your minion:
 
     {: .file-excerpt}
     /etc/sudoers
@@ -89,7 +89,7 @@ Default location for roster file is `/etc/salt/roster`.
     # Defaults requiretty
        ~~~
 
-    **b.** Force tty allocation by setting up `tty: True` option in your roster file:
+    **b.** Force TTY allocation by setting the `tty: True` option in your Roster file:
 
     {: .file-excerpt}
     /etc/salt/roster
@@ -104,31 +104,31 @@ Default location for roster file is `/etc/salt/roster`.
 
     {: .note}
     >
-    > Permissions leverage via sudo works only if NOPASSWD option is set up for the user which will be used to connect to the minion in `/etc/sudoers`.
-    > More information on roster files can be found at [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster)
+    > Permissions leverage via sudo works only if the NOPASSWD option is set up for the user that is connecting to the minion in `/etc/sudoers`.
+    > More information on Roster files can be found in the [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster).
 
-4.  Check that master server have access to client using salt-ssh command:
+4.  Check that the master server has access to the client using the `salt-ssh` command:
 
         [root@master ~]# salt-ssh linode1 test.ping
 
-    You should see output similar to:
+    The output should be:
 
         linode1:
             True
 
     {: .note}
     >
-    > If SSH keys weren't deployed, you may face `The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:` message. In this case just run `salt-ssh` with -i flag. This key will let Salt automatically accept minion's public key. This has to be done only once, during initial SSH keys exchange.
+    > If SSH keys weren't deployed, you may recieve the `The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:` message. In this case just run `salt-ssh` with -i flag. This key will let Salt automatically accept a minion's public key. This has to be done only once, during the initial SSH keys exchange.
 
 ##Remote Command Execution via Salt SSH
 
-1.  You can execute any command on you minions via `cmd` execution module:
+1.  You can execute any command on your minions via the `cmd` execution module:
 
         [root@master ~]# salt-ssh linode1 cmd.run "du -sh /root"
             linode1:
                 15M /root
 
-2.  Salt SSH supports globbing and PCRE regular expressions. For example, if you would like to execute command on all minions, which names are starting from "linode":
+2.  Salt SSH supports globbing and PCRE regular expressions. For example, if you would like to execute command on all minions, whose names contain "linode":
 
         [root@master ~]# salt-ssh "linode*" cmd.run 'uname -r'
         linode1:
@@ -138,9 +138,9 @@ Default location for roster file is `/etc/salt/roster`.
 
     {: .note}
     >
-    > Salt SSH execute commands concurrently with a default of 25 max simultaneous connections.
+    > Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous connections.
 
-3.  It is possible to use any execution module with Salt SSH. With help of execution modules, we can easily install packages, control services, gather system information and many many more:
+3.  It is possible to use any execution module with Salt SSH. With execution modules, you can install packages, control services, gather system information, and much more. 
 
         [root@master ~]# salt-ssh linode1 pkg.install iftop
         linode1:
@@ -161,23 +161,23 @@ Default location for roster file is `/etc/salt/roster`.
 
     {: .note}
     >
-    > Full list of execution modules is available at [Execution modules documentation](https://docs.saltstack.com/en/latest/ref/modules/all/index.html).
+    > A full list of execution modules is available at [Execution modules documentation](https://docs.saltstack.com/en/latest/ref/modules/all/index.html).
 
 ##Installing Salt-Minion Remotely via Salt SSH
 
-An interesting use case for Salt SSH is automating installation of salt-minion using a simple Salt state.
+An interesting use case for Salt SSH is automating the installation of `salt-minion` using a simple Salt state.
 
 1.  Create directory which will contain your state:
 
         [root@master ~]# mkdir /srv/salt/install_salt_minion
 
-2.  Open `/srv/salt/install_salt_minion/init.sls` file and declare your state:
+2.  Open the `/srv/salt/install_salt_minion/init.sls` file and declare your state:
 
     {: .file-excerpt}
     /srv/salt/install_salt_minion/init.sls
     :   ~~~ config
         # This is a state which will install salt-minion on your hosts using Salt SSH
-        # It will install SaltStack repo, install salt-minion from that repo, enable and start salt-minion service and
+        # It will install the SaltStack repo, install salt-minion from that repo, enable and start the salt-minion service and
         # declare master in /etc/salt/minion file
         salt-minion:
             # Install SaltStack repo for RHEL/Centos systems
@@ -188,17 +188,17 @@ An interesting use case for Salt SSH is automating installation of salt-minion u
                 - gpgkey: https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
                 - gpgcheck: 1
                 - enabled: 1
-            # Install salt-minion package and all it's dependencies.
+            # Install the salt-minion package and all its dependencies.
             pkg:
                 - installed
                 # Require that SaltStack repo is set up before installing salt-minion.
                 - require:
                     - pkgrepo: salt-latest
-            # Start and enable salt-minion daemon.
+            # Start and enable the salt-minion daemon.
             service:
                 - running
                 - enable: True
-                # Require that salt-minion package is installed before starting daemon
+                # Require that the salt-minion package is installed before starting daemon
                 - require:
                     - pkg: salt-minion
                 # Restart salt-minion daemon if /etc/salt/minion file is changed
@@ -213,18 +213,18 @@ An interesting use case for Salt SSH is automating installation of salt-minion u
                     - master: <IPADDRESS OR HOSTNAME>
         ~~~
 
-3.  To apply this state, run following command:
+3.  To apply this state, run the following command:
 
         [root@master salt]#  salt-ssh linode2 state.apply install_salt_minion
 
-4.  Check that minion's key is pending for acceptance by using `salt-key` command:
+4.  Check that minion's key is pending for acceptance by using the `salt-key` command:
 
         [root@master salt]# salt-key -l un
         Unaccepted Keys:
             linode2
 
-5.  To complete minion's configuration, accept its public key by:
+5.  To complete the minion's configuration, accept its public key:
 
         [root@master salt]# salt-key -a linode2
 
-    Once minion key is accepted, minion is fully configured and ready for command execution.
+    Once the minion key is accepted, the minion is fully configured and ready for command execution.
