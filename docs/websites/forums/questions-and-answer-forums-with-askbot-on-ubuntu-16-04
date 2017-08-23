@@ -243,7 +243,7 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 
 1.  Now open web browser and type your **domain name** `example.com` OR **sub-domain** `www.example.com`. You need to replace `example.com` OR `www.example.com` with your domain name.
 
-![askbot-on-browser](/docs/assets/askbot-1.png)
+![access askbot on web browser](/docs/assets/askbot-1.png)
 	
 2.  After that hit on **create a password-protected account** to create an Admin Account
 
@@ -252,21 +252,21 @@ Press **CTRL+O** to write then hit **ENTER** to save the file then **CTRL+X** to
 {: .note}
 >  The First account created using above method will be treated as **admin account** rest of them are normal accounts.
 
-3.  Create Login name and password of your choice. In below replace **screen name** with your desired `username`, **Email Address** with your desired `email address`, **Password** with your desired `password` as per your choice:
+3.  Create a admin username and password of your choice. In below replace **screen name** with your desired `username`, **Email Address** with your desired `email address`, **Password** with your desired `password` as per your choice:
 
-![create a login name and password](/docs/assets/askbot-3.png)
+![create a admin username and password](/docs/assets/askbot-3.png)
 
 4.  Now set your domain name with Askbot using base url settings by hitting on **APP_URL** from Askbot app:
 
-![set askbot base url](/docs/assets/askbot-4.png)
+![set your domain name to askbot base url settings](/docs/assets/askbot-4.png)
 
 5.  In below Add your **domain name** `https://example.com/` OR **sub-domain** `https://www.example.com/` in the place of Base URL box after that hit on **Save** to save the configuration. In below you need to replace `https://example.com/` OR `https://www.example.com/` with your domain name.
 
-![add askbot base url](/docs/assets/askbot-5.png)
+![add your domain name to askbot base url settings](/docs/assets/askbot-5.png)
 
-6. Finally, Askbot is ready to run. Now get access to askbot admin interface customize it according to your usages. 
+6.  Finally, Askbot is ready to run. Now get access to askbot admin interface customize it according to your usages. 
 
-![access askbot forum](/docs/assets/askbot-6.png)
+![final access to askbot forum](/docs/assets/askbot-6.png)
 
 ##Next Steps
 
