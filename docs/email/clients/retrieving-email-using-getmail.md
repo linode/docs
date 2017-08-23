@@ -6,11 +6,11 @@ description: 'Configure getmail to download email from remote servers.'
 keywords: 'email,getmail,mda'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/getmail/']
-modified: Thursday, September 12th, 2013
+modified: Tuesday, August 22nd, 2017
 modified_by:
   name: Linode
 published: 'Monday, February 1st, 2010'
-title: Retrieving Email Using Getmail
+title: Retrieve Email Using Getmail
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'
@@ -18,11 +18,11 @@ external_resources:
  - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
-Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). It aims to provide a simple and efficient tool for downloading email from POP and IMAP servers. You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Courier](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
+Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). It aims to provide a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers. You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
 Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
 
-## Installing Getmail
+## Install Getmail
 
 Before proceeding, make sure your system is up to date. If you're using Arch or Gentoo, you'll want to refresh your repositories. If you're using Debian, Ubuntu, CentOS, or Fedora, you'll want to update your repositories and upgrade all packages to their latest versions. Select from the following commands, depending on what operating system you're running:
 
@@ -43,15 +43,17 @@ Gentoo:
 
     emerge --sync
 
-Since getmail is included by default in most distributions' software repositories, its installation is straightforward. Issue the following command to install getmail on Debian and Ubuntu systems:
+Since getmail is included by default in most distributions' software repositories, its installation is straightforward. Issue the following command to install getmail on:
+
+Debian or Ubuntu:
 
     apt-get install getmail4
 
-Issue the following command to install getmail on Gentoo systems:
+Gentoo:
 
     emerge getmail
 
-Issue the following command to install getmail on Arch Linux systems:
+Arch:
 
     pacman -S getmail
 
@@ -81,7 +83,7 @@ Lastly, install getmail using yum:
 
     yum install getmail
 
-With getmail installed successfully, we can begin to configure mail retrieval at this time.
+With getmail installed successfully, we can begin to configure mail retrieval.
 
 ## Basic Getmail Configuration
 
@@ -114,7 +116,7 @@ The following file provides a basic template for a getmail configuration file:
 
 In this example we see the following features:
 
--   Mail is downloaded using the POP3S, or POP3 with SSL method. Consider using the `SimpleIMAPSSLRetriever''" for IMAP with SSL mail accounts. If your mail server does not support SSL, use the "`SimplePOP3Retriever` or `SimpleIMAPRetriever\`\` types.
+-   Mail is downloaded using the POP3S, or POP3 with SSL method. Consider using the `SimpleIMAPSSLRetriever` for IMAP with SSL mail accounts. If your mail server does not support SSL, use the `SimplePOP3Retriever` or `SimpleIMAPRetriever` types.
 -   The mail server, port number, and log in credentials are specified in the `[retriever]` directive. In this case, the server is located at `pop.example.com` and runs on port `110`. The account credentials are for the user `foreman` with the password `s1d30fd4nc3r6`.
 -   The mail will be delivered into a `Maildir` formatted mailbox, located at `~/mail/`. Note that this will deliver mail into the `mail/` directory in the home directory (e.g. `/home/foreman/mail/`) of the user that runs `getmail`. Ensure that your Maildir exists before running `getmail` for the first time. Issue the following command to create a Maildir in `~/mail/` directory:
 
@@ -150,7 +152,7 @@ If you want to use an external program to filter the email retrieved from getmai
 
 In this example, when getmail retrieves mail, it is passed to `procmail` for additional filtering rather than delivered directly to a Maildir. Procmail, like other mail delivery agents (MDAs) performs additional filtering after mail has been retrieved and before it is delivered to a users' mail store. You may use getmail with any MDA of your choice.
 
-### Checking Multiple Email Accounts
+### Check Multiple Email Accounts
 
 If you want to retrieve mail from more than one server, create a getmail configuration file for each server that you need to download email from. Then, when you call getmail, issue the command in the following form.
 
@@ -158,7 +160,7 @@ If you want to retrieve mail from more than one server, create a getmail configu
 
 You can specify as many `rcfiles` as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the `~/.getmail/` directory. In the above example, the files `getmailrc0` and `getmailrc1` are located in the `~/.getmail/` directory. The final file is located in the `/home/foreman/mail` directory and is specified with an absolute path. In this manner you may specify as many accounts as you need, and organize your configuration files with whatever system makes the most sense in context of your deployment.
 
-### Checking Email Regularly Using Cron
+### Check Email Regularly Using Cron
 
 If you would like your system to check for email regularly, you can run the `getmail` command regularly with cron. For a more detailed explanation of cron, you may consider the [introduction to cron](/docs/linux-tools/utilities/cron) guide. To add the "cron job", issue the following command to edit your cronjobs:
 
