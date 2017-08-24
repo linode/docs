@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide explains how to setup a server on Debian/Ubuntu for the game Half-Life 2: Deathmatch'
-keywords: 'half-life 2,deathmatch,game,server,steam,steamcmd,sourcemod,metamod,bots'
+description: 'This guide explains how to host a Half-Life 2: Deathmatch server on a Linode running Debian or Ubuntu.'
+keywords: 'half-life 2,deathmatch,game,server,steam,steamcmd,hl2'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Thursday, August 17, 2017
 modified: Thursday, August 17, 2017
 modified_by:
   name: Linode
-title: 'Install Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
+title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
 contributor:
   name: Davide Beatrici
   link: https://github.com/davidebeatrici
@@ -38,7 +38,7 @@ This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://
         sudo iptables -R INPUT 5 -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
         sudo iptables -I INPUT 7 -p udp -m udp --dport 27000:27030 -j ACCEPT
 
-## Install the Server
+## Install the Steam Server
 
 1.  Execute `steamcmd`:
 
@@ -56,9 +56,9 @@ This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://
 
         quit
 
-Occasionally, SteamCMD encounters an unreported error but completes successfully. If the steps in the Run the Server section are not successful, repeat the installation process to retrieve all of the game data, then run the server again.
+Occasionally, SteamCMD encounters an unreported error, but completes successfully. If the steps in the Run the Server section are not successful, repeat the installation process to retrieve all of the game data, then run the server again.
 
-## Run the Server
+## Run the Steam Server
 
 1.  `cd` into the server folder:
 
@@ -88,7 +88,7 @@ Forcibly killing the server shouldn't be harmful, but it can cause data corrupti
 
 ### Run the Server within a Screen Socket
 
-To keep the server running, execute it using Screen:
+To keep the server running in the background, execute it using Screen:
 
     screen ./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff
 
@@ -98,7 +98,7 @@ To exit the screen:
 
 For more information on Screen sockets, visit our guide on [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
 
-### Autostart with screen script
+### Autostart with a Screen Script
 
 This script automatically starts your server in a Screen session.
 
@@ -121,7 +121,7 @@ This script automatically starts your server in a Screen session.
 
         ./run.sh
 
-## Configure the server
+## Configure the Steam Server
 
 The `server.cfg` file contains the settings of your server. It is not present by default because you can start the server using the parameters from the command line.
 
@@ -202,7 +202,7 @@ Below is a sample server configuration:
   sv_password "MyLinode"
   ~~~
 
-## Maps
+## Custom Half-Life 2 Maps
 
 There are 8 official maps in Half-Life 2: Deathmatch. A preview of each map is available on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps):
 
@@ -278,7 +278,7 @@ To add a custom map to the rotation:
   dm_underpass
   ~~~
 
-## Connect to your server
+## Play Half-Life 2 on your Own Server
 
 1.  Open Half-Life 2 Deathmatch, and click **FIND SERVERS**:
 
