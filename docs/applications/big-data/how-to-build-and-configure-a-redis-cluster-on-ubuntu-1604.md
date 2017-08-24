@@ -45,7 +45,7 @@ Depending on your version of Linux, it may be possible to install Redis through 
 
         make test
 
-    If installation is successful, you should see the console output:
+    If installation is successful, the console will output:
 
     >\o/ All tests passed without errors!
 
@@ -97,7 +97,7 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
      cluster-node-timeout 15000
      ~~~
 
-4. Repeat this process across the remaining two Linodes taking care to specify the correct IP and port number for all master slave pairs.
+4. Repeat this process across the remaining two Linodes taking care to specify the port numbers for all master slave pairs.
 
     {: .table .table-striped .table-bordered}
     | Server | Master | Slave | 
@@ -185,7 +185,7 @@ The `redis-trib` tool can also be used to add new nodes to the cluster. Using th
 
 1.  Connect the slave to a given master using `add-note` and a specified `master_id`.
 
-        ./redis-trib.rb add node --slave --master-id [master_id_c] ip.of.server1:6381 ip.of.server3:6381
+        ./redis-trib.rb add-node --slave --master-id [master_id_c] ip.of.server1:6381 ip.of.server3:6381
 
     The resulting output should be:
 
