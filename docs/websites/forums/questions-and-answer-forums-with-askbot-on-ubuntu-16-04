@@ -116,6 +116,9 @@ external_resources:
 
 ## Deploy Askbot with Letsencrypt SSL
 
+{: .note}
+>In this guide replace each instance of `example.com` and `www.example.com` with your site's domain name.
+
 1.  We passed **Gunicorn** a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/example_user/askbot/wsgi.py` is the location of **wsgi.py** file.
 
 	nano /home/example_user/askbot/wsgi.py 
@@ -199,7 +202,7 @@ server {
         listen 443;
         server_name example.com www.example.com;
         
-	ssl on;
+	 ssl on;
         ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
         ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
