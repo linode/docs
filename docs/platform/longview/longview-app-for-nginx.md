@@ -119,7 +119,7 @@ Click the image for a full-size view.
 
 You'll see the current version of Nginx listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](longview#sph_using-the-interface). The next sections cover the Longview Nginx App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](longview#using-the-interface). The next sections cover the Longview Nginx App in detail.
 
 ### Requests
 
