@@ -38,7 +38,7 @@ This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://
         sudo iptables -R INPUT 5 -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
         sudo iptables -I INPUT 7 -p udp -m udp --dport 27000:27030 -j ACCEPT
 
-## Install the Steam Server
+## Install Server Using SteamCMD
 
 1.  Execute `steamcmd`:
 
@@ -78,7 +78,7 @@ Occasionally, SteamCMD encounters an unreported error, but completes successfull
 
         For more parameter options, visit the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 
-### Stop the server
+### Stop the Server
 
 To stop the server, hold the **CTRL** key on your keyboard and press **C** (**CTRL+C**). The output will resemble:
 
@@ -121,7 +121,7 @@ This script automatically starts your server in a Screen session.
 
         ./run.sh
 
-## Configure the Steam Server
+## Configure the Half-Life 2 Server
 
 The `server.cfg` file contains the settings of your server. It is not present by default because you can start the server using the parameters from the command line.
 
