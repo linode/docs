@@ -161,4 +161,14 @@ Solr listens on port 8983 by default, and it must be opened to allow access to t
 {: .note}
 > Don't forget to save your Iptables rule using *iptables-persistent*, otherwise it will be lost following an ensuing server reboot.
 
-## 
+## Access The Solr Admin Page
+
+Solr is managed from a web-facing administration page, which can be reached via your Linode's IP address or domain name on port 8983.
+
+1. In a web browser, enter your Linode's IP address or domain name, followed by port 8983.
+
+    **Example**
+
+        192.168.0.101:8983/solr
+
+2. 
