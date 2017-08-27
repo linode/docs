@@ -2,7 +2,7 @@
  author:
  name: Linode Community
  email: docs@linode.com
-description: ‘The Apache Solr search platform provides web administrators with a customizable and scalable open source solution for managing online content.
+description: ‘The Apache Solr search platform provides web administrators with a customizable and scalable open source solution for managing online content. Solr indexes all uploaded data, resulting in extremely fast search results, whether used enterprise-wide or with a single website. In addition to a built in web control interface, programmers can can also link access via client API's provided for several different languages.
 keywords: 'vim, editor'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published:
@@ -14,7 +14,7 @@ contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
-  - '[Solr resources page](https://lucene.apache.org/solr/resources.html)'
+  - '[Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -244,4 +244,4 @@ Here, `admin:` yields a username of "admin" with a password of "admin123". `user
 
 # Where to Go From Here
 
-With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application/website. If you need help with this, the [resources](https://lucene.apache.org/solr/resources.html) page on the Apache Solr website is a great place to start.
+With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application/website. If you need help with this, the [Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/) page on the Apache Solr website is a great place to start. 
