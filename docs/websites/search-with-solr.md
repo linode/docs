@@ -171,7 +171,7 @@ Solr is managed from a web-facing administration page, which can be reached via 
 
         192.168.0.101:8983/solr
 
-### Secure The Solr Admin Page
+## Secure The Solr Admin Page
 
 The Solr admin page is not secure by default, so setting up a password protected login page is recommended.
 
