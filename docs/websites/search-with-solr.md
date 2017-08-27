@@ -171,4 +171,76 @@ Solr is managed from a web-facing administration page, which can be reached via 
 
         192.168.0.101:8983/solr
 
-2. 
+### Secure The Solr Admin Page
+
+The Solr admin page is not secure by default, so setting up a password protected login page is recommended.
+
+1. Navigate to `/opt/solr/server/etc` and edit the `webdefault.xml` file, adding the below content to the very end of the file, right before `</web-app>`.
+
+{: .file}
+**/opt/solr/server/etc/webdefault.xml**
+~~~
+. . . 
+
+  <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>Solr Admin Auth</realm-name>
+  </login-config>
+
+  <security-constraint>
+        <web-resource-collection>
+              <web-resource-name>Solr Admin Auth</web-resource-name>
+              <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+              <role-name>user</role-name>
+        </auth-constraint>
+  </security-constraint>
+
+. . . 
+~~~
+
+2. In the same directory, edit the `jetty.xml` file and add the below content at the very end of the file, right before `</Configure>`.
+
+{: .file}
+**/opt/solr/server/etc/jetty.xml**
+~~~
+. . . 
+
+ <Call name="addBean">
+    <Arg>
+     <New class="org.eclipse.jetty.security.HashLoginService">
+      <Set name="name">Solr Admin Auth</Set>
+      <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+      <Set name="refreshInterval">0</Set>
+     </New>
+   </Arg>
+ </Call>
+
+. . . 
+~~~
+
+3. Create a `realm.properties` file in the current directory to add the user login information.
+
+{: .file}
+**/opt/solr/server/etc/realm.properties**
+~~~
+admin: admin123,user
+~~~
+
+Here, `admin:` yields a username of "admin" with a password of "admin123". `user` attributes this new user to the "user" role-name set in `webdefault.xml`. You may also configure this file with your own chosen username and password. 
+
+4. Restart the solr service.
+
+        systemctl restart solr
+
+5. Now when accessing the Solr admin page, authentication will be required before you can proceed. If desired, you may also use this process to secure other web pages within Solr. For example, if you have two Solr search cores created, "core1" and "core2", you can limit access to both using the following format:
+
+    1. Add additional `<url-pattern>` lines to `webdefault.xml`.
+    
+            <url-pattern>/core1/*</url-pattern> 
+            <url-pattern>/core2/*</url-pattern> 
+
+# Where to Go From Here
+
+With Solr installed on your Linode, 
