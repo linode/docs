@@ -14,6 +14,7 @@ contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
+  - '[Solr resources page](https://lucene.apache.org/solr/resources.html)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -243,4 +244,4 @@ Here, `admin:` yields a username of "admin" with a password of "admin123". `user
 
 # Where to Go From Here
 
-With Solr installed on your Linode, 
+With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application/website. If you need help with this, the [resources](https://lucene.apache.org/solr/resources.html) page on the Apache Solr website is a great place to start.
