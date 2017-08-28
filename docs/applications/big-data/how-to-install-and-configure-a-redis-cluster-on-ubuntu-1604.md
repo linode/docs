@@ -2,7 +2,7 @@
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Set up a Redis cluster using three Linode servers and promoting a slave to become a master node'
+description: 'Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide.'
 keywords: 'redis cluster installation,data store,cache,sharding'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['applications/big-data/redis-cluster']
@@ -10,14 +10,16 @@ modified: Monday, August 14th, 2017
 modified_by:
   name: Linode 
 published: 'Monday, August 14th, 2017'
-title: 'How to Install and Configure a Redis Cluster'
+title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
  - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7)'
 ---
 
 
-Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then we will observe how a slave will be promoted to a master in the event of a failure. Prior to starting, we recommend knowledge of:
+Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure. 
+
+Prior to starting, we recommend you familiarize yourself with the following:
 
  * [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw)
  * [Master/Slave Replication ](/docs/databases/redis/deploy-redis-on-ubuntu-or-debian)
@@ -34,7 +36,7 @@ Depending on your version of Linux, it may be possible to install Redis through 
     >
     >Alternatively, you could use `build-essential` to load the dependencies for Redis.
 
-2.  From the documentation, download the current stable branch then extract:
+2.  From the documentation, download the current stable branch, then extract:
 
         wget http://download.redis.io/redis-stable.tar.gz
         tar xvzf redis-stable.tar.gz
@@ -49,7 +51,7 @@ Depending on your version of Linux, it may be possible to install Redis through 
 
     >\o/ All tests passed without errors!
 
-4.  Repeat installation for all servers to be part of the cluster.
+4.  Repeat installation for each and every server that will be part of the cluster.
 
 ## Configure Master and Slave Nodes
 This guide manually connects each master and slave across three Linodes. Consider using [tmux](https://github.com/tmux/tmux) for management of multiple terminal windows.
@@ -58,7 +60,7 @@ Although the official documentation recommends creating six nodes, this guide wi
 
 ![Figure demonstrating master-slave across three servers](/docs/assets/redis_cluster_3_nodes.png)
 
-This setup uses three Linodes running two instances of Redis server per Linode. Ensure each host is independent and consider using additional nodes if there is a need to maintain uptime requirements.
+This setup uses three Linodes running two instances of Redis server per Linode. You muist ensure each host is independent, and then consider using additional nodes if there is a need to maintain uptime requirements.
 
 1.  SSH into **server 1**. Navigate to `redis-stable/` then copy `redis.conf`. Configuration files in this guide are named consistent with the figure above:
 
@@ -80,10 +82,10 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
      ~~~
 
    {: .caution}
-   >A node in the Redis cluster requires a defined port and a port +10000 higher. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.
+   >A node in the Redis cluster requires a defined port and a port higher than 10000. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.
    >
 
-3. In `c_slave.conf`, the configuration will be similar except updating the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master rather than the `slaveof` directive.
+3. In `c_slave.conf`, the configuration will be similar except for an update of the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master, rather than the `slaveof` directive.
 
    {:.file }
    /redis-stable/c_slave.conf
@@ -97,7 +99,7 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
      cluster-node-timeout 15000
      ~~~
 
-4. Repeat this process across the remaining two Linodes taking care to specify the port numbers for all master slave pairs.
+4. Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
 
     {: .table .table-striped .table-bordered}
     | Server | Master | Slave | 
@@ -114,7 +116,7 @@ Master/slave replication can be achieved across three nodes by running two insta
         redis-server redis-stable/a_master.conf
         redis-server redis-stable/c_slave.conf
 
-2. Substitute `a_master.conf` and `c_slave.conf`  with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
+2. Substitute `a_master.conf` and `c_slave.conf` with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
 
    {: .file}
    Server 1
@@ -139,9 +141,9 @@ Master/slave replication can be achieved across three nodes by running two insta
       ~~~
 
 ## Create Cluster Using Built-In Ruby Script
-At this point, there are two independent master nodes on each Linode. The Redis installation comes with a Ruby script located in `~/redis-stable/src/` that can help create and manage a cluster.
+At this point, each Linode hosts two independent master nodes. The Redis installation comes with a Ruby script located in `~/redis-stable/src/` that can help create and manage a cluster.
 
-1.  If Ruby is not already installed, it can be found in your package manager..
+1.  If Ruby is not already installed, it can be found in your package manager:
 
         sudo apt install ruby
 
@@ -153,7 +155,7 @@ At this point, there are two independent master nodes on each Linode. The Redis 
 
         redis-stable/src/redis-trib.rb create ip.of.server1:6379 ip.of.server2:6380 ip.of.server3:6381
 
-4.  Accept the configuration with three masters. Successful setup of the cluster will return the following message:
+4.  Accept the configuration with three masters. Successful set up of the cluster will return the following message:
 
         >>>Creating cluster
         >>>Performing hash slots allocation on 3 nodes...
@@ -172,7 +174,7 @@ At this point, there are two independent master nodes on each Linode. The Redis 
         redis-cli -c -h ip.of.server1 -p 6379
         ip.of.server1>CLUSTER NODES
 
-    This will return a list of nodes currently in the cluster identified by their id and slaves if any exist. To leave the interface, enter `exit`.
+    This will return a list of nodes currently in the cluster identified by their i.d. and slaves - if any exist. To leave the interface, click on `exit`.
 
         ip.of.server1>exit
 
@@ -181,7 +183,7 @@ At this point, there are two independent master nodes on each Linode. The Redis 
     >Redis keywords are not case sensitive. However, they are written as all capitals in this guide for clarity.
 
 ## Add Slaves
-The `redis-trib` tool can also be used to add new nodes to the cluster. Using the remaining three nodes, we can manually add them to the selected master.
+The `redis-trib` tool can also be used to add new nodes to the cluster. Using the remaining three nodes, you can manually add them to the selected master.
 
 1.  Connect the slave to a given master using `add-note` and a specified `master_id`.
 
@@ -214,13 +216,13 @@ The `redis-trib` tool can also be used to add new nodes to the cluster. Using th
         ./redis-trib.rb add-node --slave --master-id [master_id_b] ip.of.server3:6380 ip.of.server2:6380
 
 ## Add Key-Value Pairs and Sharding
-The command line interface offers a way to `SET` and `GET` keys in addition to returning information about the cluster. On your local computer, we can connect to any of the master nodes to explore some properties of a Redis cluster.
+The command line interface offers a way to `SET` and `GET` keys, in addition to returning information about the cluster. On your local computer, you can connect to any of the master nodes and explore some properties of a Redis cluster.
 
-1.  Repeat the installation of Redis on your local computer if needed. Check firewall settings allow communicating with the master nodes.
+1.  Repeat the installation of Redis on your local computer, if needed. Check that firewall settings allow communicating with the master nodes.
 
         redis-cli -c -h ip.of.server1 -p 6379
 
-2.  Use the `CLUSTER INFO` command to see information about the state of the cluster such as size, hash slots, and failures if any.
+2.  Use the `CLUSTER INFO` command to see information about the state of the cluster such as size, hash slots, and failures, if any.
 
         ip.of.server1:6379>CLUSTER INFO
         cluster_state:ok
@@ -256,7 +258,7 @@ The command line interface offers a way to `SET` and `GET` keys in addition to r
         repl_backlog_first_byte_offset:197313
         repl_backlog_histlen:16043
 
-4.  To demonstrate sharding, we can set a few example key-value pairs. Setting a key will redirect the value to a hash slot among the three master nodes. 
+4.  To demonstrate sharding, you can set a few example key-value pairs. Setting a key will redirect the value to a hash slot among the three master nodes. 
 
         ip.of.server1:6379> SET John Adams
         -> Redirected to slot [6852] located at ip.of.server2:6380
@@ -273,7 +275,7 @@ The command line interface offers a way to `SET` and `GET` keys in addition to r
         ip.of.server2:6380>
 
 ## Promote Slave to Master
-Based on the current topology, the cluster will remain online if one of the Linodes fail. We expect a slave to promote into a master with the data replicated.
+Based on the current topology, the cluster will remain online if one of the Linodes fails. At that point, you can expect a slave to promote into a master with the data replicated.
 
 ![Figure demonstrating server3 failure](/docs/assets/redis_cluster_server_fail.png)
 
@@ -303,7 +305,7 @@ Based on the current topology, the cluster will remain online if one of the Lino
         -> Redirected to slot [12182] located at ip.of.server1:6381
         "bar"
 
-Remember to ensure [firewall settings are adequate for all Redis instances](http://antirez.com/news/96). There is additional functionality such as adding additional nodes, multiple slaves, or resharding which are beyond the scope of this guide. For more guidance, consult the official documentation for how implement these features.
+Remember to ensure [firewall settings are adequate for all Redis instances](http://antirez.com/news/96). There is supplemental functionality, such as adding additional nodes, creating multiple slaves, or resharding, which are beyond the scope of this document. For more guidance, consult the official Redis documentation for how to implement these features.
 
 
 
