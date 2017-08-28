@@ -18,6 +18,8 @@ external_resources:
 
 Jupyter Notebook is an interactive enhanced shell that can be run in the web browser that is popular among data scientists. The Notebook supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to setup a public Jupyter Notebook server on a Linode to allow access to your computation needs remotely using Apache as a reverse proxy. 
 
+![Jupyter Notebook](/docs/assets/jupyter_notebook.png)
+
 ## Before You Begin
 
 You will need:
