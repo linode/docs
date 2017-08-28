@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configure getmail to download email from remote servers.'
+description: 'This guide shows how-to configure getmail to download email from remote servers.'
 keywords: 'email,getmail,mda'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/getmail/']
@@ -18,7 +18,9 @@ external_resources:
  - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
-Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). It aims to provide a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers. You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
+Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers. 
+
+You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
 Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
 
@@ -83,11 +85,11 @@ Lastly, install getmail using yum:
 
     yum install getmail
 
-With getmail installed successfully, we can begin to configure mail retrieval.
+With getmail installed successfully, you can begin to configure mail retrieval.
 
 ## Basic Getmail Configuration
 
-All getmail configuration occurs in the `.getmail/` folder of the user's home directory. The configuration is stored in a `getmailrc` file. If you need to check multiple accounts, specify each account as a file beneath the `~/.getmail/` directory. Create the required directories and files, and set their permissions with the following commands:
+All getmail configuration occurs in the `.getmail/` folder in the user's home directory. The configuration is stored in a `getmailrc` file. If you need to check multiple accounts, specify each account as a file beneath the `~/.getmail/` directory. Create the required directories and files, and set their permissions with the following commands:
 
     mkdir ~/.getmail/
     chmod 700 ~/.getmail/
@@ -127,7 +129,7 @@ In this example we see the following features:
 -   The option `delete = true` tells getmail to remove the mail from the server after it retrieves messages. If you would like to simply copy the messages from the server and leave them intact on the server set this value to `false`.
 -   A log of getmail operations is logged at `~/.getmail/log-foreman-example` in the home directory of the user who executes getmail.
 
-Modify the required options to suit the needs of your desired deployment. This includes: retriever type, server information, authentication credentials, mailbox destinations, and log locations. When your `~/.getmail/getmailrc` configuration is complete, you can run getmail by issuing the following command at a regular user prompt:
+Modify the required options to suit the needs of your desired deployment. This includes: retriever type, server information, authentication credentials, mailbox destinations and log locations. When your `~/.getmail/getmailrc` configuration is complete, you can run getmail by issuing the following command at a regular user prompt:
 
     getmail
 
@@ -135,9 +137,9 @@ Congratulations! You've successfully configured getmail in a basic mail delivery
 
 ## Advanced Getmail Configuration
 
-Getmail is capable of delivering mail in a number of different situations beyond just downloading email from a single mail account. This section provides an overview of a number of more advanced uses of getmail.
+Getmail is capable of delivering mail in a number of different situations beyond just downloading email from a single mail account. This section provides an overview of several more advanced uses of getmail.
 
-### Using an External Filtering Utility
+### Use an External Filtering Utility
 
 If you want to use an external program to filter the email retrieved from getmail, modify the destination configuration options in the `getmailrc` file to resemble the following:
 
@@ -150,15 +152,17 @@ If you want to use an external program to filter the email retrieved from getmai
     arguments = ("-f", "%(sender)")
     ~~~
 
-In this example, when getmail retrieves mail, it is passed to `procmail` for additional filtering rather than delivered directly to a Maildir. Procmail, like other mail delivery agents (MDAs) performs additional filtering after mail has been retrieved and before it is delivered to a users' mail store. You may use getmail with any MDA of your choice.
+In this example, when getmail retrieves mail, it is passed to `procmail` for additional filtering rather than delivering directly to a Maildir. Procmail, like other mail delivery agents (MDAs) performs additional filtering after mail has been retrieved and before it is delivered to a users' mail store. You may use getmail with any MDA of your choice.
 
 ### Check Multiple Email Accounts
 
-If you want to retrieve mail from more than one server, create a getmail configuration file for each server that you need to download email from. Then, when you call getmail, issue the command in the following form.
+If you want to retrieve mail from more than one server, create a getmail configuration file for each server from which you need to download email. Then, when you call getmail, issue the command in the following form:
 
     getmail --rcfile getmailrc0 --rcfile getmailrc1 --rcfile /home/foreman/mail/getmailrc
 
-You can specify as many `rcfiles` as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the `~/.getmail/` directory. In the above example, the files `getmailrc0` and `getmailrc1` are located in the `~/.getmail/` directory. The final file is located in the `/home/foreman/mail` directory and is specified with an absolute path. In this manner you may specify as many accounts as you need, and organize your configuration files with whatever system makes the most sense in context of your deployment.
+You can specify as many `rcfiles` as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the `~/.getmail/` directory. In the above example, the files `getmailrc0` and `getmailrc1` are located in the `~/.getmail/` directory. 
+
+The final file is located in the `/home/foreman/mail` directory and is specified with an absolute path. In this manner you may specify as many accounts as you need, and organize your configuration files with whatever system makes the most sense in context of your deployment.
 
 ### Check Email Regularly Using Cron
 
@@ -174,4 +178,4 @@ crontab
 	*/5 * * * * getmail --quiet
     ~~~
 
-Adding this line will cause getmail to retrieve new mail as specified in the `~/.getmail/getmailrc` file every five minutes. The `quiet` flag suppresses all non-error output, which is desirable when running in a "daemon" mode. You may specify any options for the cronjob that you can specify on the command line, including multiple `getmailrc` files. When the crontab is properly configured, save the file. Getmail will now retrieve new mail every five minutes as specified in the appropriate `getmailrc` files.
+Adding this line will cause getmail to retrieve new mail as specified in the `~/.getmail/getmailrc` file every five minutes. The `quiet` flag suppresses all non-error output, which is desirable when running in a "daemon" mode. You may specify any option for the cronjob that you can specify on the command line, including multiple `getmailrc` files. After the crontab is properly configured, save the file. Getmail will now retrieve new mail every five minutes as specified in the appropriate `getmailrc` files.
