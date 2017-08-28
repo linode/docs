@@ -2,29 +2,32 @@
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com
-description: 'Salt SSH will allow you to manage your minions without having to install salt-minion agent. Learn how to configure and use Salt SSH in this simple tutorial'
-keywords: 'Saltstack, salt, salt-ssh, roster'
+description: 'Learn how to configure and use Salt SSH in this simple tutorial'
+keywords: 'Saltstack, salt, salt-ssh'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, July 25, 2017'
 modified: 'Tuesday, August 15th, 2017'
 modified_by:
   name: Linode
-title: 'Configuring and Using Salt SSH to Manage Your Linodes'
+title: 'Configure and Use Salt SSH to Manage Your Linodes'
 contributor:
   name: Sergey Bulavintsev
 ---
 
-#Introduction
-Salt-ssh allows you to execute Salt commands, or states, without installing a salt-minion package.
-During execution, salt-ssh will copy necessary files to the target system's `/tmp` folder with SSH. Then execute commands, and clean up salt temporary files.
-Be aware that Salt SSH is slower than standard Salt with ZeroMQ because it uses SSH.
+#Introduction to Salt SSH
+
+Salt SSH allows you to execute Salt commands, or states, without installing a salt-minion package.
+
+During execution, Salt SSH will copy necessary files to the target system's `/tmp` folder with SSH, then execute commands, and finally clean up Salt temporary files.
+
+Please note: Because it uses SSH, Salt SSH is slower than standard Salt with ZeroMQ.
 
 
 #Before You Begin
 
-1.  This guide assumes that you're using an rpm based (CentOS, RedHat, Oracle Enterprise Linux) system.
+1.  This guide assumes that you're using an rpm-based system (CentOS, RedHat, Oracle Enterprise Linux) .
 
-2.  Make sure that you have the `salt` and `salt-ssh` packages installed on your master. Check if these packages are installed by executing:
+2.  Make sure that you have the `salt` and `salt-ssh` packages installed on your master. Check if these packages are installed: 
 
         $rpm -q salt
         $rpm -q salt-ssh
@@ -33,11 +36,11 @@ Be aware that Salt SSH is slower than standard Salt with ZeroMQ because it uses 
     >
     > For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](https://www.linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
 
-3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run salt-ssh in raw mode. In raw mode, a raw shell command cannot use execution modules or apply salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems
+3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run Salt SSH in raw mode. In raw mode, a raw shell command cannot use execution modules or apply Salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems
 
 4.  You must have at least one master server and one minion (client).
 
-##Set up Salt Roster file
+##Set Up Salt Roster File
 
 The Roster file contains target system information, connection details and credentials. 
 The Default location for the Roster file is: `/etc/salt/roster`.
@@ -77,9 +80,9 @@ The Default location for the Roster file is: `/etc/salt/roster`.
 
     {: .note}
     >
-    > Using SSH keys is the safest way to access your minions, because passwords are not being stored in plain text.
+    > Using SSH keys is the safest way to access your minions because passwords are not being stored in plain text.
 
-3.  To set up connection to a minion as a regular user, you have to configure a few files. In this case Salt will leverage privileges via sudo. In order to use sudo, set `sudo: True` in the `host definition` section of the Roster file. By default sudo will only work when the real user is logged in over TTY. You can overcome this in 2 ways:
+3.  To set up connection to a minion as a regular user, you have to configure a few files. In this case Salt will leverage privileges via sudo. In order to use sudo, set `sudo: True` in the `host definition` section of the Roster file. By default sudo will only work when the real user is logged in over TTY. You can overcome this in two ways:
 
     **a.** Disable the TTY check by commenting a line in the sudoers file on your minion:
 
@@ -118,7 +121,7 @@ The Default location for the Roster file is: `/etc/salt/roster`.
 
     {: .note}
     >
-    > If SSH keys weren't deployed, you may recieve the `The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:` message. In this case just run `salt-ssh` with -i flag. This key will let Salt automatically accept a minion's public key. This has to be done only once, during the initial SSH keys exchange.
+    > If SSH keys weren't deployed, you may receive the `The host key needs to be accepted, to auto accept run salt-ssh with the -i flag:` message. In this case just run `salt-ssh` with -i flag. This key will let Salt automatically accept a minion's public key. This has to be done only once, during the initial SSH keys exchange.
 
 ##Remote Command Execution via Salt SSH
 
@@ -163,11 +166,11 @@ The Default location for the Roster file is: `/etc/salt/roster`.
     >
     > A full list of execution modules is available at [Execution modules documentation](https://docs.saltstack.com/en/latest/ref/modules/all/index.html).
 
-##Installing Salt-Minion Remotely via Salt SSH
+##Install Salt-Minion Remotely via Salt SSH
 
 An interesting use case for Salt SSH is automating the installation of `salt-minion` using a simple Salt state.
 
-1.  Create directory which will contain your state:
+1.  Create the directory which will contain your state:
 
         [root@master ~]# mkdir /srv/salt/install_salt_minion
 
