@@ -2,7 +2,7 @@
 author:
     name: Sam Foo 
     email: docs@linode.com
-description: 'Install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
+description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
 keywords: 'Apache2,Jupyter notebook,SSL,websocket'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Wednesday, August 22, 2017'
@@ -16,20 +16,20 @@ external_resources:
  - '[Certbot](https://certbot.eff.org/)'
 ---
 
-Jupyter Notebook is an interactive enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure a public Jupyter Notebook server on a Linode to allow access to your computation needs remotely using Apache as a reverse proxy. 
+Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy. 
 
 ## Before You Begin
 
-This guide is written for Linodes running Ubuntu 16.04. You should:
+Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and log into your server via SSH.
 2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
 
 ## Install Anaconda Package Manager
 
-Anaconda is a package manager with built-in support for virtual environments. It comes with an installation of Jupyter notebooks and is recommended by Jupyter's official documentation.
+Anaconda is a package manager with built-in support for virtual environments. It comes with each installation of Jupyter Notebook and is recommended by Jupyter's official documentation.
 
-1.  SSH into your Linode and install the latest version of Anaconda. The example below downloads the version of Anaconda with Python 3.6, but Python 2.7 is also available:
+1.  SSH into your Linode and install the latest version of Anaconda. The example below downloads the version of Anaconda with Python 3.6 (but Python 2.7 is also available):
 
         wget https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
 
@@ -45,13 +45,13 @@ Anaconda is a package manager with built-in support for virtual environments. It
 
 ## Create a Self-Signed Certificate
 
-The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the notebook from the browser. This is especially important because Jupyter notebooks can run bash scripts. If you have a domain name, consider using [Certbot](https://certbot.eff.org/#ubuntuxenial-apache) rather than a self-signed certificate.
+The official documentation recommends generating a self-signed SSL certificate to prevent sending unencrypted passwords in the Notebook from the browser. This is especially important because Jupyter Notebooks can run bash scripts. If you have a domain name, consider using [Certbot](https://certbot.eff.org/#ubuntuxenial-apache) rather than a self-signed certificate.
 
 1.  Create a self-signed certificate valid for 365 days:
 
         openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem 
 
-    This command will create a `mykey.key` and `mycert.pem`
+    This command will create a `mykey.key` and `mycert.pem`.
 
 2.  Restrict the files to only be read by the owner:
 
@@ -158,7 +158,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
         sudo service apache2 restart
 
-8.  Start the Jupyter notebook:
+8.  Start the Jupyter Notebook:
 
         jupyter notebook
 
@@ -168,7 +168,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
     ![OpenSSL Browser Error](/docs/assets/jupyter-add-exception.png)
 
-2.  If Apache is configured properly, Jupyter prompts you to login:
+2.  If Apache is configured properly, Jupyter prompts you to log in:
 
     ![Jupyter Login Page](/docs/assets/jupyter-login-page.png)
 
@@ -176,9 +176,9 @@ The official documentation recommends generating a self-signed SSL certificate t
 
     ![Jupyter Python Kernel](/docs/assets/jupyter-new-notebook.png)
 
-4.  The notebook is ready to run Python code or additional kernels added in the future:
+4.  The Notebook is ready to run Python code or additional kernels added in the future:
 
     ![Jupyter Notebook Code](/docs/assets/jupyter-code-sample.png)
 
-Note this setup is for a single-user only; simultaneous users on the same notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.
+Note this setup is for a single-user only; simultaneous users on the same Notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.
 
