@@ -23,3 +23,4 @@ Thumbs.dbi
 \#*\#
 *.elc
 .\#*
+*.sublime-workspace
