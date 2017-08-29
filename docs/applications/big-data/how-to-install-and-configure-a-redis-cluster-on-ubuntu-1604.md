@@ -60,7 +60,7 @@ Although the official documentation recommends creating six nodes, this guide wi
 
 ![Figure demonstrating master-slave across three servers](/docs/assets/redis_cluster_3_nodes.png)
 
-This setup uses three Linodes running two instances of Redis server per Linode. You muist ensure each host is independent, and then consider using additional nodes if there is a need to maintain uptime requirements.
+This setup uses three Linodes running two instances of Redis server per Linode. You must ensure each host is independent, and then consider using additional nodes if there is a need to maintain uptime requirements.
 
 1.  SSH into **server 1**. Navigate to `redis-stable/` then copy `redis.conf`. Configuration files in this guide are named consistent with the figure above:
 
