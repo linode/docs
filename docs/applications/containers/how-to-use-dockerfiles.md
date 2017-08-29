@@ -5,13 +5,13 @@ author:
 contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
-description: 'This guide introduces Dockerfiles and how to use them on your Linode.'
+description: 'This guide introduces Dockerfiles and how to use them to build a Docker Image on your Linode.'
 keywords: 'docker,container,dockerfile'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, August 11, 2017
+modified: Friday, August 29, 2017
 modified_by:
   name: Linode
-published: 'Friday, August 4, 2017'
+published: 'Friday, August 11, 2017'
 title: 'How to Use Dockerfiles'
 external_resources:
  - '[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
@@ -97,7 +97,7 @@ To build three images using the same Dockerfile, give each image a new name. In 
     docker build -t “webdev2:Dockerfile” .
     docker build -t “webdev3:Dockerfile” .
 
-Each image created will will be tagged `Dockerfile`. To change the tag during build, change `Dockerfile`:
+Each image created will be tagged `Dockerfile`. To change the tag during build, change `Dockerfile`:
 
     docker build -t “debian-webdev3:dev” .
 
