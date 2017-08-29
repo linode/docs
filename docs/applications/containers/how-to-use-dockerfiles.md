@@ -5,7 +5,7 @@ author:
 contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
-description: 'An introduction to using Dockerfiles on your Linode.'
+description: 'This guide introduces Dockerfiles and how to use them on your Linode.'
 keywords: 'docker,container,dockerfile'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, August 11, 2017
@@ -22,8 +22,9 @@ external_resources:
 
 ![How to Use Dockerfiles](/docs/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
 
-[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same multiple virtual machines.
-Use a Dockerfile to automate installing and configuring an image and its dependencies.
+[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
+
+You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
 
 ## Dockerfile Basics
 
@@ -48,13 +49,13 @@ A Dockerfile uses the following commands for building the images:
 *  **VOLUME**: Enable access from the container to a directory on the host machine.
 *  **WORKDIR**: Set the path where the command, defined with CMD, is to be executed.
 
-Not every command must be used. Create a working Dockerfile example in the following section.
+Not every command must be used. You will create a working Dockerfile example in the following section.
 
 ## Create a Dockerfile
 
 Dockerfiles require specific setup and format with no extra spaces.
 
-Docker reuses cache from the previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
+Docker reuses cache from the previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid other caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
 
 Note that in the example below, multiple packages are installed on separate lines. This optional step is recommended by the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments) in order to ease future updates and maintenance.
 
@@ -86,7 +87,7 @@ Note that in the example below, multiple packages are installed on separate line
 
 ## Build a Docker Image from the Dockerfile
 
-Build the `Dockerfile` using the `docker build` command within the same directory. Substitute `NAME` in the following example with the name of the image to create:
+Build the `Dockerfile` using the `docker build` command within the same directory. Substitute `NAME` in the following example with the name of the image to be created:
 
     docker build --tag=“Build-Essential:Dockerfile” /path/to/file .
 
@@ -96,7 +97,7 @@ To build three images using the same Dockerfile, give each image a new name. In 
     docker build -t “webdev2:Dockerfile” .
     docker build -t “webdev3:Dockerfile” .
 
-Each image created this will will be tagged `Dockerfile`. To change the tag, during build, change `Dockerfile`:
+Each image created will will be tagged `Dockerfile`. To change the tag during build, change `Dockerfile`:
 
     docker build -t “debian-webdev3:dev” .
 
