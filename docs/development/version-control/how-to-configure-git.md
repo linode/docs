@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Getting Started with Git'
+description: 'Learn the basics of Git in this guide. Discover one of the most popular distributed version control and source code management systems that make contributing to projects and working with a team easy.'
 keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, July 3, 2017
@@ -16,6 +16,8 @@ external_resources:
  - '[Pro Git Book](https://git-scm.com/book/en/v2)'
  - '[Github Guides](https://guides.github.com/)'
 ---
+
+![Git Started Today](/docs/assets/git_getting_started.png)
 
 # What is Git?
 

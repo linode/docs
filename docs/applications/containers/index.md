@@ -1,6 +1,6 @@
 ---
 author:
-  name: Alex Fornuto
+  name: Linode
   email: afornuto@linode.com
 keywords: 'containers,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'

@@ -2,15 +2,15 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'Install LEMP, an application stack using Nginx, MariaDB, and PHP with fastcgi for CentOS 7'
+description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
 keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/']
+alias: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
 modified: Thursday, December 11, 2014
 modified_by:
     name: Ryan Arlan
 published:
-title: LEMP server on CentOS 7 with FastCGI
+title: Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
 - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
 - '[Nginx Documentation](http://nginx.org/en/docs/)'
@@ -49,9 +49,9 @@ The quickest and easiest way to install Nginx is from the Extra Packages for Ent
 
 This installs the EPEL repository, pulls the metadata from the new repository, and then installs Nginx.
 
-## Configuring Nginx
+## Configure Nginx
 
-### Starting Nginx with systemd
+### Start Nginx with systemd
 
 After installing Nginx it needs to be enabled and started in systemd. You can do this with the systemctl command:
 
@@ -125,7 +125,7 @@ Once the `/usr/bin/php-fastcgi` file has been created, you need to make sure the
 
 You can then run the file manually, or for easier administration, you can set up a systemd service.
 
-### Configuring PHP-FastCGI as a service
+### Configure PHP-FastCGI as a service
 
 When PHP-FastCGI is installed it does not automatically get set up as a service in systemd. If you want to be able to more easily control PHP-FastCGI with systemd, you can configure PHP-FastCGI as a systemd service. To do this, you need to create a service file that points to the /usr/bin/php-fastcgi file you created:
 
@@ -151,7 +151,7 @@ Once the file has been created, you will need to reload the systemd daemons, ena
 
 Now PHP-FastCGI is installed as a systemd service!
 
-## Installing MariaDB
+## Install MariaDB
 
 Last but not least, your LEMP stack needs a database.  MySQL is no longer supported in CentOS 7, so you need to use MySQL's drop in replacement, MariaDB.
 

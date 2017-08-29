@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/lighttpd/debian-5-lenny/','websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 6th, 2009'
 title: 'lighttpd Web Server on Debian 5 (Lenny)'
 ---

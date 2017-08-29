@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-filezilla-ubuntu-9-10/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, November 13th, 2009'
 title: 'Transfer Files with Filezilla on Ubuntu 9.10 Desktop'
 ---

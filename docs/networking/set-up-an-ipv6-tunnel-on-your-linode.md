@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: 'ipv6,tunnel,broker,networking'

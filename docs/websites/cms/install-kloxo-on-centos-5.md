@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Manage your Linode with the Kloxo control panel on CentOS 5.'
 keywords: 'kloxo,control panel,cpanel,plesk'

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/debian-6-squeeze/']
 modified: Wednesday, November 9th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, November 9th, 2011'
 title: 'Email with Citadel on Debian 6 (Squeeze)'
 ---

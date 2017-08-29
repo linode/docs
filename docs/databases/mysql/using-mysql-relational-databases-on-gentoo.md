@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Gentoo.'
 keywords: 'MySQL,Gentoo,database,rdbms'

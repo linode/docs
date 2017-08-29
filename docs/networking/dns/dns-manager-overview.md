@@ -90,7 +90,7 @@ This video runs through the process of adding a new domain zone:
 6.  If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
     {: .note}
-    > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the follow IP addresses:
+    > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
     >
     >     104.237.137.10
     >     65.19.178.10

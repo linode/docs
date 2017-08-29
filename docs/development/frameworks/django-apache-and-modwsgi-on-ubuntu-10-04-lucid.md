@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/django-apache-mod-wsgi/ubuntu-10-04-lucid/','apache/apache-and-modwsgi-on-ubuntu-10-04-lucid/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, May 18th, 2010'
 title: 'Django, Apache and mod_wsgi on Ubuntu 10.04 (Lucid)'
 ---

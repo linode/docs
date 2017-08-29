@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/munin/ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, January 22nd, 2010'
 title: 'Monitoring Servers with Munin on Ubuntu 9.10 (Karmic)'
 ---

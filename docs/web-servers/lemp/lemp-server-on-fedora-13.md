@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lemp-guides/fedora-13/','websites/lemp/lemp-server-on-fedora-13/']
 modified: Tuesday, May 3rd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, June 30th, 2010'
 title: LEMP Server on Fedora 13
 ---

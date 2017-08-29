@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/mercurial/','applications/development/manage-distributed-version-control-with-mercurial/']
 modified: Monday, May 23rd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, April 26th, 2010'
 title: Manage Distributed Version Control with Mercurial
 external_resources:

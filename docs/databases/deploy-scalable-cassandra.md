@@ -2,8 +2,8 @@
 author:
    name: Andrew Lescher
    email: docs@linode.com
-description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 14.04 and CentOS 7 distros.'
-keywords: 'cassandra, apache cassandra, centos 7, ubuntu 14.04, database, nosql'
+description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 17.04 and CentOS 7 distros.'
+keywords: 'cassandra, apache cassandra, centos 7, ubuntu 17.04, database, nosql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, June 12th, 2017'
 alias: ['/docs/databases/']
@@ -47,12 +47,12 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 
 {: .caution} 
 >
-> If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in steps 3 & 4. As of this publish date, the only keys required are listed below.
+>  (Ubuntu only) If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.
 
 **Ubuntu 17.04**
 
 1. Add the package `software-properties-common`:
-   
+
 	   apt install software-properties-common
 
 2. Add the Java repository:
@@ -67,7 +67,7 @@ Add required repositories/gpg keys. Be sure to run the key add commands in the o
 >
 > You may want to follow the link to the Apache repository to confirm that "39x" is the latest available version. 
 
-3. Download the two public keys needed to access these repositories:
+4. Download the two public keys needed to access these repositories:
 		
 		      gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
 		      gpg --export --armor 749D6EEC0353B12C | apt-key add -
@@ -138,7 +138,7 @@ If you are receiving connection errors, open the `cassandra-env.sh` file in a te
   **Ubuntu 17.04**
           
           vim /etc/cassandra/cassandra-env.sh
-          
+
   **CentOS 7**
   
           vim /etc/cassandra/conf/cassandra-env.sh

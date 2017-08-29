@@ -10,7 +10,7 @@ modified: 'Monday, June 12th, 2017'
 modified_by:
   name: Angel
 published: 'Monday, June 19th, 2017'
-title: How to Use Wget to Download Internet Files to Your Server
+title: How to Use Wget
 external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
  - '[Arch Wiki](https://wiki.archlinux.org/index.php/wget)'

@@ -64,7 +64,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
 
 6.  Examine the results. If you get an error, or the restart message for Dovecot doesn't include a new process ID, there's something preventing the service from starting.
 7.  If you received a specific error from the restart attempt, search for it online.
-8.  Check the applications' startup logs to see more detailed messages. Postfix's stop and start messages are logged in `var/log/mail.log` (along with all its other messages). Enter the following command to view the most recent lines in the log:
+8.  Check the applications' startup logs to see more detailed messages. Postfix's stop and start messages are logged in `/var/log/mail.log` (along with all its other messages). Enter the following command to view the most recent lines in the log:
 
         tail /var/log/mail.log
 
