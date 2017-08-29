@@ -248,7 +248,7 @@ When you get to the form asking for the database credentials, fill it with the v
 
 3. After clicking **Next** the installer will create the necessary tables and finalize setting up the store. You should now be presented with a page like this:
 
-![PrestaShop Installation Completed](prestashop-ubuntu1604-installation-completed.png)
+![PrestaShop Installation Completed](/docs/assets/prestashop-ubuntu1604-installation-completed.png)
 
 Clicking on **Back Office** will take you to the administration backend of the platform. But that won't work before completing the next step.
 
