@@ -5,15 +5,15 @@ author:
 description: 'Turtl is a privacy oriented Evernote replacement'
 keywords: 'turtl, privacy, ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, Aug 21, 2017
+modified: Tuesday, August 21, 2017
 modified_by:
   name: Linode
-Published: Tuesday, Aug 14, 2017
+Published: Tuesday, August 14, 2017
 title: 'Install Turtl on Ubuntu'
 
 ---
 
-[Turtl](https://turtapp.com/docs) is an open source alternative to popular note taking software. With a focus on privacy, Turtl offers a place for your passwords, bookmarks and pictures, to be stored and accessed. Turtl can be hosted on a Linode. Hosting your own Turtl server, on a secure Linode, allows you to monitor your own security. The Turtl server is written in Common Lisp, and the low level encryption is derivied from the Stanford Javascript Crypto Libray. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentaion.  
+[Turtl](https://turtapp.com/docs) is an open source alternative to popular note taking software. With a focus on privacy, Turtl offers a place for your passwords, bookmarks and pictures, to be stored and accessed. Turtl can be hosted on a Linode. Hosting your own Turtl server, on a secure Linode, allows you to monitor your own security. The Turtl server is written in Common Lisp, and the low level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin
@@ -29,10 +29,10 @@ title: 'Install Turtl on Ubuntu'
 
 ### Install Dependencies:
 
-The Turtl server has to be built from source. Download all of the dependencies
+The Turtl server has to be built from source. Download all of the dependencies in addition to git:
 
-    apt install  wget curl libtool subversion make automake
-   
+    apt install  wget curl libtool subversion make automake git
+ 
 
 ### Clozure Common Lisp, QuickLisp , Libuv, RethinkDB:
 
@@ -41,24 +41,24 @@ The Turtl server has to be built from source. Download all of the dependencies
 
 Download the Libuv package from the official repository:
 
-    
 	wget https://dist.libuv.org/dist/v1.13.0/libuv-v1.13.0.tar.gz
 	tar -xvf libuv-v1.13.0.tar.gz
 	
 Build the package from source:
 
+    cd libuv-v1.13.0
     sudo sh autogen.sh
 	sudo ./configure
 	sudo make
 	sudo make install
 
-After the package is built, run `ldconfig` to maintain the shared libracy cache.
+After the package is built, run `sudo ldconfig` to maintain the shared libracy cache.
 
 #### RethinkDB
 
 [RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to [Turtl](https://turtlapp.com/docs/server/), RethinkDB needs to only be installed, and Turtl will take care of the rest.
 
-RehinkDB has community maintained packages on most distrubtions. On Ubuntu, you have to add the RethinkDB repo to your list of repositories:
+RehinkDB has community maintained packages on most distributions. On Ubuntu, you have to add the RethinkDB to your list of repositories:
 
     source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $xenial main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
     wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
@@ -77,10 +77,9 @@ Navigate to `/etc/rethinkdb/` and rename `default.conf.sample` to `default.conf`
    
     sudo mv /etc/rethinkdb/default.conf.sample /etc/rethinkdb/default.conf
 	 
-Restart the `rethinkdb.service` deamon:
+Restart the `rethinkdb.service` daemon:
 
     sudo systemctl restart rethinkdb.service
-
 
 
 #### Clozure Common Lisp
@@ -88,7 +87,7 @@ Restart the `rethinkdb.service` deamon:
 For this installation you will need to install Clozure Common Lisp (CCL):
 
 	
-   s svn co http://svn.clozure.com/publicsvn/openmcl/release/1.11/linuxx86/ccl
+    svn co http://svn.clozure.com/publicsvn/openmcl/release/1.11/linuxx86/ccl
 
 According to the CCL [documentation](https://ccl.clozure.com/download.html), you can replace `linuxx86` with another platform, like `solarisx86`. 
 
@@ -99,9 +98,10 @@ Quickly check if CCL has been installed correctly by updating the sources:
 	
 Move `ccl` to `/usr/bin` so `ccl` can run from the command line:
 
+    cd ..
     sudo cp -r ccl/ /usr/local/src
 	sudo cp /usr/local/src/ccl/scripts/ccl64 /usr/local/bin
-    
+ 
 Now, running `ccl64`, or `ccl` depending on your system, will launch a Lisp environment:
 
     linode@localhost:~$ ccl64
@@ -121,26 +121,29 @@ Create a user named `turtl`:
 
     adduser turtl
     su turtl
-    
-    
+
 QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for the server through Quicklisp.
 
     wget https://beta.quicklisp.org/quicklisp.lisp
 
     ccl64 --load quicklisp.lisp
   
-    
-         ==== quicklisp quickstart 2015-01-28 loaded ====
+The successful installation of the above steps will open the CCL environment with the following output:
 
-    To continue with installation, evaluate: (quicklisp-quickstart:install)
+{:.output}
+~~~
+     ==== quicklisp quickstart 2015-01-28 loaded ====
 
-      For installation options, evaluate: (quicklisp-quickstart:help)
+To continue with installation, evaluate: (quicklisp-quickstart:install)
 
-    Welcome to Clozure Common Lisp Version 1.11-r16635  (LinuxX8664)!
+  For installation options, evaluate: (quicklisp-quickstart:help)
 
-    CCL is developed and maintained by Clozure Associates. For more information
-    about CCL visit http://ccl.clozure.com.  To enquire about Clozure's Common Lisp
-    consulting services e-mail info@clozure.com or visit http://www.clozure.com.
+Welcome to Clozure Common Lisp Version 1.11-r16635  (LinuxX8664)!
+
+CCL is developed and maintained by Clozure Associates. For more information
+about CCL visit http://ccl.clozure.com.  To enquire about Clozure's Common Lisp
+consulting services e-mail info@clozure.com or visit http://www.clozure.com.
+~~~
 
 Once you are in the CCL enviroment, install QuickLisp using: 
 
@@ -148,7 +151,7 @@ Once you are in the CCL enviroment, install QuickLisp using:
 
 After the install finishes, add Quicklisp into your init file. 
 
-   (ql:add-to-init-file)
+    (ql:add-to-init-file)
 
 After confirming the settings, Quicklisp will start when `ccl64` starts. `(quit)` out of CCL for now.
 
@@ -166,32 +169,25 @@ Load and install `asdf.lisp` in your CCL environment:
 	
 	
 ### Installing Turtl 
-    
+ 
 Clone Turtl from the Github repo:
 
-    git clone https:github.com/turtl/api.git
+    git clone https://github.com/turtl/api.git
 
 
 Create a file called `launch.lisp` inside of `/api`and copy the commands below:
 
     touch launch.lisp
-	vi launch.lisp
+    vi launch.lisp
 	
-	
-	(pushnew "./" asdf:*central-registry* :test #'equal)
-	(load "start")
+    (pushnew "./" asdf:*central-registry* :test #'equal)
+    (load "start")
 
 Turtl does not ship with all of its dependencies. Instead the turtl community has provided a list of dependencies. Clone these into `/home/turtl/quicklisp/local-projects`:
 
-    git clone https://github.com/orthecreedence/cl-hash-util
-    git clone https://github.com/orthecreedence/cl-async
-   
-    git clone https://github.com/orethecreedence/cffi
-	git clone https://github.com/orethecreedence/wookie
-    git clone https://github.com/orethecreedence/cl-rethinkdb
-	git clone https://github.com/orethecreedence/cl-libuv
-	git clone https://github.com/orethecreedence/drakma-async
-	git clone https://github.com/Inaimathi/cl-cwd.git
+    echo "https://github.com/orthecreedence/cl-hash-util https://github.com/orthecreedence/cl-async https://github.com/orthecreedence/cffi https://github.com/orthecreedence/wookie https://github.com/orthecreedence/cl-rethinkdb https://github.com/orthecreedence/cl-libuv https://github.com/orthecreedence/drakma-async https://github.com/Inaimathi/cl-cwd.git" > dependencies.txt
+
+    for repo in `cat dependencies.txt`; do `git clone $repo`; done
 
 Edit the `/home/turtl/.ccl-init.lisp` to include:
 
@@ -211,10 +207,9 @@ The `config.lisp` file is where the configurations for your server are stored. I
        "The main URL the site will load from.")
 
 
-
 Go to your home directory, and run `ccl64`, this will automatically start the Turtl server. 
 
-Download a frontend for Turtl on the [turtl website](https://turtlapp.com/download/)
+On your local device, download a client app for Turtl from the [turtl website](https://turtlapp.com/download/) on supported devices and operating systems.
 
 ![turtldownload](/docs/assets/turtl/turtl_download.png)
 
