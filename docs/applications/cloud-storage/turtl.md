@@ -2,18 +2,20 @@
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: 'Turtl is a privacy oriented Evernote replacement'
+description: 'Turtl is a privacy Conscious Cloud Storage Service'
 keywords: 'turtl, privacy, ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, August 21, 2017
 modified_by:
   name: Linode
 Published: Tuesday, August 14, 2017
-title: 'Install Turtl on Ubuntu'
+title: 'How to Install the Turtl Server on Ubuntu'
 
 ---
 
-[Turtl](https://turtapp.com/docs) is an open source alternative to popular note taking software. With a focus on privacy, Turtl offers a place for your passwords, bookmarks and pictures, to be stored and accessed. Turtl can be hosted on a Linode. Hosting your own Turtl server, on a secure Linode, allows you to monitor your own security. The Turtl server is written in Common Lisp, and the low level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
+![Turtl_Banner](/docs/assets/turtl/Turtl.jpg)
+
+[Turtl](https://turtapp.com/docs) is an open source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place for your passwords, bookmarks and pictures, to be stored and accessed. Turtl can be hosted on a Linode. Hosting your own Turtl server, on a secure Linode, allows you to monitor your own security. The Turtl server is written in Common Lisp, and the low level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin
@@ -115,14 +117,14 @@ Now, running `ccl64`, or `ccl` depending on your system, will launch a Lisp envi
 
 To exit the environment type `(quit)`
 
-#### QuickLisp
+#### QuickLisp and ASDF
 
 Create a user named `turtl`:
 
     adduser turtl
     su turtl
 
-QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for the server through Quicklisp.
+QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for the server through Quicklisp. ASDF, is a tool that builds Lisp software. 
 
     wget https://beta.quicklisp.org/quicklisp.lisp
 
@@ -155,9 +157,7 @@ After the install finishes, add Quicklisp into your init file.
 
 After confirming the settings, Quicklisp will start when `ccl64` starts. `(quit)` out of CCL for now.
 
-#### ASDF
-
-The ASDF utility is used to build Lisp software. 
+Download ASDF:
 
     wget https://common-lisp.net/project/asdf/asdf.lisp
 
@@ -170,7 +170,7 @@ Load and install `asdf.lisp` in your CCL environment:
 	
 ### Installing Turtl 
  
-Clone Turtl from the Github repo:
+Clone Turtl from the Github repository:
 
     git clone https://github.com/turtl/api.git
 
