@@ -2,15 +2,15 @@
 author:
   name: Jonathan Chun
   email: docs@linode.com
-description: 'Set up and manage an online storefront with OpenCart.'
+description: 'This tutorial will guide you through basic installation and set-up of popular ecommerce platform OpenCart on CentOS 7.'
 keywords: 'opencart,ecommerce,commerce,store,centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/opencart/centos-7/']
-modified: Saturday, April 29th, 2017
+alias: ['web-applications/e-commerce/opencart/centos-7/','websites/ecommerce/opencart-on-centos-7/']
+modified: Monday, August 21st, 2017
 modified_by:
   name: Jonathan Chun
 published: 'Saturday, April 29th, 2017'
-title: OpenCart on CentOS 7
+title: How to Install OpenCart on CentOS 7
 external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
  - '[OpenCart Documentation](http://docs.opencart.com/)'
@@ -74,7 +74,7 @@ You will need to make sure you have a MySQL database and a database user set up 
 
         quit
 
-## Installing OpenCart
+## Install OpenCart
 
 ### Download OpenCart and configure permissions
 
@@ -109,7 +109,7 @@ Next, run the following commands to make sure these directories are writable.
     chmod 0755 config.php
     chmod 0755 admin/config.php
 
-### Running the OpenCart Installer
+### Run the OpenCart Installer
 
 Visit your website in your browser. You should be redirected to the OpenCart Installer in a page that looks like this:
 

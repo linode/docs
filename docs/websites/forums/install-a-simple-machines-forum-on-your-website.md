@@ -2,15 +2,15 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Configuring the SMF system for hosting web-based discussion forums.'
+description: This tutorial will guide you through installing a Simple Machines Forum a flexible (SMF), a small to mid-sized discussion forum that's easy to customize.
 keywords: 'smf,forum software,web applications,PHP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/smf/']
+alias: ['web-applications/bulletin-boards/smf/','websites/forums/discussion-forums-with-smf/']
 modified: Wednesday, February 11, 2015
 modified_by:
   name: Elle Krout
 published: 'Thursday, March 18th, 2010'
-title: Discussion Forums with SMF
+title: How to Install a Simple Machines Discussion Forum (SMF) on Linux 
 deprecated: false
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'
@@ -40,7 +40,7 @@ You will need to create a MySQL user and database for SMF.
         grant all on forums.* to 'forumadmin' identified by 'password';
         quit
 
-##Installing SMF
+##Install SMF
 
 The following instructions will download the latest stable release, which is 2.0.9 as of publication.
 
