@@ -21,6 +21,8 @@ external_resources:
 
 ---
 
+![Solr_Banner](/docs/assets/Solr.jpg)
+
 ## Introduction To This Tutorial
 
 Upon completing the steps in this guide, you will have a fully installed Solr instance ready to integrate with your website, as well as performed some basic configuration.
