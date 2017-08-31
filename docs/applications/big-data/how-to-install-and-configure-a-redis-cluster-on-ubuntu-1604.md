@@ -16,6 +16,7 @@ external_resources:
  - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7)'
 ---
 
+![Redis_banner](/docs/assets/Redis_Cluster.jpg)
 
 Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure. 
 
