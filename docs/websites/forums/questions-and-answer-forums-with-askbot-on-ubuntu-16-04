@@ -117,7 +117,7 @@ external_resources:
 ## Deploy Askbot with Letsencrypt SSL
 
 {: .note}
->In this guide replace each instance of `example.com` and `www.example.com` with your site's domain name.
+>There's no need to edit the host file `/etc/hosts` and keep it as it is. This guide deals with Letsencrypt SSL so it requires a valid domain name to get SSL certificates and most important thing is domain name must be pointed towards Linode IP using `DNS Manager`. In this guide replace each instance of `example.com` and `www.example.com` with your site's domain name.
 
 1.  We passed **Gunicorn** a module by specifying the relative directory path to **wsgi.py** file, which is used to communicate with the Askbot application. In below `/home/example_user/askbot/wsgi.py` is the location of **wsgi.py** file.
 
