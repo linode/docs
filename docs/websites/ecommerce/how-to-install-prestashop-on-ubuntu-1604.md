@@ -159,15 +159,26 @@ After you notice DNS changes have propagated, follow the steps below:
     sudo apt-get update
     sudo apt-get install python-certbot-apache
 
-3. Before continuing, please read step four below then request and install the TLS certificate:
+3. Before continuing, please read step four below, then request and install the TLS certificate:
 
     sudo certbot --apache
 
 Now follow the instructions from the terminal output.
 
-4. Make sure https is working correctly before continuing. You do this by accessing `https://example.com` in your web browser.
+4. When asked if you want https redirection answer **2**.
 
-5. Since certificates expire after 90 days, we need to set up an automated way of renewing them.
+    Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.
+    -------------------------------------------------------------------------------
+    1: No redirect - Make no further changes to the webserver configuration.
+    2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
+    new sites, or if you're confident your site works on HTTPS. You can undo this
+    change by editing your web server's configuration.
+    -------------------------------------------------------------------------------
+    Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
+
+5. Make sure https is working correctly before continuing. You do this by accessing `https://example.com` in your web browser.
+
+6. Since certificates expire after 90 days, we need to set up an automated way of renewing them.
 
 sudo crontab <<< "33 3 * * Sat /usr/bin/certbot renew -q"
 
