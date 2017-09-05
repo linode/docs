@@ -422,4 +422,73 @@ You may modify other values in this file as you see fit, but this configuration 
 
         systemctl restart kibana
 
+## Configure The ELK Stack
 
+The ELK Stack will require some tuning before it can be accessed via the Wazuh API.
+
+1. Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
+
+        bootstrap.memory_lock: true
+
+2. Edit locked memory allocation. Follow the instructions under the appropriate init system used in your system.
+
+    **SystemD**
+
+    Edit the systemd init file and add the following line.
+
+{: .file}
+**/etc/systemd/system/multi-user.target.wants/elasticsearch.service**
+~~~ service
+. . . 
+
+LimitMEMLOCK=infinity
+
+. . . 
+~~~
+
+    **System V**
+
+    Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line.
+
+{: .file}
+**/etc/sysconfig/elasticsearch
+**/etc/default/elasticsearch
+~~~
+. . .
+
+MAX_LOCKED_MEMORY=unlimited
+
+. . .
+~~~
+
+3. Configure the Elasticsearch heap size. This figure will determine how much memory Elasticsearch is allowed to consume. You must determine the optimum heap size for Elasticsearch based on your system's hardware resources. However, the following two rules always apply:
+
+  - No more than 50% of available RAM
+  - No more than 32GB of RAM
+
+Open the `jvm.options` file and navigate to the following block:
+
+{: .file}
+**/etc/elasticsearch/jvm.options**
+~~~ options
+. . .
+
+# Xms represents the initial size of total heap space
+# Xmx represents the maximum size of total heap space
+
+-Xms4g
+-Xmx4g
+
+. . . 
+~~~
+
+This configuration configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
+
+{: .caution}
+> Set this value carefully. If the system RAM is completely depleted, Elasticsearch will crash.
+
+## 
+
+# Connect The ELK Stack With The Wazuh API
+
+This section ties everything together with the Wazuh API
