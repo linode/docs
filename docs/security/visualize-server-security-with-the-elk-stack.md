@@ -110,9 +110,15 @@ While various ways of installing Solr exist, downloading from the Apache website
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
 
-3. Install `curl`, `apt-transport-https`, and `lsb-release`.
+3. Install final pre-requisites.
 
-        apt install curl apt-transport-https lsb-release
+    **Debian & Ubuntu**
+                
+            apt install curl apt-transport-https lsb-release
+
+    **Fedora & RHEL based**
+
+            yum install curl
 
 ## Install Wazuh
 
@@ -214,8 +220,44 @@ protect=1
 
             apt install wazuh-api
 
-6. Python version 2.7 or higher is required to run the Wazuh API. Check your current version and upgrade if necessary.
+## Check Python Version
+
+The Wazuh API requires Python version 2.7 or higher. It will be installed by default in most Linux distributions.
+
+1. Check your Python version
 
         python --version
 
+2. Install Python or upgrade if required.
 
+    **Fedora & RHEL based**
+
+      1. CentOS 6 and older:
+
+              yum install -y centos-release-scl
+              yum install -y python27
+
+      2. RHEL 6 and older:
+
+              yum install -y python27
+
+      {: .note}
+      > You may need to enable a repository to get python27. Try to enable the repo using the following lines:
+      > `yum-config--manager --enable rhui-REGION-rhel-server-rhscl`
+      > `yum-config-manager --enable rhel-server-rhscl-6-rpms`
+
+      3. CentOS/RHEL 7
+
+              yum install -y python
+
+    **Debian & Ubuntu
+
+              
+
+yum install python
+
+    **Debian & Ubuntu**
+
+        apt install python
+
+3. If by necessity you need to preserve an older version of python, you can still install version 2.7.x seperately and set a custom path to it for the Wazuh API.
