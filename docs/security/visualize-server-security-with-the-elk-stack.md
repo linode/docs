@@ -298,6 +298,11 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 3. Enable Elasticsearch on system boot.
 
         systemctl enable elasticsearch
+        systemctl start elasticsearch
+
+4. Load The Wazuh Elasticsearch template. Modify the following command by replacing the brackets and the text "insert_your_ip_address" with your Linode's external IP address.
+
+        curl https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/master/server/startup/integration_files/template_file.json | curl -XPUT 'http://[insert_your_ip_address]:9200/_template/wazuh' -H 'Content-Type: application/json' -d @-
 
 ### Logstash
 
@@ -312,7 +317,70 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 
 3. Enable Logstash on system boot.
 
+        systemctl daemon-reload 
         systemctl enable logstash
+        systemctl start logstash
+
+4. Download the Wazuh config and template files for Logstash.
+
+        curl -so /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
+        curl -so /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
+
+5. Modify the *01-wazuh.conf* file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the "Remote Wazuh Manager" section and uncommenting the "Local Wazuh Manager" section.
+
+{: .file}
+**/etc/logstash/conf.d/01-wazuh.conf**
+~~~ conf
+# Wazuh - Logstash configuration file
+## Remote Wazuh Manager - Filebeat input
+#input {
+#    beats {
+#        port => 5000
+#        codec => "json_lines"
+##        ssl => true
+##        ssl_certificate => "/etc/logstash/logstash.crt"
+##        ssl_key => "/etc/logstash/logstash.key"
+#    }
+#}
+# Local Wazuh Manager - JSON file input
+input {
+   file {
+       type => "wazuh-alerts"
+       path => "/var/ossec/logs/alerts/alerts.json"
+       codec => "json"
+   }
+}
+
+. . .
+~~~
+
+6. Add the Logstash user to the "ossec" group to allow access to restricted files.:w
+
+        usermod -aG ossec logstash
+
+7. Follow this step if you are using CentOS 6 or RHEL 6.
+
+    1. Edit the file /etc/logstash/startup.options and in the line 30 change the LS_GROUP=logstash to LS_GROUP=ossec.
+
+{: .file}
+**/etc/logstash/startup.options**
+~~~ options
+. . .
+
+# user and group id to be invoked as
+LS_USER=logstash
+LS_GROUP=logstash
+
+. . . 
+~~~
+
+    2. Update the service with the new parameters.
+
+            /usr/share/logstash/bin/system-install
+
+    3. Restart Logstash.
+
+            systemctl restart logstash
 
 ### Install Kibana
 
@@ -328,6 +396,30 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 3. Enable Kibana on system boot.
 
         systemctl enable kibana
+        systemctl start kibana
 
+4. Install the Wazuh app for Kibana.
+
+        /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
+
+{: .note}
+> The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled.
+
+5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
+
+{: .table .table-striped .table-bordered }
+| Value           | Parameter                                                                                  |
+| :-------------: | :----------------------------------------------------------------------------------------: |
+| server.port     | Change this value if the default port, 5601, is in use.                                    |
+| server.host     | Set this value to your Linode's external IP address                                        |
+| server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
+| logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
+| :-------------: | :----------------------------------------------------------------------------------------: |
+
+You may modify other values in this file as you see fit, but this configuration should work for most.
+
+6. Restart Kibana.
+
+        systemctl restart kibana
 
 
