@@ -44,10 +44,12 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 1. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
+2. Ideally, your Linode should possess at least 4GB of RAM. While the ELK Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
+
 {: .note}
 > Some of the commands below require elevated privilidges to execute, and must be prefixed with `sudo` when necessary.
 
-# Install Solr
+# Setup The ELK Stack And Integrate Wazuh OSSEC
 
 While various ways of installing Solr exist, downloading from the Apache website ensures you will receive the latest version.
 
@@ -62,14 +64,6 @@ While various ways of installing Solr exist, downloading from the Apache website
     **Fedora & RHEL based**
 
         yum update -y && yum upgrade -y
-
-    **Arch Linux**
-
-        pacman -Syyu
-
-    **openSUSE**
-
-        zypper up
 
 2. Install Java 8 JDK.
 
@@ -104,14 +98,6 @@ While various ways of installing Solr exist, downloading from the Apache website
 
         yum install java-1.8.0-openjdk.x86_64
 
-    **Arch Linux**
-
-        pacman -S jre8-openjdk 
-
-    **openSUSE**
-
-        zypper in java-1_8_0-openjdk
-
     Once Java is installed, verify the installation by running the following command:
 
         java -version
@@ -123,3 +109,113 @@ While various ways of installing Solr exist, downloading from the Apache website
         openjdk version "1.8.0_144"
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
+
+3. Install `curl`, `apt-transport-https`, and `lsb-release`.
+
+        apt install curl apt-transport-https lsb-release
+
+## Install Wazuh
+
+Wazuh can be installed via RPM or DEB packages. Follow the section relevant to your Linux distribution.
+
+### RPM Intallation
+
+1. Create the repository file in the indicated location and paste the provided text using your preferred text editor.
+
+**RHEL**
+
+{: .file}
+**/etc/yum.repos.d/wazuh.repo**
+~~~ .repo
+[wazuh_repo]
+gpgcheck=1
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+enabled=1
+name=RHEL-$releasever - Wazuh
+baseurl=https://packages.wazuh.com/yum/rhel/$releasever/$basearch
+protect=1
+~~~
+
+**CentOS**
+
+{: .file}
+**/etc/yum.repos.d/wazuh.repo**
+~~~ .repo
+[wazuh_repo]
+gpgcheck=1
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+enabled=1
+name=CentOS-$releasever - Wazuh
+baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
+protect=1
+~~~
+
+**Fedora**
+
+{: .file}
+**/etc/yum.repos.d/wazuh.repo**
+~~~ .repo
+[wazuh_repo]
+gpgcheck=1
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+name=Fedora-$releasever - Wazuh
+enabled=1
+baseurl=https://packages.wazuh.com/yum/fc/$releasever/$basearch
+protect=1
+~~~
+
+2. Install Wazuh Manager.
+
+        yum install wazuh-manager
+
+3. Install Wazuh API.
+
+    1. Install the NodeJS repository.
+
+            curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -
+
+    2. Install NodeJS
+
+            yum install nodejs
+    
+    3. Install Wazuh API.
+
+            yum install wazuh-api
+
+### DEB Installation
+
+1. Install the GPG key.
+
+        curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | apt-key add -
+
+2. Add the Wazuh repository.
+
+        echo "deb https://packages.wazuh.com/apt $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/wazuh.list
+
+3. Update the Wazuh repository package information.
+
+        apt -y update
+
+4. Install Wazuh Manager.
+
+        apt install wazuh-manager
+
+5. Install Wazuh API
+
+    1. Add the NodeJS repository.
+
+            curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+
+    2. Install NodeJS.
+
+            apt install nodejs
+
+    3. Install Wazuh API.
+
+            apt install wazuh-api
+
+6. Python version 2.7 or higher is required to run the Wazuh API. Check your current version and upgrade if necessary.
+
+        python --version
+
+
