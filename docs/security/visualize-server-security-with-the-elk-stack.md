@@ -24,21 +24,21 @@ external_resources:
 
 In this tutorial, you will learn how to Install and link together ElasticSearch, Logstash, Kibana, and Wazuh OSSEC to aid in monitoring and visualizing security threats to your machine. The resulting structure can be broken down into four core components:
 
-    **ElasticSearch**
+**ElasticSearch**
 
-        - Essentially the heart of the ELK Stack, Elasticsearch provides powerful search and analytical capabilities. It's purpose in the ELK Stack is to centrally store and retrieve data collected by Logstash.
+    - Essentially the heart of the ELK Stack, Elasticsearch provides powerful search and analytical capabilities. It's purpose in the ELK Stack is to centrally store and retrieve data collected by Logstash.
 
-    **Logstash**
+**Logstash**
 
-        - Ingests data from multiple sources and passes it along to a central database (Elasticsearch) 
+    - Ingests data from multiple sources and passes it along to a central database (Elasticsearch) 
 
-    **Kibana**
+**Kibana**
 
-        - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in Elasticsearch.
+    - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in Elasticsearch.
 
-    **Wazuh OSSEC**
+**Wazuh OSSEC**
 
-        - An open source branch of the orignal OSSEC HIDS developed for integration into the ELK Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, aw well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
+    - An open source branch of the orignal OSSEC HIDS developed for integration into the ELK Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, aw well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
 
 ## Before You Begin
 
