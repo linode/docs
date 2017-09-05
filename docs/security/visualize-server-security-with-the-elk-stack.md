@@ -465,6 +465,7 @@ MAX_LOCKED_MEMORY=unlimited
 
   - No more than 50% of available RAM
   - No more than 32GB of RAM
+  - The `-Xmsg` and `-Xmxg` values must be the same in order to avoid performance issues.
 
 Open the `jvm.options` file and navigate to the following block:
 
