@@ -5,14 +5,14 @@ author:
 description: 'Our guide to deploying your first Linode.'
 keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, March 3rd, 2017
+modified: Tuesday, September 5th, 2017
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
 title: Getting Started with Linode
 ---
 
-Congratulations on selecting Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
+Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
@@ -106,10 +106,6 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe>
 
-    {: .note }
-    >
-    > These videos were created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
-
 ### Find the IP Address of Your Linode
 
 Your Linode has a unique *IP address* that identifies it to other devices and users on the Internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
@@ -180,8 +176,7 @@ Installing software updates should be performed *regularly*. If you need help re
 
 {: .note }
 >
->Ubuntu may prompt you when the Grub package is updated.
->If prompted, select `keep the local version currently installed`.
+>Ubuntu may prompt you when the Grub package is updated. If prompted, select `keep the local version currently installed`.
 
 ### CentOS
 
@@ -199,10 +194,7 @@ Installing software updates should be performed *regularly*. If you need help re
 
     emaint sync
 
-{: .note}
->emaint is a [plugin](https://gentoo.org/support/news-items/2015-02-04-portage-sync-changes.html) for emerge, so `emerge --sync` is no longer used and that command now just calls `emaint sync`. The sync command uses the `auto` option by default. See [here](https://wiki.gentoo.org/wiki/Project:Portage/Sync#Operation) for more info on what that means and when you may want to change it. For more information on how to use `emaint`, refer to its [man page](https://dev.gentoo.org/~zmedico/portage/doc/man/emaint.1.html).
-
-After running a sync, it may end with a message that you should upgrade Portage using a *--oneshot* emerge comand. If so, run the Portage update. Then update the rest of the system:
+After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge comand. If so, run the Portage update. Then update the rest of the system:
     
     emerge --uDN @world
 
@@ -211,31 +203,13 @@ After running a sync, it may end with a message that you should upgrade Portage 
     slackpkg update
     slackpkg upgrade-all
 
-See the [Slackpkg documentation](http://slackpkg.org/documentation.html) for more information on package management in Slackware.
-
 ## Setting the Hostname
 
-You'll need to set your system's hostname and fully qualified domain name (FQDN). Your hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the system's hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic.
+Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/tools-reference/tools/using-your-systems-hosts-file).
 
 Once you're done, you can verify by running the command `hostname`.
 
-{: .note }
->
-> If you're unfamiliar with Linux, one of the first things you'll need to learn is how to use [nano](/docs/linux-tools/text-editors/nano), a text editor included with most distributions. To open a file for editing, type `nano file.txt` where "file.txt" is the name of the file you want to create or edit. If the file is not in your current working directory, specify the entire file path. For example, open the `hosts` file with:
->
->     nano /etc/hosts
->
->When you're finished editing, press `Control-X`, then `Y` to save the changes and `Enter` to confirm.
-
-For a walkthrough of setting system's hostname and timezone, see the following video:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/KFd66g4k4i8" frameborder="0" allowfullscreen></iframe>
-
-{: .note }
->
-> This video was created by [Treehouse](http://www.teamtreehouse.com), which is offering Linode customers a free one month trial. [Click here](http://teamtreehouse.com/join/free-month?utm_source=linode&utm_medium=partnership&utm_campaign=linode-2013&cid=1124) to start your free trial and start learning web design, web development, and more.
-
-### Arch / CentOS 7 / Debian 8 / Fedora version 18 and above / Ubuntu 15.04 and above
+### Arch / CentOS 7 / Debian 8 / Fedora / Ubuntu 16.04 and above
 
 Replace `hostname` with one of your choice.
 
@@ -248,19 +222,7 @@ Replace `example_hostname` with one of your choice.
     echo "example_hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-Check if the file `/etc/default/dhcpcd` exists, and it's contents.
-
-    cat /etc/default/dhcpcd | grep SET_HOSTNAME
-
-If the returned value is `SET_HOSTNAME='yes'`, edit `/etc/default/dhcpcd` and comment out the `SET_HOSTNAME` directive:
-
-{: .file-excerpt }
-/etc/default/dhcpcd
-: ~~~
-  #SET_HOSTNAME='yes'
-  ~~~
-
-### CentOS 6 / Fedora version 17 and below
+### CentOS 6
 
 Replace `hostname` with one of your choice.
 
@@ -273,37 +235,6 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
 
     echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
-
-### Update /etc/hosts
-
-Update the `/etc/hosts` file. This file creates static associations between IP addresses and hostnames, with higher priority than DNS.
-
-1.  Every `hosts` file should begin with the line `127.0.0.1 localhost.localdomain localhost`, although the naming may be slightly different between Linux distributions. `127.0.0.1` is the [**loopback address**](https://en.wikipedia.org/wiki/Loopback#Virtual_loopback_interface), and is used to send IP traffic internally on the system. You can leave this line alone.
-
-    Some distributions may also ship with a line for `127.0.1.1` in their `hosts file`. This is the loopback domain, and can be ignored in most cases.
-
-2.  Add a line for your Linode's public IP address. You can associate this address with your Linode's **Fully Qualified Domain Name** (FQDN) if you have one, and with the local hostname you set in the steps above. In the example below, `203.0.113.10` is our public IP address, `hostname` is our local hostname, and `hostname.example.com` is our FQDN.
-
-As with the hostname, the domain name part of your FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host "www.something.com" on your server, but the system's FQDN might be "mars.somethingelse.com."
-
-{:.file }
-/etc/hosts
-: ~~~
-  127.0.0.1 localhost.localdomain localhost
-  203.0.113.10 hostname.example.com hostname
-  ~~~
-
-If you have IPv6 enabled on your Linode, you may also want to add an entry for your IPv6 address, as shown in this example:
-
-{:.file }
-/etc/hosts
-: ~~~
-  127.0.0.1 localhost.localdomain localhost
-  203.0.113.10 hostname.example.com hostname
-  2600:3c01::a123:b456:c789:d012 hostname.example.com hostname
-  ~~~
-
-The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up a "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records).
 
 ## Setting the Timezone
 
@@ -340,20 +271,6 @@ Write the selected time zone to the `/etc/timezone` file.
 Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` appropriately.
 
     emerge --config sys-libs/timezone-data
-
-### All Other Distributions
-
-Manually symlink a zone file in `/usr/share/zoneinfo` to `/etc/localtime`.
-
-1.  View the list of available zone files.
-
-        ls /usr/share/zoneinfo
-
-2.  Then create the link using the zone file you want.
-
-    *Example*:
-
-        ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
 
 ### Checking the Time
 
