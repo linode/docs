@@ -252,12 +252,82 @@ The Wazuh API requires Python version 2.7 or higher. It will be installed by def
 
     **Debian & Ubuntu
 
-              
-
-yum install python
-
-    **Debian & Ubuntu**
-
         apt install python
 
-3. If by necessity you need to preserve an older version of python, you can still install version 2.7.x seperately and set a custom path to it for the Wazuh API.
+3. If by necessity you need to preserve an older version of Python, you can install version 2.7.x alongside it and set a custom path for the Wazuh API. Edit the **config.js** file to set the custom path.
+
+{: .file}
+**/var/ossec/api/configuration/config.js**
+~~~ js
+. . . 
+
+config.python = [
+    // Default installation
+{
+        bin: "python",
+                lib: ""
+                    
+},
+    // Package 'python27' for CentOS 6
+{
+        bin: "/custom/path/to/python",
+                lib: "/custom/path/to/lib64"
+                    
+}
+
+];
+
+. . . 
+~~~
+
+## Install Elasticsearch, Logstash, and Kibana
+
+Install the ELK Stack via rpm files to get the latest versions of all the software.
+
+### Elasticsearch
+
+1. Download the Elasticsearch rpm file into the `/opt` directory.
+
+        cd /opt
+        curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.rpm
+
+2.  Install Elasticsearch.
+
+        rpm -ivh elasticsearch-5.5.2.rpm
+
+3. Enable Elasticsearch on system boot.
+
+        systemctl enable elasticsearch
+
+### Logstash
+
+1. Download the Logstash rpm file into the `/opt` directory.
+
+        cd /opt
+        curl https://artifacts.elastic.co/downloads/logstash/logstash-5.5.2.rpm
+
+2. Install Logstash.
+
+        rpm -ivh logstash-5.5.2.rpm
+
+3. Enable Logstash on system boot.
+
+        systemctl enable logstash
+
+### Install Kibana
+
+1. Download the Kibana rpm file into the `/opt` directory.
+
+        cd /opt
+        curl https://artifacts.elastic.co/downloads/kibana/kibana-5.5.2-x86_64.rpm
+
+2. Install Kibana.
+
+        rpm -ivh kibana-5.5.2-x86_64.rpm
+
+3. Enable Kibana on system boot.
+
+        systemctl enable kibana
+
+
+
