@@ -49,6 +49,33 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 {: .note}
 > Some of the commands below require elevated privilidges to execute, and must be prefixed with `sudo` when necessary.
 
+3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
+
+  **Debian**
+
+  - [Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)
+  - [Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)
+
+  **Ubuntu**
+
+  - [Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)
+  - [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04)
+
+  **CentOS**
+
+  - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)
+  - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)
+
+4. Configure your webserver for virtual domain hosting. Follow the tutorial best suited for your installed webserver.
+
+  **Nginx**
+
+  - [How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)
+
+  **Apache**
+
+  - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)
+
 # Setup The ELK Stack And Integrate Wazuh OSSEC
 
 While various ways of installing Solr exist, downloading from the Apache website ensures you will receive the latest version.
@@ -493,3 +520,7 @@ This configuration configures Elasticsearch with 4GB of allotted RAM. You may al
 # Connect The ELK Stack With The Wazuh API
 
 This section ties everything together with the Wazuh API
+
+## Configure Web Hosting
+
+Configuring Nginx or Apache as a reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for Nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.
