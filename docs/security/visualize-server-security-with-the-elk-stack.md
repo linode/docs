@@ -660,7 +660,59 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 . . . 
 ~~~
 
-3. Restart Apache.
+3. Create an new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
+
+**Non SSL**
+
+{: .file}
+**/etc/httpd/sites-available/kibana.conf**
+**/etc/apache2/sites-available/kibana.conf**
+~~~ conf
+<VirtualHost *:80>
+    ServerName kibana.**your_domain_or_ip**.com
+    ProxyPreserveHost On
+
+    ProxyPass / http://**your_ip_address**:5601
+    ProxyPassReverse / http://**your_ip_address**:5601
+</VirtualHost>
+~~~
+
+**SSL**
+
+{: .file}
+**/etc/httpd/sites-available/kibana.conf**
+**/etc/apache2/sites-available/kibana.conf**
+~~~ conf
+<VirtualHost *:80>
+    ServerName kibana.**your_domain_or_ip**.com
+    ProxyPreserveHost On
+
+    ProxyPass / http://**your_ip_address**:5601
+    ProxyPassReverse / http://**your_ip_address**:5601
+
+    RewriteEngine On
+    RewriteCond %{HTTPS} off
+    RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+</VirtualHost>
+
+<VirtualHost *:443
+    ServerName kibana.**your_domain_or_ip**.com
+    ProxyPreserveHost On
+
+    ProxyPass / http://**your_ip_address**:5601
+    ProxyPassReverse / http://**your_ip_address**:5601
+
+    SSLEngine on
+    SSLProtocol all -SSLv2
+    SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM
+    
+    SSLCertificateFile /path/to/cert_file/ssl.crt
+    SSLCertificateKeyFile /path/to/ssl/private.key
+    SSLCertificateChainFile /path/to/ssl/server.ca.pem
+</VirtualHost>
+~~~
+
+4. Restart Apache.
 
   **Debian & Ubuntu&**
 
@@ -669,24 +721,6 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
   **Fedora & RHEL based**
 
           systemctl restart httpd
-
-4. Create an new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
-
-{: .file}
-**/etc/httpd/sites-available/kibana.conf**
-**/etc/apache2/sites-available/kibana.conf**
-~~~ conf
-
-<VirtualHost *:80>
-    ServerName kibana.**your_domain_or_ip**.com
-    ProxyPreserveHost On
-
-    ProxyPass / http://127.0.0.1:8080/
-    ProxyPassReverse / http://127.0.0.1:8080/
-</VirtualHost>
-
-~~~
-
 
 ## Secure The Wazuh API
 
