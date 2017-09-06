@@ -14,6 +14,16 @@ contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
+  - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
+  - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
+  - '[Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)'
+  - '[Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)'
+  - '[Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)'
+  - '[How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04)'
+  - '[Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)'
+  - '[LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)'
+  - '[How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)'
+  - '[Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
