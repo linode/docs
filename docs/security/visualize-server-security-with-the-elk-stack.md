@@ -612,7 +612,7 @@ server {
 
 ### Apache
 
-1. In order to function as a reverse proxy, *mod_proxy* must be installed.
+1. In order for Apache to function as a reverse proxy, *mod_proxy* must be installed.
 
     **Debian & Ubuntu**
 
@@ -620,9 +620,18 @@ server {
 
     **Fedora & RHEL based**
 
-        yum install mod_proxy_html libxml2-devel
+The default Apache install should include the necessary modules. Check that the following modules are enabled by running the `httpd -M` command.
 
-2. Enable the necessary mods in Apache. You can run `a2enmod` and enter `*` to enable all mods, or selectively enable the following mods below.
+  - proxy_module
+  - lbmethod_byrequests_module
+  - proxy_balancer_module
+  - proxy_http_module
+
+2. Enable the necessary mods in Apache.
+
+  **Debian & Ubuntu**
+
+You can run `a2enmod` and enter `*` to enable all mods, or selectively enable the following mods below using `a2enmod mod_name`.
 
   - sudo a2enmod proxy
   - sudo a2enmod proxy_http
@@ -633,6 +642,51 @@ server {
   - sudo a2enmod proxy_balancer
   - sudo a2enmod proxy_connect
   - sudo a2enmod proxy_html
+
+  **Fedora & RHEL based**
+
+You can enable the necessary mods by opening the **00-proxy.conf** file and matching the text below.
+
+{: .file}
+**/etc/httpd/conf.modules.d/00-proxy.conf**
+~~~ conf
+. . . 
+
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
+LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+
+. . . 
+~~~
+
+3. Restart Apache.
+
+  **Debian & Ubuntu&**
+
+          systemctl restart apache2
+
+  **Fedora & RHEL based**
+
+          systemctl restart httpd
+
+4. Create an new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
+
+{: .file}
+**/etc/httpd/sites-available/kibana.conf**
+**/etc/apache2/sites-available/kibana.conf**
+~~~ conf
+
+<VirtualHost *:80>
+    ServerName kibana.**your_domain_or_ip**.com
+    ProxyPreserveHost On
+
+    ProxyPass / http://127.0.0.1:8080/
+    ProxyPassReverse / http://127.0.0.1:8080/
+</VirtualHost>
+
+~~~
+
 
 ## Secure The Wazuh API
 
