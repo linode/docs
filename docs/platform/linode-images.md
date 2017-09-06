@@ -41,7 +41,7 @@ Linode Images captures an exact copy of your disk at the moment when the process
 	[![Host Job Queue](/docs/assets/host-job-queue.png)](/docs/assets/host-job-queue.png)
 
  {: .note}
->Linode Images are limited to 2048MB of data per disk.  You will need to ensure that that data within your disk does not exceed this size limit.
+>Linode Images are limited to 2048MB of data per disk.  You will need to ensure that data within your disk does not exceed this size limit.
 
 Once the job in the host queue has completed, your Linode's disk has been captured and stored.
 

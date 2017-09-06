@@ -76,7 +76,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
         sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
 
 ## Using MySQL
 

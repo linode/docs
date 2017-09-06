@@ -75,7 +75,7 @@ This will ask you a series of questions about file locations and the revision co
 
 In this example, `example` is the machine's hostname, `username` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible.
 
-While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
+While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
 Manual Ikiwiki Configuration
 ----------------------------

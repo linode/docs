@@ -256,7 +256,7 @@ For an added layer of security, use password authentication to secure the connec
         redis-cli
         127.0.0.1:6379> AUTH slave_password
 
-3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to to the master server:
+3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to the master server:
 
         127.0.0.1:6379> INFO replication
         # Replication

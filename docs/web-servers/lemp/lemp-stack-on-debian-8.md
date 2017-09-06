@@ -157,7 +157,7 @@ For more information regarding Nginx configuration options, check out our [Overv
 
         sudo systemctl restart nginx
 
-You are now able to deploy PHP scripts with with your LEMP stack.
+You are now able to deploy PHP scripts with your LEMP stack.
 
 ## Install MySQL Database Server
 
