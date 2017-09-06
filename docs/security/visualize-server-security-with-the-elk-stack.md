@@ -524,3 +524,92 @@ This section ties everything together with the Wazuh API
 ## Configure Web Hosting
 
 Configuring Nginx or Apache as a reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for Nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.
+
+## Setup A Reverse Proxy Server
+
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section.
+
+### Nginx
+
+1. Navigate to your Nginx virtual host config directory. This is usually located in `/etc/nginx/conf` or `/etc/nginx/conf.d`. Create a new virtual host config file, naming it something like "kibana.conf". Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
+
+**Non SSL**
+
+{: .file}
+**/etc/nginx/conf.d**
+**/etc/nginx/conf**
+~~~ conf
+server {
+    listen 80;
+    # Remove this line below if you do not have IPv6 enabled.
+    listen [::]:80;
+    server_name **kibana.your_domain_name.com**;
+
+    location / {
+        proxy_pass http://**your_ip_address**:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+}
+~~~
+
+**SSL**
+
+{: .file}
+**/etc/nginx/conf.d**
+**/etc/nginx/conf**
+~~~ conf
+server {
+    listen 80;
+    listen [::]:80;
+    server_name kibana.adventurecatsnw.com;
+
+    # Redirect non-https traffic to https
+    if ($scheme != "https") {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl;
+
+    # Remove this line below if you do not have IPv6 enabled.
+    listen [::]:443 ssl;
+    server_name **kibana.your_domain_name.com**;
+
+    location / {
+        proxy_pass http://**your_ip_address**:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    ssl_certificate /path/to/ssl/certificate.crt;
+    ssl_certificate_key /path/to/ssl/certificate.key;
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+}
+~~~
+
+2. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one.
+
+        touch /etc/nginx/htpasswd.users
+        htpasswd -c /etc/nginx/.htpasswd.users YourNewUsername
+        chmod 644 /etc/nginx/.htpasswd.users
+
+3. Restart the Nginx server to load the new configuration.
+
+        systemctl restart nginx
+
+## Secure The Wazuh API
+
+
