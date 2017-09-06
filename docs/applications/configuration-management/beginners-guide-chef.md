@@ -20,6 +20,8 @@ external_resources:
 
 *Chef* is an automation platform that "turns infrastructure into code," allowing organizations or persons with large frameworks to generate a process that will save time and effort when making changes to part or all of their server fleet.
 
+![Chef for beginners](/docs/assets/a_beginners_guide_to_chef_smg.jpg)
+
 Chef works with three core components: The Chef server, workstations, and nodes. The Chef server is the hub of Chef operations, where changes are stored for use. Workstations are static computers or virtual servers where all code is created or changed. There can been as many workstations as needed, whether this be one per person or otherwise. Finally, nodes are the servers that need to be managed by Chef -- these are the machines that changes are being pushed to, generally a fleet of multiple machines that require the benefits of an automation program.
 
 [![Chef Workflow](/docs/assets/chef_graph-small.png)](/docs/assets/chef_graph.png)
