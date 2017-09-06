@@ -140,7 +140,7 @@ Before switching to the `enforce` state in SELinux, you have to understand conte
 	[user@centos ~]$ ls -Z 
 	drwxrwxr-x. user user unconfined_u:object_r:user_home_t:s0 test
 
-The output of of `ls -Z` may look familiar, but the `-Z` context flag prints out the SELinux security context of any file. 
+The output of `ls -Z` may look familiar, but the `-Z` context flag prints out the SELinux security context of any file. 
 
 SELinux marks every single object on a machine with a *context*. That means every file, daemon, and process has a context, according to SELinux. The context is broken into three parts: user, role and type. In SELinux, a policy controls which users can get which roles. Each specific role places a constraint on what `type` of files that user can enter. When a user logs in to a system, a role is assigned, which can be seen in the `ls -Z` example above: the output `unconfined_u` is a user role. 
 

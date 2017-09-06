@@ -214,7 +214,7 @@ Create the following file to define the `terraria` systemd service:
 The Terraria administration script needs two primary functions:
 
 *   Attaching to the running screen session, which offers a helpful administration console.
-*   The ability to broadcast input into the screen session so the script can be run to to save the world, exit the server, etc.
+*   The ability to broadcast input into the screen session so the script can be run to save the world, exit the server, etc.
 
 1.  Create a `terrariad` file, enter the following script, then save and close:
 
