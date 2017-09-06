@@ -610,6 +610,30 @@ server {
 
         systemctl restart nginx
 
+### Apache
+
+1. In order to function as a reverse proxy, *mod_proxy* must be installed.
+
+    **Debian & Ubuntu**
+
+        apt install libapache2-mod-proxy-uwsgi libxml2-dev -y
+
+    **Fedora & RHEL based**
+
+        yum install mod_proxy_html libxml2-devel
+
+2. Enable the necessary mods in Apache. You can run `a2enmod` and enter `*` to enable all mods, or selectively enable the following mods below.
+
+  - sudo a2enmod proxy
+  - sudo a2enmod proxy_http
+  - sudo a2enmod proxy_ajp
+  - sudo a2enmod rewrite
+  - sudo a2enmod deflate
+  - sudo a2enmod headers
+  - sudo a2enmod proxy_balancer
+  - sudo a2enmod proxy_connect
+  - sudo a2enmod proxy_html
+
 ## Secure The Wazuh API
 
 
