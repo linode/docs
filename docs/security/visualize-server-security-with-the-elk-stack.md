@@ -438,7 +438,7 @@ LS_GROUP=logstash
 | Value           | Parameter                                                                                  |
 | :-------------: | :----------------------------------------------------------------------------------------: |
 | server.port     | Change this value if the default port, 5601, is in use.                                    |
-| server.host     | Set this value to your Linode's external IP address                                        |
+| server.host     | Set this value to your Linode's external IP address.                                        |
 | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
 | logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
 | :-------------: | :----------------------------------------------------------------------------------------: |
@@ -525,9 +525,9 @@ This section ties everything together with the Wazuh API
 
 Configuring Nginx or Apache as a reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for Nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.
 
-## Setup A Reverse Proxy Server
+## Setup A Reverse Proxy Server To Host Kibana As a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section.
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended. 
 
 ### Nginx
 
@@ -567,12 +567,17 @@ server {
 ~~~ conf
 server {
     listen 80;
+    # Remove this line below if you do note have IPv6 enabled.
     listen [::]:80;
     server_name kibana.adventurecatsnw.com;
 
-    # Redirect non-https traffic to https
-    if ($scheme != "https") {
-        return 301 https://$host$request_uri;
+    location / {
+        proxy_pass http://**your_ip_address**:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
 
@@ -689,10 +694,6 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
     ProxyPass / http://**your_ip_address**:5601
     ProxyPassReverse / http://**your_ip_address**:5601
-
-    RewriteEngine On
-    RewriteCond %{HTTPS} off
-    RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 </VirtualHost>
 
 <VirtualHost *:443
@@ -721,6 +722,22 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
   **Fedora & RHEL based**
 
           systemctl restart httpd
+
+### Add The Kibana Site To The DNS Manager
+
+The new Kibana subdomain will need to be configured in the Linode DNS Manager.
+
+1. Login to the Linode Manager and select your Linode VPS. Click on *DNS Manager*. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
+
+{: .table .table-striped .table-bordered }
+| Field | Value |
+| :-------------: | :-----------: |
+| Hostname | Enter your subdomain name here - ex. kibana |
+| IP Address | Set this value to your Linode's external IP address.                                        |
+| TTL | Set this to 5 minutes. |
+| :-------------: | :-----------: |
+
+2. Click *Save Changes*.
 
 ## Secure The Wazuh API
 
