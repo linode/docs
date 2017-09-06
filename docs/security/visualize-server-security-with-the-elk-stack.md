@@ -309,7 +309,7 @@ config.python = [
 
 ## Install Elasticsearch, Logstash, and Kibana
 
-Install the ELK Stack via rpm files to get the latest versions of all the software.
+Install the ELK Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.5.2 was the most recent at the time of publishing.
 
 ### Elasticsearch
 
