@@ -815,4 +815,4 @@ Now you are ready to access the API and begin making use of your OSSEC ELK Stack
 
 ## Where To Go From Here
 
-Your OSSEC ELK Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules
+Your OSSEC ELK Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs in your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official Wazuh documentation. Links for further examination of these topics can be found in the External Resources section in this guide.
