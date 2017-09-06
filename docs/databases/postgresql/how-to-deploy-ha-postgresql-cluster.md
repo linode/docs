@@ -77,7 +77,7 @@ This section will guide you through the steps needed to install the above mentio
 
         sudo systemctl stop postgresql
 
-4. Patroni manages utilities that comes default with Postgres. In Ubuntu 16.04, these utilities are installed in the `/usr/lib/postgresql/9.5/bin` directory by default.
+4. Patroni uses some utilities that comes installed with Postgres located in the `/usr/lib/postgresql/9.5/bin` directory by default on Ubuntu 16.04.
 
    To ensure that Patroni can find these utilities, we can create symbolic links to these utilities in a folder that's present in the `PATH`:
 
