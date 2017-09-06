@@ -387,7 +387,7 @@ input {
 
 7. Follow this step if you are using CentOS 6 or RHEL 6.
 
-    1. Edit the file /etc/logstash/startup.options and in the line 30 change the LS_GROUP=logstash to LS_GROUP=ossec.
+    1. Edit the file /etc/logstash/startup.options and in line 30 change the LS_GROUP=logstash to LS_GROUP=ossec.
 
 {: .file}
 **/etc/logstash/startup.options**
@@ -430,7 +430,7 @@ LS_GROUP=logstash
         /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
 
 {: .note}
-> The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled.
+> The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
 
 5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
 
@@ -679,6 +679,13 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
     ProxyPass / http://**your_ip_address**:5601
     ProxyPassReverse / http://**your_ip_address**:5601
+
+    <Directory "/">
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
 </VirtualHost>
 ~~~
 
@@ -694,6 +701,13 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
 
     ProxyPass / http://**your_ip_address**:5601
     ProxyPassReverse / http://**your_ip_address**:5601
+
+    <Directory "/">
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
 </VirtualHost>
 
 <VirtualHost *:443
@@ -710,10 +724,23 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
     SSLCertificateFile /path/to/cert_file/ssl.crt
     SSLCertificateKeyFile /path/to/ssl/private.key
     SSLCertificateChainFile /path/to/ssl/server.ca.pem
+
+    <Directory "/">
+        AuthType Basic
+        AuthName "Restricted Content"
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    </Directory>
 </VirtualHost>
 ~~~
 
-4. Restart Apache.
+4. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one.
+
+        touch /etc/apache2/htpasswd.users
+        htpasswd -c /etc/apache2/.htpasswd.users YourNewUsername
+        chmod 644 /etc/apache2/.htpasswd.users
+
+5. Restart Apache.
 
   **Debian & Ubuntu&**
 
@@ -739,6 +766,53 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 2. Click *Save Changes*.
 
-## Secure The Wazuh API
+## Open The Kibana Port
 
+Kibana's default access port, 5601, must be opened for TCP traffic. Instructions are presented below for UFW, Iptabes, and FirewallD.
 
+**UFW**
+
+        ufw allow 5601/tcp comment "Kibana port"
+
+**Iptables**
+
+        iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
+
+{: .note}
+> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
+
+**FirewallD**
+
+        firewall-cmd --add-port=5601/tcp --permanent
+
+## Access The Wazuh API
+
+Now you are ready to access the API and begin making use of your OSSEC ELK Stack!
+
+1. The Wazuh API requires users to provide credentials in order to login. Navigate to `/var/ossec/api/configuration/auth`. Replace "NewUserName" with a user name of your choosing. Set a password following the system prompts.
+
+        sudo node htpasswd -c user NewUserName
+
+2. Restart the Wazuh API.
+
+        systemctl restart wazuh-api
+
+3. Check the status of all daemon components and verify they are running.
+
+        systemctl -l status wazuh-api
+        systemctl -l status wazuh-manager
+        systemctl -l status elasticsearch
+        systemctl -l status logstash
+        systemctl -l status kibana
+        systemctl -l status nginx
+
+{: .note}
+> If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. You will find the rules and decoders in the `var/ossec/ruleset` directory. To disable, rename the file with any other file extension.
+
+4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL might look like *kibana.your_domain.com*. You can also reach Kibana by navigating to your server's IP address and specifying port 5601. Login with the credentials you setup for your Kibana site.
+
+5. If everything is working correctly, you should have landed on the *Discover* page. Navigate to the *Wazuh* page using the left hand side menu. You will be immediately presented with the API configruation page. Underneath the *ADD NEW API* button, enter the user credentials you created for Wazuh. For *URL* and *Port*, enter "http(s)://your_ip_address" and "55000", respectively. Click *SAVE*.
+
+## Where To Go From Here
+
+Your OSSEC ELK Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules
