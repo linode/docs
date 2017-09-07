@@ -161,7 +161,7 @@ Installing the ELK Stack components can be accomplished in various ways, however
 
 Follow the section relevant to your Linux distribution to install the Wazuh components.
 
-### RPM Intallation
+### RPM Installation (Fedora, RHEL, CentOS)
 
 1. Create the repository file in the indicated location and paste the provided text using your preferred text editor.
 
@@ -225,7 +225,7 @@ protect=1
 
             yum install wazuh-api
 
-### DEB Installation
+### DEB Installation (Debian & Ubuntu)
 
 1. Install the GPG key.
 
