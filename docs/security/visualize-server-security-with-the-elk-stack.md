@@ -88,7 +88,7 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 # Setup The ELK Stack And Integrate Wazuh OSSEC
 
-While various ways of installing Solr exist, downloading from the Apache website ensures you will receive the latest version.
+Installing the ELK Stack components can be accomplished in various ways, however installation via rpm will yield the latest versions.
 
 ## Update System And Install Pre-requisites
 
@@ -159,7 +159,7 @@ While various ways of installing Solr exist, downloading from the Apache website
 
 ## Install Wazuh
 
-Wazuh can be installed via RPM or DEB packages. Follow the section relevant to your Linux distribution.
+Follow the section relevant to your Linux distribution to install the Wazuh components.
 
 ### RPM Intallation
 
