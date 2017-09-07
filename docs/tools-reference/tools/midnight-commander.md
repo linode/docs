@@ -145,11 +145,15 @@ Tip: a lot of actions can be cancelled in MC with a double tap on the **ESC** ke
 
 Press **F9**, followed by **l** (L), then select the **SFTP link** menu entry. In the dialog box titled **SFTP to machine** enter `sftp://your_user@203.0.113.0`. Replace `your_user` with the username you have created on the remote machine and `203.0.113.1` with the IP address of your server. This will work only if the server at the other end accepts password logins. If you're logging in with SSH keys, then you'll first need to create and/or edit `~/.ssh/config`. It could look something like this:
 
+{: .file }
+~/.ssh/config
+:   ~~~ conf
     Host sftp_server
-    	HostName 203.0.113.1
-    	Port 22
-    	User your_user
-    	IdentityFile ~/.ssh/id_rsa
+        HostName 203.0.113.1
+        Port 22
+        User your_user
+        IdentityFile ~/.ssh/id_rsa
+    ~~~
 
 You can choose whatever you want as the **Host** value, it's only an identifier. **IdentityFile** is the path to your private SSH key.
 
