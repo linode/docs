@@ -207,9 +207,9 @@ baseurl=https://packages.wazuh.com/yum/fc/$releasever/$basearch
 protect=1
 ~~~
 
-2. Install Wazuh Manager.
+2. Install the Wazuh Manager and `curl`.
 
-        yum install wazuh-manager
+        yum install wazuh-manager curl
 
 3. Install Wazuh API.
 
@@ -227,7 +227,7 @@ protect=1
 
 ### DEB Installation (Debian & Ubuntu)
 
-1. Install the GPG key.
+1. Install the GPG key. Install `curl` as well if necessary with `apt install curl`.
 
         curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | apt-key add -
 
@@ -279,17 +279,20 @@ The Wazuh API requires Python version 2.7 or higher. It will be installed by def
               yum install -y python27
 
       {: .note}
-      > You may need to enable a repository to get python27. Try to enable the repo using the following lines:
+      > You may need to enable a repository to get python27. You can enable the repo using either of the following lines:
       > `yum-config--manager --enable rhui-REGION-rhel-server-rhscl`
       > `yum-config-manager --enable rhel-server-rhscl-6-rpms`
+      > If you do not have `yum-config-manager` installed, install it with `yum install yum-utils`.
 
       3. CentOS/RHEL 7
 
               yum install -y python
 
-    **Debian & Ubuntu
+    **Debian & Ubuntu**
 
-        apt install python
+      1. All distributions:
+
+              apt install python
 
 3. If by necessity you need to preserve an older version of Python, you can install version 2.7.x alongside it and set a custom path for the Wazuh API. Edit the **config.js** file to set the custom path.
 
