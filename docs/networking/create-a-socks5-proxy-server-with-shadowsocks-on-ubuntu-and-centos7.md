@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This tutorial details how to install Shadowsocks-libev, a full-featured, resource-efficient port of the web proxy tool, Shadowsocks.'
-keywords: 'shadowsocks,proxy,socks,ubuntu,centos'
+keywords: 'shadowsocks,proxy,shadowsocks server,ubuntu,centos, strong vpn'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, August 16, 2017'
 modified: Wednesday, August 16, 2017
@@ -18,11 +18,11 @@ external_resouces:
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something open-source for which our core audience could use a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
-Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode server to host the Shadowsocks daemon and a client installed on your personal PC or mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be indiscernible from other traffic to third-party monitoring tools, and able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode server to host the Shadowsocks daemon and a client installed on your personal PC or mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
 Since there is currently no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from source.
 
@@ -64,7 +64,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
         ./configure
         make && make install
 
-## Configure Shadowsocks
+## Configure the Shadowsocks Server
 
 1. Create a new system user for Shadowsocks:
 
@@ -74,7 +74,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **CentOS 7**
 
-	    adduser --system --no-create-home -s /bin/false shadowsocks
+	adduser --system --no-create-home -s /bin/false shadowsocks
 
 2. Create a new directory for the configuration file:
 
@@ -164,7 +164,7 @@ Apply the following optimizations to your system kernel to provide for a smooth 
       net.ipv4.tcp_mtu_probing = 1
 
       # for high-latency network
-      # net.ipv4.tcp_congestion_control = hybla
+      net.ipv4.tcp_congestion_control = hybla
 
       # for low-latency network, use cubic instead
       net.ipv4.tcp_congestion_control = cubic
@@ -227,7 +227,7 @@ Open port `8388` for the Shadowsocks Client:
 
 ## Install a Shadowsocks Client
 
-The second stage to a Shadowsocks setup is to install a client on the user's device. This could include a computer, mobile device, tablet, and even home network routers. Supported operating systems include Windows, OS X, iOS, Linux, Android, and OpenWRT.
+The second stage to a Shadowsocks setup is to install a client on the user's device. This could include a computer, mobile device, tablet, and even home network router. Supported operating systems include Windows, OS X, iOS, Linux, Android, and OpenWRT.
 
 ### Mac OS Shadowsocks Client
 
@@ -235,7 +235,7 @@ Download ShadowsocksX-NG, or the appropriate GUI or CLI client for your system:
 
 ![Shadowsocks download page](/docs/assets/shadowsocks/shadowsocks_download.png "Shadowsocks download page")
 
-Once the program is installed, run it, and enter your information in the **New Server** button:
+Once the program is installed, run it, and then enter your information in the **New Server** button:
 
 ![Shadowsocks configuration](/docs/assets/shadowsocks/shadowsocks_config.png "Shadowsocks configuration")
 
