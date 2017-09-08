@@ -2,8 +2,8 @@
 author:
   name: Huw Evans
   email: me@huw.nu
-description: 'If you have a YubiKey, you can use it as a 2nd factor for Secure Shell (SSH) authentication—or make it the primary access method.'
-keywords: 'ssh,authentication,yubikey,2fa,2 factor authentication,otp'
+description: 'This guide shows you how to use a YubiKey for Two-Factor secure shell authentication - or make it the primary access method.'
+keywords: 'ssh,yubikey,2fa,2 factor authentication,otp'
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 title: 'How to use a YubiKey for Two-Factor Secure Shell Authentication'
 published: Monday, August 28, 2017
@@ -19,10 +19,11 @@ external_resources:
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
+## What is Yubikey?
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey4/) are small USB dongles that you can plug into your computer. They can simulate keyboard input, allowing you to enter One Time Passwords (OTPs) with the press of a button to authenticate with services like Google, Dropbox and GitHub.
 
-YubiKeys can also be used when logging into a remote server. This guide will show you how to configure your Linode so that a YubiKey must be plugged in and tapped in order to log in to your server using `ssh`. Depending on your needs, you can also require a password in addition to the YubiKey for an extra level of security.  
+YubiKeys can also be used when logging into a remote server. This guide will show you how to configure your Linode so that a YubiKey must be plugged in and tapped in order to log in to your server using `ssh`. Depending on your needs, you can also configure a password in addition to the YubiKey for an extra level of security.  
 
 If you want to work through this guide but don't have a YubiKey, you can find one [at this link](https://www.yubico.com/products/yubikey-hardware/). As of this writing, any key that supports 'Yubico OTP' will support two-factor SSH authentication.
 
@@ -99,7 +100,7 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
         sudo touch /etc/ssh/authorized_yubikeys
 
-4. Populate this file with the usernames of the users you want to enable two-factor authentication for and their YubiKey IDs. You can obtain the ID by opening a text editor and touching the button on the YubiKey, and selecting *only the first 12 characters*. The first line below would be a typical configuration. The subsequent lines show a configuration where users `user2`, `user3`, and `user4` use multiple YubiKeys and plan to access the server with all of them.
+4. Populate this file with the usernames for which you want to enable two-factor authentication and their YubiKey IDs. You can obtain the ID by opening a text editor and touching the button on the YubiKey, and selecting *only the first 12 characters*. The first line below would be a typical configuration. The subsequent lines show a configuration where users `user2`, `user3`, and `user4` use multiple YubiKeys and plan to access the server with all of them.
 
     {: .file}
     /etc/ssh/authorized_yubikeys
@@ -142,21 +143,21 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
     If you want to only use a YubiKey for single-factor authentication, set `PasswordAuthentication no`.
 
-7. Since you've edited SSH settings, you will need to restart your Linode. You can do this from the Linode Manager, or by typing `sudo reboot`.
+7. Since you've edited SSH settings, you will need to restart your Linode. You can do this from the Linode Manager or by typing `sudo reboot`.
 
 ## Log Back In
 
-Now that this process is done, you can test your login by typing `ssh user@example.com`. Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button—it will enter the key for you. Then type in your password if you are using multi-factor authentication. It will look something like the image below.
+Now that this process is done, you can test your login by typing `ssh user@example.com`. Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
 
 ![SSH window](/docs/assets/yubikey-ssh.png)
 
 You can now log into your server.
 
-## Troubleshooting
+## Troubleshoot Yubikey, If Needed
 
-If you're experiencing any problems, make sure you've followed all of the steps in this guide and restarted your server. If this doesn't solve your issues, you can enable logging:
+If you encounter any problems, make sure you've followed all of the steps in this guide and restarted your server. If these steps don't solve your issues, you can enable logging, by following these steps:
 
-1. To the end of the line you added in `/etc/pam.d/sshd`, add the word `debug`:
+1. Add the word `debug` to the end of the line you added in `/etc/pam.d/sshd`:
 
     {: .file-excerpt}
     /etc/pam.d/sshd
@@ -174,6 +175,6 @@ If you're experiencing any problems, make sure you've followed all of the steps 
         sudo journalctl -f -l
         tail -f /var/run/pam-debug.log
 
-4. Log in again and looking at this file for hints as to what is causing the problem.
+4. Log in again and analyze this file for clues as to what is causing the problem.
 
-5. Once you're done, disable debugging by removing the `debug` flag from `/etc/pam.d/sshd` and delete the log file.
+5. Once you're done, disable debugging by removing the `debug` flag from `/etc/pam.d/sshd`. Then, delete the log file.
