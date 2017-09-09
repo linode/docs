@@ -95,7 +95,7 @@ Graylog uses Elasticsearch for storing the log messages and offers a searching f
     /etc/elasticsearch/elasticsearch.yml
     : ~~~
       cluster.name: graylog
-      network.host: 192.168.0.102
+      network.host: 127.0.0.1
       discovery.zen.ping.timeout: 10s
       discovery.zen.ping.multicast.enabled: false
       discovery.zen.ping.unicast.hosts: ["192.168.0.102:9300"]
@@ -112,13 +112,26 @@ Save and close the, then restart Elasticsearch service with the following comman
 
     systemctl restart elasticsearch
 
-7.  Once the Elasticsearch gets fully restarted, it should be listening on port `9200`. You can check the response by running the following command:
+7.  Once the Elasticsearch gets fully restarted, it should be listening on port `9200` and port `9300`. You can see the Elasticsearch listening port with the following command:
 
-        curl -X GET http://192.168.0.102:9200
+    netstat -ant
+
+Output:
+
+    tcp6       0      0 127.0.0.1:9200          :::*                    LISTEN     
+    tcp6       0      0 ::1:9200                :::*                    LISTEN     
+    tcp6       0      0 127.0.0.1:9300          :::*                    LISTEN     
+    tcp6       0      0 ::1:9300                :::*                    LISTEN     
+
+Port `9200` is used for REST and port `9300` is used for nodes communication.
+
+You can check the Elasticsearch response by running the following command:
+
+    curl -X GET http://localhost:9200
    
 8.  You can also test the health of the Elasticsearch with the following command:
 
-        curl -XGET 'http://192.168.0.102:9200/_cluster/health?pretty=true'
+        curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
 
 {: .note}
 >
@@ -223,6 +236,7 @@ You should see the following output:
 {: .note}
 >
 > Replace the `root_password_sha2` and `password_secret` value with which we have generated previously.
+> Also remember that `elasticsearch_cluster_name` must be same as the one declared in `cluster.name` under `elasticsearch.yml` file
 
 Save the file when you are finished.
 Finally, start the Graylog server and enable it to start at boot time by running the following command:
@@ -240,7 +254,6 @@ Now, Graylog is up and running, Its time to access the Graylog web interface.
 1.  Open your web browser and navigate to URL `http://192.168.0.102:9000`, you will be redirected to the Graylog login page as shown below:
 
     [![Graylog Login Page](/docs/assets/Screenshot-of-graylog-login-page_small.png)](/docs/assets/Screenshot-of-graylog-login-page.png)
-
 
 2.  Provide the username as `admin` and password as `roothashpassword` (which you have generated previously), then click on the **Sign In** button. You should see the Graylog default dashboard in below image:
 
@@ -270,6 +283,7 @@ Save and close the file when you are finished, then restart your server to apply
 6.  After restarting, login to your Graylog server web interface and click on the System > Inputs. Then click on the **Show received messages** button. You should see all the syslog messages in the following image:
 
     [![Graylog Log Messages](/docs/assets/Screenshot-of-graylog-server-messeges_small.png)](/docs/assets/Screenshot-of-graylog-server-messeges.png)
+
 
 
 
