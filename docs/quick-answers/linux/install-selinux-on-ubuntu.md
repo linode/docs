@@ -21,6 +21,8 @@ Ubuntu has a Mandatory Access Control (MAC) system similar to SELinux, named App
 
 Linode does not support SELinux by default. To boot a distribution-specific kernel, follow this [guide](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm), and select GRUB2 in the manager's kernel menu. 
 
+If you are using a Linode, instead of using the `reboot` command, reboot the machine from the Linode manager. 
+
 ### Remove AppArmor
 
 {:.caution}

@@ -3,13 +3,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Terraria is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. This guide will outline everything required to run a Terraria server for yourself or others to play on'
+og_description: 'Run a Terraria server for yourself and your friends to play on. This guide will teach you setup and configuration for Linux distributions.'
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, December 21st, 2015'
 modified: Monday, April 3, 2017
 modified_by:
   name: Linode
-title: 'Host a Terraria Server on Your Linode'
+title: 'How to Setup a Terraria Linux Server'
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl
