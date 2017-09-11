@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Friday, April 3, 2015'
 modified_by:
   name: Linode
-published: 'Friday. April 3, 2015'
+published: 'Friday, April 3, 2015'
 title: 'Custom Compiled Kernel with PV-GRUB on Debian & Ubuntu'
 ---
 
