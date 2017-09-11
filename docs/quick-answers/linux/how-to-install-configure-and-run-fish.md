@@ -17,7 +17,7 @@ external_resources:
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 ---
 
-![fish_banner](/docs/assets/fish/fish_banner.png)
+![fish_banner](/docs/assets/fish/fish_banner.jpg)
 
 Fish, the Friendly Interactive Shell, is a replacement shell, which, out of the box, offers auto-suggestions; programmable completions based on installed man pages; a fully functional, readable, scripting language; and colored text support.
 
