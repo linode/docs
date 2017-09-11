@@ -2,127 +2,126 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'How to set up a manual kill switch on OpenVPN clients'
+description: 'How to set up a VPN firewall on OpenVPN clients'
 keywords: 'vpn, security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Monday, September 11, 2017'
 modified_by:
   name: Linode
 published: 'Friday, September 8, 2017'
-title: VPN Firewall
+title: Setting Up a Firewall for Your VPN Client
 external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+- '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
+- '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
 ---
 
-A *VPN firewall* can be defined as a set of firewall rules designed to prevent unencrypted Internet access or to exclusively allow Internet access via a VPN server or gateway only. Thereby preventing any sort of leaks that might occur owing to abrupt disconnection of VPN even when you are not actively monitoring your system or using it.
+VPNs are often used to evade censorship, surveillance, or geolocation by routing internet traffic through a secure, encrypted tunnel. However, when using a VPN in this way, there is always a risk that the VPN connection will unexpectedly drop, which can result in the release of personal information over the public internet.
 
-Commercial VPN providers usually include client software with settings to manage the firewall function for you. There are some issues involved. For starters most custom VPN software are not well maintained and not using production ready stable OpenVPN releases, you could be using a vulnerable or defective OpenVPN version which is the very core of VPN tunnelling.
-
-A guide on how to setup a secure, hardened vanilla OpenVPN server on Debian, Ubuntu and more is already available for you.
-
-Now the question is how to setup a VPN kill switch or firewall for OpenVPN clients who would be connecting to our own OpenVPN server?
-
-The idea is to block or drop every connection but connection to the VPN server at a particular port using a specific protocol. And allowing all connections exclusively via VPN tunnel. Such that in case VPN connection breaks or disconnects for any reason, the system is in a state where the only thing that would work is connection to the a specific VPN server at a particular port using a specific protocol.
-
-Set up a VPN firewall for GNU/Linux, macOS or OS X & Windows to prevent any leaks including but not limited to DNS leaks outside VPN network at all hence completely denying Internet access on a given system without an active encrypted VPN connection.
-
-{: .note }
->
-> Note: Some people might suggest you to allow DNS queries via your default gateway but I don’t. If you wish to allow it, you are at liberty to do so.)
+For this reason, VPNs are often used in conjunction with a firewall to ensure that no internet traffic is allowed except through the VPN gateway. By creating a specific set of firewall rules designed to prevent unencrypted internet access, it is possible to protect your true IP address or other personal information from being exposed in the event of a sudden disconnection from the VPN server. This functionality is sometimes referred to as a VPN "kill switch," because it has the effect of instantly blocking all connections to the internet if the VPN connection should fail.
 
 ## Before You Begin
 
-1.	IP address or VPN gateway you wish to setup for VPN kill switch. (Public IP of your Linode Linux Server where you have your OpenVPN server setup).
+This guide assumes that you already have a secure OpenVPN server running on your Linode, and have at least one client configured to connect to the server. If you don't have these set up yet, or are unsure how to properly secure your OpenVPN connection, please see our three-part series on setting up a hardened OpenVPN environment:
 
-2.	Name of the network interface connected to your default gateway or Internet and subnet of your local network.
+1.	[Set Up a Hardened OpenVPN Server with Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server)
 
-For the purpose of this guide I am going to use ***wlp6s0*** as network interface and *192.168.0.0/24* as the subnet of local network and **x.x.x.x** as the IP of OpenVPN server hosted by me.
+2. [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/assets/tunnel-traffic-through-openvpn.png "Tunnel Your Internet Traffic Through an OpenVPN Server")
 
-In order to find out both the details we use route command. Keep in mind it requires root or sudo access. Syntax for route command would be:
+3. [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices)
 
-    # route
+You will also need to know the name of the network interface connected to your default gateway or Internet and subnet of your local network. You can find this information by running the `route` command on your client. Keep in mind that this requires root or sudo access:
 
 ![route-command-output](https://technofaq.org/wp-content/uploads/2017/08/Screenshot_20170806_182215.png)
 
+ The Iface column in the table above gives you your network interface name and the last line gives you the subnet of your local network.
 
- As you can see in the picture above Iface value in the table gives you your network interface name and the last line gives you the subnet of your local network.
+ {: .note}
+ >
+ >Throughout this guide, replace `wlp6s0` and `198.168.0.1/24` with the interface and IP address/subnet found by running `route` on your client. Replace `198.51.100.0` with the IP address of your OpenVPN server.
 
-C.	Changes in *client.ovpn* configuration file as follows:
+## Configure client.ovpn
 
-i. Set the tun device to tun0 in client configuration file, if not set already. (Optional but recommended):
+On your client, change the `client.ovpn` configuration file as follows:
 
-    dev tun0
+1. Set the tun device to tun0, if not set already. (Optional but recommended):
 
-ii. Change host names to IPs for –remote option in client configuration file (Note: This step is not required for those who allowed DNS nameservers in the VPN firewall via default gateway).
+    {:.file-excerpt}
+    client.ovpn
+    :   ~~~
+        dev tun0
+        ~~~
 
-Your client configuration file for OpenVPN must have IP(s) in –remote instead of host names as follows:
+2. Make sure your remote is an IP address instead of a hostname as follows:
 
-    remote x.x.x.x 1194
+    {:.file-excerpt}
+    client.ovpn
+    :   ~~~
+        remote 198.51.100.0 1194
+        ~~~
 
-Replace x.x.x.x above with Public IP address of your Linux server where your OpenVPN server is setup.
+## GNU/Linux Clients:
 
-D. Root/sudo/Admin access on client systems where you wish to deploy VPN firewall or kill switch.
+The majority of GNU/Linux users use either `iptables` or `ufw` to manage their firewall. This guide will cover configuration for both of these options.
 
-GNU/Linux users:
+### VPN firewall using iptables
 
-Majority of GNU/Linux users either use iptables or ufw to manage their firewall. We have written separate sections for both tools below for your convenience.
+{: .caution}
+>
+> You may want to back up your current iptables ruleset with `iptables-save`.
 
-## VPN firewall using iptables**
+1. Create a shell script with the following `iptables` ruleset:
 
-(Note: You are advised to backup your current iptables ruleset with *iptables-save*)
+    {:.file}
+    iptables-vpn.sh
+    :   ~~~
 
-*iptables* ruleset is already written for you.  Here take a look:
+        #!/bin/bash
+        iptables --flush
+        iptables --delete-chain
+        iptables -t nat --flush
+        iptables -t nat --delete-chain
+        iptables -P OUTPUT DROP
+        iptables -A INPUT -j ACCEPT -i lo
+        iptables -A OUTPUT -j ACCEPT -o lo
+        iptables -A INPUT --src 192.168.0.0/24 -j ACCEPT -i wlp6s0
+        iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT -o wlp6s0
+        iptables -A OUTPUT -j ACCEPT -d 198.51.100.0 -o wlp6s0 -p udp -m udp --dport 1194
+        iptables -A INPUT -j ACCEPT -s 198.51.100.0 -i wlp6s0 -p udp -m udp --sport 1194
+        iptables -A INPUT -j ACCEPT -i tun0
+        iptables -A OUTPUT -j ACCEPT -o tun0
 
-    #!/bin/bash
-    iptables --flush
-    iptables --delete-chain
-    iptables -t nat --flush
-    iptables -t nat --delete-chain
-    iptables -P OUTPUT DROP
-    iptables -A INPUT -j ACCEPT -i lo
-    iptables -A OUTPUT -j ACCEPT -o lo
-    iptables -A INPUT --src 192.168.0.0/24 -j ACCEPT -i wlp6s0
-    iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT -o wlp6s0
-    iptables -A OUTPUT -j ACCEPT -d x.x.x.x/32 -o wlp6s0 -p udp -m udp --dport 1194
-    iptables -A INPUT -j ACCEPT -s x.x.x.x/32 -i wlp6s0 -p udp -m udp --sport 1194
-    iptables -A INPUT -j ACCEPT -i tun0
-    iptables -A OUTPUT -j ACCEPT -o tun0
+        ~~~
 
+2. Save the script as `iptables-vpn.sh`, then set the permissions using `chmod` and execute the script:
 
-Above iptable rule set expunges every pre-exiting rule set in iptables and outrightly drops every outgoing connection other than the local traffic, local network's subnet and my OpenVPN server's IP that to at a particular port (port 1194) using a specific protocol (udp). Also all incoming and outgoing connections are allowed over virtual network interface *tun0*.
+        chmod +x iptables-vpn.sh
+        ./iptables-vpn.sh
 
-You can copy *iptables* rule set  from above and save it as **iptables-ks.sh** for your convenience to edit/execute them.
+This rule set expunges the pre-exiting rule set in iptables and instructs the firewall to drop every outgoing connection other than local traffic, the local network's subnet and your OpenVPN server's IP at a particular port (port 1194) using a specific protocol (udp). In addition, all incoming and outgoing connections are allowed over the virtual network interface `tun0`.
 
-Optional ip6tables rule set to be added in **iptables-ks.sh** for your IPv6 OpenVPN setup:
+Your VPN firewall is now active.
 
-    ip6tables --flush
-    ip6tables --delete-chain
-    ip6tables -t nat --flush
-    ip6tables -t nat --delete-chain
-    ip6tables -P OUTPUT DROP
-    ip6tables -A INPUT -j ACCEPT -i tun0
-    ip6tables -A OUTPUT -j ACCEPT -o tun0
+These settings are temporary and will be cleared when you reboot your Linode. In order to make the firewall permanent, you can install the `iptables-persistent` package for your Linux distribution.
 
-In order to active *iptables* rule set in *iptables-ks.sh* for deploying a Kill switch, open a terminal with root/sudo rights and do as follows:
+Alternatively, you can set the `iptables-vpn.sh` to run on boot by adding this line to the end of `/etc/crontab`:
 
-    # chmod +x iptables-ks.sh
-    # ./iptables-ks.sh
-
-Congrats! Your VPN kill switch or firewall is active
-
-These settings are temporary and would be wiped upon reboot. In order to prevent it you might need to install “**iptables-persistent**” package for your distribution.
-
-Or set it to run on boot by adding this line to the end of /etc/crontab:
-
+{: .file-excerpt}
+/etc/crontab
+:   ~~~
     @reboot root /path/iptables-ks.sh
+    ~~~
 
+### VPN Firewall with ufw
 
-    **b. Hello “ufw” users.**
-    (Note: We recommend you to backup your current firewall ruleset.)
+{: .caution}
+>
+> You may want to back up your current firewall ruleset.
 
-    I already wrote ufw ruleset for you.  Here take a look:
+1. Create a new shell script containing the following commands:
 
+    {:.file}
+    ufw-vpn.sh
+    :   ~~~
         ufw --force reset
         ufw default deny incoming
         ufw default deny outgoing
@@ -130,52 +129,45 @@ Or set it to run on boot by adding this line to the end of /etc/crontab:
         ufw allow out on tun0
         ufw allow in on wlp6s0 from 192.168.0.0/24
         ufw allow out on wlp6s0 to 192.168.0.0/24
-        ufw allow out on wlp6s0 to x.x.x.x port 1194  proto udp
-        ufw allow in on wlp6s0 from x.x.x.x port 1194 proto udp
+        ufw allow out on wlp6s0 to 198.51.100.0 port 1194  proto udp
+        ufw allow in on wlp6s0 from 198.51.100.0 port 1194 proto udp
         ufw enable
+        ~~~
 
-    You can copy the ufw rules from above and save it as ufw-ks.sh for your convenience to edit/execute them.
+2. Save the script as `ufw-vpn.sh`, then set the permissions using `chmod` and execute the script:
 
-    Open a terminal and gain sudo access or root access and do as follows:
+        chmod +x ufw-ks.sh
+        ./ufw-ks.sh
 
-        # chmod +x ufw-ks.sh
-        # ./ufw-ks.sh
+Your VPN firewall is now active. Use `ufw disable` if you want to disable the firewall.
 
-    Congrats! Your VPN kill switch or firewall is active.
+## Mac OS Clients:
 
-    Mac OS X users:
+In order to setup a VPN firewall on Mac OS, you will use a command line tool called `pf`.
 
-    In order to setup kill switch or VPN firewall on OS X, we are going to use a command line tool called pf.
+1. Edit the `pf` configuration file:
 
-    Let us begin by editing the configuration file of pf at /etc/pf.conf in a terminal window as follows:
-
-        # nano /etc/pf.conf
-
-    In order to block all the connections other than to netblock or IP of VPN server(s) at a port using a particular protocol, we we would append /etc/pf.conf and add the following lines:
-
+    {:.file-excerpt}
+    /etc/pf.conf
+    :   ~~~
         block drop all
         pass on lo0
         pass on utun0
-        pass out proto udp from any to x.x.x.x port 1194
+        pass out proto udp from any to 198.51.100.0 port 1194
+        ~~~
 
-    Save and exit.
+2. Import the newly added rules as follows:
 
-    Once you are done editing the file. Let us import the newly added rules as follows:
+        pfctl -f /etc/pf.conf
 
-        # pfctl -f /etc/pf.conf
+3. Turn on the firewall:
 
-    Lets turn on the firewall which is not ON by default as follows:
+        pfctl -e
 
-        # pfctl -e
+Once `pf` is enabled, your VPN firewall is active. Use `pfctl -d` if you need to deactivate the firewall.
 
-    Once the pf is enabled, your VPN firewall is active.
+In recent versions of OS X or macOS with the Tunnelblick OpenVPN client, you might have an unused `utun` interface, in which case you will not be able to connect to the VPN server. You can check for unused interfaces with `ifconfig`.
 
-    Note: In recent version of OS X or macOS with Tunnelblick OpenVPN client, you might have unused *utun* interfaces which can be check from a terminal as follows:
+If you have an unused `utun0`, for example, then change `pass on utun0` in pf.conf:
 
-        # ifconfig
-
-    So in case you already have an unused ***utun0*** for example then change **pass on utun0** in pf.conf to as follows:
-
-        pass on utun1
-
-    Or else you might get connected but won't be able to connect anywhere.
+    pass on utun1
