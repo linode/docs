@@ -2,27 +2,29 @@
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
-description: 'Turtl is a privacy Conscious Cloud Storage Service'
-keywords: 'turtl, privacy, ubuntu'
+description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
+keywords: 'install turtl, cloud-based storage, monitor system security, ubuntu'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, September 6, 2017
 modified_by:
   name: Linode
 Published: Tuesday, August 14, 2017
-title: 'How to Install the Turtl Server on Ubuntu'
+title: 'How to Install a Turtl Server on Ubuntu'
 
 ---
 
 ![Turtl_Banner](/docs/assets/turtl/Turtl.jpg)
 
-[Turtl](https://turtapp.com/docs) is an open source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks, and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security. The Turtl server is written in Common Lisp, and the low level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
+[Turtl](https://turtapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security. 
+
+The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 3.  Update your system:
 
@@ -36,7 +38,7 @@ The Turtl server has to be built from source. Download all of the dependencies a
     apt install wget curl libtool subversion make automake git
 
 
-### Clozure Common Lisp, QuickLisp , Libuv, RethinkDB:
+### Libuv, RethinkDB, Clozure Common Lisp, QuickLisp:
 
 
 #### Libuv
@@ -58,7 +60,7 @@ After the package is built, run `sudo ldconfig` to maintain the shared libracy c
 
 #### RethinkDB
 
-[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to the Turtl [documentation](https://turtlapp.com/docs/server/), RethinkDB just needs to be installed, and Turtl will take care of the rest.
+[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to the Turtl [documentation](https://turtlapp.com/docs/server/), RethinkDB just needs to be installed; Turtl will take care of the rest.
 
 RehinkDB has community-maintained packages on most distributions. On Ubuntu, you have to add the RethinkDB to your list of repositories:
 
@@ -113,8 +115,6 @@ Now, running `ccl64`, or `ccl` depending on your system, will launch a Lisp envi
     about CCL visit http://ccl.clozure.com.  To enquire about Clozure's Common Lisp
     consulting services e-mail info@clozure.com or visit http://www.clozure.com.
 
-    ?
-
 To exit the environment type `(quit)`.
 
 #### QuickLisp and ASDF
@@ -168,7 +168,7 @@ Load and install `asdf.lisp` in your CCL environment:
 	(quit)
 
 
-### Installing Turtl
+### Install Turtl
 
 Clone Turtl from the Github repository:
 
@@ -223,7 +223,7 @@ You now have a functioning Turtl server. Add files, store passwords, and save bo
 
 ### Next Steps
 
-Turtl does not have a lot of official documentation. Fred C has created an install guide for Turtl on Debian that is also very helpful for making it work in Ubuntu 16.10. Take a look at the Turtl Google Group, and Fred C's guide:
+Turtl does not have much official documentation. Fred C has created an install guide for Turtl on Debian that is also very helpful for making it work on Ubuntu 16.10. Take a look at the Turtl Google Group, and Fred C's guide:
 
 *  [Fred C's Install on Debian Guide](https://groups.google.com/forum/#!topic/turtl/q3kAYnAcH0s)
 *  [Turtl Google Group](https://groups.google.com/forum/#!forum/turtl)
