@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to host a Half-Life 2: Deathmatch server on a Linode running Debian or Ubuntu.'
-keywords: 'half-life 2,deathmatch,game,server,steam,steamcmd,hl2'
+keywords: 'half-life 2,deathmatch,steamcmd,host,hl2,multiplayer first-person shooter video game'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Thursday, August 17, 2017
 modified: Thursday, August 17, 2017
@@ -25,7 +25,7 @@ external_resources:
 
 ----
 
-This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://steamcommunity.com/app/320) server on a Linode running Debian or Ubuntu.
+This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://steamcommunity.com/app/320) server on a Linode running Debian or Ubuntu. Hl2 is a multiplayer, first-person shooter video game.
 
 ## Before You Begin
 
@@ -84,9 +84,9 @@ To stop the server, hold the **CTRL** key on your keyboard and press **C** (**CT
 
     Thu Jul 25 04:06:48 CEST 2017: Server Quit
 
-Forcibly killing the server shouldn't be harmful, but it can cause data corruption if you have plugins which write to a database.
+Forcibly killing the server shouldn't be harmful, but it can cause data corruption if you have plug-ins which write to a database.
 
-### Run the Server within a Screen Socket
+### Run the Server Within a Screen Socket
 
 To keep the server running in the background, execute it using Screen:
 
@@ -204,7 +204,7 @@ Below is a sample server configuration:
 
 ## Custom Half-Life 2 Maps
 
-There are 8 official maps in Half-Life 2: Deathmatch. A preview of each map is available on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps):
+There are eight (8) official maps in Half-Life 2: Deathmatch. A preview of each map is available on [Combine OverWiki's official page](http://combineoverwiki.net/wiki/Half-Life_2:_Deathmatch#Maps):
 
 *   dm_lockdown
 *   dm_overwatch
@@ -221,7 +221,7 @@ Half-Life 2 Deathmatch requires that custom maps be in specific locations based 
 
 *  **BSP**: `~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/custom/maps`
 
-The resources upload system is enabled by default, and any player who doesn't have the selected map will automatically download it and any required extra content from your server. Check [GAMEBANANA](http://gamebanana.com/games/5) for additional custom maps.
+The resources-upload system is enabled by default, and any player who doesn't have the selected map will automatically download it and any required extra content from your server. Check [GAMEBANANA](http://gamebanana.com/games/5) for additional custom maps.
 
 ### Maps Rotation
 
