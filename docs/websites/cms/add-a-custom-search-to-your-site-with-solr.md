@@ -23,7 +23,7 @@ external_resources:
 
 Apache Solr is an open source search platform that provides administrators with a customizable and scalable solution for managing online content. Solr can be configured to index all uploaded data, resulting in fast search results, whether used enterprise-wide or with a single website. In addition to a built-in web control interface, developers can also link access via a client API.
 
-![Add a Custom Search to your Site with Solr](/docs/assets/Solr.jpg "Add a Custom Search to your Site with Solr")
+![Add a Custom Search to your Site with Solr](/docs/assets/add-search-to-your-site-with-solr.jpg "Add a Custom Search to your Site with Solr")
 
 ## Before You Begin
 
