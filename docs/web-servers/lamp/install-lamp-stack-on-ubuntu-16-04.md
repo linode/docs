@@ -120,6 +120,8 @@ You can set up virtual hosts several ways; however, below is the recommended met
                 ServerAlias www.example.com
                 ServerAdmin webmaster@localhost
                 DocumentRoot /var/www/html/example.com/public_html
+		
+		DirectoryIndex index.html index.php
 
                 ErrorLog /var/www/html/example.com/logs/error.log
                 CustomLog /var/www/html/example.com/logs/access.log combined
