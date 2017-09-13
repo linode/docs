@@ -5,19 +5,20 @@ author:
 description: 'Practical examples for using grep to find strings in text files and streams.'
 keywords: 'grep,search,files,filtering,regular expressions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/grep/']
+alias: ['linux-tools/common-commands/grep/', 'tools-reference/search-and-filter-text-with-grep/']
 modified: Wednesday, May 4th, 2011
 modified_by:
   name: Linode
+og_description: “Learn how to use Grep for practical applications including filtering log files and finding strings in text files and streams.”
 published: 'Wednesday, June 30th, 2010'
-title: Search and Filter Text with grep
+title: How to Grep for Text in Files
 ---
 
 The `grep` utility provides users of most Unix-like operating systems with a tool to search and filter text using a common regular expression syntax. Indeed, `grep` is so ubiquitous that the verb "to grep" has emerged as a synonym for "to search." `grep` is an ideal tool for finding all occurrences of a value in a selection of files, filtering a log file for certain entries, or as part of a script or chain of commands.
 
 This document provides an overview of `grep` usage, accompanied by a number of practical applications of `grep`. If you find this guide helpful, please consider our guide to [basic administration practices](/docs/using-linux/administration-basics) or the rest of the [Tools & Reference section](/docs/tools-reference/).
 
-![Using Grep](/docs/assets/search_and_filter_text_with_grep_smg.png)
+![Using Grep](/docs/assets/search_and_filter_text_with_grep_smg.png "Search and filter text with Grep")
 
 
 ## Using Grep
