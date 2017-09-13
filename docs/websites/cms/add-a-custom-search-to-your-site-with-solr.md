@@ -54,7 +54,7 @@ Apache Solr is an open source search platform that provides administrators with 
 
             dpkg --list | grep oracle
 
-       *Output*
+       **Output:**
 
             ii  oracle-java8-installer        8u144-1~webupd8~0            all          Oracle Java(TM) Development Kit (JDK) 8
             ii  oracle-java8-set-default      8u144-1~webupd8~0            all          Set Oracle JDK 8 as default Java
@@ -98,7 +98,7 @@ Replace each instance of `6.6.1` in the examples below with the latest version f
 
         tar xzf solr-6.6.1.tgz solr-6.6.1/bin/install_solr_service.sh --strip-components=2
 
-3. Execute the Solr installation script. Arch Linux should skip to the Arch-specific steps below:
+3. Execute the Solr installation script. Arch Linux users should skip to the Arch-specific steps below:
 
         bash ./install_solr_service.sh solr-6.6.1.tgz
 
@@ -136,7 +136,7 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 
 Solr is managed from a web-facing administration page, which can be reached via your Linode's IP address or domain name on port `8983`.
 
-In a web browser, enter your Linode's IP address or domain name, followed by port `8983`.
+In a web browser, enter your Linode's IP address or domain name, followed by port `8983`:
 
     198.51.100.0:8983/solr
 
@@ -197,8 +197,8 @@ Set up a password protected login page for the Solr admin page:
 
 5. You can also use this process to secure other web pages within Solr. For example, if you have two Solr search cores created, `core1` and `core2`, you can limit access to both by adding additional `<url-pattern>` lines to `webdefault.xml`:
     
-            <url-pattern>/core1/*</url-pattern> 
-            <url-pattern>/core2/*</url-pattern> 
+        <url-pattern>/core1/*</url-pattern> 
+        <url-pattern>/core2/*</url-pattern> 
 
 ## Where to Go From Here
 
