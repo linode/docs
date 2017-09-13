@@ -1,0 +1,124 @@
+---
+author:
+  name: Linode
+  email: docs@linode.com
+description: 'Create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, and other services.'
+keywords: 'streisand,vpn,openvpn,tor,wireguard,,L2TP/IPSec,OpenConnect,security'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Tuesday, September 12th, 2017'
+modified: Wendesday, September 13th, 2017
+modified_by:
+  name: Linode
+title: 'Set Up a Streisand Gateway'
+external_resources:
+  - '[Streisand Github repository](https://github.com/jlund/streisand)'
+---
+
+There are many options available to help you avoid internet censorship, surveillance, or geolocation. Commercial VPNs are convenient and easy to set up, but trustworthy providers can be expensive and usually offer relatively few connection options. Setting up a personal VPN server allows more control over your connection, but the configuration process is time consuming, especially for someone with little experience working with remote servers (for example, our guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/docs/networking/vpn/configuring-openvpn-client-devices)).
+
+[Streisand](https://github.com/jlund/streisand) attempts to combine the ease of use of a commercial VPN wth the options and personalization of a custom VPN server. The Streisand script sets up a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
+
+## Before You Begin
+
+Streisand uses Ansible to automate much of the process of creating and configuring a Linode. This means that, unlike normal VPN setup, you should **not** create a Linode before beginning this guide, or go through the usual steps of connecting to and securing your server. All of the commands will be run from your local machine. You will, however, need the API key from your Linode account:
+
+1.  Open the Linode Manager and select "my profile," in the upper right corner of the screen next to your account name. You will need to reaunthenticate before viewing this section.
+
+2.  Select the "API Keys" tab on the far right of the menu.
+
+    ![Linode API Menu](/docs/assets/streisand/linode_api_menu.png)
+
+3.  Provide a label for your API key if desired, and choose when the key should expire (one day should be fine). When you have finished, click "Create API Key."
+
+    ![API Key](/docs/assets/streisand/api_key.png)
+
+4. Record the generated key – you will not be able to view the full key after closing or reloading the page.
+
+## Installing Ansible and its Dependencies
+
+{:.note}
+>
+> As of this writing, it is not possible to run Streisand on a Windows computer. If you do not have access to a Mac or Linux machine, you can connect to an existing Linode and complete the steps in this guide from your remote server. This will create an additional Linode.
+
+1.  Open a terminal window on your local machine. Check if you have any ssh keys:
+
+        ls ~/.ssh/id_rsa.pub
+
+    If no key is present, create one with `ssh-keygen`:
+
+        ssh-keygen -t rsa -b 4096
+
+2.  Make sure python 2.7 is installed on your machine:
+
+        python --version
+
+    If Python is not installed, or is version 3, you will need to install 2.7.
+
+3.  Install `git`. If you are using Linux, use the default package manager for your distro. For example, on Ubuntu:
+
+        sudo apt-get install git
+
+    On OS X, simply typing `git` at the command line will prompt XCode to install `git` if it is not already present.
+
+4.  Install `pip`, a package manager for Python.
+    *  On Debian or Ubuntu:
+
+            sudo apt-get install python-paramiko python-pip python-pycurl python-dev build-essential
+
+    *  On Fedora:
+
+            sudo yum install python-pip
+
+    *  On OS X:
+
+            sudo easy_install pip
+            sudo easy_install pycurl
+
+5. Use `pip` to install the Linode python libraries:
+
+        sudo pip install linode-python
+
+6.  Install Ansible. If you are using Linux, use `pip` for this as well:
+
+        sudo pip install ansible markupsafe
+
+    On OS X, you can use [Homebrew](http://www.homebrew.com) instead:
+
+        brew install ansible
+
+## Installing and Running Streisand
+
+You are now ready to run Streisand.
+
+1.  Clone the repository from Github:
+
+        git clone https://github.com/jlund/streisand.git && cd streisand
+
+2.  Run Streisand:
+
+        ./streisand
+
+3.  When prompted, choose Linode as your hosting provider. Choose a location for your gateway, then enter the API key you created earlier.
+
+    ![Streisand API Prompt](/docs/assets/streisand/api-prompt)
+
+{:.note}
+>
+> Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
+
+Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time (the [Streisand docs](https://github.com/jlund/streisand) say up to ten minutes, but in some cases it can be much longer). You may be prompted for confirmation or to provide additional information during the process.
+
+{:.caution}
+>
+> Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check your [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
+
+
+## Connecting to Your Streisand Gateway
+
+You now have a Linode with multiple VPNs and protocols fully configured for use; the next step is to connect to it. Streisand should automatically open the `streisand.html` file that was generated during the configuration process. If not, you can find the file in `streisand/generated-docs/streisand.html` and open it in any browser.
+
+1.  Click on "Download Certificate" to download an SSL certificate so that you can connect to your new gateway securely. Follow the instructions for your system or device to mark the certificate as trusted.
+
+2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser. Enter the provided username and password when prompted.
+
+3.  You are now connected to your gateway. From here, you can choose from any of the eight configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices. These instructions are personalized to your gateway, and so contain the exact IP addresses, passwords, and other information you will need. Where possible, links are provided to download pre-made configuration files to make the setup process even easier.
