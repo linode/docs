@@ -6,7 +6,7 @@ description: 'Create a Streisand gateway with automatically configured profiles 
 keywords: 'streisand,vpn,openvpn,tor,wireguard,,L2TP/IPSec,OpenConnect,security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, September 12th, 2017'
-modified: Wendesday, September 13th, 2017
+modified: Thursday, September 14th, 2017
 modified_by:
   name: Linode
 title: 'Set Up a Streisand Gateway'
