@@ -15,6 +15,7 @@ featured:
  - how-to-enable-native-ipv6-on-linux.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
+ - create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7
 categories:
  - diagnostics
  - ssh
