@@ -25,6 +25,9 @@ external_resources:
 
 ----
 
+![HL2DM_banner](/docs/assets/HL2DM.jpg)
+
+
 This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://steamcommunity.com/app/320) server on a Linode running Debian or Ubuntu. Hl2 is a multiplayer, first-person shooter video game.
 
 ## Before You Begin

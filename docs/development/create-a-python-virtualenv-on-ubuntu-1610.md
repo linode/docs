@@ -17,6 +17,7 @@ external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 ---
 
+![Python_banner](/docs/assets/Python_VE.jpg)
 
 ## What is a Python Virtual Environment?
 A Python Virtual environment - or `virtualenv`- is a tool to create an isolated Python environment within your VPS.  This can be extremely powerful as you can create a virtual environment and install all Python executables/packages to it, leaving no dependencies outside of your created virtual environment.
