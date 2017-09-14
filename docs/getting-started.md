@@ -2,8 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Our guide to deploying your first Linode.'
-keywords: 'linode guide,getting started,linode quickstart,quick start,boot,configuration profile,update,hostname,timezone,SSH'
+description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 5th, 2017
 modified_by:
@@ -12,7 +11,7 @@ published: 'Sunday, July 19th, 2009'
 title: Getting Started with Linode
 ---
 
-Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, deploy a Linux distribution, boot your Linode, and perform some basic system administration tasks.
+Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, set up a Linux distribution, boot your Linode, and perform some basic system administration tasks.
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/35724r19mr?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div><script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
@@ -21,18 +20,18 @@ Thank you for choosing Linode as your cloud hosting provider! This guide will he
 If you haven't already signed up for a Linode account, start here.
 
 1.  Create a new account at the [Sign Up page](https://manager.linode.com/signup).
-2.  Sign in and enter your billing and account information. Most accounts are activated instantly but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
-3.  Select a Linode plan and data center location
+2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
+3.  Select a Linode plan and datacenter location
 
     ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
 
-If you're unsure of which data center to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the data centers to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
 
-## Provisioning Your Linode
+## Provision Your Linode
 
-After your Linode is created, you'll need to prepare it for operation by deploying a Linux distribution.
+After your Linode is created, you'll need to prepare it for operation by setting up a Linux distribution.
 
-### Logging in to the Linode Manager
+### Log in to the Linode Manager
 
 The [Linode Manager](https://manager.linode.com) is a web-based control panel that allows you to manage your Linode virtual servers and services. Log in with the `username` and `password` you created when you signed up. After you've created your first Linode, you can use the Linode Manager to:
 
@@ -41,7 +40,7 @@ The [Linode Manager](https://manager.linode.com) is a web-based control panel th
 * Update your billing and account information,
 * Request support and perform other administrative tasks.
 
-### Deploying an Image
+### Deploy an Image
 
 After creating a new Linode, select it to open the Linode Manager Dashboard.
 
@@ -53,7 +52,7 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
     [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
 
-2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well supported by online communities, so resolving any issues you may have should be simple.
+2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
 
 3.  Enter a size for the disk in the **Deployment Disk Size** field. By default all of the available space is allocated, but you can set a lower size if you plan on cloning a disk or creating multiple configuration profiles. You can always create, resize, and delete disks later.
 
@@ -79,7 +78,7 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
     >
     > Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
 
-## Booting Your Linode
+## Boot Your Linode
 
 Your Linode is now provisioned with the distro of your choice but it's turned off, as indicated in the Dashboard.
 
@@ -91,24 +90,24 @@ When booted, the **Server Status** will change from **Powered Off** to **Running
 
 [![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
 
-## Connecting to Your Linode via SSH
+## Connect to Your Linode via SSH
 
 Communicating with your Linode is usually done using the secure shell (SSH) protocol. SSH encrypts all of the data transferred between the SSH client application on your computer and the Linode, including passwords and other sensitive information. There are SSH clients available for every operating system.
 
 ### SSH Overview
 
 -   **Linux:** You can use a terminal window, regardless of desktop environment or window manager.
--   **Mac:** The *Terminal* application comes pre-installed with OS X and you can launch it from *Finder* > *Applications* > *Utilities*. You could also use the free [iTerm 2 application](http://www.iterm2.com/). For a walkthrough of connecting to your Linode for the first time **with OS X** (which also directly applies to Linux), see the following video:
+-   **Mac:** The *Terminal* application comes pre-installed with OS X and you can launch it from *Finder* > *Applications* > *Utilities*. You could also use the free [iTerm 2 application](http://www.iterm2.com/). For a walk-through of connecting to your Linode for the first time **with OS X** (which also directly applies to Linux), see the following video:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe>
 
--   **Windows:** There is no native SSH client but you can use a free, open source application called [PuTTY](/docs/networking/using-putty). For a walkthrough of connecting to your Linode in Windows using PuTTY, see the following video:
+-   **Windows:** There is no native SSH client, but you can use a free, open source application called [PuTTY](/docs/networking/using-putty). For a walk-through of connecting to your Linode in Windows using PuTTY, see the following video:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe>
 
 ### Find the IP Address of Your Linode
 
-Your Linode has a unique *IP address* that identifies it to other devices and users on the Internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
+Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
 Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
@@ -119,9 +118,9 @@ Find your Linode's IP address from the [Linode Manager](https://manager.linode.c
 
     [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
-In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your Internet service provider supports IPv6, you'll want to the use the IPv4 address.
+In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
-### Logging in for the First Time
+### Log In for the First Time
 
 Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
 
@@ -164,7 +163,7 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 >
 >     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
 
-## Installing Software Updates
+## Install Software Updates
 
 The first thing you should do when connecting to your Linode is update the Linux distribution's software. This applies the latest security patches and bug fixes to help protect your Linode against unauthorized access.
 
@@ -236,9 +235,9 @@ Enter the following commands to set the hostname, replacing `hostname` with the 
     echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
-## Setting the Timezone
+## Set the Timezone
 
-By default, a Linode's Linux image will be set to UTC time (also known as Greenwich Mean Time) but this can be changed. It may be better to use the same timezone which a majority of your users are located in, or that you live in to make log file timestamps more sensible.
+By default, a Linode's Linux image will be set to UTC time (also known as Greenwich Mean Time), but this can be changed. It may be better to use the same timezone which a majority of your users are located in, or that you live in to make log file timestamps more sensible.
 
 ### Debian / Ubuntu
 
@@ -272,7 +271,7 @@ Configure the `sys-libs/timezone-data` package, which will set `/etc/localtime` 
 
     emerge --config sys-libs/timezone-data
 
-### Checking the Time
+### Check the Time
 
 View the current date and time according to your server.
 
