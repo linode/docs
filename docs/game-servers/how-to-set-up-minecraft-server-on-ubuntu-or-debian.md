@@ -1,15 +1,14 @@
 ---
 author:
   name: Alex Fornuto
-  email: afornuto@linode.com
+  email: docs@linode.com
 description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian
 distributions'
-keywords: 'minecraft server,ubuntu,debian'
-alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu' ]
+alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, July 30th, 2017
 modified_by:
-  name: Angel Guarisma
+  name: Linode
 published: 'Wednesday, January 28, 2015'
 title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
 external_resources:
