@@ -3,9 +3,8 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'PageSpeed is an open source Google project created to optimize website performance. Learn how to set up PageSpeed for Nginx.'
-keywords: 'nginx,PageSpeed,ngx_pagespeed,pagespeed,ubuntu,Ubuntu 16.04,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/ ']
+alias: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/ ', 'web-servers/nginx/nginx-with-pagespeed-on-ubuntu-16-04/']
 published: 'Tuesday, November 3rd, 2015'
 modified: Thursday, September 14th, 2017
 modified_by:
@@ -22,7 +21,7 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $300 per published guide.*
 <hr>
 
-Pagespeed is a tool built by Google that boosts the speed and performance of a website by automatically minifying assets (such as CSS, Javascript, and images) and applying other web performance best practices.
+Pagespeed is a tool built by Google that boosts the speed and performance of a website by automatically minifying assets (such as CSS, Javascript, and images), and applying other web performance best practices.
 
 This guide will show you how to use Pagespeed with Nginx to reduce the page load times of your website, using the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module.
 
