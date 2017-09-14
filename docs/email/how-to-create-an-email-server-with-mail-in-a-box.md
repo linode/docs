@@ -20,6 +20,8 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
 ----
 
+![Mail_banner](/docs/assets/Mail_in_a_box.jpg)
+
 If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
 * Postfix, as the Simple Mail Transfer Protocol (SMTP) server.
