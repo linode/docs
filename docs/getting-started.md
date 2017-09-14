@@ -210,9 +210,9 @@ Once you're done, you can verify by running the command `hostname`.
 
 ### Arch / CentOS 7 / Debian 8 / Fedora / Ubuntu 16.04 and above
 
-Replace `hostname` with one of your choice.
+Replace `example_hostname` with one of your choice.
 
-    hostnamectl set-hostname hostname
+    hostnamectl set-hostname example_hostname
 
 ### Debian 7 / Slackware / Ubuntu 14.04
 
@@ -225,14 +225,14 @@ Replace `example_hostname` with one of your choice.
 
 Replace `hostname` with one of your choice.
 
-    echo "HOSTNAME=hostname" >> /etc/sysconfig/network
+    echo "HOSTNAME=example_hostname" >> /etc/sysconfig/network
     hostname "hostname"
 
 ### Gentoo
 
-Enter the following commands to set the hostname, replacing `hostname` with the hostname of your choice:
+Enter the following commands to set the hostname, replacing `example_hostname` with the hostname of your choice:
 
-    echo "HOSTNAME=\"hostname\"" > /etc/conf.d/hostname
+    echo "HOSTNAME=\"example_hostname\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
 
 ## Set the Timezone
