@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide provides an introduction to rsync, the incremental file transfer utility.'
-keywords: 'rsync,backup,back up,copy,transfer,synchronize,sync'
+keywords: 'rsync,backup,back up,copy,file transfer,synchronize,sync'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/utilities/rsync/']
-modified: Thursday, August 31st, 2017
+modified: Thursday, September 14th, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, September 8th, 2009'
@@ -16,9 +16,11 @@ external_resources:
  - '[Rsync tips at Calomel.org](https://calomel.org/rsync_tips.html)'
 ---
 
-[Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. Because rsync is incremental, once the initial operation has completed, successive backup operations complete very quickly. Only the differences between the source and the destination files are copied. This property of rsync makes it an ideal solution for automated operations.
+[Rsync](https://rsync.samba.org/) is a command line utility which synchronizes files and folders from one location to another. Some workflows that can be implemented using rsync are updating a production host from a development machine, or using a cron job to call rsync to regularly back up data to a storage location. You can even use rsync to [migrate your server to Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from other providers.
 
-backing up only recently updated files to a remote file server, and keeping a remote folder synchronized with the local directory. You can even use rsync to [migrate your server to Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from other providers.
+![rsync title graphic](/docs/assets/rsync-title-graphic.jpg)
+
+Rsync is incremental, so once the initial operation has completed, successive backup operations complete very quickly. Only the differences between the source and the destination files are copied. This property of rsync makes it an ideal solution for automated operations.
 
 
 ## How Do You Get rsync?
@@ -30,8 +32,8 @@ backing up only recently updated files to a remote file server, and keeping a re
 
 
 ## Reasons to Consider rsync Over cp or SCP
-- Creating incremental data backups.
-- Copying from source to destination only the data which is different between the two locations.
+- Creates incremental data backups.
+- Copies from source to destination only the data which is different between the two locations.
 - Each file is checksummed on transfer using MD5.
 - rsync's `--del` option deletes files located at the destination which are no longer at the source.
 - rsync can resume failed transfers (as long as they were started with rsync).
@@ -40,7 +42,7 @@ backing up only recently updated files to a remote file server, and keeping a re
 
 
 ## Working With rsync
-There exist a large number of options to use with rsync, and many people have their favorite set of options to use when calling the tool. Single rsync options can also be aliases of multiple others, so for example, running `rsync -a` would give the same result as `rsync -rlptgoD`.
+There exists a large number of options to use with rsync, and many people have their favorite set of options to use when calling the tool. Single rsync options can also be aliases of multiple others, so for example, running `rsync -a` would give the same result as `rsync -rlptgoD`.
 
 Thus, rsync is a tool you want to be especially careful with when copying commands from forum posts and other sites on the internet without knowing exactly what they do. You will get the most out of rsync if you take the time to research and experiment a little before using it on your data.
 
