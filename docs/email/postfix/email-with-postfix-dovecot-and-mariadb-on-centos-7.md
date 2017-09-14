@@ -20,6 +20,8 @@ external_resources:
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 7 Linode, using Dovecot for IMAP/POP3 service, and MariaDB, a drop-in replacement for MySQL, to store information on virtual domains and users.
 
+![Postfix_Dovcot_MariaDB](/docs/assets/Email_with_Postfix_Dovecot_and_MariaDB_on_CentOS_7_smg.jpg)
+
 Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname. Also ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 {: .note}

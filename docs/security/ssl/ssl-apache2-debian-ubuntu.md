@@ -17,6 +17,8 @@ external_resources:
 
 This guide will show you how to enable SSL to secure websites served through Apache on Debian and Ubuntu.
 
+![Apache SSL](/docs/assets/SSL_Certificates_with_Apache_on_Debian_Ubuntu_smg.jpg)
+
 ## Before You Begin
 
 This guide assumes that you are running Apache 2.4 or higher on Debian 8 or Ubuntu 14.04 or above. Prior to following this guide, ensure that the following steps have been taken on your Linode:

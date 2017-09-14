@@ -8,6 +8,7 @@ featured:
  - recovering-from-a-system-compromise.md
  - use-public-key-authentication-with-ssh.md
  - gpg-key-for-ssh-authentication.md
+ - use-luks-for-full-disk-encryption.md
  - ossec-ids-debian-7.md
  - using-fail2ban-for-security.md
  - use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8.md

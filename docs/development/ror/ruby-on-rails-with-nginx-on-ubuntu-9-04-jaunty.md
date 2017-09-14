@@ -34,7 +34,7 @@ First, make sure you have the `universe` repository enabled in your `/etc/apt/so
     deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
     ~~~
 
-If you added `universe` to the the items in your list, you'll need to update your repository database:
+If you added `universe` to the items in your list, you'll need to update your repository database:
 
     apt-get update
     apt-get upgrade

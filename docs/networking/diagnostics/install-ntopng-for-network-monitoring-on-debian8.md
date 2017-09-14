@@ -6,10 +6,11 @@ description: 'This Linode tutorial guides you through deploying ntopng, a powerf
 keywords: 'ntopng,network monitor,debian 8,debian jessie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, June 28, 2017'
-modified: Wednesday, June 28, 2017
+alias: ['networking/diagnostics/deploy-ntopng-on-debian-8/']
+modified: Wednesday, September 13, 2017
 modified_by:
   name: Andrew Lescher
-title: 'Deploy Network Monitoring Tool, ntopng, on Debian 8'
+title: 'Install ntopng for Network Monitoring on Debian 8'
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940/

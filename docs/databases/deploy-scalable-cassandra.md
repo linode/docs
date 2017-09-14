@@ -10,7 +10,7 @@ alias: ['/docs/databases/']
 modified: Saturday, June 24th, 2017
 modified_by:
   name: 'Andrew Lescher' 
-title: 'Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra'
+title: 'How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7'
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -26,9 +26,9 @@ external_resources:
  
 ---
 
-![Cassandra_banner](/docs/assets/Cassandra/Apache_Cassandra.png)
+![Deploy a scalable and development driven NoSQL DB with Cassandra](/docs/assets/Cassandra/Apache_Cassandra.png)
 	
-## Introduction To This Tutorial
+## Introduction to Apache Cassandra
 
 The Cassandra NoSQL database is ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and rapidly evolving project demands during the development life cycle which would otherwise be heavily restricted by traditional relational database implementations. Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or Cassandra Query Language is syntactically similar to the Structured Query Language, making it easy to pick up for those already familiar with SQL. 
  
