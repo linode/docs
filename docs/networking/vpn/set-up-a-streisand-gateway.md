@@ -14,9 +14,9 @@ external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 ---
 
-There are many options available to help you avoid internet censorship, surveillance, or geolocation. Commercial VPNs are convenient and easy to set up, but trustworthy providers can be expensive and usually offer relatively few connection options. Setting up a personal VPN server allows more control over your connection, but the configuration process is time consuming, especially for someone with little experience working with remote servers (for example, our guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/docs/networking/vpn/configuring-openvpn-client-devices)).
+ Setting up a personal VPN server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection. However, the configuration process is time consuming, especially for those with little experience working with remote servers (for example, our guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/docs/networking/vpn/configuring-openvpn-client-devices)).
 
-[Streisand](https://github.com/jlund/streisand) attempts to combine the ease of use of a commercial VPN wth the options and personalization of a custom VPN server. The Streisand script sets up a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
+[Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script sets up a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
 
 ## Before You Begin
 
@@ -28,7 +28,7 @@ Streisand uses Ansible to automate much of the process of creating and configuri
 
     ![Linode API Menu](/docs/assets/streisand/linode_api_menu.png)
 
-3.  Provide a label for your API key if desired, and choose when the key should expire (one day should be fine). When you have finished, click "Create API Key."
+3.  Provide a label for your API key if desired, and choose when the key should expire. When you have finished, click "Create API Key."
 
     ![API Key](/docs/assets/streisand/api_key.png)
 
@@ -48,7 +48,7 @@ Streisand uses Ansible to automate much of the process of creating and configuri
 
         ssh-keygen -t rsa -b 4096
 
-2.  Make sure python 2.7 is installed on your machine:
+2.  Make sure Python 2.7 is installed on your machine:
 
         python --version
 
@@ -100,13 +100,13 @@ You are now ready to run Streisand.
 
 3.  When prompted, choose Linode as your hosting provider. Choose a location for your gateway, then enter the API key you created earlier.
 
-    ![Streisand API Prompt](/docs/assets/streisand/api-prompt)
+    ![Streisand API Prompt](/docs/assets/streisand/api-prompt.png)
 
 {:.note}
 >
 > Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
 
-Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time (the [Streisand docs](https://github.com/jlund/streisand) say up to ten minutes, but in some cases it can be much longer). You may be prompted for confirmation or to provide additional information during the process.
+Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time (the [Streisand docs](https://github.com/jlund/streisand) say about ten minutes, but in some cases it can be much longer). You may be prompted for confirmation or to provide additional information during the process.
 
 {:.caution}
 >
@@ -117,8 +117,8 @@ Streisand will now execute a series of Ansible rules to create and configure a n
 
 You now have a Linode with multiple VPNs and protocols fully configured for use; the next step is to connect to it. Streisand should automatically open the `streisand.html` file that was generated during the configuration process. If not, you can find the file in `streisand/generated-docs/streisand.html` and open it in any browser.
 
-1.  Click on "Download Certificate" to download an SSL certificate so that you can connect to your new gateway securely. Follow the instructions for your system or device to mark the certificate as trusted.
+1.  Click on "Download Certificate" to download an SSL certificate so that you can verify your secure connection to your new gateway. Follow the instructions for your system or device to mark the certificate as trusted.
 
 2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser. Enter the provided username and password when prompted.
 
-3.  You are now connected to your gateway. From here, you can choose from any of the eight configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices. These instructions are personalized to your gateway, and so contain the exact IP addresses, passwords, and other information you will need. Where possible, links are provided to download pre-made configuration files to make the setup process even easier.
+3.  You are now connected to your gateway. From here, you can choose from any of the eight configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices. These instructions are personalized to your gateway, and so contain the exact IP addresses, passwords, and other information you will need. Where possible, links are provided to download pre-made configuration files to make the setup process even easier. This also makes it much easier to share connection information with family and friends, so that they can use your VPN as well.
