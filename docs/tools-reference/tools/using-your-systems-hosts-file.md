@@ -5,14 +5,14 @@ author:
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system hosts file.'
 keywords: 'hosts,hosts file,hostname,alias'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 5th, 2017
+modified: Thursday, September 14th, 2017
 modified_by:
   name: Linode
-published: 'Tuesday, September 5th, 2017'
+published: 'Thursday, September 14th, 2017'
 title: Using Your System's hosts File
 ---
 
-The Unix [hosts file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
+The Linux [hosts file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
 
 There are many different ways to use entries in the hosts file, and the types of associations you set would depend on your specific use case. Below are some examples.
 
