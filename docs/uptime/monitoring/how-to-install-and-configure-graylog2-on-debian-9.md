@@ -5,7 +5,7 @@ author:
 description: 'Graylog is a free, open source and powerful log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. It is based on Java, Elasticsearch, MongoDB and provides a beautiful web interface for centralized log management and log analysis.'
 keywords: 'Graylog, Install Graylog, Graylog Debian'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Weekday, September 6th, 2017'
+published: 'Friday, September 14th, 2017'
 modified: Tuesday, August 15th, 2017
 modified_by:
   name: Hitesh Jethva
@@ -14,9 +14,11 @@ contributor:
   name: Hitesh Jethva
   link: https://github.com/hitjethva
 external_resources:
-- '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)' 
+- '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 ---
+
+![Graylog2](/docs/assets/graylog2_debian.jpg)
 
 Graylog is a free, open source and powerful log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. It is based on Java, Elasticsearch, MongoDB and provides a beautiful web interface for centralized log management and log analysis. Elasticsearch is for searching and storing the log messages, and MongoDB is used to store the meta data and configuration. Graylog collects, indexes, and analyzes the logs from various inputs and displays them through a web interface. Compare to other log monitoring tools, Graylog is a more finished and enterprise-ready tool out of the box.
 
@@ -50,7 +52,7 @@ Elasticsearch and Graylog is a Java based application, so you will need to insta
         apt-get install openjdk-8-jre-headless -y
 
 2.  Once Java is installed, check the version of the Java with the following command:
-	
+
         java -version
 
     The output should be similar to below:
@@ -115,7 +117,7 @@ Graylog uses Elasticsearch for storing the log messages and offers a searching f
 7.  Once Elasticsearch gets restarts, it should be listening on HTTP port `9200` while the cluster nodes communicate on `9300`. You can check the response by running the following command:
 
         curl -X GET http://localhost:9200
- 
+
 8.  You can also test the health of the Elasticsearch with the following command:
 
         curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
@@ -169,56 +171,56 @@ In order to install Graylog server, you will need to download and install Graylo
 
     {: .file }
     /etc/graylog/server/server.conf
-    : ~~~
-     is_master = true
-     node_id_file = /etc/graylog/server/node-id
-     password_secret = nNPjRmvyyyPc0YKySXhkebfwUYvW2dQz7kD1GxBq7qhJre1eIAySsUbmlYNKiYZnHquHPu8pTswvc3MFSVDrwn5AmdwOSMri
-     root_username = admin
-     root_password_sha2 = 4c941dd2a116bf235e943771ad16c4e8877d75c597936accf168e08c5f93ce24
-     root_timezone = UTC
-     plugin_dir = /usr/share/graylog-server/plugin
-     rest_listen_uri = http://0.0.0.0:9000/api/
-     rest_enable_cors = true
-     web_listen_uri = http://0.0.0.0:9000/
-     rotation_strategy = count
-     elasticsearch_max_docs_per_index = 20000000
-     elasticsearch_max_number_of_indices = 7
-     retention_strategy = delete
-     elasticsearch_shards = 4
-     elasticsearch_replicas = 1
-     elasticsearch_index_prefix = graylog
-     allow_leading_wildcard_searches = true
-     allow_highlighting = false
-     elasticsearch_cluster_name = graylog
-     elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300
-     elasticsearch_http_enabled = false
-     elasticsearch_network_host = 0.0.0.0
-     elasticsearch_discovery_initial_state_timeout = 3s
-     elasticsearch_analyzer = standard
-     output_batch_size = 500
-     output_flush_interval = 1
-     output_fault_count_threshold = 5
-     output_fault_penalty_seconds = 30
-     ring_size = 65536
-     inputbuffer_ring_size = 65536
-     inputbuffer_processors = 2
-     inputbuffer_wait_strategy = blocking
-     processbuffer_processors = 5
-     outputbuffer_processors = 3
-     processor_wait_strategy = blocking
-     message_journal_enabled = true
-     message_journal_dir = /var/lib/graylog-server/journal
-     async_eventbus_processors = 2
-     lb_recognition_period_seconds = 3
-     alert_check_interval = 60
-     mongodb_uri = mongodb://localhost/graylog
-     mongodb_max_connections = 1000
-     mongodb_threads_allowed_to_block_multiplier = 5
-     transport_email_enabled = true
-     content_packs_dir = /usr/share/graylog-server/contentpacks
-     content_packs_auto_load = grok-patterns.json
-     proxied_requests_thread_pool_size = 32
-     ~~~
+    :   ~~~
+        is_master = true
+        node_id_file = /etc/graylog/server/node-id
+        password_secret = nNPjRmvyyyPc0YKySXhkebfwUYvW2dQz7kD1GxBq7qhJre1eIAySsUbmlYNKiYZnHquHPu8pTswvc3MFSVDrwn5AmdwOSMri
+        root_username = admin
+        root_password_sha2 = 4c941dd2a116bf235e943771ad16c4e8877d75c597936accf168e08c5f93ce24
+        root_timezone = UTC
+        plugin_dir = /usr/share/graylog-server/plugin
+        rest_listen_uri = http://0.0.0.0:9000/api/
+        rest_enable_cors = true
+        web_listen_uri = http://0.0.0.0:9000/
+        rotation_strategy = count
+        elasticsearch_max_docs_per_index = 20000000
+        elasticsearch_max_number_of_indices = 7
+        retention_strategy = delete
+        elasticsearch_shards = 4
+        elasticsearch_replicas = 1
+        elasticsearch_index_prefix = graylog
+        allow_leading_wildcard_searches = true
+        allow_highlighting = false
+        elasticsearch_cluster_name = graylog
+        elasticsearch_discovery_zen_ping_unicast_hosts = 127.0.0.1:9300
+        elasticsearch_http_enabled = false
+        elasticsearch_network_host = 0.0.0.0
+        elasticsearch_discovery_initial_state_timeout = 3s
+        elasticsearch_analyzer = standard
+        output_batch_size = 500
+        output_flush_interval = 1
+        output_fault_count_threshold = 5
+        output_fault_penalty_seconds = 30
+        ring_size = 65536
+        inputbuffer_ring_size = 65536
+        inputbuffer_processors = 2
+        inputbuffer_wait_strategy = blocking
+        processbuffer_processors = 5
+        outputbuffer_processors = 3
+        processor_wait_strategy = blocking
+        message_journal_enabled = true
+        message_journal_dir = /var/lib/graylog-server/journal
+        async_eventbus_processors = 2
+        lb_recognition_period_seconds = 3
+        alert_check_interval = 60
+        mongodb_uri = mongodb://localhost/graylog
+        mongodb_max_connections = 1000
+        mongodb_threads_allowed_to_block_multiplier = 5
+        transport_email_enabled = true
+        content_packs_dir = /usr/share/graylog-server/contentpacks
+        content_packs_auto_load = grok-patterns.json
+        proxied_requests_thread_pool_size = 32
+        ~~~
 
     Save the file when you are finished.
     Finally, start the Graylog server and enable it to start at boot time by running the following command:
@@ -257,7 +259,7 @@ Graylog is now up and running, It is time to access the Graylog web interface.
 
     {: .file-excerpt }
     /etc/rsyslog.conf
-    : ~~~ 
+    : ~~~
      $template GRAYLOGRFC5424,"%protocol-version% %timestamp:::date-rfc3339% %HOSTNAME% %app-name% %procid% %msg%\n"
      *.* @192.168.0.102:8514;GRAYLOGRFC5424
     ~~~
