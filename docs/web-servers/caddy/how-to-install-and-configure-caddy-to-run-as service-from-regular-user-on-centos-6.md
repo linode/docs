@@ -99,7 +99,7 @@ In the next step we will create an unprivileged user, which will be used for run
 
  We need also to configure Caddy as a service to run at startup.
  
- {: .note}
+ {: .caution}
  >
  > If your VPS is running on CentOS 7 or other system.**d** compatible distro you **don't** need to create a custom init-script. You can create and manage your service *out-of-box*, just follow simple steps from [Official Caddy's System.d Init Guide](https://github.com/mholt/caddy/tree/master/dist/init/linux-systemd). But since we are on CentOS 6 (init.**d** service management), we'll have to find a special workaround. Let's hacking!
  
