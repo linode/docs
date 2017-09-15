@@ -98,16 +98,105 @@ In the next step we will create an unprivileged user, which will be used for run
       sudo chown -R www-data:www-data /var/log/caddy
 
  We need also to configure Caddy as a service to run at startup.
- Let's type to download a special CentOS 6 init-script Edition (forked from official init-script):
-
-      sudo wget -P /etc/init.d https://gist.githubusercontent.com/coocheenin/9d6cd2a0f3a148c24c9f2c6649c63643/raw/87f9dcb3def7ec04d728f7544fcaf3a73294b4f1/caddy
  
+ {: .note}
+ >
+ > If your VPS is running on CentOS 7 or other system.**d** compatible distro you **don't** need to create a custom init-script. You can create and manage your service *out-of-box*, just follow simple steps from [Official Caddy's System.d Init Guide](https://github.com/mholt/caddy/tree/master/dist/init/linux-systemd). But since we are on CentOS 6 (init.**d** service management), we'll have to find a special workaround. Let's hacking!
+ 
+ Let's type to create a *special* CentOS 6 init-script `sudo nano /etc/init.d` and after that paste the code from the box below:
+
+ {: .file }
+ /etc/init.d
+ :   ~~~ bash
+     #!/bin/sh
+     ### BEGIN INIT INFO
+     # Provides:          caddy
+     # Required-Start:    $local_fs $network $named $time $syslog
+     # Required-Stop:     $local_fs $network $named $time $syslog
+     # Default-Start:     2 3 4 5
+     # Default-Stop:      0 1 6
+     # Short-Description: starts the caddy web server
+     # Description:       starts caddy using start-stop-daemon
+     ### END INIT INFO
+
+     # Original Author: Frédéric Galusik (fredg)
+     # Maintainer: Daniel van Dorp (djvdorp)
+     # Modified by: Mono Bilişim (monobilisim)
+     ## yum install -y daemonize
+     # Modified To Run From Unprivileged User: by @coocheenin
+
+     DESC="the caddy web server"
+     NAME=caddy
+     DAEMON=/usr/local/bin/caddy
+
+     DAEMONUSER=www-data
+     PIDFILE=/var/run/$NAME.pid
+     LOCKFILE=/var/lock/subsys/$NAME
+     LOGDIR=/var/log/caddy
+     LOGFILE=$LOGDIR/$NAME.log
+     CONFIGFILE=/etc/caddy/Caddyfile
+     DAEMONOPTS="-agree=true -conf=$CONFIGFILE -log=$LOGFILE"
+     CMD="${DAEMON} ${DAEMONOPTS}"
+
+     USERBIND="setcap cap_net_bind_service=+ep"
+
+     test -x $DAEMON || exit 0
+
+     # Set the CADDYPATH; Let's Encrypt certificates will be written to this directory.
+     export CADDYPATH=/etc/caddy/ssl
+
+     # Set the ulimits
+     ulimit -n 8192
+
+     start() {
+        $USERBIND $DAEMON
+        daemonize -u $DAEMONUSER -p $PIDFILE -l $LOCKFILE -o $LOGDIR/stdout -e $LOGDIR/stderr $CMD
+     }
+
+     stop() {
+        kill -15 $(cat "$PIDFILE")
+        rm -f $PIDFILE $LOCKFILE
+     }
+
+     status() {
+    if [ -f $PIDFILE ]; then
+        if kill -0 $(cat "$PIDFILE"); then
+            echo "$NAME is running"
+        else
+            echo "$NAME process is dead, but pidfile exists"
+        fi
+    else
+        echo "$NAME is not running"
+    fi
+    }
+
+    case "$1" in
+    start)
+        echo "Starting $NAME"
+        start
+    ;;
+    stop)
+        echo "Stopping $NAME"
+        stop
+    ;;
+    status)
+        status
+    ;;
+    *)
+        echo "Usage: $0 {start|stop|status}"
+        exit 2
+    ;;
+    esac
+
+    exit 0
+    ~~~
+ Press `Control+X` to exit, then `Y`(press enter) to write it to disk.
  Don't forget to make it executable:
 
       sudo chmod +x /etc/init.d/caddy
 
-Whats the difference between this script and official script? The key command, which starts caddy as daemon, is different.
-Since the command `start-stop-daemon` is missing in CentOS, daemonize utility was found in replacement.
+Whats the difference between this script and init-script from caddy distro? The key command, which starts caddy as daemon, is different.
+Since the command `start-stop-daemon` is missing in CentOS 6, daemonize utility was found in replacement.
 
 Let's install with `yum` utility:
 
