@@ -54,17 +54,7 @@ Click on the `SSH Keys` and upload your local SSH Key by following the link on t
 ## Get your Linode API key
 Laravel Forge needs your Linode’s API key to connect to Linode. 
 
-1. Head to your Linode dashboard.
-
-2. Click on `my profle` at the right top of the page:
-
-   [![Linode API](/docs/assets/configuration-management/linode_dashboard_header.png)](/docs/assets/configuration-management/linode_dashboard_header.png) 
-
-3. Click on `API Keys` tab:
-
-   [![Linode API](/docs/assets/configuration-management/linode_api_key.png)](/docs/assets/configuration-management/linode_api_key.png)
-
-4. Create a new API Key by adding a `Label` and  `expires` period you want then click on  `Create API Key`. Take note of your API key. 
+1. Follow this guide to get your Linode API key https://www.linode.com/docs/platform/api/api-key
 
 ## Adding your Linode API key to Forge.
 
@@ -138,7 +128,7 @@ If you intend to visit the site you're setting up via a real domain (versus just
 [![Linode API](/docs/assets/configuration-management/adding_new_domain.png)](/docs/assets/configuration-management/adding_new_domain.png)
 
 - Root Domain: This is your domain name.
-- Project Type: This is the type of of project you are using, If you are building regular php, you can choose : ` General PHP / Laravel`. ( the other option available are : General PHP / Laravel, Static, HTML, Symfony, Symfony (Dev).       
+- Project Type: This is the type of of project you are using, If you are building regular php, you can choose : ` General PHP / Laravel`. ( the other option available are: General PHP / Laravel, Static, HTML, Symfony, Symfony (Dev).       
 - Web Directory: This is where you public files will be served from.
 
 3. Submit the form by clicking `ADD SITE`.
@@ -165,7 +155,6 @@ eg:
 
 ```
     dongido/transaction-manager
-
 ```
 
 [![Linode API](/docs/assets/configuration-management/git_repository_name.png)](/docs/assets/configuration-management/git_repository_name.png)
@@ -177,12 +166,10 @@ If you visit the website again, you will see that the repository is now copied t
 
 [![Linode API](/docs/assets/configuration-management/site_up_and_running.png)](/docs/assets/configuration-management/site_up_and_running.png)
 
-
 ## Auto deploy.
 In this era of Continuous integration where we always want to keep making changes or adding features to our live site and want the changes to get deployed immediately.
 
 The next page that you will get after clicking on the `INSTALL REPOSITORY`. There you can set the auto deploy immediately.
-
 
 [![Linode API](/docs/assets/configuration-management/Laravel_forge_deploy.png)](/docs/assets/configuration-management/Laravel_forge_deploy.png)
 
