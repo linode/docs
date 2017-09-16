@@ -26,7 +26,7 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 ## Before You Begin
 
-1. Working through this tutorial requires the use of a limited user or root user account, and is written as if commands are issued from the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+1. Working through this tutorial requires the use of a root user account, and is written as if commands are issued from the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 
@@ -38,7 +38,7 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
-Before OpenVZ can be installed, the system must be configured for compatability. The Debian 9 distribution supports a new checksum feature which is incompatible with the custom OpenVZ kernel. Depending on your preference, you may choose to either remove "metadata_csum" from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
+Before OpenVZ can be installed, the system must be configured for compatability. The Debian 9 distribution supports a new checksum feature which is incompatible with the custom OpenVZ kernel. Depending on your preference, you may choose to either remove metadata_csum from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
 
 1. List available disk partitions.
 
@@ -62,8 +62,8 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 ~~~ sh
 #!/bin/sh
 
-if [ "$readonly" != "y" ] ;•
-  then exit 0 ;•
+if [ "$readonly" != "y" ] ;
+  then exit 0 ;
 fi
 
 e2fsck -f $Volume
@@ -76,7 +76,7 @@ e2fsck -f $Volume
         chmod 755 /etc/initramfs-tools/scripts/local-premount/tune
         update-initramfs -u -k all
 
-4. Reboot your system with `shutdown -r now` and run the command below to verify that metadata_csum was disabled from all affected partitions.
+4. Reboot your system with `shutdown -r now` and run the command below to verify that metadata_csum was disabled from all affected partitions. Again, replace "/dev/sda1" with the correct volume names.
 
         dumpe2fs -h /dev/sda1 2>/dev/null | grep -e metadata_csum
 
@@ -85,8 +85,111 @@ e2fsck -f $Volume
 1. Choose the Ext4 volume you would like to format and issue the command below, replacing `/dev/sda3` with your selected volume. An output of "0" indicates success.
 
 {: .caution}
-> Formatting a volume will erase all data contained in the partition.
+> Formatting a volume with the `mkfs` command may result in data loss.
 
         mkfs -t ext4 -O -metadata_csum /dev/sda3
 
+## Replace Systemd with SystemV
 
+1. Install SystemV utilities.
+
+        apt install sysvinit-core sysvinit-utils
+
+2. Reboot machine to release Systemd.
+
+        shutdown -r now
+
+3. Remove Systemd from your machine.
+
+        apt --auto-remove remove systemd
+
+4. Create file *avoid-systemd* and paste in contents below.
+
+{: .file}
+**/etc/apt/preferences.d/avoid-systemd**
+~~~
+Package: *systemd*
+Pin: release *
+Pin-Priority: -1
+~~~
+
+## Add OpenVZ Repository
+
+1. Create a new repository source file and paste in the contents below.
+
+{: .file}
+**/etc/apt/sources.list.d/openvz.list**
+~~~ list
+deb http://download.openvz.org/debian jessie main
+deb http://download.openvz.org/debian wheezy main
+~~~
+
+2. Add the repository key to your system.
+
+        wget -qO - http://ftp.openvz.org/debian/archive.key | sudo apt-key add -
+
+3. As of the publication date of this guide, the openvz repository key is invalid, and issuing the `apt update` command will generate a warning from the system. The command should nevertheless succeed. If it does not, update the system with the following argument.
+
+        apt --allow-unauthenticated update
+
+## Install OpenVZ Packages
+
+1. Install OpenVZ with required packages.
+
+        apt --allow-unauthenticated --install-recommends install linux-image-openvz-$(dpkg --print-architecture) vzdump ploop initramfs-tools dirmngr
+
+2. The installation should create a new directory, `/vz`. If this directory does not exist after installation, create a symbolic link using the command below.
+
+        ln -s /var/lib/vz/ /vz
+
+3. Create file `vznet.conf` and add paste in the line below.
+
+{: .file}
+**/etc/vz/vznet.conf**
+~~~ conf
+EXTERNAL_SCRIPT="/usr/sbin/vznetaddbr"
+~~~
+
+4. This step is optional, and will cause OpenVZ virtual instances to stop when the OpenVZ service is stopped. If this behavior is desired, issue the command below.
+
+        echo 'VE_STOP_MODE=stop' | sudo tee -a /etc/vz/vznet.conf
+
+## Boot Into The OpenVZ Kernel
+
+The system must be configured to boot the OpenVZ kernel each time the server is restarted.
+
+1. Open the *grub.cfg* file in `less`, or your preferred text editor.
+
+        less /boot/grub/grub.cfg
+
+2. Within the *grub.cfg* file, look for a section resembling the following.
+
+{: .file}
+**/boot/grub/grub.cfg**
+~~~ cfg
+. . .
+
+menuentry 'Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-e025e52b-91c4-4f64-962d-79f244caa92a' {
+        gfxmode $linux_gfx_mode
+        insmod gzio
+        if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+        insmod ext2
+        set root='hd0'
+        if [ x$feature_platform_search_hint = xy ]; then
+          search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
+        else
+          search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
+        fi
+        echo    'Loading Linux 4.9.0-3-amd64 ...'
+        linux   /boot/vmlinuz-4.9.0-3-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
+        echo    'Loading initial ramdisk ...'
+        initrd  /boot/initrd.img-4.9.0-3-amd64
+}
+submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-advanced-e025e52b-91c4-4f64-962d-79f244caa92a'
+
+. . .
+~~~
+
+Write down the text in single quotes which appears directly after "submenu", which should be present after the first "menuentry" section. In this case, the text to copy would be **"Advanced options for Debian GNU/Linux"**.
+
+3. 
