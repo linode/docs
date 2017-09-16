@@ -158,11 +158,11 @@ EXTERNAL_SCRIPT="/usr/sbin/vznetaddbr"
 
 The system must be configured to boot the OpenVZ kernel each time the server is restarted.
 
-1. Open the *grub.cfg* file in `less`, or your preferred text editor.
+1. Open the **grub.cfg** file in `less`, or your preferred text editor.
 
         less /boot/grub/grub.cfg
 
-2. Within the *grub.cfg* file, look for a section resembling the following.
+2. Within the **grub.cfg** file, look for a section resembling the following.
 
 {: .file}
 **/boot/grub/grub.cfg**
@@ -190,6 +190,47 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 . . .
 ~~~
 
-Write down the text in single quotes which appears directly after "submenu", which should be present after the first "menuentry" section. In this case, the text to copy would be **"Advanced options for Debian GNU/Linux"**.
+Write down the text in single quotes which appears directly after "submenu", which should be present after the first "menuentry" section. In this case, the text to copy would be **Advanced options for Debian GNU/Linux**.
 
-3. 
+3. Within the **grub.cfg** file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored.
+
+{: .file}
+**/boot/grub/grub.cfg**
+~~~ cfg
+. . .
+
+        menuentry 'Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-2.6.32-openvz-042stab123.9-amd64-advanced-e025e52b-91c4-4f64-962d-79f244caa92a' {
+                gfxmode $linux_gfx_mode
+                insmod gzio
+                if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+                insmod ext2
+                set root='hd0'
+                if [ x$feature_platform_search_hint = xy ]; then
+                  search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
+                else
+                  search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
+                fi
+                echo    'Loading Linux 2.6.32-openvz-042stab123.9-amd64 ...'
+                linux   /boot/vmlinuz-2.6.32-openvz-042stab123.9-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
+                echo    'Loading initial ramdisk ...'
+                initrd  /boot/initrd.img-2.6.32-openvz-042stab123.9-amd64
+        }
+
+. . .
+~~~
+
+Again, write down the text directly after "menuentry" in the single quotations. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
+
+4. Close the **grub.cfg** file and open **/etc/default/grub** in your preferred text editor. Locate the line that begins with `GRUB_DEFAULT=`. Delete the default value for this parameter and enter the text you copied in the previous steps, following the format below. With the example above, the value would be the following.
+
+        GRUB_DEFAULT="Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64"
+
+Note that both copied strings are separated with the carrot ">" character.
+
+5. Save and close the **grub** file, and issue the below command to reload the grub bootloader with the new kernel value.
+
+        update-grub
+
+6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
+
+![Linode Manager - Select Kernel](docs/assets/openvz_one.PNG)
