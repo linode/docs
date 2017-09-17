@@ -8,9 +8,9 @@ contributor:
 description: 'Install Elasticsearch, Logstash, and Kibana to collect and visualize webserver logs on Debian 8.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
-keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server,elastic,elasticsearch,logstash,kibana,elk stack,elastic stack,stack,log,graph'
+keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server,elastic,elasticsearch,logstash,kibana,elk,elk stack,elastic stack,stack,log,graph'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, June 29th, 2015'
+published: 'Monday, September 18th, 2017'
 title: 'Visualizing Apache Webserver Logs with the Elastic Stack on Debian 8'
 ---
 
@@ -102,7 +102,7 @@ Before configuring and loading log data, first install each piece of the stack.
 
          curl localhost:9200
 
-    The Elasticsearch REST API should return a JSON response similar to the following:
+    Elasticsearch may take some time to start up (you may use the `systemctl status elasticsearch` command to see recent logs indicating the service's state if you need to find whether the service has started successfully or failed for some reason). The Elasticsearch REST API should return a JSON response similar to the following:
 
          {
            "name" : "e5iAE99",
@@ -202,6 +202,89 @@ In order for Kibana to find log entries to configure an *index pattern*, logs mu
 
 Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to open this port in your firewall configuration, or port-forward it through ssh. The landing page should look similar to the following:
 
-[pic]
+![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png)
 
 This screen permits us to create an index pattern, which is a way for Kibana to know which indices to search when browsing logs and creating dashboards. The default value of `logstash-*` matches the indices created by Logstash by default, so clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
+
+{: .note}
+>
+>Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If any point, log entries no longer are shown in the Kibana interface, click this time span and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours" to see as many logs as possible.
+
+## Viewing Logs
+
+After the previously executed `curl` commands created entries in the Apache access logs, Logstash will have indexed them in Elasticsearch, which are now visible in Kibana.
+
+The "Discover" tab on the left-hand side of Kibana's interface (which should be open by default after configuring your index pattern) should show a timeline of log events:
+
+![Kibana 5 Discovery Tab](/docs/assets/elastic-stack-debian-8-kibana-discovery.png)
+
+Over time, and as other requests are made to the webserver via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discovery tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
+
+In order to view these details for a log entry, click the dropdown arrow to see individual document fields:
+
+![Kibana 5 Document Fields](/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png)
+
+Fields represent those values parsed from the Apache logs, such as `agent` which represents the `User-Agent` header, and `bytes`, which indicates the size of the webserver response.
+
+### Log Analysis
+
+Before continuing, generate a couple of dummy 404 log events in your webserver logs to demonstrate how to search and analyze logs within Kibana:
+
+    for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
+    
+#### Searching
+
+The top search bar within the Kibana interface allows you to search for queries following the [query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#query-string-syntax) to find results.
+
+For example, to find the 404 error requests we generated amid 200 OK logs, enter the following the in search box:
+
+    response:404
+
+And click the magnifying glass search button.
+
+![Kibana 5 Search Bar](/docs/assets/elastic-stack-debian-8-kibana-search-bar.png)
+
+The user interface will now only return logs that contain the "404" code in their response field.
+
+#### Analyzing
+
+Kibana supports many types of Elasticsearch queries to gain insight into indexed data. For example, consider the traffic that resulted in a 404 not found response code. Using [aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html), useful summaries of data can be extracted and displayed natively in Kibana.
+
+To create one of these visualizations, begin by selecting the "Visualize" tab:
+
+![Kibana 5 Visualize Tab](/docs/assets/elastic-stack-debian-8-kibana-visualize-tab.png)
+
+Then select one of the icons to create a visualization:
+
+![Kibana 5 Create Visualization](/docs/assets/elastic-stack-debian-8-kibana-create-visualization.png)
+
+Select "Pie" to create a new pie chart:
+
+![Kibana 5 Select Pie Chart Visualization](/docs/assets/elastic-stack-debian-8-kibana-pie-chart.png)
+
+Then select the `logstash-*` index pattern to determine where the data for the pie chart will come from:
+
+![Kibana 5 Select Pie Chart Index](/docs/assets/elastic-stack-debian-8-kibana-vis-index.png)
+
+At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:
+
+- Select "Split Slices" to create more than one slice in the visualization.
+- From the "Aggregation" drop-down menu, select "Terms" to indicate that unique terms of a field will be the basis for each slice of the pie chart.
+- From the "Field" drop-down menu, select `response.keyword`. This indicates that the `response` field will determine the size of the pie chart slices.
+- Finally, click the "Play" button to update the pie chart and complete the visualization.
+
+![Kibana 5 Select Pie Chart Configuration](/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png)
+
+Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred further back than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields such as the verb (GET, POST, etc.) or even create summaries of numerical data, such as the total amount of bytes transferred over a given period of time.
+
+If you wish to save this visualization to use later on, click the "Save" button near the top of the browser window to give to the visualization a name and save it permanently.
+
+## Further Reading
+
+Although this tutorial has provided an overview of each piece of the stack, more reading is available to further expand upon additional ways to process and view data, such as additional Logstash filters to enrich log data or other Kibana visualizations to present data in new and useful ways.
+
+Comprehensive documentation for each piece of the stack is available from the Elastic web site:
+
+- The [Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) contains additional information regarding how to operate Elasticsearch, including clustering, managing indices, and more.
+- The [Logstash documentation](https://www.elastic.co/guide/en/logstash/current/index.html) contains useful information on additional plugins that can further process raw data such as geolocating IP addresses, parsing user-agent strings, and other plugins.
+- [Kibana's documentation pages](https://www.elastic.co/guide/en/kibana/current/index.html) provide additional information regarding how to create useful visualizations and dashboards.
