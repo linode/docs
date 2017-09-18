@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Graylog is a powerful, free, and open source, log management and analysis tool. Graylog can be used for monitoring SSH logins and unusual activity to debugging applications. Based on Java, Elasticsearch, MongoDB and provides a beautiful web interface for centralized log management and log analysis.'
+description: 'This guide shows how to install and configure Graylog2, a log management and analysis tool with Elasticsearch and MongoDB, on Debian 9 server.'
 keywords: 'Graylog, Install Graylog, Graylog Debian'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 14th, 2017'
@@ -18,7 +18,9 @@ external_resources:
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 ---
 
-Graylog is a free, open source and powerful log management and analysis tool. Graylog is written in Java, and uses Elasticsearch and MongoDB to provide a beautiful web interface for centralized log management and log analysis. Elasticsearch is used to search and store log messages, Elasticsearch uses MongoDB to store the meta data and configurations. Graylog collects, indexes, and analyzes logs from inputs and displays them through a web interface. Compared to other log monitoring tools, Graylog is a an enterprise-ready tool that works out of the box.
+Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. It is based on Java, Elasticsearch, and MongoDB and provides a beautiful web interface for centralized log management and log analysis.
+
+Graylog uses Elasticsearch for searching and storing the log messages, and MongoDB to store the meta information and configuration. Graylog collects, indexes and analyzes the logs from various inputs and displays them through a web interface. Compared to other log monitoring tools, Graylog is a more finished and enterprise-ready tool out of the box.
 
 This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.
 
@@ -43,18 +45,17 @@ This guide shows you how to install and configure Graylog2 with Elasticsearch an
 *   Minimum 4 GB RAM installed on your Linode.
 
 ## Install Java
-Elasticsearch and Graylog are Java applications, you will need to install the latest version of Java to your system.
+Both Graylog and Elasticsearch are Java-based, so you will need to install the latest version of Java on your system.
 
-1.  Install the latest version of Java by running the following command:
+1.  Install the latest version of Java:
 
         apt-get install openjdk-8-jre-headless -y
 
-2.  Once Java is installed, check the version of Java with the following command:
+2.  Once Java is installed, check the Java version:
 	
->>>>>>> 2c3022f7a1fba42429f003f640ce0ebf6967d322
         java -version
 
-    Your output should look like this:
+    You should see the following output on your screen:
 
         java version "1.8.0_131"
         Java(TM) SE Runtime Environment (build 1.8.0_131-b11)
@@ -65,7 +66,7 @@ Elasticsearch and Graylog are Java applications, you will need to install the la
         apt-get install apt-transport-https uuid-runtime pwgen -y
 
 ## Install and Configure Elasticsearch
-Graylog uses Elasticsearch to store log messages, and as a search engine. By default, Elasticsearch isn't available in the Debian 9 repository, you will need to add the Elasticsearch repository to your system.
+Graylog uses Elasticsearch for storing the log messages and also offers a searching facility. By default, Elasticsearch is not available in Debian 9 repository. So, you will need to add Elasticsearch repository to your system.
 
 1.  Download and install the GPG key:
 
@@ -117,7 +118,7 @@ Graylog uses Elasticsearch to store log messages, and as a search engine. By def
 
         curl -X GET http://localhost:9200
 
-8.  You can also test the health of the Elasticsearch with the following command:
+8.  You can also test the health of the Elasticsearch:
 
         curl -XGET 'http://localhost:9200/_cluster/health?pretty=true'
 
@@ -243,7 +244,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
     >
     > Consider limiting Graylog access to a private network, if you are deploying Graylog in a production environment. In the context of this guide, instances of `192.168.0.102` can be replaced with the Linode's public IP address to access on the browser.
 
-2.  Provide the username `admin` and password as the `hashedpassword` generated previously, then click on the **Sign In** button. You should see the Graylog default dashboard:
+2.  Provide the username `admin` and password as the `hashedpassword` generated earlier, then click on the **Sign In** button. You should see the Graylog default dashboard:
 
     [![Graylog Dashboard](/docs/assets/Screenshot-of-graylog-dashboard_small.png)](/docs/assets/Screenshot-of-graylog-dashboard.png)
 
