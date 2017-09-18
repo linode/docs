@@ -2,10 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, and other services.'
+description: 'This guide will show you how to create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, and other services.'
 keywords: 'streisand,vpn,openvpn,tor,wireguard,,L2TP/IPSec,OpenConnect,security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, September 12th, 2017'
+published: Tuesday, September 12th, 2017
 modified: Thursday, September 14th, 2017
 modified_by:
   name: Linode
@@ -112,6 +112,9 @@ Streisand will now execute a series of Ansible rules to create and configure a n
 >
 > Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check your [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
 
+{:.note}
+>
+> You should not recieve any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261)
 
 ## Connecting to Your Streisand Gateway
 
@@ -120,5 +123,8 @@ You now have a Linode with multiple VPNs and protocols fully configured for use;
 1.  Click on "Download Certificate" to download an SSL certificate so that you can verify your secure connection to your new gateway. Follow the instructions for your system or device to mark the certificate as trusted.
 
 2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser. Enter the provided username and password when prompted.
+
+
+###Next Steps
 
 You are now connected to your gateway. From here, you can choose from any of the eight pre-configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices. These instructions are personalized to your gateway, and so contain the exact IP addresses, passwords, and other information you will need. Where possible, links are provided to download pre-made configuration files to make the setup process even easier. This also makes it simple to share connection information, so that you can easily share your new VPN with family and friends.
