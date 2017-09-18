@@ -20,7 +20,7 @@ Package management in Python is available with a variety of different tools. `pi
 
 ## Before You Begin
 
-1.  Familiarize yourself with out [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
 
 2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can also be installed using the apt package manager by `sudo apt install python-pip`.
 
@@ -50,10 +50,10 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
         README.md
     ~~~
 
-3.  Edit `setup.py` to contain basic information about your Python package. 
+3.  Edit `setup.py` to contain basic information about your Python package.
 
     {:.file}
-    setup.py
+    linode_example/setup.py
     :   ~~~
         from setuptools import setup
 
@@ -72,7 +72,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 4.  Add an example function to `__init__.py`.
 
     {:.file}
-    /linode_example/linode_example/__init__.py
+    linode_example/linode_example/__init__.py
     :   ~~~
         def hello_word():
             print("hello world")
@@ -81,7 +81,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 5.  The `setup.cfg` file lets PyPI know the README is a markdown file.
 
     {:.file}
-    README.md
+    setup.cfg
     :   ~~~
         [metadata]
         description-file = README.md
@@ -134,9 +134,9 @@ The next step is setting up a server to host a package index. This guide will us
 
 # Authentication with Apache and passlib
 
-1.  Install Apache and `passlib` for password based authentication for uploads.
+1.  Install Apache and `passlib` for password based authentication for uploads. Make sure you are still in your activated virtual environment (`(venv)` should appear before the terminal prompt) and then execute the following:
 
-        sudo apt install apache2 
+        sudo apt install apache2
         pip install passlib
 
 2.  Create a password for authentication using `htpasswd` and move `htpasswd.txt` into the `~/packages` directory. Enter the desired password twice.
@@ -145,14 +145,15 @@ The next step is setting up a server to host a package index. This guide will us
         New password:
         Re-type new password:
 
-3.  Enable `mod_wsgi` in order to allow Bottle, a WSGI framework, to connect with Apache2.
+3.  Install and enable `mod_wsgi` in order to allow Bottle, a WSGI framework, to connect with Apache2.
 
-        sudo a2enmod mod_wsgi
+        sudo apt install libapache2-mod-wsgi
+        sudo a2enmod wsgi
 
 4.  Inside the `~/packages` directory, create a `pypiserver.wsgi` file that creates an application object to connect between pypiserver and Apache.
 
     {:.file}
-    pypiserver.wsgi
+    packages/pypiserver.wsgi
     :   ~~~
     import pypiserver
     PACKAGES = '/absolute/path/to/packages'
@@ -163,11 +164,11 @@ The next step is setting up a server to host a package index. This guide will us
 5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`.
 
     {:.file}
-    pypiserver.conf
+    /etc/apache2/sites-available/pypiserver.conf
     :   ~~~
         <VirtualHost *:80>
         WSGIPassAuthorization On
-        WSGIScript Alias / /absolute/path/to/packages/pypiserver.wsgi
+        WSGIScriptAlias / /absolute/path/to/packages/pypiserver.wsgi
         WSGIDaemonProcess pypiserver python-path=/absolute/path/to/packages:/absolute/path/to/packages/venv/lib/pythonX.X/site-packages
             LogLevel info
             <Directory /absolute/path/to/packages>
@@ -184,7 +185,7 @@ The next step is setting up a server to host a package index. This guide will us
     >
     > Depending on the version of Python and virtual environment path, the WSGIDaemonProcess directive may require a different path.
 
-6.  Give **www-data** ownership of the `~/packages` directory. This will allow uploading from a client using setuptools.
+6.  Give **www-data** ownership of the `~/packages` directory. This will allow uploading from a client using `setuptools`.
 
         sudo chown -R www-data:www-data packages/
 
@@ -200,7 +201,7 @@ The next step is setting up a server to host a package index. This guide will us
     The repository should be accessible through `192.0.2.0` by default on port 80 where `192.0.2.0` is the public of the Linode.
 
 # Download From a Client
-Recall the rather long flags declared with `pip` in order to download from a different specified repository. Create a configuration file containing the IP of your public server will simplify usage.
+Recall the rather long flags declared with `pip` in order to download from a specified repository. Creating a configuration file containing the IP of your public server will simplify usage.
 
 1.  On a client computer, create a `.pip` directory in the home directory. Inside the this directory, create `pip.conf` with the following:
 
@@ -208,7 +209,7 @@ Recall the rather long flags declared with `pip` in order to download from a dif
     pip.conf
     :   ~~~
     [global]
-    extra-index-url = http://192.0.2.0
+    extra-index-url = http://192.0.2.0:8080/
     trusted-host = 192.0.2.0
         ~~~
 
@@ -230,7 +231,7 @@ Recall the rather long flags declared with `pip` in order to download from a dif
     ~~~
 
 # Upload Remotely Using Setuptools
-Although it is possible to use `scp` to transfer tar.gz files to the repository, this is one method of uploading to a Python repository. There are other tools such as `twine` and `easy_install` which are also similar alternatives.
+Although it is possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
 1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`
 
@@ -245,7 +246,7 @@ Although it is possible to use `scp` to transfer tar.gz files to the repository,
         username:
         password:
         [linode]
-        respository: http://192.0.2.0
+        repository: http://192.0.2.0
         username: example_user
         password: mypassword
         ~~~
@@ -254,7 +255,6 @@ Although it is possible to use `scp` to transfer tar.gz files to the repository,
 
 2.  From the directory of the Python package to upload:
 
-        python setup.py sdist -R upload linode
+        python setup.py sdist upload -r linode
 
     If successful, the console will print the message: `Server Response (200): OK`.
-
