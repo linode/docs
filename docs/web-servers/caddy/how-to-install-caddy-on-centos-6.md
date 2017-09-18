@@ -2,16 +2,17 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to install and configure Caddy, a modern web server, running as a service on Cent)S 6.8. You will also obtain a free SSL-Certificate for a website automatically.'
-keywords: 'caddy,centOS,servers'
+description: 'This guide will show you how to install and configure Caddy, a modern web server, running as a service. You will also obtain a free SSL-Certificate for a website automatically.'
+keywords: 'caddy,centOS,web servers'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, September 14th, 2017'
-modified: Friday, September 15th, 2017
+modified: Monday, September 18th, 2017
 modified_by:
   name: Linode
-title: 'How to Install Caddy on CentOS 6'
+title: 'How to Install Caddy on CentOS 7'
 contributor:
-  name: K. Kuchinin
+  name: Konstantin Kuchinin
+  link: https://github.com/coocheenin
 external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 ---
@@ -19,7 +20,7 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 ----
 
-[Caddy](https://caddyserver.com/) a fast, open-source web server written in Go. Its low memory use and easy configuration have made it an increasingly popular choice. In addition, it offers out-of-the-box security features: it uses HTTPS by default, and it is the first web server that can obtain certificates for you automatically using [Let's Encrypt](https://letsencrypt.org/). It can also automatically renew your certificates in the background.
+[Caddy](https://caddyserver.com/) is a fast, open-source web server written in Go. Its low memory use and easy configuration have made it an increasingly popular choice. In addition, it offers out-of-the-box security features: it uses HTTPS by default, and it is the first web server that can obtain certificates for you automatically using [Let's Encrypt](https://letsencrypt.org/). It can also automatically renew your certificates in the background.
 
 Caddy also includes modern web server functionality such as support for virtual hosts, minification of static files, and HTTP2. For more information about Caddy's features, please see the details in the [Official Documentation](https://caddyserver.com/docs)
 
@@ -29,9 +30,15 @@ Caddy also includes modern web server functionality such as support for virtual 
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system:
+3.  If you want to set up your site for HTTPS using Let's Encrypt, you will need to buy a Fully Qualified Domain Name (FQDN) and follow our [DNS Manager Overview]('https://www.linode.com/docs/networking/dns/dns-manager-overview#add-records') guide to set your new domain name to point to your Linode.
+
+4.  Update your system:
 
         sudo yum update
+
+{:.note}
+>
+> Throughout this guide, replace `203.0.113.0` with the IP address or FQDN of your Linode.
 
 ## Installing
 
@@ -43,14 +50,7 @@ Caddy also includes modern web server functionality such as support for virtual 
 
             sudo wget -qO- https://getcaddy.com | bash -s http.minify
 
-
-Then we need to make any changes to system environment. It's strange, but `/usr/local/bin` is missing from superuser `$PATH`.
-Let's fix this bug:
-
-      echo 'pathmunge /usr/local/bin' | sudo tee /etc/profile.d/localbin.sh
-      sudo chmod +x /etc/profile.d/localbin.sh
-
-## Setup
+## Install Caddy
 
 1.  Create an unprivileged user, which will be used for running your Caddy server. This is necessary for security reasons, because running a server as a root or sudo user is bad practice.
 
@@ -69,72 +69,71 @@ Let's fix this bug:
         sudo chown -R www-data:root /etc/ssl/caddy
         sudo chown -R www-data:www-data /var/log/caddy
 
- 4.  Configure Caddy as a service to run at startup. To do this, download a special CentOS 6 init-script Edition (forked from official init-script):
+## Configure Caddy as a Service
 
-          sudo wget -P /etc/init.d https://gist.githubusercontent.com/coocheenin/9d6cd2a0f3a148c24c9f2c6649c63643/raw/87f9dcb3def7ec04d728f7544fcaf3a73294b4f1/caddy
+This section will show you how to allow Caddy to start automatically whenever your system boots.
 
- 5.  Don't forget to make it executable:
+1.  Download the `caddy.service` file:
 
-        sudo chmod +x /etc/init.d/caddy
+        wget https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service
 
-Whats the difference between this script and official script? The key command, which starts Caddy as a daemon, is different.
-Since the command `start-stop-daemon` is missing in CentOS, daemonize utility was found in replacement.
+2.  Set appropriate permissions for your Caddyfile:
 
-Let's install with `yum` utility:
+        sudo chown www-data:www-data /etc/caddy/Caddyfile
+        sudo chmod 444 /etc/caddy/Caddyfile
 
-      sudo yum install -y daemonize
+3.  Set up a home directory ("web root") for your website:
 
-Activate Caddy as a service (daemon) to enable it to start on boot:
-
-      sudo chkconfig --add caddy
-      sudo chkconfig --level 2345 caddy on
-
- Done! Now we can check it like `sudo service caddy status`.
- The output will look like this:
- > caddy is not running
-
-## Organizing and Managing Directories to Host a Website
-
-Caddy requires a directory, called the "web root," where the files for your website will be stored.
-
-1. Create a web root directory:
-
-      sudo mkdir /home/www/site1
+        sudo mkdir -p /var/www/my-website
+        sudo chown www-data:www-data /var/www
+        sudo chmod 555 /var/www
 
 {:.caution}
 >
->The files in your web root must belong to the caddy user (www-data) otherwise your regular user as long as Caddy has READ permission on all files to be served and EXECUTE permission on all directories.
+>The files in your web root must belong to the Caddy user (www-data) otherwise your regular user as well as Caddy has READ permission on all files to be served and EXECUTE permission on all directories.
 
-2.  If you plan to deploy your pages via SFTP-Client as regular user, we must set the following permissions. Replace `regularuser` with your current username:
+4.  If you plan to deploy your pages via SFTP-Client as a regular user, set the following permissions. Replace `regularuser` with your current username:
 
         sudo usermod -g www-data regularuser
-        sudo chown -R regularuser:www-data /home/www/site1
-        sudo chmod -R 755 /home/www/site1
-        sudo chmod 755 /home/www
+        sudo chown -R regularuser:www-data /var/www/
+        sudo chmod -R 755 /var/www/my-website
+        sudo chmod 755 /var/www
 
-3.  Create a test page. Since you are now the website's owner, you do not need to use `sudo`:
+5.  Create a test page:
 
-        echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' >> /home/www/site1/index.htm
+        echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/my-website/index.html
 
 
-## Configuring
+## Configuring Your Caddyfile
 
 Edit your Caddyfile:
 
 {: .file }
 /etc/caddy/Caddyfile
 :   ~~~ conf
-    example.com {
-    root /home/www/site1
+    203.0.113.0 {
+    root /var/www/my-website
     tls your-email-here@example.com
     minify
     }
     ~~~
 
-## Start the Server
+    {:.note}
+    > If you are using a Linode without a FQDN, delete the `tls your-email-here@example.com` line from the sample Caddyfile above.
 
-1.  Start the Caddy server:
+## Enable the Caddy Service
 
-        sudo service caddy start
+1.  Install `caddy.service`:
 
-2.  Open your browser and type your Linode's IP address with the `https` prefix. You should see your test page rendered in the browser. You should also see the green lock symbol in the URL bar, indicating that you have successfully integrated an SSL-Certificate into your website.
+        sudo cp caddy.service /etc/systemd/system/
+        sudo chown root:root /etc/systemd/system/caddy.service
+        sudo chmod 644 /etc/systemd/system/caddy.service
+
+2.  Restart `systemd` and enable the Caddy service:
+
+        sudo systemctl daemon-reload
+        sudo systemctl enable caddy.service
+        sudo systemctl start caddy.service
+        sudo systemctl status caddy.service
+
+3.  The `status` command above will show you the url at which Caddy is listening (e.g. `https://203.0.113.0`). Type this into a browser window on your local machine and you should see your test page rendered in the browser. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a green lock symbol in the URL bar, indicating that your connection is secure.
