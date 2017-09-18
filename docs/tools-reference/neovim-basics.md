@@ -1,6 +1,6 @@
 ---
 author:
-  name: Gabriel Cánepa
+  name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
 description: 'This is an introductory guide to NeoVim, a drop-in replacement for the vim text editor.'
 keywords: 'neovim,text,editor,vim,asynchronous,plugins,'
