@@ -30,41 +30,22 @@ external_resources:
 
 ## Link to a Source Control (GitHub, Gitlab or Bitbucket)
 
-If you want to deploy from either of these services( Github, Gitlab or bitbucket), you need to link them to your Forge account. Once you are logged in to your Forge Account, head to your profile tab.
+If you want to deploy from either of these services(Github, Gitlab or bitbucket), you need to link them to your Forge account. Once you are logged in to your Forge Account, head to your profile tab.
 
 1. Choose your preferred source control by clicking on the `Source Control` Link on the Left.
 
 [![Linode API](/docs/assets/configuration-management/linking_source_control.png)](/docs/assets/configuration-management/linking_source_control.png)
 
-2. **Click** on either; `CONNECT TO GITHUB` , `CONNECT TO GITLAB`, or `CONNECT TO BITBUCKET`. In this tutorial I'll Gitlab, So I clicked on `CONNECT TO GITLAB`. 
+2. **Click** on either; `CONNECT TO GITHUB` , `CONNECT TO GITLAB`, or `CONNECT TO BITBUCKET`. In this tutorial I'm using Gitlab, So I clicked on `CONNECT TO GITLAB`. 
 
 Once you select the Source Control you want, you’ll be redirected to the Source control website where you need to authorize Laravel Forge and then you will be redirected back to Forge’s website.
 
 [![Linode API](/docs/assets/configuration-management/source_control_authorized.png)](/docs/assets/configuration-management/source_control_authorized.png)
 
-
-## Add SSH keys to your profile.
-You should have received an email already about details of your ssh from above. 
-
-[![Linode API](/docs/assets/configuration-management/adding_public_key.png)](/docs/assets/configuration-management/adding_public_key.png)
-
-Click on the `SSH Keys` and upload your local SSH Key by following the link on the mail or see How to create and copy an SSH Key.  Once you have your SSH key, add a name and your key to the form and submit by clicking on `ADD KEY`
-
-
 ## Get your Linode API key
 Laravel Forge needs your Linode’s API key to connect to Linode. 
 
-1. Head to your Linode dashboard.
-
-2. Click on `my profle` at the right top of the page:
-
-   [![Linode API](/docs/assets/configuration-management/linode_dashboard_header.png)](/docs/assets/configuration-management/linode_dashboard_header.png) 
-
-3. Click on `API Keys` tab:
-
-   [![Linode API](/docs/assets/configuration-management/linode_api_key.png)](/docs/assets/configuration-management/linode_api_key.png)
-
-4. Create a new API Key by adding a `Label` and  `expires` period you want then click on  `Create API Key`. Take note of your API key. 
+1. Follow this guide to get your Linode API key: https://www.linode.com/docs/platform/api/api-key
 
 ## Adding your Linode API key to Forge.
 
@@ -110,21 +91,13 @@ Once the new server is ready to go, you will see it's green and good to go(By de
 
 [![Linode API](/docs/assets/configuration-management/active_servers.png)](/docs/assets/configuration-management/active_servers.png)
 
-When you visit your IP Address, you will see that our server has been set up for us.
+If visit your IP Address, you will see that the server has been set up for us.
 
 [![Linode API](/docs/assets/configuration-management/server_set_up_with_php_7_1.png)](/docs/assets/configuration-management/server_set_up_with_php_7_1.png)
 
 When the server is active, you will also receive mail from Linode with details of things that has been created.
 
 [![Linode API](/docs/assets/configuration-management/mail_from_linode_showing_details_created.png)](/docs/assets/configuration-management/mail_from_linode_showing_details_created.png)
-
-You will also receive a mail that a public key was added to your gitlab account.
-
-Now, lets confirm that the server is created on Linode also, head over to linode under the linode tab, you should see a node that has been created.
-
-
-[![Linode API](/docs/assets/configuration-management/linode_created.png)](/docs/assets/configuration-management/linode_created.png)
-
 
 ## Pointing your domain name
 
@@ -138,7 +111,7 @@ If you intend to visit the site you're setting up via a real domain (versus just
 [![Linode API](/docs/assets/configuration-management/adding_new_domain.png)](/docs/assets/configuration-management/adding_new_domain.png)
 
 - Root Domain: This is your domain name.
-- Project Type: This is the type of of project you are using, If you are building regular php, you can choose : ` General PHP / Laravel`. ( the other option available are : General PHP / Laravel, Static, HTML, Symfony, Symfony (Dev).       
+- Project Type: This is the type of of project you are using, If you are building regular php, you can choose : ` General PHP / Laravel`. ( the other option available are: General PHP / Laravel, Static, HTML, Symfony, Symfony (Dev).       
 - Web Directory: This is where you public files will be served from.
 
 3. Submit the form by clicking `ADD SITE`.
@@ -165,7 +138,6 @@ eg:
 
 ```
     dongido/transaction-manager
-
 ```
 
 [![Linode API](/docs/assets/configuration-management/git_repository_name.png)](/docs/assets/configuration-management/git_repository_name.png)
@@ -177,12 +149,10 @@ If you visit the website again, you will see that the repository is now copied t
 
 [![Linode API](/docs/assets/configuration-management/site_up_and_running.png)](/docs/assets/configuration-management/site_up_and_running.png)
 
-
 ## Auto deploy.
 In this era of Continuous integration where we always want to keep making changes or adding features to our live site and want the changes to get deployed immediately.
 
 The next page that you will get after clicking on the `INSTALL REPOSITORY`. There you can set the auto deploy immediately.
-
 
 [![Linode API](/docs/assets/configuration-management/Laravel_forge_deploy.png)](/docs/assets/configuration-management/Laravel_forge_deploy.png)
 
@@ -191,7 +161,7 @@ Here, you just need to change the quick deploy to `ON`. Then try making change t
 
 if in any way, you are not on the page, you can get to the deploy page by:
 
-1. Choose thue site that you are working on.
+1. Choose the site that you are working on.
 
 2. Make sure the `quick deploy` option is set to ON.
 
