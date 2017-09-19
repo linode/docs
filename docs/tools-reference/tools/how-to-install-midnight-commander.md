@@ -20,11 +20,11 @@ external_resources:
 
 ----
 
+![Midnight Commander](/docs/assets/midnight_commander.jpg)
+
 ## Introduction
 
-![Midnight Commander](/docs/assets/midnight-commander-full-screen.png)
-
-For beginners, managing files on their Linux servers from the command line can be intimidating, time-consuming, and sometimes even risky. More experienced users might want to switch to better suited tools for dealing with files and directories in many different locations. One  tool that can help both Linux newbies and veterans is Midnight Commander, a *Text User Interface* (TUI) file manager.
+For beginners, managing files on their Linux servers from the command line can be intimidating, time-consuming, and sometimes even risky. More experienced users might want to switch to better suited tools for dealing with files and directories in many different locations. One tool that can help both Linux newbies and veterans is Midnight Commander, a *Text User Interface* (TUI) file manager.
 
 A TUI facilitates interaction between users and their systems in a visually oriented way instead of typing commands. While lacking in visual components compared to a graphical user interface (GUI), a TUI offers windows, panels, menus, and mouse support.
 
@@ -56,7 +56,9 @@ First, install the utility:
 
         mc
 
-Keep in mind that running as root is not a good idea unless you need to modify or delete files/directories owned by this user. In most cases, reading or copying objects owned by root doesn't require special privileges, so try to run `mc` as a regular user.
+    Keep in mind that running as root is not a good idea unless you need to modify or delete files/directories owned by this user. In most cases, reading or copying objects owned by root doesn't require special privileges, so try to run `mc` as a regular user.
+
+    ![Midnight Commander TUI](/docs/assets/midnight-commander-full-screen.png)
 
 2.  By default, Midnight Commander uses a blue background color and highlights important menu items. To turn off color:
 
@@ -78,12 +80,12 @@ Keep in mind that running as root is not a good idea unless you need to modify o
 
     After you press **ENTER**, you'll see a new file appear in your active panel. Now, delete it without typing any commands. Use the arrow keys, pressing **UP** or **DOWN** until the file named `test` is highlighted. Now press **F8**. A dialog box pops up and asks for confirmation. Press **ENTER**. If you press **F8** by mistake this gives you chance to cancel the action.
 
-![Midnight Commander Delete Confirmation Dialog](/docs/assets/midnight-commander-delete-confirmation.png)
+    ![Midnight Commander Delete Confirmation Dialog](/docs/assets/midnight-commander-delete-confirmation.png)
 
 3.  At the top of the screen, you can see a colored bar with text: 
 **Left**, **File**, **Command**, **Options**, **Right**. 
 
-These are drop-down menus that can be accessed by pressing **F9** and then navigating with your arrow keys. Press **F9** and then the **DOWN** arrow key multiple times until **Tree** is highlighted. Press **ENTER**. The panel has now changed to tree view.
+    These are drop-down menus that can be accessed by pressing **F9** and then navigating with your arrow keys. Press **F9** and then the **DOWN** arrow key multiple times until **Tree** is highlighted. Press **ENTER**. The panel has now changed to tree view.
 
 4.  Once you hit the **F9** key, some letters get highlighted, e.g., **C** in **C**ommand. These are keys that you can press to navigate the menus faster. Let's return to your previous view: press **F9** then **l** (L) and then **g** to get back to **File listing**. When an input field is selected, hold **ALT** down before pressing on the highlighted letter.
 
