@@ -162,12 +162,12 @@ By default, Elasticsearch will create five shards and one replica for every inde
 
 ### Logstash
 
-In order to collect Apache access logs, Logstash must be configured to watch any necessary files and process them, eventually sending them to Elasticsearch. This configuration files assumes that a site has been set up according to the previously mentioned [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8) guide to find the correct log path.
+In order to collect Apache access logs, Logstash must be configured to watch any necessary files and process them, eventually sending them to Elasticsearch. This configuration file assumes that a site has been set up according to the previously mentioned [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8) guide to find the correct log path.
 
 1.  Create the following Logstash configuration file to do so:
 
     {: .file}
-    /etc/elasticsearch/jvm.options
+    /etc/logstash/conf.d/apache.conf
     :   ~~~ conf
         input {
           file {
@@ -200,7 +200,7 @@ In order for Kibana to find log entries to configure an *index pattern*, logs mu
 
     for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
 
-Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to open this port in your firewall configuration, or port-forward it through ssh. The landing page should look similar to the following:
+Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to port-forward it through ssh. The landing page should look similar to the following:
 
 ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png)
 
@@ -208,7 +208,7 @@ This screen permits us to create an index pattern, which is a way for Kibana to 
 
 {: .note}
 >
->Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If any point, log entries no longer are shown in the Kibana interface, click this time span and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours" to see as many logs as possible.
+>Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this time span and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours" to see as many logs as possible.
 
 ## Viewing Logs
 
@@ -236,7 +236,7 @@ Before continuing, generate a couple of dummy 404 log events in your webserver l
 
 The top search bar within the Kibana interface allows you to search for queries following the [query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#query-string-syntax) to find results.
 
-For example, to find the 404 error requests we generated amid 200 OK logs, enter the following the in search box:
+For example, to find the 404 error requests we generated from among other 200 OK requests, enter the following the in search box:
 
     response:404
 
@@ -277,7 +277,7 @@ At this point, a pie chart should appear in the interface ready to be configured
 
 Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred further back than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields such as the verb (GET, POST, etc.) or even create summaries of numerical data, such as the total amount of bytes transferred over a given period of time.
 
-If you wish to save this visualization to use later on, click the "Save" button near the top of the browser window to give to the visualization a name and save it permanently.
+If you wish to save this visualization to use later on, click the "Save" button near the top of the browser window to give to the visualization a name and save it permanently to Elasticsearch.
 
 ## Further Reading
 
