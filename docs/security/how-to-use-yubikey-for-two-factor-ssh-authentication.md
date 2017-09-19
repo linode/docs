@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 contributor:
   name: Huw Evans
-  link: github.com/huw
+  link: https://github.com/huw
 external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
 ---
