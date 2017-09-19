@@ -2,14 +2,14 @@
 author:
   name: Kulshekhar Kabra
   email: docs@linode.com
-description: 'Deploy PostgreSQL in a Highly Available Setup'
+description: 'This guide shows you how to set up a PostgreSQL cluster on your Linode.'
 keywords: 'postgresql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 19, 2017
 modified_by:
   name: Kulshekhar Kabra
 published: 'Tuesday, September 19, 2017'
-title: Deploying a Highly Available PostgreSQL Cluster
+title: Deploy a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
