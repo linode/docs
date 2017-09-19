@@ -29,10 +29,10 @@ Finding your Linode's IP address (or addresses) is easy and can be done in two d
 
 The graphic above shows:
 
-- One public IP address, `96.126.109.54` in the `255.255.25.0` subnet.
-- One public IPv6 address, `2600:3c03::f03c:91ff:fe70:cabd`
+- One public IP address, `96.126.109.54` on a `255.255.255.0` [subnetwork](https://en.wikipedia.org/wiki/Subnetwork).
+- One public IPv6 address, `2600:3c03::f03c:91ff:fe70:cabd` on a `/64` subnet.
 - This Linode does not have a private IPv4 address.
-- One private IPv6 address (*Link-Local IP*), `fe80::f03c:91ff:fe70:cabd`
+- One private IPv6 address (*Link-Local IP*), `fe80::f03c:91ff:fe70:cabd`, also on a `/64` subnetwork.
 
 ## From an SSH Session
 
