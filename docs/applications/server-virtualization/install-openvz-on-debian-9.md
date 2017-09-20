@@ -14,7 +14,8 @@ contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
-  - [Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)
+  - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'
+  - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -303,4 +304,42 @@ IP_ADDRESS="192.168.0.101/24"
 HOSTNAME="centos-7"
 ~~~
 
+7. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
 
+        vzctl start [CTID]
+        vzctl enter [CTID]
+
+## Configure Internet Access To Containers
+
+As it stands, containers have no way to access the internet or be accessed from the internet. The host server must be configured to pass on requests to and from each installed virtual environment.
+
+### Configure Access From Container To Internet
+
+1. On the host server, issue the following command via Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list in CIDR notation (include IP address and subnet, or xxx.xxx.xxx.xxx/xx) in order to encompass a range of IP addresses, which will enable access to any containers added in the future.
+
+        iptables -t nat -A POSTROUTING -s [container IP] -o eth0 -j SNAT --to [host server IP]
+
+2. Save the new Iptables rules. Skip this step if you have iptables-persistent installed.
+
+        iptables-save > /etc/iptables.conf
+
+3. Configure your firewall to allow forwarded requests. Save the rule.
+
+        iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT
+        iptables-save > /etc/iptables.conf
+
+4. You should now have access to the internet from within your container environment. Try updating packages from your container to verify the connection.
+
+### Configure Access From Internet To Container
+
+1. If you need to access a specific service on your container from the internet, you will need to reserve a port on the host machine to route access through. Issue the following command replacing any bracketed values with the appropriate information.
+
+        iptables -t nat -A PREROUTING -p tcp -d [host_ip] --dport [host_port_number] -i eth0 -j DNAT --to-destination [container_ip:container_port_number]
+
+2. Save your new rule. Skip this step if you have iptables-persistent installed.
+
+        iptables-save > /etc/iptables.conf
+
+## Where To Go From Here
+
+After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal linux environment, requiring regular updates, security configuration, etc. Much configuration can be done from the host server via OpenVZ commands. See the "OpenVZ Basic Operations" link in the **External Resources** section to familiarize yourself with basic administration commands. Additional user-created templates can also be downloaded, which are not included in the main template listing. You can find these by following the "OpenVZ User Contributed Templates" link.
