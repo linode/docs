@@ -3,7 +3,7 @@
  name: Linode Community
  email: docs@linode.com
 description: 'OpenVZ is a software based OS virtualization tool enabling the deployment, management, and modification of isolated virtual Linux environments from within a host Linux distribution. An extensive array of pre-built OS templates in a variety of Linux distributions allow users to rapidly download and deploy virtual environments with ease.'
-keywords: 'openvz, virtualization'
+keywords: 'openvz, virtualization, docker'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published:
 modified:
