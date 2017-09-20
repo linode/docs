@@ -52,10 +52,10 @@ Caddy also includes modern web server functionality such as support for virtual 
 
 3. Move Caddy to an appropriate directory and give it the necessary permissions:
 
-	sudo cp /path/to/caddy /usr/local/bin
-	sudo chown root:root /usr/local/bin/caddy
-	sudo chmod 755 /usr/local/bin/caddy
-	sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
+        sudo cp /path/to/caddy /usr/local/bin
+        sudo chown root:root /usr/local/bin/caddy
+        sudo chmod 755 /usr/local/bin/caddy
+        sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
 
 4.  Create an unprivileged user, which will be used for running your Caddy server. This is necessary for security reasons, because running a server as a root or sudo user is bad practice.
 
