@@ -234,3 +234,15 @@ Note that both copied strings are separated with the carrot ">" character.
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
 ![Linode Manager - Select Kernel](docs/assets/openvz_one.PNG)
+
+7. Reboot your server and issue the below command to verify the OpenVZ kernel was loaded.
+
+        uname -r
+
+If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is misconfigured. Check and make certain the correct kernel was chosen and entered correctly.
+
+## Run OpenVZ And 
+
+## Download And Deploy An OS Template
+
+
