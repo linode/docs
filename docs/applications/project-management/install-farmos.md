@@ -2,10 +2,10 @@
 author:
   name: Angel G
   email: docs@linode.com
-description: 'This guide shows you how to install FarmOS."
+description: 'This guide shows you how to install FarmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, September 9th, 2017'
-modified: Thursday, September 10th, 2017
+modified: Wednesday, September 20th, 2017
 modified_by:
     name: Linode
 title: 'FarmOS: the Web-Based app for agricultural mangement, planning and record keeping'
@@ -43,7 +43,7 @@ After Installing the LAMP Stack, you need to create a database for Drupal to use
         CREATE USER DRUPAL_USER@LOCALHOST IDENTIFIED BY 'PASSWORD';
 3. Grant privileges to the user:
 
-        GRANT ALL PRIVILEGES ON drupaldb.* TO drupaluser@localhost;
+        GRANT ALL PRIVILEGES ON drupaldb.* TO DRUPAL_USER@LOCALHOST;
 
 ### PHP Optimization
 
@@ -54,6 +54,7 @@ Download the following PHP libraries:
           
           sudo apt install php-mysql phpmyadmin
 
+If prompted to automatically configure a database, choose "yes".
 
 <!---
 your comment goes here
@@ -119,7 +120,14 @@ FarmOS is bundled as a Drupal distribution, you do not need to install Drupal **
 
          sudo mv -r farm-7.x-1.0-beta15/*  /var/www/html/example.com/public_html/FarmOS
 
-4. If everything is configured correctly, you can point your web browser to your Linode's public IPaddress/FarmOS.
+4. Make sure the permissions for `sites/default` and `sites/default/settings.php` are set correctly:
+
+         cd /var/www/html/example.com/public_html/FarmOS
+         sudo chmod 777 ./sites/default
+         sudo cp ./sites/default/default.settings.php ./sites/default/settings.php
+         sudo chmod 777 ./sites/default/settings.php
+
+5. If everything is configured correctly, you can point your web browser to your Linode's public IPaddress/FarmOS.
 
          192.0.0.1/FarmOS
 
@@ -147,6 +155,12 @@ FarmOS will configure Drupal and FarmOS at the same time:
 
     ![welcome](/docs/assets/FarmOS/welcome.png)
 
+6. After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities:
+
+       sudo chmod 644 sites/default
+       sudo chmod 644 ./sites/default/settings.php
+
+
 ## Add Users
 To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**. 
 
@@ -161,11 +175,11 @@ After the user is created, use the **people** tab, to verify success:
 
 
 ## Registering a Domain Name for FarmOS
-If you want to register a domain name, maybe something like `yourfarm.com`, check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this part. 
+If you want to register a domain name, maybe something like `yourfarm.com`, check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step. 
 
 
 ## Generate a Google API Key 
-FarmOS, can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about it in their [docs.](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place. 
+FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about it in their [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place. 
 
 
 
