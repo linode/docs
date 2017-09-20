@@ -10,6 +10,7 @@ featured:
  - email-with-postfix-dovecot-and-mysql.md
  - installing-mail-filtering-for-ubuntu-12-04.md
  - using-google-apps-for-email.md
+ - how-to-create-an-email-server-with-mail-in-a-box.md
 categories:
  - clients
  - postfix

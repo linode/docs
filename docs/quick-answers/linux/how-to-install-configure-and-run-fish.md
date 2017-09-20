@@ -17,7 +17,7 @@ external_resources:
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 ---
 
-![fish_banner](/docs/assets/fish/fish_banner.png)
+![fish_banner](/docs/assets/fish/fish_banner.jpg)
 
 Fish, the Friendly Interactive Shell, is a replacement shell, which, out of the box, offers auto-suggestions; programmable completions based on installed man pages; a fully functional, readable, scripting language; and colored text support.
 
@@ -55,7 +55,7 @@ However, in Fish, you chain commands with `;`, instead of `&&`:
 	fish: mkdir FishDocs && cd FishDocs
 	                      ^
 
-If you can't function `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
+If you can't function without `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
 
 						  
 ## Use Fish
