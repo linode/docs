@@ -11,10 +11,9 @@ modified_by:
   name: Linode
 title: 'How to Install and Configure Redmine'
 external_resources:
-- '[Fish Shell](https://fishshell.com/)'
-- '[Fish Shell Tutorial](https://geowarin.github.io/the-missing-fish-shell-tutorial.html)'
-- '[Arch Wiki Fish Entry](https://wiki.archlinux.org/index.php/Fish)'
-- '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
+- '[Redmine Official Docs](https://www.redmine.org/guide/)'
+- '[Redmine Users Guide](https://www.redmine.org/projects/redmine/wiki/Getting_Started)'
+- '[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)'
 ---
 
 Redmine is a free and open source project management tool.  Redmine is one of the most popular project management tools. 
@@ -32,7 +31,6 @@ Redmine is a free and open source project management tool.  Redmine is one of th
 
     
 
-
 ## Configuring MySQL
 
 MySQL needs to be configured so that Redmine can store data. You can log in to the root account of your database using the password that you set when you created the database. 
@@ -41,14 +39,36 @@ MySQL needs to be configured so that Redmine can store data. You can log in to t
  
  1.  After logging in, create a new database and database user:
  
-        CREATE DATABASE redmine;
+          CREATE DATABASE redmine;
         
-        CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'password';
+           CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'password';
  
-        GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+           GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
 
-        FLUSH PRIVILEGES;
+           FLUSH PRIVILEGES;
  
+
+### Install Ruby
+
+Redmine is built on Ruby and requires Ruby to run. 
+
+1. Curl the latest version of rvm
+                    
+        gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+        curl -sSL https://get.rvm.io | bash -s stable
+
+2. Users of rvm need to be added to the `rvm` group. Add a user to the `rvm` group, log out, and log back in:
+
+        sudo usermod -a -G rvm username
+        exit
+
+
+3. Check the requirements for the install, and install rvm:
+
+        rvm requirements
+        rvm install 2.2.3
+        rvm use 2.2.3 --default
+
 
 ### Install Passenger + Nginx
 
@@ -74,7 +94,7 @@ Passenger has now installed Nginx, with Passenger compiled in. You have to confi
 1. Uncomment the `include /etc/nginx/passenger.conf;` line in `/etc/nginx/nginx.conf`:
 
         sudo emacs /etc/nginx/nginx.conf
- 2. Make sure your config file resembeles the one below:       
+2. Make sure your config file resembeles the one below:       
     
     {:.file}
     /etc/nginx/nginx.conf
@@ -96,7 +116,39 @@ Passenger has now installed Nginx, with Passenger compiled in. You have to confi
     
       ~~~
 
-3. Validate the installation of Passenger and Nginx:
+3. Create a directory for Nginx to serve Redmine, and edit the `sites-availble`  file to function with Passenger:
+
+           cp /etc/nginx/sites-availble/default /etc/nginx/sites-availbe/default.orig
+           emacs /etc/nginx/sites-abailble/default
+
+4. Change the `root` directory for the website, and add additional passenger configurations. To do this add these lines to the `server{}` block of the file:
+
+    {:.file}
+    /etc/nginx/sites-availble/default
+    : ~~~ conf
+        root /data/redmine/redmine/public;
+        passenger_enabled on;
+        client_max_body_size_ 10m;
+      ~~~
+
+5. In the same file, comment out the `#location` section:
+
+    {:.file}
+    /etc/ningx/site-availble/default
+    : ~~~ conf
+      #location / {
+      # First attempt to serve request as file, then
+      # as directory, then fall back to displaying a 404.
+          #try_files $uri $uri/ =404;
+      #}
+      ~~~
+
+6. Change the permissions for `/var/www`
+
+        sudo mkdir /var/www
+        sudo chown -R www-data /var/www
+
+7. Validate the installation of Passenger and Nginx:
 
         sudo /usr/bin/passenger-config validate-install
 
@@ -149,6 +201,11 @@ The final step is to install Redmine.
 
         sudo adduser --system --shell /bin/bash --gecos 'Redmine Administrator' --group --disabled-password --home /data/redmine redmine; sudo usermod -a -G rvm redmine 
 
+{:.note}
+>
+>You can add the user Redmine to the sudo group, with: useradd redmine sudo
+
+
 2. Download Redmine as the new user, install it, and clean up the directory:  
           
         wget https://www.redmine.org/releases/redmine-3.4.2.tar.gz
@@ -160,6 +217,51 @@ The final step is to install Redmine.
         cd redmine
         cp -pR config/database.yml.example config/database.yml
         emacs config/database.yml
-https://www.redmine.org/projects/redmine/wiki/RedmineInstall
+4. In the redmine directory, install the Ruby dependencies:
+            
+        gem install bundler
+        bundle install --without development test
 
+5. After the installation finishes, we need to use Rake to start the server:
 
+        bundle exec rake generate_secret_token
+        RAILS_ENV=production bundle exec rake db:migrate
+        RAILS_ENV= production bundle exec rake redmine:load_default_data
+
+6. Restart Nginx, and navigate to your server's IP address and you will be greeted by the Redmine application: 
+
+        sudo service nginx restart
+
+![Login](/docs/assets/redmine/firstscreen.png)
+
+### Redmine
+
+The default login and password for Redmine are:
+     
+     Login: admin
+     Password:admin
+
+Those credentials will expire quickly, so be sure to change them into something secure. 
+
+Redmine is built to be used with plug-ins. Plug-ins are installed to `redmine/plugins`.
+
+#### Install a Plug-in
+
+If you want to install the [scrum2b](https://github.com/scrum2b/scrum2b) plug-in, this is how it would be done:
+
+1. Move to `redmine/plugins` and clone the plug-in:
+
+        git clone https://github.com/scrum2b/scrum2b
+
+2. Use Bundle to install the plug-in.
+        
+        bundle install 
+
+3. Navigate to Redmine in your browser, log in, click **admin** then click **plugins**
+
+![Plugins](/docs/assets/redmine/secondscreen.png)
+
+![scrum2b](/docs/assets/redmine/thirdscreen.png)
+
+### Next Steps
+You have a working Redmine set-up on your Linode. If you plan on using it in production, you need to configure it with plug-ins that will be useful for your team. Take a look at some of the guides in the [More Information](#More Information) section, to make Redmine perfect for team.
