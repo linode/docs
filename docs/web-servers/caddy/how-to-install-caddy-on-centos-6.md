@@ -50,20 +50,25 @@ Caddy also includes modern web server functionality such as support for virtual 
 
             sudo wget -qO- https://getcaddy.com | bash -s http.minify
 
-## Install Caddy
+3. Move Caddy to an appropriate directory and give it the necessary permissions:
 
-1.  Create an unprivileged user, which will be used for running your Caddy server. This is necessary for security reasons, because running a server as a root or sudo user is bad practice.
+	sudo cp /path/to/caddy /usr/local/bin
+	sudo chown root:root /usr/local/bin/caddy
+	sudo chmod 755 /usr/local/bin/caddy
+	sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
+
+4.  Create an unprivileged user, which will be used for running your Caddy server. This is necessary for security reasons, because running a server as a root or sudo user is bad practice.
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/www -g www-data -s /sbin/nologin
-
-2.  Create a few necessary directories, for Caddy's config file, log file, and for automatic TLS support:
+	
+5.  Create a few necessary directories, for Caddy's config file, log file, and for automatic TLS support:
 
         sudo mkdir -p /etc/caddy
         sudo touch /etc/caddy/Caddyfile
         sudo mkdir -p /etc/ssl/caddy | sudo mkdir -p /var/log/caddy
 
- 3. Change the owner of these directories and group:
+6. Change the owner of these directories and group:
 
         sudo chown -R www-data:www-data /etc/caddy
         sudo chown -R www-data:root /etc/ssl/caddy
