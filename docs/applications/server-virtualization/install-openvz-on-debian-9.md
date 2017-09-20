@@ -14,6 +14,7 @@ contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
 external_resources:
+  - [Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -52,10 +53,10 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 
 1. Issue below commands to add code to the `fsck` file.
 
-        echo copy_exec /sbin/e2fsck | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
-        echo copy_exec /sbin/tune2fs | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
+        echo "copy_exec /sbin/e2fsck" | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
+        echo "copy_exec /sbin/tune2fs" | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
 
-2. Create a new file and name it *tune*. Copy and paste the below text into this new file and save.
+2. Create a new file in the directory designated below and name it *tune*. Copy and paste the below text into this new file and save.
 
 {: .file}
 **/etc/initramfs-tools/scripts/local-premount/tune**
@@ -76,7 +77,7 @@ e2fsck -f $Volume
         chmod 755 /etc/initramfs-tools/scripts/local-premount/tune
         update-initramfs -u -k all
 
-4. Reboot your system with `shutdown -r now` and run the command below to verify that metadata_csum was disabled from all affected partitions. Again, replace "/dev/sda1" with the correct volume names.
+4. Reboot your system and run the command below to verify that metadata_csum was disabled from all affected partitions. Again, replace "/dev/sda1" with the correct volume names.
 
         dumpe2fs -h /dev/sda1 2>/dev/null | grep -e metadata_csum
 
@@ -103,7 +104,7 @@ e2fsck -f $Volume
 
         apt --auto-remove remove systemd
 
-4. Create file *avoid-systemd* and paste in contents below.
+4. Create file *avoid-systemd* in the directory designated below and paste in the contents below.
 
 {: .file}
 **/etc/apt/preferences.d/avoid-systemd**
@@ -241,8 +242,65 @@ Note that both copied strings are separated with the carrot ">" character.
 
 If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is misconfigured. Check and make certain the correct kernel was chosen and entered correctly.
 
-## Run OpenVZ And 
-
 ## Download And Deploy An OS Template
+
+1. Start the OpenVZ service.
+
+        service vz start
+        service vz status
+
+2. Register with the official OpenVZ template repository.
+
+        sudo gpg --recv-keys $(echo $(sudo gpg --batch --search-keys security@openvz.org 2>&1 | grep -ie ' key.*created' | sed -e 's|key|@|g' | cut -f 2 -d '@') | cut -f 1 -d ' ' | cut -f 1 -d ',')
+
+3. List available OS templates for download.
+
+        vztmpl-dl --list-remote
+
+4. From the available list of templates, select one to download. Using the format below, issue the following command, replacing *centos7-x86_64* with the template you selected.
+
+        vztmpl-dl --gpg-check centos7-x86_64
+
+5. OpenVZ refers to each installed OS template as a "Container". You must create a Container ID (CTID) for each downloaded template. Issue the below command, replacing [CTID] with any number (101 is recommended) and the CentOS 7 template name with your downloaded template.
+
+        vzctl create [CTID] --ostemplate centos7-x86_64
+
+6. A configuration file will now have been created for your OS template. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
+
+  - Give your virtual environment an IP address. The recommended format is 192.168.0.[CTID]. In this case it would be 192.168.0.101.
+  - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
+  - Change the "VE_LAYOUT" option from "ploop" to "simfs". If you have trouble booting into your virtual environment, you may try changing this back to ploop.
+
+You may also configure other options at your pleasure, such as SWAP and RAM allocation. Save and close when finished.
+
+{: .file}
+**/etc/vz/conf/101.conf**
+~~~ conf
+. . .
+
+# RAM
+PHYSPAGES="0:256M"
+
+# Swap
+SWAPPAGES="0:512M"
+
+# Disk quota parameters (in form of softlimit:hardlimit)
+DISKSPACE="2G:2.2G"
+DISKINODES="131072:144179"
+QUOTATIME="0"
+
+# CPU fair scheduler parameter
+CPUUNITS="1000"
+
+NETFILTER="stateless"
+VE_ROOT="/var/lib/vz/root/$VEID"
+VE_PRIVATE="/var/lib/vz/private/$VEID"
+VE_LAYOUT="simfs"
+OSTEMPLATE="centos7-x86_64"
+ORIGIN_SAMPLE="vswap-256m"
+NAMESERVER="8.8.8.8"
+IP_ADDRESS="192.168.0.101/24"
+HOSTNAME="centos-7"
+~~~
 
 
