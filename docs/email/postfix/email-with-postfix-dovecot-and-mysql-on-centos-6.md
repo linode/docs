@@ -133,7 +133,7 @@ Next, perform additional Postfix configuration to set up communication with the 
         user = mail_admin
         password = mail_admin_password
         dbname = mail
-        query = SELECT domain AS virtual FROM domains WHERE domain='%s'
+        query = SELECT domain AS `virtual` FROM domains WHERE domain='%s'
         hosts = 127.0.0.1
         ~~~
 
@@ -157,7 +157,7 @@ Next, perform additional Postfix configuration to set up communication with the 
         user = mail_admin
         password = mail_admin_password
         dbname = mail
-        query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s'
+        query = SELECT CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/') FROM users WHERE email='%s'
         hosts = 127.0.0.1
         ~~~
 
@@ -186,11 +186,10 @@ Next, perform additional Postfix configuration to set up communication with the 
 7.  Complete the remaining steps required for Postfix configuration. Please be sure to replace `server.example.com` with the Linode's fully qualified domain name. If you are planning on using your own SSL certificate and key, replace `/etc/pki/dovecot/private/dovecot.pem` with the appropriate path:
 
         postconf -e 'myhostname = server.example.com'
-        postconf -e 'mydestination = $myhostname, localhost, localhost.localdomain'
+        postconf -e 'mydestination = localhost, localhost.localdomain'
         postconf -e 'mynetworks = 127.0.0.0/8'
         postconf -e 'inet_interfaces = all'
         postconf -e 'message_size_limit = 30720000'
-        postconf -e 'virtual_alias_domains ='
         postconf -e 'virtual_alias_maps = proxy:mysql:/etc/postfix/mysql-virtual_forwardings.cf, mysql:/etc/postfix/mysql-virtual_email2email.cf'
         postconf -e 'virtual_mailbox_domains = proxy:mysql:/etc/postfix/mysql-virtual_domains.cf'
         postconf -e 'virtual_mailbox_maps = proxy:mysql:/etc/postfix/mysql-virtual_mailboxes.cf'
@@ -204,11 +203,11 @@ Next, perform additional Postfix configuration to set up communication with the 
         postconf -e 'smtpd_sasl_authenticated_header = yes'
         postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'
         postconf -e 'smtpd_use_tls = yes'
-        postconf -e 'smtpd_tls_cert_file = </etc/pki/dovecot/certs/dovecot.pem'
-        postconf -e 'smtpd_tls_key_file = </etc/pki/dovecot/private/dovecot.pem'
+        postconf -e 'smtpd_tls_cert_file = /etc/pki/dovecot/certs/dovecot.pem'
+        postconf -e 'smtpd_tls_key_file = /etc/pki/dovecot/private/dovecot.pem'
         postconf -e 'virtual_create_maildirsize = yes'
         postconf -e 'virtual_maildir_extended = yes'
-        postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps'
+        postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_maps'
         postconf -e 'virtual_transport = dovecot'
         postconf -e 'dovecot_destination_recipient_limit = 1'
 
@@ -243,8 +242,8 @@ This completes the configuration for Postfix.
         log_timestamp = "%Y-%m-%d %H:%M:%S "
         mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert = </etc/pki/dovecot/certs/dovecot.pem
-        ssl_key = </etc/pki/dovecot/private/dovecot.pem
+        ssl_cert = /etc/pki/dovecot/certs/dovecot.pem
+        ssl_key = /etc/pki/dovecot/private/dovecot.pem
 
         namespace {
             type = private
