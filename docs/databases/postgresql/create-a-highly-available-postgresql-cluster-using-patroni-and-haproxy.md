@@ -2,14 +2,14 @@
 author:
   name: Kulshekhar Kabra
   email: docs@linode.com
-description: 'This guide shows you how to set up a PostgreSQL cluster on your Linode.'
+description: 'This guide shows you how to set up a highly available PostgreSQL cluster on your Linode.'
 keywords: 'postgresql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 19, 2017
 modified_by:
   name: Kulshekhar Kabra
 published: 'Tuesday, September 19, 2017'
-title: Deploy a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
+title: Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
@@ -19,6 +19,7 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
+
 [PostgreSQL](https://www.postgresql.org) (Postgres) is an open source, fully [ACID compliant](https://en.wikipedia.org/wiki/ACID) relational database that runs on all major operating systems. While Postgres is a highly versatile, feature-rich, and powerful database, it doesn't have a built-in solution for high availability.
 
 This guide shows you how to create a highly available Postgres cluster of three servers using [Patroni](https://github.com/zalando/patroni).
