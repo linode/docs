@@ -124,12 +124,12 @@ Streisand will now execute a series of Ansible rules to create and configure a n
 
 You now have a Linode with multiple VPNs and protocols fully configured for use; the next step is to connect to it. Streisand should automatically open the `streisand.html` file that was generated during the configuration process. If not, you can find the file in `streisand/generated-docs/streisand.html` and open it in any browser.
 
-1.  Click on "Download Certificate" to download an SSL certificate so that you can verify the secure connection to your new gateway. Follow the instructions from the system or device to mark the certificate as trusted.
+1.  Click on "Download Certificate" to download an SSL certificate so that you can verify the secure connection to your new gateway. The `streisand.html` file includes instructions on how to mark the certificate as trusted on different systems and devices.
 
 2.  There are two possible ways to connect to your gateway, but for most users the easiest way will be through SSL. Scroll down to "Connecting to your Streisand Gateway" in `streisand.html` and copy the `https://` address into your web browser. Enter the provided username and password when prompted.
 
 
-###Next Steps
+### Next Steps
 
 You are now connected to your gateway. From here, you can choose from any of the eight pre-configured connection options, then use the provided links to download an appropriate client. Each connection option has detailed instructions on how to connect your client devices.
 
