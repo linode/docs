@@ -16,8 +16,7 @@ external_resources:
 - '[Andrew Hosch's Guide on Redmine](http://www.untrustedconnection.com/2016/04/redmine-passenger-and-nginx-on-ubuntu.html)'
 ---
 
-Redmine is a free and open source project management tool.  Redmine is one of the most popular project management tools. 
-
+Redmine is a free and open source project management tool.  Redmine is one of the most popular project management tools. Redmine is a Ruby on Rails application, It allows users to manage projects, flexibly, while offering robust tracking tools, and an extensive library of plug-ins. Redmine supports wikis and forums, calendars and data visualization tools. Redmine can offer you your team an alternative to other non-free project management tools availble. This guide will show you how to install Redmine on Ubuntu 16.04, using Nginx to serve the application, and Passenger to allow Redmine to communicate with the web server. 
 
 ### Before You Begin
 
@@ -50,7 +49,7 @@ MySQL needs to be configured so that Redmine can store data. You can log in to t
 
 ### Install Ruby
 
-Redmine is built on Ruby and requires Ruby to run. 
+Redmine is built on Ruby and requires Ruby to run. Installing Ruby for production projects can be a convuluted process, there are many versions, and different apps require different dependencies. In the case of this guide, use the Ruby Version Manager, to install Ruby. 
 
 1. Curl the latest version of rvm
                     
