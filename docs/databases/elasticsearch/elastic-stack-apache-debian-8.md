@@ -236,7 +236,7 @@ After the previously executed `curl` commands created entries in the Apache acce
 
 The "Discover" tab on the left-hand side of Kibana's interface (which should be open by default after configuring your index pattern) should show a timeline of log events:
 
-![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discovery.png)
+![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discover.png)
 
 Over time, and as other requests are made to the webserver via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
 
