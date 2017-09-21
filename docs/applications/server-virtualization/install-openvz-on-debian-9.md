@@ -323,7 +323,7 @@ As it stands, containers have no way to access the internet or be accessed from 
 
         iptables-save > /etc/iptables.conf
 
-3. Configure your firewall to allow forwarded requests. Save the rule.
+3. Configure your firewall to allow forwarded requests. Again, save the rule if you are not using iptables-persistent.
 
         iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT
         iptables-save > /etc/iptables.conf
