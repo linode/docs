@@ -5,20 +5,23 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'Install Elasticsearch, Logstash, and Kibana to collect and visualize webserver logs on Debian 8.'
+description: 'This guide shows how to use Elasticsearch, Logstash, and Kibana to collect and visualize webserver logs.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server,elastic,elasticsearch,logstash,kibana,elk,elk stack,elastic stack,stack,log,graph'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, September 18th, 2017'
+modified: Thursday, September 21st, 2017
+modified_by:
+  name: Linode
 title: 'Visualizing Apache Webserver Logs with the Elastic Stack on Debian 8'
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
-----
+---
 
 
-The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a suite of tools that provide a free and open source solution to collect and analyze data. This guide will explain how to install all these components and use them to explore Apache webserver logs in Kibana, a browser-based tool used to create visualizations.
+The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a collection of tools that provide a free and open source solution to collect and analyze data. This guide will explain how to install all these components and use them to explore Apache webserver logs in Kibana, a browser-based tool used to create visualizations.
 
 This guide will walk through the installation of version 5 of the stack, which is latest as of the time of this writing.
 
@@ -53,7 +56,11 @@ Elasticsearch *requires* recent versions of Java, and will not run with the vers
 
 3.  Install OpenJDK 8:
 
-        sudo apt-get install -y openjdk-8-jre-headless ca-certificates-java
+        sudo apt-get install -y -t jessie-backports openjdk-8-jre-headless ca-certificates-java
+
+4.  Make sure your system is using the updated version of Java. Run the following command and choose `java-8-openjdk-amd64/jre/bin/java` from the dialogue menu that opens.
+
+        sudo update-alternatives --config java
 
 ## Install Elastic APT Repository
 
@@ -96,7 +103,8 @@ Before configuring and loading log data, first install each piece of the stack.
 
 3.  Start and enable the `elasticsearch` service:
 
-         sudo systemctl enable --now elasticsearch
+         sudo systemctl enable elasticsearch
+         sudo systemctl start elasticsearch
 
 3.  Wait for a few moments for the service to start, then confirm that the Elasticsearch API is available:
 
@@ -188,27 +196,39 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
 2.  Start and enable `logstash`:
 
-        sudo systemctl enable --now logstash
+        sudo systemctl enable logstash
+        sudo systemctl start logstash
 
 ### Kibana
 
-There are no configuration file changes necessary for Kibana, so the daemon can be started and enabled:
 
-    sudo systemctl enable --now kibana
+1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, you should also make sure that the server is accepting connections on port 5601.
 
-In order for Kibana to find log entries to configure an *index pattern*, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch, so issue several requests to Apache to generate logs:
+    {:.file-excerpt}
+    /etc/kibana/kibana.yml
+    :  ~~~
+       server.port: 5601
+       server.host: "localhost"
+       ~~~
 
-    for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
+2.  Enable and start the Kibana service:
 
-Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to port-forward it through ssh. The landing page should look similar to the following:
+        sudo systemctl enable kibana
+        sudo systemctl start kibana
 
-![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png)
+3.  In order for Kibana to find log entries to configure an *index pattern*, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch, so issue several requests to Apache to generate logs:
 
-This screen permits us to create an index pattern, which is a way for Kibana to know which indices to search when browsing logs and creating dashboards. The default value of `logstash-*` matches the indices created by Logstash by default, so clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
+        for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
 
-{: .note}
->
->Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this time span and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours" to see as many logs as possible.
+4.  Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to port-forward it through ssh. The landing page should look similar to the following:
+
+    ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png)
+
+    This screen permits us to create an index pattern, which is a way for Kibana to know which indices to search when browsing logs and creating dashboards. The default value of `logstash-*` matches the indices created by Logstash by default, so clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
+
+    {: .note}
+    >
+    >Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this time span and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours" to see as many logs as possible.
 
 ## Viewing Logs
 
@@ -216,22 +236,22 @@ After the previously executed `curl` commands created entries in the Apache acce
 
 The "Discover" tab on the left-hand side of Kibana's interface (which should be open by default after configuring your index pattern) should show a timeline of log events:
 
-![Kibana 5 Discovery Tab](/docs/assets/elastic-stack-debian-8-kibana-discovery.png)
+![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discovery.png)
 
-Over time, and as other requests are made to the webserver via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discovery tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
+Over time, and as other requests are made to the webserver via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
 
 In order to view these details for a log entry, click the dropdown arrow to see individual document fields:
 
 ![Kibana 5 Document Fields](/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png)
 
-Fields represent those values parsed from the Apache logs, such as `agent` which represents the `User-Agent` header, and `bytes`, which indicates the size of the webserver response.
+Fields represent those values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the webserver response.
 
 ### Log Analysis
 
 Before continuing, generate a couple of dummy 404 log events in your webserver logs to demonstrate how to search and analyze logs within Kibana:
 
     for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
-    
+
 #### Searching
 
 The top search bar within the Kibana interface allows you to search for queries following the [query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#query-string-syntax) to find results.
@@ -275,7 +295,7 @@ At this point, a pie chart should appear in the interface ready to be configured
 
 ![Kibana 5 Select Pie Chart Configuration](/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png)
 
-Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred further back than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields such as the verb (GET, POST, etc.) or even create summaries of numerical data, such as the total amount of bytes transferred over a given period of time.
+Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred further back than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields such as the http verb (GET, POST, etc.) or even create summaries of numerical data, such as the total amount of bytes transferred over a given period of time.
 
 If you wish to save this visualization to use later on, click the "Save" button near the top of the browser window to give to the visualization a name and save it permanently to Elasticsearch.
 
