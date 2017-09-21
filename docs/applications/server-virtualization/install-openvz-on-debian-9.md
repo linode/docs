@@ -315,7 +315,7 @@ As it stands, containers have no way to access the internet or be accessed from 
 
 ### Configure Access From Container To Internet
 
-1. On the host server, issue the following command via Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list in CIDR notation (include IP address and subnet, or xxx.xxx.xxx.xxx/xx) in order to encompass a range of IP addresses, which will enable access to any containers added in the future.
+1. On the host server, issue the following command via Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list in CIDR notation (include IP address and subnet, or xxx.xxx.xxx.xxx/xx) in order to encompass a range of IP addresses, which will enable access to any containers added in the future. For example, entering 192.168.0.0/24 will setup routing for IP addresses 192.168.0.0 through 192.168.0.255.
 
         iptables -t nat -A POSTROUTING -s [container IP] -o eth0 -j SNAT --to [host server IP]
 
