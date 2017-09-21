@@ -3,13 +3,14 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. As you explore and manipulate your data using Workbench, you will discover many more features and shortcuts that can make managing your databases easier.'
+og_description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. This tutorial will guide you through installing Workbench.'
 keywords: 'MySQL,MySQL Workbench,workbench,administer database'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, December 4th, 2015'
 modified: 'Tuesday, August 1st, 2017'
 modified_by:
     name: Linode
-title: 'Deploy MySQL Workbench for Database Administration'
+title: 'Install MySQL Workbench for Database Administration'
 contributor:
     name: Scott Somner
 external_resources:

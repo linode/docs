@@ -114,23 +114,23 @@ When PuTTYgen has finished downloading, it can be run immediately, without insta
 
 1.  Double-click on the downloaded executable program and select **Run**.
 
-    ![Beginning the PuTTY key gen install.](/docs/assets/1463-begin-install.PNG)
+    ![Beginning the PuTTY key gen install.](/docs/assets/1463-begin-install.png)
 
 2.  Read the warning, and then select **Run** to continue.
 
-    ![Ignore installation warning.](/docs/assets/1468-warning.PNG)
+    ![Ignore installation warning.](/docs/assets/1468-warning.png)
 
 3. You will be taken directly to the key generating screen. You can choose at this point to increase the number of bits to `4096`. Click on the **Generate** button to create the new public/private key pair.
 
-    ![Generating the new public/private key pair.](/docs/assets/1464-generate-key.PNG)
+    ![Generating the new public/private key pair.](/docs/assets/1464-generate-key.png)
 
 4.  Once the keys begin to generate, keep moving your mouse until the entire bar fills with green. The program uses the random input from your mouse to generate a unique key.
 
-    ![Move the mouse until the key generating is complete.](/docs/assets/1470-random-generating.PNG)
+    ![Move the mouse until the key generating is complete.](/docs/assets/1470-random-generating.png)
 
 5.  The public key is now generated and appears in the first window.
 
-    ![The public key has now been created.](/docs/assets/1466-new-public-key.PNG)
+    ![The public key has now been created.](/docs/assets/1466-new-public-key.png)
 
 6.  Before you continue, you will need to copy the newly-created public key to Notepad. Just select the text and copy it to a new  text file. Be sure the file is saved in a location you remember, as you will need it later.
 
@@ -141,7 +141,7 @@ When PuTTYgen has finished downloading, it can be run immediately, without insta
 
 7.  Enter a passphrase in the **Key passphrase** text field, and enter it again to confirm. The passphrase can be any string of letters and numbers. The passphrase should be something unique and not easily recognized. **Important:** make a note of your passphrase, as you will need it later.
 
-    ![Enter a new passphrase.](/docs/assets/1465-new-passphrase.PNG)
+    ![Enter a new passphrase.](/docs/assets/1465-new-passphrase.png)
 
 8.  After you have entered your passphrase, click on the **Save private key** button. This will save the private key to your PC.
 
@@ -149,7 +149,7 @@ When PuTTYgen has finished downloading, it can be run immediately, without insta
 
 9.  Keep the default location and name of the private key file and click on the **Save** button. Note that if you plan on creating multiple keys to connect to different SSH servers, you will need to save each pair of keys for each server with different names to prevent overwriting the key files. Make a note of the name and location of the private key. You'll need it in the next section.
 
-    ![Saving the private key.](/docs/assets/1474-save-private-key.PNG)
+    ![Saving the private key.](/docs/assets/1474-save-private-key.png)
 
 ### Connecting to the Remote Server
 
@@ -162,13 +162,13 @@ Now it is time to connect to your Linode with the SSH connection you just create
 
 3.  You will need to tell PuTTY the location of the private key. This may be accomplished by either clicking on the **Browse** button and navigating to the private key file, or by typing in the location of the file from Step 10 in the previous section.
 
-    ![Enter the private key location.](/docs/assets/1473-private-key-file-location.PNG)
+    ![Enter the private key location.](/docs/assets/1473-private-key-file-location.png)
 
 4.  To establish a session, click on **Session** under the **Category** list. Enter the hostname or IP address of your Linode. Note: the SSH radio button is selected by default and the **Port** number field is already filled in.
 
     **Optional:**You can either save this connection as the default by clicking on the **Save** button, or by entering a name in the **Saved Sessions** text field, and clicking on the **Save** button.
 
-    ![Saving your connection information.](/docs/assets/1475-saved-session.PNG)
+    ![Saving your connection information.](/docs/assets/1475-saved-session.png)
 
 5.  Click the **Open** button to establish a connection. You will be prompted to enter your login name and password.
 6.  The combination of commands shown below will create a `.ssh` directory in your home directory on your Linode, create a blank `authorized_keys` file inside, and set the access permissions. Enter the following commands at the prompt and press *Enter*:

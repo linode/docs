@@ -5,7 +5,6 @@ author:
 description: 'Use Vagrant to manage development environments and content on Linode.'
 keywords: 'linode,vagrant,content management,management,automation,development,ruby,vagrantfile,api,apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: [ 'web-applications/cloud-storage/dropbox/debian-7.4' ]
 modified: Thursday, June 25th, 2015 
 modified_by:
     name: Elle Krout
