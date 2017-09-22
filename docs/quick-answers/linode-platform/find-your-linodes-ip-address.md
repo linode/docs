@@ -2,19 +2,20 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Find the IP address of your either through the Linode Manager or while in an SSH session.'
-keywords: 'ip address,ip addresses,address,addresses'
+description: 'This quick answer guide shows how to find the IP address of your Linode either through the Linode Manager or while in an SSH session.'
+keywords: 'ip address,IPV4,IPv6,SSH'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Monday, September 18th, 2017'
 modified_by:
   name: Linode
 published: 'Monday, September 18th, 2017'
-title: Find Your Linode's IP Address
+title: How to Find Your Linode's IP Address
 ---
+Because an internet protocol (IP) address was conceived long ago as the means to allow one computer (server or digital device) to communicate with another via the internet, it's a rather important scrap of digital information. Each respective IP address pinpoints and differentiates its associated device from the other billions of devices on the world wide web. Thus, knowing you server's IP address can be handy for several tasks you're seeking to perform with your Linode through the internet.
 
-Finding your Linode's IP address (or addresses) is easy and can be done in two different ways.
+Fortunately, finding your Linode's IP address (or addresses) is easy and can be done in either of two different ways.
 
-## From the Linode Manager
+## Find the IP Address Using the Linode Manager
 
 1.  Log in to the Linode Manager.
 
@@ -34,7 +35,7 @@ The graphic above shows:
 - This Linode does not have a private IPv4 address.
 - One private IPv6 address (*Link-Local IP*), `fe80::f03c:91ff:fe70:cabd`, also on a `/64` subnetwork.
 
-## From an SSH Session
+## Find the IP Address Using an SSH Session
 
 Use the command below to view your Linode's IP addresses:
 
