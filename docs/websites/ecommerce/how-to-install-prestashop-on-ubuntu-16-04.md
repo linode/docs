@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also goes through how to add a TLS certificate and optimize some of the configuration.'
+description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configuration.'
 keywords: 'prestashop,ecommerce,cms'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Tuesday, August 29th, 2017
@@ -15,16 +15,19 @@ contributor:
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
+
 ---
 
-If you've ever thought about opening an online store, you may have felt overwhelmed by variety of free ecommerce solutions available.  While having so many options means that there is almost certainly a good solution for your particular situation, it can also be confusing for newcomers. This guide will focus on [PrestaShop](https://www.prestashop.com/en), a comprehensive solution used by thousands of shops around the world.
+## What is PrestaShop?
 
-PrestaShop comes loaded with features out of the box, and has many plugins that can be installed. The size of PrestaShop can make it seem daunting to learn; however, the menus are neatly structured, terms are intuitive, and the interface is easy to navigate. In addition, customizing your website is much more user-friendly than other content management systems, with many *What You See Is What You Get* (WYSIWYG) tools. This is in contrast with tools like Magento, where you often have to inspect and edit the source code.
+If you've ever thought about opening an online store, you may have felt overwhelmed by variety of free, open-source ecommerce solutions available.  While having so many options means that there is almost certainly an available and effective solution for your particular situation, it can also be confusing for newcomers. One of those options, the subject of this guide, is [PrestaShop](https://www.prestashop.com/en), a comprehensive ecommerce solution used by thousands of merchants around the world.
 
-Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are great: you will have better performance, since you have reserved server resources; and greater flexibility, with the freedom to tweak your settings as you see fit. You won't have to wait for a support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability), load balancing, advanced backup schemes, and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
+PrestaShop's ecommerce breadth can make it seem daunting to learn; however, its menus are neatly structured, terms are intuitive, and interface is easily navigable. In addition, customizing your website with PrestaShop's many *What You See Is What You Get* (WYSIWYG) tools makes for a user-friendly set up, without having to inspect and edit source code. Also, PrestaShop comes with many out-of-the-box features and plug-ins that streamline setup and use.
+
+Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are greater: you will have better performance, since you have conserved server resources, and greater flexibility, with the freedom to tweak your settings as you see fit. You won't ever have to wait for a cloud-host support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability), [load balancing](/docs/platform/nodebalancer/getting-started-with-nodebalancers), advanced [backup schemes](/docs/platform/linode-backup-service), and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
 
 
-## Before We Begin
+## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
@@ -42,11 +45,11 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 ## Server Requirements
 
-In most cases, you can start out with an Ubuntu 16.04 instance with 1GB of RAM. As your online store grows, keep an eye on your memory usage and scale to a higher-sized Linode when necessary. If your business becomes especially large, it may be a good idea to separate your store across at least three servers: one that runs Apache and hosts the PHP code running the ecommerce platform, one for the database, and one for storing static content like images.
+In most cases, you can start out with an Ubuntu 16.04 instance with 1GB of RAM. As your online store grows, keep an eye on your memory usage; scale to a bigger Linode when necessary. If your business becomes especially large, it may be a good idea to separate your store across at least three servers: one that runs Apache and hosts the PHP code running the ecommerce platform, one for the database, and one for storing static content, like .jpg images.
 
 ## Install Apache and MariaDB
 
-This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its benefits [here](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a traditional LAMP stack, please see our guide on [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
+This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its features [here](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a traditional LAMP stack, please see our guide, [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
 
 1. Install Apache, PHP, and MariaDB:
 
@@ -56,11 +59,11 @@ This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of
 
         sudo mysql_secure_installation
 
-  This script will ask a series of questions. You can leave the first question (for MariaDB's root password blank), then choose 'n' to decline to create a new root password. Answer 'y' for the remaining questions.
+  This script will ask a series of questions. You can leave the first question (for MariaDB's root password blank), then choose 'n' ("No") to decline to create a new root password. Answer 'y' (Yes) for the remaining questions.
 
 ### Configure Apache
 
-1. The next step is to create a basic configuration file for Apache, telling it where it will find our website files and what our domain name is. Start by copying the default config file to use it as a template.
+1. The next step is to create a basic configuration file for Apache, telling it where it will find your website files and what your domain name is. Start by copying the default config file to use it as a template:
 
         sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
@@ -92,7 +95,7 @@ This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of
 
 ### Allow PrestaShop to Use .htaccess Files
 
-PrestaShop can make use of `.htaccess` files. This allows it to automatically adjust Apache's settings and makes it possible to enable advanced features such as "pretty links", web page compression or **https** redirects from the administration backend (PrestaShop's admin page).
+PrestaShop can make use of `.htaccess` files. This allows it to automatically adjust Apache's settings and makes it possible to enable advanced features such as "pretty links," web page compression, or **https** redirects from the administration backend (PrestaShop's admin page).
 
 1.  Edit the config file to enable .htaccess overrides:
 
@@ -116,7 +119,7 @@ Obtaining an SSL certificate for your store will help keep your customers' data 
 
         example.com        36173   IN  A   203.0.113.10
 
-    If the **A** value is equal to the IP address of your server, you can continue. Otherwise, check the DNS configuration of your Linode and try this step again in a few minutes.
+    If the **A** value is equal to the IP address of your server, you can continue. Otherwise, check the DNS configuration of your Linode, and then repeat this step after a few minutes.
 
 2. Add the official Personal Package Archive (PPA) of the Let's Encrypt Team, update the package repository, and install certbot:
 
@@ -135,7 +138,7 @@ Obtaining an SSL certificate for your store will help keep your customers' data 
         -------------------------------------------------------------------------------
         1: No redirect - Make no further changes to the webserver configuration.
         2: Redirect - Make all requests redirect to secure HTTPS access. Choose this for
-        new sites, or if you're confident your site works on HTTPS. You can undo this
+        new sites or if you're confident your site works on HTTPS. You can undo this
         change by editing your web server's configuration.
         -------------------------------------------------------------------------------
         Select the appropriate number [1-2] then [enter] (press 'c' to cancel):
@@ -148,7 +151,7 @@ Obtaining an SSL certificate for your store will help keep your customers' data 
 
 ## Prepare Environment for PrestaShop and Install Dependencies
 
-Set ownership of `/var/www/html/example.com` to allow PrestaShop to enable plugins, automatic updates, and other features.
+Set ownership of `/var/www/html/example.com` to allow PrestaShop to enable plug-ins, automatic updates, and other features.
 
     sudo chown www-data: /var/www/html/example.com/
 
@@ -195,7 +198,7 @@ You can also use:
 
         sudo mysql
 
-5. Create a database and a user with the appropriate permissions. Replace `your_database_name`, `prestashop_user` and `choose_password` below and record the information for later use.
+5. Create a database and a user with the appropriate permissions. Replace `your_database_name`, `prestashop_user` and `choose_password` below. Record the information for later use.
 
         CREATE DATABASE your_database_name;
         CREATE USER 'prestashop_user'@'localhost' IDENTIFIED BY 'choose_password';
@@ -216,7 +219,7 @@ You can also use:
 
   ![PrestaShop Installation Completed](/docs/assets/prestashop-ubuntu1604-installation-completed.png)
 
-4. Remove the `install` directory and `zip` archive.
+4. Remove the `install` directory and `zip` archive:
 
         cd /var/www/html/example.com
         sudo rm -r install prestashop_1.7.2.1.zip
@@ -257,7 +260,7 @@ You can also use:
       max_execution_time = 30
       ~~~
 
-    Change `upload_max_filesize` to 10M to enable uploading of larger images. The other two settings don't need to be changed at this point, but if your site's memory usage increases or you install a plugin whose scripts run slowly, you may want to consider increasing `memory_limit` or `max_execution_time`, respectively.
+    Change `upload_max_filesize` to 10M to enable uploading of larger images. The other two settings don't need to be changed at this point, but if your site's memory usage increases or you install a plug-in whose scripts run slowly, you may want to consider increasing `memory_limit` or `max_execution_time`, respectively.
 
 6. Restart Apache:
 
@@ -265,7 +268,9 @@ You can also use:
 
 ## Set Up Mail Delivery
 
-Setting up mail delivery in PrestaShop is vital since so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/email-with-postfix-dovecot-and-mysql) can be hosted on a Linode, it can be complicated to set up and maintain. It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/mailinabox/how-to-install-mail-in-a-box), but the easiest approach is to use a dedicated solution like Google's [G Suite](https://gsuite.google.com/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
+Setting up mail delivery in PrestaShop is vital because so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/email-with-postfix-dovecot-and-mysql) can be hosted on a Linode, it can be complicated to set up and maintain.
+
+It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/mailinabox/how-to-install-mail-in-a-box), but the easiest approach is to use a dedicated solution like Google's [G Suite](https://gsuite.google.com/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
 
 Once you have decided on an email provider, configure PrestaShop's email system: in the left menu, under **CONFIGURE**, hover over **Advanced Parameters** and click **E-mail** in the submenu. Once the page loads, look for **Set my own SMTP parameters (for advanced users ONLY)**.
 
@@ -274,3 +279,7 @@ Once you have decided on an email provider, configure PrestaShop's email system:
 New options will appear further down in the page:
 
 ![Email server connection settings](/docs/assets/prestashop-ubuntu1604-email-server-connection-settings.png)
+
+## Next Steps
+
+Now that you have PrestaShop up and running, you can begin to customize the site to meet the needs of your store. The official PrestaShop site has a list of [modules](https://addons.prestashop.com/en/) that can be installed to add features such as online chat, SEO optimization, and product statistics. It is also important to maintain the security of your site. Make sure to frequently update PrestaShop, any installed modules or plug-ins, as well as your Linode system.
