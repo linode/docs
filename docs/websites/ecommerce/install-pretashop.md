@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows hot to install PrestaShop on LAMP (with MariaDB), adding a TLS certificate and turning on a few optimizations'
+description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also goes through how to add a TLS certificate and optimize some of the configuration.'
 keywords: 'prestashop,ecommerce,cms'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Tuesday, August 29th, 2017
@@ -12,17 +12,14 @@ modified_by:
 title: 'How to Install PrestaShop on Ubuntu 16.04'
 contributor:
   name: Alexandru Andrei
-external_resources:
- - '[Magento Documentation](http://docs.magento.com/m2/ce/user_guide/getting-started.html)'
- - '[Magento Resources Library](https://magento.com/resources)'
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
 ---
 
-If you've ever thought about opening an online store, you may have felt overwhelmed by the wide variety of options available. The free ecommerce solutions on the market have matured over the years, and while having so many options means that there is almost certainly a good solution for your particular situation, it can also be confusing for newcomers. This guide will focus on PrestaShop, a comprehensive solution used by thousands of shops around the world.
+If you've ever thought about opening an online store, you may have felt overwhelmed by variety of free ecommerce solutions available.  While having so many options means that there is almost certainly a good solution for your particular situation, it can also be confusing for newcomers. This guide will focus on [PrestaShop](https://www.prestashop.com/en), a comprehensive solution used by thousands of shops around the world.
 
-PrestaShop comes with a large number of features out of the box, and has many plugins that can be installed. The size of PrestaShop can make it seem daunting to learn; however, everything is neatly structured in menus, terms are intuitive and the interface is easy to navigate. In addition, customizing your website is much more user-friendly than other content management systems, with many *What You See Is What You Get* (WYSIWYG) tools. This is in contrast with tools like Magento, for example, where you often have to inspect and edit the source code.
+PrestaShop comes loaded with features out of the box, and has many plugins that can be installed. The size of PrestaShop can make it seem daunting to learn; however, the menus are neatly structured, terms are intuitive, and the interface is easy to navigate. In addition, customizing your website is much more user-friendly than other content management systems, with many *What You See Is What You Get* (WYSIWYG) tools. This is in contrast with tools like Magento, where you often have to inspect and edit the source code.
 
 Installing Prestashop on a remote server is more involved and time-consuming than using cloud hosting, but the rewards are great: you will have better performance, since you have reserved server resources; and greater flexibility, with the freedom to tweak your settings as you see fit. You won't have to wait for a support team to change PHP settings for you. Furthermore, [high availability](/docs/websites/introduction-to-high-availability), load balancing, advanced backup schemes, and other features become easily accessible, allowing you to scale your business and increase your site's reliability.
 
@@ -37,7 +34,7 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN and set it to point to your newly created server. See our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview) guide for more information.
+4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN and set it to point to your Linode. See our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview) guide for more information.
 
       {: .note}
       >
@@ -45,13 +42,13 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 ## Server Requirements
 
-In most cases, you can safely start out with an Ubuntu 16.04 instance with 1GB of RAM. As your online store grows, keep an eye on your memory usage and scale to a higher-sized Linode when necessary. If your business becomes especially large, it may be a good idea to separate your store across at least three servers: one that runs Apache and hosts the PHP code running the ecommerce platform, one for the database, and one for storing static content like images.
+In most cases, you can start out with an Ubuntu 16.04 instance with 1GB of RAM. As your online store grows, keep an eye on your memory usage and scale to a higher-sized Linode when necessary. If your business becomes especially large, it may be a good idea to separate your store across at least three servers: one that runs Apache and hosts the PHP code running the ecommerce platform, one for the database, and one for storing static content like images.
 
 ## Install Apache and MariaDB
 
-This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its benefits here: [MariaDB vs MySQL - Features](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a more traditional LAMP stack, please see our guide on [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
+This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of MySQL. You can read more about MariaDB and its benefits [here](https://mariadb.com/kb/en/the-mariadb-library/mariadb-vs-mysql-features/). If you would prefer to use a traditional LAMP stack, please see our guide on [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
 
-1. Install the basic components for an Apache server, a module for it to run PHP, and a MariaDB server:
+1. Install Apache, PHP, and MariaDB:
 
         sudo apt-get install apache2 libapache2-mod-php mariadb-server
 
@@ -59,13 +56,13 @@ This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of
 
         sudo mysql_secure_installation
 
-  This script will ask you a series of questions. You can leave the first question (for MariaDB's root password blank), then choose 'n' to decline to create a new root password. Answer 'y' for the remaining questions.
+  This script will ask a series of questions. You can leave the first question (for MariaDB's root password blank), then choose 'n' to decline to create a new root password. Answer 'y' for the remaining questions.
 
 ### Configure Apache
 
 1. The next step is to create a basic configuration file for Apache, telling it where it will find our website files and what our domain name is. Start by copying the default config file to use it as a template.
 
-    sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
+        sudo cp /etc/apache2/sites-available/000-default.conf /etc/apache2/sites-available/example.com.conf
 
 2. Edit the configuration file. Uncomment the `ServerName` line, replace `example.com` with your Linode's domain name or IP address, and edit the remaining lines as follows:
 
@@ -109,7 +106,7 @@ PrestaShop can make use of `.htaccess` files. This allows it to automatically ad
 
 ## Install TLS (SSL) Certificate to Encrypt Website Traffic
 
-Obtaining an SSL certificate for your store will help keep your customers' data secure, and will avoid Google search ranking penalties for sites that don't use `https`. Note that it is not possible to complete this step using the public IP address of a Linode; you need to have a FQDN that is already listed in the DNS servers.
+Obtaining an SSL certificate for your store will help keep your customers' data secure, and will avoid Google search ranking penalties for sites that don't use `https`. It is not possible to complete this step using the public IP address of a Linode; you need to have a FQDN that is already listed in the DNS servers.
 
 1. Check to see if your domain name has propagated to the DNS servers:
 
@@ -119,7 +116,7 @@ Obtaining an SSL certificate for your store will help keep your customers' data 
 
         example.com        36173   IN  A   203.0.113.10
 
-    If the **A** value is equal to the IP address of your server, you can continue. Otherwise, review the DNS configuration of your Linode and try this step again in a few minutes.
+    If the **A** value is equal to the IP address of your server, you can continue. Otherwise, check the DNS configuration of your Linode and try this step again in a few minutes.
 
 2. Add the official Personal Package Archive (PPA) of the Let's Encrypt Team, update the package repository, and install certbot:
 
@@ -160,10 +157,6 @@ You can also use:
     chown -R www-data *
     chgrp -R www-data *
 
-{: .note}
->
-> Initially, root is the only owner of `example.com` directory. Apache could read there but it couldn't write. After we enter the above command and make `www-data` own that directory, PrestaShop, through Apache that is running under that username, can now make all the changes it desires. While this is useful for easy administration it also comes with a small price in security: if an attacker finds a serious vulnerability on your website, he also has the power to write files in `/var/www/html/example.com` now. And always keep PrestaShop updated to get the latest bug and security fixes.
-
 ### Download and Unzip PrestaShop's Files
 
 1. Change the working directory to where the website's code will be installed:
@@ -184,7 +177,7 @@ You can also use:
 
 ### Install and Configure PrestaShop Dependencies
 
-1. At this point, the setup files are ready to be accessed through a web browser but PrestaShop needs access to some additional PHP modules.
+1. Install PrestaShop's PHP dependencies:
 
         sudo apt-get install php7.0-curl php7.0-gd php7.0-mysql php7.0-zip php7.0-xml php7.0-intl
 
@@ -219,7 +212,7 @@ You can also use:
 
 2. Test your connection to the database server.
 
-3. After clicking **Next** the installer will create the necessary tables and finalize setting up the store. You should now be presented with a page like this:
+3. After clicking **Next** the installer will create the necessary tables and finalize setting up the store. You will see a page that looks something like this:
 
   ![PrestaShop Installation Completed](/docs/assets/prestashop-ubuntu1604-installation-completed.png)
 
@@ -230,33 +223,31 @@ You can also use:
 
 ## Optimize Prestashop and Enable TLS/SSL
 
-1. We don't want users or site administrators to visit an unencrypted page by mistake so we'll enable https redirection. In the PrestaShop backend, in the far-left menu, look for **CONFIGURE**. Click on **Shop Parameters** under it.
+1. Enable https redirection. In the PrestaShop backend, in the far-left menu, look for **CONFIGURE**. Click on **Shop Parameters** under it.
 
     ![Far-left menu from PrestaShop](/docs/assets/prestashop-ubuntu1604-left-side-menu.png)
 
-    Choose **YES** for **Enable SSL** and **Enable SSL on all pages**. Scroll down and click **Save** (you'll see a floppy disk icon in the bottom-right corner). A picture is attached below with the settings turned on.
+    Choose **YES** for **Enable SSL** and **Enable SSL on all pages**. Scroll down and click **Save**.
 
     If you can't switch on **Enable SSL on all pages**, try again after enabling SSL and saving your settings.
 
     ![SSL switches turned on in settings](/docs/assets/prestashop-ubuntu1604-SSL-switches.png)
 
-2. Now go back to the left menu, and as your mouse pointer hovers on top of **Shop Parameters** you'll see a submenu pop up. Click on **Traffic and SEO**. Now scroll down until you find the settings exemplified in the picture below:
+2. Go back to the left menu, and as your mouse pointer hovers on top of **Shop Parameters** you'll see a submenu pop up. Click on **Traffic and SEO**. Scroll down until you find the settings picured below:
 
     ![PrestaShop SEO and URL settings](/docs/assets/prestashop-ubuntu1604-SEO-and-URL-switches.png)
 
-    Select **YES** for **Friendly URL** and **301 Moved Permanently** for **Redirect to the canonical URL**. Save your settings by clicking on the diskette icon.
+    Select **YES** for **Friendly URL** and **301 Moved Permanently** for **Redirect to the canonical URL**. Save your settings.
 
-3. Out of the box, PrestaShop includes some features that help it render pages faster for your clients. You can access these from the far-left menu. Under **CONFIGURE**, hover over **Advanced Parameters** and click on **Performance** in the submenu that opens up. Select **Recompile templates if the files have been updated** under **Template compilation** and **YES** for **Cache**. This will activate Smarty cache and decrease the need for your server to compile parts of the PHP code, decreasing load times for the frontend. The final settings should look like in the following picture:
+3. Out of the box, PrestaShop includes some features that help it render pages faster for your clients. You can access these from the far-left menu. Under **CONFIGURE**, hover over **Advanced Parameters** and click on **Performance** in the submenu that opens up. Select **Recompile templates if the files have been updated** under **Template compilation** and **YES** for **Cache**. This will activate Smarty cache and decrease the need for your server to compile parts of the PHP code, decreasing load times for the frontend. The final settings should look like this:
 
     ![Smarty cache settings](/docs/assets/prestashop-ubuntu1604-smarty-cache-settings.png)
 
-4. Now scroll down until you find **CCC (COMBINE, COMPRESS AND CACHE)**. Switch everything there to **YES**. Click on the diskette to save all the changes.
+4. Scroll down until you find **CCC (COMBINE, COMPRESS AND CACHE)**. Switch everything there to **YES**. Save your settings.
 
     ![CCC (COMBINE, COMPRESS AND CACHE settings)](/docs/assets/prestashop-ubuntu1604-combine-compress-cache-settings.png)
 
-5. Go to the front end of your website and navigate to some pages to check if everything is working alright.
-
-6. Open `/etc/php/7.0/apache2/php.ini` in a text editor.
+5. Open `/etc/php/7.0/apache2/php.ini` in a text editor and look for the following three settings:
 
     {:.file-excerpt}
     /etc/php/7.0/apache2/php.ini
@@ -266,13 +257,15 @@ You can also use:
       max_execution_time = 30
       ~~~
 
-7. Restart Apache:
+    Change `upload_max_filesize` to 10M to enable uploading of larger images. The other two settings don't need to be changed at this point, but if your site's memory usage increases or you install a plugin whose scripts run slowly, you may want to consider increasing `memory_limit` or `max_execution_time`, respectively.
+
+6. Restart Apache:
 
         sudo systemctl restart apache2.service
 
 ## Set Up Mail Delivery
 
-Setting up mail delivery in PrestaShop is vital since so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/email-with-postfix-dovecot-and-mysql) can be hosted on a Linode, it's fairly complicated to set up, maintain, and especially to keep off blacklists and avoid getting flagged as spam by your customers' email providers. It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/mailinabox/how-to-install-mail-in-a-box), but the easiest approach is to use a dedicated solution like G Suite or Fastmail. This way you can focus on maintaining your store and get dependable email service without worrying about the technical details. If you need to send out a large number of emails, make sure to check if you're within limits. Google's G Suite limits the number of monthly emails you can send out.
+Setting up mail delivery in PrestaShop is vital since so much happens through email: customer account confirmations, subscriptions, delivery statuses, order confirmations, etc. Although an email server [like this one](/docs/email/email-with-postfix-dovecot-and-mysql) can be hosted on a Linode, it can be complicated to set up and maintain. It's also possible to use an all-in-one solution like [Mail-in-a-Box](/docs/email/mailinabox/how-to-install-mail-in-a-box), but the easiest approach is to use a dedicated solution like Google's [G Suite](https://gsuite.google.com/) or [Fastmail](https://www.fastmail.com/). This way you can focus on maintaining your store and get dependable email service without worrying about the technical details.
 
 Once you have decided on an email provider, configure PrestaShop's email system: in the left menu, under **CONFIGURE**, hover over **Advanced Parameters** and click **E-mail** in the submenu. Once the page loads, look for **Set my own SMTP parameters (for advanced users ONLY)**.
 
@@ -281,7 +274,3 @@ Once you have decided on an email provider, configure PrestaShop's email system:
 New options will appear further down in the page:
 
 ![Email server connection settings](/docs/assets/prestashop-ubuntu1604-email-server-connection-settings.png)
-
-## Conclusion
-
-You now have an online store, capable of everything you ever saw on professional websites. It's recommended you use a good backup scheme since client data, orders you need to process, payments, are important and losing them can be a logistical nightmare. If you have an active store with multiple orders placed daily, then a weekly backup is not enough and you should look for solutions that back up daily at least.
