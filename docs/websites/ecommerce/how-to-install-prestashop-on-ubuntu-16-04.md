@@ -12,6 +12,8 @@ modified_by:
 title: 'How to Install PrestaShop on Ubuntu 16.04'
 contributor:
   name: Alexandru Andrei
+external_resources:
+- '[Guide to Ecommerce Security](https://www.tripwire.com/state-of-security/security-data-protection/cyber-security/newbie-retailers-guide-to-ecommerce-security/)'
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
@@ -277,3 +279,7 @@ Once you have decided on an email provider, configure PrestaShop's email system:
 New options will appear further down in the page:
 
 ![Email server connection settings](/docs/assets/prestashop-ubuntu1604-email-server-connection-settings.png)
+
+## Next Steps
+
+Now that you have PrestaShop up and running, you can begin to customize the site to meet the needs of your store. The official PrestaShop site has a list of [modules](https://addons.prestashop.com/en/) that can be installed to add features such as online chat, SEO optimization, and product statistics. It is also important to maintain the security of your site. Make sure to frequently update PrestaShop, its dependencies and any plug-ins, as well as your Linode system. 
