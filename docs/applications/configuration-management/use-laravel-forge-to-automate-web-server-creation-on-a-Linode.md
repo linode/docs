@@ -14,6 +14,8 @@ external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
 ---
 
+![Laravel Forge Banner](/docs/assets/configuration-management/Laravel_Forge.jpg)
+
 ## What is Laravel Forge
 
 [Laravel Forge](https://forge.laravel.com) is a tool for deploying and configuring web applications. It was developed by the makers of the [Laravel framework](https://laravel.com), but can be used to automate the deployment of any web application that uses a PHP server. 
