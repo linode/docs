@@ -254,23 +254,31 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
 
         sudo gpg --recv-keys $(echo $(sudo gpg --batch --search-keys security@openvz.org 2>&1 | grep -ie ' key.*created' | sed -e 's|key|@|g' | cut -f 2 -d '@') | cut -f 1 -d ' ' | cut -f 1 -d ',')
 
-3. List available OS templates for download.
+3. Edit `/etc/vz/vz.conf` and change the following line to use `simfs` instead of `ploop`:
+
+    {:.file-excerpt}
+    /etc/vz/vz.conf
+    : ~~~
+      VE_LAYOUT=simfs
+      ~~~ 
+
+4. List available OS templates for download.
 
         vztmpl-dl --list-remote
 
-4. From the available list of templates, select one to download. Using the format below, issue the following command, replacing *centos7-x86_64* with the template you selected.
+5. From the available list of templates, select one to download. Using the format below, issue the following command, replacing *centos7-x86_64* with the template you selected.
 
         vztmpl-dl --gpg-check centos7-x86_64
 
-5. OpenVZ refers to each installed OS template as a "Container". You must create a Container ID (CTID) for each downloaded template. Issue the below command, replacing [CTID] with any number (101 is recommended) and the CentOS 7 template name with your downloaded template.
+6. OpenVZ refers to each installed OS template as a "Container". You must create a Container ID (CTID) for each downloaded template. Issue the below command, replacing [CTID] with any number (101 is recommended) and the CentOS 7 template name with your downloaded template.
 
         vzctl create [CTID] --ostemplate centos7-x86_64
 
-6. A configuration file will now have been created for your OS template. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
+7. A configuration file will now have been created for your OS template. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
 
     - Give your virtual environment an IP address. The recommended format is 192.168.0.[CTID]. In this case it would be 192.168.0.101.
     - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
-    - Change the "VE_LAYOUT" option from "ploop" to "simfs". If you have trouble booting into your virtual environment, you may try changing this back to ploop.
+    - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to "ploop" from "simfs".
 
     You may also configure other options at your pleasure, such as SWAP and RAM allocation. Save and close when finished.
 
@@ -304,7 +312,7 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
         HOSTNAME="centos-7"
         ~~~
 
-7. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
+8. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
 
         vzctl start [CTID]
         vzctl enter [CTID]
@@ -315,11 +323,14 @@ As it stands, containers have no way to access the internet or be accessed from 
 
 ### Configure Access From Container To Internet
 
+{:.note}
+> You may need to login as root with `su -` in order to run the iptables-save commands in this section.
+
 1. On the host server, issue the following command via Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list in CIDR notation (include IP address and subnet, or xxx.xxx.xxx.xxx/xx) in order to encompass a range of IP addresses, which will enable access to any containers added in the future. For example, entering 192.168.0.0/24 will setup routing for IP addresses 192.168.0.0 through 192.168.0.255.
 
         iptables -t nat -A POSTROUTING -s [container IP] -o eth0 -j SNAT --to [host server IP]
 
-2. Save the new Iptables rules. Skip this step if you have iptables-persistent installed.
+2. Save the new Iptables rules. Skip this step if you have `iptables-persistent` installed.
 
         iptables-save > /etc/iptables.conf
 
@@ -336,7 +347,7 @@ As it stands, containers have no way to access the internet or be accessed from 
 
         iptables -t nat -A PREROUTING -p tcp -d [host_ip] --dport [host_port_number] -i eth0 -j DNAT --to-destination [container_ip:container_port_number]
 
-2. Save your new rule. Skip this step if you have iptables-persistent installed.
+2. Save your new rule. Skip this step if you have `iptables-persistent` installed.
 
         iptables-save > /etc/iptables.conf
 
