@@ -2,21 +2,26 @@
 author:
   name: Sam Foo
   email: sfoo@linode.com
-description: 'This tutorial will show you how to create your own private Python package repository'
-keywords: 'pip, Python, PyPA, virtualenv, twine, wheel'
+description: 'This tutorial will show how to create your own private, Python package repository.'
+keywords: 'pip,Python,PyPA,virtualenv,package management'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 12th, 2017
 modified_by:
   name: Sam Foo
 Published: Friday, September 15th, 2017
-title: 'Create a Private Python Package Repository'
+title: 'How to Create a Private Python Package Repository'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
 ---
+# How does Python Handle Package Management?
 
-Package management in Python is available with a variety of different tools. `pip` remains one of the most popular choices because it handles requirements for the user and offers features to check versions of installed packages. PyPI (Python Package Index) is a public repository of user submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then creating a private repository by uploading the package to a Linode using PyPiServer. 
+Package management in Python is available through a variety of different tools. 
+
+`Pip` remains one of the most popular tool choices because it manages full lists of packages and corresponding version numbers, which fosters precise duplication of entire package groups in a distinct, separate environment. `Pip` virtually eliminates manual installs and updates of software packages to operating systems. 
+
+PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode. 
 
 ## Before You Begin
 
@@ -36,10 +41,9 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
     {: .note}
      >
-     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters, unique on PyPI, and underscores to seperate words if needed. 
+     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed. 
    
-
-2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example** containing `__init__.py`. The directory tree should look as shown:
+2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example**, containing `__init__.py`. The directory tree should look like this:
 
     {:.output}
     ~~~
@@ -51,7 +55,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
         README.md
     ~~~
 
-3.  Edit `setup.py` to contain basic information about your Python package.
+3.  Edit `setup.py` to contain basic information about your Python package:
 
     {:.file}
     linode_example/setup.py
@@ -70,7 +74,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
             )
         ~~~
 
-4.  Add an example function to `__init__.py`.
+4.  Add an example function to `__init__.py`:
 
     {:.file}
     linode_example/linode_example/__init__.py
@@ -79,7 +83,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
             print("hello world")
         ~~~
 
-5.  The `setup.cfg` file lets PyPI know the README is a markdown file.
+5.  The `setup.cfg` file lets PyPI know the README is a markdown file:
 
     {:.file}
     setup.cfg
@@ -90,7 +94,7 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
 6.  Optionally, add a `LICENSE.txt` or add information in `README.md` for good documentation practices or if you ever plan to upload the Python package into the public PyPI repository.
 
-7.  The Python package needs to be compressed before it can be available for download on your server. Compress the package by:
+7.  The Python package needs to be compressed before it can be available for download on your server. Compress the package:
 
         python setup.py sdist
 
@@ -98,28 +102,28 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
 # Install PyPI Server
 
-The next step is setting up a server to host a package index. This guide will use `pypiserver`, a wrapper built on the Bottle framework that makes setting up a package index on a server much easier.
+Next, set up a server to host a package index. This guide will use `pypiserver`, a wrapper built on the Bottle framework that makes setting up a package index on a server much easier.
 
-1.  Install virtualenv if it's not already installed.
+1.  Install virtualenv if it's not already installed:
 
         pip install virtualenv
 
-2.  Create a new directory which will be used to hold Python packages as well as files used by Apache. Create a new virtual environment called `venv` inside this directory then activate.
+2.  Create a new directory which will be used to hold Python packages as well as files used by Apache. Create a new virtual environment called `venv` inside this directory, then activate:
 
         mkdir ~/packages
         cd packages
         virtualenv venv
         source venv/bin/activate
 
-3.  Download the package through `pip` in the newly created virtual environment.
+3.  Download the package through `pip` in the newly created virtual environment:
 
         pip install pypiserver
 
     {:.note}
     >
-    > Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/pypiserver) then navigate into the downloaded pypiserver directory and install via `python setup.py install`.
+    > Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install via `python setup.py install`.
 
-4.  Move `linode_example-0.1.tar.gz` into `~/packages`.
+4.  Move `linode_example-0.1.tar.gz` into `~/packages`:
 
         mv ~/linode_example/dist/linode_example-0.1.tar.gz ~/packages/
 
@@ -127,7 +131,7 @@ The next step is setting up a server to host a package index. This guide will us
 
         pypi-server -p 8080 ~/packages
 
-6.  Currently the server is listening on all IP addresses. On a browser, navigate to `192.0.2.0:8080` where `192.0.2.0` is the public IP of your Linode. The browser should display:
+6.  Currently the server is listening on all IP addresses. On a browser, navigate to `192.0.2.0:8080`, where `192.0.2.0` is the public IP of your Linode. The browser should display:
 
     [pypiserver_home](/docs/assets/pypiserver.png)
 
@@ -140,18 +144,18 @@ The next step is setting up a server to host a package index. This guide will us
         sudo apt install apache2
         pip install passlib
 
-2.  Create a password for authentication using `htpasswd` and move `htpasswd.txt` into the `~/packages` directory. Enter the desired password twice.
+2.  Create a password for authentication using `htpasswd` and move `htpasswd.txt` into the `~/packages` directory. Enter the desired password twice:
 
         htpasswd -sc htpasswd.txt example_user
         New password:
         Re-type new password:
 
-3.  Install and enable `mod_wsgi` in order to allow Bottle, a WSGI framework, to connect with Apache2.
+3.  Install and enable `mod_wsgi` in order to allow Bottle, a WSGI framework, to connect with Apache2:
 
         sudo apt install libapache2-mod-wsgi
         sudo a2enmod wsgi
 
-4.  Inside the `~/packages` directory, create a `pypiserver.wsgi` file that creates an application object to connect between pypiserver and Apache.
+4.  Inside the `~/packages` directory, create a `pypiserver.wsgi` file that creates an application object to connect between pypiserver and Apache:
 
     {:.file}
     packages/pypiserver.wsgi
@@ -162,7 +166,7 @@ The next step is setting up a server to host a package index. This guide will us
     application = pypiserver.app(root=PACKAGES, redirect_to_fallback=True, password_file=HTPASSWD)
         ~~~
 
-5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`.
+5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`:
 
     {:.file}
     /etc/apache2/sites-available/pypiserver.conf
@@ -186,20 +190,20 @@ The next step is setting up a server to host a package index. This guide will us
     >
     > Depending on the version of Python and virtual environment path, the WSGIDaemonProcess directive may require a different path.
 
-6.  Give **www-data** ownership of the `~/packages` directory. This will allow uploading from a client using `setuptools`.
+6.  Give **www-data** ownership of the `~/packages` directory. This will allow uploading from a client using `setuptools`:
 
         sudo chown -R www-data:www-data packages/
 
-7.  Disable the default site if needed and enable pypiserver.
+7.  Disable the default site if needed and enable pypiserver:
 
         sudo a2dissite 000-default.conf
         sudo a2ensite pypiserver.conf
 
-8.  Restart Apache.
+8.  Restart Apache:
 
         sudo service apache2 restart
 
-    The repository should be accessible through `192.0.2.0` by default on port 80 where `192.0.2.0` is the public of the Linode.
+    The repository should be accessible through `192.0.2.0` by default on port 80, where `192.0.2.0` is the public of the Linode.
 
 # Download From a Client
 Recall the rather long flags declared with `pip` in order to download from a specified repository. Creating a configuration file containing the IP of your public server will simplify usage.
@@ -214,15 +218,15 @@ Recall the rather long flags declared with `pip` in order to download from a spe
     trusted-host = 192.0.2.0
         ~~~
 
-2.  Install the `linode_example` package.
+2.  Install the `linode_example` package:
 
         pip install linode_example
 
     {:.note}
     >
-    > The terminal output or showing all packages with `pip list` will show the underscore in the package name has transformed into a dash. This is expected as `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
+    > The terminal output or showing all packages with `pip list` will show that the underscore in the package name has transformed into a dash. This is expected as `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
 
-3.  Open up a Python shell and try out the new package.
+3.  Open up a Python shell and try out the new package:
 
     {:.output}
     ~~~
@@ -234,7 +238,7 @@ Recall the rather long flags declared with `pip` in order to download from a spe
 # Upload Remotely Using Setuptools
 Although it's possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
-1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`
+1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`:
 
     {:.file}
     .pypirc
@@ -252,9 +256,9 @@ Although it's possible to use `scp` to transfer tar.gz files to the repository, 
         password: mypassword
         ~~~
 
-    Uploading to the official Python Package Index requires an account, and the information can be left blank. Replace *example_user* and *mypassword* with credentials defined through `htpasswd` from earlier.
+    Uploading to the official Python Package Index requires an account, although account information fields can be left blank. Replace *example_user* and *mypassword* with credentials defined through `htpasswd` from earlier.
 
-2.  From the directory of the Python package to upload:
+2.  To upload from the directory of the Python package:
 
         python setup.py sdist upload -r linode
 
