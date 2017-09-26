@@ -55,7 +55,7 @@ In this example, `example` is the machine's hostname, `username` is the admin us
     chkconfig httpd on
     /etc/init.d/httpd start       
 
-While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
+While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
 Manual Ikiwiki Configuration
 ----------------------------

@@ -6,7 +6,7 @@ description: 'Deploying and configuring granular access control with the Apache 
 keywords: 'apache,access control,security,http,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/rule-based-access-control/','websites/apache-tips-and-tricks/rulebased-access-control-for-apache/']
-modified: Monday, August 22nd, 2011
+modified: Wednesday, August 30, 2017
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
@@ -22,9 +22,12 @@ external_resources:
  - '[Apache Access Control](http://httpd.apache.org/docs/2.0/mod/mod_access.html#allow)'
 ---
 
-Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access control](/docs/web-servers/apache/configuration/http-authentication), which requires that visitors authenticate to the server before gaining access to resources.
 
-By contrast, Apache's rule-based access control allows you to specify which visitors have access to which resources on a very granular level. You can create rules which block a given range of IPs from your web server, or from accessing a particular resource, or even simply from accessing a particular virtual host.
+![Apache_banner_image](/docs/assets/RBAC_Apache.jpg)
+Apache provides a number of tools that allow administrators to control access to specific resources provided by servers. You may already be familiar with [authentication based access controls](/docs/web-servers/apache/configuration/configuration-structure), which requires that visitors authenticate to the server before gaining access to resources.
+
+
+ Apache's rule-based access control allows you to specify which visitors have access to which resources on a very granular level. You can create rules which block a given range of IPs from your web server, or from accessing a particular resource, or even simply from accessing a particular virtual host.
 
 The most basic use of rule-based access control is to place firm limits on what resources are accessible over the network connection. In the default Apache configuration, the web server denies all users access to all files on the system. Then Apache permits administrators to allow access to specific resources.
 

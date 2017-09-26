@@ -63,7 +63,7 @@ To enable and start the daemon in CentOS 7:
 
 To enable and start the daemon in CentOS 6:
 
-    sudo chkconfig monit on && sudo service start monit
+    sudo chkconfig monit on && sudo service monit start
 
 ### Debian / Ubuntu
 

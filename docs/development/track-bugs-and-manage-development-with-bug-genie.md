@@ -5,7 +5,7 @@ author:
 description: 'Install the advanced bug tracking and issue management software Bug Genie on your Linode to manage projects.'
 keywords: 'bug tracking,issue tracking,feature development,bug genie,the bug genie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/bug-genie/',applications/development/track-bugs-and-manage-development-with-bug-genie/']
+alias: ['web-applications/project-management/bug-genie/', 'applications/development/track-bugs-and-manage-development-with-bug-genie/']
 modified: Friday, October 4th, 2013
 modified_by:
   name: Linode

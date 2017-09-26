@@ -160,7 +160,7 @@ Click "Settings" under "Configuration" in the left menu bar and set your "SNMP V
 
     php /usr/share/cacti/cmd.php 
 
-Since you want Cacti to collect data automatically, we'll use the "cron" tool to regularly poll for new data. Issue the following commands to to install cron and create a new cron, or regular scheduled task:
+Since you want Cacti to collect data automatically, we'll use the "cron" tool to regularly poll for new data. Issue the following commands to install cron and create a new cron, or regular scheduled task:
 
     yum install vixie-cron vim-minimal
     crontab -e

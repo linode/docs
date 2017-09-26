@@ -15,8 +15,6 @@ title: Disks and Configuration Profiles
 
 The Linode Manager allows you to create, edit, and use disks and configuration profiles with your Linodes. You can install different Linux distributions on the disks, set device assignments, and configure boot settings. This guide will show you how to put the pieces together to create a custom setup.
 
-![Disks and Configuration Profiles](/docs/assets/disks_and_configuration_profiles.png "Disks and Configuration Profiles")
-
 ## Getting Started
 
 Your Linode plan comes with persistent storage to hold your most important asset - data. This pool of storage can be broken up into individual containers called *disks*. It's easy to create, delete, resize, duplicate, and even clone disks to different Linodes.
@@ -38,7 +36,7 @@ All of a Linode's disks and configuration profiles are displayed on the Linode's
 3.  These are your disks. Select one to resize it or duplicate it.
 4.  Click this link to create a new disk with a Linux distribution installed.
 5.  Click this link to create a new blank disk.
-6.  This box indicates how much storage space is allocated to disks. To see how much much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
+6.  This box indicates how much storage space is allocated to disks. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
 
 ## Disks
 

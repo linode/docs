@@ -171,7 +171,7 @@ When you have completed the modifications to the configuration, make sure that t
 
     /etc/init.d/nginx restart
 
-You are now able to deploy PHP scripts with with your LEMP stack.
+You are now able to deploy PHP scripts with your LEMP stack.
 
 ## Install MySQL Database Server
 

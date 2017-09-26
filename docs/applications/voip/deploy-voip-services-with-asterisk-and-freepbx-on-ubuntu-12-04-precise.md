@@ -57,7 +57,7 @@ This guide includes instructions for integrating a Google Voice account. You wil
         apt-get update
         apt-get upgrade
 
-2.  Install the the set of programs below, which we will need later to build the Asterisk software from source:
+2.  Install the set of programs below, which we will need later to build the Asterisk software from source:
 
         apt-get install build-essential wget libssl-dev libncurses5-dev libnewt-dev  libxml2-dev libsqlite3-dev uuid-dev libiksemel-utils libiksemel-dev
 

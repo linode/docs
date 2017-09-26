@@ -27,7 +27,7 @@ The most common DNS configuration is a single domain name on one Linode. For thi
 
 ##Configuring Subdomains
 
-To configure a subdomain, such as `staging.example.org`, create an A record with the hostname of the subdomain you want to create. Point the the record at the IP address of the server you want to host the subdomain, as shown below.
+To configure a subdomain, such as `staging.example.org`, create an A record with the hostname of the subdomain you want to create. Point the record at the IP address of the server you want to host the subdomain, as shown below.
 
 [![Create a new A record, following the instructions in the "Adding" section. Add the subdomain text to the "Hostname" field. For example, you could type "staging" - NOT "staging.example.org".](/docs/assets/1125-dns13.png)](/docs/assets/1125-dns13.png)
 
