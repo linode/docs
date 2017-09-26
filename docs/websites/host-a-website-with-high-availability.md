@@ -191,7 +191,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 2.  Install the following packages on each database node:
 
         yum install epel-release 
-        yum install https://www.percona.com/redir/downloads/percona-release/redhat/latest/percona-release-0.1-3.noarch.rpm
+        yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
         yum install Percona-XtraDB-Cluster-56 Percona-XtraDB-Cluster-shared-56
 
     {: .note}
@@ -459,7 +459,7 @@ To test redundancy of your file system, you can stop the Gluster daemon on your 
 
     systemctl stop glusterd
 
-Follow the above steps again, creating another test file and checking whether it is visible from your your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
+Follow the above steps again, creating another test file and checking whether it is visible from your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
 
 When you're finished, be sure to remove the test files. Do this for any additional test files you created as well:
 
@@ -490,7 +490,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
 1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses. 
 
-2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the the floating IP address, and click **Save Changes**.
+2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
 
 3.  Repeat the above steps to configure IP failover for `galera3` as well. Make sure to select the same IP address.
 

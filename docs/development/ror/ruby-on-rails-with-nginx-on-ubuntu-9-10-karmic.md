@@ -43,7 +43,7 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
     deb-src http://security.ubuntu.com/ubuntu karmic-security universe
     ~~~
 
-If you added `universe` to the the items in your list, you'll need to update your repository database:
+If you added `universe` to the items in your list, you'll need to update your repository database:
 
     apt-get update
     apt-get upgrade

@@ -119,7 +119,7 @@ In this configuration, lighttpd will look for directories in `/var/www/` that co
 Virtual Host Setup with Enhanced Vhost
 --------------------------------------
 
-Remove the hash (`#`) from the front of the the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
+Remove the hash (`#`) from the front of the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
 
 Now, let's examine the following section of the default config file:
 

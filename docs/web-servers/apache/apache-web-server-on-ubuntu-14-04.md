@@ -6,15 +6,17 @@ description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configur
 keywords: 'apache,ubuntu,ubuntu 14.04,trusty tahr,http,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/apache/apache-web-server-on-ubuntu-14-04/']
-modified: Friday, July 31st, 2015
+modified: Tuesday, September 5, 2017
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Friday, July 31st, 2015'
 title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
+
+![apache_ubuntu_banner](/docs/assets/Apache_Web_Server_on_Ubuntu_1404_LTS_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Ubuntu 14.04 LTS.
 

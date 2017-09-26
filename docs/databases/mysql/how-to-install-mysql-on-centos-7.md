@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on CentOS 7'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Tuesday, August 1st, 2017'
+modified: 'Tuesday, September 5, 2017'
 modified_by:
   name: Linode
 published: 'Thursday, August 27th, 2015'
@@ -24,7 +24,7 @@ MySQL is a popular database management system used for web and server applicatio
 
 If you nonetheless prefer MySQL, this guide will introduce how to install, configure and manage it on a Linode running CentOS 7.
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
 {: .note}
 >
@@ -45,6 +45,9 @@ Large MySQL databases can require a considerable amount of memory. For this reas
 
         sudo yum update
 
+3.  You will need `wget` to complete this guide. It can be installed as follows:
+
+        yum install wget
 
 ## Install MySQL
 
@@ -73,7 +76,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
         sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
 
 ## Using MySQL
 

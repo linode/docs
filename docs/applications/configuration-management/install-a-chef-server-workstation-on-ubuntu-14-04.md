@@ -210,7 +210,7 @@ The workstation is used to add and edit cookbooks and other configuration files.
 	-	The value for `node_name` should be the username that was created above.
 	-	Change `username.pem` under `client_key` to reflect your `.pem` file for your **user**.
 	-	The `validation_client_name` should be your organization's `shortname` followed by `-validator`.
-	-	`shortname.pem` in the `validation_key` path should be set to the shortname was was defined in the steps above.
+	-	`shortname.pem` in the `validation_key` path should be set to the shortname was defined in the steps above.
 	-	Finally the `chef_server-url` needs to contain the IP address or URL of your Chef server, with the `shortname` in the file path changed to the shortname defined above.
 
 3.	Move to the `chef-repo` and copy the needed SSL certificates from the server:

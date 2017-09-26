@@ -23,6 +23,7 @@ This guide is the third of a three-part series to set up a hardened OpenVPN envi
 
 ## Before You Begin
 
+
 You must already have have the client files ready for transfer to the device. These are listed below. **Each client** will need its own copies. If you still need your client credentials, see the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
 
   *  `client1.key`    # Exclusive to this device.

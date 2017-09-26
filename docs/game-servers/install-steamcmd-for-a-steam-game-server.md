@@ -19,6 +19,8 @@ alias: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
 
 SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
 
+![SteamCMD](/docs/assets/Install_SteamCMD_for_a_Steam_Game_Server_smg.jpg)
+
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
 {: .note}
