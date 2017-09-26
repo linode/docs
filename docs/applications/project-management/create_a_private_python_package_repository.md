@@ -16,27 +16,28 @@ external_resources:
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
 ---
 
-Package management in Python is available with a variety of different tools. `pip` remains one of the most popular choices because it handles requirements for the user and offers features to check versions of installed packages. PyPI(Python Package Index) is a public repository of many user submitted packages that can be installed through `pip install package`. This guide will break down the basic scaffolding of a Python package then uploading it to a Linode using PyPiServer in order to have a private repository.
+Package management in Python is available with a variety of different tools. `pip` remains one of the most popular choices because it handles requirements for the user and offers features to check versions of installed packages. PyPI (Python Package Index) is a public repository of user submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then creating a private repository by uploading the package to a Linode using PyPiServer. 
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
 
-2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can also be installed using the apt package manager by `sudo apt install python-pip`.
+2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can be installed using the apt package manager with `sudo apt install python-pip`.
 
-3.  Apache 2.4 is used in this guide. Older versions may not have identical directives and will have slightly different configurations.
+3.  Apache 2.4 is used in this guide. Older versions may lack identical directives and will have slightly different configurations.
 
 # Minimalist Python Package
 
 The basic scaffolding of a Python package contains an `__init__.py` file containing code that interfaces with the user.
 
-1.  Create a directory with the name of your intended package name. This guide will use **linode_example**.
+1.  Create a directory with your intended package name. This guide will use **linode_example**.
 
         mkdir linode_example
 
     {: .note}
-    >
-    > There are additional considerations for deciding a package name if you choose to make it public. The official documentation suggests all lowercase, unique on PyPI, and underscore separated if needed.
+     >
+     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters, unique on PyPI, and underscores to seperate words if needed. 
+   
 
 2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example** containing `__init__.py`. The directory tree should look as shown:
 
@@ -99,11 +100,11 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
 The next step is setting up a server to host a package index. This guide will use `pypiserver`, a wrapper built on the Bottle framework that makes setting up a package index on a server much easier.
 
-1.  Install virtualenv if not already installed.
+1.  Install virtualenv if it's not already installed.
 
         pip install virtualenv
 
-2.  Create a new directory which will be used to hold Python packages as well as files used for Apache. Create a new virtual environment called `venv` inside this directory then activate.
+2.  Create a new directory which will be used to hold Python packages as well as files used by Apache. Create a new virtual environment called `venv` inside this directory then activate.
 
         mkdir ~/packages
         cd packages
@@ -130,11 +131,11 @@ The next step is setting up a server to host a package index. This guide will us
 
     [pypiserver_home](/docs/assets/pypiserver.png)
 
-    You are now able to install the `linode_example` package through by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`. In addition to being verbose, remote uploading of new packages and restricting access to this repository still needs to be implemented.
+    You are now able to install the `linode_example` package by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`.
 
 # Authentication with Apache and passlib
 
-1.  Install Apache and `passlib` for password based authentication for uploads. Make sure you are still in your activated virtual environment (`(venv)` should appear before the terminal prompt) and then execute the following:
+1.  Install Apache and `passlib` for password-based authentication for uploads. Make sure you are still in your activated virtual environment(`(venv)` should appear before the terminal prompt) and then execute the following:
 
         sudo apt install apache2
         pip install passlib
@@ -179,7 +180,7 @@ The next step is setting up a server to host a package index. This guide will us
         </VirtualHost>
         ~~~
 
-    The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To open access completely, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
+    The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
 
     {:.note}
     >
@@ -203,7 +204,7 @@ The next step is setting up a server to host a package index. This guide will us
 # Download From a Client
 Recall the rather long flags declared with `pip` in order to download from a specified repository. Creating a configuration file containing the IP of your public server will simplify usage.
 
-1.  On a client computer, create a `.pip` directory in the home directory. Inside the this directory, create `pip.conf` with the following:
+1.  On the client computer, create a `.pip` directory in the home directory. Inside this directory, create `pip.conf` with the following:
 
     {:.file}
     pip.conf
@@ -213,7 +214,7 @@ Recall the rather long flags declared with `pip` in order to download from a spe
     trusted-host = 192.0.2.0
         ~~~
 
-2.  Install the our `linode_example` package.
+2.  Install the `linode_example` package.
 
         pip install linode_example
 
@@ -231,7 +232,7 @@ Recall the rather long flags declared with `pip` in order to download from a spe
     ~~~
 
 # Upload Remotely Using Setuptools
-Although it is possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
+Although it's possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
 1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`
 
