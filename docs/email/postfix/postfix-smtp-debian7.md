@@ -140,7 +140,7 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use the e
 
     {:.note}
     >
-    > Check the appropriate [Google Apps](#settings-for-google-apps), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) section for the details to enter here.
+    > Check the appropriate [Google Apps](email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) section for the details to enter here.
 
 3.  At the end of the file, add the following parameters to enable authentication:
 

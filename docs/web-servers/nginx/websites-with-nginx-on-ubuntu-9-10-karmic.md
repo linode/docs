@@ -151,6 +151,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-9.10-karmic)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9.10-karmic)
-- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/ubuntu-9.10-karmic)
+- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic)
+- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic)
+- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic)

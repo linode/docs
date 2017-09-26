@@ -143,7 +143,7 @@ These values are often `0`.
 
 ### Memory
 
-The information displayed in the `memory` section provides the same data about [memory usage](/docs/using-linux/administration-basics#check_current_memory_usage) as the command `free -m`.
+The information displayed in the `memory` section provides the same data about [memory usage](/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
 
 The `swapd` or "swapped" column reports how much memory has been swapped out to a swap file or disk. The `free` column reports the amount of unallocated memory. The `buff` or "buffers" column reports the amount of allocated memory in use. The `cache` column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
 

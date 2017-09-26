@@ -106,7 +106,7 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 
     Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.
 
-    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](#secure-local-postgresql-access) for information about changing this setting.
+    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7#secure-local-access) for information about changing this setting.
 
 ### Access the PostgreSQL Shell
 

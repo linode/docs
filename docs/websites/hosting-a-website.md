@@ -15,7 +15,7 @@ title: Hosting a Website
 
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploying-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then continue to the [upload files](#upload-files) section.
+**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then continue to the [upload files](#upload-files) section.
 
 {: .note}
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.

@@ -21,7 +21,7 @@ Upon a Linode's creation, an IPv4 address is selected from a pool of available a
 
 If Network Helper is *disabled* (or if your Linode was created before Network Helper became default), your Linode will be assigned its IPv4 network configuration by DHCP from the datacenter's networking hardware. One limitation of DHCP is that it can only assign one IP address per DHCP lease request. If you want additional IPs for your Linode, you must use static addressing.
 
-Due to the limited availability of IPv4 addresses, additional public IPv4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, IPv4 addresses can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/native-ipv6-networking#additional-ipv6-addresses) are also available by submitting a support ticket.
+Due to the limited availability of IPv4 addresses, additional public IPv4 addresses for your Linode must be requested by [contacting support](/docs/support) with a technical justification. Once approved, IPv4 addresses can be added through the Remote Access tab of the Linode Manager. [Additional IPv6 addresses](/docs/networking/how-to-enable-native-ipv6-on-linux/#additional-ipv6-addresses) are also available by submitting a support ticket.
 
 Instead of using [Network Helper](/docs/platform/network-helper) for static addressing, you can manually configure it within your Linux distribution. This alternative method will be the focus of this guide. **Be aware that errors in network configurations can disconnect SSH sessions**, so we recommend you use the [Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) when making the changes below.
 

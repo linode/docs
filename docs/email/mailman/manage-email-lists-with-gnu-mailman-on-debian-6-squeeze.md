@@ -21,7 +21,7 @@ Be sure to review this guide in its entirety before beginning the procedure outl
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -47,7 +47,7 @@ During the Mailman installation, you will be required to specify the languages t
 Configure Mailman
 -----------------
 
-Consider the "[Configure Virtual Hosting](#configure_virtual_hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
+Consider the "[Configure Virtual Hosting](/docs/email/mailman/manage-email-lists-with-gnu-mailman-on-debian-6-squeeze#configure-virtual-hosting)" section before preceding. In most cases where you will be hosting you will want to skip this section and continue with that procedure. Mailman requires a "base" list, from which it can send email to welcome new members to lists and send password reminders when needed. Create this list by issuing the following command:
 
     newlist mailman
 
@@ -94,7 +94,7 @@ Complete the following steps after installing `postfix` and `mailman` by way of 
     mailman_destination_recipient_limit = 1
     ~~~
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns#mx_records) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {: .file-excerpt }
 /etc/postfix/master.cf
@@ -154,7 +154,7 @@ If you need to configure additional domains for use, ensure that you've made the
     POSTFIX_STYLE_VIRTUAL_DOMAINS = ['lists.example.com', 'lists.example.org']
     ~~~
 
-Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
+Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduction-to-dns#types-of-dns-records) that point to your Linode. When you've finished configuring Mailman, issue the following commands to create the default list (which will prompt you to enter an address for the list administrator and a password), restart postfix, and start Mailman for the first time:
 
     newlist mailman
     /etc/init.d/postfix restart

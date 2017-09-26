@@ -62,7 +62,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 
 	{: .note }
 	>
-	> You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#adding-your-public-key) for more information.
+	> You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 
 5.  At the Lish command prompt, type a Linode's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Linode.
 6.  Log in to the Linode with your username and password.

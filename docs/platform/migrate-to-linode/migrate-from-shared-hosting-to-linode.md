@@ -49,7 +49,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
 
 {: .note }
 >
@@ -109,7 +109,7 @@ The next step is to build the software environment needed for your site to funct
     *  Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
     *  Deployment Disk Size: Leave the default setting.
     *  Swap Disk: Leave the default setting.
-    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
+    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#create-an-authentication-key-pair).
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 

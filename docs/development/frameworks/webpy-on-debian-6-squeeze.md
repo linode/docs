@@ -21,7 +21,7 @@ This guide assumes that have you followed the [getting started guide](/docs/gett
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -42,7 +42,7 @@ Issue the following command to install the Apache HTTP Server:
 
     apt-get install apache2 
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian_and_ubuntu_package_management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 

@@ -35,7 +35,7 @@ In part one of this series, these files were packaged into a tarball located at 
 
 ## Transfer Client Credentials
 
-Client credentials must be moved to the client device using an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols do not encrypt any traffic.
+Client credentials must be moved to the client device using an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols do not encrypt any traffic.
 
 ### Android / iOS
 
@@ -170,7 +170,7 @@ Configure VPN connections using the same method you would use to configure wirel
 
     If you had set the OpenVPN server's Common Name when generating the certificates in part one, it can be used in the **Subject Match** field. Check the box to verify certificate usage signature and make sure the dropdown menu is set to **Server**.
 
-    Check the box for additional TLS authentication. This is the HMAC signature checking from [Part One, Step 1](/docs/networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8#harden-openvpn) of the *Harden OpenVPN* area. Locate your key file and make sure the **Key Direction** is set to **1**. Click **OK** to exit the window.
+    Check the box for additional TLS authentication. This is the HMAC signature checking from [Part One, Step 1](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#harden-openvpn) of the *Harden OpenVPN* area. Locate your key file and make sure the **Key Direction** is set to **1**. Click **OK** to exit the window.
 
     ![OpenVPN Advanced Options TLS Authentication tab](/docs/assets/networkmanager-openvpn-vpn-advanced-tlsauthentication.png)
 

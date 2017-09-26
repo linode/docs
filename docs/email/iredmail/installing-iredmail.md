@@ -398,7 +398,7 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com
-[r]:/docs/networking/dns/dns-manager/#setting-reverse-dns
+[r]:/docs/networking/dns/configure-your-linode-for-reverse-dns/
 [c]:https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate
 [a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
 [f]:http://www.iredmail.org/forum/post30654.html#p30654

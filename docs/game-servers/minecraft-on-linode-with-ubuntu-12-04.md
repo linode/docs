@@ -34,7 +34,7 @@ In this section, we'll prepare your Linode for installing the Minecraft server.
 
 ### Updating Packages
 
-1.  Log in to your Linode via [SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+1.  Log in to your Linode via [SSH](/docs/getting-started#ssh-overview).
 2.  Gain administrator privileges:
 
         su
@@ -191,7 +191,7 @@ For you and your friends to play Minecraft, you will all need to install the Min
 6.  Click **Multiplayer**.
 7.  Click **Add server**.
 8.  In the **Server Name** field, enter your desired name for your Minecraft server. This is only for your convenience, and will only be visible to you.
-9.  In the **Server Address** field, enter your [Linode’s IP address](/docs/getting-started#sph_finding-the-ip-address), or any domain that resolves to your Linode.
+9.  In the **Server Address** field, enter your [Linode’s IP address](/docs/getting-started#find-the-ip-address-of-your-linode), or any domain that resolves to your Linode.
 10. Click **Done** to return to the server list screen.
 
     {:.note}

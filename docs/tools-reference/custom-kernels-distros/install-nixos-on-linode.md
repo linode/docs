@@ -43,7 +43,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles/), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following: 
+[Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following: 
 
   * **Installer profile**
     * **Label:** Installer

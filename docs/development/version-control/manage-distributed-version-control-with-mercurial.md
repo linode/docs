@@ -156,7 +156,7 @@ As time passes you will probably want to update your local repositories with the
 
     hg pull http://www.example.com/lolipop/
 
-After a pull, additional revisions are stored in your local repository, but your local "working copy" has not yet been updated to reflect the change sets. In these situations, use the `hg merge`, `hg resolve`, and finally `hg commit` commands as described [above](#inserting_modifications_into_the_history) to resolve any conflicts and commit all changes to the local repository.
+After a pull, additional revisions are stored in your local repository, but your local "working copy" has not yet been updated to reflect the change sets. In these situations, use the `hg merge`, `hg resolve`, and finally `hg commit` commands as described [above](/docs/development/version-control/manage-distributed-version-control-with-mercurial#inserting-modifications-into-the-history) to resolve any conflicts and commit all changes to the local repository.
 
 If you work on one project and collaborate with two or more people who publish public Mercurial repositories, you can pull from multiple upstream repositories. Consider the following command:
 

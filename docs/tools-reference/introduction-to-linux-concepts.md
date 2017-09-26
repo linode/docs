@@ -67,7 +67,7 @@ Before you install Linux, decide which distribution to install. Linux comes in s
 
 Here at Linode, you install Linux with the [Linode Manager](https://manager.linode.com/) dashboard. It takes just a few clicks to install Linux with this dashboard. If you don't have a particular Linux distribution in mind, install **Ubuntu 16.04 LTS**. Ubuntu is good for Linux beginners because it is well-supported and doesn't change often.
 
-After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#sph_booting-your-linode), then come back here.
+After you know which distribution you want to install, follow the instructions for installing Linux in the [Getting Started](/docs/getting-started/) article. Follow that article until you complete [Booting Your Linode](/docs/getting-started#boot-your-linode), then come back here.
 
 ### Connecting to Your Linode
 
@@ -81,7 +81,7 @@ Your Linode is physically housed in the Atlanta, Dallas, Frankfurt, Fremont, Lon
   - **Shell**: A program that provides a user interface for interacting with an operating system. There are different types of shells, but the one we're using here is called **Bash** and provides a command-line interface that accepts and outputs text.
   - **SSH**: A protocol that lets you send shell commands to your Linode securely over the Internet.
 
-To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/getting-started#sph_connecting-to-your-linode). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode. 
+To connect to your Linode, follow the next section of the **Getting Started** article, [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh). Follow along with the written instructions or watch the videos, or both. It will help you install a terminal emulator and use it to establish an SSH connection to your Linode. 
 
 ## So You're Staring at a Shell Prompt
 
@@ -91,7 +91,7 @@ After you connect to your Linode, you should be looking at a shell prompt that l
 
 What does this bit of text mean? The entire thing is the *shell prompt*. It's your terminal's way of telling you that it's ready for you to enter the next command. The different parts of the shell prompt provide information:
 
--   **root**: This is your username. To learn more about users, jump down to the [Users and Permissions](#users-and-permissions) section.
+-   **root**: This is your username. To learn more about users, jump down to the [Users and Permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) section.
 -   **localhost**: This is your Linode's hostname. A *hostname* is your Linode's name for itself.
 -   **\~**: After the colon, the SSH session shows the name of the directory you're in. When you first log in, you're in your user's *home* directory. The tilde (**\~**) is a shortcut for the home directory. If the directory was spelled out, it would be `/root`. For users other than the root user, home directories are in `/home/user1`, where **user1** is the name of the user.
 -   **\#** - The **hash** or **pound** (**\#**) punctuation mark indicates where the shell prompt ends. When you type a command, your text begins after this point. For users other than the root user, the **dollar sign** (**\$**) indicates the same thing.
@@ -249,7 +249,7 @@ Here you can see the `log` and `mail` directories, as well as several others. At
 
 ### Learn More About Navigating Directories
 
-Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/using-linux/using-the-terminal#sph_file-system-navigation) guide.
+Now you know how to use the `pwd` command to show you where you are, the `cd` command to move to a new directory, and the `ls` command to show you the contents of a directory. These are the basic tools you need to navigate through your Linode's files and directories. To learn more about navigating directories, read the linked section of the [Using the Terminal](/docs/tools-reference/ssh/using-the-terminal/) guide.
 
 ### Upload Files to Your Linode 
 
@@ -267,7 +267,7 @@ You can set users and permissions for each file directory on your Linode.
 
 Three categories comprise the file access system in Linux:
 
--   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user) section of the **Securing Your Server** guide.
+-   **Users**: Unique logins for your Linode. A user account is typically assigned to either a person or an application that needs to access files on your system. You can have any number of users on your Linode. To learn how to add a user, see the [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) section of the **Securing Your Server** guide.
 -   **Groups**: A collection of one or more users. Groups are a useful way to grant similar access privileges to multiple users, without having to set them individually for each user. When a user account is created, it is assigned a default group with the same name as the user name. Each user can belong to any number of groups. Users that are a part of a group inherit the permissions granted to the group.
 -   **Everyone**: is the category for everyone else. If someone accesses files on your Linode without being logged in as a specific user, they fall into the *everyone* category. *Everyone* is sometimes known as *world*, because it includes everyone in the whole world. 
 
@@ -347,14 +347,14 @@ You want some programs, like your web server, to run constantly. These are the p
 Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files. 
 
 1. Use the `cd` command to move into the directory where the script is located. 
-2. Run `ls -l directory` to check that your user account has [execute permissions](#users-and-permissions) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#sph_administering-file-permissions) guide.
+2. Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
 3. Run the script with the following syntax:
 
     ./my_script
 
 **Scheduled:**
 
-Sometimes you want to run a program at regular intervals, as in the case of a daily backup script. The best way to do this is with the *cron* tool. Read the [Schedule Tasks with Cron](/docs/linux-tools/utilities/cron) article to learn more. Scripts that you run this way also have to be [executable](#users-and-permissions).
+Sometimes you want to run a program at regular intervals, as in the case of a daily backup script. The best way to do this is with the *cron* tool. Read the [Schedule Tasks with Cron](/docs/linux-tools/utilities/cron) article to learn more. Scripts that you run this way also have to be [executable](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux).
 
 ### Updating Software
 

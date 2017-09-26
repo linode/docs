@@ -116,7 +116,7 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 Install MySQL Support (optional)
 --------------------------------
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.10 (Karmic) guide](/docs/databases/mysql/ubuntu-9.10-karmic). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.10 (Karmic) guide](/docs/databases/mysql/ubuntu-9-10-karmic). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby 
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql 

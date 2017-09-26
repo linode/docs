@@ -46,7 +46,7 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 --------------------------------------------------------------------
@@ -165,7 +165,7 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy_balancer
     /etc/init.d/apache2 restart 
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny#enabling_the_proxy_module). Do not forget to reload the configuration Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/#enabling-the-proxy-module). Do not forget to reload the configuration Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration

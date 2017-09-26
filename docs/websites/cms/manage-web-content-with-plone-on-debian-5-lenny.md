@@ -40,7 +40,7 @@ The installation interface will present several questions during the installatio
 
     /etc/init.d/zope2.10 start
 
-Now, assuming that you have an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
+Now, assuming that you have an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
 
 You can now proceed with the development of your Plone website!
 

@@ -44,7 +44,7 @@ The diagram below shows the relationship between each of the components that all
 
 ## Prerequisites
 
-Before you begin, you need to make sure a few things are in order. We assume you have followed the [Getting Started](/docs/getting-started/) guide and have set the hostname and timezone, and have configured networking for the Linode. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for your domain.
+Before you begin, you need to make sure a few things are in order. We assume you have followed the [Getting Started](/docs/getting-started/) guide and have set the hostname and timezone, and have configured networking for the Linode. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/dns-guides/introduction-to-dns#types-of-dns-records) for your domain.
 
 There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document. If you want a more detailed explanation, you may wish to take a look at the in-depth information contained in the [PV-GRUB guide](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
 
@@ -213,7 +213,7 @@ FreePBX is a PHP application that allows you to control your Asterisk installati
 
 ### Set Up LAMP Stack
 
-Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-by-step how-to is provided here, but you may wish to consult our [LAMP documentation](/docs/lamp-guides/ubuntu-9.10-karmic/) for more information.
+Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-by-step how-to is provided here, but you may wish to consult our [LAMP documentation](/docs/lamp-guides/ubuntu-9-10-karmic/) for more information.
 
 1.  Begin by installing Apache:
 

@@ -59,7 +59,7 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
 
         sudo iptables -F && sudo iptables -X
 
-2.  See our [Securing Your Server](/docs/security/securing-your-server/#configuring-a-firewall) guide and complete the section on iptables for Debian **using the ruleset below**:
+2.  See our [Securing Your Server](/docs/security/securing-your-server/#configure-a-firewall) guide and complete the section on iptables for Debian **using the ruleset below**:
 
     {: .file}
     /tmp/v4

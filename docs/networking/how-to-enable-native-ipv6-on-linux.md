@@ -187,7 +187,7 @@ If you are using CentOS 7 or Fedora:
 
 If you are using `systemd-networkd` on Arch Linux, you can statically configure IPv6 pools by editing `/etc/systemd/network/05-eth0.network`.
 
-1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/#arch) for your IPv4 address.
+1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/##arch--coreos-container-linux) for your IPv4 address.
 
 2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
 

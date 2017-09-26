@@ -19,7 +19,6 @@ external_resources:
  - '[DMARC](http://dmarc.org/)'
  - '[OpenDKIM](http://www.opendkim.org/)'
  - 'The [Sender Policy Framework](https://en.wikipedia.org/wiki/Sender_Policy_Framework) and [DomainKeys Identified Mail](https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail) Wikipedia pages should not be considered authoritative but do provide helpful discussion and additional references.'
- - '[How to eliminate spam and protect your name with DMARC](https://www.skelleton.net/2015/03/21/how-to-eliminate-spam-and-protect-your-name-with-dmarc/#dmarc) provides additional help with DMARC records.'
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
 

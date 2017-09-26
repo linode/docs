@@ -12,7 +12,7 @@ modified_by:
 published: 'Thursday, January 28th, 2010'
 title: Securely Administer Oracle XE with an SSH Tunnel
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 ---
 

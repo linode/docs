@@ -243,7 +243,7 @@ Additionally, add the following two lines as instructed by the installation scri
 Configure Web Server
 --------------------
 
-For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/using-linux/administration-basics#how_to_set_up_subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
+For the purpose of this document we will set up the repository hosting service under the virtual host for the domain `repo.example.com`. You will need to ensure that [DNS is configured](/docs/tools-reference/linux-system-administration-basics#set-up-subdomains) for this domain. Additionally, ensure that the rewrite module is enabled by issuing the following commands:
 
     a2enmod rewrite
     /etc/init.d/apache2 restart

@@ -16,7 +16,7 @@ title: 'Ikiwiki on Ubuntu 10.04 (Lucid)'
 
 
 
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/linux-tools/version-control/git) for version control, and either the [Apache](/docs/web-servers/apache/installation/) or [nginx](/docs/web-servers/nginx/installation/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/development/version-control/how-to-configure-git) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
 
 Basic System Configuration
 --------------------------

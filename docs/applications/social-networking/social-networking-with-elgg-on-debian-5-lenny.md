@@ -69,7 +69,7 @@ The web server needs to be able to write to the `data/` directory; issue the fol
 
     chmod 777 /srv/www/example.com/data/
 
-Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/lamp-guides/debian-5-lenny/), but you can also [configure additional databases and user credentials](/docs/databases/mysql/debian-5-lenny#using_mysql) at any time.
+Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/lamp-guides/debian-5-lenny/), but you can also [configure additional databases and user credentials](/docs/databases/mysql/debian-5-lenny#using-mysql) at any time.
 
 ### Configure Elgg
 

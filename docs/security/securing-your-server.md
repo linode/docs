@@ -41,7 +41,7 @@ Up to this point, you have accessed your Linode as the `root` user, which has un
 {: .note}
 > Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 
-To add a new user, first [log in to your Linode](/docs/getting-started#logging-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#log-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 

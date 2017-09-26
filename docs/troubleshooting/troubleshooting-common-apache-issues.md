@@ -22,11 +22,11 @@ In this guide, you'll start with some basic troubleshooting steps and then proce
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/quick-start-troubleshooting#sph_is-the-web-server-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/troubleshooting/troubleshooting/#is-the-web-server-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/memory-networking#sph_diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
 ## Restarting Apache
 
@@ -108,7 +108,7 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 
         sudo service apache2 restart
 
-4.  Perform the operation that was giving you trouble, then [check the logs](#sph-checking-the-logs) for more detailed information and errors.
+4.  Perform the operation that was giving you trouble, then [check the logs](#checking-the-logs) for more detailed information and errors.
 
  {: .caution }
 >
@@ -146,7 +146,7 @@ Make sure all your `<VirtualHost>` directives use IP addresses and port numbers 
 
 ## Troubleshooting Conflicting Directives
 
-If you've modified a configuration option, and you're still not seeing it take effect even after [reloading the server configuration](#sph-restarting-apache), it's possible that the new option may have been overridden by a conflicting directive. The main point to remember is that later directives override conflicting earlier ones. So, the directive that is read the *latest* will always be the one that takes effect.
+If you've modified a configuration option, and you're still not seeing it take effect even after [reloading the server configuration](#restarting-apache), it's possible that the new option may have been overridden by a conflicting directive. The main point to remember is that later directives override conflicting earlier ones. So, the directive that is read the *latest* will always be the one that takes effect.
 
 These points should help clarify the order in which directives are read:
 

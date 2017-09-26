@@ -108,7 +108,7 @@ Other processes may take some time to complete their own startup. Including the 
 
 ###Alerting
 
-Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#sending-email-from-your-server) for help with configuring this.
+Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server) for help with configuring this.
 
 Specify what server you will send mail through on this line:
 
@@ -149,7 +149,7 @@ You can optionally restrict web interface access to just your IP address.
 
 {: .note}
 >
->If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configuring-a-firewall). 
+>If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configure-a-firewall). 
 
 ##Configure Monit's Checking Actions
 

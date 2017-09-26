@@ -21,7 +21,7 @@ Prior to beginning this document to install a basic Postfix email gateway, it is
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -243,7 +243,7 @@ You may wish to consult the following resources for additional information on th
 - [Postfix](http://postfix.org)
 - [Postfix Virtual Mail Handling](http://www.postfix.org/VIRTUAL_README.html)
 - [Introduction to the DNS System](/docs/dns-guides/introduction-to-dns)
-- [Host Email with Postfix, Dovecot and MySQL on Ubuntu 10.10 (Maverick)](/docs/email/postfix/dovecot-mysql-ubuntu-10.10-maverick)
+- [Host Email with Postfix, Dovecot and MySQL on Ubuntu 10.10 (Maverick)](/docs/email/postfix/dovecot-mysql-ubuntu-10-10-maverick)
 
 
 

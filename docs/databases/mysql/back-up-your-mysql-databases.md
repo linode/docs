@@ -81,7 +81,7 @@ These commands begin by stopping the MySQL server daemon, then creating a direct
     cd /opt/database/backup-1266872202
     tar -czfv * > /opt/mysqlBackup-1266872202.tar.gz 
 
-Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
+Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#upload-files-to-a-remote-server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
 
     /etc/init.d/mysql start
 

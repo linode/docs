@@ -82,7 +82,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#sph_creating-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
 
 You have successfully installed JRE on your Linode.
 
@@ -362,7 +362,7 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 
  {: .note }
 >
-> If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#sph_creating-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+> If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.
 22. Now you can start RMS as a background process by entering the following command:

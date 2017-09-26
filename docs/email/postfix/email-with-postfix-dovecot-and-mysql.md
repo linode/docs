@@ -22,7 +22,7 @@ For a different Linux distribution or different mail server, review our [email t
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-your-server#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configure DNS
 
@@ -861,7 +861,7 @@ Although the mail server is up and running, eventually you'll probably need to a
 
 ### Domains
 
-1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 
 2.  Log in to the MySQL server with an appropriately privileged user. For this example, use the `root` user:
 

@@ -42,7 +42,7 @@ First, we need to install the virtual machine to run the Smalltalk images. While
     unzip pharo-vm-0.15.2f-linux.zip
     mv pharo-vm-0.15.2f-linux/ pharo-vm-15-2/
 
-[Upload the image file](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
+[Upload the image file](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
 
     cd /srv/www/example.com/
     wget http://pier.googlecode.com/files/Pier-1.2.app.zip
@@ -59,7 +59,7 @@ To test the Seaside application, access your domain in the browser on port `8080
 
     http://example.com:8080/seaside/
 
-In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/using-linux/using-the-terminal#gnu_screen). To stop the current instance, simply hit "ctrl-c".
+In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 
@@ -145,7 +145,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 

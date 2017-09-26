@@ -66,7 +66,7 @@ If you're new to performance monitoring, you can get started by logging in to th
 -   **CPU Utilization:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
 -   **Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
 -   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/quick-start-troubleshooting#sph_is-there-a-disk-i-o-bottleneck).
+-   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck).
 
 When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
 
@@ -146,7 +146,7 @@ There are ways to automate the installation of software updates, but this is not
 
 ### Applying Kernel Updates
 
-When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/disk-images-config-profiles#sph_id5) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
+When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
 
 Here's how to check for a new kernel and start using it on your Linode:
 

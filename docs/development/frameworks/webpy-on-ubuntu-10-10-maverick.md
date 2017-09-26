@@ -19,7 +19,7 @@ Web.py is a web application framework that stresses minimalism, flexibility, rap
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -40,11 +40,11 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python
 
-The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian_and_ubuntu_package_management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
-For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10.04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
+For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10-04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
 
     apt-get install python-pysqlite2 sqlite3
 
@@ -54,7 +54,7 @@ Issue the following commands to download and install Web.py, using a packaged ve
 
 > apt-get install python-webpy
 
-If you want to upload a more recent version, consider [this procedure](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/ubuntu-10.04-lucid#install_webpy), to install Web.py from source.
+If you want to upload a more recent version, consider [this procedure](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/ubuntu-10-04-lucid#install_webpy), to install Web.py from source.
 
 Create a Basic Application with Web.py
 --------------------------------------
