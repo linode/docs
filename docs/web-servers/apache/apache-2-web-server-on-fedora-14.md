@@ -100,7 +100,7 @@ Now you will create virtual host entries for each site that you need to host wit
     </VirtualHost>
 
     <VirtualHost *:80>
-         ServerAdmin admin@example.net     
+         ServerAdmin admin@example.net
          ServerName example.net
          ServerAlias www.example.net
          DocumentRoot /srv/www/example.net/public_html/

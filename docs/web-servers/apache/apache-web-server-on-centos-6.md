@@ -70,12 +70,12 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP)
     {: .file-excerpt }
     /etc/httpd/conf.d/vhost.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin admin@example.org
              ServerName example.org
              ServerAlias www.example.org
              DocumentRoot /srv/www/example.org/public_html/
-             ErrorLog /srv/www/example.org/logs/error.log 
+             ErrorLog /srv/www/example.org/logs/error.log
              CustomLog /srv/www/example.org/logs/access.log combined
         </VirtualHost>
         ~~~

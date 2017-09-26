@@ -29,7 +29,7 @@ Make sure your `/etc/hosts` file contains sensible values. In the example file b
     127.0.0.1 localhost.localdomain localhost
     12.34.56.78 servername.example.com servername
     ~~~
-    
+
 Next, make sure your Linode's hostname is set to the short value you specified in `/etc/hosts`:
 
     echo "servername" > /etc/hostname
@@ -41,8 +41,8 @@ To make sure `universe` repositories are enabled, modify your `/etc/apt/sources.
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted
     deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted

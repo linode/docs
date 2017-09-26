@@ -98,7 +98,7 @@ You will be presented with a menu like the one below asking you to choose a disk
     {: .file-excerpt }
     /boot/grub/menu.lst
     :   ~~~
-        ## default grub root device 
+        ## default grub root device
         ## e.g. groot=(hd0,0)
         # groot=(hd0)
         ~~~
@@ -173,14 +173,14 @@ It's very important that you follow the steps outlined above carefully or your s
 9.  When you've selected these and any other modules or build options you may want, use the **Save & Exit** button. Then issue the following commands to finish the installation:
 
         make
-        make install 
-        make config 
+        make install
+        make config
         make samples
 
 10. Start the DAHDI and Asterisk services:
 
-        service dahdi start 
-        service asterisk start 
+        service dahdi start
+        service asterisk start
 
 ### Verify the Installation
 
@@ -307,7 +307,7 @@ VirtualHost Entry
         ServerAdmin webmaster@example.com
         ServerName example.com
         ServerAlias www.example.com
-        DocumentRoot /var/www/html                        
+        DocumentRoot /var/www/html
     </VirtualHost>
     ~~~
 

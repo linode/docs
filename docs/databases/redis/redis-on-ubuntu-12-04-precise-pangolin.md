@@ -30,7 +30,7 @@ Prior to beginning this guide for installing Redis, we assume that you have comp
 Issue the following commands to update your system's package repositories and ensure that all installed packages are up to date:
 
     apt-get update
-    apt-get upgrade 
+    apt-get upgrade
 
 ### Download and Install Redis
 

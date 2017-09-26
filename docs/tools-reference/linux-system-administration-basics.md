@@ -495,7 +495,7 @@ Running `pacman` with the `-Si` option generates the package's record from the d
 
 The first command only searches the database for package names. The second command searches through the database for package names and descriptions. These commands will allow you to search your local package tree (i.e., portage) for the specific package name or term. The output of either command is similar to the excerpt below.
 
-    Searching...   
+    Searching...
      [ Results for search key : wget ]
      [ Applications found : 4 ]
 

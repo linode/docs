@@ -32,11 +32,11 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 3.  Download the latest version of [OpenVPN Access Server](https://openvpn.net/index.php/access-server/download-openvpn-as-sw.html) for your distribution of choice.  Installation packages are provided for the listed distributions in supported package formats.  Install using the following commands, based on your system's package manager.
 
 	Debian based systems (Debian/Ubuntu):
-		
+
 		sudo dpkg -i openvpn-as-*.deb
 
 	RPM based systems(Fedora/CentOS/OpenSuse):
-		
+
 		sudo rpm --install openvpn-as-*.rpm
 
 4.  Once the install process is complete, information on accessing the Admin and Client UI will be displayed.
@@ -48,7 +48,7 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 	The Admin UI is where you configure the OpenVPN Access Server, while the Client UI is used to download the VPN packages to connect new client computers
 
 5.  Set the password for the OpenVPN user.
-		
+
 		sudo passwd openvpn
 
 ## Configuring OpenVPN Access Server

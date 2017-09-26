@@ -122,7 +122,7 @@ Below is a sample Nginx virtual host configuration file. Modify your configurati
 
         location / {
             index index.html index.htm index.php;
-        }   
+        }
     ~~~
 
 In addition, with in the Nginx virtual host file, ensure the `location ~ \.php$ { }` block resembles the one in this example:

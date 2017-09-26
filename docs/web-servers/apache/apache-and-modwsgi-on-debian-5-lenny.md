@@ -84,7 +84,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'

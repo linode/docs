@@ -56,7 +56,7 @@ Install Django
 
 There are two methods for installing Django. You may either choose to install the Django packages from the Ubuntu repositories, or you can install using the python `easy_install` method. If you choose to install using the Ubuntu packages you will work with the 1.1.1 version of the framework, but you will have the benefit of ongoing security and bug fixes from the Ubuntu maintainers. To install Django from the Ubuntu repositories issue the following command:
 
-    apt-get install python-django 
+    apt-get install python-django
 
 If you want to install Django using the `easy_install` tool, issue the following command:
 
@@ -109,10 +109,10 @@ Apache Virtual Host Configuration
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~

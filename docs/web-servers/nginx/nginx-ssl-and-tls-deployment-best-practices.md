@@ -110,7 +110,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
     {: .file-excerpt}
     /etc/nginx/conf.d/default.conf
-    :   ~~~ conf   
+    :   ~~~ conf
         rewrite        ^ https://$server_name$request_uri? permanent;
         ~~~
 
@@ -174,7 +174,7 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
     {: .file-excerpt}
     /etc/nginx/conf.d/example_ssl.conf
-    :   ~~~ conf    
+    :   ~~~ conf
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
         ~~~
 

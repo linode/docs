@@ -55,7 +55,7 @@ Unless otherwise noted, the instructions in subsequent sections of this guide wi
 
         sudo systemctl enable postgresql
 
-### Install From the Postgres Repositories  
+### Install From the Postgres Repositories
 
 Alternatively, you can install the latest version from the Postgres repositories. As of this publication, PostgreSQL `9.6.3` is the most recent version available for CentOS 7, but these steps can be applied to any RPM-based installation.
 

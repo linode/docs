@@ -60,7 +60,7 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
     [![The API list.](/docs/assets/google_API_screen-small.png)](/docs/assets/google_API_screen.png)
 
-    If you don't see the **Drive API** on the list as pictured, you may need to search for it. After you've selected it, click the blue **Enable** button at the top of the page. 
+    If you don't see the **Drive API** on the list as pictured, you may need to search for it. After you've selected it, click the blue **Enable** button at the top of the page.
 
     ![The Google Drive API description.](/docs/assets/drive_enable_API.png)
 
@@ -86,7 +86,7 @@ Next, we're going to enable API access to Google Drive and create a set of crede
 
 ## Authorize OCamlfuse Access
 
-Next, we'll provide the credentials for your Drive API to OCamlfuse in your Linode, authorizing it to access your Google Drive. 
+Next, we'll provide the credentials for your Drive API to OCamlfuse in your Linode, authorizing it to access your Google Drive.
 
 1.  Authorize your Google Drive link, replacing `client-ID` and `client-secret` with those you received from the Google API Manager in the steps above:
 

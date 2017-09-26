@@ -236,7 +236,7 @@ To fix this, follow these steps:
 
     #####On cPanel/WHM
 
-    To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following: 
+    To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following:
 
     {: .file}
     /etc/linode/longview.d/Apache.conf
@@ -301,7 +301,7 @@ httpd.conf
 :   ~~~
     ExtendedStatus On
     ~~~
-    
+
 When you've finished modifying the configuration file, restart Apache:
 
 Debian and Ubuntu:

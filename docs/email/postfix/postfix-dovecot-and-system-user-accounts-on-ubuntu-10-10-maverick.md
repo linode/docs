@@ -154,7 +154,7 @@ Edit the `/etc/alias` file to add the following line. This will to reroute all l
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 
-    postalias /etc/alias 
+    postalias /etc/alias
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 

@@ -51,12 +51,12 @@ Add the following line to your `sources.list` file:
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
-    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free 
+    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free
     ~~~
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 
@@ -109,14 +109,14 @@ Create a `tomcat` "init" file with the following content:
     start)
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    stop)  
+    stop)
             sh /usr/local/tomcat/bin/shutdown.sh
             ;;
     restart)
             sh /usr/local/tomcat/bin/shutdown.sh
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    esac   
+    esac
     exit 0
     ~~~
 

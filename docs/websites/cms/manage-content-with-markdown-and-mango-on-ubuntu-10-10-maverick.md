@@ -125,12 +125,12 @@ Create a `VirtualHost` specification based on the following example:
 
        DocumentRoot /srv/www/example.com/public_html
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
 
        WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
 
-       Alias /static /srv/www/example.com/application/mango/static 
+       Alias /static /srv/www/example.com/application/mango/static
     </VirtualHost>
     ~~~
 

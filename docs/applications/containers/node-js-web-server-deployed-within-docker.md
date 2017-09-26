@@ -1,6 +1,6 @@
 ---
 author:
-  name: Joe D. 
+  name: Joe D.
   email: docs@linode.com
 description: 'Deploy a Node.js Server in a Docker Container.'
 keywords: 'docker,node.js,node,debian,ubuntu,web server,javascript,container'
@@ -54,11 +54,11 @@ The Docker Hub user page for Linode can be accessed [here](https://hub.docker.co
         sudo docker pull linode/server-node-js
 
 ##Run the Docker Container, Node.js, and the Web Server
-Note that when an image downloads, no image containers run. 
+Note that when an image downloads, no image containers run.
 
 1.  Run, create or activate a new container. Forward the Linode's port 80 to port 3000 of the container:
 
-        sudo docker run -p 80:3000 -t -i linode/server-node-js /bin/bash 
+        sudo docker run -p 80:3000 -t -i linode/server-node-js /bin/bash
 
      {: .caution }
     >

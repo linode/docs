@@ -120,7 +120,7 @@ Apache Virtual Host Configuration
     </VirtualHost>
 
     <VirtualHost *:80>
-         ServerAdmin webmaster@example.net     
+         ServerAdmin webmaster@example.net
          ServerName example.net
          ServerAlias www.example.net
          DocumentRoot /srv/www/example.net/public_html/

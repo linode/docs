@@ -417,7 +417,7 @@ DMARC records have a number of available tags and options. These tags are used t
     * `s` strict alignment mode. Only an exact match with the DKIM entry for the root domain will be seen as validated.
 * `aspf` determines the alignment mode for SPF verification. It takes the same arguments as `adkim`.
 
-If you wish to receive authentication failure reports, DMARC provides a number of configuration options. You can use the following tags to customize the formatting of your reports, as well as the criteria for report creation. 
+If you wish to receive authentication failure reports, DMARC provides a number of configuration options. You can use the following tags to customize the formatting of your reports, as well as the criteria for report creation.
 
 * `rua` specifies the email address that will receive aggregate reports. This uses the `mailto:user@example.com` syntax, and accepts multiple addresses separated by commas. Aggregate reports are usually generated once per day.
 * `ruf` specifies the email address that will receive detailed authentication failure reports. This takes the same arguments as `rua`. With this option, each authentication failure would result in a separate report.
@@ -425,7 +425,7 @@ If you wish to receive authentication failure reports, DMARC provides a number o
     * `0` will request a report if *all* authentication methods fail. For example, if an SPF check were to fail but DKIM authentication was successful, a report would not be sent.
     * `1` requests a report if *any* authentication check fails.
     * `d` requests a report if a DKIM check fails.
-    * `s` requests a report if an SPF check fails.  
+    * `s` requests a report if an SPF check fails.
 * `rf` determines the format used for authentication failure reports. Available options:
     * `afrf` uses the Abuse Report format as defined by [RFC 5965](https://www.ietf.org/rfc/rfc5965.txt).
     * `iodef` uses the Incident Object Description Exchange format as defined by [RFC 5070](https://www.ietf.org/rfc/rfc5070.txt).

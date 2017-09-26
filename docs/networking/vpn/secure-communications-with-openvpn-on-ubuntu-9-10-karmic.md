@@ -236,7 +236,7 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
     iptables -A FORWARD -j REJECT
     iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-    
+
     exit 0
     ~~~
 
@@ -247,7 +247,7 @@ This will enable all client traffic *except* DNS queries to be forwarded through
 :   ~~~
     #
     # universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe

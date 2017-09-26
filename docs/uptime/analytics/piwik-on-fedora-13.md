@@ -102,12 +102,12 @@ Before running Piwik's installation script, we need to change the permissions of
 
 Visit your new Piwik instance in your browser. In our example, this is located at `http://stats.example.com`. Follow the instructions provided by the Piwik installation process. You will be prompted for the name of your MySQL database as well as access credentials for this database. This information was created when you installed the LAMP stack. After this step, you may see the following message:
 
-    "Client connection to the database server is not set to UTF8 by default. 
-    This is not critical issue: Piwik should work correctly. However for 
+    "Client connection to the database server is not set to UTF8 by default.
+    This is not critical issue: Piwik should work correctly. However for
     consistency, it is recommended that you do one of the following:
 
-        * in your piwik config/config.ini.php, add charset = utf8 under 
-          the [database] section of your Piwik configuration file 
+        * in your piwik config/config.ini.php, add charset = utf8 under
+          the [database] section of your Piwik configuration file
           config/config.ini.php"
         * recompile libmysql --with-charset=utf8""
 

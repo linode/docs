@@ -87,7 +87,7 @@ Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email f
         contact_name nagiosadmin ; Short name of user use generic-contact
         ; Inherit default values from generic-contact template (defined above)
         alias John Doe ; Full name of user
-        email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ****** 
+        email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
     }
     ~~~
 
@@ -110,7 +110,7 @@ To install and configure the Nagios plugins, issue the following commands:
 
     cd /opt/
     tar xzf /opt/nagios-plugins-1.4.15.tar.gz
-    cd /opt/nagios-plugins-1.4.15   
+    cd /opt/nagios-plugins-1.4.15
     ./configure --with-nagios-user=nagios --with-nagios-group=nagios
     make
     make install

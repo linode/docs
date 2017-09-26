@@ -54,7 +54,7 @@ Now we'll need to install gems. Issue the following series of commands to downlo
     wget http://production.cf.rubygems.org/rubygems/rubygems-1.5.1.tgz
     tar -zxvf rubygems-1.5.1.tgz
     cd /opt/rubygems-1.5.1/
-    ruby setup.rb 
+    ruby setup.rb
 
 Update rubygems:
 
@@ -83,9 +83,9 @@ Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
-    cd /opt 
+    cd /opt
     wget http://rubyforge.org/frs/download.php/73563/passenger-3.0.1.tar.gz
-    tar xzvf passenger-3.0.1.tar.gz 
+    tar xzvf passenger-3.0.1.tar.gz
 
 Run the Phusion Passenger installer for Nginx:
 

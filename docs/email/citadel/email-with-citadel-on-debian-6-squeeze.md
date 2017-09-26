@@ -36,7 +36,7 @@ Issue the following commands to install any outstanding package updates:
 
 Issue the following commands to install the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you for several configuration items. Recommended answers for these prompts are as follows.
 

@@ -42,7 +42,7 @@ Mailman can be configured to use a number of different mail transfer agents. We 
 
 During the postfix installation, you will want to select "**Internet Site**" as the "General type of mail configuration." You will also want to set the host or domain name for your server as the system name, (e.g. `example.com` or similar.) Now install Mailman with the following command:
 
-    apt-get install mailman 
+    apt-get install mailman
 
 During the Mailman installation, you will be required to specify the languages that you wish your Mailman instance support. Select all required languages before continuing. The installation process will also provide a note regarding the next step of the installation process, which you can accept and allow the installation process to continue.
 
@@ -77,7 +77,7 @@ Press the return key to complete the installation and edit the `/etc/aliases` fi
 
 Now complete the installation process by initiating mailman for the first time:
 
-    /etc/init.d/mailman start 
+    /etc/init.d/mailman start
 
 At this juncture, you will be able to log into Mailman's web interface by visiting `http://example.com/cgi-bin/mailman/admin/mailman`, if your default virtual host is accessible at `example.com`. You can complete the configuration of Mailman by way of this web interface. To create a new list via command line, issue the following command where `team` is the name of the new list that you wish to create:
 
@@ -85,7 +85,7 @@ At this juncture, you will be able to log into Mailman's web interface by visiti
 
 Mailman will generate a number of lines that you will want to append to your `/etc/aliases` file as shown above. Be sure to run the following command every time you modify `/etc/aliases`:
 
-    postalias /etc/aliases 
+    postalias /etc/aliases
 
 Users of your lists will be able to access a web-based interface to subscribe, view archives, and manage their subscription. For the "team" list created above, that interface would be located at: `http://lists.example.com/cgi-bin/mailman/listinfo`, where `lists.example.com` represents your server's Mailman virtual host. Administrators will be able to access the administration interface for their lists by way of `http://lists.example.com/cgi-bin/mailman/admin`.
 
@@ -175,7 +175,7 @@ Ensure that your domains have valid MX and [A Records](/docs/dns-guides/introduc
 
 If you created lists using the `/etc/aliases` method, you will have to recreate those lists by issuing the following commands.:
 
-    /var/lib/mailman/bin/genaliases 
+    /var/lib/mailman/bin/genaliases
     postmap /var/lib/mailman/data/virtual-mailman
 
 From this point forward, you can create new lists by issuing `newlist` commands as root. Additionally, all administration and functions of the Mailman lists can be accomplished by way of the web based interface.

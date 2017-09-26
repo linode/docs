@@ -111,7 +111,7 @@ By default, Varnish will cache requests for two minutes. To adjust this time, op
   }
   ~~~
 
-This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary depending on how often the content of your site is updated, and the amount of traffic you need to handle. 
+This subroutine is called after a request is fetched from the backend. In this example, we're setting the TTL variable on the object to five minutes (`5m`). Values can be in seconds (`120s`), minutes (`2m`) or hours (`2h`). Your ideal TTL may vary depending on how often the content of your site is updated, and the amount of traffic you need to handle.
 
 ## Take Varnish Live: Configure Web Traffic to Serve Cached Content
 
@@ -136,7 +136,7 @@ To allow Varnish to communicate with your web server, you'll need to modify a fe
         ~~~
 
     **nginx**:
-    
+
     {: .file-excerpt}
     /etc/nginx/sites-available/example.com
     :   ~~~ conf
@@ -289,7 +289,7 @@ Stop `varnishlog` with **CTRL+C** when done.
 
 ## Firewall Rules
 
-When using a firewall, Varnish requires slight modification to the rules you may have used when setting up a web server. 
+When using a firewall, Varnish requires slight modification to the rules you may have used when setting up a web server.
 
 If Varnish is running on the same Linode as your web server, be sure to allow incoming connections on port 80. However, you will also need to allow connections from localhost on port 8080, since this is how Varnish communicates with the web server.
 

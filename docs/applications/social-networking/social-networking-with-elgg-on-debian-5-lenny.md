@@ -97,7 +97,7 @@ To configure the database connections, you'll need to edit the file in your pref
             $CONFIG->dbhost = 'localhost';
 
     // Database table prefix
-    // If you're sharing a database with other applications, 
+    // If you're sharing a database with other applications,
     // you will want to use this to differentiate Elgg's tables.
             $CONFIG->db prefix = 'elgg_example_';
     ~~~

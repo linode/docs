@@ -40,7 +40,7 @@ Before beginning with Web.py, we must issue the following commands to ensure you
 
 Issue the following command to install the Apache HTTP Server:
 
-    apt-get install apache2 
+    apt-get install apache2
 
 The application you develop using Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
 
@@ -71,7 +71,7 @@ Make sure you're downloading the latest release by checking the [Web.py site](ht
 When you want to upgrade to the latest development version, issue the following sequence of commands:
 
     cd /opt/webpy/
-    git clean -f 
+    git clean -f
     git pull
     python setup.py install
 
@@ -92,9 +92,9 @@ code.py
     )
     app = web.application(urls, globals())
 
-    class hello:        
+    class hello:
         def GET(self, name):
-            if not name: 
+            if not name:
                 name = 'World'
             return 'Hello, ' + name + '!'
 
@@ -131,12 +131,12 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
 {: .file-excerpt }
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
-    <VirtualHost *:80> 
-        ServerAdmin username@example.com     
+    <VirtualHost *:80>
+        ServerAdmin username@example.com
         ServerName example.com
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         WSGIScriptAlias / /srv/www/example.com/application
@@ -156,7 +156,7 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
           RewriteCond %{REQUEST_URI} !^(/.*)+code.py/
           RewriteRule ^(.*)$ code.py/$1 [PT]
         </Location>
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 Ensure that this virtual host has been enabled, and issue the following commands to enable this virtual host, disable the default site, and restart the server:

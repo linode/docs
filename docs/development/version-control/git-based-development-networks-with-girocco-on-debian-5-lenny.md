@@ -23,7 +23,7 @@ Install Prerequisites
 
 Before beginning the installation of Girocco, issue the following commands to ensure that your system is up to date and that you've installed the latest version of all software packages:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
 
 Now issue the following command to install the required prerequisite software:
@@ -130,7 +130,7 @@ Carefully consider the remaining configuration options in `/opt/girocco/Girocco/
 Issue the following commands to create the required directories and symbolic links:
 
     mkdir -p /srv/repo/data  /srv/repo/public_html/ /srv/repo/git/ /srv/repo/bin/ /root/repo /srv/repo/git/mob.git/
-    mkdir -p /srv/www/repo.example.com/logs/ 
+    mkdir -p /srv/www/repo.example.com/logs/
     ln -s /srv/repo/git /srv/repo/public_html/r
     ln -s /srv/repo/git /srv/git
     ln -s /srv/repo/public_html /srv/www/repo.example.com/public_html
@@ -206,7 +206,7 @@ From this point forward, these daemons will start following reboot cycles and ca
 
 You will also want to create a `root` user cron job to regularly run the `/root/repo/fixupcheck.sh` script as root. Issue the following command as root:
 
-    crontab -e 
+    crontab -e
 
 Then insert the following line:
 
@@ -219,7 +219,7 @@ This configures the script to run once every 5 minutes. Monitor the length of ti
 
 Additionally issue the following command to create a `repo` user cronjob:
 
-    crontab -u repo -e 
+    crontab -u repo -e
 
 Then insert the following line:
 

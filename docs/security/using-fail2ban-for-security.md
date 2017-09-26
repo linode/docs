@@ -36,7 +36,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 1.  Ensure your system is up to date and install the EPEL repository:
 
         yum update && yum install epel-release
- 
+
 2.  Install Fail2Ban:
 
         yum install fail2ban
@@ -66,7 +66,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 2.  Install Fail2ban:
 
         apt-get install fail2ban
-        
+
     The service will automatically start.
 
 3.  (Optional) If you would like email support, install Sendmail:
@@ -109,7 +109,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
 2.  Install Fail2ban:
 
         apt-get install fail2ban
-        
+
     The service will automatically start.
 
 3.  (Optional) If you would like email support, install Sendmail:
@@ -127,7 +127,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
 
 ### Configure fail2ban.local
 
-1.  `fail2ban.conf` contains the default configuration profile. The default settings will give you a reasonable working setup. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`. 
+1.  `fail2ban.conf` contains the default configuration profile. The default settings will give you a reasonable working setup. If you want to make any changes, it's best to do it in a separate file, `fail2ban.local`, which overrides `fail2ban.conf`. Rename a copy `fail2ban.conf` to `fail2ban.local`.
 
         cp /etc/fail2ban/fail2ban.conf /etc/fail2ban/fail2ban.local
 
@@ -158,7 +158,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
         # This option can be overridden in each jail as well.
 
         . . .
-        
+
         backend = systemd
         ~~~
 
@@ -188,7 +188,7 @@ To ignore specific IPs, add them to the `ignoreip` line. By default, this comman
 
 If you wish to whitelist IPs only for certain jails, this can be done with the `fail2ban-client` command. Replace `JAIL` with the name of your jail, and `123.45.67.89` with the IP you wish to whitelist.
 
-    fail2ban-client set JAIL addignoreip 123.45.67.89   
+    fail2ban-client set JAIL addignoreip 123.45.67.89
 
 ### Ban Time and Retry Amount
 
@@ -199,7 +199,7 @@ Set `bantime`, `findtime`, and `maxretry` to define the circumstances and the le
 :   ~~~ conf
     # "bantime" is the number of seconds that a host is banned.
     bantime  = 600
-    
+
     # A host is banned if it has generated "maxretry" during the last "findtime"
     # seconds.
     findtime = 600
@@ -238,7 +238,7 @@ An average jail configuration will resemble the following:
 /etc/fail2ban/jail.local
 :   ~~~
     [ssh]
-    
+
     enabled  = true
     port     = ssh
     filter   = sshd
@@ -272,7 +272,7 @@ The best way to understand how failregex works is to write one. Although we do n
     :   ~~~ log
         123.45.67.89 - - [01/Oct/2015:12:46:34 -0400] "POST /wp-login.php HTTP/1.1" 200 1906 "http://example.com/wp-login.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.10; rv:40.0) Gecko/20100101 Firefox/40.0"
         ~~~
-        
+
     Note that you will only need to track up to the `200`:
 
     {: .file-excerpt}
@@ -284,37 +284,37 @@ The best way to understand how failregex works is to write one. Although we do n
 2.  The IP address from where the failed attempt originated will always be defined as `<HOST>`. The subsequent few characters are unchanging and can be input as literals:
 
         <HOST> - - \[
-            
+
     The `\` before the `[` denotes that the square bracket is to be read literally.
 
 3.  The next section, the date of the login attempt, can be written as grouped expressions using regex expressions. The first portion, `01` in this example, can be written as `(\d{2})`: The parentheses group the expression, while `\d` looks for any numerical digits. `{2}` notes that the expression is looking for two digits in a row, i.e., the day of the month.
 
     Thus far, you should have:
-    
+
         <HOST> - - \[(\d{2})
-        
+
     The following forward slash will then be called with a literal forward slash, followed by `\w{3}` which looks for a series of `3` apha-numeric characters (i.e., A-Z, 0-9, any case). The following forward slash should also be literal:
-    
+
         <HOST> - - \[(\d{2})/\w{3}/
-        
+
     The section for the year should be written similar to the day, but without the need for a capture group, and for four consecutive characters (and a literal colon):
-    
+
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:
 
 4.  The next sequence is a series of two-digit numbers that make up the time. Because we defined the day of the month as a two-digit number in a capture group (the parentheses), we can backreference it using `\1` (since it is the *first* capture group). Again, the colons will be literals:
 
-        <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 
-    
+        <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1
+
     If you do not want to use backreferences this can also be written as:
-    
+
         <HOST> - - \[\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2}
 
 5.  The `-0400` segment should be written similarly to the year, with the additional literal `-`: `-\d{4}`. Finally, you can close the square bracket (escaping with a backslash first), and finish the rest with the literal string:
 
         <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 -\d{4}\] "POST /wp-login.php HTTP/1.1" 200
-        
+
     Or:
-        
+
         <HOST> - - \[\d{2}/\w{3}/\d{4}:\d{2}:\d{2}:\d{2} -\d{4}\] "POST /wp-login.php HTTP/1.1" 200
 
 ### Apply the Failregex
@@ -333,13 +333,13 @@ With the failregex created, it then needs to be added to a filter.
         # Fail2Ban filter for WordPress
         #
         #
-        
+
         [Definition]
-        
+
         failregex = <HOST> - - \[(\d{2})/\w{3}/\d{4}:\1:\1:\1 -\d{4}\] "POST /wp-login.php HTTP/1.1" 200
         ignoreregex =
         ~~~
-        
+
     Save and quit.
 
 3.  Add a WordPress section to `jail.local`:
@@ -353,9 +353,9 @@ With the failregex created, it then needs to be added to a filter.
         logpath  = /var/www/html/andromeda/logs/access.log
         port     = 80,443
         ~~~
-        
+
     This will use the default ban and email action. Other actions can be defined by adding an `action =` line.
-    
+
     Save and exit, then restart Fail2ban.
 
 ## Using the Fail2ban Client

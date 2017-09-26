@@ -53,7 +53,7 @@ During the installation process, an interactive "package configuration" is provi
 The `debconf` process creates an administrator account for the "header system", which it allows you to specify at this time. By default this eGroupware username is "admin". Change the username if you would like and create a password as instructed. When this process is complete, the installation process is finished. You will also want to issue the following commands to install additional dependencies and resolve several minor issues with the distribution package in order:
 
     pear install Auth_SASL
-    rm /usr/share/egroupware/etemplate/doc 
+    rm /usr/share/egroupware/etemplate/doc
     cp -R /usr/share/doc/egroupware-etemplate/ /usr/share/egroupware/etemplate/doc
     rm /usr/share/egroupware/sitemgr/doc
     cp -R /usr/share/doc/egroupware-sitemgr/ /usr/share/egroupware/sitemgr/doc

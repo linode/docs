@@ -21,7 +21,7 @@ Linode provides IPv6 support in all of our data centers, and all Linodes are cre
 It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses.
 
 ## What is IPv6?
-Internet Protocoal version 6 carries data packets from source to destination over disparate networks. Evolved from IPv4, IPv6 developed in hexadecimal format and contains 8 octets, accommodating up to 2128 possible node, or address, combinations, which facilitate expansive scalability. 
+Internet Protocoal version 6 carries data packets from source to destination over disparate networks. Evolved from IPv4, IPv6 developed in hexadecimal format and contains 8 octets, accommodating up to 2128 possible node, or address, combinations, which facilitate expansive scalability.
 
 {: .note }
 >
@@ -31,7 +31,7 @@ Internet Protocoal version 6 carries data packets from source to destination ove
 
 The IPv6 address provided with your Linode will automatically assign itself to your Linode via SLAAC. Our system is set up to do this so that you will not need to statically configure your IPv6 address unless you have an IPv6 address pool.
 
-To ensure that your IPv6 address has been correctly assigned to your Linode, you can use the following command: 
+To ensure that your IPv6 address has been correctly assigned to your Linode, you can use the following command:
 
     ip -6 addr show
 
@@ -47,7 +47,7 @@ The lines beginning with `inet6` show your IPv6 address block.
 
 As displayed above, you will have inet6 blocks even if you only have one IPv6 address:
 
- * The first, ending in `global`, is the global IPv6 address which everyone can connect to. 
+ * The first, ending in `global`, is the global IPv6 address which everyone can connect to.
 
  * The second, ending in `link`, is your link-local address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the `fe80::/10` range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), the link-local address for this documentation is in the `ff32::/10` range.
 
@@ -76,7 +76,7 @@ Unlike the other pools available, /116 IPv6 address pools route to all of the Li
 
 ## Add IPv6 Addresses
 
-While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. 
+While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request.
 
 {: .note}
 >If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
@@ -88,7 +88,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
 
 {: .note}
 > Be sure that [Network Helper](/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
-> 
+>
 
 1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
 
@@ -114,7 +114,7 @@ While default IPv6 addresses are configured automatically, you will need to stat
         gateway fe80::1
 
       # Add an additional block for each IPv6 address you need to configure.
-      
+
       iface eth0 inet6 static
         address 2001:db8:2000:aff0::1/64
 
@@ -178,7 +178,7 @@ On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up 
 If you are using CentOS 6.5 or lower, restart networking:
 
     service network restart
-    
+
 If you are using CentOS 7 or Fedora:
 
     systemctl restart network
@@ -260,7 +260,7 @@ The configuration of additional IPv6 addresses in Gentoo is simple. Append the I
     # please review /usr/share/doc/openrc*/net.example* and save your configuration
     # in /etc/conf.d/net (this file :]!).
     config_eth0="dhcp 2001:db8:2000:aff0::1/32 2001:db8:2000:aff0::2/32 2001:db8:2000:aff0::3/32"
-    ~~~   
+    ~~~
 
 ## Maintain Static IP Configurations
 

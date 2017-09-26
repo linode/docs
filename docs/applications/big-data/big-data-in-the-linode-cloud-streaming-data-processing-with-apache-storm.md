@@ -22,7 +22,7 @@ image: https://www.linode.com/docs/assets/big_data_linode_cloud.png
 
 [Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.
 
-[Zookeeper](https://zookeeper.apache.org/) is a critical distributed systems technology that Storm depends on to function correctly. 
+[Zookeeper](https://zookeeper.apache.org/) is a critical distributed systems technology that Storm depends on to function correctly.
 
 ![Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/assets/big_data_linode_cloud.png "Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm")
 
@@ -58,7 +58,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 
 ### OS Requirements
 
--  This article assumes that the workstation used for the initial setup of the cluster manager Linode is running Ubuntu 14.04 LTS or Debian 8. This can be your local computer, or another Linode acting as your remote workstation. Other distributions and operating systems have not been tested. 
+-  This article assumes that the workstation used for the initial setup of the cluster manager Linode is running Ubuntu 14.04 LTS or Debian 8. This can be your local computer, or another Linode acting as your remote workstation. Other distributions and operating systems have not been tested.
 -  After the initial setup, any SSH capable workstation can be used to log in to the cluster manager Linode or cluster nodes.
 -  The cluster manager Linode can have either Ubuntu 14.04 LTS or Debian 8 installed.
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
@@ -120,7 +120,7 @@ The first step is setting up a central *Cluster Manager* to store details of all
 
         *  lower case characters
         *  upper case characters
-        *  numeric characters 
+        *  numeric characters
         *  symbolic characters
 
         If you have spaces in your password, make sure the entire password is enclosed in double quotes (`"`). If you have double quotes, dollar characters or backslashes in your password, escape each of them with a backslash (`\`).
@@ -151,7 +151,7 @@ The first step is setting up a central *Cluster Manager* to store details of all
         > The values represented in this guide are current as of publication, but are subject to change in the future. You can run `~/storm-linode/linode_api.py distributions` to see a list of all available distributions and their values in the API.
 
     -  `KERNEL`:
-        This is the ID of the Linux kernel to install on the Cluster Manager Linode. The default value of `138` selects the latest 64-bit Linux kernel available from Linode. It is recommended not to change this setting.   
+        This is the ID of the Linux kernel to install on the Cluster Manager Linode. The default value of `138` selects the latest 64-bit Linux kernel available from Linode. It is recommended not to change this setting.
 
     -  `DISABLE_SSH_PASSWORD_AUTHENTICATION`:
         This disables SSH password authentication and allows only key-based SSH authentication for the Cluster Manager Linode. Password authentication is considered less secure, and is hence disabled by default. To enable password authentication, you can change this value to `no`.
@@ -172,7 +172,7 @@ The first step is setting up a central *Cluster Manager* to store details of all
     Note the public IP address of the Cluster Manager Linode. You will need this when you log into the cluster manager to create or manage clusters.
 
 8.  The `cluster_manager.sh` script we ran in the previous step creates three users on the Cluster Manager Linode, and generates authentication keypairs for all of them on your workstation, as shown in this illustration:
-    
+
     ![Security Overview](/docs/assets/storm_clustermgrkeys_900.png)
 
     -  `~/.ssh/clustermgrroot` is the private key for Cluster Manager Linode's *root* user. Access to this user's credentials should be as restricted as possible.
@@ -374,7 +374,7 @@ A *Zookeeper image* is a master disk image with all necessary Zookeeper software
 
     -  `ZOOKEEPER_INSTALL_DIRECTORY`
 
-        The directory where Zookeeper will be installed on the image (and on all cluster nodes created from this image). 
+        The directory where Zookeeper will be installed on the image (and on all cluster nodes created from this image).
 
         <br>
 
@@ -388,16 +388,16 @@ A *Zookeeper image* is a master disk image with all necessary Zookeeper software
 
         The maximum Java heap size for the JVM hosting the Zookeeper daemon. This value can be either a percentage, or a fixed value. If the fixed value is not suffixed with any character, it is interpreted as bytes. If it is suffixed with `K`, `M`, or `G`, it is interpreted as kilobytes, megabytes or gigabytes, respectively.
 
-        If this is too low, it may result in out of memory errors, and cause data losses or delays in the Storm cluster. If it is set too high, the memory for the OS and its processes will be limited, resulting in disk thrashing, which will have a significant negative impact on Zookeeper's performance. 
+        If this is too low, it may result in out of memory errors, and cause data losses or delays in the Storm cluster. If it is set too high, the memory for the OS and its processes will be limited, resulting in disk thrashing, which will have a significant negative impact on Zookeeper's performance.
 
         The default value is 75%, which means at most 75% of the Linode's RAM can be reserved for the JVM, and remaining 25% for the rest of the OS and other processes. It is *strongly* recommended not to change this default setting.
 
         <br>
 
     -  `ZOOKEEPER_MIN_HEAP_SIZE`
-    
+
         The minimum Java heap size to commit for the JVM hosting the Zookeeper daemon. This value can be either a percentage, or a fixed value. If the fixed value is not suffixed with any character, it is interpreted as bytes. If it is suffixed with `K`, `M`, or `G`, it is interpreted as kilobytes, megabytes, or gigabytes, respectively.
-        
+
         If this value is lower than `ZOOKEEPER_MAX_HEAP_SIZE`, this amount of memory is *committed*, and additional memory up to `ZOOKEEPER_MAX_HEAP_SIZE` is allocated only when the JVM requests it from OS. This can lead to memory allocation delays during operation. So do not set it too low.
 
         This value should never be more than `ZOOKEEPER_MAX_HEAP_SIZE`. If it is, the Zookeeper daemon will not start.
@@ -428,7 +428,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
 {: .note}
 >
->If a Zookeeper cluster already exists, this step is not mandatory. Multiple Storm clusters can share the same Zookeeper cluster. 
+>If a Zookeeper cluster already exists, this step is not mandatory. Multiple Storm clusters can share the same Zookeeper cluster.
 >
 >When creating a cluster, you should have `clustermgr` authorization to the Cluster Manager Linode.
 
@@ -441,7 +441,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
         ./zookeeper-cluster-linode.sh new-cluster-conf zk-cluster1
 
-    This creates a directory named `zk-cluster1` that contains the main configuration file, `zk-cluster1.conf`, which will be described in the next step. If you chose a different name when you ran the previous command, your directory and configuration file will be named accordingly. 
+    This creates a directory named `zk-cluster1` that contains the main configuration file, `zk-cluster1.conf`, which will be described in the next step. If you chose a different name when you ran the previous command, your directory and configuration file will be named accordingly.
 
 3.  Open the newly created `zk-cluster1.conf` file and make changes as described below. Properties that must be entered or changed from their default values are marked as **REQUIRED**:
 
@@ -459,7 +459,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
     -  `CLUSTER_SIZE`
 
-        The types and number of nodes that constitute this cluster. The syntax is: 
+        The types and number of nodes that constitute this cluster. The syntax is:
 
         `plan:count plan:count ... `
 
@@ -510,7 +510,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
         <br>
 
     -  `PUBLIC_HOST_NAME_PREFIX`
-    
+
         Every Linode in the cluster has a *public IP address*, which can be reached from anywhere on the Internet, and a *private IP address*, which can be reached only from other nodes of the same user inside the same datacenter.
 
         Accordingly, every node is given a *public hostname* that resolves to its public IP address. Each node's public hostname will use this value followed by a number (for example, `public-host1`, `public-host2`, etc.) If the cluster manager node is in a different Linode datacenter from the cluster nodes, it uses the public hostnames and public IP addresses to communicate with cluster nodes.
@@ -519,7 +519,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
     -  `PRIVATE_HOST_NAME_PREFIX`
 
-        Every Linode in the cluster is given a *private hostname* that resolves to its private IP address. Each node's private hostname will use this value followed by a number (for example, private-host1, private-host2, etc.). All the nodes of a cluster communicate with one another through their private hostnames. This is also the actual hostname set for the node using the host's `hostname` command and saved in `/etc/hostname`. 
+        Every Linode in the cluster is given a *private hostname* that resolves to its private IP address. Each node's private hostname will use this value followed by a number (for example, private-host1, private-host2, etc.). All the nodes of a cluster communicate with one another through their private hostnames. This is also the actual hostname set for the node using the host's `hostname` command and saved in `/etc/hostname`.
 
         <br>
 
@@ -533,8 +533,8 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
         <br>
 
     -  `ZOOKEEPER_LEADER_CONNECTION_PORT`
-    
-        The port used by a Zookeeper node to connect its followers to the leader. When a new leader is elected, each follower opens a TCP connection to the leader at this port. There's no need to change this unless you plan to customize the firewall. 
+
+        The port used by a Zookeeper node to connect its followers to the leader. When a new leader is elected, each follower opens a TCP connection to the leader at this port. There's no need to change this unless you plan to customize the firewall.
 
         <br>
 
@@ -575,7 +575,7 @@ In this section, you will learn how to create a new Zookeeper cluster in which e
 
 A *Storm image* is a master disk with all necessary Storm software and libraries downloaded and installed. The benefits of creating a Storm image include:
 
--  Quick creation of a Storm cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image 
+-  Quick creation of a Storm cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, and prevent version mismatch errors
 -  Reduced network usage, because downloads and updates are executed only once when preparing the image, instead of repeating them on each node
 
@@ -595,9 +595,9 @@ A *Storm image* is a master disk with all necessary Storm software and libraries
 
     This creates a directory named `storm-image1` containing the files that make up the image configuration:
 
-    -  **storm-image1.conf** - This is the main image configuration file, and the one you'll be modifying the most. Its properties are described in later steps.  
+    -  **storm-image1.conf** - This is the main image configuration file, and the one you'll be modifying the most. Its properties are described in later steps.
 
-    The other files are secondary configuration files. They contain reasonable default values, but you can always open them in an editor and modify them to suit your needs:  
+    The other files are secondary configuration files. They contain reasonable default values, but you can always open them in an editor and modify them to suit your needs:
 
     -  **template-storm.yaml** - The Storm configuration file. See the official [Storm Configuration](http://storm.apache.org/documentation/Configuration.html) documentation for details on what parameters can be customized.
 
@@ -635,7 +635,7 @@ A *Storm image* is a master disk with all necessary Storm software and libraries
 
         This value can either be the datacenter's ID or location or abbreviation. To see a list of all datacenters:
 
-            ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf 
+            ./zookeeper-cluster-linode.sh datacenters api_env_linode.conf
 
         <br>
 
@@ -680,7 +680,7 @@ A *Storm image* is a master disk with all necessary Storm software and libraries
         <br>
 
     -  `IMAGE_DISK_SIZE`
-    
+
         The size of the image disk in MB. The default value of 5000MB is generally sufficient, since the installation only consists of the OS with Java and Storm software installed.
 
         <br>
@@ -704,7 +704,7 @@ A *Storm image* is a master disk with all necessary Storm software and libraries
         <br>
 
     -  `STORM_YAML_TEMPLATE`
-    
+
         The path of the template `storm.yaml` configuration file to install in the image. By default, it points to the `template-storm.yaml` file under the image directory. Administrators can either customize this YAML file before creating the image, or set this variable to point to another `storm.yaml` of their choice.
 
         <br>
@@ -781,7 +781,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
     -  `SUPERVISOR_NODES`
 
-        Supervisor nodes are the workhorses that execute the spouts and bolts that make up a Storm topology. 
+        Supervisor nodes are the workhorses that execute the spouts and bolts that make up a Storm topology.
 
         The size and number of supervisor nodes should be decided based on how many topologies the cluster should run concurrently, and the computational complexities of their spouts and bolts. The syntax is:
 
@@ -791,7 +791,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
         The number of supervisor nodes can be increased later using the `add-nodes` command (see [Expand Cluster](#expand-a-storm-cluster)).
 
-        Examples: 
+        Examples:
 
         -  Create three 4GB nodes:
 
@@ -847,7 +847,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
     -  `NIMBUS_NODE_PRIVATE_HOSTNAME`, `SUPERVISOR_NODES_PRIVATE_HOSTNAME_PREFIX` and  `CLIENT_NODES_PRIVATE_HOSTNAME_PREFIX`
 
-        Every Linode in the cluster is given a *private hostname* that resolves to its private IP address. Each node's private hostname will use this value followed by a number (for example, private-host1, private-host2, etc.). All the nodes of a cluster communicate with one another through their private hostnames. This is also the actual hostname set for the node using the host's `hostname` command and saved in `/etc/hostname`. 
+        Every Linode in the cluster is given a *private hostname* that resolves to its private IP address. Each node's private hostname will use this value followed by a number (for example, private-host1, private-host2, etc.). All the nodes of a cluster communicate with one another through their private hostnames. This is also the actual hostname set for the node using the host's `hostname` command and saved in `/etc/hostname`.
 
         <br>
 
@@ -901,7 +901,7 @@ In this section, you will learn how to create a new Storm cluster in which every
 
         ./storm-cluster-linode.sh describe storm-cluster1
 
-    Cluster nodes are shut down soon after creation. 
+    Cluster nodes are shut down soon after creation.
 
 ## Start a Storm Cluster
 
@@ -937,7 +937,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
         ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
         cd storm-linode
 
-2.  Open the `your-cluster/your-cluster-client-user-whitelist.ipsets` file (using our example from above, `storm-cluster1/storm-cluster1-client-user-whitelist.ipsets`) file in a text editor. 
+2.  Open the `your-cluster/your-cluster-client-user-whitelist.ipsets` file (using our example from above, `storm-cluster1/storm-cluster1-client-user-whitelist.ipsets`) file in a text editor.
 
     This file is an [ipsets](http://ipset.netfilter.org/ipset.man.html) list of whitelisted IP addresses. It consists of one master ipset and multiple child ipsets that list whitelisted machines by IP addresses or other attributes such as MAC IDs.
 
@@ -1003,7 +1003,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
 ## Test a New Storm Cluster
 
-1.  Log in to the Cluster Manager Linode as `clustermgr` and navigate to the `storm-linode` directory: 
+1.  Log in to the Cluster Manager Linode as `clustermgr` and navigate to the `storm-linode` directory:
 
         ssh -i ~/.ssh/clustermgr clustermgr@PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE
         cd storm-linode
@@ -1012,7 +1012,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
         ./storm-cluster-linode.sh describe storm-cluster1
 
-3.  Log in to the client node as its `IMAGE_ADMIN_USER` user (the default is `clusteradmin`, configured in the Storm image configuration file) via SSH using an authorized private key: 
+3.  Log in to the client node as its `IMAGE_ADMIN_USER` user (the default is `clusteradmin`, configured in the Storm image configuration file) via SSH using an authorized private key:
 
         ssh -i ~/.ssh/clusteradmin clusteradmin@192.168.42.13
 
@@ -1024,7 +1024,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 5.  A successful submission should produce output similar to this:
 
         Running: java -client -Dstorm.options= -Dstorm.home=/opt/apache-storm-0.9.5 -Dstorm.log.dir=/var/log/storm -Djava.library.path=/usr/local/lib:/opt/local/lib:/usr/lib -Dstorm.conf.file= -cp /opt/apache-storm-0.9.5/lib/disruptor-2.10.1.jar:/opt/apache-storm-0.9.5/lib/minlog-1.2.jar:/opt/apache-storm-0.9.5/lib/commons-io-2.4.jar:/opt/apache-storm-0.9.5/lib/clj-time-0.4.1.jar:/opt/apache-storm-0.9.5/lib/clout-1.0.1.jar:/opt/apache-storm-0.9.5/lib/ring-devel-0.3.11.jar:/opt/apache-storm-0.9.5/lib/tools.macro-0.1.0.jar:/opt/apache-storm-0.9.5/lib/ring-jetty-adapter-0.3.11.jar:/opt/apache-storm-0.9.5/lib/jetty-util-6.1.26.jar:/opt/apache-storm-0.9.5/lib/commons-exec-1.1.jar:/opt/apache-storm-0.9.5/lib/tools.cli-0.2.4.jar:/opt/apache-storm-0.9.5/lib/objenesis-1.2.jar:/opt/apache-storm-0.9.5/lib/jetty-6.1.26.jar:/opt/apache-storm-0.9.5/lib/ring-servlet-0.3.11.jar:/opt/apache-storm-0.9.5/lib/storm-core-0.9.5.jar:/opt/apache-storm-0.9.5/lib/hiccup-0.3.6.jar:/opt/apache-storm-0.9.5/lib/clojure-1.5.1.jar:/opt/apache-storm-0.9.5/lib/commons-codec-1.6.jar:/opt/apache-storm-0.9.5/lib/servlet-api-2.5.jar:/opt/apache-storm-0.9.5/lib/compojure-1.1.3.jar:/opt/apache-storm-0.9.5/lib/json-simple-1.1.jar:/opt/apache-storm-0.9.5/lib/commons-logging-1.1.3.jar:/opt/apache-storm-0.9.5/lib/math.numeric-tower-0.0.1.jar:/opt/apache-storm-0.9.5/lib/asm-4.0.jar:/opt/apache-storm-0.9.5/lib/commons-lang-2.5.jar:/opt/apache-storm-0.9.5/lib/clj-stacktrace-0.2.2.jar:/opt/apache-storm-0.9.5/lib/kryo-2.21.jar:/opt/apache-storm-0.9.5/lib/logback-classic-1.0.13.jar:/opt/apache-storm-0.9.5/lib/slf4j-api-1.7.5.jar:/opt/apache-storm-0.9.5/lib/reflectasm-1.07-shaded.jar:/opt/apache-storm-0.9.5/lib/ring-core-1.1.5.jar:/opt/apache-storm-0.9.5/lib/joda-time-2.0.jar:/opt/apache-storm-0.9.5/lib/logback-core-1.0.13.jar:/opt/apache-storm-0.9.5/lib/snakeyaml-1.11.jar:/opt/apache-storm-0.9.5/lib/carbonite-1.4.0.jar:/opt/apache-storm-0.9.5/lib/tools.logging-0.2.3.jar:/opt/apache-storm-0.9.5/lib/core.incubator-0.1.0.jar:/opt/apache-storm-0.9.5/lib/chill-java-0.3.5.jar:/opt/apache-storm-0.9.5/lib/jgrapht-core-0.9.0.jar:/opt/apache-storm-0.9.5/lib/jline-2.11.jar:/opt/apache-storm-0.9.5/lib/commons-fileupload-1.2.1.jar:/opt/apache-storm-0.9.5/lib/log4j-over-slf4j-1.6.6.jar:../examples/storm-starter/storm-starter-topologies-0.9.5.jar:/opt/apache-storm-0.9.5/conf:/opt/apache-storm-0.9.5/bin -Dstorm.jar=../examples/storm-starter/storm-starter-topologies-0.9.5.jar storm.starter.WordCountTopology wordcount
-        
+
         1038 [main] INFO  backtype.storm.StormSubmitter - Jar not uploaded to master yet. Submitting jar...
         1061 [main] INFO  backtype.storm.StormSubmitter - Uploading topology jar ../examples/storm-starter/storm-starter-topologies-0.9.5.jar to assigned location: /var/lib/storm/nimbus/inbox/stormjar-3a9e3c47-88c3-44c2-9084-046f31e57668.jar
         Start uploading file '../examples/storm-starter/storm-starter-topologies-0.9.5.jar' to '/var/lib/storm/nimbus/inbox/stormjar-3a9e3c47-88c3-44c2-9084-046f31e57668.jar' (3248678 bytes)
@@ -1049,7 +1049,7 @@ If you or a developer have created a topology, perform these steps to start a ne
 >
 > Optionally, to get the IP address of client node, the developer should have `clustermgrguest` (or `clustermgrroot`) authorization to log in to the Cluster Manager Linode. If the IP address is known by other methods, this authorization is not required.
 
-1.  Package your topology along with all the third party classes on which they depend into a single JAR (Java Archive) file. 
+1.  Package your topology along with all the third party classes on which they depend into a single JAR (Java Archive) file.
 
 2.  If multiple clusters are deployed, select the target Storm cluster to run the topology on. Get the public IP address of the client node of the target cluster. See [cluster description](#describe-a-storm-cluster) for details on how to do this.
 
@@ -1073,7 +1073,7 @@ If you or a developer have created a topology, perform these steps to start a ne
 6.  [Monitor the execution of the new topology.](#monitor-a-storm-cluster)
 
 {: .note}
-> The Storm UI will show only information on the topology's execution, not the actual data it is processing. The data, including its output destination, is handled in the topology's JAR files. 
+> The Storm UI will show only information on the topology's execution, not the actual data it is processing. The data, including its output destination, is handled in the topology's JAR files.
 
 ## Other Storm Cluster Operations
 
@@ -1132,7 +1132,7 @@ To execute a command on all nodes, use the `run` command, specifying the cluster
 
 ### Copy Files to all Nodes of a Storm Cluster
 
-You can copy one or more files from the cluster manager node to all nodes of a Storm cluster. The files will be copied as the `root` user on each node, so keep this in mind when copying files that need specific permissions. 
+You can copy one or more files from the cluster manager node to all nodes of a Storm cluster. The files will be copied as the `root` user on each node, so keep this in mind when copying files that need specific permissions.
 
 1.  If the files are not already on your cluster manager node, you will first need to copy them from your workstation. Substitute `local-file` for the name or path of the file on your local machine, and `PUBLIC-IP-OF-CLUSTER-MANAGER-LINODE` for the IP address of the cluster manager node. You can also specify a different filepath and substitute it for `~`:
 
@@ -1148,7 +1148,7 @@ You can copy one or more files from the cluster manager node to all nodes of a S
         ./storm-cluster-linode.sh cp target-cluster-name "target-directory" "local-files"
 
     Remember to specify the target directory _before_ the list of source files (this is the reverse of regular `cp` or `scp` commands).
-    
+
     For example, if your topology requires data files named "*.data" for processing, you can copy them to `root` user's home directory on all cluster nodes with:
 
         ./storm-cluster-linode.sh cp storm-cluster1 "~" "~/*.data"
@@ -1228,7 +1228,7 @@ You can copy one or more files from the cluster manager node to all nodes of a S
         ./zookeeper-cluster-linode.sh cp target-cluster-name "target-directory" "local-files"
 
     Remember to specify the target directory _before_ the list of source files (this is the reverse of regular `cp` or `scp` commands).
-    
+
     For example, if your cluster requires data files named "*.data" for processing, you can copy them to `root` user's home directory on all cluster nodes with:
 
         ./zookeeper-cluster-linode.sh cp zk-cluster1 "~" "~/*.data"

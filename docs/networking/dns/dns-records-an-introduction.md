@@ -245,7 +245,7 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 
 ### TXT
 
-A *TXT record* or *text record* provides information about the domain in question to other resources on the Internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing. 
+A *TXT record* or *text record* provides information about the domain in question to other resources on the Internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
 
 
 

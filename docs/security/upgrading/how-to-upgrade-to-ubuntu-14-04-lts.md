@@ -26,7 +26,7 @@ Ubuntu 14.04 is a long-term support (LTS) release that will be supported until A
 
 
 {: .note }
->This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`. 
+>This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
 
 ## Preparing to Upgrade
 

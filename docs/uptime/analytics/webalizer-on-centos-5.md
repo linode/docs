@@ -43,7 +43,7 @@ If you already have Apache installed and configured, you can safely skip this se
 
 Issue the following sequence of commands to start Apache for the first time and ensure that the service restarts following the next reboot:
 
-    /etc/init.d/httpd start 
+    /etc/init.d/httpd start
 
 As mentioned earlier, you will need to go to the installation guide if you wish to configure your server beyond the default configuration.
 
@@ -51,7 +51,7 @@ As mentioned earlier, you will need to go to the installation guide if you wish 
 
 At this point we're able to install the required packages for Webalizer. Run the following command:
 
-    yum install webalizer 
+    yum install webalizer
 
 ## Configuring Webalizer for Virtual Hosts
 
@@ -81,7 +81,7 @@ Delete the default `/etc/cron.daily/00webalizer` script with the following comma
 Issue the following command to remove the default webalizer integration with Apache and restart the web server process:
 
     mv /etc/httpd/conf.d/webalizer.conf /etc/httpd/conf.d/webalizer
-    /etc/init.d/httpd restart        
+    /etc/init.d/httpd restart
 
 ### Finalizing Webalizer Configuration
 

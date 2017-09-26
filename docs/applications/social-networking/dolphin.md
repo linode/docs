@@ -29,7 +29,7 @@ Dolphin requires the following PHP extensions to be installed and enabled: `mbst
 
 1.  Install the extensions by entering the following command:
 
-        sudo apt-get install php5-mysql php5-curl php5-gd php5-xsl 
+        sudo apt-get install php5-mysql php5-curl php5-gd php5-xsl
 
 2.  Install `imagemagick` by entering the following command:
 
@@ -62,7 +62,7 @@ You'll also need to make some modifications to your `php.ini` file. Here's how:
         allow_url_include = Off
         magic_quotes_gpc = Off
         ~~~
-    
+
 3.  Save the changes to the file by pressing Control-X, pressing Y, and then pressing Enter.
 4.  Save your changes by restarting the Apache web server:
 
@@ -161,7 +161,7 @@ Now you'll need to adjust the permissions on Dolphin's files. Here's how:
 
 2.  To change the permissions, enter the following commands, one by one. Make sure you copy the entire commands - most of them are long:
 
-        chmod 777 ./inc ./backup ./cache ./cache_public ./langs ./media/app ./media/images ./media/images/banners ./media/images/blog ./media/images/classifieds ./media/images/membership ./media/images/profile ./media/images/profile_bg ./media/images/promo ./media/images/promo/original ./tmp ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/HTML ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/CSS ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/Test ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/URI 
+        chmod 777 ./inc ./backup ./cache ./cache_public ./langs ./media/app ./media/images ./media/images/banners ./media/images/blog ./media/images/classifieds ./media/images/membership ./media/images/profile ./media/images/profile_bg ./media/images/promo ./media/images/promo/original ./tmp ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/HTML ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/CSS ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/Test ./plugins/htmlpurifier/standalone/HTMLPurifier/DefinitionCache/Serializer/URI
 
         chmod 777 ./flash/modules/board/files ./flash/modules/chat/files ./flash/modules/photo/files ./flash/modules/im/files ./flash/modules/mp3/files ./flash/modules/video/files ./flash/modules/video_comments/files
 

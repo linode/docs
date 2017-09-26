@@ -134,7 +134,7 @@ Change it the match the following excerpt and save the file.
 :   ~~~
     host all all 127.0.0.1/32 md5
     ~~~
-    
+
 Issue the following command to create a `confluence` PostgreSQL role, making sure to assign a strong password.
 
     createuser confluence --pwprompt

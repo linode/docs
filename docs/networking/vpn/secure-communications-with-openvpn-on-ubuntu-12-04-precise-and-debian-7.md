@@ -234,9 +234,9 @@ Here we will go through installing Tunneblick on OSX:
 2.  After starting, you will see this splash screen:
 
     ![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2.png)
-   
+
 	At the next screen click the **I have configuration files** button.
-   
+
     ![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1.png)
 
 3.  At the next screen, click **OpenVPN Configuration(s)**:
@@ -272,7 +272,7 @@ By deploying the following configuration, you will be able to forward *all* traf
     : ~~~
       push "redirect-gateway def1 bypass-dhcp"
       ~~~
-	
+
 2.  Edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system can forward IPv4 traffic:
 
         nano /etc/sysctl.conf
@@ -390,7 +390,7 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         exit 0
         ~~~
-	
+
 14. Add the following line to the `/etc/openvpn/server.conf` file:
 
         nano /etc/openvpn/server.conf

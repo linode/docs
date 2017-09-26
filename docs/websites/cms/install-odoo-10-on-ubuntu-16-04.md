@@ -54,7 +54,7 @@ Install the PostgreSQL database, Python, and other necessary server libraries:
 
     sudo apt install git python-pip postgresql postgresql-server-dev-9.5 python-all-dev python-dev python-setuptools libxml2-dev libxslt1-dev libevent-dev libsasl2-dev libldap2-dev pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev tk8.6-dev python-tk libyaml-dev fontconfig
 
-### Create a PostgreSQL User 
+### Create a PostgreSQL User
 
 1.  Switch to the `postgres` user:
 
@@ -100,7 +100,7 @@ Clone the Odoo files onto your server:
 >
 >Using git offers great flexibility. When a new upgrade is available, pull the new branch. You can even install a different version alongside the production one, just change the destination directory and the `--branch X.x` flag. Before upgrading, remember to make a full backup of your database and custom files.
 
-### Install Dependencies for Odoo Applications 
+### Install Dependencies for Odoo Applications
 
 Before your Odoo applications are ready to use, you'll need to install some dependencies. We'll use the Python package manager, `pip`, instead of `apt` to guarantee that you install the correct versions. We'll also refrain from using Ubuntu's packaged versions of [Wkhtmltopdf](http://wkhtmltopdf.org/) and [node-Less](http://lesscss.org/).
 
@@ -165,7 +165,7 @@ These commands use the `requirements.txt` files provided with your Odoo installa
       :   ~~~ conf
           [options]
           admin_passwd = admin
-          db_host = False 
+          db_host = False
           db_port = False
           db_user = odoo
           db_password = FALSE
@@ -199,7 +199,7 @@ Create a systemd unit called `odoo-server` to allow your application to behave a
     Description=Odoo Open Source ERP and CRM
     Requires=postgresql.service
     After=network.target postgresql.service
-    
+
     [Service]
     Type=simple
     PermissionsStartOnly=true
@@ -209,7 +209,7 @@ Create a systemd unit called `odoo-server` to allow your application to behave a
     ExecStart=/opt/odoo/odoo-bin --config=/etc/odoo-server.conf --addons-path=/opt/odoo/addons/
     WorkingDirectory=/opt/odoo/
     StandardOutput=journal+console
-    
+
     [Install]
     WantedBy=multi-user.target
     ~~~
@@ -292,7 +292,7 @@ The most relevant line in this file is `StandardOutput=journal+console`. As conf
 
     [![Odoo 10 applications](/docs/assets/odoo_10_applications_small.png)](/docs/assets/odoo_10_applications.png)
 
-## Updating Odoo 
+## Updating Odoo
 
 Before updating your Odoo system, you should check that everything will work as expected, especially third-party modules. The safest way to do this is to use a testing environment, which is nothing more than a separate Odoo installation.
 
@@ -346,7 +346,7 @@ The advantage of using the same server is that all dependencies are already meet
     :   ~~~ conf
         [options]
         admin_passwd = admin
-        db_host = False 
+        db_host = False
         db_port = False
         db_user = odoo-te
         db_password = FALSE
@@ -416,11 +416,11 @@ At this point, you have a completely independent Odoo installation. Next steps w
 
 3.  The final step is to update Odoo modules to newer versions, this is done restarting the service and updating database entries which tells the system to apply changes:
 
-        sudo service odoo-server-te restart -u all -d <production_database_name> 
+        sudo service odoo-server-te restart -u all -d <production_database_name>
 
     At this stage, you may encounter errors produced by incompatible changes in modules. This is rarely the case for Odoo standard modules but is not uncommon for ones downloaded from a third-party. If you do encounter an error, you'll need to check for a new version of the module that's causing it, and reinstall it.
 
-4.  If everything goes as expected, you can start your load tests modules "behavior" tests (which are different from code-incompatible errors), and any other tests you've configured. 
+4.  If everything goes as expected, you can start your load tests modules "behavior" tests (which are different from code-incompatible errors), and any other tests you've configured.
 
 ### Update your Production System
 

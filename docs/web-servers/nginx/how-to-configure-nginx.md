@@ -291,7 +291,7 @@ The fifth set of examples tell nginx to listen on *all* domains and IP addresses
 :   ~~~ nginx
     listen     12.34.56.77:80;
     listen     12.34.56.78:80;
-    listen     12.34.56.79:80;       
+    listen     12.34.56.79:80;
     ~~~
 
 Finally, the last set of examples instruct the server to listen for requests on port `80` for the IP addresses `12.34.56.77`, `12.34.56.78`, and `12.34.56.79`.

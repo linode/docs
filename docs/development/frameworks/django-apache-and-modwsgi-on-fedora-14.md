@@ -66,7 +66,7 @@ Install Django
 
 There are two methods for installing Django. You may choose to install Django using packages from the Fedora repository. This will install version 1.2.5 of the Django software. Issue the following command:
 
-    yum install Django 
+    yum install Django
 
 If you want to install Django using the `easy_install` tool from the `setuptools` package, issue the following command:
 
@@ -119,10 +119,10 @@ Apache Virtual Host Configuration
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~

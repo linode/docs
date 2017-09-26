@@ -22,7 +22,7 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
-We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide. 
+We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
 
 {: .note}
 >

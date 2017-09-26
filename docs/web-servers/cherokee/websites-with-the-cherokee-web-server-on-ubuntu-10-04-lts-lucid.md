@@ -41,7 +41,7 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted

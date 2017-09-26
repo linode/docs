@@ -43,7 +43,7 @@ The unbound configuration files will be located at `/etc/unbound/unbound.conf`.
 
 Following the installation, issue the following commands to start Unbound for the first time and ensure that unbound resumes following reboot:
 
-    service unbound start 
+    service unbound start
     chkconfig unbound on
 
 Configure Unbound

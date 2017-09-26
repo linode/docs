@@ -44,7 +44,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 1.  Update system repositories, then download and install dependencies:
 
     **Ubuntu 17.04**
- 
+
         apt-get update && apt-get upgrade -yuf
         apt-get install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev libsodium-dev git python-m2crypto
 

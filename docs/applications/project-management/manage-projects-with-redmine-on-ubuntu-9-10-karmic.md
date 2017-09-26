@@ -72,8 +72,8 @@ Issue the following command to install packages required for Ruby on Rails.
 
 Create symbolic links to the installed version of Ruby:
 
-    ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
-    ln -s /usr/bin/irb1.8 /usr/bin/irb 
+    ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+    ln -s /usr/bin/irb1.8 /usr/bin/irb
 
 Fetch the newest version of the RubyGems source from the [RubyForge download page](http://rubyforge.org/projects/rubygems/). Issue the following commands, substituting the download link for the current version:
 
@@ -81,7 +81,7 @@ Fetch the newest version of the RubyGems source from the [RubyForge download pag
     tar -xf rubygems*tgz
     cd rubygems*
     ruby setup.rb
-    ln -s /usr/bin/gem1.8 /usr/bin/gem 
+    ln -s /usr/bin/gem1.8 /usr/bin/gem
 
 Install some required gems:
 
@@ -98,7 +98,7 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /opt
     wget http://rubyforge.org/frs/download.php/71376/passenger-2.2.15.tar.gz
-    tar xzvf passenger*.gz 
+    tar xzvf passenger*.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -117,7 +117,7 @@ Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Iss
     wget -O init-nginx-deb.sh http://www.linode.com/docs/assets/704-init-nginx-deb.sh
     mv /opt/init-nginx-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx like any other server daemon.
 

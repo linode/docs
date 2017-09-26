@@ -248,7 +248,7 @@ After completing the installation the configuration will need to be modified so 
 /etc/dnsmasq.conf
 :   ~~~
     listen-address=127.0.0.1,10.8.0.1
-    
+
     bind-interfaces
     ~~~
 
@@ -260,7 +260,7 @@ When your system boots, dnsmasq will try to start prior to the OpenVPN tun devic
 /etc/rc.local
 :   ~~~
     /etc/init.d/dnsmasq restart
-    
+
     exit 0
     ~~~
 

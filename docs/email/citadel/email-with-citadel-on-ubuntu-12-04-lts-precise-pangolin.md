@@ -51,7 +51,7 @@ Issue the following commands to install any outstanding package updates:
 
 Issue the following commands to install the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you to answer a couple of questions. Use the answers provided below:
 
@@ -107,7 +107,7 @@ Customize the login banner for your Citadel server by editing the relevant file:
     ~~~
 Use the following startup script to initialize Citadel.
 
-    /etc/init.d/citadel restart 
+    /etc/init.d/citadel restart
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 
@@ -115,7 +115,7 @@ Visit the web interface in your Web browser. Using our preceding example, the We
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 
-    webcit -d 
+    webcit -d
 
 Notes for Running Citadel
 -------------------------

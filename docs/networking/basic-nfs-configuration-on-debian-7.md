@@ -55,7 +55,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 	: ~~~
 		/var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
 	~~~
-	
+
     Replace **\<client linode private ip\>** with the current private IP address of your second Linode.
 
 5.  Update the table of exported file systems with the following command:

@@ -112,11 +112,11 @@ While Bazaar is capable of maintaining project histories on a single system for 
 
 The simplest way to share changes between users is to generate a patch using the `bzr diff` command. Consider the command:
 
-    bzr diff -r12..20 > ~/new-feature.r20.patch 
+    bzr diff -r12..20 > ~/new-feature.r20.patch
 
 This creates a file named `new-feature.r20.patch` that you can distribute to your collaborators. The option `-r12..20` specifies that the "base revision" of the patch is revision number 12 and the final commit to be included in the patch is revision number 20. In turn, you collaborators can use the following command to apply your patch:
 
-    bzr patch ~/new--feature.r20.patch 
+    bzr patch ~/new--feature.r20.patch
 
 Bazaar also includes the ability to use more "centralized" workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:
 

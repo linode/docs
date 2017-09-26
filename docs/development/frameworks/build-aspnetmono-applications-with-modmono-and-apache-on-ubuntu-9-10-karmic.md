@@ -41,11 +41,11 @@ Before installing `mod_mono` we must ensure that the `universe` repositories are
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -95,11 +95,11 @@ While installing, you will see a prompt that looks like the following:
           D     : show the differences between the versions
           Z     : background this process to examine the situation
      The default action is to keep your current version.
-    *** mod_mono.conf (Y/I/N/O/D/Z) [default=N] ? 
+    *** mod_mono.conf (Y/I/N/O/D/Z) [default=N] ?
 
 Accept the default option at this point. When the installation process completes start Apache with the following command:
 
-    /etc/init.d/apache2 start 
+    /etc/init.d/apache2 start
 
 ### Configure Apache
 
@@ -159,8 +159,8 @@ If you still see the default "It works!" Apache installation page, you may need 
 
 Note: Should you restart Apache in the future, you will see an error that will look similar to this:
 
-    [crit] (13)Permission denied: Failed to attach to existing dashboard, 
-    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed 
+    [crit] (13)Permission denied: Failed to attach to existing dashboard,
+    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed
     (Operation not permitted). Further action impossible.
 
 You can safely ignore this warning, as it won't affect deployment using the methods explained in this guide.
@@ -179,7 +179,7 @@ In order for your ASP.NET application to communicate properly with your MySQL se
     unzip -d mysqlConnector mysql-connector-net-6.2.3-noinstall.zip
     cd mysqlConnector
     gacutil -i mysql.data.dll
-    gacutil -i mysql.web.dll 
+    gacutil -i mysql.web.dll
 
 Creating a Database to Test the MySQL Connector
 -----------------------------------------------

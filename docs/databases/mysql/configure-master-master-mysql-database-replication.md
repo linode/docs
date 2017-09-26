@@ -93,7 +93,7 @@ Use the following commands to install MySQL on each of the Linodes:
 3.  Run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
         mysql -ureplication -p -h x.x.x.x -P 3306
-        
+
     This command should connect you to the remote server's MySQL instance.
 
 ##Configure Database Replication

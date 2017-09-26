@@ -30,11 +30,11 @@ To accomplish this, insert the following configuration directives into your Virt
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
         ServerAdmin admin@example.com
         ServerName static.example.com
         DocumentRoot /srv/www/static.example.com/public_html/
-        ErrorLog /srv/www/static.example.com/logs/error.log 
+        ErrorLog /srv/www/static.example.com/logs/error.log
         CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -42,7 +42,7 @@ Apache Virtual Host Configuration
 Create the necessary directories by issuing the following commands:
 
     mkdir -p /srv/www/static.example.com/public_html/
-    mkdir -p /srv/www/static.example.com/logs/        
+    mkdir -p /srv/www/static.example.com/logs/
 
 Reload the web server configuration to create the virtual host. Issue the following command at this point and at any point after you've made changes to an Apache configuration file:
 
@@ -99,7 +99,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -146,7 +146,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -165,7 +165,7 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy
     a2enmod proxy_http
     a2enmod proxy_balancer
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-10-04-lucid/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
@@ -176,7 +176,7 @@ Apache Virtual Host Configuration
         ServerName example.com
         ServerAlias www.example.com
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         <Proxy balancer://cluster>
@@ -202,7 +202,7 @@ The `lbmethod=` argument to the `ProxyPass` directive, controls the method by wh
 Apache also contains a "Balancer Manager" interface that you can use to first issue the following command to ensure that Apache's `mod_status` is enabled, and restart the server if needed:
 
     a2enmod status
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 Now include the following location directive in the virtual host where your cluster is configured:
 

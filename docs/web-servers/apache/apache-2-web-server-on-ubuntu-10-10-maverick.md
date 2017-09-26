@@ -89,7 +89,7 @@ First create example.com (`/etc/apache2/sites-available/example.net`) so that it
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost *:80>
-         ServerAdmin admin@example.net     
+         ServerAdmin admin@example.net
          ServerName example.net
          ServerAlias www.example.net
          DocumentRoot /srv/www/example.net/public_html/

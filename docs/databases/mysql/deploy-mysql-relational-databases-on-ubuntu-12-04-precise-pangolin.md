@@ -134,7 +134,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         grant all on testdb.* to 'testuser' identified by 'password';
 
 2.  Exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -149,7 +149,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

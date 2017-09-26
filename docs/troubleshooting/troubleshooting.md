@@ -101,13 +101,13 @@ The output will look similar to this:
 In this example, you can see that the root filesystem is 93% full. Here's a command you can use to list all files over 200MB on your root filesystem:
 
 	sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
-	
-You can adjust the `+200M` value in this command as needed, to search for files above a specific size. 
+
+You can adjust the `+200M` value in this command as needed, to search for files above a specific size.
 
 
 #### Deleted Files
 
-If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you'll see how deleted files belonging to Apache can take up space. 
+If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you'll see how deleted files belonging to Apache can take up space.
 
 Use the following command to check for deleted files that are currently open:
 
@@ -124,7 +124,7 @@ This command will check the output of `lsof` for files marked as deleted, and wi
 	apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
 	apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
 
-To free up this space, you can simply restart the Apache process on your Linode. 
+To free up this space, you can simply restart the Apache process on your Linode.
 
 ### Is the Linode out of memory?
 
@@ -160,7 +160,7 @@ Network issues between your desktop computer and the data center can make your s
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report. 
+When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report.
 
 ### Is there a Disk I/O bottleneck?
 
@@ -248,7 +248,7 @@ All web traffic is transferred over ports 80 and 443, so it's important to leave
 
 2.  Examine the output. If you previously configured a firewall with `iptables`, you should see the lines shown below:
 
-        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80 
+        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:443
 
 3.  If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Creating a Firewall](/docs/securing-your-server/#configure-a-firewall) to revise and implement new firewall rules.
@@ -292,7 +292,7 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 
 2.  Examine the output. If you previously configured a firewall with `iptables`, you should see the line shown below:
 
-        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22 
+        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22
 
 3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over port 22 to `DROP` or `REJECT`.
@@ -334,4 +334,4 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
 [![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
 
-Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space. 
+Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.

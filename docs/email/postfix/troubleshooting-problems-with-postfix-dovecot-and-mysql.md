@@ -50,8 +50,8 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
 
     You should see the following messages:
 
-        * Stopping Postfix Mail Transport Agent postfix                    [ OK ] 
-        * Starting Postfix Mail Transport Agent postfix                    [ OK ] 
+        * Stopping Postfix Mail Transport Agent postfix                    [ OK ]
+        * Starting Postfix Mail Transport Agent postfix                    [ OK ]
 
 5.  Execute the following command to restart Dovecot:
 
@@ -60,7 +60,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
     You should see the following messages:
 
         dovecot stop/waiting
-        dovecot start/running, process 31171        
+        dovecot start/running, process 31171
 
 6.  Examine the results. If you get an error, or the restart message for Dovecot doesn't include a new process ID, there's something preventing the service from starting.
 7.  If you received a specific error from the restart attempt, search for it online.
@@ -73,7 +73,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
     {: .file-excerpt }
     /var/log/mail.log
     :   ~~~
-        May 22 15:41:59 godel postfix/master[19624]: terminating on signal 15 
+        May 22 15:41:59 godel postfix/master[19624]: terminating on signal 15
         May 22 15:41:59 godel postfix/master[20232]: daemon started -- version 2.9.6, configuration /etc/postfix
         ~~~
 
@@ -82,7 +82,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
     {: .file-excerpt }
     /var/log/mail.log
     :   ~~~
-        May 22 17:46:54 master: Warning: Killed with signal 15 (by pid=1 uid=0 code=kill) 
+        May 22 17:46:54 master: Warning: Killed with signal 15 (by pid=1 uid=0 code=kill)
         May 22 17:48:09 master: Info: Dovecot v2.0.19 starting up (core dumps disabled)
         ~~~
 
@@ -148,7 +148,7 @@ Follow these instructions to enable verbose logging for Dovecot and change the l
     /etc/dovecot/conf.d/10-logging.conf
     :   ~~~
         auth_verbose = yes
-        
+
         mail_debug = yes
         ~~~
 
@@ -440,7 +440,7 @@ You may want to reference [Postfix's Virtual Readme](http://www.postfix.org/VIRT
     {: .file-excerpt }
     /etc/postfix/virtual_users_list
     :   ~~~
-        email1@example.com example.com/email1/ 
+        email1@example.com example.com/email1/
         email2@example.com example.com/email2/
         ~~~
 2.  Create a virtual users file for Dovecot. This will list all your email usernames (just use the email addresses) and their passwords in plain text (obviously this is not production-ready). It should look something like this:
@@ -733,7 +733,7 @@ Now that authentication is set up, let's make sure the authentication process is
     {: .file-excerpt }
     /etc/dovecot/conf.d/10-ssl.conf
     :   ~~~
-        ssl_cert = </etc/ssl/certs/dovecot.pem 
+        ssl_cert = </etc/ssl/certs/dovecot.pem
         ssl_key = </etc/ssl/private/dovecot.pem
         ~~~
 3.  Verify that your SSL certificate and key are in the locations specified in the previous step.

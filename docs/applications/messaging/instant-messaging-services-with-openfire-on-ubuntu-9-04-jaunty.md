@@ -81,11 +81,11 @@ Install Openfire
 
 Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the "deb" package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below). You may need to install `wget` first using the command `apt-get install wget`.
 
-    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.6.4_all.deb 
+    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.6.4_all.deb
 
 Install the software using `dpkg` as follows:
 
-    dpkg -i openfire_3.6.4_all.deb 
+    dpkg -i openfire_3.6.4_all.deb
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
@@ -97,7 +97,7 @@ Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your L
 
 Restart Openfire with the following command:
 
-    /etc/init.d/openfire restart 
+    /etc/init.d/openfire restart
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 

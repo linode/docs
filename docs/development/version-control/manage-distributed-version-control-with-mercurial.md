@@ -24,7 +24,7 @@ Mercurial runs on multiple platforms and you may choose to use Mercurial to mana
 
 Issue the following commands on Debian and Ubuntu systems to update your system's package repository, ensure that all installed packages are up to date, and install Mercurial and all of its dependencies:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
     apt-get install mercurial
 
@@ -35,7 +35,7 @@ On CentOS and Fedora systems, issue the following commands to ensure that all of
 
 On Arch Linux systems, issue the following commands to ensure that your system's package database is up to date and then install Mercurial:
 
-    pacman -Sy 
+    pacman -Sy
     pacman -S mercurial
 
 Mac OS X and Windows users can download prepared packages for Mercurial directly from the [upstream download resource](http://mercurial.selenic.com/downloads/). Once Mercurial is installed, we can begin to manage our source control projects with this tool. All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
@@ -62,7 +62,7 @@ Once a repository exists you must add files before mercurial will be able to tra
 
 The file is now set to be included in the next commit is created. To "commit" this change and save it for future reference, issue the following command:
 
-    hg commit -m 'hello mercurial world' 
+    hg commit -m 'hello mercurial world'
 
 When complete, the new file at this iteration is saved in the Mercurial repository's database. The `-m` option causes Mercurial to store a message describing the contents of the commit change set to give your collaborators or future selves the ability to understand the contents of the commit change set. You may choose to omit the `-m` flag and the commit message, however Mercurial will open your system's default text editor so that you can edit your commit message there.
 
@@ -80,7 +80,7 @@ When you need to rename, move, or copy files or folders that are versioned by Me
 
     hg mv world hw.txt
     hg cp hw.txt hello-world
-    hg rm hw.txt 
+    hg rm hw.txt
 
 These commands, in turn, move (rename) the `world` file to `hw.txt`, copy `hw.txt` to the file `hello-world` and finally remove the file `hw.txt`. When you perform the next commit, Mercurial will include these revisions in the changeset it saves, keeping track of a file's history despite any changes in name.
 

@@ -107,7 +107,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
         auth   	required    pam_sepermit.so
         auth    substack    password-auth
         auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
-        auth    include     postlogin 
+        auth    include     postlogin
         ~~~
 
     This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a verification code length of six digits.
@@ -145,7 +145,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 
         sudo systemctl restart sshd
 
-Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows: 
+Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows:
 
 ![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 

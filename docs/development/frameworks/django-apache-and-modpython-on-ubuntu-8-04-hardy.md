@@ -32,7 +32,7 @@ Make sure your package repositories and installed programs are up to date by iss
 
 There are a number of packages that we need to install before we can deploy a Django application. The following command will download and install all of these dependencies:
 
-    apt-get install libapache2-mod-python python-mysqldb 
+    apt-get install libapache2-mod-python python-mysqldb
 
 This installs mod\_python, which embeds a Python interpreter in the Apache web server (`libapache2-mod-python`), MySQL database bindings for Python, and version 1.02 of the Django web framework.
 
@@ -54,7 +54,7 @@ Because we're not installing Django from the Ubuntu repository we must download 
 
 After downloading the tarball, extract it using tar:
 
-    tar xzvf Django-1.1.tar.gz 
+    tar xzvf Django-1.1.tar.gz
 
 Then move (`cd`) into the newly created `Django-1.1` directory (or later, if you've downloaded an alternate version) and use the following command to install Django:
 

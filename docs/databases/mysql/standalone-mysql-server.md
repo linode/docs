@@ -83,7 +83,7 @@ For example, in [WordPress](/docs/web-applications/cms-guides/wordpress/) databa
 {: .file-excerpt }
 wp-config.php
 :   ~~~ php
-    /** MySQL hostname */ 
+    /** MySQL hostname */
     define('DB_HOST', 'mysql');
     ~~~
 

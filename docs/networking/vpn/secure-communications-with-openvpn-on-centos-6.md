@@ -32,7 +32,7 @@ The packages required to install OpenVPN and it's dependencies are not available
 
 Make sure your package repositories and installed programs are up to date by issuing the following command:
 
-    yum update 
+    yum update
 
 Now we can begin installing the OpenVPN software with the following command:
 
@@ -237,9 +237,9 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     #
     # [...]
     #
-    
+
     iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-    
+
     touch /var/lock/subsys/local
     ~~~
 
@@ -253,7 +253,7 @@ After completing the installation, you will need to modify the configuration so 
 /etc/dnsmasq.conf
 :   ~~~
     listen-address=127.0.0.1,10.8.0.1
-    
+
     bind-interfaces
     ~~~
 
@@ -265,7 +265,7 @@ When your system boots, dnsmasq will try to start prior to the OpenVPN tun devic
 /etc/rc.local
 :   ~~~
     /etc/init.d/dnsmasq restart
-    
+
     touch /var/lock/subsys/local
     ~~~
 

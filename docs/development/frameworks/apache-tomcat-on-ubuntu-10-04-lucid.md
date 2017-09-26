@@ -67,7 +67,7 @@ If you would like to run the Sun Microsystems implementation of Java, edit the `
     deb http://security.ubuntu.com/ubuntu lucid-security universe
     deb-src http://security.ubuntu.com/ubuntu lucid-security universe
 
-    ## partner repositories 
+    ## partner repositories
     deb http://archive.canonical.com/ubuntu lucid partner
     deb-src http://archive.canonical.com/ubuntu lucid partner
 

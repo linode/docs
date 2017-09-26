@@ -24,7 +24,7 @@ Prepare System and Install TWiki
 Issue the following commands to update your system's package database and ensure that all installed packages are up to date:
 
     apt-get update
-    apt-get upgrade 
+    apt-get upgrade
 
 Issue the following command to install all required dependencies for TWiki:
 
@@ -36,7 +36,7 @@ At the time of writing the most recent release of TWiki is 5.0.1. Check the [TWi
 
     cd /opt
     wget http://downloads.sourceforge.net/project/twiki/TWiki%20for%20all%20Platforms/TWiki-5.0.1/TWiki-5.0.1.tgz
-    tar -zxvf /opt/TWiki-5.0.1.tgz 
+    tar -zxvf /opt/TWiki-5.0.1.tgz
     mkdir -p /srv/www/example.com/
     mv /opt/twiki /srv/www/example.com/twiki
     chown -R www-data:www-data /srv/www/example.com/twiki
@@ -58,9 +58,9 @@ Create a virtual host specification that resembles the following. Modify the ref
            ServerName example.com
            ServerAlias www.example.com
 
-           DocumentRoot /srv/www/example.com/public_html 
+           DocumentRoot /srv/www/example.com/public_html
 
-           ErrorLog /srv/www/example.com/logs/error.log 
+           ErrorLog /srv/www/example.com/logs/error.log
            CustomLog /srv/www/example.com/logs/access.log combined
 
            ScriptAlias /bin "/srv/www/example.com/twiki/bin"
@@ -95,7 +95,7 @@ Create a virtual host specification that resembles the following. Modify the ref
               Allow from all
               AddType text/plain .shtml .php .php3 .phtml .phtm .pl .py .cgi
            </Directory>
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 In this configuration your wiki will be located at the root level of the `example.com` domain. Modify the following lines if you wish to deploy TWiki at a different location on your domain.
@@ -106,7 +106,7 @@ In this configuration your wiki will be located at the root level of the `exampl
     ScriptAlias /wiki/bin "/srv/www/example.com/twiki/bin"
     Alias /wiki/pub "/srv/www/example.com/twiki/pub"
     Alias /wiki/ "/srv/www/example.com/twiki/bin/view/"
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 In this example, TWiki will be accessible by at the `http://example.com/wiki` location. The path you configure for TWiki need not correlate to the actual location of the files on the file system. Issue the following commands to create the required directories:

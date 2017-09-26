@@ -287,7 +287,7 @@ VirtualHost Entry
         ServerAdmin webmaster@e-cabi.net
         ServerName pbx.e-cabi.net
         ServerAlias pbx.e-cabi.net
-        DocumentRoot /var/www/html                        
+        DocumentRoot /var/www/html
     </VirtualHost>
     ~~~
 

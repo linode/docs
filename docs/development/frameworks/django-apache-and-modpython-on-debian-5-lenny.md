@@ -97,7 +97,7 @@ Apache Virtual Host Configuration
             PythonDebug Off
         </Location>
 
-        ErrorLog /srv/logs/error.log 
+        ErrorLog /srv/logs/error.log
         CustomLog /srv/logs/access.log combined
     </VirtualHost>
     ~~~

@@ -29,8 +29,8 @@ Before installing osCommerce, we must ensure that the `universe` repositories ar
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -91,7 +91,7 @@ Change the permissions on `configure.php` to prevent security issues:
 
 Change the permissions of the `images` and `graphs` directory to be accessible by the server:
 
-    chmod -R 777 /srv/www/example.com/public_html/images/ 
+    chmod -R 777 /srv/www/example.com/public_html/images/
     chmod -R 777 /srv/www/example.com/public_html/admin/images/graphs
 
 Finally, change the permissions of the `backups` directory to be accessible by the server:

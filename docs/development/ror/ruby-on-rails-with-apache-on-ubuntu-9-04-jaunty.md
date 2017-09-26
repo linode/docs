@@ -83,7 +83,7 @@ These files load and enable the Passenger module for use in your sites. If you c
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/
     ~~~
 
 In typical Passenger-based Rails deployments the application directory would be located in `/srv/www/example.com/`; for example `my-app/` would be located at `/srv/www/example.com/my-app/` and we would symbolically link (symlink) the `my-app/public/` folder to `/srv/www/example.com/public_html/`. We'll begin by removing the current `public_html/` directory if it already exists:
@@ -92,7 +92,7 @@ In typical Passenger-based Rails deployments the application directory would be 
 
 Then we'll create the symbolic link:
 
-    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html 
+    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html
 
 We'll want to restart Apache once to make sure all of our settings and configurations have been loaded:
 
@@ -100,7 +100,7 @@ We'll want to restart Apache once to make sure all of our settings and configura
 
 **Note:** Passenger requires that the log files in your application be world writable (eg. chmod 666) and will produce an HTTP 500 Internal Server Error if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application in the setup above.
 
-    chmod 666 /srv/www/example.com/my-app/log/* 
+    chmod 666 /srv/www/example.com/my-app/log/*
 
 You now have a functioning environment for your Ruby on Rails application.
 

@@ -73,7 +73,7 @@ Edit the `confluence-init.properties` file, adding the following line to it. Adj
 :   ~~~
     confluence.home=/var/lib/confluence
     ~~~
-    
+
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file and the "JAVA\_HOME" line as necessary to reflect current version numbers.
 
 {: .file-excerpt }

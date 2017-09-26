@@ -58,8 +58,8 @@ For convenience, all the necessary commands for installing JRE 7 are also listed
 2.  You will see the following output, which provides more information on the method we're using to install Java. Press **Enter** when the final prompt appears:
 
         You are about to add the following PPA to your system:
-        Oracle Java (JDK) Installer (automatically downloads and installs Oracle 
-        JDK6 / JDK7 / JDK8). There are no actual Java files in this PPA. More info: 
+        Oracle Java (JDK) Installer (automatically downloads and installs Oracle
+        JDK6 / JDK7 / JDK8). There are no actual Java files in this PPA. More info:
         http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html
         More info: https://launchpad.net/~webupd8team/+archive/java
         Press [ENTER] to continue or ctrl-c to cancel adding it
@@ -121,7 +121,7 @@ To find the latest version of the Minecraft server, visit the [Minecraft downloa
 
         java -Xms1024M -Xmx1536M -jar minecraft_server.1.6.4.jar -o true
         ~~~
-        
+
     {:.note}
     >
     > If you are using a different or newer version of the Minecraft server, make sure to adjust this file to name the correct `.jar` file.

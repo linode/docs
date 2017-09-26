@@ -48,7 +48,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`, and it r
 
 2.  Push DNS resolvers to client devices.
 
-    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allow you to change this if you prefer a different resolver. 
+    Client-side DNS settings are ideal for preventing DNS leaks and will override those pushed by the OpenVPN server in this step. Google DNS is provided by the OpenVPN client software for Android, iOS, OS X and Windows, and while this can be disabled, Desktop Linux and Windows are the only platforms which allow you to change this if you prefer a different resolver.
 
     If using the options below to push DNS resolvers to VPN clients, you can disable the Google DNS fallback on your clients (or leave it enabled as the fallback it was intended to be). [OpenDNS](https://www.opendns.com/) is provided by default but you can change this to your preference.
 

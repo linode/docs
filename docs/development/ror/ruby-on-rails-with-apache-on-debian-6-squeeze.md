@@ -84,7 +84,7 @@ If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/
     ~~~
 
 Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:
@@ -108,7 +108,7 @@ Apache Virtual Host Configuration
 :   ~~~ apache
     DocumentRoot /srv/www/example.com/public_html/
     RailsBaseURI /lollipop
-    RailsBaseURI /frogs 
+    RailsBaseURI /frogs
     RailsBaseURI /simon
     ~~~
 

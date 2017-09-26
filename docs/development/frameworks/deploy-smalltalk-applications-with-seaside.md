@@ -123,11 +123,11 @@ With Apache installed, create the following Virtual Host file. Typically these a
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin admin@example.com
          ServerName static.example.com
          DocumentRoot /srv/www/static.example.com/public_html/
-         ErrorLog /srv/www/static.example.com/logs/error.log 
+         ErrorLog /srv/www/static.example.com/logs/error.log
          CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -135,7 +135,7 @@ Apache Virtual Host Configuration
 Create the necessary directories by issuing the following commands:
 
     mkdir -p /srv/www/static.example.com/public_html/
-    mkdir -p /srv/www/static.example.com/logs/        
+    mkdir -p /srv/www/static.example.com/logs/
 
 Enable the virtual host with the following command. Remember to replace `static.example.com` with the name of the virtual host file:
 
@@ -159,7 +159,7 @@ Apache Virtual Host Configuration
         ServerName example.com
         ServerAlias www.example.com
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -198,7 +198,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -238,11 +238,11 @@ Apache Virtual Host Configuration
         ProxyPreserveHost On
         ServerName example.com
         ServerAlias www.example.com
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         DocumentRoot /srv/www/example.com/public_html/
-        <Directory /srv/www/example.com/public_html> 
+        <Directory /srv/www/example.com/public_html>
            Order deny,allow
            Allow from all
         </Directory>
@@ -253,12 +253,12 @@ Apache Virtual Host Configuration
            BalancerMember http://localhost:8080/seaside/appname/ smax=5 route=seaside1
            BalancerMember http://localhost:8081/seaside/appname/ smax=5 route=seaside2
            BalancerMember http://localhost:8082/seaside/appname/ smax=5 route=seaside3
-        </Proxy> 
+        </Proxy>
 
         RewriteEngine On
         RewriteCond /srv/www/example.com/public_html%{REQUEST_FILENAME} !-f
         RewriteRule  ^/(.*)$ $1 [CO=BALANCEID:balancer.seaside1]
-        RewriteRule  ^/(.*)$ $1 [CO=BALANCEID:balancer.seaside2]           
+        RewriteRule  ^/(.*)$ $1 [CO=BALANCEID:balancer.seaside2]
         RewriteRule  ^/(.*)$ $1 [CO=BALANCEID:balancer.seaside3]
     ~~~
 

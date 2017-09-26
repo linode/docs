@@ -52,7 +52,7 @@ For this installation, we'll assume you're installing Mantis to a directory unde
 Next, we'll move the `mantisbt-1.2.4` directory to our `public_html` directory under the name `mantis`. Additionally, we'll give Apache ownership in order to create the needed configuration files:
 
     mv mantisbt-1.2.4/ /srv/www/example.com/public_html/mantis
-    chown -R apache:apache /srv/www/example.com/public_html/mantis/ 
+    chown -R apache:apache /srv/www/example.com/public_html/mantis/
 
 Visit the location of MantisBT in your browser. In our first example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional MySQL help, see our [MySQL guide](/docs/databases/mysql/fedora-13). At this point Mantis is installed and ready to configure.
 
@@ -66,7 +66,7 @@ Next, we'll set the timezone in `config_inc.php`. You can find a list of support
 {: .file }
 /srv/www/example.com/public\_html/mantis/config\_inc.php
 :   ~~~ php
-    <?php   
+    <?php
         $g_hostname = 'localhost';
         $g_db_type = 'mysql';
         $g_database_name = 'mantis';

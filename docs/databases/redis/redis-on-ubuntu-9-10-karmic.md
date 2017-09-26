@@ -28,7 +28,7 @@ Install Redis
 Issue the following commands to update your system's package repositories and ensure that all installed packages are up to date:
 
     apt-get update
-    apt-get upgrade 
+    apt-get upgrade
 
 Install required prerequisites with the following command:
 
@@ -42,7 +42,7 @@ Begin the installation process by issuing the following sequence of commands to 
 
     cd /opt/
     mkdir /opt/redis
-    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz 
+    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz
     tar -zxvf /opt/redis-2.2.2.tar.gz
     cd /opt/redis-2.2.2/
     make
@@ -135,7 +135,7 @@ Issue the following sequence of commands to download a basic init script, create
     chown -R redis:redis /opt/redis
     touch /var/log/redis.log
     chown redis:redis /var/log/redis.log
-    update-rc.d -f redis defaults 
+    update-rc.d -f redis defaults
 
 Redis will now start following the next boot process. You may now use the following commands to start and stop the Redis instance:
 
@@ -178,7 +178,7 @@ redis.conf
 :   ~~~
     slaveof 192.168.10.101 6379
     ~~~
-    
+
 The `slaveof` directive takes two arguments: the first is the IP address of the master node, and the second is the Redis port specified in the master's configuration.
 
 When you restart the slave Redis instance, it will attempt to synchronize its data set to the master, and then propagate the changes. Slave Redis instances can accept slave connections, which allows administrators to distribute the slave-replication load in multi-slave architectures. It's also possible to use a master with less stringent data persistence policies with a slave that keeps a more persistent copy. Master/slave replication creates a number of powerful architectural possibilities that may suit the needs of your application.

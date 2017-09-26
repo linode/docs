@@ -100,11 +100,11 @@ Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
     smtpd_tls_cert_file=/etc/ssl/postfix.pem
     smtpd_tls_key_file=/etc/ssl/postfix.key
 
-    smtp_use_tls = yes                                                                                               
-    smtpd_use_tls = yes                                                                                              
-    smtp_tls_note_starttls_offer = yes                                                                               
-    smtpd_tls_loglevel = 1                                                                                           
-    smtpd_tls_received_header = yes                                                                                  
+    smtp_use_tls = yes
+    smtpd_use_tls = yes
+    smtp_tls_note_starttls_offer = yes
+    smtpd_tls_loglevel = 1
+    smtpd_tls_received_header = yes
 
     smtpd_sasl_type = dovecot
     smtpd_sasl_path = private/auth
@@ -172,7 +172,7 @@ Edit the `/etc/alias` file to add the following line. This will to reroute all l
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 
-    postalias /etc/alias 
+    postalias /etc/alias
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 

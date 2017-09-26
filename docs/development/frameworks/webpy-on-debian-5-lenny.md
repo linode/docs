@@ -71,7 +71,7 @@ Make sure you're downloading the latest release by checking the [Web.py site](ht
 When you want to upgrade to the latest development version, issue the following sequence of commands:
 
     cd /opt/webpy/
-    git clean -f 
+    git clean -f
     git pull
     python setup.py install
 
@@ -92,9 +92,9 @@ code.py
     )
     app = web.application(urls, globals())
 
-    class hello:        
+    class hello:
         def GET(self, name):
-            if not name: 
+            if not name:
                 name = 'World'
             return 'Hello, ' + name + '!'
 
@@ -131,12 +131,12 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
 {: .file-excerpt }
 Apache VirtualHost Configuration
 :   ~~~ apache
-    <VirtualHost example.com:80> 
-        ServerAdmin username@example.com     
+    <VirtualHost example.com:80>
+        ServerAdmin username@example.com
         ServerName example.com
            ServerAlias www.example.com
            DocumentRoot /srv/www/example.com/public_html/
-           ErrorLog /srv/www/example.com/logs/error.log 
+           ErrorLog /srv/www/example.com/logs/error.log
            CustomLog /srv/www/example.com/logs/access.log combined
 
         WSGIScriptAlias / /srv/www/example.com/application
@@ -156,12 +156,12 @@ Apache VirtualHost Configuration
           RewriteCond %{REQUEST_URI} !^(/.*)+code.py/
           RewriteRule ^(.*)$ code.py/$1 [PT]
         </Location>
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 Ensure that this virtual host has been enabled, and issue the following command to restart the server:
 
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 In the above example, requests for the `example.com` domain will be handled by WSGI, with the application files located in `/srv/www/example.com/application`. All static files can be stored in `/srv/www/example.com/public_html` and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath `example.com` are handled by the Web.py application without including `code.py` in the URL. For example, the request for `http://example.com/about` would be processed as `http://example.com/code.py/about` but requests for `http://example.com/static` would not be rewritten and content would be served from `/srv/www/example.com/public_html`.
 

@@ -105,7 +105,7 @@ After the file transfer has completed, you should verify the disk by mounting it
 4.  The output should appear similar to what's shown below:
 
         bin   dev  home  lost+found  mnt  proc  sbin     srv  tmp  var
-        boot  etc  lib   media       opt  root  selinux  sys  usr   
+        boot  etc  lib   media       opt  root  selinux  sys  usr
 
 Now that you've ready to boot from the disk.
 

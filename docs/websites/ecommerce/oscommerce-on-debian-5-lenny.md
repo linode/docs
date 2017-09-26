@@ -30,7 +30,7 @@ Make sure your package repositories and installed programs are up to date by iss
 
 Before we begin installing osCommerce, we'll need to install some additional PHP packages as well as the `unzip` tool. Run the following commands:
 
-    apt-get install unzip php5-gd php5-curl 
+    apt-get install unzip php5-gd php5-curl
     /etc/init.d/apache2 restart
 
 Installing osCommerce is straightforward and simple. `cd` into your document root directory and download the latest version of osCommerce. You can find the latest version available on [the osCommerce website](http://www.oscommerce.com/solutions/downloads). Run the following commands to install osCommerce in the document root of your website:
@@ -69,7 +69,7 @@ Change the permissions on `configure.php` to prevent security issues:
 
 Change the permissions of the `images` and `graphs` directory to be accessible by the server:
 
-    chmod -R 777 images/ 
+    chmod -R 777 images/
     chmod -R 777 admin/images/graphs
 
 Finally, change the permissions of the `backups` directory to be accessible by the server:

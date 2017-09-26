@@ -72,7 +72,7 @@ Your application may require additional dependencies. You may install these eith
 
 There are two methods for installing Django. You may either choose to install the Django packages from the EPEL repositories, or you can install using the python `easy_install` method. Installing the EPEL packages will install version 1.1.1 of the framework, but you will have the benefit of ongoing security and bug fixes from the Fedora Project if you install by way of the EPEL repositories. To install Django in this manner:
 
-    yum install Django 
+    yum install Django
 
 If you want to install Django using the `easy_install` tool, issue the following command:
 
@@ -123,10 +123,10 @@ Apache Virtual Host Configuration
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~

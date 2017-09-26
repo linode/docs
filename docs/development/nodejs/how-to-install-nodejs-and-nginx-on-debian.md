@@ -146,9 +146,9 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
     /var/www/example.com/server.js
     : ~~~ javascript
         //nodejs.org/api for API docs
-        //Node.js web server                         
+        //Node.js web server
         var http = require("http"),                           //Import Node.js modules
-            url = require("url"),                             
+            url = require("url"),
             path = require("path"),
             fs = require("fs");
 

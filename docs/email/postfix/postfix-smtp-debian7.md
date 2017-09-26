@@ -134,7 +134,7 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use the e
     {: .file-excerpt }
     /etc/postfix/main.cf
     :   ~~~
-        # specify SMTP relay host 
+        # specify SMTP relay host
         relayhost = [mail.isp.example]:587
         ~~~
 
@@ -147,13 +147,13 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use the e
     {: .file-excerpt }
     /etc/postfix/main.cf
     :   ~~~
-        # enable SASL authentication 
+        # enable SASL authentication
         smtp_sasl_auth_enable = yes
-        # disallow methods that allow anonymous authentication. 
+        # disallow methods that allow anonymous authentication.
         smtp_sasl_security_options = noanonymous
         # where to find sasl_passwd
         smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-        # Enable STARTTLS encryption 
+        # Enable STARTTLS encryption
         smtp_use_tls = yes
         # where to find CA certificates
         smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
@@ -232,7 +232,7 @@ Use these settings for SendGrid.
 
 3.  Create the hash db file for Postfix by running the `postmap` command:
 
-        sudo postmap /etc/postfix/sasl_passwd   
+        sudo postmap /etc/postfix/sasl_passwd
 
 4.  Restart Postfix:
 

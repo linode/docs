@@ -85,7 +85,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
     [![List of Solr releases](/docs/assets/wpsolr_mirror_directory_listing_resized.png)](/docs/assets/wpsolr_mirror_directory_listing.png)
 
 4.  Click on the highest available 4.x version to see the files in that release:
-    
+
     {: .note}
     >
     > Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
@@ -108,7 +108,7 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
 For Solr to index blog posts, it needs to know the structure of the blog data. This structure is described in Solr configuration files.
 
-1.  WPSolr provides ready-made configuration files on their website. 
+1.  WPSolr provides ready-made configuration files on their website.
 Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address of the latest WPSolr release for your Solr version:
 
     [![WPSolr Configuration Download](/docs/assets/wpsolr_wpsolr_config_download_resized.png)](/docs/assets/wpsolr_wpsolr_config_download.png)
@@ -136,9 +136,9 @@ Visit the [WPSolr website](http://wpsolr.com/releases/) and get the link address
 
 ### Change the IP Address and Port of Solr (Optional)
 
-By default, Solr listens for search requests on all IP addresses at port 8983. For security reasons, you may wish to change the IP address and/or port it listens on. It is also recommended that only WordPress be able to query Solr. 
+By default, Solr listens for search requests on all IP addresses at port 8983. For security reasons, you may wish to change the IP address and/or port it listens on. It is also recommended that only WordPress be able to query Solr.
 
-1.  First, make a back up of `/opt/solr-4.10.4/example/etc/jetty.xml`. Then, open the file in a text editor: 
+1.  First, make a back up of `/opt/solr-4.10.4/example/etc/jetty.xml`. Then, open the file in a text editor:
 
         sudo cp /opt/solr-4.10.4/example/etc/jetty.xml /opt/solr-4.10.4/example/etc/jetty.xml.backup
 
@@ -168,11 +168,11 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 3.  Set the appropriate listening IP address:
 
     -   If Solr is on the **same** server as WordPress, replace `<Set name="host"><SystemProperty name="jetty.host" /></Set>` with:
-	
+
             <Set name="host">localhost</Set>
 
     -   If Solr is on a **different** server from WordPress, replace `<Set name="host"><SystemProperty name="jetty.host" /></Set>` with:
-	
+
             <Set name="host">123.45.67.89</Set>
 
         Replace `123.45.67.89` with your own private IP or FQDN.
@@ -259,7 +259,7 @@ For security purposes, Solr should run with its own user account and group.
         if [ -r /etc/default/rcS ]; then
                 . /etc/default/rcS
         fi
-            
+
         # Run Jetty as this user ID (default: jetty)
         # Set this to an empty string to prevent Jetty from starting automatically
         SOLR_USER=solr
@@ -410,7 +410,7 @@ For security purposes, Solr should run with its own user account and group.
 
 Run the following command on the server where Solr is installed:
 
-    curl http://localhost:8983/solr/collection1/select 
+    curl http://localhost:8983/solr/collection1/select
 
 If it shows similar output, Solr is installed and configured correctly:
 
@@ -426,7 +426,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 ## Install and Configure WPSolr
 
-### Install the WPSolr Plugin 
+### Install the WPSolr Plugin
 
 1.  Install the [WPSolr](https://wordpress.org/plugins/wpsolr-search-engine/) WordPress plugin, either through your WordPress admin console or by downloading the files into your `plugins/` directory.
 
@@ -475,7 +475,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     -   **Custom taxonomies to be indexed**: Generally there is no need to enter anything here; however, if Wordpress has been customized to organize blog posts in ways other than categories and tags, enter the name of the taxonomy here.
 
-    -   **Custom fields to be indexed**: Generally there is no need to select anything here. 
+    -   **Custom fields to be indexed**: Generally there is no need to select anything here.
 
     -   **Index Comments**: Select this if you want search results to include comments. This is suitable only for blogs where comments add some value to the post and are rigorously moderated.
 
@@ -491,7 +491,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
         ![WPSolr Suggestions](/docs/assets/wpsolr_search_results_did_you_mean_small.png)
 
-    -   **Display number of results and current page**: Recommended. This is useful for paginating search results. 
+    -   **Display number of results and current page**: Recommended. This is useful for paginating search results.
 
     -   **Replace default WordPress search**: Recommended. This replaces the default WordPress search box with one that uses Solr to show autocompletion suggestions.
 
@@ -511,7 +511,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
     [![WPSolr Faceting](/docs/assets/wpsolr_search_results_facets_resized.png)](/docs/assets/wpsolr_search_results_facets.png)
 
-11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button. 
+11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button.
 
     {: .note}
     >
@@ -527,7 +527,7 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 The following steps will be completed while on your blog.
 
 1.  Test **autocompletion** by beginning to type a word you know is in one of your blog posts. As you are typing, the search box should display some suggestions in a dropdown:
-    
+
     ![Autocompletion](/docs/assets/wpsolr_search_box_suggestions.png)
 
 2.  Test **search results** by entering a search phrase. Matching results should be displayed:
@@ -546,11 +546,11 @@ The following steps will be completed while on your blog.
 
 ## Location of Search Data
 
-Search engine data is stored in the `/opt/solr-4.10.4/example/solr/collection1/data` directory. 
+Search engine data is stored in the `/opt/solr-4.10.4/example/solr/collection1/data` directory.
 
 ## Back Up or Restore Search Data
 
-If you have a data backup procedure for your server, you can back up search data by including the `/opt/solr-4.10.4/example/solr/collection1/data` directory in the backup. 
+If you have a data backup procedure for your server, you can back up search data by including the `/opt/solr-4.10.4/example/solr/collection1/data` directory in the backup.
 
 The backing up of search data is not critical, since it can always be recreated from the WordPress database. However, for very large blogs with thousands of posts and attachments, backing up and restoring search data will be much faster than recreating it. Overall, when migrating or merging a blog from another WordPress server, the recommended approach is to *recreate* the search data.
 

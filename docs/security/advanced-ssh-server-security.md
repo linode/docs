@@ -81,7 +81,7 @@ For more detailed information on how to decide whether to edit the existing file
 
 ## SSH Access Control
 
-Ideally, you should limit the number of users with server access to a bare minimum. Fortunately, OpenSSH Access Control Directives bring an excellent mechanism to set permissions and establish restrictions to users and groups that connect to your server. 
+Ideally, you should limit the number of users with server access to a bare minimum. Fortunately, OpenSSH Access Control Directives bring an excellent mechanism to set permissions and establish restrictions to users and groups that connect to your server.
 
 There are four directives available executed in sequential order:
 
@@ -126,7 +126,7 @@ The command will generate a 44 character long, base64-encoded password like this
 
     C4b7Yep8HGQFeG6kbnpEtrm+bg0+958xf1f85PU3/e0=
 
-This kind of password is very hard to crack, but has the obvious disadvantage of being inconvenient each time you log to your server. The recommended method is to use a good password manager, because using a plain-text file for this dilutes the purpose of using the password in the first place. 
+This kind of password is very hard to crack, but has the obvious disadvantage of being inconvenient each time you log to your server. The recommended method is to use a good password manager, because using a plain-text file for this dilutes the purpose of using the password in the first place.
 
 To add the generated password to your existing private key:
 
@@ -171,7 +171,7 @@ However, this strategy involves a time-consuming process to configure the jailed
 
         sudo ldd /bin/bash
 
-7.  Manually copy each library from the output to the corresponding location in our `restricted-user` directory. This is necessary because our user won't have access outside its own jail. 
+7.  Manually copy each library from the output to the corresponding location in our `restricted-user` directory. This is necessary because our user won't have access outside its own jail.
 
         cp -v /lib/x86_64-linux-gnu/{libncurses.so.5,libtinfo.so.5,libdl.so.2,libc.so.6} /home/chroot/restricted-user/lib/
         cp -v /lib64/ld-linux-x86-64.so.2 /home/chroot/restricted-user/lib64/
@@ -217,7 +217,7 @@ The list should contain one key per line in plain text format. Remember to resta
 Unattended SSH sessions are a major security risk. Leaving a remote connection open may allow unauthorized users the power to do whatever they like with your server. After all, you're already logged. The idle time interval comes in useful to prevent this situation, all you need is to configure two directives:
 
 `ClientAliveInterval` set the time in seconds before the server sends a message requesting a client response. Default is 0, which means the server won't request a client response (the session can last forever).
-`ClientAliveCountMax` specifies the number of client alive messages sent by the server before closing the connection if no response is returned.  The default is 3. 
+`ClientAliveCountMax` specifies the number of client alive messages sent by the server before closing the connection if no response is returned.  The default is 3.
 
 For example, if you decide to limit an idle SSH connection to 2 minutes before disconnecting the client, you can configure it as follows:
 

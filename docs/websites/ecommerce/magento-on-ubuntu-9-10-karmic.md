@@ -27,8 +27,8 @@ Before installing Magento, we must ensure that the `universe` repositories are e
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -69,7 +69,7 @@ Additionally you will want to increase PHP's `memory_limit` setting, by editing 
 {: .file-excerpt }
 /etc/php5/cli/php.ini and /etc/php5/apache2/php.ini
 :   ~~~ ini
-    memory_limit = 64M 
+    memory_limit = 64M
     ~~~
 
 At this point your server has the prerequisites to install Magento.

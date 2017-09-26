@@ -451,7 +451,7 @@ In the following example, the MariaDB shell is used to add support for the domai
 
 ###Check Your Logs
 
-After the test mail is sent, check the mail logs to make sure the mail was delivered. 
+After the test mail is sent, check the mail logs to make sure the mail was delivered.
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 

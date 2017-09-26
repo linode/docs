@@ -29,8 +29,8 @@ Before installing Ikiwiki, we must enable the `universe` repository. To enable `
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -52,7 +52,7 @@ After updating this file, run the following commands:
 
 We're ready to install Ikiwiki and its dependencies using the following command:
 
-    apt-get install ikiwiki git-core build-essential libcgi-formbuilder-perl libcgi-session-perl 
+    apt-get install ikiwiki git-core build-essential libcgi-formbuilder-perl libcgi-session-perl
 
 Now that you have Ikiwiki installed, we can move on to configuring it for use.
 
@@ -141,8 +141,8 @@ Advanced Ikiwiki Setup
 While all of the content of an Ikiwiki is stored under version control, the templates and configuration files are stored outside of the source directory. If you want to use git to store these files and track the versions of your configuration we recommend making an "admin" repository located in the `~/wiki-admin` directory. This should reside next to the `~/wiki/` repository/directory where the wiki's source directory is located. To create the directory and initialize the repository, issue the following commands:
 
     mkdir ~/wiki-admin/
-    cd ~/wiki-admin/ 
-    git init 
+    cd ~/wiki-admin/
+    git init
 
 Move your `ikiwiki.setup` file into `~/wiki-admin/`. You may also want to move the template files into the `wiki-admin` repository with the following command:
 
@@ -176,7 +176,7 @@ Next, edit the `~/wiki-admin/.git/config` file to set up the remote repository. 
 Now you can perform the first push for the `wiki-admin` repository by issuing the following commands:
 
     cd ~/wiki-admin/
-    git push origin master 
+    git push origin master
 
 You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
 

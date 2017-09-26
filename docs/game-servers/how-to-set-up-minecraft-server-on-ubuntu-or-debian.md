@@ -18,7 +18,7 @@ external_resources:
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 ---
 
-Minecraft is one of the most popular games in the world with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game. 
+Minecraft is one of the most popular games in the world with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
 
 This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update.
 
@@ -37,14 +37,14 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 	{: .note}
 	> Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
 	> `sudo apt remove openjdk-7-\*` before continuing with this guide.
- 
+
 
     - In Ubuntu 16.04:
 
           sudo apt install openjdk-8-jre-headless screen
 
     - In Debian 8:
- 
+
           sudo apt install openjdk-8-jre-headless screen
 
 4.  Create a new user for Minecraft to run as:
@@ -122,23 +122,23 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         [22:00:06] [Server thread/INFO]: Default game type: SURVIVAL
         [22:00:06] [Server thread/INFO]: Generating keypair
         [22:00:07] [Server thread/INFO]: Starting Minecraft server on *:25565
-        
+
         ....
-        
+
         [22:00:07] [Server thread/INFO]: Preparing level "world"
         [22:00:08] [Server thread/INFO]: Preparing start region for level 0
         [22:00:09] [Server thread/INFO]: Preparing spawn area: 3%
-        
+
         ....
-        
+
         [22:00:21] [Server thread/INFO]: Preparing spawn area: 96%
         [22:00:22] [Server thread/INFO]: Done (14.737s)! For help, type "help" or "?"
 
     {: .note}
     > To disconnect from the screen session without stopping the game server, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
 
-4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly. 
-    
+4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly.
+
     After stopping and restarting the server script with the `level-name` changed, a new directory is created that contains your game data for that world. For more information on available settings and how to modify them, refer to the [Minecraft Wiki settings page](http://minecraft.gamepedia.com/Server.properties).
 
 ## Connect to your Minecraft Server

@@ -77,7 +77,7 @@ nginx.conf
 
     include /etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -91,7 +91,7 @@ nginx.conf
 
     include /srv/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 

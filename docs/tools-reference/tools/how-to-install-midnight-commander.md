@@ -82,8 +82,8 @@ First, install the utility:
 
     ![Midnight Commander Delete Confirmation Dialog](/docs/assets/midnight-commander-delete-confirmation.png)
 
-3.  At the top of the screen, you can see a colored bar with text: 
-**Left**, **File**, **Command**, **Options**, **Right**. 
+3.  At the top of the screen, you can see a colored bar with text:
+**Left**, **File**, **Command**, **Options**, **Right**.
 
     These are drop-down menus that can be accessed by pressing **F9** and then navigating with your arrow keys. Press **F9** and then the **DOWN** arrow key multiple times until **Tree** is highlighted. Press **ENTER**. The panel has now changed to tree view.
 
@@ -134,7 +134,7 @@ First, install the utility:
     2. /usr/bin/mcedit
     3. /usr/bin/vim.basic
     4. /usr/bin/vim.tiny
- 
+
     Choose 1-4 [1]:
     ~~~
 

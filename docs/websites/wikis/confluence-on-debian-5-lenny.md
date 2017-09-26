@@ -89,7 +89,7 @@ Edit the `setenv.sh` file, adding the following lines. Adjust the full path to t
     JAVA_HOME="/usr/lib/jvm/java-6-sun"
     export JAVA_HOME
     ~~~
-    
+
 Issue the following command to return to a root shell.
 
     exit

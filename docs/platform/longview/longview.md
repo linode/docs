@@ -34,7 +34,7 @@ To access Longview, log in to the [Linode Manager](https://manager.linode.com) a
 
 2.  This guide will use `sudo` wherever possible.
 
-3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.   
+3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.
 
 ## Adding Systems
 
@@ -244,7 +244,7 @@ If your Linode has a firewall, it will need to allow communication with Longview
 
 2. In order for your Linode to provide its metrics to Longview you will want to allow the same address through the OUTPUT chain of your Firewall.
 
-        iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
+        iptables -I OUTPUT -d longview.linode.com -j ACCEPT
 
 If you followed the instructions for setting up a firewall in our [Securing Your Server](/docs/security/securing-your-server) guide, go back to [this section](/docs/security/securing-your-server#step_6) to find additional rules for Longview.
 
@@ -409,7 +409,7 @@ If you're experiencing problems with the Longview client application, please per
 
     **Debian/Ubuntu:** :
 
-        /etc/init.d/longview debug 
+        /etc/init.d/longview debug
 
     **Fedora/CentOS:** :
 

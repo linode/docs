@@ -45,7 +45,7 @@ Since SquirrelMail is accessed through a web server (Apache in this example), we
 
 2.  Edit the configuration file to uncomment the `<VirtualHost *:80>` block by removing the pound symbol (`#`), as shown below. Edit the IP and ServerName to match your Linode and/or domain settings:
 
-        sudo nano /etc/apache2/sites-available/squirrelmail 
+        sudo nano /etc/apache2/sites-available/squirrelmail
 
 	{: .file }
 	/etc/apache2/sites-available/squirrelmail

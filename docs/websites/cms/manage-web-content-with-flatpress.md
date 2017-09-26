@@ -31,8 +31,8 @@ On CentOS and Fedora systems issue the following commands to ensure your system'
 
     yum update
     yum install httpd php php-pear bzip2
-    /etc/init.d/httpd start 
-    chkconfig --levels 235 httpd on 
+    /etc/init.d/httpd start
+    chkconfig --levels 235 httpd on
 
 For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. In this document you will install FlatPress into this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
@@ -44,7 +44,7 @@ This document contains specific instructions for installing version 0.909.1 of F
     mkdir -p /srv/www/example.com/src/
     cd /srv/www/example.com/src/
     wget http://downloads.sourceforge.net/project/flatpress/flatpress-0.909.1-arioso.tar.bz2
-    tar -xjf flatpress-0.909.1-arioso.tar.bz2 
+    tar -xjf flatpress-0.909.1-arioso.tar.bz2
     mv flatpress flatpress-0.909.1
     cp -R flatpress-0.909.1/* /srv/www/example.com/public_html/
     chmod 777 /srv/www/example.com/public_html/fp-content/

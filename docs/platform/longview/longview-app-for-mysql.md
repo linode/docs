@@ -64,7 +64,7 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
     :   ~~~ conf
         #username root
         #password example_password
-        username linode-longview 
+        username linode-longview
         password ***************
         ~~~
 

@@ -42,8 +42,8 @@ Issue the following command to install packages required for Ruby on Rails:
 
 Create symbolic links to the installed version of Ruby:
 
-    ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
-    ln -s /usr/bin/irb1.8 /usr/bin/irb 
+    ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+    ln -s /usr/bin/irb1.8 /usr/bin/irb
 
 Install the `rake` and `rack` gems:
 
@@ -68,9 +68,9 @@ Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
-    cd /opt 
+    cd /opt
     wget http://rubyforge.org/frs/download.php/73563/passenger-3.0.1.tar.gz
-    tar xzvf passenger-3.0.1.tar.gz 
+    tar xzvf passenger-3.0.1.tar.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -94,7 +94,7 @@ Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to contr
     wget -O init-deb.sh http://www.linode.com/docs/assets/602-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx just like any other server daemon. For example, to start the server, issue the following command:
 
@@ -107,7 +107,7 @@ Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 10.10 (Maverick) guide](/docs/databases/mysql/ubuntu-10-10-maverick). Once it's installed and configured properly, issue the following commands:
 
-    apt-get install libmysqlclient15-dev libmysql-ruby 
+    apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
 
 More Information

@@ -88,7 +88,7 @@ The next step is to build the software environment needed for your site to funct
 *  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has advantages and disadvantages to consider.
 *  **Apache:** A web server that handles HTTP and HTTPS internet traffic.
 *  **MySQL:** A database server.
-*  **PHP:** A software language that allows you to create and configure dynamic website content. 
+*  **PHP:** A software language that allows you to create and configure dynamic website content.
 
 1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**:
 
@@ -172,7 +172,7 @@ The last step in your Linode migration is to point your domain at your Linode's 
 2.  If you use a third-party email service, edit the default MX records.
 
 3.  Log in to your domain registrar's control panel and update the name servers to use Linode's:
-    
+
     *  `ns1.linode.com`
     *  `ns2.linode.com`
     *  `ns3.linode.com`

@@ -119,7 +119,7 @@ To manually configure iptables without using a controller, see our [iptables gui
 ## Install and Configure Terraria
 
 1.  Change your working directory to `/opt` and download the Terraria tarball. You'll need to check [Terraria's website](http://terraria.gamepedia.com/Server#How_to_.28Linux.29) for the current release version. Right-click and copy the link to use with `curl` or `wget`. We'll use 1.3.4.4 as an example in this guide:
- 
+
         cd /opt && sudo curl -O http://terraria.org/server/terraria-server-1344.zip
 
     {: .note}
@@ -137,7 +137,7 @@ To manually configure iptables without using a controller, see our [iptables gui
         sudo yum install unzip
 
 3.  Extract the archive and set the necessary permissions:
- 
+
         sudo unzip terraria-server-1344.zip
         sudo mv /opt/Dedicated\ Server/Linux /opt/terraria
         sudo rm -rf Dedicated\ Server/
@@ -181,7 +181,7 @@ Install Screen with the system's package manager:
 
 ### systemd
 
-It's useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly. 
+It's useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly.
 
 Create the following file to define the `terraria` systemd service:
 
