@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configuration.'
+description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.'
 keywords: 'prestashop,ecommerce,cms'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Tuesday, August 29th, 2017
@@ -17,6 +17,8 @@ contributor:
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
 
 ---
+
+![Prestashop_banner](/docs/assets/PrestaShop.jpg)
 
 ## What is PrestaShop?
 
@@ -37,7 +39,7 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
         sudo apt-get update && sudo apt-get upgrade
 
-4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN and set it to point to your Linode. See our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview) guide for more information.
+4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview) guide for more information.
 
       {: .note}
       >
