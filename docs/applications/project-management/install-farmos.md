@@ -11,6 +11,8 @@ modified_by:
 title: 'Install and Configure FarmOS, an Agricultural Management, Planning and Record-Keeping Web App'
 ---
 
+![Farm_OS Banner](/docs/assets/FarmOS.jpg)
+
 ## What is FarmOS?
 
 [FarmOS](http://farmos.org/) is a one-of-a-kind web application that enables farmers to manage and track all aspects of their farm. Built atop Drupal and licensed under [GPL V.3](https://www.gnu.org/licenses/gpl-3.0.en.html), FarmOS is a great free-software solution for farms to explore. 
@@ -61,53 +63,6 @@ Download the following PHP libraries:
 
 If prompted to automatically configure a database, choose "yes."
 
-<!---
-your comment goes here
-and here
-
-## Install Drupal
-
-FarmOS uses Drupal, a content management system. 
-
-1. Navigate to `/var/www/html/`, and download the latest Drupal version:
-
-        wget https://ftp.drupal.org/files/projects/drupal-8.3.7.tar.gz
-
-2. Unpack Drupal into the directory: 
-
-        sudo tar -zxvf drupal-8.*.tar.gz --strip-components=1 
-
-3. Change the permission of the directory: 
-
-        sudo chown -R www-data /var/www/html/*
-
-4. Navigate to your public IP address, which you can find using `ifconfig`. 
-
-
-If you've configured everything correctly, your browser should look like this: 
-
-
-![firstscreen](/docs/assets/farmOS/first.jpg)
-
-Click **Standard**, and the installer will move to the next screen:
-
-![secondscreen](/docs/assets/farmOS/second.jpg)
-
-You may receive an error that looks like this:
-
-![clean_url](/docs/assets/farmOS/clean_url.jpg)
-
-If you wish to enable clean urls, you may do so here. However, in this guide we will ignore this section. 
-
-The next screen will ask for the details of the database you set up for Drupal:
-
-![database](/docs/assets/farmOS/database.jpg)
-
-Enter all of your information into the provided fields, and click on **Save and Continue**. You will be greeted by this screen:
-
-![welcome](/docs/assets/farmOS/welcome.jpg)
-
--->
 
 ## Install FarmOS
 
