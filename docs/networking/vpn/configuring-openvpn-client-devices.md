@@ -5,7 +5,7 @@ author:
 description: 'This guide will show you how to install, configure and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
 keywords: 'openvpn,vpn,vpn tunnel,ios,os x,mac,windows,android'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Thursday, August 17th, 2017'
+modified: 'Tuesday, September 26th, 2017'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -17,16 +17,12 @@ external_resources:
  - '[Network Manager GNOME Configuration Management Tool](https://wiki.gnome.org/Projects/NetworkManager)'
 ---
 
-This guide is the third of a three-part series to set up a hardened OpenVPN environment. Though it's recommended that you first complete parts one and two, [Set up a Hardend OpenVPN Server on Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide can stand on its own as a general tutorial for configuring OpenVPN clients on various operating systems, including mobile.
+This guide is the third of a three-part series to set up a hardened OpenVPN environment. Though it's recommended that you first complete parts one and two, [Set up a Hardened OpenVPN Server on Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server) and [Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server), this guide can stand on its own as a general tutorial for configuring OpenVPN clients on various operating systems, including mobile.
 
 ![Configuring OpenVPN Client Devices](/docs/assets/configuring-openvpn-client-devices.png "Configuring OpenVPN Client Devices")
 
 ## Before You Begin
 
-<<<<<<< HEAD
-=======
-
->>>>>>> aca64be8b716e5f4bb1966de2e81ca4400a8ab33
 You must already have have the client files ready for transfer to the device. These are listed below. **Each client** will need its own copies. If you still need your client credentials, see the [VPN Certificate Authority](/docs/networking/vpn/set-up-a-hardened-openvpn-server/#vpn-certificate-authority) area of part one of this series.
 
   *  `client1.key`    # Exclusive to this device.
@@ -38,13 +34,13 @@ You must already have have the client files ready for transfer to the device. Th
 
 ## Transfer Client Credentials
 
-Client credentials must be moved to the client device using an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols do not encrypt any traffic. Windows, however, has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the VPN credentials. Since you created the credentials on a local computer in part one of this series, you can also transfer them by Bluetooth or USB. Apple OS X can also use iTunes to transfer the files to iOS devices. A Linux computer with the pacage `gvfs-backends` installed can mount the iOS device as external storage.
+Client credentials must be moved to the client device using an encrypted transfer protocol such as [SCP or SFTP](/docs/tools-reference/linux-system-administration-basics#how-to-upload-files-to-a-remote-server). FTP or telnet should **not** be used because these protocols do not encrypt any traffic. Windows, however, has no native SCP or SFTP support. See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use it for transferring the VPN credentials. Since you created the credentials on a local computer in part one of this series, you can also transfer them by Bluetooth or USB. Apple OS X can also use iTunes to transfer the files to iOS devices. A Linux computer with the package `gvfs-backends` installed can mount the iOS device as external storage.
 
 ## Client-Side Configurations
 
 ### Android
 
-There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN software. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). OpenVPN for Android is open source, more feature-full and generally updated more often so we'll use it for this guide, though the two clients are similar.
+There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN software. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). OpenVPN for Android is open source, more feature-rich, and usually updated more often so we'll use it for this guide, though the two clients are similar.
 
 {: .note}
 >
@@ -54,7 +50,7 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
     ![Google Play Store OpenVPN for Android](/docs/assets/google-play-openvpn-for-android.png)
 
-2.  Connect your Android device by USB to your computer. From the USB settings notification, put the device into file transfer mode. See [here](https://support.google.com/nexus/answer/2840804) for more information on that. Copy over the folder containing the VPN client credentials. You can put it into the `/../Internal storage/` area.
+2.  Connect your Android device by USB to your computer. From the USB settings notification, put the device into file transfer mode. See [here](https://support.google.com/nexus/answer/2840804) for more information. Copy over the folder containing the VPN client credentials. You can put it into the `/../Internal storage/` area.
 
 3.  Disconnect the device from USB and launch OpenVPN for Android. To import the VPN profile, tap the Import icon at the top right.
 
@@ -125,7 +121,7 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
     [![OpenVPN Connect settings.](/docs/assets/openvpn-settings-ios-small.png)](/docs/assets/openvpn-settings-ios.png)
 
-9.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
+9.  After the profile is imported and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on your client's internal storage, which is readable by other applications.
 
 
 ### Linux
@@ -224,7 +220,7 @@ To remove a client device's access to the VPN, go back to the EasyRSA root direc
 
 1.  With your VPN connection enabled, go to [https://dnsleaktest.com/](https://dnsleaktest.com/) in a web browser from your VPN client. The IP address shown should be that of your Linode's public IPv4 address.
 
-2.  Choose **Extended test**. The resulting IP addresses should be for either: 1) The DNS resolvers you chose in `server.conf`; or 2) The DNS resolvers you chose for your client device (if possible).
+2.  Choose **Extended test**. The resulting IP addresses should be for either: 1) The DNS resolvers you chose in `server.conf`; or 2) The DNS resolvers you chose for your client device (if applicable).
 
     If the client device you're testing is using OpenVPN Connect with Google DNS fallback enabled, you may see Google in the results as well.
 

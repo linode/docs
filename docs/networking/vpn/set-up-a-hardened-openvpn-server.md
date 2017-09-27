@@ -6,7 +6,7 @@ description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL
 keywords: 'openvpn,vpn,vpn tunnel,openssl'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/']
-modified: 'Thursday, August 17th, 2017'
+modified: 'Tuesday, September 26th, 2017'
 modified_by:
   name: Linode
 published: 'Wednesday, December 9th, 2015'
@@ -21,7 +21,7 @@ external_resources:
 
 An OpenVPN connection consists of two flow channels between the server and clients: the *Control Channel* and the *Data Channel*. A client connects to the server by initiating a TLS session over the control channel, in which credentials are exchanged between server and clients to establish the data channel. The data channel is the encrypted pipeline in which all traffic between server and clients is then transmitted.
 
-This guide is the first of a three-part series. Part one sets up with a VPN server on Debian and prepares the access credentials for client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
+This guide is the first of a three-part series. Part one sets up a VPN server on Debian and prepares the access credentials for client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
 [Part two](***link***) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode out to the internet. [Part three](***link***) takes you through setting up the client-side software for various operating systems, including mobile platforms.
 
@@ -30,7 +30,7 @@ This guide is the first of a three-part series. Part one sets up with a VPN serv
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and set your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not follow the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
 
 3.  Update the system:
 
@@ -60,7 +60,7 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
 
 1.  Change to the root user.
 
-       su - root
+        su - root
 
 2.  Flush any pre-existing rules and non-standard chains which may be in the system:
 
@@ -123,7 +123,7 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
         COMMIT
         ~~~
 
-5.  We'll disable IPv6 in the next section so add an ip6tables ruleset to reject all v6 traffic:
+5.  You will disable IPv6 in the next section, so add an `ip6tables` ruleset to reject all IPv6 traffic:
 
         cat >> /etc/iptables/rules.v6 << END
         *filter
@@ -137,14 +137,14 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
 
 6.  Activate the rulesets immediately and verify:
 
-        sudo iptables-restore < /etc/iptables/rules.v4
-        sudo ip6tables-restore < /etc/iptables/rules.v6
+        iptables-restore < /etc/iptables/rules.v4
+        ip6tables-restore < /etc/iptables/rules.v6
 
     You can see your loaded rules with `sudo iptables -S`. For more specialized firewall rules, see `/usr/share/doc/openvpn/examples/sample-config-files/firewall.sh` on your server.
 
 7.  Load the rulesets into `iptables-persistent`.  This time, answer **Yes** when asked if you want to save the current IPv4 and IPv6 rules.
 
-        sudo dpkg-reconfigure iptables-persistent
+        dpkg-reconfigure iptables-persistent
 
 
 ### Disable IPv6
@@ -163,7 +163,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 2.  Activate them immediately:
 
-        sudo sysctl -p
+        sysctl -p
 
 3.  Comment out the line for IPv6 resolution over localhost in `/etc/hosts`:
 
@@ -194,7 +194,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
         openvpn --genkey --secret /etc/openvpn/server/ta.key
 
-5.  Generate Diffie-Hellman parameter. This is a chunk of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) during creation of a client's session key. The default size is 2048 bits, but [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/GettingStartedwithOVPN) recommends to use a prime size equivalent to your RSA key size. Since we'll be using 4096 bit RSA keys, we'll use a 4096 bit DH prime. Depending on the size of your Linode, this can take about 10 minutes to complete.
+5.  Generate Diffie-Hellman parameter. This is a chunk of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) during creation of a client's session key. The default size is 2048 bits, but [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/GettingStartedwithOVPN) recommends to use a prime size equivalent to your RSA key size. Since you will be using 4096 bit RSA keys, create a 4096 bit DH prime. Depending on the size of your Linode, this can take about 10 minutes to complete.
 
         openssl genpkey -genparam -algorithm DH -out /etc/openvpn/server/dhp4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
@@ -207,19 +207,25 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 ## VPN Certificate Authority
 
-Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has as powerful of a CPU as you have access to, so no embedded devices or virtual machines. There are two main ways to do this: First is with the [EasyRSA](https://github.com/OpenVPN/easy-rsa) scripts, and the second way is to create your own public key infrastructure for your VPN which includes customizations not in the default OpenSSL configuration file.
+Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has as powerful of a CPU as you have access to, which means you should avoid embedded devices or virtual machines.
 
-We'll use EasyRSA for the rest of this guide. 
+You can generate certificates and keys in one of two ways: either by using [EasyRSA](https://github.com/OpenVPN/easy-rsa) scripts, or by creating your own public key infrastructure for your VPN which includes customizations not in the default OpenSSL configuration file.
+
+The rest of this guide will use EasyRSA.
 
 ### Configure EasyRSA
 
 1.  If you're using a local Unix-based operating system, install the package `easy-rsa` onto your local computer (CentOS will first need the EPEL repositories installed). For OS X or Windows, grab the `.zip` archive from the project's [Github page](https://github.com/OpenVPN/easy-rsa).
 
-2.  Make yourCertificate Authority root directory and change to that location. The location of your CA is arbitrary, but we'll make a folder called `ca` in your user's home directory as an example. The certificates are created from that directory.
+2.  Make your Certificate Authority root directory and change to that location. The location of your CA is arbitrary, but for the purposes of this guide make a folder called `ca` in your user's home directory as an example. The certificates are created from that directory.
 
         make-cadir ~/ca && cd ~/ca
 
-3.  The `vars` file created in `/ca` contains presets used by the EasyRSA. Here you can specify distinguished name  for your certificate authority which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
+3.  Create a symbolic link from `openssl-1.1.0.cnf` to `openssl.cnf`:
+
+        ln -s openssl-1.0.0.cnf openssl.cnf
+
+4.  The `vars` file created in `/ca` contains presets used by the EasyRSA. Here you can specify distinguished name  for your certificate authority which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
 
     {: .file-excerpt}
     ~/ca/vars
@@ -235,7 +241,7 @@ We'll use EasyRSA for the rest of this guide.
         export KEY_OU="MyOrganizationalUnit"
         ~~~
 
-2.  From `~/ca`, [source](http://stackoverflow.com/a/9326746) the `vars` script:
+5.  From `~/ca`, [source](http://stackoverflow.com/a/9326746) the `vars` script:
 
         source ./vars
 
@@ -243,7 +249,7 @@ We'll use EasyRSA for the rest of this guide.
 
         NOTE: If you run ./clean-all, I will be doing a rm -rf on /home/user/ca/keys
 
-3.  Run the `clean-all` script to create the `keys` directory and its containing files:
+6.  Run the `clean-all` script to create the `keys` directory and its containing files:
 
         ./clean-all
 
@@ -259,7 +265,7 @@ We'll use EasyRSA for the rest of this guide.
 
     When you've completed the question section for the private key, confirm the signing of the certificate and the `certificate requests certified` by answering `yes` to those two questions.
 
-3.  Now that you have the server credentials, they need to be uploaded to it. Do that from your local computer with SCP:
+3.  Upload the server credentials to your Linode. Use `scp` from your local computer:
 
         scp ./keys/{ca.crt,server.crt,server.key} root@<your_linode's_IP>:/etc/openvpn/server
 
@@ -270,7 +276,7 @@ We'll use EasyRSA for the rest of this guide.
 
 ### Client Credentials
 
-Each client device connecting to the VPN should have its own unique key. Furthermore, each key should have its own identifier (client1, client2, etc.) but all other certificate information can remain the same. **If you need to add users at any time later, just repeat this step using a different client name**.
+Each client device connecting to the VPN should have its own unique key and identifier (client1, client2, etc.). All other certificate information can remain the same and be shared across all client devices. **If you need to add users at any time later, just repeat this step using a different client name**.
 
     cd ~/ca && source ./vars && ./build-key client1
 
@@ -283,7 +289,7 @@ Each client device connecting to the VPN should have its own unique key. Further
 
 ### Server Configuration File
 
-OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the contents below to create a new file at that location:
+OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the contents below to create a new file at that location on your server:
 
 {: .file}
 /etc/openvpn/server.conf
@@ -345,7 +351,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the 
 
 ### Client Configuration File
 
-OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, location of that directory does not matter but this `.ovpn` file needs to be in the same directory as the client certificate and other credentials. OpenVPN does not refer to any of these files after import and they do not even need to remain on the client system.
+OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, the location of the directory where the credentials are stored does not matter, but this `.ovpn` file needs to be in the same directory as the client certificate and other credentials. OpenVPN does not refer to any of these files after import and they do not even need to remain on the client system. Create this file on your server so that it can be distributed among your client devices:
 
 {: .file}
 client.ovpn
@@ -403,7 +409,7 @@ Each client device needs to contain the following files:
 
 Start the OpenVPN daemon and enable it on reboot:
 
-    sudo systemctl restart openvpn.*
+    sudo systemctl enable openvpn.* && sudo systemctl start openvpn.*
 
 {: .note }
 >
