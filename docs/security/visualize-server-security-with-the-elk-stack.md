@@ -1,29 +1,29 @@
 ---
- author:
- name: Linode Community
- email: docs@linode.com
+author:
+  name: Linode Community
+  email: docs@linode.com
 description: 'Utilizing the ELK Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
 keywords: 'ossec, elk stack, elk, ossec-hids'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published:
-modified:
+published: 'Wednesday, September 27th, 2017'
+modified: Thursday, September 28th, 2017
 modified_by:
   name: Linode
 title: 'Visualize Server Security With The ELK Stack'
 contributor:
-   name: Andrew Lescher
-   link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
+  name: Andrew Lescher
+  link: 'https://www.linkedin.com/in/andrew-lescher-87027940/'
 external_resources:
-  - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
-  - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
-  - '[Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)'
-  - '[Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)'
-  - '[Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)'
-  - '[How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04)'
-  - '[Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)'
-  - '[LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)'
-  - '[How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)'
-  - '[Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)'
+- '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
+- '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
+- '[Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)'
+- '[Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)'
+- '[Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)'
+- '[How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04)'
+- '[Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)'
+- '[LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)'
+- '[How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)'
+- '[Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -36,19 +36,19 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 **ElasticSearch**
 
-  - Essentially the heart of the ELK Stack, Elasticsearch provides powerful search and analytical capabilities. It's purpose in the ELK Stack is to centrally store and retrieve data collected by Logstash.
+  - Essentially the heart of the ELK Stack, ElasticSearch provides powerful search and analytical capabilities. It's purpose in the ELK Stack is to centrally store and retrieve data collected by Logstash.
 
 **Logstash**
 
-  - Ingests data from multiple sources and passes it along to a central database (Elasticsearch) 
+  - Ingests data from multiple sources and passes it along to a central database (ElasticSearch)
 
 **Kibana**
 
-  - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in Elasticsearch.
+  - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in ElasticSearch.
 
 **Wazuh OSSEC**
 
-  - An open source branch of the orignal OSSEC HIDS developed for integration into the ELK Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, aw well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
+  - An open source branch of the orignal OSSEC HIDS developed for integration into the ELK Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
 
 ## Before You Begin
 
@@ -56,8 +56,8 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 2. Ideally, your Linode should possess at least 4GB of RAM. While the ELK Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-{: .note}
-> Some of the commands below require elevated privilidges to execute, and must be prefixed with `sudo` when necessary.
+    {: .note}
+    > Some of the commands below require elevated privileges to execute, and must be prefixed with `sudo` when necessary.
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
@@ -88,7 +88,7 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 # Setup The ELK Stack And Integrate Wazuh OSSEC
 
-Installing the ELK Stack components can be accomplished in various ways, however installation via rpm will yield the latest versions.
+Installing the ELK Stack components can be accomplished in various ways. However, installation via RPM will yield the latest versions.
 
 ## Update System And Install Pre-requisites
 
@@ -106,30 +106,34 @@ Installing the ELK Stack components can be accomplished in various ways, however
 
     **Debian & Ubuntu**
 
-    1. Add the Java 8 repository, download the gpg key, and install Java 8. 
+    1. Add the Java 8 repository, download the gpg key, and install Java 8.
 
             echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
 
             echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
 
-            apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
+            sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 
-            apt update
+            sudo apt install software-properties-common
 
-            apt install oracle-java8-installer 
+            sudo add-apt-repository ppa:webupd8team/java
+
+            sudo apt update
+
+            sudo apt install oracle-java8-installer
 
     2. In most systems, the *oracle-java8-set-default* package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to step 3. Otherwise, Java 8 installation is complete.
 
             dpkg --list | grep oracle
 
-    *Output*
-        
-        ii  oracle-java8-installer        8u144-1~webupd8~0            all          Oracle Java(TM) Development Kit (JDK) 8
-        ii  oracle-java8-set-default      8u144-1~webupd8~0            all          Set Oracle JDK 8 as default Java
+        *Output*
+
+            ii  oracle-java8-installer        8u144-1~webupd8~0            all          Oracle Java(TM) Development Kit (JDK) 8
+            ii  oracle-java8-set-default      8u144-1~webupd8~0            all          Set Oracle JDK 8 as default Java
 
     3. Install the *oracle-java8-set-default* package.
 
-        apt install oracle-java8-set-default
+            apt install oracle-java8-set-default
 
     **Fedora & RHEL based**
 
@@ -141,8 +145,6 @@ Installing the ELK Stack components can be accomplished in various ways, however
 
     Your output should be similar to the lines below:
 
-    *Output*
-
         openjdk version "1.8.0_144"
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
@@ -150,8 +152,8 @@ Installing the ELK Stack components can be accomplished in various ways, however
 3. Install final pre-requisites.
 
     **Debian & Ubuntu**
-                
-            apt install curl apt-transport-https lsb-release
+
+            apt install apt-transport-https lsb-release wget rpm
 
     **Fedora & RHEL based**
 
@@ -165,47 +167,47 @@ Follow the section relevant to your Linux distribution to install the Wazuh comp
 
 1. Create the repository file in the indicated location and paste the provided text using your preferred text editor.
 
-**RHEL**
+    **RHEL**
 
-{: .file}
-**/etc/yum.repos.d/wazuh.repo**
-~~~ .repo
-[wazuh_repo]
-gpgcheck=1
-gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-enabled=1
-name=RHEL-$releasever - Wazuh
-baseurl=https://packages.wazuh.com/yum/rhel/$releasever/$basearch
-protect=1
-~~~
+    {: .file}
+    /etc/yum.repos.d/wazuh.repo
+    : ~~~ .repo
+      [wazuh_repo]
+      gpgcheck=1
+      gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+      enabled=1
+      name=RHEL-$releasever - Wazuh
+      baseurl=https://packages.wazuh.com/yum/rhel/$releasever/$basearch
+      protect=1
+      ~~~
 
-**CentOS**
+    **CentOS**
 
-{: .file}
-**/etc/yum.repos.d/wazuh.repo**
-~~~ .repo
-[wazuh_repo]
-gpgcheck=1
-gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-enabled=1
-name=CentOS-$releasever - Wazuh
-baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
-protect=1
-~~~
+    {: .file}
+    /etc/yum.repos.d/wazuh.repo
+    : ~~~ .repo
+      [wazuh_repo]
+      gpgcheck=1
+      gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+      enabled=1
+      name=CentOS-$releasever - Wazuh
+      baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
+      protect=1
+      ~~~
 
-**Fedora**
+    **Fedora**
 
-{: .file}
-**/etc/yum.repos.d/wazuh.repo**
-~~~ .repo
-[wazuh_repo]
-gpgcheck=1
-gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-name=Fedora-$releasever - Wazuh
-enabled=1
-baseurl=https://packages.wazuh.com/yum/fc/$releasever/$basearch
-protect=1
-~~~
+    {: .file}
+    /etc/yum.repos.d/wazuh.repo
+    : ~~~ .repo
+      [wazuh_repo]
+      gpgcheck=1
+      gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+      name=Fedora-$releasever - Wazuh
+      enabled=1
+      baseurl=https://packages.wazuh.com/yum/fc/$releasever/$basearch
+      protect=1
+      ~~~
 
 2. Install the Wazuh Manager and `curl`.
 
@@ -220,12 +222,15 @@ protect=1
     2. Install NodeJS
 
             yum install nodejs
-    
+
     3. Install Wazuh API.
 
             yum install wazuh-api
 
 ### DEB Installation (Debian & Ubuntu)
+
+{:.note}
+> You may need to start a root user session with `su -` to complete the commands in this section.
 
 1. Install the GPG key. Install `curl` as well if necessary with `apt install curl`.
 
@@ -299,48 +304,48 @@ The Wazuh API requires Python version 2.7 or higher. It will be installed by def
 {: .file}
 **/var/ossec/api/configuration/config.js**
 ~~~ js
-. . . 
+. . .
 
 config.python = [
     // Default installation
 {
         bin: "python",
                 lib: ""
-                    
+
 },
     // Package 'python27' for CentOS 6
 {
         bin: "/custom/path/to/python",
                 lib: "/custom/path/to/lib64"
-                    
+
 }
 
 ];
 
-. . . 
+. . .
 ~~~
 
-## Install Elasticsearch, Logstash, and Kibana
+## Install ElasticSearch, Logstash, and Kibana
 
 Install the ELK Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.5.2 was the most recent at the time of publishing.
 
-### Elasticsearch
+### ElasticSearch
 
-1. Download the Elasticsearch rpm file into the `/opt` directory.
+1. Download the ElasticSearch rpm file into the `/opt` directory.
 
         cd /opt
-        curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.rpm
+        wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.5.2.rpm
 
-2.  Install Elasticsearch.
+2.  Install ElasticSearch.
 
         rpm -ivh elasticsearch-5.5.2.rpm
 
-3. Enable Elasticsearch on system boot.
+3. Enable ElasticSearch on system boot.
 
         systemctl enable elasticsearch
         systemctl start elasticsearch
 
-4. Load The Wazuh Elasticsearch template. Modify the following command by replacing the brackets and the text "insert_your_ip_address" with your Linode's external IP address.
+4. Load The Wazuh ElasticSearch template. Modify the following command by replacing the brackets and the text "insert_your_ip_address" with your Linode's external IP address.
 
         curl https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/master/server/startup/integration_files/template_file.json | curl -XPUT 'http://[insert_your_ip_address]:9200/_template/wazuh' -H 'Content-Type: application/json' -d @-
 
@@ -357,7 +362,7 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 
 3. Enable Logstash on system boot.
 
-        systemctl daemon-reload 
+        systemctl daemon-reload
         systemctl enable logstash
         systemctl start logstash
 
@@ -411,7 +416,7 @@ input {
 LS_USER=logstash
 LS_GROUP=logstash
 
-. . . 
+. . .
 ~~~
 
     2. Update the service with the new parameters.
@@ -466,7 +471,7 @@ You may modify other values in this file as you see fit, but this configuration 
 
 The ELK Stack will require some tuning before it can be accessed via the Wazuh API.
 
-1. Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
+1. Enable memory locking in ElasticSearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
 
         bootstrap.memory_lock: true
 
@@ -479,11 +484,11 @@ The ELK Stack will require some tuning before it can be accessed via the Wazuh A
 {: .file}
 **/etc/systemd/system/multi-user.target.wants/elasticsearch.service**
 ~~~ service
-. . . 
+. . .
 
 LimitMEMLOCK=infinity
 
-. . . 
+. . .
 ~~~
 
     **System V**
@@ -501,7 +506,7 @@ MAX_LOCKED_MEMORY=unlimited
 . . .
 ~~~
 
-3. Configure the Elasticsearch heap size. This figure will determine how much memory Elasticsearch is allowed to consume. You must determine the optimum heap size for Elasticsearch based on your system's hardware resources. However, the following two rules always apply:
+3. Configure the ElasticSearch heap size. This figure will determine how much memory ElasticSearch is allowed to consume. You must determine the optimum heap size for ElasticSearch based on your system's hardware resources. However, the following two rules always apply:
 
   - No more than 50% of available RAM
   - No more than 32GB of RAM
@@ -520,15 +525,15 @@ Open the `jvm.options` file and navigate to the following block:
 -Xms4g
 -Xmx4g
 
-. . . 
+. . .
 ~~~
 
-This configuration configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
+This configuration configures ElasticSearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
 {: .caution}
-> Set this value carefully. If the system RAM is completely depleted, Elasticsearch will crash.
+> Set this value carefully. If the system RAM is completely depleted, ElasticSearch will crash.
 
-## 
+##
 
 # Connect The ELK Stack With The Wazuh API
 
@@ -540,7 +545,7 @@ Configuring Nginx or Apache as a reverse proxy server allows you to secure the K
 
 ## Setup A Reverse Proxy Server To Host Kibana As a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended. 
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
 ### Nginx
 
@@ -668,14 +673,14 @@ You can enable the necessary mods by opening the **00-proxy.conf** file and matc
 {: .file}
 **/etc/httpd/conf.modules.d/00-proxy.conf**
 ~~~ conf
-. . . 
+. . .
 
 LoadModule proxy_module modules/mod_proxy.so
 LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
 LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
 LoadModule proxy_http_module modules/mod_proxy_http.so
 
-. . . 
+. . .
 ~~~
 
 3. Create an new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
@@ -733,7 +738,7 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
     SSLEngine on
     SSLProtocol all -SSLv2
     SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM
-    
+
     SSLCertificateFile /path/to/cert_file/ssl.crt
     SSLCertificateKeyFile /path/to/ssl/private.key
     SSLCertificateChainFile /path/to/ssl/server.ca.pem
