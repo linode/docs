@@ -19,6 +19,8 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---
 
+![AskBot with LetsEncrypt on Ubuntu](/docs/assets/AskBot.jpg)
+
 [AskBot](https://askbot.com) is an open-source question and answer forum written in Django and Python. It provides features similar to StackOverflow, including a karma-based system, voting, and content moderation. It is used by many popular open source communities such as Ask-FedoraProject and Ask-OpenStack. In this guide, you'll install AskBot and deploy with **Nginx** as a web server, **MySQL** as a database server, **Gunicorn** as a Python WSGI HTTP Server and **LetsEncrypt** as a free SSL certificates provider on your Ubuntu 16.04 Linode.
 
 ## Before You Begin
