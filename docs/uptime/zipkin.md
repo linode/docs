@@ -16,9 +16,9 @@ external_resources:
 
 ## What is Zipkin?
 
-[Zipkin](http://zipkin.io/) is a kind of "catch all" for capturing timing data, a centralized repository, and a microweb server to allow you to display/search through spans/traces of your distributed programs/websites.
+[Zipkin](http://zipkin.io/) is a "catch all" for capturing timing data, a centralized repository, and a microweb server to allow you to display and search through spans and traces of your distributed programs or websites.
 
-There are 3 recommended ways we can set it up. We will start with the easiest, downloading a JAR file and executing it with Java. Caveat: everything will be in memory. All traces and spans will not be saved to disk. View docker configuration for secure/storage solution.
+While the official documentation offers [three different ways of installing Zipkin](http://zipkin.io/pages/quickstart), this guide uses the Java method. One caveat to this method is that everything will be saved in and run from memory. All traces and spans will not be saved to disk. For a secure/storage solution, refer to the official documentation for the [DockerZipkin](https://github.com/openzipkin/docker-zipkin).
 
 ## Before You Begin
 
@@ -26,36 +26,30 @@ There are 3 recommended ways we can set it up. We will start with the easiest, d
 
 2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
-3. This guide will use Fedora 26 to configure both of the server machines. The workstation you will use can be any machine with a web browser.
+3. Create two Linodes and have access to another device:
+    1.  One Linode to act as the Zipkin server.
+    2.  The second Linode configured as a web server. This will be the Zipkin client machine.
+    3.  A device with a web browser, Internet access, and a static IP address. This system will be used to view the traces/spans in the Zipkin server through the ZipKin provided webservice.
+        * If the device's IP is dynamic, you'll need to reconfigure the firewall rules each time the IP changes.
 
-4. You will need a webserver machine in the Linode cloud. We will create a mock Python website with a couple of mock functions we can use to simulate timing data. This machine will be called **websvr**. We will also refer to this machine as a Zipkin client machine.
-
-5. You will need an analyst system (laptop or workstation) with a web browser. Our client system will be called **officeworker**. This system will be used to view the traces/spans in the Zipkin server through the ZipKin provided webservice.
-
-{: .note}
->
-> Throughout this guide, please replace 192.0.2.0, 198.51.100.0, 203.0.113.0 with the IP addresses of your Zipkin server, web server, and analyst machine, respectively.
-
-{: .note}
-> The assumption for your analyst machine is that your real world IP address is a static IP address. Otherwise, you need to find out what has been assigned to it by a DHCP server everytime, and reconfigure your firewall rules on your Zipkin server to match.
+While Zipkin can be installed on a variety of distributions, this guide uses Fedora 26 in the examples to configure both the server and client Linodes. Remember to adjust any distribution-specific commands, and replace the example IPs, `192.0.2.0`, `198.51.100.0`, `203.0.113.0` with the IP addresses of your Zipkin server, webserver, and analyst machine, respectively.
 
 ## The Target Scenario
 
-The target scenario is a three machine configuration. The first machine will be the Zipkin server performing the thrift and web services. Both services will use port 9411 (standard Zipkin configuration).
+This guide's target scenario is a three machine configuration:
+1.  The Zipkin server performing the thrift and web services. Both services will use port `9411` (standard Zipkin configuration).
 
-![Zipkin Layout](zipkin_layout.png)
+2.  A sample website running on a Linode. The website contains a few mock external services that may take longer than expected, causing the website's pages to render slowly or not at all. We will also configure a call back at port `5000` for Zipkin server callbacks.
 
-The second will be a normal sample website running on a web server machine. The website contains a couple of mock external services that may take longer than expected, causing the website's pages to render slowly or not at all. We will also configure a call back at port 5000 for Zipkin server callbacks.
+    The idea is to be able to setup the Zipkin server and show the user how to add a few lines of python code to a client machine (in our case our web server) to create a simple span to get a few traces. The goal is to provide a sample client from which more can be instrumented in a similar fashion.
 
-The idea is to be able to setup the Zipkin server and show the user how to add a few lines of python code to a client machine (in our case our web server) to create a simple span to get a few traces. The goal is to provide a sample client from which more can be instrumented in a similar fashion.
-
-The final machine is an analyst system probably located in some business with a static IP. This machine will be used by the analyst to view traces of the client machine from the Zipkin server.
+3. The final machine is an analyst system with a static IP. This machine will be used to view traces of the client machine from the Zipkin server.
 
 ## Zipkin Server Configuration
 
 ### Install Package Dependencies
 
-1. Log into your Zipkin server machine and make sure your Fedora 26 OS is up to date:
+1. Log into your Zipkin server Linode and update your distribution:
 
         sudo dnf update
         sudo dnf upgrade
@@ -64,26 +58,26 @@ The final machine is an analyst system probably located in some business with a 
 
         sudo dnf install java
 
-3. Download Zipkin. [The quick start guide](http://zipkin.io/pages/quickstart) provides 3 different ways to install Zipkin. Let's take the second option: downloading a precompiled JAR file:
+3. Download the precompiled Zipkin Java file:
 
         wget -O zipkin.jar 'https://search.maven.org/remote_content?g=io.zipkin.java&a=zipkin-server&v=LATEST&c=exec'
 
-4. The guide also describes how to run Zipkin manually. We will create a start-zipkin.sh file that will contain these commands. We don't want to have to remember them more than once.
+4. To run Zipkin manually later without having to remember the java command, create a `start-zipkin.sh` file to contain the commands:
 
     {: .file}
     start-zipkin.sh
-    :   ~~~
+    :   ~~~ bash
         #!/bin/bash
         java -jar zipkin.jar
         ~~~
 
-5. Make your new start-zipkin.sh file executable.
+5. Make your new start-zipkin.sh file executable:
 
         chmod 700 start.sh
 
 ### Zipkin Server Hostname
 
-1. Set the hostname of your server, if you haven't already:
+1. Set the hostname of your server:
 
         hostnamectl set-hostname zipkinsvr
 
@@ -95,43 +89,37 @@ The final machine is an analyst system probably located in some business with a 
         192.0.2.0     zipkinsvr
         ~~~
 
-#### Firewall Steps for Zipkin Server
+### Configure the Firewall for the Zipkin Server
 
-Whenever one sets up any service on a public server machine there is a possibility that your machine may be hacked, DOS'ed, or compromised.
+Limit the exposure of our Zipkin server to just our analyst and client machines to avoid the server being compromised.
 
-As a precaution, we will limit the availability of our Zipkin server to just our analyst and client machines.
+The default Fedora 26 firewall rules block all ports as a safety precaution. Create a new firewall zone to handle the Zipkin services without exposing too much of the system:
 
-Due to the default Fedora 26 firewall rules, no ports are open - this is by design and a safety precaution. Let's see how to open up those ports without allowing everyone to get in to our Zipkin server.
-
-Note: both of the Zipkin services use the same port 9411/tcp.
-
-This is where `firewall-cmd` shines. We will create a new zone in our firewall that will handle the Zipkin services and source machines and block everything else.
-
-1.  On your Zipkin server, create a new zone in our firewall called **zipkin** (all lowercase as Linux is case sensitive).
+1.  On your Zipkin server, create a new firewall zone called `zipkin`:
 
         firewall-cmd --new-zone=zipkin --permanent
 
-2.  Reload the firewall so you can refresh your zone list.
+2.  Reload the firewall to refresh the zone list:
 
         firewall-cmd --reload
 
-3.  Add a client machine real world IP.
+3.  Add the client Linode's public IP:
 
         firewall-cmd --zone=zipkin --add-source=198.51.100.0  --permanent
 
-4.  Add an analyst machine real world IP (If you forget to define any source IPs, then you will effectively have no filtering on your IPs. In other words you need at least 1 source IP to start filtering on IPs. If there are no source IPs defined, any machine can connect to your server.)
+4.  Add the analyst Linode's public IP. If you don't define any source IPs, then you won't have any filtering of IPs. To turn filtering on, add at least one source IP:
 
         firewall-cmd --zone=zipkin --add-source=203.0.113.0  --permanent
 
-5.  Open a port through your firewall.
+5.  Open a firewall port:
 
         firewall-cmd --zone=zipkin --add-port=9411/tcp  --permanent
 
-6.  (Optional) Since we may want to access our machine from the analyst machine, it may be a good idea to add an ssh port.
+6.  (Optional) Since we will want to access the Linode from the analyst machine, add an SSH port:
 
         firewall-cmd --zone=zipkin --add-service=ssh --permanent
 
-7. Reload and View your new zone:
+7. Reload and view the new zone:
 
         firewall-cmd --reload
         firewall-cmd --zone=zipkin --list-all
@@ -141,7 +129,7 @@ This is where `firewall-cmd` shines. We will create a new zone in our firewall t
 
 ### Install Package Dependencies
 
-1. Log into your web server machine. Then make sure your Fedora 26 OS is up to date:
+1. Log into your web server Linode and update your distribution:
 
         dnf update
         dnf upgrade
@@ -151,27 +139,27 @@ This is where `firewall-cmd` shines. We will create a new zone in our firewall t
         dnf install python
         dnf install python-devel
 
-3.  Install the the following dependencies:
+3.  Install the following dependencies:
 
         pip2 install py_zipkin bottle requests
 
-4. Download the python script [website.py](/docs/assets/scripts/website.py) which has been commented to show where we added the Zipkin code.
+4. Download the python script [website.py](/docs/assets/scripts/website.py) which has been commented to show the added Zipkin code:
 
         wget https://github.com/linode/docs/assets/scripts/website.py
 
 ### Configure Webservice
 
-1. Set ZIPKIN_SERVER to the IP address of the Zipkin server:
+1. Set `ZIPKIN_SERVER` to the IP address of the Zipkin server:
 
     {:.file-excerpt}
     website.py
-    :   ~~~
+    :   ~~~ python
         def http_transport(encoded_span):
             import requests
             ZIPKIN_SERVER = "192.0.2.0"
         ~~~
 
-2.  Set the host to allow access on the public IP address (if your Zipkin server and analyst machine are on the same local network as the webserver, you can skip this step):
+2.  Set the host to allow access on the public IP address. If your Zipkin server and analyst machine are on the same local network as the webserver, skip this step:
 
     {:.file-excerpt}
     website.py
@@ -179,36 +167,36 @@ This is where `firewall-cmd` shines. We will create a new zone in our firewall t
         run(host='0.0.0.0', port=8080, reloader=True)
         ~~~
 
-#### Firewall Steps for Web Server
+### Configure the Firewall  for the Web Server
 
-If you already have firewall protection on your webserver, you can skip this section.
+If you already have a firewall configured on your web server, you can skip this section.
 
-1.  Create a new zone in our firewall called **webserver** (all lowercase as Linux is case sensitive).
+1.  Create a new zone in our firewall called `webserver`:
 
         firewall-cmd --new-zone=webserver --permanent
 
-2.  Reload the firewall so you can refresh your zone list.
+2.  Reload the firewall to refresh the zone list:
 
         firewall-cmd --reload
 
-3.  Add the IP address of the Zipkin server.
+3.  Add the IP address of the Zipkin server:
 
         firewall-cmd --zone=webserver --add-source=192.0.2.0  --permanent
 
-4.  Add the IP address of your analyst machine.
+4.  Add the IP address of the analyst machine:
 
         firewall-cmd --zone=webserver --add-source=203.0.113.0  --permanent
 
-5.  Open both ports through your firewall. Port 8080 goes to our web service script, while port 5000 goes to our Zipkin callback for our span.
+5.  Open both ports through the firewall. Port `8080` goes to the web service script, while port `5000` goes to the Zipkin callback for our span:
 
         firewall-cmd --zone=webserver --add-port=8080/tcp  --permanent
         firewall-cmd --zone=webserver --add-port=5000/tcp  --permanent
 
-6. (Optional) Since we may want to access our machine from the analyst machine, it may be a good idea to add an ssh port.
+6. (Optional) Since you may want to access the Linode from the analyst machine, add an SSH port:
 
         firewall-cmd --zone=webserver --add-service=ssh --permanent
 
-7.  Reload and view your new zone:
+7.  Reload and view the new zone:
 
         firewall-cmd --reload
         firewall-cmd --zone=webserver --list-all
@@ -216,22 +204,22 @@ If you already have firewall protection on your webserver, you can skip this sec
 
 ## Full System Test
 
-1. Log into the Zipkin server and run the Zipkin service manually. Since Zipkin is using port 9411, you don't need to run it as root.
+1. Log into the Zipkin server and run the Zipkin service manually. Since Zipkin is using port `9411`, you don't need to run it as root:
 
         ./start-zipkin.sh
 
-2. Log into your webserver and run the mock web server. You don't need to run this command as root:
+2. Log into the webserver Linode and run the mock web server. You don't need to run this command as root:
 
         python2 website.py
 
-3. Log into your analyst machine. In a browser's address bar, type the address of your webserver:
+3. Use the browser on your analyst machine to navigate to the address of your webserver:
 
         http://198.51.100.0:8080/
 
-Refresh the page several times to generate more traces for Zipkin to track.
+    Refresh the page several times to generate more traces for Zipkin to track.
 
 4.  To view your traces, enter your Zipkin server's IP address in a new tab:
 
         http://192.0.2.0:9411/
 
-Adjust the start and end dates on the web form, and fill in **10** for the duration. Click "Find Traces" to see the results. You can click on each of the traces to see details.
+    Adjust the start and end dates on the web form, and fill in **10** for the duration. Click "Find Traces" to see the results. You can click on each of the traces to see details.
