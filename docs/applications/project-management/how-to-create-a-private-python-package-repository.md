@@ -15,6 +15,9 @@ external_resources:
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
  - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
 ---
+
+![Banner_image](/docs/assets/Private_Python_Pack_Repo.jpg)
+
 # How does Python Handle Package Management?
 
 Package management in Python is available through a variety of different tools. 
