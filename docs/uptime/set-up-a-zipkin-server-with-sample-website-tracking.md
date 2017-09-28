@@ -167,7 +167,7 @@ The default Fedora 26 firewall rules block all ports as a safety precaution. Cre
         run(host='0.0.0.0', port=8080, reloader=True)
         ~~~
 
-### Configure the Firewall  for the Web Server
+### Configure the Firewall for the Web Server
 
 If you already have a firewall configured on your web server, you can skip this section.
 
