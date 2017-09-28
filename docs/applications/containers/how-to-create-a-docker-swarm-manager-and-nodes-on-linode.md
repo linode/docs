@@ -8,7 +8,7 @@ contributor:
 description: 'This guide shows you how to use Linode to create a Docker Swarm Manager and deploy a service to several Nodes.'
 keywords: 'docker,container,docker swarm,swarm manager,swarm nodes'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, September 18, 2017
+modified: Thursday, September 28, 2017
 modified_by:
   name: Linode
 published: 'Monday, September 18, 2017'
@@ -21,9 +21,20 @@ external_resources:
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](/docs/assets/docker/create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
 
-Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. All you need is one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
+Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. All you need is one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes. When this is done, you will be able to scale each service you want to run; the Docker Manager will automatically assign resources from the Swarm members to meet the desired scale.
 
-In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container roll out. This requires multiple Linodes with Docker installed and running in the same datacenter. They don't need to be running the same distribution.
+In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container roll out.
+
+## Before You Begin
+
+1.  Completing this guide will require at least two Linodes located in the same datacenter. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
+
+2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account.
+
+3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
+
+{: .note}
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Create the Docker Swarm Manager
 
@@ -45,6 +56,7 @@ In this guide, we create a single Swarm Manager. If your goal is high-availabili
 
     ![Swarm is running and active](/docs/assets/docker/dockerswarm-active.jpg "Swarm is running and active")
 
+
 ## Join Nodes to the Manager
 
 In Step 1 of the previous section, The `docker swarm init` command outputs instructions on how to join the Manager. It follows the following structure:
@@ -63,11 +75,11 @@ Where `TOKEN` is the long string of characters presented to you when you initial
 
     ![Node has joined the swarm as a worker](/docs/assets/docker/swarm-joined-as-worker.jpg "Node has joined the swarm as a worker")
 
-2.  Use Step 1 to join as many Nodes to the Swarm as needed.
+2.  Repeat step 1 to join as many Nodes to the Swarm as needed.
 
-3.  On the Manager, use `docker nodes ls` to view information about the Manager and a list of all Nodes:
+3.  On the Manager, use `docker node ls` to view information about the Manager and a list of all Nodes:
 
-        docker nodes ls
+        docker node ls
 
 ## Deploy a Service with Swarm
 
