@@ -5,10 +5,10 @@ author:
 description: 'How to set up a VPN firewall on OpenVPN clients'
 keywords: 'vpn, security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Thursday, September 28th, 2017'
+modified: 'Friday, September 29th, 2017'
 modified_by:
   name: Linode
-published: 'Thursday, September 28th, 2017'
+published: 'Friday, September 29th, 2017'
 title: VPN Firewall Killswitch for Linux and macOS Clients
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
