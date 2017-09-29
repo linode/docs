@@ -2,7 +2,7 @@
 author:
   name: Luis Cortes
   email: docs@linode.com
-description: 'Zipkin is a tracking system that allows you to collect and search timing data in order to identify latency problems.'
+description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
 keywords: 'zipkin, tracking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, September 28, 2017
