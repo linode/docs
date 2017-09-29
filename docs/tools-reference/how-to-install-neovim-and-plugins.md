@@ -2,14 +2,14 @@
 author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
-description: 'This is an introductory guide to NeoVim, a drop-in replacement for the vim text editor.'
+description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
 keywords: 'neovim,text,editor,vim,asynchronous,plugins'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, September 27, 2017'
-modified: Wednesday, September 27, 2017
+published: 'Friday, September 29, 2017'
+modified: Friday, September 29, 2017
 modified_by:
   name: Linode
-title: How to Install NeoVim and Plugins
+title: How to Install NeoVim and Plugins with vim-plug
 contributor:
   name: Gabriel Cánepa
   link: '[Gabriel Cánepa](https://twitter.com/gacanepa/)'
@@ -23,7 +23,7 @@ external_resources:
 
 ---
 
-![How to Install NeoVim and Plugins](/docs/assets/neovim/neovim-basics-title.jpg "How to Install NeoVim and Plugins")
+![How to Install NeoVim and Plugins with vim-plug](/docs/assets/neovim/neovim-basics-title.jpg "How to Install NeoVim and Plugins with vim-plug")
 
 ## What is NeoVim?
 
@@ -58,11 +58,7 @@ This guide details the installation and configuration of NeoVim, along with two 
 
             sudo apt-get install fuse libfuse2 git python3-pip ack-grep -y
 
-5.  To make it easier to install plugins, use the Vim-plug plugin manager. This plugin manager requires `git` to manage most plugins:
-
-        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
-
-6.  Several NeoVim plugins are written in Python 3, which should be available out of the box in your Linode. Otherwise, refer to the [Linux Package Management guide](/docs/tools-reference/linux-package-management) to learn how to install the specific package name that provides Python 3 in your chosen distribution. 
+4.  Several NeoVim plugins are written in Python 3, which should be available out of the box in your Linode. Otherwise, refer to the [Linux Package Management guide](/docs/tools-reference/linux-package-management) to learn how to install the specific package name that provides Python 3 in your chosen distribution. 
 
 In this tutorial we install NeoVim by downloading an appimage, a binary file that contains the application and its dependencies (with the exception of the [FUSE libraries](https://github.com/AppImage/AppImageKit/wiki/FUSE), which need to be installed separately). This method is distribution-agnostic and provides the latest version of the package.
 
@@ -85,14 +81,20 @@ While FUSE libraries make it possible for the appimage to be run by non-root use
 
         sudo mv nvim /usr/bin
 
-    **At this point we can exit the session with superuser privileges to configure nvim for our regular user account.**
+4.  Switch to your limited user account. Change `exampleuser` in this example to your username:
 
-4.  Move into your home directory and create the subfolder structure to store the configuration file:
+        su exampleuser
+
+5.  Move into your home directory and create the subfolder structure to store the configuration file:
 
         cd ~
         mkdir -p .config/nvim
 
-5.  Optional: If you already have a vim configuration you enjoy, reutilize it for nvim. While vim and nvim can share the same configuration file, create a separate one for nvim to prevent errors if you don't have `Vim-plug` also configured for vim:
+6.  To make it easier to install plugins, use the Vim-plug plugin manager. This plugin manager requires `git` to manage most plugins:
+
+        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+7.  Optional: If you already have a vim configuration you enjoy, reutilize it for nvim. While vim and nvim can share the same configuration file, create a separate one for nvim to prevent errors if you don't have `Vim-plug` also configured for vim:
 
         ln -s ~/.vimrc ~/.config/nvim/init.vim
 
@@ -120,7 +122,7 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
         pip3 install --user neovim
 
-2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips: 
+2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips and [vim-snippets](https://github.com/honza/vim-snippets): 
 
     {: .file-excerpt }
     ~/.config/nvim/init.vim
@@ -128,21 +130,23 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
         call plug#begin()
         Plug 'roxma/nvim-completion-manager'
         Plug 'SirVer/ultisnips'
+        Plug 'honza/vim-snippets'
         call plug#end()
         ~~~
 
-3.  Launch nvim, execute `PlugInstall`, and exit:
+3.  Launch nvim, execute `PlugInstall`, update the plugins, and exit:
 
         nvim
         :PlugInstall
+        :UpdateRemotePlugins
         :q!
         :q!
 
-4.  The plugin will be ready for use after we restart nvim. To test it, create a `.py` file named `helloworld.py` as follows: 
+4.  The plugin will be ready for use after you restart nvim. To test it, create a `.py` file named `helloworld.py` as follows: 
 
         nvim helloworld.py
 
-    Enter Insert mode (press **i**) and type `def`. You should be presented with a dropdown list similar to that shown in the below image. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file: 
+    Press **i** to enter Insert mode, and type `def`. You should be presented with a dropdown list similar to that shown in the image below. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file: 
 
     ![Neovim autocomplete snippets](/docs/assets/neovim/neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
 
@@ -160,13 +164,15 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
        Plug 'brooth/far.vim'
        ~~~
 
-2.  Open nvim and execute `PlugInstall`
+2.  Open nvim and execute `PlugInstall`, update the plugins, and exit. The plugin will be available when you restart nvim:
 
+        nvim
         :PlugInstall
+        :UpdateRemotePlugins
+        :q!
+        :q!
 
-    The plugin will be available after restarting nvim.
-
-3.  To test `Far.vim`, create a directory named `myproject` and two files named `greeting.py` and `persons.py` inside:
+3.  To test `Far.vim`, create a directory named `myproject` and create two files within the directory:
 
         mkdir myproject
         cd myproject
