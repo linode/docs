@@ -10,7 +10,7 @@ modified: Wednesday, October 3rd, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, September 8th, 2009'
-title: 'Use PostgreSQL Relational Databases on on Debian 5 (Lenny)'
+title: 'Use PostgreSQL Relational Databases on Debian 5 (Lenny)'
 ---
 
 

@@ -79,7 +79,7 @@ Changes to the kernel's configuration can be made with the `menuconfig` command.
 
     make menuconfig
 
-Once your configuration options are set, exit the configuration interface and answer "y" when asked whether you would like to save save your new kernel configuration.
+Once your configuration options are set, exit the configuration interface and answer "y" when asked whether you would like to save your new kernel configuration.
 
 ### Build the Kernel
 

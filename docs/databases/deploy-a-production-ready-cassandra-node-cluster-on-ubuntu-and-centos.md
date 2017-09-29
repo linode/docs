@@ -22,7 +22,7 @@ external_resources:
  
 ---
 
-![Banner Image](/docs/assets/Casssandra/cass.png)
+![Banner Image](/docs/assets/Cassandra/cass.png)
 
 ## What is Apache Cassandra
 
@@ -320,7 +320,7 @@ An example usage of each mode is demonstrated below, for a cluster of 6 nodes:
 
 ### Where to Go From Here
 
-Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with `cqlsh` can also be accomplished with encryption. See the "[Client-to-node encryption]" link the the external resources section for information on setting that up. 
+Now that your Cassandra cluster is up and running with node-to-node SSL encryption, you are prepared to deploy production-ready databases. Logging into each node in the cluster with `cqlsh` can also be accomplished with encryption. See the "[Client-to-node encryption]" link the external resources section for information on setting that up. 
 
 
 

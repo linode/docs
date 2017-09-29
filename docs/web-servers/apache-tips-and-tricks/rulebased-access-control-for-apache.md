@@ -12,7 +12,7 @@ modified_by:
 published: 'Monday, December 7th, 2009'
 title: 'Rule-based Access Control for Apache'
 external_resources:
- - '[LAMP Stack Guides](/docs/lamp/)'
+ - '[LAMP Stack Guides](/docs/lamp-guides/)'
  - '[Apache Configuration and Administration](/docs/web-servers/apache/)'
  - '[Apache Configuration Basics](/docs/web-servers/apache/configuration/configuration-basics)'
  - '[Apache Configuration Structure](/docs/web-servers/apache/configuration/configuration-structure)'

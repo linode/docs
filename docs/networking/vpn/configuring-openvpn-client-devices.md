@@ -23,7 +23,7 @@ This guide is the third of a three-part series to set up a hardened OpenVPN envi
 
 ## Before You Begin
 
-You must already have have the client files on your OpenVPN server. These are:
+You must already have the client files on your OpenVPN server. These are:
 
 *  The root certificate (CA): `ca.crt`.
 *  Client certificate: `client1.crt`.

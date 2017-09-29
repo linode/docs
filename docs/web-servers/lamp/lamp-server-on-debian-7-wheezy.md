@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
 {: .note}
 >

@@ -432,7 +432,7 @@ You'll need to complete the installation of the Zabbix web interface with your w
 [![Zabbix installer.](/docs/assets/1092-new_zabbix_7.png)](/docs/assets/1092-new_zabbix_7.png)
 
 8.  Once you've updated your Zabbix configuration file to the specified location, click **Retry**.
-9.  If the the configuration file is found, click **Finish**.
+9.  If the configuration file is found, click **Finish**.
 
 [![Zabbix installer.](/docs/assets/1093-new_zabbix_8.png)](/docs/assets/1093-new_zabbix_8.png)
 

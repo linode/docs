@@ -27,7 +27,7 @@ This guide will show you how to install a TeamSpeak Server on your Linode. TeamS
 
 ## Before You Begin
 
-* We suggest following the [Getting Started](/docs/getting-started) and [Securing Your Server]() guides.
+* We suggest following the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
 
 * Install the [TeamSpeak](http://www.teamspeak.com/) client on your local computer.
 

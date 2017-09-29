@@ -165,4 +165,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the the backtic button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/applications/game-servers/team-fortress2-on-debian-and-ubuntu#rcon).
+When logged into the server, you can open the RCON console with the backtic button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/applications/game-servers/team-fortress2-on-debian-and-ubuntu#rcon).
