@@ -23,15 +23,13 @@ external_resources:
 
 Containers are an incredibly powerful tool that allow you to expand your company offerings in ways you might not have been able to previously—at least without having to add considerable overhead to your servers.
 
-Linode makes working with containers easy, because you already have the Linux platform which to install and run Docker. So far I’ve demonstrated how to install Docker, pull images, and create containers.
-
-But what happens when you want to develop those images (for further usage) or make those images available from the public Docker Hub? Believe it or not, Docker makes it very simple to develop those images and push them to their official repository (Docker Hub). Let’s dive into this process, one step at a time.
+Previous guides in this series have covered how to [install Docker](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack), [pull images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment), and [create containers](/docs/applications/containers/how-to-use-dockerfiles). This guide will show how to make changes to a Docker image and save the changes as a new image. Docker also makes it simple to publish customized images to Docker Hub, their official online repository.
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
