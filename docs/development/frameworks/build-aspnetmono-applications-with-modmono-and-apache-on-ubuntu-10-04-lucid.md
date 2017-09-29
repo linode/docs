@@ -243,7 +243,7 @@ Now that you have created a sample database, you can test your installation with
     </html>
     ~~~
 
-Next you will need to create a `web.config` file. You can copy and paste the the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
+Next you will need to create a `web.config` file. You can copy and paste the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
 {: .file-excerpt }
 /srv/www/example.org/public\_html/web.config

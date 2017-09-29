@@ -9,7 +9,7 @@ alias: ['websites/apache/install-and-configure-apache-on-centos-7/']
 modified: 'Tuesday, September 5, 2017'
 modified_by:
     name: Edward Angert
-published: 'Friday, November 18. 2016'
+published: 'Friday, November 18, 2016'
 title: How to Install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'

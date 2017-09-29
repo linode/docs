@@ -36,7 +36,7 @@ All of a Linode's disks and configuration profiles are displayed on the Linode's
 3.  These are your disks. Select one to resize it or duplicate it.
 4.  Click this link to create a new disk with a Linux distribution installed.
 5.  Click this link to create a new blank disk.
-6.  This box indicates how much storage space is allocated to disks. To see how much much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
+6.  This box indicates how much storage space is allocated to disks. To see how much space inside your disk is currently being used, connect to your Linode via SSH and execute the `df -m` command.
 
 ## Disks
 

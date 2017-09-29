@@ -38,7 +38,7 @@ Issue the following command to generate your self-signed certificate. Change `ex
 
 This command creates a `.crt` file under the `/etc/ssl/certs` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
-*  `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
+*  `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
 *  `-days` determines the length of time in days that the certificate is being issued for. For a self-signed certificate, this value can be increased as necessary.
 
