@@ -6,17 +6,22 @@ description: 'Automate browsing tasks with Nightmare.js, a high-level browser au
 keywords: 'nightmare.js, node.js, headless browser, automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Saturday, September 30th, 2017'
-modified: Saturday, September 30th, 2017
+modified: Monday, October 2nd, 2017
 modified_by:
   name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
 contributor:
   name: Nashruddin Amin
   link: https://github.com/flowfree
-  external_resources:
+external_resources:
 - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
 - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
 ---
+
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+
+----
+
 
 **Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around **Electron**, which is used as the browser by Nightmare.js. This guide will help you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need of a graphical user interface.
 
@@ -46,7 +51,7 @@ We will install the more recent Node.js version using the PPA maintained by Node
 
     {: .note}
     >
-    > The command above will fetch the latest version of Node.js 6, which is 6.11.3. If you want another version, replace the `6.x` to match with the version you need. See [Node.js Releases](https://nodejs.org/en/download/releases/).
+    > The command above will fetch the latest version of Node.js 6, which as of this writing is 6.11.3. If you want another version, replace the `6.x` to match with the version you need. See [Node.js Releases](https://nodejs.org/en/download/releases/).
 
 2.  Install Node.js and NPM with the following command:
 
@@ -67,36 +72,30 @@ We will install the more recent Node.js version using the PPA maintained by Node
 
 We will install Nightmare.js in a specific directory to avoid installing the Node packages globally. We will use `automation/` directory within the current user's home directory as the base for our project.
 
-1.  Create a new directory `automation/` within your home directory:
+1.  Create a directory `automation/` within your home directory and navigate to the new directory:
 
-        cd ~ && mkdir automation
+        mkdir ~/automation && cd ~/automation
 
-2. Change the current working directory to the newly created directory:
+2.  Initialize an npm project: 
 
-        cd automation
+        npm init 
 
-2.  Install Nightmare.js:
+    {:.note}
+    > You will be prompted to provide a name, repository, and other details for the project. Since this information is not important for the purposes of this guide, you can accept the default values provided. To do this automatically, use the `-f` (force) flag when running `npm init`.
+
+3.  Install Nightmare.js:
 
         npm install --save nightmare
-
-    {: .note}
-    >
-    > It will take some time to install Nightmare.js, so you might want to set the `--verbose` flag to see what's going on.
-
 
 ## Create and Run the Automation Script
 
 For our sample automation, we will try to fetch the latest job posts from [Indeed.com](http://indeed.com). 
 
-1. Change the current working directory:
-
-        cd ~/automation
-
-2. Create a new file named `indeed.js`:
+1. Create a new file named `indeed.js`:
 
         nano indeed.js
 
-3. Paste the following content:
+2. Paste the following content:
 
     {: .file }
     ~/indeed.js
@@ -149,12 +148,11 @@ For our sample automation, we will try to fetch the latest job posts from [Indee
           });
         ~~~
 
-    The code is pretty straightforward. Please read the comments within the code to learn what it does.
+        {:.note}
+        > Missing: xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps clang libdbus-1-dev libgtk2.0-dev libnotify-dev libgnome-keyring-dev libgconf2-dev libasound2-dev libcap-dev libcups2-dev libxtst-dev libxss1 libnss3-dev gcc-multilib g++-multilib
+3.  Run the script:
 
-4.  Save the file by pressing **CTRL+O** and exit `nano` with **CTRL+X**.
-
-5.  Run the script:
-
+        apt install xvfb
         xvfb-run node indeed.js
 
     It will output something like this:
@@ -168,7 +166,7 @@ For our sample automation, we will try to fetch the latest job posts from [Indee
 
     {: .note}
     >
-    > Nightmare.js uses Electron as the browser and it needs X server to run. We need a headless automation, so we prefixes the command with `xvfb-run` to provide in-memory display server. `Xvfb` allows you to run graphical applications without a display hardware.
+    > Nightmare.js uses the Electron browser and it needs X server to run. The `xvfb-run` command allows you to run graphical applications without display hardware.
 
 
 ## Add Cron Job to Run the Automation Script
