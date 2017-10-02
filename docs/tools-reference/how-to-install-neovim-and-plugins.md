@@ -3,10 +3,10 @@ author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
 description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
-keywords: 'neovim,text,editor,vim,asynchronous,plugins'
+keywords: 'neovim,text,editor,vim,nvim,plugins'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, September 29, 2017'
-modified: Friday, September 29, 2017
+published: 'Monday, October 2, 2017'
+modified: Monday, October 2, 2017
 modified_by:
   name: Linode
 title: How to Install NeoVim and Plugins with vim-plug
@@ -39,7 +39,7 @@ During NeoVim's short life, two outstanding features have already been implement
 
 Asynchronous plugins make it possible for plugins to run as background processes without interfering with the main editor process.
 
-The RPC API allows GUI programs (and other software that speaks the msgpack-rpc messaging protocol) to connect to a running NeoVim instance. This means that you can integrate well-known text editors such as Atom, Visual Studio Code, or Sublime Text with NeoVim and have modifications sync bidirectionally between them. Thus, you can leverage all the features of the GUI program while using nvim's engine behind the scenes. 
+The RPC API allows GUI programs (and other software that speaks the *msgpack-rpc* messaging protocol) to connect to a running NeoVim instance. This means that you can integrate well-known text editors such as Atom, Visual Studio Code, or Sublime Text with NeoVim and have modifications sync bidirectionally between them. That way, you can leverage all the features of the GUI program while using nvim's engine behind the scenes. 
 
 This guide details the installation and configuration of NeoVim, along with two asynchronous plugins, `nvim-completion-manager` and `far.vim`.
 
@@ -50,15 +50,14 @@ This guide details the installation and configuration of NeoVim, along with two 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
 
 3.  Install the necessary tools:
-    -  In CentOS and similar distributions:
+    -  In CentOS and similar distributions, enable the [Extra Packages (EPEL) repository](https://fedoraproject.org/wiki/EPEL), then install the packages:
 
-            sudo yum install fuse fuse-libs git python34-pip ack -y
+            sudo yum install epel-release -y
+            sudo yum install wget fuse fuse-libs git ack python34-pip -y
 
     -  In Debian, Ubuntu, and their derivatives:
 
             sudo apt-get install fuse libfuse2 git python3-pip ack-grep -y
-
-4.  Several NeoVim plugins are written in Python 3, which should be available out of the box in your Linode. Otherwise, refer to the [Linux Package Management guide](/docs/tools-reference/linux-package-management) to learn how to install the specific package name that provides Python 3 in your chosen distribution. 
 
 In this tutorial we install NeoVim by downloading an appimage, a binary file that contains the application and its dependencies (with the exception of the [FUSE libraries](https://github.com/AppImage/AppImageKit/wiki/FUSE), which need to be installed separately). This method is distribution-agnostic and provides the latest version of the package.
 
@@ -81,26 +80,26 @@ While FUSE libraries make it possible for the appimage to be run by non-root use
 
         sudo mv nvim /usr/bin
 
-4.  Switch to your limited user account. Change `exampleuser` in this example to your username:
-
-        su exampleuser
-
-5.  Move into your home directory and create the subfolder structure to store the configuration file:
+4.  Move into your home directory and create the subfolder structure to store the configuration file:
 
         cd ~
         mkdir -p .config/nvim
 
-6.  To make it easier to install plugins, use the Vim-plug plugin manager. This plugin manager requires `git` to manage most plugins:
+## Install the Vim-plug Plugin Manager
 
-        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+To make it easier to install plugins, use the Vim-plug plugin manager. This plugin manager uses `git` to manage most plugins:
 
-7.  Optional: If you already have a vim configuration you enjoy, reutilize it for nvim. While vim and nvim can share the same configuration file, create a separate one for nvim to prevent errors if you don't have `Vim-plug` also configured for vim:
+     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-        ln -s ~/.vimrc ~/.config/nvim/init.vim
+## (Optional) Import Existing vim Configuration
 
-    Or create a separate one beginning with the current contents of `~/.vimrc`:
+If you already have a vim configuration you enjoy, reutilize it for nvim. While vim and nvim can share the same configuration file, create a separate one for nvim to prevent errors if you don't have `Vim-plug` also configured for vim:
 
-        cp ~/.vimrc ~/.config/nvim/init.vim
+    ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+Or create a separate one beginning with the current contents of `~/.vimrc`:
+
+    cp ~/.vimrc ~/.config/nvim/init.vim
 
 ## Run NeoVim
 
