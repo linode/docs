@@ -6,7 +6,6 @@ description: 'This guide presents instructions to deploy a scalable and developm
 keywords: 'cassandra, apache cassandra, centos 7, ubuntu 17.04, database, nosql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, June 12th, 2017'
-alias: ['/docs/databases/']
 modified: Saturday, June 24th, 2017
 modified_by:
   name: 'Andrew Lescher' 

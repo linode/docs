@@ -22,7 +22,7 @@ external_resources:
  
 ---
 
-![Banner Image](/docs/assets/Casssandra/cass.png)
+![Banner Image](/docs/assets/Cassandra/cass.png)
 
 ## What is Apache Cassandra
 
