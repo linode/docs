@@ -15,7 +15,7 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-[OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between and among groups of computers that are not on the same local network. This is useful if you want to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic to provide a secure connection between machines.
+[OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.
 
 ![Set up a Hardened OpenVPN Server on Debian](/docs/assets/hardened-openvpn-server-debian-8.png "Set up a Hardened OpenVPN Server on Debian")
 
@@ -23,7 +23,7 @@ An OpenVPN connection consists of two flow channels between the server and clien
 
 This guide is the first of a three-part series. Part one sets up a VPN server on Debian and prepares the access credentials for client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
-[Part two](***link***) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode out to the internet. [Part three](***link***) takes you through setting up the client-side software for various operating systems, including mobile platforms.
+[Part two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode to the internet. [Part three](/docs/networking/vpn/configuring-openvpn-client-devices) takes you through setting up the client-side software for various operating systems, including mobile platforms.
 
 
 ## Before You Begin
@@ -43,22 +43,22 @@ You can manage the OpenVPN environment in [two ways](https://openvpn.net/index.p
 
 *   The first method uses [OpenVPN Community Edition](https://openvpn.net/index.php/open-source.html), where server and client configurations are manually edited and client credentials are distributed to their respective devices using SCP or SFTP. Alternatively, you could copy credentials to a desktop computer, edit them and then transfer them by USB.
 
-*   The second method uses [OpenVPN Access Server](https://openvpn.net/index.php/access-server/overview.html), a server-side application which lets you configure OpenVPN through a GUI in your web browser. Client machines access a private URL from which to download their credential packages.
+*   The second method uses [OpenVPN Access Server](https://openvpn.net/index.php/access-server/overview.html), a server-side application which lets you configure OpenVPN with your web browser. Client machines access a private URL from which to download their credential packages.
 
-For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users and, although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates. More can be added by buying licensing. For more advanced configurations than what the GUI offers, you would still need to edit the VPN's configuration files.
+For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users. Although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers, you would still need to edit the VPN's configuration files.
 
-If you are interested running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
+If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
 
 
 ## Networking Configuration
 
-OpenVPN currently does not support a dual-stack configuration from a single instance where clients can connect to a server simultaneously using IPv4 and IPv6; one transport layer must be chosen or the other. Furthermore, only OpenVPN versions 2.3 and above support [IPv6 over TUN devices](https://openvpn.net/index.php/open-source/faq/77-server/287-is-ipv6-support-plannedin-the-works.html). With versions earlier than 2.3, IPv6 can only be used with TAP devices, so some clients can be further limited.
+OpenVPN currently does not support a dual-stack configuration from a single instance where clients can connect to a server simultaneously using IPv4 and IPv6; one transport layer must be chosen or the other. Furthermore, only OpenVPN versions 2.3 and above support [IPv6 over TUN devices](https://openvpn.net/index.php/open-source/faq/77-server/287-is-ipv6-support-plannedin-the-works.html). With versions earlier than 2.3, IPv6 can only be used with TAP devices. 
 
-For these reasons, this series assumes your VPN will operate over IPv4 only. If you instead wish to use IPv6, see [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/IPv6) for more information.
+This series assumes your VPN will operate over IPv4 only. If you instead wish to use IPv6, see [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/IPv6) for more information.
 
 ### IPv4 Firewall Rules
 
-1.  Change to the root user.
+1.  Switch to the root user.
 
         su - root
 
@@ -142,7 +142,7 @@ For these reasons, this series assumes your VPN will operate over IPv4 only. If 
 
     You can see your loaded rules with `sudo iptables -S`. For more specialized firewall rules, see `/usr/share/doc/openvpn/examples/sample-config-files/firewall.sh` on your server.
 
-7.  Load the rulesets into `iptables-persistent`.  This time, answer **Yes** when asked if you want to save the current IPv4 and IPv6 rules.
+7.  Load the rulesets into `iptables-persistent`. Answer **Yes** when asked if you want to save the current IPv4 and IPv6 rules.
 
         dpkg-reconfigure iptables-persistent
 
@@ -176,13 +176,13 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 ## Install and Begin Configuring OpenVPN
 
-1.  Start by installing OpenVPN from the [OpenVPN Project's repository](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos). Choose OpenVPN's repo over Debian's so that you'll always have the most up to date build for Debian Stretch:
+1.  Install OpenVPN from the [OpenVPN Project's repository](https://community.openvpn.net/openvpn/wiki/OpenvpnSoftwareRepos). Choose OpenVPN's repo over Debian's so that you'll always have the most up to date build for Debian Stretch:
 
         wget -O - https://swupdate.openvpn.net/repos/repo-public.gpg|apt-key add -
         echo "deb http://build.openvpn.net/debian/openvpn/stable stretch main" > /etc/apt/sources.list.d/openvpn-aptrepo.list
         apt update && apt install openvpn
 
-2.  By default, OpenVPN runs as root. While the user *nobody* given in the `server.conf` template has much fewer privileges than root, if *nobody* gets compromised, the intruder will have access to other processes running as *nobody*. This can include Apache when using `mod_php`, various NFS mounts and some cron jobs. Forcing OpenVPN to run as its own exclusive user and group is a good way to isolate it from other processes, especially if you will also be hosting a web or file server on the same operating system as your VPN.
+2.  By default, OpenVPN runs as root. The user *nobody* given in the `server.conf` template has fewer privileges than root. If *nobody* gets compromised, the intruder will have access to processes running as the *nobody* user. This can include Apache when using `mod_php`, various NFS mounts and some cron jobs. Forcing OpenVPN to run as its own exclusive user and group is a good way to isolate it from other processes, especially if you will also be hosting a web or file server on the same host as your VPN.
 
     Create a new user account and group for the OpenVPN daemon to run as after startup. The name *ovpn* is used as an example.
 
@@ -194,7 +194,7 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
         openvpn --genkey --secret /etc/openvpn/server/ta.key
 
-5.  Generate Diffie-Hellman parameter. This is a chunk of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) during creation of a client's session key. The default size is 2048 bits, but [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/GettingStartedwithOVPN) recommends to use a prime size equivalent to your RSA key size. Since you will be using 4096 bit RSA keys, create a 4096 bit DH prime. Depending on the size of your Linode, this can take about 10 minutes to complete.
+5.  Generate Diffie-Hellman parameter. This is a set of randomly generated data used when establishing [Perfect Forward Secrecy](https://en.wikipedia.org/wiki/Forward_secrecy#Perfect_forward_secrecy_.28PFS.29) during creation of a client's session key. The default size is 2048 bits, but [OpenVPN's documentation](https://community.openvpn.net/openvpn/wiki/GettingStartedwithOVPN) recommends to use a prime size equivalent to your RSA key size. Since you will be using 4096 bit RSA keys, create a 4096 bit DH prime. Depending on the size of your Linode, this could take approximately 10 minutes to complete.
 
         openssl genpkey -genparam -algorithm DH -out /etc/openvpn/server/dhp4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
@@ -207,17 +207,17 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 ## VPN Certificate Authority
 
-Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has as powerful of a CPU as you have access to, which means you should avoid embedded devices or virtual machines.
+Client certificates and keys should be not be managed directly on your VPN server. They should be created locally on a computer and stored offline. For the best quality entropy, they should be created on a computer which has a powerful CPU. You should avoid doing this on a virutal machine. 
 
-You can generate certificates and keys in one of two ways: either by using [EasyRSA](https://github.com/OpenVPN/easy-rsa) scripts, or by creating your own public key infrastructure for your VPN which includes customizations not in the default OpenSSL configuration file.
+You can generate certificates and keys two ways: by using [EasyRSA](https://github.com/OpenVPN/easy-rsa) scripts, or by creating your own public key infrastructure for your VPN, which includes customizations not included in the default OpenSSL configuration file.
 
 The rest of this guide will use EasyRSA.
 
 ### Configure EasyRSA
 
-1.  If you're using a local Unix-based operating system, install the package `easy-rsa` onto your local computer (CentOS will first need the EPEL repositories installed). For OS X or Windows, grab the `.zip` archive from the project's [Github page](https://github.com/OpenVPN/easy-rsa).
+1.  If you're using a local Unix-based operating system, install the package `easy-rsa` onto your local computer (CentOS will first need the EPEL repositories installed). For OS X or Windows, grab the `.zip` archive from the project's [Github repository](https://github.com/OpenVPN/easy-rsa).
 
-2.  Make your Certificate Authority root directory and change to that location. The location of your CA is arbitrary, but for the purposes of this guide make a folder called `ca` in your user's home directory as an example. The certificates are created from that directory.
+2.  Make your a root directory for the Certificate Authority. The location of your CA is arbitrary, but for the purposes of this guide make a folder called `ca` in your user's home directory as an example. The certificates are created from that directory.
 
         make-cadir ~/ca && cd ~/ca
 
@@ -225,7 +225,7 @@ The rest of this guide will use EasyRSA.
 
         ln -s openssl-1.0.0.cnf openssl.cnf
 
-4.  The `vars` file created in `/ca` contains presets used by the EasyRSA. Here you can specify distinguished name  for your certificate authority which then will be passed to client certificates. Changing these fields is optional and you can always input them manually during certificate creation, but setting them here creates less work during client cert creation.
+4.  The `vars` file created in `/ca` contains presets used by EasyRSA. Here you can specify a distinguished name for your certificate authority that will be  passed to client certificates. Changing these fields is optional, and you can always input them manually during certificate creation, but setting them here creates less work during client certificate creation.
 
     {: .file-excerpt}
     ~/ca/vars
@@ -255,17 +255,17 @@ The rest of this guide will use EasyRSA.
 
 ### Server Credentials
 
-1.  A *root certificate*, sometimes also called a *Certificate Authority*, is the certificate and key pair that will be used to generate key pairs for clients and intermediate authorities (of which on this VPN server there are none). At each prompt, add or edit the information to be used in your certificate, or leave them blank. Use your VPN server's hostname or some other identifier as the `Common Name` and leave the challenge password blank.
+1.  A *root certificate*, sometimes called a *Certificate Authority*, is the certificate and key pair that will be used to generate key pairs for clients and intermediate authorities (on this VPN server there are none). At each prompt, add or edit the information to be used in your certificate, or leave them blank. Use your VPN server's hostname or some other identifier as the `Common Name` and leave the challenge password blank.
 
         ./build-ca
 
-2.  Then create the server's private key; again add or edit at the information prompts as needed:
+2.  Then create the server's private key, add or edit the information prompts as needed:
 
         ./build-key-server server
 
     When you've completed the question section for the private key, confirm the signing of the certificate and the `certificate requests certified` by answering `yes` to those two questions.
 
-3.  Upload the server credentials to your Linode. Use `scp` from your local computer:
+3.  Upload the server credentials to your Linode, using `scp` from your local computer:
 
         scp ./keys/{ca.crt,server.crt,server.key} root@<your_linode's_IP>:/etc/openvpn/server
 
@@ -351,7 +351,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the 
 
 ### Client Configuration File
 
-OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, the location of the directory where the credentials are stored does not matter, but this `.ovpn` file needs to be in the same directory as the client certificate and other credentials. OpenVPN does not refer to any of these files after import and they do not even need to remain on the client system. Create this file on your server so that it can be distributed among your client devices:
+OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, the location of the directory where the credentials are stored doesn't matter, but this `.ovpn` file needs to be in the same directory as the client certificate and all other credentials. OpenVPN does not refer to any of these files after importing and they do not need to remain on the client system. Create this file on your Linode so that it can be distributed to your client devices:
 
 {: .file}
 client.ovpn
@@ -415,7 +415,7 @@ Start the OpenVPN daemon and enable it on reboot:
 >
 >This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
 
-The logs of both the OpenVPN client and servers will contain all the information you need to confirm connection specifications, view client address assignments and debug connection issues. Even if the connection completes seemingly without problems, the logs can contain alerts and messages for how to better configure your setup.
+The logs of both the OpenVPN client and servers will contain all the information you need to confirm connection specifications, view client address assignments, and debug connection issues. Even if the connection completes without problems, the logs may contain alerts and messages, to aid in improving your setup.
 
 To check the status of the OpenVPN process:
 
@@ -440,7 +440,7 @@ That should return:
      Docs: man:openvpn(8)
            https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage
            https://community.openvpn.net/openvpn/wiki/HOWTO
-     Process: 3793 ExecStart=/usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --cd /etc/openvpn --config /etc/openvpn/server.conf --writepid /run/openvpn/server.pid (code=exited, status=0/SU
+     Process: 3793 ExecStart=/usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --cd /etc/openvpn --config /etc/openvpn/server.conf --writepid /run/openvpn/server.pid (code=exited, status=0/SU)
     Main PID: 3795 (openvpn)
     Tasks: 1 (limit: 4915)
     CGroup: /system.slice/system-openvpn.slice/openvpn@server.service
@@ -454,6 +454,6 @@ Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server i
 
 ## Next Steps
 
-You should now have a operational OpenVPN server and a set of certificate/key pairs for your desired client devices. If you intend to use your OpenVPN server as an extension of your local network, or for hosting services you want to access from your LAN, you would now need to configure the specific applications for your use.
+You should now have an operational OpenVPN server and a set of certificate/key pairs for your desired client devices. If you intend to use your OpenVPN server as an extension of your local network, or for hosting services you want to access from your LAN, you would need to configure the specific applications for your use.
 
 If you want your VPN server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Trafic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server). To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).

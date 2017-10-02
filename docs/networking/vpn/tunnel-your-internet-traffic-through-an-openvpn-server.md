@@ -14,25 +14,25 @@ external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
 ---
 
-This guide will show you how to configure an OpenVPN server to forward all traffic it receives out to the Internet, then route the responses back appropriately to client devices.
+This guide will show you how to configure an OpenVPN server to forward incoming traffic to the internet, then route the responses back to the client.
 
 ![Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/assets/tunnel-traffic-through-openvpn.png "Tunnel Your Internet Traffic Through an OpenVPN Server")
 
-A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation, while shielding your computer's web traffic to internet service providers and untrusted WiFi or cellular hotspots.
+Commonly, a VPN tunnel is used to privately access the internet, evading censorship or geolocation by shielding your computer's web traffic when connecting through untrusted hotspots, or connections. 
 
 ## Before You Begin
 
-This guide is the second of a three-part series to set up a hardened OpenVPN environment. It assumes that you already have an OpenVPN server running. If you do not, first complete Part One of the series: [Set Up a Hardened OpenVPN Server with Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server). If you found this page but are looking for information about VPN client device configuration, see Part Three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
+This guide is the second-part  of a three-part series on setting up a  hardened OpenVPN environment. The guide assumes that you already have an OpenVPN server running. If you do not: complete part one of the series: [Set Up a Hardened OpenVPN Server with Debian](/docs/networking/vpn/set-up-a-hardened-openvpn-server). If you found this page looking for information about VPN client device configuration, see Part Three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).
 
 ## OpenVPN Configuration
 
-OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`, and it requires several edits.
+OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and requires editing to optimize its efficiency. 
 
-1.  First change from your standard user account to the `root` user:
+1.  Switch from your standard user account to the `root` user:
 
         sudo su - root
 
-2.  Set OpenVPN to push a gateway configuration so all clients send internet traffic through it.
+2.  Set OpenVPN to push a gateway configuration, so all clients send internet traffic through it.
 
         cat >> /etc/openvpn/server.conf << END
 
@@ -40,7 +40,7 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`, and it r
         push "redirect-gateway def1 bypass-dhcp"
         END
 
-3.  Push DNS resolvers to client devices. [OpenDNS](https://www.opendns.com/) is provided by OpenVPN's `client.ovpn` template file, but you can change this to your preference.
+3.  Push DNS resolvers to client devices. [OpenDNS](https://www.opendns.com/) is provided by OpenVPN's `client.ovpn` template file. 
 
         cat >> /etc/openvpn/server.conf << END
 
@@ -52,9 +52,9 @@ OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`, and it r
 
 ## Append Networking Rules
 
-In [Part One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server can only accept client connections, SSH and make system updates--all over IPv4, and [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN does not support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
+In [Part One](/docs/networking/vpn/set-up-a-hardened-openvpn-server) of this series, we set iptables rules so the OpenVPN server could only accept client connections, SSH, and make system updates, all over IPv4. [IPv6 was disabled](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6) since OpenVPN doesn't support using both transport layers simultaneously. Leaving IPv6 disabled here prevents leaking v6 traffic which would otherwise be sent separately from your VPN's v4 tunnel.
 
-Since now the server should forward traffic out to the internet from clients, accept the responses and route them back to client machines, the firewall rules must be adjusted.
+
 
 {: .caution }
 >
@@ -129,7 +129,7 @@ Since now the server should forward traffic out to the internet from clients, ac
 
         iptables-restore < /etc/iptables/rules.v4
 
-4.  Apply the routing rule so that traffic can leave the VPN. This must be done after `iptables-restore` because that command can't take a table option:
+4.  Apply the routing rule so that traffic can leave the VPN. This must be done after `iptables-restore` because that directive doesn't  take a table option:
 
         iptables -t nat -A POSTROUTING -s 10.89.0.0/24 -o eth0 -j MASQUERADE
 
