@@ -12,7 +12,7 @@ modified_by:
 title: How to Install NeoVim and Plugins with vim-plug
 contributor:
   name: Gabriel Cánepa
-  link: '[Gabriel Cánepa](https://twitter.com/gacanepa/)'
+  link: https://twitter.com/gacanepa/
 external_resources:
  - '[NeoVim official website](https://neovim.io)'
  - '[Neovim-completion-manager](https://github.com/roxma/nvim-completion-manager)'
