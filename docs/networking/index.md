@@ -16,7 +16,6 @@ featured:
  - set-up-an-ipv6-tunnel-on-your-linode.md
  - basic-nfs-configuration-on-debian-7.md
  - create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7.md
- - neovim-basics.md
 categories:
  - diagnostics
  - ssh

@@ -12,7 +12,7 @@ modified_by:
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
 contributor:
   name: Andrew Lescher
-  link: '[Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)'
+  link: https://www.linkedin.com/in/andrew-lescher-87027940)
 external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
