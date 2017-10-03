@@ -5,22 +5,23 @@ author:
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
 keywords: 'nightmare.js, node.js, headless browser, automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Saturday, September 30th, 2017'
+published: 'Friday, September 29th, 2017'
 modified: Tuesday, October 3rd, 2017
 modified_by:
   name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
 contributor:
   name: Nashruddin Amin
-  link: https://github.com/flowfree
+  link: 'https://github.com/flowfree'
 external_resources:
-- '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
-- '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
+  - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
+  - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ----
+
 
 
 **Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around [Electron](https://electron.atom.io/), which Nightmare.js then uses as a browser to interact with web sites. This guide will help you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need for a graphical user interface.
