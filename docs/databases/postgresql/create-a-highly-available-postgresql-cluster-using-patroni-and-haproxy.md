@@ -2,7 +2,7 @@
 author:
   name: Kulshekhar Kabra
   email: docs@linode.com
-description: 'This guide shows you how to set up a highly available PostgreSQL cluster on your Linode.'
+description: 'This guide shows you how to set up a highly available PostgreSQL cluster using Patroni and HA Proxy on your Linode.'
 keywords: 'postgresql,clusters,databases'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, September 19, 2017
@@ -19,8 +19,9 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
+## What is PostgreSQL?
 
-[PostgreSQL](https://www.postgresql.org) (Postgres) is an open source, fully [ACID compliant](https://en.wikipedia.org/wiki/ACID) relational database that runs on all major operating systems. While Postgres is a highly versatile, feature-rich, and powerful database, it doesn't have a built-in solution for high availability.
+[PostgreSQL](https://www.postgresql.org) (Postgres) is an open-source, fully [ACID compliant](https://en.wikipedia.org/wiki/ACID) relational database that runs on all major operating systems. While Postgres is a highly versatile, feature-rich, and powerful database, it doesn't have a built-in solution for high availability.
 
 This guide shows you how to create a highly available Postgres cluster of three servers using [Patroni](https://github.com/zalando/patroni).
 
@@ -68,9 +69,9 @@ The examples in this guide assign the private IP addresses of the three Postgres
 
 ## Install Patroni
 
-Patroni is an open source python package that manages Postgres configuration. It can be configured to handle tasks like replication, backups and restorations.
+Patroni is an open-source Python package that manages Postgres configuration. It can be configured to handle tasks like replication, backups and restorations.
 
-In this guide, we use Patroni to:
+In this guide, you will use Patroni to:
 
  -  Configure the Postgres instance running on the same server
  -  Configure replication from master to slaves
@@ -92,9 +93,9 @@ In this guide, we use Patroni to:
 
 ## Install etcd
 
-etcd is a fault-tolerant, distributed key-value store that is used to store the state of the Postgres cluster. Via Patroni, all of the Postgres nodes make use of etcd to keep the Postgres cluster up and running.
+Etcd is a fault-tolerant, distributed key-value store that is used to store the state of the Postgres cluster. Via Patroni, all of the Postgres nodes make use of etcd to keep the Postgres cluster up and running.
 
-In this guide we use a one server etcd cluster. However, in production, it may be best to use a larger etcd cluster so that one etcd node fails, it doesn't affect your Postgres servers.
+In this guide you use a single-server etcd cluster. However, in production, it may be best to use a larger etcd cluster so that one etcd node fails, it doesn't affect your Postgres servers.
 
 1. On the Linode where you want etcd installed, update the package lists:
 
@@ -108,7 +109,7 @@ The remainder of this guide uses `192.0.2.21` as the private IP address of this 
 
 ## Install HAProxy
 
-When developing an application that uses a database, it can be cumbersome to keep track of the database endpoints if they keep changing. Using HAProxy simplifies this by giving a single endpoint that we can connect our application to.
+When developing an application that uses a database, it can be cumbersome to keep track of the database endpoints if they keep changing. Using HAProxy simplifies this by giving a single endpoint to which you can connect the application.
 
 HAProxy forwards the connection to whichever node is currently the master. It does this using a REST endpoint that Patroni provides. Patroni ensures that, at any given time, only the master Postgres node will appear as online, forcing HAProxy to connect to the correct node.
 
@@ -163,7 +164,7 @@ At this stage, you should have a total of five Linodes:
 
 ## Configure Patroni
 
-Patroni can be configured using a YAML file which can be placed anywhere. In this guide, we'll place this file at `/etc/patroni.yml`.
+Patroni can be configured using a YAML file which can be placed anywhere. In this guide, you will place this file at `/etc/patroni.yml`.
 
 Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni installed (`192.0.2.11`, `192.0.2.12`, and `192.0.2.13` in this guide). Change `name` to something unique, and change `listen` and `connect_address` (under `postgresql` and `restapi`) to the appropriate values on each Linode.
 
@@ -232,7 +233,7 @@ Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni 
            nosync: false
        ~~~
 
-2. Make note of the `data_dir` value in the above file. This directory needs to be writable by the `postgres` user. If this directory doesn't exist, create it:
+2. Make note of the `data_dir` value in the above file. The `postgres` user needs the ability to write to this directory. If this directory doesn't exist, create it:
 
         sudo mkdir /data/patroni -p
 
@@ -246,7 +247,7 @@ Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni 
 
     Every option in the above file is configurable. View the [latest version of the postgres0.yml file](https://github.com/zalando/patroni/blob/master/postgres0.yml) in Patroni's Github repository.
 
-5. Create a `systemd` script that will allow us to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
+5. Create a `systemd` script that will allow you to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
 
    {: .file}
    /etc/systemd/system/patroni.service
@@ -306,7 +307,7 @@ Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni 
 
 ## Configure HAProxy
 
-With the Postgres cluster set up, we need a way to connect to the master regardless of which of the servers in the cluster is the master. This is where HAProxy comes in. All Postgres clients (your applications, `psql`, etc.) will connect to HAProxy which will make sure you connect to the master in the cluster.
+With the Postgres cluster set up, you need a way to connect to the master regardless of which of the servers in the cluster is the master. This is where HAProxy comes in. All Postgres clients (your applications, `psql`, etc.) will connect to HAProxy which will make sure you connect to the master in the cluster.
 
 1. On the Linode that has HAProxy installed, edit the configuration file at `/etc/haproxy/haproxy.cfg` to contain the following:
 
@@ -369,7 +370,7 @@ With the Postgres cluster set up, we need a way to connect to the master regardl
 
    {: .note}
    >
-   > In this case, it just so happened that the third Postgres server was promoted to master. This might not always be the case. It is equally likely that the second server may be promoted to master.
+   > In this case, it just so happens that the third Postgres server is promoted to master. This might not always be the case. It is equally likely that the second server may be promoted to master.
 
 When you now bring up the first server, it will rejoin the cluster as a slave and will sync up with the master.
 
@@ -377,7 +378,7 @@ You now have a robust, highly available Postgres cluster ready for use.
 
 ## Possible Next Steps
 
-While the setup in this guide should go a long way in making your Postgres deployment highly available, here are steps you can take to improve it further:
+While the setup in this guide should go far in making your Postgres deployment highly available, here are steps you can take to improve it further:
 
 1. Use a larger etcd cluster to improve availability.
 2. Use PgBouncer to pool connections.
