@@ -19,6 +19,7 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
+
 ## What is PostgreSQL?
 
 [PostgreSQL](https://www.postgresql.org) (Postgres) is an open-source, fully [ACID compliant](https://en.wikipedia.org/wiki/ACID) relational database that runs on all major operating systems. While Postgres is a highly versatile, feature-rich, and powerful database, it doesn't have a built-in solution for high availability.
