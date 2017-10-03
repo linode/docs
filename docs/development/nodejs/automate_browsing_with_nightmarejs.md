@@ -6,7 +6,7 @@ description: 'Automate browsing tasks with Nightmare.js, a high-level browser au
 keywords: 'nightmare.js, node.js, headless browser, automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Saturday, September 30th, 2017'
-modified: Monday, October 2nd, 2017
+modified: Tuesday, October 3rd, 2017
 modified_by:
   name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
@@ -23,14 +23,14 @@ external_resources:
 ----
 
 
-**Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around **Electron**, which is used as the browser by Nightmare.js. This guide will help you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need of a graphical user interface.
+**Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around [Electron](https://electron.atom.io/), which Nightmare.js then uses as a browser to interact with web sites. This guide will help you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need for a graphical user interface.
 
 
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. 
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -41,7 +41,7 @@ external_resources:
 > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 
-## Install Node.js 
+## Install Node.js
 
 We will install the more recent Node.js version using the PPA maintained by NodeSource rather than the older version in the Ubuntu 16.04 repository.
 
@@ -76,9 +76,9 @@ We will install Nightmare.js in a specific directory to avoid installing the Nod
 
         mkdir ~/automation && cd ~/automation
 
-2.  Initialize an npm project: 
+2.  Initialize an npm project:
 
-        npm init 
+        npm init
 
     {:.note}
     > You will be prompted to provide a name, repository, and other details for the project. Since this information is not important for the purposes of this guide, you can accept the default values provided. To do this automatically, use the `-f` (force) flag when running `npm init`.
@@ -89,107 +89,80 @@ We will install Nightmare.js in a specific directory to avoid installing the Nod
 
 ## Create and Run the Automation Script
 
-For our sample automation, we will try to fetch the latest job posts from [Indeed.com](http://indeed.com). 
+Nightmare.js is an npm module, so it can be imported from within a Node.js script. For the purposes of this guide, you will write a simple script that will search Linode's documentation for guides concerning Ubuntu.
 
-1. Create a new file named `indeed.js`:
+1. Nightmare.js uses the Electron browser and it needs X server in order to run. Install `xvfb` and its dependencies so that you can run graphical applications without display hardware:
 
-        nano indeed.js
+        sudo apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps clang libdbus-1-dev libgtk2.0-dev libnotify-dev libgnome-keyring-dev libgconf2-dev libasound2-dev libcap-dev libcups2-dev libxtst-dev libxss1 libnss3-dev gcc-multilib g++-multilib
 
-2. Paste the following content:
+2. Create `linode.js` inside the automation directory and add contents as follows:
 
     {: .file }
-    ~/indeed.js
+    ~/automation/linode.js
     :   ~~~ javascript
-        // Import module and instantiate the Nightmare object
-        var Nightmare = require('nightmare');
-        var nightmare = Nightmare();
+        const Nightmare = require('nightmare');
+        const nightmare = Nightmare({show: true});
 
-        /**
-         * Function to perform search on Indeed given a keyword and a location.
-         * This will make it possible to perform multiple searches within a session
-         */
-        var indeedSearch = function(keyword, location) {
-          return function(nightmare) {
-            nightmare
-              .goto('http://www.indeed.com/')       // Open indeed.com
-              .type('input[name=q]', keyword)       // Type the keyword in the "What" text box
-              .type('input[name=l]', '')            // Clear the "Where" text box
-              .type('input[name=l]', location)      // Type the location in the "Where" text box
-              .click('input[type=submit')           // Click the "Find Jobs" button
-              .wait('#resultsCol')                  // Wait until the result page is loaded
-              .evaluate(function() {
-                // Parse all of the job title, company name, and URL
-                var jobs = new Array();
-                var rows = document.querySelectorAll('.row.result');
-                rows.forEach(function(row) {
-                  var link = row.querySelector('h2 a');
-                  var company = row.querySelector('span.company');
-                  jobs.push({
-                    title: link.innerText.trim(),
-                    company: company.textContent.trim(),
-                    url: link.href
-                  });
-                });
-                // Return the parsed jobs
-                return jobs;
-              });
-          };
-        };
 
-        // Start the automation
         nightmare
-          .use(indeedSearch('devops', 'new york'))   // Search Indeed using the function above
-          .end()                                     // Done, close the browser
-          .then(function(jobs) {                     // Process the returned jobs from `evaluate` function above
-            console.log('Title,Company,URL');
-            jobs.forEach(function(job) {
-              console.log(job.title + ',' + job.company + ',' + job.url);
+            .goto('https://www.linode.com/docs')
+            .insert('#gsc-i-id1', 'ubuntu')
+            .click('input.gsc-search-button-v2')
+            .wait('#search-results')
+            .evaluate(function() {
+                    let searchResults = [];
+
+                    const results =  document.querySelectorAll('h6.library-search-result-title a');
+                    results.forEach(function(result) {
+                            let row = {
+                                            'title':result.innerText,
+                                            'url':result.href
+                                      }
+                            searchResults.push(row);
+                    });
+                    return searchResults;
+            })
+            .end()
+            .then(function(result) {
+                    result.forEach(function(r) {
+                            console.log('Title: ' + r.title);
+                            console.log('URL: ' + r.url);
+                    })
+            })
+            .catch(function(e)  {
+                    console.log(e);
             });
-          });
         ~~~
 
-        {:.note}
-        > Missing: xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps clang libdbus-1-dev libgtk2.0-dev libnotify-dev libgnome-keyring-dev libgconf2-dev libasound2-dev libcap-dev libcups2-dev libxtst-dev libxss1 libnss3-dev gcc-multilib g++-multilib
+    This script visits the Linode docs home page, enters 'ubuntu' into the input box, and clicks the submit button. It then waits for the results to load and prints the url and title each entry on the first page of results.
+
 3.  Run the script:
 
-        apt install xvfb
-        xvfb-run node indeed.js
+        xvfb-run node linode.js
 
     It will output something like this:
 
-        Title,Company,URL
-        DevOps Engineer,Cynetra,https://www.indeed.com/rc/clk?jk=400...
-        DevOps Sr Engineer,InRhythm,https://www.indeed.com/rc/clk?jk=2a3...
-        DevOps Consultant,InRhythm,https://www.indeed.com/rc/clk?jk=273...
-        DevOps Engineer,SiriusXM,https://www.indeed.com/rc/clk?jk=18c...
+        Title: How to Install a LAMP Stack on Ubuntu 16.04
+        URL: https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04
+        Title: Install and Configure MySQL Workbench on Ubuntu 16.04
+        URL: https://www.linode.com/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu
+        Title: Install MongoDB on Ubuntu 16.04 (Xenial)
+        URL: https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04
         ...
 
-    {: .note}
-    >
-    > Nightmare.js uses the Electron browser and it needs X server to run. The `xvfb-run` command allows you to run graphical applications without display hardware.
+## Add a Cron Job to Run the Automation Script
 
+In many cases you will want to run your script periodically using a cron task.
 
-## Add Cron Job to Run the Automation Script
-
-Since we are automating web tasks, it makes sense if we run the automation script periodically using cron job. The following steps will show you how to run the script every hour using cron job.
-
-1.  Edit the current user's crontab file:
+1.  Open the current user's crontab file:
 
         crontab -e
 
-    This will open a text editor and allow you to edit the `crontab`.
-
-    {: .note}
-    >
-    > If it shows some options for the text editors to be used, select `nano` for the easiest editor.
-
 2.  Add the following line at the end of the file:
 
-        0 * * * * cd ~/automation && xvfb-run node indeed.js >> data_$(date +\%Y_\%m_\%d_\%I_\%M_\%p).txt
+        0 * * * * cd ~/automation && xvfb-run node linode.js >> data_$(date +\%Y_\%m_\%d_\%I_\%M_\%p).txt
 
-    The command above will change the working directory to the `~/automation/` dir, run the Indeed scraping script, and save the output to a file with unique filename based on date and time.
-
-3.  Press **CTRL+O** to save the file and **CTRL+X** to exit `nano`.
+    The command above will change the working directory to the `~/automation/` dir, run the scraping script, and save the output to a file with a unique filename based on date and time. It will repeat this process automatically once every hour.
 
 {: .note}
 >
