@@ -1,5 +1,5 @@
 ---
-author: 
+author:
    name: Linode Community
    email: docs@linode.com
 description: 'OpenVZ is a software based OS virtualization tool enabling the deployment, management, and modification of isolated virtual Linux environments from within a host Linux distribution. An extensive array of pre-built OS templates in a variety of Linux distributions allow users to rapidly download and deploy virtual environments with ease.'
@@ -19,6 +19,7 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
+
 ---
 
 ## Introduction To This Tutorial
@@ -33,9 +34,11 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ. They include the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain any previously added software will be compatible with these changes.
 
-4. Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
+{:.note}
+>Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
 
 # Install And Configure OpenVZ
+
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
@@ -260,7 +263,7 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
     /etc/vz/vz.conf
     : ~~~
       VE_LAYOUT=simfs
-      ~~~ 
+      ~~~
 
 4. List available OS templates for download.
 
