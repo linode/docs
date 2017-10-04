@@ -17,11 +17,13 @@ modified_by:
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+
 ---
+
 ## What is Elastic Stack?
 
-The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
+The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a trio of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
 
 This guide will explain how to install all three components and use them to explore Apache web server logs in Kibana, the browser-based component that visualizes data.
 
@@ -46,7 +48,7 @@ This guide will walk through the installation and set up of version 5 of the Ela
 
 ## Install OpenJDK 8
 
-Elasticsearch *requires* the most recent versions of Java, and will not run with the default OpenJDK version availble on Debian Jessie. Install the `jessie-backports` source in order to get OpenJDK 8:
+Elasticsearch requires the most recent versions of Java, and will not run with the default OpenJDK version available on Debian Jessie. Install the `jessie-backports` source in order to get OpenJDK 8:
 
 1.  Add Jessie backports to your list of APT sources:
 
@@ -130,15 +132,15 @@ Before configuring and loading log data, install each piece of the stack, indivi
 
 ### Logstash
 
-1.  Install the `logstash` package:
+Install the `logstash` package:
 
-         sudo apt-get install logstash
+     sudo apt-get install logstash
 
 ### Kibana
 
-1.  Install the `kibana` package:
+Install the `kibana` package:
 
-         sudo apt-get install kibana
+     sudo apt-get install kibana
 
 ## Configure Elastic Stack
 
@@ -224,7 +226,7 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
 4.  Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to port-forward Kibana through ssh. The landing page should look similar to the following:
 
-    ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png)
+    ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png "Kibana 5 Index Pattern Configuration")
 
     This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
 
@@ -238,13 +240,13 @@ After the previously executed `curl` commands created entries in the Apache acce
 
 The "Discover" tab on the left-hand side of Kibana's interface (which should be open by default after configuring your index pattern) should show a timeline of log events:
 
-![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discover.png)
+![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discover.png "Kibana 5 Discover Tab")
 
 Over time, and as other requests are made to the web server via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
 
 In order to view the details of a log entry, click the drop-down arrow to see individual document fields:
 
-![Kibana 5 Document Fields](/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png)
+![Kibana 5 Document Fields](/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png "Kibana 5 Document Fields")
 
 Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
 
@@ -264,7 +266,7 @@ For example, to find the 404 error requests you generated from among 200 OK requ
 
 Then, click the magnifying glass search button.
 
-![Kibana 5 Search Bar](/docs/assets/elastic-stack-debian-8-kibana-search-bar.png)
+![Kibana 5 Search Bar](/docs/assets/elastic-stack-debian-8-kibana-search-bar.png "Kibana 5 Search Bar")
 
 The user interface will now only return logs that contain the "404" code in their response field.
 
@@ -274,19 +276,19 @@ Kibana supports many types of Elasticsearch queries to gain insight into indexed
 
 To create one of these visualizations, begin by selecting the "Visualize" tab:
 
-![Kibana 5 Visualize Tab](/docs/assets/elastic-stack-debian-8-kibana-visualize-tab.png)
+![Kibana 5 Visualize Tab](/docs/assets/elastic-stack-debian-8-kibana-visualize-tab.png "Kibana 5 Visualize Tab")
 
 Then, select one of the icons to create a visualization:
 
-![Kibana 5 Create Visualization](/docs/assets/elastic-stack-debian-8-kibana-create-visualization.png)
+![Kibana 5 Create Visualization](/docs/assets/elastic-stack-debian-8-kibana-create-visualization.png "Kibana 5 Create Visualization")
 
 Select "Pie" to create a new pie chart:
 
-![Kibana 5 Select Pie Chart Visualization](/docs/assets/elastic-stack-debian-8-kibana-pie-chart.png)
+![Kibana 5 Select Pie Chart Visualization](/docs/assets/elastic-stack-debian-8-kibana-pie-chart.png "Kibana 5 Select Pie Chart Visualization")
 
 Then select the `logstash-*` index pattern to determine from where the data for the pie chart will come:
 
-![Kibana 5 Select Pie Chart Index](/docs/assets/elastic-stack-debian-8-kibana-vis-index.png)
+![Kibana 5 Select Pie Chart Index](/docs/assets/elastic-stack-debian-8-kibana-vis-index.png "Kibana 5 Select Pie Chart Index")
 
 At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:
 
@@ -295,7 +297,7 @@ At this point, a pie chart should appear in the interface ready to be configured
 - From the "Field" drop-down menu, select `response.keyword`. This indicates that the `response` field will determine the size of the pie chart slices.
 - Finally, click the "Play" button to update the pie chart and complete the visualization.
 
-![Kibana 5 Select Pie Chart Configuration](/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png)
+![Kibana 5 Select Pie Chart Configuration](/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png "Kibana 5 Select Pie Chart Configuration")
 
 Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred earlier than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields, such as the http verb (GET, POST, etc.), or can even create summaries of numerical data, such as the total amount of bytes transferred over a given time period.
 
