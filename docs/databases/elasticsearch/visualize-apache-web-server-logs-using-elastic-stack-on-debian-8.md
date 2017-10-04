@@ -23,7 +23,7 @@ title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 
 ## What is Elastic Stack?
 
-The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a trio of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
+The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
 
 This guide will explain how to install all three components and use them to explore Apache web server logs in Kibana, the browser-based component that visualizes data.
 
@@ -206,7 +206,7 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 ### Kibana
 
 
-1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port 5601.
+1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port `5601`.
 
     {:.file-excerpt}
     /etc/kibana/kibana.yml
@@ -224,7 +224,7 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
         for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
 
-4.  Next, open Kibana in your browser. Kibana listens for requests on port 5601, so depending on your Linode's configuration, you may need to port-forward Kibana through ssh. The landing page should look similar to the following:
+4.  Next, open Kibana in your browser. Kibana listens for requests on port `5601`, so depending on your Linode's configuration, you may need to port-forward Kibana through SSH. The landing page should look similar to the following:
 
     ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png "Kibana 5 Index Pattern Configuration")
 
@@ -250,7 +250,7 @@ In order to view the details of a log entry, click the drop-down arrow to see in
 
 Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
 
-### Analytze Logs 
+### Analyze Logs 
 
 Before continuing, generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:
 
