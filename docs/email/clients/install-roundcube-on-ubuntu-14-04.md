@@ -13,11 +13,13 @@ title: 'Install Roundcube on Ubuntu 14.04'
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
-  external_resources:
-    '[Roundcube Homepage](https://roundcube.net/)'
+external_resources:
+  - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-## Introduction
+![Install Roundcube on Ubuntu 14.04](/docs/assets/install-roundcube-on-ubuntu-14-04.jpg "Install Roundcube on Ubuntu 14.04")
+
+## What is Roundcube?
 
 Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube over the internet using a web browser.
 

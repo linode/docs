@@ -19,6 +19,8 @@ external_resources:
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
 ---
 
+![How to Install MySQL on Debian 8](/docs/assets/how-to-install-mysql-on-debian-8.jpg "How to Install MySQL on Debian 8")
+
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 8 (Jessie).
 
 Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 

@@ -20,6 +20,8 @@ external_resources:
 
 ---
 
+![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/docs/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
+
 ## What is PostgreSQL?
 
 [PostgreSQL](https://www.postgresql.org) (Postgres) is an open-source, fully [ACID compliant](https://en.wikipedia.org/wiki/ACID) relational database that runs on all major operating systems. While Postgres is a highly versatile, feature-rich, and powerful database, it doesn't have a built-in solution for high availability.
