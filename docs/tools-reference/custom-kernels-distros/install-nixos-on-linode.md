@@ -1,6 +1,5 @@
 ---
-author:
-  name: Andrew Miller
+author: name: Andrew Miller
   email: docs@linode.com
 published: 'Friday, June 16, 2017'
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
@@ -141,8 +140,7 @@ When GRUB detects a partitionless disk, it will warn about the unreliability of 
 
 Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:
 
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.forceInstall = true;
+    boot.loader.grub.device = "nodev";
     boot.loader.timeout = 10;
 
 ### Edit NixOS Configuration
