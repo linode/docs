@@ -6,7 +6,7 @@ description: 'Use the vmstat tool to monitor your system''s virtual memory usage
 keywords: 'virtual memory,memory,linux,ram,usage,troubleshooting.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/vmstat/']
-modified: Friday, July 8th, 2011
+modified: Wednesday, October 4, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, October 13th, 2010'
@@ -16,11 +16,13 @@ external_resources:
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
 ---
 
+![Use vmstat to Monitor System Performance](/docs/assets/use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")
+
+## What is vmstat?
+
 `vmstat` is a tool that collects and reports data about your system's memory, swap, and processor resource utilization in real time. It can be used to determine the root cause of performance and issues related to memory use.
 
-## Using vmstat
-
-### Vmstat Operation
+## How to Use vmstat
 
 Use the `vmstat` command to run the program. Consider the following output:
 
@@ -35,7 +37,7 @@ This data provides an average view of virtual memory and system usage since the 
 
 In this example, the first line of data provides the average since the last boot time. Subsequent reports, until `[count]` is reached, report data on the current state of the system every `[interval]` seconds.
 
-### Vmstat Commands
+## vmstat Commands
 
 `vmstat` is often run with an interval of 1 second for a small number of seconds depending on kind of problem the administrator is trying to diagnose. The following example illustrates an interval of one (1) second twenty (20) times:
 
@@ -127,7 +129,7 @@ In the default operation, `vmstat` displays memory statistics in kilobytes. `vms
      0  0      3    162 55   1339    0    0 0     0  200  444  2  0 98  0
      0  0      3    162 55   1339    0    0 0     0  313  771  3  1 96  0
 
-## Interpreting Vmstat Output
+## How to Interpret vmstat Output
 
 `vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
