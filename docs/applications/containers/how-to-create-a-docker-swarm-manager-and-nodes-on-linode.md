@@ -21,13 +21,13 @@ external_resources:
 
 ![How to Create a Docker Swarm Manager and Nodes on Linode](/docs/assets/docker/create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
 
-Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. All you need is one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
+Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. You need one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
 
-In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container roll out. This requires multiple Linodes with Docker installed and running in the same datacenter. They don't need to be running the same distribution.
+In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container deployment. This requires multiple Linodes with Docker installed and running in the same data center. They don't need to be running the same distribution.
 
 ## Create the Docker Swarm Manager
 
-The Docker Swarm Manager’s purpose is to receive commands on behalf of the cluster and assign containers to nodes. The Swarm Manager uses the Raft Consensus Algorithm to manage a Swarm state. The Raft Consensus Algorithm ensures that all manager nodes that are in charge of managing and scheduling tasks in a cluster are storing the same, consistent state. Should a failure occur, any single node can assume the tasks and restore a stable state.
+The Docker Swarm Manager’s purpose is to receive commands on behalf of the cluster and assign containers to nodes. The Swarm Manager uses the Raft Consensus Algorithm to manage Swarm states. The Raft Consensus Algorithm ensures that all manager nodes that are in charge of managing and scheduling tasks in a cluster are storing the same, consistent state. Should a failure occur, a single node assumes the tasks and restores a stable state.
 
 In this guide, we create a single Swarm Manager. If your goal is high-availability, you can create multiple managers.
 
@@ -47,7 +47,7 @@ In this guide, we create a single Swarm Manager. If your goal is high-availabili
 
 ## Join Nodes to the Manager
 
-In Step 1 of the previous section, The `docker swarm init` command outputs instructions on how to join the Manager. It follows the following structure:
+In Step 1 of the previous section, The `docker swarm init` command outputs instructions on how to join the Manager.
 
     docker swarm join --token TOKEN PUBLIC_IP:2377
 
