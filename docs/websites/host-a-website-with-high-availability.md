@@ -6,15 +6,16 @@ description: 'How to configure a highly available web server stack'
 keywords: 'high availability,web server,failover, '
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, July 12th, 2016'
-modified: Tuesday, July 12th, 2016
+modified: Tuesday, June 7th, 2017
 modified_by:
-  name: Phil Zona
+  name: Angel Guarisma
 title: 'Host a Website with High Availability'
 external_resources:
 - '[GlusterFS](https://www.gluster.org/)'
 - '[Galera Cluster](https://galeracluster.com/)'
 - '[Apache Web Server](https://httpd.apache.org/)'
 - '[Keepalived](http://www.keepalived.org/)'
+- '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 ---
 
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible. 
@@ -190,7 +191,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 2.  Install the following packages on each database node:
 
         yum install epel-release 
-        yum install https://www.percona.com/redir/downloads/percona-release/redhat/latest/percona-release-0.1-3.noarch.rpm
+        yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
         yum install Percona-XtraDB-Cluster-56 Percona-XtraDB-Cluster-shared-56
 
     {: .note}
@@ -232,8 +233,9 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
 
     In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place. It will be needed later. 
 
-    {: .note }
+    {: .note}
     > The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
+
 
 2.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
 
@@ -248,12 +250,15 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
     Create a database user and enable replication. Replace `password` with the password you set in Step 1:
 
         CREATE USER 'sstuser'@'localhost' IDENTIFIED BY 'password';
-        GRANT RELOAD, LOCK TABLES, REPLICATION CLIENT ON *.* TO 'sstuser'@'localhost';
+        GRANT RELOAD, LOCK TABLES, PROCESS, REPLICATION CLIENT ON *.* TO 'sstuser'@'localhost';
         FLUSH PRIVILEGES;
 
 4.  On your other nodes, start MySQL normally to have them join the cluster:
 
         systemctl start mysql
+	
+   {: .note}
+   > If you want to learn more about `xtrabackup` privileges their [documentation](https://www.percona.com/doc/percona-xtrabackup/2.4/using_xtrabackup/privileges.html) is a good place to start.
 
 ### Test Database Replication
 
@@ -454,7 +459,7 @@ To test redundancy of your file system, you can stop the Gluster daemon on your 
 
     systemctl stop glusterd
 
-Follow the above steps again, creating another test file and checking whether it is visible from your your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
+Follow the above steps again, creating another test file and checking whether it is visible from your application nodes' public IPs. Because the GlusterFS volume is replicated and distributed, and we set backup volumes for our Apache servers, taking down one GlusterFS node should not affect the accessibility of your files.
 
 When you're finished, be sure to remove the test files. Do this for any additional test files you created as well:
 
@@ -485,7 +490,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
 1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses. 
 
-2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the the floating IP address, and click **Save Changes**.
+2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
 
 3.  Repeat the above steps to configure IP failover for `galera3` as well. Make sure to select the same IP address.
 

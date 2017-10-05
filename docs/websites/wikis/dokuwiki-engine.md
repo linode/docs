@@ -6,7 +6,7 @@ description: 'Build a fully featured wiki text with the DokuWiki software.'
 keywords: 'wiki,doku wiki,php'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/wikis/dokuwiki/']
-modified: Friday, April 29th, 2011
+modified: Thursday, July 27th, 2017
 modified_by:
   name: Linode
 published: 'Saturday, April 17th, 2010'
@@ -17,6 +17,8 @@ external_resources:
 ---
 
 DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage while providing a rich feature set to enable collaborative document editing and creation for users of all skill levels and technical inclinations. DokuWiki stores wiki pages in text files on the web-server rather than in a database management system, which increases data usability and portability for moderately sized wiki projects without requiring the system resources to power a relational database server.
+
+![DokuWiki Title Graphic](/docs/assets/dokuwiki_title_graphic.png)
 
 Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 

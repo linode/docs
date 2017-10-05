@@ -97,7 +97,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
        drush archive-dump
 
-    *The site has been backed up locally.* Notice the backup has been created and placed in the the `/home/user/drush-backups/archive-dump/` directory in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
+    *The site has been backed up locally.* Notice the backup has been created and placed in the `/home/user/drush-backups/archive-dump/` directory in a folder time stamped with its creation time. Drush saves your data into a .tar.gz archive file, containing the Drupal site folder and a copy of the MySql database.
 
 2. To copy the file to a remote backup location, use the rsync command. Replace the `date-time-stamp`, `examplesitename.date-time-stamp.tar.gz`, `user`, `ip-address`, and `/user/` with the appropriate inputs:
 

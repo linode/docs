@@ -6,7 +6,7 @@ description: 'Getting started with MySQL on Debian 7.'
 keywords: 'MySQL on Linux,Debian 7,Debian Wheezy,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
-modified: Wednesday August 26th, 2015
+modified: Tuesday, September 5, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, January 14th, 2014'
@@ -19,9 +19,11 @@ external_resources:
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance/)'
 ---
 
+![mysql_debian7_banner](/docs/assets/How_to_Install_MySQL_on_Debian_7_smg.jpg)
+
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Debian 7 (Wheezy).
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
 {: .note}
 >
@@ -52,7 +54,7 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Debian 7.](/docs/assets/mysql-rootpw-debian.png)](/docs/assets/mysql-rootpw-debian.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases with local clients.
 
 {: .note}
 >
@@ -64,7 +66,7 @@ Run the `mysql_secure_installation` script to address several security concerns 
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
 
 ## Using MySQL
 

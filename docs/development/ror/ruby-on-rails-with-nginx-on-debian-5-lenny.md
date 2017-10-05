@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/ruby-on-rails-nginx/debian-5-lenny/','websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, August 21st, 2009'
 title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
 ---

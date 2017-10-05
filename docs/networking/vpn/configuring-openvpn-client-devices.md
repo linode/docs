@@ -5,7 +5,7 @@ author:
 description: 'This guide will show you how to install, configure and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
 keywords: 'openvpn,vpn,vpn tunnel,ios,os x,mac,windows,android'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Thursday, March 30th, 2017'
+modified: 'Thursday, July 13th, 2017'
 modified_by:
   name: Steven Jacobs
 published: 'Wednesday, December 9th, 2015'
@@ -23,7 +23,7 @@ This guide is the third of a three-part series to set up a hardened OpenVPN envi
 
 ## Before You Begin
 
-You must already have have the client files on your OpenVPN server. These are:
+You must already have the client files on your OpenVPN server. These are:
 
 *  The root certificate (CA): `ca.crt`.
 *  Client certificate: `client1.crt`.
@@ -164,7 +164,7 @@ Configure VPN connections using the same method you would use to configure wirel
 
     ![NetworkManager VPN tab](/docs/assets/networkmanager-openvpn-vpn.png)
 
-5.  In the **Advanced Options** window, check the box for **Use LZO data compression**, then choose the **Security** tab. Set the **Cipher** to AES-256-CBC and **HMAC Authentication** to SHA512. Choose the **TLS Authentication** tab.
+5.  In the **Security** tab, set the **Cipher** to AES-256-CBC and **HMAC Authentication** to SHA512.  THen choose the **TLS Authentication** tab.
 
     ![OpenVPN Advanced Options Security tab](/docs/assets/networkmanager-openvpn-vpn-advanced-security.png)
 

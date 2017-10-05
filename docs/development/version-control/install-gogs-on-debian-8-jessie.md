@@ -7,7 +7,7 @@ keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, October 9th, 2015'
 alias: ['applications/development/install-gogs-on-debian-jessie/','applications/development/install-gogs-on-debian-8-jessie/']
-modified: Friday, October 9th, 2015
+modified: Wednesday, June 21st, 2017
 modified_by:
     name: Linode
 title: 'Install Gogs on Debian 8 Jessie'
@@ -28,7 +28,7 @@ external_resources:
 
 ![Install Gogs on Debian 8 Jessie](/docs/assets/gogs_tg.png "Install Gogs on Debian 8 Jessie")
 
-This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .note}
 >

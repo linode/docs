@@ -23,7 +23,7 @@ external_resources:
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/centos-5) and a functional [MySQL database](/docs/databases/mysql/centos-5) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/centos-5) and a functional [MySQL database](/docs/databases/mysql/centos-5) system installed.
 
 ## Set the Hostname
 

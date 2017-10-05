@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/django-apache-mod-wsgi/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, May 18th, 2010'
 title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 ---
@@ -18,7 +18,7 @@ title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9.10-karmic) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9.10-karmic) system installed.
 
 Install Dependencies
 --------------------

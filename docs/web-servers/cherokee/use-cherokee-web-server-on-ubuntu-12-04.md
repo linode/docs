@@ -108,7 +108,7 @@ In a terminal window on your local workstation (MacOS X, Linux, BSD, etc):
 
     ssh -L 9090:localhost:9090 root@198.51.100.0 -N
 
-Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
+Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 

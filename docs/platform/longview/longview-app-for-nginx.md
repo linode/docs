@@ -20,7 +20,7 @@ Longview for Nginx is a Longview App. The Longview Nginx tab appears in the Lino
 Prerequisites:
 
 -   Install and start [Nginx](/docs/websites/nginx)
--   Install the [Longview client](/docs/platform/longview/longview#installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -63,7 +63,7 @@ If instead you receive a failure message, such as:
 
     [FAIL] Reloading web server config: nginx failed!
 
-You will need to double-check your Nginx installation, and then do a [manual configuration](#manual-configuration-all-distributions). You can also visit the [Troubleshooting](#id4) section at the end of this article.
+You will need to double-check your Nginx installation, and then do a [manual configuration](#manual-configuration-all-distributions). You can also visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ### Manual Configuration (All Distributions)
 
@@ -103,7 +103,7 @@ To enable the Nginx Longview app manually, follow these steps on your Linode via
 
 5.  Refresh the Longview Nginx tab in the Linode Manager.
 
-You should now be able to see Longview data for Nginx. If that's not the case, proceed to the [Troubleshooting](#id4) section at the end of this article.
+You should now be able to see Longview data for Nginx. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## Viewing Statistics
 
@@ -119,7 +119,7 @@ Click the image for a full-size view.
 
 You'll see the current version of Nginx listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](longview#sph_using-the-interface). The next sections cover the Longview Nginx App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview Nginx App in detail.
 
 ### Requests
 

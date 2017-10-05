@@ -134,7 +134,7 @@ Install Python libraries using the following commands:
 
 2.  Download the recommended version of wkhtmltopdf for Odoo server, currently **0.12.1**:
 
-        sudo wget http://download.gna.org/wkhtmltopdf/0.12/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
+        sudo wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.1/wkhtmltox-0.12.1_linux-trusty-amd64.deb
 
 3.  Install the package using `dpkg`:
 

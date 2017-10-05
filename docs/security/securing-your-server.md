@@ -5,8 +5,8 @@ author:
 description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['securing-your-server/','security/linux-security-basics/','security/basics']
-modified: 'Wednesday, March 29th, 2017'
+alias: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
+modified: 'Wednesday, July 12th, 2017'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
@@ -65,9 +65,9 @@ To add a new user, first [log in to your Linode](/docs/getting-started#logging-i
 
 ### Debian
 
-1.  Debian does not include `sudo` among their default packages. Use `apt-get` to install it:
+1.  Debian does not include `sudo` by default so it must be installed:
 
-        apt-get install sudo
+        apt install sudo
 
 2.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:
 
@@ -215,51 +215,44 @@ Most Linux distributions install with running network services which listen for 
 
 To see your Linode's running network services:
 
-    sudo netstat -tulpn
+    sudo ss -lnp
 
-{: .note}
->
->If netstat isn't included in your Linux distribution by default, install the package `net-tools` or use the `ss -tulpn` command instead.
 
-The following is an example of netstat's output. Note that because distributions run different services by default, your output will differ. If you are unsure of what a service does, do an internet search to understand what it is before attempting to remove or disable it.
+The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
 
 ~~~
+Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:111             0.0.0.0:*               LISTEN      7315/rpcbind
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3277/sshd
-tcp        0      0 127.0.0.1:25            0.0.0.0:*               LISTEN      3179/exim4
-tcp        0      0 0.0.0.0:42526           0.0.0.0:*               LISTEN      2845/rpc.statd
-tcp6       0      0 :::48745                :::*                    LISTEN      2845/rpc.statd
-tcp6       0      0 :::111                  :::*                    LISTEN      7315/rpcbind
-tcp6       0      0 :::22                   :::*                    LISTEN      3277/sshd
-tcp6       0      0 ::1:25                  :::*                    LISTEN      3179/exim4
-udp        0      0 127.0.0.1:901           0.0.0.0:*                           2845/rpc.statd
-udp        0      0 0.0.0.0:47663           0.0.0.0:*                           2845/rpc.statd
-udp        0      0 0.0.0.0:111             0.0.0.0:*                           7315/rpcbind
-udp        0      0 192.0.2.1:123           0.0.0.0:*                           3327/ntpd
-udp        0      0 127.0.0.1:123           0.0.0.0:*                           3327/ntpd
-udp        0      0 0.0.0.0:123             0.0.0.0:*                           3327/ntpd
-udp        0      0 0.0.0.0:705             0.0.0.0:*                           7315/rpcbind
-udp6       0      0 :::111                  :::*                                7315/rpcbind
-udp6       0      0 fe80::f03c:91ff:fec:123 :::*                                3327/ntpd
-udp6       0      0 2001:DB8::123           :::*                                3327/ntpd
-udp6       0      0 ::1:123                 :::*                                3327/ntpd
-udp6       0      0 :::123                  :::*                                3327/ntpd
-udp6       0      0 :::705                  :::*                                7315/rpcbind
-udp6       0      0 :::60671                :::*                                2845/rpc.statd
+tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      3539/systemd-resolv
+tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      3539/systemd-resolv
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3913/sshd
+tcp6       0      0 :::5355                 :::*                    LISTEN      3539/systemd-resolv
+tcp6       0      0 :::22                   :::*                    LISTEN      3913/sshd
+udp        0      0 127.0.0.53:53           0.0.0.0:*                           3539/systemd-resolv
+udp        0      0 0.0.0.0:5355            0.0.0.0:*                           3539/systemd-resolv
+udp6       0      0 :::5355                 :::*                                3539/systemd-resolv
+Active UNIX domain sockets (only servers)
+Proto RefCnt Flags       Type       State         I-Node   PID/Program name     Path
+unix  2      [ ACC ]     STREAM     LISTENING     8717     1/init               /run/systemd/journal/stdout
+unix  2      [ ACC ]     SEQPACKET  LISTENING     8728     1/init               /run/udev/control
+unix  2      [ ACC ]     STREAM     LISTENING     8734     1/init               /run/systemd/fsck.progress
+unix  2      [ ACC ]     STREAM     LISTENING     15990    3974/systemd         /run/user/0/systemd/private
+unix  2      [ ACC ]     STREAM     LISTENING     13007    1/init               /run/uuidd/request
+unix  2      [ ACC ]     STREAM     LISTENING     13010    1/init               /var/run/dbus/system_bus_socket
+unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               /run/systemd/private
 ~~~
 
-Netstat tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
+`ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 
 #### TCP
 
-See the **Local Address** column of the netstat readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+See the **Local Address** column of the `ss` readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
 
 #### UDP
 
 UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*.
 
-Our netstat output shows that NTPdate is: 1) accepting incoming connections on the Linode's public IP address; 2) communicates over localhost; and 3) accepts connections from external sources. These are over port 123, and both IPv4 and IPv6. We also see more sockets open for RPC.
+
 
 ### Determine Which Services to Remove
 
@@ -286,13 +279,13 @@ How to remove the offending packages will differ depending on your distribution'
 
 **Debian / Ubuntu**
 
-    sudo apt-get purge package_name
+    sudo apt purge package_name
 
 **Fedora**
 
     sudo dnf remove package_name
 
-Run `sudo netstat -tulpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
+Run `ss -lpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
 
 ## Configure a Firewall
 

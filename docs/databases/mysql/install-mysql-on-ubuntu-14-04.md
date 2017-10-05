@@ -5,7 +5,7 @@ author:
 description: 'Install MySQL on Ubuntu 14.04. - a getting-started guide.'
 keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Linux,MySQL,install MySQL,install MySQL on ubuntu,mysqltuner,MySQL tuner,harden mysql,root password,sample table'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/','databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/','databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
+alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/', 'databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
 modified: Wednesday, August 26, 2015
 modified_by:
   name: Linode
@@ -17,6 +17,8 @@ external_resources:
  - '[Perl DBI examples for DBD::mysql](http://sql-info.de/mysql/examples/Perl-DBI-examples.html)'
  - '[MySQLdb User''s Guide](http://mysql-python.sourceforge.net/MySQLdb.html)'
 ---
+
+![Install MySQL on Ubuntu 14.04](/docs/assets/install-mysql-on-ubuntu-1404.png "Install MySQL on Ubuntu 14.04")
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
@@ -51,7 +53,7 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
 
 {: .note}
 >

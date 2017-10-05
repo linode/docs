@@ -9,7 +9,7 @@ modified: Monday, March 27th, 2017
 modified_by:
     name: Linode
 published: 'Wednesday, February 3rd, 2016'
-title: 'Configure SPF and DKIM in Postfix on Debian 8'
+title: 'Configure SPF and DKIM With Postfix on Debian 8'
 contributor:
     name: Todd Knarr
     link: https://github.com/tknarr
@@ -25,6 +25,8 @@ external_resources:
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
+
+![SPF and DKIM with Postfix](/docs/assets/Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
@@ -46,9 +48,9 @@ The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instruc
 
 ## Install DKIM, SPF and Postfix
 
-1.  Install the three required packages:
+1.  Install the four required packages:
 
-        apt-get install opendkim opendkim-tools postfix-policyd-spf-python
+        apt-get install opendkim opendkim-tools postfix-policyd-spf-python postfix-pcre
 
 2.  Add user `postfix` to the `opendkim` group so that Postfix can access OpenDKIM's socket when it needs to:
 

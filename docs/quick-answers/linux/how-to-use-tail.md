@@ -5,13 +5,16 @@ author:
 description: 'View and follow the end of files with the tail command.'
 keywords: 'linux,how to,tail,last lines,file'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: [quick-answers/how-to-use-tail/']
+alias: ['quick-answers/how-to-use-tail/']
 modified: 'Monday, April 10th, 2017'
 modified_by:
   name: Phil Zona
 published: 'Monday, April 10th, 2017'
 title: How to Use the Tail Command
 ---
+
+<div class="wistia_responsive_padding" style="padding:56.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/6ds1r8kveb?videoFoam=true" title="Linode - How to use the tail command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 
 In this guide, you'll learn how to use the `tail` command. Using `tail` is a simple way to show the ends of files, for example, when analyzing logs and other text files that change over time. It may also be combined with other tools for selective, real-time monitoring. When performing administrative tasks on your Linode, `tail` is one of the most useful tools available.
 

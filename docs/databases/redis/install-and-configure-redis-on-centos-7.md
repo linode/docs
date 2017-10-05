@@ -18,13 +18,11 @@ external_resources:
  - '[Redis Security](http://redis.io/topics/security)'
 ---
 
-# Install Redis & Set Up Master/Slave Replication on CentOS 7
+Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster.
 
-Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
+This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7. Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high_memory) with this guide.
 
 ![Deploy Redis on CentOS 7](/docs/assets/deploy-redis-on-centos-7.png "Deploy Redis on CentOS 7")
-
-Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high_memory) with this guide.
 
 ## Before You Begin
 
@@ -258,7 +256,7 @@ For an added layer of security, use password authentication to secure the connec
         redis-cli
         127.0.0.1:6379> AUTH slave_password
 
-3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to to the master server:
+3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to the master server:
 
         127.0.0.1:6379> INFO replication
         # Replication

@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -6,11 +7,11 @@ description: 'Use unison to synchronize files between two machines.'
 keywords: 'backup,syncronize files,unison,debian,debian lenny'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/unison/']
-modified: Monday, August 22nd, 2011
+modified: Wednesday, August 23rd, 2017
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, April 20th, 2010'
-title: Synchronize files with Unison
+title: Synchronize Files with Unison
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
 ---
@@ -19,7 +20,10 @@ Unison is a file synchronization tool that allows users to maintain two instance
 
 Before beginning this guide, we assume you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [administration basics](/docs/using-linux/administration-basics) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/networking/ssh-filesystems/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
 
-## Installing Unison on a Linode
+## Install Unison on a Linode
+
+{:.caution}
+> Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
 
 ### Debian 5 (Lenny)
 
@@ -35,16 +39,17 @@ Debian also includes packages for Unison version 2.13 (packaged as `unison2.13.1
 
 Edit the `/etc/apt/sources.list` to enable to the Universe repositories, so that it resembles the following:
 
-{: .file }
+{:.file}
 /etc/apt/sources.list
-
-> \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted
->
-> deb <http://security.ubuntu.com/ubuntu> lucid-security main restricted deb-src <http://security.ubuntu.com/ubuntu> lucid-security main restricted
->
-> \#\# universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe
->
-> deb <http://security.ubuntu.com/ubuntu> lucid-security universe deb-src <http://security.ubuntu.com/ubuntu> lucid-security universe
+:   ~~~
+    ## main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted
+    
+    deb <http://security.ubuntu.com/ubuntu> lucid-security main restricted deb-src <http://security.ubuntu.com/ubuntu> lucid-security main restricted
+    
+    ## universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe
+    
+    deb <http://security.ubuntu.com/ubuntu> lucid-security universe deb-src <http://security.ubuntu.com/ubuntu> lucid-security universe
+    ~~~
 
 Finally, issue the following sequence of commands to: ensure that your system's package database is up to date, that all installed packages are up to date, and install Unison:
 
@@ -76,7 +81,7 @@ Ensure that your local copy of the package database is up to date before install
     pacman -Sy
     pacman -S unison
 
-## Installing Unison on Local Machines
+## Install Unison on Local Machines
 
 In order to function properly, the major and minor version numbers of Unison used by the remote and local system must match. Test the version of Unison that was installed by the package manager on your Linode by issue the following command:
 

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['server-monitoring/cacti/debian-6-squeeze/']
 modified: Wednesday, November 9th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, November 9th, 2011'
 title: 'Monitoring Resource Utilization with Cacti on Debian 6 (Squeeze)'
 ---

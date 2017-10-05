@@ -52,7 +52,7 @@ During the installation process, you will be prompted to set a password for the 
 
 ![Setting the MySQL root password in Debian.](/docs/assets/mysql-rootpw-debian.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](mysql-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
 
 {: .note}
 >
@@ -64,7 +64,7 @@ Run the `mysql_secure_installation` script to address several security concerns 
 
     sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.0/en/mysql-secure-installation.html).
 
 ## Using MySQL
 

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/lighttpd/debian-5-lenny/','websites/lighttpd/lighttpd-web-server-on-debian-5-lenny/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 6th, 2009'
 title: 'lighttpd Web Server on Debian 5 (Lenny)'
 ---
@@ -119,7 +119,7 @@ In this configuration, lighttpd will look for directories in `/var/www/` that co
 Virtual Host Setup with Enhanced Vhost
 --------------------------------------
 
-Remove the hash (`#`) from the front of the the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
+Remove the hash (`#`) from the front of the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
 
 Now, let's examine the following section of the default config file:
 

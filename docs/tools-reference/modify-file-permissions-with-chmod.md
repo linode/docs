@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/chmod/']
 modified: Thursday, July 7th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 1st, 2010'
 title: Modify File Permissions with chmod
 external_resources:
@@ -18,11 +18,16 @@ external_resources:
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
+![Title graphic](/docs/assets/modify_file_permissions_with_chmod_smg.png)
+
 This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
 ## Using Chmod
 
-In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, chmod is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, `chmod` is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/h5sfokgpgm?videoFoam=true" title="Linode - How to use the chmod command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ### File Permission Basics
 

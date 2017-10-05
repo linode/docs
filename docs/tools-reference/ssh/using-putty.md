@@ -1,1 +1,0 @@
-../../networking/ssh/using-putty.md

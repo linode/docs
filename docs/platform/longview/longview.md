@@ -6,9 +6,9 @@ description: Our guide to installing and using Linode Longview.
 keywords: 'system monitoring,longview,troubleshooting'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['longview/']
-modified: Tuesday, November 26th, 2013
+modified: Friday, May 26, 2017
 modified_by:
-  name: Linode
+  name: Angel Guarisma
 published: 'Wednesday, March 27th, 2013'
 title: Longview
 ---
@@ -27,6 +27,14 @@ Longview can be used to monitor any virtual server or computer running Linux - i
 To access Longview, log in to the [Linode Manager](https://manager.linode.com) and click the **Longview** tab.
 
 [![Linode Longview.](/docs/assets/1371-lv_overview_network_sm.png)](/docs/assets/1372-lv_overview_network.png)
+
+## Before You Begin
+
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+
+2.  This guide will use `sudo` wherever possible.
+
+3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.   
 
 ## Adding Systems
 

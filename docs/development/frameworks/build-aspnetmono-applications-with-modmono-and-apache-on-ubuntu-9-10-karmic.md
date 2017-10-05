@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/mod-mono/ubuntu-9-10-karmic/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-9-10-karmic/']
 modified: Wednesday, June 15th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Sunday, August 1st, 2010'
 title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 9.10 (Karmic)'
 ---
@@ -251,7 +251,7 @@ Now that you have created a sample database, you can test your installation with
     </html>
     ~~~
 
-Next you will need to create a `web.config` file. You can copy and paste the the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
+Next you will need to create a `web.config` file. You can copy and paste the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
 {: .file-excerpt }
 /srv/www/example.org/public\_html/web.config

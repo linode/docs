@@ -16,6 +16,7 @@ contributor:
 external_resources:
   - '[Basic OpenVZ Operations](https://openvz.org/Basic_operations_in_OpenVZ_environment)'
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
+  - '[OpenVZ User Guide/Operations On Containers](https://wiki.openvz.org/User_Guide/Operations_on_Containers)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
@@ -34,9 +35,20 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ. They include the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain any previously added software will be compatible with these changes.
 
-4. Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
-
 # Install And Configure OpenVZ
+
+## Create A Seperate Partition For OpenVZ Templates (OPTIONAL STEP)
+
+If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it is recommended to create separate partitions for the host server and its processes and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme.
+
+{: .table .table-striped}
+|:----------:|:-----------:|:-----------:|
+| Partition | Description | Typical Size |
+| /         | Root partition | 4-12 GB   |
+| swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space |
+| /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
+
+1. 
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
@@ -114,6 +126,37 @@ Package: *systemd*
 Pin: release *
 Pin-Priority: -1
 ~~~
+
+## Set Sysctl Parameters
+
+1. The following kernel limits should be set for OpenVZ to work correctly. Navigate to the bottom of your **/etc/sysctl.conf** file and perform the following edits so the uncommented parameters match the contents below.
+
+{: .file}
+**/etc/sysctl.conf**
+~~~ conf
+. . .
+
+net.ipv4.conf.default.forwarding=1
+net.ipv4.conf.all.forwarding=1
+kernel.sysrq=1
+# On Hardware Node we generally need
+# packet forwarding enabled and proxy arp disabled
+net.ipv4.ip_forward = 1
+net.ipv4.conf.default.proxy_arp = 0
+# Enables source route verification
+net.ipv4.conf.all.rp_filter = 1
+# Enables the magic-sysrq key
+kernel.sysrq = 1
+# TCP Explict Congestion Notification
+net.ipv4.tcp_ecn = 0
+# we do not want all our interfaces to send redirects
+net.ipv4.conf.default.send_redirects = 1
+net.ipv4.conf.all.send_redirects = 0
+~~~
+
+2. Save the changes using the below command.
+
+        sysctl -p
 
 ## Add OpenVZ Repository
 

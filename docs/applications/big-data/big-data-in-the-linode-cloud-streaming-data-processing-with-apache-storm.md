@@ -6,7 +6,7 @@ description: 'Deploy Storm cluster on Linode cloud for real-time analytics on st
 keywords: 'storm,analytics,big data,zookeeper'
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
 published: 'Tuesday, October 25th, 2016'
-modified: Tuesday, October 25th, 2016
+modified: Wednesday June 21st, 2017
 modified_by:
     name: Phil Zona
 title: 'Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm'
@@ -33,7 +33,7 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode).
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .caution}
 > External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.

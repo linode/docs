@@ -5,10 +5,10 @@ author:
 description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
 keywords: 'freebsd,bsd'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, March, 14, 2016
+modified: Monday, March 14, 2016
 modified_by:
   name: Rainbow
-published: 'Monday, March, 14, 2016'
+published: 'Monday, March 14, 2016'
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
@@ -17,6 +17,8 @@ external_resources:
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 ---
+
+![Install FreeBSD on Linode](/docs/assets/install-freebsd-on-linode.png "Install FreeBSD on Linode")
 
 ## Introduction to FreeBSD
 

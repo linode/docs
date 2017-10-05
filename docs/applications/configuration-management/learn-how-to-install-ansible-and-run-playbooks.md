@@ -20,6 +20,8 @@ external_resources:
  - '[Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
+![Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
+
 # Getting started with Ansible: An Installation and Configuration Tutorial
 
 Consider the monotony of administering a server fleet; keeping them all updated, pushing changes out to them, copying files, etc. Things can get complicated and time consuming very quickly, but it doesn't have to be that way.

@@ -118,7 +118,7 @@ This section will show you how to restore a backup to a [new](#restore-to-a-new-
 
 {: .note }
 >
-> The size of of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
+> The size of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
 
 To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to-linode/disk-images/clone-your-linode) tab to copy the disk(s) to a Linode in a different data center.
 
@@ -192,6 +192,6 @@ There are some limitations to what the Linode Backup Service can back up. Here a
 
 -   The Backup Service must be able to mount your disks. If you've created partitions, configured full disk encryption, or made other changes that prevent us from mounting the disk as a filesystem, you will likely not be able to use the Linode Backup Service. The backup system operates at the file level, not at the block level.
 -    Because the Backup Service is file-based, the number of files stored on disk will impact both the time it takes for backups and restores to complete, and your ability to successfully take and restore backups. Customers who need to permanently store a large number of files may want to archive bundles of smaller files into a single file, or consider other backup services.
--   Backups taken of ext4 or ext3 filesystems will be restored as ext3. Backups taken of other mountable filesystem types will have their contents restored using ext3.
+-   Backups taken of ext4 or ext3 filesystems will be restored as ext4. Backups taken of other mountable filesystem types will have their contents restored using ext4.
 -   Files that have been modified but have the same size and modify time will not be considered "changed" during a subsequent backup. ACLs and extended attributes are *not* tracked.
 -   The Backup Service uses a snapshot of your disks to take consistent backups while your Linode is running. This method is very reliable, but can fail to properly back up the data files for database services like MySQL. If the snapshot occurs during a transaction, the database's files may be backed up in an unclean state. We recommend scheduling routine dumps of your database to a file on the filesystem. The resulting file will then be backed up, allowing you to restore the contents of the database if you need to restore from a backup.

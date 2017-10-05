@@ -5,21 +5,28 @@ author:
 description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['style-guide/']
-modified: Friday, January 6th, 2017
+alias: ['style-guide/','linode-writers-guide/']
+modified: Friday, June 30, 2017
 modified_by:
   name: Edward Angert
 published: 'Wednesday, January 15th, 2014'
 title: Linode Writer's Formatting Guide
+external_resources:
+ - '[GitHub Beginners Guide](/docs/github-guide)'
+ - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 ---
 
-This guide provides templates to use when creating or updating a guide for [Linode Docs](/docs).
+![Linode Writer's Formatting Guide](/docs/assets/linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
 
-Submissions that adhere to the following formatting guidelines are more likely to be accepted than those that do not, so review this page carefully. If you have any questions, contact <contribute@linode.com>.
+This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs).
+
+Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
+
+We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/docs/contribute).
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting), and submissions should be an `.md` file.
+Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting).
 
 ### Header
 
@@ -48,7 +55,7 @@ Author Submission
     - '[Link Title 2](http://www.example.net)'
     ---
 
-    *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+    *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
     ----
     ~~~
 
@@ -311,7 +318,7 @@ Use single spaces between sentences; do not double-space.
 <br>
 | and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | line items, | are aligned &nbsp;&nbsp;|
 <br>
-| by the hypens | and colons | above. &nbsp;&nbsp;&nbsp; |
+| by the hyphens | and colons | above. &nbsp;&nbsp;&nbsp; |
     </td>
     <td>
     <img src="/docs/assets/example-blue-stripe-table.png">
@@ -328,3 +335,11 @@ Variables that the reader will need to change for their system or preference sho
 |:--------------|:------------|
 | Change the \`password\` and \`username\` values. | Change the `password` and `username` values. |
 |:--------------|:------------|
+
+## Legal Information
+
+COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides & Tutorials repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
+
+CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
+
+PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid a sum of up to USD $300.00 either in the form of a credit to their Linode account, a hardcopy check, or as an electronic payment.

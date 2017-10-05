@@ -18,10 +18,11 @@ external_resources:
  - '[Fedora Wiki: FirewallD](https://fedoraproject.org/wiki/FirewallD)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
-earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
+
+![Introduction to FirewallD on CentOS](/docs/assets/introduction-to-firewalld-on-centos.png "Introduction to FirewallD on CentOS")
 
 [FirewallD](http://www.firewalld.org/) is frontend controller for iptables used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. Working with FirewallD has two main differences compared to directly controlling iptables:
 
@@ -173,7 +174,7 @@ work
 
 ### Working with Services
 
-FirewallD can allow traffic based on predefined rules for specific network services. You can create your own custom serivce rules and add them to any zone. The configuration files for the default supported services are located at `/usr/lib/firewalld/services` and user-created service files would be in `/etc/firewalld/services`.
+FirewallD can allow traffic based on predefined rules for specific network services. You can create your own custom service rules and add them to any zone. The configuration files for the default supported services are located at `/usr/lib/firewalld/services` and user-created service files would be in `/etc/firewalld/services`.
 
 To view the default available services:
 

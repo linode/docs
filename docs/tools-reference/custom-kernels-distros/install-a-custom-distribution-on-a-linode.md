@@ -8,8 +8,8 @@ keywords: 'custom distro,custom distribution,advanced Linux,kvm'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
-  name: Nick Brewer
-modified: 'Thursday, March 2nd, 2017'
+  name: Linode
+modified: 'Monday, June 26th, 2017'
 title: Install a Custom Distribution on a Linode
 ---
 
@@ -80,6 +80,11 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
+
+    {: .note}
+    > If you would prefer to write the installer directly to the disk as it downloads, use:
+    >
+    >     curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 
 3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 

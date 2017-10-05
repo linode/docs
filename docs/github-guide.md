@@ -9,14 +9,16 @@ modified: Wednesday, December 2nd, 2015
 modified_by:
     name: Linode
 published: 'Wednesday, December 2nd, 2015'
-title: GitHub Beginners Guide
+title: GitHub Beginner's Guide
 ---
 
-Linode Guides and Tutorials manages bounty guides through the use of GitHub. In the interest of making submissions as easy as possble, this tutorial will walk you through submitting a new guide on our [public GitHub](https://github.com/linode/docs).
+Linode Guides and Tutorials manages bounty guides through the use of GitHub. In the interest of making submissions as easy as possible, this tutorial will walk you through submitting a new guide on our [public GitHub](https://github.com/linode/docs).
+
+![GitHub Beginner's Guide](/docs/assets/github-beginners-guide.png "GitHub Beginner's Guide")
 
 ## Before You Begin
 
-This guide assumes that you've signed up for a [GitHub Account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](https://www.linode.com/docs/applications/development/git-source-control-management) guide.
+This guide assumes that you've signed up for a [GitHub Account](https://www.github.com), and that you've followed the sections for installing and configuring Git on your local machine contained within our [Git Source Control Management](/docs/development/version-control/how-to-install-git-on-mac-and-windows/) guide.
 
 {: .note}
 >
