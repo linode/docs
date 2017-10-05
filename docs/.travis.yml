@@ -1,0 +1,40 @@
+language: python
+cache: bundler
+matrix:
+    include:
+    - python: "3.6"
+
+before_install:
+    - echo "before_install"
+    - echo -e "machine github.com\n  login $U\n  password $TOKEN" >> ~/.netrc
+    - sudo apt install libgmp-dev
+    - pip install -r ci/requirements.txt
+    - sudo apt install build-essential ruby ruby-all-dev
+    - cd ..
+    - git clone https://github.com/linode/docsmith.git
+    - mv docs docsmith
+    - cd docsmith
+    - mv docs source
+    - sudo gem install thor -v 0.19.1
+    - sudo gem install bundler
+    - sudo gem install json -v 1.8.3
+    - bundle install
+    - thor upgrade
+
+install:
+    - echo "Thor should be running now?"
+
+before_script:
+    - echo "Running localhost server"
+    - bundle exec thor server &
+    - cd source/docs
+
+script:
+    - echo "Running scripts"
+    - python -m pytest
+    - cd ..
+    - curl -4X http://127.0.0.1:4567/docs
+
+after:
+    - echo "Print versions and skipped tests here"
+
