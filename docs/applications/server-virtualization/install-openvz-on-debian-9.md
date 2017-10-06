@@ -328,7 +328,7 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
         vzctl create [CTID] --ostemplate centos7-x86_64 --name centos7 --layout simfs --config basic
 
 {: .note}
-> If you setup a seperate disk partition for OpenVZ templates, use the command below to create the container within the new disk. Replace *--ostemplate* with your template name, and *--name* with a descriptive name of your choice.
+> If you setup a separate disk partition for OpenVZ templates, use the command below to create the container within the new disk. Replace *--ostemplate* with your template name, and *--name* with a descriptive name of your choice.
 
         vzctl create 106 --ostemplate debian-8.0-x86_64 --layout simfs --name centos7 --private /vztemp/vz/private/$VEID --root /vztemp/vz/root/$VEID --config basic
 
