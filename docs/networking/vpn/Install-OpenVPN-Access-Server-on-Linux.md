@@ -4,7 +4,7 @@ author:
     email: jstewart@linode.com
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
 keywords: 'openvpn,networking,vpn,debian,ubuntu,centos,fedora'
-alias: '[docs/networking/vpn/openvpn-access-server/']
+alias: '[networking/vpn/openvpn-access-server/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, April 30th, 2015
 modified_by:
