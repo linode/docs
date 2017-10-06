@@ -2,14 +2,15 @@
 author:
   name: Dave R.
   email: docs@linode.com
-description: 'How to diagnose network speed issues using Iperf.'
+description: 'This tutorial will teach you how to install iperf, and use its common commands and basic configuration to diagnose your network speed.'
 keywords: 'networking,diagnostic,speed,iperf'
+alias: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, February 28th, 2017
 modified_by:
   name: Nick Brewer
 published: 'Monday, January 12, 2015'
-title: Diagnosing Network Speed with Iperf
+title: Install iPerf to Diagnose Network Speed in Linux
 external_resources:
   - '[Iperf Official Website](https://iperf.fr)'
 ---
