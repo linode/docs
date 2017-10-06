@@ -257,69 +257,6 @@ protect=1
 
             apt install wazuh-api
 
-## Check Python Version
-
-The Wazuh API requires Python version 2.7 or higher. It will be installed by default in most Linux distributions.
-
-1. Check your Python version
-
-        python --version
-
-2. Install Python or upgrade if required.
-
-    **Fedora & RHEL based**
-
-      1. CentOS 6 and older:
-
-              yum install -y centos-release-scl
-              yum install -y python27
-
-      2. RHEL 6 and older:
-
-              yum install -y python27
-
-      {: .note}
-      > You may need to enable a repository to get python27. You can enable the repo using either of the following lines:
-      > `yum-config--manager --enable rhui-REGION-rhel-server-rhscl`
-      > `yum-config-manager --enable rhel-server-rhscl-6-rpms`
-      > If you do not have `yum-config-manager` installed, install it with `yum install yum-utils`.
-
-      3. CentOS/RHEL 7
-
-              yum install -y python
-
-    **Debian & Ubuntu**
-
-      1. All distributions:
-
-              apt install python
-
-3. If by necessity you need to preserve an older version of Python, you can install version 2.7.x alongside it and set a custom path for the Wazuh API. Edit the **config.js** file to set the custom path.
-
-{: .file}
-**/var/ossec/api/configuration/config.js**
-~~~ js
-. . . 
-
-config.python = [
-    // Default installation
-{
-        bin: "python",
-                lib: ""
-                    
-},
-    // Package 'python27' for CentOS 6
-{
-        bin: "/custom/path/to/python",
-                lib: "/custom/path/to/lib64"
-                    
-}
-
-];
-
-. . . 
-~~~
-
 ## Install Elasticsearch, Logstash, and Kibana
 
 Install the ELK Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.5.2 was the most recent at the time of publishing.
