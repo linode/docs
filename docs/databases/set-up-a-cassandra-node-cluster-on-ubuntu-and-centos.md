@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.
 keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 14.04, database, nosql'
-alias: '[docs/databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/]'
+alias: '[databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/]'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Saturday, June 24th, 2017'
 modified: 'Saturday, June 24th, 2017'
