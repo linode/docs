@@ -48,11 +48,25 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 | swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space |
 | /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
 
-1. Log into your Linode Manager and select your Linode. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* dropdown, and allocate as much space as you can in the *Size* field. Click *Save Changes*. An optimal configuration will resemble the image below.
+1. Log into your Linode Manager and select your Linode. Power off the machine and verify the job is complete by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* dropdown, and allocate as much space as you can in the *Size* field. Click *Save Changes*. An optimal configuration will resemble the image below.
 
-![Linode Manager - Partition Scheme](docs/docs/assets/openvz_two.PNG)
+![Linode Manager - Partition Scheme](docs/assets/openvz_two.PNG)
 
-2. 
+2. Under the *Dashboard* tab, click on your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
+
+![Linode Manager - Block Device Assignment](docs/assets/openvz_three.PNG)
+
+3. Boot the Linode and login via SSH. Issue the below command to verify the new disk has been created properly. The output should display your newly created disk.
+
+        fdisk -l
+
+4. Create a mount point for the new device.
+
+        mkdir /vztemp
+
+5. Mount the new disk. Be sure to replace **/dev/sdc** with your appropriate device name.
+
+        mount /dev/sdc /vztemp
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
@@ -311,7 +325,12 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
 
 5. OpenVZ refers to each installed OS template as a "Container". You must create a Container ID (CTID) for each downloaded template. Issue the below command, replacing [CTID] with any number (101 is recommended) and the CentOS 7 template name with your downloaded template.
 
-        vzctl create [CTID] --ostemplate centos7-x86_64
+        vzctl create [CTID] --ostemplate centos7-x86_64 --name centos7 --layout simfs --config basic
+
+{: .note}
+> If you setup a seperate disk partition for OpenVZ templates, use the command below to create the container within the new disk. Replace *--ostemplate* with your template name, and *--name* with a descriptive name of your choice.
+
+        vzctl create 106 --ostemplate debian-8.0-x86_64 --layout simfs --name centos7 --private /vztemp/vz/private/$VEID --root /vztemp/vz/root/$VEID --config basic
 
 6. A configuration file will now have been created for your OS template. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
 
