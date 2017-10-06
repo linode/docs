@@ -9,7 +9,7 @@ published:
 modified:
 modified_by:
   name: Linode
-title: 'Visualize Server Security With The ELK Stack'
+title: 'Visualize Server Security On CentOS 7 With The ELK Stack'
 contributor:
    name: Andrew Lescher
    link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
@@ -61,18 +61,6 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
-  **Debian**
-
-  - [Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)
-  - [Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)
-
-  **Ubuntu**
-
-  - [Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)
-  - [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04)
-
-  **CentOS**
-
   - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)
   - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)
 
@@ -94,44 +82,9 @@ Installing the ELK Stack components can be accomplished in various ways, however
 
 1. Update system packages.
 
-    **Debian & Ubuntu**
-
-        apt update -y && apt upgrade -y
-
-    **Fedora & RHEL based**
-
         yum update -y && yum upgrade -y
 
 2. Install Java 8 JDK.
-
-    **Debian & Ubuntu**
-
-    1. Add the Java 8 repository, download the gpg key, and install Java 8. 
-
-            echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
-
-            echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
-
-            apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
-
-            apt update
-
-            apt install oracle-java8-installer 
-
-    2. In most systems, the *oracle-java8-set-default* package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to step 3. Otherwise, Java 8 installation is complete.
-
-            dpkg --list | grep oracle
-
-    *Output*
-        
-        ii  oracle-java8-installer        8u144-1~webupd8~0            all          Oracle Java(TM) Development Kit (JDK) 8
-        ii  oracle-java8-set-default      8u144-1~webupd8~0            all          Set Oracle JDK 8 as default Java
-
-    3. Install the *oracle-java8-set-default* package.
-
-        apt install oracle-java8-set-default
-
-    **Fedora & RHEL based**
 
         yum install java-1.8.0-openjdk.x86_64
 
@@ -149,37 +102,11 @@ Installing the ELK Stack components can be accomplished in various ways, however
 
 3. Install final pre-requisites.
 
-    **Debian & Ubuntu**
-                
-            apt install curl apt-transport-https lsb-release
-
-    **Fedora & RHEL based**
-
             yum install curl
 
 ## Install Wazuh
 
-Follow the section relevant to your Linux distribution to install the Wazuh components.
-
-### RPM Installation (Fedora, RHEL, CentOS)
-
 1. Create the repository file in the indicated location and paste the provided text using your preferred text editor.
-
-**RHEL**
-
-{: .file}
-**/etc/yum.repos.d/wazuh.repo**
-~~~ .repo
-[wazuh_repo]
-gpgcheck=1
-gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-enabled=1
-name=RHEL-$releasever - Wazuh
-baseurl=https://packages.wazuh.com/yum/rhel/$releasever/$basearch
-protect=1
-~~~
-
-**CentOS**
 
 {: .file}
 **/etc/yum.repos.d/wazuh.repo**
@@ -190,20 +117,6 @@ gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
 enabled=1
 name=CentOS-$releasever - Wazuh
 baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
-protect=1
-~~~
-
-**Fedora**
-
-{: .file}
-**/etc/yum.repos.d/wazuh.repo**
-~~~ .repo
-[wazuh_repo]
-gpgcheck=1
-gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-name=Fedora-$releasever - Wazuh
-enabled=1
-baseurl=https://packages.wazuh.com/yum/fc/$releasever/$basearch
 protect=1
 ~~~
 
@@ -224,38 +137,6 @@ protect=1
     3. Install Wazuh API.
 
             yum install wazuh-api
-
-### DEB Installation (Debian & Ubuntu)
-
-1. Install the GPG key. Install `curl` as well if necessary with `apt install curl`.
-
-        curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | apt-key add -
-
-2. Add the Wazuh repository.
-
-        echo "deb https://packages.wazuh.com/apt $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/wazuh.list
-
-3. Update the Wazuh repository package information.
-
-        apt -y update
-
-4. Install Wazuh Manager.
-
-        apt install wazuh-manager
-
-5. Install Wazuh API
-
-    1. Add the NodeJS repository.
-
-            curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
-
-    2. Install NodeJS.
-
-            apt install nodejs
-
-    3. Install Wazuh API.
-
-            apt install wazuh-api
 
 ## Install Elasticsearch, Logstash, and Kibana
 
@@ -567,40 +448,14 @@ server {
 
 ### Apache
 
-1. In order for Apache to function as a reverse proxy, *mod_proxy* must be installed.
-
-    **Debian & Ubuntu**
-
-        apt install libapache2-mod-proxy-uwsgi libxml2-dev -y
-
-    **Fedora & RHEL based**
-
-The default Apache install should include the necessary modules. Check that the following modules are enabled by running the `httpd -M` command.
+1. In order for Apache to function as a reverse proxy, *mod_proxy* must be installed. Check that the following modules are enabled by running the `httpd -M` command.
 
   - proxy_module
   - lbmethod_byrequests_module
   - proxy_balancer_module
   - proxy_http_module
 
-2. Enable the necessary mods in Apache.
-
-  **Debian & Ubuntu**
-
-You can run `a2enmod` and enter `*` to enable all mods, or selectively enable the following mods below using `a2enmod mod_name`.
-
-  - sudo a2enmod proxy
-  - sudo a2enmod proxy_http
-  - sudo a2enmod proxy_ajp
-  - sudo a2enmod rewrite
-  - sudo a2enmod deflate
-  - sudo a2enmod headers
-  - sudo a2enmod proxy_balancer
-  - sudo a2enmod proxy_connect
-  - sudo a2enmod proxy_html
-
-  **Fedora & RHEL based**
-
-You can enable the necessary mods by opening the **00-proxy.conf** file and matching the text below.
+2. Enable the necessary mods in Apache. Open the **00-proxy.conf** file and verify all lines below are included.
 
 {: .file}
 **/etc/httpd/conf.modules.d/00-proxy.conf**
@@ -691,12 +546,6 @@ LoadModule proxy_http_module modules/mod_proxy_http.so
         chmod 644 /etc/apache2/.htpasswd.users
 
 5. Restart Apache.
-
-  **Debian & Ubuntu&**
-
-          systemctl restart apache2
-
-  **Fedora & RHEL based**
 
           systemctl restart httpd
 
