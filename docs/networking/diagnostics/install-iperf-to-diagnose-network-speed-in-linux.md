@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This tutorial will teach you how to install iperf, and use its common commands and basic configuration to diagnose your network speed.'
 keywords: 'networking,diagnostic,speed,iperf'
-alias: 'docs/networking/diagnostics/diagnosing-network-speed-with-iperf/'
+alias: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, February 28th, 2017
 modified_by:
