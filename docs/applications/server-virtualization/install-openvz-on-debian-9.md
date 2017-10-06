@@ -37,7 +37,7 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 # Install And Configure OpenVZ
 
-## Create A Seperate Partition For OpenVZ Templates (OPTIONAL STEP)
+## Create A Separate Partition For OpenVZ Templates (OPTIONAL STEP)
 
 If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it is recommended to create separate partitions for the host server and its processes and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme.
 
@@ -48,7 +48,11 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 | swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space |
 | /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
 
-1. 
+1. Log into your Linode Manager and select your Linode. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* dropdown, and allocate as much space as you can in the *Size* field. Click *Save Changes*. An optimal configuration will resemble the image below.
+
+![Linode Manager - Partition Scheme](docs/assets/openvz_two.PNG)
+
+2. 
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
