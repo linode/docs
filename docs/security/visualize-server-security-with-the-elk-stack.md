@@ -1,21 +1,27 @@
 ---
- author:
- name: Linode Community
- email: docs@linode.com
-description: 'Utilizing the ELK Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
-keywords: 'ossec, elk stack, elk, ossec-hids'
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Use this guide to combine security data using an Elasticsearch, Logstash, and Kibana Elastic Stack with Wazuh intrusion detection.'
+keywords: 'ossec,elk stack,elk,ossec-hids'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published:
-modified:
+published: 'Thursday, October 5, 2017'
+modified: Thursday, October 5, 2017
 modified_by:
   name: Linode
-title: 'Visualize Server Security With The ELK Stack'
+title: 'Visualize Server Security with an Elastic Stack and Wazuh'
 contributor:
-   name: Andrew Lescher
-   link: [Andrew Lescher](https://www.linkedin.com/in/andrew-lescher-87027940/)
+  name: Andrew Lescher
+  link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
   - '[Wazuh Official Documentation](https://documentation.wazuh.com/current/index.html)'
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
+---
+
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+
+---
+
   - '[Install Nginx Web Server on Debian 8](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8)'
   - '[Apache Web Server on Debian 8](/docs/web-servers/apache/apache-web-server-debian-8)'
   - '[Install and configure Nginx and PHP-FastCGI on Ubuntu 16.04](/docs/web-servers/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04)'
@@ -24,11 +30,7 @@ external_resources:
   - '[LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)'
   - '[How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx)'
   - '[Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)'
----
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
-
----
 
 ## Introduction To This Tutorial
 
@@ -57,7 +59,7 @@ In this tutorial, you will learn how to Install and link together ElasticSearch,
 2. Ideally, your Linode should possess at least 4GB of RAM. While the ELK Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
 {: .note}
-> Some of the commands below require elevated privilidges to execute, and must be prefixed with `sudo` when necessary.
+> Some of the commands below require elevated privileges to execute, and must be prefixed with `sudo` when necessary.
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
