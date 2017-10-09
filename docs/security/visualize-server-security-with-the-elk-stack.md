@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Utilizing the ELK Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
+description: 'Utilizing the Elastic Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
 keywords: 'ossec, elk stack, elk, ossec-hids'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Wednesday, September 27th, 2017'
-modified: Thursday, September 28th, 2017
+modified: Monday, October 9th, 2017
 modified_by:
   name: Linode
-title: 'Visualize Server Security On CentOS 7 With The ELK Stack'
+title: 'Visualize Server Security On CentOS 7 With The Elastic Stack'
 contributor:
   name: Andrew Lescher
   link: 'https://www.linkedin.com/in/andrew-lescher-87027940/'
@@ -36,11 +36,11 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
 **ElasticSearch**
 
-  - Essentially the heart of the ELK Stack, ElasticSearch provides powerful search and analytical capabilities. It's purpose in the ELK Stack is to centrally store and retrieve data collected by Logstash.
+  - The heart of the Elastic Stack, ElasticSearch provides powerful search and analytical capabilities. It's purpose in the Elastic Stack is to centrally store and retrieve data collected by Logstash.
 
 **Logstash**
 
-  - Ingests data from multiple sources and passes it along to a central database (ElasticSearch)
+  - Receives data input from multiple sources and passes it along to a central database (ElasticSearch)
 
 **Kibana**
 
@@ -48,16 +48,16 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
 **Wazuh OSSEC**
 
-  - An open source branch of the orignal OSSEC HIDS developed for integration into the ELK Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
+  - An open source branch of the orignal OSSEC HIDS developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
 
 ## Before You Begin
 
 1. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
-2. Ideally, your Linode should possess at least 4GB of RAM. While the ELK Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
+2. Ideally, your Linode should possess at least 4GB of RAM. While the Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
     {: .note}
-    > Some of the commands below require elevated privileges to execute, and must be prefixed with `sudo` when necessary.
+    > Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
@@ -74,11 +74,11 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
     - [Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)
 
-# Setup The ELK Stack And Integrate Wazuh OSSEC
+# Set Up The Elastic Stack and Integrate Wazuh OSSEC
 
-Installing the ELK Stack components can be accomplished in various ways. However, installation via RPM will yield the latest versions.
+Installing the Elastic Stack components can be accomplished in various ways. Installing with RPM is recommended, as this will yield the latest versions.
 
-## Update System And Install Pre-requisites
+## Update System and Install Prerequisites
 
 1. Update system packages.
 
@@ -104,7 +104,7 @@ Installing the ELK Stack components can be accomplished in various ways. However
 
 ## Install Wazuh
 
-1. Create the repository file in the indicated location and paste the provided text using your preferred text editor.
+1. Create the file `/etc/yum.repos.d/wazuh.repo` and paste the following text using your preferred text editor:
 
       {: .file}
       /etc/yum.repos.d/wazuh.repo
@@ -135,7 +135,7 @@ Installing the ELK Stack components can be accomplished in various ways. However
 
 ## Install Elasticsearch, Logstash, and Kibana
 
-Install the ELK Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.6.2 was the most recent at the time of publishing.
+Install the Elastic Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.6.2 was the most recent at the time of publishing.
 
 ### ElasticSearch
 
@@ -155,9 +155,8 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 
 4. Load The Wazuh ElasticSearch template.
 
-        curl -XPUT http://localhost:9200/_template/wazuh/ -d @template_file.json
         wget https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/2.1/server/startup/integration_files/template_file.json
-
+        curl -XPUT http://localhost:9200/_template/wazuh/ -d @template_file.json
 
 
 ### Logstash
@@ -165,7 +164,7 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 1. Download the Logstash rpm file into the `/opt` directory.
 
         cd /opt
-        curl -O https://artifacts.elastic.co/downloads/logstash/logstash-5.6.2.rpm
+        wget https://artifacts.elastic.co/downloads/logstash/logstash-5.6.2.rpm
 
 2. Install Logstash.
 
@@ -179,8 +178,8 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 
 4. Download the Wazuh config and template files for Logstash.
 
-        curl -O /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
-        curl -O /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
+        curl -o /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
+        curl -o /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
 
 5. Modify the *01-wazuh.conf* file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the "Remote Wazuh Manager" section and uncommenting the "Local Wazuh Manager" section.
 
@@ -243,7 +242,7 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 1. Download the Kibana rpm file into the `/opt` directory.
 
         cd /opt
-        curl -O https://artifacts.elastic.co/downloads/kibana/kibana-5.6.2-x86_64.rpm
+        wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.2-x86_64.rpm
 
 2. Install Kibana.
 
@@ -258,21 +257,21 @@ Install the ELK Stack via rpm files to get the latest versions of all the softwa
 
         /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
 
-{: .note}
-> The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
+    {: .note}
+    > The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
 
 5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values in `/etc/kibana/kibana.yml` with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
 
-{: .table .table-striped .table-bordered }
-| Value           | Parameter                                                                                  |
-| :-------------: | :----------------------------------------------------------------------------------------: |
-| server.port     | Change this value if the default port, 5601, is in use.                                    |
-| server.host     | Set this value to your Linode's external IP address.                                        |
-| server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
-| logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
-| :-------------: | :----------------------------------------------------------------------------------------: |
+    {: .table .table-striped .table-bordered }
+    | Value           | Parameter                                                                                  |
+    | :-------------: | :----------------------------------------------------------------------------------------: |
+    | server.port     | Change this value if the default port, 5601, is in use.                                    |
+    | server.host     | Set this value to your Linode's external IP address.                                        |
+    | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
+    | logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
+    | :-------------: | :----------------------------------------------------------------------------------------: |
 
-You may modify other values in this file as you see fit, but this configuration should work for most.
+    You may modify other values in this file as you see fit, but this configuration should work for most.
 
 6. Create a log file for Kibana and give it appropriate permissions. Make sure the file path in the command matches the `logging.dest` you set in `/etc/kibana/kibana.yml`.
 
@@ -283,9 +282,9 @@ You may modify other values in this file as you see fit, but this configuration 
 
         systemctl restart kibana
 
-## Configure The ELK Stack
+## Configure The Elastic Stack
 
-The ELK Stack will require some tuning before it can be accessed via the Wazuh API.
+The Elastic Stack will require some tuning before it can be accessed via the Wazuh API.
 
 1. Enable memory locking in ElasticSearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
 
@@ -348,33 +347,33 @@ This configuration configures ElasticSearch with 4GB of allotted RAM. You may al
 {: .caution}
 > Set this value carefully. If the system RAM is completely depleted, ElasticSearch will crash.
 
-## Connect The ELK Stack With The Wazuh API
-
+## Connect The Elastic Stack With The Wazuh API
+<!---
+COPY EDITOR: Changes requested from A. Lescher, as this section does not quite work.
 This section ties everything together with the Wazuh API
 
 ### Configure Web Hosting
 
 Configuring Nginx or Apache as a reverse proxy server allows you to secure the Kibana web interface with SSL and limit access to others. Instructions are provided for Nginx and Apache. The instructions assume you have your webserver configured to host virtual domains.
 
-### Setup A Reverse Proxy Server To Host Kibana As a Subdomain
+### Set Up a Reverse Proxy Server to Host Kibana as a Subdomain
 
 If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
 ### Nginx
 
-1. Navigate to your Nginx virtual host config directory. This is usually located in `/etc/nginx/conf` or `/etc/nginx/conf.d`. Create a new virtual host config file, naming it something like "kibana.conf". Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's external IP address. Replace the values in **bold** with your specific values.
+1. Create an Nginx config file at `/etc/nginx/conf.d/kibana.conf` and add the contents below, replacing `example.com` with your domain name or external IP address. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's IP address.
 
 **Non SSL**
 
 {: .file}
-etc/nginx/conf.d
-/etc/nginx/conf
+/etc/nginx/conf.d/kibana.conf
 : ~~~ conf
   server {
       listen 80;
-      # Remove this line below if you do not have IPv6 enabled.
+      # Remove this line if you do not have IPv6 enabled.
       listen [::]:80;
-      server_name **kibana.your_domain_name.com**;
+      server_name kibana.your_domain_name.com;
 
       location / {
           proxy_pass http://example.com:5601;
@@ -386,15 +385,14 @@ etc/nginx/conf.d
       }
 
       auth_basic "Restricted Access";
-      auth_basic_user_file /etc/nginx/htpasswd.users;
+      auth_basic_user_file /etc/nginx/.htpasswd.users;
   }
   ~~~
 
 **SSL**
 
 {: .file}
-/etc/nginx/conf.d
-/etc/nginx/conf
+/etc/nginx/conf.d/kibana.conf
 : ~~~ conf
   server {
       listen 80;
@@ -432,12 +430,13 @@ etc/nginx/conf.d
       ssl_certificate_key /path/to/ssl/certificate.key;
 
       auth_basic "Restricted Access";
-      auth_basic_user_file /etc/nginx/htpasswd.users;
+      auth_basic_user_file /etc/nginx/.htpasswd.users;
   }
   ~~~
 
-2. Secure your Kibana site with a log in page. Create a **.htpasswd** file first if you do not have one.
+2. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one.
 
+        sudo yum install httpd-tools
         touch /etc/nginx/htpasswd.users
         htpasswd -c /etc/nginx/.htpasswd.users YourNewUsername
         chmod 644 /etc/nginx/.htpasswd.users
@@ -491,7 +490,7 @@ etc/nginx/conf.d
             <Directory "/">
                 AuthType Basic
                 AuthName "Restricted Content"
-                AuthUserFile /etc/apache2/.htpasswd
+                AuthUserFile /etc/httpd/.htpasswd
                 Require valid-user
             </Directory>
         </VirtualHost>
@@ -512,7 +511,7 @@ etc/nginx/conf.d
           <Directory "/">
               AuthType Basic
               AuthName "Restricted Content"
-              AuthUserFile /etc/apache2/.htpasswd
+              AuthUserFile /etc/httpd/.htpasswd
               Require valid-user
           </Directory>
       </VirtualHost>
@@ -542,17 +541,19 @@ etc/nginx/conf.d
       ~~~
 
 
-      !!!sudo ln -s /etc/httpd/sites-available/example2.com.conf /etc/httpd/sites-enabled/example2.com.conf
+4. Enable the new site:
 
-4. Secure your Kibana site with a log in page. Create a **.htpasswd** file first if you do not have one.
+        ln -s /etc/httpd/sites-available/kibana.conf /etc/httpd/sites-enabled/kibana.conf
+
+5. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one.
 
         touch /etc/httpd/.htpasswd.users
         htpasswd -c /etc/httpd/.htpasswd.users YourNewUsername
         chmod 644 /etc/httpd/.htpasswd.users
 
-5. Restart Apache.
+6. Restart Apache.
 
-          systemctl restart httpd
+        systemctl restart httpd
 
 ### Add The Kibana Site To The DNS Manager
 
@@ -570,6 +571,7 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 2. Click *Save Changes*.
 
+--->
 ## Open The Kibana Port
 
 Kibana's default access port, 5601, must be opened for TCP traffic. Instructions are presented below for UFW, Iptables, and FirewallD.
@@ -583,7 +585,7 @@ Kibana's default access port, 5601, must be opened for TCP traffic. Instructions
         iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
 {: .note}
-> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
+> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install `iptables-persistent` to automatically save rules.
 
 **FirewallD**
 
@@ -591,11 +593,14 @@ Kibana's default access port, 5601, must be opened for TCP traffic. Instructions
 
 ## Access The Wazuh API
 
-Now you are ready to access the API and begin making use of your OSSEC ELK Stack!
+Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!
 
-1. The Wazuh API requires users to provide credentials in order to log in. Navigate to `/var/ossec/api/configuration/auth`. Replace "NewUserName" with a user name of your choosing. Set a password following the system prompts.
+1. The Wazuh API requires users to provide credentials in order to log in. Switch to a root session and configure user credentials:
 
-        sudo node htpasswd -c user NewUserName
+        su -
+        cd /var/ossec/api/configuration/auth
+        node htpasswd -c user NewUserName
+        exit
 
 2. Restart the Wazuh API.
 
@@ -619,4 +624,4 @@ Now you are ready to access the API and begin making use of your OSSEC ELK Stack
 
 ## Where To Go From Here
 
-Your OSSEC ELK Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs in your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official Wazuh documentation. Links for further examination of these topics can be found in the External Resources section in this guide.
+Your OSSEC Elastic Stack setup is now complete! At this point, you will want to customize and configure your OSSEC rules to better suit the needs in your environment. The Wazuh API contains pre-configured charts and queries, and more information on how to use them can be found in the official Wazuh documentation. Links for further examination of these topics can be found in the External Resources section in this guide.
