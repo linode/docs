@@ -2,7 +2,7 @@
 author:
   name: Nashruddin Amin
   email: nashruddin.amin@gmail.com
-description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
+description: 'Use this guide to automate browsing tasks with Nightmare.js, a high-level browser automation library.'
 keywords: 'nightmare.js, node.js, headless browser, automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, October 9, 2017'
@@ -78,7 +78,7 @@ To avoid installing the Node packages for the system globally, install Nightmare
 
         npm install --save nightmare
 
-## Create and Run the Automation Script
+## Create and Run the Nightmare.js Automation Script
 
 Nightmare.js is an NPM module, so it can be imported from within a Node.js script. Use these examples to write a simple script that will search Linode's documentation for guides about Ubuntu.
 
