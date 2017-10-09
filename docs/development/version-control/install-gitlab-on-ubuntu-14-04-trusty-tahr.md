@@ -5,7 +5,7 @@ author:
 description: 'Install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
 keywords: 'version control,git,gitlab,ruby, ruby on rails,mysql,postgresql,nginx'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/','applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
+alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/','applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/', 'applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/bsd_noobz
@@ -14,18 +14,14 @@ modified_by:
   name: Linode
 published: 'Thursday, September 4th, 2014'
 title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
-alias: ['applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
  - '[GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)'
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
-
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed-source software.
 

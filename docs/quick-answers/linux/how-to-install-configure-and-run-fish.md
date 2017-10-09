@@ -55,7 +55,7 @@ However, in Fish, you chain commands with `;`, instead of `&&`:
 	fish: mkdir FishDocs && cd FishDocs
 	                      ^
 
-If you can't function `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
+If you can't function without `!!` and `&&`, check [this](https://github.com/fish-shell/fish-shell/wiki/Bash-Refugees) repo out for a solution.
 
 						  
 ## Use Fish
