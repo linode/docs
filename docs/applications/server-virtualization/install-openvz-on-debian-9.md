@@ -39,6 +39,36 @@ Upon completing this guide, you will have installed OpenVZ on your Linode and le
 
 # Install And Configure OpenVZ
 
+## Create A Separate Partition For OpenVZ Templates (OPTIONAL STEP)
+
+If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it is recommended to create separate partitions for the host server and its processes and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme.
+
+{: .table .table-striped}
+|:----------:|:-----------:|:-----------:|
+| Partition | Description | Typical Size |
+| /         | Root partition | 4-12 GB   |
+| swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space |
+| /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
+
+1. Log into your Linode Manager and select your Linode. Power off the machine and verify the job is complete by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* dropdown, and allocate as much space as you can in the *Size* field. Click *Save Changes*. An optimal configuration will resemble the image below.
+
+![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.PNG)
+
+2. Under the *Dashboard* tab, click on your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
+
+![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.PNG)
+
+3. Boot the Linode and login via SSH. Issue the below command to verify the new disk has been created properly. The output should display your newly created disk.
+
+        fdisk -l
+
+4. Create a mount point for the new device.
+
+        mkdir /vztemp
+
+5. Mount the new disk. Be sure to replace **/dev/sdc** with your appropriate device name.
+
+        mount /dev/sdc /vztemp
 
 ## Remove The metadata_csum Feature From Ext4 Volumes
 
@@ -99,9 +129,7 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 
         apt install sysvinit-core sysvinit-utils
 
-2. Reboot machine to release Systemd.
-
-        shutdown -r now
+2. From the Linode Manager, reboot your machine to release Systemd.
 
 3. Remove Systemd from your machine.
 
@@ -238,7 +266,7 @@ Note that both copied strings are separated with the carrot ">" character.
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-![Linode Manager - Select Kernel](docs/assets/openvz_one.PNG)
+![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
 
 7. Reboot your server and issue the below command to verify the OpenVZ kernel was loaded.
 
