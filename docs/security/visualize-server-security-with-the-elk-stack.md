@@ -5,8 +5,8 @@ author:
 description: 'Utilizing the Elastic Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
 keywords: 'ossec, elk stack, elk, ossec-hids'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, September 27th, 2017'
-modified: Monday, October 9th, 2017
+published: 'Wednesday, October 11th, 2017'
+modified: Thursday, October 12th, 2017
 modified_by:
   name: Linode
 title: 'Visualize Server Security On CentOS 7 With The Elastic Stack'
@@ -349,7 +349,8 @@ This configuration configures ElasticSearch with 4GB of allotted RAM. You may al
 
 ## Connect The Elastic Stack With The Wazuh API
 <!---
-COPY EDITOR: Changes requested from A. Lescher, as this section does not quite work.
+COPY EDITOR: Changes requested from A. Lescher, as this section does not quite work. This section can also be cut, as it is not necessary to complete the guide. Leaving in as a comment for editorial feedback.
+
 This section ties everything together with the Wazuh API
 
 ### Configure Web Hosting
