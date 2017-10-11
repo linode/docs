@@ -3,7 +3,7 @@ author:
   name: Andrew Lescher
   email: docs@linode.com
 description: This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.
-keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 14.04, database, nosql'
+keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 16.04, database, nosql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Saturday, June 24th, 2017'
 modified: 'Saturday, June 24th, 2017'
@@ -27,7 +27,7 @@ external_resources:
 
 ## What is Apache Cassandra
 
-Apache Cassandra is an open-source application that is managed in a simple command line interface using the CQL language. CQL, or Cassandra Query Language, is syntactically similar to Structured Query Language, making it easy to pick up for those familiar with SQL.
+Apache Cassandra is an open-source application that is managed through a simple command line interface using the CQL language. CQL, or Cassandra Query Language, is syntactically similar to Structured Query Language, making it easy to pick up for those familiar with SQL.
 
 Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations.
 
@@ -43,13 +43,11 @@ You will also learn how to secure communication between your nodes, as well as r
 
 3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
 
-## Initial Node Preparation
-
-### Prepare the Cassandra Nodes For Clustering
+## Prepare the Cassandra Nodes for Clustering
 
 The instructions here must be executed on each Cassandra node to be clustered. Apply the exact same configuration to each node, unless otherwise indicated.
 
-1. Clear the default data from the Cassandra system table in order to import the new values set in the *cassandra.yaml* config file:
+1. Clear the default data from the Cassandra system table in order to import the new values set in the `cassandra.yaml` config file:
 
 		systemctl stop cassandra
 		rm -rf /var/lib/cassandra/data/system/*
@@ -134,11 +132,11 @@ Setting up encryption between nodes offers additional security and protects the 
 ### Generate SSL Files
 
 1. Create a new directory called `.keystore` in the Cassandra config directory. Navigate to the newly created directory:
-	
-		mkdir /etc/cassandra/conf/.keystore
+
+        mkdir /etc/cassandra/conf/.keystore
         cd /etc/cassandra/conf/.keystore
 
-2. Create a configuration file for openssl to help automate the certificate creation process. Copy the contents below into a new file called `rootCAcert.conf`. Replace the values for `exampleDistinguishedName`, `examplePassword`, `exampleClusterName`, and `exampleClusterMasterCA` with your specific information:
+2. Create a configuration file for openssl to help automate the certificate creation process. Copy the contents below into a new file called `rootCAcert.conf`. Replace the values for `examplePassword`, `US`, `WA`, `Seattle` with your specific information:
 
     {: .file}
     ~/.keystore/rootCAcert.conf
@@ -146,7 +144,7 @@ Setting up encryption between nodes offers additional security and protects the 
       [ req ]
       distinguished_name     = req_distinguished_name
       prompt                 = no
-      output_password        = set_strong_password_here
+      output_password        = examplePassword
       default_bits           = 4096
     
       [ req_distinguished_name ]
@@ -218,7 +216,7 @@ Use the `-i` option if your destination server requires a certificate to login.
 Edit the `cassandra.yaml` file on each node to match the following. Replace text in [brackets] with the indicated information.
 
 {: .file}
-**/etc/cassandra/conf/cassandra.yaml**
+/etc/cassandra/conf/cassandra.yaml
 : ~~~yaml
 server_encryption_options:
     internode_encryption: all
@@ -266,8 +264,7 @@ If successful, your console output should read similar to the following:
 
 ### Automate SSL Certificate Generation
 
-
-If you have many Cassandra nodes for which to create and distribute certificates, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can automate the process with a [script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
+If you have many Cassandra nodes for which to create and distribute certificates, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can [automate the process with a script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
 
 1. Navigate to any folder and pull the script from Github: 
 
@@ -282,7 +279,6 @@ If you have many Cassandra nodes for which to create and distribute certificates
         a. Generate Node Certificates
         b. Import Node Certificates
         c. Generate Truststore
-
 
 An example usage of each mode is demonstrated below, for a cluster of 6 nodes:
 
