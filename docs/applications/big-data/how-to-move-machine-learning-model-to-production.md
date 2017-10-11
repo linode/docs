@@ -11,11 +11,12 @@ modified_by:
   name: Linode
 title: 'Putting Your Deep Learning Model into Production'
 external_resources:
-- '[Link Title 1](http://www.example.com)'
+- '[Keras Documentation](https://keras.io/)'
 - '[Fast AI Deep Learning Course](http://course.fast.ai/)'
+- '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 ---
 
-Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources, and often involves using powerful processors to train the model on huge datasets. However, once the model is working well, using it to generate predictions on new data is a much simpler and less computationally expensive process. The only difficulty is in how to move the model from its development environment into a production app.
+Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources. It also often involves using powerful processors to train the model on large datasets. However, once the model is working well, using it to generate predictions on new data is much simpler and less computationally expensive. The only difficulty is in moving the model from its development environment into a production app.
 
 This guide will show you how to create a simple Flask API that will use machine learning to identify handwritten digits. The API will use a simple deep learning model trained on the famous MNIST dataset.
 
@@ -25,12 +26,14 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Your Linode should also have Apache installed and configured before beginning this guide. Complete the first section of our [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) guide.
+3.  You should also have Apache installed and configured before beginning this guide. If you do not have Apache on your Linode, complete the first section of our [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) guide.
 
 4.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
+{:.note}
+> This guide uses Ubuntu 16.04; instructions for other distributions may vary.
 
 ## Set Up a Python Virtual Environment
 
@@ -38,11 +41,11 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
 1.  Install `pip`:
 
-        apt install python-pip
+        sudo apt install python-pip
 
 2.  Use `pip` to install `virtualenv` so that you can create a virtual environment:
 
-        pip install virtualenv
+        sudo pip install virtualenv
 
 3.  Create and activate a new virtual environment:
 
@@ -55,7 +58,6 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
         pip install keras tensorflow h5py
 
-
 {:.note}
 > The scripts in this guide are written in Python 2.7, but should also work on Python 3. In addition, if you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](ihttps://www.linode.com/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
 
@@ -66,18 +68,18 @@ Training complicated models on large datasets is usually done on specialized mac
 
 ### MNIST Database
 
-Training a computer to recognize handwritten numbers was an important task in early machine learning; this kind of classifier is used by many organizations, including the U.S. Post Office, to automate the input of information. A famous dataset used for this task is the MNIST database, which contains 70,000 images of handwritten digits (for comparison, the ImageNet database, commonly used in machine learning applications, has more than 10 million images). Each 28x28 pixel image consists of a single digit that has been preprocessed and labeled. For more information about MNIST, see the [official project documentation](http://yann.lecun.com/exdb/mnist/).
+Training a computer to recognize handwritten numbers was an important task in early machine learning. This kind of classifier is used by many organizations, including the U.S. Post Office, to automate the input and processing of information. A famous dataset used for this task is the MNIST database, which contains 70,000 images of handwritten digits (for comparison, the ImageNet database, commonly used in machine learning applications, has more than 10 million images). Each 28x28 pixel image consists of a single digit that has been preprocessed and labeled. For more information about MNIST, see the [official site](http://yann.lecun.com/exdb/mnist/).
 
-Many different models, from simple linear classifiers to complicated neural networks, have been trained on MNIST. Currently, the best models are able to achieve an error rate of only 0.21%. This guide will use a simpler CNN (convolutional neural network) that can achieve an accuracy of about 97%.
+Many different models, from simple linear classifiers to complicated neural networks, have been trained on MNIST. Currently, the best models are able to achieve an error rate of [only 0.21%](https://en.wikipedia.org/wiki/MNIST_database). This guide will use a simple CNN (convolutional neural network) that can achieve an accuracy of about 97%.
 
 ### Create a Deep Learning Model with Keras
 
 Keras is a deep learning library for Python. It provides an object-oriented interface that can work with a variety of deep learning frameworks, including Theano and Tensorflow.
 
-Since developing and training a deep learning model is beyond the scope of this tutorial, the code is provided below without explanation. The model is taken from Elite Data Science's excellent [tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python); if you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the next section of this guide.
+Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from Elite Data Science's excellent [tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python); if you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the next section of this guide.
 
 {:.note}
-> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, training with  a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `curl -O XXXXX`.
+> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `curl -O https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`.
 
 
 1.  Create a directory for the model:
@@ -134,29 +136,29 @@ Since developing and training a deep learning model is beyond the scope of this 
 
 ## Flask API
 
-Fortunately, once a model has been trained, using it to generate predictions is much simpler and less resource-intensive. In this section you will build a simple Python API with Flask. The API will have a single endpoint: it will accept POST requests with an image attached, then use the model you saved in the previous section to identify the handwritten digit in the image.
+Once a model has been trained, using it to generate predictions is much simpler. In this section you will build a simple Python API with Flask. The API will have a single endpoint: it will accept POST requests with an image attached, then use the model you saved in the previous section to identify the handwritten digit in the image.
 
 1.  Create a directory for the Flask API:
 
-        mkdir -p /var/www/FlaskAPI/FlaskAPI
+        sudo mkdir -p /var/www/FlaskAPI/FlaskAPI && cd /var/www/FlaskAPI/FlaskAPI
 
 2.  Create and activate a new virtual environment:
 
         sudo virtualenv flaskenv
         source flaskenv/bin/activate
 
-3.  Install dependencies for the AOI:
+3.  Install dependencies for the API:
 
-        pip install keras tensorflow h5py pillow numpy flask
+        sudo pip install keras tensorflow h5py pillow numpy flask
 
 4.  Copy the pre-trained model to the root of the Flask app:
 
-        cp ~/models/my_model.h5 /var/www/FlaskAPI/FlaskAPI
+        sudo cp ~/models/my_model.h5 /var/www/FlaskAPI/FlaskAPI
 
-5.  Create `/var/www/FlaskAPI/FlaskAPI/api.py` in a text editor and add the following content:
+5.  Create `/var/www/FlaskAPI/FlaskAPI/__init__.py` in a text editor and add the following content:
 
     {:.file}
-    /var/www/FlaskAPI/FlaskAPI/api.py
+    /var/www/FlaskAPI/FlaskAPI/__init__.py
     : ~~~
       from flask import Flask, jsonify, request
       import numpy as np
@@ -188,7 +190,7 @@ Fortunately, once a model has been trained, using it to generate predictions is 
               app.run()
       ~~~
 
-    This time, the only module you need to import from Keras is `load_model`, which reads `my_model.h5` and loads the model and weights. Once the model is loaded, the `predict()` function will generate a set of probabilities for each of the numbers from 0-9, indicating the likelihood that the digit in the image matches each number. Using the `argmax` function from the Numpy libary chooses the number with the highest probability: the number that the model thinks is the most likely match.
+    This time, the only module you need to import from Keras is `load_model`, which reads `my_model.h5` and loads the model and weights. Once the model is loaded, the `predict()` function will generate a set of probabilities for each of the numbers from 0-9, indicating the likelihood that the digit in the image matches each number. The `argmax` function from the Numpy libary returns the number with the highest probability: the number that the model thinks is the most likely match.
 
     The format of the inputs to the model must be exactly the same as the images used in training. The training images were 28x28 pixel greyscale images, represented as an array of floats with the shape (1,28,28) (color images would have been (3,28,28)). This means that any image you submit to the model must be resized to this exact shape. This preprocessing can be done on either the client-side or server-side, but for simplicity the example api above handles the processing.
 
@@ -198,7 +200,7 @@ The Apache server should already be running on your Linode. This section will sh
 
 1.  Install the `mod_wsgi` mod for Apache:
 
-        apt install libapache2-mod-wsgi python-dev
+        sudo apt install libapache2-mod-wsgi
 
 2.  Enable the mod:
 
@@ -216,30 +218,56 @@ The Apache server should already be running on your Linode. This section will sh
        from FlaskAPI import app as application
        ~~~
 
-4.  Configure a virtual host for your app. Create `FlaskAPI.conf` in Apache's `sites-available` directory and add the following content:
+4.  Configure a virtual host for your app. Create `FlaskAPI.conf` in Apache's `sites-available` directory and add the following content, replacing 'example.com' with your Linode's public IP address:
 
     {:.file}
     /etc/apache2/sites-available/FlaskAPI.conf
     :   ~~~
+        <Directory /var/www/FlaskAPI/FlaskAPI>
+          Require all granted
+        </Directory>
         <VirtualHost *:80>
-        ServerName example.com
-        ServerAdmin admin@example.com
-        WSGIScriptAlias / /var/www/FlaskAPI/flaskapp.wsgi
-        <Directory /var/www/FlaskAPI/FlaskAPI/>
-            Order allow,deny
-            Allow from all
-        </Directory>
-        Alias /static /var/www/FlaskAPI/FlaskAPI/static
-        <Directory /var/www/FlaskAPI/FlaskAPI/static/>
-            Order allow,deny
-            Allow from all
-        </Directory>
-        ErrorLog ${APACHE_LOG_DIR}/error.log
-        LogLevel warn
-        CustomLog ${APACHE_LOG_DIR}/access.log combined
-         </VirtualHost>
+          ServerName example.com
+          ServerAdmin admin@example.com
+          WSGIScriptAlias / /var/www/FlaskAPI/flaskapi.wsgi
+          ErrorLog /var/www/html/example.com/logs/error.log
+          CustomLog /var/www/html/example.com/logs/access.log combined
+        </VirtualHost>
         ~~~
 
-5.  Restart Apache:
+5.  Create a log directory:
 
-        systemctl restart apache2
+        sudo mkdir -p /var/www/html/example.com/logs
+
+6.  Activate the new site and restart Apache:
+
+        sudo a2dissite 000-default.conf
+        sudo a2ensite FlaskAPI.conf
+        sudo systemctl restart apache2
+
+## Test the API
+
+Your API endpoint should now be ready to accept POST requests with an image attached. In theory the API should be able to identify any image of an isolated handwritten digit; however, in order to obtain accurate predictions, the preprocessing steps used by the MNIST researchers should be replicated on every image submitted to the model. This would include calculating the center of pixel density and using that to center the digit within the image, as well as applying anti-aliasing. In order to quickly test the API, you can use `curl` to submit an image from the MNIST test set.
+
+1.  Right click and download the image below onto your local machine:
+
+      ![MNIST 7](/docs/assets/machine-learning/7.png)
+
+2.  From your local machine, use `curl` to POST the image to your API. Replace the IP address with the public IP address of your Linode, and provide the absolute path to the downloaded image.
+
+        curl -F 'file=@/path/to/7.png' 192.0.2.0/predict
+
+    If successful, you will receive a JSON response that correctly identifies the digit in the image:
+
+    {:.output}
+    ~~~ txt
+    { 'digit' : 7 }
+    ~~~
+
+## Next Steps
+
+Most production machine learning solutions involve a longer pipeline than demonstrated here: for example, you could add a different endpoint with a deep learning classifier for identifying digits in a larger image. Each detected digit would then be passed to the `/predict` endpoint, so that your application could interpret a series of handwritten digits–a phone number, for example.
+
+The API produced in this guide also lacks many features that a real-world application would need, including error handling and dealing with bulk image requests. To make the service more useful, the full preprocessing used by MNIST should be applied to each image.
+
+In addition, images submitted to the API could be used as a source of data to further train and refine your model. In this case, you could configure the API to copy each submitted image, along with the model's prediction, to a database for later analysis. See the links in **More Information** if you are interested in these topics.
