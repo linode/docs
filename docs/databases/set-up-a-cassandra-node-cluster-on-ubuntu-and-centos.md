@@ -9,8 +9,8 @@ published: 'Saturday, June 24th, 2017'
 modified: 'Saturday, June 24th, 2017'
 modified_by:
   name: Andrew Lescher
-title: 'Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
-alias: ['databases/set-up-a-cassandra-node-cluster-on-ubuntu-and-centos/']
+title: 'Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
+alias: ['databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -61,7 +61,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
      |:----------:|:-----------:|
      | cluster_name | Choose your cluster name here. |
      | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
-     | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from "localhost" to the specific node's public IP address. |
+     | listen_address | Other nodes in the cluster will use the IP address listed here to find each other. Change from `localhost` to the specific node's public IP address. |
      | rpc_address | The listen address for client communication. Change from "localhost" to the public IP address or loopback address of the node. |
      | endpoint_snitch | Snitches determine how Cassandra replicates data. Change this to "GossipingPropertyFileSnitch," as this is more suitable to a multi-datacenter configuration. |
      | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
