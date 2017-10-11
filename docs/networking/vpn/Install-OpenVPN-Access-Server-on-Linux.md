@@ -2,15 +2,18 @@
 author:
     name: James Stewart
     email: jstewart@linode.com
-description: 'Configuring OpenVPN Access Server on your Linode.'
+description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
 keywords: 'openvpn,networking,vpn,debian,ubuntu,centos,fedora'
+alias: '[networking/vpn/openvpn-access-server/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, April 30th, 2015
 modified_by:
     name: James Stewart
 published: 'Thursday, April 30th, 2015'
-title: Secure Communications with OpenVPN Access Server
+title: Install OpenVPN Access Server on Linux for Secure Communications
 ---
+
+## What is OpenVPN?
 
 OpenVPN is a popular software package which creates encrypted tunnels for secure data transfer.  In this guide, you will learn to configure your Linode as a VPN gateway using the OpenVPN Access Server software, and connect your Windows, OSX, or Linux computer to it.
 
@@ -20,7 +23,7 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 >
 >After securing your server, ensure that TCP port 943 and UDP port 1194 are permitted through your firewall in order for the OpenVPN Access Server to function.
 
-## Installing OpenVPN Access Server
+## Install OpenVPN Access Server
 
 1.  Update the Linode to ensure that you have the latest packages, using your installed package manager.
 
@@ -51,7 +54,7 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 		
 		sudo passwd openvpn
 
-## Configuring OpenVPN Access Server
+## Configure OpenVPN Access Server
 
 ###Configuring Client Settings
 
