@@ -103,7 +103,7 @@ Login to *node-master* as hadoop user, get the tarball of Hadoop from [Hadoop pr
 	cd
 	wget http://apache.mindstudios.com/hadoop/common/hadoop-2.8.1/hadoop-2.8.1.tar.gz
 	tar -xzf hadoop-2.8.1.tar.gz
-	ln -s hadoop-2.8.1 hadoop
+	mv hadoop-2.8.1 hadoop
 
 ### Set Environment Variables
 
@@ -283,7 +283,7 @@ The relations between all those properties can be seen in the following figure:
 For 2Gb nodes, a working configuration may be:
 
 {: .table .table-striped}
-| Left-Aligned | Centered |
+| Property | Value |
 | ---------------- |:-------------:|
 | yarn.nodemanager.resource.memory-mb     | 1536          |
 | yarn.scheduler.maximum-allocation-mb| 1536 |
@@ -359,7 +359,7 @@ For 2Gb nodes, a working configuration may be:
 3. Unzip the binaries, rename the directory, and exit node1 to get back on node-master:
 
         tar -xzf hadoop-2.8.1.tar.gz
-        ln -s hadoop-2.8.1 hadoop
+        mv hadoop-2.8.1 hadoop
         exit
 
 4. Repeat steps 2 and 3 for *node2*
