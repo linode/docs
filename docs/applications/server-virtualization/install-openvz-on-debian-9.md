@@ -305,13 +305,17 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
 
         vzctl create [CTID] --ostemplate centos7-x86_64
 
-7. A configuration file will now have been created for your OS template. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
+7.  If you set up a separate disk partition for OpenVZ templates, use the command below to create the container within the new disk. Replace *--ostemplate* with your template name, and *--name* with a descriptive name of your choice.
+
+        vzctl create [CTID] --ostemplate debian-8.0-x86_64 --layout simfs --name centos7 --private /vztemp/vz/private/$VEID --root /vztemp/vz/root/$VEID --config basic
+
+8. A configuration file will now have been created for your OS template. The location of this file is specified as part of the output of the previous command. Open this file now to make the following changes below. The config file will be named in the [CTID].conf format.
 
     - Give your virtual environment an IP address. The recommended format is 192.168.0.[CTID]. In this case it would be 192.168.0.101.
     - Provide a nameserver. Google's nameserver (8.8.8.8) should be sufficient.
     - If you have trouble booting into your virtual environment, you may try changing **VE_LAYOUT** back to "ploop" from "simfs".
 
-    You may also configure other options at your pleasure, such as SWAP and RAM allocation. Save and close when finished.
+    You may also configure other options at your discrection, such as SWAP and RAM allocation. Save and close when finished.
 
     {: .file}
     /etc/vz/conf/101.conf
