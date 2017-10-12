@@ -1,8 +1,8 @@
 ---
 author:
-   name: Linode Community
-   email: docs@linode.com
-description: 'OpenVZ is a software based OS virtualization tool enabling the deployment, management, and modification of isolated virtual Linux environments from within a host Linux distribution. An extensive array of pre-built OS templates in a variety of Linux distributions allow users to rapidly download and deploy virtual environments with ease.'
+  name: Linode Community
+  email: docs@Linode.com
+description: 'This guide will show you how to install OpenVZ on your Linode and deploy a virtual environment.'
 keywords: 'openvz, virtualization, docker'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 22nd, 2017'
@@ -24,72 +24,77 @@ external_resources:
 
 ## Introduction To This Tutorial
 
-Upon completing this guide, you will have installed OpenVZ on your Linode and learned how to download and deploy a virtual environment.
+OpenVZ is a software based OS virtualization tool enabling the deployment, management, and modification of isolated virtual Linux environments from within a host Linux distribution. An extensive array of pre-built OS templates in a variety of Linux distributions allow users to rapidly download and deploy virtual environments with ease.
 
-## Before You Begin
+### Before You Begin
 
-1. Working through this tutorial requires the use of a root user account, and is written as if commands are issued from the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 
-3. Certain essential modifications to your Debian 9 system are required to run OpenVZ. They include the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain any previously added software will be compatible with these changes.
+3. Certain essential modifications to your Debian 9 system are required to run OpenVZ. Including the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain that all software currently installed on the machine will be compatible with these changes.
 
-{:.note}
->Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
+    {:.note}
+    >
+    >Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
 
-# Install And Configure OpenVZ
 
-## Create A Separate Partition For OpenVZ Templates (OPTIONAL STEP)
+### Create A Separate Partition For OpenVZ Templates
 
-If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it is recommended to create separate partitions for the host server and its processes and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme.
+
+{:.caution}
+>
+>This step is optional.
+
+If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it's recommended to create separate partitions for the host server and its processes, and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme:
 
 {: .table .table-striped}
 |:----------:|:-----------:|:-----------:|
 | Partition | Description | Typical Size |
 | /         | Root partition | 4-12 GB   |
-| swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space |
+| swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space) |
 | /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
 
-1. Log into your Linode Manager and select your Linode. Power off the machine and verify the job is complete by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* dropdown, and allocate as much space as you can in the *Size* field. Click *Save Changes*. An optimal configuration will resemble the image below.
+1. Log into your Linode Manager and select your Linode. Power-off the machine, and verify the job completed by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* drop-down menu, and allocate as much space as you can in the *Size* field. Click *Save Changes*; an optimal configuration will resemble the image below.
 
-![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.PNG)
+     ![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.PNG)
 
-2. Under the *Dashboard* tab, click on your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
+2. Under the *Dashboard* tab, click your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
 
-![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.PNG)
+    ![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.PNG)
 
-3. Boot the Linode and login via SSH. Issue the below command to verify the new disk has been created properly. The output should display your newly created disk.
+3. Boot the Linode and login via SSH. Issue the command below to verify that the new disk has been created properly. The output will display your newly created disk.
 
-        fdisk -l
+       fdisk -l
 
-4. Create a mount point for the new device.
+4. Create a mount point for the new device:
 
         mkdir /vztemp
 
-5. Mount the new disk. Be sure to replace **/dev/sdc** with your appropriate device name.
+5. Mount the new disk. Be sure to replace **/dev/sdc** with your device name:
 
         mount /dev/sdc /vztemp
 
-## Remove The metadata_csum Feature From Ext4 Volumes
+### Remove The metadata_csum Feature From Ext4 Volumes
 
-Before OpenVZ can be installed, the system must be configured for compatability. The Debian 9 distribution supports a new checksum feature which is incompatible with the custom OpenVZ kernel. Depending on your preference, you may choose to either remove metadata_csum from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
+Before OpenVZ can be installed, the system must be configured for compatibility. Debian 9 supports a new checksum feature that is incompatible with custom OpenVZ kernels. Depending on your preference, you may choose to either remove metadata_csum from a mounted partition or reformat the affected partition to a compatible Ext4 volume. Choose either method and follow the instructions in the appropriate section below.
 
 1. List available disk partitions.
 
         lsblk
 
-2. Check if "metadata_csum" is installed in any mounted disk partitions shown in step 1 (not including the SWAP partition). Follow the below format for each partition, replacing "/dev/sda1" with the appropriate volume name. If the below command yields no output for mounted disk volumes, you may skip this section.
+2. Check if "metadata_csum" is installed in any mounted disk partitions shown in step 1 (not including the SWAP partition). Follow the format below for each partition, replacing `/dev/sda1` with the appropriate volume name. If the below command yields no output for mounted disk volumes, you may skip this section.
 
         dumpe2fs -h /dev/sda1 2>/dev/null | grep -e metadata_csum
 
-### Remove "metadata_csum" From Mounted Partitions
+### Remove metadata_csum From Mounted Partitions
 
-1. Issue below commands to add code to the `fsck` file.
+1. Issue the commands below to add code to the `fsck` file.
 
         echo "copy_exec /sbin/e2fsck" | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
         echo "copy_exec /sbin/tune2fs" | sudo tee -a /usr/share/initramfs-tools/hooks/fsck
 
-2. Create a new file in the directory designated below and name it *tune*. Copy and paste the below text into this new file and save.
+2. Create a new file in the directory designated below and name it *tune*. Copy and paste the text below into this new file and save.
 
     {: .file}
     /etc/initramfs-tools/scripts/local-premount/tune
@@ -118,8 +123,8 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 
 1. Choose the Ext4 volume you would like to format and issue the command below, replacing `/dev/sda3` with your selected volume. An output of "0" indicates success.
 
-{: .caution}
-> Formatting a volume with the `mkfs` command may result in data loss.
+    {: .caution}
+    > Formatting a volume with the `mkfs` command may result in data loss.
 
         mkfs -t ext4 -O -metadata_csum /dev/sda3
 
@@ -145,7 +150,7 @@ Before OpenVZ can be installed, the system must be configured for compatability.
             Pin-Priority: -1
             ~~~
 
-## Add OpenVZ Repository
+### Add OpenVZ Repository
 
 1. Create a new repository source file and paste in the contents below.
 
@@ -160,22 +165,22 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 
         wget -qO - http://ftp.openvz.org/debian/archive.key | sudo apt-key add -
 
-3. As of the publication date of this guide, the openvz repository key is invalid, and issuing the `apt update` command will generate a warning from the system. The command should nevertheless succeed. If it does not, update the system with the following argument.
+3. As of the publication date of this guide, the openvz repository key is invalid, and issuing the `apt update` command will generate a warning from the system. The command should succeed. If it does not, update the system with the following argument.
 
         apt --allow-unauthenticated update
 
-## Install OpenVZ Packages
+### Install OpenVZ Packages
 
 1. Install OpenVZ with required packages.
 
         KPackage="linux-image-openvz-$(dpkg --print-architecture)"
         sudo apt --allow-unauthenticated --install-recommends install $KPackage vzdump ploop initramfs-tools dirmngr
 
-2. The installation should create a new directory, `/vz`. If this directory does not exist after installation, create a symbolic link using the command below.
+2. The installation should create a new directory, `/vz`. If this directory does not exist after the installation, create a symbolic link using the command below.
 
         ln -s /var/lib/vz/ /vz
 
-3. Create file `vznet.conf` and add paste in the line below.
+3. Create file `vznet.conf` and paste in the line below:
 
     {: .file}
     /etc/vz/vznet.conf
@@ -191,11 +196,11 @@ Before OpenVZ can be installed, the system must be configured for compatability.
 
 The system must be configured to boot the OpenVZ kernel each time the server is restarted.
 
-1. Open the `grub.cfg` file in `less`, or your preferred text editor.
+1. Open the `grub.cfg` file in `less`, or your preferred text editor:
 
         less /boot/grub/grub.cfg
 
-2. Within the `grub.cfg` file, look for a section resembling the following.
+2. Within the `grub.cfg` file, look for a section resembling the following:
 
     {: .file}
     /boot/grub/grub.cfg
@@ -223,9 +228,9 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
             . . .
             ~~~
 
-Write down the text in single quotes which appears directly after "submenu", which should be present after the first "menuentry" section. In this case, the text to copy would be **Advanced options for Debian GNU/Linux**.
+       Copy the text entry preceeding `submenu`, in this example the text would be: **Advanced options for Debian GNU/Linux**.
 
-3. Within the `grub.cfg` file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored.
+3. Within the `grub.cfg` file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored:
 
     {: .file}
     /boot/grub/grub.cfg
@@ -252,13 +257,13 @@ Write down the text in single quotes which appears directly after "submenu", whi
             . . .
             ~~~
 
-Again, write down the text directly after "menuentry" in the single quotations. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
+         Again, write down the text directly after "menuentry" in single quotes. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
 
-4. Close the **grub.cfg** file and open **/etc/default/grub** in your preferred text editor. Locate the line that begins with `GRUB_DEFAULT=`. Delete the default value for this parameter and enter the text you copied in the previous steps, following the format below. With the example above, the value would be the following.
+4. Close the **grub.cfg** file and open **/etc/default/grub** in your preferred text editor. Locate the line that begins with `GRUB_DEFAULT=`. Delete the default value for this parameter and enter the text you copied in the previous steps, following the format below. With the example above, the value would be the following:
 
         GRUB_DEFAULT="Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64"
 
-Note that both copied strings are separated with the carrot ">" character.
+    Note that both copied strings are separated with the carrot ">" character.
 
 5. Save and close the **grub** file, and issue the below command to reload the grub bootloader with the new kernel value.
 
@@ -266,22 +271,22 @@ Note that both copied strings are separated with the carrot ">" character.
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
+     ![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
 
-7. Reboot your server and issue the below command to verify the OpenVZ kernel was loaded.
+7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 
         uname -r
 
-If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is misconfigured. Check and make certain the correct kernel was chosen and entered correctly.
+    If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is misconfigured. Check and make certain the correct kernel was chosen and entered correctly.
 
-## Download And Deploy An OS Template
+### Download And Deploy An OS Template
 
-1. Start the OpenVZ service.
+1. Start the OpenVZ service:
 
         service vz start
         service vz status
 
-2. Register with the official OpenVZ template repository.
+2. Register with the official OpenVZ template repository:
 
         sudo gpg --recv-keys $(echo $(sudo gpg --batch --search-keys security@openvz.org 2>&1 | grep -ie ' key.*created' | sed -e 's|key|@|g' | cut -f 2 -d '@') | cut -f 1 -d ' ' | cut -f 1 -d ',')
 
@@ -293,11 +298,11 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
       VE_LAYOUT=simfs
       ~~~
 
-4. List available OS templates for download.
+4. List available OS templates for download:
 
         vztmpl-dl --list-remote
 
-5. From the available list of templates, select one to download. Using the format below, issue the following command, replacing *centos7-x86_64* with the template you selected.
+5. From the available list of templates, select one to download. Using the format below, issue the following command, replacing *centos7-x86_64* with the template you selected:
 
         vztmpl-dl --gpg-check centos7-x86_64
 
@@ -347,29 +352,29 @@ If the OpenVZ kernel was not loaded, it is most likely the **grub** file that is
         HOSTNAME="centos-7"
         ~~~
 
-8. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
+9. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
 
         vzctl start [CTID]
         vzctl enter [CTID]
 
-## Configure Internet Access To Containers
+### Configure Internet Access To Containers
 
-As it stands, containers have no way to access the internet or be accessed from the internet. The host server must be configured to pass on requests to and from each installed virtual environment.
+Containers have no way to access the internet or be accessed from the internet. The host server must be configured to pass on requests to and from each installed virtual environment.
 
 ### Configure Access From Container To Internet
 
 {:.note}
 > You may need to login as root with `su -` in order to run the iptables-save commands in this section.
 
-1. On the host server, issue the following command via Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list in CIDR notation (include IP address and subnet, or xxx.xxx.xxx.xxx/xx) in order to encompass a range of IP addresses, which will enable access to any containers added in the future. For example, entering 192.168.0.0/24 will setup routing for IP addresses 192.168.0.0 through 192.168.0.255.
+1. On the host server, issue the following command using Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list it in CIDR notation. Include IP address and subnet, or `xxx.xxx.xxx.xxx/xx`, in order to encompass a range of IP addresses that will enable access to any containers added in the future. For example, entering 192.168.0.0/24 will setup routing for IP addresses 192.168.0.0 through 192.168.0.255.
 
         iptables -t nat -A POSTROUTING -s [container IP] -o eth0 -j SNAT --to [host server IP]
 
-2. Save the new Iptables rules. Skip this step if you have `iptables-persistent` installed.
+2. If you have `iptables-persistent` installed, skip this step. Save the new Iptables rules"
 
         iptables-save > /etc/iptables.conf
 
-3. Configure your firewall to allow forwarded requests. Again, save the rule if you are not using iptables-persistent.
+3. Configure your firewall to allow forwarded requests. If you are not using `iptables-persistent` save the rule:
 
         iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT
         iptables-save > /etc/iptables.conf
@@ -378,7 +383,7 @@ As it stands, containers have no way to access the internet or be accessed from 
 
 ### Configure Access From Internet To Container
 
-1. If you need to access a specific service on your container from the internet, you will need to reserve a port on the host machine to route access through. Issue the following command replacing any bracketed values with the appropriate information.
+1. If you need to access a specific service on your container, from the internet, you will need to reserve a port on the host machine and route access through it. Issue the following command replacing any bracketed values with the appropriate information.
 
         iptables -t nat -A PREROUTING -p tcp -d [host_ip] --dport [host_port_number] -i eth0 -j DNAT --to-destination [container_ip:container_port_number]
 
@@ -388,4 +393,4 @@ As it stands, containers have no way to access the internet or be accessed from 
 
 ## Where To Go From Here
 
-After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal linux environment, requiring regular updates, security configuration, etc. Much configuration can be done from the host server via OpenVZ commands. See the "OpenVZ Basic Operations" link in the **External Resources** section to familiarize yourself with basic administration commands. Additional user-created templates can also be downloaded, which are not included in the main template listing. You can find these by following the "OpenVZ User Contributed Templates" link.
+After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal Linux environment: requiring regular updates, security configuration, etc. Most configuration can be done from the host server via OpenVZ commands. See the "OpenVZ Basic Operations" link in the **External Resources** section to familiarize yourself with basic administration commands. Additional user-created templates can also be downloaded, which are not included in the main template listing. You can find these by following the "OpenVZ User Contributed Templates" link.
