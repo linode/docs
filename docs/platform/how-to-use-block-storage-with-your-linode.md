@@ -114,6 +114,8 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 ## How to Resize a Block Storage Volume
 
+Storage volumes can **not** be sized down, only up. Bear this in mind when sizing your volumes.
+
 1.  Shut down your Linode.
 
 2.  Click the **Edit** option for the volume you want to resize.
