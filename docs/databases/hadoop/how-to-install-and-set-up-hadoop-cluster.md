@@ -2,14 +2,14 @@
 author:
   name: Florent Houbart
   email: docs@Linode.com
-description: 'This guide will show you how to install and configure a 3-node Hadoop cluster'
+description: 'This Linode guide will show you how to install and set up a 3-node Hadoop cluster.'
 keywords: 'Hadoop, YARN, HDFS'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, October 13th, 2017'
 modified: Monday, October 16th, 2017
 modified_by:
   name: Linode
-title: 'Install and Configure a 3-Node Hadoop Cluster'
+title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
 contributor:
   name: Florent Houbart
 external_resources:
@@ -25,26 +25,27 @@ external_resources:
 
 ----
 
+## What is Hadoop?
 
-Hadoop is an open source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
+Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
 
 ![Hadoop logo](/docs/assets/hadoop/hadoop-1-logo.png)
 
 
 ## Before You Begin
 
-  1.  Follow the [Getting Started](/docs/getting-started) guide to create 3 Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
+  1.  Follow the [Getting Started](/docs/getting-started) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
 
       {:.note}
       > The instructions in this guide will be run from **node-master** unless otherwise specified.
 
-  2.  Follow the [Securing Your Server](/docs/security/securing-your-server) guide to harden the three servers. Create an normal user for the install, and a user called *hadoop* for any Hadoop daemons. Do **not** create SSH keys for hadoop users. SSH keys will be addressed in a later section.
+  2.  Follow the [Securing Your Server](/docs/security/securing-your-server) guide to harden the three servers. Create a normal user for the install, and a user called *hadoop* for any Hadoop daemons. Do **not** create SSH keys for hadoop users. SSH keys will be addressed in a later section.
 
-  3.  Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/install-java-on-debian), [CentOs](/docs/development/install-java-on-centos) or [Ubuntu](/docs/development/install-java-on-ubuntu-16-04), or grab the latest JDK from Oracle
+  3.  Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/install-java-on-debian), [CentOs](/docs/development/install-java-on-centos) or [Ubuntu](/docs/development/install-java-on-ubuntu-16-04), or grab the latest JDK from Oracle.
 
       {: .note}
       >
-      > The 3 nodes, *node-master*, *node1* and *node2* will be assumed to have IP addresses 192.0.2.1, 192.0.2.2 and 192.0.2.3, respectively. Change them accordingly to your own configuration.
+      > The three nodes, *node-master*, *node1* and *node2* will be assumed to have IP addresses 192.0.2.1, 192.0.2.2 and 192.0.2.3, respectively. Change them according to your own configuration.
 
       {: .note}
       >
@@ -53,24 +54,24 @@ Hadoop is an open source Apache project that allows creation of parallel process
 
 ## Architecture of a Hadoop Cluster
 
-Before configuring the master and slave nodes, it's important to understand the different components of a Hadoop cluster:
+Before configuring the master and slave nodes, it's important to understand the different components of a Hadoop cluster.
 
 A **master node** keeps knowledge about the distributed file system, like the `inode` table on an `ext3` filesystem, and schedules resources allocation. *Node-master* will handle this role in this guide, and host two daemons:
 
 *   The **NameNode**: manages the distributed file system and knows where stored data blocks inside the cluster are.
-*   The **ResourceManager**: manages the YARN jobs and takes care of scheduling and executing proccesses on slave nodes
+*   The **ResourceManager**: manages the YARN jobs and takes care of scheduling and executing processes on slave nodes.
 
-**Slave nodes** store the actual data and provide processing power to run the jobs. they'll be *node1* and *node2*, and will host two daemons:
+**Slave nodes** store the actual data and provide processing power to run the jobs. They'll be *node1* and *node2*, and will host two daemons:
 
-*   The **DataNode**: manages the actual data physically stored on the node it's named: `NameNode`.
-*   The **NodeManager**: manages execution of tasks on the node
+*   The **DataNode** manages the actual data physically stored on the node; it's named, `NameNode`.
+*   The **NodeManager** manages execution of tasks on the node.
 
 
 ## Configure the System
 
 ### Create Host File on Each Node
 
-For each node to communicate with their names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with yours:
+For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
   {: .file }
   /etc/hosts
@@ -88,7 +89,7 @@ The master node will use an ssh-connection to connect to other nodes with key-pa
 
        ssh-keygen -b 4096
 
-2. Then, copy the key to the other nodes. it's a good practice to also copy the key to the *node-master* itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the hadoop user password when asked for. If you are prompted to add the key to known hosts, enter "yes":
+2. Then, copy the key to the other nodes. It's good practice to also copy the key to the *node-master* itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the Hadoop user password when asked. If you are prompted whether or not to add the key to known hosts, enter "yes":
 
         ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node-master
         ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node1
@@ -123,7 +124,7 @@ Configuration will be done on the master node and replicated to other nodes.
 
         update-alternatives --display java
 
-    Take the value of the current link, and remove the trailing `/bin/java`. For example on Debian, the link is `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java` so `JAVA_HOME` should be `/usr/lib/jvm/java-8-openjdk-amd64/jre`.
+    Take the value of the current link and remove the trailing `/bin/java`. For example on Debian, the link is `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`, so `JAVA_HOME` should be `/usr/lib/jvm/java-8-openjdk-amd64/jre`.
 
     If you installed java from Oracle, `JAVA_HOME` is the path where you unzipped the java archive.
 
@@ -141,9 +142,9 @@ Configuration will be done on the master node and replicated to other nodes.
         ~~~
 
 
-### Set NameNode location
+### Set NameNode Location
 
-On each node update `~/hadoop/etc/hadoop/core-site.xml`, to set the NameNode location to *node-master* on port 9000:
+On each node update `~/hadoop/etc/hadoop/core-site.xml` you want to set the NameNode location to *node-master* on port 9000:
 
 {: .file }
 ~/hadoop/etc/hadoop/core-site.xml
@@ -183,16 +184,16 @@ Edit `hdfs-site.conf`:
     </configuration>
     ~~~
 
-The last property: `dfs.replication`, indicates how many times data is replicated in the cluster. You can set 2 to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of slave nodes.
+The last property, `dfs.replication`, indicates how many times data is replicated in the cluster. You can set "2" to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of slave nodes.
 
-### Set YARN as job scheduler
+### Set YARN as Job Scheduler
 
-1. In `~/hadoop/etc/hadoop/`, rename `mapred-site.xml.template` to `mapred-site.xml` :
+1. In `~/hadoop/etc/hadoop/`, rename `mapred-site.xml.template` to `mapred-site.xml`:
 
         cd ~/hadoop/etc/hadoop
         mv mapred-site.xml.template mapred-site.xml
 
-2. Edit it setting yarn as the default framework for MapReduce operations:
+2. Edit the file, setting yarn as the default framework for MapReduce operations:
 
       {: .file }
       ~/hadoop/etc/hadoop/mapred-site.xml
@@ -230,7 +231,7 @@ Edit `yarn-site.xml`:
     </configuration>
     ~~~
 
-### Configure slaves
+### Configure Slaves
 
 The file `slaves` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/slaves` to be:
 
@@ -249,34 +250,34 @@ Memory allocation can be tricky on low RAM nodes because default values are not 
 
 A YARN job is executed with two kind of resources:
 
--  An *Application Master* (AM) is responsible for monitoring the application and coordinating distributed executors in the cluster
+-  An *Application Master* (AM) is responsible for monitoring the application and coordinating distributed executors in the cluster.
 - Some executors that are created by the AM actually run the job. For a MapReduce jobs, they'll perform map or reduce operation, in parallel.
 
-Both are run in *containers*, on slave nodes. Each slave node runs a *NodeManager* daemon that's responsible for container creation on the node. The whole cluster is manager by a *ResourceManager* that schedules container allocation on all the slave-nodes, depending on capacity requirements and current charge.
+Both are run in *containers* on slave nodes. Each slave node runs a *NodeManager* daemon that's responsible for container creation on the node. The whole cluster is managed by a *ResourceManager* that schedules container allocation on all the slave-nodes, depending on capacity requirements and current charge.
 
-Four types of resource allocations need to be configured properly for the cluster to work:
+Four types of resource allocations need to be configured properly for the cluster to work. These are:
 
-1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others, otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node. 
+1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node. 
 
-    This value is configured in `yarn-site.xml` with `yarn.nodemanager.resource.memory-mb`
+    This value is configured in `yarn-site.xml` with `yarn.nodemanager.resource.memory-mb`.
 
-2. How much memory a single container can consume, and the minimum memory allocation allowed. A container will never be bigger than the maximum, or else allocation will fail, and will always be allocated as a multiple of the minimum amount of RAM..
+2. How much memory a single container can consume and the minimum memory allocation allowed. A container will never be bigger than the maximum, or else allocation will fail and will always be allocated as a multiple of the minimum amount of RAM.
 
     Those values are configured in `yarn-site.xml` with `yarn.scheduler.maximum-allocation-mb` and `yarn.scheduler.minimum-allocation-mb`.
 
-3. How much memory will be allocated to the ApplicationMaster. This is a constant value that should fit in the container maximum size
+3. How much memory will be allocated to the ApplicationMaster. This is a constant value that should fit in the container maximum size.
 
     This is configured in `mapred-site.xml` with `yarn.app.mapreduce.am.resource.mb`.
 
 4. How much memory will be allocated to each map or reduce operation. This should be less than the maximum size.
 
-    This is configured in `mapred-site.xml` with properties `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`
+    This is configured in `mapred-site.xml` with properties `mapreduce.map.memory.mb` and `mapreduce.reduce.memory.mb`.
 
 The relationship between all those properties can be seen in the following figure:
 
 ![Schema of memory allocation properties](/docs/assets/hadoop/hadoop-2-memory-allocation-new.png)
 
-### Sample Configuration for 2Gb nodes
+### Sample Configuration for 2Gb Nodes
 
 For 2GB nodes, a working configuration may be:
 
@@ -317,7 +318,7 @@ For 2GB nodes, a working configuration may be:
         </property>
         ~~~
 
-    The last property disables virtual memory checking and can prevent containers to be allocated properly on JDK8.
+    The last property disables virtual-memory checking and can prevent containers from being allocated properly on JDK8.
 
 
 2. Edit `/home/hadoop/hadoop/etc/hadoop/mapred-site.xml` and add the following lines:
@@ -344,13 +345,13 @@ For 2GB nodes, a working configuration may be:
 
 ## Duplicate Config Files on Each Node
 
-1. Copy the hadoop binaries to slave nodes
+1. Copy the hadoop binaries to slave nodes:
 
         cd /home/hadoop/
         scp hadoop-*.tar.gz node1:/home/hadoop
         scp hadoop-*.tar.gz node2:/home/hadoop
 
-2. Connect to node1 via ssh, a password isn't required thanks to the ssh keys copied above:
+2. Connect to node1 via ssh. A password isn't required, thanks to the ssh keys copied above:
 
         ssh node1
 
@@ -360,9 +361,9 @@ For 2GB nodes, a working configuration may be:
         mv hadoop-2.8.1 hadoop
         exit
 
-4. Repeat steps 2 and 3 for *node2*
+4. Repeat steps 2 and 3 for *node2*.
 
-5. Copy the hadoop configuration files to the slave nodes:
+5. Copy the Hadoop configuration files to the slave nodes:
 
         for node in node1 node2; do
             scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
@@ -376,11 +377,11 @@ HDFS needs to be formatted like any classical file system. On `node-master`, run
 
 Your Hadoop installation is now configured and ready to run.
 
-## Running and monitoring HDFS
+## Run and monitor HDFS
 
-This section will walk through starting HDFS on NameNode and DataNodes, And monitoring that everything is working and interacting with HDFS data.
+This section will walk through starting HDFS on NameNode and DataNodes, and monitoring that everything is properly working and interacting with HDFS data.
 
-### Starting and Stopping HDFS
+### Start and Stop HDFS
 
 1. Start the HDFS by running the following script from *node-master*:
 
@@ -388,7 +389,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, And moni
 
     It'll start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on node1 and node2, according to the configuration in the `slaves` config file.
 
-2. Check that every process is running with the `jps` command on each node. You should get on node-master (PID will be differents):
+2. Check that every process is running with the `jps` command on each node. You should get on node-master (PID will be different):
 
         21922 Jps
         21603 NameNode
@@ -403,27 +404,27 @@ This section will walk through starting HDFS on NameNode and DataNodes, And moni
 
         stop-dfs.sh
 
-### Monitoring your HDFS Cluster
+### Monitor your HDFS Cluster
 
-1. You can get useful information about your running your HDFS cluster with the `hdfs dfsadmin` command. Try for example:
+1. You can get useful information about running your HDFS cluster with the `hdfs dfsadmin` command. Try for example:
 
         hdfs dfsadmin -report
 
-    This will print all running DataNodes with in information like capacity and usage. To get the description of all available commands, type:
+    This will print information (e.g., capacity and usage) for all running DataNodes. To get the description of all available commands, type:
 
         hdfs dfsadmin -help
 
-2. You can also use the more friendly web UI automatically. Point your browser to http://node-master-IP:50070 and you'll get a user friendly monitoring console.
+2. You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:50070 and you'll get a user-friendly monitoring console.
 
 ![Screenshot of HDFS Web UI](/docs/assets/hadoop/hadoop-3-hdfs-webui-wide.png)
 
-### Putting and Getting Data to HDFS
+### Put and Get Data to HDFS
 
 Writing and reading to HDFS is done with command `hdfs dfs`. First, manually create your home directory. All other commands will use a path relative to this default home directory:
 
     hdfs dfs -mkdir -p /user/hadoop
 
-We'll use some textbooks from the [Gutenberg project](https://www.gutenberg.org/) as an example.
+Let's use some textbooks from the [Gutenberg project](https://www.gutenberg.org/) as an example.
 
 1. Create a *books* directory in HDFS. The following command will create it in the home directory, `/user/hadoop/books`:
 
@@ -448,19 +449,19 @@ We'll use some textbooks from the [Gutenberg project](https://www.gutenberg.org/
 
         hdfs dfs -get books/alice.txt
 
-6. You can also directly print them from HDFS:
+6. You can also directly print the books from HDFS:
 
         hdfs dfs -cat books/alice.txt
 
-There many commands to manage your HDFS, you can look at the [Apache HDFS shell documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html), or print help with:
+There are many commands to manage your HDFS. For a complete list, you can look at the [Apache HDFS shell documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html), or print help with:
 
     hdfs dfs -help
 
-## Running YARN
+## Run YARN
 
 HDFS is a distributed storage system, it doesn't provide any services for running and scheduling tasks in the cluster. This is the role of the YARN framework. The following section is about starting, monitoring, and submitting jobs to YARN.
 
-### Starting and Stopping YARN
+### Start and Stop YARN
 
 1. Start YARN with the script:
 
@@ -472,7 +473,7 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
         stop-yarn.sh
 
-### Monitoring YARN
+### Monitor YARN
 
 1. The `yarn` command provides utilities to manage your YARN cluster. You can also print a report of running nodes with the command:
 
@@ -484,19 +485,19 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
     To get all available parameters of the `yarn` command, see [Apache YARN documentation](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html).
 
-2. As with HDFS, YARN provides a more friendly web UI, started by default on port 8088 of the ResourceManager. Point your browser to http://node-master-IP:8088 and browse the UI:
+2. As with HDFS, YARN provides a friendlier web UI, started by default on port 8088 of the ResourceManager. Point your browser to http://node-master-IP:8088 and browse the UI:
 
 ![Screenshot of YARN Web UI](/docs/assets/hadoop/hadoop-4-yarn-webui-wide.png)
 
-### Submitting MapReduce Jobs to YARN
+### Submit MapReduce Jobs to YARN
 
-Yarn jobs are packaged into `jar` files and submitted to YARN for execution with the command `yarn jar`. The Hadoop installation package provides sample applications that can be run to test your cluster. We'll use them to run a word count on the three books we previously uploaded to HDFS.
+Yarn jobs are packaged into `jar` files and submitted to YARN for execution with the command `yarn jar`. The Hadoop installation package provides sample applications that can be run to test your cluster. You'll use them to run a word count on the three books previously uploaded to HDFS.
 
 1. Submit a job with the sample jar to YARN. On node-master, run:
 
         yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount "books/*" output
 
-    The last argument is where the output of the job will be saved, in HDFS.
+    The last argument is where the output of the job will be saved - in HDFS.
 
 2. After the job is finished, you can get the result by querying HDFS with `hdfs dfs -ls output`. In case of a success, the output will resemble:
 
@@ -513,5 +514,5 @@ Yarn jobs are packaged into `jar` files and submitted to YARN for execution with
 
 Now that you have a YARN cluster up and running, you can:
 
-- Learn how to code your own YARN jobs with [Apache documentation](hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html)
-- Install Spark on top on your YARN cluster with [Linode Spark guide](to/be/confirmed)
+- Learn how to code your own YARN jobs with [Apache documentation](hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
+- Install Spark on top on your YARN cluster with [Linode Spark guide](to/be/confirmed).
