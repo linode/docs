@@ -2,7 +2,7 @@
 author:
   name: Blago Eres
   email: blagoeres100@gmail.com
-description: 'Install and configure a Ghost 1.0.0 blog on your Linode running Ubuntu 16.04.'
+description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 16.04'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 keywords: 'ghost,install ghost,ghost on linode,configure ghost,deploy ghost on ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,7 +10,8 @@ modified: Tuesday, September 12, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, September 12, 2017'
-title: Create a Professional Blog with Ghost on Ubuntu 16.04
+title: How to Install Ghost CMS on Ubuntu 16.04
+alias: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/']
 contributor:
   name: Blago Eres
   link: https://github.com/blagoeres
@@ -20,7 +21,7 @@ external_resources:
 - '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
 ---
 
-![Create a Professional Blog with Ghost on Ubuntu 16.04](/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png "Create a Professional Blog with Ghost on Ubuntu 16.04")
+![How to Install Ghost CMS on Ubuntu 16.04](/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04")
 
 [Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. 
 
