@@ -3,6 +3,7 @@ author:
   name: Nashruddin Amin
   email: nashruddin.amin@gmail.com
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
+og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
 keywords: 'nightmare.js, node.js, headless browser, automation'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, October 9, 2017'
@@ -12,7 +13,7 @@ modified_by:
 title: 'Use Nightmare.js to Automate Headless Browsing'
 contributor:
   name: Nashruddin Amin
-  link: 'https://github.com/flowfree'
+  link: https://github.com/flowfree
 external_resources:
   - '[Nightmare.js Homepage](http://www.nightmarejs.org/)'
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
