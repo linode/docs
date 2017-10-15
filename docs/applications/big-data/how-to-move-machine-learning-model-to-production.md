@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 title: 'Putting Your Deep Learning Model into Production'
 external_resources:
+- '[Miniconda](https://conda.io/miniconda.html)'
 - '[Keras Documentation](https://keras.io/)'
 - '[Fast AI Deep Learning Course](http://course.fast.ai/)'
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
@@ -26,9 +27,7 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  You should also have Apache installed and configured before beginning this guide. If you do not have Apache on your Linode, complete the first section of our [How to Install a LAMP Stack on Ubuntu 16.04](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) guide.
-
-4.  Update your system:
+3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
@@ -39,27 +38,25 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 You will be using Python both to create a model and to deploy the model to a Flask API. It is a good idea to set up virtual environments for each purpose, so that any changes you make to your Python configuration won't affect the rest of your system.
 
-1.  Install `pip`:
+1.  Download and install Miniconda, a lightweight version of Anaconda. Follow the instructions in the terminal and allow Anaconda to add a PATH location to `.bashrc`.
 
-        sudo apt install python-pip
+        wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+		bash Anaconda3-5.0.0.1-Linux-x86_64.sh
+		source .bashrc
 
-2.  Use `pip` to install `virtualenv` so that you can create a virtual environment:
+2.  Create and activate a new Python virtual environment.
 
-        sudo pip install virtualenv
-
-3.  Create and activate a new virtual environment:
-
-        virtualenv deeplearning
-        source deeplearning/bin/activate
+        conda create -n deeplearning python
+        source activate deeplearning
 
     If these commands are successful, your terminal prompt will now be prefaced by `(deeplearning)`.
 
 4.  Install dependencies inside the virtual environment:
 
-        pip install keras tensorflow h5py
+        conda install keras tensorflow h5py pillow flask numpy
 
 {:.note}
-> The scripts in this guide are written in Python 2.7, but should also work on Python 3. In addition, if you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](ihttps://www.linode.com/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
+> The scripts in this guide are written in Python 3, but should also work on Python 2. In addition, if you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](ihttps://www.linode.com/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
 
 
 ## Prepare a Model
@@ -79,8 +76,16 @@ Keras is a deep learning library for Python. It provides an object-oriented inte
 Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from Elite Data Science's excellent [tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python); if you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the next section of this guide.
 
 {:.note}
-> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `curl -O https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`.
-
+> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5` 
+>
+> Older versions of Keras requires deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from Github, the script below checks and removes optimizer weights.
+>
+>     import h5py
+>     with h5py.File('my_model.h5', 'r+') as f:
+>         if 'optimizer_weights' in f.keys():
+>             del f['optimizer_weights']
+>         f.close()
+>
 
 1.  Create a directory for the model:
 
@@ -96,6 +101,7 @@ Since developing and training a deep learning model is beyond the scope of this 
         from keras.layers import Convolution2D, MaxPooling2D
         from keras.utils import np_utils
         from keras.datasets import mnist
+
 
         (X_train, y_train), (X_test, y_test) = mnist.load_data()
         X_train = X_train.reshape(X_train.shape[0],1,28,28)
@@ -125,11 +131,19 @@ Since developing and training a deep learning model is beyond the scope of this 
                   batch_size=32, nb_epoch=5, verbose=1)
 
         model.save('my_model.h5')
+
         ~~~
 
 3.  Run the script:
 
         python ./mnist_model.py
+
+    There may be a warning message as shown below from a pip or conda installation which means installing from source could offer superior performance.
+
+    {:.output}
+    ~~~
+    The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+    ~~~
 
     If the script executes successfully, you should see the `my_model.h5` file in the `models` directory. The `model.save()` command in Keras allows you to save both the model architecture and the trained weights.
 
@@ -142,23 +156,14 @@ Once a model has been trained, using it to generate predictions is much simpler.
 
         sudo mkdir -p /var/www/FlaskAPI/FlaskAPI && cd /var/www/FlaskAPI/FlaskAPI
 
-2.  Create and activate a new virtual environment:
-
-        sudo virtualenv flaskenv
-        source flaskenv/bin/activate
-
-3.  Install dependencies for the API:
-
-        sudo pip install keras tensorflow h5py pillow numpy flask
-
-4.  Copy the pre-trained model to the root of the Flask app:
+2.  Copy the pre-trained model to the root of the Flask app:
 
         sudo cp ~/models/my_model.h5 /var/www/FlaskAPI/FlaskAPI
 
-5.  Create `/var/www/FlaskAPI/FlaskAPI/__init__.py` in a text editor and add the following content:
+3.  Create `/var/www/FlaskAPI/FlaskAPI/__init__.py` in a text editor and add the following content:
 
     {:.file}
-    /var/www/FlaskAPI/FlaskAPI/__init__.py
+    /var/www/FlaskAPI/FlaskAPI/\__init__.py
     : ~~~
       from flask import Flask, jsonify, request
       import numpy as np
@@ -183,7 +188,7 @@ Once a model has been trained, using it to generate predictions is much simpler.
 
               # Prepare and send the response.
               digit = np.argmax(pred)
-              prediction = {'digit':digit}
+              prediction = {'digit':int(digit)}
               return jsonify(prediction)
 
       if __name__ == "__main__":
@@ -194,19 +199,44 @@ Once a model has been trained, using it to generate predictions is much simpler.
 
     The format of the inputs to the model must be exactly the same as the images used in training. The training images were 28x28 pixel greyscale images, represented as an array of floats with the shape (1,28,28) (color images would have been (3,28,28)). This means that any image you submit to the model must be resized to this exact shape. This preprocessing can be done on either the client-side or server-side, but for simplicity the example api above handles the processing.
 
-## Set Up Virtual Hosting
+## Install mod_wsgi
+Apache modules are typically installed with the system installation of Apache. However, mod_wsgi can be installed within Python in order to use the appropriate virtual environment.
 
-The Apache server should already be running on your Linode. This section will show you how to set up a virtual host on the server for your Flask API.
+1.  Install Apache and development headers
 
-1.  Install the `mod_wsgi` mod for Apache:
+		sudo apt install apache2-dev apache2
 
-        sudo apt install libapache2-mod-wsgi
+2.  Install the `mod_wsgi` as a Python module for Apache.
 
-2.  Enable the mod:
+		wget https://pypi.python.org/packages/aa/43/f851abaad631aee69206e29cebf9f8bf0ddb9c22dbd6e583f1f8f44e6d43/mod_wsgi-4.5.20.tar.gz 
+		tar -xvf mod_wsgi-4.5.20.tar.gz
+		cd mod_wsgi-4.5.20
+		python setup.py install
+
+3.  Use mod_wsgi-express to find out the installation path.
+
+        mod_wsgi-express module-config
+
+    The output should be similar to below.
+
+    {:.output}
+    ~~~
+    LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
+    WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
+    ~~~
+
+4.  Create a `wsgi.load` file under mods-available in Apache. Copy the `LoadModule` directive from above and paste it into the file.
+
+        sudo vi /etc/apache2/mods-available/wsgi.load
+
+5.  Enable the mod:
 
         a2enmod wsgi
 
-3.  Create a `wsgi` file with settings for your app:
+## Set Up Virtual Hosting
+This section will show you how to set up a virtual host on the server for your Flask API.
+
+1.  Create a `flaskapi.wsgi` file with settings for your app:
 
     {:.file}
     /var/www/FlaskAPI/FlaskAPI/flaskapi.wsgi
@@ -218,7 +248,7 @@ The Apache server should already be running on your Linode. This section will sh
        from FlaskAPI import app as application
        ~~~
 
-4.  Configure a virtual host for your app. Create `FlaskAPI.conf` in Apache's `sites-available` directory and add the following content, replacing 'example.com' with your Linode's public IP address:
+2.  Configure a virtual host for your app. Create `FlaskAPI.conf` in Apache's `sites-available` directory and add the following content, replacing 'example.com' with your Linode's public IP address. For the `WSGIDaemonProcess` directive, set the Python home path to the output of `mod_wsgi-express module-config` under `WSGIPythonHome`.
 
     {:.file}
     /etc/apache2/sites-available/FlaskAPI.conf
@@ -229,17 +259,18 @@ The Apache server should already be running on your Linode. This section will sh
         <VirtualHost *:80>
           ServerName example.com
           ServerAdmin admin@example.com
-          WSGIScriptAlias / /var/www/FlaskAPI/flaskapi.wsgi
+          WSGIDaemonProcess flaskapi python-home=/home/linode/miniconda3/envs/deeplearning
+          WSGIScriptAlias / /var/www/FlaskAPI/FlaskAPI/flaskapi.wsgi
           ErrorLog /var/www/html/example.com/logs/error.log
           CustomLog /var/www/html/example.com/logs/access.log combined
         </VirtualHost>
         ~~~
 
-5.  Create a log directory:
+3.  Create a log directory:
 
         sudo mkdir -p /var/www/html/example.com/logs
 
-6.  Activate the new site and restart Apache:
+4.  Activate the new site and restart Apache:
 
         sudo a2dissite 000-default.conf
         sudo a2ensite FlaskAPI.conf
@@ -263,6 +294,8 @@ Your API endpoint should now be ready to accept POST requests with an image atta
     ~~~ txt
     { 'digit' : 7 }
     ~~~
+
+    The first request may appear to take some time because mod_wsgi uses lazy loading of the Flask application.
 
 ## Next Steps
 
