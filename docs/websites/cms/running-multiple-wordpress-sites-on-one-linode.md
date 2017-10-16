@@ -14,9 +14,10 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
+- '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)
 ---
 
-In this guide, you'll learn to how to run multiple WordPress sites on a single Linode running Ubuntu 16.04 using Apache VirtualHosts. WordPress is a popular dynamic content management system that can build anything from blogs to websites to ecommerce stores with the right plugins and setup.
+In this guide, you'll learn to how to run multiple WordPress sites on a single Linode running Ubuntu 16.04 using Apache Virtual Hosts. WordPress is a popular dynamic content management system that can build anything from blogs to websites to ecommerce stores with the right plugins and setup.
 
 For smaller trafficked websites and personal blogs, it's much more economical to host multiple sites on one server.
 
@@ -100,13 +101,13 @@ The following steps are adapted from the **Install WordPress** section from the 
 
 ## Configure Apache
 
-Up until this point, the steps have been fairly straightforward and similar to setting up a single instance of WordPress. This guide will now walk through configuring Apache VirtualHosts so that visiting `example.com` in your browser will show the content served by the code running at `/var/www/html/example.com/public_html` and backed by the MySQL database `example_wordpress`.
+Up until this point, the steps have been fairly straightforward and similar to setting up a single instance of WordPress. This guide will now walk through configuring Apache Virtual Hosts so that visiting `example.com` in your browser will show the content served by the code running at `/var/www/html/example.com/public_html` and backed by the MySQL database `example_wordpress`.
 
 1.  Go to the Apache `sites-available` directory.
 
         cd /etc/apache2/sites-avilable
 
-2.  Create a VirtualHost configuration file using your editor of choice.
+2.  Create a Virtual Host configuration file using your editor of choice.
 
         sudo emacs example.com
 
