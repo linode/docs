@@ -1,5 +1,6 @@
 ---
-author: name: Andrew Miller
+author:
+  name: Andrew Miller
   email: docs@linode.com
 published: 'Friday, June 16, 2017'
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
