@@ -23,6 +23,8 @@ external_resources:
 
 ---
 
+![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](/docs/assets/elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
+
 ## Introduction to Elastic (ELK) Stack
 
 An Elastic Stack, formerly known as an ELK Stack, is a combination of Elasticsearch, Logstash, and Kibana. In this tutorial, you will learn how to install and link together ElasticSearch, Logstash, Kibana, with Wazuh OSSEC to help monitor and visualize security threats to your machine. The resulting structure can be broken down into three core components that work with Wazuh's endpoint security:
