@@ -103,11 +103,11 @@ The following steps are adapted from the **Install WordPress** section from the 
 
 Up until this point, the steps have been fairly straightforward and similar to setting up a single instance of WordPress. This guide will now walk through configuring Apache Virtual Hosts so that visiting `example.com` in your browser will show the content served by the code running at `/var/www/html/example.com/public_html` and backed by the MySQL database `example_wordpress`.
 
-1.  Go to the Apache `sites-available` directory.
+1.  Go to the Apache `sites-available` directory:
 
         cd /etc/apache2/sites-avilable
 
-2.  Create a Virtual Host configuration file using your editor of choice.
+2.  Create a Virtual Host configuration file, replacing `emacs` with the your editor of choice.
 
         sudo emacs example.com
 
@@ -149,7 +149,7 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 5.  Restart Apache to enable the changes:
 
-    sudo service restart apache2
+        sudo service restart apache2
 
 6.  Repeat steps 2 through 5 for each instance of WordPress that you want to run.
 
