@@ -76,10 +76,10 @@ The following steps are adapted from the **Install WordPress** section from the 
 
         mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-3.  Create a directory called `src` under your website's directory to store fresh copies of WordPress's source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
+3.  Create the directory that will host your website and WordPress source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
 
-        sudo mkdir -p /var/www/html/example.com/src/
-        cd /var/www/html/example.com/src/
+        sudo mkdir -p /var/www/html/example.com/
+        cd /var/www/html/example.com/
 
 4.  Set your web server's user, `www-data`, as the owner of your site's home directory:
 
@@ -114,15 +114,19 @@ Up until this point, the steps have been fairly straightforward and similar to s
 3.  Put the following contents in `example.com`:
 
         <VirtualHost *:80>
+          # The primary domain for this host
           ServerName example.com
+          # Optionally have other subdomains also managed by this Virtual Host
           ServerAlias example.com *.example.com
           DocumentRoot /var/www/html/example.com/public_html
 
           <Directory /var/www/html/example.com/public_html>
             Require all granted
+            # Allow local .htaccess to override Apache configuration settings
             AllowOverride all
           </Directory>
 
+          # Enable RewriteEngine
           RewriteEngine on
           RewriteOptions inherit
         
@@ -134,7 +138,7 @@ Up until this point, the steps have been fairly straightforward and similar to s
           RewriteCond %{HTTP_HOST}   !^$
           RewriteRule ^/(.*)         https://www.example.com/$1 [L,R]
 
-          # XSS protection
+          # Recommended: XSS protection
           <IfModule mod_headers.c>
             Header set X-XSS-Protection "1; mode=block"
             Header always append X-Frame-Options SAMEORIGIN
@@ -151,6 +155,6 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
         sudo service restart apache2
 
-6.  Repeat steps 2 through 5 for each instance of WordPress that you want to run.
+6.  Repeat steps 2 through 5 for each WordPress site that you want to run.
 
 Finished!
