@@ -71,7 +71,7 @@ contributor:
 
 2.  Advantages of this setup:
 
-*   Using close to 100% of the total storage space available
+*   Using close to 100% of the storage space available
 *   Fastest write and read speeds
 *   Easily increase pool capacity by adding more drives
 
