@@ -243,6 +243,8 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       smtpd_tls_key_file=/etc/dovecot/private/dovecot.pem
       smtpd_use_tls=yes
       smtpd_tls_auth_only = yes
+      smtp_tls_security_level = may
+      smtpd_tls_security_level = may
 
       #Enabling SMTP for authenticated users, and handing off authentication to Dovecot
       smtpd_sasl_type = dovecot
