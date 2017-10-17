@@ -223,11 +223,11 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
 1.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button. 
 
-    ![guac_settings](/docs/assets/guac_settings.png)
+    ![Guacamole Settings](/docs/assets/guac_settings.png)
 
 2.  Under **Edit Connection**, choose a name otherwise the hostname of the Linode will be the default. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
 
-    ![guac_vnc_config](/docs/assets/guac_vnc_config.png)
+    ![Guacamole VNC Configuration](/docs/assets/guac_vnc_config.png)
 
     The [official documentation](https://guacamole.incubator.apache.org/doc/gug/configuring-guacamole.html#vnc) has detailed descriptions of all paramter names.
 
@@ -235,13 +235,13 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
     **CTRL** + **ALT** + **SHIFT** - Opens menu for clipboard, keyboard/mouse settings, and the navigation menu.
 
-    ![guac_menu](/docs/assets/guac_menu.png)
+    ![Guacamole Drop Down](/docs/assets/guac_menu.png)
 
 4.  Press back on the browser to return to the *Home* menu.
 
 5.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
 
-    ![guac_recent](/docs/assets/guac_recent.png)
+    ![Guacamole Recent Connections](/docs/assets/guac_recent.png)
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are more features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
 
