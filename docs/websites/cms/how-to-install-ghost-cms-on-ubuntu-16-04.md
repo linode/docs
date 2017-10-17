@@ -100,7 +100,7 @@ Install Ghost 1.0.0 using the Ghost-CLI tool.
 
         sudo mkdir -p /var/www/ghost
 
-2. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `exampleuser`:
+2. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample`:
 
         sudo chown ghostexample:ghostexample /var/www/ghost
 
