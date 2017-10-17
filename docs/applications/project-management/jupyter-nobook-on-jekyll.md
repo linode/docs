@@ -5,7 +5,7 @@ author:
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll'
 keywords: 'Jupyter, data, R, python, Jekyll'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, October 16th, 2017
+modified: Tuesday, October 17th, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, October 10th, 2017'
