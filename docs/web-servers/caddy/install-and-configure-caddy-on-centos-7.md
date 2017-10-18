@@ -18,9 +18,10 @@ external_resources:
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-<hr>
 
-[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2, and Caddy's low memory use and easy configuration have made it an increasingly popular alternative to the larger names. Caddy is also the first web server that can automatically obtain and renew SSL/TLS certificates using [Let's Encrypt](https://letsencrypt.org/). 
+---
+
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically. 
 
 ## Before You Begin
 
@@ -34,9 +35,9 @@ external_resources:
 
         sudo yum update
 
-## Installing
+## Install Caddy
 
-1.  Install Caddy using cURL. Since Caddy is written entirely in Go and has no dependencies, this step is simple:
+1.  Install Caddy using cURL: 
 
         sudo curl https://getcaddy.com | bash -s http.minify
 
@@ -50,7 +51,7 @@ external_resources:
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/caddy -g www-data -s /sbin/nologin
-	
+    
 4.  Create a few necessary directories for Caddy's config file, log file, and for automatic TLS support:
 
         sudo mkdir -p /etc/caddy
