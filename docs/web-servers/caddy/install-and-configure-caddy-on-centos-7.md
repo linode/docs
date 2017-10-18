@@ -47,48 +47,48 @@ external_resources:
         sudo chmod 755 /usr/local/bin/caddy
         sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
 
-3.  Create an unprivileged user which will run the Caddy server. This is a more secure practice than running a server as root or a sudo user.
+3.  To highten security, create an unprivileged user that can run the Caddy server.
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/caddy -g www-data -s /sbin/nologin
     
-4.  Create a few necessary directories for Caddy's config file, log file, and for automatic TLS support:
+4.  Create a few necessary directories for Caddy's configuration file, log file, and for the automatic TLS support:
 
         sudo mkdir -p /etc/caddy
         sudo touch /etc/caddy/Caddyfile
         sudo mkdir -p /etc/ssl/caddy
         sudo mkdir -p /var/log/caddy
 
-5. Change the owner of these directories and group:
+5. Change the owner and group of the new directories:
 
         sudo chown -R www-data:www-data /etc/caddy
         sudo chown -R www-data:root /etc/ssl/caddy
         sudo chown -R www-data:www-data /var/log/caddy
 
-## Run Caddy with a systemd Unit
+## Run Caddy as a systemd Unit
 
-This section will show you how to allow Caddy to start automatically whenever your system boots.
+This section will show you how to start Caddy automatically, whenever the Linode boots.
 
-1.  Download the `caddy.service` file and move it to the appropriate directory for systemd:
+1.  Download the `caddy.service` file, and move it to the appropriate directory for systemd:
 
         curl -o /etc/systemd/system/multi-user.target.wants https://raw.githubusercontent.com/mholt/caddy/master/dist/init/linux-systemd/caddy.service
 
-2.  Set appropriate permissions for your Caddyfile:
+2.  Set access permissions for the Caddyfile:
 
         sudo chown www-data:www-data /etc/caddy/Caddyfile
         sudo chmod 444 /etc/caddy/Caddyfile
 
-3.  Set up a home directory ("web root") for your website:
+3.  Set up a home directory, **web root**, for your website:
 
         sudo mkdir -p /var/www/my-website
         sudo chown www-data:www-data /var/www
         sudo chmod 555 /var/www
 
-{:.caution}
->
->The files in your web root must belong to the Caddy user (www-data). Otherwise, your regular user as well as Caddy has read permission on all files to be served and execute permission on all directories.
+    {:.caution}
+    >
+    >The files in your web root directory must belong to the Caddy user (www-data). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
 
-4.  If you plan to deploy your pages via an SFTP client as an administrative user other than www-data or root, set the following permissions. Replace `example_user` with the administrator's username:
+4.  If you plan to deploy your pages via an SFTP client--as an administrative user--other than **www-data** or **root**, set the following permissions. Replace `example_user` with the administrator's username:
 
         sudo usermod -g www-data example_user
         sudo chown -R example_user:www-data /var/www/
@@ -100,9 +100,9 @@ This section will show you how to allow Caddy to start automatically whenever yo
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/my-website/index.html
 
 
-## Configuring Your Caddyfile
+## Configure the Caddyfile
 
-Edit your Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Linode.
+Edit the Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Linode:
 
 {: .file }
 /etc/caddy/Caddyfile
@@ -132,4 +132,4 @@ Edit your Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your L
         sudo systemctl start caddy.service
         sudo systemctl status caddy.service
 
-3.  The `status` command above will show you the url at which Caddy is listening (e.g. `https://203.0.113.0`). Type this into a browser window on your local machine and you should see your test page rendered in the browser. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a green lock symbol in the URL bar, indicating that your connection is secure.
+3.  The `status` command above will show you the url where Caddy is listening (e.g., `https://203.0.113.0`). Type this url into a browser window, on your local machine and you should see the test page rendered in the browser. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a green lock symbol in the URL bar, indicating that your connection is secure.

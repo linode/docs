@@ -15,4 +15,5 @@ categories:
  - nginx
  - lighttpd
  - cherokee
+ - caddy
 ---
