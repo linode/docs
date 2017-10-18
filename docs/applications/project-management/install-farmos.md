@@ -11,7 +11,7 @@ modified_by:
 title: 'Install and Configure FarmOS, an Agricultural Management, Planning and Record-Keeping Web App'
 ---
 
-![Farm_OS Banner](/docs/assets/FarmOS.jpg)
+![Farm_OS Banner](/docs/assets/FarmOS.png)
 
 ## What is FarmOS?
 
