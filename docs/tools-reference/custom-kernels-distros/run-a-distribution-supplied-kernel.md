@@ -1,6 +1,6 @@
 ---
 author:
-  name: Alex Fornuto
+  name: Linode
   email: docs@linode.com
 description: "Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel"
 keywords: 'kvm,custom linux, kernel,custom linode,grub,grub 2'
