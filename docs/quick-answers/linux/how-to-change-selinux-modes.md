@@ -22,7 +22,7 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
 {: .note}
 > To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. If you need help booting the distribution-supplied kernel, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm#recommended-distributions) on the topic.
 
-1.  View the current running state of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.
+1.  View the current enforcement mode of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.
 
         [root@centos ~]# sestatus
         SELinux status:                 enabled
@@ -40,7 +40,7 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
         setenforce 0    # Set to permissive mode.
         setenforce 1    # Set to enforcing mode.
 
-3.  Edit the SELinux configuration file so your state change will survive reboots. The `sed` command below is given as an example, and will switch from permissive to enforcing mode. For a different mode configuration, just substitute the two words in the command with the mode you currently have, and the one you want to enable (ex. disabled to permissive).
+3.  Edit the SELinux configuration file so your mode change will survive reboots. The `sed` command below is given as an example, and will switch from permissive to enforcing mode. For a different mode configuration, just substitute the two words in the command with the mode you currently have, and the one you want to enable (ex. disabled to permissive).
 
         sed -i 's/SELINUX=permissive/SELINUX=enforcing/g' /etc/selinux/config
     
@@ -66,7 +66,7 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
 
     ![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
-5.  When your Linode boots back up, log in and verify that SELinux is now running in the new enforcement state. Run `sestatus` again. The output should show that you're in the state you set in steps 2 and 3 above.
+5.  When your Linode boots back up, log in and verify that SELinux is now running in the new enforcement mode. Run `sestatus` again. The output should show that you're in the mode you set in steps 2 and 3 above.
 
         [root@centos ~]# sestatus
         SELinux status:                 enabled
