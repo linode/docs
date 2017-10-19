@@ -12,8 +12,7 @@ modified_by:
 title: 'How to Use ZFS on Ubuntu 16.04'
 contributor:
   name: Alexandru Andrei
-  link: 
-  external_resources:
+external_resources:
 - '[Ubuntu's Short Article About ZFS](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
 ---
 
@@ -312,15 +311,21 @@ NOTE TO EDITORS: I know that currently block storage is in beta and only availab
 
 2.  The memory used by the Adaptive Replacement Cache shows up as used instead of cached in various utilities such as `free` or `htop`. This can look scary to newcomers, making it seem that the ARC is chewing up RAM, making less available for other utilities. However, the ARC does free up memory when other utilities need it. This allows you to run a ZFS filesystem even with modest RAM. But if you're going to use your Linode as a storage server, a high memory instance is better suited and dedicating more RAM to ZFS will make it much more responsive.
 
-    By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes (e.g. also running database software), on a storage server it's a loss of approximately 20% (or more) RAM that could be put to good use. So follow these instructions only if you're not using your Linode to run other (memory hungry) applications.
+  
+3. By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes (e.g. also running database software), on a storage server it's a loss of approximately 20% (or more) RAM that could be put to good use. So follow these instructions only if you're not using your Linode to run other (memory hungry) applications and you have at least 4GB of RAM.
+  
+The numbers in the file you will create (`zfs.conf`) represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as 7000000000 to reserve approximately 7GB. As a rule of thumb, set **zfs_arc_max** to total memory available on your Linode minus 1GB.  **zfs_arc_min** can be set to 50% of total RAM. Example: if you have 16GB available, zfs_arc_max would be 15000000000 and zfs_arc_min would be 8000000000.
 
-The numbers in the next command represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you can use values such as 7000000000 to reserve approximately 7GB. As a rule of thumb, set zfs_arc_max to total memory available on your Linode minus 1GB.  zfs_arc_min can be set to 50% of total RAM (if more than 2GB is available, at least). Copy the lines in a text editor, change the numbers and then paste all lines at the same time:
+4. Use a text editor to open the `zfs.conf` file:
 
-        cat <<EOF > /etc/modprobe.d/zfs.conf
+        nano /etc/modprobe.d/zfs.conf
+
+4. Paste these lines into the editor and then adjust the two numerical values:
+
         options zfs zfs_arc_min=3221225472
         options zfs zfs_arc_max=6442450944
-        EOF
 
-    Observation: some documentations say that on systems with over 4GB of RAM, ARC will use more than 75% of total memory but this didn't prove to be true on a test system with 8GB of RAM.
+5. Save the file and reboot the machine so the changes can take effect.
 
-    Don't forget to occasionally run `zpool status` and keep an eye on things. You can also `zpool scrub` if you want to but there's already a cron script that does that monthly, in `/etc/cron.d/zfsutils-linux`.
+
+Don't forget to occasionally run `zpool status` and keep an eye on things. You can also `zpool scrub` if you want to but there's already a cron script that does that monthly, in `/etc/cron.d/zfsutils-linux`.
