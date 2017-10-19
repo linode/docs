@@ -2,11 +2,11 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'DESCRIPTION.'
+description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide will explain the basics of the wercker.yml file and demonstrate several basic workflows.'
 keywords: 'wercker,docker,development'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, April 4th, 2017'
-modified: 'Tuesday, April 4th, 2017'
+published: 'Tuesday, October 17th, 2017'
+modified: 'Wednesday, October 18th, 2017'
 modified_by:
   name: Linode
 title: 'How to develop and deploy your applications using Wercker'
@@ -17,9 +17,20 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $300 per published guide.*
-<hr>
 
-Wercker is an automation software that aims to improve the Continuous-Integration and Continuous-Delivery (CI/CD) process of developers and organizations.The main goal of this guide is to highlight Wercker importance as part of DevOps toolchain.
+---
+
+Wercker is a software automation tool that aims to improve the Continuous-Integration and Continuous-Delivery (CI/CD) process of developers and organizations. It enables the creation of automated workflows, or *pipelines*, which specify a series of tasks or commands that are run on your code whenever a change is pushed to the source repository.
+
+This guide will use three example Go apps to demonstrate the basics of Wercker setup and configuration, and show how these can be used to create different kinds of workflows.
+
+## Prerequisites
+
+In order to complete this guide, you will need the following, or equivalent:
+
+  - A Github account (similar procedures should work on Bitbucket or any git variant)
+  - A Docker account (other services might work with minor changes)
+  - Ubuntu 16.04
 
 ## Before You Begin
 
@@ -33,369 +44,409 @@ Wercker is an automation software that aims to improve the Continuous-Integratio
 
         sudo apt update && sudo apt upgrade
 
-4. This guide requires Docker installed in your Linode, for detailed instructions please read [How to Install Docker and pull images for container deployment.](https://www.linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment)
+4. This guide requires Docker installed in your Linode. See our [How to Install Docker and Pull Images for Container Deployment](https://www.linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide for more information.
 
-## Workflow basic assumptions
+## Set Up Demo Applications and Version Control
 
-For pedagogical purposes, this guide will use the most simple developing paradigm:
-* Pull & Push Version Control.
-* Build - Test - Release philosophy.
-
-Some assumptions are being made:
-
-- You have a GitHub account (similar procedures should work on Bitbucket and any git variant).
-- You have a Docker account (other services might work with minor changes).
-- You have `Go` installed and configured locally (you can use any programming language of your choice, but the examples are written in Go).
-- The examples used are very simple, just for learning purposes.
-- Your workstation is running Ubuntu 16.04.
-
-## Setup application version control
-
-Install `git` in your local workstation:
+1.  Install `git` on both your local machine and on your Linode:
 
         sudo apt install git
 
-For the purpose of this guide, you'll need to fork three repositories in GitHub:
+2.  Sign in to Github and fork the following repositories:
 
-* [jClocksGMT](https://github.com/mcmastermind/jClocksGMT) a very basic jQuery collection of digital and analog clocks.
-* [golang/example](https://github.com/golang/example) a minimal set of `Go` examples made by `golang` Project.
-* [Getting Started golang](https://github.com/wercker/getting-started-golang) a sample `Go` application for Wercker.
+    * [jClocksGMT](https://github.com/mcmastermind/jClocksGMT), a very basic jQuery collection of digital and analog clocks.
+    * [golang/example](https://github.com/golang/example), a minimal set of `Go` examples made by `golang` Project.
+    * [Getting Started golang](https://github.com/wercker/getting-started-golang), a sample `Go` application for Wercker.
 
-Clone your forks locally:
+3.  Clone your forks on your local machine:
 
         git clone https://github.com/<GITHUB_USER>/jClocksGMT.git
         git clone https://github.com/<GITHUB_USER>/example.git
         git clone https://github.com/<GITHUB_USER>/getting-started-golang.git
 
-That's it, all examples are set for versioning.
 
-{: .note}
->
->You will need `Go` properly registered in the $PATH, for simplification purposes directory structure conventions are not being used.
+4.  Install Go on your system and make sure it is in your $PATH:
 
-## Setting-up Wercker account
+        sudo apt install golang-go
+        go version
 
-Next step is to Sign Up a free Wercker account.
+## Set Up a Wercker Account
 
-![Wercker Main Page](/docs/assets/wercker-main.png)
+1.  In a web browser, navigate to the [Wercker main page](http://www.wercker.com/) and sign up for a free account.
 
-The easiest way to register is using your GitHub account.
+    ![Wercker Main Page](/docs/assets/wercker-main.png)
 
-![Wercker Registration](/docs/assets/wercker-registration.png)
+2.  The easiest way to register is using your GitHub account.
 
-Once finished the Wercker Dashboard will show up. Now you are ready to start creating your applications, but before jumping into that first you will need to properly configure each one.
+    ![Wercker Registration](/docs/assets/wercker-registration.png)
 
 ## Configuring wercker.yml
 
-One of the main advantages of Wercker is its simplicity. You only need one configuration file: `wercker.yml`. That file describes your automation **pipelines** through one or more **steps**. You can think of steps as the "call to action processes" and pipelines as the collection of one or more steps.
+One of the advantages of Wercker is its simplicity. You only need one configuration file: `wercker.yml`. This file describes your automation pipelines through one or more steps. You can think of steps as calls to action processes and pipelines as collections of one or more steps.
 
-### jClocksGMT example
+### jClocksGMT Example
 
-Create your `wercker.yml` file in the root of `jClocksGMT` example:
+This example will demonstrate using Wercker to update the source code on a remote server whenever the repository on Github is updated. This is a common use case for static web sites: whenever you push to Github from your local machine, the code on the server where the site is hosted will automatically be updated as well.
+
+1.  Create a `wercker.yml` file in the root of the `jClocksGMT` directory and paste in the content below. Replace `192.0.2.0` with the public IP address of your Linode, and update the last line to use the correct username and file path.
 
 {: .file}
 /path/to/jClocksGMT/wercker.yml
 :   ~~~ yml
-box: debian
-# Build definition
-build:
-  # The steps that will be executed on build
-  steps:
-    # Installs openssh client and server.
-    - install-packages:
-        packages: openssh-client openssh-server
-    # Adds Linode server to the list of known hosts.
-    - add-to-known_hosts:
-            hostname: 45.79.208.239
-            local: true
-    # Adds the Wercker SSH key.
-    - add-ssh-key:
-            keyname: linode    
-    # Custom code to be executed on remote Linode
-    - script:
-        name: Update code on remote Linode
-        code: |
-          ssh root@<Linode IP or hostname> git -C ~/jClocksGMT pull
-~~~
+    box: debian
+    # Build definition
+    build:
+      # The steps that will be executed on build
+      steps:
+        # Installs openssh client and server.
+        - install-packages:
+            packages: openssh-client openssh-server
+        # Adds Linode server to the list of known hosts.
+        - add-to-known_hosts:
+                hostname: 192.0.2.0
+                local: true
+        # Adds the Wercker SSH key.
+        - add-ssh-key:
+                keyname: linode
+        # Custom code to be executed on remote Linode
+        - script:
+            name: Update code on remote Linode
+            code: |
+              ssh username@<Linode IP or hostname> git -C /path/to/jClocksGMT pull
+    ~~~
 
-`box`: Defines the Docker image to be used. In this case a global "debian" image is called.
-`install-packages`: this step is a shortcut to `apt-get install`, all packages listed will be installed in your container.
-`add-to-known_hosts`: this is a self-explanatory step that add our Linode IP or Domain to the known hosts file.
-`add-ssh-key`: this step adds the Wercker generated Public SSH key to your container.
-`script`: scripts are custom steps that can execute almost any command, in this case on your remote Linode.
+{:.caution}
+> Make sure that you do not use any tabs inside your `wercker.yml` file; all indentention must be done with spaces.
 
-If you study the file will notice that is very easy to understand each action:
+Whenever a Wercker run is triggered (by a push to the repository), Wercker will load a Docker image and run the steps specified from that image. This is why all commands to be run on your Linode are prefaced with an `ssh` command. In this case, the `wercker.yml` file contains the following steps:
+
+- `box`: Defines the Docker image to be used. In this case a global Debian image is specified.
+- `install-packages`: this step is a shortcut to `apt-get install`. All packages listed will be installed in your container.
+- `add-to-known_hosts`: this is a self-explanatory step that adds the Linode IP or domain name to the known hosts file.
+- `add-ssh-key`: this step adds the Wercker generated Public SSH key to your container.
+- `script`: scripts are custom steps that can execute almost any command, in this case on your remote Linode.
+
+Put together, Wercker will do the following every time it is run:
 
 1. A Debian image is loaded in the container.
 2. The necessary packages `openssh-client` and `openssh-server` are installed.
-3. The SSH connection between the Wercker container and your Linode is setup.
-4. Now the Debian container runs a `git pull` command on your remote Linode.
+3. The SSH connection between the Wercker container and your Linode is set up.
+4. The Debian container runs a `git pull` command from your remote Linode.
 
-In other words, the `build` pipeline updates your remote Linode repository where the project resides. For simplicity the repository is located in the `home` directory.
+In other words, the `build` pipeline updates the remote repository on your Linode.
 
-### Hello example
+### Hello.go Example
 
-Go to the root folder of your `example` fork and copy the `hello.go` file there:
+This example demonstrates a more complicated pipeline with both `build` and `deploy` pipelines. This time, Wercker will build a simple Go application and deploy it to DockerHub, then deploy the image from DockerHub to your remote Linode.
+
+1.  Go to the root folder of your `example` fork and copy the `hello.go` file there:
 
         cp ./hello/hello.go .
 
-Next create the `wercker.yml` file on the same root folder:
+2.  Create the `wercker.yml` file on the same root folder:
 
-{: .file}
-/path/to/example/wercker.yml
-:   ~~~ yml
-box: google/golang
+  {: .file}
+  /path/to/example/wercker.yml
+  :   ~~~ yml
+      box: google/golang
 
-build:
+      build:
 
-    steps:
-    # Sets the go workspace and places you package
-    # at the right place in the workspace tree
-    - setup-go-workspace
+          steps:
+          # Sets the go workspace and places you package
+          # at the right place in the workspace tree
+          - setup-go-workspace
 
-    # Build the project
-    - script:
-        name: Build application
-        code: |
-            go get github.com/<user>/example
-            go build -o myapp
+          # Build the project
+          - script:
+              name: Build application
+              code: |
+                  go get github.com/<user>/example
+                  go build -o myapp
 
-    - script:
-        name: Copy binary
-        code: |
-          cp myapp "$WERCKER_OUTPUT_DIR"
+          - script:
+              name: Copy binary
+              code: |
+                cp myapp "$WERCKER_OUTPUT_DIR"
 
-### Docker Deployment
-deploy:
+      ### Docker Deployment
+      deploy:
 
-    #This deploys to DockerHub
-    steps:
-    - internal/docker-scratch-push:
-        username: $DOCKER_USERNAME
-        password: $DOCKER_PASSWORD
-        repository: <docker-username>/myapp
+          #This deploys to DockerHub
+          steps:
+          - internal/docker-scratch-push:
+              username: $DOCKER_USERNAME
+              password: $DOCKER_PASSWORD
+              repository: <docker-username>/myapp
+              cmd: ./myapp
 
-### Linode Deployment from Docker
-linode:
+      ### Linode Deployment from Docker
+      linode:
 
-    steps:
-    # Installs openssh client and other dependencies.
-    - install-packages:
-        packages: openssh-client openssh-server
-    # Adds Linode server to the list of known hosts.
-    - add-to-known_hosts:
-        hostname: 45.79.217.99
-        local: true
-    # Adds SSH key created by Wercker
-    - add-ssh-key:
-        keyname: linode
-    # Custom code to pull image
-    - script:
-        name: pull latest image
-        code: |
-            ssh root@45.79.217.99 docker rmi -f <docker-username>/myapp:current
-            ssh root@45.79.217.99 docker pull <docker-username>/myapp:latest          
-            ssh root@45.79.217.99 docker tag <docker-username>/myapp:latest damasosanoja/myapp:current
-            ssh root@45.79.217.99 docker rmi <docker-username>/myapp:latest
-            ~~~
+          steps:
+          # Installs openssh client and other dependencies.
+          - install-packages:
+              packages: openssh-client openssh-server
+          # Adds Linode server to the list of known hosts.
+          - add-to-known_hosts:
+              hostname: 192.0.2.0
+              local: true
+          # Adds SSH key created by Wercker
+          - add-ssh-key:
+              keyname: linode
+          # Custom code to pull image
+          - script:
+              name: pull latest image
+              code: |
+                  ssh username@192.0.2.0 docker pull <docker-username>/myapp:latest
+                  ssh username@192.0.2.0 docker tag <docker-username>/myapp:latest <docker-username>/myapp:current
+                  ssh username@192.0.2.0 docker rmi <docker-username>/myapp:latest
+      ~~~
 
-This configuration file is more complex than the last one. As you can notice there are three pipelines:
+This configuration file is more complex than the last one. There are three pipelines:
 
-1. `build`: the obligatory pipeline that is used in this case to build your application. Since this second example uses a `Go` language the most convenient `box` is the official `google/golang` that comes with all necessary toolbox configured. The steps performed by this pipeline are:
+1. `build`: the obligatory pipeline that is used in this case to build your application. Since this second example uses a `Go` language the most convenient `box` is the official `google/golang` that comes with the necessary tools configured. The steps performed by this pipeline are:
 - `setup-go-workspace`: prepares your `Go` environment.
 - `Build application`: runs the actual building process for your sample application named `myapp`. The application is saved in the corresponding workspace.
-- `Copy binary`: remember that you are working on a temporally pipeline, this step saves your application binary as a predefined environmental variable called `$WERCKER_OUTPUT_DIR` that way you can use it on the next pipeline.
+- `Copy binary`: remember that you are working on a temporary pipeline, this step saves your application binary as a predefined environmental variable called `$WERCKER_OUTPUT_DIR` so that it is available for use in the next pipeline.
 
 2. `deploy`: this pipeline will take your binary from `$WERCKER_OUTPUT_DIR` and then push it to your Docker account.
 - `internal/docker-scratch-push`: this special step makes all the magic, using the environmental variables `$DOCKER_USERNAME` and `$DOCKER_PASSWORD` saves your binary to a light-weight `scratch` image. The `repository` parameter specifies the desired Docker repository to use.
 
 3. `linode`: the fist three steps, `install-packages`, `add-to-known_hosts` and `add-ssh-key` were explained in the previous example, they are responsible for the SSH communication between your pipeline's container and your Linode. The custom script `pull latest image` is actually more interesting to analyze:
-- The first line remotely erases your previous image tagged "current".
 - Second line pulls (from Docker Hub) your most recent image build. By default this image is tagged "latest" unless specified otherwise.
 - Third line clones your latest image and tag it "current".
 - Four line removes the pulled image tagged "latest" in preparation for your next update.
 That is one simple way to have a "current" application running all the time. Remember this is only an example you can define your own process.
 
-What this second example does is "Dockerize" your application and then save it on your Linode.
-
 {: .note}
 >
 >This example uses a very basic application, remember that statically building your application could be needed in real life production.
 
-### Getting Started golang example
+### Getting Started golang Example
 
-The last example will introduce you a special development tool called **The Wercker CLI**. This this tool requires the local installation of Docker, you can use the same guide as for your Linode [here](https://www.linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) but also requires the "Docker-machine" that can be installed using the following command:
+The last example will introduce the **Wercker CLI**. This tool requires that Docker be installed on your local machine. You can use the same guide as for your Linode [here](https://www.linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment)
+
+1.  Install Docker Machine:
 
         curl -L https://github.com/docker/machine/releases/download/v0.12.2/docker-machine-`uname -s`-`uname -m` >/tmp/docker-machine && chmod +x /tmp/docker-machine && sudo cp /tmp/docker-machine /usr/local/bin/docker-machine
 
-Now go to your fork root directory:
+2.  Install the Wercker CLI:
+
+        sudo curl -L https://s3.amazonaws.com/downloads.wercker.com/cli/stable/linux_amd64/wercker -o /usr/local/bin/wercker
+        sudo chmod 777 /usr/local/bin/wercker
+
+3.  Check that the CLI is correctly installed:
+
+        wercker version
+
+4.  If the above command fails, you may also need to add `/usr/local/bin` to your `$PATH` variable:
+
+        echo 'PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
+
+5.  Navigate to your fork root directory:
 
         cd /path/of/your/getting-started-golang
 
-You will notice that a `wercker.yml` file is already present:
+  A `wercker.yml` file should already be present:
 
-{: .file}
-/path/to/getting-started-golang/wercker.yml
-:   ~~~ yml
-box:
-id: golang
-ports:
-  - "5000"
+  {: .file}
+  /path/to/getting-started-golang/wercker.yml
+  :   ~~~ yml
+      box:
+      id: golang
+      ports:
+          - "5000"
 
-dev:
-steps:
-  - internal/watch:
-      code: |
-        go build ./...
-        ./source
-      reload: true
+      dev:
+      steps:
+      - internal/watch:
+          code: |
+            go build ./...
+            ./source
+          reload: true
 
-# Build definition
-build:
-# The steps that will be executed on build
-steps:
+      # Build definition
+      build:
+          # The steps that will be executed on build
+          steps:
 
-  # golint step!
-  - wercker/golint
-  ~~~
+          # golint step
+              - wercker/golint
 
-Only two pipelines are present: `dev` and `build`. Please notice that in this example the port 5000 is exposed.
+          # Build the project
+              - script:
+                  name: go build
+                  code: |
+                    go build ./...
 
-`dev`: this is an special type of pipeline, that can only be used locally, and serves the purpose of application testing.
-- `internal/watch` this step is watching for source code changes, and if any occurs then builds your application again (reload: true). This is very useful for debugging processes.
-- `build`: this was usually your first step for building your application. But now you can use it to check your code for any errors during the `build` step (wercker/golint).
+      # Test the project
+      - script:
+          name: go test
+          code: |
+            go test ./...
+      ~~~
 
-The resulting application `getting-started-golang` will serve a basic web page on port 5000 listing five cities. We'll return to this shortly.
 
-Up to this point you have three different projects configured for automation. Now is time to start checking the true power of Wercker.
+  Only two pipelines are defined in this `yml` file: `dev` and `build`. Note that in this example port 5000 is exposed.
 
+  - `dev`: this is an special type of pipeline, that can only be used locally, and serves the purpose of application testing.
+  - `internal/watch` this step is watching for source code changes, and if any occurs then builds your application again (reload: true). This is very useful for debugging processes.
+  - `build`: this was usually your first step for building your application. But now you can use it to check your code for any errors during the `build` step (wercker/golint).
 
 ## Adding your applications to Wercker
 
-As the name implies, Wercker applications correspond to each of your projects. Because of its versioning scheme, you can think of each application as a specific working repository. Let's register your three forked repositories, first click in the "plus" button upper right:
+As the name implies, Wercker applications correspond to each of your projects. Because of its versioning scheme, you can think of each application as a specific working repository.
 
-![Application creation](/docs/assets/wercker-app-button.jpg)
+1.  Register the three forked repositories. Click the "plus" button in the upper right:
 
-Now select the first example repository: <GITHUB_USER>/jClocksGMT, and click the button.
+  ![Application creation](/docs/assets/wercker-app-button.jpg)
 
-![Choose repository](/docs/assets/wercker-choose-repository.png)
+2.  Select the first example repository: <GITHUB_USER>/jClocksGMT, and click the button.
 
-The next step is to configure the access to your repository, for most cases the recommended option is the best unless you use submodules.
+  ![Choose repository](/docs/assets/wercker-choose-repository.png)
 
-![Configure access](/docs/assets/wercker-conf-access.jpg)
+3.  Configure access to your repository. If the project doesn't use submodules, the recommended option is usually the best choice.
 
-Finally you can choose if your application is private (default) or public. Mark the example as public and click the Finish button.
+  ![Configure access](/docs/assets/wercker-conf-access.jpg)
 
-A greeting message indicates you are almost ready to start building your application and offers the option to start a wizard to help you create the application `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
+4.  Choose whether your application should be private (default) or public. Mark the example as public and click the Finish button.
 
-![YML Wizard](/docs/assets/wercker-yml-wizard.jpg)
+  A greeting message indicates you are almost ready to start building your application and offers the option to start a wizard to help you create the application `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
 
-Repeat the same procedure for the other two example projects.
+  ![YML Wizard](/docs/assets/wercker-yml-wizard.jpg)
 
-### Setting-up your application in Wercker
+5.  Repeat the same procedure for the other two example projects.
 
-If you remember your configuration files, you have several environmental variables to setup. For the first example you need a SSH key pair for communication with your Linode. Click on the "Environment" tab:
+### Configure Applications
 
-![jClocksGMT variables](/docs/assets/wercker-global-environment-variables.jpg)
+#### jClocks Example
+If you remember your configuration files, you have several environmental variables to setup.
 
-Now click on "Generate SSH Keys", a pop-up window will appear asking for a key name (you need to use the same name present on your `wercker.yml` file: "linode") it also asks for RSA encryption level, choose 4096 bit:
+1.  For the first example you need a SSH key pair for communication with your Linode. Click on the "Environment" tab:
+
+  ![jClocksGMT variables](/docs/assets/wercker-global-environment-variables.jpg)
+
+2.  Click on "Generate SSH Keys". A pop-up window will appear asking for a key name (you need to use the same name used in your `wercker.yml` file: "linode"). Choose 4096 bit encryption:
 
 ![jClocksGMT SSH Keys](/docs/assets/wercker-ssh-key-creation.jpg)
 
-That's it, you generated a key pair: `linode_PUBLIC` and `linode_PRIVATE`. The suffix is automatically added and is not needed in the configuration file. Now it's time to copy the Public key into your Linode. There're several ways to do it but for this guide we'll save it locally (for convenience) and then copy it to your remote server:
+  This will generate a key pair: `linode_PUBLIC` and `linode_PRIVATE`. The suffix is automatically added and is not needed in the configuration file.
+
+3.  Copy the `linode_PUBLIC` key into your Linode. If your terminal application supports copy and paste, you can use CTL-C and CTL-V to copy the text from the Wercker dashboard into `~/.ssh/authorized_keys` on your Linode. If not, you can copy the key to your local machine and copy it from there to your remote server:
 
         cat ~/.ssh/jclock.pub | ssh root@<Linode IP or hostname> "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
-{: .note}
->
->Environmental variables created in this section are available within all pipelines, they are global.
-
-Your first example is ready to be deployed, the application is configured on Wercker and your local repository contains the `wercker.yml` file explaining the steps to be executed. To trigger the automation you just need to commit your changes and watch then working on Wercker's Runs tab. From your jClocksGMT root run the command:
+4.  Your first example is ready to be deployed: the application is configured on Wercker and your local repository contains the `wercker.yml` file explaining the steps to be executed. To trigger the automation you just need to commit your changes and watch then working on Wercker's **Runs** tab. Run the following command from the root of the jClocksGMT fork:
 
         git add . && git commit -m "initial commit" && git push origin master
 
-An animation will show each step progress, allowing you to debug any problem. On purpose a critical error was triggered:
+5.  An animation will show each step's progress, allowing you to debug any problems. In this case, the build will fail:
 
-![jClocksGMT build error](/docs/assets/wercker-jclocks-error-01.jpg)
+  ![jClocksGMT build error](/docs/assets/wercker-jclocks-error-01.jpg)
 
-The hint says "Update code on remote Linode failed" click on the build pipeline for more information:
+  The hint says "Update code on remote Linode failed." Click on the build pipeline for more information:
 
-![jClocksGMT build error](/docs/assets/wercker-jclocks-error-02.jpg)
+  ![jClocksGMT build error](/docs/assets/wercker-jclocks-error-02.jpg)
 
-As you can see everything went perfect until the step "Update code on remote Linode" this is due to the fact the repository was not cloned on the remote Linode on first place. Correct the inconvenient cloning your repository to appropriate location. There is no need to make another commit on the same screen click the "Retry" button:
+6. This shows that the process failed at the step "Update code on remote Linode." This is due to the fact the repository was not cloned on the remote Linode in the first place. Connect to your Linode and clone the repository in the appropriate location, then return to the Wercker dashboard and click the "Retry" button:
 
-![jClocksGMT build error](/docs/assets/wercker-jclocks-retry.jpg)
+  ![jClocksGMT build error](/docs/assets/wercker-jclocks-retry.jpg)
 
-And now your remote Linode repository is updated. This basic example can be useful for many scenarios. If you are hosting a static website you can configure Wercker for updating your remote server each time you commit a change (an article) taking from you the manual work of doing so.
+  This time the run should succeed, and your remote Linode repository will be updated. This basic example can be useful for many scenarios. If you are hosting a static website you can configure Wercker for updating your remote server each time you commit a change (an article) taking from you the manual work of doing so.
 
-Moving on to our next example go to "example" application. Click on "Workflows" tab. The Editor will show a single pipeline `build` created automatically by Wercker and nothing else. It's time to create the rest of your pipelines, click on "Add new pipeline" button:
+#### Hello.go Example
 
-![Add pipeline](/docs/assets/wercker-add-pipeline.jpg)
+Click on "Workflows" tab in the Wercker dashboard. The editor will show a single pipeline, `build`, created automatically by Wercker. This example requires additional pipelines which you will have to create manually.
 
-Fill in the fields as follows:
+1. Click on the "Add new pipeline" button:
 
-- Name: you can use any name to describe your pipeline, for this example `deploy-docker` and `deploy-linode` will be used.
-- YML Pipeline name: is the name declared in the `wercker.yml` file. You need to fill in with `deploy` and `linode` respectively.
-- Hook type: we will use the default behavior which is to "chain" this pipeline to another. You can select "Git push" when you want to run different pipelines in parallel each time a push is commited.
+    ![Add pipeline](/docs/assets/wercker-add-pipeline.jpg)
 
-Once you configure your pipelines you can start chaining them. Click on the "Plus button" right of `build` pipeline:
+2.  Fill in the fields as follows:
 
-![Chain pipeline](/docs/assets/wercker-chain-pipeline.jpg)
+    - Name: You can use any name to describe your pipeline, for this example `deploy-docker` and `deploy-linode` will be used.
+    - YML Pipeline name: This is the name declared in the `wercker.yml` file. You need to fill in with `deploy` and `linode` respectively.
+    - Hook type: We will use the default behavior which is to "chain" this pipeline to another. You can select "Git push" when you want to run different pipelines in parallel each time a push is commited.
 
-You have the option to define an specific branch (or branches) to trigger the pipeline. By default Wercker will monitor all branches and start executing the steps if any commit is made, this is the case for our example. Select `deploy-docker` in the drop-down list and then click Add. Repeat this procedure to chain `deploy-linode` after this pipeline. The end result will look similar to this:
+3.  Once you configure your pipelines you can start chaining them. Click on the "Plus button" to the right of the `build` pipeline:
 
-![Workflow screen](/docs/assets/wercker-workflow-01.jpg)
+    ![Chain pipeline](/docs/assets/wercker-chain-pipeline.jpg)
 
-Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. Still on Workflows tab click on `deploy-docker` pipeline at the botton of the screen. Here you can create the variables. From the configuration file, this pipeline uses two variables: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. Create them and don't forget to mark the password as "protected". Now head to `deploy-linode` pipeline and create the SSH key pair similar to the last example. Remember to copy the Public key to your remote server as well.
+    You have the option to define an specific branch (or branches) to trigger the pipeline. By default Wercker will monitor all branches and start executing the steps if any commit is made, this is the case for our example. Select `deploy-docker` in the drop-down list and then click Add.
 
-Everything is set. Test your workflow by committing `wercker.yml` file, from your local fork root directory run:
+4.  Repeat this procedure to chain `deploy-linode` after this pipeline. The end result will look similar to this:
+
+    ![Workflow screen](/docs/assets/wercker-workflow-01.jpg)
+
+5.  Next you need to define the environmental variables, but this time you will do it inside each pipeline and not globally. Still on Workflows tab click on `deploy-docker` pipeline at the botton of the screen. Here you can create the variables. There are two variables from this example's `wercker.yml` that must be defined here: `DOCKER_USERNAME` and `DOCKER_PASSWORD`. Create them and don't forget to mark the password as "protected".
+
+6.  Select the `deploy-linode` pipeline and create an SSH key pair, similar to the last example. Remember to copy the Public key to your remote server.
+
+7.  Everything is set. Test your workflow by committing to your local fork:
 
         git add . && git commit -m "initial commit" && git push origin master
 
-You will end up with a result similar to:
+    You will end up with a result similar to:
 
-![example workflow](/docs/assets/wercker-example-final.jpg)
+    ![example workflow](/docs/assets/wercker-example-final.jpg)
 
-You can test your application on the remote server by login remotely and run `docker images`:
+8.  Test your application on the remote server by logging in remotely and running `docker images`:
 
-![Docker images](/docs/assets/wercker-hello-images.jpg)
+    ![Docker images](/docs/assets/wercker-hello-images.jpg)
 
-Notice that only "current" is present, now run the application with the command:
+    Only an image tagged "current" is present.
+
+9.  Run the application with the command:
 
         docker run <docker-username>/myapp:current
 
-If you want to test your automation a bit further, edit your `hello.go` inside the `/example` folder. Add some text to the message (remember is reversed). Commit your changes and wait for the process to end. Run again your application, you should see the modified message:
+10. If you want to test your automation a bit further, edit your `hello.go` inside the `/example` folder. Add some text to the message (remember is reversed). Commit your changes and wait for the Wercker automation to run.
 
-![Changed text](/docs/assets/wercker-hello-run-02.jpg)
+11. Run your application again. You should see the modified message:
 
-As you can see is working as expected. The final example involves the Wercker CLI. Head to the root directory of `getting-started-golang` fork. Once there run the following command:
+  ![Changed text](/docs/assets/wercker-hello-run-02.jpg)
+
+#### Wercker CLI Example
+
+The final example demonstrates the Wercker CLI.
+
+1.  Navigate to the root directory of the `getting-started-golang` fork.
+
+2.  Run the following command to start Wercker:
 
         wercker build
 
-![Wercker CLI build](/docs/assets/wercker-cli-build.jpg)
+  ![Wercker CLI build](/docs/assets/wercker-cli-build.jpg)
 
-The difference now is that you can check each step locally and detect any error early in the process. The Wercler CLI replicates the SaaS behavior, it downloads specified images, build, test and shows errors. The only limitation is the ability to deploy the end result, but remember this is a Development tool intended for local testing. Let's try to build our application:
+  The output should be similar to the logs you previously were able to view on the Wercker dashboard. The difference now is that you can check each step locally and detect any errors early in the process. The Wercler CLI replicates the SaaS behavior: it downloads specified images, builds, tests and shows errors. Since the CLI is a development tool intended to facilitate local testing, you will be unable to deploy the end result remotely.
+
+3.  Build the application with Go:
 
         go build
 
-The application `getting-started-golang` is built in the root directory. Run the program:
+  The application `getting-started-golang` is built in the root directory.
+
+4.  Run the program:
 
         ./getting-started-golang
 
-Head to `localhost:5000/cities.json` in your browser, you should see:
+5. Navigate to `localhost:5000/cities.json` in your browser. You should see a list of cities displayed:
 
-![Cities JSON](/docs/assets/wercker-cities-JSON.png)
+ ![Cities JSON](/docs/assets/wercker-cities-JSON.png)
 
-Now open another terminal and run the command:
+6.  Open another terminal and run the command:
 
         wercker dev
 
-![Wercker Dev](/docs/assets/wercker-dev.jpg)
+  ![Wercker Dev](/docs/assets/wercker-dev.jpg)
 
-That just triggered the auto-build function present in the `dev` pipeline. If you make any change to the `main.go` file and reload your browser you will see those changes updated instantly, without building again your application.
+  This command starts the auto-build function in the `dev` pipeline. If you make any change to the `main.go` file and reload your browser you will see those changes updated instantly, without rebuilding your application.
 
-From a developer point of view there are infinite possibilities to play with using Wercker:
+## Next Steps
 
-* You can specify "local boxes", meaning you can use specialized images depending on your pipeline goals. Docker hub has many images ready to use for this matter.
-* You are not limited to use "chained" workflows, you can start pipelines in parallel (as many as needed) and chain only when necessary. This is useful if you need to build a complex application that consumes a lot of time to compile. You can start the compilation pipeline early in parallel with other tasks or better yet you can divide your application into several pipelines to reduce the time of each process and isolate problems.
+From a developer's point of view, there are infinite possibilities to play with when using Wercker:
+
+* You can specify "local boxes", meaning you can use specialized images depending on your pipeline goals. DockerHub has many images ready to use for this purpose.
+* You are not limited to "chained" workflows; you can start pipelines in parallel (as many as needed) and chain only when necessary. This is useful if you need to build a complex application that takes a long time to compile. You can start the compilation pipeline early in parallel with other tasks or better yet you can divide your application into several pipelines to reduce the time of each process and isolate problems.
 * Wercker is language agnostic, process agnostic and platform agnostic. Your imagination is the limit for the possible uses of the Wercker tool.
