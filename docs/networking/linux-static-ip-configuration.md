@@ -303,7 +303,7 @@ Networking in Gentoo uses the `netifrc` utility. Addresses are specified in the 
 
 ### Ubuntu
 
-Applies to 14.04, 16.04 and 17.10. See further above for 17.10. Add the following to the interface's configuration file:
+Applies to 14.04, 16.04 and 17.04. [See above](/docs/networking/linux-static-ip-configuration#arch--coreos-container-linux--ubuntu-1710_) for 17.10. Add the following to the interface's configuration file:
 
 {: .file-excerpt }
 /etc/network/interfaces
