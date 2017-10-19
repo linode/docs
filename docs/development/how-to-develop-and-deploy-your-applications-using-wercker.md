@@ -106,7 +106,7 @@ build:
         packages: openssh-client openssh-server
     # Adds Linode server to the list of known hosts.
     - add-to-known_hosts:
-            hostname: 45.79.208.239
+            hostname: LINODE_IP_OR_HOSTNAME
             local: true
     # Adds the Wercker SSH key.
     - add-ssh-key:
@@ -115,7 +115,7 @@ build:
     - script:
         name: Update code on remote Linode
         code: |
-          ssh root@<Linode IP or hostname> git -C ~/jClocksGMT pull
+          ssh root@<LINODE_IP_OR_HOSTNAME> git -C ~/jClocksGMT pull
 ~~~
 
 `box`: Defines the Docker image to be used. In this case a global "debian" image is called.
@@ -157,7 +157,7 @@ build:
     - script:
         name: Build application
         code: |
-            go get github.com/<user>/example
+            go get github.com/<GITHUB_USER>/example
             go build -o myapp
 
     - script:
@@ -173,7 +173,8 @@ deploy:
     - internal/docker-scratch-push:
         username: $DOCKER_USERNAME
         password: $DOCKER_PASSWORD
-        repository: <docker-username>/myapp
+        repository: <DOCKER_USER>/myapp
+        cmd: ./myapp
 
 ### Linode Deployment from Docker
 linode:
@@ -184,7 +185,7 @@ linode:
         packages: openssh-client openssh-server
     # Adds Linode server to the list of known hosts.
     - add-to-known_hosts:
-        hostname: 45.79.217.99
+        hostname: <LINODE_IP_OR_HOSTNAME>
         local: true
     # Adds SSH key created by Wercker
     - add-ssh-key:
@@ -193,10 +194,9 @@ linode:
     - script:
         name: pull latest image
         code: |
-            ssh root@45.79.217.99 docker rmi -f <docker-username>/myapp:current
-            ssh root@45.79.217.99 docker pull <docker-username>/myapp:latest          
-            ssh root@45.79.217.99 docker tag <docker-username>/myapp:latest damasosanoja/myapp:current
-            ssh root@45.79.217.99 docker rmi <docker-username>/myapp:latest
+            ssh root@<LINODE_IP_OR_HOSTNAME> docker pull <DOCKER_USER>/myapp:latest          
+            ssh root@<LINODE_IP_OR_HOSTNAME> docker tag <DOCKER_USER>/myapp:latest damasosanoja/myapp:current
+            ssh root@<LINODE_IP_OR_HOSTNAME> docker rmi -f <DOCKER_USER>/myapp:latest
             ~~~
 
 This configuration file is more complex than the last one. As you can notice there are three pipelines:
@@ -204,16 +204,15 @@ This configuration file is more complex than the last one. As you can notice the
 1. `build`: the obligatory pipeline that is used in this case to build your application. Since this second example uses a `Go` language the most convenient `box` is the official `google/golang` that comes with all necessary toolbox configured. The steps performed by this pipeline are:
 - `setup-go-workspace`: prepares your `Go` environment.
 - `Build application`: runs the actual building process for your sample application named `myapp`. The application is saved in the corresponding workspace.
-- `Copy binary`: remember that you are working on a temporally pipeline, this step saves your application binary as a predefined environmental variable called `$WERCKER_OUTPUT_DIR` that way you can use it on the next pipeline.
+- `Copy binary`: remember that you are working on a temporally pipeline, this step saves your application binary in a special directory using a predefined environmental variable called `$WERCKER_OUTPUT_DIR` that way you can use it on the next pipeline.
 
 2. `deploy`: this pipeline will take your binary from `$WERCKER_OUTPUT_DIR` and then push it to your Docker account.
 - `internal/docker-scratch-push`: this special step makes all the magic, using the environmental variables `$DOCKER_USERNAME` and `$DOCKER_PASSWORD` saves your binary to a light-weight `scratch` image. The `repository` parameter specifies the desired Docker repository to use.
 
 3. `linode`: the fist three steps, `install-packages`, `add-to-known_hosts` and `add-ssh-key` were explained in the previous example, they are responsible for the SSH communication between your pipeline's container and your Linode. The custom script `pull latest image` is actually more interesting to analyze:
-- The first line remotely erases your previous image tagged "current".
-- Second line pulls (from Docker Hub) your most recent image build. By default this image is tagged "latest" unless specified otherwise.
-- Third line clones your latest image and tag it "current".
-- Four line removes the pulled image tagged "latest" in preparation for your next update.
+- First line pulls (from Docker Hub) your most recent image build. By default this image is tagged "latest" unless specified otherwise.
+- Second line clones your latest image and tag it "current".
+- Third line removes the pulled image tagged "latest" in preparation for your next update.
 That is one simple way to have a "current" application running all the time. Remember this is only an example you can define your own process.
 
 What this second example does is "Dockerize" your application and then save it on your Linode.
@@ -286,7 +285,7 @@ The next step is to configure the access to your repository, for most cases the 
 
 Finally you can choose if your application is private (default) or public. Mark the example as public and click the Finish button.
 
-A greeting message indicates you are almost ready to start building your application and offers the option to start a wizard to help you create the application `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
+A greeting message indicates you are almost ready to start building your application and offers the option to start a wizard to help you create the  `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
 
 ![YML Wizard](/docs/assets/wercker-yml-wizard.jpg)
 
@@ -302,9 +301,9 @@ Now click on "Generate SSH Keys", a pop-up window will appear asking for a key n
 
 ![jClocksGMT SSH Keys](/docs/assets/wercker-ssh-key-creation.jpg)
 
-That's it, you generated a key pair: `linode_PUBLIC` and `linode_PRIVATE`. The suffix is automatically added and is not needed in the configuration file. Now it's time to copy the Public key into your Linode. There're several ways to do it but for this guide we'll save it locally (for convenience) and then copy it to your remote server:
+That's it, you generated a key pair: `linode_PUBLIC` and `linode_PRIVATE`. The suffix is automatically added and is not needed in the configuration file. Now it's time to copy the Public key into your Linode. There're several ways to do it but for this guide we'll save it locally (`~/.ssh/jclock.pub`) and then copy it to your remote server:
 
-        cat ~/.ssh/jclock.pub | ssh root@<Linode IP or hostname> "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
+        cat ~/.ssh/jclock.pub | ssh root@<LINODE_IP_OR_HOSTNAME> "mkdir -p ~/.ssh && cat >>  ~/.ssh/authorized_keys"
 
 {: .note}
 >
@@ -322,7 +321,7 @@ The hint says "Update code on remote Linode failed" click on the build pipeline 
 
 ![jClocksGMT build error](/docs/assets/wercker-jclocks-error-02.jpg)
 
-As you can see everything went perfect until the step "Update code on remote Linode" this is due to the fact the repository was not cloned on the remote Linode on first place. Correct the inconvenient cloning your repository to appropriate location. There is no need to make another commit on the same screen click the "Retry" button:
+As you can see everything went perfect until the step "Update code on remote Linode" this is due to the fact the repository was not cloned on the remote Linode on first place. Correct the inconvenient cloning your repository to appropriate location (`git clone https://github.com/<GITHUB_USER>/jClocksGMT.git`)s. There is no need to make another commit on the same screen click the "Retry" button:
 
 ![jClocksGMT build error](/docs/assets/wercker-jclocks-retry.jpg)
 
@@ -362,7 +361,7 @@ You can test your application on the remote server by login remotely and run `do
 
 Notice that only "current" is present, now run the application with the command:
 
-        docker run <docker-username>/myapp:current
+        docker run <DOCKER_USER>/myapp:current
 
 If you want to test your automation a bit further, edit your `hello.go` inside the `/example` folder. Add some text to the message (remember is reversed). Commit your changes and wait for the process to end. Run again your application, you should see the modified message:
 
@@ -374,25 +373,29 @@ As you can see is working as expected. The final example involves the Wercker CL
 
 ![Wercker CLI build](/docs/assets/wercker-cli-build.jpg)
 
-The difference now is that you can check each step locally and detect any error early in the process. The Wercler CLI replicates the SaaS behavior, it downloads specified images, build, test and shows errors. The only limitation is the ability to deploy the end result, but remember this is a Development tool intended for local testing. Let's try to build our application:
+The difference now is that you can check each step locally and detect any error early in the process. The Wercler CLI replicates the SaaS behavior, it downloads specified images, build, test and shows errors. The only limitation is the ability to deploy the end result, but remember this is a Development tool intended for local testing. Let's try to build your application:
 
         go build
 
-The application `getting-started-golang` is built in the root directory. Run the program:
+The application `getting-started-golang` is built in the root directory, without any error. Now run the program:
 
-        ./getting-started-golang
+        ./source
 
-Head to `localhost:5000/cities.json` in your browser, you should see:
+Head to `localhost:5000/cities.json` in your browser, you should see (on Mozilla Firefox):
 
 ![Cities JSON](/docs/assets/wercker-cities-JSON.png)
 
-Now open another terminal and run the command:
+Now open another terminal, head to the example root directory, and run the command:
 
         wercker dev
 
 ![Wercker Dev](/docs/assets/wercker-dev.jpg)
 
-That just triggered the auto-build function present in the `dev` pipeline. If you make any change to the `main.go` file and reload your browser you will see those changes updated instantly, without building again your application.
+That just triggered the auto-build function present in the `dev` pipeline. Edit your `main.go` add a city to the list or modify an existing one. On terminal running the `source` press **CTRL+C** to cancel execution and then run it again:
+
+        ./source
+
+Reload your browser and the changes will appear without building again your application!
 
 From a developer point of view there are infinite possibilities to play with using Wercker:
 
