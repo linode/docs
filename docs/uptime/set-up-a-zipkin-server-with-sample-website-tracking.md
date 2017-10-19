@@ -37,6 +37,9 @@ While Zipkin can be installed on a variety of distributions, this guide uses Fed
 ## The Target Scenario
 
 This guide's target scenario is a three machine configuration:
+
+![zipkin layout](/docs/assets/scripts/zipkin_layout.py)
+
 1.  The Zipkin server performing the thrift and web services. Both services will use port `9411` (standard Zipkin configuration).
 
 2.  A sample website running on a Linode. The website contains a few mock external services that may take longer than expected, causing the website's pages to render slowly or not at all. We will also configure a call back at port `5000` for Zipkin server callbacks.
