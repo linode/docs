@@ -6,7 +6,7 @@ description: 'Computer networks frequently use DHCP to assign IP addresses, rout
 keywords: 'multiple ip addresses,linux static ip,change ip address,network configuration,dns,DHCP'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/configuring-static-ip-interfaces/']
-modified: Thursday, June 8th, 2017
+modified: Thursday, October 19th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 20th, 2014'
@@ -72,7 +72,7 @@ For more info on `resolv.conf`, see [its manual page](http://linux.die.net/man/5
 >
 >Using the examples below, be sure the IP addresses you enter reflect those shown under the **Remote Access** tab of the Linode Manager.
 
-### Arch / CoreOS Container Linux
+### Arch / CoreOS Container Linux / Ubuntu 17.10
 
 Add the following addressing to the interface's configuration:
 
@@ -303,7 +303,7 @@ Networking in Gentoo uses the `netifrc` utility. Addresses are specified in the 
 
 ### Ubuntu
 
-Add the following to the interface's configuration file:
+Applies to 14.04, 16.04 and 17.10. See further above for 17.10. Add the following to the interface's configuration file:
 
 {: .file-excerpt }
 /etc/network/interfaces
