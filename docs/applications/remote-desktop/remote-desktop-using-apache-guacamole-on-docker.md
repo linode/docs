@@ -221,25 +221,29 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
 # New Connection in Guacamole
 VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how to navigate the browser interface and add a new connection.
 
-1.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button. 
+1.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
+
+        ssh -L 5901:localhost:5901 -N -f -l user example.com
+
+2.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button. 
 
     ![Guacamole Settings](/docs/assets/guac_settings.png)
 
-2.  Under **Edit Connection**, choose a name otherwise the hostname of the Linode will be the default. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
+3.  Under **Edit Connection**, choose a name otherwise the hostname of the Linode will be the default. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
 
     ![Guacamole VNC Configuration](/docs/assets/guac_vnc_config.png)
 
     The [official documentation](https://guacamole.incubator.apache.org/doc/gug/configuring-guacamole.html#vnc) has detailed descriptions of all paramter names.
 
-3.  From the top right drop down menu, click *Home*. The new connection is now available.
+4.  From the top right drop down menu, click *Home*. The new connection is now available.
 
     **CTRL** + **ALT** + **SHIFT** - Opens menu for clipboard, keyboard/mouse settings, and the navigation menu.
 
     ![Guacamole Drop Down](/docs/assets/guac_menu.png)
 
-4.  Press back on the browser to return to the *Home* menu.
+5.  Press back on the browser to return to the *Home* menu.
 
-5.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
+6.  Additional connections can be made, and simultaneous connections can be made in new browser tabs.
 
     ![Guacamole Recent Connections](/docs/assets/guac_recent.png)
 
