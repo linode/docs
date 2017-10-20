@@ -41,18 +41,21 @@ contributor:
 
 ## Before You Begin
 
+{: .note}
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone. 
 
 2.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        apt-get update && apt-get upgrade
 
 ## Server Requirements and Recommendations
 
-1.  With the default settings, at least 10 storage nodes (servers) will be needed for satisfactory results. For testing purposes you can launch less, keeping in mind though that this is an "unhealthy" setup. Also note that with less than seven storage units, some uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` if you want to know more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration
+1.  With the default settings, at least 10 storage nodes (servers) will be needed for satisfactory results. For testing purposes you can launch less, keeping in mind though that this is an "unhealthy" setup. Also note that with less than seven storage units, most uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` if you want to know more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration
 )
 
-2.  Give your Linodes (that run storage nodes) at least 2GB of RAM. The larger the files you upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9's repositories, approximately 1GB (or more) of Random Access Memory (RAM) has been observed to be required when uploading mutable files larger than 40 Megabytes. Once the node runs out of RAM you will get an *out-of-memory kill*. While the Grid Status page in the web user interface will give you an overview on the health of your grid, such crashes unobserved might put your data at risk.
+2.  Give your Linodes (that run storage nodes) at least 2GB of RAM. The larger the files you upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9's repositories, approximately 1GB (or more) of Random Access Memory (RAM) has been observed to be required when uploading mutable files larger than 40 Megabytes. Once the node runs out of RAM you will get an *out-of-memory kill*. Periodically check the Grid Status page in the web user interface to maintain your grid in good health.
 
 3.  It's a good idea to distribute your Linodes among different datacenters. This makes the setup more reliable and resilient in the event of major problems with one of the locations.
 
@@ -121,7 +124,7 @@ contributor:
 
 ## Add Tahoe-LAFS Storage Nodes to the Grid
 
-    Although the process can be automated, so you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located.
+    Although the process can be automated, so you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
 
     {: .note}
     >
@@ -194,6 +197,8 @@ contributor:
         #<UDF name="nickname" Label="Storage Node Nickname" example="node01" />
         #<UDF name="introducer" Label="Introducer FURL" example="pb://wfpe..." />
         
+        apt-get update
+        apt-get -y upgrade
         adduser --disabled-password --gecos "" tahoe
         apt-get -y install tahoe-lafs
         su - -c "tahoe create-node --nickname=$NICKNAME --introducer=$INTRODUCER --port=tcp:1235 --location=tcp:`curl -4 -s icanhazip.com`:1235" tahoe
