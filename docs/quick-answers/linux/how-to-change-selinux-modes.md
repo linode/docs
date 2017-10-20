@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Security-Enhanced Linux works to filter system access. This Quick Answer will show you how to change the level of policy enforcement SELinux, from full enforcing mode to totally disabled.'
 keywords: 'selinux'
+alias: ['quick-answers/linux/how-to-disable-selinux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
 modified: 'Wednesday, October 18, 2017'
