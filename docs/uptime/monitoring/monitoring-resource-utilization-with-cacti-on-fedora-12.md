@@ -16,7 +16,7 @@ title: Monitoring Resource Utilization with Cacti on Fedora 12
 
 
 
-The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-ubuntu-12-04-precise-pangolin) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
+The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-fedora-14) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
@@ -33,9 +33,9 @@ Before proceeding with the installation of Cacti, ensure your package repositori
 
 Begin by setting the timezone of your server if it isn't already set. Set your server to your timezone or to that of the bulk of your users. If you're unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. To change the time zone, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (eg. `##`) are comments and need not be copied into your terminal.
 
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time
 
-    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time 
+    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
 
     ln -sf /usr/share/zoneinfo/US/Central /etc/localtime ## for American Central time (including DST)
 

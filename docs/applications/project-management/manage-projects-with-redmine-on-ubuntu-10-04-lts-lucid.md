@@ -19,7 +19,7 @@ This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -64,7 +64,7 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /opt
     wget http://rubyforge.org/frs/download.php/74471/passenger-3.0.5.tar.gz
-    tar xzvf passenger*.gz 
+    tar xzvf passenger*.gz
 
 Run the Phusion Passenger installer for Nginx:
 

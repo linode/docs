@@ -16,12 +16,12 @@ deprecated: true
 
 Django is a web development framework for the Python programing language. It was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-10.10-maverick) and a functional [MySQL database](/docs/databases/mysql/ubuntu-10.10-maverick) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-10-10-maverick) and a functional [MySQL database](/docs/databases/mysql/ubuntu-10-10-maverick) system installed.
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -37,11 +37,11 @@ Issue the following commands to ensure that your system's package repositories a
     apt-get upgrade
     apt-get install python-setuptools libapache2-mod-wsgi
 
-Additionally, you will need to install a database system and a Python driver for this database system. If you want to run the [MySQL database engine](/docs/databases/mysql/ubuntu-10.10-maverick), issue the following command:
+Additionally, you will need to install a database system and a Python driver for this database system. If you want to run the [MySQL database engine](/docs/databases/mysql/ubuntu-10-10-maverick), issue the following command:
 
     apt-get install mysql-server python-mysqldb
 
-If you want to run the [PostgreSQL database server](/docs/databases/postgresql/ubuntu-10.10-maverick), issue the following command:
+If you want to run the [PostgreSQL database server](/docs/databases/postgresql/ubuntu-10-10-maverick), issue the following command:
 
     apt-get install postgresql python-psycopg2
 
@@ -56,7 +56,7 @@ Install Django
 
 There are two methods for installing Django. You may choose to install the Django packages from the Ubuntu repositories, or you can install using the python `easy_install` method. If you choose to install using the Ubuntu packages, you will work with the 1.2.3 version of the framework, but you will have the benefit of ongoing security and bug fixes from the Ubuntu maintainers. To install Django from the Ubuntu repositories, issue the following command:
 
-    apt-get install python-django 
+    apt-get install python-django
 
 If you want to install Django using the `easy_install` tool, issue the following command:
 
@@ -109,10 +109,10 @@ Apache Virtual Host Configuration
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~

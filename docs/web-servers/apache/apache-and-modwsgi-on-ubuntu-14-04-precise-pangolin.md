@@ -12,7 +12,7 @@ modified_by:
 published: 'Wednesday, November 18th, 2015'
 title: 'Apache and mod_wsgi on Ubuntu 14.04 (Trusty Tahr)'
 external_resources:
- - '[A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)'
+ - '[A Basic "Hello World" Django Application](https://dfpp.readthedocs.io/en/latest/chapter_01.html)'
  - '[Deploy Django Applications with mod\_wsgi](/docs/websites/apache/apache-and-modwsgi-on-ubuntu-12-04-precise-pangolin)'
  - '[Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)'
  - '[Flask Framework](http://flask.pocoo.org/)'
@@ -90,7 +90,7 @@ In this example the Web.py *application* is embedded in a `application.wsgi` fil
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'

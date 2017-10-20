@@ -25,7 +25,7 @@ Before beginning the installation of OSQA, issue the following commands to ensur
 
     apt-get update
     apt-get upgrade
-    apt-get install python-setuptools build-essential libapache2-mod-wsgi subversion mysql-server libmysqlclient15-dev git-core wget libmysql++-dev checkinstall python-mysqldb 
+    apt-get install python-setuptools build-essential libapache2-mod-wsgi subversion mysql-server libmysqlclient15-dev git-core wget libmysql++-dev checkinstall python-mysqldb
 
 Issue the following sequence of commands to use the `easy_install` tool to install Python dependencies:
 
@@ -42,7 +42,7 @@ Additionally, OSQA uses the Sphinx search engine tool, which is unfortunately no
     cd /opt/
     wget http://www.sphinxsearch.com/downloads/sphinx-0.9.9.tar.gz
     tar -zxvf /opt/sphinx-0.9.9.tar.gz
-    cd /opt/sphinx-0.9.9/ 
+    cd /opt/sphinx-0.9.9/
     ./configure
     make
     checkinstall
@@ -100,7 +100,7 @@ OSQA software is distributed by way of a subversion repository rather than a con
 You can update your copy of OSQA to the latest version released by developers, by issuing the following commands:
 
     cd /srv/www/example.com/osqa/
-    svn up 
+    svn up
 
 Please remember to take reasonable precautions before performing this operation on your production sites to avoid breaking the application without proper testing.
 
@@ -176,7 +176,7 @@ Apache Virtual Host Configuration
 :   ~~~ apache
     Alias /robots.txt /srv/www/example.com/public_html/robots.txt
     Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-    Alias /images /srv/www/example.com/public_html/images 
+    Alias /images /srv/www/example.com/public_html/images
     Alias /static /srv/www/example.com/public_html/static
     ~~~
 

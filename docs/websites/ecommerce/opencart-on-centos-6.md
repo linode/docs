@@ -13,7 +13,7 @@ published: 'Tuesday, September 20th, 2011'
 title: OpenCart on CentOS 6
 ---
 
-OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#sph_set-the-hostname).
+OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).
 
 PHP Settings
 ------------
@@ -34,8 +34,8 @@ MySQL Credentials
 
 You will also need to create a database and a database user for OpenCart. To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
-    create database mystore; 
-    grant all on mystore.* to 'opencart' identified by 'p@$$w0rD'; 
+    create database mystore;
+    grant all on mystore.* to 'opencart' identified by 'p@$$w0rD';
     flush privileges;
 
 In the example above, `mystore` is the name of the database for your store, `opencart` is the username, and `p@$$w0rD` is the password.

@@ -7,7 +7,7 @@ keywords: 'find command,linux,command line'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/']
 modified: Thursday, September 15, 2016
-modified_by: 
+modified_by:
   name: Edward Angert
 published: 'Monday, October 25th, 2010'
 title: Find Files in Linux, Using the Command Line
@@ -53,7 +53,7 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 | `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
 |------------------------------------------------------|---------------------------------------------------------------------------------|
 
-    
+
 ## Options and Optimization for Find
 
 The default configuration for `find` will ignore symbolic links (shortcut files). If you want `find` to follow and return symbolic links, you can add the `-L` option to the command, as shown in the example above.

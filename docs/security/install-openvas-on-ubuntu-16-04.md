@@ -20,7 +20,7 @@ OpenVAS consists of:
 
 * a database that stores results and configurations;
 * a regularly updated feed of Network Vulnerability Tests (NVTs);
-* a scanner, which runs the NVTs; 
+* a scanner, which runs the NVTs;
 * the Greenbone Security Assistant, a graphical interface that allows you to manage vulnerability scans from a web application.
 
 For more information about the architecture of the software, refer to the [OpenVAS website](http://www.openvas.org/software.html).

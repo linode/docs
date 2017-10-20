@@ -41,12 +41,12 @@ If you added `universe` to the items in your list, you'll need to update your re
 
 Issue the following command to install packages required for Ruby on Rails.
 
-    apt-get install wget build-essential ruby1.8 ruby1.8-dev irb1.8 rdoc1.8 zlib1g-dev libopenssl-ruby1.8 libopenssl-ruby libzlib-ruby libssl-dev 
+    apt-get install wget build-essential ruby1.8 ruby1.8-dev irb1.8 rdoc1.8 zlib1g-dev libopenssl-ruby1.8 libopenssl-ruby libzlib-ruby libssl-dev
 
 Create symbolic links to the installed version of Ruby:
 
-    ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
-    ln -s /usr/bin/irb1.8 /usr/bin/irb 
+    ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+    ln -s /usr/bin/irb1.8 /usr/bin/irb
 
 Now we'll need to install gems. The version in the Ubuntu 8.04 repositories is quite outdated, and does not work correctly. Issue the following commands to download and install a fresh version. You may wish to check the [RubyForge files page](http://http://rubygems.org/gems/rubyforge) for the most recent version.
 
@@ -54,7 +54,7 @@ Now we'll need to install gems. The version in the Ubuntu 8.04 repositories is q
     tar -xvf rubygems-1.3.6.tgz
     cd rubygems-1.3.6
     ruby setup.rb
-    ln -s /usr/bin/gem1.8 /usr/bin/gem  
+    ln -s /usr/bin/gem1.8 /usr/bin/gem
 
 Update rubygems:
 
@@ -86,8 +86,8 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /root
     wget http://rubyforge.org/frs/download.php/69546/passenger-2.2.11.tar.gz
-    cd /opt 
-    tar xzvf ~/passenger-2.2.11.tar.gz 
+    cd /opt
+    tar xzvf ~/passenger-2.2.11.tar.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -111,7 +111,7 @@ Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to contr
     wget -O init-deb.sh http://www.linode.com/docs/assets/567-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx just like any other server daemon. For example, to start the server, issue the following command:
 
@@ -122,10 +122,10 @@ The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. Thi
 Install MySQL Support (optional)
 --------------------------------
 
-If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 8.04 LTS (Hardy) guide](/docs/databases/mysql/ubuntu-8.04-hardy). Once it's installed and configured properly, issue the following commands:
+If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 8.04 LTS (Hardy) guide](/docs/databases/mysql/ubuntu-8-04-hardy). Once it's installed and configured properly, issue the following commands:
 
-    apt-get install libmysqlclient15-dev libmysql-ruby 
-    gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql 
+    apt-get install libmysqlclient15-dev libmysql-ruby
+    gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
 
 More Information
 ----------------

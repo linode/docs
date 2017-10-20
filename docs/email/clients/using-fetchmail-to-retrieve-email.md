@@ -39,7 +39,7 @@ To install `fetchmail` on CentOS and Fedora systems, issue the following command
 
 To install `fetchmail` on Arch Linux systems, issue the following command:
 
-    pacman -S fetchmail 
+    pacman -S fetchmail
 
 To install `fetchmail` on Gentoo Linux systems, issue the following command:
 
@@ -118,7 +118,7 @@ In addition to the configuration options described above, fetchmail provides a n
 .fetchmailrc
 : ~~~
 	set daemon [seconds] set postmaster "username"
-	
+
 	set logfile "\~/logs/fetchmail.log" set syslog
 ~~~
 

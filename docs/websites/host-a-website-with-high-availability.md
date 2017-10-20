@@ -18,13 +18,13 @@ external_resources:
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 ---
 
-When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible. 
+When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
 In this guide, we'll explain how to host a highly available website with Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
 
 ## Before You Begin
 
-1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same datacenter. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create. 
+1.  We will be using a total of nine nodes, or servers, all running CentOS 7, and all within the same datacenter. You can create them all in the beginning, or as you follow along. Either way, familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone for each Linode you create.
 
 2.  You should also be familiar with our [Securing Your Server](/docs/security/securing-your-server) guide, and follow best security practices as you create your servers. Do not create firewall rules yet, as we'll be handling that step in our guide.
 
@@ -48,7 +48,7 @@ In this guide, we'll explain how to host a highly available website with Wordpre
 
 ## GlusterFS
 
-Our first step in creating a high-availability setup is to install and configure a file system using GlusterFS. In this section, we'll be using three 2GB Linodes named `gluster1`, `gluster2`, and `gluster3`. 
+Our first step in creating a high-availability setup is to install and configure a file system using GlusterFS. In this section, we'll be using three 2GB Linodes named `gluster1`, `gluster2`, and `gluster3`.
 
 Edit the `/etc/hosts` file on each Linode to match the following, substituting your own private IP addresses, fully qualified domain names, and host names:
 
@@ -62,15 +62,15 @@ Edit the `/etc/hosts` file on each Linode to match the following, substituting y
 
 ### Install GlusterFS
 
-These steps should be run on each file system node in your cluster. 
+These steps should be run on each file system node in your cluster.
 
 {: .caution}
 >GlusterFS generates a UUID upon installation. Do not clone a single Linode to replicate your GlusterFS installation; it must be installed separately on each node.
 
 1.  Add the `centos-release-gluster37` repository, which will allow you to install the GlusterFS server edition package:
 
-        yum install epel-release 
-        yum install centos-release-gluster37 
+        yum install epel-release
+        yum install centos-release-gluster37
         yum install glusterfs-server
 
     {: .note}
@@ -93,9 +93,9 @@ These steps should be run on each file system node in your cluster.
 
         mkdir -p /data/example-volume
 
-3. Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we're using the hostname and volume name configuration we used above, so replace those names with the ones you chose: 
+3. Create a distributed replicated volume. This step needs to be done on only one of the nodes in your pool. In this example, we're using the hostname and volume name configuration we used above, so replace those names with the ones you chose:
 
-        gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force 
+        gluster volume create example-volume replica 3 gluster1:/data/example-volume gluster2:/data/example-volume gluster3:/data/example-volume force
 
 4.  Start the volume to enable replication among servers in your pool. Replace `example-volume` with the name you chose:
 
@@ -129,7 +129,7 @@ Run the following commands on each Linode in your pool.
         firewall-cmd --zone=internal --add-service=glusterfs --permanent
         firewall-cmd --zone=internal --add-source=192.168.1.2/32 --permanent
         firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
-        firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent 
+        firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
     {: .note}
     > In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.
@@ -167,7 +167,7 @@ This section will explain how to test file replication between servers in your p
 
 ## Galera with XtraDB
 
-Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we'll be using a cluster of Percona XtraDB database servers with Galera replication. 
+Now that we have a replicated file system, we can begin to set up our database cluster. In this section, we'll be using a cluster of Percona XtraDB database servers with Galera replication.
 
 We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` as our database nodes. Create these now if you have not already, and edit the `/etc/hosts` file on each to add the following, replacing the private IP addresses, fully qualified domain names, and hostnames of your database nodes:
 
@@ -180,7 +180,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
   ~~~
 
 {: .note}
-> You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/platform/support/). 
+> You will need an additional private IP address for one of your database nodes, as we'll be using it as a *floating IP* for failover in a later section. To request an additional private IP address, you'll need to [contact support](/docs/platform/support/).
 
 ### Install Galera and XtraDB
 
@@ -190,7 +190,7 @@ We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` a
 
 2.  Install the following packages on each database node:
 
-        yum install epel-release 
+        yum install epel-release
         yum install https://www.percona.com/redir/downloads/percona-release/redhat/0.1-4/percona-release-0.1-4.noarch.rpm
         yum install Percona-XtraDB-Cluster-56 Percona-XtraDB-Cluster-shared-56
 
@@ -217,7 +217,7 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
         wsrep_provider                 = /usr/lib64/galera3/libgalera_smm.so
         wsrep_slave_threads            = 8
         wsrep_cluster_name             = Cluster
-        wsrep_node_name                = galera1 
+        wsrep_node_name                = galera1
 
         ...
 
@@ -229,9 +229,9 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
         wsrep_sst_auth                 = sstuser:password
         ~~~
 
-    The values for `wsrep_node_name` and `wsrep_node_address` should be configured individually for each node, using the private IP address for that node and its hostname. The rest of the lines should match on all your database nodes. 
+    The values for `wsrep_node_name` and `wsrep_node_address` should be configured individually for each node, using the private IP address for that node and its hostname. The rest of the lines should match on all your database nodes.
 
-    In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place. It will be needed later. 
+    In the line beginning with `wsrep_sst_auth`, replace `password` with a secure password of your choosing and keep it in a safe place. It will be needed later.
 
     {: .note}
     > The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating using `password` to log into MySQL to grab backup locks for replication.
@@ -256,13 +256,13 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
 4.  On your other nodes, start MySQL normally to have them join the cluster:
 
         systemctl start mysql
-	
+
    {: .note}
    > If you want to learn more about `xtrabackup` privileges their [documentation](https://www.percona.com/doc/percona-xtrabackup/2.4/using_xtrabackup/privileges.html) is a good place to start.
 
 ### Test Database Replication
 
-Now that your database nodes are configured, we can test to make sure they've all joined the cluster and are replicating properly. 
+Now that your database nodes are configured, we can test to make sure they've all joined the cluster and are replicating properly.
 
 1.  Enter the MySQL shell on any database node, using the `mysql` command. Run the following command in MySQL to check the status of your cluster:
 
@@ -347,7 +347,7 @@ Run the following commands on each database node.
         firewall-cmd --zone=internal --add-service=galera --permanent
         firewall-cmd --zone=internal --add-source=192.168.1.2/32 --permanent
         firewall-cmd --zone=internal --add-source=192.168.3.4/32 --permanent
-        firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent 
+        firewall-cmd --zone=internal --add-source=192.168.5.6/32 --permanent
 
     {: .note}
     > In the Linode Manger, you may notice that the netmask for your private IP addresses is /17. Firewalld does not recognize this, so a /32 prefix should be used instead.
@@ -406,7 +406,7 @@ After these rules have been set, reload the firewall rules on each file system n
 
 ### Mount the Gluster Filesystem
 
-Next, we'll mount the Gluster volume on our application servers. The steps in this section should be performed on each Apache server node. 
+Next, we'll mount the Gluster volume on our application servers. The steps in this section should be performed on each Apache server node.
 
 1.  Install `glusterfs-fuse`:
 
@@ -434,7 +434,7 @@ Next, we'll mount the Gluster volume on our application servers. The steps in th
             DocumentRoot "/srv/www"
             <Directory /srv/www>
                 Require all granted
-                Options Indexes FollowSymLinks Multiviews 
+                Options Indexes FollowSymLinks Multiviews
             </Directory>
         </VirtualHost>
         ~~~
@@ -486,9 +486,9 @@ No additional Linodes will be created in this section, and all configuration wil
 
 ### Configure IP Failover
 
-First, we'll configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails. 
+First, we'll configure IP failover on `galera2` and `galera3` to take on the floating IP address from `galera1` in the event that it fails.
 
-1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses. 
+1.  Go to the **Remote Access** tab in the Linode Manager for `galera2`, and click "IP Failover" under your public IP addresses.
 
 2.  You'll see a menu listing all of the Linodes on your account. Check the box corresponding to the new private IP address for `galera1`, which we will now refer to as the floating IP address, and click **Save Changes**.
 
@@ -517,20 +517,20 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
         global_defs {
             notification_email {
             }
- 
+
             router_id LVS_DBCLUSTER
         }
- 
+
         vrrp_script chk_pxc {
             script "/usr/bin/clustercheck clustercheck example_password 0"
-            interval 15 
-            fall 4 
+            interval 15
+            fall 4
             rise 2
         }
- 
+
         vrrp_instance VI_1 {
             state BACKUP
-            nopreempt 
+            nopreempt
             interface eth0
             virtual_router_id 51
             priority 50
@@ -550,7 +550,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
             192.168.2.3
             192.168.4.5
             }
- 
+
             virtual_ipaddress {
             192.168.9.9/17
             }
@@ -560,7 +560,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
         }
         ~~~
 
-    In the lines beginning with `script` and `auth_pass`, change `example_password` to a secure password of your choosing. In the `virtual_ipaddress` block, replace `192.168.9.9` with the floating IP address you configured previously. Be sure to include the `/17` netmask on this line. These sections, and the rest of the file, should be the same on all database nodes. 
+    In the lines beginning with `script` and `auth_pass`, change `example_password` to a secure password of your choosing. In the `virtual_ipaddress` block, replace `192.168.9.9` with the floating IP address you configured previously. Be sure to include the `/17` netmask on this line. These sections, and the rest of the file, should be the same on all database nodes.
 
     In the line beginning with `unicast_src_ip`, change `192.168.0.1` to the private IP address of the node you are configuring. In the `unicast_peer` block, change the IP addresses to the private IP addresses of the other two nodes. Note that these sections will be slightly different depending on which node you are configuring.
 
@@ -597,7 +597,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
 9.  Reboot each of your three database nodes to bring up the failover configuration. It is important to do this one at a time, otherwise you may bring down the entire cluster, in which case you would need to bootstrap MySQL and add each node to the cluster again.
 
-Congratulations! You've successfully installed and configured keepalived. Your database nodes will now be able to fail over if one goes down, ensuring high availability. 
+Congratulations! You've successfully installed and configured keepalived. Your database nodes will now be able to fail over if one goes down, ensuring high availability.
 
 ## Nodebalancer
 
@@ -631,7 +631,7 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-5.  On *just one* of your application servers, install the latest version of Wordpress into `/srv/www` and extract it: 
+5.  On *just one* of your application servers, install the latest version of Wordpress into `/srv/www` and extract it:
 
         cd /srv/www
         wget http://wordpress.org/latest.tar.gz
@@ -641,7 +641,7 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-6.  On all of your application servers, change ownership of the `/srv/www` directory to the Apache user: 
+6.  On all of your application servers, change ownership of the `/srv/www` directory to the Apache user:
 
         chown -R apache:apache /srv/www
 
@@ -649,13 +649,13 @@ If you're installing WordPress to manage your new highly available website, we'l
 
         systemctl restart httpd
 
-8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the Wordpress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress). 
+8.  In a web browser, navigate to the IP address of one of your application nodes (or the NodeBalancer) to access the Wordpress admin panel. Use `wordpress` as the database name and user name, enter the password you configured in Step 2, and enter your floating IP address as the database host. For additional WordPress setup instruction, see our guide on [Installing and Configuring WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress#configure-wordpress).
 
 Congratulations! You've successfully configured a highly available Wordpress site, and you're ready to start publishing content. For more information, feel free to reference our [Wordpress configuration guide](/docs/websites/cms/how-to-install-and-configure-wordpress).
 
 ## DNS Records
 
-The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the "IP Address" section. 
+The NodeBalancer in the above system directs all incoming traffic to the application servers. As such, its IP address will be the one you should use when configuring your DNS records. To find this information, visit the **NodeBalancers** tab in the Linode Manager and look in the "IP Address" section.
 
 For more information on DNS configuration, refer to our [introduction to DNS records](/docs/networking/dns/dns-records-an-introduction) and our guide on how to use the [DNS Manager](/docs/networking/dns/dns-manager-overview).
 

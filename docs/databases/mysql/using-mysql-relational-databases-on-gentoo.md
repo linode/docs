@@ -79,7 +79,7 @@ When prompted, enter the password that you created during the `mysql_secure_inst
 
     Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-    mysql> 
+    mysql>
 
 If you forget your MySQL root password at a later date, it can be reset with the following sequence of commands:
 
@@ -89,9 +89,9 @@ If you forget your MySQL root password at a later date, it can be reset with the
 
 Once you have logged in, enter the following commands at the MySQL prompt:
 
-    USE mysql; 
-    UPDATE user SET PASSWORD=PASSWORD("CHANGEME") WHERE User='root'; 
-    FLUSH PRIVILEGES; 
+    USE mysql;
+    UPDATE user SET PASSWORD=PASSWORD("CHANGEME") WHERE User='root';
+    FLUSH PRIVILEGES;
     exit
 
 To see a list of available commands (**not** SQL syntax), issue `\h` at the MySQL prompt:

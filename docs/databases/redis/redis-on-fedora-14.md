@@ -39,7 +39,7 @@ Begin the installation process by issuing the following sequence of commands to 
 
     cd /opt/
     mkdir /opt/redis
-    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz 
+    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz
     tar -zxvf /opt/redis-2.2.2.tar.gz
     cd /opt/redis-2.2.2/
     make

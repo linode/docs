@@ -57,15 +57,15 @@ Start a screen session and issue the upgrade command:
 
 If you're logged in via SSH, you will receive the following warning:
 
-    Continue running under SSH? 
+    Continue running under SSH?
 
-    This session appears to be running under ssh. It is not recommended 
-    to perform a upgrade over ssh currently because in case of failure it 
-    is harder to recover. 
+    This session appears to be running under ssh. It is not recommended
+    to perform a upgrade over ssh currently because in case of failure it
+    is harder to recover.
 
-    If you continue, an additional ssh daemon will be started at port 
-    '9004'. 
-    Do you want to continue? 
+    If you continue, an additional ssh daemon will be started at port
+    '9004'.
+    Do you want to continue?
 
     Continue [yN]
 
@@ -77,10 +77,10 @@ At the end of the upgrade process, you'll see this message:
 
     System upgrade is complete.
 
-    Restart required 
+    Restart required
 
-    To finish the upgrade, a restart is required. 
-    If you select 'y' the system will be restarted. 
+    To finish the upgrade, a restart is required.
+    If you select 'y' the system will be restarted.
 
     Continue [yN]
 

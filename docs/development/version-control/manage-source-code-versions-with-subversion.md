@@ -204,11 +204,11 @@ At this juncture, you will want to configure HTTP AUTH passwords for your subver
 
     /srv/www/svn.example.com/morris.htpasswd
 
-In this example, `morris` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/configuration/http-authentication#sph_access-control-lists-with-groups) to organize your users' access.
+In this example, `morris` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/configuration/http-authentication#access-control-lists-with-groups) to organize your users' access.
 
 #### Managing A Single Repository
 
-In the following setup we've granted access to the `morris` Subversion repository, running under a virtual host for the `svn.example.com` domain. You can configure Subversion repositories under existing virtual hosts, if that makes more sense in the context of your deployment. You can read more about configuring Apache [locations blocks](/docs/web-servers/apache/configuration/configuration-structure#sph_location-options) elsewhere in Linode's guides and tutorials.
+In the following setup we've granted access to the `morris` Subversion repository, running under a virtual host for the `svn.example.com` domain. You can configure Subversion repositories under existing virtual hosts, if that makes more sense in the context of your deployment. You can read more about configuring Apache [locations blocks](/docs/web-servers/apache/configuration/configuration-structure#location-options) elsewhere in Linode's guides and tutorials.
 
 {: .file-excerpt }
 Apache Virtual Host Configuration

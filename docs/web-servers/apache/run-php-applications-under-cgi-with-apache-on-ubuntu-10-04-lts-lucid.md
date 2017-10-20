@@ -25,7 +25,7 @@ Before beginning this guide we assume that you've completed the [getting started
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -41,7 +41,7 @@ Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted
@@ -72,7 +72,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/web-servers/apache/installation/ubuntu-10.04-lucid#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/#configure-name-based-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

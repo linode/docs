@@ -28,11 +28,11 @@ To accomplish this, insert the following configuration directives into your virt
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
         ServerAdmin admin@example.com
         ServerName static.example.com
         DocumentRoot /srv/www/static.example.com/public_html/
-        ErrorLog /srv/www/static.example.com/logs/error.log 
+        ErrorLog /srv/www/static.example.com/logs/error.log
         CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -40,13 +40,13 @@ Apache Virtual Host Configuration
 Create the necessary directories by issuing the following commands:
 
     mkdir -p /srv/www/static.example.com/public_html/
-    mkdir -p /srv/www/static.example.com/logs/        
+    mkdir -p /srv/www/static.example.com/logs/
 
 Reload the web server configuration to create the virtual host. Issue the following command at this point and at any point after you've made changes to an Apache configuration file:
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 --------------------------------------------------------------------
@@ -97,7 +97,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -144,7 +144,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -163,9 +163,9 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy
     a2enmod proxy_http
     a2enmod proxy_balancer
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny#enabling_the_proxy_module). Do not forget to reload the configuration Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-debian-5-lenny/#enabling-the-proxy-module). Do not forget to reload the configuration Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
@@ -174,7 +174,7 @@ Apache Virtual Host Configuration
         ServerName example.com
         ServerAlias www.example.com
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         <Proxy balancer://cluster>
@@ -200,7 +200,7 @@ The `lbmethod=` argument to the `ProxyPass` directive controls the method by whi
 Apache also contains a "Balancer Manager" interface that you can use to first issue the following command to ensure that Apache's `mod_status` is enabled, and restart the server if needed:
 
     a2enmod status
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 Now include the following location directive in the virtual host where your cluster is configured:
 

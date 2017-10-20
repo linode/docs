@@ -27,7 +27,7 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
 
 1.  This guide assumes that you're using an rpm-based system (CentOS, RedHat, Oracle Enterprise Linux) .
 
-2.  Make sure that you have the `salt` and `salt-ssh` packages installed on your master. Check if these packages are installed: 
+2.  Make sure that you have the `salt` and `salt-ssh` packages installed on your master. Check if these packages are installed:
 
         $rpm -q salt
         $rpm -q salt-ssh
@@ -42,7 +42,7 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
 
 ##Set Up Salt Roster File
 
-The Roster file contains target system information, connection details and credentials. 
+The Roster file contains target system information, connection details and credentials.
 The Default location for the Roster file is: `/etc/salt/roster`.
 
    {: .note}
@@ -64,7 +64,7 @@ The Default location for the Roster file is: `/etc/salt/roster`.
 
     {: .note}
     >
-    > The Roster file stores data in YAML format. Do not add unnecessary spaces to the config file. 
+    > The Roster file stores data in YAML format. Do not add unnecessary spaces to the config file.
 
 2.  If you have a public key stored on the minion, and a private key on the master system, you can configure access to a minion using a private key. For public key authentication, add the following lines to the Roster file:
 
@@ -143,7 +143,7 @@ The Default location for the Roster file is: `/etc/salt/roster`.
     >
     > Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous connections.
 
-3.  It is possible to use any execution module with Salt SSH. With execution modules, you can install packages, control services, gather system information, and much more. 
+3.  It is possible to use any execution module with Salt SSH. With execution modules, you can install packages, control services, gather system information, and much more.
 
         [root@master ~]# salt-ssh linode1 pkg.install iftop
         linode1:

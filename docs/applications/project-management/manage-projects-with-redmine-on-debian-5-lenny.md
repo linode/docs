@@ -80,7 +80,7 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /opt
     wget http://rubyforge.org/frs/download.php/73563/passenger-3.0.1.tar.gz
-    tar xzvf passenger*.gz 
+    tar xzvf passenger*.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -99,7 +99,7 @@ Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Iss
     wget -O init-nginx-deb.sh http://www.linode.com/docs/assets/705-init-nginx-deb.sh
     mv /opt/init-nginx-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx like any other server daemon.
 

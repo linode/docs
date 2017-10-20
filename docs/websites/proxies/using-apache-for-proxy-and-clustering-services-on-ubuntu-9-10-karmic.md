@@ -16,7 +16,7 @@ deprecated: true
 
 The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/web-servers/apache/configuration/configuration-basics), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a frontend server to manage clusters of web servers.
 
-This guide provides a number of configuration examples and suggestions for using Apache as a frontend server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) before continuing with this guide. Additionally, consider our [getting started](/docs/getting-started/) and [beginner's guide](/docs/beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/using-linux/administration-basics) guide if you are new to Linux server administration.
+This guide provides a number of configuration examples and suggestions for using Apache as a frontend server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) before continuing with this guide. Additionally, consider our [getting started](/docs/getting-started/) and [beginner's guide](/docs/beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/using-linux/administration-basics) guide if you are new to Linux server administration.
 
 Case One: Separating Static Content from Dynamic Content
 --------------------------------------------------------
@@ -28,11 +28,11 @@ To accomplish this, insert the following configuration directives into your Virt
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost 12.34.56.78:80> 
+    <VirtualHost 12.34.56.78:80>
         ServerAdmin admin@example.com
         ServerName static.example.com
         DocumentRoot /srv/www/static.example.com/public_html/
-        ErrorLog /srv/www/static.example.com/logs/error.log 
+        ErrorLog /srv/www/static.example.com/logs/error.log
         CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -46,12 +46,12 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/apache2 reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 --------------------------------------------------------------------
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9.10-karmic) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9.10-karmic#enabling_the_proxy_module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
+In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Please follow that guide, particularly the section regarding [configuring mod\_proxy](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/#enabling-the-proxy-module) and ensure that `mod_proxy` is active by issuing the following commands to enable and restart web server:
 
     a2enmod proxy
     a2enmod proxy_http
@@ -87,7 +87,7 @@ While using `ProxyPass` directives allows you to distribute resources by directo
     a2enmod rewrite
     /etc/init.d/apache2 restart
 
-Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9.10-karmic). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
+Once `mod_proxy` is enabled and configured, ensure that the server is [configured properly](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic). Now, a number of additional proxy services will be available. Consider the following virtual host configuration:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
@@ -97,7 +97,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -144,7 +144,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -163,9 +163,9 @@ All of the previous cases presented in this document outline configurations for 
     a2enmod proxy
     a2enmod proxy_http
     a2enmod proxy_balancer
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9.10-karmic#enabling_the_proxy_module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Edit the `/etc/apache2/mods-available/proxy.conf` file as described in [this documentation](/docs/web-servers/apache/multiple-web-servers-with-proxypass-on-ubuntu-9-10-karmic/#enabling-the-proxy-module). Do not omit to reload Apache again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
@@ -174,7 +174,7 @@ Apache Virtual Host Configuration
         ServerName example.com
         ServerAlias www.example.com
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         <Proxy balancer://cluster>
@@ -200,7 +200,7 @@ The `lbmethod=` argument to the `ProxyPass` directive, controls the method by wh
 Apache also contains a "Balancer Manager" interface that you can use to first issue the following command to ensure that Apache's `mod_status` is enabled, and restart the server if needed:
 
     a2enmod status
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 Now include the following location directive in the virtual host where your cluster is configured:
 
@@ -224,7 +224,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)
 - [Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
-- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9.10-karmic)
+- [Configure ProxyPass and Multiple Web Servers with Apache](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-ubuntu-9-10-karmic)
 
 
 

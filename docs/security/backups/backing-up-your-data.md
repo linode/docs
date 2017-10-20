@@ -337,9 +337,9 @@ Here's how to set up automatic backups of your Linode to a Windows desktop compu
     7.  Under **System variables**, scroll down until you find the **Path** variable. Highlight it and click **Edit...**.
     8.  Do NOT delete what is currently there. You just want to add to it.
     9.  Add the paths to pscp.exe and cwRsync's bin directory. Separate paths with semicolons. Example paths to add:
-    
+
             C:\Program Files (x86)\PuTTY;C:\Program Files (x86)\cwRsync\bin;
-    
+
     10. Click **OK** until you're back to the Control Panel.
     11. Restart your command prompt if you have it open.
 

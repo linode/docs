@@ -23,7 +23,7 @@ external_resources:
 
 ![How to Install Ghost CMS on Ubuntu 16.04](/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04")
 
-[Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. 
+[Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog.
 
 Ghost 1.0.0 is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, improved install and update process with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI), and more.
 

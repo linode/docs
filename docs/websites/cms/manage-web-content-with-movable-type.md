@@ -132,8 +132,8 @@ When running software compiled or installed directly from sources provided by up
 
 Please monitor the following [Movable Type mailing lists](http://www.movabletype.org/opensource/mailing-lists.html) to ensure that you are aware of all updates to the software and can upgrade appropriately or apply patches and recompile as needed:
 
--   [Movable Type Development List](http://www.sixapart.com/mailman/listinfo/mtos-dev)
--   [Movable Type Announcements List](http://app.sixapart.com/mailman/listinfo/mtos-announce)
+-   [Movable Type Development List](https://movabletype.org/documentation/developer/)
+-   [Movable Type Announcements List](https://movabletype.org/news/)
 
 When upstream sources offer new releases, repeat the instructions for installing the Movable software as needed. These practices are crucial for the ongoing security and functioning of your system.
 

@@ -79,7 +79,7 @@ Installing Citadel
 
 Begin by installing the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you to answer a couple of questions. Choose "0.0.0.0" for listen address, "No" for "Enable external authentication mode", and specify your admin username and password. Choose "Internal" for web server integration and enter "80" when asked the "Webcit HTTP port" question. Finally, choose your desired language. If you need to reconfigure any of these options later, you can use the following command:
 
@@ -124,7 +124,7 @@ Customize the logon banner for your Citadel server by editing the relevant file:
 
 Use the following startup script to initialize Citadel.
 
-    /etc/init.d/citadel restart 
+    /etc/init.d/citadel restart
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 

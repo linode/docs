@@ -23,7 +23,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
     -   [Getting Started](/docs/getting-started)
     -   [Securing Your Server](/docs/security/securing-your-server)
-    -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04) 
+    -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04)
     -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
@@ -48,7 +48,7 @@ Back up existing files and move the archive into the backups directory. This pro
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
     sudo mv -v example.com-BCKP-*.tar.gz ../backups
 
-## Download Updates 
+## Download Updates
 
 1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
 
@@ -114,7 +114,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
 
-## Additional Security 
+## Additional Security
 
 1.  Increase password security by adding the following to `services.yml`:
 

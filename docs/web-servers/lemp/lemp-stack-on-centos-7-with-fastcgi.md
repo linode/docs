@@ -24,7 +24,7 @@ Make sure that before starting this guide you have read through and completed ou
 
 ## Set the hostname
 
-Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#sph_setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
+Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
 
     hostname
     hostname -f

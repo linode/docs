@@ -61,7 +61,7 @@ Create directories for your site by issuing the following commands. Substitute y
     mkdir /srv/www/example.com/www/logs
     chown -R www-data:www-data /srv/www/example.com
 
-If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/installing-cherokee-fedora-13#secure_admin_panel_access).
+If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-fedora-13/#secure-admin-panel-access).
 
     cherokee-admin -b &
 

@@ -18,7 +18,7 @@ Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you in
 ![Setting Linode Package Mirrors.](/docs/assets/package_mirrors_smg.png "Setting Linode Package Mirrors.")
 
  Linode package mirrors are available in all of our datacenters. The mirrors can be found at:
- 
+
 - <http://atlanta.mirrors.linode.com/>
 - <http://dallas.mirrors.linode.com/>
 - <http://frankfurt.mirrors.linode.com/>

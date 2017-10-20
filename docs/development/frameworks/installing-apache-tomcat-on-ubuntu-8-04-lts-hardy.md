@@ -47,7 +47,7 @@ Add the following two lines to your `sources.list` list:
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 
@@ -100,14 +100,14 @@ Create a `tomcat` "init" file with the following content:
     start)
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    stop)  
+    stop)
             sh /usr/local/tomcat/bin/shutdown.sh
             ;;
     restart)
             sh /usr/local/tomcat/bin/shutdown.sh
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    esac   
+    esac
     exit 0
     ~~~
 

@@ -26,14 +26,14 @@ The CPAN Minus, or cpanm, client attempts to make the power of CPAN accessible t
 
 If you have not yet installed a development tool chain including Perl and its dependencies, issue the following commands on Debian and Ubuntu systems to install this software and make sure that your system's package database and installed software are up to date:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
     apt-get install perl build-essential curl
 
 Similarly on CentOS and Fedora Systems, use the following commands to update the system and install the required software:
 
     yum update
-    yum install perl perl-devel curl gcc 
+    yum install perl perl-devel curl gcc
 
 On Arch Linux systems issue the following command to download the latest package database and install the Perl dependencies:
 
@@ -81,7 +81,7 @@ These commands download the `WebService::Linode` module, the Perl bindings for t
 
 If at any subsequent point you want to check and see what modules in CPAN have been updated recently, issue the following command:
 
-    cpanm --recent 
+    cpanm --recent
 
 If you want to fetch the information regarding a package in CPAN, issue the following command:
 

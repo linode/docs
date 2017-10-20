@@ -69,7 +69,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
     ![List Docker Images](/docs/assets/docker/docker-install-images-list.jpg "List Docker Images")
 
-2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command: 
+2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command:
 
         docker pull nginx
 
@@ -83,7 +83,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
 ### Find Unofficial nginx Images
 
-Alternatively, if you don't want to install the official nginx image, use `docker search` to find other nginx images: 
+Alternatively, if you don't want to install the official nginx image, use `docker search` to find other nginx images:
 
     docker search nginx
 
@@ -95,6 +95,6 @@ Use `docker pull` to pull one of the other images:
 
     docker pull blacklabelops/nginx
 
-## Ready to Keep Going? 
+## Ready to Keep Going?
 
 At this point, you should know how to install Docker and pull down images with which you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/docs/applications/containers/) to learn more.

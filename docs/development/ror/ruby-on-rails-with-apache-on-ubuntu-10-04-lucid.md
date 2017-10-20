@@ -15,15 +15,15 @@ title: 'Ruby on Rails with Apache on Ubuntu 10.04 (Lucid)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
   - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
-  - '[Install the Apache HTTP Server on Ubuntu 10.04 (Lucid)](/docs/web-servers/apache/installation/ubuntu-10.04-lucid)'
-  - '[Install the MySQL Database System on Ubuntu 10.04 (Lucid)](/docs/databases/mysql/ubuntu-10.04-lucid)'
+  - '[Install the Apache HTTP Server on Ubuntu 10.04 (Lucid)](/docs/web-servers/apache/installation/ubuntu-10-04-lucid)'
+  - '[Install the MySQL Database System on Ubuntu 10.04 (Lucid)](/docs/databases/mysql/ubuntu-10-04-lucid)'
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -66,7 +66,7 @@ If you are unsure of the version you require, you can install the latest version
 
     gem install rails
 
-This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/databases/mysql/ubuntu-10.04-lucid) in Rails, issue the following commands:
+This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/databases/mysql/ubuntu-10-04-lucid) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient16-dev mysql-client mysql-common
     gem install mysql
@@ -75,12 +75,12 @@ Additionally, the application you deploy will likely have additional dependencie
 
 ## Configuring Apache to Work with Passenger
 
-If you configured Apache virtual hosting as outlined in the [Ubuntu 10.04 (Lucid) Apache guide](/docs/web-servers/apache/installation/ubuntu-10.04-lucid), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Ubuntu 10.04 (Lucid) Apache guide](/docs/web-servers/apache/installation/ubuntu-10-04-lucid), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/
     ~~~
 
 Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:

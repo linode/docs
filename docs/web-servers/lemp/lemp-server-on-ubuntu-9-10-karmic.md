@@ -50,7 +50,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories, unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-9.10-karmic).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-9-10-karmic).
 
 ### Deploy from Ubuntu Project Packages
 
@@ -158,7 +158,7 @@ nginx.conf
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -172,7 +172,7 @@ nginx.conf
 
     include /opt/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -187,7 +187,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 Deploy PHP with FastCGI
 -----------------------
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9.10-karmic). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic). Begin the deployment process by issuing the following command to install the required dependencies:
 
     apt-get install php5-cli php5-cgi build-essential wget psmisc
 

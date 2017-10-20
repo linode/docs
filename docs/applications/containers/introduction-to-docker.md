@@ -23,7 +23,7 @@ external_resources:
 
 ## What is Docker?
 
-Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages that contain everything needed to run an application (code, libraries, runtime, system settings, and dependencies). These packages are called containers. 
+Docker is a tool that enables you to create, deploy, and manage lightweight, stand-alone packages that contain everything needed to run an application (code, libraries, runtime, system settings, and dependencies). These packages are called containers.
 
 Each container is deployed with its own CPU, memory, block I/O, and network resources, all without having to depend upon an individual kernel and operating system. While it may be easiest to compare Docker and virtual machines, they differ in the way they share or dedicate resources.
 
@@ -68,7 +68,7 @@ dockerfile
 
 ## Docker Swarm
 
-Docker makes it easy to join servers together to form a cluster, called a Docker Swarm. Once you’ve created a Swarm manager, or *leader*, and attached nodes to the leader, you can scale out container deployment. The leader will automatically adapt the cluster by adding or removing tasks to maintain a desired state. 
+Docker makes it easy to join servers together to form a cluster, called a Docker Swarm. Once you’ve created a Swarm manager, or *leader*, and attached nodes to the leader, you can scale out container deployment. The leader will automatically adapt the cluster by adding or removing tasks to maintain a desired state.
 
 A *node* is a single instance of the Docker engine that participates in the Swarm. You can run one or more nodes on a single Linode. The Swarm manager uses ingress load balancing to expose services that can be made available to the Swarm. Docker Swarm can also:
 
