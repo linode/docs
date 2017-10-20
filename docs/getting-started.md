@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 5th, 2017
+modified: Tuesday, October 10th, 2017
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -191,7 +191,7 @@ Installing software updates should be performed *regularly*. If you need help re
 
 ### Gentoo
 
-    emaint sync
+    emaint sync -a
 
 After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge comand. If so, run the Portage update. Then update the rest of the system:
 
@@ -220,6 +220,12 @@ Replace `example_hostname` with one of your choice.
 
     echo "example_hostname" > /etc/hostname
     hostname -F /etc/hostname
+
+{: .note }
+>
+>Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
+>
+>The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
 
 ### CentOS 6
 

@@ -66,7 +66,14 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
 
 [Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
 
-    curl https://d3g5gsiof5omrk.cloudfront.net/nixos/17.03/nixos-17.03.1437.a2c7482319/nixos-minimal-17.03.1437.a2c7482319-x86_64-linux.iso | dd of=/dev/sda
+    # Bind the URL you grabbed from the download page to a bash variable
+    iso=<URL for nixos download>
+
+    # Update SSL certificates to allow HTTPS connections
+    update-ca-certificates
+
+    # Download the ISO and write it to the installer disk
+    curl $iso | dd of=/dev/sda
 
 ## Install NixOS
 
@@ -134,8 +141,7 @@ When GRUB detects a partitionless disk, it will warn about the unreliability of 
 
 Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:
 
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.forceInstall = true;
+    boot.loader.grub.device = "nodev";
     boot.loader.timeout = 10;
 
 ### Edit NixOS Configuration

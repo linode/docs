@@ -14,9 +14,13 @@ contributor:
     name: Nick Rahl
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-<hr>
+----
+
+![How to Install Asterisk on CentOS 7](/docs/assets/how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
+
+## What is Asterisk?
 
 Asterisk is an open source *private branch exchange* (PBX) server that uses *Session Initiation Protocol* (SIP) to route and manage telephone calls. Notable features include customer service queues, music on hold, conference calling, and call recording, among others.
 

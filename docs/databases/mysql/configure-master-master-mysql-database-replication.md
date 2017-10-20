@@ -6,7 +6,7 @@ description: 'Learn how to set up master-master MySQL databases replication in t
 keywords: 'set up mysql,replication,master-master,high availability'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/backup-options/', 'databases/mysql/mysql-master-master/', 'databases/mysql/mysql-master-master-replication/']
-modified: Monday, July 10th, 2017
+modified: Tuesday, October 10th, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, December 24, 2014'
@@ -92,8 +92,8 @@ Use the following commands to install MySQL on each of the Linodes:
 
 3.  Run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
-        mysql -ureplication -p -h x.x.x.x -P 3306
-
+        mysql -u replication -p -h x.x.x.x -P 3306
+        
     This command should connect you to the remote server's MySQL instance.
 
 ##Configure Database Replication
@@ -125,9 +125,9 @@ Use the following commands to install MySQL on each of the Linodes:
 
 4.  Set the slave database status on Server 1, replacing the same values swapped in step 2 with those from the Server 2.
 
-        SLAVE STOP;
+        STOP SLAVE;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=277;
-        SLAVE START;
+        START SLAVE;
 
 5.  Test by creating a database and inserting a row:
 

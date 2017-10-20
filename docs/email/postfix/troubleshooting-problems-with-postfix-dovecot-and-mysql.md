@@ -13,9 +13,11 @@ published: 'Monday, July 22nd, 2013'
 title: 'Troubleshooting Problems with Postfix, Dovecot, and MySQL'
 ---
 
+![Troubleshooting Problems with Postfix, Dovecot, and MySQL](/docs/assets/troubleshooting-problems-with-postfix-dovecot-and-mysql.jpg "Troubleshooting Problems with Postfix, Dovecot, and MySQL")
+
 This guide is a companion to the [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) installation guide. Because setting up a mail server is tricky, we've created this companion troubleshooting guide to help you work through and resolve any problems you might be experiencing. By the time you reach the end of this guide, you'll know how to debug problems with your Postfix, Dovecot, and MySQL mail server.
 
-The first section, Troubleshooting Checklist\_, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration\_, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
+The first section, Troubleshooting Checklist, has a top-down approach to troubleshooting that will help you find specific errors for your mail server. The second section, Step-by-Step Configuration, uses a bottom-up approach that shows you how to get a basic mail server functioning and then gradually add more features.
 
 ## Troubleshooting Checklist
 
@@ -108,7 +110,7 @@ To check that Postfix and Dovecot are running and to find startup errors, follow
 12. If you find a syntax error, open up the offending file and look at the line mentioned (Line 36 in the example above). It's actually fairly common to get syntax errors during the Dovecot setup process, because there are so many different files and a lot of nested brackets.
 13. Use [Notepad++](http://notepad-plus-plus.org) or some other program that can easily match brackets to help you fix the error. Or, you could restore the appropriate default configuration file (named with .orig, if you were following the main setup guide).
 
-### Checking the Logs
+### Check the Logs
 
 If Postfix, Dovecot, and MySQL are running, the next troubleshooting step is to check the mail logs. By default, all of the incoming and outgoing connections and any associated errors get logged in `/var/log/mail.log`. One of the most helpful ways to view the log file is with the `tail` command, which when combined with the `-f` flag, shows you the most recent part of the log live as it's updated.
 
@@ -122,7 +124,7 @@ If Postfix, Dovecot, and MySQL are running, the next troubleshooting step is to 
 
 If you see an error or warning in the log, copy it. Search for that exact error online (without the details specific to your server), and you'll likely be able to find a solution or additional troubleshooting help.
 
-### Enabling Verbose Logs
+### Enable Verbose Logs
 
 The default mail log may not contain all the information you need. In that case, the next step is to enable verbose logging for Postfix and Dovecot, and to separate the Postfix and Dovecot logs into two separate files so they're easier to sort through. The Postfix log will document messages that are relayed to or from outside servers, and the Dovecot log will record authorization attempts.
 
@@ -186,7 +188,7 @@ Follow these instructions to enable verbose logging for Postfix:
 
 The Postfix log will now display more information about messages that are coming from or going to outside servers. You can still view the log at `/var/log/mail.log`. Remember to disable verbose logging when you're done troubleshooting so your server doesn't fill up with logs.
 
-### Checking Port Availability
+### Check Port Availability
 
 Sometimes email problems occur because the mail server and mail client aren't talking to each other on the same ports. For mail to get from client to server, or vice versa, both have to be using the same ports, and those ports also have to be open along the internet route between the two. If you are following the accompanying [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) installation guide, you should be using the following ports:
 

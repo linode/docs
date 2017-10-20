@@ -141,7 +141,7 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
       NM_CONTROLLED=no
 
       IPV6_DEFAULTGW=2001:db8:1234:5678::1
-      IPV6_DEFAUTLDEV=he-ipv6
+      IPV6_DEFAULTDEV=he-ipv6
       ~~~
 
       In the above, replace the:
