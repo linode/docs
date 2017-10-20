@@ -1,6 +1,6 @@
 ---
 author: 
-  name: Angel
+  name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will walk you through the basics of installing and running SELinux.' 
 keywords: 'Security-enhanced Linux, secure open source, firewall, SELinux, getting-started' 
@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 alias: 
 modified: 'Friday July 21, 2017'
 modified_by: 
-  name: Angel
+  name: Angel Guarisma
 published: 'Friday July 21, 2017' 
 title: Getting Started with SELinux
 external_resources:
@@ -31,7 +31,7 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 {: .note} 
 >
-> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [disabling SELinux](/docs/quick-answers/linux/how-to-disable-selinux)
+> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/docs/quick-answers/linux/how-to-change-selinux-modes)
 
 ## Before You Begin
 
@@ -88,7 +88,7 @@ You can also retrieve even more information using `sestatus`:
 	Policy deny_unknown status:     allowed
 	Max kernel policy version:      28
 	
-You have to set SELinux to `permissive`, so that you can create policies on your system for SELinux to enforce. After changing SELinux's mode, you have to reboot your system.  
+You have to set SELinux to `permissive`, so that you can create policies on your system for SELinux to enforce. After changing SELinux's mode, you have to reboot your system.
 
 	[root@centos ~]# setenforce 0
 	[root@centos ~]# getenforce
