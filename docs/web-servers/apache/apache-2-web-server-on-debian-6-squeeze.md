@@ -24,7 +24,7 @@ Before You Begin
 ----------------
 
 -   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](web-servers/apache/apache-2-web-server-on-debian-6-squeeze) for your server.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/web-servers/apache/apache-2-web-server-on-debian-6-squeeze) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
