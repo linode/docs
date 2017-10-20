@@ -33,17 +33,19 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
 
 ## Before You Begin
 
-1. Follow the [Installation & configuration of a 3 nodes Hadoop cluster](docs/databases/hadoop/install-and-configure-hadoop-cluster) guide to set up your YARN cluster. Master node (HDFS NameNode and YARN ResourceManager) is called *node-master* and slave nodes (HDFS DataNode and YARN NodeManager) are called *node1* and *node2*.
+1. Follow the [Installation & configuration of a 3 nodes Hadoop cluster](docs/databases/hadoop/install-and-configure-hadoop-cluster) guide to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called *node-master* and the slave nodes (HDFS DataNode and YARN NodeManager) are called *node1* and *node2*.
 
-    {: note }
+    {:.note }
     > The instructions in this guide will be run from **node-master** unless otherwise specified.
 
-2. Be sure you have a `hadoop` user that can access to all cluster nodes with SSH keys without password
-.
-3. Note the path of your Hadoop installation. This guide assume it is installed in `/home/hadoop/hadoop`. If not, change the path accordingly
+2. Be sure you have a `hadoop` user that can access to all cluster nodes with SSH keys without a password.
 
-{:.note}
-> If your Hadoop cluster has been installed with above guide, no further configuration should be needed. Otherwise, change the node names, user and path accordingly.
+3. Note the path of your Hadoop installation. This guide assumes it is installed in `/home/hadoop/hadoop`. If not, change the path accordingly.
+
+4. Run `jps` on each of the nodes to confirm that HDFS and YARN are running. If not, start the services with:
+
+      start-dfs.sh
+      start-yarn.sh
 
 {: .note}
 >
@@ -56,7 +58,7 @@ Spark binaries are available from [Apache Spark download page](https://spark.apa
 
 1.  Get download URL from Spark download page, download it, and uncompress it.
 
-    For Spark 2.2.0 with Hadoop 2.7 or later, log on `node-master` as `hadoop` user, and run:
+    For Spark 2.2.0 with Hadoop 2.7 or later, log on `node-master` as the `hadoop` user, and run:
 
         cd /home/hadoop
         wget https://d3kbcqa49mib13.cloudfront.net/spark-2.2.0-bin-hadoop2.7.tgz
@@ -83,7 +85,7 @@ Spark binaries are available from [Apache Spark download page](https://spark.apa
 
 ## Integrate Spark with YARN
 
-To communicate with YARN Resource Manager, Spark needs to be aware of Hadoop configuration. This is done via `HADOOP_CONF_DIR` environment variable. The `SPARK_HOME` variable is not mandatory, but is useful when submitting Spark jobs in command line.
+To communicate with the YARN Resource Manager, Spark needs to be aware of your Hadoop configuration. This is done via the `HADOOP_CONF_DIR` environment variable. The `SPARK_HOME` variable is not mandatory, but is useful when submitting Spark jobs on the command line.
 
 1. Edit *hadoop* user profile `/home/hadoop/.profile` and add the following lines:
 
@@ -95,13 +97,13 @@ To communicate with YARN Resource Manager, Spark needs to be aware of Hadoop con
         export LD_LIBRARY_PATH=/home/hadoop/hadoop/lib/native:$LD_LIBRARY_PATH
         ~~~
 
-    and then restart your session by logging out and logging in again.
+2. Restart your session by logging out and logging in again.
 
-2. Rename the spark default template config file:
+3. Rename the spark default template config file:
 
         mv $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
 
-3. Edit `$SPARK_HOME/conf/spark-defaults.conf` to set master to *yarn*:
+4. Edit `$SPARK_HOME/conf/spark-defaults.conf` and set `spark.master` to `yarn`:
 
     {: .file-excerpt }
     $SPARK_HOME/conf/spark-defaults.conf
@@ -109,25 +111,25 @@ To communicate with YARN Resource Manager, Spark needs to be aware of Hadoop con
         spark.master    yarn
         ~~~
 
-Spark is now ready to interact with YARN cluster.
+Spark is now ready to interact with your YARN cluster.
 
 ## Understand Client and Cluster Mode
 
-Spark jobs can run on YARN in two mode : *cluster* mode and *client* mode. Understanding the difference between the two mode is needed for memory allocation configuration, and to submit jobs as expected.
+Spark jobs can run on YARN in two modes: *cluster* mode and *client* mode. Understanding the difference between the two modes is important for choosing an appropriate memory allocation configuration, and to submit jobs as expected.
 
-A Spark job consists of 2 parts : some Spark Executors that run the actual tasks, and a Spark Driver, that schedule the Executors.
+A Spark job consists of 2 parts: Spark Executors that run the actual tasks, and a Spark Driver that schedules the Executors.
 
--  In **cluster** mode, everything run inside the cluster. You can start a job from your laptop and go away, the job will still go on. In this mode, the Spark Driver is encapsulated inside the YARN Application Master.
+-  In **cluster** mode, everything runs inside the cluster. You can start a job from your laptop and the job will continue running even if youy close your computer. In this mode, the Spark Driver is encapsulated inside the YARN Application Master.
 
--  In **client** mode, the Spark driver runs on the client, like your laptop. If the client stop, the job fails. Spark Executors still run on the cluster, and to schedule everything, a small YARN Application Master is created.
+-  In **client** mode, the Spark driver runs on a client, such as your laptop. If the client is shut down, the job fails. Spark Executors still run on the cluster, and to schedule everything, a small YARN Application Master is created.
 
-Client mode is well suited for interactive jobs, but application will fail if the client stops. For long running jobs, cluster mode is more appropriate.
+Client mode is well suited for interactive jobs, but applications will fail if the client stops. For long running jobs, cluster mode is more appropriate.
 
 ## Configure Memory Allocation
 
-Allocation of Spark containers to run in YARN containers may fail if memory allocation is not configured properly. For nodes with less than 4Gb RAM, default configuration is not adequate and may trigger lot of swapping and poor performances, or even failure of application initialization due to lack of memory.
+Allocation of Spark containers to run in YARN containers may fail if memory allocation is not configured properly. For nodes with less than 4G RAM, the default configuration is not adequate and may trigger swapping and poor performance, or even the failure of application initialization due to lack of memory.
 
-Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory setting so that your changes are compatible with YARN limits.
+Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory settings so that your changes are compatible with your YARN cluster's limits.
 
 {:.note}
 > See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](docs/databases/hadoop/install-and-configure-hadoop-cluster) guide for more details on managing your YARN cluster's memory.
@@ -147,7 +149,7 @@ YARN will reject creation of any container if requested memory is above the maxi
 
 In cluster mode, the Spark Driver runs inside YARN Application Master. The amount of memory requested by Spark at initialization is configured either in conf file, or on command line.
 
-1. In `spark-defaults.conf` file, set the default amount of memory allocated to Spark Driver in cluster mode via `spark.driver.memory` (default to 1G). To set it to 512MB, edit the file:
+1. In `spark-defaults.conf` file, set the default amount of memory allocated to Spark Driver in cluster mode via `spark.driver.memory` (this value defaults to 1G). To set it to 512MB, edit the file:
 
     {:.file-excerpt }
     $SPARK_HOME/conf/spark-defaults.conf
@@ -155,10 +157,10 @@ In cluster mode, the Spark Driver runs inside YARN Application Master. The amoun
         spark.driver.memory    512m
         ~~~
 
-2. On the command line, you can specify the amount of memory requested with `--driver-memory` parameter of `spark-submit`. See below section about application submission for examples.
+2. On the command line, you can specify the amount of memory requested with the `--driver-memory` parameter of `spark-submit`. See the following section about application submission for examples.
 
-    {:.note }
-    > Values given on command line will overwrite whatever has been set in `spark-defaults.conf`
+    {:.note}
+    > Values given on the command line will override whatever has been set in `spark-defaults.conf`.
 
 ### Configure the Spark Application Master Memory Allocation in Client Mode
 
@@ -172,19 +174,19 @@ In client mode, the Spark driver will not run on the cluster, so the above confi
         spark.yarn.am.memory    512m
         ~~~
 
-2. This value can not be set on command line via `spark-submit` parameters.
+2. This value can not be set on the command line.
 
 ### Configure Spark Executors Memory Allocation
 
-Spark Executors memory allocation is calculated with two parameters inside `$SPARK_HOME/conf/spark-defaults.conf`:
+The Spark Executors' memory allocation is calculated based on two parameters inside `$SPARK_HOME/conf/spark-defaults.conf`:
 
   1. `spark.executor.memory` set the base memory used in calculation
-  2. `spark.yarn.executor.memoryOverhead` is added to the base memory. It defaults to 7% of base memory, with a minimum of 384Mb
+  2. `spark.yarn.executor.memoryOverhead` is added to the base memory. It defaults to 7% of base memory, with a minimum of 384MB
 
 {:.note}
-> Make sure that Executor requested memory, **including** overhead memory, is below the YARN container maximum size, otherwise Spark application won't initialize.
+> Make sure that Executor requested memory, **including** overhead memory, is below the YARN container maximum size, otherwise the Spark application won't initialize.
 
-Example for `spark.executor.memory` of 1Gb , required memory is 1024+384=1408Mo. For 512Mb, required memory will be 512+384=896Mb
+Example: for `spark.executor.memory` of 1Gb , the required memory is 1024+384=1408Mo. For 512MB, the required memory will be 512+384=896Mb
 
 To set executor memory to 512Mb, edit `$SPARK_HOME/conf/spark-defaults.conf` and add the following line:
 
@@ -197,35 +199,35 @@ $SPARK_HOME/conf/spark-defaults.conf
 
 ## Submitting Spark Application to YARN Cluster
 
-Applications are submitted with `spark-submit` command. Spark installation package contains sample applications, like parallel calculation of *Pi* number, that we will run in this section.
+Applications are submitted with the `spark-submit` command. The Spark installation package contains sample applications, like the parallel calculation of *Pi*, that you can run to practice starting Spark jobs.
 
-To run the sample *Pi* calculation, use the following command :
+To run the sample *Pi* calculation, use the following command:
 
     spark-submit --deploy-mode client \
                    --class org.apache.spark.examples.SparkPi \
                    $SPARK_HOME/examples/jars/spark-examples_2.11-2.2.0.jar 10
 
-The first parameter, `--deploy-mode`, specify which mode to use, `client` or `cluster`.
+The first parameter, `--deploy-mode`, specifies which mode to use, `client` or `cluster`.
 
 To run the same application in cluster mode, replace `--deploy-mode client`with `--deploy-mode cluster`.
 
 
 ## Monitoring your Spark Applications
 
-When you submit a job, Spark driver automatically starts a web UI on port 4040 that display information about the application. However, when execution is finished, the Web UI is dismissed with the application driver and cannot be accessed anymore.
+When you submit a job, Spark driver automatically starts a web UI on port 4040 that displays information about the application. However, when execution is finished, the Web UI is dismissed with the application driver and can no longer be accessed.
 
-Spark provide a History Server that collect applications logs from HDFS and display them in a persistent web UI. The following steps will enable log persistance in HDFS:
+Spark provides a History Server that collect application logs from HDFS and displays them in a persistent web UI. The following steps will enable log persistance in HDFS:
 
-1. Edit `$SPARK_HOME/conf/spark-defaults.conf` and add the following lines to enable Spark jobs to log in HDFS
+1. Edit `$SPARK_HOME/conf/spark-defaults.conf` and add the following lines to enable Spark jobs to log in HDFS:
 
     {: .file-excerpt }
     $SPARK_HOME/conf/spark-defaults.conf
-    : ~~~ properties
+      : ~~~
         spark.eventLog.enabled  true
         spark.eventLog.dir hdfs://node-master:9000/spark-logs
         ~~~
 
-2. Create the log directory in hdfs:
+2. Create the log directory in HDFS:
 
         hdfs dfs -mkdir /spark-logs
 
@@ -233,7 +235,7 @@ Spark provide a History Server that collect applications logs from HDFS and disp
 
     {: .file-excerpt }
     $SPARK_HOME/conf/spark-defaults.conf
-    : ~~~ properties
+      : ~~~
         spark.history.provider            org.apache.spark.deploy.history.FsHistoryProvider
         spark.history.fs.logDirectory     hdfs://node-master:9000/spark-logs
         spark.history.fs.update.interval  10s
@@ -246,34 +248,32 @@ Spark provide a History Server that collect applications logs from HDFS and disp
 
         $SPARK_HOME/sbin/start-history-server.sh
 
-5. Repeat steps from previous section to start a job with `spark-submit` that will put some logs in HDFS
+5. Repeat steps from previous section to start a job with `spark-submit` that will generate some logs in the HDFS:
 
-6.  Access the history server with http://node-master:18080
+6.  Access the history server by navigating to http://node-master:18080 in a web browser:
 
-![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png)
+  ![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png)
 
 ## Running the Spark Shell
 
-The Spark shell provides an interactive way to play with your data.
+The Spark shell provides an interactive way to examine and work with your data.
 
-1.  Put some data into HDFS for analysis, like for example *Alice In Wonderland* from Gutemberg project
+1.  Put some data into HDFS for analysis. This example is the text of *Alice In Wonderland* from the Gutenberg project:
 
         cd /home/hadoop
         wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
         hdfs dfs -mkdir inputs
         hdfs dfs -put alice.txt inputs
 
-2.  Start the Spark shell
+2.  Start the Spark shell:
 
         spark-shell
-
-3.  Use Scala Spark API to analyse data:
 
         var input = spark.read.textFile("inputs/alice.txt")
         // Count the number of non blank lines
         input.filter(line => line.length()>0).count()
 
-Scala Spark API is beyond the scope of this guide, you can find the official documentation on [Official Apache Spark documentation](https://spark.apache.org/docs/latest/quick-start.html).
+The Scala Spark API is beyond the scope of this guide. You can find the official documentation on [Official Apache Spark documentation](https://spark.apache.org/docs/latest/quick-start.html).
 
 ## Where to Go Next ?
 
