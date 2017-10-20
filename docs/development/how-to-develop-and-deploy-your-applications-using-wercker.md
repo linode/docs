@@ -435,13 +435,15 @@ The final example demonstrates the Wercker CLI.
 
  ![Cities JSON](/docs/assets/wercker-cities-JSON.png)
 
-6.  Open another terminal and run the command:
+6.  Close the program with Ctrl-C. Run the command:
 
-        wercker dev
+        wercker dev --expose-ports
 
   ![Wercker Dev](/docs/assets/wercker-dev.jpg)
 
-  This command starts the auto-build function in the `dev` pipeline. If you make any change to the `main.go` file and reload your browser you will see those changes updated instantly, without rebuilding your application.
+  This command starts the auto-build function in the `dev` pipeline. It builds the application within the Docker container and serves from there. If you make any changes to the app, the container will rebuild to reflect the changes.
+
+7.  Open the `main.go` file in a text editor and add an entry to the list of cities. Refresh your browser and you should see the updated list.
 
 ## Next Steps
 
