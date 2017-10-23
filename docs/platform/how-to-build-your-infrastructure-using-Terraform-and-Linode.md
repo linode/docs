@@ -438,7 +438,7 @@ So far, the guide has covered the tip of the iceberg of what Terraform can do. T
 * How to overcome the limitation of hard-coded values.
 * An introduction to Terraform server configuration solutions.
 
-## Terraform Modules 
+## Terraform Modules
 
 The idea behind any code-driven solution is to avoid repetitive blocks. Terraform uses a concept called *modules* to group common server requirement, configurations and provisioning. You can think of modules as an equivalent to *functions* in programming languages. Modules implementation can't be easier: as discussed before Terraform loads by default any file with the extension **.tf** into memory, what was not mentioned is that this feature applies to sub-folders as well.
 
@@ -559,7 +559,7 @@ db_size = "8192"
 }
 	~~~
 
-As you can see using modules is very easy, just call them by name with the commad `module` and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you copy-paste all reusable code in the main configuration file. Let's deploy this infrastructure.
+As you can see using modules is very easy, just call them by name with the command `module` and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you copy-paste all reusable code in the main configuration file. Let's deploy this infrastructure.
 
         cd ~/go_projects/bin/testing/
         terraform init && terraform plan
