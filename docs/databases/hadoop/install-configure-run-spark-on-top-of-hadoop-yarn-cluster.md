@@ -6,7 +6,7 @@ description: 'This guide shows you how to install, configure, and run Spark on t
 keywords: 'spark,hadoop,yarn,hdfs'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, October 20th, 2017'
-modified: 'Monday, October 23rd, 2017'
+modified: 'Monday, October 23, 2017'
 modified_by:
   name: Linode
 title: 'Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster'
