@@ -126,7 +126,7 @@ There can be as many virtual hosts files as needed to support the amount of doma
     /etc/apache2/sites-available/example.org.conf
     :   ~~~ conf
         <VirtualHost *:80>
-             ServerAdmin webmaster@example.org     
+             ServerAdmin webmaster@example.org
              ServerName example.org
              ServerAlias www.example.org
              DocumentRoot /var/www/html/example.org/public_html/
@@ -200,7 +200,7 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
     /etc/php5/apache2/php.ini
     :   ~~~ ini
         error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        error_log = /var/log/php/error.log  
+        error_log = /var/log/php/error.log
         max_input_time = 30
         ~~~
 

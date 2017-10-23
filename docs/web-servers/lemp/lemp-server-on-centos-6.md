@@ -25,7 +25,7 @@ Prior to beginning this guide, please complete the [getting started guide](/docs
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -51,7 +51,7 @@ For more in-depth installation instructions consider our [guide to installing ng
 If you choose to install nginx from the EPEL repository, issue the following commands to initialize the EPEL repository and install nginx:
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-    yum update     
+    yum update
     yum install nginx sudo
 
 This will install version 0.8.54 of the nginx server. Issue the following commands to start nginx for the first and ensure that nginx will start following the next reboot cycle :
@@ -255,7 +255,7 @@ nginx.conf
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]      
+    # [...]
     }
     ~~~
 
@@ -269,7 +269,7 @@ nginx.conf
 
     include /opt/nginx-sites.conf;
 
-    # [...]      
+    # [...]
     }
     ~~~
 
@@ -286,7 +286,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 If your application includes PHP code you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. Begin the deployment process by issuing the following commands to install the required dependencies:
 
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-    yum update     
+    yum update
     yum install php-cli php spawn-fcgi wget
 
 Next you will need to create the scripts that start and control the php-cgi process. First create `/usr/bin/php-fastcgi` with the following contents:

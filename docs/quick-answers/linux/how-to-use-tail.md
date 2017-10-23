@@ -22,7 +22,7 @@ In this guide, you'll learn how to use the `tail` command. Using `tail` is a sim
 
         tail /var/log/auth.log
 
-    This will print the last ten lines of the `/var/log/auth.log` file to your terminal output. 
+    This will print the last ten lines of the `/var/log/auth.log` file to your terminal output.
 
 2.  To change the number of lines displayed, use the `-n` option:
 

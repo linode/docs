@@ -70,7 +70,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 ## Install SteamCMD and Left 4 Dead 2
 
 {: .note}
->This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4. 
+>This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
 
 1.  From your user's home folder, download SteamCMD into its own directory:
 
@@ -116,7 +116,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
         Steam>
 
-    The `Steam>` prompt is similar to the Linux command prompt - with the exception of not being able to execute normal Linux commands. 
+    The `Steam>` prompt is similar to the Linux command prompt - with the exception of not being able to execute normal Linux commands.
 
 4.  Install Left 4 Dead 2 from the SteamCMD prompt:
 
@@ -139,21 +139,21 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 1.  Before you configure the server, you should download an example config file:
 
         cd ~/Steam/L4D2-server/left4dead2/cfg
-		
+
 	Choose one of the following example files:
 
         wget https://www.gottnt.com/l4d2/basic-server.cfg
         wget https://www.gottnt.com/l4d2/detailed-server.cfg
-		
+
     Make sure to rename the file to `server.cfg` before launching the server:
-	
+
 2.  Open the configuration file with `nano` to edit the configuration. Most server options are explained in the configuration file. Simply follow the instructions:
 
         nano server.cfg
 
 3.  When you are finished, exit `nano` and save your changes.
 
-4.  Next, it is a good idea to write a custom startup script that will execute your custom config files. 
+4.  Next, it is a good idea to write a custom startup script that will execute your custom config files.
 
     {: .file}
     ~/Steam/L4D2-server/start_L4D2.sh
@@ -167,7 +167,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
     You can change the map to whichever one you prefer.
 	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
-	
+
 5.  Make the script executable:
 
         chmod +x ~/Steam/L4D2-server/start_L4D2.sh
@@ -177,7 +177,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 1.  To start the server, simply input and run:
 
         ./start_L4D2
-        
+
 2.  To detach from the screen session which runs the server console, press these two key combinations in succession:
 
     **CONTROL + A**<br>
@@ -193,14 +193,14 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
 You can connect to the server in any one of three easy methods:
 
-1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27020` where 12.34.56.78 is your Linode's ip, and 27020 is your port. 
+1.  Ensure that the developer console is enabled. On the main menu, press the tilde (`~`) key to open the console. Next, type the following: `connect 12.34.56.78:27020` where 12.34.56.78 is your Linode's ip, and 27020 is your port.
 
 2.  A slightly easier method is to install the following add-on before launching the game: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=214945910). After doing this, launch the game, click the new `Console` button on the main menu, and type the command found in method 1, above.
 
-3.  A third method is to install the following add-on: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launch the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file. 
+3.  A third method is to install the following add-on: [Link](https://steamcommunity.com/sharedfiles/filedetails/?id=121088946) and then launch the game. Next, click on the new `Server Browser` option on the main menu and find your server in the long list of servers. This method only works if you have set the `hostname`, `sv_search_key`, and `sv_tags` options in the config file.
 
     {: .note }
     >
     >Your L4D2 server will only show up in the `Custom` list of servers. Therefore, we recomend that you add it to your favorites to avoid having to look for it again.
 
-Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`). Let the playing begin! 
+Finally, invite friends to the game using the Steam Overlay (`SHIFT + TAB`). Let the playing begin!

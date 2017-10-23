@@ -21,7 +21,7 @@ Sinatra is a simple lightweight framework for web application development in the
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -33,7 +33,7 @@ Install Software
 
 Issue the following commands to update your system's package database, ensure that the latest version of all installed packages are up to date, and install all dependencies required for Sinatra:
 
-    yum update 
+    yum update
     yum install ruby-devel ruby ruby-irb  rubygems zlib-devel wget openssl-devel pcre pcre-devel make gcc gcc-c++ curl-devel
 
 Install the `rack`, `rake` and `sinatra` gems:
@@ -47,9 +47,9 @@ Install Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
-    cd /opt 
+    cd /opt
     wget http://rubyforge.org/frs/download.php/74326/passenger-3.0.3.tar.gz
-    tar xzvf passenger-3.0.3.tar.gz 
+    tar xzvf passenger-3.0.3.tar.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -69,7 +69,7 @@ Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to contr
     wget -O init-rpm.sh http://www.linode.com/docs/assets/606-init-rpm.sh
     mv /opt/init-rpm.sh /etc/init.d/nginx
     chmod +x  /etc/init.d/nginx
-    chkconfig --add nginx 
+    chkconfig --add nginx
     chkconfig nginx on
 
 You can now start, stop, and restart Nginx using the following commands:
@@ -98,7 +98,7 @@ Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying 
 :   ~~~ nginx
     # [...]
     http {
-        include /srv/www/example.com/nginx.conf; 
+        include /srv/www/example.com/nginx.conf;
         passenger_root /opt/passenger-3.0.1;
         passenger_ruby /usr/bin/ruby;
     # [...]

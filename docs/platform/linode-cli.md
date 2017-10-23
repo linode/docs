@@ -178,7 +178,7 @@ Once the CLI has your Linode Manager username and password, it will generate and
 
  {: .note }
 >
-> If you have [two-factor authentication](/docs/linode-manager-security#sph_two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+> If you have [two-factor authentication](/docs/security/linode-manager-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 >
 >     Two-factor authentication code
 >     >> 123456

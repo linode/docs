@@ -158,7 +158,7 @@ Installing via the package manager allows you to more easily download updates an
     {: .note}
     >
     >On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
-        
+
 2.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
         cd ~
@@ -208,11 +208,11 @@ The game server will still operate despite this error, and it should be somethin
 1.  Run the executable in a screen.
 
     If you have installed SteamCMD from repositories:
-        
+
         screen ./steamcmd
 
-    If you have installed SteamCMD manually: 
-        
+    If you have installed SteamCMD manually:
+
         screen ./steamcmd.sh
 
     That will return an output similar to below and leave you at the `Steam>` prompt:
@@ -262,6 +262,6 @@ The game server will still operate despite this error, and it should be somethin
 
 ## Next Steps
 
-You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings to be modified. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
+You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings to be modified. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down.
 
 Our [game server guides](/docs/applications/game-servers/) cover these requirements for specific games and contain various Steam tutorials which will pick you up exactly where this page leaves off.

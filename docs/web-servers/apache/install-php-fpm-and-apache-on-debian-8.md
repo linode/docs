@@ -67,7 +67,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get install php5-mysql
 
-4.  You can now [configure virtual hosting](/docs/websites/apache/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
+4.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-8#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
 
 ## Configure PHP-FPM
 

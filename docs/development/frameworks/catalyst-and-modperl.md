@@ -27,7 +27,7 @@ Although the Catalyst framework is packaged and included in the repositories of 
 
 If you have not yet installed a development tool chain including Perl and its dependencies, issue the following commands on Debian and Ubuntu systems to install this software and make sure that your system's package database and installed software are up to date:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
     apt-get install perl build-essential curl
 
@@ -119,12 +119,12 @@ The following example represents a complete and fully functional virtual hosting
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost *:80> 
+    <VirtualHost *:80>
          ServerAdmin admin@example.com
          ServerName example.com
          ServerAlias www.example.com
 
-         ErrorLog /srv/www/example.com/logs/error.log 
+         ErrorLog /srv/www/example.com/logs/error.log
          CustomLog /srv/www/example.com/logs/access.log combined
 
              DocumentRoot /srv/www/example.com/public_html/

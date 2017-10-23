@@ -47,7 +47,7 @@ At the time of writing, the latest stable version of DokuWiki is 2009-12-25c. Ho
     mkdir -p /srv/www/example.com/src/
     cd /srv/www/example.com/src/
     wget http://www.splitbrain.org/_media/projects/dokuwiki/dokuwiki-2009-12-25c.tgz
-    tar -zxvf dokuwiki-2009-12-25c.tgz 
+    tar -zxvf dokuwiki-2009-12-25c.tgz
     cp -R /srv/www/example.com/src/dokuwiki-2009-12-25/* /srv/www/example.com/public_html/
     chmod -R 777 /srv/www/example.com/public_html/data/ /srv/www/example.com/public_html/conf/
 

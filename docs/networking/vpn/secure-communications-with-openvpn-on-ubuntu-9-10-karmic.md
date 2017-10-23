@@ -104,7 +104,7 @@ In order to authenticate to the VPN, you'll need to copy a number of certificate
 -   `client1.crt`
 -   `client1.key`
 
-You can use the `scp` tool, or any [other means of transferring](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
+You can use the `scp` tool, or any [other means of transferring](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
 
 Typically we recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the PGP tool.
 
@@ -236,7 +236,7 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
     iptables -A FORWARD -j REJECT
     iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-    
+
     exit 0
     ~~~
 
@@ -247,7 +247,7 @@ This will enable all client traffic *except* DNS queries to be forwarded through
 :   ~~~
     #
     # universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe

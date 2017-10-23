@@ -170,7 +170,7 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 7.  Click **Reset Root Password**. The Linode's dashboard appears.
 8.  Click **Boot** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connecting-to-your-linode) for more information about connecting.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting.
 
 ## Next Steps
 

@@ -27,7 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname and Configure /etc/hosts
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname) and [configuring /etc/hosts](/docs/getting-started#sph_update-etc-hosts). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     echo "HOSTNAME=\"titan\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart

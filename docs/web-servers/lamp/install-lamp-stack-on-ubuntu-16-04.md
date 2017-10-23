@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps. 
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web stack used for hosting web content in a Linux environment. Many consider it the platform of choice on which to develop and deploy high-performance web apps.
 
 This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
@@ -39,7 +39,7 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
         sudo apt update && sudo apt upgrade
 
 ## Quick Install Using Tasksel
-Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to get a LAMP stack running quickly. 
+Instead of installing Apache, MySQL, and PHP separately, tasksel offers a convenient way to get a LAMP stack running quickly.
 
 1.  Install tasksel if not already installed by default.
 
@@ -59,7 +59,7 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
         sudo apt install apache2
 
-2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request. 
+2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
 
     The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
@@ -222,7 +222,7 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 
 	{:.note}
-	> 
+	>
 	>If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
 
 ### Optional: Test and Troubleshoot the LAMP Stack

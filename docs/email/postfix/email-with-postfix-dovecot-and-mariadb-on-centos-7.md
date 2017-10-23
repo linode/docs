@@ -22,7 +22,7 @@ The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-ma
 
 ![Postfix_Dovcot_MariaDB](/docs/assets/Email_with_Postfix_Dovecot_and_MariaDB_on_CentOS_7_smg.jpg)
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname. Also ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname. Also ensure that the iptables [firewall](/docs/securing-your-server#configure-a-firewall) is not blocking any of the standard mail ports (25, 465, 587, 110, 995, 143, and 993). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 {: .note}
 >
@@ -451,7 +451,7 @@ In the following example, the MariaDB shell is used to add support for the domai
 
 ###Check Your Logs
 
-After the test mail is sent, check the mail logs to make sure the mail was delivered. 
+After the test mail is sent, check the mail logs to make sure the mail was delivered.
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 

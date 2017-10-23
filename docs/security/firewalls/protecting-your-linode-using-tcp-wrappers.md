@@ -79,7 +79,7 @@ Rules can be added to this file. *hosts.deny* rules have to be inserted in a cer
 
     daemons : hostnames/IPs
 
-On the left-hand side of the colon you enter a space-separated list of daemons (A daemon is just a process that runs in the background. For example, `sshd` is the daemon for SSH). On the right-hand side of the colon you place a space-separated list of the hostnames, IP addresses and wildcards the rule applies to. 
+On the left-hand side of the colon you enter a space-separated list of daemons (A daemon is just a process that runs in the background. For example, `sshd` is the daemon for SSH). On the right-hand side of the colon you place a space-separated list of the hostnames, IP addresses and wildcards the rule applies to.
 
 ## Examples
 

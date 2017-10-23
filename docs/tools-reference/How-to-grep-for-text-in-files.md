@@ -110,11 +110,11 @@ These examples outline several distinct ways that the `grep` tool is used to aid
 
 Beyond its uses in shell scripting and log filtering, `grep` has many alternate uses. In the following example, `grep` filters the lengthy `tar` help text to more efficiently find the options for dealing with `bzip` files:
 
-    tar --help | grep "bzip" 
+    tar --help | grep "bzip"
 
 `grep` is also useful for filtering the output of `ls` when listing the contents of directories with a large number of files. Take the following example:
 
-    ls /usr/lib | grep "xml" 
+    ls /usr/lib | grep "xml"
 
 While there may be many files in the `/usr/lib` directory, the list of files with the string `xml` in their title may be more useful.
 

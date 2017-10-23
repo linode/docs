@@ -27,7 +27,7 @@ You can move your Linode from one plan to another by using the *resize* feature.
 
  {: .note }
 >
-> If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/disk-images-config-profiles#resizing-a-disk).
+> If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
 
 Here's how to resize your Linode:
 

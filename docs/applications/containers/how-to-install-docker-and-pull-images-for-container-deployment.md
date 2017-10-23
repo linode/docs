@@ -8,10 +8,10 @@ contributor:
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
 keywords: 'docker,container,dockerfile,install docker'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, July 17, 2017
+published: 'Monday, July 17, 2017'
+modified: Monday, October 23, 2017
 modified_by:
   name: Linode
-published: 'Monday, July 17, 2017'
 title: 'How to Install Docker and Pull Images for Container Deployment'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
@@ -35,22 +35,53 @@ In this guide, you'll install Docker and pull down images that can be deployed a
 {: .note}
 > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-## Getting Started
+## Install Docker
 
-Install Docker:
+1.  As of this writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
 
-    apt install docker.io
+        apt remove docker docker-engine docker.io
 
-You will be presented with all necessary dependencies and asked to accept the installation. Type `y` to accept and complete the installation.
+2.  Make sure you have the necessary packages to allow the use of Docker's repository:
 
-{:.note}
->
->If you are using CentOS 7, use `sudo yum check-update && curl-fsSL https://get.docker.com/ | sh`
+        apt install apt-transport-https ca-certificates curl software-properties-common
 
-Docker installation adds the group `docker` to your Linode. Create the user `exampleuser`, give it `sudo` privileges, and add it to the Docker group:
+3.  Add Docker's GPG key:
 
-    adduser exampleuser
-    usermod -aG docker exampleuser
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+4.  Verify the fingerprint of the GPG key:
+
+        apt-key fingerprint 0EBFCD88
+
+    You should see output similar to the following:
+
+    {:.output}
+    ~~~
+    pub   4096R/0EBFCD88 2017-02-22
+          Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+    uid                  Docker Release (CE deb) <docker@docker.com>
+    sub   4096R/F273FCD8 2017-02-22
+    ~~~    
+
+5.  Add the `stable` Docker repository:
+
+        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+6.  Update your package indesx and install Docker CE:
+
+        apt update
+        apt install docker-ce
+
+7.  Add your limited user account to the `docker` group:
+
+        usermod -aG docker exampleuser
+
+    You will need to restart your shell session for this change to take effect.
+
+8.  Check that the installation was successful by running the built-in "Hello World" program:
+
+        docker run hello-world
+
 
 ## Start and Enable Docker
 
@@ -69,7 +100,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
     ![List Docker Images](/docs/assets/docker/docker-install-images-list.jpg "List Docker Images")
 
-2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command: 
+2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command:
 
         docker pull nginx
 
@@ -83,7 +114,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
 ### Find Unofficial nginx Images
 
-Alternatively, if you don't want to install the official nginx image, use `docker search` to find other nginx images: 
+Alternatively, if you don't want to install the official nginx image, use `docker search` to find other nginx images:
 
     docker search nginx
 
@@ -95,6 +126,6 @@ Use `docker pull` to pull one of the other images:
 
     docker pull blacklabelops/nginx
 
-## Ready to Keep Going? 
+## Ready to Keep Going?
 
 At this point, you should know how to install Docker and pull down images with which you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/docs/applications/containers/) to learn more.

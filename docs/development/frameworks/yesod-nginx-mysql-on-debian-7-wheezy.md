@@ -30,14 +30,14 @@ Yesod is a web framework based on the purely functional programming language Has
 >
 > The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Prerequisites 
+##Prerequisites
 
 Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/docs/getting-started) guide for setting your hostname. Here's how to check.
 
 1. Enter the following commands to view the hostname:
 
         hostname
-    
+
 2. And to display the fully qualified domain name (FQDN):
 
         hostname -f
@@ -53,7 +53,7 @@ Before you begin installing and configuring the components described below, plea
 
 ##Install Required Packages
 
-Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform. 
+Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform.
 
 1. Issue the following command to install the Haskell packages required by Yesod:
 
@@ -72,11 +72,11 @@ To avoid this problem, the maintainers of Yesod created a metapackage named *yes
         sudo adduser yesod
 
 2. Then switch over to user yesod:
-    
+
         su - yesod
 
 3. Update cabal:
-	
+
 		cabal update
 
 	Then you will find a new folder ``.cabal`` in yesod's home folder. The configuration files for ``cabal``, all programs, all libraries, and all their documents installed by ``cabal`` will be placed in this folder. In particular, new programs are installed in ``$HOME/.cabal/bin``. To use them, you can add this folder to yesod's PATH:
@@ -114,7 +114,7 @@ To avoid this problem, the maintainers of Yesod created a metapackage named *yes
 
 ##Use Yesod
 
-To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site. 
+To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site.
 
 1. Initiate Yesod development with the commands:
 
@@ -143,7 +143,7 @@ If you want to construct another site, just go back to ``$HOME`` folder, and iss
 
 ##Working with MySQL
 
-Before testing the scaffold of your site, you need to create a user and several databases in MySQL. The "yesod" command has generated a configuration file for MySQL, which is located at ``$HOME/myblog/config/mysql.yml``. Take a look. 
+Before testing the scaffold of your site, you need to create a user and several databases in MySQL. The "yesod" command has generated a configuration file for MySQL, which is located at ``$HOME/myblog/config/mysql.yml``. Take a look.
 
 {: .file-excerpt}
 $HOME/myblog/config/mysql.yml
@@ -205,7 +205,7 @@ If your Linode has a firewall, the port ``3000`` is probably inaccessible from o
 
 You may have noticed that we haven't configure Nginx yet. In fact, Yesod applications contain an http server called Warp, which is written in Haskell, and has a very fast run-time. Without http servers like Apache or Nginx installed, you can run Yesod applications as standalones. This feature is similar to the Express framework on Node.js.
 
-The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read [The Yesod Book](http://www.yesodweb.com/book/) for more details. 
+The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read [The Yesod Book](http://www.yesodweb.com/book/) for more details.
 
 ##Deploy to Nginx
 
@@ -222,8 +222,8 @@ Warp is a fast http server, but it lacks some advanced features like virtual hos
 
     You can regard them as ``make distclean && ./configure && make``, which is the standard way to build a Unix package from its source. But don't run ``cabal install`` here! This command will install your application into its sandbox, which is not what we want.
 
-2.  After issuing the command ``cabal build``, your application (myblog) is built and placed in ``$HOME/myblog/dist/build/myblog/``. This is the program that we are to deploy. You can move the directory anywhere. 
- 
+2.  After issuing the command ``cabal build``, your application (myblog) is built and placed in ``$HOME/myblog/dist/build/myblog/``. This is the program that we are to deploy. You can move the directory anywhere.
+
     You also need to place the two files ``$HOME/myblog/config`` and ``$HOME/myblog/static`` into the same directory.
 
     Let's create a folder in ``/var`` to deploy those files. You need root privileges to issue the following commands:
@@ -344,7 +344,7 @@ Warp is a fast http server, but it lacks some advanced features like virtual hos
 
         update-rc.d myblog defaults
 
-###Configure Nginx. 
+###Configure Nginx.
 
 Create the file ``/etc/nginx/sites-available/myblog``:
 

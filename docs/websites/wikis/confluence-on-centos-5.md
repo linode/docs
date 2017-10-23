@@ -21,7 +21,7 @@ external_resources:
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -73,7 +73,7 @@ Edit the `confluence-init.properties` file, adding the following line to it. Adj
 :   ~~~
     confluence.home=/var/lib/confluence
     ~~~
-    
+
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file and the "JAVA\_HOME" line as necessary to reflect current version numbers.
 
 {: .file-excerpt }

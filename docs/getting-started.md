@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 5th, 2017
+modified: Tuesday, October 10th, 2017
 modified_by:
   name: Linode
 published: 'Sunday, July 19th, 2009'
@@ -107,7 +107,7 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 ### Find the IP Address of Your Linode
 
-Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
+Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
 Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
@@ -191,10 +191,10 @@ Installing software updates should be performed *regularly*. If you need help re
 
 ### Gentoo
 
-    emaint sync
+    emaint sync -a
 
 After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge comand. If so, run the Portage update. Then update the rest of the system:
-    
+
     emerge --uDN @world
 
 ### Slackware
@@ -204,7 +204,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 ## Setting the Hostname
 
-Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/tools-reference/tools/using-your-systems-hosts-file).
+Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file).
 
 Once you're done, you can verify by running the command `hostname`.
 
@@ -220,6 +220,12 @@ Replace `example_hostname` with one of your choice.
 
     echo "example_hostname" > /etc/hostname
     hostname -F /etc/hostname
+
+{: .note }
+>
+>Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
+>
+>The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
 
 ### CentOS 6
 

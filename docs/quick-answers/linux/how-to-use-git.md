@@ -21,7 +21,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 
 1.  Create a folder in which to store your files, then initialize a Git repository in that folder:
 
-		mkdir testgit 
+		mkdir testgit
 		cd testgit
 		git init
 
@@ -39,11 +39,11 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 
 		Untracked files:
 		 (use "git add <file>..." to include in what will be committed)
-  
+
 		file.txt
 		file2.txt
 		file3.txt
-				
+
 		nothing added to commit but untracked files present (use "git add" to track)
 
 4. Since `file.txt`contains text, you want Git to track any future changes to that file. Use `git add file.txt` to add `file.txt` to the list of files Git monitors. Type `git status` after the addition to confirm that Git is tracking the new file.
@@ -51,7 +51,7 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 		git add file.txt
 		git status
 
-	This will return: 
+	This will return:
 
 		On branch master
 
@@ -59,12 +59,12 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 
 		Changes to be committed:
 		(use "git rm --cached <file>..." to unstage)
-  
+
 		new file:   file.txt
-	  
+
 		Untracked files:
 			(use "git add <file>..." to include in what will be committed)
-		
+
 			file2.txt
 			file3.txt
 
@@ -72,8 +72,8 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 
 		git commit -am "Added Hello Linode to file.txt"
 
-    Git will return the following message, confirming your new changes:  
-	
+    Git will return the following message, confirming your new changes:
+
 		[master (root-commit) e8cc496] added new file
 		1 file changed, 1 insertion(+)
 		create mode 100644 file.txt
@@ -82,9 +82,9 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 
 		git add -A
 		git status
-    
+
     Returns:
-    
+
 		On branch master
 		Changes to be committed:
 		(use "git reset HEAD <file>..." to unstage)

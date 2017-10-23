@@ -21,7 +21,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](web-servers/apache/apache-and-modwsgi-on-fedora-14). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -83,7 +83,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'
@@ -160,7 +160,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)
-- [Deploy Django Applications with mod\_wsgi](/docs/websites/frameworks/django-apache-and-modwsgi-on-fedora-14/)
+- [Deploy Django Applications with mod\_wsgi](/docs/development/frameworks/django-apache-and-modwsgi-on-fedora-14)
 - [Deploy Web.py Applications with mod\_wsgi](/docs/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/)
 - [Flask Framework](http://flask.pocoo.org/)
 - [Werkzug](http://werkzeug.pocoo.org/)

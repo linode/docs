@@ -50,7 +50,7 @@ The order of options is sometimes important. The `-f` option needs to be the las
 
 `gzip` and the accompanying `gunzip` command provide a simple and standard method of compressing individual files. Just as `tar` does not contain the ability to compress the files that it archives, the `gzip` tools are only able to act on single files. The following command takes the file `full-text.txt` and compresses it in the file `full-text.txt.gz` :
 
-    gzip full-text.txt 
+    gzip full-text.txt
 
 You can then use either of the following commands to decompress this file:
 
@@ -59,7 +59,7 @@ You can then use either of the following commands to decompress this file:
 
 You can add the `-v` flag to increase verbosity and output statistics regarding the rate of compression. This command would resemble the following:
 
-    gzip -v full-text.txt 
+    gzip -v full-text.txt
 
 `gzip` accepts standard input and thus can be used to compress the output of a stream of text. Consider the following example:
 
@@ -67,9 +67,9 @@ You can add the `-v` flag to increase verbosity and output statistics regarding 
 
 The compression algorithm that gzip uses to compress files (e.g. `DEFLATE`), can be configured to compress content more severely and thus save space at the expense of time. This ratio is controlled by a numeric argument between `-1` and `-9`. The default configuration is `-6`. `gzip` also contains `--fast` (equivalent to `-1`) and `--best` (equivalent to `-9`) as helpful mnemonics. Consider the following examples and their output:
 
-    gzip --best -v full-text.txt 
-    gzip --fast -v full-text.txt 
-    gzip -3 -v full-text.txt 
+    gzip --best -v full-text.txt
+    gzip --fast -v full-text.txt
+    gzip -3 -v full-text.txt
     gzip -8 -v full-text.txt
 
 ## Creating An Archive
@@ -151,7 +151,7 @@ The `-a` option that automatically determines which compression tool to use base
 
 There are some files, particularly log files created by long running daemons like web and email servers, that can grow to a great size. While removing these files does not present a viable option, these files can grow unmanageably large in a short time. Since they are plain text, compression is very effective; however, because log files tend to be distinct and independent of each other, it doesn't make sense to use a tool like `tar`. In these cases it makes sense to use `gzip` directly as in the following example:
 
-    gzip /var/log/mail.log 
+    gzip /var/log/mail.log
 
 This will replace the original `/var/log/mail.log` with a file named `mail.log.gz`. If you need to access to the contents of this file you can issue the following command to uncompress the contents:
 

@@ -21,7 +21,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -59,7 +59,7 @@ Send the following sequence of commands to set the required file permissions:
 Compile nginx with uWSGI Support
 --------------------------------
 
-Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Ubuntu packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/ubuntu-10.10-maverick) for compiling nginx from source:
+Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Ubuntu packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/ubuntu-10-10-maverick) for compiling nginx from source:
 
     apt-get install libpcre3-dev build-essential libssl-dev
     cd /opt/
@@ -195,6 +195,6 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Ubuntu 10.10 (Maverick)](/docs/web-servers/nginx/installation/ubuntu-10.10-maverick)
-- [Deploy a LEMP Server on Ubuntu 10.10 (Maverick)](/docs/lemp-guides/ubuntu-10.10-maverick/)
+- [Installing Nginx on Ubuntu 10.10 (Maverick)](/docs/web-servers/nginx/installation/ubuntu-10-10-maverick)
+- [Deploy a LEMP Server on Ubuntu 10.10 (Maverick)](/docs/lemp-guides/ubuntu-10-10-maverick/)
 - [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

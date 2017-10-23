@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -17,7 +18,7 @@ If you'd like to run a Linux distribution on your Linode that isn't available fr
 
  {: .note }
 >
-> This guide is intended for Linodes using our older Xen hypervisor. To installl a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode). 
+> This guide is intended for Linodes using our older Xen hypervisor. To installl a custom distribution on a new KVM Linode, see [this guide](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode).
 
 ##Creating the Virtual Machine
 

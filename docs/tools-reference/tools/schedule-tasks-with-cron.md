@@ -46,7 +46,7 @@ We'll explore each aspect of these commands later in this document. To edit the 
 
     crontab -e
 
-This will open a [text editor](/docs/using-linux/administration-basics#how_to_edit_text_interactively) and allow you to edit the `crontab`.
+This will open a [text editor](/docs/tools-reference/linux-system-administration-basics/#edit-text) and allow you to edit the `crontab`.
 
 ## Basic cron Use
 

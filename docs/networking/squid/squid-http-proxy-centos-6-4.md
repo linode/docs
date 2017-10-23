@@ -74,11 +74,11 @@ The following configuration allows for authenticated access to the Squid proxy s
         sudo htpasswd /etc/squid/squid_passwd user1
 
 	Replace **user1** with a username. You will be prompted to create a password for this user:
-	
+
 		New password:
 		Re-type new password:
 		Adding password for user user1
-	
+
 	You can repeat this step at any time to create new users.
 
 4.  Edit the Squid configuration file and add the following lines:
@@ -103,7 +103,7 @@ The following configuration allows for authenticated access to the Squid proxy s
 	:	~~~
 		user1:gh48gfno user2:9b83v5hd
 		~~~~
-	
+
 	If you are using Nano, the command `Control+k` will remove the entire line where the cursor rests. Once you've saved and exited the file, restart Squid:
 
 		sudo service squid restart

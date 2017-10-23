@@ -30,11 +30,11 @@ To accomplish this, insert the following configuration directives into your Virt
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    <VirtualHost static.example.com:80> 
+    <VirtualHost static.example.com:80>
         ServerAdmin admin@example.com
         ServerName static.example.com
         DocumentRoot /srv/www/static.example.com/public_html/
-        ErrorLog /srv/www/static.example.com/logs/error.log 
+        ErrorLog /srv/www/static.example.com/logs/error.log
         CustomLog /srv/www/static.example.com/logs/access.log combined
     </VirtualHost>
     ~~~
@@ -42,17 +42,17 @@ Apache Virtual Host Configuration
 Create the necessary directories by issuing the following commands:
 
     mkdir -p /srv/www/static.example.com/public_html/
-    mkdir -p /srv/www/static.example.com/logs/        
+    mkdir -p /srv/www/static.example.com/logs/
 
 Reload the web server configuration to create the virtual host. Issue the following command at this point and at any point after you've made changes to an Apache configuration file:
 
     /etc/init.d/httpd reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5#enabling_the_proxy_module) to ensure that `mod_proxy` is active.
+In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) to ensure that `mod_proxy` is active.
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
@@ -90,7 +90,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -136,7 +136,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         RewriteEngine On
@@ -151,7 +151,7 @@ In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` 
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a front end for a more complex architecture. This case takes this one step further by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
-Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in the [mod\_proxy](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5#enabling_the_proxy_module) documentation. Do not forget to reload the Apache configuration again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in the [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) documentation. Do not forget to reload the Apache configuration again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
@@ -160,7 +160,7 @@ Apache Virtual Host Configuration
         ServerName example.com
         ServerAlias www.example.com
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         <Proxy balancer://cluster>
