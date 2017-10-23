@@ -27,7 +27,7 @@ external_resources:
 
 Redis is an open-source, in-memory, data-structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide. 
+Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
 
 ## Before You Begin
 
@@ -162,7 +162,7 @@ The following steps will guide you through master/slave replication, with the sl
 
 For this section of the guide, you will use two Linodes, respectively named `master` and `slave`.
 
-1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) option in the Linode Manager.
 
 2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
 

@@ -35,7 +35,7 @@ Now, to download the public key for the Prosody package repository, issue the fo
 
 You can now issue the following command to refresh the package database:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
 
 Install Prosody
@@ -50,7 +50,7 @@ When `apt` finishes, the Prosody server will have been successfully installed, a
     /etc/init.d/prosody reload
     /etc/init.d/prosody start
     /etc/init.d/prosody stop
-    /etc/init.d/prosody restart 
+    /etc/init.d/prosody restart
 
 Configure Prosody Server
 ------------------------

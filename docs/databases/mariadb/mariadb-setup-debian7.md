@@ -64,7 +64,7 @@ In this section, you will install MariaDB and set the password for the MariaDB r
     {: .file-excerpt }
     /etc/apt/sources.list
     :   ~~~
-        # MariaDB 5.5 repository list 
+        # MariaDB 5.5 repository list
         deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
         deb-src http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
         ~~~
@@ -105,7 +105,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
         Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-        MariaDB [(none)]> 
+        MariaDB [(none)]>
 
     Note the `(none)` text in the MariaDB prompt. It will be used to display the current working database. Since you haven't selected any database yet, it is displayed as `(none)`.
 
@@ -120,7 +120,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
 3.  Log in to MariaDB as **testuser**:
 
-        mysql -u testuser -p 
+        mysql -u testuser -p
 
 4.  Use the database **testdb**:
 
@@ -218,7 +218,7 @@ You will be asked to change the root password, remove anonymous users, disable r
     you haven't set the root password yet, the password will be blank,
     so you should just press enter here.
 
-    Enter current password for root (enter for none): 
+    Enter current password for root (enter for none):
     OK, successfully used password, moving on...
 
     Setting the root password ensures that nobody can log into the MariaDB
@@ -226,9 +226,9 @@ You will be asked to change the root password, remove anonymous users, disable r
 
     You already have a root password set, so you can safely answer 'n'.
 
-    Change the root password? [Y/n] 
-    New password: 
-    Re-enter new password: 
+    Change the root password? [Y/n]
+    New password:
+    Re-enter new password:
     Password updated successfully!
     Reloading privilege tables..
      ... Success!
@@ -240,20 +240,20 @@ You will be asked to change the root password, remove anonymous users, disable r
     go a bit smoother.  You should remove them before moving into a
     production environment.
 
-    Remove anonymous users? [Y/n] 
+    Remove anonymous users? [Y/n]
      ... Success!
 
     Normally, root should only be allowed to connect from 'localhost'.  This
     ensures that someone cannot guess at the root password from the network.
 
-    Disallow root login remotely? [Y/n] 
+    Disallow root login remotely? [Y/n]
      ... Success!
 
     By default, MariaDB comes with a database named 'test' that anyone can
     access.  This is also intended only for testing, and should be removed
     before moving into a production environment.
 
-    Remove test database and access to it? [Y/n] 
+    Remove test database and access to it? [Y/n]
      - Dropping test database...
     ERROR 1008 (HY000) at line 1: Can't drop database 'test'; database doesn't exist
      ... Failed!  Not critical, keep moving...
@@ -263,7 +263,7 @@ You will be asked to change the root password, remove anonymous users, disable r
     Reloading the privilege tables will ensure that all changes made so far
     will take effect immediately.
 
-    Reload privilege tables now? [Y/n] 
+    Reload privilege tables now? [Y/n]
      ... Success!
 
     Cleaning up...
@@ -382,7 +382,7 @@ Below is some sample output:
     Variables to adjust:
       *** MySQL's maximum memory usage is dangerously high ***
       *** Add RAM before increasing MySQL buffer variables ***
-        query_cache_limit (> 128K, or use smaller result sets)    
+        query_cache_limit (> 128K, or use smaller result sets)
 {: .output }
 
 Pay attention to the output, especially the recommendations at the end. It will point you towards which variables you should adjust in the `[mysqld]` section of your `/etc/mysql/my.cnf` file.

@@ -129,7 +129,7 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
 
         [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
         [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-        xsetroot -solid grey 
+        xsetroot -solid grey
         vncconfig -iconic &
         x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
         x-window-manager &

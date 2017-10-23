@@ -7,9 +7,9 @@ keywords: 'terminal, selinux, disable selinux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
 modified: 'Tuesday, July 17, 2017'
-modified_by: 
+modified_by:
   name: Linode
-title: 'Disable SELinux' 
+title: 'Disable SELinux'
 external_resources:
 - '[SELinux Red Hat Wiki](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/6/html/Security-Enhanced_Linux/sect-Security-Enhanced_Linux-Enabling_and_Disabling_SELinux-Disabling_SELinux.html)'
 - '[SELinux Arch Wiki](https://wiki.archlinux.org/index.php/SELinux)'
@@ -18,7 +18,7 @@ external_resources:
 
 ## Security Enhanced Linux
 
-SELinux can disupt the functionality of a recently installed application and may need to be disabled. This Quick Answer guides you through the steps necessary to disable it. 
+SELinux can disupt the functionality of a recently installed application and may need to be disabled. This Quick Answer guides you through the steps necessary to disable it.
 
 {: .note}
 >
@@ -42,7 +42,7 @@ To disable SELinux on your Linode follow along with this video and the steps bel
 1. Navigate to the SELinux configuration directory at `/etc/sysconfig/selinux`:
 
         cd /etc/sysconfig/selinux
-        
+
 
     {:.file-excerpt}
     /etc/sysconfig/selinux

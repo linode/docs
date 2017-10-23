@@ -19,7 +19,7 @@ Apache Tomcat is a free and open source software implementation for JavaServlets
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -45,12 +45,12 @@ Add the following line to your `sources.list` file:
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
-    deb http://ftp.debian.org/debian/ squeeze non-free 
+    deb http://ftp.debian.org/debian/ squeeze non-free
     ~~~
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 

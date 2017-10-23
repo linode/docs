@@ -152,7 +152,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
 
 2.  If the service is already running, you will need to stop it using the command:
 
-        sudo service mongodb stop   
+        sudo service mongodb stop
 
 3.  Now start the daemon on **every** replication set member with the command:
 

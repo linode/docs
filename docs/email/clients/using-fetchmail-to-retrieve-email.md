@@ -17,6 +17,8 @@ external_resources:
  - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
+![Using Fetchmail to Retrieve Email](/docs/assets/using-fetchmail-to-retrieve-email.jpg "Using Fetchmail to Retrieve Email")
+
 The `fetchmail` program is a classic UNIX and Unix-like utility used to retrieve email from remote servers and deliver it to local users on a server. There are a number of different scenarios where fetchmail is used. Fetchmail is a popular tool for manually downloading email from a POP or IMAP server for personal use on a local machine. Another common application uses fetchmail to create an "email gateway," where email is collected from a number of different accounts or from a large centralized server and provided to the user in a manageable situation.
 
 If you're new to Linode we always recommend completing our [getting started guide](/docs/getting-started/) before beginning a tutorial. If you're new to Linux we also recommend considering the [beginners guide](/docs/beginners-guide/) and the many documents in the [Tools & Reference](/docs/tools-reference/) section. If you need a more full featured email stack, consider one of our other [email guides](/docs/email/).
@@ -37,7 +39,7 @@ To install `fetchmail` on CentOS and Fedora systems, issue the following command
 
 To install `fetchmail` on Arch Linux systems, issue the following command:
 
-    pacman -S fetchmail 
+    pacman -S fetchmail
 
 To install `fetchmail` on Gentoo Linux systems, issue the following command:
 
@@ -116,7 +118,7 @@ In addition to the configuration options described above, fetchmail provides a n
 .fetchmailrc
 : ~~~
 	set daemon [seconds] set postmaster "username"
-	
+
 	set logfile "\~/logs/fetchmail.log" set syslog
 ~~~
 

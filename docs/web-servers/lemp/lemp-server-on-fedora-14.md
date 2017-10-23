@@ -23,7 +23,7 @@ Prior to beginning this guide, please complete the [getting started guide](/docs
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -145,7 +145,7 @@ nginx.conf
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -159,7 +159,7 @@ nginx.conf
 
     include /opt/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -174,7 +174,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 Deploy PHP with FastCGI
 -----------------------
 
-If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/). Begin the deployment process by issuing the following command to install the required dependencies:
+If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/lemp/lemp-server-on-fedora-14). Begin the deployment process by issuing the following command to install the required dependencies:
 
     yum install php php-cli spawn-fcgi wget
 

@@ -53,7 +53,7 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 1.  Execute SteamCMD:
 
         cd ~/Steam && ./steamcmd.sh
-        
+
 2.  Login as anonymous:
 
 		login anonymous
@@ -88,7 +88,7 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 {: .note}
 >
 > To keep the server running, execute it using [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
->        
+>
 >	screen ./srcds_run -game bms +map gasworks +maxplayers 24
 
 ##Configure a Black Mesa Dedicated Server
@@ -138,7 +138,7 @@ Currently, there are 10 official maps in Black Mesa Dedicated Server:
 *   dm_stalkyard
 *   dm_subtransit
 *   dm_undertow
-      
+
 Three additional official maps are available in the Steam Workshop:
 *   [dm_boom](http://steamcommunity.com/sharedfiles/filedetails/?id=432070352)
 *   [dm_rail](http://steamcommunity.com/sharedfiles/filedetails/?id=432072942)
@@ -167,7 +167,7 @@ In the following example, maps that were downloaded from workshop to the list ar
 ~~~
 
 {: .note}
-> 
+>
 > You can find more maps in the [Steam Workshop](http://steamcommunity.com/workshop/browse/?appid=362890&requiredtags[]=Multiplayer).
 
 ###Maps Rotation
@@ -186,7 +186,7 @@ dm_subtransit
 dm_undertow
 dm_custom
 ~~~
-    
+
 To put a custom map in the rotation, simply write its name; for example: if you have the map **dm_custom.bsp**, you need to write **dm_custom** inside **mapcycle.txt**.
 
 ##Connect to Your Server
@@ -194,7 +194,7 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 1.  Open Black Mesa, and click on the **PLAY ONLINE** option:
 
 	[![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
-   
+
 2.  Find your server in the server list:
 
 	[![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
@@ -244,7 +244,7 @@ This script automatically starts a Black Mesa Dedicated Server into a **Screen s
 1.  Go into the **bms** folder:
 
 		cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
-   
+
 2.  Download **MetaMod**:
 
 		wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
@@ -275,7 +275,7 @@ It is recommended that you install the **SourceMod** add-on. It provides useful 
 1.  Go into the **bms** folder:
 
 		cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
-   
+
 2.  Download **SourceMod**:
 
 		wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz

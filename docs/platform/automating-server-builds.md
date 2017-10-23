@@ -33,8 +33,8 @@ The idea behind a golden disk is simple: Create the perfect image and then save 
 
 There are several places to store a golden disk:
 
--   **Linode Images:** [Linode Images](/docs/platform/linode-images) allows you to take snapshots of your disks, and then deploy them to any Linode under your account. 
--   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/backup-service#sph_id2) of your Linode (called a "snapshot"). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
+-   **Linode Images:** [Linode Images](/docs/platform/linode-images) allows you to take snapshots of your disks, and then deploy them to any Linode under your account.
+-   **Linode Backup Service:** After enabling the Linode Backup Service, you can [make a manual backup](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) of your Linode (called a "snapshot"). This snapshot can function as your golden disk. Instead of cloning a disk to new Linodes, you can simply restore them from the snapshot backup.
 -   **Dedicated Linode:** Boot the Linode, make the desired changes, and clone the disk again.
 -   **Existing Linode:** You can clone from an existing Linode, but you will need to power down the Linode to ensure a consistent copy.
 -   **Different Computer:** You can transfer the disk to another computer. For instructions, see our guide on [Copying a Disk Over SSH](/docs/migration/ssh-copy).
@@ -47,12 +47,12 @@ These methods are discussed in further detail below, with the exception of [Lino
 
 If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/), you can create a golden disk by making a manual backup of an existing disk. Take a *snapsnot* of the disk to back it up, and then restore it to your other Linodes. There's no need to clone or resize the disk. The snapshot will be stored until you overwrite it with another backup.
 
-1.  Use the Linode's existing disk, or [create a new disk](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed).
+1.  Use the Linode's existing disk, or [create a new disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings.
-3.  Verify that all installed packages are current. See [Monitoring and Maintaining Your Server](/docs/monitoring-and-maintaining#sph_updating-software) for instructions.
+3.  Verify that all installed packages are current. See [Monitoring and Maintaining Your Server](/docs/uptime/monitoring-and-maintaining-your-server/#updating-software) for instructions.
 4.  Test your server configuration. At a minimum, this probably includes downloading your version-controlled repository and verifying that your website or application functions properly.
-5.  Take a snapshot of the disk. See the [manual snapshot](/docs/backup-service#sph_id2) instructions for more information.
-6.  Restore your other Linodes from the snapshot. The disk can be restored to as many Linodes as you like. See the [backup restore](/docs/backup-service#sph_restoring-from-a-backup) instructions for more information.
+5.  Take a snapshot of the disk. See the [manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) instructions for more information.
+6.  Restore your other Linodes from the snapshot. The disk can be restored to as many Linodes as you like. See the [backup restore](/docs/security/backups/linode-backup-service/#restore-from-a-backup) instructions for more information.
 
 
 
@@ -60,31 +60,31 @@ If you subscribe to the [Linode Backup Service](http://www.linode.com/backups/),
 
 A dedicated Linode can be used to store and maintain a golden disk. It can be shut down after you've created the disk, and then boot it to update the image.
 
-1.  Use an existing Linode, or [set up a new one](/docs/getting-started#sph_signing-up).
+1.  Use an existing Linode, or [set up a new one](/docs/getting-started#sign-up).
 2.  Install all necessary packages and configure the system settings, if you haven't already done so.
-3.  Verify that all installed packages are current. See our [Monitoring and Maintaining Your Server](/docs/monitoring-and-maintaining#sph_updating-software) guide for instructions.
+3.  Verify that all installed packages are current. See our [Monitoring and Maintaining Your Server](/docs/uptime/monitoring-and-maintaining-your-server/#updating-software) guide for instructions.
 4.  Test your server configuration. At a minimum, this probably includes downloading your version-controlled repository and verifying that your website or application functions properly.
 5.  Shut down your Linode.
-6.  [Clone the disk](/docs/disk-images-config-profiles#sph_id10) to another Linode. You can also clone the configuration profile. The disk can be cloned to as many Linodes as you like.
+6.  [Clone the disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) to another Linode. You can also clone the configuration profile. The disk can be cloned to as many Linodes as you like.
 
 
 ### Existing Linode
 
 You can create and store a golden disk using an *existing Linode*, with some drawbacks: All of the disks stored on the Linode will need to be resized to fit within your target Linode's allocated storage space, and you will have to shut down the Linode to ensure an accurate clone, which will result in downtime.
 
-1.  Use the Linode's existing disk, or [create a new disk](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed).
+1.  Use the Linode's existing disk, or [create a new disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed).
 2.  Install all necessary packages and configure the system settings, if you haven't already done so.
-3.  Verify that all installed packages are current. See our [Monitoring and Maintaining Your Server](/docs/monitoring-and-maintaining#sph_updating-software) guide for instructions.
+3.  Verify that all installed packages are current. See our [Monitoring and Maintaining Your Server](/docs/uptime/monitoring-and-maintaining-your-server/#updating-software) guide for instructions.
 4.  Test your server configuration. At a minimum, this probably includes downloading your version-controlled repository and verifying that your website or application functions properly.
 5.  Shut down the Linode.
-6.  Resize the disk. See our [Resizing a Disk](/docs/disk-images-config-profiles#sph_resizing-a-disk-image) guide for instructions.
-7.  If you're planning on using the golden disk on the existing Linode, you should duplicate the disk. See our [Duplicating a Disk](/docs/disk-images-config-profiles#sph_duplicating-a-disk-image) guide for instructions.
-8.  [Clone the disk](/docs/disk-images-config-profiles#sph_id10) to another Linode. You can also clone the configuration profile. The disk can be cloned to as many Linodes as you like.
+6.  Resize the disk. See our [Resizing a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) guide for instructions.
+7.  If you're planning on using the golden disk on the existing Linode, you should duplicate the disk. See our [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) guide for instructions.
+8.  [Clone the disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) to another Linode. You can also clone the configuration profile. The disk can be cloned to as many Linodes as you like.
 
 
 ### Updating the Hostname and IP Address
 
-After you restore or clone a disk to another Linode, you may need to change its hostname and IP address. For instructions on changing the hostname, see [Setting the Hostname](/docs/getting-started#sph_setting-the-hostname). If the golden disk was configured to use a static IP address, you'll also need to replace the IP address. See [Static IP Configuration](/docs/networking/configuring-static-ip-interfaces#sph_static-ip-configuration) for more information.
+After you restore or clone a disk to another Linode, you may need to change its hostname and IP address. For instructions on changing the hostname, see [Setting the Hostname](/docs/getting-started#setting-the-hostname). If the golden disk was configured to use a static IP address, you'll also need to replace the IP address. See [Static IP Configuration](/docs/networking/linux-static-ip-configuration/#static-network-configuration) for more information.
 
 ## Third-Party Tools
 

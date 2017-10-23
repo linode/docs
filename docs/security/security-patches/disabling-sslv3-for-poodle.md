@@ -14,18 +14,18 @@ title: Disabling SSLv3 for POODLE
 
 Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability) which was found in OpenSSL.
 
-SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information. 
+SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information.
 
-There is some good news. Most connections are using TLS and not SSL. However, sometimes there are problems negotiating a TLS session, and then the web servers, browsers, and other applications must downgrade to SSL. 
+There is some good news. Most connections are using TLS and not SSL. However, sometimes there are problems negotiating a TLS session, and then the web servers, browsers, and other applications must downgrade to SSL.
 
-In order to resolve this issue, we must disable SSLv3 for applications. Unfortunately, there is no way to do this for an entire server at once. You will need to edit each individual configuration separately. 
+In order to resolve this issue, we must disable SSLv3 for applications. Unfortunately, there is no way to do this for an entire server at once. You will need to edit each individual configuration separately.
 
 
 ## The Impact of Disabling SSLv3
 
 There's little impact for most people in disabling SSLv3 because they are not relying on SSLv3 to make connections via SSL/TLS. The large majority relies on TLS.
 
-In the future, browsers such as Google Chrome and FireFox will have SSLv3 disabled at release. It is also advisable to disable SSLv3 on home browsers, not only server applications. 
+In the future, browsers such as Google Chrome and FireFox will have SSLv3 disabled at release. It is also advisable to disable SSLv3 on home browsers, not only server applications.
 
 ## Testing for SSLv3
 
@@ -36,12 +36,12 @@ There are several ways to determine if a service running over SSL will allow SSL
 Remember to replace `example.com` with your domain or IP address, and `443` with any alternate port you may be using for your SSL connection. Check the output for the text:
 
     routines:SSL3_READ_BYTES:sslv3 alert handshake failure
-    
+
 If you see this, the service you have tested does not support SSLv3. It is safe from the vulnerability.
 
 ## Disabling SSLv3
 
-Unfortunately, there is no simple way to go about this. There's no patch to install, and the only way to resolve this is to disable SSLv3 in any application that may use it. 
+Unfortunately, there is no simple way to go about this. There's no patch to install, and the only way to resolve this is to disable SSLv3 in any application that may use it.
 
 While we do not know the configuration of your Linode, we would be happy to assist you via support ticket if you have any questions about disabling SSLv3 on a specific application that is not provided below.
 
@@ -49,7 +49,7 @@ The POODLE vulnerability only works if the browser of the client and the server'
 
 ### Apache
 
-If you're running an Apache web server that currently allows SSLv3, you will need to edit the Apache configuration. On Debian and Ubuntu systems the file is `/etc/apache2/mods-available/ssl.conf`. On CentOS and Fedora the file is `/etc/httpd/conf.d/ssl.conf`. You will need to add the following line to your Apache configuration with other SSL directives. 
+If you're running an Apache web server that currently allows SSLv3, you will need to edit the Apache configuration. On Debian and Ubuntu systems the file is `/etc/apache2/mods-available/ssl.conf`. On CentOS and Fedora the file is `/etc/httpd/conf.d/ssl.conf`. You will need to add the following line to your Apache configuration with other SSL directives.
 
 	SSLProtocol All -SSLv2 -SSLv3
 
@@ -73,7 +73,7 @@ cPanel/WHM does not allow you to edit the Apache configuration files, and will o
 
 In order to change the Apache cipher suites, follow these steps:
 
-1.  In WHM, type `apache` into the left-hand sidebar's search field. You will see `Apache Configuration` in the menu list. After clicking `Apache Configuration`, navigate to `Global Configuration`. It is the first option on the page in cPanel 11.44+. 
+1.  In WHM, type `apache` into the left-hand sidebar's search field. You will see `Apache Configuration` in the menu list. After clicking `Apache Configuration`, navigate to `Global Configuration`. It is the first option on the page in cPanel 11.44+.
 
 2.  The first option is `SSL Cipher Suite`, and you will need to modify the current SSL Cipher Suite to include `-SSLv3`. An example of this is shown below.
 
@@ -87,7 +87,7 @@ If you're running an NGINX web server that currently uses SSLv3, you need to edi
 
 	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
-This will deactivate SSLv3 from being used on NGINX. If you're unable to find the server directive in `nginx.conf`, you may need to locate your VirtualHost configuration file. 
+This will deactivate SSLv3 from being used on NGINX. If you're unable to find the server directive in `nginx.conf`, you may need to locate your VirtualHost configuration file.
 
 You will also need to restart your NGINX server:
 
@@ -118,7 +118,7 @@ You'll want to look in the `# TLS parameters` section of `/etc/postfix/main.cf`.
 
 	sudo service postfix restart
 
-For more information about Postfix's `smtpd_tls_mandatory_protocols` setting, please see their [Postfix Configuration Parameters](http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols) documentation. 
+For more information about Postfix's `smtpd_tls_mandatory_protocols` setting, please see their [Postfix Configuration Parameters](http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols) documentation.
 
 {:.note}
 > The Postfix documentation has not yet been adjusted to disallow SSLv3.
@@ -137,7 +137,7 @@ If you are running a version of Dovecot before 2.1, you will need to edit the so
 
 ### HAProxy
 
-In order to disable SSLv3 in HAProxy, you must be using HAProxy 1.5+, as SSL is not supported in earlier versions of HAProxy. Edit the `/etc/haproxy.cfg` file and find the line that starts with `bind` and refers to port 443 (SSL). Append that line with `no-sslv3`. 
+In order to disable SSLv3 in HAProxy, you must be using HAProxy 1.5+, as SSL is not supported in earlier versions of HAProxy. Edit the `/etc/haproxy.cfg` file and find the line that starts with `bind` and refers to port 443 (SSL). Append that line with `no-sslv3`.
 
 An example of this line would be:
 

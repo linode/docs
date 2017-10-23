@@ -14,9 +14,9 @@ published: 'Friday, February 5th, 2010'
 title: 'Magento on Ubuntu 9.10 (Karmic)'
 ---
 
-Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/lamp-guides/ubuntu-9.10-karmic/) and offers the user a wide variety of options.
+Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/lamp-guides/ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/ubuntu-9.10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
 Installing Prerequisites
 ------------------------
@@ -27,8 +27,8 @@ Before installing Magento, we must ensure that the `universe` repositories are e
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -62,14 +62,14 @@ You'll also need to create a database for Magento, and a user with permission to
     GRANT ALL ON magento.* TO 'mage' IDENTIFIED BY 'password';
     exit
 
-Please see our [MySQL](/docs/databases/mysql/ubuntu-9.10-karmic) document for additional information regarding MySQL.
+Please see our [MySQL](/docs/databases/mysql/ubuntu-9-10-karmic) document for additional information regarding MySQL.
 
 Additionally you will want to increase PHP's `memory_limit` setting, by editing the `/etc/php5/cli/php.ini` and `/etc/php5/apache2/php.ini` file as follows:
 
 {: .file-excerpt }
 /etc/php5/cli/php.ini and /etc/php5/apache2/php.ini
 :   ~~~ ini
-    memory_limit = 64M 
+    memory_limit = 64M
     ~~~
 
 At this point your server has the prerequisites to install Magento.

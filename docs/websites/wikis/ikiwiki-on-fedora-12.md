@@ -16,9 +16,9 @@ title: Ikiwiki on Fedora 12
 
 
 
-Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/linux-tools/version-control/) system of your choice, though this guide assumes that you use [git](/docs/linux-tools/version-control/git).
+Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which can be efficiently served with a basic web server. These are generated from a source directory that can be stored in the [version control](/docs/linux-tools/version-control/) system of your choice, though this guide assumes that you use [git](/docs/development/version-control/how-to-configure-git).
 
-This guide is written for Fedora 12, and assumes that you've followed our [getting started guide](/docs/getting-started/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/web-servers/apache/installation/fedora-12) and a working installation of [git](/docs/linux-tools/version-control/git).
+This guide is written for Fedora 12, and assumes that you've followed our [getting started guide](/docs/getting-started/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/web-servers/apache/installation/fedora-12) and a working installation of [git](/docs/development/version-control/how-to-configure-git).
 
 Installing Ikiwiki
 ------------------
@@ -53,7 +53,7 @@ This will ask you a series of questions about file locations and the revision co
 In this example, `example` is the machine's hostname, `username` is the admin user specified in the setup process, and `wiki` is the name of the wiki you specified during setup. You will need to configure your web server to serve files in `~/public_html/wiki` before this wiki will be accessible. No matter how you configure your web server, you will need to issue the following commands to start the web server for the first time and ensure that it will return following the next reboot cycle:
 
     chkconfig httpd on
-    /etc/init.d/httpd start       
+    /etc/init.d/httpd start
 
 While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
@@ -118,7 +118,7 @@ If Ikiwiki is configured correctly, when you do a `git push` to the remote repos
 If you have not started Apache for the first time, you will need to issue the following commands to start the web server and ensure that it starts up when your Linode boots:
 
     chkconfig httpd on
-    /etc/init.d/httpd start    
+    /etc/init.d/httpd start
 
 Advanced Ikiwiki Setup
 ----------------------
@@ -126,8 +126,8 @@ Advanced Ikiwiki Setup
 While all of the content of an Ikiwiki is stored under version control, the templates and configuration files are stored outside of the source directory. If you want to use git to store these files and track the versions of your configuration we recommend making an "admin" repository located in the `~/wiki-admin` directory. This should reside next to the `~/wiki/` repository/directory where the wiki's source directory is located. To create the directory and initialize the repository, issue the following commands:
 
     mkdir ~/wiki-admin/
-    cd ~/wiki-admin/ 
-    git init 
+    cd ~/wiki-admin/
+    git init
 
 Move your `ikiwiki.setup` file into `~/wiki-admin/`. You may also want to move the template files into the `wiki-admin` repository with the following command:
 
@@ -161,7 +161,7 @@ Next, edit the `~/wiki-admin/.git/config` file to set up the remote repository. 
 Now you can perform the first push for the `wiki-admin` repository by issuing the following commands:
 
     cd ~/wiki-admin/
-    git push origin master 
+    git push origin master
 
 You can clone the `wiki-admin` repository to your local machine with the following command (issued locally):
 
@@ -172,7 +172,7 @@ In this example, `username` is the username, `colab.example.com` is the name of 
 The `wiki-admin` repository is totally optional, however it will simplify backup and mirroring down the road and allow you to version the templates. If you think any of these features will be helpful in your use case, we encourage you to consider storing your files in this manner. If you have not yet started the Apache for the first time, you will need to issue the following commands to start the web server and ensure that it will return if the system reboots:
 
     chkconfig httpd on
-    /etc/init.d/httpd start    
+    /etc/init.d/httpd start
 
 Using Ikiwiki
 -------------

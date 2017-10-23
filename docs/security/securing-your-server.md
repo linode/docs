@@ -24,7 +24,7 @@ Keeping your software up to date is the single biggest security precaution you c
 
 ### Automatic Security Updates
 
-There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.
+There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates. Not all package managers make that easy or possible, though.
 
 The practicality of automatic updates is something you must judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
@@ -41,7 +41,7 @@ Up to this point, you have accessed your Linode as the `root` user, which has un
 {: .note}
 > Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 
-To add a new user, first [log in to your Linode](/docs/getting-started#logging-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#log-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 

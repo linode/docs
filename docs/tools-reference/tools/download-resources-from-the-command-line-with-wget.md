@@ -32,7 +32,7 @@ When issued at the command line without options, `wget` will download the file s
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'
 
-    100%[================================================>] 477         --.-K/s   in 0.002s  
+    100%[================================================>] 477         --.-K/s   in 0.002s
 
     2010-10-01 12:01:48 (261 KB/s) - `wget-example.txt' saved [477/477]
 
@@ -41,7 +41,7 @@ When issued at the command line without options, `wget` will download the file s
     <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
     in the Linode Docs.
 
-    There are four lines of random characters at the end of this file. 
+    There are four lines of random characters at the end of this file.
 
     y7tWn6zZRFAX1cXyQzzSBhTDC+/SpN/RezhI2acW3qr3HGFDCM7PX9frUhna75wG
     6lOvibL5/sHTKP8N7tRfszZq1MaGlmpeEQN1n5afK6Awh0rykc5FMn2xb3jf0klF
@@ -61,7 +61,7 @@ The `-O` option controls the location and name of the file where `wget` writes t
     <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
     in the Linode Docs.
 
-    There are four lines of random characters at the end of this file. 
+    There are four lines of random characters at the end of this file.
 
     y7tWn6zZRFAX1cXyQzzSBhTDC+/SpN/RezhI2acW3qr3HGFDCM7PX9frUhna75wG
     6lOvibL5/sHTKP8N7tRfszZq1MaGlmpeEQN1n5afK6Awh0rykc5FMn2xb3jf0klF
@@ -76,7 +76,7 @@ To view the HTTP header information attached to the resource, use the `-S` flag.
     --2010-10-01 12:03:50--   http://www.linode.com/docs/assets/695-wget-example.txt
     Resolving linode.com/docs... 74.207.233.254
     Connecting to linode.com/docs|74.207.233.254|:80... connected.
-    HTTP request sent, awaiting response... 
+    HTTP request sent, awaiting response...
       HTTP/1.1 200 OK
       Server: nginx
       Date: Fri, 01 Oct 2010 16:03:51 GMT
@@ -88,7 +88,7 @@ To view the HTTP header information attached to the resource, use the `-S` flag.
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'
 
-    100%[================================================>] 477         --.-K/s   in 0s      
+    100%[================================================>] 477         --.-K/s   in 0s
 
     2010-10-01 12:03:40 (1.73 MB/s) - `wget-example.txt' saved [477/477]
 
@@ -108,7 +108,7 @@ Add the `-q` option to suppress the status output of `wget`:
 
 If you need to access a resource that requires HTTP authentication, use the following form:
 
-    wget --http-user=[USERNAME] --http-password=[PASSWORD] [URL] 
+    wget --http-user=[USERNAME] --http-password=[PASSWORD] [URL]
 
 In practice this may resemble:
 

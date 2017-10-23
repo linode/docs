@@ -32,7 +32,7 @@ These are just a few of the many commands and tricks available in the Linux term
 
 ## Quickly Find and Replace within the Last-Entered Command
 
-This is especially useful for both fixing typos and re-running system commands. 
+This is especially useful for both fixing typos and re-running system commands.
 
 In the following example, we correct the typo in the first line using the command in the second:
 

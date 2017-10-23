@@ -80,7 +80,7 @@ For example, to allow both incoming and outgoing connections on port 22 for SSH,
 You can also run:
 
     sudo ufw allow 22
-    
+
 Similarly, to **deny** traffic on a certain port (in this example, 111) you would only have to run:
 
     sudo ufw deny 111
@@ -133,7 +133,7 @@ An additional configuration file is located at `/etc/default/ufw`. From here IPv
 You can check the status of UFW at any time with the command: `sudo ufw status`. This will show a list of all rules, and whether or not UFW is active:
 
     Status: active
-    
+
     To                         Action      From
     --                         ------      ----
     22                         ALLOW       Anywhere
@@ -164,7 +164,7 @@ You can enable logging with the command:
     sudo ufw logging on
 
 Log levels can be set by running `sudo ufw logging low|medium|high`, selecting either `low`, `medium`, or `high` from the list. The default setting is `low`.
-    
+
 A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
 
     Sep 16 15:08:14 <hostname> kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0

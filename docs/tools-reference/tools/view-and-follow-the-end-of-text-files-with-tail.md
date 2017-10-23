@@ -74,7 +74,7 @@ The "follow" mode of `tail` is very useful when troubleshooting issues because i
 The [grep](/docs/tools-reference/search-and-filter-text-with-grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
 
     tail -F procmail.log | grep -e "^Subject"
-    tail -F access.log | grep "404" 
+    tail -F access.log | grep "404"
 
 In the first command, only the lines of the `procmail.log` file that begin with the characters `Subject` are printed. All other lines are discarded.
 

@@ -5,7 +5,7 @@ author:
 description: 'Install MySQL on Ubuntu 14.04. - a getting-started guide.'
 keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Linux,MySQL,install MySQL,install MySQL on ubuntu,mysqltuner,MySQL tuner,harden mysql,root password,sample table'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/','databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/','databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
+alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/', 'databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
 modified: Wednesday, August 26, 2015
 modified_by:
   name: Linode
@@ -22,7 +22,7 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 14.04 LTS (Trusty Tahr).
 
-We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide. 
+We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
 
 {: .note}
 >

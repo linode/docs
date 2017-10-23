@@ -108,7 +108,7 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
         sudo a2enmod rewrite
-    
+
     Restart Apache.
 
     {: .note}

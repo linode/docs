@@ -25,7 +25,7 @@ Device assignments for Xen Linodes were labeled as:
  * */dev/xvdb*
  * */dev/xvdc*
 
- 
+
 KVM Linodes use the "*sd*" naming convention:
 
  * */dev/sda*
@@ -36,7 +36,7 @@ KVM Linodes use the "*sd*" naming convention:
 
 On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
-### Virtual Machine Mode 
+### Virtual Machine Mode
 
 Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
@@ -76,7 +76,7 @@ For full virtualization, use the following parameters:
     CONFIG_ATA_PIIX=y
     CONFIG_SERIAL_8250=y
     CONFIG_SERIAL_8250_CONSOLE=y
-    
+
 You should also move your block device assignments to be sequential, without skipped block devices.
 
 ### Direct Disk Boot
@@ -122,13 +122,13 @@ There are some reported cases of Linodes running CentOS 6.X that lose network co
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
-Then, reboot the Linode. 
+Then, reboot the Linode.
 
 ### Arch Linux
 
 An upstream change to persistent device naming in systemd has resulted in broken connectivity for any Linode running Arch Linux on a KVM host. The latest version of systemd (226-1+) uses "Predictable Network Interface Names," which prevent the network interface on our platform from being brought online at boot.
 
-You can disable the use of Predictable Network Interface Names with the command below. 
+You can disable the use of Predictable Network Interface Names with the command below.
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 

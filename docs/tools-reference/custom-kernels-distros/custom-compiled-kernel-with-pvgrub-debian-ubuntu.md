@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
@@ -15,7 +16,7 @@ title: 'Custom Compiled Kernel with PV-GRUB on Debian & Ubuntu'
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). 
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
 
 Prior to these instructions, follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
@@ -76,7 +77,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         make -j3 bzImage
         make -j3 modules
-        make 
+        make
         make install
         make modules_install
 
@@ -90,9 +91,9 @@ Once your configuration options are set, exit the configuration interface and an
     /boot/grub/menu.lst
     :   ~~~
     	timeout 5
-	
-    	title Custom Compiled, kernel 3.19.3-custom 
-    	root (hd0) 
+
+    	title Custom Compiled, kernel 3.19.3-custom
+    	root (hd0)
     	kernel /boot/vmlinuz-3.19.3 root=/dev/xvda ro quiet
         initrd /boot/initrd.img-3.19.3
         ~~~

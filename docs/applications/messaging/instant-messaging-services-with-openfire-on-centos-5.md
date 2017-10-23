@@ -30,13 +30,13 @@ Visit the Sun Microsystems [Java download page](http://java.com/en/download/manu
 
 In your terminal, issue the following command to download the installation package. You may need to install `wget` first by issuing the command `yum install wget`. Replace the link shown below with one to the current version of Java.
 
-    wget http://javadl.sun.com/webapps/download/AutoDL?BundleId=33879 
+    wget http://javadl.sun.com/webapps/download/AutoDL?BundleId=33879
 
 Rename the downloaded file and extract it with the following command:
 
-    mv jre* jre-install.bin 
-    chmod +x jre-install.bin 
-    ./jre-install.bin 
+    mv jre* jre-install.bin
+    chmod +x jre-install.bin
+    ./jre-install.bin
 
 You will asked to accept the terms of the Java license. After entering "yes" to continue, a Java RPM package will be created and installed on your server. You can verify that it's installed correctly by issuing the following command:
 
@@ -65,7 +65,7 @@ Additional ports may need to be opened later to support more advanced XMPP servi
 
 Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the RPM package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below).
 
-    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire-3.6.4-1.i386.rpm 
+    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire-3.6.4-1.i386.rpm
 
 Install the software using `rpm` as follows:
 
@@ -81,7 +81,7 @@ Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your L
 
 Restart Openfire with the following command:
 
-    /etc/rc.d/init.d/openfire restart 
+    /etc/rc.d/init.d/openfire restart
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 

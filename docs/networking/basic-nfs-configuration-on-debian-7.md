@@ -2,17 +2,16 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: Basic NFS Configuration on Debian 7.
-keywords: 'NFS,Debian,network,file,system,wheezy'
+description: Basic NFS Configuration on Debian 8.
+keywords: 'NFS,Debian,network,file,system,Jessie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/basic-nfs-debian/']
 contributor:
-    
 modified: Thursday, February 27th, 2014
 modified_by:
   name: Linode
 published: 'Thursday, February 27th, 2014'
-title: Basic NFS Configuration on Debian 7
+title: Basic NFS Configuration on Debian 8
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
@@ -29,7 +28,7 @@ This guide walks you through the setup of two Linodes; one acting as the NFS ser
 
 ## Prerequisites
 
--   Two Debian 7 Linodes
+-   Two Debian 8 Linodes
 -   Linodes deployed in the same data center
 -   Linodes configured to use private IPs - see the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide
 
@@ -44,12 +43,40 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 2.  Install the NFS server package **nfs-kernel-server**:
 
         sudo apt-get install nfs-kernel-server
+	
+3.  Install the Portmapper package **portmap**:
 
-3.  Create a directory in your local filesystem. This directory will be used as the root of the NFS share:
+        sudo apt-get install portmap
+	
+4.  Prevent access to the services used by NFS by default. Use your favorite editor to add the following line to the `/etc/hosts.deny`:
+
+    {: .file-excerpt }
+        /etc/hosts.deny
+	: ~~~
+		rpcbind mountd nfsd statd lockd rquotad : ALL
+	~~~
+
+5.  Explicitly allow access to the services used by NFS for your client and localhost. Use your favorite editor to add the following line:
+
+    {: .file-excerpt }
+        /etc/hosts.allow
+	: ~~~
+		rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
+                rpcbind mountd nfsd statd lockd rquotad : <client linode private ip> : allow
+	        rpcbind mountd nfsd statd lockd rquotad : ALL : deny
+	~~~
+
+     Replace **\<client linode private ip\>** with the current private IP address of your second Linode.
+     
+6.  Create a directory in your local filesystem. This directory will be used as the root of the NFS share:
 
         sudo mkdir /var/nfsroot
 
-4.  Use your favorite editor to add the following line to the `/etc/exports` file:
+7.  Assign appropriate ownership to root of the NFS share:
+
+        sudo chown nobody:nogroup /var/nfsroot/
+	
+8.  Use your favorite editor to add the following line to the `/etc/exports` file:
 
     {: .file-excerpt}
 	/etc/exports
@@ -57,13 +84,13 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 		/var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
 	~~~
 	
-    Replace **\<client linode private ip\>** with the current private IP address of your second Linode.
+    Replace **\<client linode private ip\>** with the current private IP address of your second Linode. Make sure there is no space between the /32 and the opening parenthesis. Also check that there is a blank line at the end of the file.
 
-5.  Update the table of exported file systems with the following command:
+9.  Update the table of exported file systems with the following command:
 
         sudo exportfs -a
 
-6.  Start the NFS server service:
+10.  Start the NFS server service:
 
         sudo service nfs-kernel-server start
 

@@ -241,4 +241,4 @@ Organizations that have multiple individuals accessing the same Linode Manager a
 
 ### Forcing Password Expirations
 
-Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/docs/accounts-and-passwords#sph_passwords).
+Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/docs/platform/accounts-and-passwords/#passwords).

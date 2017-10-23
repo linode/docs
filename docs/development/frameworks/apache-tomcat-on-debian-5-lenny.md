@@ -25,7 +25,7 @@ Tomcat version 6 was not included as part of Debian Lenny because of concerns th
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -51,12 +51,12 @@ Add the following line to your `sources.list` file:
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
-    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free 
+    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free
     ~~~
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 
@@ -109,14 +109,14 @@ Create a `tomcat` "init" file with the following content:
     start)
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    stop)  
+    stop)
             sh /usr/local/tomcat/bin/shutdown.sh
             ;;
     restart)
             sh /usr/local/tomcat/bin/shutdown.sh
             sh /usr/local/tomcat/bin/startup.sh
             ;;
-    esac   
+    esac
     exit 0
     ~~~
 

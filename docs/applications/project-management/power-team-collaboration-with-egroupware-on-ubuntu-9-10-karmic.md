@@ -16,7 +16,7 @@ title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
 
-Before installing eGroupware, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need install a [LAMP stack](/docs/lamp-guides/ubuntu-9.10-karmic/) as a prerequisite for installing eGroupware.
+Before installing eGroupware, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need install a [LAMP stack](/docs/lamp-guides/ubuntu-9-10-karmic/) as a prerequisite for installing eGroupware.
 
 Install eGroupware
 ------------------
@@ -53,7 +53,7 @@ During the installation process, an interactive "package configuration" is provi
 The `debconf` process creates an administrator account for the "header system", which it allows you to specify at this time. By default this eGroupware username is "admin". Change the username if you would like and create a password as instructed. When this process is complete, the installation process is finished. You will also want to issue the following commands to install additional dependencies and resolve several minor issues with the distribution package in order:
 
     pear install Auth_SASL
-    rm /usr/share/egroupware/etemplate/doc 
+    rm /usr/share/egroupware/etemplate/doc
     cp -R /usr/share/doc/egroupware-etemplate/ /usr/share/egroupware/etemplate/doc
     rm /usr/share/egroupware/sitemgr/doc
     cp -R /usr/share/doc/egroupware-sitemgr/ /usr/share/egroupware/sitemgr/doc
@@ -84,7 +84,7 @@ Configure eGroupware
 
 When you have completed the initial "Header Setup," select the option to write the "header" file and then continue to the "Setup/Admin." Ensure that you've selected the correct "Domain" if you configured more than one. At this juncture you must install the eGroupware applications that you will expect to use. Select the proper character set and then select the button to "'Install' all applications." You can now "Recheck" your installation. Supply eGroupware with the configuration for your email server. Additionally, you will need to create an admin account for your eGroupware domain, which you can accomplish from this page.
 
-When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/email/postfix/courier-mysql-ubuntu-9.10-karmic).
+When all applications have been installed, you will be provided with a number of options that you can use to fine-tune the operations and behavior of your eGroupware instance. If you wish to use eGroupware to help manage email, you will need to have a running email system. Consider running [Postfix with Courier and MySQL](/docs/email/postfix/courier-mysql-ubuntu-9-10-karmic).
 
 More Information
 ----------------

@@ -56,7 +56,9 @@ Author Submission
     ---
 
     *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+
     ----
+
     ~~~
 
 If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
@@ -324,7 +326,7 @@ Use single spaces between sentences; do not double-space.
     <img src="/docs/assets/example-blue-stripe-table.png">
     </td>
   </tr>
-</table>   
+</table>
 
 ### Variables
 

@@ -16,7 +16,7 @@ title: Ikiwiki on Arch Linux
 
 
 
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/linux-tools/version-control/git) for version control, and either the [Apache](/docs/web-servers/apache/installation/) or [nginx](/docs/web-servers/nginx/installation/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/linux-tools/version-control/git) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
 
 Install Ikiwiki
 ---------------
@@ -24,7 +24,7 @@ Install Ikiwiki
 Issue the following commands to update your system's package database and package manager:
 
     pacman -Sy
-    pacman -S pacman 
+    pacman -S pacman
 
 Issue the following command to install required dependencies:
 
@@ -74,7 +74,7 @@ If you haven't already added an unprivileged system user, create one now. This w
 
 Set the `username` user's password with the following command:
 
-    passwd username 
+    passwd username
 
 Install a Web Server
 --------------------
@@ -111,16 +111,16 @@ Replace the existing example `VirtualHost` configuration examples with one that 
             ErrorLog /srv/http/example.com/logs/error.log
             CustomLog /srv/http/example.com/logs/access.log combined
 
-        <Directory /srv/http/example.com/public_html> 
-               AddHandler cgi-script .cgi 
+        <Directory /srv/http/example.com/public_html>
+               AddHandler cgi-script .cgi
                    Options FollowSymLinks +ExecCGI
-        </Directory> 
+        </Directory>
     </VirtualHost>
     ~~~
 
 Issue the following commands to create the required directories and to restart the web server:
 
-    mkdir -p /srv/http/example.com/public_html 
+    mkdir -p /srv/http/example.com/public_html
     mkdir -p /srv/http/example.com/logs
     chown -R username:username /srv/http/example.com
         /etc/rc.d/http start
@@ -136,7 +136,7 @@ Issue the following command to install Ikiwiki and all dependent packages:
 Issue the following sequence of commands to install and enable support for running CGI scripts:
 
     pacman -S fcgi fcgiwrap spawn-fcgi
-    /etc/rc.d/fcgiwrap start 
+    /etc/rc.d/fcgiwrap start
 
 You will want to add the `fcgiwrap` daemon to the `DAEMONS=()` array at the end of the `/etc/rc.conf` file to ensure that the FastCGI daemon starts following then next reboot cycle.
 
@@ -146,7 +146,7 @@ Add an `include` directive to the `/etc/nginx/conf/nginx.conf` file so that ngin
 /etc/nginx/conf/nginx.conf
 :   ~~~ nginx
     http {
-        include       /etc/nginx/conf.d/*.conf; 
+        include       /etc/nginx/conf.d/*.conf;
         include       mime.types;
         default_type  application/octet-stream;
     ~~~
@@ -183,7 +183,7 @@ Create a virtual host by inserting a version of the following excerpt into your 
 
 Issue the following commands to create the required directories and to restart the web server:
 
-    mkdir -p /srv/http/example.com/public_html 
+    mkdir -p /srv/http/example.com/public_html
     mkdir -p /srv/http/example.com/logs
     chown -R username:username /srv/http/example.com
     /etc/rc.d/nginx start
@@ -201,8 +201,8 @@ Issue the following commands to create a `~/wiki/` directory as a git repository
     mkdir -p ~/wiki ~/wiki/source/ ~/wiki/.ikiwiki/
     cd ~/wiki
     git init
-    cd /srv/git/wiki.git/ 
-    git init --bare 
+    cd /srv/git/wiki.git/
+    git init --bare
 
 Add the following excerpt to `~/wiki/.git/config`:
 
@@ -220,8 +220,8 @@ Add the following excerpt to `~/wiki/.git/config`:
 
 Configure the `username` user's identity within git. Modify the following model for your user:
 
-    git config --global user.email "username@example.com" 
-    git config --global user.name "username example" 
+    git config --global user.email "username@example.com"
+    git config --global user.name "username example"
 
 Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/694-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
 
@@ -229,8 +229,8 @@ Issue the following commands to copy the default `basewiki` and `templates` to t
     cp -R /usr/share/ikiwiki/templates ~/wiki/
     cp -R /usr/share/ikiwiki/basewiki ~/wiki/
     wget -O ikiwiki.yaml http://www.linode.com/docs/assets/694-ikiwiki.yaml
-    git add . 
-    git commit -m "initial ikiwiki commit" 
+    git add .
+    git commit -m "initial ikiwiki commit"
     git push origin master
 
 Edit the `~/wiki/ikiwiki.yaml` file to suit the needs of your deployment, paying particular attention to example directory paths and URLs. You should take care to replace all instances of "example.com" with your domain name, and all instances of "username" with the username you created at the beginning of this guide. You may wish to review the [ikiwiki documentation](http://ikiwiki.info) for more information regarding specific configuration directives. Issue the following commands to commit your changes and push them:
@@ -244,10 +244,10 @@ Create content in the `~/wiki/source/index.mdwn` file, for example:
 ~/wiki/source/index.mdwn
 :   ~~~
     # Welcome to $wiki
-    
+
     Hello World. What should we call [[this site]]?
     ~~~
-    
+
 When the configuration file has been edited, and there is content in the `~/wiki/source/index.mdwn` file, issue the following command to rebuild the wiki:
 
     ikiwiki --setup ~/wiki/ikiwiki.yaml

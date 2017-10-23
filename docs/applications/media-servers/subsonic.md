@@ -50,7 +50,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
     {: .file}
     /etc/default/subsonic
     :   ~~~
-        # 
+        #
         # This is the configuration file for the Subsonic service
         # (/etc/init.d/subsonic)
         #
@@ -65,7 +65,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         # the following:
         #
         # SUBSONIC_ARGS="--port=80 --https-port=443 --max-memory=200"
-        
+
         SUBSONIC_ARGS="--max-memory=150"
 
         # The user which should run the Subsonic process. Default "root".
@@ -89,9 +89,9 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         # the following:
         #
         # SUBSONIC_ARGS="--port=80 --https-port=443 --max-memory=200"
-        
+
         SUBSONIC_ARGS="--https-port=8443 --max-memory=150"
-        
+
         SUBSONIC_USER=subsonic
         ~~~
 
@@ -116,7 +116,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
     ![Subsonic untrusted website](/docs/assets/untrusted-connection.png)
 
-3.  The first time you access your Subsonic server in your browser, you will see the following: 
+3.  The first time you access your Subsonic server in your browser, you will see the following:
 
     ![First time Subsonic access](/docs/assets/subsonic-firstlogin.png)
 
@@ -124,7 +124,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
     ![First time Subsonic access](/docs/assets/subsonic-gettingstarted.png)
 
-5. Create a password for your admin account. You can also set up any other accounts at this time. 
+5. Create a password for your admin account. You can also set up any other accounts at this time.
 
     {: .note}
     >

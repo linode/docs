@@ -23,7 +23,7 @@ image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-**Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client. 
+**Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client.
 
 ![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
 
@@ -159,7 +159,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
         Remember to replace the example domain with your own.
 
     -   Allow cache-purging requests only from the IP addresses in the above `acl purger` section (Step 4). If a purge request comes from a different IP address, an error message will be produced:
-    
+
         {: .file-excerpt }
         /etc/varnish/custom.vcl
         :   ~~~ conf
@@ -172,7 +172,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
             ~~~
 
     -   Change the `X-Forwarded-For` header:
-    
+
         {: .file-excerpt }
         /etc/varnish/custom.vcl
         :   ~~~ conf
@@ -184,7 +184,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
             ~~~
 
     -   Exclude POST requests or those with basic authentication from caching:
-    
+
         {: .file-excerpt }
         /etc/varnish/custom.vcl
         :   ~~~ conf
@@ -194,7 +194,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
             ~~~
 
     -   Exclude RSS feeds from caching:
-    
+
         {: .file-excerpt }
         /etc/varnish/custom.vcl
         :   ~~~ conf
@@ -204,7 +204,7 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
             ~~~
 
     -   Tell Varnish not to cache the WordPress admin and login pages:
-    
+
         {: .file-excerpt }
         /etc/varnish/custom.vcl
         :   ~~~ conf
@@ -234,8 +234,8 @@ For all steps in this section, replace `203.0.113.100` with your Linodes public 
     /etc/varnish/custom.vcl
     :   ~~~ conf
         sub vcl_synth {
-         if (resp.status == 850) {  
-             set resp.http.Location = req.http.x-redir; 
+         if (resp.status == 850) {
+             set resp.http.Location = req.http.x-redir;
              set resp.status = 302;
              return (deliver);
          }
@@ -577,7 +577,7 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
     The third line specifies the connection port number: `80`. The backend server is correctly identified: `Server: nginx/1.6.2`. And the traffic passes through Varnish as intended: `Via: 1.1 varnish-v4`. The period of time the object has been kept in cache by Varnish is also displayed in seconds: `Age: 467`.
 
-2.  To test the SSL-encrypted website, run the same command, replacing the URL: 
+2.  To test the SSL-encrypted website, run the same command, replacing the URL:
 
         wget -SS https://www.example-over-https.com
 
@@ -592,6 +592,6 @@ To install this plugin, log in to your WordPress website and click **Plugins** o
 
 By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.
 
-You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
+You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
 
 An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security), Awstats or Webalizer.

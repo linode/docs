@@ -25,7 +25,7 @@ It is assumed that you have followed the steps outlined in our [getting started 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -63,7 +63,7 @@ Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
-    mysql -u root -p 
+    mysql -u root -p
 
 You'll be presented with an interface similar to the following:
 
@@ -77,14 +77,14 @@ You'll be presented with an interface similar to the following:
 
 Issue the following command to create a database for your mail server and switch to it in the shell:
 
-    CREATE DATABASE mail; 
-    USE mail; 
+    CREATE DATABASE mail;
+    USE mail;
 
 Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace "mail\_admin\_password" with a password you select for this user.
 
     GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost' IDENTIFIED BY 'mail_admin_password';
     GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost.localdomain' IDENTIFIED BY 'mail_admin_password';
-    FLUSH PRIVILEGES; 
+    FLUSH PRIVILEGES;
 
 Create the virtual domains table with the following command:
 
@@ -104,7 +104,7 @@ Create a transports table with the following command:
 
 Exit the MySQL shell by issuing the following command:
 
-    quit 
+    quit
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
@@ -154,13 +154,13 @@ Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtu
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 
-    chmod o= /etc/postfix/mysql-virtual_*.cf 
-    chgrp postfix /etc/postfix/mysql-virtual_*.cf 
+    chmod o= /etc/postfix/mysql-virtual_*.cf
+    chgrp postfix /etc/postfix/mysql-virtual_*.cf
 
 Next, we'll create a user and group for mail handling. All virtual mailboxes will be stored under this user's home directory.
 
-    groupadd -g 5000 vmail 
-    useradd -g vmail -u 5000 vmail -d /home/vmail -m 
+    groupadd -g 5000 vmail
+    useradd -g vmail -u 5000 vmail -d /home/vmail -m
 
 Issue the following commands to complete the remaining steps required for Postfix configuration. Please be sure to replace "server.example.com" with the fully qualified domain name you used for your system mail name.
 
@@ -210,7 +210,7 @@ You will be asked to enter several values similar to the output shown below. Be 
 
 Set proper permissions for the key file by issuing the following command:
 
-    chmod o= /etc/postfix/smtpd.key 
+    chmod o= /etc/postfix/smtpd.key
 
 This completes SSL certificate creation for Postfix. Next, you'll configure `saslauthd` to use MySQL for user authentication.
 
@@ -253,7 +253,7 @@ Set proper permissions and ownership for these configuration files by issuing th
 
 Add the Postfix user to the `sasl` group and restart Postfix and `saslauthd` by issuing the following commands:
 
-    adduser postfix sasl 
+    adduser postfix sasl
     service postfix restart
     service saslauthd restart
 
@@ -355,7 +355,7 @@ Before testing dovecot, you must change the permissions on `/etc/dovecot/dovecot
 
 You can test your POP3 server to make sure it's running properly by issuing the following command.
 
-    telnet localhost pop3 
+    telnet localhost pop3
 
 You should see output similar to the following in your terminal:
 
@@ -388,11 +388,11 @@ Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
-    telnet localhost 25 
+    telnet localhost 25
 
 While connected to Postfix, issue the following command:
 
-    ehlo localhost 
+    ehlo localhost
 
 You should see output similar to the following, with the line "250-STARTTLS" included:
 
@@ -422,16 +422,16 @@ Please note that you'll need to modify the DNS records for any domains that you 
 
 We'll use the MySQL shell to add support for the domain "example.com", which will have an email account called "sales". You should substitute one of your domains for "example.com" in these statements, along with a strong password for the "password" entry in the second SQL statement.
 
-    mysql -u root -p 
+    mysql -u root -p
 
-    USE mail; 
+    USE mail;
     INSERT INTO domains (domain) VALUES ('example.com');
     INSERT INTO users (email, password) VALUES ('sales@example.com', ENCRYPT('password'));
     quit
 
 You'll need to send a welcome message to new email accounts before they can be accessed via IMAP or POP3. This is because the mailboxes for new users won't be created until an email is received for them. To send a welcome message from the command line, you may use the `mailx` utility. Issue the following command to send the message.
 
-    mailx sales@example.com 
+    mailx sales@example.com
 
 Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:" blank. This completes the configuration for a new domain and email user.
 

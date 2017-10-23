@@ -49,7 +49,7 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using an SSH tunnel.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using an SSH tunnel.
 
 {: .note}
 >
@@ -134,7 +134,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         grant all on testdb.* to 'testuser' identified by 'password';
 
 2.  Exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -149,7 +149,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

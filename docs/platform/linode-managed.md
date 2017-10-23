@@ -71,14 +71,14 @@ Installing the public SSH key for the `root` user is the easiest way to add Lino
 
 Here's how to install Linode's SSH key for the `root` user:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#connect-to-your-linode-via-ssh).
 2.  Log in as `root` by entering the following command:
 
         su
 
  {: .note }
 >
-> If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/securing-your-server#sph_disabling-ssh-password-authentication-and-root-login) to edit the `sshd_config` file and reenable root login via SSH.
+> If you followed the instructions in the [Securing Your Server](/docs/securing-your-server) guide to disable root login via SSH, you will need to reenable that feature to install the public key for the `root` user. Follow [these instructions](/docs/security/securing-your-server/#ssh-daemon-options) to edit the `sshd_config` file and reenable root login via SSH.
 
 3.  Open the `authorized_keys` file for editing by entering the following command:
 
@@ -95,8 +95,8 @@ You can also install Linode's public SSH key for another non-root user. This all
 
 Here's how to install Linode's SSH key as a non-root user:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
-2.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user) for instructions. Make sure you add the user to the admin group.
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#connect-to-your-linode-via-ssh).
+2.  If you haven't already created a non-root user on your server, you should do so now. See [Adding a New User](/docs/security/securing-your-server/#add-a-limited-user-account) for instructions. Make sure you add the user to the admin group.
 3.  Open the `sudoers` file for editing by entering the following command:
 
         sudo visudo
@@ -111,8 +111,8 @@ Here's how to install Linode's SSH key as a non-root user:
 
 6.  Press **Esc** to exit insert mode.
 7.  Type `:wq` to save and quit the file.
-8.  Add the [Managed public key](/docs/linode-managed#sph_adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
-9.  Add this user to the [Account Credentials](/docs/linode-managed#sph_adding-service-credentials) list.
+8.  Add the [Managed public key](/docs/uptime/linode-managed/#adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
+9.  Add this user to the [Account Credentials](/docs/uptime/linode-managed/#adding-service-credentials) list.
 
  {: .note }
 >
