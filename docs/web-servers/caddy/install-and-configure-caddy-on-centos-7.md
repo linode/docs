@@ -2,11 +2,11 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
+description: 'This guide will show you how to install and configure Caddy and run it on boot as a systemd service.'
 keywords: 'caddy,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, September 14th, 2017'
-modified: Monday, September 18th, 2017
+modified: Monday, October 23, 2017
 modified_by:
   name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
@@ -21,7 +21,7 @@ external_resources:
 
 ---
 
-[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically. 
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically, using [Let's Encrypt](https://letsencrypt.org/).
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ external_resources:
         sudo chmod 755 /usr/local/bin/caddy
         sudo setcap 'cap_net_bind_service=+ep' /usr/local/bin/caddy
 
-3.  To highten security, create an unprivileged user that can run the Caddy server.
+3.  For added security, create an unprivileged user that can run the Caddy server:
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/caddy -g www-data -s /sbin/nologin
@@ -86,9 +86,9 @@ This section will show you how to start Caddy automatically, whenever the Linode
 
     {:.caution}
     >
-    >The files in your web root directory must belong to the Caddy user (www-data). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
+    >The files in your web root directory must belong to the Caddy user (`www-data`). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
 
-4.  If you plan to deploy your pages via an SFTP client--as an administrative user--other than **www-data** or **root**, set the following permissions. Replace `example_user` with the administrator's username:
+4.  If you plan to deploy your pages via an SFTP client--as an administrative user--other than `www-data` or `root`, set the following permissions. Replace `example_user` with the administrator's username:
 
         sudo usermod -g www-data example_user
         sudo chown -R example_user:www-data /var/www/
@@ -98,7 +98,6 @@ This section will show you how to start Caddy automatically, whenever the Linode
 5.  Create a test page:
 
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/my-website/index.html
-
 
 ## Configure the Caddyfile
 
@@ -132,4 +131,4 @@ Edit the Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Li
         sudo systemctl start caddy.service
         sudo systemctl status caddy.service
 
-3.  The `status` command above will show you the url where Caddy is listening (e.g., `https://203.0.113.0`). Type this url into a browser window, on your local machine and you should see the test page rendered in the browser. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a green lock symbol in the URL bar, indicating that your connection is secure.
+3.  The `status` command above will show you the url where Caddy is listening (e.g., `https://203.0.113.0`). Type this url into a browser window on your local machine and you should see the test page. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a lock symbol in the URL bar, indicating that your connection is secure.
