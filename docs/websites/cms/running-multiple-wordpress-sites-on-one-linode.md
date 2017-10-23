@@ -2,8 +2,8 @@
 author:
   name: Jonathan Tsai
   email: docs@linode.com
-description: 'Running Multiple WordPress Sites on One Linode.'
-keywords: 'install WordPress, WordPress on Linode, multiple WordPres, how to configure WordPress, Permalink'
+description: 'Running Multiple WordPress Sites on One Linode'
+keywords: 'install WordPress, WordPress on Linode, multiple WordPress, how to configure WordPress, Permalink'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, October 16, 2017
 modified_by:
@@ -14,14 +14,12 @@ external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
 - '[WordPress Support](http://wordpress.org/support)'
-- '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)
+- '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
 In this guide, you'll learn to how to run multiple WordPress sites on a single Linode running Ubuntu 16.04 using Apache Virtual Hosts. WordPress is a popular dynamic content management system that can build anything from blogs to websites to ecommerce stores with the right plugins and setup.
 
 For smaller trafficked websites and personal blogs, it's much more economical to host multiple sites on one server.
-
-![Install WordPress on Ubuntu 16.04](/docs/assets/wordpress-ubuntu-16-04-title.png "Running Multiple WordPress Sites on One Linode")
 
 {: .note}
 >
@@ -45,82 +43,96 @@ For smaller trafficked websites and personal blogs, it's much more economical to
 
     2.  Create the WordPress database(s) with a separate namespace:
 
-            CREATE DATABASE example_wordpress;
+            CREATE DATABASE example1_wordpress;
 
-    3.  Create a user and grant them privileges for the newly created `example_wordpress` database, replacing `example_wpuser` and `password` with the username and password you wish to use:
+    3.  Create a user and grant them privileges for the newly created `example1_wordpress` database, replacing `example1_wpuser` and `password` with the username and password you wish to use:
 
-            CREATE USER 'example_wpuser' IDENTIFIED BY 'password';
-            GRANT ALL PRIVILEGES ON example_wordpress.* TO 'example_wpuser';
+            CREATE USER 'example1_wpuser' IDENTIFIED BY 'password1';
+            GRANT ALL PRIVILEGES ON example1_wordpress.* TO 'example1_wpuser';
 
     4.  Repeat steps 2 and 3 for each instance of WordPress that you want to run, replacing the `example` namespace with a keyword of your choice representing the additional sites:
 
-            CREATE USER 'example_wpuser' IDENTIFIED BY 'password';
-            GRANT ALL PRIVILEGES ON example_wordpress.* TO 'wpuser';
+            CREATE USER 'example2_wpuser' IDENTIFIED BY 'password2';
+            GRANT ALL PRIVILEGES ON example1_wordpress.* TO 'example2_wpuser';
 
     5.  Exit MySQL:
 
             quit
 
+An example of a two WordPress setup is shown below:
+
+{: .table .table-striped}
+| Hostname | Database | Username | Password |
+| ---------| ---------| ---------| -------- |
+| example1.com | example1_wordpress | example1_wpuser | password1
+| exmaple2.com | example2_wordpress | example2_wpuser | password2
+
 ## Install Multiple WordPress Instances
 
-The following steps are adapted from the **Install WordPress** section from the [Install WordPress on Ubuntu 16.04](/docs/website/cms/install-wordpress-on-ubuntu-16-04) guide.
+The following steps are adapted from the **Install WordPress** section from the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
 
-1.  Download the latest version of WordPress into a downloads directory and extract it:
+1.  Create the directory that will host your website and WordPress source files. In this guide, the home directory `/var/www/html/example1.com/` is used as an example. Navigate to that new directory:
 
-        mkdir -p ~/downloads
-        cd ~/downloads        
+        sudo mkdir /var/www/html/example1.com/
+        sudo mkdir /var/www/html/example2.com/
+        cd /var/www/html/example1.com/
+
+2.  Create a directory called `src` under `/var/www/html/example1.com/`. Download and extract the latest version of WordPress:
+
+        sudo mkdir /var/www/html/example1.com/src/
+        sudo mkdir /var/www/html/example2.com/src/
+        cd /var/www/html/example1.com/src/
         sudo wget http://wordpress.org/latest.tar.gz
         tar -zxvf latest.tar.gz
 
-2.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
+3.  Rename `latest.tar.gz` as `wordpress` followed by the date to store a backup of the original source files. This will be useful if you install new versions in the future and need to revert back to a previous release:
 
         mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-3.  Create the directory that will host your website and WordPress source files. In this guide, the home directory `/var/www/html/example.com/` is used as an example. Navigate to that new directory:
-
-        sudo mkdir -p /var/www/html/example.com/
-        cd /var/www/html/example.com/
-
 4.  Set your web server's user, `www-data`, as the owner of your site's home directory:
 
-        sudo chown -R www-data:www-data /var/www/html/example.com/
+        sudo chown -R www-data:www-data /var/www/html/example1.com/
+        sudo chown -R www-date:www-date /var/www/html/example2.com/
 
-6.  Copy the WordPress files to your `public_html` folder:
+5.  Copy the WordPress files to your `public_html` folder:
 
-        sudo cp -R ~/downloads/wordpress/* ../public_html/
+        sudo cp -R /var/www/html/example1.com/src/wordpress/* ../public_html/
+        sudo cp -R /var/www/html/example2.com/src/wordpress/* ../public_html/
 
 6.  Give your web server ownership of the `public_html` folder:
 
-        sudo chown -R www-data:www-data /var/www/html/example.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example1.com/public_html
+        sudo chown -R www-data:www-data /var/www/html/example2.com/public_html
 
-7.  Repeat steps 3 through 6 for each instance of WordPress that you want to run.
+7.  Repeat for each instance of WordPress that you want to run.
 
 ## Configure WordPress
 
-1.  Follow the steps from the **Configure WordPress** section of the [Install WordPress on Ubuntu 16.04](/docs/website/cms/install-wordpress-on-ubuntu-16-04) guide.
+1.  Follow the steps from the **Configure WordPress** section of the [Install WordPress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04) guide.
 
 ## Configure Apache
 
-Up until this point, the steps have been fairly straightforward and similar to setting up a single instance of WordPress. This guide will now walk through configuring Apache Virtual Hosts so that visiting `example.com` in your browser will show the content served by the code running at `/var/www/html/example.com/public_html` and backed by the MySQL database `example_wordpress`.
+Up until this point, the steps have been fairly straightforward and similar to setting up a single instance of WordPress. This guide will now walk through configuring Apache Virtual Hosts so that visiting `example1.com` in your browser will show the content served by the code running at `/var/www/html/example1.com/public_html` and backed by the MySQL database `example1_wordpress`.
 
 1.  Go to the Apache `sites-available` directory:
 
         cd /etc/apache2/sites-avilable
 
-2.  Create a Virtual Host configuration file, replacing `emacs` with the your editor of choice.
+2.  Copy `000-default.conf` as needed. 
 
-        sudo emacs example.com
+        cp 000-default.conf example1.conf
+        cp 000-default.conf example2.conf
 
-3.  Put the following contents in `example.com`:
+2.  Put the following contents in `example1.com`:
 
         <VirtualHost *:80>
           # The primary domain for this host
-          ServerName example.com
+          ServerName example1.com
           # Optionally have other subdomains also managed by this Virtual Host
-          ServerAlias example.com *.example.com
-          DocumentRoot /var/www/html/example.com/public_html
+          ServerAlias example1.com *.example1.com
+          DocumentRoot /var/www/html/example1.com/public_html
 
-          <Directory /var/www/html/example.com/public_html>
+          <Directory /var/www/html/example1.com/public_html>
             Require all granted
             # Allow local .htaccess to override Apache configuration settings
             AllowOverride all
@@ -133,10 +145,10 @@ Up until this point, the steps have been fairly straightforward and similar to s
           # Block .svn, .git
           RewriteRule \.(svn|git)(/)?$ - [F]
         
-          # Catchall redirect to www.example.com
-          RewriteCond %{HTTP_HOST}   !^www.example\.com [NC]
+          # Catchall redirect to www.example1.com
+          RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
           RewriteCond %{HTTP_HOST}   !^$
-          RewriteRule ^/(.*)         https://www.example.com/$1 [L,R]
+          RewriteRule ^/(.*)         https://www.example1.com/$1 [L,R]
 
           # Recommended: XSS protection
           <IfModule mod_headers.c>
@@ -145,11 +157,11 @@ Up until this point, the steps have been fairly straightforward and similar to s
           </IfModule>
         </VirtualHost>
 
-4.  Enable the site:
+3.  Enable the site:
 
         # this will create a symlink to the example.com Apache conf file
         # in /etc/apache2/sites-enabled/
-        sudo a2ensite example.com
+        sudo a2ensite example1.com
 
 5.  Restart Apache to enable the changes:
 
@@ -157,4 +169,3 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 6.  Repeat steps 2 through 5 for each WordPress site that you want to run.
 
-Finished!
