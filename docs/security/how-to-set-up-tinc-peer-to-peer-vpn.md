@@ -242,7 +242,7 @@ In order to run tinc as a service on startup, you'll need to set up the proper U
 
 ### Host Files Interchange
 
-At this point, you have configuration files created on each server. Because of tinc's P2P nature, the last thing you need to do is interchange host files between nodes. There are many ways to accomplish this, for the purpose of this guide we'll use `scp`.
+At this point, you have configuration files created on each server. Because of tinc's P2P nature, the last thing you need to do is interchange host files between nodes. There are many ways to accomplish this, for the purposes of this guide we'll use `scp`.
 
 From `appserver`:
 
@@ -274,11 +274,11 @@ From `dbserver`:
 
     You should have at least three interfaces, one of them your `linodeVPN`.
 
-Another quick test you can do, is to `ping` Database Server from application server using its VPN address:
+Another quick test you can do is to `ping` the Database Server from the Application Server using its VPN address:
 
     ping 192.168.100.130
 
-If you encounter errors during your testing you can always add this flag to your daemon command:
+If you encounter errors during your testing you can add this flag to your daemon command:
 
     sudo tincd -n --logfile[=FILE] linodeVPN -D -d5
 
@@ -300,7 +300,7 @@ This topology can be considered a variant of the single-node where a high traffi
 
 In the interest of showcasing tinc's easy expandability, we'll assume that **LINODE1** and **LINODE2** are the same application server and database server from the previous section.
 
-the "cheat-sheet" for this topology is:
+The "cheat-sheet" for this topology is:
 
 ![Three-Node cheat-sheet](/docs/assets/tinc-3-node-cheat-sheet.jpg "Three-Node cheat-sheet")
 
@@ -382,7 +382,7 @@ the "cheat-sheet" for this topology is:
         WantedBy=multi-user.target
         ~~~
 
-9.  The last step is to interchange host files between all nodes. So you will need to copy application and database servers host files to webserver and webserver's host file to both of them.
+9.  The last step is to interchange host files between all nodes. You will need to copy application and database servers host files to webserver and webserver's host file to both of them.
 
     From `webserver`:
 
@@ -433,7 +433,7 @@ the "cheat-sheet" for this topology is:
 
 ## Use tinc for Centralized Cloud Interconnection
 
-This setup illustrates a use-case where regional branches need to interact with an application running at a head quarters, like a centralized inventory management software.
+This setup illustrates a use-case where regional branches need to interact with an application running at a headquarters, like a centralized inventory management software.
 In the last use-case, you will configure a VPN with four Linode servers. Each server should be in a different geographic location.
 
 ![Centralized Cloud VPN](/docs/assets/tinc-four-node.png "Centralized Cloud VPN")
