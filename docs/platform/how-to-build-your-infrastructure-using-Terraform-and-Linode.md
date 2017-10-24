@@ -42,22 +42,26 @@ The main goal of this guide is to showcase Terraform benefits using Linode cloud
 
 # Installing Terraform on Ubuntu 16.04
 
-First thing you need to understand is how Terraform works. Unlike other tools that require server agents (Chef, Puppet) Terraform is a "Client-Only" architecture. Matter of fact, Terraform is bundled as a single binary available for MacOS, FreeBSD, Linux, OpenBSD, Solaris and Windows. The binary file contains the core of the application, providers and plugins can be added as required by the user.
+Unlike other tools that require server agents (Chef, Puppet) Terraform is a "Client-Only" architecture. In fact, Terraform is bundled as a single binary available for MacOS, FreeBSD, Linux, OpenBSD, Solaris and Windows. The binary file contains the core of the application; providers and plugins can be added as required by the user.
 
-In the particular case of Linode there is no official Terraform provider yet, that's why we'll be using a custom plugin and an installation from a developer's perspective, so is not necessary to download the pre-packaged binary.
+In the particular case of Linode there is no official Terraform plugin yet.
 
 ## Install Go version 1.9
 
-1. Download and extract `golang` in the appropriate location. Version 1.9 is required by Terraform:
+1. Install Git if it is not already on your system:
+
+        apt install git
+
+2. Download and extract `golang` in the appropriate location. Version 1.9 is required by Terraform:
 
         wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
         sudo tar -C /usr/local -xvzf go1.9.linux-amd64.tar.gz
 
-2. The language workspace (projects) demands that executables and source code have its own directories:
+3. The language workspace (projects) demands that executables and source code have its own directories:
 
         mkdir -p ~/go_projects/{bin,src,pkg}
 
-3. Next step is to add `Go` to the `PATH`, also for convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages usage. You can change it to any locaton that suits you, just be sure to include it in the `PATH`.
+4. Next step is to add `Go` to the `PATH`, also for convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages usage. You can change it to any locaton that suits you, just be sure to include it in the `PATH`.
 
     {: .file-excerpt}
     ~/.profile
@@ -68,7 +72,7 @@ In the particular case of Linode there is no official Terraform provider yet, th
         export GOBIN="$GOPATH/bin"
         ~~~
 
-4. Reload your profile into memory:
+5. Reload your profile into memory:
 
         source ~/.profile
 
@@ -486,11 +490,11 @@ Finally, you need a "main" configuration file (or any other name that suits you)
     appserver_name = "NJ-app"
     dbserver_name = "NJ-db"
     db_size = "8192"
-    
+
     }
     ~~~
 
-As you can see using modules is very easy, just call them by name with the command `module` and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you copy-paste all reusable code in the main configuration file. Let's deploy this infrastructure.
+As you can see using modules is easy, just call them by name with the command `module` and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you copy-paste all reusable code in the main configuration file. Let's deploy this infrastructure.
 
         cd ~/go_projects/bin/testing/
         terraform init && terraform plan
@@ -501,19 +505,16 @@ As you can see using modules is very easy, just call them by name with the comma
 
 ![Terraform Modules Apply](/docs/assets/terraform/terraform-modules-apply.jpg)
 
-        linode list
-
-![Terraform Modules List](/docs/assets/terraform/terraform-modules-list.jpg)
 
 Modules possibilities are endless: you can use several modules at once, you can mix the use of modules with traditional `resource` definitions, you can even call modules from remote sources (version systems). For more information read Terraform [modules documentation](https://www.terraform.io/docs/modules/index.html).
 
 ## Server Configuration
 
-It's out of the scope of this guide explain server configuration but is worth mentioning that Terraform offers many ways to set up your Linode:
+Server configuration is beyond the scope of this guide, but is worth mentioning that Terraform offers many ways to set up your Linode:
 
 * Using custom scripts, that can be included on configuration file itself or called from a local or remote file.
 * Using specialized software tools integrated with Terraform like Chef or Puppet.
 * Using container-based solutions like Docker, Kubernetes.
 * Using Terraform plugin-based solutions.
 
-The options doesn't end here, there are plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers) and even [modules](https://registry.terraform.io) available to use.
+There are also plenty of [provisioners](https://www.terraform.io/docs/provisioners/index.html), [providers](https://github.com/terraform-providers) and even [modules](https://registry.terraform.io) available to use.
