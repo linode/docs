@@ -2,18 +2,18 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to store confidential data in the cloud: Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers'
+description: "How to store confidential data in the cloud: Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers"
 keywords: 'confidential, encrypted, integrity, redundant, private, filesystem, storage'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Weekday, Month 00st, 2015'
-modified: Weekday, Month 00th, 2015
+published: 'Tuesday, October 24th, 2017'
+modified: Wednesday, Month 25th, 2017
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
 contributor:
   name: Alexandru Andrei
   link:
-  external_resources:
+external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Extensive Documentation](http://tahoe-lafs.readthedocs.io)'
 ---
@@ -24,7 +24,7 @@ contributor:
 
 ## Introduction
 
-    While Tahoe-LAFS may look like yet another decentralized or distributed file system, similar to Gluster, Ceph or others, the problems it solves are entirely different. The *Least Authority File Store* is designed with these things in mind:
+While Tahoe-LAFS may look like yet another decentralized or distributed file system, similar to Gluster, Ceph or others, the problems it solves are entirely different. The *Least Authority File Store* is designed with these things in mind:
 
 1.  **Confidentiality**: Keeping your data private, even if you store it on somebody else's servers. When you keep sensitive/secret data in the cloud, some inherent risks exist.
 
@@ -44,7 +44,7 @@ contributor:
 {: .note}
 > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone. 
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Update your system:
 
@@ -59,9 +59,9 @@ contributor:
 
 3.  It's a good idea to distribute your Linodes among different datacenters. This makes the setup more reliable and resilient in the event of major problems with one of the locations.
 
-## Install Tahoe-LAFS and Setup the Introducer
+## Install Tahoe-LAFS and Set Up the Introducer
 
-    Introducers are the "middlemen", central points that connect storage nodes and clients together in the grid. This allows the system to let every node know when a new peer joins the grid. It also tells the joining machines about the currently active peers it can connect to. There is however a downside to this: introducing a single point of failure. But without the introducers you would have to edit a configuration file on every node and add a new IP address every time you insert another node into the grid. The upside is that you can (and should) configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events. These too would be, ideally, in different datacenters. After you get acquainted with the simple one introducer setup, you can [read about additional introducers](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions).
+Introducers are the "middlemen", central points that connect storage nodes and clients together in the grid. This allows the system to let every node know when a new peer joins the grid. It also tells the joining machines about the currently active peers it can connect to. There is however a downside to this: introducing a single point of failure. But without the introducers you would have to edit a configuration file on every node and add a new IP address every time you insert another node into the grid. The upside is that you can (and should) configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events. These too would be, ideally, in different datacenters. After you get acquainted with the simple one introducer setup, you can [read about additional introducers](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions).
 
 1.  After you've logged in as root, create an unprivileged user:
 
@@ -93,22 +93,24 @@ contributor:
 
         exit
 
-8.  To automatically start up the introducer every time your Linode boots, you will create a systemd service file (systemd is Debian's initialization system and service manager). Copy and paste all these lines together:
+8.  To automatically start up the introducer every time your Linode boots, you will create a systemd service file (systemd is Debian's initialization system and service manager). Paste in the following content:
 
-        cat <<EOF > /etc/systemd/system/tahoe-autostart-introducer.service
+      {:.file-excerpt}
+      /etc/systemd/system/tahoe-autostart-introducer.service
+      : ~~~
         [Unit]
         Description=Tahoe-LAFS autostart introducer
         After=network.target
-        
+
         [Service]
         Type=simple
         User=tahoe
         WorkingDirectory=/home/tahoe
         ExecStart=/usr/bin/tahoe run introducer --logfile=logs/introducer.log
-        
+
         [Install]
         WantedBy=multi-user.target
-        EOF
+        ~~~
 
     While a rule to restart the process in case of a crash can be added here, it's not a good idea since you want to inspect your Linode every time a node, client or introducer crashes, before restarting the process. In case you ever need to do so, start your introducer with `systemctl start tahoe-autostart-introducer.service` and restart it with `systemctl restart tahoe-autostart-introducer.service`.
 
@@ -124,12 +126,11 @@ contributor:
 
 ## Add Tahoe-LAFS Storage Nodes to the Grid
 
-    Although the process can be automated, so you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
+Although the process can be automated, so you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
 
-    {: .note}
-    >
-    > If you need very large amounts of disk space, you can [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode
-). This should be done before all the other steps in this section. When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in the next subsection.
+{: .note}
+>
+> If you need very large amounts of disk space, you can [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode). This should be done before all the other steps in this section. When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in the next subsection.
 
 1.  After you launch a new Linode and deploy Debian 9, login as root and create an unprivileged user:
 
@@ -143,9 +144,9 @@ contributor:
 
         su - tahoe
 
-4.  At this point you need to retrieve the introducer FURL you've previously copied and paste it after `--introducer=`. Replace `pb://wfpeyyt7gyy6zu4sljsdelousqj5b5n7@tcp:203.0.113.1:1234/6jwlp57a4wdkrhquunyye6zyolowlbux` with your own FURL. Also replace `203.0.113.1` in --location with the public IP address of this Linode. And remember to choose unique nicknames for each server if you repeat this step on new Linodes.
+4.  At this point you need to retrieve the introducer FURL you've previously copied and paste it after `--introducer=`. Replace `pb://<Introducer FURL>` with your own FURL. Also replace `203.0.113.1` in --location with the public IP address of this Linode. Remember to choose unique nicknames for each server if you repeat this step on new Linodes.
 
-    tahoe create-node --nickname=node01 --introducer=pb://wfpeyyt7gyy6zu4sljsdelousqj5b5n7@tcp:203.0.113.1:1234/6jwlp57a4wdkrhquunyye6zyolowlbux --port=tcp:1235 --location=tcp:203.0.113.1:1235 
+        tahoe create-node --nickname=node01 --introducer=pb://<Introducer FURL> --port=tcp:1235 --location=tcp:203.0.113.1:1235
 
     Configuration files, shares, logs and other data will be found under the `/home/tahoe/.tahoe` directory.
 
@@ -155,20 +156,22 @@ contributor:
 
 6.  Now create a systemd service file:
 
-        cat <<EOF > /etc/systemd/system/tahoe-autostart-node.service
+      {:.file}
+      /etc/systemd/system/tahoe-autostart-node.service
+      : ~~~
         [Unit]
         Description=Tahoe-LAFS autostart node
         After=network.target
-        
+
         [Service]
         Type=simple
         User=tahoe
         WorkingDirectory=/home/tahoe
         ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
-        
+
         [Install]
         WantedBy=multi-user.target
-        EOF
+        ~~~
 
 7.  And enable the service to autostart your storage node at boot time:
 
@@ -193,33 +196,33 @@ contributor:
     1.  After reading [about StackScripts](https://www.linode.com/docs/platform/stackscripts), navigate to the page where you can add a new StackScript, select Debian 9 as the distribution and paste the following in the **Script** section:
 
         #!/bin/bash
-        
+
         #<UDF name="nickname" Label="Storage Node Nickname" example="node01" />
         #<UDF name="introducer" Label="Introducer FURL" example="pb://wfpe..." />
-        
+
         apt-get update
         apt-get -y upgrade
         adduser --disabled-password --gecos "" tahoe
         apt-get -y install tahoe-lafs
         su - -c "tahoe create-node --nickname=$NICKNAME --introducer=$INTRODUCER --port=tcp:1235 --location=tcp:`curl -4 -s icanhazip.com`:1235" tahoe
-        
+
         cat <<EOF > /etc/systemd/system/tahoe-autostart-node.service
         [Unit]
         Description=Tahoe-LAFS autostart node
         After=network.target
-        
+
         [Service]
         Type=simple
         User=tahoe
         WorkingDirectory=/home/tahoe
         ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
-        
+
         [Install]
         WantedBy=multi-user.target
         EOF
-        
+
         systemctl enable tahoe-autostart-node.service
-        
+
         systemctl start tahoe-autostart-node.service
 
 2.  After you've saved the changes, launch a new Linode, deploy this StackScript on a Debian 9 image and boot.
@@ -266,7 +269,7 @@ contributor:
 
 ## How to Use Tahoe-LAFS' Command Line Interface
 
-1.  Although the web user interface is easy to work with, it has some limitations. Another way to interact with files and directories is by using the command line interface. Some of its advantages include: ability to recursively upload files, synchronizing (backing up) directories. 
+1.  Although the web user interface is easy to work with, it has some limitations. Another way to interact with files and directories is by using the command line interface. Some of its advantages include: ability to recursively upload files, synchronizing (backing up) directories.
 
     After you've launched the local client, open another terminal window or command prompt and create an alias:
 
