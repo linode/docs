@@ -10,9 +10,8 @@ modified_by:
   name: Linode
 published: 'Monday, March 23rd, 2015'
 title: 'Node.js Web Server deployed within Docker'
-alias: ['applications/containers/nodejs-node-js-web-server-docker-container']
+alias: ['applications/containers/nodejs-node-js-web-server-docker-container/']
 ---
-
 
 Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
 
