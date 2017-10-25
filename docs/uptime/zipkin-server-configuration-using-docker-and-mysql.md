@@ -5,7 +5,7 @@ author:
 description: 'This guide shows you how to use Zipkin in a docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems on your websites.'
 keywords: 'zipkin, docker, tracking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, October 4, 2017
+modified: Wednesday, October 25, 2017
 modified_by:
   name: Luis Cortés
 published: 'Wednesday, October 4, 2017'
@@ -40,28 +40,55 @@ Our main task is how to setup a Zipkin server with mysql so that it running with
 
 ### Install Package Dependencies
 
-1. Log into your Zipkin host machine. Then make sure your Fedora 26 OS is up to date:
+1. Log into your Zipkin host machine and make sure your system is up to date:
 
         sudo dnf update && sudo dnf upgrade
 
-2. **Install docker and docker-compose.**  These 2 applications are all we need to pull new images and run our Zipkin service. To be clear, we will end up running 3 containers: one for the Zipkin server, one for mysql and for dependencies. This is a standard configuration provided by the creator of the docker containers. You can customize your own, but we are focusing on quick instead of custom today.
+2. Add the Docker repository:
 
-        sudo dnf install docker docker-compose
+        sudo dnf install dnf-plugins-core
+        sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo 
 
-3. Install git, so that we can use it to download the necessary Zipkin **docker-compose yaml** files:
+2. Install Docker CE:
+
+        sudo dnf install docker-ce
+
+3. Enable Docker as a service:
+
+        sudo systemctl enable docker.service
+        sudo systemctl start docker.service
+
+4. (Optional) Add your limited user account to the `docker` group, so that you can run Docker commands without using `sudo`:
+
+        sudo usermod -aG docker username
+
+    You can test your Docker installation by running `docker run hello-world`.
+
+5. Install Docker Compose:
+
+        curl -LO https://github.com/docker/compose/releases/download/1.16.1/docker-compose-`uname -s`-`uname -m`
+        sudo mv docker-compose-Linux-x86_64 /usr/local/bin/docker-compose
+        sudo chmod +x /usr/local/bin/docker-compose
+
+    You can test the installation with `docker-compose --version`. 
+
+    {:.note}
+    > As of this writing, the current stable version of Docker Compose is 1.16.1. Check for the latest version at the [releases page](https://github.com/docker/compose/releases) and update the version in the `curl` command accordingly.
+
+6. Install git:
 
         sudo dnf install git
 
-4. Use git to retrieve the Zipkin docker-compose yaml files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of docker, these files hold all the system level configuration we need to run several different types of Zipkin system level configurations like: Zipkin with mysql, Zipkin with elasticsearch, or Zipkin with Kakfa, etc. Let's make a copy of the github directory in your home directory.
+7. Use git to retrieve the Zipkin docker-compose yaml files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of docker, these files hold all the system level configuration we need to run several different types of Zipkin system level configurations like: Zipkin with mysql, Zipkin with elasticsearch, or Zipkin with Kakfa, etc. 
 
         cd ~
         git clone https://github.com/openzipkin/docker-zipkin.git
 
-5. (Optional) If you are a mysql admin, you're probably at home with using mysqldump. The docker philosophy is to run services in containers, so don't get all excited when we install mysql on the host. All we really need is the mysqldump command:
+8. Install MySQL:
 
         sudo dnf install mysql
 
-### Docker Service Setup
+### Docker 
 
 The docker service will manage your containers. The containers host Zipkin services and your mysql server. One of the containers contains your span/trace data, which you want to make sure persists on your file system.
 
@@ -71,15 +98,7 @@ Docker will be in charge of starting and stopping these services automatically w
 
 Notice that the Zipkin container will expose port 9411 for its service, and the mysql container will expose port 3306. We will use the docker-compose yaml files to forward port 9411 to the host's port 9411, so that the external world will have access to our container's service.
 
-1. Enable the docker service:
-
-        sudo systemctl enable docker
-
-2. Start the docker service:
-
-        sudo systemctl start docker
-
-### Zipkin Server Firewall Concepts
+#### Zipkin Server Firewall Concepts
 
 Limit the exposure of our Zipkin server to just our analyst and client machines to avoid the server being compromised.
 
@@ -103,27 +122,23 @@ Note: both of the Zipkin services use the same port 9411/tcp.
 
         sudo firewall-cmd --reload
 
-3. Add a client machine real world IP. This is the IP of your instrumented client machine. You should have at least 1 to provide span/trace data.
-
-        sudo firewall-cmd --zone=zipkin --add-source=198.51.100.0/32  --permanent
-
-4. Add an analyst machine real world IP (If you forget to define any source IPs, then you will effectly have no filtering on your IPs. In other words you need at least 1 source IP to start filtering on IPs. If there are no source IPs defined, any machine can connect to your server.)
+3. Add an analyst machine real world IP (If you forget to define any source IPs, then you will effectly have no filtering on your IPs. In other words you need at least 1 source IP to start filtering on IPs. If there are no source IPs defined, any machine can connect to your server.)
 
         sudo firewall-cmd --zone=zipkin --add-source=203.0.113.0/32  --permanent
 
-5. Open a port through your firewall.
+4. Open a port through your firewall.
 
         sudo firewall-cmd --zone=zipkin --add-port=9411/tcp  --permanent
 
-6. (Optional) Since we may want to access our machine from the analyst machine, it may be a good idea to add an ssh port.
+5. (Optional) Since we may want to access our machine from the analyst machine, it may be a good idea to add an ssh port.
 
         sudo firewall-cmd --zone=zipkin --add-service=ssh --permanent
 
-7. Reload your firewall rules to activate them in your new zone.
+6. Reload your firewall rules to activate them in your new zone.
 
         sudo firewall-cmd --reload
 
-8. View your new zone like so:
+7. View your new zone like so:
 
         sudo firewall-cmd --zone=zipkin --list-all
 
