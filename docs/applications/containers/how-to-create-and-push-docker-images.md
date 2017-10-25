@@ -102,7 +102,6 @@ Most images already include a tag. For instance, when you pull down the Ubuntu i
 1.  Add personal information to the image. During the commit command, a description, your full name, and Docker Hub username can be added:
 
         docker commit -m "Added LAMP Server" -a "FULL NAME" d09dd0f24b58 USERNAME/lamp-server-template:v1.8.10.2017
-
     Replace FULL NAME with your name and USERNAME with your Docker Hub username.
 
 2.  Log in to Docker Hub:
@@ -117,3 +116,24 @@ Most images already include a tag. For instance, when you pull down the Ubuntu i
 
 
   ![Image on Docker Hub](/docs/assets/docker/dockerdev3.jpg)
+
+
+## How to deploy containers with Shipyard
+
+Shipyard offers a web-based GUI, built on Docker Swarm.
+
+For those that have never heard of Shipyard, it is built on Docker Swarm and gives you an easy means of managing your docker resources (such as containers, images, private registries, nodes, accounts, and events). What is really interesting about Shipyard is that it itself is built via a Docker image; so to install Shipyard, you use Docker.
+
+What I want to show you is how to easily install Shipyard and then how to deploy a container using the web-based GUI. I will be demonstrating on a Linode running Ubuntu Server 16.10 with Docker already installed.
+
+### How to download and run Shipyard:
+
+Docker has created a simple script that automates the process of deploying Shipyard. In order to use this script, you’ll need to be logged into your Linode as a user who is a part 
+of the docker group. Once logged in, issue the following command:
+
+    curl -sSL https://shipyard-project.com/deploy | bash -s
+
+The downloaded script will run and take care of deploying the Shipyard container. From start to finish, the script shouldn’t take more than a minute or two. Once the command completes, point a browser to `http://SERVER_IP:8080`, where `SERVER_IP` is the actual IP address of your Linode. You will be required to log in using these default credentials:
+    
+    Username - admin
+    Password - shipyard
