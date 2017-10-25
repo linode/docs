@@ -114,7 +114,7 @@ In the particular case of Linode there is no official Terraform plugin yet.
 
 2. Get the Linode plugin for Terraform:
 
-          wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
+        wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
 
 3. Move the plugin to `~go_projects/bin`:
 
