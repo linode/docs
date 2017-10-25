@@ -183,17 +183,17 @@ Although the process can be automated, so you can easily expand your storage poo
 
 ### Automatically Configure Storage Nodes with Linode StackScripts
 
-    Since some users may require tens or hundreds of storage nodes, newly deployed Linodes can be automated to go through the previous steps for you.
+Since some users may require tens or hundreds of storage nodes, newly deployed Linodes can be automated to go through the previous steps for you.
 
- {: .note}
-    >
-    > To make sure you're proceeding correctly, you can temporarily skip to the next two sections, and then open the web user interface in your local browser. Then, return to this section, and after launching each Linode you can wait one or two minutes and then refresh the page. The new storage node should appear in a list there, along with a green checkmark next to it. This allows you to confirm each successful setup, instead of launching all instances in the dark, only to find out later something has gone wrong.
+{: .note}
+>
+> To make sure you're proceeding correctly, you can temporarily skip to the next two sections, and then open the web user interface in your local browser. Then, return to this section, and after launching each Linode you can wait one or two minutes and then refresh the page. The new storage node should appear in a list there, along with a green checkmark next to it. This allows you to confirm each successful setup, instead of launching all instances in the dark, only to find out later something has gone wrong.
 
-    {: .caution}
-    >
-    > The following StackScript relies on icanhazip.com to retrieve each Linode's external IP address. While the site has redundant servers, for various reasons, it might function incorrectly or be unavailable at some moment in time. That's why you should check that it works correctly before continuing.
+{: .caution}
+>
+> The following StackScript relies on icanhazip.com to retrieve each Linode's external IP address. While the site has redundant servers, for various reasons, it might function incorrectly or be unavailable at some moment in time. That's why you should check that it works correctly before continuing.
 
-    1.  After reading [about StackScripts](https://www.linode.com/docs/platform/stackscripts), navigate to the page where you can add a new StackScript, select Debian 9 as the distribution and paste the following in the **Script** section:
+1.  After reading [about StackScripts](https://www.linode.com/docs/platform/stackscripts), navigate to the page where you can add a new StackScript, select Debian 9 as the distribution and paste the following in the **Script** section:
 
         #!/bin/bash
 
@@ -231,11 +231,14 @@ Although the process can be automated, so you can easily expand your storage poo
 
 1.  To securely upload and download files to and from the grid, you must set up a client node on your local machine. While you could use port forwarding to access the web user interface from a storage node hosted on Linode, or use the command line interface on a remote server to work with files in the grid, it's not recommended to do so. Going this route exposes you to a few risks like accidentally leaking unencrypted data or *filecaps/dircaps* (think of them as passwords, giving you access to files and directories; more about this later).
 
-2.  Windows users can follow these instructions to [setup Tahoe-LAFS on Windows](http://tahoe-lafs.readthedocs.io/en/latest/windows.html), the [instructions for MacOS users are here](http://tahoe-lafs.readthedocs.io/en/latest/OS-X.html) and Linux users should use their distribution's package manager to install Tahoe-LAFS. If you're unlucky, and your distribution doesn't include Tahoe in its repositories, you might have to [build Tahoe-LAFS](http://tahoe-lafs.readthedocs.io/en/latest/INSTALL.html?highlight=build%20tahoe#preliminaries).
+2.  Windows users can follow these instructions to [setup Tahoe-LAFS on Windows](http://tahoe-lafs.readthedocs.io/en/latest/windows.html), the [instructions for MacOS users are here](http://tahoe-lafs.readthedocs.io/en/latest/OS-X.html) and Linux users should use their distribution's package manager to install Tahoe-LAFS (as in previous sections). If you're unlucky, and your distribution doesn't include Tahoe in its repositories, you might have to [build Tahoe-LAFS](http://tahoe-lafs.readthedocs.io/en/latest/INSTALL.html?highlight=build%20tahoe#preliminaries).
 
-3.  After you've installed the software, run the following command to configure a client node, replacing `pb://wfpeyyt7gyy6zu4sljsdelousqj5b5n7@tcp:203.0.113.1:1234/6jwlp57a4wdkrhquunyye6zyolowlbux` with your own introducer FURL:
+3.  After you've installed the software, run the following command to configure a client node, replacing `pb://<Introducer FURL>` with your own introducer FURL:
 
-        tahoe create-client --basedir client --nickname=localclient --introducer=pb://wfpeyyt7gyy6zu4sljsdelousqj5b5n7@tcp:203.0.113.1:1234/6jwlp57a4wdkrhquunyye6zyolowlbux
+        tahoe create-client --basedir client --nickname=localclient --introducer=pb://<Introducer FURL>
+
+    {:.note}
+    > If you are using a Linux client, you may have to run `apt install python-cffi` before running this command.
 
 4.  Whenever you need to work with your grid, launch the client:
 
