@@ -76,6 +76,7 @@ In the particular case of Linode there is no official Terraform plugin yet.
 
         source ~/.profile
 
+<!---
 ## Building the Linode plugin
 
 1. Download Terraform repository, `Go` will save it in the appropriate location:
@@ -103,12 +104,28 @@ In the particular case of Linode there is no official Terraform plugin yet.
 {: .note}
 >
 > AT this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
+--->
+
+## Install Terraform 
+
+1.  Download the Terraform repository:
+
+        go get github.com/hashicorp/terraform
+
+2. Get the Linode plugin for Terraform:
+
+          wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
+
+3. Move the plugin to `~go_projects/bin`:
+
+       mv terraform-provider-linode ~/go_projects/bin/
+       chmod 750 ~/go_projects/bin/terraform-provider-linode
 
 # Configuring Linode Provider
 
-Terraform can understand two types of configuration files: JSON (meant for a server-friendly approach) and HashiCorp Configuration Language (HCL),designed to be human readable and editable. The provided file `linode-template.tf` is written in HCL, you can identify this kind of files by its characteristic extension `.tf`
+Terraform can understand two types of configuration files: JSON (meant for a server-friendly approach) and HashiCorp Configuration Language (HCL),designed to be human readable and editable. This guide will use the HCL format, designated by the extension `.tf`.
 
-1. Open `linode-template.tf` in a text editor and edit as follows. Fill in your Linode API key, public SSH key and desired root password where indicated:
+1. Open `linode-template.tf` in a text editor and add the following content. Fill in your Linode API key, public SSH key and desired root password where indicated:
 
     {: .file}
     ~/go_projects/bin/linode-template.tf
