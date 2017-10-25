@@ -22,10 +22,6 @@ external_resources:
 ![How to Create a Docker Swarm Manager and Nodes on Linode](/docs/assets/docker/create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
 
 
-Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. All you need is one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes. When this is done, you will be able to scale each service you want to run; the Docker Manager will automatically assign resources from the Swarm members to meet the desired scale.
-
-In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container roll out.
-
 ## Before You Begin
 
 1.  Completing this guide will require at least two Linodes located in the same datacenter. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
@@ -36,6 +32,10 @@ In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scal
 
 {: .note}
 > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. You need one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
+
+In this guide, you'll set up a Docker Swarm Manager and connect Nodes for a scalable container deployment. This requires multiple Linodes with Docker installed and running in the same data center. They don't need to be running the same distribution.
 
 
 ## Create the Docker Swarm Manager
