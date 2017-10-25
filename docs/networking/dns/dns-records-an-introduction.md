@@ -86,7 +86,7 @@ Here's how the DNS lookup process works:
 
     ![The steps for DNS resolution, also displayed below.](/docs/assets/1330-dnsoverview.jpg)
 
-The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
+The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
 
 ##Types of DNS Records
 
@@ -114,7 +114,7 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 ### AXFR
 
-An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#sph_using-linode-s-dns-manager-as-a-slave).
+An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
 
 ### CNAME
 
@@ -146,7 +146,7 @@ An *MX record* or *mail exchange record* sets the mail delivery destination for 
     example.com         MX      10  mail.example.com.
     mail.example.com    A           12.34.56.78
 
-The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. Ideally, an MX record should point to a domain that is also the [hostname](/docs/getting-started#xsetting-the-hostname) for its server.
+The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. Ideally, an MX record should point to a domain that is also the [hostname](/docs/getting-started#setting-the-hostname) for its server.
 
 Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service, like [Google Apps](/docs/email/google-mail), you should use the MX records they provide.
 
@@ -245,7 +245,7 @@ An example use of SRV records would be to set up [Federated VoIP](http://en.wiki
 
 ### TXT
 
-A *TXT record* or *text record* provides information about the domain in question to other resources on the Internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing. 
+A *TXT record* or *text record* provides information about the domain in question to other resources on the Internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
 
 
 

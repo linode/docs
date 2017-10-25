@@ -130,7 +130,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo systemctl restart mongod
 
-    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.  
+    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.
 
 ## Initialize Config Servers
 

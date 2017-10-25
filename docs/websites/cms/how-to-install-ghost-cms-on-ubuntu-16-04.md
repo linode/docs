@@ -2,7 +2,7 @@
 author:
   name: Blago Eres
   email: blagoeres100@gmail.com
-description: 'Install and configure a Ghost 1.0.0 blog on your Linode running Ubuntu 16.04.'
+description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 16.04'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
 keywords: 'ghost,install ghost,ghost on linode,configure ghost,deploy ghost on ubuntu 16.04'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,7 +10,8 @@ modified: Tuesday, September 12, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, September 12, 2017'
-title: Create a Professional Blog with Ghost on Ubuntu 16.04
+title: How to Install Ghost CMS on Ubuntu 16.04
+alias: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/']
 contributor:
   name: Blago Eres
   link: https://github.com/blagoeres
@@ -20,9 +21,9 @@ external_resources:
 - '[Ghost API Documentation](https://api.ghost.org/v1.0.0)'
 ---
 
-![Create a Professional Blog with Ghost on Ubuntu 16.04](/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png "Create a Professional Blog with Ghost on Ubuntu 16.04")
+![How to Install Ghost CMS on Ubuntu 16.04](/docs/assets/ghost/ghost-blog-ubuntu-16-04-title-graphic.png "How to Install Ghost CMS on Ubuntu 16.04")
 
-[Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog. 
+[Ghost](https://ghost.org/developers/) is an open source blogging platform that helps you easily create a professional-looking online blog.
 
 Ghost 1.0.0 is the first major, stable release of the Ghost content management system (CMS). Ghost 1.0.0 has a brand new Markdown editor, refreshed user interface, new default theme design, improved install and update process with [Ghost-CLI](https://github.com/TryGhost/Ghost-CLI), and more.
 
@@ -42,11 +43,11 @@ In this guide you'll set up, deploy, and secure a Ghost 1.0.0 blog on a Linode r
 
 3. Ensure that your system is up to date:
 
-        sudo apt update && sudo apt upgrade
+       sudo apt update && sudo apt upgrade
 
 4. Install `build-essential`:
 
-        sudo apt install build-essential
+       sudo apt install build-essential
 
 ## Install nginx
 
@@ -58,13 +59,13 @@ nginx will be used as a reverse proxy for your Ghost application:
 
 1. Download and install MySQL:
 
-        sudo apt install mysql-server
+       sudo apt install mysql-server
 
     Enter a strong password for the `root` user when prompted.
 
 2. Run the `mysql_secure_installation` script:
 
-        sudo mysql_secure_installation
+       sudo mysql_secure_installation
 
 ## Install Node.js and NPM
 
@@ -81,15 +82,15 @@ Ghost-CLI is a command line interface (CLI) tool that makes installing and updat
 
 1. Install Ghost-CLI:
 
-        sudo npm install -g ghost-cli@latest
+       sudo npm install -g ghost-cli@latest
 
 2. Troubleshoot the system for any potential issues when installing or updating Ghost:
 
-        ghost doctor
+       ghost doctor
 
 3. Get help about `ghost`:
 
-        ghost help
+       ghost help
 
 ## Install Ghost
 
@@ -97,15 +98,15 @@ Install Ghost 1.0.0 using the Ghost-CLI tool.
 
 1. Create the document root directory:
 
-        sudo mkdir -p /var/www/ghost
+       sudo mkdir -p /var/www/ghost
 
-2. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `exampleuser`:
+2. Change ownership of the `/var/www/ghost` directory to the non-root user with `sudo` privileges that you created. In this example, `ghostexample`:
 
-        sudo chown ghostexample:ghostexample /var/www/ghost
+       sudo chown ghostexample:ghostexample /var/www/ghost
 
 3. Navigate to the Ghost root directory:
 
-        cd /var/www/ghost
+       cd /var/www/ghost
 
 4.  Ensure that the directory is empty to avoid file conflicts:
 
@@ -113,25 +114,25 @@ Install Ghost 1.0.0 using the Ghost-CLI tool.
 
 5. Install Ghost in production mode:
 
-        ghost install
+       ghost install
 
 6. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://docs.ghost.org/docs/cli-install#section-prompts):
 
-        ? Enter your blog URL: https://example.com
-        ? Enter your MySQL hostname: localhost
-        ? Enter your MySQL username: root
-        ? Enter your MySQL password: areallysecurepassword
-        ? Enter your Ghost database name: exampleGhost
-        ? Do you wish to set up Nginx? yes
-        ? Do you wish to set up SSL? yes
-        ? Enter your email (used for Let's Encrypt notifications) user@example.com
-        ? Do you wish to set up "ghost" mysql user? yes
-        ? Do you wish to set up Systemd? yes
-        ? Do you want to start Ghost? yes
+       ? Enter your blog URL: https://example.com
+       ? Enter your MySQL hostname: localhost
+       ? Enter your MySQL username: root
+       ? Enter your MySQL password: areallysecurepassword
+       ? Enter your Ghost database name: exampleGhost
+       ? Do you wish to set up Nginx? yes
+       ? Do you wish to set up SSL? yes
+       ? Enter your email (used for Let's Encrypt notifications) user@example.com
+       ? Do you wish to set up "ghost" mysql user? yes
+       ? Do you wish to set up Systemd? yes
+       ? Do you want to start Ghost? yes
 
 7. After installation is complete, run `ghost ls` to view running Ghost processes:
 
-        ghost ls
+       ghost ls
 
 In the future when a newer version of Ghost is released, run `ghost update` from the `/var/www/ghost` directory to update to the newest version.
 

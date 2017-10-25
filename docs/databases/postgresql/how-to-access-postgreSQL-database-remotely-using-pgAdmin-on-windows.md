@@ -38,7 +38,7 @@ If you're running Windows Vista or Windows 7, you may receive the following warn
 
 Next, you'll configure an SSH tunnel to securely connect to your remote database server.
 
-## Configure SSH Tunnel 
+## Configure SSH Tunnel
 
 While PostgreSQL supports SSL connections, it is not advisable to instruct it to listen on public IP addresses unless absolutely necessary. For this reason, you'll be using PuTTY (a free SSH client) to create a secure SSH tunnel to your Linode. Obtain the program by visiting the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). Save it to your desktop and launch it. You'll be greeted with the "Session" dialog shown below; enter your Linode's IP address or FQDN in the "Host Name" field.
 
@@ -58,7 +58,7 @@ Click the "Open" button to start your connection. If you haven't logged into you
 
 PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method to compare the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish) and executing the following command:
 
-    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub 
+    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
 If the fingerprints match, click "Yes" to accept the warning and cache this host key in the registry. You won't receive further warnings unless the key presented to PuTTY changes for some reason; typically, this should only happen if you reinstall the remote server's operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 

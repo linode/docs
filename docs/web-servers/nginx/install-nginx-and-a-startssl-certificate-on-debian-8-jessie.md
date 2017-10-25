@@ -40,7 +40,7 @@ This guide will show you how to install the latest stable version of nginx on De
 
 ## Install nginx
 
-If you simply want the latest stable version of nginx, you may follow the steps to [install it from the nginx package repository](/docs/websites/nginx/nginx-web-server-debian-8#install-from-nginx-package-repository). However, if you want to implement *all* of the options in our [SSL and TLS deployment best practices guide](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), you will need to compile nginx from source to ensure compatibility.
+If you simply want the latest stable version of nginx, you may follow the steps to [install it from the nginx package repository](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/#from-nginx-package-repository). However, if you want to implement *all* of the options in our [SSL and TLS deployment best practices guide](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), you will need to compile nginx from source to ensure compatibility.
 
 ### Install and Compile nginx from Source
 

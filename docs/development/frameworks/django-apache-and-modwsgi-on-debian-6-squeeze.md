@@ -21,7 +21,7 @@ This guide provides an introduction to getting started with the Django framework
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -56,7 +56,7 @@ Install Django
 
 There are two methods for installing Django. You may either choose to install the Django packages from the Debian repositories, or you can install using the python `easy_install` method. The version of Django in the package repositories is more stable and benefits from testing and maintenance by Debian developers; however, using `easy_install` will always provide access to the latest features. To install Django from the Debian repositories issue the following command:
 
-    apt-get install python-django 
+    apt-get install python-django
 
 If you want to install Django using the `easy_install` tool, issue the following command:
 
@@ -109,10 +109,10 @@ Apache Virtual Host Configuration
 
        Alias /robots.txt /srv/www/example.com/public_html/robots.txt
        Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
+       Alias /images /srv/www/example.com/public_html/images
        Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
+       ErrorLog /srv/www/example.com/logs/error.log
        CustomLog /srv/www/example.com/logs/access.log combined
     </VirtualHost>
     ~~~

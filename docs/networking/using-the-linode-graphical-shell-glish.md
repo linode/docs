@@ -22,7 +22,7 @@ Glish is the graphical version of the [Linode Shell](/docs/networking/using-the-
 
 ## Enable Glish on a Linode-Supplied Image
 
-Ensure that your Linode is booted with the latest Linode kernel, which has mouse drivers enabled. You may need to reboot to access the latest kernel version. 
+Ensure that your Linode is booted with the latest Linode kernel, which has mouse drivers enabled. You may need to reboot to access the latest kernel version.
 
 When using one of Linode's distribution templates with Distro Helper turned on, Glish accesses the `tty1` console over the virtual VGA device. If you aren't using Distro Helper, or haven't rebooted since Glish was released, manually launch a getty on `tty1`:
 

@@ -19,11 +19,11 @@ external_resources:
 
 ## What is OpenCart?
 
-[OpenCart](https://www.opencart.com/) is free open source ecommerce platform for online merchants. OpenCart provides a professional and reliable foundation from which to build a successful online store. This foundation appeals to a wide variety of users; ranging from seasoned web developers looking for a user-friendly interface to use, to shop owners just launching their business online for the first time. OpenCart has an extensive amount of features that gives you a strong hold over the customization of your store. With OpenCart's tools, you can help your online shop live up to its fullest potential. 
+[OpenCart](https://www.opencart.com/) is free open source ecommerce platform for online merchants. OpenCart provides a professional and reliable foundation from which to build a successful online store. This foundation appeals to a wide variety of users; ranging from seasoned web developers looking for a user-friendly interface to use, to shop owners just launching their business online for the first time. OpenCart has an extensive amount of features that gives you a strong hold over the customization of your store. With OpenCart's tools, you can help your online shop live up to its fullest potential.
 
 ## Before You Begin
 
-1.  You should set up [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7). 
+1.  You should set up [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7).
 
 2.  Install the Extra Packages for Enterprise Linux (EPEL) repository.
         sudo yum install epel-release
@@ -64,8 +64,8 @@ You will need to make sure you have a MySQL database and a database user set up 
 
 2.  Create a new database and user with permissions to use it for OpenCart:
 
-        create database opencart; 
-        grant all on opencart.* to 'ocuser' identified by 'yourpassword'; 
+        create database opencart;
+        grant all on opencart.* to 'ocuser' identified by 'yourpassword';
         flush privileges;
 
     In the above example, `opencart` is the name of the database, `ocuser` the user, and `yourpassword` a strong password.
@@ -96,7 +96,7 @@ In the above example, replace `/var/www/html/example.com/public_html/` with your
 >
 >You can find the latest version of OpenCart from their [Download Page](https://www.opencart.com/?route=cms/download).
 
-Next, run the following commands to make sure these directories are writable. 
+Next, run the following commands to make sure these directories are writable.
 
     chmod 0755 system/storage/cache/
     chmod 0755 system/storage/logs/
@@ -115,7 +115,7 @@ Visit your website in your browser. You should be redirected to the OpenCart Ins
 
 [![OpenCart Installer Page 1.](/docs/assets/opencart-1-scaled.png)](/docs/assets/opencart-1.png)
 
-Press **CONTINUE** and you will see the _Pre-Installation_ page. 
+Press **CONTINUE** and you will see the _Pre-Installation_ page.
 
 [![OpenCart Installer Page 2.](/docs/assets/opencart-2-scaled.png)](/docs/assets/opencart-2.png)
 
@@ -147,4 +147,4 @@ Now that you have your OpenCart installation up and running, there are a few mor
 
 3.  Follow the [Basic Security Practices](http://docs.opencart.com/administration/security/) from the OpenCart documentation.
 
-4.  Install [vQmod](https://github.com/vqmod/vqmod) if you wish to use 3rd party extensions. 
+4.  Install [vQmod](https://github.com/vqmod/vqmod) if you wish to use 3rd party extensions.

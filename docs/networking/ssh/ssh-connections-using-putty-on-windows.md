@@ -6,7 +6,7 @@ description: 'Accessing remote servers with PuTTY, a free and open source SSH cl
 keywords: 'putty,putty ssh,windows ssh client'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/using-putty/'] 
-modified: Tuesday, July 25th, 2017
+modified: Monday, October 9th, 2017
 modified_by:
   name: Linode
 published: 'Sunday, September 20th, 2009'
@@ -24,11 +24,11 @@ PuTTY is a free and open source SSH client for Windows and UNIX systems. It prov
 
 1.  Download and run the PuTTY installer from [here](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
-2.  When you open PuTTY, you'll be shown the configuration menu. 
+2.  When you open PuTTY, you'll be shown the configuration menu.
 
     ![PuTTY session configuration](/docs/assets/putty-configuration-window.png)
 
-    Enter your Linode's hostname or IP address. The default port for SSH is **22**. If your remote server's SSH daemon is running on a different port, you'll need to specify it in the **Session** category. 
+    Enter your Linode's hostname or IP address. The default port for SSH is **22**. If your remote server's SSH daemon is running on a different port, you'll need to specify it in the **Session** category.
 
 3.  Click **Open** to start an SSH session. If you have never previously logged into this system with PuTTY (we'll assume here you have not), you will see a message alerting you that the server's SSH key fingerprint is new, and asking if you want to proceed.
 
@@ -38,11 +38,11 @@ PuTTY is a free and open source SSH client for Windows and UNIX systems. It prov
 
 4.  Use [Lish](/docs/networking/using-the-linode-shell-lish) to log in to your Linode. Use the command below to query OpenSSH for your Linode's SSH fingerprint:
 
-        ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub
+        ssh-keygen -E md5 -lf /etc/ssh/ssh_host_ed25519_key.pub
 
     The output will look similar to this:
 
-        256 58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@ubuntu (ED25519)
+        256 MD5:58:72:65:6d:3a:39:44:26:25:59:0e:bc:eb:b4:aa:f7  root@localhost (ED25519)
 
     {: .note}
     >

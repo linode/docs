@@ -49,7 +49,7 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
-5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager#setting-the-time-to-live-or-ttl).
+5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
 
 {: .note }
 >
@@ -88,7 +88,7 @@ The next step is to build the software environment needed for your site to funct
 *  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has advantages and disadvantages to consider.
 *  **Apache:** A web server that handles HTTP and HTTPS internet traffic.
 *  **MySQL:** A database server.
-*  **PHP:** A software language that allows you to create and configure dynamic website content. 
+*  **PHP:** A software language that allows you to create and configure dynamic website content.
 
 1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**:
 
@@ -109,7 +109,7 @@ The next step is to build the software environment needed for your site to funct
     *  Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
     *  Deployment Disk Size: Leave the default setting.
     *  Swap Disk: Leave the default setting.
-    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#using-ssh-key-pair-authentication).
+    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#create-an-authentication-key-pair).
 
 4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
 
@@ -172,7 +172,7 @@ The last step in your Linode migration is to point your domain at your Linode's 
 2.  If you use a third-party email service, edit the default MX records.
 
 3.  Log in to your domain registrar's control panel and update the name servers to use Linode's:
-    
+
     *  `ns1.linode.com`
     *  `ns2.linode.com`
     *  `ns3.linode.com`

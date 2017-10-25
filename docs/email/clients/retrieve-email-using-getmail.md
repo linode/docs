@@ -18,7 +18,7 @@ external_resources:
  - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
-Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers. 
+Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.
 
 You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
@@ -160,7 +160,7 @@ If you want to retrieve mail from more than one server, create a getmail configu
 
     getmail --rcfile getmailrc0 --rcfile getmailrc1 --rcfile /home/foreman/mail/getmailrc
 
-You can specify as many `rcfiles` as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the `~/.getmail/` directory. In the above example, the files `getmailrc0` and `getmailrc1` are located in the `~/.getmail/` directory. 
+You can specify as many `rcfiles` as you like on the command line in this format. If a path is not specified getmail assumes the files are located in the `~/.getmail/` directory. In the above example, the files `getmailrc0` and `getmailrc1` are located in the `~/.getmail/` directory.
 
 The final file is located in the `/home/foreman/mail` directory and is specified with an absolute path. In this manner you may specify as many accounts as you need, and organize your configuration files with whatever system makes the most sense in context of your deployment.
 

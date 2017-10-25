@@ -5,7 +5,7 @@ author:
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system hosts file.'
 keywords: 'hosts,hosts file,hostname,alias'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, September 14th, 2017
+modified: Tuesday, October 10th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, September 14th, 2017'
@@ -48,6 +48,9 @@ There are many different ways to use entries in the hosts file, and the types of
 
     The domain you assign as your system’s FQDN should have an “A” record in DNS pointing to your Linode’s IPv4 address. For IPv6, you should also set up a “AAAA” record in DNS pointing to your Linode’s IPv6 address. For more information on configuring DNS, see our guide on [DNS records](/docs/networking/dns/dns-records-an-introduction).
 
+- Debian and Ubuntu include a line for the loopback domain by default. However, when you change the system's hostname, the loopback domain should be changed too. If you do not, then you'll see the message *sudo: unable to resolve host* when running sudo commands. If you are not using a FQDN like shown above, then all you need to eliminate the sudo message is:
+
+      127.0.1.1 example_hostname
 
 ## Name Service Switch
 

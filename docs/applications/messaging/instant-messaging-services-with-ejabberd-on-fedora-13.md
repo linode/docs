@@ -64,7 +64,7 @@ Install ejabberd
 Issue the following commands to ensure that your system is up to date and install ejabberd:
 
     yum update
-    yum install ejabberd 
+    yum install ejabberd
 
 Configure ejabberd
 ------------------

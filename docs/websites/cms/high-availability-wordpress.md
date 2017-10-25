@@ -93,7 +93,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 3.  Back in the terminal, run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
         mysql -ureplication -p -h x.x.x.x -P 3306
-        
+
     This command should connect you to the remote server's MySQL instance.
 
 ##Configure Database Replication
@@ -244,11 +244,11 @@ The steps in this section will need to be performed on **both** of your Linodes.
 ##Configure Folder Sync With Lsyncd
 
 1.  Install Lsyncd on your primary Linode in the cluster.
- 
+
         sudo apt-get install lsyncd
 
 2.  Create a configuration file in order to perform sync actions.  Replace `x.x.x.x` with the Private IP address of the second Linode in your cluster.
- 
+
     {: .file-excerpt}
     /etc/lsyncd/lsyncd.conf.lua
     :   ~~~ lua
@@ -285,7 +285,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         service lsyncd status
 
-    If this command returns something other than `lsyncd is running`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server. 
+    If this command returns something other than `lsyncd is running`, double-check your `lsyncd.conf.lua` file and ensure that the RSA public key is in the right location on the secondary server.
 
 5.  Test replication by creating a file in your primary Linode's `/var/www` folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 

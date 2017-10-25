@@ -31,7 +31,7 @@ Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted

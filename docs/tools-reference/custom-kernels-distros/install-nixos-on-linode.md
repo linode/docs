@@ -17,7 +17,7 @@ external_resources:
 
 ![How to Install NixOS on Linode](/docs/assets/nixos-title.png "How to Install NixOS on Linode")
 
-[NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix focuses on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques. 
+[NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix focuses on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques.
 
 While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.
 
@@ -43,7 +43,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles/), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following: 
+[Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
 
   * **Installer profile**
     * **Label:** Installer
@@ -66,7 +66,14 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
 
 [Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
 
-    curl https://d3g5gsiof5omrk.cloudfront.net/nixos/17.03/nixos-17.03.1437.a2c7482319/nixos-minimal-17.03.1437.a2c7482319-x86_64-linux.iso | dd of=/dev/sda
+    # Bind the URL you grabbed from the download page to a bash variable
+    iso=<URL for nixos download>
+
+    # Update SSL certificates to allow HTTPS connections
+    update-ca-certificates
+
+    # Download the ISO and write it to the installer disk
+    curl $iso | dd of=/dev/sda
 
 ## Install NixOS
 
@@ -94,11 +101,11 @@ Change to the configuration directory:
 
     cd /mnt/etc/nixos
 
-Within this directory there are two files: `configuration.nix` and `hardware-configuration.nix`. When realizing its configuration, NixOS only uses `configuration.nix`. It is common practice to keep a separate Nix file with hardware specific configuration and have the `configuration.nix` file source its contents. 
+Within this directory there are two files: `configuration.nix` and `hardware-configuration.nix`. When realizing its configuration, NixOS only uses `configuration.nix`. It is common practice to keep a separate Nix file with hardware specific configuration and have the `configuration.nix` file source its contents.
 
 ### Rewrite Device Identifiers
 
-The `nixos-generate-config` command in the [Set up the Install Environment](#set-up-the-install-environment) section generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers that disks get attached to. 
+The `nixos-generate-config` command in the [Set up the Install Environment](#set-up-the-install-environment) section generated the configuration from hardware details it gathered automatically. It prefers to use UUIDs to identify disks, but since Linode is a virtual platform you can choose the device identifiers that disks get attached to.
 
 Since you can modify these later, it is better to use the `/dev/sdX` identifiers (where `X` is the assigned volume, like `sda` or `sdb`) to allow you to easily swap in backup disks without having to boot into rescue mode and rewrite the UUID to match the new disk:
 
@@ -134,8 +141,7 @@ When GRUB detects a partitionless disk, it will warn about the unreliability of 
 
 Set the timeout for GRUB to be lengthy enough to accommodate LISH connection delays. The following hardware configuration example sets a 10 second timeout:
 
-    boot.loader.grub.device = "/dev/sda";
-    boot.loader.grub.forceInstall = true;
+    boot.loader.grub.device = "nodev";
     boot.loader.timeout = 10;
 
 ### Edit NixOS Configuration
@@ -181,7 +187,7 @@ Install NixOS using the settings you configured:
 
     nixos-install
 
-Once complete, the installer will prompt you to set a root password. 
+Once complete, the installer will prompt you to set a root password.
 
 NixOS is now installed and can be booted from the **Boot** profile created in [Create Configuration Profiles](#create-configuration-profiles).
 

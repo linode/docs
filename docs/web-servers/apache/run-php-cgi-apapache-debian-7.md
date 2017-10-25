@@ -44,7 +44,7 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
         sudo apt-get install apache2
 
-2.  You can now [configure virtual hosting](/docs/web-servers/apache/installation/debian-7-wheezy#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. Next, install the CGI binaries:
+2.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
 
         sudo apt-get install php5-cgi
 

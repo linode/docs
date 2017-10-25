@@ -45,7 +45,7 @@ The preconfigured box of software is also fairly security-conscious and you can 
 
 2.  If you're unfamiliar with the basic concepts of Linode administration, read the [Getting Started](/docs/getting-started) guide.
 
-3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/security/securing-your-server#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules). 
+3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/security/securing-your-server#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
 
 If you insist on using a password for root instead of a private key, at least use a **very good password**. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while `fail2ban` helps block IPs, there's always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as "h4x0r123," while they may look strong because they mix letters and numbers, are actually very weak.
 
@@ -57,13 +57,13 @@ If you insist on using a password for root instead of a private key, at least us
 >
 > Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
 
-Although Ubuntu 16.04 is available, Mail-in-a-Box has not been prepared or tested in that environment so you'll need to use the 14.04 release which still receives security fixes until April 2019. 
+Although Ubuntu 16.04 is available, Mail-in-a-Box has not been prepared or tested in that environment so you'll need to use the 14.04 release which still receives security fixes until April 2019.
 
 Choose a server with at least 1GB of RAM. If you plan to host many users (mailboxes) and/or expect a high volume of email traffic, you can start out with 2GB or more. Don't forget to boot the server.
 
 ## Configure Your Domain Name
 
-You'll have to check with the company where you've registered your domain name to see how you can change your nameservers and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you. 
+You'll have to check with the company where you've registered your domain name to see how you can change your nameservers and add glue records. Either search for this information on Google, the site's knowledge base, or ask their support to help you.
 
 Here's what you'll need to do:
 
@@ -88,7 +88,7 @@ Also note that some registrars may only require you to enter `ns1.box` as they a
 You should see your nameservers at the end of the output:
 
     ;; Received 595 bytes from 192.5.5.241#53(f.root-servers.net) in 343 ms
-    
+
     example.com.		300	IN	NS	ns1.box.example.com.
     example.com.		300	IN	NS	ns2.box.example.com.
     dig: couldn't get address for 'ns1.box.example.com': no more
@@ -129,7 +129,7 @@ Every step is thoroughly explained in the terminal output. The first steps are e
 
 Now, the install wizard should continue to download and configure software packages. Just wait for it to do its magic.
 
-3. At the next step, you'll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press `ENTER`. 
+3. At the next step, you'll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press `ENTER`.
 
 ![Choose Timezone](/docs/assets/mail-in-a-box-choosing-timezone-ubuntu1404.png)
 
@@ -142,11 +142,11 @@ Once again, Mail-in-a-Box will continue to pull in required packages and auto-co
 6. At this point the script has finished its job and you'll be prompted with this message in the terminal output:
 
         Your Mail-in-a-Box is running.
-    
+
         Please log in to the control panel for further instructions at:
-    
+
         https://203.0.113.1/admin
-    
+
         You will be alerted that the website has an invalid certificate. Check that
         the certificate fingerprint matches:
 
@@ -156,11 +156,11 @@ Once again, Mail-in-a-Box will continue to pull in required packages and auto-co
 In the unlikely event that DNS changes have propagated fast enough to Linode's resolvers, the output will be slightly different:
 
     Your Mail-in-a-Box is running.
-    
+
     Please log in to the control panel for further instructions at:
-    
+
     https://box.example.com/admin
-    
+
     If you have a DNS problem put the box's IP address in the URL
     (https://203.0.113.1/admin) but then check the TLS fingerprint: D2:69:5E:47:52:E6:3D:48:FB:23:80:F4:E7:8B:22:D4:94:71:91:91:C9:89:15:65:85:99:90:94:97:24:F6:8D
 

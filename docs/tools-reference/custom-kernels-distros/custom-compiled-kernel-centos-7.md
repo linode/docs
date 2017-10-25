@@ -41,7 +41,7 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
 
 2.  Expand the archived file and change directories:
 
-        tar -xvf linux-4.7.tar.xz 
+        tar -xvf linux-4.7.tar.xz
         cd linux-4.7
 
 ### Configure the Kernel
@@ -76,13 +76,13 @@ Once your configuration options are set, exit the configuration interface and an
 
         make bzImage
         make modules
-        make 
+        make
         make install
         make modules_install
 
     {: .note}
     > If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
-    >    
+    >
     >     make -j2 bzImage
 
 2.  Give the kernel a more descriptive name. Modify `vmlinuz-4.7-custom` in the command below to reflect the kernel version you've just compiled:

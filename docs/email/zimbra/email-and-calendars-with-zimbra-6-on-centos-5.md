@@ -50,7 +50,7 @@ Before proceeding, make sure your `/etc/hosts` file has valid entries. For refer
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 
     echo "hostname" > /etc/hostname
-    hostname -F /etc/hostname 
+    hostname -F /etc/hostname
 
 Issue the following commands to check your setup:
 
@@ -101,38 +101,38 @@ Once the installation has completed, you'll be presented with an admin menu next
 
     Main menu
 
-       1) Common Configuration:                                                  
-       2) zimbra-ldap:                             Enabled                       
-       3) zimbra-store:                            Enabled                       
-            +Create Admin User:                    yes                           
-            +Admin user to create:                 admin@archimedes.example.com 
-    ******* +Admin Password                        UNSET                         
-            +Enable automated spam training:       yes                           
+       1) Common Configuration:
+       2) zimbra-ldap:                             Enabled
+       3) zimbra-store:                            Enabled
+            +Create Admin User:                    yes
+            +Admin user to create:                 admin@archimedes.example.com
+    ******* +Admin Password                        UNSET
+            +Enable automated spam training:       yes
             +Spam training user:                   spam.pvsjtuws@archimedes.example.com
             +Non-spam(Ham) training user:          ham.apqv8ks8@archimedes.example.com
-            +Global Documents Account:             wiki@archimedes.example.com  
-            +SMTP host:                            archimedes.example.com       
-            +Web server HTTP port:                 80                            
-            +Web server HTTPS port:                443                           
-            +Web server mode:                      http                          
-            +IMAP server port:                     143                           
-            +IMAP server SSL port:                 993                           
-            +POP server port:                      110                           
-            +POP server SSL port:                  995                           
-            +Use spell check server:               yes                           
+            +Global Documents Account:             wiki@archimedes.example.com
+            +SMTP host:                            archimedes.example.com
+            +Web server HTTP port:                 80
+            +Web server HTTPS port:                443
+            +Web server mode:                      http
+            +IMAP server port:                     143
+            +IMAP server SSL port:                 993
+            +POP server port:                      110
+            +POP server SSL port:                  995
+            +Use spell check server:               yes
             +Spell server URL:                     http://archimedes.example.com:7780/aspell.php
-            +Configure for use with mail proxy:    FALSE                         
-            +Configure for use with web proxy:     FALSE                         
+            +Configure for use with mail proxy:    FALSE
+            +Configure for use with web proxy:     FALSE
 
-       4) zimbra-mta:                              Enabled                       
-       5) zimbra-snmp:                             Enabled                       
-       6) zimbra-logger:                           Enabled                       
-       7) zimbra-spell:                            Enabled                       
-       8) Default Class of Service Configuration:                                
-       r) Start servers after configuration        yes                           
-       s) Save config to file                                                    
-       x) Expand menu                                                            
-       q) Quit                                    
+       4) zimbra-mta:                              Enabled
+       5) zimbra-snmp:                             Enabled
+       6) zimbra-logger:                           Enabled
+       7) zimbra-spell:                            Enabled
+       8) Default Class of Service Configuration:
+       r) Start servers after configuration        yes
+       s) Save config to file
+       x) Expand menu
+       q) Quit
 
     Address unconfigured (**) items  (? - help) 3
 
@@ -140,26 +140,26 @@ Enter "3" to enter the zimbra-store menu, which will look similar to the followi
 
     Store configuration
 
-       1) Status:                                  Enabled                       
-       2) Create Admin User:                       yes                           
-       3) Admin user to create:                    admin@archimedes.example.com 
-    ** 4) Admin Password                           UNSET                         
-       5) Enable automated spam training:          yes                           
+       1) Status:                                  Enabled
+       2) Create Admin User:                       yes
+       3) Admin user to create:                    admin@archimedes.example.com
+    ** 4) Admin Password                           UNSET
+       5) Enable automated spam training:          yes
        6) Spam training user:                      spam.pvsjtuws@archimedes.example.com
        7) Non-spam(Ham) training user:             ham.apqv8ks8@archimedes.example.com
-       8) Global Documents Account:                wiki@archimedes.example.com  
-       9) SMTP host:                               archimedes.example.com       
-      10) Web server HTTP port:                    80                            
-      11) Web server HTTPS port:                   443                           
-      12) Web server mode:                         http                          
-      13) IMAP server port:                        143                           
-      14) IMAP server SSL port:                    993                           
-      15) POP server port:                         110                           
-      16) POP server SSL port:                     995                           
-      17) Use spell check server:                  yes                           
+       8) Global Documents Account:                wiki@archimedes.example.com
+       9) SMTP host:                               archimedes.example.com
+      10) Web server HTTP port:                    80
+      11) Web server HTTPS port:                   443
+      12) Web server mode:                         http
+      13) IMAP server port:                        143
+      14) IMAP server SSL port:                    993
+      15) POP server port:                         110
+      16) POP server SSL port:                     995
+      17) Use spell check server:                  yes
       18) Spell server URL:                        http://archimedes.example.com:7780/aspell.php
-      19) Configure for use with mail proxy:       FALSE                         
-      20) Configure for use with web proxy:        FALSE                         
+      19) Configure for use with mail proxy:       FALSE
+      20) Configure for use with web proxy:        FALSE
 
     Select, or 'r' for previous menu [r] 4
 

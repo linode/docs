@@ -116,7 +116,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts).
 
 The required applications, modules, and libraries have been installed on your Linode.
 
@@ -216,7 +216,7 @@ Now we're ready to compile and install Zabbix server. Here's how:
 
 5.  Enter the following command to install Zabbix:
 
-        sudo make install 
+        sudo make install
 
 You have successfully compiled and installed Zabbix.
 
@@ -358,8 +358,8 @@ Now you'll want to create directories for the Zabbix files on your client server
 
 9.  Copy and paste the following lines into the `/etc/services` file:
 
-        zabbix_agent 10050/tcp 
-        zabbix_trap 10051/tcp 
+        zabbix_agent 10050/tcp
+        zabbix_trap 10051/tcp
 
 You have successfully installed and configured the agent.
 

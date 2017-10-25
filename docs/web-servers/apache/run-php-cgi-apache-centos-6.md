@@ -48,7 +48,7 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
         sudo chkconfig httpd on
 
-    You can now [configure virtual hosting](/docs/web-servers/apache/installation/centos-5#configure_apache) in accordance with the needs of your server.
+    You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
 
 3.  Install the PHP CGI binaries:
 
