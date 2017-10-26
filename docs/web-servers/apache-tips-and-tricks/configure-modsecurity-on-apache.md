@@ -2,28 +2,31 @@
 author:
   name: Chris Ciufo
   email: docs@linode.com
-description: 'mod_security'
+description: 'Learn how to install ModSecurity, a web application firewall for the Apache server, which provides logging capabilities and real time monitoring.'
 keywords: 'apache, mod_security'
+og_description: 'Besides providing logging capabilities, Mod_security, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run Mod_security on your Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-security/','websites/apache-tips-and-tricks/modsecurity-on-apache/']
+alias: ['web-servers/apache/mod-security/','websites/apache-tips-and-tricks/modsecurity-on-apache/','web-servers/apache-tips-and-tricks/modsecurity-on-apache/']
 modified: Friday, February 14th, 2014
 modified_by:
   name: Linode
 published: 'Thursday, November 10th, 2011'
-title: 'mod_security on Apache'
+title: 'How to Configure Mod_Security on Apache'
 external_resources:
  - '[ModSecurity Home Page](http://www.modsecurity.org)'
  - '[OWASP Home Page](https://www.owasp.org/index.php/Main_Page)'
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
+## What is Mod-Security?
+
 ModSecurity is a web application firewall for the Apache web server. In addition to providing logging capabilities, ModSecurity can monitor the HTTP traffic in real time in order to detect attacks. ModSecurity also operates as a web intrusion detection tool, allowing you to react to suspicious events that take place at your web systems.
 
-## Installing ModSecurity
+## Install ModSecurity
 
 Before you install ModSecurity, you'll want to have a LAMP stack set up on your Linode. For instructions, see the [LAMP Guides](/docs/websites/lamp/).
 
-### Ubuntu / Debian
+### Ubuntu/Debian
 
 To install ModSecurity on a Linode running Ubuntu or Debian, enter the following commands, one by one:
 
@@ -33,7 +36,7 @@ To install ModSecurity on a Linode running Ubuntu or Debian, enter the following
 
 ModSecurity is now installed on your Linode.
 
-### CentOS / Fedora
+### CentOS/Fedora
 
 To install ModSecurity on a Linode running CentOS or Fedora, perform the following steps:
 
@@ -53,7 +56,7 @@ For a base configuration, we are going to use the OWASP core rule set. Installat
 
 -   <https://github.com/SpiderLabs/owasp-modsecurity-crs/blob/master/INSTALL>
 
-## Configuring ModSecurity
+## Configure ModSecurity
 
 You'll want to use the `modsecurity_10_crs_config`, so let's copy that from the example:
 
@@ -73,7 +76,7 @@ There are five rules directories:
 
 There are two ways to configure ModSecurity: use a basic ruleset, or use symbolic links. The following sections explain how to use both methods.
 
-### Using a Basic Ruleset
+### Use the Basic Ruleset
 
 If you want to get started with a basic ruleset and would rather not bother with symbolically linking configuration files, perform the following steps:
 
@@ -108,7 +111,7 @@ If you want to get started with a basic ruleset and would rather not bother with
 
 You have successfully configured ModSecurity.
 
-### Using Symbolic Links
+### Use Symbolic Links
 
 If you would rather symbolically link those configuration files to the activated\_rules directory, perform the following steps:
 
