@@ -26,7 +26,7 @@ external_resources:
 ## Before You Begin
 
 ### You will need:
-* Two or more linodes running a 64 bit distribution of either ubuntu 16.04+, debian 9, centos 7, rhel 7 or fedora 26.
+* Two or more Linodes running a 64 bit distribution of either Ubuntu 16.04+, Debian 9, Centos 7, RHEL 7 or Fedora 26.
 * 2GiB+ ram per machine.
 * [Private IP](/docs/networking/remote-access#adding-private-ip-addresses)
 * Root or sudo privileges
@@ -36,21 +36,22 @@ external_resources:
 
 ## Preparing your Hosts for Installation
 
-### Hardware
+### Setup
 
-Our example will only cover creating a two node cluster, but you should properly evaluate your resource requirements and launch an appropriately sized cluster for your needs.
+This guide will only cover creating a two node cluster, but you should properly evaluate resource requirements and launch an appropriately sized cluster for your needs.
 
-1.  Create two linodes of with at least 2gb of memory within the same data center (e.g. "fremont, ca", "london, uk", etc.)
+1.  Create two linodes of with at least 2GiB  memory within the same data center (e.g. "Fremont, CA", "London, UK", etc.)
 
-2.  For each node, go into the remote access tab of your linode manager and add a [private ip](/docs/networking/remote-access#adding-private-ip-addresses). it is possible to build a kubernetes cluster using public ips between hosts, but due to security and performance concerns it is illadvised.
+2.  For each node, go into the remote access tab of your Linode manager and add a [private IP](/docs/networking/remote-access#adding-private-ip-addresses). It is possible to build a kubernetes cluster using public IPs between hosts, but due to security and performance concerns it is illadvised.
 
-{:.caution}
-> Ensure this step is completed *before* creating the image on your nodes. failure to do so can prevent your operating system from finding this network interface.
+    {:.caution}
+    > Ensure this step is completed *before* creating the image on your nodes. failure to do so can prevent your operating system from finding this network interface.
 
+3.  In addition to creating a private IP, configure a firewall with [ufw](https://www.linode.com/docs/security/firewalls/configure-firewall-with-ufw) or [iptables](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) to ensure only the two nodes can communicate with each other.
 
 ### Swap memory concerns
 
-[kubelets](https://kubernetes.io/docs/admin/kubelet/) do not support swap memory and will not work if swap is active or even present in your `/etc/fstab` file. By default, Linodes come with it enabled.
+[kubelets](https://kubernetes.io/docs/admin/kubelet/) do not support swap memory and will not work if swap is active or even present in your `/etc/fstab` file. Linodes come with swap enabled by default.
 
 `/etc/fstab` should look something like this:
 
