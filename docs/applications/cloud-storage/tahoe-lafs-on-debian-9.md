@@ -6,7 +6,7 @@ description: "How to store confidential data in the cloud: Tahoe-LAFS keeps your
 keywords: 'confidential, encrypted, integrity, redundant, private, filesystem, storage'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, October 24th, 2017'
-modified: Wednesday, Month 25th, 2017
+modified: Thursday, October 26th, 2017
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
@@ -15,7 +15,7 @@ contributor:
   link:
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
-- '[Tahoe-LAFS Extensive Documentation](http://tahoe-lafs.readthedocs.io)'
+- '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
@@ -28,14 +28,14 @@ While Tahoe-LAFS may look like yet another decentralized or distributed file sys
 
 1.  **Confidentiality**: Keeping your data private, even if you store it on somebody else's servers. When you keep sensitive/secret data in the cloud, some inherent risks exist.
 
-*   If the server is hacked, your data might be stolen.
-*   An employee that has read access might accidentally leak data or purposely steal it for his own gain.
+    *   If the server is hacked, your data might be stolen.
+    *   An employee that has read access might accidentally leak data or purposely steal it for his own gain.
 
-    By encrypting data **before** it reaches your storage servers, these risks are practically nullified. Even if somebody is actively monitoring your machine, he will never see your data unencrypted. If you're unfamiliar with modern cryptography schemes, all you need to know is that nobody has officially managed to crack any of the strongest algorithms yet, and a lot of people are trying. Even the military and secret services rely on this area of mathematics to securely and secretly communicate across the world.
+        By encrypting data **before** it reaches your storage servers, these risks are reduced. Even if somebody is actively monitoring your machine, he will never see your data unencrypted. If you're unfamiliar with modern cryptography schemes, all you need to know is that nobody has officially managed to crack any of the strongest algorithms yet, and a lot of people are trying. Even the military and secret services rely on this area of mathematics to securely and secretly communicate across the world.
 
-2.  **Data integrity**: Nobody can read your data but what about writing? You need to be sure that what you store on your nodes is exactly what you get back. This problem is also solved with the help of complicated and reliable mathematical algorithms. If an attacker changes just one of the billions of bits from 1 to 0, the software on your local computer will catch the error (when you download the respective data). Furthermore, it will also give you back the original data if enough of the other storage nodes haven't been tampered with.
+2.  **Data integrity**: Nobody can read your data, but what about writing? You need to be sure that what you store on your nodes is exactly what you get back. This problem is also solved with the help of complicated and reliable mathematical algorithms. If an attacker changes just one of the billions of bits from 1 to 0, the software on your local computer will catch the error (when you download the respective data). Furthermore, it will also give you back the original data if enough of the other storage nodes haven't been tampered with.
 
-3.  **Redundancy**: Disks can fail, servers can be lost for various reasons. Tahoe-LAFS distributes your data in a redundant fashion. By default, it uses a 3-of-10 configuration. This means that when you upload a file, it is split in ten shares and distributed randomly between your available storage nodes. To reconstruct the file, you need to get three of those shares back. If you have ten servers and a few fail, you can still retrieve your data. In an uniform distribution of shares, you would need only three servers but since distribution is random you might need more or even less. One server can hold zero, one, two, or more shares, depending on how the dice rolls (the dice does however tend to favor a near uniform distribution). Having even more storage nodes and changing the default 3-of-10 to something else means you can make the setup even more resistant to failure or attacks. 3-of-20 would give you a more uniform distribution. 1-of-10 would increase failure resistance but would keep 10 copies of your data. So one gigabyte of data would require 10 gigabytes of storage. This mechanic of shares makes it possible to destroy compromised or failed servers, create new ones, add them to the pool and redistribute shares if it's required.
+3.  **Redundancy**: Disks can fail, servers can be lost for various reasons. Tahoe-LAFS distributes your data in a redundant fashion. By default, it uses a 3-of-10 configuration. This means that when you upload a file, it is split in ten shares and distributed randomly between your available storage nodes. To reconstruct the file, you need to get three of those shares back. If you have ten servers and a few fail, you can still retrieve your data. In an uniform distribution of shares, you would need only three servers but since distribution is random you might need more or even less. One server can hold zero, one, two, or more shares, depending on how the dice rolls (the dice does however tend to favor a near uniform distribution). Having even more storage nodes and changing the default 3-of-10 to something else means you can make the setup even more resistant to failure or attacks. 3-of-20 would give you a more uniform distribution. 1-of-10 would increase failure resistance but would keep 10 copies of your data. So one gigabyte of data would require 10 gigabytes of storage. This mechanism of shares makes it possible to destroy compromised or failed servers, create new ones, add them to the pool and redistribute shares if it's required.
 
     All of these things make Tahoe-LAFS a good fit for securely storing sensitive data on remote machines, while at the same time mitigating risks of data loss. You can think of it as a sort of Google Drive that hackers and employees can't access or alter, backed up on many different servers. The ability to dynamically increase storage space, by just adding to the pool of machines, is another nice advantage. For those that want to know more, the [Tahoe-LAFS documentation](http://tahoe-lafs.readthedocs.io/en/latest/about.html) hosted on Read the Docs is a great resource.
 
@@ -52,8 +52,8 @@ While Tahoe-LAFS may look like yet another decentralized or distributed file sys
 
 ## Server Requirements and Recommendations
 
-1.  With the default settings, at least 10 storage nodes (servers) will be needed for satisfactory results. For testing purposes you can launch less, keeping in mind though that this is an "unhealthy" setup. Also note that with less than seven storage units, most uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` if you want to know more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration
-)
+1.  With the default settings, at least 10 storage nodes (servers) will be needed for satisfactory results. For testing purposes you can launch less, keeping in mind though that this is an unhealthy setup. Also note that with less than seven storage units, most uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` if you want to know more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration
+).
 
 2.  Give your Linodes (that run storage nodes) at least 2GB of RAM. The larger the files you upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9's repositories, approximately 1GB (or more) of Random Access Memory (RAM) has been observed to be required when uploading mutable files larger than 40 Megabytes. Once the node runs out of RAM you will get an *out-of-memory kill*. Periodically check the Grid Status page in the web user interface to maintain your grid in good health.
 
@@ -126,7 +126,7 @@ Introducers are the "middlemen", central points that connect storage nodes and c
 
 ## Add Tahoe-LAFS Storage Nodes to the Grid
 
-Although the process can be automated, so you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
+Although the process can be automated so that you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
 
 {: .note}
 >
@@ -191,7 +191,7 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
 
 {: .caution}
 >
-> The following StackScript relies on icanhazip.com to retrieve each Linode's external IP address. While the site has redundant servers, for various reasons, it might function incorrectly or be unavailable at some moment in time. That's why you should check that it works correctly before continuing.
+> The following StackScript relies on icanhazip.com to retrieve each Linode's external IP address. While the site has redundant servers, for various reasons, it might function incorrectly or be unavailable at some moment in time.
 
 1.  After reading [about StackScripts](https://www.linode.com/docs/platform/stackscripts), navigate to the page where you can add a new StackScript, select Debian 9 as the distribution and paste the following in the **Script** section:
 
@@ -206,8 +206,7 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
         apt-get -y install tahoe-lafs
         su - -c "tahoe create-node --nickname=$NICKNAME --introducer=$INTRODUCER --port=tcp:1235 --location=tcp:`curl -4 -s icanhazip.com`:1235" tahoe
 
-        cat <<EOF > /etc/systemd/system/tahoe-autostart-node.service
-        [Unit]
+        echo "[Unit]
         Description=Tahoe-LAFS autostart node
         After=network.target
 
@@ -218,14 +217,15 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
         ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
 
         [Install]
-        WantedBy=multi-user.target
-        EOF
+        WantedBy=multi-user.target" >> /etc/systemd/system/tahoe-autostart-node.service
 
         systemctl enable tahoe-autostart-node.service
 
         systemctl start tahoe-autostart-node.service
 
 2.  After you've saved the changes, launch a new Linode, deploy this StackScript on a Debian 9 image and boot.
+
+3.  Repeat this procedure to create as many nodes as necessary for your storage cluster.
 
 ## Set up the Tahoe-LAFS Client on Your Local Computer
 
@@ -235,16 +235,13 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
 
 3.  After you've installed the software, run the following command to configure a client node, replacing `pb://<Introducer FURL>` with your own introducer FURL:
 
-        tahoe create-client --basedir client --nickname=localclient --introducer=pb://<Introducer FURL>
-
-    {:.note}
-    > If you are using a Linux client, you may have to run `apt install python-cffi` before running this command.
+        tahoe create-client --nickname=localclient --introducer=pb://<Introducer FURL>
 
 4.  Whenever you need to work with your grid, launch the client:
 
-    tahoe run --basedir client
+        tahoe run
 
-5.  When you're done, close it by pressing **CTRL+C**.
+5.  When you're done, close the server by pressing **CTRL+C**.
 
 ## How to Use Tahoe-LAFS' Web User Interface
 
@@ -276,7 +273,7 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
 
     After you've launched the local client, open another terminal window or command prompt and create an alias:
 
-        tahoe create-alias testing:
+        tahoe create-alias testing
 
     This will create a directory on the grid and associate an alias to it so you can easily access it by typing `testing:` instead of a long capability.
 
@@ -316,6 +313,6 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
 
 ## Possible Next Steps
 
-1.  Now that you have your grid up and running, your only job is to maintain it in good working condition. Some improvements can be made, especially if they're also necessary. For example, people with low upload bandwidth will notice that it can take a long time to send a file to the grid. That's because your local Tahoe client also has to send redundant data to multiple nodes. The following document describes [how to set up a helper node](http://tahoe-lafs.readthedocs.io/en/latest/helper.html).
+1.  Now that you have your grid up and running, your only job is to maintain it in good working condition. Some improvements can be made: for example, people with low upload bandwidth will notice that it can take a long time to send a file to the grid. That's because your local Tahoe client also has to send redundant data to multiple nodes. The following document describes [how to set up a helper node](http://tahoe-lafs.readthedocs.io/en/latest/helper.html).
 
 2.  In time, your storage servers might get full with data you no longer need. Read about [garbage collection](http://tahoe-lafs.readthedocs.io/en/latest/garbage-collection.html) to understand how you can get rid of the unnecessary files.
