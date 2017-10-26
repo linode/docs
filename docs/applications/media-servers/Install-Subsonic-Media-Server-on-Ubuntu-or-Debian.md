@@ -2,22 +2,27 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Subsonic
+description: "This guide shows how to install Subsonic media server on a Linode and then configure and run it on Ubuntu or Debian to stream music.'
+og_description: 'Subsonic is a media streaming service that makes it easy to share music and video files with multiple users. Learn how to install it on Ubuntu and Debian.'
 keywords: 'subsonic, music, audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Wednesday, June 21st, 2017
 modified_by:
   name: Alex Fornuto
 published: 'Monday, February 2, 2015'
-title: Using Subsonic to Stream Media From Your Linode
+title: Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode
 ---
 
-This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu. Subsonic is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+## What is Subsonic?
+
+[Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+
+This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu.
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Preparing Your System
+##Prepare Your System
 
 1.  Update your system:
 
@@ -32,7 +37,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         java -version
 
 
-##Installing Subsonic
+##Install Subsonic
 
 1.  The latest version of Subsonic (as of publication) is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
 
