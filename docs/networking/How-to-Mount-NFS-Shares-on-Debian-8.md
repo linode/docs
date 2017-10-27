@@ -8,16 +8,17 @@ keywords: 'NFS,Debian,network,file,system,Jessie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/']
 contributor:
-modified: Thursday, February 27th, 2014
+modified: Friday, October 27th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, February 27th, 2014'
 title: How to Mount NFS Shares on Debian 8
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-<hr>
+---
+
 ## What is NFS?
 
 Network File System (**NFS**) is a file system that allows computer users to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across several Linodes, or other computers on the internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
