@@ -20,6 +20,8 @@ external_resources:
 
 *Chef* is an automation platform that "turns infrastructure into code," allowing organizations or persons with large frameworks to generate a process that will save time and effort when making changes to part or all of their server fleet.
 
+![Chef for beginners](/docs/assets/a_beginners_guide_to_chef_smg.jpg)
+
 Chef works with three core components: The Chef server, workstations, and nodes. The Chef server is the hub of Chef operations, where changes are stored for use. Workstations are static computers or virtual servers where all code is created or changed. There can been as many workstations as needed, whether this be one per person or otherwise. Finally, nodes are the servers that need to be managed by Chef -- these are the machines that changes are being pushed to, generally a fleet of multiple machines that require the benefits of an automation program.
 
 [![Chef Workflow](/docs/assets/chef_graph-small.png)](/docs/assets/chef_graph.png)
@@ -71,7 +73,7 @@ The `knife` command communicates between the `chef-repo` located on a workstatio
 
 The default `knife.rb` file is defined with the following properties:
 
--	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`. 
+-	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`.
 -	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value standard output logging will still be performed.
 -	**node_name:**	The username of the person using the workstation. This user will need a valid authorization key located on the workstation.
 -	**client_key:** The location of the user's authorization key.
@@ -124,7 +126,7 @@ chef-repo/environments/environame.rb
 	default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 	override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 	~~~
-	
+
 As a JSON:
 
 {: .file}
@@ -144,7 +146,7 @@ chef-repo/environments/environame.json
 	  "override_attributes": {
 
 	  }
-	~~~  
+	~~~
 
 All nodes are automatically set to the "default" environment upon bootstrap. To change this, the environment should be defined in the `client.rb` file found in `/etc/chef` on the nodes.
 

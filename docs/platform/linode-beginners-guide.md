@@ -19,7 +19,7 @@ If you're relatively new to Linux system administration, or just new to our plat
 
 ## How do I log into my Linode?
 
-By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connecting_to_your_linode_with_ssh) section of our [Getting Started](/docs/getting-started/) guide.
+By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/getting-started/) guide.
 
 ## How do I host websites on my Linode?
 
@@ -57,7 +57,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
+-   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
 -   [Copying a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?

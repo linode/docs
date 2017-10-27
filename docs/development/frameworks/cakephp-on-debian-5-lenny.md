@@ -25,8 +25,8 @@ For this guide, we'll be installing the latest version of CakePHP, which is curr
 
     cd /srv/www/example.com/public_html
     wget http://github.com/cakephp/cakephp1x/tarball/1.2.6
-    tar xvfz cakephp-cakephp1x-1.2.6-0-gbe7ddfb.tar.gz 
-    rm cakephp-cakephp1x-ef18ab2.tar.gz 
+    tar xvfz cakephp-cakephp1x-1.2.6-0-gbe7ddfb.tar.gz
+    rm cakephp-cakephp1x-ef18ab2.tar.gz
     mv cakephp-cakephp1x-ef18ab2/ cake_1_2
     chown -R www-data:www-data cake_1_2/app/tmp/
 

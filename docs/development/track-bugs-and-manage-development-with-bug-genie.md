@@ -5,7 +5,7 @@ author:
 description: 'Install the advanced bug tracking and issue management software Bug Genie on your Linode to manage projects.'
 keywords: 'bug tracking,issue tracking,feature development,bug genie,the bug genie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/bug-genie/',applications/development/track-bugs-and-manage-development-with-bug-genie/']
+alias: ['web-applications/project-management/bug-genie/', 'applications/development/track-bugs-and-manage-development-with-bug-genie/']
 modified: Friday, October 4th, 2013
 modified_by:
   name: Linode
@@ -46,7 +46,7 @@ This document contains specific instructions for installing version 2.1.1 of Bug
     mv thebuggenie/ bug-genie-2.1.1/
     cp -R bug-genie-2.1.1/* /srv/www/example.com/public_html/
     chmod 777 /srv/www/example.com/public_html/config.php
-    chmod 777 /srv/www/example.com/public_html/include/B2DB/ 
+    chmod 777 /srv/www/example.com/public_html/include/B2DB/
     chmod 777 /srv/www/example.com/public_html/files
 
 Now visit `http://example.com/install.php` in your web browser, and follow the setup procedure provided by Bug Genie's web based interface. When the setup process has completed, issue the following commands to remove the setup files and reset proper permissions:

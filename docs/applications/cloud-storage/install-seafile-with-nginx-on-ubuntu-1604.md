@@ -2,10 +2,10 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Install Seafile with nginx on Ubuntu 16.04
+description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.'
 keywords: 'Seafile, nginx, Ubuntu 16.04, file server, media, sharing'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, May 23rd, 2017
+modified: Wednesday, June 21st, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, May 23rd, 2017'
@@ -16,7 +16,7 @@ external_resources:
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with nginx or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 ![Install Seafile with nginx on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
 
@@ -58,7 +58,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
     The output should be:
 
         Status: active
-        
+
         To                         Action      From
         --                         ------      ----
         [ 1] 22                         ALLOW IN    Anywhere
@@ -75,7 +75,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 6.  Set the Linode's hostname. We'll call it *seafile* as an example:
 
         sudo hostnamectl set-hostname seafile
-		
+
 7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this:
 
     {: .file-excerpt}
@@ -94,12 +94,12 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 1.  During Installation, you will be asked to assign a password for the root mysql user. Be sure to install the package `mysql-server-5.7`, not `mysql-server`. This is because an upstream issue causes problems starting the MySQL service if you install by using the `mysql-server` package.
 
         sudo apt install mysql-server-5.7
-    
+
 2.  Run the *mysql_secure_installation* script:
 
         sudo mysql_secure_installation
 
-	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04.md)
+	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with nginx
 
@@ -118,8 +118,8 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
         sudo apt install nginx
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).     
-    
+2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
+
     {: .file}
     /etc/nginx/sites-available/seafile.conf
     :   ~~~ conf
@@ -135,7 +135,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 		    ssl_certificate /etc/ssl/cacert.pem;
 		    ssl_certificate_key /etc/ssl/privkey.pem;
 		    server_name example.com;
-		
+
 		    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 		    add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
 		    add_header   X-Content-Type-Options nosniff;
@@ -143,15 +143,15 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 		    ssl_session_cache shared:SSL:10m;
 		    ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
 		    ssl_prefer_server_ciphers   on;
-		        
+
 		    fastcgi_param   HTTPS               on;
 		    fastcgi_param   HTTP_SCHEME         https;
-		
+
 		  location / {
 		        fastcgi_pass    127.0.0.1:8000;
 		        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
 		        fastcgi_param   PATH_INFO           $fastcgi_script_name;
-		
+
 		        fastcgi_param    SERVER_PROTOCOL        $server_protocol;
 		        fastcgi_param   QUERY_STRING        $query_string;
 		        fastcgi_param   REQUEST_METHOD      $request_method;
@@ -161,13 +161,13 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 		        fastcgi_param    SERVER_PORT         $server_port;
 		        fastcgi_param    SERVER_NAME         $server_name;
 		        fastcgi_param   REMOTE_ADDR         $remote_addr;
-		
+
 		        access_log      /var/log/nginx/seahub.access.log;
 		        error_log       /var/log/nginx/seahub.error.log;
 		        fastcgi_read_timeout 36000;
 		        client_max_body_size 0;
 		    }
-		
+
 		    location /seafhttp {
 		        rewrite ^/seafhttp(.*)$ $1 break;
 		        proxy_pass http://127.0.0.1:8082;
@@ -178,7 +178,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 		        send_timeout  36000s;
 		        proxy_request_buffering off;
 		    }
-		
+
 		    location /media {
 		        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
 		    }

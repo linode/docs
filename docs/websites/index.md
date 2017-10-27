@@ -14,12 +14,8 @@ featured:
  - host-a-website-with-high-availability.md
 categories:
  - ssl
- - nodejs
- - frameworks
- - proxies
  - varnish
  - forums
- - ror
  - cms
  - wikis
  - ecommerce

@@ -34,6 +34,10 @@ Should you wish to provide DNS services, you'll need to add *A records* for your
 
 If you plan to use a domain name for nameservers for which you will also be hosting DNS services, you'll need to ask your domain name registrar to create [DNS glue records](http://en.wikipedia.org/wiki/Domain_Name_System#Circular_dependencies_and_glue_records) based on your Linode's IP addresses before proceeding.
 
+## Kernel Prerequisites
+
+cPanel needs to run on the CentOS kernel. To configure your Linode to boot the CentOS kernel instead of the default Linode kernel, edit the CentOS configuration profile and select GRUB2 from the Boot Settings menu. Save the changes and reboot your Linode. For more information, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on running the distribution-supplied kernel on a Linode.
+
 ## Install cPanel
 
 {: .note}

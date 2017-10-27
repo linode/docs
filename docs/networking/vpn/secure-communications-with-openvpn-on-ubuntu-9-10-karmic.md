@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/openvpn/ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, February 24th, 2010'
 title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 ---
@@ -104,7 +104,7 @@ In order to authenticate to the VPN, you'll need to copy a number of certificate
 -   `client1.crt`
 -   `client1.key`
 
-You can use the `scp` tool, or any [other means of transferring](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
+You can use the `scp` tool, or any [other means of transferring](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server). Be advised, these keys should transferred with the utmost attention to security. Anyone who has the key or is able to intercept an unencrypted copy of the key will be able to gain full access to your virtual private network.
 
 Typically we recommend that you encrypt the keys for transfer, either by using a protocol like SSH, or by encrypting them with the PGP tool.
 
@@ -183,7 +183,7 @@ This will scan the `/etc/openvpn` directory on the server for files with a `.con
 
 The process for connecting to the VPN varies depending on your specific operating system and distribution running on the *client* machine. You will need to install the OpenVPN package for your operating system if you have not already done so.
 
-Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory, or equivalent location.
+Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory, or equivalent location.
 
 If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
@@ -236,18 +236,18 @@ Before continuing, insert these `iptables` rules into your system's `/etc/rc.loc
     iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
     iptables -A FORWARD -j REJECT
     iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
-    
+
     exit 0
     ~~~
 
-This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/opnevpn/server.conf` package. Before we can install `dnsmasq` we must enable the "universe" repositories. Edit the `/etc/apt/sources.list` to uncomment or add the following lines:
+This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/opnevpn/server.conf` package. Before we can install `dnsmasq` we must enable the "universe" repositories. Edit the `/etc/apt/sources.list` to uncomment or add the following lines:
 
 {: .file-excerpt }
 /etc/apt/sources.list
 :   ~~~
     #
     # universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
     deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe

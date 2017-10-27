@@ -79,7 +79,7 @@ Changes to the kernel's configuration can be made with the `menuconfig` command.
 
     make menuconfig
 
-Once your configuration options are set, exit the configuration interface and answer "y" when asked whether you would like to save save your new kernel configuration.
+Once your configuration options are set, exit the configuration interface and answer "y" when asked whether you would like to save your new kernel configuration.
 
 ### Build the Kernel
 
@@ -87,7 +87,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         make -j3 bzImage
         make -j3 modules
-        make 
+        make
         make install
         make modules_install
 
@@ -109,9 +109,9 @@ Once your configuration options are set, exit the configuration interface and an
     /boot/grub/menu.lst
     :   ~~~
     	timeout 5
-	
-    	title Custom Compiled, kernel 3.19.3-custom 
-    	root (hd0) 
+
+    	title Custom Compiled, kernel 3.19.3-custom
+    	root (hd0)
     	kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
         ~~~
 

@@ -18,7 +18,7 @@ title: 'Multiple Web Servers with ProxyPass on Ubuntu 10.04 (Lucid)'
 
 In some cases, administrators find that while Apache meets most of their general-purpose web serving needs, other web or application servers are better suited for certain tasks. Fortunately, it's easy to configure Apache to pass certain requests to other web server processes. These secondary (or tertiary) web servers may be running on the same Linode or separate nodes (perhaps via private networking). Our examples use lighttpd as a secondary web server, but they apply to any web server or application you'd like to proxy HTTP requests to.
 
-We assume you already have Apache running on your Linode. If you don't, you may wish to review our [Apache on Ubuntu 10.04 (Lucid) guide](/docs/web-servers/apache/installation/ubuntu-10.04-lucid) before proceeding. These steps should be performed as root via a shell session.
+We assume you already have Apache running on your Linode. If you don't, you may wish to review our [Apache on Ubuntu 10.04 (Lucid) guide](/docs/web-servers/apache/installation/ubuntu-10-04-lucid) before proceeding. These steps should be performed as root via a shell session.
 
 Enabling the Proxy Module
 -------------------------

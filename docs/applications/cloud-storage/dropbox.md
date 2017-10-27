@@ -5,13 +5,15 @@ author:
 description: 'Installing and configuration Dropbox on a Linode'
 keywords: 'Dropbox,debian,centos,fedora,ubuntu,headless,storage,cloud storage'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: [ 'web-applications/cloud-storage/dropbox/debian-7.4' ]
+alias: ['web-applications/cloud-storage/dropbox/debian-7.4/']
 modified: Monday, June 29th, 2015
 modified_by:
     name: Linode
 published: 'Wednesday, April 30th, 2014'
 title: 'Installing and Configuring Dropbox'
 ---
+
+![Installing and Configuring Dropbox](/docs/assets/installing-and-configuring-dropbox.png "Installing and Configuring Dropbox")
 
 Dropbox allows for the storage of your documents, files, videos, and photographs. Whatever you choose to store will be available on the Dropbox website, as well as any computers, phones, or servers you have the Dropbox application installed.
 

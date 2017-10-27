@@ -5,33 +5,29 @@ author:
 description: 'Install GitLab on an Ubuntu 14.04 (Trusty Tahr).'
 keywords: 'version control,git,gitlab,ruby, ruby on rails,mysql,postgresql,nginx'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/','applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/']
+alias: ['gitlab-with-ubuntu/','applications/development/gitlab-on-ubuntu-14-04/','applications/development/install-gitlab-on-ubuntu-14-04-trusty-tahr/', 'applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/bsd_noobz
-modified: Thursday, September 4th, 2014
+modified: Wednesday, June 21st, 2017
 modified_by:
-  name: Alex Fornuto
+  name: Linode
 published: 'Thursday, September 4th, 2014'
 title: 'Install GitLab on Ubuntu 14.04 (Trusty Tahr)'
-alias: ['applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr/']
 external_resources:
  - '[GitLab Community Edition](https://www.gitlab.com/gitlab-ce/)'
  - '[GitLab Documentation](https://www.gitlab.com/documentation/)'
  - '[GitLab Requirements](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/requirements.md)'
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
-
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed-source software.
 
 GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method is suitable if the server is dedicated only to managing git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
 
-This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/docs/tools-reference/linux-system-administration-basics) guides.
+This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/docs/tools-reference/linux-system-administration-basics) guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
  {: .note }
 >
@@ -46,7 +42,7 @@ GitLab is a large and heavy application. To get the most of GitLab, the recommen
 
 ## Prepare System for Deployment
 
-Before beginning with the GitLab installation, make sure that your system's package database is up to date and that all installed software is running the latest version. 
+Before beginning with the GitLab installation, make sure that your system's package database is up to date and that all installed software is running the latest version.
 
 1. Update your system by issuing the following commands from your shell:
 
@@ -66,14 +62,14 @@ In this section you will install the development tools and the required packages
         sudo apt-get install build-essential cmake zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev curl openssh-server redis-server checkinstall libxml2-dev libxslt-dev libcurl4-openssl-dev libicu-dev logrotate
 
 2. Install Git:
-    
+
         sudo apt-get install git
 
 3. In order to receive mail notifications, you need to install a mail server. Issue the following command to install Postfix mail server:
 
         sudo apt-get install postfix
 
-   Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. 
+   Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide.
 
 ### Install Ruby
 
@@ -86,7 +82,7 @@ While GitLab is a Ruby on Rails application, using ruby version managers such as
 2. The current stable Ruby version as of this writing is 2.1.2. To install Ruby, download the source code and compile the package:
 
         mkdir /tmp/ruby && cd /tmp/ruby
-        wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz 
+        wget http://ftp.ruby-lang.org/pub/ruby/2.1/ruby-2.1.2.tar.gz
         tar xvzf ruby-2.1.2.tar.gz
         cd ruby-2.1.2
         ./configure --disable-install-rdoc --prefix=/usr/local
@@ -116,7 +112,7 @@ GitLab supports both MySQL and PostgreSQL for the database backend, but the latt
 
    If everything is ok, you should see the PostgreSQL version displayed on the console like this:
 
-                                                       version                                                
+                                                       version
         ------------------------------------------------------------------------------------------------------
          PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
         (1 row)
@@ -143,7 +139,7 @@ In this section you will install GitLab and make some configuration changes.
    Open the file:
 
         sudo nano config/gitlab.yml
-   
+
    You need to change the value of host to the fully-qualified domain of your server. Also set the email_from and support_email to the email addresses intended for GitLab.
 
    {: .file-excerpt }
@@ -151,7 +147,7 @@ In this section you will install GitLab and make some configuration changes.
    :    ~~~
         production: &base
           gitlab:
-            host: git.example.com 
+            host: git.example.com
             port: 80
             https: false
             ...
@@ -160,7 +156,7 @@ In this section you will install GitLab and make some configuration changes.
             support_email: support@example.com
         ~~~
 
-     {: .note } 
+     {: .note }
      > If you specified a database name other than `gitlabhq_production` when creating the PostgreSQL database in the previous section, edit the `config/database.yml` file to match with your database name.
 
 4. Save and exit the file.
@@ -181,7 +177,7 @@ In this section you will install GitLab and make some configuration changes.
         sudo -u git -H cp config/initializers/rack_attack.rb.example config/initializers/rack_attack.rb
         sudo -u git cp config/database.yml.postgresql config/database.yml
 
-   
+
 8. Make sure that config/database.yml is readable to git only:
 
         sudo -u git -H chmod o-rwx config/database.yml
@@ -229,7 +225,7 @@ In this section you will install GitLab and make some configuration changes.
 
         This will create the necessary database tables and seed the database.
         You will lose any previous data stored in the database.
-        Do you want to continue (yes/no)? 
+        Do you want to continue (yes/no)?
 
     Type **yes** and press Enter to continue.
 
@@ -273,7 +269,7 @@ In this section you will install GitLab and make some configuration changes.
         Version:        1.9.4
         Repositories:   /home/git/repositories/
         Hooks:          /home/git/gitlab-shell/hooks/
-        Git:            /usr/bin/git    
+        Git:            /usr/bin/git
 
 17. Compile assets:
 
@@ -317,7 +313,7 @@ Nginx is the only supported web server for GitLab. In this section, you will cre
     :   ~~~
         listen 80;
         server_name git.example.com;
-        server_tokens off; 
+        server_tokens off;
         root /home/git/gitlab/public;
         ~~~
 
@@ -341,7 +337,7 @@ Nginx is the only supported web server for GitLab. In this section, you will cre
         server_names_hash_bucket_size 64;
 
     Then restart Nginx.
-            
+
 ## Open GitLab on Your Browser
 
 Double check the application status:
@@ -369,7 +365,7 @@ If most of the items are green and some are purple (which is okay since you don'
         update hooks in repos are links: ... can't check, you have no projects
         Running /home/git/gitlab-shell/bin/check
         Check GitLab API access: OK
-        Check directories and files: 
+        Check directories and files:
             /home/git/repositories/: OK
             /home/git/.ssh/authorized_keys: OK
         Test redis-cli executable: redis-cli 2.8.4

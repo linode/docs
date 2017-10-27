@@ -89,12 +89,12 @@ When you start the install, you will be presented with several questions before 
 You'll also need to select the interface:
 
     The following ethernet devices/IPs were found. Please enter the name of the device you wish to use:
-    dummy0       
+    dummy0
     eth0       12.34.56.78
-    gre0       
-    ip6tnl0       
-    teql0       
-    tunl0       
+    gre0
+    ip6tnl0
+    teql0
+    tunl0
     Enter the device name: eth0
     Is 12.34.56.78 the IP in your license? (y,n) : y
 

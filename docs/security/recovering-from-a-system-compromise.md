@@ -84,16 +84,16 @@ Alternately, if you're not comfortable copying anything from the compromised sys
 
 ### Swap IP Addresses
 
-Next, you'll want to swap IP addresses so the new Linode uses the IP address assigned to the old Linode. Please note that if you configured any network services to use the new Linode's IP address, you will most likely want to modify their configurations now to use the old Linode's IP instead. For instructions, see [Swapping IP Addresses](/docs/remote-access#sph_swapping-ip-addresses).
+Next, you'll want to swap IP addresses so the new Linode uses the IP address assigned to the old Linode. Please note that if you configured any network services to use the new Linode's IP address, you will most likely want to modify their configurations now to use the old Linode's IP instead. For instructions, see [Swapping IP Addresses](/docs/networking/remote-access/#swapping-ip-addresses).
 
  {: .note }
 >
 > To swap IP addresses, both Linodes must be located in the same data center.
 
-Alternately, you may wish to [update your DNS entries](/docs/hosting-website#sph_adding-dns-records) to point to the new Linode's IP address instead. Please be aware that DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
+Alternately, you may wish to [update your DNS entries](/docs/websites/hosting-a-website/#add-dns-records) to point to the new Linode's IP address instead. Please be aware that DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 
 ### Preserving Data for Forensics and Linode Cancellation
 
 You may wish to download a complete copy of the old Linode's disk(s) for forensic analysis. To do this, follow the instructions in our [SSH disk copy guide](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh). Even if you don't need a full copy of the affected disks, you may still want to make a copy of all system log files for later review.
 
-When you no longer need the old Linode's disks, you should [remove the Linode](/docs/billing-and-payments#sph_removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.
+When you no longer need the old Linode's disks, you should [remove the Linode](/docs/platform/billing-and-payments/#removing-services). Your account will be issued a pro-rated credit for that Linode's charges in the current billing period.

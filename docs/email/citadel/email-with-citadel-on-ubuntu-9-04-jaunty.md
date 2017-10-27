@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/ubuntu-9-04-jaunty/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Monday, November 9th, 2009'
 title: 'Email with Citadel on Ubuntu 9.04 (Jaunty)'
 ---
@@ -79,7 +79,7 @@ Installing Citadel
 
 Begin by installing the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you to answer a couple of questions. Choose "Internal" for web server integration and enter "80" when asked the "Webcit HTTP port" question. If you need to reconfigure any of these options later, you can use the following command:
 
@@ -123,7 +123,7 @@ Customize the logon banner for your Citadel server by editing the relevant file:
 
 Use the following startup script to initialize Citadel.
 
-    /etc/init.d/citadel restart 
+    /etc/init.d/citadel restart
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 
@@ -131,7 +131,7 @@ Visit the web interface in your Web browser. Using our preceding example, the We
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 
-    webcit -d  
+    webcit -d
 
 Notes for Running Citadel
 -------------------------

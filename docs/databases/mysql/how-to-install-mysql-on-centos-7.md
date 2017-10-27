@@ -5,7 +5,7 @@ author:
 description: 'Getting started with MySQL on CentOS 7'
 keywords: 'MySQL on Linux,CentOS,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, August 27th, 2015
+modified: 'Tuesday, September 5, 2017'
 modified_by:
   name: Linode
 published: 'Thursday, August 27th, 2015'
@@ -18,11 +18,13 @@ external_resources:
  - '[MySQL Tuner Tutorial](http://www.debiantutorials.com/tuning-mysql-with-mysqltuner-to-increase-efficiency-and-performance)'
 ---
 
+![Install MySQL on CentOS 7](/docs/assets/how-to-install-mysql-on-centos-7.png "Install MySQL on CentOS 7")
+
 MySQL is a popular database management system used for web and server applications. However, MySQL is no longer in CentOS's repositories and MariaDB has become the default database system offered. MariaDB is considered a [drop-in replacement ](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/) for MySQL and would be sufficient if you just need a database system in general. See our [MariaDB in CentOS 7](/docs/databases/mariadb/how-to-install-mariadb-on-centos-7) guide for installation instructions.
 
 If you nonetheless prefer MySQL, this guide will introduce how to install, configure and manage it on a Linode running CentOS 7.
 
-Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
 {: .note}
 >
@@ -43,6 +45,9 @@ Large MySQL databases can require a considerable amount of memory. For this reas
 
         sudo yum update
 
+3.  You will need `wget` to complete this guide. It can be installed as follows:
+
+        yum install wget
 
 ## Install MySQL
 
@@ -59,7 +64,7 @@ MySQL must be installed from the [community repository](https://dev.mysql.com/do
         sudo yum install mysql-server
         sudo systemctl start mysqld
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](https://www.linode.com/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using SSH.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
 
 {: .note}
 >
@@ -71,7 +76,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 
         sudo mysql_secure_installation
 
-You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
+You will be given the choice to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer `yes` to these options. You can read more about the script in the [MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.6/en/mysql-secure-installation.html).
 
 ## Using MySQL
 

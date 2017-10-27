@@ -17,7 +17,7 @@ We've done our best to create straightforward billing and payment policies. Stil
 
 ## How Hourly Billing Works
 
-All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding [bandwidth overages](#bandwidth-overages). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
+All services are billed automatically at the end of the month. If you used a service for the entirety of the past month, you'll be billed the **monthly cap** amount for that service. If you used a service for only part of the past month, you'll be billed at the **hourly** rate for that service. If your usage during any given month hits the monthly cap for the service, hourly billing stops. You'll never be billed more than the monthly cap for any service, excluding network [transfer overages](#transfer-overages). In other words, if you've used a service for the entire month, you'll have a predictable amount on your bill.
 
 ## Linode Cloud Hosting and Backups
 
@@ -70,7 +70,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 
  {: .note }
 >
-> A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [bandwidth overage](#bandwidth-overages) charge beyond the monthly cap.
+> A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](#transfer-overages) charge beyond the monthly cap.
 >
 > Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 
@@ -94,7 +94,7 @@ What does a mid-month bill mean? Your existing active services will stay active.
 
 ## If My Linode is Powered Off, Will I Be Billed?
 
-If your Linode is powered off, but is still added as a service on your account, you will still be billed for it. This is because Linode maintains your saved data and reserves your ability to use other resources like RAM, transfer, etc. even when your Linode is powered off. You will be billed for any other active Linode service, such as Longview Pro or an extra IP, as well.
+If your Linode is powered off, but is still added as a service on your account, you will still be billed for it. This is because Linode maintains your saved data and reserves your ability to use other resources like RAM, network capacity, etc. even when your Linode is powered off. You will be billed for any other active Linode service, such as Longview Pro or an extra IP, as well.
 
 If you want to stop being billed for a particular Linode service, you need to [remove](#removing-services) it from your account entirely.
 
@@ -125,15 +125,15 @@ You can use the Linode Manager to pay an outstanding balance or prepay for Linod
 
 The payment may take a few minutes to be applied to your account. Click the **Account** subtab to view your new account balance.
 
-## Bandwidth Overages
+## Transfer Overages
 
-If you exceed your monthly bandwidth quota, your account will be billed for $0.02/GB at the end of the current month.
+If you exceed your monthly network transfer quota, your account will be billed for $0.02/GB at the end of the current month.
 
-## Bandwidth Proration
+## Transfer Proration
 
-Your Linode's bandwidth quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower bandwidth quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
+Your Linode's transfer quota is prorated based on its creation date. This means that a Linode you create mid-month will have a lower transfer quota than what's listed on our [pricing page](https://www.linode.com/pricing), depending on how much time remains in the month.
 
-Prorated bandwidth quota is reset at the beginning of the following month.
+The prorated transfer quota is reset at the beginning of the following month.
 
 ## Accessing Billing History
 

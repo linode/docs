@@ -22,7 +22,7 @@ In this guide, you'll learn how to use the `head` command. Using `head` is a sim
 
         head /var/log/auth.log
 
-    This will print the first ten lines of the `/var/log/auth.log` file to your terminal output. 
+    This will print the first ten lines of the `/var/log/auth.log` file to your terminal output.
 
 2.  To change the number of lines displayed, use the `-n` option:
 

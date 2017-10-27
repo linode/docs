@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lemp-guides/fedora-13/','websites/lemp/lemp-server-on-fedora-13/']
 modified: Tuesday, May 3rd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, June 30th, 2010'
 title: LEMP Server on Fedora 13
 ---
@@ -135,7 +135,7 @@ nginx.conf
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -149,7 +149,7 @@ nginx.conf
 
     include /opt/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -164,7 +164,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 Deploy PHP with FastCGI
 -----------------------
 
-If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/). Begin the deployment process by issuing the following command to install the required dependencies:
+If your application includes PHP code, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject consider our dedicated guide to [PHP FastCGI with Nginx](nginx-and-phpfastcgi-on-fedora-13). Begin the deployment process by issuing the following command to install the required dependencies:
 
     yum install php php-cli spawn-fcgi wget
 
@@ -235,7 +235,7 @@ When you've completed the modifications to the configuration, make sure that the
 
     /etc/init.d/nginx restart
 
-Congratulations! You can now deploy PHP scripts with with your LEMP stack.
+Congratulations! You can now deploy PHP scripts with your LEMP stack.
 
 Install MySQL Database Server
 -----------------------------

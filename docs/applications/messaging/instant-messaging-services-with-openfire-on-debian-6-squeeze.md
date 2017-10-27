@@ -21,7 +21,7 @@ If you haven't done so already, please follow the steps outlined in our [getting
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -47,7 +47,7 @@ Examine your `/etc/apt/sources.list` file to make sure you have the `non-free` r
 
 If you had to add the `non-free` repository to your sources, issue the following command to update your package database:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
 
 Issue the following command to install prerequisite packages on your server:
@@ -79,11 +79,11 @@ Install Openfire
 
 Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the Debian package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below). You may need to install `wget` first using the command `apt-get install wget`.
 
-    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.6.4_all.deb 
+    wget http://www.igniterealtime.org/downloadServlet?filename=openfire/openfire_3.6.4_all.deb
 
 Install the software using `dpkg` as follows:
 
-    dpkg -i *openfire*.deb  
+    dpkg -i *openfire*.deb
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 

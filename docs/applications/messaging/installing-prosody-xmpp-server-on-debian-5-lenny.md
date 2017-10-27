@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['communications/xmpp/prosody/debian-5-lenny/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, October 13th, 2009'
 title: 'Installing Prosody XMPP Server on Debian 5 (Lenny)'
 ---
@@ -35,7 +35,7 @@ Now, to download the public key for the Prosody package repository, issue the fo
 
 You can now issue the following command to refresh the package database:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
 
 Install Prosody
@@ -50,7 +50,7 @@ When `apt` finishes, the Prosody server will have been successfully installed, a
     /etc/init.d/prosody reload
     /etc/init.d/prosody start
     /etc/init.d/prosody stop
-    /etc/init.d/prosody restart 
+    /etc/init.d/prosody restart
 
 Configure Prosody Server
 ------------------------

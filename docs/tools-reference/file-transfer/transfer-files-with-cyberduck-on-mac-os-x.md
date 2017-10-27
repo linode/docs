@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/transfer-files-cyberduck/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, November 13th, 2009'
 title: Transfer Files with Cyberduck on Mac OS X
 ---
@@ -66,7 +66,7 @@ If you see a list of files including `id_rsa` or `id_dsa`, you already have keys
 Next, you'll need to copy your public key (created as `id_rsa.pub`) to your Linode. Issue the following commands to do so. If your files are called `id_dsa` and `id_dsa.pub`, change the command accordingly. Substitute the name of the user account you wish to log into on your Linode (or "root") for the "user" portion of the command, and substitute your Linode's IP address or domain name for the "hostname.com" portion of the command.
 
     scp ~/.ssh/id_rsa.pub user@hostname.com:~/.ssh/uploaded_key.pub
-    ssh user@hostname.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys2" 
+    ssh user@hostname.com "echo \`cat ~/.ssh/uploaded_key.pub\` >> ~/.ssh/authorized_keys2"
 
 Test the ability to log in without a password by issuing the following command:
 

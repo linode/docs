@@ -29,8 +29,8 @@ The developers of Prosody provide software repositories for Debian and Ubuntu to
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted
 
     deb http://security.ubuntu.com/ubuntu jaunty-security main restricted
     deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted
@@ -74,7 +74,7 @@ When `apt` finishes, the Prosody server will have been successfully installed, a
     /etc/init.d/prosody reload
     /etc/init.d/prosody start
     /etc/init.d/prosody stop
-    /etc/init.d/prosody restart 
+    /etc/init.d/prosody restart
 
 Configure Prosody Server
 ------------------------

@@ -20,7 +20,7 @@ Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Lino
 Prerequisites:
 
 -   Install and start [MySQL](/docs/databases/mysql)
--   Install the [Longview client](/docs/longview#sph_installing-the-client)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -44,7 +44,7 @@ Once you see this successful message, the Longview MySQL App should automaticall
 >
 > Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
 
-If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#id3) section at the end of this article.
+If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 [![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
 
@@ -64,7 +64,7 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
     :   ~~~ conf
         #username root
         #password example_password
-        username linode-longview 
+        username linode-longview
         password ***************
         ~~~
 
@@ -74,7 +74,7 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 
 4.  Refresh the Longview MySQL tab in the Linode Manager.
 
-You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#id3) section at the end of this article.
+You should now be able to see Longview data for MySQL. If that's not the case, proceed to the [Troubleshooting](#troubleshooting) section at the end of this article.
 
 ## Viewing Statistics
 
@@ -90,7 +90,7 @@ Click the image for a full-size view.
 
 You'll see the current version of MySQL listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](longview#sph_using-the-interface). The next sections cover the Longview MySQL App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -122,19 +122,19 @@ Longview shows the current number of queries in MySQL's cache.
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/longview#sph_disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/uptime/longview/#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/longview#sph_process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/uptime/longview/#process-explorer-tab).
 
 Troubleshooting
 ---------------

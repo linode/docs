@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'A collection of guides for installing and configuring the Logwatch utility.'
 keywords: 'logwatch,security,logging,audit'

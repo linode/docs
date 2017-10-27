@@ -19,9 +19,11 @@ external_resources:
 
 ---
 
-[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Java can be used to create anything from software to basic web applications. 
+![Java](/docs/assets/Install_Oracle_Java.jpg)
 
-In this guide, we'll install the Oracle Java development kit for building Java applications. We'll also cover OpenJDK, an open-source alternative to the Oracle Java development kit. 
+[Java](https://www.oracle.com/java/index.html) is one of the world's most popular programming languages. Java can be used to create anything from software to basic web applications.
+
+In this guide, we'll install the Oracle Java development kit for building Java applications. We'll also cover OpenJDK, an open-source alternative to the Oracle Java development kit.
 
 ## Before You Begin
 
@@ -91,7 +93,7 @@ Many applications include code or configuration that references the `JAVA_HOME` 
 
         echo $JAVA_HOME
 
-    This should return the path to the Java binary. 
+    This should return the path to the Java binary.
 
 ## OpenJDK
 

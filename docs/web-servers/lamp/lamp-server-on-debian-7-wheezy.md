@@ -18,7 +18,7 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
-A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
+A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
 {: .note}
 >
@@ -160,7 +160,7 @@ With Apache and MySQL installed, you are now ready to move on to installing PHP.
     /etc/php5/apache2/php.ini
     :   ~~~ ini
         error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        error_log = /var/log/php/error.log  
+        error_log = /var/log/php/error.log
         max_input_time = 30
         ~~~
 

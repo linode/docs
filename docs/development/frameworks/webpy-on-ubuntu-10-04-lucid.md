@@ -19,7 +19,7 @@ Web.py is a web application framework that stresses minimalism, flexibility, rap
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -40,11 +40,11 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python
 
-The application you develop with Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian_and_ubuntu_package_management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop with Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
-For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10.04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
+For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10-04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
 
     apt-get install python-pysqlite2 sqlite3
 
@@ -69,7 +69,7 @@ Make sure you're downloading the latest release by checking the [Web.py site](ht
 When you want to upgrade to the latest development version, issue the following sequence of commands:
 
     cd /opt/webpy/
-    git clean -f 
+    git clean -f
     git pull
     python setup.py install
 
@@ -90,9 +90,9 @@ code.py
     )
     app = web.application(urls, globals())
 
-    class hello:        
+    class hello:
         def GET(self, name):
-            if not name: 
+            if not name:
                 name = 'World'
             return 'Hello, ' + name + '!'
 
@@ -129,12 +129,12 @@ Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered
 {: .file-excerpt }
 Apache VirtualHost Configuration
 :   ~~~ apache
-    <VirtualHost example.com:80> 
-        ServerAdmin username@example.com     
+    <VirtualHost example.com:80>
+        ServerAdmin username@example.com
         ServerName example.com
            ServerAlias www.example.com
            DocumentRoot /srv/www/example.com/public_html/
-           ErrorLog /srv/www/example.com/logs/error.log 
+           ErrorLog /srv/www/example.com/logs/error.log
            CustomLog /srv/www/example.com/logs/access.log combined
 
         WSGIScriptAlias / /srv/www/example.com/application
@@ -154,12 +154,12 @@ Apache VirtualHost Configuration
           RewriteCond %{REQUEST_URI} !^(/.*)+code.py/
           RewriteRule ^(.*)$ code.py/$1 [PT]
         </Location>
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 Ensure that this virtual host has been enabled, and issue the following command to restart the server:
 
-    /etc/init.d/apache2 restart 
+    /etc/init.d/apache2 restart
 
 In the above example, requests for the `example.com` domain will be handled by WSGI, with the application files located in `/srv/www/example.com/application`. All static files can be stored in `/srv/www/example.com/public_html` and served directly by Apache. Furthermore, the rewrite rules convert requests so that paths beneath `example.com` are handled by the Web.py application without including `code.py` in the URL. For example, the request for `http://example.com/about` would be processed as `http://example.com/code.py/about` but requests for `http://example.com/static` would not be rewritten and content would be served from `/srv/www/example.com/public_html`.
 

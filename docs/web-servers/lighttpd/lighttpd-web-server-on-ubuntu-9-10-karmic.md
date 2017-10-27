@@ -25,7 +25,7 @@ For purposes of this tutorial we'll assume you are logged into an SSH session on
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -41,7 +41,7 @@ Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -165,7 +165,7 @@ Use the following sequence of commands to create default index pages for all sit
 Virtual Host Setup with Enhanced Vhost
 --------------------------------------
 
-Remove the hash (`#`) from the front of the the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
+Remove the hash (`#`) from the front of the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
 
 Now, let's examine the following section of the default config file:
 

@@ -15,7 +15,7 @@ deprecated: true
 ---
 
 {: .caution}
-> This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
+> This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel).
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 
@@ -27,7 +27,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
-        apt-get update          
+        apt-get update
         apt-get upgrade --show-upgraded
 
 2.  Issue the following commands to install the default kernel for Ubuntu 13.04, uninstall `grub2`, and install `grub`:
@@ -47,7 +47,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 3
 	~~~
-	
+
 4.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {: .file-excerpt }
@@ -55,7 +55,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 	timeout 10
 	~~~
-	
+
 5.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
     {: .file-excerpt }
@@ -63,7 +63,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 	~~~
-	
+
 6.  Change it to match the following excerpt:
 
     {: .file-excerpt }
@@ -71,7 +71,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=/dev/xvda console=hvc0 ro quiet
 	~~~
-	
+
 7.  Next, locate the line containing `groot` that resembles the following excerpt:
 
     {: .file-excerpt }
@@ -79,7 +79,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0,0)
 	~~~
-	
+
 8.  Change it to match the following excerpt:
 
     {: .file-excerpt }
@@ -87,7 +87,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0)
 	~~~
-	
+
 9.  Issue the following command to update `grub`:
 
         update-grub
@@ -126,7 +126,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
-        apt-get update          
+        apt-get update
         apt-get upgrade --show-upgraded
 
 2.  Issue the following commands to install the default kernel for Ubuntu 12.04, uninstall `grub2`, and install `grub`:
@@ -145,7 +145,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 3
 	~~~
-	
+
 4.  Edit the file to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {: .file-excerpt }
@@ -153,7 +153,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
     	 timeout 10
 	~~~
-	
+
 5.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
     {: .file-excerpt }
@@ -161,7 +161,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 	# kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 	~~~
-	
+
 6.  Edit it to match the following excerpt:
 
     {: .file-excerpt }
@@ -177,7 +177,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0,0)
 	~~~
-	
+
 8.  Change it to match the following excerpt:
 
     {: .file-excerpt }
@@ -185,7 +185,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0)
 	~~~
-	
+
 9.  Issue the following command to update `grub`:
 
         update-grub
@@ -225,7 +225,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
-        apt-get update          
+        apt-get update
         apt-get upgrade --show-upgraded
 
 2.  Issue the following commands to install the default kernel for Ubuntu 10.04 LTS, uninstall `grub2`, and install `grub`:
@@ -245,7 +245,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 3
 	~~~
-	
+
 4.  Edit this line to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {: .file }
@@ -253,7 +253,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 10
 	~~~
-	
+
 5.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
     {: .file }
@@ -261,7 +261,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 	~~~
-	
+
 6.  Change it to match the following excerpt:
 
     {: .file }
@@ -269,7 +269,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=/dev/xvda console=hvc0 ro quiet
 	~~~
-	
+
 7.  Next, locate the line containing `groot` that resembles the following excerpt:
 
     {: .file }
@@ -277,7 +277,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=de400b9f-2578-488e-8664-250a8455a6fc
 	~~~
-	
+
 8.  Change it to match the following excerpt:
 
     {: .file }
@@ -285,7 +285,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0)
 	~~~
-	
+
 9.  Issue the following command to update `grub`:
 
         update-grub
@@ -325,7 +325,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
-        apt-get update          
+        apt-get update
         apt-get upgrade --show-upgraded
 
 2.  Issue the following commands to install the default kernel for Debian 7, along with the `grub` bootloader package:
@@ -354,7 +354,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 5
 	~~~
-	
+
 5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future.
 
     {: .file-excerpt }
@@ -362,7 +362,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 10
 	~~~
-	
+
 6.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
     {: .file-excerpt }
@@ -370,7 +370,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 	~~~
-	
+
 7.  Change it to match the following excerpt:
 
     {: .file-excerpt }
@@ -378,7 +378,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=/dev/xvda console=hvc0 ro quiet
 	~~~
-	
+
 8.  Next, locate the line containing `groot=` and verify that it matches the following excerpt:
 
     {: .file-excerpt }
@@ -386,7 +386,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0)
 	~~~
-	
+
 9.  Issue the following command to update `grub`:
 
         update-grub
@@ -409,7 +409,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
 1.  Update your package repositories and upgrade your installed packages by issuing the following commands:
 
-        apt-get update          
+        apt-get update
         apt-get upgrade --show-upgraded
 
 2.  Issue the following commands to install the default kernel for Debian 6, along with the `grub` bootloader package:
@@ -438,7 +438,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 5
 	~~~
-	
+
 5.  Change it to match the following excerpt. This will give you a bit of additional time at boot to select your desired kernel, in case you feel the need to go back to an older one in the future:
 
     {: .file-excerpt }
@@ -446,7 +446,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		timeout 10
 	~~~
-	
+
 6.  Next, locate the line containing `kopt` that resembles the following excerpt:
 
     {: .file-excerpt }
@@ -454,7 +454,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
 	~~~
-	
+
 7.  Change it to match the following excerpt:
 
     {: .file-excerpt }
@@ -462,7 +462,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# kopt=root=/dev/xvda console=hvc0 ro quiet
 	~~~
-	
+
 8.  Next, locate the line containing `groot=` and verify that it matches the following excerpt:
 
     {: .file-excerpt }
@@ -470,7 +470,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 	: ~~~
 		# groot=(hd0)
 	~~~
-	
+
 9.  Issue the following command to update `grub`:
 
         update-grub
@@ -586,10 +586,10 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 	/boot/grub/menu.lst
 	: ~~~
 		timeout 5
-    	
+
     	title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-3.9.10-100.fc17.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86\_64.img
 	~~~
-	
+
 4.  In the Linode Manager, edit your Linode's configuration profile to use either **pv-grub-x86\_32** or **pv-grub-x86\_64** as the **Kernel**, depending on the version of Fedora you have deployed (32-bit or 64-bit).
 5.  Make sure the root device is specified as **xvda**.
 6.  Save your changes by clicking **Save Profile** at the bottom of the page.

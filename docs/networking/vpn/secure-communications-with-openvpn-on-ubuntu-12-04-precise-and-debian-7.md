@@ -132,7 +132,7 @@ This will be followed by a quantity of seemingly random output. Once it brings y
 
 Move all of the secure keys to their proper locations by following these instructions:
 
-1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server):
+1.  The `/etc/openvpn/easy-rsa/keys/` directory contains all of the keys and certificates for the server and its clients generated using the `easy-rsa` tools. Copy the following certificate and key files to the remote client machines, using **scp** or another [means of transferring](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server):
 
     -   `ca.crt`
     -   `client1.crt`
@@ -224,7 +224,7 @@ This will scan the `/etc/openvpn` directory on the server for files with a `.con
 
 The process for connecting to the VPN varies depending on the specific operating system and distribution running on the *client* machine. You will need to install the right OpenVPN package for your client operating system.
 
-Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory, or equivalent location.
+Most network management tools provide some facility for managing connections to a VPN. Configure connections to your OpenVPN through the same interface where you might configure wireless or ethernet connections. If you choose to install and manage OpenVPN manually, you will need to place the `client1.conf` file and the requisite certificate files in the *local* machine's `/etc/openvpn` directory, or equivalent location.
 
 If you use OS X on a Mac, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with the desktop environment.
 
@@ -234,9 +234,9 @@ Here we will go through installing Tunneblick on OSX:
 2.  After starting, you will see this splash screen:
 
     ![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2.png)
-   
+
 	At the next screen click the **I have configuration files** button.
-   
+
     ![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1.png)
 
 3.  At the next screen, click **OpenVPN Configuration(s)**:
@@ -272,7 +272,7 @@ By deploying the following configuration, you will be able to forward *all* traf
     : ~~~
       push "redirect-gateway def1 bypass-dhcp"
       ~~~
-	
+
 2.  Edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system can forward IPv4 traffic:
 
         nano /etc/sysctl.conf
@@ -390,7 +390,7 @@ By deploying the following configuration, you will be able to forward *all* traf
 
         exit 0
         ~~~
-	
+
 14. Add the following line to the `/etc/openvpn/server.conf` file:
 
         nano /etc/openvpn/server.conf

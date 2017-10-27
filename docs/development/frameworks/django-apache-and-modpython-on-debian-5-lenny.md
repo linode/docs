@@ -23,7 +23,7 @@ We assume that you've completed the [getting started guide](/docs/getting-starte
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -97,7 +97,7 @@ Apache Virtual Host Configuration
             PythonDebug Off
         </Location>
 
-        ErrorLog /srv/logs/error.log 
+        ErrorLog /srv/logs/error.log
         CustomLog /srv/logs/access.log combined
     </VirtualHost>
     ~~~

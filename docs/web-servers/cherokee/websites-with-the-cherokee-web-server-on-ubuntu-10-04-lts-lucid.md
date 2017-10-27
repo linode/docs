@@ -25,7 +25,7 @@ This document assumes that you already have a working and up to date Ubuntu 10.0
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -41,7 +41,7 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted
@@ -112,7 +112,7 @@ In a terminal window on your local workstation (MacOS X, Linux, BSD, etc) :
 
     ssh -L 9090:localhost:9090 root@12.34.56.78 -N
 
-Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
+Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser via the SSH tunnel. To stop the tunnel, simply press `Ctrl+C` in your local terminal window.
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 
@@ -149,4 +149,4 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)
-- [Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10.04-lucid)
+- [Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid)

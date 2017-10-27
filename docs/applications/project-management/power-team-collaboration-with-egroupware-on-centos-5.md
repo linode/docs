@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/project-management/egroupware/centos-5/']
 modified: Monday, August 22nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, February 3rd, 2010'
 title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:
@@ -53,9 +53,9 @@ When inserted into the virtual hosting configuration for `example.com`, accessin
 Before continuing with the installation of eGroupware, issue the following commands to start the webserver and database server for the first time. Furthermore the `chkconfig` commands will ensure that these services are initiated following reboots:
 
     /etc/init.d/httpd start
-    /etc/init.d/mysqld start 
-    chkconfig mysqld on 
-    chkconfig httpd on  
+    /etc/init.d/mysqld start
+    chkconfig mysqld on
+    chkconfig httpd on
 
 ## Configure eGroupware
 

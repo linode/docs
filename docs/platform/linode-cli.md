@@ -20,7 +20,9 @@ The Linode Command Line Interface (**CLI**) is an [open-source](https://github.c
 
 Your Linode [API key](/docs/api/key) is required for the CLI to function.
 
-## Installing the CLI
+![Linode CLI](/docs/assets/linode-cli.png "Linode CLI")
+
+## Install the CLI
 
 You can install the Linode CLI on any Mac OS X or Linux computer. You can install it on a Linode if you want to, but the typical use case for the CLI is to run it from your home or office workstation. You can use it to manage your Linode account quickly, without the use of a GUI.
 
@@ -176,7 +178,7 @@ Once the CLI has your Linode Manager username and password, it will generate and
 
  {: .note }
 >
-> If you have [two-factor authentication](/docs/linode-manager-security#sph_two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+> If you have [two-factor authentication](/docs/security/linode-manager-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 >
 >     Two-factor authentication code
 >     >> 123456

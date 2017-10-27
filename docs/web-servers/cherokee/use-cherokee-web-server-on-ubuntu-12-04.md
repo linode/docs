@@ -14,7 +14,7 @@ published: 'Wednesday, October 10th, 2012'
 title: 'Use Cherokee Web Server on Ubuntu 12.04'
 external_resources:
  - '[Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)'
- - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10.04-lucid)'
+ - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid)'
 ---
 
 Cherokee is a fast, flexible web server for POSIX-compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
@@ -25,7 +25,7 @@ This document assumes that you already have a working and up to date Ubuntu 12.0
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -40,7 +40,7 @@ First, make sure you have the `universe` repositories enabled on your system. Yo
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
     deb http://security.ubuntu.com/ubuntu lucid-security main restricted
@@ -108,7 +108,7 @@ In a terminal window on your local workstation (MacOS X, Linux, BSD, etc):
 
     ssh -L 9090:localhost:9090 root@198.51.100.0 -N
 
-Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
+Replace "198.51.100.0" with your Linode's IP address. You may now visit `http://localhost:9090` in your web browser via the SSH tunnel. To stop the tunnel, simply press **CTRL+C** in your local terminal window.
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options. You'll still need to log in using the username and one-time password provided when you launched `cherokee-admin`.
 

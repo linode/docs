@@ -27,7 +27,7 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
 - Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-- Ensure that your packages are up to date by running `apt-get update && apt-get upgrade`.
+- Ensure that your packages are up to date by running `apt-get update`, and then `apt-get upgrade`.
 
 {: .note}
 >
@@ -48,7 +48,7 @@ Issue the following commands to navigate to the `/etc/ssl` directory and create 
 
 After the first command changes directories, the second command creates a `.csr` file under the `/etc/ssl/certs` directory, and a `.key` file under `/etc/ssl/private` using these options:
 
-* `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the the passphrase in the console each time the application using it is restarted.
+* `-nodes` instructs OpenSSL to create a certificate that does not require a passphrase. If this option is excluded, you will be required to enter the passphrase in the console each time the application using it is restarted.
 
 * `-days` determines the length of time in days that the certificate is being issued for. We entered 365 for the days parameter to the command, as we would be paying for one year of SSL certificate verification from a commercial certificate authority (CA).
 

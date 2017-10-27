@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
 keywords: 'ubuntu 11.04 upgrade, ubuntu natty upgrade, distro upgrade, linux upgrade howto'

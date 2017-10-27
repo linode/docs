@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/redis/centos-5/']
 modified: Sunday, July 7th, 2013
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, August 5th, 2010'
 title: Redis on CentOS 5
 external_resources:
@@ -43,7 +43,7 @@ Begin the installation process by issuing the following sequence of commands to 
 
     cd /opt/
     mkdir /opt/redis
-    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz 
+    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz
     tar -zxvf /opt/redis-2.2.2.tar.gz
     cd /opt/redis-2.2.2/
     make

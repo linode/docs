@@ -16,7 +16,7 @@ title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9.04-jaunty).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9-04-jaunty).
 
 Install Apache 2
 ----------------
@@ -72,7 +72,7 @@ Create the virtual hosting file for example.com, located at `/etc/apache2/sites-
 /etc/apache2/sites-available/example.com
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80>
-         ServerAdmin username@example.com     
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/

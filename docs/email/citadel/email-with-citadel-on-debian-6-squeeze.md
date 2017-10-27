@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/citadel/debian-6-squeeze/']
 modified: Wednesday, November 9th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, November 9th, 2011'
 title: 'Email with Citadel on Debian 6 (Squeeze)'
 ---
@@ -19,7 +19,7 @@ Citadel is a groupware suite that provides system administrators with an easy me
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -36,7 +36,7 @@ Issue the following commands to install any outstanding package updates:
 
 Issue the following commands to install the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you for several configuration items. Recommended answers for these prompts are as follows.
 

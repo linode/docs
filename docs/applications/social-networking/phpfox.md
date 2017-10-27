@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for phpFox.'
 keywords: 'social networking,phpfox,community'

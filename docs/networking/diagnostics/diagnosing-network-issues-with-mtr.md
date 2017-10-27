@@ -22,7 +22,7 @@ MTR is a powerful network diagnostic tool that enables administrators to diagnos
 
 ![Diagnosing Network Issues with MTR](/docs/assets/diagnosing-network-issues-with-mtr.png)
 
-For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network_diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system_diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
+For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
 
 ## Network Diagnostics Background
 
@@ -54,7 +54,7 @@ On Arch Linux systems issue the following commands to update the package databas
 You may also want to use MTR to diagnose networking issues from your local workstation. If you're running a Linux system, you can install MTR using the commands above.
 
 ### Installing on Windows
-For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://sourceforge.net/projects/winmtr/).
+For Windows there is a port of MTR called "WinMTR". You can download this application from the [WinMTR upstream](http://winmtr.net).
 
 ### Installing on Mac OS X
 If you're running a Mac OS X workstation, you may install MTR with either [Homebrew](http://brew.sh/), or [MacPorts](http://www.macports.org/). To install MTR with Homebrew, run:

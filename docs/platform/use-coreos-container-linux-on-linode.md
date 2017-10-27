@@ -6,7 +6,7 @@ description: This tutorial shows how to configure and use CoreOS Container Linux
 keywords: 'linux containers,docker,CoreOS'
 alias: ['platform/using-coreos-container-linux-on-linode/','platform/using-coreos-container-linux-on-your-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, June 8th, 2017
+modified: Monday, July 17th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, June 8th, 2017'
@@ -62,29 +62,3 @@ Should you need to access your Container Linux disk using Rescue Mode, use the b
     mount /dev/sda9 && cd /media/sda9
 
 That will put you at the root of your Container Linux filesystem. For more information on the partition layout of Container Linux, see the [Container Linux Disk Partitions Guide](https://coreos.com/os/docs/latest/sdk-disk-partitions.html).
-
-## Password Resets
-
-Recovery Mode must be used to reset the login password to your Container Linux disk image:
-
-1.  Boot into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) using [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish).
-
-2.  Mount the partition /usr/share/oem is attached to so you can edit the Grub configuration:
-
-        mount -o exec /dev/sda6
-
-3.  Add the string to the Grub config:
-
-        echo 'set linux_append="coreos.autologin=ttyS0"' >> /media/sda6/grub.cfg
-
-4.  Reboot into Container Linux. You still want to be in Lish, and you will automatically be logged in as the `core` user.
-
-5.  Reset your password:
-
-        sudo passwd core
-
-6.  Remove the line from `grub.cfg` which you added in step 3 above:
-
-        sudo sed -i '$ d' /usr/share/oem/grub.cfg
-
-7. Reboot the Linode again, and log in with your new password.

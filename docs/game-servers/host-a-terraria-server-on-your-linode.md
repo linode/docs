@@ -3,13 +3,14 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Terraria is a two-dimensional sandbox game similar to Minecraft that allows players to explore, build, and battle in an open world. This guide will outline everything required to run a Terraria server for yourself or others to play on'
+og_description: 'Run a Terraria server for yourself and your friends to play on. This guide will teach you setup and configuration for Linux distributions.'
 keywords: 'terraria,steam,minecraft,gaming'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, December 21st, 2015'
 modified: Monday, April 3, 2017
 modified_by:
   name: Linode
-title: 'Host a Terraria Server on Your Linode'
+title: 'How to Setup a Terraria Linux Server'
 contributor:
   name: Tyler Langlois
   link: https://github.com/tylerjl
@@ -118,7 +119,7 @@ To manually configure iptables without using a controller, see our [iptables gui
 ## Install and Configure Terraria
 
 1.  Change your working directory to `/opt` and download the Terraria tarball. You'll need to check [Terraria's website](http://terraria.gamepedia.com/Server#How_to_.28Linux.29) for the current release version. Right-click and copy the link to use with `curl` or `wget`. We'll use 1.3.4.4 as an example in this guide:
- 
+
         cd /opt && sudo curl -O http://terraria.org/server/terraria-server-1344.zip
 
     {: .note}
@@ -136,7 +137,7 @@ To manually configure iptables without using a controller, see our [iptables gui
         sudo yum install unzip
 
 3.  Extract the archive and set the necessary permissions:
- 
+
         sudo unzip terraria-server-1344.zip
         sudo mv /opt/Dedicated\ Server/Linux /opt/terraria
         sudo rm -rf Dedicated\ Server/
@@ -180,7 +181,7 @@ Install Screen with the system's package manager:
 
 ### systemd
 
-It's useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly. 
+It's useful to have an automated way to start, stop, and bring up Terraria on boot. This is important if the system restarts unexpectedly.
 
 Create the following file to define the `terraria` systemd service:
 
@@ -214,7 +215,7 @@ Create the following file to define the `terraria` systemd service:
 The Terraria administration script needs two primary functions:
 
 *   Attaching to the running screen session, which offers a helpful administration console.
-*   The ability to broadcast input into the screen session so the script can be run to to save the world, exit the server, etc.
+*   The ability to broadcast input into the screen session so the script can be run to save the world, exit the server, etc.
 
 1.  Create a `terrariad` file, enter the following script, then save and close:
 
