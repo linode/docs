@@ -18,7 +18,7 @@ external_resources:
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
-## What is Mod-Security?
+## What is ModSecurity?
 
 ModSecurity is a web application firewall for the Apache web server. In addition to providing logging capabilities, ModSecurity can monitor the HTTP traffic in real time in order to detect attacks. ModSecurity also operates as a web intrusion detection tool, allowing you to react to suspicious events that take place at your web systems.
 
