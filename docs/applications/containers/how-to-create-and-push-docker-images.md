@@ -97,7 +97,7 @@ Most images already include a tag. For instance, when you pull down the Ubuntu i
         lamp-server-template   latest              6a9842fd995e        54 seconds ago      593MB
         ubuntu                 latest              2d696327ab2e        9 days ago          122M
 
-## Pushing your Image to Docker Hub
+## Pushing Your Image to Docker Hub
 
 1.  Add personal information to the image. During the commit command, a description, your full name, and Docker Hub username can be added:
 
@@ -118,7 +118,7 @@ Most images already include a tag. For instance, when you pull down the Ubuntu i
   ![Image on Docker Hub](/docs/assets/docker/dockerdev3.jpg)
 
 
-## How to deploy containers with Shipyard
+## How to Deploy Containers with Shipyard
 
 Shipyard offers a web-based GUI, built on Docker Swarm.
 
@@ -126,7 +126,7 @@ For those that have never heard of Shipyard, it is built on Docker Swarm and giv
 
 What I want to show you is how to easily install Shipyard and then how to deploy a container using the web-based GUI. I will be demonstrating on a Linode running Ubuntu Server 16.10 with Docker already installed.
 
-### How to download and run Shipyard:
+### How to Download and Run Shipyard:
 
 Docker has created a simple script that automates the process of deploying Shipyard. In order to use this script, you’ll need to be logged into your Linode as a user who is a part 
 of the docker group. Once logged in, issue the following command:
