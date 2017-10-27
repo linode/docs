@@ -7,11 +7,11 @@ keywords: 'apache, mod_security'
 og_description: 'Besides providing logging capabilities, Mod_security, as a web-detection tool, can monitor the HTTP traffic in real time in order to spot attacks. This guide shows how to load and run Mod_security on your Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/mod-security/','websites/apache-tips-and-tricks/modsecurity-on-apache/','web-servers/apache-tips-and-tricks/modsecurity-on-apache/']
-modified: Friday, February 14th, 2014
+modified: Friday, October 27th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, November 10th, 2011'
-title: 'How to Configure Mod_Security on Apache'
+title: 'How to Configure ModSecurity on Apache'
 external_resources:
  - '[ModSecurity Home Page](http://www.modsecurity.org)'
  - '[OWASP Home Page](https://www.owasp.org/index.php/Main_Page)'
