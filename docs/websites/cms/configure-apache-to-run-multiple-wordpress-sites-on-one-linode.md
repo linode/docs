@@ -5,12 +5,12 @@ author:
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
 keywords: 'install WordPress, WordPress on Linode, multiple WordPress, how to configure WordPress'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 24, 2017
+modified: Friday, October 27th, 2017
 modified_by:
   name: Linode
 contributor:
   name: Jonathan Tsai
-published: 'Tuesday, October 24, 2017'
+published: 'Tuesday, October 24th, 2017'
 title: Configure Apache to Run Multiple WordPress Sites on One Linode
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
