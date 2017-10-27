@@ -2,7 +2,7 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: "This guide shows how to install Subsonic media server on a Linode and then configure and run it on Ubuntu or Debian to stream music.'
+description: 'This guide shows how to install Subsonic media server on a Linode and then configure and run it on Ubuntu or Debian to stream music.'
 og_description: 'Subsonic is a media streaming service that makes it easy to share music and video files with multiple users. Learn how to install it on Ubuntu and Debian.'
 keywords: 'subsonic, music, audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -39,10 +39,10 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
 ##Install Subsonic
 
-1.  The latest version of Subsonic (as of publication) is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
+1.  The latest version of Subsonic (as of publication) is 6.1.2, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
 
-        wget http://downloads.sourceforge.net/project/subsonic/subsonic/5.1/subsonic-5.1.deb
-        dpkg -i subsonic-5.1.deb
+        wget https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.2.deb
+        dpkg -i subsonic-6.1.2.deb
 
 2.  Subsonic runs as the root user by default, which is insecure. Create a new system user for subsonic to run as:
 
