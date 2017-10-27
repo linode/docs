@@ -2,23 +2,23 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows how to install iRedMail on your Linode, so you can  run your own mail server on Ubuntu.'
+description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
 keywords: 'email,mail,iredmail'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['installing-iredmail/','email/iredmail/installing-iredmail/']
 contributor:
     name: Nick Reichley
     link: https://github.com/reichley
-modified: Monday, October 6, 2014
+modified: Friday, October 27, 2017
 modified_by:
   name: James Stewart
 published: 'Monday, October 6, 2014'
 title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-<hr>
+----
 
 ## Why Run a Mail Server?
 
@@ -36,7 +36,7 @@ Before beginning this guide you should have:
 
 This guide assumes you've followed the Linode [Getting Started](/docs/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### MX Record
 
