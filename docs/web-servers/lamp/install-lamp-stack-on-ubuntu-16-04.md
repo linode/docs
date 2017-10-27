@@ -136,6 +136,9 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
+    {: .note }
+    > Make sure that you do not put space after comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
+
 4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
         sudo a2ensite example.com.conf
