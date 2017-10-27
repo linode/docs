@@ -9,12 +9,11 @@ published: 'Monday, October 23rd, 2017'
 modified: 'Thursday, October 26th, 2017'
 modified_by:
   name: Linode
-title: 'How to Build your Infrastructure Using Terraform and Linode'
+title: 'Build Infrastructure Using Terraform'
 contributor:
   name: Damaso Sanoja
 external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
-
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $300 per published guide.*
@@ -23,7 +22,7 @@ external_resources:
 
 # Terraform Overview
 
-Infrastructure as code (IaC) can be defined as: software that gives the developer the ability to build, manage, and provision computer data centers with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
+Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computer data centers with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
 
 Terraform stands out from other IaC solutions because it's an orchestration tool, which means *it's designed specifically for bare-metal server and virtual machines*. The configuration of the servers can be achieved using Terraform, but implementing specialized software for tasks like Puppet, Chef, or Ansible are easily done through a provisioner architecture.
 This guide will showcase Terraform, and its benefits when used in conjuction with Linode's cloud technology.
@@ -38,9 +37,9 @@ This guide will showcase Terraform, and its benefits when used in conjuction wit
 
 2.  Follow the steps described in [this guide](https://www.linode.com/docs/platform/api/api-key) to create an API key for your Linode account. Be sure to write down the API key when it's displayed, it will only appear once.
 
-{: .note}
->
-> Terraform automates the build process of an app's infrastructure, including creating the necessary amount Linodes for your project. As a result, unless otherwise specified, all commands in this guide should be run from a client machine. This guide will assume that your client machine is running Ubuntu 16.04, but similar procedures should work on other platforms.
+    {: .note}
+    >
+    > Terraform automates the build process of an app's infrastructure, including creating the necessary amount Linodes for your project. As a result, unless otherwise specified, all commands in this guide should be run from a client machine. This guide will assume that your client machine is running Ubuntu 16.04, but similar procedures should work on other platforms.
 
 # Installing Terraform on Ubuntu 16.04
 
@@ -54,16 +53,16 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 
 1. Install Git if it's not already on your system:
 
-        apt install git
+       apt install git
 
 2. Download and extract `golang` to the appropriate location. Terraform requires Version 1.9:
 
-        wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
-        sudo tar -C /usr/local -xvzf go1.9.linux-amd64.tar.gz
+       wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
+       sudo tar -C /usr/local -xvzf go1.9.linux-amd64.tar.gz
 
 3. The language workspace (projects) demands that executables and source code have their own directories:
 
-        mkdir -p ~/go_projects/{bin,src,pkg}
+       mkdir -p ~/go_projects/{bin,src,pkg}
 
 4. Next step is to add `Go` to the `PATH`. For convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages. 
 
@@ -78,7 +77,7 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 
 5. Reload your profile into memory:
 
-        source ~/.profile
+       source ~/.profile
 
 {:.note}
 >
@@ -123,7 +122,7 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 
 2. Get the Linode plugin for Terraform:
 
-        wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
+      wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
 
 3. Move the plugin to `~go_projects/bin`:
 
@@ -164,12 +163,12 @@ Terraform can understand two types of configuration files: JSON and HashiCorp Co
 
 2. Navigate to `~/go_projects/bin` and initialize the Terraform configuration:
 
-        cd ~/go_projects/bin
-        terraform init
+       cd ~/go_projects/bin
+       terraform init
 
     You should see something similar to:
 
-  ![Terraform Init](/docs/assets/terraform/terraform-init.jpg)
+    ![Terraform Init](/docs/assets/terraform/terraform-init.jpg)
 
 3.  If an error is encountered you can run the command again in debug mode:
 
@@ -185,19 +184,19 @@ This section will present three Terraform examples, ranging from a single Linode
 
 1. Check your Terraform plan:
 
-        terraform plan
+       terraform plan
 
     ![Terraform Plan](/docs/assets/terraform/terraform-plan-01.jpg)
 
     There shouldn't be any errors, but if you need to fix any problems you can activate debug mode again:
 
-            TF_LOG=debug terraform plan
+       TF_LOG=debug terraform plan
 
     The command above won't take any action or make any changes on your Linode account, yet. Terraform uses a declarative approach, that means that your configuration file specifies the desired end-state of the infrastructure. When you run `terraform plan`, an analysis is done to know which actions are required to achieve this state.
 
 2. If there are no errors you can create your infrastructure with the command:
 
-        terraform apply
+       terraform apply
 
     ![Terraform Plan](/docs/assets/terraform/terraform-apply-01.jpg)
 
@@ -227,24 +226,28 @@ Now that you have a `linode-example` running, imagine you need to implement a ty
         }
         ~~~
 
-Remember:    
-
-    * Terraform loads into memory all files with the ".tf" extension present in the working directory. As a result all files are "concatenated" (in memory). As a result you don't need to define the provider on this file, since it was declared in `linode-template.tf`.
-    * Resources can't be duplicated, so you need to assign a unique name for each one.
-    * In this example the same SSH key and root password is being used. You can change that easily for testing or production.
-    * A new parameter `swap_size` is used to override the default value of 512Mb. You can check all available options for `terraform-provider-linode` in the plugin GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
-
+    {:.note}
+    > Remember:    
+    >
+    > * Terraform loads into memory all files with the ".tf" extension present in the working directory. As a result all files are "concatenated" (in memory). As a result you don't need to define the provider on this file, since it was declared in `linode-template.tf`.
+    >
+    > * Resources can't be duplicated, so you need to assign a unique name for each one.
+    >
+    > * In this example the same SSH key and root password is being used. You can change that easily for testing or production.
+    >
+    > * A new parameter `swap_size` is used to override the default value of 512Mb. You can check all available options for `terraform-provider-linode` in the plugin GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
+    
 2. Check your plan for errors:
 
-        terraform plan
+       terraform plan
 
-  ![Terraform Plan](/docs/assets/terraform/terraform-plan-02.jpg)
+      ![Terraform Plan](/docs/assets/terraform/terraform-plan-02.jpg)
 
 3. The final step is to apply all changes:
 
-        terraform apply
+       terraform apply
 
-![Terraform Plan](/docs/assets/terraform/terraform-apply-02.jpg)
+      ![Terraform Plan](/docs/assets/terraform/terraform-apply-02.jpg)
 
 4. Check the Linode Manager to ensure that another Linode, `www`, has been added to the `web` display group on your account.
 
@@ -276,13 +279,13 @@ To expand this example a bit further just imagine you want to change the first s
 
 2. Check your plan:
 
-        terraform plan
+       terraform plan
 
-![Terraform Plan](/docs/assets/terraform/terraform-plan-03.jpg)
+     ![Terraform Plan](/docs/assets/terraform/terraform-plan-03.jpg)
 
 3. Apply your changes:
 
-        terraform apply
+       terraform apply
 
     ![Terraform Plan](/docs/assets/terraform/terraform-apply-03.jpg)
 
@@ -301,11 +304,11 @@ Up to this point, the procedure for adding a new node to your infrastructure was
 
         terraform plan -destroy
 
-![Plan for destroy Linodes](/docs/assets/terraform/terraform-destroy-01.jpg)
+     ![Plan for destroy Linodes](/docs/assets/terraform/terraform-destroy-01.jpg)
 
 2. Similar to `terraform plan` the above command checks your infrastructure before doing any change. To perform the deletion run the command:
 
-        terraform destroy
+       terraform destroy
 
     ![Destroy Linodes](/docs/assets/terraform/terraform-destroy-02.jpg)
 
@@ -313,7 +316,7 @@ Up to this point, the procedure for adding a new node to your infrastructure was
 
 4. Delete (or move to a different location) all Terraform files.
 
-        rm *.tf*
+       rm *.tf*
 
 5. Create a new file to define variables, you can use any name, for this example we'll use `variables.tf`:
 
@@ -380,13 +383,13 @@ Up to this point, the procedure for adding a new node to your infrastructure was
 
 8. Check your new deployment for errors:
 
-        terraform plan
+       terraform plan
 
     ![Terraform Plan](/docs/assets/terraform/terraform-plan-04.jpg)
 
 9. Apply all changes:
 
-        terraform apply
+       terraform apply
 
     ![Terraform Plan](/docs/assets/terraform/terraform-apply-04.jpg)
 
@@ -523,12 +526,12 @@ Finally, you need a "main" configuration file that uses the module you just crea
 
 Using modules is easy, just call them by name with the command `module` and indicate the absolute path where they are saved. Then, you can assign values to each field defined by a variable. The final result would be the same as if you pasted in all of the reusable code in the main configuration file. Let's deploy this infrastructure:
 
-        cd ~/go_projects/bin/testing/
-        terraform init && terraform plan
+    cd ~/go_projects/bin/testing/
+    terraform init && terraform plan
 
 ![Terraform Modules Plan](/docs/assets/terraform/terraform-modules-plan.jpg)
 
-        terraform apply
+    terraform apply
 
 ![Terraform Modules Apply](/docs/assets/terraform/terraform-modules-apply.jpg)
 
