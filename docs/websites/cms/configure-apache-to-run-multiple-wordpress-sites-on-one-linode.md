@@ -19,6 +19,8 @@ external_resources:
 - '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
+## What is WordPress?
+
 WordPress is a popular, dynamic, content management system that makes it easy to build anything from blogs to complete websites and online stores. This guide shows you how to configure your system to run multiple WordPress sites on a single Linode, using Apache Virtual Hosts.
 
 ## Before You Begin
