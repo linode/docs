@@ -3,7 +3,7 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'This guide covers basic best practices for securing a production server, including setting up user accounts, iptables firewall and SSH, and disabling unused network services.'
-og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring an iptables firewall and SSH, and disabling unused network services.'
+og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
