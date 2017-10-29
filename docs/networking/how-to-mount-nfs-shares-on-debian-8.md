@@ -175,7 +175,7 @@ Likewise, the same permissions should be visible in the server if you do
 
 	ls -l /var/nfsroot/testfile.txt
 	
-Now let's replace **root\_squash** with **no\_root\_squash** in `/etc/exports` on the server to update the table of exported shares as explained in step 8 of **NFS Server Setup** above. Finally, we will repeat the above exercise by creating another test file (`testfile2.txt`) in the same directory (`/mnt/remotenfs`):
+Now let's replace **root\_squash** with **no\_root\_squash** in `/etc/exports` on the server and update the table of exported shares as explained in step 8 of **NFS Server Setup** above. Finally, we will repeat the above exercise by creating another test file (`testfile2.txt`) in the same directory (`/mnt/remotenfs`):
 
 	sudo echo "Hi everyone" > /mnt/remotenfs/testfile2.txt
 	
