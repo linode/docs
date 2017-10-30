@@ -38,7 +38,7 @@ You will also learn how to secure communication between your nodes, as well as r
 ## Before You Begin
 
 1. You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/docs/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
-	
+
 2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
 3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
@@ -51,7 +51,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 		systemctl stop cassandra
 		rm -rf /var/lib/cassandra/data/system/*
-	
+
 2. Edit the `cassandra.yaml` file. Set the appropriate values for each variable indicated below:
 
     {: .table .table-striped .table-bordered}
@@ -107,12 +107,12 @@ Ports `7000` and `9042` must be available for external nodes to connect to. As a
 		rule family="ipv4"
 		source address="[external_node_ip_address]"
 		port protocol="tcp" port="7000" accept'
-			
+
 	firewall-cmd --permanent --zone=public --add-rich-rule='
 		rule family="ipv4"
 		source address="[external_node_ip_address]"
 		port protocol="tcp" port="9042" accept'
-		
+
 	firewall-cmd --reload
 
 **iptables**
@@ -146,7 +146,7 @@ Setting up encryption between nodes offers additional security and protects the 
       prompt                 = no
       output_password        = examplePassword
       default_bits           = 4096
-    
+
       [ req_distinguished_name ]
       C                      = US
       ST                     = WA
@@ -202,12 +202,12 @@ Copy the truststore file and keystore files into Cassandra's `conf` directory fo
 
 {: .note}
 >
-> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory. 
+> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory.
 
 	scp ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
     scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name]-keystore.jks
 
-Use the `-i` option if your destination server requires a certificate to login. 
+Use the `-i` option if your destination server requires a certificate to login.
 
 	scp -i /local_path/to/private_key_file ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
 

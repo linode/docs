@@ -46,11 +46,11 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 2.  Install the NFS server package **nfs-kernel-server**:
 
         sudo apt-get install nfs-kernel-server
-	
+
 3.  Install the Portmapper package **portmap**:
 
         sudo apt-get install portmap
-	
+
 4.  Prevent access to the services used by NFS by default. Use your favorite editor to add the following line to the `/etc/hosts.deny`:
 
     {: .file-excerpt }
@@ -70,7 +70,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 	~~~
 
      Replace **\<client linode private ip\>** with the current private IP address of your second Linode.
-     
+
 6.  Create a directory in your local filesystem. This directory will be used as the root of the NFS share:
 
         sudo mkdir /var/nfsroot
@@ -78,7 +78,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 7.  Assign appropriate ownership to root of the NFS share:
 
         sudo chown nobody:nogroup /var/nfsroot/
-	
+
 8.  Use your favorite editor to add the following line to the `/etc/exports` file:
 
     {: .file-excerpt}
@@ -86,7 +86,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 	: ~~~
 		/var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
 	~~~
-	
+
     Replace **\<client linode private ip\>** with the current private IP address of your second Linode. Make sure there is no space between the /32 and the opening parenthesis. Also check that there is a blank line at the end of the file.
 
 9.  Update the table of exported file systems with the following command:

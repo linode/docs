@@ -29,17 +29,17 @@ external_resources:
 
 If you are a system administrator or a software developer, a robust text editor is among the tools you use on a daily basis. It's likely that you've used the vi or vim editors that have served the Unix and Linux communities for decades.
 
-Although vim is under active development, it includes some ~300k lines of [C89](https://en.wikipedia.org/wiki/ANSI_C#C89) code. In addition to being difficult to maintain, issues and new pull requests cannot be addressed very easily since Bram Moolenaar is the only person who maintains the large codebase of the program.  
+Although vim is under active development, it includes some ~300k lines of [C89](https://en.wikipedia.org/wiki/ANSI_C#C89) code. In addition to being difficult to maintain, issues and new pull requests cannot be addressed very easily since Bram Moolenaar is the only person who maintains the large codebase of the program.
 
 These difficulties, along with the lack of support for some desired features such as asynchronous plugins, motivated the birth of NeoVim as a fork of vim. The project's main objective is to completely refactor vim so that maintenance can be simplified, and new features and bug fixes can be quickly added to the source code.
 
 ## What To Expect From NeoVim?
 
-During NeoVim's short life, two outstanding features have already been implemented: asynchronous plugins, and the Remote Procedure Call (RPC) API for controlling NeoVim programatically. 
+During NeoVim's short life, two outstanding features have already been implemented: asynchronous plugins, and the Remote Procedure Call (RPC) API for controlling NeoVim programatically.
 
 Asynchronous plugins make it possible for plugins to run as background processes without interfering with the main editor process.
 
-The RPC API allows GUI programs (and other software that speaks the *msgpack-rpc* messaging protocol) to connect to a running NeoVim instance. This means that you can integrate well-known text editors such as Atom, Visual Studio Code, or Sublime Text with NeoVim and have modifications sync bidirectionally between them. That way, you can leverage all the features of the GUI program while using nvim's engine behind the scenes. 
+The RPC API allows GUI programs (and other software that speaks the *msgpack-rpc* messaging protocol) to connect to a running NeoVim instance. This means that you can integrate well-known text editors such as Atom, Visual Studio Code, or Sublime Text with NeoVim and have modifications sync bidirectionally between them. That way, you can leverage all the features of the GUI program while using nvim's engine behind the scenes.
 
 This guide details the installation and configuration of NeoVim, along with two asynchronous plugins, `nvim-completion-manager` and `far.vim`.
 
@@ -115,13 +115,13 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
 ### Nvim-completion-manager Plugin
 
-*nvim-completion-manager* is a fast, extensible completion framework that supports a variety of programming languages and snippet solutions. Some of these are supported out of the box, while others require the installation of extra Python 3 modules to work. In this guide we illustrate the use of this plugin with [UltiSnips](https://github.com/SirVer/ultisnips), a robust snippet solution. 
+*nvim-completion-manager* is a fast, extensible completion framework that supports a variety of programming languages and snippet solutions. Some of these are supported out of the box, while others require the installation of extra Python 3 modules to work. In this guide we illustrate the use of this plugin with [UltiSnips](https://github.com/SirVer/ultisnips), a robust snippet solution.
 
 1.  Install the NeoVim Python module:
 
         pip3 install --user neovim
 
-2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips and [vim-snippets](https://github.com/honza/vim-snippets): 
+2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips and [vim-snippets](https://github.com/honza/vim-snippets):
 
     {: .file-excerpt }
     ~/.config/nvim/init.vim
@@ -141,11 +141,11 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
         :q!
         :q!
 
-4.  The plugin will be ready for use after you restart nvim. To test it, create a `.py` file named `helloworld.py` as follows: 
+4.  The plugin will be ready for use after you restart nvim. To test it, create a `.py` file named `helloworld.py` as follows:
 
         nvim helloworld.py
 
-    Press **i** to enter Insert mode, and type `def`. You should be presented with a dropdown list similar to that shown in the image below. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file: 
+    Press **i** to enter Insert mode, and type `def`. You should be presented with a dropdown list similar to that shown in the image below. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file:
 
     ![Neovim autocomplete snippets](/docs/assets/neovim/neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
 
@@ -189,7 +189,7 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
     myproject/persons.py
     :   ~~~ python
         #!/usr/bin/python3
-        from greeting import greet 
+        from greeting import greet
         # Import the greet function from greeting.py
         # Pass a name to greet()
         greet('Jack')
@@ -211,7 +211,7 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
 ### Neomake - An Alternative to make
 
-You may also want to take a look at [neomake](https://github.com/neomake/neomake), a plugin similar to syntastic in vim. Where syntastic may freeze vim while it checks the syntax of a large file every time you save changes, neomake can perform the same function without causing any interruptions. 
+You may also want to take a look at [neomake](https://github.com/neomake/neomake), a plugin similar to syntastic in vim. Where syntastic may freeze vim while it checks the syntax of a large file every time you save changes, neomake can perform the same function without causing any interruptions.
 
 ## Roadmap and Future
 

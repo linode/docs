@@ -18,7 +18,7 @@ This guide will show you how to configure an OpenVPN server to forward incoming 
 
 ![Tunnel Your Internet Traffic Through an OpenVPN Server](/docs/assets/tunnel-traffic-through-openvpn.png "Tunnel Your Internet Traffic Through an OpenVPN Server")
 
-Commonly, a VPN tunnel is used to privately access the internet, evading censorship or geolocation by shielding your computer's web traffic when connecting through untrusted hotspots, or connections. 
+Commonly, a VPN tunnel is used to privately access the internet, evading censorship or geolocation by shielding your computer's web traffic when connecting through untrusted hotspots, or connections.
 
 ## Before You Begin
 
@@ -26,7 +26,7 @@ This guide is the second-part  of a three-part series on setting up a  hardened 
 
 ## OpenVPN Configuration
 
-OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and requires editing to optimize its efficiency. 
+OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and requires editing to optimize its efficiency.
 
 1.  Switch from your standard user account to the `root` user:
 
@@ -40,7 +40,7 @@ OpenVPN's server-side configuration file is: `/etc/openvpn/server.conf`, and req
         push "redirect-gateway def1 bypass-dhcp"
         END
 
-3.  Push DNS resolvers to client devices. [OpenDNS](https://www.opendns.com/) is provided by OpenVPN's `client.ovpn` template file. 
+3.  Push DNS resolvers to client devices. [OpenDNS](https://www.opendns.com/) is provided by OpenVPN's `client.ovpn` template file.
 
         cat >> /etc/openvpn/server.conf << END
 
