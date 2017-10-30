@@ -1,5 +1,5 @@
 ---
-author: 
+author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will walk you through the basics of installing and running SELinux.'
@@ -7,9 +7,9 @@ keywords: 'Security-enhanced Linux, secure open source, firewall, SELinux, getti
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 alias:
 modified: 'Friday July 21, 2017'
-modified_by: 
+modified_by:
   name: Angel Guarisma
-published: 'Friday July 21, 2017' 
+published: 'Friday July 21, 2017'
 title: Getting Started with SELinux
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -87,7 +87,7 @@ You can also retrieve even more information using `sestatus`:
 	Policy MLS status:              enabled
 	Policy deny_unknown status:     allowed
 	Max kernel policy version:      28
-	
+
 You have to set SELinux to `permissive`, so that you can create policies on your system for SELinux to enforce. After changing SELinux's mode, you have to reboot your system.
 
 	[root@centos ~]# setenforce 0

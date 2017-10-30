@@ -8,7 +8,7 @@ alias: ['quick-answers/linux/how-to-disable-selinux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, June 22, 2017'
 modified: 'Wednesday, October 18, 2017'
-modified_by: 
+modified_by:
   name: Linode
 title: 'How to Change SELinux Modes'
 external_resources:
@@ -44,7 +44,7 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
 3.  Edit the SELinux configuration file so your mode change will survive reboots. The `sed` command below is given as an example, and will switch from permissive to enforcing mode. For a different mode configuration, just substitute the two words in the command with the mode you currently have, and the one you want to enable (ex. disabled to permissive).
 
         sed -i 's/SELINUX=permissive/SELINUX=enforcing/g' /etc/selinux/config
-    
+
     If you prefer to edit the file manually, it should look like this:
 
     {:.file}

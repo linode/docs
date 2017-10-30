@@ -18,7 +18,7 @@ external_resources:
 
 ## Why Use a VPN
 
-Setting up a personal Virtual Private Network (VPN) server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection. 
+Setting up a personal Virtual Private Network (VPN) server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection.
 
 However, the configuration process is time-consuming, especially for those with little experience working with remote servers (For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/docs/networking/vpn/configuring-openvpn-client-devices)).
 
