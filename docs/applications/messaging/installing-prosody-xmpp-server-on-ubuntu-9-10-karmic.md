@@ -29,8 +29,8 @@ The developers of Prosody provide software repositories for Debian and Ubuntu to
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -59,7 +59,7 @@ Now, to download the public key for the Prosody package repository, issue the fo
 
 You can now issue the following command to refresh the package database:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
 
 Install Prosody
@@ -74,7 +74,7 @@ When `apt` finishes, the Prosody server will have been successfully installed (w
     /etc/init.d/prosody reload
     /etc/init.d/prosody start
     /etc/init.d/prosody stop
-    /etc/init.d/prosody restart 
+    /etc/init.d/prosody restart
 
 Configure Prosody Server
 ------------------------

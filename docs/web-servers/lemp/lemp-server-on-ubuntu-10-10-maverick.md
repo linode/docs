@@ -45,7 +45,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10.10-maverick).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10-10-maverick).
 
 ### Deploy from Ubuntu Project Packages
 
@@ -153,7 +153,7 @@ nginx.conf
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -167,7 +167,7 @@ nginx.conf
 
     include /opt/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -182,7 +182,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 Deploy PHP with FastCGI
 -----------------------
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.10-maverick). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-10-maverick). Begin the deployment process by issuing the following command to install the required dependencies:
 
     apt-get install php5-cli php5-cgi psmisc spawn-fcgi
 
@@ -311,6 +311,6 @@ You may wish to consult the following resources for additional information on th
 
 - [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
-- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.10-maverick)
-- [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10.10-maverick)
-- [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10.10-maverick)
+- [Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick)
+- [Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10-10-maverick)
+- [Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10-10-maverick)

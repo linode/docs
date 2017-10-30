@@ -24,7 +24,7 @@ Before You Begin
 ----------------
 
 -   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#sph_set-the-hostname) for your server.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/web-servers/apache/apache-2-web-server-on-debian-6-squeeze) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -33,7 +33,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/securing-your-server#sph_adding-a-new-user).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/security/securing-your-server/#add-a-limited-user-account).
 
 Install Apache 2
 ----------------
@@ -103,7 +103,7 @@ Follow these instructions:
 /etc/apache2/sites-available/example.net
     :   ~~~ apache
         <VirtualHost *:80>
-             ServerAdmin webmaster@example.net     
+             ServerAdmin webmaster@example.net
              ServerName example.net
              ServerAlias www.example.net
              DocumentRoot /srv/www/example.net/public_html/
@@ -227,7 +227,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/web-servers/apache/troubleshooting#sph_troubleshooting-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
 
 Multi-Processing Module
 -----------------------

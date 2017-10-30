@@ -175,7 +175,7 @@ Direct nginx to check whether each permalink refers to an existing page. By defa
 
 By default, PHP restricts web uploads to under two megabytes. To allow larger file uploads through the web interface, configure the `upload_max_filesize` setting in `php.ini`:
 
-**Apache**: `/etc/php/7.0/cli/php.ini`
+**Apache**: `/etc/php/7.0/apache2/php.ini`
 **nginx**: `/etc/php/7.0/fpm/php.ini`
 
 {: .file-excerpt}

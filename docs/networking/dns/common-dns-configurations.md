@@ -23,7 +23,7 @@ The most common DNS configuration is a single domain name on one Linode. For thi
 
  {: .note }
 >
-> The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [Adding Domain Zones](/docs/networking/dns/dns-manager#adding) in the [DNS Manager](/docs/networking/dns/dns-manager) guide.
+> The DNS Manager can automatically add all of these records when you create a domain zone. For instructions, see [Adding Domain Zones](/docs/networking/dns/dns-manager#add-a-domain-zone) in the [DNS Manager](/docs/networking/dns/dns-manager) guide.
 
 ##Configuring Subdomains
 
@@ -37,7 +37,7 @@ To configure a subdomain, such as `staging.example.org`, create an A record with
 
 ##Hosting Multiple Domains on a Single Server
 
-To host multiple domain names on a single server, create a separate domain zone for each domain name, as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#adding). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
+To host multiple domain names on a single server, create a separate domain zone for each domain name, as shown below. When creating the new domain zones, we recommend that you allow the DNS Manager to automatically [insert basic records](/docs/networking/dns/dns-manager#add-a-domain-zone). At a minimum, you'll need an A record for each domain name pointing to the server's IP address.
 
 [![This page shows the DNS Manager tab with three different domain zones listed.](/docs/assets/1126-dns15.png)](/docs/assets/1126-dns15.png)
 

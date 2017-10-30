@@ -31,7 +31,7 @@ Users of CentOS and Fedora systems can use the following command:
 
 In Arch Linux, use the following command:
 
-    pacman -S dnsutils 
+    pacman -S dnsutils
 
 ## How to Use dig
 

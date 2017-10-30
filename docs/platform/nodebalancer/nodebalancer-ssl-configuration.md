@@ -153,7 +153,7 @@ This guide will help you install an SSL certificate on your NodeBalancer. It inc
                 index  index.html index.htm;
                 if ($http_x_forwarded_proto = "http") {
                     rewrite  ^/(.*)$  https://example.com/$1 permanent;
-                    }           
+                    }
                 }
             }
         ~~~

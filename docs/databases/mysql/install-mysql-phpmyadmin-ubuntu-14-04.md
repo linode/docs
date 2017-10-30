@@ -38,19 +38,19 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade -y
-        
+
 3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04) guide if needed.
 
     {: .note}
     >
     >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
-    
+
 4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
 5.  Install the `mcrypt` PHP module:
 
         sudo apt-get install mcrypt
-        
+
 6.  Restart Apache:
 
         sudo service apache2 restart

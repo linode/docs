@@ -14,7 +14,7 @@ alias: ['databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-an
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
-external_resources: 
+external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 ---
@@ -161,7 +161,7 @@ Setting up encryption between nodes offers additional security and protects the 
 
 4. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"	
+		keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"
 	    keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node2, OU=[cluster_name]"
 
 5. Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
@@ -175,7 +175,7 @@ Setting up encryption between nodes offers additional security and protects the 
 
 7. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra	
+		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
 		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
 
 8. Verify the certificates generated for each node.
@@ -184,13 +184,13 @@ Setting up encryption between nodes offers additional security and protects the 
 
 9. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra	
+		keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 		keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 
 10. Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra	
-		keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra 
+		keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
+		keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra
 
 11. Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
 
@@ -266,7 +266,7 @@ If successful, your console output should read similar to the following:
 
 If you have many Cassandra nodes for which to create and distribute certificates, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can [automate the process with a script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
 
-1. Navigate to any folder and pull the script from Github: 
+1. Navigate to any folder and pull the script from Github:
 
         git pull https://github.com/Darkstar90/cassandra-keygen.git
 

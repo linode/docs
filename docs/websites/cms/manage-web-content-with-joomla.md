@@ -64,7 +64,7 @@ We encourage you to monitor the [Joomla download page](http://www.joomla.org/dow
 Before we proceed with the installation of Joomla, we must create a configuration file that Joomla can write to. Issue the following sequence of commands:
 
     touch /srv/www/example.com/public_html/configuration.php
-    chmod 777 /srv/www/example.com/public_html/configuration.php       
+    chmod 777 /srv/www/example.com/public_html/configuration.php
 
 Now, visit your site in your web browser. In the case of our example, this would correspond to the URL of `http://example.com/`. Follow the steps laid out in the Joomla installer presented on your screen. We do not recommend that you install or enable an FTP server. When the installation is complete, issue the following commands to remove the installation files and secure the `configuration.php` file:
 

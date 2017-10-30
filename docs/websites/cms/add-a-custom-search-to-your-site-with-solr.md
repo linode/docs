@@ -42,13 +42,13 @@ Apache Solr is an open source search platform that provides administrators with 
 
     **Debian & Ubuntu**
 
-    1. Add the Java 8 repository, download the GPG key, and install Java 8. 
+    1. Add the Java 8 repository, download the GPG key, and install Java 8.
 
             echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee /etc/apt/sources.list.d/webupd8team-java.list
             echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu xenial main" | tee -a /etc/apt/sources.list.d/webupd8team-java.list
             apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
             apt update
-            apt install oracle-java8-installer 
+            apt install oracle-java8-installer
 
     2. On most systems, the `oracle-java8-set-default` package will also be downloaded and installed. To verify, run the following command and check for matching output. If your output does not match, continue to Step 3. Otherwise, Java 8 installation is complete:
 
@@ -153,7 +153,7 @@ Set up a password protected login page for the Solr admin page:
              <auth-method>BASIC</auth-method>
              <realm-name>Solr Admin Auth</realm-name>
        </login-config>
-      
+
        <security-constraint>
              <web-resource-collection>
                    <web-resource-name>Solr Admin Auth</web-resource-name>
@@ -196,10 +196,10 @@ Set up a password protected login page for the Solr admin page:
         systemctl restart solr
 
 5. You can also use this process to secure other web pages within Solr. For example, if you have two Solr search cores created, `core1` and `core2`, you can limit access to both by adding additional `<url-pattern>` lines to `webdefault.xml`:
-    
-        <url-pattern>/core1/*</url-pattern> 
-        <url-pattern>/core2/*</url-pattern> 
+
+        <url-pattern>/core1/*</url-pattern>
+        <url-pattern>/core2/*</url-pattern>
 
 ## Where to Go From Here
 
-With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application or website. If you need help with this, the [Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/) page on the Apache Solr website is a great place to start. 
+With Solr installed on your Linode, you are now ready to create search indexes and add data, or integrate it with your web application or website. If you need help with this, the [Apache Solr Reference Guide](https://lucene.apache.org/solr/guide/6_6/) page on the Apache Solr website is a great place to start.

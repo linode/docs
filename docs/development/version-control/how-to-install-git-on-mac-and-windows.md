@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Installing git on GNU/Linux, MacOSX, and Windows' 
+description: 'Installing git on GNU/Linux, MacOSX, and Windows'
 keywords: 'git,dvcs,vcs,scm,gitweb'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
@@ -27,7 +27,7 @@ This guide explains how to install the latest, stable, prepackaged version `git`
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
  {: .note }
-> 
+>
 > This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
 
 ## Install Git on Linux
@@ -46,7 +46,7 @@ For more information about using and configuring Git, see our [Getting Started w
 
 - Arch Linux:
 
-        sudo pacman -Sy git 
+        sudo pacman -Sy git
 
 - Gentoo:
 
@@ -186,7 +186,7 @@ To install Git on Windows you will need to download the installer from the [Git]
      {: .note }
     >
     > It is strongly recommended that you keep the default settings for line ending conversions. Changing from the default may result in formatting problems when viewed on your Linode.
-    
+
 10. The program will now begin installing:
 
     ![Git is installing.](/docs/assets/1604-Git-Win-10.png)

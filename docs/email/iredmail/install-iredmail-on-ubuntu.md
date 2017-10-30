@@ -2,23 +2,25 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Installing iRedMail on your Linode.'
+description: 'This guide shows how to install your own iRedMail mail server on Linode with Ubuntu.'
 keywords: 'email,mail,iredmail'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['installing-iredmail/']
+alias: ['installing-iredmail/','email/iredmail/installing-iredmail/']
 contributor:
     name: Nick Reichley
     link: https://github.com/reichley
-modified: Monday, October 6, 2014
+modified: Friday, October 27, 2017
 modified_by:
   name: James Stewart
 published: 'Monday, October 6, 2014'
-title: 'Installing iRedMail on your Linode'
+title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-<hr>
+----
+
+## Why Run a Mail Server?
 
 Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.
 
@@ -34,13 +36,13 @@ Before beginning this guide you should have:
 
 This guide assumes you've followed the Linode [Getting Started](/docs/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### MX Record
 
 A DNS MX record tells the internet where to send email directed at you domain. Before your Linode can receive email for addresses at a domain, an MX record must be created for that domain, pointing to your Linode's IP address. An example MX record can be found on the Linode [Introduction to DNS records] [a] page.
 
-## Installing iRedMail
+## Install iRedMail
 
 1. Start by making sure your Linode is up-to-date by running the following commands:
 
@@ -129,7 +131,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
 
         rm /root/iRedMail-0.8.7/config
 
-## Adding Users
+## Add Users
 
 iRedMail is packaged with a mail server account configuration called iRedAdmin. Below are the steps required to add a user/mailbox to your mail server.
 
@@ -365,9 +367,9 @@ AWStats quickly analyzes and displays log files/server activity via a few web-ba
 	    service apache2 restart
 
 
-### Greylisting Recommendation
+### Greylist a Recommendation
 
-By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails. 
+By default, Cluebringer starts with the greylisting feature enabled. While the implementation of greylisting does protect a mail server from receiving spam, there are unintended consequences to its operation. This was tested by sending a few emails from a well-known "free" email account to my new mail server. Most of the "free" email SMTP services are provided by SEVERAL SMTP servers that upon receiving the 4XX reply code from your server, since the hostname and IP of the SMTP server isn't "known", does retransmit the email. However, usually, the retransmitted email is from either another host or from the same host but from another IP address. The greylisting feature of Cluebringer either severely delayed, or completely denied, a few of the test emails.
 
 For this reason, the author recommends turning this module off. Note, since being disabled, neither *delays* nor *denials* of email have been observed on the author's mail server. Additionally, the mail server has yet to receive any spam.
 
@@ -381,7 +383,7 @@ For this reason, the author recommends turning this module off. Note, since bein
 
 	    service postfix-cluebringer restart
 
-## Final Testing and Conclusion
+## Final Test and Conclusion
 
 As a final test, you can utilize a service such as [Mail Tester][m] to ensure that your records have been configured correctly. If you have followed this guide precisely, you should receive a score of 10/10 on Mail Tester's site. If not, Mail Tester will provide you with a report indicating what portion of your configuration needs improvement.
 
@@ -398,7 +400,7 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com
-[r]:/docs/networking/dns/dns-manager/#setting-reverse-dns
+[r]:/docs/networking/dns/configure-your-linode-for-reverse-dns/
 [c]:https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate
 [a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
 [f]:http://www.iredmail.org/forum/post30654.html#p30654

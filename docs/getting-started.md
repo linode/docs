@@ -107,7 +107,7 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
 ### Find the IP Address of Your Linode
 
-Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#sph_adding-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
+Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
 Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
@@ -194,7 +194,7 @@ Installing software updates should be performed *regularly*. If you need help re
     emaint sync -a
 
 After running a sync, it may end with a message that you should upgrade Portage using a `--oneshot` emerge comand. If so, run the Portage update. Then update the rest of the system:
-    
+
     emerge --uDN @world
 
 ### Slackware

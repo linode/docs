@@ -304,7 +304,7 @@ After the initial installation Apache needs to be configured, starting with its 
             )
             notifies :restart, "service[apache2]"
           end
-        ~~~  
+        ~~~
 
     The `notifies` command names the `:action` to be committed, then the resource, and resource name in square brackets.
 

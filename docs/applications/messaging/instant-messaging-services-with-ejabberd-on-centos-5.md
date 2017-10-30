@@ -67,7 +67,7 @@ The packages required to install ejabberd and it's dependencies are not availabl
 Issue the following command to install ejabberd:
 
     yum update
-    yum install ejabberd 
+    yum install ejabberd
 
 ## Configure ejabberd
 

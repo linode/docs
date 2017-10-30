@@ -107,6 +107,6 @@ This completes the initial installation steps for Openfire. Next, we'll continue
         service openfire stop
         service openfire start
 
-If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. 
+If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes.
 
 Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04 LTS.

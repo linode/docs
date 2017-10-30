@@ -2,22 +2,27 @@
 author:
   name: Alex Fornuto
   email: afornuto@linode.com
-description: Subsonic
+description: 'This guide shows how to install Subsonic media server on a Linode and then configure and run it on Ubuntu or Debian to stream music.'
+og_description: 'Subsonic is a media streaming service that makes it easy to share music and video files with multiple users. Learn how to install it on Ubuntu and Debian.'
 keywords: 'subsonic, music, audio'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, June 21st, 2017
+modified: Friday, October 27th, 2017
 modified_by:
   name: Alex Fornuto
 published: 'Monday, February 2, 2015'
-title: Using Subsonic to Stream Media From Your Linode
+title: Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through Your Linode
 ---
 
-This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu. Subsonic is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+## What is Subsonic?
+
+[Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+
+This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu.
 
 {: .note }
 >The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-##Preparing Your System
+##Prepare Your System
 
 1.  Update your system:
 
@@ -32,12 +37,12 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         java -version
 
 
-##Installing Subsonic
+##Install Subsonic
 
-1.  The latest version of Subsonic (as of publication) is 5.1, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
+1.  The latest version of Subsonic (as of publication) is 6.1.2, and the most recent release can always be found on their [download](http://www.subsonic.org/pages/download.jsp) page. Download and install Subsonic onto your Linode:
 
-        wget http://downloads.sourceforge.net/project/subsonic/subsonic/5.1/subsonic-5.1.deb
-        dpkg -i subsonic-5.1.deb
+        wget https://s3-eu-west-1.amazonaws.com/subsonic-public/download/subsonic-6.1.2.deb
+        dpkg -i subsonic-6.1.2.deb
 
 2.  Subsonic runs as the root user by default, which is insecure. Create a new system user for subsonic to run as:
 
@@ -50,7 +55,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
     {: .file}
     /etc/default/subsonic
     :   ~~~
-        # 
+        #
         # This is the configuration file for the Subsonic service
         # (/etc/init.d/subsonic)
         #
@@ -65,7 +70,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         # the following:
         #
         # SUBSONIC_ARGS="--port=80 --https-port=443 --max-memory=200"
-        
+
         SUBSONIC_ARGS="--max-memory=150"
 
         # The user which should run the Subsonic process. Default "root".
@@ -89,9 +94,9 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
         # the following:
         #
         # SUBSONIC_ARGS="--port=80 --https-port=443 --max-memory=200"
-        
+
         SUBSONIC_ARGS="--https-port=8443 --max-memory=150"
-        
+
         SUBSONIC_USER=subsonic
         ~~~
 
@@ -116,7 +121,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
     ![Subsonic untrusted website](/docs/assets/untrusted-connection.png)
 
-3.  The first time you access your Subsonic server in your browser, you will see the following: 
+3.  The first time you access your Subsonic server in your browser, you will see the following:
 
     ![First time Subsonic access](/docs/assets/subsonic-firstlogin.png)
 
@@ -124,7 +129,7 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
     ![First time Subsonic access](/docs/assets/subsonic-gettingstarted.png)
 
-5. Create a password for your admin account. You can also set up any other accounts at this time. 
+5. Create a password for your admin account. You can also set up any other accounts at this time.
 
     {: .note}
     >

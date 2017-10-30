@@ -44,15 +44,15 @@ This guide covers the steps necessary to provision a new CentOS 7 Linode as a de
     :   ~~~ config
         SELINUX=disabled
         ~~~
-        
+
 4.  Update your packages:
 
         sudo yum update
-        
+
 5.  Reboot your Linode:
 
         reboot
-        
+
 ### Configuring iptables
 
 iptables will be used to secure the Linode against unwanted traffic. The Linode should not have any firewall rules configured.

@@ -24,7 +24,7 @@ Network Helper automatically deposits a static networking configuration in to yo
 
 
 {: .note }
-> If you intend to manually configure IPv6 addresses from a supplied pool, you should [disable](/docs/networking/linux-static-ip-configuration#disable-network-helper) Network Helper so that it doesn't overwrite your configuration file on reboot. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) guide for more information on IPv6. 
+> If you intend to manually configure IPv6 addresses from a supplied pool, you should [disable](/docs/networking/linux-static-ip-configuration#disable-network-helper) Network Helper so that it doesn't overwrite your configuration file on reboot. Please see our [Native IPv6 Networking](/docs/networking/native-ipv6-networking) guide for more information on IPv6.
 
 ## What Does It Do?
 

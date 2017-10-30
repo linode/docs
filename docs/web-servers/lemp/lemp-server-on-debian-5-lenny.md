@@ -23,7 +23,7 @@ Prior to beginning this guide, please complete the [getting started guide](/docs
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -62,7 +62,7 @@ Apart from the difference in the following procedure, installing from stable and
 {: .file-excerpt }
 /etc/apt/sources.list
 
-> deb <http://backports.debian.org/debian-backports> lenny-backports main
+> deb <http://ftp.debian.org/debian> lenny-backports main
 
 Pin the `nginx` package to the `lenny-backports` repository by inserting the following lines in the `/etc/apt/preferences` file (note: you will need to create this file if it doesn't already exist.)
 
@@ -178,7 +178,7 @@ If you installed the web server after compiling it from source you have a number
 
     include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
+    # [...]
     }
     ~~~
 
@@ -192,7 +192,7 @@ Modify the include statement to point to the path of your `sites-enabled` direct
 
     include /opt/nginx-sites.conf;
 
-    # [...]       
+    # [...]
     }
     ~~~
 

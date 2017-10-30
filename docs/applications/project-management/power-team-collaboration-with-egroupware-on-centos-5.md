@@ -53,9 +53,9 @@ When inserted into the virtual hosting configuration for `example.com`, accessin
 Before continuing with the installation of eGroupware, issue the following commands to start the webserver and database server for the first time. Furthermore the `chkconfig` commands will ensure that these services are initiated following reboots:
 
     /etc/init.d/httpd start
-    /etc/init.d/mysqld start 
-    chkconfig mysqld on 
-    chkconfig httpd on  
+    /etc/init.d/mysqld start
+    chkconfig mysqld on
+    chkconfig httpd on
 
 ## Configure eGroupware
 

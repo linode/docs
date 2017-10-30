@@ -10,7 +10,7 @@ modified: Monday, August 21st, 2017
 modified_by:
   name: Linode
 published: 'Friday, February 7th, 2014'
-title: Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8 
+title: Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8
 external_resources:
     - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
     - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'

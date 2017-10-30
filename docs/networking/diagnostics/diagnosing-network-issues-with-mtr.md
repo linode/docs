@@ -22,7 +22,7 @@ MTR is a powerful network diagnostic tool that enables administrators to diagnos
 
 ![Diagnosing Network Issues with MTR](/docs/assets/diagnosing-network-issues-with-mtr.png)
 
-For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network_diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system_diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
+For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
 
 ## Network Diagnostics Background
 

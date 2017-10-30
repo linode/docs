@@ -28,7 +28,7 @@ Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP
 ## Before You Begin
 
 -   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#sph_set-the-hostname) for your server.
+-   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#setting-the-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:
 
