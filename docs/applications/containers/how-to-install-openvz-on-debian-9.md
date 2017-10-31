@@ -4,7 +4,7 @@ author:
   email: docs@Linode.com
 description: 'This guide will show you how to install OpenVZ on your Linode and deploy a virtual environment.'
 og_description: 'OpenVZ, a software-based OS virtualization tool that enables deployment, management, and modification of isolated, virtual Linux environments from within a host Linux distribution, can be installed and run on a Linode, using this guide.'
-alias: ['applications/containers/install-openvz-on-debian-9']
+alias: ['applications/containers/install-openvz-on-debian-9/']
 keywords: 'openvz, virtualization, docker'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, September 22nd, 2017'
