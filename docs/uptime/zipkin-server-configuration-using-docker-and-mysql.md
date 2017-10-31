@@ -3,14 +3,14 @@ author:
   name: Luis Cortés
   email: docs@linode.com
 description: 'This guide shows you how to use Zipkin in a Docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems on your websites.'
-og_description: 'Zipkin is a distributed tracing system. This guide shows you how to use Docker to deploy Zipkin to diagnose latency problems on your website'
+og_description: 'Zipkin is a distributed tracing system. This guide shows you how to use Docker to deploy Zipkin on Linode, to diagnose latency problems on your website'
 keywords: 'zipkin, Docker, tracking'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, October 27, 2017
 modified_by:
   name: Luis Cortés
 published: 'Wednesday, October 4, 2017'
-title: 'Zipkin Server Configuration Using Docker and Mysql'
+title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
@@ -19,8 +19,6 @@ external_resources:
 
 ---
 
-
-## What is Zipkin?
 
 [Zipkin](http://zipkin.io/) is a used for capturing timing data, it also has a centralized repository, and a microweb server that allows you to display, and search through spans and traces of your distributed programs or websites.
 
@@ -40,7 +38,7 @@ While Zipkin can be installed on a variety of distributions, this guide uses Fed
 
 ## The Target Scenario
 
-Our main task is setting up a Zipkin server with mysql, so that the spans/traces persist on the host file. 
+Our main task is setting up a Zipkin server with MySQL, so that the spans/traces persist on the host file. 
 
 ## Zipkin Server Configuration
 
@@ -85,7 +83,7 @@ Our main task is setting up a Zipkin server with mysql, so that the spans/traces
 
         sudo dnf install git
 
-7. Use git to retrieve the Zipkin Docker-compose yaml files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of Docker, these files hold all of the system level configurations we need, to run several different Zipkin configurations. Like, Zipkin with mysql, Zipkin with elasticsearch, and Zipkin with Kakfa.
+7. Use git to retrieve the Zipkin Docker-compose yaml files at [openzipkin/docker-zipkin](https://github.com/openzipkin/docker-zipkin). This is one of the powerful features of Docker, these files hold all of the system level configurations we need, to run several different Zipkin configurations. Like, Zipkin with MySQL, Zipkin with elasticsearch, and Zipkin with Kakfa.
 
         cd ~
         git clone https://github.com/openzipkin/docker-zipkin.git
@@ -94,13 +92,13 @@ Our main task is setting up a Zipkin server with mysql, so that the spans/traces
 
         sudo dnf install mysql
 
-### Docker
+### Configure Docker
 
 The Docker service will manage your containers, the container's host, Zipkin services, and your MYSQL server.
 
 ![host layout](/docs/assets/zipkin/zipkin_docker_host_layout.png)
 
-Docker is in charge of starting and stopping these services automatically when the host system is rebooted. it'll help us to map the ports from the container to the host's ports and it'll manage exporting the mysql database files onto the host system. Docker can check to see if the container has failed, and restart it for us too. The host is in charge of running the actual Docker service and setting the firewall correctly.
+Docker is in charge of starting and stopping these services automatically when the host system is rebooted. it'll help us to map the ports from the container to the host's ports and it'll manage exporting the MySQL database files onto the host system. Docker can check to see if the container has failed, and restart it for us too. The host is in charge of running the actual Docker service and setting the firewall correctly.
 
 Notice that the Zipkin container will expose port 9411 for its service, and the MySQL container will expose port 3306. We'll use the Docker-compose yaml files to forward port 9411 to the host's port 9411, so that the container will be accesible on the internet.
 
@@ -116,7 +114,7 @@ Our goal is to set up the Zipkin Server for:
 * Web service: showing searches of time data
 * lock down access to only our web and analyst machines.
 
-#### Firewall Steps for Zipkin Server
+### Zipkin Server Firewall
 
 1. Create a new zone in our firewall called **zipkin**
 
@@ -150,7 +148,7 @@ Our goal is to set up the Zipkin Server for:
 
 The **docker-compose yml** files will control which system configuration we can use. We're going to select a MySQL configuration for storage.
 
-1. Copy the mysql docker-compose yaml file to your home directory and rename it docker-init.yml as we're going to need to make a few changes:
+1. Copy the MySQL docker-compose yaml file to your home directory and rename it docker-init.yml as we're going to need to make a few changes:
 
         cd ~
         cp docker-zipkin/docker-compose.yml docker-init.yml
@@ -214,7 +212,7 @@ The **docker-compose yml** files will control which system configuration we can 
         dbfiles:
       ~~~
 
-      - In the mysql container section in the docker-init.yml, export the mysql data directory, forward the mysql port to the host, and add the restart command so that this service is automatically restarted if it goes down.
+      - In the MySQL container section in the docker-init.yml, export the MySQL data directory, forward the MySQL port to the host, and add the restart command so that this service is automatically restarted if it goes down.
 
       - In the Zipkin container section in the docker-init.yml, make sure the port 9411 is forwarded to the host machine and add the restart command so that this service is automatically restarted if it goes down.
 
@@ -235,9 +233,9 @@ Notice the **-d** flag at the end of the command, this **detaches** the containe
 
 ### Backup Span/Trace Data
 
-There are 2 different backup methods: using Mysql , and using sysadmin.
+There are 2 different backup methods: using MySQL , and using sysadmin.
 
-#### Mysql Backup
+#### MySQL Backup
 
 1. Ensure that the MySQL service is running on a container. You can check this with a `docker ps` command. The `docker ps` command displays the active containers:
 
@@ -249,11 +247,11 @@ There are 2 different backup methods: using Mysql , and using sysadmin.
         43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
         ~~~
 
-2. If it'sn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the mysqldump with the following parameters from your Zipkin host machine.
+2. If it'sn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
 
         mysqldump --protocol=tcp -A -pzipkin -uzipkin > ~/database.bak
 
-    This command will dump the entire mysql database from your MySQL container into the file called database.bak in your home directory. Alternatively, you can just dump your Zipkin span/trace data with:
+    This command will dump the entire MySQL database from your MySQL container into the file called database.bak in your home directory. Alternatively, you can just dump your Zipkin span/trace data with:
 
         mysqldump --protocol=tcp -pzipkin -uzipkin zipkin > ~/db_zipkin.bak
 
