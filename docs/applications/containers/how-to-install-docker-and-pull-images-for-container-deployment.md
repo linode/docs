@@ -67,7 +67,7 @@ In this guide, you'll install Docker and pull down images that can be deployed a
 
         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-6.  Update your package indesx and install Docker CE:
+6.  Update your package index and install Docker CE:
 
         apt update
         apt install docker-ce
