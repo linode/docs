@@ -5,6 +5,7 @@ author:
 contributor:
   name: Alexandru Andrei
 description: 'How to store data redundantly and be safe against silent errors'
+og_desription: 'Protect against silent data corruption using a ZFS filesystem while improving redundancy, read/write speeds, and compression.'
 keywords: 'zfs, file system, volume manager, redundant, silent corruption, mirror, raid, pool'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, October 30th, 2017
