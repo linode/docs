@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This tutorial shows how to set up an NFS (Network File System) server and client for remote file access on Debian Distributions.'
-og_description: ' With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes: an NFS server and an NFS client through which files can be shared.'
+og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes: an NFS server and an NFS client through which files can be shared.'
 keywords: 'NFS,Debian,network,file,system,Jessie'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/']
@@ -13,6 +13,8 @@ modified_by:
   name: Linode
 published: 'Thursday, February 27th, 2014'
 title: How to Mount NFS Shares on Debian 9
+external_links:
+  - '[NFS man page](https://linux.die.net/man/5/nfs)'
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
@@ -21,15 +23,14 @@ title: How to Mount NFS Shares on Debian 9
 
 ## What is NFS?
 
-Network File System (**NFS**) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across several Linodes, or other computers on the internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
+Network File System (**NFS**) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can access files in local storage. This is useful for sharing files across multiple Linodes, or other computers on the internet. For example, you might want to share the home directories for your users, or system configuration files, over NFS.
 
-One of the limitations of NFS (versions 3 and older) is security. In that case, NFS servers and clients must be restricted to a local or trusted private network since data travels unencrypted from one machine to the other. This drawback was addressed with version 4, which relies on Kerberos for authentication and encryption. Unfortunately, setting up Kerberos for use with NFS is rather complicated and requires a **Key Distribution Center (KDC)** in place, which is out of the scope of this tutorial.
+One of the limitations of NFS (version 3 and older) is security. In that case, NFS servers and clients must be restricted to a local or trusted private network since data travels unencrypted from one machine to the other. This drawback was addressed with version 4, which relies on Kerberos for authentication and encryption. Unfortunately, setting up Kerberos for use with NFS is rather complicated and requires a **Key Distribution Center (KDC)** in place, which is out of the scope of this tutorial.
 
 This guide walks you through the setup of two Linodes: one acts as the NFS server, and the other acts as the NFS client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network.
 
 {:.caution}
 >Other NFS setups can potentially send traffic over the public internet.
-
 
 
 ## Before You Begin
@@ -147,7 +148,7 @@ These options can be specified using the `mount` command (along with the `-o` sw
 -   **hard**: Applications using files stored on an NFS will always wait if the server goes down. User cannot terminate the process unless the option `intr` is set.
 -   **soft**: Applications using files stored on an NFS will wait a specified time (using the `timeo` option) if the server goes down, and after that, will throw an error.
 -   **intr**: Allows user interruption of processes waiting on a NFS request.
--   **timeo=\<num\>**: For use with the **soft** option. Specify the timeout for an NFS request.
+-   **timeo=\<num\>**: Specifies the timeout for an NFS request (in tenths of seconds).
 -   **nolock**: Disable file locks. Useful with older NFS servers.
 -   **noexec**: Disable execution of binaries or scripts on an NFS share.
 -   **nosuid**: Prevents users from gaining ownership of files on the NFS share.
@@ -156,7 +157,7 @@ These options can be specified using the `mount` command (along with the `-o` sw
 
 ### Server Options
 
-These options can be specified in the `/etc/exports` entry:
+These options can be specified in the `/etc/exports` file:
 
 -   **rw**: Read/write filesystem.
 -   **ro**: Force clients to connect in the read-only filesystem mode only.
@@ -174,7 +175,7 @@ These options can be specified in the `/etc/exports` entry:
 
         echo "Hello World" > /mnt/remotenfs/testfile.txt
 
-3.  If everything went as expected, `/mnt/remotenfs/testfile.txt` is owned by `nobody:nogroup`. You can check with
+3.  If everything went as expected, `/mnt/remotenfs/testfile.txt` is owned by `nobody:nogroup`. You can check with:
 
         ls -l /mnt/remotenfs/testfile.txt
 
