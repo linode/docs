@@ -2,7 +2,8 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. This guide will walk you through setting up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
+description: 'This guide will walk you through setting up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
+og_description: 'PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. This guide shows you how to set up the ngx_pagespeed module for nginx on Ubuntu 14.04.'
 keywords: 'nginx,PageSpeed,ngx_pagespeed,pagespeed,ubuntu,Ubuntu 14.04,'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/']
@@ -10,7 +11,7 @@ published: 'Tuesday, November 3rd, 2015'
 modified: Tuesday, November 3rd, 2015
 modified_by:
     name: Linode
-title: 'nginx with PageSpeed on Ubuntu 14.04'
+title: 'Set Up Nginx with PageSpeed on Ubuntu 14.04'
 contributor:
     name: Vaibhav Rajput
     link: https://twitter.com/rootaux
@@ -21,18 +22,22 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
+## What is PageSpeed?
+
+PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source.
+
 This document describes how you can install nginx (pronounced engine-x) with the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module. PageSpeed helps you minify CSS, JavaScript and images, remove whitespaces from HTML, and perform many other tasks.
 
 Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started#debian-7--slackware--ubuntu-1404) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
-##Set the hostname
+## Set the Hostname
 
 1.  Before you install any package, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify that hostname:
 
         hostname
         hostname -f
 
-##System Setup
+## System Setup
 
 2.  Make sure your system is up to date using apt:
 
@@ -40,13 +45,13 @@ Before starting this guide, make sure that  you have read through and completed 
 
 This ensures that all software is up to date and running the latest version.
 
-##Installing required packages
+## Install required packages
 
 Pagespeed requires some extra packages, which you should install for proper operation. Do so by issuing the following command in the terminal:
 
     sudo apt-get install build-essential zlib1g-dev libpcre3 libpcre3-dev unzip
 
-##Download ngx_pagespeed module
+## Download ngx_pagespeed module
 
 After installing necessary packages, you must download the module. In this guide, you will be installing the latest  ngx_pagespeed, version 1.9.32.6, at the time of writing.
 
@@ -78,7 +83,7 @@ After installing necessary packages, you must download the module. In this guide
 
         tar -xzvf ${NPS_VERSION}.tar.gz
 
-##Download and build Nginx
+## Download and build Nginx
 
 Now that we have downloaded ngx_pagespeed, we need to compile Nginx with the ngx_pagespeed module. Issue the following commands in the terminal.
 
@@ -114,7 +119,7 @@ Now that we have downloaded ngx_pagespeed, we need to compile Nginx with the ngx
 
         sudo make install
 
-##Configuring Nginx with ngx_pagespeed
+## Configure Nginx with ngx_pagespeed
 
 1.  Pagespeed requires a new directory where it can store the cache of minified CSS and javascript:
 
@@ -144,7 +149,7 @@ Now that we have downloaded ngx_pagespeed, we need to compile Nginx with the ngx
 
 Also make sure that Nginx is running as `www-data`. In the top of the `conf` file, uncomment `user` and replace `nobody` with `www-data`.
 
-##Starting Nginx
+## Start Nginx
 Now that you have everything configured correctly, start your web server.
 
 1.  To start the web server:
@@ -155,7 +160,7 @@ Now that you have everything configured correctly, start your web server.
 
         sudo /usr/local/nginx/sbin/nginx -s stop
 
-##Check if module works or not
+## Check if module works or not
 
 You have compiled and configured the module. You may want to check if the module is working (or not) before deploying the application. Issue the following command at the terminal of your local machine (i.e., your computer):
 

@@ -5,7 +5,7 @@ author:
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
 keywords: 'content management,web-server automation,laravel,php,wordpress,drupal,cms,joomla,Laravel Forge'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, September 20th, 2017 
+modified: Wednesday, September 20th, 2017
 modified_by:
     name: Onwuka Gideon
 published: 'Monday, September 18, 2017'
@@ -18,9 +18,9 @@ external_resources:
 
 ## What is Laravel Forge
 
-[Laravel Forge](https://forge.laravel.com) is a tool for deploying and configuring web applications. It was developed by the makers of the [Laravel framework](https://laravel.com), but can be used to automate the deployment of any web application that uses a PHP server. 
+[Laravel Forge](https://forge.laravel.com) is a tool for deploying and configuring web applications. It was developed by the makers of the [Laravel framework](https://laravel.com), but can be used to automate the deployment of any web application that uses a PHP server.
 
-Creating a fully-functioning web server is normally a complicated and time-consuming process, involving the installation of multiple components such as Nginx, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration, allowing you to get your website up and running quickly. 
+Creating a fully-functioning web server is normally a complicated and time-consuming process, involving the installation of multiple components such as Nginx, MySQL, and PHP. Laravel Forge automates all of the necessary installation and configuration, allowing you to get your website up and running quickly.
 
 Once your server has been created, deploying updates becomes as simple and painless as pushing to your repository on Github. Also, you can easily manage the configuration of your website though a web interface. Finally, Forge automatically provides advanced security features, such as free SSL certificates (through [Let's Encrypt](https://letsencrypt.org/)) and automatic firewall configuration.
 
@@ -67,7 +67,7 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
     **Name:** A name for your server. You can choose any name you like.
 
-    **Server Size:** The size of the server. 
+    **Server Size:** The size of the server.
 
     **Region:** The datacenter where you want your server hosted. Choose a location close to where you expect the majority of users to be.
 
@@ -97,9 +97,9 @@ If you want to be able to quickly deploy from Github, Gitlab or Bitbucket, you w
 
 If you want to use Let's Encrypt to obtain a free SSL certificate for your website, you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your new server.
 
-1. Head back to Laravel Forge account then click on the active server. 
+1. Head back to Laravel Forge account then click on the active server.
 
-2. Go to your domain name provider, add an ANAME record for the domain or subdomain, and point it to the public IP address of your server. 
+2. Go to your domain name provider, add an ANAME record for the domain or subdomain, and point it to the public IP address of your server.
 
 
     ![Linode API](/docs/assets/configuration-management/adding_new_domain.png)
@@ -149,7 +149,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
 1. Choose your server on Forge.
 
-2. Select the domain name of your server. 
+2. Select the domain name of your server.
 
 3. Click on **SSL** from the menu on the left.
 
@@ -159,7 +159,7 @@ SSL (Secure Sockets Layer) is the standard security technology for establishing 
 
 4. If you already have an SSL certificate, click on the Install Existing Certificate. Otherwise, select **LetsEncrypt (Beta)**.
 
-5. If you chose to use LetsEncrypt, you will be presented with a button to obtain a certificate. Click on it and allow it to install. 
+5. If you chose to use LetsEncrypt, you will be presented with a button to obtain a certificate. Click on it and allow it to install.
 
 6. Activate your new certificate by clicking on the **activate** icon.
 

@@ -93,7 +93,7 @@ Use the following commands to install MySQL on each of the Linodes:
 3.  Run the following command to test the configuration. Use the private IP address of the opposing Linode:
 
         mysql -u replication -p -h x.x.x.x -P 3306
-        
+
     This command should connect you to the remote server's MySQL instance.
 
 ##Configure Database Replication
@@ -115,9 +115,9 @@ Use the following commands to install MySQL on each of the Linodes:
 
 2.  On Server 2 at the MySQL prompt, set up the slave functionality for that database.  Replace`x.x.x.x` with the private IP from the first server. Also replace the value for `master_log_file` with the file value from the previous step, and the value for `master_log_pos` with the position value.
 
-        SLAVE STOP;
+        STOP SLAVE;
         CHANGE MASTER TO master_host='x.x.x.x', master_port=3306, master_user='replication', master_password='password', master_log_file='mysql-bin.000001', master_log_pos=106;
-        SLAVE START;
+        START SLAVE;
 
 3.  On Server 2, query the master status. Again note the file and position values.
 
