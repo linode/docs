@@ -25,6 +25,8 @@ external_resources:
 
 ----
 
+![Hadoop_YARN](/docs/assets/spark_hadoop_yarn.jpg)
+
 ## What is Hadoop?
 
 Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
