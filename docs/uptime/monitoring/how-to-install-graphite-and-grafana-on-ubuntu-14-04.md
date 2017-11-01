@@ -24,6 +24,8 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
+![Graphite with Grafana](/docs/assets/how-to-install-graphite-and-grafana-on-ubuntu-14-04/Deploy_Graphite_smg.jpg)
+
 # Set Up Graphite Monitoring Software with Grafana on Ubuntu
 
 [Graphite](http://graphite.readthedocs.org/en/latest/index.html) is an enterprise-level monitoring tool renowned for performing well on systems with limited resources. It stores numeric time-series data and renders graphs of this data on demand. This guide provides an introduction to the installation and basic setup of Graphite together with [Grafana](http://grafana.org/), a popular open source application for visualizing large-scale measurement data, on Ubuntu 14.04.
