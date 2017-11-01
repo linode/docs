@@ -318,7 +318,7 @@ This example cloud map will define two instances: linode_web and linode_db. Both
 
 2.  To create instances from cloud map file, execute salt-cloud with `-m` option and point to cloud map file.
 
-        salt-cloud -m /etc/salt/cloud.maps.d/linode.map
+        salt-cloud -m /etc/salt/cloud.conf.d/linode.map
 
 3.  Salt cloud will ask you to confirm the target configuration:
 
@@ -343,11 +343,11 @@ If an existing instance is removed from the cloud map file, it will remain runni
 
 * Delete a single or multiple instances, by specifying their names:
 
-    salt-cloud -d linode_web linode_db
+      salt-cloud -d linode_web linode_db
 
 * Delete all instances, described in map file:
 
-    salt-cloud -d -m /etc/salt/cloud.conf.d/linode.map
+      salt-cloud -d -m /etc/salt/cloud.conf.d/linode.map
 
 * Allow Salt Cloud to destroy every instance, not described in map file. SaltStack considers that deleting such instances is very dangerous. Due to that such behaviour is disabled by default and you have to enable it. In order to do this:
 
@@ -361,6 +361,6 @@ If an existing instance is removed from the cloud map file, it will remain runni
 
   2. Execute salt-cloud, passing `--hard` as an option:
 
-        salt-cloud -d -m /etc/salt/cloud.maps.d/linode.map
+          salt-cloud -d -m /etc/salt/cloud.maps.d/linode.map
 
   3. Confirm the deletion when prompted.
