@@ -5,6 +5,7 @@ author:
 description: 'This guide shows how to install Subsonic media server on a Linode and then configure and run it on Ubuntu or Debian to stream music.'
 og_description: 'Subsonic is a media streaming service that makes it easy to share music and video files with multiple users. Learn how to install it on Ubuntu and Debian.'
 keywords: 'subsonic, music, audio'
+alias: ['applications/media-servers/subsonic/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, October 27th, 2017
 modified_by:
