@@ -42,7 +42,7 @@ Restart Apache:
 
 Verify the version of ModSecurity is 2.8.0 or higher:
 
-    apt-cache-show libapache2-modsecurity
+    apt-cache show libapache2-modsecurity
 
 {:.note}
 >
@@ -66,7 +66,7 @@ The following steps are for Debian based distributions. File paths and commands 
 
 1.  Move and change the name of the default ModSecurity file.
 
-        mv modsecurity.conf-recommended  modsecurity.conf
+        mv /etc/modsecurity/modsecurity.conf-recommended  modsecurity.conf
 
 2.  Install git if needed:
 
@@ -128,7 +128,7 @@ OWASP CRS builds on top of ModSecurity so that existing rules can be extended.
 
         curl localhost/index.html?testparam=test
 
-    The response code should be 403. Looking at the logs, there should be a message that shows the defined ModSecurity rule worked.
+    The response code should be 403. Looking at the logs, there should be a message that shows the defined ModSecurity rule worked. You can check using: `sudo tail -f /var/log/apache2/error.log`
 
     {:.output}
     ~~~
