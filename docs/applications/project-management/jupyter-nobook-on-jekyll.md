@@ -9,14 +9,16 @@ modified: Tuesday, October 17th, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, October 10th, 2017'
-title: Display Jupyter Notebooks on Jekyll
+title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
  - '[MathJax](https://www.mathjax.org/)'
  - '[Jupyter Notebook](https://jupyter.org/)'
 ---
 
-Jekyll is a static site generator written in Ruby with support for blogging and integration with Github Pages. This setup makes sharing data analysis and visualizations simple because Github takes care of hosting. Jekyll comes with a variety of themes and plugins so the user does not have to worry about web development.
+![Jupyter and Jekyll](/docs/assets/jupyter_jekyll.jpg)
+
+Jekyll is a static site generator written in Ruby with support for blogging and integration with Github pages. This setup makes sharing data analysis and visualizations simple because Github takes care of hosting. Jekyll comes with a variety of themes and plugins so the user does not have to worry about web development.
 
 This guide will take you through the process of installing Jekyll and configuring it to display several types of output from a Jupyter notebook.
 
