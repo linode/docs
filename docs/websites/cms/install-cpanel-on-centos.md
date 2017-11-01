@@ -16,6 +16,8 @@ external_resources:
  - '[cPanel Support](https://www.cpanel.com/support/)'
 ---
 
+![Install cPanel on CentOS](/docs/assets/install-cpanel-on-centos/Install_cPanel_smg.jpg)
+
 [cPanel](http://cpanel.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with cPanel on your CentOS Linode.
 
 <div class="panel panel-warning">
