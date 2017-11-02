@@ -61,13 +61,13 @@ In this guide, you'll install Docker and pull down images that can be deployed a
           Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
     uid                  Docker Release (CE deb) <docker@docker.com>
     sub   4096R/F273FCD8 2017-02-22
-    ~~~    
+    ~~~
 
 5.  Add the `stable` Docker repository:
 
         add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 
-6.  Update your package indesx and install Docker CE:
+6.  Update your package index and install Docker CE:
 
         apt update
         apt install docker-ce

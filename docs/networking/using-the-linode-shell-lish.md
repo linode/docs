@@ -19,7 +19,7 @@ The Linode Shell (*Lish*) provides console access to all of your Linodes. It als
 
 ##Connect to Lish
 
-There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Ajax console in your web browser. This section explains both methods.
+There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
  {: .note }
 >
@@ -78,9 +78,9 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 1.  Log in to the Linode Manager.
 2.  Select a Linode.
 3.  Click on the **Remote Access** tab.
-4.  In the **Console Access** section, click **Launch Lish Ajax Console**, as shown below.
+4.  In the **Console Access** section, click **Launch Lish Console**, as shown below.
 
-    [![Click Launch Lish Ajax Console.](/docs/assets/1281-manager_lish_ajax_launch.png)](/docs/assets/1281-manager_lish_ajax_launch.png)
+    [![Click Lish via Browser.](/docs/assets/lish-via-browser.png)](/docs/assets/lish-via-browser.png)
 
 5.  The Lish Web Console window appears with your Linode's console, as shown below.
 

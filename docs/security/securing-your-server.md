@@ -2,15 +2,16 @@
 author:
   name: Chris Walsh
   email: docs@linode.com
-description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.'
+description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
+og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 'Wednesday, July 12th, 2017'
+modified: 'Friday, October 27th, 2017'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
-title: Securing Your Server
+title: How to Secure Your Server
 ---
 
 In the [Getting Started](/docs/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.

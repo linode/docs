@@ -15,9 +15,8 @@ published: 'Wednesday, July 19, 2017'
 title: 'How to Deploy an nginx Container with Docker on Linode'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
- -  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
- -  - '[Docker Hub](https://hub.docker.com/)'
-
+ - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
+ - '[Docker Hub](https://hub.docker.com/)'
 ---
 
 ![How to Deploy Docker Containers](/docs/assets/docker/deploy_docker_container.jpg)
