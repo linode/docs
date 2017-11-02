@@ -79,7 +79,7 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
     > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
-        dd if=mini.iso of=/dev/sda
+        pv -pter mini.iso | dd of=/dev/sda
 
     {: .note}
     > If you would prefer to write the installer directly to the disk as it downloads, use:
