@@ -4,7 +4,7 @@ author:
     email: docs@linode.com
 description: 'This guide is a brief overview of IPv6 support on Linode.'
 keywords: 'ipv6'
-alias: ['networking/native-ipv6-networking/']
+alias: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, November 2nd, 2017
 modified_by:
