@@ -2,8 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: 'This guide is a brief overview of IPv6 support on Linode.'
-keywords: 'ipv6'
+description: "This guide is a brief overview of IPv6 support on Linode, including how to find youre Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
+keywords: 'ipv6,networking,IP configuration'
 alias: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Thursday, November 2nd, 2017
@@ -16,9 +16,9 @@ external_resources:
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-All Linodes are created with one IPv6 address acquired by Stateless Address Autoconfiguration (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
+All Linodes are created with one IPv6 address, which is acquired by Stateless Address Autoconfiguration (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
-It is important to note that Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses.
+Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your transfer quota, so you can use your default IPv6 address as if it were a private IP address.
 
 ## How to Find Your IPv6 Address
 
@@ -38,19 +38,19 @@ To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/rem
 
 -  Line 6 is the Linode's public IP address. You can see it's in a /64 pool.
 
--  Line 8 is the link-local IPv6 address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the `fe80::/10` range, however to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), this documentation shows it in the `ff32::/10` range.
+-  Line 8 is the link-local IPv6 address. An IPv6 link-local address is a unicast address that can be automatically configured on any interface. The link-local is usually in the `fe80::/10` range. However, in order to comply with [RFC 3849](https://tools.ietf.org/html/rfc3849), this documentation uses an example in the `ff32::/10` range.
 
 If your Linode does not have the correct IPv6 address or any IPv6 address at all, you should verify that you have router advertisements enabled and IPv6 privacy extensions disabled. Your Linode will need to accept router advertisements for SLAAC to function. These settings are properly configured by default in our supported distributions.
 
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration)) for instructions to do this.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
 
 
 ## IPv6 Pools
 
-IPv6 addresses are allotted in *pools*. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below. For /56 and /64 pools, addresses within your pool will be routed to your Linode's default IP address, or another Linode on your account in the same datacenter.
+IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
@@ -65,4 +65,4 @@ You will see where the pool is routed under *Public IP Pools* on the Linode Mana
 
 ## IPv6 Forwarding and Neighbor Discovery
 
-For security reasons, these features are not possible on the Linode network. This is enforced by our network infrastructure, so while it's possible to change the Linux kernel's sysctl parameters of your Linode's operating system to allow IPv6 forwarding, those changes will have no effect.
+For security reasons, these features are not available on the Linode network. This is enforced by our network infrastructure, so while it's possible to change the Linux kernel's `sysctl` parameters of your Linode's operating system to allow IPv6 forwarding, those changes will have no effect.
