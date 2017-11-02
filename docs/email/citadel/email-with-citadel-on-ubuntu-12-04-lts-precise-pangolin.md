@@ -23,7 +23,7 @@ Citadel is a groupware suite that provides system administrators with an easy me
 Prerequisites
 -------------
 
-Before installing Citadel, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Citadel, it is assumed that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 This guide also assumes that you wish to run Citadel by itself on this server on port 80 or 443 for browser-based access.
 
@@ -34,7 +34,7 @@ This guide also assumes that you wish to run Citadel by itself on this server on
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

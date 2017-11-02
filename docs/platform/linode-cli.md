@@ -13,14 +13,14 @@ published: 'Monday, January 27th, 2014'
 title: Linode CLI
 external_resources:
  - '[Github Linode CLI](https://github.com/linode/cli)'
- - '[Linode API Key](/docs/platform/api/api-key)'
+ - '[Linode API Key](/content/platform/api/api-key)'
 ---
 
 The Linode Command Line Interface (**CLI**) is an [open-source](https://github.com/linode/cli) command line tool for managing your Linode services. You can reboot your Linode, update an MX record for your domain, manage your NodeBalancers, create a StackScript and more from the command line on any computer, without logging in to the [Linode Manager](https://manager.linode.com/) graphical user interface.
 
-Your Linode [API key](/docs/api/key) is required for the CLI to function.
+Your Linode [API key](/content/api/key) is required for the CLI to function.
 
-![Linode CLI](/docs/assets/linode-cli.png "Linode CLI")
+![Linode CLI](/content/assets/linode-cli.png "Linode CLI")
 
 ## Install the CLI
 
@@ -178,7 +178,7 @@ Once the CLI has your Linode Manager username and password, it will generate and
 
  {: .note }
 >
-> If you have [two-factor authentication](/docs/security/linode-manager-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
+> If you have [two-factor authentication](/content/security/linode-manager-security-controls/#two-factor-authentication) enabled, you will receive a prompt for the code after entering your password:
 >
 >     Two-factor authentication code
 >     >> 123456
@@ -193,7 +193,7 @@ You can run the `linode configure` command again if your settings change. New an
 
 ### API Key
 
-The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/docs/api/key) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
+The Linode CLI requires your API key to function. If you need to generate an API key manually, read the [API Key](/content/api/key) article. There are three ways to provide the key to the CLI. The configuration tool generates a new key and adds it to the `.linodecli/config` file automatically.
 
 -   In the `.linodecli/config` file:
 
@@ -379,7 +379,7 @@ To see all the available options, check the man pages:
 
 ### NodeBalancers
 
-The Linode CLI allows you to manage your [NodeBalancers](/docs/nodebalancers) from the command line.
+The Linode CLI allows you to manage your [NodeBalancers](/content/nodebalancers) from the command line.
 
 Listing NodeBalancers:
 

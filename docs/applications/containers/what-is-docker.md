@@ -14,7 +14,7 @@ published: 'Tuesday, January 28th, 2014'
 title: Docker
 ---
 
-Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Getting Started Guide](/docs/getting-started/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
+Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Getting Started Guide](/content/getting-started/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
 
 Installation
 ------------
@@ -151,7 +151,7 @@ The CMD instruction defines the default command to run when the container starts
 
     CMD ["nginx"]
 
-By default, Docker containers do not have persistent storage. In order to share data between containers, use the [VOLUME](http://docs.docker.io/en/latest/use/working_with_volumes/) feature:
+By default, Docker containers do not have persistent storage. In order to share data between containers, use the [VOLUME](http://content.docker.io/en/latest/use/working_with_volumes/) feature:
 
     VOLUME /etc/nginx/sites-enabled
     VOLUME /var/log/nginx

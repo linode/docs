@@ -15,19 +15,19 @@ title: Hosting a Website
 
 Now that you've installed Linux and secured your Linode, it's time to start *doing* stuff with it. In this guide, you'll learn how to host a website. Start by installing a web server, database, and PHP - a popular combination which is commonly referred to as the LAMP stack (Linux, Apache, MySQL, and PHP). Then create or import a database, upload files, and add DNS records. By the time you reach the end of this guide, your Linode will be hosting one or more websites!
 
-**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/docs/getting-started#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/docs/websites/lamp/install-lamp-on-ubuntu-16-04), and then continue to the [upload files](#upload-files) section.
+**Debian 8** and **Ubuntu 14.04 LTS** are the [Linux distributions](/content/getting-started#deploy-an-image) used in this guide. If you'd like to use **Ubuntu 16.04 LTS**, refer to the distribution-specific guide on configuring a [LAMP Stack](/content/websites/lamp/install-lamp-on-ubuntu-16-04), and then continue to the [upload files](#upload-files) section.
 
 {: .note}
 > This guide is designed for small and medium-size websites running on WordPress, Drupal, or another PHP content management system. If your website doesn't belong in that category, you'll need to assess your requirements and install custom packages tailored for your particular requirements.
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/f067hwymxy?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ## Web Server
 
-Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/docs/web-servers).
+Hosting a website starts with installing a *web server*, an application on your Linode that delivers content through the Internet. This section will help you get started with *Apache*, the world's most popular web server. For more information about Apache and other web servers, see our [web server reference manuals](/content/web-servers).
 
 ### Install Apache
 
@@ -92,7 +92,7 @@ Now that Apache is optimized for performance, it's time to starting hosting one 
 
 {: .note }
 >
-> You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Adding a New User](/docs/securing-your-server#sph_adding-a-new-user).
+> You should *not* be logged in as `root` while executing these commands. To learn how to create a new user account and log in as that user, see [Adding a New User](/content/securing-your-server#sph_adding-a-new-user).
 
 1.  Disable the default Apache virtual host:
 
@@ -161,7 +161,7 @@ Congratulations! You've configured Apache to host one or more websites on your L
 
 ## Database
 
-Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference guides](/docs/databases).
+Databases store data in a structured and easily accessible manner, serving as the foundation for hundreds of web and server applications. A variety of open source database platforms exist to meet the needs of applications running on your Linode. This section will help you get started with *MySQL*, one of the most popular database platforms. For more information about MySQL and other databases, see our [database reference guides](/content/databases).
 
 ### Install MySQL
 
@@ -330,7 +330,7 @@ Congratulations! PHP is now installed on your Linode and configured for optimal 
 
 You've successfully installed Apache, MySQL, and PHP. Now it's time to upload a website to your Linode. This is one of the last steps before you "flip the switch" and publish your website on the Internet.
 
-1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/docs/tools-reference/file-transfer/filezilla) SFTP client.
+1.  If you haven't done so already, download and install an SFTP capable client on your computer. We recommend using the [FileZilla](/content/tools-reference/file-transfer/filezilla) SFTP client.
 
 2.  Follow the instructions in the guide listed above to connect to your Linode.
 
@@ -348,7 +348,7 @@ It's a good idea to test your website(s) before you add the DNS records. This is
 
 1.  Enter your Linode's IP address in a web browser (e.g., type `http://192.0.2.0` in the address bar, replacing the example IP address with your own). Your website should load in the web browser.
 
-2.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/docs/networking/dns/previewing-websites-without-dns) guide for more information.
+2.  If you plan on hosting multiple websites, you can test the virtual hosts by editing the `hosts` file on your local computer. Check out the [Previewing Websites Without DNS](/content/networking/dns/previewing-websites-without-dns) guide for more information.
 
 3.  Test the name-based virtual hosts by entering the domain names in the address bar of the web browser on your desktop computer. Your websites should load in the web browser.
 
@@ -365,7 +365,7 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
 3.  Select the **Add a domain zone** link. The form shown below appears.
 
-    [![Create a domain zone](/docs/assets/910-hosting-1-small.png)](/docs/assets/909-hosting-1.png)
+    [![Create a domain zone](/content/assets/910-hosting-1-small.png)](/content/assets/909-hosting-1.png)
 
 4.  In the **Domain** field, enter your website's domain name in the **Domain** field.
 
@@ -375,7 +375,7 @@ Now you need to point your domain name(s) at your Linode. This process can take 
 
 7.  Click **Add a Master Zone**. Several DNS records will be created for your domain, as shown below.
 
-    [![The DNS records created for the domain](/docs/assets/911-hosting-2-small.png)](/docs/assets/912-hosting-2.png)
+    [![The DNS records created for the domain](/content/assets/911-hosting-2-small.png)](/content/assets/912-hosting-2.png)
 
 8. Through your domain registrar (where you bought the domain), make sure that your domain name is set to use Linode's DNS. Use your domain name registrar's interface to set the name servers for your domain to the following:
 
@@ -403,11 +403,11 @@ You're almost finished! The last step is setting reverse DNS for your domain nam
 
 5.  Select the **Reverse DNS** link, as shown below.
 
-    [![Select Reverse DNS link](/docs/assets/951-hosting-3-1.png)](/docs/assets/951-hosting-3-1.png)
+    [![Select Reverse DNS link](/content/assets/951-hosting-3-1.png)](/content/assets/951-hosting-3-1.png)
 
 6.  Enter the domain in the **Hostname** field, as shown below.
 
-    [![Enter domain in Hostname field](/docs/assets/914-hosting-4-small.png)](/docs/assets/915-hosting-4.png)
+    [![Enter domain in Hostname field](/content/assets/914-hosting-4-small.png)](/content/assets/915-hosting-4.png)
 
 7.  Click **Look up**. A message appears, indicating that a match has been found.
 

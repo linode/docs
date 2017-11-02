@@ -15,21 +15,21 @@ external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[Nginx Home Page](http://nginx.org/)'
- - '[Nginx Documentation](http://nginx.org/en/docs/)'
- - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Nginx Documentation](http://nginx.org/en/content/)'
+ - '[Nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
 ---
 
 Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 8.
 
-![Ruby on Rails with nginx on Debian 8](/docs/assets/ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
+![Ruby on Rails with nginx on Debian 8](/content/assets/ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) and [Securing the Server](/docs/security/securing-your-server) guides, and [set the Linode's hostname](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/content/getting-started) and [Securing the Server](/content/security/securing-your-server) guides, and [set the Linode's hostname](/content/getting-started#setting-the-hostname).
 
     To check the hostname run:
 
@@ -118,6 +118,6 @@ Ruby on Rails is a rapid development web framework that allows web designers and
 
 ## Install MySQL Support (Optional)
 
-If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/docs/databases/mysql/mysql-relational-databases-debian-8) guide. Once it's installed and configured properly, issue the following command:
+If the application deployed uses MySQL, install the database server by following our [MySQL on Debian 8](/content/databases/mysql/mysql-relational-databases-debian-8) guide. Once it's installed and configured properly, issue the following command:
 
     sudo apt-get install libmysqlclient-dev

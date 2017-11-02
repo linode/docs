@@ -12,17 +12,17 @@ modified_by:
 published: 'Wednesday, February 24th, 2010'
 title: 'Managing Resources with Apache mod_alias'
 external_resources:
- - '[Apache Installation](/docs/web-servers/apache/)'
- - '[LAMP Stack Guides](/docs/lamp-guides/)'
- - '[Guide for Redirecting URLs](/docs/web-servers/apache/configuration/redirecting-urls)'
- - '[Guide for URL Rewriting with Apache](/docs/web-servers/apache/configuration/rewriting-urls)'
- - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Apache Installation](/content/web-servers/apache/)'
+ - '[LAMP Stack Guides](/content/lamp-guides/)'
+ - '[Guide for Redirecting URLs](/content/web-servers/apache/configuration/redirecting-urls)'
+ - '[Guide for URL Rewriting with Apache](/content/web-servers/apache/configuration/rewriting-urls)'
+ - '[Troubleshooting Apache](/content/web-servers/apache/troubleshooting/)'
  - '[Linode User Community](http://linode.com/community/)'
 ---
 
 In many cases, all of the resources served by an Apache host are located in that host's `DocumentRoot`. The `DocumentRoot` is a directory specified in the `<VirtualHost>` configuration block. This directory is intended to represent the various files, directories, and resources that users access over HTTP on the file system. However, it is common for administrators to provide HTTP access to a resource on the file system which is *not* located in the `DocumentRoot`. While Apache will follow symbolic links in some situations, this can be difficult to maintain. As a result Apache makes it possible to specify an `Alias` that connects a location in the request to an alternate location.
 
-This document explains how to use the `Alias` directive to manage resources on the file system while still providing access via HTTP. Furthermore, this guide assumes you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to consider one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, consider our [Apache configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/docs/web-servers/apache/configuration/configuration-structure) documents.
+This document explains how to use the `Alias` directive to manage resources on the file system while still providing access via HTTP. Furthermore, this guide assumes you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to consider one of our [Apache installation guides](/content/web-servers/apache/) or [LAMP stack installation guides](/content/lamp-guides/). If you want a more thorough introduction to Apache configuration, consider our [Apache configuration basics](/content/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/content/web-servers/apache/configuration/configuration-structure) documents.
 
 ## Creating Aliases
 

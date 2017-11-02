@@ -20,7 +20,7 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django framework. Although Ubuntu Hardy includes Django packages, these contain a dated version of the Django framework, in the 0.9x series. We've decided to install the most recent stable release of Django instead. This provides the best possible balance between the stability and support of the Ubuntu-Hardy release, and the most current Django API. In general the Apache, plus mod\_python, plus Django is accepted as the idea setup for beginning Django deployments, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-8-04-hardy) and a functional [MySQL database](/docs/databases/mysql/ubuntu-8-04-hardy) installed.
+We assume that you've completed the [getting started guide](/content/getting-started/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/content/web-servers/apache/installation/ubuntu-8-04-hardy) and a functional [MySQL database](/content/databases/mysql/ubuntu-8-04-hardy) installed.
 
 Installing Python Dependencies
 ------------------------------
@@ -155,7 +155,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Django Project Home Page](http://www.djangoproject.com/)
-- [The Django Project Introductory Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)
+- [The Django Project Introductory Tutorial](http://content.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)
 - [The Django Book](http://www.djangobook.com/)
 - [Deploying Django Applications](http://www.djangobook.com/en/2.0/chapter12/)
 - [Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)

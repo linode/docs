@@ -11,16 +11,16 @@ modified_by:
 published: 'Tuesday, September 19, 2017'
 title: Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
 external_resources:
- - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
+ - '[PostgreSQL Documentation](https://www.postgresql.org/content/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
- - '[etcd Documentation](https://coreos.com/etcd/docs/latest/)'
+ - '[etcd Documentation](https://coreos.com/etcd/content/latest/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
 ---
 
-![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/docs/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
+![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/content/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
 
 ## What is PostgreSQL?
 
@@ -30,25 +30,25 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and familiarize yourself with SSH and connecting to your linode.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and familiarize yourself with SSH and connecting to your linode.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account and harden SSH access.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account and harden SSH access.
 
 3.  Update your system:
 
         sudo apt update && sudo apt upgrade
 
-4.  Create five Linodes on your account, all within the same datacenter. Take note of each Linode's [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses)
+4.  Create five Linodes on your account, all within the same datacenter. Take note of each Linode's [private IP address](/content/networking/remote-access/#adding-private-ip-addresses)
 
 {: .note}
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install PostgreSQL
 
-Install Postgres on three Linodes in your setup. Because the configuration in this guide uses private IP addresses to communicate between Linodes in the same datacenter, this setup may not meet certain [Highly Available requirements](https://docs.oracle.com/cd/B28359_01/server.111/b28281/hadesign.htm#g1007388). For more information about private IPs, visit our [Remote Access guide](/docs/networking/remote-access/#adding-private-ip-addresses).
+Install Postgres on three Linodes in your setup. Because the configuration in this guide uses private IP addresses to communicate between Linodes in the same datacenter, this setup may not meet certain [Highly Available requirements](https://content.oracle.com/cd/B28359_01/server.111/b28281/hadesign.htm#g1007388). For more information about private IPs, visit our [Remote Access guide](/content/networking/remote-access/#adding-private-ip-addresses).
 
-The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Remote Access guide](/docs/networking/remote-access/#adding-private-ip-addresses) for more information.
+The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Remote Access guide](/content/networking/remote-access/#adding-private-ip-addresses) for more information.
 
 1.  On the three Linodes where you want to install Postgres, update the package lists:
 
@@ -361,13 +361,13 @@ With the Postgres cluster set up, you need a way to connect to the master regard
 
 2. You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
 
-   ![HAProxy dashboard - all servers running](/docs/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
+   ![HAProxy dashboard - all servers running](/content/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
 
    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
 
 3. If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
 
-   ![HAProxy dashboard - when primary fails](/docs/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
+   ![HAProxy dashboard - when primary fails](/content/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
 
    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
 

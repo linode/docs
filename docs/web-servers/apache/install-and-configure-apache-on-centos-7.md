@@ -13,23 +13,23 @@ published: 'Friday, November 18, 2016'
 title: How to Install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
- - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
-image: https://linode.com/docs/assets/apache-centos7-smg.png
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.4/)'
+image: https://linode.com/content/assets/apache-centos7-smg.png
 ---
 
-![apache_centOS7_banner](/docs/assets/How_to_Install_Apache_on_CentOS_7_smg.jpg)
+![apache_centOS7_banner](/content/assets/How_to_Install_Apache_on_CentOS_7_smg.jpg)
 
 Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode. This guide explains how to install and configure the Apache web server on CentOS 7.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 >
 >Replace each instance of `example.com` in this guide with your site's domain name.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -100,7 +100,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
     Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested url, and serves the appropriate content:
 
-    ![Apache VirtualHost Traffic Flow](/docs/assets/apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
+    ![Apache VirtualHost Traffic Flow](/content/assets/apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
 
     {: .note}
     >
@@ -117,7 +117,7 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
     You can now visit your domain to test the Apache server. A default Apache page will be visible if no index page is found in your Document Root as declared in `/etc/httpd/conf/httpd.conf`:
 
-    ![Apache on CentOS 7 Welcome Screen](/docs/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
+    ![Apache on CentOS 7 Welcome Screen](/content/assets/centos7-apache-welcome.png "Welcome to Apache on CentOS 7")
 
 ## Configure firewalld to Allow Web Traffic
 
@@ -132,8 +132,8 @@ Congratulations! You've set up Apache and you're now ready to host websites. If 
 
 ### Secure Your Site with SSL
 
-To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](/docs/security/ssl/ssl-apache2-centos).
+To add additional security to your site, consider [enabling a Secure Sockets Layer (SSL) certificate](/content/security/ssl/ssl-apache2-centos).
 
 ### Install and Configure GlusterFS, Galera, and XtraDB for High Availability
 
-Consult our [Host a Website with High Availability](/docs/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.
+Consult our [Host a Website with High Availability](/content/websites/host-a-website-with-high-availability) guide to mitigate downtime through redundancy, monitoring, and failover.

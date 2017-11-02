@@ -13,20 +13,20 @@ modified_by:
 published: 'Tuesday, October 9th, 2012'
 title: 'LEMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
- - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
- - '[Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
- - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)'
- - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10-04-lucid)'
- - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10-04-lucid)'
+ - '[Basic nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
+ - '[Clustered Web Servers and Software Load Balancing with nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
+ - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/content/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)'
+ - '[Use PostgeSQL as an Alternative to MySQL for data storage](/content/databases/postgresql/ubuntu-10-04-lucid)'
+ - '[Deploy Python Applications with uWSGI and nginx](/content/web-servers/nginx/python-uwsgi/ubuntu-10-04-lucid)'
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
 
-Prior to beginning this guide, please complete the [getting started guide](/docs/getting-started/). If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [getting started guide](/content/getting-started/). If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/content/using-linux/administration-basics).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -46,7 +46,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid).
+For more in-depth installation instructions consider our [guide to installing nginx](/content/web-servers/nginx/installation/ubuntu-10-04-lucid).
 
 ### Deploy from Ubuntu Project Packages
 
@@ -95,9 +95,9 @@ Create a dedicated system user to run the nginx process under by issuing the fol
 
     adduser --system --no-create-home --disabled-login --disabled-password --group nginx
 
-Now install and configure the [init script](/docs/assets/1131-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
+Now install and configure the [init script](/content/assets/1131-init-deb.sh) to make it possible to start and stop the web server more easily. Issue the following command sequence:
 
-    wget -O init-deb.sh http://www.linode.com/docs/assets/1131-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/content/assets/1131-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -171,7 +171,7 @@ nginx.conf
     }
     ~~~
 
-Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/websites/nginx/basic-nginx-configuration).
+Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/content/websites/nginx/basic-nginx-configuration).
 
 Once you've configured and loaded the nginx configuration, restart the web server to implement the new configuration by issuing the following command:
 
@@ -181,7 +181,7 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/content/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid). Begin the deployment process by issuing the following command to install the required dependencies:
 
     apt-get install php5-cli php5-cgi php5-fpm
 
@@ -251,7 +251,7 @@ The MySQL database engine may be the leading open source relational database eng
 
 During the installation process you will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.04 Lucid.](/docs/assets/1129-66-lucid-01-mysql-root-password.png)](/docs/assets/1129-66-lucid-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu 10.04 Lucid.](/content/assets/1129-66-lucid-01-mysql-root-password.png)](/content/assets/1129-66-lucid-01-mysql-root-password.png)
 
 Issue the following command to secure the MySQL instance:
 

@@ -27,7 +27,7 @@ If you're running a mail server, it's a good idea to have spam and virus filteri
 
 ## Prerequisites
 
-This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guides and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
+This guide assumes you have already followed our [Email with Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) guides and are running Ubuntu 12.04 LTS. This guide is written for the root user, and all commands listed require root privileges.
 
 ## Installation
 

@@ -17,7 +17,7 @@ external_resources:
 - '[virtualenv Documentation](http://virtualenv.pypa.io/)'
 ---
 
-![Create a Python Virtual Environment on Ubuntu 16.10](/docs/assets/python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")
+![Create a Python Virtual Environment on Ubuntu 16.10](/content/assets/python-ve-u16-title.jpg "Create a Python Virtual Environment on Ubuntu 16.10")
 
 ## What is a Python Virtual Environment?
 
@@ -27,7 +27,7 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 

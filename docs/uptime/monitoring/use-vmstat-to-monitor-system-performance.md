@@ -16,7 +16,7 @@ external_resources:
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
 ---
 
-![Use vmstat to Monitor System Performance](/docs/assets/use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")
+![Use vmstat to Monitor System Performance](/content/assets/use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")
 
 ## What is vmstat?
 
@@ -131,7 +131,7 @@ In the default operation, `vmstat` displays memory statistics in kilobytes. `vms
 
 ## How to Interpret vmstat Output
 
-`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
+`vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/content/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
 The output of `vmstat` is displayed in a number of columns. The following sections provide brief overviews of the data reported in each column.
 
@@ -145,7 +145,7 @@ These values are often `0`.
 
 ### Memory
 
-The information displayed in the `memory` section provides the same data about [memory usage](/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
+The information displayed in the `memory` section provides the same data about [memory usage](/content/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
 
 The `swapd` or "swapped" column reports how much memory has been swapped out to a swap file or disk. The `free` column reports the amount of unallocated memory. The `buff` or "buffers" column reports the amount of allocated memory in use. The `cache` column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
 

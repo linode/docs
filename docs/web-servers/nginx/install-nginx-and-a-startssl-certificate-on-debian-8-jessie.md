@@ -16,19 +16,19 @@ contributor:
   link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
-This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will result in an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide we are going to configure nginx to prefer strong server-side cipher suites and disable the vulnerable SSLv2 and SSLv3 protocols.
+This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/content/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will result in an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide we are going to configure nginx to prefer strong server-side cipher suites and disable the vulnerable SSLv2 and SSLv3 protocols.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of [Securing Your Server](/docs/security/securing-your-server) to harden SSH access, remove unnecessary network services and enable firewall rules for a web server.
+2.  Complete the sections of [Securing Your Server](/content/security/securing-your-server) to harden SSH access, remove unnecessary network services and enable firewall rules for a web server.
 
-3.  In order to obtain an SSL certificate for your Linode, you must have a registered domain name with correct [DNS records](/docs/networking/dns/dns-records-an-introduction). It is also recommended you have access to an email account associated with your domain, or the email address listed in its WHOIS information. This is the simplest way for StartSSL to verify that you have control of the domain for which you are requesting an SSL certificate.
+3.  In order to obtain an SSL certificate for your Linode, you must have a registered domain name with correct [DNS records](/content/networking/dns/dns-records-an-introduction). It is also recommended you have access to an email account associated with your domain, or the email address listed in its WHOIS information. This is the simplest way for StartSSL to verify that you have control of the domain for which you are requesting an SSL certificate.
 
 4.  Update your system.
 
@@ -36,11 +36,11 @@ This guide will show you how to install the latest stable version of nginx on De
 
 {: .note }
 >
-> Many steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> Many steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install nginx
 
-If you simply want the latest stable version of nginx, you may follow the steps to [install it from the nginx package repository](/docs/web-servers/nginx/install-nginx-web-server-on-debian-8/#from-nginx-package-repository). However, if you want to implement *all* of the options in our [SSL and TLS deployment best practices guide](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), you will need to compile nginx from source to ensure compatibility.
+If you simply want the latest stable version of nginx, you may follow the steps to [install it from the nginx package repository](/content/web-servers/nginx/install-nginx-web-server-on-debian-8/#from-nginx-package-repository). However, if you want to implement *all* of the options in our [SSL and TLS deployment best practices guide](/content/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), you will need to compile nginx from source to ensure compatibility.
 
 ### Install and Compile nginx from Source
 
@@ -127,7 +127,7 @@ Please understand that when using this method, you will be responsible for updat
         systemctl enable nginx
 
 {: .note}
->If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths, and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).
+>If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths, and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/content/websites/nginx/how-to-configure-nginx).
 
 ## Generate a Private Key and Certificate Signing Request (CSR)
 
@@ -151,7 +151,7 @@ Please understand that when using this method, you will be responsible for updat
 
     Optionally, you may enter a subdomain, for instance `www.yourdomain.com`. This must be a domain that you have control over and which you can receive email sent to `webmaster@yourdomain.com`. Any certificate issued for `yourname.yourdomain.com` is also valid for `yourdomain.com`.
 
-    [![CSR Creation](/docs/assets/1751-CSR.jpg)](/docs/assets/1751-CSR.jpg)
+    [![CSR Creation](/content/assets/1751-CSR.jpg)](/content/assets/1751-CSR.jpg)
 
 ## Sign-up With StartSSL
 
@@ -173,21 +173,21 @@ You should now be logged into your StartSSL account.
 
 2.  Select "Domain Name Validation" and click **Continue**.
 
-    [![StartSSL Validation Wizard Start Page](/docs/assets/startssl-domain-validation1.png)](/docs/assets/startssl-domain-validation1.png)
+    [![StartSSL Validation Wizard Start Page](/content/assets/startssl-domain-validation1.png)](/content/assets/startssl-domain-validation1.png)
 
 3.  Enter your domain name and click **Continue**.
 
-    [![StartSSL Validation Wizard Domain Name Validation Page](/docs/assets/startssl-domain-validation2.png)](/docs/assets/startssl-domain-validation2.png)
+    [![StartSSL Validation Wizard Domain Name Validation Page](/content/assets/startssl-domain-validation2.png)](/content/assets/startssl-domain-validation2.png)
 
 4.  Choose an email address from the list and click **Send Verification Code**.
 
-    [![StartSSL Validation Wizard Domain Control Email Validation Page](/docs/assets/startssl-domain-validation3.png)](/docs/assets/startssl-domain-validation3.png)
+    [![StartSSL Validation Wizard Domain Control Email Validation Page](/content/assets/startssl-domain-validation3.png)](/content/assets/startssl-domain-validation3.png)
 
     A verification code should be sent to the email address selected. Access your email account and provide the verification code, then click **Validation**.
 
     Alternatively, if you do not have access to an email address at your domain, you may use "Website Control Validation." You will be prompted to download an HTML file and upload it to your site's root directory. This directory may vary depending on how you installed and configured nginx.
 
-    [![StartSSL Validation Wizard Website Control Validation](/docs/assets/startssl-domain-validation4.png)](/docs/assets/startssl-domain-validation4.png)
+    [![StartSSL Validation Wizard Website Control Validation](/content/assets/startssl-domain-validation4.png)](/content/assets/startssl-domain-validation4.png)
 
     Once this is complete, click the button that says, "The verification file is ready in website, Continue..."
 
@@ -199,19 +199,19 @@ You should now be logged into your StartSSL account.
 
 2.  Select "Web Server SSL/TLS Certicate" and click **Continue**.
 
-    [![StartSSL Certificates Wizard Start](/docs/assets/startssl-certificate1.png)](/docs/assets/startssl-certificate1.png)
+    [![StartSSL Certificates Wizard Start](/content/assets/startssl-certificate1.png)](/content/assets/startssl-certificate1.png)
 
 3.  Enter the full domains that will use your certificate. The first entry will be designated as the "Common Name," which consists of your domain name and TLD without a subdomain. You may enter up to 5 hostnames in this section if you're obtaining a free certificate, although support for additional hostnames is available with paid StartSSL plans.
 
-    [![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/startssl-certificate2.png)](/docs/assets/startssl-certificate2.png)
+    [![StartSSL Certificates Wizard CSR Domain Selection](/content/assets/startssl-certificate2.png)](/content/assets/startssl-certificate2.png)
 
 4.  On the same page, you will be prompted to submit the certificate signing request (CSR) which you generated previously. In our example, this file was located at `/etc/ssl/nginx/server.csr`. Copy the contents of your CSR file and paste them into the text box. Click **Submit**.
 
-    [![StartSSL Certificates Wizard Submit CSR](/docs/assets/startssl-certificate3.png)](/docs/assets/startssl-certificate3.png)
+    [![StartSSL Certificates Wizard Submit CSR](/content/assets/startssl-certificate3.png)](/content/assets/startssl-certificate3.png)
 
 5.  Click "Certificates List" to navigate to a list of your certificates. Find the certificate that corresponds with the "Common Name" you specified in Step 3, and click the **Retrieve** button on that line.
 
-    [![StartSSL Certificates Wizard Retrieve Certificate](/docs/assets/startssl-certificate4.png)](/docs/assets/startssl-certificate4.png)
+    [![StartSSL Certificates Wizard Retrieve Certificate](/content/assets/startssl-certificate4.png)](/content/assets/startssl-certificate4.png)
 
     This will prompt you to download a .zip archive that contains several repositories of certificate files for different web servers and applications.
 
@@ -289,8 +289,8 @@ You should now be logged into your StartSSL account.
 
 Launch a web browser and navigate to your domain. You should see the default nginx page. Please note that this will not work unless you've created an "A" record for your domain at your DNS host, which points to your Linode's IP address. Please contact your domain registrar or DNS hosting provider if you need assistance.
 
-[![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
+[![Up and Running](/content/assets/1768-Up-And-Running.jpg)](/content/assets/1768-Up-And-Running.jpg)
 
-You have successfully installed the latest version of nginx and configured your free StartSSL SSL certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your website to evaluate your SSL parameters. Please keep in mind that the above configuration is a starting point only. For further information on how to optimize nginx for SSL, follow our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices).
+You have successfully installed the latest version of nginx and configured your free StartSSL SSL certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your website to evaluate your SSL parameters. Please keep in mind that the above configuration is a starting point only. For further information on how to optimize nginx for SSL, follow our guide on [SSL and TLS deployment best practices](/content/websites/nginx/nginx-ssl-and-tls-deployment-best-practices).
 
-You may also refer to our guide [How to Configure nginx](/docs/websites/nginx/how-to-configure-nginx) for further configuration options.
+You may also refer to our guide [How to Configure nginx](/content/websites/nginx/how-to-configure-nginx) for further configuration options.

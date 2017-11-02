@@ -23,7 +23,7 @@ external_resources:
 Node.js is a JavaScript platform which can serve dynamic, responsive content. JavaScript is usually a client-side, browser language like HTML or CSS. However, Node.js is a server-side, JavaScript platform, comparable to PHP. Node.js often works with other popular server applications like NGINX or Apache. In this guide, NGINX is configured to handle front-end, static file requests, and Node.js is configured to handle back-end file requests.
 
 ##Install and Configure NGINX
-This guide can be started immediately after terminal login on a new Linode, it's written for the `root` user. However, before installation you might want to make sure the Linode is up-to-date with our [Getting Started](/docs/getting-started) guide and secured with our [Securing Your Server](/docs/securing-your-server) guide.
+This guide can be started immediately after terminal login on a new Linode, it's written for the `root` user. However, before installation you might want to make sure the Linode is up-to-date with our [Getting Started](/content/getting-started) guide and secured with our [Securing Your Server](/content/securing-your-server) guide.
 
 1.  Install NGINX as well as screen, which you'll use later:
 
@@ -105,7 +105,7 @@ NGINX is now configured. However, the `example.com` server block points to direc
         <center>
         <p>
         <b>
-        If you have not finished the <a href="https://linode.com/docs/websites/nodejs/nodejs-nginx-debian">guide</a>, the button below will not work.
+        If you have not finished the <a href="https://linode.com/content/websites/nodejs/nodejs-nginx-debian">guide</a>, the button below will not work.
         </b>
         </p>
         </center>
@@ -170,7 +170,7 @@ NGINX is now listening on port 80 and serving content. It's also configured to p
         console.log("Server is listening on port 3000.")      //Terminal output
     ~~~
 
-5.  Run a new [screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
+5.  Run a new [screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
 
         screen
 

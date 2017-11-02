@@ -14,14 +14,14 @@ published: 'Wednesday, February 2nd, 2011'
 title: Websites with Nginx on Arch Linux
 ---
 
-Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model to provide more predictable performance under load.
+Nginx is a lightweight and high performance web server, designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/content/web-servers/apache/), which uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model to provide more predictable performance under load.
 
-Before you begin installing the nginx web server, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), our [beginner's guide](/docs/beginners-guide/), and our [administration basics guide](/docs/using-linux/administration-basics).
+Before you begin installing the nginx web server, it is assumed that you have followed our [getting started guide](/content/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts), our [beginner's guide](/content/beginners-guide/), and our [administration basics guide](/content/using-linux/administration-basics).
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -51,14 +51,14 @@ To start the server for the first time, use the following command:
 
     /etc/rc.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
 More Information
 ----------------
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/content/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/arch-linux)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/arch-linux)
+- [Configure Perl and FastCGI with nginx](/content/web-servers/nginx/perl-fastcgi/arch-linux)
+- [Configure PHP and FastCGI with nginx](/content/web-servers/nginx/php-fastcgi/arch-linux)

@@ -19,11 +19,11 @@ external_resources:
  - '[ntop Network Security Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 ---
 
-![Deploy network monitoring tool, ntopng, on Debian 8](/docs/assets/ntopng/ntopng-on-debian8.png "Deploy network monitoring tool, ntopng, on Debian 8")
+![Deploy network monitoring tool, ntopng, on Debian 8](/content/assets/ntopng/ntopng-on-debian8.png "Deploy network monitoring tool, ntopng, on Debian 8")
 
 ## Overview of ntopng, the Network Monitoring System
 
@@ -36,14 +36,14 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 
 ### Before You Begin
 
-1. Complete the [Getting Started](/docs/getting-started) guide for setting up a fresh Linode.
-2. Secure your server by following the steps outlined in the [Securing Your Server](/docs/security/securing-your-server) guide.
-3. This guide will use UFW (Uncomplicated Firewall) to set the firewall rules, but you may use iptables instead. Instructions will be presented for both. If you aren’t familiar with UFW, follow the guide on [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw).
-4. OpenVPN will be used as an example to demonstrate the capabilities of ntopng. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about OpenVPN, read the [Setting up a Hardened OpenVPN Server on Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server) guide.
+1. Complete the [Getting Started](/content/getting-started) guide for setting up a fresh Linode.
+2. Secure your server by following the steps outlined in the [Securing Your Server](/content/security/securing-your-server) guide.
+3. This guide will use UFW (Uncomplicated Firewall) to set the firewall rules, but you may use iptables instead. Instructions will be presented for both. If you aren’t familiar with UFW, follow the guide on [How to Configure a Firewall with UFW](/content/security/firewalls/configure-firewall-with-ufw).
+4. OpenVPN will be used as an example to demonstrate the capabilities of ntopng. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about OpenVPN, read the [Setting up a Hardened OpenVPN Server on Debian 8](/content/networking/vpn/set-up-a-hardened-openvpn-server) guide.
 
 
 {: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ### Add the ntopng Repository
 
@@ -152,13 +152,13 @@ If you want to group devices over the same network or host a home media server, 
 
 2.  Click on the `+` icon on the far right of the screen. Give your pool a descriptive name and save:
 
-    ![Add a pool name to the managed pools](/docs/assets/ntopng/ntopng-add-pool.png "Add a pool name to the managed pools")
+    ![Add a pool name to the managed pools](/content/assets/ntopng/ntopng-add-pool.png "Add a pool name to the managed pools")
 
 3.  Click on the **Unassigned Devices** tab. This is a list of devices currently transmitting data through the Linode (you should at least see the device you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Click **Save Settings** when you’re finished.
 
 4.  To view data from your host pool, you’ll need to mouse over the **Hosts** dropdown and select **Host Pools**. You’ll find the pool name you created listed on this page. Click on it. Here, you’ll see all currently open connections from each of the hosts in your host pool:
 
-    ![Currently open connections](/docs/assets/ntopng/ntopng-currently-open-connections.png "Currently open connections")
+    ![Currently open connections](/content/assets/ntopng/ntopng-currently-open-connections.png "Currently open connections")
 
     {: .note}
     >

@@ -18,7 +18,7 @@ external_resources:
  - '[CentOS SELinux Wiki](https://wiki.centos.org/HowTos/SELinux)'
 ---
 
-![SELinuxbanner](/docs/assets/selinux/selinux_centos.jpg)
+![SELinuxbanner](/content/assets/selinux/selinux_centos.jpg)
 
 
 SELinux is a Mandatory Access Control (MAC) system, developed by the NSA. SELinux was developed as a replacement for Discretionary Access Control (DAC) that ships with most Linux distributions.
@@ -31,12 +31,12 @@ SELinux defaults to denying anything that is not explicitly allowed. SELinux has
 
 {: .note}
 >
-> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/docs/quick-answers/linux/how-to-change-selinux-modes)
+> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/content/quick-answers/linux/how-to-change-selinux-modes)
 
 ## Before You Begin
 
 1. This guide requires you to **OWN** the box you are going to use. SELinux is a security-control system; a small misconfiguration could cause your system to be compromised.
-2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm)
+2. Linode uses a custom kernel by default. This kernel does not support SELinux. If you are using a Linode, switch to a distribution-supplied kernel by using this guide: [Run a non-custom kernel](https://www.linode.com/content/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm)
 3.  Update your system:
 
         yum update
@@ -156,7 +156,7 @@ An SELinux Boolean is a variable that can be toggled on and off without needing 
 	xdm_sysadm_login --> off
 	xdm_write_home --> off
 
-You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](https://www.linode.com/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) to run unconfined in your system, you have to edit the policies boolean variable:
+You can change the value of any variable using the `setsebool` command. If you set the `-P` flag, the setting will persist through reboots. If you want to permit a service like [openVPN](https://www.linode.com/content/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) to run unconfined in your system, you have to edit the policies boolean variable:
 
 	[root@centos ~]# getsebool -a  | grep "vpn"
 	openvpn_can_network_connect --> on

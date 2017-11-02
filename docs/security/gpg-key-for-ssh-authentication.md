@@ -21,9 +21,9 @@ published: 'Monday, October 3rd, 2016'
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-![GPG key for SSH Authentication](/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)
+![GPG key for SSH Authentication](/content/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)
 
-You may be familiar with [public key authentication](/docs/security/use-public-key-authentication-with-ssh) for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.
+You may be familiar with [public key authentication](/content/security/use-public-key-authentication-with-ssh) for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.
 
 The chief benefit of this method is that instead of having separate keys for GPG messaging and SSH authentication, they can both belong to the same GPG keyring. This configuration really shines, however, when used with a [GPG smartcard](https://en.wikipedia.org/wiki/OpenPGP_card) or [YubiKey](https://www.yubico.com/products/yubikey-hardware/), because the card/dongle can store the underlying private key and only authenticate SSH sessions when it's plugged in. WIRED reported that [engineers at Facebook use this method](http://www.wired.com/2013/10/facebook-yubikey/) for authenticating with local servers, so why shouldn't you?
 
@@ -38,10 +38,10 @@ This guide will show you how to generate a GPG key, set up your computer to serv
 This guide assumes:
 
  - You have a fully functional Linode
- - You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and updated your Linode with `sudo apt-get update && sudo apt-get upgrade`)
- - You are familiar with the [command line](/docs/tools-reference/introduction-to-linux-concepts#so-youre-staring-at-a-shell-prompt)
+ - You have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and updated your Linode with `sudo apt-get update && sudo apt-get upgrade`)
+ - You are familiar with the [command line](/content/tools-reference/introduction-to-linux-concepts#so-youre-staring-at-a-shell-prompt)
 
-You don't necessarily need to be familiar with [SSH public key authentication](/docs/security/use-public-key-authentication-with-ssh) or [GPG encryption](https://en.wikipedia.org/wiki/GNU_Privacy_Guard), but an understanding of their operation will help you out if you run into problems.
+You don't necessarily need to be familiar with [SSH public key authentication](/content/security/use-public-key-authentication-with-ssh) or [GPG encryption](https://en.wikipedia.org/wiki/GNU_Privacy_Guard), but an understanding of their operation will help you out if you run into problems.
 
 ## Generate a GPG Keypair
 
@@ -249,7 +249,7 @@ Your terminal should now look like this:
 
 {: .caution}
 >
-> If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+> If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/content/networking/using-the-linode-shell-lish) to regain access.
 
 You should always have a backup of your private key in case something goes wrong and you end up locked out of everything that requires it. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.
 

@@ -15,7 +15,7 @@ title: Package Mirrors
 
 Linode offers public package mirrors for Ubuntu, Debian, and CentOS. When you install updates and new packages, you must download them from package mirrors. The primary advantage of using the Linode package mirrors versus other public package mirrors is speed.
 
-![Setting Linode Package Mirrors.](/docs/assets/package_mirrors_smg.png "Setting Linode Package Mirrors.")
+![Setting Linode Package Mirrors.](/content/assets/package_mirrors_smg.png "Setting Linode Package Mirrors.")
 
  Linode package mirrors are available in all of our datacenters. The mirrors can be found at:
 

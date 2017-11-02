@@ -34,7 +34,7 @@ Please note: Because it uses SSH, Salt SSH is slower than standard Salt with Zer
 
     {: .note}
     >
-    > For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](https://www.linode.com/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
+    > For detailed instruction on how to set up SaltStack repo, please refer to the [Salt Stack Installation Guide](https://www.linode.com/content/applications/configuration-management/install-and-configure-salt-master-and-minion-servers)
 
 3.  Your minions must have Python installed. Without Python installed on minions, you will only be able to run Salt SSH in raw mode. In raw mode, a raw shell command cannot use execution modules or apply Salt states. If you're running a modern version of CentOS/RedHat, you already have Python installed on your systems
 
@@ -108,7 +108,7 @@ The Default location for the Roster file is: `/etc/salt/roster`.
     {: .note}
     >
     > Permissions leverage via sudo works only if the NOPASSWD option is set up for the user that is connecting to the minion in `/etc/sudoers`.
-    > More information on Roster files can be found in the [Roster files documentation](https://docs.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster).
+    > More information on Roster files can be found in the [Roster files documentation](https://content.saltstack.com/en/latest/topics/ssh/roster.html#ssh-roster).
 
 4.  Check that the master server has access to the client using the `salt-ssh` command:
 
@@ -164,7 +164,7 @@ The Default location for the Roster file is: `/etc/salt/roster`.
 
     {: .note}
     >
-    > A full list of execution modules is available at [Execution modules documentation](https://docs.saltstack.com/en/latest/ref/modules/all/index.html).
+    > A full list of execution modules is available at [Execution modules documentation](https://content.saltstack.com/en/latest/ref/modules/all/index.html).
 
 ##Install Salt-Minion Remotely via Salt SSH
 

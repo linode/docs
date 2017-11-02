@@ -15,7 +15,7 @@ title: Resizing a Linode
 
 We make it easy to upgrade or downgrade your Linode by changing plans and adding additional resources. If you're expecting a temporary burst of traffic to your website, or if you're not using your Linode as much as you thought, you can temporarily or permanently resize your Linode to a different plan.
 
-![Resizing a Linode](/docs/assets/resizing_a_linode.png "Resizing a Linode")
+![Resizing a Linode](/content/assets/resizing_a_linode.png "Resizing a Linode")
 
 {: .note }
 >
@@ -27,7 +27,7 @@ You can move your Linode from one plan to another by using the *resize* feature.
 
  {: .note }
 >
-> If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
+> If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/content/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
 
 Here's how to resize your Linode:
 
@@ -36,7 +36,7 @@ Here's how to resize your Linode:
 3.  Select a Linode from the list.
 4.  Click the **Resize** tab. The webpage shown below appears.
 
-    [![The Linode Manager interface.](/docs/assets/resizing-a-linode-small.png)](/docs/assets/resizing-a-linode.png)
+    [![The Linode Manager interface.](/content/assets/resizing-a-linode-small.png)](/content/assets/resizing-a-linode.png)
 
 5.  Select a plan.
 6.  Click **Resize this Linode Now**. Your Linode will be powered off and moved to another host. Depending on the size of your Linode, this process can take up to one hour.
@@ -44,7 +44,7 @@ Here's how to resize your Linode:
 
     In your Dashboard, click the **Edit** button next to the disk you'd like to allocate the extra storage to. Enter a new size in the specified range and click **Save Changes**.
 
-    [![Adding storage space to an individual disk.](/docs/assets/resize-a-disk-small.png)](/docs/assets/resize-a-disk.png)
+    [![Adding storage space to an individual disk.](/content/assets/resize-a-disk-small.png)](/content/assets/resize-a-disk.png)
 
 8.  Once completed, your Linode will still be powered off. From the **Dashboard** tab, click **Boot** to turn it on.
 

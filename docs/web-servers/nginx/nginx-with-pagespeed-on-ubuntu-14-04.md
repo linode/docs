@@ -28,11 +28,11 @@ PageSpeed is an open source Google project created to optimize website performan
 
 This document describes how you can install nginx (pronounced engine-x) with the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module. PageSpeed helps you minify CSS, JavaScript and images, remove whitespaces from HTML, and perform many other tasks.
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started#debian-7--slackware--ubuntu-1404) and [Securing Your Server](/docs/security/securing-your-server/) guides.
+Before starting this guide, make sure that  you have read through and completed our [Getting Started](/content/getting-started#debian-7--slackware--ubuntu-1404) and [Securing Your Server](/content/security/securing-your-server/) guides.
 
 ## Set the Hostname
 
-1.  Before you install any package, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify that hostname:
+1.  Before you install any package, ensure that your hostname is correct by completing the [Setting Your Hostname](/content/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify that hostname:
 
         hostname
         hostname -f

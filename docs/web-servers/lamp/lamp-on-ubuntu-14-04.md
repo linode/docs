@@ -13,20 +13,20 @@ published: 'Wednesday, January 28th, 2015'
 title: 'LAMP on Ubuntu 14.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
- - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
- - '[PHP Documentation](http://www.php.net/docs.php)'
+ - '[PHP Documentation](http://www.php.net/content.php)'
 ---
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you hot to install a LAMP stack on an Ubuntu 14.04 (LTS) server.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
 2.  Update your system:
 

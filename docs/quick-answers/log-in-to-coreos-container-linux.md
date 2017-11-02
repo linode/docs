@@ -18,7 +18,7 @@ The `root` user is not active by default in Container Linux, so root login is no
 
 ## Log in to CoreOS Over SSH
 
-![Log in as core user SSH](/docs/assets/container-linux-login-ssh.png)
+![Log in as core user SSH](/content/assets/container-linux-login-ssh.png)
 
 1.  From your local terminal, enter:
 
@@ -28,7 +28,7 @@ The `root` user is not active by default in Container Linux, so root login is no
 
 ## Log in to CoreOS Through the Console (Lish or Glish)
 
-![Log in as core user Lish](/docs/assets/container-linux-login-lish.png)
+![Log in as core user Lish](/content/assets/container-linux-login-lish.png)
 
 1.  At the `login:` prompt, enter `core`.
 
@@ -36,4 +36,4 @@ The `root` user is not active by default in Container Linux, so root login is no
 
 {: .note}
 >
-> If you are not already familiar with the serial and graphical Linode shells, see the [Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish) and [Use the Graphic Shell, Glish, to Manage Graphic Environments on Your Linode](/docs/networking/use-the-graphic-shell-glish) guides.
+> If you are not already familiar with the serial and graphical Linode shells, see the [Using the Linode Shell (Lish)](/content/networking/using-the-linode-shell-lish) and [Use the Graphic Shell, Glish, to Manage Graphic Environments on Your Linode](/content/networking/use-the-graphic-shell-glish) guides.

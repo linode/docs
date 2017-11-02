@@ -13,7 +13,7 @@ published: 'Monday, June 29th, 2015'
 title: 'Run a Distribution-Supplied Kernel'
 ---
 
-![Run a Distribution-Supplied Kernel on a KVM Linode](/docs/assets/run-a-distribution-supplied-kernel-with-kvm.png "Run a Distribution-Supplied Kernel on a KVM Linode")
+![Run a Distribution-Supplied Kernel on a KVM Linode](/content/assets/run-a-distribution-supplied-kernel-with-kvm.png "Run a Distribution-Supplied Kernel on a KVM Linode")
 
 Your Linode runs on [KVM](https://www.linux-kvm.org/page/Main_Page), and is capable of using your choice of Linode's own kernel, or the upstream kernel provided by a Linux distribution's maintainers. Booting with Linode's kernel is enabled by default, with exception to CoreOS Container Linux, Fedora, and Ubuntu 17.10+ which boot their upstream kernels by default.
 
@@ -21,21 +21,21 @@ Your Linode runs on [KVM](https://www.linux-kvm.org/page/Main_Page), and is capa
 
 The steps in this section currently apply only to the distributions under *Recommended* in the Linode Manager's *Deploy an Image* dropdown.
 
-![Deploy an image](/docs/assets/deploy-an-image-example.png "Deploy an image")
+![Deploy an image](/content/assets/deploy-an-image-example.png "Deploy an image")
 
 1.  Shut down your Linode from the Linode Manager.
 
 2.  Click **Edit** to view a distribution's configuration profile options:
 
-    ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
+    ![Edit the configuration profile](/content/assets/edit_config_profile_small.png "Edit the configuration profile")
 
 3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:
 
-    ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
+    ![Our latest 64 bit kernel](/content/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
 
 4.  To switch to the distro's default kernel, select **GRUB 2** instead of the latest 64 bit.
 
-    ![Selecting the distribution's kernel](/docs/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
+    ![Selecting the distribution's kernel](/content/assets/boot-settings-kernel-grub2.png "Selecting the distribution's kernel")
 
 5.  Click **Save Changes** at the bottom of the page and reboot into the new kernel.
 
@@ -54,7 +54,7 @@ If you want to switch back to the Linode kernel at any time:
 
 CentOS 7 and Fedora ship with SELinux installed and running in permissive mode. When switching from the Linode kernel to the CentOS or Fedora kernel, SELinux may need to run a relabeling of the filesystem to boot. When completed, the Linode will reboot and if you have Lassie enabled, you'll be back at the login prompt shortly. If you do not have Lassie enabled, you will need to manually click *Reboot* in the Linode Manager.
 
-![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
+![SELinux filesystem relabel](/content/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
 The relabel process is triggered by the empty `/.autorelabel` file.
 
@@ -66,7 +66,7 @@ The relabel process is triggered by the empty `/.autorelabel` file.
 
 If your system is unable to GRUB2 boot and instead shows you a Grub command line prompt in Lish like shown below, then you need to install the kernel and configure Grub. **This should only be necessary on Linodes which were created before February 2017.**
 
-![Grub prompt](/docs/assets/grub-prompt.png "Grub prompt")
+![Grub prompt](/content/assets/grub-prompt.png "Grub prompt")
 
 ### Install the Kernel
 
@@ -101,7 +101,7 @@ When the installation finishes, you'll then see the kernel and other components 
 
 ### Configure Grub
 
-After the kernel is installed, you'll need to configure the serial console and other Grub settings so you can use [Lish](/docs/networking/using-the-linode-shell-lish) and [Glish](/docs/networking/using-the-linode-graphical-shell-glish).
+After the kernel is installed, you'll need to configure the serial console and other Grub settings so you can use [Lish](/content/networking/using-the-linode-shell-lish) and [Glish](/content/networking/using-the-linode-graphical-shell-glish).
 
 1.  Open `/etc/default/grub` in a text editor and go to the line beginning with `GRUB_CMDLINE_LINUX`. Remove the word `quiet` if present, and add `console=ttyS0,19200n8 net.ifnames=0`. Leave the other entries in the line. For example, on CentOS 7 you should have something similar to:
 

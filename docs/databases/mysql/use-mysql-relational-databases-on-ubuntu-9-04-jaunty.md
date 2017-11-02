@@ -16,7 +16,7 @@ title: 'Use MySQL Relational Databases on Ubuntu 9.04 (Jaunty)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Jaunty Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Jaunty Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/content/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
 Installing MySQL
 ----------------
@@ -32,7 +32,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu Jaunty.](/docs/assets/468-jaunty-01-mysql-root-password.png)](/docs/assets/468-jaunty-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu Jaunty.](/content/assets/468-jaunty-01-mysql-root-password.png)](/content/assets/468-jaunty-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. Next, make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 

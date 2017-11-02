@@ -80,7 +80,7 @@ You have successfully added the `zabbix` user.
 
 You'll first want to install MySQL on your Linode and create a MySQL user for Zabbix. Here's how:
 
-1.  If you haven't already, install and configure MySQL on your Linode. See the [MySQL reference manuals](/docs/databases/mysql) for more information.
+1.  If you haven't already, install and configure MySQL on your Linode. See the [MySQL reference manuals](/content/databases/mysql) for more information.
 2.  Log in to MySQL by entering the following command:
 
         mysql -uroot -p
@@ -116,7 +116,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/content/websites/hosting-a-website#configure-name-based-virtual-hosts).
 
 The required applications, modules, and libraries have been installed on your Linode.
 
@@ -409,32 +409,32 @@ You'll need to complete the installation of the Zabbix web interface with your w
 1.  Open up a browser and point it to <http://YourLinodeIP/zabbix> to continue with the installation, where `YourLinodeIP` is the IP address of your Linode.
 2.  The introduction page appears, as shown below. Click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1086-new_zabbix_1.png)](/docs/assets/1086-new_zabbix_1.png)
+[![Zabbix installer.](/content/assets/1086-new_zabbix_1.png)](/content/assets/1086-new_zabbix_1.png)
 
 3.  Correct any prerequisite errors, as shown below. Click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1087-new_zabbix_2.png)](/docs/assets/1087-new_zabbix_2.png)
+[![Zabbix installer.](/content/assets/1087-new_zabbix_2.png)](/content/assets/1087-new_zabbix_2.png)
 
 4.  Configure the connection to your Zabbix database, as shown below. After you've entered the information for the MySQL database, click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1088-new_zabbix_3.png)](/docs/assets/1088-new_zabbix_3.png)
+[![Zabbix installer.](/content/assets/1088-new_zabbix_3.png)](/content/assets/1088-new_zabbix_3.png)
 
 5.  Enter the details for your Zabbix server, as shown below. Click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1090-new_zabbix_5.png)](/docs/assets/1090-new_zabbix_5.png)
+[![Zabbix installer.](/content/assets/1090-new_zabbix_5.png)](/content/assets/1090-new_zabbix_5.png)
 
 6.  Check your pre-install summary, as shown below. Click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1091-new_zabbix_6.png)](/docs/assets/1091-new_zabbix_6.png)
+[![Zabbix installer.](/content/assets/1091-new_zabbix_6.png)](/content/assets/1091-new_zabbix_6.png)
 
 7.  Download your Zabbix configuration file, as shown below. Click **Next** to continue.
 
-[![Zabbix installer.](/docs/assets/1092-new_zabbix_7.png)](/docs/assets/1092-new_zabbix_7.png)
+[![Zabbix installer.](/content/assets/1092-new_zabbix_7.png)](/content/assets/1092-new_zabbix_7.png)
 
 8.  Once you've updated your Zabbix configuration file to the specified location, click **Retry**.
 9.  If the configuration file is found, click **Finish**.
 
-[![Zabbix installer.](/docs/assets/1093-new_zabbix_8.png)](/docs/assets/1093-new_zabbix_8.png)
+[![Zabbix installer.](/content/assets/1093-new_zabbix_8.png)](/content/assets/1093-new_zabbix_8.png)
 
 After you've finished the front-end installation, you'll be forwarded to the Zabbix login page. The default username is `Admin`, the default password is `zabbix`.
 
@@ -449,7 +449,7 @@ Now you have the Zabbix server and web admin installed, and you just set up the 
 
 2.  Click the **Configuration** tab, then the **Hosts** menu item, then the **Create Host** button. The screen shown below appears.
 
-[![Zabbix add host screen.](/docs/assets/1073-zabbix-9-small.png)](/docs/assets/859-AddHost.png)
+[![Zabbix add host screen.](/content/assets/1073-zabbix-9-small.png)](/content/assets/859-AddHost.png)
 
 3.  Enter a name for the host in the **Name** field. This will be displayed on your server list.
 4.  Add the IP address of your monitored host to the **IP Address** field.
@@ -467,7 +467,7 @@ If you would like the base graphs for your new monitored host, you can copy thos
 2.  Select the graphs you'd like to copy over and click **Go** button.
 3.  On the next screen, you'll be able to select where to copy those graphs, whether to a Host Group or just a single Host, as shown below.
 
-[![Zabbix copy graphs screen.](/docs/assets/860-CopyGraphs.png)](/docs/assets/860-CopyGraphs.png)
+[![Zabbix copy graphs screen.](/content/assets/860-CopyGraphs.png)](/content/assets/860-CopyGraphs.png)
 
 Note that the [Zabbix manual](http://www.zabbix.com/documentation/2.0) has complete documentation on setting up the various actions and operations Zabbix can perform.
 

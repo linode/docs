@@ -15,11 +15,11 @@ title: How to Use Nano Text Editor Commands in Linux
 
 GNU nano is a popular command line text editor used on many operating systems including Unix-based systems and BSD variants. It is a popular editor for users who may find `vi` or `emacs` commands to be non-intuitive.
 
-![Using Nano](/docs/assets/using_nano_smg.png)
+![Using Nano](/content/assets/using_nano_smg.png)
 
 ## Nano Set Up and Basic Commands
 
-Nano is included with many Linux distributions by default, but some users may need to install it through their distribution's [package management](/docs/using-linux/package-management/) tool:
+Nano is included with many Linux distributions by default, but some users may need to install it through their distribution's [package management](/content/using-linux/package-management/) tool:
 
 Debian/Ubuntu users can issue the following command to install nano:
 

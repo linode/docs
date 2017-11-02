@@ -14,12 +14,12 @@ modified_by:
 published: 'Wednesday, July 19, 2017'
 title: 'How to Deploy an nginx Container with Docker on Linode'
 external_resources:
- - '[Docker Docs](http://docs.docker.com/)'
+ - '[Docker Docs](http://content.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![How to Deploy Docker Containers](/docs/assets/docker/deploy_docker_container.jpg)
+![How to Deploy Docker Containers](/content/assets/docker/deploy_docker_container.jpg)
 
 
 ## What is a Docker Container?
@@ -49,11 +49,11 @@ This example will create an nginx container with port 80 exposed, using the offi
 
     In this screenshot, the nginx image is two weeks old:
 
-    ![DockerContainerImages](/docs/assets/docker/docker_container_images.png)
+    ![DockerContainerImages](/content/assets/docker/docker_container_images.png)
 
-2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide. Run `docker image` again to confirm the update:
+2.  Update the original image with `docker pull nginx` as shown in the [How to Install Docker and Pull Images for Container Deployment](/content/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide. Run `docker image` again to confirm the update:
 
-    ![Docker Pull New nginx Image](/docs/assets/docker/docker_container_pull_new_image.png "Pull newest nginx image and confirm version number.")
+    ![Docker Pull New nginx Image](/content/assets/docker/docker_container_pull_new_image.png "Pull newest nginx image and confirm version number.")
 
 3.  Deploy the container:
 
@@ -61,7 +61,7 @@ This example will create an nginx container with port 80 exposed, using the offi
 
     This will show the newly created ID for the container. Note that the `-d`, *detach*, option returns you to the prompt:
 
-    ![Docker run](/docs/assets/docker/docker_container_run_container.png "Docker run returns the container ID.")
+    ![Docker run](/content/assets/docker/docker_container_run_container.png "Docker run returns the container ID.")
 
 4.  Confirm that the container is running:
 
@@ -69,7 +69,7 @@ This example will create an nginx container with port 80 exposed, using the offi
 
 5.  Navigate to your Linode's IP address to see the default nginx welcome message:
 
-    ![Welcome to nginx](/docs/assets/docker/docker_container_welcome_to_nginx.png "Welcome to nginx.")
+    ![Welcome to nginx](/content/assets/docker/docker_container_welcome_to_nginx.png "Welcome to nginx.")
 
 ## How to Stop and Delete Containers
 

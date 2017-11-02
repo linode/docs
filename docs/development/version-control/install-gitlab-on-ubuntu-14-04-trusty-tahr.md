@@ -21,21 +21,21 @@ external_resources:
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 ---
 
-![Install Gitlab on Ubuntu](/docs/assets/install-gitlab-on-ubuntu/Install_GitLab_smg.jpg)
+![Install Gitlab on Ubuntu](/content/assets/install-gitlab-on-ubuntu/Install_GitLab_smg.jpg)
 
 GitLab is a free git repository management application based on Ruby on Rails. It is an interesting alternative if you want to host your own git repositories, since third-party hosting is not always the best option when writing private or closed-source software.
 
 GitLab provides a [.deb package](https://www.gitlab.com/downloads/) which contains GitLab Community Edition and all its dependencies (Ruby, PostgreSQL, Redis, Nginx, Unicorn and other gems) already compiled. Installing this package is [straightforward](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/README.md#installation). But since it will install its own package dependencies (Nginx, PostgreSQL, etc), this installation method is suitable if the server is dedicated only to managing git repositories. If you want GitLab to use your existing resources (i.e: you already have Nginx and PostgreSQL installed), you need to install GitLab manually.
 
-This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/docs/tools-reference/linux-system-administration-basics) guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This guide will help you install and configure GitLab on your Ubuntu 14.04 (Trusty Tahr) Linode. We will be using the latest Ruby and GitLab as of this writing, so check for the latest version. We will assume that you want to install GitLab on `git.example.com` and you have configured the DNS properly. If you are new to Linux system administration, you might want to consider the [Introduction to Linux Concepts guide](/content/tools-reference/introduction-to-linux-concepts) and [Linux Administration Basics guide](/content/tools-reference/linux-system-administration-basics) guides. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
  {: .note }
 >
-> This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## System Requirements
 
@@ -73,7 +73,7 @@ In this section you will install the development tools and the required packages
 
         sudo apt-get install postfix
 
-   Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide.
+   Select `Internet site` and enter your hostname to complete the installation. If you need to set up a complete SMTP/IMAP/POP3 server, refer to the [Email with Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) guide.
 
 ### Install Ruby
 
@@ -413,11 +413,11 @@ If most of the items are green and some are purple (which is okay since you don'
 
 Now you can open http://git.example.com on your browser. GitLab will show you the login page.
 
-![GitLab Login Page](/docs/assets/gitlab-login-page-s.png)
+![GitLab Login Page](/content/assets/gitlab-login-page-s.png)
 
 You can login using **root** as the username and **5iveL!fe** for the password.
 
 ## Securing GitLab
 
-Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
+Now that you have GitLab running on your server, you might want to add SSL support to secure your GitLab site. Refer to the [SSL Certificates with Nginx](/content/security/ssl/ssl-certificates-with-nginx) guide to protect your site with SSL.
 

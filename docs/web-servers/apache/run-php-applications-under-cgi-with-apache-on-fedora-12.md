@@ -16,9 +16,9 @@ title: Run PHP Applications under CGI with Apache on Fedora 12
 
 
 
-In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/docs/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; it forces all scripts to be executed with the permissions of a shared user account, and is incompatible with some other Apache modules and process. For example, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/docs/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
+In most cases, we recommend using the `mod_php` module to run PHP scripts with the [Apache HTTP server](/content/web-servers/apache/). This embeds a PHP interpreter in the web server process and makes running PHP applications easy. The embedded interpreter approach, however, is not without challenges; it forces all scripts to be executed with the permissions of a shared user account, and is incompatible with some other Apache modules and process. For example, in our experience `mod_php` is incompatible with the `mod_rails` or Phusion Passenger method of running [Ruby On Rails](/content/frameworks/). In these cases, if you want to run PHP and Rails applications within a single instance of Apache, you must run PHP scripts as CGI processes, using the method outlined below.
 
-Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/docs/web-servers/apache/).
+Before beginning this guide, we assume that you've completed the [getting started guide](/content/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/content/beginners-guide/), and the article concerning [systems administration basics](/content/using-linux/administration-basics). If you're interested in learning more about the Apache HTTP server, we encourage you to consider our extensive documentation on [Apache configuration](/content/web-servers/apache/).
 
 Installing Apache and PHP
 -------------------------
@@ -36,7 +36,7 @@ To start Apache for the first time and ensure that it resumes following subseque
     /etc/init.d/httpd start
     chkconfig httpd on
 
-You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-fedora-12/#configure-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/content/web-servers/apache/apache-2-web-server-on-fedora-12/#configure-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     yum install php-cgi
 
@@ -45,7 +45,7 @@ When this process completes, we can configure Apache to hand PHP scripts to the 
 Configure Apache for PHP CGI
 ----------------------------
 
-The directives required to enable PHP CGI may be set anywhere in Apache's [configuration tree](/docs/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Fedora systems this is located at `/etc/httpd/conf.d/`. Regardless of their location, the relevant settings are:
+The directives required to enable PHP CGI may be set anywhere in Apache's [configuration tree](/content/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Fedora systems this is located at `/etc/httpd/conf.d/`. Regardless of their location, the relevant settings are:
 
 {: .file-excerpt }
 Apache Configuration Block
@@ -89,4 +89,4 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The PHP Homepage](http://php.net/)
-- [Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)
+- [Apache 2.2 CGI documentation](http://httpd.apache.org/content/2.2/howto/cgi.html)

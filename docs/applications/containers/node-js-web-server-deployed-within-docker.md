@@ -16,7 +16,7 @@ alias: ['applications/containers/nodejs-node-js-web-server-docker-container/']
 Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
 
 ##Install Docker
-Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
+Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://content.docker.com/en/latest/installation/) guides.
 
 1.  Install Docker:
 
@@ -31,7 +31,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
     >
-    >This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS. If you require AUFS support, you will need to configure a [distribution supplied](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
+    >This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS. If you require AUFS support, you will need to configure a [distribution supplied](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/content/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
 
 2.  If necessary, add the non-root user to the "docker" group:
 
@@ -85,7 +85,7 @@ The [Docker Hub image page](https://registry.hub.docker.com/u/linode/server-node
 
 ##For More Information
  - [Linode Docker Hub Page](https://hub.docker.com/u/linode/)
- - [Docker Docs](http://docs.docker.com/)
+ - [Docker Docs](http://content.docker.com/)
  - [Docker Try it Tutorial](https://www.docker.com/tryit/)
  - [Docker Hub](https://hub.docker.com/)
 

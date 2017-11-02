@@ -13,16 +13,16 @@ published: 'Monday, February 23rd, 2015'
 title: 'How to install Docker and deploy a LAMP Stack'
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
- - '[Docker Docs](http://docs.docker.com/)'
+ - '[Docker Docs](http://content.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
 Docker is a container platform for applications. With Docker, users can download pre-configured apps without the hassle of the installation and configuration process. Docker containers can also build on each other.
 
-![How to Install Docker and deploy a LAMP Stack](/docs/assets/how-to-install-docker-and-deploy-a-lamp-stack.png)
+![How to Install Docker and deploy a LAMP Stack](/content/assets/how-to-install-docker-and-deploy-a-lamp-stack.png)
 
-*If you are familiar with Docker containers, also try [Linode Images](/docs/platform/linode-images) to capture and deploy larger system profiles.*
+*If you are familiar with Docker containers, also try [Linode Images](/content/platform/linode-images) to capture and deploy larger system profiles.*
 
 ##Install Prerequisites
 Due to a [known issue](https://github.com/docker/docker/issues/23347) with the dependencies of the docker .deb, installing docker on a Debian/Ubuntu VM requires an additional step:
@@ -32,7 +32,7 @@ Due to a [known issue](https://github.com/docker/docker/issues/23347) with the d
         apt-get install dmsetup && dmsetup mknodes
 
 ##Install Docker
-Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
+Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://content.docker.com/en/latest/installation/) guides.
 
 1.  Run:
 
@@ -47,7 +47,7 @@ Use the Docker-maintained install script for Debian or Ubuntu. For other operati
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
     >
-    >This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
+    >This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS.  If you require AUFS support, you will need to configure a [distribution supplied](https://www.linode.com/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/content/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
 
 2.  If necessary, add the non-root user to the "docker" group:
 
@@ -94,4 +94,4 @@ When an image downloads, there are no image containers running.
 Congratulations, you have installed a configured LAMP stack using Docker!
 
 ##Where to Find Configuration Settings
-The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.
+The LAMP image was installed using the [Hosting a Website](/content/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.

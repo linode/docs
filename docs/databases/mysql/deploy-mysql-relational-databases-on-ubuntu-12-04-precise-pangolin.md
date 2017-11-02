@@ -23,11 +23,11 @@ MySQL is a popular database management system used for web and server applicatio
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Prerequisites
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -47,9 +47,9 @@ MySQL is a popular database management system used for web and server applicatio
 
 During the installation process, you will be prompted to set a password for the MySQL root user as shown below. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
+[![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/content/assets/mysql-root-pw.png)](/content/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using an SSH tunnel.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/content/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using an SSH tunnel.
 
 {: .note}
 >

@@ -12,21 +12,21 @@ modified_by:
 published: 'Monday, November 16th, 2009'
 title: 'Create a Self-Signed Certificate on CentOS and Fedora'
 external_resources:
- - '[OpenSSL documentation](http://openssl.org/docs/)'
+ - '[OpenSSL documentation](http://openssl.org/content/)'
 ---
 
 This guide details the process for creating a self-signed SSL certificate on CentOS or Fedora. Self-signed certificates are suitable for personal use or for applications used internally within an organization.
 
-If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
+If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/content/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/content/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
 {: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
- - Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
+ - Complete our [Getting Started](/content/getting-started) and [Securing Your Server](/content/securing-your-server) guides.
 
  - Ensure that your packages are up to date.
 

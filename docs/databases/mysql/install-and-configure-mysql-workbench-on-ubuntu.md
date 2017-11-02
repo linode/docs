@@ -13,12 +13,12 @@ published: 'Tuesday, August 8, 2017'
 title: 'Install and Configure MySQL Workbench on Ubuntu 16.04'
 external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
- - '[Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration)'
+ - '[Deploy MySQL Workbench for Database Administration](/content/databases/mysql/deploy-mysql-workbench-for-database-administration)'
 ---
 
 MySQL Workbench is a feature-rich graphical tool used to model data, build SQL queries, manage MySQL servers, and more. This guide will show you how to install Workbench using the Ubuntu package manager.
 
-![MySQL Workbench](/docs/assets/mysql_workbench_ubuntu.jpg)
+![MySQL Workbench](/content/assets/mysql_workbench_ubuntu.jpg)
 
 ## Before You Begin
 
@@ -44,7 +44,7 @@ To view more launch options from the command line interface, use the `--help` op
 
 MySQL Workbench shows this welcome screen on first run:
 
-![MySQL Workbench Welcome Screen](/docs/assets/mysql-workbench-first.png "MySQL Workbench Welcome Screen")
+![MySQL Workbench Welcome Screen](/content/assets/mysql-workbench-first.png "MySQL Workbench Welcome Screen")
 
 ## Configure MySQL Workbench
 
@@ -52,15 +52,15 @@ Use the built-in Workbench Preferences to adjust settings such as targeted MySQL
 
 To open the preferences, click on `Edit`, then `Preferences` in the main menu:
 
-![MySQL Workbench Preferences](/docs/assets/mysql-workbench-preferences.png "MySQL Workbench Preferences")
+![MySQL Workbench Preferences](/content/assets/mysql-workbench-preferences.png "MySQL Workbench Preferences")
 
 ## Optional: Load a Sample Database into MySQL Server
 
-See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases/mysql/install-mysql-on-ubuntu-14-04) or [Debian 8](/docs/databases/mysql/how-to-install-mysql-on-debian-8) for more information on creating or logging into a MySQL server.
+See the guide on how to [Install a MySQL server on Ubuntu 14.04](/content/databases/mysql/install-mysql-on-ubuntu-14-04) or [Debian 8](/content/databases/mysql/how-to-install-mysql-on-debian-8) for more information on creating or logging into a MySQL server.
 
-1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started#connect-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
+1.  Access the MySQL server on your Linode [via SSH](/content/getting-started#connect-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/content/sakila-db.tar.gz):
 
-        wget http://downloads.mysql.com/docs/sakila-db.tar.gz
+        wget http://downloads.mysql.com/content/sakila-db.tar.gz
 
 2.  Decompress the `tar.gz` file:
 
@@ -68,19 +68,19 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
 3.  Open MySQL Workbench on your local machine and click `+` to create a new connection:
 
-    ![MySQL Workbench Home](/docs/assets/mysql-workbench-home.png "MySQL Workbench Home")
+    ![MySQL Workbench Home](/content/assets/mysql-workbench-home.png "MySQL Workbench Home")
 
 4.  Create a **Connection Name**. Click the **Connection Method** dropdown menu and select `Standard TCP/IP over SSH`. Complete the credentials for SSH and MySQL user login:
 
-    ![MySQL Workbench Connection](/docs/assets/mysql-workbench-connection.png "MySQL Workbench Connection")
+    ![MySQL Workbench Connection](/content/assets/mysql-workbench-connection.png "MySQL Workbench Connection")
 
     {: .note}
     >
-    >The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration) for more information.
+    >The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/content/databases/mysql/deploy-mysql-workbench-for-database-administration) for more information.
 
 5.  Under **File**, select **Run SQL Script...**. Select `sakila-schema.sql` then click **Run**:
 
-    ![MySQL Workbench Script](/docs/assets/mysql-workbench-run-script.png "MySQL Workbench Script")
+    ![MySQL Workbench Script](/content/assets/mysql-workbench-run-script.png "MySQL Workbench Script")
 
 6.  Repeat Step 5 for `sakila-data.sql`.
 
@@ -89,6 +89,6 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
         USE sakila;
         SELECT * FROM actors WHERE first_name LIKE 'A%';
 
-    ![MySQL Workbench Query](/docs/assets/mysql-workbench-query.png "MySQL Workbench Query")
+    ![MySQL Workbench Query](/content/assets/mysql-workbench-query.png "MySQL Workbench Query")
 
 The sample database provides a sandbox in which to test configurations and show how to integrate them into your workflow. MySQL Workbench offers a graphical interface to view database models in addition to building queries. While there are plenty of features, free and commercial, lightweight alternatives are available, depending on needs of the user. MySQL Workbench remains a great choice for most database administration tasks.

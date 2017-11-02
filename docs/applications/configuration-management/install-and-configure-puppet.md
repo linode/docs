@@ -13,12 +13,12 @@ published: 'Thursday, September 17th, 2015'
 title: Install and Configure Puppet
 external_resources:
     - '[Puppet Labs](https://puppetlabs.com/)'
-    - '[Puppet Open Source Documentation](https://docs.puppetlabs.com/puppet/)'
+    - '[Puppet Open Source Documentation](https://content.puppetlabs.com/puppet/)'
 ---
 
 [Puppet](https://puppetlabs.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
 
-![Install and Configure Puppet](/docs/assets/install-puppet-title.png "Install and Configure Puppet")
+![Install and Configure Puppet](/content/assets/install-puppet-title.png "Install and Configure Puppet")
 
 Puppet is written in its own custom language, meant to be accessible to system administrators. A module, located on the Puppet master, describes the desired system. The Puppet software then translates the module into code and alters the agent servers as needed when the `puppet agent` command is run on an agent node or automatically at designated intervals.
 
@@ -32,7 +32,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
 
 1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Getting Started](/docs/getting-started) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Getting Started](/content/getting-started) guide and ensure your Linodes are configured to use the same timezone.
 
     {: .note}
     >
@@ -62,7 +62,7 @@ Puppet can be used to manage multiple servers across various infrastructures, fr
     >
     >        wget https://apt.puppetlabs.com/puppetlabs-release-pc1-VERSION.deb
     >
-    >Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](https://www.linode.com/docs/tools-reference/linux-package-management).
+    >Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://content.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](https://www.linode.com/content/tools-reference/linux-package-management).
 
 2.  Install the `puppetmaster-passenger` package:
 
@@ -164,7 +164,7 @@ On agent nodes running **CentOS 7** or other Red Hat systems, follow these steps
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/content/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {: .note}
 >
@@ -383,7 +383,7 @@ Although a new user has successfully been added to the Puppet master, the accoun
 
     {: .note}
     >
-    > The `file` directory is omitted from the `source` line because the `files` folder is the default location of files. For more information on the format used to access resources in a module, refer to the [official Puppet module documentation](https://docs.puppet.com/puppet/3.8/modules_fundamentals.html#module-layout).
+    > The `file` directory is omitted from the `source` line because the `files` folder is the default location of files. For more information on the format used to access resources in a module, refer to the [official Puppet module documentation](https://content.puppet.com/puppet/3.8/modules_fundamentals.html#module-layout).
 
 5.  Create a second resource to restart the SSH service and set it to run whenever `sshd_config` is changed. This will also require a selector statement because the SSH service is called `ssh` on Debian systems and `sshd` on Red Hat:
 
@@ -710,4 +710,4 @@ Now that the `accounts` and `firewall` modules have been created, tested, and ru
 
         sudo iptables -L
 
-Congratulations! You've successfully installed Puppet on a master and two agent nodes. Now that you've confirmed everything is working, you can create additional modules to automate configuration management on your agent nodes. For more information, see [Puppet module fundamentals](https://docs.puppet.com/puppet/latest/reference/modules_fundamentals.html). You can also install and use those modules others have created on the [Puppet Forge](https://docs.puppet.com/puppet/latest/reference/modules_installing.html).
+Congratulations! You've successfully installed Puppet on a master and two agent nodes. Now that you've confirmed everything is working, you can create additional modules to automate configuration management on your agent nodes. For more information, see [Puppet module fundamentals](https://content.puppet.com/puppet/latest/reference/modules_fundamentals.html). You can also install and use those modules others have created on the [Puppet Forge](https://content.puppet.com/puppet/latest/reference/modules_installing.html).

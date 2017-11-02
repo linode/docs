@@ -13,18 +13,18 @@ title: 'How to Install a Turtl Server on Ubuntu'
 
 ---
 
-![Turtl_Banner](/docs/assets/turtl/Turtl.jpg)
+![Turtl_Banner](/content/assets/turtl/Turtl.jpg)
 
-[Turtl](https://turtlapp.com/docs) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
+[Turtl](https://turtlapp.com/content) is an open-source alternative to cloud-based storage services. With a focus on privacy, Turtl offers a place to store and access your passwords, bookmarks and pictures. Hosting your own Turtl server on a secure Linode allows you to monitor your own security.
 
-The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/docs/security/encryption-specifics/) section of the official documentation.
+The Turtl server is written in Common Lisp, and the low-level encryption is derived from the Stanford Javascript Crypto Library. If encryption is important to you, read over the [encryption specifics](https://turtlapp.com/content/security/encryption-specifics/) section of the official documentation.
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for an OpenVPN server.
 
 3.  Update your system:
 
@@ -60,7 +60,7 @@ After the package is built, run `sudo ldconfig` to maintain the shared libracy c
 
 #### RethinkDB
 
-[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to the Turtl [documentation](https://turtlapp.com/docs/server/), RethinkDB just needs to be installed; Turtl will take care of the rest.
+[RethinkDB](https://rethinkdb.com/faq/) is a flexible JSON datbase. According to the Turtl [documentation](https://turtlapp.com/content/server/), RethinkDB just needs to be installed; Turtl will take care of the rest.
 
 RehinkDB has community-maintained packages on most distributions. On Ubuntu, you have to add the RethinkDB to your list of repositories:
 
@@ -211,12 +211,12 @@ Go to your home directory and run `ccl64`. This will automatically start the Tur
 
 On your local device, download a client app for Turtl from the [turtl website](https://turtlapp.com/download/) for supported devices and operating systems.
 
-![turtldownload](/docs/assets/turtl/turtl_download.png)
+![turtldownload](/content/assets/turtl/turtl_download.png)
 
 
 Put your public facing IP address (or `http://localhost:8181` if running locally) when prompted and create a username.
 
-![turtlinfo](/docs/assets/turtl/enterip.png)
+![turtlinfo](/content/assets/turtl/enterip.png)
 
 You now have a functioning Turtl server. Add files, store passwords, and save bookmarks in your own private Turtl instance.
 

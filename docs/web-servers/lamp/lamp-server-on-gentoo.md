@@ -14,9 +14,9 @@ published: 'Thursday, October 24th, 2013'
 title: LAMP Server on Gentoo
 external_resources:
   - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
-  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
-  - '[PHP Documentation](http://www.php.net/docs.php)'
+  - '[PHP Documentation](http://www.php.net/content.php)'
 ---
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Gentoo Linux system.
@@ -29,7 +29,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname and Configure /etc/hosts
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

@@ -18,15 +18,15 @@ external_resources:
 
 OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices.
 
-![ownCloud](/docs/assets/owncloud_ubuntu.jpg)
+![ownCloud](/content/assets/owncloud_ubuntu.jpg)
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  [Install and configure a LAMP stack](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
+3.  [Install and configure a LAMP stack](/content/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
 
 4.  Update your system:
 
@@ -81,15 +81,15 @@ Add the repository key to apt, and install ownCloud:
 
 1. After ownCloud is installed and MySQL is configured, point your browser to `ip_address_or_domain/owncloud` (where, `ip_address_or_domain` is your IP or FQDN) and create an administrator account:
 
-    ![ownCloud login screen](/docs/assets/ownCloud/login.png)
+    ![ownCloud login screen](/content/assets/ownCloud/login.png)
 
 2.  Click **Storage & database** and enter the database login information:
 
-    ![ownCloud database information](/docs/assets/ownCloud/dbinfo.png)
+    ![ownCloud database information](/content/assets/ownCloud/dbinfo.png)
 
     Welcome to ownCloud:
 
-    ![ownCloud greeting](/docs/assets/ownCloud/owncloud.png)
+    ![ownCloud greeting](/content/assets/ownCloud/owncloud.png)
 
 ## Install ClamAV and Configure ownCloud
 
@@ -101,15 +101,15 @@ Add the repository key to apt, and install ownCloud:
 
 2.  Enable the antivirus app in ownCloud. Select **Apps** from the menu, then **Not enabled** to find "Antivirus App for files" and click **Enable**:
 
-    ![Antivirus app for files](/docs/assets/ownCloud/antivirus.png)
+    ![Antivirus app for files](/content/assets/ownCloud/antivirus.png)
 
 3.  Configure the antivirus mode in ownCloud to reflect the changes to your system:
 
-    ![Antivirus socket configuration](/docs/assets/ownCloud/owncloud_socket.png)
+    ![Antivirus socket configuration](/content/assets/ownCloud/owncloud_socket.png)
 
 4.  To add new users and groups, select **Users** in the dropdown menu in the upper right-hand corner:
 
-    ![User configuration panel](/docs/assets/ownCloud/owncloudusers.png)
+    ![User configuration panel](/content/assets/ownCloud/owncloudusers.png)
 
 ## Secure the System
 

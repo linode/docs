@@ -12,16 +12,16 @@ modified_by:
 published: 'Thursday, September 30th, 2010'
 title: Build Database Clusters with MongoDB
 external_resources:
- - '[MongoDB Documentation for Replica Sets](https://docs.mongodb.com/manual/reference/replica-configuration/)'
- - '[MongoDB Documentation for Master-Slave Replication](https://docs.mongodb.com/manual/core/master-slave/)'
- - '[MongoDB Documentation for Sharding](https://docs.mongodb.com/manual/sharding/)'
- - '[MongoDB Documentation for Auto Sharding Configuration](https://docs.mongodb.com/manual/sharding/)'
- - '[Configure MongoDB for SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/)'
+ - '[MongoDB Documentation for Replica Sets](https://content.mongodb.com/manual/reference/replica-configuration/)'
+ - '[MongoDB Documentation for Master-Slave Replication](https://content.mongodb.com/manual/core/master-slave/)'
+ - '[MongoDB Documentation for Sharding](https://content.mongodb.com/manual/sharding/)'
+ - '[MongoDB Documentation for Auto Sharding Configuration](https://content.mongodb.com/manual/sharding/)'
+ - '[Configure MongoDB for SSL/TLS](https://content.mongodb.com/manual/tutorial/configure-ssl/)'
 ---
 
 MongoDB is a leading non-relational database management system, and a prominent member of the [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement. Rather than using the tables and fixed schemas of a relational database management system (RDBMS), MongoDB uses key-value storage in collection of documents. It also supports a number of options for horizontal scaling in large, production environments. In this guide, we'll explain how to set up a *sharded cluster* for highly available distributed datasets.
 
-!["Build Database Clusters with MongoDB"](/docs/assets/build-database-clusters-with-mongodb.png "Build Database Clusters with MongoDB")
+!["Build Database Clusters with MongoDB"](/content/assets/build-database-clusters-with-mongodb.png "Build Database Clusters with MongoDB")
 
 There are two broad categories of scaling strategies for data. *Vertical scaling* involves adding more resources to a server so that it can handle larger datasets. The upside is that the process is usually as simple as migrating the database, but it often involves downtime and is difficult to automate. *Horizontal scaling* involves adding more servers to increase the resources, and is generally preferred in configurations that use fast-growing, dynamic datasets. Because it is based on the concept of adding more servers, not more resources on one server, datasets often need to be broken into parts and distributed across the servers. Sharding refers to the breaking up of data into subsets so that it can be stored on separate database servers (a sharded cluster).
 
@@ -29,18 +29,18 @@ The commands and filepaths in this guide are based on those used in Ubuntu 16.04
 
 ## Before You Begin
 
-1.  To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to [install MongoDB](/docs/databases/mongodb/) on each Linode you want to use in your cluster.
+1.  To follow along with this guide, you will need at least six Linodes. Their functions will be explained in the next section. Follow our guides to [install MongoDB](/content/databases/mongodb/) on each Linode you want to use in your cluster.
 
-2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
+2.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting the hostname and timezone on each Linode. We recommend choosing hostnames that correspond with each Linode's role in the cluster, explained in the next section.
 
-3.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode.
+3.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services for each Linode.
 
 4.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {: .note}
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Cluster Architecture
 
@@ -50,13 +50,13 @@ Before we get started, let's review the components of the setup we'll be creatin
 -   **Query Router** - The `mongos` daemon acts as an interface between the client application and the cluster shards. Since data is distributed among multiple servers, queries need to be routed to the shard where a given piece of information is stored. The query router is run on the application server. In this guide, we'll only be using one query router, although you should put one on each application server in your cluster.
 -   **Shard** - A shard is simply a database server that holds a portion of your data. Items in the database are divided among shards either by range or hashing, which we'll explain later in this guide. For simplicity, we'll use two single-server shards in our example.
 
-!["A sharded MongoDB cluster"](/docs/assets/mongodb-cluster-diagram.png "A sharded MongoDB cluster")
+!["A sharded MongoDB cluster"](/content/assets/mongodb-cluster-diagram.png "A sharded MongoDB cluster")
 
-The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://docs.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set).
+The problem in this configuration is that if one of the shard servers experiences downtime, a portion of your data will become unavailable. To avoid this, you can use [replica sets](https://content.mongodb.com/manual/reference/replica-configuration/) for each shard to ensure high availability. For more information, refer to our guide on [creating MongoDB replica sets](/content/databases/mongodb/create-a-mongodb-replica-set).
 
 ## Configure Hosts File
 
-If your Linodes are all located in the same datacenter, we recommend [adding a private IP address](/docs/networking/remote-access#adding-private-ip-addresses) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://docs.mongodb.com/manual/tutorial/configure-ssl/).
+If your Linodes are all located in the same datacenter, we recommend [adding a private IP address](/content/networking/remote-access#adding-private-ip-addresses) for each one and using those here to avoid transmitting data over the public internet. If you don't use private IP addresses, be sure to [encrypt your data with SSL/TLS](https://content.mongodb.com/manual/tutorial/configure-ssl/).
 
 On each Linode in your cluster, add the following to the `/etc/hosts` file:
 
@@ -74,11 +74,11 @@ On each Linode in your cluster, add the following to the `/etc/hosts` file:
 Replace the IP addresses above with the IP addresses for each Linode. Also substitute the hostnames of the Linodes in your cluster for the hostnames above.
 
 {: .note}
-> You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/docs/networking/dns/dns-manager-overview), only support public IP addresses.
+> You may also configure DNS records for each host rather than using hosts file entries. However, be aware that public DNS servers, such as the ones used when configuring records in the [DNS Manager](/content/networking/dns/dns-manager-overview), only support public IP addresses.
 
 ## Set Up MongoDB Authentication
 
-In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://docs.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
+In this section you'll create a key file that will be used to secure authentication between the members of your replica set. While in this example you'll be using a key file generated with `openssl`, MongoDB recommends using an [X.509 certificate](https://content.mongodb.com/v3.2/core/security-x.509/) to secure connections between production systems.
 
 ### Create an Administrative User
 
@@ -130,7 +130,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
         sudo systemctl restart mongod
 
-    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.
+    You can skip this step on your query router, since you'll create a separate configuration file for it later in this guide. Note that key file authentication automatically enables [role-based access control](https://content.mongodb.com/manual/core/authorization/), so you will need to [create users](https://www.linode.com/content/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them the necessary privileges to access databases.
 
 ## Initialize Config Servers
 
@@ -378,7 +378,7 @@ Now that the query router is able to communicate with the config servers, we mus
 
     These steps can all be done from a single `mongos` connection; you don't need to log into each shard individually and make the connection to add a new shard. If you're using more than two shards, you can use this format to add more shards as well. Be sure to modify the hostnames in the above command if appropriate.
 
-4.  Optionally, if you configured [replica sets](/docs/databases/mongodb/create-a-mongodb-replica-set) for each shard instead of single servers, you can add them at this stage with a similar command:
+4.  Optionally, if you configured [replica sets](/content/databases/mongodb/create-a-mongodb-replica-set) for each shard instead of single servers, you can add them at this stage with a similar command:
 
         sh.addShard( "rs0/mongo-repl-1:27017,mongo-repl-2:27017,mongo-repl-3:27017" )
 
@@ -433,7 +433,7 @@ Before we enable sharding for a collection, we'll need to decide on a *sharding 
 
 **Hash-based sharding** distributes data by using a hash function on your shard key for a more even distribution of data among the shards. Suppose again that you have a collection of customers and addresses. In a hash-based sharding setup, you may choose a customer ID number, for example, as the shard key. This number is transformed by a hash function, and the results of the hashing are what determines which shard the data is stored on. Hash-based sharding is a good strategy in situations where your application will mostly perform write operations, or if your application needs only to run simple read queries like looking up only a few specific customers at a time.
 
-This is not intended to be a comprehensive guide to choosing a sharding strategy. Before making this decision for a production cluster, be sure to analyze your dataset, computing resources, and the queries your application will run. For more information, refer to [MongoDB's documentation on sharding](https://docs.mongodb.com/v3.2/sharding/).
+This is not intended to be a comprehensive guide to choosing a sharding strategy. Before making this decision for a production cluster, be sure to analyze your dataset, computing resources, and the queries your application will run. For more information, refer to [MongoDB's documentation on sharding](https://content.mongodb.com/v3.2/sharding/).
 
 ### Enable Sharding at Collection Level
 
@@ -505,6 +505,6 @@ This section is optional. To ensure your data is being distributed evenly in the
 
 ## Next Steps
 
-Before using your cluster in a production environment, it's important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you're running. For more information, consult our [firewall guides](/docs/security/firewalls/).
+Before using your cluster in a production environment, it's important to configure a firewall to limit ports 27017 and 27019 to only accept traffic between hosts within your cluster. Additional firewall configuration will likely be needed depending on the other services you're running. For more information, consult our [firewall guides](/content/security/firewalls/).
 
-You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](https://www.linode.com/docs/platform/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode images](/docs/platform/linode-images).
+You may also want to create a master disk image consisting of a full MongoDB installation and whatever configuration settings your application requires. By doing so, you can use the Linode Manager to dynamically scale your cluster as your data storage needs grow. You may also do this from the [Linode CLI](https://www.linode.com/content/platform/linode-cli/) if you'd like to automate the process. For more information, see our guide on [Linode images](/content/platform/linode-images).

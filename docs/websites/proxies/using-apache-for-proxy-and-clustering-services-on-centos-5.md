@@ -13,13 +13,13 @@ modified_by:
 published: 'Monday, March 22nd, 2010'
 title: Using Apache for Proxy and Clustering Services on CentOS 5
 external_resources:
- - '[Official Apache Documentation for Proxy Pass](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
- - '[Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)'
+ - '[Official Apache Documentation for Proxy Pass](http://httpd.apache.org/content/2.2/mod/mod_proxy.html)'
+ - '[Official Apache Documentation for Proxy Balancer](http://httpd.apache.org/content/2.2/mod/mod_proxy_balancer.html)'
 ---
 
-The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/docs/web-servers/apache/configuration/configuration-basics), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.
+The Apache HTTP server is a versatile and robust engine for providing access to resources over HTTP. With its modular design and standard [configuration system](/content/web-servers/apache/configuration/configuration-basics), it is a popular and familiar option for systems administrators and architects who require a potentially diverse array of HTTP services, along with a stable and predictable administrative interface. In addition to simply serving content and facilitating the generation of dynamic content, the Apache HTTP server can be deployed as a front end server to mange clusters of web servers.
 
-This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/docs/web-servers/apache/installation/centos-5) before continuing with this guide. Additionally, consider our [getting started](/docs/getting-started/) and [beginner's guide](/docs/beginners-guide/) documents if you are new to Linode, and our [administration basics](/docs/using-linux/administration-basics) guide if you are new to Linux server administration.
+This guide provides a number of configuration examples and suggestions for using Apache as a front end server for other HTTP servers and clusters of servers. If you have not already installed Apache, consider our documentation on [installing Apache](/content/web-servers/apache/installation/centos-5) before continuing with this guide. Additionally, consider our [getting started](/content/getting-started/) and [beginner's guide](/content/beginners-guide/) documents if you are new to Linode, and our [administration basics](/content/using-linux/administration-basics) guide if you are new to Linux server administration.
 
 ## Case One: Separating Static Content from Dynamic Content
 
@@ -48,11 +48,11 @@ Reload the web server configuration to create the virtual host. Issue the follow
 
     /etc/init.d/httpd reload
 
-Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
+Now, place the static files in the `/srv/www/static.example.com/public_html/` folder and ensure all static content is served from URLs that begin with `http://static.example.com/`. You must create an [A Record](/content/networking/dns/dns-records-an-introduction#a-and-aaaa) that points to your Linode's IP for the `static.example.com` domain. You can repeat and expand on this process by effectively creating a small cluster of independent servers that can serve separate components of a single website using sub-domains.
 
 ## Case Two: Using ProxyPass to Delegate Services to Alternate Machines
 
-In our guide to using [multiple web servers with ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) to ensure that `mod_proxy` is active.
+In our guide to using [multiple web servers with ProxyPass](/content/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5) we outline a method for configuring multiple websites using Apache's `mod_proxy`. Follow this guide, particularly the section regarding configuring [mod\_proxy](/content/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) to ensure that `mod_proxy` is active.
 
 Once `mod_proxy` is enabled and configured, you can insert the following directives into your virtual hosting configuration:
 
@@ -76,7 +76,7 @@ In essence, the `ProxyPass` directive in this manner allows you to distribute se
 
 ## Case Three: Proxy only Some Requests to a Back End
 
-While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of back end servers, this kind of architecture only makes sense for some kinds of deployments. In many situations, administrators might like to have much more fine-grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/docs/web-servers/apache/configuration/rewriting-urls), we can configure `mod_proxy` to more flexibly pass requests to alternate backends.
+While using `ProxyPass` directives allows you to distribute resources by directory amongst a collection of back end servers, this kind of architecture only makes sense for some kinds of deployments. In many situations, administrators might like to have much more fine-grained control over the requests passed to external servers. In conjunction with [mod\_rewrite](/content/web-servers/apache/configuration/rewriting-urls), we can configure `mod_proxy` to more flexibly pass requests to alternate backends.
 
 Before continuing, ensure that you've completed the ProxyPass guide, particularly the section regarding configuring `mod_proxy`. Do not forget to create and configure the `/etc/httpd/conf.d/proxy.conf` file.
 
@@ -151,7 +151,7 @@ In this example, the `RewriteCond` controls the behavior of the `RewriteEngine` 
 
 All of the previous cases presented in this document outline configurations for using `mod_proxy` in various configurations to make it possible to use your Apache HTTP server as a front end for a more complex architecture. This case takes this one step further by allowing Apache to proxy requests to a group of identical backend servers, and thus be able to handle a much larger load.
 
-Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in the [mod\_proxy](/docs/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) documentation. Do not forget to reload the Apache configuration again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
+Ensure that you have a `/etc/httpd/conf.d/proxy.conf` file as described in the [mod\_proxy](/content/websites/proxies/multiple-web-servers-with-proxypass-on-centos-5/#enabling-the-proxy-module) documentation. Do not forget to reload the Apache configuration again once you have fully configured your virtual host and cluster. Consider the following Apache configuration directives:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
@@ -179,7 +179,7 @@ Apache Virtual Host Configuration
     </VirtualHost>
     ~~~
 
-In this case we establish a cluster of services running on hosts named `app1.example.com` through `app5.example.com`. You can specify any host name or IP and port combination when creating the initial cluster. The `BalancerMember` directive also takes all of the arguments of the [ProxyPass directive](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#proxypass) which allow you to customize and limit the behavior of each cluster component. Variables like `min=`, `max=`, and `Max=` allow you to control "minimum" and "maximum" limits for sessions as well as a "soft maximum" which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established simply use the `ProxyPass` directive as described in earlier cases to pass requests to the cluster.
+In this case we establish a cluster of services running on hosts named `app1.example.com` through `app5.example.com`. You can specify any host name or IP and port combination when creating the initial cluster. The `BalancerMember` directive also takes all of the arguments of the [ProxyPass directive](http://httpd.apache.org/content/2.2/mod/mod_proxy.html#proxypass) which allow you to customize and limit the behavior of each cluster component. Variables like `min=`, `max=`, and `Max=` allow you to control "minimum" and "maximum" limits for sessions as well as a "soft maximum" which sets a soft maximum after which additional connections will be subject to a time to live. Once the cluster is established simply use the `ProxyPass` directive as described in earlier cases to pass requests to the cluster.
 
 The `lbmethod=` argument to the `ProxyPass` directive controls the method by which Apache distributes requests to the back end server. There are three options displayed in commented lines (e.g. beginning with hash marks, `#`). The first, `lbmethod=byrequests`, is the default and equivalent to not specifying a `lbmethod=` argument. `byrequests` distributes requests so that each backend server receives the same number of requests or the configured share of the requests. By contrast the `bytraffic` and `bybusyness` methods attempt to distribute the traffic between different cluster elements by assessing the amount of actual traffic and load, respectively, on each backend. Test each method with your deployment to ensure that you select the most useful load balancer method.
 
@@ -196,4 +196,4 @@ Apache Virtual Host Configuration
     </Location>
     ~~~
 
-Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/docs/web-servers/apache/configuration/rule-based-access-control). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a front end!
+Modify the `Allow from` directive to allow access *only* from your current local machine's IP address, and read more about [rule-based access control](/content/web-servers/apache/configuration/rule-based-access-control). Now visit `/balancer-manager` of the domain of your virtual host (e.g. `example.com`,) in our example `http://example.com/balancer-manager` to use Apache's tools for managing your cluster. Ensure that the `/balancer-manager` location is **not** established at a location that is to be passed to a proxied server. Congratulations you are now able to configure a fully functional cluster of web servers using the Apache web server as a front end!

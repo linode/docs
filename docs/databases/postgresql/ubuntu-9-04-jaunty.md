@@ -15,7 +15,7 @@ title: 'Use PostgreSQL Relational Databases on Ubuntu 9.04 (Jaunty)'
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.04 (Jaunty). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.04 (Jaunty). We assume you've followed the steps detailed in our [getting started guide](/content/getting-started/), and that you're logged into your Linode as root via SSH.
 
 Installing PostgreSQL
 ---------------------
@@ -128,7 +128,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [PostgreSQL Online Documentation](http://www.postgresql.org/docs/)
+- [PostgreSQL Online Documentation](http://www.postgresql.org/content/)
 - [psql manual page](http://www.rootr.net/man/man/psql/1)
 
 

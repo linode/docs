@@ -14,7 +14,7 @@ title: Install OpenVAS 8 on Ubuntu 16.04
 
 OpenVAS, the Open Vulnerability Assessment System, is a framework of tools that allow you to scan your system for thousands of known vulnerabilities. This guide will show you how to install OpenVAS 8 on Ubuntu 16.04.
 
-![Install OpenVAS 8 on Ubuntu 16.04](/docs/assets/openvas_title.png "Install OpenVAS 8 on Ubuntu 16.04")
+![Install OpenVAS 8 on Ubuntu 16.04](/content/assets/openvas_title.png "Install OpenVAS 8 on Ubuntu 16.04")
 
 OpenVAS consists of:
 
@@ -30,16 +30,16 @@ For more information about the architecture of the software, refer to the [OpenV
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system.
 
         sudo apt update && sudo apt upgrade
 
 {: .note}
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install OpenVAS
 
@@ -61,7 +61,7 @@ The `openvas` repository and its packages are not officially supported by Ubuntu
 
     When installing `openvas`, you'll be prompted to configure a Redis database for application data, such as tasks and configurations. Select **Yes** when asked if you'd like to add a socket at `/var/run/redis/redis.sock`:
 
-    [![OpenVAS Redis socket configuration.](/docs/assets/openvas-redis-configuration.png)](/docs/assets/openvas-redis-configuration.png)
+    [![OpenVAS Redis socket configuration.](/content/assets/openvas-redis-configuration.png)](/content/assets/openvas-redis-configuration.png)
 
 3.  Install the SQLite 3 database package. This is used to store the [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/) data we'll obtain in Step 5:
 
@@ -72,7 +72,7 @@ The `openvas` repository and its packages are not officially supported by Ubuntu
         sudo openvas-nvt-sync
 
     {: .note}
-    > This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron) to automate the process.
+    > This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](https://www.linode.com/content/tools-reference/tools/schedule-tasks-with-cron) to automate the process.
 
 5.  Sync Security Content Automation Protocol (SCAP) and Computer Emergency Readiness Team (CERT) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:
 
@@ -149,11 +149,11 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
 
 2.  The next page you see will be a login for the Greenbone Security Assistant, the graphical web interface for the OpenVAS manager. Once the page appears on you screen, enter the credentials for your `admin` user and click "Login."
 
-    [![Greenbone Security Assistant login page.](/docs/assets/openvas-gsa-login.png)](/docs/assets/openvas-gsa-login.png)
+    [![Greenbone Security Assistant login page.](/content/assets/openvas-gsa-login.png)](/content/assets/openvas-gsa-login.png)
 
 3.  The welcome screen will display instructions on how to use the tool. OpenVAS uses "Tasks" to manage scans, but to start running one right away, simply enter a hostname or IP address in the text box under "Quick Start," and then click "Start Scan." This schedules a scan of the specified host to start immediately and sets the page contents to refresh every 30 seconds, so you can see the progress in real time.
 
-    [![Greenbone Security Assistant Task Wizard.](/docs/assets/openvas-gsa-task-wizard.png)](/docs/assets/openvas-gsa-task-wizard.png)
+    [![Greenbone Security Assistant Task Wizard.](/content/assets/openvas-gsa-task-wizard.png)](/content/assets/openvas-gsa-task-wizard.png)
 
     {: .note}
     >The Quick Start screen will not appear on login after you've scheduled 3 or more tasks. To access this screen at any time, click the "Scan Management" tab at the top of the screen, select "Tasks," and hover over the purple magic wand icon in the top bar. From there, you can select "Task Wizard" or "Advanced Task Wizard" to create a new task quickly and easily.
@@ -162,19 +162,19 @@ Congratulations! OpenVAS is now ready to use. In this section, we'll provide a b
 
     To view the details of a specific task, click its name under "Task." In the example below, it was called "Immediate scan of IP localhost" when we created it with the Task Wizard:
 
-    [![List of reports.](/docs/assets/openvas-gsa-reports.png)](/docs/assets/openvas-gsa-reports.png)
+    [![List of reports.](/content/assets/openvas-gsa-reports.png)](/content/assets/openvas-gsa-reports.png)
 
 5.  A "Task Details" screen will be displayed, showing information such as status, and the number of vulnerabilities detected. To view the details of any vulnerabilities that were found, click the number next to "Results." In our example, there were 33:
 
-    [![Details of the selected task.](/docs/assets/openvas-gsa-task-details.png)](/docs/assets/openvas-gsa-task-details.png)
+    [![Details of the selected task.](/content/assets/openvas-gsa-task-details.png)](/content/assets/openvas-gsa-task-details.png)
 
 6.  The "Results" page will list potential vulnerabilities found in the scan. To sort them, click the heading of any column at the top of the page. Note that if you run scans on multiple servers, you'll need to sort the results by host to determine which servers are affected by vulnerabilities.
 
-    [![List of results found by the scan.](/docs/assets/openvas-gsa-results.png)](/docs/assets/openvas-gsa-results.png)
+    [![List of results found by the scan.](/content/assets/openvas-gsa-results.png)](/content/assets/openvas-gsa-results.png)
 
     To view details of a vulnerability, such as the method of detection, impact to your system, and in some cases a solution, click the name of the vulnerability. In the example below, OpenVAS has detected that we haven't changed the default login credentials, and it tells us how to resolve the issue:
 
-    [![Details of a vulnerability result.](/docs/assets/openvas-gsa-result-details.png)](/docs/assets/openvas-gsa-result-details.png)
+    [![Details of a vulnerability result.](/content/assets/openvas-gsa-result-details.png)](/content/assets/openvas-gsa-result-details.png)
 
     Once you resolve a vulnerability, return to the "Tasks" screen, and click the green play button icon under "Actions" to run the scan again. When the task completes, the vulnerability should no longer be present in your results.
 

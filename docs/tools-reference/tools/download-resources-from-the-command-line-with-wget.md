@@ -24,10 +24,10 @@ The `wget` command takes one of the following forms:
 
 When issued at the command line without options, `wget` will download the file specified by the `[URL]` to the current directory. Consider the following example:
 
-    $ wget http://www.linode.com/docs/assets/695-wget-example.txt
-    --2010-10-01 12:01:22--   http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving linode.com/docs... 74.207.233.254
-    Connecting to linode.com/docs|74.207.233.254|:80... connected.
+    $ wget http://www.linode.com/content/assets/695-wget-example.txt
+    --2010-10-01 12:01:22--   http://www.linode.com/content/assets/695-wget-example.txt
+    Resolving linode.com/content... 74.207.233.254
+    Connecting to linode.com/content|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response... 200 OK
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'
@@ -38,7 +38,7 @@ When issued at the command line without options, `wget` will download the file s
 
     $ cat wget-example.txt
     This is an example resource for the `wget` document
-    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    <http://www.linode.com/content/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
     in the Linode Docs.
 
     There are four lines of random characters at the end of this file.
@@ -56,9 +56,9 @@ This document specifies all options for `wget` *before* the URL. However, `wget`
 
 The `-O` option controls the location and name of the file where `wget` writes the downloaded content. If you specify the file name as `-` as in `wget -O -`, `wget` will output the downloaded resource to the terminal. Add the `-q` option to suppress the "`wget` status output as follows:
 
-    $ wget -q -O - http://www.linode.com/docs/assets/695-wget-example.txt
+    $ wget -q -O - http://www.linode.com/content/assets/695-wget-example.txt
     This is an example resource for the `wget` document
-    <http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
+    <http://www.linode.com/content/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located
     in the Linode Docs.
 
     There are four lines of random characters at the end of this file.
@@ -72,10 +72,10 @@ The `-O` option controls the location and name of the file where `wget` writes t
 
 To view the HTTP header information attached to the resource, use the `-S` flag. Header information is often helpful for diagnosing issues with web sever configuration.
 
-    $ wget -S http://www.linode.com/docs/assets/695-wget-example.txt
-    --2010-10-01 12:03:50--   http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving linode.com/docs... 74.207.233.254
-    Connecting to linode.com/docs|74.207.233.254|:80... connected.
+    $ wget -S http://www.linode.com/content/assets/695-wget-example.txt
+    --2010-10-01 12:03:50--   http://www.linode.com/content/assets/695-wget-example.txt
+    Resolving linode.com/content... 74.207.233.254
+    Connecting to linode.com/content|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response...
       HTTP/1.1 200 OK
       Server: nginx
@@ -94,7 +94,7 @@ To view the HTTP header information attached to the resource, use the `-S` flag.
 
 Add the `-q` option to suppress the status output of `wget`:
 
-    $ wget -Sq http://www.linode.com/docs/assets/695-wget-example.txt
+    $ wget -Sq http://www.linode.com/content/assets/695-wget-example.txt
       HTTP/1.1 200 OK
       Server: nginx/0.7.65
       Date: Fri, 01 Oct 2010 16:05:34 GMT
@@ -144,14 +144,14 @@ The options `-r -l 3 -k -p -H` have the following functionality:
 
 Use the `-b` option to background the download process if you do not want `wget` to occupy your terminal process.
 
-    $ wget -b http://www.linode.com/docs/assets/695-wget-example.txt
+    $ wget -b http://www.linode.com/content/assets/695-wget-example.txt
     Continuing in background, pid 9810.
     Output will be written to `wget-log'.
 
     $ cat wget-log
-    --2010-10-01 12:06:55--  http://www.linode.com/docs/assets/695-wget-example.txt
-    Resolving linode.com/docs... 74.207.233.254
-    Connecting to linode.com/docs|74.207.233.254|:80... connected.
+    --2010-10-01 12:06:55--  http://www.linode.com/content/assets/695-wget-example.txt
+    Resolving linode.com/content... 74.207.233.254
+    Connecting to linode.com/content|74.207.233.254|:80... connected.
     HTTP request sent, awaiting response... 200 OK
     Length: 477 [text/plain]
     Saving to: `wget-example.txt'

@@ -19,7 +19,7 @@ external_resources:
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn up to $300 per published guide.*
 
 ---
 
@@ -29,7 +29,7 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 ### Before You Begin
 
-1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+1. Working through this tutorial requires a root user account, and is written as if commands are issued as the root user. Readers choosing to use a limited user account will need to prefix commands with `sudo` where required. If you have yet to create a limited user account, follow the steps in the [Securing Your Server](/content/security/securing-your-server) guide.
 
 2. The instructions in this guide were written for and tested on Debian 9 only. They are unlikely to work for other Debian or Ubuntu distributions.
 
@@ -37,7 +37,7 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
     {:.note}
     >
-    >Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
+    >Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/content/platform/disk-images/disk-images-and-configuration-profiles) guide.
 
 
 ### Create A Separate Partition For OpenVZ Templates
@@ -58,11 +58,11 @@ If you intend to dedicate an entire Linode VPS to running OpenVZ and no other se
 
 1. Log into your Linode Manager and select your Linode. Power down the machine, and verify the job completed by viewing the *Host Job Queue* section. Under the *Disks* tab, click *Create a new Disk*. Add a label of your choosing, select "ext4" in the *Type* drop-down menu, and allocate as much space as you can in the *Size* field. Click *Save Changes*; an optimal configuration will resemble the image below.
 
-     ![Linode Manager - Partition Scheme](/docs/assets/openvz/openvz_two.PNG)
+     ![Linode Manager - Partition Scheme](/content/assets/openvz/openvz_two.PNG)
 
 2. Under the *Dashboard* tab, click your main Configuration Profile. Under the *Block Device Assignment* tab, assign your new partition to an open device. Click *Save Changes* when finished.
 
-    ![Linode Manager - Block Device Assignment](/docs/assets/openvz/openvz_three.PNG)
+    ![Linode Manager - Block Device Assignment](/content/assets/openvz/openvz_three.PNG)
 
 3. Boot the Linode and log in via SSH. Issue the command below to verify that the new disk has been created properly. The output will display your newly created disk.
 
@@ -272,7 +272,7 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
 
 6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
-     ![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
+     ![Linode Manager - Select Kernel](/content/assets/openvz/openvz_one.PNG)
 
 7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 

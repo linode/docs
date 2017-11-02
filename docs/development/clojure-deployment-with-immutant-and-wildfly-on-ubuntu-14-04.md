@@ -17,7 +17,7 @@ contributor:
 external_resources:
   - '[Installing Leiningen](http://leiningen.org/#install)'
   - '[Installing Oracle JDK 8](https://launchpad.net/~webupd8team/+archive/java)'
-  - '[Luminus Framework](http://www.luminusweb.net/docs)'
+  - '[Luminus Framework](http://www.luminusweb.net/content)'
   - '[Immutant 2](http://immutant.org/documentation/current/apidoc/)'
   - '[Script to install JBoss Wildfly 10.x as service in Linux](https://gist.github.com/sukharevd/6087988)'
 
@@ -29,9 +29,9 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -39,7 +39,7 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 >
 >In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
 
@@ -73,7 +73,7 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
 {: .note}
 >
->If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
+>If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/content/applications/development/java-development-wildfly-centos-7) guide.
 
 ## Install Leiningen
 
@@ -107,7 +107,7 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     Now, open http://192.51.100.1:3000/ in your browser (be sure to replace `192.51.100.1` with your Linode's public IP), and you will see the sample application main page.
 
-    ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
+    ![Luminus application main page](/content/assets/clj-luminus-main-page.png)
 
     {: .note}
     >

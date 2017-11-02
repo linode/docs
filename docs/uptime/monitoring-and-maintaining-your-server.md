@@ -31,9 +31,9 @@ Whether you use one Linode or dozens of them, mission-critical servers and servi
 
 There are several different availability monitoring tools available. Your decision should be based on how many servers you'll be monitoring:
 
--   **Multiple Servers**: If you run more than one server, [Nagios](/docs/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
--   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/docs/linux-tools/mtr) to diagnose and isolate networking errors.
--   **Linode Longview**: [Longview](/docs/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
+-   **Multiple Servers**: If you run more than one server, [Nagios](/content/uptime/monitoring/install-nagios-4-on-ubuntu-debian-8) makes an ideal monitoring tool. This free and flexible framework makes it possible to keep an eye on a broad range of infrastructural components and network services. After installing the Nagios server and client packages, one Linode will act as the primary server to monitor the other servers.
+-   **Single Server**: If you only run a single server, you might want to use a third-party service to monitor your Linode. (You could install Nagios, but if your server goes down, Nagios will go down with it.) You could also use a network diagnostic tool like [MTR](/content/linux-tools/mtr) to diagnose and isolate networking errors.
+-   **Linode Longview**: [Longview](/content/platform/longview/longview) is Linode's own monitoring and graphing service. It offers real time data that can be used to help identify system issues. Using Longview in conjunction with a notification service like Nagios can help you to identify issues faster, and get your system up and running sooner.
 
 If you need an availability monitoring tool for one or more server, take a look at Nagios or MTR now.
 
@@ -48,7 +48,7 @@ Here's how to turn Lassie on and off:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The Shutdown Watchdog settings appear, as shown below.
 
-[![Configuring Shutdown Watchdog](/docs/assets/1105-monitor3-small.png)](/docs/assets/1107-monitor3.png)
+[![Configuring Shutdown Watchdog](/content/assets/1105-monitor3-small.png)](/content/assets/1107-monitor3.png)
 
 5.  Select an option from the **Lassie is currently** menu, as shown below.
 6.  Click **Save Changes**.
@@ -66,7 +66,7 @@ If you're new to performance monitoring, you can get started by logging in to th
 -   **CPU Utilization:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
 -   **Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
 -   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck).
+-   **Disk IO:** Watch for [disk input/output bottlenecks](/content/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck).
 
 When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
 
@@ -81,7 +81,7 @@ Here's how to turn on and customize the alerts:
 3.  Select your Linode. The Linode's dashboard appears.
 4.  Click the **Settings** tab. The *Email Alert Thresholds* settings appear, as shown below.
 
-[![Configuring Linode Manager Email Alerts](/docs/assets/1104-monitor2-small.png)](/docs/assets/1103-monitor2.png)
+[![Configuring Linode Manager Email Alerts](/content/assets/1104-monitor2-small.png)](/content/assets/1103-monitor2.png)
 
 5.  To enable an email alert, select the **Enabled** checkbox.
 6.  To configure the threshold for an alert, set a value in the text field.
@@ -95,7 +95,7 @@ You have successfully configured email alerts in the Linode Manager.
 
 ### Using Linode Longview
 
-Our custom monitoring and graphing tool [Longview](/docs/platform/longview/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
+Our custom monitoring and graphing tool [Longview](/content/platform/longview/longview) can give you a detailed breakdown of system performance and resource usage. Longview can be used to monitor any virtual server or computer running Linux - including systems not hosted by Linode. On our platform, Longview, in conjunction with the Linode Manager email alerts, can help you to know quickly when your system is overloaded, and find out why.
 
 ### Using Third-Party Tools
 
@@ -105,7 +105,7 @@ There are several free third-party performance monitoring tools available for yo
 
 -   Munin: Munin is a system and network monitoring tool that generates graphs of resource usage in an accessible web based interface. Munin also makes it possible to monitor multiple Linodes with a single installation.
 -   Cacti: If you have advanced monitoring needs, try Cacti. It allows you to monitor larger systems and more complex deployments with its plugin framework and web-based interface.
--   [Nagios](/docs/server-monitoring/nagios): Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the [graphing and trending add-ons](http://exchange.nagios.org/directory/Addons/Graphing-and-Trending).
+-   [Nagios](/content/server-monitoring/nagios): Nagios is primarily used as an availability monitoring tool, but it can also be configured to monitor performance. For more information, check out the [graphing and trending add-ons](http://exchange.nagios.org/directory/Addons/Graphing-and-Trending).
 
 If you need a third-party performance monitoring tool, take a look at Munin, Cacti, or Nagios now.
 
@@ -115,15 +115,15 @@ Important events that occur on your system — things like login attempts or ser
 
 ### Rotating Logs
 
-As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. Enter [logrotate](/docs/linux-tools/utilities/logrotate), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes the *really* old log files. After you configure `logrotate`, your system will automatically handle the entire process.
+As more and more events are logged, the log files on your server get bigger and bigger. Left unchecked, those files can start consuming a surprising amount of disk space. Enter [logrotate](/content/linux-tools/utilities/logrotate), a utility that automatically archives and compresses current log files after a certain interval, creates new log files, and deletes the *really* old log files. After you configure `logrotate`, your system will automatically handle the entire process.
 
-Use the [logrotate guide](/docs/linux-tools/utilities/logrotate) to get started.
+Use the [logrotate guide](/content/linux-tools/utilities/logrotate) to get started.
 
 ### Monitoring System Logs
 
-It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. [Logwatch](/docs/server-monitoring/logwatch) is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
+It's important to keep an eye on the events recorded in your system logs. But unless you're the type of person who loves scanning through hundreds of lines of log entries, you won't want to open log files unless absolutely necessary. Fortunately, there's an easier way to learn about the most important system events fast. [Logwatch](/content/server-monitoring/logwatch) is a customizable utility that can automatically parse system logs and email you detailed reports highlighting notable events.
 
-Use the [Logwatch guides](/docs/server-monitoring/logwatch) to get started.
+Use the [Logwatch guides](/content/server-monitoring/logwatch) to get started.
 
 ## Updating Software
 
@@ -131,7 +131,7 @@ Linux distributions are frequently updated to fix bugs, add new features, and pa
 
 ### Updating Installed Packages
 
-You learned about the importance of regularly updating your server's packages in the [Getting Started](/docs/getting-started) quick start guide. It's worth mentioning here again. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
+You learned about the importance of regularly updating your server's packages in the [Getting Started](/content/getting-started) quick start guide. It's worth mentioning here again. If nothing else, installing updates is a fast and easy way to mitigate vulnerabilities on your server.
 
 To check for software updates and install them in Ubuntu or Debian, enter the following commands, one by one:
 
@@ -140,13 +140,13 @@ To check for software updates and install them in Ubuntu or Debian, enter the fo
 
  {: .note }
 >
-> If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/using-linux/package-management).
+> If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/content/using-linux/package-management).
 
 There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.
 
 ### Applying Kernel Updates
 
-When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
+When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/content/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
 
 Here's how to check for a new kernel and start using it on your Linode:
 
@@ -163,7 +163,7 @@ Here's how to check for a new kernel and start using it on your Linode:
 5.  Select your Linode. The Linode's dashboard appears.
 6.  Select the active configuration profile by clicking the link, as shown below.
 
-[![Selecting the active configuration profile](/docs/assets/1195-monitor6-1.png)](/docs/assets/1195-monitor6-1.png)
+[![Selecting the active configuration profile](/content/assets/1195-monitor6-1.png)](/content/assets/1195-monitor6-1.png)
 
 7.  From the **Kernel** menu, verify that **Latest 64 bit** is selected, as shown below.
 
@@ -171,7 +171,7 @@ Here's how to check for a new kernel and start using it on your Linode:
 >
 > Be sure to select the correct kernel (32- or 64-bit) for your distribution. The 64-bit kernels are available by selecting **Latest 64 bit**.
 
-[![Selecting the latest kernel](/docs/assets/1194-monitor7.png)](/docs/assets/1194-monitor7.png)
+[![Selecting the latest kernel](/content/assets/1194-monitor7.png)](/content/assets/1194-monitor7.png)
 
 8.  If the latest current kernel is not selected, select it now. And if the currently selected kernel's version number doesn't match the number you found in step 2 of this procedure, you'll need to reboot your Linode to start using the new kernel.
 9.  If you selected a new kernel, click **Save Changes**. The Linode's dashboard appears.
@@ -185,8 +185,8 @@ Linux distributions such as Ubuntu and Fedora use version numbers to identify th
 
 There are two ways to upgrade a Linode running an unsupported release. You can upgrade your existing server to the next release, or you can create a new Linode with the newest release available and transfer your files from the old server:
 
--   To upgrade your server, use one of our [Upgrading Guides](/docs/upgrading) or check the distribution's website for instructions.
--   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from the old server to transfer the files, or use an FTP client.
+-   To upgrade your server, use one of our [Upgrading Guides](/content/upgrading) or check the distribution's website for instructions.
+-   To create a new Linode and transfer your files from the old server, use our [Getting Started](/content/getting-started) guide and then [migrate the disk](/content/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from the old server to transfer the files, or use an FTP client.
 
  {: .note }
 >

@@ -16,7 +16,7 @@ contributor:
     link: https://github.com/agottschling
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
+*This is a Linode Community guide. [Write for us](/content/contribute) and
 earn $250 per published guide.*
 
 <hr>
@@ -28,11 +28,11 @@ earn $250 per published guide.*
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Don’t Starve Together](http://store.steampowered.com/app/322330/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/content/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 
 ## Prerequisites for Don't Starve Together
@@ -153,7 +153,7 @@ From the SteamCMD guide, two additional steps are needed specifically for DST.
         cd ./Steam/dstserver/bin
         screen -S "Don't Starve Together Server" ./dontstarve_dedicated_server_nullrenderer
         ~~~
-    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+    When run, the script will change directories to `~/Steam/dstserver/bin` and execute DST in a [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 
@@ -165,7 +165,7 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 1.  Open up the game on your computer. Once you reach the main menu, press the backtick key (<code>`</code>) on your keyboard. You will see a screen similar to this one:
 
-    [![DST Console.](/docs/assets/DSTconsole_resized.png)](/docs/assets/DSTconsole.png)
+    [![DST Console.](/content/assets/DSTconsole_resized.png)](/content/assets/DSTconsole.png)
 
     {: .note }
     > If you've never before played the game, you first need to click on **Play** and create an account.
@@ -175,7 +175,7 @@ You will need Don’t Starve Together installed on your personal computer to get
         TheNet:GenerateServerToken()
 
     It should look like this:
-    [![DST Console with command](/docs/assets/DSTconsolecommand_resized.png)](/docs/assets/DSTconsolecommand.png)
+    [![DST Console with command](/content/assets/DSTconsolecommand_resized.png)](/content/assets/DSTconsolecommand.png)
 
     Once you have done this, press **ENTER** on your keyboard. The console will close, and you can exit the game. Locate the file that has been generated in one of the following directories, depending on your operating system.
 
@@ -219,6 +219,6 @@ You will need Don’t Starve Together installed on your personal computer to get
 
 ## Enter The Server
 
-[![DST Server with users on it](/docs/assets/DSTrunning_resized.png)](/docs/assets/DSTrunning.png)
+[![DST Server with users on it](/content/assets/DSTrunning_resized.png)](/content/assets/DSTrunning.png)
 
 Now you have your very own Don’t Starve Together server for you and your friends to play on. Players can access the server by opening the server list and finding your server’s name, clicking **Connect**, and entering a password if you chose to set one.

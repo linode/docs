@@ -18,7 +18,7 @@ Zimbra is a groupware system that provides email, calendaring, integrated antivi
 
 Please note that Zimbra is a fairly "heavy" (resource-intensive) product compared to some other groupware offerings. We recommend a Linode 2048 or higher for best results; you may encounter issues using Zimbra with plans with less resources. Additionally, note that Zimbra works best as a standalone product on your Linode; installation alongside other software is not advised. Zimbra is deprecating support for 32-bit systems, and therefore it is assumed you have deployed the 64-bit version of Debian 6. If this is not the case, you will want to redeploy with the 64-bit version before continuing. All configuration will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
-Please note that as of this writing, Zimbra is not officially supported on Debian 6. The software should function as expected, but your support options may be limited by choosing to install it on Debian 6. If this is a concern for you, you may wish to consider following our [Debian 5 (Lenny) Zimbra guide](/docs/email/zimbra/install-zimbra-debian-5-lenny) instead.
+Please note that as of this writing, Zimbra is not officially supported on Debian 6. The software should function as expected, but your support options may be limited by choosing to install it on Debian 6. If this is a concern for you, you may wish to consider following our [Debian 5 (Lenny) Zimbra guide](/content/email/zimbra/install-zimbra-debian-5-lenny) instead.
 
 Basic System Configuration
 --------------------------
@@ -37,7 +37,7 @@ Edit your `/etc/hosts` file to resemble the following, substituting your Linode'
     12.34.56.78 hostname.example.com hostname
     ~~~
 
-Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "hostname.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/docs/dns-guides/introduction-to-dns) and the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
+Before proceeding with the rest of this guide, you should create a DNS entry for your system's FQDN (fully qualified domain name). This means you'll need to make sure "hostname.example.com" (substituting your FQDN) points to your Linode's IP address. Additionally, you should create or edit the MX record for your domain to use your FQDN as the host that handles your email. For more information on this topic, please refer to our guides on [DNS basics](/content/dns-guides/introduction-to-dns) and the [Linode DNS Manager](/content/dns-guides/configuring-dns-with-the-linode-manager).
 
 Install Prerequisite Packages
 -----------------------------

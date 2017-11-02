@@ -16,7 +16,7 @@ title: 'Ikiwiki on Debian 5 (Lenny)'
 
 
 
-Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/docs/linux-tools/version-control/git) for version control, and either the [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx/) web server.
+Ikiwiki is a static website content management system. Originally designed as a wiki "engine", the package is built on top of plain text files and standard revision control components. Ikiwiki also contains support for blogging, an advanced template system, and an extensive plugin system and library that provide users with great flexibility and features. The installation procedure outlined in this document will guide you through deploying an ikiwiki site using [git](/content/linux-tools/version-control/git) for version control, and either the [Apache](/content/web-servers/apache/) or [nginx](/content/web-servers/nginx/) web server.
 
 Basic System Configuration
 --------------------------
@@ -332,12 +332,12 @@ Add the following excerpt to `~/wiki/.git/config`:
         remote = origin merge = refs/heads/master
     ~~~
 
-Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/691-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
+Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/content/assets/691-ikiwiki.yaml), and create an initial commit in the `~/wiki` repository:
 
     cd ~/wiki
     cp -R /usr/share/ikiwiki/templates ~/wiki/
     cp -R /usr/share/ikiwiki/basewiki ~/wiki/
-    wget -O ikiwiki.yaml http://www.linode.com/docs/assets/691-ikiwiki.yaml
+    wget -O ikiwiki.yaml http://www.linode.com/content/assets/691-ikiwiki.yaml
     git add .
     git commit -m "initial ikiwiki commit"
     git push origin master

@@ -11,14 +11,14 @@ modified_by:
 published: 'Friday, December 30th, 2016'
 title: 'Install MongoDB on CentOS 7'
 external_resources:
- - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
+ - '[Official MongoDB Documentation](https://content.mongodb.org/v3.2/)'
  - '[MongoDB Project](http://www.mongodb.org/)'
- - '[Language-Specific MongoDB Drivers](http://docs.mongodb.org/ecosystem/drivers/)'
+ - '[Language-Specific MongoDB Drivers](http://content.mongodb.org/ecosystem/drivers/)'
 ---
 
 In this MongoDB tutorial, we explain how to install the database on CentOS 7, and then provide a short guide on some basic features and functions.
 
-![Install MongoDB on CentOS 7](/docs/assets/install-mongodb-centos-7-title.png "Install MongoDB on CentOS 7")
+![Install MongoDB on CentOS 7](/content/assets/install-mongodb-centos-7-title.png "Install MongoDB on CentOS 7")
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
 
@@ -28,9 +28,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 
@@ -38,7 +38,7 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Add the MongoDB Repository
 
@@ -72,7 +72,7 @@ This command installs `mongodb-org`, a meta-package that includes the following:
 
 These packages provide a good base that will serve most use cases, and we recommend installing them all. However, if you want a more minified installation, you can selectively install packages from the above list rather than use the `mongodb-org` metapackage.
 
-For more information on the installation process and options, refer to the [official MongoDB installation tutorial](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/).
+For more information on the installation process and options, refer to the [official MongoDB installation tutorial](https://content.mongodb.com/manual/tutorial/install-mongodb-on-red-hat/).
 
 ## Configure MongoDB
 
@@ -100,9 +100,9 @@ We **strongly** recommend uncommenting the `security` section and adding the fol
       authorization: enabled
     ~~~
 
-The `authorization` option enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) for your databases. If no value is specified, any user will have the ability to modify any database. We'll explain how to create database users and set their permissions later in this guide.
+The `authorization` option enables [role-based access control](https://content.mongodb.com/manual/core/authorization/) for your databases. If no value is specified, any user will have the ability to modify any database. We'll explain how to create database users and set their permissions later in this guide.
 
-For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration tutorial](https://docs.mongodb.com/manual/reference/configuration-options/).
+For more information on how to customize these and other values in your configuration file, refer to the [official MongoDB configuration tutorial](https://content.mongodb.com/manual/reference/configuration-options/).
 
 After making changes to the MongoDB configuration file, restart the service as shown in the following section.
 
@@ -113,7 +113,7 @@ Issue the following commands to increase your open file and process limits for M
     echo "mongod     soft    nofiles   64000" >> /etc/security/limits.conf
     echo "mongod     soft    nproc     64000" >> /etc/security/limits.conf
 
-These are the [recommended](https://docs.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://docs.mongodb.com/v3.2/reference/ulimit/) for more information.
+These are the [recommended](https://content.mongodb.com/v3.2/reference/ulimit/#recommended-ulimit-settings) settings, but you may need to adjust them depending upon your individual usage. See the [MongoDB Documentation](https://content.mongodb.com/v3.2/reference/ulimit/) for more information.
 
 ## Start and Stop MongoDB
 
@@ -183,11 +183,11 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
         quit()
 
-For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://docs.mongodb.org/v3.2/security).
+For more information on access control and user management, as well as other tips on securing your databases, refer to the [MongoDB Security Documentation](https://content.mongodb.org/v3.2/security).
 
 ## Manage Data and Collections
 
-Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](http://docs.mongodb.org/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
+Much of MongoDB's popularity comes from its ease of integration. Interactions with databases are done via JavaScript methods, but [drivers for other languages](http://content.mongodb.org/ecosystem/drivers/) are available. This section will demonstrate a few basic features, but we encourage you to do further research based on your specific use case.
 
 1.  Open the MongoDB shell using the `example-user` we created above:
 
@@ -205,10 +205,10 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
         db.createCollection("exampleCollection", {capped: false})
 
-    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v3.2/reference/method/db.createCollection/).
+    If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://content.mongodb.com/v3.2/reference/method/db.createCollection/).
 
     {: .note}
-    > Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
+    > Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://content.mongodb.com/manual/reference/limits/#naming-restrictions).
 
 4.  Create sample data for entry into the test database. MongoDB accepts input as *documents* in the form of JSON objects such as those below. The `a` and `b` variables are used to simplify entry; objects can be inserted directly via functions as well.
 

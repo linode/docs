@@ -15,7 +15,7 @@ title: 'Install ZNC from Source on Debian'
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, ZNC will be installed from source and then configured.
 
 {: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 
 ## Before You Begin
@@ -162,9 +162,9 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
     {: .note}
-    >If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+    >If the [Firewall portion](/content/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/content/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 
-    [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
+    [![ZNC's Web Admin](/content/assets/znc-web-admin_small.png)](/content/assets/znc-web-admin.png)
 
 ## Connect to The Client
 
@@ -174,13 +174,13 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1.  Open HexChat, add your desired nicknames, and then create a new network. In this example, the network is called **ZNCserver**:
 
-    [![ZNC](/docs/assets/znc-hexchat-1.png)](/docs/assets/znc-hexchat-1.png)
+    [![ZNC](/content/assets/znc-hexchat-1.png)](/content/assets/znc-hexchat-1.png)
 
 2.  With **ZNCserver** selected, click `Edit...`.
 
 3.  Add your server's IP address and port to the list. If not using a signed certificate, select *Accept invalid SSL certificated*. Input your password:
 
-    [![ZNC](/docs/assets/znc-hexchat-2.png)](/docs/assets/znc-hexchat-2.png)
+    [![ZNC](/content/assets/znc-hexchat-2.png)](/content/assets/znc-hexchat-2.png)
 
     Close the window when done.
 
@@ -190,15 +190,15 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 1. Open Konversation, click 'New...'
 
-    [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
+    [![ZNC](/content/assets/znc-konversation-1.png)](/content/assets/znc-konversation-1.png)
 
 2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
 
-    [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
+    [![ZNC](/content/assets/znc-konversation-2.png)](/content/assets/znc-konversation-2.png)
 
 3. Now enter your network details such as IP Address, Port number, and password.
 
-    [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
+    [![ZNC](/content/assets/znc-konversation-3.png)](/content/assets/znc-konversation-3.png)
 
 
 ## SSL Encryption with a Signed Certificate (Optional)

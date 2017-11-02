@@ -13,12 +13,12 @@ published: 'Wednesday, October 8th, 2014'
 title: Webmin Control Panel
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
- - '[Webmin Documentation](http://www.webmin.com/docs.html)'
+ - '[Webmin Documentation](http://www.webmin.com/content.html)'
  - '[Webmin Modules](http://www.webmin.com/standard.html)'
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
 ---
 
-Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
+Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/content/web-servers/apache/) and [Postfix](/content/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
 
 Installing Webmin is straightforward; however, you may wish to consult the documentation contained at the end of this document for additional information on using Webmin to manage your system.
 
@@ -27,10 +27,10 @@ Installing Webmin is straightforward; however, you may wish to consult the docum
 
 - This guide is written for a Linode running Debian 7 but is also compatible with Ubuntu 14.04.
 
-- The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+- The steps required in this guide require root privileges. Be sure to run the steps below as ``root`` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
-- Before installing Webmin, we assume that you've completed the [Getting Started](/docs/getting-started/) guide.
-- If you are new to Linux server administration, we recommend the [Linode Beginner's Guide](/docs/beginners-guide/) and the article concerning [Systems Administration Basics](/docs/using-linux/administration-basics).
+- Before installing Webmin, we assume that you've completed the [Getting Started](/content/getting-started/) guide.
+- If you are new to Linux server administration, we recommend the [Linode Beginner's Guide](/content/beginners-guide/) and the article concerning [Systems Administration Basics](/content/using-linux/administration-basics).
 
 - Issue the following commands to refresh your system's package database and ensure that you're running the most up-to-date software:
 
@@ -39,7 +39,7 @@ Installing Webmin is straightforward; however, you may wish to consult the docum
 
 ### Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#ubuntu--debian). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#ubuntu--debian). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

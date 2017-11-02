@@ -19,7 +19,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -60,7 +60,7 @@ Configure uWSGI
 Issue the following command to download an init script to manage the uWSGI process, located at `/etc/init.d/uwsgi`:
 
     cd /opt/
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/701-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/content/assets/701-init-rpm.sh
     mv /opt/init-rpm.sh /etc/init.d/uwsgi
     chmod +x /etc/init.d/uwsgi
 
@@ -148,7 +148,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -186,6 +186,6 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on CentOS 5](/docs/web-servers/nginx/installation/centos-5)
-- [Deploy a LEMP Server on CentOS 5](/docs/lemp-guides/centos-5/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Installing Nginx on CentOS 5](/content/web-servers/nginx/installation/centos-5)
+- [Deploy a LEMP Server on CentOS 5](/content/lemp-guides/centos-5/)
+- [Configure nginx Proxy Servers](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

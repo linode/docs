@@ -14,13 +14,13 @@ external_resources:
   - '[Streisand Github repository](https://github.com/jlund/streisand)'
 ---
 
-![Streisand Gateway](/docs/assets/streisand/Streisand_Gateway.jpg)
+![Streisand Gateway](/content/assets/streisand/Streisand_Gateway.jpg)
 
 ## Why Use a VPN
 
 Setting up a personal Virtual Private Network (VPN) server is a great way to avoid internet censorship, surveillance, or geolocation. Using your own server allows you to choose any protocol you want, and to have full control over the security and privacy of your connection.
 
-However, the configuration process is time-consuming, especially for those with little experience working with remote servers (For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/docs/networking/vpn/set-up-a-hardened-openvpn-server) [part](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/docs/networking/vpn/configuring-openvpn-client-devices)).
+However, the configuration process is time-consuming, especially for those with little experience working with remote servers (For example, Linode's guide on setting up a hardened OpenVPN server and client is a [three](/content/networking/vpn/set-up-a-hardened-openvpn-server) [part](/content/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) [series](/content/networking/vpn/configuring-openvpn-client-devices)).
 
 [Streisand](https://github.com/jlund/streisand) attempts to simplify this process and offer painless, high-quality security. The Streisand script creates a Linode and automatically configures OpenVPN, Shadowsocks, OpenConnect, L2TP/IPSec, Wireguard, a Tor bridge, and SSH. Once the server is set up, users can connect to a gateway containing detailed, personalized instructions for connecting to each of these services.
 
@@ -32,11 +32,11 @@ Streisand uses open-source platform Ansible to automate much of the process that
 
 2.  Select the "API Keys" tab on the far right of the menu.
 
-    ![Linode API Menu](/docs/assets/streisand/linode_api_menu.png)
+    ![Linode API Menu](/content/assets/streisand/linode_api_menu.png)
 
 3.  Provide a label for your API key if desired, and choose when the key should expire. When you have finished, click "Create API Key."
 
-    ![API Key](/docs/assets/streisand/api_key.png)
+    ![API Key](/content/assets/streisand/api_key.png)
 
 4. Record the generated key! Please note: You will not be able to view the full key after closing or reloading the page.
 
@@ -106,7 +106,7 @@ You are now ready to run Streisand.
 
 3.  When prompted, choose Linode as your hosting provider. Choose a location for your gateway, then enter the API key you created earlier.
 
-    ![Streisand API Prompt](/docs/assets/streisand/api-prompt.png)
+    ![Streisand API Prompt](/content/assets/streisand/api-prompt.png)
 
 {:.note}
 >

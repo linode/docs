@@ -22,7 +22,7 @@ Ubuntu 14.04 is a long-term support (LTS) release that will be supported until A
  - Transferring your data
  - Swapping IP addresses
  >
- > In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+ > In addition, you should use [LISH](https://www.linode.com/content/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 
 
 {: .note }
@@ -46,7 +46,7 @@ Each of these will be discussed in more detail below.
 
 {: .note }
 >
->In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+>In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/content/security/securing-your-server/#ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
 
 ### Installing Available Updates
 
@@ -64,11 +64,11 @@ Any available updates for Ubuntu 12.04 LTS will be installed on your Linode.
 
 ### Backing Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/content/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Ubuntu 14.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
 
 ### Checking Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/content/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
 
 ### Stopping Services
 
@@ -132,4 +132,4 @@ Your Linode is now running Ubuntu 14.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.
+If your Linode is running an release of Ubuntu older than 12.04 LTS, use the upgrade guides in the [Upgrading](/content/security/upgrading) section to upgrade to Ubuntu 12.04 LTS first. You may then upgrade your Linode to Ubuntu 14.04 LTS.

@@ -15,17 +15,17 @@ contributor:
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
 external_resources:
    - '[Cassandra Documentation](http://cassandra.apache.org/doc/latest/)'
-   - '[Cassandra cqlshrc File Configuration Overview](http://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'
+   - '[Cassandra cqlshrc File Configuration Overview](http://content.datastax.com/en/cql/3.3/cql/cql_reference/cqlshUsingCqlshrc.html)'
    - '[Cassandra .yaml Configuration File Overview](http://cassandra.apache.org/doc/latest/configuration/cassandra_config_file.html)'
-   - '[Recommended Production Settings For Apache Cassandra](http://docs.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html)'
+   - '[Recommended Production Settings For Apache Cassandra](http://content.datastax.com/en/landing_page/doc/landing_page/recommendedSettings.html)'
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 ---
 
-![Deploy a scalable and development driven NoSQL DB with Cassandra](/docs/assets/Cassandra/Apache_Cassandra.png)
+![Deploy a scalable and development driven NoSQL DB with Cassandra](/content/assets/Cassandra/Apache_Cassandra.png)
 
 ## Introduction to Apache Cassandra
 
@@ -37,8 +37,8 @@ After completing this guide, you will have a single-node, production-ready insta
 
 #### Before You Begin
 
-1. Complete the [Getting Started](/docs/getting-started) guide for setting up a new Linode.
-2. While it is recommended you complete the entire [Securing Your Server](/docs/security/securing-your-server) guide, it will be necessary at least to possess a limited user account.
+1. Complete the [Getting Started](/content/getting-started) guide for setting up a new Linode.
+2. While it is recommended you complete the entire [Securing Your Server](/content/security/securing-your-server) guide, it will be necessary at least to possess a limited user account.
 
 #### Add Repositories and GPG Keys
 

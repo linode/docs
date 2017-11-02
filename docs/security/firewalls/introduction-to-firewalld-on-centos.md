@@ -18,11 +18,11 @@ external_resources:
  - '[Fedora Wiki: FirewallD](https://fedoraproject.org/wiki/FirewallD)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
-![Introduction to FirewallD on CentOS](/docs/assets/introduction-to-firewalld-on-centos.png "Introduction to FirewallD on CentOS")
+![Introduction to FirewallD on CentOS](/content/assets/introduction-to-firewalld-on-centos.png "Introduction to FirewallD on CentOS")
 
 [FirewallD](http://www.firewalld.org/) is frontend controller for iptables used to implement persistent network traffic rules. It provides command line and graphical interfaces and is available in the repositories of most Linux distributions. Working with FirewallD has two main differences compared to directly controlling iptables:
 
@@ -285,4 +285,4 @@ To see all custom chains or rules added to FirewallD:
     firewall-cmd --direct --get-all-chains
     firewall-cmd --direct --get-all-rules
 
-Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](https://www.linode.com/docs/networking/firewalls/control-network-traffic-with-iptables).
+Discussing iptables syntax details goes beyond the scope of this guide. If you want to learn more, you can review our [iptables guide](https://www.linode.com/content/networking/firewalls/control-network-traffic-with-iptables).

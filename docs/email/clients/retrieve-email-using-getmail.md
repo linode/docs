@@ -18,11 +18,11 @@ external_resources:
  - '[Procmail MDA](http://www.procmail.org/)'
 ---
 
-Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/docs/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.
+Getmail is a simple mail retriever. In many ways, the software is a response to the complexity of [fetchmail](/content/email/fetchmail/). Getmail provides a simple and efficient tool for downloading email from POP (Post Office Protocol) and IMAP (Internet Messaged Access Protocol) servers.
 
-You can use getmail to download email from your Linode's mail server powered by [Citadel](/docs/email/citadel/) or [Dovecot](/docs/email/postfix/) or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
+You can use getmail to download email from your Linode's mail server powered by [Citadel](/content/email/citadel/) or [Dovecot](/content/email/postfix/) or you can use getmail on your Linode to download email from one or more third-party mail providers (as long as POP or IMAP is supported) and deliver it to a local email gateway.
 
-Before getting started with Getmail, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and the [administration basics guide](/docs/using-linux/administration-basics).
+Before getting started with Getmail, we assume that you have followed our [getting started guide](/content/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and the [administration basics guide](/content/using-linux/administration-basics).
 
 ## Install Getmail
 
@@ -166,7 +166,7 @@ The final file is located in the `/home/foreman/mail` directory and is specified
 
 ### Check Email Regularly Using Cron
 
-If you would like your system to check for email regularly, you can run the `getmail` command regularly with cron. For a more detailed explanation of cron, you may consider the [introduction to cron](/docs/linux-tools/utilities/cron) guide. To add the "cron job", issue the following command to edit your cronjobs:
+If you would like your system to check for email regularly, you can run the `getmail` command regularly with cron. For a more detailed explanation of cron, you may consider the [introduction to cron](/content/linux-tools/utilities/cron) guide. To add the "cron job", issue the following command to edit your cronjobs:
 
     crontab -e
 

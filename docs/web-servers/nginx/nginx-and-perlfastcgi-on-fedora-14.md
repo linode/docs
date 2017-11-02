@@ -21,7 +21,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -94,7 +94,7 @@ Issue the following commands to enable the site:
     ln -s /etc/nginx/sites-available/www.example.com
     /etc/init.d/nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/content/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address (found on the "Remote Access" tab in the [Linode Manager](http://manager.linode.com//)).
 
 Configure FastCGI Wrapper
 -------------------------
@@ -354,5 +354,5 @@ You may wish to consult the following resources for additional information on th
 - [The nginx Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [Perl Documentation](http://perldoc.perl.org/)
-- [Installing Nginx on Fedora 14](/docs/web-servers/nginx/installation/fedora-14)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing Nginx on Fedora 14](/content/web-servers/nginx/installation/fedora-14)
+- [Basic Ngnix Configuration](/content/websites/nginx/basic-nginx-configuration)

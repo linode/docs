@@ -12,19 +12,19 @@ modified_by:
 published: 'Tuesday, October 13th, 2009'
 title: Redirect URLs with the Apache Web Server
 external_resources:
- - '[Installing Apache](/docs/websites/apache/)'
- - '[LAMP stack guides](/docs/websites/lamp/)'
- - '[Apache Redirect Guide](https://httpd.apache.org/docs/current/mod/mod_alias.html#redirect)'
- - '[Rewrite URLs with mod_rewrite and Apache](/docs/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache)'
+ - '[Installing Apache](/content/websites/apache/)'
+ - '[LAMP stack guides](/content/websites/lamp/)'
+ - '[Apache Redirect Guide](https://httpd.apache.org/content/current/mod/mod_alias.html#redirect)'
+ - '[Rewrite URLs with mod_rewrite and Apache](/content/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache)'
 ---
 
-In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/docs/current/mod/mod_alias.html) module.
+In this guide, you'll learn how to redirect URLs with Apache. Redirecting a URL allows you to return an HTTP status code that directs the client to a different URL, making it useful for cases in which you've moved a piece of content. Redirect is part of Apache's [mod_alias](https://httpd.apache.org/content/current/mod/mod_alias.html) module.
 
-![Redirect URLs with the Apache Web Server](/docs/assets/redirect-urls-with-the-apache-web-server.png "Redirect URLs with the Apache Web Server")
+![Redirect URLs with the Apache Web Server](/content/assets/redirect-urls-with-the-apache-web-server.png "Redirect URLs with the Apache Web Server")
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/docs/websites/apache/) or [LAMP stack guides](https://www.linode.com/docs/websites/lamp/).
+1.  This guide assumes you have followed our [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/content/websites/apache/) or [LAMP stack guides](https://www.linode.com/content/websites/lamp/).
 
 2.  In this guide, you will modify the Apache configuration files, so be sure you have the proper permissions to do so.
 
@@ -111,8 +111,8 @@ This matches any request for a file with a `.jpg` extension and replaces it with
 
 ## Beyond URL Redirection
 
-In addition to redirecting users, Apache also allows you to [rewrite URLs](/docs/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache) with `mod_rewrite`. While the features are similar, the main difference is that rewriting a URL involves the server returning a different request than the one provided by the client, whereas a redirect simply returns a status code, and the "correct" result is then requested by the client.
+In addition to redirecting users, Apache also allows you to [rewrite URLs](/content/websites/apache-tips-and-tricks/rewrite-urls-with-modrewrite-and-apache) with `mod_rewrite`. While the features are similar, the main difference is that rewriting a URL involves the server returning a different request than the one provided by the client, whereas a redirect simply returns a status code, and the "correct" result is then requested by the client.
 
 On a more practical level, rewriting a request does not change the contents of the browser's address bar, and can be useful in hiding URLs with sensitive or vulnerable data.
 
-Although redirection allows you to easily change the locations of specific resources, you may find that rewriting better fits your needs in certain situations. For more information, refer to [Apache's mod_rewrite documentation](https://httpd.apache.org/docs/current/mod/mod_rewrite.html).
+Although redirection allows you to easily change the locations of specific resources, you may find that rewriting better fits your needs in certain situations. For more information, refer to [Apache's mod_rewrite documentation](https://httpd.apache.org/content/current/mod/mod_rewrite.html).

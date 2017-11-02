@@ -12,21 +12,21 @@ modified_by:
 title: 'Install Nginx Web Server on Debian 8'
 alias: ['websites/nginx/nginx-web-server-debian-8/','websites/nginx/install-nginx-web-server-on-debian-8/']
 external_resources:
- - '[Linode nginx Documentation](/docs/websites/nginx/)'
+ - '[Linode nginx Documentation](/content/websites/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
 ---
 
-Nginx is a lightweight, high-performance web server designed for the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight, high-performance web server designed for the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/content/web-servers/apache/), nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-![Install Nginx Web Server on Debian 8](/docs/assets/nginx-on-debian-8.png "Install Nginx Web Server on Debian 8")
+![Install Nginx Web Server on Debian 8](/content/assets/nginx-on-debian-8.png "Install Nginx Web Server on Debian 8")
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -172,4 +172,4 @@ The Debian project does not track the latest development of the nginx server. Co
 
         sudo systemctl enable nginx
 
-Continue reading our introduction to [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more helpful information about using and setting up a web server.
+Continue reading our introduction to [Basic nginx Configuration](/content/websites/nginx/basic-nginx-configuration) for more helpful information about using and setting up a web server.

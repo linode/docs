@@ -17,12 +17,12 @@ title: Migrating a Server to Your Linode
  {: .note }
 >
 > The process for migrating a server image to your Linode will vary depending upon how the image was created. We recommend making an `.iso` file from your existing image, and
- then following the steps in our updated [custom distribution](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode) guide to deploy it on a
+ then following the steps in our updated [custom distribution](/content/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode) guide to deploy it on a
  Linode. This guide is no longer being maintained, and the procedure outlined here is not recommended for new migrations.
 
 You can migrate an existing server to your Linode from another hosting provider or a local machine. This is a great option if you're moving to Linode from another hosting provider or if you've built a custom server on your local machine. You can even migrate virtualized servers created with products like VirtualBox or VMware. This guide shows you how to prepare the Linode to receive the files, copy the files from the existing server to the Linode, and then make the disks bootable.
 
-![Migrating a Server to Your Linode](/docs/assets/migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
+![Migrating a Server to Your Linode](/content/assets/migrating_a_server_to_your_linode.png "Migrating a Server to Your Linode")
 
  {: .note }
 >
@@ -45,14 +45,14 @@ Create two disks: one for the files on your existing server, and another for a s
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Create a disk to hold the files from the existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-	[![Creating a disk](/docs/assets/1039-migrate1.png)](/docs/assets/1039-migrate1.png)
+	[![Creating a disk](/content/assets/1039-migrate1.png)](/content/assets/1039-migrate1.png)
 
 5.  Enter a descriptive name for the disk in the **Label** field.
 6.  Enter a size for the disk in the **Size** field. You should make the disk large enough to hold the contents of your current server's root partition.
 7.  Click **Save Changes** to create the disk. The Linode's dashboard appears. You can monitor the disk creation process by watching the *Host Job Queue*.
 8.  Now create a swap disk for your existing server. Select **Create a new Disk**. The webpage shown below appears.
 
-	[![Creating a disk](/docs/assets/1040-migrate2.png)](/docs/assets/1040-migrate2.png)
+	[![Creating a disk](/content/assets/1040-migrate2.png)](/content/assets/1040-migrate2.png)
 
 9.  Enter a name for the swap disk in the **Label** field.
 10. From the **Type** menu, select **swap**.
@@ -68,7 +68,7 @@ You'll need a configuration profile to boot your existing server after you uploa
 1.  In the [Linode Manager](https://manager.linode.com), select the Linode's dashboard.
 2.  Select **Create a new Configuration Profile**. The webpage shown below appears.
 
-	[![Creating a configuration profile](/docs/assets/migrate-configuration-profile-small.png)](/docs/assets/migrate-configuration-profile.png)
+	[![Creating a configuration profile](/content/assets/migrate-configuration-profile-small.png)](/content/assets/migrate-configuration-profile.png)
 
 3.  Enter a name for the configuration profile in the **Label** field.
 4.  *Optional:* Enter notes for the configuration profile in the **Notes** field.
@@ -87,9 +87,9 @@ You have successfully created the configuration profile.
 
 Before you initiate the transfer, you need to start the Linode in rescue mode. Here's how:
 
-1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
-2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-3.  Start SSH. For instructions, see [Start SSH](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
+1.  Boot your Linode into Rescue Mode. For instructions, see [Booting into Rescue Mode](/content/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode). Be sure to set the primary disk to `/dev/sda` and the swap disk to `/dev/sdb`.
+2.  After the Linode has booted, connect to it via LISH. For instructions, see [Connecting to a Linode Running in rescue mode](/content/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+3.  Start SSH. For instructions, see [Start SSH](/content/troubleshooting/rescue-and-rebuild/#starting-ssh).
 4.  Mount the blank primary disk by entering the following command:
 
         mount -o barrier=0 /dev/sda
@@ -111,7 +111,7 @@ At this point, you should stop as many services as possible on the existing serv
 Now it's time to copy the files from your existing server to your Linode. Here's how:
 
 1.  Connect to your existing server via SSH and log in as `root`.
-2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/docs/getting-started#find-the-ip-address-of-your-linode).) :
+2.  Enter the following command to initiate the copy, replacing `123.45.67.890` with your Linode's IP address. (For instructions on finding your Linode's IP address, see [Finding the IP Address](/content/getting-started#find-the-ip-address-of-your-linode).) :
 
         rsync --exclude="/sys/*" --exclude="/proc/*" -aHSKDvz -e ssh / root@123.45.67.890:/media/sda/
 
@@ -239,7 +239,7 @@ Now it's time to boot your Linode from the new disks. All you have to do is sele
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Select the configuration profile you created earlier, as shown below.
 
-	[![Selecting the configuration profile](/docs/assets/1047-migrate6-small.png)](/docs/assets/1048-migrate6.png)
+	[![Selecting the configuration profile](/content/assets/1047-migrate6-small.png)](/content/assets/1048-migrate6.png)
 
 5.  Click **Reboot** to restart your Linode with the configuration profile and disks you just created.
 

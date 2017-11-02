@@ -12,17 +12,17 @@ modified_by:
 published: 'Wednesday, February 24th, 2010'
 title: Apache Configuration Structure
 external_resources:
- - '[Apache Installation](/docs/web-servers/apache/)'
- - '[LAMP Stack Guides](/docs/lamp-guides/)'
- - '[Troubleshooting Apache](/docs/web-servers/apache/troubleshooting/)'
+ - '[Apache Installation](/content/web-servers/apache/)'
+ - '[LAMP Stack Guides](/content/lamp-guides/)'
+ - '[Troubleshooting Apache](/content/web-servers/apache/troubleshooting/)'
  - '[Linode User Community](http://linode.com/community/)'
 ---
 
-In our basic [installation guides for Apache](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), we suggest a very simple configuration based on `<VirtualHost>` configurations. This is useful for configuring a number of different websites on a single server, but this approach does not provide granular control over the behavior of resources *within* these sites.
+In our basic [installation guides for Apache](/content/web-servers/apache/) and [LAMP stack tutorials](/content/lamp-guides/), we suggest a very simple configuration based on `<VirtualHost>` configurations. This is useful for configuring a number of different websites on a single server, but this approach does not provide granular control over the behavior of resources *within* these sites.
 
 The `<VirtualHost>` block provides administrators with the ability to modify the behavior of the web server on a per-host or per-domain basis; any options specified in the `<VirtualHost>` block apply to the entire domain. However, they don't provide the ability to specify options on a per-directory basis. Thankfully, Apache provides additional possibilities for specific configuration.
 
-This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/docs/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/docs/).
+This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/content/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/content/).
 
 ## Directory and Options
 
@@ -106,7 +106,7 @@ Despite the power and flexibility provided by `.htaccess` files, there are disad
 
 -   If `.htaccess` files are enabled, Apache must check and process the directives in the `.htaccess` file on every request. Furthermore Apache must check for `.htaccess` files in directories above the current directory in the file system. This can cause a slight performance degradation if access files are enabled, and applies even if they're not used.
 -   Options set in `.htaccess` files can override options set in `<Directory>` blocks, which can cause confusion and undesirable behavior. Any option set in an `.htaccess` file can be set in a `<Directory>` block.
--   Allowing non-privileged users to modify web-server configurations presents a potential security risk, however the [AllowOverride](http://httpd.apache.org/docs/1.3/mod/core.html#allowoverride) options may mitigate this risk considerably.
+-   Allowing non-privileged users to modify web-server configurations presents a potential security risk, however the [AllowOverride](http://httpd.apache.org/content/1.3/mod/core.html#allowoverride) options may mitigate this risk considerably.
 
 If you want to disable `.htaccess` files for a directory or tree of directories, specify the following option in any *directory* block.
 

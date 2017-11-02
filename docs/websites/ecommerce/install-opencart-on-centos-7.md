@@ -13,7 +13,7 @@ published: 'Saturday, April 29th, 2017'
 title: How to Install OpenCart on CentOS 7
 external_resources:
  - '[OpenCart Website](https://www.opencart.com)'
- - '[OpenCart Documentation](http://docs.opencart.com/)'
+ - '[OpenCart Documentation](http://content.opencart.com/)'
  - '[OpenCart Community Forums](http://forum.opencart.com/)'
 ---
 
@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-1.  You should set up [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7).
+1.  You should set up [LAMP on CentOS 7](/content/web-servers/lamp/lamp-on-centos-7).
 
 2.  Install the Extra Packages for Enterprise Linux (EPEL) repository.
         sudo yum install epel-release
@@ -113,15 +113,15 @@ Next, run the following commands to make sure these directories are writable.
 
 Visit your website in your browser. You should be redirected to the OpenCart Installer in a page that looks like this:
 
-[![OpenCart Installer Page 1.](/docs/assets/opencart-1-scaled.png)](/docs/assets/opencart-1.png)
+[![OpenCart Installer Page 1.](/content/assets/opencart-1-scaled.png)](/content/assets/opencart-1.png)
 
 Press **CONTINUE** and you will see the _Pre-Installation_ page.
 
-[![OpenCart Installer Page 2.](/docs/assets/opencart-2-scaled.png)](/docs/assets/opencart-2.png)
+[![OpenCart Installer Page 2.](/content/assets/opencart-2-scaled.png)](/content/assets/opencart-2.png)
 
 Make sure that you see the green checkmark for every section before proceeding. If you see any red marks, please go back and make sure all of the instructions in this guide were followed properly. Once you've confirmed that every section has a green checkmark, press the **CONTINUE** button to see the OpenCart configuration page:
 
-[![OpenCart Installer Page 3.](/docs/assets/opencart-3-scaled.png)](/docs/assets/opencart-3.png)
+[![OpenCart Installer Page 3.](/content/assets/opencart-3-scaled.png)](/content/assets/opencart-3.png)
 
 Here, select the **MySQLi** driver and fill out the form with the relevant information from the [Create a Database and User](#create-a-database-and-user) section of this guide. You also need to select a username and password for the default administrator account for this OpenCart installation.
 
@@ -141,10 +141,10 @@ You can now login using the administrator account details you entered previously
 
 Now that you have your OpenCart installation up and running, there are a few more steps that we recommend. Because of the security-sensitive nature of ecommerce websites, you will want to make sure your system is secure.
 
-1.  Make sure you follow our [Securing Your Server](/docs/security/securing-your-server) guide.
+1.  Make sure you follow our [Securing Your Server](/content/security/securing-your-server) guide.
 
-2.  Secure your website with SSL/TLS. Learn to [Install a SSL certificate with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos). Once you've installed a certificate, enable **Use SSL** by following the [Opencart Documentation on SSL](http://docs.opencart.com/administration/ssl/).
+2.  Secure your website with SSL/TLS. Learn to [Install a SSL certificate with Apache on CentOS 7](/content/security/ssl/ssl-apache2-centos). Once you've installed a certificate, enable **Use SSL** by following the [Opencart Documentation on SSL](http://content.opencart.com/administration/ssl/).
 
-3.  Follow the [Basic Security Practices](http://docs.opencart.com/administration/security/) from the OpenCart documentation.
+3.  Follow the [Basic Security Practices](http://content.opencart.com/administration/security/) from the OpenCart documentation.
 
 4.  Install [vQmod](https://github.com/vqmod/vqmod) if you wish to use 3rd party extensions.

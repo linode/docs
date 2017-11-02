@@ -17,7 +17,7 @@ external_resources:
 - '[Fish Cookbook](https://github.com/jbucaran/fish-shell-cookbook#how-to-find-my-current-location-in-fish)'
 ---
 
-![fish_banner](/docs/assets/fish/fish_banner.jpg)
+![fish_banner](/content/assets/fish/fish_banner.jpg)
 
 Fish, the Friendly Interactive Shell, is a replacement shell, which, out of the box, offers auto-suggestions; programmable completions based on installed man pages; a fully functional, readable, scripting language; and colored text support.
 
@@ -35,7 +35,7 @@ Start the Fish shell with the `fish` command:
 
 ### Customize Fish
 
-The configuration file for Fish is located at: `~/.config/fish/config.fish`. You can write commands or Fish functions to this file. The `fish_config` command, will load a customization server on the browser, ![fish_config](/docs/assets/fish/fish_config.png).
+The configuration file for Fish is located at: `~/.config/fish/config.fish`. You can write commands or Fish functions to this file. The `fish_config` command, will load a customization server on the browser, ![fish_config](/content/assets/fish/fish_config.png).
 
 
 ## Regarding Fish
@@ -79,13 +79,13 @@ Fish does not support aliasing. Instead Fish uses `functions`. Typing `functions
 
 You can begin writing your own functions by using the syntax: `functions name`
 
-![fish_functions](/docs/assets/fish/fish_functions.png)
+![fish_functions](/content/assets/fish/fish_functions.png)
 
 You can write for loops on the fly with Fish:
 
-![fish_for](/docs/assets/fish/fish_for.png)
+![fish_for](/content/assets/fish/fish_for.png)
 
-You can learn more about Fish scripting in the official [tutorial](https://fishshell.com/docs/current/tutorial.html).
+You can learn more about Fish scripting in the official [tutorial](https://fishshell.com/content/current/tutorial.html).
 
 
 If you are a long time bash user, you may have accumulated an abundance of bash scripts, one-liners, and configurations that might make you reluctant to change shells. Fish-script is written differently than other scripting languages, but the built in `bash -c` command will run bash scripts from the Fish command line without hesitation.
@@ -99,7 +99,7 @@ For example, if you have a script that prints numbers 1-10:
 
 Using `bash -c`, you can take that same script as a string and run it without exiting Fish.
 
-![fish_script](/docs/assets/fish/fish_script.png)
+![fish_script](/content/assets/fish/fish_script.png)
 
 
 ## Next Steps

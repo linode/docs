@@ -14,13 +14,13 @@ title: 'Installing and Configuring ownCloud on Debian 7.4'
 
 ownCloud is an open source platform that allows easy access to files from multiple locations and platforms. It's compatible with most major operating systems and mobile devices. With ownCloud you can store files on your Linode and then access them wherever you go.
 
-Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface. An ownCloud server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+Installing ownCloud on your Linode is very simple. The steps outlined below will get you up and running with a drag and drop GUI interface. An ownCloud server could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 ## Installation Prerequisites
 
-Before you can use your Linode with ownCloud you will need to have a working LAMP (Linux, Apache, MySQL, and PHP) stack. For more information on how to create a LAMP stack on your Linode consult our [LAMP Guides](/docs/websites/lamp).
+Before you can use your Linode with ownCloud you will need to have a working LAMP (Linux, Apache, MySQL, and PHP) stack. For more information on how to create a LAMP stack on your Linode consult our [LAMP Guides](/content/websites/lamp).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Installing ownCloud
 
@@ -94,7 +94,7 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
 
         12.34.56.78/owncloud
 
-    [![Address bar](/docs/assets/1731-address-bar.png)](/docs/assets/1731-address-bar.png)
+    [![Address bar](/content/assets/1731-address-bar.png)](/content/assets/1731-address-bar.png)
 
 2.  Create an ownCloud account by entering a user name and password.
 3.  Click on **Advanced**, select MySQL and enter the following information:
@@ -104,11 +104,11 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
     -   Database Name
     -   Localhost
 
-    [![Configuring ownCloud advanced settings.](/docs/assets/1733-owncloud-advanced-settings.png)](/docs/assets/1733-owncloud-advanced-settings.png)
+    [![Configuring ownCloud advanced settings.](/content/assets/1733-owncloud-advanced-settings.png)](/content/assets/1733-owncloud-advanced-settings.png)
 
 4.  Click on the **Finish Setup** button.
 
-    [![Accessing ownCloud.](/docs/assets/1732-owncloud-2.png)](/docs/assets/1732-owncloud-2.png)
+    [![Accessing ownCloud.](/content/assets/1732-owncloud-2.png)](/content/assets/1732-owncloud-2.png)
 
 ## More Information
 

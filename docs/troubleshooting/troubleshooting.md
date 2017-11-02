@@ -18,9 +18,9 @@ We know it's frustrating when you run into problems with your Linode. That's why
 -   Select the issue that best describes your problem
 -   Follow the troubleshooting steps in the order they are presented
 -   Once you've identified a problem, try fixing it with the suggested solutions
--   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/docs/troubleshooting)
+-   If you can't find your problem in this guide, take a look at the [troubleshooting manuals](/content/troubleshooting)
 
-If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/docs/support).
+If the issue you're experiencing isn't listed here, or if the recommended solution doesn't help, please feel free to [contact our Support team](/content/support).
 
 ## Linode is Slow or Unresponsive
 
@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-[![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
+[![Check Linode boot status.](/content/assets/952-troubleshooting1-1-small.png)](/content/assets/953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.
@@ -72,14 +72,14 @@ To verify that your Linode is operating correctly, you should try to log in with
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears.
-6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
-7.  If the console is not responding, [contact Linode support](/docs/support).
+6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/content/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
+7.  If the console is not responding, [contact Linode support](/content/support).
 
 If you can log in, continue to the next section, even if there are error messages visible on the console.
 
  {: .note }
 >
-> For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+> For more information about LISH, see [this guide](/content/networking/using-the-linode-shell-lish).
 
 ### Is your disk full?
 
@@ -141,26 +141,26 @@ The applications on your Linode require a certain amount of physical memory to f
 
 7.  Examine the output. The free memory available (in megabytes) is shown in the *-/+ buffers/cache* column and the *free* row, as shown below.
 
-	[![Check free memory.](/docs/assets/941-troubleshooting3-1.png)](/docs/assets/941-troubleshooting3-1.png)
+	[![Check free memory.](/content/assets/941-troubleshooting3-1.png)](/content/assets/941-troubleshooting3-1.png)
 
 8.  A lack of free memory may indicate that an application is consuming all of your available memory. To see a list of running processes sorted by memory usage, execute the following command in the LISH console or a terminal window:
 
         ps -eo pmem,pcpu,rss,vsize,args --sort -pmem | less
 
-9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](/docs/upgrading) to a larger plan.
-10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/docs/troubleshooting/memory-networking).
+9.  If an application is consuming all of your available memory, you have three options. You can kill the application, change the application's settings to reduce its memory footprint, or [upgrade your Linode](/content/upgrading) to a larger plan.
+10. To reduce the memory footprint of common applications like Apache and MySQL, see [Troubleshooting Memory and Networking Issues](/content/troubleshooting/memory-networking).
 
 If your Linode is not out of memory, continue to the next section.
 
 ### Are you experiencing network issues?
 
-Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/docs/linux-tools/mtr) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:
+Network issues between your desktop computer and the data center can make your server appear slow or unavailable. You can check for issues with *upstream providers* by following the instructions in [Diagnosing Network Issues with MTR](/content/linux-tools/mtr) to generate *my traceroute* (MTR) reports. MTR combines the functionality of the ping and traceroute programs in a single tool that can help diagnose and isolate networking problems. If the MTR reports indicate that there is a networking issue, use the following list to try resolving the issue yourself before contacting Linode support:
 
 -   Most routing issues displayed in MTR reports are temporary and clear up within 24 hours.
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report.
+When contacting [Linode support](/content/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/content/networking/using-the-linode-shell-lish) console to generate a report.
 
 ### Is there a Disk I/O bottleneck?
 
@@ -169,19 +169,19 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 1.  Open a terminal window and log in to your Linode via SSH.
 2.  Enter `top` to access the `top` monitoring utility. The screen shown below appears.
 
-	[![Check for Disk I/O bottleneck.](/docs/assets/939-troubleshooting2.png)](/docs/assets/939-troubleshooting2.png)
+	[![Check for Disk I/O bottleneck.](/content/assets/939-troubleshooting2.png)](/content/assets/939-troubleshooting2.png)
 
 3.  Examine the I/O wait percentage, as shown above. If the number is zero, your server does not currently have a bottleneck.
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
-5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
+5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/content/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
  {: .note }
 >
 > You must run `iotop` as `root` or with `sudo`.
 
-6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
+6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/content/support) for assistance.
 
-Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/docs/uptime/monitoring/) for instructions on setting up a server monitoring utility.
+Since `top` only reports what is currently happening, and most I/O issues are temporary, it helps to have a monitoring utility set up so you can see a graph of I/O trends and spot potential issues *before* they become major problems. See the guides in [Server Monitoring](/content/uptime/monitoring/) for instructions on setting up a server monitoring utility.
 
 ## Website is Not Loading
 
@@ -193,7 +193,7 @@ Use the following checklist if your website is not loading when you try to conne
 
 ### Have you added DNS records?
 
-To host a website with a domain name, you must set the domain's name servers to point to Linode. You also need to add DNS records for the domain in the Linode Manager. For instructions, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records). Please note that it can take up to 24 hours for DNS changes to be reflected.
+To host a website with a domain name, you must set the domain's name servers to point to Linode. You also need to add DNS records for the domain in the Linode Manager. For instructions, see [Adding DNS Records](/content/websites/hosting-a-website/#add-dns-records). Please note that it can take up to 24 hours for DNS changes to be reflected.
 
 Continue to the next section if you have pointed your domain name at Linode, added DNS records, and waited at least 24 hours.
 
@@ -251,24 +251,24 @@ All web traffic is transferred over ports 80 and 443, so it's important to leave
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:443
 
-3.  If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Creating a Firewall](/docs/securing-your-server/#configure-a-firewall) to revise and implement new firewall rules.
+3.  If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Creating a Firewall](/content/securing-your-server/#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over ports 80 or 443 to `DROP` or `REJECT`.
 
 If your firewall is not blocking ports 80 or 443, continue to the next section.
 
 ### Are the files in correct directory?
 
-If your website is unavailable, verify that you uploaded the files for the website to the correct directory on your server. By default, Apache looks for files in `/usr/local/apache2`, but if you followed the instructions in the [Hosting a Website](/docs/hosting-website) guide, you'll want to place your files in `~/public/example.com/public`, where `example.com` is the name of your domain name.
+If your website is unavailable, verify that you uploaded the files for the website to the correct directory on your server. By default, Apache looks for files in `/usr/local/apache2`, but if you followed the instructions in the [Hosting a Website](/content/hosting-website) guide, you'll want to place your files in `~/public/example.com/public`, where `example.com` is the name of your domain name.
 
 If the files are in the correct directory, continue to the next section.
 
 ### Are virtual hosts correctly configured?
 
-If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/content/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/content/web-servers).
 
 ### Did you add a new IP address?
 
-If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/content/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/content/web-servers).
 
 ## Can't Connect via SSH or FTP
 
@@ -280,7 +280,7 @@ Use the following checklist if you cannot connect to your Linode via SSH or an F
 
 ### Are you using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/content/getting-started#connect-to-your-linode-via-ssh).
 
 ### Is port 22 blocked?
 
@@ -294,14 +294,14 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22
 
-3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#configure-a-firewall) to revise and implement new firewall rules.
+3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/content/securing-your-server#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over port 22 to `DROP` or `REJECT`.
 
 ## Forgot My Username or Password
 
 ### Linode User/Root Password
 
-If you've forgotten the password for the root user on your Linode, you can follow the our steps for [resetting the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) from the Linode Manager.
+If you've forgotten the password for the root user on your Linode, you can follow the our steps for [resetting the root password](/content/platform/accounts-and-passwords/#resetting-the-root-password) from the Linode Manager.
 
 Once you have access to your Linode as the root user, you can reset the password for any additional system users with the `passwd` command. In this case, we'll reset the password for the `example` user:
 
@@ -313,7 +313,7 @@ Once you have access to your Linode as the root user, you can reset the password
 
 *  Assuming you know your Linode Manager username, but you've forgotten the password, you can retrieve it [here](https://manager.linode.com/session/forgot/password).
 
-If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](/docs/platform/support#contacting-linode-support).
+If you've followed these steps, but you're still having trouble accessing your account, please [contact Support](/content/platform/support#contacting-linode-support).
 
 ## Linode Manager is Displaying "Incorrect" Information
 
@@ -332,6 +332,6 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Examine the *Storage* pane on the sidebar, as shown below. If you have free storage space, you can allocate that space to your existing disks.
 
-[![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
+[![Resize disks.](/content/assets/944-troubleshooting4-1.png)](/content/assets/944-troubleshooting4-1.png)
 
-Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.
+Follow our steps for [resizing a disk](/content/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.

@@ -18,15 +18,15 @@ external_resources:
 
 GNU Screen is a tool which works with a terminal session to allow users to resume a session after they have disconnected. Screen prevents a session from "timing out" or disconnecting SSH connections or local terminal emulators. A single Screen session has the ability to host multiple sessions or "windows." Screen may be used for a variety of tasks such as maintaining persistent IRC sessions and multitasking in a terminal environment.
 
-![Using GNU Screen to Manage Persistent Terminal Sessions](/docs/assets/gnu-screen.png "Using GNU Screen to Manage Persistent Terminal Sessions")
+![Using GNU Screen to Manage Persistent Terminal Sessions](/content/assets/gnu-screen.png "Using GNU Screen to Manage Persistent Terminal Sessions")
 
-Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Getting Started Guide](/docs/getting-started/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/docs/using-linux/using-the-terminal).
+Screen runs on any Unix/Linux environment (such as your Linode) and Mac OS X. Before installing and using Screen, it is recommended that you review the [Getting Started Guide](/content/getting-started/). In addition, if you are unfamiliar with using a terminal environment, you will want to review the [Using the Terminal Guide](/content/using-linux/using-the-terminal).
 
 ## Installing GNU Screen
 
 The section covers installing Screen on a number of different systems. Examples have been provided to simplify the installation process.
 
-When installing Screen you will need root privileges. The examples provided do not use the root account. If you are using your root login then the sudo before the commands is not necessary. If you need more information regarding sudo, you can review the [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups).
+When installing Screen you will need root privileges. The examples provided do not use the root account. If you are using your root login then the sudo before the commands is not necessary. If you need more information regarding sudo, you can review the [Linux Users and Groups Guide](/content/tools-reference/linux-users-and-groups).
 
 For a Debian or Ubuntu system use the following commands to update, upgrade, and install Screen:
 
@@ -120,4 +120,4 @@ There are two configuration files contained within your Screen distribution: `/e
 
 (Note that you may only have one of these files.) Below is a sample of the `screenrc` file:
 
-![Sample screenrc file.](/docs/assets/1497-screenrc-resized.png)
+![Sample screenrc file.](/content/assets/1497-screenrc-resized.png)

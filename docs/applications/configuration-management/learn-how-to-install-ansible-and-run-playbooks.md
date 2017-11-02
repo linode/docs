@@ -16,11 +16,11 @@ contributor:
     link: https://twitter.com/jlyman
 external_resources:
  - '[Ansible Home Page](http://www.ansible.com/home)'
- - '[Ansible Documentation](http://docs.ansible.com/ansible/index.html)'
+ - '[Ansible Documentation](http://content.ansible.com/ansible/index.html)'
  - '[Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-![Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
+![Ansible](/content/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
 
 # Getting started with Ansible: An Installation and Configuration Tutorial
 
@@ -32,7 +32,7 @@ This guide will introduce you to the basics of Ansible. By the end of this guide
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
 
 
 ## Installing Ansible
@@ -94,7 +94,7 @@ You were just able to get a valid connection to your server via Ansible!
 
 ## Using Ansible's Inventory File
 
-You executed an Ansible command against one client, but it would be cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play.
+You executed an Ansible command against one client, but it would be cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [inventory file](http://content.ansible.com/ansible/intro_inventory.html) comes into play.
 
 1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist.
 
@@ -134,7 +134,7 @@ You executed an Ansible command against one client, but it would be cumbersome t
 
 You should receive the same output as before, for each server in your `hosts` file. Note that instead of `all`, you could have substituted `mailservers` from the example file, and it would run just against those servers.
 
-You can heavily customize the Inventory file, so [check out the docs for it](http://docs.ansible.com/ansible/intro_inventory.html) if you're interested.
+You can heavily customize the Inventory file, so [check out the docs for it](http://content.ansible.com/ansible/intro_inventory.html) if you're interested.
 
 
 ## Ansible Configuration via Playbooks
@@ -183,7 +183,7 @@ Playbook task
           become_method: sudo
     ~~~
 
-Every task should have a name, which is logged and can help you track progress. Following the name line is the module that will be run (in this case, the [service module](http://docs.ansible.com/ansible/service_module.html)), and the other attributes provide more options, in this case instructing Ansible to use `sudo` privileges (which we will configure later).
+Every task should have a name, which is logged and can help you track progress. Following the name line is the module that will be run (in this case, the [service module](http://content.ansible.com/ansible/service_module.html)), and the other attributes provide more options, in this case instructing Ansible to use `sudo` privileges (which we will configure later).
 
 ### Running Playbooks
 
@@ -203,19 +203,19 @@ Ansible ships with a large collection of modules that you can run as tasks or vi
 
 A few common core modules you might be interested in learning first include:
 
-* [command - Executes a command on a remote node](http://docs.ansible.com/ansible/command_module.html)
-* [script - Runs a local script on a remote node after transferring it](http://docs.ansible.com/ansible/script_module.html)
-* [shell - Execute commands in nodes](http://docs.ansible.com/ansible/shell_module.html)
-* [mysql_db - Add or remove MySQL databases from a remote host](http://docs.ansible.com/ansible/mysql_db_module.html)
-* [mysql_user - Adds or removes a user from a MySQL database](http://docs.ansible.com/ansible/mysql_user_module.html)
-* [postgresql_db - Add or remove PostgreSQL databases from a remote host](http://docs.ansible.com/ansible/postgresql_db_module.html)
-* [postgresql_user - Adds or removes a users (roles) from a PostgreSQL database](http://docs.ansible.com/ansible/postgresql_user_module.html)
-* [fetch - Fetches a file from remote nodes](http://docs.ansible.com/ansible/fetch_module.html)
-* [template - Templates a file out to a remote server](http://docs.ansible.com/ansible/template_module.html)
-* [yum - Manages packages with the yum package manager](http://docs.ansible.com/ansible/yum_module.html)
-* [apt - Manages apt-packages](http://docs.ansible.com/ansible/apt_module.html)
-* [git - Deploy software (or files) from git checkouts](http://docs.ansible.com/ansible/git_module.html)
-* [service - Manage services](http://docs.ansible.com/ansible/service_module.html)
+* [command - Executes a command on a remote node](http://content.ansible.com/ansible/command_module.html)
+* [script - Runs a local script on a remote node after transferring it](http://content.ansible.com/ansible/script_module.html)
+* [shell - Execute commands in nodes](http://content.ansible.com/ansible/shell_module.html)
+* [mysql_db - Add or remove MySQL databases from a remote host](http://content.ansible.com/ansible/mysql_db_module.html)
+* [mysql_user - Adds or removes a user from a MySQL database](http://content.ansible.com/ansible/mysql_user_module.html)
+* [postgresql_db - Add or remove PostgreSQL databases from a remote host](http://content.ansible.com/ansible/postgresql_db_module.html)
+* [postgresql_user - Adds or removes a users (roles) from a PostgreSQL database](http://content.ansible.com/ansible/postgresql_user_module.html)
+* [fetch - Fetches a file from remote nodes](http://content.ansible.com/ansible/fetch_module.html)
+* [template - Templates a file out to a remote server](http://content.ansible.com/ansible/template_module.html)
+* [yum - Manages packages with the yum package manager](http://content.ansible.com/ansible/yum_module.html)
+* [apt - Manages apt-packages](http://content.ansible.com/ansible/apt_module.html)
+* [git - Deploy software (or files) from git checkouts](http://content.ansible.com/ansible/git_module.html)
+* [service - Manage services](http://content.ansible.com/ansible/service_module.html)
 
 
 ## Basic Web Server Setup via Ansible Playbooks
@@ -384,10 +384,10 @@ Below are a few topics to explore that become important as you create playbooks 
   * [WordPress + nginx + PHP-FPM](https://github.com/ansible/ansible-examples/tree/master/wordpress-nginx)
   * [Simple LAMP Stack](https://github.com/ansible/ansible-examples/tree/master/lamp_simple)
   * [Sharded, production-ready MongoDB cluster](https://github.com/ansible/ansible-examples/tree/master/mongodb)
-* [Ansible Documentation](http://docs.ansible.com/ansible/index.html)
+* [Ansible Documentation](http://content.ansible.com/ansible/index.html)
 * Important Next Topics:
-  * [Users, and Switching Users](http://docs.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://docs.ansible.com/ansible/become.html)
-  * [Handlers: Running Operations On Change](http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
-  * [Roles](http://docs.ansible.com/ansible/playbooks_roles.html)
-  * [Variables](http://docs.ansible.com/ansible/playbooks_variables.html)
-  * [Playbook Best Practices](http://docs.ansible.com/ansible/playbooks_best_practices.html)
+  * [Users, and Switching Users](http://content.ansible.com/ansible/playbooks_intro.html#hosts-and-users) and [Privilege Escalation](http://content.ansible.com/ansible/become.html)
+  * [Handlers: Running Operations On Change](http://content.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change)
+  * [Roles](http://content.ansible.com/ansible/playbooks_roles.html)
+  * [Variables](http://content.ansible.com/ansible/playbooks_variables.html)
+  * [Playbook Best Practices](http://content.ansible.com/ansible/playbooks_best_practices.html)

@@ -14,13 +14,13 @@ published: 'Thursday, April 5th, 2012'
 title: 'Prepaid Billing and Payments (Legacy)'
 ---
 
-Use this guide to learn how our prepaid billing system works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/support).
+Use this guide to learn how our prepaid billing system works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/content/support).
 
-This guide applies to customers using Linode's prepaid billing system. For current information, please see [the current billing guide](/docs/billing-and-payments).
+This guide applies to customers using Linode's prepaid billing system. For current information, please see [the current billing guide](/content/billing-and-payments).
 
 {: .note }
 >
-> To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/upgrade-to-hourly-billing).
+> To convert your prepaid account to Hourly billing, see [this guide](/content/platform/upgrade-to-hourly-billing).
 
 ## How Prepaid Billing Works
 
@@ -32,7 +32,7 @@ All services are billed automatically on the first of the month, and all fees bi
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. For payments of a year or more, we also accept checks or money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/about/). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
+We accept Visa, MasterCard, Discover, and American Express. For payments of a year or more, we also accept checks or money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/about/). Please [contact support](/content/support) before paying with check or money order. Note that we do not accept bank/wire transfers, and we have no plans to support PayPal at this time.
 
 ## Making a Payment
 
@@ -50,7 +50,7 @@ The payment may take a few minutes to be applied to your account. Click the **Ac
 
 ### Discounts for Prepayment
 
-Linode provides a 10% discount for annual prepayment, and a 15% discount for biennial prepayment. To prepay for a year or more of service and receive your discount, please [contact support](/docs/support).
+Linode provides a 10% discount for annual prepayment, and a 15% discount for biennial prepayment. To prepay for a year or more of service and receive your discount, please [contact support](/content/support).
 
 ## Bandwidth Overages
 
@@ -101,7 +101,7 @@ Our services are provided without a contract, so you're free to remove services 
 2.  To remove a Linode from your account, click the **Linodes** tab, and then select the **Remove** link next to the Linode you want to remove.
 3.  To remove extras from your account, click the **Linodes** tab, select a Linode, click the **Extras** tab, and then select the **Remove** link.
 4.  To remove a NodeBalancer from your account, click the **NodeBalancers** tab, and then select the **Remove** link next to the NodeBalancer you want to remove.
-5.  To remove the Linode Backup Service, please [contact support](/docs/support).
+5.  To remove the Linode Backup Service, please [contact support](/content/support).
 
 If you remove services from your account, you will be issued a prorated service credit for the time left in the current billing period. This credit may be used to purchase additional Linode services in the future. Service credit is always used before charging the credit card on file for ongoing service.
 

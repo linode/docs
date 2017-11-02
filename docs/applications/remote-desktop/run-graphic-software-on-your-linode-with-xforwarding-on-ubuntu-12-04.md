@@ -23,7 +23,7 @@ On occasion you may want to run an application that requires a graphic interface
 
  {: .note }
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install X11 on your Linode
 
@@ -79,7 +79,7 @@ Connecting from a Windows machine will depend on what software you have chosen. 
         sudo apt-get install firefox
         firefox &
 
-    [![Firefox, running on a Linode](/docs/assets/1653-xforwarding_3-ubuntu_small.png)](/docs/assets/1651-xforwarding_3-ubuntu.png)
+    [![Firefox, running on a Linode](/content/assets/1653-xforwarding_3-ubuntu_small.png)](/content/assets/1651-xforwarding_3-ubuntu.png)
 
  {: .note }
 >

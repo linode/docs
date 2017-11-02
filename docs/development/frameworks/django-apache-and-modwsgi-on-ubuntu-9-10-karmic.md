@@ -18,7 +18,7 @@ title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9-10-karmic) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/content/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/content/web-servers/apache/installation/ubuntu-9-10-karmic) and a functional [MySQL database](/content/databases/mysql/ubuntu-9-10-karmic) system installed.
 
 Install Dependencies
 --------------------
@@ -51,11 +51,11 @@ Issue the following commands to ensure that your system's package repositories a
     apt-get upgrade
     apt-get install python-setuptools libapache2-mod-wsgi
 
-Additionally you will need to install a database system and a python driver for this database system. If you want to run the [MySQL database engine](/docs/databases/mysql/ubuntu-9-10-karmic) issue the following command:
+Additionally you will need to install a database system and a python driver for this database system. If you want to run the [MySQL database engine](/content/databases/mysql/ubuntu-9-10-karmic) issue the following command:
 
     apt-get install mysql-server python-mysqldb
 
-If you want to run the [PostgreSQL database server](/docs/databases/postgresql/ubuntu-9-10-karmic) issue the following command:
+If you want to run the [PostgreSQL database server](/content/databases/postgresql/ubuntu-9-10-karmic) issue the following command:
 
     apt-get install postgresql python-psycopg2
 
@@ -145,7 +145,7 @@ More Information
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Django Project Home Page](http://www.djangoproject.com/)
-- [The Django Project Introductory Tutorial](http://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)
+- [The Django Project Introductory Tutorial](http://content.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)
 - [The Django Book](http://www.djangobook.com/)
 - [Deploying Django Applications](http://www.djangobook.com/en/2.0/chapter12/)
 - [A Basic "Hello World" Django Application](http://runnable.com/UWRVp6lLuONCAABD/hello-world-in-django-for-python)

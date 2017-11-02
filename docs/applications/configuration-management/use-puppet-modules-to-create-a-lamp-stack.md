@@ -19,7 +19,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
 {: .note}
 >
->This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide. If using a different setup, please adapt the guide accordingly.
+>This guide assumes that you are working from an Ubuntu 14.04 LTS Puppet master and CentOS 7 and Ubuntu 14.04 nodes, configured in the [Puppet Setup](/content/applications/puppet/set-up-puppet-master-agent) guide. If using a different setup, please adapt the guide accordingly.
 
 ## Create the Apache Module
 
@@ -37,7 +37,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
         cd manifests
 
-    From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://docs.puppetlabs.com/hiera/latest/) data to store variables for each node.
+    From here, the module will be separated into classes, based upon the goals of that particular section of code. In this instance, there will be an `init.pp` class for downloading the Apache package, a `params.pp` file to define any variables and parameters, `config.pp` to managed any configuration files for the Apache service itself, and a `vhosts.pp` file to define the virtual hosts. This module will also make use of [Hiera](http://content.puppetlabs.com/hiera/latest/) data to store variables for each node.
 
 ### Create the Initial Apache Class and Parameters
 
@@ -122,7 +122,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
     {: .note}
     >
-    >For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
+    >For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/content/assets/params.pp).
 
 4.  With the parameters finally defined, we need to call the `params.pp` file and the parameters into `init.pp`. To do this, the parameters need to be added after the class name, but before the opening curly bracket (`{`):
 
@@ -139,7 +139,7 @@ In this guide, Apache and PHP modules will be created from scratch, and a MySQL 
 
 ### Manage Configuration Files
 
-Apache has two different configuration files, depending on whether you are working on a Red Hat- or Debian-based system. These can be pulled off a server, or viewed here: [httpd.conf (Red Hat)](/docs/assets/httpd.conf), [apache2.conf (Debian)](/docs/assets/apache2.conf).
+Apache has two different configuration files, depending on whether you are working on a Red Hat- or Debian-based system. These can be pulled off a server, or viewed here: [httpd.conf (Red Hat)](/content/assets/httpd.conf), [apache2.conf (Debian)](/content/assets/apache2.conf).
 
 1.  Copy the `httpd.conf` and `apache2.conf` files to the `files` directory located at `/etc/puppet/modules/apache/files/`.
 
@@ -188,7 +188,7 @@ Apache has two different configuration files, depending on whether you are worki
           ...
         ~~~
 
-    These parameters will also need to be added to the `init.pp` file, following the example of the additional parameters. A complete copy of the `init.pp` file can be seen [here](/docs/assets/puppet_apacheinit.pp).
+    These parameters will also need to be added to the `init.pp` file, following the example of the additional parameters. A complete copy of the `init.pp` file can be seen [here](/content/assets/puppet_apacheinit.pp).
 
 5.  When the configuration file is changed, Apache needs to restart. To automate this, the `service` resource can be used in combination with the `notify` attribute, which will call the resource to run whenever the configuration file is changed:
 
@@ -372,9 +372,9 @@ The Virtual Hosts files will be managed differently, depending on whether the se
 
     It should return no errors, and output that it will trigger refreshes from events. To install and configure apache on the Puppet master, this can be run again without `--noop` , if so desired.
 
-4.  Navigate back to the main Puppet directory and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide, you should have a `site.pp` file already created. If not, create one now.
+4.  Navigate back to the main Puppet directory and then to the `manifests` folder (**not** the one located in the Apache module). If you are continuing this guide from the [Puppet Setup](/content/applications/puppet/set-up-puppet-master-agent) guide, you should have a `site.pp` file already created. If not, create one now.
 
-5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Puppet Setup](/docs/applications/puppet/set-up-puppet-master-agent) guide, a single node configuration within `site.pp` will resemble the following:
+5.  Open `site.pp` and include the Apache module for each agent node. Also input the variables for the `adminemail` and `servername` parameters. If you followed the [Puppet Setup](/content/applications/puppet/set-up-puppet-master-agent) guide, a single node configuration within `site.pp` will resemble the following:
 
     {: .file-excerpt}
     /etc/puppet/manifests/site.pp

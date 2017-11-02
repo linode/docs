@@ -14,15 +14,15 @@ modified_by:
 published: 'Friday, August 11, 2017'
 title: 'How to Use Dockerfiles'
 external_resources:
- - '[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
- - '[Docker Docs](http://docs.docker.com/)'
+ - '[Dockerfile Best Practices](https://content.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
+ - '[Docker Docs](http://content.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![How to Use Dockerfiles](/docs/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
+![How to Use Dockerfiles](/content/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
 
-[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
+[Docker images](/content/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
 
 You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
 
@@ -57,7 +57,7 @@ Dockerfiles require specific setup and format with no extra spaces.
 
 Docker reuses cache from the previous step. This may result in commands not running properly or not running at all. To avoid this caching issue, combine `apt` commands into a single `RUN` statement. To avoid other caching issues, combine multiple `RUN` statements for commands like `apt-get update/upgrade/install`.
 
-Note that in the example below, multiple packages are installed on separate lines. This optional step is recommended by the [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments) in order to ease future updates and maintenance.
+Note that in the example below, multiple packages are installed on separate lines. This optional step is recommended by the [Dockerfile Best Practices](https://content.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments) in order to ease future updates and maintenance.
 
 1.  Create and change to a new directory and create a `Dockerfile` file:
 
@@ -103,4 +103,4 @@ Each image created will be tagged `Dockerfile`. To change the tag during build, 
 
 ## Just the basics
 
-This guide covered the basics of using Dockerfiles to build images. For more information on Dockerfiles, visit the official [Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) documentation.
+This guide covered the basics of using Dockerfiles to build images. For more information on Dockerfiles, visit the official [Dockerfile Best Practices](https://content.docker.com/engine/userguide/eng-image/dockerfile_best-practices/) documentation.

@@ -11,7 +11,7 @@ modified_by:
 published: 'Wednesday, November 19th, 2014'
 title: 'SSL Certificates with Apache on CentOS 7'
 external_resources:
- - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)'
+ - '[Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/content/2.0/)'
  - '[Setting up an SSL Secured Webserver with CentOS](http://wiki.centos.org/HowTos/Https)'
 ---
 
@@ -21,11 +21,11 @@ This guide will show you how to enable SSL to secure websites served through Apa
 
 This guide assumes that you are running Apache2 on CentOS or Fedora. Prior to starting this guide, ensure that the following steps have been taken on your Linode:
 
--  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+-  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
--  Complete our [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
+-  Complete our [LAMP on CentOS 7](/content/websites/lamp/lamp-on-centos-7) guide, and create a site that you wish to secure with SSL.
 
--  Follow our guide for obtaining either a [self-signed](/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora) or [commercial](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) SSL certificate.
+-  Follow our guide for obtaining either a [self-signed](/content/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora) or [commercial](/content/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora) SSL certificate.
 
 -  In order to configure your Linode to function with SSL, you will need to ensure that the Apache `mod_ssl` module is installed on your system.  You can do so by running the following command:
 

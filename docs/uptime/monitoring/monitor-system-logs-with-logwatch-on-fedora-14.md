@@ -18,7 +18,7 @@ title: Monitor System Logs with Logwatch on Fedora 14
 
 Logwatch is a utility used to monitor system logs and create reports. These reports include failed login attempts, successful login attempts, and storage space used/available.
 
-Before installing Logwatch, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Logwatch, it is assumed that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 Update System Packages
 ----------------------
@@ -36,7 +36,7 @@ Issue the following command to install Logwatch:
 
     yum install logwatch
 
-Logwatch requires a mail transport agent (MTA) to send its reports. Logwatch will automatically use an already installed MTA, such as [postfix](/docs/email/postfix/) or [exim](/docs/email/exim/). If you do not have MTA installed, issue the following command to install exim:
+Logwatch requires a mail transport agent (MTA) to send its reports. Logwatch will automatically use an already installed MTA, such as [postfix](/content/email/postfix/) or [exim](/content/email/exim/). If you do not have MTA installed, issue the following command to install exim:
 
     yum install exim
 

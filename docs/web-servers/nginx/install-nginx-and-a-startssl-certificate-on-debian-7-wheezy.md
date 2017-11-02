@@ -17,7 +17,7 @@ contributor:
     link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
@@ -25,7 +25,7 @@ This guide is going to show you how to install the latest stable version of Ngin
 
 ### Prerequisites
 
-This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/docs/getting-started) and them come back here.
+This article assumes that you already have Debian 7 Wheezy running on a Linode. If you do not, follow the [Getting Started guide](https://www.linode.com/content/getting-started) and them come back here.
 
 Please note, in order to obtain an SSL certificate for your Linode, you must have registered a domain name, and have access to an email account like webmaster@yourdomain.com. This is necessary for StartSSL to verify that you have control of the domain you are requesting an SSL certificate for.
 
@@ -33,7 +33,7 @@ All of the commands below should be executed as the ``root`` user.
 
 ### Add the Nginx Debian Repository to Your Linode Package Sources
 
-1.  Create a new file in `/etc/apt/sources.list.d/` that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. Here we'll use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/docs/tools-reference/tools/using-nano) before continuing.
+1.  Create a new file in `/etc/apt/sources.list.d/` that instructs the package manager to download packages from the Nginx repositories using your favorite text editor. Here we'll use `nano`, but you could also use `vi` or `emacs`. If you have not used Nano before, I highly recommend reading [Using Nano](https://www.linode.com/content/tools-reference/tools/using-nano) before continuing.
 
         nano /etc/apt/sources.list.d/nginx.list
 
@@ -82,27 +82,27 @@ All of the commands below should be executed as the ``root`` user.
 
         openssl req -new -key server.key -out server.csr
 
-    [![CSR Creation](/docs/assets/1751-CSR.jpg)](/docs/assets/1751-CSR.jpg)
+    [![CSR Creation](/content/assets/1751-CSR.jpg)](/content/assets/1751-CSR.jpg)
 
 ### Sign-up With StartSSL
 
 1.  Launch a web browser and naviagte to the [StartSSL Control Panel](https://www.startssl.com/?app=12). If this is your first time requesting a certificate from StartSSL, click on the "Sign-up" button. If you have already requested a certificate from StartSSL, log into your account, and skip to the next section.
 
-    [![StartSSL Control Panel](/docs/assets/1752-StartSSL-Control-Panel-Preview.jpg)](/docs/assets/1752-StartSSL-Control-Panel.jpg)
+    [![StartSSL Control Panel](/content/assets/1752-StartSSL-Control-Panel-Preview.jpg)](/content/assets/1752-StartSSL-Control-Panel.jpg)
 
 2. Provide the requested information and a click "Continue >> >>"
 
-    [![StartSSL Sign-up Page](/docs/assets/1753-StartSSL-Register.jpg)](/docs/assets/1753-StartSSL-Register.jpg)
+    [![StartSSL Sign-up Page](/content/assets/1753-StartSSL-Register.jpg)](/content/assets/1753-StartSSL-Register.jpg)
 
 3.  A verification code will be sent to the email address provided. Log into your email account and provide the verification code. Then click "Continue >> >>".
 
 4.  Once your email address has been verified. Choose to generate a high grade private key. This private key and certificate pair will be used to identify you to StartSSL. If you ever loose it, you will be unable to regain access to your account, make sure to backup this certificate and private key.
 
-    [![StartSSL Generate Private Key Page](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)](/docs/assets/1754-StartSSL-Generate-Private-Key.jpg)
+    [![StartSSL Generate Private Key Page](/content/assets/1754-StartSSL-Generate-Private-Key.jpg)](/content/assets/1754-StartSSL-Generate-Private-Key.jpg)
 
 5.  Click "Install >> >>" to install your personal certificate into your browser to identify yourself to StartSSL.
 
-    [![StartSSL Certificate Installation Page](/docs/assets/1755-StartSSL-Install-Certificate.jpg)](/docs/assets/1755-StartSSL-Install-Certificate.jpg)
+    [![StartSSL Certificate Installation Page](/content/assets/1755-StartSSL-Install-Certificate.jpg)](/content/assets/1755-StartSSL-Install-Certificate.jpg)
 
 6.  Click "Finish >> >>".
 
@@ -114,23 +114,23 @@ You should now be logged into your StartSSL account.
 
 2.  Select "Domain Name Validation" and click "Continue >> >>".
 
-    [![StartSSL Validation Wizard Start Page](/docs/assets/1756-StartSSL-Validation-Wizard-Preview.jpg)](/docs/assets/1756-StartSSL-Validation-Wizard.jpg)
+    [![StartSSL Validation Wizard Start Page](/content/assets/1756-StartSSL-Validation-Wizard-Preview.jpg)](/content/assets/1756-StartSSL-Validation-Wizard.jpg)
 
 3.  Enter your domain name and click "Continue >> >>".
 
-    [![StartSSL Validation Wizard Domain Name Validation Page](/docs/assets/1757-StartSSL-Validation-Wizard-Domain-Preview.jpg)](/docs/assets/1757-StartSSL-Validation-Wizard-Domain.jpg)
+    [![StartSSL Validation Wizard Domain Name Validation Page](/content/assets/1757-StartSSL-Validation-Wizard-Domain-Preview.jpg)](/content/assets/1757-StartSSL-Validation-Wizard-Domain.jpg)
 
 4.  Choose an email address @ your domain that you access to and click "Continue >> >>". Note that the domain being used for this tutorial has been omitted from the screenshot below.
 
-    [![StartSSL Validation Wizard Domain Control Email Validation Page](/docs/assets/1758-StartSSL-Validation-Wizard-Email-Preview.jpg)](/docs/assets/1758-StartSSL-Validation-Wizard-Email.jpg)
+    [![StartSSL Validation Wizard Domain Control Email Validation Page](/content/assets/1758-StartSSL-Validation-Wizard-Email-Preview.jpg)](/content/assets/1758-StartSSL-Validation-Wizard-Email.jpg)
 
 5.  A verification code should be sent to the email address selected. Access your email account and provide the verification code and click "Continue >> >>".
 
-    [![StartSSL Validation Wizard Email Verification Code Page](/docs/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg)](/docs/assets/1759-StartSSL-Validation-Wizard-Validation.jpg)
+    [![StartSSL Validation Wizard Email Verification Code Page](/content/assets/1759-StartSSL-Validation-Wizard-Validation-Preview.jpg)](/content/assets/1759-StartSSL-Validation-Wizard-Validation.jpg)
 
 6.  Your domain has now been verified. Click "Finish >> >>".
 
-    ![StartSSL Validation Wizard Complete Page](/docs/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)
+    ![StartSSL Validation Wizard Complete Page](/content/assets/1760-StartSSL-Validation-Wizard-Complete-Preview.jpg)
 
 ### Submit Your Certificate Signing Request to StartSSL
 
@@ -138,11 +138,11 @@ You should now be logged into your StartSSL account.
 
 2.  From the "Certificate Target" drop down menu select "Web Server SSL/TLS Certicate" and click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard Start](/docs/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg)](/docs/assets/1761-StartSSL-Certificates-Wizard-Target.jpg)
+    [![StartSSL Certificates Wizard Start](/content/assets/1761-StartSSL-Certificates-Wizard-Target-Preview.jpg)](/content/assets/1761-StartSSL-Certificates-Wizard-Target.jpg)
 
 3.  Click "Skip >> >>" to skip generating a RSA private key. In the previous step an RSA private key was generated before creating a certificate signing request.
 
-    [![StartSSL Certificates Wizard Skip Creating a RSA Private Key](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key-Preview.jpg)](/docs/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)
+    [![StartSSL Certificates Wizard Skip Creating a RSA Private Key](/content/assets/1762-StartSSL-Certificates-Wizard-Private-Key-Preview.jpg)](/content/assets/1762-StartSSL-Certificates-Wizard-Private-Key.jpg)
 
 4.  Using the text editor of your choice, open up your certificate signing request and copy it. If you're using Putty on Windows, highlight the entire certificate signing request to copy it to the clipboard, then exit the text editor.
 
@@ -150,23 +150,23 @@ You should now be logged into your StartSSL account.
 
 5.  Paste your certificate signing request into the empty text box and then click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard Submit CSR](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR-Preview.jpg)](/docs/assets/1763-StartSSL-Certificates-Wizard-CSR.jpg)
+    [![StartSSL Certificates Wizard Submit CSR](/content/assets/1763-StartSSL-Certificates-Wizard-CSR-Preview.jpg)](/content/assets/1763-StartSSL-Certificates-Wizard-CSR.jpg)
 
 6.  Click "Continue >> >>".
 
-    ![StartSSL Certificates Wizard CSR Received](/docs/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)
+    ![StartSSL Certificates Wizard CSR Received](/content/assets/1764-StartSSL-Certificates-Wizard-CSR-Received-Preview.jpg)
 
 7.  Choose the domain you would like a certificate for and click "Continue >> >>".
 
-    ![StartSSL Certificates Wizard CSR Domain Selection](/docs/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)
+    ![StartSSL Certificates Wizard CSR Domain Selection](/content/assets/1765-StartSSL-Certificates-Wizard-CSR-Domain-Preview.jpg)
 
 8.  Enter the sub domain you entered when creating the CSR before (ex. www.yourdomain.com, server1.yourdomain.com), or if your entered yourdomain.com before, enter www into this field to make your certificate valid for www.yourdomain.com as well. Then click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard Choose a SubDomain](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg)](/docs/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
+    [![StartSSL Certificates Wizard Choose a SubDomain](/content/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain-Preview.jpg)](/content/assets/1766-StartSSL-Certificates-Wizard-CSR-SubDomain.jpg)
 
 9.  Click "Continue >> >>".
 
-    [![StartSSL Certificates Wizard CSR Ready for Issuing Certificate](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg)](/docs/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg)
+    [![StartSSL Certificates Wizard CSR Ready for Issuing Certificate](/content/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready-Preview.jpg)](/content/assets/1767-StartSSL-Certificates-Wizard-CSR-Ready.jpg)
 
 10. Once your certificate has been issued paste the certificate into a new server.crt file. Then save your changes and exit the editor.
 
@@ -242,6 +242,6 @@ You should now be logged into your StartSSL account.
 
 Launch a web browser and navigate to https://yourdomainorsubdomainhere and you should see the default nginx page. Please note, this will not work until you have created an A record for your hostname at your domain provider pointing to the IP address of your Linode. Please contact your domain provider if you need assistance.
 
-  [![Up and Running](/docs/assets/1768-Up-And-Running.jpg)](/docs/assets/1768-Up-And-Running.jpg)
+  [![Up and Running](/content/assets/1768-Up-And-Running.jpg)](/content/assets/1768-Up-And-Running.jpg)
 
 You have successfully installed the latest version of Nginx and configured your free StartSSL SSL Certificate. You can now run an [SSL test](https://www.ssllabs.com/ssltest/) on your server and get an A! Now you can place any files you would like Nginx to make available in the /usr/share/nginx/html folder.
