@@ -6,9 +6,9 @@ description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
-modified: Tuesday, January 20, 2015
+modified: Thursday, November 2nd, 2017
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Wednesday, July 29th, 2009'
 title: "DNS Records: an Introduction"
 external_resources:
@@ -116,6 +116,9 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
 
+### CAA
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain.
+
 ### CNAME
 
 A *CNAME record* or *Canonical Name record* matches up a domain (or subdomain) to a different domain. With a CNAME record, DNS lookups use the target domain's DNS resolution as the alias's resolution. Here's an example:
@@ -150,102 +153,4 @@ The above records direct mail for *example.com* to the *mail.example.com* server
 
 Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service, like [Google Apps](/docs/email/google-mail), you should use the MX records they provide.
 
-*Priority* is another component of MX records. This is the number written between the record type and the target server (10 in the example above). Priority allows you to designate a fallback server (or servers) for mail for a particular domain. Lower numbers have a higher priority. Here's an example of a domain that has two fallback mail servers:
-
-    example.com         MX      10  mail_1.example.com
-    example.com         MX      20  mail_2.example.com
-    example.com         MX      30  mail_3.example.com
-
-In this example, if `mail_1.example.com` is down, mail will be delivered to `mail_2.example.com`. If `mail_2.example.com` is also down, mail will be delivered to `mail_3.example.com`.
-
-### NS
-
-*NS records* or *name server records* set the nameservers for a domain (or subdomain). The primary nameserver records for your domain are set both at your registrar and in your zone file. Typical nameserver records (you need at least two) look like this:
-
-    example.com     NS      ns1.linode.com.
-    example.com     NS      ns2.linode.com.
-    example.com     NS      ns3.linode.com.
-    example.com     NS      ns4.linode.com.
-    example.com     NS      ns5.linode.com.
-
-The nameservers you designate at your registrar then carry the zone file for your domain.
-
-You can also set up different nameservers for any of your subdomains. Subdomain NS records get configured in your primary domain's zone file. For example, if you're using Linode's nameservers, you could configure separate NS records in your Linode zone file for the subdomain `mail.example.com` as shown below:
-
-    mail.example.com    NS      ns1.nameserver.com
-    mail.example.com    NS      ns2.nameserver.com
-
-Primary nameservers get configured at your registrar; secondary subdomain nameservers get configured in the primary domain's zone file. The order of NS records does not matter; DNS requests are sent randomly to the different servers, and if one host fails to respond, another one will be queried.
-
-### PTR
-
-A *PTR record* or *pointer record* matches up an IP address to a domain (or subdomain), allowing reverse DNS queries to function. It performs the opposite service an A record does, in that it allows you to look up the domain associated with a particular IP address, instead of vice versa.
-
-PTR records are usually set with your hosting provider. They are not part of your domain's zone file. This means that you'll always set reverse DNS for your Linodes in the Linode Manager, even if your nameservers are elsewhere. Likewise, if you have servers somewhere else but are using Linode's nameservers, you will still have to set up your PTR records with your hosting provider.
-
-As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain (or subdomain) to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
-
-For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/networking/dns/setting-reverse-dns) guide.
-
-{: .note }
->
-> It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
-
-### SOA
-
-An *SOA record* or *Start of Authority record* labels a zone file with the name of the host where it was originally created. Next, it lists the contact email address for the person responsible for the domain. There are also various numbers, which we'll get into in detail in a moment. First, here's a typical SOA record:
-
-    @   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400
-
-{: .note }
->
-> The administrative email address is written with a period (**.**) instead of an at symbol (<**@**>).
-
-Here's what the numbers mean:
-
--   **Serial number**: The revision number for this domain's zone file. It changes when the file gets updated.
--   **Refresh time**: The amount of time (in seconds) a secondary DNS server will keep the zone file before it checks for changes.
--   **Retry time**: The amount of time a secondary DNS server will wait before retrying a failed zone file transfer.
--   **Expire time**: The amount of time a secondary DNS server will wait before expiring its current zone file copy if it cannot update itself.
--   **Minimum TTL**: The minimum amount of time other servers should keep data cached from this zone file.
-
-The single nameserver mentioned in the SOA record is considered the primary master for the purposes of Dynamic DNS and is the server where zone file changes get made before they are propagated to all other nameservers.
-
-### SPF
-
-An *SPF record* or *Sender Policy Framework record* lists the designated mail servers for a domain (or subdomain). It helps establish the legitimacy of your mail server and reduces the chances of spoofing, which occurs when someone fakes the headers on an email to make it look like it's coming from your domain, even though the message did not originate from your Linode. Spammers sometimes try to do this to get around spam filters. An SPF record for your domain tells other receiving mail servers which outgoing server(s) are valid sources of email, so they can reject spoofed email from your domain that has originated from unauthorized servers. A very basic SPF record looks like the following:
-
-    example.com   TXT     "v=spf1 a ~all"
-
-In your SPF record, you should list all the mail servers from which you send mail, and then exclude all the others. Your SPF record will have a domain or subdomain, type (which is TXT, or SPF if your name server supports it), and text (which starts with "v=spf1" and contains the SPF record settings).
-
-If your Linode is the only mail server you use, you should be able to use the example record above. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of example.com. If the IPs match, the check passes. If not, the check will "soft fail" (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).
-
-{: .note }
->
-> Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting openspf.org to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
-
-### SRV
-
-An *SRV record* or *service record* matches up a specific service that runs on your domain (or subdomain) to a target domain. This allows you to direct traffic for specific services, like instant messaging, to another server. A typical SRV record looks like the following:
-
-    _service._protocol.example.com  SRV     10      0       5060    service.example.com
-
-Here's a breakdown of the elements in an SRV record:
-
--   **Service**: The name of the service must be preceded by an underscore (**\_**) and followed by a period (**.**). The service could be something like **\_xmpp.**
--   **Protocol**: The name of the protocol must be proceeded by an underscore (**\_**) and followed by a period (**.**). The protocol could be something like **\_tcp.**
--   **Domain**: The name of the domain that will receive the original traffic for this service.
--   **Priority**: The first number (**10** in the example above) allows you to set the priority for the target server. You can set different targets with different priorities, which allows you to have a fallback server (or servers) for that service. Lower numbers have a higher priority.
--   **Weight**: If two records have the same priority, weight is used instead.
--   **Port**: The TCP or UDP port on which the service runs.
--   **Target**: The target domain or subdomain. This domain must have an A or AAAA record that resolves to an IP address.
-
-An example use of SRV records would be to set up [Federated VoIP](http://en.wikipedia.org/wiki/Federated_VoIP).
-
-### TXT
-
-A *TXT record* or *text record* provides information about the domain in question to other resources on the Internet. It's a flexible type of DNS record that can serve many different purposes depending on the specific contents. One common use of the TXT record is to create an [SPF record](#spf) on nameservers that don't natively support SPF. Another use is to create a [DKIM record](#dkim) for mail signing.
-
-
-
+*Priority* is another component of MX records. This is the number written between the record type and the target server (10 in the example above). Priority allows you to designate a fallback server (or servers) for mail for a particular domain. Lower numbers have a higher
