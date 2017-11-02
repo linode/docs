@@ -1,0 +1,9 @@
+This is an example resource for the `wget` document
+<http://www.linode.com/docs/tools-reference/tools/download-resources-from-the-command-line-with-wget>, located in Linode Guides & Tutorials.
+
+There are four lines of random characters at the end of this file.
+
+y7tWn6zZRFAX1cXyQzzSBhTDC+/SpN/RezhI2acW3qr3HGFDCM7PX9frUhna75wG
+6lOvibL5/sHTKP8N7tRfszZq1MaGlmpeEQN1n5afK6Awh0rykc5FMn2xb3jf0klF
+wVPjuxsptT/L05K6avRI81Edg2+8CkS8uA16u+bXqRn1BBQutRvxwrWwrKuP10pR
+uCf3HehndIeRghOAmXPc61cfUrHZ+MEqXYmSoKw4E0hI7GWXkwAyByCFPBVB9Fbe

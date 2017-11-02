@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/','websites/lamp/']
 published: 'Thursday, July 16th, 2009'
 title: LAMP Guides
+show_in_lists: true
 ---
 
 When web developers talk about a "LAMP" stack, they are referring to a commonly used platform for web applications. The acronym usually refers to a Linux-based operating system, the Apache web server, the MySQL database server, and the PHP programing language. It is common to substitute other programing languages like Python, Perl, and even Ruby for PHP, but PHP is often a crucial part of the stack.

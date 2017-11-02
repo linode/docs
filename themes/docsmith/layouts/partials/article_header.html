@@ -1,0 +1,19 @@
+<h1 class="doc-title" itemprop="headline">{{ .Params.title }}</h1>
+<p markdown="0" class="doc-time doc-modified-time">
+  <small class="updated">Updated <time itemprop="dateModified" datetime="{{ .Lastmod.Format .Site.Params.time_format_RFC3339 }}">{{ .Lastmod.Format .Site.Params.time_format_default }}</time> by {{ .Params.modified_by.name }}</small>
+  {{ if .Params.contributor }}
+  <small class="contributed-by">Contributed by
+  {{ if .Params.contributor.link }}
+  <a href="{{ .Params.contributor.link }}">{{ .Params.contributor.name }}
+    {{ if strings.Contains .Params.contributor.link "twitter.com" }}
+    <i class="fa fa-twitter"></i>
+    {{ else if strings.Contains .Params.contributor.link "github.com" }}
+    <i class="fa fa-github"></i>
+    {{ end }}
+  </a>
+  {{ else }}
+  {{ .Params.contributor.name }}
+  {{ end }}
+  </small>
+  {{ end }}
+</p>

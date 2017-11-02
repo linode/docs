@@ -7,4 +7,5 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/configuration/','websites/apache-tips-and-tricks/']
 published: 'Thursday, July 16th, 2009'
 title: Apache Tips & Tricks
+show_in_lists: true
 ---

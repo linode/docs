@@ -7,6 +7,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/ssl-guides/']
 published: 'Thursday, July 16th, 2009'
 title: Web Server SSL Guides
+show_in_lists: true
 ---
 
 These guides will help you get up and running quickly with SSL for your Linode web server.

@@ -1,0 +1,46 @@
+{{ with .Pages }}
+{{ $class := cond (eq (len $.Sections) 0) "primary"  "neutral" }}
+<section class="{{ $class }}">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {{ $len := len . }}
+        {{ range $i, $article := . }}
+        
+        {{ if modBool $i 2 }}<div class="row">{{ end }}
+          
+          <div class="col-md-6 library-article-blurb">
+            <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+            <p>{{ .Description }}</p>
+          </div>
+        {{ if (or (not (modBool $i 2)) (eq (add $i 1) $len)) }}</div>{{ end }}
+        
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+{{ $sections :=  where .Sections ".Params.show_in_lists" "==" true  }}
+{{ with $sections }}
+<section class="primary some-space">
+  <div class="container">
+    {{ range . }}
+    {{ $pages := where .Pages ".Params.deprecated" "!=" true }}
+    {{ if gt (len $pages) 0 }}
+    <div class="row-content">
+      <div class="col-sm-12">
+        <h2 class="h3"><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+        <ul class="list-group article-list">
+          {{ $pages := where .Pages ".Params.deprecated" "!=" true }}
+          {{ range $pages }}
+          <li class="list-group-item library-article-item"><h3 class="h5"><a href="{{ .Permalink }}">{{ .Title }}{{ if .Params.has_video }}&nbsp;<i class="fa fa-youtube-play"></i>{{ end }}</a></h3></li>
+          {{ end }}
+        </ul>
+      </div>
+    </div>
+    {{ end }}
+    {{ end }}
+  </div>
+</section>
+{{ end }}
