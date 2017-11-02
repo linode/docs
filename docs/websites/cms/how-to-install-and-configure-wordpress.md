@@ -11,6 +11,7 @@ modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
 title: How to Install and Configure WordPress
+deprecated: true
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
