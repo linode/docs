@@ -2,7 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: "This guide is a brief overview of IPv6 support on Linode, including how to find youre Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
+description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
+og_description:'This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding.'
 keywords: 'ipv6,networking,IP configuration'
 alias: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +16,8 @@ external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
+
+## Default IPv6 Configuration
 
 All Linodes are created with one IPv6 address, which is acquired by Stateless Address Autoconfiguration (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
