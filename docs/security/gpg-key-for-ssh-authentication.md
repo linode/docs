@@ -21,6 +21,8 @@ published: 'Monday, October 3rd, 2016'
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
+![GPG key for SSH Authentication](/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)
+
 You may be familiar with [public key authentication](/docs/security/use-public-key-authentication-with-ssh) for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.
 
 The chief benefit of this method is that instead of having separate keys for GPG messaging and SSH authentication, they can both belong to the same GPG keyring. This configuration really shines, however, when used with a [GPG smartcard](https://en.wikipedia.org/wiki/OpenPGP_card) or [YubiKey](https://www.yubico.com/products/yubikey-hardware/), because the card/dongle can store the underlying private key and only authenticate SSH sessions when it's plugged in. WIRED reported that [engineers at Facebook use this method](http://www.wired.com/2013/10/facebook-yubikey/) for authenticating with local servers, so why shouldn't you?
