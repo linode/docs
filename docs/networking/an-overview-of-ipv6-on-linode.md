@@ -17,7 +17,7 @@ external_resources:
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-## What is IPv6 on Linode?
+## Default IPv6 Configuration
 
 All Linodes are created with one IPv6 address, which is acquired by Stateless Address Autoconfiguration (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
