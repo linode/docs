@@ -14,6 +14,8 @@ external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
 
+![Set up a Zipkin Server](/docs/assets/zipkin/zipkin_banner.png)
+
 ## What is Zipkin?
 
 [Zipkin](http://zipkin.io/) is a "catch all" for capturing timing data, a centralized repository, and a microweb server to allow you to display and search through spans and traces of your distributed programs or websites.
