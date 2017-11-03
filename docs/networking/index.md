@@ -6,7 +6,7 @@ description: 'Configuring your Linode to talk to the world.'
 keywords: 'networking,network guide,networking howto'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, July 16th, 2009'
-title: IPs, Networking & Domains
+title: 'IPs, Networking & Domains'
 featured:
  - using-the-linode-shell-lish.md
  - an-overview-of-ipv6-on-linode.md
