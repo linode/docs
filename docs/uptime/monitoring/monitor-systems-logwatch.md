@@ -201,5 +201,5 @@ Logwatch often works best when configured to run daily and send or save a report
 	:	~~~
 		30 0  * * *          /usr/sbin/logwatch
 		~~~
-		
+
 	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).

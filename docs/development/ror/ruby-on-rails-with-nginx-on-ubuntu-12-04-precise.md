@@ -109,4 +109,4 @@ external_resources:
 
 If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 12.04 (Precise) guide](/docs/databases/mysql/deploy-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin). Once it's installed and configured properly, issue the following command:
 
-    sudo apt-get install libmysqlclient-dev libmysql-ruby 
+    sudo apt-get install libmysqlclient-dev libmysql-ruby

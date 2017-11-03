@@ -29,7 +29,7 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname).
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname).
 
 Issue the following commands to make sure it is set properly:
 
@@ -97,7 +97,7 @@ Now we will create virtual host entries for each site that we need to host with 
     </VirtualHost>
 
     <VirtualHost *:80>
-         ServerAdmin webmaster@example.org     
+         ServerAdmin webmaster@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /var/www/example.org/public_html/

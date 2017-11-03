@@ -73,11 +73,11 @@ The following instructions will generate a password for the user running the com
 
     ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/docs/assets/google-authenticator-ubuntu.png)
 
-    Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`. 
+    Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`.
 
     You'll also see a "secret key" below the QR code. You may enter this into the app manually, instead of scanning the QR code, to add your account.
 
-3.  Record your emergency scratch codes in a secure location. These codes can be used for authentication if you lose your device, but be aware that each code is only valid **once**. 
+3.  Record your emergency scratch codes in a secure location. These codes can be used for authentication if you lose your device, but be aware that each code is only valid **once**.
 
 4.  You'll be prompted to answer the following questions:
 
@@ -152,7 +152,7 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 
         sudo systemctl restart ssh
 
-Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows: 
+Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows:
 
 ![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 

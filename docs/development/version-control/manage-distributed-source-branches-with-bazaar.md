@@ -58,7 +58,7 @@ The Bazaar developers also provide application builds for [Windows](http://wiki.
 
 ## Using Bazaar to Manage Projects
 
-This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](#common_bazaar_commands).
+This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](/docs/development/version-control/manage-distributed-source-branches-with-bazaar#common-bazaar-commands).
 
 ### Initializing a Project and Creating Commits
 
@@ -112,11 +112,11 @@ While Bazaar is capable of maintaining project histories on a single system for 
 
 The simplest way to share changes between users is to generate a patch using the `bzr diff` command. Consider the command:
 
-    bzr diff -r12..20 > ~/new-feature.r20.patch 
+    bzr diff -r12..20 > ~/new-feature.r20.patch
 
 This creates a file named `new-feature.r20.patch` that you can distribute to your collaborators. The option `-r12..20` specifies that the "base revision" of the patch is revision number 12 and the final commit to be included in the patch is revision number 20. In turn, you collaborators can use the following command to apply your patch:
 
-    bzr patch ~/new--feature.r20.patch 
+    bzr patch ~/new--feature.r20.patch
 
 Bazaar also includes the ability to use more "centralized" workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:
 

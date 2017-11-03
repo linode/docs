@@ -9,10 +9,12 @@ modified: Thursday, September 28, 2017
 modified_by:
   name: Luis Cortes
 published: 'Thursday, September 28, 2017'
-title: 'Set Up a Zipkin Server with Sample Website Tracking'
+title: 'Set Up a Zipkin Server'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
+
+![Set up a Zipkin Server](/docs/assets/zipkin/zipkin_banner.png)
 
 ## What is Zipkin?
 

@@ -50,10 +50,10 @@ The process for creating keys with a recent version of the OpenSSH package is th
 
 		ssh-keygen -b 4096
 
-2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm. 
+2.  Answer all questions when prompted. You can accept the defaults for everything except the passphrase. When you get to the passphrase question, enter a series of letters and numbers for the passphrase twice; once to enter the new passphrase and once to confirm.
 
 	**Important:** make a note of your passphrase, as you will need it later.
-	
+
 	You may accept the defaults for the other questions by pressing *Return* when prompted:
 
         user@linode: ssh-keygen -b 4096
@@ -180,14 +180,14 @@ Now it is time to connect to your Linode with the SSH connection you just create
         nano ~/.ssh/authorized_keys
 
 8.  Copy the contents of the public key from your workstation to the `authorized_keys` file. Be sure you save the file on exit. For an additional layer of security, modify the file permissions:
-    
+
         chmod 600 ~/.ssh/authorized_keys
 
 9.  Exit PuTTY, then reconnect and **Load** your saved session. (Or, follow Steps 3 and 4 again to start a new SSH session.) You will be prompted to enter your login name as before. However, this time you will be prompted for your SSH key's passphrase, rather then your Linode user's password. Enter your passphrase and press *Enter*.
 
 Uploading the public key in Windows can also be done using [WinSCP](http://winscp.net/). In the login window, enter your Linode's public IP address as the hostname, and your non-root username and password. Click *Login* to connect.
 
-Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above. 
+Once WinSCP has connected, you'll see two main sections. The section on the left shows files on your local computer and the section on the right shows files on your Linode. Using the file explorer on the left, navigate to the file where you've saved your public key, select the public key file, and click *Upload* in the toolbar above.
 
 You'll be prompted to enter a path where you'd like to place the file on your Linode. Upload the file to `/home/user/.ssh/authorized_keys`, replacing `user` with your username.
 

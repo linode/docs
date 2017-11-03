@@ -23,7 +23,7 @@ We assume you've already followed the steps outlined in our [getting started gui
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -72,8 +72,8 @@ Issue the following command to install packages required for Ruby on Rails.
 
 Create symbolic links to the installed version of Ruby:
 
-    ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
-    ln -s /usr/bin/irb1.8 /usr/bin/irb 
+    ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+    ln -s /usr/bin/irb1.8 /usr/bin/irb
 
 Fetch the newest version of the RubyGems source from the [RubyForge download page](http://rubyforge.org/projects/rubygems/). Issue the following commands, substituting the download link for the current version:
 
@@ -81,7 +81,7 @@ Fetch the newest version of the RubyGems source from the [RubyForge download pag
     tar -xf rubygems*tgz
     cd rubygems*
     ruby setup.rb
-    ln -s /usr/bin/gem1.8 /usr/bin/gem 
+    ln -s /usr/bin/gem1.8 /usr/bin/gem
 
 Install some required gems:
 
@@ -98,7 +98,7 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /opt
     wget http://rubyforge.org/frs/download.php/71376/passenger-2.2.15.tar.gz
-    tar xzvf passenger*.gz 
+    tar xzvf passenger*.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -117,7 +117,7 @@ Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Iss
     wget -O init-nginx-deb.sh http://www.linode.com/docs/assets/704-init-nginx-deb.sh
     mv /opt/init-nginx-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx like any other server daemon.
 
@@ -132,7 +132,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9.10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
 {: .file }
 /etc/apache2/sites-available/redmine.example.com

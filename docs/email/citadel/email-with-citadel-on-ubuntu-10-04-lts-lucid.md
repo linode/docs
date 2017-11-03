@@ -25,7 +25,7 @@ This guide also assumes that you wish to run Citadel by itself on this server on
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -42,7 +42,7 @@ Issue the following commands to install any outstanding package updates:
 
 Issue the following commands to install the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you to answer a couple of questions. Choose "0.0.0.0" for listen address, "No" for "Enable external authentication mode", and specify your admin username and password. Choose "Internal" for web server integration and enter "80" when asked the "Webcit HTTP port" question. Finally, choose your desired language. If you need to reconfigure any of these options later, you can use the following command:
 
@@ -87,7 +87,7 @@ Customize the logon banner for your Citadel server by editing the relevant file:
 
 Use the following startup script to initialize Citadel.
 
-    /etc/init.d/citadel restart 
+    /etc/init.d/citadel restart
 
 Visit the web interface in your Web browser. Using our preceding example, the Web address to visit would look like:
 
@@ -95,7 +95,7 @@ Visit the web interface in your Web browser. Using our preceding example, the We
 
 The SSL certificate for your Citadel web interface will be self-signed; accept it to continue. If you don't get a login page in your web browser, you may need to start "webcit" with the following command:
 
-    webcit -d 
+    webcit -d
 
 Notes for Running Citadel
 -------------------------

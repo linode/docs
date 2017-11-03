@@ -108,7 +108,7 @@ You will be asked to specify a system user password and the ports you would like
 
 You should see output resembling the following:
 
-    tcp        0      0 0.0.0.0:1521            0.0.0.0:*               LISTEN     
+    tcp        0      0 0.0.0.0:1521            0.0.0.0:*               LISTEN
     tcp        0      0 192.168.146.68:38803    192.168.146.68:1521     ESTABLISHED
     tcp        0      0 192.168.146.68:1521     192.168.146.68:38803    ESTABLISHED
 
@@ -157,7 +157,7 @@ listener.ora
         )
       )
     ~~~
-    
+
 If you had to modify either file, restart Oracle by issuing the following command:
 
     /etc/init.d/oracle-xe restart

@@ -102,7 +102,7 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
       # LogLevel: Control the number of messages logged to the error_log.
       # Possible values include: debug, info, notice, warn, error, crit,
       # alert, emerg.
-      # 
+      #
       LogLevel debug
       ~~~
 

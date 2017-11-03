@@ -96,7 +96,7 @@ To enable the Nginx Longview app manually, follow these steps on your Linode via
     :   ~~~
         location http://127.0.0.1/nginx_status
         ~~~
-        
+
 4.  Restart Longview:
 
         service longview restart
@@ -139,19 +139,19 @@ The **Workers** graph shows all of the Nginx workers at the selected time. The w
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Nginx at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Nginx at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Nginx at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **Memory** graph shows the amount of RAM being used by Nginx at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Nginx at the selected time. To see the total IO instead, visit the [Disks tab](/docs/longview#sph_disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Nginx at the selected time. To see the total IO instead, visit the [Disks tab](/docs/uptime/longview/#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/longview#sph_process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/uptime/longview/#process-explorer-tab).
 
 ## Troubleshooting
 
@@ -196,7 +196,7 @@ To fix this, follow these steps:
     :   ~~~
         location http://127.0.0.1/url-goes-here
         ~~~
-        
+
 5.  Restart Longview:
 
         service longview restart

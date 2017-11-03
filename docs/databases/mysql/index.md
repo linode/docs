@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: MySQL Tutorials, Installation Guides, Resources – Linode
 featured:
  - deploy-mysql-workbench-for-database-administration.md
- - install-and-configure-mysql-workbench-on-ubuntu.md 
+ - install-and-configure-mysql-workbench-on-ubuntu.md
  - create-an-ssh-tunnel-for-mysql-remote-access.md
  - back-up-your-mysql-databases.md
  - how-to-optimize-mysql-performance-using-mysqltuner.md

@@ -21,7 +21,7 @@ Java is a powerful programming language. Software written in Java can compile an
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. 
+2.  This guide will use `sudo` wherever possible.
 
 3.  Update your system:
 
@@ -30,24 +30,24 @@ Java is a powerful programming language. Software written in Java can compile an
 ## Install Java Runtime Environment (Java JRE)
 
 If you don't plan on using Java to write software, the JRE is all you need. In CentOS, the JRE package is `java-$(version)-openjdk`. The `openjdk-headless` package contains a minimal implementation of the JDK for executing Java applications on the command line. In this example, you'll install the minimal version of OpenJDK 8.
-	
+
 	sudo yum install java-1.8.0-openjdk-headless
-	
+
 After the installation finishes, verify its completion using `yum list installed | grep "java"`. The output should be:
-	
+
     java-1.8.0-openjdk-headless.x86_64   1:1.8.0.131-3.b12.el7_3           @updates
     javapackages-tools.noarch            3.4.1-11.el7                      @base
     python-javapackages.noarch           3.4.1-11.el7                      @base
     tzdata-java.noarch                   2017b-1.el7                       @updates
-	
+
 ## Install the Java Development Kit (Java JDK)
 
 If you plan on using Java to write or edit programs on your Linode, install the JDK.
 
 	sudo yum install java-1.8.0-openjdk-devel
 
-After the installation finishes, verify its completion using `yum list installed | grep "openjdk-devel"`. The output should be: 
-	
+After the installation finishes, verify its completion using `yum list installed | grep "openjdk-devel"`. The output should be:
+
 	java-1.8.0-openjdk-devel.x86_64      1:1.8.0.131-3.b12.el7_3           @updates
-	
+
 You can also verify by running the Java compiler, `javac`. If you need to compile Java code on your Linode, run `javac foobar.java`. Then, run the application with `java foobar`.

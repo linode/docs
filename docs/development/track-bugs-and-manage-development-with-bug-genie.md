@@ -46,7 +46,7 @@ This document contains specific instructions for installing version 2.1.1 of Bug
     mv thebuggenie/ bug-genie-2.1.1/
     cp -R bug-genie-2.1.1/* /srv/www/example.com/public_html/
     chmod 777 /srv/www/example.com/public_html/config.php
-    chmod 777 /srv/www/example.com/public_html/include/B2DB/ 
+    chmod 777 /srv/www/example.com/public_html/include/B2DB/
     chmod 777 /srv/www/example.com/public_html/files
 
 Now visit `http://example.com/install.php` in your web browser, and follow the setup procedure provided by Bug Genie's web based interface. When the setup process has completed, issue the following commands to remove the setup files and reset proper permissions:

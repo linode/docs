@@ -25,7 +25,7 @@ external_resources:
 
 Once deployed, Odoo's flexibility allows the administrator to install any module combination and configure/customize them at will to satisfy business needs ranging from a small shop to an Enterprise Level Corporation.
 
-This guide covers how to install and configure Odoo in just 35 minutes using Git source, so it will be easy to upgrade, maintain and customize. 
+This guide covers how to install and configure Odoo in just 35 minutes using Git source, so it will be easy to upgrade, maintain and customize.
 
 ## Before You Begin
 
@@ -47,7 +47,7 @@ In this case we're using Odoo's default port 8069, but this could be any port yo
 
 ##Install Database and Server Dependencies
 
-Now we're going to install the PostgreSQL database and other necessary server libraries using `apt-get` 
+Now we're going to install the PostgreSQL database and other necessary server libraries using `apt-get`
 
     sudo apt-get install subversion git bzr bzrtools python-pip postgresql postgresql-server-dev-9.3 python-all-dev python-dev python-setuptools libxml2-dev libxslt1-dev libevent-dev libsasl2-dev libldap2-dev pkg-config libtiff5-dev libjpeg8-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev liblcms2-utils libwebp-dev tcl8.6-dev tk8.6-dev python-tk libyaml-dev fontconfig
 
@@ -158,7 +158,7 @@ Install Python libraries using the following commands:
     :   ~~~ conf
         [options]
         admin_passwd = admin
-        db_host = False 
+        db_host = False
         db_port = False
         db_user = odoo
         db_password = <PostgreSQL_user_password>
@@ -199,7 +199,7 @@ Next step is creating a boot script called `odoo-server` to gain control over Od
     PATH=/bin:/sbin:/usr/bin
     # Change the Odoo source files location according your needs.
     DAEMON=/opt/odoo/openerp-server
-    # Use the name convention of your choice 
+    # Use the name convention of your choice
     NAME=odoo-server
     DESC=odoo-server
 

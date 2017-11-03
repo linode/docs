@@ -79,9 +79,9 @@ In this case, we have recursively copied the contents of the data directory (e.g
 These commands begin by stopping the MySQL server daemon, then creating a directory named `/opt/database/backup-1266872202/`, and performing a recursive copy of the data directory. Note that we've chosen to use the `backup-[time_t]` naming convention for our examples. Substitute the paths' above for your preferred organization and naming scheme. The `cp` command does not produce output and can take some time to complete depending on the size of your database. Do not be alarmed if it takes a while to complete. When the copy operation is finished, you may want to archive the data directory into a "tar" archive to make it easier to manage and move between machines. Issue the following commands to create the archive:
 
     cd /opt/database/backup-1266872202
-    tar -czfv * > /opt/mysqlBackup-1266872202.tar.gz 
+    tar -czfv * > /opt/mysqlBackup-1266872202.tar.gz
 
-Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#how_to_upload_files_to_a_remote_server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
+Once the tarball is created, you can easily [transfer the file](/docs/using-linux/administration-basics#upload-files-to-a-remote-server) in the manner that is most convenient for you. Don't forget to restart the MySQL server daemon again if needed:
 
     /etc/init.d/mysql start
 
@@ -208,7 +208,7 @@ Before beginning the restoration process, this section assumes your system is ru
 
     cp mysqlBackup-1266872202.tar.gz /var/lib/mysql/
     cd /var/lib/mysql
-    tar xzvf mysqlBackup-1266872202.tar.gz 
+    tar xzvf mysqlBackup-1266872202.tar.gz
 
 3. Before we can restart the MySQL database process, we must ensure that the permissions are set correctly on the `/var/lib/mysql/` directory. For this example, we assume the MySQL server daemon runs as the user `mysql` with the group `mysql`. To change the permissions on the data directory issue the following command:
 

@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['applications/big-data/redis-cluster']
 modified: Monday, August 14th, 2017
 modified_by:
-  name: Linode 
+  name: Linode
 published: 'Monday, August 14th, 2017'
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
@@ -18,7 +18,7 @@ external_resources:
 
 ![Redis_banner](/docs/assets/Redis_Cluster.jpg)
 
-Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure. 
+Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure.
 
 Prior to starting, we recommend you familiarize yourself with the following:
 
@@ -103,7 +103,7 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
 4. Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
 
     {: .table .table-striped .table-bordered}
-    | Server | Master | Slave | 
+    | Server | Master | Slave |
     |:-------|:-------|:------|
     |    1   |  6379  |  6381 |
     |    2   |  6380  |  6379 |
@@ -259,7 +259,7 @@ The command line interface offers a way to `SET` and `GET` keys, in addition to 
         repl_backlog_first_byte_offset:197313
         repl_backlog_histlen:16043
 
-4.  To demonstrate sharding, you can set a few example key-value pairs. Setting a key will redirect the value to a hash slot among the three master nodes. 
+4.  To demonstrate sharding, you can set a few example key-value pairs. Setting a key will redirect the value to a hash slot among the three master nodes.
 
         ip.of.server1:6379> SET John Adams
         -> Redirected to slot [6852] located at ip.of.server2:6380

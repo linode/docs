@@ -16,7 +16,7 @@ external_resources:
 deprecated: true
 ---
 
-SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/lamp-guides/ubuntu-12.04-precise-pangolin) guide.
+SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/lamp-guides/ubuntu-12-04-precise-pangolin) guide.
 
  {: .note }
 >
@@ -45,7 +45,7 @@ Since SquirrelMail is accessed through a web server (Apache in this example), we
 
 2.  Edit the configuration file to uncomment the `<VirtualHost *:80>` block by removing the pound symbol (`#`), as shown below. Edit the IP and ServerName to match your Linode and/or domain settings:
 
-        sudo nano /etc/apache2/sites-available/squirrelmail 
+        sudo nano /etc/apache2/sites-available/squirrelmail
 
 	{: .file }
 	/etc/apache2/sites-available/squirrelmail

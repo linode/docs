@@ -102,7 +102,7 @@ Now you will create virtual host entries for each site that you need to host wit
     </VirtualHost>
 
     <VirtualHost 13.34.56.78:80>
-         ServerAdmin username@example.com     
+         ServerAdmin username@example.com
          ServerName example.com
          ServerAlias www.example.com
          DocumentRoot /srv/www/example.com/public_html/

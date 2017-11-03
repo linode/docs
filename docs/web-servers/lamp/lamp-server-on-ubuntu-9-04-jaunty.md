@@ -89,7 +89,7 @@ First, create a file in the `/etc/apache2/sites-available/` directory for each v
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.org     
+         ServerAdmin webmaster@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/

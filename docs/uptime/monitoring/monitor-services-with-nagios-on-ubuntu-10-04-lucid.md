@@ -18,7 +18,7 @@ title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
-Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-10.10-maverick/) in order to use Nagios.
+Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-10-10-maverick/) in order to use Nagios.
 
 Prepare for Nagios Installation
 -------------------------------
@@ -87,7 +87,7 @@ Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email f
         contact_name nagiosadmin ; Short name of user use generic-contact
         ; Inherit default values from generic-contact template (defined above)
         alias John Doe ; Full name of user
-        email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ****** 
+        email nagiosuser@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
     }
     ~~~
 
@@ -110,7 +110,7 @@ To install and configure the Nagios plugins, issue the following commands:
 
     cd /opt/
     tar xzf /opt/nagios-plugins-1.4.15.tar.gz
-    cd /opt/nagios-plugins-1.4.15   
+    cd /opt/nagios-plugins-1.4.15
     ./configure --with-nagios-user=nagios --with-nagios-group=nagios
     make
     make install

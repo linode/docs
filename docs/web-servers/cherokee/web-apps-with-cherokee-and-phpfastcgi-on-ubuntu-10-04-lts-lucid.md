@@ -30,7 +30,7 @@ Make sure your repositories and packages are up to date by issuing the following
     apt-get update
     apt-get upgrade
 
-If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-ubuntu-10.04-lucid) guide before continuing with these instructions.
+If you haven't already installed Cherokee, please follow our [Ubuntu 10.04 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-ubuntu-10-04-lucid) guide before continuing with these instructions.
 
 Install Required Packages
 -------------------------
@@ -60,7 +60,7 @@ Create directories for your site by issuing the following commands. Substitute y
     mkdir /srv/www/mydomain.com/www/logs
     chown -R www-data:www-data /srv/www/mydomain.com
 
-If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/installing-cherokee-ubuntu-10.04-lucid#secure_admin_panel_access).
+If you haven't already done so, start the Cherokee administration program by issuing the following command. Alternately, you may wish to follow our instructions for [secure Cherokee admin access](/docs/web-servers/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-10-04-lts-lucid/#secure-admin-panel-access).
 
     cherokee-admin -b &
 

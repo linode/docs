@@ -18,12 +18,12 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django framework. You will be installing Django and related packages from the Ubuntu repository, and deploying applications with `mod_python` and the Apache web server. This setup is generally accepted as a good platform for getting started with Django, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 10.04 (Lucid) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-10.04-lucid) and a functional [MySQL database](/docs/databases/mysql/ubuntu-10.04-lucid) installed.
+We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 10.04 (Lucid) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-10-04-lucid) and a functional [MySQL database](/docs/databases/mysql/ubuntu-10-04-lucid) installed.
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -100,7 +100,7 @@ Apache Virtual Host Configuration
             PythonDebug Off
         </Location>
 
-        ErrorLog /srv/logs/error.log 
+        ErrorLog /srv/logs/error.log
         CustomLog /srv/logs/access.log combined
     </VirtualHost>
     ~~~

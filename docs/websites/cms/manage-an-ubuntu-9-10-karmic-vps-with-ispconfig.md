@@ -31,8 +31,8 @@ Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -55,18 +55,18 @@ When you have saved this file, issue the following commands to refresh your syst
 Install Postfix, Courier, MySQL, and Dependencies
 -------------------------------------------------
 
-In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/courier-mysql-ubuntu-9.10-karmic), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
+In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/courier-mysql-ubuntu-9-10-karmic), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
 Issue the following command (all one line):
 
     apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl maildrop getmail4 binutils
 
-You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/email/postfix/courier-mysql-ubuntu-9.10-karmic) to determine what the needs of your system will be. In most cases, the defaults are fine.
+You will be asked a series of questions during the installation; please refer to the [Postfix guide](/docs/email/postfix/courier-mysql-ubuntu-9-10-karmic) to determine what the needs of your system will be. In most cases, the defaults are fine.
 
 Install Amavisd-new and SpamAssassin
 ------------------------------------
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/memory-networking#reducing_spamassassin_memory_consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     apt-get install amavisd-new spamassassin zoo unzip bzip2 arj nomarch lzop cabextract apt-listchanges libnet-ldap-perl libauthen-sasl-perl clamav-docs daemon libio-string-perl libio-socket-ssl-perl libnet-ident-perl zip libnet-dns-perl
 

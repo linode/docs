@@ -12,7 +12,7 @@ modified_by:
 published: 'Thursday, February 4th, 2010'
 title: Access Futon Over SSH to Administer CouchDB
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
 ---
 

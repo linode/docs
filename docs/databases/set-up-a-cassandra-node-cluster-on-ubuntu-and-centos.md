@@ -14,7 +14,7 @@ alias: ['databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-an
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
-external_resources: 
+external_resources:
  - '[How data is distributed across a cluster](https://docs.datastax.com/en/cassandra/2.1/cassandra/architecture/architectureDataDistributeDistribute_c.html)'
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 ---
@@ -38,7 +38,7 @@ You will also learn how to secure communication between your nodes, as well as r
 ## Before You Begin
 
 1. You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/docs/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
-	
+
 2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
 
 3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
@@ -51,7 +51,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 		systemctl stop cassandra
 		rm -rf /var/lib/cassandra/data/system/*
-	
+
 2. Edit the `cassandra.yaml` file. Set the appropriate values for each variable indicated below:
 
     {: .table .table-striped .table-bordered}
@@ -107,12 +107,12 @@ Ports `7000` and `9042` must be available for external nodes to connect to. As a
 		rule family="ipv4"
 		source address="[external_node_ip_address]"
 		port protocol="tcp" port="7000" accept'
-			
+
 	firewall-cmd --permanent --zone=public --add-rich-rule='
 		rule family="ipv4"
 		source address="[external_node_ip_address]"
 		port protocol="tcp" port="9042" accept'
-		
+
 	firewall-cmd --reload
 
 **iptables**
@@ -146,7 +146,7 @@ Setting up encryption between nodes offers additional security and protects the 
       prompt                 = no
       output_password        = examplePassword
       default_bits           = 4096
-    
+
       [ req_distinguished_name ]
       C                      = US
       ST                     = WA
@@ -161,7 +161,7 @@ Setting up encryption between nodes offers additional security and protects the 
 
 4. Generate a keystore for each node in your cluster. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"	
+		keytool -genkeypair -keyalg RSA -alias node1 -keystore node1-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node1, OU=[cluster_name]"
 	    keytool -genkeypair -keyalg RSA -alias node2 -keystore node2-keystore.jks -storepass cassandra -keypass cassandra -validity 365 -keysize 4096 -dname "CN=node2, OU=[cluster_name]"
 
 5. Verify the key. A successful verification will print out the certificate fingerprint. Repeat this command for each certificate file.
@@ -175,7 +175,7 @@ Setting up encryption between nodes offers additional security and protects the 
 
 7. Sign each node's certificate. Run the following command for each node in your cluster, using each .csr file you created earlier. Set the certificate to expire in 365 days for best practice. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra	
+		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node1-cert.csr -out node1-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
 		openssl x509 -req -CA ca-cert.cert -CAkey ca-cert.key -in node2-cert.csr -out node2-signed.cert -days 365 -CAcreateserial -passin pass:cassandra
 
 8. Verify the certificates generated for each node.
@@ -184,13 +184,13 @@ Setting up encryption between nodes offers additional security and protects the 
 
 9. Import the original certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra	
+		keytool -importcert -keystore node1-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 		keytool -importcert -keystore node2-keystore.jks -alias ca-cert -file ca-cert.cert -noprompt -keypass cassandra -storepass cassandra
 
 10. Now, import the signed certificate into the keystore for each node. Below, the command sequence is demonstrated as if two nodes comprised this cluster.
 
-		keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra	
-		keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra 
+		keytool -importcert -keystore node1-keystore.jks -alias node1 -file node1-signed.cert -noprompt -keypass cassandra -storepass cassandra
+		keytool -importcert -keystore node2-keystore.jks -alias node2 -file node2-signed.cert -noprompt -keypass cassandra -storepass cassandra
 
 11. Create a Cassandra server truststore file. This essentially acts as a certificate authority, allowing all nodes whose client certificates were signed here to communicate.
 
@@ -202,12 +202,12 @@ Copy the truststore file and keystore files into Cassandra's `conf` directory fo
 
 {: .note}
 >
-> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory. 
+> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory.
 
 	scp ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
     scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name]-keystore.jks
 
-Use the `-i` option if your destination server requires a certificate to login. 
+Use the `-i` option if your destination server requires a certificate to login.
 
 	scp -i /local_path/to/private_key_file ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
 
@@ -266,7 +266,7 @@ If successful, your console output should read similar to the following:
 
 If you have many Cassandra nodes for which to create and distribute certificates, the process outlined above can quickly become tedious. Now that you understand how SSL certificates are generated for Cassandra, the process can be automated with a bash script. You can [automate the process with a script](https://github.com/Darkstar90/cassandra-keygen). The rest of this guide shows you how to use the SSL certificate generator to automate the generation of SSL certificates.
 
-1. Navigate to any folder and pull the script from Github: 
+1. Navigate to any folder and pull the script from Github:
 
         git pull https://github.com/Darkstar90/cassandra-keygen.git
 

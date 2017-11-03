@@ -60,7 +60,7 @@ This will move the PHP instance into a directory called `forum/`. You can move t
 
 Before you can install phpBB, you need to make sure that it has access to write to the config file. Issue the following command to make sure that phpBB can write to `config.php`:
 
-    chmod 0777 /srv/www/example.com/public_html/forum/config.php 
+    chmod 0777 /srv/www/example.com/public_html/forum/config.php
 
 Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/centos-5/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 
