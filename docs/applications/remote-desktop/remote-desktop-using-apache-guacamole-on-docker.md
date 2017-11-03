@@ -18,7 +18,7 @@ external_resources:
 Apache Guacamole is an HTML5 application useful for remote desktop through RDP, VNC, and other protocols. Create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover installation of Apache Guacamole through Docker then access a remote desktop environment hosted on a Linode.
 
 # Install Docker
-The installation method presented here is will always attempt to install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
+The installation method presented here will always attempt to install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
 1.  Update packages and install dependencies.
 
@@ -65,11 +65,8 @@ PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in
 
     Docker logs should print the password in the terminal.
 
-        [Entrypoint] MySQL Docker Image 5.7.20-1.1.2
-        [Entrypoint] No password option specified for new database.
-        [Entrypoint]   A random onetime password will be generated.
-        [Entrypoint] Initializing database
         [Entrypoint] Database initialized
+        [Entrypoint] GENERATED ROOT PASSWORD: <password>
 
 4.  Rename and move `initdb.sql` into the MySQL container.
 
@@ -77,9 +74,9 @@ PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in
 
 5.  Open a bash shell within the MySQL Docker container.
 
-        docker exec -it some-mysql bash
+        docker exec -it example-mysql bash
 
-6.  Log in using the one-time password. No commands will be accepted until a new password if defined for `root`. Create a new database and user as shown below:
+6.  Log in using the one-time password. No commands will be accepted until a new password is defined for `root`. Create a new database and user as shown below:
 
         bash-4.2# mysql -u root -p
         Enter password:
@@ -112,8 +109,6 @@ PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in
 
         mysql> quit
         Bye
-        bash-4.2# cat guac_db.sql | mysql -u root -p guacamole_db
-        Enter password:
 
 7.  While in the bash shell, create tables from the initialization script for the new database.
 
@@ -219,13 +214,14 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
         ~~~
 
 # New Connection in Guacamole
+
 VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how to navigate the browser interface and add a new connection.
 
 1.  Before connecting to the VNC server, create an SSH tunnel replacing `user` and `example.com` with the Linode's user and public IP.
 
         ssh -L 5901:localhost:5901 -N -f -l user example.com
 
-2.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button. 
+2.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button.
 
     ![Guacamole Settings](/docs/assets/guac_settings.png)
 
@@ -248,4 +244,3 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
     ![Guacamole Recent Connections](/docs/assets/guac_recent.png)
 
 This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are more features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
-
