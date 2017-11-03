@@ -162,7 +162,7 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
     {: .note}
-    >If the [Firewall portion](/docs/security/securing-your-server#creating-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+    >If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 
     [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
 
@@ -188,18 +188,18 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 
 ### Konversation ###
 
-1. Open Konversation, click 'New...' 
+1. Open Konversation, click 'New...'
 
     [![ZNC](/docs/assets/znc-konversation-1.png)](/docs/assets/znc-konversation-1.png)
 
 2. Enter a name for the new network. For this example the network is **linode-znc**. Then click 'Add...' to open the dialog to add the server.
 
     [![ZNC](/docs/assets/znc-konversation-2.png)](/docs/assets/znc-konversation-2.png)
-    
+
 3. Now enter your network details such as IP Address, Port number, and password.
 
     [![ZNC](/docs/assets/znc-konversation-3.png)](/docs/assets/znc-konversation-3.png)
-    
+
 
 ## SSL Encryption with a Signed Certificate (Optional)
 

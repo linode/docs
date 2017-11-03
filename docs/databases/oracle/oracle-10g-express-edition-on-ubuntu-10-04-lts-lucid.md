@@ -124,7 +124,7 @@ Reboot your Linode to make sure everything comes back up correctly. Once you've 
 
 You should see output resembling the following:
 
-    tcp        0      0 0.0.0.0:1521            0.0.0.0:*               LISTEN     
+    tcp        0      0 0.0.0.0:1521            0.0.0.0:*               LISTEN
     tcp        0      0 192.168.146.68:38803    192.168.146.68:1521     ESTABLISHED
     tcp        0      0 192.168.146.68:1521     192.168.146.68:38803    ESTABLISHED
 

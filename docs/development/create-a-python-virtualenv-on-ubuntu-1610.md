@@ -74,7 +74,7 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Deactivate Environment
 
-To deactivate an active virtual environment: 
+To deactivate an active virtual environment:
 
         deactivate
 

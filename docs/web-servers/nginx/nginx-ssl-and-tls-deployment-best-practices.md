@@ -74,7 +74,7 @@ In September 2010, Google released the SPDY protocol for all versions of Chrome 
 HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith.
 
 {: .note}
-> Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+. See our instructions on [compiling nginx from source](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie#compile-nginx-from-source) for more information.
+> Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+. See our instructions on [compiling nginx from source](/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#install-and-compile-nginx-from-source) for more information.
 
 1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line if necessary and add `http2` to the end before the semicolon.
 
@@ -110,7 +110,7 @@ Google is now ranking websites that accept encrypted HTTPS connections higher in
 
     {: .file-excerpt}
     /etc/nginx/conf.d/default.conf
-    :   ~~~ conf   
+    :   ~~~ conf
         rewrite        ^ https://$server_name$request_uri? permanent;
         ~~~
 
@@ -140,7 +140,7 @@ The problem with OCSP is that a certificate authority can now track users as the
 
 When OCSP stapling is enabled, nginx on your Linode will make an OCSP request for the client. The response recieved from the OCSP server is added to nginx's reponse to the user. This eliminates the need for the user to connect to an OCSP server to check the revocation status of your server certificate.
 
-Before enabling OCSP stapling you will need to have a file on your system that stores the CA certificates used to sign the server certificate. This section assumes that you have followed our guide on [how to install nginx and a StartSSL certificate](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). If you have not, complete Steps 1-3 in the [Gather Additional Required Certificate Files](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie#gather-additional-required-certificate-files) section of that guide before proceeding here.
+Before enabling OCSP stapling you will need to have a file on your system that stores the CA certificates used to sign the server certificate. This section assumes that you have followed our guide on [how to install nginx and a StartSSL certificate](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). If you have not, complete Steps 1-3 in the [Gather Additional Required Certificate Files](/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#gather-additional-required-certificate-files) section of that guide before proceeding here.
 
 1.  Open your HTTPS nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/example_ssl.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed and configured nginx. Add the following lines inside the `server` block:
 
@@ -174,7 +174,7 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
     {: .file-excerpt}
     /etc/nginx/conf.d/example_ssl.conf
-    :   ~~~ conf    
+    :   ~~~ conf
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
         ~~~
 

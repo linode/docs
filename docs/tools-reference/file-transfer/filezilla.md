@@ -27,7 +27,7 @@ Prior to following this guide, you will need to ensure that the following steps 
 
 -  Created a user as per the instructions in our [securing your server](/docs/security/securing-your-server/) guide.
 
--  Ensure that you can connect to your Linode [via SSH](/docs/getting-started#connecting-to-your-linode).
+-  Ensure that you can connect to your Linode [via SSH](/docs/getting-started#connect-to-your-linode-via-ssh).
 
 -  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 

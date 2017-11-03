@@ -24,7 +24,7 @@ Before you begin installing the Nginx web server, it is assumed that you have fo
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure the hostname is set properly:
+Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure the hostname is set properly:
 
     hostname
     hostname -f

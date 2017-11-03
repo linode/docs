@@ -69,7 +69,7 @@ Change the permissions on `configure.php` to prevent security issues:
 
 Change the permissions of the `images` and `graphs` directory to be accessible by the server:
 
-    chmod -R 777 images/ 
+    chmod -R 777 images/
     chmod -R 777 admin/images/graphs
 
 Finally, change the permissions of the `backups` directory to be accessible by the server:

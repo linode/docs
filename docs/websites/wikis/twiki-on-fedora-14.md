@@ -16,7 +16,7 @@ title: TWiki on Fedora 14
 
 
 
-TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/web-applications/wikis/confluence/). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
+TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/websites/wikis/confluence-on-debian-5-lenny). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
 Prepare System and Install TWiki
 --------------------------------
@@ -25,8 +25,8 @@ Prepare System and Install TWiki
 
 Issue the following command to update your system's package database, ensure that all installed packages are up to date, and install :
 
-    yum update 
-    yum install httpd gdal-perl perl-CGI perl-CGI-Session perl-HTML-Tree perl-Error perl-FreezeThaw gd 
+    yum update
+    yum install httpd gdal-perl perl-CGI perl-CGI-Session perl-HTML-Tree perl-Error perl-FreezeThaw gd
 
 ### Install TWiki
 
@@ -34,7 +34,7 @@ At the time of writing the most recent release of TWiki is 5.0.1. Check the [TWi
 
     cd /opt
     wget http://downloads.sourceforge.net/project/twiki/TWiki%20for%20all%20Platforms/TWiki-5.0.1/TWiki-5.0.1.tgz
-    tar -zxvf /opt/TWiki-5.0.1.tgz 
+    tar -zxvf /opt/TWiki-5.0.1.tgz
     mkdir -p /srv/www/example.com/
     mv /opt/twiki /srv/www/example.com/twiki
     chown -R apache /srv/www/example.com/twiki
@@ -56,9 +56,9 @@ Create a virtual host specification that resembles the following. Modify the ref
            ServerName example.com
            ServerAlias www.example.com
 
-           DocumentRoot /srv/www/example.com/public_html 
+           DocumentRoot /srv/www/example.com/public_html
 
-           ErrorLog /srv/www/example.com/logs/error.log 
+           ErrorLog /srv/www/example.com/logs/error.log
            CustomLog /srv/www/example.com/logs/access.log combined
 
            ScriptAlias /bin "/srv/www/example.com/twiki/bin"
@@ -93,7 +93,7 @@ Create a virtual host specification that resembles the following. Modify the ref
               Allow from all
               AddType text/plain .shtml .php .php3 .phtml .phtm .pl .py .cgi
            </Directory>
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 In this configuration your wiki will be located at the root level of the `example.com` domain. Modify the following lines if you wish to deploy TWiki at a different location on your domain.
@@ -104,7 +104,7 @@ In this configuration your wiki will be located at the root level of the `exampl
     ScriptAlias /wiki/bin "/srv/www/example.com/twiki/bin"
     Alias /wiki/pub "/srv/www/example.com/twiki/pub"
     Alias /wiki/ "/srv/www/example.com/twiki/bin/view/"
-    </VirtualHost> 
+    </VirtualHost>
     ~~~
 
 In this example, TWiki will be accessible by at the `http://example.com/wiki` location. The path you configure for TWiki need not correlate to the actual location of the files on the file system. Issue the following commands to create the required directories:

@@ -23,7 +23,7 @@ Before following this guide, ensure that your system is up to date and that you 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -67,7 +67,7 @@ If you would like to run the Sun Microsystems/Oracle implementation of Java, edi
     deb http://security.ubuntu.com/ubuntu maverick-security universe
     deb-src http://security.ubuntu.com/ubuntu maverick-security universe
 
-    ## partner repositories 
+    ## partner repositories
     deb http://archive.canonical.com/ubuntu maverick partner
     deb-src http://archive.canonical.com/ubuntu maverick partner
 

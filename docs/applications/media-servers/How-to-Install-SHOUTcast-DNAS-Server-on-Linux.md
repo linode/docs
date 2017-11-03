@@ -120,7 +120,7 @@ Now, you'll want to modify the configuration. This is necessary to specify passw
       ;streamid_1=1
       ;streampath_1=/test.aac
       ;streamid_2=2
-      ;streampath_2=/test2.aac 
+      ;streampath_2=/test2.aac
     ~~~
 
 3.  Set the `password` and `adminpassword` variables to whatever you want them to be.
@@ -212,7 +212,7 @@ This example will walk you through a basic configuration.
 
     {: .file-excerpt }
     /home/shoutcast/sct/sc_trans_basic.conf
-    : ~~~ 
+    : ~~~
       ; for testing we will only setup a single encoder though it
       ; is easy to add in additional encoder configurations and
       ; we are using an aac plus encoder as the default due to
@@ -224,7 +224,7 @@ This example will walk you through a basic configuration.
       bitrate_2=56000
 
       unlockkeyname=YourUnlockName
-      unlockkeycode=YourUnlockCode 
+      unlockkeycode=YourUnlockCode
     ~~~
 
 3.  Next, modify the sc\_trans to sc\_serv connection details:
@@ -306,7 +306,7 @@ This example will walk you through a basic configuration.
       # playlist are in one folder and all have an mp3 extension though there is no
       # reason why you cannot explicitly specify files to use or to reference a tool.
       # See sc_trans.txt - section 7.1 for more information on how playlists work.
- 
+
       # Remember to change this to reference the files you want to use when trying
       # the sc_trans_playlist.conf example which is best tried with full length files
     ~~~

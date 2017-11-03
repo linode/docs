@@ -54,7 +54,7 @@ In order for `puppetd` to work in this manner you must [configure secure Puppet 
 
 To generate a fully commented example of the `puppetmasterd` configuration issue the following command:
 
-    puppetmasterd --genconfig --no-daemonize > /etc/puppet/reference-puppetmasterd.conf 
+    puppetmasterd --genconfig --no-daemonize > /etc/puppet/reference-puppetmasterd.conf
 
 These options can then be added and modified in the `[puppetmasterd]` section of the `/etc/puppet.conf` file. All other configuration for both `puppetmasterd` and `puppetd` are in the `/etc/puppet/puppet.conf` file.
 

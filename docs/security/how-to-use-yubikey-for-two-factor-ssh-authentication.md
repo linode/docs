@@ -23,7 +23,7 @@ external_resources:
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey4/) are small USB dongles that you can plug into your computer. They can simulate keyboard input, allowing you to enter One Time Passwords (OTPs) with the press of a button to authenticate with services like Google, Dropbox and GitHub.
 
-YubiKeys can also be used when logging into a remote server. This guide will show you how to configure your Linode so that a YubiKey must be plugged in and tapped in order to log in to your server using `ssh`. Depending on your needs, you can also configure a password in addition to the YubiKey for an extra level of security.  
+YubiKeys can also be used when logging into a remote server. This guide will show you how to configure your Linode so that a YubiKey must be plugged in and tapped in order to log in to your server using `ssh`. Depending on your needs, you can also configure a password in addition to the YubiKey for an extra level of security.
 
 If you want to work through this guide but don't have a YubiKey, you can find one [at this link](https://www.yubico.com/products/yubikey-hardware/). As of this writing, any key that supports 'Yubico OTP' will support two-factor SSH authentication.
 

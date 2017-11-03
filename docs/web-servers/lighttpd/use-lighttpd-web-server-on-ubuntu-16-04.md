@@ -30,7 +30,7 @@ This guide explains how to install and configure the lighttpd ("lighty") web ser
 
 2.  Lighttpd is a network-facing service and failing to secure your server may expose you to vulnerabilities. Consult the [Securing Your Server Guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure_lighttpd) to use an alternate port until it's configured properly.
+3.  If you're switching from a different web server like Apache, remember to turn off the other server for testing purposes, or [configure lighttpd](#configure-lighttpd) to use an alternate port until it's configured properly.
 
 4.  Update your system:
 

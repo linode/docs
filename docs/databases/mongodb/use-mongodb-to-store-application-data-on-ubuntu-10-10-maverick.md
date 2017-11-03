@@ -72,7 +72,7 @@ Create the `/opt/config/mongodb` and use the following example as a template:
 /opt/config/mongodb
 :   ~~~ ini
     # Configuration Options for MongoDB
-    # 
+    #
     # For More Information, Consider:
     # - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
     # - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration

@@ -166,11 +166,11 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 2.  Log in with the username `admin` and the password that you provided in the installation step.
 
 	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
-	
+
 3.  Once the initial configuration steps are completed, select your settings and then switch to the status page.
 
 	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
-	
+
 4.  Select *Start Server* and accept the Minecraft Server EULA.
 
 	![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)

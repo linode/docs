@@ -35,9 +35,9 @@ Now, make sure your package repositories and installed programs are up to date b
 
 Begin by setting the timezone of your server if it isn't already set. Set your server to your timezone or to that of the bulk of your users. If you're unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. To change the time zone, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (eg. `##`) are comments and need not be copied into your terminal.
 
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time
 
-    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time 
+    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
 
     ln -sf /usr/share/zoneinfo/US/Central /etc/localtime ## for American Central time (including DST)
 
@@ -158,7 +158,7 @@ At this point Cacti will contain an entry for `localhost`, which we'll need to m
 
 Click "Settings" under "Configuration" in the left menu bar and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "example") and save. To run the data poller to collect data for the first time, issue the following command:
 
-    php /usr/share/cacti/cmd.php 
+    php /usr/share/cacti/cmd.php
 
 Since you want Cacti to collect data automatically, we'll use the "cron" tool to regularly poll for new data. Issue the following commands to install cron and create a new cron, or regular scheduled task:
 

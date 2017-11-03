@@ -11,6 +11,7 @@ modified_by:
   name: Elle Krout
 published: 'Tuesday, July 27th, 2010'
 title: How to Install and Configure WordPress
+deprecated: true
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -108,7 +109,7 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 3.  If using Apache, issue the following commands to ensure that `mod_rewrite` is enabled:
 
         sudo a2enmod rewrite
-    
+
     Restart Apache.
 
     {: .note}

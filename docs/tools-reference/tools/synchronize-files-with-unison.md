@@ -43,11 +43,11 @@ Edit the `/etc/apt/sources.list` to enable to the Universe repositories, so that
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted
-    
+
     deb <http://security.ubuntu.com/ubuntu> lucid-security main restricted deb-src <http://security.ubuntu.com/ubuntu> lucid-security main restricted
-    
+
     ## universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe
-    
+
     deb <http://security.ubuntu.com/ubuntu> lucid-security universe deb-src <http://security.ubuntu.com/ubuntu> lucid-security universe
     ~~~
 
@@ -62,7 +62,7 @@ Finally, issue the following sequence of commands to: ensure that your system's 
 The unison packages for CentOS are not included in the base distribution, but are included in the [EPEL](https://fedoraproject.org/wiki/EPEL) repositories. Enable the EPEL repository, and ensure that your system is up to date and install unison with the following commands:
 
     rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-    yum update 
+    yum update
     yum install unison227
 
 The EPEL repository also includes a package for Unison version 2.13 in the `unison213` package. This may be helpful if you need to use this version of the client, otherwise use the more recent version of the software.
@@ -71,7 +71,7 @@ The EPEL repository also includes a package for Unison version 2.13 in the `unis
 
 On Fedora systems issue the following sequence of commands to ensure that your system is up to date and then install Unison:
 
-    yum update 
+    yum update
     yum install unison
 
 ### Arch Linux

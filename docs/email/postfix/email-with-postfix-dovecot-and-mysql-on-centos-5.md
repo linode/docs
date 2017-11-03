@@ -255,7 +255,7 @@ This completes the configuration for Postfix.
             prefix = INBOX.
             inbox = yes
         }
-    
+
         protocol lda {
             log_path = /home/vmail/dovecot-deliver.log
             auth_socket_path = /var/run/dovecot/auth-master
@@ -290,7 +290,7 @@ This completes the configuration for Postfix.
                     user = postfix
                     group = postfix
                 }
-    
+
             }
 
         }
@@ -385,7 +385,7 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the telnet connection. 
+4.  Issue the command `quit` to terminate the telnet connection.
 
 Next, populate the MySQL database with domains and email users.
 
@@ -467,7 +467,7 @@ Now test to see what the users of your email server would see with their email c
 
         mutt -f .
 
-    You may be prompted to create the root mailbox. This is not required. 
+    You may be prompted to create the root mailbox. This is not required.
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 

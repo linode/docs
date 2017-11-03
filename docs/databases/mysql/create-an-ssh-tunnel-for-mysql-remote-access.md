@@ -12,7 +12,7 @@ modified_by:
 published: 'Wednesday, January 6th, 2010'
 title: Create an SSH Tunnel for MySQL Remote Access
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
  - '[autossh](http://www.harding.motd.ca/autossh/)'
@@ -31,7 +31,7 @@ After following these instructions, you'll be able to connect to `localhost` on 
 
 ## Prerequisites
 
--   [MySQL](/docs/hosting-website#sph_installing-mysql) is installed.
+-   [MySQL](/docs/hosting-website#install-mysql) is installed.
 -   MySQL is configured to listen on `localhost` (127.0.0.1). This is enabled by default.
 
 ## How to Access MySQL Remotely by Creating an SSH Tunnel with PuTTY

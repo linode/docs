@@ -16,7 +16,7 @@ title: 'Custom Compiled Kernel on Debian & Ubuntu'
 
 Compiling your own Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm). 
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
 
 Prior to these instructions, follow the steps outlined in our [Getting Started guide](/docs/getting-started/). Then, log in to your Linode as the `root` user.
 
@@ -45,7 +45,7 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
 
 2.  Expand the archived file and change directories:
 
-        tar -xvf linux-4.7.tar.xz 
+        tar -xvf linux-4.7.tar.xz
         cd linux-4.7
 
 ### Configure the Kernel
@@ -78,11 +78,11 @@ Once your configuration options are set, exit the configuration interface and an
 1.  Compile and install the kernel and modules:
 
         make deb-pkg
-        
+
 2.  The `make deb-pkg` command will create five deb packages in /usr/src/ that you will need to install:
 
         dpkg -i linux-*.deb
-        
+
 3.  Edit `/etc/default/grub` and add or change the following variables to match. Comment or remove any lines starting with `GRUB_HIDDEN`, and if the word *splash* appears in the line `GRUB_CMDLINE_LINUX_DEFAULT`, remove it. There will be other variables in this file, but we are only concerned with those listed below:
 
     {: .file-excerpt}

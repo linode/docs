@@ -27,7 +27,7 @@ contributor:
 
 1. Familiarize yourself with the [Getting Started](/docs/getting-started) guide.
 
-2. Follow the [Securing Your Server](/docs/security/securing-your-server) guide.  OpenVPN Access Server creates its own firewall rules, so the steps for [configuring a firewall](/docs/security/securing-your-server#configure-a-firewall) should be skipped for now. Once you've configured OpenVPN, you can apply additional firewall rules as needed.  
+2. Follow the [Securing Your Server](/docs/security/securing-your-server) guide.  OpenVPN Access Server creates its own firewall rules, so the steps for [configuring a firewall](/docs/security/securing-your-server#configure-a-firewall) should be skipped for now. Once you've configured OpenVPN, you can apply additional firewall rules as needed.
 
 3. Install OpenVPN Access Server using the [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server) guide.
 

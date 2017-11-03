@@ -91,7 +91,7 @@ In this example the Web.py *application* is embedded in a `application.wsgi` fil
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'

@@ -22,7 +22,9 @@ external_resources:
  - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
 ---
 
-The Apache HTTP web server is in many respects the *defacto* standard for general purpose HTTP services. Through its large number of modules, it provides flexible support for proxy servers, URL rewriting, and granular access control. Furthermore, web developers often choose Apache for its support of server-side scripting using CGI, FastCGI, and embedded interpreters. These capabilities facilitate the quick and efficient execution of dynamic code. While there are several prominent alternatives to Apache, even within the boundaries of open source, the breadth of Apache usage is unique.
+![Apache Configuration Basics](/docs/assets/apache-configuration-basics/Apache_Configuration_Basics_smg.png)
+
+The Apache HTTP web server is in many respects the *de facto* standard for general purpose HTTP services. Through its large number of modules, it provides flexible support for proxy servers, URL rewriting, and granular access control. Furthermore, web developers often choose Apache for its support of server-side scripting using CGI, FastCGI, and embedded interpreters. These capabilities facilitate the quick and efficient execution of dynamic code. While there are several prominent alternatives to Apache, even within the boundaries of open source, the breadth of Apache usage is unique.
 
 The extraordinary degree of flexibility provided by Apache does not come without some cost; this mostly takes the form of a configuration structure that is sometimes confusing and often complicated. For this reason we've created this document and a number of other guides that seek to address this complexity and explore some more advanced and *optional* functionality of the Apache HTTP Sever.
 

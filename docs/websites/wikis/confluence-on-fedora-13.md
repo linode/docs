@@ -21,7 +21,7 @@ title: Confluence on Fedora 13
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -134,7 +134,7 @@ Change it the match the following excerpt and save the file.
 :   ~~~
     host all all 127.0.0.1/32 md5
     ~~~
-    
+
 Issue the following command to create a `confluence` PostgreSQL role, making sure to assign a strong password.
 
     createuser confluence --pwprompt

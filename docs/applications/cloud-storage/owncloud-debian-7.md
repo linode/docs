@@ -1,6 +1,6 @@
 ---
 author:
-    name: Alex Fornuto 
+    name: Alex Fornuto
     email: afornuto@linode.com
 description: 'Installing and Configuring ownCloud on Debian 7.4'
 keywords: 'ownCloud,Debian,MySQL,cloud storage'
@@ -31,7 +31,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 2.  Enter the following path into the file:
 
         deb http://download.opensuse.org/repositories/isv:/ownCloud:/community/Debian_7.0/ /
-    
+
 3.  Download the key associated with ownCloud:
 
         wget http://download.opensuse.org/repositories/isv:ownCloud:community/Debian_7.0/Release.key
@@ -82,10 +82,10 @@ Since the LAMP stack utilizes MySQL, ownCloud can be configured to use this data
 
 4.  Exit MySQL with either:
 
-        exit 
-        
-    Or: 
-    
+        exit
+
+    Or:
+
         quit
 
 ## Configure ownCloud
