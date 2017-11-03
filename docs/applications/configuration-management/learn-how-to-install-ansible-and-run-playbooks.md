@@ -20,7 +20,7 @@ external_resources:
  - '[Ansible Example Playbooks (GitHub)](https://github.com/ansible/ansible-examples)'
 ---
 
-![Ansible](/docs/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
+![Ansible](/content/assets/Learn_How_to_Install_Ansible_and_Run_Playbooks_smg.jpg)
 
 # Getting started with Ansible: An Installation and Configuration Tutorial
 
@@ -32,7 +32,7 @@ This guide will introduce you to the basics of Ansible. By the end of this guide
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
 
 
 ## Installing Ansible

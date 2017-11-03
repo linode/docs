@@ -26,11 +26,11 @@ This guide shows you how to install and configure Graylog2 with Elasticsearch an
 
 {: .note}
 >
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:
 
@@ -238,7 +238,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
 1.  Open your web browser and navigate to the URL: `http://192.168.0.102:9000` where `192.168.0.102` is the public IP address of your linode. You will be redirected to the Graylog login page as shown below:
 
-    [![Graylog Login Page](/docs/assets/Screenshot-of-graylog-login-page_small.png)](/docs/assets/Screenshot-of-graylog-login-page.png)
+    [![Graylog Login Page](/content/assets/Screenshot-of-graylog-login-page_small.png)](/content/assets/Screenshot-of-graylog-login-page.png)
 
     {: .note}
     >
@@ -246,15 +246,15 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
 2.  Provide the username `admin` and password as the `hashedpassword` generated earlier, then click on the **Sign In** button. You should see the Graylog default dashboard:
 
-    [![Graylog Dashboard](/docs/assets/Screenshot-of-graylog-dashboard_small.png)](/docs/assets/Screenshot-of-graylog-dashboard.png)
+    [![Graylog Dashboard](/content/assets/Screenshot-of-graylog-dashboard_small.png)](/content/assets/Screenshot-of-graylog-dashboard.png)
 
 3.  Configure Graylog Input to receive the logs from external source. Click on *System > Inputs*. Then select **Syslog UDP** from the drop down, click on the **Launch new input** button. You should see the following image:
 
-    [![Graylog Add Input](/docs/assets/Screenshot-of-graylog-syslog-input_small.png)](/docs/assets/Screenshot-of-graylog-syslog-input.png)
+    [![Graylog Add Input](/content/assets/Screenshot-of-graylog-syslog-input_small.png)](/content/assets/Screenshot-of-graylog-syslog-input.png)
 
 4.  Fill in all of the details shown below. When you finish click on the **Save** button, you should see the local input in the following image:
 
-    [![Graylog Input Dashboard](/docs/assets/Screenshot-of-graylog-input-dashboard_small.png)](/docs/assets/Screenshot-of-graylog-input-dashboard.png)
+    [![Graylog Input Dashboard](/content/assets/Screenshot-of-graylog-input-dashboard_small.png)](/content/assets/Screenshot-of-graylog-input-dashboard.png)
 
 5.  Your Graylog input is configured and listening on port `8514`. Now, you will need to configure rsyslog to send system logs to the newly created input. To do this, edit the `rsyslog.conf` file:
 
@@ -269,7 +269,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
 6.  After restarting, log in to your Graylog server web interface and click on *System > Inputs*. Then, click on the **Show received messages** button. You should see the syslog messages in the following image:
 
-    [![Graylog Log Messages](/docs/assets/Screenshot-of-graylog-server-messeges_small.png)](/docs/assets/Screenshot-of-graylog-server-messeges.png)
+    [![Graylog Log Messages](/content/assets/Screenshot-of-graylog-server-messeges_small.png)](/content/assets/Screenshot-of-graylog-server-messeges.png)
 
 
 ### Next steps

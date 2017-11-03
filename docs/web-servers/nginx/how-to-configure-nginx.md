@@ -12,18 +12,18 @@ modified_by:
 published: 'Monday, January 18th, 2010'
 title: How to Configure nginx
 external_resources:
- - '[Linode nginx guides](/docs/web-servers/nginx/)'
- - '[nginx documentation](https://nginx.org/en/docs/)'
- - '[Linode LEMP Application Stack guides](/docs/lemp-guides/)'
+ - '[Linode nginx guides](/content/web-servers/nginx/)'
+ - '[nginx documentation](https://nginx.org/en/content/)'
+ - '[Linode LEMP Application Stack guides](/content/lemp-guides/)'
  - '[nginx Website](https://nginx.org/)'
- - '[nginx log module documentation](http://nginx.org/en/docs/http/ngx_http_log_module.html)'
+ - '[nginx log module documentation](http://nginx.org/en/content/http/ngx_http_log_module.html)'
 ---
 
 nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly with efficient use of system resources. nginx's strong point is its ability to efficiently serve static content, like plain HTML and media files. Some consider it a less than ideal server for dynamic content.
 
-![How To Configure nginx](/docs/assets/how_to_configure_nginx.png "How To Configure nginx")
+![How To Configure nginx](/content/assets/how_to_configure_nginx.png "How To Configure nginx")
 
-Unlike [Apache](/docs/web-servers/apache/), which uses a threaded or process-oriented approach to handle requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. Rather than using the embedded interpreter approach, nginx hands off dynamic content to CGI, FastCGI, or even other web servers like Apache, which is then passed back to nginx for delivery to the client.
+Unlike [Apache](/content/web-servers/apache/), which uses a threaded or process-oriented approach to handle requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load. Rather than using the embedded interpreter approach, nginx hands off dynamic content to CGI, FastCGI, or even other web servers like Apache, which is then passed back to nginx for delivery to the client.
 
 This leads to a more complex setup for certain deployments. For these and other reasons, the configuration of nginx can feel complicated and unintuitive at first. This document should familiarize you with basic nginx parameters and conventions. We'll be going through nginx's primary configuration file.
 
@@ -37,11 +37,11 @@ All nginx configuration files are located in the `/etc/nginx/` directory. The pr
 
 Before we begin, make sure you have completed the following:
 
--   Follow the [Getting Started](/docs/getting-started/) guide.
--   Install the [nginx server](/docs/websites/nginx/nginx-web-server-debian-8).
--   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+-   Follow the [Getting Started](/content/getting-started/) guide.
+-   Install the [nginx server](/content/websites/nginx/nginx-web-server-debian-8).
+-   The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
-If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+If you're new to Linux server administration, you may also be interested in our [Beginner's Guide](/content/beginners-guide/) and [Administration Basics Guide](/content/using-linux/administration-basics).
 
 ## Before You Start
 
@@ -53,7 +53,7 @@ Sometimes, server configuration files can get so corrupted or convoluted that th
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
 
-For even better restoration options, we recommend making regular [backups](/docs/platform/backup-service) of your nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/docs/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
+For even better restoration options, we recommend making regular [backups](/content/platform/backup-service) of your nginx configuration. You might want to store your entire `/etc/nginx/` directory in a [Git](/content/linux-tools/version-control/git) repository so you can save the original settings and all the versions from all your different changes. Another option is to periodically create dated copies of your files. You can accomplish this by issuing the following command:
 
     cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.$(date "+%b_%d_%Y_%H.%M.%S")
 
@@ -188,13 +188,13 @@ gzip
         # gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
         ~~~
 
-    For full definitions of the gzip options, check out [this page](http://nginx.org/en/docs/http/ngx_http_gzip_module.html) from the nginx docs.
+    For full definitions of the gzip options, check out [this page](http://nginx.org/en/content/http/ngx_http_gzip_module.html) from the nginx docs.
 
 {: .note }
 >
 > If you keep gzip compression enabled here, note that you are trading increased CPU costs in exchange for your lower bandwidth use. Set the `gzip_comp_level` to a value between 1 and 9, where 9 requires the greatest amount of CPU resources and 1 requires the least. The default value is 1.
 
-Note that the code snippet shown above does not include the closing bracket (**}**), because the HTTP section isn't finished. For detailed explanations of every directive in the `HTTP` block, check out [this page](http://nginx.org/en/docs/http/ngx_http_core_module.html) from the nginx documentation.
+Note that the code snippet shown above does not include the closing bracket (**}**), because the HTTP section isn't finished. For detailed explanations of every directive in the `HTTP` block, check out [this page](http://nginx.org/en/content/http/ngx_http_core_module.html) from the nginx documentation.
 
 ### Server (Virtual Domains Configuration)
 
@@ -351,7 +351,7 @@ The fifth example instructs the server to process requests for three different d
     server_name   localhost linode galloway;
     ~~~
 
-nginx allows you to specify names for virtual hosts that are not valid domain names. nginx uses the name from the HTTP header to answer requests; it doesn't matter to nginx whether the domain name is valid or not. In this case, the hostames can be specified in the [/etc/hosts file](/docs/tools-reference/linux-system-administration-basics#configure-the-etchosts-file).
+nginx allows you to specify names for virtual hosts that are not valid domain names. nginx uses the name from the HTTP header to answer requests; it doesn't matter to nginx whether the domain name is valid or not. In this case, the hostames can be specified in the [/etc/hosts file](/content/tools-reference/linux-system-administration-basics#configure-the-etchosts-file).
 
 Using non-domain hostnames may be useful if your nginx server is deployed on a LAN, or if you already know all of the clients that will be making requests of the server. This includes front-end proxy servers that preconfigured `/etc/hosts` entries for the IP address on which nginx is listening.
 
@@ -509,7 +509,7 @@ The `index` variable tells nginx which file to serve if none is specified. For e
 
 If multiple files are specified for the `index` directive, nginx will process the list in order and fulfill the request with the first file that exists. If `index.html` doesn't exist in the relevant directory, then `index.htm` will be used. If neither exist, a 404 message will be sent.
 
-Here's a more complex example, showcasing a set of `location` directives taken approximately from the [nginx and Perl-FastCGI Guide](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze) for a server responding for the domain `example.com`:
+Here's a more complex example, showcasing a set of `location` directives taken approximately from the [nginx and Perl-FastCGI Guide](/content/web-servers/nginx/perl-fastcgi/debian-6-squeeze) for a server responding for the domain `example.com`:
 
 {: .file-excerpt }
 /etc/nginx/sites-available/example.com location directive

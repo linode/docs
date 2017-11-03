@@ -49,7 +49,7 @@ Send the following sequence of commands to set the required file permissions:
 Compile nginx with uWSGI Support
 --------------------------------
 
-Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/fedora-13) for compiling nginx from source:
+Issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/content/web-servers/nginx/installation/fedora-13) for compiling nginx from source:
 
     yum groupinstall "Development Tools"
     yum install zlib-devel wget openssl-devel pcre pcre-devel sudo
@@ -63,7 +63,7 @@ Issue the following commands to download and compile nginx with support for the 
     useradd -M -r --shell /bin/sh --home-dir /opt/nginx nginx
     mkdir /var/lib/nginx
     cp /opt/uwsgi/nginx/uwsgi_params /opt/nginx/conf/uwsgi_params
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/654-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/content/assets/654-init-rpm.sh
     mv init-rpm.sh /etc/rc.d/init.d/nginx
     chmod +x /etc/rc.d/init.d/nginx
     chkconfig --add nginx
@@ -76,7 +76,7 @@ Configure uWSGI
 Issue the following command to download an init script to manage the uWSGI process, located at `/etc/init.d/uwsgi`:
 
     cd /opt/
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/653-uwsgi-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/content/assets/653-uwsgi-init-rpm.sh
     mv /opt/init-rpm.sh /etc/init.d/uwsgi
     chmod +x /etc/init.d/uwsgi
 
@@ -151,7 +151,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 Additional Application Servers
 ------------------------------
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
 {: .file-excerpt }
 nginx configuration
@@ -189,6 +189,6 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Fedora 13](/docs/web-servers/nginx/installation/fedora-13)
-- [Deploy a LEMP Server on Fedora 13](/docs/lemp-guides/fedora-13/)
-- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Installing Nginx on Fedora 13](/content/web-servers/nginx/installation/fedora-13)
+- [Deploy a LEMP Server on Fedora 13](/content/lemp-guides/fedora-13/)
+- [Configure nginx Proxy Servers](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

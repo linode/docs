@@ -14,19 +14,19 @@ external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 16.04 LTS, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running Ubuntu 16.04 LTS, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
-![Install Plex Media Server on Ubuntu 16.04](/docs/assets/install-plex-media-server-on-ubuntu-16-04.png)
+![Install Plex Media Server on Ubuntu 16.04](/content/assets/install-plex-media-server-on-ubuntu-16-04.png)
 
 {: .note}
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account with `sudo` privileges.
+2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account with `sudo` privileges.
 
 3.  Ensure that your system is up to date:
 
@@ -64,11 +64,11 @@ This section will show you how to complete your server setup and start adding me
 
 2.  Enter `http://localhost:8888/web` into your browser to view the Plex web interface, as shown below. Input your Plex account username and password to proceed with the setup process:
 
-    [![Plex web interface.](/docs/assets/plex-browser-view-small.png)](/docs/assets/plex-browser-view.png)
+    [![Plex web interface.](/content/assets/plex-browser-view-small.png)](/content/assets/plex-browser-view.png)
 
 3.  Give your Plex server a name. Be sure to leave the **Allow me to access my media outside my home** box checked, and click **Next**:
 
-    [![Plex web interface - Server Name.](/docs/assets/plex-server-name-small.png)](/docs/assets/plex-server-name.png)
+    [![Plex web interface - Server Name.](/content/assets/plex-server-name-small.png)](/content/assets/plex-server-name.png)
 
 4.  Finally, you'll create the directories that will store your Plex media. In this example we'll create library directories for `movies` and `television` within a `plex-media` directory. These will be located within your user's `/home`:
 
@@ -79,19 +79,19 @@ This section will show you how to complete your server setup and start adding me
 
 1.  Now that you've signed into Plex, you should see the following page. Click the **Add Library** button to start setting up your media libraries:
 
-    [![Plex web interface - Add Library](/docs/assets/plex-add-library-small.png)](/docs/assets/plex-add-library.png)
+    [![Plex web interface - Add Library](/content/assets/plex-add-library-small.png)](/content/assets/plex-add-library.png)
 
 2.  Select your library type, and click **Next**:
 
-    [![Plex web interface - Library type](/docs/assets/plex-library-type-small.png)](/docs/assets/plex-library-type.png)
+    [![Plex web interface - Library type](/content/assets/plex-library-type-small.png)](/content/assets/plex-library-type.png)
 
 3.  Navigate to the corresponding media directory that you created previously, then click **Add**:
 
-    [![Plex web interface - Library location](/docs/assets/plex-library-location-small.png)](/docs/assets/plex-library-location.png)
+    [![Plex web interface - Library location](/content/assets/plex-library-location-small.png)](/content/assets/plex-library-location.png)
 
 4.  You can add additional libraries by clicking the **+** symbol next to the **Libraries** list on the Plex side bar:
 
-    ![Plex web interface - additional Library](/docs/assets/plex-additional-library.png)
+    ![Plex web interface - additional Library](/content/assets/plex-additional-library.png)
 
 5.  Add your media to the appropriate directories. Be sure to review Plex's [naming conventions](https://support.plex.tv/hc/en-us/categories/200028098-Media-Preparation) for media files, to ensure that your files are identified correctly.
 
@@ -99,7 +99,7 @@ This section will show you how to complete your server setup and start adding me
 
 [DLNA](https://en.wikipedia.org/wiki/Digital_Living_Network_Alliance) is a protocol that incorporates [Universal Plug and Play](https://en.wikipedia.org/wiki/Universal_Plug_and_Play) (or UPnP) standards for digital media sharing across devices. If you do not wish to make use of it, it's recommended that you disable this feature, as it is openly connectable on port `1900`. From the Plex web interface, click the wrench icon in the upper right corner, select **Server**, and navigate to the **DLNA** section. Uncheck **Enable the DLNA server**, and click **Save Changes**:
 
-[![Plex media client](/docs/assets/plex-dlna-disable-small.png)](/docs/assets/plex-dlna-disable.png)
+[![Plex media client](/content/assets/plex-dlna-disable-small.png)](/content/assets/plex-dlna-disable.png)
 
 ## Connect to your Plex Server
 
@@ -113,4 +113,4 @@ The examples provided here will use **Plex Media Player** for MacOS.
 
 3.  Your Plex client will have a drop down menu where you can select your server. Once it's selected, you can navigate to the library with the content that you wish to view:
 
-    [![Plex media client](/docs/assets/plex-media-client-small.png)](/docs/assets/plex-media-client.png)
+    [![Plex media client](/content/assets/plex-media-client-small.png)](/content/assets/plex-media-client.png)

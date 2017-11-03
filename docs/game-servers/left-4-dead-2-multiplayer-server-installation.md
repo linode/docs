@@ -28,10 +28,10 @@ You will need the following items to get started:
 - A [Steam](http://store.steampowered.com) account.
 - OPTIONAL (needed to test the server): A copy of [Left 4 Dead 2](http://store.steampowered.com/app/550/).
 - A Linode with at least 2GB of RAM and 10GB of free disk space.
-- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/docs/getting-started) guide for help configuring your Linode.
+- An up-to-date Linode running Ubuntu or Debian. We suggest you follow our [Getting Started](/content/getting-started) guide for help configuring your Linode.
 
 {: .note }
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Preparing your Linode
 
@@ -65,12 +65,12 @@ Because a current Linode runs on a 64-bit operating system, you need to download
 
     {: .note }
     >
-    >If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
+    >If you've configured your firewall according to our [Securing Your Server](/content/security/securing-your-server) guide, be sure to add these port ranges to your `/etc/iptables.firewall.rules` file.
 
 ## Install SteamCMD and Left 4 Dead 2
 
 {: .note}
->This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
+>This guide requires additional libraries which are not included in our standard [SteamCMD Guide](/content/applications/game-servers/install-steamcmd-for-a-steam-game-server).  This guide includes standalone configuration instructions for SteamCMD.  If you have already followed our SteamCMD installation guide, you can skip to step 4.
 
 1.  From your user's home folder, download SteamCMD into its own directory:
 
@@ -166,7 +166,7 @@ Because a current Linode runs on a 64-bit operating system, you need to download
     >The `+port 27020` parameter is not required but is recommended so that your server always starts on the same port. The port number may be changed to whichever one you prefer, so long as it is not a privileged port.
 
     You can change the map to whichever one you prefer.
-	This script, when run, will execute the L4D2 server in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
+	This script, when run, will execute the L4D2 server in a [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
 5.  Make the script executable:
 

@@ -17,7 +17,7 @@ title: How to Use logrotate to Manage Log Files
 
 `Logrotate` is a tool for managing log files which have been created by system processes. This tool automatically compresses and removes logs to maximize the convenience of logs and conserve system resources. It gives users extensive control over how log rotation is processed.
 
-![logrotate](/docs/assets/logrotate.jpg)
+![logrotate](/content/assets/logrotate.jpg)
 
 ## Use Logrotate
 
@@ -29,7 +29,7 @@ Beyond the system-wide log rotation configuration, you may run `logrotate` in a 
 
 ### Run Logrotate
 
-Running `logrotate` as a [cronjob](/docs/tools-reference/tools/schedule-tasks-with-cron) ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
+Running `logrotate` as a [cronjob](/content/tools-reference/tools/schedule-tasks-with-cron) ensures that logs will be rotated regularly as configured. Logs will only be rotated when `logrotate` runs, regardless of configuration. For example, if you configure `logrotate` to rotate logs every day, but `logrotate` only runs every week, the logs will only be rotated every week.
 
 For most daemon processes, logs should be rotated by the root user. In most cases, `logrotate` is invoked from a script in the `/etc/cron.daily/` directory. If one does not exist, create a script that resembles the following in the `/etc/cron.daily/` folder:
 
@@ -84,7 +84,7 @@ logrotate.conf
     mail <username@example.com>
     ~~~
 
-Your system will need a functioning [Mail Transfer Agent](/docs/email/) to be able to send email.
+Your system will need a functioning [Mail Transfer Agent](/content/email/) to be able to send email.
 
 ## Configure Rotation Intervals
 

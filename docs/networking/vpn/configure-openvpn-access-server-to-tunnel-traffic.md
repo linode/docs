@@ -25,11 +25,11 @@ contributor:
 
 ## Before You Begin
 
-1. Familiarize yourself with the [Getting Started](/docs/getting-started) guide.
+1. Familiarize yourself with the [Getting Started](/content/getting-started) guide.
 
-2. Follow the [Securing Your Server](/docs/security/securing-your-server) guide.  OpenVPN Access Server creates its own firewall rules, so the steps for [configuring a firewall](/docs/security/securing-your-server#configure-a-firewall) should be skipped for now. Once you've configured OpenVPN, you can apply additional firewall rules as needed.
+2. Follow the [Securing Your Server](/content/security/securing-your-server) guide.  OpenVPN Access Server creates its own firewall rules, so the steps for [configuring a firewall](/content/security/securing-your-server#configure-a-firewall) should be skipped for now. Once you've configured OpenVPN, you can apply additional firewall rules as needed.
 
-3. Install OpenVPN Access Server using the [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server) guide.
+3. Install OpenVPN Access Server using the [Secure Communications with OpenVPN Access Server](/content/networking/vpn/openvpn-access-server) guide.
 
 ## Set Up OpenVPN Access Server for Tunneling
 
@@ -37,13 +37,13 @@ To configure OpenVPN for tunneling, you'll first need to log in to the Access Se
 
 1. In the **Routing** section, ensure that the option "Should client Internet traffic be routed through the VPN?" is set to **Yes**.
 
-    ![OpenVPN Access Server Internet Routing](/docs/assets/openvpn-access-server-routing.png "OpenVPN Access Server Internet Routing")
+    ![OpenVPN Access Server Internet Routing](/content/assets/openvpn-access-server-routing.png "OpenVPN Access Server Internet Routing")
 
     The option "Should VPN clients have access to private subnets (non-public networks on the server side)?" can be set to **No**, since you are using the VPN to mask internet traffic. If you wish to give VPN users access to services listening on your Linode's local network, set this option to **Yes, using NAT**.
 
 2. To avoid [DNS leaking](https://www.dnsleaktest.com/what-is-a-dns-leak.html), modify the DNS resolver settings. Under **DNS Settings**, select **Have clients use the same DNS servers as the Access Server host**.
 
-    ![OpenVPN Access Server DNS Settings](/docs/assets/openvpn-access-server-dns.png "OpenVPN Access Server DNS Settings")
+    ![OpenVPN Access Server DNS Settings](/content/assets/openvpn-access-server-dns.png "OpenVPN Access Server DNS Settings")
 
     Alternatively, you can manually set the DNS resolvers that will be used by your VPN client machines, under **Have clients use these DNS servers**. This will require that you add both a primary and secondary server. Some popular public DNS servers to consider include:
 
@@ -63,15 +63,15 @@ The first command enables traffic forwarding over IPv4 in your system configurat
 
 Once forwarding is enabled, restart OpenVPN by clicking on the **Stop the Server**, then **Start the Server** buttons under the **Status Overview** section in the Access Server Admin UI:
 
-[![OpenVPN Access Server Restart](/docs/assets/openvpn-access-server-restart-resize.png "OpenVPN Access Server Restart")](/docs/assets/openvpn-access-server-restart.png)
+[![OpenVPN Access Server Restart](/content/assets/openvpn-access-server-restart-resize.png "OpenVPN Access Server Restart")](/content/assets/openvpn-access-server-restart.png)
 
 ### Disable IPv6
 
-Because OpenVPN does not support transfer over IPv4 and IPv6 simultaneously, you should follow our steps for [disabling IPv6](/docs/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6), unless you have a specific reason not to do so.
+Because OpenVPN does not support transfer over IPv4 and IPv6 simultaneously, you should follow our steps for [disabling IPv6](/content/networking/vpn/set-up-a-hardened-openvpn-server#disable-ipv6), unless you have a specific reason not to do so.
 
 ## Test and Troubleshoot
 
-Once you've [connected your client](/docs/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatIsMyIP.com](http://www.whatismyip.com/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server to prevent leaking of your actual location via your ISP's resolvers.
+Once you've [connected your client](/content/networking/vpn/openvpn-access-server#client-software-installation), you can use a website such as [WhatIsMyIP.com](http://www.whatismyip.com/) to confirm that your traffic is routing through the VPN server's address. You can also use [DNSLeakTest.com](https://www.dnsleaktest.com/) to ensure that your VPN connection is using the resolvers specified by your OpenVPN server to prevent leaking of your actual location via your ISP's resolvers.
 
 ### Compression
 
@@ -81,4 +81,4 @@ If you are connected to the VPN, but unable to browse the Internet, check the Op
 
 This is likely an issue related to client compression. To resolve this, disable support for client compression from the **Advanced VPN** section in the Admin UI, by unchecking **Support compression on client VPN connections**:
 
-![OpenVPN Access Server Compression](/docs/assets/openvpn-access-compression.png "OpenVPN Access Server Compression")
+![OpenVPN Access Server Compression](/content/assets/openvpn-access-compression.png "OpenVPN Access Server Compression")

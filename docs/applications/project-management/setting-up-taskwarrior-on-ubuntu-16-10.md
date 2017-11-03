@@ -12,22 +12,22 @@ modified_by:
 Published: Tuesday, July 1, 2017
 title: 'Install Taskwarrior on Ubuntu 16.10'
 external_resources:
- - '[Taskwarrior Official Documentation](https://taskwarrior.org/docs/)'
+ - '[Taskwarrior Official Documentation](https://taskwarrior.org/content/)'
  - '[Taskwarrior Official Repository](https://github.com/taskwarrior)'
  - '[GTD with Taskwarrior, Blog](https://cs-syd.eu/posts/2015-06-14-gtd-with-taskwarrior-part-1-intro.html)'
- - '[Timewarrior](https://taskwarrior.org/docs/timewarrior/what.html)'
+ - '[Timewarrior](https://taskwarrior.org/content/timewarrior/what.html)'
 ---
 
 
-![Tasklogo](/docs/assets/taskwarrior/Taskwarrior.png)
+![Tasklogo](/content/assets/taskwarrior/Taskwarrior.png)
 
 [Taskwarrior](https://taskwarrior.org/) is an open-source tool that manages tasks from the command line. Taskwarrior is blazing fast, written in C, updated frequently and available on practically every platform. This guide shows you how to install Taskwarrior on a Linode running Ubuntu 16.10.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/docs/#taskd) for multiple devices to connect to.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Taskwarrior does not require opening ports in your firewall unless you choose to run it as a [server daemon](https://taskwarrior.org/content/#taskd) for multiple devices to connect to.
 
 3.  Update your system:
 
@@ -45,7 +45,7 @@ The system will ask if you want to create a configuration file for your user.
 
 Answer `yes`.
 
-You'll find the sample configuration file at `~/.taskrc`. To learn more about configuring `task.rc`, see the [official documentation](https://taskwarrior.org/docs/configuration.html).
+You'll find the sample configuration file at `~/.taskrc`. To learn more about configuring `task.rc`, see the [official documentation](https://taskwarrior.org/content/configuration.html).
 
 ## Manage Tasks with Taskwarrior
 
@@ -53,7 +53,7 @@ You can manage your tasks and effectively use Taskwarrior with a handful of simp
 
 ### Add a Task
 
-To add a task, run the command, [task add](https://taskwarrior.org/docs/commands/add.html).
+To add a task, run the command, [task add](https://taskwarrior.org/content/commands/add.html).
 
 For example:
 
@@ -83,7 +83,7 @@ You can add as many tasks as you want.
 
 ### Complete a Task
 
-After you complete a task, you can mark it "done" using the [done] command (https://taskwarrior.org/docs/commands/done.html). The syntax is `task <task_number> done`.
+After you complete a task, you can mark it "done" using the [done] command (https://taskwarrior.org/content/commands/done.html). The syntax is `task <task_number> done`.
 
 	taskwarrior@localhost:~$ task 1 done
     Completed task 1 'Add block storage volume to my Linode'.
@@ -113,9 +113,9 @@ Using the `due` argument, you can assign a due date for a task:
 
 	2 tasks
 
-The `due` [argument](https://taskwarrior.org/docs/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/docs/dates.html)
+The `due` [argument](https://taskwarrior.org/content/dates.html#due) allows a significant breadth for input. Read more about what's possible with the `due` argument at [the official documentation.](https://taskwarrior.org/content/dates.html)
 
-Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.html) by using the `recur` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
+Taskwarrior supports [recurring tasks](https://taskwarrior.org/content/recurrence.html) by using the `recur` argument. The example below creates a daily task, the first of which is due 23 hours from the time of creation:
 
 	task add update ubuntu recur:daily due:daily
 
@@ -132,14 +132,14 @@ Taskwarrior supports [recurring tasks](https://taskwarrior.org/docs/recurrence.h
 
 ### Visualization
 
-Taskwarrior does much more than just list the tasks you've added on the command line. The [burndown](https://taskwarrior.org/docs/commands/burndown.html) feature outputs graphical representations of your Taskwarrior workflow.
+Taskwarrior does much more than just list the tasks you've added on the command line. The [burndown](https://taskwarrior.org/content/commands/burndown.html) feature outputs graphical representations of your Taskwarrior workflow.
 
-![taskwarburndown](/docs/assets/taskwarrior/tw-burndown.png)
+![taskwarburndown](/content/assets/taskwarrior/tw-burndown.png)
 
 The `calendar` feature shows a calendar that contains all your tasks and due dates.
-![taskcalendar](/docs/assets/taskwarrior/tw-calendar.png)
+![taskcalendar](/content/assets/taskwarrior/tw-calendar.png)
 
 
 ### Next Steps with Taskwarrior
 
-The next step to incorporate a Taskwarrior workflow into your life is to install `task server` on your Linode. Because Taskwarrior can be used across all your devices, including your phone, a central server in which to sync the data is needed. Taskwarrior offers do-it-yourself documentation on setting up such a task server: [Installing Taskserver](https://taskwarrior.org/docs/taskserver/setup.html).
+The next step to incorporate a Taskwarrior workflow into your life is to install `task server` on your Linode. Because Taskwarrior can be used across all your devices, including your phone, a central server in which to sync the data is needed. Taskwarrior offers do-it-yourself documentation on setting up such a task server: [Installing Taskserver](https://taskwarrior.org/content/taskserver/setup.html).

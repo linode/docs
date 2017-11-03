@@ -40,34 +40,34 @@ You'll need to enable two-factor authentication to start using it with your Lino
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**.
 
-    [![Re-enter your password.](/docs/assets/1271-manager_reauth_linodedemo.png)](/docs/assets/1271-manager_reauth_linodedemo.png)
+    [![Re-enter your password.](/content/assets/1271-manager_reauth_linodedemo.png)](/content/assets/1271-manager_reauth_linodedemo.png)
 
 4.  Select the **Password & Authentication** tab.
 5.  In the **Two-Factor Authentication** section, click **Enable Two-Factor Authentication**, as shown below.
 
-    [![Two-Factor Authentication.](/docs/assets/1286-manager_2factor_disabled-2.png)](/docs/assets/1269-manager_2factor_disabled.png)
+    [![Two-Factor Authentication.](/content/assets/1286-manager_2factor_disabled-2.png)](/content/assets/1269-manager_2factor_disabled.png)
 
 6.  The window shown below appears. Write down the **Secret Key** and store it in a safe place.
 
-    [![The key and QR code for two-factor authentication.](/docs/assets/1291-manager_2factor_key_qr-4.png)](/docs/assets/1291-manager_2factor_key_qr-4.png)
+    [![The key and QR code for two-factor authentication.](/content/assets/1291-manager_2factor_key_qr-4.png)](/content/assets/1291-manager_2factor_key_qr-4.png)
 
     {: .caution }
     >
-    > Do not refresh this page until you have configured Google Authenticator on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/docs/support) to regain access.
+    > Do not refresh this page until you have configured Google Authenticator on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/content/support) to regain access.
 
 7.  On your smartphone, open Google Authenticator.
 8.  Tap the plus (**+**) button, as shown below.
 
-    [![The Google Authenticator start screen.](/docs/assets/1287-google_auth_start_crop-2.png)](/docs/assets/1277-google_auth_start_crop.png)
+    [![The Google Authenticator start screen.](/content/assets/1287-google_auth_start_crop-2.png)](/content/assets/1277-google_auth_start_crop.png)
 
 9.  Tap **Time Based**, as shown below.
 
-    [![Add a new account in Google Authenticator.](/docs/assets/1288-google_auth_scan_crop-2.png)](/docs/assets/1276-google_auth_scan_crop.png)
+    [![Add a new account in Google Authenticator.](/content/assets/1288-google_auth_scan_crop-2.png)](/content/assets/1276-google_auth_scan_crop.png)
 
 10. Tap **Scan Barcode**.
 11. Point your smartphone's camera at the barcode on your computer screen. The app creates a new token for your Linode Manager login automatically. It will be labeled **LinodeManager:user**, as shown below.
 
-    [![Your token in Google Authenticator. You can enter the key manually instead if you prefer not to scan the barcode.](/docs/assets/1289-google_auth_token_crop-2.png)](/docs/assets/1278-google_auth_token_crop.png)
+    [![Your token in Google Authenticator. You can enter the key manually instead if you prefer not to scan the barcode.](/content/assets/1289-google_auth_token_crop-2.png)](/content/assets/1278-google_auth_token_crop.png)
 
 12. Verify that your Linode Manager login has been added to Google Authenticator, and that it is generating a new token every 30 seconds.
 13. In the Linode Manager, enter the token from your smartphone in the **Generated Token** field, and then click **Confirm my token, and enable two-factor auth**.
@@ -81,11 +81,11 @@ Now that you have set up two-factor authentication for your account, you'll need
 1.  Open the [Linode Manager](https://manager.linode.com) in your web browser.
 2.  On your smartphone, open Google Authenticator, and then select your **LinodeManager:user** account, as shown below.
 
-    [![Your token in Google Authenticator.](/docs/assets/1289-google_auth_token_crop-2.png)](/docs/assets/1278-google_auth_token_crop.png)
+    [![Your token in Google Authenticator.](/content/assets/1289-google_auth_token_crop-2.png)](/content/assets/1278-google_auth_token_crop.png)
 
 3.  In your web browser, enter your username and password and click **Log in**. The webpage shown below appears.
 
-    [![Enter your token.](/docs/assets/1270-manager_login_token_470042.png)](/docs/assets/1270-manager_login_token_470042.png)
+    [![Enter your token.](/content/assets/1270-manager_login_token_470042.png)](/content/assets/1270-manager_login_token_470042.png)
 
 4.  Enter your token, and then click **Authenticate**. Checking the box below the authentication option will add your computer to the trusted computer list for 30 days, and generate a confirmation email to the address on file for your account.
 
@@ -97,15 +97,15 @@ It's also suggested that you generate a one-time use scratch code. In the event 
 
 1.  Click on the **generate** link to create a code.
 
-    [![Generate Scratch Code.](/docs/assets/1364-manager_2fa_enabled_sm.png)](/docs/assets/1361-manager_2fa_enabled.png)
+    [![Generate Scratch Code.](/content/assets/1364-manager_2fa_enabled_sm.png)](/content/assets/1361-manager_2fa_enabled.png)
 
 2.  A pop-up window will appear asking you to confirm the action. Click **OK**.
 
-    [![Confirmation Window.](/docs/assets/1362-warning_generate_scratchcode.png)](/docs/assets/1362-warning_generate_scratchcode.png)
+    [![Confirmation Window.](/content/assets/1362-warning_generate_scratchcode.png)](/content/assets/1362-warning_generate_scratchcode.png)
 
 3.  The scratch code is displayed. This code will be displayed only once, so write it down and store it somewhere safe.
 
-    [![Confirmation Window.](/docs/assets/1365-manager_scratchcode_enabled_sm.png)](/docs/assets/1363-manager_scratchcode_enabled.png)
+    [![Confirmation Window.](/content/assets/1365-manager_scratchcode_enabled_sm.png)](/content/assets/1363-manager_scratchcode_enabled.png)
 
 ### Generating a New Key
 
@@ -117,7 +117,7 @@ The Linode Manager allows you to generate a new secret key for your two-factor a
 4.  Select the **Password & Authentication** tab.
 5.  In the *Two-Factor Authentication* section, click **Regenerate Secret Key**, as shown below.
 
-    [![Regenerate Secret Key.](/docs/assets/1364-manager_2fa_enabled_sm.png)](/docs/assets/1361-manager_2fa_enabled.png)
+    [![Regenerate Secret Key.](/content/assets/1364-manager_2fa_enabled_sm.png)](/content/assets/1361-manager_2fa_enabled.png)
 
 A new secret key and barcode will be generated for your account and displayed on the screen. Follow the instructions in the [Enabling Two-Factor Authentication](#enabling) section to add the new key to your smartphone.
 
@@ -131,7 +131,7 @@ You can disable two-factor authentication for your Linode Manager account at any
 4.  Select the **Password & Authentication** tab.
 5.  In the **Two-Factor Authentication** section, select **Disable**, as shown below.
 
-    [![Disabling Two-Factor Authentication.](/docs/assets/1292-2f-disable-1.png)](/docs/assets/1292-2f-disable-1.png)
+    [![Disabling Two-Factor Authentication.](/content/assets/1292-2f-disable-1.png)](/content/assets/1292-2f-disable-1.png)
 
 6.  A confirmation window appears asking if you want to disable two-factor authentication. Click **OK**.
 
@@ -161,12 +161,12 @@ The first step is enabling the IP address whitelist feature in the Linode Manage
 5.  Select the **Password & Authentication** tab.
 6.  In the *Account Security* section, select **Enabled** from the **Status** menu, as shown below.
 
-    [![Enabling the IP address whitelist feature.](/docs/assets/1294-2f-whitelist-1.png)](/docs/assets/1294-2f-whitelist-1.png)
+    [![Enabling the IP address whitelist feature.](/content/assets/1294-2f-whitelist-1.png)](/content/assets/1294-2f-whitelist-1.png)
 
 7.  Click **Save security setting**. The IP address whitelist feature will be enabled.
 8.  In the *Account Security* section, select the **Edit Whitelist** link to add your IP address, as shown below.
 
-    [![Enabling the IP address whitelist feature.](/docs/assets/1295-2f-whitelist-2.png)](/docs/assets/1295-2f-whitelist-2.png)
+    [![Enabling the IP address whitelist feature.](/content/assets/1295-2f-whitelist-2.png)](/content/assets/1295-2f-whitelist-2.png)
 
 9.  Enter your IP address and netmask, and then click **Add IP**. You can add as many IP addresses as you want.
 
@@ -186,7 +186,7 @@ You can disable the IP address whitelist feature at any time. Here's how:
 4.  Select the **Password & Authentication** tab.
 5.  In the *Account Security* section, select **Disabled** from the **Status** menu, as shown below.
 
-    [![Disabling the IP address whitelist feature.](/docs/assets/1296-2f-whitelist-3.png)](/docs/assets/1296-2f-whitelist-3.png)
+    [![Disabling the IP address whitelist feature.](/content/assets/1296-2f-whitelist-3.png)](/content/assets/1296-2f-whitelist-3.png)
 
 6.  Click **Save security setting**.
 
@@ -206,7 +206,7 @@ You can enable and disable event notifications sent via email in the Linode Mana
 4.  Select the **Notifications** tab.
 5.  In the *Linode Events Email* section, click **Toggle Event Email Notifications**, as shown below.
 
-    [![Toggling the Events Email Notification.](/docs/assets/1297-2f-events-1.png)](/docs/assets/1297-2f-events-1.png)
+    [![Toggling the Events Email Notification.](/content/assets/1297-2f-events-1.png)](/content/assets/1297-2f-events-1.png)
 
 If the events email notification was enabled before you clicked the button, it is now disabled, and vice versa.
 
@@ -220,7 +220,7 @@ The event notifications for your Linode Manager account are also available as an
 4.  Select the **Notifications** tab.
 5.  The RSS feed URL is displayed in the *Linode Events RSS* section, as shown below.
 
-    [![Finding the RSS event notifications URL.](/docs/assets/1298-2f-events-2.png)](/docs/assets/1298-2f-events-2.png)
+    [![Finding the RSS event notifications URL.](/content/assets/1298-2f-events-2.png)](/content/assets/1298-2f-events-2.png)
 
 6.  To regenerate the URL for the RSS feed, click **Generate a new RSS key**.
 
@@ -230,15 +230,15 @@ If you regenerated the URL for the RSS feed, you will need to update it in your 
 
 The [Linode API](https://www.linode.com/api/) is a programmatic interface for many of the features available in the Linode Manager. It's an indispensable tool for developers, but it's also a potential attack vector. For this reason, the Linode Manager provides two security controls for your account's API key. First, you can generate a new API key if you suspect that your existing key has been compromised. And if you're not using the API key, you can remove access to it altogether.
 
-For details on generating and removing API keys, please see the [API Key](/docs/api/key) article.
+For details on generating and removing API keys, please see the [API Key](/content/api/key) article.
 
 ## Next Steps
 If you've completed this guide, you've proactively taken steps to protect your Linode Manager account. But don't stop here! There are a couple other steps that some users should take to secure their Linode Manager accounts. Take some time and work through the following action items outlined in our other guides.
 
 ### Configuring User Accounts
 
-Organizations that have multiple individuals accessing the same Linode Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/docs/accounts-and-passwords).
+Organizations that have multiple individuals accessing the same Linode Manager account should create separate *user accounts* for each individual. Once you've created the accounts, you can assign permissions to restrict access to certain areas of the control panel. This is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information. For more information, see our guide on [Accounts and Passwords](/content/accounts-and-passwords).
 
 ### Forcing Password Expirations
 
-Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/docs/platform/accounts-and-passwords/#passwords).
+Some organizations have policies that require users to change their passwords every so often. The Linode Manager can be configured to force users to change their passwords every 1, 3, 6, or 12 months. For more information, see the documentation on [Passwords in the Linode Manager](/content/platform/accounts-and-passwords/#passwords).

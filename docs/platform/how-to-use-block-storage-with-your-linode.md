@@ -22,7 +22,7 @@ Linode's block storage service allows you to attach additional storage volumes t
 
 Block Storage is currently in a free public beta for Linodes in our Newark and Fremont datacenters. Any feedback you can give on the service would also be helpful and is appreciated.
 
-![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
+![Block storage title graphic](/content/assets/block-storage-title-graphic.png)
 
 ## How to Add a Block Storage Volume to a Linode
 
@@ -32,11 +32,11 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 1.  Go to the dashboard page of the Linode to which you want to attach a block storage volume. Select **Create a new Volume**:
 
-    [![Linode Manager create a volume](/docs/assets/bs-manager-create-new-volume-small.png)](/docs/assets/bs-manager-create-new-volume.png)
+    [![Linode Manager create a volume](/content/assets/bs-manager-create-new-volume-small.png)](/content/assets/bs-manager-create-new-volume.png)
 
 2.  Assign the block storage volume a label and size. The label can be up to 32 characters long and consist only of ASCII characters `a-z; 0-9.-_`. The maximum volume size is 1024 GiB (1 terabyte). When finished, click *Add this Volume!*:
 
-    [![Linode Manager add a volume](/docs/assets/bs-add-a-volume.png)](/docs/assets/bs-add-a-volume.png)
+    [![Linode Manager add a volume](/content/assets/bs-add-a-volume.png)](/content/assets/bs-add-a-volume.png)
 
     {: .note }
     >
@@ -46,25 +46,25 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 3.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
-    [![Linode Manager volume instructions](/docs/assets/bs-volume-instructions-small.png)](/docs/assets/bs-volume-instructions.png)
+    [![Linode Manager volume instructions](/content/assets/bs-volume-instructions-small.png)](/content/assets/bs-volume-instructions.png)
 
 4.  If your Linode is not already running, boot and SSH in to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
-    [![Linode Manager edit volume](/docs/assets/bs-edit-small.png)](/docs/assets/bs-edit.png)
+    [![Linode Manager edit volume](/content/assets/bs-edit-small.png)](/content/assets/bs-edit.png)
 
 ### Add a Volume from Your Account's Volume List
 
 1.  In the **Linodes** tab of Linode manager, click **Manage Volumes** to see your account's volume list:
 
-    [![Linode Manager add volume](/docs/assets/bs-manage-volumes-small.png)](/docs/assets/bs-manage-volumes.png)
+    [![Linode Manager add volume](/content/assets/bs-manage-volumes-small.png)](/content/assets/bs-manage-volumes.png)
 
 2.  Click the **Attach** option for the volume you want to attach to a Linode:
 
-    [![Linode Manager add volume](/docs/assets/bs-volume-list-small.png)](/docs/assets/bs-volume-list.png)
+    [![Linode Manager add volume](/content/assets/bs-volume-list-small.png)](/content/assets/bs-volume-list.png)
 
 3.  Select the label of the Linode you want to attach the volume to. Then click **Attach**:
 
-    [![Linode Manager add volume](/docs/assets/bs-volume-attach-small.png)](/docs/assets/bs-volume-attach.png)
+    [![Linode Manager add volume](/content/assets/bs-volume-attach-small.png)](/content/assets/bs-volume-attach.png)
 
     {: .note }
      >
@@ -74,11 +74,11 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 4.  Once you add a volume, you'll be presented with the Volume Attached page as shown below. This page provides customized instructions which show you how to make a filesystem in your volume from any of our supported Linux distributions. The page shows how to mount the volume, and how to add it to `/etc/fstab` so it's mounted automatically whenever you reboot your Linode:
 
-    [![Linode Manager volume instructions](/docs/assets/bs-volume-instructions-small.png)](/docs/assets/bs-volume-instructions.png)
+    [![Linode Manager volume instructions](/content/assets/bs-volume-instructions-small.png)](/content/assets/bs-volume-instructions.png)
 
 5.  If your Linode is not already running, boot and SSH in to execute the commands as shown on the instructions page. If you need to see the volume mount instructions again, click **Edit** to the right of the volume in that Linode's dashboard:
 
-    [![Linode Manager edit volume](/docs/assets/bs-edit-small.png)](/docs/assets/bs-edit.png)
+    [![Linode Manager edit volume](/content/assets/bs-edit-small.png)](/content/assets/bs-edit.png)
 
 ## How to Detach a Block Storage Volume from a Linode
 
@@ -86,19 +86,19 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 2.  When the Linode is powered off, click **Detach** under the **Volumes** list:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detach-small.png)](/docs/assets/bs-detach.png)
+    [![Linode Manager edit volume](/content/assets/bs-detach-small.png)](/content/assets/bs-detach.png)
 
 3.  A confirmation screen appears and explains that the volume will be detached from the Linode. Click **Detach** to confirm:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detach-confirm-small.png)](/docs/assets/bs-detach-confirm.png)
+    [![Linode Manager edit volume](/content/assets/bs-detach-confirm-small.png)](/content/assets/bs-detach-confirm.png)
 
     The Linode's dashboard does not show the volume present anymore:
 
-    [![Linode Manager edit volume](/docs/assets/bs-detached-small.png)](/docs/assets/bs-detached.png)
+    [![Linode Manager edit volume](/content/assets/bs-detached-small.png)](/content/assets/bs-detached.png)
 
     The volume still exists on your account and you can see it if you click **View all Volumes**:
 
-    [![Linode Manager edit volume](/docs/assets/bs-volume-list-small.png)](/docs/assets/bs-volume-list.png)
+    [![Linode Manager edit volume](/content/assets/bs-volume-list-small.png)](/content/assets/bs-volume-list.png)
 
 ## How to Delete a Block Storage Volume
 
@@ -122,11 +122,11 @@ Storage volumes can **not** be sized down, only up. Bear this in mind when sizin
 
 3.  Enter the new volume size. The minimum size is 1 GiB and maximum is 1024 GiB. Then click **Save Changes**.
 
-      [![Linode Manager edit volume](/docs/assets/bs-resize-volume-small.png)](/docs/assets/bs-resize-volume.png)
+      [![Linode Manager edit volume](/content/assets/bs-resize-volume-small.png)](/content/assets/bs-resize-volume.png)
 
 4.  You'll be returned to the volume list and the **Status** column for the volume should say **resizing**.
 
-      [![Linode Manager edit volume](/docs/assets/bs-volume-resizing-small.png)](/docs/assets/bs-volume-resizing.png)
+      [![Linode Manager edit volume](/content/assets/bs-volume-resizing-small.png)](/content/assets/bs-volume-resizing.png)
 
 5.  Reboot your Linode and your volume resize will be completed.
 
@@ -134,12 +134,12 @@ Storage volumes can **not** be sized down, only up. Bear this in mind when sizin
 
 Need ideas for what to do with space? We have several guides which walk you through installing software that would make a great pairing with large storage volumes:
 
-[Install Seafile with nginx on Ubuntu 16.04](/docs/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604)
+[Install Seafile with nginx on Ubuntu 16.04](/content/applications/cloud-storage/install-seafile-with-nginx-on-ubuntu-1604)
 
-[Install Plex Media Server on Ubuntu 16.04](/docs/applications/media-servers/install-plex-media-server-on-ubuntu-16-04)
+[Install Plex Media Server on Ubuntu 16.04](/content/applications/media-servers/install-plex-media-server-on-ubuntu-16-04)
 
-[Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm)
+[Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/content/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm)
 
-[Using Subsonic to Stream Media From Your Linode](/docs/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian)
+[Using Subsonic to Stream Media From Your Linode](/content/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian)
 
-[Install GitLab on Ubuntu 14.04](/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr)
+[Install GitLab on Ubuntu 14.04](/content/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr)

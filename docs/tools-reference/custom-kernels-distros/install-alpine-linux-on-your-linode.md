@@ -25,7 +25,7 @@ It's regularly updated with security patches, and runs on the [grsecurity](https
 
 ## Before You Begin
 
-1.  Familiarize yourself with [Lish](/docs/networking/using-the-linode-shell-lish), as most of this guide will require an out-of-band connection.
+1.  Familiarize yourself with [Lish](/content/networking/using-the-linode-shell-lish), as most of this guide will require an out-of-band connection.
 
 2.  Back up *all* data on the images on which you intend to install Alpine. Installing Alpine in this manner will destroy all existing data on the disk images you install it on.
 
@@ -64,13 +64,13 @@ Create a new configuration profile for your Linode. Choose **GRUB 2** from the k
 
 Turn off all the **Filesystem/Boot Helpers**. The rest of the settings can be left at their default values.
 
-[![Linode Config](/docs/assets/install-alpine-linux-config_small.png)](/docs/assets/install-alpine-linux-config.png)
+[![Linode Config](/content/assets/install-alpine-linux-config_small.png)](/content/assets/install-alpine-linux-config.png)
 
 ## Install Alpine Linux
 
 ### Boot into Rescue Mode
 
-1.  From the Linode Manager, boot your Linode into [Rescue Mode](/docs/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
+1.  From the Linode Manager, boot your Linode into [Rescue Mode](/content/troubleshooting/rescue-and-rebuild), with your boot disk image as `/dev/sda`, your root disk image as `/dev/sdb`, and your swap as /`dev/sdc`.
 
 2.  Once the Linode has booted, connect to it via Lish. If you are not familiar with Lish, there is a simple web interface for it located under the **Remote Access** tab in the Linode Manager.
 
@@ -306,6 +306,6 @@ For more information, see Alpine's wiki page on [package management](https://wik
 
 ## Secure Your Server
 
-Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our guide on [Securing Your Server](/docs/security/securing-your-server) provides a good starting point, but you may want to research additional, Alpine-specific security options on your own. Keep in mind that you will need to install most security packages, e.g. `iptables`.
+Before using your Linode in a development or production capacity, make sure you've taken some basic security precautions. Our guide on [Securing Your Server](/content/security/securing-your-server) provides a good starting point, but you may want to research additional, Alpine-specific security options on your own. Keep in mind that you will need to install most security packages, e.g. `iptables`.
 
 For more information, refer to their wiki page on [security](https://wiki.alpinelinux.org/wiki/Category:Security).

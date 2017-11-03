@@ -13,7 +13,7 @@ published: 'Wednesday, October 13th, 2010'
 title: Use dig to Perform Manual DNS Queries
 ---
 
-![Use dig to Perform Manual DNS Queries](/docs/assets/use-dig-to-perform-manual-dns-queries.jpg "Use dig to Perform Manual DNS Queries")
+![Use dig to Perform Manual DNS Queries](/content/assets/use-dig-to-perform-manual-dns-queries.jpg "Use dig to Perform Manual DNS Queries")
 
 ## What is dig?
 

@@ -12,19 +12,19 @@ modified_by:
 published: 'Tuesday, January 28th, 2014'
 title: 'How to Install Nginx on Debian 7 (Wheezy)'
 external_links:
- - '[Linode Nginx Documentation](/docs/web-servers/nginx/)'
+ - '[Linode Nginx Documentation](/content/web-servers/nginx/)'
  - '[Nginx Community Documentation](http://wiki.nginx.org)'
 ---
 
-Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/content/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 Although Nginx is a relatively new entry in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic/profile websites have begun to use Nginx for its efficiency. At the same time administrators of smaller systems have found Nginx ideal for their systems for its slim memory footprint.
 
-Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [Beginner's Guide](/docs/beginners-guide/) and [Administration Basics Guide](/docs/using-linux/administration-basics).
+Before you begin installing the Nginx web server, it is assumed that you have followed our [Getting Started Guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [Beginner's Guide](/content/beginners-guide/) and [Administration Basics Guide](/content/using-linux/administration-basics).
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure the hostname is set properly:
+Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure the hostname is set properly:
 
     hostname
     hostname -f
@@ -33,7 +33,7 @@ The first command should show your short hostname, and the second should show yo
 
 ## Installing Nginx from Debian Repositories
 
-All of the following updates, upgrades, and installs use a non-root account. Therefore, `sudo` is required before commands, if you are using `root` to perform these commands than sudo would not be required. For more information regarding account permissions, view our [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups/).
+All of the following updates, upgrades, and installs use a non-root account. Therefore, `sudo` is required before commands, if you are using `root` to perform these commands than sudo would not be required. For more information regarding account permissions, view our [Linux Users and Groups Guide](/content/tools-reference/linux-users-and-groups/).
 
 Nginx is included as part of the Debian software repositories. The preferred installation method utilizes the Debian repositories. The commands for installation are as follows:
 
@@ -46,7 +46,7 @@ Installing Nginx with the Debian package maintainers provides quality control, t
 
 To test if the installation of Nginx was successful, open a web browser and in the address bar enter the IP address of your server. You should see a message similar to the one below:
 
-![Nginx test page.](/docs/assets/1536-nginx-test.png)
+![Nginx test page.](/content/assets/1536-nginx-test.png)
 
 ## Installing and Compiling a Nginx Source Distribution
 
@@ -117,9 +117,9 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 ### Create an Init Script to Manage Nginx
 
-Before you can use the Nginx server, you must create a means of controlling the daemon process. You can create an "init script" using [this example](/docs/assets/1538-init-deb.sh) to control Nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize Nginx on boot:
+Before you can use the Nginx server, you must create a means of controlling the daemon process. You can create an "init script" using [this example](/content/assets/1538-init-deb.sh) to control Nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize Nginx on boot:
 
-    sudo wget -O init-deb.sh http://www.linode.com/docs/assets/1538-init-deb.sh
+    sudo wget -O init-deb.sh http://www.linode.com/content/assets/1538-init-deb.sh
     sudo mv init-deb.sh /etc/init.d/nginx
     sudo chmod +x /etc/init.d/nginx
     sudo /usr/sbin/update-rc.d -f nginx defaults
@@ -130,4 +130,4 @@ You can now start, stop, and restart Nginx just like any other server daemon. Fo
 
 You now have a running and fully functional HTTP server powered by the Nginx web server. To test if the installation of Nginx was successful, open a web browser and in the address bar enter the IP address of your server. You should see a default Nginx page.
 
-Continue reading our introduction to [Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic Nginx Configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.

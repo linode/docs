@@ -37,7 +37,7 @@ All critical data should be backed up, and if possible in more than one location
 
 ### Backing up Databases
 
-Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/docs/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
+Proper backup knowledge for a database is important. Steps for properly backing up your MySQL or MariaDB database can be found [here](/content/databases/mysql/back-up-your-mysql-databases#option-1-create-backups-of-an-entire-database-management-system-using-the-mysqldump-utility).
 
 ### Backing up Important Files
 
@@ -53,7 +53,7 @@ If you aren't implementing a system wide backups solution like Linode Backups, y
 For future reboots, ensure that any critical stack software is configured to start at boot. This differs depending on operating systems.
 
 {: .note }
-> This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://www.centos.org/docs/5/html/5.2/Installation_Guide/s2-init-boot-shutdown-rl.html).
+> This guide is a high-level overview, and does not discuss runlevels. Read more about runlevels [here](https://www.centos.org/content/5/html/5.2/Installation_Guide/s2-init-boot-shutdown-rl.html).
 
 ### Debian and Ubuntu
 
@@ -153,7 +153,7 @@ For future reboots, ensure that any critical stack software is configured to sta
 
 ## SSL Passphrases
 
-Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/docs/networking/using-the-linode-shell-lish) console to enter your passphrase on reboot:
+Remember, if you use SSL certificates that require a passphrase, enter the passphrase on boot, or your web services will not come up. Use the [LISH](/content/networking/using-the-linode-shell-lish) console to enter your passphrase on reboot:
 
     Starting web server (apache2)...[Mon Sep 22 09:03:45 2008] [warn] module ssl_module is already loaded, skipping
     Apache/2.2.3 mod_ssl/2.2.3 (Pass Phrase Dialog)
@@ -172,7 +172,7 @@ The console does not display any characters (ex: **\***) as you enter your passp
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
+If you followed the [Creating a Firewall](/content/security/securing-your-server#configure-a-firewall) section of our [Securing your Server](/content/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 
@@ -188,7 +188,7 @@ If your system absolutely **cannot** afford any downtime, then scale the platfor
 >
 > You can deploy your services to an additional Linode to enable high availability.  New Linodes will automatically be placed on known good hosts, and can ensure that vital services remain online throughout the reboot process.
 
- - [Linode NodeBalancers](/docs/platform/nodebalancer/)
- - [Using Nginx for Proxy Services and Software Load Balancing](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
- - [MySQL Master-Master Replication](/docs/databases/mysql/mysql-master-master-replication)
- - [MariaDB Clusters with Galera](/docs/databases/mariadb/clustering-with-mariadb-and-galera)
+ - [Linode NodeBalancers](/content/platform/nodebalancer/)
+ - [Using Nginx for Proxy Services and Software Load Balancing](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+ - [MySQL Master-Master Replication](/content/databases/mysql/mysql-master-master-replication)
+ - [MariaDB Clusters with Galera](/content/databases/mariadb/clustering-with-mariadb-and-galera)

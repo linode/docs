@@ -16,14 +16,14 @@ external_resources:
  - '[Nagios Home Page](http://www.nagios.org/)'
  - '[Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)'
  - '[Nagios Library](http://library.nagios.com/)'
- - '[Nagios Security](http://nagios.sourceforge.net/docs/3_0/cgisecurity.html)'
+ - '[Nagios Security](http://nagios.sourceforge.net/content/3_0/cgisecurity.html)'
 ---
 
 Nagios is a monitoring tool that allows you to monitor services on a single server or a pool of servers. It can keep an eye on a broad range of network services, including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
 ## Install Nagios
 
-Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Getting Started guide](/docs/getting-started/). You also need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-12-04-precise-pangolin) set up on your Linode.
+Before installing Nagios, make sure your hostname is properly set by following the steps outlined in the [Getting Started guide](/content/getting-started/). You also need to have a functioning [LAMP stack](/content/lamp-guides/ubuntu-12-04-precise-pangolin) set up on your Linode.
 
 Now you're ready to install Nagios. Here's how:
 
@@ -48,7 +48,7 @@ You can now access the Nagios web interface for administration and reporting by 
 
  {: .note }
 >
-> The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+> The above example does not use SSL, and your password will be sent unencrypted. If you want to use encryption, you will need to generate (or purchase) and install an SSL certificate. Steps for generating and using your own certificate can be found in our [SSL guide](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 ## Configure Notifications
 
@@ -81,7 +81,7 @@ Nagios can send alerts by email, but to receive them you'll need to add your ema
 
     {:.note}
     >
-    > To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/docs/tools-reference/linux-users-and-groups), edit the `define contactgroup` section.
+    > To send email alerts to more than one user, duplicate the `define contact` section for as many users as you want. Or, to configure notifications to a [group](/content/tools-reference/linux-users-and-groups), edit the `define contactgroup` section.
 
 3.  Save the changes to the configuration file by pressing `Control + x` and then pressing `y`.
 4.  Restart Nagios to apply the changes:

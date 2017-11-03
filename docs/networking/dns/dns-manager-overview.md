@@ -13,9 +13,9 @@ published: 'Thursday, July 16th, 2009'
 title: DNS Manager Overview
 ---
 
-The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
+The *DNS Manager* is a comprehensive DNS management interface available within the [Linode Manager](https://manager.linode.com) that allows you to add DNS records for all of your domain names. This guide covers the use of Linode's DNS Manager and basic domain zone setup. For an introduction to DNS in general, please see our [Introduction to DNS Records](/content/networking/dns/introduction-to-dns-records) guide.
 
-![DNS Manager Overview](/docs/assets/dns-manager-overview.png)
+![DNS Manager Overview](/content/assets/dns-manager-overview.png)
 
 ## Getting Started
 
@@ -33,8 +33,8 @@ When setting up any domain name on your Linode, make sure you perform the follow
 1.  Register (purchase) a domain name, if you haven't already.
 2.  [Set your domain name to use Linode's name servers](#set-domain-names-to-use-linodes-name-servers). You'll need to do this on your domain registrar's website and then wait up to 24 hours for the change to take effect.
 3.  Use the DNS Manager to [Add a domain zone](#add-a-domain-zone), and then start [adding some basic DNS records](#add-records).
-4.  [Set reverse DNS](/docs/networking/dns/setting-reverse-dns).
-5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/docs/networking/dns/common-dns-configurations).
+4.  [Set reverse DNS](/content/networking/dns/setting-reverse-dns).
+5.  If you have any special DNS needs, such as using a third-party email server, add additional DNS records to [create a custom configuration](/content/networking/dns/common-dns-configurations).
 
 ## Set Domain Names to Use Linode's Name Servers
 
@@ -56,7 +56,7 @@ See the instructions on your domain name registrar's website for more informatio
 
 Log in to the [Linode Manager](https://manager.linode.com) and click the **DNS Manager** tab. It should resemble this:
 
-![The DNS Manger](/docs/assets/1112-dns1-2.png)
+![The DNS Manger](/content/assets/1112-dns1-2.png)
 
 1.  All of your domain zones are listed here. A *domain zone*, essentially synonymous with the term "domain," is a collection of DNS records for a single domain name. Click the name of a domain zone to add or edit DNS records within that zone.
 2.  If you have a zone that can be exported from a server or another hosting provider, click **Import a zone** to import it.
@@ -78,7 +78,7 @@ This video runs through the process of adding a new domain zone:
 
 1.  From the DNS Manager tab, select the **Add a domain zone** link.
 
-    [![This page lets you add a domain zone.](/docs/assets/1120-dns8.png)](/docs/assets/1332-hosting-1.png)
+    [![This page lets you add a domain zone.](/content/assets/1120-dns8.png)](/content/assets/1332-hosting-1.png)
 
 2.  Enter the domain name in the **Domain** field. An example is shown above.
 3.  Enter an administrator's email address in the **SOA Email** field.
@@ -103,9 +103,9 @@ This video runs through the process of adding a new domain zone:
     >     2600:3c03::a
     >     2a01:7e00::a
 
-If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview#add-records) section for instructions.
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/content/networking/dns/dns-manager-overview#add-records) section for instructions.
 
-[![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+[![This page lets you add specific DNS records.](/content/assets/1121-dns9.png)](/content/assets/1121-dns9.png)
 
 
 If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now.
@@ -116,7 +116,7 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 
 1.  Select a domain zone from within your DNS Manager.
 
-	[![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
+	[![This page has seven sections showing seven different types of records: SOA, NS, MX, and A/AAAA, CNAME, TXT, and SRV. You can adjust the SOA record by clicking the "Settings" link in that section. The next six sections each have a corresponding link that lets you add a new record of that type. For example, to add an NS record, click the "Add a new NS record" link. There are similar links for MX, A, CNAME, TXT, and SRV records.](/content/assets/1121-dns9.png)](/content/assets/1121-dns9.png)
 
 2.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, and then click the **Add new [DNS] record** link.
 
@@ -124,10 +124,10 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 	>
 	> The exact form fields will vary depending on the type of DNS record you select.
 
-    ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
+    ![This page allows you to create a new A/AAAA record.](/content/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
-4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#find-the-ip-address-of-your-linode).
+4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/content/getting-started#find-the-ip-address-of-your-linode).
 5.  From the **TTL** menu, select a time interval. *TTL*, which stands for "time to live," controls how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 6.  Click **Save Changes**.
 
@@ -152,7 +152,7 @@ Here's how to import a zone file:
 
 1.  Select **Import a zone**, from the DNS Manager tab.
 
-	[![This page lets you import a domain zone.](/docs/assets/1658-axfr_sm.png)](/docs/assets/1659-axfr.png)
+	[![This page lets you import a domain zone.](/content/assets/1658-axfr_sm.png)](/content/assets/1659-axfr.png)
 
 2.  Enter the domain name in the **Domain** field, as shown in the example above.
 3.  Enter the name server in the **Remote Nameserver** field.
@@ -174,7 +174,7 @@ Here's how to clone an existing zone:
 1.  Click **Clone an existing zone** from your DNS Manager tab.
 2.  Select a zone from the **Clone this zone** menu.
 
-    [![This page lets you clone a domain zone.](/docs/assets/1119-dns7.png)](/docs/assets/1119-dns7.png)
+    [![This page lets you clone a domain zone.](/content/assets/1119-dns7.png)](/content/assets/1119-dns7.png)
 
 3.  Enter the name of the new zone in the **Into this zone** field.
 4.  Click **Clone Zone**.
@@ -195,7 +195,7 @@ The DNS Manager allows you to view the contents of a domain zone file. This is e
 
 You can view the contents of the domain zone file through the DNS Manager tab of your Linode Manager. From there, select the **Zone file** link to the far right column of your chosen domain's name. An example of the file is provided below.
 
-[![This page shows a text-only dump of the DNS zone file for this domain.](/docs/assets/1115-dns3.png)](/docs/assets/1115-dns3.png)
+[![This page shows a text-only dump of the DNS zone file for this domain.](/content/assets/1115-dns3.png)](/content/assets/1115-dns3.png)
 
 ### Remove Domain Zones
 
@@ -203,7 +203,7 @@ If one of your domain names has expired or if you want to start hosting it on an
 
 Select the **Remove** link next to the zone you want to remove.
 
-[![This page lets you remove a DNS zone.](/docs/assets/1117-dns5.png)](/docs/assets/1117-dns5.png)
+[![This page lets you remove a DNS zone.](/content/assets/1117-dns5.png)](/content/assets/1117-dns5.png)
 
 Click **Yes, delete this sucker** to permanently delete the zone, including all associated records.
 
@@ -232,7 +232,7 @@ Having problems with your DNS records? We recommend reviewing this section to he
 
 If you've just made a DNS change and aren't seeing it reflected yet, try waiting 48 hours. DNS updates will take effect, or *propagate*, within the time period set by your zone file's [TTL](#set-the-time-to-live-or-ttl). In some cases the new information may not be reflected for up to 48 hours.
 
-While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/docs/networking/dns/previewing-websites-without-dns).
+While you can't control DNS caching at every point on the Internet, you do have control over your web browser. Try holding down the *Shift* key or the *Control* key (depending on your browser) while you refresh the page to bypass your browser's cache of the old DNS data. You can also try bringing up your site in an alternate browser, or [Previewing Your Website Without DNS](/content/networking/dns/previewing-websites-without-dns).
 
 ### Set the Time To Live or TTL
 
@@ -278,4 +278,4 @@ If you're on a Windows machine, or you're more comfortable using a web-based too
 
 ##Next Steps
 
-Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.
+Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/content/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/content/networking/dns/common-dns-configurations) guide.

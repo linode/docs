@@ -20,18 +20,18 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![How to Create a Docker Swarm Manager and Nodes on Linode](/docs/assets/docker/create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
+![How to Create a Docker Swarm Manager and Nodes on Linode](/content/assets/docker/create-a-docker-swarm-manager.jpg "How to Create a Docker Swarm Manager and Nodes on Linode")
 
 ## Before You Begin
 
 1.  Completing this guide will require at least two Linodes located in the same datacenter. The instructions in this guide were written for Ubuntu 16.04, but other distributions can be used; the Linodes do not need to use the same distribution.
 
-2.  For each Linode, complete the steps in our [Getting Started](/docs/getting-started) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account.
+2.  For each Linode, complete the steps in our [Getting Started](/content/getting-started) guide for setting your Linode's hostname and timezone. Follow the steps in our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account.
 
-3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
+3. Install Docker on each Linode. See our [Installing Docker and Deploying a LAMP Stack](/content/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide or the [Docker installation docs](https://docs.docker.com/engine/installation/) for more information.
 
 {: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 Scale up the power of Docker by creating a cluster of Docker hosts, called a Docker Swarm. You need one Linode to serve as a Docker Swarm Manager and a few Docker hosts to join the Swarm as Nodes.
 
@@ -43,19 +43,19 @@ The Docker Swarm Manager’s purpose is to receive commands on behalf of the clu
 
 In this guide, we create a single Swarm Manager. If your goal is high-availability, you can create multiple managers.
 
-1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/docs/networking/linux-static-ip-configuration):
+1.  Log in to the Linode you've chosen for Swarm manager and initialize the manager. Replace `PUBLIC_IP` in this example with your Linode's [public IP address](/content/networking/linux-static-ip-configuration):
 
         docker swarm init --advertise-addr PUBLIC_IP
 
     Docker responds with the command necessary for the nodes to join the Swarm:
 
-    ![Command to join Docker Swarm](/docs/assets/docker/dockerswarm-join.jpg "Command to join Docker Swarm")
+    ![Command to join Docker Swarm](/content/assets/docker/dockerswarm-join.jpg "Command to join Docker Swarm")
 
 2.  Use `docker info` to verify that your Swarm is running and active:
 
         docker info
 
-    ![Swarm is running and active](/docs/assets/docker/dockerswarm-active.jpg "Swarm is running and active")
+    ![Swarm is running and active](/content/assets/docker/dockerswarm-active.jpg "Swarm is running and active")
 
 
 ## Join Nodes to the Manager
@@ -74,7 +74,7 @@ Where `TOKEN` is the long string of characters presented to you when you initial
 
     The output shows that the node has joined the swarm as a worker. You now have a small Docker Swarm cluster, with one manager and one node:
 
-    ![Node has joined the swarm as a worker](/docs/assets/docker/swarm-joined-as-worker.jpg "Node has joined the swarm as a worker")
+    ![Node has joined the swarm as a worker](/content/assets/docker/swarm-joined-as-worker.jpg "Node has joined the swarm as a worker")
 
 2.  Repeat Step 1 to join as many nodes to the Swarm as needed.
 

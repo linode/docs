@@ -14,14 +14,14 @@ title: 'Using Rdiff-backup with SSHFS'
 external_resources:
  - '[Rdiff-backup Documentation](http://rdiff-backup.nongnu.org/docs.html)'
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
- - '[Linux Security Basics](/docs/security/basics)'
+ - '[Linux Security Basics](/content/security/basics)'
 ---
 
 `Rdiff-backup` is an open source backup system that performs incremental, differential backups on a wide variety of platforms. Many people use `rdiff-backup` on both sides of a backup operation, but this can be problematic when different operating systems or `rdiff-backup` versions are in use. This guide will show you how to use `rdiff-backup` in combination with `sshfs` to securely mount a remote filesystem on your Linux backup server, eliminating the need to run `rdiff-backup` on the server being backed up.
 
 Please note that this method of performing remote backups depends heavily upon the security of your backup server, as your backup user will have SSH access to the remote host. The remote host's filesystem will be mounted read-only on the backup server as a basic safeguard, but this does not offer strong protection if a malicious individual were to compromise the backup user's account (or the root account on the backup server).
 
-We assume the remote host to be backed up has an SSH daemon installed, and that you can log into it from the backup server. If you haven't already done so, please review the steps outlined in our [getting started guide](/docs/getting-started/) before following these instructions. All configuration will be performed through the terminal; please make sure you're logged into your backup server as root via SSH.
+We assume the remote host to be backed up has an SSH daemon installed, and that you can log into it from the backup server. If you haven't already done so, please review the steps outlined in our [getting started guide](/content/getting-started/) before following these instructions. All configuration will be performed through the terminal; please make sure you're logged into your backup server as root via SSH.
 
 ## Install Required Packages
 

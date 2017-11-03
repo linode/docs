@@ -13,16 +13,16 @@ published: 'Tuesday, December 15th, 2009'
 title: Schedule Tasks with Cron
 external_resources:
  - '[Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)'
- - '[Administration Basics](/docs/using-linux/administration-basics)'
+ - '[Administration Basics](/content/using-linux/administration-basics)'
 ---
 
 `cron` is a classic utility found on Linux and UNIX systems for running tasks at predetermined intervals. Systems administrators and developers of Linux applications use `cron` for automating and managing recurring tasks.
 
-Since `cron` is a standard component of modern Linux systems, this documentation is applicable regardless of your choice in distribution. If you are new to Linode we strongly recommend consulting the [getting started guide](/docs/getting-started/) and the [beginners guide](/docs/beginners-guide) to facilitate the setup and configuration of your server. If you're new to using Linux in general, you may find the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) helpful.
+Since `cron` is a standard component of modern Linux systems, this documentation is applicable regardless of your choice in distribution. If you are new to Linode we strongly recommend consulting the [getting started guide](/content/getting-started/) and the [beginners guide](/content/beginners-guide) to facilitate the setup and configuration of your server. If you're new to using Linux in general, you may find the [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts) helpful.
 
 Before we get started, there are a couple of terms associated with `cron` that are non-obvious. First, the job or **cronjob** refers to the task, script, or application that `cron` runs. Second, **crontab** refers to each user's list of cronjobs.
 
-![Title graphic](/docs/assets/schedule_tasks_with_cron_smg.png)
+![Title graphic](/content/assets/schedule_tasks_with_cron_smg.png)
 
 ## Using crontab
 
@@ -46,7 +46,7 @@ We'll explore each aspect of these commands later in this document. To edit the 
 
     crontab -e
 
-This will open a [text editor](/docs/tools-reference/linux-system-administration-basics/#edit-text) and allow you to edit the `crontab`.
+This will open a [text editor](/content/tools-reference/linux-system-administration-basics/#edit-text) and allow you to edit the `crontab`.
 
 ## Basic cron Use
 

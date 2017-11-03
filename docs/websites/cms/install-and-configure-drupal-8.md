@@ -15,13 +15,13 @@ title: Install and Configure Drupal 8
 
 Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/) content management system. This guide demonstrates how to install Drupal 8 on your Linode running Debian or Ubuntu.
 
-![Install and Configure Drupal 8](/docs/assets/install-and-configure-drupal-8.png)
+![Install and Configure Drupal 8](/content/assets/install-and-configure-drupal-8.png)
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access, remove unnecessary network services and create firewall rules for your web server; you may need to make addional firewall exceptions for your specific application.
 
 3.  Update your system:
 
@@ -29,9 +29,9 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 4.  Install and configure a LAMP stack. You can do this in one of two ways:
 
-    *  See our [Hosting a Website](/docs/websites/hosting-a-website) guide to configure each component manually.
+    *  See our [Hosting a Website](/content/websites/hosting-a-website) guide to configure each component manually.
 
-    *  Deploy using our LAMP [StackScript](/docs/platform/stackscripts).
+    *  Deploy using our LAMP [StackScript](/content/platform/stackscripts).
 
 ## Download and Prepare Drupal 8
 
@@ -115,15 +115,15 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 1.  Go to your Linode's domain or IP address in a web browser. This will show you the first step of Drupal 8's web configuration. Choose your language and proceed to the next page.
 
-    [![Drupal 8 choose language.](/docs/assets/drupal-choose-language-small.png)](/docs/assets/drupal-choose-language.png)
+    [![Drupal 8 choose language.](/content/assets/drupal-choose-language-small.png)](/content/assets/drupal-choose-language.png)
 
 2.  Choose whether you want a Standard or Minimal installation profile.
 
-    [![Drupal 8 choose installation profile.](/docs/assets/drupal-choose-installation-profile-small.png)](/docs/assets/drupal-choose-installation-profile.png)
+    [![Drupal 8 choose installation profile.](/content/assets/drupal-choose-installation-profile-small.png)](/content/assets/drupal-choose-installation-profile.png)
 
-3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/docs/websites/hosting-a-website#create-a-database) with a MySQL or MariaDB database.
+3.  Complete the database configuration using the DB name, username and password you created when [setting up your LAMP stack](/content/websites/hosting-a-website#create-a-database) with a MySQL or MariaDB database.
 
-    [![Drupal 8 database configuration.](/docs/assets/drupal-database-configuration-small.png)](/docs/assets/drupal-database-configuration.png)
+    [![Drupal 8 database configuration.](/content/assets/drupal-database-configuration-small.png)](/content/assets/drupal-database-configuration.png)
 
     {: .note }
     >
@@ -131,11 +131,11 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 4.  After Drupal 8 installs your site, you'll be shown a site configuration page where you must create the admin user for your website. Do not use the same password that you used for your database.
 
-    [![Drupal 8 site configuration.](/docs/assets/drupal-site-configuration-small.png)](/docs/assets/drupal-site-configuration.png)
+    [![Drupal 8 site configuration.](/content/assets/drupal-site-configuration-small.png)](/content/assets/drupal-site-configuration.png)
 
     Next, you'll be taken to the administrative dashboard which will say that Drupal 8 was installed successfully.
 
-    ![Drupal 8 installed welcome.](/docs/assets/drupal-installed-welcome.png)
+    ![Drupal 8 installed welcome.](/content/assets/drupal-installed-welcome.png)
 
 5.  Now that Drupal 8 is finished writing to `settings.php` and `services.yaml`, you can restore their default permissions:
 

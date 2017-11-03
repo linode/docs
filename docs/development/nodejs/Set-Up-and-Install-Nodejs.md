@@ -19,7 +19,7 @@ external_resources:
 
 [Node.js](https://nodejs.org/) is a cross-platform runtime environment for server-side JavaScript applications. Node.js uses [V8](https://developers.google.com/v8/), Google's JavaScript engine, which is also found in Chromium and Chrome. Depending on the use case, Node.js can supplement or replace traditional web servers and tools such as Apache, nginx, or PHP.
 
-![A Node.js Installation Crash Course](/docs/assets/nodejs-installation-crash-course.png "A Node.js Installation Crash Course")
+![A Node.js Installation Crash Course](/content/assets/nodejs-installation-crash-course.png "A Node.js Installation Crash Course")
 
 Node.js can be installed and maintained multiple ways across the various platforms offered. [Multiple releases](https://github.com/nodejs/node#release-types) of Node.js are available, along with multiple versions within the [LTS branch](https://github.com/nodejs/LTS/#example). The decision about which of these versions to install can quickly become confusing, so this guide lists the main choices for installing Node.js on Linux, and some basic reasons why you may or may not want to use a certain method.
 

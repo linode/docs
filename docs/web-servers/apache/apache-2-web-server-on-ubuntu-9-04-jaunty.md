@@ -16,7 +16,7 @@ title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/docs/lamp-guides/ubuntu-9-04-jaunty).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 9.04 (Jaunty). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/content/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 9.04](/content/lamp-guides/ubuntu-9-04-jaunty).
 
 Install Apache 2
 ----------------
@@ -149,7 +149,7 @@ To install one of these modules use the command:
 
     apt-get install [module-name]
 
-Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
+Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/content/2.0/mod/) for more information regarding the configuration of specific modules.
 
 Configuration Options
 ---------------------
@@ -170,7 +170,7 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP Guide for Debian Lenny](/docs/lamp-guides/debian-5-lenny) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian Lenny](/content/lamp-guides/debian-5-lenny) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice the vast majority of configuration options will probably be located in site-specific virtual host configuration files.
 
@@ -267,6 +267,6 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
+- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/content/2.0/)
 - [URL Rewriting on HTML Source](http://www.yourhtmlsource.com/sitemanagement/urlrewriting.html)
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
+- [Apache Configuration](/content/web-servers/apache/configuration/)

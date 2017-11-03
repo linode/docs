@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---
 
-![AskBot with LetsEncrypt on Ubuntu](/docs/assets/AskBot.jpg)
+![AskBot with LetsEncrypt on Ubuntu](/content/assets/AskBot.jpg)
 
 ## What is AskBot?
 
@@ -29,18 +29,18 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
 	     sudo apt-get update && sudo apt-get upgrade
 
-4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide.
+4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/content/networking/dns/dns-manager-overview#add-records) guide.
 
 {: .note}
-> Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install Dependencies and Create a Database
 
@@ -163,7 +163,7 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
         	sudo systemctl daemon-reload
         	sudo systemctl restart nginx
 
-5.  Use [Letsencrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Letsencrypt](/content/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
 
 	       sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
@@ -229,30 +229,30 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 1.  Open a web browser and navigate to your Linode's domain name:
 
-    ![access askbot on web browser](/docs/assets/askbot-1.png)
+    ![access askbot on web browser](/content/assets/askbot-1.png)
 
 2.  Click on **create a password-protected account** to create an Admin Account:
 
-    ![create an askbot admin account](/docs/assets/askbot-2.png)
+    ![create an askbot admin account](/content/assets/askbot-2.png)
 
 {: .note}
 >  The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
 
 3.  Choose an admin username and password:
 
-    ![create a admin username and password](/docs/assets/askbot-3.png)
+    ![create a admin username and password](/content/assets/askbot-3.png)
 
 4.  Set your domain name with AskBot using base url settings by clicking **APP_URL**:
 
-    ![set your domain name to askbot base url settings](/docs/assets/askbot-4.png)
+    ![set your domain name to askbot base url settings](/content/assets/askbot-4.png)
 
 5.  Add your domain name in the place of Base URL box and click **Save**:
 
-    ![add your domain name to askbot base url settings](/docs/assets/askbot-5.png)
+    ![add your domain name to askbot base url settings](/content/assets/askbot-5.png)
 
 6.  AskBot is now ready to run. Access the AskBot admin interface and customize it according to your needs:
 
-    ![final access to askbot forum](/docs/assets/askbot-6.png)
+    ![final access to askbot forum](/content/assets/askbot-6.png)
 
 ## Next Steps
 

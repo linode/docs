@@ -13,15 +13,15 @@ published: 'Monday, October 26th, 2009'
 title: Using SSHFS To Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
- - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/tools-reference/ssh/use-public-key-authentication-with-ssh)'
+ - '[Linux Security Basics](/content/security/basics)'
+ - '[Use Public Key Authentication with SSH](/content/tools-reference/ssh/use-public-key-authentication-with-ssh)'
 ---
 
-![SSHFS](/docs/assets/sshfs_mount_remote.png)
+![SSHFS](/content/assets/sshfs_mount_remote.png)
 
 # Using SSHFS To Mount Remote Directories
 
-SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will get you started with SSHFS on your Linode. SSHFS can eliminate the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH daemon running on your Linode. If you do not have the SSH daemon visit [Securing Your Server](/docs/security/securing-your-server) before returning to this guide.
+SSHFS (Secure Shell FileSystem), is a tool that allows users to securely access remote filesystems over the SSH protocol. This guide will get you started with SSHFS on your Linode. SSHFS can eliminate the need to use FTP/SFTP to transfer files to and from a remote server. For this guide you will need the SSH daemon running on your Linode. If you do not have the SSH daemon visit [Securing Your Server](/content/security/securing-your-server) before returning to this guide.
 For this guide we used two Ubuntu 16.10 systems, but `sshfs` can be installed on any Linode image.
 
 
@@ -44,7 +44,7 @@ Issue the following command to install sshfs:
 If you wish to use a normal user account to mount file systems using SSHFS, you'll need to add the user to the `fuse` group first.
 
 {: .note}
-> If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/docs/tools-reference/linux-users-and-groups) for a brief introduction.
+> If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/content/tools-reference/linux-users-and-groups) for a brief introduction.
 
 To check if the `fuse` group exists run:
 
@@ -122,4 +122,4 @@ This entry would mount the home directory for "user" on the server "usersLinode.
 
 ### Next Steps
 
-After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/docs/tools-reference/file-transfer/filezilla), and see what method you prefer.
+After completing this guide you will be able to transfer files to a remote server from your local machine, without using an FTP client. If you still want to learn how to use an FTP client, check out our guide: [Transfer Files with FileZilla](/content/tools-reference/file-transfer/filezilla), and see what method you prefer.

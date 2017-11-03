@@ -17,7 +17,7 @@ external_resources:
  - '[Github Guides](https://guides.github.com/)'
 ---
 
-![Git Started Today](/docs/assets/git_getting_started.png)
+![Git Started Today](/content/assets/git_getting_started.png)
 
 # What is Git?
 
@@ -25,7 +25,7 @@ Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki
 
 ## Configure Git
 
-After you [install Git](/docs/development/version-control/how-to-install-git-on-mac-and-windows), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
+After you [install Git](/content/development/version-control/how-to-install-git-on-mac-and-windows), configure it for first time use using `git config`, a built-in tool that obtains and sets configuration variables. These configuration variables are located in three different places on a GNU/Linux system:
 
  - `/etc/gitconfig` - stores the configuration information for all system users and their respective repositories.
  - `~/.gitconfig` - stores user-specific configuration files on the system.

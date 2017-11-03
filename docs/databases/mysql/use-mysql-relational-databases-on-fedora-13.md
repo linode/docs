@@ -16,7 +16,7 @@ title: Use MySQL Relational Databases on Fedora 13
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 13 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 13 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 System Configuration
 --------------------
@@ -82,7 +82,7 @@ If you made any changes to MySQL's configuration, issue the following command to
 
     service mysqld restart
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/content/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 

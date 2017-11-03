@@ -23,8 +23,8 @@ Longview for Apache is a Longview App. The Longview Apache tab appears in the Li
 
 Prerequisites:
 
--   Install and start [Apache](/docs/web-servers/apache)
--   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
+-   Install and start [Apache](/content/web-servers/apache)
+-   Install the [Longview client](/content/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -46,13 +46,13 @@ Once you see this successful message, the Longview Apache App should automatical
 
 If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1451-longview_apache_popup_crop.png)](/docs/assets/1451-longview_apache_popup_crop.png)
+[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/content/assets/1451-longview_apache_popup_crop.png)](/content/assets/1451-longview_apache_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
 To enable the Apache Longview app manually, follow these steps on your Linode via SSH:
 
-1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the [apache.org](http://httpd.apache.org/docs/2.2/mod/mod_status.html) instructions at the link. Or, on Debian and Ubuntu systems, run this command:
+1.  Make sure **mod\_status** is enabled for Apache (it should be by default). You can follow the [apache.org](http://httpd.apache.org/content/2.2/mod/mod_status.html) instructions at the link. Or, on Debian and Ubuntu systems, run this command:
 
         sudo a2enmod status
 
@@ -106,11 +106,11 @@ To see the output for the Longview Apache App:
 
 Click the image for a full-size view.
 
-[![The Longview Apache App.](/docs/assets/1453-longview_apache_stats_sm.png)](/docs/assets/1452-longview_apache_stats.png)
+[![The Longview Apache App.](/content/assets/1453-longview_apache_stats_sm.png)](/content/assets/1452-longview_apache_stats.png)
 
 You'll see the current version of Apache listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview Apache App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/content/platform/longview/longview#using-the-interface). The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -137,19 +137,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/uptime/longview/#disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/content/uptime/longview/#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/uptime/longview/#process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/content/uptime/longview/#process-explorer-tab).
 
 ## Troubleshooting
 
@@ -161,7 +161,7 @@ By default Longview uses port 80 for its automatic configuration. In the event y
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1451-longview_apache_popup_crop.png)](/docs/assets/1451-longview_apache_popup_crop.png)
+[![Longview has detected Apache running on this server but was unable to access the server status page. Would you like to attempt to automatically configure mod\_status? This will require reloading Apache to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/content/assets/1451-longview_apache_popup_crop.png)](/content/assets/1451-longview_apache_popup_crop.png)
 
 This indicates that Longview can't locate the Apache status page. In turn, this could indicate that either:
 
@@ -220,7 +220,7 @@ To fix this, follow these steps:
 
         apachectl restart
 
-2.  Make sure `mod_status` is enabled. See the [Apache website](http://httpd.apache.org/docs/2.2/mod/mod_status.html#enable) for details. You can also check the output of the following command:
+2.  Make sure `mod_status` is enabled. See the [Apache website](http://httpd.apache.org/content/2.2/mod/mod_status.html#enable) for details. You can also check the output of the following command:
 
         apachectl -M | grep status
 

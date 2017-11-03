@@ -16,12 +16,12 @@ title: Install Subsonic Media Server on Ubuntu or Debian to Stream Music Through
 
 ## What is Subsonic?
 
-[Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+[Subsonic](http://subsonic.org) is an easy-to-use media streaming service with a user-friendly interface, and the ability to share music and video with multiple users. A Subsonic media server could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode running Debian or Ubuntu.
 
 {: .note }
->The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ##Prepare Your System
 
@@ -120,15 +120,15 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
     If you’re using Subsonic’s default SSL certificate, you’ll see a message like the following. You can safely "proceed anyway":
 
-    ![Subsonic untrusted website](/docs/assets/untrusted-connection.png)
+    ![Subsonic untrusted website](/content/assets/untrusted-connection.png)
 
 3.  The first time you access your Subsonic server in your browser, you will see the following:
 
-    ![First time Subsonic access](/docs/assets/subsonic-firstlogin.png)
+    ![First time Subsonic access](/content/assets/subsonic-firstlogin.png)
 
 4.  As instructed, you can log in with admin/admin, or use the link to bring you to Subsonic, where you will be greeted with the *Getting started* screen:
 
-    ![First time Subsonic access](/docs/assets/subsonic-gettingstarted.png)
+    ![First time Subsonic access](/content/assets/subsonic-gettingstarted.png)
 
 5. Create a password for your admin account. You can also set up any other accounts at this time.
 
@@ -138,11 +138,11 @@ This guide explains how to set up [Subsonic](http://subsonic.org) on a Linode ru
 
 6.  Click on the **Media folders** link. Here you will need to point Subsonic to where you wish to store your music. If you decide to store your music files in `/var/music`, Subsonic's default directory, you can skip this step. Once you've pointed Subsonic to the correct directory and uploaded your music, you can press **Scan media folders now**. Subsonic will then create a database of music files.
 
-    ![First time Subsonic access](/docs/assets/subsonic-foldersetup.png)
+    ![First time Subsonic access](/content/assets/subsonic-foldersetup.png)
 
 &nbsp;
 
-[![The Subsonic Interface.](/docs/assets/subsonic-setup_small.png)](/docs/assets/subsonic-setup.png)
+[![The Subsonic Interface.](/content/assets/subsonic-setup_small.png)](/content/assets/subsonic-setup.png)
 
 You have now installed and configured Subsonic! To learn more about the many ways to customize your Subsonic setup, check out their [website](http://subsonic.org/).
 

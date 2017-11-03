@@ -16,7 +16,7 @@ deprecated: true
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Fedora 12 Linode.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [getting started guide](/content/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
 Basic System Configuration
 --------------------------
@@ -128,7 +128,7 @@ After reviewing your configuration for potential security issues, issue the foll
     ln -s /etc/nginx/sites-available/www.example.com
     service nginx restart
 
-You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
+You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (PHP will not work yet). Please note that this will require an [entry in DNS](/content/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
 
 Configure spawn-fcgi
 --------------------
@@ -136,10 +136,10 @@ Configure spawn-fcgi
 Issue the following command sequence to download scripts to control spawn-fcgi and php-fastcgi, set privileges, make the init script run at startup, and launch it for the first time:
 
     cd /opt
-    wget -O php-fastcgi-rpm.sh http://www.linode.com/docs/assets/649-php-fastcgi-rpm.sh
+    wget -O php-fastcgi-rpm.sh http://www.linode.com/content/assets/649-php-fastcgi-rpm.sh
     mv php-fastcgi-rpm.sh /usr/bin/php-fastcgi
     chmod +x /usr/bin/php-fastcgi
-    wget -O php-fastcgi-init-rpm.sh http://www.linode.com/docs/assets/650-php-fastcgi-init-rpm.sh
+    wget -O php-fastcgi-init-rpm.sh http://www.linode.com/content/assets/650-php-fastcgi-init-rpm.sh
     mv php-fastcgi-init-rpm.sh /etc/rc.d/init.d/php-fastcgi
     chmod +x /etc/rc.d/init.d/php-fastcgi
     chkconfig --add php-fastcgi
@@ -167,5 +167,5 @@ You may wish to consult the following resources for additional information on th
 - [The nginx Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Installing Nginx on Fedora 12](/docs/web-servers/nginx/installation/fedora-12)
-- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [Installing Nginx on Fedora 12](/content/web-servers/nginx/installation/fedora-12)
+- [Basic Ngnix Configuration](/content/websites/nginx/basic-nginx-configuration)

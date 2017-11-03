@@ -13,35 +13,35 @@ title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
 contributor:
   name: Florent Houbart
 external_resources:
-- '[YARN Command Reference](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html)'
-- '[HDFS Shell Documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)'
-- '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/core-default.xml)'
-- '[hdfs-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)'
-- '[mapred-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml)'
-- '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
+- '[YARN Command Reference](https://hadoop.apache.org/content/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html)'
+- '[HDFS Shell Documentation](https://hadoop.apache.org/content/current/hadoop-project-dist/hadoop-common/FileSystemShell.html)'
+- '[core-site.xml properties](https://hadoop.apache.org/content/current/hadoop-project-dist/hadoop-common/core-default.xml)'
+- '[hdfs-site.xml properties](https://hadoop.apache.org/content/current/hadoop-project-dist/hadoop-hdfs/hdfs-default.xml)'
+- '[mapred-site.xml properties](https://hadoop.apache.org/content/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/mapred-default.xml)'
+- '[core-site.xml properties](https://hadoop.apache.org/content/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
 ----
 
-![Hadoop_YARN](/docs/assets/spark_hadoop_yarn.jpg)
+![Hadoop_YARN](/content/assets/spark_hadoop_yarn.jpg)
 
 ## What is Hadoop?
 
 Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
 
-![How to Install and Set Up a 3-Node Hadoop Cluster](/docs/assets/hadoop/hadoop-1-logo.png "How to Install and Set Up a 3-Node Hadoop Cluster")
+![How to Install and Set Up a 3-Node Hadoop Cluster](/content/assets/hadoop/hadoop-1-logo.png "How to Install and Set Up a 3-Node Hadoop Cluster")
 
 ## Before You Begin
 
-1.  Follow the [Getting Started](/docs/getting-started) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
+1.  Follow the [Getting Started](/content/getting-started) guide to create three (3) Linodes. They'll be referred to throughout this guide as **node-master**, **node1** and **node2**. It's recommended that you set the hostname of each Linode to match this naming convention.
 
     Run the steps in this guide from the **node-master** unless otherwise specified.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server) guide to harden the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
+2.  Follow the [Securing Your Server](/content/security/securing-your-server) guide to harden the three servers. Create a normal user for the install, and a user called `hadoop` for any Hadoop daemons. Do **not** create SSH keys for `hadoop` users. SSH keys will be addressed in a later section.
 
-3.  Install the JDK using the appropriate guide for your distribution, [Debian](/docs/development/install-java-on-debian), [CentOS](/docs/development/install-java-on-centos) or [Ubuntu](/docs/development/install-java-on-ubuntu-16-04), or grab the latest JDK from Oracle.
+3.  Install the JDK using the appropriate guide for your distribution, [Debian](/content/development/install-java-on-debian), [CentOS](/content/development/install-java-on-centos) or [Ubuntu](/content/development/install-java-on-ubuntu-16-04), or grab the latest JDK from Oracle.
 
 4.  The steps below use example IPs for each node. Adjust each example according to your configuration:
 
@@ -51,7 +51,7 @@ Hadoop is an open-source Apache project that allows creation of parallel process
 
       {: .note}
       >
-      > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+      > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
 
 ## Architecture of a Hadoop Cluster
 
@@ -275,7 +275,7 @@ Four types of resource allocations need to be configured properly for the cluste
 
 The relationship between all those properties can be seen in the following figure:
 
-![Schema of memory allocation properties](/docs/assets/hadoop/hadoop-2-memory-allocation-new.png "Schema of memory allocation properties")
+![Schema of memory allocation properties](/content/assets/hadoop/hadoop-2-memory-allocation-new.png "Schema of memory allocation properties")
 
 ### Sample Configuration for 2GB Nodes
 
@@ -416,7 +416,7 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
 2. You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:50070 and you'll get a user-friendly monitoring console.
 
-![Screenshot of HDFS Web UI](/docs/assets/hadoop/hadoop-3-hdfs-webui-wide.png "Screenshot of HDFS Web UI")
+![Screenshot of HDFS Web UI](/content/assets/hadoop/hadoop-3-hdfs-webui-wide.png "Screenshot of HDFS Web UI")
 
 ### Put and Get Data to HDFS
 
@@ -453,7 +453,7 @@ Let's use some textbooks from the [Gutenberg project](https://www.gutenberg.org/
 
        hdfs dfs -cat books/alice.txt
 
-There are many commands to manage your HDFS. For a complete list, you can look at the [Apache HDFS shell documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html), or print help with:
+There are many commands to manage your HDFS. For a complete list, you can look at the [Apache HDFS shell documentation](https://hadoop.apache.org/content/current/hadoop-project-dist/hadoop-common/FileSystemShell.html), or print help with:
 
     hdfs dfs -help
 
@@ -483,11 +483,11 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
        yarn application -list
 
-    To get all available parameters of the `yarn` command, see [Apache YARN documentation](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html).
+    To get all available parameters of the `yarn` command, see [Apache YARN documentation](https://hadoop.apache.org/content/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html).
 
 2. As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088 and browse the UI:
 
-    ![Screenshot of YARN Web UI](/docs/assets/hadoop/hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
+    ![Screenshot of YARN Web UI](/content/assets/hadoop/hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
 
 ### Submit MapReduce Jobs to YARN
 
@@ -513,5 +513,5 @@ Yarn jobs are packaged into `jar` files and submitted to YARN for execution with
 
 Now that you have a YARN cluster up and running, you can:
 
-- Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
+- Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/content/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
 - Install Spark on top on your YARN cluster with [Linode Spark guide](to/be/confirmed).

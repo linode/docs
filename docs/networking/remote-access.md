@@ -27,7 +27,7 @@ Here's how to set reverse DNS for your domain names:
 
  {: .note }
 >
-> Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+> Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/content/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab.
@@ -35,15 +35,15 @@ Here's how to set reverse DNS for your domain names:
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
 
-	[![The Reverse DNS link](/docs/assets/1697-remoteaccess_reversedns.png)](/docs/assets/1697-remoteaccess_reversedns.png)
+	[![The Reverse DNS link](/content/assets/1697-remoteaccess_reversedns.png)](/content/assets/1697-remoteaccess_reversedns.png)
 
 6.  Enter a domain name in the **Hostname** field, as shown in the below image.
 
-	[![Adding the domain name for reverse DNS](/docs/assets/1695-ptr_lookup_marked.png)](/docs/assets/1695-ptr_lookup_marked.png)
+	[![Adding the domain name for reverse DNS](/content/assets/1695-ptr_lookup_marked.png)](/content/assets/1695-ptr_lookup_marked.png)
 
 7.  Click **Look up**. A message appears indicating that a match has been found for both your IPv4 and IPv6 addresses.
 
-	[![Reverse DNS Match found](/docs/assets/1691-ptr_lookup_match_found_small.png)](/docs/assets/1692-ptr_lookup_match_found.png)
+	[![Reverse DNS Match found](/content/assets/1691-ptr_lookup_match_found_small.png)](/content/assets/1692-ptr_lookup_match_found.png)
 
 8.  Click **Yes** beneath the desired address. Note that you can select only one address at a time. If you want to set up reverse DNS for both the IPv4 and IPv6 addresses, you can perform another lookup and select the other address.
 
@@ -65,11 +65,11 @@ To reset reverse DNS to the Linode domain, which will be something like **li12-3
 4.  Click the **Remote Access** tab.
 5.  Select the **Reverse DNS** link, as shown in the below image.
 
-	[![The Reverse DNS link](/docs/assets/1697-remoteaccess_reversedns.png)](/docs/assets/1697-remoteaccess_reversedns.png)
+	[![The Reverse DNS link](/content/assets/1697-remoteaccess_reversedns.png)](/content/assets/1697-remoteaccess_reversedns.png)
 
 6.  Select the **Reset** link next to the reverse DNS setting you want to revert to the default Linode domain.
 
-	[![The Reset link](/docs/assets/1694-ptr_reset_marked_small.png)](/docs/assets/1693-ptr_reset_marked.png)
+	[![The Reset link](/content/assets/1694-ptr_reset_marked_small.png)](/content/assets/1693-ptr_reset_marked.png)
 
 7.  Click **Yes** when asked to confirm the reset.
 
@@ -77,7 +77,7 @@ You'll see a confirmation message that the reverse DNS has been reset.
 
 ## Configuring IP Failover
 
-*IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/docs/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
+*IP failover* is the process by which an IP address is reassigned from one Linode to another in the event the first one fails or goes down. If you're using two Linodes to make a website [highly available](/content/websites/introduction-to-high-availability) with Keepalived or a similar service, you can use the Linode Manager to configure IP failover. Here's how:
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab. A list of your available nodes will appear.
@@ -85,12 +85,12 @@ You'll see a confirmation message that the reverse DNS has been reset.
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Failover** link. The webpage shown below appears.
 
-	[![Configuring IP failover](/docs/assets/963-remote-5.png)](/docs/assets/963-remote-5.png)
+	[![Configuring IP failover](/content/assets/963-remote-5.png)](/content/assets/963-remote-5.png)
 
 6.  Select the checkboxes of all IP addresses that need to fail over to the chosen Linode.
 7.  Click **Save Changes**.
 
-You have successfully configured IP failover. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/docs/websites/host-a-website-with-high-availability).
+You have successfully configured IP failover. Now, when a failover service such as Keepalived detects failure of your chosen Linode, its IP address will be assigned to the new Linode to avoid an interruption in service. For more information on a practical use case, see our guide on [hosting a website with high availability](/content/websites/host-a-website-with-high-availability).
 
 ## Networking Restrictions
 
@@ -116,7 +116,7 @@ Here's how to swap IP addresses:
 4.  Click the **Remote Access** tab.
 5.  Select the **IP Swap** link. The webpage shown below appears.
 
-	[![Linode selection page for IP swap](/docs/assets/971-remote-8.png)](/docs/assets/971-remote-8.png)
+	[![Linode selection page for IP swap](/content/assets/971-remote-8.png)](/content/assets/971-remote-8.png)
 
 6.  From the **With Linode** menu, select a Linode.
 
@@ -126,15 +126,15 @@ Here's how to swap IP addresses:
 
 7.  Click **Select**. The webpage shown below appears.
 
-	[![Adding the domain name for Reverse DNS](/docs/assets/961-remote-3-small.png)](/docs/assets/962-remote-3.png)
+	[![Adding the domain name for Reverse DNS](/content/assets/961-remote-3-small.png)](/content/assets/962-remote-3.png)
 
 8.  Select both of the **Move It** checkboxes to verify that you want the IP addresses switched.
 9.  Click **Do it**.
-10. **Optional** Enable [Network Helper](/docs/platform/network-helper) and reboot your Linode.
+10. **Optional** Enable [Network Helper](/content/platform/network-helper) and reboot your Linode.
 
     Network Helper automatically configures static IP address configuration files, and will update them with the new IP address. It's turned on by default for newer Linodes. For older Linodes, unless you've modified the networking configuration, DHCP assigns the IP address on boot.
 
-    If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
+    If Network Helper is turned off *and* you've [configured a static IP address](/content/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
 
     {: .note }
     >
@@ -155,20 +155,20 @@ The Linode Manager allows you to add private IP addresses for fast and secure co
 4.  Click the **Remote Access** tab.
 5.  Select the **Add a Private IP** link, as shown below.
 
-	[![Adding Private IP addresses](/docs/assets/1696-remote_access_privateip.png)](/docs/assets/1696-remote_access_privateip.png)
+	[![Adding Private IP addresses](/content/assets/1696-remote_access_privateip.png)](/content/assets/1696-remote_access_privateip.png)
 
 6.  The Linode Manager assigns a private IP address to your Linode.
-7.  Make sure [Network Helper](/docs/platform/network-helper) is enabled on your configuration profile. Otherwise, configure static networking. See the [Linux Static IP Configuration](/docs/networking/configuring-static-ip-interfaces) guide for instructions.
+7.  Make sure [Network Helper](/content/platform/network-helper) is enabled on your configuration profile. Otherwise, configure static networking. See the [Linux Static IP Configuration](/content/networking/configuring-static-ip-interfaces) guide for instructions.
 
-If you'd like to add more than one private IP address to your Linode, please [contact support](/docs/support).
+If you'd like to add more than one private IP address to your Linode, please [contact support](/content/support).
 
 ## Adding Public IP Addresses
 
-You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
+You can use the Linode Manager to add additional public IP addresses to your account. However, due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/content/support) with your justification.
 
 ## Console Access
 
-The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Ajax console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/troubleshooting/using-lish-the-linode-shell).
+The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Ajax console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/content/troubleshooting/using-lish-the-linode-shell).
 
 ### Using the Ajax Console
 
@@ -192,7 +192,7 @@ You can also access Lish with an SSH client application installed on your comput
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab. Scroll down to the *Console Access* section, as shown below.
 
-	[![The Console Access section of the Remote Access tab](/docs/assets/967-remote-6-small.png)](/docs/assets/968-remote-6.png)
+	[![The Console Access section of the Remote Access tab](/content/assets/967-remote-6-small.png)](/content/assets/968-remote-6.png)
 
 5.  Accessing Lish via SSH requires additional authentication over and above your Linode's username and password. Enter a password for Lish in the **Lish via SSH Password** field, and then click **Change Password**. Or, if you use SSH key pair authentication, copy and paste your public key in to the **Lish via SSH Keys** field, and then click **Submit Keys**.
 6.  Select the **Lish via SSH** link, as shown below.

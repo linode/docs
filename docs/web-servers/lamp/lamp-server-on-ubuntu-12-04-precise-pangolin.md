@@ -14,22 +14,22 @@ published: 'Monday, October 3rd, 2012'
 title: 'LAMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
- - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.2/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
 Setting up a LAMP (Linux, Apache, MySql, PHP) stack will allow for the creation and hosting of websites and web applications. This guide provides step by step instructions for installing a LAMP stack on an Ubuntu 12.04 (Precise Pangolin) Linode.
 
-![LAMP Server on Ubuntu 12.04](/docs/assets/lamp_server_on_ubuntu_12_04.png "LAMP Server on Ubuntu 12.04")
+![LAMP Server on Ubuntu 12.04](/content/assets/lamp_server_on_ubuntu_12_04.png "LAMP Server on Ubuntu 12.04")
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
 2.  Update your system:
 

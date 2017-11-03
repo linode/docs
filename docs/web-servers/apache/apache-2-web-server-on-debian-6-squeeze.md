@@ -18,13 +18,13 @@ title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 
 This tutorial explains how to install and configure the Apache web server on Debian 6 (Squeeze).
 
-Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/docs/lamp-guides/debian-6-squeeze).
+Note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Debian 6](/content/lamp-guides/debian-6-squeeze).
 
 Before You Begin
 ----------------
 
--   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/web-servers/apache/apache-2-web-server-on-debian-6-squeeze) for your server.
+-   Make sure you've followed the [Getting Started](/content/getting-started/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/content/web-servers/apache/apache-2-web-server-on-debian-6-squeeze) for your server.
 
 Issue the following commands to make sure your hostname is set properly:
 
@@ -33,7 +33,7 @@ Issue the following commands to make sure your hostname is set properly:
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-All of the commands in this article should be executed either as **root** or as a [user with sudo access](/docs/security/securing-your-server/#add-a-limited-user-account).
+All of the commands in this article should be executed either as **root** or as a [user with sudo access](/content/security/securing-your-server/#add-a-limited-user-account).
 
 Install Apache 2
 ----------------
@@ -182,7 +182,7 @@ To install one of these modules, run this command:
 
     apt-get install [module-name]
 
-Modules, after being installed, should be enabled and ready to use, although you may need to apply additional configuration options depending on the module. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
+Modules, after being installed, should be enabled and ready to use, although you may need to apply additional configuration options depending on the module. Consult the [Apache module documentation](http://httpd.apache.org/content/2.0/mod/) for more information regarding the configuration of specific modules.
 
 An easy way to see which modules are installed is to run a list command on the directory:
 
@@ -217,7 +217,7 @@ Later files take precedence over earlier ones. Within a directory, files are rea
 
 Apache will follow symbolic links to read configuration files, so it's possible to put files in other locations as well.
 
-Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/docs/lamp-guides/debian-6-squeeze) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP Guide for Debian 6 (Squeeze)](/content/lamp-guides/debian-6-squeeze) and elsewhere, you should create configuration files for your virtual hosts in the `/etc/apache2/sites-available/` directory, then use the `a2ensite` tool to symbolically link to files in the `sites-enabled/` directory. This allows for a clear and specific per-site configuration.
 
 We recommend that you *not* modify these files:
 
@@ -227,7 +227,7 @@ We recommend that you *not* modify these files:
 
 In practice, the vast majority of your configuration options should go in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-For more help with conflicting directives, see our [Apache Troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
+For more help with conflicting directives, see our [Apache Troubleshooting](/content/troubleshooting/troubleshooting-common-apache-issues/#troubleshooting-conflicting-directives) article.
 
 Multi-Processing Module
 -----------------------
@@ -266,5 +266,5 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)
-- [Apache Configuration](/docs/web-servers/apache/configuration/)
+- [Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/content/2.2/)
+- [Apache Configuration](/content/web-servers/apache/configuration/)

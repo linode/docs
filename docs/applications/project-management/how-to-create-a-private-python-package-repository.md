@@ -13,10 +13,10 @@ title: 'How to Create a Private Python Package Repository'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'
- - '[Apache Documentation](https://httpd.apache.org/docs/2.4/)'
+ - '[Apache Documentation](https://httpd.apache.org/content/2.4/)'
 ---
 
-![Banner_image](/docs/assets/Private_Python_Pack_Repo.jpg)
+![Banner_image](/content/assets/Private_Python_Pack_Repo.jpg)
 
 # How does Python Handle Package Management?
 
@@ -28,7 +28,7 @@ PyPI (Python Package Index) is a public repository of user-submitted packages th
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's timezone.
 
 2.  This guide assumes usage of Python 3 and a working installation of `pip` along with `setuptools`. Starting with Python 3.4, `pip` comes with the default installation. On Debian distributions, `pip` can be installed using the apt package manager with `sudo apt install python-pip`.
 
@@ -136,7 +136,7 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
 
 6.  Currently the server is listening on all IP addresses. On a browser, navigate to `192.0.2.0:8080`, where `192.0.2.0` is the public IP of your Linode. The browser should display:
 
-    [pypiserver_home](/docs/assets/pypiserver.png)
+    [pypiserver_home](/content/assets/pypiserver.png)
 
     You are now able to install the `linode_example` package by declaring an external url `pip install --extra-index-url http://192.0.2.0:8080/simple/ --trusted-host 192.0.2.0 linode_example`.
 
@@ -187,7 +187,7 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
         </VirtualHost>
         ~~~
 
-    The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
+    The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/content/2.4/howto/access.html).
 
     {:.note}
     >

@@ -125,7 +125,7 @@ While running the Redis instance in this configuration is useful for testing and
 Issue the following sequence of commands to download a basic init script, create a dedicated system user, mark this file as executable, and ensure that the Redis process will start following the next boot cycle:
 
     cd /opt
-    wget -O init-rpm.sh http://www.linode.com/docs/assets/632-redis-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/content/assets/632-redis-init-rpm.sh
     useradd -M -r --home-dir /opt/redis redis
     mv /opt/init-rpm.sh /etc/init.d/redis
     chmod +x /etc/rc.d/init.d/redis /etc/init.d/redis
@@ -162,7 +162,7 @@ After applying these configuration changes, restart Redis. All modifications to 
 
     /opt/redis/redis-cli bgrewriteaof
 
-You may wish to issue this command regularly, perhaps in a [cron job](/docs/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. The `bgrewriteaof` is non-destructive and can fail gracefully.
+You may wish to issue this command regularly, perhaps in a [cron job](/content/linux-tools/utilities/cron), to ensure that the transaction journal doesn't expand exponentially. The `bgrewriteaof` is non-destructive and can fail gracefully.
 
 Distributed Data Stores with Master Slave Replication
 -----------------------------------------------------
@@ -183,7 +183,7 @@ When you restart the slave Redis instance, it will attempt to synchronize its da
 
 The traffic between slave instances and the master instance is not encrypted and does not require authentication in the default configuration. Authentication is available, and can be configured according to the documentation in the `/opt/redis/redis.conf.default` file; however, this is not the default method for securing Redis instances.
 
-The preferred method for controlling access to Redis instances involves using [iptables](/docs/security/firewalls/iptables) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
+The preferred method for controlling access to Redis instances involves using [iptables](/content/security/firewalls/iptables) and possibly some sort of encryption such as an SSH tunnel to ensure that traffic is secure. Slaves will automatically attempt to reestablish a connection to the master node if the link fails in a number of situations. However, clusters cannot automatically promote members from slave status to master status; cluster management of this order must occur within your application.
 
 More Information
 ----------------

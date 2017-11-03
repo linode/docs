@@ -18,7 +18,7 @@ external_resources:
 
 PHP-FPM is an implementation of the FastCGI protocol for PHP. This guide covers installing PHP-FPM for Apache on Debian 8 (Jessie).
 
-![Install PHP-FPM and Apache on Debian 8](/docs/assets/install-php-fpm-and-apache-on-debian-8.png)
+![Install PHP-FPM and Apache on Debian 8](/content/assets/install-php-fpm-and-apache-on-debian-8.png)
 
 ## Benefits over mod_php
 
@@ -30,7 +30,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -38,7 +38,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install Apache and PHP-FPM
 
@@ -67,7 +67,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get install php5-mysql
 
-4.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-8#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
+4.  You can now [configure virtual hosting](/content/web-servers/apache/apache-web-server-debian-8#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
 
 ## Configure PHP-FPM
 
@@ -115,13 +115,13 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
     Navigate to `http://example.com/info.php` and look for the **Server API** line:
 
-    ![The Server API Line.](/docs/assets/php-fpm-info.png)
+    ![The Server API Line.](/content/assets/php-fpm-info.png)
 
 ## Configure PHP Pools
 
 This is a separate and optional configuration scenario from that described above where specific Unix users are created to execute PHP code and to control system resources per site. Instead of the `www-data` user owning all of Apache's processes and sites, the configuration below allows each site to be run by Apache under its own system user (`site1` under `user1`, `site2` under `user2`, etc.).
 
-This is particularly useful when running multiple client sites because you can give each customer write permissions in a respective web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website to which you want to assign a PHP pool. For more information see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This is particularly useful when running multiple client sites because you can give each customer write permissions in a respective web directory without affecting the security of the web server as a whole. The example below assumes two websites, each with its own Apache virtual host, and one system user for each website to which you want to assign a PHP pool. For more information see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 1.  Make a copy of `www.conf` for each pool:
 
@@ -213,4 +213,4 @@ This is particularly useful when running multiple client sites because you can g
 
 6.  You can confirm the user with the `info.php` file described above, by checking the **Environment** section:
 
-    ![The PHP Environment Variable](/docs/assets/php-fpm-env.png)
+    ![The PHP Environment Variable](/content/assets/php-fpm-env.png)

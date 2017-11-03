@@ -15,7 +15,7 @@ external_resources:
  - '[Nixpkgs](https://nixos.org/nixpkgs/manual/)'
 ---
 
-![How to Install NixOS on Linode](/docs/assets/nixos-title.png "How to Install NixOS on Linode")
+![How to Install NixOS on Linode](/content/assets/nixos-title.png "How to Install NixOS on Linode")
 
 [NixOS](https://nixos.org) is a Linux distribution built on the [Nix](https://nixos.org/nix) package manager. Nix focuses on functional programming concepts, such as immutability and determinism, that enable powerful system management techniques.
 
@@ -27,7 +27,7 @@ While Nix can be installed on any Linux system, NixOS takes these ideas a step f
 
 ## Before You Begin
 
-Familiarize yourself with [LISH](/docs/networking/using-the-linode-shell-lish) and [GLISH](/docs/networking/use-the-graphic-shell-glish) to connect to your Linode. You will use them throughout this guide.
+Familiarize yourself with [LISH](/content/networking/using-the-linode-shell-lish) and [GLISH](/content/networking/use-the-graphic-shell-glish) to connect to your Linode. You will use them throughout this guide.
 
 The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for NixOS. It explores the concepts at a high level and serves as a reference for some system configuration concepts. This should have everything you need to know to get started, but there may be some deeper concepts that are not thoroughly addressed. For more in-depth information, visit the [NixOS](https://nixos.org/nixos/manual/) and [Nixpkgs](https://nixos.org/nixpkgs/manual/) manuals.
 
@@ -35,7 +35,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Create Disks for Nix
 
-[Create three disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
+[Create three disk images](/content/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk): One for the installer, one for a swap partition, and one for the root partition. Label them:
 
 * **Installer**: A type `ext4` disk, 1024 MB in size.
 * **Swap**: A `swap` disk no larger than 512 MB.
@@ -43,7 +43,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 ### Create Configuration Profiles
 
-[Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
+[Create two configuration profiles](/content/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles), one for the installer and one to boot NixOS. For each profile, disable all of the options under **Filesystem/Boot Helpers** and set the **Configuration Profile** to match the following:
 
   * **Installer profile**
     * **Label:** Installer
@@ -64,7 +64,7 @@ The [NixOS manual](https://nixos.org/nixos/manual/) is the main reference for Ni
 
 In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/download.html) and copy the URL from the **Minimal installation CD, 64-bit Intel/AMD** link.
 
-[Boot your Linode into rescue mode](/docs/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
+[Boot your Linode into rescue mode](/content/troubleshooting/rescue-and-rebuild#booting-into-rescue-mode) with the installer disk mounted as `/dev/sda`. Once in rescue mode, run the following command, replacing the URL with the latest 64-bit minimal installation image copied from the [NixOS download page](https://nixos.org/nixos/download.html). This example installs NixOS 17.03:
 
     # Bind the URL you grabbed from the download page to a bash variable
     iso=<URL for nixos download>
@@ -79,7 +79,7 @@ In your browser, navigate to the [NixOS download page](https://nixos.org/nixos/d
 
 ### Boot the Installer
 
-In your Linode's dashboard, boot into your *Installer* configuration profile. Since the installer image isn't configured to support SSH or the LISH console, connect to your Linode using [GLISH](/docs/networking/use-the-graphic-shell-glish).
+In your Linode's dashboard, boot into your *Installer* configuration profile. Since the installer image isn't configured to support SSH or the LISH console, connect to your Linode using [GLISH](/content/networking/use-the-graphic-shell-glish).
 
 ### Set up the Install Environment
 
@@ -167,7 +167,7 @@ After installation, create a user with limited permissions, then set `permitRoot
 
 ### Disable Predictable Interface Names
 
-Most of Linode's default images have had systemd's predictable interface names disabled. Because of this, most of [Linode's networking guides](/docs/networking/) assume an interface of `eth0`. Since your Linode runs in a virtual environment and will have a single interface, it won't encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:
+Most of Linode's default images have had systemd's predictable interface names disabled. Because of this, most of [Linode's networking guides](/content/networking/) assume an interface of `eth0`. Since your Linode runs in a virtual environment and will have a single interface, it won't encounter the issues that predictable interface names were designed to solve. This change is optional, but may help troubleshooting later:
 
     networking.usePredictableInterfaceNames = false;
 
@@ -195,7 +195,7 @@ NixOS is now installed and can be booted from the **Boot** profile created in [C
 
 In this optional section, you'll create a deployable disk image of NixOS.
 
-[*Linode Images*](/docs/platform/linode-images) allows you to take snapshots of your system. These snapshots are limited to 2GB in size. The NixOS installation includes packages that were essential for the installation process, but aren't needed for the running system. These can be removed after installation:
+[*Linode Images*](/content/platform/linode-images) allows you to take snapshots of your system. These snapshots are limited to 2GB in size. The NixOS installation includes packages that were essential for the installation process, but aren't needed for the running system. These can be removed after installation:
 
     nix-collect-garbage -d
 
@@ -205,14 +205,14 @@ You may also want to go through and remove any log files that may be in `/var/lo
 
     cd /var/log
 
-Create an image of the **NixOS** disk using the [Linode Images](/docs/platform/linode-images#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
+Create an image of the **NixOS** disk using the [Linode Images](/content/platform/linode-images#capturing-your-image) guide. Label the image according to the release of NixOS you installed. Now that you have created an image, you can select it in the distribution menu whenever you deploy a Linode.
 
 ## Delete the Installer Disk and Profile
 
-Delete the installer disk and profile from your Linode using the [removing a configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-configuration-profile) section of the Disk Images guide to remove the **Installer** profile.
+Delete the installer disk and profile from your Linode using the [removing a configuration profile](/content/platform/disk-images/disk-images-and-configuration-profiles#removing-a-configuration-profile) section of the Disk Images guide to remove the **Installer** profile.
 
 Remove the **Installer** disk and reclaim the storage that the NixOS installation was using:
 
   1. Go to your Linode's dashboard and shutdown your Linode.
-  2. [Remove the *Installer* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-disk).
-  3. [Resize the *NixOS* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to the maximum possible size.
+  2. [Remove the *Installer* disk](/content/platform/disk-images/disk-images-and-configuration-profiles#removing-a-disk).
+  3. [Resize the *NixOS* disk](/content/platform/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to the maximum possible size.

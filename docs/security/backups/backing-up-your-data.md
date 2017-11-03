@@ -88,18 +88,18 @@ We'll evaluate seven different backup utilities to see how they meet these crite
 -   **Where**: The files are stored in our secure data centers.
 -   **Rotation**: Backups are rotated automatically so you'll always have a daily, weekly, and bi-weekly backup. You can also store one snapshot of your choice indefinitely.
 
-To configure Linode's Backup Service for your Linode, follow [these instructions](/docs/backup-service).
+To configure Linode's Backup Service for your Linode, follow [these instructions](/content/backup-service).
 
 ### Linode's Disks
 
-You can use the Linode Manager to [duplicate your Linode's disk](/docs/disk-images-config-profiles). This is not a backup utility *per se*, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
+You can use the Linode Manager to [duplicate your Linode's disk](/content/disk-images-config-profiles). This is not a backup utility *per se*, but it is a quick and easy way to create a full snapshot of your Linode. Once you've duplicated the disk, you can boot it or clone it to a different Linode.
 
 -   **What**: Full-server file system backup.
 -   **When**: Duplicate disks are created manually. You have to shut down your server to make a new disk.
 -   **Where**: The disk is stored on your Linode.
 -   **Rotation**: Manual. The number of backups you can store at once depends on how small you make the disks.
 
-See [this article](/docs/disk-images-config-profiles) to learn more about disks.
+See [this article](/content/disk-images-config-profiles) to learn more about disks.
 
 ### Rsync
 
@@ -116,7 +116,7 @@ You need a basic level of comfort with the command line to make the initial back
 -   **Where**: You set the destination. You can back up to a different folder on your server, a different Linux server, or your home computer. As long as you can establish an SSH connection between the two machines and they're both capable of running rsync, you can store your backups anywhere.
 -   **Rotation**: Basic rotation is manual. However, with the right options, you can store all of your old backups in a minimal amount of space. This will be covered later.
 
-Because this is such a versatile tool, we'll be presenting three brief tutorials to configure backups with rsync at the end of this guide. You can also read more about rsync [here](/docs/linux-tools/utilities/rsync).
+Because this is such a versatile tool, we'll be presenting three brief tutorials to configure backups with rsync at the end of this guide. You can also read more about rsync [here](/content/linux-tools/utilities/rsync).
 
 ### MySQL Backups
 
@@ -127,7 +127,7 @@ The data stored in your database can change quickly. Running a MySQL dump is arg
 -   **Where**: The backup file is saved on your server or downloaded to your home computer by default. You can move the file somewhere else if you want it stored in a different location.
 -   **Rotation**: Basic rotation is manual.
 
-To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/docs/databases/mysql/backup-options).
+To make human-readable backups of your databases that can be imported to a new database server, [follow these instructions](/content/databases/mysql/backup-options).
 
 ### Tar
 
@@ -150,7 +150,7 @@ Explanation of flags:
 -   v or --verbose: Shows which files were processed
 -   f or --file=ARCHIVE: Tells us that the next argument is the name for the new archive file
 
-For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/docs/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip).
+For a more detailed discussion of tar and more examples, see [Archiving and Compressing files with GNU Tar and GNU Zip](/content/tools-reference/tools/archiving-and-compressing-files-with-gnu-tar-and-gnu-zip).
 
 ### Unison
 
@@ -161,7 +161,7 @@ Unison is a file synchronization tool. It can be used to replicate a file system
 -   **Where**: You can back up to a different server running Unison, or a different disk on your Linode.
 -   **Rotation**: Only one backup is stored. It will be from the date you last synched the servers.
 
-For more information, see [Synchronize Files with Unison](/docs/linux-tools/unison) and the [Unison Manual](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html).
+For more information, see [Synchronize Files with Unison](/content/linux-tools/unison) and the [Unison Manual](http://www.cis.upenn.edu/~bcpierce/unison/download/releases/stable/unison-manual.html).
 
 ### Rdiff-backup
 
@@ -172,7 +172,7 @@ Rdiff-backup is a utility designed to make incremental backups. As their [websit
 -   **Where** : You set the destination. You can back up to a different folder on your server, a different Linux server, or your home computer.
 -   **Rotation**: Both old and new files are kept.
 
-For information, see [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup).
+For information, see [Using Rdiff-backup with SSHFS](/content/linux-tools/rdiff-backup).
 
 ## Making a Manual Backup
 
@@ -272,7 +272,7 @@ Here's how to set up automatic backups of your Linode to a Linux server:
 
     {:.note}
     >
-    > For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/docs/linux-tools/utilities/cron).
+    > For more information about cron, and to learn how to create a custom schedule for your rsync command, see [Schedule Tasks with Cron](/content/linux-tools/utilities/cron).
 
 Congratulations! You have now configured daily automatic snapshot-style backups. If something goes wrong with your server, you'll be able to restore from a backup at any time.
 
@@ -509,7 +509,7 @@ The `copyfrom` location is the path to what you want to back up on your *product
 
 Since we're trying to copy from a remote server (the *production\_server*), we need to provide the SSH login credentials first. Then we use a colon (`:`), and then an absolute file path to the folder we want to back up.
 
-In this example, we're backing up the `~/public` directory, which is where your websites should be located if you used the [Hosting a Website](/docs/hosting-website) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because we want to include the `public` folder itself in the backup, not just its contents.
+In this example, we're backing up the `~/public` directory, which is where your websites should be located if you used the [Hosting a Website](/content/hosting-website) guide. `~` is a shortcut for `/home/user/`. The trailing `/` is omitted from the final directory because we want to include the `public` folder itself in the backup, not just its contents.
 
 If you want to do a full-server backup from root, you should use `/*` as your path. You should also exclude some folders from the backup so you don't get a lot of warnings and errors every time you run it. /dev, /proc, /sys, /tmp, and /run do not contain permanent data, and /mnt is the mount point for other file systems. To make an exclusion, add the `--exclude` option at the very end of the rsync command, after everything else.
 

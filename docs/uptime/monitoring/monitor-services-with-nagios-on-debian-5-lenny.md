@@ -16,7 +16,7 @@ title: 'Monitor Services with Nagios on Debian 5 (Lenny)'
 
 Nagios is an open source monitoring tool that monitors services within a server cluster. In addition to monitoring services such as SMTP/POP3 and HTTP, Nagios can also be used to check the health of the server itself.
 
-Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will also need to have a functioning [LAMP stack](/docs/lamp-guides/debian-5-lenny) in order to use Nagios.
+Before continuing with this guide, you will need to make sure that you have set your hostname by following the steps outlined in the [getting started guide](/content/getting-started/). Additionally, you will also need to have a functioning [LAMP stack](/content/lamp-guides/debian-5-lenny) in order to use Nagios.
 
 Prepare for Nagios Installation
 -------------------------------
@@ -121,7 +121,7 @@ Any errors will be shown in red. If everything is okay, you may issue the follow
 
 You may now access the web based administration and reporting tools by visiting `http://example.com/nagios/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios/` where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the nagiosadmin user you created earlier.
 
-**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+**Please note:** The above example does not use SSL and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 Configure Nagios Alerts
 -----------------------
@@ -186,7 +186,7 @@ You may wish to consult the following resources for additional information on th
 - [Nagios Home Page](http://www.nagios.org/)
 - [Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)
 - [Nagios Library](http://library.nagios.com/)
-- [Nagios Security](http://nagios.sourceforge.net/docs/3_0/cgisecurity.html)
+- [Nagios Security](http://nagios.sourceforge.net/content/3_0/cgisecurity.html)
 
 
 

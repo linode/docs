@@ -16,7 +16,7 @@ title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian 6 (Squeeze) Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
 Install MySQL
 -------------
@@ -32,7 +32,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password on Debian 6 (Squeeze).](/docs/assets/357-debian-6-mysql-root-password.png)](/docs/assets/357-debian-6-mysql-root-password.png)
+[![Setting the MySQL root password on Debian 6 (Squeeze).](/content/assets/357-debian-6-mysql-root-password.png)](/content/assets/357-debian-6-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. It gives you the option to disable root logins from outside localhost, remove anonymous user accounts, and to remove the test database. Additionally, it allows you to set your root password. Run the following command to execute the program:
 

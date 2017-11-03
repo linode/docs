@@ -13,7 +13,7 @@ published: 'Friday, February 28th, 2014'
 title: Billing and Payments
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/support).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/content/support).
 
 ## How Hourly Billing Works
 
@@ -72,7 +72,7 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 >
 > A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](#transfer-overages) charge beyond the monthly cap.
 >
-> Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
+> Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/content/support) with your justification.
 
 ## Viewing Current Balance
 
@@ -82,7 +82,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 2.  Select the **Account** tab.
 3.  In the **Account** tab, in the **Recent Billing Activity and Account Balance** section, you can see the **Current Balance**:
 
-    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](/docs/assets/1622-manager_account_sm.png)](/docs/assets/1623-manager_account.png)
+    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](/content/assets/1622-manager_account_sm.png)](/content/assets/1623-manager_account.png)
 
 Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
@@ -100,7 +100,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/content/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 The following video will show you how to make a payment via PayPal:
 
@@ -201,4 +201,4 @@ Your account will be canceled and all of your services will be deactivated.
 
 ## More Information
 
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/prepaid-billing) guide for more information.
+If you've signed up before hourly billing, please check out our [Prepaid Billing](/content/prepaid-billing) guide for more information.

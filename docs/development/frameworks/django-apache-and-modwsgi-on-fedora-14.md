@@ -18,12 +18,12 @@ title: 'Django, Apache and mod_wsgi on Fedora 14'
 
 Django is a web development framework for the Python programing language. It enables rapid development, while favoring pragmatic and clean design. Django was initially developed for use in a newspaper's website division, and as a result the Django framework is very well suited to developing content-centric applications.
 
-This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/docs/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/docs/web-servers/apache/installation/fedora-14) and a functional [MySQL database](/docs/databases/mysql/fedora-14) system installed.
+This guide provides an introduction to getting started with the Django framework, using the `mod_wsgi` method of deploying python applications. Please complete the [getting started guide](/content/getting-started/) prior to beginning this guide on an up to date system. Furthermore, you will want a running [Apache web server](/content/web-servers/apache/installation/fedora-14) and a functional [MySQL database](/content/databases/mysql/fedora-14) system installed.
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -38,7 +38,7 @@ Issue the following commands to ensure that your system's package repositories a
     yum update
     yum install python-setuptools httpd mod_wsgi
 
-Additionally you will need to install a database system and a python driver for this database system. If you want to run the [PostgreSQL database server](/docs/databases/postgresql/fedora-14) issue the following command:
+Additionally you will need to install a database system and a python driver for this database system. If you want to run the [PostgreSQL database server](/content/databases/postgresql/fedora-14) issue the following command:
 
     yum install postgresql python-psycopg2
 
@@ -46,7 +46,7 @@ If you want to use the SQLite embedded database, issue the following command:
 
     yum install sqlite python-sqlite
 
-If you want to run the [MySQL database engine](/docs/databases/mysql/fedora-14), download and install a more recent version of the `MySQL-python` package. Django requires at least version 1.2.1p2 of the Python MySQLdb adapter. We'll download and install a later version from [the upstream project](http://sourceforge.net/projects/mysql-python/) First, install the tools needed to build this package:
+If you want to run the [MySQL database engine](/content/databases/mysql/fedora-14), download and install a more recent version of the `MySQL-python` package. Django requires at least version 1.2.1p2 of the Python MySQLdb adapter. We'll download and install a later version from [the upstream project](http://sourceforge.net/projects/mysql-python/) First, install the tools needed to build this package:
 
     yum install python-devel mysql-devel gcc wget python-setuptools
 

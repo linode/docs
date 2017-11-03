@@ -17,7 +17,7 @@ external_resources:
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on Ubuntu 16.04 and Debian 8.
 
-![Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8](/docs/assets/two-factor-authentication-ubuntu-debian-title.png "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8")
+![Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8](/content/assets/two-factor-authentication-ubuntu-debian-title.png "Use One-Time Passwords for Two-Factor Authentication with SSH on Ubuntu 16.04 and Debian 8")
 
 No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (*TOTPs*).
 
@@ -27,9 +27,9 @@ This guide will explain how to install the necessary software, configure your sy
 
 ## Before You Begin
 
-1.  This guide is meant to be used with Linodes running Ubuntu 16.04 or Debian 8. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  This guide is meant to be used with Linodes running Ubuntu 16.04 or Debian 8. Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
+2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
 
 3.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
@@ -39,7 +39,7 @@ This guide will explain how to install the necessary software, configure your sy
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Install Google Authenticator
 
@@ -71,7 +71,7 @@ The following instructions will generate a password for the user running the com
 
 2.  You should see a [QR code](https://en.wikipedia.org/wiki/QR_code) in your terminal:
 
-    ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/docs/assets/google-authenticator-ubuntu.png)
+    ![The Google Authenticator QR Code and keys on Ubuntu 16.04.](/content/assets/google-authenticator-ubuntu.png)
 
     Using the authenticator app on your phone or mobile device, scan the code. A new entry should be added to your authenticator app in the format `username@hostname`.
 
@@ -115,7 +115,7 @@ Congratulations! You have finished generating your key and adding it to your cli
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
 {: .caution}
-> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/content/networking/using-the-linode-shell-lish) to regain access.
 
 1.  Open `/etc/pam.d/sshd` with sudo privileges, and add the following lines to the end of the file:
 
@@ -154,14 +154,14 @@ The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentica
 
 Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows:
 
-![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
+![Two-factor authentication with SSH login.](/content/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
 {: .note}
 >If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
 
 ## Combine Two-Factor and Public Key Authentication
 
-This section is optional. If you'd like to use [public key authentication](/docs/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, perform these steps:
+This section is optional. If you'd like to use [public key authentication](/content/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, perform these steps:
 
 {: .note}
 > Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
@@ -196,8 +196,8 @@ That's it! You should now be able to log in using your SSH key as the first meth
 
 ## Next Steps
 
-First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protecting your data, firewalls and services like [Fail2Ban](/docs/security/using-fail2ban-for-security) are a great way to minimize risk.
+First, be sure you have followed our guide to [Securing Your Server](/content/security/securing-your-server). Although there is no single, foolproof method to protecting your data, firewalls and services like [Fail2Ban](/content/security/using-fail2ban-for-security) are a great way to minimize risk.
 
-When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/use-public-key-authentication-with-ssh), in the interim.
+When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/content/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/content/security/use-public-key-authentication-with-ssh), in the interim.
 
 While two-factor authentication may be a valuable security feature, total security is an ongoing process, not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.

@@ -14,7 +14,7 @@ published: 'Tuesday, September 29th, 2009'
 title: LAMP Server on Fedora 12
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
-  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.0/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
@@ -25,7 +25,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/getting-started#set-the-timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/content/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/content/getting-started#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 

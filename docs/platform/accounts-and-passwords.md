@@ -58,7 +58,7 @@ Here's how to set a user's access permissions:
 3.  Enter your password and click **Authenticate**. The *User Manager* webpage appears.
 4.  Locate the user in the list and select the **Edit Permissions** link. The webpage shown below appears.
 
-[![Configure permissions for a user in the Linode Manager.](/docs/assets/922-user1-small.png)](/docs/assets/921-user1.png)
+[![Configure permissions for a user in the Linode Manager.](/content/assets/922-user1-small.png)](/content/assets/921-user1.png)
 
 5.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, Domains, and NodeBalancers to the account, create StackScripts, access all billing information, and cancel the entire account.
 
@@ -170,8 +170,8 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 7.  Click **Reset Root Password**. The Linode's dashboard appears.
 8.  Click **Boot** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/content/getting-started#connect-to-your-linode-via-ssh) for more information about connecting.
 
 ## Next Steps
 
-You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/docs/security/linode-manager-security-controls/) guide.
+You can take additional steps to secure your Linode Manager account by enabling the two-factor authentication and IP address whitelisting features. You can also configure security event notifications and disable API access. For instructions, see the [Security](/content/security/linode-manager-security-controls/) guide.

@@ -18,7 +18,7 @@ title: 'Oracle 10g Express Edition on Ubuntu 10.10 (Maverick)'
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Ubuntu 10.10 (Maverick) Linode.
 
-It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **Please note:** Depending on the amount of memory your Linode has, Oracle may require up to a 1,024 MB swap partition. While we normally do not advise using a swap partition larger than 256 MB, in this case it's a good idea to resize your existing swap to 1,025 MB before proceeding with Oracle installation (the extra MB avoids differences in how megabytes are calculated).
 
@@ -119,9 +119,9 @@ Connect to the Oracle XE Home Page
 
 Oracle is managed via a web interface, which is installed with the oracle-xe package. By default, it listens on the local address `127.0.0.1` at port 8080. Since you most likely do not have a window manager or web browser installed on your Linode, you must connect to your Oracle home page remotely.
 
-You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
+You can do this by using our [Oracle SSH tunnel script](/content/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
 
-[![The Oracle XE administration home page.](/docs/assets/382-oracle-xe-admin-page.png)](/docs/assets/382-oracle-xe-admin-page.png)
+[![The Oracle XE administration home page.](/content/assets/382-oracle-xe-admin-page.png)](/content/assets/382-oracle-xe-admin-page.png)
 
 Manage Oracle from the Command Line
 -----------------------------------
@@ -175,7 +175,7 @@ Once sqlplus has started, you'll need to connect to your Oracle XE instance. Iss
 
     CONNECT SYSTEM/yourpassword@oracle
 
-Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the [Oracle getting started guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm) to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The `exit` command will return you to a normal shell prompt.
+Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the [Oracle getting started guide](http://download.oracle.com/content/cd/B25329_01/doc/admin.102/b25610/toc.htm) to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The `exit` command will return you to a normal shell prompt.
 
 More Information
 ----------------
@@ -184,7 +184,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Oracle XE Home Page](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
 - [Oracle XE 10g Documentation](http://www.oracle.com/pls/db102/homepage)
-- [Oracle XE Getting Started Guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm)
+- [Oracle XE Getting Started Guide](http://download.oracle.com/content/cd/B25329_01/doc/admin.102/b25610/toc.htm)
 
 
 

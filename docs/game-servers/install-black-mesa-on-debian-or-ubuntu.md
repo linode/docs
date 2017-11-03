@@ -21,7 +21,7 @@ external_resources:
 alias: ['applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
@@ -32,11 +32,11 @@ This guide will show you how to set up your own [Black Mesa](https://blackmesaso
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Black Mesa](http://store.steampowered.com/app/362890/).
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/content/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ##Prerequisites for Black Mesa
 
@@ -87,7 +87,7 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 
 {: .note}
 >
-> To keep the server running, execute it using [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
+> To keep the server running, execute it using [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
 >
 >	screen ./srcds_run -game bms +map gasworks +maxplayers 24
 
@@ -193,15 +193,15 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 1.  Open Black Mesa, and click on the **PLAY ONLINE** option:
 
-	[![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
+	[![Black Mesa Main Menu.](/content/assets/black_mesa_menu_small.png)](/content/assets/black_mesa_menu.png)
 
 2.  Find your server in the server list:
 
-	[![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
+	[![Black Mesa Server Browser.](/content/assets/black_mesa_server_browser_small.png)](/content/assets/black_mesa_server_browser.png)
 
 3.  Double click on it to connect:
 
-	[![Black Mesa In-Game.](/docs/assets/black_mesa_ingame_small.png)](/docs/assets/black_mesa_ingame.png)
+	[![Black Mesa In-Game.](/content/assets/black_mesa_ingame_small.png)](/content/assets/black_mesa_ingame.png)
 
 ##Extra
 

@@ -18,11 +18,11 @@ Elgg is an open source social networking tool that enables groups of people to c
 
 The inspiration for Elgg comes from popular "general interest" social networking sites like Facebook and My Space, as well as smaller sites like Friendster and Virb. Nevertheless, Elgg sites generally do not compete with the general interest social networking. Rather, they provide an opportunity for smaller, more tightly knit communities to collaborate, share information, and communicate on the Internet. A list of [sites powered by Elgg](http://docs.elgg.org/wiki/Sites_powered_by_Elgg) may offer more insight into Elgg's potential.
 
-Fundamentally, Elgg is a specialized CMS (content management system) designed to power a full-featured social networking site. While a developer familiar with a system like [Drupal](/docs/web-applications/cms-guides/drupal/), [Django](/docs/frameworks/), or [Ruby on Rails](/docs/frameworks/) could build a site with all of the features of Elgg, the Elgg package consolidates the core functionality for these kinds of sites into a single application.
+Fundamentally, Elgg is a specialized CMS (content management system) designed to power a full-featured social networking site. While a developer familiar with a system like [Drupal](/content/web-applications/cms-guides/drupal/), [Django](/content/frameworks/), or [Ruby on Rails](/content/frameworks/) could build a site with all of the features of Elgg, the Elgg package consolidates the core functionality for these kinds of sites into a single application.
 
-Before beginning, we assume that you have followed our [getting started guide](/docs/getting-started/). You will also need to install a [LAMP stack](/docs/lamp-guides/debian-5-lenny/) before installing Elgg.
+Before beginning, we assume that you have followed our [getting started guide](/content/getting-started/). You will also need to install a [LAMP stack](/content/lamp-guides/debian-5-lenny/) before installing Elgg.
 
-If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). You will need to be logged into your Linode as root in order to complete the installation process.
+If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). You will need to be logged into your Linode as root in order to complete the installation process.
 
 Prerequisites for Installing Elgg
 ---------------------------------
@@ -36,7 +36,7 @@ Before you can install Elgg, there are a number of software dependencies that mu
 
     apt-get install php5-gd php-xml-parser unzip php5-mysql
 
-Elgg also makes use of Apache's `mod_rewrite` to make more [human readable URLs](/docs/web-servers/apache/configuration/rewriting-urls). To enable this module, issue the following command:
+Elgg also makes use of Apache's `mod_rewrite` to make more [human readable URLs](/content/web-servers/apache/configuration/rewriting-urls). To enable this module, issue the following command:
 
     a2enmod rewrite
 
@@ -69,7 +69,7 @@ The web server needs to be able to write to the `data/` directory; issue the fol
 
     chmod 777 /srv/www/example.com/data/
 
-Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/docs/lamp-guides/debian-5-lenny/), but you can also [configure additional databases and user credentials](/docs/databases/mysql/debian-5-lenny#using-mysql) at any time.
+Before you can begin to configure Elgg, you will need to create a MySQL username and password as well as a database for Elgg. You should have created a MySQL database as part of the [LAMP setup process](/content/lamp-guides/debian-5-lenny/), but you can also [configure additional databases and user credentials](/content/databases/mysql/debian-5-lenny#using-mysql) at any time.
 
 ### Configure Elgg
 
@@ -102,7 +102,7 @@ To configure the database connections, you'll need to edit the file in your pref
             $CONFIG->db prefix = 'elgg_example_';
     ~~~
 
-Replace the relevant information in your config with the credentials for your database. The `dbhost` will be `localhost` unless you're running the database server on a [different machine](/docs/databases/mysql/standalone-mysql-server).
+Replace the relevant information in your config with the credentials for your database. The `dbhost` will be `localhost` unless you're running the database server on a [different machine](/content/databases/mysql/standalone-mysql-server).
 
 ### Using the Elgg Installation Process
 

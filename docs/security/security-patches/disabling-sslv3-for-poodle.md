@@ -12,7 +12,7 @@ published: 'Wednesday, October 15th, 2014'
 title: Disabling SSLv3 for POODLE
 ---
 
-Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/docs/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability) which was found in OpenSSL.
+Padding Oracle On Downgraded Legacy Encryption (POODLE) was released with the CVE identifier of [CVE-2014-3566](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2014-3566). The vulnerability was found in SSL protocol 3.0, unlike [Heartbleed](/content/security/security-patches/patching-openssl-for-the-heartbleed-vulnerability) which was found in OpenSSL.
 
 SSL protocol 3.0 makes use of CBC-mode ciphers that allow for man-in-the-middle attacks using padding-oracle stacks. These attacks target the CBC ciphers to retrieve plain-text output from otherwise encrypted information.
 
@@ -65,7 +65,7 @@ On CentOS and Fedora:
 
     systemctl restart httpd
 
-For more information about configuring Apache to disallow SSLv2 and SSLv3, please see their [Mod_SSL Documentation](https://httpd.apache.org/docs/2.2/mod/mod_ssl.html#sslprotocol)
+For more information about configuring Apache to disallow SSLv2 and SSLv3, please see their [Mod_SSL Documentation](https://httpd.apache.org/content/2.2/mod/mod_ssl.html#sslprotocol)
 
 ### Apache on cPanel/WHM
 
@@ -93,7 +93,7 @@ You will also need to restart your NGINX server:
 
 	sudo service nginx restart
 
-For more information about NGINX's SSL protocol setting, please see their [NGX HTTP SSL Module Documentation](http://nginx.org/en/docs/http/ngx_http_ssl_module.html#ssl_protocols).
+For more information about NGINX's SSL protocol setting, please see their [NGX HTTP SSL Module Documentation](http://nginx.org/en/content/http/ngx_http_ssl_module.html#ssl_protocols).
 
 ### Hiawatha
 

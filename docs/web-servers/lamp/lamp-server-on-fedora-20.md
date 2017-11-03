@@ -14,7 +14,7 @@ published: 'Friday, April 11th, 2014'
 title: LAMP Server on Fedora 20
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
-  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
@@ -23,13 +23,13 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 {: .note }
 >
-> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname).
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname).
 
 Issue the following commands to make sure it is set properly:
 

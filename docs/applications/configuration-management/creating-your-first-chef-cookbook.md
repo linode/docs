@@ -17,9 +17,9 @@ external_resources:
 
 Cookbooks are one of the key components in Chef. They describe the *desired state* of your nodes, and allow Chef to push out the changes needed to achieve this state. Creating a cookbook can seem like an arduous task at first, given the sheer amount of options provided and areas to configure, so in this guide we will walk through the creation of one of the first things people often learn to configure: A LAMP stack.
 
-![Creating Your First Chef Cookbook](/docs/assets/creating-your-first-chef-cookbook.png)
+![Creating Your First Chef Cookbook](/content/assets/creating-your-first-chef-cookbook.png)
 
-Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/docs/applications/chef/setting-up-chef-ubuntu-14-04) guide, and, if needed, review the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
+Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Server, Workstation, and Node](/content/applications/chef/setting-up-chef-ubuntu-14-04) guide, and, if needed, review the [Beginner's Guide to Chef](/content/applications/chef/beginners-guide-chef).
 
 {: .note}
 >
@@ -44,7 +44,7 @@ Prior to using this guide, be sure to set up Chef with the [Setting Up a Chef Se
         attributes    definitions  libraries    providers  recipes    templates
         CHANGELOG.md  files        metadata.rb  README.md  resources
 
-    For more information about these directories see the [Beginner's Guide to Chef](/docs/applications/chef/beginners-guide-chef).
+    For more information about these directories see the [Beginner's Guide to Chef](/content/applications/chef/beginners-guide-chef).
 
 
 ## default.rb
@@ -156,7 +156,7 @@ Because each section of the LAMP stack (Apache, MySQL, and PHP) will have its ow
 
 ### Configure Virtual Hosts
 
-After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the [LAMP Server on Ubuntu 14.04](/docs/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
+After the initial installation Apache needs to be configured, starting with its virtual hosts files. This configuration is based off of the [LAMP Server on Ubuntu 14.04](/content/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
 
 1.  Because multiple websites may need to be configured, Chef's attributes feature will be used to define certain aspects of the virtual hosts file(s). Open a `default.rb` file under the `attributes` directory in your cookbook.
 
@@ -405,7 +405,7 @@ Cookbook files are static documents that are run against the document in the sam
         end
         ~~~
 
-    Your `apache.rb` is now finished! An example of the final file is located [here](/docs/assets/apache.rb).
+    Your `apache.rb` is now finished! An example of the final file is located [here](/content/assets/apache.rb).
 
 
 ## MySQL
@@ -443,7 +443,7 @@ Chef contains a feature knows as *data bags*. Data bags store information, and c
 
         openssl rand -base64 512 > ~/chef-repo/.chef/encrypted_data_bag_secret
 
-2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/docs/applications/chef/setting-up-chef-ubuntu-14-04#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
+2.  Upload this key to your node's `/etc/chef` directory, either manually by `scp` (an example can be found in the [Setting Up Chef](/content/applications/chef/setting-up-chef-ubuntu-14-04#add-the-rsa-private-keys) guide), or through the use of a recipe and cookbook file.
 
 3.  Create a `mysql` data bag that will contain the file `rtpass.json` for the root password:
 
@@ -546,7 +546,7 @@ With the MySQL library downloaded and an encrypted root password prepared, you c
 2.  For easy configuration the `php.ini` file will be created and used as a cookbook file, much like the MPM module above. You can either:
 
      - Add the PHP recipe, run the chef-client, and copy the file from a node (located in `/etc/php5/apache2/php.ini`), or:
-     - Copy it from [here](/docs/assets/chef_php.ini). The file should be moved to the `chef-repo/cookbooks/lamp-stack/files/default/` directory. This can also be turned into a template, if that better suits your configuration.
+     - Copy it from [here](/content/assets/chef_php.ini). The file should be moved to the `chef-repo/cookbooks/lamp-stack/files/default/` directory. This can also be turned into a template, if that better suits your configuration.
 
 3.  `php.ini` is a large file. Search and edit the following values to best suit your Linodes. The values suggested below are for 2GB Linodes:
 
@@ -591,7 +591,7 @@ With the MySQL library downloaded and an encrypted root password prepared, you c
         end
         ~~~
 
-    The PHP recipe is now done! View an example of the `php.rb` file [here](/docs/assets/php.rb).
+    The PHP recipe is now done! View an example of the `php.rb` file [here](/content/assets/php.rb).
 
 6. Ensure that your Chef server contains the updated cookbook, and your node's run list is up-to-date:
 

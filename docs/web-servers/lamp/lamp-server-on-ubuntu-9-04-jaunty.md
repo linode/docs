@@ -14,7 +14,7 @@ published: 'Thursday, July 16th, 2009'
 title: 'LAMP Server on Ubuntu 9.04 (Jaunty)'
 external_resources:
   - '[Ubuntu Linux Home Page](http://www.ubuntu.com/)'
-  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
@@ -27,7 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). This guide assumes that you are logged in as the root superuser on your Linode.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct timezone, hostname, and hosts in your hosts file. If you haven't configured these, you should follow the directions in the [getting started guide](/content/getting-started/). This guide assumes that you are logged in as the root superuser on your Linode.
 
 ## Install and Configure the Apache Web Server
 

@@ -18,7 +18,7 @@ title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 
 [Openfire](http://www.igniterealtime.org/projects/openfire/) is an open source real-time collaboration (instant messaging) server, built on the [XMPP protocol](http://en.wikipedia.org/wiki/Extensible_Messaging_and_Presence_Protocol) and available for multiple platforms. This guide will help you get started with Openfire on your Ubuntu 9.04 (Jaunty) Linode.
 
-If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
+If you haven't done so already, please follow the steps outlined in our [getting started](/content/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
 Install Prerequisites
 ---------------------
@@ -106,23 +106,23 @@ Configure Openfire
 
 Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
-[![Language selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/471-openfire-ubuntu-9.04-01-language-selection.png)](/docs/assets/471-openfire-ubuntu-9.04-01-language-selection.png)
+[![Language selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/content/assets/471-openfire-ubuntu-9.04-01-language-selection.png)](/content/assets/471-openfire-ubuntu-9.04-01-language-selection.png)
 
-Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager)).
+Next, you'll be asked to configure your domain and ports for administration. Use the fully qualified domain name you have assigned to your Linode in DNS (more information: [configuring DNS with the Linode Manager](/content/dns-guides/configuring-dns-with-the-linode-manager)).
 
-[![Domain and admin ports selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)](/docs/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)
+[![Domain and admin ports selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/content/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)](/content/assets/472-openfire-ubuntu-9.04-02-domain-ports-selection.png)
 
 You may choose to use Openfire's internal database for account management, or you may connect to an external database. Most users will want to choose the built-in option.
 
-[![Database type selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/473-openfire-ubuntu-9.04-03-database-selection.png)](/docs/assets/473-openfire-ubuntu-9.04-03-database-selection.png)
+[![Database type selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/content/assets/473-openfire-ubuntu-9.04-03-database-selection.png)](/content/assets/473-openfire-ubuntu-9.04-03-database-selection.png)
 
 User profiles may be stored in the server database, or they may be pulled from LDAP or Clearspace. Most users will want to choose the default option.
 
-[![Profile storage selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/474-openfire-ubuntu-9.04-04-profile-settings.png)](/docs/assets/474-openfire-ubuntu-9.04-04-profile-settings.png)
+[![Profile storage selection in Openfire setup on Ubuntu 9.04 (Jaunty).](/content/assets/474-openfire-ubuntu-9.04-04-profile-settings.png)](/content/assets/474-openfire-ubuntu-9.04-04-profile-settings.png)
 
 Enter the email address of the default administrative user and select a strong password.
 
-[![Administrator account settings in Openfire setup on Ubuntu 9.04 (Jaunty).](/docs/assets/475-openfire-ubuntu-9.04-05-admin-account-settings.png)](/docs/assets/475-openfire-ubuntu-9.04-05-admin-account-settings.png)
+[![Administrator account settings in Openfire setup on Ubuntu 9.04 (Jaunty).](/content/assets/475-openfire-ubuntu-9.04-05-admin-account-settings.png)](/content/assets/475-openfire-ubuntu-9.04-05-admin-account-settings.png)
 
 After the initial web-based configuration is complete, restart the Openfire server before attempting to log in with the default "**admin**" user account.
 

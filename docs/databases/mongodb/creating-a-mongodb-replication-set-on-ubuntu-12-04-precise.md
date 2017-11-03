@@ -21,9 +21,9 @@ external_resources:
 
 MongoDB is an open-source, non-SQL database engine. MongoDB is scalable and an alternative to the standard relational database management system (RDBMS). A replication set is used for redundancy and to provide access to your data in the event of a node failure.
 
-Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our Using Linux document series including the [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assumed that you have followed our getting started guide. If you are new to Linux server administration, you may want to consult our Using Linux document series including the [Introduction to Linux Concepts guide](/content/tools-reference/introduction-to-linux-concepts) and [Administration Basics guide](/content/using-linux/administration-basics).
 
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you are not familiar with the `sudo command`, you can review our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Installing MongoDB
 
@@ -65,7 +65,7 @@ It is imperative that the networking configurations are set and working properly
 
 Before you begin, you will need to obtain all the private IP addresses for each of your Linodes. This information can be found by logging into the Linode Manager. Under the **Remote Access** tab there is a section called "Private/LAN Network". Click on the "Add a Private IP" link to assign a private IP address to your Linode. Again, we are working with a three-member replication set so you will need to acquire this information for each member.
 
-[![Finding your private IP address.](/docs/assets/1698-private_ip-v2.png)](/docs/assets/1698-private_ip-v2.png)
+[![Finding your private IP address.](/content/assets/1698-private_ip-v2.png)](/content/assets/1698-private_ip-v2.png)
 
 ### Setting the Hosts File
 
@@ -272,7 +272,7 @@ For this replset configuration, only the hostname was required to add a new memb
 
 An example of the add member process is included for your reference. Make sure to change names and port numbers to reflect your particular configuration.
 
-[![Add a member to a replication set.](/docs/assets/1689-add-node.png)](/docs/assets/1689-add-node.png)
+[![Add a member to a replication set.](/content/assets/1689-add-node.png)](/content/assets/1689-add-node.png)
 
 Use the `rs.conf()` command to check if the new member is present in the configuration file. In addition, any database should propagate almost immediately (depending on its size) over to the new member.
 

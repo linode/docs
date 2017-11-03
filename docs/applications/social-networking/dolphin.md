@@ -21,7 +21,7 @@ deprecated: true
 
 ## Dolphin Prerequisites
 
-Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/docs/hosting-website). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
+Dolphin requires a standard LAMP (Linux, Apache, MySQL, and PHP) server. If haven't already created a LAMP server, or just want to make sure that you have everything installed, [take a look at our Hosting a Website guide](/content/hosting-website). After you have a LAMP server running, read through the rest of this section to verify that you have the other prerequisites installed.
 
 ### Installing PHP Extensions
 
@@ -72,7 +72,7 @@ You have successfully modified your `php.ini` file for Dolphin.
 
 ### Setting Up Email
 
-To configure Dolphin to send email, you'll need to install either Sendmail or [Postfix](/docs/email/postfix). You should be able to use [send-only exim](/docs/email/exim) as well.
+To configure Dolphin to send email, you'll need to install either Sendmail or [Postfix](/content/email/postfix). You should be able to use [send-only exim](/content/email/exim) as well.
 
 ### Installing JRE
 
@@ -82,7 +82,7 @@ If you'd like to run the Boonex RMS (Ray Media Server), which is a required comp
 
         sudo apt-get install openjdk-6-jre
 
-2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+2.  RMS requires ports 1935, 1936, and 5080 to be open in your firewall. For more information, see the [Securing Your Server guide](/content/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/content/security/firewalls).
 
 You have successfully installed JRE on your Linode.
 
@@ -92,7 +92,7 @@ Now that you've installed the necessary prerequisites, we can start installing D
 
  {: .note }
 >
-> We assume that you followed the [Hosting a Website guide](/docs/hosting-website). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+> We assume that you followed the [Hosting a Website guide](/content/hosting-website). If you're using a different DocumentRoot directive than `/home/example_user/public/example.com/public` for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
 
 ### Downloading Dolphin
 
@@ -179,29 +179,29 @@ Now you can run the install script from your browser. Here's how:
 
 1.  Navigate to <http://example.com/dolphin/install/index.php>. Replace `example.com` with your domain name or IP address. The Dolphin installation page appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1076-dolphin-1-small.png)](/docs/assets/861-Dolphin1.png)
+[![Dolphin installer.](/content/assets/1076-dolphin-1-small.png)](/content/assets/861-Dolphin1.png)
 
 2.  Click **Install** to begin. The webpage shown below appears.
 
-[![Dolphin installer.](/docs/assets/1077-dolphin-2-small.png)](/docs/assets/862-Dolphin2.png)
+[![Dolphin installer.](/content/assets/1077-dolphin-2-small.png)](/content/assets/862-Dolphin2.png)
 
-[![Dolphin installer.](/docs/assets/1078-dolphin-3-small.png)](/docs/assets/863-Dolphin2a.png)
+[![Dolphin installer.](/content/assets/1078-dolphin-3-small.png)](/content/assets/863-Dolphin2a.png)
 
 3.  All of the files listed should be *Writable*. Click **Next** to continue. The *Paths Check* webpage appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1079-dolphin-4-small.png)](/docs/assets/864-Dolphin3.png)
+[![Dolphin installer.](/content/assets/1079-dolphin-4-small.png)](/content/assets/864-Dolphin3.png)
 
 4.  All of the paths listed should be "found". You should also see a **GD library installed** message at the bottom of the webpage. Click **Next** to continue. The *Database* webpage appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1080-dolphin-5-small.png)](/docs/assets/865-Dolphin4.png)
+[![Dolphin installer.](/content/assets/1080-dolphin-5-small.png)](/content/assets/865-Dolphin4.png)
 
 5.  Enter the details for the Dolphin database you created earlier in this guide. Click **Next** to continue. The *Configuration* webpage appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1081-dolphin-6-small.png)](/docs/assets/866-Dolphin5.png)
+[![Dolphin installer.](/content/assets/1081-dolphin-6-small.png)](/content/assets/866-Dolphin5.png)
 
 6.  Complete the form by entering the required information for your website, and then click **Next** to continue. The *Cron Jobs* webpage appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1082-dolphin-7-small.png)](/docs/assets/867-Dolphin6.png)
+[![Dolphin installer.](/content/assets/1082-dolphin-7-small.png)](/content/assets/867-Dolphin6.png)
 
 7.  Now you'll need to set up a cron job specified on the webpage. To set up your cron job, you'll need to open your crontab for editing by entering the following command:
 
@@ -215,7 +215,7 @@ Now you can run the install script from your browser. Here's how:
 9.  To save the cron job, press Control-X, and then press Y to save.
 10. Back in your web browser, click **Next**. The *Permissions Reversal* webpage appears, as shown below.
 
-[![Dolphin installer.](/docs/assets/1083-dolphin-8-small.png)](/docs/assets/868-Dolphin7.png)
+[![Dolphin installer.](/content/assets/1083-dolphin-8-small.png)](/content/assets/868-Dolphin7.png)
 
 11. To reverse your permissions, enter the following commands, one by one. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 
@@ -226,11 +226,11 @@ Now you can run the install script from your browser. Here's how:
 
 12. Back in your web browser, click **Check**. The webpage should now indicate that the directory is "Non-writable", as shown below.
 
-[![Dolphin installer.](/docs/assets/1084-dolphin-9-small.png)](/docs/assets/869-Dolphin7a.png)
+[![Dolphin installer.](/content/assets/1084-dolphin-9-small.png)](/content/assets/869-Dolphin7a.png)
 
 13. Click **Next**. If the webpage shown below appears, You have successfully installed Dolphin on your Linode.
 
-[![Dolphin installer.](/docs/assets/1085-dolphin-10-small.png)](/docs/assets/870-Dolphin8.png)
+[![Dolphin installer.](/content/assets/1085-dolphin-10-small.png)](/content/assets/870-Dolphin8.png)
 
 14. Copy the languages from the install directory by entering the following command. Be sure to replace `example_user` with your username, and `example.com` with your domain name:
 
@@ -362,7 +362,7 @@ Dolphin comes with a free Media Server software (formerly Ray Media Server - RMS
 
  {: .note }
 >
-> If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/docs/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/docs/security/firewalls).
+> If you receive "NetConnection.Connect.Failed", make sure you have ports 1935 and 1936 open in your firewall. For more information, see the [Securing Your Server guide](/content/securing-your-server#configure-a-firewall) and the [Firewall reference manuals](/content/security/firewalls).
 
 21. If your test was successful, hold Control and press C to stop `red5.sh`.
 22. Now you can start RMS as a background process by entering the following command:

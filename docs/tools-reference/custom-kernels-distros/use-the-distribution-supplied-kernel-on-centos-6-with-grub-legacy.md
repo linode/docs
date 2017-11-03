@@ -15,11 +15,11 @@ deprecated: false
 
 This guide will show you how to install and use the distribution-supplied kernel for CentOS 6, with our **Grub Legacy** boot option.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](/content/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 {: .note}
 >
-> This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+> This guide is intended for Linodes running on our KVM hypervisor. For older Xen Linodes, see [this](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
 
 ## Install the Kernel and Configure Grub
 
@@ -61,7 +61,7 @@ title CentOS 6
 	initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
 	  ~~~
 
-5.  In the Linode Manager, edit your Linode's [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
+5.  In the Linode Manager, edit your Linode's [configuration profile](/content/platform/disk-images/disk-images-and-configuration-profiles/#editing-a-configuration-profile) by selecting the **Grub (Legacy)** option within the *Kernel* drop-down menu.
 
 6.  Make sure the root device is specified as **/dev/sda**, and click **Save Profile** at the bottom of the page to confirm your changes.
 

@@ -12,13 +12,13 @@ published: 'Tuesday, August 2nd, 2016'
 title: 'Custom Compiled Kernel on CentOS 7'
 ---
 
-![Custom Compiled Kernel on CentOS](/docs/assets/custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")
+![Custom Compiled Kernel on CentOS](/content/assets/custom-compiled-kernel-on-centos-7.png "Custom compiled kernel on CentOS")
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are not available in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/content/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm).
 
-Prior to these instructions, follow the steps outlined in our [Getting Started guide](/docs/getting-started/). Then, log in to your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Getting Started guide](/content/getting-started/). Then, log in to your Linode as the `root` user.
 
 ## Prepare the System
 
@@ -118,9 +118,9 @@ Once your configuration options are set, exit the configuration interface and an
 
 2.  Under **Boot Settings**, click on the **Kernel** drop-down menu, and select **GRUB2**:
 
-    ![The GRUB2 Option.](/docs/assets/custom-kernel-grub2.png)
+    ![The GRUB2 Option.](/content/assets/custom-kernel-grub2.png)
 
-3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
+3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/content/networking/using-the-linode-shell-lish) or [GLISH](/content/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
 
 
 Note that if you install an updated kernel, you need to create a new `initrd` file, and update GRUB.

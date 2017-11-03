@@ -12,10 +12,10 @@ modified_by:
 published: 'Monday, December 7th, 2009'
 title: 'Apache Access Control'
 external_resources:
- - '[Installation of the Apache web server](/docs/web-servers/apache/)'
- - '[LAMP stack guides](/docs/lamp-guides/)'
- - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
- - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
+ - '[Installation of the Apache web server](/content/web-servers/apache/)'
+ - '[LAMP stack guides](/content/lamp-guides/)'
+ - '[Authentication and Access Control](http://httpd.apache.org/content/2.2/howto/auth.html)'
+ - '[Basic Authentication Module](http://httpd.apache.org/content/2.2/mod/mod_auth_basic.html)'
 ---
 
 While most web server content is created to be available to the public, you may want to restrict some or all of a website to specific users or groups. **HTTP Auth** lets you easily create these restrictions.
@@ -24,9 +24,9 @@ This guide provides an overview of both credential-based and rule-based access c
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode’s hostname is set.
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode’s hostname is set.
 
-2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/websites/apache/) or [LAMP stack installation guides](/docs/websites/lamp).
+2.  Have a working installation of Apache. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/content/websites/apache/) or [LAMP stack installation guides](/content/websites/lamp).
 
 3.  Update your system:
 
@@ -34,9 +34,9 @@ This guide provides an overview of both credential-based and rule-based access c
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 >
->This guide uses the same example file paths as our [Apache on Debian 8](/docs/websites/apache/apache-web-server-debian-8) guide. Be sure to adjust for your distribution.
+>This guide uses the same example file paths as our [Apache on Debian 8](/content/websites/apache/apache-web-server-debian-8) guide. Be sure to adjust for your distribution.
 
 ## Apache Access Control
 

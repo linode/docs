@@ -23,9 +23,9 @@ If you haven't already signed up for a Linode account, start here.
 2.  Sign in and enter your billing and account information. Most accounts are activated instantly, but some require manual review prior to activation. If your account is not immediately activated, you will receive an email with additional instructions.
 3.  Select a Linode plan and datacenter location
 
-    ![Available Linode plans](/docs/assets/linode-manager-select-plan.png)
+    ![Available Linode plans](/content/assets/linode-manager-select-plan.png)
 
-If you're unsure of which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
+If you're unsure of which datacenter to select, see our [speed test](http://www.linode.com/speedtest) to determine which location provides the best performance for your target audience. You can also generate [MTR reports](/content/networking/diagnostics/diagnosing-network-issues-with-mtr/) for each of the datacenters to determine which of our facilities provides the best latency from your particular location.
 
 ## Provision Your Linode
 
@@ -46,11 +46,11 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
 1.  Click on **Deploy an Image**.
 
-    [![Linux Dashboard](/docs/assets/linode-manager-dashboard-newacct_small.png)](/docs/assets/linode-manager-dashboard-newacct.png)
+    [![Linux Dashboard](/content/assets/linode-manager-dashboard-newacct_small.png)](/content/assets/linode-manager-dashboard-newacct.png)
 
     The *Deploy* page opens.
 
-    [![Deploy a Linux Image](/docs/assets/linode-manager-deploy-an-image_small.png)](/docs/assets/linode-manager-deploy-an-image.png)
+    [![Deploy a Linux Image](/content/assets/linode-manager-deploy-an-image_small.png)](/content/assets/linode-manager-deploy-an-image.png)
 
 2.  Select a Linux distribution from the **Image** menu. You can choose from [Arch Linux](http://www.archlinux.org/), [CentOS](http://www.centos.org/), [Debian](http://www.debian.org/), [Fedora](http://fedoraproject.org/), [Gentoo](http://www.gentoo.org/), [openSUSE](http://www.opensuse.org/), [Slackware](http://www.slackware.com/), and [Ubuntu](http://www.ubuntu.com/) to install on your Linode. If you're new to the Linux operating system, consider selecting Ubuntu 16.04 LTS. Ubuntu is the most popular distribution among Linode customers and one of the most well-supported by online communities, so resolving any issues you may have should be simple.
 
@@ -68,11 +68,11 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
     You can use the Linode Manager's Dashboard to monitor the progress in real time as shown below.
 
-    [![Provisioning Status](/docs/assets/linode-manager-provisioning-status_small.png)](/docs/assets/linode-manager-provisioning-status.png)
+    [![Provisioning Status](/content/assets/linode-manager-provisioning-status_small.png)](/content/assets/linode-manager-provisioning-status.png)
 
     When the deployment process is completed, your Linode's configuration profile will appear on the Dashboard.
 
-    [![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
+    [![Configuration Profile](/content/assets/linode-manager-configuration-profile_small.png)](/content/assets/linode-manager-configuration-profile.png)
 
     {: .note }
     >
@@ -84,11 +84,11 @@ Your Linode is now provisioned with the distro of your choice but it's turned of
 
 Click **Boot** to turn on your Linode.
 
-[![Boot your Linode](/docs/assets/linode-manager-power-on-linode_small.png)](/docs/assets/linode-manager-power-on-linode.png)
+[![Boot your Linode](/content/assets/linode-manager-power-on-linode_small.png)](/content/assets/linode-manager-power-on-linode.png)
 
 When booted, the **Server Status** will change from **Powered Off** to **Running** and there will be a successfully completed **System Boot** job in the **Host Job Queue**.
 
-[![Linode Booted](/docs/assets/linode-manager-linode-booted_small.png)](/docs/assets/linode-manager-linode-booted.png)
+[![Linode Booted](/content/assets/linode-manager-linode-booted_small.png)](/content/assets/linode-manager-linode-booted.png)
 
 ## Connect to Your Linode via SSH
 
@@ -101,13 +101,13 @@ Communicating with your Linode is usually done using the secure shell (SSH) prot
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/VVs9Ed-HkjE" frameborder="0" allowfullscreen></iframe>
 
--   **Windows:** There is no native SSH client, but you can use a free, open source application called [PuTTY](/docs/networking/using-putty). For a walk-through of connecting to your Linode in Windows using PuTTY, see the following video:
+-   **Windows:** There is no native SSH client, but you can use a free, open source application called [PuTTY](/content/networking/using-putty). For a walk-through of connecting to your Linode in Windows using PuTTY, see the following video:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/eEsCD7n17mk" frameborder="0" allowfullscreen></iframe>
 
 ### Find the IP Address of Your Linode
 
-Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/docs/hosting-website#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
+Your Linode has a unique *IP address* that identifies it to other devices and users on the internet. For the time being, you'll use the IP address to connect to your server. After you perform some of these initial configuration steps outlined in the Linode Quick Start Guides, you can use [DNS records](/content/hosting-website#add-dns-records) to point a domain name at your server and give it a more recognizable and memorable identifier.
 
 Find your Linode's IP address from the [Linode Manager](https://manager.linode.com).
 
@@ -116,13 +116,13 @@ Find your Linode's IP address from the [Linode Manager](https://manager.linode.c
 3.  Click the **Remote Access** tab.
 4.  Copy the addresses in the Public IPs section.
 
-    [![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
+    [![Public IPs.](/content/assets/1711-remote_access_ips_small.png)](/content/assets/1710-remote_access_ips.png)
 
 In this example, the Linode's IPv4 address is *96.126.109.54* and its IPv6 address is *2600:3c03::f03c:91ff:fe70:cabd*. Unless your internet service provider supports IPv6, you'll want to the use the IPv4 address.
 
 ### Log In for the First Time
 
-Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/docs/networking/using-putty).
+Once you have the IP address and an SSH client, you can log in via SSH. The following instructions are written for Linux and Mac OS X. If you're using PuTTY as your SSH client in Windows, follow [these instructions](/content/networking/using-putty).
 
 1.  Enter the following into your terminal window or application. Replace the example IP address with your Linode's IP address:
 
@@ -204,7 +204,7 @@ After running a sync, it may end with a message that you should upgrade Portage 
 
 ## Setting the Hostname
 
-Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/docs/networking/dns/using-your-systems-hosts-file).
+Your system's hostname should be something unique. Some people name their servers after planets, philosophers, or animals. Note that the hostname has no relationship to websites or email services hosted on it, aside from providing a name for the system itself. Your hostname should *not* be "www" or anything too generic. If you want to assign your system a fully qualified domain name, see our guide on using your system's [hosts file](/content/networking/dns/using-your-systems-hosts-file).
 
 Once you're done, you can verify by running the command `hostname`.
 
@@ -225,7 +225,7 @@ Replace `example_hostname` with one of your choice.
 >
 >Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
 >
->The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
+>The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/content/networking/dns/using-your-systems-hosts-file).
 
 ### CentOS 6
 
@@ -287,4 +287,4 @@ The output should look similar to: `Thu Feb 16 12:17:52 EST 2012`.
 
 ## Next Steps
 
-Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/docs/security/securing-your-server) quick start guide to get going.
+Now that you have an up-to-date Linode, you'll need to secure your Linode and protect it from unauthorized access. Read the [Securing Your Server](/content/security/securing-your-server) quick start guide to get going.

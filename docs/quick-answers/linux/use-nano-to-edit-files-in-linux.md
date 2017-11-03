@@ -12,14 +12,14 @@ modified_by:
   name: Edward Angert
 title: 'Use nano to Edit Files in Linux'
 external_resources:
- - '[Using nano](/docs/tools-reference/tools/using-nano)'
+ - '[Using nano](/content/tools-reference/tools/using-nano)'
  - '[nano help](https://www.nano-editor.org/dist/v2.8/nano.html)'
  - '[Emacs, nano, or Vim: Choose your Terminal-Based Test Editor Wisely](https://medium.com/linode-cube/emacs-nano-or-vim-choose-your-terminal-based-text-editor-wisely-8f3826c92a68)'
 ---
 
 GNU nano, or more commonly, nano is the basic, built-in editor for most Linux distributions. In this QuickAnswer, we'll cover some of the essentials to help you get started.
 
-To learn more, visit our full guide on [using nano](/docs/tools-reference/tools/using-nano).
+To learn more, visit our full guide on [using nano](/content/tools-reference/tools/using-nano).
 
 ## Use nano to Open a System File
 
@@ -29,7 +29,7 @@ From the terminal, enter `nano` and the file name. If the file doesn't exist, na
 
 The above example opens the system hosts file, similar to the following:
 
-![Ubuntu hosts file in nano](/docs/assets/nano-hosts-ubuntu.png "Ubuntu hosts file in nano")
+![Ubuntu hosts file in nano](/content/assets/nano-hosts-ubuntu.png "Ubuntu hosts file in nano")
 
 In the default view, nano displays the file being edited in the center of the top *Titlebar*. At the bottom, the *Shortcut List* shows commonly used commands where `^` stands for the **CTRL** key. To save, hold **CTRL** and press **O** (for Write *O*ut); to exit, **CTRL+X**.
 

@@ -14,7 +14,7 @@ published: 'Friday, September 16th, 2011'
 title: 'OpenCart on Debian 6 (Squeeze)'
 ---
 
-OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).
+OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/content/lamp-guides) on your Linode. You should have also [set the hostname](/content/getting-started#setting-the-hostname).
 
 PHP Settings
 ------------

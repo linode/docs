@@ -20,23 +20,23 @@ external_resources:
     - '[Gogs: GitLab alternative in Go](http://blog.gopheracademy.com/birthday-bash-2014/gogs-gitlab-alternative-in-go/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
-![Install Gogs on Debian 8 Jessie](/docs/assets/gogs_tg.png "Install Gogs on Debian 8 Jessie")
+![Install Gogs on Debian 8 Jessie](/content/assets/gogs_tg.png "Install Gogs on Debian 8 Jessie")
 
-This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before Installing Gogs
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and your Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -161,7 +161,7 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
 We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let Nginx handle the HTTPS for our Gogs site.
 
-1.  Create a [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or buy a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a certificate authority (CA).
+1.  Create a [self-signed SSL certificate](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or buy a [commercial SSL certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate) from a certificate authority (CA).
 
 2.  Install Nginx from the repository:
 
@@ -262,7 +262,7 @@ In this section we will setup Gogs to run automatically on boot by creating a sy
 
 Open `https://example.com:3000` in your browser. It will redirect you to the installation page:
 
-![Gogs installation page](/docs/assets/gogs_debian_jessie_installation_page.png)
+![Gogs installation page](/content/assets/gogs_debian_jessie_installation_page.png)
 
 Modify the database settings to match with the PostgreSQL database we created earlier:
 
@@ -279,7 +279,7 @@ Set your domain and URL under the General Settings section:
 
 Also, you might want to setup an admin account at the bottom of the installation page. Click the **Install Gogs** button when you're ready to start the installation. When it's finished, you will see the login page:
 
-![Gogs Login Page](/docs/assets/gogs_debian_jessie_login_page.png)
+![Gogs Login Page](/content/assets/gogs_debian_jessie_login_page.png)
 
 Congratulations! You have successfully installed Gogs on your server.
 

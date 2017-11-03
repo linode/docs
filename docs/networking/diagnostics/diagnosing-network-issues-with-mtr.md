@@ -20,9 +20,9 @@ external_resources:
 
 MTR is a powerful network diagnostic tool that enables administrators to diagnose and isolate networking errors and provide helpful reports of network status to upstream providers. MTR represents an evolution of the `traceroute` command by providing a greater data sample, as if augmenting `traceroute` with `ping` output. This document provides an in depth overview of MTR, the data it generates, and how to properly interpret and draw conclusions based on the data provided by it.
 
-![Diagnosing Network Issues with MTR](/docs/assets/diagnosing-network-issues-with-mtr.png)
+![Diagnosing Network Issues with MTR](/content/assets/diagnosing-network-issues-with-mtr.png)
 
-For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/docs/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/docs/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/docs/getting-started/) prior to beginning with this document.
+For a basic overview of network diagnostic techniques consider our introduction to [network diagnostics](/content/using-linux/administration-basics#network-diagnostics). If you suspect that you're having some other issue with your system, you may consider our overview of general [system diagnostics](/content/using-linux/administration-basics#system-diagnostics). As a matter of course, it is assumed that all Linode deployments will have completed our [getting started guide](/content/getting-started/) prior to beginning with this document.
 
 ## Network Diagnostics Background
 

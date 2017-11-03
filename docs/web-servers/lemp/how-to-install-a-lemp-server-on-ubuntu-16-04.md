@@ -12,19 +12,19 @@ modified_by:
 published: 'Friday, May 6th, 2016'
 title: 'How to Install a LEMP (Linux, Nginx, MySQL, PHP) Stack on Ubuntu 16.04'
 external_resources:
- - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
- - '[Official Nginx Documentation](http://nginx.org/en/docs/#introduction)'
+ - '[Basic nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
+ - '[Official Nginx Documentation](http://nginx.org/en/content/#introduction)'
 ---
 
 This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP) stack, known as *LEMP*. The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP). Nginx can increase the ability of the server to scale in response to demand.
 
-![LEMP Server on Ubuntu 16.04](/docs/assets/lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")
+![LEMP Server on Ubuntu 16.04](/content/assets/lemp-server-on-ubuntu-1604.png "LEMP Server on Ubuntu 16.04")
 
 ## Before You Begin
 
-- Complete the [Getting Started](/docs/getting-started/) guide, specifically [setting your hostname](/docs/getting-started#setting-the-hostname).
+- Complete the [Getting Started](/content/getting-started/) guide, specifically [setting your hostname](/content/getting-started#setting-the-hostname).
 
-- If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/docs/using-linux/administration-basics).
+- If you are new to Linux systems administration, you may want to consider the [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts) and the [Linux administration basics guide](/content/using-linux/administration-basics).
 
 - Update your system:
 
@@ -32,7 +32,7 @@ This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups Guide](/docs/tools-reference/linux-users-and-groups).
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups Guide](/content/tools-reference/linux-users-and-groups).
 
 ## Nginx
 

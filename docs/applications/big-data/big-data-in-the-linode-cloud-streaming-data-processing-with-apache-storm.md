@@ -17,14 +17,14 @@ external_resources:
 - '[Apache Storm project website](http://storm.apache.org/)'
 - '[Apache Storm documentation](https://storm.apache.org/releases/current/index.html)'
 - '[Storm - Distributed and Fault-Tolerant Real-time Computation](http://www.infoq.com/presentations/Storm-Introduction)'
-image: https://www.linode.com/docs/assets/big_data_linode_cloud.png
+image: https://www.linode.com/content/assets/big_data_linode_cloud.png
 ---
 
 [Apache Storm](http://storm.apache.org/) is a big data technology that enables software, data, and infrastructure engineers to process high velocity, high volume data in real time and extract useful information. Any project that involves processing high velocity data streams in real time can benefit from it.
 
 [Zookeeper](https://zookeeper.apache.org/) is a critical distributed systems technology that Storm depends on to function correctly.
 
-![Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/assets/big_data_linode_cloud.png "Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm")
+![Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/content/assets/big_data_linode_cloud.png "Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm")
 
 Some use cases where Storm is a good solution:
 
@@ -33,20 +33,20 @@ Some use cases where Storm is a good solution:
 -  Analysis of server logs
 -  Internet of Things (IoT) sensor data processing
 
-This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This guide explains how to create Storm clusters on the Linode cloud using a set of shell scripts that use Linode's Application Programming Interface (APIs) to programmatically create and configure large clusters. The scripts are all provided by the author of this guide via [GitHub repository](https://github.com/pathbreak/storm-linode). This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .caution}
 > External resources are outside of our control, and can be changed and/or modified without our knowledge. Always review code from third party sites yourself before executing.
 
  The deployed architecture will look like this:
 
-![Architecture of the Completed Cluster](/docs/assets/storm_zookeeper_architecture_900.png "Deployed Cluster Architecture")
+![Architecture of the Completed Cluster](/content/assets/storm_zookeeper_architecture_900.png "Deployed Cluster Architecture")
 
 &nbsp;
 
 From an application standpoint, the flow of data is depicted below:
 
-![Storm Topology and Deployment](/docs/assets/storm_topology_900.png "Storm Topology and Deployment")
+![Storm Topology and Deployment](/content/assets/storm_topology_900.png "Storm Topology and Deployment")
 
 The application flow begins, from the client side, with the Storm client, which provides a user interface. This contacts a *Nimbus* node, which is central to the operation of the Storm cluster. The Nimbus node gets the current state of the cluster, including a list of the supervisor nodes and *topologies* from the Zookeeper cluster. The Storm cluster's supervisor nodes constantly update their states to the Zookeeper nodes, which ensure that the system remains synced.
 
@@ -64,7 +64,7 @@ This guide will explain how to configure a working Storm cluster and its Zookeep
 -  A Zookeeper or Storm cluster can have either Ubuntu 14.04 LTS or Debian 8 installed on its nodes. Its distribution does not need to be the same one as the one installed on the cluster manager Linode.
 
 {: .note}
->The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide and in the bash scripts referenced require root privileges. Be sure to run the steps below as `root`. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ### Naming Conventions
 
@@ -79,7 +79,7 @@ These are the names we'll use, but you are welcome to choose your own when creat
 
 ### Get a Linode API Key
 
-Follow the steps in [Generating an API Key](/docs/platform/api/api-key) and save your key securely. It will be entered into configuration files in upcoming steps.
+Follow the steps in [Generating an API Key](/content/platform/api/api-key) and save your key securely. It will be entered into configuration files in upcoming steps.
 
 If the key expires or is removed, remember to create a new one and update the `api_env_linode.conf` API environment configuration file on the cluster manager Linode. This will be explained further in the next section.
 
@@ -167,13 +167,13 @@ The first step is setting up a central *Cluster Manager* to store details of all
 
     Once the node is created, you should see output like this:
 
-    ![Cluster Manager creation](/docs/assets/storm-clustermgr-creation-2.png)
+    ![Cluster Manager creation](/content/assets/storm-clustermgr-creation-2.png)
 
     Note the public IP address of the Cluster Manager Linode. You will need this when you log into the cluster manager to create or manage clusters.
 
 8.  The `cluster_manager.sh` script we ran in the previous step creates three users on the Cluster Manager Linode, and generates authentication keypairs for all of them on your workstation, as shown in this illustration:
 
-    ![Security Overview](/docs/assets/storm_clustermgrkeys_900.png)
+    ![Security Overview](/content/assets/storm_clustermgrkeys_900.png)
 
     -  `~/.ssh/clustermgrroot` is the private key for Cluster Manager Linode's *root* user. Access to this user's credentials should be as restricted as possible.
 
@@ -249,7 +249,7 @@ Creating a new Storm cluster involves four main steps, some of which are necessa
 
 ### Create a Zookeeper Image
 
-A *Zookeeper image* is a master disk image with all necessary Zookeeper softwares and libraries installed. We'll create our using [Linode Images](/docs/platform/linode-images) The benefits of using a Zookeeper image include:
+A *Zookeeper image* is a master disk image with all necessary Zookeeper softwares and libraries installed. We'll create our using [Linode Images](/content/platform/linode-images) The benefits of using a Zookeeper image include:
 
 -  Quick creation of a Zookeeper cluster by simply cloning it to create as many nodes as required, each a perfect copy of the image
 -  Distribution packages and third party software packages are identical on all nodes, preventing version mismatch errors
@@ -943,7 +943,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     The master ipset is named *your-cluster-uwls*. By default, it's completely empty, which means nobody is authorized.
 
-    [![Master ipset](/docs/assets/storm-user-whitelist-1-650px.png)](/docs/assets/storm-user-whitelist-1.png "An empty ipset list")
+    [![Master ipset](/content/assets/storm-user-whitelist-1-650px.png)](/content/assets/storm-user-whitelist-1.png "An empty ipset list")
 
 3.  To whitelist an IP address:
 
@@ -953,7 +953,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     These additions are highlighted below:
 
-    [![Whitelist entries](/docs/assets/storm-user-whitelist-2-650px.png)](/docs/assets/storm-user-whitelist-2.png)
+    [![Whitelist entries](/content/assets/storm-user-whitelist-2-650px.png)](/content/assets/storm-user-whitelist-2.png)
 
     {: .note}
     >
@@ -981,7 +981,7 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
     You should see output similar to the following (in addition to custom ipsets if you added them, and the ipsets for the Storm and Zookeeper cluster nodes):
 
-    [![ipset output](/docs/assets/storm-user-whitelist-3.png)](/docs/assets/storm-user-whitelist-3.png)
+    [![ipset output](/content/assets/storm-user-whitelist-3.png)](/content/assets/storm-user-whitelist-3.png)
 
     Disconnect from the client node and navigate back to the `storm-linode` directory on the cluster manager node:
 
@@ -993,11 +993,11 @@ When performing the steps in this section, you should have `clustermgr` authoriz
 
 9.  Finally, verify that the Storm UI web application is accessible by opening `http://public-IP-of-client-node` in a web browser on each whitelisted workstation. You should see the Storm UI web application, which looks like this:
 
-    [![Storm UI](/docs/assets/storm-ui-650px.png)](/docs/assets/storm-ui-large.png)
+    [![Storm UI](/content/assets/storm-ui-650px.png)](/content/assets/storm-ui-large.png)
 
     The Storm UI displays the list of topologies and the list of supervisors executing them:
 
-    [![Storm UI monitoring](/docs/assets/storm-ui-monitor-650px.png)](/docs/assets/storm-ui-monitor.png)
+    [![Storm UI monitoring](/content/assets/storm-ui-monitor-650px.png)](/content/assets/storm-ui-monitor.png)
 
     If the cluster is executing any topologies, they are listed under the **Topology summary** section. Click on a topology to access its statistics, supervisor node logs, or actions such as killing that topology.
 

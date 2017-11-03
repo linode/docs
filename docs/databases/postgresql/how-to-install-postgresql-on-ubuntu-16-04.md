@@ -12,11 +12,11 @@ modified_by:
 published: 'Friday, May 20th, 2016'
 title: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
- - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
+ - '[PostgreSQL Online Documentation](http://www.postgresql.org/content/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 ---
 
-![How to Install PostgreSQL on Ubuntu 16.04](/docs/assets/how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")
+![How to Install PostgreSQL on Ubuntu 16.04](/content/assets/how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")
 
 # A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
 
@@ -24,9 +24,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started guide](/content/getting-started) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -34,7 +34,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/content/tools-reference/linux-users-and-groups) for more information.
 
 ## Install PostgreSQL
 
@@ -171,5 +171,5 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 PostgreSQL listens for connections on `localhost` and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/content/databases/postgresql/pgadmin-windows)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/content/databases/postgresql/pgadmin-macos-x)

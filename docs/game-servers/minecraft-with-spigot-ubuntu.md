@@ -16,7 +16,7 @@ contributor:
     link: https://github.com/Sxw1212
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
+*This is a Linode Community guide. [Write for us](/content/contribute) and
 earn $250 per published guide.*
 
 <hr>
@@ -45,7 +45,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         OpenJDK Runtime Environment (IcedTea 2.5.4) (7u75-2.5.4-1~trusty1)
         OpenJDK 64-Bit Server VM (build 24.75-b04, mixed mode)
 
-4.  If you're running an IP tables firewall (as shown in the [Securing Your Server](/docs/security/securing-your-server/) guide), add an exception to your `iptables` rules:
+4.  If you're running an IP tables firewall (as shown in the [Securing Your Server](/content/security/securing-your-server/) guide), add an exception to your `iptables` rules:
 
         sudo iptables -A INPUT -p tcp --dport 25565 -j ACCEPT
 
@@ -129,7 +129,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
         ~~~
 
-    This line will, at reboot, create a new [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.
+    This line will, at reboot, create a new [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.
 
 5.  Manually start Spigot:
 
@@ -137,7 +137,7 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
     To access the console, type `screen -r` as your **minecraft** user (note if you `su` to the user, you will need to run `script /dev/null` before you can attach to the Screen session).
 
-    You can now follow the [Connecting to your Minecraft Server](/docs/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
+    You can now follow the [Connecting to your Minecraft Server](/content/game-servers/how-to-set-up-minecraft-server-on-ubuntu-or-debian#connect-to-your-minecraft-server) steps from our vanilla Minecraft guide to log in to your new SpigotMC server.
 
     To run admin commands during the game, first run `op username` from the console, replacing `username` with your in-game username. Have fun playing on your new Minecraft server!
 

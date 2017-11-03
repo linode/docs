@@ -12,22 +12,22 @@ modified_by:
 published: 'Friday, February 27, 2015'
 title: Tuning Your Apache Server
 external_resources:
- - '[Apache Performance Tuning](http://httpd.apache.org/docs/2.2/misc/perf-tuning.html)'
- - '[Apache MPM Common Directives](http://httpd.apache.org/docs/2.2/mod/mpm_common.html)'
- - '[Apache 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
+ - '[Apache Performance Tuning](http://httpd.apache.org/content/2.2/misc/perf-tuning.html)'
+ - '[Apache MPM Common Directives](http://httpd.apache.org/content/2.2/mod/mpm_common.html)'
+ - '[Apache 2.4 Documentation](http://httpd.apache.org/content/2.4/)'
 ---
 
 Apache configuration has a major affect on your Linode's performance. The easiest way to increase server performance is to turn off unneeded modules. This guide covers Apache modules, information on which modules to turn off, and other Apache performance tuning options.
 
-![Tuning Your Apache Server](/docs/assets/tuning-your-apache-server.png "Tuning Your Apache Server")
+![Tuning Your Apache Server](/content/assets/tuning-your-apache-server.png "Tuning Your Apache Server")
 
 {: .note}
 >
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ##Tools
 
-There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/docs/uptime/monitoring/top-htop-iotop) and the load-testing program [Siege](/docs/tools-reference/tools/load-testing-with-siege). Linode's own [Longview](/docs/platform/longview/longview) service can also help in server monitoring. At minimum, familiarize yourself with the RAM and CPU usage of your server. Discover usage statistics with these commands:
+There are a variety of tools that can assist in determining if you need to alter resource settings, including the [*top* command](/content/uptime/monitoring/top-htop-iotop) and the load-testing program [Siege](/content/tools-reference/tools/load-testing-with-siege). Linode's own [Longview](/content/platform/longview/longview) service can also help in server monitoring. At minimum, familiarize yourself with the RAM and CPU usage of your server. Discover usage statistics with these commands:
 
 	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
 	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20

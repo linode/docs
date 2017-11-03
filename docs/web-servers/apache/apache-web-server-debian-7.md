@@ -12,23 +12,23 @@ modified_by:
 published: 'Thursday, September 5th, 2013'
 title: 'Apache Web Server on Debian 7 (Wheezy)'
 external_resources:
- - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
- - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
- - '[Tuning Your Apache Sever](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server)'
+ - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/content/2.2/)'
+ - '[Apache Configuration](/content/web-servers/apache/configuration/)'
+ - '[Tuning Your Apache Sever](/content/websites/apache-tips-and-tricks/tuning-your-apache-server)'
 ---
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This tutorial explains how to install and configure the Apache web server on Debian 7 (Wheezy).
 
-Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/docs/websites/lamp/lamp-server-on-debian-7-wheezy).
+Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/content/websites/lamp/lamp-server-on-debian-7-wheezy).
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
--   Make sure you've followed the [Getting Started](/docs/getting-started/) guide.
--   As part of the Getting Started guide, make sure you [set the hostname](/docs/getting-started#setting-the-hostname) for your server.
+-   Make sure you've followed the [Getting Started](/content/getting-started/) guide.
+-   As part of the Getting Started guide, make sure you [set the hostname](/content/getting-started#setting-the-hostname) for your server.
 
     Issue the following commands to make sure your hostname is set properly:
 
@@ -130,7 +130,7 @@ One of Apache's strengths is its ability to be customized with modules. The defa
 
         sudo apt-get install [module-name]
 
-    Modules, after being installed, should be enabled and ready to use, although you may need to apply additional configuration options depending on the module. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
+    Modules, after being installed, should be enabled and ready to use, although you may need to apply additional configuration options depending on the module. Consult the [Apache module documentation](http://httpd.apache.org/content/2.0/mod/) for more information regarding the configuration of specific modules.
 
 
 ### Install Support for Scripting

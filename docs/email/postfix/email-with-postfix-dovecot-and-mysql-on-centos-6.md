@@ -21,7 +21,7 @@ external_resources:
 
 The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-mail server system. This guide will help you get Postfix running on your CentOS 6 Linode, using Dovecot for IMAP/POP3 service, and MySQL to store information on virtual domains and users.
 
-Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
+Prior to using this guide, be sure you have followed the [getting started guide](/content/getting-started/) and set your hostname.
 
 {: .note}
 >
@@ -465,4 +465,4 @@ Now you can test to see what the users of your email server would see with their
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 
-    [![/docs/assets/postfixcentos-mutt.png](/docs/assets/postfixcentos-mutt.png)](/docs/assets/postfixcentos-mutt.png)
+    [![/content/assets/postfixcentos-mutt.png](/content/assets/postfixcentos-mutt.png)](/content/assets/postfixcentos-mutt.png)

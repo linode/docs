@@ -19,7 +19,7 @@ Java is a powerful programming language. Software written in Java can be compile
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  This guide will use `sudo` wherever possible.
 

@@ -25,7 +25,7 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-![SPF and DKIM with Postfix](/docs/assets/Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
+![SPF and DKIM with Postfix](/content/assets/Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
 
@@ -37,11 +37,11 @@ The DNS instructions for setting up SPF, DKIM and DMARC are generic. The instruc
 
 {: .note}
 >
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 {: .caution}
 >
->You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](https://www.linode.com/docs/email/postfix/) for assistance.
+>You must already have Postfix installed, configured and working. Refer to the [Linode Postfix Guides](https://www.linode.com/content/email/postfix/) for assistance.
 >
 >Publishing an SPF DNS record without having the SPF policy agent configured within Postfix is safe; however, publishing DKIM DNS records without having OpenDKIM working correctly within Postfix can result in your email being discarded by the recipient's email server.
 
@@ -85,7 +85,7 @@ For now, we're going to stick with the `mx` version. It's simpler and correct fo
 
 If you're using Linode's DNS Manager, go to the domain zone page for the selected domain and add a new TXT record. The screen will look something like this once you've got it filled out:
 
-![Linode DNS manager add TXT record](/docs/assets/Postfix_SPF_TXT_record.png)
+![Linode DNS manager add TXT record](/content/assets/Postfix_SPF_TXT_record.png)
 
 If your DNS provider allows it (DNS Manager doesn't), you should also add a record of type SPF, filling it in the same way as you did the TXT record.
 
@@ -198,7 +198,7 @@ DKIM involves setting up the OpenDKIM package, hooking it into Postfix, and addi
         OversignHeaders     From
         ~~~
 
-    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/docs/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over `/etc/opendkim.conf`.
+    Edit `/etc/opendkim.conf` and replace it's contents with the above, or download [a copy of opendkim.conf](/content/assets/postfix-opendkim.conf.txt), upload it to your server and copy it over `/etc/opendkim.conf`.
 
 2.  Ensure that file permissions are set correctly:
 
@@ -313,7 +313,7 @@ Paste that into the value for the TXT record.
 
 If you're using Linode's DNS manager, this is what the add TXT record screen will look like when you have it filled out:
 
-![Linode DNS manager add TXT record](/docs/assets/Postfix_DKIM_TXT_record.png)
+![Linode DNS manager add TXT record](/content/assets/Postfix_DKIM_TXT_record.png)
 
 Repeat this for every domain you handle mail for, using the `.txt` file for that domain.
 
@@ -384,7 +384,7 @@ The easiest way to verify that everything's working is to send a test e-mail to 
 
 As a final item, you can add an ADSP policy to your domain saying that all emails from your domain should be DKIM-signed. As usual, it's done with a TXT record for host `_adsp._domainkey` in your domain with a value of `dkim=all`. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
-![Linode DNS Manager add TXT record](/docs/assets/Postfix_ADSP_TXT_record.png)
+![Linode DNS Manager add TXT record](/content/assets/Postfix_ADSP_TXT_record.png)
 
 You don't need to set this up, but doing so makes it harder for anyone to forge email from your domains because recipient mail servers will see the lack of a DKIM signature and reject the message.
 
@@ -402,7 +402,7 @@ This requests mail servers to quarantine (do not discard, but separate from regu
 
 Replace `user@example.com` in the `mailto:` URL with your own email or an email address you own dedicated to receiving reports (an address such as `dmarc@example.com`). This requests aggregated reports in XML showing how many messages fell into each combination of pass and fail results and the mail server addresses sending them. If you're using Linode's DNS Manager, the screen for the new text record will look like this:
 
-![Linode DNS Manager add TXT record](/docs/assets/Postfix_DMARC_TXT_record.png)
+![Linode DNS Manager add TXT record](/content/assets/Postfix_DMARC_TXT_record.png)
 
 DMARC records have a number of available tags and options. These tags are used to control your authentication settings:
 

@@ -21,7 +21,7 @@ external_resources:
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 
 {: .note}
-> To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. If you need help booting the distribution-supplied kernel, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on the topic.
+> To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. If you need help booting the distribution-supplied kernel, [see our guide](/content/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on the topic.
 
 1.  View the current enforcement mode of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.
 
@@ -65,7 +65,7 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
 
 4.  Reboot your Linode. During the bootup process, SELinux may need to run a relabeling of the filesystem. It will handle this automatically and when it's done, it'll reboot the system. If you do not have Lassie enabled, the Linode will shut down and you will need to manually reboot in the Linode Manager.
 
-    ![SELinux filesystem relabel](/docs/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
+    ![SELinux filesystem relabel](/content/assets/selinux-filesystem-relabel.png "SELinux filesystem relabel")
 
 5.  When your Linode boots back up, log in and verify that SELinux is now running in the new enforcement mode. Run `sestatus` again. The output should show that you're in the mode you set in steps 2 and 3 above.
 

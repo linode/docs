@@ -12,19 +12,19 @@ modified_by:
 published: 'Thursday, February 4th, 2010'
 title: Access Futon Over SSH to Administer CouchDB
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty)'
- - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
+ - '[Using PuTTY](/content/networking/using-putty)'
+ - '[Linode Docs - CouchDB](/content/databases/couchdb/)'
 ---
 
 [Futon](http://docs.couchdb.org/en/1.6.1/intro/futon.html) is a web-based administrative interface for [Apache CouchDB](https://couchdb.apache.org/). You can use SSH to connect to your Linode's CouchDB server and then access Futon securely through your web browser. This quick answer assumes you already have CouchDB running on your Linode.
 
-![Futon title graphic.](/docs/assets/couchdb-with-futon-over-ssh-titlegraphic.png)
+![Futon title graphic.](/content/assets/couchdb-with-futon-over-ssh-titlegraphic.png)
 
 ## Establish an SSH connection
 
 **SSH with Windows Using PuTTY**
 
-If you need to get set up with PuTTY, see [our guide](/docs/networking/ssh/ssh-connections-using-putty-on-windows) on using it and verifying your Linode's SSH key fingerprint.
+If you need to get set up with PuTTY, see [our guide](/content/networking/ssh/ssh-connections-using-putty-on-windows) on using it and verifying your Linode's SSH key fingerprint.
 
 To set up the SSH tunnel:
 
@@ -33,7 +33,7 @@ To set up the SSH tunnel:
 - Enter **5984** in the Source Port field and **127.0.0.1:5984** in the Destination field.
 - Click **Add**, then click **Open** to log in.
 
-![PuTTY, CouchDB, Futon](/docs/assets/putty-couchdb-futon.png)
+![PuTTY, CouchDB, Futon](/content/assets/putty-couchdb-futon.png)
 
 **SSH with Mac OS X or Linux**
 
@@ -46,7 +46,7 @@ Enter the following into the terminal of your local computer:
 
 Once the SSH connection is established, open a web browser on your local computer and go to `http://localhost:5984/_utils/`. You'll see the Futon overview page and despite it being an http URL, you're actually connecting to your server securely through an SSH tunnel.
 
-![Futon interface](/docs/assets/couchdb-futon.png)
+![Futon interface](/content/assets/couchdb-futon.png)
 
 {: .note}
 >

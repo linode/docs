@@ -11,20 +11,20 @@ modified_by:
 published: 'Monday, December 12th, 2016'
 title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:
- - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
+ - '[PostgreSQL Online Documentation](http://www.postgresql.org/content/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 alias: ['databases/postgresql/use-postgresql-relational-databases-on-centos-7/']
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.
 
-![Use PostgreSQL Relational Databases on CentOS 7](/docs/assets/use-postgresql-on-centos-7-title.png "Use PostgreSQL Relational Databases on CentOS 7")
+![Use PostgreSQL Relational Databases on CentOS 7](/content/assets/use-postgresql-on-centos-7-title.png "Use PostgreSQL Relational Databases on CentOS 7")
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started guide](/content/getting-started) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server guide](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server guide](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -32,7 +32,7 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/content/tools-reference/linux-users-and-groups) for more information.
 
 ## Install PostgreSQL
 
@@ -106,7 +106,7 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 
     Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.
 
-    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7#secure-local-access) for information about changing this setting.
+    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/content/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7#secure-local-access) for information about changing this setting.
 
 ### Access the PostgreSQL Shell
 
@@ -137,7 +137,7 @@ It's also possible to assign ownership of the database to a specific Postgres us
 
     createdb mytestdb -O examplerole
 
-The `createdb` command has several additional options, which can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/9.2/static/app-createdb.html).
+The `createdb` command has several additional options, which can be found in the [PostgreSQL documentation](https://www.postgresql.org/content/9.2/static/app-createdb.html).
 
 ### Connect to a Database
 
@@ -240,7 +240,7 @@ Delete tables with `DROP TABLE`. To delete the `employees` table:
 
 ### Add Columns
 
-Tables can be altered to add definitions, data types and columns. In this example you'll add a new `start_date` column that uses the [date](https://www.postgresql.org/docs/9.2/static/datatype-datetime.html) data type.
+Tables can be altered to add definitions, data types and columns. In this example you'll add a new `start_date` column that uses the [date](https://www.postgresql.org/content/9.2/static/datatype-datetime.html) data type.
 
 1.  Add the `start_date` column to the `employees` table:
 
@@ -257,7 +257,7 @@ Tables can be altered to add definitions, data types and columns. In this exampl
                   1 | John       | Doe       |
         (1 row)
 
-    In this example you've used the `date` data type, but PostgreSQL tables support several different types of data. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/datatype.html) for a full explanation of supported data types.
+    In this example you've used the `date` data type, but PostgreSQL tables support several different types of data. See the [PostgreSQL Documentation](https://www.postgresql.org/content/9.2/static/datatype.html) for a full explanation of supported data types.
 
 ### Add and Update Rows
 
@@ -319,7 +319,7 @@ You'll receive an output similar to this:
     Doe       |           1
     (1 row)
 
-PostgreSQL supports many querying options. See the [PostgreSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-select.html) for more information.
+PostgreSQL supports many querying options. See the [PostgreSQL Documentation](https://www.postgresql.org/content/9.2/static/sql-select.html) for more information.
 
 ## Work With Roles
 
@@ -384,7 +384,7 @@ For ease of administration, it's possible to add multiple user roles to a single
         group        |                                                | {}
         postgres     | Superuser, Create role, Create DB, Replication | {}
 
-    The `createuser` command has several other options. See the [PostgreSQL documentation](https://www.postgresql.org/docs/9.2/static/app-createuser.html) for more details.
+    The `createuser` command has several other options. See the [PostgreSQL documentation](https://www.postgresql.org/content/9.2/static/app-createuser.html) for more details.
 
 4.  When you've finished applying your changes, exit the Postgres shell with `\q`.
 
@@ -400,7 +400,7 @@ While specific settings and privileges can be applied to a role when it's create
 
         ALTER ROLE examplerole CREATEDB;
 
-    A number of permissions can be applied when creating or altering a role. See the [PostgeSQL Documentation](https://www.postgresql.org/docs/9.2/static/sql-createrole.html) for more details.
+    A number of permissions can be applied when creating or altering a role. See the [PostgeSQL Documentation](https://www.postgresql.org/content/9.2/static/sql-createrole.html) for more details.
 
 3.  Use `\du` to confirm your changes. You'll see that the "Create DB" attribute is listed next to the `examplerole` user:
 
@@ -468,7 +468,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 ### Secure Remote Access
 
-PostgreSQL listens for connections on `localhost` by default, and it is not advised to reconfigure it to listen on public IP addresses. If you wish to make PostgreSQL externally accessible, it's recommended that you follow the Postgres documentation for [using SSL](https://www.postgresql.org/docs/9.2/static/ssl-tcp.html) to secure your remote connections. Alternatively, you could connect to PostgreSQL over an [SSH tunnel](https://www.postgresql.org/docs/9.2/static/ssh-tunnels.html). To access your databases remotely using a graphical tool, please follow one of these guides:
+PostgreSQL listens for connections on `localhost` by default, and it is not advised to reconfigure it to listen on public IP addresses. If you wish to make PostgreSQL externally accessible, it's recommended that you follow the Postgres documentation for [using SSL](https://www.postgresql.org/content/9.2/static/ssl-tcp.html) to secure your remote connections. Alternatively, you could connect to PostgreSQL over an [SSH tunnel](https://www.postgresql.org/content/9.2/static/ssh-tunnels.html). To access your databases remotely using a graphical tool, please follow one of these guides:
 
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/content/databases/postgresql/pgadmin-windows)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/content/databases/postgresql/pgadmin-macos-x)

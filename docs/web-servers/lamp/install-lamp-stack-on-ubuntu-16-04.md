@@ -13,7 +13,7 @@ published: 'Thursday, April 28th, 2016'
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
- - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
@@ -22,17 +22,17 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common, free and open-source web s
 
 This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
-![Install LAMP on Ubuntu 16.04](/docs/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
+![Install LAMP on Ubuntu 16.04](/content/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/content/tools-reference/linux-users-and-groups).
 >
 >Replace each instance of `example.com` in this guide with your site's domain name.
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides and that the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides and that the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -61,7 +61,7 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
 2. The `KeepAlive` setting allows Apache to utilize server-side memory, reducing latency for users on the hosted site. `KeepAlive` will make a website faster if the host has enough memory to support it. This is done by allowing Apache to reuse connections, instead of opening a new connection for every request.
 
-    The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
+    The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/content/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
     {: .file}
     /etc/apache2/apache2.conf
@@ -157,7 +157,7 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
         sudo systemctl reload apache2
 
-Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/docs/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
+Virtual hosting should now be enabled. To allow the virtual host to use your domain name, be sure that you have configured [DNS services](https://www.linode.com/content/networking/dns/dns-manager-overview) for your domain to point to your Linode's IP address.
 
 If there are additional websites you wish to host on your Linode, repeat the above steps to add a folder and configuration file for each.
 

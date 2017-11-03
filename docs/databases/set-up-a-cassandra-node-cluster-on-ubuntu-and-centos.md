@@ -19,11 +19,11 @@ external_resources:
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
 ---
 
-![Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7](/docs/assets/Cassandra/cass.png "Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7")
+![Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7](/content/assets/Cassandra/cass.png "Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7")
 
 ## What is Apache Cassandra
 
@@ -31,15 +31,15 @@ Apache Cassandra is an open-source application that is managed through a simple 
 
 Cassandra NoSQL databases are ideal for situations requiring maximum data redundancy and uptime, ease of horizontal scaling across multiple unique servers, and evolving project needs during the software development lifecycle, which would otherwise be heavily restricted by traditional relational database implementations.
 
-This guide is [Part 2 in a series](/docs/databases/deploy-scalable-cassandra) detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
+This guide is [Part 2 in a series](/content/databases/deploy-scalable-cassandra) detailing the implementation of Apache Cassandra on Ubuntu 16.04 and CentOS 7 distributions. To complete this guide, you must have at least two Cassandra nodes setup on two separate Linodes. By following these instructions, you will learn how to link your Cassandra nodes together to form a true cluster.
 
 You will also learn how to secure communication between your nodes, as well as reinforce your cluster against typical failure points. The resulting cluster will be production-ready and configured for maximum uptime.
 
 ## Before You Begin
 
-1. You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/docs/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
+1. You must have at least two Cassandra nodes set up and configured according to the [Deploy A Scalable And Development-Driven NoSQL DB With Apache Cassandra](/content/databases/deploy-scalable-cassandra) guide. The Cassandra nodes should have equal or similar hardware specs; otherwise, bottlenecks can occur.
 
-2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/docs/security/firewalls/introduction-to-firewalld-on-centos).
+2. A working firewall is a necessary security measure. Firewall-specific instructions will be presented for UFW, FirewallD, and IPtables. Steps for setting up UFW can be found at [How to Configure a Firewall with UFW](/content/security/firewalls/configure-firewall-with-ufw). FirewallD instructions are located at [Introduction to FirewallD on CentOS](/content/security/firewalls/introduction-to-firewalld-on-centos).
 
 3. Most of the commands in this guide require root privileges in order to execute. You may work through the guide as-is if you can run the commands under the root account in your system. Alternatively, an elevated user account with sudo privileges can be used as long as each command is prefixed with `sudo`.
 

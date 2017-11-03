@@ -15,7 +15,7 @@ contributor:
     link: https://github.com/agottschling
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
+*This is a Linode Community guide. [Write for us](/content/contribute) and
 earn $250 per published guide.*
 
 <hr>
@@ -24,11 +24,11 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 {: .note }
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the sudo command, reference the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Before You Begin
 
-1.  Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides for help configuring the Linode.
+1.  Have a Linode running Ubuntu 14.04. Follow the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides for help configuring the Linode.
 
 2.  Ensure the Linode is up-to-date:
 
@@ -56,7 +56,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
     {: .note }
     >
-    > If you've configured the firewall according to the [Securing Your Server](/docs/security/securing-your-server) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
+    > If you've configured the firewall according to the [Securing Your Server](/content/security/securing-your-server) guide, be sure to add these port ranges to the `/etc/iptables.firewall.rules` file.
 
 ## Install Pritunl
 
@@ -70,7 +70,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 2.  Open a web browser on your computer, and navigate to `https://123.45.67.89:9700`, replacing `123.45.67.89` with your Linode's IP address. You will see a screen similar to this:
 
-    [![Pritunl DB setup screen](/docs/assets/pritunl-db-setup-resized.png)](/docs/assets/pritunl-db-setup.png)
+    [![Pritunl DB setup screen](/content/assets/pritunl-db-setup-resized.png)](/content/assets/pritunl-db-setup.png)
 
 3.  Connect to the database. The installer has already populated the mongoDB URI. If it looks correct, click **Save**.
 
@@ -85,7 +85,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 2.  The Inital Setup form will appear:
 
-    ![Pritunl setup screen](/docs/assets/pritunl-setup.png)
+    ![Pritunl setup screen](/content/assets/pritunl-setup.png)
 
     Fill out the form, and press **Save**.
 
@@ -99,7 +99,7 @@ Pritunl is an open source VPN server and management panel. It gives the user the
 
 4.  Go to the **Servers** tab. Click **Add server**. You will see a screen like the following:
 
-    ![Pritunl server setup screen](/docs/assets/pritunl-server-conf.png)
+    ![Pritunl server setup screen](/content/assets/pritunl-server-conf.png)
 
     If a firewall is set up, make sure that the **Port** and **Protocol** fields match the firewall exceptions added earlier.
 

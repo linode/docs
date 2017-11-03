@@ -14,11 +14,11 @@ contributor:
     name: Nick Rahl
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
 ----
 
-![How to Install Asterisk on CentOS 7](/docs/assets/how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
+![How to Install Asterisk on CentOS 7](/content/assets/how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
 
 ## What is Asterisk?
 
@@ -28,14 +28,14 @@ This guide covers the steps necessary to provision a new CentOS 7 Linode as a de
 
 {: .note}
 >
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+>This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 
 ## Before You Begin
 
 1.  Create a CentOS 7 Linode in your closest datacenter (barring Atlanta, which does not currently support SIP servers). A 2GB Linode is enough to handle 10-20 concurrent calls using a non-compressed codec, depending on the processing required on each channel.
 
-2.  Ensure you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
+2.  Ensure you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides to prepare your server. **Do not** following the section to set up a firewall.
 
 3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
@@ -277,7 +277,7 @@ There is one exception: If you plan to host conference calls on your Asterisk bo
 
 Since DAHDI is a kernel module it needs kernel headers in order to compile. The Linode-supplied kernel is a different version than the headers supplied in the CentOS repository, so we'll need to switch to the distribution-supplied kernel.
 
-Follow the instructions at [Run a Distribution-Supplied Kernel on a XEN Linode](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm) before continuing with the next steps.
+Follow the instructions at [Run a Distribution-Supplied Kernel on a XEN Linode](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [Run a Distribution-Supplied Kernel on a KVM Linode](/content/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm) before continuing with the next steps.
 
 {: .caution}
 >

@@ -21,10 +21,10 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 1.  Ensure that you have completed the following guides:
 
-    -   [Getting Started](/docs/getting-started)
-    -   [Securing Your Server](/docs/security/securing-your-server)
-    -   [Install a LAMP stack](/docs/websites/lamp/lamp-on-ubuntu-14-04)
-    -   [Install and Configure Drupal 8](/docs/websites/cms/install-and-configure-drupal-8)
+    -   [Getting Started](/content/getting-started)
+    -   [Securing Your Server](/content/security/securing-your-server)
+    -   [Install a LAMP stack](/content/websites/lamp/lamp-on-ubuntu-14-04)
+    -   [Install and Configure Drupal 8](/content/websites/cms/install-and-configure-drupal-8)
 
 2.  Confirm the name of your site's Document Root folder by running the following command on your Linode:
 
@@ -42,7 +42,7 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
 ## Create Backups
 
-Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/docs/tools-reference/tools/schedule-tasks-with-cron):
+Back up existing files and move the archive into the backups directory. This process can also be scripted and run on a regular basis using [cron](/content/tools-reference/tools/schedule-tasks-with-cron):
 
     cd /var/www/html/example.com/public_html
     sudo tar -cvzf example.com-BCKP-$(date +%Y%m%d).tar.gz ./
@@ -57,7 +57,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 2.  Right click "Download" to the right of the desired version and copy the link address:
 
-    [![A Drupal Update](/docs/assets/drupal-updates-download-small.png)](/docs/assets/drupal-updates-download.png)
+    [![A Drupal Update](/content/assets/drupal-updates-download-small.png)](/content/assets/drupal-updates-download.png)
 
 3.  Connect to your Linode over SSH:
 
@@ -74,11 +74,11 @@ Back up existing files and move the archive into the backups directory. This pro
 
 1.  Back in your browser navigate to **Configuration**, **Development**, then **Maintenance mode**.
 
-    ![Maintenance Mode](/docs/assets/drupal-updates-maintenance.png)
+    ![Maintenance Mode](/content/assets/drupal-updates-maintenance.png)
 
 2.  Check the box next to "Put site into maintenance mode." Enter a message if desired, and click **Save Configuration**.
 
-    [![Title](/docs/assets/drupal-updates-maintenance2-small.png)](/docs/assets/drupal-updates-maintenance2.png)
+    [![Title](/content/assets/drupal-updates-maintenance2-small.png)](/content/assets/drupal-updates-maintenance2.png)
 
 ### Replace System Files
 
@@ -104,7 +104,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 4.  Follow the prompts to continue the update.
 
-5.  If installing additional modules or configuring additional security settings, proceed to the *[Additional Security](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#additional-security)* section below. Return to Step 6 once those configurations are complete.
+5.  If installing additional modules or configuring additional security settings, proceed to the *[Additional Security](/content/websites/cms/update-and-secure-drupal-8-on-ubuntu#additional-security)* section below. Return to Step 6 once those configurations are complete.
 
 6.  Rebuild the site's cache by clicking **Configuration** in the Admin Toolbar, then **Performance** under Development. Click **Clear all caches**.
 
@@ -112,7 +112,7 @@ Back up existing files and move the archive into the backups directory. This pro
 
 8.  From your Linode, open `/var/www/html/example.com/public_html/sites/default/settings.php` and confirm that `$update_free_access = FALSE`.
 
-9.  If everything looks good, take the site out of maintenance mode *[described above](/docs/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
+9.  If everything looks good, take the site out of maintenance mode *[described above](/content/websites/cms/update-and-secure-drupal-8-on-ubuntu#put-the-site-into-maintenance-mode)* by unchecking the box next to "Put site into maintenance mode."
 
 ## Additional Security
 

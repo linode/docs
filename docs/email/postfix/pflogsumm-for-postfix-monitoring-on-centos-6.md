@@ -17,21 +17,21 @@ external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
 
 <hr>
 
-Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
+Pflogsumm is a simple Perl script that monitors your [Postfix](/content/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
  {: .note }
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 ## Prerequisites
 
 Make sure these prerequisites are installed:
 
--   [Postfix](/docs/email/postfix)
+-   [Postfix](/content/email/postfix)
 -   Perl 5.004
 -   Perl's Date::Calc module
 
@@ -116,7 +116,7 @@ This list was taken from the [Pflogsumm](http://jimsun.linxnet.com/postfix_contr
 
 ## Scheduling Reports with Cron
 
-Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the [Cron](/docs/linux-tools/utilities/cron) article.
+Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail server stats to you as a daily email. This is great for monitoring your mail server. The example below schedules the email for 1:01 PM every day. For details on how to customize the time the email is sent, you should read the [Cron](/content/linux-tools/utilities/cron) article.
 
 1.  Open the **root** user's Crontab by running the following command:
 
