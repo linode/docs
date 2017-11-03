@@ -25,7 +25,7 @@ external_resources:
 
 ----
 
-![Hadoop_YARN](/docs/assets/spark_hadoop_yarn.jpg)
+![How to Install and Set Up a 3-Node Hadoop Cluster](/docs/assets/spark_hadoop_yarn.jpg "How to Install and Set Up a 3-Node Hadoop Cluster")
 
 ## What is Hadoop?
 
@@ -514,4 +514,4 @@ Yarn jobs are packaged into `jar` files and submitted to YARN for execution with
 Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
-- Install Spark on top on your YARN cluster with [Linode Spark guide](to/be/confirmed).
+- Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster).
