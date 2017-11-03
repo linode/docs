@@ -101,7 +101,7 @@ The Debian project does not track the latest development of the nginx server. Co
 4.  Extract the file, then navigate to the new directory:
 
         sudo tar -zxvf nginx-1.*.tar.gz
-        cd /nginx-1.*
+        cd nginx-1.*
 
 5.  Configure the build options. You may also wish to install additional modules and specify additional settings in this step, depending on your needs:
 
