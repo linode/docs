@@ -51,9 +51,9 @@ Verify machine hostname and hosts file by issuing the below commands.
 `cat /etc/hostname`
 
 
-Finally, reboot the Debian VPS server in order to apply all kernel updates and set machine hostname changes properly.
+Reboot the Linode from the Manager:
 
-`systemctl reboot`
+
 
 
 
@@ -528,7 +528,7 @@ RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 ~~~
 
 That’s all! You have successfully installed, set-up and secured Icinga2 engine monitoring application and Icinga Web 2 Interface in Debian 9. 
-
+<!--
 
 ### Monitor Remote Hosts via Simple Host Monitoring
 
@@ -807,6 +807,9 @@ Finally, to apply all the configurations made so far, restart icinga2 service an
 
 ![description](images/25.PNG)
 
+ DEAR COPY EDITOR-- CONSIDER REMOVING THIS COMMENTED SECTION. 
+
+-->
 
 That’s all! You have successfully configured Icinga2 as a master node and added a CentOS 7 machine client node to be remotely checked via Icinga2 agent-based monitoring system and another remote host to be actively monitored via external services command checks.
 For further complex configurations regarding Icinga2 installation and setup and monitoring mechanisms, please visit Icinga2 documentation at the following internet address: https://www.icinga.com/docs/icinga2/latest/doc/01-about/ 
