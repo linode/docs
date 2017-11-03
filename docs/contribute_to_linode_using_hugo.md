@@ -49,7 +49,9 @@ The Linode documentation site is built using [Hugo](http://gohugo.io), a static 
 
 2.  For other platforms, go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform.
 
-        curl -o hugo_0.30.2_Linux-64bit.deb /usr/local/bin/hugo
+        curl -OL https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.tar.gz
+        tar -xvzf hugo_0.30.2_Linux-64bit.tar.gz
+        sudo mv hugo /usr/local/bin
 
 {{< caution >}}
 We recommend using Hugo version >=0.30. Earlier versions will not render our documentation correctly.
