@@ -5,7 +5,7 @@ author:
 description: Our guide to installing and using Linode Longview.
 keywords: ["system monitoring", "longview", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['longview/']
+aliases: ['longview/', 'uptime/longview/']
 modified: 2017-05-26
 modified_by:
   name: Angel Guarisma

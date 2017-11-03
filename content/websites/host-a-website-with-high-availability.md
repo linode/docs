@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'How to configure a highly available web server stack'
 keywords: ["high availability", "web server", "failover", " "]
+aliases: ['uptime/loadbalancing/host-a-website-with-high-availability/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-07-12
 modified: 2017-06-07

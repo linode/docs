@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot, and MySQL.'
 keywords: ["email", " mail", " server", " postfix", " dovecot", " mysql", " debian", " ubuntu", " dovecot 2"]
+aliases: ['email/email-with-postfix-dovecot-and-mysql/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-04-29
 modified_by:
