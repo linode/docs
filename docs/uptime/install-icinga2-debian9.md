@@ -67,7 +67,7 @@ After Apache web server and PHP interpreter had been installed in your Debian sy
 
 `ss- tulpn`
 
-![description](images/1.png)
+![description](/docs/assets/1.png)
 
 
 
@@ -106,7 +106,7 @@ Finally, test if Apache web server default web page can be displayed in your cli
 [http://your_domain.tld](http://your_domain.tld)
 
 
-![description](images/2.png)
+![description](/docs/assets/2.png)
 
 
 
@@ -267,12 +267,12 @@ The installation of Icinga2 will be done via Debian 9 Apt Package Manager tool w
 
 During the installation of Icinag2 via Debian 9 repositories, you will be asked a series of question that will help you in setting-up the application. In the first question prompt, you will be asked if you want to configure and enable Icinga2 to use MySQL module. Select Yes from the prompt and hit [enter] key to continue as illustrated in the below image.
 
-![description](images/Picture1.png)
+![description](/docs/assets/Picture1.png)
 
 
 The next prompt question will ask you if you want to configure database for icinga2-ido-mysql with dbconfig-common option. Choose No from the prompt and press [enter] key to finish Icinga2 installation.
 
-![description](images/Picture2.png)
+![description](/docs/assets/Picture2.png)
 
 After Icinga2 application has been installed in your Debian VPS, start Icinga2 service and check the daemon status by running the following commands.
 
@@ -362,38 +362,38 @@ Start Icinga2 confguration process by opening a browser and navigate your VPS IP
 
 In the first installation stage, you will be asked to fill the token filed with the generated token from command line in order to start the installation process, as shown in the below screenshot. Add the generated toked copied to clipboard and press the Next button to continue the configuration process.
 
-![description](images/3.png)
+![description](/docs/assets/3.png)
 
 
 On the next screen select and enable Doc and Monitoring modules and hit on Next button to continue, as illustrated in the below image.
 
-![description](images/4.png)
+![description](/docs/assets/4.png)
 
 Next, Icinga2 will check your system requirements and PHP modules to see if all requirements are meet to continue with the installation and configuration process. Scroll down to the end of the page and hit on Next button to continue. This step is illustrated in the following two images.
 
-![description](images/5.png)
+![description](/docs/assets/5.png)
 
-![description](images/6.png)
+![description](/docs/assets/6.png)
 
 
 On the next screen, choose **Authentication Type = Database** and hit Next button to continue.
 
-![description](images/7.png)
+![description](/docs/assets/7.png)
 
 
 In the next step add the credentials need to access Icinga2 database created for storing web interface users and groups. First add the name of the MySQL database (add database information of the second database created earlier). Use `icingaweb_db` as a name for this resource and leave the Host, Port and Character set variables as default.  Also, don’t enable Persistent and SSL options and hit on **Validate Configuration button** to validate the database. After the database has been validated successfully, hit on Next button to continue to the next phase of Icinga2’s configuration process.
 
-![description](images/8.png)
+![description](/docs/assets/8.png)
 
 Next, define a name for database authentication backed (you can use the default value) and hit on Next button to continue, as illustrated in the below screenshot
 
-![description](images/9.png)
+![description](/docs/assets/9.png)
 
 
 
 On the next screen, add a username with a strong password in order to log in to Icinga2 web interface and further manage Icinga2 engine and click on the Next button to continue the configuration process.
 
-![description](images/10.png)
+![description](/docs/assets/10.png)
 
 
 Next, adjust Icinga2 application and logging configurations by using the below settings:
@@ -412,25 +412,25 @@ Next, adjust Icinga2 application and logging configurations by using the below s
 Hit on the Next button to continue the set-up process.
 
 
-![description](images/13.png)
+![description](/docs/assets/13.png)
 
 The next configuration screen will present a summary of Icinga2 configuration will all configuration made until reaching this step. Review the information report and hit on Next button to continue further with the configuration process.
 
-![description](images/14.png)
+![description](/docs/assets/14.png)
 
 
 At the following installation screen, press on Next button to continue with setting-up Icinga2 engine monitoring module.
 
-![description](images/15.png)
+![description](/docs/assets/15.png)
 
 
 In the next setup screen add a name for Icinga2 Backend, select **IDO** as Backend Type and hit on Next button to continue.
 
-![description](images/16.png)
+![description](/docs/assets/16.png)
 
 Next, add Icinga2 engine database credentials in order to setup the IDO resource environment. After adding Icinga2 database credentials, hit on **Validate Configuration** button to validate Icinga2 Monitoring IDO Resource and, then, after the successfully validated message appears in the screen, hit on Next button to continue to next setup stage.
 
-![description](images/17.png)
+![description](/docs/assets/17.png)
 
 
 Next, configure Icinga2 Command Transport module with the below configurations and hit on Next button to continue the setup process.
@@ -442,26 +442,26 @@ Next, configure Icinga2 Command Transport module with the below configurations a
 -Command File = `/var/run/icinga2/cmd/icinga2.cmd`
 
 
-![description](images/18.png)
+![description](/docs/assets/18.png)
 
 On the next screen configure the monitoring security environment variables in order protect eavesdropping sensitive information and hit the Next button to continue. You should be safe to continue with the default values provided by Icinga2.
 
-![description](images/19.png)
+![description](/docs/assets/19.png)
 
 
 The next configuration screen will display a detailed report with all configurations made until this step. A message will also show you that Icinga2 Monitoring module has been successfully configured. Review all the configurations made so far and hit on the Finish button to complete the setup process.
 
-![description](images/20.png)
+![description](/docs/assets/20.png)
 
 
 Finally, after the installation and setup-up process completes, a green message will inform you that Icinga Web 2 has been successfully set up. The only thing left now is to hit on the Login to Icinga Web 2 button in order to exit the setup process and log in to Icinga Web 2 login webpage.
 
-![description](images/21.png)
+![description](/docs/assets/21.png)
 
 
 Log in to Icinga Web 2 with the account credentials configured during the installation process and you will be directed to Icinga Web 2 Dashboard, where you should see the default services and VPS system resources that are currently monitored by Icinga2 engine.
 
-![description](images/22.png)
+![description](/docs/assets/22.png)
 
 
 ## Secure Icinga Web 2 Interface Via TLS
@@ -488,7 +488,7 @@ Insert the below lines of code after DocumentRoot statement as shown in the belo
 </Directory>
 ~~~
 
-![description](images/Picture3.png)
+![description](/docs/assets/Picture3.png)
 
 
 Finally, restart Apache daemon to apply the new configuration file and visit your domain name or your VPS IP address via HTTP protocol. Because you’re using the Self-Signed certificate generated by Apache, an error warning should be displayed in the browser. Accept the warning in order to continue and be redirected to Icinga Web 2 via HTTPS protocol.
@@ -564,11 +564,11 @@ Finally, to apply the Host definitions and start periodically monitor the new ho
 Verify the state of the new added host by navigating to **Overview -> Hosts** in Icinga’s Web 2 interface. In the right plane you should see the health status of the new added host. 
 
 
-![description](images/23.PNG)
+![description](/docs/assets/23.PNG)
 
 To display the status of the host’s HTTP service, navigate to **Overview -> Servicegroups** and hit on HTTP Checks. In the right plane you should see health status of the external web service.
 
-![description](images/24.PNG)
+![description](/docs/assets/24.PNG)
 
 
 
@@ -805,7 +805,7 @@ apply Service "procs" {
 
 Finally, to apply all the configurations made so far, restart icinga2 service and navigate to Icinga Web 2 interface to verify if the command checks are running on the remote node host. If the configuration is correctly configured you should see a list of internal parameters displayed for your remote client endpoint node.
 
-![description](images/25.PNG)
+![description](/docs/assets/25.PNG)
 
 
 That’s all! You have successfully configured Icinga2 as a master node and added a CentOS 7 machine client node to be remotely checked via Icinga2 agent-based monitoring system and another remote host to be actively monitored via external services command checks.
