@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the CentOS 5 operating system.'
-keywords: 'ruby on rails,rails on CentOS,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "rails on CentOS", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/centos-5/','websites/ror/ruby-on-rails-with-nginx-on-centos-5/']
-modified: Wednesday, July 20th, 2011
+aliases: ['frameworks/ruby-on-rails-nginx/centos-5/','websites/ror/ruby-on-rails-with-nginx-on-centos-5/']
+modified: 2011-07-20
 modified_by:
   name: Linode
-published: 'Friday, August 21st, 2009'
+published: 2009-08-21
 title: Ruby on Rails with Nginx on CentOS 5
 ---
 

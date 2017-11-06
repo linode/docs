@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 5 (Lenny).'
-keywords: 'apache debian 5,apache web server,apache debian lenny,web server,apache on debian,apache lenny'
+keywords: ["apache debian 5", "apache web server", "apache debian lenny", "web server", "apache on debian", "apache lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/debian-5-lenny/','websites/apache/apache-2-web-server-on-debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['web-servers/apache/installation/debian-5-lenny/','websites/apache/apache-2-web-server-on-debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, July 27th, 2009'
+published: 2009-07-27
 title: 'Apache 2 Web Server on Debian 5 (Lenny)'
 ---
 
@@ -85,42 +85,42 @@ Each additional virtual host needs its own file in the `/etc/apache2/sites-avail
 
 First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following example.
 
-{: .file }
-/etc/apache2/sites-available/example.net
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin webmaster@example.net
-        ServerName example.net
-        ServerAlias www.example.net
-        DocumentRoot /srv/www/example.net/public_html/
-        ErrorLog /srv/www/example.net/logs/error.log
-        CustomLog /srv/www/example.net/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.net" apache >}}
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.net
+    ServerName example.net
+    ServerAlias www.example.net
+    DocumentRoot /srv/www/example.net/public_html/
+    ErrorLog /srv/www/example.net/logs/error.log
+    CustomLog /srv/www/example.net/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 If you would like to enable Perl support, then add the following lines to the `VirtualHost` entry above.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.net
-:   ~~~ apache
-    Options ExecCGI
-    AddHandler cgi-script .pl
-    ~~~
+{{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+
+{{< /file-excerpt >}}
+
 
 Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it resembles this:
 
-{: .file }
-/etc/apache2/sites-available/example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin admin@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 You'll note that some basic options are specified for both sites, including where the files for the site will reside (under `/srv/www/`). You can add (or remove) additional configuration options, such as the Perl support, on a site-by-site basis to these files as your needs dictate.
 
@@ -206,13 +206,13 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <IfModule mpm_itk_module>
-       AssignUserId webeditor webgroup
-    </IfModule>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
 

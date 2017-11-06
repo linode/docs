@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Debian 6 (Squeeze) to Debian 7 (Wheezy).'
-keywords: 'debian upgrade,upgrade distro,wheezy upgrade,wheezy'
+keywords: ["debian upgrade", "upgrade distro", "wheezy upgrade", "wheezy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-debian-7-wheezy/']
-modified: Friday, May 10th, 2013
+aliases: ['upgrading/upgrade-to-debian-7-wheezy/']
+modified: 2013-05-10
 modified_by:
   name: Linode
-published: 'Friday, May 10th, 2013'
+published: 2013-05-10
 title: 'How to Upgrade to Debian 7 (Wheezy)'
 ---
 
@@ -74,19 +74,19 @@ Here's how to upgrade from Debian 6 to Debian 7:
 
 1.  Edit your `/etc/apt/sources.list` file and change all instances of `squeeze` to `wheezy`. Once you have finished, your `/etc/apt/sources.list` should resemble the following:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://ftp.us.debian.org/debian/ wheezy main
-    deb-src http://ftp.us.debian.org/debian/ wheezy main
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://ftp.us.debian.org/debian/ wheezy main
+deb-src http://ftp.us.debian.org/debian/ wheezy main
 
-    deb http://security.debian.org/ wheezy/updates main
-    deb-src http://security.debian.org/ wheezy/updates main
+deb http://security.debian.org/ wheezy/updates main
+deb-src http://security.debian.org/ wheezy/updates main
 
-    # wheezy-updates, previously known as 'volatile'
-    deb http://ftp.us.debian.org/debian/ wheezy-updates main
-    deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
-    ~~~
+# wheezy-updates, previously known as 'volatile'
+deb http://ftp.us.debian.org/debian/ wheezy-updates main
+deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
+
+{{< /file-excerpt >}}
+
 
 2.  Enter the following command to update your package lists:
 
@@ -100,9 +100,9 @@ Here's how to upgrade from Debian 6 to Debian 7:
 
         sudo apt-get dist-upgrade
 
- {: .note }
->
-> Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+ {{< note >}}
+Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+{{< /note >}}
 
 5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/content/troubleshooting/using-lish-the-linode-shell).
 

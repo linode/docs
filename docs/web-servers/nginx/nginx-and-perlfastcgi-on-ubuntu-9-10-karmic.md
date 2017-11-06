@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 9.10 (Karmic).'
-keywords: 'nginx,fastscgi perl,nginx ubuntu 9.10,nginx fastcgi,nginx perl'
+keywords: ["nginx", "fastscgi perl", "nginx ubuntu 9.10", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Wednesday, December 16th, 2009'
+published: 2009-12-16
 title: 'Nginx and Perl-FastCGI on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -30,38 +30,38 @@ Issue the following commands to set your system hostname, substituting a unique 
 
 Edit your `/etc/hosts` file to resemble the following, substituting your Linode's public IP address for 12.34.56.78, your hostname for "hostname," and your primary domain name for "example.com." :
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 hostname.example.com hostname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 hostname.example.com hostname
+
+{{< /file >}}
+
 
 Install Required Packages
 -------------------------
 
 Make sure you have the "universe" repositories enabled in `/etc/apt/sources.list`. Your file should resemble the following:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 Issue the following commands to update your system and install the nginx web server and compiler tools (Perl should already be installed):
 
@@ -82,29 +82,29 @@ In this guide, we'll be using the domain "example.com" as our example site. You 
 
 Next, you'll need to define the site's virtual host file:
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
 
-        location / {
-        root   /srv/www/www.example.com/public_html;
-        index  index.html index.htm;
-        }
-
-        location ~ \.pl$ {
-        gzip off;
-        include /etc/nginx/fastcgi_params;
-        fastcgi_pass  127.0.0.1:8999;
-        fastcgi_index index.pl;
-        fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+    root   /srv/www/www.example.com/public_html;
+    index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.pl$ {
+    gzip off;
+    include /etc/nginx/fastcgi_params;
+    fastcgi_pass  127.0.0.1:8999;
+    fastcgi_index index.pl;
+    fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site:
 
@@ -143,24 +143,24 @@ Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/public\_html/test.pl
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
+#!/usr/bin/perl
 
-    print "Content-type:text/html\n\n";
-    print <<EndOfHTML;
-    <html><head><title>Perl Environment Variables</title></head>
-    <body>
-    <h1>Perl Environment Variables</h1>
-    EndOfHTML
+print "Content-type:text/html\n\n";
+print <<EndOfHTML;
+<html><head><title>Perl Environment Variables</title></head>
+<body>
+<h1>Perl Environment Variables</h1>
+EndOfHTML
 
-    foreach $key (sort(keys %ENV)) {
-        print "$key = $ENV{$key}<br>\n";
-    }
+foreach $key (sort(keys %ENV)) {
+    print "$key = $ENV{$key}<br>\n";
+}
 
-    print "</body></html>";
-    ~~~
+print "</body></html>";
+
+{{< /file >}}
+
 
 Make the script executable by issuing the following command:
 

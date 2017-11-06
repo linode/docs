@@ -4,13 +4,13 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: Zabbix
-keywords: 'zabbix, server monitoring, monitoring, server monitor'
+keywords: ["zabbix", " server monitoring", " monitoring", " server monitor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/zabbix/']
-modified: Monday, August 20th, 2012
+aliases: ['server-monitoring/zabbix/']
+modified: 2012-08-20
 modified_by:
   name: Linode
-published: 'Monday, August 20th, 2012'
+published: 2012-08-20
 title: Monitoring Servers with Zabbix
 ---
 
@@ -27,9 +27,9 @@ Installing the packages is faster and makes things easier to maintain, but the i
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
 
- {: .note }
->
-> Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
+ {{< note >}}
+Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
+{{< /note >}}
 
 1.  Install Zabbix server by entering the following command:
 
@@ -45,9 +45,9 @@ If you're running Ubuntu or Debian and would like to install the Zabbix packages
 
 Zabbix is now installed and running on your Linode.
 
- {: .note }
->
-> If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
+ {{< note >}}
+If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
+{{< /note >}}
 
 ### Compiling and Installing from Source
 
@@ -130,20 +130,20 @@ Now you'll want to make some adjustments to your `php.ini` file for Zabbix. Here
 
 2.  Verify that the following settings are set in the `php.ini` file.
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    memory_limit = 128M
-    post_max_size = 32M
-    upload_max_filesize = 16M
-    max_execution_time = 600
-    max_input_time = 600
-    date.timezone = America/New_York
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+memory_limit = 128M
+post_max_size = 32M
+upload_max_filesize = 16M
+max_execution_time = 600
+max_input_time = 600
+date.timezone = America/New_York
 
- {: .note }
->
-> You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
+{{< /file-excerpt >}}
+
+
+ {{< note >}}
+You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
+{{< /note >}}
 
 3.  Save the changes by restarting Apache. Enter the following command:
 
@@ -250,14 +250,15 @@ Now you'll need to create a configuration file for the Zabbix server in your /et
 
 7.  Add the following to the `zabbix_server.conf` file. At this point, it only requires your database connection details, though we will also be adding a Zabbix server log as well.
 
-    > {: .file }
+    > {{< file >}}
 /etc/zabbix/zabbix\_server.conf
-    >
-    > > DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
 
- {: .note }
->
-> A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
+> DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
+{{< /file >}}
+
+ {{< note >}}
+A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
+{{< /note >}}
 
 8.  Close and save the file by pressing Control X and then Y.
 
@@ -343,14 +344,15 @@ Now you'll want to create directories for the Zabbix files on your client server
 
 7.  The only option that is required is the `Server` parameter, which is the IP address of your Zabbix monitoring server. Copy and paste the following line into the configuration file, replacing `12.34.56.78` with the IP address of your Zabbix monitoring server.
 
-    > {: .file }
+    > {{< file >}}
 /etc/zabbix/zabbix\_agentd.conf
-    >
-    > > Server = 12.34.56.78
 
- {: .note }
->
-> A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
+> Server = 12.34.56.78
+{{< /file >}}
+
+ {{< note >}}
+A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
+{{< /note >}}
 
 8.  Open the `/etc/services` file for editing by entering the following command:
 
@@ -380,9 +382,9 @@ Zabbix also has a front-end component that you'll want to install. These instruc
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
 
- {: .note }
->
-> We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+ {{< note >}}
+We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+{{< /note >}}
 
 1.  Change to your virtual host directory by entering the following command, replacing `example_user` with your username and `example.com` with your domain name:
 

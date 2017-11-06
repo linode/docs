@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu Hardy.'
-keywords: 'MySQL on Linux,MySQL Ubuntu,MySQL Hardy,MySQL Linode'
+keywords: ["MySQL on Linux", "MySQL Ubuntu", "MySQL Hardy", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-8-04-hardy/']
-modified: Monday, October 8th, 2012
+aliases: ['databases/mysql/ubuntu-8-04-hardy/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, August 11th, 2009'
+published: 2009-08-11
 title: 'Use MySQL Relational Databases on Ubuntu 8.04 (Hardy)'
 ---
 
@@ -36,12 +36,12 @@ You will be prompted to set a password for the MySQL root user. Choose a strong 
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. Next, make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1    localhost.localdomain    localhost
-    12.34.56.78  servername.mydomain.com  servername
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1    localhost.localdomain    localhost
+12.34.56.78  servername.mydomain.com  servername
+
+{{< /file >}}
+
 
 Be sure to substitute your Linode's public IP address for "12.34.56.78" in the example above.
 

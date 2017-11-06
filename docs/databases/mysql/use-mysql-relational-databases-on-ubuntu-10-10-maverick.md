@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.10 Maverick'
-keywords: 'mysql ubuntu 10.10,mysql maverick,mysql ubuntu,mysql on linux,mysql Linode'
+keywords: ["mysql ubuntu 10.10", "mysql maverick", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['databases/mysql/ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Thursday, October 21st, 2010'
+published: 2010-10-21
 title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 ---
 
@@ -23,12 +23,12 @@ Basic System Configuration
 
 Modify your `/etc/hosts` file to resemble the following example. Replace "example.com" with your own domain name, and select a unique name to replace "systemname" with. This will be your system's FQDN (fully qualified domain name). Replace "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 systemname.example.com systemname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 systemname.example.com systemname
+
+{{< /file >}}
+
 
 Issue the following commands to set your system's hostname, replacing "systemname" with the short hostname you picked above.
 
@@ -62,16 +62,16 @@ Configure MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
-{: .file-excerpt }
-/etc/mysql/my.cnf
-:   ~~~ ini
-    key_buffer = 16M
-    max_allowed_packet = 1M
-    thread_stack = 64K
-    table_cache = 4
-    sort_buffer = 64K
-    net_buffer_length = 2K
-    ~~~
+{{< file-excerpt "/etc/mysql/my.cnf" ini >}}
+key_buffer = 16M
+max_allowed_packet = 1M
+thread_stack = 64K
+table_cache = 4
+sort_buffer = 64K
+net_buffer_length = 2K
+
+{{< /file-excerpt >}}
+
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources on this topic.
 

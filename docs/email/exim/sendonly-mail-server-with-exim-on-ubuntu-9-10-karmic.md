@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 9.10 (Karmic).'
-keywords: 'exim,mail server,linux mail,smtp server,ubuntu exim,ubuntu 9.10'
+keywords: ["exim", "mail server", "linux mail", "smtp server", "ubuntu exim", "ubuntu 9.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/exim/send-only-mta-ubuntu-9-10-karmic/']
-modified: Friday, April 29th, 2011
+aliases: ['email/exim/send-only-mta-ubuntu-9-10-karmic/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, December 17th, 2009'
+published: 2009-12-17
 title: 'Send-only Mail Server with Exim on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -27,25 +27,25 @@ Install Required Packages
 
 Make sure you have the "universe" repositories enabled. Your `/etc/apt/sources.list` file should resemble this:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-	## main & restricted repositories
-	deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-	deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-	deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-	deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-	## universe repositories
-	deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-	deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-	deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-	deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-	deb http://security.ubuntu.com/ubuntu karmic-security universe
-	deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 Issue the following commands to update your package repositories, upgrade your system, and install Exim:
 

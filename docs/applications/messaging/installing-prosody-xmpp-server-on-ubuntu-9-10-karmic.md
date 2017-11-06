@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installation and basic usage guide for Prosody, a lightweight XMPP server on Ubuntu 9.10 (Karmic).'
-keywords: 'prosody,prosody ubuntu karmic,prosody.im,xmpp,real time messaging,lua'
+keywords: ["prosody", "prosody ubuntu karmic", "prosody.im", "xmpp", "real time messaging", "lua"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/prosody/ubuntu-9-10-karmic/']
-modified: Friday, April 29th, 2011
+aliases: ['communications/xmpp/prosody/ubuntu-9-10-karmic/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Monday, November 9th, 2009'
+published: 2009-11-09
 title: 'Installing Prosody XMPP Server on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -25,33 +25,33 @@ Adding Software Repositories
 
 The developers of Prosody provide software repositories for Debian and Ubuntu to more effectively distribute current versions of the software to users. In order to make these repositories accessible to your system we must append a line to the `/etc/apt/sources.list` file. For Karmic, this will also include enabling the `universe` repository. Edit your `/etc/apt/sources.list` file to resemble this example by removing the hash symbol in front of the `universe` lines:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 At the end of the file, also insert this line for the Prosody repository:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://packages.prosody.im/debian karmic main
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://packages.prosody.im/debian karmic main
+
+{{< /file-excerpt >}}
+
 
 Now, to download the public key for the Prosody package repository, issue the following `wget` command. You may need to install `wget` first by running `apt-get install wget`. This will allow you to authenticate and verify packages:
 
@@ -85,59 +85,59 @@ Note that in the Lua programing language, comments (lines that are ignored by th
 
 To allow Prosody to provide XMPP/jabber services for more than one domain, insert a line in the following form into the configuration file. This example defines three virtual hosts.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    VirtualHost "example.com"
-    VirtaulHost "example.com"
-    VirtualHost "staff.example.com"
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+VirtualHost "example.com"
+VirtaulHost "example.com"
+VirtualHost "staff.example.com"
+
+{{< /file-excerpt >}}
+
 
 Following a `VirtualHost` line there are generally a series of host-specific configuration options. If you want to set options for all hosts, add these options before the first `VirtualHost` declaration in your configuration file. For instance, to ensure that Prosody behaves like a proper Linux server daemon make sure that the `posix;` option is included in the `modules_enabled = { }` table.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    modules_enabled = {
-                      -- [...]
-                      "posix";
-                      -- [...]
-                      }
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+modules_enabled = {
+                  -- [...]
+                  "posix";
+                  -- [...]
+                  }
+
+{{< /file-excerpt >}}
+
 
 Note that there should be a number of global modules included in this table to provide basic functionality.
 
 To disable a virtual host without removing it from your configuration file, add the following line to its section of the file:
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    enabled = false
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+enabled = false
+
+{{< /file-excerpt >}}
+
 
 To specify administrators for your server, add a line in the following format to your `prosody.cfg.lua` file.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    admins = { "admin1@example.com", "admin2@example.com" }
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+admins = { "admin1@example.com", "admin2@example.com" }
+
+{{< /file-excerpt >}}
+
 
 To add server-wide administrators, add entries to the `admins` section, as above, in the global section of the configuration file. To grant specific users more granular control to administer particular hosts, you can add an `admins` line, or more properly tables in Lua, to specific hosts.
 
 If you need to enable the legacy SSL/TLS support, ensure that the following entry in the `modules_enabled` is enabled:
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    modules_enabled = {
-                      -- [...]
-                      "legacyauth";
-                      -- [...]
-                      }
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+modules_enabled = {
+                  -- [...]
+                  "legacyauth";
+                  -- [...]
+                  }
 
-    legacy_ssl_ports = { 5223 }
-    ~~~
+legacy_ssl_ports = { 5223 }
+
+{{< /file-excerpt >}}
+
 
 Do not forget to reload the configuration for the Prosody server after making any changes to your `/etc/prosody/prosody.cfg.lua` file, by issuing the following command:
 
@@ -159,33 +159,33 @@ Enabling Components
 
 In the XMPP world, many services are provided in components, which allows for greater ease of customization within a basic framework. A common example of this is the MUC or multi-user chat functionality. To enable MUC services in Prosody you need to add a line like the following to your `/etc/prosody/prosody.cfg.lua` file.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    Component "conference.example.com" "muc"
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+Component "conference.example.com" "muc"
+
+{{< /file-excerpt >}}
+
 
 In this example, `conference.example.com` is the domain where the MUC rooms are located, and will require an "[DNS A record,](/content/dns-guides/introduction-to-dns)" that points to the IP Address where the Prosody instance is running. MUCs will be identified as JIDs (Jabber IDs) at this hostname, so for instance the "rabbits" MUC hosted by this server would be located at `rabbits@conference.example.com`.
 
 MUC, in contrast to many other common components in the XMPP world, is provided internally by Prosody. Other components, like transports to other services, run on an external interface. Each external component has its own host name, and provides a secret key which allows the central server to authenticate to it. See the following "aim.example.com" component as an example.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    Component "aim.example.com"
-    component_secret = "mysecretcomponentpassword"
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+Component "aim.example.com"
+component_secret = "mysecretcomponentpassword"
+
+{{< /file-excerpt >}}
+
 
 Note that external components will need to be installed and configured independently of Prosody.
 
 Typically, Prosody listens for connections from components on the localhost interface (i.e. on the `127.0.0.1` interface;). If you're connected to external resources that are running on an alternate interface, specify the following variables as appropriate in the global section of the configuration file before the first `VirtualHost` declaration.
 
-{: .file-excerpt }
-/etc/prosody/prosody.cfg.lua
-:   ~~~ lua
-    component_interface = "192.168.0.10"
-    component_ports = { 8888, 8887 }
-    ~~~
+{{< file-excerpt "/etc/prosody/prosody.cfg.lua" lua >}}
+component_interface = "192.168.0.10"
+component_ports = { 8888, 8887 }
+
+{{< /file-excerpt >}}
+
 
 Using prosodyctl
 ----------------

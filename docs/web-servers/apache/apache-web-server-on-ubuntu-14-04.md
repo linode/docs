@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Apache on your Ubuntu 14.04 (Trusty Tahr) server, configure virtual hosting, and set up modules and scripting.'
-keywords: 'apache,ubuntu,ubuntu 14.04,trusty tahr,http,web server'
+keywords: ["apache", "ubuntu", "ubuntu 14.04", "trusty tahr", "http", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/apache/apache-web-server-on-ubuntu-14-04/']
-modified: Tuesday, September 5, 2017
+aliases: ['websites/apache/apache-web-server-on-ubuntu-14-04/']
+modified: 2017-09-05
 modified_by:
   name: Linode
-published: 'Friday, July 31st, 2015'
+published: 2015-07-31
 title: 'Apache Web Server on Ubuntu 14.04 LTS'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/content/2.4/)'
@@ -22,10 +22,9 @@ The *Apache HTTP Web Sever* (Apache) is an open source web application for deplo
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 14.04](/content/websites/lamp/lamp-server-on-ubuntu-14-04) guide.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -51,11 +50,11 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 2.  Edit the main Apache configuration file and turn off the `KeepAlive` setting:
 
-    {: .file-excerpt}
-    /etc/apache2/apache2.conf
-    :   ~~~
-        KeepAlive Off
-        ~~~
+    {{< file-excerpt "/etc/apache2/apache2.conf" >}}
+KeepAlive Off
+
+{{< /file-excerpt >}}
+
 
 ### Configure the Multi-Processing Module
 
@@ -65,24 +64,24 @@ Apache 2.4 offers various multi-processing modules (MPMs) to handle connections.
 
 1.  Open `/etc/apache2/mods-available/mpm_prefork.conf` in your text editor and edit the values as needed. The following is optimized for a 2GB Linode:
 
-    {: .file}
-    /etc/apache2/mods-available/mpm_prefork.conf
-    :   ~~~ conf
-        # prefork MPM
-        # StartServers: number of server processes to start
-        # MinSpareServers: minimum number of server processes which are kept spare
-        # MaxSpareServers: maximum number of server processes which are kept spare
-        # MaxRequestWorkers: maximum number of server processes allowed to start
-        # MaxConnectionsPerChild: maximum number of requests a server process serves
+    {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
+# prefork MPM
+# StartServers: number of server processes to start
+# MinSpareServers: minimum number of server processes which are kept spare
+# MaxSpareServers: maximum number of server processes which are kept spare
+# MaxRequestWorkers: maximum number of server processes allowed to start
+# MaxConnectionsPerChild: maximum number of requests a server process serves
 
-        <IfModule mpm_prefork_module>
-                StartServers              4
-                MinSpareServers           20
-                MaxSpareServers           40
-                MaxRequestWorkers         200
-                MaxConnectionsPerChild    4500
-        </IfModule>
-        ~~~
+<IfModule mpm_prefork_module>
+        StartServers              4
+        MinSpareServers           20
+        MaxSpareServers           40
+        MaxRequestWorkers         200
+        MaxConnectionsPerChild    4500
+</IfModule>
+
+{{< /file >}}
+
 
 2.  On Ubuntu 14.04, the *event module* is enabled by default. Disable it, and enable the *prefork module* :
 
@@ -99,26 +98,26 @@ If you choose to keep the *event module* enabled, these settings are suggested f
 
 1.  Open `/etc/apache2/mods-available/mpm_event.conf` in your text editor and edit the values as needed:
 
-    {: .file}
-    /etc/apache2/mods-available/mpm_event.conf
-    :   ~~~ conf
-        # event MPM
-        # StartServers: initial number of server processes to start
-        # MinSpareThreads: minimum number of worker threads which are kept spare
-        # MaxSpareThreads: maximum number of worker threads which are kept spare
-        # ThreadsPerChild: constant number of worker threads in each server process
-        # MaxRequestWorkers: maximum number of worker threads
-        # MaxConnectionsPerChild: maximum number of requests a server process serves
-        <IfModule mpm_event_module>
-                StartServers             2
-                MinSpareThreads          25
-                MaxSpareThreads          75
-                ThreadLimit              64
-                ThreadsPerChild          25
-                MaxRequestWorkers        150
-                MaxConnectionsPerChild   3000
-        </IfModule>
-        ~~~
+    {{< file "/etc/apache2/mods-available/mpm_event.conf" aconf >}}
+# event MPM
+# StartServers: initial number of server processes to start
+# MinSpareThreads: minimum number of worker threads which are kept spare
+# MaxSpareThreads: maximum number of worker threads which are kept spare
+# ThreadsPerChild: constant number of worker threads in each server process
+# MaxRequestWorkers: maximum number of worker threads
+# MaxConnectionsPerChild: maximum number of requests a server process serves
+<IfModule mpm_event_module>
+        StartServers             2
+        MinSpareThreads          25
+        MaxSpareThreads          75
+        ThreadLimit              64
+        ThreadsPerChild          25
+        MaxRequestWorkers        150
+        MaxConnectionsPerChild   3000
+</IfModule>
+
+{{< /file >}}
+
 
 2.  Restart Apache:
 
@@ -135,31 +134,31 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
 2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
-    {: .file }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.com
-             ServerName example.com
-             ServerAlias www.example.com
-             DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log
-             CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/example.com/public_html/
+     ErrorLog /var/www/example.com/logs/error.log
+     CustomLog /var/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
     Repeat this process for any other domains you host.
 
-    {:.note}
-    >
-    > If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
-    >
-    > {: .file-excerpt }
-      /etc/apache2/sites-available/example.com.conf
-    > :   ~~~ conf
-    >     Options ExecCGI
-    >     AddHandler cgi-script .pl
-    >     ~~~
+    {{< note >}}
+If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
+
+{{< file-excerpt "/etc/apache2/sites-available/example.com.conf" aconf >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+{{< /note >}}
+
+{{< /file-excerpt >}}
+
 
 
 3.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:

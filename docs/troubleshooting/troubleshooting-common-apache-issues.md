@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to identify and solve common configuration problems encountered when using Apache.'
-keywords: 'apache,webserver,httpd,troubleshooting'
+keywords: ["apache", "webserver", "httpd", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/troubleshooting/']
-modified: Wednesday, October 4, 2017
+aliases: ['web-servers/apache/troubleshooting/']
+modified: 2017-10-04
 modified_by:
   name: Linode
-published: 'Friday, November 6th, 2009'
+published: 2009-11-06
 title: Troubleshooting Common Apache Issues
 external_resources:
  - '[Apache documentation](http://httpd.apache.org/content/)'
@@ -42,15 +42,15 @@ Fedora and CentOS:
 
     sudo service httpd restart
 
- {: .note }
->
-> You can use one of the following three commands instead, depending on your Linux distribution:
->
->     /etc/init.d/httpd restart
->
->     /etc/init.d/apache2 restart
->
->     /etc/rc.d/httpd restart
+ {{< note >}}
+You can use one of the following three commands instead, depending on your Linux distribution:
+
+/etc/init.d/httpd restart
+
+/etc/init.d/apache2 restart
+
+/etc/rc.d/httpd restart
+{{< /note >}}
 
 ## Reload Apache
 
@@ -96,15 +96,15 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 
 2.  Locate the `LogLevel` variable, and update it from the default `warn` to `info` or `debug`. `debug` will produce the greatest amount of output.
 
-    {: .file-excerpt }
-    /etc/apache2/apache2.conf
-    : ~~~
-      # LogLevel: Control the number of messages logged to the error_log.
-      # Possible values include: debug, info, notice, warn, error, crit,
-      # alert, emerg.
-      #
-      LogLevel debug
-      ~~~
+    {{< file-excerpt "/etc/apache2/apache2.conf" >}}
+# LogLevel: Control the number of messages logged to the error_log.
+# Possible values include: debug, info, notice, warn, error, crit,
+# alert, emerg.
+#
+LogLevel debug
+
+{{< /file-excerpt >}}
+
 
 3.  Restart Apache:
 
@@ -112,9 +112,9 @@ Sometimes it can be helpful to see extra information from Apache. You can increa
 
 4.  Perform the operation that was giving you trouble, then [check the logs](#check-the-logs) for more detailed information and errors.
 
- {: .caution }
->
-> Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
+ {{< caution >}}
+Remember to set the `LogLevel` back to `warn` when you're done troubleshooting, or your server may fill up with logs.
+{{< /caution >}}
 
 ## Check Apache Configuration Syntax
 
@@ -142,9 +142,9 @@ Fedora and CentOS:
 
 Make sure all your `<VirtualHost>` directives use IP addresses and port numbers that match the ones defined in the `NameVirtualHost` directives. For example, if you have set `NameVirtualHosts *:80`, then the virtual host configuration should begin with `<VirtualHost *:80>`. If you've set `NameVirtualHosts 123.234.123.234:80`, then the virtual host configuration should begin with `<VirtualHost 123.234.123.234:80>`. If you've set `NameVirtualHosts *`, then the virtual host configuration should begin with `<VirtualHost *>`.
 
- {: .note }
->
-> You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
+ {{< note >}}
+You can have multiple `NameVirtualHost` values, which is what you'll need to do if you're running sites on multiple IPs and ports. Just make sure the `<VirtualHost>` configurations correspond to the configured `NameVirtualHost` directives.
+{{< /note >}}
 
 ## Troubleshoot Conflicting Directives
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 Karmic.'
-keywords: 'django,python,apache,mod\_wsgi'
+keywords: ["django", "python", "apache", "mod\\_wsgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/django-apache-mod-wsgi/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['frameworks/django-apache-mod-wsgi/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Tuesday, May 18th, 2010'
+published: 2010-05-18
 title: 'Django, Apache and mod_wsgi on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -25,25 +25,25 @@ Install Dependencies
 
 Before we can proceed with the installation and deployment of Django, we mus enable the `universe` repositories for Ubuntu 9.10 Karmic. To enable `universe`, first modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 Issue the following commands to ensure that your system's package repositories and installed programs are up to date and all required software is installed:
 
@@ -83,20 +83,20 @@ Configure Django Applications for WSGI
 
 In order for `mod_wsgi` to be able to provide access to your Django application, you will need to create a `django.wsgi` file inside of your application directory. For the purposes of this example, we assume that your application will be located *outside* of your `DocumentRoot` in the directory `/srv/www/example.com/application`. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
-{: .file }
-/srv/www/example.com/application/django.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file "/srv/www/example.com/application/django.wsgi" python >}}
+import os
+import sys
 
-    sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-    import django.core.handlers.wsgi
-    application = django.core.handlers.wsgi.WSGIHandler()
-    ~~~
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+{{< /file >}}
+
 
 You must append the path of your application to the system path as above. Additionally, declaration of the `PYTHON_EGG_CACHE` variable is optional but may be required for some applications when WSGI scripts are executed with the permissions of the web server. Finally, the `DJANGO_SETTINGS_MODULE` must refer to the Django `settings.py` file for your project. You will need to restart Apache after modifying the `django.wsgi` file.
 
@@ -105,31 +105,31 @@ Configure Apache
 
 Consider the following example virtual host configuration:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-       ServerName example.com
-       ServerAlias www.example.com
-       ServerAdmin webmaster@example.com
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost 12.34.56.78:80>
+   ServerName example.com
+   ServerAlias www.example.com
+   ServerAdmin webmaster@example.com
 
-       DocumentRoot /srv/www/example.com/public_html
+   DocumentRoot /srv/www/example.com/public_html
 
-       WSGIScriptAlias / /srv/www/example.com/application/django.wsgi
-       <Directory /srv/www/example.com/application>
-          Order allow,deny
-          Allow from all
-       </Directory>
+   WSGIScriptAlias / /srv/www/example.com/application/django.wsgi
+   <Directory /srv/www/example.com/application>
+      Order allow,deny
+      Allow from all
+   </Directory>
 
-       Alias /robots.txt /srv/www/example.com/public_html/robots.txt
-       Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images
-       Alias /static /srv/www/example.com/public_html/static
+   Alias /robots.txt /srv/www/example.com/public_html/robots.txt
+   Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
+   Alias /images /srv/www/example.com/public_html/images
+   Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log
-       CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+   ErrorLog /srv/www/example.com/logs/error.log
+   CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this example, the `WSGIScriptAlias` directive tells Apache that for this virtual host, all requests below `/` should be handled by the WSGI script specified. In the directory block that follows, we allow Apache to serve these requests. Finally, the series of four `Alias` directives allow Apache to serve the `robots.txt` and `favicon.ico` files as well as all resources beneath the `/images` and `/static` locations, directly from the `DocumentRoot` without engaging the WSGI application. You can add as many Alias directives as you need to.
 

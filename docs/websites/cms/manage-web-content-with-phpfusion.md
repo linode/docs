@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn to build and deploy websites using the PHP Fusion content management system.'
-keywords: 'cms,php fusion,content mangement system,lamp'
+keywords: ["cms", "php fusion", "content mangement system", "lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/php-fusion/']
-modified: Wednesday, October 2nd, 2013
+aliases: ['web-applications/cms-guides/php-fusion/']
+modified: 2013-10-02
 modified_by:
   name: Linode
-published: 'Saturday, April 17th, 2010'
+published: 2010-04-17
 title: 'Manage Web Content with PHP-Fusion'
 deprecated: true
 ---

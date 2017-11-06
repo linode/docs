@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide will teach you basic setup and configuration of Linux, Nginx, MySQL and PHP on Ubuntu 16.04'
-keywords: 'nginx,lemp,php,ubuntu 16.04'
+keywords: ["nginx", "lemp", "php", "ubuntu 16.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lemp/lemp-server-on-ubuntu-16-04/','websites/lemp/lemp-server-on-ubuntu-16-04/','web-servers/lemp/lemp-server-on-ubuntu-16-04/']
-modified: Friday, May 6th 2016
+aliases: ['websites/lemp/lemp-server-on-ubuntu-16-04/','websites/lemp/lemp-server-on-ubuntu-16-04/','web-servers/lemp/lemp-server-on-ubuntu-16-04/']
+modified: 2016-05-06
 modified_by:
   name: Phil Zona
-published: 'Friday, May 6th, 2016'
+published: 2016-05-06
 title: 'How to Install a LEMP (Linux, Nginx, MySQL, PHP) Stack on Ubuntu 16.04'
 external_resources:
  - '[Basic nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
@@ -30,9 +30,9 @@ This guide describes an alternative to the *LAMP* (Linux, Apache, MySQL, and PHP
 
       sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups Guide](/content/tools-reference/linux-users-and-groups).
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups Guide](/content/tools-reference/linux-users-and-groups).
+{{< /note >}}
 
 ## Nginx
 
@@ -58,39 +58,39 @@ Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls 
 
 2.  You should now have the following server block in the nginx virtual host configuration:
 
-    {: .file }
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-        server {
-            listen 80;
-            listen [::]:80;
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+    listen 80;
+    listen [::]:80;
 
-            server_name example.com;
+    server_name example.com;
 
-            root   /var/www/example.com;
-            index  index.html;
+    root   /var/www/example.com;
+    index  index.html;
 
-            location / {
-                try_files $uri $uri/ =404;
-            }
-        }
-        ~~~
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
+
+{{< /file >}}
+
 
     Replace `example.com` with your domain name. If your index page uses PHP, add `index.php` to the `index` line:
 
-    {: .file-excerpt}
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-            index index.html index.php;
-        ~~~
+    {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+index index.html index.php;
+
+{{< /file-excerpt >}}
+
 
 3.  The nginx example configuration uses `/var/www/` as a document root, but Ubuntu uses `/var/www/html` as a standard. Additionally, Linode guides encourage the standard practice of using a subdirectory called `public_html` to exclude web files that shouldn't be publicly accesible. Update the `root` directive to match these conventions:
 
-    {: .file-excerpt}
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-            root   /var/www/html/example.com/public_html;
-        ~~~
+    {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+root   /var/www/html/example.com/public_html;
+
+{{< /file-excerpt >}}
+
 
 4.  Create the root directory referenced in this configuration, replacing `example.com` with your domain name:
 
@@ -127,29 +127,29 @@ In order to deploy PHP applications, implement the following *PHP-FastCGI* solut
 
 2.  Modify your virtual host configuration to include the location directive as shown below:
 
-    {: .file }
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-        server {
-                listen 80;
-                listen [::]:80;
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+        listen 80;
+        listen [::]:80;
 
-                server_name example.com;
+        server_name example.com;
 
-                root /var/www/html/example.com/public_html;
-                index index.html;
+        root /var/www/html/example.com/public_html;
+        index index.html;
 
-                location / {
-                        try_files $uri $uri/ =404;
-                }
-                location ~ \.php$ {
-                        include snippets/fastcgi-php.conf;
-                        include fastcgi_params;
-                        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-                        fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
-                }
+        location / {
+                try_files $uri $uri/ =404;
         }
-        ~~~
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                include fastcgi_params;
+                fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+                fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
+        }
+}
+
+{{< /file >}}
+
 
 3.  Restart the `php7.0-fpm` and `nginx` services:
 
@@ -182,10 +182,11 @@ The MySQL database engine is one of the leading open-source relational database 
 
         sudo systemctl restart php7.0-fpm
 
-{: .note}
-> If at any point you need to change the root password, log in as shown in Step 2 and enter the following command, replacing `password` with the new root password:
->
->      ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
+{{< note >}}
+If at any point you need to change the root password, log in as shown in Step 2 and enter the following command, replacing `password` with the new root password:
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH 'mysql_native_password' BY 'password';
+{{< /note >}}
 
 ## Optional: Test and Troubleshoot the LEMP Stack
 
@@ -193,33 +194,33 @@ In this section, you'll create a test page that shows whether nginx can render P
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Install the MySQL Database Server** section above:
 
-    {: .file }
-    /var/www/html/example.com/public_html/phptest.php
-    :   ~~~ php
-        <html>
-        <head>
-            <title>PHP Test</title>
-        </head>
-            <body>
-            <?php echo '<p>Hello World</p>';
+    {{< file "/var/www/html/example.com/public_html/phptest.php" php >}}
+<html>
+<head>
+    <title>PHP Test</title>
+</head>
+    <body>
+    <?php echo '<p>Hello World</p>';
 
-            // In the variables section below, replace user and password with your own MySQL credentials as created on your server
-            $servername = "localhost";
-            $username = "webuser";
-            $password = "password";
+    // In the variables section below, replace user and password with your own MySQL credentials as created on your server
+    $servername = "localhost";
+    $username = "webuser";
+    $password = "password";
 
-            // Create MySQL connection
-            $conn = mysqli_connect($servername, $username, $password);
+    // Create MySQL connection
+    $conn = mysqli_connect($servername, $username, $password);
 
-            // Check connection - if it fails, output will include the error message
-            if (!$conn) {
-                exit('<p>Connection failed: <p>' . mysqli_connect_error());
-            }
-            echo '<p>Connected successfully</p>';
-            ?>
-        </body>
-        </html>
-        ~~~
+    // Check connection - if it fails, output will include the error message
+    if (!$conn) {
+        exit('<p>Connection failed: <p>' . mysqli_connect_error());
+    }
+    echo '<p>Connected successfully</p>';
+    ?>
+</body>
+</html>
+
+{{< /file >}}
+
 
 2.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LEMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 

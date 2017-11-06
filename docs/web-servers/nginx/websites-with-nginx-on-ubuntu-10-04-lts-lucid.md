@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.04 LTS (Lucid)'
-keywords: 'nginx,nginx ubuntu 10.04,http,web servers,ubuntu,ubuntu l0.04,ubuntu lucid'
+keywords: ["nginx", "nginx ubuntu 10.04", "http", "web servers", "ubuntu", "ubuntu l0.04", "ubuntu lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-10-04-lucid/','websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/']
-modified: Monday, October 7th, 2013
+aliases: ['web-servers/nginx/installation/ubuntu-10-04-lucid/','websites/nginx/websites-with-nginx-on-ubuntu-10-04-lts-lucid/']
+modified: 2013-10-07
 modified_by:
   name: Linode
-published: 'Thursday, April 29th, 2010'
+published: 2010-04-29
 title: 'Websites with nginx on Ubuntu 10.04 LTS (Lucid)'
 ---
 

@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'How to create and interpret MTR reports on your Linode or home computer.'
-keywords: 'mtr,traceroute,latency,loss'
+keywords: ["mtr", "traceroute", "latency", "loss"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
-modified: Monday, December 15, 2014
+aliases: ['linux-tools/mtr/','networking/diagnosing-network-issues-with-mtr/']
+modified: 2014-12-15
 modified_by:
   name: Linode
-published: 'Wednesday, April 28th, 2010'
+published: 2010-04-28
 title: Diagnosing Network Issues with MTR
 external_resources:
  - '[The Official MTR Web Site](http://www.bitwizard.nl/mtr/)'
@@ -101,17 +101,17 @@ On some systems, it may require administrative privileges to run when using this
 
     sudo mtr -rwc 50 -i 0.2 -rw 12.34.56.78
 
-{: .note }
->
-> The flags we are using above (`rwc [x] -i [y]`) are useful to our support technicians when contacting support about network-related issues.
->
-> The `r` option flag generates the report (short for `--report`).
->
-> The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
->
-> The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
->
-> The `i` option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag instructs MTR to send one packet every *n* seconds. The default is 1 second, so setting it to a few tenths of a second (0.1, 0.2, etc.) is generally helpful.
+{{< note >}}
+The flags we are using above (`rwc [x] -i [y]`) are useful to our support technicians when contacting support about network-related issues.
+
+The `r` option flag generates the report (short for `--report`).
+
+The `w` option flag uses the long-version of the hostname so our technicians and you can see the full hostname of each hop (short for `--report-wide`).
+
+The `c` option flag sets how many packets are sent and recorded in the report. When not used, the default will generally be 10, but for faster intervals you may want to set it to 50 or 100. The report can take longer to finish when doing this.
+
+The `i` option flag runs the report at a faster rate to reveal packet loss that can occur only during network congestion. This flag instructs MTR to send one packet every *n* seconds. The default is 1 second, so setting it to a few tenths of a second (0.1, 0.2, etc.) is generally helpful.
+{{< /note >}}
 
 ### Using MTR on Windows Systems
 

@@ -3,15 +3,15 @@ author:
   name: Si-Qi Liu
   email: liusq@tsinghua.edu.cn
 description: 'Installing the web framework Yesod with the server Nginx and MySQL on Debian 7'
-keywords: 'yesod, nginx, mysql, debian 7'
+keywords: ["yesod", " nginx", " mysql", " debian 7"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/']
+aliases: ['websites/frameworks/yesod-nginx-mysql-on-debian-7-wheezy/']
 contributor:
     name: Si-Qi Liu
-modified: Thursday, September 25, 2014
+modified: 2014-09-25
 modified_by:
   name: Linode
-published: Thursday, September 25, 2014
+published: 2014-09-25
 title: 'Yesod, Nginx, and MySQL on Debian 7 (Wheezy)'
 external_resources:
  - '[Haskell Platform](http://www.haskell.org/platform/)'
@@ -26,11 +26,11 @@ external_resources:
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
-{: .note }
->
-> The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as root or with the sudo prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Prerequisites
+## Prerequisites
 
 Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/content/getting-started) guide for setting your hostname. Here's how to check.
 
@@ -51,7 +51,7 @@ Before you begin installing and configuring the components described below, plea
 
 4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/content/websites/nginx/websites-with-nginx-on-debian-7-wheezy) and [Using MySQL Relational Databases on Debian 7 (Wheezy)](/content/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy) for their installation guides.
 
-##Install Required Packages
+## Install Required Packages
 
 Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform.
 
@@ -61,7 +61,7 @@ Since Yesod is built with the Haskell programming language, the Haskell packages
 
     The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
 
-##Install Yesod
+## Install Yesod
 
 Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called <a href="http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F" target="_blank">cabal dependency hell</a> problem.
 
@@ -112,7 +112,7 @@ To avoid this problem, the maintainers of Yesod created a metapackage named *yes
 
     It takes about 20 minutes to build the ``yesod-platform`` and ``yesod-bin`` packages on a Linode 1G.
 
-##Use Yesod
+## Use Yesod
 
 To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site.
 
@@ -141,28 +141,28 @@ To start development of your Yesod site, first construct a scaffold. In developm
 
 If you want to construct another site, just go back to ``$HOME`` folder, and issue ``yesod init`` again. Different sites won't affect each other because of the sandbox mechanism.
 
-##Working with MySQL
+## Working with MySQL
 
 Before testing the scaffold of your site, you need to create a user and several databases in MySQL. The "yesod" command has generated a configuration file for MySQL, which is located at ``$HOME/myblog/config/mysql.yml``. Take a look.
 
-{: .file-excerpt}
-$HOME/myblog/config/mysql.yml
-:   ~~~
-     Default: &defaults
-       user: myblog
-       password: myblog
-       host: localhost
-       port: 3306
-       database: myblog
-       poolsize: 10
+{{< file-excerpt "$HOME/myblog/config/mysql.yml" >}}
+Default: &defaults
+  user: myblog
+  password: myblog
+  host: localhost
+  port: 3306
+  database: myblog
+  poolsize: 10
 
-     ...
+...
 
-     Production:
-       database: myblog_production
-       poolsize: 100
-       <<: *defaults
-    ~~~
+Production:
+  database: myblog_production
+  poolsize: 100
+  <<: *defaults
+
+{{< /file-excerpt >}}
+
 
 Your site can be started in different environments such as Development, Testing, Staging and Production, and you can give different configurations for them. The configuration for the four different environments is given in the ``Default`` section. You can modify this section, using your own host, port, username, password, database, and so on. If you need different settings in the Production environment, for example, you can write your new settings in the ``Production`` section first, and then import the default ones by ``<<: *defaults``.
 
@@ -207,12 +207,12 @@ You may have noticed that we haven't configure Nginx yet. In fact, Yesod applica
 
 The initial setup of your first Yesod site has been finished. To start more advanced development of your Yesod site, please read [The Yesod Book](http://www.yesodweb.com/book/) for more details.
 
-##Deploy to Nginx
+## Deploy to Nginx
 
 
 Warp is a fast http server, but it lacks some advanced features like virtual hosts, load balancers, or SSL proxies, so we need Nginx to serve our site with more flexibility. In this section, we will introduce a method to deploy your site to Nginx.
 
-###Prepare Yesod
+### Prepare Yesod
 
 1.  Before deployment, you need to prepare the files to be deployed. Issue the following commands in the folder ``$HOME/myblog``:
 
@@ -240,13 +240,13 @@ Warp is a fast http server, but it lacks some advanced features like virtual hos
 
 3.  Before starting your site, you need to modify the file ``/var/myblog/config/settings.yml``. This file has the same structure as ``mysql.yml``. There is a ``Default`` section and four other sections for various environments. We will only run ``/var/myblog`` in the ``Production`` environment, so we only need to modify the last three lines of this settings file:
 
-    {: .file-excerpt}
-    /var/myblog/config/settings.yml
-    :   ~~~
-        Production:
-          approot: "http://www.yoursite.com"
-          <<: *defaults
-        ~~~
+    {{< file-excerpt "/var/myblog/config/settings.yml" >}}
+Production:
+  approot: "http://www.yoursite.com"
+  <<: *defaults
+
+{{< /file-excerpt >}}
+
 
     Here *www.yoursite.com* should be replaced by your FQDN. You can also use other virtual host names here, like *myblog.yoursite.com*. **Just make sure that it is the same as the one that you will pass to Nginx below during Step 5.**
 
@@ -259,76 +259,76 @@ Warp is a fast http server, but it lacks some advanced features like virtual hos
 
 5.  If you want your site running as a daemon, which means in a constant state of running, you can create an init.d script. We have created a simple one, here, for your reference:
 
-    {: .file-excerpt}
-    /etc/init.d/myblog
-    :   ~~~ bash
-        #! /bin/sh
-        ### BEGIN INIT INFO
-        # Provides:          myblog
-        # Required-Start:    $network $syslog mysql nginx
-        # Required-Stop:     $network $syslog mysql nginx
-        # Default-Start:     2 3 4 5
-        # Default-Stop:      0 1 6
-        # Short-Description: MyBlog
-        # Description:       MyBlog: My First Yesod Application
-        ### END INIT INFO
+    {{< file-excerpt "/etc/init.d/myblog" bash >}}
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides:          myblog
+# Required-Start:    $network $syslog mysql nginx
+# Required-Stop:     $network $syslog mysql nginx
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: MyBlog
+# Description:       MyBlog: My First Yesod Application
+### END INIT INFO
 
-        PATH=/sbin:/bin:/usr/sbin:/usr/bin
-        DESC="MyBlog"
-        NAME=myblog
-        MYROOT=/var/myblog
-        MYGROUP=yesod
-        MYUSER=yesod
-        PIDFILE=/var/opt/myblog/run/$NAME.pid
-        LOGFILE=/var/opt/myblog/log/$NAME.log
-        DAEMON=/var/myblog/myblog
-        DAEMON_ARGS="Production"
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+DESC="MyBlog"
+NAME=myblog
+MYROOT=/var/myblog
+MYGROUP=yesod
+MYUSER=yesod
+PIDFILE=/var/opt/myblog/run/$NAME.pid
+LOGFILE=/var/opt/myblog/log/$NAME.log
+DAEMON=/var/myblog/myblog
+DAEMON_ARGS="Production"
 
-        . /lib/lsb/init-functions
+. /lib/lsb/init-functions
 
-        case "$1" in
-        start)
-                log_daemon_msg "Starting $DESC" "$NAME"
+case "$1" in
+start)
+        log_daemon_msg "Starting $DESC" "$NAME"
 
-                mkdir -p /var/opt/myblog/run
-                mkdir -p /var/opt/myblog/log
-                chown -R ${MYUSER}:${MYGROUP} /var/opt/myblog
+        mkdir -p /var/opt/myblog/run
+        mkdir -p /var/opt/myblog/log
+        chown -R ${MYUSER}:${MYGROUP} /var/opt/myblog
 
-                start-stop-daemon --start --quiet  --background  \
-                        --make-pidfile --pidfile $PIDFILE        \
-                        --chuid $MYUSER:$MYGROUP --chdir $MYROOT \
-                        --exec /bin/bash -- -c                   \
-                        "exec $DAEMON $DAEMON_ARGS > $LOGFILE"   \
-                        || true
+        start-stop-daemon --start --quiet  --background  \
+                --make-pidfile --pidfile $PIDFILE        \
+                --chuid $MYUSER:$MYGROUP --chdir $MYROOT \
+                --exec /bin/bash -- -c                   \
+                "exec $DAEMON $DAEMON_ARGS > $LOGFILE"   \
+                || true
 
-                log_end_msg $?
-                ;;
-        stop)
-                log_daemon_msg "Stopping $DESC" "$NAME"
+        log_end_msg $?
+        ;;
+stop)
+        log_daemon_msg "Stopping $DESC" "$NAME"
 
-                start-stop-daemon --stop --quiet          \
-                        --pidfile $PIDFILE --exec $DAEMON \
-                        || true
+        start-stop-daemon --stop --quiet          \
+                --pidfile $PIDFILE --exec $DAEMON \
+                || true
 
-                rm -f $PIDFILE
+        rm -f $PIDFILE
 
-                log_end_msg $?
-                ;;
-        status)
-                status_of_proc "$DAEMON" "$NAME" && exit 0 || exit $?
-                ;;
-        restart)
-                $0 stop
-                $0 start
-                ;;
-        *)
-                echo "Usage: $SCRIPTNAME {start|stop|status|restart}" >&2
-                exit 3
-                ;;
-        esac
+        log_end_msg $?
+        ;;
+status)
+        status_of_proc "$DAEMON" "$NAME" && exit 0 || exit $?
+        ;;
+restart)
+        $0 stop
+        $0 start
+        ;;
+*)
+        echo "Usage: $SCRIPTNAME {start|stop|status|restart}" >&2
+        exit 3
+        ;;
+esac
 
-        exit 0
-        ~~~
+exit 0
+
+{{< /file-excerpt >}}
+
 
     Don't forget to make it executable:
 
@@ -344,30 +344,30 @@ Warp is a fast http server, but it lacks some advanced features like virtual hos
 
         update-rc.d myblog defaults
 
-###Configure Nginx.
+### Configure Nginx.
 
 Create the file ``/etc/nginx/sites-available/myblog``:
 
-{: .file}
-/etc/nginx/sites-available/myblog
-:   ~~~ nginx
-    server {
+{{< file "/etc/nginx/sites-available/myblog" nginx >}}
+server {
 
-        listen 80;
+    listen 80;
 
-        server_name www.yoursite.com;
+    server_name www.yoursite.com;
 
-        location / {
-            proxy_pass http://127.0.0.1:3000;
-        }
-
-        location /static {
-            root /var/myblog;
-            expires max;
-        }
-
+    location / {
+        proxy_pass http://127.0.0.1:3000;
     }
-    ~~~
+
+    location /static {
+        root /var/myblog;
+        expires max;
+    }
+
+}
+
+{{< /file >}}
+
 
 The ``server_name`` should be your FQDN, or the virtual host name you wrote in ``/var/myblog/config/settings.yml``. The location ``/static`` tells Nginx where to find files with url ``http://server_name/static/*``. A highly recommended optimization is to serve static files from a separate domain name, therefore bypassing the cookie transfer overhead. You can find more details on this optimization in the chapter [Deploying your Webapp of The Yesod Book](http://www.yesodweb.com/book/).
 

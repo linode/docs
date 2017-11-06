@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Accessing Oracle databases remotely using an SSH tunnel.'
-keywords: 'Oracle tunnel,Oracle over SSH,SSH tunnel'
+keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/oracle/ssh-tunnel/']
-modified: Tuesday, May 17th, 2011
+aliases: ['databases/oracle/ssh-tunnel/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Thursday, January 28th, 2010'
+published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 external_resources:
  - '[Using PuTTY](/content/networking/using-putty)'

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using cron to run programs at specified times on your Linux server.'
-keywords: 'cron,cron tutorial,crontab,cron linux,administration,linux,systems,automation'
+keywords: ["cron", "cron tutorial", "crontab", "cron linux", "administration", "linux", "systems", "automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/utilities/cron/']
-modified: Tuesday, May 17th, 2011
+aliases: ['linux-tools/utilities/cron/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Tuesday, December 15th, 2009'
+published: 2009-12-15
 title: Schedule Tasks with Cron
 external_resources:
  - '[Wikipdia article on cron](http://en.wikipedia.org/wiki/Cron)'
@@ -99,22 +99,25 @@ There are also a number of special `cron` schedule shortcuts that you can use to
 
 Allow us to consider several of examples of `crontab` entries:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 crontab
+{{< /file-excerpt >}}
 
 > 45 16 1,15 \* \* /opt/bin/payroll-bi-monthly 45 4 \* \* 5 /opt/bin/payroll-weekly
 
 In the first example, the `/opt/bin/payroll-bi-monthly` application is run at 4:45pm (`45 16`), on the 1st and 15th of every month (`1,15`). In the second example the `/opt/bin/payroll-weekly` is run at 4:45am (`45 4`) every Friday (`4`).
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 crontab
+{{< /file-excerpt >}}
 
 > 1 0 \* \* \* /opt/bin/cal-update-daily 1 0 */2* \* /opt/bin/cal-update
 
 These `cronjobs` will both run at 12:01am (`1 0`). The `cal-update-daily` job will run every day. The `cal-update` job will run will run every other day.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 crontab
+{{< /file-excerpt >}}
 
 > */20* \* \* \* /home/username/bin/rebuild-dns-zones 30 */2* \* \* /opt/bin/backup-static-files 0 \* \* \* \* /opt/bin/compress-static-files @hourly /opt/bin/compress-static-files
 

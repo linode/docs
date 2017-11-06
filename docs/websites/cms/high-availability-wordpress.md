@@ -3,26 +3,27 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'Configuring a highly available WordPress installation.'
-keywords: 'wordpress,mysql,replication,master-master,high availability'
+keywords: ["wordpress", "mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, January 21, 2015
+modified: 2015-01-21
 modified_by:
   name: James Stewart
-published: 'Friday, January 9, 2015'
+published: 2015-01-09
 title: High Availability WordPress Hosting
 ---
 
 This guide configures a high availability WordPress site with a two-Linode cluster, using MySQL Master-Master replication and a Linode NodeBalancer front-end.
 
-##Prerequisites
+## Prerequisites
 
 This guide is written for Debian 7 or Ubuntu 14.04. To complete this guide, ensure that there are two Linodes and a NodeBalancer present on your account.  Both Linodes need a [Private IP address](/content/networking/remote-access#adding-private-ip-addresses). Also ensure that both of your Linodes have been configured with SSH keys, and place the opposing Linode's SSH key in the other's `/.ssh/authorized_keys` file.
 
 
-{: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Install Required Software Packages
+## Install Required Software Packages
 
 Use the following commands to install Apache, PHP, and MySQL on each of the Linodes:
 
@@ -30,57 +31,57 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
     sudo apt-get upgrade -y
     sudo apt-get install apache2 php5 php5-mysql mysql-server mysql-client
 
-##Edit MySQL's Configuration to Set Up Master-Master Replication
+## Edit MySQL's Configuration to Set Up Master-Master Replication
 
 1.  Edit the `/etc/mysql/my.cnf` file on each of the Linodes. Add or modify the following values:
 
     **Server 1:**
 
-    {: .file-excerpt }
-    /etc/mysql/my.cnf
-    : ~~~ conf
-    server_id           = 1
-    log_bin             = /var/log/mysql/mysql-bin.log
-    log_bin_index       = /var/log/mysql/mysql-bin.log.index
-    relay_log           = /var/log/mysql/mysql-relay-bin
-    relay_log_index     = /var/log/mysql/mysql-relay-bin.index
-    expire_logs_days    = 10
-    max_binlog_size     = 100M
-    log_slave_updates   = 1
-    auto-increment-increment = 2
-    auto-increment-offset = 1
-    ~~~
+    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+server_id           = 1
+log_bin             = /var/log/mysql/mysql-bin.log
+log_bin_index       = /var/log/mysql/mysql-bin.log.index
+relay_log           = /var/log/mysql/mysql-relay-bin
+relay_log_index     = /var/log/mysql/mysql-relay-bin.index
+expire_logs_days    = 10
+max_binlog_size     = 100M
+log_slave_updates   = 1
+auto-increment-increment = 2
+auto-increment-offset = 1
+
+{{< /file-excerpt >}}
+
 
     **Server 2:**
 
-    {: .file-excerpt }
-    /etc/mysql/my.cnf
-    : ~~~ conf
-    server_id           = 2
-    log_bin             = /var/log/mysql/mysql-bin.log
-    log_bin_index       = /var/log/mysql/mysql-bin.log.index
-    relay_log           = /var/log/mysql/mysql-relay-bin
-    relay_log_index     = /var/log/mysql/mysql-relay-bin.index
-    expire_logs_days    = 10
-    max_binlog_size     = 100M
-    log_slave_updates   = 1
-    auto-increment-increment = 2
-    auto-increment-offset = 2
-    ~~~
+    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+server_id           = 2
+log_bin             = /var/log/mysql/mysql-bin.log
+log_bin_index       = /var/log/mysql/mysql-bin.log.index
+relay_log           = /var/log/mysql/mysql-relay-bin
+relay_log_index     = /var/log/mysql/mysql-relay-bin.index
+expire_logs_days    = 10
+max_binlog_size     = 100M
+log_slave_updates   = 1
+auto-increment-increment = 2
+auto-increment-offset = 2
+
+{{< /file-excerpt >}}
+
 
 2.  For each of the Linodes, edit the `bind-address` configuration in order to use the private IP addresses:
 
-    {: .file-excerpt }
-    /etc/mysql/my.cnf
-    : ~~~
-    bind-address    = x.x.x.x
-    ~~~
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
+bind-address    = x.x.x.x
+
+{{< /file-excerpt >}}
+
 
 3.  Once completed, restart the MySQL application:
 
         sudo service mysql restart
 
-##Create Replication Users
+## Create Replication Users
 
 1.  Log in to MySQL on each of the Linodes:
 
@@ -96,7 +97,7 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
     This command should connect you to the remote server's MySQL instance.
 
-##Configure Database Replication
+## Configure Database Replication
 
 
 1.  While logged into MySQL on Server 1, query the master status:
@@ -133,12 +134,13 @@ Use the following commands to install Apache, PHP, and MySQL on each of the Lino
 
         exit
 
-##Configure Apache
+## Configure Apache
 
 The steps in this section will need to be performed on **both** of your Linodes.
 
-{: .note}
->For the following sections of this guide, replace "example.com" with your domain name.
+{{< note >}}
+For the following sections of this guide, replace "example.com" with your domain name.
+{{< /note >}}
 
 1.  Disable the default Apache virtual host by entering the following command:
 
@@ -161,30 +163,31 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 
 
-    {: .file-excerpt}
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ apache
-        # domain: example.com
-        # public: /var/www/example.com/public_html/
+    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" apache >}}
+# domain: example.com
+# public: /var/www/example.com/public_html/
 
-        <VirtualHost *:80>
-          # Admin email, Server Name (domain name), and any aliases
-          ServerAdmin webmaster@example.com
-          ServerName  www.example.com
-          ServerAlias example.com
+<VirtualHost *:80>
+  # Admin email, Server Name (domain name), and any aliases
+  ServerAdmin webmaster@example.com
+  ServerName  www.example.com
+  ServerAlias example.com
 
-          # Index file and Document Root (where the public files are located)
-          DirectoryIndex index.html index.php
-          DocumentRoot /var/www/example.com/public_html
-          # Log file locations
-          LogLevel warn
-          ErrorLog  /var/www/example.com/log/error.log
-          CustomLog /var/www/example.com/log/access.log combined
-        </VirtualHost>
-        ~~~
+  # Index file and Document Root (where the public files are located)
+  DirectoryIndex index.html index.php
+  DocumentRoot /var/www/example.com/public_html
+  # Log file locations
+  LogLevel warn
+  ErrorLog  /var/www/example.com/log/error.log
+  CustomLog /var/www/example.com/log/access.log combined
+</VirtualHost>
 
-    {:.caution}
-    > The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
+{{< /file-excerpt >}}
+
+
+    {{< caution >}}
+The file name *must* end with `.conf` in Apache versions 2.4 and later, which Ubuntu 14.04 uses. The `.conf` extension is backwards-compatible with earlier versions.
+{{< /caution >}}
 
 6.  Enable the new website by entering the following command:
 
@@ -194,7 +197,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
         sudo service apache2 restart
 
-##Install WordPress
+## Install WordPress
 
 1.  On the primary Linode, download and install the latest version of WordPress. Replace any paths listed with the correct path for your configuration:
 
@@ -217,19 +220,20 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 4.  Connect to your Linode's IP address using your web browser, and walk through the configuration steps to fully install WordPress.
 
-    {: .caution}
-    >In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to `localhost`.  This should be filled in by default.
+    {{< caution >}}
+In order to ensure that each of your WordPress instances addresses the local database, you will need to ensure that the Database Host value in this step is set to `localhost`.  This should be filled in by default.
+{{< /caution >}}
 
 5.  Configure your WordPress URL and Site Address via the General Settings in the WordPress admin interface. Ensure that your domain is configured in both fields.
 
     [![WordPressURL](/content/assets/WP-site-address-rs.png)](/content/assets/WP-site-address.png)
 
-    {: .note}
-    >
-    >After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:
-    >
-    >
-    >     chmod 755 /var/www/example.com/public_html/
+    {{< note >}}
+After completing your WordPress installation steps and logging in for the first time, you should reset permissions on your Document Root directory to ensure additional security. You can do so with the following command:
+
+
+chmod 755 /var/www/example.com/public_html/
+{{< /note >}}
 
 6.  Once the WordPress installation steps have been completed, copy the configurations to your second Linode. Replace `x.x.x.x` with the second Linode's IP address:
 
@@ -241,7 +245,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
         sudo service apache2 restart
 
 
-##Configure Folder Sync With Lsyncd
+## Configure Folder Sync With Lsyncd
 
 1.  Install Lsyncd on your primary Linode in the cluster.
 
@@ -249,33 +253,33 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 2.  Create a configuration file in order to perform sync actions.  Replace `x.x.x.x` with the Private IP address of the second Linode in your cluster.
 
-    {: .file-excerpt}
-    /etc/lsyncd/lsyncd.conf.lua
-    :   ~~~ lua
-        settings = {
-        logfile = "/var/log/lsyncd.log",
-        statusFile = "/var/log/lsyncd-status.log"
-        }
-        sync{
-        default.rsyncssh,
-        delete = false,
-        insist
-        source="/var/www",
-        host="x.x.x.x",
-        targetdir="/var/www",
-        rsync = {
-        archive = true,
-        perms = true,
-        owner = true,
-        _extra = {"-a"},
-        },
-        delay = 5,
-        maxProcesses = 4,
-        ssh = {
-        port = 22
-        }
-        }
-        ~~~
+    {{< file-excerpt "/etc/lsyncd/lsyncd.conf.lua" lua >}}
+settings = {
+logfile = "/var/log/lsyncd.log",
+statusFile = "/var/log/lsyncd-status.log"
+}
+sync{
+default.rsyncssh,
+delete = false,
+insist
+source="/var/www",
+host="x.x.x.x",
+targetdir="/var/www",
+rsync = {
+archive = true,
+perms = true,
+owner = true,
+_extra = {"-a"},
+},
+delay = 5,
+maxProcesses = 4,
+ssh = {
+port = 22
+}
+}
+
+{{< /file-excerpt >}}
+
 
 3.  Start the Lsyncd daemon:
 
@@ -289,7 +293,7 @@ The steps in this section will need to be performed on **both** of your Linodes.
 
 5.  Test replication by creating a file in your primary Linode's `/var/www` folder.  You should be able to see that same file in that location on the second Linode within a few seconds.
 
-##Configure Your Nodebalancer
+## Configure Your Nodebalancer
 
 1.  Visit the NodeBalancers tab in the Linode Manager.
 

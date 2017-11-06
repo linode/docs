@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Ubuntu 10.04 LTS (Lucid)'
-keywords: 'cherokee php-fastcgi,cherokee fastcgi,web sever,cherokee ubuntu 10.04,cherokee ubuntu lucid,ubuntu lucid'
+keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "web sever", "cherokee ubuntu 10.04", "cherokee ubuntu lucid", "ubuntu lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/']
-modified: Monday, October 7th, 2013
+aliases: ['web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-ubuntu-10-04-lts-lucid/']
+modified: 2013-10-07
 modified_by:
   name: Linode
-published: 'Friday, June 11th, 2010'
+published: 2010-06-11
 title: 'Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -115,11 +115,11 @@ Test Your Configuration
 
 Restart Cherokee by clicking the "Save" button under the left page navigation list. Once Cherokee has restarted, create a test PHP script as follows:
 
-{: .file }
-/srv/www/mydomain.com/www/public\_html/test.php
-:   ~~~ php
-    <?php phpinfo(); ?>
-    ~~~
+{{< file "/srv/www/mydomain.com/www/public\\_html/test.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
 Visit "/test.php" on your site to verfify PHP-FastCGI is operating correctly. You should see the standard PHPInfo page. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 

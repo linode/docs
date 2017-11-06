@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 10.04 LTS (Lucid).'
-keywords: 'openfire,openfire ubuntu 10.04,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["openfire", "openfire ubuntu 10.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/openfire/ubuntu-10-04-lucid/']
-modified: Tuesday, September 24th, 2013
+aliases: ['communications/xmpp/openfire/ubuntu-10-04-lucid/']
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: 'Instant Messaging Services with Openfire on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -25,12 +25,12 @@ Install Prerequisites
 
 Openfire requires a Java runtime engine (JRE). This tutorial uses the version provided by Sun Microsystems. Please note that although alternate Java runtime engines are available, Openfire may not work well with them. Add the `partner` package repository to your `/etc/apt/sources.list` file, as shown below:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    # Partner repository
-    deb http://archive.canonical.com/ lucid partner
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+# Partner repository
+deb http://archive.canonical.com/ lucid partner
+
+{{< /file-excerpt >}}
+
 
 If you had to add the `partner` repository to your sources, issue the following command to update your package database:
 
@@ -75,11 +75,11 @@ Install the software using `dpkg` as follows:
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
-{: .file-excerpt }
-/etc/openfire/openfire.xml
-:   ~~~ xml
-    <interface>12.34.56.78</interface>
-    ~~~
+{{< file-excerpt "/etc/openfire/openfire.xml" xml >}}
+<interface>12.34.56.78</interface>
+
+{{< /file-excerpt >}}
+
 
 Restart Openfire with the following command:
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.04 (Jaunty).'
-keywords: 'Tomcat,Java,Apache Tomcat,Ubuntu Jaunty,Ubuntu 9.04,Tomcat Linode'
+keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-9-04-jaunty/','websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/apache-tomcat/ubuntu-9-04-jaunty/','websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, August 6th, 2009'
+published: 2009-08-06
 title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -36,12 +36,12 @@ If you would like to run the Sun Microsystems implementation of Java you must fi
 
 Add the following two lines to your `sources.list` list:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
@@ -75,12 +75,12 @@ Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file (replacing "s3cret" with a more appropriate password):
 
-{: .file }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="tomcat" password="s3cret" roles="manager"/>
-    ~~~
+{{< file "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="tomcat" password="s3cret" roles="manager"/>
+
+{{< /file >}}
+
 
 Congratulations! You know have a working Apache Tomcat installation.
 

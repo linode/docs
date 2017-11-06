@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Arch Linux'
-keywords: 'nginx,lemp,php,linux,web applications'
+keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/arch-linux/','websites/lemp/lemp-server-on-arch-linux/']
-modified: Thursday, June 21st, 2012
+aliases: ['lemp-guides/arch-linux/','websites/lemp/lemp-server-on-arch-linux/']
+modified: 2012-06-21
 modified_by:
   name: Linode
-published: 'Thursday, July 8th, 2010'
+published: 2010-07-08
 title: LEMP Server on Arch Linux
 ---
 
@@ -46,21 +46,21 @@ Configure nginx Virtual Hosting
 
 In the default installation of nginx, the main configuration file is located at `/etc/nginx/conf/nginx.conf`; however, there are a number of approaches to organizing configuration within nginx. Regardless of the organizational strategy, all virtual host configurations are contained within `server` configuration blocks that are in turn contained within the `http` block in the `nginx.conf` file. Consider the following nginx virtual host configuration:
 
-{: .file-excerpt }
-nginx server configuration
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/http/example.com/logs/access.log;
-        error_log /srv/http/example.com/logs/error.log;
+{{< file-excerpt "nginx server configuration" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/http/example.com/logs/access.log;
+    error_log /srv/http/example.com/logs/error.log;
 
-        location / {
-            root   /srv/http/example.com/public;
-            index  index.html index.htm;
-        }
+    location / {
+        root   /srv/http/example.com/public;
+        index  index.html index.htm;
     }
-    ~~~
+}
+
+{{< /file-excerpt >}}
+
 
 Create the directories referenced in this configuration by issuing the following commands:
 
@@ -69,31 +69,31 @@ Create the directories referenced in this configuration by issuing the following
 
 You may insert the server directives directly into the `http` section of the `/etc/nginx/nginx.conf` file, although this may be difficult to manage. You may also replicate the management system created by the Debian/Ubuntu operating systems by creating a `site-available/` and `sites-enabled/` directories and inserting the following line into your `nginx.conf` file:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    http {
-    # [...]
+{{< file-excerpt "nginx.conf" nginx >}}
+http {
+# [...]
 
-    include /etc/nginx/sites-enabled/*;
+include /etc/nginx/sites-enabled/*;
 
-    # [...]
-    }
-    ~~~
+# [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Modify the include statement to point to the path of your `sites-enabled` directory. Create site configurations in the `sites-available` directory and then create symbolic links to these files in the `sites-enabled` directory. In other circumstances, it may make more sense to create and include a file named `/srv/nginx-sites.conf` that is included in the `nginx.conf` file as follows:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    http {
-    # [...]
+{{< file-excerpt "nginx.conf" nginx >}}
+http {
+# [...]
 
-    include /srv/nginx-sites.conf;
+include /srv/nginx-sites.conf;
 
-    # [...]
-    }
-    ~~~
+# [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/srv/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file` format. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/content/websites/nginx/basic-nginx-configuration).
 
@@ -126,27 +126,27 @@ In the default configuration, `spawn-fcgi-php` starts four `php-cgi` children pr
 
 Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the `location ~ \.php$ { }` resembles the one in this example:
 
-{: .file }
-nginx virtual host configuration
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/http/example.com/logs/access.log;
-        error_log /srv/http/example.com/logs/error.log;
-        root /srv/http/example.com/public_html;
+{{< file "nginx virtual host configuration" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/http/example.com/logs/access.log;
+    error_log /srv/http/example.com/logs/error.log;
+    root /srv/http/example.com/public_html;
 
-        location / {
-            index index.html index.htm index.php;
-        }
-
-        location ~ \.php$ {
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:9000;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index index.html index.htm index.php;
     }
-    ~~~
+
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/http/example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 **Important security note:** If you're planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 

@@ -3,11 +3,11 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Set up and configure WildFly as your Java Application Server to develop, test, and run, Java applications'
-keywords: 'java,jboss,jboss as,wildfly,apache,mysql,mariaDB'
+keywords: ["java", "jboss", "jboss as", "wildfly", "apache", "mysql", "mariaDB"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, September 18th, 2015'
-alias: ['applications/development/java-development-wildfly-centos-7/']
-modified: Friday, September 18th, 2015
+published: 2015-09-18
+aliases: ['applications/development/java-development-wildfly-centos-7/']
+modified: 2015-09-18
 modified_by:
     name: Linode
 title: 'Java Development with WildFly on CentOS 7'
@@ -54,9 +54,9 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 ### Oracle Java 8 SE installation
 
-{: .note}
->
-> Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.
+{{< note >}}
+Oracle is producing many updates for Java, so below steps ensures you are getting the latest updated Java version.
+{{< /note >}}
 
 1.  In any browser go to [Oracle Java SE download page](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
@@ -114,35 +114,35 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
 11. The above command will work for this session only, but you will need to be added to all system users especially when server reboots, so for the Bourne shell, create a new file called `/etc/profile.d/java.sh`, replacing `jdk1.8.0_45` with the appropriate version:
 
-    {: .file}
-    /etc/profile.d/java.sh
-    :   ~~~ shell
-        if ! echo ${PATH} | grep -q /opt/jdk1.8.0_45/bin ; then
-           export PATH=/opt/jdk1.8.0_45/bin:${PATH}
-        fi
-        if ! echo ${PATH} | grep -q /opt/jdk1.8.0_45/jre/bin ; then
-           export PATH=/opt/jdk1.8.0_45/jre/bin:${PATH}
-        fi
-        export JAVA_HOME=/opt/jdk1.8.0_45
-        export JRE_HOME=/opt/jdk1.8.0_45/jre
-        export CLASSPATH=.:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar
-        ~~~
+    {{< file "/etc/profile.d/java.sh" shell >}}
+if ! echo ${PATH} | grep -q /opt/jdk1.8.0_45/bin ; then
+   export PATH=/opt/jdk1.8.0_45/bin:${PATH}
+fi
+if ! echo ${PATH} | grep -q /opt/jdk1.8.0_45/jre/bin ; then
+   export PATH=/opt/jdk1.8.0_45/jre/bin:${PATH}
+fi
+export JAVA_HOME=/opt/jdk1.8.0_45
+export JRE_HOME=/opt/jdk1.8.0_45/jre
+export CLASSPATH=.:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar
+
+{{< /file >}}
+
 
 12. For the C shell, create a new file called `/etc/profile.d/java.csh`, replacing `jdk1.8.0_51` with the appropriate version:
 
-    {: .file}
-    /etc/profile.d/java.csh
-    :   ~~~ shell
-        if ( "${path}" !~ */opt/jdk1.8.0_45/bin* ) then
-           set path = ( /opt/jdk1.8.0_45/bin $path )
-        endif
-        if ( "${path}" !~ */opt/jdk1.8.0_45/jre/bin* ) then
-           set path = ( /opt/jdk1.8.0_45/jre/bin $path )
-        endif
-        setenv JAVA_HOME /opt/jdk1.8.0_45
-        setenv JRE_HOME /opt/jdk1.8.0_45/jre
-        setenv CLASSPATH .:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar
-        ~~~
+    {{< file "/etc/profile.d/java.csh" shell >}}
+if ( "${path}" !~ */opt/jdk1.8.0_45/bin* ) then
+   set path = ( /opt/jdk1.8.0_45/bin $path )
+endif
+if ( "${path}" !~ */opt/jdk1.8.0_45/jre/bin* ) then
+   set path = ( /opt/jdk1.8.0_45/jre/bin $path )
+endif
+setenv JAVA_HOME /opt/jdk1.8.0_45
+setenv JRE_HOME /opt/jdk1.8.0_45/jre
+setenv CLASSPATH .:/opt/jdk1.8.0_45/lib/tools.jar:/opt/jdk1.8.0_45/jre/lib/rt.jar
+
+{{< /file >}}
+
 
 13. Make sure of the owner and ACL for the profile files by executing the following:
 
@@ -175,115 +175,115 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
     Create wildfly installation file, & execute using root user:
 
-    {: .file}
-    /opt/wildfly-install.sh
-    :   ~~~ shell
-        #!/bin/bash
-        #Title : wildfly-install.sh
-        #Description : The script to install Wildfly 8.x
-        #Original script: http://sukharevd.net/wildfly-8-installation.html
+    {{< file "/opt/wildfly-install.sh" shell >}}
+#!/bin/bash
+#Title : wildfly-install.sh
+#Description : The script to install Wildfly 8.x
+#Original script: http://sukharevd.net/wildfly-8-installation.html
 
-        # This version is the only variable to change when running the script
-        WILDFLY_VERSION=8.2.0.Final
-        WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
-        WILDFLY_ARCHIVE_NAME=$WILDFLY_FILENAME.tar.gz
-        WILDFLY_DOWNLOAD_ADDRESS=http://download.jboss.org/wildfly/$WILDFLY_VERSION/$WILDFLY_ARCHIVE_NAME
+# This version is the only variable to change when running the script
+WILDFLY_VERSION=8.2.0.Final
+WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
+WILDFLY_ARCHIVE_NAME=$WILDFLY_FILENAME.tar.gz
+WILDFLY_DOWNLOAD_ADDRESS=http://download.jboss.org/wildfly/$WILDFLY_VERSION/$WILDFLY_ARCHIVE_NAME
 
-        # Specify the destination location
-        INSTALL_DIR=/opt
-        WILDFLY_FULL_DIR=$INSTALL_DIR/$WILDFLY_FILENAME
-        WILDFLY_DIR=$INSTALL_DIR/wildfly
+# Specify the destination location
+INSTALL_DIR=/opt
+WILDFLY_FULL_DIR=$INSTALL_DIR/$WILDFLY_FILENAME
+WILDFLY_DIR=$INSTALL_DIR/wildfly
 
-        WILDFLY_USER="wildfly"
-        WILDFLY_SERVICE="wildfly"
+WILDFLY_USER="wildfly"
+WILDFLY_SERVICE="wildfly"
 
-        WILDFLY_STARTUP_TIMEOUT=240
-        WILDFLY_SHUTDOWN_TIMEOUT=30
+WILDFLY_STARTUP_TIMEOUT=240
+WILDFLY_SHUTDOWN_TIMEOUT=30
 
-        SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-        if [[ $EUID -ne 0 ]]; then
-        echo "This script must be run as root."
-        exit 1
-        fi
+if [[ $EUID -ne 0 ]]; then
+echo "This script must be run as root."
+exit 1
+fi
 
-        echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
-        [ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
-        if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
-        wget $WILDFLY_DOWNLOAD_ADDRESS
-        if [ $? -ne 0 ]; then
-        echo "Not possible to download Wildfly."
-        exit 1
-        fi
-        fi
+echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
+[ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
+if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
+wget $WILDFLY_DOWNLOAD_ADDRESS
+if [ $? -ne 0 ]; then
+echo "Not possible to download Wildfly."
+exit 1
+fi
+fi
 
-        echo "Cleaning up..."
-        rm -f "$WILDFLY_DIR"
-        rm -rf "$WILDFLY_FULL_DIR"
-        rm -rf "/var/run/$WILDFLY_SERVICE/"
-        rm -f "/etc/init.d/$WILDFLY_SERVICE"
+echo "Cleaning up..."
+rm -f "$WILDFLY_DIR"
+rm -rf "$WILDFLY_FULL_DIR"
+rm -rf "/var/run/$WILDFLY_SERVICE/"
+rm -f "/etc/init.d/$WILDFLY_SERVICE"
 
-        echo "Installation..."
-        mkdir $WILDFLY_FULL_DIR
-        tar -xzf $WILDFLY_ARCHIVE_NAME -C $INSTALL_DIR
-        ln -s $WILDFLY_FULL_DIR/ $WILDFLY_DIR
-        useradd -s /sbin/nologin $WILDFLY_USER
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/
+echo "Installation..."
+mkdir $WILDFLY_FULL_DIR
+tar -xzf $WILDFLY_ARCHIVE_NAME -C $INSTALL_DIR
+ln -s $WILDFLY_FULL_DIR/ $WILDFLY_DIR
+useradd -s /sbin/nologin $WILDFLY_USER
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/
 
-        echo "Registering Wildfly as service..."
-        cp $WILDFLY_DIR/bin/init.d/wildfly-init-redhat.sh /etc/init.d/$WILDFLY_SERVICE
-        WILDFLY_SERVICE_CONF=/etc/default/wildfly.conf
+echo "Registering Wildfly as service..."
+cp $WILDFLY_DIR/bin/init.d/wildfly-init-redhat.sh /etc/init.d/$WILDFLY_SERVICE
+WILDFLY_SERVICE_CONF=/etc/default/wildfly.conf
 
-        chmod 755 /etc/init.d/$WILDFLY_SERVICE
+chmod 755 /etc/init.d/$WILDFLY_SERVICE
 
-        if [ ! -z "$WILDFLY_SERVICE_CONF" ]; then
-        echo "Configuring service..."
-        echo JBOSS_HOME=\"$WILDFLY_DIR\" > $WILDFLY_SERVICE_CONF
-        echo JBOSS_USER=$WILDFLY_USER >> $WILDFLY_SERVICE_CONF
-        echo JBOSS_MODE=standalone >> $WILDFLY_SERVICE_CONF
-        echo JBOSS_CONFIG=standalone.xml >> $WILDFLY_SERVICE_CONF
-        echo STARTUP_WAIT=$WILDFLY_STARTUP_TIMEOUT >> $WILDFLY_SERVICE_CONF
-        echo SHUTDOWN_WAIT=$WILDFLY_SHUTDOWN_TIMEOUT >> $WILDFLY_SERVICE_CONF
-        fi
+if [ ! -z "$WILDFLY_SERVICE_CONF" ]; then
+echo "Configuring service..."
+echo JBOSS_HOME=\"$WILDFLY_DIR\" > $WILDFLY_SERVICE_CONF
+echo JBOSS_USER=$WILDFLY_USER >> $WILDFLY_SERVICE_CONF
+echo JBOSS_MODE=standalone >> $WILDFLY_SERVICE_CONF
+echo JBOSS_CONFIG=standalone.xml >> $WILDFLY_SERVICE_CONF
+echo STARTUP_WAIT=$WILDFLY_STARTUP_TIMEOUT >> $WILDFLY_SERVICE_CONF
+echo SHUTDOWN_WAIT=$WILDFLY_SHUTDOWN_TIMEOUT >> $WILDFLY_SERVICE_CONF
+fi
 
-        echo "Configuration backup"
-        cp $WILDFLY_DIR/standalone/configuration/standalone.xml $WILDFLY_DIR/standalone/configuration/standalone-org.xml
-        cp $WILDFLY_DIR/bin/standalone.conf $WILDFLY_DIR/bin/standalone-org.conf
+echo "Configuration backup"
+cp $WILDFLY_DIR/standalone/configuration/standalone.xml $WILDFLY_DIR/standalone/configuration/standalone-org.xml
+cp $WILDFLY_DIR/bin/standalone.conf $WILDFLY_DIR/bin/standalone-org.conf
 
-        echo "Configuring application server..."
-        sed -i -e 's,<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000"/>,<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" deployment-timeout="'$WILDFLY_STARTUP_TIMEOUT'"/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
-        # Enable access from any server
-        sed -i -e 's,<inet-address value="${jboss.bind.address.management:127.0.0.1}"/>,<any-address/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
-        sed -i -e 's,<inet-address value="${jboss.bind.address:127.0.0.1}"/>,<any-address/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
+echo "Configuring application server..."
+sed -i -e 's,<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000"/>,<deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000" deployment-timeout="'$WILDFLY_STARTUP_TIMEOUT'"/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
+# Enable access from any server
+sed -i -e 's,<inet-address value="${jboss.bind.address.management:127.0.0.1}"/>,<any-address/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
+sed -i -e 's,<inet-address value="${jboss.bind.address:127.0.0.1}"/>,<any-address/>,g' $WILDFLY_DIR/standalone/configuration/standalone.xml
 
-        # The below line is added to avoid warning when starting WildFly with jdk 8 SE, as the JVM memory parameter changed
-        sed -i -e 's,MaxPermSize,MaxMetaspaceSize,g' $WILDFLY_DIR/bin/standalone.conf
+# The below line is added to avoid warning when starting WildFly with jdk 8 SE, as the JVM memory parameter changed
+sed -i -e 's,MaxPermSize,MaxMetaspaceSize,g' $WILDFLY_DIR/bin/standalone.conf
 
-        echo "Configuring Firewalld for WildFly ports"
-        firewall-cmd --permanent --add-port=8080/tcp
-        firewall-cmd --permanent --add-port=8443/tcp
-        firewall-cmd --permanent --add-port=9990/tcp
-        firewall-cmd --permanent --add-port=9993/tcp
-        firewall-cmd --reload
+echo "Configuring Firewalld for WildFly ports"
+firewall-cmd --permanent --add-port=8080/tcp
+firewall-cmd --permanent --add-port=8443/tcp
+firewall-cmd --permanent --add-port=9990/tcp
+firewall-cmd --permanent --add-port=9993/tcp
+firewall-cmd --reload
 
-        echo "Backup management user"
-        cp $WILDFLY_DIR/standalone/configuration/mgmt-users.properties $WILDFLY_DIR/standalone/configuration/mgmt-users-org.properties
-        cp $WILDFLY_DIR/standalone/configuration/application-users.properties $WILDFLY_DIR/standalone/configuration/application-users-org.properties
-        cp $WILDFLY_DIR/domain/configuration/mgmt-users.properties $WILDFLY_DIR/domain/configuration/mgmt-users-org.properties
-        cp $WILDFLY_DIR/domain/configuration/application-users.properties $WILDFLY_DIR/domain/configuration/application-users-org.properties
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/standalone/configuration/mgmt-users-org.properties
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/standalone/configuration/application-users-org.properties
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/domain/configuration/mgmt-users-org.properties
-        chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/domain/configuration/application-users-org.properties
+echo "Backup management user"
+cp $WILDFLY_DIR/standalone/configuration/mgmt-users.properties $WILDFLY_DIR/standalone/configuration/mgmt-users-org.properties
+cp $WILDFLY_DIR/standalone/configuration/application-users.properties $WILDFLY_DIR/standalone/configuration/application-users-org.properties
+cp $WILDFLY_DIR/domain/configuration/mgmt-users.properties $WILDFLY_DIR/domain/configuration/mgmt-users-org.properties
+cp $WILDFLY_DIR/domain/configuration/application-users.properties $WILDFLY_DIR/domain/configuration/application-users-org.properties
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/standalone/configuration/mgmt-users-org.properties
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/standalone/configuration/application-users-org.properties
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/domain/configuration/mgmt-users-org.properties
+chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/domain/configuration/application-users-org.properties
 
-        echo "Starting Wildfly"
-        service $WILDFLY_SERVICE start
-        chkconfig --add wildfly
-        chkconfig --level 2345 wildfly on
+echo "Starting Wildfly"
+service $WILDFLY_SERVICE start
+chkconfig --add wildfly
+chkconfig --level 2345 wildfly on
 
-        echo "Done."
-        ~~~
+echo "Done."
+
+{{< /file >}}
+
 
 2.  Make the script executable:
 
@@ -322,19 +322,19 @@ Please Follow these steps to install MySQL driver as "module" in WildFly
 
 3.  Create a file defining the module to the same folder `/opt/wildfly/modules/com/mysql/main` named `module.xml` have the following information, replacing the `mysql-connector-java-5.1.34-bin.jar` with the correct version:
 
-    {: .file}
-    /opt/wildfly/modules/com/mysql/main/module.xml
-    :   ~~~ xml
-        <module xmlns="urn:jboss:module:1.3" name="com.mysql">
-           <resources>
-               <resource-root path="mysql-connector-java-5.1.34-bin.jar"/>
-           </resources>
-           <dependencies>
-               <module name="javax.api"/>
-               <module name="javax.transaction.api"/>
-           </dependencies>
-        </module>
-        ~~~
+    {{< file "/opt/wildfly/modules/com/mysql/main/module.xml" xml >}}
+<module xmlns="urn:jboss:module:1.3" name="com.mysql">
+   <resources>
+       <resource-root path="mysql-connector-java-5.1.34-bin.jar"/>
+   </resources>
+   <dependencies>
+       <module name="javax.api"/>
+       <module name="javax.transaction.api"/>
+   </dependencies>
+</module>
+
+{{< /file >}}
+
 
 4.  Change ownership for the user wildfly for the files by issuing the command:
 
@@ -342,18 +342,18 @@ Please Follow these steps to install MySQL driver as "module" in WildFly
 
 5.  We need to define MySQL driver in `/opt/wildfly/standalone/configuration/standalone.xml` by adding the following driver definition within the drivers tag, by default you will find only definition for h2:
 
-    {: .file-excerpt}
-    /opt/wildfly/standalone/configuration/standalone.xml
-    :   ~~~ xml
-        <drivers>
-            <driver name="h2" module="com.h2database.h2">
-                <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
-            </driver>
-            <driver name="mysqlDriver" module="com.mysql">
-                <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
-            </driver>
-        </drivers>
-        ~~~
+    {{< file-excerpt "/opt/wildfly/standalone/configuration/standalone.xml" xml >}}
+<drivers>
+    <driver name="h2" module="com.h2database.h2">
+        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+    </driver>
+    <driver name="mysqlDriver" module="com.mysql">
+        <xa-datasource-class>com.mysql.jdbc.jdbc2.optional.MysqlXADataSource</xa-datasource-class>
+    </driver>
+</drivers>
+
+{{< /file-excerpt >}}
+
 
 6.  Restart WildFly so changes take effect:
 
@@ -431,43 +431,43 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
 
 4.  We need to configure Apache HTTP server to use this module, we will create worker file for mod_jk, and add its content (Status worker is useful in debugging as well):
 
-    {: .file}
-    /etc/httpd/conf.d/workers.properties
-    :   ~~~ conf
-        worker.list=jboss1,jkstatus
-        worker.jkstatus.type=status
-        worker.jboss1.type=ajp13
-        worker.jboss1.port=8009
-        # The host should be using IP not server name as reported bug
-        # https://www.apachelounge.com/viewtopic.php?t=5883
-        worker.jboss1.host=127.0.0.1
-        ~~~
+    {{< file "/etc/httpd/conf.d/workers.properties" aconf >}}
+worker.list=jboss1,jkstatus
+worker.jkstatus.type=status
+worker.jboss1.type=ajp13
+worker.jboss1.port=8009
+# The host should be using IP not server name as reported bug
+# https://www.apachelounge.com/viewtopic.php?t=5883
+worker.jboss1.host=127.0.0.1
+
+{{< /file >}}
+
 
 5.  Instead of modifying Apache configuration file; better create extra Apache HTTP configuration file that will work as Apache by default has in the file `/etc/httpd/conf/httpd.conf` the directive `IncludeOptional conf.d/*.conf`:
 
-    {: .file}
-    /etc/httpd/conf.d/modjk.conf
-    :   ~~~ conf
-        # To avoid error AH00558: httpd: Could not reliably
-        # determine the server's fully qualified domain name
-        # replace 1.2.3.4 with your server IP
-        ServerName    1.2.3.4
+    {{< file "/etc/httpd/conf.d/modjk.conf" aconf >}}
+# To avoid error AH00558: httpd: Could not reliably
+# determine the server's fully qualified domain name
+# replace 1.2.3.4 with your server IP
+ServerName    1.2.3.4
 
-        # Load mod_jk
-        LoadModule    jk_module modules/mod_jk.so
-        JkWorkersFile /etc/httpd/conf.d/workers.properties
-        JkLogFile     /var/log/httpd/mod_jk_log
+# Load mod_jk
+LoadModule    jk_module modules/mod_jk.so
+JkWorkersFile /etc/httpd/conf.d/workers.properties
+JkLogFile     /var/log/httpd/mod_jk_log
 
-        # To be changed to warn in production, the mount point should match your application sample pathes
-        JkLogLevel    info
-        JKMount       /sample jboss1
-        JkMount       /sample/* jboss1
-        JKMount       /jkstatus jkstatus
+# To be changed to warn in production, the mount point should match your application sample pathes
+JkLogLevel    info
+JKMount       /sample jboss1
+JkMount       /sample/* jboss1
+JKMount       /jkstatus jkstatus
 
-        # To avoid write access error in mod_jk
-        # https://bugzilla.redhat.com/show_bug.cgi?id=912730
-        JKShmFile     /var/tmp/jk-runtime-status
-        ~~~
+# To avoid write access error in mod_jk
+# https://bugzilla.redhat.com/show_bug.cgi?id=912730
+JKShmFile     /var/tmp/jk-runtime-status
+
+{{< /file >}}
+
 
 6.  Restart Apache:
 

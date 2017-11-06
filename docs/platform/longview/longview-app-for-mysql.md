@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Longview App for MySQL
-keywords: 'Longview, MySQL, statistics'
+keywords: ["Longview", " MySQL", " statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['longview/longview-for-mysql/']
-modified: Wednesday, November 6th, 2013
+aliases: ['longview/longview-for-mysql/']
+modified: 2013-11-06
 modified_by:
   name: Linode
-published: 'Wednesday, November 6th, 2013'
+published: 2013-11-06
 title: Longview App for MySQL
 ---
 
@@ -40,9 +40,9 @@ For most people, Longview should be able to configure itself automatically, and 
 
 Once you see this successful message, the Longview MySQL App should automatically start collecting MySQL data. Refresh the Longview MySQL tab in the Linode Manager to start viewing your stats.
 
- {: .note }
->
-> Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
+ {{< note >}}
+Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
+{{< /note >}}
 
 If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
@@ -59,14 +59,14 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 
 2.  Edit `/etc/linode/longview.d/MySQL.conf` to include the same username and password you just added. It should look like the following:
 
-    {: .file }
-    /etc/linode/longview.d/MySQL.conf
-    :   ~~~ conf
-        #username root
-        #password example_password
-        username linode-longview
-        password ***************
-        ~~~
+    {{< file "/etc/linode/longview.d/MySQL.conf" aconf >}}
+#username root
+#password example_password
+username linode-longview
+password ***************
+
+{{< /file >}}
+
 
 3.  Restart Longview:
 

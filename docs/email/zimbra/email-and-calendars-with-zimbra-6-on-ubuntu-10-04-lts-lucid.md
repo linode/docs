@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 10.04 (Lucid) Linode.'
-keywords: 'zimbra ubuntu 10.04,zimbra lucid,zimbra on ubuntu,zimbra groupware,zimbra mail server,linux mail server'
+keywords: ["zimbra ubuntu 10.04", "zimbra lucid", "zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/zimbra/install-zimbra-ubuntu-10-04-lucid/']
-modified: Tuesday, May 17th, 2011
+aliases: ['email/zimbra/install-zimbra-ubuntu-10-04-lucid/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: 'Email and Calendars with Zimbra 6 on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -41,12 +41,12 @@ System Files Prerequisites
 
 Before proceeding, make sure your `/etc/hosts` file has valid entries. For reference, your file should resemble the following:
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 hostname.example.com hostname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 hostname.example.com hostname
+
+{{< /file >}}
+
 
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 
@@ -71,25 +71,25 @@ Visit the download page for [Zimbra Open Source Edition](http://www.zimbra.com/c
 
 You'll need to edit the file `util/utilfunc.sh` to work around a package requirement. Look for the block containing the following lines:
 
-{: .file-excerpt }
-util/utilfunc.sh
-:   ~~~
-    checkUbuntuRelease
-    PACKAGEINST='dpkg -i'
-    PACKAGERM='dpkg --purge'
-    PACKAGEQUERY='dpkg -s'
-    PACKAGEEXT='deb'
-    PACKAGEVERSION="dpkg-query -W -f \${Version}"
-    PREREQ_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
-    ~~~
+{{< file-excerpt "util/utilfunc.sh" >}}
+checkUbuntuRelease
+PACKAGEINST='dpkg -i'
+PACKAGERM='dpkg --purge'
+PACKAGEQUERY='dpkg -s'
+PACKAGEEXT='deb'
+PACKAGEVERSION="dpkg-query -W -f \${Version}"
+PREREQ_PACKAGES="sudo libidn11 libgmp3 libstdc++6"
+
+{{< /file-excerpt >}}
+
 
 Change the last line to read as follows:
 
-{: .file-excerpt }
-util/utilfunc.sh
-:   ~~~
-    PREREQ_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
-    ~~~
+{{< file-excerpt "util/utilfunc.sh" >}}
+PREREQ_PACKAGES="sudo libidn11 libgmp3c2 libstdc++6"
+
+{{< /file-excerpt >}}
+
 
 Launch the installer with the following commands.
 

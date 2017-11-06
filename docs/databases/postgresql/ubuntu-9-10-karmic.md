@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
-keywords: 'postgresql,postgresql database,postgresql ubuntu,postgresql ubuntu 9.10,postgresql ubuntu karmic,relational database'
+keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, April 29th, 2011
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, October 29th, 2009'
+published: 2009-10-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -125,19 +125,19 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file`/etc/postgresql/8.4/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 If you changed the authentication method as shown above, restart Postgresql with the following command:
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 5 (Lenny) Linode.'
-keywords: 'citadel,debian mail server,groupware,email server,email howto'
+keywords: ["citadel", "debian mail server", "groupware", "email server", "email howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/citadel/debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['email/citadel/debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, November 9th, 2009'
+published: 2009-11-09
 title: 'Email with Citadel on Debian 5 (Lenny)'
 ---
 
@@ -53,20 +53,20 @@ Enabling Spamassassin Filtering
 
 Edit the `/etc/mailname` file to reflect your system's domain name:
 
-{: .file }
-/etc/mailname
-:   ~~~
-    username.example.com
-    ~~~
+{{< file "/etc/mailname" >}}
+username.example.com
+
+{{< /file >}}
+
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
 
-{: .file }
-/etc/default/spamassassin
-:   ~~~
-    # Change to one to enable spamd
-    ENABLED=1
-    ~~~
+{{< file "/etc/default/spamassassin" >}}
+# Change to one to enable spamd
+ENABLED=1
+
+{{< /file >}}
+
 
 Start the spamassassin service as follows:
 
@@ -79,11 +79,11 @@ Running Citadel
 
 Customize the logon banner for your Citadel server by editing the relevant file:
 
-{: .file }
-/usr/share/citadel-server/messages/hello
-:   ~~~
-    Citadel Groupware Server Login
-    ~~~
+{{< file "/usr/share/citadel-server/messages/hello" >}}
+Citadel Groupware Server Login
+
+{{< /file >}}
+
 
 Use the following startup script to initialize Citadel.
 

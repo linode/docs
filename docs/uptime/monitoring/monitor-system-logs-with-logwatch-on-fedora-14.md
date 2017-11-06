@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Logwatch to monitor system logs and generate reports.'
-keywords: 'logwatch,security,logging,audit'
+keywords: ["logwatch", "security", "logging", "audit"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/logwatch/fedora-14/']
-modified: Tuesday, October 1st, 2013
+aliases: ['server-monitoring/logwatch/fedora-14/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Monitor System Logs with Logwatch on Fedora 14
 ---
 
@@ -45,12 +45,12 @@ Configure Logwatch
 
 Once you have installed Logwatch, you will need to configure it to email you the reports it generates. You are encouraged to look through the entire configuration, but you may safely use Logwatch after editing the lines below.
 
-{: .file }
-/usr/share/logwatch/default.conf/logwatch.conf
-:   ~~~ ini
-    MailTo = myemail@mydomain.com
-    MailFrom = logwatch@mydomain.com
-    ~~~
+{{< file "/usr/share/logwatch/default.conf/logwatch.conf" ini >}}
+MailTo = myemail@mydomain.com
+MailFrom = logwatch@mydomain.com
+
+{{< /file >}}
+
 
 The `MailTo` and `MailFrom` directives should be valid email addresses.
 

@@ -3,11 +3,11 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Nagios is a widely used tool for monitoring systems and services.'
-keywords: 'nagios,ubuntu,monitoring,install nagios,nagios 4 ubuntu,debian 8'
-alias: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/']
+keywords: ["nagios", "ubuntu", "monitoring", "install nagios", "nagios 4 ubuntu", "debian 8"]
+aliases: ['uptime/monitoring/monitor-services-with-nagios-4-on-ubuntu-14-04/','uptime/monitoring/install-nagios-4-on-ubuntu-14-04-debian-8/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, April 12th, 2016'
-modified: Tuesday, April 12th, 2016
+published: 2016-04-12
+modified: 2016-04-12
 modified_by:
   name: Edward Angert
 title: 'Install Nagios 4 on Ubuntu and Debian 8'
@@ -36,9 +36,9 @@ A monitoring tool is a key application in a production server. Nagios is a popul
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Nagios
 
@@ -131,8 +131,9 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
         sudo service nagios start
 
-    {: .note}
-    > For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) before running this step.
+    {{< note >}}
+For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) before running this step.
+{{< /note >}}
 
 2.  The interface can be accessed in your web browser by appending `/nagios` to your domain or Public IP. When prompted at login, use `nagiosadmin` as the user and use the password you assigned in the **Configure Nagios Web Interface** section.
 
@@ -150,22 +151,22 @@ Nagios Plugins allow you to monitor services like DHCP, FTP, HTTP and NTP. To us
 
 As of this guide's publication, the Nagios build process does not create a systemd service file. In order to manage the service with systemd, create a Nagios service file for the system to load on initialization:
 
- {: .file}
- /etc/systemd/system/nagios.service
- :    ~~~ ini
-      [Unit]
-      Description=Nagios
-      BindTo=network.target
+ {{< file "/etc/systemd/system/nagios.service" ini >}}
+[Unit]
+Description=Nagios
+BindTo=network.target
 
-      [Install]
-      WantedBy=multi-user.target
+[Install]
+WantedBy=multi-user.target
 
-      [Service]
-      User=nagios
-      Group=nagios
-      Type=simple
-      ExecStart=/usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg
-      ~~~
+[Service]
+User=nagios
+Group=nagios
+Type=simple
+ExecStart=/usr/local/nagios/bin/nagios /usr/local/nagios/etc/nagios.cfg
+
+{{< /file >}}
+
 
 
 Enable the link, start the Nagios service, and check the status:

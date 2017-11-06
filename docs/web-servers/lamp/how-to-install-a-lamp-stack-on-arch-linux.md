@@ -3,13 +3,13 @@ author:
     name: Alex Fornuto
     email: afornuto@linode.com
 description: 'A simple tutorial on installing a LAMP (Linux, Apache, MySQL, PHP) stack on an Arch Linux-powered server.'
-keywords: 'arch lamp,arch lamp stack,lamp linux,arch linode,arch linux lamp,arch linux,arch,lamp,lamp stack,apache,mysql,php'
+keywords: ["arch lamp", "arch lamp stack", "lamp linux", "arch linode", "arch linux lamp", "arch linux", "arch", "lamp", "lamp stack", "apache", "mysql", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/','web-servers/lamp/lamp-server-on-arch-linux/']
-modified: Monday, December 7th, 2015
+aliases: ['lamp-guides/arch-linux/','lamp-guides/arch-linux-10-2013/','websites/lamp/lamp-server-on-arch-linux/','web-servers/lamp/lamp-server-on-arch-linux/']
+modified: 2015-12-07
 modified_by:
     name: Alex Fornuto
-published: 'Monday, October 7th, 2013'
+published: 2013-10-07
 title: How to Install a LAMP Stack on Arch Linux
 external_resources:
  - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
@@ -25,9 +25,9 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
 Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
 
-{: .note }
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -47,31 +47,31 @@ Since Arch does not come in specific versions, this guide is up-to-date as of th
 
 2.  Edit the `httpd-mpm.conf` Apache configuration file in `/etc/httpd/conf/extra/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .note}
-    >
-    >Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
-    >
-    >     cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
+    {{< note >}}
+Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/extra/httpd-mpm.conf
-    :   ~~~ conf
-        <IfModule mpm_prefork_module>
-                StartServers            4
-                MinSpareServers         20
-                MaxSpareServers         40
-                MaxRequestWorkers       200
-                MaxConnectionsPerChild  4500
-        </IfModule>
-        ~~~
+cp /etc/httpd/conf/extra/httpd-mpm.conf ~/httpd-mpm.conf.backup
+{{< /note >}}
+
+    {{< file-excerpt "/etc/httpd/conf/extra/httpd-mpm.conf" aconf >}}
+<IfModule mpm_prefork_module>
+        StartServers            4
+        MinSpareServers         20
+        MaxSpareServers         40
+        MaxRequestWorkers       200
+        MaxConnectionsPerChild  4500
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 3. Edit the `httpd-default.conf` file to turn KeepAlive off.
 
-    {: .file-excerpt }
-    /etc/httpd/conf/extra/httpd-default.conf
-    :   ~~~ conf
-        KeepAlive Off
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf/extra/httpd-default.conf" aconf >}}
+KeepAlive Off
+
+{{< /file-excerpt >}}
+
 
 4.  Set Apache to start at boot:
 
@@ -83,44 +83,44 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
 
 1. Open `httpd.conf` and edit the line `DocumentRoot /srv/http` to define the default document root:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~
-        DocumentRoot "/srv/http/default"
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" >}}
+DocumentRoot "/srv/http/default"
+
+{{< /file-excerpt >}}
+
 
 2. Uncomment the line that reads `Include  conf/extra/httpd-vhosts.conf` near the end of the `/etc/httpd/conf/httpd.conf` file:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ apache
-        Include conf/extra/httpd-vhosts.conf
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+Include conf/extra/httpd-vhosts.conf
+
+{{< /file-excerpt >}}
+
 
 2. Open `httpd-vhosts.conf`, under the `extra` folder. Edit the example virtual hosts block to resemble the ones below, replacing `example.com` with your domain.
 
-    {: .file-excerpt }
-    /etc/httpd/conf/extra/httpd-vhosts.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.com
-             ServerName example.com
-             ServerAlias www.example.com
-             DocumentRoot /srv/http/example.com/public_html/
-             ErrorLog /srv/http/example.com/logs/error.log
-             CustomLog /srv/http/example.com/logs/access.log combined
-                    <Directory />
-                       Order deny,allow
-                       Allow from all
-                    </Directory>
-        </VirtualHost>
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf/extra/httpd-vhosts.conf" aconf >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/http/example.com/public_html/
+     ErrorLog /srv/http/example.com/logs/error.log
+     CustomLog /srv/http/example.com/logs/access.log combined
+            <Directory />
+               Order deny,allow
+               Allow from all
+            </Directory>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
     Remove the second example in the file, or use it configure a second website.
 
-    {: .note}
-    >
-    >`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    {{< note >}}
+`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+{{< /note >}}
 
 4.  Create the directories referenced in the configuration above:
 
@@ -134,12 +134,11 @@ Virtual hosting can be configured so that multiple domains (or subdomains) can b
 
     You should now be able to access your website. If no files are uploaded you will see an *Index of /* page.
 
-    {: .note}
-    >
-    >Should any additional changes be made to a configuration file restart Apache:
-    >
-    >     sudo systemctl restart httpd.service
+    {{< note >}}
+Should any additional changes be made to a configuration file restart Apache:
 
+sudo systemctl restart httpd.service
+{{< /note >}}
 
 ## MySQL
 
@@ -195,19 +194,19 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 2.  Edit `/etc/php/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
-    {: .file-excerpt }
-    /etc/php/php.ini
-    :   ~~~ ini
-        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        log_errors = On
-        error_log = /var/log/php/error.log
-        max_input_time = 30
-        extension=mysql.so
-        ~~~
+    {{< file-excerpt "/etc/php/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+log_errors = On
+error_log = /var/log/php/error.log
+max_input_time = 30
+extension=mysql.so
 
-    {: .note}
-    >
-    >Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+Ensure that all lines noted above are uncommented. A commented line begins with a semicolon (**;**).
+{{< /note >}}
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 
@@ -216,29 +215,29 @@ PHP makes it possible to produce dynamic and interactive pages using your own sc
 
 4.  Enable the PHP module in the `/etc/httpd/conf/httpd.conf` file by adding the following lines in the appropriate sections:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ conf
-        # Dynamic Shared Object (DSO) Support
-        LoadModule php7_module modules/libphp7.so
-        AddHandler php7-script php
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" aconf >}}
+# Dynamic Shared Object (DSO) Support
+LoadModule php7_module modules/libphp7.so
+AddHandler php7-script php
 
-        # Supplemental configuration
-        # PHP 7
-        Include conf/extra/php7_module.conf
+# Supplemental configuration
+# PHP 7
+Include conf/extra/php7_module.conf
 
-        # Located in the <IfModule mime_module>
-        AddType application/x-httpd-php .php
-        AddType application/x-httpd-php-source .phps
-        ~~~
+# Located in the <IfModule mime_module>
+AddType application/x-httpd-php .php
+AddType application/x-httpd-php-source .phps
+
+{{< /file-excerpt >}}
+
 5.  In the same file, comment out the line `LoadModule mpm_event_module modules/mod_mpm_event.so` by adding a `#` in front, and add the line `LoadModule mpm_prefork_module modules/mod_mpm_prefork.so`:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ apache
-        #LoadModule mpm_event_module modules/mod_mpm_event.so
-        LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+#LoadModule mpm_event_module modules/mod_mpm_event.so
+LoadModule mpm_prefork_module modules/mod_mpm_prefork.so
+
+{{< /file-excerpt >}}
+
 
 6.  Restart the Apache:
 

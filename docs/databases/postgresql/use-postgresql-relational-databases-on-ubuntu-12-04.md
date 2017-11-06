@@ -4,14 +4,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'postgresql,ubuntu 12.04,postgresql database,open source database,relational database'
+keywords: ["postgresql", "ubuntu 12.04", "postgresql database", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, October 8th, 2012
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, October 8th, 2012'
+published: 2012-10-08
 title: 'Use PostgreSQL Relational Databases on Ubuntu 12.04'
-alias: ['databases/postgresql/ubuntu-12-04-precise-pangolin/']
+aliases: ['databases/postgresql/ubuntu-12-04-precise-pangolin/']
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/content/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
@@ -32,7 +32,7 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
 The current version of the database server will be installed, along with several supporting packages.
 
-##Configure PostgreSQL
+## Configure PostgreSQL
 
 ### Install the Adminpack
 
@@ -124,19 +124,19 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/etc/postgresql/9.1/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/etc/postgresql/9.1/main/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/etc/postgresql/9.1/main/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/etc/postgresql/9.1/main/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/etc/postgresql/9.1/main/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 If you changed the authentication method as shown above, restart Postgresql with the following command:
 

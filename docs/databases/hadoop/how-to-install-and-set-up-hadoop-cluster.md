@@ -3,10 +3,10 @@ author:
   name: Florent Houbart
   email: docs@Linode.com
 description: 'This Linode guide will show you how to install and set up a 3-node Hadoop cluster.'
-keywords: 'Hadoop, YARN, HDFS'
+keywords: ["Hadoop", " YARN", " HDFS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, October 13th, 2017'
-modified: Monday, October 16th, 2017
+published: 2017-10-13
+modified: 2017-10-16
 modified_by:
   name: Linode
 title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
@@ -49,9 +49,9 @@ Hadoop is an open-source Apache project that allows creation of parallel process
     -  **node1**: 192.0.2.2
     -  **node2**: 192.0.2.3
 
-      {: .note}
-      >
-      > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+      {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+{{< /note >}}
 
 ## Architecture of a Hadoop Cluster
 
@@ -73,13 +73,13 @@ A **master node** keeps knowledge about the distributed file system, like the `i
 
 For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
-  {: .file-excerpt }
-  /etc/hosts
-  :   ~~~ conf
-      192.0.2.1    node-master
-      192.0.2.2    node1
-      192.0.2.3    node2
-      ~~~~
+  {{< file-excerpt "/etc/hosts" aconf >}}
+192.0.2.1    node-master
+192.0.2.2    node1
+192.0.2.3    node2
+
+{{< /file-excerpt >}}
+~
 
 ### Distribute Authentication Key-pairs for the Hadoop User
 
@@ -108,11 +108,11 @@ Login to **node-master** as the `hadoop` user, download the Hadoop tarball from 
 
 1. Add Hadoop binaries to your PATH. Edit `/home/hadoop/.profile` and add the following line:
 
-    {: .file-excerpt }
-    /home/hadoop/.profile
-    :   ~~~ shell
-        PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
-        ~~~
+    {{< file-excerpt "/home/hadoop/.profile" shell >}}
+PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
+
+{{< /file-excerpt >}}
+
 
 ## Configure the Master Node
 
@@ -135,54 +135,54 @@ Configuration will be done on **node-master** and replicated to other nodes.
 
     with your actual java installation path. For example on a Debian with open-jdk-8:
 
-    {: .file-excerpt }
-    ~/hadoop/etc/hadoop/hadoop-env.sh
-    :   ~~~ shell
-        export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
-        ~~~
+    {{< file-excerpt "~/hadoop/etc/hadoop/hadoop-env.sh" shell >}}
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+{{< /file-excerpt >}}
+
 
 
 ### Set NameNode Location
 
 On each node update `~/hadoop/etc/hadoop/core-site.xml` you want to set the NameNode location to **node-master** on port `9000`:
 
-{: .file }
-~/hadoop/etc/hadoop/core-site.xml
-:   ~~~ xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-        <configuration>
-            <property>
-                <name>fs.default.name</name>
-                <value>hdfs://node-master:9000</value>
-            </property>
-        </configuration>
-    ~~~
+{{< file "~/hadoop/etc/hadoop/core-site.xml" xml >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    <configuration>
+        <property>
+            <name>fs.default.name</name>
+            <value>hdfs://node-master:9000</value>
+        </property>
+    </configuration>
+
+{{< /file >}}
+
 
 ### Set path for HDFS
 
 Edit `hdfs-site.conf`:
 
-{: .file }
-~/hadoop/etc/hadoop/hdfs-site.xml
-:   ~~~ xml
-    <configuration>
-        <property>
-                <name>dfs.namenode.name.dir</name>
-                <value>/home/hadoop/data/nameNode</value>
-        </property>
+{{< file "~/hadoop/etc/hadoop/hdfs-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>dfs.namenode.name.dir</name>
+            <value>/home/hadoop/data/nameNode</value>
+    </property>
 
-        <property>
-                <name>dfs.datanode.data.dir</name>
-                <value>/home/hadoop/data/dataNode</value>
-        </property>
+    <property>
+            <name>dfs.datanode.data.dir</name>
+            <value>/home/hadoop/data/dataNode</value>
+    </property>
 
-        <property>
-                <name>dfs.replication</name>
-                <value>1</value>
-        </property>
-    </configuration>
-    ~~~
+    <property>
+            <name>dfs.replication</name>
+            <value>1</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 The last property, `dfs.replication`, indicates how many times data is replicated in the cluster. You can set `2` to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of slave nodes.
 
@@ -195,52 +195,52 @@ The last property, `dfs.replication`, indicates how many times data is replicate
 
 2. Edit the file, setting yarn as the default framework for MapReduce operations:
 
-      {: .file }
-      ~/hadoop/etc/hadoop/mapred-site.xml
-      :   ~~~ xml
-          <configuration>
-              <property>
-                      <name>mapreduce.framework.name</name>
-                      <value>yarn</value>
-              </property>
-          </configuration>
-          ~~~
+      {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>mapreduce.framework.name</name>
+            <value>yarn</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 ### Configure YARN
 
 Edit `yarn-site.xml`:
 
-{: .file }
-~/hadoop/etc/hadoop/yarn-site.xml
-:   ~~~ xml
-    <configuration>
-        <property>
-                <name>yarn.acl.enable</name>
-                <value>0</value>
-        </property>
+{{< file "~/hadoop/etc/hadoop/yarn-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>yarn.acl.enable</name>
+            <value>0</value>
+    </property>
 
-        <property>
-                <name>yarn.resourcemanager.hostname</name>
-                <value>node-master</value>
-        </property>
+    <property>
+            <name>yarn.resourcemanager.hostname</name>
+            <value>node-master</value>
+    </property>
 
-        <property>
-                <name>yarn.nodemanager.aux-services</name>
-                <value>mapreduce_shuffle</value>
-        </property>
-    </configuration>
-    ~~~
+    <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>mapreduce_shuffle</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 ### Configure Slaves
 
 The file `slaves` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/slaves` to be:
 
-{: .file }
-~/hadoop/etc/hadoop/slaves
-:   ~~~ text
-    node1
-    node2
-    ~~~
+{{< file "~/hadoop/etc/hadoop/slaves" resource >}}
+node1
+node2
+
+{{< /file >}}
+
 
 ## Configure Memory Allocation
 
@@ -281,7 +281,6 @@ The relationship between all those properties can be seen in the following figur
 
 For 2GB nodes, a working configuration may be:
 
-{: .table .table-striped}
 | Property | Value |
 | ---------------- |:-------------:|
 | yarn.nodemanager.resource.memory-mb     | 1536          |
@@ -294,53 +293,53 @@ For 2GB nodes, a working configuration may be:
 
 1. Edit `/home/hadoop/hadoop/etc/hadoop/yarn-site.xml` and add the following lines:
 
-    {: .file }
-    ~/hadoop/etc/hadoop/yarn-site.xml
-    :   ~~~ xml
-        <property>
-                <name>yarn.nodemanager.resource.memory-mb</name>
-                <value>1536</value>
-        </property>
+    {{< file "~/hadoop/etc/hadoop/yarn-site.xml" xml >}}
+<property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>1536</value>
+</property>
 
-        <property>
-                <name>yarn.scheduler.maximum-allocation-mb</name>
-                <value>1536</value>
-        </property>
+<property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>1536</value>
+</property>
 
-        <property>
-                <name>yarn.scheduler.minimum-allocation-mb</name>
-                <value>128</value>
-        </property>
+<property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>128</value>
+</property>
 
-        <property>
-                <name>yarn.nodemanager.vmem-check-enabled</name>
-                <value>false</value>
-        </property>
-        ~~~
+<property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+</property>
+
+{{< /file >}}
+
 
     The last property disables virtual-memory checking and can prevent containers from being allocated properly on JDK8.
 
 
 2. Edit `/home/hadoop/hadoop/etc/hadoop/mapred-site.xml` and add the following lines:
 
-    {: .file }
-    ~/hadoop/etc/hadoop/mapred-site.xml
-    :   ~~~ xml
-        <property>
-                <name>yarn.app.mapreduce.am.resource.mb</name>
-                <value>512</value>
-        </property>
+    {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
+<property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>512</value>
+</property>
 
-        <property>
-                <name>mapreduce.map.memory.mb</name>
-                <value>256</value>
-        </property>
+<property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>256</value>
+</property>
 
-        <property>
-                <name>mapreduce.reduce.memory.mb</name>
-                <value>256</value>
-        </property>
-        ~~~
+<property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>256</value>
+</property>
+
+{{< /file >}}
+
 
 
 ## Duplicate Config Files on Each Node

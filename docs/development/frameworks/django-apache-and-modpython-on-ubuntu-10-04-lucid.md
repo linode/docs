@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 10.04 (Lucid).'
-keywords: 'django,python,apache,mod\_python,ubuntu,ubuntu 10.04,lucid'
+keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 10.04", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/django-apache-mod-python/ubuntu-10-04-lucid/','websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/django-apache-mod-python/ubuntu-10-04-lucid/','websites/frameworks/django-apache-and-modpython-on-ubuntu-10-04-lucid/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Thursday, May 13th, 2010'
+published: 2010-05-13
 title: 'Django, Apache and mod_python on Ubuntu 10.04 (Lucid)'
 deprecated: true
 ---
@@ -61,49 +61,49 @@ Configuring Apache
 
 With all of the dependencies installed, you must configure Apache for virtual hosting. You will want to insert a `Location` block inside of the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/">
+    SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+    SetEnv DJANGO_SETTINGS_MODULE settings
+    PythonDebug Off
+</Location>
+
+{{< /file-excerpt >}}
+
+
+You may need to change the `settings` to correspond to the settings file for your application in the Python path. The Python path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, you'll need to specify a `PythonPath` variable in the `Location` block **above** by adding the following line:
+
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+PythonPath "['/srv/www/brackley.net/application'] + sys.path"
+
+{{< /file-excerpt >}}
+
+
+This line will allow mod\_python to look for your settings file in the `/srv/www/brackley.net/application` directory, for an application in the "brackley.net" virtual host entry.
+
+The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `example.com` domain, then all requests for the URL `http://example.com/` would be directed to the Django application. Consider the following complete virtual host configuration.
+
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost example.com:80>
+    ServerName example.com
+    ServerAdmin username@example.com
+    DocumentRoot /srv/www/example.com/public_html
+
+    PythonPath "['/srv/www/example.com/application'] + sys.path"
     <Location "/">
         SetHandler python-program
         PythonHandler django.core.handlers.modpython
         SetEnv DJANGO_SETTINGS_MODULE settings
         PythonDebug Off
     </Location>
-    ~~~
 
-You may need to change the `settings` to correspond to the settings file for your application in the Python path. The Python path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, you'll need to specify a `PythonPath` variable in the `Location` block **above** by adding the following line:
+    ErrorLog /srv/logs/error.log
+    CustomLog /srv/logs/access.log combined
+</VirtualHost>
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    PythonPath "['/srv/www/brackley.net/application'] + sys.path"
-    ~~~
+{{< /file-excerpt >}}
 
-This line will allow mod\_python to look for your settings file in the `/srv/www/brackley.net/application` directory, for an application in the "brackley.net" virtual host entry.
-
-The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `example.com` domain, then all requests for the URL `http://example.com/` would be directed to the Django application. Consider the following complete virtual host configuration.
-
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost example.com:80>
-        ServerName example.com
-        ServerAdmin username@example.com
-        DocumentRoot /srv/www/example.com/public_html
-
-        PythonPath "['/srv/www/example.com/application'] + sys.path"
-        <Location "/">
-            SetHandler python-program
-            PythonHandler django.core.handlers.modpython
-            SetEnv DJANGO_SETTINGS_MODULE settings
-            PythonDebug Off
-        </Location>
-
-        ErrorLog /srv/logs/error.log
-        CustomLog /srv/logs/access.log combined
-    </VirtualHost>
-    ~~~
 
 Given this configuration the `DocumentRoot` is optional, but we recommend that you keep this directive in your configuration.
 
@@ -114,13 +114,13 @@ If you wanted to have a static page located at the root of the domain and only u
 
 Typically, Django applications use a secondary "media" web server to more efficiently serve static content like images, video, audio, and even static text resources. This permits more effective scaling possibilities. If you need to turn off Django and `mod_python` for a particular URL, add a second location block, like so:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <Location "/files/">
-        SetHandler None
-    </Location>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/files/">
+    SetHandler None
+</Location>
+
+{{< /file-excerpt >}}
+
 
 In the above example, this would allow any static content requested with the URL `http://example.com/files/` to be served without Django interference from the location specified in the `DocumentRoot`. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.
 
@@ -129,25 +129,25 @@ Hosting Multiple Django Applications
 
 The easiest way to host multiple Django applications with one instance of Apache is to place each application in its own virtual host. If, however, you need to host more than one application within a single `VirtualHost` entry you'll need to specify different locations in `Location` blocks *within* that `VirtualHost` entry. Here are two example location blocks that would be inserted in your `VirtualHost` entry:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <Location "/lollipop">
-    SetHandler python-program
-    PythonHandler django.core.handlers.modpython
-    SetEnv DJANGO_SETTINGS_MODULE lollipop.site.settings
-    PythonDebug Off
-    PythonInterpreter lollipop
-    </Location>
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/lollipop">
+SetHandler python-program
+PythonHandler django.core.handlers.modpython
+SetEnv DJANGO_SETTINGS_MODULE lollipop.site.settings
+PythonDebug Off
+PythonInterpreter lollipop
+</Location>
 
-    <Location "/funnyjoke">
-    SetHandler python-program
-        PythonHandler django.core.handlers.modpython
-    SetEnv DJANGO_SETTINGS_MODULE funnyjoke.site.settings
-    PythonDebug Off
-    PythonInterpreter funnyjoke
-    </Location>
-    ~~~
+<Location "/funnyjoke">
+SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+SetEnv DJANGO_SETTINGS_MODULE funnyjoke.site.settings
+PythonDebug Off
+PythonInterpreter funnyjoke
+</Location>
+
+{{< /file-excerpt >}}
+
 
 Note that the `PythonInterpreter` option needs to be set in these situations to avoid confusing `mod_python`, and your applications must be configured to properly handle these requests.
 

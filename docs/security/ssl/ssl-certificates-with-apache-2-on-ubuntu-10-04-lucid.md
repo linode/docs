@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 10.04 (Lucid).'
-keywords: 'apache ssl,ssl ubuntu,web sever,ubuntu,ubuntu lucid,ubuntu 10.04'
+keywords: ["apache ssl", "ssl ubuntu", "web sever", "ubuntu", "ubuntu lucid", "ubuntu 10.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/ssl-guides/ubuntu-10-04-lucid/']
-modified: Friday, October 4th, 2013
+aliases: ['web-servers/apache/ssl-guides/ubuntu-10-04-lucid/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Monday, August 9th, 2010'
+published: 2010-08-09
 title: 'SSL Certificates with Apache 2 on Ubuntu 10.04 (Lucid)'
 ---
 
@@ -57,29 +57,29 @@ You will be asked for several configuration values. Enter values appropriate for
 
 Since SSL name-based virtual hosts are still not supported in `/etc/apache2/ports.conf`, we'll need to add an entry for a specific IP address on your Linode as follows. You may use a single IP to provide self-signed SSL service for multiple vhosts, and the same IP may also be used for multiple non-SSL vhosts (HTTPS uses port 443, while HTTP uses port 80).
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:443
+
+{{< /file-excerpt >}}
+
 
 Replace "12.34.56.78" with your Linode's IP address. Next, edit the virtual host configuration files for sites which you would like to enable SSL on. For each virtual host, you must add the following stanza (change the values as appropriate for each site). Note that this example essentially reproduces the configuration for a non-SSL site, with the addition of three lines for SSL.
 
-{: .file-excerpt }
-Apache virtual hosting file
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/apache2/ssl/apache.pem
-         SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+{{< file-excerpt "Apache virtual hosting file" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/apache2/ssl/apache.pem
+     SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 
@@ -152,30 +152,30 @@ For example, if you download a root cert for Verisign, you would save it to `/et
 
 Next, add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:443
+
+{{< /file-excerpt >}}
+
 
 Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in this example). Add the following stanza to your configuration file. Note that this example essentially reproduces the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 
-{: .file-excerpt }
-Apache virtual hosting file
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/apache2/ssl/www.mydomain.com.crt
-         SSLCertificateKeyFile /etc/apache2/ssl/www.mydomain.com.key
-         SSLCACertificateFile /etc/apache2/ssl/verisign.cer
+{{< file-excerpt "Apache virtual hosting file" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/apache2/ssl/www.mydomain.com.crt
+     SSLCertificateKeyFile /etc/apache2/ssl/www.mydomain.com.key
+     SSLCACertificateFile /etc/apache2/ssl/verisign.cer
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 

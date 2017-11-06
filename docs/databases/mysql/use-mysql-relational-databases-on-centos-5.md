@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on CentOS 5.'
-keywords: 'MySQL on Linux,MySQL CentOS,MySQL Linode'
+keywords: ["MySQL on Linux", "MySQL CentOS", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/centos-5/']
-modified: Wednesday, January 22nd, 2014
+aliases: ['databases/mysql/centos-5/']
+modified: 2014-01-22
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, August 11th, 2009'
+published: 2009-08-11
 title: Use MySQL Relational Databases on CentOS 5
 ---
 
@@ -23,12 +23,12 @@ System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 servername.mydomain.com servername
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 servername.mydomain.com servername
+
+{{< /file >}}
+
 
 Be sure to substitute your Linode's public IP address for "12.34.56.78" in the example above.
 
@@ -54,33 +54,33 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
-{: .file }
-/etc/my.cnf
-:   ~~~ ini
-    [mysqld]
-    datadir=/var/lib/mysql
-    socket=/var/lib/mysql/mysql.sock
-    user=mysql
-    # Default to using old password format for compatibility with mysql 3.x
-    # clients (those using the mysqlclient10 compatibility package).
-    old_passwords=1
+{{< file "/etc/my.cnf" ini >}}
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Default to using old password format for compatibility with mysql 3.x
+# clients (those using the mysqlclient10 compatibility package).
+old_passwords=1
 
-    # Disabling symbolic-links is recommended to prevent assorted security risks;
-    # to do so, uncomment this line:
-    # symbolic-links=0
+# Disabling symbolic-links is recommended to prevent assorted security risks;
+# to do so, uncomment this line:
+# symbolic-links=0
 
-    key_buffer = 16M
-    max_allowed_packet = 1M
-    thread_stack = 64K
-    table_cache = 4
-    sort_buffer = 64K
-    net_buffer_length = 2K
-    bind-address = 127.0.0.1
+key_buffer = 16M
+max_allowed_packet = 1M
+thread_stack = 64K
+table_cache = 4
+sort_buffer = 64K
+net_buffer_length = 2K
+bind-address = 127.0.0.1
 
-    [mysqld_safe]
-    log-error=/var/log/mysqld.log
-    pid-file=/var/run/mysqld/mysqld.pid
-    ~~~
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+{{< /file >}}
+
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources for this topic.
 

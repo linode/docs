@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a fully featured wiki text with the DokuWiki software.'
-keywords: 'wiki,doku wiki,php'
+keywords: ["wiki", "doku wiki", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/dokuwiki/']
-modified: Thursday, July 27th, 2017
+aliases: ['web-applications/wikis/dokuwiki/']
+modified: 2017-07-27
 modified_by:
   name: Linode
-published: 'Saturday, April 17th, 2010'
+published: 2010-04-17
 title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'

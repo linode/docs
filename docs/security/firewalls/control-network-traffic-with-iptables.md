@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use iptables to manage Netfilter rules.'
-keywords: 'iptables,networking,firewalls,filtering'
+keywords: ["iptables", "networking", "firewalls", "filtering"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['security/firewalls/iptables/']
-modified: Wednesday, February 28, 2017
+aliases: ['security/firewalls/iptables/']
+modified: 2017-02-28
 modified_by:
   name: Linode
-published: 'Friday, July 30th, 2010'
+published: 2010-07-30
 title: Control Network Traffic with iptables
 external_resources:
  - '[Security Basics](/content/security/linux-security-basics)'
@@ -45,7 +45,6 @@ The sample command above:
  3.  The `-s` parameter, along with the IP address (198.51.100.0), indicates the *source*.
  4.  Finally, the `-j` parameter stands for *jump*. It specifies the target of the rule and what action will be performed if the packet is a match.
 
-{: .table .table-striped }
 | Parameter             | Description                                                                              |
 |:----------------------|:-----------------------------------------------------------------------------------------|
 | `-p, --protocol`     | The protocol, such as TCP, UDP, etc.                                                         |
@@ -57,8 +56,6 @@ The sample command above:
 | `-o, --out-interface` | Name of the interface by which a packet is being sent.                                   |
 | `-f, --fragment`      | The rule will only be applied to the second and subsequent fragments of fragmented packets. |
 | `-c, --set-counters`  | Enables the admin to initialize the packet and byte counters of a rule.                  |
-|:----------------------|:-----------------------------------------------------------------------------------------|
-
 ### Default Tables
 
 Tables are made up of built-in chains and may also contain user-defined chains. The built-in tables will depend on the kernel configuration and the installed modules.
@@ -95,7 +92,6 @@ The default tables are as follows:
 
 There are many options that may be used with the `iptables` command:
 
-{: .table .table-striped }
 | Option                     | Description                                                                                                 |
 |:---------------------------|:------------------------------------------------------------------------------------------------------------|
 | `-A --append`              | Add one or more rules to the end of the selected chain.                                                     |
@@ -108,8 +104,6 @@ There are many options that may be used with the `iptables` command:
 | `-N --new-chain <name>`    | Create a new user-defined chain.                                                                            |
 | `-v --verbose`             | Provide more information when used with the list option.                                                    |
 | `-X --delete-chain <name>` | Delete the user-defined chain.                                                                    |
-|:---------------------------|:------------------------------------------------------------------------------------------------------------|
-
 ### Insert, Replace or Delete iptables Rules
 
 iptables rules are enforced top down, so the first rule in the ruleset is applied to traffic in the chain, then the second, third and so on. This means that rules cannot necessarily be added to a ruleset with `iptables -A` or `ip6tables -A`. Instead, rules must be *inserted* with `iptables -I` or `ip6tables -I`.
@@ -138,9 +132,9 @@ Deleting a rule is also done using the rule number. For example, to delete the r
 
     sudo iptables -D INPUT 7
 
-{: .caution }
->
->Editing rules does not automatically save them. See our section on [deploying rulesets](/content/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+{{< caution >}}
+Editing rules does not automatically save them. See our section on [deploying rulesets](/content/security/firewalls/control-network-traffic-with-iptables#deploy-your-iptables-rulesets) for the specific instructions for your distribution.
+{{< /caution >}}
 
 ### View Your Current iptables Rules
 
@@ -294,52 +288,52 @@ This rule breaks down as follows:
 
 Appropriate firewall rules depend on the services being run. Below are iptables rulesets to secure your Linode if you're running a web server.
 
-{: .caution}
->
-> **These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
+{{< caution >}}
+**These rules are given only as an example.** A real production web server may require more or less configuration, and these rules would not be appropriate for a database, Minecraft or VPN server. Iptables rules can always be modified or reset later, but these basic rulesets serve as a demonstration.
+{{< /caution >}}
 
 **IPv4**
 
-{: .file}
-/tmp/v4
-:   ~~~ conf
-    *filter
+{{< file "/tmp/v4" aconf >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
-    # Allow ping.
-    -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+# Allow ping.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
-    # Allow SSH connections.
-    -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
+# Allow SSH connections.
+-A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT
 
-    # Allow HTTP and HTTPS connections from anywhere
-    # (the normal ports for web servers).
-    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
-    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
+# Allow HTTP and HTTPS connections from anywhere
+# (the normal ports for web servers).
+-A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    # This includes ICMP error returns.
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow inbound traffic from established connections.
+# This includes ICMP error returns.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    # Log what was incoming but denied (optional but useful).
-    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+# Log what was incoming but denied (optional but useful).
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
 
-    # Log any traffic that was sent to you
-    # for forwarding (optional but useful).
-    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+# Log any traffic that was sent to you
+# for forwarding (optional but useful).
+-A FORWARD -m limit --limit 5/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
 
-    # Reject all traffic forwarding.
-    -A FORWARD -j REJECT
+# Reject all traffic forwarding.
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
+
+{{< /file >}}
+
 
 **Optional:** If you plan to use [Linode Longview](/content/platform/longview/longview) or [Linode's NodeBalancers](/content/platform/nodebalancer/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
@@ -357,48 +351,48 @@ Appropriate firewall rules depend on the services being run. Below are iptables 
 
 If you would like to supplement your web server's IPv4 rules with IPv6 as well, this ruleset will allow HTTP/S access and all ICMP functions.
 
-{: .file}
-/tmp/v6
-:   ~~~ conf
-    *filter
+{{< file "/tmp/v6" aconf >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s ::1/128 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s ::1/128 -j REJECT
 
-    # Allow ICMP
-    -A INPUT -p icmpv6 -j ACCEPT
+# Allow ICMP
+-A INPUT -p icmpv6 -j ACCEPT
 
-    # Allow HTTP and HTTPS connections from anywhere
-    # (the normal ports for web servers).
-    -A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
-    -A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
+# Allow HTTP and HTTPS connections from anywhere
+# (the normal ports for web servers).
+-A INPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+-A INPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow inbound traffic from established connections.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    # Log what was incoming but denied (optional but useful).
-    -A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 7
+# Log what was incoming but denied (optional but useful).
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "ip6tables_INPUT_denied: " --log-level 7
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
 
-    # Log any traffic that was sent to you
-    # for forwarding (optional but useful).
-    -A FORWARD -m limit --limit 5/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 7
+# Log any traffic that was sent to you
+# for forwarding (optional but useful).
+-A FORWARD -m limit --limit 5/min -j LOG --log-prefix "ip6tables_FORWARD_denied: " --log-level 7
 
-    # Reject all traffic forwarding.
-    -A FORWARD -j REJECT
+# Reject all traffic forwarding.
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
 
-{: .note}
->
->[APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
->
->To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
+{{< /file >}}
+
+
+{{< note >}}
+[APT](http://linux.die.net/man/8/apt) attempts to resolve mirror domains to IPv6 as a result of `apt-get update`. If you choose to entirely disable and deny IPv6, this will slow down the update process for Debian and Ubuntu because APT waits for each resolution to time out before moving on.
+
+To remedy this, uncomment the line `precedence ::ffff:0:0/96  100` in `/etc/gai.conf`.
+{{< /note >}}
 
 ## Deploy Your iptables Rulesets
 
@@ -463,9 +457,9 @@ In these distros, FirewallD is used to implement firewall rules instead of using
         sudo service iptables save
         sudo service ip6tables save
 
-    {: .note }
-    >
-    >Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
+    {{< note >}}
+Firewall rules are saved to `/etc/sysconfig/iptables` and `/etc/sysconfig/ip6tables`.
+{{< /note >}}
 
 4.  Remove the temporary rule files:
 
@@ -595,28 +589,28 @@ The rules above allow anyone anywhere access to everything. If your output resem
 
 Use the `rules.v4` or `rules.v6` files to add, delete or edit the rules for your server. These files can be edited using a text editor to function as a proxy, NAT or firewall. The configuration depends on the requirements of your server and what functions are needed. Below is a file excerpt from both the `rules.v4` and `rules.v6` files:
 
-{: .file-excerpt }
-/etc/iptables/rules.v4
-:   ~~~
-    # Generated by iptables-save v1.4.14 on Wed Apr  2 13:24:27 2014
-    *security
-    :INPUT ACCEPT [18483:1240117]
-    :FORWARD ACCEPT [0:0]
-    :OUTPUT ACCEPT [17288:2887358]
-    COMMIT
-    ~~~
+{{< file-excerpt "/etc/iptables/rules.v4" >}}
+# Generated by iptables-save v1.4.14 on Wed Apr  2 13:24:27 2014
+*security
+:INPUT ACCEPT [18483:1240117]
+:FORWARD ACCEPT [0:0]
+:OUTPUT ACCEPT [17288:2887358]
+COMMIT
 
-{: .file-excerpt }
-/etc/iptables/rules.v6
-:   ~~~
-    # Generated by ip6tables-save v1.4.14 on Wed Apr  2 13:24:27 2014
-    *nat
-    :PREROUTING ACCEPT [0:0]
-    :INPUT ACCEPT [0:0]
-    :OUTPUT ACCEPT [27:2576]
-    :POSTROUTING ACCEPT [27:2576]
-    COMMIT
-    ~~~
+{{< /file-excerpt >}}
+
+
+{{< file-excerpt "/etc/iptables/rules.v6" >}}
+# Generated by ip6tables-save v1.4.14 on Wed Apr  2 13:24:27 2014
+*nat
+:PREROUTING ACCEPT [0:0]
+:INPUT ACCEPT [0:0]
+:OUTPUT ACCEPT [27:2576]
+:POSTROUTING ACCEPT [27:2576]
+COMMIT
+
+{{< /file-excerpt >}}
+
 
 While some rules are configured in these files already, either file can be edited at any time. The syntax for altering table rules is the same as in the sections [Configure iptables](#configure-iptables) and [Configuring Rules for IPv6](#use-ip6tables-to-manage-ipv6-traffic).
 

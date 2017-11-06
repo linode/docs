@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Linode.'
-keywords: 'ispconfig,control panel,cpanel,plesk,gui'
+keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/ispconfig/fedora-14/']
-modified: Thursday, October 3rd, 2013
+aliases: ['web-applications/control-panels/ispconfig/fedora-14/']
+modified: 2013-10-03
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Manage a Fedora 14 Linode with ISPConfig
 ---
 
@@ -30,8 +30,9 @@ Set your system's host name by issuing the following commands:
 
 Configure your `/etc/hosts` file to include your Linode's fully qualified domain name (FQDN) and localhost are set up in your `/etc/hosts` file. You can use the following example file, modifying the entries to suit your setup (12.34.56.78 should be replaced with your Linode's IP address):
 
-{: .file }
+{{< file >}}
 /etc/hosts
+{{< /file >}}
 
 > 127.0.0.1 localhost.localdomain localhost 12.34.56.78 hostname.example.com hostname
 

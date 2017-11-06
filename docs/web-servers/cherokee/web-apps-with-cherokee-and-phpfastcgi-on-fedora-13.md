@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Fedora 13'
-keywords: 'cherokee php-fastcgi,cherokee fastcgi,cherokee fedora 13,cherokee,fedora 13 web server'
+keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/php-fastcgi-fedora-13/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/cherokee/php-fastcgi-fedora-13/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Friday, September 17th, 2010'
+published: 2010-09-17
 title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
 ---
 
@@ -132,11 +132,11 @@ Test Your Configuration
 
 Create a test PHP script as follows:
 
-{: .file }
-/srv/www/example.com/www/public\_html/test.php
-:   ~~~ php
-    <?php echo "<html><body><h1>This is a test. It is only a test.</h1></body></html>"; ?>
-    ~~~
+{{< file "/srv/www/example.com/www/public\\_html/test.php" php >}}
+<?php echo "<html><body><h1>This is a test. It is only a test.</h1></body></html>"; ?>
+
+{{< /file >}}
+
 
 Visit `/test.php` on your site to verfify PHP-FastCGI is operating correctly. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 

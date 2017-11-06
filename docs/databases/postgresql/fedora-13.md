@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Fedora 13.'
-keywords: 'postgresql fedora 13,postgresql database,relational database'
+keywords: ["postgresql fedora 13", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, April 29th, 2011
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Friday, May 28th, 2010'
+published: 2010-05-28
 title: Use PostgreSQL Relational Databases on Fedora 13
 ---
 
@@ -108,19 +108,19 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/var/lib/pgsql/data/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 As root, restart the Postgresql service:
 

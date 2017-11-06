@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Debian 5 (Lenny) Linode.'
-keywords: 'ispconfig,control panel,cpanel,plesk,gui'
+keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/ispconfig/debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['web-applications/control-panels/ispconfig/debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, April 19th, 2010'
+published: 2010-04-19
 title: 'Manage a Debian 5 (Lenny) Linode with ISPConfig'
 ---
 

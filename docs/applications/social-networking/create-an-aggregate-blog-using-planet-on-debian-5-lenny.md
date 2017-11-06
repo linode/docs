@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
-keywords: 'planet,blogs,aggregator,feed,rss'
+keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/planet/debian-5-lenny/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/planet/debian-5-lenny/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Wednesday, April 7th, 2010'
+published: 2010-04-07
 title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
 deprecated: true
 external_resources:
@@ -46,23 +46,23 @@ Copy the default configuration file to the `/srv/www/example.com` directory:
 
 Now edit the file, making sure to modify the following values to conform to the needs of your deployment. Consider the following example:
 
-{: .file-excerpt }
-planet.conf
-:   ~~~
-    name=example link=http://example.com
+{{< file-excerpt "planet.conf" >}}
+name=example link=http://example.com
 
-    owner_name=username <owner_email=username@example.com>
+owner_name=username <owner_email=username@example.com>
 
-    cache_dir = /srv/www/example.com/planet_cache
+cache_dir = /srv/www/example.com/planet_cache
 
-    output_dir = /srv/www/example.com/public_html
+output_dir = /srv/www/example.com/public_html
 
-    items_perpage = 40 days_per_page = 0
+items_perpage = 40 days_per_page = 0
 
-    template_files = /srv/www/example.com/planet_templates/index.html.tmpl /srv/www/example.com/planet_templates/atom.xml.tmpl /srv/www/example.com/planet_templates/rss20.xml.tmpl /srv/www/example.com/planet_templates/rss10.xml.tmpl /srv/www/example.com/planet_templates/opml.xml.tmpl /srv/www/example.com/planet_templates/foafroll.xml.tmpl
+template_files = /srv/www/example.com/planet_templates/index.html.tmpl /srv/www/example.com/planet_templates/atom.xml.tmpl /srv/www/example.com/planet_templates/rss20.xml.tmpl /srv/www/example.com/planet_templates/rss10.xml.tmpl /srv/www/example.com/planet_templates/opml.xml.tmpl /srv/www/example.com/planet_templates/foafroll.xml.tmpl
 
-    [/srv/www/example.com/planet_templates/rss10.xml.tmpl] items_per_page = 30
-    ~~~
+[/srv/www/example.com/planet_templates/rss10.xml.tmpl] items_per_page = 30
+
+{{< /file-excerpt >}}
+
 
 These settings establish the name and some background information regarding the site. The `output_dir` determines where Planet will build the site, and should point to a publicly accessible directory equivalent to or beneath the "document root" of your web server. The `items_perpage` and `days_per_page` limit the number of posts displayed on all Planet-generated pages. `items_per_page` trims the number of posts included in the feed to not surpass the threshold set. `days_per_page` sets a hard limit for the number of days of oldest possible post that can be displayed.
 
@@ -80,22 +80,20 @@ If you want to override any of the default values like the encoding or the value
 
 At the end of your `planet.conf` file, add entries that resemble the following for each feed that you would like to collect in the Planet you're building
 
-{: .file-excerpt }
-planet.conf
-:   ~~~
-    [<https://www.linode.com/content/rss>]
-    name = Linode
-    ~~~
+{{< file-excerpt "planet.conf" >}}
+[<https://www.linode.com/content/rss>]
+name = Linode
+
+{{< /file-excerpt >}}
 
 If you want to take advantage of Planet's support for per-feed "faces" or avatars to identify each feed with a distinct logo or image, consider the following examples:
 
-{: .file-excerpt }
-planet.conf
-:   ~~~
-    [DEFAULT] facewidth = 64 faceheight = 64
+{{< file-excerpt "planet.conf" >}}
+[DEFAULT] facewidth = 64 faceheight = 64
 
-    [<https://www.linode.com/content/rss>] name = Linode face = lin-lib-avatar.png
-    ~~~
+[<https://www.linode.com/content/rss>] name = Linode face = lin-lib-avatar.png
+
+{{< /file-excerpt >}}
 
 You can specify default "width" and "height" in the `[DEFAULT]` stanza, but these values can be overridden for feed-specific settings. All "faces" should be stored in an `images/` directory beneath the output directory. In the case of this example, deposit images into `/srv/www/example.com/public_html/images/`.
 
@@ -113,10 +111,10 @@ While you can run Planet without incident using the above method, we recommend r
 
 Insert the following job into the crontab:
 
-{: .file-excerpt }
-crontab
-:   ~~~
-    */10* * * * planetplanet /srv/www/example.com/planet.conf
-    ~~~
+{{< file-excerpt "crontab" >}}
+*/10* * * * planetplanet /srv/www/example.com/planet.conf
+
+{{< /file-excerpt >}}
+
 
 Save the crontab. Your Planet generated site will refresh every 10 minutes. Congratulations!

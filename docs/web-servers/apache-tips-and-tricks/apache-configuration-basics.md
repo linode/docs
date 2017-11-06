@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: An advanced overview of configuration for the Apache web server including virtual hosts and configuration file management
-keywords: 'configuration,apache,web server,virtual hosting,http'
+keywords: ["configuration", "apache", "web server", "virtual hosting", "http"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/configuration/configuration-basics/','websites/apache-tips-and-tricks/apache-configuration-basics/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-servers/apache/configuration/configuration-basics/','websites/apache-tips-and-tricks/apache-configuration-basics/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Friday, November 6th, 2009'
+published: 2009-11-06
 title: Apache Configuration Basics
 external_resources:
  - '[Apache Installation](/content/websites/apache/)'
@@ -85,12 +85,12 @@ In an effort to increase usability, the Debian project makes it possible for use
 
 If you use an operating system other than Debian or would like to use the "sites-enabled" organization for your configuration files, make sure that the appropriate line from the following exists in your `apache.conf` or `httpd.conf` file:
 
-{: .file-excerpt }
-/etc/httpd/httpd.conf or /etc/apache2/apache2.conf
-:   ~~~ apache
-    Include /etc/httpd/sites-enabled/
-    Include /etc/apache2/sites-enabled/
-    ~~~
+{{< file-excerpt "/etc/httpd/httpd.conf or /etc/apache2/apache2.conf" apache >}}
+Include /etc/httpd/sites-enabled/
+Include /etc/apache2/sites-enabled/
+
+{{< /file-excerpt >}}
+
 
 If you haven't yet created this directory, you will need to do so with a command similar to the following: `mkdir -p /etc/httpd/sites-enabled/`. Now your Apache server will include configuration options specified in any files stored in these directories. To create a link to this directory, issue the following command:
 

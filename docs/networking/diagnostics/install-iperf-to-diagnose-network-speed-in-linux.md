@@ -3,13 +3,13 @@ author:
   name: Dave R.
   email: docs@linode.com
 description: 'This tutorial will teach you how to install iPerf, and use its common commands and basic configuration to diagnose your network speed.'
-keywords: 'networking,diagnostic,speed,iperf'
-alias: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
+keywords: ["networking", "diagnostic", "speed", "iperf"]
+aliases: ['networking/diagnostics/diagnosing-network-speed-with-iperf/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, February 28th, 2017
+modified: 2017-02-28
 modified_by:
   name: Nick Brewer
-published: 'Monday, January 12, 2015'
+published: 2015-01-12
 title: Install iPerf to Diagnose Network Speed in Linux
 external_resources:
   - '[iPerf Official Website](https://iperf.fr)'
@@ -23,9 +23,9 @@ iPerf measures the maximum network throughput a server can handle. It is particu
 
 ## Install iPerf
 
-{:.note}
->
-> The installation section assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
+{{< note >}}
+The installation section assumes that you are the `root` user. If you are not using the super user, you will need to use `sudo` before each command.
+{{< /note >}}
 
 ### Debian and Ubuntu
 
@@ -202,7 +202,6 @@ On the original iPerf server, you will see:
 
 ### Options
 
-{: .table .table-striped}
 | Option                             | Description                                                                               |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 | -f 		                     | Change the format in which the tests are run. For example, you can use `-f k` to get results in Kbits per second instead of Mbits per second. Valid options include `m` (Mbits, default), `k` (Kbits), `K` (KBytes), and `M` (MBytes). |

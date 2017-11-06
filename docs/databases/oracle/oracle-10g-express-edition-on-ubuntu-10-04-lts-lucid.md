@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Oracle 10g to power server-side applications and web apps on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'oracle ubuntu 10.04,oracle ubuntu,oracle linux,sql database,relational database,rdbms,oracle 10g'
+keywords: ["oracle ubuntu 10.04", "oracle ubuntu", "oracle linux", "sql database", "relational database", "rdbms", "oracle 10g"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/oracle/10g-ubuntu-10-04-lucid/']
-modified: Wednesday, August 13, 2014
+aliases: ['databases/oracle/10g-ubuntu-10-04-lucid/']
+modified: 2014-08-13
 modified_by:
   name: Linode
-published: 'Wednesday, May 5th, 2010'
+published: 2010-05-05
 title: 'Oracle 10g Express Edition on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -31,33 +31,33 @@ First, make sure your Linode has a private IP address assigned to it. To do so, 
 
 Edit your network interfaces file to define your public and private IPs. Change the values shown below to match your Linode's network configuration, paying special attention to the subnet mask for the private IP.
 
-{: .file }
-/etc/network/interfaces
-:   ~~~
-    auto lo
-    iface lo inet loopback
+{{< file "/etc/network/interfaces" >}}
+auto lo
+iface lo inet loopback
 
-    auto eth0
-    iface eth0 inet static
-    address 69.164.198.62
-    netmask 255.255.255.0
-    gateway 69.164.198.1
+auto eth0
+iface eth0 inet static
+address 69.164.198.62
+netmask 255.255.255.0
+gateway 69.164.198.1
 
-    auto eth0:0
-    iface eth0:0 inet static
-    address 192.168.146.68
-    netmask 255.255.128.0
-    ~~~
+auto eth0:0
+iface eth0:0 inet static
+address 192.168.146.68
+netmask 255.255.128.0
+
+{{< /file >}}
+
 
 Make sure your `/etc/hosts` file contains valid entries. You can use the following example for reference; substitute your Linode's IP addresses and hostname information for the values shown below.
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1        localhost.localdomain            localhost
-    69.164.198.62    saturn.example.com           saturn
-    192.168.146.68   oracle
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1        localhost.localdomain            localhost
+69.164.198.62    saturn.example.com           saturn
+192.168.146.68   oracle
+
+{{< /file >}}
+
 
 Issue the following commands to set the system hostname:
 
@@ -81,11 +81,11 @@ Installing the Oracle XE GPG key ensures that you will get verified Oracle softw
 
 Add the following repository to your `/etc/apt/sources.list` file:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://oss.oracle.com/debian unstable main non-free
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://oss.oracle.com/debian unstable main non-free
+
+{{< /file-excerpt >}}
+
 
 Since you added a new repository, issue the following commands to update your package lists and install any outstanding updates:
 
@@ -148,30 +148,30 @@ First, you'll need to locate the `tnsnames.ora` file. Issue the following comman
 
 You may find more than one location for this file; ignore the version located in a "samples" directory if it's listed. Edit `tnsnames.ora`, setting a valid entry for "HOST" to match the one assigned to your Linode's hostname ("oracle" in our example).
 
-{: .file-excerpt }
-tnsnames.ora
-:   ~~~
-    XE =
-      (DESCRIPTIONx =
-        (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521))
-        (CONNECT_DATA =
-          (SERVER = DEDICATED)
-          (SERVICE_NAME = XE)
-        )
-    ~~~
+{{< file-excerpt "tnsnames.ora" >}}
+XE =
+  (DESCRIPTIONx =
+    (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521))
+    (CONNECT_DATA =
+      (SERVER = DEDICATED)
+      (SERVICE_NAME = XE)
+    )
+
+{{< /file-excerpt >}}
+
 Next, edit the `listener.ora` file from the same directory:
 
-{: .file-excerpt }
-listener.ora
-:   ~~~
-    LISTENER =
-      (DESCRIPTION_LIST =
-        (DESCRIPTION =
-          (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
-          (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521))
-        )
-      )
-    ~~~
+{{< file-excerpt "listener.ora" >}}
+LISTENER =
+  (DESCRIPTION_LIST =
+    (DESCRIPTION =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC_FOR_XE))
+      (ADDRESS = (PROTOCOL = TCP)(HOST = oracle)(PORT = 1521))
+    )
+  )
+
+{{< /file-excerpt >}}
+
 If you had to modify either file, restart Oracle by issuing the following command:
 
     /etc/init.d/oracle-xe restart

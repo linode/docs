@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Reverse DNS (rDNS) resolves an IP address to the designated domain name. This guide will teach you how to set it up.'
-keywords: 'reverse dns,dns manager,dns configuration,IP address,PTR record'
+keywords: ["reverse dns", "dns manager", "dns configuration", "IP address", "PTR record"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/setting-reverse-dns/','networking/Setting-Up-Reverse-DNS-Lookup/','networking/configure-your-linode-for-reverse-dns/']
-modified: Thursday, July 27th, 2017
+aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/','networking/dns/setting-reverse-dns/','networking/Setting-Up-Reverse-DNS-Lookup/','networking/configure-your-linode-for-reverse-dns/']
+modified: 2017-07-27
 modified_by:
   name: Linode
-published: 'Thursday, July 9, 2015'
+published: 2015-07-09
 title: Configure Your Linode for Reverse DNS (rDNS)
 ---
 
@@ -17,13 +17,21 @@ Your desktop computer uses DNS to determine the IP address associated with a dom
 
 Before setting up the reverse DNS for your Linode, be sure to set up your domain zone and DNS records through Linode's [DNS Manager](/content/networking/dns/dns-manager). You may also wish to view our guide on [Common DNS Configurations](/content/networking/dns/common-dns-configurations).
 
+<<<<<<< HEAD
+{{< note >}}
+Reverse DNS uses a *PTR Record* or *pointer record* to match the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode, you will always set the reverse DNS within the Linode Manager, using the method detailed below.
+=======
 {: .note}
 >
 >Reverse DNS uses a *PTR Record* or *pointer record* to match the IP address with the domain or subdomain. Because PTR records are generally set with your hosting provider, when hosting on a Linode, you will always set the reverse DNS within the Linode Manager, using the method detailed below.
 >
 >For more information about [PTR records](/content/networking/dns/dns-records-an-introduction/#ptr) and DNS in general please see our [Introduction to DNS Records](/content/networking/dns/introduction-to-dns-records) guide.
+>>>>>>> docs_to_content
 
-##Setting Reverse DNS
+For more information about [PTR records](/docs/networking/dns/dns-records-an-introduction/#ptr) and DNS in general please see our [Introduction to DNS Records](/docs/networking/dns/introduction-to-dns-records) guide.
+{{< /note >}}
+
+## Setting Reverse DNS
 
 1.  Select the Linode you wish to set up reverse DNS for from your Linodes tab.
 2.  Click the **Remote Access** tab.

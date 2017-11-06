@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 13.'
-keywords: 'apache fedora 13,fedora web server,linux web server'
+keywords: ["apache fedora 13", "fedora web server", "linux web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/fedora-13/','websites/apache/apache-2-web-server-on-fedora-13/']
-modified: Friday, April 29th, 2011
+aliases: ['web-servers/apache/installation/fedora-13/','websites/apache/apache-2-web-server-on-fedora-13/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Friday, May 28th, 2010'
+published: 2010-05-28
 title: Apache 2 Web Server on Fedora 13
 ---
 
@@ -77,11 +77,11 @@ By default, Apache listens on all IP addresses available to it. You must configu
 
 Begin by adding the following line to the virtual hosting configuration file:
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    NameVirtualHost 13.34.56.78:80
-    ~~~
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+NameVirtualHost 13.34.56.78:80
+
+{{< /file-excerpt >}}
+
 
 Be sure to replace 13.34.56.78 with your own IP address.
 
@@ -89,27 +89,27 @@ Be sure to replace 13.34.56.78 with your own IP address.
 
 Now you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "example.com" and "example.com".
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 13.34.56.78:80>
-         ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 13.34.56.78:80>
+     ServerAdmin username@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
 
-    <VirtualHost 13.34.56.78:80>
-         ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+<VirtualHost 13.34.56.78:80>
+     ServerAdmin username@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Notes regarding this example configuration:
 
@@ -197,14 +197,14 @@ These usernames and passwords need not (and should not) correspond to system use
 
 In the .htaccess file for the directory that you want to protect, add the following lines:
 
-{: .file-excerpt }
-.htaccess
-:   ~~~ apache
-    AuthUserFile /srv/www/bleddington.com/.htpasswd
-    AuthType Basic
-    AuthName "Advanced Choreographic Information"
-    Require valid-user
-    ~~~
+{{< file-excerpt ".htaccess" apache >}}
+AuthUserFile /srv/www/bleddington.com/.htpasswd
+AuthType Basic
+AuthName "Advanced Choreographic Information"
+Require valid-user
+
+{{< /file-excerpt >}}
+
 
 Note, that the `AuthName` is presented to the user as an explanation in the authentication dialog for what they are requesting access to on the server.
 
@@ -215,19 +215,19 @@ The mod\_rewrite engine is very powerful, and is available for your use by defau
 
 In a `<Directory >` block or `.htaccess` file, enable mod\_rewrite with the following line:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
-:   ~~~ apache
-    RewriteEngine on
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration File or .htaccess" apache >}}
+RewriteEngine on
+
+{{< /file-excerpt >}}
+
 
 Now, you may create any number of separate rewrite rules. These rules provide a pattern that the server compares incoming requests against, and if a request matches a rewrite pattern, the server provides an alternate page. Here is an example rewrite rule:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
-:   ~~~ apache
-    RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration File or .htaccess" apache >}}
+RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
+
+{{< /file-excerpt >}}
+
 
 Let's parse this rule. First, note that the first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Mod\_rewrite patterns use regular expression syntax: the `^` matches to the beginning of the string, and the `$` matches to the end of the string, meaning that the rewrite engine won't rewrite strings that partially match the pattern.
 

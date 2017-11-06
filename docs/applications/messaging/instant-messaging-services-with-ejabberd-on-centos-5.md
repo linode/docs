@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on CentOS 5.'
-keywords: 'ejabberd,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["ejabberd", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/ejabberd/centos-5/']
-modified: Monday, August 22nd, 2011
+aliases: ['communications/xmpp/ejabberd/centos-5/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Tuesday, December 8th, 2009'
+published: 2009-12-08
 title: Instant Messaging Services with ejabberd on CentOS 5
 external_resources:
  - '[Ejabberd Community Site](http://www.ejabberd.im/)'
@@ -44,19 +44,19 @@ Run the following commands the set the hostname of your Linode:
 
 In this case, the hostname will be set to "example". Along with this, you will need to open the `/etc/sysconfig/network` file and change the `HOSTNAME` line to reflect your newly set hostname:
 
-{: .file-excerpt }
-/etc/sysconfig/network
-:   ~~~
-    NETWORKING=yes NETWORKING_IPV6=no HOSTNAME=example
-    ~~~
+{{< file-excerpt "/etc/sysconfig/network" >}}
+NETWORKING=yes NETWORKING_IPV6=no HOSTNAME=example
+
+{{< /file-excerpt >}}
+
 
 Finally, open `/etc/hosts` and put in your IP address, fully qualified domain name (FQDN), and hostname. See the example below:
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    123.123.123.123 example.com example
-    ~~~
+{{< file-excerpt "/etc/hosts" >}}
+123.123.123.123 example.com example
+
+{{< /file-excerpt >}}
+
 
 ## Install ejabberd
 
@@ -77,20 +77,20 @@ Ejabberd's configuration files are written in Erlang syntax, which might be diff
 
 Some users will need the ability to administer the XMPP server remotely. By default this block of the config file looks like this:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {acl, admin, {user, "admin", "example.com"}}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{acl, admin, {user, "admin", "example.com"}}.
+
+{{< /file-excerpt >}}
+
 
 In Erlang, comments begin with the `%` character, and the access control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `username@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {acl, admin, {user, "admin", "example.com"}}.
-    {acl, admin, {user, "username", "example.com"}}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{acl, admin, {user, "admin", "example.com"}}.
+{acl, admin, {user, "username", "example.com"}}.
+
+{{< /file-excerpt >}}
+
 
 All users specified in this manner have full administrative access to the server, through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.
 
@@ -98,19 +98,19 @@ All users specified in this manner have full administrative access to the server
 
 A single ejabberd instance can provide XMPP services for multiple domains at once, as long as those domains (or subdomains) are hosted by the server. To add a hostname for virtual hosting in ejabberd, modify the `hosts` option. By default, ejabberd is only configured to host the domain set during the installation process. You should also append a host item for "localhost." Here are a couple of examples:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {hosts, ["example.com", "localhost"]}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{hosts, ["example.com", "localhost"]}.
+
+{{< /file-excerpt >}}
+
 
 In the following example, ejabberd has been configured to host a number of additional domains. In this case, these domains are "username.example.com," "example.com," and "bampton.com"
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {hosts, ["username.example.com", "example.com", "example.com", "localhost"]}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{hosts, ["username.example.com", "example.com", "example.com", "localhost"]}.
+
+{{< /file-excerpt >}}
+
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid inserting a line break as this will cause ejabberd to fail.
 
@@ -118,24 +118,24 @@ You can specify any number of hostnames in the host list, but you should be care
 
 TCP port number 5222 is the conventional "XMPP" port. If you want to change the port, this is the section of the configuration that needs to be modified. Furthermore if you wish to use SSL/TLS encryption for the connections between clients and the server, you'll need to adjust the path to the certificate file, in the following line:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {certfile, "/etc/ejabberd/ejabberd.pem"}, starttls,
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{certfile, "/etc/ejabberd/ejabberd.pem"}, starttls,
+
+{{< /file-excerpt >}}
+
 
 Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/TLS connections if you or the other users of you are using a client that requires legacy support for secured connections on port 5223. Uncomment the following stanza.
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {5223, ejabberd_c2s, [
-        {access, c2s},
-        {shaper, c2s_shaper},
-        {max_stanza_size, 65536},
-        tls, {certfile, "/etc/ejabberd/server.pem"}
-    ]},
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{5223, ejabberd_c2s, [
+    {access, c2s},
+    {shaper, c2s_shaper},
+    {max_stanza_size, 65536},
+    tls, {certfile, "/etc/ejabberd/server.pem"}
+]},
+
+{{< /file-excerpt >}}
+
 
 ### Additional Functionality
 

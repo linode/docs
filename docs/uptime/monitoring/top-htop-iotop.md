@@ -3,12 +3,12 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'How to use top to monitor a server''s performance.'
-keywords: 'top,htop,iotop,monitoring,server monitoring'
+keywords: ["top", "htop", "iotop", "monitoring", "server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, February 19th, 2015
+modified: 2015-02-19
 modified_by:
   name: Elle Krout
-published: 'Thursday, February 19th, 2015'
+published: 2015-02-19
 title: Using top to Monitor Server Performance
 external_resources:
  - '[htop](http://hisham.hm/htop/)'
@@ -17,7 +17,7 @@ external_resources:
 
 Viewing a server's processor activity in real-time can aid in discovering and diagnosing any problems in CPU and memory usage. The `top` command is a Linux process manager that can assist with monitoring.
 
-##Reading the Screen
+## Reading the Screen
 
 [![The top screen](/content/assets/top-full-small.png)](/content/assets/top-full.png)
 
@@ -27,11 +27,11 @@ The `top` screen contains a variety of information regarding your server, beginn
 
 1.  The first line contains the time, uptime, and load average values for the server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.
 
-	{: .note}
-	>
-	>In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
-	>
-	>A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.
+	{{< note >}}
+In order to properly read the load average section, be aware of how many CPU cores the Linode has. If there is one CPU core, then a load average of 1.00 means the server is at its capacity. This number increases to 2.00 on a Linode with 2 CPU cores, 4.00 with 4, etc.
+
+A load of .70 for a Linode with 1 core is generally considered the threshold. Any higher than this, then reconfigure your resources or look into upgrading your plan.
+{{< /note >}}
 
 2.  A list of **tasks** and their various states.
 
@@ -69,13 +69,13 @@ Following the heading section is a list of processes and related data:
 
 -  **COMMAND**: Name of process.
 
-##Commands
+## Commands
 
 The `top` command offers a set of additional commands that can be used to enhance its use through sorting and locating information.
 
 There are two types of commands that can be used in conjunction with `top`: Command-line options, and interactive commands that can be used while in the program.
 
-###Command-Line Options
+### Command-Line Options
 Command-line options can help organize and filter from the start of the program.
 
 Important commands to know include:
@@ -115,7 +115,7 @@ Which outputs these results:
 	  PID USER      PR  NI  VIRT  RES  SHR S  %CPU %MEM    TIME+  COMMAND
 	 3774 mysql     20   0  356m  51m  10m S   0.2  5.2   1:54.02 mysqld
 
-###Interactive Commands
+### Interactive Commands
 
 When run on its own, not in batch mode, `top` is interactive. You can use commands to filter through or toggle various options, alter settings, and even manipulate tasks.
 
@@ -134,11 +134,11 @@ Although there are a vast number of `top` commands, some of the more common ones
 -  **`h`**: Open help file.
 -  **`q`**: Quit.
 
-##Additional top-like Programs
+## Additional top-like Programs
 
 `top` can be used in conjunction with other similar programs that either offer different output results or provide a more intuitive experience.
 
-###htop
+### htop
 
 The `htop` command is an alternative to `top`, offering an easier interface featuring color, mouse operation, the ability to scroll through processes (horizontally and vertically). It is overall more intuitive, although providing similar output as the regular `top` command.
 
@@ -158,7 +158,7 @@ Run `htop` by entering:
 
 The `htop` screen runs similar to `top`, but with scroll and mouse support, and a variety of menus that allow for more intuitive use. When a process is highlighted you can act on that process, such as pressing `k` (kill). To learn more regarding `htop` commands, press `h` to open its help menu.
 
-###iotop
+### iotop
 
 The `iotop` command tracks the input/output operations on a per-process basis. `iotop` must be run as root or with the `sudo` prefix.
 

@@ -3,12 +3,12 @@ author:
   name: Luis Cortes
   email: docs@linode.com
 description: 'This guide shows you how to use the Zipkin tracking system to collect and search timing data in order to identify latency problems on your website.'
-keywords: 'zipkin, tracking'
+keywords: ["zipkin", " tracking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, September 28, 2017
+modified: 2017-09-28
 modified_by:
   name: Luis Cortes
-published: 'Thursday, September 28, 2017'
+published: 2017-09-28
 title: 'Set Up a Zipkin Server'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
@@ -66,12 +66,12 @@ This guide's target scenario is a three machine configuration:
 
 4. To run Zipkin manually later without having to remember the java command, create a `start-zipkin.sh` file to contain the commands:
 
-    {: .file}
-    start-zipkin.sh
-    :   ~~~ bash
-        #!/bin/bash
-        java -jar zipkin.jar
-        ~~~
+    {{< file "start-zipkin.sh" bash >}}
+#!/bin/bash
+java -jar zipkin.jar
+
+{{< /file >}}
+
 
 5. Make your new start-zipkin.sh file executable:
 
@@ -85,11 +85,11 @@ This guide's target scenario is a three machine configuration:
 
 2. Add the new hostname to `/etc/hosts`:
 
-    {:.file-excerpt}
-    /etc/hosts
-    :   ~~~
-        192.0.2.0     zipkinsvr
-        ~~~
+    {{< file-excerpt "/etc/hosts" >}}
+192.0.2.0     zipkinsvr
+
+{{< /file-excerpt >}}
+
 
 ### Configure the Firewall for the Zipkin Server
 
@@ -153,21 +153,21 @@ The default Fedora 26 firewall rules block all ports as a safety precaution. Cre
 
 1. Set `ZIPKIN_SERVER` to the IP address of the Zipkin server:
 
-    {:.file-excerpt}
-    website.py
-    :   ~~~ python
-        def http_transport(encoded_span):
-            import requests
-            ZIPKIN_SERVER = "192.0.2.0"
-        ~~~
+    {{< file-excerpt "website.py" python >}}
+def http_transport(encoded_span):
+    import requests
+    ZIPKIN_SERVER = "192.0.2.0"
+
+{{< /file-excerpt >}}
+
 
 2.  Set the host to allow access on the public IP address. If your Zipkin server and analyst machine are on the same local network as the webserver, skip this step:
 
-    {:.file-excerpt}
-    website.py
-    :   ~~~
-        run(host='0.0.0.0', port=8080, reloader=True)
-        ~~~
+    {{< file-excerpt "website.py" >}}
+run(host='0.0.0.0', port=8080, reloader=True)
+
+{{< /file-excerpt >}}
+
 
 ### Configure the Firewall for the Web Server
 

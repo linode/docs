@@ -3,14 +3,14 @@ author:
   name: Andrew Lescher
   email: docs@linode.com
 description: This guide instructs you through the steps that deploy a production-ready Apache Cassandra node cluster on either Ubuntu 16.04 or CentOS 7.
-keywords: 'cassandra, apache-cassandra, centos 7, ubuntu 16.04, database, nosql'
+keywords: ["cassandra", " apache-cassandra", " centos 7", " ubuntu 16.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Saturday, June 24th, 2017'
-modified: 'Saturday, June 24th, 2017'
+published: 2017-06-24
+modified: 2017-06-24
 modified_by:
   name: Andrew Lescher
 title: 'Set Up a Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7'
-alias: ['databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
+aliases: ['databases/deploy-a-production-ready-cassandra-node-cluster-on-ubuntu-and-centos/']
 contributor:
    name: Andrew Lescher
    link: https://www.linkedin.com/in/andrew-lescher-87027940/
@@ -54,8 +54,7 @@ The instructions here must be executed on each Cassandra node to be clustered. A
 
 2. Edit the `cassandra.yaml` file. Set the appropriate values for each variable indicated below:
 
-    {: .table .table-striped .table-bordered}
-     |  Property  | Explanation |
+         |  Property  | Explanation |
      |:----------:|:-----------:|
      | cluster_name | Choose your cluster name here. |
      | seed_provider | This contains a comma-delimited list of each public IP address of each node to be clustered. Input the list in the line that reads `- seeds: "127.0.0.1"`.  |
@@ -65,31 +64,31 @@ The instructions here must be executed on each Cassandra node to be clustered. A
      | auto_bootstrap | Add this property anywhere in the file. If you have yet to add data to your nodes - that is, you would start with a fresh cluster - set this to "false." If your node(s) already contains data, **do not** add this property. |
      | num_tokens | This property defines the proportion of data stored on each node. For nodes with equal hardware capabilities, this number should be set equally between them so the data is more likely to be evenly distributed. The default value of 256 is likely to ensure equal data distribution. For more information on this topic, see the "How data is distributed across a cluster" link in the "External Resources" section. |
 
-    {: .file}
-    /etc/cassandra/conf/cassandra.yaml
-    : ~~~
-      cluster_name: '[Your Cluster Name]'
-      listen_address: [public_ip_address]
-      rpc_address: [public_ip_address]
-      num_tokens: 256
-      seed_provider:
-        - class_name: org.apache.cassandra.locator.SimpleSeedProvider
-      parameters:
-        - seeds: "[node1_ip_address],[node2_ip_address]"
-      endpoint_snitch: GossipingPropertyFileSnitch
-      auto_bootstrap: false
-      ~~~
+    {{< file "/etc/cassandra/conf/cassandra.yaml" >}}
+cluster_name: '[Your Cluster Name]'
+listen_address: [public_ip_address]
+rpc_address: [public_ip_address]
+num_tokens: 256
+seed_provider:
+  - class_name: org.apache.cassandra.locator.SimpleSeedProvider
+parameters:
+  - seeds: "[node1_ip_address],[node2_ip_address]"
+endpoint_snitch: GossipingPropertyFileSnitch
+auto_bootstrap: false
+
+{{< /file >}}
+
 
 3. Edit the `cassandra-rackdc.properties` file. Assign each node the same datacenter and rack name:
 
-    {: .file}
-    /etc/cassandra/conf/cassandra-rackdc.properties
-    : ~~~ properties
-      # These properties are used with GossipingPropertyFileSnitch and will
-      # indicate the rack and dc for this node
-      dc=DC1
-      rack=RACK1
-      ~~~
+    {{< file "/etc/cassandra/conf/cassandra-rackdc.properties" properties >}}
+# These properties are used with GossipingPropertyFileSnitch and will
+# indicate the rack and dc for this node
+dc=DC1
+rack=RACK1
+
+{{< /file >}}
+
 
 ## Edit Firewall Settings
 
@@ -138,22 +137,22 @@ Setting up encryption between nodes offers additional security and protects the 
 
 2. Create a configuration file for openssl to help automate the certificate creation process. Copy the contents below into a new file called `rootCAcert.conf`. Replace the values for `examplePassword`, `US`, `WA`, `Seattle` with your specific information:
 
-    {: .file}
-    ~/.keystore/rootCAcert.conf
-    : ~~~ conf
-      [ req ]
-      distinguished_name     = req_distinguished_name
-      prompt                 = no
-      output_password        = examplePassword
-      default_bits           = 4096
+    {{< file "~/.keystore/rootCAcert.conf" aconf >}}
+[ req ]
+distinguished_name     = req_distinguished_name
+prompt                 = no
+output_password        = examplePassword
+default_bits           = 4096
 
-      [ req_distinguished_name ]
-      C                      = US
-      ST                     = WA
-      L                      = Seattle
-      OU                     = Cluster_Name
-      CN                     = Cluster_Name_MasterCA
-      ~~~
+[ req_distinguished_name ]
+C                      = US
+ST                     = WA
+L                      = Seattle
+OU                     = Cluster_Name
+CN                     = Cluster_Name_MasterCA
+
+{{< /file >}}
+
 
 3. Create the public and private key files.
 
@@ -200,9 +199,9 @@ Setting up encryption between nodes offers additional security and protects the 
 
 Copy the truststore file and keystore files into Cassandra's `conf` directory for each node. Depending on your installation, the `conf` directory could be located at `/etc/cassandra/conf`, or `/etc/cassandra`.
 
-{: .note}
->
-> If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory.
+{{< note >}}
+If you receive a "Permission denied" error upon executing the following command, your destination server user does not have permissions to access Cassandra's config directory.
+{{< /note >}}
 
 	scp ~/.keystore/cassandra-truststore.jks username@<dest_server_public_ip>:/cassandra/config/directory/cassandra-truststore.jks
     scp ~/.keystore/[Cluster_Name].jks username@<dest_server_public_ip>:/cassandra/config/directory/[Cluster_Name]-keystore.jks
@@ -215,9 +214,7 @@ Use the `-i` option if your destination server requires a certificate to login.
 
 Edit the `cassandra.yaml` file on each node to match the following. Replace text in [brackets] with the indicated information.
 
-{: .file}
-/etc/cassandra/conf/cassandra.yaml
-: ~~~yaml
+{{< file "/etc/cassandra/conf/cassandra.yaml" yaml >}}
 server_encryption_options:
     internode_encryption: all
     keystore: /etc/cassandra/conf/[keystore_file.jks]
@@ -230,11 +227,12 @@ server_encryption_options:
     store_type: JKS
     cipher_suites: [TLS_RSA_WITH_AES_128_CBC_SHA,TLS_RSA_WITH_AES_256_CBC_SHA]
     require_client_auth: true
-  ~~~
+
+{{< /file >}}
+
 
 You may want to configure the *internode_encryption* setting to better meet the needs of your specific environment. A breakdown of available values are shown below:
 
-{: .table .table-striped .table-bordered}
  |  Property  | Property description |
  |:----------:|:-------------:|
  | all | All traffic between nodes is encrypted. |

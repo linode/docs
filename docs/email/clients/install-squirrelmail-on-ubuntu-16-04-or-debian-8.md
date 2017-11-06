@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu or Debian 8.'
-keywords: 'squirrelmail, squirrel mail, debian, debian 8, mail client, ubuntu, ubuntu 16'
+keywords: ["squirrelmail", " squirrel mail", " debian", " debian 8", " mail client", " ubuntu", " ubuntu 16"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, June 14, 2016
+modified: 2016-06-14
 modified_by:
   name: Edward Angert
-published: 'Tuesday, January 14th, 2014'
+published: 2014-01-14
 title: Install SquirrelMail on Ubuntu 16.04 or Debian 8
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
@@ -18,9 +18,9 @@ external_resources:
 
 SquirrelMail is a webmail package, written in PHP, which supports both SMTP and IMAP protocols, and features cross-platform compatibility. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 16.04](/content/websites/lamp/install-lamp-on-ubuntu-16-04) or [LAMP Server on Debian 8](/content/websites/lamp/lamp-on-debian-8-jessie) guide.
 
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Installation
 
@@ -45,54 +45,54 @@ To access SquirrelMails's web interface, create and configure a copy of its defa
 
 2.  Edit the configuration file to uncomment the `<VirtualHost 1.2.3.4:80>` block by removing the pound symbol (`#`), as shown below. Edit the IP and ServerName to match your Linode and domain settings:
 
-    {: .file }
-    /etc/apache2/sites-available/squirrelmail
-    :   ~~~ apache
-        Alias /squirrelmail /usr/share/squirrelmail
+    {{< file "/etc/apache2/sites-available/squirrelmail" apache >}}
+Alias /squirrelmail /usr/share/squirrelmail
 
-        <Directory /usr/share/squirrelmail>
-          Options FollowSymLinks
-          <IfModule mod_php5.c>
-            php_flag register_globals off
-          </IfModule>
-          <IfModule mod_dir.c>
-            DirectoryIndex index.php
-          </IfModule>
+<Directory /usr/share/squirrelmail>
+  Options FollowSymLinks
+  <IfModule mod_php5.c>
+    php_flag register_globals off
+  </IfModule>
+  <IfModule mod_dir.c>
+    DirectoryIndex index.php
+  </IfModule>
 
-          # access to configtest is limited by default to prevent information leak
-          <Files configtest.php>
-            order deny,allow
-            deny from all
-            allow from 127.0.0.1
-          </Files>
-        </Directory>
+  # access to configtest is limited by default to prevent information leak
+  <Files configtest.php>
+    order deny,allow
+    deny from all
+    allow from 127.0.0.1
+  </Files>
+</Directory>
 
-        # users will prefer a simple URL like http://webmail.example.com
-        <VirtualHost *:80>
-          DocumentRoot /usr/share/squirrelmail
-          ServerName squirrelmail.example.com
-        </VirtualHost>
+# users will prefer a simple URL like http://webmail.example.com
+<VirtualHost *:80>
+  DocumentRoot /usr/share/squirrelmail
+  ServerName squirrelmail.example.com
+</VirtualHost>
 
-        # redirect to https when available (thanks omen@descolada.dartmouth.edu)
-        #
-        #  Note: There are multiple ways to do this, and which one is suitable for
-        #  your site's configuration depends. Consult the apache documentation if
-        #  you're unsure, as this example might not work everywhere.
-        #
-        #<IfModule mod_rewrite.c>
-        #  <IfModule mod_ssl.c>
-        #    <Location /squirrelmail>
-        #      RewriteEngine on
-        #      RewriteCond %{HTTPS} !^on$ [NC]
-        #      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
-        #    </Location>
-        #  </IfModule>
-        #</IfModule>
-    ~~~
+# redirect to https when available (thanks omen@descolada.dartmouth.edu)
+#
+#  Note: There are multiple ways to do this, and which one is suitable for
+#  your site's configuration depends. Consult the apache documentation if
+#  you're unsure, as this example might not work everywhere.
+#
+#<IfModule mod_rewrite.c>
+#  <IfModule mod_ssl.c>
+#    <Location /squirrelmail>
+#      RewriteEngine on
+#      RewriteCond %{HTTPS} !^on$ [NC]
+#      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
+#    </Location>
+#  </IfModule>
+#</IfModule>
 
-    {: .note }
-    >
-    > If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
+{{< /file >}}
+
+
+    {{< note >}}
+If Apache is serving other virtual hosts you may need to adjust them and/or this configuration file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
+{{< /note >}}
 
 3.  Enable the new virtual host:
 
@@ -124,8 +124,9 @@ Before using SquirrelMail for the first time, configure it to access your mail s
 
 3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from [SquirrelMail's official documentation](http://squirrelmail.org/content/admin/admin-5.html#ss5.3).
 
-    {: .note }
-    > If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
+    {{< note >}}
+If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
+{{< /note >}}
 
 4.  When done, press `S` to save your changes, then press Q to quit.
 

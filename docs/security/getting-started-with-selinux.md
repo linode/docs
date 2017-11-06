@@ -3,13 +3,13 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide will walk you through the basics of installing and running SELinux.'
-keywords: 'Security-enhanced Linux, secure open source, firewall, SELinux, getting-started'
+keywords: ["Security-enhanced Linux", " secure open source", " firewall", " SELinux", " getting-started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
 alias:
-modified: 'Friday July 21, 2017'
+modified: 2017-07-21
 modified_by:
   name: Angel Guarisma
-published: 'Friday July 21, 2017'
+published: 2017-07-21
 title: Getting Started with SELinux
 external_resources:
  - '[Graphical Guide to Policies](https://opensource.com/business/13/11/selinux-policy-guide)'
@@ -29,9 +29,9 @@ Ideally, the person with root access should be trusted with it. But if security 
 
 SELinux defaults to denying anything that is not explicitly allowed. SELinux has global modes, `permissive` and `enforcing`. `Permissive` mode allows the system to function like a Discretionary Access Control system, while logging every violation to SELinux. The `enforcing` mode enforces a strict denial of access to anything that isn't explicitly allowed. To explicitly allow certain behavior on a machine, you, as the system administrator, have to write policies that allow it.
 
-{: .note}
->
-> We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/content/quick-answers/linux/how-to-change-selinux-modes)
+{{< note >}}
+We do not recommend you disable SELinux. But if you wish to disable SELinux, please read our quick-answer guide on [SELinux](/content/quick-answers/linux/how-to-change-selinux-modes)
+{{< /note >}}
 
 ## Before You Begin
 

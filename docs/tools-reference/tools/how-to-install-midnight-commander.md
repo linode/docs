@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install and use Midnight Commander, a text user-interface file manager.'
-keywords: 'midnight commander, file manager, text user-interface, TUI'
+keywords: ["midnight commander", " file manager", " text user-interface", " TUI"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 11, 2017'
-modified: Tuesday, September 12, 2017
+published: 2017-09-11
+modified: 2017-09-12
 modified_by:
   name: Linode
 title: 'How to Use Midnight Commander, a Visual File Manager'
@@ -31,9 +31,9 @@ A TUI facilitates interaction between users and their systems in a visually orie
 
 ## Before You Begin
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 The methods in this tutorial have been tested on Debian 9. There is no special requirement to install Midnight Commander, and it works on all Linux distributions. While this file manager should work in almost identically on all Linux distributions, a particular distro may not package the exact same Midnight Commander version (4.8.18, in this case). This may result in small behavioral differences on other operating systems.
 
@@ -127,13 +127,14 @@ First, install the utility:
 
 7.  Pressing **F4** will open a file in the default editor. On Debian you will get this output if you never used an editor before:
 
-    {:.output}
-    ~~~
+    {{< output >}}
+~~~
     Select an editor.  To change later, run 'select-editor'.
     1. /bin/nano        <---- easiest
     2. /usr/bin/mcedit
     3. /usr/bin/vim.basic
     4. /usr/bin/vim.tiny
+{{< /output >}}
 
     Choose 1-4 [1]:
     ~~~
@@ -142,9 +143,9 @@ First, install the utility:
 
     ![Midnight Commander's Editor mcedit with Syntax Highlighting Active](/content/assets/midnight-commander-mcedit.png)
 
-    {:.note}
-    >
-    >Actions can be cancelled in MC by pressing the **ESC** key twice.
+    {{< note >}}
+Actions can be cancelled in MC by pressing the **ESC** key twice.
+{{< /note >}}
 
 ## Useful Tips and Tricks
 
@@ -166,15 +167,15 @@ First, install the utility:
 
     Press **F9**, followed by **l** (L), then select the **SFTP link** menu entry. In the dialog box titled **SFTP to machine** enter `sftp://example@203.0.113.0`. Replace `example` with the username you have created on the remote machine and `203.0.113.1` with the IP address of your server. This will work only if the server at the other end accepts password logins. If you're logging in with SSH keys, then you'll first need to create and/or edit `~/.ssh/config`. It could look something like this:
 
-    {: .file }
-    ~/.ssh/config
-    :   ~~~ conf
-        Host sftp_server
-            HostName 203.0.113.1
-            Port 22
-            User your_user
-            IdentityFile ~/.ssh/id_rsa
-        ~~~
+    {{< file "~/.ssh/config" aconf >}}
+Host sftp_server
+    HostName 203.0.113.1
+    Port 22
+    User your_user
+    IdentityFile ~/.ssh/id_rsa
+
+{{< /file >}}
+
 
     You can choose whatever you want as the **Host** value, it's only an identifier. **IdentityFile** is the path to your private SSH key.
 

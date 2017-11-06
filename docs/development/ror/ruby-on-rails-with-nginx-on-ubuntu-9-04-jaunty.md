@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.04 operating system.'
-keywords: 'ruby on rails,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, August 19th, 2009'
+published: 2009-08-19
 title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -23,16 +23,16 @@ Install Required Packages
 
 First, make sure you have the `universe` repository enabled in your `/etc/apt/sources.list` file. Your file should resemble the following:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
+deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
+
+{{< /file-excerpt >}}
+
 
 If you added `universe` to the items in your list, you'll need to update your repository database:
 

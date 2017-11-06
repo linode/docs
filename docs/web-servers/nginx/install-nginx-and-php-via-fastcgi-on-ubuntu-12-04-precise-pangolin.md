@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'nginx,nginx ubuntu 12.04,nginx fastcgi,nginx php,unix socket,tcp socket,php,fastcgi'
+keywords: ["nginx", "nginx ubuntu 12.04", "nginx fastcgi", "nginx php", "unix socket", "tcp socket", "php", "fastcgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, October 9th, 2012
+aliases: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/how-to-install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/install-nginx-and-php-via-fastcgi-on-ubuntu-12-04-precise-pangolin/']
+modified: 2012-10-09
 modified_by:
   name: Linode
-published: 'Tuesday, October 9th, 2012'
+published: 2012-10-09
 title: 'Install Nginx and PHP via FastCGI on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
@@ -52,44 +52,44 @@ In this guide, the domain "example.com" is used as an example site. You should s
 
 Next, you'll need to define the site's virtual host file. This example uses a UNIX socket to connect to fcgiwrap. Be sure to change all instances of "example.com" to your domain name.
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.php$ {
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass unix:/var/run/php-fastcgi/php-fastcgi.socket;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 Create a file named `/usr/bin/php-fastcgi` with the following contents:
 
-{: .file }
-/usr/bin/php-fastcgi
-:   ~~~ bash
-    #!/bin/bash
+{{< file "/usr/bin/php-fastcgi" bash >}}
+#!/bin/bash
 
-    FASTCGI_USER=www-data
-    FASTCGI_GROUP=www-data
-    SOCKET=/var/run/php-fastcgi/php-fastcgi.socket
-    PIDFILE=/var/run/php-fastcgi/php-fastcgi.pid
-    CHILDREN=6
-    PHP5=/usr/bin/php5-cgi
+FASTCGI_USER=www-data
+FASTCGI_GROUP=www-data
+SOCKET=/var/run/php-fastcgi/php-fastcgi.socket
+PIDFILE=/var/run/php-fastcgi/php-fastcgi.pid
+CHILDREN=6
+PHP5=/usr/bin/php5-cgi
 
-    /usr/bin/spawn-fcgi -s $SOCKET -P $PIDFILE -C $CHILDREN -u $FASTCGI_USER -g $FASTCGI_GROUP -f $PHP5
-    ~~~
+/usr/bin/spawn-fcgi -s $SOCKET -P $PIDFILE -C $CHILDREN -u $FASTCGI_USER -g $FASTCGI_GROUP -f $PHP5
+
+{{< /file >}}
+
 
 Make it executable by issuing the following command:
 
@@ -99,45 +99,45 @@ Make it executable by issuing the following command:
 
 Alternately, you may wish to use TCP sockets instead. If so, modify your nginx virtual host configuration file to resemble the following example. Again, make sure to replace all instances of "example.com" with your domain name.
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.php$ {
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass 127.0.0.1:9000;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass 127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 Create a file named `/usr/bin/php-fastcgi` with the following contents:
 
-{: .file }
-/usr/bin/php-fastcgi
-:   ~~~ bash
-    #!/bin/bash
+{{< file "/usr/bin/php-fastcgi" bash >}}
+#!/bin/bash
 
-    FASTCGI_USER=www-data
-    FASTCGI_GROUP=www-data
-    ADDRESS=127.0.0.1
-    PORT=9000
-    PIDFILE=/var/run/php-fastcgi/php-fastcgi.pid
-    CHILDREN=6
-    PHP5=/usr/bin/php5-cgi
+FASTCGI_USER=www-data
+FASTCGI_GROUP=www-data
+ADDRESS=127.0.0.1
+PORT=9000
+PIDFILE=/var/run/php-fastcgi/php-fastcgi.pid
+CHILDREN=6
+PHP5=/usr/bin/php5-cgi
 
-    /usr/bin/spawn-fcgi -a $ADDRESS -p $PORT -P $PIDFILE -C $CHILDREN -u $FASTCGI_USER -g $FASTCGI_GROUP -f $PHP5
-    ~~~
+/usr/bin/spawn-fcgi -a $ADDRESS -p $PORT -P $PIDFILE -C $CHILDREN -u $FASTCGI_USER -g $FASTCGI_GROUP -f $PHP5
+
+{{< /file >}}
+
 
 Make it executable by issuing the following command:
 
@@ -181,74 +181,74 @@ Issue the following commands to enable the site:
 
 Create a file named `/etc/init.d/php-fastcgi` with the following contents:
 
-{: .file }
-/etc/init.d/php-fastcgi
-:   ~~~ bash
-    #!/bin/bash
+{{< file "/etc/init.d/php-fastcgi" bash >}}
+#!/bin/bash
 
-    PHP_SCRIPT=/usr/bin/php-fastcgi
-    FASTCGI_USER=www-data
-    FASTCGI_GROUP=www-data
-    PID_DIR=/var/run/php-fastcgi
-    PID_FILE=/var/run/php-fastcgi/php-fastcgi.pid
-    RET_VAL=0
+PHP_SCRIPT=/usr/bin/php-fastcgi
+FASTCGI_USER=www-data
+FASTCGI_GROUP=www-data
+PID_DIR=/var/run/php-fastcgi
+PID_FILE=/var/run/php-fastcgi/php-fastcgi.pid
+RET_VAL=0
 
-    case "$1" in
-        start)
-          if [[ ! -d $PID_DIR ]]
-          then
-            mkdir $PID_DIR
-            chown $FASTCGI_USER:$FASTCGI_GROUP $PID_DIR
-            chmod 0770 $PID_DIR
-          fi
-          if [[ -r $PID_FILE ]]
-          then
-            echo "php-fastcgi already running with PID `cat $PID_FILE`"
-            RET_VAL=1
-          else
-            $PHP_SCRIPT
-            RET_VAL=$?
-          fi
-      ;;
-        stop)
-          if [[ -r $PID_FILE ]]
-          then
-            kill `cat $PID_FILE`
-            rm $PID_FILE
-            RET_VAL=$?
-          else
-            echo "Could not find PID file $PID_FILE"
-            RET_VAL=1
-          fi
-      ;;
-        restart)
-          if [[ -r $PID_FILE ]]
-          then
-            kill `cat $PID_FILE`
-            rm $PID_FILE
-            RET_VAL=$?
-          else
-            echo "Could not find PID file $PID_FILE"
-          fi
-          $PHP_SCRIPT
-          RET_VAL=$?
-      ;;
-        status)
-          if [[ -r $PID_FILE ]]
-          then
-            echo "php-fastcgi running with PID `cat $PID_FILE`"
-            RET_VAL=$?
-          else
-            echo "Could not find PID file $PID_FILE, php-fastcgi does not appear to be running"
-          fi
-      ;;
-        *)
-          echo "Usage: php-fastcgi {start|stop|restart|status}"
-          RET_VAL=1
-      ;;
-    esac
-    exit $RET_VAL
-    ~~~
+case "$1" in
+    start)
+      if [[ ! -d $PID_DIR ]]
+      then
+        mkdir $PID_DIR
+        chown $FASTCGI_USER:$FASTCGI_GROUP $PID_DIR
+        chmod 0770 $PID_DIR
+      fi
+      if [[ -r $PID_FILE ]]
+      then
+        echo "php-fastcgi already running with PID `cat $PID_FILE`"
+        RET_VAL=1
+      else
+        $PHP_SCRIPT
+        RET_VAL=$?
+      fi
+  ;;
+    stop)
+      if [[ -r $PID_FILE ]]
+      then
+        kill `cat $PID_FILE`
+        rm $PID_FILE
+        RET_VAL=$?
+      else
+        echo "Could not find PID file $PID_FILE"
+        RET_VAL=1
+      fi
+  ;;
+    restart)
+      if [[ -r $PID_FILE ]]
+      then
+        kill `cat $PID_FILE`
+        rm $PID_FILE
+        RET_VAL=$?
+      else
+        echo "Could not find PID file $PID_FILE"
+      fi
+      $PHP_SCRIPT
+      RET_VAL=$?
+  ;;
+    status)
+      if [[ -r $PID_FILE ]]
+      then
+        echo "php-fastcgi running with PID `cat $PID_FILE`"
+        RET_VAL=$?
+      else
+        echo "Could not find PID file $PID_FILE, php-fastcgi does not appear to be running"
+      fi
+  ;;
+    *)
+      echo "Usage: php-fastcgi {start|stop|restart|status}"
+      RET_VAL=1
+  ;;
+esac
+exit $RET_VAL
+
+{{< /file >}}
+
 
 Start php-fastcgi and nginx by issuing the following commands:
 
@@ -262,11 +262,11 @@ Test PHP with FastCGI
 
 Create a file called "test.php" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/www/public\_html/test.php
-:   ~~~ php
-    <?php phpinfo(); ?>
-    ~~~
+{{< file "/srv/www/www.example.com/www/public\\_html/test.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
 When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
 

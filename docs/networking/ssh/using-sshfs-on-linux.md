@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Securely accessing remote filesystems with SSHFS on Linux.'
-keywords: 'sshfs,ssh filesystem,sshfs linux,sshfs macos'
+keywords: ["sshfs", "ssh filesystem", "sshfs linux", "sshfs macos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/ssh-filesystems/','networking/ssh/using-sshfs-on-linux-and-macos-x/']
-modified: Tuesday, May 23rd, 2017
+aliases: ['networking/ssh-filesystems/','networking/ssh/using-sshfs-on-linux-and-macos-x/']
+modified: 2017-05-23
 modified_by:
   name: Angel Guarisma
-published: 'Monday, October 26th, 2009'
+published: 2009-10-26
 title: Using SSHFS To Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
@@ -36,15 +36,17 @@ Issue the following command to install sshfs:
     apt-get install sshfs
 
 
-{: .note}
-> The `sshfs` package is available on every package manager, use the commands specific to your distribution.
+{{< note >}}
+The `sshfs` package is available on every package manager, use the commands specific to your distribution.
+{{< /note >}}
 
 ### Setting up your Linux Client
 
 If you wish to use a normal user account to mount file systems using SSHFS, you'll need to add the user to the `fuse` group first.
 
-{: .note}
-> If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/content/tools-reference/linux-users-and-groups) for a brief introduction.
+{{< note >}}
+If you are unfamiliar with users, groups and file permissions, be sure to visit [Users and Groups](/content/tools-reference/linux-users-and-groups) for a brief introduction.
+{{< /note >}}
 
 To check if the `fuse` group exists run:
 
@@ -90,8 +92,9 @@ To unmount the filesystem, use the `umount` command:
 To keep your server's directory mounted on your system through reboots, you have to create a persistent mount.
 Make sure you can access the remote server without entering a password, by modifying the SSH key directory. The SSH Key is stored in the remote `authorized_keys` file.
 
-{: .note}
->If your system is older, this file may be named `authorized_keys2`. Consult `/etc/ssh/sshd_config` if you are unsure.
+{{< note >}}
+If your system is older, this file may be named `authorized_keys2`. Consult `/etc/ssh/sshd_config` if you are unsure.
+{{< /note >}}
 
 Substitute values appropriate for your server in commands that include a hostname or user account name:
 
@@ -111,11 +114,11 @@ Issue these commands on the client system to copy your public SSH key to the rem
 At this point, you should be able to log into the remote server as "user" without entering a password.
 You can force the mounted filesystem to remain persistent between reboots. This is done by including a mount directive for the remote user directory in `/etc/fstab`.
 
-{: .file-excerpt }
-/etc/fstab
-: ~~~
-    <sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
-~~~
+{{< file-excerpt "/etc/fstab" >}}
+<sshfs#user@usersLinode.example.com>:/home/users /root/sshfsExample fuse defaults 0 0
+
+{{< /file-excerpt >}}
+
 
 This entry would mount the home directory for "user" on the server "usersLinode.example.com" locally at `/root/sshfsExample` each time the system is booted. You may treat this entry like any other in `/etc/fstab`.
 

@@ -3,13 +3,13 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Learn how to install & configure Apache web server on Centos 7 on a Linode.'
-keywords: 'CentOS,CentOS 7,apache'
+keywords: ["CentOS", "CentOS 7", "apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/apache/install-and-configure-apache-on-centos-7/']
-modified: 'Tuesday, September 5, 2017'
+aliases: ['websites/apache/install-and-configure-apache-on-centos-7/']
+modified: 2017-09-05
 modified_by:
     name: Edward Angert
-published: 'Friday, November 18, 2016'
+published: 2016-11-18
 title: How to Install Apache on CentOS 7
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -21,11 +21,11 @@ image: https://linode.com/content/assets/apache-centos7-smg.png
 
 Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html) that can be configured to serve a single or multiple websites using the same Linode. This guide explains how to install and configure the Apache web server on CentOS 7.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
->
->Replace each instance of `example.com` in this guide with your site's domain name.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+
+Replace each instance of `example.com` in this guide with your site's domain name.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -52,28 +52,27 @@ Apache is an [open-source web server](https://httpd.apache.org/ABOUT_APACHE.html
 
 2.  Modify `httpd.conf` with your document root directory to point Apache to your site's files. Add the `<IfModule prefork.c>` section below to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .note}
-    >
-    > Before changing any configuration files, we recommend that you make a backup of the file. To make a backup:
-    >
-    >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    {{< note >}}
+Before changing any configuration files, we recommend that you make a backup of the file. To make a backup:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ conf
+cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+{{< /note >}}
 
-        DocumentRoot "/var/www/html/example.com/public_html"
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" aconf >}}
+DocumentRoot "/var/www/html/example.com/public_html"
 
-        ...
+...
 
-        <IfModule prefork.c>
-            StartServers        5
-            MinSpareServers     20
-            MaxSpareServers     40
-            MaxRequestWorkers   256
-            MaxConnectionsPerChild 5500
-        </IfModule>
-        ~~~
+<IfModule prefork.c>
+    StartServers        5
+    MinSpareServers     20
+    MaxSpareServers     40
+    MaxRequestWorkers   256
+    MaxConnectionsPerChild 5500
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
     These settings can also be added to a separate file. The file must be located in the `conf.module.d` or `conf` directories, and must end in `.conf`, since this is the format of files included in the resulting configuration.
 
@@ -83,28 +82,28 @@ You can choose many ways to set up a virtual host. In this section we recommend 
 
 1.  Within the `conf.d` directory create `vhost.conf` to store your virtual host configurations. The example below is a template for website `example.com`; change the necessary values for your domain:
 
-    {: .file-excerpt }
-    /etc/httpd/conf.d/vhost.conf
-    :   ~~~ conf
-        NameVirtualHost *:80
+    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" aconf >}}
+NameVirtualHost *:80
 
-        <VirtualHost *:80>
-            ServerAdmin webmaster@example.com
-            ServerName example.com
-            ServerAlias www.example.com
-            DocumentRoot /var/www/html/example.com/public_html/
-            ErrorLog /var/www/html/example.com/logs/error.log
-            CustomLog /var/www/html/example.com/logs/access.log combined
-        </VirtualHost>
-        ~~~
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/html/example.com/public_html/
+    ErrorLog /var/www/html/example.com/logs/error.log
+    CustomLog /var/www/html/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
     Additional domains can be added to the `vhost.conf` file as needed. To add domains, copy the `VirtualHost` block above and modify its values for each additional virtual host. When new requests come in from the internet, Apache checks which VirtualHost block matches the requested url, and serves the appropriate content:
 
     ![Apache VirtualHost Traffic Flow](/content/assets/apache-vhost-flow.png "Apache VirtualHost Traffic Flow")
 
-    {: .note}
-    >
-    >`ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    {{< note >}}
+`ErrorLog` and `CustomLog` entries are suggested for more specific logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+{{< /note >}}
 
 2.  Create the directories referenced above:
 

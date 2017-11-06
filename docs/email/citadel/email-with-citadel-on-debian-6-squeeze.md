@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 6 (Squeeze) Linode.'
-keywords: 'citadel debian 6,citadel debian squeeze,debian 6 mail server,groupware,email server'
+keywords: ["citadel debian 6", "citadel debian squeeze", "debian 6 mail server", "groupware", "email server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/citadel/debian-6-squeeze/']
-modified: Wednesday, November 9th, 2011
+aliases: ['email/citadel/debian-6-squeeze/']
+modified: 2011-11-09
 modified_by:
   name: Linode
-published: 'Wednesday, November 9th, 2011'
+published: 2011-11-09
 title: 'Email with Citadel on Debian 6 (Squeeze)'
 ---
 
@@ -55,32 +55,32 @@ If you need to reconfigure any of these options later, you can use the following
 
 Check the file `/etc/default/webcit` to make sure the installer correctly set your desired HTTP and HTTPS ports. You may need to update the following lines:
 
-{: .file-excerpt }
-/etc/default/webcit
-:   ~~~
-    export WEBCIT_HTTPS_PORT='443'
-    export WEBCIT_HTTP_PORT='80'
-    ~~~
+{{< file-excerpt "/etc/default/webcit" >}}
+export WEBCIT_HTTPS_PORT='443'
+export WEBCIT_HTTP_PORT='80'
+
+{{< /file-excerpt >}}
+
 
 Finally, edit the `/etc/mailname` file to reflect your system's fully qualified domain name:
 
-{: .file }
-/etc/mailname
-:   ~~~
-    hostname.example.com
-    ~~~
+{{< file "/etc/mailname" >}}
+hostname.example.com
+
+{{< /file >}}
+
 
 Enable Spamassassin Filtering
 -----------------------------
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
 
-{: .file-excerpt }
-/etc/default/spamassassin
-:   ~~~
-    # Change to one to enable spamd
-    ENABLED=1
-    ~~~
+{{< file-excerpt "/etc/default/spamassassin" >}}
+# Change to one to enable spamd
+ENABLED=1
+
+{{< /file-excerpt >}}
+
 
 Start the spamassassin service as follows:
 
@@ -153,13 +153,13 @@ Running Citadel
 
 Customize the logon banner for your Citadel server by editing the `/etc/citadel/messages/hello` file:
 
-{: .file }
-/etc/citadel/messages/hello
-:   ~~~
-    Welcome to ^humannode!
+{{< file "/etc/citadel/messages/hello" >}}
+Welcome to ^humannode!
 
-    This logon banner resides in ^bbsdir/hello -- please customize it for your site.
-    ~~~
+This logon banner resides in ^bbsdir/hello -- please customize it for your site.
+
+{{< /file >}}
+
 
 Issue the following commands to initialize Citadel.
 

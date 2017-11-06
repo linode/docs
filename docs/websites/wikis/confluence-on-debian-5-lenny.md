@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Confluence on Debian 5 (Lenny) to power a full-featured wiki system.'
-keywords: 'confluence debian 5,confluence,confluence wiki,confluence linux'
+keywords: ["confluence debian 5", "confluence", "confluence wiki", "confluence linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/confluence/debian-5-lenny/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-applications/wikis/confluence/debian-5-lenny/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, September 6th, 2010'
+published: 2010-09-06
 title: 'Confluence on Debian 5 (Lenny)'
 ---
 
@@ -31,14 +31,14 @@ Install Confluence
 
 Edit the `/etc/apt/sources.list` file, adding the following "non-free" repository lines if they don't already exist. The non-free repository is required to allow the installation of the Sun Java 6 JDK; alternate Java JDK packages (such as OpenJDK) are not supported by Confluence as of this writing.
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://ftp.us.debian.org/debian/ lenny non-free
-    deb-src http://ftp.us.debian.org/debian/ lenny non-free
-    deb http://security.debian.org/ lenny/updates non-free
-    deb-src http://security.debian.org/ lenny/updates non-free
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://ftp.us.debian.org/debian/ lenny non-free
+deb-src http://ftp.us.debian.org/debian/ lenny non-free
+deb http://security.debian.org/ lenny/updates non-free
+deb-src http://security.debian.org/ lenny/updates non-free
+
+{{< /file-excerpt >}}
+
 
 Issue the following commands to update your package repositories and install all available application updates.
 
@@ -76,19 +76,19 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties
-:   ~~~
-    confluence.home=/var/lib/confluence
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+confluence.home=/var/lib/confluence
+
+{{< /file-excerpt >}}
+
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh
-:   ~~~
-    JAVA_HOME="/usr/lib/jvm/java-6-sun"
-    export JAVA_HOME
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+JAVA_HOME="/usr/lib/jvm/java-6-sun"
+export JAVA_HOME
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to return to a root shell.
 
@@ -166,50 +166,50 @@ Issue the following commands to install Apache and enable proxy modules.
 
 Edit the `/etc/apache2/mods-available/proxy.conf` file to match the following example.
 
-{: .file }
-/etc/apache2/mods-available/proxy.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file "/etc/apache2/mods-available/proxy.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file >}}
+
 
 Edit the `/etc/apache2/ports.conf` file to match the following excerpt, replacing "12.34.56.78" with your Linode's public IP address.
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:80
-    Listen 80
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:80
+Listen 80
+
+{{< /file-excerpt >}}
+
 
 Create a virtual host configuration file for your Confluence site. Use the following example, editing the filename and contents as necessary to reflect your actual domain name and public IP address. Please note that you will need to add an "A" record to your DNS configuration to point the site to your Linode's public IP address. This example assumes that Confluence will be running on its default port (8080).
 
-{: .file }
-/etc/apache2/sites-available/confluence.example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin support@example.com
-         ServerName confluence.example.com
-         ProxyPass / http://localhost:8080/
-         ProxyPassReverse / http://localhost:8080/
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/confluence.example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin support@example.com
+     ServerName confluence.example.com
+     ProxyPass / http://localhost:8080/
+     ProxyPassReverse / http://localhost:8080/
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site, restart Apache, and start Confluence.
 

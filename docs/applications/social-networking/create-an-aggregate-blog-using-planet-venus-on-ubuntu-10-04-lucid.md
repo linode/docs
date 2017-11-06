@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The Planet Venus feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
-keywords: 'planet,blogs,aggregator,feed,rss'
+keywords: ["planet", "blogs", "aggregator", "feed", "rss"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/planet/ubuntu-10-04-lucid/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/planet/ubuntu-10-04-lucid/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Tuesday, August 10th, 2010'
+published: 2010-08-10
 title: 'Create an Aggregate Blog using Planet Venus on Ubuntu 10.04 (Lucid)'
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
@@ -48,30 +48,30 @@ Copy the default configuration file to the `/srv/www/example.com` directory:
 
 Now edit the file, making sure to modify the following values to conform to the needs of your deployment. Consider the following example:
 
-{: .file-excerpt }
-planet.conf
-:   ~~~
-    # Example Planet Venus configuration file
+{{< file-excerpt "planet.conf" >}}
+# Example Planet Venus configuration file
 
-    # Documentation: <file:///usr/share/doc/planet-venus>
-    # Examples: <file:///usr/share/planet-venus/example>
-    # Filters: <file:///usr/share/planet-venus/filter>
-    # Themes: <file:///usr/share/planet-venus/theme>
+# Documentation: <file:///usr/share/doc/planet-venus>
+# Examples: <file:///usr/share/planet-venus/example>
+# Filters: <file:///usr/share/planet-venus/filter>
+# Themes: <file:///usr/share/planet-venus/theme>
 
-    # Global configuration
+# Global configuration
 
-    [Planet]
+[Planet]
 
-    name = Planet example link = <http://example.com/>
-    owner_name = example Square
-    owner_email = <username@example.com>
-    output_theme = /srv/www/example.com/planet-theme
-    cache_directory = /srv/www/example.com/planet-cache
-    output_dir = /srv/www/example.com/public_html
-    feed_timeout = 20
-    items_per_page = 60
-    log_level = DEBUG
-    ~~~
+name = Planet example link = <http://example.com/>
+owner_name = example Square
+owner_email = <username@example.com>
+output_theme = /srv/www/example.com/planet-theme
+cache_directory = /srv/www/example.com/planet-cache
+output_dir = /srv/www/example.com/public_html
+feed_timeout = 20
+items_per_page = 60
+log_level = DEBUG
+
+{{< /file-excerpt >}}
+
 
 These settings establish the name and some background information regarding the site. All directories are declared relative to the location of the `planet.conf` file. The `output_dir` determines where Planet will build the site, and should point to a publicly accessible directory equivalent to or beneath the "document root" of your web server. The `items_per_page` option trims the number of posts included in the feed to not surpass the threshold set.
 
@@ -85,12 +85,12 @@ You can modify any of the files or copy different theme files from the `/usr/sha
 
 At the end of your `planet.conf` file, add entries that resemble the following for each feed that you would like to collect in the Planet you're building
 
-{: .file-excerpt }
-planet.conf
-:   ~~~
-    [<https://www.linode.com/content/rss>]
-    name = Linode
-    ~~~
+{{< file-excerpt "planet.conf" >}}
+[<https://www.linode.com/content/rss>]
+name = Linode
+
+{{< /file-excerpt >}}
+
 
 Once you have completed all modifications to `planet.conf`, run Planet for the first time by issuing the following command:
 
@@ -106,11 +106,11 @@ While you can run Planet without incident using the above method, we recommend r
 
 Insert the following job into the crontab:
 
-{: .file-excerpt }
-fcrontab
-:   ~~~
-    */10* * * * planet /srv/www/example.com/planet.conf
-    ~~~
+{{< file-excerpt "fcrontab" >}}
+*/10* * * * planet /srv/www/example.com/planet.conf
+
+{{< /file-excerpt >}}
+
 
 Save the crontab, and issue the following command to start `fcron` for the first time:
 

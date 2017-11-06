@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Host websites and web applications with a LAMP server on Debian 7.0 (Wheezy).'
-keywords: 'debian 7 LAMP server,debian LAMP guide,LAMP howto,debian,debian 7,lamp server,lamp,apache,mysql,php,linux web'
+keywords: ["debian 7 LAMP server", "debian LAMP guide", "LAMP howto", "debian", "debian 7", "lamp server", "lamp", "apache", "mysql", "php", "linux web"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/debian-7-wheezy/','websites/lamp/lamp-server-on-debian-7-wheezy/']
-modified: Tuesday, December 1st, 2015
+aliases: ['lamp-guides/debian-7-wheezy/','websites/lamp/lamp-server-on-debian-7-wheezy/']
+modified: 2015-12-01
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, October 9th, 2013'
+published: 2013-10-09
 title: 'LAMP Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Debian Linux Home Page](http://www.debian.org/)'
@@ -20,9 +20,9 @@ external_resources:
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a Debian 7 (Wheezy) Linode.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -50,19 +50,19 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
 2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .file-excerpt }
-    /etc/apache2/apache2.conf
-    :   ~~~ conf
-        KeepAlive Off
+    {{< file-excerpt "/etc/apache2/apache2.conf" aconf >}}
+KeepAlive Off
 
-        <IfModule mpm_prefork_module>
-                StartServers            4
-                MinSpareServers         20
-                MaxSpareServers         40
-                MaxRequestWorkers       200
-                MaxConnectionsPerChild  4500
-        </IfModule>
-        ~~~
+<IfModule mpm_prefork_module>
+        StartServers            4
+        MinSpareServers         20
+        MaxSpareServers         40
+        MaxRequestWorkers       200
+        MaxConnectionsPerChild  4500
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 ### Configure Name-Based Virtual Hosts
 
@@ -70,22 +70,22 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 1.  Within the `/etc/apache2/sites-available/` directory, create a configuration file for your website, `example.com.conf`, replacing `example.com` with your own domain information:
 
-    {: .file }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.com
-             ServerName example.com
-             ServerAlias www.example.com
-             DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log
-             CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/example.com/public_html/
+     ErrorLog /var/www/example.com/logs/error.log
+     CustomLog /var/www/example.com/logs/access.log combined
+</VirtualHost>
 
-    {: .note}
-    >
-    >The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+{{< /file >}}
+
+
+    {{< note >}}
+The `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+{{< /note >}}
 
 2.  Create the above-referenced directories:
 
@@ -96,11 +96,11 @@ There are different ways to set up virtual hosts; however, the method below is r
 
         sudo a2ensite example.com.conf
 
-    {: .note}
-    >
-    >If you need to disable your website later, run:
-    >
-    >     sudo a2dissite example.com.conf
+    {{< note >}}
+If you need to disable your website later, run:
+
+sudo a2dissite example.com.conf
+{{< /note >}}
 
 4.  Restart Apache:
 
@@ -156,17 +156,17 @@ With Apache and MySQL installed, you are now ready to move on to installing PHP.
 
 2.  Once PHP5 is installed, tune the configuration file located in `/etc/php5/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
-    {: .file-excerpt }
-    /etc/php5/apache2/php.ini
-    :   ~~~ ini
-        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        error_log = /var/log/php/error.log
-        max_input_time = 30
-        ~~~
+    {{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+error_log = /var/log/php/error.log
+max_input_time = 30
 
-    {: .note}
-    >
-    >Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+Ensure the lines above are uncommented. Commented lines begin with a semicolon (**;**).
+{{< /note >}}
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 

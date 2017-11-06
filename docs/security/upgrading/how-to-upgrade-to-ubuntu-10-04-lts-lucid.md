@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.04 LTS.'
-keywords: 'ubuntu upgrade,distro upgrade,linux upgrade howto'
+keywords: ["ubuntu upgrade", "distro upgrade", "linux upgrade howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-ubuntu-10-04-lucid/']
-modified: Tuesday, October 1st, 2013
+aliases: ['upgrading/upgrade-to-ubuntu-10-04-lucid/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Thursday, April 29th, 2010'
+published: 2010-04-29
 title: 'How to Upgrade to Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -29,8 +29,9 @@ You should stop as many services as possible before upgrading your system. This 
 
 If you are running Ubuntu 8.04 or 9.10, edit your `/etc/fstab` file to include the following line (see later notes on Ubuntu 9.04).
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/fstab
+{{< /file-excerpt >}}
 
 > dev /dev devtmpfs rw 0 0
 
@@ -45,8 +46,9 @@ Issue the following command to install the `screen` utility and the update manag
 
 Edit the `/etc/update-manager/release-upgrades` file, setting "Prompt=normal" as shown below. Please note that if you are running Ubuntu 9.04, you will be upgraded to Ubuntu 9.10 instead of Ubuntu 10.04; afterward, you may upgrade to Ubuntu 10.04 by repeating the `do-release-upgrade` process.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/update-manager/release-upgrades
+{{< /file-excerpt >}}
 
 > Prompt=normal
 
@@ -101,16 +103,15 @@ If you've already attempted to upgrade but your Linode is failing to boot proper
 
 Add the following line to your file:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /media/xvda/etc/fstab
+{{< /file-excerpt >}}
 
 > dev /dev devtmpfs rw 0 0
 
 Save the file by entering `Ctrl+x` and agreeing to the changes. You may now reboot your Linode from the Linode Manager dashboard using its normal configuration profile.
 
- {: .note }
->
-> If you're still having problems, verify that `Automount devtmpfs` is turned on.
-
-
+ {{< note >}}
+If you're still having problems, verify that `Automount devtmpfs` is turned on.
+{{< /note >}}
 

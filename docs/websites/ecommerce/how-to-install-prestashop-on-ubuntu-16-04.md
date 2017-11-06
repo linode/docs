@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.'
-keywords: 'prestashop,ecommerce,cms'
+keywords: ["prestashop", "ecommerce", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Tuesday, August 29th, 2017
-modified: Thursday,September 21st, 2017
+published: 2017-08-29
+modified: 2017-09-21
 modified_by:
   name: Linode
 title: 'How to Install PrestaShop on Ubuntu 16.04'
@@ -41,9 +41,9 @@ Installing Prestashop on a remote server is more involved and time-consuming tha
 
 4.  In order to obtain a free SSL certificate from [Let's Encrypt](https://letsencrypt.org/), you will need to buy a Fully Qualified Domain Name (FQDN) and set it to point to your Linode. See our [DNS Manager Overview](/content/networking/dns/dns-manager-overview) guide for more information.
 
-      {: .note}
-      >
-      > Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.
+      {{< note >}}
+Throughout this guide, replace `example.com` with the public IP address or Fully Qualified Domain Name (FQDN) of your Linode.
+{{< /note >}}
 
 ## Server Requirements
 
@@ -71,16 +71,16 @@ This guide will run PrestaShop on a modified LAMP stack using MariaDB instead of
 
 2. Edit the configuration file. Uncomment the `ServerName` line, replace `example.com` with your Linode's domain name or IP address, and edit the remaining lines as follows:
 
-    {: .file-excerpt }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ conf
-        . . .
-        ServerName example.com
+    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" aconf >}}
+. . .
+ServerName example.com
 
-        ServerAdmin webmaster@example.com
-        DocumentRoot /var/www/html/example.com
-        . . .
-        ~~~
+ServerAdmin webmaster@example.com
+DocumentRoot /var/www/html/example.com
+. . .
+
+{{< /file-excerpt >}}
+
 
 3. Create the directory for our website files:
 
@@ -101,13 +101,13 @@ PrestaShop can make use of `.htaccess` files. This allows it to automatically ad
 
 1.  Edit the config file to enable .htaccess overrides:
 
-  {: .file }
-  /etc/apache2/sites-available/example.com.conf
-  :   ~~~ conf
-      <Directory /var/www/html/example.com>
-          AllowOverride All
-      </Directory>
-      ~~~
+  {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+<Directory /var/www/html/example.com>
+    AllowOverride All
+</Directory>
+
+{{< /file >}}
+
 
 ## Install TLS (SSL) Certificate to Encrypt Website Traffic
 
@@ -254,13 +254,13 @@ You can also use:
 
 5. Open `/etc/php/7.0/apache2/php.ini` in a text editor and look for the following three settings:
 
-    {:.file-excerpt}
-    /etc/php/7.0/apache2/php.ini
-    : ~~~
-      memory_limit = 128M
-      upload_max_filesize = 2M
-      max_execution_time = 30
-      ~~~
+    {{< file-excerpt "/etc/php/7.0/apache2/php.ini" >}}
+memory_limit = 128M
+upload_max_filesize = 2M
+max_execution_time = 30
+
+{{< /file-excerpt >}}
+
 
     Change `upload_max_filesize` to 10M to enable uploading of larger images. The other two settings don't need to be changed at this point, but if your site's memory usage increases or you install a plug-in whose scripts run slowly, you may want to consider increasing `memory_limit` or `max_execution_time`, respectively.
 

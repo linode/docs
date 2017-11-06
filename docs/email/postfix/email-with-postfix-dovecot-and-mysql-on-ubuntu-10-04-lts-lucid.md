@@ -4,13 +4,13 @@ author:
   name: Brett Kaplan
   email: bkaplan@linode.com
 description: 'Setting up a mail server with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'postfix ubuntu 10.04,dovecot ubuntu 10.04,ubuntu 10.04 mail server,dovecot,email,ubuntu,lucid'
+keywords: ["postfix ubuntu 10.04", "dovecot ubuntu 10.04", "ubuntu 10.04 mail server", "dovecot", "email", "ubuntu", "lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/dovecot-mysql-ubuntu-10-04-lucid/']
-modified: Monday, May 13th, 2013
+aliases: ['email/postfix/dovecot-mysql-ubuntu-10-04-lucid/']
+modified: 2013-05-13
 modified_by:
   name: Linode
-published: 'Sunday, May 9th, 2010'
+published: 2010-05-09
 title: 'Email with Postfix, Dovecot and MySQL on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -108,8 +108,9 @@ Exit the MySQL shell by issuing the following command:
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/mysql/my.cnf
+{{< /file-excerpt >}}
 
 > bind-address = 127.0.0.1
 
@@ -126,29 +127,33 @@ Configure Postfix to work with MySQL
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
+{{< file >}}
 /etc/postfix/mysql-virtual\_domains.cf
+{{< /file >}}
 
 > user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT domain AS virtual FROM domains WHERE domain='%s' hosts = 127.0.0.1
 
 Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
+{{< file >}}
 /etc/postfix/mysql-virtual\_forwardings.cf
+{{< /file >}}
 
 > user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT destination FROM forwardings WHERE source='%s' hosts = 127.0.0.1
 
 Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
+{{< file >}}
 /etc/postfix/mysql-virtual\_mailboxes.cf
+{{< /file >}}
 
 > user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT CONCAT(SUBSTRING\_INDEX(email,<'@'>,-1),'/',SUBSTRING\_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s' hosts = 127.0.0.1
 
 Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
+{{< file >}}
 /etc/postfix/mysql-virtual\_email2email.cf
+{{< /file >}}
 
 > user = mail\_admin password = mail\_admin\_password dbname = mail query = SELECT email FROM users WHERE email='%s' hosts = 127.0.0.1
 
@@ -227,22 +232,25 @@ Make a backup copy of the `/etc/default/saslauthd` file by issuing the following
 
 Edit the file `/etc/default/saslauthd` to match the configuration shown below.
 
-{: .file }
+{{< file >}}
 /etc/default/saslauthd
+{{< /file >}}
 
 > START=yes DESC="SASL Authentication Daemon" NAME="saslauthd" MECHANISMS="pam" MECH\_OPTIONS="" THREADS=5 OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd -r"
 
 Next, create the file `/etc/pam.d/smtp` and copy in the following two lines. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
-{: .file }
+{{< file >}}
 /etc/pam.d/smtp
+{{< /file >}}
 
 > auth required pam\_mysql.so user=mail\_admin passwd=mail\_admin\_password host=127.0.0.1 db=mail table=users usercolumn=email passwdcolumn=password crypt=1 account sufficient pam\_mysql.so user=mail\_admin passwd=mail\_admin\_password host=127.0.0.1 db=mail table=users usercolumn=email passwdcolumn=password crypt=1
 
 Create a file named `/etc/postfix/sasl/smtpd.conf` with the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
-{: .file }
+{{< file >}}
 /etc/postfix/sasl/smtpd.conf
+{{< /file >}}
 
 > pwcheck\_method: saslauthd mech\_list: plain login allow\_plaintext: true auxprop\_plugin: mysql sql\_hostnames: 127.0.0.1 sql\_user: mail\_admin sql\_passwd: mail\_admin\_password sql\_database: mail sql\_select: select password from users where email = '%u'
 
@@ -264,8 +272,9 @@ Configure Dovecot
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/postfix/master.cf
+{{< /file-excerpt >}}
 
 > dovecot unix - n n - - pipe
 > :   flags=DRhu user=vmail:vmail argv=/usr/lib/dovecot/deliver -d \${recipient}
@@ -276,8 +285,9 @@ Issue the following command to make a backup copy of your `/etc/dovecot/dovecot.
 
 Replace the contents of the file with the following example, substituting your system's domain name for example.com.
 
-{: .file }
+{{< file >}}
 /etc/dovecot/dovecot.conf
+{{< /file >}}
 
 > protocols = imap imaps pop3 pop3s log\_timestamp = "%Y-%m-%d %H:%M:%S " mail\_location = maildir:/home/vmail/%d/%n/Maildir
 >
@@ -332,8 +342,9 @@ MySQL will be used to store password information, so `/etc/dovecot/dovecot-sql.c
 
 Replace the contents of the file with the following example, making sure to replace "main\_admin\_password" with your mail password.
 
-{: .file }
+{{< file >}}
 /etc/dovecot/dovecot-sql.conf
+{{< /file >}}
 
 > driver = mysql connect = host=127.0.0.1 dbname=mail user=mail\_admin password=mail\_admin\_password default\_pass\_scheme = CRYPT password\_query = SELECT email as user, password FROM users WHERE email='%u';
 
@@ -343,8 +354,9 @@ Dovecot has now been configured. You must restart it to make sure it is working 
 
 Now check your /var/log/mail.log to make sure dovecot started without errors. Your log should have lines similar to the following:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /var/log/mail.log
+{{< /file-excerpt >}}
 
 > Jan 21 16:19:17 hostname dovecot: Dovecot v1.2.9 starting up (core dumps disabled) Jan 21 16:19:17 hostname dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
 
@@ -371,8 +383,9 @@ Configure Mail Aliases
 
 Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives are set properly for your organization.
 
-{: .file }
+{{< file >}}
 /etc/aliases
+{{< /file >}}
 
 > postmaster: root root: <postmaster@example.com>
 
@@ -442,15 +455,17 @@ Check Your Logs
 
 After you have sent the test mail, you'll want to check your error logs to make sure the mail was delivered. First check your `mail.log` located in `/var/log/mail.log`. You should see something similar to the following:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /var/log/mail.log
+{{< /file-excerpt >}}
 
 > Jan 21 16:23:23 hostname postfix/cleanup[10654]: 5410D86ED: message-id=\<<20110121162323.5410D86ED@hostname.example.com>\> Jan 21 16:23:23 hostname postfix/qmgr[10644]: 5410D86ED: from=\<<root@hostname.example.com>\>, size=398, nrcpt=1 (queue active) Jan 21 16:23:23 hostname postfix/pipe[10659]: 5410D86ED: to=\<<sales@example.com>\>, relay=dovecot, delay=0.04, delays=0.03/0.01/0/0.01, dsn=2.0.0, status=sent (delivered via dovecot service) Jan 21 16:23:23 hostname postfix/qmgr[10644]: 5410D86ED: removed
 
 Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /home/vmail/dovecot-deliver.log
+{{< /file-excerpt >}}
 
 > 2011-01-21 16:23:23 deliver(<sales@example.com>): Info: msgid=\<<20110121162323.5410D86ED@hostname.example.com>\>: saved mail to INBOX
 

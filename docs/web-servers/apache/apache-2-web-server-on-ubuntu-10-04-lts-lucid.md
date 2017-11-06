@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'apache,apache ubuntu 10.04,apache ubuntu lucid,web server,apache on ubuntu,apache lucid'
+keywords: ["apache", "apache ubuntu 10.04", "apache ubuntu lucid", "web server", "apache on ubuntu", "apache lucid"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-10-04-lucid/','websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
-modified: Friday, October 4th, 2013
+aliases: ['web-servers/apache/installation/ubuntu-10-04-lucid/','websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Thursday, April 29th, 2010'
+published: 2010-04-29
 title: 'Apache 2 Web Server on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -85,42 +85,42 @@ Each additional virtual host needs its own file in the `/etc/apache2/sites-avail
 
 First create example.com (`/etc/apache2/sites-available/example.net`) so that it resembles the following.
 
-{: .file }
-/etc/apache2/sites-available/example.net
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.net
-         ServerName example.net
-         ServerAlias www.example.net
-         DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log
-         CustomLog /srv/www/example.net/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.net" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.net
+     ServerName example.net
+     ServerAlias www.example.net
+     DocumentRoot /srv/www/example.net/public_html/
+     ErrorLog /srv/www/example.net/logs/error.log
+     CustomLog /srv/www/example.net/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 If you would like to enable Perl, add the following lines to the `VirtualHost` entry above.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.net
-:   ~~~ apache
-    Options ExecCGI
-    AddHandler cgi-script .pl
-    ~~~
+{{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+
+{{< /file-excerpt >}}
+
 
 Next, create example.com (`/etc/apache2/sites-available/example.org`) so that it resembles this:
 
-{: .file }
-/etc/apache2/sites-available/example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin admin@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 You'll note that some basic options are specified for both sites, including where the files for the site will reside (under `/srv/www/`). You can add (or remove) additional configuration options, such as the Perl support, on a site-by-site basis to these files as your needs dictate.
 
@@ -206,13 +206,13 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <IfModule mpm_itk_module>
-       AssignUserId webeditor webgroup
-    </IfModule>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
 

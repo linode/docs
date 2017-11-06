@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Debian 5 (Lenny).'
-keywords: 'osCommerce,Debian,Store,Ecommerce'
+keywords: ["osCommerce", "Debian", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/oscommerce/debian-5-lenny/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/e-commerce/oscommerce/debian-5-lenny/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Friday, January 22nd, 2010'
+published: 2010-01-22
 title: 'osCommerce on Debian 5 (Lenny)'
 ---
 
@@ -83,22 +83,22 @@ SSL Certificates
 
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
-{: .file-excerpt }
-/srv/www/example.com/public\_html/includes/configure.php
-:   ~~~ php
-    // Define the webserver and path parameters
-    // * DIR_FS_* = Filesystem directories (local/physical)
-    // * DIR_WS_* = Webserver directories (virtual/URL)
-    define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
-    define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
-    define('ENABLE_SSL', true); // secure webserver for checkout procedure?
-    define('HTTP_COOKIE_DOMAIN', 'www.example.com');
-    define('HTTPS_COOKIE_DOMAIN', 'example.com);
-    define('HTTP_COOKIE_PATH', '/');
-    define('HTTPS_COOKIE_PATH', '/');
-    define('DIR_WS_HTTP_CATALOG', '/');
-    define('DIR_WS_HTTPS_CATALOG', '/');
-    ~~~
+{{< file-excerpt "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
+// Define the webserver and path parameters
+// * DIR_FS_* = Filesystem directories (local/physical)
+// * DIR_WS_* = Webserver directories (virtual/URL)
+define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
+define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
+define('ENABLE_SSL', true); // secure webserver for checkout procedure?
+define('HTTP_COOKIE_DOMAIN', 'www.example.com');
+define('HTTPS_COOKIE_DOMAIN', 'example.com);
+define('HTTP_COOKIE_PATH', '/');
+define('HTTPS_COOKIE_PATH', '/');
+define('DIR_WS_HTTP_CATALOG', '/');
+define('DIR_WS_HTTPS_CATALOG', '/');
+
+{{< /file-excerpt >}}
+
 
 It should be noted that in this example, the certificate was issued without the `www` qualifier. Your specific requirements may require tweaking.
 

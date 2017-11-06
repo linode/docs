@@ -4,13 +4,13 @@ author:
   name: Dave Messina
   email: docs@linode.com
 description: 'Using lighttpd to host multiple websites on Ubuntu 12.04 (Precise)'
-keywords: 'lighttpd,web server,web hosting'
+keywords: ["lighttpd", "web server", "web hosting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/lighttpd/ubuntu-12-04-precise/','websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
-modified: Wednesday, September 11th, 2013
+aliases: ['web-servers/lighttpd/ubuntu-12-04-precise/','websites/lighttpd/lighttpd-web-server-on-ubuntu-12-04-preci/']
+modified: 2013-09-11
 modified_by:
   name: Linode
-published: 'Wednesday, September 11th, 2013'
+published: 2013-09-11
 title: 'lighttpd Web Server on Ubuntu 12.04 (Precise)'
 external_resources:
  - '[Optimizing FastCGI Performance (lighttpd wiki)](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI)'
@@ -103,13 +103,13 @@ and continue by reloading lighttpd:
 
 Modify the following settings in your `/etc/lighttpd/conf-enabled/10-simple-vhost.conf` file:
 
-{: .file-excerpt }
-/etc/lighttpd/conf-enabled/10-simple-vhost.conf
-:   ~~~ lighty
-    simple-vhost.server-root = "/var/www"
-    simple-vhost.document-root = "/htdocs/"
-    # simple-vhost.default-host = "brackley.org"
-    ~~~
+{{< file-excerpt "/etc/lighttpd/conf-enabled/10-simple-vhost.conf" lighty >}}
+simple-vhost.server-root = "/var/www"
+simple-vhost.document-root = "/htdocs/"
+# simple-vhost.default-host = "brackley.org"
+
+{{< /file-excerpt >}}
+
 
 After editing this file reload the web server again with the following command:
 
@@ -146,29 +146,29 @@ Begin by adding the "mod\_evhost" module in the server.modules block of the `/et
 
 To accomplish the same directory structure with evhost as with the simple-vhost, we would need to insert the following statement into `lighttpd.conf`:
 
-{: .file-excerpt }
-lighttpd.conf
-:   ~~~ lighty
-    evhost.path-pattern = "/var/www/%0/htdocs/"
-    ~~~
+{{< file-excerpt "lighttpd.conf" lighty >}}
+evhost.path-pattern = "/var/www/%0/htdocs/"
+
+{{< /file-excerpt >}}
+
 
 You have maximum flexibility to create virtual hosts in this manner. The naming convention for these virtual hosts is derived from the domains names, given the following (fictitious) web address: `http://lookhere.somesubdomain.example.com/`
 
 You can modify the url format lighttpd recognizes by defining the pattern that gets passed through to the directory from which the content lives.
 
-{: .file-excerpt }
-lighttpd.conf
-:   ~~~ lighty
-    # define a pattern for the host url finding
-    # %% => % sign
-    # %0 => domain name + tld
-    # %1 => tld
-    # %2 => domain name without tld
-    # %3 => subdomain 1 name
-    # %4 => subdomain 2 name
-    #
-    # evhost.path-pattern = "/home/storage/dev/www/%3/htdocs/"
-    ~~~
+{{< file-excerpt "lighttpd.conf" lighty >}}
+# define a pattern for the host url finding
+# %% => % sign
+# %0 => domain name + tld
+# %1 => tld
+# %2 => domain name without tld
+# %3 => subdomain 1 name
+# %4 => subdomain 2 name
+#
+# evhost.path-pattern = "/home/storage/dev/www/%3/htdocs/"
+
+{{< /file-excerpt >}}
+
 
 We read domain names backwards, so `com` is the tld or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a virtual hosting scheme that makes sense for your use case.
 
@@ -207,34 +207,34 @@ Lighttpd will send CGI requests to CGI handlers on the basis of file extensions,
 
 If you install the php5-cgi package and enable mod\_fastcgi with `lighty-enable-mod fastcgi` then a default FastCGI handler will be configured in the file `/etc/lighttpd/conf-enabled/10-fastcgi.conf`. Though the handler will likely require specific customization for your use cases, it serves as an effective example:
 
-{: .file-excerpt }
-/etc/lighttpd/conf-enabled/10-fastcgi.conf
-:   ~~~ lighty
-    fastcgi.server    = ( ".php" =>
-            ((
-                    "bin-path" => "/usr/bin/php-cgi",
-                    "socket" => "/tmp/php.socket",
-            "max-procs" => 2,
-                    "idle-timeout" => 20,
-                    "bin-environment" => (
-                            "PHP_FCGI_CHILDREN" => "4",
-                            "PHP_FCGI_MAX_REQUESTS" => "10000"
-                    ),
-                    "bin-copy-environment" => (
-                            "PATH", "SHELL", "USER"
-                    ),
-                    "broken-scriptfilename" => "enable"
-            ))
-    )
-    ~~~
+{{< file-excerpt "/etc/lighttpd/conf-enabled/10-fastcgi.conf" lighty >}}
+fastcgi.server    = ( ".php" =>
+        ((
+                "bin-path" => "/usr/bin/php-cgi",
+                "socket" => "/tmp/php.socket",
+        "max-procs" => 2,
+                "idle-timeout" => 20,
+                "bin-environment" => (
+                        "PHP_FCGI_CHILDREN" => "4",
+                        "PHP_FCGI_MAX_REQUESTS" => "10000"
+                ),
+                "bin-copy-environment" => (
+                        "PATH", "SHELL", "USER"
+                ),
+                "broken-scriptfilename" => "enable"
+        ))
+)
+
+{{< /file-excerpt >}}
+
 
 You can map more than one file extensions to a single FastCGI handler by adding the following entry to your config file:
 
-{: .file-excerpt }
-/etc/lighttpd/conf-enabled/10-fastcgi.conf
-:   ~~~ lighty
-    fastcgi.map-extensions = ( ".[ALT-EXTENSION]" => ".[EXTENSION]" )
-    ~~~
+{{< file-excerpt "/etc/lighttpd/conf-enabled/10-fastcgi.conf" lighty >}}
+fastcgi.map-extensions = ( ".[ALT-EXTENSION]" => ".[EXTENSION]" )
+
+{{< /file-excerpt >}}
+
 
 Again, mod\_fastcgi supports creating multiple handlers, and even adding multiple FastCGI back ends per-handler.
 

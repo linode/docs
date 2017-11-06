@@ -3,10 +3,10 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'This guide shows how to create a Streisand gateway with automatically configured profiles for OpenVPN, ShadowSocks, WireGuard, Tor, etc.'
-keywords: 'streisand,vpn,openvpn,tor,wireguard,L2TP/IPSec,OpenConnect,security'
+keywords: ["streisand", "vpn", "openvpn", "tor", "wireguard", "L2TP/IPSec", "OpenConnect", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Tuesday, September 12th, 2017
-modified: Friday, October 13th, 2017
+published: 2017-09-12
+modified: 2017-10-13
 modified_by:
   name: Linode
 title: 'How to Set Up a Streisand Gateway'
@@ -42,9 +42,9 @@ Streisand uses open-source platform Ansible to automate much of the process that
 
 ## Install Ansible and its Dependencies
 
-{:.note}
->
-> As of this writing, it is not possible to run Streisand on a Windows computer. If you do not have access to a Mac or Linux machine, you can connect to an existing Linode and complete the steps in this guide from your remote server. This will create an additional Linode.
+{{< note >}}
+As of this writing, it is not possible to run Streisand on a Windows computer. If you do not have access to a Mac or Linux machine, you can connect to an existing Linode and complete the steps in this guide from your remote server. This will create an additional Linode.
+{{< /note >}}
 
 1.  Open a terminal window on your local machine. Check to see if you have any ssh keys:
 
@@ -108,19 +108,19 @@ You are now ready to run Streisand.
 
     ![Streisand API Prompt](/content/assets/streisand/api-prompt.png)
 
-{:.note}
->
-> Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
+{{< note >}}
+Choosing a server location near your home will help to reduce latency. However, if you intend to use your VPN to evade geolocation or avoid local internet restrictions, consider choosing a location in an appropriate country.
+{{< /note >}}
 
 Streisand will now execute a series of Ansible rules to create and configure a new Linode. This process can take a long time. (The [Streisand docs](https://github.com/jlund/streisand) say about ten minutes, but in some cases it can be longer). You may be prompted for confirmation or to provide additional information during the process.
 
-{:.caution}
->
-> Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check your [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
+{{< caution >}}
+Streisand will create a new Linode under your account early in the configuration process. If the script fails for any reason, or if you cancel it, check your [Linode Manager](https://cloud.linode.com/) and remove the new Linode if necessary.
+{{< /caution >}}
 
-{:.note}
->
-> You should not recieve any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
+{{< note >}}
+You should not recieve any errors during the install. If you receive an error related to `Alert_cpu_threshold must be between 0 and 2000`, visit this [link](https://github.com/jlund/streisand/issues/626#issuecomment-319812261) to address the issue.
+{{< /note >}}
 
 ## Connect to Your Streisand Gateway
 

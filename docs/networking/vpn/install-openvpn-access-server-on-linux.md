@@ -3,13 +3,13 @@ author:
     name: James Stewart
     email: jstewart@linode.com
 description: 'This guide will show how to install and configure an OpenVPN access server on Linux distributions for secure communications.'
-keywords: 'openvpn,networking,vpn,debian,ubuntu,centos,fedora'
-alias: ['networking/vpn/openvpn-access-server/']
+keywords: ["openvpn", "networking", "vpn", "debian", "ubuntu", "centos", "fedora"]
+aliases: ['networking/vpn/openvpn-access-server/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, October 11, 2017
+modified: 2017-10-11
 modified_by:
     name: Linode
-published: 'Thursday, April 30th, 2015'
+published: 2015-04-30
 title: Install OpenVPN Access Server on Linux for Secure Communications
 ---
 
@@ -19,9 +19,9 @@ OpenVPN is a popular software package which creates encrypted tunnels for secure
 
 Before installing OpenVPN Access Server, you will need to follow our [Getting Started](/content/getting-started/) guide. We also suggest following our [Securing Your Server](/content/security/basics) guide.
 
-{: .note}
->
->After securing your server, ensure that TCP port `943` and UDP port `1194` are permitted through your firewall in order for the OpenVPN Access Server to function.
+{{< note >}}
+After securing your server, ensure that TCP port `943` and UDP port `1194` are permitted through your firewall in order for the OpenVPN Access Server to function.
+{{< /note >}}
 
 ## Install OpenVPN Access Server
 
@@ -54,7 +54,7 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 
 		sudo passwd openvpn
 
-##Configure OpenVPN Client Settings
+## Configure OpenVPN Client Settings
 
 1.  Connect to the Admin UI address shown at the end of the install process, using the password for your OpenVPN User.
 
@@ -68,14 +68,13 @@ Before installing OpenVPN Access Server, you will need to follow our [Getting St
 
     [![OpenVPN Admin Web Interface.](/content/assets/openvpn-update-server-resize.png)](/content/assets/openvpn-update-server.png)
 
-###OpenVPN User Management
+### OpenVPN User Management
 
 You can add additional users to your OpenVPN Access Server to enable auditing of connections to your VPN tunnel, and user level access control.
 
-{: .note}
->
-> OpenVPN Access Server's free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
-
+{{< note >}}
+OpenVPN Access Server's free edition is limited to two users. If you require additional users for your VPN, you can view pricing details and purchase licenses at [OpenVPN's Website](https://openvpn.net/index.php/access-server/pricing.html)
+{{< /note >}}
 
 1.  From the admin web interface, click the **User Permissions** link under User Management.
 
@@ -89,13 +88,13 @@ You can add additional users to your OpenVPN Access Server to enable auditing of
 
 4.  Click the **Save Settings** option at the bottom of the page to complete the creation of the new user account.
 
-###Permit Autologin Profiles
+### Permit Autologin Profiles
 
 If you wish to configure autologin profiles, you will need to modify your user settings to allow autologin profiles to be displayed on the connections page.
 
-{: .caution}
->
-> This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.
+{{< caution >}}
+This configuration type can be useful for connecting other servers to your VPN on startup, or for configuring a system that will always route all of its traffic over the VPN automatically.  Utilizing this type of profile will cause all of your non-local traffic to be routed over the VPN automatically.  If you wish to enable and disable your VPN at will, you will want to utilize User or Server locked profiles instead.
+{{< /caution >}}
 
 1.  From the OpenVPN Access Server admin web interface, visit the User Permissions link.
 
@@ -105,7 +104,7 @@ If you wish to configure autologin profiles, you will need to modify your user s
 
 ## Client Software Installation
 
-###Windows
+### Windows
 
 1.  Connect to the OpenVPN Access Server Client UI. Click the link to download the OpenVPN Connect software to your computer.
 
@@ -121,7 +120,7 @@ If you wish to configure autologin profiles, you will need to modify your user s
 
 	[![OpenVPN Taskbar Icon.](/content/assets/openvpn-connect-windows-4-resize.png)](/content/assets/openvpn-connect-windows-4.png)
 
-###Mac OS
+### Mac OS
 
 1.  Connect to the OpenVPN Access Server Client UI, and click the link to download the OpenVPN Connect Software.
 
@@ -141,7 +140,7 @@ If you wish to configure autologin profiles, you will need to modify your user s
 
 	[![DMG Finder Window.](/content/assets/openvpn-osx-install-4-resize.png)](/content/assets/openvpn-osx-install-4.png)
 
-###OpenVPN for Linux
+### OpenVPN for Linux
 
 1.  Download and install the OpenVPN client software using your distribution's package manager.
 
@@ -157,9 +156,9 @@ If you wish to configure autologin profiles, you will need to modify your user s
 
 	[![DMG Finder Window.](/content/assets/openvpn-download-profile-ubuntu-resize.png)](/content/assets/openvpn-download-profile-ubuntu.png)
 
-    {: .note}
-    >
-    >If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to utilize the wget tool to download the appropriate profile.  You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then utilizing the [wget](/content/tools-reference/tools/download-resources-from-the-command-line-with-wget) tool to download the client profile.
+    {{< note >}}
+If you are connecting a headless machine to your OpenVPN server, such as another Linode, you will need to utilize the wget tool to download the appropriate profile.  You can do so by copying the link from the OpenVPN Access Server client page for your required profile, and then utilizing the [wget](/content/tools-reference/tools/download-resources-from-the-command-line-with-wget) tool to download the client profile.
+{{< /note >}}
 
 3.  Copy the downloaded profile to your `/etc/openvpn` folder, and rename it to `client.conf`. Replace `~/Downloads/client.ovpn` with the location of your download folder, if necessary.
 
@@ -173,6 +172,6 @@ If you wish to configure autologin profiles, you will need to modify your user s
 
 		ip addr
 
-{: .note}
->
->After completing this process on any of the listed operating systems, you can utilize a website such as [WhatIsMyIp.com](https://www.whatismyip.com) to verify your VPN connectivity. You can also query from the command line with `curl ifconfig.me` If successful, these steps should return the IP address of your Linode rather than your local IP.
+{{< note >}}
+After completing this process on any of the listed operating systems, you can utilize a website such as [WhatIsMyIp.com](https://www.whatismyip.com) to verify your VPN connectivity. You can also query from the command line with `curl ifconfig.me` If successful, these steps should return the IP address of your Linode rather than your local IP.
+{{< /note >}}

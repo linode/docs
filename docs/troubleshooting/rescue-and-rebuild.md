@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to rescuing and rebuilding your Linode.'
-keywords: 'rescue,rebuild'
+keywords: ["rescue", "rebuild"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
-modified: Thursday, August 18th, 2016
+aliases: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
+modified: 2016-08-18
 modified_by:
   name: Linode
-published: 'Thursday, May 31st, 2012'
+published: 2012-05-31
 title: Rescue and Rebuild
 ---
 
@@ -32,9 +32,9 @@ Here's how to boot your Linode into Rescue Mode:
 
 5.  In the **Rescue Mode** section, select the disks you want to be mounted.
 
-    {: .note }
-    >
-    > Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
+    {{< note >}}
+Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
+{{< /note >}}
 
 6.  Click **Reboot into Rescue Mode**. The Linode's dashboard appears. Watch the *Host Job Queue* on the Dashboard to monitor the progress.
 
@@ -56,9 +56,9 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 [![Output of df command](/content/assets/999-rescue2.png)](/content/assets/999-rescue2.png)
 
- {: .note }
->
-> You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
+ {{< note >}}
+You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
+{{< /note >}}
 
 2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/sda`, the Swap disk is `/dev/sdb`, and the Finnix partition is `/dev/sdh`.
 
@@ -157,9 +157,9 @@ Did an unauthorized intruder gain access to your Linode? Since it is virtually i
 
 Sometimes it's just easier to erase all of your Linode's disks and start over with a fresh Linux distribution. This is the "nuclear option" that will erase *everything* on your Linode.
 
- {: .note }
->
-> If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/content/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
+ {{< note >}}
+If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/content/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
+{{< /note >}}
 
 Here's how to rebuild your Linode from scratch:
 

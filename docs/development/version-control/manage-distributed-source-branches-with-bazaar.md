@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Bazaar version management system.'
-keywords: 'bzr,bazaar,vcs,scm,dcvs'
+keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
-modified: Monday, May 23rd, 2011
+aliases: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
+modified: 2011-05-23
 modified_by:
   name: Linode
-published: 'Monday, January 18th, 2010'
+published: 2010-01-18
 title: Manage Distributed Source Branches with Bazaar
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use CPAN Minus to install and manage Perl modules easily.'
-keywords: 'cpan,perl,cpanm'
+keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/']
-modified: Wednesday, November 16th, 2011
+aliases: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/']
+modified: 2011-11-16
 modified_by:
   name: Linode
-published: 'Monday, April 12th, 2010'
+published: 2010-04-12
 title: Manage CPAN Modules with CPAN Minus
 external_resources:
  - '[CPAN Minus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'

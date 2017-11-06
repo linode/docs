@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide shows how-to configure getmail to download email from remote servers.'
-keywords: 'email,getmail,mda'
+keywords: ["email", "getmail", "mda"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/getmail/']
-modified: Tuesday, August 22nd, 2017
+aliases: ['email/getmail/']
+modified: 2017-08-22
 modified_by:
   name: Linode
-published: 'Monday, February 1st, 2010'
+published: 2010-02-01
 title: Retrieve Email Using Getmail
 external_resources:
  - '[Official Getmail Documentation](http://pyropus.ca/software/getmail/documentation.html)'
@@ -97,24 +97,24 @@ All getmail configuration occurs in the `.getmail/` folder in the user's home di
 
 The following file provides a basic template for a getmail configuration file:
 
-{: .file }
-~/.getmail/getmailrc
-:   ~~~
-    [retriever]
-    type = SimplePOP3SSLRetriever
-    server = pop.example.com
-    port = 995
-    username = foreman
-    password = s1d30fd4nc3r6
+{{< file "~/.getmail/getmailrc" >}}
+[retriever]
+type = SimplePOP3SSLRetriever
+server = pop.example.com
+port = 995
+username = foreman
+password = s1d30fd4nc3r6
 
-    [destination]
-    type = Maildir
-    path = ~/mail/
+[destination]
+type = Maildir
+path = ~/mail/
 
-    [options]
-    delete = true
-    message_log = ~/.getmail/log-foreman-example
-    ~~~
+[options]
+delete = true
+message_log = ~/.getmail/log-foreman-example
+
+{{< /file >}}
+
 
 In this example we see the following features:
 
@@ -143,14 +143,14 @@ Getmail is capable of delivering mail in a number of different situations beyond
 
 If you want to use an external program to filter the email retrieved from getmail, modify the destination configuration options in the `getmailrc` file to resemble the following:
 
-{: .file-excerpt }
-~/.getmail/getmailrc
-:   ~~~
-    [destination]
-    type = MDA_external
-    path = /usr/bin/procmail
-    arguments = ("-f", "%(sender)")
-    ~~~
+{{< file-excerpt "~/.getmail/getmailrc" >}}
+[destination]
+type = MDA_external
+path = /usr/bin/procmail
+arguments = ("-f", "%(sender)")
+
+{{< /file-excerpt >}}
+
 
 In this example, when getmail retrieves mail, it is passed to `procmail` for additional filtering rather than delivering directly to a Maildir. Procmail, like other mail delivery agents (MDAs) performs additional filtering after mail has been retrieved and before it is delivered to a users' mail store. You may use getmail with any MDA of your choice.
 
@@ -172,10 +172,10 @@ If you would like your system to check for email regularly, you can run the `get
 
 Add an entry to poll getmail every five minutes by adding the following line to the crontab:
 
-{: .file-excerpt }
-crontab
-:   ~~~
-	*/5 * * * * getmail --quiet
-    ~~~
+{{< file-excerpt "crontab" >}}
+*/5 * * * * getmail --quiet
+
+{{< /file-excerpt >}}
+
 
 Adding this line will cause getmail to retrieve new mail as specified in the `~/.getmail/getmailrc` file every five minutes. The `quiet` flag suppresses all non-error output, which is desirable when running in a "daemon" mode. You may specify any option for the cronjob that you can specify on the command line, including multiple `getmailrc` files. After the crontab is properly configured, save the file. Getmail will now retrieve new mail every five minutes as specified in the appropriate `getmailrc` files.

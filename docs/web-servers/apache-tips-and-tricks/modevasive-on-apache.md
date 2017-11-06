@@ -3,13 +3,13 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: 'mod_evasive'
-keywords: 'mod_evasive, modevasive, evasive, apache'
+keywords: ["mod_evasive", " modevasive", " evasive", " apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-evasive/','websites/apache-tips-and-tricks/modevasive-on-apache/']
-modified: Tuesday, February 5th, 2013
+aliases: ['web-servers/apache/mod-evasive/','websites/apache-tips-and-tricks/modevasive-on-apache/']
+modified: 2013-02-05
 modified_by:
   name: Linode
-published: 'Monday, November 14th, 2011'
+published: 2011-11-14
 title: 'mod_evasive on Apache'
 external_resources:
  - '[mod_evasive Home Page](http://www.zdziarski.com/blog/?page_id=442)'
@@ -45,36 +45,36 @@ You'll first want to get the mod_evasive package, uncompress it, and install it 
 
 You'll then need to add the mod_evasive configuration to your Apache configuration file. First, find this section:
 
-{: .file }
-/etc/apache2/apache2.conf (Debian / Ubuntu)
-:   ~~~
-    # Include module configuration:
-    Include mods-enabled/*.load
-    Include mods-enabled/*.conf
-    ~~~
+{{< file "/etc/apache2/apache2.conf (Debian / Ubuntu)" >}}
+# Include module configuration:
+Include mods-enabled/*.load
+Include mods-enabled/*.conf
 
-{: .file }
-/etc/httpd/conf/httpd.conf (CentOS / Fedora)
-:   ~~~
-    LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
-    #
-    ~~~
+{{< /file >}}
+
+
+{{< file "/etc/httpd/conf/httpd.conf (CentOS / Fedora)" >}}
+LoadModule evasive20_module /usr/lib/httpd/modules/mod_evasive20.so
+#
+
+{{< /file >}}
+
 
 Below those sections, add the mod_evasive configuration:
 
-{: .file-excerpt }
-mod_evasive configuration
-:   ~~~
-    <IfModule mod_evasive20.c>
-        DOSHashTableSize 3097
-        DOSPageCount 2
-        DOSSiteCount 50
-        DOSPageInterval 1
-        DOSSiteInterval 1
-        DOSBlockingPeriod 60
-        DOSEmailNotify <someone@somewhere.com>
-    </IfModule>
-    ~~~
+{{< file-excerpt "mod_evasive configuration" >}}
+<IfModule mod_evasive20.c>
+    DOSHashTableSize 3097
+    DOSPageCount 2
+    DOSSiteCount 50
+    DOSPageInterval 1
+    DOSSiteInterval 1
+    DOSBlockingPeriod 60
+    DOSEmailNotify <someone@somewhere.com>
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 You'll then need to restart Apache for your changes to take effect:
 
@@ -118,9 +118,9 @@ The blocking period is the amount of time (in seconds) that a client will be blo
 
 If this value is set, an email will be sent to the address specified whenever an IP address becomes blacklisted. A locking mechanism using /tmp prevents continuous emails from being sent.
 
- {: .note }
->
-> Be sure MAILER is set correctly in mod_evasive.c (or mod_evasive20.c). The default is "/bin/mail -t %s" where %s is used to denote the destination email address set in the configuration. If you are running on linux or some other operating system with a different type of mailer, you'll need to change this.
+ {{< note >}}
+Be sure MAILER is set correctly in mod_evasive.c (or mod_evasive20.c). The default is "/bin/mail -t %s" where %s is used to denote the destination email address set in the configuration. If you are running on linux or some other operating system with a different type of mailer, you'll need to change this.
+{{< /note >}}
 
 ### DOSSystemCommand
 
@@ -138,10 +138,10 @@ IP addresses of trusted clients can be whitelisted to insure they are never deni
 
 To whitelist an address (or range) add an entry to the Apache configuration in the following fashion:
 
-{: .file }
-/etc/apache2/apache2.conf
-:   ~~~
-    DOSWhitelist 127.0.0.1
-    DOSWhitelist 127.0.0.*
-    ~~~
+{{< file "/etc/apache2/apache2.conf" >}}
+DOSWhitelist 127.0.0.1
+DOSWhitelist 127.0.0.*
+
+{{< /file >}}
+
 Wildcards can be used on up to the last 3 octets if necessary. Multiple DOSWhitelist commands may be used in the configuration.

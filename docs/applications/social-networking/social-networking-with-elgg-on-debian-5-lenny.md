@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Niche and community social networking with Elgg.'
-keywords: 'social networking,lamp,elgg,elgg debian lenny'
+keywords: ["social networking", "lamp", "elgg", "elgg debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/elgg/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/elgg/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Tuesday, December 8th, 2009'
+published: 2009-12-08
 title: 'Social Networking with Elgg on Debian 5 (Lenny)'
 deprecated: true
 ---
@@ -80,27 +80,27 @@ Elgg has an automated installation process; however, before you begin, several v
 
 To configure the database connections, you'll need to edit the file in your preferred text editor and configure the following section. An example of the "standard configuration" follows:
 
-{: .file-excerpt }
-/srv/www/example.com/public\_html/engine/settings.php
-:   ~~~ php
-    // Database username
-          $CONFIG->dbuser = 'elggdbaccess';
+{{< file-excerpt "/srv/www/example.com/public\\_html/engine/settings.php" php >}}
+// Database username
+      $CONFIG->dbuser = 'elggdbaccess';
 
-    // Database password
-            $CONFIG->dbpass = 'lo1lip0p';
+// Database password
+        $CONFIG->dbpass = 'lo1lip0p';
 
-    // Database name
-            $CONFIG->dbname = 'elgg';
+// Database name
+        $CONFIG->dbname = 'elgg';
 
-    // Database server
-    // (For most configurations, you can leave this as 'localhost')
-            $CONFIG->dbhost = 'localhost';
+// Database server
+// (For most configurations, you can leave this as 'localhost')
+        $CONFIG->dbhost = 'localhost';
 
-    // Database table prefix
-    // If you're sharing a database with other applications,
-    // you will want to use this to differentiate Elgg's tables.
-            $CONFIG->db prefix = 'elgg_example_';
-    ~~~
+// Database table prefix
+// If you're sharing a database with other applications,
+// you will want to use this to differentiate Elgg's tables.
+        $CONFIG->db prefix = 'elgg_example_';
+
+{{< /file-excerpt >}}
+
 
 Replace the relevant information in your config with the credentials for your database. The `dbhost` will be `localhost` unless you're running the database server on a [different machine](/content/databases/mysql/standalone-mysql-server).
 

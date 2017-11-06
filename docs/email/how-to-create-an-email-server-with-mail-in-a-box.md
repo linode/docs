@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install and run Mail-in-a-Box, a simple, comprehensive, preconfigured email package.'
-keywords: 'install mail-in-a-box,webmail control panel,caldav,cardav, TLS certificate'
+keywords: ["install mail-in-a-box", "webmail control panel", "caldav", "cardav", " TLS certificate"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, August 29th, 2017'
-modified: Wednesday, August 30th, 2017
+published: 2017-08-29
+modified: 2017-08-30
 modified_by:
   name: Alexandru Andrei
 title: How to Create an Email Server with Mail-in-a-Box
@@ -53,9 +53,9 @@ If you insist on using a password for root instead of a private key, at least us
 
 ## Launch Ubuntu 14.04 Server
 
-{: .caution}
->
-> Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
+{{< caution >}}
+Use this server exclusively for Mail-in-a-Box. Installing extra software might cause unexpected behavior.
+{{< /caution >}}
 
 Although Ubuntu 16.04 is available, Mail-in-a-Box has not been prepared or tested in that environment so you'll need to use the 14.04 release which still receives security fixes until April 2019.
 
@@ -97,9 +97,9 @@ At this point you can continue. If you don't see the required data, then come ba
 
 ## Install Mail-in-a-Box
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 1. After you log in to your server with an SSH client, update all the software packages on your server:
 

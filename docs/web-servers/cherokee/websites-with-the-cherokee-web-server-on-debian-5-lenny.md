@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Debian 5 (Lenny).'
-keywords: 'cherokee,web sever,debian 5,debian lenny'
+keywords: ["cherokee", "web sever", "debian 5", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-debian-5-lenny/','websites/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/']
-modified: Friday, April 29th, 2011
+aliases: ['web-servers/cherokee/installing-cherokee-debian-5-lenny/','websites/cherokee/websites-with-the-cherokee-web-server-on-debian-5-lenny/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, September 10th, 2009'
+published: 2009-09-10
 title: 'Websites with the Cherokee Web Server on Debian 5 (Lenny)'
 ---
 

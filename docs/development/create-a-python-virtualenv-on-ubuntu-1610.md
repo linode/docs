@@ -3,12 +3,12 @@ author:
   name: Christopher Piccini
   email: cpiccini11@gmail.com
 description: 'This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode.'
-keywords: 'python,python virtual environment,virtualenv'
+keywords: ["python", "python virtual environment", "virtualenv"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, August 14, 2017
+modified: 2017-08-14
 modified_by:
   name: Linode
-published: 'Wednesday, August 13, 2017'
+published: 2017-08-13
 title: 'Create a Python Virtual Environment on Ubuntu 16.10'
 contributor:
   name: Christopher Piccini

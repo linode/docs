@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Selling products online with Magento, an open source e-commerce solution on a Debian 5 (Lenny) Linode.'
-keywords: 'Magento,Debian,ecommerce,Store'
+keywords: ["Magento", "Debian", "ecommerce", "Store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/magento/debian-5-lenny/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/e-commerce/magento/debian-5-lenny/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, January 18th, 2010'
+published: 2010-01-18
 title: 'Magento on Debian 5 (Lenny)'
 ---
 
@@ -34,11 +34,11 @@ Magento requires Apache to be installed to serve webpages, as well as PHP 5 and 
 
 You will need to modify your PHP cli settings to ensure that the Magento installer has enough memory to run. You will want to set your PHP cli memory limit to at least 64M as shown below:
 
-{: .file-excerpt }
-/etc/php5/cli/php.ini
-:   ~~~ ini
-    memory_limit = 64M
-    ~~~
+{{< file-excerpt "/etc/php5/cli/php.ini" ini >}}
+memory_limit = 64M
+
+{{< /file-excerpt >}}
+
 
 You'll also need to create a database for Magento, and a user with permission to access that database. The following commands provide an example of what steps would need to be taken to accomplish this:
 

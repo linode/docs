@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB on CentOS 7'
-keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode, centos'
+keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", " centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, April 14th, 2015
+modified: 2015-04-14
 modified_by:
   name: Linode
-published: 'Saturday, July 17th, 2010'
+published: 2010-07-17
 title: 'Custom Compiled Kernel with PV-GRUB on CentOS 7'
 ---
 
@@ -30,7 +30,7 @@ If this is the first time compiling a kernel on the Linode, issue the following 
 
     rm -rf /boot/*
 
-##Compile and Install the Kernel
+## Compile and Install the Kernel
 
 ### Download Kernel Sources
 
@@ -93,15 +93,15 @@ Once your configuration options are set, exit the configuration interface and an
 
 5.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-    	timeout 5
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+timeout 5
 
-    	title Custom Compiled, kernel 3.19.3-custom
-    	root (hd0)
-    	kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
-        ~~~
+title Custom Compiled, kernel 3.19.3-custom
+root (hd0)
+kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
+
+{{< /file-excerpt >}}
+
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process does not work correctly with the Linode, and isn't needed anyhow.
 

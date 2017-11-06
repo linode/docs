@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Managing source control with Subversion, an open source version control system.'
-keywords: 'svn,version control,source control management'
+keywords: ["svn", "version control", "source control management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/svn/','applications/development/manage-source-code-versions-with-subversion/']
-modified: Tuesday, June 7th, 2011
+aliases: ['linux-tools/version-control/svn/','applications/development/manage-source-code-versions-with-subversion/']
+modified: 2011-06-07
 modified_by:
   name: Linode
-published: 'Tuesday, December 15th, 2009'
+published: 2009-12-15
 title: Manage Source Code Versions with Subversion
 external_resources:
  - '[Subversion Project Homepage](http://subversion.tigris.org/)'
@@ -109,7 +109,7 @@ Subversion is a centralized version control system, which means that in order to
 
 Subversion also makes it possible for you to only check out portions of your repository. If you only need to work with the `trunk/` portion of the repository, you can specify the URL to only that path of the repository.
 
-##Common Subversion Commands
+## Common Subversion Commands
 
 If you have prior experience using CVS, you will already be familiar with many of the commands used for interacting with subversion repositories. From the user's perspective, Subversion aims to be compatible with CVS workflows.
 
@@ -210,25 +210,25 @@ In this example, `morris` corresponds to the name of the repository, and `/srv/w
 
 In the following setup we've granted access to the `morris` Subversion repository, running under a virtual host for the `svn.example.com` domain. You can configure Subversion repositories under existing virtual hosts, if that makes more sense in the context of your deployment. You can read more about configuring Apache [locations blocks](/content/web-servers/apache/configuration/configuration-structure#location-options) elsewhere in Linode's guides and tutorials.
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-      ServerAdmin svnadmin@example.com
-      ServerName svn.example.com
-      ErrorLog /srv/www/svn.example.com/logs/error.log
-      CustomLog /srv/www/svn.example.com/logs/access.log combined
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+  ServerAdmin svnadmin@example.com
+  ServerName svn.example.com
+  ErrorLog /srv/www/svn.example.com/logs/error.log
+  CustomLog /srv/www/svn.example.com/logs/access.log combined
 
-      <Location />
-        DAV svn
-        SVNPath /srv/svn/morris
-        AuthType Basic
-        AuthName "Subversion Repository"
-        AuthUserFile /srv/www/svn.example.com/morris.htpasswd
-        Require valid-user
-      </Location>
-    </VirtualHost>
-    ~~~
+  <Location />
+    DAV svn
+    SVNPath /srv/svn/morris
+    AuthType Basic
+    AuthName "Subversion Repository"
+    AuthUserFile /srv/www/svn.example.com/morris.htpasswd
+    Require valid-user
+  </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this configuration, all requests for `http://svn.example.com/` will be directed to `mod_dav_svn`. In a web browser this will provide an overview of the most recent revision of the repository. Note that this setup provides *unencrypted* access to your repository over `http`.
 
@@ -236,29 +236,29 @@ If you want secure, encrypted access to your data, configure Apache to [serve co
 
 Once your certificate files are in place set up the virtual host to respond to requests on port `443` rather than `80`. An SSL enabled virtual host might resemble the following:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-      ServerAdmin svnadmin@example.com
-      ServerName svn.example.com
-      ErrorLog /srv/www/svn.example.com/logs/error.log
-      CustomLog /srv/www/svn.example.com/logs/access.log combined
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost 12.34.56.78:443>
+  ServerAdmin svnadmin@example.com
+  ServerName svn.example.com
+  ErrorLog /srv/www/svn.example.com/logs/error.log
+  CustomLog /srv/www/svn.example.com/logs/access.log combined
 
-      SSLEngine On
-      SSLCertificateFile /etc/apache2/ssl/apache.pem
-      SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+  SSLEngine On
+  SSLCertificateFile /etc/apache2/ssl/apache.pem
+  SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 
-      <Location />
-        DAV svn
-        SVNPath /srv/svn/morris
-        AuthType Basic
-        AuthName "Subversion Repository"
-        AuthUserFile /srv/www/svn.example.com/morris.htpasswd
-        Require valid-user
-      </Location>
-    </VirtualHost>
-    ~~~
+  <Location />
+    DAV svn
+    SVNPath /srv/svn/morris
+    AuthType Basic
+    AuthName "Subversion Repository"
+    AuthUserFile /srv/www/svn.example.com/morris.htpasswd
+    Require valid-user
+  </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 When you have completed the creation and modification of your `VirtualHost` entries, ensure that you've reloaded your Apache configuration so that the changes will take effect. Reload the Apache configuration by issuing the appropriate command for your operating system from the following options:
 
@@ -277,82 +277,82 @@ Once you've validated with HTTP AUTH, you should be able to see a brief overview
 
 There are two methods for specifying Subversion repositories to `mod_dav_svn`. The first is using the `SVNParentPath`. This directive is useful if you need to provide multiple repositories, located in adjacent directories. For example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin svnadmin@example.com
-        ServerName svn.example.com
-        ErrorLog /srv/www/svn.example.com/logs/error.log
-        CustomLog /srv/www/svn.example.com/logs/access.log combined
-        <Location />
-            DAV svn
-            SVNParentPath /srv/svn
-            AuthType Basic
-            AuthName "Subversion Repository"
-            AuthUserFile /srv/www/svn.example.com/shared.htpasswd
-            Require valid-user
-        </Location>
-    </VirtualHost>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+    ServerAdmin svnadmin@example.com
+    ServerName svn.example.com
+    ErrorLog /srv/www/svn.example.com/logs/error.log
+    CustomLog /srv/www/svn.example.com/logs/access.log combined
+    <Location />
+        DAV svn
+        SVNParentPath /srv/svn
+        AuthType Basic
+        AuthName "Subversion Repository"
+        AuthUserFile /srv/www/svn.example.com/shared.htpasswd
+        Require valid-user
+    </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Here, all repositories located beneath `/srv/svn` on the file system will be accessible over HTTP at URLs that begin with `http://svn.example.com/`.
 
 As an alternate option, you can specify multiple repositories using the `SVNPath` directive in multiple `location` blocks. In the following example, the Subversion repository located on the file system at `/srv/svn/morris` will be accessible over HTTP at the URL `http://example.com/morris`, while the repository at `/srv/svn/molly` will be accessible at `http://example.com/molly`. In this example each repository will use a separate set of user credentials.
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin admin@example.com
-        ServerName example.com
-        ServerAlias www.example.com
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+    ServerAdmin admin@example.com
+    ServerName example.com
+    ServerAlias www.example.com
 
-        DocumentRoot /srv/www/example.net/public_html/
-        ErrorLog /srv/www/example.com/logs/error.log
-        CustomLog /srv/www/example.com/logs/access.log combined
+    DocumentRoot /srv/www/example.net/public_html/
+    ErrorLog /srv/www/example.com/logs/error.log
+    CustomLog /srv/www/example.com/logs/access.log combined
 
-        <Location /morris>
-            DAV svn
-            SVNPath /srv/svn/morris
-            AuthType Basic
-            AuthName "Morris Subversion Repository"
-            AuthUserFile /srv/www/example.com/morris.htpasswd
-            Require valid-user
-        </Location>
-        <Location /molly>
-            DAV svn
-            SVNPath /srv/svn/molly
-            AuthType Basic
-            AuthName "Molly Subversion Repository"
-            AuthUserFile /srv/www/example.com/molly.htpasswd
-            Require valid-user
-        </Location>
-    </VirtualHost>
-    ~~~
+    <Location /morris>
+        DAV svn
+        SVNPath /srv/svn/morris
+        AuthType Basic
+        AuthName "Morris Subversion Repository"
+        AuthUserFile /srv/www/example.com/morris.htpasswd
+        Require valid-user
+    </Location>
+    <Location /molly>
+        DAV svn
+        SVNPath /srv/svn/molly
+        AuthType Basic
+        AuthName "Molly Subversion Repository"
+        AuthUserFile /srv/www/example.com/molly.htpasswd
+        Require valid-user
+    </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 #### Providing Read Only Access
 
 All of the preceding cases have required that a user log in before accessing your repository. If you would like to allow read only public access to your respository you can do so by adding `LimitExcept` blocks to your virtual hosts as shown in this example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-       ServerAdmin svnadmin@example.com
-       ServerName svn.example.com
-       ErrorLog /srv/www/svn.example.com/logs/error.log
-       CustomLog /srv/www/svn.example.com/logs/access.log combined
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+   ServerAdmin svnadmin@example.com
+   ServerName svn.example.com
+   ErrorLog /srv/www/svn.example.com/logs/error.log
+   CustomLog /srv/www/svn.example.com/logs/access.log combined
 
-       <Location />
-           DAV svn
-           SVNPath /srv/svn/morris
-           AuthType Basic
-           AuthName "Subversion Repository"
-           AuthUserFile /srv/www/svn.example.com/morris.htpasswd
-           <LimitExcept GET PROPFIND OPTIONS REPORT>
-               Require valid-user
-           </LimitExcept>
-       </Location>
-    </VirtualHost>
-    ~~~
+   <Location />
+       DAV svn
+       SVNPath /srv/svn/morris
+       AuthType Basic
+       AuthName "Subversion Repository"
+       AuthUserFile /srv/www/svn.example.com/morris.htpasswd
+       <LimitExcept GET PROPFIND OPTIONS REPORT>
+           Require valid-user
+       </LimitExcept>
+   </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+

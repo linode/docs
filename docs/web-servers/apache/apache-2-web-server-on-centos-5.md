@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on CentOS 5.'
-keywords: 'Apache,web sever,CentOS 5'
+keywords: ["Apache", "web sever", "CentOS 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/centos-5/','websites/apache/apache-2-web-server-on-centos-5/']
-modified: Monday, November 18th, 2013
+aliases: ['web-servers/apache/installation/centos-5/','websites/apache/apache-2-web-server-on-centos-5/']
+modified: 2013-11-18
 modified_by:
   name: Linode
-published: 'Monday, July 27th, 2009'
+published: 2009-07-27
 title: Apache 2 Web Server on CentOS 5
 ---
 
@@ -99,35 +99,35 @@ First we must configure Apache to only "listen" for requests on a specific IP ad
 
 For name based Virtual Hosting, begin with a line that reads:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    NameVirtualHost *:80
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+NameVirtualHost *:80
+
+{{< /file-excerpt >}}
+
 
 Now, you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "example.org" and "example.net:"
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin admin@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
 
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.net
-         ServerName example.net
-         ServerAlias www.example.net
-         DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log
-         CustomLog /srv/www/example.net/logs/access.log combined
-    </VirtualHost>
-    ~~~
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.net
+     ServerName example.net
+     ServerAlias www.example.net
+     DocumentRoot /srv/www/example.net/public_html/
+     ErrorLog /srv/www/example.net/logs/error.log
+     CustomLog /srv/www/example.net/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Notes regarding this example configuration:
 
@@ -215,14 +215,14 @@ These usernames and passwords need not (and should not) correspond to system use
 
 In the .htaccess file for the directory that you want to protect, add the following lines:
 
-{: .file-excerpt }
-.htaccess
-:   ~~~ apache
-    AuthUserFile /srv/www/example.com/.htpasswd
-    AuthType Basic
-    AuthName "Advanced Choreographic Information"
-    Require valid-user
-    ~~~
+{{< file-excerpt ".htaccess" apache >}}
+AuthUserFile /srv/www/example.com/.htpasswd
+AuthType Basic
+AuthName "Advanced Choreographic Information"
+Require valid-user
+
+{{< /file-excerpt >}}
+
 
 Note, that the `AuthName` is presented to the user as an explanation in the authentication dialog for what they are requesting access to on the server.
 
@@ -233,19 +233,19 @@ The mod\_rewrite engine is very powerful, and is available for your use by defau
 
 In a `<Directory >` block or `.htaccess` file, enable mod\_rewrite with the following line:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration or .htaccess
-:   ~~~ apache
-    RewriteEngine on
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration or .htaccess" apache >}}
+RewriteEngine on
+
+{{< /file-excerpt >}}
+
 
 Now, you may create any number of separate rewrite rules. These rules provide a pattern that the server compares incoming requests against, and if a request matches a rewrite pattern, the server provides an alternate page. Here is an example rewrite rule:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration or .htaccess
-:   ~~~ apache
-    RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration or .htaccess" apache >}}
+RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
+
+{{< /file-excerpt >}}
+
 
 Let's parse this rule. First, note that the first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Mod\_rewrite patterns use regular expression syntax: the `^` matches to the beginning of the string, and the `$` matches to the end of the string, meaning that the rewrite engine won't rewrite strings that partially match the pattern.
 

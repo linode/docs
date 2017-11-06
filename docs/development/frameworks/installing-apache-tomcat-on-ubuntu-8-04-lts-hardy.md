@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
-keywords: 'java,apache tomcat,java ubuntu,java hardy'
+keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/','websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/','websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, September 23rd, 2009'
+published: 2009-09-23
 title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 ---
 
@@ -38,12 +38,12 @@ If you chose to run OpenJDK, then you can skip the remainder of this section. If
 
 Add the following two lines to your `sources.list` list:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
@@ -85,39 +85,39 @@ Borrowing from the scripts described [here](http://www.howtogeek.com/howto/linux
 
 Create a `tomcat` "init" file with the following content:
 
-{: .file }
-/etc/init.d/tomcat
-:   ~~~ bash
-    # Tomcat auto-start
-    #
-    # description: Auto-starts tomcat
-    # processname: tomcat
-    # pidfile: /var/run/tomcat.pid
+{{< file "/etc/init.d/tomcat" bash >}}
+# Tomcat auto-start
+#
+# description: Auto-starts tomcat
+# processname: tomcat
+# pidfile: /var/run/tomcat.pid
 
-    export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
-    case $1 in
-    start)
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    stop)
-            sh /usr/local/tomcat/bin/shutdown.sh
-            ;;
-    restart)
-            sh /usr/local/tomcat/bin/shutdown.sh
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    esac
-    exit 0
-    ~~~
+case $1 in
+start)
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+stop)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        ;;
+restart)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+esac
+exit 0
+
+{{< /file >}}
+
 
 Remember, if you installed open-jdk the `export JAVA_HOME` line should read:
 
-{: .file-excerpt }
-/etc/init.d/tomcat
-:   ~~~ bash
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
-    ~~~
+{{< file-excerpt "/etc/init.d/tomcat" bash >}}
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+{{< /file-excerpt >}}
+
 
 Make the script executable by issuing this command:
 

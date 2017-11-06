@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy simple web applications with the Sinatra web development framework.'
-keywords: 'sinatra,ruby,web applications,development,deployment'
+keywords: ["sinatra", "ruby", "web applications", "development", "deployment"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/sinatra/fedora-14/','websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/']
-modified: Thursday, September 26th, 2013
+aliases: ['frameworks/sinatra/fedora-14/','websites/frameworks/sinatra-framework-and-nginx-on-fedora-14/']
+modified: 2013-09-26
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Sinatra Framework and nginx on Fedora 14
 ---
 
@@ -93,39 +93,39 @@ Create the following directories beneath the `/srv/www` hierarchy for your appli
 
 Insert the following line into the `/opt/nginx/conf/nginx.conf` file, modifying the path for `/srv/www/example.com/nginx.conf` to match the directory created above:
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    # [...]
-    http {
-        include /srv/www/example.com/nginx.conf;
-        passenger_root /opt/passenger-3.0.1;
-        passenger_ruby /usr/bin/ruby;
-    # [...]
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+# [...]
+http {
+    include /srv/www/example.com/nginx.conf;
+    passenger_root /opt/passenger-3.0.1;
+    passenger_ruby /usr/bin/ruby;
+# [...]
+
+{{< /file-excerpt >}}
+
 
 This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
 
-{: .file }
-/srv/www/example.com/nginx.conf
-:   ~~~ nginx
-    server {
-            listen 80;
-            server_name www.example.com example.com;
+{{< file "/srv/www/example.com/nginx.conf" nginx >}}
+server {
+        listen 80;
+        server_name www.example.com example.com;
 
-        access_log /srv/www/example.com/logs/access.log;
-            error_log /srv/www/example.com/logs/error.log;
+    access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
-            root /srv/www/example.com/application/public;
-            passenger_enabled on;
+        root /srv/www/example.com/application/public;
+        passenger_enabled on;
 
-        location /static {
-                root   /srv/www/example.com/public;
-                index  index.html index.htm;
-            }
+    location /static {
+            root   /srv/www/example.com/public;
+            index  index.html index.htm;
+        }
 
-    }
-    ~~~
+}
+
+{{< /file >}}
+
 
 Your Sinatra application will handle all requests for the `www.example.com` and `example.com` domains, except those that begin with `/static` which are handled directly by nginx. When this configuration has been created and properly modified, issue the following command to restart the web server:
 
@@ -136,39 +136,39 @@ Create a Basic Sinatra Application
 
 The following is a very basic Sinatra application. Place the following code in the `/srv/www/example.com/application/app.rb` file.
 
-{: .file }
-/srv/www/example.com/application/app.rb
-:   ~~~ ruby
-    require 'rubygems'
-    require 'sinatra'
+{{< file "/srv/www/example.com/application/app.rb" ruby >}}
+require 'rubygems'
+require 'sinatra'
 
-    get '/' do
-      "Hello and Goodbye"
-    end
+get '/' do
+  "Hello and Goodbye"
+end
 
-    get '/hi' do
-      "Hello World! :)"
-    end
+get '/hi' do
+  "Hello World! :)"
+end
 
-    get '/bye' do
-      "Goodbye World! :("
-    end
-    ~~~
+get '/bye' do
+  "Goodbye World! :("
+end
+
+{{< /file >}}
+
 
 Deploy Sinatra Applications with Rack
 -------------------------------------
 
 Create a Rack configuration file located at `/srv/www/example.com/application/config.ru` to allow Passenger to run your application properly. Deploy the following `config.ru` file:
 
-{: .file }
-/srv/www/example.com/application/config.ru
-:   ~~~ ruby
-    require 'rubygems'
-    require 'sinatra'
+{{< file "/srv/www/example.com/application/config.ru" ruby >}}
+require 'rubygems'
+require 'sinatra'
 
-    require 'app'
-    run Sinatra::Application
-    ~~~
+require 'app'
+run Sinatra::Application
+
+{{< /file >}}
+
 
 The `require 'app'` statement references the `app.rb` file. Modify this line to `require` your application. Any time you make changes to your Rack file or your application, issue the following command so that Passenger will restart your application:
 

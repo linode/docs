@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 10.04 (Lucid).'
-keywords: 'open source analytics,piwik ubuntu 10.04,piwik,analytics,ubuntu,tracking,statistics'
+keywords: ["open source analytics", "piwik ubuntu 10.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/piwik/ubuntu-10-04-lucid/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/analytics/piwik/ubuntu-10-04-lucid/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Monday, December 6th, 2010'
+published: 2010-12-06
 title: 'Piwik on Ubuntu 10.04 (Lucid)'
 ---
 
@@ -41,18 +41,18 @@ To create a virtual host we need to add an [A Record](/content/networking/dns/dn
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.org`:
 
-{: .file }
-/etc/apache2/sites-available/stats.example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin admin@stats.example.org
-        ServerName stats.example.org
-        ServerAlias stats.example.org
-        DocumentRoot /srv/www/stats.example.org/public_html/
-        ErrorLog /srv/www/stats.example.org/logs/error.log
-        CustomLog /srv/www/stats.example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/stats.example.org" apache >}}
+<VirtualHost *:80>
+    ServerAdmin admin@stats.example.org
+    ServerName stats.example.org
+    ServerAlias stats.example.org
+    DocumentRoot /srv/www/stats.example.org/public_html/
+    ErrorLog /srv/www/stats.example.org/logs/error.log
+    CustomLog /srv/www/stats.example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 We'll need to create the `logs/` and `public_html/` directories by issuing the following commands:
 

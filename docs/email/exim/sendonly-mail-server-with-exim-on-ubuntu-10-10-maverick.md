@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 10.10 (Maverick).'
-keywords: 'exim,exim ubuntu 10.10,send email ubuntu,mail server,linux mail,smtp server,ubuntu exim'
+keywords: ["exim", "exim ubuntu 10.10", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/exim/send-only-mta-ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['email/exim/send-only-mta-ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, December 6th, 2010'
+published: 2010-12-06
 title: 'Send-only Mail Server with Exim on Ubuntu 10.10 (Maverick)'
 ---
 

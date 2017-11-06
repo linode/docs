@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 10.10 (Maverick)'
-keywords: 'nginx,nginx ubuntu 10.10,http,web servers,ubuntu,ubuntu maverick'
+keywords: ["nginx", "nginx ubuntu 10.10", "http", "web servers", "ubuntu", "ubuntu maverick"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-10-10-maverick/','websites/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['web-servers/nginx/installation/ubuntu-10-10-maverick/','websites/nginx/websites-with-nginx-on-ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, February 15th, 2011'
+published: 2011-02-15
 title: 'Websites with nginx on Ubuntu 10.10 (Maverick)'
 ---
 

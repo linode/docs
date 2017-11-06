@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Fedora 13.'
-keywords: 'osCommerce,Fedora,Store,Ecommerce'
+keywords: ["osCommerce", "Fedora", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/oscommerce/fedora-13/']
-modified: Thursday, October 3rd, 2013
+aliases: ['web-applications/e-commerce/oscommerce/fedora-13/']
+modified: 2013-10-03
 modified_by:
   name: Linode
-published: 'Wednesday, October 13th, 2010'
+published: 2010-10-13
 title: osCommerce on Fedora 13
 ---
 
@@ -83,22 +83,22 @@ SSL Certificates
 
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
-{: .file }
-/srv/www/example.com/public\_html/includes/configure.php
-:   ~~~ php
-    // Define the webserver and path parameters
-    // * DIR_FS_* = Filesystem directories (local/physical)
-    // * DIR_WS_* = Webserver directories (virtual/URL)
-    define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
-    define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
-    define('ENABLE_SSL', true); // secure webserver for checkout procedure?
-    define('HTTP_COOKIE_DOMAIN', 'www.example.com');
-    define('HTTPS_COOKIE_DOMAIN', 'example.com);
-    define('HTTP_COOKIE_PATH', '/');
-    define('HTTPS_COOKIE_PATH', '/');
-    define('DIR_WS_HTTP_CATALOG', '/');
-    define('DIR_WS_HTTPS_CATALOG', '/');
-    ~~~
+{{< file "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
+// Define the webserver and path parameters
+// * DIR_FS_* = Filesystem directories (local/physical)
+// * DIR_WS_* = Webserver directories (virtual/URL)
+define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
+define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
+define('ENABLE_SSL', true); // secure webserver for checkout procedure?
+define('HTTP_COOKIE_DOMAIN', 'www.example.com');
+define('HTTPS_COOKIE_DOMAIN', 'example.com);
+define('HTTP_COOKIE_PATH', '/');
+define('HTTPS_COOKIE_PATH', '/');
+define('DIR_WS_HTTP_CATALOG', '/');
+define('DIR_WS_HTTPS_CATALOG', '/');
+
+{{< /file >}}
+
 
 It should be noted that in this example, the certificate was issued without the `www` qualifier. Your specific requirements may require tweaking.
 

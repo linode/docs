@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx on Arch Linux.'
-keywords: 'nginx arch linux,nginx arch,nginx,http server,web server'
+keywords: ["nginx arch linux", "nginx arch", "nginx", "http server", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/arch-linux/','websites/nginx/websites-with-nginx-on-arch-linux/']
-modified: Thursday, March 27th, 2014
+aliases: ['web-servers/nginx/installation/arch-linux/','websites/nginx/websites-with-nginx-on-arch-linux/']
+modified: 2014-03-27
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, February 2nd, 2011'
+published: 2011-02-02
 title: Websites with Nginx on Arch Linux
 ---
 
@@ -42,8 +42,9 @@ Install the nginx web server by issuing the following command:
 
 Edit the `/etc/rc.conf` file, adding "nginx" to the "DEAMONS=" line as shown in the following excerpt:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/rc.conf
+{{< /file-excerpt >}}
 
 > DAEMONS=(syslog-ng network netfs crond sshd ntpd nginx)
 

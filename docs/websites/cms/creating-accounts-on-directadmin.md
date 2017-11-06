@@ -3,13 +3,13 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: Creating Accounts on DirectAdmin
-keywords: 'directadmin, reseller, accounts'
+keywords: ["directadmin", " reseller", " accounts"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/directadmin/directadmin-accounts/']
-modified: Thursday, October 3rd, 2013
+aliases: ['web-applications/control-panels/directadmin/directadmin-accounts/']
+modified: 2013-10-03
 modified_by:
   name: Linode
-published: 'Wednesday, November 2nd, 2011'
+published: 2011-11-02
 title: Creating Accounts on DirectAdmin
 deprecated: true
 ---

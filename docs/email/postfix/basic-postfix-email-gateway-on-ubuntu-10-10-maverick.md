@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure the Postfix MTA as a basic email gateway.'
-keywords: 'email,postfix,mta,forwarding,'
+keywords: ["email", "postfix", "mta", "forwarding", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/gateway-ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['email/postfix/gateway-ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, November 9th, 2010'
+published: 2010-11-09
 title: 'Basic Postfix Email Gateway on Ubuntu 10.10 (Maverick)'
 deprecated: true
 ---
@@ -55,20 +55,20 @@ Fundamental Postfix Configuration
 
 Begin by editing the `/etc/postfix/main.cf` file. Most of the default values should be correct. Modify the `myhostname` value to correspond to the fully qualified domain name (FQDN) for your server, in this case `lollipop.example.com`:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~
-    myhostname = lollipop.example.com
-    ~~~
+{{< file-excerpt "/etc/postfix/main.cf" >}}
+myhostname = lollipop.example.com
+
+{{< /file-excerpt >}}
+
 
 Add the following lines to your configuration file. This configures postfix for virtual hosting:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~
-    virtual_alias_maps = hash:/etc/postfix/virtual
-    home_mailbox = mail/
-    ~~~
+{{< file-excerpt "/etc/postfix/main.cf" >}}
+virtual_alias_maps = hash:/etc/postfix/virtual
+home_mailbox = mail/
+
+{{< /file-excerpt >}}
+
 
 Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `username` with a home directory of `/home/username/` new mail would be delivered in a `Maildir` directory located at `/home/username/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
 
@@ -87,25 +87,25 @@ Email Virtual Hosting
 
 Once Postfix is properly configured, edit the `/etc/postfix/virtual` file to configure virtual hosting for your mail gateway. This provides instructions for the mail agent with regards to processing email that it receives. Prior to beginning, ensure that you have properly configured DNS to direct email to your mail gateway. Create an "A Record" for the machine specific domain name that corresponds to your `myhostname` FQDN (e.g. `lollipop.example.com`). Then, ensure that there are MX records for *all* domains that you want to process with this mail gateway pointed to that FQDN. Consider the following example `/etc/postfix/virtual` file:
 
-{: .file-excerpt }
-/etc/postfix/virtual
-:   ~~~
-    admin@example.com example
-    foreman@example.com example
+{{< file-excerpt "/etc/postfix/virtual" >}}
+admin@example.com example
+foreman@example.com example
 
-    username@example.com username
-    username@example.net username
-    username@example.com username
+username@example.com username
+username@example.net username
+username@example.com username
 
-    jim@example.com jim@chartercast.net
-    ted@example.com ted@chartercast.net
-    jay@example.com jay@chartercast.net
+jim@example.com jim@chartercast.net
+ted@example.com ted@chartercast.net
+jay@example.com jay@chartercast.net
 
-    lollipop@example.com stacy@morris.net, username
-    jockey@example.com username, example
+lollipop@example.com stacy@morris.net, username
+jockey@example.com username, example
 
-    @oddington.com oddington
-    ~~~
+@oddington.com oddington
+
+{{< /file-excerpt >}}
+
 
 In this example there are a number of addresses in the `example.com` domain forwarded to the `example` system user account. In the next group, a collection of emails at different domains beginning with the `username` name, are all forwarded to the `username` system user group. Finally, a number of email addresses at the `example.com` domain are forwarded to external addresses at the fictitious `chartercast.net` domain. The next two email addresses are directed to multiple sources: `lollipop@example.com` mail is delivered to the local `username` user as well as the external email address `stacy@morris.net`, while `jockey@example.com` is delivered to the local system users `username` and `example`. Finally all messages sent to addresses within the `oddington.com` domain are forwarded to the mailbox for the `oddington` user.
 
@@ -136,75 +136,75 @@ Typically, authentication for sending email is handled by the daemon that's conf
 
 Save the following script in the `/opt` directory on the system you wish to send email *from*:
 
-{: .file }
-/opt/smtp-tunnel
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file "/opt/smtp-tunnel" perl >}}
+#!/usr/bin/perl
 
-    # A SMTP-over-SSH Port Forwarding Script
-    # Copyright (c) 2010 Linode, LLC
-    # Author: Philip C. Paradis <pparadis@linode.com>
-    # Modifications: Linode <sam@linode.com>
-    # Usage: smtp-tunnel [start|stop]
-    # Forward smtp traffic over ssh to a remote mailserver.
+# A SMTP-over-SSH Port Forwarding Script
+# Copyright (c) 2010 Linode, LLC
+# Author: Philip C. Paradis <pparadis@linode.com>
+# Modifications: Linode <sam@linode.com>
+# Usage: smtp-tunnel [start|stop]
+# Forward smtp traffic over ssh to a remote mailserver.
 
-    ## Edit these values to reflect the authentication credentials for the
-    ## SMTP server with which you wish to connect and send mail. If you
-    ## have chosen to run your mailserver on your linode using an
-    ## alternate port, modify the `$remote_port` value. You should not
-    ## need to modify the `$remote_ip` value.
+## Edit these values to reflect the authentication credentials for the
+## SMTP server with which you wish to connect and send mail. If you
+## have chosen to run your mailserver on your linode using an
+## alternate port, modify the `$remote_port` value. You should not
+## need to modify the `$remote_ip` value.
 
-    $remote_user = "REMOTE-USER";
-    $remote_host = "REMOTE-HOST";
-    $remote_port = "25";
-    $remote_ip   = "127.0.0.1";
+$remote_user = "REMOTE-USER";
+$remote_host = "REMOTE-HOST";
+$remote_port = "25";
+$remote_ip   = "127.0.0.1";
 
-    ## Modify these values if you are running a local SMTP server on port
-    ## 25, or if you need to start the tunnel as a non-root user, as
-    ## OpenSSH only allows root users to start tunnels to low-numbered
-    ## "privileged ports." If this is the case you will also need to
-    ## modify the configuration of your local mail sending agent.
+## Modify these values if you are running a local SMTP server on port
+## 25, or if you need to start the tunnel as a non-root user, as
+## OpenSSH only allows root users to start tunnels to low-numbered
+## "privileged ports." If this is the case you will also need to
+## modify the configuration of your local mail sending agent.
 
-    $local_ip    = "127.0.0.1";
-    $local_port  = "25";
+$local_ip    = "127.0.0.1";
+$local_port  = "25";
 
-    ## You do not need to edit this file beyond this point.
+## You do not need to edit this file beyond this point.
 
-    ######################################################################
+######################################################################
 
-    $a = shift;
-    $a =~ s/^\s+//;
-    $a =~ s/\s+$//;
+$a = shift;
+$a =~ s/^\s+//;
+$a =~ s/\s+$//;
 
-    $pid=`ps ax|grep ssh|grep $local_port|grep $remote_port`;
-    $pid =~ s/^\s+//;
-    @pids = split(/\n/,$pid);
-    foreach $pid (@pids)
-    {
-     if ($pid =~ /ps ax/) { next; }
-     split(/ /,$pid);
-    }
+$pid=`ps ax|grep ssh|grep $local_port|grep $remote_port`;
+$pid =~ s/^\s+//;
+@pids = split(/\n/,$pid);
+foreach $pid (@pids)
+{
+ if ($pid =~ /ps ax/) { next; }
+ split(/ /,$pid);
+}
 
-    if (lc($a) eq "start")
-    {
-     if ($_[0]) { print "smtp-tunnel already running.\n"; exit 1; }
-     else
-     {
-      system "ssh -f -L $local_ip:$local_port:$remote_ip:$remote_port $remote_user\@$remote_host -N";
-      exit 0;
-     }
-    }
-    elsif (lc($a) eq "stop")
-    {
-     if ($_[0]) { kill 9,$_[0]; exit 0; }
-     else { exit 1; }
-    }
-    else
-    {
-     print "Usage: smtp-tunnel [start|stop]\n";
-     exit 1;
-    }
-    ~~~
+if (lc($a) eq "start")
+{
+ if ($_[0]) { print "smtp-tunnel already running.\n"; exit 1; }
+ else
+ {
+  system "ssh -f -L $local_ip:$local_port:$remote_ip:$remote_port $remote_user\@$remote_host -N";
+  exit 0;
+ }
+}
+elsif (lc($a) eq "stop")
+{
+ if ($_[0]) { kill 9,$_[0]; exit 0; }
+ else { exit 1; }
+}
+else
+{
+ print "Usage: smtp-tunnel [start|stop]\n";
+ exit 1;
+}
+
+{{< /file >}}
+
 
 Edit this file to include your username and the location of your email gateway. If you can run this script as root on your local system or the system you want to send mail from, it is easiest to leave `$local_port` set to `25`, otherwise use an alternate port like `2525` or `2255`. When you've completed these operations run the following commands to make this script executable and start the tunnel:
 
@@ -218,19 +218,19 @@ You may want to consider issuing the command to start the tunnel (`/opt/smtp-tun
 
 When the tunnel is active, you will be able to configure your local mail sending agent to send using the SMTP server "localhost" and port 25, or the alternate `$local_port` you configured. To configure the `msmtp` mail sending agent on an Mac OS X or Linux-based system consider the following configuration file:
 
-{: .file-excerpt }
-~/.msmtprc
-:   ~~~
-    account default
-    host localhost
-    from username@example.com
-    port 25
+{{< file-excerpt "~/.msmtprc" >}}
+account default
+host localhost
+from username@example.com
+port 25
 
-    account alternate
-    host localhost
-    from foreman@example.com
-    port 2525
-    ~~~
+account alternate
+host localhost
+from foreman@example.com
+port 2525
+
+{{< /file-excerpt >}}
+
 
 Depending on the location of the `msmtp` binary, you can now send mail using `/usr/bin/msmtp` as your send mail interface. To send mail from the `alternate` account, specify the sendmail interface as `/usr/bin/msmtp --account=alternate`. You can now send mail using your mail gateway using an SSH tunnel.
 

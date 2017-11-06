@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: A basic guide to installing nginx from source on CentOS 5
-keywords: 'nginx,http,web servers,centos,centos,centos 5'
+keywords: ["nginx", "http", "web servers", "centos", "centos", "centos 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
-modified: Thursday, March 27th, 2014
+aliases: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
+modified: 2014-03-27
 modified_by:
   name: Alex Fornuto
-published: 'Thursday, February 25th, 2010'
+published: 2010-02-25
 title: Websites with Nginx on CentOS 5
 ---
 

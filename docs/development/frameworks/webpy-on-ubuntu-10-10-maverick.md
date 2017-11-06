@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Web.py Python framework to develop powerful and innovative web applications on Ubuntu 10.10 (Maverick).'
-keywords: 'web.py,web applications,python,web frameworks'
+keywords: ["web.py", "web applications", "python", "web frameworks"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/webpy/ubuntu-10-10-maverick/','websites/frameworks/webpy-on-ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['frameworks/webpy/ubuntu-10-10-maverick/','websites/frameworks/webpy-on-ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, January 25th, 2011'
+published: 2011-01-25
 title: 'Web.py on Ubuntu 10.10 (Maverick)'
 deprecated: true
 ---
@@ -61,25 +61,25 @@ Create a Basic Application with Web.py
 
 There are a number of examples of basic applications developed using the web.py framework. The "main" application file is typically called "code.py". Consider the following "Hello World" application:
 
-{: .file }
-code.py
-:   ~~~ python
-    import web
+{{< file "code.py" python >}}
+import web
 
-    urls = (
-        '(.*)', 'hello'
-    )
-    app = web.application(urls, globals())
+urls = (
+    '(.*)', 'hello'
+)
+app = web.application(urls, globals())
 
-    class hello:
-        def GET(self, name):
-            if not name:
-                name = 'World'
-            return 'Hello, ' + name + '!'
+class hello:
+    def GET(self, name):
+        if not name:
+            name = 'World'
+        return 'Hello, ' + name + '!'
 
-    if __name__ == "__main__":
-        app.run()
-    ~~~
+if __name__ == "__main__":
+    app.run()
+
+{{< /file >}}
+
 
 Save this file at `/srv/www/example.com/application/code.py` or the equivalent path depending on your virtual hosting deployment, and proceed with the deployment of the application.
 
@@ -98,45 +98,45 @@ Issue the following command to ensure that the required modules are enabled with
 
 WSGI requires a slight modification to your web.py application. Add the following lines to the end of the `code.py` file:
 
-{: .file-excerpt }
-code.py
-:   ~~~ python
-    app = web.application(urls, globals(), autoreload=False)
-    application = app.wsgifunc()
-    ~~~
+{{< file-excerpt "code.py" python >}}
+app = web.application(urls, globals(), autoreload=False)
+application = app.wsgifunc()
+
+{{< /file-excerpt >}}
+
 
 Consider the following Apache VirtualHost configuration for a `mod_wsgi` powered Web.py application:
 
-{: .file-excerpt }
-Apache VirtualHost Configuration
-:   ~~~ apache
-    <VirtualHost example.com:80>
-        ServerAdmin username@example.com
-        ServerName example.com
-           ServerAlias www.example.com
-           DocumentRoot /srv/www/example.com/public_html/
-           ErrorLog /srv/www/example.com/logs/error.log
-           CustomLog /srv/www/example.com/logs/access.log combined
+{{< file-excerpt "Apache VirtualHost Configuration" apache >}}
+<VirtualHost example.com:80>
+    ServerAdmin username@example.com
+    ServerName example.com
+       ServerAlias www.example.com
+       DocumentRoot /srv/www/example.com/public_html/
+       ErrorLog /srv/www/example.com/logs/error.log
+       CustomLog /srv/www/example.com/logs/access.log combined
 
-        WSGIScriptAlias / /srv/www/example.com/application
-        Alias /static /srv/www/example.com/public_html
+    WSGIScriptAlias / /srv/www/example.com/application
+    Alias /static /srv/www/example.com/public_html
 
-        <Directory /srv/www/example.com/application>
-          SetHandler wsgi-script
-          Options ExecCGI
-        </Directory>
+    <Directory /srv/www/example.com/application>
+      SetHandler wsgi-script
+      Options ExecCGI
+    </Directory>
 
-        AddType text/html .py
+    AddType text/html .py
 
-        <Location />
-          RewriteEngine on
-          RewriteBase /
-          RewriteCond %{REQUEST_URI} !^/static
-          RewriteCond %{REQUEST_URI} !^(/.*)+code.py/
-          RewriteRule ^(.*)$ code.py/$1 [PT]
-        </Location>
-    </VirtualHost>
-    ~~~
+    <Location />
+      RewriteEngine on
+      RewriteBase /
+      RewriteCond %{REQUEST_URI} !^/static
+      RewriteCond %{REQUEST_URI} !^(/.*)+code.py/
+      RewriteRule ^(.*)$ code.py/$1 [PT]
+    </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Ensure that this virtual host has been enabled, and issue the following command to restart the server:
 
@@ -149,34 +149,34 @@ Build a Database Driven Application with Web.py
 
 The "Hello World" application above is functional, but isn't able to store or access persistent data in a database system. The following example is simple but inserts and retrieves data from a database system. Consider the following code:
 
-{: .file }
-code.py
-:   ~~~ python
-    import web
-    urls = (
-        '/(.*)', 'hello'
-    )
-    app = web.application(urls, globals())
+{{< file "code.py" python >}}
+import web
+urls = (
+    '/(.*)', 'hello'
+)
+app = web.application(urls, globals())
 
-    db = web.database(dbn='postgres', db='webpy', user='webpy', pw='webweb')
+db = web.database(dbn='postgres', db='webpy', user='webpy', pw='webweb')
 
-    class hello:
-        def GET(self, notetext):
-            notetext = dict(notes="a note")
-            notes = db.select('notes', notetext, what='notes')
-            if notes:
-                notes = 'a note is found'
-            else:
-                notes = 'no notes are found'
-            return notes
+class hello:
+    def GET(self, notetext):
+        notetext = dict(notes="a note")
+        notes = db.select('notes', notetext, what='notes')
+        if notes:
+            notes = 'a note is found'
+        else:
+            notes = 'no notes are found'
+        return notes
 
-    if __name__ == "__main__":
-        app.run()
+if __name__ == "__main__":
+    app.run()
 
 
-    app = web.application(urls, globals(), autoreload=False)
-    application = app.wsgifunc()
-    ~~~
+app = web.application(urls, globals(), autoreload=False)
+application = app.wsgifunc()
+
+{{< /file >}}
+
 
 This program connects to the PostgreSQL database "webpy" and looks in the table "notes" for a note that matches the text "a note". If the note is found, the program returns the text "a note is found"; otherwise, the page will return "no notes are found". Make sure there is a role, or user, in your PostgreSQL database called "webpy" with the credentials specified on the `db` line of this example.
 

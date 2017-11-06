@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on Ubuntu 9.10 (Karmic).'
-keywords: 'nosql,database,mognodb,key store'
+keywords: ["nosql", "database", "mognodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mongodb/ubuntu-9-10-karmic/']
-modified: Friday, April 29th, 2011
+aliases: ['databases/mongodb/ubuntu-9-10-karmic/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, March 24th, 2010'
+published: 2010-03-24
 title: 'Use MongoDB to Store Application Data on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -68,26 +68,26 @@ Review the contents of the `mongodb-start` and `mongodb-stop` and modify these f
 
 Create the `/opt/config/mongodb` and use the following example as a template:
 
-{: .file }
-/opt/config/mongodb
-:   ~~~ ini
-    # Configuration Options for MongoDB
-    #
-    # For More Information, Consider:
-    # - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
-    # - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration
+{{< file "/opt/config/mongodb" ini >}}
+# Configuration Options for MongoDB
+#
+# For More Information, Consider:
+# - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
+# - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration
 
-    dbpath = /srv/db/mongodb
-    logpath = /srv/db/mongodb.log
-    logappend = true
+dbpath = /srv/db/mongodb
+logpath = /srv/db/mongodb.log
+logappend = true
 
-    bind_ip = 127.0.0.1
-    port = 27017
-    fork = true
+bind_ip = 127.0.0.1
+port = 27017
+fork = true
 
-    auth = true
-    # noauth = true
-    ~~~
+auth = true
+# noauth = true
+
+{{< /file >}}
+
 
 This specifies a number of important options that you may modify to control the functionality of `mongodb`. The `dbpath` option indicates that database files will be stored in `/srv/db/mongo`. The `logpath` directive indicates that MongoDB's logs will be located in the `/srv/db/log/mongodb.log` file, and that new log entries will be appended to the end of the log rather than overwriting existing log entries even after MongoDB restarts.
 

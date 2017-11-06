@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Instructions for backing up MySQL databases using various methods.'
-keywords: 'mysql,backup,mysqldump'
+keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/backup-options/']
-modified: Wednesday, September 11th, 2013
+aliases: ['databases/mysql/backup-options/']
+modified: 2013-09-11
 modified_by:
   name: Linode
-published: 'Monday, April 19th, 2010'
+published: 2010-04-19
 title: Back Up Your MySQL Databases
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
@@ -52,9 +52,9 @@ Automate this process by adding a line to `crontab`:
 
 For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
 
-{: .note}
->
-> In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< note >}}
+In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< /note >}}
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 

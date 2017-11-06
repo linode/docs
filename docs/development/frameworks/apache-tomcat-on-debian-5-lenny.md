@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Lenny).'
-keywords: 'java,apache tomcat,java debian,java lenny'
+keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/debian-5-lenny/','websites/frameworks/apache-tomcat-on-debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['frameworks/apache-tomcat/debian-5-lenny/','websites/frameworks/apache-tomcat-on-debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Wednesday, September 23rd, 2009'
+published: 2009-09-23
 title: 'Apache Tomcat on Debian 5 (Lenny)'
 ---
 
@@ -48,11 +48,11 @@ If you chose to run OpenJDK, then you can skip the remainder of this section. If
 
 Add the following line to your `sources.list` file:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://mirror.cc.columbia.edu/pub/linux/debian/debian/  lenny non-free
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
@@ -94,39 +94,39 @@ Borrowing from the scripts described [here](http://www.howtogeek.com/howto/linux
 
 Create a `tomcat` "init" file with the following content:
 
-{: .file }
-/etc/init.d/tomcat
-:   ~~~ bash
-    # Tomcat auto-start
-    #
-    # description: Auto-starts tomcat
-    # processname: tomcat
-    # pidfile: /var/run/tomcat.pid
+{{< file "/etc/init.d/tomcat" bash >}}
+# Tomcat auto-start
+#
+# description: Auto-starts tomcat
+# processname: tomcat
+# pidfile: /var/run/tomcat.pid
 
-    export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
-    case $1 in
-    start)
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    stop)
-            sh /usr/local/tomcat/bin/shutdown.sh
-            ;;
-    restart)
-            sh /usr/local/tomcat/bin/shutdown.sh
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    esac
-    exit 0
-    ~~~
+case $1 in
+start)
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+stop)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        ;;
+restart)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+esac
+exit 0
+
+{{< /file >}}
+
 
 Remember, if you installed open-jdk the `export JAVA_HOME` line should read:
 
-{: .file-excerpt }
-/etc/init.d/tomcat
-:   ~~~ bash
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
-    ~~~
+{{< file-excerpt "/etc/init.d/tomcat" bash >}}
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+{{< /file-excerpt >}}
+
 
 Make the script executable by issuing this command:
 

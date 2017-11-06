@@ -3,10 +3,10 @@ author:
   name: Christopher Piccini
   email: cpiccini11@gmail.com
 description: 'This in-depth guide on the .htaccess file covers how to handle permissions, redirects, and IP address restriction.'
-keywords: 'htaccess, apache'
+keywords: ["htaccess", " apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 25th, 2017'
-modified: Tuesday, September 26th, 2017
+published: 2017-09-25
+modified: 2017-09-26
 modified_by:
   name: Linode
 title: 'How to Set Up the htaccess File on Apache'
@@ -38,8 +38,9 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
 4.  Complete the Apache section in the [Install a Lamp Stack](https://www.linode.com/content/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04) to install Apache on your Linode.
 
-{:.note}
-> Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
+{{< note >}}
+Throughout this guide, replace each instance of `testuser` with your custom user account. Replace each occurrence of `example.com` with the IP address or Fully Qualified Domain Name (FQDN) of your Linode.
+{{< /note >}}
 
 ## What is .htaccess
 
@@ -55,17 +56,17 @@ By default, .htaccess isn't available. To enable it you will need to edit the co
 
 2.  After the VirtualHost block (</VirtualHost>) add:
 
-    {: .file-excerpt}
-    /etc/apache2/sites-available/example.com.conf
-    :  ~~~
-       ....
-       </VirtualHost>
-       <Directory /var/www/html/example.com/public_html>
-           Options Indexes FollowSymLinks
-           AllowOverride All
-           Require all granted
-       </Directory>
-       ~~~
+    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" >}}
+....
+</VirtualHost>
+<Directory /var/www/html/example.com/public_html>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+{{< /file-excerpt >}}
+
 3.  Save the file, then restart apache:
 
         sudo service apache2 restart
@@ -82,11 +83,11 @@ By default, someone visiting your website can view the directory and file struct
 
 2.  Create an .htaccess file:
 
-    {:.file}
-    /var/www/html/example.com/public_html/.htaccess
-    : ~~~
-      Options -Indexes
-      ~~~
+    {{< file "/var/www/html/example.com/public_html/.htaccess" >}}
+Options -Indexes
+
+{{< /file >}}
+
 
 3.  Now if you navigate to your site, you will see a **Forbidden** message. You will have to specifically indicate the file or directory you would like to see.
 
@@ -94,8 +95,9 @@ By default, someone visiting your website can view the directory and file struct
 
 This section will guide you through restricting specific IPs from accessing your site. This is useful if you want to block certain visitors from visiting your site. You may also set this up to prevent certain IPs from accessing certain sections of your site.
 
-{:.note}
-> Subdirectories can inherit settings from .htaccess files in their parent directories if they're not overridden by a separate .htaccess file in the subdirectory. The examples in this guide will continue to work with an .htaccess file in the project's root directory. You should carefully consider in which directory different .htaccess directives should be placed.
+{{< note >}}
+Subdirectories can inherit settings from .htaccess files in their parent directories if they're not overridden by a separate .htaccess file in the subdirectory. The examples in this guide will continue to work with an .htaccess file in the project's root directory. You should carefully consider in which directory different .htaccess directives should be placed.
+{{< /note >}}
 
 ### Block IPs
 
@@ -106,17 +108,17 @@ This section will guide you through restricting specific IPs from accessing your
 
 2.  Delete the `Options -Indexes` line from the previous section (if applicable) and add the following lines to block the target IP addresses:
 
-    {:.file}
-    /var/www/html/example.com/public_html
-    : ~~~
-      order allow,deny
+    {{< file "/var/www/html/example.com/public_html" >}}
+order allow,deny
 
-      # This will deny the IP 172.15.23.9
-      deny from 172.15.23.9
+# This will deny the IP 172.15.23.9
+deny from 172.15.23.9
 
-      # This will deny all IP's from 172.15.23.0 through 172.15.23.255
-      deny from 172.15.23
-      ~~~
+# This will deny all IP's from 172.15.23.0 through 172.15.23.255
+deny from 172.15.23
+
+{{< /file >}}
+
 
 ### Allow IPs
 
@@ -124,20 +126,20 @@ This section will guide you through restricting specific IPs from accessing your
 
 2.  Add the following lines to deny all IPs except for the specific IP and pool of IPs mentioned in the command:
 
-    {:.file}
-    /var/www/html/example.com/public_html
-    : ~~~
-      order deny,allow
+    {{< file "/var/www/html/example.com/public_html" >}}
+order deny,allow
 
-      # Denies all IP's
-      Deny from all
+# Denies all IP's
+Deny from all
 
-      # This will allow the IP 172.15.23.9
-      allow from 172.15.23.9
+# This will allow the IP 172.15.23.9
+allow from 172.15.23.9
 
-      # This will allow all IP's from 172.15.23.0 through 172.15.23.255
-      allow from 172.15.23
-      ~~~
+# This will allow all IP's from 172.15.23.0 through 172.15.23.255
+allow from 172.15.23
+
+{{< /file >}}
+
 
 ## Handle Redirects
 
@@ -150,23 +152,23 @@ You can redirect traffic using .htaccess configuration. In the below example, yo
 
 2.  Add some basic content to the test html file:
 
-    {:.file}
-    /var/www/html/example.com/public_html/test1/index.html
-    : ~~~
-      <!doctype html>
-      <html>
-        <body>
-           This is the html file in test1.
-        </body>
-      </html>
-      ~~~
+    {{< file "/var/www/html/example.com/public_html/test1/index.html" >}}
+<!doctype html>
+<html>
+  <body>
+     This is the html file in test1.
+  </body>
+</html>
+
+{{< /file >}}
+
 3.  Open the .htaccess file in your project's root directory. Remove all existing configurations in this file and add the following line:
 
-    {:.file}
-    /var/www/html/example.com/public_html/.htaccess
-    : ~~~
-      Redirect 301 /main.html /test1/index.html
-      ~~~
+    {{< file "/var/www/html/example.com/public_html/.htaccess" >}}
+Redirect 301 /main.html /test1/index.html
+
+{{< /file >}}
+
 The first parameter after the 'Redirect' command is the HTTP status code. Specifying a status code is helpful for letting the browser know that the page has been moved to a new location. If you leave this parameter blank, it defaults to a 302 code indicating that the redirect is temporary. Specifying 301 makes it clear that the page at the requested location has permanently moved to a new location.
 
 The next parameter is the Unix path to the file that is requested in the URL. This parameter requires that it is a Unix path and not a URL. The path should be the location of the .htaccess file where the redirect configuration is set up. The final parameter indicates where you want the visitor to be redirected. In this case, the traffic is being redirected to `/test2/index.html`; for this second parameter a Unix path or HTTP URL is acceptable.
@@ -179,23 +181,23 @@ When a visitor attempts to access a page or resource that doesn't exist (for exa
 
 1.  This will redirect all requests for nonexistent documents to a page in the project root directory called `404.html.  Open the .htaccess file and add the following line:
 
-    {:.file}
-    /var/www/html/example.com/public_html/.htaccess
-    :  ~~~
-       ErrorDocument 404 /404.html
-       ~~~
+    {{< file "/var/www/html/example.com/public_html/.htaccess" >}}
+ErrorDocument 404 /404.html
+
+{{< /file >}}
+
 
 2.   Create the `404.html` file:
 
-    {:.file}
-    /var/www/html/example.com/public_html/404.html
-    :  ~~~
-       <!doctype html>
-       <html>
-        <body>
-          404 Error: Page not found
-        </body>
-       </html>
-       ~~~
+    {{< file "/var/www/html/example.com/public_html/404.html" >}}
+<!doctype html>
+<html>
+ <body>
+   404 Error: Page not found
+ </body>
+</html>
+
+{{< /file >}}
+
 
 3.  In a browser, navigate to a page that does not exist, such as `www.example.com/doesnotexist.html`. The 404 message should be displayed.

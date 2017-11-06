@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Install Apache on your CentOS 6 server, configure virtual hosting, and set up mod and scripting support.'
-keywords: 'Apache,web sever,CentOS 6,centos,apache 2,httpd'
+keywords: ["Apache", "web sever", "CentOS 6", "centos", "apache 2", "httpd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/centos-6/','websites/apache/apache-2-web-server-on-centos-6/']
-modified: Friday, July 31st, 2015
+aliases: ['web-servers/apache/installation/centos-6/','websites/apache/apache-2-web-server-on-centos-6/']
+modified: 2015-07-31
 modified_by:
   name: Elle Krout
-published: 'Monday, November 11th, 2013'
+published: 2013-11-11
 title: Apache Web Server on CentOS 6
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/content/2.2/)'
@@ -22,10 +22,9 @@ The *Apache HTTP Server* (Apache) is an open-source web server application. This
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP) stack, please see the [LAMP on CentOS 6](/content/websites/lamp/lamp-server-on-centos-6) guide.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -50,37 +49,37 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP)
 
 2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .file }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ conf
-        KeepAlive Off
+    {{< file "/etc/httpd/conf/httpd.conf" aconf >}}
+KeepAlive Off
 
 
-        <IfModule prefork.c>
-            StartServers        4
-            MinSpareServers     20
-            MaxSpareServers     40
-            MaxClients          200
-            MaxRequestsPerChild 4500
-        </IfModule>
-        ~~~
+<IfModule prefork.c>
+    StartServers        4
+    MinSpareServers     20
+    MaxSpareServers     40
+    MaxClients          200
+    MaxRequestsPerChild 4500
+</IfModule>
+
+{{< /file >}}
+
 
 ### Configure Apache for Virtual Hosting
 
 1.  Create a file under `/etc/httpd/conf.d` named `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
-    {: .file-excerpt }
-    /etc/httpd/conf.d/vhost.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
-             ServerAdmin admin@example.org
-             ServerName example.org
-             ServerAlias www.example.org
-             DocumentRoot /srv/www/example.org/public_html/
-             ErrorLog /srv/www/example.org/logs/error.log
-             CustomLog /srv/www/example.org/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" aconf >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
     Additional virtual host blocks can be added to the file for any other domains you wish to host on the Linode.
 

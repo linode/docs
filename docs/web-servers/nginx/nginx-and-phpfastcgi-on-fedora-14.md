@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and PHP-FastCGI on Fedora 14'
-keywords: 'nginx,nginx fedora 14,nginx fastcgi,nginx php'
+keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/fedora-14/','websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
-modified: Monday, October 7th, 2013
+aliases: ['web-servers/nginx/php-fastcgi/fedora-14/','websites/nginx/nginx-and-phpfastcgi-on-fedora-14/']
+modified: 2013-10-07
 modified_by:
   name: Linode
-published: 'Friday, January 7th, 2011'
+published: 2011-01-07
 title: 'Nginx and PHP-FastCGI on Fedora 14'
 deprecated: true
 ---
@@ -57,36 +57,36 @@ Issue the following commands to create virtual hosting directories:
 
 Add the following lines to your `/etc/nginx/nginx.conf` file, immediately after the line for `include /etc/nginx/conf.d/*.conf`:
 
-{: .file-excerpt }
-/etc/nginx/nginx.conf
-:   ~~~ nginx
-    # Load virtual host configuration files.
-    include /etc/nginx/sites-enabled/*;
-    ~~~
+{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+# Load virtual host configuration files.
+include /etc/nginx/sites-enabled/*;
+
+{{< /file-excerpt >}}
+
 
 Next, define your site's virtual host file:
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root /srv/www/www.example.com/public_html;
 
-        location / {
-            index index.html index.htm index.php;
-        }
-
-        location ~ \.php$ {
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:9000;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index index.html index.htm index.php;
     }
-    ~~~
+
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 **Important security note:** If you're planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 
@@ -144,11 +144,11 @@ Test PHP with FastCGI
 
 Create a file called "test.php" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/public\_html/test.php
-:   ~~~ php
-    <?php echo phpinfo(); ?>
-    ~~~
+{{< file "/srv/www/www.example.com/public\\_html/test.php" php >}}
+<?php echo phpinfo(); ?>
+
+{{< /file >}}
+
 
 When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
 

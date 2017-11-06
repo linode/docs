@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.'
-keywords: 'Cacti,Ubuntu, Ubuntu 12.04,SNMP,spine,client machine'
+keywords: ["Cacti", "Ubuntu", " Ubuntu 12.04", "SNMP", "spine", "client machine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
-modified: Thursday, October 11th, 2012
+aliases: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
+modified: 2012-10-11
 modified_by:
   name: Linode
-published: 'Thursday, October 11th, 2012'
+published: 2012-10-11
 title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 external_links:
  - '[Cacti Website](http://www.cacti.net/index.php)'
@@ -36,17 +36,17 @@ Begin by setting the timezone of your server if it isn't already set. Set your s
 
 The `universe` repositories should be enabled on your Linode by default. You can double-check this by editing the `/etc/apt/sources.list` file, and verifying that lines resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
-    ## team. Also, please note that software in universe WILL NOT receive any
-    ## review or updates from the Ubuntu security team.
-    deb http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    ~~~
+{{< file "/etc/apt/sources.list" >}}
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 

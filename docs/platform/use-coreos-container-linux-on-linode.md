@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: This tutorial shows how to configure and use CoreOS Container Linux on Linode
-keywords: 'linux containers,docker,CoreOS'
-alias: ['platform/using-coreos-container-linux-on-linode/','platform/using-coreos-container-linux-on-your-linode/']
+keywords: ["linux containers", "docker", "CoreOS"]
+aliases: ['platform/using-coreos-container-linux-on-linode/','platform/using-coreos-container-linux-on-your-linode/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, July 17th, 2017
+modified: 2017-07-17
 modified_by:
   name: Linode
-published: 'Thursday, June 8th, 2017'
+published: 2017-06-08
 title: Use CoreOS Container Linux on Linode
 ---
 
@@ -37,9 +37,9 @@ Container Linux does not use a swap space, so while Linode's other distributions
 
 These are not needed for Container Linux, and Network Helper is not compatible so they are all disabled. Linode's Container Linux images use `systemd-networkd`, so see our [static networking](https://www.linode.com/content/networking/linux-static-ip-configuration/#arch--coreos) guide if you want to configure static and/or multiple IP addresses for your deployment.
 
-{: .note}
->
-> The [Linode backup service](/content/platform/linode-backup-service) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/content/security/backups/backing-up-your-data).
+{{< note >}}
+The [Linode backup service](/content/platform/linode-backup-service) is not available for Container Linux. You should back up your data and configurations using an [alternative backup method](/content/security/backups/backing-up-your-data).
+{{< /note >}}
 
 ## Log into Container Linux
 

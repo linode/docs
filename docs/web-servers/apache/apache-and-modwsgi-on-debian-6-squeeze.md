@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy Python WSGI Applications with Apache and mod\_wsgi.'
-keywords: 'python,apache,mod\_wsgi'
+keywords: ["python", "apache", "mod\\_wsgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/mod-wsgi/debian-6-squeeze/','websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
-modified: Thursday, January 26th, 2012
+aliases: ['web-servers/apache/mod-wsgi/debian-6-squeeze/','websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
+modified: 2012-01-26
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: 'Apache and mod_wsgi on Debian 6 (Squeeze)'
 ---
 
@@ -46,26 +46,26 @@ In order for `mod_wsgi` to be able to provide access to your application, you wi
 
 In this example, the application is stored in `/srv/www/example.com/application` directory. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
-{: .file }
-/srv/www/example.com/application/application.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file "/srv/www/example.com/application/application.wsgi" python >}}
+import os
+import sys
 
-    sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
-    def application(environ, start_response):
-        status = '200 OK'
-        output = 'Hello World!'
+def application(environ, start_response):
+    status = '200 OK'
+    output = 'Hello World!'
 
-        response_headers = [('Content-type', 'text/plain'),
-                            ('Content-Length', str(len(output)))]
-        start_response(status, response_headers)
+    response_headers = [('Content-type', 'text/plain'),
+                        ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
 
-        return [output]
-    ~~~
+    return [output]
+
+{{< /file >}}
+
 
 You must append the path of your application to the system path as above. The declaration of the `PYTHON_EGG_CACHE` variable is optional but may be required for some applications when WSGI scripts are executed with the permissions of the web server. The WSGI application must be callable as `application`, regardless of how the application code is structured.
 
@@ -73,47 +73,47 @@ You must append the path of your application to the system path as above. The de
 
 Consider the following example Web.py *application* which is embedded in a `application.wsgi` file. The [Web.py Framework](/content/websites/frameworks/webpy-on-ubuntu-12-04-precise-pangolin/) must be installed in order for the following application to run successfully.
 
-{: .file-excerpt }
-/srv/www/example.com/application/application.wsgi
-:   ~~~ python
-    import web
+{{< file-excerpt "/srv/www/example.com/application/application.wsgi" python >}}
+import web
 
-    urls = (
-        '/(.*)', 'hello'
-    )
+urls = (
+    '/(.*)', 'hello'
+)
 
-    class hello:
-        def GET(self, name):
-            if not name:
-                name = 'World'
-            return 'Hello, ' + name + '!'
+class hello:
+    def GET(self, name):
+        if not name:
+            name = 'World'
+        return 'Hello, ' + name + '!'
 
-    if __name__ == "__main__":
-        app.run()
+if __name__ == "__main__":
+    app.run()
 
-    app = web.application(urls, globals(), autoreload=False)
-    application = app.wsgifunc()
-    ~~~
+app = web.application(urls, globals(), autoreload=False)
+application = app.wsgifunc()
+
+{{< /file-excerpt >}}
+
 
 ### Django WSGI Configuration
 
 Consider the following example `application.wsgi` file for Django applications:
 
-{: .file-excerpt }
-/srv/www/example.com/application/application.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file-excerpt "/srv/www/example.com/application/application.wsgi" python >}}
+import os
+import sys
 
-    sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-    import django.core.handlers.wsgi
-    application = django.core.handlers.wsgi.WSGIHandler()
-    ~~~
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+{{< /file-excerpt >}}
+
 
 `Django` must be installed on your system and a working Django application before this example will function. The `DJANGO_SETTINGS_MODULE` points to the `settings.py` file for your application, which would be located in the `/srv/www/example.com/application/settings.py` in the case of this example.
 
@@ -122,27 +122,27 @@ Configure Apache
 
 Deploy the following `VirtualHost` configuration and modify the paths and domains to reflect the requirements of your application:
 
-{: .file-excerpt }
-Apache VirtualHost Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-       ServerName example.com
-       ServerAlias www.example.com
-       ServerAdmin username@example.com
+{{< file-excerpt "Apache VirtualHost Configuration" apache >}}
+<VirtualHost *:80>
+   ServerName example.com
+   ServerAlias www.example.com
+   ServerAdmin username@example.com
 
-       DocumentRoot /srv/www/example.com/public_html
+   DocumentRoot /srv/www/example.com/public_html
 
-       ErrorLog /srv/www/example.com/logs/error.log
-       CustomLog /srv/www/example.com/logs/access.log combined
+   ErrorLog /srv/www/example.com/logs/error.log
+   CustomLog /srv/www/example.com/logs/access.log combined
 
-       WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
+   WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
 
-       Alias /robots.txt /srv/www/example.com/public_html/robots.txt
-       Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images
-       Alias /static /srv/www/example.com/public_html/static
-    </VirtualHost>
-    ~~~
+   Alias /robots.txt /srv/www/example.com/public_html/robots.txt
+   Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
+   Alias /images /srv/www/example.com/public_html/images
+   Alias /static /srv/www/example.com/public_html/static
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this example, the `WSGIScriptAlias` directive tells Apache that for this `VirtualHost`, all requests below `/` should be handled by the WSGI script specified. The series of four `Alias` directives allow Apache to serve the `robots.txt` and `favicon.ico` files as well as all resources beneath the `/images` and `/static` locations, directly from the `DocumentRoot` without engaging the WSGI application. You can add as many `Alias` directives as you require.
 

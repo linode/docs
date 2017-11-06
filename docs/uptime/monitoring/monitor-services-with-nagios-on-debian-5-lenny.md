@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Nagios to monitor services and send status updates on your Debian 5 (Lenny).'
-keywords: 'nagios,monitoring'
+keywords: ["nagios", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/nagios/debian-5-lenny/']
-modified: Thursday, June 30th, 2011
+aliases: ['server-monitoring/nagios/debian-5-lenny/']
+modified: 2011-06-30
 modified_by:
   name: Linode
-published: 'Wednesday, April 21st, 2010'
+published: 2010-04-21
 title: 'Monitor Services with Nagios on Debian 5 (Lenny)'
 ---
 
@@ -66,16 +66,16 @@ Issue the following commands to extract, compile, and install the Nagios Core:
 
 Begin by editing the `/usr/local/nagios/etc/objects/contacts.cfg` file's email field according to the example below:
 
-{: .file-excerpt }
-/usr/local/nagios/etc/objects/contacts.cfg
-:   ~~~
-    define contact{
-        contact_name nagiosadmin ; Short name of user use generic-contact
-        ; Inherit default values from generic-contact template (defined above)
-        alias John Doe ; Full name of user
-        email <someadmin@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
-    }
-    ~~~
+{{< file-excerpt "/usr/local/nagios/etc/objects/contacts.cfg" >}}
+define contact{
+    contact_name nagiosadmin ; Short name of user use generic-contact
+    ; Inherit default values from generic-contact template (defined above)
+    alias John Doe ; Full name of user
+    email <someadmin@example.com> ; <<***** CHANGE THIS TO YOUR EMAIL ADDRESS ******
+}
+
+{{< /file-excerpt >}}
+
 
 Issue the following commands to configure the web interface for Nagios:
 
@@ -136,20 +136,20 @@ Before Nagios can send alerts by email, basic mail services need to be installed
 
 When the installation process prompts you to define the type of mail setup you're running, select "Internet Site". You will also want to specify the machine specific hostname for this server during the installation process. Next, you'll need to update the path to the mail binary in the Nagios command file. Change both references from `/bin/mail` to `/usr/bin/mail`. The relevant section of this file should look like this:
 
-{: .file }
-/usr/local/nagios/etc/objects/commands.cfg
-:   ~~~
-    define command{
-        command_name    notify-host-by-email
-        command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\nHost: $HOSTNAME$\nState: $HOSTSTATE$\nAddress: $HOSTADDRESS$\nInfo: $HOSTOUTPUT$\n\nDate/Time: $LONGDATETIME$\n" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Host Alert: $HOSTNAME$ is $HOSTSTATE$ **" $CONTACTEMAIL$
-    }
+{{< file "/usr/local/nagios/etc/objects/commands.cfg" >}}
+define command{
+    command_name    notify-host-by-email
+    command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\nHost: $HOSTNAME$\nState: $HOSTSTATE$\nAddress: $HOSTADDRESS$\nInfo: $HOSTOUTPUT$\n\nDate/Time: $LONGDATETIME$\n" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Host Alert: $HOSTNAME$ is $HOSTSTATE$ **" $CONTACTEMAIL$
+}
 
-    # 'notify-service-by-email' command definition
-    define command{
-        command_name    notify-service-by-email
-        command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
-    }
-    ~~~
+# 'notify-service-by-email' command definition
+define command{
+    command_name    notify-service-by-email
+    command_line    /usr/bin/printf "%b" "***** Nagios *****\n\nNotification Type: $NOTIFICATIONTYPE$\n\nService: $SERVICEDESC$\nHost: $HOSTALIAS$\nAddress: $HOSTADDRESS$\nState: $SERVICESTATE$\n\nDate/Time: $LONGDATETIME$\n\nAdditional Info:\n\n$SERVICEOUTPUT$" | /usr/bin/mail -s "** $NOTIFICATIONTYPE$ Service Alert: $HOSTALIAS$/$SERVICEDESC$ is $SERVICESTATE$ **" $CONTACTEMAIL$
+}
+
+{{< /file >}}
+
 
 In order for these changes to take effect, you will need to restart Nagios:
 

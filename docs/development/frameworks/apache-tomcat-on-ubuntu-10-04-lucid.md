@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.04 (Lucid).'
-keywords: 'apache tomcat ubuntu 10.04,java,java ubuntu 10.04,java servlets ubuntu lucid,java ubuntu'
+keywords: ["apache tomcat ubuntu 10.04", "java", "java ubuntu 10.04", "java servlets ubuntu lucid", "java ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-10-04-lucid/','websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/apache-tomcat/ubuntu-10-04-lucid/','websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Friday, July 23rd, 2010'
+published: 2010-07-23
 title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
 ---
 
@@ -44,39 +44,39 @@ If you choose to run OpenJDK, you can skip the rest of this section, as OpenJDK 
 
 If you would like to run the Sun Microsystems implementation of Java, edit the `/etc/apt/sources.list` so that it resembles the following example. This will enable access to the "partner" repository:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-updates main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-updates main restricted
+deb http://security.ubuntu.com/ubuntu lucid-updates main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-updates main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories - uncomment to enable
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+## universe repositories - uncomment to enable
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
 
-    ## partner repositories
-    deb http://archive.canonical.com/ubuntu lucid partner
-    deb-src http://archive.canonical.com/ubuntu lucid partner
+## partner repositories
+deb http://archive.canonical.com/ubuntu lucid partner
+deb-src http://archive.canonical.com/ubuntu lucid partner
 
-    deb http://archive.canonical.com/ubuntu lucid-updates partner
-    deb-src http://archive.canonical.com/ubuntu lucid-updates partner
+deb http://archive.canonical.com/ubuntu lucid-updates partner
+deb-src http://archive.canonical.com/ubuntu lucid-updates partner
 
-    deb http://archive.canonical.com/ubuntu lucid-security partner
-    deb-src http://archive.canonical.com/ubuntu lucid-security partner
-    ~~~
+deb http://archive.canonical.com/ubuntu lucid-security partner
+deb-src http://archive.canonical.com/ubuntu lucid-security partner
+
+{{< /file >}}
+
 
 Issue the following command to update your system's package repositories:
 
@@ -108,12 +108,12 @@ Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
-{: .file-excerpt }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="username" password="examplemorris" roles="manager"/>
-    ~~~
+{{< file-excerpt "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="username" password="examplemorris" roles="manager"/>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:
 

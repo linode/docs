@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Confluence on Fedora 13 to power a full-featured wiki system.'
-keywords: 'confluence fedora 13,confluence,confluence wiki,confluence linux'
+keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/confluence/fedora-13/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/wikis/confluence/fedora-13/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Thursday, September 9th, 2010'
+published: 2010-09-09
 title: Confluence on Fedora 13
 ---
 
@@ -70,20 +70,20 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties
-:   ~~~
-    confluence.home=/var/lib/confluence
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+confluence.home=/var/lib/confluence
+
+{{< /file-excerpt >}}
+
 
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file and the "JAVA\_HOME" line as necessary to reflect current version numbers.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh
-:   ~~~
-    JAVA_HOME="/usr/lib/java/jdk1.6.0_21"
-    export JAVA_HOME
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+JAVA_HOME="/usr/lib/java/jdk1.6.0_21"
+export JAVA_HOME
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to return to a root shell.
 
@@ -121,19 +121,19 @@ Issue the following commands to set a password for the `postgres` administrative
 
 Edit the file `/var/lib/pgsql/data/pg_hba.conf`. Locate the following line.
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    host all all 127.0.0.1/32 ident
-    ~~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+host all all 127.0.0.1/32 ident
+
+{{< /file-excerpt >}}
+~
 
 Change it the match the following excerpt and save the file.
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    host all all 127.0.0.1/32 md5
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+host all all 127.0.0.1/32 md5
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to create a `confluence` PostgreSQL role, making sure to assign a strong password.
 
@@ -168,43 +168,43 @@ By default, the web interface for Confluence runs on port 8080. If you're comfor
 
 Edit the `/etc/httpd/conf/httpd.conf` file, adding the following excerpt at the end.
 
-{: .file-excerpt }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 Create a file named `/etc/httpd/conf.d/vhost.conf` with the following contents, replacing "confluence.example.com" with the your actual domain name. Please note that you will need to add an "A" record to your DNS configuration to point the site to your Linode's public IP address. This example assumes that Confluence will be running on its default port (8080).
 
-{: .file }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    NameVirtualHost *:80
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
+NameVirtualHost *:80
 
-    <VirtualHost *:80>
-         ServerAdmin support@example.com
-         ServerName confluence.example.com
-         ProxyPass / http://localhost:8080/
-         ProxyPassReverse / http://localhost:8080/
-    </VirtualHost>
-    ~~~
+<VirtualHost *:80>
+     ServerAdmin support@example.com
+     ServerName confluence.example.com
+     ProxyPass / http://localhost:8080/
+     ProxyPassReverse / http://localhost:8080/
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to start Apache and Confluence.
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Ubuntu 10.04 (Lucid) Linode.'
-keywords: 'ispconfig,control panel,cpanel,plesk,gui'
+keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/']
-modified: Friday, April 29th, 2011
+aliases: ['web-applications/control-panels/ispconfig/ubuntu-10-04-lucid/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, May 19th, 2010'
+published: 2010-05-19
 title: 'Manage an Ubuntu 10.04 (Lucid) Linode with ISPConfig'
 ---
 

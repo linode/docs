@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide explains how to host a Half-Life 2: Deathmatch server on a Linode running Debian or Ubuntu.'
-keywords: 'half-life 2,deathmatch,steamcmd,host,hl2,multiplayer first-person shooter video game'
+keywords: ["half-life 2", "deathmatch", "steamcmd", "host", "hl2", "multiplayer first-person shooter video game"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Thursday, August 17, 2017
-modified: Thursday, August 17, 2017
+published: 2017-08-17
+modified: 2017-08-17
 modified_by:
   name: Linode
 title: 'Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu'
@@ -106,14 +106,14 @@ This script automatically starts your server in a Screen session.
 
 1.  Create the script:
 
-    {: .file}
-    ~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/run.sh
-    : ~~~ sh
-      #!/bin/sh
-      cd "$HOME/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server"
-      screen -S "HL2DM" -d -m
-      screen -r "HL2DM" -X stuff "./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff\n"
-      ~~~
+    {{< file "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/run.sh" sh >}}
+#!/bin/sh
+cd "$HOME/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server"
+screen -S "HL2DM" -d -m
+screen -r "HL2DM" -X stuff "./srcds_run -game hl2mp +sv_password MyLinode +mp_teamplay 1 +maxplayers 8 +map dm_runoff\n"
+
+{{< /file >}}
+
 
 2.  Mark the file as executable:
 
@@ -131,78 +131,78 @@ Note that if `server.cfg` is present, its settings override any parameters that 
 
 Below is a sample server configuration:
 
-{: .file-excerpt}
-~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg
-: ~~~ config
-  // Server name [Default: Half-Life 2 Deathmatch]
-  hostname "My Linode"
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" aconf >}}
+// Server name [Default: Half-Life 2 Deathmatch]
+hostname "My Linode"
 
-  // Frags limit before ending the match (0 = No limit) [Default: 0]
-  mp_fraglimit 50
+// Frags limit before ending the match (0 = No limit) [Default: 0]
+mp_fraglimit 50
 
-  // Time limit before ending the match (0 = No limit) [Default: 0]
-  mp_timelimit 30
+// Time limit before ending the match (0 = No limit) [Default: 0]
+mp_timelimit 30
 
-  // Team deathmatch mode [Default: 0]
-  mp_teamplay 0
+// Team deathmatch mode [Default: 0]
+mp_teamplay 0
 
-  // Allow friendly fire [Default: 0]
-  mp_friendlyfire 0
+// Allow friendly fire [Default: 0]
+mp_friendlyfire 0
 
-  // Automatically respawn a player after death [Default: 0]
-  mp_forcerespawn 1
+// Automatically respawn a player after death [Default: 0]
+mp_forcerespawn 1
 
-  // Enable player footstep sounds [Default: 1]
-  mp_footsteps 1
+// Enable player footstep sounds [Default: 1]
+mp_footsteps 1
 
-  // Enable flashlight [Default: 0]
-  mp_flashlight 1
+// Enable flashlight [Default: 0]
+mp_flashlight 1
 
-  // Allow spectators [Default: 1]
-  mp_allowspectators 1
+// Allow spectators [Default: 1]
+mp_allowspectators 1
 
-  // Amount of damage inflicted from a fall [Default: 0]
-  mp_falldamage 10
+// Amount of damage inflicted from a fall [Default: 0]
+mp_falldamage 10
 
-  // Weapons respawn time [Default: 20]
-  sv_hl2mp_weapon_respawn_time 10
+// Weapons respawn time [Default: 20]
+sv_hl2mp_weapon_respawn_time 10
 
-  // Items (health, energy, ammo, props...) respawn time [Default: 30]
-  sv_hl2mp_item_respawn_time 15
+// Items (health, energy, ammo, props...) respawn time [Default: 30]
+sv_hl2mp_item_respawn_time 15
 
-  // Enable voice on server [Default: 1]
-  sv_voiceenable 1
+// Enable voice on server [Default: 1]
+sv_voiceenable 1
 
-  // Talk to everyone (1) or only to your team (0)? [Default: 0]
-  sv_alltalk 1
+// Talk to everyone (1) or only to your team (0)? [Default: 0]
+sv_alltalk 1
 
-  // Allow players to upload sprays [Default: 1]
-  sv_allowupload 1
+// Allow players to upload sprays [Default: 1]
+sv_allowupload 1
 
-  // Allow sprays, custom maps and other extra content to be downloaded [Default: 1]
-  sv_allowdownload 1
+// Allow sprays, custom maps and other extra content to be downloaded [Default: 1]
+sv_allowdownload 1
 
-  // Max bandwidth rate allowed on server (0 = No limit) [Default: 0]
-  sv_maxrate 0
+// Max bandwidth rate allowed on server (0 = No limit) [Default: 0]
+sv_maxrate 0
 
-  // Minimum bandwidth rate allowed on server, (0 = No limit) [Default: 3500]
-  sv_minrate 3500
+// Minimum bandwidth rate allowed on server, (0 = No limit) [Default: 3500]
+sv_minrate 3500
 
-  // Maximum updates per second that the server allows [Default: 66]
-  sv_maxupdaterate 300
+// Maximum updates per second that the server allows [Default: 66]
+sv_maxupdaterate 300
 
-  // Minimum updates per second that the server allows [Default: 10]
-  sv_minupdaterate 10
+// Minimum updates per second that the server allows [Default: 10]
+sv_minupdaterate 10
 
-  // After how many seconds without a message should the client be disconnected? (0 = Disabled) [Default: 65]
-  sv_timeout 65
+// After how many seconds without a message should the client be disconnected? (0 = Disabled) [Default: 65]
+sv_timeout 65
 
-  // LAN mode (only class C addresses allowed) [Default: 0]
-  sv_lan 0
+// LAN mode (only class C addresses allowed) [Default: 0]
+sv_lan 0
 
-  // Server password for players to join [Default: Empty]
-  sv_password "MyLinode"
-  ~~~
+// Server password for players to join [Default: Empty]
+sv_password "MyLinode"
+
+{{< /file-excerpt >}}
+
 
 ## Custom Half-Life 2 Maps
 
@@ -231,25 +231,25 @@ When a match ends, the server starts a new match with the next map in the rotati
 
 If `mapcycle.txt` is not available, the system uses the default map rotation list in `mapcycle_default.txt`.
 
-{: .file-excerpt}
-~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt
-: ~~~txt
-  // Default mapcycle file for hl2mp
-  //
-  // DO NOT MODIFY THIS FILE!
-  // Instead, copy it to mapcycle.txt and modify that file.  If no custom mapcycle.txt file is found,
-  // this file will be used as the default.
-  //
-  // Also, note that the "mapcyclefile" convar can be used to specify a particular mapcycle file.
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" resource >}}
+// Default mapcycle file for hl2mp
+//
+// DO NOT MODIFY THIS FILE!
+// Instead, copy it to mapcycle.txt and modify that file.  If no custom mapcycle.txt file is found,
+// this file will be used as the default.
+//
+// Also, note that the "mapcyclefile" convar can be used to specify a particular mapcycle file.
 
-  dm_lockdown
-  dm_overwatch
-  dm_powerhouse
-  dm_resistance
-  dm_runoff
-  dm_steamlab
-  dm_underpass
-  ~~~
+dm_lockdown
+dm_overwatch
+dm_powerhouse
+dm_resistance
+dm_runoff
+dm_steamlab
+dm_underpass
+
+{{< /file-excerpt >}}
+
 
 To add a custom map to the rotation:
 
@@ -259,26 +259,26 @@ To add a custom map to the rotation:
 
 2.  Write the custom map's name inside `mapcycle.txt`. For example: if you have the map `dm_custom.bsp`:
 
-{: .file-excerpt}
-~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle.txt
-: ~~~txt
-  // Default mapcycle file for hl2mp
-  //
-  // DO NOT MODIFY THIS FILE!
-  // Instead, copy it to mapcycle.txt and modify that file.  If no custom mapcycle.txt file is found,
-  // this file will be used as the default.
-  //
-  // Also, note that the "mapcyclefile" convar can be used to specify a particular mapcycle file.
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle.txt" resource >}}
+// Default mapcycle file for hl2mp
+//
+// DO NOT MODIFY THIS FILE!
+// Instead, copy it to mapcycle.txt and modify that file.  If no custom mapcycle.txt file is found,
+// this file will be used as the default.
+//
+// Also, note that the "mapcyclefile" convar can be used to specify a particular mapcycle file.
 
-  dm_custom // Your custom map
-  dm_lockdown
-  dm_overwatch
-  dm_powerhouse
-  dm_resistance
-  dm_runoff
-  dm_steamlab
-  dm_underpass
-  ~~~
+dm_custom // Your custom map
+dm_lockdown
+dm_overwatch
+dm_powerhouse
+dm_resistance
+dm_runoff
+dm_steamlab
+dm_underpass
+
+{{< /file-excerpt >}}
+
 
 ## Play Half-Life 2 on your Own Server
 

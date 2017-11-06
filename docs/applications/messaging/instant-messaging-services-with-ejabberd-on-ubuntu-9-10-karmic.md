@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with ejabberd, an instant messaging server written in Erlang/OTP on Ubuntu 9.10 (Karmic).'
-keywords: 'ejabberd,ejabberd ubuntu karmic,ejabberd ubuntu 9.10,ejabberd on linux,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["ejabberd", "ejabberd ubuntu karmic", "ejabberd ubuntu 9.10", "ejabberd on linux", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/ejabberd/ubuntu-9-10-karmic/']
-modified: Wednesday, October 31st, 2012
+aliases: ['communications/xmpp/ejabberd/ubuntu-9-10-karmic/']
+modified: 2012-10-31
 modified_by:
   name: Linode
-published: 'Monday, November 9th, 2009'
+published: 2009-11-09
 title: 'Instant Messaging Services with ejabberd on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -39,18 +39,18 @@ Enabling the Universe Repository
 
 Prior to installing the ejabberd daemon, you will need to enable the `universe` repository. Open `/etc/apt/sources.list` with your favorite text editor and make sure that the following lines are present:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 Now issue the following commands:
 
@@ -68,12 +68,12 @@ The default installation is complete and functional. The installation process cr
 
 If you have not already configured your `/etc/hosts` as follows, please do that before you continue. This will allow your Linode to associate its hostname with the public IP. Your file should have an excerpt that looks something like this, (use your Linode's public IP address instead of 12.34.56.78):
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    127.0.0.1    localhost.localdomain   localhost
-    12.34.56.78  username.example.com  username
-    ~~~
+{{< file-excerpt "/etc/hosts" >}}
+127.0.0.1    localhost.localdomain   localhost
+12.34.56.78  username.example.com  username
+
+{{< /file-excerpt >}}
+
 
 With the hostname configured, you're ready to begin configuring ejabberd.
 
@@ -86,20 +86,20 @@ Ejabberd's configuration files are written in Erlang syntax, which might be diff
 
 Some users will need the ability to administer the XMPP server remotely. By default this block of the config file looks like this:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    %% Admin user {acl, admin, {user, "", "localhost"}}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+%% Admin user {acl, admin, {user, "", "localhost"}}.
+
+{{< /file-excerpt >}}
+
 
 In Erlang, comments begin with the `%` sign, and the Access Control list segment contains information in the following form: `{user, "USERNAME", "HOSTNAME"}`. The following examples correspond to the users with the JIDs of `admin@example.com` and `username@example.com`. You only need to specify one administrator, but you can add more than one administrator simply by adding more lines, as shown below:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {acl, admin, {user, "admin", "example.com"}}.
-    {acl, admin, {user, "username", "example.com"}}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{acl, admin, {user, "admin", "example.com"}}.
+{acl, admin, {user, "username", "example.com"}}.
+
+{{< /file-excerpt >}}
+
 
 All users specified in this manner have full administrative access to the server through both the XMPP and web-based interfaces. You will have to create your administrative users (as described below) before they can log in.
 
@@ -107,19 +107,19 @@ All users specified in this manner have full administrative access to the server
 
 A single ejabberd instance can provide XMPP services for multiple domains at once, as long as those domains (or subdomains) are hosted by the server. To add a hostname for virtual hosting in ejabberd, modify the `hosts` option. By default, ejabberd is only configured to host the "localhost" domain:
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {hosts, ["localhost"]}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{hosts, ["localhost"]}.
+
+{{< /file-excerpt >}}
+
 
 In the following example, ejabberd has been configured to host a number of additional domains. In this case "username.example.com," "example.com," and "example.com."
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {hosts, ["username.example.com", "example.com", "example.com"]}.
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{hosts, ["username.example.com", "example.com", "example.com"]}.
+
+{{< /file-excerpt >}}
+
 
 You can specify any number of hostnames in the host list, but you should be careful to avoid adding inserting a line break as this will cause ejabberd to fail.
 
@@ -129,16 +129,16 @@ TCP port number 5222 is the conventional "XMPP" port. If you want to change the 
 
 Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/TLS connections if you or the other users of you are using a client that requires legacy support for secured connections on port 5223. Uncomment the following stanza.
 
-{: .file-excerpt }
-/etc/ejabberd/ejabberd.cfg
-:   ~~~
-    {5223, ejabberd_c2s, [
-        {access, c2s},
-        {shaper, c2s_shaper},
-        {max_stanza_size, 65536},
-        tls, {certfile, "/etc/ejabberd/ejabberd.pem"}
-    ]},
-    ~~~
+{{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
+{5223, ejabberd_c2s, [
+    {access, c2s},
+    {shaper, c2s_shaper},
+    {max_stanza_size, 65536},
+    tls, {certfile, "/etc/ejabberd/ejabberd.pem"}
+]},
+
+{{< /file-excerpt >}}
+
 
 ### Additional Functionality
 

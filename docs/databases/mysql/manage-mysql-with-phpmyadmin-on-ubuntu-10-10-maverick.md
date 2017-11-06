@@ -4,13 +4,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,sql,ubuntu'
+keywords: ["mysql", "phpmyadmin", "sql", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/phpmyadmin-ubuntu-10-10-maverick/']
-modified: Tuesday, September 24th, 2013
+aliases: ['databases/mysql/phpmyadmin-ubuntu-10-10-maverick/']
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Monday, January 10th, 2011'
+published: 2011-01-10
 title: 'Manage MySQL with phpMyAdmin on Ubuntu 10.10 (Maverick)'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
@@ -69,12 +69,12 @@ This will create a symbolic link named `phpmyadmin` in your document root.
 
 We recommend securing your phpMyAdmin directory using an `.htaccess file` and only allowing specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Refer to the sample `.htaccess` file below. Be sure to substitute the proper paths and **IP addresses** for your particular configuration.
 
-{: .file-excerpt }
-/srv/www/example.com/public\_html/phpmyadmin/.htaccess
-:   ~~~ apache
-    order allow,deny
-    allow from 12.34.56.78
-    ~~~
+{{< file-excerpt "/srv/www/example.com/public\\_html/phpmyadmin/.htaccess" apache >}}
+order allow,deny
+allow from 12.34.56.78
+
+{{< /file-excerpt >}}
+
 
 ### Force SSL
 
@@ -82,11 +82,11 @@ Since you are required to enter your MySQL credentials when using phpMyAdmin, we
 
 You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
-{: .file-excerpt }
-/etc/phpmyadmin/config.inc.php
-:   ~~~ php
-    $cfg['ForceSSL'] = 'true';
-    ~~~
+{{< file-excerpt "/etc/phpmyadmin/config.inc.php" php >}}
+$cfg['ForceSSL'] = 'true';
+
+{{< /file-excerpt >}}
+
 
 ## Testing Your phpMyAdmin Installation
 

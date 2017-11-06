@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Plone Content Management System, built on the Zope framework, to deploy complex and content rich sites on Debian 5 (Lenny) systems.'
-keywords: 'plone,zope,python,debian,web framework,content management systems,cms'
+keywords: ["plone", "zope", "python", "debian", "web framework", "content management systems", "cms"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/plone/']
-modified: Friday, June 3rd, 2011
+aliases: ['web-applications/cms-guides/plone/']
+modified: 2011-06-03
 modified_by:
   name: Linode
-published: 'Friday, January 29th, 2010'
+published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 ---
 
@@ -57,28 +57,28 @@ Begin by installing the Apache web server. You can read more about this process 
 
 Edit the `/etc/apache2/mods-available/proxy.conf` file to properly configure the [ProxyPass](/content/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny) as follows:
 
-{: .file-excerpt }
-/etc/apache2/mods-available/proxy.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file-excerpt "/etc/apache2/mods-available/proxy.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 This enables proxy support in the module's configuration. **Please note** the warning regarding the `ProxyRequests` directive. This setting should be "off" in your configuration. Next, we'll issue the following commands:
 
@@ -88,21 +88,21 @@ This enables proxy support in the module's configuration. **Please note** the wa
 
 Apache should restart cleanly. If you encounter any issues, you may wish to inspect the logs available under `/var/log/apache2/` for more information. Now, consider the following virtual hosting configuration directives:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin admin@example.com
-         ServerName example.com
-         ServerAlias www.example.com
+{{< file-excerpt "Apache Virtual Hosting Configuration" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.com
+     ServerName example.com
+     ServerAlias www.example.com
 
-        ProxyPreserveHost On
-         ProxyPass / http://localhost:8081/
+    ProxyPreserveHost On
+     ProxyPass / http://localhost:8081/
 
-         # Uncomment the line below if your site uses SSL.
-         #SSLProxyEngine On
-    </VirtualHost>
-    ~~~
+     # Uncomment the line below if your site uses SSL.
+     #SSLProxyEngine On
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this configuration all requests for the `VirtualHost` named `example.com` are passed back to the Plone instance. If you want to only serve dynamic content with Plone and use Apache to serve static content, use a virtual hosting configuration that resembles the following. Enable `mod_rewrite` by issuing the following command:
 
@@ -110,23 +110,23 @@ In this configuration all requests for the `VirtualHost` named `example.com` are
 
 Now modify the configuration of your virtual host as follows:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerName example.com
-        ServerAlias www.example.com
-        DocumentRoot /srv/www/example.com/public_html/
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log
-        CustomLog /srv/www/example.com/logs/access.log combined
+    ErrorLog /srv/www/example.com/logs/error.log
+    CustomLog /srv/www/example.com/logs/access.log combined
 
-        ProxyPreserveHost On
-        RewriteEngine On
-        RewriteCond /srv/www/example.com/public_html%{REQUEST_FILENAME} !-f
-        RewriteRule ^/(.*)$ http://localhost:8081/$1 [proxy,last]
-    </VirtualHost>
-    ~~~
+    ProxyPreserveHost On
+    RewriteEngine On
+    RewriteCond /srv/www/example.com/public_html%{REQUEST_FILENAME} !-f
+    RewriteRule ^/(.*)$ http://localhost:8081/$1 [proxy,last]
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart apache:
 
@@ -138,26 +138,26 @@ In this example, requests for content will **only** be proxied to Plone **if** r
 
 Somewhere in your nginx configuration file, include configuration options which resemble the following:
 
-{: .file-excerpt }
-Nginx Configuration Directives
-:   ~~~ nginx
-    server {
-            listen       21.43.65.91:80;
-            server_name  example.com www.example.com;
+{{< file-excerpt "Nginx Configuration Directives" nginx >}}
+server {
+        listen       21.43.65.91:80;
+        server_name  example.com www.example.com;
 
-            access_log  logs/example.access.log combined;
+        access_log  logs/example.access.log combined;
 
-            location / {
-                proxy_pass   http://localhost:8081;
-            }
-            location /media/ {
-                root   /srv;
-            }
-            location ~ \.php$ {
-                proxy_pass http://127.0.0.1;
-            }
-    }
-    ~~~
+        location / {
+            proxy_pass   http://localhost:8081;
+        }
+        location /media/ {
+            root   /srv;
+        }
+        location ~ \.php$ {
+            proxy_pass http://127.0.0.1;
+        }
+}
+
+{{< /file-excerpt >}}
+
 
 In this example, nginx listens for incoming requests on port `80` of the public IP address `21.43.65.91` and the domain of `example.com`. All requests are passed to the Plone instance running on the local machine on port `8081`. However, requests for locations in `/media/` will be served from the static content located in the `/srv/media` directory. Additionally, all files that terminate in a `.php` extension will be proxied to another HTTP server, presumably Apache, running on the local interface. Nginx will always fulfill the request using the most specific `Location` directive match.
 

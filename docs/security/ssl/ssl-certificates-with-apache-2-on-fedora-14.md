@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Fedora 14.'
-keywords: 'apache ssl,ssl on fedora,web server,fedora 14'
+keywords: ["apache ssl", "ssl on fedora", "web server", "fedora 14"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/ssl-guides/fedora-14/']
-modified: Friday, October 4th, 2013
+aliases: ['web-servers/apache/ssl-guides/fedora-14/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: SSL Certificates with Apache 2 on Fedora 14
 ---
 
@@ -57,21 +57,21 @@ You will be asked for several configuration values. Enter values appropriate for
 
 SSL name-based virtual hosts are still not supported in Apache. However, you may use a single IP to provide self-signed SSL service for multiple vhosts. We'll need to edit the virtual host configuration directives for sites that you would like to enable SSL on. For each virtual host, you must add the following stanza, changing the values as appropriate for each site. Note that we've essentially duplicated the configuration for a non-SSL site, with the addition of three lines for SSL.
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/httpd/ssl/httpd.pem
-         SSLCertificateKeyFile /etc/httpd/ssl/httpd.key
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/httpd/ssl/httpd.pem
+     SSLCertificateKeyFile /etc/httpd/ssl/httpd.key
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 
@@ -144,22 +144,22 @@ For example, if we downloaded a root cert for Verisign, we would save it to `/et
 
 In the following example, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in our example). Add the following stanza to your virtual hosting configuration file, (e.g. `/etc/httpd/conf.d/vhost.conf`). Note that we've reproduced the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/httpd/ssl/www.mydomain.com.crt
-         SSLCertificateKeyFile /etc/httpd/ssl/www.mydomain.com.key
-         SSLCACertificateFile /etc/httpd/ssl/verisign.cer
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/httpd/ssl/www.mydomain.com.crt
+     SSLCertificateKeyFile /etc/httpd/ssl/www.mydomain.com.key
+     SSLCACertificateFile /etc/httpd/ssl/verisign.cer
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 

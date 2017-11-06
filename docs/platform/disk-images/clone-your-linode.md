@@ -3,13 +3,13 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 description: Clone your Disks to another Linode.
-keywords: 'clone, cloning, linode manager'
+keywords: ["clone", " cloning", " linode manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['migrate-to-linode/disk-images/clone-your-linode/']
-modified: Wednesday, February 15th, 2017
+aliases: ['migrate-to-linode/disk-images/clone-your-linode/']
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Monday, November 21st, 2016'
+published: 2016-11-21
 title: 'Clone Your Linode'
 ---
 
@@ -17,9 +17,9 @@ This guide will show you how to clone your Linode's existing disks or configurat
 
 ![Clone Your Linode](/content/assets/clone-your-linode.png "Clone Your Linode")
 
-{: .note }
->
-> To follow the steps in this guide, you will need a Linode with enough free storage space to accommodate your cloned disks.
+{{< note >}}
+To follow the steps in this guide, you will need a Linode with enough free storage space to accommodate your cloned disks.
+{{< /note >}}
 
 ## Clone Your Linode
 

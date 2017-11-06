@@ -3,11 +3,11 @@ author:
   name: Linode Community
   email: contribute@linode.com
 description: 'Set up, configure, and customize a Minecraft server using Spigot'
-keywords: 'minecraft,spigot,'
+keywords: ["minecraft", "spigot", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-with-spigot-ubuntu/']
-published: 'Tuesday, April 21st, 2015'
-modified: Tuesday, April 21st, 2015
+aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-with-spigot-ubuntu/']
+published: 2015-04-21
+modified: 2015-04-21
 modified_by:
   name: Elle Krout
 title: 'Running a Spigot Minecraft Server on Ubuntu 14.04 and 14.10'
@@ -36,8 +36,9 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
         sudo apt-get install git openjdk-7-jre-headless
 
-    {: .note }
-    > If your Linode is running Ubuntu 14.10 or higher, you can choose to install `openjdk-8-jre-headless` instead.
+    {{< note >}}
+If your Linode is running Ubuntu 14.10 or higher, you can choose to install `openjdk-8-jre-headless` instead.
+{{< /note >}}
 
 3.  Run `java -version` to confirm. You should see something like this:
 
@@ -70,9 +71,9 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
         wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         java -jar BuildTools.jar
 
-    {: .note }
-    >This may take approximately 10 minutes, depending in the size of the Linode you are building on.
-
+    {{< note >}}
+This may take approximately 10 minutes, depending in the size of the Linode you are building on.
+{{< /note >}}
 
 2.	When the build has finished, move the resulting `.jar` file to a server folder:
 
@@ -82,14 +83,14 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
 3.	We'll make a few scripts to make sure that your server's always up. Open a file called `wrapper.sh` in your preferred text editor. In the text editor, insert the following:
 
-    {: .file}
-    /home/minecraft/server/wrapper.sh
-    :   ~~~ sh
-        #!/bin/bash
-        cd /home/minecraft/server;
+    {{< file "/home/minecraft/server/wrapper.sh" sh >}}
+#!/bin/bash
+cd /home/minecraft/server;
 
-        java -XX:MaxPermSize=1024M -Xms512M -Xmx1536M -jar spigot.jar
-        ~~~
+java -XX:MaxPermSize=1024M -Xms512M -Xmx1536M -jar spigot.jar
+
+{{< /file >}}
+
 
     The values in this file are suggested for a Linode 2GB. You may want to change the RAM allocation depending on your Linode size.
 
@@ -107,13 +108,13 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
 6.  Open `eula.txt` and set the value to `true`:
 
-    {: .file}
-    /home/minecraft/server/eula.txt
-    :   ~~~
-        By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
-        #Fri Apr 17 17:02:15 UTC 2015
-        eula=true
-        ~~~
+    {{< file "/home/minecraft/server/eula.txt" >}}
+By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
+#Fri Apr 17 17:02:15 UTC 2015
+eula=true
+
+{{< /file >}}
+
 
 ## Configure SpigotMC to start on boot
 
@@ -123,11 +124,11 @@ We'll compile the [Spigot](https://spigotmc.com) Minecraft server (1.8.3 at the 
 
 2.  As the root user or with `sudo`, open `/etc/rc.local` and add the following before the `exit 0` line:
 
-    {: .file-excerpt}
-    /etc/local.rc
-    :   ~~~
-        su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
-        ~~~
+    {{< file-excerpt "/etc/local.rc" >}}
+su -l minecraft -c "screen -dmS minecraft /home/minecraft/server/wrapper.sh"
+
+{{< /file-excerpt >}}
+
 
     This line will, at reboot, create a new [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session as the Minecraft user, and launch SpigotMC in it.
 
@@ -178,8 +179,9 @@ Plugins can be found from the [Spigot Resources](http://www.spigotmc.org/resourc
 
         wget -P /home/minecraft/server/plugins/ --content-disposition <plugin url>
 
-    {: .note }
-    > When downloading plugins from Spigot, the `wget` flag `--content-disposition` will help ensure the plugin is downloaded with the correct filename.
+    {{< note >}}
+When downloading plugins from Spigot, the `wget` flag `--content-disposition` will help ensure the plugin is downloaded with the correct filename.
+{{< /note >}}
 
 2.  From within your screen session, enter `stop` to stop the server and exit the screen session. Your plugin will be loaded when you next start the SpigotMC server:
 

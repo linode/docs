@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
-keywords: 'linode beginners guide,linux beginner,linode beginner,Linode guide'
+keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['beginners-guide/']
-modified: Thursday, March 2nd, 2017
+aliases: ['beginners-guide/']
+modified: 2017-03-02
 modified_by:
   name: Phil Zona
-published: 'Monday, November 16th, 2009'
+published: 2009-11-16
 title: 'Linode Beginner''s Guide'
 ---
 
@@ -68,8 +68,9 @@ Please refer to our guide on [Linux package management](/content/tools-reference
 
 You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/content/networking/linux-static-ip-configuration/) or enable [Network Helper](/content/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
-{: .note}
-> We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
+{{< note >}}
+We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
+{{< /note >}}
 
 If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the "Remote Access" tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same datacenter. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
 

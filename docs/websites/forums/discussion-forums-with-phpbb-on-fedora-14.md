@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Fedora 14.'
-keywords: 'phpBB,forum software,web applications,PHP'
+keywords: ["phpBB", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/phpbb/fedora-14/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/bulletin-boards/phpbb/fedora-14/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Discussion Forums with phpBB on Fedora 14
 ---
 
@@ -30,11 +30,11 @@ Before installing phpBB, make sure your system is up to date and install the `ph
 
 After you have installed the packages above, you will need to update your php configuration to specify a timezone. You will want to modify or add the date.timezone option in `/etc/php.ini` to reflect the default timezone for your forum. For example:
 
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    date.timezone = 'America/New_York'
-    ~~~
+{{< file-excerpt "/etc/php.ini" ini >}}
+date.timezone = 'America/New_York'
+
+{{< /file-excerpt >}}
+
 
 The php.net documentation includes a list of [timezone names](http://www.php.net/manual/en/timezones.php) recognized by php. After updating your php configuration you will need to restart Apache by Issuing the following command:
 

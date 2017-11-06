@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Building dynamic websites and applications with Catalyst.'
-keywords: 'Catalyst,dynamic content,web applications'
+keywords: ["Catalyst", "dynamic content", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/catalyst/','websites/frameworks/catalyst-and-modperl/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/catalyst/','websites/frameworks/catalyst-and-modperl/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Friday, January 29th, 2010'
+published: 2010-01-29
 title: 'Catalyst and mod_perl'
 deprecated: true
 ---
@@ -80,20 +80,20 @@ For the purposes of this document we will assume that you have configured virtua
 
 Within your Apache virtual host configuration, set the following directives.
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    PerlSwitches -I/srv/www/example.com/application/lib/
-    <Perl>
-       use lib qw( /srv/www/example.com/application/lib/ );
-    </Perl>
-    PerlModule application
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+PerlSwitches -I/srv/www/example.com/application/lib/
+<Perl>
+   use lib qw( /srv/www/example.com/application/lib/ );
+</Perl>
+PerlModule application
 
-    <Location />
-        SetHandler          modperl
-        PerlResponseHandler application
-    </Location>
-    ~~~
+<Location />
+    SetHandler          modperl
+    PerlResponseHandler application
+</Location>
+
+{{< /file-excerpt >}}
+
 
 Alter this example to include the path to your Catalyst application's `lib/` directory. The `<Location>` specified above ensures that all responses that begin with a slash will be handled by `modperl`, and thus the Catalyst application. The `<Perl>` directive block provides the Perl process embedded in the web server process information regarding the path of your Catalyst application. The `PerlModule` directive forces Apache to load your application in memory when it starts, which allows for significantly faster execution times.
 
@@ -101,14 +101,14 @@ Alter this example to include the path to your Catalyst application's `lib/` dir
 
 It may be more effective to serve some resources directly from Apache without using the `modperl` handler. Include the following or equivalent lines in your virtual hosting configuration:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html
-    <Location /static>
-        SetHandler default-handler
-    </Location>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/public_html
+<Location /static>
+    SetHandler default-handler
+</Location>
+
+{{< /file-excerpt >}}
+
 
 With these lines, requests for the resources `http://example.com/static/style.css` and `http://example.com/static/bkgrnd.jpg` will be served from the resources `/srv/www/example.com/public_html/static/style.css` and `/srv/www/example.com/public_html/static/bkgrnd.jpg` respectively. You can add exemptions for multiple locations within your virtual host by using the `SetHandler` directive within location specific configuration sections. Ensure that the `<Location>` directive is inserted after the `mod_perl` configuration.
 
@@ -116,41 +116,41 @@ With these lines, requests for the resources `http://example.com/static/style.cs
 
 The following example represents a complete and fully functional virtual hosting configuration that combines elements from the previous three examples:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin admin@example.com
-         ServerName example.com
-         ServerAlias www.example.com
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.com
+     ServerName example.com
+     ServerAlias www.example.com
 
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
 
-             DocumentRoot /srv/www/example.com/public_html/
+         DocumentRoot /srv/www/example.com/public_html/
 
-             PerlSwitches -I/srv/www/example.com/application/lib/
-             <Perl>
-                use lib qw( /srv/www/example.com/application/lib/ );
-             </Perl>
+         PerlSwitches -I/srv/www/example.com/application/lib/
+         <Perl>
+            use lib qw( /srv/www/example.com/application/lib/ );
+         </Perl>
 
-             PerlModule application
-             <Location />
-                SetHandler          modperl
-                PerlResponseHandler application
-             </Location>
+         PerlModule application
+         <Location />
+            SetHandler          modperl
+            PerlResponseHandler application
+         </Location>
 
-             <Location /static>
-                SetHandler default-handler
-             </Location>
-             <Location /images>
-                SetHandler default-handler
-             </Location>
-             <Location /media>
-                SetHandler default-handler
-             </Location>
-    </VirtualHost>
-    ~~~
+         <Location /static>
+            SetHandler default-handler
+         </Location>
+         <Location /images>
+            SetHandler default-handler
+         </Location>
+         <Location /media>
+            SetHandler default-handler
+         </Location>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this example, all requests are handled by the Catalyst application except for requests for resources located beneath `/static`, `/images`, and `/media`. Requests for resources in these locations are served from the file system located beneath the `DocumentRoot`, which is `/srv/www/example.com/public_html/` in this example.
 

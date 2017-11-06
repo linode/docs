@@ -3,13 +3,13 @@ author:
   name: Ozan Yerli
   email: oyerli@gmail.com
 description: 'Installing and configuring Symfony for developing PHP applications on your CentOS 5 Linode.'
-keywords: 'cakephp,cakephp debian,php framework,debian,develop php'
+keywords: ["cakephp", "cakephp debian", "php framework", "debian", "develop php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/symfony/','websites/frameworks/symfony-on-centos-5/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/symfony/','websites/frameworks/symfony-on-centos-5/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Tuesday, June 8th, 2010'
+published: 2010-06-08
 title: Symfony on CentOS 5
 deprecated: true
 ---
@@ -35,64 +35,19 @@ Since CentOS does not include the latest version of PHP 5.2 (which is required f
 
 Edit the file `/etc/yum.repos.d/webtatic.repo`. Under `[webtatic]` add the following line:
 
-{: .file-excerpt }
-/etc/yum.repos.d/webtatic.repo
+{{< file-excerpt "/etc/yum.repos.d/webtatic.repo" ini >}}
+short_open_tag = On
 
-> exclude=php\*5.3\*
+{{< /file-excerpt >}}
 
-This will ensure that no PHP 5.3 packages will be installed, as Symfony does not use any features of PHP 5.3.
-
-Install Required Packages
--------------------------
-
-Install the Apache web server with devel package:
-
-    yum --enablerepo=webtatic install httpd httpd-devel
-
-Install the MySQL database server:
-
-    yum --enablerepo=webtatic install mysql mysql-server
-
-Install PHP 5.2 with the packages required for the Symfony:
-
-    yum --enablerepo=webtatic install php php-mysql php-pear php-devel php-xml php-posix php-mbstring
-
-Install the compiler packages, as we will need them for the installation of the APC accelerator:
-
-    yum install gcc
-
-Install the APC accelerator using PECL:
-
-    pecl install apc
-
-Answer "yes" to all questions. After the installation complete, execute the following command to add the APC module to the web server:
-
-    echo extension=apc.so > /etc/php.d/apc.ini
-
-Set the MySQL server to start on boot and start it:
-
-    /sbin/chkconfig --levels 235 mysqld on
-    service mysqld start
-
-Set the root password for the MySQL server and apply the security necessities:
-
-    mysql_secure_installation
-
-Edit /etc/php.ini and find the following line:
-
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    short_open_tag = On
-    ~~~
 
 Replace it with this line:
 
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    short_open_tag = Off
-    ~~~
+{{< file-excerpt "/etc/php.ini" ini >}}
+short_open_tag = Off
+
+{{< /file-excerpt >}}
+
 
 Set the web server to start on boot and start it:
 
@@ -150,25 +105,25 @@ Now, we need to configure the web server to serve our new project.
 
 Edit `/etc/httpd/conf/httpd.conf` and add at the end:
 
-{: .file-excerpt }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    NameVirtualHost *:80
-    <VirtualHost *:80>
-      DocumentRoot "/home/sfproject/web"
-      DirectoryIndex index.php
-      <Directory "/home/sfproject/web">
-        AllowOverride All
-        Allow from All
-      </Directory>
+{{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+NameVirtualHost *:80
+<VirtualHost *:80>
+  DocumentRoot "/home/sfproject/web"
+  DirectoryIndex index.php
+  <Directory "/home/sfproject/web">
+    AllowOverride All
+    Allow from All
+  </Directory>
 
-      Alias /sf /home/sfproject/lib/vendor/symfony/data/web/sf
-      <Directory "/home/sfproject/lib/vendor/symfony/data/web/sf">
-        AllowOverride All
-        Allow from All
-      </Directory>
-    </VirtualHost>
-    ~~~
+  Alias /sf /home/sfproject/lib/vendor/symfony/data/web/sf
+  <Directory "/home/sfproject/lib/vendor/symfony/data/web/sf">
+    AllowOverride All
+    Allow from All
+  </Directory>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart the web server:
 

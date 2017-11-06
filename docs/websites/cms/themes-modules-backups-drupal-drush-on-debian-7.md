@@ -3,12 +3,12 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Using Drush to install themes, modules, and backup systems'
-keywords: 'drupal,WordPress,joomla,cms,content management system,content management framework,debian,drush'
+keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", "debian", "drush"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, December 5th, 2014
+modified: 2014-12-05
 modified_by:
     name: Linode
-published: 'Friday, December 5th, 2014'
+published: 2014-12-05
 title: 'Themes, Modules, & Backups with Drupal Drush on Debian 7'
 external_resources:
  - '[SSL Certificates](/content/security/ssl/)'
@@ -18,7 +18,7 @@ Drush is a command line tool, which can be used for various Drupal projects. Thi
 
 Linode has another guide for installing Drush and creating a Drupal website, [Installing & Using Drupal Drush on Debian 7](/content/websites/cms/drush-drupal). Depending on your experience level with Drush, you may want to start with that guide.
 
-##Prerequisites
+## Prerequisites
 
 Before installing themes, modules, and a backup system with Drush, make sure that the following prerequisites have been met:
 
@@ -35,10 +35,11 @@ Before installing themes, modules, and a backup system with Drush, make sure tha
        sudo apt-get update && sudo apt-get upgrade
 
 
-{: .note }
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Installing Themes with Drush
+## Installing Themes with Drush
 
 Downloading, enabling, and setting the theme is extremely easy with Drupal Drush.
 
@@ -46,16 +47,17 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
     [![Corporate Clean Drupal Theme Notes.](/content/assets/corporate-clean-drupal-theme-name.png)](/content/assets/corporate-clean-drupal-theme-name.png)
 
-   {: .note}
-   > At the time of this guide's publication, this theme is not yet available for Drupal 8 beta. If you're using this version of Drupal, select another theme to replace Corporate Clean for this example.
+   {{< note >}}
+At the time of this guide's publication, this theme is not yet available for Drupal 8 beta. If you're using this version of Drupal, select another theme to replace Corporate Clean for this example.
+{{< /note >}}
 
 2. While logged in as the website owner, download and enable the theme:
 
        drush en corporateclean -y
 
-     {: .note }
-    >
-    > Notice the warning that "corporateclean was not found." The `drush en` command looks for the theme or module locally before downloading.
+     {{< note >}}
+Notice the warning that "corporateclean was not found." The `drush en` command looks for the theme or module locally before downloading.
+{{< /note >}}
 
 3. Set Corporate Clean as the default, active theme:
 
@@ -63,7 +65,7 @@ Downloading, enabling, and setting the theme is extremely easy with Drupal Drush
 
    Check the homepage of your site and the new theme should appear.
 
-##Installing Modules with Drush
+## Installing Modules with Drush
 
 Downloading and enabling a module is similar to working with a theme. However, modules can be used for almost any purpose. From enhancing public-facing functionality to providing a better administrative UI, there are thousands of Drupal modules. Try to find modules with clear documentation. Once installed, the browser interface can still be challenging.
 
@@ -75,9 +77,9 @@ Downloading and enabling a module is similar to working with a theme. However, m
 
        drush en commerce -y
 
-     {: .note }
-    >
-    > Notice that Commerce includes 21 sub-modules. Each has its own functionality and most have a control switch within the admin's browser interface.
+     {{< note >}}
+Notice that Commerce includes 21 sub-modules. Each has its own functionality and most have a control switch within the admin's browser interface.
+{{< /note >}}
 
 3. Sign in to the Drupal browser interface and click on the "Modules" selection.
 
@@ -89,7 +91,7 @@ Downloading and enabling a module is similar to working with a theme. However, m
 
 You have successfully installed and turned on a new module. The module is now running and ready to be used. In the case of the Commerce module set, notice the new "Store" menu on the Admin's homepage.
 
-##Backup a Drupal Site with Drush
+## Backup a Drupal Site with Drush
 
 It's always important to keep regular backups of a website. Backups protect you from losing data due to configuration changes, vulnerabilites, or system failures. Backups should be stored on a separate system whenever possible. Drush has built-in tools to help create backups of your site.
 
@@ -109,7 +111,7 @@ It's always important to keep regular backups of a website. Backups protect you 
 
     This will recreate the `drupal` folder, which you can then manually move into your web directory.
 
-###Automated Backups on Linode with Drush
+### Automated Backups on Linode with Drush
 
 The backup process above can be automated. You must create an SHH Pair Key, a Bash script, and use Cron automation.
 
@@ -119,15 +121,15 @@ The backup process above can be automated. You must create an SHH Pair Key, a Ba
 
        nano drupal-backup.sh
 
-    {: .file }
-    ~/drupal-backup.sh
-    : ~~~
-      #!/bin/bash
-      # Drupal Backup Script
-      cd /var/www/example.com/public_html/drupal/
-      drush archive-dump
-      rsync -avz /home/local-user/drush-backups/archive-dump/ remote-user@remote-ip-address:/home/user/
-      ~~~
+    {{< file "~/drupal-backup.sh" >}}
+#!/bin/bash
+# Drupal Backup Script
+cd /var/www/example.com/public_html/drupal/
+drush archive-dump
+rsync -avz /home/local-user/drush-backups/archive-dump/ remote-user@remote-ip-address:/home/user/
+
+{{< /file >}}
+
 
 3. Make the script file executable:
 
@@ -137,23 +139,23 @@ The backup process above can be automated. You must create an SHH Pair Key, a Ba
 
        crontab -e
 
-    {: .file-excerpt }
-    /tmp/crontab.A6VByT/crontab
-    : ~~~
-    # For example, you can run a backup of all your user accounts
-    # at 5 a.m every week with:
-    # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-    #
-    # For more information see the manual pages of crontab(5) and cron(8)
-    #
-    # m h  dom mon dow   command
-         1 0   *   *   1    ~/drupal-backup.sh
-      ~~~
+    {{< file-excerpt "/tmp/crontab.A6VByT/crontab" >}}
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h  dom mon dow   command
+     1 0   *   *   1    ~/drupal-backup.sh
+
+{{< /file-excerpt >}}
+
 
    This back up configuration creates a saved version once a week. The Cron timer is set for 12:01 a.m. every Sunday. There are many ways to configure a back up with additional options to consider. Check our [Cron](/content/tools-reference/tools/schedule-tasks-with-cron) guide for more information.
 
    This backup system leaves saved versions of the site and database on both the local and remote Linodes. Depending on the disk size of your Linode, you may want to occasionally delete older backup versions. The deletion task could be automated within the Bash script above. Since the Cron timer is only set for once a week, disk usage is probably not a large concern. There are many configuration options to consider.
 
-##Next Steps
+## Next Steps
 
 This guide was part of a series that created a Drupal site from start to finish on Linode. Your server is complete. Now that everything is installed, master the Drupal interface, Drupal modules, and themes. Create a stunning site for the world to see.

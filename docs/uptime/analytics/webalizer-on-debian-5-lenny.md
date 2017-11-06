@@ -4,13 +4,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Debian 5 (Lenny).'
-keywords: 'webalizer,statistics,analytics,stats,server monitoring,debian'
+keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/webalizer/debian-5-lenny/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-applications/analytics/webalizer/debian-5-lenny/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Wednesday, January 27th, 2010'
+published: 2010-01-27
 title: 'Webalizer on Debian 5 (Lenny)'
 ---
 
@@ -67,14 +67,14 @@ This section assumes that you've already configured at least one virtual host. I
 
 To process multiple virtual hosts, you can create a shell script. In this case, there are three virtual hosts. Be sure to substitute the correct hostname and paths for your particular virtual host configuration.
 
-{: .file-excerpt }
-/opt/webalizerScript.sh
-:   ~~~ bash
-    #!/bin/sh
-    webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
-    webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
-    webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
-    ~~~
+{{< file-excerpt "/opt/webalizerScript.sh" bash >}}
+#!/bin/sh
+webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
+webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
+webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
+
+{{< /file-excerpt >}}
+
 
 Make the script executable:
 

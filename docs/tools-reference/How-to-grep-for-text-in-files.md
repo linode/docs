@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Practical examples for using grep to find strings in text files and streams.'
-keywords: 'grep,search,files,filtering,regular expressions'
+keywords: ["grep", "search", "files", "filtering", "regular expressions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/grep/', 'tools-reference/search-and-filter-text-with-grep/']
-modified: Wednesday, May 4th, 2011
+aliases: ['linux-tools/common-commands/grep/', 'tools-reference/search-and-filter-text-with-grep/']
+modified: 2011-05-04
 modified_by:
   name: Linode
 og_description: “Learn how to use Grep for practical applications including filtering log files and finding strings in text files and streams.”
-published: 'Wednesday, June 30th, 2010'
+published: 2010-06-30
 title: How to Grep for Text in Files
 ---
 

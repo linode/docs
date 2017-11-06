@@ -3,10 +3,10 @@ author:
     name: Sam Foo
     email: docs@linode.com
 description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
-keywords: 'Apache2,Jupyter notebook,SSL,websocket'
+keywords: ["Apache2", "Jupyter notebook", "SSL", "websocket"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-published: 'Wednesday, August 22, 2017'
-modified: Wednesday, August 22, 2017
+published: 2017-08-22
+modified: 2017-08-22
 modified_by:
     name: Sam Foo
 title: 'Install a Jupyter Notebook Server on a Linode Behind an Apache Reverse Proxy'
@@ -72,18 +72,18 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 4.  Uncomment the following lines in the configuration file:
 
-    {: .file-excerpt}
-    /.jupyter/jupyter-notebook-config.py
-    :   ~~~ conf
-        c.NotebookApp.allow_origin = '*'
-        c.NotebookApp.base_url = '/jupyter'
-        c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
-        c.NotebookApp.ip = 'localhost'
-        c.NotebookApp.keyfile = '/absolute/path/to/mykey.key'
-        c.NotebookApp.open_browser = False
-        c.NotebookApp.password = 'paste_hashed_password_here'
-        c.NotebookApp.trust_xheaders = True
-        ~~~
+    {{< file-excerpt "/.jupyter/jupyter-notebook-config.py" aconf >}}
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.base_url = '/jupyter'
+c.NotebookApp.certfile = '/absolute/path/to/mycert.pem'
+c.NotebookApp.ip = 'localhost'
+c.NotebookApp.keyfile = '/absolute/path/to/mykey.key'
+c.NotebookApp.open_browser = False
+c.NotebookApp.password = 'paste_hashed_password_here'
+c.NotebookApp.trust_xheaders = True
+
+{{< /file-excerpt >}}
+
 
 ## Configure Apache Reverse Proxy
 
@@ -111,44 +111,45 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 5.  Comment out `DocumentRoot` to allow `https://your-domain-name/` to redirect as `https://your-domain-name/jupyter`. The `<Location>` directive connects the websocket in order to allow the default kernel to run:
 
-    {: .file-excerpt}
-    /etc/apache2/sites-available/jupyter.conf
-    :   ~~~conf
-        <VirtualHost *:443>
-            ServerAdmin webmaster@localhost
-        #   DocumentRoot /var/www/html
+    {{< file-excerpt "/etc/apache2/sites-available/jupyter.conf" aconf >}}
+<VirtualHost *:443>
+    ServerAdmin webmaster@localhost
+#   DocumentRoot /var/www/html
 
-            ErrorLog ${APACHE_LOG_DIR}.error.log
-            CustomLog ${APACHE_LOG_DIR}/access.log combined
+    ErrorLog ${APACHE_LOG_DIR}.error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
 
-            SSLCertificateFile /absolute/path/to/mycert.pem
-            SSLCertificateKeyFile /absolute/path/to/mykey.key
-            SSLProxyEngine On
-            SSLProxyVerify none
-            SSLProxyCheckPeerCN off
-            SSLProxyCheckPeerName off
-            SSLProxyCheckPeerExpire off
+    SSLCertificateFile /absolute/path/to/mycert.pem
+    SSLCertificateKeyFile /absolute/path/to/mykey.key
+    SSLProxyEngine On
+    SSLProxyVerify none
+    SSLProxyCheckPeerCN off
+    SSLProxyCheckPeerName off
+    SSLProxyCheckPeerExpire off
 
-            ServerName localhost
-            ProxyPreserveHost On
-            ProxyRequests Off
-            LogLevel debug
+    ServerName localhost
+    ProxyPreserveHost On
+    ProxyRequests Off
+    LogLevel debug
 
-            ProxyPass /jupyter https://localhost:8888/jupyter
-            ProxyPassReverse /jupyter https://localhost:8888/jupyter
-            RequestHeader set Origin "https://localhost:8888"
-            Redirect permanent / https://your-domain-name/jupyter
+    ProxyPass /jupyter https://localhost:8888/jupyter
+    ProxyPassReverse /jupyter https://localhost:8888/jupyter
+    RequestHeader set Origin "https://localhost:8888"
+    Redirect permanent / https://your-domain-name/jupyter
 
-            <Location "/jupyter/api/kernels">
-                ProxyPass wss://localhost:8888/jupyter/api/kernels
-                ProxyPassReverse wss://localhost:8888/jupyter/api/kernels
-            </Location>
+    <Location "/jupyter/api/kernels">
+        ProxyPass wss://localhost:8888/jupyter/api/kernels
+        ProxyPassReverse wss://localhost:8888/jupyter/api/kernels
+    </Location>
 
-        </VirtualHost>
-        ~~~
+</VirtualHost>
 
-    {: .note}
-    > The `/jupyter` url path can have any name as long as it matches the base url path defined in the Jupyter notebook configuration file.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+The `/jupyter` url path can have any name as long as it matches the base url path defined in the Jupyter notebook configuration file.
+{{< /note >}}
 
 6.  Enable the newly created configuration:
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your Ubuntu 8.04 (Hardy) Linode.'
-keywords: 'zimbra on ubuntu,zimbra groupware,zimbra mail server,linux mail server'
+keywords: ["zimbra on ubuntu", "zimbra groupware", "zimbra mail server", "linux mail server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/zimbra/install-zimbra-ubuntu-8-04-hardy/']
-modified: Tuesday, May 17th, 2011
+aliases: ['email/zimbra/install-zimbra-ubuntu-8-04-hardy/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, September 14th, 2009'
+published: 2009-09-14
 title: 'Email and Calendars with Zimbra 6 on Ubuntu 8.04 (Hardy)'
 ---
 
@@ -41,12 +41,12 @@ System Files Prerequisites
 
 Before proceeding, make sure your `/etc/hosts` file has valid entries. For reference, your file should resemble the following:
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 hostname.example.com hostname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 hostname.example.com hostname
+
+{{< /file >}}
+
 
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 

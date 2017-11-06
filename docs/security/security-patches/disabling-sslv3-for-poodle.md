@@ -3,12 +3,12 @@ author:
   name: Dave Russell
   email: drussell@linode.com
 description: 'Instructions on disabling SSLv3 to protect against the POODLE vulnerability'
-keywords: 'sslv3,poodle,security,patch,ubuntu,debian,centos,fedora'
+keywords: ["sslv3", "poodle", "security", "patch", "ubuntu", "debian", "centos", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, October 20th, 2014
+modified: 2014-10-20
 modified_by:
   name: Dave Russell
-published: 'Wednesday, October 15th, 2014'
+published: 2014-10-15
 title: Disabling SSLv3 for POODLE
 ---
 
@@ -120,8 +120,9 @@ You'll want to look in the `# TLS parameters` section of `/etc/postfix/main.cf`.
 
 For more information about Postfix's `smtpd_tls_mandatory_protocols` setting, please see their [Postfix Configuration Parameters](http://www.postfix.org/postconf.5.html#smtpd_tls_mandatory_protocols) documentation.
 
-{:.note}
-> The Postfix documentation has not yet been adjusted to disallow SSLv3.
+{{< note >}}
+The Postfix documentation has not yet been adjusted to disallow SSLv3.
+{{< /note >}}
 
 ### Dovecot
 

@@ -3,10 +3,10 @@ author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
 description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
-keywords: 'neovim,text,editor,vim,nvim,plugins'
+keywords: ["neovim", "text", "editor", "vim", "nvim", "plugins"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, October 2, 2017'
-modified: Monday, October 2, 2017
+published: 2017-10-02
+modified: 2017-10-02
 modified_by:
   name: Linode
 title: How to Install NeoVim and Plugins with vim-plug
@@ -123,15 +123,15 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
 2.  Add the following lines at the bottom of your `~/.config/nvim/init.vim` file to include the snippets available through UltiSnips and [vim-snippets](https://github.com/honza/vim-snippets):
 
-    {: .file-excerpt }
-    ~/.config/nvim/init.vim
-    :   ~~~ conf
-        call plug#begin()
-        Plug 'roxma/nvim-completion-manager'
-        Plug 'SirVer/ultisnips'
-        Plug 'honza/vim-snippets'
-        call plug#end()
-        ~~~
+    {{< file-excerpt "~/.config/nvim/init.vim" aconf >}}
+call plug#begin()
+Plug 'roxma/nvim-completion-manager'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+call plug#end()
+
+{{< /file-excerpt >}}
+
 
 3.  Launch nvim, execute `PlugInstall`, update the plugins, and exit:
 
@@ -157,11 +157,11 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
 
 1.  Insert the following line before `call plug#end()` in `~/.config/nvim/init.vim`:
 
-    {: .file-excerpt }
-    ~/.config/nvim/init.vim
-    :  ~~~
-       Plug 'brooth/far.vim'
-       ~~~
+    {{< file-excerpt "~/.config/nvim/init.vim" >}}
+Plug 'brooth/far.vim'
+
+{{< /file-excerpt >}}
+
 
 2.  Open nvim and execute `PlugInstall`, update the plugins, and exit. The plugin will be available when you restart nvim:
 
@@ -176,26 +176,26 @@ To exit without saving changes, press the **ESC** key to enter Command mode, the
         mkdir myproject
         cd myproject
 
-    {: .file-excerpt }
-    myproject/greeting.py
-    :   ~~~ python
-        def greet(name):
-            print('Hello', name)
-        ~~~
+    {{< file-excerpt "myproject/greeting.py" python >}}
+def greet(name):
+    print('Hello', name)
+
+{{< /file-excerpt >}}
+
 
     and
 
-    {: .file-excerpt }
-    myproject/persons.py
-    :   ~~~ python
-        #!/usr/bin/python3
-        from greeting import greet
-        # Import the greet function from greeting.py
-        # Pass a name to greet()
-        greet('Jack')
-        greet('Jill')
-        greet('Bob')
-        ~~~
+    {{< file-excerpt "myproject/persons.py" python >}}
+#!/usr/bin/python3
+from greeting import greet
+# Import the greet function from greeting.py
+# Pass a name to greet()
+greet('Jack')
+greet('Jill')
+greet('Bob')
+
+{{< /file-excerpt >}}
+
 
 4.  Open either file with nvim and use Command mode:
 

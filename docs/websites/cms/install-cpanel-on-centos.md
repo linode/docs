@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@Linode.com
 description: 'Use cPanel to manage services on your CentOS Linode.'
-keywords: 'cpanel,Linode control panel,install cpanel,cpanel centos'
+keywords: ["cpanel", "Linode control panel", "install cpanel", "cpanel centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos/']
-modified: Wednesday, September 7, 2016
+aliases: ['web-applications/control-panels/cpanel/centos-6/','websites/cms/cpanel-on-centos-6-5/','websites/cms/cpanel-on-centos-5/','websites/cms/cpanel-on-centos/']
+modified: 2016-09-07
 modified_by:
   name: Edward Angert
 published:
@@ -22,9 +22,10 @@ external_resources:
 
 <div class="panel panel-warning">
 **Linode does not sell cPanel licenses**
-{: .panel-heading}
+{{< panel-heading >}}
 <div class="panel-body">
 You'll need to [obtain a VPS license directly from cPanel](https://store.cpanel.net/view/cpanel/license-options) or an authorized distributor. Additionally, Linode does not provide cPanel support, although you may contact [cPanel support](https://www.cpanel.com/support/) directly once you've purchased a license. This product **must** be installed on a freshly deployed CentOS Linode. These instructions should be performed as the `root` user via SSH.
+{{< /panel-heading >}}
 
 </div></div>
 
@@ -42,8 +43,9 @@ cPanel needs to run on the CentOS kernel. To configure your Linode to boot the C
 
 ## Install cPanel
 
-{: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 Before proceeding, make sure you've purchased a cPanel license. You may obtain a license from the [cPanel Store](https://store.cpanel.net/). Next, log into your Linode as the `root` user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager).
 

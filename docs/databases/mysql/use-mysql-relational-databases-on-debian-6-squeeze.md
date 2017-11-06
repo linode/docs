@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Get started with MySQL for web and server applications on Debian 6 (Squeeze).'
-keywords: 'mysql debian 6,mysql debian,mysql debian squeeze,mysql linux,mysql linux Linode'
+keywords: ["mysql debian 6", "mysql debian", "mysql debian squeeze", "mysql linux", "mysql linux Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/debian-6-squeeze/']
-modified: Tuesday, January 14th, 2014
+aliases: ['databases/mysql/debian-6-squeeze/']
+modified: 2014-01-14
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, January 26th, 2011'
+published: 2011-01-26
 title: 'Use MySQL Relational Databases on Debian 6 (Squeeze)'
 ---
 
@@ -43,16 +43,16 @@ Configuring MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in the configuration file (`/etc/mysql/my.cnf`) as follows:
 
-{: .file-excerpt }
-/etc/mysql/my.cnf
-:   ~~~ ini
-    key_buffer = 16M
-    max_allowed_packet = 1M
-    thread_stack = 128K
-    table_cache = 4
-    sort_buffer = 64K
-    net_buffer_length = 2K
-    ~~~
+{{< file-excerpt "/etc/mysql/my.cnf" ini >}}
+key_buffer = 16M
+max_allowed_packet = 1M
+thread_stack = 128K
+table_cache = 4
+sort_buffer = 64K
+net_buffer_length = 2K
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart MySQL after making configuration changes:
 

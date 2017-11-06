@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Steps to take if your Linode becomes compromised by unauthorized parties.'
-keywords: 'root compromise,Linode troubleshooting,Linode troubleshooting,Linux configuration'
+keywords: ["root compromise", "Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['troubleshooting/compromise-recovery/']
-modified: Friday, July 12th, 2013
+aliases: ['troubleshooting/compromise-recovery/']
+modified: 2013-07-12
 modified_by:
   name: Linode
-published: 'Wednesday, August 26th, 2009'
+published: 2009-08-26
 title: Recovering from a System Compromise
 ---
 
@@ -74,9 +74,9 @@ The next task is to copy your data to the new Linode, and make sure you've purge
 1.  Create a temporary directory on the new Linode.
 2.  Copy any needed user and configuration data from the compromised Linode using [rsync](/content/linux-tools/utilities/rsync) or `scp`. If you are not familiar with these programs, you can find more information by entering the `man rsync` or `man scp` commands.
 
-    {: .caution }
-    >
-    > Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
+    {{< caution >}}
+Do not log in to the new Linode from the compromised Linode. Files should be pulled from the compromised server to your new setup instead.
+{{< /caution >}}
 
 3.  Audit your data using tools such as `rkhunter` and `clamav`. You may wish to use additional malware scanners as well to be certain you aren't retaining tainted files. Examine all system scripts manually for contaminated code, and replace all suspicious executable files with known good copies.
 
@@ -86,9 +86,9 @@ Alternately, if you're not comfortable copying anything from the compromised sys
 
 Next, you'll want to swap IP addresses so the new Linode uses the IP address assigned to the old Linode. Please note that if you configured any network services to use the new Linode's IP address, you will most likely want to modify their configurations now to use the old Linode's IP instead. For instructions, see [Swapping IP Addresses](/content/networking/remote-access/#swapping-ip-addresses).
 
- {: .note }
->
-> To swap IP addresses, both Linodes must be located in the same data center.
+ {{< note >}}
+To swap IP addresses, both Linodes must be located in the same data center.
+{{< /note >}}
 
 Alternately, you may wish to [update your DNS entries](/content/websites/hosting-a-website/#add-dns-records) to point to the new Linode's IP address instead. Please be aware that DNS propagation across the Internet may take some time. Boot the new Linode to resume normal operations.
 

@@ -3,12 +3,12 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'An overview of Drush the Drupal Shell or Command Line Tool'
-keywords: 'drupal,WordPress,joomla,cms,content management system,content management framework, debian, '
+keywords: ["drupal", "WordPress", "joomla", "cms", "content management system", "content management framework", " debian", " "]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, November 21st, 2014
+modified: 2014-11-21
 modified_by:
     name: Linode
-published: 'Friday, November 21st, 2014'
+published: 2014-11-21
 title: 'Installing & Using Drupal Drush on Debian 7'
 external_resources:
  - '[SSL Certificates](/content/security/ssl/)'
@@ -18,7 +18,7 @@ Drush is a command line tool for creating, maintaining, and modifying Drupal web
 
 Both new and experienced Drupal users can benefit from learning Drush. Users that have worked with a command line interface before have an advantage, but Drush is an excellent application for beginners, too.
 
-##Prerequisites
+## Prerequisites
 
 Before installing Drush and Drupal, ensure that the following prerequisites have been met:
 
@@ -29,10 +29,11 @@ Before installing Drush and Drupal, ensure that the following prerequisites have
 
        sudo apt-get update && sudo apt-get upgrade
 
-{: .note }
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Install Git & Composer
+## Install Git & Composer
 
 The developers of Drush recommend installation through Composer, a PHP dependency manager. The Drush project is hosted on GitHub and controlled with Git, another necessary app to install.
 
@@ -49,7 +50,7 @@ The developers of Drush recommend installation through Composer, a PHP dependenc
 
        sudo mv composer.phar /usr/local/bin/composer
 
-##Install Drush for All Users on the Server
+## Install Drush for All Users on the Server
 
 Composer is designed to install PHP dependencies on a per-project basis, but the steps below will install a global Drush for all projects.
 
@@ -87,7 +88,7 @@ Composer is designed to install PHP dependencies on a per-project basis, but the
        drush --version
 
 
-##Using Drush
+## Using Drush
 
 Drush has dozens of commands with hundreds of options. Drush can interface with MySQL, Drupal, Git, and more. To demonstrate using Drush, we will create a Drupal website along with a few other helpful commands.
 
@@ -103,7 +104,7 @@ Drush has dozens of commands with hundreds of options. Drush can interface with 
 
        drush status
 
-###Create a Drupal Website with Drush
+### Create a Drupal Website with Drush
 
 Drush can create a Drupal site with half the steps of a normal installation. The `drush dl drupal` command conveniently chooses the latest, stable installation of Drupal.
 
@@ -111,8 +112,9 @@ Drush can create a Drupal site with half the steps of a normal installation. The
 
        sudo apt-get install php5-gd
 
-	{: .note }
-	> If the install process displays a prompt concerning a modified configuration file, choose the "keep the local version currently installed" option.
+	{{< note >}}
+If the install process displays a prompt concerning a modified configuration file, choose the "keep the local version currently installed" option.
+{{< /note >}}
 
 2. Check that the Apache2 rewrite module is enabled:
 
@@ -131,8 +133,9 @@ Drush can create a Drupal site with half the steps of a normal installation. The
 
        sudo drush dl drupal --drupal-project-rename=drupal
 
-    {: .note }
-    > You can specify versions of Drupal. For example to install Drupal 8, which is in beta at the time of this publication, use **`drush dl drupal-8`**.
+    {{< note >}}
+You can specify versions of Drupal. For example to install Drupal 8, which is in beta at the time of this publication, use **`drush dl drupal-8`**.
+{{< /note >}}
 
 6. Change the working directory to the new 'drupal' folder:
 
@@ -144,10 +147,9 @@ Drush can create a Drupal site with half the steps of a normal installation. The
        sudo drush si standard --db-url=mysql://username:password@localhost/databasename --site-name=example.com
 
 
-    {: .note }
-    >Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
-
-
+    {{< note >}}
+Although MySQL accepts passwords with a special character, for example an exclamation point, the `drush si standard` command does not. If you have a special character in your MySQL password, you may need to change it.
+{{< /note >}}
 
     After installation is complete, Drush creates a user, named `admin`, and a random password. An example is pictured below. These credentials are used for the Drupal sign-in page.
 
@@ -158,7 +160,7 @@ Drush can create a Drupal site with half the steps of a normal installation. The
 
        sudo drush user-password admin --password=newpass
 
-###Setting the Site's Ownership and Permissions
+### Setting the Site's Ownership and Permissions
 
 In server administration, there are many options for user and group permissions. The directions below create a site owner and a site owner's group. The Apache user, named **www-data**, is added to the site owner's group. Then read, write, and execute permissions are granted to both the site owner and the site owner's group.
 
@@ -186,31 +188,32 @@ To create a new user for the site owner position, review the [Securing Your Serv
 
         drush status
 
-    {: .caution }
-    >File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command `ls -al` to list the file permissions within a directory.
+    {{< caution >}}
+File permissions are a constant concern for the system owner or root user. When installing new files, like a module or theme, make sure the Apache user www-data has access rights. Use the command `ls -al` to list the file permissions within a directory.
+{{< /caution >}}
 
 Your site is now available at **`example.com`/drupal** or **`ipaddress`/drupal**. Sign-in with the generated username and password and start delivering content to the world!
 
 When you're ready for the Drupal site to appear as your homepage, move the site to the **/var/www/`example.com`/** directory and double-check the document root listing in the virtual host file. See Step 5 in the [Configuring Name Based Virtual Hosts](/content/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) section of our *Hosting a Website* guide.
 
-##Additional Options
+## Additional Options
 
 There are many ways to set up administration for a website. Below are sections explaining some additional options. It's important to be aware of multi-site setups and additional security measures. The topics below touch on these subjects.
 
-###File Ownership, Permissions, and Security
+### File Ownership, Permissions, and Security
 
 The above setup is designed for ease of use. However, there are setups designed for tighter security and other considerations.
 
 - To design your own setup, read Linode's documentation on [Linux Users and Groups](/content/tools-reference/linux-users-and-groups) guide
 - For an extremely secure setup, read Drupal's [Securing File Permissions and Ownership](https://www.drupal.org/node/244924) guide
 
-###Multi-site Servers
+### Multi-site Servers
 
 To start, add a virtual host file with Apache. Next, build another site including the appropriate MySQL, PHP, and CMS configurations.
 
 - To add a virtual host file, read Linode's [Configure Name-based Virtual Hosts](/content/web-servers/lamp/lamp-server-on-debian-7-wheezy/#configure-name-based-virtual-hosts) guide
 
-###Install Drush for the Active User Only
+### Install Drush for the Active User Only
 
 You may want to install Drush for only certain users, for example, the **site owner**, **root**, and **www-data**. This may be optimal for a shared-hosting environment. Also, individual users can install their different versions of Drush and even install versions specific to a single project. The commands below should be run as the user in question, without `sudo`.
 
@@ -218,11 +221,11 @@ You may want to install Drush for only certain users, for example, the **site ow
 
        nano ~/.bashrc
 
-    {: .file-excerpt }
-    ~/.bashrc
-    :   ~~~
-        export PATH="$HOME/.composer/vendor/bin:$PATH"
-        ~~~
+    {{< file-excerpt "~/.bashrc" >}}
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
+{{< /file-excerpt >}}
+
 
 2. Run **source** on `.bashrc` to enable the changes:
 
@@ -232,8 +235,9 @@ You may want to install Drush for only certain users, for example, the **site ow
 
        composer global require drush/drush:dev-master
 
-    {: .note }
-    > To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:6.*`. For more information, check out the [Drush GitHub](https://github.com/drush-ops/drush) repository.
+    {{< note >}}
+To install a different version of Drush, replace `drush/drush:dev-master` with another version. For example, to install the stable release of Drush 6.x, use `drush/drush:6.*`. For more information, check out the [Drush GitHub](https://github.com/drush-ops/drush) repository.
+{{< /note >}}
 
 4. Check to see that Drush was installed successfully:
 

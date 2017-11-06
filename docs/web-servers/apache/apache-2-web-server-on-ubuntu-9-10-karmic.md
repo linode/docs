@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 9.10 (Karmic).'
-keywords: 'apache,apache ubuntu 9.10,apache ubuntu karmic,web server,apache on ubuntu,apache karmic'
+keywords: ["apache", "apache ubuntu 9.10", "apache ubuntu karmic", "web server", "apache on ubuntu", "apache karmic"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-9-10-karmic/','websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/apache/installation/ubuntu-9-10-karmic/','websites/apache/apache-2-web-server-on-ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Thursday, October 29th, 2009'
+published: 2009-10-29
 title: 'Apache 2 Web Server on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -23,37 +23,25 @@ Basic System Configuration
 
 Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
 
-{: .file }
-/etc/hosts
+{{< file "/etc/hosts" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 servername.example.com servername
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-Next, make sure your Linode's hostname is set to the short value you specified in `/etc/hosts`:
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    echo "servername" > /etc/hostname
-    hostname -F /etc/hostname
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
 
-Various packages discussed in this guide require the `universe` repositories to be enabled. To enable `universe`, first modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
+{{< /file >}}
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
-
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
 
 Install Apache 2
 ----------------
@@ -105,12 +93,12 @@ Configure Apache for Named-Based Virtual Hosting
 
 Apache supports both IP-based and name-based virtual hosting, allowing you to host multiple domains on a single server. To begin configuration, edit Apache's `ports.conf` file so the `NameVirtualHost` section resembles the following. Please be sure to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:80
-    Listen 80
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:80
+Listen 80
+
+{{< /file-excerpt >}}
+
 
 Next, issue the following command to disable the default Apache virtual host.
 
@@ -120,42 +108,42 @@ Each additional virtual host needs its own file in the `/etc/apache2/sites-avail
 
 First create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-             ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+         ServerAdmin username@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry above.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    Options ExecCGI
-    AddHandler cgi-script .pl
-    ~~~
+{{< file-excerpt "/etc/apache2/sites-available/example.com" apache >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+
+{{< /file-excerpt >}}
+
 
 Next, create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles this:
 
-{: .file }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin username@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 You'll note that some basic options are specified for both sites, including where the files for the site will reside (under `/srv/www/`). You can add (or remove) additional configuration options, such as the Perl support, on a site-by-site basis to these files as your needs dictate.
 
@@ -241,13 +229,13 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <IfModule mpm_itk_module>
-       AssignUserId webeditor webgroup
-    </IfModule>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
 

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Use wget to download files on the command line
-keywords: 'wget,command line,linux common commands'
+keywords: ["wget", "command line", "linux common commands"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/wget/']
-modified: Tuesday, May 17th, 2011
+aliases: ['linux-tools/common-commands/wget/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, October 25th, 2010'
+published: 2010-10-25
 title: Download Resources from the Command Line with wget
 ---
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on an Ubuntu 9.10 (Karmic) Linode.'
-keywords: 'openvpn,networking,vpn,ubuntu,ubuntu karmic,ubuntu 9.10'
+keywords: ["openvpn", "networking", "vpn", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/openvpn/ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['networking/openvpn/ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Wednesday, February 24th, 2010'
+published: 2010-02-24
 title: 'Secure Communications with OpenVPN on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -44,15 +44,15 @@ Most of the relevant configuration for the OpenVPN public key infrastructure is 
 
 Before we can generate the public key infrastructure for OpenVPN we must configure a few variables that the easy-rsa scripts will use to generate the scripts. These variables are set near the end of the `/etc/openvpn/easy-rsa/2.0/vars` file. Here is an example of the relevant values.
 
-{: .file }
-/etc/openvpn/easy-rsa/2.0/vars
-:   ~~~
-    export KEY_COUNTRY="US"
-    export KEY_PROVINCE="OH"
-    export KEY_CITY="Oxford"
-    export KEY_ORG="My Company"
-    export KEY_EMAIL="username@example.com"
-    ~~~
+{{< file "/etc/openvpn/easy-rsa/2.0/vars" >}}
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="OH"
+export KEY_CITY="Oxford"
+export KEY_ORG="My Company"
+export KEY_EMAIL="username@example.com"
+
+{{< /file >}}
+
 
 Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
 
@@ -145,30 +145,30 @@ We'll now need to configure our server file. There's an example file in `/usr/sh
 
 Modify the `remote` line in your `~/client.conf` file to reflect the OpenVPN server's name.
 
-{: .file }
-~/client.conf
-:   ~~~
-    # The hostname/IP and port of the server.
-    # You can have multiple remote entries
-    # to load balance between the servers.
-    remote example.com 1194
-    ~~~
+{{< file "~/client.conf" >}}
+# The hostname/IP and port of the server.
+# You can have multiple remote entries
+# to load balance between the servers.
+remote example.com 1194
+
+{{< /file >}}
+
 
 Edit the `client.conf` file to reflect the name of your key. In this example we use `client1` for the file name.
 
-{: .file }
-~/client.conf
-:   ~~~
-    # SSL/TLS parms.
-    # See the server config file for more
-    # description. It's best to use
-    # a separate .crt/.key file pair
-    # for each client. A single ca
-    # file can be used for all clients.
-    ca ca.crt
-    cert client1.crt
-    key client1.key
-    ~~~
+{{< file "~/client.conf" >}}
+# SSL/TLS parms.
+# See the server config file for more
+# description. It's best to use
+# a separate .crt/.key file pair
+# for each client. A single ca
+# file can be used for all clients.
+ca ca.crt
+cert client1.crt
+key client1.key
+
+{{< /file >}}
+
 
 Copy the `~/client.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
@@ -198,19 +198,19 @@ Once configured, the OpenVPN server allows you to encrypt traffic between your l
 
 By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode, and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode. Begin by adding the following parameter to the `/etc/openvpn/server.conf` file to enable "full tunneling":
 
-{: .file-excerpt }
-/etc/openvpn/server.conf
-:   ~~~
-    push "redirect-gateway def1"
-    ~~~
+{{< file-excerpt "/etc/openvpn/server.conf" >}}
+push "redirect-gateway def1"
+
+{{< /file-excerpt >}}
+
 
 Now edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system is able to forward IPv4 traffic:
 
-{: .file-excerpt }
-/etc/sysctl.conf
-:   ~~~
-    net.ipv4.ip_forward=1
-    ~~~
+{{< file-excerpt "/etc/sysctl.conf" >}}
+net.ipv4.ip_forward=1
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to set this variable for the current session:
 
@@ -225,35 +225,35 @@ Issue the following commands to configure `iptables` to properly forward traffic
 
 Before continuing, insert these `iptables` rules into your system's `/etc/rc.local` file to ensure that theses `iptables` rules will be recreated following your next reboot cycle:
 
-{: .file-excerpt }
-/etc/rc.local
-:   ~~~
-    #!/bin/sh -e
-    #
-    # [...]
-    #
-    iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-    iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
-    iptables -A FORWARD -j REJECT
-    iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+{{< file-excerpt "/etc/rc.local" >}}
+#!/bin/sh -e
+#
+# [...]
+#
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+iptables -A FORWARD -j REJECT
+iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
-    exit 0
-    ~~~
+exit 0
+
+{{< /file-excerpt >}}
+
 
 This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/opnevpn/server.conf` package. Before we can install `dnsmasq` we must enable the "universe" repositories. Edit the `/etc/apt/sources.list` to uncomment or add the following lines:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    #
-    # universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+#
+# universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 Now reload the package database by issuing the following command:
 
@@ -265,11 +265,11 @@ Finally install the `dnsmasq` package with the following command:
 
 Add the following directive to the `/etc/openvpn/server.conf` file:
 
-{: .file-excerpt }
-/etc/openvpn/server.conf
-:   ~~~
-    push "dhcp-option DNS 10.8.0.1"
-    ~~~
+{{< file-excerpt "/etc/openvpn/server.conf" >}}
+push "dhcp-option DNS 10.8.0.1"
+
+{{< /file-excerpt >}}
+
 
 Finally, before attempting to connect to the VPN in any configuration, restart the OpenVPN server by issuing the following command:
 

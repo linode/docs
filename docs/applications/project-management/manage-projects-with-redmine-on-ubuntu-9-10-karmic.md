@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
-keywords: 'redmine,redmine ubuntu 9.10,project management software,redmine postgresql,redmine linux'
+keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, November 23rd, 2009'
+published: 2009-11-23
 title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -35,26 +35,26 @@ Enable Package Repositories
 
 Edit the file /etc/apt/sources.list and uncomment the `universe` repositories if they're not already enabled. Your repository list should resemble this:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
@@ -134,19 +134,19 @@ Issue the following commands to enable proxy support:
 
 Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/content/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/apache2/sites-available/redmine.example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin support@example.com
-         ServerName redmine.example.com
+{{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin support@example.com
+     ServerName redmine.example.com
 
-         ProxyPass / http://localhost:8080/
+     ProxyPass / http://localhost:8080/
 
-         # Uncomment the line below if your site uses SSL.
-         #SSLProxyEngine On
-    </VirtualHost>
-    ~~~
+     # Uncomment the line below if your site uses SSL.
+     #SSLProxyEngine On
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site and reload Apache:
 
@@ -155,11 +155,11 @@ Issue the following commands to enable the site and reload Apache:
 
 Next, you'll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    listen 8080;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+listen 8080;
+
+{{< /file-excerpt >}}
+
 
 Installing and Configuring Redmine
 ----------------------------------
@@ -192,18 +192,18 @@ Issue these commands in the `psql` shell to set up the database for Redmine. Be 
 
 Create the file `config/database.yml` with the following contents:
 
-{: .file }
-config/database.yml
-:   ~~~ yaml
-    production:
-      adapter: postgresql
-      database: redmine
-      host: localhost
-      username: redmine
-      password: changeme
-      encoding: utf8
-      schema_search_path: public
-    ~~~
+{{< file "config/database.yml" yaml >}}
+production:
+  adapter: postgresql
+  database: redmine
+  host: localhost
+  username: redmine
+  password: changeme
+  encoding: utf8
+  schema_search_path: public
+
+{{< /file >}}
+
 
 Issue the following commands to complete database configuration:
 
@@ -259,17 +259,17 @@ Enter "root" and an email address at your domain for the postmaster mail query.
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 
-{: .file }
-config/email.yml
-:   ~~~ yaml
-    production:
-      delivery_method: :smtp
-      smtp_settings:
-        address: 127.0.0.1
-        port: 25
-        domain: redmine.example.com
-        authentication: :none
-    ~~~
+{{< file "config/email.yml" yaml >}}
+production:
+  delivery_method: :smtp
+  smtp_settings:
+    address: 127.0.0.1
+    port: 25
+    domain: redmine.example.com
+    authentication: :none
+
+{{< /file >}}
+
 
 This completes email configuration for your Redmine installation.
 
@@ -285,30 +285,30 @@ We'll create a "redmine" user to manage the installation. Issue the following co
 
 Edit the file `/opt/nginx/conf/nginx.conf`, setting the "user" parameter to "redmine":
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    user  redmine;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+user  redmine;
+
+{{< /file-excerpt >}}
+
 
 Add a server section after the first example server as follows. If you're proxying to nginx from another web server, be sure to change the `listen` directive to `listen 8080;` instead of the default.
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    server {
-         listen 80;
-         server_name  redmine.example.com;
-         root /srv/www/redmine.example.com/redmine/public/;
-         access_log /srv/www/redmine.example.com/redmine/log/access.log;
-         error_log /srv/www/redmine.example.com/redmine/log/error.log;
-         index index.html;
-         location / {
-            passenger_enabled on;
-            allow all;
-         }
-    }
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+server {
+     listen 80;
+     server_name  redmine.example.com;
+     root /srv/www/redmine.example.com/redmine/public/;
+     access_log /srv/www/redmine.example.com/redmine/log/access.log;
+     error_log /srv/www/redmine.example.com/redmine/log/error.log;
+     index index.html;
+     location / {
+        passenger_enabled on;
+        allow all;
+     }
+}
+
+{{< /file-excerpt >}}
+
 
 Start nginx:
 

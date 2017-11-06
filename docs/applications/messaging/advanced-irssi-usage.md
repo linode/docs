@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Advanced tips and tricks for using the Irssi IRC client.'
-keywords: 'irssi,irc,oftc,freenode,real time,chat'
+keywords: ["irssi", "irc", "oftc", "freenode", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/irc/advanced-irssi/']
-modified: Monday, April 15th, 2013
+aliases: ['communications/irc/advanced-irssi/']
+modified: 2013-04-15
 modified_by:
   name: Linode
-published: 'Monday, March 29th, 2010'
+published: 2010-03-29
 title: Advanced Irssi Usage
 external_resources:
  - '[Irssi Script Repository](http://scripts.irssi.org/)'

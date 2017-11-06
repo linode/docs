@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Deploying osCommerce, a popular e-commerce web application, on Ubuntu 9.10 (Karmic).'
-keywords: 'oscommerce,ecommerce,store,cart,shop,shopping'
+keywords: ["oscommerce", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/e-commerce/oscommerce/ubuntu-9-10-karmic/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, February 8th, 2010'
+published: 2010-02-08
 title: 'osCommerce on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -25,25 +25,25 @@ Installation
 
 Before installing osCommerce, we must ensure that the `universe` repositories are enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines:)
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 
@@ -105,22 +105,22 @@ SSL Certificates
 
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
-{: .file }
-/srv/www/example.com/public\_html/includes/configure.php
-:   ~~~ php
-    // Define the webserver and path parameters
-    // * DIR_FS_* = Filesystem directories (local/physical)
-    // * DIR_WS_* = Webserver directories (virtual/URL)
-    define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
-    define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
-    define('ENABLE_SSL', true); // secure webserver for checkout procedure?
-    define('HTTP_COOKIE_DOMAIN', 'www.example.com');
-    define('HTTPS_COOKIE_DOMAIN', 'example.com);
-    define('HTTP_COOKIE_PATH', '/');
-    define('HTTPS_COOKIE_PATH', '/');
-    define('DIR_WS_HTTP_CATALOG', '/');
-    define('DIR_WS_HTTPS_CATALOG', '/');
-    ~~~
+{{< file "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
+// Define the webserver and path parameters
+// * DIR_FS_* = Filesystem directories (local/physical)
+// * DIR_WS_* = Webserver directories (virtual/URL)
+define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
+define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
+define('ENABLE_SSL', true); // secure webserver for checkout procedure?
+define('HTTP_COOKIE_DOMAIN', 'www.example.com');
+define('HTTPS_COOKIE_DOMAIN', 'example.com);
+define('HTTP_COOKIE_PATH', '/');
+define('HTTPS_COOKIE_PATH', '/');
+define('DIR_WS_HTTP_CATALOG', '/');
+define('DIR_WS_HTTPS_CATALOG', '/');
+
+{{< /file >}}
+
 
 It should be noted that in this example, the certificate was issued without the `www` qualifier. Your specific requirements may require tweaking.
 

@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Learn how to Switch to a 64-bit Linux Kernel with Your Existing Distribution.'
-keywords: 'linux kernel,64-bit,switch kernel,migrate,disk'
+keywords: ["linux kernel", "64-bit", "switch kernel", "migrate", "disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['switching-kernels/','migrate-to-linode/disk-images/switching-to-a-64bit-kernel/','migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/']
-modified: Friday, October 13, 2016
+aliases: ['switching-kernels/','migrate-to-linode/disk-images/switching-to-a-64bit-kernel/','migrate-to-linode/disk-images/switch-to-a-64-bit-linux-kernel/']
+modified: 2016-10-13
 modified_by:
   name: Edward Angert
-published: 'Monday, April 14th, 2014'
+published: 2014-04-14
 title: 'Switch to a 64-bit Linux Kernel'
 external_resources:
  - '[ArchWiki](https://wiki.archlinux.org/index.php/Migrating_between_architectures)'
@@ -67,11 +67,11 @@ Now all future software installed from Yum will use the correct CPU architecture
 
 The Arch package manager, Pacman, chooses what architecture-specific builds to download based on the kernel. After switching to the 64-bit kernel, adjust this setting in `/etc/pacman.conf`:
 
-{: .file-excerpt }
-/etc/pacman.conf
-:   ~~~
-    Architecture=x86_64
-    ~~~
+{{< file-excerpt "/etc/pacman.conf" >}}
+Architecture=x86_64
+
+{{< /file-excerpt >}}
+
 
 ### Gentoo
 

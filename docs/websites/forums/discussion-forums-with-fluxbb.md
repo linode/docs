@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the simple and lightweight Discussion forum FluxBB on your Linode.'
-keywords: 'bulletin board,forum,discussion forum,fluxbb'
+keywords: ["bulletin board", "forum", "discussion forum", "fluxbb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/fluxbb/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/bulletin-boards/fluxbb/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: Discussion Forums with FluxBB
 deprecated: true
 ---
@@ -49,27 +49,27 @@ This document contains specific instructions for installing version 1.2.22 of Fl
 
 Now visit `http://example.com/install.php` in your web browser, and follow the setup procedure provided by the FluxBB web based interface. During this process you will be asked to create a `config.php` file that resembles the following:
 
-{: .file }
-/srv/www/example.com/public\_html/config.php
-:   ~~~ php
-    <?php
+{{< file "/srv/www/example.com/public\\_html/config.php" php >}}
+<?php
 
-    $db_type = 'mysqli';
-    $db_host = 'localhost';
-    $db_name = 'lollipop';
-    $db_username = 'foreman';
-    $db_password = '5t1ck';
-    $db_prefix = 'new_';
-    $p_connect = false;
+$db_type = 'mysqli';
+$db_host = 'localhost';
+$db_name = 'lollipop';
+$db_username = 'foreman';
+$db_password = '5t1ck';
+$db_prefix = 'new_';
+$p_connect = false;
 
-    $cookie_name = 'forum_cookie';
-    $cookie_domain = '';
-    $cookie_path = '/';
-    $cookie_secure = 0;
-    $cookie_seed = 'a3647cd58bd28fa9';
+$cookie_name = 'forum_cookie';
+$cookie_domain = '';
+$cookie_path = '/';
+$cookie_secure = 0;
+$cookie_seed = 'a3647cd58bd28fa9';
 
-    define('PUN', 1);
-    ~~~
+define('PUN', 1);
+
+{{< /file >}}
+
 
 When you have created this file, you will have completed the installation of FluxBB. Issue the following command to remove the setup files:
 

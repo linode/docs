@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
-keywords: 'apache,mono,.net,asp.net,mod\_mono'
+keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/mod-mono/ubuntu-10-04-lucid/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/mod-mono/ubuntu-10-04-lucid/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-ubuntu-10-04-lucid/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Thursday, August 5th, 2010'
+published: 2010-08-05
 title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Ubuntu 10.04 (Lucid)'
 deprecated: true
 ---
@@ -35,29 +35,29 @@ Install Required Software
 
 Before installing `mod_mono` we must ensure that the `universe` repositories are enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 
@@ -107,34 +107,34 @@ Recent versions of `mod_mono` utilize the `AutoHosting` method of application de
 
 For the sake of this guide, we're going to create a site on the root of our example domain, `example.org`. If you already have an Apache configuration for the root of your site, you will need to modify your existing virtual host file or create a new one on a subdomain of your site. Create the virtual host file, taking the following example virtual host configuration and modifying it to suit your needs. You may also use the [Mod\_Mono Configuration Generator](http://go-mono.com/config-mod-mono/) to generate your own custom configuration.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-      ServerName example.org
-      ServerAdmin web-admin@example.org
-      ServerAlias www.example.org
-      DocumentRoot /srv/www/example.org/public_html
-      ErrorLog /srv/www/example.org/logs/error.log
-      CustomLog /srv/www/example.org/logs/access.log combined
+{{< file-excerpt "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost *:80>
+  ServerName example.org
+  ServerAdmin web-admin@example.org
+  ServerAlias www.example.org
+  DocumentRoot /srv/www/example.org/public_html
+  ErrorLog /srv/www/example.org/logs/error.log
+  CustomLog /srv/www/example.org/logs/access.log combined
 
-      MonoServerPath example.org "/usr/bin/mod-mono-server2"
-      MonoDebug example.org true
-      MonoSetEnv example.org MONO_IOMAP=all
-      MonoApplications example.org "/:/srv/www/example.org/public_html"
-      <Location "/">
-        Allow from all
-        Order allow,deny
-        MonoSetServerAlias example.org
-        SetHandler mono
-        SetOutputFilter DEFLATE
-        SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
-      </Location>
-      <IfModule mod_deflate.c>
-        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
-      </IfModule>
-    </VirtualHost>
-    ~~~
+  MonoServerPath example.org "/usr/bin/mod-mono-server2"
+  MonoDebug example.org true
+  MonoSetEnv example.org MONO_IOMAP=all
+  MonoApplications example.org "/:/srv/www/example.org/public_html"
+  <Location "/">
+    Allow from all
+    Order allow,deny
+    MonoSetServerAlias example.org
+    SetHandler mono
+    SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
+  </Location>
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
+  </IfModule>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Save and close the file, and create the directories referenced in the `DocumentRoot` and `ErrorLog` directive:
 
@@ -202,63 +202,63 @@ Creating a Simple ASP.NET Application
 
 Now that you have created a sample database, you can test your installation with the following test page. This will not only test your Mono installation but it will also will test your MySQL connector configuration. First create a file called `testdb.aspx` in your `DocumentRoot` and paste the text below into it. Be sure to change the `User ID` and `Password` to match what you specified above.
 
-{: .file-excerpt }
-/srv/www/example.org/public\_html/testdb.aspx
-:   ~~~ aspx
-    <%@ Page Language="C#" %>
-    <%@ Import Namespace="System.Data" %>
-    <%@ Import Namespace="MySql.Data.MySqlClient" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-    <title>ASP and MySQL Test Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{{< file-excerpt "/srv/www/example.org/public\\_html/testdb.aspx" aspx-cs >}}
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="MySql.Data.MySqlClient" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>ASP and MySQL Test Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <script runat="server">
-    private void Page_Load(Object sender, EventArgs e)
-    {
-    string connectionString = "Server=127.0.0.1;Database=sample;User ID=testuser;Password=somepassword;Pooling=false;";
-    MySqlConnection dbcon = new MySqlConnection(connectionString);
-    dbcon.Open();
+<script runat="server">
+private void Page_Load(Object sender, EventArgs e)
+{
+string connectionString = "Server=127.0.0.1;Database=sample;User ID=testuser;Password=somepassword;Pooling=false;";
+MySqlConnection dbcon = new MySqlConnection(connectionString);
+dbcon.Open();
 
-    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM test", dbcon);
-    DataSet ds = new DataSet();
-    adapter.Fill(ds, "result");
+MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM test", dbcon);
+DataSet ds = new DataSet();
+adapter.Fill(ds, "result");
 
-    dbcon.Close();
-    dbcon = null;
+dbcon.Close();
+dbcon = null;
 
-    SampleControl.DataSource = ds.Tables["result"];
-    SampleControl.DataBind();
-    }
-    </script>
+SampleControl.DataSource = ds.Tables["result"];
+SampleControl.DataBind();
+}
+</script>
 
-    </head>
+</head>
 
-    <body>
-    <h1>Testing Sample Database</h1>
-    <asp:DataGrid runat="server" id="SampleControl" />
-    </body>
+<body>
+<h1>Testing Sample Database</h1>
+<asp:DataGrid runat="server" id="SampleControl" />
+</body>
 
-    </html>
-    ~~~
+</html>
+
+{{< /file-excerpt >}}
+
 
 Next you will need to create a `web.config` file. You can copy and paste the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
-{: .file-excerpt }
-/srv/www/example.org/public\_html/web.config
-:   ~~~
-    <configuration>
-      <system.web>
-        <customErrors mode="Off"/>
-        <compilation>
-          <assemblies>
-            <add assembly="MySql.Data"/>
-          </assemblies>
-        </compilation>
-      </system.web>
-    </configuration>
-    ~~~
+{{< file-excerpt "/srv/www/example.org/public\\_html/web.config" >}}
+<configuration>
+  <system.web>
+    <customErrors mode="Off"/>
+    <compilation>
+      <assemblies>
+        <add assembly="MySql.Data"/>
+      </assemblies>
+    </compilation>
+  </system.web>
+</configuration>
+
+{{< /file-excerpt >}}
+
 
 Restart the web server process by issuing the following command:
 

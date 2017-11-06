@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 5 (Lenny)'
-keywords: 'nginx,http,web servers,debian,debian lenny,debian 5'
+keywords: ["nginx", "http", "web servers", "debian", "debian lenny", "debian 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/debian-5-lenny/','websites/nginx/websites-with-nginx-on-debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['web-servers/nginx/installation/debian-5-lenny/','websites/nginx/websites-with-nginx-on-debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Wednesday, February 24th, 2010'
+published: 2010-02-24
 title: 'Websites with nginx on Debian 5 (Lenny)'
 ---
 

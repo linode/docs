@@ -3,10 +3,10 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04.'
-keywords: 'owncloud, install owncloud, cloud storage ubuntu'
+keywords: ["owncloud", " install owncloud", " cloud storage ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, August 7th, 2017'
-modified: 'Monday, August 7th, 2017'
+published: 2017-08-07
+modified: 2017-08-07
 modified_by:
   name: Angel Guarisma
 title: 'Install and Configure ownCloud on Ubuntu 16.04'

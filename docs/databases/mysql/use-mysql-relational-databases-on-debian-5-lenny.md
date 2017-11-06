@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Debian Lenny.'
-keywords: 'MySQL on Linux,MySQL Debian,MySQL Lenny,MySQL Linode'
+keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['databases/mysql/debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Friday, August 7th, 2009'
+published: 2009-08-07
 title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 ---
 

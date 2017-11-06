@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This quick answer guide shows how to find the IP address of your Linode either through the Linode Manager or while in an SSH session.'
-keywords: 'ip address,ip addresses,address,addresses'
+keywords: ["ip address", "ip addresses", "address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Thursday, September 21st, 2017'
+modified: 2017-09-21
 modified_by:
   name: Linode
-published: 'Thursday, September 21st, 2017'
+published: 2017-09-21
 title: Find Your Linode's IP Address
 ---
 
@@ -58,10 +58,10 @@ The output shows:
 - One public IPv6 address, `2600:3c03::f03c:91ff:fe26:7e8e`
 - One private IPv6 address, `fe80::f03c:91ff:fe26:7e8e`
 
-{:.note}
->
->DHCP will only recognize one IPv4 address. If you have more than one IPv4 address assigned to your Linode, you must either set those addresses statically or enable Network Helper. Otherwise, those addresses will not be usable to the system, nor will they display in `ip` commands. See the following guides for more information:
->
->[Linux Static IP Configuration](/content/networking/linux-static-ip-configuration)
->
->[Network Helper](/content/platform/network-helper)
+{{< note >}}
+DHCP will only recognize one IPv4 address. If you have more than one IPv4 address assigned to your Linode, you must either set those addresses statically or enable Network Helper. Otherwise, those addresses will not be usable to the system, nor will they display in `ip` commands. See the following guides for more information:
+
+[Linux Static IP Configuration](/content/networking/linux-static-ip-configuration)
+
+[Network Helper](/content/platform/network-helper)
+{{< /note >}}

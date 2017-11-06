@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Create a LAMP stack on a CentOS 6 Linode.'
-keywords: 'LAMP,CentOS,CentOS 6,apache,mysql,php,centos lamp'
+keywords: ["LAMP", "CentOS", "CentOS 6", "apache", "mysql", "php", "centos lamp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/','websites/lamp/lamp-on-centos-6/']
-modified: Tuesday, December 1st, 2015
+aliases: ['lamp-guides/centos-6/','websites/lamp/lamp-server-on-centos-6/','websites/lamp/lamp-on-centos-6/']
+modified: 2015-12-01
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, July 19th, 2011'
+published: 2011-07-19
 title: LAMP on CentOS 6
 external_resources:
  - '[CentOS Linux Home Page](http://www.centos.org/)'
@@ -21,9 +21,9 @@ external_resources:
 
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare servers for hosting web content. This guide shows you how to install a LAMP stack on a CentOS 6 system.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -51,27 +51,27 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 
 2.  Edit the `httpd.conf` under `/etc/httpd/conf/` to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .note}
-    >
-    >Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
-    >
-    >     cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+    {{< note >}}
+Before changing any configuration files, it is advised that you make a backup of the file. To make a backup:
 
-    {: .file-excerpt }
-    /etc/httpd/conf/httpd.conf
-    :   ~~~ conf
-        KeepAlive Off
+cp /etc/httpd/conf/httpd.conf ~/httpd.conf.backup
+{{< /note >}}
 
-        ...
+    {{< file-excerpt "/etc/httpd/conf/httpd.conf" aconf >}}
+KeepAlive Off
 
-        <IfModule prefork.c>
-            StartServers        4
-            MinSpareServers     20
-            MaxSpareServers     40
-            MaxClients          200
-            MaxRequestsPerChild 4500
-        </IfModule>
-        ~~~
+...
+
+<IfModule prefork.c>
+    StartServers        4
+    MinSpareServers     20
+    MaxSpareServers     40
+    MaxClients          200
+    MaxRequestsPerChild 4500
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 ### Configure Apache Virtual Hosts
 
@@ -79,26 +79,26 @@ There are different ways to set up virtual hosts; however, the method below is r
 
 1.  Create a file under `/etc/httpd/conf.d` called `vhost.conf`. Replace instances of `example.com` with your own domain information:
 
-    {: .file-excerpt }
-    /etc/httpd/conf.d/vhost.conf
-    :   ~~~ apache
-        NameVirtualHost *:80
+    {{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+NameVirtualHost *:80
 
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.com
-             ServerName example.com
-             ServerAlias www.example.com
-             DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log
-             CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
-        ~~~
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/example.com/public_html/
+     ErrorLog /var/www/example.com/logs/error.log
+     CustomLog /var/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
     Additional code blocks can be added to the file for any other domains you with to host on the Linode.
 
-    {: .note}
-    >
-    >`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+    {{< note >}}
+`ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
+{{< /note >}}
 
 2.  Create the directories referenced above:
 
@@ -112,12 +112,11 @@ There are different ways to set up virtual hosts; however, the method below is r
 
     You should new be able to view a default Apache page on your website.
 
-    {: .note}
-    >
-    >Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
-    >
-    >     sudo service httpd reload
+    {{< note >}}
+Anytime you change an option in your `vhost.conf` file, or any other Apache configuration file, remember to reload the configuration with the following command:
 
+sudo service httpd reload
+{{< /note >}}
 
 ## MySQL
 
@@ -172,17 +171,17 @@ With Apache and MySQL installed you are ready to move on to installing PHP.
 
 2.  Edit `/etc/php.ini` for better error messages and logs, and upgraded performance. These modifications provide a good starting point for a **Linode 2GB**:
 
-    {: .file-excerpt }
-    /etc/php.ini
-    :   ~~~ ini
-        error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-        error_log = /var/log/php/error.log
-        max_input_time = 30
-        ~~~
+    {{< file-excerpt "/etc/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+error_log = /var/log/php/error.log
+max_input_time = 30
 
-    {: .note}
-    >
-    >Ensure that all the lines noted above are uncommented. A commented line begins with a semicolon (**;**).
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+Ensure that all the lines noted above are uncommented. A commented line begins with a semicolon (**;**).
+{{< /note >}}
 
 3.  Create the log directory for PHP and give the Apache user ownership:
 

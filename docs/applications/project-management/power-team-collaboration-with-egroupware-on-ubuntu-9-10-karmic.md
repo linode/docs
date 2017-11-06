@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a groupware system with eGroupware on Ubuntu 9.10 (Karmic).'
-keywords: 'groupware,email,collaboration,ubuntu,karmic'
+keywords: ["groupware", "email", "collaboration", "ubuntu", "karmic"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/project-management/egroupware/ubuntu-9-10-karmic/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, February 1st, 2010'
+published: 2010-02-01
 title: 'Power Team Collaboration with eGroupware on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -28,17 +28,17 @@ Make sure your package repositories and installed programs are up to date by iss
 
 In this guide we will be installing eGroupware from the packages provided by the Ubuntu community. Although there are some slightly more contemporary versions of eGroupware available from upstream sources, we've chosen to install using this method in an effort to ensure greater stability, easy upgrade paths, and a more straight forward installation process. Before we begin the installation, we must enable the "universe" repositories for Ubuntu 9.10. Uncomment the following lines from `/etc/apt/sources.list` to make these repositories accessible:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to update your local package database:
 
@@ -62,11 +62,11 @@ The `debconf` process creates an administrator account for the "header system", 
 
 Additionally edit your `/etc/php5/apach2/php.ini` file to include the following line:
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    mbstring.func_overload = 7
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+mbstring.func_overload = 7
+
+{{< /file-excerpt >}}
+
 
 Congratulations, you've now installed eGroupware!
 

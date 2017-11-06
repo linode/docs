@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB.'
-keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode'
+keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['platform/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/',  'custom-instances/pv-grub-custom-compiled-kernel/']
-modified: Thursday, June 19th, 2014
+aliases: ['platform/custom-kernels-distros/run-a-custom-compiled-kernel-with-pvgrub/',  'custom-instances/pv-grub-custom-compiled-kernel/']
+modified: 2014-06-19
 modified_by:
   name: Linode
-published: 'Saturday, July 17th, 2010'
+published: 2010-07-17
 title: 'Run a Custom Compiled Kernel with PV-GRUB'
 ---
 
@@ -42,7 +42,7 @@ If this is the first time you've compiled a kernel on your Linode, issue the fol
 
     rm -rf /boot/*
 
-##Compile and Install the Kernel
+## Compile and Install the Kernel
 
 ### Download Kernel Sources
 
@@ -105,15 +105,15 @@ Once your configuration options are set, exit the configuration interface and an
 
 4.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-    	timeout 5
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+timeout 5
 
-    	title Custom Compiled, kernel 3.19.3-custom
-    	root (hd0)
-    	kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
-        ~~~
+title Custom Compiled, kernel 3.19.3-custom
+root (hd0)
+kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
+
+{{< /file-excerpt >}}
+
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process will not work correctly with your Linode, and it isn't needed anyhow.
 

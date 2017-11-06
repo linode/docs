@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 9.10 (Karmic).'
-keywords: 'ubuntu dns,open source dns,dns,resolving,caching,unbound'
+keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-guides/unbound-dns-resolver-ubuntu-9-10-karmic/']
-modified: Monday, July 15th, 2013
+aliases: ['dns-guides/unbound-dns-resolver-ubuntu-9-10-karmic/']
+modified: 2013-07-15
 modified_by:
   name: Linode
-published: 'Tuesday, September 7th, 2010'
+published: 2010-09-07
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -25,8 +25,9 @@ Install Unbound
 
 The unbound package for Ubuntu is included in the `universe` repository. To enable `universe`, modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
 
-{: .file }
+{{< file >}}
 /etc/apt/sources.list
+{{< /file >}}
 
 > \#\# main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> karmic main restricted
 >
@@ -54,8 +55,9 @@ Configure Unbound
 
 In the default configuration, Unbound will only listen for requests on the local interface. If you want unbound to attach to additional interfaces, these interfaces must be configured manually. Possible interfaces include the public interface or the private networking interface. Specify those IP addresses after the `server:` directive in the following format:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   interface: 19.28.37.56 interface: 192.168.3.105
@@ -66,8 +68,9 @@ Modify these `interface:` directives to reflect the actual addresses assigned to
 
 By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines similar to the following example into the `unbound.conf` file after the `server:` directive.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   access-control: 127.0.0.0/8 allow access-control: 192.168.0.0/16 allow\_snoop
@@ -104,8 +107,9 @@ Before you can begin using your Unbound instance to resolve DNS queries, you nee
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
-{: .file }
+{{< file >}}
 /etc/resolve.conf
+{{< /file >}}
 
 > nameserver 127.0.0.1
 

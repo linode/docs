@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Fedora 14.'
-keywords: 'cherokee fedora 14,cherokee web sever,cherokee,fedora 14'
+keywords: ["cherokee fedora 14", "cherokee web sever", "cherokee", "fedora 14"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-fedora-14/','websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/']
-modified: Monday, October 7th, 2013
+aliases: ['web-servers/cherokee/installing-cherokee-fedora-14/','websites/cherokee/websites-with-the-cherokee-web-server-on-fedora-14/']
+modified: 2013-10-07
 modified_by:
   name: Linode
-published: 'Thursday, May 27th, 2010'
+published: 2010-05-27
 title: Websites with the Cherokee Web Server on Fedora 14
 ---
 

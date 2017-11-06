@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Debian 6 (Squeeze).'
-keywords: 'apache debian 6,apache debian squeeze,linux web server,apache on debian,apache squeeze'
+keywords: ["apache debian 6", "apache debian squeeze", "linux web server", "apache on debian", "apache squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/debian-6-squeeze/','websites/apache/apache-2-web-server-on-debian-6-squeeze/']
-modified: Friday, October 4th, 2013
+aliases: ['web-servers/apache/installation/debian-6-squeeze/','websites/apache/apache-2-web-server-on-debian-6-squeeze/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Wednesday, February 23rd, 2011'
+published: 2011-02-23
 title: 'Apache 2 Web Server on Debian 6 (Squeeze)'
 ---
 
@@ -99,50 +99,50 @@ Follow these instructions:
 
         nano /etc/apache2/sites-available/example.net
 
-    {: .file }
-/etc/apache2/sites-available/example.net
-    :   ~~~ apache
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.net
-             ServerName example.net
-             ServerAlias www.example.net
-             DocumentRoot /srv/www/example.net/public_html/
-             ErrorLog /srv/www/example.net/logs/error.log
-             CustomLog /srv/www/example.net/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/example.net" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.net
+     ServerName example.net
+     ServerAlias www.example.net
+     DocumentRoot /srv/www/example.net/public_html/
+     ErrorLog /srv/www/example.net/logs/error.log
+     CustomLog /srv/www/example.net/logs/access.log combined
+</VirtualHost>
 
-    {:.note}
-    >
-    > If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
-    >
-    > {: .file-excerpt }
-/etc/apache2/sites-available/example.net
-    > :   ~~~ apache
-    >     Options ExecCGI
-    >     AddHandler cgi-script .pl
-    >     ~~~
+{{< /file >}}
+
+
+    {{< note >}}
+If you would like to enable Perl support, add the following lines to the `VirtualHost` entry, right above the closing `</VirtualHost>` tag:
+
+{{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+{{< /note >}}
+
+{{< /file-excerpt >}}
+
     >
 3.  Now you'll make the configuration file for the second domain. Create the file for **example.org**, called `/etc/apache2/sites-available/example.org`, with the following content. Be sure to replace **example.org** with your own domain name.
 
         nano /etc/apache2/sites-available/example.org
 
-    {: .file }
-/etc/apache2/sites-available/example.org
-    :   ~~~ apache
-        <VirtualHost *:80>
-             ServerAdmin admin@example.org
-             ServerName example.org
-             ServerAlias www.example.org
-             DocumentRoot /srv/www/example.org/public_html/
-             ErrorLog /srv/www/example.org/logs/error.log
-             CustomLog /srv/www/example.org/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost *:80>
+     ServerAdmin admin@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
 
-    {:.note}
-    >
-    > Some basic options are specified for both **example.net** and **example.org**, including the location for the website files: under `/srv/www/`. You can add (or remove) additional configuration options, such as the Perl support shown in Step 2, on a site-by-site basis.
+{{< /file >}}
+
+
+    {{< note >}}
+Some basic options are specified for both **example.net** and **example.org**, including the location for the website files: under `/srv/www/`. You can add (or remove) additional configuration options, such as the Perl support shown in Step 2, on a site-by-site basis.
+{{< /note >}}
 
 4.  Create the directories for **example.net's** website files and logs by executing the following commands:
 
@@ -192,9 +192,9 @@ To enable an installed module, run the following command:
 
     a2enmod [module-name]
 
- {: .note }
->
-> In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
+ {{< note >}}
+In the `/etc/apache2/mods-available/` directory, files have `.load` and `.conf` extensions. Module names do not include the extensions.
+{{< /note >}}
 
 To disable a module that is currently enabled, run this command:
 
@@ -246,13 +246,13 @@ For more complex setups, however, we recommend that you consider using an altern
 
     Add the following lines to the file's `<VirtualHost >` block:
 
-    {: .file-excerpt }
-/etc/apache2/sites-available/example.net
-    :   ~~~ apache
-        <IfModule mpm_itk_module>
-           AssignUserId webeditor webgroup
-        </IfModule>
-        ~~~
+    {{< file-excerpt "/etc/apache2/sites-available/example.net" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
     In this example, `webeditor` is the name of the user for example.net, and `webgroup` is the name of the group that owns example.net. Remember that you must create the user accounts and groups using the `useradd` command.
 

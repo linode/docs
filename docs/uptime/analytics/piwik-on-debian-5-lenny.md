@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Get in-depth web analytics with Piwik, a self-hosted, open source solution on Debian Lenny.'
-keywords: 'open source analytics,piwik debian,piwik,analytics,debian. tracking,statistics'
+keywords: ["open source analytics", "piwik debian", "piwik", "analytics", "debian. tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/piwik/debian-5-lenny/']
-modified: Tuesday, January 28th, 2014
+aliases: ['web-applications/analytics/piwik/debian-5-lenny/']
+modified: 2014-01-28
 modified_by:
   name: Linode
-published: 'Thursday, December 10th, 2009'
+published: 2009-12-10
 title: 'Piwik on Debian 5 (Lenny)'
 ---
 
@@ -36,11 +36,11 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
 If you followed our recommended settings in the LAMP guide for Debian, you would have set PHP's `memory_limit` value to 64 megabytes. For "medium to high traffic" sites, Piwik's creators recommend setting this value to 128 megabytes. Edit the `php.ini` file so `memory_limit` setting is reflects this value:
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    memory_limit = 128M
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+memory_limit = 128M
+
+{{< /file-excerpt >}}
+
 
 ### Restart the Web Server
 
@@ -57,18 +57,18 @@ To create a virtual host we need to add an "[A Record](/content/networking/dns/d
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.com`:
 
-{: .file }
-/etc/apache2/sites-available/stats.example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin admin@stats.example.org
-        ServerName stats.example.org
-        ServerAlias stats.example.org
-        DocumentRoot /srv/www/stats.example.org/public_html/
-        ErrorLog /srv/www/stats.example.org/logs/error.log
-        CustomLog /srv/www/stats.example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/stats.example.org" apache >}}
+<VirtualHost *:80>
+    ServerAdmin admin@stats.example.org
+    ServerName stats.example.org
+    ServerAlias stats.example.org
+    DocumentRoot /srv/www/stats.example.org/public_html/
+    ErrorLog /srv/www/stats.example.org/logs/error.log
+    CustomLog /srv/www/stats.example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 We'll need to create the `logs/` and `public_html/` directories by issuing the following commands:
 

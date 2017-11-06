@@ -3,12 +3,12 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'A common use case for a VPN tunnel is to access the internet from behind it to evade censorship or geolocation and protect your connection from untrusted internet service providers, WiFi hotspots, and sites and services you connect to.'
-keywords: 'openvpn,vpn,vpn tunnel,openssl'
+keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, September 27th, 2017'
+modified: 2017-09-27
 modified_by:
   name: Linode
-published: 'Wednesday, December 9th, 2015'
+published: 2015-12-09
 title: 'Tunnel Your Internet Traffic Through an OpenVPN Server'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
@@ -56,9 +56,9 @@ In [Part One](/content/networking/vpn/set-up-a-hardened-openvpn-server) of this 
 
 
 
-{: .caution }
->
->The steps below will overwrite any custom IPv4 firewall rules you may have.
+{{< caution >}}
+The steps below will overwrite any custom IPv4 firewall rules you may have.
+{{< /caution >}}
 
 1.  Blank the v4 ruleset that you created in part one of this series.
 
@@ -66,64 +66,64 @@ In [Part One](/content/networking/vpn/set-up-a-hardened-openvpn-server) of this 
 
 2.  Create a new IPv4 rule file using the ruleset below. The path `/etc/iptables/rules.v4` assumes Debian or Ubuntu with `iptables-persistent` installed.
 
-    {: .file}
-    /etc/iptables/rules.v4
-    :   ~~~ conf
-        *filter
+    {{< file "/etc/iptables/rules.v4" aconf >}}
+*filter
 
-        # Allow all loopback (lo) traffic and reject traffic
-        # to localhost that does not originate from lo.
-        -A INPUT -i lo -j ACCEPT
-        -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
-        -A OUTPUT -o lo -j ACCEPT
+# Allow all loopback (lo) traffic and reject traffic
+# to localhost that does not originate from lo.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+-A OUTPUT -o lo -j ACCEPT
 
-        # Allow ping and ICMP error returns.
-        -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
-        -A INPUT -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
-        -A OUTPUT -p icmp -j ACCEPT
+# Allow ping and ICMP error returns.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+-A INPUT -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A OUTPUT -p icmp -j ACCEPT
 
-        # Allow SSH.
-        -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
+# Allow SSH.
+-A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
 
-        # Allow UDP traffic on port 1194.
-        -A INPUT -i eth0 -p udp -m state --state NEW,ESTABLISHED --dport 1194 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
+# Allow UDP traffic on port 1194.
+-A INPUT -i eth0 -p udp -m state --state NEW,ESTABLISHED --dport 1194 -j ACCEPT
+-A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
 
-        # Allow DNS resolution and limited HTTP/S on eth0.
-        # Necessary for updating the server and keeping time.
-        -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 53 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
+# Allow DNS resolution and limited HTTP/S on eth0.
+# Necessary for updating the server and keeping time.
+-A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
+-A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 53 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
 
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
-        # Allow traffic on the TUN interface.
-        -A INPUT -i tun0 -j ACCEPT
-        -A FORWARD -i tun0 -j ACCEPT
-        -A OUTPUT -o tun0 -j ACCEPT
+# Allow traffic on the TUN interface.
+-A INPUT -i tun0 -j ACCEPT
+-A FORWARD -i tun0 -j ACCEPT
+-A OUTPUT -o tun0 -j ACCEPT
 
-        # Allow forwarding traffic only from the VPN.
-        -A FORWARD -i tun0 -o eth0 -s 10.89.0.0/24 -j ACCEPT
-        -A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow forwarding traffic only from the VPN.
+-A FORWARD -i tun0 -o eth0 -s 10.89.0.0/24 -j ACCEPT
+-A FORWARD -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-        # Log any packets which don't fit the rules above...
-        # (optional but useful)
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+# Log any packets which don't fit the rules above...
+# (optional but useful)
+-A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
+-A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+-A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
-        # then reject them.
-        -A INPUT -j REJECT
-        -A FORWARD -j REJECT
-        -A OUTPUT -j REJECT
+# then reject them.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
+-A OUTPUT -j REJECT
 
-        COMMIT
-        ~~~
+COMMIT
+
+{{< /file >}}
+
 
 3.  Import the new ruleset:
 

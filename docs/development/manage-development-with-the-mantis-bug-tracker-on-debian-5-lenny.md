@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Track development bugs and coordinate with team members using Mantis bug tracker on Debian 5 (Lenny).'
-keywords: 'mantis,mantis debian,mantis linux,bug tracker,development'
+keywords: ["mantis", "mantis debian", "mantis linux", "bug tracker", "development"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/mantis/debian-5-lenny/','applications/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/']
-modified: Friday, April 29th, 2011
+aliases: ['web-applications/project-management/mantis/debian-5-lenny/','applications/development/manage-development-with-the-mantis-bug-tracker-on-debian-5-lenny/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Tuesday, February 16th, 2010'
+published: 2010-02-16
 title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
 ---
 
@@ -27,12 +27,12 @@ Before we begin installing Mantis, we'll need to install PHPMailer, an additiona
 
 Before restarting Apache, modify your `php.ini` file to match MantisBT's upload file size. Find the following line in your `php.ini` file and tweak it to match the example below:
 
-{: .file }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    ; Maximum allowed size for uploaded files.
-    upload_max_filesize = 5M
-    ~~~
+{{< file "/etc/php5/apache2/php.ini" ini >}}
+; Maximum allowed size for uploaded files.
+upload_max_filesize = 5M
+
+{{< /file >}}
+
 
 Afterwards, restart Apache by running the following command:
 
@@ -63,20 +63,20 @@ After the installation completes, you will be redirected to the login page. The 
 
 Next, set the timezone in `config_inc.php`. You can find a list of supported timezones at the [List of Supported Timezones in the PHP Manual](http://php.net/manual/en/timezones.php) page. You'll need to add the `$g_default_timezone` line yourself. This section of the files should look similar to the following:
 
-{: .file }
-/srv/www/example.com/public\_html/mantis/config\_inc.php
-:   ~~~ php
-    <?php
-        $g_hostname = 'localhost';
-        $g_db_type = 'mysql';
-        $g_database_name = 'mantis';
-        $g_db_username = 'mantisuser';
-        $g_db_password = 'p@$$w0rd';
+{{< file "/srv/www/example.com/public\\_html/mantis/config\\_inc.php" php >}}
+<?php
+    $g_hostname = 'localhost';
+    $g_db_type = 'mysql';
+    $g_database_name = 'mantis';
+    $g_db_username = 'mantisuser';
+    $g_db_password = 'p@$$w0rd';
 
-        # You can add this at the end of the file
-        $g_default_timezone = 'America/New_York';
-    ?>
-    ~~~
+    # You can add this at the end of the file
+    $g_default_timezone = 'America/New_York';
+?>
+
+{{< /file >}}
+
 
 Ensure that you have no whitespace at the end of this file, or Mantis will throw an error. Save and close the file. Finally, make sure to remove the `admin` folder under your MantisBT installation and reset the permissions as follows. In our example, the command would resemble the following. Note: Make sure to double-check your syntax when using the `rm -rf` command:
 

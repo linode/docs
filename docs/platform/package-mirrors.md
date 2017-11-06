@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Setting Linode Package Mirrors.
-keywords: 'package,mirrors,linode,repository,Debian,Ubuntu,CentOS,yum,apt-get'
+keywords: ["package", "mirrors", "linode", "repository", "Debian", "Ubuntu", "CentOS", "yum", "apt-get"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['package-mirrors/']
-modified: Monday, November 21st, 2016
+aliases: ['package-mirrors/']
+modified: 2016-11-21
 modified_by:
   name: Linode
-published: 'Tuesday, February 11th, 2014'
+published: 2014-02-11
 title: Package Mirrors
 ---
 
@@ -78,11 +78,11 @@ For a CentOS system follow the instructions below:
 
 2.  Change the `enabled=` variable to **0**:
 
-    {: .file-excerpt }
-    /etc/yum/pluginconf.d/fastestmirror.conf
-    :   ~~~
-        enabled=0
-        ~~~
+    {{< file-excerpt "/etc/yum/pluginconf.d/fastestmirror.conf" >}}
+enabled=0
+
+{{< /file-excerpt >}}
+
 3.  Save and exit the `fastestmirror.conf` file.
 4.  Edit the `CentOS-Base.repo` file with the following command:
 

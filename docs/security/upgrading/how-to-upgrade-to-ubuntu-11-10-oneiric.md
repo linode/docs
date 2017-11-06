@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Ubuntu 11.04 (Natty) to Ubuntu 11.10 (Oneiric).'
-keywords: 'ubuntu 11.10 upgrade, ubuntu oneiric upgrade, distro upgrade, linux upgrade howto'
+keywords: ["ubuntu 11.10 upgrade", " ubuntu oneiric upgrade", " distro upgrade", " linux upgrade howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-ubuntu-11-10-oneiric/']
-modified: Friday, May 10th, 2013
+aliases: ['upgrading/upgrade-to-ubuntu-11-10-oneiric/']
+modified: 2013-05-10
 modified_by:
   name: Linode
-published: 'Thursday, October 13th, 2011'
+published: 2011-10-13
 title: 'How to Upgrade to Ubuntu 11.10 (Oneiric)'
 ---
 

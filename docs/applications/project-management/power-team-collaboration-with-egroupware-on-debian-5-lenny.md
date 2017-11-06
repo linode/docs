@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a groupware system with eGroupware.'
-keywords: 'groupware,email,collaboration,debian'
+keywords: ["groupware", "email", "collaboration", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/egroupware/debian-5-lenny/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/project-management/egroupware/debian-5-lenny/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Tuesday, January 26th, 2010'
+published: 2010-01-26
 title: 'Power Team Collaboration with eGroupware on Debian 5 (Lenny)'
 ---
 

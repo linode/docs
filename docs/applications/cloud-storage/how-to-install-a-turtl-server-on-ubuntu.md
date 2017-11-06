@@ -3,9 +3,9 @@ author:
   name: Angel Guarisma
   email: aguarisma@linode.com
 description: 'This guide will show you how to install Turtl, a Privacy-Conscious Cloud Storage Service, on an Ubuntu distro.'
-keywords: 'install turtl, cloud-based storage, monitor system security, ubuntu'
+keywords: ["install turtl", " cloud-based storage", " monitor system security", " ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, September 6, 2017
+modified: 2017-09-06
 modified_by:
   name: Linode
 Published: Tuesday, August 14, 2017
@@ -132,9 +132,10 @@ QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for t
 
 The successful execution of the above steps will open the CCL environment with the following output:
 
-{:.output}
+{{< output >}}
 ~~~
      ==== quicklisp quickstart 2015-01-28 loaded ====
+{{< /output >}}
 
 To continue with installation, evaluate: (quicklisp-quickstart:install)
 

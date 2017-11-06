@@ -3,12 +3,12 @@ author:
   name: Rainbow
   email: rainbow@linode.com
 description: 'FreeBSD is a free and open source operating system based on the Berkeley Software Distribution from the late 1970''s. Today FreeBSD is used all over the world.'
-keywords: 'freebsd,bsd'
+keywords: ["freebsd", "bsd"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, March 14, 2016
+modified: 2016-03-14
 modified_by:
   name: Rainbow
-published: 'Monday, March 14, 2016'
+published: 2016-03-14
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
@@ -32,9 +32,9 @@ Briefly, Linux is a term used for a group of operating systems that all use the 
 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
 
-{: .caution}
->
->FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/content/platform/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
+{{< caution >}}
+FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/content/platform/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
+{{< /caution >}}
 
 ## Preparing Your Linode
 
@@ -108,9 +108,9 @@ Begin by creating the Linode and making some preliminary changes.
 
 5.  At this point, the distribution files will extract and install. You'll then be asked to set a `root` user password.
 
-    {: .note}
-    >
-    >SSH logins for `root` are disabled by default in FreeBSD but standard system users have SSH access.
+    {{< note >}}
+SSH logins for `root` are disabled by default in FreeBSD but standard system users have SSH access.
+{{< /note >}}
 
 6.  You'll next be presented with options for configuring networking. For beginners, answer **Yes** when asked if you want to use IPv4 with DHCP and IPv6 with SLAAC.
 
@@ -136,13 +136,13 @@ Begin by creating the Linode and making some preliminary changes.
 
 11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottem of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
 
-     {:.file-excerpt}
-     /boot/loader.conf
-     : ~~~ conf
-      boot_multicons="YES"
-      boot_serial="YES"
-      comconsole_speed="115200"
-      console="comconsole,vidconsole"
-       ~~~
+     {{< file-excerpt "/boot/loader.conf" aconf >}}
+boot_multicons="YES"
+boot_serial="YES"
+comconsole_speed="115200"
+console="comconsole,vidconsole"
+
+{{< /file-excerpt >}}
+
 
 12.  Exit Glish, return to the Linode Manager and reboot into the FreeBSD profile. You should have full SSH and administrative access as the user you created in Step 9.

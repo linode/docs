@@ -4,13 +4,13 @@ author:
     name: James Stewart
     email: jstewart@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 12.04,lts,ubuntu lts,localhost phpmyadmin,php mysql,http localhost phpmyadmin'
+keywords: ["mysql", "phpmyadmin", "sql", "ubuntu", "precise", "ubuntu 12.04", "lts", "ubuntu lts", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/','databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
-modified: Thursday, September 16th, 2015
+aliases: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/','databases/mysql/manage-mysql-with-phpmyadmin-on-ubuntu-12-04-precise-pangolin/']
+modified: 2015-09-16
 modified_by:
     name: Linode
-published: 'Thursday, September 12th, 2013'
+published: 2013-09-12
 title: 'How to Install MySQL with phpMyAdmin on Ubuntu 12.04'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
@@ -19,9 +19,9 @@ external_resources:
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -40,9 +40,9 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 12.04](/content/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide if needed.
 
-    {: .note}
-    >
-    >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+    {{< note >}}
+If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+{{< /note >}}
 
 4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/content/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
@@ -77,22 +77,22 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 Secure your phpMyAdmin directory using an `.htaccess file` that only allows specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
 
-{: .file-excerpt }
-/var/www/example.com/public_html/phpmyadmin/.htaccess
-:   ~~~ apache
-    order allow,deny
-    allow from 12.34.56.78
-    ~~~
+{{< file-excerpt "/var/www/example.com/public_html/phpmyadmin/.htaccess" apache >}}
+order allow,deny
+allow from 12.34.56.78
+
+{{< /file-excerpt >}}
+
 
 ### Force SSL
 
 You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
-{: .file-excerpt }
-/etc/phpmyadmin/config.inc.php
-:   ~~~ php
-    $cfg['ForceSSL'] = 'true';
-    ~~~
+{{< file-excerpt "/etc/phpmyadmin/config.inc.php" php >}}
+$cfg['ForceSSL'] = 'true';
+
+{{< /file-excerpt >}}
+
 
 ## Testing Your phpMyAdmin Installation
 

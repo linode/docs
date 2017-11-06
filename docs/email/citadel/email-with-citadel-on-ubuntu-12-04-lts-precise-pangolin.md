@@ -4,21 +4,21 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on an Ubuntu 12.04 LTS (Precise Pangolin) Linode.'
-keywords: 'citadel,citadel ubuntu 12.04,ubuntu 12.04 mail server,groupware,email server'
+keywords: ["citadel", "citadel ubuntu 12.04", "ubuntu 12.04 mail server", "groupware", "email server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/citadel/ubuntu-12-04-precise-pangolin/']
-modified: Friday, August 15, 2014
+aliases: ['email/citadel/ubuntu-12-04-precise-pangolin/']
+modified: 2014-08-15
 modified_by:
   name: Alex Fornuto
-published: 'Monday, November 5th, 2012'
+published: 2012-11-05
 title: 'Email with Citadel on Ubuntu 12.04 LTS (Precise Pangolin)'
 ---
 
 Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It also features an automated installation process and versatile deployment options that allow the application to be scaled across multiple servers.
 
-{: .caution }
->
-> There is a known bug that prevents Citadel from running properly on 32-bit Linodes. Please see [the Ubuntu bugtracker](https://bugs.launchpad.net/ubuntu/+source/citadel/+bug/911732) for more information.
+{{< caution >}}
+There is a known bug that prevents Citadel from running properly on 32-bit Linodes. Please see [the Ubuntu bugtracker](https://bugs.launchpad.net/ubuntu/+source/citadel/+bug/911732) for more information.
+{{< /caution >}}
 
 Prerequisites
 -------------
@@ -27,9 +27,9 @@ Before installing Citadel, it is assumed that you have followed our [getting sta
 
 This guide also assumes that you wish to run Citadel by itself on this server on port 80 or 443 for browser-based access.
 
-{: .note }
->
-> If you intend to install Citadel alongside another web server package such as Apache or nginx, select the "internal" option when asked about web server integration. Be sure to specify unique ports for Citadel such as 8080 for HTTP or 4343 for HTTPS.
+{{< note >}}
+If you intend to install Citadel alongside another web server package such as Apache or nginx, select the "internal" option when asked about web server integration. Be sure to specify unique ports for Citadel such as 8080 for HTTP or 4343 for HTTPS.
+{{< /note >}}
 
 Set the Hostname
 ----------------
@@ -75,20 +75,20 @@ Enabling Spamassassin Filtering
 
 Edit the `/etc/mailname` file to reflect your system's domain name:
 
-{: .file }
-/etc/mailname
-:   ~~~
-    name.example.com
-    ~~~
+{{< file "/etc/mailname" >}}
+name.example.com
+
+{{< /file >}}
+
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
 
-{: .file }
-/etc/default/spamassassin
-:   ~~~
-    # Change to one to enable spamd
-    ENABLED=1
-    ~~~
+{{< file "/etc/default/spamassassin" >}}
+# Change to one to enable spamd
+ENABLED=1
+
+{{< /file >}}
+
 Start the spamassassin service as follows:
 
     /etc/init.d/spamassassin start
@@ -100,11 +100,11 @@ Running Citadel
 
 Customize the login banner for your Citadel server by editing the relevant file:
 
-{: .file }
-/etc/citadel/messages/hello
-:   ~~~
-    Citadel Groupware Server Login
-    ~~~
+{{< file "/etc/citadel/messages/hello" >}}
+Citadel Groupware Server Login
+
+{{< /file >}}
+
 Use the following startup script to initialize Citadel.
 
     /etc/init.d/citadel restart

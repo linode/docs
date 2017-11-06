@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
-keywords: 'cherokee,web sever,cherokee on ubuntu,ubuntu jaunty'
+keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Monday, September 14th, 2009'
+published: 2009-09-14
 title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -27,11 +27,11 @@ Check Package Sources
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file-excerpt }
-/etc/sources.list
-:   ~~~
-    ## main & restricted repositories
-    ~~~
+{{< file-excerpt "/etc/sources.list" >}}
+## main & restricted repositories
+
+{{< /file-excerpt >}}
+
 
     > deb <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted
     >

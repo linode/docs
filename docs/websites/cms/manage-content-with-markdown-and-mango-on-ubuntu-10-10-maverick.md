@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Mango publishes markdown documents from plain text files into a dynamic website.'
-keywords: 'markdown,content management systems,cms,plain text'
+keywords: ["markdown", "content management systems", "cms", "plain text"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/mango/ubuntu-10-10-maverick/']
-modified: Wednesday, October 2nd, 2013
+aliases: ['web-applications/cms-guides/mango/ubuntu-10-10-maverick/']
+modified: 2013-10-02
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: 'Manage Content with Markdown and Mango on Ubuntu 10.10 (Maverick)'
 deprecated: true
 ---
@@ -60,79 +60,79 @@ Issue the following commands to install Django, create a Django project in the `
 
 Edit the `INSTALLED_APPS` list at the end of the `/srv/www/example.com/application/settings.py` file to resemble the following:
 
-{: .file-excerpt }
-/srv/www/example.com/application/settings.py
-:   ~~~ python
-    INSTALLED_APPS = (
-        'mango',
-    )
-    ~~~
+{{< file-excerpt "/srv/www/example.com/application/settings.py" python >}}
+INSTALLED_APPS = (
+    'mango',
+)
+
+{{< /file-excerpt >}}
+
 
 Edit the `ROOT_URLCONF` variable in the `/srv/www/example.com/application/settings.py` file to resemble the following:
 
-{: .file-excerpt }
-/srv/www/example.com/application/settings.py
-:   ~~~ python
-    ROOT_URLCONF = 'mango.urls'
-    ~~~
+{{< file-excerpt "/srv/www/example.com/application/settings.py" python >}}
+ROOT_URLCONF = 'mango.urls'
+
+{{< /file-excerpt >}}
+
 
 Edit the `urlpatterns` array in the `/srv/www/example.com/application/urls.py` file to resemble the following:
 
-{: .file-excerpt }
-/srv/www/example.com/application/urls.py
-:   ~~~ python
-    urlpatterns = patterns('',
-        (r'', include('mango.urls')),
-    )
-    ~~~
+{{< file-excerpt "/srv/www/example.com/application/urls.py" python >}}
+urlpatterns = patterns('',
+    (r'', include('mango.urls')),
+)
+
+{{< /file-excerpt >}}
+
 
 Create an `application.wsgi` file, using the following as a model:
 
-{: .file }
-/srv/www/example.com/application/application.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file "/srv/www/example.com/application/application.wsgi" python >}}
+import os
+import sys
 
-    path = '/srv/www/example.com'
-    if path not in sys.path:
-        sys.path.append(path)
-        sys.path.append(path + '/application')
-        sys.path.append(path + '/application/mango')
+path = '/srv/www/example.com'
+if path not in sys.path:
+    sys.path.append(path)
+    sys.path.append(path + '/application')
+    sys.path.append(path + '/application/mango')
 
-    sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-    import django.core.handlers.wsgi
-    application = django.core.handlers.wsgi.WSGIHandler()
-    ~~~
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+{{< /file >}}
+
 
 Configure Apache
 ----------------
 
 Create a `VirtualHost` specification based on the following example:
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-       ServerName example.com
-       ServerAlias www.example.com
-       ServerAdmin username@example.com
+{{< file-excerpt "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost *:80>
+   ServerName example.com
+   ServerAlias www.example.com
+   ServerAdmin username@example.com
 
-       DocumentRoot /srv/www/example.com/public_html
+   DocumentRoot /srv/www/example.com/public_html
 
-       ErrorLog /srv/www/example.com/logs/error.log
-       CustomLog /srv/www/example.com/logs/access.log combined
+   ErrorLog /srv/www/example.com/logs/error.log
+   CustomLog /srv/www/example.com/logs/access.log combined
 
-       WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
+   WSGIScriptAlias / /srv/www/example.com/application/application.wsgi
 
-       Alias /static /srv/www/example.com/application/mango/static
-    </VirtualHost>
-    ~~~
+   Alias /static /srv/www/example.com/application/mango/static
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to enable the "`VirtualHost` and restart the web server to load the configuration:
 
@@ -146,13 +146,13 @@ Configure the Mango Site
 
 The behavior of the Mango application is controlled the settings in the `/srv/www/example.com/application/mango/settings/default.py` file which you can override in a `/srv/www/example.com/application/mango/settings/custom.py` file. Add configuration values to `custom.py` as needed to produce your site. The most relevant settings are below:
 
-{: .file-excerpt }
-/srv/www/example.com/application/mango/settings/custom.py
-:   ~~~ python
-    DOCUMENTS_PATH = 'content'
+{{< file-excerpt "/srv/www/example.com/application/mango/settings/custom.py" python >}}
+DOCUMENTS_PATH = 'content'
 
-    SITE_TITLE = 'example Blog'
-    ~~~
+SITE_TITLE = 'example Blog'
+
+{{< /file-excerpt >}}
+
 
 The paths specified in this file are relative to the top level of the Django application, for this document: `/srv/example.com/application/`. In the above example, all documents processed by Mango are stored in the `/srv/example.com/application/content/` directory. Explore each setting in this document while you configure your site.
 
@@ -161,8 +161,9 @@ Write Content with Mango
 
 All content with Mango exists in source as Markdown, a lightweight markup language that mirrors formatting conventions for plain text emails. Markdown is designed to be easy to read and write, and can be translated efficiently into high quality HTML. Consider the following example entry:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /srv/www/example.com/application/content/first-post.text
+{{< /file-excerpt >}}
 
 > date: 02 February 2011 time: 08:06am zone: US/Eastern tags: blog, meta, example
 >

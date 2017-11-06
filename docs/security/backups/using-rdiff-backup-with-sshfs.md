@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Automating offsite backups with the open source Rdiff-backup package and SSHFS for remote filesystem mounting.'
-keywords: 'rdiff-backup,sshfs,network backup,linux backup'
+keywords: ["rdiff-backup", "sshfs", "network backup", "linux backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/rdiff-backup/']
-modified: Friday, April 13th, 2012
+aliases: ['linux-tools/rdiff-backup/']
+modified: 2012-04-13
 modified_by:
   name: James Sinclair
-published: 'Monday, September 14th, 2009'
+published: 2009-09-14
 title: 'Using Rdiff-backup with SSHFS'
 external_resources:
  - '[Rdiff-backup Documentation](http://rdiff-backup.nongnu.org/docs.html)'
@@ -81,11 +81,11 @@ An an example, if you wanted to back up the "/home" directory on a remote host n
 
 Add a line to your `/etc/fstab` file that resembles the following example. Change the value for `user@remotehost` to match your remote host's configuration. Change the values for `remotehost` and `remotepath` to the ones you used in the last step for your mount point directory.
 
-{: .file }
-/etc/fstab
-: ~~~
-	 <sshfs#user@remotehost>:/remotepath /home/rdiffbackup/mnt/remotehost/remotepath fuse user,noauto,ro 0 0
-~~~
+{{< file "/etc/fstab" >}}
+<sshfs#user@remotehost>:/remotepath /home/rdiffbackup/mnt/remotehost/remotepath fuse user,noauto,ro 0 0
+
+{{< /file >}}
+
 
 This will allow the `rdiffbackup` user to mount and read the remote filesystem. It will be mounted read-only as a basic safeguard. Run a test backup by issuing the following commands, changing values where appropriate to match the earlier steps:
 
@@ -99,14 +99,14 @@ Examine the contents of your backup directory after the initial backup completes
 
 Create a shell script named `/home/rdiffbackup/backup.sh` with the following contents. Adjust the values for directories to match those used in the previous step.
 
-{: .file }
-/home/rdiffbackup/backup.sh
-: ~~~
-	#!/bin/sh
-	mount /home/rdiffbackup/mnt/remotehost/remotepath
-	rdiff-backup /home/rdiffbackup/mnt/remotehost/remotepath /home/rdiffbackup/backup/remotehost/remotepath
-	umount /home/rdiffbackup/mnt/remotehost/remotepath
-~~~
+{{< file "/home/rdiffbackup/backup.sh" >}}
+#!/bin/sh
+mount /home/rdiffbackup/mnt/remotehost/remotepath
+rdiff-backup /home/rdiffbackup/mnt/remotehost/remotepath /home/rdiffbackup/backup/remotehost/remotepath
+umount /home/rdiffbackup/mnt/remotehost/remotepath
+
+{{< /file >}}
+
 
 This script will mount the remote filesystem, back it up, and unmount it upon completion. Make the script executable by issuing the following command:
 

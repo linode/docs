@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Help with common Linode memory use and networking issues.'
-keywords: 'Linode troubleshooting,Linode troubleshooting,Linux configuration'
+keywords: ["Linode troubleshooting", "Linode troubleshooting", "Linux configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['troubleshooting/memory-networking/']
-modified: Tuesday, November 19th, 2013
+aliases: ['troubleshooting/memory-networking/']
+modified: 2013-11-19
 modified_by:
   name: Linode
-published: 'Wednesday, August 5th, 2009'
+published: 2009-08-05
 title: Troubleshooting Memory and Networking Issues
 ---
 
@@ -52,9 +52,9 @@ If you don't use InnoDB tables, you should disable InnoDB support by adding the 
 
     skip-innodb
 
- {: .caution }
->
-> The settings in this section are designed to help you temporarily test and troubleshoot MySQL. We recommend that you do not permanently use these settings.
+ {{< caution >}}
+The settings in this section are designed to help you temporarily test and troubleshoot MySQL. We recommend that you do not permanently use these settings.
+{{< /caution >}}
 
 ### Apache 2 Low-Memory Settings
 
@@ -82,9 +82,9 @@ MaxClients 24
 MaxRequestsPerChild 3000
 ~~~
 
- {: .caution }
->
-> The settings in this section are designed to help you temporarily test and troubleshoot Apache. We recommend that you do not permanently use these settings.
+ {{< caution >}}
+The settings in this section are designed to help you temporarily test and troubleshoot Apache. We recommend that you do not permanently use these settings.
+{{< /caution >}}
 
 ### Reducing SpamAssassin Memory Consumption
 

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'OSQA provides an advanced knowledge exchange system for vibrant communities.'
-keywords: 'knowledge exchange,question and answers,q&a,debian lenny'
+keywords: ["knowledge exchange", "question and answers", "q&a", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/osqa/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/osqa/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Monday, May 10th, 2010'
+published: 2010-05-10
 title: 'Question and Answer Communities with OSQA on Debian 5 (Lenny)'
 deprecated: true
 ---
@@ -110,92 +110,92 @@ To configure OSQA, copy the `settings_local.py.dist` file inside of the `/srv/ww
 
 Edit the newly created `/srv/www/example.com/osqa/settings_local.py` and set the following values to correspond to the database and database credentials that you have created.
 
-{: .file-excerpt }
-settings\_local.py
-:   ~~~ python
-    DATABASE_NAME = 'osqa'                  # Or path to database file if using sqlite3.
-    DATABASE_USER = 'username'                # Not used with sqlite3.
-    DATABASE_PASSWORD = '5t1ck'             # Not used with sqlite3.
-    DATABASE_ENGINE = 'mysql'               # mysql, ext.
-    ~~~
+{{< file-excerpt "settings\\_local.py" python >}}
+DATABASE_NAME = 'osqa'                  # Or path to database file if using sqlite3.
+DATABASE_USER = 'username'                # Not used with sqlite3.
+DATABASE_PASSWORD = '5t1ck'             # Not used with sqlite3.
+DATABASE_ENGINE = 'mysql'               # mysql, ext.
+
+{{< /file-excerpt >}}
+
 
 The majority of OSQA's features can be controlled from within the application itself. However, there are some options that can only be controlled from within the `setings_local.py` file. Consider the following settings, which you may need to modify to suit the needs of your application:
 
-{: .file-excerpt }
-settings\_local.py
-:   ~~~ python
-    DEBUG=False                             # set to True to enable debug mode
+{{< file-excerpt "settings\\_local.py" python >}}
+DEBUG=False                             # set to True to enable debug mode
 
-    SERVER_EMAIL = ''
-    DEFAULT_FROM_EMAIL = ''
-    EMAIL_HOST_USER = ''
-    EMAIL_HOST_PASSWORD = ''                # not necessary if mailserver is run on local machine
-    EMAIL_SUBJECT_PREFIX = 'MORRIS '
-    EMAIL_HOST='example.com'
-    EMAIL_PORT='25'
-    EMAIL_USE_TLS=False
-    TIME_ZONE = 'America/NewYork'
+SERVER_EMAIL = ''
+DEFAULT_FROM_EMAIL = ''
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''                # not necessary if mailserver is run on local machine
+EMAIL_SUBJECT_PREFIX = 'MORRIS '
+EMAIL_HOST='example.com'
+EMAIL_PORT='25'
+EMAIL_USE_TLS=False
+TIME_ZONE = 'America/NewYork'
 
-    FORUM_SCRIPT_ALIAS = ''                 # no leading slash, default = '' empty string
-                                            # if you set FORUM_SCRIPT_ALIAS= 'forum/'
-                                            # then OSQA will run at url http://example.com/forum
-                                            # FORUM_SCRIPT_ALIAS cannot have leading slash, otherwise it can be set to anything
+FORUM_SCRIPT_ALIAS = ''                 # no leading slash, default = '' empty string
+                                        # if you set FORUM_SCRIPT_ALIAS= 'forum/'
+                                        # then OSQA will run at url http://example.com/forum
+                                        # FORUM_SCRIPT_ALIAS cannot have leading slash, otherwise it can be set to anything
 
-    LANGUAGE_CODE = 'en'                    # forum language (see language instructions on the wiki)
-    EMAIL_VALIDATION = 'off'                # string - on|off
-    MIN_USERNAME_LENGTH = 3
-    EMAIL_UNIQUE = False                    # if True, email addresses must be unique in all accounts
-    APP_URL = 'http://example.com'      # used by email notif system and RSS
-    WIKI_ON = True                          # if False - community wiki feature is disabled
+LANGUAGE_CODE = 'en'                    # forum language (see language instructions on the wiki)
+EMAIL_VALIDATION = 'off'                # string - on|off
+MIN_USERNAME_LENGTH = 3
+EMAIL_UNIQUE = False                    # if True, email addresses must be unique in all accounts
+APP_URL = 'http://example.com'      # used by email notif system and RSS
+WIKI_ON = True                          # if False - community wiki feature is disabled
 
-    FEEDBACK_SITE_URL = None                # None or url
-    LOGIN_URL = '/%s%s%s' % (FORUM_SCRIPT_ALIAS,'account/','signin/')
+FEEDBACK_SITE_URL = None                # None or url
+LOGIN_URL = '/%s%s%s' % (FORUM_SCRIPT_ALIAS,'account/','signin/')
 
-    DJANGO_VERSION = 1.1                    # must be either 1.0 or 1.1
-    RESOURCE_REVISION=4                     # increment when you update media files - clients will be forced to load new version
-    ~~~
+DJANGO_VERSION = 1.1                    # must be either 1.0 or 1.1
+RESOURCE_REVISION=4                     # increment when you update media files - clients will be forced to load new version
+
+{{< /file-excerpt >}}
+
 
 ### Application Deployment
 
 We'll deploy OSQA using the Apache web server using the `mod_wsgi` method of executing Python code. Include the following directives in your Apache virtual hosting configuration, presumably located at `/etc/apache2/sites-available/example.com`:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    WSGIScriptAlias / /srv/www/example.com/osqa/django.wsgi
-    <Directory /srv/www/example.com/osqa>
-       Order allow,deny
-       Allow from all
-    </Directory>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+WSGIScriptAlias / /srv/www/example.com/osqa/django.wsgi
+<Directory /srv/www/example.com/osqa>
+   Order allow,deny
+   Allow from all
+</Directory>
+
+{{< /file-excerpt >}}
+
 
 This directive tells Apache that all requests for the top level of your virtual host should be directed to the WSGI application specified in the `/srv/www/example.com/osqa/django.wsgi` file, which we'll create below. In order to allow Apache to continue to serve some static files, insert `Alias` directives in the following form:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    Alias /robots.txt /srv/www/example.com/public_html/robots.txt
-    Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-    Alias /images /srv/www/example.com/public_html/images
-    Alias /static /srv/www/example.com/public_html/static
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+Alias /robots.txt /srv/www/example.com/public_html/robots.txt
+Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
+Alias /images /srv/www/example.com/public_html/images
+Alias /static /srv/www/example.com/public_html/static
+
+{{< /file-excerpt >}}
+
 
 Now create the required `django.wsgi` file, as specified:
 
-{: .file }
-/srv/www/example.com/osqa/django.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file "/srv/www/example.com/osqa/django.wsgi" python >}}
+import os
+import sys
 
-    sys.path.append('/srv/www/example.com/osqa')
+sys.path.append('/srv/www/example.com/osqa')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www.example.com/.python-egg'
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www.example.com/.python-egg'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-    import django.core.handlers.wsgi
-    application = django.core.handlers.wsgi.WSGIHandler()
-    ~~~
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+{{< /file >}}
+
 
 After the application has been configured, issue the following commands to properly initialize the database:
 

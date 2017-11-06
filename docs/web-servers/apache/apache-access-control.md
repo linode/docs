@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using HTTP AUTH to limit and control access to resources hosted on websites.'
-keywords: 'access control,http auth,mod_auth,http,apache,web server,security'
+keywords: ["access control", "http auth", "mod_auth", "http", "apache", "web server", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/','websites/apache/apache-access-control/']
-modified: Friday, November 20th, 2015
+aliases: ['web-servers/apache/configuration/http-authentication/','websites/apache/authbased-access-control-with-apache/','websites/apache/apache-access-control/']
+modified: 2015-11-20
 modified_by:
   name: Linode
-published: 'Monday, December 7th, 2009'
+published: 2009-12-07
 title: 'Apache Access Control'
 external_resources:
  - '[Installation of the Apache web server](/content/web-servers/apache/)'
@@ -32,24 +32,24 @@ This guide provides an overview of both credential-based and rule-based access c
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
->
->This guide uses the same example file paths as our [Apache on Debian 8](/content/websites/apache/apache-web-server-debian-8) guide. Be sure to adjust for your distribution.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+
+This guide uses the same example file paths as our [Apache on Debian 8](/content/websites/apache/apache-web-server-debian-8) guide. Be sure to adjust for your distribution.
+{{< /note >}}
 
 ## Apache Access Control
 
 To enable passwords for a directory, insert the following lines into the appropriate `<Directory>` section of an Apache configuration file. You may also insert authentication information in an `.htaccess` file or in a virtual host configuration section. The required directives are:
 
-{: .file-excerpt }
-Apache Configuration File
-:   ~~~ apache
-    AuthType Basic
-    AuthUserFile /var/www/example.com/.htpasswd
-    AuthName "Sign In Here To Gain Access To the Site"
-    Require valid-user
-    ~~~
+{{< file-excerpt "Apache Configuration File" apache >}}
+AuthType Basic
+AuthUserFile /var/www/example.com/.htpasswd
+AuthName "Sign In Here To Gain Access To the Site"
+Require valid-user
+
+{{< /file-excerpt >}}
+
 
 * The `AuthType` directive specifies which authentication method Apache should use when connecting with clients. `Basic` requires that passwords be sent as **clear text** over the network. As a result we don't recommend using this to protect sensitive resources.
 
@@ -80,13 +80,13 @@ The `-b` option allows you to enter the password as the last parameter of the co
 
 The `AuthUserFile` will, when populated look something like this:
 
-{: .file-excerpt }
-/var/www/example.com/.htpasswd
-:   ~~~
-    hobby:isiA3Q4djD/.Q
-    admin:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
-    username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
-    ~~~
+{{< file-excerpt "/var/www/example.com/.htpasswd" >}}
+hobby:isiA3Q4djD/.Q
+admin:{SHA}x9VvwHI6dmgk9VTE0A8o6hbCw2s=
+username:\$apr1\$vVzQJxvX\$6EyHww61nnZr6IdQv0pVx/
+
+{{< /file-excerpt >}}
+
 
 Each user is specified on their own line. Each line follows the form `[username]:[hash]`, where the `[hash]` is a cryptographic hash of the users' password. This provides one-way encryption and some small measure of additional security.
 
@@ -105,31 +105,31 @@ In the `Require` directive above we specified the `valid-user`. This told Apache
 
 To address this need, Apache allows you to use a single `AuthUserFile`, containing all users that will need to authenticate to the server. To limit the set of valid credentials to a specific subset of the users listed in the `.htpasswd` file, we must specify users in the `Require` directive. Only users specified after the `Require user` directive will be permitted to access the specified resource. For example:
 
-{: .file-excerpt }
-Apache configuration option
-:   ~~~
-    Require user username admin
-    ~~~
+{{< file-excerpt "Apache configuration option" >}}
+Require user username admin
+
+{{< /file-excerpt >}}
+
 
 Given this directive, the users `username` and `admin` will be able to log into the resource. Any subset of users can be specified on the `Require` line. Apache also provides the ability to organize users into groups, and then permit access to resources based on group membership. The configuration directives for this setup would look like this:
 
-{: .file-excerpt }
-Apache configuration file
-:   ~~~ apache
-    AuthType Basic
-    AuthUserFile /srv/auth/.htpasswd
-    AuthGroupFile /srv/auth/.htgroup
-    Require group Authorized
-    ~~~
+{{< file-excerpt "Apache configuration file" apache >}}
+AuthType Basic
+AuthUserFile /srv/auth/.htpasswd
+AuthGroupFile /srv/auth/.htgroup
+Require group Authorized
+
+{{< /file-excerpt >}}
+
 
 In this example, we cite the same `AuthUserFile`, but we add an `AuthGroupFile` that specifies user groups. The group file contains a list of user groups and the usernames associated with each group. The `htgroup` file, like the `htpasswd` file, can be located anywhere on the file system. For clarity's sake, we recommend that `htgroup` be in the same directory as the `htpasswd` file. Here is an example of an `htgroup` file:
 
-{: .file-excerpt }
-/var/www/example.com/.htgroup
-:   ~~~
-    Authorized: username username2
-    Team: admin hobby
-    ~~~
+{{< file-excerpt "/var/www/example.com/.htgroup" >}}
+Authorized: username username2
+Team: admin hobby
+
+{{< /file-excerpt >}}
+
 
 Given this `htgroup` file, only the users `username` and `username2` will have access to the above listed resource. The syntax of the group file follows a simple `[groupname]: [username 1] [username 2] [...]`. You can put as many usernames from your `AuthUserFile` into a group entry as you need for the particular resource.
 

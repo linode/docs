@@ -3,11 +3,11 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
-keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
+keywords: ["gogs", " go git service", "golang", "git", "debian 8", " nginx", " postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, October 9th, 2015'
-alias: ['applications/development/install-gogs-on-debian-jessie/','applications/development/install-gogs-on-debian-8-jessie/']
-modified: Wednesday, June 21st, 2017
+published: 2015-10-09
+aliases: ['applications/development/install-gogs-on-debian-jessie/','applications/development/install-gogs-on-debian-8-jessie/']
+modified: 2017-06-21
 modified_by:
     name: Linode
 title: 'Install Gogs on Debian 8 Jessie'
@@ -30,9 +30,9 @@ external_resources:
 
 This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before Installing Gogs
 
@@ -71,9 +71,9 @@ In this section we will download the latest version of Go (version 1.7 at the ti
         echo 'export PATH=$PATH:$GOROOT/bin:$GOPATH/bin' >> $HOME/.bashrc
         source $HOME/.bashrc
 
-    {: .note}
-    >
-    > We need to specify the `GOROOT` environment variable since we are installing Go to a custom location.
+    {{< note >}}
+We need to specify the `GOROOT` environment variable since we are installing Go to a custom location.
+{{< /note >}}
 
 4.  Check that Go is properly installed:
 
@@ -169,28 +169,28 @@ We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our
 
 3.  Set Nginx as the reverse proxy for Gogs. Using `sudo`, create a new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
 
-    {: .file }
-    /etc/nginx/sites-available/gogs
-    :   ~~~ conf
-        server {
-            listen 80;
-            server_name example.com;
-            return 302 https://$server_name$request_uri;
-        }
+    {{< file "/etc/nginx/sites-available/gogs" aconf >}}
+server {
+    listen 80;
+    server_name example.com;
+    return 302 https://$server_name$request_uri;
+}
 
-        server {
-            listen 443 ssl;
-            server_name example.com;
+server {
+    listen 443 ssl;
+    server_name example.com;
 
-            ssl_certificate /path/to/certificate.crt;
-            ssl_certificate_key /path/to/certificate_key.key;
+    ssl_certificate /path/to/certificate.crt;
+    ssl_certificate_key /path/to/certificate_key.key;
 
-            location / {
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_pass http://localhost:3000;
-            }
-        }
-        ~~~
+    location / {
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://localhost:3000;
+    }
+}
+
+{{< /file >}}
+
 
 4.  Activate the reverse proxy:
 
@@ -207,28 +207,28 @@ In this section we will setup Gogs to run automatically on boot by creating a sy
 
 1.  Using `sudo`, create `/etc/systemd/system/gogs.service`:
 
-    {: .file}
-    /etc/systemd/system/gogs.service
-    :   ~~~ ini
-        [Unit]
-        Description=Gogs (Go Git Service)
-        After=syslog.target
-        After=network.target
-        After=postgresql.service
-        After=nginx.service
+    {{< file "/etc/systemd/system/gogs.service" ini >}}
+[Unit]
+Description=Gogs (Go Git Service)
+After=syslog.target
+After=network.target
+After=postgresql.service
+After=nginx.service
 
-        [Service]
-        Type=simple
-        User=git
-        Group=git
-        WorkingDirectory=/home/git/go/src/github.com/gogits/gogs
-        ExecStart=/home/git/go/src/github.com/gogits/gogs/gogs web
-        Restart=always
-        Environment=USER=git HOME=/home/git
+[Service]
+Type=simple
+User=git
+Group=git
+WorkingDirectory=/home/git/go/src/github.com/gogits/gogs
+ExecStart=/home/git/go/src/github.com/gogits/gogs/gogs web
+Restart=always
+Environment=USER=git HOME=/home/git
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
 2.  Enable the systemd unit file:
 
@@ -296,18 +296,18 @@ If you notice, the Gogs site is still accessible using the plain HTTP via `http:
 
 2.  Open the generated configuration file `custom/conf/app.ini`. Add a new configuration value `HTTP_ADDR` under the `[server]` section. The section should look like this:
 
-    {: .file-excerpt}
-    /home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini
-    :   ~~~ ini
-        [server]
-        DOMAIN = example.com
-        HTTP_ADDR = 127.0.0.1
-        HTTP_PORT = 3000
-        ROOT_URL = https://example.com/
-        DISABLE_SSH = false
-        SSH_PORT = 22
-        OFFLINE_MODE = false
-        ~~~
+    {{< file-excerpt "/home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini" ini >}}
+[server]
+DOMAIN = example.com
+HTTP_ADDR = 127.0.0.1
+HTTP_PORT = 3000
+ROOT_URL = https://example.com/
+DISABLE_SSH = false
+SSH_PORT = 22
+OFFLINE_MODE = false
+
+{{< /file-excerpt >}}
+
 
 4.  Logout from user `git`:
 

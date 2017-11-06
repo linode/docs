@@ -4,13 +4,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Centos 5.'
-keywords: 'webalizer,statistics,analytics,stats,server monitoring,centos'
+keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/webalizer/centos-5/']
-modified: Friday, December 2nd, 2011
+aliases: ['web-applications/analytics/webalizer/centos-5/']
+modified: 2011-12-02
 modified_by:
   name: Lee Matos
-published: 'Saturday, April 17th, 2010'
+published: 2010-04-17
 title: Webalizer on Centos 5
 external_resources:
  - '[Webalizer Homepage](http://www.mrunix.net/webalizer/)'
@@ -61,14 +61,14 @@ This section assumes that you've already configured at least one virtual host. I
 
 To process multiple virtual hosts, create a shell script. In this case, there are three virtual hosts. Be sure to substitute the correct hostname and paths for your particular virtual host configuration.
 
-{: .file-excerpt }
-/opt/webalizerScript.sh
-:   ~~~ bash
-    #!/bin/sh
-    webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
-    webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
-    webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
-    ~~~
+{{< file-excerpt "/opt/webalizerScript.sh" bash >}}
+#!/bin/sh
+webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
+webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
+webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
+
+{{< /file-excerpt >}}
+
 
 Make the script executable:
 

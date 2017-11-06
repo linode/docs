@@ -4,14 +4,14 @@ author:
   email: docs@linode.com
 description: 'This tutorial shows how to set up an NFS (Network File System) server and client for remote file access on Debian Distributions.'
 og_description: ' With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes: an NFS server and an NFS client through which files can be shared.'
-keywords: 'NFS,Debian,network,file,system,Jessie'
+keywords: ["NFS", "Debian", "network", "file", "system", "Jessie"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/']
+aliases: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/']
 contributor:
-modified: Friday, October 27th, 2017
+modified: 2017-10-27
 modified_by:
   name: Linode
-published: 'Thursday, February 27th, 2014'
+published: 2014-02-27
 title: How to Mount NFS Shares on Debian 8
 ---
 
@@ -25,9 +25,9 @@ Network File System (**NFS**) is a file system that allows computer users to acc
 
 This guide walks you through the setup of two Linodes; one acting as the NFS server, and the other acting as the NFS client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. Other NFS setups can potentially send traffic over the public internet.
 
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prerequisites
 
@@ -53,21 +53,23 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
 4.  Prevent access to the services used by NFS by default. Use your favorite editor to add the following line to the `/etc/hosts.deny`:
 
-    {: .file-excerpt }
-        /etc/hosts.deny
-	: ~~~
-		rpcbind mountd nfsd statd lockd rquotad : ALL
-	~~~
+    {{< file-excerpt "/etc/hosts.deny" >}}
+rpcbind mountd nfsd statd lockd rquotad : ALL
+	
+
+{{< /file-excerpt >}}
+
 
 5.  Explicitly allow access to the services used by NFS for your client and localhost. Use your favorite editor to add the following line:
 
-    {: .file-excerpt }
-        /etc/hosts.allow
-	: ~~~
-		rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
-                rpcbind mountd nfsd statd lockd rquotad : <client linode private ip> : allow
-	        rpcbind mountd nfsd statd lockd rquotad : ALL : deny
-	~~~
+    {{< file-excerpt "/etc/hosts.allow" >}}
+rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
+              rpcbind mountd nfsd statd lockd rquotad : <client linode private ip> : allow
+       rpcbind mountd nfsd statd lockd rquotad : ALL : deny
+	
+
+{{< /file-excerpt >}}
+
 
      Replace **\<client linode private ip\>** with the current private IP address of your second Linode.
 
@@ -81,11 +83,12 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
 8.  Use your favorite editor to add the following line to the `/etc/exports` file:
 
-    {: .file-excerpt}
-	/etc/exports
-	: ~~~
-		/var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
-	~~~
+    {{< file-excerpt "/etc/exports" >}}
+/var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
+	
+
+{{< /file-excerpt >}}
+
 
     Replace **\<client linode private ip\>** with the current private IP address of your second Linode. Make sure there is no space between the /32 and the opening parenthesis. Also check that there is a blank line at the end of the file.
 
@@ -117,11 +120,12 @@ The other Linode will be your NFS client. Follow the instructions below to confi
 
 4.  Use your favorite editor to add the following line to the `/etc/fstab` file:
 
-    {: .file-excerpt }
-	/etc/fstab
-	: ~~~
-		<server linode private ip>:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr 0 0
-	~~~
+    {{< file-excerpt "/etc/fstab" >}}
+<server linode private ip>:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr 0 0
+	
+
+{{< /file-excerpt >}}
+
 
     Replace **\<server linode private ip\>** with the current private IP address of your server Linode.
 

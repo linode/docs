@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Getting started with MySQL for web and server applications on Arch Linux.'
-keywords: 'mysql arch linux,mysql linux,arch linux'
+keywords: ["mysql arch linux", "mysql linux", "arch linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/arch-linux/']
-modified: Thursday, January 23rd, 2014
+aliases: ['databases/mysql/arch-linux/']
+modified: 2014-01-23
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Using MySQL Relational Databases on Arch Linux
 ---
 
@@ -21,12 +21,12 @@ System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 servername.mydomain.com servername
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 servername.mydomain.com servername
+
+{{< /file >}}
+
 
 Set your system's hostname by setting the `HOSTNAME=` value in the `/etc/rc.conf` file.
 
@@ -53,12 +53,12 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 By default, MySQL listens only for internal connections. If you plan to connect to your database via TCP/IP, you will need to remove or comment (e.g. prefix the line with a `#`) add the `bind-address` line in the my.cnf file. as follows:
 
-{: .file }
-/etc/mysql/my.cnf
-:   ~~~
-    # skip-networking
-    bind-address - 127.0.0.1
-    ~~~
+{{< file "/etc/mysql/my.cnf" >}}
+# skip-networking
+bind-address - 127.0.0.1
+
+{{< /file >}}
+
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 

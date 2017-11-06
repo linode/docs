@@ -4,13 +4,13 @@ author:
   email: docs@linode.com
 deprecated: yes
 description: 'Securely copying files to and from your Linode with WinSCP, a free and open source file transfer client for Microsoft Windows systems.'
-keywords: 'winscp,ftp,windows scp,sftp,windows sftp program'
+keywords: ["winscp", "ftp", "windows scp", "sftp", "windows sftp program"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/file-transfer/transfer-files-winscp/']
-modified: Monday, August 22nd, 2011
+aliases: ['networking/file-transfer/transfer-files-winscp/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, October 19th, 2009'
+published: 2009-10-19
 title: Transfer Files with WinSCP on Windows
 ---
 
@@ -20,7 +20,7 @@ You'll need to make sure your Linode is running an SSH daemon (all Linodes run a
 
 ![winscp](/content/assets/transfer_files_with_winscp_on_windows_smg.png)
 
-##Obtaining and Installing WinSCP
+## Obtaining and Installing WinSCP
 
 
 You can obtain the software from the [WinSCP download page](http://winscp.net/eng/download.php). Click the link for "Installation package" and save the file to your desktop. After downloading the installer, double-click its icon to launch it. You will be presented with the WinSCP setup wizard; please click "Next" to continue.

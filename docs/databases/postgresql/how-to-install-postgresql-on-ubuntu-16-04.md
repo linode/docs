@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.'
-keywords: 'postgresql,ubuntu 16.04,postgresql database,open source database,relational database'
-alias: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
+keywords: ["postgresql", "ubuntu 16.04", "postgresql database", "open source database", "relational database"]
+aliases: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, May 20th, 2016
+modified: 2016-05-20
 modified_by:
   name: Phil Zona
-published: 'Friday, May 20th, 2016'
+published: 2016-05-20
 title: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/content/)'
@@ -32,9 +32,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/content/tools-reference/linux-users-and-groups) for more information.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/content/tools-reference/linux-users-and-groups) for more information.
+{{< /note >}}
 
 ## Install PostgreSQL
 
@@ -48,9 +48,9 @@ Install PostgreSQL from the Ubuntu package repository:
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{: .caution}
->
->The `postgres` user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< caution >}}
+The `postgres` user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< /caution >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -143,12 +143,12 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 1.  Edit the `/etc/postgresql/9.5/main/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
-    {: .file-excerpt }
-    /etc/postgresql/9.5/main/pg_hba.conf
-    :   ~~~
-        # "local" is for Unix domain socket connections only
-        local    all        all             peer
-        ~~~
+    {{< file-excerpt "/etc/postgresql/9.5/main/pg_hba.conf" >}}
+# "local" is for Unix domain socket connections only
+local    all        all             peer
+
+{{< /file-excerpt >}}
+
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 

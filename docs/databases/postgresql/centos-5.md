@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with CentOS 5.'
-keywords: 'postgresql,postgresql database,postgresql on centos,relational database'
+keywords: ["postgresql", "postgresql database", "postgresql on centos", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 24th, 2013
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Sunday, September 13th, 2009'
+published: 2009-09-13
 title: Use PostgreSQL Relational Databases on CentOS 5
 ---
 
@@ -110,18 +110,18 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/var/lib/pgsql/data/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all ident sameuser
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all ident sameuser
+
+{{< /file-excerpt >}}
+
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 As root, restart the Postgresql service:
 

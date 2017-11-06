@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Use uWSGI to Deploy Python Application Servers in Conjunction with Nginx.'
-keywords: 'uwsgi,wsgi,nginx,python,ubuntu,install uwsgi,deploy python applications with nginx,virtual host'
+keywords: ["uwsgi", "wsgi", "nginx", "python", "ubuntu", "install uwsgi", "deploy python applications with nginx", "virtual host"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/use-uwsgi-to-deploy-Python-apps-with-nginx-on-ubuntu-12-04/']
-modified: Tuesday, November 13th, 2012
+aliases: ['web-servers/nginx/python-uwsgi/ubuntu-12-04-precise-pangolin/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/index.cfm/','websites/nginx/wsgi-using-uwsgi-and-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/how-to-install-uwsgi-with-nginx-on-ubuntu-12-04-precise-pangolin/','websites/nginx/use-uwsgi-to-deploy-Python-apps-with-nginx-on-ubuntu-12-04/']
+modified: 2012-11-13
 modified_by:
   name: Linode
-published: 'Tuesday, November 13th, 2012'
+published: 2012-11-13
 title: 'Use uWSGI to deploy Python apps with Nginx on Ubuntu 12.04'
 ---
 
@@ -46,32 +46,32 @@ To get started, you'll install uWSGI and other packages, and then configure ngin
 
 3.  Using the virtual host configuration below as a guide, create your configuration file.
 
-    {: .file }
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-        server {
-                listen          80;
-                server_name     $hostname;
-                access_log /srv/www/example.com/logs/access.log;
-                error_log /srv/www/example.com/logs/error.log;
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+        listen          80;
+        server_name     $hostname;
+        access_log /srv/www/example.com/logs/access.log;
+        error_log /srv/www/example.com/logs/error.log;
 
-                location / {
-                    #uwsgi_pass      127.0.0.1:9001;
-                    uwsgi_pass      unix:///run/uwsgi/app/example.com/example.com.socket;
-                    include         uwsgi_params;
-                    uwsgi_param     UWSGI_SCHEME $scheme;
-                    uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
-
-                }
-
-                location /static {
-                    root   /srv/www/example.com/public_html/static/;
-                    index  index.html index.htm;
-
-                }
+        location / {
+            #uwsgi_pass      127.0.0.1:9001;
+            uwsgi_pass      unix:///run/uwsgi/app/example.com/example.com.socket;
+            include         uwsgi_params;
+            uwsgi_param     UWSGI_SCHEME $scheme;
+            uwsgi_param     SERVER_SOFTWARE    nginx/$nginx_version;
 
         }
-    ~~~
+
+        location /static {
+            root   /srv/www/example.com/public_html/static/;
+            index  index.html index.htm;
+
+        }
+
+}
+
+{{< /file >}}
+
 4.  Link the virtual host file to sites-enabled by entering the following command, replacing `example.com` with your domain name:
 
         ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/example.com
@@ -99,32 +99,32 @@ Now, we need to configure uWSGI. Here's how:
 
 2.  Using the configuration below as a guide, create your configuration file.
 
-    {: .file }
-    /etc/uwsgi/apps-available/example.com.xml
-    :   ~~~ xml
-        <uwsgi>
-            <plugin>python</plugin>
-            <socket>/run/uwsgi/app/example.com/example.com.socket</socket>
-            <pythonpath>/srv/www/example.com/application/</pythonpath>
-            <app mountpoint="/">
+    {{< file "/etc/uwsgi/apps-available/example.com.xml" xml >}}
+<uwsgi>
+    <plugin>python</plugin>
+    <socket>/run/uwsgi/app/example.com/example.com.socket</socket>
+    <pythonpath>/srv/www/example.com/application/</pythonpath>
+    <app mountpoint="/">
 
-                <script>wsgi_configuration_module</script>
+        <script>wsgi_configuration_module</script>
 
-            </app>
-            <master/>
-            <processes>4</processes>
-            <harakiri>60</harakiri>
-            <reload-mercy>8</reload-mercy>
-            <cpu-affinity>1</cpu-affinity>
-            <stats>/tmp/stats.socket</stats>
-            <max-requests>2000</max-requests>
-            <limit-as>512</limit-as>
-            <reload-on-as>256</reload-on-as>
-            <reload-on-rss>192</reload-on-rss>
-            <no-orphans/>
-            <vacuum/>
-        </uwsgi>
-        ~~~
+    </app>
+    <master/>
+    <processes>4</processes>
+    <harakiri>60</harakiri>
+    <reload-mercy>8</reload-mercy>
+    <cpu-affinity>1</cpu-affinity>
+    <stats>/tmp/stats.socket</stats>
+    <max-requests>2000</max-requests>
+    <limit-as>512</limit-as>
+    <reload-on-as>256</reload-on-as>
+    <reload-on-rss>192</reload-on-rss>
+    <no-orphans/>
+    <vacuum/>
+</uwsgi>
+
+{{< /file >}}
+
 
 3.  Link the configuration to apps-enabled by entering the following command, replacing `example.com` with your domain name:
 
@@ -132,26 +132,26 @@ Now, we need to configure uWSGI. Here's how:
 
 4.  If you want to deploy a "Hello World" application, insert the following code into the `/srv/www/example.com/application/wsgi_configuration_module.py` file:
 
-    {: .file }
-    /srv/www/example.com/application/wsgi\_configuration\_module.py
-    :   ~~~ python
-        import os
-        import sys
+    {{< file "/srv/www/example.com/application/wsgi\\_configuration\\_module.py" python >}}
+import os
+import sys
 
-        sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-        os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
 
-        def application(environ, start_response):
-            status = '200 OK'
-            output = 'Hello World!'
+def application(environ, start_response):
+    status = '200 OK'
+    output = 'Hello World!'
 
-            response_headers = [('Content-type', 'text/plain'),
-                            ('Content-Length', str(len(output)))]
-            start_response(status, response_headers)
+    response_headers = [('Content-type', 'text/plain'),
+                    ('Content-Length', str(len(output)))]
+    start_response(status, response_headers)
 
-            return [output]
-        ~~~
+    return [output]
+
+{{< /file >}}
+
 5.  Restart uWSGI with the command:
 
         service uwsgi restart
@@ -167,34 +167,34 @@ Additional Application Servers
 
 If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances. These instances run on additional Linodes with the request load balanced using nginx's `upstream` capability. See our documentation of [proxy and software load balancing with nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, see the following example:
 
-{: .file-excerpt }
-nginx configuration
-:   ~~~ nginx
-    upstream uwsgicluster {
-         server 127.0.0.1:9001;
-         server 192.168.100.101:9001;
-         server 192.168.100.102:9001;
-         server 192.168.100.103:9001;
-         server 192.168.100.104:9001;
+{{< file-excerpt "nginx configuration" nginx >}}
+upstream uwsgicluster {
+     server 127.0.0.1:9001;
+     server 192.168.100.101:9001;
+     server 192.168.100.102:9001;
+     server 192.168.100.103:9001;
+     server 192.168.100.104:9001;
+}
+
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/example.com/logs/access.log;
+    error_log /srv/www/example.com/logs/error.log;
+
+    location / {
+        include        uwsgi_params;
+        uwsgi_pass     uwsgicluster;
     }
 
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
-
-        location / {
-            include        uwsgi_params;
-            uwsgi_pass     uwsgicluster;
-        }
-
-        location /static {
-            root   /srv/www/example.com/public_html/static/;
-            index  index.html index.htm;
-        }
+    location /static {
+        root   /srv/www/example.com/public_html/static/;
+        index  index.html index.htm;
     }
-    ~~~
+}
+
+{{< /file-excerpt >}}
+
 
 In this example, we create the `uwsgicluster` upstream, which has five components. One runs on the local interface, and four run on the local network interface of distinct Linodes (the `192.168.` addresses or the private "back-end" network). The application servers that run on those dedicated application servers are identical to the application servers described above. However, the application server process must be configured to bind to the appropriate network interface to be capable of responding to requests.
 

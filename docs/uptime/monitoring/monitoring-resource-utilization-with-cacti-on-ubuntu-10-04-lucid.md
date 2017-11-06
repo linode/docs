@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Cacti is a powerful server monitoring solution that uses SNMP to track resource usage on Ubuntu 10.04 (Lucid).'
-keywords: 'Cacti,Ubuntu,Ubuntu Lucid,Lucid,SNMP'
+keywords: ["Cacti", "Ubuntu", "Ubuntu Lucid", "Lucid", "SNMP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/cacti/ubuntu-10-04-lucid/']
-modified: Tuesday, October 1st, 2013
+aliases: ['server-monitoring/cacti/ubuntu-10-04-lucid/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Tuesday, May 18th, 2010'
+published: 2010-05-18
 title: 'Monitoring Resource Utilization with Cacti on Ubuntu 10.04 (Lucid)'
 ---
 
@@ -35,26 +35,26 @@ Begin by setting the timezone of your server if it isn't already set. Set your s
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories - uncomment to enable
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+## universe repositories - uncomment to enable
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 
@@ -76,8 +76,9 @@ The above command will additionally install the Apache web server. Consider our 
 
 SNMPD binds to `localhost` by default. If you only plan on using Cacti to monitor your Linode, you do not need to modify `/etc/default/snmpd`. However, if you'd like to use Cacti to monitor more than one host, you'll need to edit the `/etc/default/snmpd` file. Open the file and find the line that starts with `SNMPDOPTS=` and remove `127.0.0.1` at the end. This line should now look like this:
 
-{: .file }
+{{< file >}}
 /etc/default/snmpd
+{{< /file >}}
 
 > SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 
@@ -85,8 +86,9 @@ At this point SNMPD is configured to listen on all interfaces. Now we'll open `/
 
 We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Locate the section of `snmpd.conf` that begins with `com2sec` and make sure the `readonly` line is the only uncommented line. This section of the file should now look like this:
 
-{: .file }
+{{< file >}}
 /etc/snmp/snmpd.conf
+{{< /file >}}
 
 > \#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 
@@ -130,8 +132,9 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
 
 Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
 
-{: .file }
+{{< file >}}
 /etc/default/snmpd
+{{< /file >}}
 
 > SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 

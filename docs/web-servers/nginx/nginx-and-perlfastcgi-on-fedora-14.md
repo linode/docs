@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 14.'
-keywords: 'nginx,nginx fedora 14,nginx fastcgi,nginx perl'
+keywords: ["nginx", "nginx fedora 14", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/fedora-14/','websites/nginx/nginx-and-perlfastcgi-on-fedora-14/']
-modified: Monday, October 7th, 2013
+aliases: ['web-servers/nginx/perl-fastcgi/fedora-14/','websites/nginx/nginx-and-perlfastcgi-on-fedora-14/']
+modified: 2013-10-07
 modified_by:
   name: Linode
-published: 'Friday, January 7th, 2011'
+published: 2011-01-07
 title: 'Nginx and Perl-FastCGI on Fedora 14'
 ---
 
@@ -55,38 +55,38 @@ Issue the following commands to create virtual hosting directories:
 
 Add the following lines to your `/etc/nginx/nginx.conf` file, immediately after the line for `include /etc/nginx/conf.d/*.conf`:
 
-{: .file-excerpt }
-/etc/nginx/nginx.conf
-:   ~~~
-    # Load virtual host configuration files.
-    include /etc/nginx/sites-enabled/*;
-    ~~~
+{{< file-excerpt "/etc/nginx/nginx.conf" >}}
+# Load virtual host configuration files.
+include /etc/nginx/sites-enabled/*;
+
+{{< /file-excerpt >}}
+
 
 Next, define your site's virtual host file:
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.pl$ {
-            gzip off;
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:8999;
-            fastcgi_index index.pl;
-            fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.pl$ {
+        gzip off;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:8999;
+        fastcgi_index index.pl;
+        fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site:
 
@@ -101,212 +101,212 @@ Configure FastCGI Wrapper
 
 First create the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) at `/usr/bin/fastcgi-wrapper.pl` with the following contents:
 
-{: .file-excerpt }
-/usr/bin/fastcgi-wrapper.pl
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file-excerpt "/usr/bin/fastcgi-wrapper.pl" perl >}}
+#!/usr/bin/perl
 
-    use FCGI;
-    use Socket;
-    use POSIX qw(setsid);
+use FCGI;
+use Socket;
+use POSIX qw(setsid);
 
-    require 'syscall.ph';
+require 'syscall.ph';
 
-    &daemonize;
+&daemonize;
 
-    #this keeps the program alive or something after exec'ing perl scripts
-    END() { } BEGIN() { }
-    *CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; };
-    eval q{exit};
-    if ($@) {
-        exit unless $@ =~ /^fakeexit/;
-    };
+# this keeps the program alive or something after exec'ing perl scripts
+END() { } BEGIN() { }
+*CORE::GLOBAL::exit = sub { die "fakeexit\nrc=".shift()."\n"; };
+eval q{exit};
+if ($@) {
+    exit unless $@ =~ /^fakeexit/;
+};
 
-    &main;
+&main;
 
-    sub daemonize() {
-        chdir '/'                 or die "Can't chdir to /: $!";
-        defined(my $pid = fork)   or die "Can't fork: $!";
-        exit if $pid;
-        setsid                    or die "Can't start a new session: $!";
-        umask 0;
-    }
+sub daemonize() {
+    chdir '/'                 or die "Can't chdir to /: $!";
+    defined(my $pid = fork)   or die "Can't fork: $!";
+    exit if $pid;
+    setsid                    or die "Can't start a new session: $!";
+    umask 0;
+}
 
-    sub main {
-            $socket = FCGI::OpenSocket( "127.0.0.1:8999", 10 ); #use IP sockets
-            $request = FCGI::Request( \*STDIN, \*STDOUT, \*STDERR, \%req_params, $socket );
-            if ($request) { request_loop()};
-                FCGI::CloseSocket( $socket );
-    }
+sub main {
+        $socket = FCGI::OpenSocket( "127.0.0.1:8999", 10 ); #use IP sockets
+        $request = FCGI::Request( \*STDIN, \*STDOUT, \*STDERR, \%req_params, $socket );
+        if ($request) { request_loop()};
+            FCGI::CloseSocket( $socket );
+}
 
-    sub request_loop {
-            while( $request->Accept() >= 0 ) {
+sub request_loop {
+        while( $request->Accept() >= 0 ) {
 
-               #processing any STDIN input from WebServer (for CGI-POST actions)
-               $stdin_passthrough ='';
-               $req_len = 0 + $req_params{'CONTENT_LENGTH'};
-               if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){
-                    my $bytes_read = 0;
-                    while ($bytes_read < $req_len) {
-                            my $data = '';
-                            my $bytes = read(STDIN, $data, ($req_len - $bytes_read));
-                            last if ($bytes == 0 || !defined($bytes));
-                            $stdin_passthrough .= $data;
-                            $bytes_read += $bytes;
+           #processing any STDIN input from WebServer (for CGI-POST actions)
+           $stdin_passthrough ='';
+           $req_len = 0 + $req_params{'CONTENT_LENGTH'};
+           if (($req_params{'REQUEST_METHOD'} eq 'POST') && ($req_len != 0) ){
+                my $bytes_read = 0;
+                while ($bytes_read < $req_len) {
+                        my $data = '';
+                        my $bytes = read(STDIN, $data, ($req_len - $bytes_read));
+                        last if ($bytes == 0 || !defined($bytes));
+                        $stdin_passthrough .= $data;
+                        $bytes_read += $bytes;
+                }
+            }
+
+            #running the cgi app
+            if ( (-x $req_params{SCRIPT_FILENAME}) &&  #can I execute this?
+                 (-s $req_params{SCRIPT_FILENAME}) &&  #Is this file empty?
+                 (-r $req_params{SCRIPT_FILENAME})     #can I read this file?
+            ){
+        pipe(CHILD_RD, PARENT_WR);
+        my $pid = open(KID_TO_READ, "-|");
+        unless(defined($pid)) {
+            print("Content-type: text/plain\r\n\r\n");
+                        print "Error: CGI app returned no output - ";
+                        print "Executing $req_params{SCRIPT_FILENAME} failed !\n";
+            next;
+        }
+        if ($pid > 0) {
+            close(CHILD_RD);
+            print PARENT_WR $stdin_passthrough;
+            close(PARENT_WR);
+
+            while(my $s = <KID_TO_READ>) { print $s; }
+            close KID_TO_READ;
+            waitpid($pid, 0);
+        } else {
+                    foreach $key ( keys %req_params){
+                       $ENV{$key} = $req_params{$key};
                     }
-                }
+                    # cd to the script's local directory
+                    if ($req_params{SCRIPT_FILENAME} =~ /^(.*)\/[^\/]+$/) {
+                            chdir $1;
+                    }
 
-                #running the cgi app
-                if ( (-x $req_params{SCRIPT_FILENAME}) &&  #can I execute this?
-                     (-s $req_params{SCRIPT_FILENAME}) &&  #Is this file empty?
-                     (-r $req_params{SCRIPT_FILENAME})     #can I read this file?
-                ){
-            pipe(CHILD_RD, PARENT_WR);
-            my $pid = open(KID_TO_READ, "-|");
-            unless(defined($pid)) {
+            close(PARENT_WR);
+            close(STDIN);
+            #fcntl(CHILD_RD, F_DUPFD, 0);
+            syscall(&SYS_dup2, fileno(CHILD_RD), 0);
+            #open(STDIN, "<&CHILD_RD");
+            exec($req_params{SCRIPT_FILENAME});
+            die("exec failed");
+        }
+            }
+            else {
                 print("Content-type: text/plain\r\n\r\n");
-                            print "Error: CGI app returned no output - ";
-                            print "Executing $req_params{SCRIPT_FILENAME} failed !\n";
-                next;
+                print "Error: No such CGI app - $req_params{SCRIPT_FILENAME} may not ";
+                print "exist or is not executable by this process.\n";
             }
-            if ($pid > 0) {
-                close(CHILD_RD);
-                print PARENT_WR $stdin_passthrough;
-                close(PARENT_WR);
 
-                while(my $s = <KID_TO_READ>) { print $s; }
-                close KID_TO_READ;
-                waitpid($pid, 0);
-            } else {
-                        foreach $key ( keys %req_params){
-                           $ENV{$key} = $req_params{$key};
-                        }
-                        # cd to the script's local directory
-                        if ($req_params{SCRIPT_FILENAME} =~ /^(.*)\/[^\/]+$/) {
-                                chdir $1;
-                        }
+        }
+}
 
-                close(PARENT_WR);
-                close(STDIN);
-                #fcntl(CHILD_RD, F_DUPFD, 0);
-                syscall(&SYS_dup2, fileno(CHILD_RD), 0);
-                #open(STDIN, "<&CHILD_RD");
-                exec($req_params{SCRIPT_FILENAME});
-                die("exec failed");
-            }
-                }
-                else {
-                    print("Content-type: text/plain\r\n\r\n");
-                    print "Error: No such CGI app - $req_params{SCRIPT_FILENAME} may not ";
-                    print "exist or is not executable by this process.\n";
-                }
+{{< /file-excerpt >}}
 
-            }
-    }
-    ~~~
 
 Then create an init script to control the FastCGI process that matches the one shown below:
 
-{: .file-excerpt }
-/etc/rc.d/init.d/perl-fastcgi
-:   ~~~ bash
-    #!/bin/sh
-    #
-    # nginx – this script starts and stops the nginx daemon
-    #
-    # chkconfig: - 85 15
-    # description: Nginx is an HTTP(S) server, HTTP(S) reverse \
-    # proxy and IMAP/POP3 proxy server
-    # processname: nginx
-    # config: /opt/nginx/conf/nginx.conf
-    # pidfile: /opt/nginx/logs/nginx.pid
+{{< file-excerpt "/etc/rc.d/init.d/perl-fastcgi" bash >}}
+#!/bin/sh
+#
+# nginx – this script starts and stops the nginx daemon
+#
+# chkconfig: - 85 15
+# description: Nginx is an HTTP(S) server, HTTP(S) reverse \
+# proxy and IMAP/POP3 proxy server
+# processname: nginx
+# config: /opt/nginx/conf/nginx.conf
+# pidfile: /opt/nginx/logs/nginx.pid
 
-    # Source function library.
-    . /etc/rc.d/init.d/functions
+# Source function library.
+. /etc/rc.d/init.d/functions
 
-    # Source networking configuration.
-    . /etc/sysconfig/network
+# Source networking configuration.
+. /etc/sysconfig/network
 
-    # Check that networking is up.
-    [ "$NETWORKING" = "no" ] && exit 0
+# Check that networking is up.
+[ "$NETWORKING" = "no" ] && exit 0
 
-    perlfastcgi="/usr/bin/fastcgi-wrapper.pl"
-    prog=$(basename perl)
+perlfastcgi="/usr/bin/fastcgi-wrapper.pl"
+prog=$(basename perl)
 
-    lockfile=/var/lock/subsys/perl-fastcgi
+lockfile=/var/lock/subsys/perl-fastcgi
 
-    start() {
-        [ -x $perlfastcgi ] || exit 5
-        echo -n $"Starting $prog: "
-        daemon $perlfastcgi
-        retval=$?
-        echo
-        [ $retval -eq 0 ] && touch $lockfile
-        return $retval
-    }
+start() {
+    [ -x $perlfastcgi ] || exit 5
+    echo -n $"Starting $prog: "
+    daemon $perlfastcgi
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
 
-    stop() {
-        echo -n $"Stopping $prog: "
-        killproc $prog -QUIT
-        retval=$?
-        echo
-        [ $retval -eq 0 ] && rm -f $lockfile
-        return $retval
-    }
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog -QUIT
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
 
-    restart() {
-        stop
-        start
-    }
+restart() {
+    stop
+    start
+}
 
-    reload() {
-        echo -n $”Reloading $prog: ”
-        killproc $nginx -HUP
-        RETVAL=$?
-        echo
-    }
+reload() {
+    echo -n $”Reloading $prog: ”
+    killproc $nginx -HUP
+    RETVAL=$?
+    echo
+}
 
-    force_reload() {
-        restart
-    }
-    rh_status() {
-        status $prog
-    }
+force_reload() {
+    restart
+}
+rh_status() {
+    status $prog
+}
 
-    rh_status_q() {
-        rh_status >/dev/null 2>&1
-    }
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
 
-    case "$1" in
-        start)
-            rh_status_q && exit 0
-            $1
-            ;;
-        stop)
-            rh_status_q || exit 0
-            $1
-            ;;
-        restart)
-            $1
-            ;;
-        reload)
-            rh_status_q || exit 7
-            $1
-            ;;
-        force-reload)
-            force_reload
-            ;;
-        status)
-            rh_status
-            ;;
-        condrestart|try-restart)
-            rh_status_q || exit 0
-            ;;
-        *)
-            echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
-            exit 2
-        esac
-    ~~~
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+        exit 2
+    esac
+
+{{< /file-excerpt >}}
+
 
 Next issue the following commands to make the scripts executable and set the perl-fastcgi process to start on boot:
 
@@ -321,24 +321,24 @@ Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/public\_html/test.pl
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
+#!/usr/bin/perl
 
-    print "Content-type:text/html\n\n";
-    print <<EndOfHTML;
-    <html><head><title>Perl Environment Variables</title></head>
-    <body>
-    <h1>Perl Environment Variables</h1>
-    EndOfHTML
+print "Content-type:text/html\n\n";
+print <<EndOfHTML;
+<html><head><title>Perl Environment Variables</title></head>
+<body>
+<h1>Perl Environment Variables</h1>
+EndOfHTML
 
-    foreach $key (sort(keys %ENV)) {
-        print "$key = $ENV{$key}<br>\n";
-    }
+foreach $key (sort(keys %ENV)) {
+    print "$key = $ENV{$key}<br>\n";
+}
 
-    print "</body></html>";
-    ~~~
+print "</body></html>";
+
+{{< /file >}}
+
 
 Make the script executable by issuing the following command:
 

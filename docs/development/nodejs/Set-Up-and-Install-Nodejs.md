@@ -3,14 +3,14 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'Node.js is a cross-platform runtime environment for server-side JavaScript applications. There are multiple ways to install and maintain Node.js and the decision of which installation method to use can quickly become a confusing one, so here are the main choices.'
-keywords: 'linode guide,hosting a website,website,linode quickstart guide'
+keywords: ["linode guide", "hosting a website", "website", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, February 15th, 2017
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Thursday, December 18th, 2014'
+published: 2014-12-18
 title: How to Set Up and Install Node.js
-alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/','development/nodjs/a-nodejs-installation-crash-course/']
+aliases: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/','development/nodjs/a-nodejs-installation-crash-course/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
  - '[Node Version Manager](https://github.com/creationix/nvm)'
@@ -37,9 +37,9 @@ Your distro's repos will likely contain an LTS release of Node.js. This is a goo
 
 [NPM](#node-package-manager-npm) (Node Package Manager) is included with installations of Node.js by other methods, but not here; `npm` is a separate package from `nodejs` and must be installed separately.
 
-{: .note}
->
->Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 confict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
+{{< note >}}
+Node.js from the distro's repositories in Debian 7 or 8, or Ubuntu 12.04 or 14.04 confict with the [Amateur Packet Radio Node program](https://packages.debian.org/jessie/node). In this scenario, calling Node.js requires that you use the command `nodejs -$option` instead of the standard `node -$option`. One workaround is to install the package `nodejs-legacy`, which maintains a symlink from `/usr/bin/node` to `/usr/bin/nodejs` so the normal `node` commands can be used.
+{{< /note >}}
 
 **NodeSource Repository**
 

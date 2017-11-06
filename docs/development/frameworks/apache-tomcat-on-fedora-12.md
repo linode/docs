@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Fedora 12.'
-keywords: 'apache tomcat fedora 12,java,java fedora 12,java servlets fedora 12,java fedora'
+keywords: ["apache tomcat fedora 12", "java", "java fedora 12", "java servlets fedora 12", "java fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/fedora-12/','websites/frameworks/apache-tomcat-on-fedora-12/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/apache-tomcat/fedora-12/','websites/frameworks/apache-tomcat-on-fedora-12/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Friday, July 23rd, 2010'
+published: 2010-07-23
 title: Apache Tomcat on Fedora 12
 ---
 
@@ -44,11 +44,11 @@ You can test your Tomcat installation by pointing your browser to `http://[yourd
 
 At this point, you may want to create a user to access the "Tomcat Manager" web application. This will give you some information concerning your Tomcat instance, as well as some demo applications for testing. To add a user, edit the `/etc/tomcat6/tomcat-users.xml` file to include the following line, substituting your own username and password. Make sure you keep the "manager" role.
 
-{: .file-excerpt }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <user name="username" password="examplemorris" roles="manager" />
-    ~~~
+{{< file-excerpt "/etc/tomcat6/tomcat-users.xml" xml >}}
+<user name="username" password="examplemorris" roles="manager" />
+
+{{< /file-excerpt >}}
+
 
 Once you have saved the `tomcat-users.xml` file, restart the tomcat6 service with the following command:
 

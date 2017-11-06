@@ -3,27 +3,28 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 description: 'A basic ARK server installation guide for Ubuntu 16.04'
-keywords: 'ark survival evolved, ubuntu, server'
+keywords: ["ark survival evolved", " ubuntu", " server"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 external_resources:
  - '[PlayARK.com](http://www.playark.com/)'
  - '[The Official ARK: Survival Evolved Wiki](http://ark.gamepedia.com/ARK_Survival_Evolved_Wiki)'
-modified: Wednesday, December 28th, 2016
+modified: 2016-12-28
 modified_by:
   name: Nick Brewer
-published: 'Wednesday, December 28th, 2016'
+published: 2016-12-28
 title: 'Create an ARK: Survival Evolved Server on Ubuntu 16.04'
-alias: ['applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
+aliases: ['applications/game-servers/create-an-ark-survival-evolved-server-on-ubuntu-16-04/']
 ---
 
 This guide will show you how to set up a personal [ARK: Survival Evolved](http://www.playark.com/) server on a Linode running Ubuntu 16.04 LTS (Xenial Xerus).
 
 ![Create an ARK: Survival Evolved Server on Ubuntu 16.04](/content/assets/ark-survival-evolved.png "Create an ARK: Survival Evolved Server on Ubuntu 16.04")
 
-{: .note}
-> The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges unless otherwise noted. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Before You Begin
+## Before You Begin
 
 1.  To connect to your ARK server, you must have a copy of the [ARK](http://www.playark.com/) game client.
 
@@ -43,7 +44,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
         adduser ark
 
-##Adjust Your System Settings
+## Adjust Your System Settings
 
 1.  Run the following command to increase the allowed number of open files:
 
@@ -58,7 +59,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
         echo "session required pam_limits.so" >> /etc/pam.d/common-session
 
-##Install Your ARK Server
+## Install Your ARK Server
 
 1.  Switch your session to that of the `ark` user, and create a `server` directory that will contain your ARK server files:
 
@@ -75,7 +76,7 @@ This guide will show you how to set up a personal [ARK: Survival Evolved](http:/
 
     This will take several minutes to complete.
 
-##Create a systemd Unit for Your ARK Server
+## Create a systemd Unit for Your ARK Server
 
 By creating a systemd unit file for your ARK server, it can be set to start automatically after a reboot.
 
@@ -85,25 +86,25 @@ By creating a systemd unit file for your ARK server, it can be set to start auto
 
 2.  Create a new systemd service file and add the following values to it. Fill in the `SessionName` value on line 12 with the name you'll use to identify your ARK server:
 
-    {: .file }
-    /lib/systemd/system/ark.service
-    :   ~~~
-        [Unit]
-        Description=ARK Survival Evolved
-        [Service]
-        Type=simple
-        Restart=on-failure
-        RestartSec=5
-        StartLimitInterval=60s
-        StartLimitBurst=3
-        User=ark
-        Group=ark
-        ExecStartPre=/home/ark/steamcmd +login anonymous +force_install_dir /home/ark/server +app_update 376030 +quit
-        ExecStart=/home/ark/server/ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?SessionName=example -server -log
-        ExecStop=killall -TERM srcds_linux
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+    {{< file "/lib/systemd/system/ark.service" >}}
+[Unit]
+Description=ARK Survival Evolved
+[Service]
+Type=simple
+Restart=on-failure
+RestartSec=5
+StartLimitInterval=60s
+StartLimitBurst=3
+User=ark
+Group=ark
+ExecStartPre=/home/ark/steamcmd +login anonymous +force_install_dir /home/ark/server +app_update 376030 +quit
+ExecStart=/home/ark/server/ShooterGame/Binaries/Linux/ShooterGameServer TheIsland?listen?SessionName=example -server -log
+ExecStop=killall -TERM srcds_linux
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
     Save and exit the file.
 
@@ -120,21 +121,22 @@ By creating a systemd unit file for your ARK server, it can be set to start auto
 
 Once you've started the server, you can add or remove settings by editing the `GameUserSettings.ini` file under `/home/ark/server/ShooterGame/Saved/Config/LinuxServer`. Add the following settings within the `[ServerSettings]` section of that file, replacing the "example" passwords with your own:
 
-  {: .file }
-  /home/ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini
-  :   ~~~
-      ServerPassword=example
-      ServerAdminPassword=example
-      ~~~
+  {{< file "/home/ark/server/ShooterGame/Saved/Config/LinuxServer/GameUserSettings.ini" >}}
+ServerPassword=example
+ServerAdminPassword=example
+
+{{< /file >}}
+
 
 `ServerPassword` determines the password that users will be required to enter when connecting to your server. You can omit this line to allow access without a password. `ServerAdminPassword` specifies the administrative password that will be used when issuing [game commands](http://ark.gamepedia.com/Console_Commands).
 
-{: .note}
-> If you choose to use the `ServerPassword` option, when connecting to the server you will need to click on **Show Password Protected**, or manually add the server to your favorites list. Both options are shown in the next section.
+{{< note >}}
+If you choose to use the `ServerPassword` option, when connecting to the server you will need to click on **Show Password Protected**, or manually add the server to your favorites list. Both options are shown in the next section.
+{{< /note >}}
 
 A number of options can be configured within this file - for more information take a look at the [Server Configuration](http://ark.gamepedia.com/Server_Configuration#GameUserSettings.ini) section of the ARK wiki.
 
-##Connect the Game Client to Your ARK Server
+## Connect the Game Client to Your ARK Server
 
 You can connect to your new ARK server using two different methods. Because the game is currently in pre-release and under heavy development, some functionality may change or work intermittently. While finding your server from within the game itself is often easier, it's not always reliable (as of this guide's publication), so we'll also go over how to add it to your favorite servers in the Steam client.
 

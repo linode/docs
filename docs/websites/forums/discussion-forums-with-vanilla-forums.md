@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install the lightweight Vanilla Forums software to power discussion forums on your Linode.'
-keywords: 'vanilla,bb,fourms,lamp,discussion forums'
+keywords: ["vanilla", "bb", "fourms", "lamp", "discussion forums"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/vanilla/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/bulletin-boards/vanilla/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: Discussion Forums with Vanilla Forums
 deprecated: true
 ---

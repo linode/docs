@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Logwatch to monitor system logs and generate reports.'
-keywords: 'logwatch,security,logging,audit'
+keywords: ["logwatch", "security", "logging", "audit"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/logwatch/ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['server-monitoring/logwatch/ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: 'Monitor System Logs with Logwatch on Ubuntu 10.10 (Maverick)'
 ---
 
@@ -42,14 +42,14 @@ Configure Logwatch
 
 Once you have installed Logwatch, you will need to configure it to email you the reports it generates. You are encouraged to look through the entire configuration, but you may safely use Logwatch after editing the lines below.
 
-{: .file }
-/usr/share/logwatch/default.conf/logwatch.conf
-:   ~~~ ini
-    Output = mail
-    Format = html
-    MailTo = myemail@mydomain.com
-    MailFrom = logwatch@mydomain.com
-    ~~~
+{{< file "/usr/share/logwatch/default.conf/logwatch.conf" ini >}}
+Output = mail
+Format = html
+MailTo = myemail@mydomain.com
+MailFrom = logwatch@mydomain.com
+
+{{< /file >}}
+
 
 These directives tell Logwatch to email you reports in an HTML format. The `MailTo` and `MailFrom` directives should be valid email addresses.
 

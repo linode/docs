@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Set up and manage an online storefront with OpenCart.'
-keywords: 'opencart,ecommerce,commerce,store,debian,squeeze'
+keywords: ["opencart", "ecommerce", "commerce", "store", "debian", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/opencart/debian-6/']
-modified: Tuesday, September 20th, 2011
+aliases: ['web-applications/e-commerce/opencart/debian-6/']
+modified: 2011-09-20
 modified_by:
   name: Linode
-published: 'Friday, September 16th, 2011'
+published: 2011-09-16
 title: 'OpenCart on Debian 6 (Squeeze)'
 ---
 
@@ -21,8 +21,9 @@ PHP Settings
 
 In order to use OpenCart, you will need to ensure that PHP is configured properly. Make sure the settings below match the values in your `/etc/php5/apache2/php.ini` file:
 
-{: .file }
+{{< file >}}
 /etc/php5/apache2/php.ini
+{{< /file >}}
 
 > register\_globals = Off magic\_quotes\_gpc = Off file\_uploads = 1 session\_auto\_start = 0
 

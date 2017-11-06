@@ -3,12 +3,12 @@ author:
     name: Onwuka Gideon
     email: dongidomed@gmail.com
 description: 'This guide shows how to use Laravel Forge to automate deployment of your PHP projects on a Linode.'
-keywords: 'content management,web-server automation,laravel,php,wordpress,drupal,cms,joomla,Laravel Forge'
+keywords: ["content management", "web-server automation", "laravel", "php", "wordpress", "drupal", "cms", "joomla", "Laravel Forge"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, September 20th, 2017
+modified: 2017-09-20
 modified_by:
     name: Onwuka Gideon
-published: 'Monday, September 18, 2017'
+published: 2017-09-18
 title: 'Use Laravel Forge to Automate Web-Server Creation on a Linode'
 external_resources:
  - '[Laravel Forge](https://forge.laravel.com)'
@@ -110,10 +110,9 @@ If you want to use Let's Encrypt to obtain a free SSL certificate for your websi
 
 3. Submit the form by clicking **ADD SITE**.
 
-    {: .note}
-    >
-    > If you do not add a domain name, you can still access your server through its public IP address.
-
+    {{< note >}}
+If you do not add a domain name, you can still access your server through its public IP address.
+{{< /note >}}
 
 ## Add a Repository
 

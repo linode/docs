@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
-keywords: 'redis fedora 14,redis,nosql,database,key-value store'
+keywords: ["redis fedora 14", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/redis/fedora-14/']
-modified: Tuesday, September 24th, 2013
+aliases: ['databases/redis/fedora-14/']
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Monday, December 6th, 2010'
+published: 2010-12-06
 title: Redis on Fedora 14
 ---
 
@@ -65,34 +65,34 @@ All Redis configuration options can be specified in the `redis.conf` file locate
 
 Consider the following configuration:
 
-{: .file }
-/opt/redis/redis.conf
-:   ~~~
-    daemonize yes
-    pidfile /var/run/redis.pid
-    logfile /var/log/redis.log
+{{< file "/opt/redis/redis.conf" >}}
+daemonize yes
+pidfile /var/run/redis.pid
+logfile /var/log/redis.log
 
-    port 6379
-    bind 127.0.0.1
-    timeout 300
+port 6379
+bind 127.0.0.1
+timeout 300
 
-    loglevel notice
+loglevel notice
 
-    ## Default configuration options
-    databases 16
+## Default configuration options
+databases 16
 
-    save 900 1
-    save 300 10
-    save 60 10000
+save 900 1
+save 300 10
+save 60 10000
 
-    rdbcompression yes
-    dbfilename dump.rdb
+rdbcompression yes
+dbfilename dump.rdb
 
-    dir /opt/redis/
-    appendonly no
+dir /opt/redis/
+appendonly no
 
-    glueoutputbuf yes
-    ~~~
+glueoutputbuf yes
+
+{{< /file >}}
+
 
 Most of the values in this configuration mirror the default Redis configuration. However, this configuration configures Redis to run in a daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
@@ -149,12 +149,12 @@ If persistence is a major issue for your application, it is possible to use Redi
 
 To use this mode, ensure that the following values are set in `redis.conf`:
 
-{: .file-excerpt }
-/opt/redis/redis.conf
-:   ~~~
-    appendonly yes
-    appendfsync everysec
-    ~~~
+{{< file-excerpt "/opt/redis/redis.conf" >}}
+appendonly yes
+appendfsync everysec
+
+{{< /file-excerpt >}}
+
 
 The first directive enables the journaled "append only file" mode, while the second directive forces Redis to write the journal to the disk every second. The `appendfsync` directive also accepts the argument `always` to force writes after every operation which provides maximum durability, or `never` which allows the operating system to control when data is written to disk which is less reliable.
 
@@ -171,11 +171,11 @@ Redis contains limited support for master-slave replication which allows you to 
 
 To configure master-slave operation, ensure that the following configuration options are applied to the *slave* instance:
 
-{: .file-excerpt }
-redis.conf
-:   ~~~
-    slaveof 192.168.10.101 6379
-    ~~~
+{{< file-excerpt "redis.conf" >}}
+slaveof 192.168.10.101 6379
+
+{{< /file-excerpt >}}
+
 
 The `slaveof` directive takes two arguments: the first is the IP address of the master node, and the second is the Redis port specified in the master's configuration.
 

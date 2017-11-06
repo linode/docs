@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.'
-keywords: 'centos firewall,centos firewall config,centos firewall gui,centos configure firewall,Linux,Linode,cloud,firewall,firewalld,Fedora,CentOS,iptables,security'
+keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 28th, 2015'
-modified: Monday, October 12th, 2015
+published: 2015-09-28
+modified: 2015-10-12
 modified_by:
     name: Linode
 title: Introduction to FirewallD on CentOS
@@ -29,9 +29,9 @@ external_resources:
 1.  FirewallD uses *zones* and *services* instead of chain and rules.
 2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
 
-{: .note}
->
->FirewallD is a wrapper for iptables to allow easier management of iptables rules--it is **not** an iptables replacement. While iptables commands are still available to FirewallD, it's recommended to use only FirewallD commands with FirewallD.
+{{< note >}}
+FirewallD is a wrapper for iptables to allow easier management of iptables rules--it is **not** an iptables replacement. While iptables commands are still available to FirewallD, it's recommended to use only FirewallD commands with FirewallD.
+{{< /note >}}
 
  This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.
 
@@ -97,9 +97,9 @@ By default, `firewall-cmd` commands apply to runtime configuration but using the
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --reload
 
-      {: .note}
-      >
-      >The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
+      {{< note >}}
+The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
+{{< /note >}}
 
 ### Firewall Zones
 

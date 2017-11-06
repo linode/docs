@@ -4,13 +4,13 @@ author:
   name: Lukas Sabota
   email: docs@linode.com
 description: 'Configure Exim to Serve as a Lightweight, Send-only SMTP Server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'exim,ubuntu 12.04,send-only email,mail server,linux mail,smtp server'
+keywords: ["exim", "ubuntu 12.04", "send-only email", "mail server", "linux mail", "smtp server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: Tuesday, January 21st, 2014
+aliases: ['email/exim/send-only-mta-ubuntu-12-04-precise-pangolin/','email/exim/sendonly-mail-server-withexim-on-ubuntu-12-04-lts-precise-pangolin/']
+modified: 2014-01-21
 modified_by:
   name: Alex Fornuto
-published: 'Monday, November 12th, 2012'
+published: 2012-11-12
 title: 'Deploy Exim as a Send-only Mail Server on Ubuntu 12.04 '
 external_resources:
  - '[Exim Homepage](http://www.exim.org/)'
@@ -34,25 +34,25 @@ Before you begin installing and configuring the components described in this gui
 
 Make sure you have the "universe" repositories enabled. Your `/etc/apt/sources.list` file should resemble this:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ precise main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ precise main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise main restricted
 
-    deb http://security.ubuntu.com/ubuntu precise-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
+deb http://security.ubuntu.com/ubuntu precise-security main restricted
+deb-src http://security.ubuntu.com/ubuntu precise-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
 
-    deb http://security.ubuntu.com/ubuntu precise-security universe
-    deb-src http://security.ubuntu.com/ubuntu precise-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu precise-security universe
+deb-src http://security.ubuntu.com/ubuntu precise-security universe
+
+{{< /file >}}
+
 
 Issue the following commands to update your package repositories, upgrade your system, and install Exim:
 

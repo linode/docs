@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with the open source edition of Zimbra groupware on your CentOS 5 Linode.'
-keywords: 'zimbra on centos,zimbra groupware,zimbra mail server,linux mail server'
+keywords: ["zimbra on centos", "zimbra groupware", "zimbra mail server", "linux mail server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/zimbra/install-zimbra-centos-5/']
-modified: Tuesday, May 17th, 2011
+aliases: ['email/zimbra/install-zimbra-centos-5/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Sunday, September 13th, 2009'
+published: 2009-09-13
 title: Email and Calendars with Zimbra 6 on CentOS 5
 external_resources:
  - '[Zimbra Community Documentation](http://www.zimbra.com/community/documentation.html)'
@@ -40,12 +40,12 @@ Depending on the requirements for the current version of Zimbra, you may need to
 
 Before proceeding, make sure your `/etc/hosts` file has valid entries. For reference, your file should resemble the following:
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 hostname.example.com hostname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 hostname.example.com hostname
+
+{{< /file >}}
+
 
 Be sure to replace "12.34.56.78" with your Linode's IP address. Replace "hostname.example.com" with your Linode's fully qualified domain name. Next, make sure your hostname is set in `/etc/hostname` by issuing the following commands (insert your one-word hostname in place of "hostname").
 

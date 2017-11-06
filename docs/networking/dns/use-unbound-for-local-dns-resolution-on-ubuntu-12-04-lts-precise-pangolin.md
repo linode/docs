@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'ubuntu dns,open source dns,dns,resolving,caching,unbound'
+keywords: ["ubuntu dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-guides/unbound-dns-resolver-ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, October 9th, 2012
+aliases: ['dns-guides/unbound-dns-resolver-ubuntu-12-04-precise-pangolin/']
+modified: 2012-10-09
 modified_by:
   name: Linode
-published: 'Tuesday, October 9th, 2012'
+published: 2012-10-09
 title: 'Use Unbound for Local DNS Resolution on Ubuntu 12.04 LTS (Precise Pangolin)'
 ---
 
@@ -47,8 +47,9 @@ Configure Unbound
 
 In the default configuration, Unbound will only listen for requests on the local interface. If you want Unbound to attach to additional interfaces, these interfaces must be configured manually. Possible interfaces include the public interface or the private networking interface. Specify those IP addresses after the `server:` directive in the following format:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   interface: 19.28.37.56 interface: 192.168.3.105
@@ -59,8 +60,9 @@ Modify these `interface:` directives to conform with the actual addresses assign
 
 By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface, as above, **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines modeled on the following example into the `unbound.conf` file, following the `server:` directive.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   access-control: 192.168.0.0/16 allow access-control: 11.22.33.44/32 allow
@@ -94,8 +96,9 @@ Before you can begin using your Unbound instance to resolve DNS queries, you nee
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
-{: .file }
+{{< file >}}
 /etc/resolv.conf
+{{< /file >}}
 
 > nameserver 127.0.0.1
 

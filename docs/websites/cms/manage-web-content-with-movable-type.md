@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Movable Type dynamic content platform to publish a website.'
-keywords: 'Movable Type,MT HOWTO'
+keywords: ["Movable Type", "MT HOWTO"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/movable-type/']
-modified: Wednesday, October 2nd, 2013
+aliases: ['web-applications/cms-guides/movable-type/']
+modified: 2013-10-02
 modified_by:
   name: Linode
-published: 'Thursday, July 23rd, 2009'
+published: 2009-07-23
 title: Manage Web Content with Movable Type
 deprecated: true
 ---
@@ -25,23 +25,23 @@ If your LAMP environment isn't already set up to allow Perl scripts to be run on
 
 Next, we'll make sure Apache knows where CGI scripts are allowed to be run.
 
-{: .file }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin support@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-         AddHandler cgi-script .cgi .pl
-    </VirtualHost>
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost *:80>
+     ServerAdmin support@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+     AddHandler cgi-script .cgi .pl
+</VirtualHost>
 
-    <Directory /srv/www/example.com/public_html/>
-         Options +ExecCGI
-    </Directory>
-    ~~~
+<Directory /srv/www/example.com/public_html/>
+     Options +ExecCGI
+</Directory>
+
+{{< /file >}}
+
 
 We've added a line to the `<VirtualHost>` section of our site's Apache configuration file which uses "AddHandler" to tell Apache how to treat files that end in `.pl` or `.cgi`. We've added a \<Directory\> section as well to allow CGI scripts to be run from the public\_html directory. Reload Apache as follows:
 

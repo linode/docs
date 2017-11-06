@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.04 (Jaunty).'
-keywords: 'openfire,openfire ubuntu 9.04,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["openfire", "openfire ubuntu 9.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Saturday, September 19th, 2009'
+published: 2009-09-19
 title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -27,25 +27,25 @@ Openfire requires a Java runtime engine (JRE). This tutorial uses the version pr
 
 Examine your `/etc/apt/sources.list` file to make sure you have the `multiverse` repository enabled. You can use an editor like `nano` to edit configuration files through the shell; you would issue the command `nano /etc/apt/sources.list` to edit this one. Please consult the [nano manual page](http://www.nano-editor.org/dist/v1.2/nano.1.html) for information on using the editor. Your file should look similar to the following.
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
+deb http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
+deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty universe
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security universe
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu jaunty-security universe
+deb-src http://security.ubuntu.com/ubuntu jaunty-security universe
+
+{{< /file >}}
+
 
 If you had to add the `multiverse` repositories to your sources, issue the following command to update your package database:
 
@@ -89,11 +89,11 @@ Install the software using `dpkg` as follows:
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
-{: .file-excerpt }
-/etc/openfire/openfire.xml
-:   ~~~ xml
-    <interface>12.34.56.78</interface>
-    ~~~
+{{< file-excerpt "/etc/openfire/openfire.xml" xml >}}
+<interface>12.34.56.78</interface>
+
+{{< /file-excerpt >}}
+
 
 Restart Openfire with the following command:
 

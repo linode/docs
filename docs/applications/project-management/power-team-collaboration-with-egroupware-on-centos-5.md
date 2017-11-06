@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a groupware system with eGroupware.'
-keywords: 'groupware,email,collaboration,centos'
+keywords: ["groupware", "email", "collaboration", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/egroupware/centos-5/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/project-management/egroupware/centos-5/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Wednesday, February 3rd, 2010'
+published: 2010-02-03
 title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:
  - '[eGroupware Home Page](http://www.egroupware.org/)'
@@ -42,11 +42,11 @@ Congratulations, you've now installed eGroupware!
 
 The configuration options for eGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration
-:   ~~~ apache
-    Alias /egroupware /usr/share/egroupware
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration" apache >}}
+Alias /egroupware /usr/share/egroupware
+
+{{< /file-excerpt >}}
+
 
 When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
 

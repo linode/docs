@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to use two-factor authentication and other security controls in the Linode Manager.'
-keywords: 'two-factor authentication,password,security,Linode Manager,token'
+keywords: ["two-factor authentication", "password", "security", "Linode Manager", "token"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linode-manager-security/']
-modified: Thursday, October 23, 2014
+aliases: ['linode-manager-security/']
+modified: 2014-10-23
 modified_by:
   name: Linode
-published: 'Thursday, May 2nd, 2013'
+published: 2013-05-02
 title: Linode Manager Security Controls
 ---
 
@@ -51,9 +51,9 @@ You'll need to enable two-factor authentication to start using it with your Lino
 
     [![The key and QR code for two-factor authentication.](/content/assets/1291-manager_2factor_key_qr-4.png)](/content/assets/1291-manager_2factor_key_qr-4.png)
 
-    {: .caution }
-    >
-    > Do not refresh this page until you have configured Google Authenticator on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/content/support) to regain access.
+    {{< caution >}}
+Do not refresh this page until you have configured Google Authenticator on your phone. The key will be shown only once. If you get locked out of your account, [contact support](/docs/support) to regain access.
+{{< /caution >}}
 
 7.  On your smartphone, open Google Authenticator.
 8.  Tap the plus (**+**) button, as shown below.

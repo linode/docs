@@ -3,22 +3,22 @@ author:
   name: Linode
   email: docs@linode.com
 description: This tutorial explains how to use Linode's block storage service.
-keywords: 'block storage, volume, media, resize, storage, disk'
+keywords: ["block storage", " volume", " media", " resize", " storage", " disk"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, June 16, 2017
+modified: 2017-06-16
 modified_by:
   name: Linode
-published: 'Friday, June 16, 2017'
+published: 2017-06-16
 title: How to Use Block Storage with Your Linode
 ---
 
 Linode's block storage service allows you to attach additional storage volumes to your Linode. A single volume can range from 1 to 1024 gigabytes in size and costs $0.10/GiB per month. They can be partitioned however you like and can accommodate any filesystem type you choose. Up to eight volumes can be attached to a single linode, be it new or currently-existing, so you do not need to recreate your server to add a block storage volume.
 
 
-{: .caution}
->
->Linode's backup services do NOT cover block storage volumes.
->You MUST execute your own backups for this data.
+{{< caution >}}
+Linode's backup services do NOT cover block storage volumes.
+You MUST execute your own backups for this data.
+{{< /caution >}}
 
 Block Storage is currently in a free public beta for Linodes in our Newark and Fremont datacenters. Any feedback you can give on the service would also be helpful and is appreciated.
 
@@ -38,9 +38,9 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     [![Linode Manager add a volume](/content/assets/bs-add-a-volume.png)](/content/assets/bs-add-a-volume.png)
 
-    {: .note }
-    >
-    > Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
+    {{< note >}}
+Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
+{{< /note >}}
 
      If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
@@ -66,9 +66,9 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     [![Linode Manager add volume](/content/assets/bs-volume-attach-small.png)](/content/assets/bs-volume-attach.png)
 
-    {: .note }
-     >
-     > Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
+    {{< note >}}
+Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
+{{< /note >}}
 
      If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
@@ -102,9 +102,9 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 ## How to Delete a Block Storage Volume
 
-{: .alert-danger }
->
-> The removal process is irreversible, and the data will be permanently deleted.
+{{< alert-danger >}}
+The removal process is irreversible, and the data will be permanently deleted.
+{{< /alert-danger >}}
 
 1.  Shut down the Linode.
 

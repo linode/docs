@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Debian 5 (Lenny) operating system.'
-keywords: 'ruby on rails,rails on debian,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "rails on debian", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/debian-5-lenny/','websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/']
-modified: Monday, August 22nd, 2011
+aliases: ['frameworks/ruby-on-rails-nginx/debian-5-lenny/','websites/ror/ruby-on-rails-with-nginx-on-debian-5-lenny/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Friday, August 21st, 2009'
+published: 2009-08-21
 title: 'Ruby on Rails with Nginx on Debian 5 (Lenny)'
 ---
 
@@ -31,11 +31,11 @@ Install Required Packages
 
 To install a more current version of Ruby Gems, which is required for running Ruby on Rails on Debian 5 (Lenny), you must install several packages from the [Backports project](http://backports.debian.org). Insert the following line in your `/etc/apt/sources.list` file:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://backports.debian.org/debian-backports lenny-backports main
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://backports.debian.org/debian-backports lenny-backports main
+
+{{< /file-excerpt >}}
+
 
 Issue the following commands to update your system's package database and all installed packages, and install the backports repository's key:
 
@@ -45,8 +45,9 @@ Issue the following commands to update your system's package database and all in
 
 Add the following snippet to the `/etc/apt/preferences` file:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/apt/preferences
+{{< /file-excerpt >}}
 
 > Package: rubygems Pin: release a=lenny-backports Pin-Priority: 999
 >
