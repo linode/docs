@@ -11,7 +11,7 @@ contributor:
     link: https://twitter.com/jesin_a
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
- - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
+ - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/content/mod_fastcgi.html)'
 modified: 2014-08-16
 modified_by:
   name: Linode

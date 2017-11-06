@@ -100,7 +100,7 @@ class apache::params {
 }
 
 {{< /file >}}
-~
+
 
     And once we've added the variables that have already been referenced:
 
@@ -117,18 +117,12 @@ class apache::params {
 
 }
 
-<<<<<<< HEAD
 {{< /file >}}
-~
+
 
     {{< note >}}
-For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/docs/assets/params.pp).
+For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/content/assets/params.pp).
 {{< /note >}}
-=======
-    {: .note}
-    >
-    >For the duration of this guide, when something needs to be added to the parameter list the variables needed for Red Hat and Debian will be provided, but the expanding code will not be shown. A complete copy of `params.pp` can be viewed [here](/content/assets/params.pp).
->>>>>>> docs_to_content
 
 4.  With the parameters finally defined, we need to call the `params.pp` file and the parameters into `init.pp`. To do this, the parameters need to be added after the class name, but before the opening curly bracket (`{`):
 

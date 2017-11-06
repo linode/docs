@@ -118,7 +118,7 @@ An *AXFR record* is a type of DNS record used for DNS replication, although ther
 
 ### CAA
 
-DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/docs/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/content/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
 
 ### CNAME
 

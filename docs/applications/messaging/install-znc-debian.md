@@ -161,14 +161,10 @@ Make sure to change the `username` variable.
 
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
-<<<<<<< HEAD
     {{< note >}}
-If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+If the [Firewall portion](/content/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/content/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
 {{< /note >}}
-=======
-    {: .note}
-    >If the [Firewall portion](/content/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/content/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
->>>>>>> docs_to_content
+
 
     [![ZNC's Web Admin](/content/assets/znc-web-admin_small.png)](/content/assets/znc-web-admin.png)
 
@@ -212,6 +208,3 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 If you would like to use a signed certificate to encrypt your connection to ZNC, you can do so by adding your key and certificate to the `znc.pem` file:
 
     cat domain.key domain.crt > znc.pem
-
-
-

@@ -37,7 +37,7 @@ This document provides both instructions for deploying the Redis server, and an 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
-To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
+To utilize the [replication](/content/databases/redis/install-and-configure-redis-on-centos-7#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
 {{< /note >}}
 
 ## Install Redis

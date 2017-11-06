@@ -74,7 +74,7 @@ The `openvas` repository and its packages are not officially supported by Ubuntu
         sudo openvas-nvt-sync
 
     {{< note >}}
-This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron) to automate the process.
+This feed is maintained by OpenVAS and is updated about once per week. To keep your NVT feed current, we recommend running this command regularly, or setting up a [cron job](https://www.linode.com/content/tools-reference/tools/schedule-tasks-with-cron) to automate the process.
 {{< /note >}}
 
 5.  Sync Security Content Automation Protocol (SCAP) and Computer Emergency Readiness Team (CERT) vulnerability data to a local database. The synchronization will take several minutes, and you can monitor its progress in the output:

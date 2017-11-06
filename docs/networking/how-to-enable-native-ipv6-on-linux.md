@@ -16,7 +16,7 @@ external_resources:
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
-Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To find your Linode's IPv6 address, click on the [Remote Access](/docs/networking/remote-access) tab of the Linode's dashboard.
+Linode provides IPv6 support in all of our data centers, and all Linodes are created with one IPv6 address. By default, IPv6 is enabled on all Linodes and the IPv6 address is acquired via Stateless Address Autoconfiguration (SLAAC). To find your Linode's IPv6 address, click on the [Remote Access](/content/networking/remote-access) tab of the Linode's dashboard.
 
 It is important to note that Linode does not offer private IPv6 address allocations. We have designed our IPv6 accounting so that local IPv6 traffic does not count against your transfer quota and you can use them just like private IPv6 addresses.
 
@@ -24,7 +24,7 @@ It is important to note that Linode does not offer private IPv6 address allocati
 Internet Protocol version 6 carries data packets from source to destination over disparate networks. Evolved from IPv4, IPv6 developed in hexadecimal format and contains 8 octets, accommodating up to 2128 possible node, or address, combinations, which facilitate expansive scalability.
 
 {{< note >}}
-The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to prefix most commands with `sudo`. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups/) guide.
+The steps provided in this guide require root privileges. It is assumed that you will run these commands as the root superuser. If you are not logged in as `root` you will need to prefix most commands with `sudo`. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups/) guide.
 {{< /note >}}
 
 ## Set up IPv6
@@ -55,7 +55,7 @@ If your Linode does not have the correct IPv6 address or an IPv6 address at all,
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). Additional addresses are allotted in *pools*. Each pool size has a different number of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/content/platform/support). Additional addresses are allotted in *pools*. Each pool size has a different number of IPv6 addresses. The IPv6 pool sizes Linode provides and their respective quantity of IPv6 addresses are below.
 
 | Pool   | No. of IPS                    |
 |:-------|------------------------------:|
@@ -81,13 +81,13 @@ While default IPv6 addresses are configured automatically, you will need to stat
 {{< note >}}
 If SLAAC is not obtaining your IPv6 address, even after verifying that privacy extensions are disabled and your Linode is accepting router advertisements, you may need to statically configure your default IPv6 address as well.
 
-Be sure that [Network Helper](/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
+Be sure that [Network Helper](/content/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
 {{< /note >}}
 
 ### Debian / Ubuntu
 
 {{< note >}}
-Be sure that [Network Helper](/docs/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
+Be sure that [Network Helper](/content/platform/network-helper) is disabled when adding addresses from a pool, otherwise your configuration files may be overwritten upon rebooting your Linode, causing disruption to your IPv6 networking.
 {{< /note >}}
 
 1.  On Debian and Ubuntu, edit `/etc/network/interfaces` to set up statically configured IPv6:
@@ -139,13 +139,13 @@ net.ipv6.conf.all.forwarding=1
 
     For addresses within a /116 pool, the above change is not necessary as routing will be automatically configured. Addresses in a /116 pool are routed to other Linodes on your account within the same datacenter.
 
-3.  Restart networking. This command should be performed in [Lish](/docs/networking/using-the-linode-shell-lish), as it may terminate an SSH connection.
+3.  Restart networking. This command should be performed in [Lish](/content/networking/using-the-linode-shell-lish), as it may terminate an SSH connection.
 
         ifdown -a && ifup -a
 
 ### CentOS/Fedora
 
-On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up statically configured IPv6 addresses. You should configure [Static IP Networking](/docs/networking/linux-static-ip-configuration) for IPv4 as well.
+On CentOS or Fedora, edit `/etc/sysconfig/network-scripts/ifcfg-eth0` to set up statically configured IPv6 addresses. You should configure [Static IP Networking](/content/networking/linux-static-ip-configuration) for IPv4 as well.
 
 {{< file "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
 # Configuration for eth0
@@ -188,7 +188,7 @@ If you are using CentOS 7 or Fedora:
 
 If you are using `systemd-networkd` on Arch Linux, you can statically configure IPv6 pools by editing `/etc/systemd/network/05-eth0.network`.
 
-1.  Set up [Static IP Networking](/docs/networking/linux-static-ip-configuration/##arch--coreos-container-linux) for your IPv4 address.
+1.  Set up [Static IP Networking](/content/networking/linux-static-ip-configuration/##arch--coreos-container-linux) for your IPv4 address.
 
 2.  Edit your current static IP networking configuration to allow for your IPv6 addresses. You will need to include your default IPv6 address as well.
 
@@ -265,4 +265,4 @@ config_eth0="dhcp 2001:db8:2000:aff0::1/32 2001:db8:2000:aff0::2/32 2001:db8:200
 
 ## Maintain Static IP Configurations
 
-If the "Auto-configure Networking" option is turned on in your Linode Manager, you may lose changes to static IP configurations upon rebooting your system. Before disabling it completely, please refer to our [Network Helper guide](/docs/platform/network-helper) for information on how to restore previous configurations. This will help mitigate issues that may arise if other files affected by the Network Helper are modified. You can also manually back up your configuration and restore it each time you reboot to avoid losing changes.
+If the "Auto-configure Networking" option is turned on in your Linode Manager, you may lose changes to static IP configurations upon rebooting your system. Before disabling it completely, please refer to our [Network Helper guide](/content/platform/network-helper) for information on how to restore previous configurations. This will help mitigate issues that may arise if other files affected by the Network Helper are modified. You can also manually back up your configuration and restore it each time you reboot to avoid losing changes.

@@ -489,7 +489,7 @@ No additional Linodes will be created in this section, and all configuration wil
     yum install keepalived
 
 {{< caution >}}
-Make sure that [Network Helper](/docs/platform/network-helper) is turned **OFF** on your database nodes before proceeding.
+Make sure that [Network Helper](/content/platform/network-helper) is turned **OFF** on your database nodes before proceeding.
 {{< /caution >}}
 
 ### Configure IP Failover
@@ -671,4 +671,3 @@ For more information on DNS configuration, refer to our [introduction to DNS rec
 ## Configuration Management
 
 Because a high availability configuration involves so many different components, you may want to consider additional software to help you manage the cluster and create new nodes when necessary. For more information on the options available for managing your nodes, see our guides on [Salt](https://www.linode.com/content/applications/salt/install-salt), [Chef](https://www.linode.com/content/applications/chef/beginners-guide-chef), [Puppet](https://www.linode.com/content/applications/puppet/set-up-puppet-master-agent), and [Ansible](https://www.linode.com/content/applications/ansible/getting-started-with-ansible). You can also refer to our guide on [Automating Server Builds](https://www.linode.com/content/platform/automating-server-builds) for an overview of how to choose a solution that is right for you.
-

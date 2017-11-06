@@ -53,7 +53,7 @@ contributor:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
 ----
 

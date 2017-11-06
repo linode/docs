@@ -24,19 +24,11 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](/content/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
-<<<<<<< HEAD
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/content/tools-reference/linux-users-and-groups).
 
 Replace each instance of `example.com` in this guide with your site's domain name.
 {{< /note >}}
-=======
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/content/tools-reference/linux-users-and-groups).
->
->Replace each instance of `example.com` in this guide with your site's domain name.
->>>>>>> docs_to_content
 
 ## Before You Begin
 

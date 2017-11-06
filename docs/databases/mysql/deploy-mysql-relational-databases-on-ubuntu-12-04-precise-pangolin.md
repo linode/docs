@@ -21,15 +21,9 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 12.04 LTS (Precise Pangolin).
 
-<<<<<<< HEAD
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
-=======
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
->>>>>>> docs_to_content
 
 ## Prerequisites
 

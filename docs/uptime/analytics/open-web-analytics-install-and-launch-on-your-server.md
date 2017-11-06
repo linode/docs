@@ -31,20 +31,12 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
      - That the Linode's [hostname is set](/content/getting-started#setting-the-hostname) and has a FQDN.
 
 
-
-<<<<<<< HEAD
     {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
 
 Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
 {{< /note >}}
-=======
-    {: .note}
-    >
-    >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
-    >
-    >Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
->>>>>>> docs_to_content
+
 
 2.  Make sure your system is up-to-date:
 
@@ -199,5 +191,3 @@ You must click "Save Profile" before trying to enter any of the settings below t
 7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.
 
 8.  Click "View Reports" in the Sites Roster page and begin happy analyzing!
-
-

@@ -18,13 +18,8 @@ title: How to Install Git and Clone a GitHub Repository
 
 GitHub is a website that allows collaboration between developers using the Git version control system. With Git and GitHub, programmers from across the world can share ideas and code in an organized and up-to-date process.
 
-<<<<<<< HEAD
 ## Install and Configure Git
-The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/docs/applications/development/git-source-control-management) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
-=======
-##Install and Configure Git
 The directions below are for Debian or Ubuntu. For installation on Mac, Windows, or other Linux distributions, find instructions in the  [Git Source Control Management](/content/applications/development/git-source-control-management) guide. While that guide focuses on Git, this guide focuses more on Git with GitHub.
->>>>>>> docs_to_content
 
 1.  Install:
 

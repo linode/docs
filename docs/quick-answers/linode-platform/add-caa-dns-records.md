@@ -52,4 +52,4 @@ Certification Authority Authorization (CAA) is a type of DNS record that allows 
 
 Multiple CAA records must be added individually. If your site `example.com` was issued a TLS certificate by Let's Encrypt, but your subdomain `shop.example.com` uses a Symantec certificate, you would need two different CAA records. A reporting URL for the *iodef* tag would also need its own record. Those three would look something like below:
 
-![Multiple CAA records](/docs/assets/multiple-caa-records.png)
+![Multiple CAA records](/content/assets/multiple-caa-records.png)

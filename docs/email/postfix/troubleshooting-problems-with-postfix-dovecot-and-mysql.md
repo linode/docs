@@ -839,7 +839,7 @@ smtps     inet  n       -       -       -       -       smtpd
 8.  Set up your mail client to connect to your Linode as an outgoing mail server. You should use TLS encryption, or STARTTLS if you have that option, over ports 25, 465, or 587. Your username and password are the same as they are for incoming mail. Try sending a test message.
 
 {{< note >}}
-You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/docs/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
+You will no longer be able to use Telnet for testing. If you want to run a manual test for troubleshooting purposes, you can use [openssl](http://www.openssl.org/content/apps/s_client.html) instead. Your command should look like this (you can test on ports 465 and 587 as well):
 
 openssl s_client -connect example.com:25 -starttls smtp
 {{< /note >}}

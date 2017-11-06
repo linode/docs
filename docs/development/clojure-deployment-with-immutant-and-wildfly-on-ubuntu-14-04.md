@@ -70,15 +70,10 @@ In this guide `example.com` will be used as a domain name, and `linode-user` as 
         Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
         Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
 
-<<<<<<< HEAD
+
 {{< note >}}
-If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
+If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/content/applications/development/java-development-wildfly-centos-7) guide.
 {{< /note >}}
-=======
-{: .note}
->
->If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/content/applications/development/java-development-wildfly-centos-7) guide.
->>>>>>> docs_to_content
 
 ## Install Leiningen
 

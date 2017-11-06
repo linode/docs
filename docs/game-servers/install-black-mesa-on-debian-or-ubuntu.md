@@ -86,7 +86,7 @@ You can read the entire list of parameters on the [Valve Wiki](https://developer
 {{< /note >}}
 
 {{< note >}}
-To keep the server running, execute it using [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
+To keep the server running, execute it using [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions):
 
     screen ./srcds_run -game bms +map gasworks +maxplayers 24
 {{< /note >}}

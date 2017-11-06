@@ -55,7 +55,7 @@ During the list creation process, Mailman will prompt you for the administrators
 {{< /file-excerpt >}}
 
 
-Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/docs/dns-guides/introduction-to-dns#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
+Replace `example.com` and `lists.example.com` with the relevant domains for your instance. Ensure that you have configured the [MX Records](/content/dns-guides/introduction-to-dns#mx) for both domains that you want to receive email with. Additionally, add the following lines to your `/etc/postfix/master.cf` file:
 
 {{< file-excerpt "/etc/postfix/master.cf" >}}
 mailman unix  -       n       n       -       -       pipe

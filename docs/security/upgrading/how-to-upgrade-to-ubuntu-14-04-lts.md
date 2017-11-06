@@ -22,7 +22,7 @@ Distribution upgrades can yield unpredictable results, due to variations in soft
  - Transferring your data
  - Swapping IP addresses
 
-In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+In addition, you should use [LISH](https://www.linode.com/content/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 {{< /caution >}}
 
 {{< note >}}
