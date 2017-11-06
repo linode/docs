@@ -64,7 +64,7 @@ The relabel process is triggered by the empty `/.autorelabel` file.
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
     ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
 
-We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+We include a systemd unit and bash script in our CentOS 7 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
 
 ## Older Distributions
 
