@@ -1,16 +1,12 @@
 Running on a virtual environment is recommended.
 
-Navigate to project root directory. Install pip requirments:
+Install pip requirments:
 
-    `pip install -r ci/requirements.txt`
+    `pip install -r requirements.txt`
 
-Start the Hugo development server:
+Start the Hugo development server. Runs on `localhost:1313/docs/` by default:
 
-    `gulp dev`
-
-Start scrapy to check for 404s. Output results in a csv file:
-
-    `scrapy runspider docs404.py -t csv -o result.csv`
+    `hugo server`
 
 Run the test environment. Python 3 is required.
 

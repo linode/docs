@@ -8,7 +8,7 @@ import urllib.request
 from urllib.error import HTTPError, URLError
 
 
-LOCALHOST = "http://127.0.0.1:1313/docs/"
+LOCALHOST = "http://localhost:1313/docs"
 
 def test_whitespace(md_files):
     has_whitespace = False

@@ -25,7 +25,6 @@ before_script:
     - echo "Setting up local development server"
     - hugo server
     - sleep 7
-    - scrapy runspider ci/docs404.py -t csv -o result.csv
 
 script:
     - echo "Checking for style guidelines"
