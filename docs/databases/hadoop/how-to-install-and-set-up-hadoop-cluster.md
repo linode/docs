@@ -25,8 +25,6 @@ external_resources:
 
 ----
 
-![How to Install and Set Up a 3-Node Hadoop Cluster](/docs/assets/spark_hadoop_yarn.jpg "How to Install and Set Up a 3-Node Hadoop Cluster")
-
 ## What is Hadoop?
 
 Hadoop is an open-source Apache project that allows creation of parallel processing applications on large data sets, distributed across networked nodes. It's composed of the **Hadoop Distributed File System (HDFS™)** that handles scalability and redundancy of data across nodes, and **Hadoop YARN**: a framework for job scheduling that executes data processing tasks on all nodes.
