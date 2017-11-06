@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "How to store confidential data in the cloud: Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers"
+description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
 keywords: 'confidential, encrypted, integrity, redundant, private, filesystem, storage'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, October 24th, 2017'
@@ -10,9 +10,9 @@ modified: Thursday, October 26th, 2017
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
+og_description: 'Tahoe Least Authority File Store, or LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible.'
 contributor:
   name: Alexandru Andrei
-  link:
 external_resources:
 - '[Tahoe-LAFS Project Page](https://tahoe-lafs.org/)'
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
@@ -22,22 +22,26 @@ external_resources:
 
 ----
 
-## Introduction
+## What is Tahoe-LAFS?
 
-While Tahoe-LAFS may look like yet another decentralized or distributed file system, similar to Gluster, Ceph or others, the problems it solves are entirely different. The *Least Authority File Store* is designed with these things in mind:
+While Tahoe-LAFS might resemble other decentralized or distributed file system, like Gluster, Ceph or others, the problems it solves are different. The *Least Authority File Store* (LAFS) is designed with these things in mind:
 
-1.  **Confidentiality**: Keeping your data private, even if you store it on somebody else's servers. When you keep sensitive/secret data in the cloud, some inherent risks exist.
+1.  **Confidentiality**: Keeping your data private, even if you store it on outside servers. When you keep sensitive data in the cloud, some inherent risks exist. For example:
 
-    *   If the server is hacked, your data might be stolen.
-    *   An employee that has read access might accidentally leak data or purposely steal it for his own gain.
+    *  If the server is hacked, your data could be stolen.
+    *  An user with read access might accidentally leak data or purposely steal it for their own gain.
 
-        By encrypting data **before** it reaches your storage servers, these risks are reduced. Even if somebody is actively monitoring your machine, he will never see your data unencrypted. If you're unfamiliar with modern cryptography schemes, all you need to know is that nobody has officially managed to crack any of the strongest algorithms yet, and a lot of people are trying. Even the military and secret services rely on this area of mathematics to securely and secretly communicate across the world.
+    By encrypting data before it reaches your storage servers, these risks are reduced. 
 
-2.  **Data integrity**: Nobody can read your data, but what about writing? You need to be sure that what you store on your nodes is exactly what you get back. This problem is also solved with the help of complicated and reliable mathematical algorithms. If an attacker changes just one of the billions of bits from 1 to 0, the software on your local computer will catch the error (when you download the respective data). Furthermore, it will also give you back the original data if enough of the other storage nodes haven't been tampered with.
+2.  **Data integrity**: If the encrypted data is compromised, the software detects the change, and in some cases, may still restore the original.
 
-3.  **Redundancy**: Disks can fail, servers can be lost for various reasons. Tahoe-LAFS distributes your data in a redundant fashion. By default, it uses a 3-of-10 configuration. This means that when you upload a file, it is split in ten shares and distributed randomly between your available storage nodes. To reconstruct the file, you need to get three of those shares back. If you have ten servers and a few fail, you can still retrieve your data. In an uniform distribution of shares, you would need only three servers but since distribution is random you might need more or even less. One server can hold zero, one, two, or more shares, depending on how the dice rolls (the dice does however tend to favor a near uniform distribution). Having even more storage nodes and changing the default 3-of-10 to something else means you can make the setup even more resistant to failure or attacks. 3-of-20 would give you a more uniform distribution. 1-of-10 would increase failure resistance but would keep 10 copies of your data. So one gigabyte of data would require 10 gigabytes of storage. This mechanism of shares makes it possible to destroy compromised or failed servers, create new ones, add them to the pool and redistribute shares if it's required.
+3.  **Redundancy**: Tahoe-LAFS distributes your data in a redundant fashion.
 
-    All of these things make Tahoe-LAFS a good fit for securely storing sensitive data on remote machines, while at the same time mitigating risks of data loss. You can think of it as a sort of Google Drive that hackers and employees can't access or alter, backed up on many different servers. The ability to dynamically increase storage space, by just adding to the pool of machines, is another nice advantage. For those that want to know more, the [Tahoe-LAFS documentation](http://tahoe-lafs.readthedocs.io/en/latest/about.html) hosted on Read the Docs is a great resource.
+    By default, it uses a 3-of-10 configuration. This means that when you upload a file, it is split into ten shares and distributed randomly between your available storage nodes. To reconstruct the file, you need to get three of those shares back. If you have ten servers and a few fail, you can still retrieve your data. In a uniform distribution of shares, you would need only three servers. Since distribution is random the number required differs. One server can hold zero, one, two, or more shares, depending on the random number generated (it does however tend to favor a near uniform distribution).
+
+    Having more storage nodes and changing the default 3-of-10 to something else means you can make the setup more resistant to failure or attacks. 3-of-20 would give you a more uniform distribution. 1-of-10 would increase failure resistance but would keep ten copies of your data. So one gigabyte of data would require ten gigabytes of storage. This mechanism of shares makes it possible to destroy compromised or failed servers, create new ones, add them to the pool and redistribute shares if required.
+
+All of these things make Tahoe-LAFS a good fit for securely storing sensitive data on remote machines, while at the same time mitigating risks of data loss. Storage space can be increased dynamically by adding to the pool of machines. To learn more, visit the [Tahoe-LAFS documentation](http://tahoe-lafs.readthedocs.io/en/latest/about.html).
 
 ## Before You Begin
 
@@ -52,48 +56,61 @@ While Tahoe-LAFS may look like yet another decentralized or distributed file sys
 
 ## Server Requirements and Recommendations
 
-1.  With the default settings, at least 10 storage nodes (servers) will be needed for satisfactory results. For testing purposes you can launch less, keeping in mind though that this is an unhealthy setup. Also note that with less than seven storage units, most uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` if you want to know more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration
-).
+1.  With the default settings, at least 10 storage nodes will be needed for satisfactory results. For testing purposes you can launch fewer, but keep in mind that with less than seven storage units, most uploads will fail entirely. Read the documentation about `shares.needed`, `shares.total` and `shares.happy` to learn more about [how to configure your nodes](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html?#client-configuration).
 
-2.  Give your Linodes (that run storage nodes) at least 2GB of RAM. The larger the files you upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9's repositories, approximately 1GB (or more) of Random Access Memory (RAM) has been observed to be required when uploading mutable files larger than 40 Megabytes. Once the node runs out of RAM you will get an *out-of-memory kill*. Periodically check the Grid Status page in the web user interface to maintain your grid in good health.
+2.  Create the storage node Linodes with at least 2GB of RAM. The larger the files you plan to upload, the higher the memory and CPU pressure. With the current version of Tahoe-LAFS available in Debian 9's repositories, at least 1GB RAM is required when uploading mutable files larger than 40MB. Once the node runs out of RAM you will get an *out-of-memory kill*. Periodically check the Grid Status page in the web user interface to maintain your grid.
 
-3.  It's a good idea to distribute your Linodes among different datacenters. This makes the setup more reliable and resilient in the event of major problems with one of the locations.
+3.  For a more reliable and resilient setup, create Linodes in different data centers.
 
 ## Install Tahoe-LAFS and Set Up the Introducer
 
-Introducers are the "middlemen", central points that connect storage nodes and clients together in the grid. This allows the system to let every node know when a new peer joins the grid. It also tells the joining machines about the currently active peers it can connect to. There is however a downside to this: introducing a single point of failure. But without the introducers you would have to edit a configuration file on every node and add a new IP address every time you insert another node into the grid. The upside is that you can (and should) configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events. These too would be, ideally, in different datacenters. After you get acquainted with the simple one introducer setup, you can [read about additional introducers](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions).
+Introducers are the *middlemen*, central points that connect storage nodes and clients together in the grid.
 
-1.  After you've logged in as root, create an unprivileged user:
+Introducers have a variety of advantages and disadvantages:
+
+*  Allow the system to alert every node when a new peer joins the grid.
+*  Tell the joining machines about the currently active peers to which it can connect.
+*  Potential for a single point of failure. But,
+*  Without the introducers you would have to edit a configuration file on every node, and add a new IP address every time you insert another node into the grid.
+*  Allow you to configure multiple introducers to make your setup more reliable in the event of crashes or other unforeseen events, ideally, in different datacenters.
+
+After you get acquainted with the initial introducer setup, you can [read about additional introducers](http://tahoe-lafs.readthedocs.io/en/latest/configuration.html#additional-introducer-definitions).
+
+1.  Log in as root and create an unprivileged user:
 
         adduser --disabled-password --gecos "" tahoe
 
-2.  Now install Tahoe-LAFS:
+2.  Install Tahoe-LAFS:
 
         apt-get install tahoe-lafs
 
-3.  Log in as the previously created unprivileged user:
+3.  Log in as the `tahoe` user:
 
         su - tahoe
 
-4.  And finally, create the introducer configuration, replacing `203.0.113.1` with the public IP address of your Linode:
+4.  Create the introducer configuration, replacing `203.0.113.1` with the public IP address of your Linode:
 
         tahoe create-introducer --port=tcp:1234 --location=tcp:203.0.113.1:1234 --basedir=introducer
 
-5.  This will create a directory called `introducer` which contains a few configuration files. Logs and identifiers will be placed here as well. You'll need the identifier in the next steps so generate it now by starting up the introducer:
+    This creates a directory called `introducer` which contains a few configuration files. Logs and identifiers will be placed here as well.
+
+5.  Generate an identifier by starting the introducer:
 
         tahoe run --basedir introducer
 
-6.  The last line of output should mention **introducer running**. At this point you can hit **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated. Display it in the terminal with the following command:
+    The last line of output should mention `introducer running`. Press **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated. 
+
+6.  Display the FURL using `cat`:
 
         cat introducer/private/introducer.furl
 
     Copy the whole line starting with **pb://** and paste it somewhere you can access it later. The storage nodes and clients will need to be configured with that value.
 
-7.  Now logout from the user `tahoe` and return to root.
+7.  Logout from the user `tahoe` and return to root:
 
         exit
 
-8.  To automatically start up the introducer every time your Linode boots, you will create a systemd service file (systemd is Debian's initialization system and service manager). Paste in the following content:
+8.  To automatically start up the introducer on boot, create a systemd service file with the following:
 
       {:.file-excerpt}
       /etc/systemd/system/tahoe-autostart-introducer.service
@@ -112,25 +129,41 @@ Introducers are the "middlemen", central points that connect storage nodes and c
         WantedBy=multi-user.target
         ~~~
 
-    While a rule to restart the process in case of a crash can be added here, it's not a good idea since you want to inspect your Linode every time a node, client or introducer crashes, before restarting the process. In case you ever need to do so, start your introducer with `systemctl start tahoe-autostart-introducer.service` and restart it with `systemctl restart tahoe-autostart-introducer.service`.
+    While a rule to restart the process in case of a crash can be added here, it's better to inspect the Linode each time a node, client or introducer crashes, before restarting the process.
 
-2.  Enable the service to automatically start it at boot time:
+9.  Enable the service to automatically start at boot:
 
         systemctl enable tahoe-autostart-introducer.service
 
-3.  Start the introducer:
+10. Start the introducer:
 
         systemctl start tahoe-autostart-introducer.service
 
-    You can now close this SSH session to avoid confusing windows and entering commands on the wrong Linode when configuring the rest.
+    You can now close the SSH session to avoid confusing windows and entering commands on the wrong Linode when configuring the rest.
+
+### How to Restart the Introducer
+
+If the process crashes or encounters an error, start or restart the service with these commands.
+
+Start the introducer service:
+
+    systemctl start tahoe-autostart-introducer.service
+
+Restart the service:
+
+    systemctl restart tahoe-autostart-introducer.service
 
 ## Add Tahoe-LAFS Storage Nodes to the Grid
 
-Although the process can be automated so that you can easily expand your storage pool, it's recommended you set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the "Before You Begin" section apply here as well. Don't forget to `apt-get update && apt-get upgrade` before continuing.
+Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the [Before You Begin](#before-you-begin) section apply here as well.
 
 {: .note}
 >
-> If you need very large amounts of disk space, you can [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode). This should be done before all the other steps in this section. When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in the next subsection.
+> If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode).
+>
+> Configure block storage before the other steps in this section.
+>
+> When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in [the next subsection](#automatically-configure-storage-nodes-with-linode-stackscripts).
 
 1.  After you launch a new Linode and deploy Debian 9, login as root and create an unprivileged user:
 
@@ -140,21 +173,21 @@ Although the process can be automated so that you can easily expand your storage
 
         apt-get install tahoe-lafs
 
-3.  And log in as the unprivileged user:
+3.  Log in as the unprivileged user:
 
         su - tahoe
 
-4.  At this point you need to retrieve the introducer FURL you've previously copied and paste it after `--introducer=`. Replace `pb://<Introducer FURL>` with your own FURL. Also replace `203.0.113.1` in --location with the public IP address of this Linode. Remember to choose unique nicknames for each server if you repeat this step on new Linodes.
+4.  Retrieve the introducer FURL copied in Step 6 of [the introducer installation](#install-tahoe-lafs-and-set-up-the-introducer), and paste it after `--introducer=`. Replace `pb://<Introducer FURL>` with your own FURL. Replace `203.0.113.1` in `--location` with the public IP address of the Linode. Choose unique nicknames for each server as you repeat this step on new Linodes.
 
         tahoe create-node --nickname=node01 --introducer=pb://<Introducer FURL> --port=tcp:1235 --location=tcp:203.0.113.1:1235
 
-    Configuration files, shares, logs and other data will be found under the `/home/tahoe/.tahoe` directory.
+    Configuration files, shares, logs and other data are in `/home/tahoe/.tahoe`.
 
-5.  Logout to get back to your root shell:
+5.  Return to the root shell:
 
         exit
 
-6.  Now create a systemd service file:
+6.  Create a systemd service file:
 
       {:.file}
       /etc/systemd/system/tahoe-autostart-node.service
@@ -173,27 +206,27 @@ Although the process can be automated so that you can easily expand your storage
         WantedBy=multi-user.target
         ~~~
 
-7.  And enable the service to autostart your storage node at boot time:
+7.  Enable the service to autostart the storage node at boot:
 
         systemctl enable tahoe-autostart-node.service
 
-8.  Finally, start the service to launch your node:
+8.  Start the service to launch the node:
 
         systemctl start tahoe-autostart-node.service
 
-### Automatically Configure Storage Nodes with Linode StackScripts
+### How to Use Linode StackScripts to Automatically Configure Storage Nodes
 
-Since some users may require tens or hundreds of storage nodes, newly deployed Linodes can be automated to go through the previous steps for you.
+Since some users may require tens or hundreds of storage nodes, automate configuration of newly deployed Linodes with StackScripts.
+
+To confirm each successful setup instead of launching all instances before verifying that they work, you can temporarily skip to the next two sections, and use the web user interface in your local browser. Then, return to this section, and after launching each Linode refresh the page after a few minutes. The new storage node should appear along with a green checkmark next to it.
 
 {: .note}
 >
-> To make sure you're proceeding correctly, you can temporarily skip to the next two sections, and then open the web user interface in your local browser. Then, return to this section, and after launching each Linode you can wait one or two minutes and then refresh the page. The new storage node should appear in a list there, along with a green checkmark next to it. This allows you to confirm each successful setup, instead of launching all instances in the dark, only to find out later something has gone wrong.
+> This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
 
-{: .caution}
->
-> The following StackScript relies on icanhazip.com to retrieve each Linode's external IP address. While the site has redundant servers, for various reasons, it might function incorrectly or be unavailable at some moment in time.
+1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://manager.linode.com/stackscripts/index) to add a new StackScript.
 
-1.  After reading [about StackScripts](https://www.linode.com/docs/platform/stackscripts), navigate to the page where you can add a new StackScript, select Debian 9 as the distribution and paste the following in the **Script** section:
+2.  Select Debian 9 as the distribution and paste the following in the **Script** section:
 
         #!/bin/bash
 
@@ -223,96 +256,123 @@ Since some users may require tens or hundreds of storage nodes, newly deployed L
 
         systemctl start tahoe-autostart-node.service
 
-2.  After you've saved the changes, launch a new Linode, deploy this StackScript on a Debian 9 image and boot.
+    Save the changes.
 
-3.  Repeat this procedure to create as many nodes as necessary for your storage cluster.
+3.  Create a new Linode, deploy the StackScript on a Debian 9 image, and boot.
+
+4.  Repeat this procedure to create as many nodes as necessary for your storage cluster.
 
 ## Set up the Tahoe-LAFS Client on Your Local Computer
 
-1.  To securely upload and download files to and from the grid, you must set up a client node on your local machine. While you could use port forwarding to access the web user interface from a storage node hosted on Linode, or use the command line interface on a remote server to work with files in the grid, it's not recommended to do so. Going this route exposes you to a few risks like accidentally leaking unencrypted data or *filecaps/dircaps* (think of them as passwords, giving you access to files and directories; more about this later).
+To securely upload and download files to and from the grid, you must set up a client node on your local machine.
 
-2.  Windows users can follow these instructions to [setup Tahoe-LAFS on Windows](http://tahoe-lafs.readthedocs.io/en/latest/windows.html), the [instructions for MacOS users are here](http://tahoe-lafs.readthedocs.io/en/latest/OS-X.html) and Linux users should use their distribution's package manager to install Tahoe-LAFS (as in previous sections). If you're unlucky, and your distribution doesn't include Tahoe in its repositories, you might have to [build Tahoe-LAFS](http://tahoe-lafs.readthedocs.io/en/latest/INSTALL.html?highlight=build%20tahoe#preliminaries).
+While you could use port forwarding to access the web user interface from a storage node hosted on Linode, or use the command line interface on a remote server to work with files in the grid, it's not recommended to do so. Going this route exposes you to a few risks like accidentally leaking unencrypted data or *filecaps/dircaps* (think of them as passwords, giving you access to files and directories; more about this later).
 
-3.  After you've installed the software, run the following command to configure a client node, replacing `pb://<Introducer FURL>` with your own introducer FURL:
+Install the Tahoe-LAFS Client for your operating system:
+
+*  [Windows](http://tahoe-lafs.readthedocs.io/en/latest/windows.html)
+*  [MacOS](http://tahoe-lafs.readthedocs.io/en/latest/OS-X.html)
+*  Linux users should use their distribution's package manager to install Tahoe-LAFS (as in previous sections).
+
+    *  If your distribution doesn't include Tahoe in its repositories, [build Tahoe-LAFS from source](http://tahoe-lafs.readthedocs.io/en/latest/INSTALL.html?highlight=build%20tahoe#preliminaries).
+
+1.  Run `tahoe create-client` to configure a client node, replacing `pb://<Introducer FURL>` with your own introducer FURL:
 
         tahoe create-client --nickname=localclient --introducer=pb://<Introducer FURL>
 
-4.  Whenever you need to work with your grid, launch the client:
+2.  Launch the client to work with your grid:
 
         tahoe run
 
-5.  When you're done, close the server by pressing **CTRL+C**.
+3.  Close the server with **CTRL+C**.
 
-## How to Use Tahoe-LAFS' Web User Interface
+## Manage your Grid with Tahoe-LAFS's Web Interface
 
-1.  Out of the multiple ways to interact with your grid, the web user interface is the most user-friendly. One very useful feature is the bird's eye view it gives you over the whole grid, showing active and inactive nodes, connection statuses and errors, total storage space available and other details.
+The web interface is the most user-friendly way to interact with your grid. One of the useful features of the interface is the bird's eye view it gives you over the whole grid, showing active and inactive nodes, connection status and errors, total storage space available, and other details.
 
-2.  By default, the web server is listening on the *loopback* interface, on port 3456, which means you can connect to it by launching the local client (`tahoe run --basedir client`) and then entering this address in your preferred web browser: **localhost:3456**.
+1.  By default, the web server listens on the *loopback* interface, on port `3456`. Connect to it by launching the local client, then navigating to the address in your web browser:
 
-[![Tahoe-LAFS Web User Interface](/docs/assets/tahoe-lafs-web-user-interface_small.png)](/docs/assets/tahoe-lafs-web-user-interface.png)
+        tahoe run --basedir client
 
-3.  Files can be uploaded using one of three different algorithms:
+    [![Tahoe-LAFS Web User Interface](/docs/assets/tahoe-lafs-web-user-interface_small.png)](/docs/assets/tahoe-lafs-web-user-interface.png "Tahoe-LAFS Web User Interface")
 
-*   Immutable: designed to store files that won't be altered.
-*   SDMF (Small Mutable Distributed Files): although initially designed for very small files, it supports much larger sizes now but has one flaw; it has to replace all blocks even when just a few bytes have changed. When working with a few megabytes of data you won't really notice a problem though.
-*   MDMF (Medium Distributed Mutable Files): allows large files to be modified in-place, with only the segments that changed, append data, and selectively retrieve only certain blocks that the user requests. Use this for large files that you update often.
+2.  Files can be uploaded using one of three algorithms:
 
-4.  After you upload a file, you get a so-called *capability* or filecap. An SDMF filecap for example looks something like this: URI:SSK:4a4hv34xtt43a6s7ft76i563oa:7s643ebsf2yujglqhn55xo7c5ohunx2tpoi32dahgr23seob7t5q. These are the only way you can access your data, that's why it's important to keep them somewhere safe. **Once you lose a filecap there is no way you can get your data back.**
+    *  **Immutable**: Designed to store files that won't be altered.
+    *  **SDMF (Small Mutable Distributed Files)**: Initially designed for small files, but supports larger sizes as well. May be slow for large files because it has to replace all blocks even when a few bytes have changed.
+    *  **MDMF (Medium Distributed Mutable Files)**: Allows large files to be modified in-place, with only the segments that have changed, it allows you to append data, and selectively retrieve only certain blocks that the user requests. Use this for large files that you update often.
 
-5.  Since it's hard to keep track of multiple random strings of characters, a more efficient way to store your data is to organize it in directories. These come with a handful of advantages:
+3.  After you upload a file, you get a *capability* or filecap. An SDMF filecap for example looks something like: 
 
-[![Directory Displayed in Web User Interface](/docs/assets/tahoe-lafs-directory-seen-in-wui_small.png)](/docs/assets/tahoe-lafs-directory-seen-in-wui.png)
+        URI:SSK:4a4hv34xtt43a6s7ft76i563oa:7s643ebsf2yujglqhn55xo7c5ohunx2tpoi32dahgr23seob7t5q
 
-*   They can be bookmarked in your browser, allowing you to easily come back to them. Keep in mind that these too are accessed by using cryptographic secrets. If you lose the bookmarks or directory writecaps/readcaps, there's no way you can recover. You can still access directory contents though if you have individual elements bookmarked or their capabilities saved somewhere.
-*   It's easier to keep track of a directory capability that gives you access to hundreds of objects rather than keep track of hundreds of capabilities.
-*   Clicking on **More Info** or **More info on this directory** allows you to get read only capabilities (so you can share data with others), verify data integrity, repair and redistribute unhealthy shares.
+    Filecaps are the only way you to access the data once it's encrypted. Store filecaps somewhere safe. **If you lose a filecap there is no way to retrieve your data.**
 
-## How to Use Tahoe-LAFS' Command Line Interface
+4.  Since it's hard to keep track of multiple random strings of characters, a more efficient way to store your data is to organize it in directories. These come with a handful of advantages:
 
-1.  Although the web user interface is easy to work with, it has some limitations. Another way to interact with files and directories is by using the command line interface. Some of its advantages include: ability to recursively upload files, synchronizing (backing up) directories.
+    [![Directory Displayed in Web User Interface](/docs/assets/tahoe-lafs-directory-seen-in-wui_small.png)](/docs/assets/tahoe-lafs-directory-seen-in-wui.png "Directory Displayed in Web User Interface")
 
-    After you've launched the local client, open another terminal window or command prompt and create an alias:
+    *  They can be bookmarked in your browser, allowing you to easily come back to them.
+        *  These are also accessed using cryptographic secrets. If you lose the bookmarks or directory writecaps/readcaps, there's no way to recover them. You can still access directory contents though if you have individual elements bookmarked or their capabilities saved somewhere.
+    *  It's easier to keep track of a directory capability that gives you access to hundreds of objects rather than keep track of hundreds of capabilities.
+    *  Click **More Info** or **More info on this directory** to get read only capabilities so you can share data with others, verify data integrity, or repair and redistribute unhealthy shares.
 
-        tahoe create-alias testing
+## How to Use Tahoe-LAFS's Command Line Interface
+
+While the web user interface is easy to work with, it has some limitations. Another way to interact with files and directories is through the command line interface. Some of its advantages include the ability to recursively upload files, and synchronizing (backing up) directories.
+
+*  After you've launched the local client, open another terminal window or command prompt and create an alias:
+
+       tahoe create-alias testing
 
     This will create a directory on the grid and associate an alias to it so you can easily access it by typing `testing:` instead of a long capability.
 
-2.  To copy an existing file from your current, local working directory into your new alias:
+*  To copy an existing file from your current, local working directory into your new alias:
 
-        tahoe cp file1 testing:
+       tahoe cp file1 testing:
 
-3.  Listing the alias' contents is done with:
+*  List the alias contents:
 
-        tahoe ls testing:
+       tahoe ls testing:
 
-4.  If you want to list the file/directory capabilities as well, type:
+*  List the file/directory capabilities:
 
-        tahoe ls --uri testing:
+       tahoe ls --uri testing:
 
-5.  If you want to upload an entire directory use:
+*  To upload an entire directory:
 
-        tahoe cp --recursive name-of-local-directory testing:
+       tahoe cp --recursive name-of-local-directory testing:
 
-6.  Backing up a directory is done with:
+*  Back up a directory:
 
-        tahoe backup name-of-local-directory testing:
+       tahoe backup name-of-local-directory testing:
 
-    This will create incremental backups, kept in timestamped directories, and it will only upload files that have changed when running the command again.
+    This creates incremental backups, kept in timestamped directories, and it will only upload files that have changed when running the command again.
 
-7.  Another useful command to remember is:
+*  Fix problems and redistribute file shares when required:
 
-        tahoe deep-check --repair testing:
+       tahoe deep-check --repair testing:
 
-    This can fix problems and also redistribute file shares when it is required. It's a good idea to routinely run this command on important directories and especially after you've lost a few storage nodes.
+    It's a good idea to routinely run this command on important directories and especially after you've lost a few storage nodes.
 
-8.  You should also save the capabilities stored in your aliases and keep them some place safe (back them up on another machine, preferably encrypted with a strong password). You can see these with:
+*  You should also save the capabilities stored in your aliases and keep them some place safe (back them up on another machine, preferably encrypted with a strong password). You can see these with:
 
-        tahoe list-aliases
+       tahoe list-aliases
 
-9.  To display a list of available commands you can simply type `tahoe`. If you need additional help on a command type `tahoe name-of-command --help`, for example: `tahoe ls --help`. On the following page, you can find [additional information about Tahoe-LAFS' commands](http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html).
+*  To display a list of available commands:
+
+       tahoe
+    
+*  If you need additional help on a command:
+
+       tahoe name-of-command --help
+    
+    For example: `tahoe ls --help`. For more information about Tahoe-LAFS, visit the [official documentation](http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html).
 
 ## Possible Next Steps
 
-1.  Now that you have your grid up and running, your only job is to maintain it in good working condition. Some improvements can be made: for example, people with low upload bandwidth will notice that it can take a long time to send a file to the grid. That's because your local Tahoe client also has to send redundant data to multiple nodes. The following document describes [how to set up a helper node](http://tahoe-lafs.readthedocs.io/en/latest/helper.html).
+Now that you have your grid up and running, it's important to maintain it in good working condition. Some improvements can be made:
+
+1.  If people with low upload bandwidth notice that it takes a long time to send a file to the grid, [set up helper nodes](http://tahoe-lafs.readthedocs.io/en/latest/helper.html). Slowdowns may occur because your local Tahoe client also has to send redundant data to multiple nodes.
 
 2.  In time, your storage servers might get full with data you no longer need. Read about [garbage collection](http://tahoe-lafs.readthedocs.io/en/latest/garbage-collection.html) to understand how you can get rid of the unnecessary files.
