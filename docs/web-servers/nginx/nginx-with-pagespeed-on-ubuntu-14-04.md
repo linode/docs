@@ -24,7 +24,7 @@ external_resources:
 
 ## What is PageSpeed?
 
-PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source. 
+PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source.
 
 This document describes how you can install nginx (pronounced engine-x) with the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module. PageSpeed helps you minify CSS, JavaScript and images, remove whitespaces from HTML, and perform many other tasks.
 

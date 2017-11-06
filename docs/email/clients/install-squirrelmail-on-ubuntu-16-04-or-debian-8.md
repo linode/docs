@@ -14,6 +14,8 @@ external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 ---
 
+![Install SquirrelMail on Ubuntu or Debian](/docs/assets/install-squirrelmail-on-ubuntu/Install_SquirrelMail_smg.jpg)
+
 SquirrelMail is a webmail package, written in PHP, which supports both SMTP and IMAP protocols, and features cross-platform compatibility. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 16.04](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) or [LAMP Server on Debian 8](/docs/websites/lamp/lamp-on-debian-8-jessie) guide.
 
  {: .note }

@@ -17,6 +17,8 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 ---
 
+![How to Move Your Machine Learning Model to Production](/docs/assets/machine-learning/Machine_Learning_Model.jpg)
+
 Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources. It also often involves using powerful processors to train the model on large datasets. However, once the model is working well, using it to generate predictions on new data is much simpler and less computationally expensive. The only difficulty is in moving the model from its development environment into a production app.
 
 This guide will show you how to create a simple Flask API that will use machine learning to identify handwritten digits. The API will use a simple deep learning model trained on the famous MNIST dataset.
@@ -75,7 +77,7 @@ Keras is a deep learning library for Python. It provides an object-oriented inte
 Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from [Elite Data Science's excellent tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python). If you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the [Flask API](#flask-api) section of this guide.
 
 {:.note}
-> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5` 
+> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
 >
 > Older versions of Keras require deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from GitHub, the script below checks and removes optimizer weights.
 >
@@ -204,7 +206,7 @@ Apache modules are typically installed with the system installation of Apache. H
 
 2.  Install `mod_wsgi` as a Python module for Apache:
 
-        wget https://pypi.python.org/packages/aa/43/f851abaad631aee69206e29cebf9f8bf0ddb9c22dbd6e583f1f8f44e6d43/mod_wsgi-4.5.20.tar.gz 
+        wget https://pypi.python.org/packages/aa/43/f851abaad631aee69206e29cebf9f8bf0ddb9c22dbd6e583f1f8f44e6d43/mod_wsgi-4.5.20.tar.gz
         tar -xvf mod_wsgi-4.5.20.tar.gz
         cd mod_wsgi-4.5.20
         python setup.py install

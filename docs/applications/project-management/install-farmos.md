@@ -15,9 +15,9 @@ title: 'Install and Configure FarmOS, an Agricultural Management, Planning and R
 
 ## What is FarmOS?
 
-[FarmOS](http://farmos.org/) is a one-of-a-kind web application that enables farmers to manage and track all aspects of their farm. Built atop Drupal and licensed under [GPL V.3](https://www.gnu.org/licenses/gpl-3.0.en.html), FarmOS is a great free-software solution for farms to explore. 
+[FarmOS](http://farmos.org/) is a one-of-a-kind web application that enables farmers to manage and track all aspects of their farm. Built atop Drupal and licensed under [GPL V.3](https://www.gnu.org/licenses/gpl-3.0.en.html), FarmOS is a great free-software solution for farms to explore.
 
-This guide explains how to install, setup and host your own FarmOS web app on a Linode. 
+This guide explains how to install, setup and host your own FarmOS web app on a Linode.
 
 
 ## Before You Begin
@@ -33,32 +33,32 @@ This guide explains how to install, setup and host your own FarmOS web app on a 
 
 4. Install a LAMP Stack
 
-   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04). 
+   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
 
 
 ## MySQL Setup
 
-After installing the LAMP Stack, you need to create a database for Drupal to use. 
+After installing the LAMP Stack, you need to create a database for Drupal to use.
 
 1. Log into the root account of your database:
 
         mysql -u root -p
-        
+
 2. Create a database and a database user:
 
         CREATE DATABASE drupaldb;
         CREATE USER DRUPAL_USER@LOCALHOST IDENTIFIED BY 'PASSWORD';
-        
+
 3. Grant privileges to the user:
 
         GRANT ALL PRIVILEGES ON drupaldb.* TO DRUPAL_USER@LOCALHOST;
 
-## Optimize PHP 
+## Optimize PHP
 
 Download the following PHP libraries:
 
           sudo apt install php-gd php-xml php-xmlrpc
-          
+
           sudo apt install php-mysql phpmyadmin
 
 If prompted to automatically configure a database, choose "yes."
@@ -66,17 +66,17 @@ If prompted to automatically configure a database, choose "yes."
 
 ## Install FarmOS
 
-FarmOS is bundled as a Drupal distribution, so you do not need to install Drupal **BEFORE** installing FarmOS. The Drupal installation is bundled in. FarmOS should be installed in `/var/www/html/example.com/public_html/FarmOS`. 
+FarmOS is bundled as a Drupal distribution, so you do not need to install Drupal **BEFORE** installing FarmOS. The Drupal installation is bundled in. FarmOS should be installed in `/var/www/html/example.com/public_html/FarmOS`.
 
 1. Download the FarmOS distribution package:
 
         wget https://ftp.drupal.org/files/projects/farm-7.x-1.0-beta15-core.tar.gz
 
-2. Uncompress the file: 
+2. Uncompress the file:
 
          tar -zxvf farm-7.x-1.0-beta15-core.tar.gz
 
-3. Install FarmOS, and move the contents of `farm-7.x-1.0-beta15` to `/var/www/html/example.com/public_html/FarmOS`. 
+3. Install FarmOS, and move the contents of `farm-7.x-1.0-beta15` to `/var/www/html/example.com/public_html/FarmOS`.
 
          sudo mv -r farm-7.x-1.0-beta15/*  /var/www/html/example.com/public_html/FarmOS
 
@@ -122,23 +122,23 @@ FarmOS will configure Drupal and itself at the same time:
 
 
 ## Add Users
-To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**. 
+To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**.
 
    ![adduser](/docs/assets/FarmOS/Adduser.png)
 
 
-After each user is created, use the **people** tab, to verify success: 
+After each user is created, use the **people** tab, to verify success:
 
 ![peoplescreen](/docs/assets/FarmOS/peoplescreen.png)
 
 ## Next Steps
 
 ### Registering a Domain Name for FarmOS
-If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step. 
+If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
 
 
-### Generate a Google API Key 
-FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place. 
+### Generate a Google API Key
+FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.
 
 
 

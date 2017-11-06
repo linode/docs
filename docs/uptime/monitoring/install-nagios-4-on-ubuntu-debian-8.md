@@ -22,6 +22,8 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
+![Install Nagios 4 on Ubuntu and Debian 8](/docs/assets/install-nagios-4-on-ubuntu-debian/Install_Nagios_4_smg.jpg)
+
 A monitoring tool is a key application in a production server. Nagios is a popular tool that provides monitoring and alerting services for your servers, applications and services. Using Nagios and a wide variety of available plugins, you can keep track of the status of your critical services like HTTP, SSH and SMTP. In this guide, you'll learn how to install Nagios 4 on your Linode.
 
 ## Before You Begin

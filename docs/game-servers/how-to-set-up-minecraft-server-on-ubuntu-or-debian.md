@@ -18,7 +18,9 @@ external_resources:
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 ---
 
-Minecraft is one of the most popular games in the world with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
+![Set Up a Minecraft Server](/docs/assets/how-to-set-up-minecraft-server-on-ubuntu-or-debian/How_to_Set_Up_a_Minecraft_Server_smg.jpg)
+
+Minecraft is one of the most popular games in the world, with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
 
 This guide shows you how to set up a personal [Minecraft](https://minecraft.net/game) server on a Linode running Debian 8 or Ubuntu 16.04 LTS. We have updated this guide to be compatible with the major release of 1.12: The World of Color Update.
 

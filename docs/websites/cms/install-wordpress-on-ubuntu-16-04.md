@@ -80,8 +80,9 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-5.  Move the WordPress files to your `public_html` folder:
+5.  Create a `public_html` directory to be the root directory for WordPress. Move the WordPress files to your `public_html` folder:
 
+        sudo mkdir /var/www/html/example.com/public_html/
         sudo mv wordpress/* ../public_html/
 
 6.  Give your web server ownership of the `public_html` folder:

@@ -6,9 +6,9 @@ description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
-modified: Tuesday, January 20, 2015
+modified: Friday, November 3rd, 2017
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Wednesday, July 29th, 2009'
 title: "DNS Records: an Introduction"
 external_resources:
@@ -115,6 +115,10 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 ### AXFR
 
 An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
+
+### CAA
+
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/docs/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
 
 ### CNAME
 

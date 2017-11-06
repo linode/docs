@@ -63,7 +63,7 @@ Since Yesod is built with the Haskell programming language, the Haskell packages
 
 ##Install Yesod
 
-Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called <a href="http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F" target="_blank">cabal dependency hell</a> problem.
+Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called [cabal dependency hell](http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F) problem.
 
 To avoid this problem, the maintainers of Yesod created a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won't meet the "cabal hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new users for each of them, and then install them into their users' home folder.
 
