@@ -5,11 +5,11 @@ author:
 description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
 keywords: 'wercker,docker,development'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, October 17th, 2017'
-modified: 'Wednesday, October 24, 2017'
+published: 'Monday, November 6th, 2017'
+modified: 'Monday, November 6th, 2017'
 modified_by:
   name: Linode
-title: 'How to develop and deploy your applications using Wercker'
+title: 'How to Develop and Deploy Your Applications Uing Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
