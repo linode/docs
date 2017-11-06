@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
+og_description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
 keywords: 'wercker,docker,development'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, November 6th, 2017'
