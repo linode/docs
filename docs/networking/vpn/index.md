@@ -10,6 +10,7 @@ featured:
  - pritunl-vpn-ubuntu.md
  - secure-communications-with-openvpn-on-centos-6.md
  - secure-communications-with-openvpn-on-ubuntu-12-04-precise-and-debian-7.md
+ - vpn-firewall-killswitch-for-linux-and-macos-clients.md
  - set-up-a-streisand-gateway.md
 ---
 

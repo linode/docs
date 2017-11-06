@@ -6,7 +6,7 @@ description: 'Learn about DNS records and system structure.'
 keywords: 'dns records,domain names,dns record types,dns resolution'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
-modified: Thursday, November 2nd, 2017
+modified: Friday, November 3rd, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, July 29th, 2009'
@@ -118,7 +118,7 @@ An *AXFR record* is a type of DNS record used for DNS replication, although ther
 
 ### CAA
 
-DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain.
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/docs/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
 
 ### CNAME
 
