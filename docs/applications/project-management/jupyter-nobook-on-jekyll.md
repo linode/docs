@@ -3,12 +3,12 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll'
-keywords: 'Jupyter, data, R, python, Jekyll'
+keywords: 'Jupyter, ruby, python, Jekyll'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 17th, 2017
+modified: Monday, November 6th, 2017
 modified_by:
   name: Linode
-published: 'Tuesday, October 10th, 2017'
+published: 'Monday, November 6th, 2017'
 title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
