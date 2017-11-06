@@ -2,7 +2,8 @@
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll'
+description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
+og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 keywords: 'Jupyter, ruby, python, Jekyll'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Monday, November 6th, 2017

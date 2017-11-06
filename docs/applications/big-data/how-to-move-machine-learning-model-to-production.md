@@ -3,6 +3,7 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
+og_description: 'Use an pre-trained deep learning model as part of a production application.'
 keywords: 'deep learning,big data,python,keras,flask,machine learning,neural networks'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, October 9th, 2017'
