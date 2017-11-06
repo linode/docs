@@ -3,13 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to set up a VPN firewall on OpenVPN clients'
+og_description: 'This guide will show you how to set up a VPN Killswitch with iptables on OpenVPN clients.'
 keywords: 'vpn, security'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 'Friday, September 29th, 2017'
 modified_by:
   name: Linode
 published: 'Friday, September 29th, 2017'
-title: VPN Firewall Killswitch for Linux and macOS Clients
+title: iptables Configuration for VPN Killswitch
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
 - '[Ubuntu Help Page for iptables](https://help.ubuntu.com/community/IptablesHowTo)'
@@ -17,7 +18,7 @@ external_resources:
 
 A virtual private network is often used to evade censorship, surveillance, or geolocation by routing internet traffic from your local device to the remote VPN server through an encrypted tunnel. In this scenario, the VPN server is the internet gateway for all connected client devices, and it forwards traffic from clients out to the interent, then receives and routes the traffic back to the client devices. However, there is always a risk that the VPN connection will unexpectedly drop, which can result in your traffic being communicated over the public internet instead of through the encrypted VPN connection.
 
-For this reason, VPN clients often use firewall rules to ensure that internet traffic is allowed only to the VPN gateway. This protects the client's traffic from being *** in the event of a sudden disconnection from the VPN server. This functionality is sometimes referred to as a VPN "kill switch," because it has the effect of instantly blocking all connections to the internet if the VPN connection should fail.
+For this reason, VPN clients often use firewall rules to ensure that internet traffic is allowed only to the VPN gateway. This protects the client's traffic from being compromised in the event of a sudden disconnection from the VPN server. This functionality is sometimes referred to as a VPN "kill switch," because it has the effect of instantly blocking all connections to the internet if the VPN connection should fail.
 
 ## Before You Begin
 
