@@ -50,7 +50,7 @@ To allow for consistent replication, each node will need to communicate with all
 
 !["A three node replica set"](/docs/assets/mongodb-replication-diagram.png "A three node replica set")
 
-There are two major ways to allow the members of your replica set to communicate. 
+There are two major ways to allow the members of your replica set to communicate.
 
 The first method is to use [private IP addresses](/docs/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.
 

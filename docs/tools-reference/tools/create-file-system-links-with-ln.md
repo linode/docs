@@ -72,7 +72,7 @@ The first column of meta data on the `bar` object is `l`, which indicates that `
 
     $ ln -s ../example.txt
 
-    $ ls -l 
+    $ ls -l
     lrwxrwxrwx 1 username username 6 Aug 27 10:54 example.txt -> ../example.txt
 
 The `ln -s` command will succeed as long as a there are no files in the target directory that would conflict with the name of the link to be created. While the target file must exist when the link is created, the link or the target may be moved resulting in a broken link.
@@ -83,11 +83,11 @@ To avoid the pitfalls of specifying relative symbolic link targets, you may crea
 
     $ ln -s /srv/www/example.com/public_html /home/username/public
 
-    $ ls -l /home/username 
+    $ ls -l /home/username
     total 0
     lrwxrwxrwx 1 username username 3 Aug 27 11:43 public -> /srv/www/example.com/public_html
 
-    $ ls -l /home/username/public 
+    $ ls -l /home/username/public
     total 48K
     -rw-r--r-- 1 username username 355 2010-06-10 14:50 index.htm
     -rw-r--r-- 1 username username 38K 2010-06-10 12:37 logo.png
@@ -96,20 +96,20 @@ To avoid the pitfalls of specifying relative symbolic link targets, you may crea
 
 In most cases, symbolic links are preferable over hard links. There are some situations that require hard links. Consider the following example:
 
-    $ ls -l 
-    total 4.0K 
+    $ ls -l
+    total 4.0K
     -rw-r--r-- 1 username username 3 Aug 27 12:23 foo
-    
+
     $ ln foo bar
-    
+
     $ ls -l
     total 8.0K
-    -rw-r--r-- 2 username username 3 Aug 27 12:23 bar 
+    -rw-r--r-- 2 username username 3 Aug 27 12:23 bar
     -rw-r--r-- 2 username username 3 Aug 27 12:23 foo
-    
+
     $ touch foo
-    
+
     $ ls -l
-    total 8.0K 
-    -rw-r--r-- 2 username username 3 Aug 27 12:24 bar 
+    total 8.0K
+    -rw-r--r-- 2 username username 3 Aug 27 12:24 bar
     -rw-r--r-- 2 username username 3 Aug 27 12:24 foo

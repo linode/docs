@@ -179,9 +179,9 @@ nginx.conf
           # [...]
 
           listen 443;
-          ssl on; 
+          ssl on;
           ssl_certificate      /srv/ssl/nginx.pem;
-          ssl_certificate_key  /srv/ssl/nginx.key;  
+          ssl_certificate_key  /srv/ssl/nginx.key;
 
           # [...]
     }
@@ -202,9 +202,9 @@ nginx.conf
           listen 12.34.56.78:443;
           server_name example.com;
 
-          ssl on; 
+          ssl on;
           ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+          ssl_certificate_key  /srv/ssl/example.com.key;
 
           # [...]
     }
@@ -213,9 +213,9 @@ nginx.conf
           listen 12.34.56.79:443;
           server_name example.com;
 
-          ssl on; 
+          ssl on;
           ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+          ssl_certificate_key  /srv/ssl/example.com.key;
 
           # [...]
     }
@@ -234,7 +234,7 @@ nginx.conf
 
           listen 443 ssl;
           ssl_certificate      /srv/ssl/nginx.pem;
-          ssl_certificate_key  /srv/ssl/nginx.key;  
+          ssl_certificate_key  /srv/ssl/nginx.key;
 
           # [...]
     }
@@ -256,7 +256,7 @@ nginx.conf
           server_name example.com;
 
           ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+          ssl_certificate_key  /srv/ssl/example.com.key;
 
           # [...]
     }
@@ -266,7 +266,7 @@ nginx.conf
           server_name example.com;
 
           ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+          ssl_certificate_key  /srv/ssl/example.com.key;
 
           # [...]
     }
@@ -286,23 +286,23 @@ nginx.conf
         server {
            listen       12.3.45.6:443;
            server_name      example.com www.example.com;
-           ssl on; 
+           ssl on;
 
            location / {
                  root /srv/www/example.com/public_html;
            }
-        }                 
+        }
         server {
            listen       12.3.45.7:443;
            server_name      team.example.com;
-           ssl on; 
+           ssl on;
 
            location / {
                  root /srv/www/team.example.com/public_html;
            }
 
         # [...]
-        }                 
+        }
     ~~~
 
 In this example, the wild card certificate is specified once in the root level of the `http {}` configuration, and the domains `example.com`, `www.example.com`, and `team.example.com` are all served using the `/srv/ssl/example.com.crt` certificate.
@@ -339,7 +339,7 @@ nginx.conf
           server_name example.com;
 
           ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+          ssl_certificate_key  /srv/ssl/example.com.key;
 
           # [...]
     }

@@ -12,7 +12,7 @@ modified_by:
 title: 'Installing Monit for Server Monitoring'
 contributor:
     name: Bill Bardon
-    link: 
+    link:
 external_resources:
  - '[Monit Documentation](https://mmonit.com/monit/documentation/monit.html)'
  - '[Email-to-SMS gateways - Wikipedia](https://en.wikipedia.org/wiki/SMS_gateway)'
@@ -22,7 +22,7 @@ external_resources:
 
 <hr>
 
-Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should. 
+Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should.
 
 ![Installing Monit for Server Monitoring](/docs/assets/monit_tg.png "Installing Monit for Server Monitoring")
 
@@ -89,7 +89,7 @@ If your distro has System V (CentOS 6, Debian 7) or Upstart (Ubuntu 14.04):
 
 ##Configure the Monit Daemon
 
-Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself. 
+Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself.
 
 ### Polling Frequency
 
@@ -108,7 +108,7 @@ Other processes may take some time to complete their own startup. Including the 
 
 ###Alerting
 
-Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#sending-email-from-your-server) for help with configuring this.
+Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server) for help with configuring this.
 
 Specify what server you will send mail through on this line:
 
@@ -121,7 +121,7 @@ If you need to specify a port other than the default for SMTP (25), add it follo
 You can also specify multiple mail servers by entering more than one server name, separated by comma:
 
     set mailserver mail.example.com, backupmail.example.com
-    
+
 Monit will try each server in turn until one succeeds. It will **not** _retry_ if no servers succeed, unless you also configure the event queue. To do this, you specify a directory to store the undelivered messages and how many messages you want to allow to queue up. The config file defaults normally suffice:
 
     set eventqueue
@@ -149,7 +149,7 @@ You can optionally restrict web interface access to just your IP address.
 
 {: .note}
 >
->If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configuring-a-firewall). 
+>If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configure-a-firewall).
 
 ##Configure Monit's Checking Actions
 
@@ -162,7 +162,7 @@ Monit can monitor server resource utilization and alert you when your server is 
         if memory usage > 85% then alert
         if cpu usage (user) > 60% then alert
 
-Here, Monit has been instructed to alert when the load average, total system memory use or CPU usage exceeds the specified limits. You should set these limits based on your server's normal operating values. 
+Here, Monit has been instructed to alert when the load average, total system memory use or CPU usage exceeds the specified limits. You should set these limits based on your server's normal operating values.
 
 A good way to determine the alert thresholds is to set them low (you will receive frequent alerts) and then adjust them higher if alerts are more frequent than the situation requires. The actual tested values which triggered the alert will be included in the alert message, and you can use these to gauge what is a good threshold limit for your server.
 
@@ -190,7 +190,7 @@ Monit can do more than simply check the resource utilization of a process. It su
         if cpu usage > 95% for 3 cycles then alert
         if failed port 80 protocol http then restart
 
-Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal `GET "/"` request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given. 
+Plenty is happening in the newly added lines of this check statement, including the best feature of Monit: automated process management. In lines 2 and 3, Monit has been programmed on how to start and stop the process being checked. In line 6, Monit has been programmed to use HTTP on port 80 to send a GET request to this running instance of Apache. By default it will send a normal `GET "/"` request. If Apache returns an HTTP status code of 400 or greater, Monit will alert _and_ restart the process using the commands given.
 
 The commands shown above are systemd compatible for a distribution using systemd (for example, Debian 8). If your server instead uses SysV or Upstart (ex. Debian 7 or Ubuntu 14.04), use these instead:
 
@@ -199,7 +199,7 @@ The commands shown above are systemd compatible for a distribution using systemd
 
 ###Filesystem
 
-Monit can check filesystem properties such as whether a file exists, if its size is larger or smaller than specified, and what permissions are assigned. Another useful application is to test the timestamp of log files that should be updating. 
+Monit can check filesystem properties such as whether a file exists, if its size is larger or smaller than specified, and what permissions are assigned. Another useful application is to test the timestamp of log files that should be updating.
 
     check file mail.log with path /var/log/mail.log
         if timestamp > 10 minutes then alert
@@ -235,7 +235,7 @@ Monit can test many protocols, not just HTTP:
 
 If you have more than one server, it's a good idea to have each one monitor another. If you only run Monit on one host, and that host goes completely off-line, Monit will be unable to notify you about the problem. By running a second instance of Monit on another server, you can set up each one to alert if the other one goes off-line.
 
-Note that it is possible to change the alert recipient from the globally-defined address in the `set alert` statement to another recipient using the `noalert` keyword. 
+Note that it is possible to change the alert recipient from the globally-defined address in the `set alert` statement to another recipient using the `noalert` keyword.
 
     check host web-server with address www.example.com
         if failed port 80 protocol http with timeout 30 seconds then alert

@@ -13,11 +13,13 @@ published: 'Tuesday, August 4th, 2009'
 title: 'Using the Linode Shell (Lish)'
 ---
 
+![Using the Linode Shell (Lish)](/docs/assets/using-the-linode-shell-lish.jpg "Using the Linode Shell (Lish)")
+
 The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your secure server on a local computer whose public key has not been added to the allowed list.
 
 ##Connect to Lish
 
-There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Ajax console in your web browser. This section explains both methods.
+There are two ways to access Lish. You can use a terminal application to connect to a *Lish SSH gateway*, or you can log in to the [Linode Manager](https://manager.linode.com) and use the Lish console in your web browser. This section explains both methods.
 
  {: .note }
 >
@@ -53,16 +55,16 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 3.  Verify that the Lish SSH gateway's fingerprint is valid. [Click here](#lish-gateway-fingerprints) for more information.
 4.  Enter the password you use to log in to the Linode Manager. You are now at the Lish shell. A list of your Linodes appears, as shown below:
 
-        Linodes located in this data center:         
-        linode241706         Newark, NJ                   
-        linode276072         Newark, NJ                   
+        Linodes located in this data center:
+        linode241706         Newark, NJ
+        linode276072         Newark, NJ
 
-        Linodes located in other data centers:          
-        linode287497         Dallas, TX    
+        Linodes located in other data centers:
+        linode287497         Dallas, TX
 
 	{: .note }
 	>
-	> You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#adding-your-public-key) for more information.
+	> You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 
 5.  At the Lish command prompt, type a Linode's name from the list. For example, typing `linode241706` will connect you to the screen console session for that Linode.
 6.  Log in to the Linode with your username and password.
@@ -76,9 +78,9 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 1.  Log in to the Linode Manager.
 2.  Select a Linode.
 3.  Click on the **Remote Access** tab.
-4.  In the **Console Access** section, click **Launch Lish Ajax Console**, as shown below.
+4.  In the **Console Access** section, click **Launch Lish Console**, as shown below.
 
-    [![Click Launch Lish Ajax Console.](/docs/assets/1281-manager_lish_ajax_launch.png)](/docs/assets/1281-manager_lish_ajax_launch.png)
+    [![Click Lish via Browser.](/docs/assets/lish-via-browser.png)](/docs/assets/lish-via-browser.png)
 
 5.  The Lish Web Console window appears with your Linode's console, as shown below.
 

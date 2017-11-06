@@ -9,7 +9,7 @@ modified: Wednesday, February 15th, 2017
 modified_by:
   name: Linode
 published: 'Thursday, December 18th, 2014'
-title: How to Set Up and Install Node.js 
+title: How to Set Up and Install Node.js
 alias: ['websites/nodejs/installing-nodejs/','websites/nodejs/a-nodejs-installation-crash-course/','development/nodejs/installing-nodejs/','development/nodjs/a-nodejs-installation-crash-course/']
 external_resources:
  - '[NodeSchool](http://nodeschool.io/)'
@@ -60,7 +60,7 @@ Compiling from source code is the most advanced installation method, though it c
 ## Node Package Manager (NPM)
 
 A typical installation of Node.js includes the [Node Package Manager](https://github.com/npm/npm) (NPM). However, an exception is any Linux-distro-supplied version of Nodejs which would need the package `npm` installed. NPM is a package manager for Nodejs packages in the NPM repository. You can find extensive NPM documentation at [npmjs.com](https://docs.npmjs.com/).
-        
+
 ## Making a Quick Decision (the tl:dr)
 
 Still not sure which installation method to use? Then [NVM](#node-version-manager) will probably be your best choice to start with. NVM faciliates easy installation and maintenance of Node.js and NPM, presents no naming issues with other software, and easily manages multple installations of Node.js that can test your application before you push a Node.js update into your production environment.

@@ -33,8 +33,8 @@ The `mcrypt` PHP module required by phpMyAdmin is contained in the "universe" re
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -58,7 +58,7 @@ When you have saved this file, issue the following command to refresh your syste
 
 In order to provide better security, this guide will install phpMyAdmin to an SSL secured Apache `VirtualHost`. While you can use HTTP to access your phpMyAdmin instance, it will send your passwords in plain text over the internet. Since you will most likely be logging in to phpMyAdmin using your MySQL root user, HTTP is definitely not recommended.
 
-If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/web-servers/apache/ssl-guides/ubuntu-9.10-karmic). Please ensure SSL is enabled for your virtual host before proceeding.
+If you need to set up SSL for your host, please refer to our [using Apache with SSL guide](/docs/web-servers/apache/ssl-guides/ubuntu-9-10-karmic). Please ensure SSL is enabled for your virtual host before proceeding.
 
 phpMyAdmin requires the `mcrypt` PHP module. You can install it using the following command:
 

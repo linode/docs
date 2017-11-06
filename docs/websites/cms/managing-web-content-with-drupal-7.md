@@ -40,7 +40,7 @@ The Drupal software is frequently updated as bugs are patched and security vulne
 
 1.  If you installed and configured your Apache server as described in our other guides, the publicly accessible DocumentRoot will be in a directory similar to `/var/www/example.com/public_html/`. You will change directories to the *non-publicly accessible* `/var/www/example.com/` directory, using the following command:
 
-        cd /var/www/example.com 
+        cd /var/www/example.com
 
 2.  Download Drupal with `wget`:
 
@@ -48,7 +48,7 @@ The Drupal software is frequently updated as bugs are patched and security vulne
 
 3.  Extract the file:
 
-        tar -zxvf drupal-7.32.tar.gz 
+        tar -zxvf drupal-7.32.tar.gz
 
 4.  Now, we can copy this instance of Drupal to a new web-accessible directory:
 
@@ -111,7 +111,7 @@ Remember to change the commands above to reflect the latest version or version t
 
     {: .note }
 >
-> During the creation of the LAMP stack, you should have created a MySQL database. If you have forgotten the name of that database, log back into MySQL with the `mysql -u root -p` command and then enter the `show databases;` command. 
+> During the creation of the LAMP stack, you should have created a MySQL database. If you have forgotten the name of that database, log back into MySQL with the `mysql -u root -p` command and then enter the `show databases;` command.
 
 You're now ready to begin using Drupal.
 

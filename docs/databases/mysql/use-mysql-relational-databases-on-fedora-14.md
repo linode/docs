@@ -42,7 +42,7 @@ Issue the following commands to update your system and install MySQL:
 
     yum update
     yum install mysql-server
-    chkconfig mysqld on 
+    chkconfig mysqld on
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. Start MySQL by running the following command:
 
@@ -165,14 +165,14 @@ How to Reset MySQL's Root Password
 If you've forgotten your root MySQL password, you may reset it by issuing the following commands:
 
     service mysqld stop
-    mysqld_safe --skip-grant-tables & 
+    mysqld_safe --skip-grant-tables &
     mysql -u root
 
 The following part of the password reset will now be done within the MySQL client program:
 
-    USE mysql; 
-    UPDATE user SET PASSWORD=PASSWORD("CHANGEME") WHERE User='root'; 
-    FLUSH PRIVILEGES; 
+    USE mysql;
+    UPDATE user SET PASSWORD=PASSWORD("CHANGEME") WHERE User='root';
+    FLUSH PRIVILEGES;
     exit
 
 Last, restart MySQL by issuing the following command:

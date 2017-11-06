@@ -26,7 +26,7 @@ This guide takes us from a fresh install of Ubuntu 9.04 (Jaunty), to a running R
 
 Our goal is to provide instructions that are accessible and will have you up and running your with your Rails app as quickly as possible. We assume you've deployed and updated your Ubuntu 9.04 Jaunty Linode according to our [getting started](/docs/getting-started/) guide.
 
-In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Docs so that you have a functioning installation of the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty) and a working installation of the [MySQL database server](/docs/databases/mysql/ubuntu-9.04-jaunty). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
+In addition to updating your system before beginning this guide, we recommend you review other guides in the Linode Docs so that you have a functioning installation of the [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty) and a working installation of the [MySQL database server](/docs/databases/mysql/ubuntu-9-04-jaunty). With those prerequisites out of the way, we can get started with Rails. We will assume that you're logged in to your Linode via SSH and have a root prompt for the purpose of this tutorial.
 
 ## Installing Passenger and Dependencies
 
@@ -78,12 +78,12 @@ The output of this should look like this:
 
     /etc/apache2/mods-enabled/passenger.conf  /etc/apache2/mods-enabled/passenger.load
 
-These files load and enable the Passenger module for use in your sites. If you configured Apache virtual hosting as outlined in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+These files load and enable the Passenger module for use in your sites. If you configured Apache virtual hosting as outlined in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
 {: .file-excerpt }
 Apache Virtual Host Configuration
 :   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
+    DocumentRoot /srv/www/example.com/public_html/
     ~~~
 
 In typical Passenger-based Rails deployments the application directory would be located in `/srv/www/example.com/`; for example `my-app/` would be located at `/srv/www/example.com/my-app/` and we would symbolically link (symlink) the `my-app/public/` folder to `/srv/www/example.com/public_html/`. We'll begin by removing the current `public_html/` directory if it already exists:
@@ -92,7 +92,7 @@ In typical Passenger-based Rails deployments the application directory would be 
 
 Then we'll create the symbolic link:
 
-    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html 
+    ln -s /srv/www/example.com/my-app/public/ /srv/www/example.com/public_html
 
 We'll want to restart Apache once to make sure all of our settings and configurations have been loaded:
 
@@ -100,15 +100,15 @@ We'll want to restart Apache once to make sure all of our settings and configura
 
 **Note:** Passenger requires that the log files in your application be world writable (eg. chmod 666) and will produce an HTTP 500 Internal Server Error if the log files are not writable. Issue the following command to change the permissions of the files in the log directory of the "my-app" application in the setup above.
 
-    chmod 666 /srv/www/example.com/my-app/log/* 
+    chmod 666 /srv/www/example.com/my-app/log/*
 
 You now have a functioning environment for your Ruby on Rails application.
 
 ## Deploying Multiple Rails Apps
 
-If you need to install multiple Rails applications the easiest way to accomplish this is by installing each application in its own virtual host. Create multiple virtual hosts, as described in [Apache guide](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty) and link the `public/` directory of your application to the DocumentRoot (e.g. `public_html/`) of the virtual host, as described above.
+If you need to install multiple Rails applications the easiest way to accomplish this is by installing each application in its own virtual host. Create multiple virtual hosts, as described in [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty) and link the `public/` directory of your application to the DocumentRoot (e.g. `public_html/`) of the virtual host, as described above.
 
-This presents a number of advantages. The Apache mpm\_itk module (described in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty)) allows you to isolate the permissions of each running application from Apache and each other. Furthermore, virtual hosting allows you to separate all log files for each host (and thus application) from the other applications and sites on your server.
+This presents a number of advantages. The Apache mpm\_itk module (described in the [Apache guide](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty)) allows you to isolate the permissions of each running application from Apache and each other. Furthermore, virtual hosting allows you to separate all log files for each host (and thus application) from the other applications and sites on your server.
 
 Passenger also supports deploying more than one Rails application within a single virtual host configuration. By adding `RailsBaseURI` options with the path to your Application within the virtual host, you can deploy multiple applications within one site. For example:
 

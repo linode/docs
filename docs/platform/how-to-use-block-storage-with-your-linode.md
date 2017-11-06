@@ -17,10 +17,10 @@ Linode's block storage service allows you to attach additional storage volumes t
 
 {: .caution}
 >
->Linode's backup services do NOT cover block storage volumes. 
+>Linode's backup services do NOT cover block storage volumes.
 >You MUST execute your own backups for this data.
 
-Block Storage is currently in a free public beta for Linodes in our Newark datacenter. Any feedback you can give on the service would also be helpful and is appreciated.
+Block Storage is currently in a free public beta for Linodes in our Newark and Fremont datacenters. Any feedback you can give on the service would also be helpful and is appreciated.
 
 ![Block storage title graphic](/docs/assets/block-storage-title-graphic.png)
 
@@ -40,7 +40,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     {: .note }
     >
-    > Block storage is currently only available to Linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark from another location.
+    > Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
 
      If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
@@ -68,7 +68,7 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
     {: .note }
      >
-     > Block storage is currently only available to Linodes in our Newark datacenter. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark from another location.
+     > Block storage is currently only available to Linodes in our Newark and Fremont datacenters. Contact [Linode Support](https://manager.linode.com/support/ticket/new?summary=Block%20Storage%20Beta) if you would like to migrate your Linode to Newark or Fremont from another location.
 
      If you receive the message, "Block Storage service is not yet enabled for this Linode's host. Please contact support if you would like a migration," reply to the ticket opened earlier and quote the error's text.
 
@@ -114,6 +114,8 @@ This guide assumes a Linode with the root disk mounted as `/dev/sda` and swap sp
 
 ## How to Resize a Block Storage Volume
 
+Storage volumes can **not** be sized down, only up. Bear this in mind when sizing your volumes.
+
 1.  Shut down your Linode.
 
 2.  Click the **Edit** option for the volume you want to resize.
@@ -138,6 +140,6 @@ Need ideas for what to do with space? We have several guides which walk you thro
 
 [Big Data in the Linode Cloud: Streaming Data Processing with Apache Storm](/docs/applications/big-data/big-data-in-the-linode-cloud-streaming-data-processing-with-apache-storm)
 
-[Using Subsonic to Stream Media From Your Linode](/docs/applications/media-servers/subsonic)
+[Using Subsonic to Stream Media From Your Linode](/docs/applications/media-servers/install-subsonic-media-server-on-ubuntu-or-debian)
 
 [Install GitLab on Ubuntu 14.04](/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr)

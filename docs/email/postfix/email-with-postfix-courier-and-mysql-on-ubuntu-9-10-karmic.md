@@ -45,7 +45,7 @@ If you had to enable new repositories, issue the following command to update you
 
 Issue the following command to get the required packages installed on your Linode:
 
-    apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl postfix-tls libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl 
+    apt-get install postfix postfix-mysql postfix-doc mysql-client mysql-server courier-authdaemon courier-authlib-mysql courier-pop courier-pop-ssl courier-imap courier-imap-ssl postfix-tls libsasl2-2 libsasl2-modules libsasl2-modules-sql sasl2-bin libpam-mysql openssl
 
 This will install the Postfix mail server, the MySQL database server, the Courier IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
@@ -70,7 +70,7 @@ Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
-    mysql -u root -p 
+    mysql -u root -p
 
 You'll be presented with an interface similar to the following:
 
@@ -84,16 +84,16 @@ You'll be presented with an interface similar to the following:
 
 Issue the following command to create a database for your mail server and switch to it in the shell:
 
-    CREATE DATABASE mail; 
-    USE mail; 
+    CREATE DATABASE mail;
+    USE mail;
 
 Create a mail administration user called `mail_admin` and grant it permissions on the `mail` database with the following commands. Please be sure to replace "mail\_admin\_password" with a password you select for this user.
 
-    GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost' 
+    GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost'
       IDENTIFIED BY 'mail_admin_password';
-    GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost.localdomain' 
+    GRANT SELECT, INSERT, UPDATE, DELETE ON mail.* TO 'mail_admin'@'localhost.localdomain'
       IDENTIFIED BY 'mail_admin_password';
-    FLUSH PRIVILEGES; 
+    FLUSH PRIVILEGES;
 
 Create the virtual domains table with the following command:
 
@@ -101,7 +101,7 @@ Create the virtual domains table with the following command:
 
 Create a table to handle mail forwarding with the following command:
 
-    CREATE TABLE forwardings (source varchar(80) NOT NULL, destination TEXT NOT NULL, 
+    CREATE TABLE forwardings (source varchar(80) NOT NULL, destination TEXT NOT NULL,
       PRIMARY KEY (source) );
 
 Create the users table with the following command:
@@ -119,7 +119,7 @@ Create a transports table with the following command:
 
 Exit the MySQL shell by issuing the following command:
 
-    quit 
+    quit
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
@@ -132,7 +132,7 @@ This is required for Postfix to be able to communicate with the database server.
 
 If you changed MySQL's configuration, restart the database server with the following command:
 
-    /etc/init.d/mysql restart 
+    /etc/init.d/mysql restart
 
 Next, we'll perform additional Postfix configuration to set up communication with our database.
 
@@ -169,37 +169,37 @@ Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtu
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 
-    chmod o= /etc/postfix/mysql-virtual_*.cf 
-    chgrp postfix /etc/postfix/mysql-virtual_*.cf 
+    chmod o= /etc/postfix/mysql-virtual_*.cf
+    chgrp postfix /etc/postfix/mysql-virtual_*.cf
 
 Next, we'll create a user and group for mail handling. All virtual mailboxes will be stored under this user's home directory.
 
-    groupadd -g 5000 vmail 
-    useradd -g vmail -u 5000 vmail -d /home/vmail -m 
+    groupadd -g 5000 vmail
+    useradd -g vmail -u 5000 vmail -d /home/vmail -m
 
 Issue the following commands to complete the remaining steps required for Postfix configuration. Please be sure to replace "server.example.com" with the fully qualified domain name you used for your system mail name. Please note that commands should not be broken into multiple lines. Issue each command on a single line as the `postconf` command does not accept multi-line input.
 
-    postconf -e 'myhostname = server.example.com' 
-    postconf -e 'mydestination = server.example.com, localhost, localhost.localdomain' 
-    postconf -e 'mynetworks = 127.0.0.0/8' 
-    postconf -e 'message_size_limit = 30720000' 
-    postconf -e 'virtual_alias_domains =' 
+    postconf -e 'myhostname = server.example.com'
+    postconf -e 'mydestination = server.example.com, localhost, localhost.localdomain'
+    postconf -e 'mynetworks = 127.0.0.0/8'
+    postconf -e 'message_size_limit = 30720000'
+    postconf -e 'virtual_alias_domains ='
     postconf -e 'virtual_alias_maps = proxy:mysql:/etc/postfix/mysql-virtual_forwardings.cf, mysql:/etc/postfix/mysql-virtual_email2email.cf'
-    postconf -e 'virtual_mailbox_domains = proxy:mysql:/etc/postfix/mysql-virtual_domains.cf' 
-    postconf -e 'virtual_mailbox_maps = proxy:mysql:/etc/postfix/mysql-virtual_mailboxes.cf' 
-    postconf -e 'virtual_mailbox_base = /home/vmail' 
-    postconf -e 'virtual_uid_maps = static:5000' 
-    postconf -e 'virtual_gid_maps = static:5000' 
-    postconf -e 'smtpd_sasl_auth_enable = yes' 
-    postconf -e 'broken_sasl_auth_clients = yes' 
-    postconf -e 'smtpd_sasl_authenticated_header = yes' 
-    postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination' 
-    postconf -e 'smtpd_use_tls = yes' 
-    postconf -e 'smtpd_tls_cert_file = /etc/postfix/smtpd.cert' 
-    postconf -e 'smtpd_tls_key_file = /etc/postfix/smtpd.key' 
-    postconf -e 'virtual_create_maildirsize = yes' 
-    postconf -e 'virtual_maildir_extended = yes' 
-    postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps' 
+    postconf -e 'virtual_mailbox_domains = proxy:mysql:/etc/postfix/mysql-virtual_domains.cf'
+    postconf -e 'virtual_mailbox_maps = proxy:mysql:/etc/postfix/mysql-virtual_mailboxes.cf'
+    postconf -e 'virtual_mailbox_base = /home/vmail'
+    postconf -e 'virtual_uid_maps = static:5000'
+    postconf -e 'virtual_gid_maps = static:5000'
+    postconf -e 'smtpd_sasl_auth_enable = yes'
+    postconf -e 'broken_sasl_auth_clients = yes'
+    postconf -e 'smtpd_sasl_authenticated_header = yes'
+    postconf -e 'smtpd_recipient_restrictions = permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination'
+    postconf -e 'smtpd_use_tls = yes'
+    postconf -e 'smtpd_tls_cert_file = /etc/postfix/smtpd.cert'
+    postconf -e 'smtpd_tls_key_file = /etc/postfix/smtpd.key'
+    postconf -e 'virtual_create_maildirsize = yes'
+    postconf -e 'virtual_maildir_extended = yes'
+    postconf -e 'proxy_read_maps = $local_recipient_maps $mydestination $virtual_alias_maps $virtual_alias_domains $virtual_mailbox_maps $virtual_mailbox_domains $relay_recipient_maps $relay_domains $canonical_maps $sender_canonical_maps $recipient_canonical_maps $relocated_maps $transport_maps $mynetworks $virtual_mailbox_limit_maps'
 
 This completes the configuration for Postfix. Next, we'll make an SSL certificate for the Postfix server that contains values appropriate for your organization.
 
@@ -223,7 +223,7 @@ You will be asked to enter several values, similar to the output shown below. Be
 
 Set proper permissions for the key file by issuing the following command:
 
-    chmod o= /etc/postfix/smtpd.key 
+    chmod o= /etc/postfix/smtpd.key
 
 This completes SSL certificate creation for Postfix. Next, we'll configure `saslauthd` to use MySQL for user authentication.
 
@@ -280,9 +280,9 @@ Restrict the access for the files created above by issuing the following command
 
 Add the Postfix user to the `sasl` group and restart Postfix and `saslauthd` by issuing the following commands:
 
-    adduser postfix sasl 
-    /etc/init.d/postfix restart 
-    /etc/init.d/saslauthd restart 
+    adduser postfix sasl
+    /etc/init.d/postfix restart
+    /etc/init.d/saslauthd restart
 
 This completes configuration for `saslauthd`. Next, we'll configure Courier to use MySQL for IMAP/POP3 user authentication.
 
@@ -298,8 +298,8 @@ Edit the file `/etc/courier/authdaemonrc`, changing the "authmodulelist" line to
 
 Back up the current `/etc/courier/authmysqlrc` file and create an empty one as follows:
 
-    cp /etc/courier/authmysqlrc /etc/courier/authmysqlrc_orig 
-    cat /dev/null > /etc/courier/authmysqlrc 
+    cp /etc/courier/authmysqlrc /etc/courier/authmysqlrc_orig
+    cat /dev/null > /etc/courier/authmysqlrc
 
 Edit the file `/etc/courier/authmysqlrc`, copying in the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
@@ -310,25 +310,25 @@ Edit the file `/etc/courier/authmysqlrc`, copying in the following contents. Be 
 
 Delete the original certificates created by Courier by issuing the following commands:
 
-    rm -f /etc/courier/imapd.pem 
-    rm -f /etc/courier/pop3d.pem 
+    rm -f /etc/courier/imapd.pem
+    rm -f /etc/courier/pop3d.pem
 
 Edit the files `/etc/courier/imapd.cnf` and `/etc/courier/pop3d.cnf`, replacing the "CN=localhost" lines with the fully qualified domain name you used for your system mailname. You may also wish to edit other lines in these configuration files to set values appropriate for your organization.
 
 Regenerate the certificates for Courier and restart its daemons by issuing the following commands:
 
-    cd /etc/courier 
-    mkimapdcert 
-    mkpop3dcert 
-    /etc/init.d/courier-authdaemon restart 
-    /etc/init.d/courier-imap restart 
-    /etc/init.d/courier-imap-ssl restart 
-    /etc/init.d/courier-pop restart 
-    /etc/init.d/courier-pop-ssl restart 
+    cd /etc/courier
+    mkimapdcert
+    mkpop3dcert
+    /etc/init.d/courier-authdaemon restart
+    /etc/init.d/courier-imap restart
+    /etc/init.d/courier-imap-ssl restart
+    /etc/init.d/courier-pop restart
+    /etc/init.d/courier-pop-ssl restart
 
 You can test your POP3 server to make sure it's running properly by issuing the following command. You may need to install the `telnet` utility first; if so, issue the command `apt-get install telnet`.
 
-    telnet localhost pop3 
+    telnet localhost pop3
 
 You should see output similar to the following in your terminal:
 
@@ -351,8 +351,8 @@ Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives
 
 After modifying this file, you must run the following commands to update aliases and restart Postfix:
 
-    newaliases 
-    /etc/init.d/postfix restart 
+    newaliases
+    /etc/init.d/postfix restart
 
 This completes alias configuration. Next, we'll test Postfix to make sure it's operating properly.
 
@@ -361,11 +361,11 @@ Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
-    telnet localhost 25 
+    telnet localhost 25
 
 While connected to Postfix, issue the following command:
 
-    ehlo localhost 
+    ehlo localhost
 
 You should see output similar to the following, with the line "250-STARTTLS" included:
 
@@ -396,16 +396,16 @@ Please note that you'll need to modify the DNS records for any domains for which
 
 We'll use the MySQL shell to add support for the domain "example.com", which will have an email account called "sales". You should substitute one of your domains for "example.com" in these statements, along with a strong password for the "password" entry in the second SQL statement.
 
-    mysql -u root -p 
+    mysql -u root -p
 
-    USE mail; 
-    INSERT INTO domains (domain) VALUES ('example.com'); 
-    INSERT INTO users (email, password) VALUES ('sales@example.com', ENCRYPT('password')); 
+    USE mail;
+    INSERT INTO domains (domain) VALUES ('example.com');
+    INSERT INTO users (email, password) VALUES ('sales@example.com', ENCRYPT('password'));
 
 Exit the MySQL shell with the "quit" command. You'll need to send a welcome message to new email accounts before they can be accessed via IMAP or POP3. This is because the mailboxes for new users won't be created until an email is received for them. To send a welcome message from the command line, you may use the `mailx` utility. Issue the following commands to install it and send the message.
 
-    apt-get install mailx 
-    mailx sales@example.com 
+    apt-get install mailx
+    mailx sales@example.com
 
 Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:" blank. This completes the configuration for a new domain and email user.
 

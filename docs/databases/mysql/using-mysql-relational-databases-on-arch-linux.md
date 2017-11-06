@@ -146,14 +146,14 @@ How to Reset MySQL's Root Password
 If you've forgotten your root MySQL password, you may reset it by issuing the following commands:
 
     /etc/rc.d/mysqld stop
-    mysqld_safe --skip-grant-tables & 
+    mysqld_safe --skip-grant-tables &
     mysql -u root
 
 The following part of the password reset will now be done within the MySQL client program:
 
-    USE mysql; 
-    UPDATE user SET PASSWORD-PASSWORD("CHANGEME") WHERE User-'root'; 
-    FLUSH PRIVILEGES; 
+    USE mysql;
+    UPDATE user SET PASSWORD-PASSWORD("CHANGEME") WHERE User-'root';
+    FLUSH PRIVILEGES;
     exit
 
 Last, restart MySQL by issuing the following command:

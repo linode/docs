@@ -58,7 +58,7 @@ To open the preferences, click on `Edit`, then `Preferences` in the main menu:
 
 See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases/mysql/install-mysql-on-ubuntu-14-04) or [Debian 8](/docs/databases/mysql/how-to-install-mysql-on-debian-8) for more information on creating or logging into a MySQL server.
 
-1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started#connecting-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
+1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started#connect-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
 
         wget http://downloads.mysql.com/docs/sakila-db.tar.gz
 

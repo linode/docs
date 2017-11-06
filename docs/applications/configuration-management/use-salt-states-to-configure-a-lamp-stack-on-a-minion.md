@@ -19,10 +19,10 @@ This tutorial will configure a Minion's LAMP stack with further use of Salt Stat
 The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust as needed.
 
 1.  Open the `/etc/salt/base/top.sls` file and add the additional line:
- 
+
     {:.file }
     /etc/salt/base/top.sls
-    :  ~~~  
+    :  ~~~
        base:
          '*':
             - lamp
@@ -124,14 +124,14 @@ The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust
         salt '*' state.highstate
 
 ##Create Virtual Hosts Files
-Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, try using Salt Execution Modules. Note, there are many ways to use Salt. 
+Salt State Modules are used for settings across groups of Minions. To adjust a configuration on a single Minion, try using Salt Execution Modules. Note, there are many ways to use Salt.
 
 1.  Disable the default Apache virtual host on either a single Minion or all Minions:
 
     For a specific Minion:
 
         salt '<hostname or Minion ID>' cmd.run "a2dissite *default"
-    
+
     For all Minions:
 
         salt '*' cmd.run "a2dissite *default"
@@ -143,7 +143,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/log/
         salt '<hostname or Minion ID>' file.makedirs /var/www/example.com/backups/
 
-3.  Create a directory on the Master to hold all of the Minion virtual host files. This directory can act as an index for all of the Minion websites. 
+3.  Create a directory on the Master to hold all of the Minion virtual host files. This directory can act as an index for all of the Minion websites.
 
         mkdir /etc/salt/base/minionsites
 
@@ -151,7 +151,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
 
     {:.file }
     /etc/salt/base/minionsites/example.com.conf
-    :  ~~~  
+    :  ~~~
        # domain: example.com
        # public: /var/www/example.com/public_html/
 

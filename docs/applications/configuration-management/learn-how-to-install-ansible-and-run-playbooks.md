@@ -49,10 +49,10 @@ Make sure that you have Python 2.x available on the control machine. Ansible is 
 - CentOS/Fedora:
 
       sudo yum install ansible
-    
+
   {: .note}
   >
-  >The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux. 
+  >The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
 
 - Ubuntu:
 
@@ -96,7 +96,7 @@ You were just able to get a valid connection to your server via Ansible!
 
 You executed an Ansible command against one client, but it would be cumbersome to have to type the host's address every single time, and what if you had several servers you wanted to apply the same configuration to? This is where Ansible's [inventory file](http://docs.ansible.com/ansible/intro_inventory.html) comes into play.
 
-1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist. 
+1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist.
 
 
     {: .note }
@@ -111,8 +111,8 @@ You executed an Ansible command against one client, but it would be cumbersome t
     > {: .file-excerpt}
     > ~/.ansible.cfg
     > :   ~~~ ini
-    >     [defaults] 
-    >     inventory = ~/Path/To/ansible/hosts 
+    >     [defaults]
+    >     inventory = ~/Path/To/ansible/hosts
     >     ~~~
 
 2.  Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them:
@@ -125,7 +125,7 @@ You executed an Ansible command against one client, but it would be cumbersome t
 
         [mailservers]
         mail1.mainserver.com
-        mail2.mainserver.com 
+        mail2.mainserver.com
         ~~~
 
 3.  Use the `all` directive to ping all servers in your `hosts` file via Ansible:
@@ -153,7 +153,7 @@ Sample Playbook YAML file
       remote_user: [yourname]
       tasks:
         - [task 1]
-        - [task 2] 
+        - [task 2]
     ~~~
 
 For example, the following playbook would log in to all servers in the `marketingservers` group and ensure Apache was started.
@@ -168,14 +168,14 @@ Sample service check playbook
         - name: Ensure the Apache daemon has started
           service: name=httpd state=started
           become: yes
-          become_method: sudo 
-    ~~~      
+          become_method: sudo
+    ~~~
 
 In the playbook above is an example of a task:
 
 {: .file-excerpt}
 Playbook task
-:   ~~~ yaml      
+:   ~~~ yaml
       tasks:
         - name: Ensure the Apache daemon has started
           service: name=httpd state=started
@@ -229,7 +229,7 @@ As an example, we'll use Ansible to turn a freshly created Linode server into a 
 
 - This example will assume a brand new Ubuntu 14.04 LTS server, without any additional configuration already done to the box. The very first order of business will be to add in our public encryption keys so that we can connect without supplying passwords.
 
-- Because Ansible playbooks are idempotent and can be run repeatedly without error, the `user` task checks that a user exists and that the password on file (which the system stores hashed) matches the hash you are supplying. Therefore you cannot (and should not) just put in a plaintext password, you must pre-hash it. 
+- Because Ansible playbooks are idempotent and can be run repeatedly without error, the `user` task checks that a user exists and that the password on file (which the system stores hashed) matches the hash you are supplying. Therefore you cannot (and should not) just put in a plaintext password, you must pre-hash it.
 
 - Create a password hash for Ansible to use when communicating with the servers. An easy method is to use Python's PassLib library, which can be installed with `sudo pip install passlib`.
 
@@ -247,7 +247,7 @@ As an example, we'll use Ansible to turn a freshly created Linode server into a 
     /etc/ansible/hosts
     :   ~~~ ini
         [linode]
-        123.123.123.123 
+        123.123.123.123
         ~~~
 
 3.  Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the `sudoers` file.
@@ -264,8 +264,8 @@ As an example, we'll use Ansible to turn a freshly created Linode server into a 
             NORMAL_USER_NAME: 'yourusername'
           tasks:
             - name: "Create a secondary, non-root user"
-              user: name={{ NORMAL_USER_NAME }} 
-                    password='$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0' 
+              user: name={{ NORMAL_USER_NAME }}
+                    password='$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0'
                     shell=/bin/bash
             - name: Add remote authorized key to allow future passwordless logins
               authorized_key: user={{ NORMAL_USER_NAME }} key="{{ lookup('file', '/Users/localusername/.ssh/id_rsa.pub') }}"
@@ -273,7 +273,7 @@ As an example, we'll use Ansible to turn a freshly created Linode server into a 
               lineinfile: dest=/etc/sudoers
                           regexp="{{ NORMAL_USER_NAME }} ALL"
                           line="{{ NORMAL_USER_NAME }} ALL=(ALL) ALL"
-                          state=present 
+                          state=present
         ~~~
 
 4.  Save the playbook file as `initialize_basic_user.yml` and run the playbook with the following command. Note how we specify the use of a particular user (`-u root`) and force Ansible to prompt us for the password (`-ask-pass`) since we don't have key authentication set up yet:
@@ -294,7 +294,7 @@ common_server_setup.yml
       remote_user: yourusername
       become: yes
       become_method: sudo
-      vars: 
+      vars:
         LOCAL_HOSTNAME: 'web01'
         LOCAL_FQDN_NAME: 'www.example.com'
       tasks:
@@ -303,14 +303,14 @@ common_server_setup.yml
         - name: Set up a unique hostname
           hostname: name={{ LOCAL_HOSTNAME }}
         - name: Add the server's domain to the hosts file
-          lineinfile: dest=/etc/hosts 
-                      regexp='.*{{ item }}$' 
-                      line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}" 
+          lineinfile: dest=/etc/hosts
+                      regexp='.*{{ item }}$'
+                      line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}"
                       state=present
           when: hostvars[item].ansible_default_ipv4.address is defined
           with_items: "{{ groups['linode'] }}"
         - name: Update packages
-          apt: update_cache=yes upgrade=dist 
+          apt: update_cache=yes upgrade=dist
     ~~~
 
 Run this playbook:
@@ -355,9 +355,9 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
                         state=present
 
             - name: Create a new user for connections
-              mysql_user: name=webapp 
-                          password=mypassword 
-                          priv=*.*:ALL state=present 
+              mysql_user: name=webapp
+                          password=mypassword
+                          priv=*.*:ALL state=present
         ~~~
 
 2.  Run the playbook from your control machine with the following command:
@@ -365,7 +365,7 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
         ansible-playbook setup_webserver.yml --ask-become-pass
 
     When this playbook finishes, visit your Linode's IP address or FQDN to see the default Ubuntu Apache index page.
-    
+
 3.  Log in via SSH and check to see that the `testDb` has indeed been created:
 
          mysql -u root -p

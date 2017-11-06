@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
   name: Samuel Damashek
 modified: Thursday, March 10th, 2016
-modified_by: 
+modified_by:
     name: 'Linode'
 published: 'Wednesday, August 27th, 2014'
 title: 'Using WeeChat for Internet Relay Chat'
@@ -22,17 +22,17 @@ external_resources:
 
 <hr>
 
-[WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.  
+[WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.
 
 Many users prefer WeeChat over other graphical and terminal-based clients because of its many features and its customizability. One advantage of terminal-based clients over graphical IRC clients is the ability to detach from your WeeChat instance and come back later, locally or remotely, using a terminal multiplexer such as [Screen](https://www.gnu.org/software/screen/) or [tmux](https://tmux.github.io/).
 
-WeeChat is usually run in a terminal emulator. It may be run either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics), along with the [Getting Started Guide](/docs/getting-started/). 
+WeeChat is usually run in a terminal emulator. It may be run either on your computer, a Linode instance, or any computer running a supported platform. If you run WeeChat on your Linode, you can access WeeChat at any time from any system simply by connecting via SSH and attaching to your Screen or tmux instance. This guide assumes you have read [Using The Terminal](/docs/networking/ssh/using-the-terminal) and [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics), along with the [Getting Started Guide](/docs/getting-started/).
 
 ## What is IRC?
 
 Internet Relay Chat (IRC) is a protocol that is used to create IRC "networks," sets of IRC servers that can be connected to using IRC clients. Networks are usually independent. Inside a network, there are many channels which can be joined by users. Usually anybody can create a channel. Channels are usually prefixed with hash signs (**#**), and sometimes contain multiple hash signs to represent different types of channels. Individual users can also chat with each other privately using private messages. Many Linode customers use IRC to get technical help and exchange knowledge.
 
-The official Linode channel is **#linode** on the OFTC network (**irc.oftc.net**). 
+The official Linode channel is **#linode** on the OFTC network (**irc.oftc.net**).
 
 On IRC, users are classified by four characteristics:
 
@@ -69,7 +69,7 @@ GNU Screen allows you to start WeeChat and leave it running, even if you disconn
 
 ## Installing WeeChat
 
-Below are instructions for installing WeeChat and Screen on different Linux distributions and operating systems. 
+Below are instructions for installing WeeChat and Screen on different Linux distributions and operating systems.
 
 ### Arch Linux
 
@@ -132,7 +132,7 @@ When you first launch WeeChat, it automatically creates a configuration file in 
 
 ## Using WeeChat
 
-### Adding and Connecting to a Server 
+### Adding and Connecting to a Server
 
 To add a server (in this case the OFTC network), you will use the `/server` command.
 
@@ -172,7 +172,7 @@ Otherwise, you can use `/buffer` to switch between buffers by number or name. Fo
 You can also press **ALT+number** (**ESC+number** on a Mac), where "number" is 1-9, to switch to that buffer number. **ALT+4** (**ESC+4** on a Mac) will switch to buffer 4.
 
 <!--- My friend tells me that you have to use Esc instead of Alt. For example, Option-4 would give him ¢.
-Pressing `Ctrl-N` will switch to the next buffer, and `Ctrl-P` will switch to the previous buffer. You can also use `/buffer +1` to go to the next buffer, or `/buffer -1` to go to the previous buffer. 
+Pressing `Ctrl-N` will switch to the next buffer, and `Ctrl-P` will switch to the previous buffer. You can also use `/buffer +1` to go to the next buffer, or `/buffer -1` to go to the previous buffer.
 -->
 
 ### Sending Private Messages
@@ -211,7 +211,7 @@ WeeChat has a plugins system which allows you to install different modifications
 
 ### WeeChat Commands
 
-All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin that does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands. 
+All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*. Servers are also buffers. By default, WeeChat does not include a list of buffers, but you may install a plugin that does. The buffers.pl plugin is recommended and displays a list of buffers on the left of the screen. This allows you to see what channels and servers you are in without having to remember special commands.
 
     /script install buffers.pl
 
@@ -257,7 +257,7 @@ You can also specify backup nicknames in case the one you want is taken when you
     /set irc.server_default.nicks "nickname,othernickname"
 
 Setting the default username:
-  
+
     /set irc.server_default.username "username"
 
 Setting the default real name:

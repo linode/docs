@@ -23,7 +23,7 @@ Before we begin installing the nginx web server, we assume that you have followe
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -141,5 +141,5 @@ You may wish to consult the following resources for additional information on th
 
 - [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)
-- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)
+- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)
+- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid)

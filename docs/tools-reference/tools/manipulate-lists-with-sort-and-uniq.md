@@ -27,7 +27,7 @@ The `sort` command accepts input from a text file or standard output and outputs
 
 `sort` also accepts input from other commands as in the following example:
 
-    grep -i "retired" ~/roster.txt | sort 
+    grep -i "retired" ~/roster.txt | sort
 
 This uses [grep](/docs/tools-reference/search-and-filter-text-with-grep) to filter the `~/roster.txt` file for the string `retired`, regardless of case. These results are sent to `sort`, which reorders this output alphabetically.
 
@@ -47,7 +47,7 @@ The `uniq` command takes input and removes repeated lines in a file or input. Be
 
 Consider the following example:
 
-    $ cat names-list.txt 
+    $ cat names-list.txt
     Richard Longly
     Joni Governor
     Michael Bitley
@@ -55,7 +55,7 @@ Consider the following example:
     Beth Thompson
     Sarah O'Malley
     beth thompson
-    Thompson Geller 
+    Thompson Geller
     Bartram Miller
     Earnest Quail
     Erin Governor
@@ -67,7 +67,7 @@ Consider the following example:
     Gil Watson
     Joni Governor
 
-    $ sort names-list.txt 
+    $ sort names-list.txt
     Aaron Smith
     Aaron Smith
     Bartram Miller
@@ -80,24 +80,24 @@ Consider the following example:
     Gil Watson
     Joni Governor
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     sarah o'malley
     Sarah O'Malley
-    Thompson Geller 
+    Thompson Geller
 
 Sort simply reorders the list alphabetically and outputs the sorted list to the standard output. Capital letters are ordered *after* lower case letters.
 
 You can reverse the order of `sort` output with the `-r` option, as follows:
 
-    $ sort -r names-list.txt 
-    Thompson Geller 
+    $ sort -r names-list.txt
+    Thompson Geller
     Sarah O'Malley
     sarah o'malley
     Richard Longly
     Michael Watts
-    Michael Bitley 
+    Michael Bitley
     Joni Governor
     Joni Governor
     Gil Watson
@@ -115,15 +115,15 @@ You can reverse the order of `sort` output with the `-r` option, as follows:
 
 `sort` can scramble the order of lines using the `-R` option. Using the same example as above, consider the following output:
 
-    $ sort -R names-list.txt                 
+    $ sort -R names-list.txt
     beth thompson
     Richard Longly
     Beth Thompson
     Michael Watts
     Erin Smith
-    Michael Bitley 
+    Michael Bitley
     Bartram Miller
-    Thompson Geller 
+    Thompson Geller
     sarah o'malley
     Sarah O'Malley
     Erin Governor
@@ -145,7 +145,7 @@ The "random" order is determined by using a cryptographic hash of the contents o
     Richard Longly
     Aaron Smith
     Aaron Smith
-    Thompson Geller 
+    Thompson Geller
     Joni Governor
     Joni Governor
     Earnest Quail
@@ -155,7 +155,7 @@ The "random" order is determined by using a cryptographic hash of the contents o
     Erin Smith
     Michael Watts
     beth thompson
-    Michael Bitley 
+    Michael Bitley
     Bartram Miller
     Gil Watson
 
@@ -172,10 +172,10 @@ The "random" order is determined by using a cryptographic hash of the contents o
     Erin Smith
     Erin Governor
     Michael Watts
-    Michael Bitley 
+    Michael Bitley
     Bartram Miller
     Beth Thompson
-    Thompson Geller 
+    Thompson Geller
     Aaron Smith
     Aaron Smith
 
@@ -183,15 +183,15 @@ The "random" order is determined by using a cryptographic hash of the contents o
 
 The `-f` option for `sort` forces sort to ignore the case of a letter when ordering lines. The sorting algorithm used by `sort` is "unstable" in the default operation because lines judged to be identical may be printed out of order with regards to their original place. The effects of this are particularly apparent in this use case:
 
-    $ cat names-list.txt 
+    $ cat names-list.txt
     Richard Longly
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Beth Thompson
     Sarah O'Malley
     beth thompson
-    Thompson Geller 
+    Thompson Geller
     Bartram Miller
     Earnest Quail
     Erin Governor
@@ -203,7 +203,7 @@ The `-f` option for `sort` forces sort to ignore the case of a letter when order
     Gil Watson
     Joni Governor
 
-    $ sort -f names-list.txt    
+    $ sort -f names-list.txt
     Aaron Smith
     Aaron Smith
     Bartram Miller
@@ -216,14 +216,14 @@ The `-f` option for `sort` forces sort to ignore the case of a letter when order
     Gil Watson
     Joni Governor
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     sarah o'malley
     Sarah O'Malley
-    Thompson Geller 
+    Thompson Geller
 
-    $ sort -fs names-list.txt 
+    $ sort -fs names-list.txt
     Aaron Smith
     Aaron Smith
     Bartram Miller
@@ -236,12 +236,12 @@ The `-f` option for `sort` forces sort to ignore the case of a letter when order
     Gil Watson
     Joni Governor
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     Sarah O'Malley
     sarah o'malley
-    Thompson Geller 
+    Thompson Geller
 
 ### Remove Duplicate Lines with uniq
 
@@ -258,16 +258,16 @@ To remove duplicate adjacent lines in a file, send the output of `sort` to the `
     erin smyth
     Gil Watson
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     sarah o'malley
     Sarah O'Malley
-    Thompson Geller 
+    Thompson Geller
 
 The `-u` option for `sort` achieves the same result:
 
-    $  sort -u names-list.txt   
+    $  sort -u names-list.txt
     Aaron Smith
     Bartram Miller
     beth thompson
@@ -278,12 +278,12 @@ The `-u` option for `sort` achieves the same result:
     erin smyth
     Gil Watson
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     sarah o'malley
     Sarah O'Malley
-    Thompson Geller 
+    Thompson Geller
 
 ### Ignore Case Differences when Removing Duplicate Lines with uniq
 
@@ -299,11 +299,11 @@ The `-u` option for `sort` achieves the same result:
     erin smyth
     Gil Watson
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     sarah o'malley
-    Thompson Geller 
+    Thompson Geller
 
     $ sort -fs names-list.txt | uniq -i
     Aaron Smith
@@ -315,11 +315,11 @@ The `-u` option for `sort` achieves the same result:
     erin smyth
     Gil Watson
     Joni Governor
-    Michael Bitley 
+    Michael Bitley
     Michael Watts
     Richard Longly
     Sarah O'Malley
-    Thompson Geller 
+    Thompson Geller
 
 ### Count the Number of Duplicate Lines with uniq
 
@@ -335,11 +335,11 @@ The `-c` option for `uniq` counts the number of occurrences of a line in a file.
           1 erin smyth
           1 Gil Watson
           2 Joni Governor
-          1 Michael Bitley 
+          1 Michael Bitley
           1 Michael Watts
           1 Richard Longly
           2 sarah o'malley
-          1 Thompson Geller 
+          1 Thompson Geller
 
 As above, you can combine the `-c` and `-i` options to ignore the case differences.
 
@@ -359,13 +359,13 @@ The `-D` option inverts the behavior of `uniq`, and prints only the duplicated l
 
 In cases like this, you may send the output of one `uniq` command through another `uniq` command. Consider the following:
 
-    $ sort names-list.txt | uniq -iD | uniq -i 
+    $ sort names-list.txt | uniq -iD | uniq -i
     Aaron Smith
     beth thompson
     Joni Governor
     sarah o'malley
 
-    $ sort names-list.txt | uniq -D | uniq -i 
+    $ sort names-list.txt | uniq -D | uniq -i
     Aaron Smith
     Joni Governor
 

@@ -54,7 +54,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 -   [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the top-notch Gmail interface and has great uptime. It's paid and the IMAP implementation is unusual. We have a [guide](/docs/email/google-mail) on how to use Google Apps with your Linode.
 -   [Office 365](https://login.microsoftonline.com/) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager#adding-1) for your mail, using the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager) for your mail, using the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -169,7 +169,7 @@ If your Linode is the only mail server you use, you should be able to use the ex
 
 #### Reverse DNS
 
-If you haven't yet [set reverse DNS](/docs/hosting-website#sph_setting-reverse-dns) for your mail server's domain or subdomain, do so now for the sake of your mail server. The reverse DNS for your mail server *must* match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner." If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#sph_setting-the-hostname) article.
+If you haven't yet [set reverse DNS](/docs/hosting-website#setting-reverse-dns) for your mail server's domain or subdomain, do so now for the sake of your mail server. The reverse DNS for your mail server *must* match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner." If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#setting-the-hostname) article.
 
 ## Next Steps
 
@@ -215,7 +215,7 @@ Here are some of the typical mail ports:
 
 {: .note }
 >
-> If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#sph_creating-a-firewall) for more information.
+> If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#creating-a-firewall) for more information.
 
 ### Webmail
 

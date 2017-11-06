@@ -52,7 +52,7 @@ When `apt` finishes, the Prosody server will have been successfully installed, a
     /etc/init.d/prosody reload
     /etc/init.d/prosody start
     /etc/init.d/prosody stop
-    /etc/init.d/prosody restart 
+    /etc/init.d/prosody restart
 
 Configure Prosody Server
 ------------------------

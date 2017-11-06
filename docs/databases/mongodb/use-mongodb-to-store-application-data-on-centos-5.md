@@ -26,7 +26,7 @@ Installing MongoDB
 Issue the following commands to make sure that your system is up to date and that all of the required software is installed:
 
     yum update
-    yum install wget 
+    yum install wget
 
 ### Install MongoDB
 
@@ -79,7 +79,7 @@ Create the `/opt/config/mongodb` and use the following example as a template:
 /opt/config/mongodb
 :   ~~~ ini
     # Configuration Options for MongoDB
-    # 
+    #
     # For More Information, Consider:
     # - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
     # - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration
@@ -109,7 +109,7 @@ We've also created a *very* basic "init script" as a wrapper around the `mongodb
 
     wget -O init-rpm.sh http://www.linode.com/docs/assets/624-mongodb-init-rpm.sh
     mv init-rpm.sh /etc/init.d/mongodb
-    chmod +x /etc/init.d/mongodb 
+    chmod +x /etc/init.d/mongodb
     chkconfig --add mongodb
     chkconfig mongodb on
 

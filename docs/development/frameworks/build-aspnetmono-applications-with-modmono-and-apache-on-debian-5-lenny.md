@@ -21,7 +21,7 @@ This guide assumes that you've followed the steps outlined in our [getting start
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -56,11 +56,11 @@ At this point we're able to install the required packages for `mod_mono`. Run th
 
 When the installation process completes start Apache with the following command:
 
-    /etc/init.d/apache2 start 
+    /etc/init.d/apache2 start
 
 ### Configure Apache
 
-We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting).
+We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny#configure-name-based-virtual-hosts).
 
 Recent versions of `mod_mono` utilize the `AutoHosting` method of application deployment. This allows non-privileged users to deploy new applications without modifying Apache configuration files. While this provides great flexibility, it may also present a security risk. As a result, `mod_mono` must be enabled on a per-virtual host basis.
 
@@ -110,8 +110,8 @@ Since we have modified the virtual host configuration, Apache must be reloaded:
 
 Note: Should you restart Apache in the future, you will see an error that will look similar to this:
 
-    [crit] (13)Permission denied: Failed to attach to existing dashboard, 
-    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed 
+    [crit] (13)Permission denied: Failed to attach to existing dashboard,
+    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed
     (Operation not permitted). Further action impossible.
 
 You can safely ignore this warning, as it won't affect deployment using the methods explained in this guide.
@@ -130,7 +130,7 @@ In order for your ASP.NET application to communicate properly with your MySQL se
     unzip -d mysqlConnector mysql-connector-net-6.2.3-noinstall.zip
     cd mysqlConnector
     gacutil -i mysql.data.dll
-    gacutil -i mysql.web.dll 
+    gacutil -i mysql.web.dll
 
 Creating a Database to Test the MySQL Connector
 -----------------------------------------------

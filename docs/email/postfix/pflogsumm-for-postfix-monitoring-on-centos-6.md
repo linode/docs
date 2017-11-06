@@ -6,7 +6,7 @@ description: 'Receive daily emails with Postfix mail server stats from Pflogsumm
 keywords: 'pflogsumm, postfix, monitoring, mail server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['email/postfix/pflogsumm-centos-6/']
-contributor: 
+contributor:
     name: Robert Accettura
 modified: Wednesday, February 5th, 2014
 modified_by:

@@ -10,7 +10,7 @@ modified: Wednesday, February 18th, 2015
 modified_by:
   name: James Stewart
 published: 'Wednesday, February 18th, 2015'
-title: Set Up MariaDB Clusters with Galera Debian and Ubuntu 
+title: Set Up MariaDB Clusters with Galera Debian and Ubuntu
 external_resources:
  - '[MariaDB Foundation: Installing MariaDB Galera Cluster on Debian/Ubuntu](https://blog.mariadb.org/installing-mariadb-galera-cluster-on-debian-ubuntu/)'
 ---
@@ -36,7 +36,7 @@ MariaDB replication with Galera adds redundancy for a site's database. With data
 		  sudo add-apt-repository 'deb http://mirror3.layerjet.com/mariadb/repo/5.5/debian wheezy main'
 
 	* Ubuntu Repository:
-	
+
 		  add-apt-repository 'deb http://mirror3.layerjet.com/mariadb/repo/5.5/ubuntu trusty main'
 
 2.  Install MariaDB, Galera, and Rsync:

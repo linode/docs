@@ -19,7 +19,7 @@ Postfix is a popular mail transfer agent or "MTA". This document will allow you 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -96,11 +96,11 @@ Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
     smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
     smtpd_tls_key_file=/etc/ssl/private/postfix.key
 
-    smtp_use_tls = yes                                                                                               
-    smtpd_use_tls = yes                                                                                              
-    smtp_tls_note_starttls_offer = yes                                                                               
-    smtpd_tls_loglevel = 1                                                                                           
-    smtpd_tls_received_header = yes                                                                                  
+    smtp_use_tls = yes
+    smtpd_use_tls = yes
+    smtp_tls_note_starttls_offer = yes
+    smtpd_tls_loglevel = 1
+    smtpd_tls_received_header = yes
 
     smtpd_sasl_type = dovecot
     smtpd_sasl_path = private/auth
@@ -168,7 +168,7 @@ Edit the `/etc/alias` file to add the following line. This will to reroute all l
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 
-    postalias /etc/alias 
+    postalias /etc/alias
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 

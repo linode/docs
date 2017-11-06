@@ -16,7 +16,7 @@ external_resources:
 
 ## What is High Availability?
 
-High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable. 
+High availability (HA) is a term that describes a website or application with maximum potential uptime and accessibility for the content stored on it. While a more basic system will be adequate to serve content to a low or medium number of users, it may include a single point of failure. This means that if one server goes down, whether due to traffic overload or any number of other issues, the entire site or application could become unavailable.
 
 Systems with high availability avoid this problem by eliminating single points of failure, which prevents the site or application from going down when one component fails.
 
@@ -64,7 +64,7 @@ The concepts discussed here are specifically geared toward the configuration des
 
 In order to store uploads and plugins, your site will need a networked file system. Our high availability guide uses [GlusterFS](https://www.gluster.org/).
 
-In a high availability setup, a *distributed replicated volume* is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of *bricks*, which are the shared file directories on any one server. 
+In a high availability setup, a *distributed replicated volume* is used to store files. You can think of the volume as the entire shared file system across all servers. The volume is made up of *bricks*, which are the shared file directories on any one server.
 
 In our configuration, a cluster of three GlusterFS nodes are configured to replicate data across a given volume, which is then mounted onto each Apache application server. Because the volume is replicated across three nodes, it is redundant. One of the advantages of using GlusterFS for the file system cluster is that it handles monitoring and failover by default, making it an excellent choice when building a highly available system.
 
@@ -78,7 +78,7 @@ Our configuration also uses [XtraBackup](https://www.percona.com/software/mysql-
 
 ### Web Server
 
-Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like nginx and lighttpd will fill this role as well. 
+Web servers monitor for requests for web content, and serve them accordingly. Our guide uses [Apache HTTPD](https://www.apache.org/), but other web servers like nginx and lighttpd will fill this role as well.
 
 In most setups, the web server will read from a database to generate its content and write to a database if a form is filled out. On a dynamic website or application, the database is crucial to fulfilling web requests. The web server also stores software, such as Wordpress, and plugins within the file system.
 
@@ -90,7 +90,7 @@ Apache's communication with the database nodes works in a similar way. Because t
 
 *Failover* is the process by which one node takes over the job of another in the event that one becomes disabled. This comes as a result of monitoring for failures by the system.
 
-While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *floating IP address*. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails. 
+While GlusterFS handles monitoring and failover itself, a separate service is needed for the database cluster. For this, we use [Keepalived](http://www.keepalived.org/) with a *floating IP address*. The floating (or virtual) IP address is simply a private IP address that can be reassigned between nodes as needed when one fails.
 
 Keepalived uses *virtual router redundancy protocol*, or VRRP, to automatically assign the floating IP address to any of the database nodes. The keepalived service uses user-defined rules to monitor for a certain number of failures by a database node. When that failure threshold is met, keepalived assigns the floating IP address to a different node so that there is no interruption to the fulfillment of requests while the first node waits to be fixed.
 

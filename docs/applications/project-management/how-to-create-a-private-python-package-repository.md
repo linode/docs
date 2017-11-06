@@ -20,11 +20,11 @@ external_resources:
 
 # How does Python Handle Package Management?
 
-Package management in Python is available through a variety of different tools. 
+Package management in Python is available through a variety of different tools.
 
-`Pip` remains one of the most popular tool choices because it manages full lists of packages and corresponding version numbers, which fosters precise duplication of entire package groups in a distinct, separate environment. `Pip` virtually eliminates manual installs and updates of software packages to operating systems. 
+`Pip` remains one of the most popular tool choices because it manages full lists of packages and corresponding version numbers, which fosters precise duplication of entire package groups in a distinct, separate environment. `Pip` virtually eliminates manual installs and updates of software packages to operating systems.
 
-PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode. 
+PyPI (Python Package Index) is a public repository of user-submitted packages that can be installed using `pip install package`. This guide breaks down the basic scaffolding of a Python package, then using PyPiServer, creates a private repository by uploading the package to a Linode.
 
 ## Before You Begin
 
@@ -44,8 +44,8 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
     {: .note}
      >
-     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed. 
-   
+     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.
+
 2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example**, containing `__init__.py`. The directory tree should look like this:
 
     {:.output}

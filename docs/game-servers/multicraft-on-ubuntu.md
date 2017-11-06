@@ -152,4 +152,4 @@ Multicraft for Linux depends on several software packages in order to run.
         eula=true
         ~~~
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server). 
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connect-to-your-minecraft-server).

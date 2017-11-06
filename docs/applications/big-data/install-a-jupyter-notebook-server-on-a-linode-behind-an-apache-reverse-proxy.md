@@ -1,6 +1,6 @@
 ---
 author:
-    name: Sam Foo 
+    name: Sam Foo
     email: docs@linode.com
 description: 'This guide shows you how to install and access a Jupyter notebook on a Linode remotely and securely through an Apache reverse proxy.'
 keywords: 'Apache2,Jupyter notebook,SSL,websocket'
@@ -16,7 +16,7 @@ external_resources:
  - '[Certbot](https://certbot.eff.org/)'
 ---
 
-Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy. 
+Jupyter Notebook is an interactive, enhanced shell that can be run within a web browser. Notebook is popular among data scientists, and supports inline rendering of figures, exporting to a variety of formats, and LaTeX for mathematical notation. This guide aims to configure on a Linode a public Jupyter Notebook server that will facilitate remote access to your computation needs using Apache as a reverse proxy.
 
 ## Before You Begin
 
@@ -49,7 +49,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
 1.  Create a self-signed certificate valid for 365 days:
 
-        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem 
+        openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mykey.key -out mycert.pem
 
     This command will create a `mykey.key` and `mycert.pem`.
 
@@ -162,7 +162,7 @@ The official documentation recommends generating a self-signed SSL certificate t
 
         jupyter notebook
 
-## Run Jupyter Notebook 
+## Run Jupyter Notebook
 
 1.  On your local machine, navigate to `https://your-domain-name/` where `your-domain-name` is the IP address of your Linode or your selected domain name. If using a self-signed certificate, your browser might require that you confirm a security exception:
 
