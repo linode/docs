@@ -25,7 +25,7 @@ external_resources:
 
 Spark is a general purpose cluster computing system. It can deploy and run parallel applications on clusters ranging from a single node to thousands of distributed nodes. Spark was originally designed to run Scala applications, but also supports Java, Python and R.
 
-![Install, Configure and Run Spark on top of a YARN cluster](/docs/assets/spark/spark-logo.png "Install, Configure and Run Spark on top of a YARN cluster")
+![Install, Configure and Run Spark on top of a YARN cluster](/docs/assets/spark_hadoop_yarn.jpg "Install, Configure and Run Spark on top of a YARN cluster")
 
 Spark can run as a standalone cluster manager, or by taking advantage of dedicated cluster management frameworks like [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) or [Apache Mesos](http://mesos.apache.org/).
 
