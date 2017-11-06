@@ -2,14 +2,14 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Using Linode terraform provider.'
+description: 'Use Terraform to deploy Linodes containing pre-configured application environmets built using Docker or Packer, for example, or from manual configuration.'
 keywords: 'Linode,terraform,plugin,infrastructure'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, October 23rd, 2017'
-modified: 'Thursday, October 26th, 2017'
+published: 'Monday, November 6th, 2017'
+modified: 'Monday, November 6th, 2017'
 modified_by:
   name: Linode
-title: 'Build Infrastructure Using Terraform'
+title: 'Using Terraform to Provision Linode Environments'
 contributor:
   name: Damaso Sanoja
 external_resources:
@@ -20,9 +20,7 @@ external_resources:
 
 ---
 
-# Terraform Overview
-
-Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computer data centers with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
+Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computing environments with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
 
 Terraform stands out from other IaC solutions because it's an orchestration tool, which means *it's designed specifically for bare-metal server and virtual machines*. The configuration of the servers can be achieved using Terraform, but implementing specialized software for tasks like Puppet, Chef, or Ansible are easily done through a provisioner architecture.
 This guide will showcase Terraform, and its benefits when used in conjuction with Linode's cloud technology.
@@ -49,22 +47,22 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 >
 >In the particular case of Linode there is no official Terraform plugin yet.
 
-## Install Go Version
+## Install Golang
 
-1. Install Git if it's not already on your system:
+1.  Install Git if it's not already on your system:
 
        apt install git
 
-2. Download and extract `golang` to the appropriate location. Terraform requires Version 1.9:
+2.  Download and extract `golang` to the appropriate location. Terraform requires Version 1.9:
 
        wget -c https://storage.googleapis.com/golang/go1.9.linux-amd64.tar.gz
        sudo tar -C /usr/local -xvzf go1.9.linux-amd64.tar.gz
 
-3. The language workspace (projects) demands that executables and source code have their own directories:
+3.  The language workspace (projects) demands that executables and source code have their own directories:
 
        mkdir -p ~/go_projects/{bin,src,pkg}
 
-4. Next step is to add `Go` to the `PATH`. For convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages. 
+4.  Next step is to add `Go` to the `PATH`. For convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages. 
 
     {: .file-excerpt}
     ~/.profile
@@ -75,7 +73,7 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
         export GOBIN="$GOPATH/bin"
         ~~~
 
-5. Reload your profile into memory:
+5.  Reload your profile into memory:
 
        source ~/.profile
 
@@ -87,25 +85,25 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 <!---
 ## Building the Linode plugin
 
-1. Download Terraform repository, `Go` will save it in the appropriate location:
+1.  Download Terraform repository, `Go` will save it in the appropriate location:
 
         go get github.com/hashicorp/terraform
 
-2. Download the custom `terraform-provider-linode` repository, once again `Go` will save it in the workspace location:
+2.  Download the custom `terraform-provider-linode` repository, once again `Go` will save it in the workspace location:
 
         go get github.com/LinodeContent/terraform-provider-linode
 
-3. By default source code is stored in `src` directory, go to the plugin `bin` location and build the package. Dependencies will be handled automatically by `godeps` that's already in the plugin folder.
+3.  By default source code is stored in `src` directory, go to the plugin `bin` location and build the package. Dependencies will be handled automatically by `godeps` that's already in the plugin folder.
 
         cd ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode
 
         go build -o terraform-provider-linode
 
-4. Move the newly created executable to `~/go_projects/bin`:
+4.  Move the newly created executable to `~/go_projects/bin`:
 
         mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/bin/terraform-provider-linode/terraform-provider-linode ~/go_projects/bin
 
-5. And now, move the `linode-template.tf` file to the same path:
+5.  And now, move the `linode-template.tf` file to the same path:
 
         mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/linode-template.tf ~/go_projects/bin
 
@@ -120,11 +118,11 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 
         go get github.com/hashicorp/terraform
 
-2. Get the Linode plugin for Terraform:
+2.  Get the Linode plugin for Terraform:
 
       wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/terraform-linode-plugin/terraform-provider-linode 
 
-3. Move the plugin to `~go_projects/bin`:
+3.  Move the plugin to `~go_projects/bin`:
 
        mv terraform-provider-linode ~/go_projects/bin/
        chmod 750 ~/go_projects/bin/terraform-provider-linode
@@ -133,7 +131,7 @@ Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "C
 
 Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide will use the HCL format, designated by the extension `.tf`.
 
-1. Open `linode-template.tf` in a text editor and add the following content. Fill in your Linode API key, public SSH key, and desired root password where indicated:
+1.  Open `linode-template.tf` in a text editor and add the following content. Fill in your Linode API key, public SSH key, and desired root password where indicated:
 
     {: .file}
     ~/go_projects/bin/linode-template.tf
@@ -161,7 +159,7 @@ Terraform can understand two types of configuration files: JSON and HashiCorp Co
       >
       >For more specific information about Terraform [configuration syntax](https://www.terraform.io/docs/configuration/syntax.html) please read the documentation.
 
-2. Navigate to `~/go_projects/bin` and initialize the Terraform configuration:
+2.  Navigate to `~/go_projects/bin` and initialize the Terraform configuration:
 
        cd ~/go_projects/bin
        terraform init
@@ -182,7 +180,7 @@ This section will present three Terraform examples, ranging from a single Linode
 
 ### Single Server Basic Linode
 
-1. Check your Terraform plan:
+1.  Check your Terraform plan:
 
        terraform plan
 
@@ -194,13 +192,13 @@ This section will present three Terraform examples, ranging from a single Linode
 
     The command above won't take any action or make any changes on your Linode account, yet. Terraform uses a declarative approach, that means that your configuration file specifies the desired end-state of the infrastructure. When you run `terraform plan`, an analysis is done to know which actions are required to achieve this state.
 
-2. If there are no errors you can create your infrastructure with the command:
+2.  If there are no errors you can create your infrastructure with the command:
 
        terraform apply
 
     ![Terraform Plan](/docs/assets/terraform/terraform-apply-01.jpg)
 
-3. Open the Linode Manager. You should see a new Linode, `linode-test`, that has been added to your account.
+3.  Open the Linode Manager. You should see a new Linode, `linode-test`, that has been added to your account.
 
 The most simple Terraform work flow is: *initialize* your configuration, *plan* to check for errors and *apply* the changes.
 
@@ -208,7 +206,7 @@ The most simple Terraform work flow is: *initialize* your configuration, *plan* 
 
 Now that you have a `linode-example` running, imagine you need to implement a typical "Web server / Database Server" deployment. If you want to add another Linode, the procedure to add another server is very straightforward:
 
-1. From the `linode-template.tf` create another file called `linode-www.tf` (don't delete `linode-template.tf`):
+1.  From the `linode-template.tf` create another file called `linode-www.tf` (don't delete `linode-template.tf`):
 
     {:.file}
     ~/go_projects/bin/linode-www.tf
@@ -237,25 +235,25 @@ Now that you have a `linode-example` running, imagine you need to implement a ty
     >
     > * A new parameter `swap_size` is used to override the default value of 512Mb. You can check all available options for `terraform-provider-linode` in the plugin GitHub repository [readme.md](https://github.com/LinodeContent/terraform-provider-linode).
     
-2. Check your plan for errors:
+2.  Check your plan for errors:
 
        terraform plan
 
       ![Terraform Plan](/docs/assets/terraform/terraform-plan-02.jpg)
 
-3. The final step is to apply all changes:
+3.  The final step is to apply all changes:
 
        terraform apply
 
       ![Terraform Plan](/docs/assets/terraform/terraform-apply-02.jpg)
 
-4. Check the Linode Manager to ensure that another Linode, `www`, has been added to the `web` display group on your account.
+4.  Check the Linode Manager to ensure that another Linode, `www`, has been added to the `web` display group on your account.
 
 ## Adjust Architecture
 
 To expand this example a bit further just imagine you want to change the first server name and tag to something more relevant and also you want to increase the size to match the newly created Linode.
 
-1. Modify the `linode-template.tf`
+1.  Modify the `linode-template.tf`
 
     {: .file}
     ~/go_projects/bin/linode-template.tf
@@ -277,13 +275,13 @@ To expand this example a bit further just imagine you want to change the first s
         }
         ~~~
 
-2. Check your plan:
+2.  Check your plan:
 
        terraform plan
 
      ![Terraform Plan](/docs/assets/terraform/terraform-plan-03.jpg)
 
-3. Apply your changes:
+3.  Apply your changes:
 
        terraform apply
 
@@ -293,7 +291,7 @@ To expand this example a bit further just imagine you want to change the first s
     >
     >Changing the size of your Linode will force your server to be powered off and migrated to a different host in the same data center. The associated disk migration will take approximately 1 minute for every 3-5 gigabytes of data. For more information about resizing read [this article.](https://www.linode.com/docs/platform/disk-images/resizing-a-linode)
 
-4. Open the Linode Manager to verify the changes.
+4.  Open the Linode Manager to verify the changes.
 
 
 ## Advanced Configuration Example
@@ -306,19 +304,19 @@ Up to this point, the procedure for adding a new node to your infrastructure was
 
      ![Plan for destroy Linodes](/docs/assets/terraform/terraform-destroy-01.jpg)
 
-2. Similar to `terraform plan` the above command checks your infrastructure before doing any change. To perform the deletion run the command:
+2.  Similar to `terraform plan` the above command checks your infrastructure before doing any change. To perform the deletion run the command:
 
        terraform destroy
 
     ![Destroy Linodes](/docs/assets/terraform/terraform-destroy-02.jpg)
 
-3. Use the Linode Manager to verify the deletion.
+3.  Use the Linode Manager to verify the deletion.
 
-4. Delete (or move to a different location) all Terraform files.
+4.  Delete (or move to a different location) all Terraform files.
 
        rm *.tf*
 
-5. Create a new file to define variables, you can use any name, for this example we'll use `variables.tf`:
+5.  Create a new file to define variables, you can use any name, for this example we'll use `variables.tf`:
 
     {: .file}
     ~/go_projects/bin/variables.tf
@@ -331,7 +329,7 @@ Up to this point, the procedure for adding a new node to your infrastructure was
         }
         ~~~
 
-6. Create a file named `terraform.tfvars` to store your variables values *you can't change this name*:
+6.  Create a file named `terraform.tfvars` to store your variables values *you can't change this name*:
 
     {:.file}
     ~/go_projects/bin/terraform.tfvars
@@ -341,7 +339,7 @@ Up to this point, the procedure for adding a new node to your infrastructure was
       root_password ="your-root-password-here"
       ~~~
 
-7. Create a new configuration file called `linode-mod-template.tf`
+7.  Create a new configuration file called `linode-mod-template.tf`
 
     {: .file}
     ~/go_projects/bin/linode-mod-template.tf
@@ -381,13 +379,13 @@ Up to this point, the procedure for adding a new node to your infrastructure was
         }
         ~~~
 
-8. Check your new deployment for errors:
+8.  Check your new deployment for errors:
 
        terraform plan
 
     ![Terraform Plan](/docs/assets/terraform/terraform-plan-04.jpg)
 
-9. Apply all changes:
+9.  Apply all changes:
 
        terraform apply
 
