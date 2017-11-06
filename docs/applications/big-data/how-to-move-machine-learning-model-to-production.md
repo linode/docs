@@ -138,9 +138,7 @@ model.save('my_model.h5')
     There may be a warning message as shown below from a pip or conda installation which means installing from source could offer superior performance.
 
     {{< output >}}
-~~~
-    The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
-    ~~~
+The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
 {{< /output >}}
 
     If the script executes successfully, you should see the `my_model.h5` file in the `models` directory. The `model.save()` command in Keras allows you to save both the model architecture and the trained weights.
@@ -217,10 +215,8 @@ Apache modules are typically installed with the system installation of Apache. H
     The output should be similar to:
 
     {{< output >}}
-~~~
-    LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
-    WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
-    ~~~
+LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
+WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
 {{< /output >}}
 
 4.  Create a `wsgi.load` file in the Apache `mods-available` directory. Copy the `LoadModule` directive from above and paste it into the file:
@@ -292,9 +288,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
     If successful, you will receive a JSON response that correctly identifies the digit in the image:
 
     {{< output >}}
-~~~ txt
-    { 'digit' : 7 }
-    ~~~
+{ 'digit' : 7 }
 {{< /output >}}
 
     The first request may appear to take some time because `mod_wsgi` uses lazy loading of the Flask application.

@@ -218,12 +218,11 @@ server {
 
 {{< /file-excerpt >}}
 
-
 **Important security note:** If you're planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires nginx and the php-fcgi workers to reside on the same server.
 
-~~~ nginx
+{{< file-excerpt "/etc/sudoers" nginx >}}
 location ~ \.php$ {
     try_files $uri =404;
     include /etc/nginx/fastcgi_params;
@@ -231,11 +230,11 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
 
-~~~ nginx
+{{< file-excerpt "/etc/sudoers" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
@@ -244,7 +243,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 When you've completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 

@@ -115,7 +115,7 @@ To confirm that your Box drive is mounted:
 
 The output should look similar to this:
 
-~~~
+    {{< output >}}
 Filesystem              1K-blocks   Used Available Use% Mounted on
 /dev/root                 4122048 886316   3009636  23% /
 devtmpfs                   505636      0    505636   0% /dev
@@ -125,7 +125,7 @@ tmpfs                      507504      0    507504   0% /sys/fs/cgroup
 tmpfs                      507504      0    507504   0% /tmp
 tmpfs                      101504      0    101504   0% /run/user/1000
 https://dav.box.com/dav  10485756     72  10485684   1% /home/example_user/box
-~~~
+{{< /output >}}
 
 To see the mount options with which your Box drive is mounted:
 

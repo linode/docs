@@ -46,11 +46,9 @@ This guide will walk through the steps necessary to install and configure Tiny T
 
 2.  From the MariaDB shell, issue the following commands to create a new database and user for Tiny Tiny RSS. Replace **MyPassword** with a strong password:
 
-    ~~~
-    create database ttrss;
-    grant all on ttrss.* to 'ttrss' identified by 'MyPassword';
-    exit
-    ~~~
+        create database ttrss;
+        grant all on ttrss.* to 'ttrss' identified by 'MyPassword';
+        exit
 
 ## Preparing Apache
 

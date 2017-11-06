@@ -152,9 +152,9 @@ For example, if we downloaded a root cert for Verisign, we would save it to `/et
 
 Next, we'll add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
-~~~ apache
+    {{< file-excerpt "/etc/apache2/ports.conf" apache>}}
 NameVirtualHost 12.34.56.78:443
-~~~
+{{< /file-excerpt >}}
 
 Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in our example). Add the following stanza; note that we've essentially reproduced the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 

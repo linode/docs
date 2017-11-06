@@ -57,12 +57,10 @@ The steps in this guide require root privileges. Be sure to run the steps below 
     You should see output similar to the following:
 
     {{< output >}}
-~~~
-    pub   4096R/0EBFCD88 2017-02-22
-          Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
-    uid                  Docker Release (CE deb) <docker@docker.com>
-    sub   4096R/F273FCD8 2017-02-22
-    ~~~
+pub   4096R/0EBFCD88 2017-02-22
+      Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+uid                  Docker Release (CE deb) <docker@docker.com>
+sub   4096R/F273FCD8 2017-02-22
 {{< /output >}}
 
 5.  Add the `stable` Docker repository:

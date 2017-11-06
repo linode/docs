@@ -44,15 +44,15 @@ Here we will add the Docker-maintained repository for Ubuntu and install the sof
 
     The output should resemble:
 
-    ~~~
-    # docker run -i -t ubuntu /bin/bash
-    Unable to find image 'ubuntu' (tag: latest) locally
-    Pulling repository ubuntu
-    8dbd9e392a96: Download complete
-    b750fe79269d: Download complete
-    27cf78414709: Download complete
-    root@145dfc4f6dff:/#
-    ~~~
+    {{< output >}}
+# docker run -i -t ubuntu /bin/bash
+Unable to find image 'ubuntu' (tag: latest) locally
+Pulling repository ubuntu
+8dbd9e392a96: Download complete
+b750fe79269d: Download complete
+27cf78414709: Download complete
+root@145dfc4f6dff:/#
+{{< /output >}}
 
 5.  To exit the container, type `exit`.
 

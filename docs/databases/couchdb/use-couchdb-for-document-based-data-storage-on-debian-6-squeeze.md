@@ -47,9 +47,7 @@ Once the SSH tunnel is in place or you have configured your Linode, you can acce
 
 In response, CouchDB will return the following:
 
-~~~ js
-{"couchdb":"Welcome","version":"0.11.0"}
-~~~
+    {"couchdb":"Welcome","version":"0.11.0"}
 
 With the SSH tunnel active, you can access the Futon interface by visiting the URL `http://localhost:5984/_utils/` in a web browser on your local system.
 
@@ -66,6 +64,3 @@ You may wish to consult the following resources for additional information on th
 
 - [CouchDB Project](http://couchdb.apache.org/)
 - [CouchDB Community Wiki](http://wiki.apache.org/couchdb/)
-
-
-

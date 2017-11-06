@@ -337,15 +337,11 @@ COMMIT
 
 **Optional:** If you plan to use [Linode Longview](/content/platform/longview/longview) or [Linode's NodeBalancers](/content/platform/nodebalancer/getting-started-with-nodebalancers), add the respective rule after the section for allowing HTTP and HTTPS connections:
 
-~~~
-# Allow incoming Longview connections from longview.linode.com
--A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
-~~~
+    # Allow incoming Longview connections from longview.linode.com
+    -A INPUT -s 96.126.119.66 -m state --state NEW -j ACCEPT
 
-~~~
-# Allow incoming NodeBalancer connections
--A INPUT -s 192.168.255.0/24 -m state --state NEW -j ACCEPT
-~~~
+    # Allow incoming NodeBalancer connections
+    -A INPUT -s 192.168.255.0/24 -m state --state NEW -j ACCEPT
 
 **IPv6**
 
@@ -490,7 +486,7 @@ Check your Linode's firewall rules with the `v` option for a verbose output:
 
 The output for IPv4 rules should show:
 
-~~~
+    {{< output >}}
 Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
     0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
@@ -512,11 +508,11 @@ Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
 
 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
-~~~
+{{< /output >}}
 
 Output for IPv6 rules will look like this:
 
-~~~
+{{< output >}}
 Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
     0     0 ACCEPT     all      lo     any     anywhere             anywhere
@@ -535,7 +531,7 @@ Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
 
 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination
-~~~
+{{< /output >}}
 
 Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages that require network access.
 

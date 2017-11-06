@@ -49,14 +49,12 @@ If you choose to make your package public, there are additional considerations f
 2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example**, containing `__init__.py`. The directory tree should look like this:
 
     {{< output >}}
-~~~
+linode_example/
     linode_example/
-        linode_example/
-            __init__.py
-        setup.py
-        setup.cfg
-        README.md
-    ~~~
+        __init__.py
+    setup.py
+    setup.cfg
+    README.md
 {{< /output >}}
 
 3.  Edit `setup.py` to contain basic information about your Python package:
@@ -233,11 +231,9 @@ The terminal output or showing all packages with `pip list` will show that the u
 3.  Open up a Python shell and try out the new package:
 
     {{< output >}}
-~~~
 >>from linode_example import hello_world
 >>hello_world()
     hello world
-    ~~~
 {{< /output >}}
 
 # Upload Remotely Using Setuptools

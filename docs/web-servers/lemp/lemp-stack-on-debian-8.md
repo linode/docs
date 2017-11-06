@@ -113,7 +113,7 @@ For more information regarding Nginx configuration options, check out our [Overv
 
 3.  In your server block file, add a `location` directive to pass PHP files through to FastCGI:
 
-    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+    {{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     fastcgi_pass  127.0.0.1:9000;
@@ -121,15 +121,14 @@ location ~ \.php$ {
     fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
 }
 
-{{< /file >}}
-
+{{< /file-excerpt >}}
 
     {{< caution >}}
 If you are planning to run applications that support file uploads (images, for example), the configuration above may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires Nginx and the php-fcgi workers to reside on the same server.
 
-~~~ nginx
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ \.php$ {
 try_files $uri =404;
 include /etc/nginx/fastcgi_params;
@@ -137,11 +136,11 @@ fastcgi_pass 127.0.0.1:9000;
 fastcgi_index index.php;
 fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an `/images` directory.
 
-~~~ nginx
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ \.php$ {
 include /etc/nginx/fastcgi_params;
 if ($uri !~ "^/images/") {
@@ -150,7 +149,8 @@ fastcgi_pass 127.0.0.1:9000;
 fastcgi_index index.php;
 fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
+
 {{< /caution >}}
 
 4.  When you have completed the modifications to the configuration, make sure that the sever block is enabled and restart Nginx:

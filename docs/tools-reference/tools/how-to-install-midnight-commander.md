@@ -128,16 +128,14 @@ First, install the utility:
 7.  Pressing **F4** will open a file in the default editor. On Debian you will get this output if you never used an editor before:
 
     {{< output >}}
-~~~
-    Select an editor.  To change later, run 'select-editor'.
-    1. /bin/nano        <---- easiest
-    2. /usr/bin/mcedit
-    3. /usr/bin/vim.basic
-    4. /usr/bin/vim.tiny
-{{< /output >}}
+Select an editor.  To change later, run 'select-editor'.
+1. /bin/nano        <---- easiest
+2. /usr/bin/mcedit
+3. /usr/bin/vim.basic
+4. /usr/bin/vim.tiny
 
-    Choose 1-4 [1]:
-    ~~~
+Choose 1-4 [1]:
+{{< /output >}}
 
     It's recommended you choose **2** here since `mcedit` integrates with Midnight Commander and is easier to use than `nano`. A large amount of functions can be accessed by pressing **F9** to activate the editor's menu. Press **F10** to exit the utility or **ESC** two times.
 

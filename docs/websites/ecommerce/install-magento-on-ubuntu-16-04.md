@@ -135,15 +135,9 @@ The value for `date.timezone` will vary based on your system's time zone. Refer 
 
 2.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
-{{< file >}}
-/var/www/html/example.com/public_html/phpinfo.php
-:
+    {{< file "/var/www/html/example.com/public_html/phpinfo.php" php >}}
+<?php phpinfo(); ?>
 {{< /file >}}
-
-{{< /file-excerpt >}}
- php
-        <?php phpinfo(); ?>
-        ~~~
 
     Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
 

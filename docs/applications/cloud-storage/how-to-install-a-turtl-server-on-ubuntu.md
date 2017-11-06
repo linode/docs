@@ -132,10 +132,8 @@ QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for t
 
 The successful execution of the above steps will open the CCL environment with the following output:
 
-{{< output >}}
-~~~
-     ==== quicklisp quickstart 2015-01-28 loaded ====
-{{< /output >}}
+    {{< output >}}
+==== quicklisp quickstart 2015-01-28 loaded ====
 
 To continue with installation, evaluate: (quicklisp-quickstart:install)
 
@@ -146,9 +144,9 @@ Welcome to Clozure Common Lisp Version 1.11-r16635  (LinuxX8664)!
 CCL is developed and maintained by Clozure Associates. For more information
 about CCL visit http://ccl.clozure.com.  To enquire about Clozure's Common Lisp
 consulting services e-mail info@clozure.com or visit http://www.clozure.com.
-~~~
+{{< /output >}}
 
-Once you are in the CCL enviroment, install QuickLisp using:
+Once you are in the CCL environment, install QuickLisp using:
 
     (quicklisp-quickstart:install)
 
