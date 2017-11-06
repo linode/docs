@@ -6,6 +6,7 @@ contributor:
   name: Sunday Ogwu-Chinuwa
   link: https://github.com/finid
 description: 'Install and configure OSSEC HIDS on Debian 7'
+alias: ['security/ossec-ids-debian-7']
 keywords: 'IDS, Intrusion Detection System'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, February 5th, 2015
