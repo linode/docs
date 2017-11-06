@@ -20,6 +20,7 @@ featured:
  - support.md
  - network-helper.md
  - linode-cli.md
+ - how-to-build-your-infrastructure-using-Terraform-and-Linode.md
 categories:
  - migrate-to-linode
  - longview
