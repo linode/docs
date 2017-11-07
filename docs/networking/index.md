@@ -14,7 +14,7 @@ featured:
  - linux-static-ip-configuration.md
  - remote-access.md
  - set-up-an-ipv6-tunnel-on-your-linode.md
- - how-to-mount-nfs-shares-on-debian-8.md
+ - how-to-mount-nfs-shares-on-debian-9.md
  - create-a-socks5-proxy-server-with-shadowsocks-on-ubuntu-and-centos7.md
 categories:
  - diagnostics
