@@ -17,7 +17,7 @@ external_resources:
 
 ## Contribute to Linode
 
-This guide describes how to write and submit a guide for the Linode docs. If you have not already been accepted to submit a guide on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
 
 
 ## Clone the Docs Repo
@@ -57,15 +57,15 @@ The Linode documentation site is built using [Hugo](http://gohugo.io), a static 
 We recommend using Hugo version >=0.30. Earlier versions will not render our documentation correctly.
 {{< /caution >}}
 
-## Generate a New Guide
+## Create a New Guide
 
-You can use a Hugo [archetype](https://gohugo.io/content-management/archetypes/) to simplify the process of creating a new guide. This section will guide you through the process of creating a new guide for installing Nginx on Debian.
+This section will take you through the process of creating a new guide using the topic of installing nginx on Debian as an example. You can use a Hugo [archetype](https://gohugo.io/content-management/archetypes/) to simplify the process
 
 1. Create a new branch for your guide:
 
         git checkout -b nginx-on-debian
 
-2. From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example Nginx guide should be located in `web-servers/nginx`:
+2. From the root of the `docs` repo, run the following command. Specify the location and title of your guide; the example nginx guide should be located in `web-servers/nginx`:
 
         hugo new web-servers/nginx/how-to-install-nginx-on-debian.md --kind content
 
@@ -73,14 +73,14 @@ You can use a Hugo [archetype](https://gohugo.io/content-management/archetypes/)
 
         hugo server
 
-4. In a web browser, navigate to the location of your new guide. The example Nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
+4. In a web browser, navigate to the location of your new guide. The example nginx guide will be located at `http://localhost:1313/docs/web-servers/nginx/how-to-install-nginx-on-debian`.
 
 ## Write and Submit
 
-The Hugo development server has hot reloading enabled, so you will be able to view changes to your guide as you write them. Please see our [Linode Writer's Formatting guide](/docs/linode-writers-formatting-guide/) and our [Linode Style guide](/docs/doesnt/exist/yet) for more information.
+Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you write them. Please see our [Linode Writer's Formatting guide](/docs/linode-writers-formatting-guide/) and our [Linode Style guide](/docs/doesnt/exist/yet) for more information.
 
 {{< note >}}
-If your guide requires any images, these will go in the `content/assets` folder. Please create a new directory for your guide and place all of the images there.
+If your guide requires any images, these will go in the `content/assets` folder. Create a new directory for your guide and place all of the images there.
 {{< /note >}}
 
 <!--
@@ -100,7 +100,5 @@ If your guide requires any images, these will go in the `content/assets` folder.
         git push origin nginx-on-debian
 
 4.  Go to `https://github.com/linode/docs` and open a pull request.
-
-
 
 Your guide is now submitted. Thank you for contributing to Linode! Our content team will review your guide and contact you if any changes are needed. If you have any questions, please feel free to email us at [docs@linode.com](mailto:docs@linode.com).
