@@ -8,7 +8,7 @@ Start the Hugo development server. Runs on `localhost:1313/docs/` by default:
 
     `hugo server`
 
-Run the test environment. Python 3 is required.
+Run the test environment from the root directory. Python 3 is required.
 
     `python -m pytest`
 
