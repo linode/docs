@@ -2,7 +2,6 @@
 author:
   name: Kiran Singh
 description: 'This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.'
-og_description: 'A Kubernetes cluster can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.
 keywords: 'kubernetes,docker,container,deployment,devops'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Tuesday, November 7, 2017
@@ -13,6 +12,7 @@ title: 'How to Install, Configure, and Deploy to Kubernetes on Linode with CentO
 contributor:
   name: Kiran Singh
   link: https://github.com/snarik
+og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.'
 external_resources:
 - '[Kubernetes](https://kubernetes.io/)'
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
