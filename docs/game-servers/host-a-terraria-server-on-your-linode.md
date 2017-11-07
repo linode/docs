@@ -279,7 +279,7 @@ To check if the server is running, use the command:
 
 The output should be similar to:
 
-~~~
+    {{< output >}}
 ● terraria.service
    Loaded: loaded (/etc/systemd/system/terraria.service; disabled)
    Active: active (running) since Tue 2017-03-07 17:37:03 UTC; 7s ago
@@ -288,7 +288,7 @@ The output should be similar to:
    CGroup: /system.slice/terraria.service
            ├─31144 /usr/bin/SCREEN -dmS terraria /bin/bash -c /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
            └─31145 /opt/terraria/TerrariaServer.bin.x86_64 -config /opt/terraria/serverconfig.txt
-~~~
+{{< /output >}}
 
 ### Stop the Server
 

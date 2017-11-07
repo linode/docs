@@ -45,9 +45,7 @@ The first step is to launch the SOCKS server and establish a connection to your 
 
 1.  From a command line run:
 
-    ~~~
-    ssh -D 12345 user@host.domain
-    ~~~
+        ssh -D 12345 user@host.domain
 
     {{< note >}}
 **-D 12345** tells SSH to run the SOCKS server on port 12345.

@@ -100,9 +100,7 @@ You will also want to change the indomU line to resemble the following:
 
 You will now need to update grub again in order to apply the changes. Issue the following command:
 
-~~~
-update-grub
-~~~
+    update-grub
 
 ### Edit Configuration Profile
 

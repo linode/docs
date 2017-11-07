@@ -34,7 +34,7 @@ Now see [Securing Your Server](/content/security/securing-your-server/) again an
 
 **IPv4**
 
-~~~
+    {{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -66,15 +66,15 @@ Now see [Securing Your Server](/content/security/securing-your-server/) again an
 -A FORWARD -j REJECT
 
 COMMIT
-~~~
+{{< /file-excerpt >}}
 
 **IPv6**
 
-By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus including players whose ISPs or hardware don't support IPv6.
+By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availability, thus including players whose ISPs or hardware don't support IPv6.
 
 If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-~~~
+    {{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -93,8 +93,7 @@ If you choose *not* to use IPv6 on your Minecraft server, then it needs only bas
 -A FORWARD -j REJECT
 
 COMMIT
-~~~
-
+{{< /file-excerpt >}}
 
 ## Install Prerequisite Software
 

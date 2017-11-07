@@ -223,7 +223,7 @@ To see your Linode's running network services:
 
 The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
 
-~~~
+    {{< output >}}
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      3539/systemd-resolv
@@ -243,7 +243,7 @@ unix  2      [ ACC ]     STREAM     LISTENING     15990    3974/systemd         
 unix  2      [ ACC ]     STREAM     LISTENING     13007    1/init               /run/uuidd/request
 unix  2      [ ACC ]     STREAM     LISTENING     13010    1/init               /var/run/dbus/system_bus_socket
 unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               /run/systemd/private
-~~~
+{{< /output >}}
 
 `ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 

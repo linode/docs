@@ -97,11 +97,9 @@ If **Available updates** is not listed, enable the Update Manager plugin under *
     {{< note >}}
 If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
 
-~~~
-chgrp www-data /var/www/html/example.com/public_html/sites/default/files
-chmod 775 /var/www/html/example.com/public_html/sites/default/files
-chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
-~~~
+    chgrp www-data /var/www/html/example.com/public_html/sites/default/files
+    chmod 775 /var/www/html/example.com/public_html/sites/default/files
+    chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
 {{< /note >}}
 
 4.  Follow the prompts to continue the update.

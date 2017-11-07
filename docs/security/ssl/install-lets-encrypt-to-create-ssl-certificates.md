@@ -93,24 +93,24 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
 
 4.  If all goes well, a message similar to the one below will appear. Its appearance means Let's Encrypt has approved and issued your certificates.
 
-    ~~~
-    IMPORTANT NOTES:
-    - If you lose your account credentials, you can recover them through
-      e-mails sent to somebody@example.com.
-    - Congratulations! Your certificate and chain have been saved at
-      /etc/letsencrypt/live/example.com/fullchain.pem. Your
-      cert will expire on 2016-03-31. To obtain a new version of the
-      certificate in the future, simply run Let's Encrypt again.
-    - Your account credentials have been saved in your Let's Encrypt
-      configuration directory at /etc/letsencrypt. You should make a
-      secure backup of this folder now. This configuration directory will
-      also contain certificates and private keys obtained by Let's
-      Encrypt, so making regular backups of this folder is ideal.
-    - If you like Let's Encrypt, please consider supporting our work by:
+    {{< output >}}
+IMPORTANT NOTES:
+- If you lose your account credentials, you can recover them through
+  e-mails sent to somebody@example.com.
+- Congratulations! Your certificate and chain have been saved at
+  /etc/letsencrypt/live/example.com/fullchain.pem. Your
+  cert will expire on 2016-03-31. To obtain a new version of the
+  certificate in the future, simply run Let's Encrypt again.
+- Your account credentials have been saved in your Let's Encrypt
+  configuration directory at /etc/letsencrypt. You should make a
+  secure backup of this folder now. This configuration directory will
+  also contain certificates and private keys obtained by Let's
+  Encrypt, so making regular backups of this folder is ideal.
+- If you like Let's Encrypt, please consider supporting our work by
 
-      Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-      Donating to EFF:                    https://eff.org/donate-le
-    ~~~
+  Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+  Donating to EFF:                    https://eff.org/donate-le
+{{< /output >}}
 
 ### Let's Encrypt Certificate Directory Structure
 
@@ -164,7 +164,7 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
 
 3.  After a few moments, a confirmation similar to the one below should appear:
 
-    ~~~
+    {{< output >}}
     IMPORTANT NOTES:
     - Congratulations! Your certificate and chain have been saved at
       /etc/letsencrypt/live/example.com/fullchain.pem. Your
@@ -174,7 +174,7 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
 
       Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
       Donating to EFF:                    https://eff.org/donate-le
-    ~~~
+    {{< /output >}}
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 

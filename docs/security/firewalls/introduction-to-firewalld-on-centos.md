@@ -59,14 +59,14 @@ FirewallD is included by default with CentOS 7 but it's inactive. Controlling it
 
     Example output:
 
-    ~~~
+    {{< output >}}
 firewalld.service - firewalld - dynamic firewall daemon
    Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled)
    Active: active (running) since Wed 2015-09-02 18:03:22 UTC; 1min 12s ago
  Main PID: 11954 (firewalld)
    CGroup: /system.slice/firewalld.service
            └─11954 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-    ~~~
+{{< /output >}}
 
 5.  To reload a FirewallD configuration:
 
@@ -148,7 +148,7 @@ To get all configurations for all zones:
 
 Example output:
 
-~~~
+    {{< output >}}
 block
   interfaces:
   sources:
@@ -170,7 +170,7 @@ work
   forward-ports:
   icmp-blocks:
   rich rules:
-~~~
+{{< /output >}}
 
 ### Working with Services
 
@@ -232,17 +232,17 @@ As an example, here is how you would use FirewallD to assign basic rules to your
 
     If you now run `firewall-cmd --zone=dmz --list-all`, this should be the output:
 
-    ~~~
-    dmz (default)
-      interfaces: eth0
-      sources:
-      services: http https ssh
-      ports:
-      masquerade: no
-      forward-ports:
-      icmp-blocks:
-      rich rules:
-    ~~~
+{{< output >}}
+dmz (default)
+  interfaces: eth0
+  sources:
+  services: http https ssh
+  ports:
+  masquerade: no
+  forward-ports:
+  icmp-blocks:
+  rich rules:
+{{< /output >}}
 
     This tells us that the **dmz** zone is our **default** which applies to the **eth0 interface**, all network **sources** and **ports**. Incoming HTTP (port 80), HTTPS (port 443) and SSH (port 22) traffic is allowed and since there are no restrictions on IP versioning, this will apply to both IPv4 and IPv6. **Masquerading** and **port forwarding** are not allowed. We have no **ICMP blocks**, so ICMP traffic is fully allowed, and no **rich rules**. All outgoing traffic is allowed.
 

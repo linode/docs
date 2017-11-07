@@ -123,7 +123,7 @@ Remove the hash (`#`) from the front of the line that reads "mod\_evhost" in the
 
 Now, let's examine the following section of the default config file:
 
-~~~ lighty
+{{< file-excerpt >}}
 # define a pattern for the host url finding
 # %% => % sign
 # %0 => domain name + tld
@@ -133,7 +133,7 @@ Now, let's examine the following section of the default config file:
 # %4 => subdomain 2 name
 #
 # evhost.path-pattern = "/home/storage/dev/www/%3/htdocs/"
-~~~
+{{< /file-excerpt >}}
 
 To accomplish the same directory structure with evhost as with the simple-vhost, we would need to insert the following statement into `lighttpd.conf` :
 

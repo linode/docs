@@ -100,7 +100,7 @@ Now that we understand the syntax, let's get into the nuts and bolts of nginx. F
 
 We'll begin by explaining the core directives in `/etc/nginx/nginx.conf` Let's go back to that first section:
 
-~~~ nginx
+{{< file-excerpt "/etc/nginx/nginx.conf" >}}
 user www-data;
 worker_processes 4;
 pid /run/nginx.pid;
@@ -109,8 +109,7 @@ events {
         worker_connections 768;
         # multi_accept on;
 }
-~~~
-
+{{< /file-excerpt >}}
 
 user
 :   Defines which Linux system user will own and run the nginx server. Most Debian-based distributions use `www-data` but this may be different in other distros. There are certain use cases that benefit from changing the user; for instance if you run two simultaneous web servers, or need another program's user to have control over nginx.

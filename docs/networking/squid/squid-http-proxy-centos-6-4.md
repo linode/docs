@@ -90,7 +90,6 @@ http_access allow ncsa_users
 		
 
 {{< /file-excerpt >}}
-~~~~~
 
 5.  Once you've saved and exited the file, restart Squid:
 
@@ -101,10 +100,7 @@ http_access allow ncsa_users
 
 	{{< file-excerpt "/etc/squid/squid\\_passwd" >}}
 user1:gh48gfno user2:9b83v5hd
-		
-
 {{< /file-excerpt >}}
-~
 
 	If you are using Nano, the command `Control+k` will remove the entire line where the cursor rests. Once you've saved and exited the file, restart Squid:
 
