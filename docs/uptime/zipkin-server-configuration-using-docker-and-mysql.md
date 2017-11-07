@@ -10,7 +10,7 @@ modified: Friday, October 27, 2017
 modified_by:
   name: Luis Cortés
 published: 'Wednesday, October 4, 2017'
-title: 'Zipkin Server Configuration Using Docker and MySQL'
+title: 'Run a Zipkin Server with MySQL in Docker'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
@@ -18,7 +18,6 @@ external_resources:
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
-
 
 [Zipkin](http://zipkin.io/) is a used for capturing timing data, it also has a centralized repository, and a microweb server that allows you to display, and search through spans and traces of your distributed programs or websites.
 
@@ -247,7 +246,7 @@ There are 2 different backup methods: using MySQL , and using sysadmin.
         43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
         ~~~
 
-2. If it'sn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
+2. If isn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
 
         mysqldump --protocol=tcp -A -pzipkin -uzipkin > ~/database.bak
 
@@ -255,7 +254,7 @@ There are 2 different backup methods: using MySQL , and using sysadmin.
 
         mysqldump --protocol=tcp -pzipkin -uzipkin zipkin > ~/db_zipkin.bak
 
-#### Sys Admin Backup
+#### Database Backups
 
 We can just zip or tar the exported database files on the host system. Since we don't know if the container is writing information to these files at any given time, we need to make sure that the container is stopped.
 
