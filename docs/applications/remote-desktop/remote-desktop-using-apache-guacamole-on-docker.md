@@ -221,11 +221,11 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
         ssh -L 5901:localhost:5901 -N -f -l user example.com
 
-2.  Click the top right drop down menu, select *Settings*. Under *Connections*, press the *New Connection* button.
+2.  In the Guacamole dashboard, click the top right drop down menu and select *Settings*. Under *Connections*, press the *New Connection* button.
 
     ![Guacamole Settings](/docs/assets/guac_settings.png)
 
-3.  Under **Edit Connection**, choose a name otherwise the hostname of the Linode will be the default. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
+3.  Under **Edit Connection**, choose a name. Under **Parameters**, the hostname is the public IP of the Linode. The port is 5900 plus the display number - in this case, port 5901. Enter the 8 character password.
 
     ![Guacamole VNC Configuration](/docs/assets/guac_vnc_config.png)
 
