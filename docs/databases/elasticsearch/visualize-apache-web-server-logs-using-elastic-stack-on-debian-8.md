@@ -11,7 +11,7 @@ external_resources:
 keywords: 'apache debian 8,linux web server,elasticsearch,logstash,kibana,elk stack,elastic stack'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, September 18th, 2017'
-modified: Thursday, September 21st, 2017
+modified: Monday, November 6, 2017
 modified_by:
   name: Linode
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
@@ -21,7 +21,10 @@ title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 
 ---
 
-## What is Elastic Stack?
+![Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8](/docs/assets/elastic-stack-visualize-server-logs-title.jpg "Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8")
+
+
+## What is an Elastic Stack?
 
 The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
 
