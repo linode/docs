@@ -13,14 +13,14 @@ title: How to Create an Email Server with Mail-in-a-Box
 contributor:
   name: Alexandru Andrei
 external_resources:
-- '[Mail-in-a-Boxs Official Website](https://mailinabox.email/)'
-
+- '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+
 ----
 
-![Mail_banner](/docs/assets/Mail_in_a_box.jpg)
+![How to Create an Email Server with Mail-in-a-Box](/docs/assets/Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 
 If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
