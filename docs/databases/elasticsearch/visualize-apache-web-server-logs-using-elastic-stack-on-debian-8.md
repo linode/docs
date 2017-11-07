@@ -11,7 +11,7 @@ external_resources:
 keywords: 'apache debian 8,linux web server,elasticsearch,logstash,kibana,elk stack,elastic stack'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Monday, September 18th, 2017'
-modified: Thursday, September 21st, 2017
+modified: Monday, November 6, 2017
 modified_by:
   name: Linode
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
