@@ -73,11 +73,9 @@ iPerf requires two systems because one system must act as a server, while the ot
         iperf -s
 
     You should see output similar to:
-
-         ------------------------------------------------------------
+# 
          Server listening on TCP port 5001
-         TCP window size: 85.3 KByte (default)
-         ------------------------------------------------------------
+#          TCP window size: 85.3 KByte (default)
 
 2.  On your second Linode, connect to the first. Replace `198.51.100.5` with the first Linode's IP address.
 
@@ -85,21 +83,17 @@ iPerf requires two systems because one system must act as a server, while the ot
 
     The output should be similar to:
 
-
-        ------------------------------------------------------------
+# 
 		Client connecting to 198.51.100.5, TCP port 5001
-        TCP window size: 45.0 KByte (default)
-		------------------------------------------------------------
+#         TCP window size: 45.0 KByte (default)
 		[  3] local 198.51.100.6 port 50616 connected with 198.51.100.5 port 5001
 		[ ID] Interval       Transfer     Bandwidth
 		[  3]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
 
 3.  You will also see the connection and results on your iPerf server. This will look similar to:
-
-        ------------------------------------------------------------
+# 
 		Server listening on TCP port 5001
-        TCP window size: 85.3 KByte (default)
-        ------------------------------------------------------------
+#         TCP window size: 85.3 KByte (default)
 		[  4] local 198.51.100.5 port 5001 connected with 198.51.100.6 port 50616
 		[ ID] Interval       Transfer     Bandwidth
 		[  4]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
@@ -115,24 +109,20 @@ Using iPerf, you can also test the maximum throughput achieved via UDP connectio
         iperf -s -u
 
     The output will be similar to:
-
-        ------------------------------------------------------------
+# 
         Server listening on UDP port 5001
         Receiving 1470 byte datagrams
-        UDP buffer size:  208 KByte (default)
-        ------------------------------------------------------------
+#         UDP buffer size:  208 KByte (default)
 
 2.  Connect your client to your iPerf UDP server. Replace `198.51.100.5` with your IP address:
 
         iperf -c 198.51.100.5 -u
 
     The `-u` option we've passed tells iPerf that we are connecting via UDP. This is important, because we want to see the maximum throughput achieved via UDP. The output should be similar to:
-
-        ------------------------------------------------------------
+# 
         Client connecting to 198.51.100.5, UDP port 5001
         Sending 1470 byte datagrams
-        UDP buffer size:  208 KByte (default)
-        ------------------------------------------------------------
+#         UDP buffer size:  208 KByte (default)
         [  3] local 198.51.100.6 port 58070 connected with 198.51.100.5 port 5001
         [ ID] Interval       Transfer     Bandwidth
         [  3]  0.0-10.0 sec  1.25 MBytes  1.05 Mbits/sec
@@ -149,12 +139,10 @@ Using iPerf, you can also test the maximum throughput achieved via UDP connectio
     This tells the client that we want to achieve a maximum of 1000 Mbits per second if possible. The `-b` flag only works when using UDP connections, since iPerf does not set a bandwidth limit on the TCP clients.
 
     The output should be similar to:
-
-        ------------------------------------------------------------
+# 
 		Client connecting to 198.51.100.5, UDP port 5001
 		Sending 1470 byte datagrams
-        UDP buffer size:  208 KByte (default)
-		------------------------------------------------------------
+#         UDP buffer size:  208 KByte (default)
 		[  3] local 198.51.100.5 port 52308 connected with 198.51.100.5 port 5001
 		[ ID] Interval       Transfer     Bandwidth
 		[  3]  0.0-10.0 sec   966 MBytes   810 Mbits/sec
@@ -174,15 +162,11 @@ Run the following command to test both connections:
 	iperf -c 198.51.100.5 -d
 
 The result is that iPerf will start a server and a client connection on the original client server (198.51.100.6). Once this has been done, iPerf will connect the original iPerf server to the client connection, which is now acting as both a server connection and a client connection. This will look similar
-
-    ------------------------------------------------------------
+# 
     Server listening on TCP port 5001
-    TCP window size: 85.3 KByte (default)
-    ------------------------------------------------------------
-    ------------------------------------------------------------
-    Client connecting to 198.51.100.5, TCP port 5001
-    TCP window size:  351 KByte (default)
-    ------------------------------------------------------------
+#     TCP window size: 85.3 KByte (default)
+#     Client connecting to 198.51.100.5, TCP port 5001
+#     TCP window size:  351 KByte (default)
     [  3] local 198.51.100.6 port 50618 connected with 198.51.100.5 port 5001
     [  5] local 198.51.100.6 port 5001 connected with 198.51.100.5 port 58650
     [ ID] Interval       Transfer     Bandwidth
@@ -190,11 +174,9 @@ The result is that iPerf will start a server and a client connection on the orig
     [  3]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec
 
 On the original iPerf server, you will see:
-
-	------------------------------------------------------------
+# 
 	Client connecting to 198.51.100.6, TCP port 5001
-    TCP window size:  153 KByte (default)
-	------------------------------------------------------------
+#     TCP window size:  153 KByte (default)
     [  6] local 198.51.100.5 port 58650 connected with 198.51.100.6 port 5001
 	[  6]  0.0-10.1 sec  1.27 GBytes  1.08 Gbits/sec
 	[  5]  0.0-10.2 sec  1.28 GBytes  1.08 Gbits/sec

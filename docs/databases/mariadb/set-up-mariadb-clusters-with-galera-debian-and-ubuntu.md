@@ -82,12 +82,9 @@ wsrep_sst_method=rsync
 
 	You should receive an output of the current cluster size:
 
-		MariaDB [(none)]> SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size";
-		+--------------+
-		| cluster size |
-		+--------------+
-		| 1            |
-		+--------------+
+# 		MariaDB [(none)]> SELECT VARIABLE_VALUE as "cluster size" FROM INFORMATION_SCHEMA.GLOBAL_STATUS WHERE VARIABLE_NAME="wsrep_cluster_size";
+# 		| cluster size |
+# 		| 1            |
 		1 row in set (0.00 sec)
 
 6.  Start the MariaDB service on the other two Linodes.  Re-run the command from step 5 to ensure that each system has joined the cluster:
@@ -115,12 +112,9 @@ wsrep_sst_method=rsync
 
 	You should receive an output of the database and row that you created in the previous step:
 
-		MariaDB [(none)]> show tables in test;
-		+----------------+
-		| Tables_in_test |
-		+----------------+
-		| flowers        |
-		+----------------+
+# 		MariaDB [(none)]> show tables in test;
+# 		| Tables_in_test |
+# 		| flowers        |
 		1 row in set (0.00 sec)
 
 Congratulations, you have now configured a MariaDB cluster with Galera.

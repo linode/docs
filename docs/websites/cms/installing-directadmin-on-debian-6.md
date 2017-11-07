@@ -16,8 +16,7 @@ deprecated: true
 
 [DirectAdmin](http://directadmin.com) is a commercial web-based control panel for server systems. It can help ease the burden of common system administration tasks such as website creation, database deployment and management, and more. This guide will help you get up and running with the DirectAdmin control panel on your Debian 6 Linode. Please note that Linode does not sell DirectAdmin licenses; you'll need to obtain one directly from DirectAdmin or an authorized distributor. Additionally, Linode does not provide DirectAdmin support, although you may contact [DirectAdmin support](http://www.directadmin.com/support.html) directly once you've purchased a license. This product should be installed on a freshly deployed Debian 6 Linode. These instructions should be performed as the "root" user via SSH.
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Edit your `/etc/hosts` file to resemble the following example. Replace "hostname" with a unique name for your server, "example.com" with your domain name, and "12.34.56.78" with your Linode's public IP address. If your Linode has two IPs assigned to it, use the first IP in the list displayed on the "Remote Access" tab of the Linode Manager.
 
@@ -70,8 +69,7 @@ You'll also need to install a few items to finish preparing your system for Dire
 
     apt-get install gcc g++ make flex bison openssl libssl-dev perl perl-base perl-modules libperl-dev libaio1 libaio-dev
 
-Installing DirectAdmin
-----------------------
+# Installing DirectAdmin
 
 Before proceeding, make sure you've purchased a DirectAdmin license. You may obtain a license directly from [the DirectAdmin site](https://www.directadmin.com/createclient.php). Next, log into your Linode as the "root" user via SSH to its IP address (found on the "Remote Access" tab in the Linode Manager). Issue the following commands to download and install DirectAdmin.
 
@@ -117,8 +115,7 @@ You can then select your Apache/PHP installation:
 
 After you input your answers, the install will then proceed. You should go grab a cup of coffee and watch your favorite TV show or do some light reading, it will take a bit to complete. When the installer finishes, you'll receive some output you'll need to make a note of, specifically your admin username, password, and email, along with the DirectAdmin login URL.
 
-Configuring DirectAdmin
------------------------
+# Configuring DirectAdmin
 
 You may want to configure the DirectAdmin manager login to use SSL, either on the main port or a separate port. To configure the main port (2222) to use SSL, you'll need to edit your `/usr/local/directadmin/conf/directadmin.conf` file. You'll want to find this line:
 
@@ -180,8 +177,7 @@ And update it to:
 
 > SSL=0 cacert=/usr/local/directadmin/conf/cacert.pem cakey=/usr/local/directadmin/conf/cakey.pem carootcert=/usr/local/directadmin/conf/carootcert.pem ssl\_cipher=SSLv3
 
-IPv6 with DirectAdmin
----------------------
+# IPv6 with DirectAdmin
 
 DirectAdmin also has basic support for IPv6. To activate this support, you'll need to edit your directadmin.conf file again. You'll need to add this line anywhere in your directadmin.conf file:
 
@@ -197,8 +193,7 @@ You'll then need to restart DirectAdmin for that change to take effect:
 
 Further information on DirectAdmin's IPv6 functionality can be viewed on their web site: <http://www.directadmin.com/features.php?id=936>
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

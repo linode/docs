@@ -22,8 +22,7 @@ For these kinds of deployments we encourage you to consider a tool like Cacti, w
 
 Before installing Cacti we, assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing Prerequisites
-------------------------
+# Installing Prerequisites
 
 Before proceeding with the installation of Cacti, ensure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -89,8 +88,7 @@ Visit the domain you have pointed at your Linode, or your Linode's IP address, a
 
 At the login screen, enter `admin/admin` for the username/password combination. You'll be prompted to change your password on the next screen. At this point, Cacti is installed and ready to be configured.
 
-Configuring Cacti
------------------
+# Configuring Cacti
 
 At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, picking "Version 1". Enter "example" (or the community name you created above) in the box for the "SNMP Community" field. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
 
@@ -110,8 +108,7 @@ crontab
 
 To learn more about using [cron to schedule tasks](/content/linux-tools/utilities/cron), consider our documentation. The above "cronjob" runs Cacti's PHP poller every five minutes. If you need to alter this interval, modify the cron specification and modify the "Poller" settings from within Cacti's console tab. Be aware that it takes Cacti a full polling cycle to gather data and graphs.
 
-Configuring Client Machines
----------------------------
+# Configuring Client Machines
 
 This section is optional and for those looking to use Cacti to monitor additional devices. These steps are written for other Fedora-based distributions, but with modification, they will work on any flavor of Linux. You will need to follow these instructions for each client machine you'd like to monitor in Cacti. Client machines need an SNMP daemon in order to serve Cacti information. First, install `snmp` and `snmpd` on the client:
 
@@ -136,8 +133,7 @@ Finally, restart the SNMP daemon to ensure that your changes to these files will
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Additionally, ensure that you've typed the right community name in the "SNMP Community" field. Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the "Choose an Action" drop down select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

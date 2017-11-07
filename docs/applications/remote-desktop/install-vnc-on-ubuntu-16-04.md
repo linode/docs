@@ -186,8 +186,7 @@ Below we've outlined optional steps to ensure that the VNC server starts automat
         no crontab for user - using an empty one
 
         Select an editor.  To change later, run 'select-editor'.
-          1. /bin/ed
-          2. /bin/nano        <---- easiest
+#           1. /bin/ed
           3. /usr/bin/vim.basic
           4. /usr/bin/vim.tiny
 

@@ -22,8 +22,7 @@ external_resources:
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
-
-----
+# 
 
 ![Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/content/assets/puppet/manage-mysql-with-puppet-hiera.jpg "Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04")
 
@@ -141,12 +140,9 @@ Puppet will output its progress before completing. To confirm MySQL has been con
     mysql -u root -p -e 'select version();'
 
 Enter the password and MySQL returns its version:
-
-    +-------------------------+
-    | version()               |
-    +-------------------------+
-    | 5.7.19-0ubuntu0.16.04.1 |
-    +-------------------------+
+# 
+#     | version()               |
+#     | 5.7.19-0ubuntu0.16.04.1 |
 
 ### Define MySQL Resources
 
@@ -240,16 +236,13 @@ lookup_options:
         mysql -u root -p -e 'show databases;'
 
     This includes the new `ubuntu-backup` database:
-
-        +---------------------+
-        | Database            |
-        +---------------------+
+# 
+#         | Database            |
         | information_schema  |
         | mysql               |
         | performance_schema  |
         | sys                 |
         | ubuntu-backup       |
-        | wordpress           |
-        +---------------------+
+#         | wordpress           |
 
 Congratulations! You can now control your Puppet configuration via highly configurable Hiera definitions.

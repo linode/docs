@@ -20,8 +20,7 @@ This guide explains how to upgrade your system to Ubuntu 11.10 (Oneiric) from Ub
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed). Please note that upgrades from older versions of Ubuntu will require you to follow the steps outlined in our other upgrade guides before upgrading to Ubuntu 11.10.
 
-Preparing to Upgrade
---------------------
+# Preparing to Upgrade
 
 Make sure that you have properly set your hostname in `/etc/hostname`. If you have not set a hostname for your system yet, issue the following commands:
 
@@ -46,8 +45,7 @@ If at any time you get disconnected from your server, you can log back in and is
 
     screen -Dr
 
-Upgrading
----------
+# Upgrading
 
 Issue the following command to grab the latest version of key system utilities:
 

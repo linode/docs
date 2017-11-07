@@ -247,8 +247,7 @@ Although octal format may seem difficult to understand, it is easy to use once y
 > Letter format: `chmod go-rwx Work` (Deny rwx permission for the group and others)
 
 The output of ls -al after the chmod command above would looks as follows:
-
-    dr-------- 2 user user 4096 Dec 17 14:38 Work
+# 
 
 Octal format: `chmod 444 Work`
 
@@ -294,8 +293,7 @@ To change the ownership of a directory and all the files contained inside, use t
 
     chown -R cjones:marketing /srv/smb/leadership/
 
-Leveraging Users and Groups
----------------------------
+# Leveraging Users and Groups
 
 In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 

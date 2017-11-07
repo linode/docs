@@ -164,8 +164,7 @@ client_max_body_size 10m;
 
         ‣ ⬢  Passenger itself
           ⬡  Apache
-
-          -------------------------------------------------------------------------
+# 
 
         * Checking whether this Passenger install is in PATH... ✓
         * Checking whether there are no other Passenger installations... ✓
@@ -180,8 +179,7 @@ client_max_body_size 10m;
 
 
         --------- Nginx processes ----------
-        PID   PPID  VMSize    Private  Name
-        ------------------------------------
+#         PID   PPID  VMSize    Private  Name
         6399  1     174.9 MB  0.6 MB   nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
         6404  6399  174.9 MB  0.7 MB   nginx: worker process
         ### Processes: 2
@@ -189,8 +187,7 @@ client_max_body_size 10m;
 
 
         ---- Passenger processes -----
-        PID   VMSize    Private  Name
-        ------------------------------
+#         PID   VMSize    Private  Name
         6379  441.3 MB  1.2 MB   Passenger watchdog
         6382  660.4 MB  2.9 MB   Passenger core
         6388  449.5 MB  1.4 MB   Passenger ust-router

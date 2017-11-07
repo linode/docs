@@ -116,8 +116,7 @@ GitLab supports both MySQL and PostgreSQL for the database backend, but the latt
 
    If everything is ok, you should see the PostgreSQL version displayed on the console like this:
 
-                                                       version
-        ------------------------------------------------------------------------------------------------------
+#                                                        version
          PostgreSQL 9.3.4 on x86_64-unknown-linux-gnu, compiled by gcc (Ubuntu 4.8.2-16ubuntu6) 4.8.2, 64-bit
         (1 row)
 

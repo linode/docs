@@ -298,16 +298,13 @@ If you add or remove nodes to and from the cluster in the future, you may notice
         SHOW DATABASES;
 
     This should output a table that includes the `testdb` database, confirming that the databases are synchronized:
-
-        +--------------------+
-        | Database           |
-        +--------------------+
+# 
+#         | Database           |
         | information_schema |
         | mysql              |
         | performance_schema |
         | test               |
-        | testdb             |
-        +--------------------+
+#         | testdb             |
         4 rows in set (0.00 sec)
 
     You can run the same command on any other database nodes to check that replication is occurring across the entire cluster.

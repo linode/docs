@@ -20,12 +20,13 @@ def main():
                     if regex.findall('{{< \w+',line):
                         is_shortcode.append(True)
                     elif regex.findall('{{< \/',line):
-                        is_shortcode.pop()
-                    if line.startswith('|') or line.startswith('#') or any(is_shortcode):
+                        if len(is_shortcode) > 0:
+                            is_shortcode.pop()
+                    if line.strip().startswith('|') or line.strip().startswith('#') or any(is_shortcode):
                         new_doc += old_line
                     else:
                         matches = regex.findall(target, line)
-                        if matches: 
+                        if matches and len(matches) is 1: 
                             print("Found match in file {} at line {}:".format(filename, str(number)))
                             print(matches)
                             new_doc += '# ' + old_line

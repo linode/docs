@@ -81,24 +81,18 @@ Once TeamSpeak is downloaded, you're ready to start the server. TeamSpeak comes 
         ./ts3server_startscript.sh start
 
 3.  Make note of the login name, password, and token that are printed the first time the server is started. You'll need them when you connect the first time:
-
-        ------------------------------------------------------------------
-                              I M P O R T A N T
-        ------------------------------------------------------------------
+# 
+#                               I M P O R T A N T
                        Server Query Admin Account created
-                 loginname= "serveradmin", password= "RQkvl+Ip"
-        ------------------------------------------------------------------
+#                  loginname= "serveradmin", password= "RQkvl+Ip"
 
-
-        ------------------------------------------------------------------
-                              I M P O R T A N T
-        ------------------------------------------------------------------
+# 
+#                               I M P O R T A N T
               ServerAdmin privilege key created, please use it to gain
               serveradmin rights for your virtualserver. please
               also check the doc/privilegekey_guide.txt for details.
 
-               token=nfV+rTxhgQRR6m1Nn3royO08Sljeh1Ysm9bZ5JNw
-        ------------------------------------------------------------------
+#                token=nfV+rTxhgQRR6m1Nn3royO08Sljeh1Ysm9bZ5JNw
 
 4.  From your computer, open your TeamSpeak client, and open the connect dialog.
 

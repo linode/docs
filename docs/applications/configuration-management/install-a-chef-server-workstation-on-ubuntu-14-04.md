@@ -111,8 +111,7 @@ Your Chef workstation will be where you create and configure any recipes, cookbo
 		Running verification for component 'knife-spork'
 		Running verification for component 'kitchen-vagrant'
 		Running verification for component 'package installation'
-		........................
-		---------------------------------------------
+# 		........................
 		Verification of component 'rubocop' succeeded.
 		Verification of component 'kitchen-vagrant' succeeded.
 		Verification of component 'fauxhai' succeeded.

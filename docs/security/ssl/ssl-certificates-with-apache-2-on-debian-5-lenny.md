@@ -16,8 +16,7 @@ deprecated: true
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/content/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Debian 5 (Lenny) guide](/content/web-servers/apache/installation/debian-5-lenny). These steps should be performed via an SSH session to your Linode as the root user.
 
-Use a Self-Signed SSL Certificate with Apache
----------------------------------------------
+# Use a Self-Signed SSL Certificate with Apache
 
 These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
 
@@ -34,15 +33,13 @@ You will be asked for several configuration values. Enter values appropriate for
     Generating a 1024 bit RSA private key
     ...................................++++++
     ..............................++++++
-    writing new private key to '/etc/apache2/ssl/apache.pem'
-    -----
+#     writing new private key to '/etc/apache2/ssl/apache.pem'
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-    If you enter '.', the field will be left blank.
-    -----
+#     If you enter '.', the field will be left blank.
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
@@ -85,8 +82,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
-Install a Commercial SSL Certificate
-------------------------------------
+# Install a Commercial SSL Certificate
 
 Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for SSL-enabled sites.
 
@@ -107,15 +103,13 @@ Here are the values we entered for our example certificate. Note that you can ig
     Generating a 1024 bit RSA private key
     ......................................................++++++
     ....++++++
-    writing new private key to 'www.mydomain.com.key'
-    -----
+#     writing new private key to 'www.mydomain.com.key'
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-    If you enter '.', the field will be left blank.
-    -----
+#     If you enter '.', the field will be left blank.
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
@@ -185,8 +179,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

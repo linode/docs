@@ -136,8 +136,7 @@ The **Disk IO** graph shows the amount of input to and output from the disk caus
 
 The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/content/uptime/longview/#process-explorer-tab).
 
-Troubleshooting
----------------
+# Troubleshooting
 
 If you don't see Longview data for MySQL, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well.
 

@@ -107,8 +107,7 @@ passenger_ruby /usr/bin/passenger_free_ruby;
     If Passenger is running, a few running processes should be displayed under the "Passenger processes" section:
 
         ----- Passenger processes -----
-        PID    VMSize    Private  Name
-        -------------------------------
+#         PID    VMSize    Private  Name
         14337  420.8 MB  1.1 MB   Passenger watchdog
         14340  559.3 MB  1.4 MB   Passenger core
         14345  292.5 MB  1.2 MB   Passenger ust-router
