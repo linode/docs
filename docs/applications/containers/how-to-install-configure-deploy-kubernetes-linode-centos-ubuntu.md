@@ -8,7 +8,7 @@ modified: Tuesday, November 7, 2017
 modified_by:
   name: Linode
 published: 'Tuesday, November 7, 2017'
-title: 'How to Install, Configure, and Deploy to Kubernetes on Linode with CentOS or Ubuntu'
+title: 'How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster'
 contributor:
   name: Kiran Singh
   link: https://github.com/snarik
