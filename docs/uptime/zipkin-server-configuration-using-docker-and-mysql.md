@@ -10,7 +10,7 @@ modified: Friday, October 27, 2017
 modified_by:
   name: Luis Cortés
 published: 'Wednesday, October 4, 2017'
-title: 'Configure a Zipkin Server with MySQL in Docker'
+title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
