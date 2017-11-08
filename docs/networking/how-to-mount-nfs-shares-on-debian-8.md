@@ -55,7 +55,7 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
     {{< file-excerpt "/etc/hosts.deny" >}}
 rpcbind mountd nfsd statd lockd rquotad : ALL
-	
+
 
 {{< /file-excerpt >}}
 
@@ -66,7 +66,7 @@ rpcbind mountd nfsd statd lockd rquotad : ALL
 rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
               rpcbind mountd nfsd statd lockd rquotad : <client linode private ip> : allow
        rpcbind mountd nfsd statd lockd rquotad : ALL : deny
-	
+
 
 {{< /file-excerpt >}}
 
@@ -85,7 +85,7 @@ rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
 
     {{< file-excerpt "/etc/exports" >}}
 /var/nfsroot	 <client linode private ip>/32(rw,root_squash,subtree_check)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -122,7 +122,7 @@ The other Linode will be your NFS client. Follow the instructions below to confi
 
     {{< file-excerpt "/etc/fstab" >}}
 <server linode private ip>:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr 0 0
-	
+
 
 {{< /file-excerpt >}}
 

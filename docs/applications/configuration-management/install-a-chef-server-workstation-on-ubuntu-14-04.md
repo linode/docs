@@ -202,7 +202,7 @@ validation_key           '~/chef-repo/.chef/shortname.pem'
 chef_server_url          'https://123.45.67.89/organizations/shortname'
 syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
 cookbook_path [ '~/chef-repo/cookbooks' ]
-		
+
 
 {{< /file >}}
 
@@ -278,7 +278,7 @@ end
 file "/etc/chef/validation.pem" do
   action :delete
 end
-		
+
 
 {{< /file-excerpt >}}
 

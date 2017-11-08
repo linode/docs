@@ -40,7 +40,7 @@ You will have to make changes to your Apache 2.2 virtual hosts settings to make 
 <Directory /path/to/public/website/>
    Require all granted
 </Directory>
-	
+
 
 {{< /file-excerpt >}}
 

@@ -49,7 +49,7 @@ Apache `mod_status` diplays information related to incoming server connections b
      Deny from all
   Allow from localhost
 </Location>
-		
+
 
 {{< /file-excerpt >}}
 
@@ -58,7 +58,7 @@ Apache `mod_status` diplays information related to incoming server connections b
 
 	{{< file-excerpt "/etc/apache2/apache2.conf (Debian/Ubuntu)" >}}
 ExtendedStatus On
-		
+
 
 {{< /file-excerpt >}}
 
@@ -137,7 +137,7 @@ Once you select your MPM, you will need to change the values inside the configur
    	MaxClients           200
    	MaxRequestsPerChild  4500
 </IfModule>
-	
+
 
 {{< /file-excerpt >}}
 

@@ -49,7 +49,7 @@ This section covers the easiest way to use Squid as an HTTP proxy, using only th
 	{{< file-excerpt "/etc/squid3/squid.conf" >}}
 acl client src 12.34.56.78 # Home IP
 http_access allow client
-	
+
 
 {{< /file-excerpt >}}
 
@@ -94,7 +94,7 @@ The following configuration allows for authenticated access to the Squid proxy s
 auth_param basic program /usr/lib/squid3/basic_ncsa_auth /etc/squid3/squid_passwd
 acl ncsa_users proxy_auth REQUIRED
 http_access allow ncsa_users
-	
+
 
 {{< /file-excerpt >}}
 
@@ -108,7 +108,7 @@ http_access allow ncsa_users
 
 	{{< file "/etc/squid3/squid_passwd" >}}
 user1:\$p948w3nvq3489v6npq396g user2:\$q3cn478554387cq34n57vn
-	
+
 
 {{< /file >}}
 

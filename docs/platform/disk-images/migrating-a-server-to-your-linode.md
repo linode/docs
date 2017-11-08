@@ -156,7 +156,7 @@ Now you should configure mount points for the new disks. Here's how:
 /dev/sda       /               ext4    errors=remount-ro 0       1
 /dev/sdb       none            swap    sw              0       0
 proc            /proc           proc    defaults        0       0
-	
+
 
 {{< /file-excerpt >}}
 
@@ -215,7 +215,7 @@ Here's how to fix persistent rules:
 # device name whitelist
 KERNEL!="ath*|wlan*[0-9]|msh*|ra*|sta*|ctc*|lcs*|hsi*", \
 GOTO="persistent_net_generator_end"
-	
+
 
 {{< /file-excerpt >}}
 

@@ -182,7 +182,7 @@ If you are running NSD in a low-memory environment, amending the values of the f
 
 {{< file-excerpt "/etc/nsd3/nsd.conf" >}}
 ip4-only: yes tcp-count: 10 server-count: 1
-	
+
 
 {{< /file-excerpt >}}
 

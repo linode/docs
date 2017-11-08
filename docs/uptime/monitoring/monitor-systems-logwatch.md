@@ -43,7 +43,7 @@ Other SMTP clients can also be used for delivering Logwatch messages.
 	{{< file-excerpt "/etc/postfix/main.cf" aconf >}}
 myhostname = hostname.example.com
 inet_interfaces = loopback-only
-		
+
 
 {{< /file-excerpt >}}
 
@@ -56,7 +56,7 @@ Both A/AAAA, and MX records will need to be set for your domain.
 
 	{{< file-excerpt "/etc/postfix/aliases" aconf >}}
 root:           root@hostname.example.com
-		
+
 
 {{< /file-excerpt >}}
 
@@ -134,7 +134,7 @@ By default, Logwatch digests will include all logs contained within `/var/log`. 
 {{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
 LogDir = /var/log
 LogDir = /var/www/example.com/logs
-	
+
 
 {{< /file-excerpt >}}
 
@@ -160,7 +160,7 @@ If using Arch, and you followed the above install instructions, Sendmail is alre
 
 	{{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
 MailTo = root
-		
+
 
 {{< /file-excerpt >}}
 
@@ -202,7 +202,7 @@ Logwatch often works best when configured to run daily and send or save a report
 
 	{{< file-excerpt "/etc/crontab" >}}
 30 0  * * *          /usr/sbin/logwatch
-		
+
 
 {{< /file-excerpt >}}
 

@@ -220,7 +220,7 @@ This script automatically starts a Black Mesa Dedicated Server into a **Screen s
 cd "$HOME/Steam/steamapps/common/Black Mesa Dedicated Server"
 screen -S "BMDS" -d -m
 screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
-	
+
 
 {{< /file >}}
 

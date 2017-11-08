@@ -45,7 +45,7 @@ Before you get started, make sure you follow the steps outlined in our [Getting 
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 3
-	
+
 
 {{< /file-excerpt >}}
 
@@ -54,7 +54,7 @@ timeout 3
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 10
-	
+
 
 {{< /file-excerpt >}}
 
@@ -63,7 +63,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
-	
+
 
 {{< /file-excerpt >}}
 
@@ -72,7 +72,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
-	
+
 
 {{< /file-excerpt >}}
 
@@ -81,7 +81,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0,0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -90,7 +90,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -112,7 +112,7 @@ stop on runlevel [!2345]
 
 respawn
 exec /sbin/getty -8 38400 hvc0
-	
+
 
 {{< /file >}}
 
@@ -150,7 +150,7 @@ exec /sbin/getty -8 38400 hvc0
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 3
-	
+
 
 {{< /file-excerpt >}}
 
@@ -159,7 +159,7 @@ timeout 3
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 10
-	
+
 
 {{< /file-excerpt >}}
 
@@ -168,7 +168,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
-	
+
 
 {{< /file-excerpt >}}
 
@@ -177,7 +177,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 kopt=root=/dev/xvda console=hvc0 ro quiet
-	
+
 
 {{< /file-excerpt >}}
 
@@ -186,7 +186,7 @@ kopt=root=/dev/xvda console=hvc0 ro quiet
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0,0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -195,7 +195,7 @@ kopt=root=/dev/xvda console=hvc0 ro quiet
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -217,7 +217,7 @@ stop on runlevel [!2345]
 
 respawn
 exec /sbin/getty -8 38400 hvc0
-	
+
 
 {{< /file >}}
 
@@ -257,7 +257,7 @@ exec /sbin/getty -8 38400 hvc0
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 3
-	
+
 
 {{< /file >}}
 
@@ -266,7 +266,7 @@ timeout 3
 
     {{< file "/boot/grub/menu.lst" >}}
 timeout 10
-	
+
 
 {{< /file >}}
 
@@ -275,7 +275,7 @@ timeout 10
 
     {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
-	
+
 
 {{< /file >}}
 
@@ -284,7 +284,7 @@ timeout 10
 
     {{< file "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
-	
+
 
 {{< /file >}}
 
@@ -293,7 +293,7 @@ timeout 10
 
     {{< file "/boot/grub/menu.lst" >}}
 # groot=de400b9f-2578-488e-8664-250a8455a6fc
-	
+
 
 {{< /file >}}
 
@@ -302,7 +302,7 @@ timeout 10
 
     {{< file "/boot/grub/menu.lst" >}}
 # groot=(hd0)
-	
+
 
 {{< /file >}}
 
@@ -324,7 +324,7 @@ stop on runlevel [!2345]
 
 respawn
 exec /sbin/getty -8 38400 hvc0
-	
+
 
 {{< /file >}}
 
@@ -373,7 +373,7 @@ exec /sbin/getty -8 38400 hvc0
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 5
-	
+
 
 {{< /file-excerpt >}}
 
@@ -382,7 +382,7 @@ timeout 5
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 10
-	
+
 
 {{< /file-excerpt >}}
 
@@ -391,7 +391,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
-	
+
 
 {{< /file-excerpt >}}
 
@@ -400,7 +400,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
-	
+
 
 {{< /file-excerpt >}}
 
@@ -409,7 +409,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -462,7 +462,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 5
-	
+
 
 {{< /file-excerpt >}}
 
@@ -471,7 +471,7 @@ timeout 5
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 timeout 10
-	
+
 
 {{< /file-excerpt >}}
 
@@ -480,7 +480,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=UUID=de400b9f-2578-488e-8664-250a8455a6fc ro
-	
+
 
 {{< /file-excerpt >}}
 
@@ -489,7 +489,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # kopt=root=/dev/xvda console=hvc0 ro quiet
-	
+
 
 {{< /file-excerpt >}}
 
@@ -498,7 +498,7 @@ timeout 10
 
     {{< file-excerpt "/boot/grub/menu.lst" >}}
 # groot=(hd0)
-	
+
 
 {{< /file-excerpt >}}
 
@@ -554,7 +554,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 	root (hd0)
 	kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/xvda
 	initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
-	
+
 
 {{< /file >}}
 
@@ -619,7 +619,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 timeout 5
 
   	title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-3.9.10-100.fc17.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86\_64.img
-	
+
 
 {{< /file >}}
 

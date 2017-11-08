@@ -150,7 +150,7 @@ backend backendnodes
 
     This defines **backendnodes** and specifies several configuration options:
 
-      - The `balance` setting specifies the load-balancing strategy. In this case, the `roundrobin` strategy is used. This strategy uses each server in turn but allows for weights to be assigned to each server: servers with higher weights are used more frequently. 
+      - The `balance` setting specifies the load-balancing strategy. In this case, the `roundrobin` strategy is used. This strategy uses each server in turn but allows for weights to be assigned to each server: servers with higher weights are used more frequently.
       Other strategies include `static-rr`, which is similar to `roundrobin` but does not allow weights to be adjusted on the fly; and `leastconn`, which will forward requests to the server with the lowest number of connections.
       - The `forwardfor` option ensures the forwarded request includes the actual client IP address.
       - The first `http-request` line allows the forwarded request to include the port of the client HTTP request. The second adds the proto-header containing https if `ssl_fc`, a HAProxy system variable, returns true. This will be the case if the connection was first made via an SSL/TLS transport layer.

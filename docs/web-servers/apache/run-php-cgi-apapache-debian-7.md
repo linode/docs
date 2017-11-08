@@ -62,7 +62,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 ScriptAlias /local-bin /usr/bin
 AddHandler application/x-httpd-php5 php
 Action application/x-httpd-php5 /local-bin/php-cgi
-	
+
 
 {{< /file-excerpt >}}
 
@@ -81,7 +81,7 @@ error_log = /var/log/php.log
 max_execution_time = 30
 memory_limit = 64M
 register_globals = Off
-	
+
 
 {{< /file-excerpt >}}
 
@@ -110,7 +110,7 @@ This may not be ideal if you have multiple users running publicly accessible scr
 <IfModule mpm_itk_module>
    AssignUserId webeditor webgroup
 </IfModule>
-	
+
 
 {{< /file-excerpt >}}
 

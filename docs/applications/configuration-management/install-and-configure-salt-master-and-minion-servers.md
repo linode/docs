@@ -36,7 +36,7 @@ The steps in this section will need to be run on *each* of your Linodes.
 	{{< file "/etc/apt/sources.list.d/salt.list" >}}
 # salt
 deb http://debian.saltstack.com/debian jessie-saltstack main
-	
+
 
 {{< /file >}}
 

@@ -65,7 +65,7 @@ events {
 	use epoll;
 	multi_accept on;
 }
-	
+
 
 {{< /file-excerpt >}}
 
@@ -91,7 +91,7 @@ keepalive_requests 100000;
 sendfile on;
 tcp_nopush on;
 tcp_nodelay on;
-	
+
 
 {{< /file-excerpt >}}
 
@@ -118,7 +118,7 @@ client_header_buffer_size    1k;
 large_client_header_buffers  4 4k;
 output_buffers               1 32k;
 postpone_output              1460;
-	
+
 
 {{< /file-excerpt >}}
 
@@ -131,7 +131,7 @@ Some directives in the in the `/etc/sysctl.conf` file can be changed in order to
 {{< file-excerpt "/etc/sysctl.conf" aconf >}}
 net.core.somaxconn = 65536
 net.ipv4.tcp_max_tw_buckets = 1440000
-	
+
 
 {{< /file-excerpt >}}
 
@@ -153,7 +153,7 @@ Timeouts can also drastically improve performance. Remember to place these setti
 client_header_timeout  3m;
 client_body_timeout    3m;
 send_timeout           3m;
-	
+
 
 {{< /file-excerpt >}}
 
@@ -168,7 +168,7 @@ open_file_cache max=1000 inactive=20s;
 open_file_cache_valid 30s;
 open_file_cache_min_uses 5;
 open_file_cache_errors off;
-	
+
 
 {{< /file-excerpt >}}
 
@@ -179,7 +179,7 @@ You can also cache via a particular location.  Caching files for a long time is 
 location ~* .(woff|eot|ttf|svg|mp4|webm|jpg|jpeg|png|gif|ico|css|js)$ {
 	expires 365d;
 }
-	
+
 
 {{< /file-excerpt >}}
 
@@ -194,7 +194,7 @@ gzip on;
 gzip_min_length 1000;
 gzip_types text/html application/x-javascript text/css application/javascript text/javascript text/plain text/xml application/json application/vnd.ms-fontobject application/x-font-opentype application/x-font-truetype application/x-font-ttf application/xml font/eot font/opentype font/otf image/svg+xml image/vnd.microsoft.icon;
 gzip_disable "MSIE [1-6]\.";
-	
+
 
 {{< /file-excerpt >}}
 
@@ -214,7 +214,7 @@ The TCP FIN timeout belays the amount of time a port must be inactive before it 
 
 {{< file-excerpt "/etc/sysctl.conf" >}}
 net.ipv4.tcp_fin_timeout = 15
-	
+
 
 {{< /file-excerpt >}}
 
@@ -244,7 +244,7 @@ File descriptors are operating system resources used to handle things such as co
 {{< file-excerpt "/etc/security/limits.conf" aconf >}}
 soft nofile 4096
 hard nofile 4096
-	
+
 
 {{< /file-excerpt >}}
 
@@ -279,7 +279,7 @@ http {
 		access_log /spool/logs/nginx-access.log compression;
 	}
 }
-	
+
 
 {{< /file-excerpt >}}
 
@@ -294,7 +294,7 @@ map $status $loggable {
 	~^[23]  0;
 	default 1;
 }
-	
+
 
 {{< /file-excerpt >}}
 
@@ -311,7 +311,7 @@ server {
     access_log  off;
     error_log off;
 }
-	
+
 
 {{< /file-excerpt >}}
 
@@ -337,7 +337,7 @@ net.ipv4.ip_local_port_range = 1024 65000
 net.ipv4.tcp_fin_timeout = 15
 net.ipv4.tcp_window_scaling = 1
 net.ipv4.tcp_max_syn_backlog = 3240000
-	
+
 
 {{< /file-excerpt >}}
 
@@ -347,7 +347,7 @@ net.ipv4.tcp_max_syn_backlog = 3240000
 {{< file-excerpt "/etc/security/limits.conf" aconf >}}
 soft nofile 4096
    hard nofile 4096
-	
+
 
 {{< /file-excerpt >}}
 
@@ -438,7 +438,7 @@ http {
 		}
 	}
 }
-	
+
 
 {{< /file-excerpt >}}
 

@@ -257,7 +257,7 @@ Both are run in *containers* on slave nodes. Each slave node runs a *NodeManager
 
 Four types of resource allocations need to be configured properly for the cluster to work. These are:
 
-1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node. 
+1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node.
 
     This value is configured in `yarn-site.xml` with `yarn.nodemanager.resource.memory-mb`.
 
@@ -444,7 +444,7 @@ Let's use some textbooks from the [Gutenberg project](https://www.gutenberg.org/
 
        hdfs dfs -ls books
 
-5. Move one of the books to the local filesystem: 
+5. Move one of the books to the local filesystem:
 
        hdfs dfs -get books/alice.txt
 

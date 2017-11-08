@@ -57,7 +57,7 @@ title CentOS 6
 	root (hd0)
 	kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/sda console=ttyS0,19200n8
 	initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
-	
+
 
 {{< /file >}}
 

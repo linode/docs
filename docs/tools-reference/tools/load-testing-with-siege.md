@@ -85,7 +85,7 @@ This guide is for Debian or Ubuntu systems.
 		# ex: time = 50M
 		#
 		time = 1M
-		
+
 
 {{< /file-excerpt >}}
 
@@ -152,7 +152,7 @@ If you want Siege to hit a number of pages on your website at random, configure 
 www.example.com
 www.example.org
 123.45.67.89
-		
+
 
 {{< /file >}}
 

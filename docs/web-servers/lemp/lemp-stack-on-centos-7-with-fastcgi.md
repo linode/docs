@@ -5,11 +5,11 @@ author:
 description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
 keywords: ["nginx", "lemp", "php", "fastcgi", "linux", "web applications", " CentOS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
+aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
 modified: 2014-12-11
 modified_by:
     name: Ryan Arlan
-published:
+published: 2014-12-11
 title: Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
 - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'

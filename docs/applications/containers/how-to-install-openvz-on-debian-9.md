@@ -394,6 +394,6 @@ You may need to login as root with `su -` in order to run the iptables-save comm
 
 ## Where To Go From Here
 
-After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal Linux environment: requiring regular updates, security configuration, etc. Most configuration can be done from the host server via OpenVZ commands. 
+After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal Linux environment: requiring regular updates, security configuration, etc. Most configuration can be done from the host server via OpenVZ commands.
 
 See the "OpenVZ Basic Operations" link in the **External Resources** section to familiarize yourself with basic administration commands. Additional user-created templates can also be downloaded, which are not included in the main template listing. You can find these by following the "OpenVZ User Contributed Templates" link.

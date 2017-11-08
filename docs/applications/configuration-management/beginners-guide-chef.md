@@ -67,7 +67,7 @@ validation_key           '~/chef-repo/.chef/shortname.pem'
 chef_server_url          'https://123.45.67.89/organizations/shortname'
 syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
 cookbook_path [ '~/chef-repo/cookbooks' ]
-	
+
 
 {{< /file >}}
 
@@ -124,7 +124,7 @@ description "environment_description"
 cookbook_versions  "cookbook" => "cookbook_version"
 default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
-	
+
 
 {{< /file >}}
 
@@ -146,7 +146,7 @@ As a JSON:
   "override_attributes": {
 
   }
-	
+
 
 {{< /file >}}
 
