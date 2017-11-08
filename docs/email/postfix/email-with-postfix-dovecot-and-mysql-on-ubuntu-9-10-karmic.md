@@ -22,8 +22,7 @@ It is assumed that you have followed the steps outlined in our [getting started 
 
 **NOTE: Please read all of the information presented in this guide carefully.** There are many files and commands that will need to be edited as part of the setup process: please do not simply copy and paste the example blocks.
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Edit your `/etc/hosts` file to resemble the following example, replacing "12.34.56.78" with your Linode's IP address, "hostname.example.com" with your fully qualified domain name, and "hostname" with your short hostname.
 
@@ -52,8 +51,7 @@ Make sure your package repositories and installed programs are up to date by iss
     apt-get update
     apt-get upgrade --show-upgraded
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 Issue the following command to get the required packages installed on your Linode:
 
@@ -73,8 +71,7 @@ Now you'll need to set the system mail name. This should be a fully qualified do
 
 This completes the initial package configuration steps. Next, you'll set up a MySQL database to handle virtual domains and users.
 
-Set up MySQL for Virtual Domains and Users
-------------------------------------------
+# Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
@@ -137,8 +134,7 @@ If you changed MySQL's configuration, restart the database server with the follo
 
 Next, you'll perform additional Postfix configuration to set up communication with the database.
 
-Configure Postfix to work with MySQL
-------------------------------------
+# Configure Postfix to work with MySQL
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
@@ -210,8 +206,7 @@ Issue the following commands to complete the remaining steps required for Postfi
 
 This completes the configuration for Postfix. Next, you'll make an SSL certificate for the Postfix server that contains values appropriate for your organization.
 
-Create an SSL Certificate for Postfix
--------------------------------------
+# Create an SSL Certificate for Postfix
 
 Issue the following commands to create the SSL certificate (the `openssl` command spans two lines, but should be entered as a single command):
 
@@ -234,8 +229,7 @@ Set proper permissions for the key file by issuing the following command:
 
 This completes SSL certificate creation for Postfix. Next, you'll configure `saslauthd` to use MySQL for user authentication.
 
-Configure saslauthd to use MySQL
---------------------------------
+# Configure saslauthd to use MySQL
 
 Issue the following command to create a directory for `saslauthd`:
 
@@ -282,8 +276,7 @@ Add the Postfix user to the `sasl` group and restart Postfix and `saslauthd` by 
 
 This completes configuration for `saslauthd`. Next, you'll configure Dovecot to use MySQL for IMAP/POP3 user authentication.
 
-Configure Dovecot
------------------
+# Configure Dovecot
 
 Edit the file `/etc/postfix/master.cf` and add the dovecot service to the bottom of the file.
 
@@ -393,8 +386,7 @@ You should see output similar to the following in your terminal:
 
 Enter the command "quit" to return to your shell. This completes the Dovecot configuration. Next, you'll make sure aliases are configured properly.
 
-Configure Mail Aliases
-----------------------
+# Configure Mail Aliases
 
 Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives are set properly for your organization.
 
@@ -411,8 +403,7 @@ After modifying this file, you must run the following commands to update aliases
 
 This completes alias configuration. Next, we'll test Postfix to make sure it's operating properly.
 
-Testing Postfix
----------------
+# Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
@@ -443,8 +434,7 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
 
 Issue the command `quit` to terminate the Postfix connection. Next, we'll populate the MySQL database with domains and email users.
 
-Setting up Domains and Users
-----------------------------
+# Setting up Domains and Users
 
 Please note that you'll need to modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, you'll need to either delete them or set them to a larger priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 
@@ -465,8 +455,7 @@ Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:"
 
 Given the possibility for virtual hosting a large number of virtual domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient to authenticate to the mail server. When email users authenticate to the server, they must supply their email clients with the *entire* email address created above as their username.
 
-Check Your Logs
----------------
+# Check Your Logs
 
 After you have sent the test mail, you'll want to check your error logs to make sure the mail was delivered. First check your `mail.log` located in `/var/log/mail.log`. You should see something similar to the following:
 
@@ -486,8 +475,7 @@ Next you should check the Dovecot delivery log located in `/home/vmail/dovecot-d
 
 Now you can test to see what the users of your email server would see with their email clients.
 
-Test the Mailbox
-----------------
+# Test the Mailbox
 
 To test the `sales@example.com` mail box, navigate to the mailbox directory `/home/vmail/example.com/sales/Maildir` and type the following command:
 
@@ -510,8 +498,7 @@ Now you can test using a mail client. When configuring your local email client, 
 
 You may be prompted to create the root mailbox. This is not required. If you see an e-mail in the inbox, you've successfully configured Postfix, Dovecot, and MySQL to provide email services for virtual domains and users on your Linode. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -164,8 +164,7 @@ If you created lists using the `/etc/aliases` method, you will have to recreate 
 
 From this point forward, you can create new lists by issuing `newlist` commands as root. Additionally, all administration and functions of the Mailman lists can be accomplished by way of the web based interface.
 
-Configuring Mailman with Alternate Mail Configurations
-------------------------------------------------------
+# Configuring Mailman with Alternate Mail Configurations
 
 If you wish to deploy Mailman on a system that has an existing mail set up, such as the [Postfix with Dovecot and MySQL](/content/email/postfix/dovecot-mysql-debian-6-squeeze) or the [Postfix with Dovecot and System Users](/content/email/postfix/dovecot-system-users-debian-6-squeeze) configurations described in other documents, consider the following recommendations:
 
@@ -175,8 +174,7 @@ It is absolutely crucial that the `DEFAULT_EMAIL_HOST` and `DEFAULT_URL_HOST` ar
 
 In all other respects, as long as you deploy Mailman with virtual hosting on its own domain using Mailman with an existing email solution poses no complications. Congratulations, you now have a fully functional email list management solution!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

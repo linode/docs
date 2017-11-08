@@ -23,7 +23,7 @@ external_resources:
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
-----
+---
 
 ![Hadoop_YARN](/content/assets/spark_hadoop_yarn.jpg)
 

@@ -41,8 +41,7 @@ When presented with a choice between "Commander" or "Explorer" interface styles,
 
 After clicking "Continue" once more, the program should be installed. You'll be given an opportunity to allow the installer to launch WinSCP for you.
 
-Using WinSCP
-------------
+# Using WinSCP
 
 Once launched, you'll be presented with a screen similar to the following:
 
@@ -68,8 +67,7 @@ Once you've accepted the host key, you'll be presented with a dual-pane session 
 
 You can navigate your local filesystem in the left view pane, while your Linode's filesystem is displayed on the right side. You may copy files between the two systems by simply dragging and dropping them between the panes. Congratulations, you're now able to visually manage your remote filesystem using WinSCP!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -18,7 +18,8 @@ title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
-----
+---
+ 
 
 ## Why Run a Mail Server?
 

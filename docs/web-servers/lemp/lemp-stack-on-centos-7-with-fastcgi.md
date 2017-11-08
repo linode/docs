@@ -90,8 +90,7 @@ Once you have configured your virtual hosts, you'll need to restart nginx for yo
 
     systemctl restart nginx.service
 
-Deploy PHP with FastCGI
------------------------
+# Deploy PHP with FastCGI
 
 If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
 

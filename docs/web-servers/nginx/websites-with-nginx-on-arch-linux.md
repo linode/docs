@@ -18,8 +18,7 @@ Nginx is a lightweight and high performance web server, designed with the purpos
 
 Before you begin installing the nginx web server, it is assumed that you have followed our [getting started guide](/content/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts), our [beginner's guide](/content/beginners-guide/), and our [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing nginx
-----------------
+# Installing nginx
 
 Nginx is included in the Arch Linux software repositories. Issue following sequence of commands ensure that your system's package manager and databases are up to date:
 
@@ -54,8 +52,7 @@ To start the server for the first time, use the following command:
 
 Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

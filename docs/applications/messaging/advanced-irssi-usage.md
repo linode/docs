@@ -111,8 +111,7 @@ If you would like to install but not auto-load the scripts, use `cd ~/.irssi/scr
     /script load highlite.pl
     /script load adv_windowlist.pl
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

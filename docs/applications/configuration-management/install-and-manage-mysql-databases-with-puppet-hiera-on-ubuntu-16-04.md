@@ -23,7 +23,7 @@ external_resources:
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
 
-----
+---
 
 ![Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/content/assets/puppet/manage-mysql-with-puppet-hiera.jpg "Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04")
 
