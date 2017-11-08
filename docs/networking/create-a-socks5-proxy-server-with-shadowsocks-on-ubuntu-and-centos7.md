@@ -12,8 +12,8 @@ modified_by:
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
 contributor:
   name: Andrew Lescher
-  link: https://www.linkedin.com/in/andrew-lescher-87027940/
-external_resouces:
+  link: https://www.linkedin.com/in/andrew-lescher-87027940
+external_resources:
  - '[Shadowsocks official](https://shadowsocks.org/)'
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
@@ -24,7 +24,7 @@ external_resouces:
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](/docs/assets/shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
-Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a basic Linode server to host the Shadowsocks daemon and a client installed on your personal PC or mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
+Shadowsocks is a lightweight SOCKS5 web proxy tool primarily utilized to bypass network censorship and blocking on certain websites and web protocols. A full setup requires a Linode server to host the Shadowsocks daemon, and a client installed on PC, Mac, Linux, or a mobile device. Unlike other proxy software, Shadowsocks traffic is designed to be both indiscernible from other traffic to third-party monitoring tools, and also able to disguise itself as a normal direct connection. Data passing through Shadowsocks is encrypted for additional security and privacy.
 
 Since there is currently no Shadowsocks package available for Ubuntu or CentOS, this guide shows how to build Shadowsocks from source.
 

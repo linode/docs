@@ -9,6 +9,8 @@ featured:
  - use-public-key-authentication-with-ssh.md
  - gpg-key-for-ssh-authentication.md
  - use-luks-for-full-disk-encryption.md
+ - full-disk-encryption.md
+ - visualize-server-security-on-centos-7-with-an-elastic-stack-and-wazuh.md
  - ossec-ids-debian-7.md
  - using-fail2ban-for-security.md
  - use-one-time-passwords-for-two-factor-authentication-with-ssh-on-ubuntu-16-04-and-debian-8.md
