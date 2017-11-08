@@ -56,11 +56,11 @@ Issue the following command to install prerequisite packages.
 
 When prompted, review the Sun Java 6 license.
 
-[![Sun Java 6 JDK license.](/content/assets/326-sun-jdk-install-01.png)](/content/assets/326-sun-jdk-install-01.png)
+[![Sun Java 6 JDK license.](/docs/assets/326-sun-jdk-install-01.png)](/docs/assets/326-sun-jdk-install-01.png)
 
 Accept the license to proceed with installation.
 
-[![Accepting the Sun Java 6 JDK license.](/content/assets/327-sun-jdk-install-02.png)](/content/assets/327-sun-jdk-install-02.png)
+[![Accepting the Sun Java 6 JDK license.](/docs/assets/327-sun-jdk-install-02.png)](/docs/assets/327-sun-jdk-install-02.png)
 
 Create a user account and directories for Confluence by issuing the following commands. Be sure to set a strong password to the `confluence` user.
 
@@ -103,7 +103,7 @@ Issue the following command to return to a root shell.
 Issue the following commands to create an init script to control the Confluence application, mark this file executable, and configure Confluence to start automatically when the system boots:
 
     cd /opt/
-    wget -O init-deb.sh http://www.linode.com/content/assets/615-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/615-init-deb.sh
     mv init-deb.sh /etc/init.d/confluence
     chmod +x /etc/init.d/confluence
     update-rc.d confluence defaults
@@ -218,31 +218,31 @@ Apache should now be properly configured. Next, you'll configure Confluence.
 
 If you created a virtual host for your Confluence installation, direct your browser to `http://confluence.example.com`, replacing "confluence.example.com" with the site you set up with Apache. Otherwise, visit the URL `http://12.34.56.78:8080`, replacing "12.34.56.78" with your Linode's public IP address. Enter your license key on the first screen and click the "Production Installation" button to continue.
 
-[![Confluence license input screen.](/content/assets/328-confluence-config-01-large.png)](/content/assets/328-confluence-config-01-large.png)
+[![Confluence license input screen.](/docs/assets/328-confluence-config-01-large.png)](/docs/assets/328-confluence-config-01-large.png)
 
 Select "PostgreSQL" under the "External Database" section and click the "External Database" button to continue.
 
-[![Confluence external database selection.](/content/assets/329-confluence-config-02-large.png)](/content/assets/329-confluence-config-02-large.png)
+[![Confluence external database selection.](/docs/assets/329-confluence-config-02-large.png)](/docs/assets/329-confluence-config-02-large.png)
 
 Click the "Direct JDBC" button to continue.
 
-[![Confluence direct JDBC database connection selection.](/content/assets/330-confluence-config-03-large.png)](/content/assets/330-confluence-config-03-large.png)
+[![Confluence direct JDBC database connection selection.](/docs/assets/330-confluence-config-03-large.png)](/docs/assets/330-confluence-config-03-large.png)
 
 Enter the following database connection details, along with your password. Click "Next" to continue.
 
-[![Confluence database connection details entry.](/content/assets/331-confluence-config-04-large.png)](/content/assets/331-confluence-config-04-large.png)
+[![Confluence database connection details entry.](/docs/assets/331-confluence-config-04-large.png)](/docs/assets/331-confluence-config-04-large.png)
 
 You may choose to start with an example site or an empty configuration. If you're new to Confluence, we recommend you install the example site to gain more familiarity with the system.
 
-[![Confluence initial content selection.](/content/assets/332-confluence-config-05-large.png)](/content/assets/332-confluence-config-05-large.png)
+[![Confluence initial content selection.](/docs/assets/332-confluence-config-05-large.png)](/docs/assets/332-confluence-config-05-large.png)
 
 Select an appropriate username for the administrative user, and be sure to enter a strong password. Click "Next" to continue.
 
-[![Confluence administrative user details entry.](/content/assets/333-confluence-config-06-large.png)](/content/assets/333-confluence-config-06-large.png)
+[![Confluence administrative user details entry.](/docs/assets/333-confluence-config-06-large.png)](/docs/assets/333-confluence-config-06-large.png)
 
 If you elected to install the example site, you'll be greeted with a screen resembling the following screenshot.
 
-[![Confluence example site home page.](/content/assets/334-confluence-config-07-large.png)](/content/assets/334-confluence-config-07-large.png)
+[![Confluence example site home page.](/docs/assets/334-confluence-config-07-large.png)](/docs/assets/334-confluence-config-07-large.png)
 
 Congratulations! You've successfully installed Confluence on your Ubuntu 9.10 Linode.
 

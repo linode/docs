@@ -12,23 +12,23 @@ modified_by:
 published: 2015-06-29
 title: 'Apache Web Server on Debian 8 (Jessie)'
 external_resources:
- - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/content/2.4/)'
- - '[Apache Configuration](/content/web-servers/apache/configuration/)'
+ - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
+ - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
-![apache_banner](/content/assets/Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
+![apache_banner](/docs/assets/Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Debian 8.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Debian 8](/content/websites/lamp/lamp-server-debian-8) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Debian 8](/docs/websites/lamp/lamp-server-debian-8) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 

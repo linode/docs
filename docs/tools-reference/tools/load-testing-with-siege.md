@@ -16,7 +16,7 @@ external_resources:
 
 Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.
 
-![Load Testing Web Servers with Siege](/content/assets/load-testing-web-servers-with-siege.png)
+![Load Testing Web Servers with Siege](/docs/assets/load-testing-web-servers-with-siege.png)
 
 This guide is for Debian or Ubuntu systems.
 

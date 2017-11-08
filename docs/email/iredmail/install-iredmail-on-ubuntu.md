@@ -16,7 +16,7 @@ published: 2014-10-06
 title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
  
@@ -25,19 +25,19 @@ title: 'Install iRedmail, Open-Source Mail Server, on Ubuntu'
 
 Running your own mail server has many benefits. It allows you to manage the size of your mailboxes and attachments, run hourly/daily email backups, view mail logs, and gives you the freedom to use any domain name available. The drawback is usually the in-depth and sometimes complicated process of installing all the necessary parts. This guide uses a streamlined process, the iRedMail install script, and should have you up and running your mail server in under 15 minutes.
 
-![Installing iRedMail on your Linode](/content/assets/iredmail_tg.png "Installing iRedMail on your Linode")
+![Installing iRedMail on your Linode](/docs/assets/iredmail_tg.png "Installing iRedMail on your Linode")
 
 ## Prerequisites
 
 Before beginning this guide you should have:
 
 - A domain name.
-- An understanding of the [Linux command line](/content/networking/ssh/using-the-terminal).
+- An understanding of the [Linux command line](/docs/networking/ssh/using-the-terminal).
 - A Linode running Ubuntu 14.04.
 
-This guide assumes you've followed the Linode [Getting Started](/content/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
+This guide assumes you've followed the Linode [Getting Started](/docs/getting-started) documentation If you haven't done so, read through the guide, and return here following the completion of the "Setting the Hostname" section.
 
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ### MX Record
 
@@ -84,48 +84,48 @@ The next few steps were taken directly from the iRedMail [Ubuntu installation st
 
 5. Press "enter" to say "yes" to installing iRedMail. NOTE: Ctrl-C will exit the installation process when pressed at any time prior to step #12.
 
-    ![iredmail install confirm](/content/assets/iredmail-install-confirm.png)
+    ![iredmail install confirm](/docs/assets/iredmail-install-confirm.png)
 
 6. Press "enter" to accept /var/vmail as the default mail storage directory
 
-    ![mail storage dir](/content/assets/mail-storage-dir.png)
+    ![mail storage dir](/docs/assets/mail-storage-dir.png)
 
 7. Use the "up" and down arrow keys to highlight your preferred backend. Press "space" to select your preferred option, then press "enter". If you're unsure, choose `MySQL`.
 
-    ![choose backend db](/content/assets/choose-backend-db.png)
+    ![choose backend db](/docs/assets/choose-backend-db.png)
 
 8. Choose a password for your MySQL root administrator and press "enter". Be sure to commit the password to memory or paper.
 
-    ![mysql password](/content/assets/mysql-password.png)
+    ![mysql password](/docs/assets/mysql-password.png)
 
 9. Enter your domain name as the first virtual domain name and press "enter".
 
-    ![virtual domain name](/content/assets/virtual-domain-name.png)
+    ![virtual domain name](/docs/assets/virtual-domain-name.png)
 
 10. By default, iRedMail configures postmaster@yourdomain.com as the default administrator. Enter a password for your iRedMail administrator and press "enter".
 
-    ![admin password](/content/assets/admin-password.png)
+    ![admin password](/docs/assets/admin-password.png)
 
 11. The next screen lists optional components to be included in your MySQL backend. While none of these are required, We recommend the installation of all components, since the benefits of each add to the function and security of your mail server.
 
-    ![mysql backend](/content/assets/mysql-backend.png)
+    ![mysql backend](/docs/assets/mysql-backend.png)
 
 12. This step indicates that the configuration is complete, references the location of the SENSITIVE config file and asks (y or n) if you’d like to continue. Type "y".
 
-    ![config complete](/content/assets/config-complete.png)
+    ![config complete](/docs/assets/config-complete.png)
 
 13. The installer then downloads and installs the appropriate files. After it completes, you will receive a prompt asking whether you would like to use iRedMail’s firewall rules at `/etc/default/iptables`, and identifies your SSHD port. Type "y" to accept, or "n" if you want to configure your firewall manually.
 
-    ![iredmail fw and ssh port](/content/assets/iredmail-fw-and-ssh-port.png)
+    ![iredmail fw and ssh port](/docs/assets/iredmail-fw-and-ssh-port.png)
 
 
 14. After typing "y", the install screen will ask if you’d like to restart the firewall. Type "y".
 
-    ![restart firewall](/content/assets/restart-firewall.png)
+    ![restart firewall](/docs/assets/restart-firewall.png)
 
 15. The installation is now complete! While the bottom half of the screen is filled with useful URL information and the location of the iRedMail tips file, a couple emails will be waiting in postmaster@yourdomain.com’s inbox.
 
-    ![install complete](/content/assets/install-complete.png)
+    ![install complete](/docs/assets/install-complete.png)
 
 16.  Reboot the Linode and navigate to `https://mail.yourdomain.com/mail` and login as “postmaster@yourdomain.com” to retrieve the necessary info.
 
@@ -139,15 +139,15 @@ iRedMail is packaged with a mail server account configuration called iRedAdmin. 
 
 1. To access iRedAdmin, navigate to `https://yourdomain.com/iredadmin` and log in with your postmaster@yourdomain.com user.
 
-    ![adduser1](/content/assets/adduser1.png)
+    ![adduser1](/docs/assets/adduser1.png)
 
 2. Once the dashboard page loads, navigate to the `Add` dropdown and select `User`.
 
-    ![adduser2](/content/assets/adduser2.png)
+    ![adduser2](/docs/assets/adduser2.png)
 
 3. Fill in the address, password, display name, and mailbox quota blocks then click **Add** will complete the process.
 
-    ![adduser3](/content/assets/adduser3.png)
+    ![adduser3](/docs/assets/adduser3.png)
 
 ## Certificates, SPF, DKIM, and rDNS
 
@@ -219,7 +219,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 
 1. Navigate to your DNS provider, either where you purchased your domain name or Linode if you’ve transferred your DNS, and enter the following bits of information in your subdomain area to activate SPF. If you are using Linode's DNS manager, you can leave the name field blank, but other DNS providers may require you to specify @ for the hostname.
 
-    [![SPF Record](/content/assets/iredmail-spf_preview.png)](/content/assets/iredmail-spf.png)
+    [![SPF Record](/docs/assets/iredmail-spf_preview.png)](/docs/assets/iredmail-spf.png)
 
         hostname  | ip address/url                | record type | ttl
         --------  | ----------------------------- | ----------- | ---
@@ -232,7 +232,7 @@ This section covers the insertion of SPF and DKIM records in your DNS entry. SPF
 1. In the same area of your DNS host records, add the following entry to enable DKIM. The IP address/url entry following the “p=“ is your public DKIM key, which can be found in your “Details of this iRedMail installation” email about halfway down under the “DNS record for DKIM support” section. Copy everything BETWEEN the double quotes and place after the “p=“ portion of the dkim._domainkey DNS entry.
 
 
-    [![DKIM Record](/content/assets/iredmail-dkim_preview.png)](/content/assets/iredmail-dkim.png)
+    [![DKIM Record](/docs/assets/iredmail-dkim_preview.png)](/docs/assets/iredmail-dkim.png)
 
         hostname        | ip address/url      | record type | ttl
         --------------  | ------------------- | ----------- | ---
@@ -400,16 +400,16 @@ Familiarize yourself with the various files, configs, and settings listed in the
 
 [l]:https://www.linode.com
 [i]:http://www.iredmail.org
-[h]:https://www.linode.com/content/getting-started
-[u]:http://www.iredmail.org/content/install.iredmail.on.debian.ubuntu.html
+[h]:https://www.linode.com/docs/getting-started
+[u]:http://www.iredmail.org/docs/install.iredmail.on.debian.ubuntu.html
 [d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com
-[r]:/content/networking/dns/configure-your-linode-for-reverse-dns/
-[c]:https://www.linode.com/content/websites/ssl/obtaining-a-commercial-ssl-certificate
-[a]:https://www.linode.com/content/networking/dns/introduction-to-dns-records#mx
+[r]:/docs/networking/dns/configure-your-linode-for-reverse-dns/
+[c]:https://www.linode.com/docs/websites/ssl/obtaining-a-commercial-ssl-certificate
+[a]:https://www.linode.com/docs/networking/dns/introduction-to-dns-records#mx
 [f]:http://www.iredmail.org/forum/post30654.html#p30654
 [p]:http://wiki.policyd.org/_detail/policyd_web_gui.png?id=screenshots
 [d]:http://wiki.policyd.org/documentation
 [w]:http://www.awstats.org/awstats.mail.html
-[e]:http://www.awstats.org/content/index.html
+[e]:http://www.awstats.org/docs/index.html

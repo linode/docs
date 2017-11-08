@@ -48,7 +48,7 @@ Before you can install some components for ISPConfig, you will need to install s
 
 # Install Postfix, Courier, MySQL, and Dependencies
 
-In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/content/databases/mysql/). You will need to read the documentation for detailed installation instructions.
+In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
 Issue the following command:
 
@@ -70,7 +70,7 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 # Install Amavisd-new and SpamAssassin
 
-The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/content/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
+The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
 
@@ -96,7 +96,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
     mv vlogger-1.3/vlogger /usr/sbin/
     rm -rf vlogger*
 
-More information on Webalizer can be found in our [Webalizer documentation](/content/web-applications/analytics/webalizer/).
+More information on Webalizer can be found in our [Webalizer documentation](/docs/web-applications/analytics/webalizer/).
 
 # Install fail2ban
 
@@ -104,7 +104,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     yum install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/content/security/using-fail2ban-for-security).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-for-security).
 
 # Installing ISPConfig
 

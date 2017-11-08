@@ -14,7 +14,7 @@ published: 2011-04-05
 title: Using MySQL Relational Databases on Arch Linux
 ---
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/content/lemp-guides/arch-linux/) and [LAMP guides](/content/lamp-guides/).
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on Arch Linux. If you would like to deploy MySQL as part of an application stack, consider our [LEMP](/docs/lemp-guides/arch-linux/) and [LAMP guides](/docs/lamp-guides/).
 
 # System Configuration
 
@@ -63,7 +63,7 @@ Consult the "More Information" section at the end of this tutorial for additiona
 
     /etc/rc.d/mysqld restart
 
-Please reference our [secure MySQL remote access guide](/content/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
 
 # Use MySQL
 

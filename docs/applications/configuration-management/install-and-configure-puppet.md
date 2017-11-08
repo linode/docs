@@ -18,7 +18,7 @@ external_resources:
 
 [Puppet](https://puppetlabs.com/) is a configuration automation platform that simplifies various system administrator tasks. Puppet uses a client/server model where the managed servers, called *Puppet agents*, talk to and pull down configuration profiles from the *Puppet master*.
 
-![Install and Configure Puppet](/content/assets/install-puppet-title.png "Install and Configure Puppet")
+![Install and Configure Puppet](/docs/assets/install-puppet-title.png "Install and Configure Puppet")
 
 Puppet is written in its own custom language, meant to be accessible to system administrators. A module, located on the Puppet master, describes the desired system. The Puppet software then translates the module into code and alters the agent servers as needed when the `puppet agent` command is run on an agent node or automatically at designated intervals.
 
@@ -32,7 +32,7 @@ Begin this guide as the `root` user. A limited user with administrative privileg
 
 1.  You should have three available Linodes, one of which has at least four CPU cores for the Puppet master. A [Linode 8GB](/pricing) plan is recommended. The two other nodes can be of any plan size, depending on how you intend to use them after Puppet is installed and configured.
 
-2.  Follow the [Getting Started](/content/getting-started) guide and ensure your Linodes are configured to use the same timezone.
+2.  Follow the [Getting Started](/docs/getting-started) guide and ensure your Linodes are configured to use the same timezone.
 
     {{< note >}}
 For ease of use, set the Puppet master server's hostname to `puppet`, and have a valid fully-qualified domain name (FQDN).
@@ -61,7 +61,7 @@ wget https://yum.puppetlabs.com/puppetlabs-release-pc1-OS-VERSION.noarch.rpm
 
 wget https://apt.puppetlabs.com/puppetlabs-release-pc1-VERSION.deb
 
-Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](https://www.linode.com/content/tools-reference/linux-package-management).
+Any Ubuntu-specific commands will then have to be amended for the proper distribution. More information can be found in [Puppet's Installation Documentation](https://docs.puppetlabs.com/puppet/4.0/reference/install_linux.html#install-a-release-package-to-enable-puppet-labs-package-repositories) or our guide to [package management](https://www.linode.com/docs/tools-reference/linux-package-management).
 {{< /note >}}
 
 2.  Install the `puppetmaster-passenger` package:
@@ -164,7 +164,7 @@ server=puppet.example.com
 
 ## Add Modules to Configure Agent Nodes
 
-Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/content/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
+Both the Puppet master and agent nodes configured above are functional, but not secure. Based on concepts from the [Securing Your Server](/docs/security/securing-your-server/) guide, a limited user and a firewall should be configured. This can be done on all nodes through the creation of basic Puppet modules, shown below.
 
 {{< note >}}
 This is not meant to provide a basis for a fully-hardened server, and is intended only as a starting point. Alter and add firewall rules and other configuration options, depending on your specific needs.

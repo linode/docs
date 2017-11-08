@@ -30,7 +30,7 @@ Warning: current kernel is not supported by the linux-image-extra-virtual
           linux-image-virtual kernel and linux-image-extra-virtual for AUFS support.
           + sleep 10
 
-This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS. If you require AUFS support, you will need to configure a [distribution supplied](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/content/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
+This message can be safely ignored, as the script will continue the installation using DeviceMapper or OverlayFS. If you require AUFS support, you will need to configure a [distribution supplied](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [custom compiled](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu) kernel.
 {{< /note >}}
 
 2.  If necessary, add the non-root user to the "docker" group:

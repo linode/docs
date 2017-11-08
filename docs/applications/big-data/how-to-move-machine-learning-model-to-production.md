@@ -23,9 +23,9 @@ This guide will show you how to create a simple Flask API that will use machine 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -56,7 +56,7 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
 ### Test it on Jupyter
 
-If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/content/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
+If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
 
 ## Prepare a Model
 
@@ -279,7 +279,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
 
 1.  Right click and download the image below onto your local machine:
 
-    ![MNIST 7](/content/assets/machine-learning/7.png "MNIST 7")
+    ![MNIST 7](/docs/assets/machine-learning/7.png "MNIST 7")
 
 2.  From your local machine, use `curl` to POST the image to your API. Replace the IP address with the public IP address of your Linode, and provide the absolute path to the downloaded image in place of `/path/to/7.png`:
 

@@ -20,9 +20,9 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![How to Use Dockerfiles](/content/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
+![How to Use Dockerfiles](/docs/assets/docker/how-to-use-dockerfiles.png "How to Use Dockerfiles")
 
-[Docker images](/content/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
+[Docker images](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment#pull-docker-images) make it easy to deploy multiple containers without having to maintain the same across multiple virtual machines.
 
 You can use a Dockerfile to automate installation and configuration of an image and its dependencies.
 

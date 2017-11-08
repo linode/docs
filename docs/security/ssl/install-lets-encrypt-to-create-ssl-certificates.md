@@ -20,7 +20,7 @@ contributor:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-![Let's Encrypt](/content/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
+![Let's Encrypt](/docs/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
 
@@ -33,9 +33,9 @@ This tutorial will cover the following:
 
 ## Before you Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the steps in our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
+2.  Complete the steps in our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access, and remove unnecessary network services.
 
 3.  Update your server's software packages:
 
@@ -48,7 +48,7 @@ This tutorial will cover the following:
         sudo apt-get update && sudo apt-get upgrade
 
     {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Download and Install Let's Encrypt
@@ -85,11 +85,11 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
 
 2.  Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **TAB** followed by **ENTER** or **RETURN** to save.
 
-    ![Let's Encrypt admin email prompt](/content/assets/lets-encrypt-recovery-email-prompt.png)
+    ![Let's Encrypt admin email prompt](/docs/assets/lets-encrypt-recovery-email-prompt.png)
 
 3.  Agree to the Terms of Service.
 
-    ![Let's Encrypt Terms of Service prompt](/content/assets/lets-encrypt-agree-tos-prompt.png)
+    ![Let's Encrypt Terms of Service prompt](/docs/assets/lets-encrypt-agree-tos-prompt.png)
 
 4.  If all goes well, a message similar to the one below will appear. Its appearance means Let's Encrypt has approved and issued your certificates.
 
@@ -196,7 +196,7 @@ We also recommend automating your certificate renewal since it can be easy to lo
     *   **>> /var/log/letsencrypt/letsencrypt-auto-update.log**: record the *standard output* and *standard error* to a log file named `letsencrypt-auto-update.log`
     *   **tee --append /etc/crontab**: save the new cron job to the `/etc/crontab` file
 
-    The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/content/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
+    The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
 
     {{< note >}}
 The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
@@ -230,6 +230,6 @@ To change the update frequency, choose a different parameter, for example, `@hou
 
 Now that you have installed Let's Encrypt and obtained your free SSL certificates, you can configure any package that supports commercial or self-signed SSL certificates to use them.
 
-- [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/content/email/postfix/email-with-postfix-dovecot-and-mysql)
-- [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/content/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
-- [SSL Certificates with Apache on Debian & Ubuntu](https://www.linode.com/content/security/ssl/ssl-apache2-debian-ubuntu)
+- [Email with Postfix, Dovecot, and MySQL](https://www.linode.com/docs/email/postfix/email-with-postfix-dovecot-and-mysql)
+- [How to Provide Encrypted Access to Resources Using SSL Certificates on Nginx](https://www.linode.com/docs/security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx)
+- [SSL Certificates with Apache on Debian & Ubuntu](https://www.linode.com/docs/security/ssl/ssl-apache2-debian-ubuntu)

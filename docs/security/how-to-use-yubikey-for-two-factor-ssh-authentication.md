@@ -29,9 +29,9 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 ## Before You Begin
 
-1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/content/getting-started) guide.
+1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/getting-started) guide.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your local system. Then update your server using the following:
 
@@ -51,15 +51,15 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-[![YubiKey Personalization Tool](/content/assets/yubikey-personalization-small.png)](/content/assets/yubikey-personalization.png)
+[![YubiKey Personalization Tool](/docs/assets/yubikey-personalization-small.png)](/docs/assets/yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 
-![Prompt to save the log file](/content/assets/yubikey-log-window.png)
+![Prompt to save the log file](/docs/assets/yubikey-log-window.png)
 
 4. Now select 'Upload to Yubico'. In the web form that opens, fill in your email address. Select the field asking for an 'OTP from the YubiKey' and touch the button on your YubiKey (or touch and hold if you programmed slot 2). This should fill the field with a string of letters. Complete the captcha and press 'Upload AES key'.
 
-![AES key upload form](/content/assets/yubikey-upload-form.png)
+![AES key upload form](/docs/assets/yubikey-upload-form.png)
 
 {{< note >}}
 The page will respond with a table containing your key information. You should keep this data in a safe place. Should you ever lose your YubiKey, you will need this data to reconfigure a new one with the same settings.
@@ -150,7 +150,7 @@ UsePAM yes
 
 Now that this process is done, you can test your login by typing `ssh user@example.com`. Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
 
-![SSH window](/content/assets/yubikey-ssh.png)
+![SSH window](/docs/assets/yubikey-ssh.png)
 
 You can now log into your server.
 

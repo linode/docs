@@ -12,15 +12,15 @@ modified_by:
 published: 2010-07-01
 title: Modify File Permissions with chmod
 external_resources:
- - '[Manage File Permission with Users and Groups](/content/tools-reference/linux-users-and-groups)'
- - '[Administration Basics](/content/using-linux/administration-basics)'
+ - '[Manage File Permission with Users and Groups](/docs/tools-reference/linux-users-and-groups)'
+ - '[Administration Basics](/docs/using-linux/administration-basics)'
 ---
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
-![Title graphic](/content/assets/modify_file_permissions_with_chmod_smg.png)
+![Title graphic](/docs/assets/modify_file_permissions_with_chmod_smg.png)
 
-This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/content/using-linux/administration-basics) and the [Linux users and groups guide](/content/tools-reference/linux-users-and-groups/).
+This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
 ## Using Chmod
 
@@ -41,7 +41,7 @@ The first block of data contains information regarding the file permissions and 
 
 The remaining characters represent the core permissions. In groupings of three, these characters represent read, write, and execute permissions. The first grouping represents the owners permissions, the second grouping represents the usergroup that owns the file, and the final grouping represents the permissions of all users on the system.
 
-Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/content/tools-reference/linux-users-and-groups#additional-file-permissions) that control other aspects of access to files.
+Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional-file-permissions) that control other aspects of access to files.
 
 ### The Chmod Command
 

@@ -22,7 +22,7 @@ Jupyter Notebook is an interactive, enhanced shell that can be run within a web 
 
 Because this guide is written for Linodes running Ubuntu 16.04, you should:
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and log into your server via SSH.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and log into your server via SSH.
 2.  Have [Apache 2.4.18 or higher](https://help.ubuntu.com/lts/serverguide/httpd.html) installed.
 
 ## Install Anaconda Package Manager
@@ -167,19 +167,19 @@ The `/jupyter` url path can have any name as long as it matches the base url pat
 
 1.  On your local machine, navigate to `https://your-domain-name/` where `your-domain-name` is the IP address of your Linode or your selected domain name. If using a self-signed certificate, your browser might require that you confirm a security exception:
 
-    ![OpenSSL Browser Error](/content/assets/jupyter-add-exception.png)
+    ![OpenSSL Browser Error](/docs/assets/jupyter-add-exception.png)
 
 2.  If Apache is configured properly, Jupyter prompts you to log in:
 
-    ![Jupyter Login Page](/content/assets/jupyter-login-page.png)
+    ![Jupyter Login Page](/docs/assets/jupyter-login-page.png)
 
 3.  Create a new notebook using a Python kernel:
 
-    ![Jupyter Python Kernel](/content/assets/jupyter-new-notebook.png)
+    ![Jupyter Python Kernel](/docs/assets/jupyter-new-notebook.png)
 
 4.  The Notebook is ready to run Python code or additional kernels added in the future:
 
-    ![Jupyter Notebook Code](/content/assets/jupyter-code-sample.png)
+    ![Jupyter Notebook Code](/docs/assets/jupyter-code-sample.png)
 
 Note this setup is for a single-user only; simultaneous users on the same Notebook may cause unpredictable results. For a multi-user server, consider using [JupyterHub](https://github.com/jupyterhub/jupyterhub) instead.
 

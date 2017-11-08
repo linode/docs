@@ -12,24 +12,24 @@ modified_by:
 published: 2014-02-07
 title: Install a LEMP (Linux, Nginx, MariaDB, PHP) Stack on Debian 8
 external_resources:
-    - '[Basic Nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
-    - '[Clustered Web Servers and Software Load Balancing with Nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
-    - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/content/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
-    - '[Use PostgeSQL as an Alternative to MySQL for data storage](/content/databases/postgresql/debian-6-squeeze)'
-    - '[Deploy Python Applications with uWSGI and Nginx](/content/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
+    - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+    - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
+    - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
+    - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
+    - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux, Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
 Prior to installing your LEMP stack ensure that:
 
--   You have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides.
+-   You have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides.
 -   You have a hostname and *fully-qualified domain name* (FQDN) configured on your Linode. To ensure this is set run:
 
         hostname
@@ -43,7 +43,7 @@ Prior to installing your LEMP stack ensure that:
 
 ## Install the Nginx Web Server
 
-There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/content/websites/nginx/nginx-web-server-debian-8) guide.
+There are several ways to install Nginx. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. For other options to install Nginx, you can read our [Installing Nginx on Debian 8](/docs/websites/nginx/nginx-web-server-debian-8) guide.
 
 Install Nginx:
 
@@ -86,7 +86,7 @@ server {
 
     The source file is saved, and the site can be re-enabled at any time.
 
-For more information regarding Nginx configuration options, check out our [Overview of Nginx Configuration](/content/websites/nginx/basic-nginx-configuration).
+For more information regarding Nginx configuration options, check out our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
 
 ## Deploy PHP with FastCGI
 
@@ -102,10 +102,10 @@ For more information regarding Nginx configuration options, check out our [Overv
     * Ensure that the process will start following a reboot cycle.
 
           cd /opt/
-          sudo wget -O php-fastcgi-deb.sh http://www.linode.com/content/assets/1548-php-fastcgi-deb.sh
+          sudo wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/1548-php-fastcgi-deb.sh
           sudo mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
           sudo chmod +x /usr/bin/php-fastcgi
-          sudo wget -O init-php-fastcgi-deb.sh http://www.linode.com/content/assets/1549-init-php-fastcgi-deb.sh
+          sudo wget -O init-php-fastcgi-deb.sh http://www.linode.com/docs/assets/1549-init-php-fastcgi-deb.sh
           sudo mv /opt/init-php-fastcgi-deb.sh /etc/init.d/php-fastcgi
           sudo chmod +x /etc/init.d/php-fastcgi
           sudo /etc/init.d/php-fastcgi start

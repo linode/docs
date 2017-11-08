@@ -18,7 +18,7 @@ Web.py is a web application framework that stresses minimalism, flexibility, rap
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -38,11 +38,11 @@ Issue the following command to install all prerequisite software:
 
     apt-get install apache2 python
 
-The application you develop with Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/content/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
+The application you develop with Web.py may require additional dependencies that you can discover and install using your system's [package management tool](/docs/using-linux/package-management#debian-and-ubuntu-package-management). The following command will install the PostgreSQL database and appropriate database drivers:
 
     apt-get install python-psycopg2 postgresql
 
-For more information about installing and using the PostgreSQL database, [consider our documentation](/content/databases/postgresql/ubuntu-10-04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
+For more information about installing and using the PostgreSQL database, [consider our documentation](/docs/databases/postgresql/ubuntu-10-04-lucid). Conversely, if you only need a simple embedded relational database, consider using SQLite, which you can install with the following command:
 
     apt-get install python-pysqlite2 sqlite3
 
@@ -195,7 +195,7 @@ application = app.wsgifunc()
 This program connects to the PostgreSQL database "webpy" and looks in the table "notes" for a note that matches the text "a note." If the note is found, the program returns the text "a note is found"; otherwise, the page will return "no notes are found." Make sure there is a role or user in your PostgreSQL database called "webpy" with the credentials specified on the `db` line of this example.
 
  {{< note >}}
-For more information about PostgreSQL, see our [PostgreSQL guides](/content/databases/postgresql).
+For more information about PostgreSQL, see our [PostgreSQL guides](/docs/databases/postgresql).
 {{< /note >}}
 
 At the PosgreSQL prompt, issue the following commands to the PostgreSQL shell statement to create the required database and tables. The "webpy" user for PostgreSQL must already exist:
@@ -218,8 +218,8 @@ Congratulations on the development of your new Web.py application!
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Web.py Project Home Page](http://webpy.org/)
-- [Official Web.py Documentation](http://webpy.org/content/0.3)
-- [Rewrite URLs in Apache with Mod\_Rewrite](/content/web-servers/apache/configuration/rewriting-urls)
+- [Official Web.py Documentation](http://webpy.org/docs/0.3)
+- [Rewrite URLs in Apache with Mod\_Rewrite](/docs/web-servers/apache/configuration/rewriting-urls)
 - [WSGI Configuration Options](http://code.google.com/p/modwsgi/wiki/ConfigurationDirectives)
 
 

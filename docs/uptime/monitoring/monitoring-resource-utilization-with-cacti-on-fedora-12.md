@@ -16,11 +16,11 @@ title: Monitoring Resource Utilization with Cacti on Fedora 12
 
 
 
-The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/content/uptime/monitoring/monitoring-servers-with-munin-on-fedora-14) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
+The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-fedora-14) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we, assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before installing Cacti we, assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 # Installing Prerequisites
 
@@ -48,7 +48,7 @@ Before installing Cacti we must install a few basic dependencies that are critic
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components.
 
-The above command will additionally install the Apache web server. Consider our documentation of [installing the Apache HTTP Server](/content/web-servers/apache/installation/fedora-12) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including Apache with PHP running as a CGI process and with [nginx](/content/web-servers/nginx/) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation of [installing the Apache HTTP Server](/docs/web-servers/apache/installation/fedora-12) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including Apache with PHP running as a CGI process and with [nginx](/docs/web-servers/nginx/) running PHP as a FastCGI process.
 
 ### Configuring SNMPD
 
@@ -80,7 +80,7 @@ From this point we'll continue the configuration of Cacti through the browser. B
 >
 > \</Directory\>
 
-Where `193.194.195.196` is the IP address of your *local* Internet connection. Conversely you can copy the **entire** contents of the `/etc/httpd/conf.d/cacti.conf` into a [virtual hosting directive](/content/web-servers/apache/configuration/configuration-basics) and provide [authentication based access control](/content/web-servers/apache/configuration/http-authentication). When you have completed the modification of `cacti.conf` be sure to restart Apache to ensure that the settings will take effect. Issue the following command:
+Where `193.194.195.196` is the IP address of your *local* Internet connection. Conversely you can copy the **entire** contents of the `/etc/httpd/conf.d/cacti.conf` into a [virtual hosting directive](/docs/web-servers/apache/configuration/configuration-basics) and provide [authentication based access control](/docs/web-servers/apache/configuration/http-authentication). When you have completed the modification of `cacti.conf` be sure to restart Apache to ensure that the settings will take effect. Issue the following command:
 
     /etc/init.d/httpd restart
 
@@ -106,7 +106,7 @@ crontab
 
 > */5* \* \* \* /usr/bin/php /usr/share/cacti/poller.php \> /dev/null 2\>&1
 
-To learn more about using [cron to schedule tasks](/content/linux-tools/utilities/cron), consider our documentation. The above "cronjob" runs Cacti's PHP poller every five minutes. If you need to alter this interval, modify the cron specification and modify the "Poller" settings from within Cacti's console tab. Be aware that it takes Cacti a full polling cycle to gather data and graphs.
+To learn more about using [cron to schedule tasks](/docs/linux-tools/utilities/cron), consider our documentation. The above "cronjob" runs Cacti's PHP poller every five minutes. If you need to alter this interval, modify the cron specification and modify the "Poller" settings from within Cacti's console tab. Be aware that it takes Cacti a full polling cycle to gather data and graphs.
 
 # Configuring Client Machines
 
@@ -139,7 +139,7 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/content/security/basics)
+- [Linux Security Basics](/docs/security/basics)
 
 
 

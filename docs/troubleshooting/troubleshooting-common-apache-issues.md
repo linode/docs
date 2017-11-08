@@ -12,23 +12,23 @@ modified_by:
 published: 2009-11-06
 title: Troubleshooting Common Apache Issues
 external_resources:
- - '[Apache documentation](http://httpd.apache.org/content/)'
+ - '[Apache documentation](http://httpd.apache.org/docs/)'
  - '[Apache user wiki](http://wiki.apache.org/httpd/)'
 ---
 
-![Troubleshooting Common Apache Issues](/content/assets/troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")
+![Troubleshooting Common Apache Issues](/docs/assets/troubleshooting-common-apache-issues.jpg "Troubleshooting Common Apache Issues")
 
-This article provides troubleshooting guidelines for the [Apache web server](/content/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.
+This article provides troubleshooting guidelines for the [Apache web server](/docs/web-servers/apache/). Apache is a highly customizable tool for serving HTTP traffic. Because it allows for so many different configurations and settings in so many different places, sometimes Apache configuration can befuddle even advanced users.
 
 In this guide, you'll start with some basic troubleshooting steps and then proceed to more advanced techniques that can help you untangle conflicting directives. We recommend starting at the beginning of this guide and going through it in order. By the time you're done, you should be able to debug your Apache installation.
 
 ## Is Apache Running?
 
-First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/content/troubleshooting/troubleshooting/#is-the-web-server-running).
+First, check whether Apache is running. Follow the process in this [Troubleshooting Guide](/docs/troubleshooting/troubleshooting/#is-the-web-server-running).
 
 If it isn't, go ahead and restart Apache, as explained in the next section.
 
-You may also want to investigate the possibility of [memory issues](/content/troubleshooting/troubleshooting-memory-and-networking-issues#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
+You may also want to investigate the possibility of [memory issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues#diagnosing-and-fixing-memory-issues), if Apache is stopping unexpectedly.
 
 ## Restart Apache
 
@@ -165,5 +165,5 @@ If you're continuing to have issues with Apache, we encourage you to make contac
 
 You might want to look at the following Linode guides:
 
--   A group of guides for various [web frameworks](/content/frameworks/)
--   General [Apache HTTP server](/content/web-servers/apache) guides
+-   A group of guides for various [web frameworks](/docs/frameworks/)
+-   General [Apache HTTP server](/docs/web-servers/apache) guides

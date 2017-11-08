@@ -17,7 +17,7 @@ external_resources:
 - '[Apache Hadoop project page](http://hadoop.apache.org/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
@@ -25,13 +25,13 @@ external_resources:
 
 Spark is a general purpose cluster computing system. It can deploy and run parallel applications on clusters ranging from a single node to thousands of distributed nodes. Spark was originally designed to run Scala applications, but also supports Java, Python and R.
 
-![Install, Configure and Run Spark on top of a YARN cluster](/content/assets/spark/spark-logo.png "Install, Configure and Run Spark on top of a YARN cluster")
+![Install, Configure and Run Spark on top of a YARN cluster](/docs/assets/spark/spark-logo.png "Install, Configure and Run Spark on top of a YARN cluster")
 
-Spark can run as a standalone cluster manager, or by taking advantage of dedicated cluster management frameworks like [Apache Hadoop YARN](https://hadoop.apache.org/content/current/hadoop-yarn/hadoop-yarn-site/YARN.html) or [Apache Mesos](http://mesos.apache.org/).
+Spark can run as a standalone cluster manager, or by taking advantage of dedicated cluster management frameworks like [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) or [Apache Mesos](http://mesos.apache.org/).
 
 ## Before You Begin
 
-1. Follow our guide on how to [install and configure a three-node Hadoop cluster](/content/databases/hadoop/install-and-configure-hadoop-cluster) to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called **node-master** and the slave nodes (HDFS DataNode and YARN NodeManager) are called **node1** and **node2**.
+1. Follow our guide on how to [install and configure a three-node Hadoop cluster](/docs/databases/hadoop/install-and-configure-hadoop-cluster) to set up your YARN cluster. The master node (HDFS NameNode and YARN ResourceManager) is called **node-master** and the slave nodes (HDFS DataNode and YARN NodeManager) are called **node1** and **node2**.
 
     Run the commands in this guide from **node-master** unless otherwise specified.
 
@@ -46,7 +46,7 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
 
 {: .note}
 >
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Download and Install Spark Binaries
 
@@ -231,7 +231,7 @@ spark.history.ui.port             18080
 
 6.  Access the History Server by navigating to http://node-master:18080 in a web browser:
 
-    ![Screenshot of Spark History Server](/content/assets/spark/spark-history-server-wide.png "Screenshot of Spark History Server")
+    ![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png "Screenshot of Spark History Server")
 
 ## Run the Spark Shell
 
@@ -252,12 +252,12 @@ The Spark shell provides an interactive way to examine and work with your data.
         // Count the number of non blank lines
         input.filter(line => line.length()>0).count()
 
-The Scala Spark API is beyond the scope of this guide. You can find the official documentation on [Official Apache Spark documentation](https://spark.apache.org/content/latest/quick-start.html).
+The Scala Spark API is beyond the scope of this guide. You can find the official documentation on [Official Apache Spark documentation](https://spark.apache.org/docs/latest/quick-start.html).
 
 ## Where to Go Next ?
 
 Now that you have a running Spark cluster, you can:
 
-- Learn any of the Scala, Java, Python, or R APIs to create Spark applications from the [Apache Spark Programming Guide](https://spark.apache.org/content/latest/rdd-programming-guide.html)
-- Interact with your data with [Spark SQL](https://spark.apache.org/content/latest/sql-programming-guide.html)
+- Learn any of the Scala, Java, Python, or R APIs to create Spark applications from the [Apache Spark Programming Guide](https://spark.apache.org/docs/latest/rdd-programming-guide.html)
+- Interact with your data with [Spark SQL](https://spark.apache.org/docs/latest/sql-programming-guide.html)
 - Add machine learning capabilities to your applications with [Apache MLib](https://spark.apache.org/mllib/)

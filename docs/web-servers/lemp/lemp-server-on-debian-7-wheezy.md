@@ -12,22 +12,22 @@ modified_by:
 published: 2014-02-07
 title: 'LEMP Server on Debian 7 (Wheezy)'
 external_resources:
- - '[Basic Nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
- - '[Clustered Web Servers and Software Load Balancing with Nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
- - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/content/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
- - '[Use PostgeSQL as an Alternative to MySQL for data storage](/content/databases/postgresql/debian-6-squeeze)'
- - '[Deploy Python Applications with uWSGI and Nginx](/content/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
+ - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[Clustered Web Servers and Software Load Balancing with Nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
+ - '[Deploy CGI and Perl Scripts with Perl-FastCGI and Nginx](/docs/web-servers/nginx/perl-fastcgi/debian-6-squeeze)'
+ - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/debian-6-squeeze)'
+ - '[Deploy Python Applications with uWSGI and Nginx](/docs/web-servers/nginx/python-uwsgi/debian-6-squeeze)'
 ---
 
 This document describes a compatible alternative to the **LAMP** (Linux,Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
-Prior to beginning this guide, please complete the [Getting Started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-![LEMP Server on Debian 7 (Wheezy)](/content/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7 (Wheezy)2")
+![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7 (Wheezy)2")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -45,7 +45,7 @@ Before beginning with the installation of this web application stack,issue the f
 
 There are several viable and popular options for installing the Nginx software. The method used here retrieves packages from the Debian Project's software repository and provides a stable and tested version of the web server. Another option would be to retrieve packages compiled by the Debian Backports project. Backports packages are more up to date than the stable packages provided by the Debian project. However, Backports do not necessarily receive the same updates, support, and maintenance that official packages receive.
 
-For more in-depth installation instructions consider our [guide to Installing Nginx](/content/web-servers/nginx/installation/debian-7-wheezy).
+For more in-depth installation instructions consider our [guide to Installing Nginx](/docs/web-servers/nginx/installation/debian-7-wheezy).
 
 To install Nginx from the Debian repository, issue the following command:
 
@@ -89,7 +89,7 @@ To deactivate a site, simply delete the symbolic link by issuing the following c
 
 The source file is saved, and the site can be re-enabled at any time.
 
-For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/content/websites/nginx/basic-nginx-configuration).
+For more information regarding Nginx configuration options, consider our [Overview of Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration).
 
 ## Deploy PHP with FastCGI
 
@@ -100,10 +100,10 @@ In order to deploy PHP applications, you will need to implement the following "P
 Issue the following sequence of commands to download a small wrapper script for PHP-FastCGI, configure an init script to control the process, start the process for the first time, and ensure that the process will start following a reboot cycle:
 
     cd /opt/
-    sudo wget -O php-fastcgi-deb.sh http://www.linode.com/content/assets/1548-php-fastcgi-deb.sh
+    sudo wget -O php-fastcgi-deb.sh http://www.linode.com/docs/assets/1548-php-fastcgi-deb.sh
     sudo mv /opt/php-fastcgi-deb.sh /usr/bin/php-fastcgi
     sudo chmod +x /usr/bin/php-fastcgi
-    sudo wget -O init-php-fastcgi-deb.sh http://www.linode.com/content/assets/1549-init-php-fastcgi-deb.sh
+    sudo wget -O init-php-fastcgi-deb.sh http://www.linode.com/docs/assets/1549-init-php-fastcgi-deb.sh
     sudo mv /opt/init-php-fastcgi-deb.sh /etc/init.d/php-fastcgi
     sudo chmod +x /etc/init.d/php-fastcgi
     sudo /etc/init.d/php-fastcgi start
@@ -178,7 +178,7 @@ MySQL database engine may be the leading open source relational database engine,
 
 2.  Set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-    [![Setting the MySQL root password in Debian Squeeze.](/content/assets/1550-wheezy-01-mysql-root-password.png)](/content/assets/1550-wheezy-01-mysql-root-password.png)
+    [![Setting the MySQL root password in Debian Squeeze.](/docs/assets/1550-wheezy-01-mysql-root-password.png)](/docs/assets/1550-wheezy-01-mysql-root-password.png)
 
 3.  Issue the following command to secure the MySQL instance:
 

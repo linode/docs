@@ -11,7 +11,7 @@ contributor:
     link: https://twitter.com/jesin_a
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
- - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/content/mod_fastcgi.html)'
+ - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
 modified: 2014-08-16
 modified_by:
   name: Linode
@@ -19,7 +19,7 @@ published: 2014-06-16
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
@@ -29,7 +29,7 @@ The main reason `mod_php` uses more resources is because it is loaded even for n
 
 Additionally, using PHP-FPM allows each virtual host to be configured to run PHP code as individual users. Previously, this was only possible by using suPHP.
 
-This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/content/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/content/tools-reference/linux-system-administration-basics) documentation series.
+This guide assumes that you are familiar and comfortable with setting up [LAMP stacks](/docs/websites/lamp) on Debian 7. If you are new to Linux server administration, you may be interested in reading our [Linux System Administration Basics](/docs/tools-reference/linux-system-administration-basics) documentation series.
 
 ## Installing mod_fastcgi and PHP-FPM
 

@@ -16,13 +16,13 @@ title: 'Websites with nginx on Ubuntu 10.10 (Maverick)'
 
 
 
-Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/content/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -120,9 +120,9 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 ### Create an Init Script to Manage nginx
 
-Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/content/assets/661-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
+Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/docs/assets/661-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
 
-    wget -O init-deb.sh http://www.linode.com/content/assets/661-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/661-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -131,13 +131,13 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by nginx. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
 # More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs nginx Documentation](/content/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/content/web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick)
-- [Configure PHP and FastCGI with nginx](/content/web-servers/nginx/php-fastcgi/ubuntu-10-10-maverick)
+- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-10-maverick)
+- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-10-maverick)

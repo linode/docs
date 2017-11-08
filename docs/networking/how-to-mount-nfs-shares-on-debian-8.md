@@ -15,7 +15,7 @@ published: 2014-02-27
 title: How to Mount NFS Shares on Debian 8
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
@@ -26,14 +26,14 @@ Network File System (**NFS**) is a file system that allows computer users to acc
 This guide walks you through the setup of two Linodes; one acting as the NFS server, and the other acting as the NFS client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. Other NFS setups can potentially send traffic over the public internet.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Prerequisites
 
 -   Two Debian 8 Linodes
 -   Linodes deployed in the same data center
--   Linodes configured to use private IPs - see the [Linux Static IP Configuration](/content/networking/linux-static-ip-configuration) guide
+-   Linodes configured to use private IPs - see the [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide
 
 ## NFS Server Setup
 

@@ -12,17 +12,17 @@ modified_by:
 published: 2014-01-15
 title: Linode Writer's Formatting Guide
 external_resources:
- - '[GitHub Beginners Guide](/content/github-guide)'
+ - '[GitHub Beginners Guide](/docs/github-guide)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
 ---
 
-![Linode Writer's Formatting Guide](/content/assets/linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
+![Linode Writer's Formatting Guide](/docs/assets/linode-writers-formatting-guide.png "Linode Writer's Formatting Guide")
 
 This guide provides templates and guidelines to use when creating or updating a guide for [Linode Docs](/docs).
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
-We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/content/contribute).
+We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/docs/contribute).
 
 ## General Layout
 
@@ -53,7 +53,7 @@ contributor:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ----
 
@@ -73,9 +73,9 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 {{< file-excerpt "Author Submission" >}}
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
 3.  Update your system:
 
@@ -87,7 +87,7 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 
 {{< file-excerpt "Guides Written for a Non-Root User" resource >}}
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 {{< /file-excerpt >}}
@@ -95,7 +95,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 {{< file-excerpt "Guides Written for a Root User" resource >}}
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 {{< /file-excerpt >}}
@@ -207,7 +207,7 @@ Within the file formatting, a code language or syntax should be defined at the e
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
 | {{< file >}}
-<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/content/assets/example_file_file.png"> |
+<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
 {{< /file >}}
 
 **Example**: File Excerpt format
@@ -215,7 +215,7 @@ Within the file formatting, a code language or syntax should be defined at the e
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
 | {{< file-excerpt >}}
-<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/content/assets/example_file_excerpt.png"> |
+<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_excerpt.png"> |
 {{< /file-excerpt >}}
 
 ### File Paths
@@ -241,7 +241,7 @@ When adding an image, ensure that all identifying attributes such as names and I
 
 | Up to 650 px wide. | Over 650 px wide. |
 |:--------------------------|:----------------------------------------------|
-| \!\[description\](/content/assets/filename.png) | \[!\[description\](/content/assets/filename_small.png)](/content/assets/filename.png) |
+| \!\[description\](/docs/assets/filename.png) | \[!\[description\](/docs/assets/filename_small.png)](/docs/assets/filename.png) |
 
 ### Key Combinations
 
@@ -252,11 +252,11 @@ When instructing a reader to use a combination of keys, format the key combinati
 | Press \*\*CTRL+N\*\* then \*\*X\*\* to exit the program.  | Press **CTRL+N** then **X** to exit the program. |
 ### Links
 
-Internal links to other Linode guides should be relative, starting at `/content/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
+Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
 | Internal | External |
 |:--------------------------|:----------------------------------------------|
-| \[Getting Started\](/content/getting-started) | \[Apache HTTP Server Documentation\](https://httpd.apache.org/content/)] |
+| \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](https://httpd.apache.org/docs/)] |
 
 ### Lists
 
@@ -273,9 +273,9 @@ Notes should be important text that does not necessarily fit the narrative of th
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
 | {{< note >}}
-<br>><br>> This is a sample note.<br> | <img src="/content/assets/example-note.png"> |
+<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
 | {{< caution >}}
-<br>><br>> This is a sample caution.<br> | <img src="/content/assets/example-caution.png"> |
+<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
 {{< /note >}}
 
 ### Numerical Values
@@ -305,7 +305,7 @@ Use single spaces between sentences; do not double-space.
 | by the hyphens | and colons | above. &nbsp;&nbsp;&nbsp; |
     </td>
     <td>
-    <img src="/content/assets/example-blue-stripe-table.png">
+    <img src="/docs/assets/example-blue-stripe-table.png">
     </td>
   </tr>
 </table>

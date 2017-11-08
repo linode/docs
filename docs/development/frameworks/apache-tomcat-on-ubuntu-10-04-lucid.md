@@ -18,11 +18,11 @@ title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
 
 Apache Tomcat is an open source software implementation of the Java Servlet and Java Server Pages technologies. You may choose to run application within Tomcat using either the OpenJDK implementation or the Sun Microsystems implementation of the Java development environment.
 
-Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/content/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/content/beginners-guide/) and the article concerning [systems administration basics](/content/using-linux/administration-basics).
+Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

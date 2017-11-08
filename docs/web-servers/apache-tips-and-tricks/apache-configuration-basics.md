@@ -12,23 +12,23 @@ modified_by:
 published: 2009-11-06
 title: Apache Configuration Basics
 external_resources:
- - '[Apache Installation](/content/websites/apache/)'
- - '[LAMP stack guides](/content/websites/lamp/)'
- - '[Troubleshooting Common Issues with Apache](/content/troubleshooting/troubleshooting-common-apache-issues/)'
+ - '[Apache Installation](/docs/websites/apache/)'
+ - '[LAMP stack guides](/docs/websites/lamp/)'
+ - '[Troubleshooting Common Issues with Apache](/docs/troubleshooting/troubleshooting-common-apache-issues/)'
  - '[Linode User Community](http://linode.com/community/)'
- - '[Apache Virtual Host Documentation](http://httpd.apache.org/content/2.2/vhosts/)'
- - '[Virtual Host Directives](http://httpd.apache.org/content/2.2/mod/core.html#virtualhost)'
- - '[Apache Control Interface](http://httpd.apache.org/content/2.2/programs/apachectl.html)'
- - '[HTTP Command](http://httpd.apache.org/content/2.2/programs/httpd.html)'
+ - '[Apache Virtual Host Documentation](http://httpd.apache.org/docs/2.2/vhosts/)'
+ - '[Virtual Host Directives](http://httpd.apache.org/docs/2.2/mod/core.html#virtualhost)'
+ - '[Apache Control Interface](http://httpd.apache.org/docs/2.2/programs/apachectl.html)'
+ - '[HTTP Command](http://httpd.apache.org/docs/2.2/programs/httpd.html)'
 ---
 
-![Apache Configuration Basics](/content/assets/apache-configuration-basics/Apache_Configuration_Basics_smg.png)
+![Apache Configuration Basics](/docs/assets/apache-configuration-basics/Apache_Configuration_Basics_smg.png)
 
 The Apache HTTP web server is in many respects the *de facto* standard for general purpose HTTP services. Through its large number of modules, it provides flexible support for proxy servers, URL rewriting, and granular access control. Furthermore, web developers often choose Apache for its support of server-side scripting using CGI, FastCGI, and embedded interpreters. These capabilities facilitate the quick and efficient execution of dynamic code. While there are several prominent alternatives to Apache, even within the boundaries of open source, the breadth of Apache usage is unique.
 
 The extraordinary degree of flexibility provided by Apache does not come without some cost; this mostly takes the form of a configuration structure that is sometimes confusing and often complicated. For this reason we've created this document and a number of other guides that seek to address this complexity and explore some more advanced and *optional* functionality of the Apache HTTP Sever.
 
-If you're interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate "[installing Apache guide](/content/websites/apache/)" for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate [LAMP guide](/content/websites/lamp/) for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.
+If you're interested in just getting a running web server and installing Apache for the first time, we recommend using the appropriate "[installing Apache guide](/docs/websites/apache/)" for your distribution of Linux. If you need a more full-featured LAMP stack, consider trying the appropriate [LAMP guide](/docs/websites/lamp/) for your distribution. This guide assumes that you have a running and up to date Linux system, have successfully installed Apache, and have logged into a shell session with root access.
 
 ## Apache Basics
 

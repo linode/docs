@@ -14,7 +14,7 @@ title: NodeBalancer SSL Configuration
 
 This guide will help you install an SSL certificate on your NodeBalancer. It includes step-by-step instructions for configuring a NodeBalancer to redirect all web connections over port 443/HTTPS using SSL. The provided directions are designed to work with Apache and Nginx web servers, running on Debian and Red Hat-based distributions.
 
-![Forcing all connections to use SSL with NodeBalancers.](/content/assets/NodeBalancer_SSL_Configuration_smg.png "Forcing all connections to use SSL with NodeBalancers.")
+![Forcing all connections to use SSL with NodeBalancers.](/docs/assets/NodeBalancer_SSL_Configuration_smg.png "Forcing all connections to use SSL with NodeBalancers.")
 
 {{< note >}}
 Throughout this guide we will offer several suggested values for specific configuration settings; some of these values will be set by default. These settings are shown in the guide as a reference and you may need to modify them to suit your application accordingly.
@@ -22,19 +22,19 @@ Throughout this guide we will offer several suggested values for specific config
 
 ## Before you Begin
 
-- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/content/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](https://linode.com/content/security/securing-your-server)
+- When first configuring back-end Linodes, you should set them up according to the instructions in our [Getting Started](/docs/getting-started) guide. In addition, we recommend that you implement security precautions. For assistance with this, please see our guide on [Securing Your Server](https://linode.com/docs/security/securing-your-server)
 
-- Install a commercial or self-signed [SSL certificate](/content/security/ssl) using the appropriate guide for your distribution.
+- Install a commercial or self-signed [SSL certificate](/docs/security/ssl) using the appropriate guide for your distribution.
 
 - This guide assumes that you have already deployed two or more back-end Linodes and configured them with either a LAMP stack or a LEMP stack. If you have not, please review the following documentation for assistance with configuring your respective stack:
 
-    - [LAMP Stack](/content/websites/lamp/)
-    - [LEMP Stack](/content/websites/lemp/)
+    - [LAMP Stack](/docs/websites/lamp/)
+    - [LEMP Stack](/docs/websites/lemp/)
 
 - In addition, this guide assumes that you have already deployed a NodeBalancer and have configured it with two or more back-end Linodes that make connections on port 80/HTTP. We recommend that you first verify that your NodeBalancer is configured correctly, prior to introducing the complexities of an encrypted connection over SSL. If you would like assistance with setting up a basic NodeBalancer configuration, please review the following documentation:
 
-    - [Getting Started with NodeBalancers](/content/platform/nodebalancer/getting-started-with-nodebalancers)
-    - [NodeBalancer Reference Guide](/content/platform/nodebalancer/nodebalancer-reference-guide)
+    - [Getting Started with NodeBalancers](/docs/platform/nodebalancer/getting-started-with-nodebalancers)
+    - [NodeBalancer Reference Guide](/docs/platform/nodebalancer/nodebalancer-reference-guide)
 
 {{< note >}}
 This guide has been written with the assumption that you are logged in as the root user. If you are using a limited user account, you will need to prefix some commands with `sudo`.
@@ -44,7 +44,7 @@ This guide has been written with the assumption that you are logged in as the ro
 
 1.  Go to your NodeBalancer's configuration page. If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-    [![The NodeBalancer SSL Certificate Fields.](/content/assets/nodebalancer-ssl-cert.png)](/content/assets/nodebalancer-ssl-cert.png)
+    [![The NodeBalancer SSL Certificate Fields.](/docs/assets/nodebalancer-ssl-cert.png)](/docs/assets/nodebalancer-ssl-cert.png)
 
 2.  Copy the contents of your SSL certificate into the **Certificate** field. If you have linked multiple segments of a chained certificate, be sure to copy all of its contents into the text field, appearing one after another.
 
@@ -187,4 +187,4 @@ server {
         curl -I example.com
         curl -L example.com
 
-  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have created an infinite loop and your web page does not load. Refer to the [man pages](https://curl.haxx.se/content/manual.html) for `curl` for more info.
+  The `-I` or `--head` options will fetch the HTTP-header only. The `-L` or `--location` option will detect and display if the server indicates that the requested page has moved to a different location. This option will make curl repeat the request at the new location. If used together with `-I`, headers from all requested pages will be displayed. This is particularly useful if your rewrite rules have created an infinite loop and your web page does not load. Refer to the [man pages](https://curl.haxx.se/docs/manual.html) for `curl` for more info.

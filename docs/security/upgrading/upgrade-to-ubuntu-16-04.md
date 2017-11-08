@@ -12,7 +12,7 @@ published: 2016-04-26
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 ---
 
-![Upgrade to Ubuntu 16.04](/content/assets/upgrade-to-ubuntu-16-04/How_to_Upgrade_to_Ubuntu_smg.jpg)
+![Upgrade to Ubuntu 16.04](/docs/assets/upgrade-to-ubuntu-16-04/How_to_Upgrade_to_Ubuntu_smg.jpg)
 
 Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
 
@@ -24,13 +24,13 @@ Distribution upgrades sometimes yield unpredictable results. If possible, use th
  - Transfer your data
  - Swap IP addresses
 
-The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/content/networking/using-the-linode-shell-lish) or [Glish](/content/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
 
 **Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 {{< /caution >}}
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Prepare to Upgrade
@@ -55,11 +55,11 @@ Update package lists and install all updates:
 
 ### Back Up Your Linode
 
-It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/content/platform/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 16.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
+It's a good idea to back up your Linode before performing a major upgrade. That way, you can restore from backup if anything goes wrong during the upgrade process. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/platform/linode-backup-service#take-a-manual-snapshot) before upgrading to Ubuntu 16.04 LTS. If you use another backup service or application, we recommend that you make a manual backup now.
 
 ### Check Your Kernel
 
-Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/content/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
+Verify that your Linode is using the latest supported kernel. See [Applying Kernel Updates](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates) for more information.
 
 ### Stop Services
 
@@ -139,4 +139,4 @@ Your Linode is now running Ubuntu 16.04 LTS.
 
 ## Upgrading from Previous Ubuntu Releases
 
-If your Linode is running a release of Ubuntu older than 14.04 LTS, use the upgrade guides in the [Upgrading](/content/security/upgrading) section to upgrade to Ubuntu 14.04 LTS first. You may then upgrade your Linode to Ubuntu 16.04 LTS.
+If your Linode is running a release of Ubuntu older than 14.04 LTS, use the upgrade guides in the [Upgrading](/docs/security/upgrading) section to upgrade to Ubuntu 14.04 LTS first. You may then upgrade your Linode to Ubuntu 16.04 LTS.

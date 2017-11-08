@@ -15,7 +15,7 @@ title: How to Use the Date Command in Linux
 
 The `date` command displays the current date and time. It can also be used to display or calculate a date in a format you specify. The super-user (root) can use it to set the system clock.
 
-![Learn how to use the linux date command](/content/assets/linux_date_command_smg.jpg)
+![Learn how to use the linux date command](/docs/assets/linux_date_command_smg.jpg)
 
 ## Use the Linux date Command
 
@@ -131,6 +131,6 @@ This would tar and gzip the files in `/home/caker/` into a filename called `back
 
 ## Set the Date Manually from the Linux Terminal
 
-If your system is running `ntpd`, and you've [set your timezone correctly](/content/getting-started#set-the-timezone), you shouldn't have to change this setting. However, if you find you need to set the system clock manually, use the `--set` option. In this example, we're setting the date and time to 9:14pm on Thursday, April 13, 2017:
+If your system is running `ntpd`, and you've [set your timezone correctly](/docs/getting-started#set-the-timezone), you shouldn't have to change this setting. However, if you find you need to set the system clock manually, use the `--set` option. In this example, we're setting the date and time to 9:14pm on Thursday, April 13, 2017:
 
     date --set="20170413 21:14"

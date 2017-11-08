@@ -16,15 +16,15 @@ contributor:
     link: https://github.com/bobstrecansky
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
 nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users.
 
-![How to Configure nginx for Optimized Performance](/content/assets/configure-nginx-for-optimized-performance.png "How to Configure nginx for Optimized Performance")
+![How to Configure nginx for Optimized Performance](/docs/assets/configure-nginx-for-optimized-performance.png "How to Configure nginx for Optimized Performance")
 
-If you're unfamiliar with how nginx works, we suggest reading [How to Configure nginx](/content/websites/nginx/how-to-configure-nginx) first.
+If you're unfamiliar with how nginx works, we suggest reading [How to Configure nginx](/docs/websites/nginx/how-to-configure-nginx) first.
 
 
 ## Worker Modifications

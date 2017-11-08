@@ -21,10 +21,10 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn up to $300 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
 
 ---
-![Vim_banner](/content/assets/Vim_Customization.jpg)
+![Vim_banner](/docs/assets/Vim_Customization.jpg)
 
 ## What Is Vim?
 
@@ -38,7 +38,7 @@ Upon the completion of this tutorial, you will have fine-tuned your Vim editor t
 
 1.  A basic understanding of how to work within the Vim environment is necessary to complete this tutorial. Readers should be familiar with the steps for editing documents with Vim.
 
-2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/content/security/securing-your-server#add-a-limited-user-account) guide.
+2.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server#add-a-limited-user-account) guide.
 
 # Customize Your Vim Instance
 

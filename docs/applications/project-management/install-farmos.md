@@ -11,7 +11,7 @@ modified_by:
 title: 'Install and Configure FarmOS, an Agricultural Management, Planning and Record-Keeping Web App'
 ---
 
-![Farm_OS Banner](/content/assets/FarmOS.png)
+![Farm_OS Banner](/docs/assets/FarmOS.png)
 
 ## What is FarmOS?
 
@@ -22,9 +22,9 @@ This guide explains how to install, setup and host your own FarmOS web app on a 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -33,7 +33,7 @@ This guide explains how to install, setup and host your own FarmOS web app on a 
 
 4. Install a LAMP Stack
 
-   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](https://www.linode.com/content/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
+   Drupal needs to be built atop a web-server. The LAMP stack provides a quick and easy solution to serve web applications, like Drupal. Install the LAMP stack using our guide on [installing a LAMP stack](https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04).
 
 
 ## MySQL Setup
@@ -97,23 +97,23 @@ FarmOS will configure Drupal and itself at the same time:
 
 1. The first screen you will encounter asks you to choose a profile and a language:
 
-    ![firstscreen](/content/assets/FarmOS/firstscreen.png)
+    ![firstscreen](/docs/assets/FarmOS/firstscreen.png)
 
 2. Drupal checks if the install is correct in the **Verify requirements** section. Then, it will move to configuring the database. In this section you should input the information from the database built earlier in this tutorial:
 
-    ![DatabaseConfig](/content/assets/FarmOS/second.png)
+    ![DatabaseConfig](/docs/assets/FarmOS/second.png)
 
 3. Once FarmOS hooks into the database, you will need to configure your FarmOS site. This is where you will define the name and the main user account:
 
-    ![Configure](/content/assets/FarmOS/configure.png)
+    ![Configure](/docs/assets/FarmOS/configure.png)
 
 4. The next section is going to ask you what modules you want to install. You can install and uninstall modules at any time, but this is a chance to install personalized modules that will work for your specific type of farm.
 
-    ![modules](/content/assets/FarmOS/modules.png)
+    ![modules](/docs/assets/FarmOS/modules.png)
 
 5. Finally, after installing the modules, you will be dropped into the FarmOS dashboard:
 
-    ![welcome](/content/assets/FarmOS/welcome.png)
+    ![welcome](/docs/assets/FarmOS/welcome.png)
 
 6. After the installation has finished, you may want to reset your file permissions to avoid security vulnerabilities:
 
@@ -124,17 +124,17 @@ FarmOS will configure Drupal and itself at the same time:
 ## Add Users
 To add users to your FarmOS distribution, you can do so from the **People** tab under **Manage**.
 
-   ![adduser](/content/assets/FarmOS/Adduser.png)
+   ![adduser](/docs/assets/FarmOS/Adduser.png)
 
 
 After each user is created, use the **people** tab, to verify success:
 
-![peoplescreen](/content/assets/FarmOS/peoplescreen.png)
+![peoplescreen](/docs/assets/FarmOS/peoplescreen.png)
 
 ## Next Steps
 
 ### Registering a Domain Name for FarmOS
-If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/content/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
+If you want to register a domain name (e.g., `yourfarm.com`), check out our guide on the [DNS Manager](https://www.linode.com/docs/networking/dns/dns-manager-overview) and add your FQDN to the Linode Manager. A FQDN will provide you, and the people who plan on using FarmOS, the ability to navigate to a URL, instead of your Linode's public IP address. If you plan on using FarmOS internally, you can skip this step.
 
 
 ### Generate a Google API Key

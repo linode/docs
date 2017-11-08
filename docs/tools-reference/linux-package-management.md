@@ -15,7 +15,7 @@ title: Linux Package Management
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
 
-![Linux Package Management](/content/assets/linux-package-management.png "Linux Package Management")
+![Linux Package Management](/docs/assets/linux-package-management.png "Linux Package Management")
 
 ## Package Management Concepts
 

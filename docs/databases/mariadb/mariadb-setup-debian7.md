@@ -20,14 +20,14 @@ external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
 MariaDB is a drop-in replacement for MySQL and it strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on a Debian 7 (Wheezy) Linode.
 
  {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Prerequisites
@@ -81,7 +81,7 @@ deb-src http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
 
     You will be prompted to set a password for the MariaDB root user:
 
-    [![Set the password for root during MariaDB installation](/content/assets/1745-mariadb-set-root-password.png)](/content/assets/1745-mariadb-set-root-password.png)
+    [![Set the password for root during MariaDB installation](/docs/assets/1745-mariadb-set-root-password.png)](/docs/assets/1745-mariadb-set-root-password.png)
 
     Choose a strong password to secure your server.
 
@@ -286,7 +286,7 @@ In short, neither warning is a problem.
 Let's take a look at how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
  {{< caution >}}
-Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/content/security/firewalls/iptables) rules that allow connections only from specific IP addresses.
+Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/security/firewalls/iptables) rules that allow connections only from specific IP addresses.
 {{< /caution >}}
 
 1.  First, we need to grant user connections from remote hosts for the **testuser** user. Log in to MariaDB as root:

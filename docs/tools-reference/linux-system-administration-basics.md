@@ -15,15 +15,15 @@ title: Linux System Administration Basics
 
 This guide presents a collection of common issues and useful tips for Linux system administration. Whether you're new to system administration or have been maintaining systems for some time, we hope this collection of basic Linux commands will help you manage your system from the command line.
 
-![Linux System Administration Basics](/content/assets/linux-system-administration-basics.png)
+![Linux System Administration Basics](/docs/assets/linux-system-administration-basics.png)
 
 ## Basic Configuration
 
-These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/content/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/content/tools-reference/introduction-to-linux-concepts) useful.
+These tips cover some of the basic steps and issues encountered during the beginning of system configuration. We provide a general [Getting Started guide](/docs/getting-started) for your convenience if you're new to Linode and basic Linux system administration. Additionally, you may find our [Introduction to Linux Concepts guide](/docs/tools-reference/introduction-to-linux-concepts) useful.
 
 ### Set the Hostname
 
-Please follow our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). You can use the following commands to make sure it is set properly:
+Please follow our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). You can use the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -76,7 +76,7 @@ American Eastern Time (including Daylight Savings Time):
 
 ### Configure the /etc/hosts File
 
-The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/content/networking/dns/dns-records-an-introduction/), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
+The `/etc/hosts` file provides a list of IP addresses with corresponding hostnames. This allows you to specify hostnames for an IP address in one place on the local machine, and then have multiple applications connect to external resources via their hostnames. The system of host files precedes [DNS](/docs/networking/dns/dns-records-an-introduction/), and hosts files are *always* checked before DNS is queried. As a result, `/etc/hosts` can be useful for maintaining small "internal" networks, for development purposes, and for managing clusters.
 
 Some applications require that the machine properly identify itself in the `/etc/hosts` file. As a result, we recommend configuring the `/etc/hosts` file shortly after deployment. Here is an example file:
 
@@ -102,7 +102,7 @@ The second entry tells the system to look to `192.168.1.1` for the domain `stick
 
 ## Network Diagnostics
 
-In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/content/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
+In this section, we'll review some basic Linux commands that will help you assess and diagnose network problems. If you suspect connectivity issues, adding the output from the relevant commands to your [support ticket](/docs/platform/support) can help our staff diagnose your issue. This is particularly helpful in cases where networking issues are intermittent.
 
 ### The ping Command
 
@@ -155,7 +155,7 @@ Here is an example of output from a `traceroute` command:
 
 Often the hostnames and IP addresses on either side of a failed jump are useful in determining who operates the machine where the routing error occurs. Failed jumps are designated by lines with three asterisks (`* * *`).
 
-Adding `traceroute` output to [Linode support](/content/platform/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
+Adding `traceroute` output to [Linode support](/docs/platform/support/) tickets is sometimes useful when trying to diagnose network issues. You may also want to forward `traceroute` information to your Internet Service Provider (ISP) if you suspect that the connectivity issue is with your ISP's network. Recording `traceroute` information is particularly useful if you are experiencing an intermittent issue.
 
 ### The mtr Command
 
@@ -178,13 +178,13 @@ Like the `ping` command, `mtr` tracks the speed of the connection in real time u
 
     mtr --report
 
-Be aware that `mtr` will pause for a few moments while generating output. For more information regarding `mtr` consider our [diagnosing network issues with mtr](/content/networking/diagnostics/diagnosing-network-issues-with-mtr/) guide.
+Be aware that `mtr` will pause for a few moments while generating output. For more information regarding `mtr` consider our [diagnosing network issues with mtr](/docs/networking/diagnostics/diagnosing-network-issues-with-mtr/) guide.
 
 ## System Diagnostics
 
 If you're having an issue with your Linode that is neither related to [networking](#network-diagnostics) nor another application issue, it may help to rule out "hardware" and operating system level issues. Use the following tools to better diagnose and resolve these.
 
-If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/content/troubleshooting/troubleshooting-memory-and-networking-issues/). Use the following tools and approaches to determine the specific cause of your troubles.
+If you determine that you have a problem with memory usage, refer to our guide on [resolving memory usage issues](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/). Use the following tools and approaches to determine the specific cause of your troubles.
 
 ### Check Current Memory Usage
 
@@ -240,7 +240,7 @@ The memory and swap columns provide the same kind of information provided by the
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
-If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/content/platform/support/) diagnose problems.
+If you are experiencing an intermittent issue, you will need to run `vmstat` *when* you experience the issue in order to properly diagnose or rule out an I/O issue. `vmstat` output can sometimes help [support](/docs/platform/support/) diagnose problems.
 
 ### Monitor Processes, Memory, and CPU Usage with htop
 
@@ -265,19 +265,19 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 
 Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
-If you're new to Linux systems administration, consider our "[Tools & Reference](/content/tools-reference/)" section and articles including: [installing and using WinSCP](/content/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/content/linux-tools/utilities/rsync) and [using SSH and the terminal](/content/using-linux/using-the-terminal).
+If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and [using SSH and the terminal](/content/using-linux/using-the-terminal).
 
 {{< caution >}}
-If you are giving other users access to upload files to your server, consider the [security implications](/content/security/basics) of all additional access that you grant to third parties.
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties.
 {{< /caution >}}
 
 ### Upload Files to a Remote Server
 
-If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including [WinSCP](/content/networking/file-transfer/transfer-files-winscp) for Windows, [Cyberduck](/content/networking/file-transfer/transfer-files-cyberduck) for Mac OS X, and [Filezilla](/content/tools-reference/file-transfer/filezilla) for Linux, OS X, and Windows desktops.
+If you're used to using an FTP client, OpenSSH (which is included and active with all of the Linode distribution images) allows you to use an FTP-like interface over the SSH protocol. Known as "SFTP," many clients support this protocol, including [WinSCP](/docs/networking/file-transfer/transfer-files-winscp) for Windows, [Cyberduck](/docs/networking/file-transfer/transfer-files-cyberduck) for Mac OS X, and [Filezilla](/docs/tools-reference/file-transfer/filezilla) for Linux, OS X, and Windows desktops.
 
-If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, that user will also have over SFTP. Consider the implications of [file permissions](/content/tools-reference/linux-users-and-groups) when configuring user access.
+If you are accustomed to FTP, SFTP will be very familiar to you. By default, whatever access a user has to a file system at the command line, that user will also have over SFTP. Consider the implications of [file permissions](/docs/tools-reference/linux-users-and-groups) when configuring user access.
 
-You can also use Unix utilities including `scp` and [rsync](/content/linux-tools/utilities/rsync) to securely transfer files to your Linode. On a local machine, a command to copy `team-info.tar.gz` would look like:
+You can also use Unix utilities including `scp` and [rsync](/docs/linux-tools/utilities/rsync) to securely transfer files to your Linode. On a local machine, a command to copy `team-info.tar.gz` would look like:
 
     scp team-info.tar.gz username@hostname.example.com:/home/username/backups/
 
@@ -291,7 +291,7 @@ The syntax of `scp` follows the form `scp [source] [destination]`. You can copy 
 
 ### Protect Files on a Remote Server
 
-Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/content/security/basics). Our guide on [access control with user accounts and permissions](/content/tools-reference/linux-users-and-groups) may provide additional insight.
+Because Linode servers are network accessible and often have a number of distinct users, maintaining the security of files is often an important concern. We recommend you familiarize yourself with our [basic security guide](/docs/security/basics). Our guide on [access control with user accounts and permissions](/docs/tools-reference/linux-users-and-groups) may provide additional insight.
 
 We suggest the following best practices for maintaining security:
 
@@ -320,7 +320,7 @@ Note the following features of the link command:
 
 ### Manage Files on a Linux System
 
-If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on [using the terminal](/content/using-linux/using-the-terminal). This section provides a list of basic commands to manage the contents of your filesystem.
+If you're new to using Linux and manipulating files on the terminal interface we encourage you to consider our guide on [using the terminal](/docs/using-linux/using-the-terminal). This section provides a list of basic commands to manage the contents of your filesystem.
 
 To **copy** files:
 
@@ -342,11 +342,11 @@ To **delete** a file:
 
 This will delete the `scratch.txt` file from the current directory.
 
-For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/content/tools-reference/ssh/using-the-terminal/#file-system-navigation).
+For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/tools-reference/ssh/using-the-terminal/#file-system-navigation).
 
 ## Package Management
 
-Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/content/using-linux/package-management) guide.
+Most Linux systems use package management tools to facilitate the installation and maintenance of all software on your system. For more in-depth coverage of this topic, please reference our [package management](/docs/using-linux/package-management) guide.
 
 While these tools provide a number of powerful features, it is easy to look past the benefits of package management. If you install software manually without package management tools, it becomes difficult to keep your system up to date and to manage dependencies. For these reasons, we recommend installing all software through package management tools unless other means are absolutely necessary. The following tips outline a couple of basic package management tasks.
 
@@ -548,7 +548,7 @@ You can use `grep` to filter the results of another command that sends output to
 
     ls /home/username/data | grep "1257"
 
-In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/content/tools-reference/search-and-filter-text-with-grep).
+In this example, we assume that the `/home/username/data` directory contains a large number of files that have a UNIX time stamp in their file names. The above command will filter the output to only display those tiles that have the four digits "1257" in their file names. In these cases, `grep` only filters the output of `ls` and does not look into file contents. For more information regarding `grep`, refer to our full documentation of the [grep command](/docs/tools-reference/search-and-filter-text-with-grep).
 
 ### Search and Replace Across a Group of Files
 
@@ -570,13 +570,13 @@ To match literal slashes (`/`), you must escape them with a backslash (`\`). As 
 
 This would strip the slashes from the string `r/e/g/e/x` so that this string would be `regex` after running the `sed` command on the file that contains the string.
 
-The following example, from our [migrating a server to your Linode](/content/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
+The following example, from our [migrating a server to your Linode](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) document, searches and replaces one IP address with another. In this case `98.76.54.32` is replaced with `12.34.56.78`:
 
     sed -i 's/98\.76\.54\.32/12\.34\.56\.78/'
 
 In the above example, period characters are escaped as `\.`. In regular expressions the full-stop (period) character matches to any character if it is not escaped.
 
-For more information about `sed` refer to our full documentation of [text manipulation with sed](/content/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
+For more information about `sed` refer to our full documentation of [text manipulation with sed](/docs/tools-reference/tools/manipulate-text-from-the-command-line-with-sed).
 
 ### Edit Text
 
@@ -599,7 +599,7 @@ This provides only the most basic outline of how to use these text editors, and 
 
 ## Web Servers and HTTP Issues
 
-Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. [Linode Guides & Tutorials](/docs) contains a number of documents regarding the installation and maintenance of various [web servers](/content/websites/).
+Linodes do not come with a web server installed by default. You must install and configure your web server. This allows you to configure your web server in a way that makes sense for your application or website. [Linode Guides & Tutorials](/docs) contains a number of documents regarding the installation and maintenance of various [web servers](/docs/websites/).
 
 This section covers a number of basic web serving tasks and functions, as well as some guidance for users new to the world of web servers.
 
@@ -607,31 +607,31 @@ This section covers a number of basic web serving tasks and functions, as well a
 
 Web servers work by listening on a TCP port, typically port 80 for HTTP and port 443 for HTTPS. When a visitor makes a request for content, the servers respond by delivering the resource requested. Typically, resources are specified with a URL that contains the protocol, `http` or `https`; a colon and two slashes, `://`; hostname or domain, `www.example.com` or `username.example.com`; and the path to a file, `/images/avatar.jpg,` or `index.html`. A full URL would resemble `http://www.example.com/images/avatar.jpg`.
 
-In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/content/websites/apache) server, [Lighttpd](/content/websites/lighttpd) ("Lighty"), and [nginx](/content/websites/nginx) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
+In order to provide these resources to users, your Linode needs to be running a web server. There are many different HTTP servers and countless configurations to provide support for various web development frameworks. The three most popular general use web servers are the [Apache HTTP](/docs/websites/apache) server, [Lighttpd](/docs/websites/lighttpd) ("Lighty"), and [nginx](/docs/websites/nginx) ("Engine X"). Each server has its strengths and weaknesses, and your choice depends largely on your experience and your needs.
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
-If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/content/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/content/development/frameworks/).
+If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
 
 ### How to Choose a Web Server
 
 In most situations, end users are unaware of which web server you use. As a result, choosing a web server is often a personal decision based on the comfort of the administrator and the requirements of the deployment in question. This can be a challenge for the new systems administrator. This section offers some guidance by providing some background and information on the most popular web servers.
 
-The [Apache HTTP Server](/content/web-servers/apache/) is considered by some to be the *de facto* standard web server. It is the most widely deployed open-source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/content/lamp-guides), and supports the integration of dynamic server-side applications into the web server.
+The [Apache HTTP Server](/docs/web-servers/apache/) is considered by some to be the *de facto* standard web server. It is the most widely deployed open-source web server, its configuration interface has been stable for many years, and its modular architecture allows it to function in many different types of deployments. Apache forms the foundation of the [LAMP stack](/docs/lamp-guides), and supports the integration of dynamic server-side applications into the web server.
 
-By contrast, web servers like [Lighttpd](/content/websites/lighttpd) and [nginx](/content/websites/nginx/) are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.
+By contrast, web servers like [Lighttpd](/docs/websites/lighttpd) and [nginx](/docs/websites/nginx/) are optimized for efficiently serving static content. If you have a deployment where server resources are limited and are facing a great deal of demand, consider one of these servers. They are functional and stable with minimal system resources. Lighttpd and nginx can be more difficult to configure when integrating dynamic content interpreters.
 
 Your choice of web servers is based on your needs. Specific choices depend on factors like the type of content you want to serve, the demand for that content, and your comfort with that software as an administrator.
 
 ### Apache Logs
 
-When there is something wrong with [Apache](/content/websites/apache), it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting](/content/troubleshooting/troubleshooting-common-apache-issues/) efforts. When more complex issues arise, you may need to review the Apache error logs.
+When there is something wrong with [Apache](/docs/websites/apache), it can be difficult to determine what the cause of the error is from the behavior of the web server. There are a number of common issues with which you might begin your [troubleshooting](/docs/troubleshooting/troubleshooting-common-apache-issues/) efforts. When more complex issues arise, you may need to review the Apache error logs.
 
 By default, error logs are located in the `/var/log/apache2/error.log` file (on Debian-based distributions). You can track or "tail" this log with the following command:
 
     tail -F /var/log/apache2/error.log
 
-In the default virtual host configurations suggested in our [Apache installation](/content/websites/apache/) and [LAMP guides](/content/websites/lamp), we suggest adding a custom log setting:
+In the default virtual host configurations suggested in our [Apache installation](/docs/websites/apache/) and [LAMP guides](/docs/websites/lamp), we suggest adding a custom log setting:
 
 {{< file-excerpt "Apache Virtual Host Configuration" >}}
 ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined
@@ -652,31 +652,31 @@ This will allow you to see new error messages as they appear. Problems can be di
 
 ## DNS Servers and Domain Names
 
-The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/content/networking/dns/dns-records-an-introduction). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/content/networking/dns/dns-manager-overview).
+The *Domain Name System*, or DNS, is the service that the internet uses to associate the hard to remember and manage IP addresses with more human-usable domain names. This section will address several specific DNS-related tasks. To learn more about DNS, check out our [overview of the domain name system](/docs/networking/dns/dns-records-an-introduction). If you are familiar with DNS and just need to figure out how to configure your DNS server, see our guide for the [Linode DNS manager](/docs/networking/dns/dns-manager-overview).
 
 ### Redirect DNS Queries with CNAMEs
 
-[CNAME DNS records](/content/networking/dns/dns-records-an-introduction#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
+[CNAME DNS records](/docs/networking/dns/dns-records-an-introduction#cname) make it possible to redirect requests for one hostname or domain to another hostname or domain. This is useful in situations where you want to direct requests for one domain to another, but don't want to set up the web server to handle requests.
 
-CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/content/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
+CNAMEs are *only* valid when pointing from one domain to another. If you need to redirect a full URL, you will need to set up a web server and [configure redirection](/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server) and/or virtual hosting on the server level. CNAMEs will allow you to redirect subdomains, such as `team.example.com`, to other subdomains or domains, such as `jack.example.org`. CNAMEs must point to a valid domain that has a valid A Record, or to another CNAME.
 
-Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/content/networking/dns/dns-manager-overview).
+Although limited in their capabilities, CNAMEs can be quite useful in some situations. In particular, if you need to change the hostname of a machine, CNAMEs are quite useful. To learn how to set up CNAME records with the [Linode Manager](https://manager.linode.com//), refer to our [DNS Manager Guide](/docs/networking/dns/dns-manager-overview).
 
 ### Set Up Subdomains
 
-When [reading domain names](/content/networking/dns/dns-records-an-introduction#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
+When [reading domain names](/docs/networking/dns/dns-records-an-introduction#domain-names), we refer to parts before the main or first-level domain as "subdomains." For example, in the domain `team.example.com`, `team` is a subdomain for the root domain `example.com`.
 
-Follow these steps to [create and host a sub-domain](/content/networking/dns/common-dns-configurations#configuring-subdomains):
+Follow these steps to [create and host a sub-domain](/docs/networking/dns/common-dns-configurations#configuring-subdomains):
 
-1.  First, create an [A Record](/content/networking/dns/dns-records-an-introduction#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/content/networking/dns/dns-manager-overview). You may host the DNS for your domain with any provider you choose.
+1.  First, create an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) in the DNS zone for the domain. You can do this using the [Linode DNS Manager](/docs/networking/dns/dns-manager-overview). You may host the DNS for your domain with any provider you choose.
 
-2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/content/websites/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
+2.  Set up a server to respond to requests sent to this domain. For web servers like [Apache](/docs/websites/apache/), this requires configuring a new virtual host. For XMPP servers you must configure an additional host to receive the requests for this host. For more information, consult the documentation for the specific server you wish to deploy.
 
 3.  Once configured, subdomains function almost identically to root domains on your server. If you need to, you can set up HTTP redirection for the new subdomain.
 
 ## SMTP Servers and Email Issues
 
-We provide a number of guides that cover [email-related topics](/content/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
+We provide a number of guides that cover [email-related topics](/docs/email/). In this section, we'll explain how to choose an email setup that fits your needs and how to configure your Linode to send email.
 
 ### Choose an Email Solution
 
@@ -686,15 +686,15 @@ There may also be other components in the email server tool chain. These compone
 
 The most prevalent SMTP servers or MTAs in the UNIX-like world are [Postfix](http://www.postfix.org/), [Exim](https://www.exim.org/), and [Sendmail](http://www.sendmail.org/). Sendmail has the longest history and many system administrators have extensive experience with it. Postfix is robust and modern, and is compatible with many different configurations. Exim is the default MTA in Debian systems, and many consider it to be easier to use for basic tasks. For remote mailbox access, servers like [Courier](http://www.courier-mta.org/) and [Dovecot](https://www.dovecot.org/) are popular options.
 
-If you need an easy-to-install email solution, consider the [Citadel groupware server](/content/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/content/email/zimbra).
+If you need an easy-to-install email solution, consider the [Citadel groupware server](/docs/email/citadel/). Citadel provides an integrated "turnkey" solution that includes an SMTP server, remote mailbox access, real time collaboration tools including XMPP, and a shared calendar interface. Along similar lines, we also provide documentation for the installation of the [Zimbra groupware server](/docs/email/zimbra).
 
-If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/content/email/postfix/).
+If, by contrast, you want a more simple and modular email stack, we urge you to consider one of our guides built around the [Postfix SMTP server](/docs/email/postfix/).
 
-Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/content/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
+Finally, it's possible to outsource email service to a third-party provider, such as [Google Apps](/docs/email/using-google-apps-for-email) or [FastMail.fm](https://www.fastmail.fm). These services allows you to send and receive mail from your domain, without hosting email services on your Linode.
 
 ### Send Email From Your Server
 
-For simple configurations, you may have no need for a complete email stack like some of those documented in our [email guides](/content/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes.
+For simple configurations, you may have no need for a complete email stack like some of those documented in our [email guides](/docs/email/). However, applications running on that server still need to be able to send mail for notifications and other routine purposes.
 
 The configuration of applications to send notifications and alerts is beyond the scope of this guide. Most applications rely on a simple "sendmail" interface, which is accessible via several common SMTP servers including Postfix and msmtp.
 

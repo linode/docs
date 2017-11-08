@@ -25,14 +25,14 @@ Ruby on Rails is a popular web-application framework that allows developers to c
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
 
-![Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04](/content/assets/use_unicorn_and_nginx_to_configure_ruby_on_rails_apps_on_ubuntu_14_04.png "Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04")
+![Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04](/docs/assets/use_unicorn_and_nginx_to_configure_ruby_on_rails_apps_on_ubuntu_14_04.png "Use Unicorn and Nginx to Configure Ruby on Rails Applications on Ubuntu 14.04")
 
 ## Before You Begin
 
-Before starting this guide, make sure that  you have read through and completed our [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server/) guides.
+Before starting this guide, make sure that  you have read through and completed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server/) guides.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 1.  Before you install any package, ensure that your hostname is correct:

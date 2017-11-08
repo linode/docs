@@ -19,7 +19,7 @@ external_resources:
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![An introduction to Docker](/content/assets/docker-introduction.png "An introduction to Docker")
+![An introduction to Docker](/docs/assets/docker-introduction.png "An introduction to Docker")
 
 ## What is Docker?
 
@@ -81,4 +81,4 @@ A *node* is a single instance of the Docker engine that participates in the Swar
 
 ## Next Steps
 
-To explore Docker further, visit our [Docker Quick Reference](/content/applications/containers/docker-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/content/applications/containers/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/content/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide.
+To explore Docker further, visit our [Docker Quick Reference](/docs/applications/containers/docker-quick-reference-cheat-sheet/), our guide on [deploying a Node.js web server](/docs/applications/containers/node-js-web-server-deployed-within-docker/), or the Linode [How to install Docker and deploy a LAMP Stack](/docs/applications/containers/how-to-install-docker-and-deploy-a-lamp-stack/) guide.

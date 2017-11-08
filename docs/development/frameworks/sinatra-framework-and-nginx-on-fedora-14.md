@@ -20,7 +20,7 @@ Sinatra is a simple lightweight framework for web application development in the
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -62,7 +62,7 @@ Do **not** remove the Passenger files from `opt` after the install. They need to
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
     cd /opt
-    wget -O init-rpm.sh http://www.linode.com/content/assets/606-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/docs/assets/606-init-rpm.sh
     mv /opt/init-rpm.sh /etc/init.d/nginx
     chmod +x  /etc/init.d/nginx
     chkconfig --add nginx

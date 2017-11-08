@@ -14,7 +14,7 @@ external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
 ---
 
-![Set up a Zipkin Server](/content/assets/zipkin/zipkin_banner.png)
+![Set up a Zipkin Server](/docs/assets/zipkin/zipkin_banner.png)
 
 ## What is Zipkin?
 
@@ -24,9 +24,9 @@ While the official documentation offers [three different ways of installing Zipk
 
 ## Before You Begin
 
-1. Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
+2. This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access, and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet. This guide includes firewall rules specifically for a Zipkin server.
 
 3. Create two Linodes and have access to another device:
     1.  One Linode to act as the Zipkin server.
@@ -145,9 +145,9 @@ The default Fedora 26 firewall rules block all ports as a safety precaution. Cre
 
         pip2 install py_zipkin bottle requests
 
-4. Download the python script [website.py](/content/assets/scripts/website.py) which has been commented to show the added Zipkin code:
+4. Download the python script [website.py](/docs/assets/scripts/website.py) which has been commented to show the added Zipkin code:
 
-        wget https://github.com/linode/content/assets/scripts/website.py
+        wget https://github.com/linode/docs/assets/scripts/website.py
 
 ### Configure Webservice
 

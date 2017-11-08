@@ -19,8 +19,8 @@ Longview for Nginx is a Longview App. The Longview Nginx tab appears in the Lino
 
 Prerequisites:
 
--   Install and start [Nginx](/content/websites/nginx)
--   Install the [Longview client](/content/platform/longview/longview/#installing-the-client)
+-   Install and start [Nginx](/docs/websites/nginx)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -35,7 +35,7 @@ If you already have Longview installed, and later want to install Ngnix and enab
 
 3.  For most people, this will prompt a popup asking whether you would like Longview to attempt an automatic configuration of the Nginx status module:
 
-    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/content/assets/1456-longview_ngnix_popup_crop.png)](/content/assets/1456-longview_ngnix_popup_crop.png)
+    [![Longview has detected Nginx running on this server but was unable to access the server status page. Would you like to attempt to automatically configure the Nginx status module? This will require restarting Nginx to enable. Autoconfigure Mod\_Status: \<Yes\> \<No\>](/docs/assets/1456-longview_ngnix_popup_crop.png)](/docs/assets/1456-longview_ngnix_popup_crop.png)
 
     {{< note >}}
 It's also possible that Longview will be able to locate the status page on its own. In that case, you won't get the popup, and you can go directly to Step 5.
@@ -115,11 +115,11 @@ To see the output for the Longview Nginx App:
 
 Click the image for a full-size view.
 
-[![The Longview Nginx App.](/content/assets/1455-longview_nginx_stats_sm.png)](/content/assets/1454-longview_nginx_stats.png)
+[![The Longview Nginx App.](/docs/assets/1455-longview_nginx_stats_sm.png)](/docs/assets/1454-longview_nginx_stats.png)
 
 You'll see the current version of Nginx listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/content/platform/longview/longview#using-the-interface). The next sections cover the Longview Nginx App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview Nginx App in detail.
 
 ### Requests
 
@@ -139,19 +139,19 @@ The **Workers** graph shows all of the Nginx workers at the selected time. The w
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Nginx at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Nginx at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Nginx at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
+The **Memory** graph shows the amount of RAM being used by Nginx at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Nginx at the selected time. To see the total IO instead, visit the [Disks tab](/content/uptime/longview/#disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Nginx at the selected time. To see the total IO instead, visit the [Disks tab](/docs/uptime/longview/#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/content/uptime/longview/#process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Nginx at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/uptime/longview/#process-explorer-tab).
 
 ## Troubleshooting
 

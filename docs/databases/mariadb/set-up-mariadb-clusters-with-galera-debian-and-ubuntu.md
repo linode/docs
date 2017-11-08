@@ -20,7 +20,7 @@ external_resources:
 MariaDB replication with Galera adds redundancy for a site's database. With database replication, multiple servers act as a database cluster. Database clustering is particularly useful for high availability website configurations. This guide uses three separate Linodes to configure database replication, each with private IPv4 addresses on Debian and Ubuntu.
 
 {{< note >}}
-This guide assumes that your Linodes are each configured with a [Private IP Address](/content/networking/remote-access#adding-private-ip-addresses).
+This guide assumes that your Linodes are each configured with a [Private IP Address](/docs/networking/remote-access#adding-private-ip-addresses).
 {{< /note >}}
 
 ## Install Required Packages

@@ -17,9 +17,9 @@ external_resources:
 
 mod_evasive is an evasive maneuvers module for Apache that provides evasive action in the event of an HTTP DoS attack or brute force attack. It is also designed to be a detection and network management tool, and can be easily configured to talk to ipchains, firewalls, routers, and more. mod_evasive presently reports abuse via email and syslog facilities.
 
-![mod_evasive on Apache](/content/assets/mod_evasive.png "mod_evasive on Apache")
+![mod_evasive on Apache](/docs/assets/mod_evasive.png "mod_evasive on Apache")
 
-This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found under our [LAMP guides](/content/lamp-guides) section.
+This guide assumes you already have your LAMP server configured. Guides for setting up a LAMP stack can be found under our [LAMP guides](/docs/lamp-guides) section.
 
 ## Prerequisites
 

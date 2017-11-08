@@ -18,17 +18,17 @@ external_resources:
 
 In this guide, you'll learn how to create a MongoDB *replica set*. A replica set is a cluster of MongoDB database servers that implements master-slave (primary-secondary) replication. Replica sets also fail over automatically, so if one of the members becomes unavailable, a new primary host is elected and your data is still accessible. When combined with sharded database clusters, replica sets allow you to create scalable, highly available database systems for use with growing datasets.
 
-!["Create a MongoDB Replica Set"](/content/assets/create-a-mongodb-replica-set.png "Create a MongoDB Replica Set")
+!["Create a MongoDB Replica Set"](/docs/assets/create-a-mongodb-replica-set.png "Create a MongoDB Replica Set")
 
 This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the configuration is done within the MongoDB application, the steps should not vary significantly among other distributions, but additional configuration may be required.
 
 ## Before You Begin
 
-1.  To create a replica set, you'll need at least three Linodes with MongoDB installed. For information on how to install MongoDB, see the appropriate [guide](/content/databases/mongodb/) for your distribution.
+1.  To create a replica set, you'll need at least three Linodes with MongoDB installed. For information on how to install MongoDB, see the appropriate [guide](/docs/databases/mongodb/) for your distribution.
 
-2.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting each of your Linode's hostname and timezone.
+2.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting each of your Linode's hostname and timezone.
 
-3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+3.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 4.  Update your system:
 
@@ -41,22 +41,22 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
         sudo yum update
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Configure Networking
 
 To allow for consistent replication, each node will need to communicate with all the others in the cluster. For example, in a three node set, data transfer will look like this:
 
-!["A three node replica set"](/content/assets/mongodb-replication-diagram.png "A three node replica set")
+!["A three node replica set"](/docs/assets/mongodb-replication-diagram.png "A three node replica set")
 
 There are two major ways to allow the members of your replica set to communicate.
 
-The first method is to use [private IP addresses](/content/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.
+The first method is to use [private IP addresses](/docs/networking/remote-access#adding-private-ip-addresses) for each member of the replica set. This allows the Linodes in your replica set to communicate without exposing your data to the public internet. This method is recommended, but note that it requires all members of the replica set be in the same datacenter.
 
 The second method is to simply use the public IP address assigned to each Linode. You'll need to use this method if your Linodes are located in different datacenters, although this is not recommended because network latency will have a negative impact on replication. If you must use public IP addresses, you should [configure SSL/TLS encryption](https://docs.mongodb.com/manual/tutorial/configure-ssl/) for data sent between your hosts, or configure them to communicate over a VPN.
 
-Whether you're using public or private IP addresses to send data, you'll need to secure each Linode with a [firewall](/content/security/firewalls/) before deploying your replica set into production.
+Whether you're using public or private IP addresses to send data, you'll need to secure each Linode with a [firewall](/docs/security/firewalls/) before deploying your replica set into production.
 
 ### Configure Hosts Files
 
@@ -141,7 +141,7 @@ replication:
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
-Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/content/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases.
+Uncomment the `security` section, and use the `keyFile` option to direct MongoDB to the key you created previously. Enabling `keyFile` authentication automatically enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) as well, so you will need to [create users](/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04#create-database-users) and assign them privileges to access specific databases.
 
 The `replication` section needs to be uncommented to be enabled. Directives in this section are what directly affect the configuration of your replica set. The value `rs0` is the name we're using for our replica set; you can use a different naming convention if you like, but we'll be using `rs0` throughout this guide.
 
@@ -229,4 +229,4 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 
 ## Next Steps
 
-Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/content/databases/mongodb/build-database-clusters-with-mongodb).
+Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb).

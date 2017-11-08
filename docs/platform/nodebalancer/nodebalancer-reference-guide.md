@@ -13,7 +13,7 @@ published: 2011-07-08
 title: NodeBalancer Reference Guide
 ---
 
-This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/content/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
+This is the NodeBalancer reference guide. Please see the [NodeBalancer Getting Started Guide](/docs/platform/nodebalancer/getting-started-with-nodebalancers) for practical examples.
 
 ## Adding a NodeBalancer
 
@@ -69,13 +69,13 @@ If you need Session Persistence it is our recommendation to utilize both the Sou
 
 If you select the HTTPS protocol, the **Certificate** and **Private Key** fields will appear.
 
-[![The NodeBalancer Certificate and Private Key fields.](/content/assets/1354-nodebalancer_cert.png)](/content/assets/1354-nodebalancer_cert.png)
+[![The NodeBalancer Certificate and Private Key fields.](/docs/assets/1354-nodebalancer_cert.png)](/docs/assets/1354-nodebalancer_cert.png)
 
 Copy your certificate into the **Certificate** field. If you have chained certificates, you can copy all of them into the text field, one after the other.
 
 Copy your passphraseless private key into the **Private Key** field.
 
-You can [purchase an SSL certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+You can [purchase an SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) or [create your own](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 ### TLS Cipher Suites
 
@@ -118,7 +118,7 @@ Three different Health Check Types exist:
 
 ## Nodes
 
-NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/content/networking/configuring-static-ip-interfaces).
+NodeBalancers work over the private network. Backend nodes must have a private IP configured via [static networking](/docs/networking/configuring-static-ip-interfaces).
 
 Once you have established a basic configuration, you will be asked to set up "Nodes". Nodes are combinations of addresses and ports that you wish to balance.
 

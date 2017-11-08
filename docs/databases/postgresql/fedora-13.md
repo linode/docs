@@ -15,7 +15,7 @@ title: Use PostgreSQL Relational Databases on Fedora 13
 
 
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Fedora 13. We assume you've followed the steps detailed in our [getting started guide](/content/getting-started/), and that you're logged into your Linode as root via SSH.
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Fedora 13. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
 # Installing PostgreSQL
 
@@ -144,14 +144,14 @@ You will be prompted to enter the password for the "alison" user and given `psql
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/content/databases/postgresql/pgadmin-windows)
--   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/content/databases/postgresql/pgadmin-macos-x)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
+-   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
 # More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [PostgreSQL Online Documentation](http://www.postgresql.org/content/)
+- [PostgreSQL Online Documentation](http://www.postgresql.org/docs/)
 - [psql manual page](http://www.rootr.net/man/man/psql/1)
 
 

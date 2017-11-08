@@ -29,13 +29,13 @@ Vagrant can be paired with Linode through the use of the *vagrant-linode* plugin
 
     -   Select the API Keys tab:
 
-        [![Linode API](/content/assets/linode-api-vagrant1-small.png)](/content/assets/linode-api-vagrant1.png)
+        [![Linode API](/docs/assets/linode-api-vagrant1-small.png)](/docs/assets/linode-api-vagrant1.png)
 
     -   Enter a label for your API Key and set an expiration time. Then click **Create API Key**.
 
     -   Your API Key will be output in a green box. **The key will only be shown once** so be sure to record it for later use:
 
-        [![Linode API Key Generated](/content/assets/linode-api-vagrant2-small.png)](/content/assets/linode-api-vagrant2.png)
+        [![Linode API Key Generated](/docs/assets/linode-api-vagrant2-small.png)](/docs/assets/linode-api-vagrant2.png)
 
 
 ## Install the vagrant-linode Plugin
@@ -73,7 +73,7 @@ end
 
     All code will take place between the `Vagrant.configure` and `end` lines.
 
-2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/content/security/securing-your-server#create-an-authentication-key-pair) guide:
+2.  When creating a *guest machine* -- the sever that will be created -- Vagrant will create a username, password, and private key to access the machine. The default username and password is `vagrant`. Define your own parameters for the `username`, and set the pathway to your own private key. If you have not generated a private and public key, you can do so by following the [Securing Your Server](/docs/security/securing-your-server#create-an-authentication-key-pair) guide:
 
     {{< file "~/vagrant-linode/Vagrantfile" ruby >}}
 Vagrant.configure('2') do |config|
@@ -142,7 +142,7 @@ end
 
 ## Set Up the Vagrant Box
 
-Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Getting Started](/content/getting-started) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
+Although the server can now be created successfully, many aspects of it still need to be configured. Shell scripts will be used to complete the steps from the [Getting Started](/docs/getting-started) guide, and to install and configure Apache. Files will also be synced between the workstation and the Linode.
 
 ### Configure the Server
 

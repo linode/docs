@@ -12,19 +12,19 @@ modified_by:
 published:
 title: Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
-- '[Basic Nginx Configuration](/content/websites/nginx/basic-nginx-configuration/)'
-- '[Nginx Documentation](http://nginx.org/en/content/)'
+- '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+- '[Nginx Documentation](http://nginx.org/en/docs/)'
 - '[MariaDB Knowledgebase](https://mariadb.com/kb/en/)'
 - '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
 ---
 
 This document describes how to install a Linux, Nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration.
 
-Make sure that before starting this guide you have read through and completed our [Getting Started](/content/getting-started/) guide.
+Make sure that before starting this guide you have read through and completed our [Getting Started](/docs/getting-started/) guide.
 
 ## Set the hostname
 
-Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/content/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
+Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
 
     hostname
     hostname -f

@@ -16,11 +16,11 @@ title: Apache 2 Web Server on CentOS 5
 
 
 
-This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/content/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/content/lamp-guides/centos-5).
+This tutorial explains how to install and configure the Apache web server on CentOS 5. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for CentOS](/docs/lamp-guides/centos-5).
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -162,7 +162,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
     cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-conf.backup-1
 
-Generally, as specified above and in our [LAMP guide for CentOS 5.2](/content/lamp-guides/centos-5) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
+Generally, as specified above and in our [LAMP guide for CentOS 5.2](/docs/lamp-guides/centos-5) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file, such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
 # Install Apache Modules
 
@@ -183,7 +183,7 @@ You can then install one of these modules with the command:
 
     yum install mod_[module-name]
 
-Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/content/2.0/mod/) for more information regarding the configuration of specific modules.
+Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache Module Documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
 # Understanding .htaccess Configuration
 
@@ -248,5 +248,5 @@ There are many other possibilities for using mod\_rewrite to allow users to see 
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/content/2.0/)
-- [Apache Configuration](/content/web-servers/apache/configuration/)
+- [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/docs/2.0/)
+- [Apache Configuration](/docs/web-servers/apache/configuration/)

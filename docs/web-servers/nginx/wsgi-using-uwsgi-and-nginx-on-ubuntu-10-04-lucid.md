@@ -20,7 +20,7 @@ The uWSGI server provides a non-FastCGI method for deploying Python applications
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -54,7 +54,7 @@ Send the following sequence of commands to set the required file permissions:
 
 # Compile nginx with uWSGI Support
 
-Now issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/content/web-servers/nginx/installation/ubuntu-10-04-lucid) for compiling nginx from source:
+Now issue the following commands to download and compile nginx with support for the `uwsgi` protocol. If you previously installed nginx from Debian packages, remove them at this juncture. The following command sequence mirrors the procedure defined in the [installation guide for nginx](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid) for compiling nginx from source:
 
     apt-get install libpcre3-dev build-essential libssl-dev
     cd /opt/
@@ -66,7 +66,7 @@ Now issue the following commands to download and compile nginx with support for 
     make install
     adduser --system --no-create-home --disabled-login --disabled-password --group nginx
     cp /opt/uwsgi/nginx/uwsgi_params /opt/nginx/conf/uwsgi_params
-    wget -O init-deb.sh http://www.linode.com/content/assets/686-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/686-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -77,7 +77,7 @@ Now issue the following commands to download and compile nginx with support for 
 Issue the following command to download an init script to manage the uWSGI process, located at `/etc/init.d/uwsgi`:
 
     cd /opt/
-    wget -O init-deb.sh http://www.linode.com/content/assets/687-uwsgi-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/687-uwsgi-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/uwsgi
     chmod +x /etc/init.d/uwsgi
 
@@ -149,7 +149,7 @@ All requests to URLs ending in `/static` will be served directly from the `/srv/
 
 # Additional Application Servers
 
-If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
+If the Python application you've deployed requires more application resources than a single Linode instance can provide, all of the methods for deploying a uWSGI application server are easily scaled to rely on multiple uSWGI instances that run on additional Linodes with the request load balanced using nginx's `upstream` capability. Consider our documentation of [proxy and software load balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer) for more information. For a basic example configuration, consider the following example:
 
 {{< file-excerpt "nginx configuration" nginx >}}
 upstream uwsgicluster {
@@ -186,6 +186,6 @@ In this example we create the `uwsgicluster` upstream, which has five components
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Installing Nginx on Ubuntu 10.04 (Lucid)](/content/web-servers/nginx/installation/ubuntu-10-04-lucid)
-- [Deploy a LEMP Server on Ubuntu 10.04 (Lucid)](/content/lemp-guides/ubuntu-10-04-lucid/)
-- [Configure nginx Proxy Servers](/content/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)
+- [Installing Nginx on Ubuntu 10.04 (Lucid)](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid)
+- [Deploy a LEMP Server on Ubuntu 10.04 (Lucid)](/docs/lemp-guides/ubuntu-10-04-lucid/)
+- [Configure nginx Proxy Servers](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)

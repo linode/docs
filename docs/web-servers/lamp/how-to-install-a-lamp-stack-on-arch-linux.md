@@ -13,7 +13,7 @@ published: 2013-10-07
 title: How to Install a LAMP Stack on Arch Linux
 external_resources:
  - '[Arch Linux Wiki](http://wiki.ArchLinux.org/)'
- - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.4/)'
+ - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[MySQL Documentation](http://dev.mysql.com/doc/)'
  - '[Oracle MySQL and MariaDB Comparison](https://mariadb.com/kb/en/mariadb-vs-mysql-compatibility/)'
  - '[PHP Documentation](http://www.php.net/docs.php)'
@@ -26,12 +26,12 @@ A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used to prepare s
 Since Arch does not come in specific versions, this guide is up-to-date as of the December 2015 Arch update.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
 2.  Update your system:
 

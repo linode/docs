@@ -12,17 +12,17 @@ modified_by:
 title: Using Google Apps for Email
 ---
 
-There are many options for running your own email server, and with applications like [Citadel](/content/email/citadel/), hosting your own email stack can be quite straightforward. Nevertheless, managing independent email servers can be daunting, given email's importance and potential for complexity. This is particularly true when you have multiple users and/or complex filtering schemes. Many people prefer to delegate their email to a third-party email service like Google so they can better concentrate on the administration of other, more mission critical services.
+There are many options for running your own email server, and with applications like [Citadel](/docs/email/citadel/), hosting your own email stack can be quite straightforward. Nevertheless, managing independent email servers can be daunting, given email's importance and potential for complexity. This is particularly true when you have multiple users and/or complex filtering schemes. Many people prefer to delegate their email to a third-party email service like Google so they can better concentrate on the administration of other, more mission critical services.
 
-The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/content/dns-guides/introduction-to-dns) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers, and Linode does not specifically endorse any of them.
+The process for forwarding your email to Google's servers is a matter of redirecting the MX [DNS records](/docs/dns-guides/introduction-to-dns) which govern email routing to Google's email servers. Note that there are a number of third-party email service providers, and Linode does not specifically endorse any of them.
 
-For more information about the [Standard Edition of Google Apps](http://www.google.com/apps/), visit their site. This is a subscription-based service that costs \$50 per year, per user. This document assumes that you are using the [Linode DNS Manager](/content/dns-guides/configuring-dns-with-the-linode-manager) to manage the DNS records for your domain name, and that you've already signed up for a Google Apps account.
+For more information about the [Standard Edition of Google Apps](http://www.google.com/apps/), visit their site. This is a subscription-based service that costs \$50 per year, per user. This document assumes that you are using the [Linode DNS Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager) to manage the DNS records for your domain name, and that you've already signed up for a Google Apps account.
 
 ## Creating MX Records
 
 To direct your email to Google Apps, you need to set up five MX records for your domain. When you click on "Add/Edit a MX Record," you will find a form that looks like this:
 
-[![Adding an MX record for Google Apps in the Linode DNS Manager.](/content/assets/97-google-mail-01-create-mx-record.png)](/content/assets/97-google-mail-01-create-mx-record.png)
+[![Adding an MX record for Google Apps in the Linode DNS Manager.](/docs/assets/97-google-mail-01-create-mx-record.png)](/docs/assets/97-google-mail-01-create-mx-record.png)
 
 Create the following MX records:
 

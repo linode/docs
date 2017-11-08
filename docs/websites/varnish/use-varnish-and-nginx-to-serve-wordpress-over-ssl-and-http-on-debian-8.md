@@ -14,9 +14,9 @@ contributor:
   name: Frederick Jost Zweig
   link: https://github.com/Fred-Zweig
 external_resources:
- - '[Varnish Documentation](https://varnish-cache.org/content/index.html)'
- - '[NGINX Documentation](https://nginx.org/en/content/)'
-image: https://linode.com/content/assets/varnish-nginx-ssl.png
+ - '[Varnish Documentation](https://varnish-cache.org/docs/index.html)'
+ - '[NGINX Documentation](https://nginx.org/en/docs/)'
+image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 ---
 
 
@@ -25,7 +25,7 @@ image: https://linode.com/content/assets/varnish-nginx-ssl.png
 
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client.
 
-![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/content/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
+![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")
 
 When a cached resource is requested through Varnish, the request doesn't reach the web server or involve PHP or MySQL execution. Instead, Varnish reads it from memory, delivering the cached page in a matter of microseconds.
 
@@ -46,17 +46,17 @@ For HTTPS traffic, nginx will listen on port `443` and send decrypted traffic to
 
 Our setup is illustrated below. Please note that frontend nginx and backend nginx are one and the same server:
 
-[![Nginx-Varnish-Nginx server configuration diagram](/content/assets/varnish-cache.png)](/content/assets/varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
+[![Nginx-Varnish-Nginx server configuration diagram](/docs/assets/varnish-cache.png)](/docs/assets/varnish-cache.png "Nginx-Varnish-Nginx server configuration diagram")
 
 ## Before You Begin
 
 This tutorial assumes that you have SSH access to your Linode running Debian 8 (Jessie). Before you get started:
 
-1.  Complete the steps in our [Getting Started](/content/getting-started) and [Securing your Server](/content/security/securing-your-server) guides. You'll need a standard user account with `sudo` privileges for many commands in this guide.
+1.  Complete the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides. You'll need a standard user account with `sudo` privileges for many commands in this guide.
 
-2.  Follow the steps outlined in our [LEMP on Debian 8](/content/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section, since we'll address it later in this guide.
+2.  Follow the steps outlined in our [LEMP on Debian 8](/docs/websites/lemp/lemp-server-on-debian-8) guide. Skip the nginx configuration section, since we'll address it later in this guide.
 
-3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/content/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
+3.  After configuring nginx according to this guide, follow the steps in our [WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide to install and configure WordPress. We'll include a step in the instructions to let you know when it's time to do this.
 
 ## Install and Configure Varnish
 
@@ -296,7 +296,7 @@ set resp.http.X-Purger = req.http.X-Purger;
 {{< /file-excerpt >}}
 
 
-    This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](/content/assets/custom.vcl).
+    This concludes the `custom.vcl` configuration. You can now save and exit the file. The final `custom.vcl` file will look like [this](/docs/assets/custom.vcl).
 
     {{< note >}}
 You can download the complete sample configuration file using the link above and `wget`. If you do, remember to replace the variables as described above.
@@ -497,7 +497,7 @@ server {
     For an SSL-encrypted website, you need one server block to receive traffic on port 443 and pass decrypted traffic to Varnish on port `80`, and another server block to serve unencrypted traffic to Varnish on port `8080`, when Varnish asks for it.
 
     {{< caution >}}
-The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](/content/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
+The `ssl_certificate` directive must specify the location and name of the SSL certificate file. Take a look at our guide to using [SSL on nginx](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) for more information, and update the `ssl_certificate` and `ssl_certificate_key` values as needed.
 {{< /caution >}}
 
     Alternately, if you don't have a commercially-signed SSL certificate (issued by a CA), you can issue a self-signed SSL certificate using *openssl*, but this should be done only for testing purposes. Self-signed sites will return a "This Connection is Untrusted" message when opened in a browser.
@@ -535,7 +535,7 @@ server {
         sudo systemctl restart nginx
         sudo systemctl start varnish
 
-8.  Install WordPress, following our [How to Install and Configure WordPress](/content/websites/cms/how-to-install-and-configure-wordpress) guide. Once WordPress is installed, continue with this guide.
+8.  Install WordPress, following our [How to Install and Configure WordPress](/docs/websites/cms/how-to-install-and-configure-wordpress) guide. Once WordPress is installed, continue with this guide.
 
 9.  After installing WordPress, restart Varnish to clear any cached redirects to the setup page:
 
@@ -595,6 +595,6 @@ wget -SS --no-check-certificate https://www.example-over-https.com
 
 By using nginx in conjunction with Varnish, the speed of any WordPress website can be drastically improved while making best use of your hardware resources.
 
-You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/content/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
+You can strengthen the security of the SSL connection by generating a [custom Diffie-Hellman (DH) parameter](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices/#create-a-custom-diffie-hellman-key-exchange), for a more secure cryptographic key exchange process.
 
-An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/content/security/using-fail2ban-for-security), Awstats or Webalizer.
+An additional configuration option is to enable Varnish logging for the plain HTTP website, since now Varnish will be the first to receive the client requests, while nginx only receives requests for those pages that are not found in the cache. For SSL-encrypted websites, the logging should be done by nginx because client requests pass through it first. Logging becomes even more important if you use log monitoring software such as [Fail2ban](/docs/security/using-fail2ban-for-security), Awstats or Webalizer.

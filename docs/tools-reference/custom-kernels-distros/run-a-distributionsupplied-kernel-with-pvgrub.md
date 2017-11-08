@@ -15,14 +15,14 @@ deprecated: true
 ---
 
 {{< caution >}}
-This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/content/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel).
+This guide is for legacy Xen Linodes. For newer Linodes, consult our guide on how to [Run a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel).
 {{< /caution >}}
 
 PV-GRUB makes it possible to run your own kernel on your Linode, instead of using a host-supplied kernel. This is useful in cases where you'd like to enable specific kernel features, or you'd prefer to handle kernel upgrades directly.
 
-If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/content/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) guide before taking these steps.
+If you'd like to run a custom distro on your Linode in combination with PV-GRUB, please follow our [Custom Distro](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-linode/) guide before taking these steps.
 
-Before you get started, make sure you follow the steps outlined in our [Getting Started](/content/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
+Before you get started, make sure you follow the steps outlined in our [Getting Started](/docs/getting-started) guide. Your Linode needs to be in a functional state. These steps should be performed as `root` on your Linode, via an SSH session.
 
 ## Ubuntu 13.04 (Raring)
 
@@ -577,7 +577,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
 
 1.  Issue the following commands as `root` to retrieve and run the script:
 
-        wget -O selinux.sh http://www.linode.com/content/assets/542-centos5-native-kernel-selinux-enforcing.sh
+        wget -O selinux.sh http://www.linode.com/docs/assets/542-centos5-native-kernel-selinux-enforcing.sh
         chmod +x selinux.sh
         ./selinux.sh
 

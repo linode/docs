@@ -14,11 +14,11 @@ published: 2011-11-09
 title: 'Monitoring Resource Utilization with Cacti on Debian 6 (Squeeze)'
 ---
 
-The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/content/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
+The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 # Installing Prerequisites
 
@@ -42,7 +42,7 @@ Before installing Cacti we must install a few basic dependencies that are critic
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components.
 
-The above command will additionally install the Apache web server. Consider our documentation of [installing the Apache HTTP Server](/content/web-servers/apache/installation/debian-6-squeeze) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/content/web-servers/apache/php-cgi/debian-5-lenny) and with [Nginx with PHP running as a FastCGI process](/content/web-servers/nginx/php-fastcgi/debian-6-squeeze).
+The above command will additionally install the Apache web server. Consider our documentation of [installing the Apache HTTP Server](/docs/web-servers/apache/installation/debian-6-squeeze) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/php-cgi/debian-5-lenny) and with [Nginx with PHP running as a FastCGI process](/docs/web-servers/nginx/php-fastcgi/debian-6-squeeze).
 
 ### Configuring SNMPD
 
@@ -127,8 +127,8 @@ You may wish to consult the following resources for additional information on th
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/content/security/basics)
-- [Control Network Traffic with iptables](/content/security/firewalls/iptables)
+- [Linux Security Basics](/docs/security/basics)
+- [Control Network Traffic with iptables](/docs/security/firewalls/iptables)
 
 
 

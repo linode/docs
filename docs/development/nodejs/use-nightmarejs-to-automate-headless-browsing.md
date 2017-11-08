@@ -19,7 +19,7 @@ external_resources:
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
@@ -27,16 +27,16 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Node.js
@@ -135,18 +135,18 @@ nightmare
     The output will resemble the following:
 
         Title: How to Install a LAMP Stack on Ubuntu 16.04
-        URL: https://www.linode.com/content/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04
+        URL: https://www.linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04
         Title: Install and Configure MySQL Workbench on Ubuntu 16.04
-        URL: https://www.linode.com/content/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu
+        URL: https://www.linode.com/docs/databases/mysql/install-and-configure-mysql-workbench-on-ubuntu
         Title: Install MongoDB on Ubuntu 16.04 (Xenial)
-        URL: https://www.linode.com/content/databases/mongodb/install-mongodb-on-ubuntu-16-04
+        URL: https://www.linode.com/docs/databases/mongodb/install-mongodb-on-ubuntu-16-04
         ...
 
 ## Add a Cron Job to Run the Automation Script
 
 This example automates the script to run once every hour. It changes to the `~/automation/` directory, runs the scraping script, and saves the output to a file with a unique filename that includes the date and time it ran.
 
-For more information about using Cron, see our [Schedule Tasks with Cron](/content/tools-reference/tools/schedule-tasks-with-cron) guide.
+For more information about using Cron, see our [Schedule Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide.
 
 1.  Open the crontab file:
 

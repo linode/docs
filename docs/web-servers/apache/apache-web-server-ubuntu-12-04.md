@@ -13,21 +13,21 @@ modified_by:
 published: 2012-10-10
 title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
- - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/content/2.2/)'
- - '[Apache Configuration](/content/web-servers/apache/configuration/)'
+ - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
+ - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
 The *Apache HTTP Web Server* (Apache) is an open source web application for running web servers.  This guide explains how to install and configure an Apache web server on Ubuntu 12.04 LTS.
 
-If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 12.04](/content/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
+If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 

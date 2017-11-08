@@ -15,17 +15,17 @@ external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
  - '[Nginx Home Page](http://nginx.org/)'
- - '[Nginx Documentation](http://nginx.org/en/content/)'
- - '[Nginx Configuration](/content/websites/nginx/basic-nginx-configuration)'
+ - '[Nginx Documentation](http://nginx.org/en/docs/)'
+ - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 7 (Wheezy). For the purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-![Using the Ruby on Rails framework for Nginx web applications on Debian 7](/content/assets/ruby_on_rails_with_nginx_debian_7_smg.png "Using the Ruby on Rails framework for Nginx web applications on Debian 7")
+![Using the Ruby on Rails framework for Nginx web applications on Debian 7](/docs/assets/ruby_on_rails_with_nginx_debian_7_smg.png "Using the Ruby on Rails framework for Nginx web applications on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -74,7 +74,7 @@ Run the Phusion Passenger installer for Nginx:
 
 You'll be greeted by the Phusion Passenger Nginx installer program. Press "Enter" to continue with the installation.
 
-[![Phusion Passenger nginx installer program running on Debian 7 (Wheezy).](/content/assets/351-01-passenger-nginx-installer.png)](/content/assets/351-01-passenger-nginx-installer.png)
+[![Phusion Passenger nginx installer program running on Debian 7 (Wheezy).](/docs/assets/351-01-passenger-nginx-installer.png)](/docs/assets/351-01-passenger-nginx-installer.png)
 
 The installation process will begin an interactive session that will guide you through the process of building Phusion Passenger. When prompted for the Nginx installation method, we recommend you choose "1" for both options to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed. Accept the default installation location for Nginx.
 
@@ -99,6 +99,6 @@ The configuration file for Nginx is located at `/etc/nginx/nginx.conf`. This is 
 
 ## Install MySQL Support (optional)
 
-If your application uses MySQL, install the database server by following our [MySQL on Debian 7 (Wheezy) guide](/content/databases/mysql/debian-7-wheezy). Once it's installed and configured properly, issue the following command:
+If your application uses MySQL, install the database server by following our [MySQL on Debian 7 (Wheezy) guide](/docs/databases/mysql/debian-7-wheezy). Once it's installed and configured properly, issue the following command:
 
     apt-get install libmysqlclient-dev libmysql-ruby

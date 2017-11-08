@@ -14,7 +14,7 @@ title: Manage Web Content with Movable Type
 deprecated: true
 ---
 
-Movable Type is a free, open source content management system designed to facilitate easy creation of blogs and websites. We assume you have a working LAMP environment set up on your Linode already; if not, please refer to our [LAMP guides](/content/lamp-guides/) for setup instructions before continuing with this tutorial.
+Movable Type is a free, open source content management system designed to facilitate easy creation of blogs and websites. We assume you have a working LAMP environment set up on your Linode already; if not, please refer to our [LAMP guides](/docs/lamp-guides/) for setup instructions before continuing with this tutorial.
 
 For this example, we'll be using a LAMP server built on Debian Lenny. Your server environment may be based on a different distribution, but the installation steps should be very similar. For additional help beyond the scope of this document, you may want to consult the [Movable Type Install Guide](http://www.movabletype.org/documentation/installation/).
 

@@ -10,6 +10,6 @@ title: Redis Tutorials, Installation Guides, Resources – Linode
 
 Redis is an open-source data-store solution designed for deployments in high performance environments and for applications where performance and flexibility are more critical than data persistence and absolute data integrity.
 
-Designed as a key-value store or a "data structures storage system," Redis may be considered a participant in the "NoSQL" movement, like [MongoDB](/content/databases/mongodb/) and [CouchDB](/content/databases/couchdb/). The guides in this section provide both instructions for deploying the Redis server and overviews of best practices for maintaining Redis instances.
+Designed as a key-value store or a "data structures storage system," Redis may be considered a participant in the "NoSQL" movement, like [MongoDB](/docs/databases/mongodb/) and [CouchDB](/docs/databases/couchdb/). The guides in this section provide both instructions for deploying the Redis server and overviews of best practices for maintaining Redis instances.
 
 ## Redis Tutorials:

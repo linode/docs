@@ -15,9 +15,9 @@ title: 'Custom Compiled Kernel with PV-GRUB on CentOS 7'
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
 
-Prior to these instructions, follow the steps outlined in our [Getting Started](/content/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
+Prior to these instructions, follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
 ## Prepare the System
 

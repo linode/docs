@@ -12,20 +12,20 @@ modified_by:
 published: 2014-03-12
 title: 'Updating Virtual Host Settings from Apache 2.2 to Apache 2.4'
 external_resources:
- - '[apache.org](http://httpd.apache.org/content/2.4/upgrading.html)'
+ - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
 ---
 
-This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/content/websites/hosting-a-website/#configure-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
+This guide explains the configuration changes needed to update a standard virtual host setup, such as the one presented [here](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts), from Apache 2.2 to Apache 2.4. These configuration updates are necessary, because a working Apache 2.2 virtual host setup will break silently when you upgrade to Apache 2.4. We'll also discuss changes the new version of Apache makes to the default virtual host and module configuration.
 
-![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](/content/assets/updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
+![Updating Virtual Host Settings from Apache 2.2 to Apache 2.4](/docs/assets/updating_virtual_host_settings_tg.png "Updating Virtual Host Settings from Apache 2.2 to Apache 2.4")
 
 Before you upgrade, you should make a backup of your main Apache 2.2 configuration file so you don't lose any settings. However, keep in mind that if you try to use it as-is with Apache 2.4, incompatibilities can prevent Apache from starting or running.
 
-This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. For complete information, read the [apache.org guidelines](http://httpd.apache.org/content/2.4/upgrading.html) on the subject.
+This article is not a comprehensive guide to updating from Apache 2.2 to 2.4. For complete information, read the [apache.org guidelines](http://httpd.apache.org/docs/2.4/upgrading.html) on the subject.
 
 ## Make a Backup
 
-Make a [backup](/content/platform/backup-service) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
+Make a [backup](/docs/platform/backup-service) of your data before upgrading your Apache software. Upgrading can sometimes cause you to lose data, particularly if you had settings in an Apache configuration file that no longer apply in Apache 2.4. If you use Apache modules, this is especially likely.
 
 Even with the simplest Apache setup, you should back up your Apache settings, modules, and other data in case unforeseen issues arise.
 
@@ -116,7 +116,7 @@ If you are utilizing access control rules within your virtual host files, you wi
         systemctl reload httpd.service
 
     {{< note >}}
-For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/content/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
+For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
 {{< /note >}}
 
 Check your websites. If you have completed these steps correctly, they should now be working again.
@@ -129,11 +129,11 @@ If your Apache configuration file is replaced during the upgrade, the location o
 
 If you have any Apache module configurations in your main configuration file that are incompatible with Apache 2.4, this can prevent the software from starting or running. In Apache 2.4, module configurations are no longer included in the main Apache configuration file. Instead, they each have their own configuration files, located in the `mods-available/` or `mods-enabled/` directories, and named something like `module_name.conf`.
 
-The [apache.org upgrade page](http://httpd.apache.org/content/2.4/upgrading.html) is a good place to start when checking for incompatible modules.
+The [apache.org upgrade page](http://httpd.apache.org/docs/2.4/upgrading.html) is a good place to start when checking for incompatible modules.
 
 ## Errors From Non-Updated Settings
 
-The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn't recently upgrade from Apache 2.2 to 2.4, you should pursue additional [troubleshooting](/content/web-servers/apache/troubleshooting) avenues.
+The following symptoms may indicate that you need to make the changes to your Apache 2.4 configuration that are described in this article. Note that other causes can also produce these symptoms, so if you didn't recently upgrade from Apache 2.2 to 2.4, you should pursue additional [troubleshooting](/docs/web-servers/apache/troubleshooting) avenues.
 
 **Symptom:** When you try to visit your website, you see the default **It works!** Apache web page.
 

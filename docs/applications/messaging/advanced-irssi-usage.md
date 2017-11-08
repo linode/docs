@@ -81,7 +81,7 @@ The following plugins are popular among the Linode community:
 -   [nickcolor.pl](http://scripts.irssi.org/scripts/nickcolor.pl) colorizes the nicknames of all members of a channel, based on activity and join time, in an effort to make the flow of conversation a bit easier to read.
 -   [screen\_away.pl](http://scripts.irssi.org/scripts/screen_away.pl) automatically detects if your Irssi session resides within an attached or detached screen session. If your screen session is detached, this plugin will set your status to away. When you reattach to the session, the plugin unsets the away status.
 -   [highlite.pl](http://scripts.irssi.org/scripts/highlite.pl) collects in one window all channel events like joins, parts, and quits.
--   [adv\_windowlist.pl](/content/assets/633-adv_windowlist.pl) provides a more useful and configurable window list if you have trouble with the default window list implementation.
+-   [adv\_windowlist.pl](/docs/assets/633-adv_windowlist.pl) provides a more useful and configurable window list if you have trouble with the default window list implementation.
 
 You can install all of these scripts to "autorun" when you invoke Irssi the next time by issuing the following sequence of commands:
 
@@ -91,7 +91,7 @@ You can install all of these scripts to "autorun" when you invoke Irssi the next
     wget http://scripts.irssi.org/scripts/nickcolor.pl
     wget http://scripts.irssi.org/scripts/screen_away.pl
     wget http://scripts.irssi.org/scripts/highlite.pl
-    wget -O adv_windowlist.pl http://www.linode.com/content/assets/633-adv_windowlist.pl
+    wget -O adv_windowlist.pl http://www.linode.com/docs/assets/633-adv_windowlist.pl
 
 From within Irssi, issue the following commands to load these plugins for the first time:
 

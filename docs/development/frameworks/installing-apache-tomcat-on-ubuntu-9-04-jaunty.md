@@ -18,7 +18,7 @@ title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 
 Apache Tomcat is an "[open source software implementation of the Java Servlet and JavaServer Pages technologies.](http://tomcat.apache.org/)" You may choose to use either the OpenJDK implementation or the Sun Microsystems implementation of Java when installing Tomcat.
 
-Before beginning this guide we assume that you've completed the [getting started guide](/content/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/content/beginners-guide/), and the article concerning [systems administration basics](/content/using-linux/administration-basics). We also assume you're logged into your Linode via SSH as root for this guide.
+Before beginning this guide we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). We also assume you're logged into your Linode via SSH as root for this guide.
 
 # Choose and Install Java Implementation
 

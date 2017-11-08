@@ -14,11 +14,11 @@ published: 2011-05-16
 title: 'Manage Projects with Redmine on Debian 6 (Squeeze)'
 ---
 
-This guide will help you install Redmine on your Debian 6 (Squeeze) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/content/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
+This guide will help you install Redmine on your Debian 6 (Squeeze) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -154,7 +154,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Debian 6 LAMP guide](/content/lamp-guides/debian-6-squeeze). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Debian 6 LAMP guide](/docs/lamp-guides/debian-6-squeeze). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost *:80>
@@ -260,41 +260,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Debian 6.](/content/assets/718-exim4-config-02.png)](/content/assets/718-exim4-config-02.png)
+[![Exim general configuration on Debian 6.](/docs/assets/718-exim4-config-02.png)](/docs/assets/718-exim4-config-02.png)
 
 Specify your system's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Debian 6.](/content/assets/719-exim4-config-03.png)](/content/assets/719-exim4-config-03.png)
+[![Exim system mail name configuration on Debian 6.](/docs/assets/719-exim4-config-03.png)](/docs/assets/719-exim4-config-03.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, you only want to listen on localhost.
 
-[![Exim IP address configuration on Debian 6.](/content/assets/720-exim4-config-04.png)](/content/assets/720-exim4-config-04.png)
+[![Exim IP address configuration on Debian 6.](/docs/assets/720-exim4-config-04.png)](/docs/assets/720-exim4-config-04.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Debian 6.](/content/assets/721-exim4-config-05.png)](/content/assets/721-exim4-config-05.png)
+[![Exim destination domains configuration on Debian 6.](/docs/assets/721-exim4-config-05.png)](/docs/assets/721-exim4-config-05.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Debian 6.](/content/assets/722-exim4-config-06.png)](/content/assets/722-exim4-config-06.png)
+[![Exim relay domains configuration on Debian 6.](/docs/assets/722-exim4-config-06.png)](/docs/assets/722-exim4-config-06.png)
 
-[![Exim relay machines configuration on Debian 6.](/content/assets/723-exim4-config-07.png)](/content/assets/723-exim4-config-07.png)
+[![Exim relay machines configuration on Debian 6.](/docs/assets/723-exim4-config-07.png)](/docs/assets/723-exim4-config-07.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Debian 6.](/content/assets/724-exim4-config-08.png)](/content/assets/724-exim4-config-08.png)
+[![Exim DNS queries configuration on Debian 6.](/docs/assets/724-exim4-config-08.png)](/docs/assets/724-exim4-config-08.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Debian 6.](/content/assets/725-exim4-config-09.png)](/content/assets/725-exim4-config-09.png)
+[![Exim maildirs or mbox configuration on Debian 6.](/docs/assets/725-exim4-config-09.png)](/docs/assets/725-exim4-config-09.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Debian 6.](/content/assets/726-exim4-config-10.png)](/content/assets/726-exim4-config-10.png)
+[![Exim config file splitting configuration on Debian 6.](/docs/assets/726-exim4-config-10.png)](/docs/assets/726-exim4-config-10.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Debian 6.](/content/assets/727-exim4-config-11.png)](/content/assets/727-exim4-config-11.png)
+[![Exim postmaster configuration on Debian 6.](/docs/assets/727-exim4-config-11.png)](/docs/assets/727-exim4-config-11.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 

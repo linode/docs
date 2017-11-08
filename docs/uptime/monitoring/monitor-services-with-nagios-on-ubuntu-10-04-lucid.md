@@ -18,7 +18,7 @@ title: 'Monitor Services with Nagios on Ubuntu 10.04 (Lucid)'
 
 Nagios is a monitoring tool that makes it possible to monitor services on a single server or a pool of servers. It provides the capability to monitor a broad range of network services including SMTP and POP3 (email), HTTP (web), ICMP (ping), and SSH. In addition to simple uptime monitoring, Nagios also allows administrators to create their own plugins to monitor additional services or devices.
 
-Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/content/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/content/lamp-guides/ubuntu-10-10-maverick/) in order to use Nagios.
+Before installing Nagios, you will need to ensure that your hostname is properly set by following the steps outlined in the [getting started guide](/docs/getting-started/). Additionally, you will need to have a functioning [LAMP stack](/docs/lamp-guides/ubuntu-10-10-maverick/) in order to use Nagios.
 
 # Prepare for Nagios Installation
 
@@ -132,7 +132,7 @@ Any errors will be shown in red. If everything is okay, you may issue the follow
 
 You may now access the web based administration and reporting tools by visiting `http://example.com/nagios/`, where `example.com` refers to your Linode's default virtual host. You may also access this interface by visiting `http://12.34.56.78/nagios/` where `12.34.56.78` is the IP address of your Linode. You will need to authenticate with the nagiosadmin user you created earlier.
 
-**Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
+**Please note:** The above example does not use SSL, and your password will be sent unencrypted. You will need to generate an SSL certificate and install it yourself. Steps for doing so can be found in our [SSL guide](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate).
 
 # Configure Nagios Alerts
 
@@ -195,7 +195,7 @@ You may wish to consult the following resources for additional information on th
 - [Nagios Home Page](http://www.nagios.org/)
 - [Nagios IRC Bot](http://exchange.nagios.org/directory/Addons/Notifications/IRC/nagircbot/details)
 - [Nagios Library](http://library.nagios.com/)
-- [Nagios Security](http://nagios.sourceforge.net/content/3_0/cgisecurity.html)
+- [Nagios Security](http://nagios.sourceforge.net/docs/3_0/cgisecurity.html)
 
 
 

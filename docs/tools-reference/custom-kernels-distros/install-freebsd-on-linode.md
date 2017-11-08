@@ -12,13 +12,13 @@ published: 2016-03-14
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
- - '[Using the Linode Shell (Lish)](/content/troubleshooting/using-lish-the-linode-shell)'
- - '[Using the Graphic Shell (Glish) - BETA](/content/networking/using-the-graphic-shell-glish)'
+ - '[Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell)'
+ - '[Using the Graphic Shell (Glish) - BETA](/docs/networking/using-the-graphic-shell-glish)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
 ---
 
-![Install FreeBSD on Linode](/content/assets/install-freebsd-on-linode.png "Install FreeBSD on Linode")
+![Install FreeBSD on Linode](/docs/assets/install-freebsd-on-linode.png "Install FreeBSD on Linode")
 
 ## Introduction to FreeBSD
 
@@ -33,16 +33,16 @@ Briefly, Linux is a term used for a group of operating systems that all use the 
 Though FreeBSD grew out of the original UNIX codebase, no UNIX code currently remains. Every part of FreeBSD is developed in the same source tree and code is released under the more permissive FreeBSD License as opposed to the GNU GPL's copyleft stance. More information on the differences between these operating systems is available in the FreeBSD [Quickstart Guide for Linux Users](https://www.freebsd.org/doc/en/articles/linux-users/article.html).
 
 {{< caution >}}
-FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/content/platform/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
+FreeBSD is not officially supported by Linode at this time. This means that the [Linode Backup](/docs/platform/backup-service) service would be unavailable to you and issues with FreeBSD on your Linode would be outside the scope of Linode Support.
 {{< /caution >}}
 
 ## Preparing Your Linode
 
 Begin by creating the Linode and making some preliminary changes.
 
-1.  Create your Linode in your preferred datacenter. For the purposes of this tutorial, we recommend turning [Lassie](/content/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
+1.  Create your Linode in your preferred datacenter. For the purposes of this tutorial, we recommend turning [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) *off* to prevent the watchdog from attempting to restart your Linode without your input. You can disable Lassie in the **Settings** tab of the Linode Manager under **Shutdown Watchdog**.
 
-2.  [Create two disk images](https://www.linode.com/content/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk); both   should be in the RAW format.
+2.  [Create two disk images](https://www.linode.com/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk); both   should be in the RAW format.
 
     - The first should be a 1024 MB image labeled *Installer*.
     - The second should use the Linode's remaining space. Label it *FreeBSD*.
@@ -64,7 +64,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/content/troubleshooting/using-lish-the-linode-shell) from the **Remote Access** tab of the Linode Manager.
+4.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/troubleshooting/using-lish-the-linode-shell) from the **Remote Access** tab of the Linode Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 
@@ -76,35 +76,35 @@ Begin by creating the Linode and making some preliminary changes.
 
 6.  When the command finishes, reboot into your **Installer profile**.
 
-7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/content/networking/using-the-graphic-shell-glish) to start the installation.
+7.  Go to the **Remote Access** tab in the Linode Manager. Access your Linode using [Glish](/docs/networking/using-the-graphic-shell-glish) to start the installation.
 
 ## Installing FreeBSD
 
 1.  The first thing Glish will show you is the FreeBSD welcome screen. Press **Enter** to boot into multi-user mode.
 
-    [![FreeBSD welcome.](/content/assets/freebsd-welcome-small.png)](/content/assets/freebsd-welcome.png)
+    [![FreeBSD welcome.](/docs/assets/freebsd-welcome-small.png)](/docs/assets/freebsd-welcome.png)
 
 2.  Follow through the prompts to start the installer, choose your keymap and set a hostname if you want one.
 
 3.  For beginners, we suggest selecting to install 32-bit libraries (lib32) and source code (src). Deselect *games* if you have no use for them.
 
-    [![Choose your packages.](/content/assets/freebsd-optional-components-small.png)](/content/assets/freebsd-optional-components.png)
+    [![Choose your packages.](/docs/assets/freebsd-optional-components-small.png)](/docs/assets/freebsd-optional-components.png)
 
 4.  Choose your partitioning and storage options. We recommend using *ZFS (auto)* for the filesystem and partitioning setup.
 
-    [![FreeBSD partition selection](/content/assets/freebsd-partitioning-small.png)](/content/assets/freebsd-partitioning.png)
+    [![FreeBSD partition selection](/docs/assets/freebsd-partitioning-small.png)](/docs/assets/freebsd-partitioning.png)
 
     Configure any additional ZFS options you may want.
 
-    [![FreeBSD partition confirmation](/content/assets/freebsd-zfs-configuration1-small.png)](/content/assets/freebsd-zfs-configuration1.png)
+    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration1-small.png)](/docs/assets/freebsd-zfs-configuration1.png)
 
     Select the *striped* disk type, as we're only using a single disk.
 
-    [![FreeBSD partition confirmation](/content/assets/freebsd-zfs-configuration2-small.png)](/content/assets/freebsd-zfs-configuration2.png)
+    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration2-small.png)](/docs/assets/freebsd-zfs-configuration2.png)
 
     Select the `da0` virtual disk and then confirm that you do want to destroy its contents.
 
-    [![FreeBSD partition confirmation](/content/assets/freebsd-zfs-configuration3-small.png)](/content/assets/freebsd-zfs-configuration3.png)
+    [![FreeBSD partition confirmation](/docs/assets/freebsd-zfs-configuration3-small.png)](/docs/assets/freebsd-zfs-configuration3.png)
 
 5.  At this point, the distribution files will extract and install. You'll then be asked to set a `root` user password.
 
@@ -116,23 +116,23 @@ SSH logins for `root` are disabled by default in FreeBSD but standard system use
 
     DHCP and SLAAC will provide the default DNS resolvers. Add or edit these options as needed.
 
-    [![FreeBSD network configuration](/content/assets/freebsd-network-configuration-small.png)](/content/assets/freebsd-network-configuration.png)
+    [![FreeBSD network configuration](/docs/assets/freebsd-network-configuration-small.png)](/docs/assets/freebsd-network-configuration.png)
 
 7.  Ensure that your clock is set to local time rather than UTC. Choose **No** to set FreeBSD to a timezone of your choice.
 
-    [![FreeBSD Timezone Configuration](/content/assets/freebsd-timezone-small.png)](/content/assets/freebsd-timezone.png)
+    [![FreeBSD Timezone Configuration](/docs/assets/freebsd-timezone-small.png)](/docs/assets/freebsd-timezone.png)
 
 8.  Select the services that you wish to run on boot. We recommend that beginners use the default choices.
 
-    [![FreeBSD Service Configuration](/content/assets/freebsd-services-small.png)](/content/assets/freebsd-services.png)
+    [![FreeBSD Service Configuration](/docs/assets/freebsd-services-small.png)](/docs/assets/freebsd-services.png)
 
 9.  Add an additional user for SSH access safer system administration. To give your new user superuser privileges, add the user to the `wheel` group when asked to invite the user to any other groups. The other fields can be left default.
 
-    [![FreeBSD Network Configuration](/content/assets/freebsd-user-wheel-small.png)](/content/assets/freebsd-user-wheel.png)
+    [![FreeBSD Network Configuration](/docs/assets/freebsd-user-wheel-small.png)](/docs/assets/freebsd-user-wheel.png)
 
 10.  At the next prompt, choose to **Apply configuration and exit installer**. You'll then be asked if you'd like to drop into a shell before rebooting. Choose **Yes** here.
 
-     [![FreeBSD Manual Configuration](/content/assets/freebsd-manual-config-small.png)](/content/assets/freebsd-manual-config.png)
+     [![FreeBSD Manual Configuration](/docs/assets/freebsd-manual-config-small.png)](/docs/assets/freebsd-manual-config.png)
 
 11.  This final step is required to enable Lish, Glish, and make a few other changes. Use your favorite text editor and insert the following at the bottem of `/boot/loader.conf`. (FreeBSD ships with `ee` and `nvi`, linked as `vi`)
 

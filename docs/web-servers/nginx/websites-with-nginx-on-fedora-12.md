@@ -16,11 +16,11 @@ title: Websites with nginx on Fedora 12
 
 
 
-Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/content/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started](/content/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 # Installing nginx from EPEL Packages
 
@@ -35,7 +35,7 @@ Once finished, start nginx with the following command:
 
     /etc/init.d/nginx start
 
-You can now continue with the [configuration](/content/websites/nginx/basic-nginx-configuration) of nginx. Installing nginx in this manner will allow you to rely on the Fedora package maintainers to provide quality control, testing, and security updates to ensure that you're running the best possible version of the software. However, the packages provided by the Fedora project may not track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
+You can now continue with the [configuration](/docs/websites/nginx/basic-nginx-configuration) of nginx. Installing nginx in this manner will allow you to rely on the Fedora package maintainers to provide quality control, testing, and security updates to ensure that you're running the best possible version of the software. However, the packages provided by the Fedora project may not track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
 # Installing nginx from the Source Distribution
 
@@ -110,9 +110,9 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 ### Create an Init Script to manage nginx
 
-Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can create an "init script" using [this example](/content/assets/636-init-rpm.sh) to control nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
+Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can create an "init script" using [this example](/docs/assets/636-init-rpm.sh) to control nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
 
-    wget -O init-rpm.sh http://www.linode.com/content/assets/636-init-rpm.sh
+    wget -O init-rpm.sh http://www.linode.com/docs/assets/636-init-rpm.sh
     mv init-rpm.sh /etc/rc.d/init.d/nginx
     chmod +x /etc/rc.d/init.d/nginx
     chkconfig --add nginx
@@ -122,11 +122,11 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
 # More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs nginx Documentation](/content/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)

@@ -18,7 +18,7 @@ Mango is a simple static content management system for publishing blogs from con
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -149,14 +149,14 @@ SITE_TITLE = 'example Blog'
 {{< /file-excerpt >}}
 
 
-The paths specified in this file are relative to the top level of the Django application, for this document: `/srv/example.com/application/`. In the above example, all documents processed by Mango are stored in the `/srv/example.com/application/content/` directory. Explore each setting in this document while you configure your site.
+The paths specified in this file are relative to the top level of the Django application, for this document: `/srv/example.com/application/`. In the above example, all documents processed by Mango are stored in the `/srv/example.com/application/docs/` directory. Explore each setting in this document while you configure your site.
 
 # Write Content with Mango
 
 All content with Mango exists in source as Markdown, a lightweight markup language that mirrors formatting conventions for plain text emails. Markdown is designed to be easy to read and write, and can be translated efficiently into high quality HTML. Consider the following example entry:
 
 {{< file-excerpt >}}
-/srv/www/example.com/application/content/first-post.text
+/srv/www/example.com/application/docs/first-post.text
 {{< /file-excerpt >}}
 
 > date: 02 February 2011 time: 08:06am zone: US/Eastern tags: blog, meta, example
@@ -178,7 +178,7 @@ The first three lines of this file define header values that are processed by th
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Mango Home Page](http://mango.io/)
-- [Mango Documentation](http://mango.io/content/)
+- [Mango Documentation](http://mango.io/docs/)
 
 
 

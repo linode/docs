@@ -21,10 +21,10 @@ external_resources:
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-![Graphite with Grafana](/content/assets/how-to-install-graphite-and-grafana-on-ubuntu-14-04/Deploy_Graphite_smg.jpg)
+![Graphite with Grafana](/docs/assets/how-to-install-graphite-and-grafana-on-ubuntu-14-04/Deploy_Graphite_smg.jpg)
 
 # Set Up Graphite Monitoring Software with Grafana on Ubuntu
 
@@ -32,9 +32,9 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
+2.  This guide will use `sudo` wherever possible from an example account named `graphite`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create the `graphite` user, harden SSH access, remove unnecessary network services and set up a firewall. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 
@@ -195,7 +195,7 @@ Listen 8080
 
 	Now you should be able to access Graphite by going to your Linode's hostname or IP address using port 8080 in a web browser (ex: `example_domain.com:8080`). You'll see the Graphite landing page as shown below:
 
-	![Graphite landing page](/content/assets/graphite_landing_page.png)
+	![Graphite landing page](/docs/assets/graphite_landing_page.png)
 
 ## Create Sample Data
 
@@ -205,7 +205,7 @@ Listen 8080
 
 2.  Wait for the command prompt to be returned. Refresh the page and you should see a new `test.count` metric in the tree on the left:
 
-	![Graphite test metric](/content/assets/graphite_test_metric.png)
+	![Graphite test metric](/docs/assets/graphite_test_metric.png)
 
 ## Install and Configure Grafana
 
@@ -296,7 +296,7 @@ secret_key = somelongrandomstringkey
 
 2.  Click on **Data Sources** and select **Add new**. Fill in all the fields as shown in the screenshot below:
 
-	![Add Data Source dialog](/content/assets/graphite_grafana_data_source.png)
+	![Add Data Source dialog](/docs/assets/graphite_grafana_data_source.png)
 
 	Click **Save** to create the new Data Source.
 
@@ -306,15 +306,15 @@ secret_key = somelongrandomstringkey
 
 4.  Create a new dashboard by clicking the **Home** button and then **+ New**:
 
-	![Create new dashboard](/content/assets/graphite_grafana_new_dashboard.png)
+	![Create new dashboard](/docs/assets/graphite_grafana_new_dashboard.png)
 
 5.  Add a Graph panel to the newly created dashboard:
 
-	![Create new graph panel](/content/assets/graphite_grafana_new_graph.png)
+	![Create new graph panel](/docs/assets/graphite_grafana_new_graph.png)
 
 6.  Edit the Graph panel properties by clicking the tab with the words **no title (click here)**. Then click **Edit**:
 
-	![Edit graph panel](/content/assets/graphite_grafana_edit_graph.png)
+	![Edit graph panel](/docs/assets/graphite_grafana_edit_graph.png)
 
 7.  Make sure the **graphite** data source you've created is chosen in the dropdown box at the bottom right (marked as 1 in the screenshot below). In the dropdown at the top right corner (marked as 2), choose **Last 15 minutes**.
 
@@ -322,4 +322,4 @@ secret_key = somelongrandomstringkey
 
 	Finally, click the **Save** button (marked as 4) to save the dashboard you just created.
 
-	![Add test metric to the panel](/content/assets/graphite_grafana_edit_graph_add_metric.png)
+	![Add test metric to the panel](/docs/assets/graphite_grafana_edit_graph_add_metric.png)

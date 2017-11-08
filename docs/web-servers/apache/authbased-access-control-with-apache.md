@@ -12,17 +12,17 @@ modified_by:
 published: 2009-12-07
 title: 'Auth-based Access Control with Apache'
 external_resources:
- - '[Installation of the Apache web server](/content/web-servers/apache/)'
- - '[LAMP stack guides](/content/lamp-guides/)'
- - '[Authentication and Access Control](http://httpd.apache.org/content/2.2/howto/auth.html)'
- - '[Basic Authentication Module](http://httpd.apache.org/content/2.2/mod/mod_auth_basic.html)'
+ - '[Installation of the Apache web server](/docs/web-servers/apache/)'
+ - '[LAMP stack guides](/docs/lamp-guides/)'
+ - '[Authentication and Access Control](http://httpd.apache.org/docs/2.2/howto/auth.html)'
+ - '[Basic Authentication Module](http://httpd.apache.org/docs/2.2/mod/mod_auth_basic.html)'
 ---
 
 In many situations, HTTP services are public and intended to be accessed by anyone with the ability to connect to the server. However, there are a number of cases where site administrators need to have some additional control over which users can access the server. In these contexts, it is useful to require users to submit authentication credentials (e.g. usernames and passwords) to a site before gaining access to a resource.
 
-![Auth-based Access Control with Apache](/content/assets/auth-based_access_control_with_apache.png "Auth-based Access Control with Apache")
+![Auth-based Access Control with Apache](/docs/assets/auth-based_access_control_with_apache.png "Auth-based Access Control with Apache")
 
-This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/content/web-servers/apache/) or [LAMP stack installation guides](/content/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/content/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/content/web-servers/apache/configuration/configuration-structure) guides.
+This guide provides an overview of both credential-based and rule-based access control tools for the Apache HTTP server. We assume that you have a working installation of Apache and have access to modify configuration files. If you have not installed Apache, you might want to follow one of our [Apache installation guides](/docs/web-servers/apache/) or [LAMP stack installation guides](/docs/lamp-guides/). If you want a more thorough introduction to Apache configuration, please reference our [Apache HTTP server configuration basics](/docs/web-servers/apache/configuration/configuration-basics) and [Apache configuration structure](/content/web-servers/apache/configuration/configuration-structure) guides.
 
 ## Configuring HTTP Authentication
 

@@ -18,21 +18,21 @@ external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr/>
 
 [Tiny Tiny RSS](https://tt-rss.org/) (or tt-rss for short) is an open-source, self-hosted RSS reader that runs on PHP and a traditional SQL database. Running your own RSS aggregator puts you in control of your data, and Tiny Tiny RSS even supports [mobile apps](https://play.google.com/store/apps/details?id=org.ttrssreader) that connect to your server.
 
-![Install Tiny Tiny RSS on CentOS 7](/content/assets/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7.png)
+![Install Tiny Tiny RSS on CentOS 7](/docs/assets/host-your-own-rss-reader-with-tiny-tiny-rss-on-centos-7.png)
 
 This guide will walk through the steps necessary to install and configure Tiny Tiny RSS on a Linode running CentOS 7, using MariaDB as the database and Apache as the web server.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Follow the steps in the [LAMP on CentOS 7](/content/websites/lamp/lamp-on-centos-7) guide.
+2.  Follow the steps in the [LAMP on CentOS 7](/docs/websites/lamp/lamp-on-centos-7) guide.
 
 3.  Make sure your system is up to date:
 
@@ -103,7 +103,7 @@ If you decide to use a different location, note that you'll need to replace inst
 
 At this point the application should be accessible under Apache. As an example, if your Linode had the IP address of `1.2.3.4`, browsing to `http://1.2.3.4` should result in the following screen:
 
-![Tiny Tiny RSS Installation Page](/content/assets/tiny-tiny-rss-install-page.png)
+![Tiny Tiny RSS Installation Page](/docs/assets/tiny-tiny-rss-install-page.png)
 
 1.  Fill in the fields with the appropriate information:
 
@@ -176,13 +176,13 @@ Start the service, and enable it to start at boot:
 
 1.  Browse to the URL of your server, which should render the Tiny Tiny RSS login page:
 
-    ![Tiny Tiny RSS Login Page](/content/assets/tiny-tiny-rss-login.png)
+    ![Tiny Tiny RSS Login Page](/docs/assets/tiny-tiny-rss-login.png)
 
 2.  Log in with the username `admin` and default password `password`.
 
 3.  Change the administrator password to something stronger by clicking the **Actions** button in the top-right corner of the Tiny Tiny RSS main page. Select **Preferences**, then click the **Users** tab that appears. Click on the `admin` user and you'll see the following screen, with the option to change the user password:
 
-    ![Tiny Tiny RSS User Editor](/content/assets/ttrss-user-editor.png)
+    ![Tiny Tiny RSS User Editor](/docs/assets/ttrss-user-editor.png)
 
     Note that if you prefer to log in with a less privileged user, you can create additional users from the **Users** page, by clicking **Create user**.
 

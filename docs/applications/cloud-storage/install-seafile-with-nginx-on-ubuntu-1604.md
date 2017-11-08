@@ -16,15 +16,15 @@ external_resources:
 
 Seafile is a cross-platform file hosting tool with server applications for Linux and Windows, and GUI clients for Android, iOS, Linux, OS X and Windows. It supports file versioning and snapshots, two-factor authentication, WebDAV, and can be paired with nginx or Apache to enable connections over HTTPS.
 
-Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+Seafile has [two editions](https://www.seafile.com/en/product/private_server/): a free and open source Community Edition and a paid Professional edition. While the Pro edition is free for up to 3 users, this guide will use Seafile Community Edition with nginx serving an HTTPS connection, and MySQL on the backend. This application stack could also benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
-![Install Seafile with nginx on Ubuntu 16.04](/content/assets/seafile-title-graphic.png)
+![Install Seafile with nginx on Ubuntu 16.04](/docs/assets/seafile-title-graphic.png)
 
 
 ## Prepare Ubuntu
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 1.  Update the system:
@@ -42,9 +42,9 @@ This guide is written for a non-root user. Commands that require elevated privil
         ssh sfadmin@<your_linode's_ip>
 
 
-4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/content/security/securing-your-server#harden-ssh-access) guide to harden SSH access.
+4.  You should now be logged into your Linode as *sfadmin*. Use our [Securing Your Server](/docs/security/securing-your-server#harden-ssh-access) guide to harden SSH access.
 
-5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/content/security/firewalls/configure-firewall-with-ufw). Set the allow rules for SSH and HTTP(S) access with:
+5.  Set up UFW rules. UFW is Ubuntu's iptables controller which makes setting up firewall rules a little easier. For more info on UFW, see our guide [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw). Set the allow rules for SSH and HTTP(S) access with:
 
         sudo ufw allow ssh
         sudo ufw allow http
@@ -99,7 +99,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
         sudo mysql_secure_installation
 
-	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/content/databases/mysql/install-mysql-on-ubuntu-14-04)
+	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with nginx
 
@@ -118,7 +118,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
         sudo apt install nginx
 
-2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/content/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
+2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
 
     {{< file "/etc/nginx/sites-available/seafile.conf" aconf >}}
 server{
@@ -228,11 +228,11 @@ server{
 
     The `seahub.sh` script will set up an admin user account used to log into Seafile. You'll be asked for a login email and to create a password.
 
-    [![First time starting Seafile](/content/assets/seafile-firststart-small.png)](/content/assets/seafile-firststart.png)
+    [![First time starting Seafile](/docs/assets/seafile-firststart-small.png)](/docs/assets/seafile-firststart.png)
 
 7. Seafile should now be accessible from a web browser using both your Linode's IP address or the `server_name` you set earlier in nginx's `seafile.conf` file. Nginx will redirect to HTTPS and as mentioned earlier, your browser will warn of an HTTPS connection which is not private due to the self-signed certificate you created. Once you tell the browser to proceed to the site anyway, you'll see the Seafile login.
 
-    [![Seafile login prompt](/content/assets/seafile-login-small.png)](/content/assets/seafile-login.png)
+    [![Seafile login prompt](/docs/assets/seafile-login-small.png)](/docs/assets/seafile-login.png)
 
 ## Automatically Start Seafile on Sever Bootup
 

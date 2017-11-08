@@ -18,7 +18,7 @@ external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
   - '[WSGI/Python Quickstart Guide](https://uwsgi-docs.readthedocs.org/en/latest/WSGIquickstart.html)'
-  - '[nginx Configuration](/content/websites/nginx/how-to-configure-nginx)'
+  - '[nginx Configuration](/docs/websites/nginx/how-to-configure-nginx)'
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
@@ -28,16 +28,16 @@ external_resources:
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
+2.  This guide will use an example account named `django`. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create the `django` user, harden SSH access and remove unnecessary network services. You may need to create additional firewall rules for your specific application.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install nginx, Python Tools and uWSGI
@@ -101,7 +101,7 @@ If your application uses another database, skip installing `python-sqlite` and `
 
     Visit `http://example.com:8080` in your browser to confirm that the sample application is set up correctly and working. You should see the Django test page:
 
-    [![Django test page.](/content/assets/django-test-page-small.png)](/content/assets/django-test-page.png)
+    [![Django test page.](/docs/assets/django-test-page-small.png)](/docs/assets/django-test-page.png)
 
     Then stop development server with **Ctrl-C**.
 

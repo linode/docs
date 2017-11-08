@@ -46,7 +46,7 @@ There are many different ways to use entries in the hosts file, and the types of
 
     A FQDN does not necessarily need to have any relationship to websites or other services hosted on the server (although it may if you wish). As an example, you might host `www.something.com` on your server, but the system’s FQDN might be `mars.somethingelse.com`.
 
-    The domain you assign as your system’s FQDN should have an “A” record in DNS pointing to your Linode’s IPv4 address. For IPv6, you should also set up a “AAAA” record in DNS pointing to your Linode’s IPv6 address. For more information on configuring DNS, see our guide on [DNS records](/content/networking/dns/dns-records-an-introduction).
+    The domain you assign as your system’s FQDN should have an “A” record in DNS pointing to your Linode’s IPv4 address. For IPv6, you should also set up a “AAAA” record in DNS pointing to your Linode’s IPv6 address. For more information on configuring DNS, see our guide on [DNS records](/docs/networking/dns/dns-records-an-introduction).
 
 - Debian and Ubuntu include a line for the loopback domain by default. However, when you change the system's hostname, the loopback domain should be changed too. If you do not, then you'll see the message *sudo: unable to resolve host* when running sudo commands. If you are not using a FQDN like shown above, then all you need to eliminate the sudo message is:
 

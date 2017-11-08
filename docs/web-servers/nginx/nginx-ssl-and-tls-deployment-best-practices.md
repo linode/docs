@@ -19,30 +19,30 @@ external_resources:
 - '[KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
 This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible.
 
 ## Before you Begin
 
-1.  This guide is a continuation of our tutorial on how to [install nginx and a StartSSL certificate on Debian 8 (Jessie)](/content/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). The principles here can be adapted to an SSL/TLS deployment on any system, but at a minimum, you will need a Linode with the latest stable version of nginx and an SSL certificate installed.
+1.  This guide is a continuation of our tutorial on how to [install nginx and a StartSSL certificate on Debian 8 (Jessie)](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). The principles here can be adapted to an SSL/TLS deployment on any system, but at a minimum, you will need a Linode with the latest stable version of nginx and an SSL certificate installed.
 
 2.  Update your system:
 
         apt-get update && apt-get upgrade
 
 {{< note >}}
-The commands in this guide are written for a root user. If you're following along as a non-root user, commands that require elevated privileges should prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The commands in this guide are written for a root user. If you're following along as a non-root user, commands that require elevated privileges should prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-For more information, please review our guides on [basic nginx configuration](/content/websites/nginx/how-to-configure-nginx), [Linux security basics](/content/security/linux-security-basics) and [securing your server](/content/security/securing-your-server).
+For more information, please review our guides on [basic nginx configuration](/docs/websites/nginx/how-to-configure-nginx), [Linux security basics](/docs/security/linux-security-basics) and [securing your server](/docs/security/securing-your-server).
 
 ## Disable nginx Server Tokens
 
 By default, nginx will share its version number with anyone who connects to your server. For example, if a directory is not found, nginx will return a 404 error that includes its version number. Disabling server tokens makes it more difficult to determine the version of nginx running on your Linode, and therefore more difficult to implement version-specific exploits.
 
-[![404 With nginx Version Number](/content/assets/404_Not_Found.jpg)](/content/assets/404_Not_Found.jpg)
+[![404 With nginx Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
 
 1.  To disable `server_tokens`, open your `/etc/nginx/nginx.conf` file. Inside of the `http` block, append or uncomment the following line:
 
@@ -58,7 +58,7 @@ server_tokens       off;
 
 After restarting, direct your web browser to a directory of your server that does not exist, and nginx will no longer share its version number.
 
-[![404 With Server Tokens Disabled](/content/assets/404_Not_Found_Server_Tokens_Off.jpg)](/content/assets/404_Not_Found_Server_Tokens_Off.jpg)
+[![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)
 
 ## Enable HTTP/2 Support
 
@@ -75,7 +75,7 @@ If you installed nginx from source without modifying your environment variables,
 HTTP/2 is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time. Traditionally, when a user accessed a web page, a separate HTTP connection was established to load each resource (e.g. HTML, CSS, JavaScript, or images). HTTP/2 allows concurrent requests on a single connection to download assests in parallel. The server also compresses assets before sending them to the client, which requires less bandwdith.
 
 {{< note >}}
-Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+. See our instructions on [compiling nginx from source](/content/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#install-and-compile-nginx-from-source) for more information.
+Chrome has deprecated Next Protocol Negotiation (NPN) and now requires Application-Layer Protocol Negotiation (ALPN) for HTTP/2 compatibility. However, ALPN requires OpenSSL 1.0.2+. Many distributions, such as Debian 8 (Jessie) do not include this package in their repositories. If you intend to enable HTTP/2, you will need to use a version of nginx compiled with OpenSSL 1.0.2+. See our instructions on [compiling nginx from source](/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#install-and-compile-nginx-from-source) for more information.
 {{< /note >}}
 
 1.  To enable HTTP/2, open your nginx SSL virtual host configuration file. Depending on how you installed nginx, this could be located at `/etc/nginx/sites-enabled/default` or at `/etc/nginx/conf.d/example_ssl.conf`. Look for the `listen` line within the "SSL Configuration" section. Uncomment the following line if necessary and add `http2` to the end before the semicolon.
@@ -94,7 +94,7 @@ listen       443 ssl http2;
 
     If HTTP/2 is functioning properly, your report should look like this:
 
-    [![HTTP/2 Report](/content/assets/HTTP2_Report.jpg)](/content/assets/HTTP2_Report.jpg)
+    [![HTTP/2 Report](/docs/assets/HTTP2_Report.jpg)](/docs/assets/HTTP2_Report.jpg)
 
 ## Redirect HTTP Traffic to HTTPS
 
@@ -142,7 +142,7 @@ The problem with OCSP is that a certificate authority can now track users as the
 
 When OCSP stapling is enabled, nginx on your Linode will make an OCSP request for the client. The response recieved from the OCSP server is added to nginx's reponse to the user. This eliminates the need for the user to connect to an OCSP server to check the revocation status of your server certificate.
 
-Before enabling OCSP stapling you will need to have a file on your system that stores the CA certificates used to sign the server certificate. This section assumes that you have followed our guide on [how to install nginx and a StartSSL certificate](/content/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). If you have not, complete Steps 1-3 in the [Gather Additional Required Certificate Files](/content/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#gather-additional-required-certificate-files) section of that guide before proceeding here.
+Before enabling OCSP stapling you will need to have a file on your system that stores the CA certificates used to sign the server certificate. This section assumes that you have followed our guide on [how to install nginx and a StartSSL certificate](/docs/websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie). If you have not, complete Steps 1-3 in the [Gather Additional Required Certificate Files](/docs/web-servers/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/#gather-additional-required-certificate-files) section of that guide before proceeding here.
 
 1.  Open your HTTPS nginx virtual host configuration file, which can be located at `/etc/nginx/conf.d/example_ssl.conf` or `/etc/nginx/sites-enabled/default` depending on how you installed and configured nginx. Add the following lines inside the `server` block:
 
@@ -162,7 +162,7 @@ ssl_trusted_certificate /etc/ssl/nginx/ca.pem;
 
     Once the test is complete, scroll down to the "Protocol Details" section. Look for the "OCSP stapling" line. If nginx is configured correctly, this test will return "Yes."
 
-    [![SSL Server Test OCSP](/content/assets/OCSP_Stapling_SSL_Test.jpg)](/content/assets/OCSP_Stapling_SSL_Test.jpg)
+    [![SSL Server Test OCSP](/docs/assets/OCSP_Stapling_SSL_Test.jpg)](/docs/assets/OCSP_Stapling_SSL_Test.jpg)
 
 ## HTTP Strict Transport Security (HSTS)
 
@@ -194,7 +194,7 @@ If you've already conducted a test from one of the above sections, use the **Cle
 
     Once the test is complete, scroll down to the "Protocol Details" section. Look for the "Strict Transport Security (HSTS)" line. If nginx is configured correctly this test will return "Yes."
 
-    [![SSL Server Test HSTS](/content/assets/HSTS_SSL_Test.jpg)](/content/assets/HSTS_SSL_Test.jpg)
+    [![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)](/docs/assets/HSTS_SSL_Test.jpg)
 
 ## Disable Content Sniffing
 

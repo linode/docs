@@ -14,9 +14,9 @@ published: 2010-01-29
 title: 'Manage Web Content with Plone on Debian 5 (Lenny)'
 ---
 
-Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/content/web-servers/apache/) or [nginx](/content/web-servers/nginx).
+Plone is an advanced system for managing complex and content rich websites. Written in the Python programing language using the Zope web-framework, Plone provides a flexible substrate on top of the Zope system for developing highly specialized websites and is supported by an active community of developers. Zope provides a vibrant architecture for building complex and usable tools in a Python and web-centric manner. Plone and Zope may strike systems administrators as unique in comparison to other content management systems because they generate content by modifying the behavior of the Zope application server while incoming requests are proxied through a front end server like [Apache](/docs/web-servers/apache/) or [nginx](/docs/web-servers/nginx).
 
-Before installing the Plone content management system, we assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). At the end of this document, we will briefly discuss configuring the [Apache](/content/web-servers/apache/) and [nginx](/content/web-servers/nginx) web servers for use with Plone as a front end server.
+Before installing the Plone content management system, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). At the end of this document, we will briefly discuss configuring the [Apache](/content/web-servers/apache/) and [nginx](/content/web-servers/nginx) web servers for use with Plone as a front end server.
 
 # Installing Plone
 
@@ -39,21 +39,21 @@ The installation interface will present several questions during the installatio
 
     /etc/init.d/zope2.10 start
 
-Now, assuming that you have an [A Record](/content/networking/dns/dns-records-an-introduction#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
+Now, assuming that you have an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
 
 You can now proceed with the development of your Plone website!
 
 # Using Plone in Production Environments
 
-Although the Plone application server is capable of generating and providing dynamic content, it's advisable to use a more general purpose web server as a front end running on port `80`. You can use either the [Apache HTTP server](/content/web-servers/apache/) or the [nginx server](/content/web-servers/nginx/). Basic instructions for setting up the front-end proxy servers can be found below. Both options are functionally equivalent, and your choice is simply a matter of personal preference.
+Although the Plone application server is capable of generating and providing dynamic content, it's advisable to use a more general purpose web server as a front end running on port `80`. You can use either the [Apache HTTP server](/docs/web-servers/apache/) or the [nginx server](/docs/web-servers/nginx/). Basic instructions for setting up the front-end proxy servers can be found below. Both options are functionally equivalent, and your choice is simply a matter of personal preference.
 
 ### Configuring an Apache Front End Proxy
 
-Begin by installing the Apache web server. You can read more about this process in our documentation for [installing Apache for Debian systems](/content/web-servers/apache/installation/debian-5-lenny). Issue the following command:
+Begin by installing the Apache web server. You can read more about this process in our documentation for [installing Apache for Debian systems](/docs/web-servers/apache/installation/debian-5-lenny). Issue the following command:
 
     apt-get install apache2
 
-Edit the `/etc/apache2/mods-available/proxy.conf` file to properly configure the [ProxyPass](/content/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny) as follows:
+Edit the `/etc/apache2/mods-available/proxy.conf` file to properly configure the [ProxyPass](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny) as follows:
 
 {{< file-excerpt "/etc/apache2/mods-available/proxy.conf" apache >}}
 <IfModule mod_proxy.c>
@@ -166,8 +166,8 @@ Congratulations, you now have a fully functional Plone system that is ready for 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The Zope Book](http://docs.zope.org/zope2/zope2book//)
-- [Basic nginx configuration](/content/websites/nginx/basic-nginx-configuration)
-- [ProxyPass Apache to Multiple Webservers](/content/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
+- [Basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration)
+- [ProxyPass Apache to Multiple Webservers](/docs/web-servers/apache/proxy-configuration/multiple-webservers-proxypass-debian-5-lenny)
 
 
 

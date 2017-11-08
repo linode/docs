@@ -14,7 +14,7 @@ published: 2011-11-02
 title: 'LAMP Server on Ubuntu 11.10 (Oneiric)'
 external_resources:
   - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/business/server/overview)'
-  - '[Apache HTTP Server Documentation](http://httpd.apache.org/content/2.2/)'
+  - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.2/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'
   - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
@@ -27,7 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

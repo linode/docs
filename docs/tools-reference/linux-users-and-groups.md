@@ -19,7 +19,7 @@ external_resources:
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
 
-![Linux Users and Groups](/content/assets/linux_users_and_groups.png "Linux Users and Groups")
+![Linux Users and Groups](/docs/assets/linux_users_and_groups.png "Linux Users and Groups")
 
 ## What are User and Group Permissions?
 
@@ -238,7 +238,7 @@ In other words, the user was given read permission and the group was given execu
 
 To use the octal format, you have to calculate the permissions for each portion of the file or directory. The first ten characters mentioned above will correspond to a four digit numbers in octal. The execute permission is equal to the number one (1), the write permission is equal to the number two (2), and the read permission is equal to the number four (4). Therefore, when you use the octal format, you will need to calculate a number between 0 and 7 for each portion of the permission. A table has been provided below for clarification.
 
-![Octal format for permissions.](/content/assets/1502-octal-format-clarified.png)
+![Octal format for permissions.](/docs/assets/1502-octal-format-clarified.png)
 
 Although octal format may seem difficult to understand, it is easy to use once you get the gist of it. However, setting permissions with r, w, and x may be easier. Below are examples of how to use both letters and octal format to set permissions on a file or directory.
 
@@ -258,7 +258,7 @@ The output of ls -al after the chmod command above would look as follows:
 
 An octal table showing the numeric equivalent for permissions is provided below.
 
-![Numeric permissions table.](/content/assets/1487-numeric-permissions.png)
+![Numeric permissions table.](/docs/assets/1487-numeric-permissions.png)
 
 ### Additional File Permissions
 
