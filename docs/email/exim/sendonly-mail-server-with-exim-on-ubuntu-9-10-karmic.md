@@ -106,8 +106,6 @@ Congratulations! You've configured Exim to send email from your Linode.
 
 # More Information
 
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Exim Homepage](http://www.exim.org/)

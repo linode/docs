@@ -33,13 +33,15 @@ You will be asked for several configuration values. Enter values appropriate for
     Generating a 1024 bit RSA private key
     ...................................++++++
     ..............................++++++
-#     writing new private key to '/etc/apache2/ssl/apache.pem'
+    writing new private key to '/etc/apache2/ssl/apache.pem'
+    -----
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-#     If you enter '.', the field will be left blank.
+    If you enter '.', the field will be left blank.
+    -----
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
@@ -103,13 +105,15 @@ Here are the values we entered for our example certificate. Note that you can ig
     Generating a 1024 bit RSA private key
     ......................................................++++++
     ....++++++
-#     writing new private key to 'www.mydomain.com.key'
+    writing new private key to 'www.mydomain.com.key'
+    -----
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-#     If you enter '.', the field will be left blank.
+    If you enter '.', the field will be left blank.
+    -----
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon

@@ -114,8 +114,6 @@ This is an easy method for hosting multiple application servers (with different 
 
 # More Information
 
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache Module mod\_proxy](http://httpd.apache.org/content/2.2/mod/mod_proxy.html)

@@ -17,7 +17,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/content/contribute).*
-# 
+
+---
 
 ![Midnight Commander](/content/assets/midnight_commander.jpg)
 

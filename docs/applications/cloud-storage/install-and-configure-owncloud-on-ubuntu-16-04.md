@@ -69,9 +69,12 @@ Add the repository key to apt, and install ownCloud:
         select current_user();
 
     Which will display something similar to:
-# 
-#         | current_user()     |
-#         | ownCloud@localhost |
+
+        +--------------------+
+        | current_user()     |
+        +--------------------+
+        | ownCloud@localhost |
+        +--------------------+
         1 row in set (0.00 sec)
 
 ## Create an Administrator Account

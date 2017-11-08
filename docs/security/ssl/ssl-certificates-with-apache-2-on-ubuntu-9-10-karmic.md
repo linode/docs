@@ -35,13 +35,15 @@ You will be asked for several configuration values. Enter values appropriate for
     Generating a 1024 bit RSA private key
     ...................................++++++
     ..............................++++++
-#     writing new private key to '/etc/apache2/ssl/apache.pem'
+    writing new private key to '/etc/apache2/ssl/apache.pem'
+    -----
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-#     If you enter '.', the field will be left blank.
+    If you enter '.', the field will be left blank.
+    -----
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
@@ -101,13 +103,15 @@ Here are the values we entered for our example certificate. Note that you can ig
     Generating a 1024 bit RSA private key
     ......................................................++++++
     ....++++++
-#     writing new private key to 'www.mydomain.com.key'
+    writing new private key to 'www.mydomain.com.key'
+    -----
     You are about to be asked to enter information that will be incorporated
     into your certificate request.
     What you are about to enter is what is called a Distinguished Name or a DN.
     There are quite a few fields but you can leave some blank
     For some fields there will be a default value,
-#     If you enter '.', the field will be left blank.
+    If you enter '.', the field will be left blank.
+    -----
     Country Name (2 letter code) [AU]:US
     State or Province Name (full name) [Some-State]:New Jersey
     Locality Name (eg, city) []:Absecon
@@ -146,9 +150,9 @@ For example, if we downloaded a root cert for Verisign, we would save it to `/et
 
 Next, we'll add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
-~~~ apache
+    {{< file-excerpt "/etc/apache2/ports.conf" apache>}}
 NameVirtualHost 12.34.56.78:443
-~~~
+{{< /file-excerpt >}}
 
 Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in our example). Add the following stanza; note that we've essentially reproduced the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 
@@ -174,10 +178,6 @@ Restart Apache:
     /etc/init.d/apache2 restart
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
-
-# More Information
-
-# More Information
 
 # More Information
 

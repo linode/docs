@@ -239,8 +239,6 @@ There are many other possibilities for using mod\_rewrite to allow users to see 
 
 # More Information
 
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/content/2.0/)

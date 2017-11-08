@@ -105,8 +105,6 @@ In this example, `webeditor` is the name of the user of the specific site in que
 
 # More Information
 
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The PHP Homepage](http://php.net/)

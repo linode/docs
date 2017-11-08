@@ -160,11 +160,13 @@ The output should look something like this:
     drwxr-xr-x  11 root root  14K Nov  6 16:17 dev
     drwxr-xr-x  94 root root 4.0K Dec 10 20:27 etc
     drwxr-xr-x   4 root root 4.0K Feb 19  2013 home
-#     drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
+    drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
+    drwx------   2 root root  16K Apr 26  2012 lost+found
     drwxr-xr-x   3 root root 4.0K Apr 26  2012 media
     drwxr-xr-x   2 root root 4.0K Apr 19  2012 mnt
     drwxr-xr-x   3 root root 4.0K Nov 18 13:34 opt
-#     dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
+    dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
+    drwx------   3 root root 4.0K Apr  7  2013 root
     drwxr-xr-x  15 root root  560 Dec 10 15:57 run
     drwxr-xr-x   2 root root 4.0K Nov  6 16:04 sbin
     drwxr-xr-x   2 root root 4.0K Mar  5  2012 selinux

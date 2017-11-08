@@ -146,8 +146,10 @@ Salt SSH executes commands concurrently, the default-maximum is 25 simultaneous 
 3.  It is possible to use any execution module with Salt SSH. With execution modules, you can install packages, control services, gather system information, and much more.
 
         [root@master ~]# salt-ssh linode1 pkg.install iftop
-#         linode1:
-#             iftop:
+        linode1:
+            ----------
+            iftop:
+            ----------
             new:
                 1.0-0.14.pre4.el7
             old:

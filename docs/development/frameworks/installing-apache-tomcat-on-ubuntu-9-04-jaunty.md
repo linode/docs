@@ -83,12 +83,6 @@ Congratulations! You know have a working Apache Tomcat installation.
 
 # More Information
 
-# More Information
-
-# More Information
-
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Tomcat Home Page](http://tomcat.apache.org/)

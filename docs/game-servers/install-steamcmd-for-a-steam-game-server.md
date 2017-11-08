@@ -56,38 +56,38 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
     *IPv4*
 
-    ~~~
-    *filter
+    {{< file-excerpt "iptables" >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
-    # Allow ping.
-    -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+# Allow ping.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
-    # Allow SSH connections.
-    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+# Allow SSH connections.
+-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-    # Allow the Steam client.
-    -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
-    -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+# Allow the Steam client.
+-A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
+-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    # This includes ICMP error returns.
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow inbound traffic from established connections.
+# This includes ICMP error returns.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    # Log what was incoming but denied (optional but useful).
-    -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
-    -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+# Log what was incoming but denied (optional but useful).
+-A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+-A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
-    -A FORWARD -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
+{{< /file-excerpt >}}
 
     {{< note >}}
 Some Steam games require a few additional rules which can be found in our [Steam game guides](/content/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
@@ -97,42 +97,39 @@ Some Steam games require a few additional rules which can be found in our [Steam
 
     Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
 
-    ~~~
-    *filter
+    {{< file-excerpt "iptables" >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s ::1/128 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s ::1/128 -j REJECT
 
-    # Allow ICMP.
-    -A INPUT -p icmpv6 -j ACCEPT
+# Allow ICMP.
+-A INPUT -p icmpv6 -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    -A INPUT -m state --state ESTABLISHED -j ACCEPT
+# Allow inbound traffic from established connections.
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
-    -A FORWARD -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
+{{< /file-excerpt >}}
 
 5.  If you are using **firewalld** (CentOS 7, Fedora) instead of iptables, **use these rules**. If you are using iptables, do skip this step.
 
-    ~~~
-    sudo firewall-cmd --zone="public" --add-service=ssh --permanent
-    sudo firewall-cmd --zone="public" --add-forward-port=port=27000-27030:proto=udp:toport=1025-65355 --permanent
-    sudo firewall-cmd --zone="public" --add-forward-port=port=4380:proto=udp:toport=1025-65355 --permanent
-    sudo firewall-cmd --reload
-    ~~~
+        sudo firewall-cmd --zone="public" --add-service=ssh --permanent
+        sudo firewall-cmd --zone="public" --add-forward-port=port=27000-27030:proto=udp:toport=1025-65355 --permanent
+        sudo firewall-cmd --zone="public" --add-forward-port=port=4380:proto=udp:toport=1025-65355 --permanent
+        sudo firewall-cmd --reload
 
     Switch on firewalld and verify your ruleset:
 
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
         sudo firewall-cmd --zone="public" --list-all
-
 
 ## Install SteamCMD
 
@@ -218,16 +215,22 @@ The game server will still operate despite this error, and it should be somethin
     That will return an output similar to below and leave you at the `Steam>` prompt:
 
         Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
-#         [  0%] Checking for available updates...
+        [  0%] Checking for available updates...
+        [----] Downloading update (0 of 7,013 KB)...
         [  0%] Downloading update (1,300 of 7,013 KB)...
         [ 18%] Downloading update (3,412 of 7,013 KB)...
         [ 48%] Downloading update (5,131 of 7,013 KB)...
         [ 73%] Downloading update (6,397 of 7,013 KB)...
         [ 91%] Downloading update (7,013 of 7,013 KB)...
-#         [100%] Download complete.
-# #                 . . .
-#         Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
-#         [  0%] Checking for available updates...
+        [100%] Download complete.
+        [----] Installing update...
+        [----] Extracting package...
+                . . .
+        [----] Cleaning up...
+        [----] Update complete, launching Steam...
+        Redirecting stderr to '/home/steam/Steam/logs/stderr.txt'
+        [  0%] Checking for available updates...
+        [----] Verifying installation...
         Steam Console Client (c) Valve Corporation
         -- type 'quit' to exit --
         Loading Steam API...OK.

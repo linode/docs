@@ -95,7 +95,8 @@ Commits in Bazaar are stored sequentially and identified by their number. You ca
 
 To see Bazaar's log of your commit issue the `bzr log` command. The output will be similar to the following:
 
-#     $ bzr log
+    $ bzr log
+    ------------------------------------------------------------
     revno: 1
     committer: username <username@example.com>
     branch nick: caper

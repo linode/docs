@@ -92,9 +92,11 @@ fail2ban:
 
     This process will take a few minutes. If successful, a report will be displayed with a summary similar to the following:
 
-#         Summary
+        Summary
+        ------------
         Succeeded: 2 (changed=2)
-#         Failed:    0
+        Failed:    0
+        ------------
         Total states run:     2
 
 2.  For additional verification that the services are active on the minion, run:

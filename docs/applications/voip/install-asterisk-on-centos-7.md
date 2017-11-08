@@ -15,7 +15,8 @@ contributor:
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
-# 
+
+---
 
 ![How to Install Asterisk on CentOS 7](/content/assets/how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
 
