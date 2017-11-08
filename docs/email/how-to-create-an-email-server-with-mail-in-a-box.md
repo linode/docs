@@ -18,6 +18,7 @@ external_resources:
 ---
 
 *This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/content/contribute).*
+
 ---
 
 ![Mail_banner](/content/assets/Mail_in_a_box.jpg)
