@@ -181,12 +181,6 @@ Furthermore, ejabberd's "Mnesia" database is stored in the `/var/lib/ejabberd/` 
 
 # More Information
 
-# More Information
-
-# More Information
-
-# More Information
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Ejabberd Community Site](http://www.ejabberd.im/)
