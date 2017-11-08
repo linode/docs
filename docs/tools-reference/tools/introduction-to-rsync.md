@@ -51,7 +51,7 @@ To start becoming more familiar with rsync, the two commands you'll need are:
     man rsync
     rsync -help
 
-The basic structure of an rsync command is similar to `cp` and SCP. 
+The basic structure of an rsync command is similar to `cp` and SCP.
 
     rsync -[options] source destination
 

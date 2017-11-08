@@ -10,7 +10,7 @@ modified: Wednesday, February 11, 2015
 modified_by:
   name: Elle Krout
 published: 'Thursday, March 18th, 2010'
-title: How to Install a Simple Machines Discussion Forum (SMF) on Linux 
+title: How to Install a Simple Machines Discussion Forum (SMF) on Linux
 deprecated: false
 external_resources:
  - '[SMF Documentation](http://wiki.simplemachines.org/)'
@@ -28,7 +28,7 @@ Before you begin, be sure you have followed the steps outlined in the [Getting S
 
 ##Prerequisites
 
-You will need to create a MySQL user and database for SMF. 
+You will need to create a MySQL user and database for SMF.
 
 1.  Login to the MySQL server as root:
 

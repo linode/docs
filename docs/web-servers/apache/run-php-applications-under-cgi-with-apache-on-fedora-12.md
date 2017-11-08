@@ -36,7 +36,7 @@ To start Apache for the first time and ensure that it resumes following subseque
     /etc/init.d/httpd start
     chkconfig httpd on
 
-You can now [configure virtual hosting](/docs/web-servers/apache/installation/fedora-12#configure_apache) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-fedora-12/#configure-virtual-hosts) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     yum install php-cgi
 

@@ -20,7 +20,7 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django Framework. We will be installing Django and related packages from the Ubuntu repository, and deploying applications with mod\_python and the Apache web server. This setup is generally accepted as a good platform for getting started with Django, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.04 (Jaunty) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.04-jaunty) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9.04-jaunty) installed.
+We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.04 (Jaunty) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-04-jaunty) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9-04-jaunty) installed.
 
 Enabling the "Universe" Repository
 ----------------------------------
@@ -103,7 +103,7 @@ Apache Virtual Host Configuration
             PythonDebug Off
         </Location>
 
-        ErrorLog /srv/logs/error.log 
+        ErrorLog /srv/logs/error.log
         CustomLog /srv/logs/access.log combined
     </VirtualHost>
     ~~~

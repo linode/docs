@@ -67,7 +67,7 @@ external_resources:
 4.  Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.
 
     [![Image description](/docs/assets/murmur-debian-priority-resized.png)](/docs/assets/murmur-debian-priority.png)
-    
+
     If you want Murmur to have priority over other applications on the server, you can answer **Yes** to this question.
 
 5.  Next, you will be asked to set a *SuperUser* password. Murmur has a SuperUser account that lets you change server settings from the Mumble client. You may set it to whatever password you want.

@@ -114,6 +114,6 @@ To get the keys, there are two options:
 
 - Next to your username, there is a Online/Offline indicator. Next to that, there are two buttons. One with a link icon, and another with a download icon.
 
-- The download icon will download the keyfiles as a **TAR** file. 
+- The download icon will download the keyfiles as a **TAR** file.
 
 The link icon will display a link that you can give to your users to download their key. These links are unique to the user, and are temporary and expire after they have been used or within 24 hours, whichever comes first.

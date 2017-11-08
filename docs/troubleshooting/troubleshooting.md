@@ -72,7 +72,7 @@ To verify that your Linode is operating correctly, you should try to log in with
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
 5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears.
-6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/accounts-and-passwords#sph_resetting-the-root-password) and try again.
+6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
 7.  If the console is not responding, [contact Linode support](/docs/support).
 
 If you can log in, continue to the next section, even if there are error messages visible on the console.
@@ -101,13 +101,13 @@ The output will look similar to this:
 In this example, you can see that the root filesystem is 93% full. Here's a command you can use to list all files over 200MB on your root filesystem:
 
 	sudo find / -xdev -type f -size +200M -exec ls -lah {} \;
-	
-You can adjust the `+200M` value in this command as needed, to search for files above a specific size. 
+
+You can adjust the `+200M` value in this command as needed, to search for files above a specific size.
 
 
 #### Deleted Files
 
-If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you'll see how deleted files belonging to Apache can take up space. 
+If a service deletes a file that it is no longer using, the file remains on your disk until the next time the service has been rebooted. In this example you'll see how deleted files belonging to Apache can take up space.
 
 Use the following command to check for deleted files that are currently open:
 
@@ -124,7 +124,7 @@ This command will check the output of `lsof` for files marked as deleted, and wi
 	apache2   32342         www-data   15wW     REG               0,19          0       243M /run/lock/apache2/mpm-accept.13748 (deleted)
 	apache2   32343         www-data   12w      REG               0,19          0       158M /run/lock/apache2/ssl-cache.13747 (deleted)
 
-To free up this space, you can simply restart the Apache process on your Linode. 
+To free up this space, you can simply restart the Apache process on your Linode.
 
 ### Is the Linode out of memory?
 
@@ -160,7 +160,7 @@ Network issues between your desktop computer and the data center can make your s
 -   If you have experienced degraded service for an extended period of time, you can contact a service provider about the issues you're experiencing. Be sure to send MTR reports and any other relevant data.
 -   Network congestion over long distances and during peak times is normal. We recommended positioning hosts and resources as geographically close to the targeted audience as possible.
 
-When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report. 
+When contacting [Linode support](/docs/support) for assistance, please include the output of two MTR reports; one from your local network to your Linode, and another from your Linode to your local network's IP address. You can use a website such as [whatsmyip.org](http://www.whatsmyip.org/) to determine the IP address of your local network. If you're not able to connect to your Linode over SSH, you can connect using the [Lish](/docs/networking/using-the-linode-shell-lish) console to generate a report.
 
 ### Is there a Disk I/O bottleneck?
 
@@ -193,7 +193,7 @@ Use the following checklist if your website is not loading when you try to conne
 
 ### Have you added DNS records?
 
-To host a website with a domain name, you must set the domain's name servers to point to Linode. You also need to add DNS records for the domain in the Linode Manager. For instructions, see [Adding DNS Records](/docs/hosting-website/#sph_adding-dns-records). Please note that it can take up to 24 hours for DNS changes to be reflected.
+To host a website with a domain name, you must set the domain's name servers to point to Linode. You also need to add DNS records for the domain in the Linode Manager. For instructions, see [Adding DNS Records](/docs/websites/hosting-a-website/#add-dns-records). Please note that it can take up to 24 hours for DNS changes to be reflected.
 
 Continue to the next section if you have pointed your domain name at Linode, added DNS records, and waited at least 24 hours.
 
@@ -248,10 +248,10 @@ All web traffic is transferred over ports 80 and 443, so it's important to leave
 
 2.  Examine the output. If you previously configured a firewall with `iptables`, you should see the lines shown below:
 
-        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80 
+        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:80
         0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    tcp dpt:443
 
-3.  If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Creating a Firewall](/docs/securing-your-server/#sph_creating-a-firewall) to revise and implement new firewall rules.
+3.  If those lines are not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Creating a Firewall](/docs/securing-your-server/#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over ports 80 or 443 to `DROP` or `REJECT`.
 
 If your firewall is not blocking ports 80 or 443, continue to the next section.
@@ -264,11 +264,11 @@ If the files are in the correct directory, continue to the next section.
 
 ### Are virtual hosts correctly configured?
 
-If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you're hosting more than website on your Linode, verify that you correctly configured the virtual host configuration files. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 ### Did you add a new IP address?
 
-If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
+If you recently added a new IP address for an SSL certificate and it's not working, try rebooting your server. The reboot is required to activate the new IP address. You should have also configured a virtual host for the new IP address. Review the instructions for [Configuring Name Based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts) and the [web server reference manuals](/docs/web-servers).
 
 ## Can't Connect via SSH or FTP
 
@@ -280,7 +280,7 @@ Use the following checklist if you cannot connect to your Linode via SSH or an F
 
 ### Are you using Telnet or FTP?
 
-Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started#sph_connecting-to-your-linode).
+Telnet and FTP are disabled on your Linode by default, and we strongly recommend that you do not use those protocols. Instead, please use Secure Shell (SSH) and SSH File Transfer Protocol (SFTP) - the secure versions of the Telnet and FTP protocols. All Linodes come with an SSH server enabled, and you can connect to port 22 with SSH and SFTP clients. For more information, see [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh).
 
 ### Is port 22 blocked?
 
@@ -292,9 +292,9 @@ The SSH and SFTP protocols operate over port 22, so you will not be able to conn
 
 2.  Examine the output. If you previously configured a firewall with `iptables`, you should see the line shown below:
 
-        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22 
+        0  0 ACCEPT     tcp  --  *    *    0.0.0.0/0    0.0.0.0/0    state NEW tcp dpt:22
 
-3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#sph_creating-a-firewall) to revise and implement new firewall rules.
+3.  If that line is not present, your firewall rules may be blocking traffic on ports 80 or 443. Review the instructions in [Securing Your Server](/docs/securing-your-server#configure-a-firewall) to revise and implement new firewall rules.
 4.  Check for default `ACCEPT` and catch-all rules that send traffic transferred over port 22 to `DROP` or `REJECT`.
 
 ## Forgot My Username or Password
@@ -334,4 +334,4 @@ If you recently upgraded your plan, your Linode won't be able to take advantage 
 
 [![Resize disks.](/docs/assets/944-troubleshooting4-1.png)](/docs/assets/944-troubleshooting4-1.png)
 
-Follow our steps for [resizing a disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space. 
+Follow our steps for [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to take advantage of the extra space.

@@ -27,7 +27,7 @@ alias: ['applications/game-servers/team-fortress2-on-debian-and-ubuntu/']
 
 ## Prerequisites for Team Fortress 2
 
-From the SteamCMD guide, two additional steps are needed specifically for TF2. 
+From the SteamCMD guide, two additional steps are needed specifically for TF2.
 
 1.  Add an iptables firewall rule. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. This inserts a rule after the pre-existing iptables rules for SteamCMD.
 
@@ -154,7 +154,7 @@ The file `~/Steam/tf2/tf/cfg/server.cfg` is what contains all of the settings yo
 
 RCON allows you to make changes to your server from inside of the game.
 
-1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**  
+1.  To start using RCON, go to the **Options** setting in the game, and then select **Advanced...**
 
 	[![Enable the developer console.](/docs/assets/team-fortress-rcon-small.png)](/docs/assets/team-fortress-rcon.png)
 

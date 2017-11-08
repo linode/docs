@@ -18,12 +18,12 @@ title: Use Unbound for Local DNS Resolution on Fedora 15
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.
 
-If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/docs/dns-guides/introduction-to-dns). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/docs/using-linux/administration-basics#use_the__etc_hosts_file) to provide this functionality.
+If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/docs/dns-guides/introduction-to-dns). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/docs/using-linux/administration-basics#configure-the-etchosts-file) to provide this functionality.
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -43,7 +43,7 @@ The unbound configuration files will be located at `/etc/unbound/unbound.conf`.
 
 Following the installation, issue the following commands to start Unbound for the first time and ensure that unbound resumes following reboot:
 
-    service unbound start 
+    service unbound start
     chkconfig unbound on
 
 Configure Unbound
@@ -101,7 +101,7 @@ Before you can begin using your Unbound instance to resolve DNS queries, you nee
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/networking/configuring-static-ip-interfaces/#centos__amp__fedora). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/networking/configuring-static-ip-interfaces/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 {: .file }
 /etc/resolve.conf

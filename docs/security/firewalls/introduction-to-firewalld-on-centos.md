@@ -220,7 +220,7 @@ As an example, here is how you would use FirewallD to assign basic rules to your
 
         sudo firewall-cmd --set-default-zone=dmz
         sudo firewall-cmd --zone=dmz --add-interface=eth0
-      
+
 2.  Add permanent service rules for HTTP and HTTPS to the dmz zone:
 
         sudo firewall-cmd --zone=dmz --add-service=http --permanent

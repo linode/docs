@@ -1,4 +1,4 @@
 ---
-title:  SSH 
+title:  SSH
 ---
 

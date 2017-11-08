@@ -78,7 +78,7 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
 ### iOS
 
-*OpenVPN Connect* is used to manage OpenVPN connections in Apple's iOS for iPhones and iPads. We'll use iTunes to transfer the file to the iOS device from a computer running OS X or Windows. A Linux computer with the package `gvfs-backends` installed can mount the iOS device as external storage. 
+*OpenVPN Connect* is used to manage OpenVPN connections in Apple's iOS for iPhones and iPads. We'll use iTunes to transfer the file to the iOS device from a computer running OS X or Windows. A Linux computer with the package `gvfs-backends` installed can mount the iOS device as external storage.
 
 {: .note }
 >
@@ -98,7 +98,7 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
     >
     >If this is the first time connecting your iOS device to iTunes, you'll need to click on the overflow menu (the three horizontal dots) and choose **Apps**, then click **Get Started**.
 
-4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the icon for OpenVPN Connect. Click it, then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile and drag them into the window from Finder. If you add them individually, add the key before the client profile. Otherwise, OpenVPN Connect will fail to find the key. 
+4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the icon for OpenVPN Connect. Click it, then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile and drag them into the window from Finder. If you add them individually, add the key before the client profile. Otherwise, OpenVPN Connect will fail to find the key.
 
     [![iTunes File Sharing](/docs/assets/itunes-file-sharing-small.png)](/docs/assets/itunes-file-sharing.png)
 
@@ -149,7 +149,7 @@ These steps assume your distribution uses NetworkManager. Depending on the Netwo
 
     ![NetworkManager OpenVPN](/docs/assets/networkmanager-openvpn-vpn-import-ovpn.png)
 
-5.  The file browser will then open. Navigate to the computer's `client.ovpn` file and click *Open* to import it.    
+5.  The file browser will then open. Navigate to the computer's `client.ovpn` file and click *Open* to import it.
 
 6.  At the **Add Network Connection** window, select IPv6 in the left column. Switch IPv6 from **On**, to **Off**. Then click **Add**.
 
@@ -159,7 +159,7 @@ These steps assume your distribution uses NetworkManager. Depending on the Netwo
 
     {: .note }
     >
-    >Before connecting for the first time, it's a good idea to run `journalctl -f | grep vpn` or `tail -f /var/log/syslog | grep vpn` in a terminal on your client. The command gives you a real-time output of OpenVPN's logging, all errors will be visible here. 
+    >Before connecting for the first time, it's a good idea to run `journalctl -f | grep vpn` or `tail -f /var/log/syslog | grep vpn` in a terminal on your client. The command gives you a real-time output of OpenVPN's logging, all errors will be visible here.
 
 8.  After the profile is imported, and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
 

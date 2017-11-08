@@ -146,7 +146,7 @@ Ntopng has a built in web server and initializer. Configuration options can be d
 
 ## Create a Host Pool
 
-If you want to group devices over the same network or host a home media server, you can use a host pool. This example uses OpenVPN to group connected devices together. 
+If you want to group devices over the same network or host a home media server, you can use a host pool. This example uses OpenVPN to group connected devices together.
 
 1.  In the **Interfaces** dropdown menu, select your main connection interface. In this case, it’s `eth0`. In the menu directly below the **ntop** logo, select the icon that resembles a group of 3 people. Select **Manage Pools**.
 
@@ -154,7 +154,7 @@ If you want to group devices over the same network or host a home media server, 
 
     ![Add a pool name to the managed pools](/docs/assets/ntopng/ntopng-add-pool.png "Add a pool name to the managed pools")
 
-3.  Click on the **Unassigned Devices** tab. This is a list of devices currently transmitting data through the Linode (you should at least see the device you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Click **Save Settings** when you’re finished. 
+3.  Click on the **Unassigned Devices** tab. This is a list of devices currently transmitting data through the Linode (you should at least see the device you’re connecting from listed here). Determine which devices you’ll add to your pool and add them. Click **Save Settings** when you’re finished.
 
 4.  To view data from your host pool, you’ll need to mouse over the **Hosts** dropdown and select **Host Pools**. You’ll find the pool name you created listed on this page. Click on it. Here, you’ll see all currently open connections from each of the hosts in your host pool:
 
@@ -164,7 +164,7 @@ If you want to group devices over the same network or host a home media server, 
     >
     > If you want to see all the host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
 
-## Enable Security 
+## Enable Security
 
 Ntopng provides a simple and convenient method for monitoring threats.
 
@@ -174,7 +174,7 @@ Ntopng provides a simple and convenient method for monitoring threats.
 
 1.  Near the top of the web interface, scroll over **Settings** and select **Preferences**. Click on **Alerts** in the menu to the left. Click on **Enable Alerts** and choose which alerts you’d like to enable.
 
-2.  Scroll over the alert icon with the exclamation point in the top menu bar. Click on **Alerts**. All network alerts are recorded and displayed here. This page fills up quickly due to internet traffic and bot probes. If you locked down all ports on your machine excluding those needed for connections, ntopng will log all attempts to bypass those ports. 
+2.  Scroll over the alert icon with the exclamation point in the top menu bar. Click on **Alerts**. All network alerts are recorded and displayed here. This page fills up quickly due to internet traffic and bot probes. If you locked down all ports on your machine excluding those needed for connections, ntopng will log all attempts to bypass those ports.
 
 In addition, ntopng receives nightly updates to a blacklisted hosts file, supplied by [spamhaus.org](https://spamhaus.org) and [dshield.org](https://dshield.org). Connections made to and from these blacklisted hosts will be blocked outright by ntopng. While this should not be considered a full security solution, this is a good start to counteract malware and spam from infecting systems on your network.
 

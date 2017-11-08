@@ -32,7 +32,7 @@ This guide shows you how to install and configure Graylog2 with Elasticsearch an
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources: 
+2.  Not all required dependencies are available in the standard repository, so you will need to add Debian Backports to the list of package sources:
 
         echo "deb http://ftp.debian.org/debian jessie-backports main" > /etc/apt/sour0es.list.d/backports.list
 
@@ -52,7 +52,7 @@ Both Graylog and Elasticsearch are Java-based, so you will need to install the l
         apt-get install openjdk-8-jre-headless -y
 
 2.  Once Java is installed, check the Java version:
-	
+
         java -version
 
     You should see the following output on your screen:
@@ -80,7 +80,7 @@ Graylog uses Elasticsearch for storing the log messages and also offers a search
 
         apt-get update -y
 
-4.  After the system finishes updating, install Elasticsearch: 
+4.  After the system finishes updating, install Elasticsearch:
 
         apt-get install elasticsearch -y
 
@@ -273,7 +273,7 @@ Graylog is now up and running, It's time to access the Graylog web interface.
 
 
 ### Next steps
-You now have a fully configured a Graylog server. Graylog can be used to monitor logs of any size. So whether your use case is security, IT, development & devops, or anything else. Graylog will house your log data in one central location. 
+You now have a fully configured a Graylog server. Graylog can be used to monitor logs of any size. So whether your use case is security, IT, development & devops, or anything else. Graylog will house your log data in one central location.
 
 
 

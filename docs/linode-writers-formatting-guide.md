@@ -326,7 +326,7 @@ Use single spaces between sentences; do not double-space.
     <img src="/docs/assets/example-blue-stripe-table.png">
     </td>
   </tr>
-</table>   
+</table>
 
 ### Variables
 

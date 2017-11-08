@@ -73,7 +73,7 @@ The `knife` command communicates between the `chef-repo` located on a workstatio
 
 The default `knife.rb` file is defined with the following properties:
 
--	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`. 
+-	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`.
 -	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value standard output logging will still be performed.
 -	**node_name:**	The username of the person using the workstation. This user will need a valid authorization key located on the workstation.
 -	**client_key:** The location of the user's authorization key.
@@ -126,7 +126,7 @@ chef-repo/environments/environame.rb
 	default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 	override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 	~~~
-	
+
 As a JSON:
 
 {: .file}
@@ -146,7 +146,7 @@ chef-repo/environments/environame.json
 	  "override_attributes": {
 
 	  }
-	~~~  
+	~~~
 
 All nodes are automatically set to the "default" environment upon bootstrap. To change this, the environment should be defined in the `client.rb` file found in `/etc/chef` on the nodes.
 

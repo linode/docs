@@ -9,7 +9,7 @@ modified: Monday, July 3, 2017
 modified_by:
   name: Linode
 published: 'Friday, September 4th, 2009'
-title: Getting Started with Git 
+title: Getting Started with Git
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'
@@ -65,11 +65,11 @@ If you have an existing project and you want to start using Git to keep track of
 
 After you have added the file, stage a commit and leave a commit message. Commit message serve as a reminder of the changes that were made to a file:
 
-    git commit -m "Initialized a Git repository for this project. tracking changes to a file" 
+    git commit -m "Initialized a Git repository for this project. tracking changes to a file"
 
 ### Basic Git Commands
 
-This table lists basic commands, a description, and an example of the command in use: 
+This table lists basic commands, a description, and an example of the command in use:
 
 {: .table .table-striped }
 | Command           | Description                                                                           | Example                    |

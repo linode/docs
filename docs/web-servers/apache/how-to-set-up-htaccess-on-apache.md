@@ -45,7 +45,7 @@ The purpose of this guide is to show you how to set up htaccess configuration (.
 
 .htaccess is a configuration file for the Apache web server. It's an extremely powerful tool, that can be used to modify the Apache configuration without needing to edit the Apache configuration files. The following sections describe how to create this configuration and use it to restrict directory listings and IP addresses, and to handle redirects.
 
-## Enable .htaccess 
+## Enable .htaccess
 
 By default, .htaccess isn't available. To enable it you will need to edit the configuration file.
 
@@ -92,7 +92,7 @@ By default, someone visiting your website can view the directory and file struct
 
 ## Restrict IPs
 
-This section will guide you through restricting specific IPs from accessing your site. This is useful if you want to block certain visitors from visiting your site. You may also set this up to prevent certain IPs from accessing certain sections of your site. 
+This section will guide you through restricting specific IPs from accessing your site. This is useful if you want to block certain visitors from visiting your site. You may also set this up to prevent certain IPs from accessing certain sections of your site.
 
 {:.note}
 > Subdirectories can inherit settings from .htaccess files in their parent directories if they're not overridden by a separate .htaccess file in the subdirectory. The examples in this guide will continue to work with an .htaccess file in the project's root directory. You should carefully consider in which directory different .htaccess directives should be placed.
@@ -141,7 +141,7 @@ This section will guide you through restricting specific IPs from accessing your
 
 ## Handle Redirects
 
-You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website. You want to redirect a visitor to `http://example.com/test2/index.html if they try to visit `http://example.com/main.html`. 
+You can redirect traffic using .htaccess configuration. In the below example, you'll update the .htaccess file for the root directory of your website. You want to redirect a visitor to `http://example.com/test2/index.html if they try to visit `http://example.com/main.html`.
 
 1.  Create a test html file to redirect to:
 

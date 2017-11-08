@@ -88,9 +88,9 @@ The transfer of DNS records from your Master DNS server to the Linode DNS server
      };
     ~~~
 
-After your updates are complete, save and close the `named.conf` file. 
+After your updates are complete, save and close the `named.conf` file.
 
-Check that the configuration file is usable by issuing the command : 
+Check that the configuration file is usable by issuing the command :
 
     named-checkconf /etc/named.conf
 
@@ -100,7 +100,7 @@ Once the check is OK, the BIND service will need to be restarted in order for th
 
 On the left side in WHM under "Restart Services," click DNS Server (BIND/NSD/My).
 
-Click Yes to restart the service. Allow a few minutes for the service to restart. 
+Click Yes to restart the service. Allow a few minutes for the service to restart.
 
 You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
 

@@ -2,15 +2,16 @@
 author:
   name: Chris Walsh
   email: docs@linode.com
-description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.'
+description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
+og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
 keywords: 'security,secure,firewall,ssh,add user,quick start'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 'Wednesday, July 12th, 2017'
+modified: 'Friday, October 27th, 2017'
 modified_by:
   name: Linode
 published: 'Friday, February 17th, 2012'
-title: Securing Your Server
+title: How to Secure Your Server
 ---
 
 In the [Getting Started](/docs/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
@@ -24,7 +25,7 @@ Keeping your software up to date is the single biggest security precaution you c
 
 ### Automatic Security Updates
 
-There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.
+There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates. Not all package managers make that easy or possible, though.
 
 The practicality of automatic updates is something you must judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
@@ -41,7 +42,7 @@ Up to this point, you have accessed your Linode as the `root` user, which has un
 {: .note}
 > Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 
-To add a new user, first [log in to your Linode](/docs/getting-started#logging-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#log-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 
@@ -52,6 +53,9 @@ To add a new user, first [log in to your Linode](/docs/getting-started#logging-i
 2.  Add the user to the `wheel` group for sudo privileges:
 
         usermod -aG wheel example_user
+        
+       {: .caution}
+       > In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
 
 ### Ubuntu
 

@@ -41,7 +41,7 @@ The first block of data contains information regarding the file permissions and 
 
 The remaining characters represent the core permissions. In groupings of three, these characters represent read, write, and execute permissions. The first grouping represents the owners permissions, the second grouping represents the usergroup that owns the file, and the final grouping represents the permissions of all users on the system.
 
-Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional_file_permissions) that control other aspects of access to files.
+Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional-file-permissions) that control other aspects of access to files.
 
 ### The Chmod Command
 
@@ -66,12 +66,12 @@ The `-R` option applies the modification to the permissions recursively to the d
 The notation used in this document thus far can be confusing for particularly complex file permission requirements. `chmod` provides an alternate "octal" notation that you may find more sensible:
 
     0 ---      indicates no permissions
-    1 --x      indicates execute permissions 
-    2 -w-      indicates write permissions 
+    1 --x      indicates execute permissions
+    2 -w-      indicates write permissions
     3 -wx      indicates write and execute permissions
     4 r--      indicates read permissions
     5 r-x      indicates read and execute permissions
-    6 rw-      indicates read and write permissions 
+    6 rw-      indicates read and write permissions
     7 rwx      indicates read, write, and execute permissions
 
 Each digit is independent of the other two. Therefore, 777 creates read, write, and execute privileges for all users. 744, which is a typical default permission, allows read, write, and execute permissions for the owner, and read permissions for the group and world users. To chmod the "roster.py" file so that the owner can read, write, and execute the file, the group can read and execute the file, and the world can execute the file, issue the following command:

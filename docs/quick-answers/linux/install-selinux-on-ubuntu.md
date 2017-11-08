@@ -15,32 +15,32 @@ title: How to Install SELinux on Ubuntu
 
 
 
-Ubuntu has a Mandatory Access Control (MAC) system similar to SELinux, named AppArmor. Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu, are already familiar with SELinux and would like to use it to enforce security on your system, you can install it by following this brief tutorial. 
+Ubuntu has a Mandatory Access Control (MAC) system similar to SELinux, named AppArmor. Both SELinux and AppArmor provide a set of tools to isolate applications from each other to protect the host system from being compromised. AppArmor offers Ubuntu users mandatory access control options, without the perceived difficulty or learning curve that SELinux may have. However, if you are switching to Ubuntu, are already familiar with SELinux and would like to use it to enforce security on your system, you can install it by following this brief tutorial.
 
 ### Before You Begin
 
-Linode does not support SELinux by default. To boot a distribution-specific kernel, follow this [guide](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm), and select GRUB2 in the manager's kernel menu. 
+Linode does not support SELinux by default. To boot a distribution-specific kernel, follow this [guide](https://www.linode.com/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm), and select GRUB2 in the manager's kernel menu.
 
-If you are using a Linode, instead of using the `reboot` command, reboot the machine from the Linode manager. 
+If you are using a Linode, instead of using the `reboot` command, reboot the machine from the Linode manager.
 
 ### Remove AppArmor
 
 {:.caution}
 >
 >At this point in the tutorial AppArmor is your default security module. Removing but not replacing AppArmor can put your system at risk.
->Do not purge AppArmor if you believe you may reuse it in the future. 
+>Do not purge AppArmor if you believe you may reuse it in the future.
 
-1. Stop the AppArmor script in `/etc/init.d/`: 
+1. Stop the AppArmor script in `/etc/init.d/`:
 
-		sudo /etc/init.d/apparmor stop 
+		sudo /etc/init.d/apparmor stop
 
-2. Purge AppArmor from the system. 
-	
+2. Purge AppArmor from the system.
+
 		apt purge apparmor
 
-	If you are worried about configuration files being removed from the system, use `apt remove apparmor`. 
+	If you are worried about configuration files being removed from the system, use `apt remove apparmor`.
 
-3. Update and reboot your system: 
+3. Update and reboot your system:
 
 		apt update && upgrade -yuf
 		reboot
@@ -52,7 +52,7 @@ If you are using a Linode, instead of using the `reboot` command, reboot the mac
 		apt install selinux
 		reboot
 
-2. You can determine whether or not SELinux is enforcing security on your system by trying to set SELinux to `enforcing` mode. 
+2. You can determine whether or not SELinux is enforcing security on your system by trying to set SELinux to `enforcing` mode.
 
 		root@ubuntu:~# setenforce 1
 		root@ubuntu:~# getenforce
@@ -75,5 +75,5 @@ If you are using a Linode, instead of using the `reboot` command, reboot the mac
         SELINUX=enforcing
         ~~~
 
-## Next Steps 
-After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux) to learn the basics of SELinux security. 
+## Next Steps
+After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux) to learn the basics of SELinux security.

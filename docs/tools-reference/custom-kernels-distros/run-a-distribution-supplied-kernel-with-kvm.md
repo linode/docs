@@ -27,7 +27,7 @@ The steps in this section currently apply only to the distributions under *Recom
 2.  Click **Edit** to view a distribution's configuration profile options:
 
     ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
-    
+
 3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:
 
     ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
@@ -64,7 +64,7 @@ The relabel process is triggered by the empty `/.autorelabel` file.
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
     ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
 
-We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+We include a systemd unit and bash script in our CentOS 7 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
 
 ## Older Distributions
 
@@ -119,7 +119,7 @@ At the time of this writing, these steps have been tested on:
     > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
 
     You'll see the kernel and other components you just installed and generated in the `/boot` directory. For example:
- 
+
         [root@centos7 ~]# ls /boot
         config-3.10.0-514.el7.x86_64
         grub

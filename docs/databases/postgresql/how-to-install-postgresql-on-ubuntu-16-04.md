@@ -20,7 +20,7 @@ external_resources:
 
 # A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. 
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode.
 
 ## Before You Begin
 
@@ -46,7 +46,7 @@ Install PostgreSQL from the Ubuntu package repository:
 
 ### Modify the Postgres Users
 
-By default, PostgreSQL will create a Linux user named `postgres` to access the database software. 
+By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
 {: .caution}
 >
@@ -109,7 +109,7 @@ This section contains examples which create a test database with an employee's f
                    1 | John       | Doe
         (1 row)
 
-4.  Exit the PostgreSQL shell by entering the `\q` command. 
+4.  Exit the PostgreSQL shell by entering the `\q` command.
 
 ### Create PostgreSQL Roles
 
@@ -137,7 +137,7 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ### Secure Local PostgreSQL Access
 
-PostgreSQL uses *peer authentication* by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases. 
+PostgreSQL uses *peer authentication* by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases.
 
 Commands in this section should be run as the `postgres` Linux user unless otherwise specified.
 
@@ -150,7 +150,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
         local    all        all             peer
         ~~~
 
-    Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash. 
+    Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
 2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 
@@ -163,7 +163,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 4.  As `postgres`, connect to the test database as the `examplerole` PostgreSQL user:
 
-        psql -U examplerole -W mytestdb 
+        psql -U examplerole -W mytestdb
 
     You will be prompted to enter the password for the `examplerole` user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
 

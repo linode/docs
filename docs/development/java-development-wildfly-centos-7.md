@@ -69,15 +69,15 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 5.  Switch to destination folder:
 
         cd /opt
-  
+
 6.  Download Java, remember to change the URL with the latest you got in step 4:
 
         sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.tar.gz"
- 
+
 7.  Extract archived content, remember exact name will differ based on your version
 
         sudo tar xzf jdk-*.tar.gz
- 
+
 8.  Install Java with Alternatives (I prefer this method as in future you most probably will have multiple versions of Java running on same server, so better use alternative to make sure you know the default version of your OS & be able to change it easily). In the below option for new Linode you will find only 1 option. Be sure to change all instances of `jdk1.8.0_45` to include the correct version:
 
         cd /opt/jdk1.8.0_45/
@@ -100,7 +100,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         sudo alternatives --install /usr/bin/javac javac /opt/jdk1.8.0_45/bin/javac 2
         sudo alternatives --set jar /opt/jdk1.8.0_45/bin/jar
         sudo alternatives --set javac /opt/jdk1.8.0_45/bin/javac
- 
+
         java -version
         java version "1.8.0_45"
         Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
@@ -111,7 +111,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         export JAVA_HOME=/opt/jdk1.8.0_45
         export JRE_HOME=/opt/jdk1.8.0_45/jre
         export PATH=$PATH:/opt/jdk1.8.0_45/bin:/opt/jdk1.8.0_45/jre/bin
- 
+
 11. The above command will work for this session only, but you will need to be added to all system users especially when server reboots, so for the Bourne shell, create a new file called `/etc/profile.d/java.sh`, replacing `jdk1.8.0_45` with the appropriate version:
 
     {: .file}
@@ -182,7 +182,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         #Title : wildfly-install.sh
         #Description : The script to install Wildfly 8.x
         #Original script: http://sukharevd.net/wildfly-8-installation.html
-         
+
         # This version is the only variable to change when running the script
         WILDFLY_VERSION=8.2.0.Final
         WILDFLY_FILENAME=wildfly-$WILDFLY_VERSION
@@ -193,20 +193,20 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         INSTALL_DIR=/opt
         WILDFLY_FULL_DIR=$INSTALL_DIR/$WILDFLY_FILENAME
         WILDFLY_DIR=$INSTALL_DIR/wildfly
-         
+
         WILDFLY_USER="wildfly"
         WILDFLY_SERVICE="wildfly"
-         
+
         WILDFLY_STARTUP_TIMEOUT=240
         WILDFLY_SHUTDOWN_TIMEOUT=30
-         
+
         SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-         
+
         if [[ $EUID -ne 0 ]]; then
         echo "This script must be run as root."
         exit 1
         fi
-         
+
         echo "Downloading: $WILDFLY_DOWNLOAD_ADDRESS..."
         [ -e "$WILDFLY_ARCHIVE_NAME" ] && echo 'Wildfly archive already exists.'
         if [ ! -e "$WILDFLY_ARCHIVE_NAME" ]; then
@@ -222,7 +222,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         rm -rf "$WILDFLY_FULL_DIR"
         rm -rf "/var/run/$WILDFLY_SERVICE/"
         rm -f "/etc/init.d/$WILDFLY_SERVICE"
-         
+
         echo "Installation..."
         mkdir $WILDFLY_FULL_DIR
         tar -xzf $WILDFLY_ARCHIVE_NAME -C $INSTALL_DIR
@@ -230,7 +230,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
         useradd -s /sbin/nologin $WILDFLY_USER
         chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR
         chown -R $WILDFLY_USER:$WILDFLY_USER $WILDFLY_DIR/
-         
+
         echo "Registering Wildfly as service..."
         cp $WILDFLY_DIR/bin/init.d/wildfly-init-redhat.sh /etc/init.d/$WILDFLY_SERVICE
         WILDFLY_SERVICE_CONF=/etc/default/wildfly.conf
@@ -293,7 +293,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 
         cd /opt
         sudo ./wildfly-install.sh
- 
+
 4.  You will need to add to add management user (Web and/or CLI) to be able to access the management console, this can be simply done by running the command simply run the shell script in `/opt/wildfly/bin/add-user.sh`:
 
     1.  **Select option a for Management user.**
@@ -305,7 +305,7 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
     7.  You will get this message: **To represent the user add the following to the server-identities definition**. This is just to be used in domain installation. Keep it if you needed to switch to domain installation later.**
 
     You should be able to test the wildfly by using the URL `http://123.45.67.89:8080`, and the WildFly Admin console using the URL `http://123.45.67.89:9990/console`, replacing `123.45.67.89` with your Linode's IP address.
- 
+
 5. I prefer that you install any sample application (Use your own, or simply get the [default sample from Tomcat](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/) and make sure it is working using the port 8080, as it will be used when testing after adding Apache HTTP. The sample application can be deployed from the WildFly admin console.
 
 ### Configure MySQL Driver in WildFly & Add DataSource
@@ -313,11 +313,11 @@ After full installation of above stack it was consuming around 650 MB of RAM wit
 Please Follow these steps to install MySQL driver as "module" in WildFly
 
 1.  Log in as root, and create a folder within WildFly installation for the new module:
- 
+
         su
         mkdir -p /opt/wildfly/modules/com/mysql/main
 
- 
+
 2.  Download the [jdbc driver of mysql](http://dev.mysql.com/downloads/connector/j/) (mysql-connector-java-*-bin.jar) to `/opt/wildfly/modules/com/mysql/main`.
 
 3.  Create a file defining the module to the same folder `/opt/wildfly/modules/com/mysql/main` named `module.xml` have the following information, replacing the `mysql-connector-java-5.1.34-bin.jar` with the correct version:
@@ -335,7 +335,7 @@ Please Follow these steps to install MySQL driver as "module" in WildFly
            </dependencies>
         </module>
         ~~~
- 
+
 4.  Change ownership for the user wildfly for the files by issuing the command:
 
         chown -R wildfly:wildfly /opt/wildfly/modules
@@ -358,7 +358,7 @@ Please Follow these steps to install MySQL driver as "module" in WildFly
 6.  Restart WildFly so changes take effect:
 
         systemctl restart wildfly
- 
+
 7.  Login to the management console at `http://123.45.67.89:9990/console`.
 
 8.  Click **Configuration**, then on the left menu **SubSystems** -> **Connector** -> **DataSources**. In the **DataSources**0 tab, click **Add**.
@@ -387,11 +387,11 @@ WildFly is now connected to MySQL.
 ## Apache HTTP Server installation
 
 1.  Install Apache:
-    
+
         sudo yum install -y httpd
 
 2.  Start and enable Apache:
- 
+
         sudo systemctl start httpd
         sudo systemctl enable httpd
 
@@ -400,7 +400,7 @@ WildFly is now connected to MySQL.
         sudo firewall-cmd --permanent --add-port=80/tcp
         sudo firewall-cmd --reload
 
-4.  Backup your default Apache configuration: 
+4.  Backup your default Apache configuration:
 
         sudo cp /etc/httpd/conf/httpd.conf /etc/httpd/conf/httpd-org.conf
 
@@ -420,7 +420,7 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
         cd /tmp
         wget http://www.apache.org/dist/tomcat/tomcat-connectors/jk/tomcat-connectors-1.2.40-src.tar.gz
         tar -xf tomcat-connectors-1.2.40-src.tar.gz
-        cd /tmp/tomcat-connectors-1.2.40-src/native 
+        cd /tmp/tomcat-connectors-1.2.40-src/native
         ./buildconf.sh
         ./configure --with-apxs=/usr/sbin/apxs
         make
@@ -433,7 +433,7 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
 
     {: .file}
     /etc/httpd/conf.d/workers.properties
-    :   ~~~ conf 
+    :   ~~~ conf
         worker.list=jboss1,jkstatus
         worker.jkstatus.type=status
         worker.jboss1.type=ajp13
@@ -442,7 +442,7 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
         # https://www.apachelounge.com/viewtopic.php?t=5883
         worker.jboss1.host=127.0.0.1
         ~~~
- 
+
 5.  Instead of modifying Apache configuration file; better create extra Apache HTTP configuration file that will work as Apache by default has in the file `/etc/httpd/conf/httpd.conf` the directive `IncludeOptional conf.d/*.conf`:
 
     {: .file}
@@ -452,28 +452,28 @@ There are multiple ways for setting Apache HTTP to direct calls to WildFly (mod_
         # determine the server's fully qualified domain name
         # replace 1.2.3.4 with your server IP
         ServerName    1.2.3.4
-         
+
         # Load mod_jk
         LoadModule    jk_module modules/mod_jk.so
         JkWorkersFile /etc/httpd/conf.d/workers.properties
         JkLogFile     /var/log/httpd/mod_jk_log
-         
+
         # To be changed to warn in production, the mount point should match your application sample pathes
         JkLogLevel    info
         JKMount       /sample jboss1
         JkMount       /sample/* jboss1
         JKMount       /jkstatus jkstatus
-         
+
         # To avoid write access error in mod_jk
         # https://bugzilla.redhat.com/show_bug.cgi?id=912730
         JKShmFile     /var/tmp/jk-runtime-status
         ~~~
- 
+
 6.  Restart Apache:
 
         sudo systemctl restart httpd
 
- 
+
 7.  Try the URL `http://123.45.67.89/jkstatus`, repalcing `123.45.67.89` with your Linode IP. It should display a page for "JK Status Manager".
 
 8.  We need to configure WildFly for accepting calls from Apache HTTP, Open the admin console, and selection the **Configuration** Menu -> **Web** -> **HTTP**. Then click the **View** link beside the **default-server**.

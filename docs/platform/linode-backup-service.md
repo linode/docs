@@ -157,7 +157,7 @@ To restore a backup to an existing Linode, you will need to make sure that you h
 
 	Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode's two disks.
 
-4.  Now that you know how much space you'll need to free in order to restore the backup, [resize your disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to make room for it.
+4.  Now that you know how much space you'll need to free in order to restore the backup, [resize your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to make room for it.
 
 5.  Once the disk resize has completed, check the storage indicator on your Linode's Dashboard to confirm that you've freed up enough space for your backup:
 

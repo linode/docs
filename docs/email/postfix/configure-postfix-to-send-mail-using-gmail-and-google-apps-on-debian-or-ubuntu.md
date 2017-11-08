@@ -21,7 +21,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 ## Before You Begin
 
-1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#arch--centos-7--debian-8--fedora-version-18-and-above--ubuntu-1504-and-above).
+1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#getting-started#setting-the-hostname).
 
 2.  Update your system:
 

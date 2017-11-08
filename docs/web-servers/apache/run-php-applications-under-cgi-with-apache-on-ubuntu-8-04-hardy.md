@@ -34,7 +34,7 @@ If you have not already installed the Apache HTTP server, issue the following co
 
     apt-get install apache2
 
-You can now [configure virtual hosting](/docs/web-servers/apache/installation/ubuntu-8.04-hardy#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
+You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/#configure-apache-for-named-based-virtual-hosting) in accordance with the needs of your server. To install the PHP CGI binaries, issue the following command:
 
     apt-get install php5-cgi
 

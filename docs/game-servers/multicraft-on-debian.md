@@ -47,7 +47,7 @@ Multicraft for Linux depends on several software packages in order to run.
         ~~~
 
         {: .note}
-        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
 
 4.  Reload the Apache configuration:
 
@@ -149,4 +149,4 @@ Multicraft for Linux depends on several software packages in order to run.
         eula=true
         ~~~
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server).
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connect-to-your-minecraft-server).

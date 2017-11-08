@@ -20,7 +20,7 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django framework. Although Ubuntu Hardy includes Django packages, these contain a dated version of the Django framework, in the 0.9x series. We've decided to install the most recent stable release of Django instead. This provides the best possible balance between the stability and support of the Ubuntu-Hardy release, and the most current Django API. In general the Apache, plus mod\_python, plus Django is accepted as the idea setup for beginning Django deployments, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-8.04-hardy) and a functional [MySQL database](/docs/databases/mysql/ubuntu-8.04-hardy) installed.
+We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 8.04 (Hardy) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-8-04-hardy) and a functional [MySQL database](/docs/databases/mysql/ubuntu-8-04-hardy) installed.
 
 Installing Python Dependencies
 ------------------------------
@@ -32,7 +32,7 @@ Make sure your package repositories and installed programs are up to date by iss
 
 There are a number of packages that we need to install before we can deploy a Django application. The following command will download and install all of these dependencies:
 
-    apt-get install libapache2-mod-python python-mysqldb 
+    apt-get install libapache2-mod-python python-mysqldb
 
 This installs mod\_python, which embeds a Python interpreter in the Apache web server (`libapache2-mod-python`), MySQL database bindings for Python, and version 1.02 of the Django web framework.
 
@@ -54,7 +54,7 @@ Because we're not installing Django from the Ubuntu repository we must download 
 
 After downloading the tarball, extract it using tar:
 
-    tar xzvf Django-1.1.tar.gz 
+    tar xzvf Django-1.1.tar.gz
 
 Then move (`cd`) into the newly created `Django-1.1` directory (or later, if you've downloaded an alternate version) and use the following command to install Django:
 

@@ -117,7 +117,7 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
     After the prompt `[INFO] Listening on /0.0.0.0:25577` is displayed in the console, type `end` and press Enter.
 
-2.  Edit `config.yml` by replacing the section of the configuration that says `host: 0.0.0.0:25577` to `host: 0.0.0.0:25565` as this is the default port that the Minecraft Client attempts to connect to. 
+2.  Edit `config.yml` by replacing the section of the configuration that says `host: 0.0.0.0:25577` to `host: 0.0.0.0:25565` as this is the default port that the Minecraft Client attempts to connect to.
 
 3.  Edit the following block of the configuration, in order to add our existing Spigot servers:
 
@@ -132,7 +132,7 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
         ~~~
 
     For the servers that are specified as examples in the introduction, it would look like:
-    
+
     {: .file-excerpt}
     config.yml
     :   ~~~ yml
@@ -148,15 +148,15 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
         ~~~
 
     Each server block has a label: In the case of the example, `lobby` or `games`. These can be any word you want, but it's important that they are descriptive, as they will be used by the players to change servers.
-    
+
     So that players can recognise your server more easily in their server list, you can set a custom message. Change the line that says `motd: 'Just another Bungeecord - Forced Host'` and put your custom message between the quotes. You can use Minecraft color codes here.
-    
+
     To allow for UUIDs to be correct in the Spigot servers, you should also ensure that you set `ip_forward` to `true`.
-    
+
     Finally, you need to set the default server for players who connect. You can do this by replacing the `lobby` in the line that says `default_server: lobby` with the label for your server.
-    
+
     Save and exit.
- 
+
 ### Running BungeeCord
 
 1.  Create the file:
@@ -164,8 +164,8 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
     {: .file}
     /home/bungeecord/bungeestart.sh
     :   ~~~ shell
-        #!/bin/bash	
-    
+        #!/bin/bash
+
         screen -dmS "bungeecord" java -jar BungeeCord.jar
         ~~~
 

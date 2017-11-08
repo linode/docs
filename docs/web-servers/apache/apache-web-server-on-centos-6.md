@@ -16,6 +16,8 @@ external_resources:
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
 
+![Apache Web Server on CentOS 6](/docs/assets/apache-web-server-on-centos-6/Apache_Web_Server_smg.jpg)
+
 The *Apache HTTP Server* (Apache) is an open-source web server application. This guide explains how to install and configure an Apache web server on CentOS 6.
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP) stack, please see the [LAMP on CentOS 6](/docs/websites/lamp/lamp-server-on-centos-6) guide.
@@ -70,12 +72,12 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL, and PHP)
     {: .file-excerpt }
     /etc/httpd/conf.d/vhost.conf
     :   ~~~ conf
-        <VirtualHost *:80> 
+        <VirtualHost *:80>
              ServerAdmin admin@example.org
              ServerName example.org
              ServerAlias www.example.org
              DocumentRoot /srv/www/example.org/public_html/
-             ErrorLog /srv/www/example.org/logs/error.log 
+             ErrorLog /srv/www/example.org/logs/error.log
              CustomLog /srv/www/example.org/logs/access.log combined
         </VirtualHost>
         ~~~

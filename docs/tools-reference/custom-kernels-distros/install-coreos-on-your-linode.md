@@ -23,10 +23,10 @@ contributor:
 <hr>
 
 {: .note}
-> 
+>
 >CoreOS Container Linux is now available for deployment from the Linode Manager.
 
-[CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality. This guide details installing CoreOS on a **KVM** Linode. If you're running a Xen Linode, you can [upgrade](/docs/platform/kvm#how-to-enable-kvm), but it is currently not possible to install CoreOS on a Xen Linode.
+[CoreOS](https://coreos.com/) is a container-centric Linux distribution designed for clustered systems running in the cloud. With user applications running inside containers, the host system itself provides minimal functionality. This guide details installing CoreOS on a **KVM** Linode. If you're running a Xen Linode, you can [upgrade](/docs/platform/kvm-reference/#how-to-enable-kvm), but it is currently not possible to install CoreOS on a Xen Linode.
 
 CoreOS is not officially supported by Linode so there are limitations to using it in comparision to the Linux images provided in the Linode Manager.
 
@@ -51,7 +51,7 @@ CoreOS configures no default way to log in except by supplying an option to the 
     [![Create a new disk](/docs/assets/custom-distro-new-disk_small.png)](/docs/assets/custom-distro-new-disk.png)
 
 3. Label your new disk image and choose an appropriate size. You will probably need to allocate at least **5 GB**. Set the **Type** to **unformatted / raw**.
-  
+
     [![Specify disk name and size](/docs/assets/coreos-disk-image-small.png)](/docs/assets/coreos-disk-image.png)
 
    If you're not sure how big your disk image needs to be, you may wish to choose a small size so that you can grow the disk later. You will not be able to shrink the disk image after it has been generated.
@@ -138,6 +138,6 @@ The easiest way to copy your cloud-config file to your Linode is to simply `cat 
         SSH host key: 60:97:2c:b3:bf:2b:42:71:11:42:93:ff:ba:9f:ca:07 (RSA)
         eth0: 203.0.113.0 2001:db8:0:123::1
 
-        li1010-4 login: 
+        li1010-4 login:
 
 2.  You should now be able to access your Linode via SSH. If you did not specify a user in the cloud-config file, CoreOS's default user is `core`. You should confirm that the host keys match the first time you log in, to reduce your risk from MITM attack.

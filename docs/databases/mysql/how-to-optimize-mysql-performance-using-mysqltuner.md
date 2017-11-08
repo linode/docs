@@ -21,7 +21,7 @@ Running MySQL at optimal settings for specific resources helps handle larger ser
 
 ![MySQL tuning title graphic](/docs/assets/optimize_mysql_using_mysql_tuner_title_graphic.png)
 
-Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups. 
+Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
 {: .note}
 >
@@ -111,7 +111,7 @@ The file you are changing is located at `/etc/mysql/my.cnf`.
 >When changing values in the `my.cnf` file, be sure that the line you are changing hasn't been commented out with the pound (`#`) prefix.
 
 ####key_buffer
-Changing the `key_buffer` allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The `key_buffer` size should generally take up no more than 25 percent of the system memory when using the MyISAM table engine, and up to 70 percent for InnoDB. If the value is set too high, resources are wasted. 
+Changing the `key_buffer` allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The `key_buffer` size should generally take up no more than 25 percent of the system memory when using the MyISAM table engine, and up to 70 percent for InnoDB. If the value is set too high, resources are wasted.
 
 According to MySQL's documentation, for servers with 256MB (or more) of RAM with many tables, a setting of 64M is recommended. Servers with 128MB of RAM and fewer tables can be set to 16M, the default value. Websites with even fewer resources and tables can have this value set lower.
 

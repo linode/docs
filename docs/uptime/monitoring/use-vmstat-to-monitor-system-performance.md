@@ -26,7 +26,7 @@ external_resources:
 
 Use the `vmstat` command to run the program. Consider the following output:
 
-    $ vmstat 
+    $ vmstat
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3532 148760  50700 1397880    0    0     1     2    6    6  3  1 97  0
@@ -41,7 +41,7 @@ In this example, the first line of data provides the average since the last boot
 
 `vmstat` is often run with an interval of 1 second for a small number of seconds depending on kind of problem the administrator is trying to diagnose. The following example illustrates an interval of one (1) second twenty (20) times:
 
-    $ vmstat 1 20 
+    $ vmstat 1 20
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3996 168488  57100 1368636    0    0     1     2    0    0  3  1 97  0
@@ -67,7 +67,7 @@ In this example, the first line of data provides the average since the last boot
 
 You may run `vmstat` without a `[count]` argument if you want ongoing reports of the system's status in real time. In these cases, intervals of 30 seconds or more may be desirable.
 
-    $ vmstat 30 
+    $ vmstat 30
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3996 167868  57108 1369788    0    0     1     2    0    0  3  1 97  0
@@ -145,7 +145,7 @@ These values are often `0`.
 
 ### Memory
 
-The information displayed in the `memory` section provides the same data about [memory usage](/docs/using-linux/administration-basics#check_current_memory_usage) as the command `free -m`.
+The information displayed in the `memory` section provides the same data about [memory usage](/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
 
 The `swapd` or "swapped" column reports how much memory has been swapped out to a swap file or disk. The `free` column reports the amount of unallocated memory. The `buff` or "buffers" column reports the amount of allocated memory in use. The `cache` column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
 
