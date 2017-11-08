@@ -26,7 +26,7 @@ We only accept new guides and authors through our guide submission process. To a
 
 ## General Layout
 
-Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca/projects/php-markdown/extra/). Additional Linode-specific markdown formatting notes are given [further below](#markdown-formatting).
+Linode Guides & Tutorials are written in [Markdown](https://en.wikipedia.org/wiki/Markdown). Our documentation site uses [Hugo](https://gohugo.io), a static site generator. Hugo-specific markdown formatting notes are given [further below](#markdown-formatting).
 
 ### Header
 
@@ -85,19 +85,17 @@ The *Before You Begin* section is an area for basic prerequisites a reader shoul
 
 #### Include a Note about Root or Non-Root users
 
-{{< file-excerpt "Guides Written for a Non-Root User" resource >}}
-{{< note >}}
+{{< file-excerpt "Guides Written for a Non-Root User" txt >}}
+{{</* note */>}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+{{</* /note */>}}
 
 {{< /file-excerpt >}}
 
-
-{{< file-excerpt "Guides Written for a Root User" resource >}}
-{{< note >}}
+{{< file-excerpt "Guides Written for a Root User" txt >}}
+{{</* note */>}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
-
+{{</* /note */>}}
 {{< /file-excerpt >}}
 
 #### Include a Note about Example Variables
@@ -114,7 +112,7 @@ Each **subsection** should be split into numbered steps as shown below.
 
 For example:
 
-~~~
+{{< file >}}
 ## Using MySQL
 
 1.  Log in to MySQL as the root user:
@@ -138,7 +136,7 @@ For example:
 1.  Log back in as `testuser`:
 
         mysql -u testuser -p
-~~~
+{{< /file >}}
 
 {{< note >}}
 The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
@@ -198,25 +196,37 @@ If you wish to provide links to external sites for the user to review after goin
 
 ### Files and File Excerpts
 
-Use the *file* format when adding the content of a whole file to a guide. If only a part of the file is being shown, use the *file excerpt* format. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
+Use the *file* shortcode when adding the content of a whole file to a guide. If only a part of the file is being shown, use the *file excerpt* shortcode. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
+<!--- Note to editors: please double check the link to Chroma. The list may not be satisfactory for use. -->
+For each file or file excerpt, a code language or syntax should be defined in the shortcode tag to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
 
-Within the file formatting, a code language or syntax should be defined at the end of the `:   ~~~` line to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/jneen/rouge/tree/master/lib/rouge/lexers).
+**Example**: File shortcode
 
-**Example**: File format
+    {{</* file path/to/file.html html */>}}
+        <div>
+            Sample file text
+        </div>
+    {{</* /file */>}}
 
-| Formatting | Example |
-|:--------------------------|:----------------------------------------------|
-| {{< file >}}
-<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
+{{< file "path/to/file.html" html >}}
+<div>
+    Sample file text
+</div>
 {{< /file >}}
 
-**Example**: File Excerpt format
+**Example**: File Excerpt shortcode
 
-| Formatting | Example |
-|:--------------------------|:----------------------------------------------|
-| {{< file-excerpt >}}
-<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_excerpt.png"> |
+    {{</* file-excerpt "script.py" python */>}}
+    def some_function():
+        print("This is a function.")
+    {{</* /file-excerpt */>}}
+
+{{< file-excerpt "script.py" python >}}
+def some_function():
+    print("This is a function.")
 {{< /file-excerpt >}}
+
+
 
 ### File Paths
 
@@ -234,7 +244,7 @@ Inline file paths should be unformatted text.
 
 ### Images
 
-Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original **and** one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (_).
+Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide, include both the original **and** one which is scaled down to 650 px. Image filenames cannot contain spaces and should use hyphens (-) to separate words instead of underscores (\_).
 
 When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
 
@@ -256,7 +266,7 @@ Internal links to other Linode guides should be relative, starting at `/docs/`, 
 
 | Internal | External |
 |:--------------------------|:----------------------------------------------|
-| \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](https://httpd.apache.org/docs/)] |
+| \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](h<span>tt</span>ps://h<span>ttpd</span>.apache.org/docs/)
 
 ### Lists
 
@@ -270,13 +280,22 @@ Be sure that lists have the proper horizontal spacing. This should be *two* spac
 
 Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
-| Formatting | Example |
-|:--------------------------|:----------------------------------------------|
-| {{< note >}}
-<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
-| {{< caution >}}
-<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
+    {{</* note */>}}
+    This is a sample note. 
+    {{</* /note */>}}
+
+{{< note >}}
+This is a sample note. 
 {{< /note >}}
+
+    {{</* caution */>}}
+    This is a sample caution.
+    {{</* caution */>}}
+
+{{< caution >}}
+This is a sample caution.
+{{< / caution >}}
+
 
 ### Numerical Values
 
@@ -324,4 +343,3 @@ COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
 
 PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid a sum of up to USD $300.00 either in the form of a credit to their Linode account, a hardcopy check, or as an electronic payment.
-{{< /caution >}}
