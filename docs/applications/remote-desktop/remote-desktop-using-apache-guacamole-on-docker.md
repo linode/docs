@@ -2,10 +2,10 @@
 author:
   name: Sam Foo
   email: sfoo@linode.com
-description: 'Create a remote desktop on a Linode'
-keywords: 'remote desktop, Apache Guacamole, TeamViewer, VNC, Chrome OS'
+description: 'Create a remote desktop on a Linode.'
+keywords: 'remote desktop, Apache Guacamole, TeamViewer, VNC, Chrome OS, xfce, unity'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, October 16th, 2017
+modified: Wednesday, November 8th, 2017
 modified_by:
   name: Sam Foo
 published: 'Monday, October 16th, 2017'
@@ -15,38 +15,38 @@ external_resources:
  - '[Apache Tomcat](https://tomcat.apache.org/)'
 ---
 
-Apache Guacamole is an HTML5 application useful for remote desktop through RDP, VNC, and other protocols. Create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover installation of Apache Guacamole through Docker then access a remote desktop environment hosted on a Linode.
+Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover installation of Apache Guacamole through Docker then access a remote desktop environment hosted on a Linode.
 
 # Install Docker
-The installation method presented here will always attempt to install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
+The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
 1.  Update packages and install dependencies.
 
         sudo apt-get update
         sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
 
-2.  Add Docker gpg key.
+2.  Add Docker gpg key:
 
         curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 
-3.  Confirm key fingerprint.
+3.  Confirm key fingerprint:
 
         sudo apt-key fingerprint 0EBFCD88
 
-4.  Add package to repository.
+4.  Add package to repository:
 
         sudo add-apt-repository \
            "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
            $(lsb_release -cs) \
            stable"
 
-5.  Update and install Docker CE.
+5.  Update and install Docker CE:
 
         sudo apt-get update
         sudo apt-get install docker-ce
 
 # Initialize Guacamole Authentication with MySQL
-PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in this guide.
+PostgreSQL are MariaDB are also supported but MySQL will be demonstrated in this guide.
 
 1.  Pull Docker images for guacamole-server, guacamole-client, and MySQL.
 
@@ -54,11 +54,11 @@ PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in
         docker pull guacamole/guacd
         docker pull mysql/mysql-server
 
-2.  Create a database initialization script to create a table for authentication.
+2.  Create a database initialization script to create a table for authentication:
 
         docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql
 
-3.  Generate a one-time password for MySQL root. View the generated password in the logs.
+3.  Generate a one-time password for MySQL root. View the generated password in the logs:
 
         docker run --name example-mysql -e MYSQL_RANDOM_ROOT_PASSWORD=yes -e MYSQL_ONETIME_PASSWORD=yes -d mysql/mysql-server
         docker logs example-mysql
@@ -155,16 +155,18 @@ PostgreSQL are MariaDB are also supported although MySQL will be demonstrated in
 
         docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE='guacamole_db' -e MYSQL_USER='guacamole_user' -e MYSQL_PASSWORD='guacamole_user_password' -d -p 8080:8080 guacamole/guacamole
 
-    {:.note}
-    > To see all running and non-running Docker containers:
-    >
-    >     docker ps -a
+    {{< note >}}
+    To see all running and non-running Docker containers:
+
+         docker ps -a
+    {{< / note >}}
 
 3.  If `example-guacamole`, `example-guacd`, and `example-mysql` are all running, navigate to `localhost:8080/guacamole/`. The default login credentials are `guacadmin` and password `guacadmin`. This should be changed as soon as possible.
 
     ![Guacamole Login](/docs/assets/guac_login.png)
 
 # VNC Server on a Linode
+
 Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and does not excessively consume system resources.
 
 1.  Install Xfce on the Linode.
@@ -194,9 +196,7 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
 
     Alternate Unity configuration example:
 
-    {:.file}
-    xstartup
-    :   ~~~
+    {{< file ~/.vnc/xstartup bash >}}
         #!/bin/sh
 
         xrdb $HOME/.Xresources
@@ -211,7 +211,7 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
         gnome-settings-daemon &
         metacity &
         nautilus &
-        ~~~
+    {{< / file >}}
 
 # New Connection in Guacamole
 
@@ -229,7 +229,11 @@ VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how
 
     ![Guacamole VNC Configuration](/docs/assets/guac_vnc_config.png)
 
-    The [official documentation](https://guacamole.incubator.apache.org/doc/gug/configuring-guacamole.html#vnc) has detailed descriptions of all paramter names.
+    The [official documentation](https://guacamole.incubator.apache.org/doc/gug/configuring-guacamole.html#vnc) has detailed descriptions of all parameter names.
+
+    {{< note >}}
+      If you have multiple displays running on the same Linode, increment the port number for each display: 5902, 5903, etc. If your remote displays are hosted on different Linodes, each display should still use port 5901.
+    {{< / note >}}
 
 4.  From the top right drop down menu, click *Home*. The new connection is now available.
 
