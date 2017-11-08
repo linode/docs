@@ -41,12 +41,12 @@ Spark can run as a standalone cluster manager, or by taking advantage of dedicat
 
 4. Run `jps` on each of the nodes to confirm that HDFS and YARN are running. If they are not, start the services with:
 
-       start-dfs.sh
-       start-yarn.sh
+        start-dfs.sh
+        start-yarn.sh
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+ This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< / note >}}
 
 ## Download and Install Spark Binaries
 
@@ -71,7 +71,7 @@ PATH=/home/hadoop/spark/bin:$PATH
 
     **For RedHat/Fedora/CentOS systems:**
 
-{{< file-excerpt "/home/hadoop/.profile" shell >}}
+    {{< file-excerpt "/home/hadoop/.profile" shell >}}
 pathmunge /home/hadoop/spark/bin
 {{< /file-excerpt >}}
 
@@ -91,7 +91,7 @@ export LD_LIBRARY_PATH=/home/hadoop/hadoop/lib/native:$LD_LIBRARY_PATH
 
 3. Rename the spark default template config file:
 
-       mv $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
+        mv $SPARK_HOME/conf/spark-defaults.conf.template $SPARK_HOME/conf/spark-defaults.conf
 
 4. Edit `$SPARK_HOME/conf/spark-defaults.conf` and set `spark.master` to `yarn`:
 
@@ -119,8 +119,10 @@ Allocation of Spark containers to run in YARN containers may fail if memory allo
 
 Be sure to understand how Hadoop YARN manages memory allocation before editing Spark memory settings so that your changes are compatible with your YARN cluster's limits.
 
-{:.note}
-> See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](docs/databases/hadoop/install-and-configure-hadoop-cluster) guide for more details on managing your YARN cluster's memory.
+{{< note >}}
+See the memory allocation section of the [Install and Configure a 3-Node Hadoop Cluster](docs/databases/hadoop/install-and-configure-hadoop-cluster) guide for more details on managing your YARN cluster's memory.
+{{< / note >}}
+
 
 ### Give Your YARN Containers Maximum Allowed Memory
 
@@ -148,8 +150,9 @@ spark.driver.memory    512m
 
   - Use the `--driver-memory` parameter to specify the amount of memory requested by `spark-submit`. See the following section about application submission for examples.
 
-    {:.note}
-    > Values given from the command line will override whatever has been set in `spark-defaults.conf`.
+    {{< note >}}
+Values given from the command line will override whatever has been set in `spark-defaults.conf`.
+{{< /note >}}
 
 ### Configure the Spark Application Master Memory Allocation in Client Mode
 
@@ -157,7 +160,7 @@ In client mode, the Spark driver will not run on the cluster, so the above confi
 
 Set the amount of memory allocated to Application Master in client mode with `spark.yarn.am.memory` (default to `512M`)
 
-    {{< file-excerpt "$SPARK_HOME/conf/spark-defaults.conf" conf >}}
+{{< file-excerpt "$SPARK_HOME/conf/spark-defaults.conf" conf >}}
 spark.yarn.am.memory    512m
 {{< /file-excerpt >}}
 
@@ -170,14 +173,15 @@ The Spark Executors' memory allocation is calculated based on two parameters ins
   - `spark.executor.memory`: sets the base memory used in calculation
   - `spark.yarn.executor.memoryOverhead`: is added to the base memory. It defaults to 7% of base memory, with a minimum of `384MB`
 
-{:.note}
-> Make sure that Executor requested memory, **including** overhead memory, is below the YARN container maximum size, otherwise the Spark application won't initialize.
+{{< note >}}
+Make sure that Executor requested memory, **including** overhead memory, is below the YARN container maximum size, otherwise the Spark application won't initialize.
+{{< /note >}}
 
 Example: for `spark.executor.memory` of 1Gb , the required memory is 1024+384=1408MB. For 512MB, the required memory will be 512+384=896MB
 
 To set executor memory to `512MB`, edit `$SPARK_HOME/conf/spark-defaults.conf` and add the following line:
 
-    {{< file-excerpt "$SPARK_HOME/conf/spark-defaults.conf" conf >}}
+{{< file-excerpt "$SPARK_HOME/conf/spark-defaults.conf" conf >}}
 spark.executor.memory          512m
 {{< /file-excerpt >}}
 
@@ -210,7 +214,7 @@ spark.eventLog.dir hdfs://node-master:9000/spark-logs
 
 2. Create the log directory in HDFS:
 
-       hdfs dfs -mkdir /spark-logs
+        hdfs dfs -mkdir /spark-logs
 
 3. Configure History Server related properties in `$SPARK_HOME/conf/spark-defaults.conf`:
 
@@ -225,13 +229,13 @@ spark.history.ui.port             18080
 
 4. Run the History Server:
 
-       $SPARK_HOME/sbin/start-history-server.sh
+        $SPARK_HOME/sbin/start-history-server.sh
 
 5. Repeat steps from previous section to start a job with `spark-submit` that will generate some logs in the HDFS:
 
 6.  Access the History Server by navigating to http://node-master:18080 in a web browser:
 
-    ![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png "Screenshot of Spark History Server")
+    ![Screenshot of Spark History Server](/docs/assets/spark/spark-history-server-wide.png)
 
 ## Run the Spark Shell
 
