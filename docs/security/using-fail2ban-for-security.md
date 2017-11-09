@@ -2,7 +2,7 @@
 author:
   name: Elle Krout
   email: ekrout@linode.com
-  description: 'This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
+description: 'This guide shows how to set up Fail2Ban, a log-parsing application, to monitor system logs and detect automated attacks on your Linode.'
 og_description: 'Fail2ban monitors system logs for symptoms of an automated attack, bans the IP and alerts you of the attach through email. This guide helps you set up Fail2ban to thwart automated system attacks and further secure your server.'
 keywords: ["fail2ban", "ip whitelisting", "jail.local"]
 aliases: ['tools-reference/tools/using-fail2ban-to-block-network-probes/']
@@ -13,6 +13,7 @@ modified_by:
 published: 2015-10-12
 title: Use Fail2ban to Secure Your Server
 ---
+
 ## What is Fail2Ban
 
 Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.
@@ -29,7 +30,7 @@ The steps required in this guide require root privileges. Be sure to run the ste
 Fail2ban is intended to be used in conjunction with an already-hardened server and should not be used as a replacement for secure firewall rules.
 {{< /caution >}}
 
-## 1) Install Fail2ban
+## Install Fail2ban
 
 Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before beginning.
 
@@ -57,7 +58,7 @@ Follow the [Getting Started](/docs/getting-started) guide to configure your basi
     {{< note >}}
 Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
 
-'mkdir /var/run/fail2ban`
+'mkdir /var/run/fail2ban'
 {{< /note >}}
 
 ### Debian
@@ -125,7 +126,7 @@ ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEA
         ufw allow ssh
         ufw enable
 
-## 2) Configure Fail2ban
+## Configure Fail2ban
 
 Fail2ban reads `.conf` configuration files first, then `.local` files override any settings. Because of this, all changes to the configuration are generally done in `.local` files, leaving the `.conf` files untouched.
 
@@ -146,7 +147,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
     -   `socket`: The location of the socket file.
     -   `pidfile`: The location of the PID file.
 
-## 3) Configure jail.local Settings
+## Configure jail.local Settings
 
 1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a `jail.local` for editing:
 

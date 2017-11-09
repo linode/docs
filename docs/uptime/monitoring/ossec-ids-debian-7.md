@@ -7,6 +7,7 @@ contributor:
   link: https://github.com/finid
 description: 'Install and configure OSSEC HIDS on Debian 7'
 keywords: ["IDS", " Intrusion Detection System"]
+aliases: ['security/ossec-ids-debian-7']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2015-02-05
 modified_by:
@@ -18,7 +19,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 OSSEC is an open-source, host-based intrusion detection system (**HIDS**) that performs log analysis, integrity checking, rootkit detection, time-based alerting, and active response, making it an ideal choice for server monitoring.
 
@@ -86,7 +87,7 @@ In both outputs, ignore the **WARNING** line. As long as the first line reads **
         cd ossec-hids-2.8.3
         sudo ./install.sh
 
-3.  Select your language. If your language is the default (English - [en]),  press `Return`; otherwise, type in the 2-letter code for your language from the list of supported languages:
+3.  Select your language. If your language is the default (English - [en]), press `Return`; otherwise, type in the 2-letter code for your language from the list of supported languages:
 
         OSSEC HIDS v2.8 Installation Script - http://ossec.github.io/
 

@@ -594,7 +594,7 @@ auth_mechanisms = plain login
 
 
     {{< note >}}
-Click here to see the final, complete version of <a href="/docs/assets/1238-dovecot_10-auth.conf.txt" target="_blank">`10-auth.conf`<a/>.
+[Here](/docs/assets/1238-dovecot_10-auth.conf.txt) is an example of a complete `10-auth.conf` file.
 {{< /note >}}
 
     Save the changes to the `/etc/dovecot/conf.d/10-auth.conf` file.
@@ -609,7 +609,7 @@ passdb {
 userdb {
   driver = static
   args = uid=vmail gid=vmail home=/var/mail/vhosts/%d/%n
-	   }
+       }
 
 
 {{< /file-excerpt >}}
@@ -655,14 +655,14 @@ password_query = SELECT email as user, password FROM virtual_users WHERE email='
 {{< /file-excerpt >}}
 
 
-	{{< note >}}
+    {{< note >}}
 This password query lets you use an email address listed in the `virtual_users` table as the username credential for an email account. If you want to be able to use the alias as the username instead (listed in the `virtual_aliases` table), first add every primary email address to the `virtual_aliases` table (directing to themselves) and then use the following line in `/etc/dovecot/dovecot-sql.conf.ext` instead:
 
 password_query = SELECT email as user, password FROM virtual_users WHERE email=(SELECT destination FROM virtual_aliases WHERE source = '%u');
 {{< /note >}}
 
     {{< note >}}
-Click the link to see the final, complete version of <a href="/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt" target="_blank">dovecot-sql.conf.ext</a>.
+[Here](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) is an example of a complete `dovecot-sql.conf.ext` file.
 {{< /note >}}
 
     Save the changes to the `/etc/dovecot/dovecot-sql.conf.ext` file.
@@ -678,7 +678,7 @@ Click the link to see the final, complete version of <a href="/docs/assets/1284-
 15. Open the sockets configuration file, located at `/etc/dovecot/conf.d/10-master.conf`
 
     {{< note >}}
-Click this link to see the final version of <a href="/docs/assets/1240-dovecot_10-master.conf.txt" target="_blank">10-master.conf</a>. There are many nested blocks of code in this file, so please pay close attention to the brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
+[Here](/docs/assets/1240-dovecot_10-master.conf.txt) is an example of a complete `10-master.conf` file. There are many nested blocks of code in this file, so please pay close attention to the brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
 {{< /note >}}
 
 16. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. Ensure that the entries for port and ssl below the IMAPS and pop3s entries are uncommented:
@@ -692,8 +692,8 @@ inet_listener imaps {
   port = 993
   ssl = yes
   }
-	  	...
-		  service pop3-login {
+        ...
+          service pop3-login {
 inet_listener pop3 {
   port = 0
 }
@@ -701,8 +701,8 @@ inet_listener pop3 {
     port = 995
     ssl = yes
   }
-		  ...
-		  }
+          ...
+          }
 
 
 {{< /file-excerpt >}}
@@ -727,7 +727,7 @@ service lmtp {
   #address =
   #port =
 #}
-		  }
+          }
 
 
 {{< /file-excerpt >}}
@@ -797,7 +797,7 @@ If using a different SSL certificate, upload the certificate to the server and m
 18. Open `/etc/dovecot/conf.d/10-ssl.conf`.
 
     {{< note >}}
-Click the link to see the final, complete version of <a href="/docs/assets/1241-dovecot_10-ssl.conf.txt" target="_blank">10-ssl.conf</a>.
+[Here](/docs/assets/1241-dovecot_10-ssl.conf.txt) is an example of a complete `10-ssl.conf` file.
 {{< /note >}}
 
 19. Verify that the `ssl_cert` setting has the correct path to the certificate, and that the `ssl_key` setting has the correct path to the key. The default setting displayed uses Dovecot's built-in certificate, so you can leave this as-is if using the Dovecot certificate. Update the paths accordingly if you are using a different certificate and key.

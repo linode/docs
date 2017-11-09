@@ -100,7 +100,7 @@ You can also make A records for subdomains you want to direct to your server:
 
     hello.example.com       A       12.34.56.78
 
- {{< note >}}
+{{< note >}}
 You can point different subdomains to different IP addresses.
 {{< /note >}}
 

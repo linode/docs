@@ -55,6 +55,10 @@ To add a new user, first [log in to your Linode](/docs/getting-started#log-in-fo
 
         usermod -aG wheel example_user
 
+       {{< caution >}}
+       In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
+{{< /caution >}}
+
 ### Ubuntu
 
 1.  Create the user, replacing `example_user` with your desired username. You'll then be asked to assign the user a password:

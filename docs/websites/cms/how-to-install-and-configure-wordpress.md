@@ -11,6 +11,7 @@ modified_by:
   name: Elle Krout
 published: 2010-07-27
 title: How to Install and Configure WordPress
+deprecated: true
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
 - '[WordPress Codex](http://codex.wordpress.org)'
@@ -114,12 +115,13 @@ define('FS_METHOD', 'direct');
     {{< note >}}
 If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
 
+{{< file-excerpt >}}
 <Directory /var/www/>
-Options Indexes FollowSymLinks
-AllowOverride All
-Require all granted
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
 </Directory>
-{{< /note >}}
+{{< /file-excerpt >}}
 
 You will now be able to login to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 

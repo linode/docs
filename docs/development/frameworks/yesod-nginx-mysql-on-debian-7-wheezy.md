@@ -22,7 +22,7 @@ external_resources:
 
 *This is a Linode Community guide by author Si-Qi Liu. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 Yesod is a web framework based on the purely functional programming language Haskell. It is designed for productive development of type-safe, RESTful, and high performance web applications. This guide describes the required process for deploying Yesod and Nginx web server, MySQL database on Debian 7 (Wheezy).
 
@@ -34,20 +34,20 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 Before you begin installing and configuring the components described below, please make sure you've followed our instructions in the [Getting Started](/docs/getting-started) guide for setting your hostname. Here's how to check.
 
-1. Enter the following commands to view the hostname:
+1.  Enter the following commands to view the hostname:
 
         hostname
 
-2. And to display the fully qualified domain name (FQDN):
+2.  And to display the fully qualified domain name (FQDN):
 
         hostname -f
 
-	If the commands list a previously created hostname, then you can begin the installation.
+    If the commands list a previously created hostname, then you can begin the installation.
 
-3. Make sure your system is up to date. Issue the following command to update your system's repository database and upgrade the system:
+3.  Make sure your system is up to date. Issue the following command to update your system's repository database and upgrade the system:
 
-		apt-get update
-		apt-get upgrade
+        apt-get update
+        apt-get upgrade
 
 4. You also need Nginx and MySQL software. Please refer to [Websites with Nginx on Debian 7 (Wheezy)](/docs/websites/nginx/websites-with-nginx-on-debian-7-wheezy) and [Using MySQL Relational Databases on Debian 7 (Wheezy)](/docs/databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy) for their installation guides.
 
@@ -55,48 +55,48 @@ Before you begin installing and configuring the components described below, plea
 
 Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform.
 
-1. Issue the following command to install the Haskell packages required by Yesod:
+1.  Issue the following command to install the Haskell packages required by Yesod:
 
-   	 apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
+        apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
 
     The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
 
 ## Install Yesod
 
-Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called <a href="http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F" target="_blank">cabal dependency hell</a> problem.
+Yesod is a large framework, which depends on many of other packages. We will use *cabal* to manage all of them. Cabal is a package manager for the Haskell community's central package archive *Hackage*. Because all packages on Hackage are maintained by the community, the dependency relationships are not well protected. So you might meet the so-called [cabal dependency hell](http://www.haskell.org/haskellwiki/Cabal/Survival#What_is_the_difficulty_caused_by_Cabal-install.3F) problem.
 
 To avoid this problem, the maintainers of Yesod created a metapackage named *yesod-platform*. The version numbers of its dependencies are fixed, so you won't meet the "cabal hell". On the other hand, fixed version numbers may cause other problems, especially when you also use cabal to manage other large projects (such as pandoc, a Haskell library for converting markup formats). The solution for this problem is very simple: if you have several large projects to manage, create new users for each of them, and then install them into their users' home folder.
 
-1. So let's create a new user. We can name it "yesod":
+1.  So let's create a new user. We can name it "yesod":
 
         sudo adduser yesod
 
-2. Then switch over to user yesod:
+2.  Then switch over to user yesod:
 
         su - yesod
 
-3. Update cabal:
+3.  Update cabal:
 
-		cabal update
+        cabal update
 
-	Then you will find a new folder ``.cabal`` in yesod's home folder. The configuration files for ``cabal``, all programs, all libraries, and all their documents installed by ``cabal`` will be placed in this folder. In particular, new programs are installed in ``$HOME/.cabal/bin``. To use them, you can add this folder to yesod's PATH:
+    Then you will find a new folder ``.cabal`` in yesod's home folder. The configuration files for ``cabal``, all programs, all libraries, and all their documents installed by ``cabal`` will be placed in this folder. In particular, new programs are installed in ``$HOME/.cabal/bin``. To use them, you can add this folder to yesod's PATH:
 
-		echo PATH=\$HOME/.cabal/bin:\$PATH >> .bashrc
+        echo PATH=\$HOME/.cabal/bin:\$PATH >> .bashrc
         source .bashrc
 
-5. Upgrade *cabal-install* first. The *cabal-install* package offered by the *haskell-platform* package of Debian 7 doesn't have the "sandbox" feature, which is very useful for Yesod, so we need to upgrade it:
+5.  Upgrade *cabal-install* first. The *cabal-install* package offered by the *haskell-platform* package of Debian 7 doesn't have the "sandbox" feature, which is very useful for Yesod, so we need to upgrade it:
 
         cabal install cabal-install
 
-6. Logout and su again, then check whether the new cabal is in use:
+6.  Logout and su again, then check whether the new cabal is in use:
 
         exit
         su - yesod
         cabal --version
 
-   The version should be greater than 1.20.
+    The version should be greater than 1.20.
 
-7. Upgrade *alex* and *happy*. They are "flex" and "bison" for Haskell. The *language-javascript* package, which is required by Yesod, depends on higher versions of them, so we need to upgrade them:
+7.  Upgrade *alex* and *happy*. They are "flex" and "bison" for Haskell. The *language-javascript* package, which is required by Yesod, depends on higher versions of them, so we need to upgrade them:
 
         cabal install alex happy
 
@@ -116,24 +116,24 @@ To avoid this problem, the maintainers of Yesod created a metapackage named *yes
 
 To start development of your Yesod site, first construct a scaffold. In development, a scaffold is a placeholder or example set, which is constructed by the defaults of the framework or compiler chosen. The developer can then overwrite the scaffold site.
 
-1. Initiate Yesod development with the commands:
+1.  Initiate Yesod development with the commands:
 
         cd $HOME
         yesod init
 
-	You will be asked the name of your project, and the database you want to use. You must name the project "myblog". This is important later on. And the answer for the second question is "mysql".
+    You will be asked the name of your project, and the database you want to use. You must name the project "myblog". This is important later on. And the answer for the second question is "mysql".
 
-2. Enter the project folder created by *Yesod*:
+2.  Enter the project folder created by *Yesod*:
 
         cd $HOME/myblog
 
-3. Then, issue the following command to initialize the sandbox. The sandbox feature ensures that the dependencies of your site are installed *into* the folder where your site is located, so *cabal* won't destroy the packages installed in */home/yesod/.cabal*. You can develop several sites simultaneously, and you won't need to worry about the "cabal dependency hell":
+3.  Then, issue the following command to initialize the sandbox. The sandbox feature ensures that the dependencies of your site are installed *into* the folder where your site is located, so *cabal* won't destroy the packages installed in */home/yesod/.cabal*. You can develop several sites simultaneously, and you won't need to worry about the "cabal dependency hell":
 
         cabal sandbox init
 
     This command will generate a configuration file ``$HOME/myblog/cabal.sandbox.config``, and create a local cabal environment in ``$HOME/myblog/.cabal-sandbox``.
 
-4. Then install the packages required by your project in the sandbox:
+4.  Then install the packages required by your project in the sandbox:
 
          cabal install --enable-tests . --reorder-goals  --max-backjumps=-1 yesod-platform yesod-bin
 
@@ -194,10 +194,10 @@ We don't need to modify this configuration file, it's acceptable as is. So you o
 
         exit;
 
-6. When the MySQL user and databases are ready, you can issue the following command to start the project:
+6.  When the MySQL user and databases are ready, you can issue the following command to start the project:
 
-		cd $HOME/myblog
-		yesod devel
+        cd $HOME/myblog
+        yesod devel
 
 Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
 
@@ -379,3 +379,4 @@ Link the above file into ``/etc/nginx/sites-enabled``, and restart ``nginx``:
 You can check it at *http://www.yoursite.com/* now.
 
 The installation and configuration of Yesod working with Nginx and MySQL are finished.
+

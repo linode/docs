@@ -20,6 +20,8 @@ external_resources:
 
 In our basic [installation guides for Apache](/docs/web-servers/apache/) and [LAMP stack tutorials](/docs/lamp-guides/), we suggest a very simple configuration based on `<VirtualHost>` configurations. This is useful for configuring a number of different websites on a single server, but this approach does not provide granular control over the behavior of resources *within* these sites.
 
+![Apache configuration structure](/docs/assets/apache-configuration-structure-headerimg.jpg "Apache configuration structure")
+
 The `<VirtualHost>` block provides administrators with the ability to modify the behavior of the web server on a per-host or per-domain basis; any options specified in the `<VirtualHost>` block apply to the entire domain. However, they don't provide the ability to specify options on a per-directory basis. Thankfully, Apache provides additional possibilities for specific configuration.
 
 This document addresses a number of ways to configure the behavior of your web server on a very narrow per-directory and even per-file level. For more information about specific options, consult our other [Apache configuration guides](/docs/web-servers/apache/) or the official [Apache documentation](http://httpd.apache.org/docs/).

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
+og_description: 'Use an pre-trained deep learning model as part of a production application.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2017-10-10
@@ -16,6 +17,8 @@ external_resources:
 - '[Fast AI Deep Learning Course](http://course.fast.ai/)'
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 ---
+
+![How to Move Your Machine Learning Model to Production](/docs/assets/machine-learning/Machine_Learning_Model.jpg)
 
 Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources. It also often involves using powerful processors to train the model on large datasets. However, once the model is working well, using it to generate predictions on new data is much simpler and less computationally expensive. The only difficulty is in moving the model from its development environment into a production app.
 
@@ -300,3 +303,4 @@ Most production machine learning solutions involve a longer pipeline than demons
 The API produced in this guide also lacks many features that a real-world application would need, including error handling and dealing with bulk image requests. To make the service more useful, the full preprocessing used by MNIST should be applied to each image.
 
 In addition, images submitted to the API could be used as a source of data to further train and refine your model. In this case, you could configure the API to copy each submitted image, along with the model's prediction, to a database for later analysis. See the links in **More Information** if you are interested in these topics.
+

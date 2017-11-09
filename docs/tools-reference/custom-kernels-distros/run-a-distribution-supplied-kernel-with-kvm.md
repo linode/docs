@@ -64,7 +64,7 @@ The relabel process is triggered by the empty `/.autorelabel` file.
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
     ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
 
-We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+We include a systemd unit and bash script in our CentOS 7 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
 
 ## Older Distributions
 
@@ -142,13 +142,12 @@ During the installation of `grub` you may be asked which disk image to install t
 
 2.  Then add or change the following options to match the following example. There will be other variables in this file, but we are only concerned with these lines.
 
-	{{< file-excerpt "/etc/default/grub" >}}
+    {{< file-excerpt "/etc/default/grub" >}}
 GRUB_TERMINAL=serial
 GRUB_DISABLE_OS_PROBER=true
 GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_GFXPAYLOAD_LINUX=text
-
 
 {{< /file-excerpt >}}
 

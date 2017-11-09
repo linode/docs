@@ -96,6 +96,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
  | timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
  | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
  | fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
+ | nameserver | Name servers for internal DNS resolver. | User determined |
 
 {{< file "**/etc/shadowsocks/shadowsocks.json**" json >}}
 {
