@@ -309,6 +309,7 @@ NETCONFIG_DNS_STATIC_SERVERS="203.0.113.1 203.0.113.2 203.0.113.3"
 NETCONFIG_DNS_STATIC_SEARCHLIST="members.linode.com"
 . . .
 NETCONFIG_DNS_RESOLVER_OPTIONS="rotate"
+{{< /file-excerpt >}}
 
     {{< file-excerpt "/etc/sysconfig/network/ifcfg-eth0" aconf >}}
 BOOTPROTO=static
