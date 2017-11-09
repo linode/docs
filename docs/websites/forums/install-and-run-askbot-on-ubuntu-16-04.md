@@ -46,11 +46,11 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 1.  Install the required packages, including Nginx, MySQL, Python PIP, and LetsEncrypt:
 
-	     sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
+	    sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
 2.  Log in to MySQL as the root user:
 
-	     sudo mysql -u root -p
+	    sudo mysql -u root -p
 
 3.  When prompted, enter the root password.
 
@@ -69,36 +69,36 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 1.  Create a directory to install AskBot. Remember to replace `example_user` with the name of a non-root user on your Linode:
 
-	     mkdir -p /home/example_user/askbot
+	    mkdir -p /home/example_user/askbot
 
 2.  Ensure that `pip` is the latest version:
 
-	     sudo pip install --upgrade pip
+	    sudo pip install --upgrade pip
 
 3.  Use `pip` to install `virtualenv`:
 
-	     sudo pip install virtualenv
+	    sudo pip install virtualenv
 
 4.  Create a Python virtual environment using `virtualenv`:
 
-	     virtualenv /home/example_user/askbot/askbotenv
+	    virtualenv /home/example_user/askbot/askbotenv
 
 5.  Activate the Python virtual environment:
 
-	     source /home/example_user/askbot/askbotenv/bin/activate
+	    source /home/example_user/askbot/askbotenv/bin/activate
 
 6.  Install AskBot and its dependencies:
 
-	      pip install askbot mysqlclient mysql-python gunicorn
+	    pip install askbot mysqlclient mysql-python gunicorn
 
 ## Configure AskBot
 
 1.  Initialize the AskBot setup files. Use the database name, user, and password that you created earlier:
 
-	     askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
+	    askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
-{: .note}
-> For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
+    {: .note}
+    > For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
 
 2.  Use `collectstatic` to place all of the static files (css, javascript, and images) into the AskBot installation directory:
 
@@ -215,7 +215,7 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 8.  Add a symbolic link between nginx server blocks:
 
-	     sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
+	    sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
 
 9.  The **www-data** group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
 
@@ -235,8 +235,8 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
     ![create an askbot admin account](/docs/assets/askbot-2.png)
 
-{: .note}
->  The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
+    {: .note}
+    >  The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
 
 3.  Choose an admin username and password:
 
