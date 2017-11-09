@@ -10,6 +10,7 @@ modified: 2014-08-20
 modified_by:
   name: James Stewart
 published: 2009-09-09
+expiryDate: 2015-08-20
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
 ---

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Restricting remote users to their home directories, only allowing access to SFTP for transferring files.'
-keywords: ["sftp", "sftp jail", "openssh", "ssh jail"]
+keywords: 'sftp,sftp jail,openssh,ssh jail'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/sftp-jails/']
-modified: 2014-04-16
+alias: ['security/sftp-jails/']
+modified: Tuesday, April 16th, 2014
 modified_by:
   name: Linode
-published: 2010-01-06
+published: 'Wednesday, January 6th, 2010'
 title: Limiting Access with SFTP Jails on Debian and Ubuntu
 external_resources:
 - '[OpenSSH Documentation](http://www.openssh.org/manual.html)'
@@ -34,15 +34,22 @@ First, you need to configure OpenSSH.
 
 2.  Add or modify the `Subsystem sftp` line to look like the following:
 
-    {{< file-excerpt "/etc/ssh/sshd\\_config" >}}
-Match Group filetransfer
-    ChrootDirectory %h
-    X11Forwarding no
-    AllowTcpForwarding no
-    ForceCommand internal-sftp
+    {: .file-excerpt }
+/etc/ssh/sshd\_config
 
-{{< /file-excerpt >}}
+    > Subsystem sftp internal-sftp
 
+3.  Add this block of settings to the end of the file:
+
+       {: .file-excerpt }
+       /etc/ssh/sshd\_config
+       :    ~~~
+            Match Group filetransfer
+                ChrootDirectory %h
+                X11Forwarding no
+                AllowTcpForwarding no
+                ForceCommand internal-sftp
+            ~~~
 
    Save the changes to your file.
 
