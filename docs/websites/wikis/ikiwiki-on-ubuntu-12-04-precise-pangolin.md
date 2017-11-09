@@ -290,9 +290,7 @@ Issue the following commands to create a `~/wiki/` directory as a git repository
 
 Add the following excerpt to `~/wiki/.git/config`:
 
-{{< file-excerpt >}}
-~/wiki/.git/config
-{{< /file-excerpt >}}
+{{< file-excerpt "~/wiki/.git/config" >}}
 
     [remote "origin"]
        fetch = +refs/heads/*:refs/remotes/origin/*
@@ -301,13 +299,14 @@ Add the following excerpt to `~/wiki/.git/config`:
     [branch "master"]
        remote = origin
        merge = refs/heads/master
+{{< /file-excerpt >}}
 
-Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](ikiwiki.setup), and create an initial commit in the `~/wiki` repository:
+Issue the following commands to copy the default `basewiki` and `templates` to the `~/wiki` directory, download a [sample ikiwiki configuration file](/docs/assets/657-ikiwiki.setup), and create an initial commit in the `~/wiki` repository:
 
     cd ~/wiki
     cp -R /usr/share/ikiwiki/templates ~/wiki/
     cp -R /usr/share/ikiwiki/basewiki ~/wiki/
-    wget -O ikiwiki.setup ikiwiki.setup
+    wget -O ikiwiki.setup http://www.linode.com/docs/assets/657-ikiwiki.setup
     git add .
     git config --global user.email "you@example.com"
     git config --global user.name "Your Name"

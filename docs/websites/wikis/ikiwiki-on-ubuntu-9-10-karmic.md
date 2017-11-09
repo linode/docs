@@ -77,7 +77,7 @@ While the auto-setup script is great for getting up and running in a matter of m
 
 # Manual Ikiwiki Configuration
 
-To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](reference/ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
+To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
 
     cd ~/
     wget -O ikiwiki.setup http://www.linode.com/docs/assets/655-ikiwiki.setup
@@ -198,7 +198,7 @@ You may find yourself wondering why there are so many git repositories for a sin
 
 # Notes for Using Gitosis with Ikiwiki
 
-If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](reference/ikiwiki.setup) for details on how to configure this.
+If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](/docs/assets/655-ikiwiki.setup) for details on how to configure this.
 
 The files that needed to be owned by the `gitosis` user are the "destination" directory where Ikiwiki puts its output, the "source directory", and the bare repository. Run the following commands to set this ownership.
 

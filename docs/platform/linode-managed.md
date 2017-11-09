@@ -5,7 +5,7 @@ author:
 description: How to configure service monitoring with Linode Managed.
 keywords: ["linode managed", "service monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linode-managed/']
+aliases: ['linode-managed/', 'uptime/linode-managed']
 modified: 2014-05-10
 modified_by:
   name: Zack Buhman
@@ -104,18 +104,16 @@ Here's how to install Linode's SSH key as a non-root user:
 4.  Type `i` to enter *insert mode*.
 5.  In the *User privilege specification* section of the file, add the following line, replacing `example_user` with your user name:
 
-{{< file >}}
-/etc/sudoers
+    {{< file "/etc/sudoers" >}}
+User privilege specification example_user ALL=(ALL) NOPASSWD: ALL
 {{< /file >}}
-
-> \# User privilege specification example\_user ALL=(ALL) NOPASSWD: ALL
 
 6.  Press **Esc** to exit insert mode.
 7.  Type `:wq` to save and quit the file.
-8.  Add the [Managed public key](/docs/uptime/linode-managed/#adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
-9.  Add this user to the [Account Credentials](/docs/uptime/linode-managed/#adding-service-credentials) list.
+8.  Add the [Managed public key](/docs/platform/linode-managed/#adding-the-public-key) to the `/home/user/.ssh/authorized_keys` file for this user.
+9.  Add this user to the [Account Credentials](/docs/platform/linode-managed/#adding-service-credentials) list.
 
- {{< note >}}
+    {{< note >}}
 Make sure this user is not in any groups that are in `/etc/sudoers`, as this may override the passwordless sudo setting.
 {{< /note >}}
 
@@ -178,7 +176,7 @@ Here's how to add a contact to Linode Managed:
 5.  Enter the individual's phone numbers in the **Phone 1** and **Phone 2** fields. We may call the individual if we need additional information to troubleshoot an issue on your servers.
 6.  In the **Group** field, enter a group name. As described at the beginning of this section, groups can hold multiple contacts. Ideally, you'll combine all of the individuals responsible for a particular service or system into one group.
 
- {{< note >}}
+    {{< note >}}
 This is a required field, so even if you're the only user on the account, you'll still need to create a group for yourself.
 {{< /note >}}
 
@@ -209,10 +207,10 @@ Here's how to add a new service to Linode Managed:
 7.  *Optional:* Enter a string in the **Response body match** field to automatically check for the string in the URL or TCP response.
 8.  In the **Response timeout** field, enter the time (in seconds) for the request to timeout if it does not receive a response.
 9.  In the **Notes** field, add any notes or additional information about this service. The more information we have about the service and how it's configured, the more likely it is that our staff will be able to resolve any issues that may arise.
-10. *Optional:* Select this checkbox to indicate that you have [copied Linode's public SSH key to your server](#installing-linode-s-public-ssh-key). This step is optional, but highly recommended. If you do not copy our public key to your server, we will not be able to log in and troubleshoot issues.
+10. *Optional:* Select this checkbox to indicate that you have [copied Linode's public SSH key to your server](#adding-the-public-key). This step is optional, but highly recommended. If you do not copy our public key to your server, we will not be able to log in and troubleshoot issues.
 11. Select a credential from the **Link a Credential** menu. See [these instructions to learn how to add a credential for a service](#adding-service-credentials).
 
- {{< note >}}
+    {{< note >}}
 You can select and save more than one credential for a service.
 {{< /note >}}
 

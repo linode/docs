@@ -147,7 +147,7 @@ If you can't rescue an existing disk, it's time to rebuild your Linode. There ar
 
 ### Restoring from Backup
 
-If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/security/backups/linode-backup-service/#restore-from-a-backup). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
+If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/platform/linode-backup-service/#restore-from-a-backup). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
 
 ### Recovering From a System Compromise
 

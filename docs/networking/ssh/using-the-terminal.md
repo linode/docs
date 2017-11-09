@@ -5,7 +5,7 @@ author:
 description: 'Accomplishing system administration tasks from a command prompt.'
 keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['using-linux/using-the-terminal/']
+aliases: ['using-linux/using-the-terminal/', 'tools-reference/ssh/using-the-terminal/']
 modified: 2017-02-15
 modified_by:
   name: Linode

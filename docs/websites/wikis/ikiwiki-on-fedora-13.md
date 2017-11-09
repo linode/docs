@@ -57,7 +57,7 @@ While the auto-setup script is great for getting up and running in a matter of m
 
 # Manual Ikiwiki Configuration
 
-To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](reference/ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
+To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](/docs/assets/656-ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
 
     cd ~/
     wget -O ikiwiki.setup http://www.linode.com/docs/assets/656-ikiwiki.setup
@@ -81,19 +81,17 @@ It's important to set up a git repository that will be the "origin" repository f
 
 Edit the `~/wiki/.git/config` file to create the remote repository so that it looks something like the following example:
 
-{{< file >}}
-\~/wiki/.git/config
+{{< file "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
+
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
 {{< /file >}}
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
 Now perform the first push using the following sequence of commands. This will update the "origin" repository with the first commit created above:
 
     cd ~/wiki/
@@ -143,19 +141,17 @@ The process for creating a bare repository to push/pull the `wiki-admin` git rep
 
 Next, edit the `~/wiki-admin/.git/config` file to set up the remote repository. Use the following example as a guideline.
 
-{{< file >}}
-\~/wiki/.git/config
+{{< file "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
+
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
 {{< /file >}}
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
 Now you can perform the first push for the `wiki-admin` repository by issuing the following commands:
 
     cd ~/wiki-admin/
@@ -186,7 +182,7 @@ You may find yourself wondering why there are so many git repositories for a sin
 
 # Notes for Using Gitosis with Ikiwiki
 
-If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing the `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted usersor "6755". See the example [Ikiwiki configuration file](reference/ikiwiki.setup) for details on how to configure this.
+If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing the `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted usersor "6755". See the example [Ikiwiki configuration file](/docs/assets/656-ikiwiki.setup) for details on how to configure this.
 
 The files that needed to be owned by the `gitosis` user are the "destination" directory where Ikiwiki puts its output, the "source directory", and the bare repository. Run the following commands to set this ownership.
 

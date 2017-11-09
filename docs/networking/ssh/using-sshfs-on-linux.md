@@ -14,7 +14,7 @@ title: Using SSHFS To Mount Remote Directories
 external_resources:
  - '[SSHFS Home Page](http://fuse.sourceforge.net/sshfs.html)'
  - '[Linux Security Basics](/docs/security/basics)'
- - '[Use Public Key Authentication with SSH](/docs/tools-reference/ssh/use-public-key-authentication-with-ssh)'
+ - '[Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh)'
 ---
 
 ![SSHFS](/docs/assets/sshfs_mount_remote.png)

@@ -58,7 +58,7 @@ When the installation process completes start Apache with the following command:
 
 ### Configure Apache
 
-We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny#configure-name-based-virtual-hosts).
+We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny#configure-name-based-virtual-hosts).
 
 Recent versions of `mod_mono` utilize the `AutoHosting` method of application deployment. This allows non-privileged users to deploy new applications without modifying Apache configuration files. While this provides great flexibility, it may also present a security risk. As a result, `mod_mono` must be enabled on a per-virtual host basis.
 

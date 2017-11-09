@@ -28,5 +28,5 @@ before_script:
 
 script:
     - echo "Checking for style guidelines"
-    - python -m pytest
+    - python -m pytest -n 2
 

@@ -5,7 +5,7 @@ author:
 description: 'Access your Linode via SSH using Public Key Authentication.'
 keywords: ["ssh", "pki", "ssh keys", "secure shell", "vpn", "tunneling"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssh-keys/']
+aliases: ['security/ssh-keys/', 'tools-reference/ssh/use-public-key-authentication-with-ssh/']
 modified: 2017-03-23
 modified_by:
   name: Linode
