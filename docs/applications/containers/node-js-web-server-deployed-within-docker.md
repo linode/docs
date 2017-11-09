@@ -13,7 +13,7 @@ title: 'Node.js Web Server deployed within Docker'
 aliases: ['applications/containers/nodejs-node-js-web-server-docker-container/']
 ---
 
-Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
+<h1>Nod</h1>e.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
 
 ## Install Docker
 Use the Docker-maintained install script for Debian or Ubuntu. For other operating systems, see the [Docker Installation](https://docs.docker.com/en/latest/installation/) guides.
