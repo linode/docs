@@ -46,19 +46,12 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 1.  Install the required packages, including Nginx, MySQL, Python PIP, and LetsEncrypt:
 
-<<<<<<< HEAD
-         sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
+        sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
 2.  Log in to MySQL as the root user:
 
-         sudo mysql -u root -p
-=======
-	    sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
+        sudo mysql -u root -p
 
-2.  Log in to MySQL as the root user:
-
-	    sudo mysql -u root -p
->>>>>>> 186f3dce0617707865821d44dcbd0fe0bca49e91
 
 3.  When prompted, enter the root password.
 
@@ -77,61 +70,34 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 1.  Create a directory to install AskBot. Remember to replace `example_user` with the name of a non-root user on your Linode:
 
-<<<<<<< HEAD
-         mkdir -p /home/example_user/askbot
+        mkdir -p /home/example_user/askbot
 
 2.  Ensure that `pip` is the latest version:
 
-         sudo pip install --upgrade pip
+        sudo pip install --upgrade pip
 
 3.  Use `pip` to install `virtualenv`:
 
-         sudo pip install virtualenv
+        sudo pip install virtualenv
 
 4.  Create a Python virtual environment using `virtualenv`:
 
-         virtualenv /home/example_user/askbot/askbotenv
+        virtualenv /home/example_user/askbot/askbotenv
 
 5.  Activate the Python virtual environment:
 
-         source /home/example_user/askbot/askbotenv/bin/activate
+        source /home/example_user/askbot/askbotenv/bin/activate
 
 6.  Install AskBot and its dependencies:
 
-          pip install askbot mysqlclient mysql-python gunicorn
-=======
-	    mkdir -p /home/example_user/askbot
-
-2.  Ensure that `pip` is the latest version:
-
-	    sudo pip install --upgrade pip
-
-3.  Use `pip` to install `virtualenv`:
-
-	    sudo pip install virtualenv
-
-4.  Create a Python virtual environment using `virtualenv`:
-
-	    virtualenv /home/example_user/askbot/askbotenv
-
-5.  Activate the Python virtual environment:
-
-	    source /home/example_user/askbot/askbotenv/bin/activate
-
-6.  Install AskBot and its dependencies:
-
-	    pip install askbot mysqlclient mysql-python gunicorn
->>>>>>> 186f3dce0617707865821d44dcbd0fe0bca49e91
+        pip install askbot mysqlclient mysql-python gunicorn
 
 ## Configure AskBot
 
 1.  Initialize the AskBot setup files. Use the database name, user, and password that you created earlier:
 
-<<<<<<< HEAD
-         askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
-=======
-	    askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
->>>>>>> 186f3dce0617707865821d44dcbd0fe0bca49e91
+        askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
+
 
     {: .note}
     > For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
@@ -251,11 +217,8 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 8.  Add a symbolic link between nginx server blocks:
 
-<<<<<<< HEAD
-         sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
-=======
-	    sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
->>>>>>> 186f3dce0617707865821d44dcbd0fe0bca49e91
+        sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
+
 
 9.  The **www-data** group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
 
