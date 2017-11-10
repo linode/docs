@@ -10,7 +10,7 @@ modified: 2017-10-26
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
-og_description: 'Tahoe Least Authority File Store, or LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible.'
+og_description: 'Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid.'
 contributor:
   name: Alexandru Andrei
 external_resources:

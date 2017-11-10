@@ -3,7 +3,8 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install and configure Graylog2, a log management and analysis tool with Elasticsearch and MongoDB, on Debian 9 server.'
-keywords: ["Graylog", " Install Graylog", " Graylog Debian"]
+og_description: 'Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. This guide shows you how to install and configure Graylog2 with Elasticsearch and MongoDB on a Debian 9 server.'
+keywords: ["Graylog", "Install Graylog", "Graylog Debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-14
 modified: 2017-08-15
@@ -17,6 +18,8 @@ external_resources:
 - '[Graylog Server Documentation](http://docs.graylog.org/en/2.3/)'
 - '[Elasticsearch](https://www.elastic.co/guide/index.html)'
 ---
+
+## What is Graylog?
 
 Graylog is a powerful, free, open-source log management and analysis tool that can be used for monitoring SSH logins and unusual activity to debugging applications. It is based on Java, Elasticsearch, and MongoDB and provides a beautiful web interface for centralized log management and log analysis.
 

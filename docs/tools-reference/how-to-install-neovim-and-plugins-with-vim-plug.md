@@ -3,6 +3,7 @@ author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
 description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
+og_description: 'With refactored code and better, asynchronous plugin management, NeoVim is literally the future of vim. This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace vim to become your new favorite text editor.'
 keywords: ["neovim", "text", "editor", "vim", "nvim", "plugins"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-02
