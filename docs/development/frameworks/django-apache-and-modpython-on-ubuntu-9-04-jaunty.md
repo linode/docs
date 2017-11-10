@@ -11,6 +11,7 @@ modified: 2011-05-17
 modified_by:
   name: Linode
 published: 2009-08-31
+expiryDate: 2011-05-17
 title: 'Django, Apache and mod_python on Ubuntu 9.04 (Jaunty)'
 ---
 

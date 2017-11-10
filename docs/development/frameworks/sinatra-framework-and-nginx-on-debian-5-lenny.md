@@ -81,7 +81,7 @@ Run the Phusion Passenger installer for Nginx:
 
 Press "Enter" to continue with the installation. When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 
-{{< /file-excerpt >}}
+Do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
 # Configure Web Server
 
@@ -123,8 +123,7 @@ http {
 # [...]
 {{< /file-excerpt >}}
 
-    access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
 
 {{< file "/srv/www/example.com/nginx.conf" nginx >}}
 server {

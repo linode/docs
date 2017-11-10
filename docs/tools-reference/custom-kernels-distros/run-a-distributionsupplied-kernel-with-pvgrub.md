@@ -10,7 +10,6 @@ modified: 2014-08-20
 modified_by:
   name: James Stewart
 published: 2009-09-09
-expiryDate: 2015-08-20
 title: 'Run a Distribution-Supplied Kernel with PV-GRUB'
 deprecated: true
 ---
@@ -552,10 +551,9 @@ timeout 10
     {{< file "/boot/grub/menu.lst" >}}
 timeout 5
 title CentOS (2.6.32-431.23.3.el6.x86_64)
-	root (hd0)
-	kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/xvda
-	initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
-
+    root (hd0)
+    kernel /boot/vmlinuz-2.6.32-431.23.3.el6.x86_64 root=/dev/xvda
+    initrd /boot/initramfs-2.6.32-431.23.3.el6.x86_64.img
 
 {{< /file >}}
 
@@ -619,8 +617,7 @@ title CentOS (2.6.32-431.23.3.el6.x86_64)
     {{< file "/boot/grub/menu.lst" >}}
 timeout 5
 
-  	title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-3.9.10-100.fc17.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86\_64.img
-
+title Fedora 17, kernel 3.9.10-100.fc17.x86\_64 root (hd0) kernel /boot/vmlinuz-3.9.10-100.fc17.x86\_64 root=/dev/xvda ro quiet initrd /boot/initramfs-3.9.10-100.fc17.x86\_64.img
 
 {{< /file >}}
 
