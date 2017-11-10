@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
+description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with, and keeps redundant copies on multiple servers."
 keywords: 'confidential, encrypted, integrity, redundant, private, filesystem, storage'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Tuesday, October 24th, 2017'
@@ -10,7 +10,7 @@ modified: Thursday, October 26th, 2017
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
-og_description: 'Tahoe Least Authority File Store, or LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible.'
+og_description: 'Tahoe Least Authority File Store, or Tahoe-LAFS, is a decentralized or distributed system. It focuses on confidentiality, data integrity, and redundancy to help keep files secure and accessible. Use our guide to create, manage, and access a Tahoe-LAFS grid.'
 contributor:
   name: Alexandru Andrei
 external_resources:
