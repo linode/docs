@@ -19,6 +19,8 @@ external_resources:
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
 ---
 
+## What is Webmin?
+
 Webmin is a web interface that allows you to manage configuration files and reload programs through a browser, without needing to SSH into your Linode. It is a popular alternative to administration panels such as cPanel or Plesk, and contains many of the features that make them popular. Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
 
 ## Before You Begin
