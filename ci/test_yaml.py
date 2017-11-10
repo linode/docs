@@ -5,13 +5,15 @@ from dateutil.parser import parse
 import sys
 import yaml
 import json
+from conftest import file_io
 
 with open('ci/yaml_rules.json') as json_data:
     requirements = json.load(json_data)
 
 
-def test_yaml(md_files):
-    for filestring in md_files:
+@file_io
+def test_yaml(md_filepaths):
+    for filestring in md_filepaths:
         reg = regex.compile(r'^---(.*?)---',flags=regex.DOTALL)
         match = regex.search(reg, filestring)
         # Hack until README.md files won't be passed in
@@ -31,4 +33,4 @@ def test_yaml(md_files):
                     parse(str(parsed_yaml[requirement]))
                 except ValueError:
                     assert False, 'YAML metadata formatting error: ' + requirement + ' date parse failed.'
-    md_files.seek(0)
+
