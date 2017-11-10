@@ -1,0 +1,45 @@
+{
+    "author": {
+        "required": true,
+        "elements":["name","email"],
+        "type":"dict"
+        },
+    "title": {
+        "required": true,
+        "elements": false,
+        "type":"text"
+        },
+    "description": {
+        "required": true,
+        "elements": false,
+        "type":"text"
+        },
+    "keywords": {
+        "required": true,
+        "elements":"list",
+        "type":"list"
+        },
+    "license": {
+        "required": true,
+        "elements": false,
+        "type":"link"
+        },
+    "modified": {
+        "required": true,
+        "elements": false,
+        "type":"date"
+        },
+    "modified_by": {
+        "required": true,
+        "elements": false,
+        "type":"text"
+        },
+    "published": {
+        "required": true,
+        "type":"date",
+        "elements": false
+        }
+}
+
+
+
