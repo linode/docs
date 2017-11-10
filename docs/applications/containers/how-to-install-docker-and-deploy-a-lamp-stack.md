@@ -94,5 +94,5 @@ The website's root directory is `/var/www/example.com/public_html/`.
 Congratulations, you have installed a configured LAMP stack using Docker!
 
 
-##Where to Find Configuration Settings
+## Where to Find Configuration Settings
 The LAMP image was installed using the [Hosting a Website](/docs/websites/hosting-a-website) guide on a Ubuntu container. The configuration files and settings can be found there, or on the [Docker Hub linode/lamp](https://registry.hub.docker.com/u/linode/lamp/) page.

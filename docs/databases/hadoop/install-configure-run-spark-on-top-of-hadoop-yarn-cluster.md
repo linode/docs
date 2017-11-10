@@ -3,10 +3,10 @@ author:
   name: Florent Houbart
   email: docs@linode.com
 description: 'This guide shows you how to install, configure, and run Spark on top of a Hadoop YARN cluster.'
-keywords: 'spark,hadoop,yarn,hdfs'
+keywords: ["spark", "hadoop", "yarn", "hdfs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, October 20th, 2017'
-modified: 'Monday, October 23, 2017'
+published: 2017-10-20
+modified: 2017-10-23
 modified_by:
   name: Linode
 title: 'Install, Configure, and Run Spark on Top of a Hadoop YARN Cluster'

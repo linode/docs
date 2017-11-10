@@ -4,7 +4,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Fedora 14.'
-keywords: 'postgresql fedora 14,postgresql database,relational database'
+keywords: ["postgresql fedora 14", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2011-04-29
 modified_by:

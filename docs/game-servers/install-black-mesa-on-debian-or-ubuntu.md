@@ -23,7 +23,7 @@ aliases: ['applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 This guide will show you how to set up your own [Black Mesa](https://blackmesasource.com/) server on a Linode running Debian or Ubuntu.
 
@@ -205,7 +205,7 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 ## Extra
 
-###Autostart with screen script
+### Autostart with screen script
 
 This script automatically starts a Black Mesa Dedicated Server into a **Screen session**.
 

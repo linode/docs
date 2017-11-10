@@ -57,7 +57,6 @@ IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and
 
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
-{: .table .table-striped }
 | Pool   | Number of addresses                    |
 |:-------|------------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |

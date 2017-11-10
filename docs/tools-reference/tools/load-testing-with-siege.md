@@ -126,7 +126,7 @@ If there are no failed connections and the availability remains at 100%, there a
 
 ## Further Configuring and Commands
 
-###Creating a URL File
+### Creating a URL File
 
 If you want Siege to hit a number of pages on your website at random, configure the program to read from a `urls.txt` file that lists the selected pages.
 

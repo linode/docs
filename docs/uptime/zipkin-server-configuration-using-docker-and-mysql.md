@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 description: 'This guide shows you how to use Zipkin in a Docker container for the purpose of tracking systems to collect and search timing data in order to identify latency problems on your websites.'
 og_description: 'Zipkin is a distributed tracing system. This guide shows you how to use Docker to deploy Zipkin on Linode, to diagnose latency problems on your website'
-keywords: 'zipkin, Docker, tracking'
+keywords: ["zipkin", " Docker", " tracking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, October 27, 2017
+modified: 2017-10-27
 modified_by:
   name: Luis Cortés
-published: 'Wednesday, October 4, 2017'
+published: 2017-10-04
 title: 'Zipkin Server Configuration Using Docker and MySQL'
 external_resources:
  - '[Official ZipKin Documentation](http://zipkin.io/)'
@@ -37,7 +37,7 @@ While Zipkin can be installed on a variety of distributions, this guide uses Fed
 
 ## The Target Scenario
 
-Our main task is setting up a Zipkin server with MySQL, so that the spans/traces persist on the host file. 
+Our main task is setting up a Zipkin server with MySQL, so that the spans/traces persist on the host file.
 
 ## Zipkin Server Configuration
 
@@ -75,8 +75,9 @@ Our main task is setting up a Zipkin server with MySQL, so that the spans/traces
 
     You can test the installation with `docker-compose --version`.
 
-    {:.note}
-    > The current stable version of Docker Compose is 1.16.1. Check for the latest version at the [releases page](https://github.com/docker/compose/releases) and update the version in the `curl` command accordingly.
+    {{< note >}}
+The current stable version of Docker Compose is 1.16.1. Check for the latest version at the [releases page](https://github.com/docker/compose/releases) and update the version in the `curl` command accordingly.
+{{< /note >}}
 
 6. Install git:
 
@@ -154,68 +155,68 @@ The **docker-compose yml** files will control which system configuration we can 
 
 2. Open `docker-init.yml` in a text editor and edit the content as follows:
 
-    {:.file-excerpt}
-    ~/docker-init.yml
-    : ~~~
-      version: '2'
+    {{< file-excerpt "~/docker-init.yml" >}}
+version: '2'
 
-      services:
-        storage:
-          image: openzipkin/zipkin-mysql
-          container_name: mysql
-          # Uncomment to expose the storage port for testing
-          ports:
-            - 3306:3306
-          volumes:
-            - dbfiles:/mysql/data
-          restart: unless-stopped
+services:
+  storage:
+    image: openzipkin/zipkin-mysql
+    container_name: mysql
+    # Uncomment to expose the storage port for testing
+    ports:
+      - 3306:3306
+    volumes:
+      - dbfiles:/mysql/data
+    restart: unless-stopped
 
-        zipkin:
-          image: openzipkin/zipkin
-          container_name: zipkin
-          # Environment settings are defined here https://github.com/openzipkin/zipkin/tree/1.19.0/zipkin-server#environment-variables
-          environment:
-            - STORAGE_TYPE=mysql
-            # Point the zipkin at the storage backend
-            - MYSQL_HOST=mysql
-            # Uncomment to enable scribe
-            # - SCRIBE_ENABLED=true
-            # Uncomment to enable self-tracing
-            # - SELF_TRACING_ENABLED=true
-            # Uncomment to enable debug logging
-            # - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG
-          ports:
-            # Port used for the Zipkin UI and HTTP Api
-            - 9411:9411
-          depends_on:
-            - storage
-          restart: unless-stopped
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    # Environment settings are defined here https://github.com/openzipkin/zipkin/tree/1.19.0/zipkin-server#environment-variables
+    environment:
+      - STORAGE_TYPE=mysql
+      # Point the zipkin at the storage backend
+      - MYSQL_HOST=mysql
+      # Uncomment to enable scribe
+      # - SCRIBE_ENABLED=true
+      # Uncomment to enable self-tracing
+      # - SELF_TRACING_ENABLED=true
+      # Uncomment to enable debug logging
+      # - JAVA_OPTS=-Dlogging.level.zipkin=DEBUG
+    ports:
+      # Port used for the Zipkin UI and HTTP Api
+      - 9411:9411
+    depends_on:
+      - storage
+    restart: unless-stopped
 
-        dependencies:
-          image: openzipkin/zipkin-dependencies
-          container_name: dependencies
-          entrypoint: crond -f
-          environment:
-            - STORAGE_TYPE=mysql
-            - MYSQL_HOST=mysql
-            # Add the baked-in username and password for the zipkin-mysql image
-            - MYSQL_USER=zipkin
-            - MYSQL_PASS=zipkin
-            # Uncomment to adjust memory used by the dependencies job
-            - JAVA_OPTS=-verbose:gc -Xms512m -Xmx512m
-          depends_on:
-            - storage
-          restart: unless-stopped
+  dependencies:
+    image: openzipkin/zipkin-dependencies
+    container_name: dependencies
+    entrypoint: crond -f
+    environment:
+      - STORAGE_TYPE=mysql
+      - MYSQL_HOST=mysql
+      # Add the baked-in username and password for the zipkin-mysql image
+      - MYSQL_USER=zipkin
+      - MYSQL_PASS=zipkin
+      # Uncomment to adjust memory used by the dependencies job
+      - JAVA_OPTS=-verbose:gc -Xms512m -Xmx512m
+    depends_on:
+      - storage
+    restart: unless-stopped
 
-      volumes:
-        dbfiles:
-      ~~~
+volumes:
+  dbfiles:
+
+{{< /file-excerpt >}}
+
 
       - In the MySQL container section in the docker-init.yml, export the MySQL data directory, forward the MySQL port to the host, and add the restart command so that this service is automatically restarted if it goes down.
 
       - In the Zipkin container section in the docker-init.yml, make sure the port 9411 is forwarded to the host machine and add the restart command so that this service is automatically restarted if it goes down.
 
-      - In the dependencies container, we uncomment the JAVA_OPTS and set it to at least 512M. This setting is optimized for a 1G Linode. However, if in the future this container needs more memory, you can increase this value. Add a restart command to the end of this section. 
+      - In the dependencies container, we uncomment the JAVA_OPTS and set it to at least 512M. This setting is optimized for a 1G Linode. However, if in the future this container needs more memory, you can increase this value. Add a restart command to the end of this section.
 
 
 3. You can now update your Zipkin Docker images by performing a `docker pull` command. This will check the web for the images we need (the first time), and all other times it'll update the images to the latest version if need be.
@@ -238,13 +239,12 @@ There are 2 different backup methods: using MySQL , and using sysadmin.
 
 1. Ensure that the MySQL service is running on a container. You can check this with a `docker ps` command. The `docker ps` command displays the active containers:
 
-      {:.output}
-        ~~~
-        CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                              NAMES
-        023d14e6193d        openzipkin/zipkin-dependencies   "crond -f"               3 days ago          Up 3 days                                              dependencies
-        ee0c255b7765        openzipkin/zipkin                "/bin/sh -c 'test ..."   3 days ago          Up 3 days           9410/tcp, 0.0.0.0:9411->9411/tcp   zipkin
-        43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
-        ~~~
+      {{< output >}}
+CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                              NAMES
+023d14e6193d        openzipkin/zipkin-dependencies   "crond -f"               3 days ago          Up 3 days                                              dependencies
+ee0c255b7765        openzipkin/zipkin                "/bin/sh -c 'test ..."   3 days ago          Up 3 days           9410/tcp, 0.0.0.0:9411->9411/tcp   zipkin
+43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
+{{< /output >}}
 
 2. If isn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
 
@@ -264,10 +264,10 @@ We can just zip or tar the exported database files on the host system. Since we 
 
     After the `docker down` command, we can perform a `docker ps` command and see that there are no containers running. That should look like this:
 
-      
-      
+
+
        CONTAINER ID        IMAGE      COMMAND    CREATED      STATUS       PORTS         NAMES
-      
+
 
 
 2. At this point, we can create a zip backup of your files. The db files will be prepended with the name of your user. If you are running as root it would be **root_dbfiles**, but running as root isn't recommended.
@@ -297,13 +297,12 @@ We can just zip or tar the exported database files on the host system. Since we 
 
   A good return has an **open** for the STATE of the port, anything else and we probably don't have the right analyst machine IP address in our firewall rules:
 
-{:.output}
-~~~
+{{< output >}}
 Starting Nmap 7.40 ( https://nmap.org ) at 2017-09-24 18:34 MDT
 Nmap scan report for zipkin (192.0.2.0)
 Host is up (0.10s latency).
 PORT     STATE SERVICE
 9411/tcp open  unknown
-~~~
+{{< /output >}}
 
   Review your firewall rules and try again.

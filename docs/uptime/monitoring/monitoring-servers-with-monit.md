@@ -20,7 +20,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should.
 
@@ -153,7 +153,7 @@ If you choose to implement the web interface, be sure the port Monit uses (defau
 
 ## Configure Monit's Checking Actions
 
-###System Values
+### System Values
 
 Monit can monitor server resource utilization and alert you when your server is under unusual load:
 

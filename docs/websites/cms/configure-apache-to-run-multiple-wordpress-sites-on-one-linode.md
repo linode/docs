@@ -3,14 +3,14 @@ author:
   name: Jonathan Tsai
   email: docs@linode.com
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
-keywords: 'install WordPress, WordPress on Linode, multiple WordPress, how to configure WordPress'
+keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, October 27th, 2017
+modified: 2017-10-27
 modified_by:
   name: Linode
 contributor:
   name: Jonathan Tsai
-published: 'Tuesday, October 24th, 2017'
+published: 2017-10-24
 title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
@@ -65,7 +65,6 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 An example of a two WordPress setup is:
 
-{: .table .table-striped}
 | Hostname | Database | Username | Password |
 | ---------| ---------| ---------| -------- |
 | example1.com | example1_wordpress | example1_wpuser | password1 |

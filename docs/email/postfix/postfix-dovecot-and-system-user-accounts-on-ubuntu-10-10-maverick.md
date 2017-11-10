@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
-keywords: 'postfix,dovecot,system users,email'
+keywords: ["postfix", "dovecot", "system users", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/dovecot-system-users-ubuntu-10-10-maverick/']
-modified: Monday, October 8th, 2012
+aliases: ['email/postfix/dovecot-system-users-ubuntu-10-10-maverick/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Tuesday, December 7th, 2010'
+published: 2010-12-07
 expiryDate: 2014-10-08
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.10 (Maverick)'
 deprecated: true
@@ -52,54 +52,22 @@ SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncomment or add the following line:
 
-{: .file-excerpt }
-/etc/default/saslauthd
-:   ~~~ ini
-    START=yes
-    ~~~
+{{< file-excerpt "/etc/default/saslauthd" ini >}}
+START=yes
+
+{{< /file-excerpt >}}
+
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
 
-{: .file }
-/etc/postfix/sasl/smtpd.conf
+{{< file "/etc/postfix/sasl/smtpd.conf" ini >}}
+smtpd_tls_cert_file=/etc/ssl/postfix.pem
+smtpd_tls_key_file=/etc/ssl/postfix.key
 
-> pwcheck\_method: saslauthd
+smtpd_sasl_application_name = smtpd
 
-Issue the following command to start the SASL daemon for the first time:
+{{< /file >}}
 
-    /etc/init.d/saslauthd start
-
-Configure SSL
--------------
-
-SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
-
-Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate):
-
-    apt-get install openssl
-    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
-
-Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
-
-Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
-
-You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
-
-Postfix
--------
-
-### Configure Outbound Mail Service
-
-Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
-
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    smtpd_tls_cert_file=/etc/ssl/postfix.pem
-    smtpd_tls_key_file=/etc/ssl/postfix.key
-
-    smtpd_sasl_application_name = smtpd
-    ~~~
 
 These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you're using an SSL certificate with a different name, modify the first two lines of this configuration section.
 
@@ -115,13 +83,13 @@ Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-1
 
 The above Postfix configuration makes it possible to *send* mail using Postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    myhostname = lollipop.example.com
-    virtual_alias_maps = hash:/etc/postfix/virtual
-    home_mailbox = mail/
-    ~~~
+{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+myhostname = lollipop.example.com
+virtual_alias_maps = hash:/etc/postfix/virtual
+home_mailbox = mail/
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:
 
@@ -133,65 +101,30 @@ Every existing user that receives email will also need to make their own `Maildi
 
 Create a `/etc/postfix/virtual` file to map incoming email addresses to their destinations. Consider the following example:
 
-{: .file }
-/etc/postfix/virtual
+{{< file "/etc/postfix/virtual" ini >}}
+protocols = imap imaps pop3 pop3s mangesieve
 
-> <username@example.com> username <username@example.net> username <username@example.com> username
->
-> <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
->
-> <team@example.com> username, <foreman@example.com> <team@example.net> username, <foreman@example.com> <team@example.com> username, <foreman@example.com>
+{{< /file >}}
 
-Here, all mail sent to the three addresses beginning with the characters `username@` are delivered to the local user "username" and deposited to a Maildir in the `/home/username/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
-
-You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
-
-Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
-
-{: .file-excerpt }
-/etc/aliases
-
-> root: username
-
-When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
-
-    postalias /etc/alias
-
-> postmap /etc/postfix/virtual /etc/init.d/postfix restart
-
-Dovecot
--------
-
-Dovecot is a contemporary POP3/IMAP server that makes it possible to access and download mail from your mail server remotely onto your local system.
-
-### Configure Remote Mail Access
-
-Edit the following configuration directive in the `/etc/dovecot/dovecot.conf` file to select the services that Dovecot will provide.
-
-{: .file-excerpt }
-/etc/dovecot/conf.d/01-mail-stack-delivery.conf
-:   ~~~ ini
-    protocols = imap imaps pop3 pop3s mangesieve
-    ~~~
 
 The `protocols` directive enables `imap` and `pop3` services within Dovecot along with their SSL-encrypted alternatives. You may remove any of these services if you do not want Dovecot to provide `imap`, `pop3`, or SSL services.
 
 Edit and modify the following lines in the `/etc/dovecot/conf.d/01-dovecot-postfix.conf` file to configure Dovecot to use the SSL certificates you generated earlier:
 
-{: .file-excerpt }
-/etc/dovecot/conf.d/01-dovecot-postfix.conf
-:   ~~~ ini
-    ssl_cert_file = /etc/ssl/postfix.pem
-    ssl_key_file = /etc/ssl/postfix.key
-    ~~~
+{{< file-excerpt "/etc/dovecot/conf.d/01-dovecot-postfix.conf" ini >}}
+ssl_cert_file = /etc/ssl/postfix.pem
+ssl_key_file = /etc/ssl/postfix.key
+
+{{< /file-excerpt >}}
+
 
 You may replace the files specified with another `.pem` and `.key` file generated for another service, if needed. Modify the `mail_location` directive as follows so that Dovecot can interact properly with your Maildirs:
 
-{: .file-excerpt }
-dovecot.conf
-:   ~~~ ini
-    mail_location = maildir:~/mail:LAYOUT=fs
-    ~~~
+{{< file-excerpt "dovecot.conf" ini >}}
+mail_location = maildir:~/mail:LAYOUT=fs
+
+{{< /file-excerpt >}}
+
 
 Once configured, issue the following command to restart the Dovecot instance:
 

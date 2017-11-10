@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Utilizing the Elastic Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
-keywords: 'ossec, elk stack, elk, ossec-hids'
+keywords: ["ossec", "elk stack", "elk", "ossec-hids"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, October 11th, 2017'
-modified: Thursday, October 12th, 2017
+published: 2017-10-11
+modified: 2017-10-12
 modified_by:
   name: Linode
 title: 'Visualize Server Security On CentOS 7 With The Elastic Stack'
@@ -56,8 +56,9 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
 2. Ideally, your Linode should possess at least 4GB of RAM. While the Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-    {: .note}
-    > Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
+    {{< note >}}
+    Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
+{{< /note >}}
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
@@ -106,17 +107,15 @@ Installing the Elastic Stack components can be accomplished in various ways. Ins
 
 1. Create the file `/etc/yum.repos.d/wazuh.repo` and paste the following text using your preferred text editor:
 
-      {: .file}
-      /etc/yum.repos.d/wazuh.repo
-      :  ~~~ .repo
-         [wazuh_repo]
-         gpgcheck=1
-         gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-         enabled=1
-         name=CentOS-$releasever - Wazuh
-         baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
-         protect=1
-         ~~~
+      {{< file "/etc/yum.repos.d/wazuh.repo" >}}
+[wazuh_repo]
+gpgcheck=1
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+enabled=1
+name=CentOS-$releasever - Wazuh
+baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
+protect=1
+{{< /file >}}
 
 2. Install the Wazuh Manager:
 
@@ -183,31 +182,29 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
 5. Modify the *01-wazuh.conf* file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the "Remote Wazuh Manager" section and uncommenting the "Local Wazuh Manager" section.
 
-    {: .file-excerpt}
-    /etc/logstash/conf.d/01-wazuh.conf
-    : ~~~ conf
-      # Wazuh - Logstash configuration file
-      ## Remote Wazuh Manager - Filebeat input
-      #input {
-      #    beats {
-      #        port => 5000
-      #        codec => "json_lines"
-      ##        ssl => true
-      ##        ssl_certificate => "/etc/logstash/logstash.crt"
-      ##        ssl_key => "/etc/logstash/logstash.key"
-      #    }
-      #}
-      # Local Wazuh Manager - JSON file input
-      input {
-         file {
-             type => "wazuh-alerts"
-             path => "/var/ossec/logs/alerts/alerts.json"
-             codec => "json"
-         }
-      }
+    {{< file-excerpt "/etc/logstash/conf.d/01-wazuh.conf" >}}
+# Wazuh - Logstash configuration file
+## Remote Wazuh Manager - Filebeat input
+#input {
+#    beats {
+#        port => 5000
+#        codec => "json_lines"
+##        ssl => true
+##        ssl_certificate => "/etc/logstash/logstash.crt"
+##        ssl_key => "/etc/logstash/logstash.key"
+#    }
+#}
+# Local Wazuh Manager - JSON file input
+input {
+ file {
+     type => "wazuh-alerts"
+     path => "/var/ossec/logs/alerts/alerts.json"
+     codec => "json"
+ }
+}
 
-      . . .
-      ~~~
+. . .
+{{< /file-excerpt >}}
 
 6. Add the Logstash user to the "ossec" group to allow access to restricted files.
 
@@ -217,17 +214,15 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
     1. Edit the file `/etc/logstash/startup.options` and in line 30 change the `LS_GROUP=logstash` to `LS_GROUP=ossec`.
 
-      {: .file-excerpt}
-      /etc/logstash/startup.options
-      : ~~~ options
-        . . .
+      {{< file-excerpt "/etc/logstash/startup.options" >}}
+. . .
 
-        # user and group id to be invoked as
-        LS_USER=logstash
-        LS_GROUP=ossec
+# user and group id to be invoked as
+LS_USER=logstash
+LS_GROUP=ossec
 
-        . . .
-        ~~~
+. . .
+{{< /file-excerpt >}}
 
     2. Update the service with the new parameters.
 
@@ -257,12 +252,12 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
         /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
 
-    {: .note}
-    > The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
+    {{< note >}}
+    The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
+{{< /note >}}
 
 5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values in `/etc/kibana/kibana.yml` with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
 
-    {: .table .table-striped .table-bordered }
     | Value           | Parameter                                                                                  |
     | :-------------: | :----------------------------------------------------------------------------------------: |
     | server.port     | Change this value if the default port, 5601, is in use.                                    |
@@ -296,29 +291,25 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
 
     Edit the systemd init file and add the following line.
 
-    {: .file-excerpt}
-    /etc/systemd/system/multi-user.target.wants/elasticsearch.service
-    : ~~~ service
-      . . .
+    {{< file-excerpt "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
+. . .
 
-      LimitMEMLOCK=infinity
+LimitMEMLOCK=infinity
 
-      . . .
-      ~~~
+. . .
+{{< /file-excerpt >}}
 
     **System V**
 
     Edit the `/etc/sysconfig/elasticsearch` file. Add or change the following line.
 
-      {: .file}
-      /etc/sysconfig/elasticsearch
-      : ~~~
-        . . .
+      {{< file "/etc/sysconfig/elasticsearch" >}}
+. . .
 
-        MAX_LOCKED_MEMORY=unlimited
+MAX_LOCKED_MEMORY=unlimited
 
-        . . .
-        ~~~
+. . .
+{{< /file >}}
 
 3. Configure the ElasticSearch heap size. This figure will determine how much memory ElasticSearch is allowed to consume. You must determine the optimum heap size for ElasticSearch based on your system's hardware resources. However, the following two rules always apply:
 
@@ -328,24 +319,23 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
 
     Open the `jvm.options` file and navigate to the following block:
 
-      {: .file}
-      /etc/elasticsearch/jvm.options
-      : ~~~ options
-        . . .
+      {{< file "/etc/elasticsearch/jvm.options" >}}
+. . .
 
-        # Xms represents the initial size of total heap space
-        # Xmx represents the maximum size of total heap space
+# Xms represents the initial size of total heap space
+# Xmx represents the maximum size of total heap space
 
-        -Xms4g
-        -Xmx4g
+-Xms4g
+-Xmx4g
 
-        . . .
-        ~~~
+. . .
+{{< /file >}}
 
 This configuration configures ElasticSearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
-{: .caution}
-> Set this value carefully. If the system RAM is completely depleted, ElasticSearch will crash.
+{{< caution >}}
+Set this value carefully. If the system RAM is completely depleted, ElasticSearch will crash.
+{{< /caution >}}
 
 ## Connect The Elastic Stack With The Wazuh API
 <!---
@@ -585,8 +575,9 @@ Kibana's default access port, 5601, must be opened for TCP traffic. Instructions
 
         iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
-{: .note}
-> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install `iptables-persistent` to automatically save rules.
+{{< note >}}
+To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install `iptables-persistent` to automatically save rules.
+{{< /note >}}
 
 **FirewallD**
 
@@ -616,8 +607,9 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status kibana
         systemctl -l status nginx
 
-{: .note}
-> If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. You will find the rules and decoders in the `var/ossec/ruleset` directory. To disable, rename the file with any other file extension.
+{{< note >}}
+If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. You will find the rules and decoders in the `var/ossec/ruleset` directory. To disable, rename the file with any other file extension.
+{{< /note >}}
 
 4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL might look like *kibana.your_domain.com*. You can also reach Kibana by navigating to your server's IP address and specifying port 5601. Login with the credentials you set up for your Kibana site.
 

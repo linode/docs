@@ -76,7 +76,7 @@ To update TF2, run the above 4 commands again.
 
 ## Configure Team Fortress 2
 
-###Maps
+### Maps
 
 You can select from a variety of maps on which you can play Team Fortress 2, a number of which are already installed to the server.
 

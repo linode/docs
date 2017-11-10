@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
 og_description: 'Share data analysis and visualizations on Jupyter Notebooks with Jekyll.'
-keywords: 'Jupyter, ruby, python, Jekyll'
+keywords: ["Jupyter", " ruby", " python", " Jekyll"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, November 6th, 2017
+modified: 2017-11-06
 modified_by:
   name: Linode
-published: 'Monday, November 6th, 2017'
+published: 2017-11-06
 title: Display Jupyter Notebooks with Jekyll
 external_resources:
  - '[Jekyll](https://jekyllrb.com/)'
@@ -59,10 +59,11 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
 4.  After installation, the terminal will show the new group it created. Exit out of the terminal session and SSH back into the Linode:
 
-    {: .output }
-    ~~~
+    {{< output >}}
+~~~
     Creating group 'rvm'
-    
+{{< /output >}}
+
     Installing RVM to /usr/share/rvm/
     Installation of RVM in /usr/share/rvm/ is almost complete:
     
@@ -94,8 +95,8 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
     The directory tree should be similar to:
 
-    {:.output}
-    ~~~
+    {{< output >}}
+~~~
     exampleblog/
     ├── 404.html
     ├── about.md
@@ -108,6 +109,7 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
     └── _posts
         └── 2017-10-10-welcome-to-jekyll.markdown
     ~~~
+{{< /output >}}
 
 3.  Run the Jekyll server. Using a web browser, navigate to your Linode's public IP address (port `4000`) to preview the site. There should be a default first post.
 
@@ -115,8 +117,9 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
     ![First Jekyll Post](/docs/assets/jekyll_first_post.png "First Jekyll Post")
 
-    {:.note}
-    > After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
+    {{< note >}}
+After starting the Jekyll server, there will be a new `_site` folder. Do not store files in this folder as it is rebuilt each time changes are made to the site.
+{{< /note >}}
 
 ## Configure Jupyter Notebook
 
@@ -154,30 +157,30 @@ This section demonstrates some common features of a Jupyter Notebook that can be
 
 2.  The demo code used in this guide is below:
 
-    {:.file}
-    example.ipynb
-    :   ~~~
-        \begin{equation*}
-        \mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
-        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-        \frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
-        \frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
-        \end{vmatrix}
-        \end{equation*}
+    {{< file "example.ipynb" >}}
+\begin{equation*}
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
+\end{vmatrix}
+\end{equation*}
 
-        import pandas as pd
-        import seaborn as sns
-        %matplotlib inline
+import pandas as pd
+import seaborn as sns
+%matplotlib inline
 
-        url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
-        names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
-        iris = pd.read_csv(url, names=names)
+url = "https://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data"
+names = ['sepal-length', 'sepal-width', 'petal-length', 'petal-width', 'class']
+iris = pd.read_csv(url, names=names)
 
-        iris.head()
-        iris.describe()
+iris.head()
+iris.describe()
 
-        sns.pairplot(x_vars=["petal-length"], y_vars=["petal-width"], data=iris, hue="class", size=10)
-        ~~~
+sns.pairplot(x_vars=["petal-length"], y_vars=["petal-width"], data=iris, hue="class", size=10)
+
+{{< /file >}}
+
 
 3.  Inside the `_posts` folder of the Jekyll project, create a new markdown file called `YYYY-MM-DD-example-post.md`. If the date format is incorrect, the post may not be displayed on the blog:
 
@@ -185,17 +188,17 @@ This section demonstrates some common features of a Jupyter Notebook that can be
 
 4.  The markdown file should begin with three dashes and contain headers which provide information for Jekyll to populate the post with the appropriate page data. The date must be in the format specified. The hours, minutes, seconds, and timezone adjustment are optional:
 
-    {:.file}
-    YYYY-MM-DD-example-post.md
-    : ~~~
-      ---
-      layout: post
-      title:  "Awesome Data Visualization"
-      date:   2017-10-10 12:07:25 +0000
-      categories:
-        - data
-      ---
-      ~~~
+    {{< file "YYYY-MM-DD-example-post.md" >}}
+---
+layout: post
+title:  "Awesome Data Visualization"
+date:   2017-10-10 12:07:25 +0000
+categories:
+  - data
+---
+
+{{< /file >}}
+
 
 5.  Copy the contents of the markdown file exported from Jupyter into the new post.
 
@@ -215,41 +218,41 @@ Tabular output in Jupyter is converted to an HTML table. This section covers how
 
 1.  In `/exampleblog/assets`, create a new file called `main.scss`. This imports the existing minima theme SCSS and adds the following:
 
-    {:.file}
-    main.scss
-    :   ~~~
-        ---
-        ---
-        @import "minima";
+    {{< file "main.scss" >}}
+---
+---
+@import "minima";
 
-        p, blockquote, ul, ol, dl, li, table, pre {
-        margin: 15px 0; }
+p, blockquote, ul, ol, dl, li, table, pre {
+margin: 15px 0; }
 
-        table {
-          padding: 0; }
-          table tr {
-            border-top: 1px solid #cccccc;
-            background-color: white;
-            margin: 0;
-            padding: 0; }
-            table tr:nth-child(2n) {
-              background-color: #f8f8f8; }
-              table tr th {
-              font-weight: bold;
-              border: 1px solid #cccccc;
-              text-align: left;
-              margin: 0;
-              padding: 6px 13px; }
-            table tr td {
-              border: 1px solid #cccccc;
-              text-align: left;
-              margin: 0;
-              padding: 6px 13px; }
-            table tr th :first-child, table tr td :first-child {
-              margin-top: 0; }
-            table tr th :last-child, table tr td :last-child {
-        margin-bottom: 0; }
-        ~~~
+table {
+  padding: 0; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+      table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+margin-bottom: 0; }
+
+{{< /file >}}
+
 
 2.  The HTML table will have the new styles applied.
 
@@ -263,11 +266,11 @@ Adding an image through markdown requires having the images stored in the projec
 
 2.  Modify the references to images within the markdown to the appropriate path. Wrap the path in two curly braces and double quotes.
 
-    {:.file-excerpt}
-    YYYY-MM-DD-example-post.md
-    :   ~~~
-        ![png]({{ "/assets/images/example_notebook_5_0.png" }})
-        ~~~
+    {{< file-excerpt "YYYY-MM-DD-example-post.md" >}}
+![png]({{ "/assets/images/example_notebook_5_0.png" }})
+
+{{< /file-excerpt >}}
+
 
 3.  Graphs with legends that are in a longer dimension also can be displayed.
 
@@ -281,10 +284,11 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
 
 1.  In order for Jekyll to convert LaTeX to PNG, a CDN is available through MathJax. Copy the following HTML tag and paste it below the metadata section of `YYYY-MM-DD-example-post.md`:
 
-    {:.output}
-    ~~~
+    {{< output >}}
+~~~
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
     ~~~
+{{< /output >}}
 
 2.  The default Jekyll **minima** theme has the `_layouts` and `_includes` directory packaged with the gem. Navigate to this directory by:
 
@@ -292,8 +296,8 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
 
     The directory tree contains other HTML files for integrating Disqus and Google Analytics.
 
-    {:.output}
-    ~~~
+    {{< output >}}
+~~~
     minima-2.1.1/
     ├── assets
     │   └── main.scss
@@ -322,58 +326,59 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
                     │   └── _syntax-highlighting.scss
                         └── minima.scss
     ~~~
+{{< /output >}}
 
-    {:.note}
-    >The default theme is installed as a gem. If there is another `_layouts` or `_includes` folder in the project root, those HTML files will override the theme.
+    {{< note >}}
+The default theme is installed as a gem. If there is another `_layouts` or `_includes` folder in the project root, those HTML files will override the theme.
+{{< /note >}}
 
 3.  Within the `_includes` directory in the minima theme, create a new `scripts.html` file. Using Liquid templating, add logic to check for a `mathjax` header in a post:
 
-      {:.file-excerpt}
-      _includes/scripts.html
-      :   ~~~ html
-          {% if page.mathjax %}
-          <script type="text/javascript" async
-                  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
-          </script>
-          {% endif %}
-          ~~~
+      {{< file-excerpt "_includes/scripts.html" html >}}
+{% if page.mathjax %}
+<script type="text/javascript" async
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+{% endif %}
+
+{{< /file-excerpt >}}
+
 
 4.  Add templating to `_layouts/post.html` to include `scripts.html` in posts:
 
-    {:.file-excerpt}
-    _layouts/post.html
-    :   ~~~
-        ---
-        layout: default
-        ---
+    {{< file-excerpt "_layouts/post.html" >}}
+---
+layout: default
+---
 
-        {% include scripts.html %}
-        ~~~
+{% include scripts.html %}
+
+{{< /file-excerpt >}}
+
 
 5.  Edit the header `/exampleblog/_posts/YYYY-MM-DD-example-post.md` with `mathjax: true`. Wrap the LaTeX in `$$` to create a math block. Remember to include the two lines of `---`:
 
-    {:.file-excerpt}
-    YYYY-MM-DD-example-post.md
-    :   ~~~
-        ---
-        layout: post
-        mathjax: true
-        title:  "Awesome Data Visualization"
-        date:   2017-10-10 12:07:25 +0000
-        categories: data
-        ---
+    {{< file-excerpt "YYYY-MM-DD-example-post.md" >}}
+---
+layout: post
+mathjax: true
+title:  "Awesome Data Visualization"
+date:   2017-10-10 12:07:25 +0000
+categories: data
+---
 
-        $$
-        \begin{equation*}
-        \mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
-        \mathbf{i} & \mathbf{j} & \mathbf{k} \\
-        \frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
-        \frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
-        \end{vmatrix}
-        \end{equation*}
-        $$
+$$
+\begin{equation*}
+\mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
+\mathbf{i} & \mathbf{j} & \mathbf{k} \\
+\frac{\partial X}{\partial u} &  \frac{\partial Y}{\partial u} & 0 \\
+\frac{\partial X}{\partial v} &  \frac{\partial Y}{\partial v} & 0
+\end{vmatrix}
+\end{equation*}
+$$
 
-        ~~~
+{{< /file-excerpt >}}
+
 
 6.  The browser should use MathJax to display output identical to a Jupyter Notebook.
 
