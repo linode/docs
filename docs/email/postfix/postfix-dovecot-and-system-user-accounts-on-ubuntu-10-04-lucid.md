@@ -11,7 +11,9 @@ modified: Wednesday, September 25th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, November 9th, 2010'
+expiryDate: 2015-09-25
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
+deprecated: true
 ---
 
 

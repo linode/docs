@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to use separate web servers to host sites or applications using ProxyPass with Apache.'
-keywords: 'apache,proxypass,apache on centos,multiple web servers'
+keywords: ["apache", "proxypass", "apache on centos", "multiple web servers"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/']
-modified: Friday, July 22nd, 2011
+aliases: ['web-servers/apache/proxy-configuration/multiple-webservers-proxypass-centos-5/']
+modified: 2011-07-22
 modified_by:
   name: Linode
-published: 'Thursday, February 4th, 2010'
+published: 2010-02-04
 title: Multiple Web Servers with ProxyPass on CentOS 5
 external_resources:
  - '[Apache Module mod\_proxy](http://httpd.apache.org/docs/2.2/mod/mod_proxy.html)'
@@ -25,28 +25,28 @@ We assume you have followed our [getting started guide](/docs/getting-started/) 
 
 The CentOS package of the Apache HTTP server includes the proxy module. To enable this module, create the `/etc/httpd/conf.d/proxy.conf` file with the following content.
 
-{: .file-excerpt }
-/etc/httpd/conf.d/proxy.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file-excerpt "/etc/httpd/conf.d/proxy.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 This turns on proxy support in the module configuration. **Please note** the warning regarding the `ProxyRequests` directive. It should be "off" in your configuration. Next, we'll issue the following command to restart Apache:
 
@@ -58,20 +58,20 @@ Apache should restart cleanly. If you encounter any issues, you may wish to insp
 
 We already have a site called "www.firstsite.org" running under Apache as a normal virtual host. We'll use Apache to send requests for the site "www.secondsite.org" to a lighttpd instance, which we've configured to run on port 8080 on localhost. You can proxy to any local and non-local HTTP servers that are required for your deployment. Here are the configuration directives for "www.secondsite.org":
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 74.207.231.112:80>
-         ServerAdmin support@secondsite.org
-         ServerName secondsite.org
-         ServerAlias www.secondsite.org
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 74.207.231.112:80>
+     ServerAdmin support@secondsite.org
+     ServerName secondsite.org
+     ServerAlias www.secondsite.org
 
-         ProxyPass / http://localhost:8080/
+     ProxyPass / http://localhost:8080/
 
-         # Uncomment the line below if your site uses SSL.
-         #SSLProxyEngine On
-    </VirtualHost>
-    ~~~
+     # Uncomment the line below if your site uses SSL.
+     #SSLProxyEngine On
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 The `ProxyPass` directive tells Apache to forward all requests for this domain to a web server running on port 8080. If our target server were running on another Linode (as with a server that only answers on a back-end, private network), we could just specify that address, instead. For now, we'll enable the site with the following command:
 
@@ -89,20 +89,20 @@ Here's the site "www.secondsite.org" being served by lighttpd via ProxyPass:
 
 If we wanted to have `http://www.firstsite.org/myapp/` served by a web application running under lighttpd, we'd simply modify its configuration file to look like this:
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 74.207.231.112:80>
-         ServerAdmin support@firstsite.org
-         ServerName firstsite.org
-         ServerAlias www.firstsite.org
-         DocumentRoot /srv/www/firstsite.org/public_html/
-         ErrorLog /srv/www/firstsite.org/logs/error.log
-         CustomLog /srv/www/firstsite.org/logs/access.log combined
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 74.207.231.112:80>
+     ServerAdmin support@firstsite.org
+     ServerName firstsite.org
+     ServerAlias www.firstsite.org
+     DocumentRoot /srv/www/firstsite.org/public_html/
+     ErrorLog /srv/www/firstsite.org/logs/error.log
+     CustomLog /srv/www/firstsite.org/logs/access.log combined
 
-         ProxyPass /myapp http://localhost:8080/
-    </VirtualHost>
-    ~~~
+     ProxyPass /myapp http://localhost:8080/
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Now the location "/myapp" will be served by lighttpd instead of Apache. After reloading the Apache configuration with `/etc/init.d/httpd reload`, we can see that it's functioning correctly:
 

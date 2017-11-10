@@ -11,6 +11,7 @@ modified: Tuesday, October 9th, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, October 9th, 2012'
+expiryDate: 2014-10-09
 title: 'Deploy Munin to Monitor Servers on Ubuntu 12.04'
 external_resources:
  - '[Munin Homepage](http://munin-monitoring.org/)'

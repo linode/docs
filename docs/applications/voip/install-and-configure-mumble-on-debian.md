@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Mumble is an open-source, encrypted VoIP software. This guide instructs how to install the Mumble server on Debian and gives general guidelines for configuring the Mumble client.'
-keywords: 'mumble, debian, murmur, gaming, voip, voice chat'
+keywords: ["mumble", " debian", " murmur", " gaming", " voip", " voice chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, November 9th, 2015'
-modified: Tuesday, November 9th, 2015
+published: 2015-11-09
+modified: 2015-11-09
 modified_by:
     name: Linode
 title: 'Install and Configure Mumble on Debian'
@@ -32,9 +32,9 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
- {: .note }
->
-> This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+ {{< note >}}
+This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Mumble Server
 
@@ -52,17 +52,17 @@ external_resources:
 
     [![Image description](/docs/assets/murmur-debian-auto-start-resized.png)](/docs/assets/murmur-debian-auto-start.png)
 
-    {: .note}
-    >
-    > If you wish to disable the server starting at boot, you can use your init system to disable it.
-    >
-    > For Debian 8:
-    >
-    >     sudo systemctl disable mumble-server
-    >
-    > For Debian 7 or earlier:
-    >
-    >     sudo service mumble-server disable
+    {{< note >}}
+If you wish to disable the server starting at boot, you can use your init system to disable it.
+
+For Debian 8:
+
+sudo systemctl disable mumble-server
+
+For Debian 7 or earlier:
+
+sudo service mumble-server disable
+{{< /note >}}
 
 4.  Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.
 
@@ -81,8 +81,7 @@ external_resources:
 1.  If you need to address more exact configuration specifics, such as assigning port numbers and/or maximum users, Murmur has a settings file at `/etc/mumble-server.ini`. Below is a partial list of settings included; more settings exist and are further explained in the file.
 
 
-    {: .table-striped .table-bordered .table-padded}
-    |:----------------------|:----------------------------------------------------------------------------------------|
+        |:----------------------|:----------------------------------------------------------------------------------------|
     | **autobanAttempts**   | Set how many times someone can fail to connect to the server within a given timeframe.  |
     | **autobanTimeframe**  | Set the given timeframe for attempts to login to the server.                            |
     | **autobanTime**       | Set the amount of time that the login ban lasts.                                        |

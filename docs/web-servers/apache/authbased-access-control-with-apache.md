@@ -10,6 +10,8 @@ modified: Monday, August 22nd, 2011
 modified_by:
   name: Linode
 published: 'Monday, December 7th, 2009'
+expiryDate: 2013-08-22
+deprecated: true
 title: 'Auth-based Access Control with Apache'
 external_resources:
  - '[Installation of the Apache web server](/docs/web-servers/apache/)'

@@ -4,8 +4,8 @@ author:
   email: docs@linode.com
 description: 'This tutorial shows how to set up an NFS server and client for remote file access on Debian.'
 og_description: ' With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
-keywords: 'NFS, network file system'
-alias: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/','networking/how-to-mount-nfs-shares-on-debian-8/']
+keywords: ["NFS", "network file system"]
+aliases: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/','networking/how-to-mount-nfs-shares-on-debian-8/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
 modified: Tuesday, November 7th, 2017
@@ -25,9 +25,9 @@ However, be aware that one limitation of NFS (versions 3 and older) is that serv
 
 This guide walks you through the setup of two Linodes; one is the NFS server, and the other acting as the client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. **Caution**: Other NFS setups can potentially send traffic over the public internet.
  
-{: .note }
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prerequisites
 
@@ -52,21 +52,17 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
 4.  Prevent access to the services used by NFS by default by adding the following line to your `hosts.deny` file.
 
-    {: .file-excerpt }
-    /etc/hosts.deny
-    : ~~~ conf
-      rpcbind mountd nfsd statd lockd rquotad : ALL
-      ~~~
+    {{< file-excerpt "/etc/hosts.deny" >}}
+rpcbind mountd nfsd statd lockd rquotad : ALL
+{{< /file-excerpt >}}
 
 5.  Allow access to the services used by NFS for your client and localhost. Add the following lines to your `hosts.allow` file, replacing `example_IP` with the client Linode's private IPv4 address.
 
-    {: .file-excerpt }
-    /etc/hosts.allow
-    : ~~~ conf
-      rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
-      rpcbind mountd nfsd statd lockd rquotad : example_IP : allow
-      rpcbind mountd nfsd statd lockd rquotad : ALL : deny
-      ~~~
+    {{< file-excerpt "/etc/hosts.allow" >}}
+rpcbind mountd nfsd statd lockd rquotad : 127.0.0.1 : allow
+rpcbind mountd nfsd statd lockd rquotad : example_IP : allow
+rpcbind mountd nfsd statd lockd rquotad : ALL : deny
+{{< /file-excerpt >}}
 
 6.  Create a directory in your local filesystem to use as the NFS share's root location:
 
@@ -78,12 +74,9 @@ Choose one Linode to be your NFS server. Follow the instructions below to config
 
 8.  Add the following line to the `/etc/exports` file, replacing `example_IP` with the client Linode's private IPv4 address. Make sure there is no space between the /17 and the opening parenthesis, and that there is a blank line at the end of the file.
 
-    {: .file-excerpt}
-    /etc/exports
-    : ~~~ conf
-      /var/nfsroot     example_IP/17(rw,root_squash,subtree_check)
-
-      ~~~
+    {{< file-excerpt "/etc/exports" >}}
+/var/nfsroot     example_IP/17(rw,root_squash,subtree_check)
+{{< /file-excerpt >}}
 
 9.  Update the table of exported file systems with the following command:
 
@@ -113,11 +106,9 @@ The second Linode will be your NFS client. Follow the instructions below to conf
 
 4.  Use your favorite editor to add the following line to the client's `fstab` file, replacing `example_IP` with the server Linode's private IPv4 address.
 
-    {: .file-excerpt }
-    /etc/fstab
-    : ~~~ conf
-      example_IP:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr,noexec 0 0
-      ~~~
+    {{< file-excerpt "/etc/fstab" >}}
+example_IP:/var/nfsroot /mnt/remotenfs nfs rw,async,hard,intr,noexec 0 0
+{{< /file-excerpt >}}
 
 5.  Mount the filesystem by running the following command:
 

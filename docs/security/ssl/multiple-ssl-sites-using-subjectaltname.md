@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to serve multiple SSL-enabled websites from a single public IP using the SubjectAltName feature of OpenSSL.'
-keywords: 'openssl,apache ssl,subjectaltname,ssl linux'
+keywords: ["openssl", "apache ssl", "subjectaltname", "ssl linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['security/ssl-certificates/subject-alternate-names/']
-modified: Wednesday, November 14th, 2012
+aliases: ['security/ssl-certificates/subject-alternate-names/']
+modified: 2012-11-14
 modified_by:
   name: Lukas Sabota
-published: 'Monday, November 16th, 2009'
+published: 2009-11-16
 title: Multiple SSL Sites Using SubjectAltName
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
@@ -37,19 +37,19 @@ CentOS/Fedora users:
 
 Edit the file `openssl.cnf`, inserting the following line immediately before the "HOME" entry. On Debian and Ubuntu systems this file can found at `/usr/lib/ssl/openssl.cnf`, on CentOS and Fedora it can be found at `/etc/pki/tls/openssl.cnf`.
 
-{: .file-excerpt }
-openssl.cnf
-:   ~~~
-    SAN="email:support@example.com"
-    ~~~
+{{< file-excerpt "openssl.cnf" >}}
+SAN="email:support@example.com"
+
+{{< /file-excerpt >}}
+
 
 Change "example.com" to match the domain name used for your server's fully qualified domain name (FQDN). Next, add the following line immediately after the `[ v3_req ]` and `[ v3_ca ]` section markers.
 
-{: .file-excerpt }
-openssl.cnf
-:   ~~~
-    subjectAltName=${ENV::SAN}
-    ~~~
+{{< file-excerpt "openssl.cnf" >}}
+subjectAltName=${ENV::SAN}
+
+{{< /file-excerpt >}}
+
 These statements instruct OpenSSL to append your default support email address to the SAN field for new SSL certificates if no other alternate names are provided. The environment variable "SAN" will be read to obtain a list of alternate DNS names that should be considered valid for new certificates.
 
 At the shell prompt, issue the following command to declare the names domain names that you want to include in your certificate:

@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
-og_description: 'This guide is a brief overview of IPv6 support on Linode, including how to find the IPv6 address of your Linode, how to request additional addresses, and information about address pools and forwarding.'
-keywords: 'ipv6,networking,IP configuration'
-alias: ['networking/how-to-enable-native-ipv6-on-linux/','networking/native-ipv6-networking/']
+og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
+keywords: ["ipv6 networking", "IP configuration"]
+aliases: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, November 2nd, 2017
+modified: 2017-11-02
 modified_by:
-    name: Linode
-published: 'Tuesday, May 3rd, 2011'
+  name: Linode
+published: 2011-05-03
 title: An Overview of IPv6 on Linode
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'

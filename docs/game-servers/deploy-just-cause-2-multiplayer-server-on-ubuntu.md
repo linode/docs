@@ -3,14 +3,14 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install and configure a Just Cause 2 Multiplayer Server on Ubuntu 14.04.'
-keywords: 'just cause 2,game servers,ubuntu,ubuntu 14.04,steamcmd,steam,multiplayer game server'
+keywords: ["just cause 2", "game servers", "ubuntu", "ubuntu 14.04", "steamcmd", "steam", "multiplayer game server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, October 9th, 2015'
-modified: Thursday, February 25th, 2016
+published: 2015-10-09
+modified: 2016-02-25
 modified_by:
     name: Linode
 title: 'Deploy a Just Cause 2 Multiplayer Server on Ubuntu 14.04'
-alias: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
+aliases: ['applications/game-servers/just-cause-2-multiplayer-on-ubuntu/','applications/game-servers/deploy-just-cause-2-multiplayer-server-on-ubuntu/']
 contributor:
     name: Andrew Gottschling
     link: https://github.com/agottschling
@@ -28,9 +28,9 @@ contributor:
 
 2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prerequisites for Just Cause 2
 
@@ -75,9 +75,9 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
         quit
 
-    {: .note}
-    >
-    >To update JC2, run the above 4 commands again.
+    {{< note >}}
+To update JC2, run the above 4 commands again.
+{{< /note >}}
 
 ## Configure Just Cause 2 - Multiplayer (JC2-MP)
 
@@ -94,14 +94,14 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
 4.  Create a startup script for JC2 with the following contents:
 
-    {: .file }
-    ~/startjc2.sh
-    :   ~~~
-        #!/bin/sh
+    {{< file "~/startjc2.sh" >}}
+#!/bin/sh
 
-        cd ./Steam/jc2mp-server
-        screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
-        ~~~
+cd ./Steam/jc2mp-server
+screen -S "Just Cause 2 Muliplayer Server" ./Jcmp-Server
+
+{{< /file >}}
+
 
     When run, the script will change directories to `~/Steam/jc2mp-server` and execute JC2 in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session.
 
@@ -115,8 +115,9 @@ From the SteamCMD guide, two additional steps are needed specifically for JC2.
 
         cd ~/ && ./startjc2.sh
 
-    {: .caution}
-    >From this point, do not press the **Control+C** keys while in the console unless you want to stop JC2.
+    {{< caution >}}
+From this point, do not press the **Control+C** keys while in the console unless you want to stop JC2.
+{{< /caution >}}
 
 2.  To detach from the screen session running the server console, press these two key combinations in succession:
 

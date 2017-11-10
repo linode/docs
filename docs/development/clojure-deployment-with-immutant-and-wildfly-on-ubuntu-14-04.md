@@ -3,13 +3,13 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
-keywords: 'clojure,luminus,leiningen,immutant,jvm,wildfly,jboss,oracle jdk 8'
+keywords: ["clojure", "luminus", "leiningen", "immutant", "jvm", "wildfly", "jboss", "oracle jdk 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
-modified: 'Monday, December 21st, 2015'
+aliases: ['applications/development/clojure-deployment-with-immutant-and-wildfly-on-ubuntu-14-04/']
+modified: 2015-12-21
 modified_by:
   name: Sergey Pariev
-published: 'Thursday, February 18th, 2016'
+published: 2016-02-18
 title: 'Clojure Deployment with Immutant and WildFly on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
@@ -37,12 +37,11 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
+In this guide `example.com` will be used as a domain name, and `linode-user` as a name of non-root user. Substitute your own FQDN and username accordingly.
+{{< /note >}}
 
 ## Install Oracle JDK 8
 
@@ -71,9 +70,10 @@ This guide will show how to deploy a Clojure application to WildFly - the popula
         Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
         Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
 
-{: .note}
->
->If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
+
+{{< note >}}
+If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
+{{< /note >}}
 
 ## Install Leiningen
 
@@ -109,9 +109,9 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
     ![Luminus application main page](/docs/assets/clj-luminus-main-page.png)
 
-    {: .note}
-    >
-    >Make sure port 3000 is open in firewall for this to work.
+    {{< note >}}
+Make sure port 3000 is open in firewall for this to work.
+{{< /note >}}
 
 3.  Stop the development server by pressing **Ctrl-C** in console.
 
@@ -163,34 +163,34 @@ Now, you will create a sample Clojure web application based on *Luminus* framewo
 
 2.  Create file `/etc/nginx/sites-available/wildfly` with the following content:
 
-    {: .file}
-    /etc/nginx/sites-available/wildfly
-    :   ~~~ conf
-        upstream http_backend {
-            server 127.0.0.1:8080;
-        }
+    {{< file "/etc/nginx/sites-available/wildfly" aconf >}}
+upstream http_backend {
+    server 127.0.0.1:8080;
+}
 
-        server {
-            listen 80;
-            server_name example.com;
+server {
+    listen 80;
+    server_name example.com;
 
-            location = /favicon.ico { access_log off; log_not_found off; }
+    location = /favicon.ico { access_log off; log_not_found off; }
 
 
-            location / {
-                proxy_pass http://http_backend;
+    location / {
+        proxy_pass http://http_backend;
 
-                proxy_http_version 1.1;
-                proxy_set_header Connection "";
+        proxy_http_version 1.1;
+        proxy_set_header Connection "";
 
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
 
-                access_log /var/log/nginx/wildfly.access.log;
-                error_log /var/log/nginx/wildfly.error.log;
-            }
-        }
-        ~~~
+        access_log /var/log/nginx/wildfly.access.log;
+        error_log /var/log/nginx/wildfly.error.log;
+    }
+}
+
+{{< /file >}}
+
 
     Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
@@ -209,26 +209,26 @@ To deploy Clojure application with WildFly you will need to install the Immutant
 
 1.  Open `project.clj` file in `clj-app` directory and add `[lein-immutant "2.1.0"]` to the `:plugins` section of configuration:
 
-    {: .file-excerpt}
-    /home/linode-user/clj-app/project.clj
-    :   ~~~ clj
-        :plugins [[lein-environ "1.0.1"]
-                  [lein-immutant "2.1.0"]]
-        ~~~
+    {{< file-excerpt "/home/linode-user/clj-app/project.clj" clj >}}
+:plugins [[lein-environ "1.0.1"]
+          [lein-immutant "2.1.0"]]
+
+{{< /file-excerpt >}}
+
 
 2.  In `project.clj` and after `:plugins`, add a new `:immutant` section with the following content :
 
-    {: .file-excerpt}
-    /home/linode-user/clj-app/project.clj
-    :   ~~~ clj
-        :immutant {
-            :war {
-                :name "ROOT"
-                :destination "/opt/wildfly/standalone/deployments"
-                :context-path "/"
-            }
-        }
-        ~~~
+    {{< file-excerpt "/home/linode-user/clj-app/project.clj" clj >}}
+:immutant {
+    :war {
+        :name "ROOT"
+        :destination "/opt/wildfly/standalone/deployments"
+        :context-path "/"
+    }
+}
+
+{{< /file-excerpt >}}
+
 
     This sets three parameters for Immutant installation:
 

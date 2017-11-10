@@ -3,10 +3,10 @@ author:
   name: Florent Houbart
   email: docs@Linode.com
 description: 'This Linode guide will show you how to install and set up a 3-node Hadoop cluster.'
-keywords: 'Hadoop, YARN, HDFS'
+keywords: ["Hadoop", " YARN", " HDFS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, October 13th, 2017'
-modified: Monday, October 16th, 2017
+published: 2017-10-13
+modified: 2017-10-16
 modified_by:
   name: Linode
 title: 'How to Install and Set Up a 3-Node Hadoop Cluster'
@@ -23,7 +23,7 @@ external_resources:
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-----
+---
 
 ## What is Hadoop?
 
@@ -47,9 +47,9 @@ Hadoop is an open-source Apache project that allows creation of parallel process
     -  **node1**: 192.0.2.2
     -  **node2**: 192.0.2.3
 
-      {: .note}
-      >
-      > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+      {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. All  commands in this guide are run with the *hadoop* user if not specified otherwise.
+{{< /note >}}
 
 ## Architecture of a Hadoop Cluster
 
@@ -71,27 +71,26 @@ A **master node** keeps knowledge about the distributed file system, like the `i
 
 For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
-  {: .file-excerpt }
-  /etc/hosts
-  :   ~~~ conf
-      192.0.2.1    node-master
-      192.0.2.2    node1
-      192.0.2.3    node2
-      ~~~~
+{{< file-excerpt "/etc/hosts" aconf >}}
+192.0.2.1    node-master
+192.0.2.2    node1
+192.0.2.3    node2
+
+{{< /file-excerpt >}}
 
 ### Distribute Authentication Key-pairs for the Hadoop User
 
 The master node will use an ssh-connection to connect to other nodes with key-pair authentication, to manage the cluster.
 
-1. Login to **node-master** as the `hadoop` user, and generate an ssh-key:
+1.  Login to **node-master** as the `hadoop` user, and generate an ssh-key:
 
-       ssh-keygen -b 4096
+        ssh-keygen -b 4096
 
-2. Copy the key to the other nodes. It's good practice to also copy the key to the **node-master** itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the `hadoop` user's password when asked. If you are prompted whether or not to add the key to known hosts, enter `yes`:
+2.  Copy the key to the other nodes. It's good practice to also copy the key to the **node-master** itself, so that you can also use it as a DataNode if needed. Type the following commands, and enter the `hadoop` user's password when asked. If you are prompted whether or not to add the key to known hosts, enter `yes`:
 
-       ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node-master
-       ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node1
-       ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node2
+        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node-master
+        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node1
+        ssh-copy-id -i $HOME/.ssh/id_rsa.pub hadoop@node2
 
 ### Download and Unpack Hadoop Binaries
 
@@ -104,13 +103,13 @@ Login to **node-master** as the `hadoop` user, download the Hadoop tarball from 
 
 ### Set Environment Variables
 
-1. Add Hadoop binaries to your PATH. Edit `/home/hadoop/.profile` and add the following line:
+1.  Add Hadoop binaries to your PATH. Edit `/home/hadoop/.profile` and add the following line:
 
-    {: .file-excerpt }
-    /home/hadoop/.profile
-    :   ~~~ shell
-        PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
-        ~~~
+    {{< file-excerpt "/home/hadoop/.profile" shell >}}
+PATH=/home/hadoop/hadoop/bin:/home/hadoop/hadoop/sbin:$PATH
+
+{{< /file-excerpt >}}
+
 
 ## Configure the Master Node
 
@@ -118,127 +117,126 @@ Configuration will be done on **node-master** and replicated to other nodes.
 
 ### Set JAVA_HOME
 
-1. Get your Java installation path. If you installed open-jdk from your package manager, you can get the path with the command:
+1.  Get your Java installation path. If you installed open-jdk from your package manager, you can get the path with the command:
 
-       update-alternatives --display java
+        update-alternatives --display java
 
     Take the value of the current link and remove the trailing `/bin/java`. For example on Debian, the link is `/usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java`, so `JAVA_HOME` should be `/usr/lib/jvm/java-8-openjdk-amd64/jre`.
 
     If you installed java from Oracle, `JAVA_HOME` is the path where you unzipped the java archive.
 
-2. Edit `~/hadoop/etc/hadoop/hadoop-env.sh` and replace this line:
+2.  Edit `~/hadoop/etc/hadoop/hadoop-env.sh` and replace this line:
 
-       export JAVA_HOME=${JAVA_HOME}
-
+        export JAVA_HOME=${JAVA_HOME}
 
     with your actual java installation path. For example on a Debian with open-jdk-8:
 
-    {: .file-excerpt }
-    ~/hadoop/etc/hadoop/hadoop-env.sh
-    :   ~~~ shell
-        export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
-        ~~~
+    {{< file-excerpt "~/hadoop/etc/hadoop/hadoop-env.sh" shell >}}
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64/jre
+
+{{< /file-excerpt >}}
+
 
 
 ### Set NameNode Location
 
 On each node update `~/hadoop/etc/hadoop/core-site.xml` you want to set the NameNode location to **node-master** on port `9000`:
 
-{: .file }
-~/hadoop/etc/hadoop/core-site.xml
-:   ~~~ xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
-        <configuration>
-            <property>
-                <name>fs.default.name</name>
-                <value>hdfs://node-master:9000</value>
-            </property>
-        </configuration>
-    ~~~
+{{< file "~/hadoop/etc/hadoop/core-site.xml" xml >}}
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+    <configuration>
+        <property>
+            <name>fs.default.name</name>
+            <value>hdfs://node-master:9000</value>
+        </property>
+    </configuration>
+
+{{< /file >}}
+
 
 ### Set path for HDFS
 
 Edit `hdfs-site.conf`:
 
-{: .file }
-~/hadoop/etc/hadoop/hdfs-site.xml
-:   ~~~ xml
-    <configuration>
-        <property>
-                <name>dfs.namenode.name.dir</name>
-                <value>/home/hadoop/data/nameNode</value>
-        </property>
+{{< file "~/hadoop/etc/hadoop/hdfs-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>dfs.namenode.name.dir</name>
+            <value>/home/hadoop/data/nameNode</value>
+    </property>
 
-        <property>
-                <name>dfs.datanode.data.dir</name>
-                <value>/home/hadoop/data/dataNode</value>
-        </property>
+    <property>
+            <name>dfs.datanode.data.dir</name>
+            <value>/home/hadoop/data/dataNode</value>
+    </property>
 
-        <property>
-                <name>dfs.replication</name>
-                <value>1</value>
-        </property>
-    </configuration>
-    ~~~
+    <property>
+            <name>dfs.replication</name>
+            <value>1</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 The last property, `dfs.replication`, indicates how many times data is replicated in the cluster. You can set `2` to have all the data duplicated on the two nodes. Don't enter a value higher than the actual number of slave nodes.
 
 ### Set YARN as Job Scheduler
 
-1. In `~/hadoop/etc/hadoop/`, rename `mapred-site.xml.template` to `mapred-site.xml`:
+1.  In `~/hadoop/etc/hadoop/`, rename `mapred-site.xml.template` to `mapred-site.xml`:
 
-       cd ~/hadoop/etc/hadoop
-       mv mapred-site.xml.template mapred-site.xml
+        cd ~/hadoop/etc/hadoop
+        mv mapred-site.xml.template mapred-site.xml
 
-2. Edit the file, setting yarn as the default framework for MapReduce operations:
+2.  Edit the file, setting yarn as the default framework for MapReduce operations:
 
-      {: .file }
-      ~/hadoop/etc/hadoop/mapred-site.xml
-      :   ~~~ xml
-          <configuration>
-              <property>
-                      <name>mapreduce.framework.name</name>
-                      <value>yarn</value>
-              </property>
-          </configuration>
-          ~~~
+    {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>mapreduce.framework.name</name>
+            <value>yarn</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 ### Configure YARN
 
 Edit `yarn-site.xml`:
 
-{: .file }
-~/hadoop/etc/hadoop/yarn-site.xml
-:   ~~~ xml
-    <configuration>
-        <property>
-                <name>yarn.acl.enable</name>
-                <value>0</value>
-        </property>
+{{< file "~/hadoop/etc/hadoop/yarn-site.xml" xml >}}
+<configuration>
+    <property>
+            <name>yarn.acl.enable</name>
+            <value>0</value>
+    </property>
 
-        <property>
-                <name>yarn.resourcemanager.hostname</name>
-                <value>node-master</value>
-        </property>
+    <property>
+            <name>yarn.resourcemanager.hostname</name>
+            <value>node-master</value>
+    </property>
 
-        <property>
-                <name>yarn.nodemanager.aux-services</name>
-                <value>mapreduce_shuffle</value>
-        </property>
-    </configuration>
-    ~~~
+    <property>
+            <name>yarn.nodemanager.aux-services</name>
+            <value>mapreduce_shuffle</value>
+    </property>
+</configuration>
+
+{{< /file >}}
+
 
 ### Configure Slaves
 
 The file `slaves` is used by startup scripts to start required daemons on all nodes. Edit `~/hadoop/etc/hadoop/slaves` to be:
 
-{: .file }
-~/hadoop/etc/hadoop/slaves
-:   ~~~ text
-    node1
-    node2
-    ~~~
+{{< file "~/hadoop/etc/hadoop/slaves" resource >}}
+node1
+node2
+
+{{< /file >}}
+
 
 ## Configure Memory Allocation
 
@@ -255,7 +253,7 @@ Both are run in *containers* on slave nodes. Each slave node runs a *NodeManager
 
 Four types of resource allocations need to be configured properly for the cluster to work. These are:
 
-1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node. 
+1. How much memory can be allocated for YARN containers on a single node. This limit should be higher than all the others; otherwise, container allocation will be rejected and applications will fail. However, it should not be the entire amount of RAM on the node.
 
     This value is configured in `yarn-site.xml` with `yarn.nodemanager.resource.memory-mb`.
 
@@ -279,7 +277,6 @@ The relationship between all those properties can be seen in the following figur
 
 For 2GB nodes, a working configuration may be:
 
-{: .table .table-striped}
 | Property | Value |
 | ---------------- |:-------------:|
 | yarn.nodemanager.resource.memory-mb     | 1536          |
@@ -290,82 +287,82 @@ For 2GB nodes, a working configuration may be:
 | mapreduce.reduce.memory.mb| 256 |
 
 
-1. Edit `/home/hadoop/hadoop/etc/hadoop/yarn-site.xml` and add the following lines:
+1.  Edit `/home/hadoop/hadoop/etc/hadoop/yarn-site.xml` and add the following lines:
 
-    {: .file }
-    ~/hadoop/etc/hadoop/yarn-site.xml
-    :   ~~~ xml
-        <property>
-                <name>yarn.nodemanager.resource.memory-mb</name>
-                <value>1536</value>
-        </property>
+    {{< file "~/hadoop/etc/hadoop/yarn-site.xml" xml >}}
+<property>
+        <name>yarn.nodemanager.resource.memory-mb</name>
+        <value>1536</value>
+</property>
 
-        <property>
-                <name>yarn.scheduler.maximum-allocation-mb</name>
-                <value>1536</value>
-        </property>
+<property>
+        <name>yarn.scheduler.maximum-allocation-mb</name>
+        <value>1536</value>
+</property>
 
-        <property>
-                <name>yarn.scheduler.minimum-allocation-mb</name>
-                <value>128</value>
-        </property>
+<property>
+        <name>yarn.scheduler.minimum-allocation-mb</name>
+        <value>128</value>
+</property>
 
-        <property>
-                <name>yarn.nodemanager.vmem-check-enabled</name>
-                <value>false</value>
-        </property>
-        ~~~
+<property>
+        <name>yarn.nodemanager.vmem-check-enabled</name>
+        <value>false</value>
+</property>
+
+{{< /file >}}
+
 
     The last property disables virtual-memory checking and can prevent containers from being allocated properly on JDK8.
 
 
-2. Edit `/home/hadoop/hadoop/etc/hadoop/mapred-site.xml` and add the following lines:
+2.  Edit `/home/hadoop/hadoop/etc/hadoop/mapred-site.xml` and add the following lines:
 
-    {: .file }
-    ~/hadoop/etc/hadoop/mapred-site.xml
-    :   ~~~ xml
-        <property>
-                <name>yarn.app.mapreduce.am.resource.mb</name>
-                <value>512</value>
-        </property>
+    {{< file "~/hadoop/etc/hadoop/mapred-site.xml" xml >}}
+<property>
+        <name>yarn.app.mapreduce.am.resource.mb</name>
+        <value>512</value>
+</property>
 
-        <property>
-                <name>mapreduce.map.memory.mb</name>
-                <value>256</value>
-        </property>
+<property>
+        <name>mapreduce.map.memory.mb</name>
+        <value>256</value>
+</property>
 
-        <property>
-                <name>mapreduce.reduce.memory.mb</name>
-                <value>256</value>
-        </property>
-        ~~~
+<property>
+        <name>mapreduce.reduce.memory.mb</name>
+        <value>256</value>
+</property>
+
+{{< /file >}}
+
 
 
 ## Duplicate Config Files on Each Node
 
-1. Copy the hadoop binaries to slave nodes:
+1.  Copy the hadoop binaries to slave nodes:
 
-       cd /home/hadoop/
-       scp hadoop-*.tar.gz node1:/home/hadoop
-       scp hadoop-*.tar.gz node2:/home/hadoop
+        cd /home/hadoop/
+        scp hadoop-*.tar.gz node1:/home/hadoop
+        scp hadoop-*.tar.gz node2:/home/hadoop
 
-2. Connect to **node1** via ssh. A password isn't required, thanks to the ssh keys copied above:
+2.  Connect to **node1** via ssh. A password isn't required, thanks to the ssh keys copied above:
 
-       ssh node1
+        ssh node1
 
-3. Unzip the binaries, rename the directory, and exit **node1** to get back on the node-master:
+3.  Unzip the binaries, rename the directory, and exit **node1** to get back on the node-master:
 
-       tar -xzf hadoop-2.8.1.tar.gz
-       mv hadoop-2.8.1 hadoop
-       exit
+        tar -xzf hadoop-2.8.1.tar.gz
+        mv hadoop-2.8.1 hadoop
+        exit
 
-4. Repeat steps 2 and 3 for **node2**.
+4.  Repeat steps 2 and 3 for **node2**.
 
-5. Copy the Hadoop configuration files to the slave nodes:
+5.  Copy the Hadoop configuration files to the slave nodes:
 
-       for node in node1 node2; do
-           scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
-       done
+        for node in node1 node2; do
+            scp ~/hadoop/etc/hadoop/* $node:/home/hadoop/hadoop/etc/hadoop/;
+        done
 
 ## Format HDFS
 
@@ -381,38 +378,38 @@ This section will walk through starting HDFS on NameNode and DataNodes, and moni
 
 ### Start and Stop HDFS
 
-1. Start the HDFS by running the following script from **node-master**:
+1.  Start the HDFS by running the following script from **node-master**:
 
-       start-dfs.sh
+        start-dfs.sh
 
     It'll start **NameNode** and **SecondaryNameNode** on node-master, and **DataNode** on **node1** and **node2**, according to the configuration in the `slaves` config file.
 
-2. Check that every process is running with the `jps` command on each node. You should get on **node-master** (PID will be different):
+2.  Check that every process is running with the `jps` command on each node. You should get on **node-master** (PID will be different):
 
-       21922 Jps
-       21603 NameNode
-       21787 SecondaryNameNode
+        21922 Jps
+        21603 NameNode
+        21787 SecondaryNameNode
 
     and on **node1** and **node2**:
 
-       19728 DataNode
-       19819 Jps
+        19728 DataNode
+        19819 Jps
 
-3. To stop HDFS on master and slave nodes, run the following command from **node-master**:
+3.  To stop HDFS on master and slave nodes, run the following command from **node-master**:
 
-       stop-dfs.sh
+        stop-dfs.sh
 
 ### Monitor your HDFS Cluster
 
-1. You can get useful information about running your HDFS cluster with the `hdfs dfsadmin` command. Try for example:
+1.  You can get useful information about running your HDFS cluster with the `hdfs dfsadmin` command. Try for example:
 
-       hdfs dfsadmin -report
+        hdfs dfsadmin -report
 
     This will print information (e.g., capacity and usage) for all running DataNodes. To get the description of all available commands, type:
 
-       hdfs dfsadmin -help
+        hdfs dfsadmin -help
 
-2. You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:50070 and you'll get a user-friendly monitoring console.
+2.  You can also automatically use the friendlier web user interface. Point your browser to http://node-master-IP:50070 and you'll get a user-friendly monitoring console.
 
 ![Screenshot of HDFS Web UI](/docs/assets/hadoop/hadoop-3-hdfs-webui-wide.png "Screenshot of HDFS Web UI")
 
@@ -424,32 +421,32 @@ Writing and reading to HDFS is done with command `hdfs dfs`. First, manually cre
 
 Let's use some textbooks from the [Gutenberg project](https://www.gutenberg.org/) as an example.
 
-1. Create a *books* directory in HDFS. The following command will create it in the home directory, `/user/hadoop/books`:
+1.  Create a *books* directory in HDFS. The following command will create it in the home directory, `/user/hadoop/books`:
 
-       hdfs dfs -mkdir books
+        hdfs dfs -mkdir books
 
-2. Grab a few books from the Gutenberg project:
+2.  Grab a few books from the Gutenberg project:
 
-       cd /home/hadoop
-       wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
-       wget -O holmes.txt https://www.gutenberg.org/ebooks/1661.txt.utf-8
-       wget -O frankenstein.txt https://www.gutenberg.org/ebooks/84.txt.utf-8
+        cd /home/hadoop
+        wget -O alice.txt https://www.gutenberg.org/files/11/11-0.txt
+        wget -O holmes.txt https://www.gutenberg.org/ebooks/1661.txt.utf-8
+        wget -O frankenstein.txt https://www.gutenberg.org/ebooks/84.txt.utf-8
 
-3. Put the three books through HDFS, in the `books`directory:
+3.  Put the three books through HDFS, in the `books`directory:
 
-       hdfs dfs -put alice.txt holmes.txt frankenstein.txt books
+        hdfs dfs -put alice.txt holmes.txt frankenstein.txt books
 
-4. List the contents of the `book` directory:
+4.  List the contents of the `book` directory:
 
-       hdfs dfs -ls books
+        hdfs dfs -ls books
 
-5. Move one of the books to the local filesystem: 
+5.  Move one of the books to the local filesystem:
 
-       hdfs dfs -get books/alice.txt
+        hdfs dfs -get books/alice.txt
 
-6. You can also directly print the books from HDFS:
+6.  You can also directly print the books from HDFS:
 
-       hdfs dfs -cat books/alice.txt
+        hdfs dfs -cat books/alice.txt
 
 There are many commands to manage your HDFS. For a complete list, you can look at the [Apache HDFS shell documentation](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html), or print help with:
 
@@ -461,29 +458,29 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
 ### Start and Stop YARN
 
-1. Start YARN with the script:
+1.  Start YARN with the script:
 
-       start-yarn.sh
+        start-yarn.sh
 
-2. Check that everything is running with the `jps` command. In addition to the previous HDFS daemon, you should see a **ResourceManager** on **node-master**, and a **NodeManager** on **node1** and **node2**.
+2.  Check that everything is running with the `jps` command. In addition to the previous HDFS daemon, you should see a **ResourceManager** on **node-master**, and a **NodeManager** on **node1** and **node2**.
 
-3. To stop YARN, run the following command on **node-master**:
+3.  To stop YARN, run the following command on **node-master**:
 
-       stop-yarn.sh
+        stop-yarn.sh
 
 ### Monitor YARN
 
-1. The `yarn` command provides utilities to manage your YARN cluster. You can also print a report of running nodes with the command:
+1.  The `yarn` command provides utilities to manage your YARN cluster. You can also print a report of running nodes with the command:
 
-       yarn node -list
+        yarn node -list
 
     Similarly, you can get a list of running applications with command:
 
-       yarn application -list
+        yarn application -list
 
     To get all available parameters of the `yarn` command, see [Apache YARN documentation](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YarnCommands.html).
 
-2. As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088 and browse the UI:
+2.  As with HDFS, YARN provides a friendlier web UI, started by default on port `8088` of the Resource Manager. Point your browser to http://node-master-IP:8088 and browse the UI:
 
     ![Screenshot of YARN Web UI](/docs/assets/hadoop/hadoop-4-yarn-webui-wide.png "Screenshot of YARN Web UI")
 
@@ -491,21 +488,21 @@ HDFS is a distributed storage system, it doesn't provide any services for runnin
 
 Yarn jobs are packaged into `jar` files and submitted to YARN for execution with the command `yarn jar`. The Hadoop installation package provides sample applications that can be run to test your cluster. You'll use them to run a word count on the three books previously uploaded to HDFS.
 
-1. Submit a job with the sample jar to YARN. On **node-master**, run:
+1.  Submit a job with the sample jar to YARN. On **node-master**, run:
 
-       yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount "books/*" output
+        yarn jar ~/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.1.jar wordcount "books/*" output
 
     The last argument is where the output of the job will be saved - in HDFS.
 
-2. After the job is finished, you can get the result by querying HDFS with `hdfs dfs -ls output`. In case of a success, the output will resemble:
+2.  After the job is finished, you can get the result by querying HDFS with `hdfs dfs -ls output`. In case of a success, the output will resemble:
 
-       Found 2 items
-       -rw-r--r--   1 hadoop supergroup          0 2017-10-11 14:09 output/_SUCCESS
-       -rw-r--r--   1 hadoop supergroup     269158 2017-10-11 14:09 output/part-r-00000
+        Found 2 items
+        -rw-r--r--   1 hadoop supergroup          0 2017-10-11 14:09 output/_SUCCESS
+        -rw-r--r--   1 hadoop supergroup     269158 2017-10-11 14:09 output/part-r-00000
 
-3. Print the result with:
+3.  Print the result with:
 
-       hdfs dfs -cat output/part-r-00000
+        hdfs dfs -cat output/part-r-00000
 
 ## Next Steps
 
@@ -513,3 +510,4 @@ Now that you have a YARN cluster up and running, you can:
 
 - Learn how to code your own YARN jobs with [Apache documentation](https://hadoop.apache.org/docs/stable/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html).
 - Install Spark on top on your YARN cluster with [Linode Spark guide](/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster).
+

@@ -5,8 +5,8 @@ author:
 description: "Let's Encrypt is an SSL certificate authority managed by the Internet Security Research Group. It utilizes the Automated Certificate Management Environment to automatically deploy browser-trusted SSL certificates to anyone for free."
 keywords: "ACME,HTTPS,Let's Encrypt,SSL,SSL certificates"
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, February 25th, 2016'
-modified: 'Thursday, September 29th, 2016'
+published: 2016-02-25
+modified: 2016-09-29
 modified_by:
   name: 'Linode'
 title: "Install Let's Encrypt to Create SSL Certificates"
@@ -47,9 +47,9 @@ This tutorial will cover the following:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+    {{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Download and Install Let's Encrypt
 
@@ -79,9 +79,9 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
         sudo -H ./letsencrypt-auto certonly --standalone -d example.com -d www.example.com
 
-    {: .note}
-    >
-    > Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
+    {{< note >}}
+Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires its own certificate.
+{{< /note >}}
 
 2.  Specify an administrative email address. This will allow you to regain control of a lost certificate and receive urgent security notices if necessary. Press **TAB** followed by **ENTER** or **RETURN** to save.
 
@@ -93,24 +93,24 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
 4.  If all goes well, a message similar to the one below will appear. Its appearance means Let's Encrypt has approved and issued your certificates.
 
-    ~~~
-    IMPORTANT NOTES:
-    - If you lose your account credentials, you can recover them through
-      e-mails sent to somebody@example.com.
-    - Congratulations! Your certificate and chain have been saved at
-      /etc/letsencrypt/live/example.com/fullchain.pem. Your
-      cert will expire on 2016-03-31. To obtain a new version of the
-      certificate in the future, simply run Let's Encrypt again.
-    - Your account credentials have been saved in your Let's Encrypt
-      configuration directory at /etc/letsencrypt. You should make a
-      secure backup of this folder now. This configuration directory will
-      also contain certificates and private keys obtained by Let's
-      Encrypt, so making regular backups of this folder is ideal.
-    - If you like Let's Encrypt, please consider supporting our work by:
+    {{< output >}}
+IMPORTANT NOTES:
+- If you lose your account credentials, you can recover them through
+  e-mails sent to somebody@example.com.
+- Congratulations! Your certificate and chain have been saved at
+  /etc/letsencrypt/live/example.com/fullchain.pem. Your
+  cert will expire on 2016-03-31. To obtain a new version of the
+  certificate in the future, simply run Let's Encrypt again.
+- Your account credentials have been saved in your Let's Encrypt
+  configuration directory at /etc/letsencrypt. You should make a
+  secure backup of this folder now. This configuration directory will
+  also contain certificates and private keys obtained by Let's
+  Encrypt, so making regular backups of this folder is ideal.
+- If you like Let's Encrypt, please consider supporting our work by
 
-      Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
-      Donating to EFF:                    https://eff.org/donate-le
-    ~~~
+  Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+  Donating to EFF:                    https://eff.org/donate-le
+{{< /output >}}
 
 ### Let's Encrypt Certificate Directory Structure
 
@@ -164,7 +164,7 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
 3.  After a few moments, a confirmation similar to the one below should appear:
 
-    ~~~
+    {{< output >}}
     IMPORTANT NOTES:
     - Congratulations! Your certificate and chain have been saved at
       /etc/letsencrypt/live/example.com/fullchain.pem. Your
@@ -174,13 +174,13 @@ Let's Encrypt automatically performs Domain Validation (DV) using a series of *c
 
       Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
       Donating to EFF:                    https://eff.org/donate-le
-    ~~~
+    {{< /output >}}
 
     Let's Encrypt has refreshed the lifespan of your certificates; in this example, March 31st, 2016 is the new expiration date.
 
-{: .note}
->
-> Let's Encrypt certificates have a 90-day lifespan before they expire. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
+{{< note >}}
+Let's Encrypt certificates have a 90-day lifespan before they expire. [According to Let's Encrypt](https://letsencrypt.org/2015/11/09/why-90-days.html), this encourages automation and minimizes damage from key compromises. You can renew your certificates anytime during their lifespan.
+{{< /note >}}
 
 ### Automatically Renew SSL Certificates (Optional)
 
@@ -198,14 +198,15 @@ We also recommend automating your certificate renewal since it can be easy to lo
 
     The above settings will be effective in most cases, but for more information about available cron job options, refer to the [Ubuntu Community Cron How-to](https://help.ubuntu.com/community/CronHowto) or the [CentOS Cron Documentation](https://www.centos.org/docs/5/html/5.2/Deployment_Guide/s2-autotasks-cron-configuring.html).
 
-    {: .note }
-    > The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
+    {{< note >}}
+The automatic renewal process requires access to port `443`, which would most likely be bound to your web server. You can configure your cron tasks to temporarily stop the web server, or use one of several methods documented [here](https://letsencrypt.readthedocs.io/en/latest/using.html#webroot).
+{{< /note >}}
 
 2.  Execute your modified command to add the cron job to your Linode.
 
-{: .caution}
->
-> Once Let's Encrypt supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
+{{< caution >}}
+Once Let's Encrypt supports auto-renewal natively, open the `/etc/crontab` file and manually remove this entry to avoid future renewal conflicts.
+{{< /caution >}}
 
 ### Update Let's Encrypt
 

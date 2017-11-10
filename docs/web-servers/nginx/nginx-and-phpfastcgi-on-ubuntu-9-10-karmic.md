@@ -10,6 +10,7 @@ modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
 published: 'Monday, December 14th, 2009'
+expiryDate: 2013-05-17
 title: 'Nginx and PHP-FastCGI on Ubuntu 9.10 (Karmic)'
 deprecated: true
 ---

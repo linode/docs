@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A step-by-step guide to install and configure a Redis server and set up distributed data stores using master/slave replication on CentOS 7.'
-keywords: 'redis, centos 7, redis cluster, centos'
-alias: ['databases/redis/deploy-redis-on-centos-7/']
+keywords: ["redis", " centos 7", " redis cluster", " centos"]
+aliases: ['databases/redis/deploy-redis-on-centos-7/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, February 20th, 2017
+modified: 2017-02-20
 modified_by:
   name: Nick Brewer
-published: Wednesday, April 20th, 2016
+published: 2016-04-20
 title: 'Install and Configure Redis on CentOS 7'
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
@@ -34,11 +34,11 @@ This document provides both instructions for deploying the Redis server, and an 
 
         sudo yum update
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
+{{< /note >}}
 
 ## Install Redis
 
@@ -88,12 +88,12 @@ Because the Point-in-time snapshot persistence is enabled by default, you only n
 
 1.  Make sure that the following values are set for the `appendonly` and `appendfsync` settings in `redis.conf`:
 
-    {: .file-excerpt }
-    /etc/redis.conf
-    :   ~~~
-        appendonly yes
-        appendfsync everysec
-        ~~~
+    {{< file-excerpt "/etc/redis.conf" >}}
+appendonly yes
+appendfsync everysec
+
+{{< /file-excerpt >}}
+
 
 2.  Restart Redis:
 
@@ -108,11 +108,11 @@ To improve Redis performance, set the Linux kernel overcommit memory setting to 
 
 This immediately changes the overcommit memory setting, but the change will not persist across reboots. To make it permanent, add `vm.overcommit_memory = 1` to `/etc/sysctl.conf`:
 
-{: .file-excerpt }
-/etc/sysctl.conf
-:   ~~~
-    vm.overcommit_memory = 1
-    ~~~
+{{< file-excerpt "/etc/sysctl.conf" >}}
+vm.overcommit_memory = 1
+
+{{< /file-excerpt >}}
+
 
 ### Additional Swap
 
@@ -132,9 +132,9 @@ The following steps will guide you through master/slave replication, with the sl
 
 For this section, you will use two Linodes, a master and a slave.
 
-{: .note}
->
-> To communicate over the private network, your master and slave Linodes must reside in the same datacenter.
+{{< note >}}
+To communicate over the private network, your master and slave Linodes must reside in the same datacenter.
+{{< /note >}}
 
 ###  Prepare Your Linodes
 
@@ -146,11 +146,11 @@ For this section, you will use two Linodes, a master and a slave.
 
 1.  Configure the master Redis instance to listen on a private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the master Linode's private IP address:
 
-    {: .file-excerpt }
-    /etc/redis.conf
-    :   ~~~
-        bind 127.0.0.1 192.0.2.100
-        ~~~
+    {{< file-excerpt "/etc/redis.conf" >}}
+bind 127.0.0.1 192.0.2.100
+
+{{< /file-excerpt >}}
+
 
 2.  Restart Redis to apply the changes:
 
@@ -160,11 +160,11 @@ For this section, you will use two Linodes, a master and a slave.
 
 1.  Configure a slave instance by adding the `slaveof` directive into `redis.conf` to setup the replication. Again replace `192.0.2.100` with the master Linode's private IP address:
 
-    {: .file-excerpt }
-    /etc/redis.conf
-    :   ~~~
-        slaveof 192.0.2.100 6379
-        ~~~
+    {{< file-excerpt "/etc/redis.conf" >}}
+slaveof 192.0.2.100 6379
+
+{{< /file-excerpt >}}
+
 
     The `slaveof` directive takes two arguments: the first is the IP address of the master node; the second is the Redis port specified in the master's configuration.
 
@@ -208,11 +208,11 @@ For an added layer of security, use password authentication to secure the connec
 
 1.  On your master Linode, uncomment the `requirepass` line in your Redis configuration and replace `master_password` with a secure password:
 
-    {: .file-excerpt }
-    /etc/redis.conf
-    :   ~~~
-        requirepass master_password
-        ~~~
+    {{< file-excerpt "/etc/redis.conf" >}}
+requirepass master_password
+
+{{< /file-excerpt >}}
+
 
 2.  Save your changes, and apply them by restarting Redis on the master Linode:
 
@@ -220,12 +220,12 @@ For an added layer of security, use password authentication to secure the connec
 
 3.  On your slave Linode, add the master password to your Redis configuration under `masterpass`, and then create a unique password for the slave Linode with `requirepass`:
 
-    {: .file-excerpt }
-    /etc/redis.conf
-    :   ~~~
-        masterpass  master_password
-        requirepass slave_password
-        ~~~
+    {{< file-excerpt "/etc/redis.conf" >}}
+masterpass  master_password
+requirepass slave_password
+
+{{< /file-excerpt >}}
+
 
     Replace `master_password` with the password you configured on your master, and replace `slave_password` with the password to use for your slave Linode.
 

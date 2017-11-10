@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Bazaar version management system.'
-keywords: 'bzr,bazaar,vcs,scm,dcvs'
+keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
-modified: Monday, May 23rd, 2011
+aliases: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
+modified: 2011-05-23
 modified_by:
   name: Linode
-published: 'Monday, January 18th, 2010'
+published: 2010-01-18
 title: Manage Distributed Source Branches with Bazaar
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
@@ -20,7 +20,7 @@ Bazaar is a distributed version control system similar to [git](/docs/linux-tool
 
 Like all distributed version control systems, Bazaar can work "offline," and does not require a connection to a central repository to perform commits, consult previous versions of the history, or perform other operations on the local "branch" of project. Publishing "branches" is also straightforward.
 
-This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Installing Bazaar
 

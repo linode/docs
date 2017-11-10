@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'An introduction to the principal concepts and use of the users and groups system in Linux systems.'
-keywords: 'users,permissions,access control lists,chmod,chown,linux'
+keywords: ["users", "permissions", "access control lists", "chmod", "chown", "linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['docs/using-linux/users-and-groups/']
-modified: Thursday, March 23rd, 2017
+aliases: ['docs/using-linux/users-and-groups/']
+modified: 2017-03-23
 modified_by:
   name: Linode
-published: 'Monday, August 31st, 2009'
+published: 2009-08-31
 title: Linux Users and Groups
 external_resources:
  - '[User Account and Group Management @ UWISC''s Center for Computer Aided Engineering](http://www.cae.wisc.edu/linaccounts)'
@@ -53,15 +53,12 @@ To create a new standard user, use the `useradd` command. The syntax is as follo
 
 The useradd command utilizes a variety of variables, some of which are shown in the table below:
 
-{: .table .table-striped}
 | Option          | Description                                                        | Example                                    |
 |:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
 | `-d <home_dir>` | home\_dir will be used as the value for the user's login directory | `useradd <name> -d /home/<user's home>`    |
 | `-e <date>`     | the date when the account will expire                              | `user add <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
-|:----------------|:-------------------------------------------------------------------|:-------------------------------------------|
-
 You will need to set a password for the new user by using the `passwd` command. Note, you will need root privileges to change a user password. The syntax is as follows:
 
     passwd <username>
@@ -195,15 +192,14 @@ The first column with the ten letters and dashes shows the permissions of the fi
     ``Jan  9 10:11`` is the date/time of last access
     ``documents`` is the directory
 
- {: .note }
->
-> Since a directory itself is a file, any directory will always show `4096` as it's size. This does not reflect the size of the contents of the directory.
+ {{< note >}}
+Since a directory itself is a file, any directory will always show `4096` as it's size. This does not reflect the size of the contents of the directory.
+{{< /note >}}
 
 ### Chmod Command
 
 The command `chmod` is short for change mode. Chmod is used to change permissions on files and directories. The command `chmod` may be used with either letters or numbers (also known as octal) to set the permissions. The letters used with chmod are in the table below:
 
-{: .table .table-striped }
 | Letter | Permission                                                   |
 |:-------|:-------------------------------------------------------------|
 | r      | Read                                                         |
@@ -215,8 +211,6 @@ The command `chmod` is short for change mode. Chmod is used to change permission
 | u      | Current permissions the file has for owner                   |
 | g      | Current permissions the file has for users in the same group |
 | o      | Current permissions the file has for others not in the group |
-|:-------|:-------------------------------------------------------------|
-
 It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user, the next three are for the group, and the last three are for others. The example **drwxrw-r--** is broken down as follows:
 
 > **d** is a directory
@@ -300,8 +294,7 @@ To change the ownership of a directory and all the files contained inside, use t
 
     chown -R cjones:marketing /srv/smb/leadership/
 
-Leveraging Users and Groups
----------------------------
+# Leveraging Users and Groups
 
 In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 

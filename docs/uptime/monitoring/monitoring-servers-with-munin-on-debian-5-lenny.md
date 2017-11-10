@@ -11,6 +11,7 @@ modified: Monday, October 8th, 2012
 modified_by:
   name: Linode
 published: 'Thursday, January 7th, 2010'
+expiryDate: 2013-10-08
 title: 'Monitoring Servers with Munin on Debian 5 (Lenny)'
 ---
 

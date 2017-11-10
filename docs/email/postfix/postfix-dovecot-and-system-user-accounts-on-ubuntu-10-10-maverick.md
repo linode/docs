@@ -10,6 +10,7 @@ modified: Monday, October 8th, 2012
 modified_by:
   name: Linode
 published: 'Tuesday, December 7th, 2010'
+expiryDate: 2014-10-08
 title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.10 (Maverick)'
 deprecated: true
 ---

@@ -3,12 +3,12 @@ author:
   name: Phil Zona
   email: docs@linode.com
 description: 'Use OATH to enable two-factor authentication for SSH connections.'
-keywords: 'two factor authentication,ssh,TOTPs'
+keywords: ["two factor authentication", "ssh", "TOTPs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Friday, November 18th, 2016'
+modified: 2016-11-18
 modified_by:
   name: Phil Zona
-published: 'Friday, November 18th, 2016'
+published: 2016-11-18
 title: Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7
 external_resources:
  - '[One-Time Passwords](https://en.wikipedia.org/wiki/One-time_password)'
@@ -37,9 +37,9 @@ This guide will explain how to install the necessary software, configure your sy
 
         sudo yum update && sudo yum upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install OATH Packages
 
@@ -65,8 +65,9 @@ Now that the packages have been installed, you'll use them to generate keys. Sof
 
 The following instructions will allow you to specify a user for whom you'd like to generate a password. If you are configuring two-factor authentication for multiple users, follow these steps for each user.
 
-{: .note}
-> Be sure to have your phone or mobile device ready, since this is where you'll add the password to your authenticator app. If you haven't downloaded an authenticator app, do so before proceeding.
+{{< note >}}
+Be sure to have your phone or mobile device ready, since this is where you'll add the password to your authenticator app. If you haven't downloaded an authenticator app, do so before proceeding.
+{{< /note >}}
 
 1.  Generate a key:
 
@@ -96,50 +97,53 @@ Congratulations! You have finished generating your key and adding it to your cli
 
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
-{: .caution}
-> It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+{{< caution >}}
+It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+{{< /caution >}}
 
 1.  Open `/etc/pam.d/sshd` with sudo privileges, and add the line from those below that references `pam_oath.so` (it has been marked by a comment here for clarity, but you can omit everything following the `#`). The surrounding lines are included for context, but they should not be modified. The line **must** be added between the lines specified here:
 
-    {: .file-excerpt}
-    /etc/pam.d/sshd
-    :   ~~~
-        auth   	required    pam_sepermit.so
-        auth    substack    password-auth
-        auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
-        auth    include     postlogin
-        ~~~
+    {{< file-excerpt "/etc/pam.d/sshd" >}}
+auth   	required    pam_sepermit.so
+auth    substack    password-auth
+auth    required    pam_oath.so usersfile=/etc/liboath/users.oath window=10 digits=6 #Add this line
+auth    include     postlogin
+
+{{< /file-excerpt >}}
+
 
     This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a verification code length of six digits.
 
-    {: .note}
-    > If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the `password-auth` line to provide you with more information when your authentication fails:
-    >
-    > {: .file-excerpt}
-    > /etc/pam.d/sshd
-    > :   ~~~
-    >     auth    required    password-auth debug=1
-    >     ~~~
+    {{< note >}}
+If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the `password-auth` line to provide you with more information when your authentication fails:
+
+{{< file-excerpt "> /etc/pam.d/sshd" >}}
+auth    required    password-auth debug=1
+{{< /note >}}
+
+{{< /file-excerpt >}}
+
 
 2.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:
 
-    {: .file-excerpt}
-    /etc/ssh/sshd_config
-    :   ~~~
-        # This line already exists in the file and should be changed from 'no' to 'yes'
-        ChallengeResponseAuthentication yes
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+# This line already exists in the file and should be changed from 'no' to 'yes'
+ChallengeResponseAuthentication yes
 
-        ...
+...
 
-        # These lines should be added to the end of the file
-        Match User example-user
-            AuthenticationMethods keyboard-interactive
-        ~~~
+# These lines should be added to the end of the file
+Match User example-user
+    AuthenticationMethods keyboard-interactive
+
+{{< /file-excerpt >}}
+
 
     If you created TOTPs for multiple users and you'd like to have them all use two-factor authentication, create additional `Match User` blocks for each user, duplicating the format shown above.
 
-    {: .note}
-    > If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
+    {{< note >}}
+If you want to enforce two-factor authentication globally, you can use the `AuthenticationMethods` directive by itself, outside of a `Match User` block. However, this should not be done until two-factor credentials have been provided to all users.
+{{< /note >}}
 
 3.  Restart the SSH daemon to apply these changes:
 
@@ -149,41 +153,44 @@ Congratulations! Two-factor authentication is now enabled. When you connect to y
 
 ![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
-{: .note}
->If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
+{{< note >}}
+If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
+{{< /note >}}
 
 ## Combine Two-Factor and Public Key Authentication
 
 This section is optional. If you'd like to use [public key authentication](/docs/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, follow these steps:
 
-{: .note}
-> Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
+{{< note >}}
+Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
+{{< /note >}}
 
 1.  Set `PasswordAuthentication` to `no` and modify the `AuthenticationMethods` line in `/etc/ssh/sshd_config`:
 
-    {: .file-excerpt}
-    /etc/ssh/sshd_config
-    :   ~~~
-        PasswordAuthentication no
-        ...
-        Match User example-user
-            AuthenticationMethods publickey,keyboard-interactive
-        ~~~
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+PasswordAuthentication no
+...
+Match User example-user
+    AuthenticationMethods publickey,keyboard-interactive
+
+{{< /file-excerpt >}}
+
 
     Configure this setting in the `AuthenticationMethods` directive for each user as appropriate. When any of these users log in, they will need to provide their SSH key and they will be authenticated via TOTP, as well. Be sure to restart your SSH daemon to apply these changes.
 
 2.  Next, you'll need to make changes to your PAM configuration. Comment out or omit the following line in your `/etc/pam.d/sshd` file:
 
-    {: .file-excerpt}
-    /etc/pam.d/sshd
-    :   ~~~
-        # auth       substack     password-auth
-        ~~~
+    {{< file-excerpt "/etc/pam.d/sshd" >}}
+# auth       substack     password-auth
+
+{{< /file-excerpt >}}
+
 
 That's it! You should now be able to log in using your SSH key as the first method of authentication and your verification code as the second. To test your configuration, log out and try to log in again via SSH. You should be asked for your 6-digit verification code only, since the key authentication will not produce a prompt.
 
-{: .caution}
-> If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
+{{< caution >}}
+If you or a user on your system use this method, be sure that the SSH key and authenticator app are on different devices. This way, if one device is lost or compromised, your credentials will still be separate and the security of two-factor authentication will remain intact.
+{{< /caution >}}
 
 ## Next Steps
 

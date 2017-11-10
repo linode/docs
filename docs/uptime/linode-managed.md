@@ -1,1 +1,0 @@
-../platform/linode-managed.md

@@ -3,12 +3,12 @@ author:
     name: Edward Angert
     email: docs@linode.com
 description: 'This guide will show you how to update and secure an installation of Drupal 8 CMS on your Linode running Ubuntu or Debian.'
-keywords: 'drupal,cms,apache,php,content management system,drupal 8,update'
+keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8", "update"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, May 11, 2016'
+modified: 2016-05-11
 modified_by:
     name: Edward Angert
-published: 'Wednesday, May 11, 2016'
+published: 2016-05-11
 title: Update and Secure Drupal 8 on Ubuntu or Debian
 ---
 
@@ -34,11 +34,11 @@ Drupal 8 is the latest version of the popular [Drupal](https://www.drupal.org/) 
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
-> - This guide will use `sudo` wherever possible.
-> - You may need additional firewall rules for your specific application.
-> - Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
+{{< note >}}
+- This guide will use `sudo` wherever possible.
+- You may need additional firewall rules for your specific application.
+- Replace each instance of `example.com` and `user` with the names appropriate to your site, and `203.0.113.52` with your Linode's IP address or domain name.
+{{< /note >}}
 
 ## Create Backups
 
@@ -52,8 +52,9 @@ Back up existing files and move the archive into the backups directory. This pro
 
 1.  Log in to your Drupal site and navigate to the Admin Toolbar. Click **Reports**, then **Available updates**.
 
-    {: .note}
-    > If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
+    {{< note >}}
+If **Available updates** is not listed, enable the Update Manager plugin under **Extend**.
+{{< /note >}}
 
 2.  Right click "Download" to the right of the desired version and copy the link address:
 
@@ -93,14 +94,13 @@ Back up existing files and move the archive into the backups directory. This pro
 
 3.  From a browser on your local machine, navigate to `example.com/update.php`:
 
-    {: .note}
-    >If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
-    >
-    >~~~
-    >chgrp www-data /var/www/html/example.com/public_html/sites/default/files
-    >chmod 775 /var/www/html/example.com/public_html/sites/default/files
-    >chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
-    >~~~
+    {{< note >}}
+If `update.php` does not load or returns a 403 Forbidden error, you can try to change the ownership and permissions of the newly expanded files:
+
+    chgrp www-data /var/www/html/example.com/public_html/sites/default/files
+    chmod 775 /var/www/html/example.com/public_html/sites/default/files
+    chmod 757 /var/www/html/example.com/public_html/sites/default/settings.php
+{{< /note >}}
 
 4.  Follow the prompts to continue the update.
 
@@ -118,20 +118,21 @@ Back up existing files and move the archive into the backups directory. This pro
 
 1.  Increase password security by adding the following to `services.yml`:
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/sites/default/services.yml
-    : ~~~ yml
-      # Increase the number of password hash iterations. Minimum = 7; Maximum = 30; Default = 16
-        services:
-        password:
-        class: Drupal\Core\Password\PhpassHashedPassword
-        arguments: [19]
-      ~~~
+    {{< file-excerpt "/var/www/html/example.com/public_html/sites/default/services.yml" yaml >}}
+# Increase the number of password hash iterations. Minimum = 7; Maximum = 30; Default = 16
+  services:
+  password:
+  class: Drupal\Core\Password\PhpassHashedPassword
+  arguments: [19]
 
-      {: .note}
-      > You may need to add write permission to this file before you can edit it:
-      >
-      >     chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml
+{{< /file-excerpt >}}
+
+
+      {{< note >}}
+You may need to add write permission to this file before you can edit it:
+
+chmod u+w /var/www/html/example.com/public_html/sites/default/services.yml
+{{< /note >}}
 
 2. Consider installing additional security modules from the [Drupal Project Module](https://www.drupal.org/project/project_module):
     * [Secure Login](https://www.drupal.org/project/securelogin) enforces secure authenticated session cookies

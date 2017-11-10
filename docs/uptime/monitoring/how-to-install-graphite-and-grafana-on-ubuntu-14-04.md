@@ -3,13 +3,13 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This guide provides an introduction to the installation and basic setup of Graphite together with Grafana on Ubuntu 14.04.'
-keywords: 'graphite,grafana,monitor,monitoring,monitoring tool,analytics'
-alias: ['deploy-graphite-with-grafana-on-ubuntu-14-04/','uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/']
+keywords: ["graphite", "grafana", "monitor", "monitoring", "monitoring tool", "analytics"]
+aliases: ['deploy-graphite-with-grafana-on-ubuntu-14-04/','uptime/monitoring/deploy-graphite-with-grafana-on-ubuntu-14-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, December 2nd, 2015'
+modified: 2015-12-02
 modified_by:
   name: Sergey Pariev
-published: 'Wednesday, December 2nd, 2015'
+published: 2015-12-02
 title: 'Deploy Graphite with Grafana on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
@@ -55,21 +55,22 @@ external_resources:
 
 	The retention times given below will save data every 5 seconds for 3 hours, and a separate set of data from that aggregated sample every 1 minute for 1 day.
 
-	{: .file-excerpt}
-	/etc/carbon/storage-schemas.conf
-	:   ~~~ conf
-		[carbon]
-		pattern = ^carbon\.
-		retentions = 60:90d
+	{{< file-excerpt "/etc/carbon/storage-schemas.conf" aconf >}}
+[carbon]
+pattern = ^carbon\.
+retentions = 60:90d
 
-		[test]
-		pattern = ^test\.
-		retentions = 5s:3h,1m:1d
+[test]
+pattern = ^test\.
+retentions = 5s:3h,1m:1d
 
-		[default_1min_for_1day]
-		pattern = .*
-		retentions = 60s:1d
-    	~~~
+[default_1min_for_1day]
+pattern = .*
+retentions = 60s:1d
+
+
+{{< /file-excerpt >}}
+
 
 	For more information on how to configure Carbon storage, see the section [storage-schemas.conf](http://graphite.readthedocs.org/en/latest/config-carbon.html#storage-schemas-conf) in Graphite's documentation.
 
@@ -81,11 +82,12 @@ external_resources:
 
 3.  Enable Carbon's cache to run on boot:
 
-	{: .file-excerpt}
-	/etc/default/graphite-carbon
-	:   ~~~ conf
-		CARBON_CACHE_ENABLED=true
-    	~~~
+	{{< file-excerpt "/etc/default/graphite-carbon" aconf >}}
+CARBON_CACHE_ENABLED=true
+
+
+{{< /file-excerpt >}}
+
 
 4. Start the Carbon cache service:
 
@@ -116,30 +118,32 @@ external_resources:
 
 1.  Update Graphite's `DATABASES` dictionary definition with the settings for the PostgreSQL database created earlier:
 
-	{: .file-excerpt}
-	/etc/graphite/local_settings.py
-	:   ~~~ py
-	DATABASES = {
-		'default': {
-			'NAME': 'graphite',
-			'ENGINE': 'django.db.backends.postgresql_psycopg2',
-			'USER': 'graphite',
-			'PASSWORD': 'graphiteuserpassword',
-			'HOST': '127.0.0.1',
-			'PORT': ''
-			}
+	{{< file-excerpt "/etc/graphite/local_settings.py" py >}}
+DATABASES = {
+	'default': {
+		'NAME': 'graphite',
+		'ENGINE': 'django.db.backends.postgresql_psycopg2',
+		'USER': 'graphite',
+		'PASSWORD': 'graphiteuserpassword',
+		'HOST': '127.0.0.1',
+		'PORT': ''
 		}
-    	~~~
+	}
+
+
+{{< /file-excerpt >}}
+
 
 2.	Also add the following lines to the end of the file:
 
-	{: .file-excerpt}
-	/etc/graphite/local_settings.py
-	:   ~~~ py
-		USE_REMOTE_USER_AUTHENTICATION = True
-		TIME_ZONE = 'Your/Timezone'
-		SECRET_KEY = 'somelonganduniquesecretstring'
-    	~~~
+	{{< file-excerpt "/etc/graphite/local_settings.py" py >}}
+USE_REMOTE_USER_AUTHENTICATION = True
+TIME_ZONE = 'Your/Timezone'
+SECRET_KEY = 'somelonganduniquesecretstring'
+
+
+{{< /file-excerpt >}}
+
 
 	*   TIME_ZONE is your Linode's time zone, which will be used in graphs. For possible values, run `timedatectl` or see the *TZ* column in [Wikipedia's timezone database](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
@@ -160,20 +164,22 @@ external_resources:
 
 2.  Change Graphite's port from 80 to 8080 (port 80 will be used for Grafana later).
 
-	{: .file}
-	/etc/apache2/sites-available/apache2-graphite.conf
-	:   ~~~ conf
-		<VirtualHost *:8080>
-    	~~~
+	{{< file "/etc/apache2/sites-available/apache2-graphite.conf" aconf >}}
+<VirtualHost *:8080>
+
+
+{{< /file >}}
+
 
 3.  Make sure Apache is listening on port 8080. Add `Listen 8080` after `Listen 80` in `ports.conf`:
 
-	{: .file-excerpt}
-	/etc/apache2/ports.conf
-	:   ~~~ conf
-		Listen 80
-		Listen 8080
-    	~~~
+	{{< file-excerpt "/etc/apache2/ports.conf" aconf >}}
+Listen 80
+Listen 8080
+
+
+{{< /file-excerpt >}}
+
 
 4.  Disable the default Apache site to avoid conflicts:
 
@@ -217,36 +223,38 @@ external_resources:
 
 4.  Configure Grafana to use the PostgreSQL database created earlier:
 
-	{: .file-excerpt}
-	/etc/grafana/grafana.ini
-	:   ~~~ conf
-		[database]
-    	# Either "mysql", "postgres" or "sqlite3", it's your choice
-		type = postgres
-		host = 127.0.0.1:5432
-		name = grafana
-		user = graphite
-		password = graphiteuserpassword
-    	~~~
+	{{< file-excerpt "/etc/grafana/grafana.ini" aconf >}}
+[database]
+  	# Either "mysql", "postgres" or "sqlite3", it's your choice
+type = postgres
+host = 127.0.0.1:5432
+name = grafana
+user = graphite
+password = graphiteuserpassword
+
+
+{{< /file-excerpt >}}
+
 
 5.  Also in `/etc/grafana/grafana.ini`, configure the `domain` and `root_url`, and set a strong admin password and secret key:
 
-	{: .file-excerpt}
-	/etc/grafana/grafana.ini
-	:   ~~~ conf
-		[server]
-    	protocol = http
-		http_addr = 127.0.0.1
-		http_port = 3000
-		domain = example.com
-		enforce_domain = true
-		root_url = %(protocol)s://%(domain)s/
+	{{< file-excerpt "/etc/grafana/grafana.ini" aconf >}}
+[server]
+  	protocol = http
+http_addr = 127.0.0.1
+http_port = 3000
+domain = example.com
+enforce_domain = true
+root_url = %(protocol)s://%(domain)s/
 
-		[security]
-		admin_user = admin
-		admin_password = SecureAdminPass
-		secret_key = somelongrandomstringkey
-    	~~~
+[security]
+admin_user = admin
+admin_password = SecureAdminPass
+secret_key = somelongrandomstringkey
+
+
+{{< /file-excerpt >}}
+
 
 6.  Enable proxy modules for Apache reverse proxying to work:
 
@@ -254,16 +262,17 @@ external_resources:
 
 7.  Create an Apache site configuration file to proxy requests to Grafana. Remember to change `example.com` to your own domain:
 
-	{: .file}
-	/etc/apache2/sites-available/apache2-grafana.conf
-	:   ~~~ conf
-		<VirtualHost *:80>
-	 	ProxyPreserveHost On
-	 	ProxyPass / http://127.0.0.1:3000/
-	 	ProxyPassReverse / http://127.0.0.1:3000/
-	 	ServerName example.com
-		</VirtualHost>
-		~~~
+	{{< file "/etc/apache2/sites-available/apache2-grafana.conf" aconf >}}
+<VirtualHost *:80>
+	ProxyPreserveHost On
+	ProxyPass / http://127.0.0.1:3000/
+	ProxyPassReverse / http://127.0.0.1:3000/
+	ServerName example.com
+</VirtualHost>
+
+
+{{< /file >}}
+
 
 7.  Enable Grafana's site configuration with:
 

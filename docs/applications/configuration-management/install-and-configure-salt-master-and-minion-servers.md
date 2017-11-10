@@ -3,42 +3,43 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Salt is a server management platform that can control a number of servers from a single location. Learn how to install Salt in this simple tutorial.'
-keywords: 'Install salt, salt configuration management, salt master'
+keywords: ["Install salt", " salt configuration management", " salt master"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/salt/install-salt/','applications/configuration-management/install-salt/']
-modified: Monday, July 10th, 2017
+aliases: ['applications/salt/install-salt/','applications/configuration-management/install-salt/']
+modified: 2017-07-10
 modified_by:
     name: Linode
-published: 'Tuesday, September 22nd, 2015'
+published: 2015-09-22
 title: Install and Configure Salt Master and Minion Servers
 ---
 
 [Salt](https://saltstack.com/) is a server management platform, designed to control a number of servers from a single master server. The following directions will walk you through configuring a Salt master and multiple Salt minions, and deploying your first Salt Formula. These instructions assume that you are using Debian 8 but can be adjusted to function on other distributions.
 
-{: .note}
->
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Before You Begin
+## Before You Begin
 
 1.  You will need at least three Linodes: One Salt master, and at least two Salt minions.
 
 2.  Ensure that each Linode's [hostname](https://www.linode.com/docs/getting-started#setting-the-hostname) has been set. As the Linode's hostname will be used to identify it within Salt, we recommend using descriptive hostnames. You should also designate one Linode as your Salt master and name it appropriately. If your Linodes are located within the same datacenter, we recommend that you configure [private IP addresses](https://www.linode.com/docs/networking/remote-access#adding-private-ip-addresses) for each system.
 
-##Add the Salt Repository
+## Add the Salt Repository
 
-{: .note}
->
-> The steps in this section will need to be run on *each* of your Linodes.
+{{< note >}}
+The steps in this section will need to be run on *each* of your Linodes.
+{{< /note >}}
 
 1.  Create the file `/etc/apt/sources.list.d/salt.list` and enter the following lines to add the Salt repository:
 
-	{:.file }
-	/etc/apt/sources.list.d/salt.list
-	:  ~~~
-	   # salt
-	   deb http://debian.saltstack.com/debian jessie-saltstack main
-	   ~~~
+	{{< file "/etc/apt/sources.list.d/salt.list" >}}
+# salt
+deb http://debian.saltstack.com/debian jessie-saltstack main
+
+
+{{< /file >}}
+
 
 2.  Add the repository key:
 
@@ -48,11 +49,11 @@ title: Install and Configure Salt Master and Minion Servers
 
         apt-get update
 
-##Configure Your Salt Master
+## Configure Your Salt Master
 
-{: .note}
->
-> The following steps will be run only on the Linode designated as your Salt master.
+{{< note >}}
+The following steps will be run only on the Linode designated as your Salt master.
+{{< /note >}}
 
 1.  Install the Salt master package:
 
@@ -60,30 +61,30 @@ title: Install and Configure Salt Master and Minion Servers
 
 2.  Open `/etc/salt/master`. Uncomment the `#interface:` line and replace `<master's IP address>` below with the address of your Salt master Linode. If your Linodes are located in the same datacenter, you can utilize your private network address for this purpose.
 
-    {:.file }
-    /etc/salt/master
-    :   ~~~
-        # The address of the interface to bind to:
-          interface: <master Linode IP address>
-        ~~~
+    {{< file "/etc/salt/master" >}}
+# The address of the interface to bind to:
+  interface: <master Linode IP address>
 
-        {: .note}
-        >
-        >As part of this step, you can also configure the user you wish to issue Salt commands to your minions. Uncomment the `#user:` line and enter your desired username to modify this setting. You will also need to issue the following command to set the required permissions for the user in question.
-        >
-        >     chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
-        >
-        >Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
+{{< /file >}}
+
+
+        {{< note >}}
+As part of this step, you can also configure the user you wish to issue Salt commands to your minions. Uncomment the `#user:` line and enter your desired username to modify this setting. You will also need to issue the following command to set the required permissions for the user in question.
+
+chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
+
+Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
+{{< /note >}}
 
 3.  Restart Salt:
 
         systemctl restart salt-master
 
-##Installing and Configuring a Salt Minion
+## Installing and Configuring a Salt Minion
 
-{: .note}
->
-> The following steps will need to be run on *each* of your Salt minions.
+{{< note >}}
+The following steps will need to be run on *each* of your Salt minions.
+{{< /note >}}
 
 1.  Install Salt:
 
@@ -91,19 +92,19 @@ title: Install and Configure Salt Master and Minion Servers
 
 2.  Edit the `/etc/salt/minion` file to uncomment the `#master: salt` line, and replace "salt" with the IP address of your Salt Master:
 
-    {:.file }
-    /etc/salt/minion
-    :   ~~~
-        # Set the location of the salt master server. If the master server cannot be
-        # resolved, then the minion will fail to start.
-          master: <master's IP address>
-        ~~~
+    {{< file "/etc/salt/minion" >}}
+# Set the location of the salt master server. If the master server cannot be
+# resolved, then the minion will fail to start.
+  master: <master's IP address>
+
+{{< /file >}}
+
 
 3.  Restart Salt:
 
         systemctl restart salt-minion
 
-##Configure Salt
+## Configure Salt
 
 1.  On your Salt master, issue the following command to list the known Salt Minions linked to the Salt Master:
 
@@ -139,7 +140,7 @@ title: Install and Configure Salt Master and Minion Servers
 
     It should return the value `True` for each minion.
 
-##Installing Individual Packages with Salt
+## Installing Individual Packages with Salt
 
 Once you have completed the previous configuration steps, you can install packages using Salt on all of your minions. Packages can be targeted to individual minions, or installed to all minions via simple commands. For these examples we will use Apache.
 
@@ -160,7 +161,7 @@ Once you have completed the previous configuration steps, you can install packag
 
         salt '*' pkg.remove apache2
 
-##Deploy Your First Salt Formula
+## Deploy Your First Salt Formula
 
 Salt Formulas create a framework of software and configurations to be deployed to your minions. Multiple Salt Formulas can be deployed to your minions and this will allow you to manage package configuration and maintenance from the Salt Master. These steps will walk you through installing one of the pre-made formulas hosted on [Salt's Github](https://github.com/saltstack-formulas).
 
@@ -171,13 +172,13 @@ Salt Formulas create a framework of software and configurations to be deployed t
 
 2.  Create a state file to store your configuration. For this example, we'll create a simple Apache state:
 
-    {:.file }
-    /srv/salt/apache.sls
-    :   ~~~ yaml
-        apache2:
-          pkg:
-            - installed
-        ~~~
+    {{< file "/srv/salt/apache.sls" yaml >}}
+apache2:
+  pkg:
+    - installed
+
+{{< /file >}}
+
 
 3.  To install the packages contained within the SLS file and enable the state, execute the following command. You can replace `*` with the ID of a specific minion:
 

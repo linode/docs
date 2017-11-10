@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install Apache on your Ubuntu 12.04 Server, configure virtual hosting, and set up module and scripting support.'
-keywords: 'apache,ubuntu,ubuntu 12.04,precise,pengolin,apache web server,web server,'
+keywords: ["apache", "ubuntu", "ubuntu 12.04", "precise", "pengolin", "apache web server", "web server", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, July 15th, 2015
-alias: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/apache-web-server-ubuntu-12-04/']
+modified: 2015-07-15
+aliases: ['web-servers/apache/installation/ubuntu-12-04-precise-pangolin/','websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/how-to-install-and-configure-apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/apache/apache-web-server-ubuntu-12-04/']
 modified_by:
   name: Linode
-published: 'Wednesday, October 10th, 2012'
+published: 2012-10-10
 title: 'Apache Web Server on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[Apache HTTP Server Version 2.2 Documentation](http://httpd.apache.org/docs/2.2/)'
@@ -21,10 +21,9 @@ The *Apache HTTP Web Server* (Apache) is an open source web application for runn
 
 If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) stack, please see the [LAMP on Ubuntu 12.04](/docs/websites/lamp/lamp-server-on-ubuntu-12-04-precise-pangolin) guide.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -50,21 +49,21 @@ If instead you would like to install a full LAMP (Linux, Apache, MySQL and PHP) 
 
 2.  Edit the main Apache configuration file to adjust the resource use settings. The settings shown below are a good starting point for a **Linode 2GB**:
 
-    {: .file }
-    /etc/apache2/apache2.conf
-    :   ~~~ conf
-        KeepAlive Off
+    {{< file "/etc/apache2/apache2.conf" aconf >}}
+KeepAlive Off
 
-        ...
+...
 
-        <IfModule mpm_prefork_module>
-            StartServers        4
-            MinSpareServers     20
-            MaxSpareServers     40
-            MaxClients          200
-            MaxRequestsPerChild 4500
-        </IfModule>
-        ~~~
+<IfModule mpm_prefork_module>
+    StartServers        4
+    MinSpareServers     20
+    MaxSpareServers     40
+    MaxClients          200
+    MaxRequestsPerChild 4500
+</IfModule>
+
+{{< /file >}}
+
 
 
 ### Configure Virtual Hosting
@@ -77,31 +76,31 @@ Apache supports *name-based virtual hosting*, which allows you to host multiple 
 
 2.  Create an `example.com.conf` file in `/etc/apache2/sites-available` with your text editor, replacing instances of `example.com` with your own domain URL in both the configuration file and in the file name:
 
-    {: .file }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
-             ServerAdmin webmaster@example.com
-             ServerName example.com
-             ServerAlias www.example.com
-             DocumentRoot /var/www/example.com/public_html/
-             ErrorLog /var/www/example.com/logs/error.log
-             CustomLog /var/www/example.com/logs/access.log combined
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/example.com/public_html/
+     ErrorLog /var/www/example.com/logs/error.log
+     CustomLog /var/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
     Repeat this process for any other domains you host.
 
-    {:.note}
-    >
-    > If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
-    >
-    > {: .file-excerpt }
-      /etc/apache2/sites-available/example.com.conf
-    > :   ~~~ conf
-    >     Options ExecCGI
-    >     AddHandler cgi-script .pl
-    >     ~~~
+    {{< note >}}
+If you would like to enable Perl support, add the following lines above the closing `</VirtualHost>` tag:
+
+{{< file-excerpt "/etc/apache2/sites-available/example.com.conf" aconf >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+{{< /note >}}
+
+{{< /file-excerpt >}}
+
 
 
 3.  Create directories for your websites and websites' logs, replacing `example.com` with your own domain information:

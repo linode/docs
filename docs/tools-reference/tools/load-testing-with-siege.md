@@ -3,12 +3,12 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'Load testing your web server with regression testing and benchmarking utility Siege'
-keywords: 'siege,load testing,benchmarking'
+keywords: ["siege", "load testing", "benchmarking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, February 18th, 2015
+modified: 2015-02-18
 modified_by:
   name: Elle Krout
-published: 'Wednesday, February 18th, 2015'
+published: 2015-02-18
 title: Load Testing Web Servers with Siege
 external_resources:
  - '[Siege Home](http://www.joedog.org/siege-home)'
@@ -20,7 +20,7 @@ Siege is an HTTP load testing and benchmarking utility that can be used to measu
 
 This guide is for Debian or Ubuntu systems.
 
-##Download and Configure Siege
+## Download and Configure Siege
 
 1.  Prior to installing any new programs, update your system:
 
@@ -56,10 +56,8 @@ This guide is for Debian or Ubuntu systems.
 
 9.  The suggested Siege configuration is for 25 concurrent users over a period of 1 minute. Set a location for your log file. Be sure to uncomment the variables shown below, and any other commented settings you want to use by removing the pound sign (`#`):
 
-	{: .file-excerpt}
-	~/.siegerc
-	:	~~~
-        ...
+	{{< file-excerpt "~/.siegerc" >}}
+...
 
 		#
 		# Variable declarations. You can set variables here
@@ -71,7 +69,7 @@ This guide is for Debian or Ubuntu systems.
 		# actually declaring them, example:
 		logfile = $(HOME)/siege.log
 
-        ...
+...
 
 		#
 		# Default number of simulated  concurrent users
@@ -87,11 +85,14 @@ This guide is for Debian or Ubuntu systems.
 		# ex: time = 50M
 		#
 		time = 1M
-		~~~
+
+
+{{< /file-excerpt >}}
+
 
 You are now ready to run Siege!
 
-##Run Siege
+## Run Siege
 
 To run Siege with the default settings, input the following command, replacing `www.example.com` with your domain name or IP address:
 
@@ -123,7 +124,7 @@ Siege outputs the results:
 
 If there are no failed connections and the availability remains at 100%, there are no problems.
 
-##Further Configuring and Commands
+## Further Configuring and Commands
 
 ###Creating a URL File
 
@@ -131,29 +132,30 @@ If you want Siege to hit a number of pages on your website at random, configure 
 
 1.  Open the `urls.txt` file generally created at `/usr/local/etc/urls.txt`. Add a list of URLs or IP addresses to that file:
 
-	{: .file}
-	/usr/local/etc/urls.txt
-	:	~~~
-		# URLS file for siege
-		# --
-		# Format the url entries in any of the following formats:
-		# http://www.whoohoo.com/index.html
-		# http://www/index.html
-		# www/index.html
-		# http://www.whoohoo.com/cgi-bin/howto/display.cgi?1013
-		# Use the POST directive for pages that require it:
-		# http://www.whoohoo.com/cgi-bin/haha.cgi POST ha=1&ho=2
-		#      or POST content from a file:
-		# http://www.whoohoo.com/melvin.jsp POST </home/jeff/haha
-		# http://www.whoohoo.com/melvin.jsp POST <./haha
-		# You may also set and reference variables inside this file,
-		# for more information, man urls_txt
-		# -------------------------------------------------------
+	{{< file "/usr/local/etc/urls.txt" >}}
+# URLS file for siege
+# --
+# Format the url entries in any of the following formats:
+# http://www.whoohoo.com/index.html
+# http://www/index.html
+# www/index.html
+# http://www.whoohoo.com/cgi-bin/howto/display.cgi?1013
+# Use the POST directive for pages that require it:
+# http://www.whoohoo.com/cgi-bin/haha.cgi POST ha=1&ho=2
+#      or POST content from a file:
+# http://www.whoohoo.com/melvin.jsp POST </home/jeff/haha
+# http://www.whoohoo.com/melvin.jsp POST <./haha
+# You may also set and reference variables inside this file,
+# for more information, man urls_txt
+# -------------------------------------------------------
 
-		www.example.com
-		www.example.org
-		123.45.67.89
-		~~~
+www.example.com
+www.example.org
+123.45.67.89
+
+
+{{< /file >}}
+
 
 2.  To run Siege with this file use the `siege` command:
 
@@ -163,7 +165,7 @@ If you want Siege to hit a number of pages on your website at random, configure 
 
 		siege -f your/file/path.txt
 
-###Commands
+### Commands
 
 Siege features a number of command line options to use when you want to deviate from the default configuration but do not wish to edit the file.
 

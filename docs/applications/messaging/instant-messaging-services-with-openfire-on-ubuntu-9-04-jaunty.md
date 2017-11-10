@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with Openfire, an open source instant messaging server built on the XMPP/Jabber protocol for Ubuntu 9.04 (Jaunty).'
-keywords: 'openfire,openfire ubuntu 9.04,openfire linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["openfire", "openfire ubuntu 9.04", "openfire linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['communications/xmpp/openfire/ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Saturday, September 19th, 2009'
+published: 2009-09-19
 title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -20,32 +20,31 @@ title: 'Instant Messaging Services with Openfire on Ubuntu 9.04 (Jaunty)'
 
 If you haven't done so already, please follow the steps outlined in our [getting started](/docs/getting-started/) guide before following these instructions, and make sure your system is fully updated. Initial configuration steps will be performed through the terminal; please make sure you're logged into your Linode as root via SSH.
 
-Install Prerequisites
----------------------
+# Install Prerequisites
 
 Openfire requires a Java runtime engine (JRE). This tutorial uses the version provided by Sun Microsystems. Please note that although alternate Java runtime engines are available, Openfire may not work well with them.
 
 Examine your `/etc/apt/sources.list` file to make sure you have the `multiverse` repository enabled. You can use an editor like `nano` to edit configuration files through the shell; you would issue the command `nano /etc/apt/sources.list` to edit this one. Please consult the [nano manual page](http://www.nano-editor.org/dist/v1.2/nano.1.html) for information on using the editor. Your file should look similar to the following.
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted multiverse
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
+deb http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
+deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted multiverse
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty universe
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty-updates universe
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security universe
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu jaunty-security universe
+deb-src http://security.ubuntu.com/ubuntu jaunty-security universe
+
+{{< /file >}}
+
 
 If you had to add the `multiverse` repositories to your sources, issue the following command to update your package database:
 
@@ -58,8 +57,7 @@ Issue the following command to install prerequisite packages on your server:
 
 The Sun Java6 JRE will be installed, along with a series of dependencies it requires. You will be prompted to accept the licensing agreement for Sun Java before proceeding.
 
-Adjust Firewall Settings
-------------------------
+# Adjust Firewall Settings
 
 If you employ a firewall to specify what ports can be accessed on your Linode, please make sure you have the following ports open:
 
@@ -76,8 +74,7 @@ If you employ a firewall to specify what ports can be accessed on your Linode, p
 
 Additional ports may need to be opened later to support more advanced XMPP services, but these are the ports that Openfire will use by default.
 
-Install Openfire
-----------------
+# Install Openfire
 
 Visit the download page for the [Openfire RTC server](http://www.igniterealtime.org/downloads/index.jsp#openfire) and click the link for the "deb" package. You will be taken to another page, which will start the download to your workstation. You may cancel this download, as a manual download link will be presented that you may copy to your clipboard. Use `wget` on your Linode to retrieve the package (substitute the link for the current version in the command below). You may need to install `wget` first using the command `apt-get install wget`.
 
@@ -89,11 +86,11 @@ Install the software using `dpkg` as follows:
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
-{: .file-excerpt }
-/etc/openfire/openfire.xml
-:   ~~~ xml
-    <interface>12.34.56.78</interface>
-    ~~~
+{{< file-excerpt "/etc/openfire/openfire.xml" xml >}}
+<interface>12.34.56.78</interface>
+
+{{< /file-excerpt >}}
+
 
 Restart Openfire with the following command:
 
@@ -101,8 +98,7 @@ Restart Openfire with the following command:
 
 This completes the initial installation steps for Openfire. Next, we'll continue with configuration through a web browser.
 
-Configure Openfire
-------------------
+# Configure Openfire
 
 Direct your browser to your Linode's IP address or FQDN (fully qualified domain name, if an entry in DNS points to your Linode's IP) on port 9090. As an example, if your Linode's IP address were "12.34.56.78", you would visit `http://12.34.56.78:9090` in your web browser. You will be presented with a language selection screen similar to this:
 
@@ -130,8 +126,7 @@ After the initial web-based configuration is complete, restart the Openfire serv
 
 Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 9.04.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

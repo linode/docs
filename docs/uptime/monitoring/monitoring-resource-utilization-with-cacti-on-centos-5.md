@@ -11,6 +11,8 @@ modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
 published: 'Friday, February 12th, 2010'
+expiryDate: 2013-04-29
+deprecated: true
 title: Monitoring Resource Utilization with Cacti on CentOS 5
 ---
 

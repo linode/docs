@@ -10,6 +10,7 @@ modified: Friday, September 27th, 2013
 modified_by:
   name: Linode
 published: 'Tuesday, June 8th, 2010'
+expiryDate: 2015-09-27
 title: Symfony on CentOS 5
 deprecated: true
 ---

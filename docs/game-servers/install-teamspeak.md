@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Set up TeamSpeak on your Linode and chat with your friends or coworkers while gaming, working, or otherwise'
-keywords: 'teamspeak,virtual intercom,chat,game server'
+keywords: ["teamspeak", "virtual intercom", "chat", "game server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, July 23th, 2015'
-modified: Thursday, July 23th, 2015
+published: 2015-07-23
+modified: 2015-07-23
 modified_by:
     name: Linode
 title: 'Install a TeamSpeak Server on Linode'
@@ -15,7 +15,7 @@ contributor:
 external_resources:
  - '[TeamSpeak KB](https://support.teamspeakusa.com/index.php?/Knowledgebase/List/Index/10/english)'
  - '[Changing the serveradmin Password](https://support.teamspeakusa.com/index.php?/Knowledgebase/Article/View/326/0/how-do-i-change-or-reset-the-password-of-the-serveradmin-server-query-account)'
-alias: ['applications/game-servers/install-teamspeak/']
+aliases: ['applications/game-servers/install-teamspeak/']
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and
@@ -123,22 +123,22 @@ If you want TeamSpeak to automatically start every time your Linode boots, follo
 
 2.  As `root` or with `sudo`, create a new file called `/etc/init/teamspeak.conf` and insert the following code, replacing `user` with your username and `/home/user/teamspeak/teamspeak3-server_linux-amd64/` with the path noted above:
 
-    {: .file}
-    /etc/init/teamspeak.conf
-    :   ~~~ conf
-        #!/bin/sh
-        chdir /home/user/teamspeak/teamspeak3-server_linux-amd64/
+    {{< file "/etc/init/teamspeak.conf" aconf >}}
+#!/bin/sh
+chdir /home/user/teamspeak/teamspeak3-server_linux-amd64/
 
-        respawn
+respawn
 
-        setuid user
-        setgid user
+setuid user
+setgid user
 
-        exec /home/user/teamspeak/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh
+exec /home/user/teamspeak/teamspeak3-server_linux-amd64/ts3server_minimal_runscript.sh
 
-        start on runlevel [2]
-        stop on runlevel [013456]
-        ~~~
+start on runlevel [2]
+stop on runlevel [013456]
+
+{{< /file >}}
+
 
     The next time your Linode reboots TeamSpeak will start automatically.
 
@@ -151,5 +151,6 @@ If you use a firewall the following ports will need to be opened: 9987, 30033, 1
     iptables -A INPUT -p tcp --dport 10011 -j ACCEPT
     iptables -A INPUT -p tcp --dport 41144 -j ACCEPT
 
-{: .note }
-> If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server/) guide, you'll need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
+{{< note >}}
+If you've configured your firewall according to our [Securing Your Server](/docs/security/securing-your-server/) guide, you'll need to add these exceptions to `/etc/iptables.firewall.rules` to be reboot-persistent.
+{{< /note >}}

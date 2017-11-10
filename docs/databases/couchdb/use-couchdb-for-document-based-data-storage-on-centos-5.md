@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on CentOS 5 systems.'
-keywords: 'couchdb,nosql,json,centos'
+keywords: ["couchdb", "nosql", "json", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/couchdb/centos-5/']
-modified: Friday, April 29th, 2011
+aliases: ['databases/couchdb/centos-5/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, February 18th, 2010'
+published: 2010-02-18
 title: Use CouchDB for Document Based Data Storage on CentOS 5
 external_resources:
  - '[CouchDB Project](http://couchdb.apache.org/)'
@@ -19,7 +19,7 @@ external_resources:
 
 CouchDB is a non-relational document based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language and uses an HTTP interface and JSON as a data format for easy integration in application development.
 
-Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Installing CouchDB
 
@@ -60,9 +60,9 @@ Once the SSH tunnel is in place or you have configured your Linode, you can acce
 
 In response, CouchDB will return the following:
 
-~~~ js
+    {{< output >}}
 {"couchdb":"Welcome","version":"0.10.2"}
-~~~
+{{< /output >}}
 
 With the SSH tunnel active, you can access the Futon interface by visiting the URL `http://localhost:5984/_utils/` in a web browser on your local system.
 

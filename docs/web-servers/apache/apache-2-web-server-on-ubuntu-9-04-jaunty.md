@@ -11,6 +11,8 @@ modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
 published: 'Thursday, August 13th, 2009'
+expiryDate: 2013-04-29
+deprecated: true
 title: 'Apache 2 Web Server on Ubuntu 9.04 (Jaunty)'
 ---
 

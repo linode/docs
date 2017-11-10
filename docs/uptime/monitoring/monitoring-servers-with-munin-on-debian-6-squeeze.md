@@ -11,6 +11,8 @@ modified: Friday, November 18th, 2011
 modified_by:
   name: Tim Heckman
 published: 'Tuesday, April 5th, 2011'
+expiryDate: 2013-11-18
+deprecated: true
 title: 'Monitoring Servers with Munin on Debian 6 (Squeeze)'
 ---
 

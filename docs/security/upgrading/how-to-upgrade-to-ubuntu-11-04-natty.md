@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Ubuntu 10.10 (Maverick) to Ubuntu 11.04 (Natty).'
-keywords: 'ubuntu 11.04 upgrade, ubuntu natty upgrade, distro upgrade, linux upgrade howto'
+keywords: ["ubuntu 11.04 upgrade", " ubuntu natty upgrade", " distro upgrade", " linux upgrade howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-ubuntu-11-04-natty/']
-modified: Friday, May 10th, 2013
+aliases: ['upgrading/upgrade-to-ubuntu-11-04-natty/']
+modified: 2013-05-10
 modified_by:
   name: Linode
-published: 'Thursday, April 28th, 2011'
+published: 2011-04-28
 title: 'How to Upgrade to Ubuntu 11.04 (Natty)'
 ---
 
@@ -20,8 +20,7 @@ This guide explains how to upgrade your system to Ubuntu 11.04 (Natty) from Ubun
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed). Please note that upgrades from older versions of Ubuntu will require you to follow the steps outlined in our other upgrade guides before upgrading to Ubuntu 11.04 (Natty).
 
-Preparing to Upgrade
---------------------
+# Preparing to Upgrade
 
 Make sure that you have properly set your hostname in `/etc/hostname`. If you have not set a hostname for your system yet, issue the following commands:
 
@@ -32,38 +31,38 @@ Be sure to replace "titan" with the name that you wish to give to your server.
 
 Edit your `/etc/apt/sources.list` file and change instances of `maverick` to `natty`. Once you have finished this, your `/etc/apt/sources.list` should resemble the following:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ natty main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty main restricted
-    deb http://us.archive.ubuntu.com/ubuntu/ natty-updates main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates main restricted
-    deb http://us.archive.ubuntu.com/ubuntu/ natty universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty universe
-    deb http://us.archive.ubuntu.com/ubuntu/ natty-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates universe
-    deb http://us.archive.ubuntu.com/ubuntu/ natty multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty multiverse
-    deb http://us.archive.ubuntu.com/ubuntu/ natty-updates multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates multiverse
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ natty main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ natty-updates main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates main restricted
+deb http://us.archive.ubuntu.com/ubuntu/ natty universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty universe
+deb http://us.archive.ubuntu.com/ubuntu/ natty-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ natty multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty multiverse
+deb http://us.archive.ubuntu.com/ubuntu/ natty-updates multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ natty-updates multiverse
 
-    # deb http://us.archive.ubuntu.com/ubuntu/ natty-backports main restricted universe multiverse
-    # deb-src http://us.archive.ubuntu.com/ubuntu/ natty-backports main restricted universe multiverse
+# deb http://us.archive.ubuntu.com/ubuntu/ natty-backports main restricted universe multiverse
+# deb-src http://us.archive.ubuntu.com/ubuntu/ natty-backports main restricted universe multiverse
 
-    # deb http://archive.canonical.com/ubuntu natty partner
-    # deb-src http://archive.canonical.com/ubuntu natty partner
+# deb http://archive.canonical.com/ubuntu natty partner
+# deb-src http://archive.canonical.com/ubuntu natty partner
 
-    # deb http://extras.ubuntu.com/ubuntu natty main
-    # deb-src http://extras.ubuntu.com/ubuntu natty main
+# deb http://extras.ubuntu.com/ubuntu natty main
+# deb-src http://extras.ubuntu.com/ubuntu natty main
 
-    deb http://security.ubuntu.com/ubuntu natty-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu natty-security main restricted
-    deb http://security.ubuntu.com/ubuntu natty-security universe
-    deb-src http://security.ubuntu.com/ubuntu natty-security universe
-    deb http://security.ubuntu.com/ubuntu natty-security multiverse
-    deb-src http://security.ubuntu.com/ubuntu natty-security multiverse
-    ~~~
+deb http://security.ubuntu.com/ubuntu natty-security main restricted
+deb-src http://security.ubuntu.com/ubuntu natty-security main restricted
+deb http://security.ubuntu.com/ubuntu natty-security universe
+deb-src http://security.ubuntu.com/ubuntu natty-security universe
+deb http://security.ubuntu.com/ubuntu natty-security multiverse
+deb-src http://security.ubuntu.com/ubuntu natty-security multiverse
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to update your package lists:
 
@@ -81,8 +80,7 @@ If at any time you get disconnected from your server, you can log back in and is
 
     screen -Dr
 
-Upgrading
----------
+# Upgrading
 
 Issue the following command to grab the latest version of key system utilities:
 

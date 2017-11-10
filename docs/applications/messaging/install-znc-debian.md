@@ -3,20 +3,20 @@ author:
     name: Alex Fornuto
     email: docs@linode.com
 description: 'Install the ZNC bouncer on Debian to retain an IRC connection.'
-keywords: 'install znc,irc bouncer,znc on debian,configure znc,znc'
+keywords: ["install znc", "irc bouncer", "znc on debian", "configure znc", "znc"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, June 4th, 2015
+modified: 2015-06-04
 modified_by:
     name: 'Elle Krout'
-published: 'Friday, August 21, 2014'
+published: 2014-08-21
 title: 'Install ZNC from Source on Debian'
 ---
 
 ZNC is an IRC bouncer. It's designed to run on a server that remains connected to an IRC network and buffer messages. With ZNC, a local IRC client can connect and disconnect without losing a chat session or missing any messages. In this guide, ZNC will be installed from source and then configured.
 
-{: .note}
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -57,9 +57,9 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
         make
         sudo checkinstall --fstrans=0 make install
 
-    {: .note }
-    > The program `checkinstall` creates a `.deb` package which you can use to reinstall this version of ZNC in the future. It has its own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
-
+    {{< note >}}
+The program `checkinstall` creates a `.deb` package which you can use to reinstall this version of ZNC in the future. It has its own set of options to review. If you prefer, you can instead run `sudo make install` to install ZNC as is.
+{{< /note >}}
 
 ## Configure ZNC
 
@@ -71,9 +71,9 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
 2.  This will launch an interactive script asking you for input on a variety of parameters. Below is an example output of the `makeconf` script with standard options selected. To match your needs, you can use or change the provided input at your discretion. If you're not sure, use the default option. Many of these options can be adjusted later through the web interface.
 
-    {:.note}
-    > Make sure to change the `username` variable.
-
+    {{< note >}}
+Make sure to change the `username` variable.
+{{< /note >}}
 
         [ .. ] Checking for list of available modules...
         [ >> ] ok
@@ -161,8 +161,10 @@ ZNC is an IRC bouncer. It's designed to run on a server that remains connected t
 
     Once you've completed the configuration and launched ZNC, you can access the web interface by going to your Linode's IP address in your web browser. Be sure to specify the port you defined during the configuration script and prefix it with `https://` .
 
-    {: .note}
-    >If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+    {{< note >}}
+If the [Firewall portion](/docs/security/securing-your-server#configure-a-firewall) of the [Securing Your Server](/docs/securing-your-server/) guide has been completed, add a line to `/etc/iptables.firewall.rules` allowing traffic to your IRC port.
+{{< /note >}}
+
 
     [![ZNC's Web Admin](/docs/assets/znc-web-admin_small.png)](/docs/assets/znc-web-admin.png)
 
@@ -206,6 +208,3 @@ You can use any preferred GUI or CLI client to connect to ZNC. For the example b
 If you would like to use a signed certificate to encrypt your connection to ZNC, you can do so by adding your key and certificate to the `znc.pem` file:
 
     cat domain.key domain.crt > znc.pem
-
-
-

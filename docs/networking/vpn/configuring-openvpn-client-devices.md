@@ -3,12 +3,12 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'This guide will show you how to install, configure, and fine-tune OpenVPN clients on Android, iOS, Linux, OS X and Windows.'
-keywords: 'openvpn,vpn,vpn tunnel,ios,os x,mac,windows,android'
+keywords: ["openvpn", "vpn", "vpn tunnel", "ios", "os x", "mac", "windows", "android"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Tuesday, September 26th, 2017'
+modified: 2017-09-26
 modified_by:
   name: Linode
-published: 'Wednesday, December 9th, 2015'
+published: 2015-12-09
 title: 'Configure OpenVPN Client Devices'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
@@ -41,9 +41,9 @@ Client credentials must be moved to the client device using an encrypted transfe
 
 There are two main options for an Android OpenVPN client. The first is *OpenVPN Connect* on [Google Play](https://play.google.com/store/apps/details?id=net.openvpn.openvpn), the official client from OpenVPN Technologies, Inc., the parent company behind OpenVPN software. The second option is *OpenVPN for Android* on both [Google Play](https://play.google.com/store/apps/details?id=de.blinkt.openvpn) and [F-droid](https://f-droid.org/packages/de.blinkt.openvpn/). OpenVPN for Android is open source, more feature-rich, and usually updated more often so we'll use it for this guide, though the two clients are similar.
 
-{: .note}
->
->If you have a Linux computer with the package `gvfs-backends` installed, or a Windows computer, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have Apple OS X, you need to first install [Android File Transfer](https://android.com/filetransfer/).
+{{< note >}}
+If you have a Linux computer with the package `gvfs-backends` installed, or a Windows computer, you can connect the device by USB and it will be visible in the system's file manager as an external USB device. If you have Apple OS X, you need to first install [Android File Transfer](https://android.com/filetransfer/).
+{{< /note >}}
 
 1.  Ensure that your Android device is fully updated, then install OpenVPN for Android from whichever source you prefer.
 
@@ -80,9 +80,9 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
 *OpenVPN Connect* is used to manage OpenVPN connections in Apple's iOS for iPhones and iPads. We'll use iTunes to transfer the file to the iOS device from a computer running OS X or Windows. A Linux computer with the package `gvfs-backends` installed can mount the iOS device as external storage.
 
-{: .note }
->
->The following example was performed on iOS 9.0.2 and OS X 10.10 using iTunes 12 and OpenVPN Connect 1.0.5.
+{{< note >}}
+The following example was performed on iOS 9.0.2 and OS X 10.10 using iTunes 12 and OpenVPN Connect 1.0.5.
+{{< /note >}}
 
 1.  Ensure that your iOS device is fully updated, then install [OpenVPN Connect](https://itunes.apple.com/us/app/openvpn-connect/id590379981) from the App store.
 
@@ -94,9 +94,9 @@ There are two main options for an Android OpenVPN client. The first is *OpenVPN 
 
     [![iTunes device summary](/docs/assets/itunes-device-summary-small.png)](/docs/assets/itunes-device-summary.png)
 
-    {: .note}
-    >
-    >If this is the first time connecting your iOS device to iTunes, you'll need to click on the overflow menu (the three horizontal dots) and choose **Apps**, then click **Get Started**.
+    {{< note >}}
+If this is the first time connecting your iOS device to iTunes, you'll need to click on the overflow menu (the three horizontal dots) and choose **Apps**, then click **Get Started**.
+{{< /note >}}
 
 4.  In the left sidebar, choose **Apps** and scroll down to the **File Sharing** category in the main window. You will see the icon for OpenVPN Connect. Click it, then click **Add** in the **OpenVPN Documents** box. Navigate to your `ta.key` file and `.opvn` client profile and drag them into the window from Finder. If you add them individually, add the key before the client profile. Otherwise, OpenVPN Connect will fail to find the key.
 
@@ -157,9 +157,9 @@ These steps assume your distribution uses NetworkManager. Depending on the Netwo
 
 7.  The VPN client is now configured and ready to connect. How you do this will differ by desktop environment and NetworkManager version, but after configuring the VPN, an entry for it will appear in the desktop environment's network connection menu.
 
-    {: .note }
-    >
-    >Before connecting for the first time, it's a good idea to run `journalctl -f | grep vpn` or `tail -f /var/log/syslog | grep vpn` in a terminal on your client. The command gives you a real-time output of OpenVPN's logging, all errors will be visible here.
+    {{< note >}}
+Before connecting for the first time, it's a good idea to run `journalctl -f | grep vpn` or `tail -f /var/log/syslog | grep vpn` in a terminal on your client. The command gives you a real-time output of OpenVPN's logging, all errors will be visible here.
+{{< /note >}}
 
 8.  After the profile is imported, and you confirm it works properly, back up the client credential files to external storage and delete the key and certificate files from the device. Once imported, they'll reside in the VPN profile and no longer need to remain on the device storage which is readable by other applications.
 
@@ -178,9 +178,9 @@ Back up the client credential files to external storage. After the profile is im
 
     ![OpenVPN Windows TAP Installer](/docs/assets/openvpn-windows-tap-installer.png)
 
-    {: .note }
-    >
-    >OpenVPN provides a GPG signature file to check the installer's integrity and authenticity. [GnuPG](https://gnupg.org/) must be installed to do this and performing the check is highly recommended.
+    {{< note >}}
+OpenVPN provides a GPG signature file to check the installer's integrity and authenticity. [GnuPG](https://gnupg.org/) must be installed to do this and performing the check is highly recommended.
+{{< /note >}}
 
 2.  Move the extracted client credentials into `C:\Program Files\OpenVPN\config`.
 
@@ -225,6 +225,6 @@ To remove a client device's access to the VPN, go back to the EasyRSA root direc
 
 3.  To ensure that no IPv6 traffic can be detected, run the test at [http://test-ipv6.com/](http://test-ipv6.com/). Your public IP address should again be that of your Linode VPN, and the results should show that no IPv6 address was detected.
 
-{: .caution}
->
->If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
+{{< caution >}}
+If the test results show you any IP addresses other than those of your Linode and intended DNS servers, your VPN is not properly tunneling traffic. Review the logs on both server and client to determine how to troubleshoot the connection.
+{{< /caution >}}

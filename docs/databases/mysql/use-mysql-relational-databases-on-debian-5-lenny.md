@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Debian Lenny.'
-keywords: 'MySQL on Linux,MySQL Debian,MySQL Lenny,MySQL Linode'
+keywords: ["MySQL on Linux", "MySQL Debian", "MySQL Lenny", "MySQL Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['databases/mysql/debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Friday, August 7th, 2009'
+published: 2009-08-07
 title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 ---
 
@@ -18,8 +18,7 @@ title: 'Use MySQL Relational Databases on Debian 5 (Lenny)'
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Debian Lenny Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-Installing MySQL
-----------------
+# Installing MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -42,26 +41,24 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
 
-Configuring MySQL
------------------
+# Configuring MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in the configuration file (`/etc/mysql/my.cnf`) as follows:
 
-~~~ ini
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
 key_buffer = 16M
 max_allowed_packet = 1M
 thread_stack = 64K
 table_cache = 4
 sort_buffer = 64K
 net_buffer_length = 2K
-~~~
+{{< /file-excerpt >}}
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources for this topic.
 
 MySQL will bind to localhost (127.0.0.1) by default. Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+# Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -134,8 +131,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this on a customer, but it's a good example of a common case nonetheless.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

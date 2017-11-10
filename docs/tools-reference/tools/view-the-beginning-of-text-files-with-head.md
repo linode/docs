@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Use the Linux command head to view the beginning of a text file
-keywords: 'head,linux,common commands,cli'
+keywords: ["head", "linux", "common commands", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/head/']
-modified: Tuesday, April 19th, 2011
+aliases: ['linux-tools/common-commands/head/']
+modified: 2011-04-19
 modified_by:
   name: Linode
-published: 'Monday, October 25th, 2010'
+published: 2010-10-25
 title: View the Beginning of Text Files with head
 ---
 

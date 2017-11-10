@@ -3,13 +3,13 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'This step-by-step guide shows you how to assess your MySQL database performance using MySQLTuner to ensure optimum resource usage.'
-keywords: 'mysql, mysqltuner, tune mysql, resource tuning'
-alias: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
+keywords: ["mysql", " mysqltuner", " tune mysql", " resource tuning"]
+aliases: ['databases/mysql/tuning-your-mysql-database/','databases/mysql/mysql-performance-tuning-tutorial/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, June 27th, 2017
+modified: 2017-06-27
 modified_by:
   name: Linode
-published: 'Friday, February 27th, 2015'
+published: 2015-02-27
 title: How to Optimize MySQL Performance Using MySQLTuner
 external_resources:
  - '[MySQL Documentation Library](http://dev.mysql.com/doc/index.html)'
@@ -23,18 +23,18 @@ Running MySQL at optimal settings for specific resources helps handle larger ser
 
 Database tuning is an expansive topic, and this guide covers only the basics of editing your MySQL configuration. Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
-{: .note}
->
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Tools That Can Help Optimize MySQL
+## Tools That Can Help Optimize MySQL
 
 In order to determine if your MySQL database needs to be reconfigured, it is best to look at how your resources are performing now. This can be done with the [top command](/docs/uptime/monitoring/top-htop-iotop) or with the Linode [Longview](/docs/platform/longview/longview) service. At the very least, you should familiarize yourself with the RAM and CPU usage of your server, which can be discovered with these commands:
 
 	echo [PID]  [MEM]  [PATH] &&  ps aux | awk '{print $2, $4, $11}' | sort -k2rn | head -n 20
 	ps -eo pcpu,pid,user,args | sort -k 1 -r | head -20
 
-###MySQLTuner
+### MySQLTuner
 
 The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation, and then outputs suggestions for increasing your server's performance and stability.
 
@@ -87,28 +87,28 @@ The [MySQLTuner](http://mysqltuner.com/) script assesses your MySQL installation
 
 	MySQLTuner offers suggestions regarding how to better the database's performance. If you are wary about updating your database on your own, following MySQLTuner's suggestions is one of the safer ways to improve your database performance.
 
-##Tuning MySQL
+## Tuning MySQL
 When altering the MySQL configuration, be alert to the changes and how they affect your database. Even when following the instructions of programs such as [MySQLTuner](#mysqltuner), it is best to have some understanding of the process.
 
 The file you are changing is located at `/etc/mysql/my.cnf`.
 
-{: .note}
->
->Prior to updating the MySQL configuration, create a backup of the `my.cnf` file:
->
->	cp /etc/mysql/my.cnf ~/my.cnf.backup
->
->Best practice suggests that you make small changes, one at a time, and then monitor the server after each change. You should restart MySQL after each change:
->
->-	For systems without systemd:
->
->		systemctl restart mysqld
->
->-	For distributions which don't use systemd:
->
->		service mysql restart
->
->When changing values in the `my.cnf` file, be sure that the line you are changing hasn't been commented out with the pound (`#`) prefix.
+{{< note >}}
+Prior to updating the MySQL configuration, create a backup of the `my.cnf` file:
+
+cp /etc/mysql/my.cnf ~/my.cnf.backup
+
+Best practice suggests that you make small changes, one at a time, and then monitor the server after each change. You should restart MySQL after each change:
+
+-	For systems without systemd:
+
+systemctl restart mysqld
+
+-	For distributions which don't use systemd:
+
+service mysql restart
+
+When changing values in the `my.cnf` file, be sure that the line you are changing hasn't been commented out with the pound (`#`) prefix.
+{{< /note >}}
 
 ####key_buffer
 Changing the `key_buffer` allocates more memory to MySQL, which can substantially speed up your databases, assuming you have the memory free. The `key_buffer` size should generally take up no more than 25 percent of the system memory when using the MyISAM table engine, and up to 70 percent for InnoDB. If the value is set too high, resources are wasted.

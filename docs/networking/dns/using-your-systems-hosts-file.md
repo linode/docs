@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Mapping aliases, domains or hostnames to IP addresses using the system hosts file.'
-keywords: 'hosts,hosts file,hostname,alias'
+keywords: ["hosts", "hosts file", "hostname", "alias"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 10th, 2017
+modified: 2017-10-10
 modified_by:
   name: Linode
-published: 'Thursday, September 14th, 2017'
+published: 2017-09-14
 title: Using Your System's hosts File
 ---
 

@@ -1,0 +1,21 @@
+{{ define "main" }}
+<section class="primary extra-space first-section">
+  <div class="container">
+
+    <div class="row-content">
+      <div class="col-sm-6 col-sm-offset-3 text-center">
+        <h1>404</h1>
+        <p class="lead">Bummer! The page you were looking for wasn't found. You
+        can <a href="/docs">browse our articles</a> or try searching.
+      </div>
+    </div>
+
+    <div id="search" class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <gcse:searchbox-only resultsUrl="/docs/search" newWindow="false" queryParameterName="q"></gcse:searchbox-only>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}

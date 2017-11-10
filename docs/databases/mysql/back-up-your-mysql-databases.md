@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Instructions for backing up MySQL databases using various methods.'
-keywords: 'mysql,backup,mysqldump'
+keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/backup-options/']
-modified: Wednesday, September 11th, 2013
+aliases: ['databases/mysql/backup-options/', 'security/backups/back-up-your-mysql-databases/']
+modified: 2013-09-11
 modified_by:
   name: Linode
-published: 'Monday, April 19th, 2010'
+published: 2010-04-19
 title: Back Up Your MySQL Databases
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
@@ -23,7 +23,7 @@ MySQL is an open source relational database management system (DBMS) which is fr
 
 ![Back Up Your MySQL Databases](/docs/assets/back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
-Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Backup Methodology
 
@@ -52,9 +52,9 @@ Automate this process by adding a line to `crontab`:
 
 For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
 
-{: .note}
->
-> In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< note >}}
+In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< /note >}}
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 

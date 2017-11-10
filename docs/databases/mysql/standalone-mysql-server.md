@@ -10,6 +10,7 @@ modified: Friday, April 29th, 2011
 modified_by:
   name: Linode
 published: 'Wednesday, September 30th, 2009'
+expiryDate: 2013-04-29
 title: Standalone MySQL Server
 ---
 

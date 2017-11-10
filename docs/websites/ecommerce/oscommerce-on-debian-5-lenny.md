@@ -4,22 +4,21 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'How to set up an online store using the open source osCommerce system on Debian 5 (Lenny).'
-keywords: 'osCommerce,Debian,Store,Ecommerce'
+keywords: ["osCommerce", "Debian", "Store", "Ecommerce"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/oscommerce/debian-5-lenny/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/e-commerce/oscommerce/debian-5-lenny/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Friday, January 22nd, 2010'
+published: 2010-01-22
 title: 'osCommerce on Debian 5 (Lenny)'
 ---
 
 osCommerce is an open source solution for creating your own online store. It runs on a LAMP stack and is a strong alternative to Magento, which can be difficult to administer for some.
 
-Before installing osCommerce we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/docs/lamp-guides/debian-5-lenny).
+Before installing osCommerce we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Additionally, osCommerce requires Apache, MySQL, and PHP to be installed. We assume you've followed our [Debian LAMP guide](/content/lamp-guides/debian-5-lenny).
 
-Installation
-------------
+# Installation
 
 ### Prerequisites
 
@@ -78,32 +77,30 @@ Finally, change the permissions of the `backups` directory to be accessible by t
 
 From here you can begin customizing your store. The default index page will give you instructions for where to begin. You can also check our "More Information" section below.
 
-SSL Certificates
-----------------
+# SSL Certificates
 
 You may want to install a commercial SSL certificate on your store to encrypt the data sent from your customer to your server. After [Obtaining a Commercial SSL Certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate), you'll need to make a couple of changes to your `includes/configure.php` file. Below is an example section from that file that highlights the changes you need to make:
 
-{: .file-excerpt }
-/srv/www/example.com/public\_html/includes/configure.php
-:   ~~~ php
-    // Define the webserver and path parameters
-    // * DIR_FS_* = Filesystem directories (local/physical)
-    // * DIR_WS_* = Webserver directories (virtual/URL)
-    define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
-    define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
-    define('ENABLE_SSL', true); // secure webserver for checkout procedure?
-    define('HTTP_COOKIE_DOMAIN', 'www.example.com');
-    define('HTTPS_COOKIE_DOMAIN', 'example.com);
-    define('HTTP_COOKIE_PATH', '/');
-    define('HTTPS_COOKIE_PATH', '/');
-    define('DIR_WS_HTTP_CATALOG', '/');
-    define('DIR_WS_HTTPS_CATALOG', '/');
-    ~~~
+{{< file-excerpt "/srv/www/example.com/public\\_html/includes/configure.php" php >}}
+// Define the webserver and path parameters
+// * DIR_FS_* = Filesystem directories (local/physical)
+// * DIR_WS_* = Webserver directories (virtual/URL)
+define('HTTP_SERVER', 'http://www.example.com'); // eg, http://localhost - should not be empty for productive servers
+define('HTTPS_SERVER', 'https://example.com'); // eg, https://localhost - should not be empty for productive servers
+define('ENABLE_SSL', true); // secure webserver for checkout procedure?
+define('HTTP_COOKIE_DOMAIN', 'www.example.com');
+define('HTTPS_COOKIE_DOMAIN', 'example.com);
+define('HTTP_COOKIE_PATH', '/');
+define('HTTPS_COOKIE_PATH', '/');
+define('DIR_WS_HTTP_CATALOG', '/');
+define('DIR_WS_HTTPS_CATALOG', '/');
+
+{{< /file-excerpt >}}
+
 
 It should be noted that in this example, the certificate was issued without the `www` qualifier. Your specific requirements may require tweaking.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -114,8 +111,7 @@ Please monitor the osCommerce security forums and mailing lists to ensure that y
 
 When upstream sources offer new releases, repeat the instructions for installing the osCommerce software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -3,14 +3,14 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
-keywords: 'weechat,irc,oftc,real time,chat'
+keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
   name: Samuel Damashek
-modified: Thursday, March 10th, 2016
+modified: 2016-03-10
 modified_by:
     name: 'Linode'
-published: 'Wednesday, August 27th, 2014'
+published: 2014-08-27
 title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
@@ -59,9 +59,9 @@ A user is often represented as `nickname!username@host`.
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Using GNU Screen
 
@@ -219,8 +219,7 @@ All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*.
 
 A list of basic commands is below.
 
-  {: .table .table-striped }
-  | Command    | Description                                                                     |
+    | Command    | Description                                                                     |
   | --------   | ------------------------------------------------------------------------------- |
   | `/help`    | Lists commands, if a command is given then shows command usage and description  |
   | `/join`    | Joins a channel                                                                 |

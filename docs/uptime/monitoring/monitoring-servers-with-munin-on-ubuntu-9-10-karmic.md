@@ -11,6 +11,8 @@ modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
 published: 'Friday, January 22nd, 2010'
+expiryDate: 2013-05-17
+deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 9.10 (Karmic)'
 ---
 

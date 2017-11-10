@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: 'install WordPress,WordPress on Linode,WordPress how-to, how to install wordpress, how to configure wordpress'
+keywords: ["install WordPress", "WordPress on Linode", "WordPress how-to", " how to install wordpress", " how to configure wordpress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
-modified: Monday, October 5th, 2015
+aliases: ['web-applications/cms-guides/wordpress/','websites/cms/manage-web-content-with-wordpress/']
+modified: 2015-10-05
 modified_by:
   name: Elle Krout
-published: 'Tuesday, July 27th, 2010'
+published: 2010-07-27
 title: How to Install and Configure WordPress
 deprecated: true
 external_resources:
@@ -22,9 +22,9 @@ WordPress is a popular, dynamic, blog-focused content management system. The sof
 
 If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress on Ubuntu 16.04](/docs/websites/cms/install-wordpress-on-ubuntu-16-04).
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/weh2nc2dad?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
@@ -95,12 +95,12 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 
 2.  As it stands, should you try to update WordPress or install new themes or plugins, you will be asked to input your FTP information. To bypass this, you must alter your `wp-config.php` file by adding the following line:
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/wp-config.php
-    :   ~~~ php
-        /** Bypass FTP */
-        define('FS_METHOD', 'direct');
-        ~~~
+    {{< file-excerpt "/var/www/html/example.com/public_html/wp-config.php" php >}}
+/** Bypass FTP */
+define('FS_METHOD', 'direct');
+
+{{< /file-excerpt >}}
+
 
     Next, give WordPress permission to add and edit files in the `public_html` folder:
 
@@ -112,15 +112,16 @@ If you're using Ubuntu 16.04, please use our guide on how to [Install Wordpress 
 
     Restart Apache.
 
-    {: .note}
-    >
-    >If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
-    >
-    >     <Directory /var/www/>
-    >         Options Indexes FollowSymLinks
-    >         AllowOverride All
-    >         Require all granted
-    >     </Directory>
+    {{< note >}}
+If using permalinks to set your posts' URLs, Apache will need to be updated to allow individual sites to update the `.htaccess` file. To permit this, add the following to you WordPress website's *VirtualHosts* codeblock:
+
+{{< file-excerpt >}}
+<Directory /var/www/>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+{{< /file-excerpt >}}
 
 You will now be able to login to your new WordPress-powered website. You can continue the configuration of your WordPress site from the web-based interface.
 

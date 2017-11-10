@@ -3,15 +3,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
-keywords: 'Postfix, Debian 7, SMTP, Email, Mail'
+keywords: ["Postfix", " Debian 7", " SMTP", " Email", " Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 location: ['email/postfix/postfix-smtp-debian7/']
 contributor:
     name: Santiago Ti
-modified: Friday, May 30th, 2014
+modified: 2014-05-30
 modified_by:
   name: Linode
-published: 'Friday, May 30th, 2014'
+published: 2014-05-30
 title: Configure Postfix to Send Mail Using an External SMTP Server
 image: https://linode.com/docs/assets/external_smtp_tg.png
 ---
@@ -24,7 +24,7 @@ There are many reasons why you would want to configure Postfix to send email usi
 
 In this tutorial, you will learn how to install and configure a Postfix server to send email through Mandrill, or SendGrid.
 
-##Updated Guide for Gmail and Google Apps
+## Updated Guide for Gmail and Google Apps
 
 We've got an updated version of this guide that works with Gmail's new security features!
 
@@ -45,9 +45,9 @@ Before starting this tutorial, you should have:
 
         sudo apt-get install libsasl2-modules
 
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Installing Postfix
 
@@ -73,11 +73,11 @@ In this section, you will install Postfix and set the domain and hostname.
 
 5.  Make sure that the **myhostname** parameter is configured with your server's FQDN:
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        myhostname = fqdn.example.com
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+myhostname = fqdn.example.com
+
+{{< /file-excerpt >}}
+
 
 ## Configuring SMTP Usernames and Passwords
 
@@ -91,21 +91,21 @@ If you want to use [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-f
 
 2.  Add your destination (SMTP Host), username, and password in the following format:
 
-    {: .file }
-    /etc/postfix/sasl\_passwd
-    :   ~~~
-        [mail.isp.example] username:password
-        ~~~
+    {{< file "/etc/postfix/sasl\\_passwd" >}}
+[mail.isp.example] username:password
 
-    {:.note}
-    >
-    > If you want to specify a non-default TCP Port (such as 587), then use the following format:
-    >
-    > {: .file }
-    > /etc/postfix/sasl\_passwd
-    > :   ~~~
-    >     [mail.isp.example]:587 username:password
-    >     ~~~
+{{< /file >}}
+
+
+    {{< note >}}
+If you want to specify a non-default TCP Port (such as 587), then use the following format:
+
+{{< file "> /etc/postfix/sasl\\_passwd" >}}
+[mail.isp.example]:587 username:password
+{{< /note >}}
+
+{{< /file >}}
+
 3.  Create the hash db file for Postfix by running the `postmap` command:
 
         sudo postmap /etc/postfix/sasl_passwd
@@ -131,33 +131,33 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use the e
 
 2.  Update the **relayhost** parameter to show your external SMTP relay host. **Important**: If you specified a non-default TCP port in the `sasl_passwd` file, then you must use the same port when configuring the **relayhost** parameter.
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        # specify SMTP relay host
-        relayhost = [mail.isp.example]:587
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+# specify SMTP relay host
+relayhost = [mail.isp.example]:587
 
-    {:.note}
-    >
-    > Check the appropriate [Google Apps](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) section for the details to enter here.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+Check the appropriate [Google Apps](/docs/email/postfix/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu), [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-for-sendgrid) section for the details to enter here.
+{{< /note >}}
 
 3.  At the end of the file, add the following parameters to enable authentication:
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        # enable SASL authentication
-        smtp_sasl_auth_enable = yes
-        # disallow methods that allow anonymous authentication.
-        smtp_sasl_security_options = noanonymous
-        # where to find sasl_passwd
-        smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-        # Enable STARTTLS encryption
-        smtp_use_tls = yes
-        # where to find CA certificates
-        smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+# enable SASL authentication
+smtp_sasl_auth_enable = yes
+# disallow methods that allow anonymous authentication.
+smtp_sasl_security_options = noanonymous
+# where to find sasl_passwd
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+# Enable STARTTLS encryption
+smtp_use_tls = yes
+# where to find CA certificates
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
+{{< /file-excerpt >}}
+
 
 4.  Save your changes.
 5.  Restart Postfix:
@@ -188,19 +188,19 @@ Use these settings for Mandrill.
 
 1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
 
-    {: .file }
-    /etc/postfix/sasl\_passwd
-    :   ~~~
-        [smtp.mandrillapp.com]:587 USERNAME:API_KEY
-        ~~~
+    {{< file "/etc/postfix/sasl\\_passwd" >}}
+[smtp.mandrillapp.com]:587 USERNAME:API_KEY
+
+{{< /file >}}
+
 
 2.  For `/etc/postfix/main.cf`, use the following **relayhost**:
 
-    {: .file }
-    /etc/postfix/main.cf
-    :   ~~~
-        relayhost = [smtp.mandrillapp.com]:587
-        ~~~
+    {{< file "/etc/postfix/main.cf" >}}
+relayhost = [smtp.mandrillapp.com]:587
+
+{{< /file >}}
+
 
 3.  Create the hash db file for Postfix by running the `postmap` command:
 
@@ -216,19 +216,19 @@ Use these settings for SendGrid.
 
 1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
 
-    {: .file }
-    /etc/postfix/sasl\_passwd
-    :   ~~~
-        [smtp.sendgrid.net]:587 USERNAME:PASSWORD
-        ~~~
+    {{< file "/etc/postfix/sasl\\_passwd" >}}
+[smtp.sendgrid.net]:587 USERNAME:PASSWORD
+
+{{< /file >}}
+
 
 2.  For `/etc/postfix/main.cf`, use the following **relayhost**:
 
-    {: .file }
-    /etc/postfix/main.cf
-    :   ~~~
-        relayhost = [smtp.sendgrid.net]:587
-        ~~~
+    {{< file "/etc/postfix/main.cf" >}}
+relayhost = [smtp.sendgrid.net]:587
+
+{{< /file >}}
+
 
 3.  Create the hash db file for Postfix by running the `postmap` command:
 

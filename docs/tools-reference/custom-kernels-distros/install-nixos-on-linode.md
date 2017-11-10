@@ -2,13 +2,13 @@
 author:
   name: Andrew Miller
   email: docs@linode.com
-published: 'Friday, June 16, 2017'
+published: 2017-06-16
 description: 'Install NixOS, which is known for its declarative approach to configuration management, configuration rollback, reliability, and for being DevOps-friendly.'
-keywords: 'custom distro,NixOS,advanced Linux,kvm'
+keywords: ["custom distro", "NixOS", "advanced Linux", "kvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified_by:
   name: Andrew Miller
-modified: 'Friday, June 16, 2017'
+modified: 2017-06-16
 title: Install and Configure NixOS on a Linode
 external_resources:
  - '[NixOS](https://nixos.org/nixos/manual/)'
@@ -21,9 +21,9 @@ external_resources:
 
 While Nix can be installed on any Linux system, NixOS takes these ideas a step further by extending them to the entire system, allowing configuration files and active state to be managed as well. This unique approach to system management has many advantages that can make deploying software and application updates easier.
 
-{: .caution}
->
->NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.
+{{< caution >}}
+NixOS is not officially supported by Linode at the time of publishing this guide. Any issues with NixOS on your Linode are outside the scope of Linode Support. In addition, certain Linode tools, such as Network- and Boot-Helpers, will not work with NixOS.
+{{< /caution >}}
 
 ## Before You Begin
 
@@ -111,20 +111,20 @@ Since you can modify these later, it is better to use the `/dev/sdX` identifiers
 
 Replace the contents of the `filesystems` and `swapDevices` sections with the following:
 
-{: .file-excerpt }
-/mnt/etc/nixos/hardware-configuration.nix
-:   ~~~ conf
-    filesystems."/" =
-      { device = "/dev/sda";
-        fsType = "ext4";
-      };
+{{< file-excerpt "/mnt/etc/nixos/hardware-configuration.nix" aconf >}}
+filesystems."/" =
+  { device = "/dev/sda";
+    fsType = "ext4";
+  };
 
-    swapDevices =
-      [ { device = "/dev/sdb"; }
-      ];
-    ~~~
+swapDevices =
+  [ { device = "/dev/sdb"; }
+  ];
 
-###Enable LISH
+{{< /file-excerpt >}}
+
+
+### Enable LISH
 
 The LISH console requires certain kernel and GRUB options to be configured in the hardware configuration. Place these lines anywhere within the curly braces `{ }` that contain most of the existing configuration. Order doesn't matter for Nix files, so group settings in a way that makes sense to you:
 
@@ -154,14 +154,14 @@ Most of these changes bring the NixOS defaults in line with how Linode's standar
 
 Root logins via SSH are disabled by default. To access your Linode, enable root login during installation:
 
-{: .file-excerpt }
-/mnt/etc/nixos/configuration.nix
-:   ~~~ conf
-    services.openssh = {
-      enable = true;
-      permitRootLogin = "yes";
-    };
-    ~~~
+{{< file-excerpt "/mnt/etc/nixos/configuration.nix" aconf >}}
+services.openssh = {
+  enable = true;
+  permitRootLogin = "yes";
+};
+
+{{< /file-excerpt >}}
+
 
 After installation, create a user with limited permissions, then set `permitRootLogin` to `"no"`.
 

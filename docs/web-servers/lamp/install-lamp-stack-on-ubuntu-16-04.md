@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This tutorial outlines the steps needed to install a LAMP (Linux, Apache, MySQL, PHP) stack on an Ubuntu 16.04 Long Term Support (LTS) system.'
-keywords: 'install lamp ubuntu 16.04,apache install,mysql install,php 7.0, ubuntu 16.04 '
+keywords: ["install lamp ubuntu 16.04", "apache install", "mysql install", "php 7.0", " ubuntu 16.04 "]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lamp/install-lamp-on-ubuntu-16-04/','web-servers/lamp/install-lamp-on-ubuntu-16-04/']
-modified: Friday, July 28th, 2017
+aliases: ['websites/lamp/install-lamp-on-ubuntu-16-04/','web-servers/lamp/install-lamp-on-ubuntu-16-04/']
+modified: 2017-07-28
 modified_by:
   name: Edward Angert
-published: 'Thursday, April 28th, 2016'
+published: 2016-04-28
 title: 'How to Install a LAMP Stack on Ubuntu 16.04'
 external_resources:
  - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
@@ -24,11 +24,11 @@ This guide shows how to install and test a LAMP stack on Ubuntu 16.04 (LTS).
 
 ![Install LAMP on Ubuntu 16.04](/docs/assets/install-lamp-on-ubuntu-1604.png "Install LAMP on Ubuntu 16.04")
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
->
->Replace each instance of `example.com` in this guide with your site's domain name.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, see the [Linux Users and Groups guide](/docs/tools-reference/linux-users-and-groups).
+
+Replace each instance of `example.com` in this guide with your site's domain name.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -63,32 +63,31 @@ Instead of installing Apache, MySQL, and PHP separately, tasksel offers a conven
 
     The state of `KeepAlive` depends on the type of site you plan to run. Please read more about your specific use-case [here](https://httpd.apache.org/docs/2.4/mod/core.html#keepalive) open the Apache config file, `apache2.conf`, and adjust the `KeepAlive` setting:
 
-    {: .file}
-    /etc/apache2/apache2.conf
-    : ~~~ conf
-        KeepAlive On
-        MaxKeepAliveRequests 50
-        KeepAliveTimeout 5
-      ~~~
+    {{< file "/etc/apache2/apache2.conf" aconf >}}
+KeepAlive On
+MaxKeepAliveRequests 50
+KeepAliveTimeout 5
 
-    {: .note}
-    >
-    > The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+{{< /file >}}
 
+
+    {{< note >}}
+The `MaxKeepAliveRequests` setting controls the maximum number of requests during a persistent connection. 50 is a conservative amount; you may need to set this number higher depending on your use-case. The `KeepAliveTimeout` controls how long the server waits for new requests from already connected clients, setting this option to 5 will avoid wasting RAM.
+{{< /note >}}
 
 3.  The default *multi-processing module* (MPM) is the **prefork** module. `Mpm_prefork` is the module that is compatible with most systems. Since the LAMP stack requires PHP, it may be best to stick with the default. Open the `mpm_prefork.conf` file located in `/etc/apache2/mods-available` and edit the configuration. Below are the suggested values for a **2GB Linode**:
 
-    {: .file}
-    /etc/apache2/mods-available/mpm_prefork.conf
-    :   ~~~ conf
-        <IfModule mpm_prefork_module>
-                StartServers            4
-                MinSpareServers         3
-                MaxSpareServers         40
-                MaxRequestWorkers       200
-                MaxConnectionsPerChild  10000
-        </IfModule>
-        ~~~
+    {{< file "/etc/apache2/mods-available/mpm_prefork.conf" aconf >}}
+<IfModule mpm_prefork_module>
+        StartServers            4
+        MinSpareServers         3
+        MaxSpareServers         40
+        MaxRequestWorkers       200
+        MaxConnectionsPerChild  10000
+</IfModule>
+
+{{< /file >}}
+
 
 4.  Disable the event module and enable prefork:
 
@@ -109,45 +108,47 @@ You can set up virtual hosts several ways; however, below is the recommended met
 
 2.  Edit the new `example.com.conf` configuration file by uncommenting `ServerName` and replacing `example.com` with your site's IP or Fully Qualified Domain Name (FQDN). Enter the document root path and log directories as shown below, and add a `Directory` block before `</VirtualHost>`:
 
-    {: .file }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~ apache
-        <Directory /var/www/html/example.com/public_html>
-                Require all granted
-        </Directory>
-        <VirtualHost *:80>
-                ServerName example.com
-                ServerAlias www.example.com
-                ServerAdmin webmaster@localhost
-                DocumentRoot /var/www/html/example.com/public_html
+    {{< file "/etc/apache2/sites-available/example.com.conf" apache >}}
+<Directory /var/www/html/example.com/public_html>
+        Require all granted
+</Directory>
+<VirtualHost *:80>
+        ServerName example.com
+        ServerAlias www.example.com
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html/example.com/public_html
 
-                ErrorLog /var/www/html/example.com/logs/error.log
-                CustomLog /var/www/html/example.com/logs/access.log combined
+        ErrorLog /var/www/html/example.com/logs/error.log
+        CustomLog /var/www/html/example.com/logs/access.log combined
 
-        </VirtualHost>
-        ~~~
+</VirtualHost>
 
-    {: .note }
-    > The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
-    >
-    > The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
+{{< /file >}}
+
+
+    {{< note >}}
+The file example above has all comment sections removed for brevity; you may keep or remove the commented areas as you see fit.
+
+The `ServerAlias` directive allows you to include multiple domain names or subdomains for a single host. The example above allows visitors to use `example.com` or `www.example.com` to navigate to this virtual host.
+{{< /note >}}
 
 3.  Create the directories referenced above:
 
         sudo mkdir -p /var/www/html/example.com/{public_html,logs}
 
-    {: .note }
-    > Make sure that you do not put space after comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
+    {{< note >}}
+Make sure that you do not put space after comma between `public_html` and `logs` because it will create a folder named `{public_html,` and will cause an error when you will reload Apache.
+{{< /note >}}
 
 4.  Link your virtual host file from the `sites-available` directory to the `sites-enabled` directory:
 
         sudo a2ensite example.com.conf
 
-    {: .note}
-    >
-    >If you need to disable your website, run:
-    >
-    >     a2dissite example.com.conf
+    {{< note >}}
+If you need to disable your website, run:
+
+a2dissite example.com.conf
+{{< /note >}}
 
 5.  Disable the default virtual host to minimize security risks:
 
@@ -202,17 +203,17 @@ Install the `mysql-server` package and choose a secure password when prompted:
 
 2.  Once PHP7.0 is installed, edit the configuration file located in `/etc/php/7.0/apache2/php.ini` to enable more descriptive errors, logging, and better performance. The following modifications provide a good starting point:
 
-    {: .file-excerpt}
-    /etc/php/7.0/apache2/php.ini
-    :   ~~~ ini
-        max_input_time = 30
-        error_reporting = E_COMPILE_ERROR | E_RECOVERABLE_ERROR | E_ERROR | E_CORE_ERROR
-        error_log = /var/log/php/error.log
-        ~~~
+    {{< file-excerpt "/etc/php/7.0/apache2/php.ini" ini >}}
+max_input_time = 30
+error_reporting = E_COMPILE_ERROR | E_RECOVERABLE_ERROR | E_ERROR | E_CORE_ERROR
+error_log = /var/log/php/error.log
 
-    {: .note}
-    >
-    >The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+The beginning of the `php.ini` file contains examples commented out with a semicolon (**;**), which disables these directives. Ensure that the lines you modify in this step follow the examples section and are uncommented.
+{{< /note >}}
 
 3.  Create the log directory for PHP and give ownership to the Apache system user:
 
@@ -224,9 +225,9 @@ Install the `mysql-server` package and choose a secure password when prompted:
         sudo systemctl restart apache2
 
 
-	{:.note}
-	>
-	>If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
+	{{< note >}}
+If you plan on using your LAMP stack to host a WordPress server, download these PHP modules: `apt install php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc`
+{{< /note >}}
 
 ### Optional: Test and Troubleshoot the LAMP Stack
 
@@ -234,33 +235,33 @@ In this section, you'll create a test page that shows whether Apache can render 
 
 1.  Paste the following code into a new file, `phptest.php`, in the `public_html` directory. Modify `webuser` and `password` to match the information entered in the **Create a MySQL Database** section above:
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/phptest.php
-    :   ~~~ php
-        <html>
-        <head>
-            <title>PHP Test</title>
-        </head>
-            <body>
-            <?php echo '<p>Hello World</p>';
+    {{< file-excerpt "/var/www/html/example.com/public_html/phptest.php" php >}}
+<html>
+<head>
+    <title>PHP Test</title>
+</head>
+    <body>
+    <?php echo '<p>Hello World</p>';
 
-            // In the variables section below, replace user and password with your own MySQL credentials as created on your server
-            $servername = "localhost";
-            $username = "webuser";
-            $password = "password";
+    // In the variables section below, replace user and password with your own MySQL credentials as created on your server
+    $servername = "localhost";
+    $username = "webuser";
+    $password = "password";
 
-            // Create MySQL connection
-            $conn = mysqli_connect($servername, $username, $password);
+    // Create MySQL connection
+    $conn = mysqli_connect($servername, $username, $password);
 
-            // Check connection - if it fails, output will include the error message
-            if (!$conn) {
-                die('<p>Connection failed: <p>' . mysqli_connect_error());
-            }
-            echo '<p>Connected successfully</p>';
-            ?>
-        </body>
-        </html>
-        ~~~
+    // Check connection - if it fails, output will include the error message
+    if (!$conn) {
+        die('<p>Connection failed: <p>' . mysqli_connect_error());
+    }
+    echo '<p>Connected successfully</p>';
+    ?>
+</body>
+</html>
+
+{{< /file-excerpt >}}
+
 
 2.  Navigate to `example.com/phptest.php` from your local machine. If the components of your LAMP stack are working correctly, the browser will display a "Connected successfully" message. If not, the output will be an error message.
 

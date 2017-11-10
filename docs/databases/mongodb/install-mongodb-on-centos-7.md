@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install MongoDB for document-oriented data storage on CentOS 7.'
-keywords: 'nosql,database,mongodb,key store,ubuntu,mongodb tutorial'
+keywords: ["nosql", "database", "mongodb", "key store", "ubuntu", "mongodb tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, December 30th, 2016
+modified: 2016-12-30
 modified_by:
   name: Phil Zona
-published: 'Friday, December 30th, 2016'
+published: 2016-12-30
 title: 'Install MongoDB on CentOS 7'
 external_resources:
  - '[Official MongoDB Documentation](https://docs.mongodb.org/v3.2/)'
@@ -36,9 +36,9 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
       sudo yum update
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Add the MongoDB Repository
 
@@ -46,16 +46,16 @@ The most current stable version of MongoDB is 3.2 and, as of this writing, the d
 
 Create a new file, `/etc/yum.repos.d/mongodb-org-3.2.repo`, so that you can install the latest release using `yum`. Add the following contents to the file:
 
-{: .file}
-/etc/yum.repos.d/mongodb-org-3.2.repo
-:   ~~~
-    [mongodb-org-3.2]
-    name=MongoDB Repository
-    baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
-    gpgcheck=1
-    enabled=1
-    gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
-    ~~~
+{{< file "/etc/yum.repos.d/mongodb-org-3.2.repo" >}}
+[mongodb-org-3.2]
+name=MongoDB Repository
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
+gpgcheck=1
+enabled=1
+gpgkey=https://www.mongodb.org/static/pgp/server-3.2.asc
+
+{{< /file >}}
+
 
 ## Install MongoDB
 
@@ -93,12 +93,12 @@ These are only a few basic configuration options that are set by default.
 
 We **strongly** recommend uncommenting the `security` section and adding the following:
 
-{: .file-excerpt}
-/etc/mongod.conf
-:   ~~~ conf
-    security:
-      authorization: enabled
-    ~~~
+{{< file-excerpt "/etc/mongod.conf" aconf >}}
+security:
+  authorization: enabled
+
+{{< /file-excerpt >}}
+
 
 The `authorization` option enables [role-based access control](https://docs.mongodb.com/manual/core/authorization/) for your databases. If no value is specified, any user will have the ability to modify any database. We'll explain how to create database users and set their permissions later in this guide.
 
@@ -207,8 +207,9 @@ Much of MongoDB's popularity comes from its ease of integration. Interactions wi
 
     If you're not familiar with MongoDB terminology, you can think of a collection as analogous to a table in a relational database management system. For more information on creating new collections, see the MongoDB documentation on the [db.createCollection() method](https://docs.mongodb.com/v3.2/reference/method/db.createCollection/).
 
-    {: .note}
-    > Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
+    {{< note >}}
+Collection names should not include certain punctuation such as hyphens. However, exceptions may not be raised until you attempt to use or modify the collection. For more information, refer to MongoDB's [naming restrictions](https://docs.mongodb.com/manual/reference/limits/#naming-restrictions).
+{{< /note >}}
 
 4.  Create sample data for entry into the test database. MongoDB accepts input as *documents* in the form of JSON objects such as those below. The `a` and `b` variables are used to simplify entry; objects can be inserted directly via functions as well.
 
