@@ -9,7 +9,7 @@ aliases: ['frameworks/symfony/','websites/frameworks/symfony-on-centos-5/']
 modified: 2013-09-27
 modified_by:
   name: Linode
-published:2010-06-08
+published: 2010-06-08
 expiryDate: 2015-09-27
 title: Symfony on CentOS 5
 deprecated: true
