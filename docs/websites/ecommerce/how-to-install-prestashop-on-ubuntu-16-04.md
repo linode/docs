@@ -3,6 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide shows how to install PrestaShop on LAMP (with MariaDB). It also shows how to add a TLS certificate and optimize some of the configurations.'
+og_description: 'PrestaShop is a comprehensive ecommerce solution used by thousands of merchants around the world. Use this guide to set it up with TLS on your Linode.'
 keywords: 'prestashop,ecommerce,cms'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: Tuesday, August 29th, 2017
