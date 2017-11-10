@@ -2,16 +2,16 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'This guide will teach you how to install
-and configure a Webmin control panel for system administration'
-keywords: 'webmin,webmin debian,webmin centos,webmin ubuntu,webmin fedora,linux control panel,debian,ubuntu,centos,fedora,control panel,admin panel'
+description: 'This guide teaches you how to install and configure a Webmin control panel for system administration.'
+og_description: 'Install the Webmin control panel to manage your Linux system administration from a web browser, without needing to SSH into your machine. This guide shows you how.'
+keywords: 'webmin,control panel,admin panel'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-applications/control-panels/webmin/installing-webmin/']
-modified: Friday, September 15th, 2017
+modified: Friday, November 10, 2017
 modified_by:
   name: Linode
 published: 'Wednesday, October 8th, 2014'
-title: How to Install a Webmin Control Panel
+title: How to Install a Webmin Control Panel and Modules
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'
@@ -19,23 +19,19 @@ external_resources:
  - '[Webmin FAQ](http://www.webmin.com/faq.html)'
 ---
 
-Webmin is a web interface that allows you to manage configuration files and reload programs without needing to use SSH. It is a popular alternative to administration panels such as cPanel or Plesk and contains many of the features that make them popular. Modules and plugins expand Webmin's functionality and can be found for many popular packages like the [Apache web server](/docs/web-servers/apache/) and [Postfix](/docs/email/postfix/). Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
-
-Installing Webmin is straightforward; however, you may wish to consult the documentation contained at the end of this document for additional information on using Webmin to manage your system.
-
+Webmin is a web interface that allows you to manage configuration files and reload programs through a browser, without needing to SSH into your Linode. It is a popular alternative to administration panels such as cPanel or Plesk, and contains many of the features that make them popular. Many third-party modules exist for different use cases, which contribute to the flexibility of the Webmin control panel.
 
 ## Before You Begin
 
-This guide was written using Debian 8, but will also work with Ubuntu 16.04.
+The commands in this guide work with either Debian 8 or Ubuntu 16.04.
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section; if you choose to set up a firewall, ensure that incoming connections are allowed on port 10000.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. You do not have to complete the Configure a Firewall section. If you choose to set up a firewall, ensure that incoming connections are allowed on port `10000`.
 
 3.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
-
 
 ### Check the Hostname
 
@@ -44,9 +40,9 @@ Before you begin installing and configuring the components described in this gui
     hostname
     hostname -f
 
-The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
+The first command shows your short hostname, and the second shows your fully qualified domain name (FQDN).
 
-## Installing Webmin
+## Install and Log in to Webmin
 
 Once you have satisfied all dependencies, you will need to download the Webmin package to your Linode.
 
@@ -61,49 +57,66 @@ Once you have satisfied all dependencies, you will need to download the Webmin p
 
 2. Download and install the GPG key for the repository:
 
-        cd /tmp
-        wget http://www.webmin.com/jcameron-key.asc
-        apt-key add jcameron-key.asc
+       cd /tmp
+       wget http://www.webmin.com/jcameron-key.asc
+       apt-key add jcameron-key.asc
 
-3. Update Apt:
+3. Update apt:
 
-        apt-get update
+       apt-get update
 
-3. Install Webmin:
+4. Install Webmin:
 
        apt-get install webmin
 
+5. After the installation completes, Webmin will give you a URL to visit to access the web panel. This URL will be in the form of `https://hostname:10000`, where `hostname` is the host name of your Linode. If your Linode does not have a FQDN, use your Linode's IP or a domain pointed at your Linode to access Webmin.
 
-After the installation has completed, Webmin will give you a URL to visit to access the web panel. This URL will be in the form of `https://hostname:10000`, where `hostname` is the host name of your Linode. If your Linode does not have a Fully Qualified Domain Name (FQDN) such as `myserver.mydomain.com`, you should use your Linode's IP or a domain pointed at your Linode to access Webmin.
+6. For security reasons, Webmin generates a self-signed SSL certificate for itself when you install it. If your browser shows a warning about the SSL certificate, verify the details of the certificate and accept it.
 
-For security reasons, Webmin generates a self-signed SSL certificate for itself when you install it. If you get a warning about an SSL certificate from your browser, you may wish to verify the details of the certificate and accept it.
+7. At the login screen, enter your root user credentials, or the credentials for any user able to execute commands using `sudo`.
 
-You will be presented with a login screen; enter your root user credentials, or credentials for any user able to execute commands using `sudo`.
+## Configure Webmin
 
-## Configuring Webmin
+For added security through obfuscation, change the port Webmin runs on to something other than `10000`. 
 
-We recommend you change the port Webmin runs on to something other than 10000. To do this, select the "Webmin" tab from the menu on the left and click "Webmin Configuration" from the submenu. Select "Ports and Addresses" from the control panel and change the "Listen on Port" to a port that you will remember. When you click the "Save" button, Webmin will change the port it runs on and redirect you to the new page. You are now free to configure the rest of your services with Webmin.
+1.  Select the **Webmin** tab from the menu on the left and click **Webmin Configuration** from the submenu.
 
-## Extending Webmin
+2.  Select **Ports and Addresses** from the control panel and change the **Listen on Port** to a port that you will remember.
 
-### Standard Modules
-Installing any of Webmin's [standard modules](http://www.webmin.com/standard.html) is simple. For example, to install the Apache module, open your Webmin web panel and find the "Un-used Modules" tab in the menu on the left. Click on the Apache module. If it has not already been installed automatically, you will see a message like this:
+3.  When you click **Save**, Webmin will change the port it runs on and redirect you to the new page. 
 
-![Install Apache Message](/docs/assets/webmin/install_plugin.png)
+You are now free to configure the rest of your services with Webmin.
 
-Click on the "Click Here" button to have Webmin install the module for you.
+## Install Webmin Modules
 
-### Third-Party Modules
-There are also many [third party modules](http://www.webmin.com/cgi-bin/search_third.cgi?modules=1) that can be added to Webmin; installing these often requires a few extra steps. This section will demonstrate how to install these modules, using the [Certificate Manager](http://www.webmin.com/virtualmin.html) as an example. This module allows you to generate or import SSL certificates.
+### Standard Webmin Modules
 
-1.  Execute the following command from your local machine (or paste the url into a browser window):
+Installing any of Webmin's [standard modules](http://www.webmin.com/standard.html) is easy.
+
+To install the Apache module:
+
+1.  Open your Webmin web panel and click the **Un-used Modules** tab in the menu on the left.
+
+2.  Click on the Apache module. If it has not already been installed automatically, you will see the following:
+
+    ![Install Apache Message](/docs/assets/webmin/install_plugin.png "Install Apache Message")
+
+3.  Click the **Click Here** button to have Webmin install the module for you.
+
+### Third-Party Webmin Modules
+
+There are many [third-party modules](http://www.webmin.com/cgi-bin/search_third.cgi?modules=1) that can be added to Webmin. Installing these often requires a few extra steps. This section demonstrates how to install these modules using the [Certificate Manager](http://www.webmin.com/virtualmin.html) as an example. This module allows you to generate or import SSL certificates.
+
+1.  Execute the following command from your local machine (or paste the url into a browser window) to download the zip:
 
         wget http://www.webmin.com/download/modules/certmgr.wbm.gz
 
-2.  From your Webmin web panel, select the "Webmin" tab from the menu on the left and choose "Webmin Configuration" from the submenu.
+2.  From your Webmin web panel, select the **Webmin** tab from the menu on the left and choose **Webmin Configuration** from the submenu.
 
-3.  Click the "Webmin Modules" menu icon, and you will see a menu similar to the picture below:
+3.  Click the **Webmin Modules** menu icon, and you will see a menu similar to:
 
-    ![Install Module Menu](/docs/assets/webmin/install-module-menu.png)
+    ![Install Module Menu](/docs/assets/webmin/install-module-menu.png "Install Module Menu")
 
-4.  Choose "From uploaded file" and navigate to the file you just downloaded to your local machine. Click "Install Module." You may need to sign out of the web panel and sign in again before you can use the newly installed module.
+4.  Choose **From uploaded file** and navigate to the file you just downloaded to your local machine.
+
+5.  Click **Install Module**. You may need to sign out of the web panel and sign in again before you can use the newly installed module.
