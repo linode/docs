@@ -204,6 +204,16 @@ The gulp publish task can deploy to any server listed in `linode/hugo/tasks/conf
 
 {{< /file >}}
 		
+### Docs1 and Docs2
+
+The two soon-to-be-production boxes at this time are:
+
+- docs1@45.33.8.121
+- docs2@198.58.105.109
+
+
+They are configured via Salt-ssh, on box salt-master@45.56.97.222 --These three boxes are on the linodedemo account, and the root password can be reset through the manager.
+
 
 
 
