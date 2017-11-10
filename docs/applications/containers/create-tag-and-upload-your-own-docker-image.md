@@ -6,20 +6,21 @@ contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
 description: 'Create and tag a custom Docker Image on your Linode, and upload it to Docker Hub for sharing or archiving.'
+og_description: 'Docker makes it easy to develop and deploy custom and consistent environments, called images. Each image includes specific applications and dependencies. Learn how to create a custom Docker Image and upload it to Docker Hub for sharing or archiving.'
 keywords: 'docker,container,dockerfile,docker image'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: Friday, September 1, 2017
 modified_by:
   name: Linode
 published: 'Friday, September 1, 2017'
-title: 'Create, tag, and upload your own Docker Image'
+title: 'Create, Tag, and Upload Your Own Docker Image'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
  - '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
  - '[Docker Hub](https://hub.docker.com/)'
 ---
 
-![Create, tag, and upload your own Docker Image](/docs/assets/docker/docker-image-title.png "Create, tag, and upload your own Docker Image")
+![Create, Tag, and Upload Your Own Docker Image](/docs/assets/docker/docker-image-title.png "Create, Tag, and Upload Your Own Docker Image")
 
 Docker makes it easy to develop and deploy custom and consistent environments that include specific applications and dependencies. Docker calls these compilations Images. Docker images can be hosted and retrieved from private locations or from the official repository, [Docker Hub](https://hub.docker.com/).
 
@@ -75,7 +76,7 @@ Docker tags are an easy way for you to know what version or release you are work
 
 2.  Run `docker images` to see the new image created along with the associated tag:
 
-    ![docker images shows our newly tagged image](/docs/assets/docker/docker-image-tags.png "Our newly tagged image, ready to be pushed to Docker Hub.")
+    ![Our newly tagged image, ready to be pushed to Docker Hub](/docs/assets/docker/docker-image-tags.png "Our newly tagged image, ready to be pushed to Docker Hub")
 
 ## Push Your Image to Docker Hub
 
@@ -93,6 +94,6 @@ Docker tags are an easy way for you to know what version or release you are work
 
 4.  Open a browser, log in to your Docker Hub account, and go your main repository. You will see the new image listed. Click on the image and then click on the **Tags** tab to see the added tag:
 
-    ![Docker Hub shows the image and tag](/docs/assets/docker/docker-image-public-repo.png "Our image, complete with tags, on Docker Hub.")
+    ![Our image, complete with tags, on Docker Hub](/docs/assets/docker/docker-image-public-repo.png "Our image, complete with tags, on Docker Hub")
 
 And that is all there is to creating a new image, changing the image, committing your changes, tagging the image, and pushing the complete image to Docker Hub, all handled directly from your Linode.
