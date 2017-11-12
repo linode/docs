@@ -1,8 +1,5 @@
 ---
-author:
-  name: Linode
-  email: afornuto@linode.com
-keywords: 'containers,'
+keywords: 'containers'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['containers/']
 published: 'Tuesday, January 28th, 2014'
