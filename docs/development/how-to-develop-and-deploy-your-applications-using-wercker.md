@@ -10,7 +10,7 @@ published: 'Monday, November 6th, 2017'
 modified: 'Monday, November 6th, 2017'
 modified_by:
   name: Linode
-title: 'How to Develop and Deploy Your Applications Uing Wercker'
+title: 'How to Develop and Deploy Your Applications Using Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
