@@ -54,12 +54,9 @@ Both A/AAAA, and MX records will need to be set for your domain.
 
 4.	Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
 
-	{{< file-excerpt "/etc/postfix/aliases" aconf >}}
+	{{< file-excerpt "/etc/postfix/aliases" >}}
 root:           root@hostname.example.com
-
-
 {{< /file-excerpt >}}
-
 
 5.  Run `newaliases` after editing the aliases list.
 

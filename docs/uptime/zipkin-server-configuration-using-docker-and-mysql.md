@@ -239,16 +239,17 @@ There are 2 different backup methods: using MySQL , and using sysadmin.
 
 1. Ensure that the MySQL service is running on a container. You can check this with a `docker ps` command. The `docker ps` command displays the active containers:
 
-      {{< output >}}
+    {{<file-excerpt "docker -ps">}}
 CONTAINER ID        IMAGE                            COMMAND                  CREATED             STATUS              PORTS                              NAMES
 023d14e6193d        openzipkin/zipkin-dependencies   "crond -f"               3 days ago          Up 3 days                                              dependencies
 ee0c255b7765        openzipkin/zipkin                "/bin/sh -c 'test ..."   3 days ago          Up 3 days           9410/tcp, 0.0.0.0:9411->9411/tcp   zipkin
 43f659b36f17        openzipkin/zipkin-mysql          "/bin/sh -c /mysql..."   3 days ago          Up 3 days           0.0.0.0:3306->3306/tcp             mysql
-{{< /output >}}
+
+{{</file-excerpt>}}
 
 2. If isn't running, make sure you start the Zipkin services with the `docker-compose up` command first. Then issue the MySQLdump with the following parameters from your Zipkin host machine.
-
-        mysqldump --protocol=tcp -A -pzipkin -uzipkin > ~/database.bak
+  
+         mysqldump --protocol=tcp -A -pzipkin -uzipkin > ~/database.bak
 
     This command will dump the entire MySQL database from your MySQL container into the file called database.bak in your home directory. Alternatively, you can just dump your Zipkin span/trace data with:
 
@@ -264,8 +265,7 @@ We can just zip or tar the exported database files on the host system. Since we 
 
     After the `docker down` command, we can perform a `docker ps` command and see that there are no containers running. That should look like this:
 
-
-
+{{</file-excerpt>}}
        CONTAINER ID        IMAGE      COMMAND    CREATED      STATUS       PORTS         NAMES
 
 

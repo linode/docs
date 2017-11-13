@@ -56,8 +56,8 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
 2. Ideally, your Linode should possess at least 4GB of RAM. While the Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-    {{< note >}}
-    Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
+  {{< note >}}
+Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
 {{< /note >}}
 
 3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
@@ -252,8 +252,8 @@ LS_GROUP=ossec
 
         /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
 
-    {{< note >}}
-    The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
+  {{< note >}}
+The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
 {{< /note >}}
 
 5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values in `/etc/kibana/kibana.yml` with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.

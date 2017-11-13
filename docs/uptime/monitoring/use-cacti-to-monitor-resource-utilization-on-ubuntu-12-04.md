@@ -36,7 +36,7 @@ Begin by setting the timezone of your server if it isn't already set. Set your s
 
 The `universe` repositories should be enabled on your Linode by default. You can double-check this by editing the `/etc/apt/sources.list` file, and verifying that lines resemble the following (you may have to uncomment or add the `universe` lines):
 
-{{< file "/etc/apt/sources.list" >}}
+  {{< file "/etc/apt/sources.list" >}}
 ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
 ## team. Also, please note that software in universe WILL NOT receive any
 ## review or updates from the Ubuntu security team.
@@ -92,13 +92,17 @@ Since snmpd binds to localhost by default, we'll need to edit the `/etc
 
 Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
-.. file:: /etc/snmp/snmpd.conf
 
-    \#  Listen for connections from the local system only     \#agentAddress  udp:127.0.0.1:161     \#  Listen for connections on all interfaces (both IPv4 \*and\* IPv6)     agentAddress udp:161,udp6:[::1]:161
-
+{{<file-excerpt "/etc/snmp/snmpd.conf">}}
+#  Listen for connections from the local system only
+# agentAddressudp:127.0.0.1:161
+# Listen for connections on all interfaces (both IPv4 \*and\* IPv6) agentAddress udp:161,udp6:[::1]:161
+{{</file-excerpt>}}
+  
 After saving your changes to the configuration file, you'll need to reload  settings for snmpd by running the following command:
 
 `service snmpd reload`
+
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the drop down next to "Choose an Action" select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 

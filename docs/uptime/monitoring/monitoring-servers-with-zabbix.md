@@ -247,13 +247,12 @@ Now you'll need to create a configuration file for the Zabbix server in your /et
 
 7.  Add the following to the `zabbix_server.conf` file. At this point, it only requires your database connection details, though we will also be adding a Zabbix server log as well.
 
-    > {{< file >}}
-/etc/zabbix/zabbix\_server.conf
+    {{< file-excerpt "/etc/zabbix/zabbix_server.conf" >}}
 
-> DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
-{{< /file >}}
+DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
+{{< /file-excerpt>}}
 
- {{< note >}}
+    {{< note >}}
 A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
 {{< /note >}}
 
@@ -340,13 +339,13 @@ Now you'll want to create directories for the Zabbix files on your client server
 
 7.  The only option that is required is the `Server` parameter, which is the IP address of your Zabbix monitoring server. Copy and paste the following line into the configuration file, replacing `12.34.56.78` with the IP address of your Zabbix monitoring server.
 
-    > {{< file >}}
-/etc/zabbix/zabbix\_agentd.conf
+     {{< file "/etc/zabbix/zabbix_agentd.conf" >}}
 
-> Server = 12.34.56.78
+
+Server = 12.34.56.78
 {{< /file >}}
 
- {{< note >}}
+    {{< note >}}
 A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
 {{< /note >}}
 
