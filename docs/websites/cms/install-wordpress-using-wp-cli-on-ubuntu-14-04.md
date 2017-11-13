@@ -19,14 +19,14 @@ external_resources:
  - '[WP-CLI Community Commands](https://github.com/wp-cli/wp-cli/wiki/List-of-community-commands)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
 
 Everyone is probably familiar with WordPress and its renowned 5-minute install routine. It's simple and works without fuss. But when you have multiple sites to manage, repeating the same routine can waste plenty of time which you could have used elsewhere.
 
-![Install WordPress Using WP-CLI on Ubuntu 14.04](/content/assets/install-wordpress-using-wpcli-on-ubuntu-14-04.png "Install WordPress Using WP-CLI on Ubuntu 14.04")
+![Install WordPress Using WP-CLI on Ubuntu 14.04](/docs/assets/install-wordpress-using-wpcli-on-ubuntu-14-04.png "Install WordPress Using WP-CLI on Ubuntu 14.04")
 
 This is where WP-CLI, a powerful command line tool with which you can manage WordPress, can help. This tutorial covers how to install WP-CLI and how to perform some common, practical tasks using it.
 
@@ -34,12 +34,12 @@ This is where WP-CLI, a powerful command line tool with which you can manage Wor
 
 This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have completed the following guides:
 
-* [Getting Started with Linode](/content/getting-started)
-* [Securing your Server](/content/security/securing-your-server)
-* [How to Install a LAMP Stack on Ubuntu 14.04](/content/websites/lamp/lamp-on-ubuntu-14-04)
+* [Getting Started with Linode](/docs/getting-started)
+* [Securing your Server](/docs/security/securing-your-server)
+* [How to Install a LAMP Stack on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install WP-CLI

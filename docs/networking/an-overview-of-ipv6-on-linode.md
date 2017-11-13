@@ -25,7 +25,7 @@ Linode does not offer private IPv6 address allocations. Our IPv6 accounting was 
 
 ## How to Find Your IPv6 Address
 
-To find your Linode's IPv6 address, see the [Remote Access](/content/networking/remote-access) tab of your Linode's dashboard or use the `ip` tool:
+To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/remote-access) tab of your Linode's dashboard or use the `ip` tool:
 
     root@localhost:~# ip -6 address
     1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 state UNKNOWN qlen 1
@@ -48,7 +48,7 @@ If your Linode does not have the correct IPv6 address or any IPv6 address at all
 
 ## Additional IPv6 Addresses
 
-You can request additional IPv6 addresses at any time by opening a [support ticket](/content/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. See our [static IP guide](/content/networking/linux-static-ip-configuration) for instructions on how to do this.
+You can request additional IPv6 addresses at any time by opening a [support ticket](/docs/platform/support). While default IPv6 addresses are configured automatically, you will need to statically configure each IPv6 address in the pool you request. See our [static IP guide](/docs/networking/linux-static-ip-configuration) for instructions on how to do this.
 
 
 ## IPv6 Pools
@@ -57,7 +57,6 @@ IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and
 
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
-{: .table .table-striped }
 | Pool   | Number of addresses                    |
 |:-------|------------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |

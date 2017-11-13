@@ -14,12 +14,11 @@ title: 'Catalyst and mod_perl'
 deprecated: true
 ---
 
-The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/content/frameworks/), [Ruby On Rails](/content/frameworks/), and [Seaside](/content/frameworks/seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.
+The Catalyst web framework is a contemporary Perl-based MVC, or Model View Controller. Like similar projects such as [Django](/docs/frameworks/), [Ruby On Rails](/docs/frameworks/), and [Seaside](/docs/frameworks/seaside/), Catalyst promotes efficient and rapid development, clear application logic, and web centric development paradigms. If you are used to developing applications with Perl and would like to develop modern web applications, you may consider using the Catalyst framework.
 
-In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+In this document, we outline deploying applications developed with Catalyst using the Apache web server and the `mod_perl` method of running Perl applications embedded in the web server process. Before installing Catalyst, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing Catalyst
--------------------
+# Installing Catalyst
 
 Although the Catalyst framework is packaged and included in the repositories of a number of major Linux-based operating system distributions, this document provides a procedure for installing the Catalyst framework from CPAN repositories. This will ensure that your application will have access to the most recently developed features.
 
@@ -42,7 +41,7 @@ On Arch Linux systems issue the following commands to download the latest packag
     pacman -Sy
     pacman -S perl base-devel curl
 
-This document will install all of the required modules for Catalyst using the [CPAN Minus](/content/linux-tools/utilities/cpanm) interface for CPAN. Install CPAN Minus by issuing the following sequence of commands:
+This document will install all of the required modules for Catalyst using the [CPAN Minus](/docs/linux-tools/utilities/cpanm) interface for CPAN. Install CPAN Minus by issuing the following sequence of commands:
 
     cd /opt/
     curl https://github.com/miyagawa/cpanminus/raw/master/cpanm > cpanm
@@ -59,11 +58,11 @@ Your application may require additional dependencies and Perl modules. You will 
 
     cpanm --sudo --skip-installed [Module::Name]
 
-`[Module::Name]` represents the name of the module that you need to install. If your Catalyst application depends on a database system, you will also need to [install MySQL](/content/databases/mysql/debian-5-lenny) or [PostgreSQL](/content/databases/postgresql/debian-5-lenny).
+`[Module::Name]` represents the name of the module that you need to install. If your Catalyst application depends on a database system, you will also need to [install MySQL](/docs/databases/mysql/debian-5-lenny) or [PostgreSQL](/docs/databases/postgresql/debian-5-lenny).
 
 ### Setting up the Apache Server with mod\_perl
 
-Once the required Catalyst and database dependencies are installed, we will continue to install the Apache HTTP server and its `mod_perl` module. For more information regarding general purpose configuration, consider our more in-depth documentation for [installing Apache](/content/web-servers/apache/installation/debian-5-lenny) and [configuring the HTTP server](/content/web-servers/apache/configuration/). If you have not already installed these packages, issue the following command:
+Once the required Catalyst and database dependencies are installed, we will continue to install the Apache HTTP server and its `mod_perl` module. For more information regarding general purpose configuration, consider our more in-depth documentation for [installing Apache](/docs/web-servers/apache/installation/debian-5-lenny) and [configuring the HTTP server](/docs/web-servers/apache/configuration/). If you have not already installed these packages, issue the following command:
 
     apt-get install apache2 libapache2-mod-perl2 apache2-mpm-prefork
 
@@ -71,10 +70,9 @@ In Catalyst deployments, you will need to restart the Apache web server before b
 
     /etc/init.d/apache2 restart
 
-Deploying Catalyst Applications
--------------------------------
+# Deploying Catalyst Applications
 
-For the purposes of this document we will assume that you have configured virtual hosting for the domain `example.com` in the manner described in the [installing Apache](/content/web-servers/apache/installation/debian-5-lenny) document. Please note that you can only deploy one Catalyst application in a given instance of Apache.
+For the purposes of this document we will assume that you have configured virtual hosting for the domain `example.com` in the manner described in the [installing Apache](/docs/web-servers/apache/installation/debian-5-lenny) document. Please note that you can only deploy one Catalyst application in a given instance of Apache.
 
 ### Configuring Apache and mod\_perl
 
@@ -156,8 +154,7 @@ In this example, all requests are handled by the Catalyst application except for
 
 Congratulations, you have now successfully configured a system for deploying Catalyst powered web applications!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

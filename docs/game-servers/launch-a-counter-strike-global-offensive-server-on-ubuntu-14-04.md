@@ -17,22 +17,22 @@ external_resources:
  - '[Valve Developer Community - Counter-Strike: Global Offensive Dedicated Servers](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
 [Counter Strike: Global Offensive](http://store.steampowered.com/app/730) (CS:GO) is a first-person shooter by Valve. Hosting your own server gives you full control over your game and game modes, so you can play the exact flavor of CS:GO you want. This guide contains instructions on how to download the dedicated server and launch the game server.
 
-![Launch a Counter Strike GO server on Ubuntu 14.04](/content/assets/launch-a-cs-go-server-on-ubuntu-14-04.png)
+![Launch a Counter Strike GO server on Ubuntu 14.04](/docs/assets/launch-a-cs-go-server-on-ubuntu-14-04.png)
 
 ## Before You Begin
 
 1.  You will need a [Steam](http://store.steampowered.com) account and a copy of [Counter Strike: Global Offensive](http://store.steampowered.com/app/730/). A game server token is required to host a public CS:GO server. Without the token, client connections are restricted to the LAN only.
 
-2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/content/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
+2.  Complete our guide: [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server). This will get SteamCMD installed and running on your Linode and this guide will pick up where the SteamCMD page leaves off.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Prerequisites for Counter-Strike: Global Offensive
@@ -110,7 +110,7 @@ screen -S "Counter-Strike: Global Offensive Server" ./srcds_run -game csgo -user
 {{< /file >}}
 
 
-    When run, the script will change directories to `~/Steam/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
+    When run, the script will change directories to `~/Steam/csgo-ds` and execute a Dust2 server in competitive game mode in a [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session. For more startup modes and game options, see Valve's [CS:GO wiki](https://developer.valvesoftware.com/wiki/Counter-Strike:_Global_Offensive_Dedicated_Servers#Starting_the_Server).
 
 3.  Make the script executable:
 
@@ -166,4 +166,4 @@ These settings are changed in the launch command.
 
 ### RCON
 
-When logged into the server, you can open the RCON console with the backtic button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/content/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).
+When logged into the server, you can open the RCON console with the backtic button (<code>`</code>), or your mapped key. To log in type `rcon_password` followed by your password. For more information regarding RCON, click [here](/docs/game-servers/team-fortress2-on-debian-and-ubuntu/#rcon).

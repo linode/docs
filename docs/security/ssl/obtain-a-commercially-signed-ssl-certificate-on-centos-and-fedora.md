@@ -12,20 +12,20 @@ modified_by:
 published: 2016-08-19
 title: Obtain a Commercially Signed SSL Certificate on CentOS and Fedora
 external_resources:
- - '[OpenSSL Documentation](http://www.openssl.org/content/)'
+ - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
 SSL/TLS encryption is the standard for securing web traffic. This guide will show you how to install a commercial SSL certificate on your Linode running CentOS or Fedora. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature.
 
-If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/content/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
+If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos) guide once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/content/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
-If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/content/platform/support) to request an additional IP address.
+If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 ## Before You Begin
 
-- Complete our [Getting Started](/content/getting-started) and [Securing Your Server](/content/securing-your-server) guides.
+- Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
 - Ensure that your packages are up to date.
 
@@ -38,7 +38,7 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
             sudo dnf upgrade
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Replace each instance of `example.com` in this guide with your site's domain name.
 {{< /note >}}

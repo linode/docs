@@ -22,20 +22,18 @@ The EPEL effort is similar to the "backporting" efforts that exist in other dist
 
 There are many different ways to deploy Django applications that all have distinct advantages and disadvantages depending on the nature of your deployment. Our setup is designed to be fully functional and simple to set up for people who are new to systems administration. Nevertheless, Django is very flexible with regards to how applications are deployed; you can feel totally free to alter your approach as your needs and abilities change and grow.
 
-As a prerequisite for this guide, we assume that you've completed the [getting started guide](/content/getting-started/) and have a running and up to date CentOS 5 system. Furthermore, you will want to have a running [Apache web server](/content/web-servers/apache/installation/centos-5) and a functional [MySQL database](/content/databases/mysql/centos-5). With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
+As a prerequisite for this guide, we assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date CentOS 5 system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/centos-5) and a functional [MySQL database](/docs/databases/mysql/centos-5). With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing Django
------------------
+# Installing Django
 
 Before we begin to install packages we need to first install the EPEL repositories:
 
@@ -43,27 +41,26 @@ Before we begin to install packages we need to first install the EPEL repositori
 
 When you install your first package from EPEL, `yum` will ask you to import the PGP key for the EPEL repository. You should accept this request.
 
-Now we can install Django using the `yum` [package management](/content/using-linux/package-management) interface. The following command will also install required dependencies on your system:
+Now we can install Django using the `yum` [package management](/docs/using-linux/package-management) interface. The following command will also install required dependencies on your system:
 
     yum update
     yum install mod_python Django
 
 This installs `mod_python`, which embeds a Python interpreter in the Apache HTTP Server.
 
-Installing Database Support
----------------------------
+# Installing Database Support
 
-If you would like to use a relational [database server](/content/databases/) with Django, you will need to install and configure that independently of this guide. Consider one of our [database installation and configuration guides](/content/databases/).
+If you would like to use a relational [database server](/docs/databases/) with Django, you will need to install and configure that independently of this guide. Consider one of our [database installation and configuration guides](/docs/databases/).
 
 Whichever database system you use, you'll need to install the appropriate bindings for Python to allow Django applications to communicate with the database. The easiest database to install and use is SQLite. SQLite is easy to set up and provides a fully transactional database system inside of a single file. Such a system is likely sufficient for development purposes and deployments that won't need to scale beyond a single server. You can install SQLite support by issuing the following command:
 
     yum install python-sqlite2
 
-If you want to use the [PostgreSQL](/content/databases/postgresql/) database system you will need to install the Psycop2 database adapter with the following command:
+If you want to use the [PostgreSQL](/docs/databases/postgresql/) database system you will need to install the Psycop2 database adapter with the following command:
 
     yum install python-psycopg2
 
-To use the [MySQL](/content/databases/mysql/) engine, download and install a more recent version of the `MySQL-python` package. Django requires at least version 1.2.1p2 of the Python MySQLdb adapter. We'll download and install a later version from [the upstream project](http://sourceforge.net/projects/mysql-python/) First, install the tools needed to build this package:
+To use the [MySQL](/docs/databases/mysql/) engine, download and install a more recent version of the `MySQL-python` package. Django requires at least version 1.2.1p2 of the Python MySQLdb adapter. We'll download and install a later version from [the upstream project](http://sourceforge.net/projects/mysql-python/) First, install the tools needed to build this package:
 
     yum install python-devel mysql-devel gcc wget python-setuptools
 
@@ -78,10 +75,9 @@ Check the [Python MySQLdb page](http://sourceforge.net/projects/mysql-python/fil
 
 You may choose to install additional Python-related tools for your specific application. You can search the repositories using the `yum search [package-name]` command. To discover more information about a package, issue the `yum info [package-name]` command. Finally, to install a package use `yum install [package-name]`.
 
-Configuring Apache
-------------------
+# Configuring Apache
 
-With all of the dependencies installed, we must configure Apache for virtual hosting. If you're new to administering and configuring Apache web servers, please consider our documentation on [configuring and using the Apache HTTP server](/content/web-servers/apache/). If you did not previously have Apache installed, it would have been installed when you installed the `mod_python` package. In these cases, [configure Apache for virtual hosting](/content/web-servers/apache/apache-2-web-server-on-centos-5#configure-apache) before configuring Apache for Django.
+With all of the dependencies installed, we must configure Apache for virtual hosting. If you're new to administering and configuring Apache web servers, please consider our documentation on [configuring and using the Apache HTTP server](/docs/web-servers/apache/). If you did not previously have Apache installed, it would have been installed when you installed the `mod_python` package. In these cases, [configure Apache for virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5#configure-apache) before configuring Apache for Django.
 
 You will want to insert a `Location` block inside the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:
 
@@ -131,8 +127,7 @@ The `Location` block tells Apache what to do when a request comes in for a given
 
 Given this configuration the `DocumentRoot` is optional, but we recommend that you keep this directive in your configuration.
 
-Hosting Static Content
-----------------------
+# Hosting Static Content
 
 If you wanted to have a static page located at the root of the domain and only use Django to power a blog located at the URL `http://example.com/blog/`, the above block would begin with `<Location "/blog">`. In this situation, you would need to set up a `DocumentRoot` to contain the files for the static portion of the site.
 
@@ -148,8 +143,7 @@ Typically, Django applications use a secondary "media" web server to more effici
 
 In the above example, this would allow any static content requested with the URL `http://example.com/files/` to be served without Django interference. An alternate, and potentially easier solution, would use a second `VirtualHost` for all non-Python content.
 
-Hosting Multiple Django Applications
-------------------------------------
+# Hosting Multiple Django Applications
 
 The easiest way to host multiple Django applications with one instance of Apache is to place each application in its own virtual host. However, if you need to host more than one application within a single `VirtualHost` entry, you'll need to specify different locations in `Location` blocks *within* that `VirtualHost` entry. Here are two example location blocks that would be inserted in your `VirtualHost` entry:
 
@@ -175,8 +169,7 @@ The easiest way to host multiple Django applications with one instance of Apache
 
 Note that the `PythonInterpreter` option needs to be set in these situations to avoid confusing `mod_python`, and your applications must be configured to properly handle these requests.
 
-Using Django
-------------
+# Using Django
 
 Once you have the base system installed and mod\_python has been configured properly with Django, the majority of your time can be spent developing your application. There are, however, a few things of which you should be aware.
 
@@ -192,8 +185,7 @@ As the site and your Django application begin receiving additional traffic, ther
 
 The first step is to separate services onto different servers. If you're having performance issues, move the database (e.g. MySQL or PostgreSQL) onto its own server or even a cluster of database servers. We alluded to this earlier with regard to static files, but it's often easier and more efficient to use a separate high-performance web server like nginx or lighttpd for static content. Such a web server can also run on a separate Linode, isolated from the Apache instance running the Django application. Advanced solutions including front end reverse proxies like Squid, hosting duplicate copies of your application servers, and using a round-robin DNS setup can offer you a great deal of scalability for high-demand situations.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

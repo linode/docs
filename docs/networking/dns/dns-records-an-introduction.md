@@ -12,15 +12,15 @@ modified_by:
 published: 2009-07-29
 title: "DNS Records: an Introduction"
 external_resources:
-- '[DNS Manager](/content/networking/dns/dns-manager)'
-- '[Reverse DNS](/content/networking/dns/setting-reverse-dns)'
-- '[Common DNS Configurations](/content/networking/dns/common-dns-configurations)'
+- '[DNS Manager](/docs/networking/dns/dns-manager)'
+- '[Reverse DNS](/docs/networking/dns/setting-reverse-dns)'
+- '[Common DNS Configurations](/docs/networking/dns/common-dns-configurations)'
 - '[DNS for Rocket Scientists](http://zytrax.com/books/dns/)'
 ---
 
 The Domain Name System (DNS) is the Internet's address book. DNS directs web traffic to your Linode and email to your inbox by mapping memorable domain names like `example.com` to IP addresses like `12.34.56.78` or `0123:4567:89ab:cdef:0123:4567:89ab:cdef`. This guide introduces basic DNS concepts and the different types of DNS records.
 
-![DNS Records: an Introduction](/content/assets/dns-records-an-introduction.png "DNS Records: an Introduction")
+![DNS Records: an Introduction](/docs/assets/dns-records-an-introduction.png "DNS Records: an Introduction")
 
 ## How DNS Works
 
@@ -65,7 +65,7 @@ The next aspect of DNS management is specifying DNS records, which actually matc
     mail        A   12.34.56.78
     www         A   12.34.56.78
 
-Every domain's zone file contains the admin's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read [this article](/content/networking/dns/dns-manager).
+Every domain's zone file contains the admin's email address, the name servers, and the DNS records. Of course, you are not limited to these default entries. You can create a variety of DNS records for as many different subdomains as you wish. To learn how to add individual DNS records using the DNS Manager, read [this article](/docs/networking/dns/dns-manager).
 
 ### DNS Resolution
 
@@ -84,9 +84,9 @@ Here's how the DNS lookup process works:
 9.  Now that the ISP has the IP address for *example.com*, it connects you to your Linode.
 10. Apache handles everything after that, ensuring that the correct files and folders get displayed in your visitor's browser.
 
-    ![The steps for DNS resolution, also displayed below.](/content/assets/1330-dnsoverview.jpg)
+    ![The steps for DNS resolution, also displayed below.](/docs/assets/1330-dnsoverview.jpg)
 
-The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/content/networking/dns/dns-manager#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
+The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
 
 ## Types of DNS Records
 
@@ -100,7 +100,7 @@ You can also make A records for subdomains you want to direct to your server:
 
     hello.example.com       A       12.34.56.78
 
- {{< note >}}
+{{< note >}}
 You can point different subdomains to different IP addresses.
 {{< /note >}}
 
@@ -114,11 +114,11 @@ An *AAAA record* is just like an A record, but for IPv6 IP addresses. A typical 
 
 ### AXFR
 
-An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/content/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
+An *AXFR record* is a type of DNS record used for DNS replication, although there are also more modern ways to do DNS replication. AXFR records are not used in ordinary zone files. Rather, they are used on a *slave DNS server* to replicate the zone file from a *master DNS server*. For an example of how to configure Linode's nameservers as slave DNS servers using AXFR, visit this [guide about configuring DNS on cPanel](/docs/web-applications/control-panels/cpanel/dns-on-cpanel#using-linodes-dns-manager-as-a-slave).
 
 ### CAA
 
-DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/content/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
+DNS Certification Authority Authorization uses DNS to allow the holder of a domain to specify which certificate authorities are allowed to issue certificates for that domain. See our [CAA records](/docs/quick-answers/linode-platform/add-caa-dns-records) guide for a configuration walkthrough in the Linode Manager.
 
 ### CNAME
 
@@ -150,9 +150,9 @@ An *MX record* or *mail exchange record* sets the mail delivery destination for 
     example.com         MX      10  mail.example.com.
     mail.example.com    A           12.34.56.78
 
-The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. Ideally, an MX record should point to a domain that is also the [hostname](/content/getting-started#setting-the-hostname) for its server.
+The above records direct mail for *example.com* to the *mail.example.com* server. The target domain (`mail.example.com` above) needs to have its own A record that resolves to your Linode. Ideally, an MX record should point to a domain that is also the [hostname](/docs/getting-started#setting-the-hostname) for its server.
 
-Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service, like [Google Apps](/content/email/google-mail), you should use the MX records they provide.
+Your MX records don't necessarily have to point to your Linode. If you're using a third-party mail service, like [Google Apps](/docs/email/google-mail), you should use the MX records they provide.
 
 *Priority* is another component of MX records. This is the number written between the record type and the target server (10 in the example above). Priority allows you to designate a fallback server (or servers) for mail for a particular domain. Lower numbers have a higher priority. Here's an example of a domain that has two fallback mail servers:
 
@@ -189,7 +189,7 @@ PTR records are usually set with your hosting provider. They are not part of you
 
 As a prerequisite for adding a PTR record, you need to create a valid, live A or AAAA record that points the desired domain to that IP. If you want an IPv4 PTR record, point the domain (or subdomain) to your Linode's IPv4 address. If you want an IPv6 PTR record, point the domain to your Linode's IPv6 address. Beyond that, IPv4 and IPv6 PTR records work the same way.
 
-For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/content/networking/dns/setting-reverse-dns) guide.
+For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/networking/dns/setting-reverse-dns) guide.
 
 {{< note >}}
 It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.

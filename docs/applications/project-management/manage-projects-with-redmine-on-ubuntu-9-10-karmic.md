@@ -18,20 +18,18 @@ title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
 
 Redmine is a popular open source project management system. Written in Ruby on Rails, it gives teams the ability to track project objectives, integrates well with various source control systems, and includes customizable reporting functionality. This guide will help you install it on your Ubuntu 9.10 (Karmic) Linode. We'll be using nginx with Phusion Passenger as the web server daemon for the site. If you already have the Apache web server installed, guidance will be provided for proxying incoming Redmine requests to nginx running on a different port.
 
-We assume you've already followed the steps outlined in our [getting started guide](/content/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
+We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Enable Package Repositories
----------------------------
+# Enable Package Repositories
 
 Edit the file /etc/apt/sources.list and uncomment the `universe` repositories if they're not already enabled. Your repository list should resemble this:
 
@@ -61,8 +59,7 @@ Issue the following commands to update your local package database and install a
     apt-get update
     apt-get upgrade --show-upgraded
 
-Nginx Installation and Configuration
-------------------------------------
+# Nginx Installation and Configuration
 
 ### Install Prerequisite Packages
 
@@ -114,15 +111,14 @@ Please do **not** remove the Passenger files from `opt` after the install. They 
 Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Issue the following commands to download an "init" script to control the process, set permissions, and configure system startup links:
 
     cd /opt/
-    wget -O init-nginx-deb.sh http://www.linode.com/content/assets/704-init-nginx-deb.sh
+    wget -O init-nginx-deb.sh http://www.linode.com/docs/assets/704-init-nginx-deb.sh
     mv /opt/init-nginx-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx like any other server daemon.
 
-Proxying Redmine with Apache
-----------------------------
+# Proxying Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -132,7 +128,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/content/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost 12.34.56.78:80>
@@ -161,8 +157,7 @@ listen 8080;
 {{< /file-excerpt >}}
 
 
-Installing and Configuring Redmine
-----------------------------------
+# Installing and Configuring Redmine
 
 ### Obtain Redmine
 
@@ -221,41 +216,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Ubuntu 9.10.](/content/assets/288-exim4-config-1-general.png)](/content/assets/288-exim4-config-1-general.png)
+[![Exim general configuration on Ubuntu 9.10.](/docs/assets/288-exim4-config-1-general.png)](/docs/assets/288-exim4-config-1-general.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Ubuntu 9.10.](/content/assets/289-exim4-config-2-system-mail-name.png)](/content/assets/289-exim4-config-2-system-mail-name.png)
+[![Exim system mail name configuration on Ubuntu 9.10.](/docs/assets/289-exim4-config-2-system-mail-name.png)](/docs/assets/289-exim4-config-2-system-mail-name.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Ubuntu 9.10.](/content/assets/290-exim4-config-3-ip-address.png)](/content/assets/290-exim4-config-3-ip-address.png)
+[![Exim IP address configuration on Ubuntu 9.10.](/docs/assets/290-exim4-config-3-ip-address.png)](/docs/assets/290-exim4-config-3-ip-address.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Ubuntu 9.10.](/content/assets/291-exim4-config-4-destinations.png)](/content/assets/291-exim4-config-4-destinations.png)
+[![Exim destination domains configuration on Ubuntu 9.10.](/docs/assets/291-exim4-config-4-destinations.png)](/docs/assets/291-exim4-config-4-destinations.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Ubuntu 9.10.](/content/assets/292-exim4-config-5-relay-domains.png)](/content/assets/292-exim4-config-5-relay-domains.png)
+[![Exim relay domains configuration on Ubuntu 9.10.](/docs/assets/292-exim4-config-5-relay-domains.png)](/docs/assets/292-exim4-config-5-relay-domains.png)
 
-[![Exim relay machines configuration on Ubuntu 9.10.](/content/assets/293-exim4-config-6-relay-machines.png)](/content/assets/293-exim4-config-6-relay-machines.png)
+[![Exim relay machines configuration on Ubuntu 9.10.](/docs/assets/293-exim4-config-6-relay-machines.png)](/docs/assets/293-exim4-config-6-relay-machines.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Ubuntu 9.10.](/content/assets/294-exim4-config-7-dns.png)](/content/assets/294-exim4-config-7-dns.png)
+[![Exim DNS queries configuration on Ubuntu 9.10.](/docs/assets/294-exim4-config-7-dns.png)](/docs/assets/294-exim4-config-7-dns.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Ubuntu 9.10.](/content/assets/295-exim4-config-8-maildirs.png)](/content/assets/295-exim4-config-8-maildirs.png)
+[![Exim maildirs or mbox configuration on Ubuntu 9.10.](/docs/assets/295-exim4-config-8-maildirs.png)](/docs/assets/295-exim4-config-8-maildirs.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Ubuntu 9.10.](/content/assets/296-exim4-config-9-split.png)](/content/assets/296-exim4-config-9-split.png)
+[![Exim config file splitting configuration on Ubuntu 9.10.](/docs/assets/296-exim4-config-9-split.png)](/docs/assets/296-exim4-config-9-split.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Ubuntu 9.10.](/content/assets/297-exim4-config-10-postmaster.png)](/content/assets/297-exim4-config-10-postmaster.png)
+[![Exim postmaster configuration on Ubuntu 9.10.](/docs/assets/297-exim4-config-10-postmaster.png)](/docs/assets/297-exim4-config-10-postmaster.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 
@@ -316,8 +311,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". Congratulations, you've installed Redmine for project management on your Linode!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -328,8 +322,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 
 When upstream sources offer new releases, repeat the instructions for installing Redmine software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

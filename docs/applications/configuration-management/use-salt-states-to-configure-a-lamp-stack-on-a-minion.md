@@ -13,7 +13,7 @@ published: 2015-07-02
 title: Use Salt States to Configure a LAMP Stack on a Minion
 ---
 
-This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/content/applications/configuration-management/install-and-configure-salt-master-and-minion-servers) to get started.
+This tutorial will configure a Minion's LAMP stack with further use of Salt States. This tutorial is written for Debian 8 but can easily be adjusted for other Linux Distributions. You will need a working Salt master and minion configuration before starting this guide. If you need to set up that prerequisite, see our [Salt installation guide](/docs/applications/configuration-management/install-and-configure-salt-master-and-minion-servers) to get started.
 
 ## Create the LAMP Configuration States
 The steps below configure all Salt Minions for a 2GB Linode, feel free to adjust as needed.
@@ -116,7 +116,7 @@ mysql-run-at-boot-restart:
 {{< /file >}}
 
 
-    The above file uses the <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html" target="_blank">file</a> and <a href="http://docs.saltstack.com/en/latest/ref/states/all/salt.states.service.html" target="_blank">service</a> Salt State modules.
+    The above file uses the [file](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html) and [service](http://docs.saltstack.com/en/latest/ref/states/all/salt.states.service.html) Salt State modules.
 
 
 3.  Transfer the State settings to the Minions:
@@ -180,10 +180,7 @@ Salt State Modules are used for settings across groups of Minions. To adjust a c
         salt '<hostname or Minion ID>' cmd.run "a2ensite example.com.conf"
         salt '<hostname or Minion ID>' cmd.run "service apache2 reload"
 
-<a href="/content/applications/salt/salt-states-apache-mysql-php-fail2ban" target="_blank">
-
-
-The above section used the <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html" target="_blank">cmdmod</a>, <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html" target="_blank">file</a>, and <a href="http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html" target="_blank"> cp</a> Salt Execution modules.
+The above section used the [cmdmod](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cmdmod.html), [file](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.file.html), and [cp](http://docs.saltstack.com/en/latest/ref/modules/all/salt.modules.cp.html) Salt Execution modules.
 
 You should now have a configured LAMP stack across as many Minions as you wanted. Optionally, use [grains](http://docs.saltstack.com/en/latest/topics/targeting/grains.html) for further customization and to apply specific variables to each host.
 

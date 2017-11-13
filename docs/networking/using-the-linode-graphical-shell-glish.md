@@ -13,10 +13,10 @@ published: 2015-08-28
 title: 'Using the Linode Graphical Shell (Glish)'
 ---
 
-Glish is the graphical version of the [Linode Shell](/content/networking/using-the-linode-shell-lish) (Lish). It allows you to use a graphic environment running natively on your Linode's operating system.
+Glish is the graphical version of the [Linode Shell](/docs/networking/using-the-linode-shell-lish) (Lish). It allows you to use a graphic environment running natively on your Linode's operating system.
 
 {{< note >}}
-Linode base distribution images do not have graphic environments installed. You will need to install one, or use a [Custom Distro](/content/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode) with a graphic environment pre-installed.
+Linode base distribution images do not have graphic environments installed. You will need to install one, or use a [Custom Distro](/docs/tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode) with a graphic environment pre-installed.
 
 Glish is only available on KVM Linodes.
 {{< /note >}}
@@ -37,11 +37,11 @@ The process for launching a getty may differ depending on your distribution.
 
 1.  From your Linode Dashboard, click on the **Remote Access** Tab. Under **Console Access**, click on the "Launch Graphical Web Console" link:
 
-	[![Glish access link.](/content/assets/glish-link_small.png)](/content/assets/glish-link.png)
+	[![Glish access link.](/docs/assets/glish-link_small.png)](/docs/assets/glish-link.png)
 
     A new window will pop up:
 
-	[![Glish at the Debian login prompt.](/content/assets/glish-debian-prompt_small.png)](/content/assets/glish-debian-prompt.png)
+	[![Glish at the Debian login prompt.](/docs/assets/glish-debian-prompt_small.png)](/docs/assets/glish-debian-prompt.png)
 
 2.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
@@ -51,4 +51,4 @@ The process for launching a getty may differ depending on your distribution.
 
 		startxfce4
 
-	[![Glish at the Xfce4 desktop.](/content/assets/glish-xfce4-desktop_small.png)](/content/assets/glish-xfce4-desktop.png)
+	[![Glish at the Xfce4 desktop.](/docs/assets/glish-xfce4-desktop_small.png)](/docs/assets/glish-xfce4-desktop.png)

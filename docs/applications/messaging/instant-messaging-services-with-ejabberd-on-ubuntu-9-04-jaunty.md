@@ -18,10 +18,9 @@ title: 'Instant Messaging Services with ejabberd on Ubuntu 9.04 (Jaunty)'
 
 Ejabberd is a Jabber daemon written in the Erlang programming language. It is extensible, flexible and very high performance. With a web-based interface, and broad support for [XMPP standards](http://xmpp.org/), ejabberd is a great choice for a multi-purpose XMPP server. Ejabberd can be considered "heavyweight" by critics, because of the requirements of the Erlang run-times. However, it is incredibly robust and can scale to support incredibly heavy loads. Ebjabberd servers are believed to be the backbone for some of the largest Jabber servers running now.
 
-This installation process assumes that you have a working installation of Ubuntu 9.04 (Jaunty), have followed the steps in the [getting started](/content/getting-started/) guide, and now have an up to date instance of the Ubuntu Jaunty operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
+This installation process assumes that you have a working installation of Ubuntu 9.04 (Jaunty), have followed the steps in the [getting started](/docs/getting-started/) guide, and now have an up to date instance of the Ubuntu Jaunty operating system. We also assume you are connected to your Linode via SSH as root. Once you've completed these requirements, we can begin with the installation process.
 
-XMPP/Jabber Basics
-------------------
+# XMPP/Jabber Basics
 
 Though you can successfully run an XMPP server with only a passing familiarity of the way the XMPP network and system works, understanding the following basic concepts will be helpful:
 
@@ -32,26 +31,22 @@ Though you can successfully run an XMPP server with only a passing familiarity o
     Again, the resource is optional; although XMPP allows a single JID to be connected to the server from multiple machines (i.e. resources), the resource adds a useful amount of specificity.
 
 -   The XMPP system is federated by nature. Users with accounts on one server--if the server administrators allow it--can communicate with users on other servers. Without a centralized server, every XMPP server maintains the accounts and serves as the communication gateway for their own users. In the XMPP system there is no single point of failure, however each server administrator can decide how their server is going to participate in the federated network. For instance, to federate with Google's "GTalk" XMPP network, server administrators need to have server-to-server (s2s) SSL/TLS encryption enabled, while other servers don't always require this.
--   XMPP takes advantage of ["SRV" DNS records](/content/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
+-   XMPP takes advantage of ["SRV" DNS records](/docs/dns-guides/introduction-to-dns) to support the resolution of domains to the servers which provide DNS records.
 
-Enabling the Universe Repository
---------------------------------
+# Enabling the Universe Repository
 
 Prior to installing the ejabberd daemon, you will need to enable the `universe` repository. Open `/etc/apt/sources.list` with your favorite text editor.
 
 {{< file-excerpt "/etc/apt/sources.list" >}}
-#deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
 {{< /file-excerpt >}}
 
-
-Uncomment this line be deleting the hash symbol (`#`). Close the file and run the following command:
+Add this to the source list then update:
 
     apt-get update
     apt-get upgrade
 
-Install ejabberd
-----------------
+# Install ejabberd
 
 To install ejabberd and its required dependencies, issue the following command:
 
@@ -70,8 +65,7 @@ If you have not already configured your `/etc/hosts` as follows, please do that 
 
 With the hostname configured, you're ready to begin configuring ejabberd.
 
-Configure ejabberd
-------------------
+# Configure ejabberd
 
 Ejabberd's configuration files are written in Erlang syntax, which might be difficult to comprehend. Thankfully, the modifications we need to make are relatively minor and straightforward. The main ejabberd configuration file is located at `/etc/ejabberd/ejabberd.cfg`. We'll cover each relevant option in turn.
 
@@ -139,8 +133,7 @@ The `ejabberd.cfg` file is complete and well commented, and from this point forw
 
 By default, MUCs or Multi-User-Chats (chatrooms) are accessible on the "conference.[hostname]" sub-domain. If you want the public to be able to access MUCs on your domain, you need to create an "A Record" pointing the `conference` hostname (eg. subdomain) to the IP address where the ejabberd instance is running.
 
-Using Ejabberd
---------------
+# Using Ejabberd
 
 Once installed, the use and configuration of ejabberd is uncomplicated. To start, stop, or restart the server issue the appropriate command from the following:
 
@@ -178,8 +171,7 @@ For more information about the `ejabberdctl` command, issue `ejabberdctl help` o
 
 If you would prefer to administer your ejabberd instance via the web-based interface, log in to `http://example.com:5280/admin/`, where "example.com" is the domain where ejabberd is running. Log in with the full JID as the username and the password of one of the administrators specified in the `/etc/ejabberd/ejabberd.cfg` file.
 
-XMPP Federation and DNS
------------------------
+# XMPP Federation and DNS
 
 To ensure that your ejabberd instance will federate properly with the rest of the XMPP network, particularly with Google's "GTalk" service (i.e. the ["@gmail.com](mailto:"@gmail.com)" chat tool,) we must set the SRV records for the domain to point to the server where the ejabberd instance is running. We need three records, which can be created in the DNS Management tool of your choice:
 
@@ -189,15 +181,13 @@ To ensure that your ejabberd instance will federate properly with the rest of th
 
 The "target" of the SRV record should point to the publicly routable hostname for that machine (e.g. "username.example.com"). The priority and weight should both be set to `0`.
 
-Troubleshooting
----------------
+# Troubleshooting
 
 If you're having problems getting ejabberd to start, or are getting obscure errors on the console don't be discouraged: the errors generated by Erlang are often abstruse at best. The logs for ejabberd are located in the `/var/log/ejabberd/` directory. If you're getting error messages look in these files, particularly `ejabberd.log` and `sasl.log`. Additionally, if ejabberd crashes, the "image dump" of Erlang will be saved in this directory. Begin your investigations for error messages in these files.
 
 Furthermore, ejabberd's "Mnesia" database is stored in the `/var/lib/ejabberd/` directory. If you think the database has become corrupted, delete the files in this directory (e.g. `rm /var/lib/ejabberd/*`) and reload from a backup if necessary. This is sometimes required if the hostname of the local machine changes.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

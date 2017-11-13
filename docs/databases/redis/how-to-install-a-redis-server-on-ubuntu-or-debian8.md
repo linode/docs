@@ -22,10 +22,11 @@ external_resources:
  - '[Redis Security](http://redis.io/security)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/linode-writers-guide/) and earn $250 per published guide.*
-<hr>
+*This is a Linode Community guide. [Write for us](/docs/linode-writers-guide/) and earn $250 per published guide.*
 
-![Redis Server on Ubuntu or Debian](/content/assets/how-to-install-a-redis-server-on-ubuntu-or-debian/How_to_Install_a_Redis_Server_smg.jpg)
+---
+
+![Redis Server on Ubuntu or Debian](/docs/assets/how-to-install-a-redis-server-on-ubuntu-or-debian/How_to_Install_a_Redis_Server_smg.jpg)
 
 Redis is an open-source, in-memory, data-structure store with optional disk writes for persistence, which can be used as key-value database, cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
@@ -33,9 +34,9 @@ Since Redis serves all data from memory, we recommend using a [high memory Linod
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -46,7 +47,7 @@ Since Redis serves all data from memory, we recommend using a [high memory Linod
         sudo apt-get install software-properties-common
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 To utilize the replication steps in the second half of this guide, you will need at least two Linodes.
 {{< /note >}}
@@ -122,7 +123,6 @@ Because the point-in-time snapshot persistence is enabled by default, you only n
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 appendonly yes
 appendfsync everysec
-
 {{< /file-excerpt >}}
 
 
@@ -164,21 +164,20 @@ The following steps will guide you through master/slave replication, with the sl
 
 For this section of the guide, you will use two Linodes, respectively named `master` and `slave`.
 
-1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/content/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using **Redis Installation** and **Redis Configuration** steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/platform/disk-images/disk-images-and-configuration-profiles/#cloning-disks-and-configuration-profiles) option in the Linode Manager.
 
-2.  Configure [Private IP Addresses](/content/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
+2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the `master` Linode's private IP address from `slave`. You will use only private addresses for replication traffic for security reasons.
 
 3.  Configure the `master` Redis instance to listen on a private IP address by updating the `bind` configuration option in `redis.conf`. Replace `192.0.2.100` with the `master` Linode's private IP address
 
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 bind 127.0.0.1 192.0.2.100
-
 {{< /file-excerpt >}}
 
 
-        Restart `redis-server` to apply the changes:
+    Restart `redis-server` to apply the changes:
 
-            sudo service redis-server restart
+        sudo service redis-server restart
 
 ### Configure the Slave Linode
 
@@ -186,7 +185,6 @@ bind 127.0.0.1 192.0.2.100
 
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 slaveof 192.0.2.100 6379
-
 {{< /file-excerpt >}}
 
 
@@ -209,9 +207,9 @@ Test that the replication works. On master Linode, run `redis-cli` and execute c
 Type `exit` or press **Ctrl-C** to exit from `redis-cli` prompt.
 Then, run `redis-cli` on `slave` and execute `get 'a'`, which should return the same value as that on `master`:
 
-	redis-cli
-	127.0.0.1:6379> get 'a'
-	"1"
+    redis-cli
+    127.0.0.1:6379> get 'a'
+    "1"
 
 Your master/slave replication setup is working properly.
 
@@ -219,7 +217,7 @@ Your master/slave replication setup is working properly.
 
 Since Redis is designed to work in trusted environments and with trusted clients, you should take care of controlling access to the Redis instance. Security methods include:
 
-- Setting up a firewall using [iptables](/content/security/firewalls/iptables).
+- Setting up a firewall using [iptables](/docs/security/firewalls/iptables).
 
 - Encrypting Redis traffic, using an SSH tunnel or the methods described in the [Redis Security documentation](http://redis.io/topics/security).
 

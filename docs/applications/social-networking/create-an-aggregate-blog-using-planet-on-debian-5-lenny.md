@@ -14,12 +14,12 @@ title: 'Create an Aggregate Blog using Planet on Debian 5 (Lenny)'
 deprecated: true
 external_resources:
     - '[The Planet''s Project''s Home Page](http://www.planetplanet.org)'
-    - '[Using Cron to Schedule Tasks](/content/linux-tools/utilities/cron)'
+    - '[Using Cron to Schedule Tasks](/docs/linux-tools/utilities/cron)'
 ---
 
 The Planet Feed Aggregator takes a collection of RSS feeds and generates what its founders call a "River of News" feed that combines posts from all sources into a single coherent stream. Thus, this software is useful for providing a simple and consolidated overview of ongoing output from selected blogs. Written and configured in Python and run regularly using cron, Planet is easy to configure and use.
 
-Before beginning to follow this guide, we assume that you have completed the [getting started](/content/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/content/web-servers/) software.
+Before beginning to follow this guide, we assume that you have completed the [getting started](/docs/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Beyond this, Planet requires a web server to provide access to the resources it creates, but this document does not depend on specific [web server software](/content/web-servers/) software.
 
 ## Installing Software
 
@@ -81,7 +81,7 @@ If you want to override any of the default values like the encoding or the value
 At the end of your `planet.conf` file, add entries that resemble the following for each feed that you would like to collect in the Planet you're building
 
 {{< file-excerpt "planet.conf" >}}
-[<https://www.linode.com/content/rss>]
+[<https://www.linode.com/docs/rss>]
 name = Linode
 
 {{< /file-excerpt >}}
@@ -91,7 +91,7 @@ If you want to take advantage of Planet's support for per-feed "faces" or avatar
 {{< file-excerpt "planet.conf" >}}
 [DEFAULT] facewidth = 64 faceheight = 64
 
-[<https://www.linode.com/content/rss>] name = Linode face = lin-lib-avatar.png
+[<https://www.linode.com/docs/rss>] name = Linode face = lin-lib-avatar.png
 
 {{< /file-excerpt >}}
 

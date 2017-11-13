@@ -19,7 +19,7 @@ external_resources:
  - '[AskBot Official Website](https://askbot.com)'
 ---
 
-![AskBot with LetsEncrypt on Ubuntu](/content/assets/AskBot.jpg)
+![AskBot with LetsEncrypt on Ubuntu](/docs/assets/AskBot.jpg)
 
 ## What is AskBot?
 
@@ -29,38 +29,39 @@ In this guide, you'll install AskBot and deploy with **Nginx** as a web server, 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
-	     sudo apt-get update && sudo apt-get upgrade
+         sudo apt-get update && sudo apt-get upgrade
 
-4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/content/networking/dns/dns-manager-overview#add-records) guide.
+4.  A Fully-Qualified Domain Name configured to point to your Linode. You can learn how to point domain names to Linode by following the [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide.
 
 {{< note >}}
-Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+Throughout this guide, replace `example_user` with a non-root user with `sudo` access. If you’re not familiar with Linux user permissions and the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Dependencies and Create a Database
 
 1.  Install the required packages, including Nginx, MySQL, Python PIP, and LetsEncrypt:
 
-	     sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
+        sudo apt-get install -y python-pip python-dev nginx mysql-server libmysqlclient-dev letsencrypt
 
 2.  Log in to MySQL as the root user:
 
-	     sudo mysql -u root -p
+        sudo mysql -u root -p
+
 
 3.  When prompted, enter the root password.
 
 4.  Create a new MySQL user and database. In the example below, `askbotdb` is the database name, `dbuser` is the database user, and `dbpassword` is the database user’s password.
 
-    	CREATE DATABASE askbotdb CHARACTER SET UTF8;
-    	CREATE USER dbuser@localhost IDENTIFIED BY 'dbpassword';
-    	GRANT ALL PRIVILEGES ON askbotdb.* TO dbuser@localhost;
-    	FLUSH PRIVILEGES;
+        CREATE DATABASE askbotdb CHARACTER SET UTF8;
+        CREATE USER dbuser@localhost IDENTIFIED BY 'dbpassword';
+        GRANT ALL PRIVILEGES ON askbotdb.* TO dbuser@localhost;
+        FLUSH PRIVILEGES;
 
 5.  Exit MySQL:
 
@@ -70,54 +71,54 @@ Throughout this guide, replace `example_user` with a non-root user with `sudo` a
 
 1.  Create a directory to install AskBot. Remember to replace `example_user` with the name of a non-root user on your Linode:
 
-	     mkdir -p /home/example_user/askbot
+        mkdir -p /home/example_user/askbot
 
 2.  Ensure that `pip` is the latest version:
 
-	     sudo pip install --upgrade pip
+        sudo pip install --upgrade pip
 
 3.  Use `pip` to install `virtualenv`:
 
-	     sudo pip install virtualenv
+        sudo pip install virtualenv
 
 4.  Create a Python virtual environment using `virtualenv`:
 
-	     virtualenv /home/example_user/askbot/askbotenv
+        virtualenv /home/example_user/askbot/askbotenv
 
 5.  Activate the Python virtual environment:
 
-	     source /home/example_user/askbot/askbotenv/bin/activate
+        source /home/example_user/askbot/askbotenv/bin/activate
 
 6.  Install AskBot and its dependencies:
 
-	      pip install askbot mysqlclient mysql-python gunicorn
+        pip install askbot mysqlclient mysql-python gunicorn
 
 ## Configure AskBot
 
 1.  Initialize the AskBot setup files. Use the database name, user, and password that you created earlier:
 
-	     askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
+        askbot-setup -n /home/example_user/askbot/ -e 3 -d askbotdb -u dbuser -p dbpassword
 
-{{< note >}}
+    {{< note >}}
 For more detailed information about the arguments to `askbot-setup`, user the `-h` flag: `askbot-setup –h`.
 {{< /note >}}
 
 2.  Use `collectstatic` to place all of the static files (css, javascript, and images) into the AskBot installation directory:
 
-	     python /home/example_user/askbot/manage.py collectstatic --noinput
+         python /home/example_user/askbot/manage.py collectstatic --noinput
 
 3.  When you install or upgrade AskBot, you should run `makemigrations` and `migrate`:
 
-    	python /home/example_user/askbot/manage.py makemigrations
-    	python /home/example_user/askbot/manage.py migrate
+        python /home/example_user/askbot/manage.py makemigrations
+        python /home/example_user/askbot/manage.py migrate
 
 4.  Turn off the Debug mode in `settings.py` to run AskBot in the production environment:
 
-	     sed -i "s|DEBUG = True|DEBUG = False|" /home/example_user/askbot/settings.py
+         sed -i "s|DEBUG = True|DEBUG = False|" /home/example_user/askbot/settings.py
 
 5.  Change the URL of the static files from `/m/` to `/static/`:
 
-	     sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
+         sed -i "s|STATIC_URL = '/m/'|STATIC_URL = '/static/'|" /home/example_user/askbot/settings.py
 
 ## Deploy AskBot with LetsEncrypt SSL
 
@@ -158,25 +159,25 @@ WantedBy=multi-user.target
 
 3.  Enable and start the Gunicorn service:
 
-        	sudo systemctl start gunicorn
-        	sudo systemctl enable gunicorn
+            sudo systemctl start gunicorn
+            sudo systemctl enable gunicorn
 
 4.  Restart nginx and reload the daemon:
 
-        	sudo systemctl daemon-reload
-        	sudo systemctl restart nginx
+            sudo systemctl daemon-reload
+            sudo systemctl restart nginx
 
-5.  Use [Letsencrypt](/content/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
+5.  Use [Letsencrypt](/docs/security/ssl/install-lets-encrypt-to-create-ssl-certificates) to obtain an SSL certificate for your domain:
 
-	       sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
+           sudo letsencrypt certonly -a webroot --agree-tos --email admin@example.com --webroot-path=/var/www/html -d example.com -d www.example.com
 
 6.  Remove the default Nginx Server Blocks (Virtual Host) and the default Nginix index file to add new AskBot server blocks:
 
-	       sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
+           sudo rm -rf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default /var/www/html/index.nginx-debian.html
 
 7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in the production environment:
 
-      {{< file-excerpt "/etc/nginx/sites-available/askbot" aconf >}}
+    {{< file-excerpt "/etc/nginx/sites-available/askbot" aconf >}}
 server {
         listen 80;
         server_name example.com www.example.com;
@@ -215,48 +216,48 @@ server {
 {{< /file-excerpt >}}
 
 
-
 8.  Add a symbolic link between nginx server blocks:
 
-	     sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
+        sudo ln -s /etc/nginx/sites-available/askbot /etc/nginx/sites-enabled
+
 
 9.  The **www-data** group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
 
-	     sudo usermod -aG www-data example_user
+         sudo usermod -aG www-data example_user
 
 10.  Restart nginx so that the changes take effect:
 
-	     sudo systemctl restart nginx
+         sudo systemctl restart nginx
 
 ## Set Up an AskBot Admin Account
 
 1.  Open a web browser and navigate to your Linode's domain name:
 
-    ![access askbot on web browser](/content/assets/askbot-1.png)
+    ![access askbot on web browser](/docs/assets/askbot-1.png)
 
 2.  Click on **create a password-protected account** to create an Admin Account:
 
-    ![create an askbot admin account](/content/assets/askbot-2.png)
+    ![create an askbot admin account](/docs/assets/askbot-2.png)
 
-{{< note >}}
+    {{< note >}}
 The first account created using the above method will be treated as an admin account. Any subsequent accounts will be normal accounts.
 {{< /note >}}
 
 3.  Choose an admin username and password:
 
-    ![create a admin username and password](/content/assets/askbot-3.png)
+    ![create a admin username and password](/docs/assets/askbot-3.png)
 
 4.  Set your domain name with AskBot using base url settings by clicking **APP_URL**:
 
-    ![set your domain name to askbot base url settings](/content/assets/askbot-4.png)
+    ![set your domain name to askbot base url settings](/docs/assets/askbot-4.png)
 
 5.  Add your domain name in the place of Base URL box and click **Save**:
 
-    ![add your domain name to askbot base url settings](/content/assets/askbot-5.png)
+    ![add your domain name to askbot base url settings](/docs/assets/askbot-5.png)
 
 6.  AskBot is now ready to run. Access the AskBot admin interface and customize it according to your needs:
 
-    ![final access to askbot forum](/content/assets/askbot-6.png)
+    ![final access to askbot forum](/docs/assets/askbot-6.png)
 
 ## Next Steps
 

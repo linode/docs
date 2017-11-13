@@ -18,10 +18,9 @@ title: Use Unbound for Local DNS Resolution on Fedora 13
 
 In the default configuration, Linode systems are configured to query DNS resolvers provided by Linode. If you don't want to use a third party DNS service on your system, you may consider running an independent DNS resolving and caching service such as [Unbound DNS resolver](http://unbound.net). Unbound is easy to install and configure, which makes it an ideal resolver for simple deployments.
 
-If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/content/dns-guides/introduction-to-dns). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/content/dns-guides/configuring-dns-with-the-linode-manager). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/content/using-linux/administration-basics#configure-the-etchosts-file) to provide this functionality.
+If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/docs/dns-guides/introduction-to-dns). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/docs/using-linux/administration-basics#configure-the-etchosts-file) to provide this functionality.
 
-Install Unbound
----------------
+# Install Unbound
 
 Make sure your package repositories and installed programs are up to date by issuing the following command:
 
@@ -38,8 +37,7 @@ When the installation process completes, issue the following commands to start U
     service unbound start
     chkconfig unbound on
 
-Configure Unbound
------------------
+# Configure Unbound
 
 ### Configure Unbound Interfaces
 
@@ -88,12 +86,11 @@ When you have configured your Unbound server to acceptable parameters, issue the
 
 Unbound is now active and functional.
 
-Configure your System to Resolve DNS Using Unbound
---------------------------------------------------
+# Configure your System to Resolve DNS Using Unbound
 
 Before you can begin using your Unbound instance to resolve DNS queries, you need to configure your `/etc/resolv.conf` file to point to the new resolver. You can remove all existing lines from this file or comment them by prepending hash marks (`#`) to every line.
 
-**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/content/networking/configuring-static-ip-interfaces/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
+**Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/networking/configuring-static-ip-interfaces/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
 If you're accessing your Unbound instance over the local interface, make sure your `/etc/resolv.conf` resembles the following:
 
@@ -105,15 +102,14 @@ If you're accessing your Unbound instance over the local interface, make sure yo
 
 If you're accessing your Unbound instance from another machine, modify the address to reflect the address on which Unbound is listening for requests. Ensure that Unbound's access control rules permit access from all clients that will be making requests from the server. If your Unbound instance is accessible on the public network, you can configure any machine on the Internet to resolve DNS using your Linode. While most Linux-based systems use the `/etc/resolve.conf` method for configuring DNS resolution, consult your operating system's networking configuration interface to reconfigure your DNS settings.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Unbound Home Page](http://www.unbound.net)
 - [Wikipedia article on Classless Interdomain Routing](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
-- [DNS Fundamentals](/content/dns-guides/introduction-to-dns)
-- [Linode Manager for DNS](/content/dns-guides/configuring-dns-with-the-linode-manager)
+- [DNS Fundamentals](/docs/dns-guides/introduction-to-dns)
+- [Linode Manager for DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager)
 
 
 

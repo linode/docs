@@ -17,7 +17,7 @@ title: Monitor System Logs with Logwatch
 By default, Logwatch uses Sendmail to send digests.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Logwatch and Sendmail
@@ -43,7 +43,7 @@ Other SMTP clients can also be used for delivering Logwatch messages.
 	{{< file-excerpt "/etc/postfix/main.cf" aconf >}}
 myhostname = hostname.example.com
 inet_interfaces = loopback-only
-		
+
 
 {{< /file-excerpt >}}
 
@@ -54,12 +54,9 @@ Both A/AAAA, and MX records will need to be set for your domain.
 
 4.	Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
 
-	{{< file-excerpt "/etc/postfix/aliases" aconf >}}
+	{{< file-excerpt "/etc/postfix/aliases" >}}
 root:           root@hostname.example.com
-		
-
 {{< /file-excerpt >}}
-
 
 5.  Run `newaliases` after editing the aliases list.
 
@@ -134,7 +131,7 @@ By default, Logwatch digests will include all logs contained within `/var/log`. 
 {{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
 LogDir = /var/log
 LogDir = /var/www/example.com/logs
-	
+
 
 {{< /file-excerpt >}}
 
@@ -160,7 +157,7 @@ If using Arch, and you followed the above install instructions, Sendmail is alre
 
 	{{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
 MailTo = root
-		
+
 
 {{< /file-excerpt >}}
 
@@ -202,9 +199,9 @@ Logwatch often works best when configured to run daily and send or save a report
 
 	{{< file-excerpt "/etc/crontab" >}}
 30 0  * * *          /usr/sbin/logwatch
-		
+
 
 {{< /file-excerpt >}}
 
 
-	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/content/tools-reference/tools/schedule-tasks-with-cron).
+	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).

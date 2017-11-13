@@ -20,20 +20,20 @@ external_resources:
 ---
 
 
-![docker_banner](/content/assets/install_docker.jpg)
+![docker_banner](/docs/assets/install_docker.jpg)
 
 In this guide, you'll install Docker and pull down images that can be deployed as containers.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
 2.  Update your system (this example uses Ubuntu 16.04):
 
         apt update && apt upgrade
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Docker
@@ -98,7 +98,7 @@ The first thing you are going to want to do is pull down an image to be used as 
 
         docker images
 
-    ![List Docker Images](/content/assets/docker/docker-install-images-list.jpg "List Docker Images")
+    ![List Docker Images](/docs/assets/docker/docker-install-images-list.jpg "List Docker Images")
 
 2. Pull the [nginx web server](https://nginx.org/en/), using the `docker pull` command:
 
@@ -106,11 +106,11 @@ The first thing you are going to want to do is pull down an image to be used as 
 
     This will pull the latest official nginx Docker image
 
-    ![Pull Official nginx Image](/content/assets/docker/docker-install-image-nginx.jpg "Pull the official nginx image")
+    ![Pull Official nginx Image](/docs/assets/docker/docker-install-image-nginx.jpg "Pull the official nginx image")
 
 3.  If you run `docker images` again, you'll see the nginx image:
 
-    ![docker images Shows the nginx Image](/content/assets/docker/docker-install-image-nginx-installed.jpg "docker images now shows the nginx image")
+    ![docker images Shows the nginx Image](/docs/assets/docker/docker-install-image-nginx-installed.jpg "docker images now shows the nginx image")
 
 ### Find Unofficial nginx Images
 
@@ -120,7 +120,7 @@ Alternatively, if you don't want to install the official nginx image, use `docke
 
 This command will list all variant images, along with a respective description, and whether or not they are official.
 
-![Run docker search nginx to Show Other nginx Options](/content/assets/docker/docker-install-image-nginx-options.jpg "Run docker search nginx to Show Other nginx Options")
+![Run docker search nginx to Show Other nginx Options](/docs/assets/docker/docker-install-image-nginx-options.jpg "Run docker search nginx to Show Other nginx Options")
 
 Use `docker pull` to pull one of the other images:
 
@@ -128,4 +128,4 @@ Use `docker pull` to pull one of the other images:
 
 ## Ready to Keep Going?
 
-At this point, you should know how to install Docker and pull down images with which you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/content/applications/containers/) to learn more.
+At this point, you should know how to install Docker and pull down images with which you can then deploy containers. Use `man docker` to dive into the manual or visit our other [Docker Guides](/docs/applications/containers/) to learn more.

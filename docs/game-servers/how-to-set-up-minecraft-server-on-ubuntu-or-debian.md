@@ -18,7 +18,7 @@ external_resources:
  - '[Documentation on the World of Color Update](http://minecraft.gamepedia.com/1.12)'
 ---
 
-![Set Up a Minecraft Server](/content/assets/how-to-set-up-minecraft-server-on-ubuntu-or-debian/How_to_Set_Up_a_Minecraft_Server_smg.jpg)
+![Set Up a Minecraft Server](/docs/assets/how-to-set-up-minecraft-server-on-ubuntu-or-debian/How_to_Set_Up_a_Minecraft_Server_smg.jpg)
 
 Minecraft is one of the most popular games in the world, with over 100 million users. In Minecraft you and other players are free to build and explore anything you want in a 3D generated world. If you host your own Minecraft server, you decide the rules, and you and your friends can play together in this interactive adventure game.
 
@@ -28,7 +28,7 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 1.  To use a Minecraft server you must also have a version of the game client from [Minecraft.net](https://minecraft.net/).
 
-2.  Complete our [Getting Started](/content/getting-started) and [Securing Your Server](/content/securing-your-server) guides.
+2.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
 3.  Update your Linode's software:
 
@@ -53,10 +53,10 @@ Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJ
 
         sudo adduser minecraft
 
-    Assign a secure password, and configure any additional [SSH hardening](/content/security/use-public-key-authentication-with-ssh) options at this time.
+    Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
 
 {{< note >}}
-If you have a firewall configured according to our [Securing Your Server](/content/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
 
 -A INPUT -p tcp --dport 25565 -j ACCEPT
 {{< /note >}}
@@ -115,7 +115,7 @@ eula=true
 
 
 
-3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
+3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
 
         screen /home/minecraft/run.sh
 
@@ -150,16 +150,16 @@ To disconnect from the screen session without stopping the game server, press **
 
 1.  Open your local Minecraft client. After logging in, click on the **Multiplayer** option:
 
-    [![Minecraft Launch Menu.](/content/assets/minecraft-select-multiplayer_small.png)](/content/assets/minecraft-select-multiplayer.png)
+    [![Minecraft Launch Menu.](/docs/assets/minecraft-select-multiplayer_small.png)](/docs/assets/minecraft-select-multiplayer.png)
 
 2.  Click on **Add server** and enter your Linode's IP address or domain name. When you're finished click **Done**:
 
-    [![Edit Server Info.](/content/assets/minecraft-server-info_small.png)](/content/assets/minecraft-server-info.png)
+    [![Edit Server Info.](/docs/assets/minecraft-server-info_small.png)](/docs/assets/minecraft-server-info.png)
 
 3.  Your server is now available to incoming connections. Click **Join Server** to connect:
 
-    [![Minecraft Server List.](/content/assets/minecraft-server-added_small.png)](/content/assets/minecraft-server-added.png)
+    [![Minecraft Server List.](/docs/assets/minecraft-server-added_small.png)](/docs/assets/minecraft-server-added.png)
 
-    [![Minecraft Players.](/content/assets/minecraft-gameplay_small.png)](/content/assets/minecraft-gameplay.png)
+    [![Minecraft Players.](/docs/assets/minecraft-gameplay_small.png)](/docs/assets/minecraft-gameplay.png)
 
-Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+Congratulations! You can now play Minecraft in a persistent world with your friends. For more information on working with `screen`, check out our guide on [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).

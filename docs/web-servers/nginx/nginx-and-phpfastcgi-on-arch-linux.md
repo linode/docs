@@ -18,20 +18,18 @@ title: 'Nginx and PHP-FastCGI on Arch Linux'
 
 The nginx web server is a fast, lightweight server designed to efficiently handle the needs of both low and high traffic websites. Although commonly used to serve static content, it's quite capable of handling dynamic pages as well. This guide will help you get nginx up and running with PHP and FastCGI on your Arch Linux-powered Linode system.
 
-It is assumed that you've already followed the steps outlined in our [getting started guide](/content/getting-started/). These steps should be performed via a root login to your Linode over SSH.
+It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Software
-----------------
+# Install Software
 
 Issue the following commands to update your system and install the nginx web server, PHP, and compiler tools:
 
@@ -61,8 +59,7 @@ Issue the following command to start the PHP FastCGI process:
 
 In the default configuration, `spawn-fcgi-php` starts four `php-cgi` child processes. Test this configuration under normal load. If you find that you want to modify the number of child processes that are spawned, you can modify this value by editing the `PHP_FCGI_CHILDREN` value in the `/etc/conf.d/spawn-fcgi-php.conf` file.
 
-Configure Virtual Hosting
--------------------------
+# Configure Virtual Hosting
 
 Create directories for your web content and logs by issuing the following commands. Be sure to replace "example.com" with your domain name.
 
@@ -144,8 +141,7 @@ Issue the following command to start nginx:
 
     /etc/rc.d/nginx start
 
-Test PHP with FastCGI
----------------------
+# Test PHP with FastCGI
 
 Create a file called "test.php" in your site's "public\_html" directory with the following contents:
 
@@ -157,12 +153,11 @@ Create a file called "test.php" in your site's "public\_html" directory with the
 
 When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown. Congratulations, you've configured the nginx web server to use PHP-FastCGI for dynamic content!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [The nginx Homepage](http://nginx.org/)
 - [FastCGI Project Homepage](http://www.fastcgi.com/)
 - [PHP Documentation](http://www.php.net/docs.php)
-- [Basic Ngnix Configuration](/content/websites/nginx/basic-nginx-configuration)
+- [Basic Ngnix Configuration](/docs/websites/nginx/basic-nginx-configuration)

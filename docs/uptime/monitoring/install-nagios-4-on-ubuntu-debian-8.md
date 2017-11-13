@@ -22,22 +22,22 @@ external_resources:
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
 <hr>
 
-![Install Nagios 4 on Ubuntu and Debian 8](/content/assets/install-nagios-4-on-ubuntu-debian/Install_Nagios_4_smg.jpg)
+![Install Nagios 4 on Ubuntu and Debian 8](/docs/assets/install-nagios-4-on-ubuntu-debian/Install_Nagios_4_smg.jpg)
 
 A monitoring tool is a key application in a production server. Nagios is a popular tool that provides monitoring and alerting services for your servers, applications and services. Using Nagios and a wide variety of available plugins, you can keep track of the status of your critical services like HTTP, SSH and SMTP. In this guide, you'll learn how to install Nagios 4 on your Linode.
 
 ## Before You Begin
 
-1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu or Debian 8 from our [Getting Started guide](/content/getting-started/).
+1.  In order to run Nagios on your Linode, follow the configuration steps for Ubuntu or Debian 8 from our [Getting Started guide](/docs/getting-started/).
 
-2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/content/websites/lamp/lamp-on-ubuntu-14-04) or [LAMP on Debian 8](/content/websites/lamp/lamp-on-debian-8-jessie) guide for instructions.
+2.  Install and configure a LAMP stack (Linux, Apache, MySQL and PHP stack). Follow the [LAMP on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04) or [LAMP on Debian 8](/docs/websites/lamp/lamp-on-debian-8-jessie) guide for instructions.
 
 3.  Install updates:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Nagios
@@ -140,11 +140,11 @@ For Ubuntu versions after 14.04, see the [Systemd section below](#systemd) befor
 
     You will be greeted with a screen like this one:
 
-    ![Nagios 4 Greeting](/content/assets/greeting_nagios4.png)
+    ![Nagios 4 Greeting](/docs/assets/greeting_nagios4.png)
 
     To view monitoring status, click the **Hosts** link in the menu on the left. This example screenshot shows an active Nagios server called `localhost`:
 
-    ![Nagios 4 Hosts](/content/assets/hosts_nagios4.png)
+    ![Nagios 4 Hosts](/docs/assets/hosts_nagios4.png)
 
 
 ### Systemd

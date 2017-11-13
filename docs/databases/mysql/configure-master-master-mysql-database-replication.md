@@ -18,7 +18,7 @@ external_resources:
 MySQL Master-Master replication adds speed and redundancy for active websites. With replication, two separate MySQL servers act as a cluster. Database clustering is particularly useful for high availability website configurations. Use two separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 This guide is written for Debian 7 or Ubuntu 14.04.
 {{< /note >}}
@@ -37,7 +37,7 @@ Use the following commands to install MySQL on each of the Linodes:
 
     **Server 1:**
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
 server_id           = 1
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -54,7 +54,7 @@ auto-increment-offset = 1
 
     **Server 2:**
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
 server_id           = 2
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -132,13 +132,14 @@ bind-address    = x.x.x.x
 
 5.  Test by creating a database and inserting a row:
 
-    Server 1:
+    **Server 1:**
 
         create database test;
         create table test.flowers (`id` varchar(10));
 
-    Server 2:
+    **Server 2:**
 
         show tables in test;
 
 When queried, you should see the tables from Server 1 replicated on Server 2.  Congratulations, you now have a MySQL Master-Master cluster!
+

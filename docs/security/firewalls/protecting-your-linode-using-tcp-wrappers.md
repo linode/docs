@@ -14,11 +14,11 @@ contributor:
     name: Francis McNamee
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
-![Protecting your Linode with TCP Wrappers](/content/assets/protecting-your-linode-with-tcp-wrappers.png "Protecting your Linode with TCP Wrappers")
+![Protecting your Linode with TCP Wrappers](/docs/assets/protecting-your-linode-with-tcp-wrappers.png "Protecting your Linode with TCP Wrappers")
 
 TCP wrappers are a host-based access control system. They are used to prevent unauthorized access to your server by allowing only specific clients access to services running on your server.
 
@@ -88,7 +88,7 @@ This example *hosts.deny* file will block all client from all processes.
 
     ALL : ALL
 
-We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/content/networking/using-the-linode-shell-lish).
+We could express this rule in a sentence like this, "Deny access to all daemons from all clients". This rule will deny all traffic to the server regardless of the source. Utilizing this rule on its own is not recommended, as it will deny you access to your own server, excepting [LISH](/docs/networking/using-the-linode-shell-lish).
 
 ### Allow exceptions
 

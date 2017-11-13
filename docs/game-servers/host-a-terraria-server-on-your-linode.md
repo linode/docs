@@ -21,10 +21,10 @@ external_resources:
 aliases: ['applications/game-servers/host-a-terraria-server-on-your-linode/']
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 <hr>
 
-![Hosta a Terraria Server on Your Linode](/content/assets/terraria-server.png "Hosta a Terraria Server on Your Linode")
+![Hosta a Terraria Server on Your Linode](/docs/assets/terraria-server.png "Hosta a Terraria Server on Your Linode")
 
 [Terraria](https://terraria.org/) is a two-dimensional sandbox game, similar to [Minecraft](https://minecraft.net/), which allows players to explore, build, and battle in an open world. In 2015, the Terraria developers announced [support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers.
 
@@ -34,9 +34,9 @@ Due to Terraria's system requirements, a Linode with at least two CPU cores and 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for a Terraria server in the next section.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. **Do not** follow the *Configuring a Firewall* section in the Securing Your Server Guide--we will configure the firewall for a Terraria server in the next section.
 
 3.  Update your operating system's packages.
 
@@ -48,7 +48,7 @@ Terraria only uses IPv4 and does not use IPv6.
 
 ### Firewalld
 
-Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/content/security/firewalls/introduction-to-firewalld-on-centos) for more information.
+Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [guide on using firewalld](/docs/security/firewalls/introduction-to-firewalld-on-centos) for more information.
 
 1.  Enable and start firewalld:
 
@@ -83,13 +83,13 @@ Firewalld is the default iptables controller in CentOS 7+ and Fedora. See our [g
 
 ### UFW
 
-[UFW (Uncomplicated Firewall)](/content/security/firewalls/configure-firewall-with-ufw) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
+[UFW (Uncomplicated Firewall)](/docs/security/firewalls/configure-firewall-with-ufw) is an iptables controller packaged with Ubuntu, but it's not installed in Debian by default.
 
 1.  If needed, install UFW:
 
         sudo apt install ufw
 
-2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](https://www.linode.com/content/networking/using-the-linode-shell-lish/):
+2.  Add SSH and a rule for Terraria. It's important you add rules before enabling UFW. If you don't, you'll terminate your SSH session and will need to access your Linode using [Lish](https://www.linode.com/docs/networking/using-the-linode-shell-lish/):
 
         sudo ufw allow ssh
         sudo ufw allow 7777/tcp
@@ -105,7 +105,7 @@ The second command in this step, `sudo ufw delete 4` references the fourth rule 
 
 ### iptables
 
-To manually configure iptables without using a controller, see our [iptables guide](https://www.linode.com/content/security/firewalls/control-network-traffic-with-iptables) for a general ruleset.
+To manually configure iptables without using a controller, see our [iptables guide](https://www.linode.com/docs/security/firewalls/control-network-traffic-with-iptables) for a general ruleset.
 
 1.  You'll also want to add the rule below for Terraria:
 

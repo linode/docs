@@ -14,10 +14,9 @@ title: 'TWiki on Debian 6 (Squeeze)'
 deprecated: true
 ---
 
-TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/content/websites/wikis/confluence-on-debian-5-lenny). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
+TWiki is a robust "structured wiki" roughly comparable to other "Enterprise" wiki solutions such as [Confluence](/docs/websites/wikis/confluence-on-debian-5-lenny). Structured wikis provide a powerful way to share, store, and work with information in task centric applications. TWiki is a foundation for supporting content-centric workflows including bug and issue tracking, knowledge management, and data entry. Written in Perl and distributed under the terms of the GNU GPL, TWiki is highly extensible and has a robust and active plug-in infrastructure. Because of this flexibility, TWiki straddles the boundary between web application and web application framework. This guide outlines a basic TWiki installation, setup, and configuration process.
 
-Prepare System and Install TWiki
---------------------------------
+# Prepare System and Install TWiki
 
 ### Install Prerequisites
 
@@ -44,8 +43,7 @@ At the time of writing the most recent release of TWiki is 5.0.1. Check the [TWi
 
 The TWiki files are now installed in the `/srv/www/example.com/` directory. This is not, and should not be, within the public `DocumentRoot` for your site.
 
-Configure Software
-------------------
+# Configure Software
 
 ### Configure Apache Web Server
 
@@ -137,14 +135,13 @@ Before you can proceed with the installation process, you will need to configure
 {{< /file-excerpt >}}
 
 
-Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/content/web-servers/apache/configuration/rule-based-access-control) document.
+Add your local IP address to the `Allow from` directive in the `FilesMatch` block to allow access to the configuration scripts. For more information about access control with Apache, consider the [Rule Based Access Control](/docs/web-servers/apache/configuration/rule-based-access-control) document.
 
 When you've completed these modifications, reload the web server configuration by issuing the following command:
 
     /etc/init.d/apache2 reload
 
-Install TWiki
--------------
+# Install TWiki
 
 If your wiki is accessible at `http://example.com`, visit `http://example.com/bin/configure` to begin the configuration process. Enter an administrative password, and click the "Configure" button. Next, click on the "General path settings" option to ensure that the configuration script has properly deduced the location of all required files. Once you have confirmed these setting click on the "Next" option. On the next page select the "Save" option to save these settings.
 
@@ -160,15 +157,14 @@ Log into the configuration section at `http://example.com/bin/configure`, using 
 
 Congratulations! You have successfully installed TWiki. You can now visit your wiki at `http://example.com/`
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [TWiki Project Upstream](http://twiki.org/)
-- [Apache HTTP Server Documentation](/content/web-servers/apache)
-- [Exim Send Only MTA](/content/email/exim/send-only-mta-debian-6-squeeze)
-- [Postfix Mail Gateway MTA](/content/email/postfix/gateway-debian-6-squeeze)
+- [Apache HTTP Server Documentation](/docs/web-servers/apache)
+- [Exim Send Only MTA](/docs/email/exim/send-only-mta-debian-6-squeeze)
+- [Postfix Mail Gateway MTA](/docs/email/postfix/gateway-debian-6-squeeze)
 
 
 

@@ -4,6 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
 keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
+og_description: 'Use an pre-trained deep learning model as part of a production application.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-09
 modified: 2017-10-10
@@ -17,15 +18,17 @@ external_resources:
 - '[TensorFlow Tutorials](https://www.tensorflow.org/tutorials/)'
 ---
 
+![How to Move Your Machine Learning Model to Production](/docs/assets/machine-learning/Machine_Learning_Model.jpg)
+
 Developing, training, and tuning a deep learning model for a particular problem, such as natural language processing (NLP) or image recognition, requires time and resources. It also often involves using powerful processors to train the model on large datasets. However, once the model is working well, using it to generate predictions on new data is much simpler and less computationally expensive. The only difficulty is in moving the model from its development environment into a production app.
 
 This guide will show you how to create a simple Flask API that will use machine learning to identify handwritten digits. The API will use a simple deep learning model trained on the famous MNIST dataset.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your system:
 
@@ -54,9 +57,7 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
         conda install keras tensorflow h5py pillow flask numpy
 
-### Test it on Jupyter
-
-If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/content/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
+If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
 
 ## Prepare a Model
 
@@ -76,15 +77,17 @@ Since developing and training a deep learning model is beyond the scope of this 
 
 {{< note >}}
 This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
+{{< /note >}}
 
 Older versions of Keras require deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from GitHub, the script below checks and removes optimizer weights.
 
+{{< file "optimizer-weights.py" py >}}
 import h5py
 with h5py.File('my_model.h5', 'r+') as f:
 if 'optimizer_weights' in f.keys():
 del f['optimizer_weights']
 f.close()
-{{< /note >}}
+{{< /file >}}
 
 1.  Create a directory for the model:
 
@@ -92,7 +95,7 @@ f.close()
 
 2.  Create a Python script to build and train your model:
 
-    {{< file "~/models/mnist_model.py" >}}
+    {{< file "~/models/mnist_model.py" py >}}
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, Activation, Flatten
 from keras.layers import Convolution2D, MaxPooling2D
@@ -157,7 +160,7 @@ Once a model has been trained, using it to generate predictions is much simpler.
 
 3.  Create `/var/www/flaskapi/flaskapi/__init__.py` in a text editor and add the following:
 
-    {{< file "/var/www/flaskapi/flaskapi/\\__init__.py" >}}
+    {{< file "/var/www/flaskapi/flaskapi/__init__.py" py >}}
 from flask import Flask, jsonify, request
 import numpy as np
 import PIL
@@ -214,16 +217,13 @@ Apache modules are typically installed with the system installation of Apache. H
 
     The output should be similar to:
 
-    {{< output >}}
-LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
+        LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
 WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
-{{< /output >}}
 
 4.  Create a `wsgi.load` file in the Apache `mods-available` directory. Copy the `LoadModule` directive from above and paste it into the file:
 
     {{< file "/etc/apache2/mods-available/wsgi.load" >}}
 LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
-
 {{< /file >}}
 
 
@@ -241,13 +241,12 @@ import sys
 sys.path.insert(0,"/var/www/flaskapi/")
 
 from flaskapi import app as application
-
 {{< /file >}}
 
 
 2.  Configure a virtual host for your app. Create `flaskapi.conf` in Apache's `sites-available` directory and add the following content, replacing `example.com` with your Linode's public IP address. For the `WSGIDaemonProcess` directive, set the Python home path to the output of `mod_wsgi-express module-config` under `WSGIPythonHome`:
 
-    {{< file "/etc/apache2/sites-available/flaskapi.conf" >}}
+    {{< file "/etc/apache2/sites-available/flaskapi.conf" apache >}}
 <Directory /var/www/flaskapi/flaskapi>
   Require all granted
 </Directory>
@@ -279,7 +278,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
 
 1.  Right click and download the image below onto your local machine:
 
-    ![MNIST 7](/content/assets/machine-learning/7.png "MNIST 7")
+    ![MNIST 7](/docs/assets/machine-learning/7.png "MNIST 7")
 
 2.  From your local machine, use `curl` to POST the image to your API. Replace the IP address with the public IP address of your Linode, and provide the absolute path to the downloaded image in place of `/path/to/7.png`:
 
@@ -287,9 +286,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
 
     If successful, you will receive a JSON response that correctly identifies the digit in the image:
 
-    {{< output >}}
-{ 'digit' : 7 }
-{{< /output >}}
+        { 'digit' : 7 }
 
     The first request may appear to take some time because `mod_wsgi` uses lazy loading of the Flask application.
 
@@ -300,3 +297,4 @@ Most production machine learning solutions involve a longer pipeline than demons
 The API produced in this guide also lacks many features that a real-world application would need, including error handling and dealing with bulk image requests. To make the service more useful, the full preprocessing used by MNIST should be applied to each image.
 
 In addition, images submitted to the API could be used as a source of data to further train and refine your model. In this case, you could configure the API to copy each submitted image, along with the model's prediction, to a database for later analysis. See the links in **More Information** if you are interested in these topics.
+

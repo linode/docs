@@ -83,7 +83,7 @@ You should also move your block device assignments to be sequential, without ski
 
 An upgrade to KVM Linode includes the ability to do **Direct Disk** booting. Choosing Direct Disk means we will boot the Linode using the Master Boot Record on your boot device:
 
-[![Direct Disk Boot Mode.](/content/assets/config_direct_disk.png)](/content/assets/config_direct_disk.png)
+[![Direct Disk Boot Mode.](/docs/assets/config_direct_disk.png)](/docs/assets/config_direct_disk.png)
 
 ## How to Enable KVM
 
@@ -91,35 +91,35 @@ All new Linodes are created as KVM guests. Older Xen Linodes will need to migrat
 
 If your Linode is currently running on Xen, go to the Linode's Dashboard page. In the bottom right of the sidebar is an "Upgrade to KVM" link. Click on the link and follow the instructions to upgrade:
 
-  [![The KVM Upgrade Button.](/content/assets/kvm_upgrade_context.png)](/content/assets/kvm_upgrade_context.png)
+  [![The KVM Upgrade Button.](/docs/assets/kvm_upgrade_context.png)](/docs/assets/kvm_upgrade_context.png)
 
 ## Troubleshooting
 
-There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/content/platform/support).
+There have been a few minor issues reported when upgrading to KVM. If you're using any of the Linux distributions listed below and encounter an issue, please read on. If you are running a different distribution, or encounter an issue not listed here, please contact [Support](/docs/platform/support).
 
 ### Migration from Xen
 
 If you are using a kernel other than the one provided by Linode and you migrate from Xen to KVM, you may encounter this error on boot:
 
-![KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."](/content/assets/kvm-kernel-error.png "KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."")
+![KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."](/docs/assets/kvm-kernel-error.png "KVM Kernel Boot Error: "This isn't a KVM kernel! Fix your configuration profile."")
 
 This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 1.  Edit your Linode's configuration profile to use the Linode-supplied kernel.
 
-2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/content/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
+2.  Boot your Linode to update the kernel and regenerate `initramfs`. The steps will differ depending on your distribution. Assuming you're still using Grub 1 (Legacy Grub), refer to the [Run a Distribution-Supplied Kernel with PV-GRUB](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) guide.
 
 3.  Update `/boot/grub/menu.lst` to use your newly built kernel and `initramfs` file.
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
 {{< note >}}
-Remember to check [Glish](/content/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
 {{< /note >}}
 
 ### CentOS 6
 
-There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/content/networking/using-the-linode-shell-lish) and run:
+There are some reported cases of Linodes running CentOS 6.X that lose network connectivity after upgrading. To resolve this issue, open the [LISH Console](/docs/networking/using-the-linode-shell-lish) and run:
 
     rm -f /etc/udev/rules.d/70-persistent-net.rules
 
@@ -133,4 +133,4 @@ You can disable the use of Predictable Network Interface Names with the command 
 
     ln -s /dev/null /etc/udev/rules.d/80-net-setup-link.rules
 
-If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/content/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.
+If you have already upgraded and lost connectivity to your Linode, you will need to use the [LISH Console](/docs/networking/using-the-linode-shell-lish) to regain access to your Linode to run this command. Once you've done so, reboot your system.

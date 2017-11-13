@@ -17,20 +17,20 @@ external_resources:
 
 [OpenVPN](https://openvpn.net/) is a tool for creating network tunnels between groups of computers that are not on the same local network. This is useful to remotely access services on a network or computer without making those services publicly accessible. When integrated with OpenSSL, OpenVPN encrypts all VPN traffic providing a secure connection between machines.
 
-![Set up a Hardened OpenVPN Server on Debian](/content/assets/hardened-openvpn-server-debian-8.png "Set up a Hardened OpenVPN Server on Debian")
+![Set up a Hardened OpenVPN Server on Debian](/docs/assets/hardened-openvpn-server-debian-8.png "Set up a Hardened OpenVPN Server on Debian")
 
 An OpenVPN connection consists of two flow channels between the server and clients: the *Control Channel* and the *Data Channel*. A client connects to the server by initiating a TLS session over the control channel, in which credentials are exchanged between server and clients to establish the data channel. The data channel is the encrypted pipeline in which all traffic between server and clients is then transmitted.
 
 This guide is the first of a three-part series. Part one sets up a VPN server on Debian and prepares the access credentials for client devices. This VPN can be used to host internal services such as websites, game servers or file servers.
 
-[Part two](/content/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode to the internet. [Part three](/content/networking/vpn/configuring-openvpn-client-devices) takes you through setting up the client-side software for various operating systems, including mobile platforms.
+[Part two](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server) shows you how to set up a routed VPN so all traffic from client devices is tunneled through your Linode to the internet. [Part three](/docs/networking/vpn/configuring-openvpn-client-devices) takes you through setting up the client-side software for various operating systems, including mobile platforms.
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and set your Linode's timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and set your Linode's timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do not complete the steps in the *Creating a Firewall* section. This guide has instructions specifically for firewall rules for an OpenVPN server.
 
 3.  Update the system:
 
@@ -47,7 +47,7 @@ You can manage the OpenVPN environment in [two ways](https://openvpn.net/index.p
 
 For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users. Although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers, you would still need to edit the VPN's configuration files.
 
-If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/content/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
+If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
 
 
 ## Networking Configuration
@@ -453,4 +453,4 @@ Use `sudo journalctl -f | grep vpn` to monitor the logs of your OpenVPN server i
 
 You should now have an operational OpenVPN server and a set of certificate/key pairs for your desired client devices. If you intend to use your OpenVPN server as an extension of your local network, or for hosting services you want to access from your LAN, you would need to configure the specific applications for your use.
 
-If you want your VPN server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Trafic Through an OpenVPN Server](/content/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server). To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/content/networking/vpn/configuring-openvpn-client-devices).
+If you want your VPN server to forward and receive traffic to/from the internet on behalf of VPN clients, see part two of this series: [Tunnel Your Internet Trafic Through an OpenVPN Server](/docs/networking/vpn/tunnel-your-internet-traffic-through-an-openvpn-server). To set up the connecting client devices, see part three: [Configuring OpenVPN Client Devices](/docs/networking/vpn/configuring-openvpn-client-devices).

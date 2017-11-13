@@ -15,7 +15,7 @@ title: Linux Package Management
 
 Many tutorials reference "package managers" and "package management tools." If you are new to the Linux world and don't understand the purpose of these technologies, or if you are familiar with one package management tool but want to learn how to use another, this guide will provide an introduction to the major package management tools.
 
-![Linux Package Management](/content/assets/linux-package-management.png "Linux Package Management")
+![Linux Package Management](/docs/assets/linux-package-management.png "Linux Package Management")
 
 ## Package Management Concepts
 
@@ -145,7 +145,7 @@ The file located at `/etc/yum.conf` provides system-wide configuration options f
 
 The options in the `[main]` stanza don't need modification, though you may set alternate logging and cache locations for the database by adding the following lines:
 
-{{< file-excerpt "/etc/yum.conf" aconf >}}
+{{< file-excerpt "/etc/yum.conf" conf >}}
 logfile=/var/log/yum.log
 cachedir=/var/cache/yum
 
@@ -194,7 +194,7 @@ Note that RPM does not automatically check for dependencies, so you must install
 
 You can use the following template to define a new stanza for a new repository, replacing the capitalized strings with your own values:
 
-{{< file-excerpt "/etc/yum.repos.d/example.repo" aconf >}}
+{{< file-excerpt "/etc/yum.repos.d/example.repo" conf >}}
 [REPO-NAME]
 name=REPOSITORY-NAME
 mirrorlist=HTTP-ACCESSIBLE-MIRROR-LIST
@@ -207,7 +207,7 @@ gpgkey=FILE-PATH-TO-GPG-KEY
 
 The following example is the default configuration for the "Base" repository in CentOS 7:
 
-{{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" aconf >}}
+{{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" conf >}}
 [base]
 name=CentOS-$releasever - Base
 mirrorlist=http://mirrorlist.centos.org/?release=$releasever&arch=$basearch&repo=os
@@ -311,7 +311,7 @@ While it is unlikely that you will need to modify the default `pacman.conf` for 
 
 If you need to add an additional third-party repository, add a repository stanza:
 
-{{< file-excerpt "/etc/pacman.conf" aconf >}}
+{{< file-excerpt "/etc/pacman.conf" conf >}}
 [REPOSITORY-NAME]
 Server = SERVER-LOCATION
 Include = REPOSITORY-LIST

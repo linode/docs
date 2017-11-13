@@ -18,9 +18,11 @@ external_resources:
 - '[HAProxy Documentation](http://www.haproxy.org/#docs)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-----
+---
+
+![HAProxy for Load Balancing](/docs/assets/haproxy/HAProxy.jpg)
 
 ## What is HAProxy?
 
@@ -30,16 +32,16 @@ This guide will describe the installation and configuration of HAProxy for load-
 
 ## Before You Begin
 
-1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+1.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade
 
-3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/content/networking/linux-static-ip-configuration) guide to add private IP addresses and internally network your Linodes.
+3.  This guide uses private IP addresses in the example configurations. Refer to our [Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration) guide to add private IP addresses and internally network your Linodes.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Installation
@@ -150,7 +152,7 @@ backend backendnodes
 
     This defines **backendnodes** and specifies several configuration options:
 
-      - The `balance` setting specifies the load-balancing strategy. In this case, the `roundrobin` strategy is used. This strategy uses each server in turn but allows for weights to be assigned to each server: servers with higher weights are used more frequently. 
+      - The `balance` setting specifies the load-balancing strategy. In this case, the `roundrobin` strategy is used. This strategy uses each server in turn but allows for weights to be assigned to each server: servers with higher weights are used more frequently.
       Other strategies include `static-rr`, which is similar to `roundrobin` but does not allow weights to be adjusted on the fly; and `leastconn`, which will forward requests to the server with the lowest number of connections.
       - The `forwardfor` option ensures the forwarded request includes the actual client IP address.
       - The first `http-request` line allows the forwarded request to include the port of the client HTTP request. The second adds the proto-header containing https if `ssl_fc`, a HAProxy system variable, returns true. This will be the case if the connection was first made via an SSL/TLS transport layer.

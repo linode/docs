@@ -13,17 +13,17 @@ published: 2017-08-14
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
- - '[Install and Configure Redis on CentOS 7](/content/databases/redis/install-and-configure-redis-on-centos-7)'
+ - '[Install and Configure Redis on CentOS 7](/docs/databases/redis/install-and-configure-redis-on-centos-7)'
 ---
 
-![Redis_banner](/content/assets/Redis_Cluster.jpg)
+![Redis_banner](/docs/assets/Redis_Cluster.jpg)
 
 Redis clusters have grown to be a popular tool for caches, queues, and more because of its potential for scalability and speed. This guide aims to create a cluster using three Linodes to demonstrate sharding. Then, you will promote a slave to a master - insurance, in the event of a failure.
 
 Prior to starting, we recommend you familiarize yourself with the following:
 
- * [Firewall settings using iptables or ufw](/content/security/firewalls/configure-firewall-with-ufw)
- * [Master/Slave Replication ](/content/databases/redis/deploy-redis-on-ubuntu-or-debian)
+ * [Firewall settings using iptables or ufw](/docs/security/firewalls/configure-firewall-with-ufw)
+ * [Master/Slave Replication ](/docs/databases/redis/deploy-redis-on-ubuntu-or-debian)
 
 ## Install Redis on Each Linode
 Depending on your version of Linux, it may be possible to install Redis through a package manager. Only Redis 3.0 and above supports clustering. The steps below are for installation of the latest stable branch of Redis.
@@ -59,7 +59,7 @@ This guide manually connects each master and slave across three Linodes. Conside
 
 Although the official documentation recommends creating six nodes, this guide will use the minimum of three nodes with the following topology:
 
-![Figure demonstrating master-slave across three servers](/content/assets/redis_cluster_3_nodes.png)
+![Figure demonstrating master-slave across three servers](/docs/assets/redis_cluster_3_nodes.png)
 
 This setup uses three Linodes running two instances of Redis server per Linode. You must ensure each host is independent, and then consider using additional nodes if there is a need to maintain uptime requirements.
 
@@ -68,9 +68,9 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
         cp redis.conf c_slave.conf
         mv redis.conf a_master.conf
 
-2. In `a_master.conf`, comment the `bind` directive and enable cluster mode. The ports in this example will range from 6379 to 6381.
+2.  In `a_master.conf`, comment the `bind` directive and enable cluster mode. The ports in this example will range from 6379 to 6381.
 
-   {{< file "/redis-stable/a_master.conf" >}}
+    {{< file "/redis-stable/a_master.conf" >}}
 # bind 127.0.0.1
 protected-mode no
 port 6379
@@ -82,13 +82,13 @@ cluster-node-timeout 15000
 {{< /file >}}
 
 
-   {{< caution >}}
+    {{< caution >}}
 A node in the Redis cluster requires a defined port and a port higher than 10000. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.
 {{< /caution >}}
 
-3. In `c_slave.conf`, the configuration will be similar except for an update of the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master, rather than the `slaveof` directive.
+3.  In `c_slave.conf`, the configuration will be similar except for an update of the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master, rather than the `slaveof` directive.
 
-   {{< file "/redis-stable/c_slave.conf" >}}
+    {{< file "/redis-stable/c_slave.conf" >}}
 # bind 127.00.1
 protected-mode no
 port 6381
@@ -100,9 +100,9 @@ cluster-node-timeout 15000
 {{< /file >}}
 
 
-4. Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
+4.  Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
 
-        | Server | Master | Slave |
+    | Server | Master | Slave |
     |:-------|:-------|:------|
     |    1   |  6379  |  6381 |
     |    2   |  6380  |  6379 |
@@ -111,15 +111,15 @@ cluster-node-timeout 15000
 ## Connect Master and Slave
 Master/slave replication can be achieved across three nodes by running two instances of a Redis server on each node.
 
-1. SSH into **server 1** and start the two Redis instances.
+1.  SSH into **server 1** and start the two Redis instances.
 
         redis-server redis-stable/a_master.conf
         redis-server redis-stable/c_slave.conf
 
-2. Substitute `a_master.conf` and `c_slave.conf` with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
+2.  Substitute `a_master.conf` and `c_slave.conf` with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
 
-   {{< file "Server 1" >}}
-_._
+    {{< file "Server 1" >}}
+                     _._
                 _.-``__ ''-._
            _.-``    `.  `_.  ''-._           Redis 4.0.1 (00000000/0) 64 bit
        .-`` .-```.  ```\/    _.,_ ''-._
@@ -277,7 +277,7 @@ The command line interface offers a way to `SET` and `GET` keys, in addition to 
 ## Promote Slave to Master
 Based on the current topology, the cluster will remain online if one of the Linodes fails. At that point, you can expect a slave to promote into a master with the data replicated.
 
-![Figure demonstrating server3 failure](/content/assets/redis_cluster_server_fail.png)
+![Figure demonstrating server3 failure](/docs/assets/redis_cluster_server_fail.png)
 
 1.  Add a key value pair.
 

@@ -16,25 +16,25 @@ external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 <hr>
 
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Set up Your Linode
 
-1.  Create a Linode with a minimum of 4 GB of RAM. See [Getting Started](https://www.linode.com/content/getting-started) for help setting up your host.
+1.  Create a Linode with a minimum of 4 GB of RAM. See [Getting Started](https://www.linode.com/docs/getting-started) for help setting up your host.
 
 2.  Deploy an Ubuntu 14.04 LTS image to your Linode. Consider using slightly less than half the available disk space for the first image, keeping the other half for taking a backup image before updates. Your partition size will depend on the number of accounts and volume of mail you expect to handle. Once deployed, boot your new host. SSH into the terminal using the command shown on your Remote Access page in Linode Manager and the password you entered when you created the Linode.
 
-3.  You must [set the hostname](https://www.linode.com/content/getting-started#ubuntu-1404--debian-7) and fully qualified domain name (FQDN), and [update /etc/hosts](https://www.linode.com/content/getting-started#update-etchosts) prior to installing Zimbra.
+3.  You must [set the hostname](https://www.linode.com/docs/getting-started#ubuntu-1404--debian-7) and fully qualified domain name (FQDN), and [update /etc/hosts](https://www.linode.com/docs/getting-started#update-etchosts) prior to installing Zimbra.
 
-4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/content/email/running-a-mail-server#dns-records) for details on setting up DNS.
+4.  Configure your DNS entries at your DNS provider to provide an A record for the host, and point the domain MX record to your new server. A reverse DNS pointer is highly recommended to prevent mail from your server being rejected. See [Running a Mail Server: DNS Records](/docs/email/running-a-mail-server#dns-records) for details on setting up DNS.
 
 ## Download Zimbra
 
@@ -133,7 +133,7 @@ This Guide is about setting up a new Zimbra Linode, but if you are upgrading an 
 
 6. Configure MX records.
 
-    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/content/networking/dns/dns-records-an-introduction/#mx) to resolve the problem.
+    If you receive an error about a missing MX record as shown below, it means your domain DNS records are not matching what Zimbra expects to find, based on the hostname you configured earlier. Check your `/etc/hostname` file and your [DNS records](/docs/networking/dns/dns-records-an-introduction/#mx) to resolve the problem.
 
         DNS ERROR resolving MX for linodemail.example.com
         It is suggested that the domain name have an MX record configured in DNS
@@ -202,7 +202,7 @@ It is common to run mail servers on UTC, as they regularly accept mail from all 
 Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
 {{< /caution >}}
 
-    ![Zimbra admin console](/content/assets/AdminConsole.png)
+    ![Zimbra admin console](/docs/assets/AdminConsole.png)
 
     If you configured the appropriate DNS records (step 4 of [Set up Your Linode](#set-up-your-linode) above), you should be able to send and receive mail with this account.
 
@@ -212,7 +212,7 @@ Zimbra provides two ways to manage configuration: a web console and the command 
 
 From the admin console you can configure default settings for new accounts (Zimbra calls this a Class Of Service, or COS), add and manage accounts, change passwords, and generally manage your mail server. The admin console has built-in descriptions for most settings. Click the label for the input item and a tool tip will appear. Click the **More** button below right and a more detailed note will be shown.
 
-![Click label for a tool tip](/content/assets/Tooltip.png) ![Click More for details](/content/assets/Tooltipmore.png)
+![Click label for a tool tip](/docs/assets/Tooltip.png) ![Click More for details](/docs/assets/Tooltipmore.png)
 
 {{< note >}}
 You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
@@ -246,11 +246,11 @@ Zimbra installs a default class of service which will be applied to all new acco
 
 1.  To manage COS in the console, click the **Configure** menu option. The Configure menu opens, and **Class of Service** is already selected.
 
-    ![Configure menu](/content/assets/ConfigureMenu.png)
+    ![Configure menu](/docs/assets/ConfigureMenu.png)
 
 2.  Double-click the **default** COS and the Class of Service page opens. There is a page menu on the left. Each page allows you to modify the settings of this COS.
 
-    ![Class of Service page](/content/assets/ClassOfService.png)
+    ![Class of Service page](/docs/assets/ClassOfService.png)
 
 3.  You will want to go through the **Features** page and decide what you want to offer your users. You may wish to turn off the Briefcase (file saving and sharing) if you don't have enough storage, restrict some forms of sharing, or enable external POP or IMAP access, for example.
 
@@ -270,9 +270,9 @@ You received an admin account when you installed Zimbra. The Open Source Edition
 
 2.  Click the gear icon top right, then click **New**.
 
-    ![Open the new account dialog](/content/assets/OpenNewAccount.png)
+    ![Open the new account dialog](/docs/assets/OpenNewAccount.png)
 
-    ![Create a new account](/content/assets/NewAccount.png)
+    ![Create a new account](/docs/assets/NewAccount.png)
 
 3.  The only required items are the email address and the last name but you will want to create a temporary password, and possibly override the default COS if you've set up others.
 
@@ -286,11 +286,11 @@ When users forget their passwords, resets are easily accomplished.
 
 1.  On the **Manage Accounts** page, right-click the account you want to change, and click **Change Password**.
 
-    ![Change a user password](/content/assets/ContextChangePassword.png)
+    ![Change a user password](/docs/assets/ContextChangePassword.png)
 
 2.  Enter a temporary password which you will send to the user, and also click **Must change password**. The next time they log in, they will be prompted to choose a new password.
 
-    ![Change password dialog](/content/assets/ChangePassword.png)
+    ![Change password dialog](/docs/assets/ChangePassword.png)
 
 ## Install an SSL Certificate
 

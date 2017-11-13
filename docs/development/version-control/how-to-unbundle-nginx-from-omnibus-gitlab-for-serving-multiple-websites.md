@@ -19,20 +19,21 @@ external_resources:
  - '[Installing Passenger + nginx](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
-<hr>
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
+
+---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
 This guide walks you through the process of installing and setting up your own nginx server on a typical Omnibus installation. Using the method outlined here, you are not forced to use Omnibus's default settings, and can create as many virtual hosts as you need for hosting multiple websites and apps on the same server as your GitLab.
 
-Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/content/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr "How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)"). This application stack could benefit from large amounts of disk space, so also consider using our [Block Storage](/content/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr). This application stack could benefit from large amounts of disk space, so also consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 
 ## Before You Begin
 
-1.  Familiarize yourself with Linode's [Getting Started guide](/content/getting-started) and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with Linode's [Getting Started guide](/docs/getting-started) and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  This guide has been tested with Ubuntu 14.04 LTS and 16.04 LTS. Some commands will be slightly different for each version, so be sure to read each step carefully for version-specific instructions.
 
@@ -41,7 +42,7 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/content/tools-reference/linux-users-and-groups) for more information.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
 {{< /note >}}
 
 ## Install Omnibus GitLab
@@ -191,4 +192,4 @@ upstream gitlab {
 
         sudo usermod -aG gitlab-www www-data
 
-Congratulations! You have turned a default Omnibus GitLab server into a multi-purpose one. To serve additional websites and apps using your newly unbundled nginx server, simply create additional virtual hosts above, and configure them to your needs. For more information, please refer to our guide on [how to configure nginx](/content/websites/nginx/how-to-configure-nginx).
+Congratulations! You have turned a default Omnibus GitLab server into a multi-purpose one. To serve additional websites and apps using your newly unbundled nginx server, simply create additional virtual hosts above, and configure them to your needs. For more information, please refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).

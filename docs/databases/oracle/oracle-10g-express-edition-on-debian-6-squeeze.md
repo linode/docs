@@ -16,14 +16,13 @@ title: 'Oracle 10g Express Edition on Debian 6 (Squeeze)'
 
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Debian 6 (Squeeze) Linode.
 
-It is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
+It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
 
 **Please note:** Depending on the amount of memory your Linode has, Oracle may require up to a 1,024 MB swap partition. While we normally do not advise using a swap partition larger than 256 MB, in this case it's a good idea to resize your existing swap to 1,025 MB before proceeding with Oracle installation (the extra MB avoids differences in how megabytes are calculated).
 
 To do this, log into the Linode Manager and shut down your Linode. Once your Linode is completely shut down, click the swap disk under the "Disks" heading in the Dashboard. Then change the size to 1,025 MB. If you're already using all of your allocated disk space, you may need to shrink your main disk first to accommodate the larger swap image.
 
-Configure Networking and Set the Hostname
------------------------------------------
+# Configure Networking and Set the Hostname
 
 Oracle is very picky about the system hostname with respect to what interfaces it will listen on. You'll be using a private IP on your Linode and setting the hostname a bit differently than usual to account for this, with the added benefit of being able to connect to your Oracle database from other Linodes in the same datacenter.
 
@@ -70,8 +69,7 @@ Although you'd normally set the system hostname to the short version of its full
 
 You can use the `ip addr show` command to verify your network interfaces. If everything looks correct, you may proceed to Oracle installation.
 
-Install Required Software
--------------------------
+# Install Required Software
 
 ### Add the Oracle GPG Key and Update Repositories
 
@@ -112,17 +110,15 @@ You should see output resembling the following:
     tcp        0      0 192.168.146.68:38803    192.168.146.68:1521     ESTABLISHED
     tcp        0      0 192.168.146.68:1521     192.168.146.68:38803    ESTABLISHED
 
-Connect to the Oracle XE Home Page
-----------------------------------
+# Connect to the Oracle XE Home Page
 
 Oracle is managed via a web interface, which is installed with the oracle-xe package. By default, it listens on the local address `127.0.0.1` at port 8080. Since you most likely do not have a window manager or web browser installed on your Linode, you must connect to your Oracle home page remotely.
 
-You can do this by using our [Oracle SSH tunnel script](/content/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
+You can do this by using our [Oracle SSH tunnel script](/docs/databases/oracle/ssh-tunnel). After your tunnel is started, you can connect to the admin page at the URL `http://127.0.0.1:8080/apex`. Log in with the username "SYSTEM" and the password you specified during Oracle configuration. You'll be presented with a page similar to this one:
 
-[![The Oracle XE administration home page.](/content/assets/379-oracle-xe-admin-page.png)](/content/assets/379-oracle-xe-admin-page.png)
+[![The Oracle XE administration home page.](/docs/assets/379-oracle-xe-admin-page.png)](/docs/assets/379-oracle-xe-admin-page.png)
 
-Manage Oracle from the Command Line
------------------------------------
+# Manage Oracle from the Command Line
 
 The Oracle XE installation comes bundled with a command line tool called `sqlplus`, which is roughly equivalent to the MySQL client. We highly recommend using your Oracle XE Home Page over an SSH tunnel to administer your Oracle instance, however you may find `sqlplus` useful.
 
@@ -174,16 +170,15 @@ Once sqlplus has started, you'll need to connect to your Oracle XE instance. Iss
 
     CONNECT SYSTEM/yourpassword@oracle
 
-Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the [Oracle getting started guide](http://download.oracle.com/content/cd/B25329_01/doc/admin.102/b25610/toc.htm) to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The `exit` command will return you to a normal shell prompt.
+Once you have successfully logged in, you may perform most Oracle tasks and query your databases. Oracle commands and syntax differ from those of MySQL. If you are new to Oracle or come from a MySQL background, we recommend that you read the [Oracle getting started guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm) to get a better idea of how Oracle commands work and, more importantly, how the Oracle structure is laid out. The `exit` command will return you to a normal shell prompt.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Oracle XE Home Page](http://www.oracle.com/technetwork/database/database-technologies/express-edition/overview/index.html)
 - [Oracle XE 10g Documentation](http://www.oracle.com/pls/db102/homepage)
-- [Oracle XE Getting Started Guide](http://download.oracle.com/content/cd/B25329_01/doc/admin.102/b25610/toc.htm)
+- [Oracle XE Getting Started Guide](http://download.oracle.com/docs/cd/B25329_01/doc/admin.102/b25610/toc.htm)
 
 
 

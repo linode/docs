@@ -25,7 +25,7 @@ Finding your Linode's IP address (or addresses) is easy and can be done in two d
     - The Linode's public IP addresses (both IPv4 and IPv6) are under the **Public Network** section near the top of the Remote Access page.
     - Private addresses are under the **Private/LAN Network** section near the bottom of the page.
 
-[![Public IPs.](/content/assets/1711-remote_access_ips_small.png)](/content/assets/1710-remote_access_ips.png)
+[![Public IPs.](/docs/assets/1711-remote_access_ips_small.png)](/docs/assets/1710-remote_access_ips.png)
 
 The graphic above shows:
 
@@ -61,7 +61,7 @@ The output shows:
 {{< note >}}
 DHCP will only recognize one IPv4 address. If you have more than one IPv4 address assigned to your Linode, you must either set those addresses statically or enable Network Helper. Otherwise, those addresses will not be usable to the system, nor will they display in `ip` commands. See the following guides for more information:
 
-[Linux Static IP Configuration](/content/networking/linux-static-ip-configuration)
+[Linux Static IP Configuration](/docs/networking/linux-static-ip-configuration)
 
-[Network Helper](/content/platform/network-helper)
+[Network Helper](/docs/platform/network-helper)
 {{< /note >}}

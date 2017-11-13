@@ -13,9 +13,9 @@ published: 2010-11-29
 title: View and Follow the End of Text Files with tail
 ---
 
-The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/content/tools-reference/tools/view-the-beginning-of-text-files-with-head).
+The `tail` command is a core Linux utility used to view the very end of a text file. Additionally, with `tail` you may "follow" a text file to see new lines as they're added to the file in real time. For related functionality that addresses the beginning of a file, consider the [head utility](/docs/tools-reference/tools/view-the-beginning-of-text-files-with-head).
 
-![Title graphic](/content/assets/view_and_follow_the_end_of_text_files_with_tail_smg.png)
+![Title graphic](/docs/assets/view_and_follow_the_end_of_text_files_with_tail_smg.png)
 
 ## Using tail
 
@@ -65,13 +65,13 @@ You may also use the `-n [number]` option when using `tail` with multiple files 
 
 With the `-f` option, `tail` operates in follow mode. Here, `tail` prints the final ten lines, or the number of lines specified, and watches the file for new additions to the end of the file. When new lines are added they are printed to the terminal.
 
-`tail` will continue to follow a file until the user sends a break (e.g. `Control+c`) to the terminal. Additionally, if the file is deleted or renamed, `tail -f` will fail. Use the `-F` option to force `tail` to follow file names rather than file objects. This can prevent problems with [log rotation](/content/linux-tools/utilities/logrotate) and other programs that may alter file names.
+`tail` will continue to follow a file until the user sends a break (e.g. `Control+c`) to the terminal. Additionally, if the file is deleted or renamed, `tail -f` will fail. Use the `-F` option to force `tail` to follow file names rather than file objects. This can prevent problems with [log rotation](/docs/linux-tools/utilities/logrotate) and other programs that may alter file names.
 
 The "follow" mode of `tail` is very useful when troubleshooting issues because it allows you to watch logs in real time.
 
 ### Filter Lines in Followed Logs with grep
 
-The [grep](/content/tools-reference/search-and-filter-text-with-grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
+The [grep](/docs/tools-reference/search-and-filter-text-with-grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
 
     tail -F procmail.log | grep -e "^Subject"
     tail -F access.log | grep "404"

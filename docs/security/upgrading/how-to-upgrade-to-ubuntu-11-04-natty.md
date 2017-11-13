@@ -20,8 +20,7 @@ This guide explains how to upgrade your system to Ubuntu 11.04 (Natty) from Ubun
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed). Please note that upgrades from older versions of Ubuntu will require you to follow the steps outlined in our other upgrade guides before upgrading to Ubuntu 11.04 (Natty).
 
-Preparing to Upgrade
---------------------
+# Preparing to Upgrade
 
 Make sure that you have properly set your hostname in `/etc/hostname`. If you have not set a hostname for your system yet, issue the following commands:
 
@@ -69,7 +68,7 @@ Issue the following command to update your package lists:
 
     apt-get update
 
-When running system upgrades, you may want to start a [screen](/content/linux-tools/utilities/screen) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
+When running system upgrades, you may want to start a [screen](/docs/linux-tools/utilities/screen) session. This will ensure that your system updates continue to run in the event that you are disconnected from the server. Issue the following command to install `screen`:
 
     apt-get install screen
 
@@ -81,8 +80,7 @@ If at any time you get disconnected from your server, you can log back in and is
 
     screen -Dr
 
-Upgrading
----------
+# Upgrading
 
 Issue the following command to grab the latest version of key system utilities:
 
@@ -96,7 +94,7 @@ The upgrade will download and install numerous packages. Please be advised that 
 
 You will also be advised that some services need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you would like to be restarted, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/content/troubleshooting/using-lish-the-linode-shell). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
 
     cd /etc/init
     for i in plymouth* ureadahead*; do mv ${i} ${i}.disabled; done

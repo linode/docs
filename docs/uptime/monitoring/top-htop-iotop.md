@@ -19,11 +19,11 @@ Viewing a server's processor activity in real-time can aid in discovering and di
 
 ## Reading the Screen
 
-[![The top screen](/content/assets/top-full-small.png)](/content/assets/top-full.png)
+[![The top screen](/docs/assets/top-full-small.png)](/docs/assets/top-full.png)
 
 The `top` screen contains a variety of information regarding your server, beginning with the server's uptime, load average, and tasks status, located in the header.
 
-![top screen heading](/content/assets/top-top.png)
+![top screen heading](/docs/assets/top-top.png)
 
 1.  The first line contains the time, uptime, and load average values for the server. The **load average** is displayed over 1, 5, and 15 minutes to provide a better overall look at the load your server has undertaken. If there is a spike at one minute, but the load at the five- and fifteen-minute marks is maintained at a lower level, then consider a different response compared to when the load is consistently high through all time intervals.
 
@@ -43,7 +43,7 @@ A load of .70 for a Linode with 1 core is generally considered the threshold. An
 
 Following the heading section is a list of processes and related data:
 
-![Top processes](/content/assets/top-processes.png)
+![Top processes](/docs/assets/top-processes.png)
 
 -  **PID**: The process ID.
 

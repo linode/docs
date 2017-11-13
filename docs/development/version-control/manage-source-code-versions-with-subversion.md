@@ -27,7 +27,7 @@ Because subversion uses a centralized architecture, in order to collaborate with
 
 There are a number of options for accessing and managing Subversion repositories on local systems. Your favorite subversion client will be connected to and interact with the repositories that you configure on your Linode. If you access and use your subversion repositories using the standard shell commands and `svn` command, the commands and processes in this guide will be directly applicable to your local environment.
 
-Before installing subversion we assume that you have followed our [getting started](/content/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Additionally, if you intended to access Subversion over HTTP, this document uses the [Apache HTTP server](/content/web-servers/apache/), which you may want to configure beyond the scope of this document.
+Before installing subversion we assume that you have followed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Additionally, if you intended to access Subversion over HTTP, this document uses the [Apache HTTP server](/content/web-servers/apache/), which you may want to configure beyond the scope of this document.
 
 ## Installing Subversion
 
@@ -91,7 +91,7 @@ If at any time you need to create a repository from a back up, issue a command i
 
 This will create a new repository at `/srv/svn/morris-backup` with the history from the svn backup file located at `/var/svn/morris-1259853077.svn`.
 
-If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/content/linux-tools/utilities/cron).
+If you store critical information in a Subversion repository, you may wish to create backups automatically using a [cron job](/docs/linux-tools/utilities/cron).
 
 ## Using Subversion for Version Control
 
@@ -136,7 +136,7 @@ If you and your developers *only* need to access your repository over SSH, with 
 
 ### Installing Apache and mod\_dav\_svn
 
-Developers frequently access Subversion repositories via the SSH protocol, and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/content/web-servers/apache/).
+Developers frequently access Subversion repositories via the SSH protocol, and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
 
 In order to make this possible, you must install the Apache module `mod_dav_svn`, with one of the following commands, depending on your operating system.
 
@@ -183,7 +183,7 @@ In order to avoid permission conflicts with multiple users, set the "sticky" bit
 
     chmod -R +s /srv/svn/morris
 
-The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/content/tools-reference/linux-users-and-groups).
+The sticky bit allows all users with access to the files, by virtue of their group membership, to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories, typically the "hooks," as the user that owns them, and thus poses a potential security risk. If you would like to learn more about [groups and UNIX permissions consult this overview](/docs/tools-reference/linux-users-and-groups).
 
 ### Configuring the Apache Web Server
 
@@ -200,15 +200,15 @@ When the modules have been loaded, restart the server to load the modules into t
 
     /etc/rc.d/httpd restart
 
-At this juncture, you will want to configure HTTP AUTH passwords for your subversion users. You can read more about HTTP AUTH in our documentation of [controlling access to websites with Apache](/content/web-servers/apache/configuration/http-authentication). We recommend storing your `htpasswd` file for your Subversion repositories in a location similar to the following:
+At this juncture, you will want to configure HTTP AUTH passwords for your subversion users. You can read more about HTTP AUTH in our documentation of [controlling access to websites with Apache](/docs/web-servers/apache/configuration/http-authentication). We recommend storing your `htpasswd` file for your Subversion repositories in a location similar to the following:
 
     /srv/www/svn.example.com/morris.htpasswd
 
-In this example, `morris` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/content/web-servers/apache/configuration/http-authentication#access-control-lists-with-groups) to organize your users' access.
+In this example, `morris` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/configuration/http-authentication#access-control-lists-with-groups) to organize your users' access.
 
 #### Managing A Single Repository
 
-In the following setup we've granted access to the `morris` Subversion repository, running under a virtual host for the `svn.example.com` domain. You can configure Subversion repositories under existing virtual hosts, if that makes more sense in the context of your deployment. You can read more about configuring Apache [locations blocks](/content/web-servers/apache/configuration/configuration-structure#location-options) elsewhere in Linode's guides and tutorials.
+In the following setup we've granted access to the `morris` Subversion repository, running under a virtual host for the `svn.example.com` domain. You can configure Subversion repositories under existing virtual hosts, if that makes more sense in the context of your deployment. You can read more about configuring Apache [locations blocks](/docs/web-servers/apache/configuration/configuration-structure#location-options) elsewhere in Linode's guides and tutorials.
 
 {{< file-excerpt "Apache Virtual Host Configuration" apache >}}
 <VirtualHost *:80>
@@ -232,7 +232,7 @@ In the following setup we've granted access to the `morris` Subversion repositor
 
 In this configuration, all requests for `http://svn.example.com/` will be directed to `mod_dav_svn`. In a web browser this will provide an overview of the most recent revision of the repository. Note that this setup provides *unencrypted* access to your repository over `http`.
 
-If you want secure, encrypted access to your data, configure Apache to [serve content with SSL](/content/web-servers/apache/ssl-guides/).
+If you want secure, encrypted access to your data, configure Apache to [serve content with SSL](/docs/web-servers/apache/ssl-guides/).
 
 Once your certificate files are in place set up the virtual host to respond to requests on port `443` rather than `80`. An SSL enabled virtual host might resemble the following:
 

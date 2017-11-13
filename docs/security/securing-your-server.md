@@ -14,7 +14,7 @@ published: 2012-02-17
 title: How to Secure Your Server
 ---
 
-In the [Getting Started](/content/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
+In the [Getting Started](/docs/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
 
 <div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="//fast.wistia.net/embed/iframe/971o40zba8?videoFoam=true" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
 <script src="//fast.wistia.net/assets/external/E-v1.js" async></script>
@@ -43,7 +43,7 @@ Up to this point, you have accessed your Linode as the `root` user, which has un
 Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
 {{< /note >}}
 
-To add a new user, first [log in to your Linode](/content/getting-started#log-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#log-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 
@@ -54,6 +54,10 @@ To add a new user, first [log in to your Linode](/content/getting-started#log-in
 2.  Add the user to the `wheel` group for sudo privileges:
 
         usermod -aG wheel example_user
+
+       {{< caution >}}
+       In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
+{{< /caution >}}
 
 ### Ubuntu
 
@@ -109,7 +113,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
     **Windows**
 
-    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/content/security/use-public-key-authentication-with-ssh#windows-operating-system).
+    This can be done using PuTTY as outlined in our guide: [Use Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh#windows-operating-system).
 
 2.  Upload the public key to your Linode. Replace `example_user` with the name of the user you plan to administer the server as, and `203.0.113.10` with your Linode's IP address.
 
@@ -151,7 +155,7 @@ If you've already created an RSA key-pair, this command will overwrite it, poten
 
         sudo chmod 700 -R ~/.ssh && chmod 600 ~/.ssh/authorized_keys
 
-    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/content/tools-reference/modify-file-permissions-with-chmod).
+    These commands provide an extra layer of security by preventing other users from accessing the public key directory as well as the file itself. For more information on how this works, see our guide on [how to modify file permissions](/docs/tools-reference/modify-file-permissions-with-chmod).
 
 3.  Now exit and log back into your Linode. If you specified a passphrase for your private key, you'll need to enter it.
 
@@ -208,7 +212,7 @@ You may want to leave password authentication enabled if you connect to your Lin
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
-For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban](/content/security/using-fail2ban-for-security).
+For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban](/docs/security/using-fail2ban-for-security).
 
 ## Remove Unused Network-Facing Services
 
@@ -261,7 +265,7 @@ UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*,
 
 If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By [configuring a firewall](#configure-a-firewall) you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/content/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/content/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
+* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
 
 * An NTP daemon is one option for your server's timekeeping but there are alternatives. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
 
@@ -294,15 +298,15 @@ Run `ss -lpn` again. You should now only see listening services for SSH (sshd) a
 
 Using a *firewall* to block unwanted inbound traffic to your Linode provides a highly effective security layer. By being very specific about the traffic you allow in, you can prevent intrusions and network mapping. A best practice is to allow only the traffic you need, and deny everything else. See our documentation on some of the most common firewall applications:
 
-*   [Iptables](/content/security/firewalls/control-network-traffic-with-iptables) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
+*   [Iptables](/docs/security/firewalls/control-network-traffic-with-iptables) is the controller for netfilter, the Linux kernel's packet filtering framework. Iptables is included in most Linux distributions by default.
 
-*   [FirewallD](/content/security/firewalls/introduction-to-firewalld-on-centos) is the iptables controller available for the CentOS / Fedora family of distributions.
+*   [FirewallD](/docs/security/firewalls/introduction-to-firewalld-on-centos) is the iptables controller available for the CentOS / Fedora family of distributions.
 
-*   [UFW](/content/security/firewalls/configure-firewall-with-ufw) provides an iptables frontend for Debian and Ubuntu.
+*   [UFW](/docs/security/firewalls/configure-firewall-with-ufw) provides an iptables frontend for Debian and Ubuntu.
 
 
 ## Next Steps
 
-These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](https://linode.com/content/security/ossec-ids-debian-7) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
+These are the most basic steps to harden any Linux server, but further security layers will depend on its intended use. Additional techniques can include application configurations, using [intrusion detection](https://linode.com/docs/security/ossec-ids-debian-7) or installing a form of [access control](https://en.wikipedia.org/wiki/Access_control#Access_Control).
 
-Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/content/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/content/security/linode-manager-security-controls) to [hosting a website](/content/websites/hosting-a-website).
+Now you can begin setting up your Linode for any purpose you choose. We have a library of documentation to assist you with a variety of topics ranging from [migration from shared hosting](/docs/migrate-to-linode/migrate-from-shared-hosting) to [enabling two-factor authentication](/docs/security/linode-manager-security-controls) to [hosting a website](/docs/websites/hosting-a-website).

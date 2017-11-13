@@ -14,12 +14,12 @@ external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 ---
 
-![Install SquirrelMail on Ubuntu or Debian](/content/assets/install-squirrelmail-on-ubuntu/Install_SquirrelMail_smg.jpg)
+![Install SquirrelMail on Ubuntu or Debian](/docs/assets/install-squirrelmail-on-ubuntu/Install_SquirrelMail_smg.jpg)
 
-SquirrelMail is a webmail package, written in PHP, which supports both SMTP and IMAP protocols, and features cross-platform compatibility. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 16.04](/content/websites/lamp/install-lamp-on-ubuntu-16-04) or [LAMP Server on Debian 8](/content/websites/lamp/lamp-on-debian-8-jessie) guide.
+SquirrelMail is a webmail package, written in PHP, which supports both SMTP and IMAP protocols, and features cross-platform compatibility. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 16.04](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) or [LAMP Server on Debian 8](/docs/websites/lamp/lamp-on-debian-8-jessie) guide.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Installation
@@ -104,7 +104,7 @@ If Apache is serving other virtual hosts you may need to adjust them and/or this
 
 You should now be able to see SquirrelMail's default login page in your browser after navigating to your Linode's IP address or domain:
 
-![SquirrelMail Login Page.](/content/assets/1519-squirrelmail_login.png)
+![SquirrelMail Login Page.](/docs/assets/1519-squirrelmail_login.png)
 
 ## Configure SquirrelMail
 
@@ -116,16 +116,16 @@ Before using SquirrelMail for the first time, configure it to access your mail s
 
     This will bring up the menu shown below:
 
-    ![The squirrelmail-conifg main menu.](/content/assets/1517-squirrelmail-config_1.png)
+    ![The squirrelmail-conifg main menu.](/docs/assets/1517-squirrelmail-config_1.png)
 
 2.  There are many options to adjust here; too many for the scope of this guide. The only settings required to make SquirrelMail work are the `Server Settings`. Enter **2** to bring up the Server Settings submenu:
 
-    [![squirrelmail-config server settings menu .](/content/assets/1518-squirrelmail-config_2.png)](/content/assets/1518-squirrelmail-config_2.png)
+    [![squirrelmail-config server settings menu .](/docs/assets/1518-squirrelmail-config_2.png)](/docs/assets/1518-squirrelmail-config_2.png)
 
-3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from [SquirrelMail's official documentation](http://squirrelmail.org/content/admin/admin-5.html#ss5.3).
+3.  If your mail server is on the same Linode as your SquirrelMail installation, you may not need to make any adjustments to the default settings. Otherwise, adjust the **Domain**, **IMAP**, and **SMTP** settings to match the mail server you want to connect to. You can find additional configuration tips for this section from [SquirrelMail's official documentation](http://squirrelmail.org/docs/admin/admin-5.html#ss5.3).
 
     {{< note >}}
-If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
+If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide does, You will not be able to authenticate using this version of Squirrelmail. Version 1.5.1 and higher can use `STARTTLS`, but are in development and not available in the main repositories. You can [download](https://squirrelmail.org/download.php) the latest build from Squirrelmail's website.
 {{< /note >}}
 
 4.  When done, press `S` to save your changes, then press Q to quit.
@@ -134,10 +134,10 @@ If your email server uses `STARTTLS` encryption, as our [Email with Postfix, Dov
 
 1.  At this point you should be able to log in to the SquirrelMail Login page using your email credentials. Navigate in your web browser to the Linode's IP address, or domain name depending on how you've configured the virtual host:
 
-    [![SquirrelMail Login Page with a username and password.](/content/assets/1515-squirrelmail_login_filled2.png)](/content/assets/1520-squirrelmail_login_filled.png)
+    [![SquirrelMail Login Page with a username and password.](/docs/assets/1515-squirrelmail_login_filled2.png)](/docs/assets/1520-squirrelmail_login_filled.png)
 
 2.  The interface layout follows standard email convention; all common functions should be easily accessible:
 
-    [![SquirrelMail Inbox view.](/content/assets/1514-squirrelmail_inbox2.png)](/content/assets/1513-squirrelmail_inbox.png)
+    [![SquirrelMail Inbox view.](/docs/assets/1514-squirrelmail_inbox2.png)](/docs/assets/1513-squirrelmail_inbox.png)
 
 3.  Once you're finished, you can sign out using the link in the upper-right corner. Always remember to sign out if you're using a public computer.

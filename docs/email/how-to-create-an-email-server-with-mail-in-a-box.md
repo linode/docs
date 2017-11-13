@@ -13,16 +13,16 @@ title: How to Create an Email Server with Mail-in-a-Box
 contributor:
   name: Alexandru Andrei
 external_resources:
-- '[Mail-in-a-Boxs Official Website](https://mailinabox.email/)'
+- '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
+---
+
+*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/content/contribute).*
-----
+![How to Create an Email Server with Mail-in-a-Box](/docs/assets/Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 
-![Mail_banner](/content/assets/Mail_in_a_box.jpg)
-
-If you chose to host your own email server, but after reading through [Running a Mail Server](/content/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
+If you chose to host your own email server, but after reading through [Running a Mail Server](/docs/email/running-a-mail-server) you got discouraged by the complexity of this process, then there's another solution: Mail-in-a-Box. The name is fitting since the software manages to pack everything you need from a mail server, in one single allegorical box. It includes:
 
 * Postfix, as the Simple Mail Transfer Protocol (SMTP) server.
 * Dovecot, as the Internet Message Access Protocol (IMAP) server; it's what allows you to sync mail with your phone, read/send messages, delete them, etc.
@@ -43,9 +43,9 @@ The preconfigured box of software is also fairly security-conscious and you can 
 
 1. Make sure your domain name registrar allows you to use *custom nameservers* and set *glue records*.
 
-2.  If you're unfamiliar with the basic concepts of Linode administration, read the [Getting Started](/content/getting-started) guide.
+2.  If you're unfamiliar with the basic concepts of Linode administration, read the [Getting Started](/docs/getting-started) guide.
 
-3. It's highly recommended that you follow the instructions on [Hardening SSH access](/content/security/securing-your-server#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
+3. It's highly recommended that you follow the instructions on [Hardening SSH access](/docs/security/securing-your-server#harden-ssh-access) but **only** the steps regarding SSH; other steps might clash with what Mail-in-a-Box will set up (e.g., it implements its own `fail2ban` rules).
 
 If you insist on using a password for root instead of a private key, at least use a **very good password**. Bots constantly scan the Internet for SSH servers and try random passwords. Some are more aggressive than others, and while `fail2ban` helps block IPs, there's always the next bot (with a different IP) that will visit and have another try. Keep in mind that strings such as "h4x0r123," while they may look strong because they mix letters and numbers, are actually very weak.
 
@@ -98,7 +98,7 @@ At this point you can continue. If you don't see the required data, then come ba
 ## Install Mail-in-a-Box
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 1. After you log in to your server with an SSH client, update all the software packages on your server:
@@ -119,27 +119,27 @@ Every step is thoroughly explained in the terminal output. The first steps are e
 
 ### Install Wizard Steps
 
-1. When you're prompted to choose an email address, delete the pre-filled value and replace it with `your_name`@example.com. You can replace `your_name` with whatever you desire, as long as it's a valid username.
+1.  When you're prompted to choose an email address, delete the pre-filled value and replace it with `your_name`@example.com. You can replace `your_name` with whatever you desire, as long as it's a valid username.
 
-![Choose Main Email Address and Domain](/content/assets/mail-in-a-box-choose-email-and-domain-ubuntu1404.png)
+    ![Choose Main Email Address and Domain](/docs/assets/mail-in-a-box-choose-email-and-domain-ubuntu1404.png)
 
-2. In the next step, the hostname should look like this:
+2.  In the next step, the hostname should look like this:
 
-![Choose Hostname](/content/assets/mail-in-a-box-choose-hostname-ubuntu1404.png)
+    ![Choose Hostname](/docs/assets/mail-in-a-box-choose-hostname-ubuntu1404.png)
 
-Now, the install wizard should continue to download and configure software packages. Just wait for it to do its magic.
+    Now, the install wizard should continue to download and configure software packages. Just wait for it to do its magic.
 
-3. At the next step, you'll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press `ENTER`.
+3.  At the next step, you'll be prompted to choose your timezone. Use the arrow keys to make the desired selection and press `ENTER`.
 
-![Choose Timezone](/content/assets/mail-in-a-box-choosing-timezone-ubuntu1404.png)
+    ![Choose Timezone](/docs/assets/mail-in-a-box-choosing-timezone-ubuntu1404.png)
 
-Once again, Mail-in-a-Box will continue to pull in required packages and auto-configure them. Wait for it to finish, it will take longer this time.
+    Once again, Mail-in-a-Box will continue to pull in required packages and auto-configure them. Wait for it to finish, it will take longer this time.
 
-4. When package auto-configuration is complete, you'll be prompted to install a *Transport Layer Security* (*TLS*) certificate. If Let's Encrypt cannot verify that you own your domain (i.e., DNS changes haven't yet propagated to its servers), then this step will be automatically skipped, but you can still request your certificate later from the control panel of Mail-in-a-Box.
+4.  When package auto-configuration is complete, you'll be prompted to install a *Transport Layer Security* (*TLS*) certificate. If Let's Encrypt cannot verify that you own your domain (i.e., DNS changes haven't yet propagated to its servers), then this step will be automatically skipped, but you can still request your certificate later from the control panel of Mail-in-a-Box.
 
-5. At the next step, you'll choose a password for the administrative account. Choose a good password since this is the most powerful account that can make any change in the control panel.
+5.  At the next step, you'll choose a password for the administrative account. Choose a good password since this is the most powerful account that can make any change in the control panel.
 
-6. At this point the script has finished its job and you'll be prompted with this message in the terminal output:
+6.  At this point the script has finished its job and you'll be prompted with this message in the terminal output:
 
         Your Mail-in-a-Box is running.
 
@@ -166,26 +166,26 @@ In the unlikely event that DNS changes have propagated fast enough to Linode's r
 
 Now, you can access the control panel in your web browser. After logging in, you'll be greeted with a page showing you status checks for all the moving parts of your mail server. This page is incredibly useful, centralizing all the information you need to see to make sure everything is working correctly. It also describes how you can resolve possible problems.
 
-![Mail-in-a-Box Control Panel - System Status Checks](/content/assets/mail-in-a-box-control-panel-system-status-checks-ubuntu1404.png)
+![Mail-in-a-Box Control Panel - System Status Checks](/docs/assets/mail-in-a-box-control-panel-system-status-checks-ubuntu1404.png)
 
 ## Install TLS Certificate and Add PTR Record
 
 Since it's very likely that a Let's Encrypt TLS certificate hasn't been installed yet, let's do that now.
 
-1. Type this command in the server to check if Linode received your DNS changes:
+1.  Type this command in the server to check if Linode received your DNS changes:
 
         dig example.com
 
-     When you see this in the output, `203.0.113.1` (the IP address of your server), you can continue; otherwise try again later:
+    When you see this in the output, `203.0.113.1` (the IP address of your server), you can continue; otherwise try again later:
 
         ;; ANSWER SECTION:
         example.com.		1724	IN	A	203.0.113.1
 
-2. In the top-left menu you'll notice an element called **System**. Click on it and then select **TLS (SSL) Certificates**. Now click on the blue button that says **Provision** and follow the instructions.
+2.  In the top-left menu you'll notice an element called **System**. Click on it and then select **TLS (SSL) Certificates**. Now click on the blue button that says **Provision** and follow the instructions.
 
-![Control Panel - TLS Certificates Page](/content/assets/mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
+    ![Control Panel - TLS Certificates Page](/docs/assets/mail-in-a-box-control-panel-tls-certificates-ubuntu1404.png)
 
-3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/content/networking/dns/configure-your-linode-for-reverse-dns), to set up a pointer record (PTR). This step is important to execute and pass some antispam checks. Without it, some of the other mail servers will flag your outbound email as spam or will consider it suspicious that your IP doesn't point to your domain name.
+3. Follow this guide, [How to Configure Reverse DNS on a Linode Server](/docs/networking/dns/configure-your-linode-for-reverse-dns), to set up a pointer record (PTR). This step is important to execute and pass some antispam checks. Without it, some of the other mail servers will flag your outbound email as spam or will consider it suspicious that your IP doesn't point to your domain name.
 
 ## Conclusion
 

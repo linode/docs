@@ -20,7 +20,7 @@ Sinatra is a simple lightweight framework for web application development in the
 
 # Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -81,14 +81,14 @@ Run the Phusion Passenger installer for Nginx:
 
 Press "Enter" to continue with the installation. When prompted for the Nginx installation method, we recommend you choose "1" to allow the installer to automatically download, compile, and install Nginx for you. Unless you have specific needs that would necessitate passing custom options to Nginx at compile time, this is the safest way to proceed.
 
-{{< /file-excerpt >}}
+Do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
 # Configure Web Server
 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
     cd /opt
-    wget -O init-deb.sh http://www.linode.com/content/assets/605-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/605-init-deb.sh
     mv /opt/init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -123,8 +123,7 @@ http {
 # [...]
 {{< /file-excerpt >}}
 
-    access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+This inserts the contents of `/srv/www/example.com/nginx.conf` into your nginx configuration, and allows you to specify the configuration of the virtual host for the `example.com` site. Consider the following example configuration, and modify this file to meet the needs of your deployment:
 
 {{< file "/srv/www/example.com/nginx.conf" nginx >}}
 server {

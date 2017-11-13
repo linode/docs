@@ -18,7 +18,7 @@ external_resources:
 
 `find` is a command for recursively filtering objects in the file system based on a simple conditional mechanism. Use `find` to search for a file or directory on your file system. Using the `-exec` flag, files can be found and immediately [processed within the same command](#how-to-find-and-process-files-using-the-find-command).
 
-![Find Files in Linux using the command line](/content/assets/find-files-title.jpg "Find Files in Linux using the command line")
+![Find Files in Linux using the command line](/docs/assets/find-files-title.jpg "Find Files in Linux using the command line")
 
 ## Find Linux Files by Name or Extension
 Use `find` from the command line to locate a specific file by name or extension.
@@ -50,7 +50,6 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 | `find /home -name '*.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
 | `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
 | `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
-|------------------------------------------------------|---------------------------------------------------------------------------------|
 
 
 ## Options and Optimization for Find
@@ -71,7 +70,6 @@ Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and 
 | `-not`      | Return only results that do not match the test case.                                                       |
 | `-type f`   | Search for files.                                                                                          |
 | `-type d`   | Search for directories.                                                                                    |
-|-------------|-----------------------------------------------------------------------------------------------------------|
 
 ## Find Files by Modification Time
 
@@ -84,7 +82,7 @@ The first command returns a list of all files in the entire file system that end
 
 ## Use Grep to Find Files Based on Content
 
-The `find` command is only able to filter the directory hierarchy based on a file's name and meta data. If you need to search based on the content of the file, use a tool like [grep](/content/tools-reference/search-and-filter-text-with-grep). Consider the following example:
+The `find` command is only able to filter the directory hierarchy based on a file's name and meta data. If you need to search based on the content of the file, use a tool like [grep](/docs/tools-reference/search-and-filter-text-with-grep). Consider the following example:
 
     find . -type f -exec grep "example" '{}' \; -print
 
@@ -117,3 +115,4 @@ Add the option `-delete` to the end of a match expression to delete all files th
 In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` will delete all files that end with the characters `.bak`:
 
     find . -name "*.bak" -delete
+

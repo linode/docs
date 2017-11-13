@@ -16,10 +16,9 @@ title: 'Use MongoDB to Store Application Data on Ubuntu 12.04 (Precise)'
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments).
 
-Before installing MongoDB, it is assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing MongoDB
-------------------
+# Installing MongoDB
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -30,8 +29,7 @@ Enter the following command to install MongoDB server:
 
     apt-get install mongodb-server
 
-Configure MongoDB Server
-------------------------
+# Configure MongoDB Server
 
 By default, the configuration file for mongodb-server is located at `/etc/mongodb.conf`. Most of the settings are fairly self-explanatory and well-commented, but we've outlined some of the more important options below.
 
@@ -43,8 +41,7 @@ To provide additional security, it is recommended that you set the `auth` option
 
 Please note that after making any changes to the MongoDB configuration file, you'll always need to restart the service for the changes to take effect (see below).
 
-Starting and Stopping the MongoDB Server
-----------------------------------------
+# Starting and Stopping the MongoDB Server
 
 To start, restart, or stop MongoDB, issue the appropriate command from the following:
 
@@ -54,15 +51,13 @@ To start, restart, or stop MongoDB, issue the appropriate command from the follo
 
 Congratulations, you now have a fully functional installation of the MongoDB system.
 
-Additional MongoDB Functionality
---------------------------------
+# Additional MongoDB Functionality
 
 Now that MongoDB is running properly, you can begin to explore some of its features. Most interaction with MongoDB is done via the rich set of [language-specific drivers](http://www.mongodb.org/display/DOCS/Drivers). There are a number of tools that are installed by default that you might find useful for interacting with MongoDB databases. The `mongo` utility provides an interactive JavaScript shell for MongoDB including commands such as `mongodump` and `mongorestore` for creating and restoring backups and snapshots, as well as `mongoexport` and `mongoimportjson` for exporting individual collections in JSON format.
 
 You can now fully enjoy application development with MongoDB!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

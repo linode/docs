@@ -13,7 +13,7 @@ published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
 ---
 
-![Using the Linode Shell (Lish)](/content/assets/using-the-linode-shell-lish.jpg "Using the Linode Shell (Lish)")
+![Using the Linode Shell (Lish)](/docs/assets/using-the-linode-shell-lish.jpg "Using the Linode Shell (Lish)")
 
 The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your secure server on a local computer whose public key has not been added to the allowed list.
 
@@ -49,7 +49,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
         ssh user@lish-newark.linode.com
 
 	{{< note >}}
-Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/content/accounts-and-passwords).
+Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/accounts-and-passwords).
 {{< /note >}}
 
 3.  Verify that the Lish SSH gateway's fingerprint is valid. [Click here](#lish-gateway-fingerprints) for more information.
@@ -80,11 +80,11 @@ You can also connect to Lish using a web browser. This is useful when you don't 
 3.  Click on the **Remote Access** tab.
 4.  In the **Console Access** section, click **Launch Lish Console**, as shown below.
 
-    [![Click Lish via Browser.](/content/assets/lish-via-browser.png)](/content/assets/lish-via-browser.png)
+    [![Click Lish via Browser.](/docs/assets/lish-via-browser.png)](/docs/assets/lish-via-browser.png)
 
 5.  The Lish Web Console window appears with your Linode's console, as shown below.
 
-    [![Ajax Lish](/content/assets/1283-lish_ajax.png)](/content/assets/1283-lish_ajax.png)
+    [![Ajax Lish](/docs/assets/1283-lish_ajax.png)](/docs/assets/1283-lish_ajax.png)
 
 6.  From here, you can log in to your Linode with your root username and password, or any other username and password.
 
@@ -92,18 +92,18 @@ Now you can use the console, or exit to the Lish prompt by pressing **CTRL+A** t
 
 ### Add Your Public Key
 
-If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/content/networking/ssh/use-public-key-authentication-with-ssh/) guide for more information.
+If you don't want to enter your password every time you connect to Lish, you can add your public SSH key to the Linode Manager. If you haven't yet created SSH keys, please see our [Public Key Authentication with SSH](/docs/security/use-public-key-authentication-with-ssh/) guide for more information.
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Select the **my profile** link.
 3.  Enter your password, and then click **Authenticate**, as shown below.
 
-    [![Re-enter your password.](/content/assets/1280-manager_reauth_linodedemo.png)](/content/assets/1280-manager_reauth_linodedemo.png)
+    [![Re-enter your password.](/docs/assets/1280-manager_reauth_linodedemo.png)](/docs/assets/1280-manager_reauth_linodedemo.png)
 
 4.  Select the **Lish Settings** tab.
 5.  Copy your public SSH key into the **Lish Keys** field, as shown below.
 
-    [![Copy your SSH public key(s) into the text field.](/content/assets/1282-manager_lish_keys.png)](/content/assets/1282-manager_lish_keys.png)
+    [![Copy your SSH public key(s) into the text field.](/docs/assets/1282-manager_lish_keys.png)](/docs/assets/1282-manager_lish_keys.png)
 
 6.  Click **Submit Keys**. Your Lish key will be saved in the Linode Manager.
 

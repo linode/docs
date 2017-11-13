@@ -16,22 +16,20 @@ title: 'Basic Postfix Email Gateway on Debian 5 (Lenny)'
 
 
 
-Postfix is an efficient, stable, and modern "Mail Transfer Agent" or MTA used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/content/email/postfix/).
+Postfix is an efficient, stable, and modern "Mail Transfer Agent" or MTA used for transmitting email messages between severs on the Internet. Most configurations involving Postfix combine the MTA with a server to allow users to download email using a protocol like IMAP or POP3. This document outlines a very simple configuration of Postfix that makes it possible to forward email, and deliver email to local mailboxes on your Linode instance. This guide *does not* provide any way to download this email or remotely access these mailboxes. In addition, this document provides instructions for sending email with this configuration. If you want to deploy a complete and fully featured email solution that includes the ability download locally delivered email, consider one of our other [postfix email guides](/docs/email/postfix/).
 
-Prior to beginning this document to install a basic Postfix email gateway, we assume that you have completed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Prior to beginning this document to install a basic Postfix email gateway, we assume that you have completed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing Postfix
-------------------
+# Installing Postfix
 
 Before we begin to install the basic email gateway, issue the following commands to ensure that your system is up to date and that the latest version of the package repository has been installed:
 
@@ -44,16 +42,15 @@ To install the Postfix MTA issue the following command:
 
 During the installation process, the package manager will prompt you for the responses to a few questions. To the first question regarding the type of mail server you want to configure select "Internet Site" and continue as in the following image:
 
-[![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) system.](/content/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)](/content/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on a Debian 5.0 (Lenny) system.](/docs/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/79-postfix-courier-mysql-02-mail-server-type-2.png)
 
 The next prompt will ask for the system mail name. This should correspond to the canonical a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using a machine specific hostname for our server. Set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:
 
-[![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) system.](/content/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)](/content/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on a Debian 5.0 (Lenny) system.](/docs/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/80-postfix-courier-mysql-02-mail-server-type-3.png)
 
 When the installation process completes proceed with the configuration of Postfix.
 
-Fundamental Postfix Configuration
----------------------------------
+# Fundamental Postfix Configuration
 
 Begin by editing the `/etc/postfix/main.cf` file. Most of the default values should be correct. Modify the `myhostname` value to correspond to the fully qualified domain name (FQDN) for your server, in this case `lollipop.example.com`:
 
@@ -82,8 +79,7 @@ In the future, if you want to stop, start, or restart Postfix, issue the correct
     /etc/init.d/postfix start
     /etc/init.d/postfix restart
 
-Email Virtual Hosting
----------------------
+# Email Virtual Hosting
 
 ### Configure Mail Delivery
 
@@ -131,8 +127,7 @@ Every existing user that receives email will also need to make their own `Maildi
 
     mkdir ~/mail/
 
-Sending Email Securely
-----------------------
+# Sending Email Securely
 
 Typically, authentication for sending email is handled by the daemon that's configured to handle email downloading like Courier or Dovecot. Rather than configure another daemon or deploy a potentially convoluted and difficult to administer authentication system, this guide uses the OpenSSH package that is installed and active on Linodes by default.
 
@@ -214,7 +209,7 @@ Edit this file to include your username and the location of your email gateway. 
     chmod +x /opt/smtp-tunnel
     /opt/smtp-tunnel start
 
-You may want to consider issuing the command to start the tunnel (`/opt/smtp-tunnel start`) as part of your boot script by including it in your `/etc/rc.local` file, or by creating a `@reboot` [cron job](/content/linux-tools/utilities/cron). If your network configuration utility allows you to establish pre- and post-connection scripts, you may want to instantiate and destroy the tunnel during this process. To destroy the tunnel, issue the following command:
+You may want to consider issuing the command to start the tunnel (`/opt/smtp-tunnel start`) as part of your boot script by including it in your `/etc/rc.local` file, or by creating a `@reboot` [cron job](/docs/linux-tools/utilities/cron). If your network configuration utility allows you to establish pre- and post-connection scripts, you may want to instantiate and destroy the tunnel during this process. To destroy the tunnel, issue the following command:
 
     /opt/smtp-tunnel stop
 
@@ -236,17 +231,16 @@ port 2525
 
 Depending on the location of the `msmtp` binary, you can now send mail using `/usr/bin/msmtp` as your send mail interface. To send mail from the `alternate` account, specify the sendmail interface as `/usr/bin/msmtp --account=alternate`. You can now send mail using your mail gateway using an SSH tunnel.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [MSMTP Mail Sending Client](http://msmtp.sourceforge.net/)
 - [Postfix](http://postfix.org)
 - [Postfix Virtual Mail Handling](http://www.postfix.org/VIRTUAL_README.html)
-- [Introduction to the DNS System](/content/dns-guides/introduction-to-dns)
-- [Host Email with Postfix, Courier and MySQL on Debian 5 (Lenny)](/content/email/postfix/courier-mysql-debian-5-lenny)
-- [Host Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)](/content/email/postfix/dovecot-mysql-debian-5-lenny)
+- [Introduction to the DNS System](/docs/dns-guides/introduction-to-dns)
+- [Host Email with Postfix, Courier and MySQL on Debian 5 (Lenny)](/docs/email/postfix/courier-mysql-debian-5-lenny)
+- [Host Email with Postfix, Dovecot and MySQL on Debian 5 (Lenny)](/docs/email/postfix/dovecot-mysql-debian-5-lenny)
 
 
 

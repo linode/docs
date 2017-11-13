@@ -17,7 +17,7 @@ external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 Often you may need to browse the web from a public Wi-Fi access point, such as a coffee shop or library, where you do not know the security measures taken by the administrator. Your communications could be snooped on by a malicious user or even by the network owner.
 
@@ -61,15 +61,15 @@ To establish a tunnel in Windows, you can use the free SSH client PuTTY. It can 
 
 1.  Launch PuTTY. On the first screen you will need to type your login information in the **Host Name (or IP address)** box. The **SSH protocol** and **Port** are checked by default.
 
-    [![PuTTY main window.](/content/assets/1563-01-putty_basic.png)](/content/assets/1563-01-putty_basic.png)
+    [![PuTTY main window.](/docs/assets/1563-01-putty_basic.png)](/docs/assets/1563-01-putty_basic.png)
 
 2.  Under the **Connection** menu, under **SSH** select **Tunnels**. There you must enter the port you want (**12345**, for example) in **Source Port**, and check **Dynamic**.
 
-    ![PuTTY - Options controlling port forwarding.](/content/assets/1564-02-putty_tunnels1.png)
+    ![PuTTY - Options controlling port forwarding.](/docs/assets/1564-02-putty_tunnels1.png)
 
 3.  Then press the **Add** button. In the **Forwarded ports** text area, you will now see **D12345**.
 
-    ![PuTTY - Options controlling port forwarding with forwarding configured.](/content/assets/1565-03-putty_tunnels2.png)]
+    ![PuTTY - Options controlling port forwarding with forwarding configured.](/docs/assets/1565-03-putty_tunnels2.png)]
 
 4.  Click the **Open** button. A new window asking for your password will appear. After you type your password you will be logged in to your Linode and the tunnel will be launched. Now you can minimize this window and go to the browser.
 
@@ -85,11 +85,11 @@ To set up the browser:
 2.  Go to **Advanced** and from there to the **Network** tab.
 3.  In the **Connection** area click on **Settings**.
 
-    ![Firefox preferences - Network Tab.](/content/assets/1566-04-firefox1.png)
+    ![Firefox preferences - Network Tab.](/docs/assets/1566-04-firefox1.png)
 
 4.  The window **Connection Settings** will open. Check **Manual Proxy Configuration**, and in **SOCKS Host** write your local host address (127.0.0.1) and the port you choose when you created the tunnel (**12345**, in this example). Make sure **SOCKS v5** is selected (it will be by default).
 
-    [![Firefox preferences - Proxy Settings.](/content/assets/1567-05-firefox2.png)](/content/assets/1567-05-firefox2.png)
+    [![Firefox preferences - Proxy Settings.](/docs/assets/1567-05-firefox2.png)](/docs/assets/1567-05-firefox2.png)
 
 5.  Click **OK** to accept the changes.
 
@@ -106,21 +106,21 @@ Keep these considerations in mind when you use SSH tunneling.
     1.  Open Firefox. Type **<about:config>** in the Location Bar to display the browser's preferences.
     2.  To be able to edit these settings, click the button **I'll be careful, I promise**.
 
-        [![Firefox about:config warning message.](/content/assets/1568-06-dns1.png)](/content/assets/1568-06-dns1.png)
+        [![Firefox about:config warning message.](/docs/assets/1568-06-dns1.png)](/docs/assets/1568-06-dns1.png)
 
     3.  In the Search bar type **network.proxy.socks\_remote\_dns** and press `Return`.
     4.  You will see that the default value for that preference is **false**.
 
-        [![Firefox network.proxy.socks\_remote\_dns preference.](/content/assets/1569-07-dns2.png)](/content/assets/1569-07-dns2.png)
+        [![Firefox network.proxy.socks\_remote\_dns preference.](/docs/assets/1569-07-dns2.png)](/docs/assets/1569-07-dns2.png)
 
     5.  Double click **network.proxy.socks\_remote\_dns** to change its value to **true**. The whole line will change to bold text, and the status column to **user select**, indicating you modified its default value.
 
-        [![Firefox network.proxy.socks\_remote\_dns value changed.](/content/assets/1570-08-dns3.png)](/content/assets/1570-08-dns3.png)
+        [![Firefox network.proxy.socks\_remote\_dns value changed.](/docs/assets/1570-08-dns3.png)](/docs/assets/1570-08-dns3.png)
 
     6.  Leave the `about:config window` by typing any URL in the location bar or closing Firefox.
 
 -   If the access to SSH is blocked in the public network you are using, it will not be possible to establish the tunnel. A workaround for this is to run your SSH server on a different port, more likely to be open; for example port 80 (HTTP).
--   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the Linode Shell from the web (More info: <https://www.linode.com/content/networking/using-the-linode-shell-lish/#using-a-web-browser>).
+-   If you are already in a public network that blocks your access to SSH, to edit the server settings you can use the Linode Shell from the web (More info: <https://www.linode.com/docs/networking/using-the-linode-shell-lish/#using-a-web-browser>).
 -   Sometimes, the traffic through the tunnel could be a bit slower than browsing the web without it; but remember, it's a small price to pay when your privacy is at risk.
 -   This is a simple and quick way to establish a secure connection for web browsing, a kind of “poor man's VPN” solution.
--   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/content/networking/vpn/) guides for instructions about that topic.
+-   If you often access the web using untrusted public networks or if you need to secure other applications and not just the browser, then this method will fall short and you will need to set up a VPN on your server. Take a look at one of our [OpenVPN](/docs/networking/vpn/) guides for instructions about that topic.

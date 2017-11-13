@@ -16,11 +16,11 @@ external_resources:
  - '[tinc Project](https://www.tinc-vpn.org/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-----
+---
 
-![How to Set up tinc, a Peer-to-Peer VPN](/content/assets/tinc.jpg "How to Set up tinc, a Peer-to-Peer VPN")
+![How to Set up tinc, a Peer-to-Peer VPN](/docs/assets/tinc.jpg "How to Set up tinc, a Peer-to-Peer VPN")
 
 Virtual Private Networks (VPN) are an essential part of any serious network security deployment plan. There are many open-source VPN options but one of them shines above the others: tinc. All VPNs behave as a secure tunnel between two points, but tinc stands out for its "Peer-to-Peer" design. The design allows tinc users a great deal of flexibility, especially when planning a mesh-type network.
 
@@ -30,9 +30,9 @@ From a clear two-server connection to complex mesh private network, this guide w
 
 To complete all of the different configurations in this guide, you will need multiple Linodes. For each Linode, complete the following steps:
 
-1.  Complete the [Getting Started](/content/getting-started) guide.
+1.  Complete the [Getting Started](/docs/getting-started) guide.
 
-2.  Follow the [Securing Your Server](/content/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
     This guide will use `sudo` wherever possible. Please ensure you have access to privileged user rights.
 
@@ -54,13 +54,13 @@ In order to focus on tinc configuration, three assumptions are made:
 The typical use case for a two-node tinc is web-based invoicing software, where the database should be on a separate server (for security and disaster recovery), and needs to communicate sensitive data to the application server through the internet.
 This is a straightforward setup involving only two instances, an Application Server *(appserver)* and a Database Server *(dbserver)*. Each instance will run on a separate Linode:
 
-![Two Node VPN](/content/assets/tinc-two-node.png)
+![Two Node VPN](/docs/assets/tinc-two-node.png)
 
 ### Gather Network Information
 
 Before getting started, it's a good idea to create a "cheat-sheet" with network information, including the public IPv4 addresses for both servers, desired VPN address for each instance, VPN network name designations, and a tinc-daemon name for each node. The VPN address can be an arbitrary private network IPv4 address, the only rule to follow (if you want to avoid extra routing work) is that they must have the **same network prefix**, just like a typical LAN. VPN and daemon names must be unique and can't contain any spaces or special symbols. For the current use-case the following information will be used for tinc configuration:
 
-![Two node VPN cheat-sheet](/content/assets/tinc-2-node-cheat-sheet.jpg)
+![Two node VPN cheat-sheet](/docs/assets/tinc-2-node-cheat-sheet.jpg)
 
 {{< note >}}
 Throughout this guide, replace the IP address for each server with the public IP address of the corresponding Linode.
@@ -268,7 +268,7 @@ From `dbserver`:
 
     If everything has been configured successfully you should see an output similar to this:
 
-    ![VPN output](/content/assets/appserver-dbserver-output.jpg "VPN output")
+    ![VPN output](/docs/assets/appserver-dbserver-output.jpg "VPN output")
 
 3.  You can open another terminal (i.e., from `appserver`) and check the active interfaces:
 
@@ -298,13 +298,13 @@ Now you can start, stop, restart, and check the service using common `systemd` s
 
 This topology can be considered a variant of the single-node where a high traffic application requires separate instances to scale, resource optimization and faster response (asynchronous processing).
 
-![Three-Node VPN](/content/assets/tinc-three-node.png "Three-Node VPN")
+![Three-Node VPN](/docs/assets/tinc-three-node.png "Three-Node VPN")
 
 In the interest of showcasing tinc's easy expandability, we'll assume that **LINODE1** and **LINODE2** are the same application server and database server from the previous section.
 
 The "cheat-sheet" for this topology is:
 
-![Three-Node cheat-sheet](/content/assets/tinc-3-node-cheat-sheet.jpg "Three-Node cheat-sheet")
+![Three-Node cheat-sheet](/docs/assets/tinc-3-node-cheat-sheet.jpg "Three-Node cheat-sheet")
 
 1.  Configure the new webserver (Linode 3). Follow the previously explained steps to install the tinc VPN and create the working directory.
 
@@ -435,11 +435,11 @@ ConnectTo = webserver
 This setup illustrates a use-case where regional branches need to interact with an application running at a headquarters, like a centralized inventory management software.
 In the last use-case, you will configure a VPN with four Linode servers. Each server should be in a different geographic location.
 
-![Centralized Cloud VPN](/content/assets/tinc-four-node.png "Centralized Cloud VPN")
+![Centralized Cloud VPN](/docs/assets/tinc-four-node.png "Centralized Cloud VPN")
 
 The cheat-sheet in this case is:
 
-![Centralized VPN cheat-sheet](/content/assets/tinc-4-node-cheat-sheet.jpg "Centralized VPN cheat-sheet")
+![Centralized VPN cheat-sheet](/docs/assets/tinc-4-node-cheat-sheet.jpg "Centralized VPN cheat-sheet")
 
 After the previous two sections, you should be familiar with the configuration procedure:
 

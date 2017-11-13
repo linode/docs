@@ -16,16 +16,15 @@ title: 'Deploy VoIP Services with Asterisk and FreePBX on Ubuntu 9.10 (Karmic)'
 
 Asterisk is an open source telephone solution that runs over the internet instead of running through copper lines like a normal phone would. It offers a variety of features such as voice mail and conference calling, much like a land line telephone can.
 
-Before you begin, you need to make sure a few things are in order. We assume you have followed the [getting started guide](/content/getting-started/) and have set the hostname, timezone, and configured networking. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/content/dns-guides/introduction-to-dns#types-of-dns-records) for your domain.
+Before you begin, you need to make sure a few things are in order. We assume you have followed the [getting started guide](/docs/getting-started/) and have set the hostname, timezone, and configured networking. These last steps are of particular importance for ensuring your Asterisk installation functions normally. If you plan on using Asterisk's email features, you may also wish to [add an A record](/docs/dns-guides/introduction-to-dns#types-of-dns-records) for your domain.
 
 **Please note:** Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using pv\_grub. Any alterations to the steps in this guide will fall outside the scope of support.
 
 This guide is based largely on [Ryan Tucker's guide](http://blog.hoopycat.com/2009/12/asterisk-freepbx-ubuntu-910-karmic-lighttpd-linode), with some modification to the procedures and software used.
 
-Prerequisites
--------------
+# Prerequisites
 
-There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document, however you may wish to take a look at the in-depth information contained in the [pv-grub guide](/content/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu).
+There are quite a few prerequisites to satisfy before you can begin installing Asterisk and FreePBX. Most notably, you will need to install a kernel module and change your Linode's configuration profile. We're going to outline the instructions for doing so in this document, however you may wish to take a look at the in-depth information contained in the [pv-grub guide](/docs/tools-reference/custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-ubuntu).
 
 ### Edit Sources List
 
@@ -64,8 +63,7 @@ We're going to create a user to run Asterisk as so that we're not running everyt
 
 You will be prompted for a password and some details for the user such as name and phone number. You need to fill out the password, but you may safely hit "Enter" for the other entries.
 
-Configure the Kernel
---------------------
+# Configure the Kernel
 
 You will need to use the "pv-grub" kernel provided by Linode. This method works, however any kernel problems that arise from editing the kernel beyond the steps outlined in this document will not be supported by Linode support. You'll need to prepare your Linode before updating your configuration profile by following the commands below.
 
@@ -110,10 +108,9 @@ Reboot your system to make sure that these changes are applied. You will need to
 
 ### Troubleshooting
 
-It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [Lish](/content/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
+It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [Lish](/docs/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 
-Install the Dahdi Module
-------------------------
+# Install the Dahdi Module
 
 You now need to install the Dahdi module to allow features like conference calling. Issue the following commands:
 
@@ -123,8 +120,7 @@ You now need to install the Dahdi module to allow features like conference calli
     apt-get install gawk
     apt-get install dahdi dahdi-dkms dahdi-linux
 
-Install Asterisk
-----------------
+# Install Asterisk
 
 You're now ready to install Asterisk. There are a few packages related to Asterisk that you may not need, however we've included them below. Unless you know what you will need, it's wise to install these packages.
 
@@ -156,14 +152,13 @@ You will be connected to the Command Line Interface (CLI) for Asterisk; you can 
 
 At this time, you will want to reboot your Linode to see that everything functions normally. In particular, check that Asterisk has started by issuing the `asterisk -r` command. You are encouraged to use the Linode Manager to reboot your Linode.
 
-Installing FreePBX
-------------------
+# Installing FreePBX
 
 FreePBX is a PHP application that allows you to control your Asterisk installation through a web interface.
 
 ### Set Up LAMP Stack
 
-Before you can use FreePBX, you will need to set up a LAMP stack. An overview is provided here, but you may wish to consult our [LAMP documentation](/content/lamp-guides/ubuntu-9-10-karmic/) for more information. To begin installing Apache, issue the following command:
+Before you can use FreePBX, you will need to set up a LAMP stack. An overview is provided here, but you may wish to consult our [LAMP documentation](/docs/lamp-guides/ubuntu-9-10-karmic/) for more information. To begin installing Apache, issue the following command:
 
     apt-get install apache2
 
@@ -306,8 +301,7 @@ exit 0
 
 You should now be able to visit your Linode's IP address or the A record you have pointed at your Linode in your web browser. You will need to log in using the `asterisk` username, and the password you selected for the FreePBX installation above. Once you have successfully logged in, you will be able to control your Asterisk installation through FreePBX!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

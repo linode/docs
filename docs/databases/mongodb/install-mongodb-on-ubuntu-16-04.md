@@ -18,7 +18,7 @@ external_resources:
 
 In this MongoDB tutorial, we explain how to install the database on Ubuntu 16.04, and then provide a short guide on some basic features and functions.
 
-![Install MongoDB on Ubuntu 16.04](/content/assets/install-mongodb-ubuntu-16-04-title.png "Install MongoDB on Ubuntu 16.04")
+![Install MongoDB on Ubuntu 16.04](/docs/assets/install-mongodb-ubuntu-16-04-title.png "Install MongoDB on Ubuntu 16.04")
 
 MongoDB is a database engine that provides access to non-relational, document-oriented databases. It is part of the growing [NoSQL](https://en.wikipedia.org/wiki/NoSQL) movement, along with databases like Redis and Cassandra (although there are vast differences among the many non-relational databases).
 
@@ -28,16 +28,16 @@ Since MongoDB can require a significant amount of RAM, we recommend using a [hig
 
 ## Before You Begin
 
-- Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+- Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-- Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+- Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 - Update your system:
 
       sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Add the MongoDB Repository
@@ -92,7 +92,7 @@ These are only a few basic configuration options that are set by default.
 
 We **strongly** recommend uncommenting the `security` section and adding the following:
 
-{{< file-excerpt "/etc/mongod.conf" aconf >}}
+{{< file-excerpt "/etc/mongod.conf" conf >}}
 security:
   authorization: enabled
 
@@ -135,15 +135,17 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
     Keep these credentials in a safe place for future reference. The output will display all the information written to the database except the password:
 
-        Successfully added user: {
-            "user" : "mongo-admin",
-            "roles" : [
-                    {
-                        "role" : "userAdminAnyDatabase",
-                        "db" : "admin"
-                    }
-            ]
-        }
+        {{< output >}}
+Successfully added user: {
+    "user" : "mongo-admin",
+    "roles" : [
+            {
+                "role" : "userAdminAnyDatabase",
+                "db" : "admin"
+            }
+    ]
+}
+{{< /output >}}
 
 4.  Exit the mongo shell:
 

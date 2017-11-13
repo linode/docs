@@ -22,10 +22,9 @@ The architecture and scaling of websites developed with Seaside is highly depend
 
 This document provides an overview of getting started with this Smalltalk web development framework. For the purposes of this example we've deployed Seaside and the "Pier" content management system on a Debian 5 (Lenny) system. Because of the image-based nature of Smalltalk environments, the strategies and approaches for running Seaside applications may not vary between distributions much. Nevertheless, there may be some differences regarding the names of packages and configuration details for the web server. Other details should remain the same between various operating system distributions.
 
-Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [getting started guide](/content/getting-started/). You'll also need to install [Apache](/content/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
+Before proceeding with Seaside and Smalltalk installations, we assume that you have followed our [getting started guide](/docs/getting-started/). You'll also need to install [Apache](/docs/web-servers/apache/) in order to serve your Seaside application. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). One final disclaimer: the Smalltalk virtual machines are all built against 32-bit architectures, so for the best performance, do not deploy a 64-bit image with your Linode.
 
-Installing Smalltalk Environments
----------------------------------
+# Installing Smalltalk Environments
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -42,7 +41,7 @@ First, we need to install the virtual machine to run the Smalltalk images. While
     unzip pharo-vm-0.15.2f-linux.zip
     mv pharo-vm-0.15.2f-linux/ pharo-vm-15-2/
 
-[Upload the image file](/content/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
+[Upload the image file](/docs/tools-reference/linux-system-administration-basics#upload-files-to-a-remote-server) of your Seaside application. For the purposes of this guide we will use the image produced by the "Pier" Content Management System. We'll store the application image in the directory beneath `/srv/www/` for the specific virtual host: in this example, we'll use `/srv/www/example.com/`. To download the ready-made image for Pier use the following sequence of commands:
 
     cd /srv/www/example.com/
     wget http://pier.googlecode.com/files/Pier-1.2.app.zip
@@ -59,12 +58,11 @@ To test the Seaside application, access your domain in the browser on port `8080
 
     http://example.com:8080/seaside/
 
-In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/content/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
+In this configuration, the Squeak VM instances run in the current terminal session. For production situations we recommend running your Smalltalk images in [GNU Screen](/docs/tools-reference/ssh/using-the-terminal#gnu-screen). To stop the current instance, simply hit "ctrl-c".
 
 The default configuration of the "Pier" image accessed above binds the Smalltalk server on port `8080` on both the local and the public interface. Ensure that both your application and system firewalls are configured to permit proper access prior to deployment. We're now ready to configure Apache to provide public access to your Smalltalk instance.
 
-Configuring Apache
-------------------
+# Configuring Apache
 
 The manner in which you architect your Seaside-based application is quite dependent upon the demands of your deployment. The following approaches cover basic practices for making your Seaside application accessible over the network.
 
@@ -109,8 +107,7 @@ These are the only non-Smalltalk requirements. If your applications requires any
 
     /etc/init.d/apache2 restart
 
-Case One: Independent Virtual Hosts
------------------------------------
+# Case One: Independent Virtual Hosts
 
 ### Configuring Apache to Serve Static Content
 
@@ -145,7 +142,7 @@ Reload the web server configuration to create the virtual host:
 
     /etc/init.d/apache2 reload
 
-When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/content/networking/dns/dns-records-an-introduction#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
+When building your application point, ensure all static content is served from URLs that begin with `http://static.example.com/` and the files are located at `/srv/www/static.example.com/public_html/`. You must create an [A Record](/docs/networking/dns/dns-records-an-introduction#types-of-dns-records) that points to the domain of your Linode for `static.example.com` domain.
 
 ### Configuring Apache to Proxy Dynamic Requests to Seaside
 
@@ -184,8 +181,7 @@ RewriteRule ^/(.*)$ http://localhost:8080/seaside/pier/$1 [proxy,last]
 
 In addition, your application may require some extra configuration. Pier requires the hostname to be defined in its control panel as well as in the Seaside control panel. If you're using software written by a third-party, it's best that you follow their specific instructions.
 
-Case Two: Serve Static and Dynamic Content with One Virtual Host
-----------------------------------------------------------------
+# Case Two: Serve Static and Dynamic Content with One Virtual Host
 
 In this example, all content is provided by the same virtual host. The web server looks for static content in the `DocumentRoot`, and if it finds nothing there it hands the request to the Smalltalk server to provide the dynamic content. Modify your virtual host configuration file to resemble the following. Change the `VirtualHost` IP to the IP of your Linode.
 
@@ -224,8 +220,7 @@ RewriteRule ^/(.*)$ http://localhost:8080/seaside/pier/$1 [proxy,last]
 
 In addition, your application may require some extra configuration. Pier requires the hostname to be defined in its control panel, as well as in the Seaside control panel. If you're using software written by a third-party, it's best that you follow their specific instructions.
 
-Configure Apache Proxy Cluster
-------------------------------
+# Configure Apache Proxy Cluster
 
 In this example, we scale our Seaside deployment by providing Apache with multiple Seaside images running in parallel. In this setup, each Seaside instance runs on successive ports. This must be configured inside of the Seaside image. This configuration sets a `stickysession` cookie which allows users to maintain consistent connections to the same Smalltalk image. The various instances of your application will need to be configured to share information, so that updates to one image will be passed to other images. Alternatively, your application may be designed so that user experience will be unaffected by which back-end server they access.
 
@@ -268,8 +263,7 @@ In this example there are a couple of specific settings that you may need to mod
 
 You can specify as many members of the balancing cluster as you need. `mod_proxy_balancer` makes it possible to balance requests among a pool that includes services running on both the local machine and/or various remote locations. It's common to run services on a number of distinct machines and proxy requests over the private network connections. Regardless of the actual architecture of deployment, ensure that each `BalancerMember` directive has a unique `route=` id, and that there is a corresponding `RewriteRule` with a final identifier that matches each of the previously created routes.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
@@ -280,7 +274,7 @@ You may wish to consult the following resources for additional information on th
 - [Pharo](http://www.pharo-project.org/home)
 - [Pharo By Example](http://www.pharobyexample.org/)
 - [Pier CMS](http://www.piercms.com/)
-- [Apache Documentation for mod\_proxy\_balancer](http://httpd.apache.org/content/2.2/mod/mod_proxy_balancer.html)
+- [Apache Documentation for mod\_proxy\_balancer](http://httpd.apache.org/docs/2.2/mod/mod_proxy_balancer.html)
 
 
 

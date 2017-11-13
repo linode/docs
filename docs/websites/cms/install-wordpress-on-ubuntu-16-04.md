@@ -18,10 +18,10 @@ external_resources:
 
 In this guide, you'll learn to how to install WordPress on a Linode running Ubuntu 16.04. WordPress is a popular dynamic content management system focused on blogs. WordPress can be deployed on a LAMP or LEMP stack, and features an extensive plugin framework and theme system that allows site owners and developers to use its simple, yet powerful publishing tools.
 
-![Install WordPress on Ubuntu 16.04](/content/assets/wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
+![Install WordPress on Ubuntu 16.04](/docs/assets/wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
 
@@ -30,7 +30,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 ## Before You Begin
 
--   This guide assumes you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and that your Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+-   This guide assumes you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -39,7 +39,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
     The first command will output your short hostname; the second, your fully-qualified domain name (FQDN).
 
--   Configure a [LAMP](/content/websites/lamp/install-lamp-on-ubuntu-16-04) or [LEMP](/content/websites/lemp/lemp-server-on-ubuntu-16-04) web stack.
+-   Configure a [LAMP](/docs/websites/lamp/install-lamp-on-ubuntu-16-04) or [LEMP](/docs/websites/lemp/lemp-server-on-ubuntu-16-04) web stack.
 
 -   Make sure MySQL has a database set up for WordPress. If you do not have a WordPress database, create one:
 
@@ -80,8 +80,9 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
         sudo mv latest.tar.gz wordpress-`date "+%Y-%m-%d"`.tar.gz
 
-5.  Move the WordPress files to your `public_html` folder:
+5.  Create a `public_html` directory to be the root directory for WordPress. Move the WordPress files to your `public_html` folder:
 
+        sudo mkdir /var/www/html/example.com/public_html/
         sudo mv wordpress/* ../public_html/
 
 6.  Give your web server ownership of the `public_html` folder:
@@ -92,7 +93,7 @@ Replace each instance of `example.com` in this guide with your site's domain nam
 
 1.  Visit your domain in a web browser and follow the steps shown onscreen. Select your preferred language, review the information page and click the **Let's go!** button. Enter the database credentials that were set when you installed MySQL:
 
-    ![WordPress Installer](/content/assets/wordpress-setup_small.png)
+    ![WordPress Installer](/docs/assets/wordpress-setup_small.png)
 
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
@@ -102,7 +103,7 @@ If Wordpress doesn't display when you visit your domain, try adding `/wp-admin` 
 
 2.  Fill out the administration information and click **Install WordPress**.
 
-    ![WordPress Administrative Information](/content/assets/wordpress-installation-screen01.png)
+    ![WordPress Administrative Information](/docs/assets/wordpress-installation-screen01.png)
 
     Click **Log In**, enter your credentials and proceed to the WordPress Dashboard.
 
@@ -136,7 +137,7 @@ To configure permalink settings:
 
 2.  Mouseover **Settings** in the menu on the left of your screen, then click **Permalinks**:
 
-    ![Wordpress Settings Permalinks](/content/assets/wordpress-settings-permalinks.png)
+    ![Wordpress Settings Permalinks](/docs/assets/wordpress-settings-permalinks.png)
 
 3.  Select your preferred permalink style or create your own *Custom Structure* and click **Save Changes**
 

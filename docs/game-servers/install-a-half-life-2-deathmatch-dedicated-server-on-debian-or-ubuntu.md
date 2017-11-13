@@ -21,19 +21,20 @@ external_resources:
 - '[Botrix](http://www.famaf.unc.edu.ar/~godin/botrix)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
-----
+---
 
-![Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](/content/assets/HL2DM.jpg "Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu")
+
+![Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu](/docs/assets/HL2DM.jpg "Install a Half-Life 2: Deathmatch Dedicated Server on Debian or Ubuntu")
 
 This guide will show you how to set up your own [Half-Life 2 Deathmatch](http://steamcommunity.com/app/320) server on a Linode running Debian or Ubuntu. Hl2 is a multiplayer, first-person shooter video game.
 
 ## Before You Begin
 
-1.  Complete our [Install SteamCMD for a Steam Game Server](/content/applications/game-servers/install-steamcmd-for-a-steam-game-server) guide.
+1.  Complete our [Install SteamCMD for a Steam Game Server](/docs/applications/game-servers/install-steamcmd-for-a-steam-game-server) guide.
 
-2.  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+2.  This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 3.  Add two firewall rules to extend the port range available to the server. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide. If not, find the corresponding lines and replace the numbers in `INPUT 5` and `INPUT 7` below:
 
@@ -98,7 +99,7 @@ To exit the screen:
 
     exit
 
-For more information on Screen sockets, visit our guide on [Screen](/content/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
+For more information on Screen sockets, visit our guide on [Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
 
 ### Autostart with a Screen Script
 
@@ -131,7 +132,7 @@ Note that if `server.cfg` is present, its settings override any parameters that 
 
 Below is a sample server configuration:
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" aconf >}}
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" java >}}
 // Server name [Default: Half-Life 2 Deathmatch]
 hostname "My Linode"
 
@@ -231,7 +232,7 @@ When a match ends, the server starts a new match with the next map in the rotati
 
 If `mapcycle.txt` is not available, the system uses the default map rotation list in `mapcycle_default.txt`.
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" resource >}}
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" java >}}
 // Default mapcycle file for hl2mp
 //
 // DO NOT MODIFY THIS FILE!
@@ -284,14 +285,13 @@ dm_underpass
 
 1.  Open Half-Life 2 Deathmatch, and click **FIND SERVERS**:
 
-    [![Half-Life 2 Main menu](/content/assets/half-life-2-deathmatch-menu_small.png)](/content/assets/half-life-2-deathmatch-menu.png)
+    [![Half-Life 2 Main menu](/docs/assets/half-life-2-deathmatch-menu_small.png)](/docs/assets/half-life-2-deathmatch-menu.png)
 
 2.  Find your server in the servers list:
 
-    [![Server browser](/content/assets/half-life-2-deathmatch-server-browser_small.png)](/content/assets/half-life-2-deathmatch-server-browser.png)
+    [![Server browser](/docs/assets/half-life-2-deathmatch-server-browser_small.png)](/docs/assets/half-life-2-deathmatch-server-browser.png)
 
 3.  Double click on it to connect:
 
-    [![In-game](/content/assets/half-life-2-deathmatch-in-game_small.png)](/content/assets/half-life-2-deathmatch-in-game.png)
+    [![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](/docs/assets/half-life-2-deathmatch-in-game.png)
 
-[GLHF](http://onlineslangdictionary.com/meaning-definition-of/glhf).

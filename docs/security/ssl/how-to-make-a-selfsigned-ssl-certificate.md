@@ -13,14 +13,14 @@ modified_by:
 published: 2009-11-16
 title: 'How to Make a Self-Signed SSL Certificate'
 external_resources:
- - '[OpenSSL documentation](http://openssl.org/content/)'
+ - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
 
 {{< caution >}}
-This guide has been split into two guides, for [Debian & Ubuntu](/content/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu) and [CentOS & Fedora](/content/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora).
+This guide has been split into two guides, for [Debian & Ubuntu](/docs/security/ssl/create-a-self-signed-certificate-on-debian-and-ubuntu) and [CentOS & Fedora](/docs/security/ssl/create-a-self-signed-certificate-on-centos-and-fedora).
 {{< /caution >}}
 
-This guide explains the creation of a self-signed SSL certificate, suitable for personal use or for applications used internally in an organization. The end product may be used with SSL-capable software such as web servers, email servers, or other server systems. We assume that you've followed the steps outlined in our [getting started guide](/content/getting-started/), and that you're logged into your Linode as root via a shell session.
+This guide explains the creation of a self-signed SSL certificate, suitable for personal use or for applications used internally in an organization. The end product may be used with SSL-capable software such as web servers, email servers, or other server systems. We assume that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via a shell session.
 
 ## Installing OpenSSL
 
@@ -53,6 +53,6 @@ You will be asked for several configuration values. Enter values appropriate for
 
 Once your certificate has been generated, you will need to configure your web server to utilize the new certificate. Instructions for doing so with several popular platforms can be found at the links below:
 
-- [SSL Certificates with Apache on Debian and Ubuntu](/content/security/ssl/ssl-apache2-debian-ubuntu)
-- [SSL Certificates with Apache on CentOS 7](/content/security/ssl/ssl-apache2-centos)
-- [SSL Certificates with Nginx](/content/security/ssl/ssl-certificates-with-nginx)
+- [SSL Certificates with Apache on Debian and Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu)
+- [SSL Certificates with Apache on CentOS 7](/docs/security/ssl/ssl-apache2-centos)
+- [SSL Certificates with Nginx](/docs/security/ssl/ssl-certificates-with-nginx)

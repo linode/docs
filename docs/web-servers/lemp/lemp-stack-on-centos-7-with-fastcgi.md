@@ -5,26 +5,26 @@ author:
 description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
 keywords: ["nginx", "lemp", "php", "fastcgi", "linux", "web applications", " CentOS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
+aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
 modified: 2014-12-11
 modified_by:
     name: Ryan Arlan
-published:
+published: 2014-12-11
 title: Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
-- '[Basic Nginx Configuration](/content/websites/nginx/basic-nginx-configuration/)'
-- '[Nginx Documentation](http://nginx.org/en/content/)'
+- '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
+- '[Nginx Documentation](http://nginx.org/en/docs/)'
 - '[MariaDB Knowledgebase](https://mariadb.com/kb/en/)'
 - '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
 ---
 
 This document describes how to install a Linux, Nginx (pronounced engine-x), MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in systemd for easier administration.
 
-Make sure that before starting this guide you have read through and completed our [Getting Started](/content/getting-started/) guide.
+Make sure that before starting this guide you have read through and completed our [Getting Started](/docs/getting-started/) guide.
 
 ## Set the hostname
 
-Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/content/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
+Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
 
     hostname
     hostname -f
@@ -90,8 +90,7 @@ Once you have configured your virtual hosts, you'll need to restart nginx for yo
 
     systemctl restart nginx.service
 
-Deploy PHP with FastCGI
------------------------
+# Deploy PHP with FastCGI
 
 If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
 

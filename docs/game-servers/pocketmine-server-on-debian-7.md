@@ -24,7 +24,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
 
 ## Prerequisites
 
-1.  Your Linode should already be configured per our [Getting Started](/content/getting-started) guide, and secured per our [Securing Your Server](/content/security/securing-your-server) guide.
+1.  Your Linode should already be configured per our [Getting Started](/docs/getting-started) guide, and secured per our [Securing Your Server](/docs/security/securing-your-server) guide.
 
 2.  Ensure that your Linode is up to date:
 
@@ -39,7 +39,7 @@ Minecraft - Pocket Edition is non-free software that you will need to purchase i
         sudo adduser pocketmine
 
     {{< note >}}
-If you've followed the steps in our [Securing Your Server](/content/security/securing-your-server) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
+If you've followed the steps in our [Securing Your Server](/docs/security/securing-your-server) guide, you will need to add your public key to `/home/pocketmine/.ssh/authorized_keys` in order to log in as this user later in the guide. You will also need to add an iptables exception for port `19132`
 {{< /note >}}
 
 ## Installation
@@ -137,18 +137,18 @@ sed -i -e 's/php7/php5/g' start.sh
 
 1.  Open Minecraft - Pocket Edition on your phone or tablet. Tap on **Play**:
 
-    [![Minecraft Pocket Edition.](/content/assets/pocketmine-game-home_small.png)](/content/assets/pocketmine-game-home.png)
+    [![Minecraft Pocket Edition.](/docs/assets/pocketmine-game-home_small.png)](/docs/assets/pocketmine-game-home.png)
 
 2.  From the next screen, tap **Edit**, then **External**.
 
 
 3.  Enter a name under `Server Name`, and your Linode's domain or IP address under `Address`. When you're done, tap **Add Server**:
 
-    [![Adding a remote server to Minecraft Pocket Edition.](/content/assets/pocketmine-add-server_small.png)](/content/assets/pocketmine-add-server.png)
+    [![Adding a remote server to Minecraft Pocket Edition.](/docs/assets/pocketmine-add-server_small.png)](/docs/assets/pocketmine-add-server.png)
 
 4.  You can now connect to your server, and begin playing!
 
-    [![Gameplay on the PocketMine server.](/content/assets/pocketmine-gameplay_small.png)](/content/assets/pocketmine-gameplay.png)
+    [![Gameplay on the PocketMine server.](/docs/assets/pocketmine-gameplay_small.png)](/docs/assets/pocketmine-gameplay.png)
 
 ## Installing Plugins
 
@@ -156,7 +156,7 @@ You can downloaded plugins for PocketMine from their [site](http://forums.pocket
 
 1.  From the plugin page, copy the **Download Plugin** link address:
 
-    [![A plugin download page.](/content/assets/pocketmine-plugin-page_small.png)](/content/assets/pocketmine-plugin-page.png)
+    [![A plugin download page.](/docs/assets/pocketmine-plugin-page_small.png)](/docs/assets/pocketmine-plugin-page.png)
 
 2.  In your Linode terminal, while detached from your screen session, use `curl` to download the plugin into the `plugins` directory:
 

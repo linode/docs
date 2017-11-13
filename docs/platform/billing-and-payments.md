@@ -13,7 +13,7 @@ published: 2014-02-28
 title: Billing and Payments
 ---
 
-We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/content/support).
+We've done our best to create straightforward billing and payment policies. Still have questions? Use this guide to learn how our hourly billing works and how to make payments, update your billing information, get referral credits, and remove services. If you have a question that isn't answered here, please feel free to [contact support](/docs/support).
 
 ## How Hourly Billing Works
 
@@ -34,7 +34,6 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
 | Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
 | Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-|-----------------------------------------------------------------------------
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
 
@@ -47,7 +46,6 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Linode 60GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
 | Linode 104GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
 | Linode 200GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
-|-----------------------------------------------------------------------------
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
 
@@ -62,13 +60,12 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Longview Pro 10  | $0.06/hr    | $40/mo
 | Longview Pro 40  | $0.15/hr    | $100/mo
 | Longview Pro 100 | $0.30/hr    | $200/mo
-|-----------------------------------------
 
 
 {{< note >}}
 A large base amount of network transfer is included with all Linode plans, but exceeding that amount can result in a [transfer overage](#transfer-overages) charge beyond the monthly cap.
 
-Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/content/support) with your justification.
+Due to the [impending exhaustion of the IPv4 address space](http://en.wikipedia.org/wiki/IPv4_address_exhaustion), Linode requires users to provide technical justification. To add another public IP address, please [contact support](/docs/support) with your justification.
 {{< /note >}}
 
 ## Viewing Current Balance
@@ -79,7 +76,7 @@ To view your current balance, follow the steps below. This shows you the sum of 
 2.  Select the **Account** tab.
 3.  In the **Account** tab, in the **Recent Billing Activity and Account Balance** section, you can see the **Current Balance**:
 
-    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](/content/assets/1622-manager_account_sm.png)](/content/assets/1623-manager_account.png)
+    [![This customer has a $45.60 outstanding balance, shown next to the Current Balance.](/docs/assets/1622-manager_account_sm.png)](/docs/assets/1623-manager_account.png)
 
 Here, you can keep track of your outstanding balance. In the example above, the customer has used $45.60 worth of Linode services in the month so far. You can check this as frequently or infrequently as you wish. It gets updated every hour as you use and add Linode services.
 
@@ -97,7 +94,7 @@ If you want to stop being billed for a particular Linode service, you need to [r
 
 ## Payment Methods
 
-We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/content/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
+We accept Visa, MasterCard, Discover, and American Express. We also accept PayPal, as well as checks and money orders (which *must* be in USD) made out to "Linode, LLC" and sent to our [office address](http://www.linode.com/contact#contact-address). Please [contact support](/docs/support) before paying with check or money order. Note that we do not accept bank/wire transfers.
 
 The following video will show you how to make a payment via PayPal:
 
@@ -193,10 +190,11 @@ You can cancel your account and receive a refund. Here's how:
 
 Your account will be canceled and all of your services will be deactivated.
 
- {{< note >}}
+{{< note >}}
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
 ## More Information
 
-If you've signed up before hourly billing, please check out our [Prepaid Billing](/content/prepaid-billing) guide for more information.
+If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/prepaid-billing) guide for more information.
+

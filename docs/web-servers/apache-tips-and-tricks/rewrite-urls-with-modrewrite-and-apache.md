@@ -12,19 +12,19 @@ modified_by:
 published: 2009-11-06
 title: 'Rewrite URLs with mod_rewrite and Apache'
 external_resources:
- - '[Installing Apache](/content/websites/apache/)'
- - '[LAMP stack guides](/content/websites/lamp/)'
- - '[Apache Rewrite Guide](https://httpd.apache.org/content/current/mod/mod_rewrite.html)'
- - '[Redirect URLs with the Apache Web Server](/content/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server)'
+ - '[Installing Apache](/docs/websites/apache/)'
+ - '[LAMP stack guides](/docs/websites/lamp/)'
+ - '[Apache Rewrite Guide](https://httpd.apache.org/docs/current/mod/mod_rewrite.html)'
+ - '[Redirect URLs with the Apache Web Server](/docs/websites/apache-tips-and-tricks/redirect-urls-with-the-apache-web-server)'
 ---
 
 In this guide, you'll learn how to rewrite URLs with mod_rewrite and Apache. Rewriting a URL is a server-side operation that allows you to serve content from a file system location that doesn't correspond exactly with the client's request. This can be useful for improving URL readability by search engines and users, or updating locations of resources when your site architecture changes.
 
-![Rewrite URLs with mod_rewrite and Apache](/content/assets/rewrite-urls-with-modrewrite-and-apache.png "Rewrite URLs with mod_rewrite and Apache")
+![Rewrite URLs with mod_rewrite and Apache](/docs/assets/rewrite-urls-with-modrewrite-and-apache.png "Rewrite URLs with mod_rewrite and Apache")
 
 ## Before You Begin
 
-1.  This guide assumes you have followed our [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/content/websites/apache/) or [LAMP stack guides](https://www.linode.com/content/websites/lamp/).
+1.  This guide assumes you have followed our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and that you have already configured your Apache installation. If you haven't, refer to our [Apache guides](https://www.linode.com/docs/websites/apache/) or [LAMP stack guides](https://www.linode.com/content/websites/lamp/).
 
 2.  In this guide, we'll be modifying Apache configuration files, so be sure you have the proper permissions to do so.
 
@@ -81,7 +81,7 @@ This is useful when the locations of files on the file system do not correspond 
 
 ## Rewrite URLs Under Specific Conditions
 
-With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/content/web-applications/cms-guides/wordpress/) application:
+With the `RewriteCond` parameter, you can set conditions under which a `RewriteRule` will be used. Let's take the following example from the default rewrite rules for the [WordPress](/docs/web-applications/cms-guides/wordpress/) application:
 
 {{< file-excerpt "Apache Configuration Option for WordPress" apache >}}
 RewriteEngine On
@@ -99,7 +99,7 @@ The `RewriteCond` statements direct Apache to only apply the rule that follows t
 
 If both conditions are true and no file or directory exists that matches the request, Apache applies the rewrite rule. For example, if the user requests `http://example.com/?post=123` or `http://example.com/post/123` the server will return the result for `index.php?post=123` or `index.php/post/123`, respectively.
 
-Multiple `RewriteCond` are connected with logical *AND* operators so that all conditions be true in order for a `RewriteRule` to apply for that request. You may also add an `[OR]` statement to the end of a `RewriteCond` directive to join a list of conditions with a logical *OR* and create several possible conditions where a request would be rewritten by a single `RewriteRule`. Consult [the Apache mod_rewrite documentation](https://httpd.apache.org/content/current/mod/mod_rewrite.html) for more information about rewrite conditions.
+Multiple `RewriteCond` are connected with logical *AND* operators so that all conditions be true in order for a `RewriteRule` to apply for that request. You may also add an `[OR]` statement to the end of a `RewriteCond` directive to join a list of conditions with a logical *OR* and create several possible conditions where a request would be rewritten by a single `RewriteRule`. Consult [the Apache mod_rewrite documentation](https://httpd.apache.org/docs/current/mod/mod_rewrite.html) for more information about rewrite conditions.
 
 ## Redirection Codes in mod_rewrite
 

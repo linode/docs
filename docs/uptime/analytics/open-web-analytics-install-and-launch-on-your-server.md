@@ -18,7 +18,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+
+---
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
@@ -26,13 +27,13 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 1.  This guide assumes that you have your Linode already set up and running, that you have followed:
 
-     - The [Getting Started](/content/getting-started) guide.
-     - The [Securing Your Server](/content/security/securing-your-server) guides.
-     - That the Linode's [hostname is set](/content/getting-started#setting-the-hostname) and has a FQDN.
+     - The [Getting Started](/docs/getting-started) guide.
+     - The [Securing Your Server](/docs/security/securing-your-server) guides.
+     - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
 
 
     {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
 {{< /note >}}
@@ -42,41 +43,41 @@ Your server must be configured with a fully qualified domain name (FQDN) and not
 
     - **CentOS**
 
-          yum update
+            yum update
 
     - **Debian & Ubuntu**
 
-          apt-get update && apt-get upgrade
+            apt-get update && apt-get upgrade
 
 3.  Install the supporting software packages:
 
     - **CentOS**
 
-          yum install httpd php php-mysql mysql-server mariadb-server
+            yum install httpd php php-mysql mysql-server mariadb-server
 
-      {{< note >}}
+    {{< note >}}
 This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.
 {{< /note >}}
 
     - **Debian & Ubuntu**
 
-          apt-get install apache2 php5 php5-mysql mysql-server
+            apt-get install apache2 php5 php5-mysql mysql-server
 
 4.  CentOS users will need to enable and activate the `httpd` and `mariadb` services:
 
     - **CentOS 7**
 
-          systemctl enable mariadb
-          systemctl start mariadb
-          systemctl enable httpd
-          systemctl start httpd
+            systemctl enable mariadb
+            systemctl start mariadb
+            systemctl enable httpd
+            systemctl start httpd
 
     - **CentOS 6**
 
-          chkconfig mysqld on
-          service mysqld start
-          chkconfig httpd on
-          service httpd start
+            chkconfig mysqld on
+            service mysqld start
+            chkconfig httpd on
+            service httpd start
 
     Debian and Ubuntu users will need to restart the Apache2 daemon:
 
@@ -98,15 +99,22 @@ This command is designed to work with CentOS 6, which uses MySQL as the default 
 
 3.  Create a database named `owadb`:
 
-        CREATE DATABASE owadb;
+    {{< highlight sql >}}
+CREATE DATABASE owadb;
+{{< /highlight >}}
 
 4.  Create a user named `owadbuser`. Replace the example password, `owadbpassword`, with a strong password of your choice. This information will be needed later to configure OWA.
 
-        GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
+    {{< highlight sql >}}
+GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
+{{< /highlight >}}
 
 5.  Exit the MySQL CLI:
 
-        FLUSH PRIVILEGES;
+    {{< highlight sql >}}
+FLUSH PRIVILEGES;
+{{< /highlight >}}
+
         quit
 
 ## OWA
@@ -133,11 +141,11 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
     - **CentOS**
 
-          chown -R apache:apache Open*
+            chown -R apache:apache Open*
 
     - **Debian & Ubuntu**
 
-          chown -R www-data:www-data Open*
+            chown -R www-data:www-data Open*
 
 5.  **Recommended:** Rename the OWA folder:
 
@@ -156,7 +164,7 @@ Version 1.5.7 is the current version and may be different by the time you read t
 
 2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:
 
-    [![Open Web Analytics set up screen.](/content/assets/owa-install_small.png)](/content/assets/owa-install.png)
+    [![Open Web Analytics set up screen.](/docs/assets/owa-install_small.png)](/docs/assets/owa-install.png)
 
 3.  Click **Continue...**.
 
@@ -191,3 +199,4 @@ You must click "Save Profile" before trying to enter any of the settings below t
 7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.
 
 8.  Click "View Reports" in the Sites Roster page and begin happy analyzing!
+

@@ -14,16 +14,13 @@ published: 2010-05-18
 title: 'Monitoring Resource Utilization with Cacti on Ubuntu 10.04 (Lucid)'
 ---
 
-
-
-The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/content/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
+The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/deploy-munin-to-monitor-servers-on-ubuntu-12-04) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
 
-Before installing Cacti we assume that you have followed our [getting started guide](/content/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/content/using-linux/) document series including the [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [using Linux](/docs/using-linux/) document series including the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
 
-Prerequisites
--------------
+# Prerequisites
 
 ### Set the Timezone
 
@@ -68,29 +65,25 @@ Before installing Cacti we must install a few basic dependencies that are critic
     apt-get install snmpd snmp mysql-server apache2 libapache2-mod-php5 \
     php5-mysql php5-cli php5-snmp
 
-You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components. Also consider reading our [MySQL installation guide](/content/databases/mysql/ubuntu-10-04-lucid) for configuration recommendations.
+You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less secure components. Also consider reading our [MySQL installation guide](/docs/databases/mysql/ubuntu-10-04-lucid) for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/content/web-servers/apache/installation/ubuntu-10-04-lucid) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/content/web-servers/apache/php-cgi/ubuntu-10-04-lucid) and with [nginx](/content/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/web-servers/apache/installation/ubuntu-10-04-lucid) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/web-servers/apache/php-cgi/ubuntu-10-04-lucid) and with [nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid) running PHP as a FastCGI process.
 
 ### Configuring SNMPD
 
 SNMPD binds to `localhost` by default. If you only plan on using Cacti to monitor your Linode, you do not need to modify `/etc/default/snmpd`. However, if you'd like to use Cacti to monitor more than one host, you'll need to edit the `/etc/default/snmpd` file. Open the file and find the line that starts with `SNMPDOPTS=` and remove `127.0.0.1` at the end. This line should now look like this:
 
-{{< file >}}
-/etc/default/snmpd
+{{< file "/etc/default/snmpd" >}}
+SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 {{< /file >}}
-
-> SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 
 At this point SNMPD is configured to listen on all interfaces. Now we'll open `/etc/snmp/snmpd.conf` to establish which host is trusted to receive data.
 
 We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Locate the section of `snmpd.conf` that begins with `com2sec` and make sure the `readonly` line is the only uncommented line. This section of the file should now look like this:
 
-{{< file >}}
-/etc/snmp/snmpd.conf
+{{< file "/etc/snmp/snmpd.conf" >}}
+#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 {{< /file >}}
-
-> \#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 
 If you want a remote machine to connect to Cacti, replace "localhost" with the IP address of the remote machine.
 
@@ -98,8 +91,7 @@ You need to restart snmpd any time `/etc/snmp/snmpd.conf` is modified. Run the f
 
     /etc/init.d/snmpd restart
 
-Installing Cacti
-----------------
+# Installing Cacti
 
 To install the Cacti package from the distribution software repositories, issue the following command:
 
@@ -111,15 +103,13 @@ From here we'll continue configuring Cacti through the browser. Visit the domain
 
 At the login screen, enter `admin/admin` for the username/password combination. You'll be prompted to change your password on the next screen. At this point, Cacti is installed and ready to be configured.
 
-Configuring Cacti
------------------
+# Configuring Cacti
 
 At this point Cacti will contain an entry for `localhost`, which we'll need to modify. Click the "Console" tab in the top left corner, and select "Create Devices for network". Click the "Localhost" entry to begin making the needed changes. Select the Host Template drop down and pick the "ucd/net SNMP Host". Scroll down to SNMP Options and click the drop down box for SNMP Version, picking "Version 1". Enter "example" (or the community name you created above) in the box for the "SNMP Community" field. The "Associated Graph Templates" section allows you to add additional graphs. Hit "Save" to keep the changes.
 
 Click "Settings" under "Configuration" and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "example") and save.
 
-Configuring Client Machines
----------------------------
+# Configuring Client Machines
 
 This section is optional and for those looking to use Cacti to monitor additional devices. These steps are written for Debian-based distributions, but with modification, they will work on any flavor of Linux. You will need to follow these instructions for each client machine you'd like to monitor with Cacti. Client machines need an SNMP daemon in order to serve Cacti information. First, install `snmp` and `snmpd` on the client:
 
@@ -132,11 +122,9 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
 
 Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
 
-{{< file >}}
-/etc/default/snmpd
+{{< file "/etc/default/snmpd" >}}
+SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 {{< /file >}}
-
-> SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -g snmp -I -smux -p /var/run/snmpd.pid'
 
 Finally, restart the SNMP daemon to push the changes you've made to these files:
 
@@ -144,8 +132,7 @@ Finally, restart the SNMP daemon to push the changes you've made to these files:
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Additionally, ensure that you've typed the right community name in the "SNMP Community" field. Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the drop down next to "Choose an Action" select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 
-Using the Spine Polling Daemon
-------------------------------
+# Using the Spine Polling Daemon
 
 By default, Cacti uses a PHP script to poll the devices it tracks. "Spine" is a faster replacement for the default polling script written in C++. Installing Spine is relatively easy and a good idea if you plan on keeping track of many hosts. Begin the Spine installation by running the following command :
 
@@ -153,14 +140,11 @@ By default, Cacti uses a PHP script to poll the devices it tracks. "Spine" is a 
 
 After the installation completes, go back to the Cacti administrative panel and click "Settings" under "Configuration". Click the "Paths" tab and check to see that Cacti found your spine binary correctly. Click the "Poller" tab and choose "Spine" from the drop-down for "Poller Type". Click "Save" to keep these changes. You are now successfully using Spine.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Cacti Website](http://www.cacti.net/index.php)
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
-- [Linux Security Basics](/content/security/basics)
-
-
+- [Linux Security Basics](/docs/security/basics)
 

@@ -24,7 +24,7 @@ This guide will show you how to install and set up Redmine on Ubuntu 16.04 throu
 ### Before You Begin
 
 {{< note >}}
-The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Dependencies
@@ -238,7 +238,7 @@ client_max_body_size 10m;
 
         sudo service nginx restart
 
-    ![Login](/content/assets/redmine/firstscreen.png)
+    ![Login](/docs/assets/redmine/firstscreen.png)
 
 ## Redmine
 
@@ -269,7 +269,7 @@ If not installed, install git or download the plug-in directly through the Githu
 
 3. Navigate to Redmine in your browser. Log in, click **admin** then click **plugins**
 
-    ![scrum2b](/content/assets/redmine/thirdscreen.png)
+    ![scrum2b](/docs/assets/redmine/thirdscreen.png)
 
 ### Next Steps
 You now have a working Redmine setup on your Linode. If you plan on using it in production, explore plug-ins that will be useful for your team. Take a look at some of the guides below to customize Redmine for your team.

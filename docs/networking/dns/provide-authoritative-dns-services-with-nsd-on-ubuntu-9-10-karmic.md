@@ -18,10 +18,9 @@ title: 'Provide Authoritative DNS Services with NSD on Ubuntu 9.10 (Karmic)'
 
 NSD is a lightweight yet full-featured open source name server daemon created to provide an alternative to BIND.
 
-Before beginning, you should be familiar with basic [DNS terminology and records](/content/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
+Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
 
-Enable Universe Repositories
-----------------------------
+# Enable Universe Repositories
 
 The NSD packages are included in the Ubuntu's universe repositories. Before installing NSD, edit your `/etc/apt/sources.list` file to enable the "universe" repositories by removing the hash symbol in front of the universe lines. The file should resemble the following example:
 
@@ -42,8 +41,7 @@ When you have saved this file, issue the following command to refresh your syste
     apt-get update
     apt-get upgrade
 
-Install Required Software
--------------------------
+# Install Required Software
 
 Ensure that your package repositories are up to date and that you've installed all available software upgrades by issuing the following commands:
 
@@ -56,8 +54,7 @@ Install NSD with the following commands:
 
 You will now need to configure the daemon.
 
-Configuring the NSD Daemon
---------------------------
+# Configuring the NSD Daemon
 
 You will need to create the `nsd.conf` file to properly configure the NSD service as well as the DNS zones. There is an example configuration file located in `/etc/nsd3/nsd.conf` that you can uncomment directives in. You may also create your own from scratch.
 
@@ -84,8 +81,7 @@ You must specify at least one zone in the `/etc/nsd3/nsd.conf` file before NSD w
 >
 Once zones are added to the `nsd.conf` file, proceed to create a zone file for each DNS zone.
 
-Creating Zone Files
--------------------
+# Creating Zone Files
 
 Each domain has zone file specified in the `nsd.conf` file. The syntax of an NSD zone file is similar BIND zone files. Refer to the example zone files that follow for syntax, and modify domain names and IP addresses to reflect the needs of your deployment.
 
@@ -133,7 +129,7 @@ Rebuild the NSD database and restart the daemon with following command sequence:
 
 Rebuild the database and restart NSD each time you edit an existing zone or create a new one.
 
-Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/content/networking/dns/use-dig-to-perform-manual-dns-queries). If `dig` is not installed, install the utility by issuing the following command:
+Test the configuration and functionality of the DNS serve using `dig`, which provides a [command line DNS client](/docs/networking/dns/use-dig-to-perform-manual-dns-queries). If `dig` is not installed, install the utility by issuing the following command:
 
     apt-get install dnsutils
 
@@ -166,8 +162,7 @@ The output should resemble the following:
 
 Congratulations, you have successfully installed NSD!
 
-Adjusting NSD for Low-Memory Situations
----------------------------------------
+# Adjusting NSD for Low-Memory Situations
 
 If you are running NSD in a low-memory environment, amending the values of the following directives in your `/etc/nsd3/nsd.conf` file will lower your memory and system resource usage.
 
@@ -177,8 +172,7 @@ If you are running NSD in a low-memory environment, amending the values of the f
 
 > ip4-only: yes tcp-count: 10 server-count: 1
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

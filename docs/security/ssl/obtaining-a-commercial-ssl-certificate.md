@@ -13,18 +13,18 @@ modified_by:
 published: 2009-11-16
 title: Obtaining a Commercial SSL Certificate
 external_resources:
- - '[OpenSSL Documentation](http://www.openssl.org/content/)'
+ - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
 {{< caution >}}
-This guide has been split into two guides, for [Debian & Ubuntu](/content/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu) and [CentOS & Fedora](/content/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
+This guide has been split into two guides, for [Debian & Ubuntu](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-debian-and-ubuntu) and [CentOS & Fedora](/docs/security/ssl/obtain-a-commercially-signed-ssl-certificate-on-centos-and-fedora).
 {{< /caution >}}
 
-These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our Apache SSL guides for [Debian & Ubuntu](/content/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/content/security/ssl/ssl-apache2-centos) once you've completed the process outlined here.
+These instructions will show you how to install a commercial SSL certificate on your Linode. As SSL certificates can be used by many kinds of software, the steps provided are generic in nature. If you intend to use your SSL certificate on a website powered by Apache, you can continue to our Apache SSL guides for [Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) or [CentOS](/docs/security/ssl/ssl-apache2-centos) once you've completed the process outlined here.
 
-For an SSL setup with Nginx, please start with our [Nginx and SSL](/content/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
+For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
-If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/content/platform/support) to request an additional IP address.
+If hosting multiple websites with commercial SSL certificates on the same IP address, use the [Server Name Identification (SNI) extension](https://wiki.apache.org/httpd/NameBasedSSLVHostsWithSNI) of TLS. SNI is accepted by most modern web browsers. If you expect to receive connections from clients running legacy browsers (like Internet Explorer for Windows XP), you will need to [contact support](/docs/platform/support) to request an additional IP address.
 
 ## Install OpenSSL
 

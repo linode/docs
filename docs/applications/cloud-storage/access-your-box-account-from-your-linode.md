@@ -12,17 +12,17 @@ published: 2015-11-06
 title: 'Access Your Box.com Account from Your Linode'
 ---
 
-*This is a Linode Community guide. [Write for us](/content/contribute) and earn $250 per published guide.*
+*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 If you've discovered [Box](https://www.box.com/) then you know that it can be a great tool for storage, moving and managing files. The following tutorial helps you install and configure a free piece of software that facilitates Box access from your Linode.
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your operating system.
 
@@ -46,9 +46,8 @@ If only your `example_user` needs access to the Box account contents, making the
 
     The fstab (or file systems table) file is a system configuration file commonly found at `/etc/fstab`. It contains the necessary information to automate the process of mounting. Add an entry for your Box account:
 
-    {{< file-excerpt "/etc/fstab" aconf >}}
+    {{< file-excerpt "/etc/fstab" >}}
 https://dav.box.com/dav /home/example_user/box davfs rw,user,noauto 0 0
-
 {{< /file-excerpt >}}
 
 

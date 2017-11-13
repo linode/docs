@@ -17,7 +17,7 @@ external_resources:
 
 Linux systems administrators and network administrators often find diagnosing network speed degradation complicated, as there are very few tools available to diagnose these issues. iPerf is a command-line tool used in the diagnostics of network speed issues.
 
-![Install iPerf to Diagnose Network Speed in Linux](/content/assets/diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")
+![Install iPerf to Diagnose Network Speed in Linux](/docs/assets/diagnosing-network-speed-with-iperf.png "Install iPerf to Diagnose Network Speed in Linux")
 
 iPerf measures the maximum network throughput a server can handle. It is particularly useful when experiencing network speed issues, as you can use iPerf to determine which server is unable to reach maximum throughput.
 

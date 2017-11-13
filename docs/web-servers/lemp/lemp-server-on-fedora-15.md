@@ -14,20 +14,18 @@ published: 2011-06-24
 title: LEMP Server on Fedora 15
 ---
 
-This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [getting started guide](/content/getting-started/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+This guide will help you get up and running quickly with a LEMP (Linux, nginx, MySQL, PHP) stack on your Linode. If you haven't done so already, please follow the instructions in our [getting started guide](/docs/getting-started/) before proceeding. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install the nginx Web Server
-----------------------------
+# Install the nginx Web Server
 
 Issue the following commands to update your system, install nginx, set it to start on boot, and start it now.
 
@@ -36,8 +34,7 @@ Issue the following commands to update your system, install nginx, set it to sta
     chkconfig nginx on
     service nginx start
 
-Configure nginx Virtual Hosting
--------------------------------
+# Configure nginx Virtual Hosting
 
 Replace the contents of the file `/etc/nginx/nginx.conf` with the following contents.
 
@@ -125,8 +122,7 @@ Issue the following command to restart nginx.
 
 Once nginx has restarted, you should be able to view your test page in a web browser.
 
-Configure PHP-FastCGI
----------------------
+# Configure PHP-FastCGI
 
 ### Install and Configure Packages
 
@@ -219,8 +215,7 @@ location ~ \.php$ {
 }
 {{< /file-excerpt >}}
 
-Install MySQL Database Server
------------------------------
+# Install MySQL Database Server
 
 Issue the following commands to install the MySQL database server, set it to start at boot, and secure the installation.
 
@@ -234,8 +229,7 @@ If you need support for PHP, issue the following commands to install the require
     yum install php-mysql
     service spawn-fcgi restart
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 Please follow the announcements, lists, and RSS feeds on the pages linked below to ensure you are aware of all security updates and can upgrade appropriately or apply patches and recompile as needed:
 
@@ -245,12 +239,11 @@ Please follow the announcements, lists, and RSS feeds on the pages linked below 
 -   [PHP Mailing Lists](http://php.net/mailing-lists.php)
 -   [MySQL Mailing Lists](http://lists.mysql.com/)
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic nginx Configuration](/content/websites/nginx/basic-nginx-configuration)
+- [Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)
 - [nginx Wiki](http://wiki.nginx.org/Main)
 - [PHP Documentation](http://php.net/docs.php)
 - [MySQL Documentation](http://dev.mysql.com/doc/)

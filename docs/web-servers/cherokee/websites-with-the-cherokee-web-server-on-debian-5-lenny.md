@@ -18,10 +18,9 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This tutorial explains how to install and configure the Cherokee web server on Debian 5 (Lenny). This guide targets Cherokee version 0.7.2 (provided by the Debian repositories as of this writing), but the install steps should be similar for later versions. We will be performing the installation through the terminal; please make sure you are logged into your Linode as root via SSH.
 
-This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [getting started guide](/content/getting-started/), we recommend that you do so prior to following these instructions.
+This document assumes that you already have a working and up to date Debian 5 (Lenny) system. If you have not followed our [getting started guide](/docs/getting-started/), we recommend that you do so prior to following these instructions.
 
-Install Cherokee
-----------------
+# Install Cherokee
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -38,8 +37,7 @@ If you need support for SSL sites, issue the following command to install OpenSS
 
     apt-get install openssl
 
-Configuring Cherokee
---------------------
+# Configuring Cherokee
 
 The Cherokee web server includes an easy to use, comprehensive administration interface. This interface, known as `cherokee-admin`, is the recommended means of administering your web server.
 
@@ -72,35 +70,33 @@ Replace "12.34.56.78" with your Linode's IP address. You may now visit `http://l
 
 You'll be presented with the Cherokee administration panel, which you may use to configure websites and specify configuration options.
 
-[![The cherokee-admin web server administration interface running on a Linode.](/content/assets/224-cherokee-admin-01-home.png)](/content/assets/224-cherokee-admin-01-home.png)
+[![The cherokee-admin web server administration interface running on a Linode.](/docs/assets/224-cherokee-admin-01-home.png)](/docs/assets/224-cherokee-admin-01-home.png)
 
 ### Secure Admin Panel Access on Windows
 
 You can use [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/) to set up a secure SSH tunnel for Cherokee administration. Enter your Linode's public IP address in the session tab:
 
-[![Session information for PuTTY.](/content/assets/225-cherokee-putty-01-session.png)](/content/assets/225-cherokee-putty-01-session.png)
+[![Session information for PuTTY.](/docs/assets/225-cherokee-putty-01-session.png)](/docs/assets/225-cherokee-putty-01-session.png)
 
 Expand the "Connection -\> SSH" menus to select the "Tunnel" configuration page. Enter the values shown here:
 
-[![Configuring an SSH tunnel for Cherokee administration in PuTTY.](/content/assets/226-cherokee-putty-02-tunnel.png)](/content/assets/226-cherokee-putty-02-tunnel.png)
+[![Configuring an SSH tunnel for Cherokee administration in PuTTY.](/docs/assets/226-cherokee-putty-02-tunnel.png)](/docs/assets/226-cherokee-putty-02-tunnel.png)
 
 Back on the session tab, enter "Cherokee Admin" in the "Saved Sessions" field and click "Save" to retain your settings for future use.
 
-[![Saving an SSH session for Cherokee administration in PuTTY.](/content/assets/227-cherokee-putty-03-saved-session.png)](/content/assets/227-cherokee-putty-03-saved-session.png)
+[![Saving an SSH session for Cherokee administration in PuTTY.](/docs/assets/227-cherokee-putty-03-saved-session.png)](/docs/assets/227-cherokee-putty-03-saved-session.png)
 
 Click "Open" to connect to your server and start the tunnel. You may receive a warning similar to the one shown here:
 
-[![An SSH key alert in PuTTY.](/content/assets/228-cherokee-putty-04-alert.png)](/content/assets/228-cherokee-putty-04-alert.png)
+[![An SSH key alert in PuTTY.](/docs/assets/228-cherokee-putty-04-alert.png)](/docs/assets/228-cherokee-putty-04-alert.png)
 
 Click "Yes" to continue, and log into your Linode as you normally would. As long as the SSH session is open you'll be able to navigate to `http://localhost:9090` in your web browser to access the Cherokee admin panel via the secure tunnel.
 
-Conclusion
-----------
+# Conclusion
 
 Be sure to stop `cherokee-admin` using the `killall` command shown above once you're done configuring your system. Congratulations, you've successfully installed the Cherokee web server on your Linode!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

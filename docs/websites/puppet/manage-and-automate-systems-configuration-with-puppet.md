@@ -22,11 +22,11 @@ external_resources:
 
 Puppet is an open source "configuration change management" tool that allows users to automate and standardize the configuration of software infrastructure. Using a domain specific language for describing configuration, Puppet allows users to manage configurations in a service-oriented manner.
 
-Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/content/getting-started/) and have installed Puppet according to our [Puppet installation guide](/content/application-stacks/puppet/installation).
+Because of Puppet's versatility, this guide provides an overview of a number of different Puppet-based deployments. Since there is no single "right way" to integrate Puppet into your network, this document will focus on a collection of independent strategies rather than a single procedure. Before following this document, it is assumed that you have an up-to-date system, have followed our [getting started guide](/docs/getting-started/) and have installed Puppet according to our [Puppet installation guide](/docs/application-stacks/puppet/installation).
 
 ## Using Puppet
 
-Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. In the [Puppet installation guide](/content/application-stacks/puppet/installation), we covered installing both the "Puppetmaster" server component and the Puppet client. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
+Puppet is a collection of tools built around a language that allows systems administrators to specify configurations, or manifests, to describe the state of a computer system. In the [Puppet installation guide](/docs/application-stacks/puppet/installation), we covered installing both the "Puppetmaster" server component and the Puppet client. This section covers a number of different methods you may use to apply Puppet manifests to your Linodes.
 
 ### Running Puppet Manually
 
@@ -38,7 +38,7 @@ This will apply the configuration specified in the manifest to your system.
 
 ### Running Puppet with Cron
 
-By default, `puppetd` runs every 30 minutes, contacts the `puppetmasterd`, retrieves changes to the manifests, and applies these changes to the system. If you want to run Puppet more or less frequently, you can configure a [cron job](/content/linux-tools/utilities/cron) on your client systems that resemble the following:
+By default, `puppetd` runs every 30 minutes, contacts the `puppetmasterd`, retrieves changes to the manifests, and applies these changes to the system. If you want to run Puppet more or less frequently, you can configure a [cron job](/docs/linux-tools/utilities/cron) on your client systems that resemble the following:
 
     30 * * * * puppetd --onetime --no-daemonize --logdest syslog > /dev/null 2>&1
 
@@ -46,7 +46,7 @@ The options to `puppetd` tell the program to run once without daemonizing, to lo
 
     puppetd --onetime --no-daemonize --logdest syslog
 
-In order for `puppetd` to work in this manner you must [configure secure Puppet communications](/content/application-stacks/puppet/installation#configure_secure_puppet_communications). To test the operation of Puppetd at the command line, with interactive output, you may issue the following command:
+In order for `puppetd` to work in this manner you must [configure secure Puppet communications](/docs/application-stacks/puppet/installation#configure_secure_puppet_communications). To test the operation of Puppetd at the command line, with interactive output, you may issue the following command:
 
     puppetd --test
 
@@ -244,7 +244,7 @@ This instructs Puppet to run the specified command, in this case an `rsync` comm
 
 This guide only covers the most basic of puppet configurations options. It is certainly possible to deploy much more complex systems, including the following possibilities:
 
--   Store revisions of your manifest files in a [version control system](/content/linux-tools/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
--   Deploy Puppetmaster with [Passenger](/content/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
+-   Store revisions of your manifest files in a [version control system](/docs/linux-tools/version-control/). Version control will make it easier to revert changes if you run into problems. It will also ease replication of manifests throughout a system with multiple Puppetmaster nodes.
+-   Deploy Puppetmaster with [Passenger](/docs/frameworks/): the default Puppetmaster server is based on WEBrick, which is only capable of supporting 20 or 30 puppet nodes, depending on your configuration, according the Puppet developers.
 -   You may consider using Puppet in combination with the [Linode API](http://www.linode.com/api/) and [StackScripts](http://www.linode.com/stackscripts/) to automate provisioning, deprovisioning, and configuration of Linodes.
 -   Use [Puppet's module support](http://projects.puppetlabs.com/projects/puppet/wiki/Puppet_Modules) to more easily manage applications which require more complex configurations.

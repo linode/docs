@@ -12,7 +12,7 @@ modified_by:
 published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 external_resources:
- - '[Using PuTTY](/content/networking/using-putty)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 ---
 
@@ -24,11 +24,11 @@ Server administrators may wish to use local administration tools to connect to r
 
 You can obtain PuTTY from the [PuTTY download page](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html). For Microsoft Windows users, PuTTY is compatible with Windows 95 or greater (practically any modern Windows computer can run it). Simply save the program to your desktop and double-click it to begin. You'll be presented with this screen:
 
-[![The session login screen in PuTTY on Windows.](/content/assets/383-putty-01-session.png)](/content/assets/383-putty-01-session.png)
+[![The session login screen in PuTTY on Windows.](/docs/assets/383-putty-01-session.png)](/docs/assets/383-putty-01-session.png)
 
 Enter the hostname or IP address of the system you'd like to log into and click "Open" to start an SSH session. If you haven't logged into this system with PuTTY before, you will receive a warning similar to the following:
 
-[![An unknown host key warning in PuTTY on Windows.](/content/assets/384-putty-02-host-key-warning.png)](/content/assets/384-putty-02-host-key-warning.png)
+[![An unknown host key warning in PuTTY on Windows.](/docs/assets/384-putty-02-host-key-warning.png)](/docs/assets/384-putty-02-host-key-warning.png)
 
 In this case, PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Console" tab in the Linode Manager) and executing the following command:
 
@@ -46,7 +46,7 @@ Once you've connected to the remote server with this tunnel configuration, you'l
 
 Save the following Perl script to your local home directory as `oracle-tunnel.pl`:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" >}}
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
 #!/usr/bin/perl
 
 # Oracle XE Homepage Tunnel Tool for MacOS X and Linux

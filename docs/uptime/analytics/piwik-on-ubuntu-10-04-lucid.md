@@ -18,10 +18,9 @@ title: 'Piwik on Ubuntu 10.04 (Lucid)'
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program". As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of and control over the data collected from your visitors.
 
-Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.04 LAMP guide](/content/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
+Piwik requires a functioning LAMP stack. You can install the LAMP software with the [Ubuntu 10.04 LAMP guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Make sure you follow the steps for installing PHP and PHP-MySQL support.
 
-Prerequisites
--------------
+# Prerequisites
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -32,12 +31,11 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
     apt-get install php5-gd unzip wget
 
-Configure a Dedicated Virtual Host for Piwik
---------------------------------------------
+# Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an [A Record](/content/networking/dns/dns-records-an-introduction/#a-and-aaaa), for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/content/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an [A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa), for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.org`:
 
@@ -66,8 +64,7 @@ Enable the virtual host and restart the web server configuration with the follow
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
 
-Installing Piwik
-----------------
+# Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 
@@ -88,7 +85,7 @@ Visit your new Piwik instance in your browser. In our example, this is located a
 
 When Piwik's installation process is complete, you will receive JavaScript snippet that you can insert in every page on your site that you want to track using Piwik.
 
-If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/content/web-servers/apache/configuration/rule-based-access-control) or [authentication based access control](/content/web-servers/apache/configuration/http-authentication).
+If you are concerned about the security of the data collected by Piwik, consider limiting access to Piwik's virtual host, using either [rule-based](/docs/web-servers/apache/configuration/rule-based-access-control) or [authentication based access control](/docs/web-servers/apache/configuration/http-authentication).
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 

@@ -10,6 +10,7 @@ modified: 2013-10-03
 modified_by:
   name: Linode
 published: 2011-11-02
+expiryDate: 2015-10-03
 title: Installing DirectAdmin on Debian 6
 deprecated: true
 ---

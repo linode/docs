@@ -18,21 +18,21 @@ title: Use Fail2ban to Secure Your Server
 
 Fail2ban is a log-parsing application that monitors system logs for symptoms of an automated attack on your Linode. When an attempted compromise is located, using the defined parameters, Fail2ban will add a new rule to iptables to block the IP address of the attacker, either for a set amount of time or permanently. Fail2ban can also alert you through email that an attack is occurring.
 
-![Using Fail2ban to secure your server](/content/assets/fail2ban_tg.png "Using Fail2ban to secure your server")
+![Using Fail2ban to secure your server](/docs/assets/fail2ban_tg.png "Using Fail2ban to secure your server")
 
 Fail2ban is primarily focused on SSH attacks, although it can be further configured to work for any service that uses log files and can be subject to a compromise.
 
 {{< note >}}
-The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 {{< caution >}}
 Fail2ban is intended to be used in conjunction with an already-hardened server and should not be used as a replacement for secure firewall rules.
 {{< /caution >}}
 
-## 1) Install Fail2ban
+## Install Fail2ban
 
-Follow the [Getting Started](/content/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/content/security/securing-your-server) guide before beginning.
+Follow the [Getting Started](/docs/getting-started) guide to configure your basic server. You may also want to review the [Securing Your Server](/docs/security/securing-your-server) guide before beginning.
 
 ### CentOS 7
 
@@ -58,7 +58,7 @@ Follow the [Getting Started](/content/getting-started) guide to configure your b
     {{< note >}}
 Should you encounter the error that there is "*no directory /var/run/fail2ban to contain the socket file /var/run/fail2ban/fail2ban.sock*", create the directory manually:
 
-'mkdir /var/run/fail2ban`
+'mkdir /var/run/fail2ban'
 {{< /note >}}
 
 ### Debian
@@ -126,7 +126,7 @@ ERROR: FEATURE() should be before MAILER() MAILER(`local') must appear after FEA
         ufw allow ssh
         ufw enable
 
-## 2) Configure Fail2ban
+## Configure Fail2ban
 
 Fail2ban reads `.conf` configuration files first, then `.local` files override any settings. Because of this, all changes to the configuration are generally done in `.local` files, leaving the `.conf` files untouched.
 
@@ -147,7 +147,7 @@ Fail2ban reads `.conf` configuration files first, then `.local` files override a
     -   `socket`: The location of the socket file.
     -   `pidfile`: The location of the PID file.
 
-## 3) Configure jail.local Settings
+## Configure jail.local Settings
 
 1.  The `jail.conf` file will enable Fail2ban for SSH by default for Debian and Ubuntu, but not CentOS. All other protocols and configurations (HTTP, FTP, etc.) are commented out. If you want to change this, create a `jail.local` for editing:
 

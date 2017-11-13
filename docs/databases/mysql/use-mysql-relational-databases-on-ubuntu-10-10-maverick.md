@@ -16,10 +16,9 @@ title: 'Use MySQL Relational Databases on Ubuntu 10.10 (Maverick)'
 
 
 
-MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [getting started guide](/content/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
+MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.10 (Maverick) Linode. It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Modify your `/etc/hosts` file to resemble the following example. Replace "example.com" with your own domain name, and select a unique name to replace "systemname" with. This will be your system's FQDN (fully qualified domain name). Replace "12.34.56.78" with your Linode's IP address.
 
@@ -35,8 +34,7 @@ Issue the following commands to set your system's hostname, replacing "systemnam
     echo "systemname" > /etc/hostname
     hostname -F /etc/hostname
 
-Install MySQL
--------------
+# Install MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -49,7 +47,7 @@ Begin by issuing the following command in your terminal:
 
 You will be prompted to set a password for the MySQL root user. Choose a strong password and keep it in a safe place for future reference.
 
-[![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](/content/assets/359-maverick-01-mysql-root-password.png)](/content/assets/359-maverick-01-mysql-root-password.png)
+[![Setting the MySQL root password in Ubuntu 10.10 (Maverick)](/docs/assets/359-maverick-01-mysql-root-password.png)](/docs/assets/359-maverick-01-mysql-root-password.png)
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. After installing MySQL, it's recommended that you run `mysql_secure_installation` in order to help secure MySQL. It is recommended that you accept the program's default answers. If you are prompted to reload privileges, select "yes." Run the following command to execute the program:
 
@@ -57,8 +55,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
 After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
 
-Configure MySQL
----------------
+# Configure MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
@@ -79,12 +76,11 @@ If you made any changes to MySQL's configuration, restart it by issuing the foll
 
     restart mysql
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/content/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secure MySQL remote access guide](/docs/databases/mysql/mysql-ssh-tunnel) for information on connecting to your databases with local clients.
 
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+# Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -157,10 +153,9 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records and used as the primary key), as well as two fields for storing the customer's name.
 
-By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/content/databases/mysql/mysql-ssh-tunnel). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
+By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

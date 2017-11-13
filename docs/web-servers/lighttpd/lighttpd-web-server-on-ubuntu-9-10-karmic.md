@@ -12,28 +12,27 @@ modified_by:
 published: 2010-05-10
 title: 'lighttpd Web Server on Ubuntu 9.10 (Karmic)'
 deprecated: true
+expiryDate: 2017-11-08
 ---
 
 This tutorial explains how to install and configure the lighttpd (eg. "lighty") web server on Ubuntu 9.10 (Karmic). Lighttpd is designed to provide a lightweight web server that is capable of serving large loads and using less memory than servers like the Apache HTTP server. It's commonly deployed on high traffic sites, including YouTube. You might want to consider using lighttpd if you're having problems scaling your current web server to meet your load requirements. Lighttpd makes sense for users who find "big" programs like Apache daunting and bloated.
 
-Our example will illustrate the installation of a lighttpd server on an Ubuntu 9.10 (Karmic) system. We assume that you've followed the [getting started guide](/content/getting-started/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
+Our example will illustrate the installation of a lighttpd server on an Ubuntu 9.10 (Karmic) system. We assume that you've followed the [getting started guide](/docs/getting-started/) and are running on an updated system. This document does not, however, include instructions for deploying other common services in the web development stack. We recommend you consult additional resources (a few are listed at the end of this tutorial) to deploy the remainder of your web stack.
 
 If you're switching from an alternate web server like Apache, remember to turn Apache off for testing purposes, or configure lighttpd to serve on an alternate port until it's configured properly.
 
 For purposes of this tutorial we'll assume you are logged into an SSH session on your Linode as the root user.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing lighthttpd
----------------------
+# Installing lighthttpd
 
 Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by removing the hash symbol in front of the universe lines. The file should resemble the following example:
 
@@ -73,8 +72,7 @@ Once the server is installed we'll want to check to make sure that it's running 
 -   By default, the "DocumentRoot" (where all web-accessible files are stored) is located in the `/var/www/` directory. You'll be able to indicate another folder later in the process if you like.
 -   Ubuntu provides helper scripts to enable and disable server modules without directly editing the config file: `lighty-enable-mod` and `lighty-disable-mod`
 
-Configuring Lighttpd
---------------------
+# Configuring Lighttpd
 
 You will want to configure your lighttpd instance to provide only the services that you need for your use case. Strictly speaking none of the configuration options described in this section are *required* for any or all setups. Nevertheless, many of these options may prove useful in your configuration process.
 
@@ -106,8 +104,7 @@ When you have installed these packages you will be able to enable them using the
 
 Remember to reload lighttpd after you've finished installing, enabling, and configuring new modules.
 
-Virtual Host Setup with Simple Vhost
-------------------------------------
+# Virtual Host Setup with Simple Vhost
 
 ### Configure Simple Vhost Module
 
@@ -162,8 +159,7 @@ Use the following sequence of commands to create default index pages for all sit
     echo "<h1>Welcome to example.net</h1>" > /srv/www/example.net/public/index.htm
     echo "<h1>Welcome to example.org</h1>" > /srv/www/example.org/public/index.htm
 
-Virtual Host Setup with Enhanced Vhost
---------------------------------------
+# Virtual Host Setup with Enhanced Vhost
 
 Remove the hash (`#`) from the front of the line that reads "mod\_evhost" in the server.modules block of the `/etc/lighttpd/lighttpd.conf` file.
 
@@ -195,8 +191,7 @@ You have maximum flexibility to create virtual hosts in this manner. The naming 
 
 We read domain names backwards, so `com` is the tld or "top level domain", `example` is the domain, `somesubdomain` is the subdomain 1 name, and `lookhere` is the subdomain 2 name. These can be combined using the above syntax to create a virtual hosting scheme that makes sense for your use case.
 
-Virtual Hosting Best Practices
-------------------------------
+# Virtual Hosting Best Practices
 
 The way you set up virtual hosting on your web server is highly dependent upon what kind of sites you need to host, their traffic, the number of domains, and the workflows associated with these domains. We recommend hosting all of your domains in a centralized top level directory (eg. `/var/www/` or `/srv/www`) and then symbolically linking these directories into more useful locations.
 
@@ -210,8 +205,7 @@ You can also use symbolic links to cause multiple virtually hosted domains to ho
 
 No matter what you decide, we recommend developing some sort of systematic method for organizing virtual hosting so that you don't becomes confused down the road when you need to modify your system.
 
-Running Scripts with mod\_fastcgi
----------------------------------
+# Running Scripts with mod\_fastcgi
 
 If you need your web server to execute dynamic content, the preferred way to accomplish this with lighttpd is to run these scripts using FastCGI. To run a script, FastCGI externalizes the interpreter for the script for dynamic web applications from the web server rather than running the scripts "inside" the web server. This is in contrast to the common Apache-based approaches such as mod\_perl, mod\_python, and mod\_php. If you're familar with Apache this might seem foreign and/or antiquated, but in high-traffic situations doing things this way is often more efficient and effective.
 
@@ -263,8 +257,7 @@ fastcgi.map-extensions = ( ".[ALT-EXTENSION]" => ".[EXTENSION]" )
 
 Again, mod\_fastcgi supports creating multiple handlers, and even adding multiple FastCGI back ends per-handler.
 
-Lighttpd Caveats
-----------------
+# Lighttpd Caveats
 
 While lighttpd is an effective and capable web server there are two caveats regarding its behavior that you should be familiar with as you continue on your lighttpd path.
 
@@ -272,22 +265,19 @@ First, server side includes, which allow you to dynamically include content from
 
 Secondly, because of the way FastCGI works, running web applications with lighttpd requires additional configuration, particularly for users who are writing applications using interpreters embedded in the web server (eg. mod\_perl, mod\_python, mod\_php, etc.). This is especially true for [effective optimizations](http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs:PerformanceFastCGI).
 
-Additional Ubuntu Configuration
--------------------------------
+# Additional Ubuntu Configuration
 
 The default configuration for Ubuntu (in addition to `/etc/lighttpd/lighttpd.conf`) automatically includes all of the files in the `/etc/lighttpd/conf-enabled/` directory with the `.conf` extension. Typically, these files are symbolically linked from the `/etc/lighttpd/conf-available/` directory by the `lighttpd-enable-mod`. You can add specific configuration directives for required modules in these files, or in the master `lighttpd.conf` file, depending on your needs and personal preference.
 
-Example Configuration
----------------------
+# Example Configuration
 
 Lighttpd is often deployed in specialized high performance environments, with configurations for specific use cases. This makes it difficult to recommend a prototypical configuration for lighttpd. Nevertheless, we offer this well-commented example as a guide to developing your own lighttpd configuration.
 
-[Example lighttpd Configuration with Comments](/content/assets/599-example-lighttpd.conf)
+[Example lighttpd Configuration with Comments](/docs/assets/599-example-lighttpd.conf)
 
 Please note that comments in this file reference Debian, however this file will work on Ubuntu deployments as well.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

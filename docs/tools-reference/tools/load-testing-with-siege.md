@@ -16,7 +16,7 @@ external_resources:
 
 Siege is an HTTP load testing and benchmarking utility that can be used to measure the performance of a web server when under duress. It evaluates the amount of data transferred, response time of the server, transaction rate, throughput, concurrency, and times the program returned okay. Siege offers three modes of operation: Regression, internet simulation, and brute force.
 
-![Load Testing Web Servers with Siege](/content/assets/load-testing-web-servers-with-siege.png)
+![Load Testing Web Servers with Siege](/docs/assets/load-testing-web-servers-with-siege.png)
 
 This guide is for Debian or Ubuntu systems.
 
@@ -85,7 +85,7 @@ This guide is for Debian or Ubuntu systems.
 		# ex: time = 50M
 		#
 		time = 1M
-		
+
 
 {{< /file-excerpt >}}
 
@@ -126,7 +126,7 @@ If there are no failed connections and the availability remains at 100%, there a
 
 ## Further Configuring and Commands
 
-###Creating a URL File
+### Creating a URL File
 
 If you want Siege to hit a number of pages on your website at random, configure the program to read from a `urls.txt` file that lists the selected pages.
 
@@ -152,7 +152,7 @@ If you want Siege to hit a number of pages on your website at random, configure 
 www.example.com
 www.example.org
 123.45.67.89
-		
+
 
 {{< /file >}}
 

@@ -20,9 +20,9 @@ aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifcally for a Minecraft server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the *Configure a Firewall* section yet--this guide includes firewall rules specifcally for a Minecraft server.
 
 3.  Update your system.
 
@@ -30,7 +30,7 @@ aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 
 ## Configure a Firewall
 
-Now see [Securing Your Server](/content/security/securing-your-server/) again and complete the section on iptables for your Linux distribution **using the rulesets below**:
+Now see [Securing Your Server](/docs/security/securing-your-server/) again and complete the section on iptables for your Linux distribution **using the rulesets below**:
 
 **IPv4**
 
@@ -164,16 +164,16 @@ To exit McMyAdmin and return to the command line, enter `/quit`.
 
 2.  Log in with the username `admin` and the password that you provided in the installation step.
 
-	![McMyAdmin Login Page](/content/assets/mcmyadmin-login-page.png)
+	![McMyAdmin Login Page](/docs/assets/mcmyadmin-login-page.png)
 
 3.  Once the initial configuration steps are completed, select your settings and then switch to the status page.
 
-	![McMyAdmin Configuration Page](/content/assets/mcmyadmin-config-page.png)
+	![McMyAdmin Configuration Page](/docs/assets/mcmyadmin-config-page.png)
 
 4.  Select *Start Server* and accept the Minecraft Server EULA.
 
-	![McMyAdmin Status Page](/content/assets/mymyadmin-status-page.png)
+	![McMyAdmin Status Page](/docs/assets/mymyadmin-status-page.png)
 
-	![McMyAdmin Server Started](/content/assets/mcmyadmin-server-running.png)
+	![McMyAdmin Server Started](/docs/assets/mcmyadmin-server-running.png)
 
 Congratulations, you now have McMyAdmin running on your Minecraft server!

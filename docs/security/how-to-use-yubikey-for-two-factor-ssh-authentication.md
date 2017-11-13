@@ -30,9 +30,9 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 ## Before You Begin
 
-1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/content/getting-started) guide.
+1.  Make sure you have a complete and working Linode as per the instructions in the [Getting Started](/docs/getting-started) guide.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
 3.  Update your local system. Then update your server using the following:
 
@@ -151,7 +151,7 @@ UsePAM yes
 
 Now that this process is done, you can test your login by typing `ssh user@example.com`. Depending on your setup, you may be prompted for your YubiKey. All you need to do is touch the button; it will enter the key for you. Then, type in your password if you are using multi-factor authentication. It will look something like the image below.
 
-![SSH window](/content/assets/yubikey-ssh.png)
+![SSH window](/docs/assets/yubikey-ssh.png)
 
 You can now log into your server.
 

@@ -17,7 +17,7 @@ external_resources:
 
 In this guide, you'll learn how to use one-time passwords for two-factor authentication with SSH on CentOS 7.
 
-![Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7](/content/assets/two-factor-authentication-centos-title.png "Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7")
+![Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7](/docs/assets/two-factor-authentication-centos-title.png "Use One-Time Passwords for Two-Factor Authentication with SSH on CentOS 7")
 
 No matter what kind of data you're hosting, securing access to your Linode is a critical step in preventing your information from falling into the wrong hands. By default, you will need a password to log in, and you may also configure a key pair for even greater security. However, another option exists to complement these methods: time-based one-time passwords (*TOTPs*).
 
@@ -27,9 +27,9 @@ This guide will explain how to install the necessary software, configure your sy
 
 ## Before You Begin
 
-1.  This guide is meant to be used with Linodes running CentOS 7. Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  This guide is meant to be used with Linodes running CentOS 7. Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, and remove unnecessary network services. This guide will explain a different way to harden SSH access, but you may use a keypair in addition for even greater protection.
 
 3.  You will need a smartphone or another client device with an authenticator application such as [Google Authenticator](https://en.wikipedia.org/wiki/Google_Authenticator) or [Authy](https://www.authy.com/). Many other options exist, and this guide should be compatible with nearly all of them.
 
@@ -38,7 +38,7 @@ This guide will explain how to install the necessary software, configure your sy
         sudo yum update && sudo yum upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install OATH Packages
@@ -77,7 +77,7 @@ Be sure to have your phone or mobile device ready, since this is where you'll ad
 
 2.  A QR code will appear in your terminal, which you can scan with your mobile device to set up your password:
 
-    [![The generated QR Code and keys in CentOS 7.](/content/assets/two-factor-keys-centos.png)](/content/assets/two-factor-keys-centos.png)
+    [![The generated QR Code and keys in CentOS 7.](/docs/assets/two-factor-keys-centos.png)](/docs/assets/two-factor-keys-centos.png)
 
     You'll also notice some additional information displayed above and below the QR code. Notably, the secret key in the line beginning with `URI` provides you with a hex code that you can use to manually configure the code on your device. You'll also see another hex code on a line containing the username. That second hex code will resemble the following:
 
@@ -98,7 +98,7 @@ Congratulations! You have finished generating your key and adding it to your cli
 The TOTP authentication methods in this guide use *PAM*, or Pluggable Authentication Modules. [PAM](http://www.linux-pam.org/) integrates low-level authentication mechanisms into modules that can be configured for different applications and services. Because you're using additional software (i.e., programs that aren't built into the Linux distro), you'll need to configure PAM to properly authenticate users.
 
 {{< caution >}}
-It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/content/networking/using-the-linode-shell-lish) to regain access.
+It is strongly recommended that you have another terminal session open while configuring your authentication settings. This way, if you disconnect to test authentication and something is not properly configured, you won't be locked out of your Linode. You can also use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
 {{< /caution >}}
 
 1.  Open `/etc/pam.d/sshd` with sudo privileges, and add the line from those below that references `pam_oath.so` (it has been marked by a comment here for clarity, but you can omit everything following the `#`). The surrounding lines are included for context, but they should not be modified. The line **must** be added between the lines specified here:
@@ -150,7 +150,7 @@ If you want to enforce two-factor authentication globally, you can use the `Auth
 
 Congratulations! Two-factor authentication is now enabled. When you connect to your Linode via SSH, the authentication process will proceed as follows:
 
-![Two-factor authentication with SSH login.](/content/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
+![Two-factor authentication with SSH login.](/docs/assets/two-factor-authentication-diagram.png "Two-factor authentication with SSH login.")
 
 {{< note >}}
 If your SSH client disconnects before you can enter your two-factor token, check if PAM is enabled for SSH. You can do this by editing `/etc/ssh/sshd_config`: look for `UsePAM` and set it to `yes`. Don't forget to restart the SSH daemon.
@@ -158,7 +158,7 @@ If your SSH client disconnects before you can enter your two-factor token, check
 
 ## Combine Two-Factor and Public Key Authentication
 
-This section is optional. If you'd like to use [public key authentication](/content/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, follow these steps:
+This section is optional. If you'd like to use [public key authentication](/docs/security/use-public-key-authentication-with-ssh) instead of a password with TOTP, follow these steps:
 
 {{< note >}}
 Confirm that your public key has been copied to your Linode before completing this section. View installed SSH keys by entering `ssh-add -l` in your terminal.
@@ -193,8 +193,8 @@ If you or a user on your system use this method, be sure that the SSH key and au
 
 ## Next Steps
 
-First, be sure you have followed our guide to [Securing Your Server](/content/security/securing-your-server). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/content/security/using-fail2ban-for-security) are a great means to minimize risk.
+First, be sure you have followed our guide to [Securing Your Server](/docs/security/securing-your-server). Although there is no single, foolproof method to protect your data, firewalls and services like [Fail2Ban](/docs/security/using-fail2ban-for-security) are a great means to minimize risk.
 
-When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/content/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/content/security/use-public-key-authentication-with-ssh), in the interim.
+When you use two-factor authentication with TOTPs, an important point to consider is the physical security of the device on which you've configured your authenticator app. Be sure your phone or device is secured with a passphrase, so that even if it falls into the wrong hands, it can't easily be used to compromise your server. If you lose the phone or device that stores your credentials, you can use [Lish](/docs/networking/using-the-linode-shell-lish) to access your Linode and disable two-factor authentication. If this happens, you should switch to a different, hardened method of SSH access, such as [public key authentication](/docs/security/use-public-key-authentication-with-ssh), in the interim.
 
 While two-factor authentication may be a valuable security feature, total security is an ongoing process not an end goal that can be achieved by adding extra layers of authentication. To provide the best protection for your data, take care to follow security best practices at all times.

@@ -92,7 +92,7 @@ If you're filtering mail through SpamAssassin in standalone mode and running int
 
 ## Troubleshooting Network Issues
 
-If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/content/networking/configuring-static-ip-interfaces). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
+If you've added multiple IP addresses to your Linode, you must set up static networking as described in the [Linux Static Networking Guide](/docs/networking/configuring-static-ip-interfaces). Please be sure to specify only one gateway. Using multiple gateways frequently causes problems.
 
 If you just added an IP address to your Linode, please be sure to reboot before attempting to use it. This is required to properly route the IP address on our network.
 

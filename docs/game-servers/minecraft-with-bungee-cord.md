@@ -21,10 +21,10 @@ contributor:
 aliases: ['applications/game-servers/minecraft-with-bungee-cord/']
 ---
 
-After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/content/game-servers/minecraft-with-spigot-ubuntu), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows for simple and easy switching between your Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.
+After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/game-servers/minecraft-with-spigot-ubuntu), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows for simple and easy switching between your Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Setting Up Your Linode
@@ -93,7 +93,7 @@ If you're running other Spigot servers on the same Linode, then you will need to
         sudo iptables -A INPUT -j DROP
 
     {{< note >}}
-If you've configured your `iptables` firewall by following our [Securing Your Server](/content/security/securing-your-server/) tutorial, then you will need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
+If you've configured your `iptables` firewall by following our [Securing Your Server](/docs/security/securing-your-server/) tutorial, then you will need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
 {{< /note >}}
 
 ## Installing BungeeCord
@@ -209,7 +209,7 @@ If there is an issue connecting, then it's important to check that the login ser
 
 #### Check the Ping
 
-[![Server Ping](/content/assets/ping.png)](/content/assets/ping.png)
+[![Server Ping](/docs/assets/ping.png)](/docs/assets/ping.png)
 
 If the server shows the MOTD and a ping in the server list, as per the image above, it's likely that the problem lies between BungeeCord and your Spigot servers. To check, you can log into your BungeeCord server, and you'll most likely see a line similar to the following in the logs, where the IP `198.51.100.0` is replaced by your IP. This shows that your client is successfully pinging the BungeeCord server:
 
@@ -217,7 +217,7 @@ If the server shows the MOTD and a ping in the server list, as per the image abo
 
 If the logs look similar to above, the following error is likely occurring:
 
-[![Backend connection error](/content/assets/connection.png)](/content/assets/connection.png)
+[![Backend connection error](/docs/assets/connection.png)](/docs/assets/connection.png)
 
 This indicates that Bungee couldn't contact your Spigot servers. There are a few steps you can take:
 
@@ -233,7 +233,7 @@ This indicates that Bungee couldn't contact your Spigot servers. There are a few
 
 In other cases, the server won't even show a response in the server list:
 
-[![BungeeCord connection error](/content/assets/noping.png)](/content/assets/noping.png)
+[![BungeeCord connection error](/docs/assets/noping.png)](/docs/assets/noping.png)
 
 If this happens, you should check that BungeeCord is actually running, and that you're attempting to connect to the correct IP address. In our example, it would be `203.0.113.0`.
 

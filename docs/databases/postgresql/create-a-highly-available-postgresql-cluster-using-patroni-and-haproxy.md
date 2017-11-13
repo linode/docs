@@ -11,16 +11,16 @@ modified_by:
 published: 2017-09-19
 title: Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
 external_resources:
- - '[PostgreSQL Documentation](https://www.postgresql.org/content/)'
+ - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
  - '[Patroni Repository](https://github.com/zalando/patroni)'
- - '[etcd Documentation](https://coreos.com/etcd/content/latest/)'
+ - '[etcd Documentation](https://coreos.com/etcd/docs/latest/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
-![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/content/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
+![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/docs/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
 
 ## What is PostgreSQL?
 
@@ -30,25 +30,25 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and familiarize yourself with SSH and connecting to your linode.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and familiarize yourself with SSH and connecting to your linode.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account and harden SSH access.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account and harden SSH access.
 
 3.  Update your system:
 
         sudo apt update && sudo apt upgrade
 
-4.  Create five Linodes on your account, all within the same datacenter. Take note of each Linode's [private IP address](/content/networking/remote-access/#adding-private-ip-addresses)
+4.  Create five Linodes on your account, all within the same datacenter. Take note of each Linode's [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses)
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install PostgreSQL
 
-Install Postgres on three Linodes in your setup. Because the configuration in this guide uses private IP addresses to communicate between Linodes in the same datacenter, this setup may not meet certain [Highly Available requirements](https://docs.oracle.com/cd/B28359_01/server.111/b28281/hadesign.htm#g1007388). For more information about private IPs, visit our [Remote Access guide](/content/networking/remote-access/#adding-private-ip-addresses).
+Install Postgres on three Linodes in your setup. Because the configuration in this guide uses private IP addresses to communicate between Linodes in the same datacenter, this setup may not meet certain [Highly Available requirements](https://docs.oracle.com/cd/B28359_01/server.111/b28281/hadesign.htm#g1007388). For more information about private IPs, visit our [Remote Access guide](/docs/networking/remote-access/#adding-private-ip-addresses).
 
-The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Remote Access guide](/content/networking/remote-access/#adding-private-ip-addresses) for more information.
+The examples in this guide assign the private IP addresses of the three Postgres Linodes `192.0.2.11`, `192.0.2.12` and `192.0.2.13`. To setup a private IP address on a Linode, refer to the [Remote Access guide](/docs/networking/remote-access/#adding-private-ip-addresses) for more information.
 
 1.  On the three Linodes where you want to install Postgres, update the package lists:
 
@@ -131,7 +131,7 @@ This guide uses `192.0.2.31` as the private IP address of this server and `203.0
 At this stage, you should have a total of five Linodes:
 
 |Example Private IP Address|Software Installed| Example Public IP Address|
-|:-:|:-:|:-:|
+|:------------------------:|:----------------:|:------------------------:|
 |192.0.2.11|Postgres, Patroni|-|
 |192.0.2.12|Postgres, Patroni|-|
 |192.0.2.13|Postgres, Patroni|-|
@@ -140,9 +140,9 @@ At this stage, you should have a total of five Linodes:
 
 ## Configure etcd
 
-1. Edit the `/etc/default/etcd` file to add the following configuration:
+1.  Edit the `/etc/default/etcd` file to add the following configuration:
 
-   {{< file-excerpt "/etc/default/etcd" aconf >}}
+    {{< file-excerpt "/etc/default/etcd" >}}
 ETCD_LISTEN_PEER_URLS="http://192.0.2.21:2380"
 
 ETCD_LISTEN_CLIENT_URLS="http://localhost:2379,http://192.0.2.21:2379"
@@ -160,7 +160,7 @@ ETCD_INITIAL_CLUSTER_STATE="new"
 {{< /file-excerpt >}}
 
 
-2. Save the file, then restart the etcd service:
+2.  Save the file, then restart the etcd service:
 
         sudo systemctl restart etcd
 
@@ -170,9 +170,9 @@ Patroni can be configured using a YAML file which can be placed anywhere. In thi
 
 Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni installed (`192.0.2.11`, `192.0.2.12`, and `192.0.2.13` in this guide). Change `name` to something unique, and change `listen` and `connect_address` (under `postgresql` and `restapi`) to the appropriate values on each Linode.
 
-1. Edit this file to have the following content:
+1.  Edit this file to have the following content:
 
-   {{< file "/etc/patroni.yml" >}}
+    {{< file "/etc/patroni.yml" >}}
 scope: postgres
 namespace: /db/
 name: postgresql0
@@ -235,23 +235,23 @@ tags:
 {{< /file >}}
 
 
-2. Make note of the `data_dir` value in the above file. The `postgres` user needs the ability to write to this directory. If this directory doesn't exist, create it:
+2.  Make note of the `data_dir` value in the above file. The `postgres` user needs the ability to write to this directory. If this directory doesn't exist, create it:
 
         sudo mkdir /data/patroni -p
 
-3. Make `postgres` the owner of `/data/patroni`:
+3.  Make `postgres` the owner of `/data/patroni`:
 
         sudo chown postgres:postgres /data/patroni
 
-4. Change the permissions on this directory to make it accessible only to the `postgres` user:
+4.  Change the permissions on this directory to make it accessible only to the `postgres` user:
 
         sudo chmod 700 /data/patroni
 
     Every option in the above file is configurable. View the [latest version of the postgres0.yml file](https://github.com/zalando/patroni/blob/master/postgres0.yml) in Patroni's Github repository.
 
-5. Create a `systemd` script that will allow you to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
+5.  Create a `systemd` script that will allow you to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
 
-   {{< file "/etc/systemd/system/patroni.service" >}}
+    {{< file "/etc/systemd/system/patroni.service" >}}
 [Unit]
 Description=Runners to orchestrate a high-availability PostgreSQL
 After=syslog.target network.target
@@ -278,11 +278,11 @@ WantedBy=multi-user.targ
 
     If `patroni` is installed in a location other than `/usr/local/bin/patroni` on your machine, update the above file accordingly.
 
-6. Start Patroni and Postgres:
+6.  Start Patroni and Postgres:
 
         sudo systemctl start patroni
 
-7. Check the status of Patroni:
+7.  Check the status of Patroni:
 
         sudo systemctl status patroni
 
@@ -311,9 +311,9 @@ WantedBy=multi-user.targ
 
 With the Postgres cluster set up, you need a way to connect to the master regardless of which of the servers in the cluster is the master. This is where HAProxy comes in. All Postgres clients (your applications, `psql`, etc.) will connect to HAProxy which will make sure you connect to the master in the cluster.
 
-1. On the Linode that has HAProxy installed, edit the configuration file at `/etc/haproxy/haproxy.cfg` to contain the following:
+1.  On the Linode that has HAProxy installed, edit the configuration file at `/etc/haproxy/haproxy.cfg` to contain the following:
 
-   {{< file "/etc/haproxy/haproxy.cfg" >}}
+    {{< file "/etc/haproxy/haproxy.cfg" >}}
 global
     maxconn 100
 
@@ -344,7 +344,7 @@ listen postgres
 {{< /file >}}
 
 
-   This configuration exposes HAProxy stats on a public URL. In a production setup, it might be better to restrict this to an internal network/localhost and access it via an SSH tunnel.
+    This configuration exposes HAProxy stats on a public URL. In a production setup, it might be better to restrict this to an internal network/localhost and access it via an SSH tunnel.
 
 2. Restart HAProxy to use the new settings:
 
@@ -356,21 +356,21 @@ listen postgres
 
 ## Test the Setup
 
-1. Connect Postgres clients to the public IP address of the Linode on which you installed HAProxy (in this guide, `203.0.113.1`) on port `5000`.
+1.  Connect Postgres clients to the public IP address of the Linode on which you installed HAProxy (in this guide, `203.0.113.1`) on port `5000`.
 
-2. You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
+2.  You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
 
-   ![HAProxy dashboard - all servers running](/content/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
+    ![HAProxy dashboard - all servers running](/docs/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
 
-   In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
+    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
 
-3. If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
+3.  If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
 
-   ![HAProxy dashboard - when primary fails](/content/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
+    ![HAProxy dashboard - when primary fails](/docs/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
 
-   In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
+    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
 
-   {{< note >}}
+    {{< note >}}
 In this case, it just so happens that the third Postgres server is promoted to master. This might not always be the case. It is equally likely that the second server may be promoted to master.
 {{< /note >}}
 
@@ -385,3 +385,4 @@ While the setup in this guide should go far in making your Postgres deployment h
 1. Use a larger etcd cluster to improve availability.
 2. Use PgBouncer to pool connections.
 3. Add another HAProxy server and configure IP failover to create a highly available HAProxy cluster.
+

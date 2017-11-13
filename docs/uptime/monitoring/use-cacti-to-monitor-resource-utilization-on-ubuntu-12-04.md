@@ -15,14 +15,14 @@ title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 external_links:
  - '[Cacti Website](http://www.cacti.net/index.php)'
  - '[Cacti Users Plugin Community](http://cactiusers.org/index.php)'
- - '[Linux Security Basics](/content/security/basics)'
+ - '[Linux Security Basics](/docs/security/basics)'
 ---
 
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](http://munin-monitoring.org/) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.
 
-Before installing Cacti we assume that you have followed our [getting started guide](/content/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Prerequisites
 
@@ -62,7 +62,7 @@ If you had to enable new repositories, issue the following command to update you
 
 You will need to create a password for the `root` user of your MySQL database during the installation. After the installation completes, be sure to run `mysql_secure_installation` to disable some of MySQL's less for configuration recommendations.
 
-The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/content/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/content/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin) and with [nginx](/content/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin) running PHP as a FastCGI process.
+The above command will additionally install the Apache web server. Consider our documentation on [installing the Apache HTTP server](/docs/websites/apache/apache-2-web-server-on-ubuntu-12-04-lts-precise-pangolin) for more information regarding this server. Additionally Cacti can function with alternate web server configurations, including [Apache with PHP running as a CGI process](/docs/websites/apache/run-php-applications-under-cgi-with-apache-on-ubuntu-12-04-lts-precise-pangolin) and with [nginx](/docs/websites/nginx/nginx-and-phpfastcgi-on-ubuntu-12-04-lts-precise-pangolin) running PHP as a FastCGI process.
 
 ### Install Cacti
 
@@ -88,17 +88,21 @@ This section is optional and for those looking to use Cacti to monitor additiona
 
     apt-get install snmp snmpd
 
-Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/content/security/firewalls) that  restrict access to only specific ip addresses that you control.
+Since snmpd binds to localhost by default, we'll need to edit the `/etc/snmp/snmpd.conf`  file to allow snmpd to serve requests on other interfaces. Please note that  allowing snmpd to run on a public IP address will have security implications,  such as allowing anyone with your IP address to access the snmp daemon running  on your Linode. If you choose to allow snmp to listen on all interfaces, we  strongly recommend [implementing firewall rules](/docs/security/firewalls) that  restrict access to only specific ip addresses that you control.
 
 Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
-.. file:: /etc/snmp/snmpd.conf
 
-    \#  Listen for connections from the local system only     \#agentAddress  udp:127.0.0.1:161     \#  Listen for connections on all interfaces (both IPv4 \*and\* IPv6)     agentAddress udp:161,udp6:[::1]:161
+{{<file-excerpt "/etc/snmp/snmpd.conf">}}
+#  Listen for connections from the local system only
+# agentAddressudp:127.0.0.1:161
+# Listen for connections on all interfaces (both IPv4 \*and\* IPv6) agentAddress udp:161,udp6:[::1]:161
+{{</file-excerpt>}}
 
 After saving your changes to the configuration file, you'll need to reload  settings for snmpd by running the following command:
 
 `service snmpd reload`
+
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the drop down next to "Choose an Action" select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 

@@ -20,12 +20,11 @@ The Postfix mail transfer agent (MTA) is a high performance, open source email s
 
 Secure IMAPS and POP3S services are supported with this configuration, along with support for encrypted SMTP connections. This guide is largely based on Falko Timme's excellent [Postfix and Courier guide](http://www.howtoforge.com/virtual-users-domains-postfix-courier-mysql-squirrelmail-ubuntu8.04), with some packages omitted (such as quota support, as this requires rebuilding Postfix and many organizations have no need for quotas). Other steps have been clarified with additional explanations. This guide does not cover SpamAssassin or webmail software installation, although you may reference other resources to add support for these features.
 
-We assume you've followed the steps outlined in our [getting started guide](/content/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
+We assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. This tutorial assumes you haven't already installed the MySQL database server; if you have, you will not be required to follow the initial steps related to MySQL installation.
 
 **NOTE: Please carefully read all information presented in this guide.** There are many files and commands that will need to be edited as part of the setup process; please do not simply copy and paste the example blocks.
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
@@ -54,24 +53,23 @@ Issue the following command to get the required packages installed on your Linod
 
 This will install the Postfix mail server, the MySQL database server, the Courier IMAP and POP daemons, and several supporting packages that provide services related to authentication. You will be prompted to choose a root password for MySQL; make sure you select a strong password comprised of letters, numbers, and non-alphanumeric characters. Write this password down and keep it in a safe place for later reference.
 
-[![Setting the root password for MySQL on a Linode.](/content/assets/431-postfix-courier-mysql-01-mysql-root-password.png)](/content/assets/431-postfix-courier-mysql-01-mysql-root-password.png)
+[![Setting the root password for MySQL on a Linode.](/docs/assets/431-postfix-courier-mysql-01-mysql-root-password.png)](/docs/assets/431-postfix-courier-mysql-01-mysql-root-password.png)
 
 When prompted, select "No" for web-based administration.
 
-[![Declining web-based administration for the Postfix mail server on an Ubuntu 8.04 (Hardy) Linode.](/content/assets/432-postfix-courier-mysql-02-mail-server-type-4.png)](/content/assets/432-postfix-courier-mysql-02-mail-server-type-4.png)
+[![Declining web-based administration for the Postfix mail server on an Ubuntu 8.04 (Hardy) Linode.](/docs/assets/432-postfix-courier-mysql-02-mail-server-type-4.png)](/docs/assets/432-postfix-courier-mysql-02-mail-server-type-4.png)
 
 Next, you'll be prompted to select the type of mail server configuration you want for your Linode. Select "Internet Site" and continue.
 
-[![Selecting the Postfix mail server configuration type on an Ubuntu 8.04 (Hardy) Linode.](/content/assets/433-postfix-courier-mysql-02-mail-server-type-2.png)](/content/assets/433-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on an Ubuntu 8.04 (Hardy) Linode.](/docs/assets/433-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/433-postfix-courier-mysql-02-mail-server-type-2.png)
 
 Now you'll need to set the system mail name. This should be a fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using an example organization's domain for our mail server. You should set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name, while other domains you wish to host email for will be handled through later virtual domain setup steps.
 
-[![Selecting the Postfix system mail name on an Ubuntu 8.04 (Hardy) Linode.](/content/assets/434-postfix-courier-mysql-02-mail-server-type-3.png)](/content/assets/434-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on an Ubuntu 8.04 (Hardy) Linode.](/docs/assets/434-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/434-postfix-courier-mysql-02-mail-server-type-3.png)
 
 This completes the initial package configuration steps. Next, we'll set up a MySQL database to handle our virtual domains and users.
 
-Set up MySQL for Virtual Domains and Users
-------------------------------------------
+# Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
@@ -142,8 +140,7 @@ If you changed MySQL's configuration, restart the database server with the follo
 
 Next, we'll perform additional Postfix configuration to set up communication with our database.
 
-Configure Postfix to work with MySQL
-------------------------------------
+# Configure Postfix to work with MySQL
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
@@ -219,8 +216,7 @@ Issue the following commands to complete the remaining steps required for Postfi
 
 This completes the configuration for Postfix. Next, we'll make an SSL certificate for the Postfix server that contains values appropriate for your organization.
 
-Create an SSL Certificate for Postfix
--------------------------------------
+# Create an SSL Certificate for Postfix
 
 Issue the following commands to create the SSL certificate (the `openssl` command spans two lines, but should be entered as a single command):
 
@@ -244,8 +240,7 @@ Set proper permissions for the key file by issuing the following command:
 
 This completes SSL certificate creation for Postfix. Next, we'll configure `saslauthd` to use MySQL for user authentication.
 
-Configure saslauthd to use MySQL
---------------------------------
+# Configure saslauthd to use MySQL
 
 Issue the following command to create a directory for `saslauthd`:
 
@@ -301,8 +296,7 @@ Add the Postfix user to the `sasl` group and restart Postfix and `saslauthd` by 
 
 This completes configuration for `saslauthd`. Next, we'll configure Courier to use MySQL for IMAP/POP3 user authentication.
 
-Configure Courier to use MySQL
-------------------------------
+# Configure Courier to use MySQL
 
 Edit the file `/etc/courier/authdaemonrc`, changing the "authmodulelist" line to read as follows.
 
@@ -356,8 +350,7 @@ You should see output similar to the following in your terminal:
 
 Enter the command "quit" to return to your shell. This completes Courier configuration. Next, we'll make sure aliases are configured properly.
 
-Configure Mail Aliases
-----------------------
+# Configure Mail Aliases
 
 Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives are set properly for your organization.
 
@@ -374,8 +367,7 @@ After modifying this file, you must run the following commands to update aliases
 
 This completes alias configuration. Next, we'll test Postfix to make sure it's operating properly.
 
-Testing Postfix
----------------
+# Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
@@ -407,8 +399,7 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
 
 Issue the command `quit` to terminate the Postfix connection. Next, we'll populate the MySQL database with domains and email users.
 
-Setting up Domains and Users
-----------------------------
+# Setting up Domains and Users
 
 Please note that you'll need to modify the DNS records for any domains for which you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, you'll need to either delete them or set them to a larger priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 
@@ -429,8 +420,7 @@ Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:"
 
 Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linode. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

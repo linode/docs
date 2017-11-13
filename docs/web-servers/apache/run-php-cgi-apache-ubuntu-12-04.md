@@ -14,18 +14,18 @@ published: 2012-10-31
 title: 'Run PHP with CGI and Apache on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
- - '[Apache 2.2 CGI documentation](http://httpd.apache.org/content/2.2/howto/cgi.html)'
+ - '[Apache 2.2 CGI documentation](http://httpd.apache.org/docs/2.2/howto/cgi.html)'
 ---
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the proccess of setting up Apache and PHP CGI.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname, run:
 
@@ -44,7 +44,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
         sudo apt-get install apache2
 
-    You can now [configure virtual hosting](/content/web-servers/apache/apache-web-server-ubuntu-12-04#configure-virtual-hosting) in accordance with the needs of your server.
+    You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-ubuntu-12-04#configure-virtual-hosting) in accordance with the needs of your server.
 
 2.  Install the PHP CGI binaries:
 
@@ -58,7 +58,7 @@ In order to set up Apache to use PHP-CGI on Ubuntu systems, you must enable the 
 
     sudo a2enmod actions
 
-The required directives can be set anywhere in Apache's [configuration tree](/content/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Ubuntu systems, this is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
+The required directives can be set anywhere in Apache's [configuration tree](/docs/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Ubuntu systems, this is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
 {{< file-excerpt "Apache Configuration Block" apache >}}
 ScriptAlias /local-bin /usr/bin
@@ -114,4 +114,4 @@ This may not be ideal if you have multiple users running publicly accessible scr
 {{< /file-excerpt >}}
 
 
-In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/content/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.
+In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.

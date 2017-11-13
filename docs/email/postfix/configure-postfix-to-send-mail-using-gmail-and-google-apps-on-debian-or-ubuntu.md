@@ -12,16 +12,16 @@ published: 2016-12-13
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
 
-![configure_postfix_banner](/content/assets/Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
+![configure_postfix_banner](/docs/assets/Configure_Postfix_to_Send_Mail_Using_Gmail_and_Google_Apps_on_Debian_or_Ubuntu_smg.jpg)
 
 
 Postfix is a Mail Transfer Agent (MTA) that can act as an SMTP server or client to send or receive email. There are many reasons why you would want to configure Postfix to send email using Google Apps and Gmail. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a blacklist.
 
-In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/content/email/postfix/postfix-smtp-debian7) guide.
+In this guide, you will learn how to install and configure a Postfix server on Debian or Ubuntu to send email through Gmail and Google Apps. For information on configuring Postfix with other external SMTP servers, see our [Configure Postfix to Send Mail Using an External SMTP Server](/docs/email/postfix/postfix-smtp-debian7) guide.
 
 ## Before You Begin
 
-1.  Complete our [Getting Started](/content/getting-started) and [Securing Your Server](/content/securing-your-server) guides and ensure that the Linode's [hostname is set](/content/getting-started#getting-started#setting-the-hostname).
+1.  Complete our [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides and ensure that the Linode's [hostname is set](/docs/getting-started#getting-started#setting-the-hostname).
 
 2.  Update your system:
 
@@ -30,7 +30,7 @@ In this guide, you will learn how to install and configure a Postfix server on D
 3.  Use your web browser to confirm your email login credentials by logging in to [Gmail](https://gmail.com).
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Install Postfix
@@ -43,11 +43,11 @@ In this section, you will install Postfix as well as *libsasl2*, a package which
 
 2.  During the Postfix installation, a prompt will appear asking for your **General type of mail configuration**. Select **Internet Site**:
 
-    [![General type of mail configuration options](/content/assets/1737-postfixsmtp1_sm.png)](/content/assets/1736-postfixsmtp1.png)
+    [![General type of mail configuration options](/docs/assets/1737-postfixsmtp1_sm.png)](/docs/assets/1736-postfixsmtp1.png)
 
 3.  Enter the fully qualified name of your domain. In this example, **fqdn.example.com**:
 
-    [![System mail name prompt](/content/assets/1738-postfixsmtp2_sm.png)](/content/assets/1739-postfixsmtp2.png)
+    [![System mail name prompt](/docs/assets/1738-postfixsmtp2_sm.png)](/docs/assets/1739-postfixsmtp2.png)
 
 4.  Once the installation is complete, confirm that the `myhostname` parameter is configured with your server's FQDN:
 
@@ -65,13 +65,13 @@ When Two-Factor Authentication (2FA) is enabled, Gmail is preconfigured to refus
 
 2.  Click the following link to [Generate an App password](https://security.google.com/settings/security/apppasswords) for Postfix:
 
-    ![Generate an App password](/content/assets/postfix-gmail-app-password.png "Generate an App password")
+    ![Generate an App password](/docs/assets/postfix-gmail-app-password.png "Generate an App password")
 
 3.  Click **Select app** and choose **Other (custom name)** from the dropdown. Enter "Postfix" and click **Generate**.
 
 4.  The newly generated password will appear. Write it down or save it somewhere secure that you'll be able to find easily in the next steps, then click **Done**:
 
-    ![Generated app password](/content/assets/postfix-gmail-generated-app-password.png "Generated app password")
+    ![Generated app password](/docs/assets/postfix-gmail-generated-app-password.png "Generated app password")
 
 ## Add Gmail Username and Password to Postfix
 
@@ -143,7 +143,7 @@ In some cases, Gmail might still block connections from what it calls "Less secu
 
     Select **Turn on**. A yellow "Updated" notice will appear at the top of the browser window and Gmail will automatically send a confirmation email.
 
-    ![Enable "Less Secure Apps"](/content/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
+    ![Enable "Less Secure Apps"](/docs/assets/postfix-gmail-less-secure-apps.png "Enable "Less Secure Apps"")
 
 2.  Test Postfix as shown in the following section. If your test emails don't appear after a few minutes, [disable captcha from new application login attempts](https://accounts.google.com/DisplayUnlockCaptcha) and click **Continue**.
 

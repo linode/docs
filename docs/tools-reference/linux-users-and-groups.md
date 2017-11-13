@@ -19,7 +19,7 @@ external_resources:
 
 If you are new to Linux/Unix, then the concept of permissions may be confusing. This guide will provide you with an explanation of what permissions are, how they work, and how to manage them. A number of examples will be provided to illustrate how to set and change permissions for both users and groups.
 
-![Linux Users and Groups](/content/assets/linux_users_and_groups.png "Linux Users and Groups")
+![Linux Users and Groups](/docs/assets/linux_users_and_groups.png "Linux Users and Groups")
 
 ## What are User and Group Permissions?
 
@@ -59,6 +59,7 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 | `-e <date>`     | the date when the account will expire                              | `user add <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
+
 You will need to set a password for the new user by using the `passwd` command. Note, you will need root privileges to change a user password. The syntax is as follows:
 
     passwd <username>
@@ -184,15 +185,15 @@ To view file permissions and ownership on files and directories, use the `ls -al
 
 The first column with the ten letters and dashes shows the permissions of the file or directory. The second column (with the single number) indicates the number of files or directories contained in the directory. The next column indicates the owner, followed by the group name, the size, date, and time of last access, and finally the name of the file . For example, using the first line from the output above, the details are as follows:
 
-    ``drwxr-xr-x`` are the permissions
-    ``2`` is the number of files or directories
-    ``user`` is the owner
-    ``user`` is the group
-    ``4096`` is the size
-    ``Jan  9 10:11`` is the date/time of last access
-    ``documents`` is the directory
+    `drwxr-xr-x` are the permissions
+    `2` is the number of files or directories
+    `user` is the owner
+    `user` is the group
+    `4096` is the size
+    `Jan  9 10:11` is the date/time of last access
+    `documents` is the directory
 
- {{< note >}}
+{{< note >}}
 Since a directory itself is a file, any directory will always show `4096` as it's size. This does not reflect the size of the contents of the directory.
 {{< /note >}}
 
@@ -211,6 +212,7 @@ The command `chmod` is short for change mode. Chmod is used to change permission
 | u      | Current permissions the file has for owner                   |
 | g      | Current permissions the file has for users in the same group |
 | o      | Current permissions the file has for others not in the group |
+
 It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user, the next three are for the group, and the last three are for others. The example **drwxrw-r--** is broken down as follows:
 
 > **d** is a directory
@@ -238,7 +240,7 @@ In other words, the user was given read permission and the group was given execu
 
 To use the octal format, you have to calculate the permissions for each portion of the file or directory. The first ten characters mentioned above will correspond to a four digit numbers in octal. The execute permission is equal to the number one (1), the write permission is equal to the number two (2), and the read permission is equal to the number four (4). Therefore, when you use the octal format, you will need to calculate a number between 0 and 7 for each portion of the permission. A table has been provided below for clarification.
 
-![Octal format for permissions.](/content/assets/1502-octal-format-clarified.png)
+![Octal format for permissions.](/docs/assets/1502-octal-format-clarified.png)
 
 Although octal format may seem difficult to understand, it is easy to use once you get the gist of it. However, setting permissions with r, w, and x may be easier. Below are examples of how to use both letters and octal format to set permissions on a file or directory.
 
@@ -258,7 +260,7 @@ The output of ls -al after the chmod command above would look as follows:
 
 An octal table showing the numeric equivalent for permissions is provided below.
 
-![Numeric permissions table.](/content/assets/1487-numeric-permissions.png)
+![Numeric permissions table.](/docs/assets/1487-numeric-permissions.png)
 
 ### Additional File Permissions
 
@@ -294,8 +296,7 @@ To change the ownership of a directory and all the files contained inside, use t
 
     chown -R cjones:marketing /srv/smb/leadership/
 
-Leveraging Users and Groups
----------------------------
+# Leveraging Users and Groups
 
 In many cases, user permissions are used to provide your system with greater security without any direct interaction. Many operating systems create specific system user accounts for different packages during the installation process.
 

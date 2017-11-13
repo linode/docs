@@ -13,21 +13,21 @@ modified_by:
 published: 2012-10-24
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_links:
- - '[Linode nginx Documentation](/content/web-servers/nginx/)'
+ - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
- - '[Configure Perl and FastCGI with nginx](/content/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
- - '[Configure PHP and FastCGI with nginx](/content/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)'
+ - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
+ - '[Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid)'
 ---
 
-Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/content/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Before You Begin
 
-1.  Ensure that you have followed the [Getting Started](/content/getting-started) and [Securing Your Server](/content/security/securing-your-server) guides, and the Linode's [hostname is set](/content/getting-started#setting-the-hostname).
+1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and the Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
     To check your hostname run:
 
@@ -252,6 +252,6 @@ case "$1" in
 
 Regardless of installation source or method, Nginx can be tested by navigating to your Linode's IP address or FQDN in your browser. You should see the NGINX welcome banner shown below.
 
-![Nginx welcome](/content/assets/nginx-welcome.png)
+![Nginx welcome](/docs/assets/nginx-welcome.png)
 
-Continue reading our introduction to [Basic NGINX Configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.
+Continue reading our introduction to [Basic NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up a web server.

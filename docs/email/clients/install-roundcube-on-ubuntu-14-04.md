@@ -17,7 +17,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 14.04](/content/assets/install-roundcube-on-ubuntu-14-04.jpg "Install Roundcube on Ubuntu 14.04")
+![Install Roundcube on Ubuntu 14.04](/docs/assets/install-roundcube-on-ubuntu-14-04.jpg "Install Roundcube on Ubuntu 14.04")
 
 ## What is Roundcube?
 
@@ -25,20 +25,20 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
+2.  Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/content/email/postfix/email-with-postfix-dovecot-and-mysql) tutorial, but you **can** use a different mail server.
+3.  This guide is designed to work with our [Installing Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) tutorial, but you **can** use a different mail server.
 
-4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/content/networking/dns/dns-records-an-introduction/) guide if you need help creating this record.
+4.  Configure an **A HOST** or **CNAME** DNS record (a subdomain) to point at your Linode. For this guide, the subdomain `webmail` will be used. Refer to our [Introduction to DNS Records](/docs/networking/dns/dns-records-an-introduction/) guide if you need help creating this record.
 
 5.  Update your server's software packages:
 
         sudo apt-get update && sudo apt-get upgrade
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/content/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
 ## Linux, Apache, MySQL and PHP (LAMP) Stack
@@ -71,7 +71,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
 2.  Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file. Replace instances of `webmail.example.com` with the desired domain or subdomain of your installation.
 
-        sudo wget https://linode.com/content/assets/apache2-roundcube.sample.conf
+        sudo wget https://linode.com/docs/assets/apache2-roundcube.sample.conf
 
 3.  Transfer the file's ownership to **root**:
 
@@ -81,7 +81,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo chmod 644 apache2-roundcube.sample.conf
 
-5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validatation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/content/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
+5.  Determine what type of Secure Socket Layer (SSL) encryption certificate is best for your Roundcube deployment. A [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) is easy and free, but triggers an error in most modern browsers reporting that the connection is not private. [Let's Encrypt](https://letsencrypt.org/) offers browser trusted, free SSL certificates, but does not support [Extended Validatation](https://en.wikipedia.org/wiki/Extended_Validation_Certificate) (EV) or multi-domain ([wildcard](https://en.wikipedia.org/wiki/Wildcard_certificate)) certificates. To gain those features, a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) must be used.
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 
@@ -182,7 +182,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
         echo '0 0 * * * root bash /var/www/roundcube/bin/cleandb.sh >> /dev/null' | sudo tee --append /etc/crontab
 
-    This utilizes a cron job to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/content/tools-reference/tools/schedule-tasks-with-cron) guide to learn about Cron.
+    This utilizes a cron job to run the `cleandb.sh` shell script included with Roundcube once per day at midnight. Read our [Scheduling Tasks with Cron](/docs/tools-reference/tools/schedule-tasks-with-cron) guide to learn about Cron.
 
 ## Enable Roundcube's Apache Virtual Host
 
@@ -202,7 +202,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
 2.  Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an *environment check*. Click on the **NEXT** button at the bottom of the page to continue.
 
-    ![Roundcube Webmail Installer](/content/assets/roundcube_webmail_installer.png)
+    ![Roundcube Webmail Installer](/docs/assets/roundcube_webmail_installer.png)
 
     {{< note >}}
 Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.
@@ -227,11 +227,11 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 5.  Complete the configuration by clicking **CONTINUE**.
 
-    [![Roundcube configuration saved successfully](/content/assets/roundcube-configuration-saved-successfully_small.png)](/content/assets/roundcube-configuration-saved-successfully.png)
+    [![Roundcube configuration saved successfully](/docs/assets/roundcube-configuration-saved-successfully_small.png)](/docs/assets/roundcube-configuration-saved-successfully.png)
 
 6.  Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 
-    ![Roundcube MySQL database initialization](/content/assets/roundcube-mysql-database-initialization.png)
+    ![Roundcube MySQL database initialization](/docs/assets/roundcube-mysql-database-initialization.png)
 
 # Remove the Installer Directory
 
@@ -245,7 +245,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 1.  Navigate to `https://webmail.example.com` and log in using your email account's username and password. If your configuration is functional, Roundcube will allow you to receive, read and send emails from inside and outside of your domain name.
 
-    ![Roundcube login](/content/assets/roundcube-login.png)
+    ![Roundcube login](/docs/assets/roundcube-login.png)
 
     {{< note >}}
 If your email address is `somebody@example.com`, you only have to enter **somebody** as your username. Roundcube assumes that all users exist at `example.com`.

@@ -11,17 +11,17 @@ modified: 2011-04-29
 modified_by:
   name: Linode
 published: 2010-02-24
+expiryDate: 2011-04-29
 title: 'Websites with nginx on Ubuntu 9.10 (Karmic)'
 ---
 
 
 
-Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/content/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
+Nginx is a lightweight and high performance web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/content/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/content/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing nginx from Ubuntu Packages
--------------------------------------
+# Installing nginx from Ubuntu Packages
 
 Nginx is included in the Ubuntu software repositories. While using this method will leave you with a working web server *it is not the preferred method for installing nginx.* Nevertheless, if you want to install in this manner, the following sequence of commands ensure that your system's package databases and installed programs are up to date:
 
@@ -64,8 +64,7 @@ To start the server for the first time use the following command:
 
 Installing nginx in this manner will allow you to rely on your distribution's quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the Ubuntu project do not track the latest development of the nginx server. Given the rapid development of nginx, and variances between recent versions this is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-Installing nginx from the Source Distribution
----------------------------------------------
+# Installing nginx from the Source Distribution
 
 ### Install Prerequisites
 
@@ -128,9 +127,9 @@ When upstream sources offer new releases, repeat the instructions for installing
 
 ### Create an Init Script to Manage nginx
 
-Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/content/assets/634-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
+Before we can begin to use the nginx server, we must create a means of controlling the daemon process. You can use our [nginx init script](/docs/assets/634-init-deb.sh) to start, stop, or restart nginx. Issue the following commands to download the file, change the execution mode, and set the system to initialize nginx on boot:
 
-    wget -O init-deb.sh http://www.linode.com/content/assets/634-init-deb.sh
+    wget -O init-deb.sh http://www.linode.com/docs/assets/634-init-deb.sh
     mv init-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
     /usr/sbin/update-rc.d -f nginx defaults
@@ -139,18 +138,14 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
     /etc/init.d/nginx start
 
-Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/content/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
+Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Linode Docs nginx Documentation](/content/web-servers/nginx/)
+- [Linode Docs nginx Documentation](/docs/web-servers/nginx/)
 - [nginx Community Documentation](http://wiki.nginx.org)
-- [Configure Perl and FastCGI with nginx](/content/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic)
-- [Configure PHP and FastCGI with nginx](/content/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic)
-- [Configure Ruby on Rails with nginx](/content/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic)
+- [Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-9-10-karmic)
+- [Configure PHP and FastCGI with nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-9-10-karmic)
+- [Configure Ruby on Rails with nginx](/docs/frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic)

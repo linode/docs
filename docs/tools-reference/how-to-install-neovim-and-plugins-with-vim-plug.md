@@ -3,6 +3,7 @@ author:
   name: Gabriel A. Cánepa
   email: gacanepa@gmail.com
 description: 'This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace the vim text editor.'
+og_description: 'With refactored code and better, asynchronous plugin management, NeoVim is literally the future of vim. This guide shows you how to install NeoVim, a plugin manager, and plugins that help it replace vim to become your new favorite text editor.'
 keywords: ["neovim", "text", "editor", "vim", "nvim", "plugins"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-02
@@ -19,11 +20,11 @@ external_resources:
  - '[Far.vim](https://github.com/brooth/far.vim)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/content/contribute).*
+*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
-![How to Install NeoVim and Plugins with vim-plug](/content/assets/neovim/neovim-basics-title.jpg "How to Install NeoVim and Plugins with vim-plug")
+![How to Install NeoVim and Plugins with vim-plug](/docs/assets/neovim/neovim-basics-title.jpg "How to Install NeoVim and Plugins with vim-plug")
 
 ## What is NeoVim?
 
@@ -45,9 +46,9 @@ This guide details the installation and configuration of NeoVim, along with two 
 
 ## Before You Begin
 
-1.  Familiarize yourself with our [Getting Started](/content/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/content/security/securing-your-server) to create a standard user account.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
 
 3.  Install the necessary tools:
     -  In CentOS and similar distributions, enable the [Extra Packages (EPEL) repository](https://fedoraproject.org/wiki/EPEL), then install the packages:
@@ -147,7 +148,7 @@ call plug#end()
 
     Press **i** to enter Insert mode, and type `def`. You should be presented with a dropdown list similar to that shown in the image below. Highlight one of the options using the up and down arrows in your keyboard and press the *Tab* key. The code snippet will be inserted into the body of the file:
 
-    ![Neovim autocomplete snippets](/content/assets/neovim/neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
+    ![Neovim autocomplete snippets](/docs/assets/neovim/neovim-autocomplete-snippets.png "Neovim autocomplete snippets")
 
     For more examples using other programming languages, refer to the [plugin documentation](https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt).
 

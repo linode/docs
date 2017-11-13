@@ -19,8 +19,8 @@ Longview for MySQL is a Longview App. The Longview MySQL tab appears in the Lino
 
 Prerequisites:
 
--   Install and start [MySQL](/content/databases/mysql)
--   Install the [Longview client](/content/platform/longview/longview/#installing-the-client)
+-   Install and start [MySQL](/docs/databases/mysql)
+-   Install the [Longview client](/docs/platform/longview/longview/#installing-the-client)
 
 ### Debian and Ubuntu Automatic Configuration
 
@@ -46,7 +46,7 @@ Unless you already have a specific Longview database user set up in the `/etc/li
 
 If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/content/assets/1459-longview_mysql_popup_crop.png)](/content/assets/1459-longview_mysql_popup_crop.png)
+[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
 
 ### Manual Configuration (All Distributions)
 
@@ -86,11 +86,11 @@ To see the output for the Longview MySQL App:
 
 Click the image for a full-size view.
 
-[![The Longview MySQL App.](/content/assets/1458-longview_mysql_stats_sm.png)](/content/assets/1457-longview_mysql_stats.png)
+[![The Longview MySQL App.](/docs/assets/1458-longview_mysql_stats_sm.png)](/docs/assets/1457-longview_mysql_stats.png)
 
 You'll see the current version of MySQL listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/content/platform/longview/longview#using-the-interface). The next sections cover the Longview MySQL App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview MySQL App in detail.
 
 ### Queries
 
@@ -122,22 +122,21 @@ Longview shows the current number of queries in MySQL's cache.
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/content/uptime/longview/#overview-tab).
+The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/content/uptime/longview/#disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/content/uptime/longview/#process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview#process-explorer-tab).
 
-Troubleshooting
----------------
+# Troubleshooting
 
 If you don't see Longview data for MySQL, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well.
 
@@ -145,7 +144,7 @@ If you don't see Longview data for MySQL, you'll instead get an error on the pag
 
 If you run the [automatic Longview configuration tool](#debian-and-ubuntu-automatic-configuration), and get the popup message shown below:
 
-[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/content/assets/1459-longview_mysql_popup_crop.png)](/content/assets/1459-longview_mysql_popup_crop.png)
+[![Unable to automatically configure MySQL plugin: Longview has detected MySQL running on this server but was unable to automatically configure the connection. To allow Longview to access your MySQL instance please run the following query: CREATE USER 'linode-longview'@'localhost' IDENTIFIED BY '\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*'; \<Ok\>](/docs/assets/1459-longview_mysql_popup_crop.png)](/docs/assets/1459-longview_mysql_popup_crop.png)
 
 This indicates that Longview can't locate any valid MySQL user credentials, so it will create some for itself (in the `/etc/linode/longview.d/MySQL.conf` file) and ask you to add them to MySQL. To finish getting Longview set up, copy the command shown in the popup message, log in to your database as the root MySQL user, then run the query that was shown in the popup message:
 
@@ -166,7 +165,7 @@ This error will state `Unable to connect to the database:` and then a specific r
 
 ### Unable to Collect MySQL Status Information
 
-If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/content/support).
+If you receive the error `Unable to collect MySQL status information`, this indicates that Longview was able to connect to the MySQL database, but the query it uses to collect statistics has failed. This could occur if the database crashes while the query is being executed. The specific reason that it failed will be listed with the error. If the problem persists, contact Linode [support](/docs/support).
 
 ### MySQL Tab is Missing
 

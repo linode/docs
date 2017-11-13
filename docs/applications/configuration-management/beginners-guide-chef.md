@@ -13,22 +13,22 @@ published: 2015-06-10
 title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
- - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/content/applications/chef/setting-up-chef-ubuntu-14-04)'
- - '[Creating Your First Chef Cookbook](/content/applications/chef/creating-your-first-chef-cookbook)'
+ - '[Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/docs/applications/chef/setting-up-chef-ubuntu-14-04)'
+ - '[Creating Your First Chef Cookbook](/docs/applications/chef/creating-your-first-chef-cookbook)'
 
 ---
 
 *Chef* is an automation platform that "turns infrastructure into code," allowing organizations or persons with large frameworks to generate a process that will save time and effort when making changes to part or all of their server fleet.
 
-![Chef for beginners](/content/assets/a_beginners_guide_to_chef_smg.jpg)
+![Chef for beginners](/docs/assets/a_beginners_guide_to_chef_smg.jpg)
 
 Chef works with three core components: The Chef server, workstations, and nodes. The Chef server is the hub of Chef operations, where changes are stored for use. Workstations are static computers or virtual servers where all code is created or changed. There can been as many workstations as needed, whether this be one per person or otherwise. Finally, nodes are the servers that need to be managed by Chef -- these are the machines that changes are being pushed to, generally a fleet of multiple machines that require the benefits of an automation program.
 
-[![Chef Workflow](/content/assets/chef_graph-small.png)](/content/assets/chef_graph.png)
+[![Chef Workflow](/docs/assets/chef_graph-small.png)](/docs/assets/chef_graph.png)
 
 These three components communicate in a mostly-linear fashion, with any changes being pushed from workstations to the Chef server, and then pulled from the server to the nodes. In turn, information about the node passes to the server to determine which files are different from the current settings and need to be updated.
 
-If you wish to farther explore Chef please see the guides [Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/content/applications/chef/setting-up-chef-ubuntu-14-04) and [Creating Your First Chef Cookbook](/content/applications/chef/creating-your-first-chef-cookbook).
+If you wish to farther explore Chef please see the guides [Setting Up a Chef Server, Workstation, and Node on Ubuntu 14.04](/docs/applications/chef/setting-up-chef-ubuntu-14-04) and [Creating Your First Chef Cookbook](/docs/applications/chef/creating-your-first-chef-cookbook).
 
 ## The Chef Server
 
@@ -67,7 +67,7 @@ validation_key           '~/chef-repo/.chef/shortname.pem'
 chef_server_url          'https://123.45.67.89/organizations/shortname'
 syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
 cookbook_path [ '~/chef-repo/cookbooks' ]
-	
+
 
 {{< /file >}}
 
@@ -124,7 +124,7 @@ description "environment_description"
 cookbook_versions  "cookbook" => "cookbook_version"
 default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
 override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
-	
+
 
 {{< /file >}}
 
@@ -146,7 +146,7 @@ As a JSON:
   "override_attributes": {
 
   }
-	
+
 
 {{< /file >}}
 

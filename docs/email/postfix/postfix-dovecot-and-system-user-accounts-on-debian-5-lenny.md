@@ -16,20 +16,18 @@ title: 'Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)'
 
 
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/content/email/postfix/gateway-debian-5-lenny) document to install a more minimal email system.
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-debian-5-lenny) document to install a more minimal email system.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Software
-----------------
+# Install Software
 
 Issue the following commands to install any outstanding package updates:
 
@@ -42,14 +40,13 @@ Issue the following command to install all required software:
 
 During the installation process, the package manager will prompt you for the responses to a few questions to complete the Postfix installation. To the first question regarding the type of mail server you want to configure, select "Internet Site" and continue as in the following image:
 
-[![Selecting the Postfix mail server configuration type on a Debian 5 (Lenny) system.](/content/assets/87-postfix-courier-mysql-02-mail-server-type-2.png)](/content/assets/87-postfix-courier-mysql-02-mail-server-type-2.png)
+[![Selecting the Postfix mail server configuration type on a Debian 5 (Lenny) system.](/docs/assets/87-postfix-courier-mysql-02-mail-server-type-2.png)](/docs/assets/87-postfix-courier-mysql-02-mail-server-type-2.png)
 
 The next prompt will ask for the system mail name. This should correspond to the fully qualified domain name (FQDN) that points to your Linode's IP address. In this example, we're using a machine specific hostname for our server. Set the reverse DNS for your Linode's IP address to the fully qualified domain name you assign as the system mail name. You will be able to send mail from additional domains as configured later in this document. See the following example:
 
-[![Selecting the Postfix system mail name on a Debian 5 (Lenny) system.](/content/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)](/content/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)
+[![Selecting the Postfix system mail name on a Debian 5 (Lenny) system.](/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)
 
-SASL Authentication
--------------------
+# SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
@@ -71,24 +68,22 @@ Issue the following command to start the SASL daemon for the first time:
 
     /etc/init.d/saslauthd start
 
-Configure SSL
--------------
+# Configure SSL
 
 SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
 
-Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/content/security/ssl/how-to-make-a-selfsigned-ssl-certificate):
+Issue the following sequence of commands to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate):
 
     apt-get install openssl
     openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/postfix.pem -keyout /etc/ssl/postfix.key
 
 Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
 
-Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/content/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
+Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
 
 You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
 
-Postfix
--------
+# Postfix
 
 ### Configure Outbound Mail Service
 
@@ -124,9 +119,9 @@ When all modifications to the Postfix configuration are complete, issue the foll
 
     /etc/init.d/postfix restart
 
-At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/content/tools-reference/linux-users-and-groups/).
+At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
 
-Consider the [basic email gateway guide](/content/email/postfix/gateway-debian-5-lenny) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
+Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-5-lenny) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
 ### Configure Mail Delivery
 
@@ -178,8 +173,7 @@ When you have configured mail delivery issue the following command to recreate t
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 
-Dovecot
--------
+# Dovecot
 
 Dovecot is a contemporary POP3/IMAP server that makes it possible to access and download mail from your mail server remotely onto your local system.
 
@@ -223,8 +217,7 @@ Modify the `ssl` configuration directives if you're using ssl certificates locat
 
 You may now access email by configuring a local email client to contact the server you have set up. Authentication credentials are the same as the system user accounts. These accounts can be configured outside of this document at any time.
 
-Organize Mail Services
-----------------------
+# Organize Mail Services
 
 This document describes a complete email system configuration. How you use and manage your system from this point forward is beyond the scope of this document. At the same time, we do encourage you to give some thought to the organization of your user accounts and email delivery. Keeping a well organized and easy to manage system is crucial for sustainable use of this system.
 
@@ -232,12 +225,11 @@ Organizational structure is crucial in this kind of deployment because delivery 
 
 Remember that system user accounts may provide access to other services on the system. Unless this access is specifically prohibited, all system user accounts will have SSH access to the server using the same credentials that are used for logging into the email services.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Email Gateway with Postfix on Debian 5 (Lenny)](/content/email/postfix/gateway-debian-5-lenny)
+- [Basic Email Gateway with Postfix on Debian 5 (Lenny)](/docs/email/postfix/gateway-debian-5-lenny)
 
 
 

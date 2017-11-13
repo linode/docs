@@ -16,10 +16,9 @@ title: 'Manage Development with the Mantis Bug Tracker on Debian 5 (Lenny)'
 
 Mantis Bug Tracker (commonly referred to as MantisBT) is a free web-based bug tracking system. Mantis offers many of the same capabilities as other trackers like Bugzilla, but is simpler and easy to set up.
 
-Before beginning this guide, we assume that you've completed the [getting started guide](/content/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/content/beginners-guide/) and the article concerning [systems administration basics](/content/using-linux/administration-basics). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/content/lamp-guides/debian-5-lenny/) as well as the [Exim guide](/content/email/exim/send-only-mta-debian-5-lenny) if you don't already have a means of sending mail from your server.
+Before beginning this guide, we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics). Additionally, you'll need to have followed both the [LAMP guide for Debian Lenny](/content/lamp-guides/debian-5-lenny/) as well as the [Exim guide](/content/email/exim/send-only-mta-debian-5-lenny) if you don't already have a means of sending mail from your server.
 
-Installing Prerequisites
-------------------------
+# Installing Prerequisites
 
 Before we begin installing Mantis, we'll need to install PHPMailer, an additional PHP library that allows Mantis to send email via PHP. Install this package using the following command:
 
@@ -38,8 +37,7 @@ Afterwards, restart Apache by running the following command:
 
     /etc/init.d/apache2 restart
 
-Installing Mantis
------------------
+# Installing Mantis
 
 For this installation, you will install Mantis to a directory under the document root (in this example the directory is named `Mantis`) for your server. To begin, change to the site directory, download the latest MantisBT package, and unpack it. When running the following commands, be sure to download the latest release. You can find the latest version of MantisBT on the [SourceForge page for MantisBT](http://sourceforge.net/projects/mantisbt/files/). Additionally, replace `example.com` with the name of your site:
 
@@ -54,10 +52,9 @@ Next, move the `mantisbt-1.2.1` directory to the `public_html` directory under t
     chmod -R 755 /srv/www/example.com/public_html/mantis/
     chmod 777 /srv/www/example.com/public_html/mantis/
 
-Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/content/databases/mysql/debian-5-lenny). At this point Mantis is installed and ready to configure.
+Visit the location of MantisBT in your browser. In this example, the URL would be `http://example.com/mantis`. Follow the installation instructions by providing the credentials to the MySQL database you created in the LAMP guide, or especially for Mantis. For additional information regarding MySQL, see the [MySQL guide](/docs/databases/mysql/debian-5-lenny). At this point Mantis is installed and ready to configure.
 
-Configuring Mantis
-------------------
+# Configuring Mantis
 
 After the installation completes, you will be redirected to the login page. The default account credentials are `administrator/root`. Immediately log in and create another administrative account, and delete the default `administrator` account. You can manage users in the `"Manage"` section of the MantisBT interface.
 
@@ -85,8 +82,7 @@ Ensure that you have no whitespace at the end of this file, or Mantis will throw
 
 At this point, MantisBT is ready to use for your development project! For specific Mantis help and instruction, see the [administration guide](http://www.mantisbt.org/manual/) available on the MantisBT website. You can also install a number of plugins that allow you to customize MantisBT to your needs. Each of these plugins has a specific set of instructions that come with it. You can read more about these on the plugins section of the MantisBT site, listed below.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -98,8 +94,7 @@ Please monitor the Mantis project blog, development list, and announcement list 
 
 When upstream sources offer new releases, repeat the instructions for installing the Mantis software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

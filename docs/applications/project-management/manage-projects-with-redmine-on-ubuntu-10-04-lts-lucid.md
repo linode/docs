@@ -14,20 +14,18 @@ published: 2010-04-29
 title: 'Manage Projects with Redmine on Ubuntu 10.04 LTS (Lucid)'
 ---
 
-This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/content/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
+This guide will help you install Redmine on your Ubuntu 10.04 LTS (Lucid) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/content/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Rails Packages and nginx with Phusion Passenger
--------------------------------------------------------
+# Install Rails Packages and nginx with Phusion Passenger
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
@@ -146,8 +144,7 @@ Issue the following commands the make the script executable and set it to start 
     chmod +x /etc/init.d/nginx
     update-rc.d -f nginx defaults
 
-Optional: Proxy Redmine with Apache
------------------------------------
+# Optional: Proxy Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -157,7 +154,7 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/content/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 10.04 LAMP guide](/docs/websites/apache/apache-2-web-server-on-ubuntu-10-04-lts-lucid/). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
 
 {{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
 <VirtualHost *:80>
@@ -187,8 +184,7 @@ listen 8080;
 {{< /file-excerpt >}}
 
 
-Install and Configure Redmine
------------------------------
+# Install and Configure Redmine
 
 ### Obtain Redmine
 
@@ -264,41 +260,41 @@ Issue the following commands to install `exim4` and configure it for outgoing In
 
 Select "internet site" as the type of mail configuration to use:
 
-[![Exim general configuration on Ubuntu 10.04.](/content/assets/707-exim4-config-02.png)](/content/assets/707-exim4-config-02.png)
+[![Exim general configuration on Ubuntu 10.04.](/docs/assets/707-exim4-config-02.png)](/docs/assets/707-exim4-config-02.png)
 
 Specify your systems's fully qualified domain name as the system mail name:
 
-[![Exim system mail name configuration on Ubuntu 10.04.](/content/assets/708-exim4-config-03.png)](/content/assets/708-exim4-config-03.png)
+[![Exim system mail name configuration on Ubuntu 10.04.](/docs/assets/708-exim4-config-03.png)](/docs/assets/708-exim4-config-03.png)
 
 Enter "127.0.0.1" when asked for the IP address to listen on for SMTP connections. For purposes of allowing Redmine to send mail, we only want to listen on localhost.
 
-[![Exim IP address configuration on Ubuntu 10.04.](/content/assets/709-exim4-config-04.png)](/content/assets/709-exim4-config-04.png)
+[![Exim IP address configuration on Ubuntu 10.04.](/docs/assets/709-exim4-config-04.png)](/docs/assets/709-exim4-config-04.png)
 
 Enter "localhost.localdomain" and your fully qualified domain name when asked for the list of recipient domains.
 
-[![Exim destination domains configuration on Ubuntu 10.04.](/content/assets/710-exim4-config-05.png)](/content/assets/710-exim4-config-05.png)
+[![Exim destination domains configuration on Ubuntu 10.04.](/docs/assets/710-exim4-config-05.png)](/docs/assets/710-exim4-config-05.png)
 
 Relay domains and machines should be left blank.
 
-[![Exim relay domains configuration on Ubuntu 10.04.](/content/assets/711-exim4-config-06.png)](/content/assets/711-exim4-config-06.png)
+[![Exim relay domains configuration on Ubuntu 10.04.](/docs/assets/711-exim4-config-06.png)](/docs/assets/711-exim4-config-06.png)
 
-[![Exim relay machines configuration on Ubuntu 10.04.](/content/assets/712-exim4-config-07.png)](/content/assets/712-exim4-config-07.png)
+[![Exim relay machines configuration on Ubuntu 10.04.](/docs/assets/712-exim4-config-07.png)](/docs/assets/712-exim4-config-07.png)
 
 Specify "No" when asked about DNS queries.
 
-[![Exim DNS queries configuration on Ubuntu 10.04.](/content/assets/713-exim4-config-08.png)](/content/assets/713-exim4-config-08.png)
+[![Exim DNS queries configuration on Ubuntu 10.04.](/docs/assets/713-exim4-config-08.png)](/docs/assets/713-exim4-config-08.png)
 
 When asked about maildirs versus mbox format, you may choose either. Maildirs are increasingly preferred by many modern mail tools.
 
-[![Exim maildirs or mbox configuration on Ubuntu 10.04.](/content/assets/714-exim4-config-09.png)](/content/assets/714-exim4-config-09.png)
+[![Exim maildirs or mbox configuration on Ubuntu 10.04.](/docs/assets/714-exim4-config-09.png)](/docs/assets/714-exim4-config-09.png)
 
 Specify "No" when asked whether to split the configuration into smaller files.
 
-[![Exim config file splitting configuration on Ubuntu 10.04.](/content/assets/715-exim4-config-10.png)](/content/assets/715-exim4-config-10.png)
+[![Exim config file splitting configuration on Ubuntu 10.04.](/docs/assets/715-exim4-config-10.png)](/docs/assets/715-exim4-config-10.png)
 
 Enter "root" and an email address at your domain for the postmaster mail query.
 
-[![Exim postmaster configuration on Ubuntu 10.04.](/content/assets/716-exim4-config-11.png)](/content/assets/716-exim4-config-11.png)
+[![Exim postmaster configuration on Ubuntu 10.04.](/docs/assets/716-exim4-config-11.png)](/docs/assets/716-exim4-config-11.png)
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 
@@ -359,8 +355,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -369,8 +364,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 -   [Redmine News Feed](http://www.redmine.org/projects/redmine/issues)
 -   [Redmine Issue Queue](http://www.redmine.org/projects/redmine/news)
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

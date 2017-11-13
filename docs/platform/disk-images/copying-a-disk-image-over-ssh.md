@@ -15,7 +15,7 @@ title: Copying a Disk Over SSH
 
 You can use SSH to copy a Linode's disk to a system that resides on a different network. This is an effective way to back up your Linode's disks to a personal computer or another server. In this guide, you'll learn how to use SSH to copy a Linode's disk to a local system.
 
-![Our guide to copying a disk over SSH](/content/assets/copying_a_disk_over_ssh_smg.png "Our guide to copying a disk over SSH")
+![Our guide to copying a disk over SSH](/docs/assets/copying_a_disk_over_ssh_smg.png "Our guide to copying a disk over SSH")
 
 ## Preparing the Receiving Computer
 
@@ -25,9 +25,9 @@ Verify that the receiving computer has SSH installed. (Most Linux/Unix-like syst
 
 Before you initiate the transfer, start your Linode in *Rescue Mode* and start SSH by following these guides:
 
-1.  [Start your Linode in Rescue Mode](/content/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
-2.  [Connecting to a Linode Running in Rescue Mode via LISH](/content/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
-3.  [Start the SSH server on your Linode](/content/troubleshooting/rescue-and-rebuild/#starting-ssh).
+1.  [Start your Linode in Rescue Mode](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode).
+2.  [Connecting to a Linode Running in Rescue Mode via LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
+3.  [Start the SSH server on your Linode](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
 
 ## Copying the Disk
 
@@ -98,7 +98,7 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
 
 1.  Prepare your empty Linode by creating a new disk. Access your Linode through the Linode Manager and select **Create a new disk**:
 
-    [![Create a new disk](/content/assets/copydisk-create-disk.png)](/content/assets/copydisk-create-disk-full.png)
+    [![Create a new disk](/docs/assets/copydisk-create-disk.png)](/docs/assets/copydisk-create-disk-full.png)
 
 2.  Enter a descriptive name in the **Label** field, and be sure the **Size** is large enough to hold the contents of the disk you are uploading. Click **Save Changes**.
 
@@ -165,7 +165,7 @@ In the above example, the values in the **Size** column don't match. Although th
 
 ### Create the Swap Disk
 
-If your Linode still has enough space for a swap disk, simply [create](/content/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) one from your Linode's Dashboard by selecting `swap` from the **Type** drop down menu. A swap disk is typically between 256MB and 512MB in size, but can be made larger or smaller depending upon your needs. If all of the free space on your Linode is assigned to the disk you created previously, [resize](/content/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) the disk to make enough room for the swap disk, and then follow the steps to [create](/content/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) it.
+If your Linode still has enough space for a swap disk, simply [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) one from your Linode's Dashboard by selecting `swap` from the **Type** drop down menu. A swap disk is typically between 256MB and 512MB in size, but can be made larger or smaller depending upon your needs. If all of the free space on your Linode is assigned to the disk you created previously, [resize](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) the disk to make enough room for the swap disk, and then follow the steps to [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) it.
 
 ### Booting from the Disk
 
@@ -173,7 +173,7 @@ You will now need to create a new configuration profile on the receiving Linode 
 
 1.  From within your Linode Manager, select your Linode and select **Create a New Configuration Profile**.
 
-    [![Selecting the configuration profile](/content/assets/1065-migration6-small.png)](/content/assets/1064-migration6.png)
+    [![Selecting the configuration profile](/docs/assets/1065-migration6-small.png)](/docs/assets/1064-migration6.png)
 
 2.  Enter the name for the configuration profile in the **Label** field, and in the **Block Device Assignment** section set the `/dev/sda` to the new disk you created earlier in this section of the guide. Set `/dev/sdb` to the swap image. Save changes.
 
