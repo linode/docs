@@ -5,11 +5,11 @@ author:
 description: Our guide to performing basic troubleshooting.
 keywords: troubleshooting
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['quick-start-troubleshooting/']
-modified: Monday, March 6th, 2017
+aliases: ['quick-start-troubleshooting/']
+modified: 2017-03-06
 modified_by:
   name: Nick Brewer
-published: 'Thursday, April 5th, 2012'
+published: 2012-04-05
 title: Troubleshooting
 ---
 
@@ -75,11 +75,11 @@ To verify that your Linode is operating correctly, you should try to log in with
 6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
 7.  If the console is not responding, [contact Linode support](/docs/support).
 
-If you can log in, continue to the next section, even if there are error messages visible on the console.
+    If you can log in, continue to the next section, even if there are error messages visible on the console.
 
- {: .note }
->
-> For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+    {{< note >}}
+For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+{{< /note >}}
 
 ### Is your disk full?
 
@@ -175,9 +175,9 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
- {: .note }
->
-> You must run `iotop` as `root` or with `sudo`.
+ {{< note >}}
+You must run `iotop` as `root` or with `sudo`.
+{{< /note >}}
 
 6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
 
@@ -187,9 +187,9 @@ Since `top` only reports what is currently happening, and most I/O issues are te
 
 Use the following checklist if your website is not loading when you try to connect to it.
 
- {: .note }
->
-> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+ {{< note >}}
+You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+{{< /note >}}
 
 ### Have you added DNS records?
 
@@ -274,9 +274,9 @@ If you recently added a new IP address for an SSL certificate and it's not worki
 
 Use the following checklist if you cannot connect to your Linode via SSH or an FTP client application.
 
- {: .note }
->
-> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+ {{< note >}}
+You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+{{< /note >}}
 
 ### Are you using Telnet or FTP?
 

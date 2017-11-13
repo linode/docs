@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using Ikiwiki on Fedora 12 to power a standard wiki implementation.'
-keywords: 'ikiwiki,fedora,fedora 12,wiki,perl,git,markdown'
+keywords: ["ikiwiki", "fedora", "fedora 12", "wiki", "perl", "git", "markdown"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/ikiwiki/fedora-12/']
-modified: Friday, April 29th, 2011
+aliases: ['web-applications/wikis/ikiwiki/fedora-12/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Tuesday, March 23rd, 2010'
+published: 2010-03-23
 title: Ikiwiki on Fedora 12
 ---
 
@@ -20,8 +20,7 @@ Unlike some other popular wiki engines, Ikiwiki compiles static HTML pages which
 
 This guide is written for Fedora 12, and assumes that you've followed our [getting started guide](/docs/getting-started/) and have a running and updated system. Additionally, it is assume that you have a functioning [Apache web server](/docs/web-servers/apache/installation/fedora-12) and a working installation of [git](/docs/development/version-control/how-to-configure-git).
 
-Installing Ikiwiki
-------------------
+# Installing Ikiwiki
 
 Ensure your system is up to date by issuing the following command:
 
@@ -33,8 +32,7 @@ We're ready to install Ikiwiki and its dependencies using the following command:
 
 Now that you have Ikiwiki installed, we can move on to configuring it for use.
 
-Automatic Ikiwiki Configuration
--------------------------------
+# Automatic Ikiwiki Configuration
 
 From the command line, you can issue the following command to generate a basic config file using Ikiwiki's auto-setup script.
 
@@ -57,10 +55,9 @@ In this example, `example` is the machine's hostname, `username` is the admin us
 
 While the auto-setup script is great for getting up and running in a matter of moments, you are encouraged to examine and edit the config file `~/wiki.setup` as needed. If the automatic wiki setup is not ideal for your use case, we recommend manual configuration.
 
-Manual Ikiwiki Configuration
-----------------------------
+# Manual Ikiwiki Configuration
 
-To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](reference/ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
+To help you begin a manual configuration, we've included a full-featured [Ikiwiki configuration file](/docs/assets/657-ikiwiki.setup) for you to review and edit. This provides configuration options for common plugins and some additional comments. Issue the following commands to fetch this file:
 
     cd ~/
     wget -O ikiwiki.setup http://www.linode.com/docs/assets/657-ikiwiki.setup
@@ -84,18 +81,17 @@ It's important to set up a git repository that will be the "origin" repository f
 
 Edit the `~/wiki/.git/config` file to create the remote repository so that it looks something like the following example:
 
-{: .file }
-\~/wiki/.git/config
+{{< file "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
+{{< /file >}}
+
 Now perform the first push using the following sequence of commands. This will update the "origin" repository with the first commit created above:
 
     cd ~/wiki/
@@ -120,8 +116,7 @@ If you have not started Apache for the first time, you will need to issue the fo
     chkconfig httpd on
     /etc/init.d/httpd start
 
-Advanced Ikiwiki Setup
-----------------------
+# Advanced Ikiwiki Setup
 
 While all of the content of an Ikiwiki is stored under version control, the templates and configuration files are stored outside of the source directory. If you want to use git to store these files and track the versions of your configuration we recommend making an "admin" repository located in the `~/wiki-admin` directory. This should reside next to the `~/wiki/` repository/directory where the wiki's source directory is located. To create the directory and initialize the repository, issue the following commands:
 
@@ -146,18 +141,17 @@ The process for creating a bare repository to push/pull the `wiki-admin` git rep
 
 Next, edit the `~/wiki-admin/.git/config` file to set up the remote repository. Use the following example as a guideline.
 
-{: .file }
-\~/wiki/.git/config
+{{< file "~/wiki/.git/config" >}}
+[core]
+:   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
 
-> [core]
-> :   repositoryformatversion = 0 filemode = true bare = false logallrefupdates = true
->
-> [remote "origin"]
-> :   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
->
-> [branch "master"]
-> :   remote = origin merge = refs/heads/master
->
+[remote "origin"]
+:   fetch = +refs/heads/*:refs/remotes/origin/* url = /srv/git/wiki-admin.git
+
+[branch "master"]
+:   remote = origin merge = refs/heads/master
+{{< /file >}}
+
 Now you can perform the first push for the `wiki-admin` repository by issuing the following commands:
 
     cd ~/wiki-admin/
@@ -174,8 +168,7 @@ The `wiki-admin` repository is totally optional, however it will simplify backup
     chkconfig httpd on
     /etc/init.d/httpd start
 
-Using Ikiwiki
--------------
+# Using Ikiwiki
 
 Once installed, using Ikiwiki itself is fairly straightforward. You can push content to the bare repository, and Ikiwiki will incrementally update the pages changed in that commit. You can also choose to update pages via the web-based interface. As a result, you may find that you don't actually need to interact with the `ikiwiki` program very much.
 
@@ -187,10 +180,9 @@ In this command, `~/wiki-admin/ikiwiki.setup` represents the path to your setup 
 
 You may find yourself wondering why there are so many git repositories for a single wiki. The setup with a remote "bare" repository allows Ikiwiki to avoid a situation where you might "push" content to a non-bare repository, which would cause the "working copy" of the "source directory" repository to get out of sync with the sequence of commits in the git database. In short, **never push to a non-bare git repository**.
 
-Notes for Using Gitosis with Ikiwiki
-------------------------------------
+# Notes for Using Gitosis with Ikiwiki
 
-If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](reference/ikiwiki.setup) for details on how to configure this.
+If you're using `gitosis` to manage the git repositories as described in the [introduction to Git](/docs/linux-tools/version-control/git) guide, there are a couple of configuration options for Ikiwiki that you'll need to keep in mind as you're setting things up. As `gitosis` needs to "own" the git repositories it manages, the `gitosis` user ends up executing `post-update` hook and wrappers, and as a result many Ikiwiki files need to be owned by the `gitosis` user. This should not present a concern as Ikiwiki's scripts are designed to be run securely by untrusted users. This means running `ikiwiki.cgi` as mode "6755". See the example [Ikiwiki configuration file](/docs/assets/657-ikiwiki.setup) for details on how to configure this.
 
 The files that needed to be owned by the `gitosis` user are the "destination" directory where Ikiwiki puts its output, the "source directory", and the bare repository. Run the following commands to set this ownership.
 
@@ -214,8 +206,7 @@ If you need to drop into a prompt as the `gitosis` user for more complicated ope
 
 Beyond these basic considerations, using Ikiwiki with gitosis is no different than using Ikiwiki with more conventionally managed repositories.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

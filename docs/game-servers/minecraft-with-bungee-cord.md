@@ -3,29 +3,29 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'How to link your Minecraft servers together using BungeeCord on your Linode with Ubuntu/Debian'
-keywords: 'minecraft,spigot,bungeecord,link,bukkit,25565,minecraft servers,linking minecraft servers,how to set up bungeecord'
+keywords: ["minecraft", "spigot", "bungeecord", "link", "bukkit", "25565", "minecraft servers", "linking minecraft servers", "how to set up bungeecord"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
  - '[The Official Minecraft Wiki](http://minecraft.gamepedia.com/Minecraft_Wiki)'
  - '[Official BungeeCord Site](https://www.spigotmc.org/wiki/bungeecord/)'
  - '[BungeeCord and Spigot Forums](https://www.spigotmc.org/)'
-published: 'Wednesday, September 9th, 2015'
-modified: Wednesday, September 9th, 2015
+published: 2015-09-09
+modified: 2015-09-09
 modified_by:
     name: linode
 title: 'How to Set Up BungeeCord to Link Spigot Servers'
 contributor:
     name: Thomas Wemyss
     link: https://github.com/twemyss
-alias: ['applications/game-servers/minecraft-with-bungee-cord/']
+aliases: ['applications/game-servers/minecraft-with-bungee-cord/']
 ---
 
 After you’ve got a Minecraft server up and running with [Spigot on Debian and Ubuntu](/docs/game-servers/minecraft-with-spigot-ubuntu), you may want to connect different servers with different collections of plugins. BungeeCord acts as a proxy between the Minecraft client and the server, and allows for simple and easy switching between your Spigot servers. It allows for players to connect to one address, yet also access a wider variety of activities than can be easily set up on a single Minecraft server instance.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Setting Up Your Linode
 
@@ -65,9 +65,9 @@ If you're using iptables or ufw to act as a firewall, you'll need to make a rule
 
 For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord proxy handles the authentication. This can make the servers vulnerable to people connecting directly, as they can connect with any username, potentially allowing for connection as a user with adminsitrative permissions. To prevent this, you can set up iptables to limit connections to only the BungeeCord server.
 
-{: .note}
->
-> This section assumes that you've only got a Spigot server running on each Linode. If you have other services, you'll need to modify the rules to allow them to continue working.
+{{< note >}}
+This section assumes that you've only got a Spigot server running on each Linode. If you have other services, you'll need to modify the rules to allow them to continue working.
+{{< /note >}}
 
 1.  Delete existing rules and then allow SSH. If you've changed your SSH port, make sure to change the `22` below:
 
@@ -78,9 +78,9 @@ For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord
 
         sudo iptables -A INPUT -p tcp -s `203.0.113.0` --dport 25565 -j ACCEPT
 
-    {: .note}
-    >
-    >If you're running other Spigot servers on the same Linode, then you will need to run step 2 again, but changing `25565` to the port of the other servers.
+    {{< note >}}
+If you're running other Spigot servers on the same Linode, then you will need to run step 2 again, but changing `25565` to the port of the other servers.
+{{< /note >}}
 
 3.  Allow loopback traffic through the firewall:
 
@@ -92,10 +92,9 @@ For BungeeCord, the Spigot servers need to be in offline mode, as the BungeeCord
         sudo iptables -I INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
         sudo iptables -A INPUT -j DROP
 
-    {: .note }
-    >
-    > If you've configured your `iptables` firewall by following our [Securing Your Server](/docs/security/securing-your-server/) tutorial, then you will need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
-
+    {{< note >}}
+If you've configured your `iptables` firewall by following our [Securing Your Server](/docs/security/securing-your-server/) tutorial, then you will need to append the exceptions in steps 1, 2 and 3 to `/etc/iptables.firewall.rules` to ensure that they're persistent between reboots.
+{{< /note >}}
 
 ## Installing BungeeCord
 
@@ -103,10 +102,9 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 	wget -O BungeeCord.jar http://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar
 
-{: .note}
->
-> This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, [here](http://ci.md-5.net/job/BungeeCord/).
-
+{{< note >}}
+This downloads the latest version of BungeeCord. You can find older versions for older Minecraft server versions, [here](http://ci.md-5.net/job/BungeeCord/).
+{{< /note >}}
 
 ### Setting up BungeeCord
 
@@ -121,31 +119,31 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 3.  Edit the following block of the configuration, in order to add our existing Spigot servers:
 
-	{: .file-excerpt}
-    config.yml
-    :   ~~~ yml
-        servers:
-          lobby:
-            address: localhost:25565
-            restricted: false
-            motd: 'Just another BungeeCord - Forced Host'
-        ~~~
+	{{< file-excerpt "config.yml" yaml >}}
+servers:
+  lobby:
+    address: localhost:25565
+    restricted: false
+    motd: 'Just another BungeeCord - Forced Host'
+
+{{< /file-excerpt >}}
+
 
     For the servers that are specified as examples in the introduction, it would look like:
 
-    {: .file-excerpt}
-    config.yml
-    :   ~~~ yml
-        servers:
-          lobby:
-            address: 203.0.113.112:25565
-            restricted: false
-            motd: 'Just another BungeeCord - Forced Host'
+    {{< file-excerpt "config.yml" yaml >}}
+servers:
+  lobby:
+    address: 203.0.113.112:25565
+    restricted: false
+    motd: 'Just another BungeeCord - Forced Host'
 	      games:
-	        address: 203.0.113.198:25565
-	        restricted: false
-	        motd: 'Just another BungeeCord - Forced Host'
-        ~~~
+ address: 203.0.113.198:25565
+ restricted: false
+ motd: 'Just another BungeeCord - Forced Host'
+
+{{< /file-excerpt >}}
+
 
     Each server block has a label: In the case of the example, `lobby` or `games`. These can be any word you want, but it's important that they are descriptive, as they will be used by the players to change servers.
 
@@ -161,13 +159,13 @@ Log into the BungeeCord Linode as the `bungeecord` user created earlier, and dow
 
 1.  Create the file:
 
-    {: .file}
-    /home/bungeecord/bungeestart.sh
-    :   ~~~ shell
-        #!/bin/bash
+    {{< file "/home/bungeecord/bungeestart.sh" shell >}}
+#!/bin/bash
 
-        screen -dmS "bungeecord" java -jar BungeeCord.jar
-        ~~~
+screen -dmS "bungeecord" java -jar BungeeCord.jar
+
+{{< /file >}}
+
 
 2.  Run `chmod +x bungeestart.sh`, to make the file executable.
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
-keywords: 'postfix,dovecot,system users,email'
+keywords: ["postfix", "dovecot", "system users", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/dovecot-system-users-debian-5-lenny/']
-modified: Monday, October 8th, 2012
+aliases: ['email/postfix/dovecot-system-users-debian-5-lenny/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Thursday, February 17th, 2011'
+published: 2011-02-17
 title: 'Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)'
 ---
 
@@ -18,8 +18,7 @@ title: 'Postfix, Dovecot, and System User Accounts on Debian 5 (Lenny)'
 
 Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-debian-5-lenny) document to install a more minimal email system.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Software
-----------------
+# Install Software
 
 Issue the following commands to install any outstanding package updates:
 
@@ -48,31 +46,29 @@ The next prompt will ask for the system mail name. This should correspond to the
 
 [![Selecting the Postfix system mail name on a Debian 5 (Lenny) system.](/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)](/docs/assets/88-postfix-courier-mysql-02-mail-server-type-3.png)
 
-SASL Authentication
--------------------
+# SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
-{: .file-excerpt }
-/etc/default/saslauthd
-:   ~~~ ini
-    START=yes
-    ~~~
+{{< file-excerpt "/etc/default/saslauthd" ini >}}
+START=yes
+
+{{< /file-excerpt >}}
+
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
 
-{: .file }
-/etc/postfix/sasl/smtpd.conf
-:   ~~~ ini
-    pwcheck_method: saslauthd
-    ~~~
+{{< file "/etc/postfix/sasl/smtpd.conf" ini >}}
+pwcheck_method: saslauthd
+
+{{< /file >}}
+
 
 Issue the following command to start the SASL daemon for the first time:
 
     /etc/init.d/saslauthd start
 
-Configure SSL
--------------
+# Configure SSL
 
 SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
 
@@ -87,36 +83,35 @@ Mail clients may have an issue with certificates generated in this manner becaus
 
 You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
 
-Postfix
--------
+# Postfix
 
 ### Configure Outbound Mail Service
 
 Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    smtpd_tls_cert_file=/etc/ssl/postfix.pem
-    smtpd_tls_key_file=/etc/ssl/postfix.key
+{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+smtpd_tls_cert_file=/etc/ssl/postfix.pem
+smtpd_tls_key_file=/etc/ssl/postfix.key
 
-    smtp_use_tls = yes
-    smtpd_use_tls = yes
-    smtp_tls_note_starttls_offer = yes
-    smtpd_tls_loglevel = 1
-    smtpd_tls_received_header = yes
+smtp_use_tls = yes
+smtpd_use_tls = yes
+smtp_tls_note_starttls_offer = yes
+smtpd_tls_loglevel = 1
+smtpd_tls_received_header = yes
 
-    smtpd_sasl_type = dovecot
-    smtpd_sasl_path = private/auth
-    smtpd_sasl_auth_enable = yes
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
 
-    smtpd_sasl_security_options = noanonymous
-    smtpd_sasl_local_domain = $myhostname
-    smtpd_sasl_application_name = smtpd
-    broken_sasl_auth_clients = yes
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+smtpd_sasl_application_name = smtpd
+broken_sasl_auth_clients = yes
 
-    smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
-    ~~~
+smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
+
+{{< /file-excerpt >}}
+
 
 These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you're using an SSL certificate with a different name, modify the first two lines of this configuration section.
 
@@ -132,13 +127,13 @@ Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-5-le
 
 The above Postfix configuration makes it possible to *send* mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    myhostname = lollipop.example.com
-    virtual_alias_maps = hash:/etc/postfix/virtual
-    home_mailbox = mail/
-    ~~~
+{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+myhostname = lollipop.example.com
+virtual_alias_maps = hash:/etc/postfix/virtual
+home_mailbox = mail/
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:
 
@@ -150,8 +145,9 @@ Every existing user that receives email will also need to make their own `Maildi
 
 Create a `/etc/postfix/virtual` file to map incoming email addresses to their destinations. Consider the following example:
 
-{: .file }
+{{< file >}}
 /etc/postfix/virtual
+{{< /file >}}
 
 > <username@example.com> username <username@example.net> username <username@example.com> username
 >
@@ -165,8 +161,9 @@ You can add additional lines in the same format as the above to control how all 
 
 Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/aliases
+{{< /file-excerpt >}}
 
 > root: username
 
@@ -176,8 +173,7 @@ When you have configured mail delivery issue the following command to recreate t
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 
-Dovecot
--------
+# Dovecot
 
 Dovecot is a contemporary POP3/IMAP server that makes it possible to access and download mail from your mail server remotely onto your local system.
 
@@ -188,8 +184,9 @@ Issue the following command to create a back up of the default `/etc/dovecot/dov
     cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
     rm /etc/dovecot/dovecot.conf
 
-{: .file }
+{{< file >}}
 /etc/dovecot/dovecot.conf
+{{< /file >}}
 
 > protocols = imap imaps pop3 pop3s log\_timestamp = "%Y-%m-%d %H:%M:%S " mail\_privileged\_group = mail ssl\_cert\_file = /etc/ssl/postfix.pem ssl\_key\_file = /etc/ssl/postfix.key mail\_location = maildir:\~/mail:LAYOUT=fs
 >
@@ -220,8 +217,7 @@ Modify the `ssl` configuration directives if you're using ssl certificates locat
 
 You may now access email by configuring a local email client to contact the server you have set up. Authentication credentials are the same as the system user accounts. These accounts can be configured outside of this document at any time.
 
-Organize Mail Services
-----------------------
+# Organize Mail Services
 
 This document describes a complete email system configuration. How you use and manage your system from this point forward is beyond the scope of this document. At the same time, we do encourage you to give some thought to the organization of your user accounts and email delivery. Keeping a well organized and easy to manage system is crucial for sustainable use of this system.
 
@@ -229,8 +225,7 @@ Organizational structure is crucial in this kind of deployment because delivery 
 
 Remember that system user accounts may provide access to other services on the system. Unless this access is specifically prohibited, all system user accounts will have SSH access to the server using the same credentials that are used for logging into the email services.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

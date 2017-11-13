@@ -6,12 +6,12 @@ contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
 description: 'This guide introduces Dockerfiles and how to use them to build a Docker Image on your Linode.'
-keywords: 'docker,container,dockerfile'
+keywords: ["docker", "container", "dockerfile"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, August 29, 2017
+modified: 2017-08-29
 modified_by:
   name: Linode
-published: 'Friday, August 11, 2017'
+published: 2017-08-11
 title: 'How to Use Dockerfiles'
 external_resources:
  - '[Dockerfile Best Practices](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices)'
@@ -30,10 +30,11 @@ You can use a Dockerfile to automate installation and configuration of an image 
 
 A `dockerfile` is a text file that contains the necessary commands to assemble an image. Once a Dockerfile is created, the administrator uses the `docker build` command to create an image based on the commands within the file. The commands and information within the `dockerfile` can be configured to use specific software versions and dependencies to ensure consistent and stable deployments.
 
-{: .note}
->Do not store the Dockerfile in your root directory.
->
->Create a separate directory for the Dockerfile and place all necessary files within the same directory as the Dockerfile.
+{{< note >}}
+Do not store the Dockerfile in your root directory.
+
+Create a separate directory for the Dockerfile and place all necessary files within the same directory as the Dockerfile.
+{{< /note >}}
 
 A Dockerfile uses the following commands for building the images:
 
@@ -66,17 +67,17 @@ Note that in the example below, multiple packages are installed on separate line
 
 2.  Open `Dockerfile` using a text editor and enter the following example to create a Dockerfile that installs `build-essential`, `curl`, and `make` onto a Ubuntu image:
 
-    {: .file }
-    Dockerfile
-    :   ~~~ docker
-        FROM ubuntu
-        MAINTAINER NAME EMAIL
-        RUN apt-get update && apt-get install -y \
-            build-essential \
-            gcc \
-            curl \
-            make
-        ~~~
+    {{< file "Dockerfile" docker >}}
+FROM ubuntu
+MAINTAINER NAME EMAIL
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    curl \
+    make
+
+{{< /file >}}
+
 
         In this example:
 

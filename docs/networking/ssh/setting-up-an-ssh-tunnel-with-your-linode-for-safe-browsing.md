@@ -3,15 +3,15 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Follow these instructions to launch a SOCKS server on your computer and browse the web securely using your Linode.'
-keywords: 'socks,proxy,socks proxy,tunnel,tunnelling'
+keywords: ["socks", "proxy", "socks proxy", "tunnel", "tunnelling"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/socks-proxy/']
+aliases: ['networking/socks-proxy/']
 contributor:
     name: Arnaldo Ariel Arrieta
-modified: Monday, February 17th, 2014
+modified: 2014-02-17
 modified_by:
   name: Linode
-published: 'Monday, February 17th, 2014'
+published: 2014-02-17
 title: Setting up an SSH Tunnel with Your Linode for Safe Browsing
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
@@ -30,9 +30,9 @@ It works by launching a SOCKS proxy server on your computer using SSH. It will l
 -   A Linode running your favorite GNU/Linux flavor.
 -   The SSH service running in your Linode, with the forwarding option enabled (it is enabled by default).
 
-    {: .note }
-    >
-    > If it is disabled, look for the parameter `AllowTcpForwarding no` in your server's **/etc/ssh/sshd\_config file**, and change it to **yes** before restarting the service.
+    {{< note >}}
+If it is disabled, look for the parameter `AllowTcpForwarding no` in your server's **/etc/ssh/sshd\_config file**, and change it to **yes** before restarting the service.
+{{< /note >}}
 
 -   The ability to remotely access your server using SSH (by its host name or IP address).
 -   SSH client software on the computer you will use for browsing: a favorite SSH client for Linux or Mac OS X, PuTTY for Windows.
@@ -45,14 +45,13 @@ The first step is to launch the SOCKS server and establish a connection to your 
 
 1.  From a command line run:
 
-    ~~~
-    ssh -D 12345 user@host.domain
-    ~~~
+        ssh -D 12345 user@host.domain
 
-    {:.note}
-    > **-D 12345** tells SSH to run the SOCKS server on port 12345.
-    >
-    > You can choose any port number greater than 1024. Lower numbers could be used but you will need to log in as root, and make sure the port is not in use by another service.
+    {{< note >}}
+**-D 12345** tells SSH to run the SOCKS server on port 12345.
+
+You can choose any port number greater than 1024. Lower numbers could be used but you will need to log in as root, and make sure the port is not in use by another service.
+{{< /note >}}
 
 2.  You will be prompted for your password. After entering it, you will be logged in to your Linode. Minimize the terminal because you will not need it until you are finished with your browsing session.
 

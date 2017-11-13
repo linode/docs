@@ -1,0 +1,9 @@
+{{ with .Params.external_resources }}
+<h2>More Information</h2>
+<p>You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.</p>
+<ul>
+{{ range . }}
+<li>{{ . | markdownify }}</li>
+{{ end }}
+<ul>
+{{ end }}

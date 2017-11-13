@@ -3,30 +3,31 @@ author:
   name: Dave Russell
   email: drussell@linode.com
 description: 'Our guide to upgrading to Ubuntu 14.04 LTS'
-keywords: 'upgrading,ubuntu,ubuntu 14.04'
+keywords: ["upgrading", "ubuntu", "ubuntu 14.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Sunday, February 22, 2015
+modified: 2015-02-22
 modified_by:
   name: Dave Russell
-published: 'Tuesday, October 21st, 2014'
+published: 2014-10-21
 title: 'How to Upgrade to Ubuntu 14.04 LTS'
 ---
 
 Ubuntu 14.04 is a long-term support (LTS) release that will be supported until April 2019. This guide explains how to upgrade your Linode from Ubuntu 12.04 (Precise Pangolin) to Ubuntu 14.04 (Trusty Tahr).
 
- {: .caution }
- >Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
- >
+{{< caution >}}
+Distribution upgrades can yield unpredictable results, due to variations in software stacks. When possible, we recommend:
+
  - Creating a new Linode with the latest disk template
  - Rebuilding your stack
  - Transferring your data
  - Swapping IP addresses
- >
- > In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
 
+In addition, you should use [LISH](https://www.linode.com/docs/networking/using-the-linode-shell-lish) to perform this upgrade as, in the event your internet connection is disconnected, your system may end up corrupted or the upgrade may be incomplete.
+{{< /caution >}}
 
-{: .note }
->This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
+{{< note >}}
+This guide was written assuming that you have root access to your Linode. If you do not have root access, you will need to prepend each command with `sudo`.
+{{< /note >}}
 
 ## Preparing to Upgrade
 
@@ -44,9 +45,9 @@ Before upgrading, you will need to prepare your Linode to be upgraded. In order 
 
 Each of these will be discussed in more detail below.
 
-{: .note }
->
->In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+{{< note >}}
+In the interest of security, Ubuntu 14.04 LTS disables password based SSH authentication for the root user.  If you log into your root account directly via SSH, you will need to ensure that you have configured key based authentication prior to following these upgrade steps.  If you have already followed our steps for [adding a new user](/docs/security/securing-your-server/#ubuntu) to your Linode, you should be able to log in with that account after the upgrade process has completed.
+{{< /note >}}
 
 ### Installing Available Updates
 

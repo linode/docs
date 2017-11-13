@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Use the Find command from the Linux command line to locate files in a file system
-keywords: 'find command,linux,command line'
+keywords: ["find command", "linux", "command line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/']
-modified: Thursday, September 15, 2016
+aliases: ['linux-tools/common-commands/find/','tools-reference/tools/filter-file-systems-with-the-find-command/']
+modified: 2016-09-15
 modified_by:
   name: Edward Angert
-published: 'Monday, October 25th, 2010'
+published: 2010-10-25
 title: Find Files in Linux, Using the Command Line
 external_resources:
 - '[Online man Pages](http://man7.org/linux/man-pages/man1/find.1.html)'
@@ -42,16 +42,14 @@ Consider the following example command:
 
 This command enables the maximum optimization level (-O3) and allows `find` to follow symbolic links (`-L`). `find` searches the entire directory tree beneath `/var/www/` for files that end with `.html`.
 
-###Basic Examples
+### Basic Examples
 
-{: .table .table-striped .table-bordered}
 | Command                                              | Description                                                                     |
 |------------------------------------------------------|:--------------------------------------------------------------------------------|
 | `find . -name testfile.txt`                          | Find a file called testfile.txt in current and sub-directories.                  |
 | `find /home -name '*.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
 | `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
 | `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
-|------------------------------------------------------|---------------------------------------------------------------------------------|
 
 
 ## Options and Optimization for Find
@@ -62,7 +60,6 @@ The default configuration for `find` will ignore symbolic links (shortcut files)
 
 Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and then runs all file-type filtering before proceeding with other more resource-intensive conditions. Level `-O3` optimization allows `find` to perform the most severe optimization and reorders all tests based on their relative expense and the likelihood of their success.
 
-{: .table .table-striped .table-bordered}
 | Command     | Description                                                                                               |
 |------------:|:----------------------------------------------------------------------------------------------------------|
 | `-O1`       | (Default) filter based on file name first.                                                                 |
@@ -73,7 +70,6 @@ Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and 
 | `-not`      | Return only results that do not match the test case.                                                       |
 | `-type f`   | Search for files.                                                                                          |
 | `-type d`   | Search for directories.                                                                                    |
-|-------------|-----------------------------------------------------------------------------------------------------------|
 
 ## Find Files by Modification Time
 
@@ -110,12 +106,13 @@ The `-exec` or `-execdir` options run without further prompts. If you prefer to 
 
 ## How to Find and Delete Files in the Linux Command Line
 
-{: .caution}
->
->Use this option with extreme caution.
+{{< caution >}}
+Use this option with extreme caution.
+{{< /caution >}}
 
 Add the option `-delete` to the end of a match expression to delete all files that match. Use this option when you are certain that the results *only* match the files that you wish to delete.
 
 In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` will delete all files that end with the characters `.bak`:
 
     find . -name "*.bak" -delete
+

@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 9.10 (Karmic).'
-keywords: 'postgresql,postgresql database,postgresql ubuntu,postgresql ubuntu 9.10,postgresql ubuntu karmic,relational database'
+keywords: ["postgresql", "postgresql database", "postgresql ubuntu", "postgresql ubuntu 9.10", "postgresql ubuntu karmic", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, April 29th, 2011
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, October 29th, 2009'
+published: 2009-10-29
 title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -17,8 +17,7 @@ title: 'Use PostgreSQL Relational Databases on Ubuntu 9.10 (Karmic)'
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 9.10 (Karmic). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-Installing PostgreSQL
----------------------
+# Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -31,8 +30,7 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
 The current version of the database server will be installed, along with several supporting packages.
 
-Configuring PostgreSQL
-----------------------
+# Configuring PostgreSQL
 
 ### Installing the adminpack
 
@@ -125,19 +123,19 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file`/etc/postgresql/8.4/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 If you changed the authentication method as shown above, restart Postgresql with the following command:
 
@@ -155,16 +153,14 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-Secure Remote Database Access
------------------------------
+# Secure Remote Database Access
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

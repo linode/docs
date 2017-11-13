@@ -1,1 +1,0 @@
-../platform/longview/longview.md

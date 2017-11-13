@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to automating server builds with the Linode Manager
-keywords: 'server builds,disks,golden disk,puppet,chef'
+keywords: ["server builds", "disks", "golden disk", "puppet", "chef"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, April 15, 2015
+modified: 2015-04-15
 modified_by:
   name: Alex Fornuto
-published: 'Friday, June 28th, 2013'
+published: 2013-06-28
 title: Automating Server Builds
 ---
 
@@ -16,18 +16,19 @@ If you run a large website that requires multiple servers, or have a general int
 
 Server configuration can also be automated through [Stackscripts](https://www.linode.com/stackscripts). View the [Stackscripts](/docs/platform/stackscripts/) guide for more information.
 
-##Why You Should Automate Server Builds
+## Why You Should Automate Server Builds
 
 When you set up a Linode for the first time, you manually install packages and applications. For example, in the [Hosting a Website](/docs/hosting-website) guide, the Apache, MySQL, and PHP packages are installed. Manually installing packages is a good way to learn about virtual servers, but it's also a time-consuming process.
 
 It is recommended that you take steps to automate the server-provisioning process, even if you don't need multiple Linodes at this moment. By duplicating the disk or writing an install StackScript, you'll preserve the current state of your server -- including all of the packages you've installed and settings you've configured. If you want to spin up another Linode in the future, your automatic server building process will save you time.
 
-##Golden Disk
+## Golden Disk
 
 The idea behind a golden disk is simple: Create the perfect image and then save it for cloning to other servers. To get started, set up a new Linode, install the desired packages, configure the settings, and then test the configuration. Once satisfied with the server configuration, shut down the Linode, duplicate the disk, and then clone it to all of your other Linodes, either manually or though [the Linode API](http://www.linode.com/api/linode/linode.clone).
 
-{: .note }
-> Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static networking configurations may need to be modified for individual Linodes.
+{{< note >}}
+Be aware that certain files like `/etc/hosts`, `/etc/hostname`, and static networking configurations may need to be modified for individual Linodes.
+{{< /note >}}
 
 [![Cloning your Linode disk.](/docs/assets/1303-image_cloning_2.jpg)](/docs/assets/1303-image_cloning_2.jpg)
 

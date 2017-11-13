@@ -3,13 +3,13 @@ author:
   name: Angel
   email: docs@linode.com
 description: 'This Quick Answer guide will explain how to use wget.'
-keywords: 'linux,how to,grep,wget'
-alias: ['quick-answers/how-to-use-wget/']
+keywords: ["linux", "how to", "grep", "wget"]
+aliases: ['quick-answers/how-to-use-wget/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Monday, June 12th, 2017'
+modified: 2017-06-12
 modified_by:
   name: Angel
-published: 'Monday, June 19th, 2017'
+published: 2017-06-19
 title: How to Use Wget
 external_resources:
  - '[Windows Wget Download](http://gnuwin32.sourceforge.net/packages/wget.htm)'
@@ -24,11 +24,10 @@ external_resources:
 The noninteractive nature of Wget makes it perfect for use in automatic scripts. This guide will walk you through downloading the [Linode Speed Test files](https://www.linode.com/speedtest) by using wget.
 
 
-{:.note}
->
-> Depending on your operating system or distribution, you may need to download wget. Wget exists in every package manager and on every operating system. At the end of this guide
-> you will find resources for getting wget on your machine.
-
+{{< note >}}
+Depending on your operating system or distribution, you may need to download wget. Wget exists in every package manager and on every operating system. At the end of this guide
+you will find resources for getting wget on your machine.
+{{< /note >}}
 
 ## Use Wget to Download Speedtest Files
 
@@ -65,14 +64,14 @@ Picking the right location for your Linode is important, you have to decide what
 	Wget will then make a file and log the download information inside of it:
 
 
-	{:.file}
-newarkTest
-: ~~~
-	  02350K .......... .......... .......... .......... ..........100%  457M 0s
-	  102400K                                                       100% 0.00 =0.6s
+	{{< file "newarkTest" >}}
+02350K .......... .......... .......... .......... ..........100%  457M 0s
+102400K                                                       100% 0.00 =0.6s
 
-	  2017-06-23 13:31:54 (179 MB/s) - ‘100MB-newark.bin.2’ saved [104857600/104857600]
-  ~~~
+2017-06-23 13:31:54 (179 MB/s) - ‘100MB-newark.bin.2’ saved [104857600/104857600]
+
+{{< /file >}}
+
 
 3. If you are trying to download a large file, wget offers the `-b` option for downloading in the background:
 

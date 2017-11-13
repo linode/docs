@@ -3,11 +3,11 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'Security-Enhanced Linux works to filter system access. This Quick Answer will show you how to change the level of policy enforcement SELinux, from full enforcing mode to totally disabled.'
-keywords: 'selinux'
-alias: ['quick-answers/linux/how-to-disable-selinux']
+keywords: ["selinux"]
+aliases: ['quick-answers/linux/how-to-disable-selinux']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, June 22, 2017'
-modified: 'Wednesday, October 18, 2017'
+published: 2017-06-22
+modified: 2017-10-18
 modified_by:
   name: Linode
 title: 'How to Change SELinux Modes'
@@ -20,8 +20,9 @@ external_resources:
 
 Ideally, you want to keep SELinux in enforcing mode, but there may be times when you need to set it to permissive mode, or disable it altogether. Note that the *disabled* state means the daemon is still running and is still enforcing rules for [discretionary access control](https://en.wikipedia.org/wiki/Discretionary_access_control), however no MAC security policies are being used, and no violations are being logged.
 
-{: .note}
-> To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. If you need help booting the distribution-supplied kernel, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on the topic.
+{{< note >}}
+To use SELinux on CentOS or Fedora, you must use the upstream kernel--you can not use the Linode kernel. If you need help booting the distribution-supplied kernel, [see our guide](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel#recommended-distributions) on the topic.
+{{< /note >}}
 
 1.  View the current enforcement mode of SELinux on your system using `sestatus`. You can see below that SELinux is set to permissive mode.
 
@@ -47,21 +48,21 @@ Ideally, you want to keep SELinux in enforcing mode, but there may be times when
 
     If you prefer to edit the file manually, it should look like this:
 
-    {:.file}
-    /etc/selinux/config
-    : ~~~ config
-        # This file controls the state of SELinux on the system.
-        # SELINUX= can take one of these three values:
-        #     enforcing - SELinux security policy is enforced.
-        #     permissive - SELinux prints warnings instead of enforcing.
-        #     disabled - No SELinux policy is loaded.
-        SELINUX=enforcing
-        # SELINUXTYPE= can take one of three two values:
-        #     targeted - Targeted processes are protected,
-        #     minimum - Modification of targeted policy. Only selected processes are protected.
-        #     mls - Multi Level Security protection.
-        SELINUXTYPE=targeted
-      ~~~
+    {{< file "/etc/selinux/config" aconf >}}
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+#     enforcing - SELinux security policy is enforced.
+#     permissive - SELinux prints warnings instead of enforcing.
+#     disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+# SELINUXTYPE= can take one of three two values:
+#     targeted - Targeted processes are protected,
+#     minimum - Modification of targeted policy. Only selected processes are protected.
+#     mls - Multi Level Security protection.
+SELINUXTYPE=targeted
+
+{{< /file >}}
+
 
 4.  Reboot your Linode. During the bootup process, SELinux may need to run a relabeling of the filesystem. It will handle this automatically and when it's done, it'll reboot the system. If you do not have Lassie enabled, the Linode will shut down and you will need to manually reboot in the Linode Manager.
 

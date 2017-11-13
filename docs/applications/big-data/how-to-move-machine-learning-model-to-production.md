@@ -3,11 +3,11 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'This guide shows how to use an existing deep learning model as part of a production application. A pre-trained model is included as an API endpoint for a Flask app.'
+keywords: ["deep learning", "big data", "python", "keras", "flask", "machine learning", "neural networks"]
 og_description: 'Use an pre-trained deep learning model as part of a production application.'
-keywords: 'deep learning,big data,python,keras,flask,machine learning,neural networks'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, October 9th, 2017'
-modified: Tuesday, October 10th, 2017
+published: 2017-10-09
+modified: 2017-10-10
 modified_by:
   name: Linode
 title: 'How to Move Your Machine Learning Model to Production'
@@ -57,8 +57,6 @@ You will be using Python both to create a model and to deploy the model to a Fla
 
         conda install keras tensorflow h5py pillow flask numpy
 
-### Test it on Jupyter
-
 If you would like to experiment with the model, you may want to use a Jupyter notebook. See our [Install a Jupyter Notebook Server](/docs/applications/big-data/install-a-jupyter-notebook-server-on-a-linode-behind-an-apache-reverse-proxy) guide for more details.
 
 ## Prepare a Model
@@ -77,17 +75,19 @@ Keras is a deep learning library for Python. It provides an object-oriented inte
 
 Since developing and training a deep learning model is beyond the scope of this tutorial, the code below is provided without explanation. The model is a simplified version of the example from [Elite Data Science's excellent tutorial](https://elitedatascience.com/keras-tutorial-deep-learning-in-python). If you don't have a background in deep learning and are interested in learning more, you can complete that tutorial and then skip to the [Flask API](#flask-api) section of this guide.
 
-{:.note}
-> This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
->
-> Older versions of Keras require deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from GitHub, the script below checks and removes optimizer weights.
->
->     import h5py
->     with h5py.File('my_model.h5', 'r+') as f:
->         if 'optimizer_weights' in f.keys():
->             del f['optimizer_weights']
->         f.close()
->
+{{< note >}}
+This model is simple enough, and the data set small enough, that the script can be run on a Linode or on your local machine. However, using a computer without a GPU will still take at least ten minutes. If you would prefer to skip this step, a pre-trained model can be downloaded by running the command `wget https://github.com/linode/docs-scripts/raw/master/hosted_scripts/my_model.h5`
+{{< /note >}}
+
+Older versions of Keras require deleting optimizer weights in the pre-trained model. If the pre-trained model is downloaded from GitHub, the script below checks and removes optimizer weights.
+
+{{< file "optimizer-weights.py" py >}}
+import h5py
+with h5py.File('my_model.h5', 'r+') as f:
+if 'optimizer_weights' in f.keys():
+del f['optimizer_weights']
+f.close()
+{{< /file >}}
 
 1.  Create a directory for the model:
 
@@ -95,44 +95,44 @@ Since developing and training a deep learning model is beyond the scope of this 
 
 2.  Create a Python script to build and train your model:
 
-    {:.file}
-    ~/models/mnist_model.py
-    :   ~~~
-        from keras.models import Sequential
-        from keras.layers import Dense, Dropout, Activation, Flatten
-        from keras.layers import Convolution2D, MaxPooling2D
-        from keras.utils import np_utils
-        from keras.datasets import mnist
+    {{< file "~/models/mnist_model.py" py >}}
+from keras.models import Sequential
+from keras.layers import Dense, Dropout, Activation, Flatten
+from keras.layers import Convolution2D, MaxPooling2D
+from keras.utils import np_utils
+from keras.datasets import mnist
 
-        (X_train, y_train), (X_test, y_test) = mnist.load_data()
-        X_train = X_train.reshape(X_train.shape[0],1,28,28)
-        X_test  = X_test.reshape(X_test.shape[0],1,28,28)
-        X_train = X_train.astype('float32')
-        X_test = X_test.astype('float32')
-        X_train /= 255
-        X_test /= 255
+(X_train, y_train), (X_test, y_test) = mnist.load_data()
+X_train = X_train.reshape(X_train.shape[0],1,28,28)
+X_test  = X_test.reshape(X_test.shape[0],1,28,28)
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+X_train /= 255
+X_test /= 255
 
-        Y_train = np_utils.to_categorical(y_train, 10)
-        Y_test = np_utils.to_categorical(y_test, 10)
+Y_train = np_utils.to_categorical(y_train, 10)
+Y_test = np_utils.to_categorical(y_test, 10)
 
-        model = Sequential()
+model = Sequential()
 
-        model.add(Convolution2D(32,(3,3),activation='relu',input_shape=(1,28,28),dim_ordering='th'))
-        model.add(MaxPooling2D(pool_size=(2,2)))
-        model.add(Dropout(0.25))
-        model.add(Flatten())
-        model.add(Dense(128, activation='relu'))
-        model.add(Dropout(0.5))
-        model.add(Dense(10, activation='softmax'))
-        model.compile(loss='categorical_crossentropy',
-                      optimizer='adam',
-                      metrics=['accuracy'])
+model.add(Convolution2D(32,(3,3),activation='relu',input_shape=(1,28,28),dim_ordering='th'))
+model.add(MaxPooling2D(pool_size=(2,2)))
+model.add(Dropout(0.25))
+model.add(Flatten())
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(10, activation='softmax'))
+model.compile(loss='categorical_crossentropy',
+              optimizer='adam',
+              metrics=['accuracy'])
 
-        model.fit(X_train, Y_train,
-                  batch_size=32, nb_epoch=5, verbose=1)
+model.fit(X_train, Y_train,
+          batch_size=32, nb_epoch=5, verbose=1)
 
-        model.save('my_model.h5')
-        ~~~
+model.save('my_model.h5')
+
+{{< /file >}}
+
 
 3.  Run the script:
 
@@ -140,10 +140,9 @@ Since developing and training a deep learning model is beyond the scope of this 
 
     There may be a warning message as shown below from a pip or conda installation which means installing from source could offer superior performance.
 
-    {:.output}
-    ~~~
-    The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
-    ~~~
+    {{< output >}}
+The TensorFlow library wasn't compiled to use SSE4.1 instructions, but these are available on your machine and could speed up CPU computations.
+{{< /output >}}
 
     If the script executes successfully, you should see the `my_model.h5` file in the `models` directory. The `model.save()` command in Keras allows you to save both the model architecture and the trained weights.
 
@@ -161,38 +160,38 @@ Once a model has been trained, using it to generate predictions is much simpler.
 
 3.  Create `/var/www/flaskapi/flaskapi/__init__.py` in a text editor and add the following:
 
-    {:.file}
-    /var/www/flaskapi/flaskapi/\__init__.py
-    : ~~~
-      from flask import Flask, jsonify, request
-      import numpy as np
-      import PIL
-      from PIL import Image
-      from keras.models import load_model
+    {{< file "/var/www/flaskapi/flaskapi/__init__.py" py >}}
+from flask import Flask, jsonify, request
+import numpy as np
+import PIL
+from PIL import Image
+from keras.models import load_model
 
-      app = Flask(__name__)
+app = Flask(__name__)
 
-      model = load_model('/var/www/flaskapi/flaskapi/my_model.h5')
+model = load_model('/var/www/flaskapi/flaskapi/my_model.h5')
 
-      @app.route('/predict', methods=["POST"])
-      def predict_image():
-              # Preprocess the image so that it matches the training input
-              image = request.files['file']
-              image = Image.open(image)
-              image = np.asarray(image.resize((28,28)))
-              image = image.reshape(1,1,28,28)
+@app.route('/predict', methods=["POST"])
+def predict_image():
+        # Preprocess the image so that it matches the training input
+        image = request.files['file']
+        image = Image.open(image)
+        image = np.asarray(image.resize((28,28)))
+        image = image.reshape(1,1,28,28)
 
-              # Use the loaded model to generate a prediction.
-              pred = model.predict(image)
+        # Use the loaded model to generate a prediction.
+        pred = model.predict(image)
 
-              # Prepare and send the response.
-              digit = np.argmax(pred)
-              prediction = {'digit':int(digit)}
-              return jsonify(prediction)
+        # Prepare and send the response.
+        digit = np.argmax(pred)
+        prediction = {'digit':int(digit)}
+        return jsonify(prediction)
 
-      if __name__ == "__main__":
-              app.run()
-      ~~~
+if __name__ == "__main__":
+        app.run()
+
+{{< /file >}}
+
 
     This time, the only module you need to import from Keras is `load_model`, which reads `my_model.h5` and loads the model and weights. Once the model is loaded, the `predict()` function will generate a set of probabilities for each of the numbers from 0-9, indicating the likelihood that the digit in the image matches each number. The `argmax` function from the Numpy library returns the number with the highest probability: the number that the model thinks is the most likely match.
 
@@ -218,19 +217,15 @@ Apache modules are typically installed with the system installation of Apache. H
 
     The output should be similar to:
 
-    {:.output}
-    ~~~
-    LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
-    WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
-    ~~~
+        LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
+WSGIPythonHome "/home/linode/miniconda3/envs/deeplearning"
 
 4.  Create a `wsgi.load` file in the Apache `mods-available` directory. Copy the `LoadModule` directive from above and paste it into the file:
 
-    {: .file}
-    /etc/apache2/mods-available/wsgi.load
-    : ~~~
-      LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
-      ~~~
+    {{< file "/etc/apache2/mods-available/wsgi.load" >}}
+LoadModule wsgi_module "/home/linode/miniconda3/envs/deeplearning/lib/python3.6/site-packages/mod_wsgi-4.5.20-py3.6-linux-x86_64.egg/mod_wsgi/server/mod_wsgi-py36.cpython-36m-x86_64-linux-gnu.so"
+{{< /file >}}
+
 
 5.  Enable the mod:
 
@@ -240,33 +235,32 @@ Apache modules are typically installed with the system installation of Apache. H
 
 1.  Create a `flaskapi.wsgi` file with settings for your app:
 
-    {:.file}
-    /var/www/flaskapi/flaskapi/flaskapi.wsgi
-    :  ~~~
-       #!/usr/bin/python
-       import sys
-       sys.path.insert(0,"/var/www/flaskapi/")
+    {{< file "/var/www/flaskapi/flaskapi/flaskapi.wsgi" >}}
+#!/usr/bin/python
+import sys
+sys.path.insert(0,"/var/www/flaskapi/")
 
-       from flaskapi import app as application
-       ~~~
+from flaskapi import app as application
+{{< /file >}}
+
 
 2.  Configure a virtual host for your app. Create `flaskapi.conf` in Apache's `sites-available` directory and add the following content, replacing `example.com` with your Linode's public IP address. For the `WSGIDaemonProcess` directive, set the Python home path to the output of `mod_wsgi-express module-config` under `WSGIPythonHome`:
 
-    {:.file}
-    /etc/apache2/sites-available/flaskapi.conf
-    :  ~~~
-       <Directory /var/www/flaskapi/flaskapi>
-         Require all granted
-       </Directory>
-       <VirtualHost *:80>
-         ServerName example.com
-         ServerAdmin admin@example.com
-         WSGIDaemonProcess flaskapi python-home=/home/linode/miniconda3/envs/deeplearning
-         WSGIScriptAlias / /var/www/flaskapi/flaskapi/flaskapi.wsgi
-         ErrorLog /var/www/html/example.com/logs/error.log
-         CustomLog /var/www/html/example.com/logs/access.log combined
-       </VirtualHost>
-       ~~~
+    {{< file "/etc/apache2/sites-available/flaskapi.conf" apache >}}
+<Directory /var/www/flaskapi/flaskapi>
+  Require all granted
+</Directory>
+<VirtualHost *:80>
+  ServerName example.com
+  ServerAdmin admin@example.com
+  WSGIDaemonProcess flaskapi python-home=/home/linode/miniconda3/envs/deeplearning
+  WSGIScriptAlias / /var/www/flaskapi/flaskapi/flaskapi.wsgi
+  ErrorLog /var/www/html/example.com/logs/error.log
+  CustomLog /var/www/html/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 3.  Create a `logs` directory:
 
@@ -292,10 +286,7 @@ Your API endpoint should now be ready to accept POST requests with an image atta
 
     If successful, you will receive a JSON response that correctly identifies the digit in the image:
 
-    {:.output}
-    ~~~ txt
-    { 'digit' : 7 }
-    ~~~
+        { 'digit' : 7 }
 
     The first request may appear to take some time because `mod_wsgi` uses lazy loading of the Flask application.
 
@@ -306,3 +297,4 @@ Most production machine learning solutions involve a longer pipeline than demons
 The API produced in this guide also lacks many features that a real-world application would need, including error handling and dealing with bulk image requests. To make the service more useful, the full preprocessing used by MNIST should be applied to each image.
 
 In addition, images submitted to the API could be used as a source of data to further train and refine your model. In this case, you could configure the API to copy each submitted image, along with the model's prediction, to a database for later analysis. See the links in **More Information** if you are interested in these topics.
+

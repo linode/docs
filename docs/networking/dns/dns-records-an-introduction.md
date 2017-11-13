@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn about DNS records and system structure.'
-keywords: 'dns records,domain names,dns record types,dns resolution'
+keywords: ["dns records", "domain names", "dns record types", "dns resolution"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
-modified: Friday, November 3rd, 2017
+aliases: ['dns-guides/introduction-to-dns-records/','dns-guides/introduction-to-dns/','networking/dns/introduction-to-dns-records/']
+modified: 2017-11-02
 modified_by:
   name: Linode
-published: 'Wednesday, July 29th, 2009'
+published: 2009-07-29
 title: "DNS Records: an Introduction"
 external_resources:
 - '[DNS Manager](/docs/networking/dns/dns-manager)'
@@ -22,7 +22,7 @@ The Domain Name System (DNS) is the Internet's address book. DNS directs web tra
 
 ![DNS Records: an Introduction](/docs/assets/dns-records-an-introduction.png "DNS Records: an Introduction")
 
-##How DNS Works
+## How DNS Works
 
 Before adding any DNS records, you should learn the basics of DNS. You'll start by dissecting a domain name, and then you'll learn about the mechanics of DNS resolution, including name servers, zone files, and individual DNS records.
 
@@ -88,7 +88,7 @@ Here's how the DNS lookup process works:
 
 The scenario described above is what happens if the ISP has no current information about the requested domain. In actuality, ISPs cache a lot of DNS information after they've looked it up the first time. This results in faster lookups and less strain on DNS servers. Usually caching is a good thing, but it can be a problem if you've recently made a change to your DNS information, like when you move to Linode from a different hosting provider. In those cases, you'll want to pay attention to your zone file's [time to live (TTL)](/docs/networking/dns/dns-manager#set-the-time-to-live-or-ttl) so that your DNS change happens as quickly as possible.
 
-##Types of DNS Records
+## Types of DNS Records
 
 ### A and AAAA
 
@@ -100,9 +100,9 @@ You can also make A records for subdomains you want to direct to your server:
 
     hello.example.com       A       12.34.56.78
 
- {: .note }
->
-> You can point different subdomains to different IP addresses.
+{{< note >}}
+You can point different subdomains to different IP addresses.
+{{< /note >}}
 
 If you want to point *every* subdomain of *example.com* to your Linode's IP, you can use an asterisk (*\**\*\*) as your subdomain:
 
@@ -131,9 +131,9 @@ With this setup, when `alias.com` is requested, the initial DNS lookup will find
 
 CNAME records exist so that domains can have aliases. You should not use a CNAME record for a domain that gets email, because some mail servers handle mail oddly for domains with CNAME records. Likewise, MX records cannot reference CNAME-defined hostnames. Also, the target domain for a CNAME record should have a normal A-record resolution. Chaining or looping CNAME records is not recommended.
 
-{: .note }
->
-> In some cases, a CNAME record can be an effective way to redirect traffic from one domain to another while keeping the same URL. However, keep in mind that a CNAME record does not function the same way as a URL redirect. A CNAME record directs web traffic for a particular domain to the target domain's IP address. Once the visitor reaches that IP address, the local Apache (or other web server) configuration will determine how the domain is handled. If that domain is not configured on the server, the server will simply display its default web page (if any). This may or may not be the web page for the target domain in the CNAME record, depending on how the server is configured.
+{{< note >}}
+In some cases, a CNAME record can be an effective way to redirect traffic from one domain to another while keeping the same URL. However, keep in mind that a CNAME record does not function the same way as a URL redirect. A CNAME record directs web traffic for a particular domain to the target domain's IP address. Once the visitor reaches that IP address, the local Apache (or other web server) configuration will determine how the domain is handled. If that domain is not configured on the server, the server will simply display its default web page (if any). This may or may not be the web page for the target domain in the CNAME record, depending on how the server is configured.
+{{< /note >}}
 
 ### DKIM
 
@@ -191,9 +191,9 @@ As a prerequisite for adding a PTR record, you need to create a valid, live A or
 
 For instructions on setting up reverse DNS on your Linode, see our [Reverse DNS](/docs/networking/dns/setting-reverse-dns) guide.
 
-{: .note }
->
-> It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
+{{< note >}}
+It's possible to have different IPs (including both IPv4 and IPv6 addresses) that have the same domain set for reverse DNS. To do this, you will have to configure multiple A or AAAA records for that domain that point to the various IPs.
+{{< /note >}}
 
 ### SOA
 
@@ -201,9 +201,9 @@ An *SOA record* or *Start of Authority record* labels a zone file with the name 
 
     @   IN  SOA ns1.linode.com. admin.example.com. 2013062147 14400 14400 1209600 86400
 
-{: .note }
->
-> The administrative email address is written with a period (**.**) instead of an at symbol (<**@**>).
+{{< note >}}
+The administrative email address is written with a period (**.**) instead of an at symbol (<**@**>).
+{{< /note >}}
 
 Here's what the numbers mean:
 
@@ -225,9 +225,9 @@ In your SPF record, you should list all the mail servers from which you send mai
 
 If your Linode is the only mail server you use, you should be able to use the example record above. With this SPF record, the receiving server will check the IP addresses of both the sending server and the IP address of example.com. If the IPs match, the check passes. If not, the check will "soft fail" (i.e., the message will be marked but will not automatically be rejected for failing the SPF check).
 
-{: .note }
->
-> Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting openspf.org to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< note >}}
+Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting openspf.org to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< /note >}}
 
 ### SRV
 

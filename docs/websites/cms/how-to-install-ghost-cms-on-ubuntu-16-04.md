@@ -4,14 +4,14 @@ author:
   email: blagoeres100@gmail.com
 description: 'This tutorial will teach you how to install Ghost, a publishing platform great for running blogs and sharing published content, on Ubuntu 16.04'
 og_description: 'Easily publish your own professional-looking blog using Ghost on your Linode.'
-keywords: 'ghost,install ghost,ghost on linode,configure ghost,deploy ghost on ubuntu 16.04'
+keywords: ["ghost", "install ghost", "ghost on linode", "configure ghost", "deploy ghost on ubuntu 16.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 12, 2017
+modified: 2017-09-12
 modified_by:
   name: Linode
-published: 'Tuesday, September 12, 2017'
+published: 2017-09-12
 title: How to Install Ghost CMS on Ubuntu 16.04
-alias: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/']
+aliases: ['websites/cms/create-a-professional-blog-with-ghost-on-ubuntu-16-04/']
 contributor:
   name: Blago Eres
   link: https://github.com/blagoeres
@@ -29,11 +29,11 @@ Ghost 1.0.0 is the first major, stable release of the Ghost content management s
 
 In this guide you'll set up, deploy, and secure a Ghost 1.0.0 blog on a Linode running Ubuntu 16.04 LTS, using nginx, MySQL, Node.js, NPM, Ghost-CLI, and Let's Encrypt.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->Replace each instance of `example.com` in this guide with your site’s domain name.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, consult our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+Replace each instance of `example.com` in this guide with your site’s domain name.
+{{< /note >}}
 
 ## Before you Begin
 

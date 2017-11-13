@@ -3,12 +3,12 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Install and optimize the WordPress blogging and content management system on your Linode.'
-keywords: 'install WordPress, WordPress on Linode, how to configure WordPress, Permalink'
+keywords: ["install WordPress", " WordPress on Linode", " how to configure WordPress", " Permalink"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, October 21, 2016
+modified: 2016-10-21
 modified_by:
   name: Edward Angert
-published: 'Friday, October 21, 2016'
+published: 2016-10-21
 title: Install WordPress on Ubuntu 16.04
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
@@ -20,13 +20,13 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
 ![Install WordPress on Ubuntu 16.04](/docs/assets/wordpress-ubuntu-16-04-title.png "Install WordPress on Ubuntu 16.04")
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
->
->Replace each instance of `example.com` in this guide with your site's domain name.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+All configuration files should be edited with elevated privileges. Remember to include `sudo` before running your text editor.
+
+Replace each instance of `example.com` in this guide with your site's domain name.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -97,8 +97,9 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
     WordPress will test the credentials and if authentication is successful, prompt you to **Run the install**.
 
-    {: .note}
-    > If Wordpress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
+    {{< note >}}
+If Wordpress doesn't display when you visit your domain, try adding `/wp-admin` to the end of the URL. This sometimes happens if you previously created an index file in your site's home directory.
+{{< /note >}}
 
 2.  Fill out the administration information and click **Install WordPress**.
 
@@ -108,12 +109,12 @@ In this guide, you'll learn to how to install WordPress on a Linode running Ubun
 
 3.  By default, WordPress will prompt you for FTP credentials when you install new themes or plugins. To bypass this, modify your `wp-config.php` file by adding the following lines:
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/wp-config.php
-    :   ~~~ php
-        /** Bypass FTP */
-        define('FS_METHOD', 'direct');
-        ~~~
+    {{< file-excerpt "/var/www/html/example.com/public_html/wp-config.php" php >}}
+/** Bypass FTP */
+define('FS_METHOD', 'direct');
+
+{{< /file-excerpt >}}
+
 
 4.  If you're using Apache, run the following commands to ensure that `mod_rewrite` is enabled and then restart Apache to apply the changes:
 
@@ -146,15 +147,15 @@ To configure permalink settings:
 
 Instruct Apache to allow individual sites to update the `.htaccess` file, by adding the following options to the *Directory* section in your virtual host configuration:
 
-{: .file-excerpt}
-/etc/apache2/sites-available/example.com.conf
-:   ~~~ apache
-    <Directory /var/www/html/example.com/public_html>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-    </Directory>
-    ~~~
+{{< file-excerpt "/etc/apache2/sites-available/example.com.conf" apache >}}
+<Directory /var/www/html/example.com/public_html>
+    Options Indexes FollowSymLinks
+    AllowOverride All
+    Require all granted
+</Directory>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache to enable the changes:
 
@@ -164,13 +165,13 @@ Restart Apache to enable the changes:
 
 Direct nginx to check whether each permalink refers to an existing page. By default, nginx assumes that it doesn't, and returns a server-side 404. Update the following lines in the `location / {` block in your virtual host configuration:
 
-{: .file-excerpt}
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    location / {
-        index index.php index.html index.htm;
-        try_files $uri $uri/ /index.php?$args;
-    ~~~
+{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+location / {
+    index index.php index.html index.htm;
+    try_files $uri $uri/ /index.php?$args;
+
+{{< /file-excerpt >}}
+
 
 ## Configure Maximum File Size Upload Setting to Allow Larger Files
 
@@ -179,12 +180,11 @@ By default, PHP restricts web uploads to under two megabytes. To allow larger fi
 **Apache**: `/etc/php/7.0/apache2/php.ini`
 **nginx**: `/etc/php/7.0/fpm/php.ini`
 
-{: .file-excerpt}
-:  ~~~ php
-   ; Maximum allowed size for uploaded files.
-   ; http://php.net/upload-max-filesize
-   upload_max_filesize = 2M
-   ~~~
+    {{< file-excerpt php >}}
+; Maximum allowed size for uploaded files.
+; http://php.net/upload-max-filesize
+upload_max_filesize = 2M
+{{< /file-excerpt >}}
 
 ## Install Optional PHP Extensions
 
@@ -210,5 +210,6 @@ Wordpress, and many of its plugins, use PHP extensions that you'll need to insta
 
 These are only a few of the extensions you may find useful. Plenty of other PHP extensions exist and are required for certain plugin features, such as `php7.0-curl`, `php7.0-xml`, and `php7.0-mcrypt`. If you're having issues with a plugin or widget, check its documentation to see if a PHP extension is required.
 
-{: .note}
-> The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`.
+{{< note >}}
+The package names above assume you're working with PHP version 7.0. If you installed PHP 5 from the Ubuntu repositories, modify the commands to use the `php` prefix rather than `php7.0`. For example, instead of installing `php7.0-gd`, use `php-gd`.
+{{< /note >}}

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Troubleshooting tips, basic Linux commands, and software usage suggestions for beginner Linux system administrators.'
-keywords: 'linux tips,linux beginners,systems administration,admin,linux,mail,http,troubleshooting'
+keywords: ["linux tips", "linux beginners", "systems administration", "admin", "linux", "mail", "http", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['using-linux/administration-basics/']
-modified: Wednesday, October 5th, 2016
+aliases: ['using-linux/administration-basics/']
+modified: 2016-10-05
 modified_by:
   name: Linode
-published: 'Sunday, December 13th, 2009'
+published: 2009-12-13
 title: Linux System Administration Basics
 ---
 
@@ -80,21 +80,20 @@ The `/etc/hosts` file provides a list of IP addresses with corresponding hostnam
 
 Some applications require that the machine properly identify itself in the `/etc/hosts` file. As a result, we recommend configuring the `/etc/hosts` file shortly after deployment. Here is an example file:
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    127.0.0.1   localhost.localdomain   localhost
-    103.0.113.12    username.example.com   username
-    ~~~
+{{< file-excerpt "/etc/hosts" py >}}
+127.0.0.1   localhost.localdomain   localhost
+103.0.113.12    username.example.com   username
+{{< /file-excerpt >}}
+
 
 You can specify a number of hostnames on each line separated by spaces. Every line must begin with one and only one IP address. In the above example, replace `103.0.113.12` with your machine's IP address. Consider a few additional `/etc/hosts` entries:
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    198.51.100.30   example.com
-    192.168.1.1     stick.example.com
-    ~~~
+{{< file-excerpt "/etc/hosts" py >}}
+198.51.100.30   example.com
+192.168.1.1     stick.example.com
+
+{{< /file-excerpt >}}
+
 
 In this example, all requests for the `example.com` hostname or domain will resolve to the IP address `198.51.100.30`, which bypasses the DNS records for `example.com` and returns an alternate website.
 
@@ -265,10 +264,11 @@ You can quit at any time by pressing the `F10` or `Q` keys. There are a couple o
 
 Web developers and editors often use the FTP protocol to transfer and manage files on a remote system. FTP, however, is very insecure and inefficient for managing the files on a system when you have SSH access.
 
-If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and [using SSH and the terminal](/docs/using-linux/using-the-terminal).
+If you're new to Linux systems administration, consider our "[Tools & Reference](/docs/tools-reference/)" section and articles including: [installing and using WinSCP](/docs/networking/file-transfer/transfer-files-winscp), [using rsync to synchronize files](/docs/linux-tools/utilities/rsync) and [using SSH and the terminal](/content/using-linux/using-the-terminal).
 
-{: .caution}
->If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties.
+{{< caution >}}
+If you are giving other users access to upload files to your server, consider the [security implications](/docs/security/basics) of all additional access that you grant to third parties.
+{{< /caution >}}
 
 ### Upload Files to a Remote Server
 
@@ -632,11 +632,11 @@ By default, error logs are located in the `/var/log/apache2/error.log` file (on 
 
 In the default virtual host configurations suggested in our [Apache installation](/docs/websites/apache/) and [LAMP guides](/docs/websites/lamp), we suggest adding a custom log setting:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~
-    ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" >}}
+ErrorLog /var/www//html/example.com/logs/error.log CustomLog /var/www/html/example.com/logs/access.log combined
+
+{{< /file-excerpt >}}
+
 
 Where `example.com` represents the name of your virtual host and the location of its resources. These directives make Apache create two log files that contain logging information specific to that virtual host. This allows you to easily troubleshoot errors on specific virtual hosts. To track or tail the error log:
 
@@ -715,11 +715,15 @@ If you want to use your server to send email through an external SMTP server, co
 
 Use the command `type msmtp` or `which msmtp`, to find the location of `msmtp` on your system. Typically the program is located at `/usr/bin/msmtp`. You can specify authentication credentials with command line arguments or by declaring SMTP credentials in a configuration file. Here is an example `.msmtprc` file.
 
-{: .file-excerpt }
-.msmtprc example
-:   ~~~
-    account default host smtp.example.com from <username@example.com> auth on user username password s3cr37 tls on tls\_certcheck off port 587
-    ~~~
+{{< file-excerpt ".msmtprc example" >}}
+account default host smtp.example.com
+from <username@example.com>
+auth on user username password s3cr37
+tls on
+tls_certcheck off
+port 587
+{{< /file-excerpt >}}
+
 
 The `.msmptrc` file needs to be set to mode 600 and owned by the user account that will be sending mail. For example, if the configuration file is located at `/srv/smtp/msmtprc`, you can call mstmp with the following command:
 

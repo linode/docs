@@ -3,12 +3,12 @@ author:
     name: Chris Walsh
     email: docs@linode.com
 description: 'Getting started with MariaDB on CentOS 7'
-keywords: 'MariaDB on Linux,CentOS,cloud,cloud hosting,Linux,MariaDB,database,MySQL,install MariaDB,secure MariaDB,mysqltuner'
+keywords: ["MariaDB on Linux", "CentOS", "cloud", "cloud hosting", "Linux", "MariaDB", "database", "MySQL", "install MariaDB", "secure MariaDB", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, August 21st 2015
+modified: 2015-08-21
 modified_by:
     name: Linode
-published: 'Friday, August 21st, 2015'
+published: 2015-08-21
 title: 'How to Install MariaDB on CentOS 7'
 external_resources:
  - '[MariaDB Documentation](https://mariadb.com/kb/en/mariadb/documentation/)'
@@ -24,9 +24,9 @@ MariaDB is a fork of the popular cross-platform MySQL database management system
 
 MariaDB replaced MySQL as the default database system in the CentOS 7 repositories. Though installing MySQL into CentOS 7 is not difficult (see our [MySQL CentOS 7 guide](https://linode.com/docs/databases/mysql/how-to-install-mysql-on-centos-7) for instructions), if you simply need a database MariaDB is recommended for official support and a minimal chance of incompatibilities with other repository software.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -55,9 +55,9 @@ Enable MariaDB to start on boot and then start the service:
 
 MariaDB will bind to localhost (127.0.0.1) by default. For information on connecting to a remote database using SSH, see our [MySQL remote access guide](https://www.linode.com/docs/databases/mysql/securely-administer-mysql-with-an-ssh-tunnel), which also applies to MariaDB.
 
-{: .note}
->
->Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< note >}}
+Allowing unrestricted access to MariaDB on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MariaDB to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< /note >}}
 
 ## Harden MariaDB Server
 
@@ -71,7 +71,7 @@ You will be given the choice to change the MariaDB root password, remove anonymo
 
 The standard tool for interacting with MariaDB is the `mariadb` client, which installs with the `mariadb-server` package. The MariaDB client is used through a terminal.
 
-###Root Login
+### Root Login
 
 1.  To log in to MariaDB as the root user:
 

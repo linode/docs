@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing git on GNU/Linux, MacOSX, and Windows'
-keywords: 'git,dvcs,vcs,scm,gitweb'
+keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
-modified: Monday, July 3, 2017
+aliases: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
+modified: 2017-07-03
 modified_by:
   name: Linode
-published: 'Friday, September 4th, 2009'
+published: 2009-09-04
 title: How to Install Git on Mac and Windows
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
@@ -26,9 +26,9 @@ This guide explains how to install the latest, stable, prepackaged version `git`
 
 For more information about using and configuring Git, see our [Getting Started with Git](/docs/development/version-control/how-to-configure-git/) guide.
 
- {: .note }
->
-> This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
+{{< note >}}
+This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account.
+{{< /note >}}
 
 ## Install Git on Linux
 
@@ -183,9 +183,9 @@ To install Git on Windows you will need to download the installer from the [Git]
 
     ![Select line ending conversions.](/docs/assets/1603-Git-Win-09.png)
 
-     {: .note }
-    >
-    > It is strongly recommended that you keep the default settings for line ending conversions. Changing from the default may result in formatting problems when viewed on your Linode.
+     {{< note >}}
+It is strongly recommended that you keep the default settings for line ending conversions. Changing from the default may result in formatting problems when viewed on your Linode.
+{{< /note >}}
 
 10. The program will now begin installing:
 

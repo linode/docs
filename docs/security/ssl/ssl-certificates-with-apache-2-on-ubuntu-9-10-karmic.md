@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve SSL-enabled websites with the Apache 2 web server on Ubuntu 9.10 (Karmic).'
-keywords: 'ssl,apache ssl,ssl on ubuntu,web sever,ubuntu,ubuntu karmic,ubuntu 9.10'
+keywords: ["ssl", "apache ssl", "ssl on ubuntu", "web sever", "ubuntu", "ubuntu karmic", "ubuntu 9.10"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/ssl-guides/ubuntu-9-10-karmic/']
-modified: Friday, April 29th, 2011
+aliases: ['web-servers/apache/ssl-guides/ubuntu-9-10-karmic/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Friday, February 26th, 2010'
+published: 2010-02-26
 title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -18,8 +18,7 @@ title: 'SSL Certificates with Apache 2 on Ubuntu 9.10 (Karmic)'
 
 This guide will assist you with enabling SSL for websites served under the Apache web server. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you've successfully set up Apache for serving virtual hosts as outlined in our [Apache 2 on Ubuntu 9.10 (Karmic) guide](/docs/web-servers/apache/installation/ubuntu-9-10-karmic). These steps should be performed via an SSH session to your Linode as the root user.
 
-Use a Self-Signed SSL Certificate with Apache
----------------------------------------------
+# Use a Self-Signed SSL Certificate with Apache
 
 These instructions will help you generate a generic self-signed certificate, which may be used to provide SSL service for all name-based hosts on your Linode. Please note that self-signed certificates will generate warnings in a visitor's browser; proceed to "Installing a Commercial SSL Certificate" if you need to set up SSL on a domain using a certificate signed by a commercial SSL provider.
 
@@ -57,29 +56,29 @@ You will be asked for several configuration values. Enter values appropriate for
 
 SSL name-based virtual hosts are still not supported in `/etc/apache2/ports.conf`, we'll need to add an entry for a specific IP address on your Linode as follows. You may use a single IP to provide self-signed SSL service for multiple vhosts.
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:443
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:443
+
+{{< /file-excerpt >}}
+
 
 Replace "12.34.56.78" with your Linode's IP address. Next, edit the virtual host configuration files for sites which you would like to enable SSL on. For each virtual host, you must add the following stanza (change the values as appropriate for each site). Note that we've essentially reproduced the configuration for a non-SSL site, with the addition of three lines for SSL.
 
-{: .file-excerpt }
-Apache virtual hosting file
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/apache2/ssl/apache.pem
-         SSLCertificateKeyFile /etc/apache2/ssl/apache.key
+{{< file-excerpt "Apache virtual hosting file" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/apache2/ssl/apache.pem
+     SSLCertificateKeyFile /etc/apache2/ssl/apache.key
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 
@@ -87,8 +86,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled (after accepting your browser's warnings about the certificate).
 
-Install a Commercial SSL Certificate
-------------------------------------
+# Install a Commercial SSL Certificate
 
 Follow these instructions to get a commercial SSL certificate installed on your server. Please note that commercial SSL certificates require a unique IP address for SSL-enabled sites.
 
@@ -152,28 +150,28 @@ For example, if we downloaded a root cert for Verisign, we would save it to `/et
 
 Next, we'll add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
-~~~ apache
+    {{< file-excerpt "/etc/apache2/ports.conf" apache>}}
 NameVirtualHost 12.34.56.78:443
-~~~
+{{< /file-excerpt >}}
 
 Replace "12.34.56.78" with the IP address of your SSL-enabled site. Next, edit the virtual host configuration file for the site you would like to enable SSL on (www.mydomain.com in our example). Add the following stanza; note that we've essentially reproduced the configuration for the non-SSL version of the site, with the addition of four lines for SSL. This example uses the CA certificate file for a certificate signed by Verisign.
 
-{: .file-excerpt }
-Apache virtual hosting file
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:443>
-         SSLEngine On
-         SSLCertificateFile /etc/apache2/ssl/www.mydomain.com.crt
-         SSLCertificateKeyFile /etc/apache2/ssl/www.mydomain.com.key
-         SSLCACertificateFile /etc/apache2/ssl/verisign.cer
+{{< file-excerpt "Apache virtual hosting file" apache >}}
+<VirtualHost 12.34.56.78:443>
+     SSLEngine On
+     SSLCertificateFile /etc/apache2/ssl/www.mydomain.com.crt
+     SSLCertificateKeyFile /etc/apache2/ssl/www.mydomain.com.key
+     SSLCACertificateFile /etc/apache2/ssl/verisign.cer
 
-         ServerAdmin info@mydomain.com
-         ServerName www.mydomain.com
-         DocumentRoot /srv/www/mydomain.com/public_html/
-         ErrorLog /srv/www/mydomain.com/logs/error.log
-         CustomLog /srv/www/mydomain.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+     ServerAdmin info@mydomain.com
+     ServerName www.mydomain.com
+     DocumentRoot /srv/www/mydomain.com/public_html/
+     ErrorLog /srv/www/mydomain.com/logs/error.log
+     CustomLog /srv/www/mydomain.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Restart Apache:
 
@@ -181,14 +179,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

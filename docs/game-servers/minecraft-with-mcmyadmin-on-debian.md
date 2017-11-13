@@ -3,17 +3,17 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'McMyAdmin is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8.'
-keywords: 'minecraft,mcmyadmin,debian,debian jessie,debian wheezy,jessie,wheezy,debian 7,debian 8'
+keywords: ["minecraft", "mcmyadmin", "debian", "debian jessie", "debian wheezy", "jessie", "wheezy", "debian 7", "debian 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, February 3rd, 2016
+modified: 2016-02-03
 modified_by:
   name: Linode
-published: 'Thursday, February 5th, 2015'
+published: 2015-02-05
 title: Installing McMyAdmin for Minecraft on Debian
 external_resources:
  - '[McMyAdmin Home Page](https://mcmyadmin.com/)'
  - '[McMyAdmin Settings Reference](http://wiki.cubecoders.com/wiki/3/mcmyadmin-settings-reference)'
-alias: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
+aliases: ['applications/game-servers/minecraft-with-mcmyadmin-on-debian/']
 ---
 
 [McMyAdmin](https://mcmyadmin.com/) is one of the most popular Minecraft server control panels available. It boasts compatibility with third party mods, heavy focus on security and a sleek web interface for managing your server. This guide covers the installation and configuration of a new McMyAdmin server on a Linode running Debian 7 or 8. Be aware that to actually play on a Minecraft server you must also have the game client from [minecraft.net](https://minecraft.net/).
@@ -34,7 +34,7 @@ Now see [Securing Your Server](/docs/security/securing-your-server/) again and c
 
 **IPv4**
 
-~~~
+    {{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -66,15 +66,15 @@ Now see [Securing Your Server](/docs/security/securing-your-server/) again and c
 -A FORWARD -j REJECT
 
 COMMIT
-~~~
+{{< /file-excerpt >}}
 
 **IPv6**
 
-By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availablity, thus including players whose ISPs or hardware don't support IPv6.
+By default, both McMyAdmin and Minecraft operate on IPv4, but unlike a default Minecraft server installation, McMyAdmin does not listen for incoming IPv6 traffic. Since Minecraft can not use both protocols simultaneously, IPv4 is usually chosen over IPv6 because of its much greater availability, thus including players whose ISPs or hardware don't support IPv6.
 
 If you choose *not* to use IPv6 on your Minecraft server, then it needs only basic IPv6 firewall rules.
 
-~~~
+    {{< file-excerpt "iptables" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -93,10 +93,9 @@ If you choose *not* to use IPv6 on your Minecraft server, then it needs only bas
 -A FORWARD -j REJECT
 
 COMMIT
-~~~
+{{< /file-excerpt >}}
 
-
-##Install Prerequisite Software
+## Install Prerequisite Software
 
 1.  Install the Java Runtime Environment, OpenJDK:
 
@@ -108,7 +107,7 @@ COMMIT
 		sudo wget http://mcmyadmin.com/Downloads/etc.zip
 		sudo unzip etc.zip; sudo rm etc.zip
 
-##Install and Start McMyAdmin
+## Install and Start McMyAdmin
 
 This section should be completed as your standard user, **not** as root. McMyAdmin will then install to `/home/username`.
 
@@ -155,11 +154,11 @@ This section should be completed as your standard user, **not** as root. McMyAdm
 		Notice	: This is the first time McMyAdmin has been started.
 		Notice	: You must complete the first-start wizard via the web interface.
 
-	{: .note}
-	>
-	>To exit McMyAdmin and return to the command line, enter `/quit`.
+	{{< note >}}
+To exit McMyAdmin and return to the command line, enter `/quit`.
+{{< /note >}}
 
-##Managing your Minecraft Server
+## Managing your Minecraft Server
 
 1.  Browse to the McMyAdmin web interface by visiting `http://YourLinodeIP:8080`.
 

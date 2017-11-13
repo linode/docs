@@ -1,1 +1,0 @@
-../platform/nodebalancer/nodebalancer-reference-guide.md

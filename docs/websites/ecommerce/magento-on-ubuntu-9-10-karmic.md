@@ -4,44 +4,43 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Installing Magento on an Ubuntu 9.10 LAMP stack.'
-keywords: 'magento,ecommerce,store,cart,shop,shopping'
+keywords: ["magento", "ecommerce", "store", "cart", "shop", "shopping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/magento/ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-applications/e-commerce/magento/ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Friday, February 5th, 2010'
+published: 2010-02-05
 title: 'Magento on Ubuntu 9.10 (Karmic)'
 ---
 
 Magento is a self hosted e-commerce solution used by many people to sell products online. It runs on a [LAMP stack](/docs/lamp-guides/ubuntu-9-10-karmic/) and offers the user a wide variety of options.
 
-Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Magento, we assume that you have followed our [getting started guide](/docs/getting-started/) as well as our [LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing Prerequisites
-------------------------
+# Installing Prerequisites
 
 Before installing Magento, we must ensure that the `universe` repositories are enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines:)
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 
@@ -66,16 +65,15 @@ Please see our [MySQL](/docs/databases/mysql/ubuntu-9-10-karmic) document for ad
 
 Additionally you will want to increase PHP's `memory_limit` setting, by editing the `/etc/php5/cli/php.ini` and `/etc/php5/apache2/php.ini` file as follows:
 
-{: .file-excerpt }
-/etc/php5/cli/php.ini and /etc/php5/apache2/php.ini
-:   ~~~ ini
-    memory_limit = 64M
-    ~~~
+{{< file-excerpt "/etc/php5/cli/php.ini and /etc/php5/apache2/php.ini" ini >}}
+memory_limit = 64M
+
+{{< /file-excerpt >}}
+
 
 At this point your server has the prerequisites to install Magento.
 
-Installing Magento
-------------------
+# Installing Magento
 
 Magento requires you to have a cookie on your system in order to download their packages. Alternatively, you can find the latest version of Magento on [this wiki page for installing Magento via ssh](http://www.magentocommerce.com/wiki/1_-_installation_and_configuration/installing_magento_via_shell_ssh). First we'll switch to the directory in which you'd like to install Magento. For this example we'll be installing Magento to our document root directory. After changing to the proper directory, we'll download the latest version of Magento, unpack it, grant the proper permissions and run `pear`. Run the following commands to install Magento:
 
@@ -100,8 +98,7 @@ From here you can point your browser to the URL you installed Magento to. All of
 
 You may want to install a commercial SSL certificate on your Magento website in order to encrypt the data passed between your customer's computer and your server. After following our [obtaining a commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) document, you can set up your SSL certificate in the Administrative Area. After logging in to Magento, scroll over the "System" tab and select "Configuration". Click the "Web" tab on the left-hand side and drop down the "Secure" listing. From here you can alter your Base URL to include the `https` protocol.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

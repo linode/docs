@@ -2,11 +2,11 @@
 author:
     name: Linode Community
     email: contribute@linode.com
-description: ‘Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.’
+description: 'Install Open Web Analytics (OWA) on CentOS 6.5, 7, Debian or Ubuntu with this guide.'
 keywords: ‘open web analytics,owa,Centos,mysql,debian,ubuntu’
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Tuesday, January 5th, 2016
-modified: Tuesday, January 5th, 2016
+published: 2016-01-05
+modified: 2016-01-05
 modified_by:
     name: Alex Fornuto
 title: 'Open Web Analytics (OWA): Install & Launch on Your Server'
@@ -18,7 +18,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+
+---
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 
@@ -31,52 +32,52 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
      - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
 
 
+    {{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
-    {: .note}
-    >
-    >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-    >
-    >Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
+Your server must be configured with a fully qualified domain name (FQDN) and not just an IP address. If needed, you can use the address provided in the Remote Access Tab next to your public IP address.
+{{< /note >}}
+
 
 2.  Make sure your system is up-to-date:
 
     - **CentOS**
 
-          yum update
+            yum update
 
     - **Debian & Ubuntu**
 
-          apt-get update && apt-get upgrade
+            apt-get update && apt-get upgrade
 
 3.  Install the supporting software packages:
 
     - **CentOS**
 
-          yum install httpd php php-mysql mysql-server mariadb-server
+            yum install httpd php php-mysql mysql-server mariadb-server
 
-      {: .note}
-      >
-      >This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.
+    {{< note >}}
+This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.
+{{< /note >}}
 
     - **Debian & Ubuntu**
 
-          apt-get install apache2 php5 php5-mysql mysql-server
+            apt-get install apache2 php5 php5-mysql mysql-server
 
 4.  CentOS users will need to enable and activate the `httpd` and `mariadb` services:
 
     - **CentOS 7**
 
-          systemctl enable mariadb
-          systemctl start mariadb
-          systemctl enable httpd
-          systemctl start httpd
+            systemctl enable mariadb
+            systemctl start mariadb
+            systemctl enable httpd
+            systemctl start httpd
 
     - **CentOS 6**
 
-          chkconfig mysqld on
-          service mysqld start
-          chkconfig httpd on
-          service httpd start
+            chkconfig mysqld on
+            service mysqld start
+            chkconfig httpd on
+            service httpd start
 
     Debian and Ubuntu users will need to restart the Apache2 daemon:
 
@@ -98,15 +99,22 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 3.  Create a database named `owadb`:
 
-        CREATE DATABASE owadb;
+    {{< highlight sql >}}
+CREATE DATABASE owadb;
+{{< /highlight >}}
 
 4.  Create a user named `owadbuser`. Replace the example password, `owadbpassword`, with a strong password of your choice. This information will be needed later to configure OWA.
 
-        GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
+    {{< highlight sql >}}
+GRANT ALL PRIVILEGES ON owadb.* TO owadbuser@localhost IDENTIFIED BY 'owadbpassword';
+{{< /highlight >}}
 
 5.  Exit the MySQL CLI:
 
-        FLUSH PRIVILEGES;
+    {{< highlight sql >}}
+FLUSH PRIVILEGES;
+{{< /highlight >}}
+
         quit
 
 ## OWA
@@ -121,9 +129,9 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
         wget https://github.com/padams/Open-Web-Analytics/archive/1.5.7.tar.gz
 
-    {: .note}
-    >
-    >Version 1.5.7 is the current version and may be different by the time you read this. Please check [The Open Web Analytics](http://www.openwebanalytics.com/) site for the latest information.
+    {{< note >}}
+Version 1.5.7 is the current version and may be different by the time you read this. Please check [The Open Web Analytics](http://www.openwebanalytics.com/) site for the latest information.
+{{< /note >}}
 
 3.  Unpack the downloaded file:
 
@@ -133,11 +141,11 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
     - **CentOS**
 
-          chown -R apache:apache Open*
+            chown -R apache:apache Open*
 
     - **Debian & Ubuntu**
 
-          chown -R www-data:www-data Open*
+            chown -R www-data:www-data Open*
 
 5.  **Recommended:** Rename the OWA folder:
 
@@ -162,8 +170,9 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 4.  Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account.
 
-    {: .caution}
-    > This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
+    {{< caution >}}
+This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
+{{< /caution >}}
 
 ## Using OWA
 
@@ -181,14 +190,13 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 
 5.  On the resulting page you will see near the top a section named "Add a New Tracked Site Profile". Enter the domain name of the site you want to track and click Save Profile. The other two fields are for your information only and are, therefore, optional.
 
-    {: .caution}
-    >
-    >You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
+    {{< caution >}}
+You must click "Save Profile" before trying to enter any of the settings below this button. Failure to do so will result in a  blank white page and your new site not being added. Recovery simply requires a click of the back button in your browser.
+{{< /caution >}}
 
 6.  Click on "Reporting" in the top left corner to return to the Sites Roster page. In the list of tracked sites, find your new site and click "Get Tracking Code".
 
 7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.
 
 8.  Click "View Reports" in the Sites Roster page and begin happy analyzing!
-
 

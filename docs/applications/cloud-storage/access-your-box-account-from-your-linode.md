@@ -3,18 +3,18 @@ author:
   name: Tyler Nelson
   email: tylernelson12@gmail.com
 description: 'Box is a popular cloud storage and file sharing service. This article will show you how to access your Box account from your Linode using WebDAV.'
-keywords: 'box,box.com,cloud,cloud storage,file storage,file,webdav,davfs,davfs2'
+keywords: ["box", "box.com", "cloud", "cloud storage", "file storage", "file", "webdav", "davfs", "davfs2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, November 6th 2015
+modified: 2015-11-06
 modified_by:
   name: Tyler Nelson
-published: 'Friday, November 6th 2015'
+published: 2015-11-06
 title: 'Access Your Box.com Account from Your Linode'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 If you've discovered [Box](https://www.box.com/) then you know that it can be a great tool for storage, moving and managing files. The following tutorial helps you install and configure a free piece of software that facilitates Box access from your Linode.
 
@@ -26,9 +26,9 @@ If you've discovered [Box](https://www.box.com/) then you know that it can be a 
 
 3.  Update your operating system.
 
-{: .note}
->
->This guide requires having a Box account.
+{{< note >}}
+This guide requires having a Box account.
+{{< /note >}}
 
 ## Set Box's Mount Point
 
@@ -38,19 +38,18 @@ The following step will create an empty directory where Box will live and all of
 
         mkdir ~/box
 
-    {: .note}
-    >
-    >If only your `example_user` needs access to the Box account contents, making the mount point in that user's `/home` directory will be fine. If multiple system users (other than root) need access to the Box account, then the mount point should be placed in a system directory such as `/mnt/box`. For more info, see [the davfs man page](http://linux.die.net/man/8/mount.davfs).
+    {{< note >}}
+If only your `example_user` needs access to the Box account contents, making the mount point in that user's `/home` directory will be fine. If multiple system users (other than root) need access to the Box account, then the mount point should be placed in a system directory such as `/mnt/box`. For more info, see [the davfs man page](http://linux.die.net/man/8/mount.davfs).
+{{< /note >}}
 
 2.  Add Box to fstab.
 
     The fstab (or file systems table) file is a system configuration file commonly found at `/etc/fstab`. It contains the necessary information to automate the process of mounting. Add an entry for your Box account:
 
-    {: .file-excerpt}
-    /etc/fstab
-    :   ~~~ conf
-        https://dav.box.com/dav /home/example_user/box davfs rw,user,noauto 0 0
-        ~~~
+    {{< file-excerpt "/etc/fstab" >}}
+https://dav.box.com/dav /home/example_user/box davfs rw,user,noauto 0 0
+{{< /file-excerpt >}}
+
 
 ## Configure WebDAV and User Permissions
 
@@ -89,9 +88,9 @@ The following step will create an empty directory where Box will live and all of
 
         echo 'https://dav.box.com/dav email password' >> ~/.davfs2/secrets
 
-    {: .note}
-    >
-    >If your password contains quotation characters (`'` or `"`), you'll need to edit the secrets file directly in a text editor.
+    {{< note >}}
+If your password contains quotation characters (`'` or `"`), you'll need to edit the secrets file directly in a text editor.
+{{< /note >}}
 
 7. Make the `secrets` file readable to only its owner:
 
@@ -115,7 +114,7 @@ To confirm that your Box drive is mounted:
 
 The output should look similar to this:
 
-~~~
+    {{< output >}}
 Filesystem              1K-blocks   Used Available Use% Mounted on
 /dev/root                 4122048 886316   3009636  23% /
 devtmpfs                   505636      0    505636   0% /dev
@@ -125,7 +124,7 @@ tmpfs                      507504      0    507504   0% /sys/fs/cgroup
 tmpfs                      507504      0    507504   0% /tmp
 tmpfs                      101504      0    101504   0% /run/user/1000
 https://dav.box.com/dav  10485756     72  10485684   1% /home/example_user/box
-~~~
+{{< /output >}}
 
 To see the mount options with which your Box drive is mounted:
 

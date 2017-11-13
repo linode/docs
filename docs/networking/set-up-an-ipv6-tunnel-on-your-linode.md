@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to set up an IPv6 tunnel on your Linode.'
-keywords: 'ipv6,tunnel,broker,networking'
+keywords: ["ipv6", "tunnel", "broker", "networking"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/ipv6-tunnels/']
-modified: Thursday, July 7th, 2016
+aliases: ['networking/ipv6-tunnels/']
+modified: 2016-07-07
 modified_by:
   name: Phil Zona
-published: 'Friday, April 29th, 2011'
+published: 2011-04-29
 title: Set Up an IPv6 Tunnel on Your Linode
 ---
 
@@ -29,8 +29,9 @@ You should have already signed up for an IPv6 tunnel through a tunnel broker. [W
 
 Once you have signed up for a tunnel, you will need to issue a few commands on your Linode. Arch and Gentoo Linux users may need to install the `iproute2` package before continuing.
 
-{: .note}
->Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
+{{< note >}}
+Configuration of an IP tunnel using this method will not be persistent after reboot and will need to be reconfigured after restarting your Linode.
+{{< /note >}}
 
 1.  Because some of these steps will temporarily disable networking on the Linode, begin by logging in using either the [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) interface.
 
@@ -43,10 +44,11 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 
 3.  Assign IPv6 address and routing information to your new tunnel device. Replace `2001:db8:1234:5678::2/64` with the IPv6 address assigned to you. This information should be provided to you by your tunnel broker as your "Client IPv6 Address":
 
-    {: .caution}
-    > The `ifdown` command **will halt all network traffic to your Linode**. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.
-    >
-    > On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
+    {{< caution >}}
+The `ifdown` command **will halt all network traffic to your Linode**. This step is included to avoid an error when adding the IPv6 route. It may not be required on all Linux distributions.
+
+On Arch Linux, replace the `ifdown` and `ifup` commands with `ip link set eth0 down` and `ip link set eth0 up`
+{{< /caution >}}
 
         ip addr add 2001:db8:1234:5678::2/64 dev he-ipv6
         ifdown eth0
@@ -66,8 +68,9 @@ Once you have signed up for a tunnel, you will need to issue a few commands on y
 
         ping6 -I he-ipv6 irc6.oftc.net
 
-    {: .note }
-    > On Arch Linux and other distributions without `ping6`, use `ping -6` instead.
+    {{< note >}}
+On Arch Linux and other distributions without `ping6`, use `ping -6` instead.
+{{< /note >}}
 
 If everything is working, you should see ping replies. If not, go back and make sure that you haven't made any errors.
 
@@ -75,8 +78,9 @@ If everything is working, you should see ping replies. If not, go back and make 
 
 The instructions in this section will allow you to manually configure your IPv6 tunnel. This can permanently affect your connectivity across reboots. Read the IPv6 documentation for your distribution before proceeding.
 
-{: .caution }
-> When manually modifying your network configuration, always disable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
+{{< caution >}}
+When manually modifying your network configuration, always disable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) first to avoid having your changes overwritten on reboot.
+{{< /caution >}}
 
 ### Debian and Ubuntu
 
@@ -91,18 +95,18 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
 
     Insert the following into your `/etc/network/interfaces` file:
 
-    {: .file-excerpt}
-    /etc/network/interfaces
-    : ~~~
-      auto he-ipv6
-      iface he-ipv6 inet6 v4tunnel
-          address 2001:db8:1234:5678::2
-          netmask 64
-          endpoint 203.0.113.10
-          local 198.51.100.5
-          ttl 255
-          gateway 2001:db8:1234:5678::1
-      ~~~
+    {{< file-excerpt "/etc/network/interfaces" >}}
+auto he-ipv6
+iface he-ipv6 inet6 v4tunnel
+    address 2001:db8:1234:5678::2
+    netmask 64
+    endpoint 203.0.113.10
+    local 198.51.100.5
+    ttl 255
+    gateway 2001:db8:1234:5678::1
+
+{{< /file-excerpt >}}
+
 
 2.  Restart networking services and test the tunnel. Replace `he-ipv6` with the name of your tunnel:
 
@@ -115,34 +119,34 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
 
 1.  Create a file at `/etc/sysconfig/network-scripts/ifcfg-he-ipv6` that contains the following:
 
-    {: .file}
-    /etc/sysconfig/network-scripts/ifcfg-he-ipv6
-    : ~~~
-      NAME="he-ipv6"
-      DEVICE=he-ipv6
-      ONBOOT=yes
-      USERCTL=yes
-      BOOTPROTO=none
-      PEERDNS=no
+    {{< file "/etc/sysconfig/network-scripts/ifcfg-he-ipv6" >}}
+NAME="he-ipv6"
+DEVICE=he-ipv6
+ONBOOT=yes
+USERCTL=yes
+BOOTPROTO=none
+PEERDNS=no
 
-      IPV6INIT=yes
-      IPV6_AUTOTUNNEL=yes
-      IPV6ADDR="2001:db8:1234:5678::2/64"
-      IPV6_ROUTER=yes
-      IPV6_AUTOCONF=no
+IPV6INIT=yes
+IPV6_AUTOTUNNEL=yes
+IPV6ADDR="2001:db8:1234:5678::2/64"
+IPV6_ROUTER=yes
+IPV6_AUTOCONF=no
 
-      IPV6_CONTROL_RADVD=yes
-      IPV6TUNNELIPV4=203.0.113.10
-      IPV6TUNNELIPV4LOCAL=45.79.171.199
+IPV6_CONTROL_RADVD=yes
+IPV6TUNNELIPV4=203.0.113.10
+IPV6TUNNELIPV4LOCAL=45.79.171.199
 
-      PHYSDEV=eth0
-      TYPE=sit
-      DEVICETYPE=sit
-      NM_CONTROLLED=no
+PHYSDEV=eth0
+TYPE=sit
+DEVICETYPE=sit
+NM_CONTROLLED=no
 
-      IPV6_DEFAULTGW=2001:db8:1234:5678::1
-      IPV6_DEFAULTDEV=he-ipv6
-      ~~~
+IPV6_DEFAULTGW=2001:db8:1234:5678::1
+IPV6_DEFAULTDEV=he-ipv6
+
+{{< /file >}}
+
 
       In the above, replace the:
 
@@ -165,25 +169,25 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
 
 1.  Add the following lines to your `/etc/sysconfig/network` file:
 
-    {: .file-excerpt}
-    /etc/sysconfig/network
-    : ~~~
-      NETWORKING_IPV6=yes
-      IPV6_DEFAULTDEV=he-ipv6
-      ~~~
+    {{< file-excerpt "/etc/sysconfig/network" >}}
+NETWORKING_IPV6=yes
+IPV6_DEFAULTDEV=he-ipv6
+
+{{< /file-excerpt >}}
+
 
 2.  Create a file at `/etc/sysconfig/network-scripts/ifcfg-he-ipv6` that contains the following:
 
-    {: .file-excerpt}
-    /etc/sysconfig/network-scripts/ifcfg-he-ipv6
-    : ~~~
-      DEVICE=he-ipv6
-      BOOTPROTO=none
-      ONBOOT=yes
-      IPV6INIT=yes
-      IPV6TUNNELIPV4=203.0.113.10
-      IPV6ADDR=2001:db8:1234:5678::2/64
-      ~~~
+    {{< file-excerpt "/etc/sysconfig/network-scripts/ifcfg-he-ipv6" >}}
+DEVICE=he-ipv6
+BOOTPROTO=none
+ONBOOT=yes
+IPV6INIT=yes
+IPV6TUNNELIPV4=203.0.113.10
+IPV6ADDR=2001:db8:1234:5678::2/64
+
+{{< /file-excerpt >}}
+
 
     Replace the `IPV6TUNNELIPV4` value with your remote tunnel endpoint and the `IPV6ADDR` value with the "Client IPv6" address provided to you by your tunnel broker.
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: A basic guide to installing nginx from source on CentOS 5
-keywords: 'nginx,http,web servers,centos,centos,centos 5'
+keywords: ["nginx", "http", "web servers", "centos", "centos", "centos 5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
-modified: Thursday, March 27th, 2014
+aliases: ['web-servers/nginx/installation/centos-5/','websites/nginx/websites-with-nginx-on-centos-5/']
+modified: 2014-03-27
 modified_by:
   name: Alex Fornuto
-published: 'Thursday, February 25th, 2010'
+published: 2010-02-25
 title: Websites with Nginx on CentOS 5
 ---
 
@@ -18,10 +18,9 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -30,8 +29,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing nginx from EPEL Packages
------------------------------------
+# Installing nginx from EPEL Packages
 
 The packages required to install nginx and its dependencies are not available in the standard CentOS repositories. However, there are packages to install nginx in the "[EPEL](https://fedoraproject.org/wiki/EPEL)" system. EPEL, or "Extra Packages for Enterprise Linux", is a product of the Fedora Project that attempts to provide enterprise-grade software that's more current than what is typically available in the CentOS repositories. While using this method will leave you with a working web server, *it is not the preferred method for installing nginx.* Nevertheless, if you want to install in this manner, use the process that follows. Begin by enabling the EPEL repository with the following command:
 
@@ -48,8 +46,7 @@ During the installation process you will need to accept the EPEL repository's ke
 
 You can now continue with the [configuration](/docs/websites/nginx/basic-nginx-configuration) of nginx. Installing nginx in this manner will allow you to rely on the EPEL maintainers to provide quality control, testing, and security teams to ensure that you're running the best possible version of the server. However, the packages provided by the EPEL project do not necessarily track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-Installing nginx from the Source Distribution
----------------------------------------------
+# Installing nginx from the Source Distribution
 
 ### Install Prerequisites
 
@@ -129,8 +126,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
 Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

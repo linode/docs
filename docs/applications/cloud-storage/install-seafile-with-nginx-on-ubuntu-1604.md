@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Seafile is an open-source cross-platform file hosting tool with server applications for Linux and Windows. We will show you how to install it on Ubuntu 16.04.'
-keywords: 'Seafile, nginx, Ubuntu 16.04, file server, media, sharing'
+keywords: ["Seafile", " nginx", " Ubuntu 16.04", " file server", " media", " sharing"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, June 21st, 2017
+modified: 2017-06-21
 modified_by:
   name: Linode
-published: 'Tuesday, May 23rd, 2017'
+published: 2017-05-23
 title: Install Seafile with nginx on Ubuntu 16.04
 external_resources:
  - '[Seafile Server Manual](https://manual.seafile.com/)'
@@ -23,9 +23,9 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 ## Prepare Ubuntu
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 1.  Update the system:
 
@@ -68,9 +68,9 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
         [ 5] 80 (v6)                    ALLOW IN    Anywhere (v6)
         [ 6] 443 (v6)                   ALLOW IN    Anywhere (v6)
 
-    {: .note}
-    >
-    > If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
+    {{< note >}}
+If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can delete it. For example, you can delete the rule to allow SSH over IPv6 with `sudo ufw delete 4`.
+{{< /note >}}
 
 6.  Set the Linode's hostname. We'll call it *seafile* as an example:
 
@@ -78,11 +78,10 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
 7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this:
 
-    {: .file-excerpt}
-    /etc/hosts
-    :   ~~~ conf
-        127.0.1.1    members.linode.com     seafile
-        ~~~
+    {{< file-excerpt "/etc/hosts"  conf >}}
+127.0.1.1    members.linode.com     seafile
+{{< /file-excerpt >}}
+
 
 8.  On first boot, your Linode's timezone will be set to UTC. Changing this is optional, but if you wish, use:
 
@@ -99,7 +98,7 @@ Seafile has [two editions](https://www.seafile.com/en/product/private_server/): 
 
         sudo mysql_secure_installation
 
-	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
+    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with nginx
 
@@ -120,70 +119,70 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
 2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
 
-    {: .file}
-    /etc/nginx/sites-available/seafile.conf
-    :   ~~~ conf
-		server{
-			listen 80;
-			server_name example.com;
-			rewrite ^ https://$http_host$request_uri? permanent;
-			proxy_set_header X-Forwarded-For $remote_addr;
-		    }
-		 server {
-			listen 443 ssl http2;
-		    ssl on;
-		    ssl_certificate /etc/ssl/cacert.pem;
-		    ssl_certificate_key /etc/ssl/privkey.pem;
-		    server_name example.com;
+    {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
+server{
+    listen 80;
+    server_name example.com;
+    rewrite ^ https://$http_host$request_uri? permanent;
+    proxy_set_header X-Forwarded-For $remote_addr;
+    }
+ server {
+    listen 443 ssl http2;
+    ssl on;
+    ssl_certificate /etc/ssl/cacert.pem;
+    ssl_certificate_key /etc/ssl/privkey.pem;
+    server_name example.com;
 
-		    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-		    add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
-		    add_header   X-Content-Type-Options nosniff;
-		    add_header   X-Frame-Options DENY;
-		    ssl_session_cache shared:SSL:10m;
-		    ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
-		    ssl_prefer_server_ciphers   on;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    add_header   Strict-Transport-Security "max-age=31536000; includeSubdomains";
+    add_header   X-Content-Type-Options nosniff;
+    add_header   X-Frame-Options DENY;
+    ssl_session_cache shared:SSL:10m;
+    ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
+    ssl_prefer_server_ciphers   on;
 
-		    fastcgi_param   HTTPS               on;
-		    fastcgi_param   HTTP_SCHEME         https;
+    fastcgi_param   HTTPS               on;
+    fastcgi_param   HTTP_SCHEME         https;
 
-		  location / {
-		        fastcgi_pass    127.0.0.1:8000;
-		        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
-		        fastcgi_param   PATH_INFO           $fastcgi_script_name;
+  location / {
+        fastcgi_pass    127.0.0.1:8000;
+        fastcgi_param   SCRIPT_FILENAME     $document_root$fastcgi_script_name;
+        fastcgi_param   PATH_INFO           $fastcgi_script_name;
 
-		        fastcgi_param    SERVER_PROTOCOL        $server_protocol;
-		        fastcgi_param   QUERY_STRING        $query_string;
-		        fastcgi_param   REQUEST_METHOD      $request_method;
-		        fastcgi_param   CONTENT_TYPE        $content_type;
-		        fastcgi_param   CONTENT_LENGTH      $content_length;
-		        fastcgi_param    SERVER_ADDR         $server_addr;
-		        fastcgi_param    SERVER_PORT         $server_port;
-		        fastcgi_param    SERVER_NAME         $server_name;
-		        fastcgi_param   REMOTE_ADDR         $remote_addr;
+        fastcgi_param    SERVER_PROTOCOL        $server_protocol;
+        fastcgi_param   QUERY_STRING        $query_string;
+        fastcgi_param   REQUEST_METHOD      $request_method;
+        fastcgi_param   CONTENT_TYPE        $content_type;
+        fastcgi_param   CONTENT_LENGTH      $content_length;
+        fastcgi_param    SERVER_ADDR         $server_addr;
+        fastcgi_param    SERVER_PORT         $server_port;
+        fastcgi_param    SERVER_NAME         $server_name;
+        fastcgi_param   REMOTE_ADDR         $remote_addr;
 
-		        access_log      /var/log/nginx/seahub.access.log;
-		        error_log       /var/log/nginx/seahub.error.log;
-		        fastcgi_read_timeout 36000;
-		        client_max_body_size 0;
-		    }
+        access_log      /var/log/nginx/seahub.access.log;
+        error_log       /var/log/nginx/seahub.error.log;
+        fastcgi_read_timeout 36000;
+        client_max_body_size 0;
+    }
 
-		    location /seafhttp {
-		        rewrite ^/seafhttp(.*)$ $1 break;
-		        proxy_pass http://127.0.0.1:8082;
-		        client_max_body_size 0;
-		        proxy_connect_timeout  36000s;
-		        proxy_read_timeout  36000s;
-		        proxy_send_timeout  36000s;
-		        send_timeout  36000s;
-		        proxy_request_buffering off;
-		    }
+    location /seafhttp {
+        rewrite ^/seafhttp(.*)$ $1 break;
+        proxy_pass http://127.0.0.1:8082;
+        client_max_body_size 0;
+        proxy_connect_timeout  36000s;
+        proxy_read_timeout  36000s;
+        proxy_send_timeout  36000s;
+        send_timeout  36000s;
+        proxy_request_buffering off;
+    }
 
-		    location /media {
-		        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
-		    }
-	}
-        ~~~
+    location /media {
+        root /home/sfadmin/sfroot/seafile-server-latest/seahub;
+    }
+    }
+
+{{< /file >}}
+
 
 3.  Disable the default site configuration and enable the one you just created:
 
@@ -198,7 +197,7 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
 ## Configure and Install Seafile
 
-1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example	`haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
+1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
 
         mkdir ~/sfroot && cd ~/sfroot
 
@@ -240,44 +239,44 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-    {: .file}
-    /etc/systemd/system/seafile.service
-    :   ~~~ config
-        [Unit]
-        Description=Seafile Server
-        After=network.target mysql.service
+    {{< file "/etc/systemd/system/seafile.service" >}}
+[Unit]
+Description=Seafile Server
+After=network.target mysql.service
 
-        [Service]
-        Type=oneshot
-        ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh start
-        ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh stop
-        RemainAfterExit=yes
-        User=sfadmin
-        Group=sfadmin
+[Service]
+Type=oneshot
+ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh start
+ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seafile.sh stop
+RemainAfterExit=yes
+User=sfadmin
+Group=sfadmin
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
 
 
-    {: .file}
-    /etc/systemd/system/seahub.service
-    :   ~~~ config
-        [Unit]
-        Description=Seafile Hub
-        After=network.target seafile.service
 
-        [Service]
-        Type=oneshot
-        ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh start-fastcgi
-        ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh stop
-        RemainAfterExit=yes
-        User=sfadmin
-        Group=sfadmin
+    {{< file "/etc/systemd/system/seahub.service" >}}
+[Unit]
+Description=Seafile Hub
+After=network.target seafile.service
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Service]
+Type=oneshot
+ExecStart=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh start-fastcgi
+ExecStop=/home/sfadmin/sfroot/seafile-server-latest/seahub.sh stop
+RemainAfterExit=yes
+User=sfadmin
+Group=sfadmin
+
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
 2.  Then enable the services:
 

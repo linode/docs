@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure and run your own DNS resolver using the Unbound Server on Ubuntu Fedora 14.'
-keywords: 'fedora dns,open source dns,dns,resolving,caching,unbound'
+keywords: ["fedora dns", "open source dns", "dns", "resolving", "caching", "unbound"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-guides/unbound-dns-resolver-fedora-14/']
-modified: Monday, October 8th, 2012
+aliases: ['dns-guides/unbound-dns-resolver-fedora-14/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Wednesday, February 2nd, 2011'
+published: 2011-02-02
 title: Use Unbound for Local DNS Resolution on Fedora 14
 ---
 
@@ -20,16 +20,14 @@ In the default configuration, Linode systems are configured to query DNS resolve
 
 If you are unfamiliar with DNS, you may want to consider our [introduction to the DNS system](/docs/dns-guides/introduction-to-dns). If you simply need to configure DNS services for your domain, you may want to consider [using Linode's DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). If you only need to modify the behavior of DNS for a small group of systems, consider [using /etc/hosts](/docs/using-linux/administration-basics#configure-the-etchosts-file) to provide this functionality.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
-Install Unbound
----------------
+# Install Unbound
 
 Make sure your package repositories and installed programs are up to date by issuing the following command:
 
@@ -46,15 +44,15 @@ Following the installation, issue the following commands to start Unbound for th
     service unbound start
     chkconfig unbound on
 
-Configure Unbound
------------------
+# Configure Unbound
 
 ### Configure Unbound Interfaces
 
 In the default configuration, Unbound will only listen for requests on the local interface. If you want unbound to attach to additional interfaces, these interfaces must be configured manually. Possible interfaces include the public interface or the private networking interface. Specify those IP addresses after the `server:` directive in the following format:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   interface: 19.28.37.56 interface: 192.168.3.105
@@ -65,8 +63,9 @@ Modify these `interface:` directives to reflect the actual addresses assigned to
 
 By default, Unbound will only listen for and respond to requests for DNS queries on the localhost interface (i.e. from 127.0.0.1). Unbound must be configured to listen for requests on a given interface **and** be configured to allow requests from a given IP address before it can successfully provide DNS services. Insert lines similar to the following example into the `unbound.conf` file after the `server:` directive.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/unbound/unbound.conf
+{{< /file-excerpt >}}
 
 > server:
 > :   access-control: 127.0.0.0/8 allow access-control: 192.168.0.0/16 allow\_snoop
@@ -94,8 +93,7 @@ When you have configured your Unbound server to acceptable parameters, issue the
 
 Unbound is now active and functional.
 
-Configure your System to Resolve DNS Using Unbound
---------------------------------------------------
+# Configure your System to Resolve DNS Using Unbound
 
 Before you can begin using your Unbound instance to resolve DNS queries, you need to configure your `/etc/resolv.conf` file to point to the new resolver. You can remove all existing lines from this file or comment them by prepending hash marks (`#`) to every line.
 
@@ -103,15 +101,15 @@ If you're accessing your Unbound instance over the local interface, make sure yo
 
 **Important:** By default, Linodes use DHCP to assign networking settings, including the public IP address and DNS resolvers. For any systems that you intend to use a custom resolver with, you must follow our instructions for [static networking](/docs/networking/configuring-static-ip-interfaces/#static-network-configuration). This will prevent your `/etc/resolv.conf` file getting overwritten with the default resolvers after a system reboot.
 
-{: .file }
+{{< file >}}
 /etc/resolve.conf
+{{< /file >}}
 
 > nameserver 127.0.0.1
 
 If you access Unbound from another machine, modify the address to reflect the address that Unbound is configured to receive requests. Ensure that Unbound's access control rules permit access from all clients that will be making requests from the server. If your Unbound instance is accessible on the public network, you can configure any machine on the Internet to resolve DNS using your Linode. While most Linux-based systems use the `/etc/resolve.conf` method for configuring DNS resolution, consult your operating system's networking configuration interface to reconfigure your DNS settings.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

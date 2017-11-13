@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Prepare and Submit a Request to Obtain a Commercially Signed SSL Certificate on CentOS or Fedora'
-keywords: 'ssl certificate,ssl cert,commercial,csr,centos,fedora'
+keywords: ["ssl certificate", "ssl cert", "commercial", "csr", "centos", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['security/ssl-certificates/commercial/']
-modified: Friday, August 19th, 2016
+aliases: ['security/ssl-certificates/commercial/']
+modified: 2016-08-19
 modified_by:
   name: Nick Brewer
-published: 'Friday, August 19th, 2016'
+published: 2016-08-19
 title: Obtain a Commercially Signed SSL Certificate on CentOS and Fedora
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
@@ -37,17 +37,17 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
          sudo dnf upgrade
 
-{: .note}
->
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
->
->Replace each instance of `example.com` in this guide with your site's domain name.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+Replace each instance of `example.com` in this guide with your site's domain name.
+{{< /note >}}
 
 ## Create a Certificate Signing Request
 
-{: .note}
->
->While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
+{{< note >}}
+While some Certificate Authorities (CA) will automatically include the "www" subdomain when issuing certificates for a root domain such as example.com, others do not. If you wish to secure multiple subdomains using the same certificate, you will need to create a [wildcard certificate](https://en.wikipedia.org/wiki/Wildcard_certificate).
+{{< /note >}}
 
 Issue the following commands to navigate to the `/etc/ssl` directory, and create a certificate signing request (CSR) for the site that will be using SSL. Change `example.com` to reflect the fully qualified domain name (FQDN) of the site you intend to use with SSL. Leave the challenge password blank:
 
@@ -160,7 +160,6 @@ The contents of the resulting file will appear similar to the following:
 
 Use this table to better visualize the command entered to prepare the chained SSL certificate:
 
-{: .table .table-striped }
 | **Certificate Type:**      | **Issued to:**                          | **Issued by:**                          |
 |----------------------------|:----------------------------------------|:----------------------------------------|
 | End-user Certificate       | example.com                             | Comodo LLC                              |

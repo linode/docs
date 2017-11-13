@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with Openfire on CentOS 5, an open source instant messaging server built on the XMPP/Jabber protocol.'
-keywords: 'openfire,openfire centos,openfire on linux,instant messaging,real-time messaging,xmpp server,collaboration software,chat software,linux jabber server'
+keywords: ["openfire", "openfire centos", "openfire on linux", "instant messaging", "real-time messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/openfire/centos-5/']
-modified: Monday, August 22nd, 2011
+aliases: ['communications/xmpp/openfire/centos-5/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Thursday, August 5th, 2010'
+published: 2010-08-05
 title: Instant Messaging Services with Openfire on CentOS 5
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
@@ -73,11 +73,11 @@ Install the software using `rpm` as follows:
 
 Next, edit the configuration file `/etc/openfire/openfire.xml`, inserting your Linode's public IP address in the `<interface>` section, and removing the `<!-- -->` comment markers that surround this section.
 
-{: .file-excerpt }
-/opt/openfire/conf/openfire.xml
-:   ~~~ xml
-    <interface>12.34.56.78</interface>
-    ~~~
+{{< file-excerpt "/opt/openfire/conf/openfire.xml" xml >}}
+<interface>12.34.56.78</interface>
+
+{{< /file-excerpt >}}
+
 
 Restart Openfire with the following command:
 

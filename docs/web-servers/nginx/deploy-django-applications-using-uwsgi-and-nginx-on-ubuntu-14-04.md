@@ -3,17 +3,17 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
-keywords: 'django,uwsgi,nginx,python'
+keywords: ["django", "uwsgi", "nginx", "python"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Wednesday, November 25th, 2015'
+modified: 2015-11-25
 modified_by:
   name: Sergey Pariev
-published: 'Wednesday, November 25th, 2015'
+published: 2015-11-25
 title: 'Deploy Django Applications Using uWSGI and Nginx on Ubuntu 14.04'
 contributor:
   name: Sergey Pariev
   link: https://twitter.com/spariev
-alias: ['websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
+aliases: ['websites/nginx/deploy-a-django-application-using-uwsgi-and-nginx-on-ubuntu-14-04/','websites/nginx/deploy-django-applications-using-uwsgi-and-nginx-on-ubuntu-14-04/']
 external_resources:
   - '[Writing your first Django app Tutorial](https://docs.djangoproject.com/en/dev/intro/tutorial01/#intro-tutorial01)'
   - '[virtualenvwrapper Documentation](https://virtualenvwrapper.readthedocs.org/en/latest/)'
@@ -36,10 +36,9 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install nginx, Python Tools and uWSGI
 
@@ -47,9 +46,9 @@ external_resources:
 
         sudo apt-get install build-essential nginx python-dev python-pip python-sqlite sqlite
 
-    {: .note}
-    >
-    >If your application uses another database, skip installing `python-sqlite` and `sqlite`.
+    {{< note >}}
+If your application uses another database, skip installing `python-sqlite` and `sqlite`.
+{{< /note >}}
 
 4.  Install [virtualenv](https://virtualenv.pypa.io/en/latest/) and [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/):
 
@@ -114,40 +113,40 @@ external_resources:
 
 2.  Create configuration file `sample.ini` with the following contents:
 
-    {: .file}
-    /etc/uwsgi/sites/sample.ini
-    :   ~~~ ini
-        [uwsgi]
-        project = sample
-        base = /home/django
+    {{< file "/etc/uwsgi/sites/sample.ini" ini >}}
+[uwsgi]
+project = sample
+base = /home/django
 
-        chdir = %(base)/%(project)
-        home = %(base)/Env/%(project)
-        module = %(project).wsgi:application
+chdir = %(base)/%(project)
+home = %(base)/Env/%(project)
+module = %(project).wsgi:application
 
-        master = true
-        processes = 2
+master = true
+processes = 2
 
-        socket = %(base)/%(project)/%(project).sock
-        chmod-socket = 664
-        vacuum = true
-        ~~~
+socket = %(base)/%(project)/%(project).sock
+chmod-socket = 664
+vacuum = true
+
+{{< /file >}}
+
 
 3.  Create an Upstart job for uWSGI:
 
-    {: .file}
-    /etc/init/uwsgi.conf
-    :   ~~~ conf
-        description "uWSGI"
-        start on runlevel [2345]
-        stop on runlevel [06]
-        respawn
+    {{< file "/etc/init/uwsgi.conf" aconf >}}
+description "uWSGI"
+start on runlevel [2345]
+stop on runlevel [06]
+respawn
 
-        env UWSGI=/usr/local/bin/uwsgi
-        env LOGTO=/var/log/uwsgi.log
+env UWSGI=/usr/local/bin/uwsgi
+env LOGTO=/var/log/uwsgi.log
 
-        exec $UWSGI --master --emperor /etc/uwsgi/sites --die-on-term --uid django --gid www-data --logto $LOGTO
-        ~~~
+exec $UWSGI --master --emperor /etc/uwsgi/sites --die-on-term --uid django --gid www-data --logto $LOGTO
+
+{{< /file >}}
+
 
     This job will start uWSGI in *Emperor* mode, meaning that it will monitor `/etc/uwsgi/sites` directory and will spawn instances (*vassals*) for each configuration file it finds. Whenever a config file is changed, the emperor will automatically restart its vassals.
 
@@ -163,24 +162,24 @@ external_resources:
 
 2.  Create an nginx site configuration file for your Django application:
 
-    {: .file}
-    /etc/nginx/sites-available/sample
-    :   ~~~ conf
-        server {
-            listen 80;
-            server_name example.com;
+    {{< file "/etc/nginx/sites-available/sample" aconf >}}
+server {
+    listen 80;
+    server_name example.com;
 
-            location = /favicon.ico { access_log off; log_not_found off; }
-            location /static/ {
-                root /home/django/sample;
-            }
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        root /home/django/sample;
+    }
 
-            location / {
-                include         uwsgi_params;
-                uwsgi_pass      unix:/home/django/sample/sample.sock;
-            }
-        }
-        ~~~
+    location / {
+        include         uwsgi_params;
+        uwsgi_pass      unix:/home/django/sample/sample.sock;
+    }
+}
+
+{{< /file >}}
+
 
 
 3.  Create a symlink to nginx's `sites-enabled` directory to enable your site configuration file:

@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Instructions for backing up MySQL databases using various methods.'
-keywords: 'mysql,backup,mysqldump'
+keywords: ["mysql", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/backup-options/']
-modified: Wednesday, September 11th, 2013
+aliases: ['databases/mysql/backup-options/', 'security/backups/back-up-your-mysql-databases/']
+modified: 2013-09-11
 modified_by:
   name: Linode
-published: 'Monday, April 19th, 2010'
+published: 2010-04-19
 title: Back Up Your MySQL Databases
 external_resources:
  - '[The Official MySQL Web Site](http://www.mysql.com/)'
@@ -23,7 +23,7 @@ MySQL is an open source relational database management system (DBMS) which is fr
 
 ![Back Up Your MySQL Databases](/docs/assets/back_up_your_mysql-databases.png "Back Up Your MySQL Databases")
 
-Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning the installation process, we assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/). Additionally, you will need to install the [MySQL Database](/docs/databases/mysql/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH. If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/linux-users-and-groups/), [beginner's guide](/content/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Backup Methodology
 
@@ -52,9 +52,9 @@ Automate this process by adding a line to `crontab`:
 
 For the example above, use `which mysqldump` to confirm the correct path to the command, and replace `root` with the mysql user you would like to run backups as, and `PASSWORD` with the correct password for that user.
 
-{: .note}
->
-> In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< note >}}
+In the crontab example, ensure that there is no space between the -P flag, and your password entry.
+{{< /note >}}
 
 ### Option 2: Create Backups of an Entire DBMS Using Copies of the MySQL Data Directory
 
@@ -127,45 +127,55 @@ The MySQL client itself has some backup capability. It is useful when you are al
 
 Do be aware that when backing up a single table using the MySQL client, that table's structure is not maintained in the backup. Only the data itself is saved when using this method.
 
-1. Before we begin, we recommend performing a `LOCK TABLES` on the tables you intend to backup up, followed by `FLUSH TABLES` to ensure that the database is in a consistent space during the backup operation. You only need a read lock. This allows other clients to continue to query the tables while you are making a copy of the files in the MySQL data directory. For a "read" lock, the syntax of `LOCK TABLES` looks like the following:
+1.  Before we begin, we recommend performing a `LOCK TABLES` on the tables you intend to backup up, followed by `FLUSH TABLES` to ensure that the database is in a consistent space during the backup operation. You only need a read lock. This allows other clients to continue to query the tables while you are making a copy of the files in the MySQL data directory. For a "read" lock, the syntax of `LOCK TABLES` looks like the following:
 
-       LOCK TABLES tableName READ;
+    {{< highlight sql >}}
+LOCK TABLES tableName READ;
+{{< /highlight >}}
 
-   To perform a `LOCK TABLES` on the `order` table of the `customer` database, issue the following command:
+    To perform a `LOCK TABLES` on the `order` table of the `customer` database, issue the following command:
 
-       mysql -u root -p -h localhost
+        mysql -u root -p -h localhost
 
-   You will then be prompted for the root password. Once you have entered the database credentials, you will arrive at the mysql client prompt. Issue the following command to lock the `order` table in the `customer` database (the trailing `;` is required for MySQL commands):
+    You will then be prompted for the root password. Once you have entered the database credentials, you will arrive at the mysql client prompt. Issue the following command to lock the `order` table in the `customer` database (the trailing `;` is required for MySQL commands):
 
-       USE customer;
-       LOCK TABLES order READ;
-       FLUSH TABLES;
+    {{< highlight sql >}}
+USE customer;
+LOCK TABLES order READ;
+FLUSH TABLES;
+{{< /highlight >}}
 
-2. We can now begin the backup operation. To create a backup of a single table using the MySQL client, you will need to be logged in to your MySQL DBMS. If you are not currently logged in you may log in with the following command:
+2.  We can now begin the backup operation. To create a backup of a single table using the MySQL client, you will need to be logged in to your MySQL DBMS. If you are not currently logged in you may log in with the following command:
 
         mysql -u root -p -h localhost
 
     You will be prompted for a password. Once you have entered the correct password and are at the MySQL client prompt, you can use a `SELECT * INTO OUTFILE` statement. The syntax of this statement looks like the following:
 
-        SELECT * INTO OUTFILE 'file_name' FROM tbl_name;
+    {{< highlight sql >}}
+SELECT * INTO OUTFILE 'file_name' FROM tbl_name;
+{{< /highlight >}}
 
     In this example, we will create a backup of the data from the `order` table of the `customer` database. Issue the following command to begin the backup procedure (the trailing `;` is required for MySQL commands):
 
-        USE customer;
-        LOCK TABLES order READ;
-        FLUSH TABLES;
-        SELECT * INTO OUTFILE 'customerOrderBackup.sql' FROM order;
-        UNLOCK TABLES;
+    {{< highlight sql >}}
+USE customer;
+LOCK TABLES order READ;
+FLUSH TABLES;
+SELECT * INTO OUTFILE 'customerOrderBackup.sql' FROM order;
+UNLOCK TABLES;
+{{< /highlight >}}
 
     The `customerOrderBackup.sql` file will be created in the appropriate data sub-directory within MySQLs data directory. The MySQL data directory is commonly `/var/lib/mysql/`. In this example, the `OUTFILE` will be `/var/lib/mysql/customer/customerOrderBackup.sql`. The location of this directory and file can, however, vary between Linux distributions. If you can not find your backup file, you can search for it with the following command:
 
-       find / -name customerOrderBackup.sql
+        find / -name customerOrderBackup.sql
 
-3. Once you have completed the backup operation, you will want to unlock the tables using the following command in the MySQL client. This will return your database to its normal operation. Log in to the MySQL client with the first command if you are not presently logged in and then issue the second command:
+3.  Once you have completed the backup operation, you will want to unlock the tables using the following command in the MySQL client. This will return your database to its normal operation. Log in to the MySQL client with the first command if you are not presently logged in and then issue the second command:
 
-       mysql -uroot -p -h localhost
+        mysql -uroot -p -h localhost
 
-       UNLOCK TABLES;
+    {{< highlight sql >}}
+UNLOCK TABLES;
+{{< /highlight >}}
 
 You can continue using your database as normal from this point.
 
@@ -199,37 +209,39 @@ You will be prompted for the root MySQL user's password. Once the correct creden
 
 Before beginning the restoration process, this section assumes your system is running a newly installed version of MySQL without any existing databases or tables. If you already have databases and tables in your MySQL DBMS, please make a backup before proceeding as this process will **overwrite current MySQL data.**
 
-1. If you have a complete backup of your MySQL data directory (commonly `/var/lib/mysql`), you can restore it from the command line. To ensure a successful restore, you must first stop the MySQL server daemon and delete the current data in the MySQL data directory.
+1.  If you have a complete backup of your MySQL data directory (commonly `/var/lib/mysql`), you can restore it from the command line. To ensure a successful restore, you must first stop the MySQL server daemon and delete the current data in the MySQL data directory.
 
-    /etc/init.d/mysql stop
-    rm -R /var/lib/mysql/*
+        /etc/init.d/mysql stop
+        rm -R /var/lib/mysql/*
 
-2. In the following example, the MySQL data directory backup is located in the `/opt/database/backup-1266872202` directory. If you made a tarball of the data directory when you backed up your DBMS data directory, you will need to extract the files from the tarball before copying with the following commands:
+2.  In the following example, the MySQL data directory backup is located in the `/opt/database/backup-1266872202` directory. If you made a tarball of the data directory when you backed up your DBMS data directory, you will need to extract the files from the tarball before copying with the following commands:
 
-    cp mysqlBackup-1266872202.tar.gz /var/lib/mysql/
-    cd /var/lib/mysql
-    tar xzvf mysqlBackup-1266872202.tar.gz
+         cp mysqlBackup-1266872202.tar.gz /var/lib/mysql/
+         cd /var/lib/mysql
+         tar xzvf mysqlBackup-1266872202.tar.gz
 
-3. Before we can restart the MySQL database process, we must ensure that the permissions are set correctly on the `/var/lib/mysql/` directory. For this example, we assume the MySQL server daemon runs as the user `mysql` with the group `mysql`. To change the permissions on the data directory issue the following command:
+3.  Before we can restart the MySQL database process, we must ensure that the permissions are set correctly on the `/var/lib/mysql/` directory. For this example, we assume the MySQL server daemon runs as the user `mysql` with the group `mysql`. To change the permissions on the data directory issue the following command:
 
-    chown -R mysql:mysql /var/lib/mysql
+        chown -R mysql:mysql /var/lib/mysql
 
-4. Alter the `mysql:mysql` portion of this command if your MySQL instance runs with different user and group permissions. The form of this argument is `[user]:[group]`. Finally we can start the MySQL server daemon with the following command:
+4.  Alter the `mysql:mysql` portion of this command if your MySQL instance runs with different user and group permissions. The form of this argument is `[user]:[group]`. Finally we can start the MySQL server daemon with the following command:
 
-		/etc/init.d/mysql start
+        /etc/init.d/mysql start
 
-	If you receive an error similar to the following:
+    If you receive an error similar to the following:
 
-		/usr/bin/mysqladmin: connect to server at 'localhost' failed
-			error: 'Access denied for user 'debian-sys-maint'@'localhost' (using password: YES)'
+        /usr/bin/mysqladmin: connect to server at 'localhost' failed
+            error: 'Access denied for user 'debian-sys-maint'@'localhost' (using password: YES)'
 
-	You'll need to find the old `debian-sys-maint` user's password in the `/etc/mysql/debian.cnf` and then change the new `debian-sys-maint` user's password to it. You can view the old password using `cat`:
+    You'll need to find the old `debian-sys-maint` user's password in the `/etc/mysql/debian.cnf` and then change the new `debian-sys-maint` user's password to it. You can view the old password using `cat`:
 
-		cat /etc/mysql/debian.cnf | grep password
+        cat /etc/mysql/debian.cnf | grep password
 
-	Copy (or remember) the password. Then you'll need to change the new `debian-sys-maint` user's password. You can do this by logging in as the MySQL root user and issuing the following command (where \<password\> is the password of the old `debian-sys-maint` user):
+    Copy (or remember) the password. Then you'll need to change the new `debian-sys-maint` user's password. You can do this by logging in as the MySQL root user and issuing the following command (where \<password\> is the password of the old `debian-sys-maint` user):
 
-		GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY '<password>' WITH GRANT OPTION;
+    {{< highlight sql >}}
+GRANT ALL PRIVILEGES ON *.* TO 'debian-sys-maint'@'localhost' IDENTIFIED BY '<password>' WITH GRANT OPTION;
+{{< /highlight >}}
 
 5.  You'll then need to restart MySQL with the following command:
 
@@ -243,37 +255,47 @@ In cases where you have only created a backup for one database, or only need to 
 
 Before beginning the restoration process, this section assumes your system is running a newly installed version of MySQL without any existing databases or tables. If you already have databases and tables in your MySQL DBMS, please make a backup before proceeding as this process will **overwrite current MySQL data.**
 
-1. To restore a single database using the `mysql` command, first prepare the destination database. Log in to your (new) MySQL database server using the MySQL client:
+1.  To restore a single database using the `mysql` command, first prepare the destination database. Log in to your (new) MySQL database server using the MySQL client:
 
-		mysql -u root -p -h localhost
+        mysql -u root -p -h localhost
 
-2. You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. In this case, the `customer` database will be restored:
+2.  You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. In this case, the `customer` database will be restored:
 
-		CREATE DATABASE customer;
+    {{< highlight sql >}}
+CREATE DATABASE customer;
+{{< /highlight >}}
 
-3. As with all MySQL statements, do not omit the final semi-colon (e.g. `;`) at the conclusion of each command. Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:
+3.  As with all MySQL statements, do not omit the final semi-colon (e.g. `;`) at the conclusion of each command. Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:
 
-		CREATE USER '[username]'@'[host]' IDENTIFIED BY '[password]';
+    {{< highlight sql >}}
+CREATE USER '[username]'@'[host]' IDENTIFIED BY '[password]';
+{{< /highlight >}}
 
 4.  In the next example, we will create a user named `customeradmin`:
 
-        CREATE USER 'customeradmin'@'localhost' IDENTIFIED BY 's3cr1t';
+    {{< highlight sql >}}
+CREATE USER 'customeradmin'@'localhost' IDENTIFIED BY 's3cr1t';
+{{< /highlight >}}
 
-5. Now we will give `customeradmin` privileges to access the `customer` database. The command for granting privileges to a database for a specific user takes the following form:
+5.  Now we will give `customeradmin` privileges to access the `customer` database. The command for granting privileges to a database for a specific user takes the following form:
 
-		GRANT [privilegeType] ON [databaseName].[tableName] TO '[username]'@'[host]'
+    {{< highlight sql >}}
+GRANT [privilegeType] ON [databaseName].[tableName] TO '[username]'@'[host]'
+{{< /highlight >}}
 
 6. For the purposes of the following example, we will give `customeradmin` full access to the `customer` database. Issue the following command in the MySQL client:
 
-		GRANT ALL ON customer.* TO 'customeradmin'@'localhost';
+    {{< highlight sql >}}
+GRANT ALL ON customer.* TO 'customeradmin'@'localhost';
+{{< /highlight >}}
 
 7. You may need to specify different access grants depending on the demands of your deployment. Consult the official documentation for [MySQL's GRANT statement](http://dev.mysql.com/doc/refman/5.1/en/grant.html). Once the destination database and MySQL user have been created, you can close the MySQL client with the following command:
 
-		quit
+        quit
 
 8. You can now use the `mysql` command to restore your SQL file. The form of this command resembles the following:
 
-		mysql -u [username] -p[password] -h [host] [databaseName] < [filename].sql
+        mysql -u [username] -p[password] -h [host] [databaseName] < [filename].sql
 
 In the following example, we will restore the `customer` database from a SQL backup file named `customerBackup.sql` (pay special attention to the `<` symbol in this command):
 
@@ -285,75 +307,102 @@ You will be prompted for the root MySQL user's password. Once the correct creden
 
 ### Option 1: Restoring a Single Table Using the MySQL and Backups Created by mysqldump
 
-Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we'll need to create it before proceeding. First, log into your MySQL instance with the following command:
+1.  Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we'll need to create it before proceeding. First, log into your MySQL instance with the following command:
 
-    mysql -u root -p -h localhost
+        mysql -u root -p -h localhost
 
-You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database and exit the `mysql` prompt by issuing the following statements:
+2.  You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database. 
 
-    CREATE DATABASE customer;
+    {{< highlight sql >}}
+CREATE DATABASE customer;
+{{< /highlight >}}
+
+    Then exit the `mysql` prompt:
+
         quit
 
-If you already have the required database, you can safely skip the above step. To continue with the table restoration, issue a command in the following form:
+    If you already have the required database, you can safely skip the above step. To continue with the table restoration, issue a command in the following form:
 
-    mysql -u [username] -p[password] -h [host] [databaseName] < [filename].sql
+        mysql -u [username] -p[password] -h [host] [databaseName] < [filename].sql
 
-For the following, example, we will restore the `order` table into the existing `customer` database from an SQL backup file named `customerOrderBackup.sql`. Be very careful to use the `<` operator in the following command:
+3.  For the following example, we will restore the `order` table into the existing `customer` database from an SQL backup file named `customerOrderBackup.sql`. Be very careful to use the `<` operator in the following command:
 
-    mysql -u root -p -h localhost customer < customerOrderBackup.sql
+        mysql -u root -p -h localhost customer < customerOrderBackup.sql
 
 You will be prompted for the root MySQL user's password. Once the correct credentials are supplied, the restoration process will begin. The duration of this operation depends on your system's load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours.
 
 ### Option 2: Restoring a Single Table Using the MySQL Client and an INFILE Statement for Backups Created with OUTFILE
 
-Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we'll need to create it before proceeding. First, log into your MySQL instance with the following command:
+1.  Before beginning the restoration process, we assume that your MySQL instance already has an existing database that can receive the table you wish to restore. If your MySQL instance does not have the required database, we'll need to create it before proceeding. First, log into your MySQL instance with the following command:
 
-    mysql -u root -p -h localhost
+        mysql -u root -p -h localhost
 
-You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database and exit the `mysql` prompt by issuing the following statements:
+2.  You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database.
 
-    CREATE DATABASE customer;
+    {{< highlight sql >}}
+CREATE DATABASE customer;
+{{< /highlight >}}
+
+    Then exit the `mysql` prompt:
+
         quit
 
-The data backup used in this case was created using the `SELECT * INTO OUTFILE 'backupFile.sql' FROM tableName` command. This type of backup only retains the data itself so the table structure must be recreated. To restore a single table from within the MySQL client, you must first prepare the destination database and table. Log in to your (new) MySQL instance using the MySQL client:
+3.  The data backup used in this case was created using the `SELECT * INTO OUTFILE 'backupFile.sql' FROM tableName` command. This type of backup only retains the data itself so the table structure must be recreated. To restore a single table from within the MySQL client, you must first prepare the destination database and table. Log in to your (new) MySQL instance using the MySQL client:
 
-    mysql -u root -p -h localhost
+        mysql -u root -p -h localhost
 
-You will be prompted for the root MySQL user's password. Once the correct credentials are supplied, you must create the destination database. In this case, we will create the `customer` database. Issue the following statement:
+4.  You will be prompted for the root MySQL user's password. Once the correct credentials are supplied, you must create the destination database. In this case, we will create the `customer` database. Issue the following statement:
 
-    CREATE DATABASE customer;
+    {{< highlight sql >}}
+CREATE DATABASE customer;
+{{< /highlight >}}
 
-Remember that the semi-colons (e.g. `;`) following each statement are required. Now you must create the destination table with the correct structure. The data types of the fields of the table must mirror those of the table where the backup originated. In this example, we will restore the `order` table of the `customer` database. There are 2 fields in the `order` table, `custNum` with data type `INT` and `orderName` with data type `VARCHAR(20)`; your table structure will be different:
+5.  Remember that the semi-colons (e.g. `;`) following each statement are required. Now you must create the destination table with the correct structure. The data types of the fields of the table must mirror those of the table where the backup originated. In this example, we will restore the `order` table of the `customer` database. There are 2 fields in the `order` table, `custNum` with data type `INT` and `orderName` with data type `VARCHAR(20)`; your table structure will be different:
 
-    USE customer;
-    CREATE TABLE order (custNum INT, orderName VARCHAR(20));
+    {{< highlight sql >}}
+USE customer;
+CREATE TABLE order (custNum INT, orderName VARCHAR(20));
+{{< /highlight >}}
 
-Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:
+6.  Depending on your deployment, you may need to create a new MySQL user or recreate a previous user with access to the newly created database. The command for creating a new MySQL user takes the following form:
 
-    CREATE USER '[username]'@'[host]' IDENTIFIED BY '[password]';
+    {{< highlight sql >}}
+CREATE USER '[username]'@'[host]' IDENTIFIED BY '[password]';
+{{< /highlight >}}
 
-In the next example, we will create a user named `customeradmin`:
+7.  In the next example, we will create a user named `customeradmin`:
 
-    CREATE USER 'customeradmin'@'localhost' IDENTIFIED BY 's3cr1t';
+    {{< highlight sql >}}
+CREATE USER 'customeradmin'@'localhost' IDENTIFIED BY 's3cr1t';
+{{< /highlight >}}
 
-Now we will give `customeradmin` privileges to access the `customer` database. The command for granting privileges to a database for a specific user takes the following form:
+8.  Now we will give `customeradmin` privileges to access the `customer` database. The command for granting privileges to a database for a specific user takes the following form:
 
-    GRANT [privilegeType] ON [databaseName].[tableName] TO '[username]'@'[host]'
+    {{< highlight sql >}}
+GRANT [privilegeType] ON [databaseName].[tableName] TO '[username]'@'[host]'
+{{< /highlight >}}
 
-For the purposes of the following example, we will give `customeradmin` full access to the `customer` database. Issue the following command in the MySQL client:
+    For the purposes of the following example, we will give `customeradmin` full access to the `customer` database. Issue the following command in the MySQL client:
 
-    GRANT ALL ON customer.* TO 'customeradmin'@'localhost';
+    {{< highlight SQL >}}
+GRANT ALL ON customer.* TO 'customeradmin'@'localhost';
+{{< /highlight >}}
 
-You may need to specify different access grants depending on the demands of your deployment. Consult the official documentation for [MySQL's GRANT statement](http://dev.mysql.com/doc/refman/5.1/en/grant.html). Once the table and user have been created, we can import the backup data from the backup file using the `LOAD DATA` command. The syntax resembles the following:
+9.  You may need to specify different access grants depending on the demands of your deployment. Consult the official documentation for [MySQL's GRANT statement](http://dev.mysql.com/doc/refman/5.1/en/grant.html). Once the table and user have been created, we can import the backup data from the backup file using the `LOAD DATA` command. The syntax resembles the following:
 
-    LOAD DATA INFILE '[filename]' INTO TABLE [tableName];
+    {{< highlight sql >}}
+LOAD DATA INFILE '[filename]' INTO TABLE [tableName];
+{{< /highlight >}}
 
-In the following, example we will restore data from a table from a file named `customerOrderBackup.sql`. When MySQL client is given path and filename after `INFILE`, it looks in the MySQL data directory for that file. If the filename `customerOrderBackup.sql` was given, the path would be `/var/lib/mysql/customerOrderBackup.sql`. Ensure that the file you are trying to restore from exists, especially if MySQL generates `File not found` errors.
+    In the following example, we will restore data from a table from a file named `customerOrderBackup.sql`. When MySQL client is given path and filename after `INFILE`, it looks in the MySQL data directory for that file. If the filename `customerOrderBackup.sql` was given, the path would be `/var/lib/mysql/customerOrderBackup.sql`. Ensure that the file you are trying to restore from exists, especially if MySQL generates `File not found` errors.
 
-To import the data from the `customerOrderBackup.sql` file located in `/var/lib/mysql/`, issue the following command:
+10. To import the data from the `customerOrderBackup.sql` file located in `/var/lib/mysql/`, issue the following command:
 
-    LOAD DATA INFILE 'customerOrderBackup.sql' INTO TABLE order;
+    {{< highlight sql >}}
+LOAD DATA INFILE 'customerOrderBackup.sql' INTO TABLE order;
+{{< /highlight >}}
 
-This process can take anywhere from a few seconds to many hours depending on the size of your table. The duration of this operation depends on your system's load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours. After you have verified that your data was imported successfully, you can log out:
+    This process can take anywhere from a few seconds to many hours depending on the size of your table. The duration of this operation depends on your system's load and the size of the table that you are restoring. It may complete in a few seconds, or it may take many hours. After you have verified that your data was imported successfully, you can log out:
 
-    quit
+        quit
+

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Fedora 12.'
-keywords: 'nginx,nginx fedora 12,nginx fastcgi,nginx perl'
+keywords: ["nginx", "nginx fedora 12", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/fedora-12/','websites/nginx/nginx-and-perlfastcgi-on-fedora-12/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/nginx/perl-fastcgi/fedora-12/','websites/nginx/nginx-and-perlfastcgi-on-fedora-12/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Thursday, March 11th, 2010'
+published: 2010-03-11
 title: 'Nginx and Perl-FastCGI on Fedora 12'
 ---
 
@@ -20,8 +20,7 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). These steps should be performed via a root login to your Linode over SSH.
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Issue the following commands to set your system hostname, substituting a unique value for "hostname." :
 
@@ -30,15 +29,14 @@ Issue the following commands to set your system hostname, substituting a unique 
 
 Edit your `/etc/hosts` file to resemble the following, substituting your Linode's public IP address for 12.34.56.78, your hostname for "hostname," and your primary domain name for "example.com." :
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 hostname.example.com hostname
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 hostname.example.com hostname
 
-Install Required Packages
--------------------------
+{{< /file >}}
+
+
+# Install Required Packages
 
 Issue the following commands to update your system and install the nginx web server and compiler tools (Perl should already be installed):
 
@@ -48,8 +46,7 @@ Issue the following commands to update your system and install the nginx web ser
     chkconfig nginx on
     /etc/init.d/nginx start
 
-Configure Virtual Hosting
--------------------------
+# Configure Virtual Hosting
 
 In this guide, we'll be using the domain "example.com" as our example site. You should substitute your own domain name in the configuration steps that follow. First, we'll need to create directories to hold our content and log files:
 
@@ -64,38 +61,38 @@ Issue the following commands to create virtual hosting directories:
 
 Add the following lines to your `/etc/nginx/nginx.conf` file, immediately after the line for `include /etc/nginx/conf.d/*.conf`:
 
-{: .file-excerpt }
-/etc/nginx/nginx.conf
-:   ~~~
-    # Load virtual host configuration files.
-    include /etc/nginx/sites-enabled/*;
-    ~~~
+{{< file-excerpt "/etc/nginx/nginx.conf" >}}
+# Load virtual host configuration files.
+include /etc/nginx/sites-enabled/*;
+
+{{< /file-excerpt >}}
+
 
 Next, you'll need to define the site's virtual host file:
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.pl$ {
-            gzip off;
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:8999;
-            fastcgi_index index.pl;
-            fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.pl$ {
+        gzip off;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:8999;
+        fastcgi_index index.pl;
+        fastcgi_param  SCRIPT_FILENAME  /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site:
 
@@ -105,8 +102,7 @@ Issue the following commands to enable the site:
 
 You may wish to create a test HTML page under `/srv/www/www.example.com/public_html/` and view it in your browser to verify that nginx is properly serving your site (Perl will not work yet). Please note that this will require an [entry in DNS](/docs/dns-guides/configuring-dns-with-the-linode-manager) pointing your domain name to your Linode's IP address.
 
-Configure FastCGI Wrapper
--------------------------
+# Configure FastCGI Wrapper
 
 Issue the following command sequence to download the FastCGI wrapper script (credit: [Denis S. Filimonov](http://www.ruby-forum.com/topic/145858)) and an init script to control the FastCGI process, set the permissions, launch the wrapper for the first time, and ensure that FastCGI launches at startup:
 
@@ -121,29 +117,28 @@ Issue the following command sequence to download the FastCGI wrapper script (cre
     chkconfig --add perl-fastcgi
     chkconfig perl-fastcgi on
 
-Test Perl with FastCGI
-----------------------
+# Test Perl with FastCGI
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/public\_html/test.pl
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
+#!/usr/bin/perl
 
-    print "Content-type:text/html\n\n";
-    print <<EndOfHTML;
-    <html><head><title>Perl Environment Variables</title></head>
-    <body>
-    <h1>Perl Environment Variables</h1>
-    EndOfHTML
+print "Content-type:text/html\n\n";
+print <<EndOfHTML;
+<html><head><title>Perl Environment Variables</title></head>
+<body>
+<h1>Perl Environment Variables</h1>
+EndOfHTML
 
-    foreach $key (sort(keys %ENV)) {
-        print "$key = $ENV{$key}<br>\n";
-    }
+foreach $key (sort(keys %ENV)) {
+    print "$key = $ENV{$key}<br>\n";
+}
 
-    print "</body></html>";
-    ~~~
+print "</body></html>";
+
+{{< /file >}}
+
 
 Make the script executable by issuing the following command:
 
@@ -151,8 +146,7 @@ Make the script executable by issuing the following command:
 
 When you visit `http://www.example.com/test.pl` in your browser, your Perl environment variables should be shown. Congratulations, you've configured the nginx web server to use Perl with FastCGI for dynamic content!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

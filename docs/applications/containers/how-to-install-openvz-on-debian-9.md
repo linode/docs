@@ -4,10 +4,10 @@ author:
   email: docs@Linode.com
 description: 'This guide will show you how to install OpenVZ on your Linode and deploy a virtual environment.'
 og_description: 'OpenVZ, a software-based OS virtualization tool that enables deployment, management, and modification of isolated, virtual Linux environments from within a host Linux distribution, can be installed and run on a Linode, using this guide.'
-keywords: 'openvz, virtualization, docker'
+keywords: ["openvz", " virtualization", " docker"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, September 22nd, 2017'
-modified: Monday, September 25th, 2017
+published: 2017-09-22
+modified: 2017-09-25
 modified_by:
   name: Linode
 title: 'How to Install OpenVZ On Debian 9'
@@ -35,23 +35,16 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 
 3. Certain essential modifications to your Debian 9 system are required to run OpenVZ, including the removal and replacement of Systemd with SystemV, and the use of a custom Linux kernel. Before continuing, be certain that all software currently installed on the machine will be compatible with these changes.
 
-    {:.note}
-    >
-    >Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
+    {{< note >}}
+Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
+{{< /note >}}
 
-
-### Create A Separate Partition For OpenVZ Templates
-
-
-{:.caution}
->
->This step is optional.
+### Optional: Create A Separate Partition For OpenVZ Templates
 
 If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it's recommended to create separate partitions for the host server and its processes, and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme:
 
-{: .table .table-striped}
-|:----------:|:-----------:|:-----------:|
 | Partition | Description | Typical Size |
+|:---------:|:-----------:|:------------:|
 | /         | Root partition | 4-12 GB   |
 | swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space) |
 | /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
@@ -97,19 +90,19 @@ Before OpenVZ can be installed, the system must be configured for compatibility.
 
 2. Create a new file in the directory designated below and name it *tune*. Copy and paste the text below into this new file and save:
 
-    {: .file}
-    /etc/initramfs-tools/scripts/local-premount/tune
-    :   ~~~ sh
-        #!/bin/sh
+    {{< file "/etc/initramfs-tools/scripts/local-premount/tune" sh >}}
+#!/bin/sh
 
-        if [ "$readonly" != "y" ] ;
-        then exit 0 ;
-        fi
+if [ "$readonly" != "y" ] ;
+then exit 0 ;
+fi
 
-        e2fsck -f $Volume
-        tune2fs -O -metadata_csum $Volume
-        e2fsck -f $Volume
-        ~~~
+e2fsck -f $Volume
+tune2fs -O -metadata_csum $Volume
+e2fsck -f $Volume
+
+{{< /file >}}
+
 
 3. Update file properties and existing initramfs image to load the *tune* script:
 
@@ -124,8 +117,9 @@ Before OpenVZ can be installed, the system must be configured for compatibility.
 
 1. Choose the Ext4 volume you would like to format and issue the command below, replacing `/dev/sda3` with your selected volume. An output of "0" indicates success.
 
-    {: .caution}
-    > Formatting a volume with the `mkfs` command may result in data loss.
+    {{< caution >}}
+Formatting a volume with the `mkfs` command may result in data loss.
+{{< /caution >}}
 
         mkfs -t ext4 -O -metadata_csum /dev/sda3
 
@@ -143,24 +137,24 @@ Before OpenVZ can be installed, the system must be configured for compatibility.
 
 4. Create file `avoid-systemd` and paste in the contents below:
 
-    {: .file}
-    /etc/apt/preferences.d/avoid-systemd
-    :       ~~~
-            Package: *systemd*
-            Pin: release *
-            Pin-Priority: -1
-            ~~~
+    {{< file "/etc/apt/preferences.d/avoid-systemd" >}}
+Package: *systemd*
+Pin: release *
+Pin-Priority: -1
+
+{{< /file >}}
+
 
 ### Add OpenVZ Repository
 
 1. Create a new repository source file and paste in the contents below:
 
-    {: .file}
-    /etc/apt/sources.list.d/openvz.list
-    :   ~~~ list
-        deb http://download.openvz.org/debian jessie main
-        deb http://download.openvz.org/debian wheezy main
-        ~~~
+    {{< file "/etc/apt/sources.list.d/openvz.list" sourceslist >}}
+deb http://download.openvz.org/debian jessie main
+deb http://download.openvz.org/debian wheezy main
+
+{{< /file >}}
+
 
 2. Add the repository key to your system:
 
@@ -183,11 +177,10 @@ Before OpenVZ can be installed, the system must be configured for compatibility.
 
 3. Create file `vznet.conf` and paste in the line below:
 
-    {: .file}
-    /etc/vz/vznet.conf
-    :       ~~~ conf
-            EXTERNAL_SCRIPT="/usr/sbin/vznetaddbr"
-            ~~~
+    {{< file "/etc/vz/vznet.conf" >}}
+EXTERNAL_SCRIPT="/usr/sbin/vznetaddbr"
+{{< /file >}}
+
 
 4. This step is optional, and will cause OpenVZ virtual instances to stop when the OpenVZ service is stopped. If this behavior is desired, issue the command below.
 
@@ -203,60 +196,60 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
 
 2. Within the `grub.cfg` file, look for a section resembling the following:
 
-    {: .file}
-    /boot/grub/grub.cfg
-    :       ~~~ cfg
-            . . .
+    {{< file "/boot/grub/grub.cfg" cfg >}}
+. . .
 
-            menuentry 'Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-e025e52b-91c4-4f64-962d-79f244caa92a' {
-                gfxmode $linux_gfx_mode
-                insmod gzio
-                if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
-                insmod ext2
-                set root='hd0'
-                if [ x$feature_platform_search_hint = xy ]; then
-                    search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
-                else
-                    search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
-                fi
-                echo    'Loading Linux 4.9.0-3-amd64 ...'
-                linux   /boot/vmlinuz-4.9.0-3-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
-                echo    'Loading initial ramdisk ...'
-                initrd  /boot/initrd.img-4.9.0-3-amd64
-                }
-            submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-advanced-e025e52b-91c4-4f64-962d-79f244caa92a'
+menuentry 'Debian GNU/Linux' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-e025e52b-91c4-4f64-962d-79f244caa92a' {
+    gfxmode $linux_gfx_mode
+    insmod gzio
+    if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+    insmod ext2
+    set root='hd0'
+    if [ x$feature_platform_search_hint = xy ]; then
+        search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
+    else
+        search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
+    fi
+    echo    'Loading Linux 4.9.0-3-amd64 ...'
+    linux   /boot/vmlinuz-4.9.0-3-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
+    echo    'Loading initial ramdisk ...'
+    initrd  /boot/initrd.img-4.9.0-3-amd64
+    }
+submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-advanced-e025e52b-91c4-4f64-962d-79f244caa92a'
 
-            . . .
-            ~~~
+. . .
+
+{{< /file >}}
+
 
        Copy the text entry preceeding `submenu`, in this example the text would be: **Advanced options for Debian GNU/Linux**.
 
 3. Within the `grub.cfg` file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored:
 
-    {: .file}
-    /boot/grub/grub.cfg
-    :       ~~~ cfg
-            . . .
+    {{< file "/boot/grub/grub.cfg" cfg >}}
+. . .
 
-                menuentry 'Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-2.6.32-openvz-042stab123.9-amd64-advanced-e025e52b-91c4-4f64-962d-79f244caa92a' {
-                        gfxmode $linux_gfx_mode
-                        insmod gzio
-                        if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
-                        insmod ext2
-                        set root='hd0'
-                        if [ x$feature_platform_search_hint = xy ]; then
-                          search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
-                        else
-                          search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
-                        fi
-                        echo    'Loading Linux 2.6.32-openvz-042stab123.9-amd64 ...'
-                        linux   /boot/vmlinuz-2.6.32-openvz-042stab123.9-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
-                        echo    'Loading initial ramdisk ...'
-                        initrd  /boot/initrd.img-2.6.32-openvz-042stab123.9-amd64
-                }
+    menuentry 'Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64' --class debian --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-2.6.32-openvz-042stab123.9-amd64-advanced-e025e52b-91c4-4f64-962d-79f244caa92a' {
+            gfxmode $linux_gfx_mode
+            insmod gzio
+            if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+            insmod ext2
+            set root='hd0'
+            if [ x$feature_platform_search_hint = xy ]; then
+              search --no-floppy --fs-uuid --set=root --hint-bios=hd0 --hint-efi=hd0 --hint-baremetal=ahci0  e025e52b-91c4-4f64-962d-79f244caa92a
+            else
+              search --no-floppy --fs-uuid --set=root e025e52b-91c4-4f64-962d-79f244caa92a
+            fi
+            echo    'Loading Linux 2.6.32-openvz-042stab123.9-amd64 ...'
+            linux   /boot/vmlinuz-2.6.32-openvz-042stab123.9-amd64 root=/dev/sda ro console=ttyS0,19200n8 net.ifnames=0
+            echo    'Loading initial ramdisk ...'
+            initrd  /boot/initrd.img-2.6.32-openvz-042stab123.9-amd64
+    }
 
-            . . .
-            ~~~
+. . .
+
+{{< /file >}}
+
 
          Again, write down the text directly after "menuentry" in single quotes. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
 
@@ -293,11 +286,10 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
 
 3. Edit `/etc/vz/vz.conf` and change the following line to use `simfs` instead of `ploop`:
 
-    {:.file-excerpt}
-    /etc/vz/vz.conf
-    : ~~~
-      VE_LAYOUT=simfs
-      ~~~
+    {{< file-excerpt "/etc/vz/vz.conf" >}}
+VE_LAYOUT=simfs
+{{< /file-excerpt >}}
+
 
 4. List available OS templates for download:
 
@@ -323,35 +315,35 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
 
     You may also configure other options at your discrection, such as SWAP and RAM allocation. Save and close when finished.
 
-    {: .file}
-    /etc/vz/conf/101.conf
-    :   ~~~ conf
-        . . .
+    {{< file "/etc/vz/conf/101.conf" >}}
+. . .
 
-        # RAM
-        PHYSPAGES="0:256M"
+# RAM
+PHYSPAGES="0:256M"
 
-        # Swap
-        SWAPPAGES="0:512M"
+# Swap
+SWAPPAGES="0:512M"
 
-        # Disk quota parameters (in form of softlimit:hardlimit)
-        DISKSPACE="2G:2.2G"
-        DISKINODES="131072:144179"
-        QUOTATIME="0"
+# Disk quota parameters (in form of softlimit:hardlimit)
+DISKSPACE="2G:2.2G"
+DISKINODES="131072:144179"
+QUOTATIME="0"
 
-        # CPU fair scheduler parameter
-        CPUUNITS="1000"
+# CPU fair scheduler parameter
+CPUUNITS="1000"
 
-        NETFILTER="stateless"
-        VE_ROOT="/var/lib/vz/root/$VEID"
-        VE_PRIVATE="/var/lib/vz/private/$VEID"
-        VE_LAYOUT="simfs"
-        OSTEMPLATE="centos7-x86_64"
-        ORIGIN_SAMPLE="vswap-256m"
-        NAMESERVER="8.8.8.8"
-        IP_ADDRESS="192.168.0.101/24"
-        HOSTNAME="centos-7"
-        ~~~
+NETFILTER="stateless"
+VE_ROOT="/var/lib/vz/root/$VEID"
+VE_PRIVATE="/var/lib/vz/private/$VEID"
+VE_LAYOUT="simfs"
+OSTEMPLATE="centos7-x86_64"
+ORIGIN_SAMPLE="vswap-256m"
+NAMESERVER="8.8.8.8"
+IP_ADDRESS="192.168.0.101/24"
+HOSTNAME="centos-7"
+
+{{< /file >}}
+
 
 9. Boot into your newly created container using the commands below. Replace [CTID] with your container's CTID number. To exit any container session while leaving the virtual environment running, type `exit` in the command line.
 
@@ -364,8 +356,9 @@ Containers have no way to access the internet or be accessed from the internet. 
 
 ### Configure Access From Container To Internet
 
-{:.note}
-> You may need to login as root with `su -` in order to run the iptables-save commands in this section.
+{{< note >}}
+You may need to login as root with `su -` in order to run the iptables-save commands in this section.
+{{< /note >}}
 
 1. On the host server, issue the following command using Iptables. Replace the brackets and contents with the appropriate information. For the container IP address, make sure to list it in CIDR notation. Include IP address and subnet, or `xxx.xxx.xxx.xxx/xx`, in order to encompass a range of IP addresses that will enable access to any containers added in the future. For example, entering 192.168.0.0/24 will setup routing for IP addresses 192.168.0.0 through 192.168.0.255:
 
@@ -394,6 +387,6 @@ Containers have no way to access the internet or be accessed from the internet. 
 
 ## Where To Go From Here
 
-After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal Linux environment: requiring regular updates, security configuration, etc. Most configuration can be done from the host server via OpenVZ commands. 
+After installing OpenVZ, downloading a template, creating a container, and configuring internet access, your virtual environment will function exactly like any normal Linux environment: requiring regular updates, security configuration, etc. Most configuration can be done from the host server via OpenVZ commands.
 
 See the "OpenVZ Basic Operations" link in the **External Resources** section to familiarize yourself with basic administration commands. Additional user-created templates can also be downloaded, which are not included in the main template listing. You can find these by following the "OpenVZ User Contributed Templates" link.

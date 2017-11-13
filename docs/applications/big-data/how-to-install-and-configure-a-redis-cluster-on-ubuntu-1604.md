@@ -3,13 +3,13 @@ author:
   name: Sam Foo
   email: docs@linode.com
 description: 'Learn to set up a Redis cluster using three Linode servers and promoting a slave to become a master node with this guide.'
-keywords: 'redis cluster installation,data store,cache,sharding'
+keywords: ["redis cluster installation", "data store", "cache", "sharding"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/big-data/redis-cluster']
-modified: Monday, August 14th, 2017
+aliases: ['applications/big-data/redis-cluster']
+modified: 2017-08-14
 modified_by:
   name: Linode
-published: 'Monday, August 14th, 2017'
+published: 2017-08-14
 title: 'How to Install and Configure a Redis Cluster on Ubuntu 16.04'
 external_resources:
  - '[Redis Official Website](https://redis.io/)'
@@ -33,9 +33,9 @@ Depending on your version of Linux, it may be possible to install Redis through 
         sudo apt-get update && sudo apt-get upgrade
         sudo apt install make gcc libc6-dev tcl
 
-    {: .note}
-    >
-    >Alternatively, you could use `build-essential` to load the dependencies for Redis.
+    {{< note >}}
+Alternatively, you could use `build-essential` to load the dependencies for Redis.
+{{< /note >}}
 
 2.  From the documentation, download the current stable branch, then extract:
 
@@ -68,41 +68,40 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
         cp redis.conf c_slave.conf
         mv redis.conf a_master.conf
 
-2. In `a_master.conf`, comment the `bind` directive and enable cluster mode. The ports in this example will range from 6379 to 6381.
+2.  In `a_master.conf`, comment the `bind` directive and enable cluster mode. The ports in this example will range from 6379 to 6381.
 
-   {:.file }
-   /redis-stable/a_master.conf
-   : ~~~
-     # bind 127.0.0.1
-     protected-mode no
-     port 6379
-     pidfile /var/run/redis_6379.pid
-     cluster-enabled yes
-     cluster-config-file nodes-6379.conf
-     cluster-node-timeout 15000
-     ~~~
+    {{< file "/redis-stable/a_master.conf" >}}
+# bind 127.0.0.1
+protected-mode no
+port 6379
+pidfile /var/run/redis_6379.pid
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout 15000
 
-   {: .caution}
-   >A node in the Redis cluster requires a defined port and a port higher than 10000. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.
-   >
+{{< /file >}}
 
-3. In `c_slave.conf`, the configuration will be similar except for an update of the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master, rather than the `slaveof` directive.
 
-   {:.file }
-   /redis-stable/c_slave.conf
-   : ~~~
-     # bind 127.00.1
-     protected-mode no
-     port 6381
-     pidfile /var/run/redis_6381.pid
-     cluster-enabled yes
-     cluster-config-file nodes-6381.conf
-     cluster-node-timeout 15000
-     ~~~
+    {{< caution >}}
+A node in the Redis cluster requires a defined port and a port higher than 10000. In this instance, TCP ports 6379 and 16379 are both required to be open. Ensure iptables or ufw is configured properly.
+{{< /caution >}}
 
-4. Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
+3.  In `c_slave.conf`, the configuration will be similar except for an update of the port number. `redis-trib.rb` will be used later to configure this into a slave for the appropriate master, rather than the `slaveof` directive.
 
-    {: .table .table-striped .table-bordered}
+    {{< file "/redis-stable/c_slave.conf" >}}
+# bind 127.00.1
+protected-mode no
+port 6381
+pidfile /var/run/redis_6381.pid
+cluster-enabled yes
+cluster-config-file nodes-6381.conf
+cluster-node-timeout 15000
+
+{{< /file >}}
+
+
+4.  Repeat this process across the remaining two Linodes, taking care to specify the port numbers for all master slave pairs.
+
     | Server | Master | Slave |
     |:-------|:-------|:------|
     |    1   |  6379  |  6381 |
@@ -112,16 +111,14 @@ This setup uses three Linodes running two instances of Redis server per Linode. 
 ## Connect Master and Slave
 Master/slave replication can be achieved across three nodes by running two instances of a Redis server on each node.
 
-1. SSH into **server 1** and start the two Redis instances.
+1.  SSH into **server 1** and start the two Redis instances.
 
         redis-server redis-stable/a_master.conf
         redis-server redis-stable/c_slave.conf
 
-2. Substitute `a_master.conf` and `c_slave.conf` with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
+2.  Substitute `a_master.conf` and `c_slave.conf` with the appropriate configuration file for the remaining two servers. All the master nodes should be starting in cluster mode.
 
-   {: .file}
-   Server 1
-   :  ~~~
+    {{< file "Server 1" >}}
                      _._
                 _.-``__ ''-._
            _.-``    `.  `_.  ''-._           Redis 4.0.1 (00000000/0) 64 bit
@@ -139,7 +136,9 @@ Master/slave replication can be achieved across three nodes by running two insta
           `-._    `-.__.-'    _.-'
               `-._        _.-'
                   `-.__.-'
-      ~~~
+
+{{< /file >}}
+
 
 ## Create Cluster Using Built-In Ruby Script
 At this point, each Linode hosts two independent master nodes. The Redis installation comes with a Ruby script located in `~/redis-stable/src/` that can help create and manage a cluster.
@@ -179,9 +178,9 @@ At this point, each Linode hosts two independent master nodes. The Redis install
 
         ip.of.server1>exit
 
-    {: .note}
-    >
-    >Redis keywords are not case sensitive. However, they are written as all capitals in this guide for clarity.
+    {{< note >}}
+Redis keywords are not case sensitive. However, they are written as all capitals in this guide for clarity.
+{{< /note >}}
 
 ## Add Slaves
 The `redis-trib` tool can also be used to add new nodes to the cluster. Using the remaining three nodes, you can manually add them to the selected master.

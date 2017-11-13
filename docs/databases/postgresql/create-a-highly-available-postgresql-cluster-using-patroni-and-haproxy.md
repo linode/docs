@@ -3,12 +3,12 @@ author:
   name: Kulshekhar Kabra
   email: docs@linode.com
 description: 'This guide shows you how to set up a highly available PostgreSQL cluster using Patroni and HA Proxy on your Linode.'
-keywords: 'postgresql,clusters,databases'
+keywords: ["postgresql", "clusters", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 19, 2017
+modified: 2017-09-19
 modified_by:
   name: Kulshekhar Kabra
-published: 'Tuesday, September 19, 2017'
+published: 2017-09-19
 title: Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy
 external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
@@ -40,9 +40,9 @@ This guide shows you how to create a highly available Postgres cluster of three 
 
 4.  Create five Linodes on your account, all within the same datacenter. Take note of each Linode's [private IP address](/docs/networking/remote-access/#adding-private-ip-addresses)
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install PostgreSQL
 
@@ -130,9 +130,8 @@ This guide uses `192.0.2.31` as the private IP address of this server and `203.0
 
 At this stage, you should have a total of five Linodes:
 
-{: .table .table-striped}
 |Example Private IP Address|Software Installed| Example Public IP Address|
-|:-:|:-:|:-:|
+|:------------------------:|:----------------:|:------------------------:|
 |192.0.2.11|Postgres, Patroni|-|
 |192.0.2.12|Postgres, Patroni|-|
 |192.0.2.13|Postgres, Patroni|-|
@@ -141,27 +140,27 @@ At this stage, you should have a total of five Linodes:
 
 ## Configure etcd
 
-1. Edit the `/etc/default/etcd` file to add the following configuration:
+1.  Edit the `/etc/default/etcd` file to add the following configuration:
 
-   {: .file-excerpt}
-   /etc/default/etcd
-   :   ~~~ conf
-       ETCD_LISTEN_PEER_URLS="http://192.0.2.21:2380"
+    {{< file-excerpt "/etc/default/etcd" >}}
+ETCD_LISTEN_PEER_URLS="http://192.0.2.21:2380"
 
-       ETCD_LISTEN_CLIENT_URLS="http://localhost:2379,http://192.0.2.21:2379"
+ETCD_LISTEN_CLIENT_URLS="http://localhost:2379,http://192.0.2.21:2379"
 
-       ETCD_INITIAL_ADVERTISE_PEER_URLS="http://192.0.2.21:2380"
+ETCD_INITIAL_ADVERTISE_PEER_URLS="http://192.0.2.21:2380"
 
-       ETCD_INITIAL_CLUSTER="etcd0=http://192.0.2.21:2380,"
+ETCD_INITIAL_CLUSTER="etcd0=http://192.0.2.21:2380,"
 
-       ETCD_ADVERTISE_CLIENT_URLS="http://192.0.2.21:2379"
+ETCD_ADVERTISE_CLIENT_URLS="http://192.0.2.21:2379"
 
-       ETCD_INITIAL_CLUSTER_TOKEN="cluster1"
+ETCD_INITIAL_CLUSTER_TOKEN="cluster1"
 
-       ETCD_INITIAL_CLUSTER_STATE="new"
-       ~~~
+ETCD_INITIAL_CLUSTER_STATE="new"
 
-2. Save the file, then restart the etcd service:
+{{< /file-excerpt >}}
+
+
+2.  Save the file, then restart the etcd service:
 
         sudo systemctl restart etcd
 
@@ -171,119 +170,119 @@ Patroni can be configured using a YAML file which can be placed anywhere. In thi
 
 Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni installed (`192.0.2.11`, `192.0.2.12`, and `192.0.2.13` in this guide). Change `name` to something unique, and change `listen` and `connect_address` (under `postgresql` and `restapi`) to the appropriate values on each Linode.
 
-1. Edit this file to have the following content:
+1.  Edit this file to have the following content:
 
-   {: .file}
-   /etc/patroni.yml
-   :   ~~~
-       scope: postgres
-       namespace: /db/
-       name: postgresql0
+    {{< file "/etc/patroni.yml" >}}
+scope: postgres
+namespace: /db/
+name: postgresql0
 
-       restapi:
-           listen: 192.0.2.11:8008
-           connect_address: 192.0.2.11:8008
+restapi:
+    listen: 192.0.2.11:8008
+    connect_address: 192.0.2.11:8008
 
-       etcd:
-           host: 192.0.2.21:2379
+etcd:
+    host: 192.0.2.21:2379
 
-       bootstrap:
-           dcs:
-               ttl: 30
-               loop_wait: 10
-               retry_timeout: 10
-               maximum_lag_on_failover: 1048576
-               postgresql:
-                   use_pg_rewind: true
+bootstrap:
+    dcs:
+        ttl: 30
+        loop_wait: 10
+        retry_timeout: 10
+        maximum_lag_on_failover: 1048576
+        postgresql:
+            use_pg_rewind: true
 
-           initdb:
-           - encoding: UTF8
-           - data-checksums
+    initdb:
+    - encoding: UTF8
+    - data-checksums
 
-           pg_hba:
-           - host replication replicator 127.0.0.1/32 md5
-           - host replication replicator 192.0.2.11/0 md5
-           - host replication replicator 192.0.2.12/0 md5
-           - host replication replicator 192.0.2.13/0 md5
-           - host all all 0.0.0.0/0 md5
+    pg_hba:
+    - host replication replicator 127.0.0.1/32 md5
+    - host replication replicator 192.0.2.11/0 md5
+    - host replication replicator 192.0.2.12/0 md5
+    - host replication replicator 192.0.2.13/0 md5
+    - host all all 0.0.0.0/0 md5
 
-           users:
-               admin:
-                   password: admin
-                   options:
-                       - createrole
-                       - createdb
+    users:
+        admin:
+            password: admin
+            options:
+                - createrole
+                - createdb
 
-       postgresql:
-           listen: 192.0.2.11:5432
-           connect_address: 192.0.2.11:5432
-           data_dir: /data/patroni
-           pgpass: /tmp/pgpass
-           authentication:
-               replication:
-                   username: replicator
-                   password: rep-pass
-               superuser:
-                   username: postgres
-                   password: secretpassword
-           parameters:
-               unix_socket_directories: '.'
+postgresql:
+    listen: 192.0.2.11:5432
+    connect_address: 192.0.2.11:5432
+    data_dir: /data/patroni
+    pgpass: /tmp/pgpass
+    authentication:
+        replication:
+            username: replicator
+            password: rep-pass
+        superuser:
+            username: postgres
+            password: secretpassword
+    parameters:
+        unix_socket_directories: '.'
 
-       tags:
-           nofailover: false
-           noloadbalance: false
-           clonefrom: false
-           nosync: false
-       ~~~
+tags:
+    nofailover: false
+    noloadbalance: false
+    clonefrom: false
+    nosync: false
 
-2. Make note of the `data_dir` value in the above file. The `postgres` user needs the ability to write to this directory. If this directory doesn't exist, create it:
+{{< /file >}}
+
+
+2.  Make note of the `data_dir` value in the above file. The `postgres` user needs the ability to write to this directory. If this directory doesn't exist, create it:
 
         sudo mkdir /data/patroni -p
 
-3. Make `postgres` the owner of `/data/patroni`:
+3.  Make `postgres` the owner of `/data/patroni`:
 
         sudo chown postgres:postgres /data/patroni
 
-4. Change the permissions on this directory to make it accessible only to the `postgres` user:
+4.  Change the permissions on this directory to make it accessible only to the `postgres` user:
 
         sudo chmod 700 /data/patroni
 
     Every option in the above file is configurable. View the [latest version of the postgres0.yml file](https://github.com/zalando/patroni/blob/master/postgres0.yml) in Patroni's Github repository.
 
-5. Create a `systemd` script that will allow you to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
+5.  Create a `systemd` script that will allow you to start, stop and monitor Patroni. Create a file at `/etc/systemd/system/patroni.service` with the following content:
 
-   {: .file}
-   /etc/systemd/system/patroni.service
-   :   ~~~
-       [Unit]
-       Description=Runners to orchestrate a high-availability PostgreSQL
-       After=syslog.target network.target
+    {{< file "/etc/systemd/system/patroni.service" >}}
+[Unit]
+Description=Runners to orchestrate a high-availability PostgreSQL
+After=syslog.target network.target
 
-       [Service]
-       Type=simple
+[Service]
+Type=simple
 
-       User=postgres
-       Group=postgres
+User=postgres
+Group=postgres
 
-       ExecStart=/usr/local/bin/patroni /etc/patroni.yml
+ExecStart=/usr/local/bin/patroni /etc/patroni.yml
 
-       KillMode=process
+KillMode=process
 
-       TimeoutSec=30
+TimeoutSec=30
 
-       Restart=no
+Restart=no
 
-       [Install]
-       WantedBy=multi-user.targ
-       ~~~
+[Install]
+WantedBy=multi-user.targ
+
+{{< /file >}}
+
 
     If `patroni` is installed in a location other than `/usr/local/bin/patroni` on your machine, update the above file accordingly.
 
-6. Start Patroni and Postgres:
+6.  Start Patroni and Postgres:
 
         sudo systemctl start patroni
 
-7. Check the status of Patroni:
+7.  Check the status of Patroni:
 
         sudo systemctl status patroni
 
@@ -312,40 +311,40 @@ Create a `patroni.yml` file on all three Linodes that have Postgres and Patroni 
 
 With the Postgres cluster set up, you need a way to connect to the master regardless of which of the servers in the cluster is the master. This is where HAProxy comes in. All Postgres clients (your applications, `psql`, etc.) will connect to HAProxy which will make sure you connect to the master in the cluster.
 
-1. On the Linode that has HAProxy installed, edit the configuration file at `/etc/haproxy/haproxy.cfg` to contain the following:
+1.  On the Linode that has HAProxy installed, edit the configuration file at `/etc/haproxy/haproxy.cfg` to contain the following:
 
-   {: .file}
-   /etc/haproxy/haproxy.cfg
-   :   ~~~
-       global
-           maxconn 100
+    {{< file "/etc/haproxy/haproxy.cfg" >}}
+global
+    maxconn 100
 
-       defaults
-           log global
-           mode tcp
-           retries 2
-           timeout client 30m
-           timeout connect 4s
-           timeout server 30m
-           timeout check 5s
+defaults
+    log global
+    mode tcp
+    retries 2
+    timeout client 30m
+    timeout connect 4s
+    timeout server 30m
+    timeout check 5s
 
-       listen stats
-           mode http
-           bind *:7000
-           stats enable
-           stats uri /
+listen stats
+    mode http
+    bind *:7000
+    stats enable
+    stats uri /
 
-       listen postgres
-           bind *:5000
-           option httpchk
-           http-check expect status 200
-           default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
-           server postgresql_192.0.2.11_5432 192.0.2.11:5432 maxconn 100 check port 8008
-           server postgresql_192.0.2.12_5432 192.0.2.12:5432 maxconn 100 check port 8008
-           server postgresql_192.0.2.13_5432 192.0.2.13:5432 maxconn 100 check port 8008
-       ~~~
+listen postgres
+    bind *:5000
+    option httpchk
+    http-check expect status 200
+    default-server inter 3s fall 3 rise 2 on-marked-down shutdown-sessions
+    server postgresql_192.0.2.11_5432 192.0.2.11:5432 maxconn 100 check port 8008
+    server postgresql_192.0.2.12_5432 192.0.2.12:5432 maxconn 100 check port 8008
+    server postgresql_192.0.2.13_5432 192.0.2.13:5432 maxconn 100 check port 8008
 
-   This configuration exposes HAProxy stats on a public URL. In a production setup, it might be better to restrict this to an internal network/localhost and access it via an SSH tunnel.
+{{< /file >}}
+
+
+    This configuration exposes HAProxy stats on a public URL. In a production setup, it might be better to restrict this to an internal network/localhost and access it via an SSH tunnel.
 
 2. Restart HAProxy to use the new settings:
 
@@ -357,23 +356,23 @@ With the Postgres cluster set up, you need a way to connect to the master regard
 
 ## Test the Setup
 
-1. Connect Postgres clients to the public IP address of the Linode on which you installed HAProxy (in this guide, `203.0.113.1`) on port `5000`.
+1.  Connect Postgres clients to the public IP address of the Linode on which you installed HAProxy (in this guide, `203.0.113.1`) on port `5000`.
 
-2. You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
+2.  You can also connect to the HAProxy Linode on port `7000` to see the HAProxy dashboard:
 
-   ![HAProxy dashboard - all servers running](/docs/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
+    ![HAProxy dashboard - all servers running](/docs/assets/pgha-haproxy-1-small.png "HAProxy dashboard - all servers running")
 
-   In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
+    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is highlighted in green. This indicates that `192.0.2.11` is currently acting as the master.
 
-3. If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
+3.  If you kill the primary Linode (using `sudo systemctl stop patroni` or by shutting down the server), the dashboard will look similar to:
 
-   ![HAProxy dashboard - when primary fails](/docs/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
+    ![HAProxy dashboard - when primary fails](/docs/assets/pgha-haproxy-2-small.png "HAProxy dashboard - when primary fails")
 
-   In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
+    In the `postgres` section, the `postgresql_192.0.2.11_5432` row is now red and the `postgresql_192.0.2.13_5432` row is highlighted in green. This indicates that `192.0.2.13` is currently acting as the master.
 
-   {: .note}
-   >
-   > In this case, it just so happens that the third Postgres server is promoted to master. This might not always be the case. It is equally likely that the second server may be promoted to master.
+    {{< note >}}
+In this case, it just so happens that the third Postgres server is promoted to master. This might not always be the case. It is equally likely that the second server may be promoted to master.
+{{< /note >}}
 
 When you now bring up the first server, it will rejoin the cluster as a slave and will sync up with the master.
 
@@ -386,3 +385,4 @@ While the setup in this guide should go far in making your Postgres deployment h
 1. Use a larger etcd cluster to improve availability.
 2. Use PgBouncer to pool connections.
 3. Add another HAProxy server and configure IP failover to create a highly available HAProxy cluster.
+

@@ -3,11 +3,11 @@ author:
   name: Edward Angert
   email: docs@linode.com
 description: 'Easy to remember Linux command line time savers.'
-keywords: 'terminal,command line,shell,tips,tricks,easy linux,cli'
-alias: ['quick-answers/linux-command-line-tips/']
+keywords: ["terminal", "command line", "shell", "tips", "tricks", "easy linux", "cli"]
+aliases: ['quick-answers/linux-command-line-tips/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, April 13, 2017'
-modified: 'Monday, July 17, 2017'
+published: 2017-04-13
+modified: 2017-07-17
 modified_by:
   name: Edward Angert
 title: 'Linux Command Line Tips'

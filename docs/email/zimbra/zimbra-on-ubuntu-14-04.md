@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install Zimbra OSE 8.6 on Ubuntu 14.04 LTS Linode'
-keywords: 'zimbra,install zimbra,mail server,zimbra email,zimbra email server,mail zimbra,open source guide,zimbra open source,postfix,web mail,opendkim,amavis,ubuntu tahr,ubuntu 14.04,ubuntu'
+keywords: ["zimbra", "install zimbra", "mail server", "zimbra email", "zimbra email server", "mail zimbra", "open source guide", "zimbra open source", "postfix", "web mail", "opendkim", "amavis", "ubuntu tahr", "ubuntu 14.04", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, October 1st, 2015'
-modified: Thursday, October 1st, 2015
+published: 2015-10-01
+modified: 2015-10-01
 modified_by:
     name: Linode
 title: 'Install Zimbra Open Source Edition on Ubuntu 14.04'
@@ -22,9 +22,9 @@ external_resources:
 
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
-{: .note}
->
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Set up Your Linode
 
@@ -44,8 +44,9 @@ external_resources:
 
         wget https://files.zimbra.com/downloads/8.6.0_GA/zcs-8.6.0_GA_1153.UBUNTU14_64.20141215151116.tgz
 
-     {: .note}
-    >This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the release notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.
+     {{< note >}}
+This Guide is about setting up a new Zimbra Linode, but if you are upgrading an existing Zimbra installation, it is very important that you read the release notes that Zimbra provides! The notes are found on the Download page where you found the software. There may be steps that are required to be performed before or after you upgrade.
+{{< /note >}}
 
 2.  Download the SHA256 checksum in the same way you just downloaded the Zimbra tarball.
 
@@ -163,8 +164,9 @@ external_resources:
 
     By default, no administrative password is set. To set a password, enter **6** to display the `zimbra-store` menu, then **4** to type a new password at the prompt. Enter **r** to return to the main menu. For DNS, enter the `zimbra-dnscache` menu, then change the `Master DNS` IP addresses and return to the main menu.
 
-    {: .note}
-    >It is common to run mail servers on UTC, as they regularly accept mail from all over the world. This helps when tracing mail flow, when Daylight Saving kicks in or out, and just makes reading logs easier. You may choose to use local time if you prefer.
+    {{< note >}}
+It is common to run mail servers on UTC, as they regularly accept mail from all over the world. This helps when tracing mail flow, when Daylight Saving kicks in or out, and just makes reading logs easier. You may choose to use local time if you prefer.
+{{< /note >}}
 
 8.  Finalize the installation.
 
@@ -196,15 +198,15 @@ external_resources:
 
     Visit your Linode's hostname or IP address in your browser using https. For example, `https://mail.example.com`. This will open the login page. Log in using the admin account and password created during the install.
 
-    {: .caution}
-    >
-    >Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
+    {{< caution >}}
+Since you haven't installed a trusted cert yet, you will likely get a browser warning about an untrusted site. Bypass the warning for now. Later you can either add Zimbra's self-signed cert to your browser or install a trusted cert in Zimbra.
+{{< /caution >}}
 
     ![Zimbra admin console](/docs/assets/AdminConsole.png)
 
     If you configured the appropriate DNS records (step 4 of [Set up Your Linode](#set-up-your-linode) above), you should be able to send and receive mail with this account.
 
-##Configuring Your Zimbra Server
+## Configuring Your Zimbra Server
 
 Zimbra provides two ways to manage configuration: a web console and the command line. The command line interface is beyond the scope of this guide but you can find it documented in Appendix A of the Administrator's Guide which is linked to from the Help Center in your admin console.
 
@@ -212,11 +214,11 @@ From the admin console you can configure default settings for new accounts (Zimb
 
 ![Click label for a tool tip](/docs/assets/Tooltip.png) ![Click More for details](/docs/assets/Tooltipmore.png)
 
-{: .note }
->
->You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
+{{< note >}}
+You can also reach the admin console if you are already logged in to your Zimbra webmail page. A drop-down menu beside your account name in the upper right of the window provides a link to the admin console.
+{{< /note >}}
 
-###Global Settings
+### Global Settings
 
 Your server was configured when you installed, and most of those settings will work as is. You may want to visit a few in particular to control who it is willing to talk to and eliminate some types of spam.
 
@@ -238,7 +240,7 @@ Your server was configured when you installed, and most of those settings will w
 
 8.  If you made changes to Global Settings, restart your server before continuing.
 
-###Classes of Service
+### Classes of Service
 
 Zimbra installs a default class of service which will be applied to all new accounts. If you don't need to give different capabilities or settings to different groups of users, this default class will be all you need. You can create additional classes and then assign them to users as required to control their privileges, access to features, quotas, and default settings.
 
@@ -258,7 +260,7 @@ Zimbra installs a default class of service which will be applied to all new acco
 
 6.  If needed, you can proceed to add more classes of service and define all these settings for another type of user. Different classes could have different quotas, access to more or fewer features, or perhaps one group gets external IMAP or access to the Briefcase tab. Note that individual user account settings can override the COS settings. New user accounts will be assigned the default COS unless you have defined another and choose it when creating the account.
 
-###User Accounts
+### User Accounts
 
 You received an admin account when you installed Zimbra. The Open Source Edition has no limit on the number of accounts you can have. It is only limited by your server's ability to handle the traffic. If you have been through the **Classes of Service**, creating another account will be a trip through familiar territory, as most of the settings are the same, but applicable to this individual account.
 
@@ -290,11 +292,11 @@ When users forget their passwords, resets are easily accomplished.
 
     ![Change password dialog](/docs/assets/ChangePassword.png)
 
-##Install an SSL Certificate
+## Install an SSL Certificate
 
 Zimbra creates and uses a self-signed SSL security certificate upon installation. If you are planning to offer your email service to others, you will want to install a trusted certificate from a third-party Certificate Authority (CA).
 
-###Create a Certificate Signing Request (CSR)
+### Create a Certificate Signing Request (CSR)
 
 1.  Log in to the Zimbra admin console
 
@@ -310,7 +312,7 @@ Zimbra creates and uses a self-signed SSL security certificate upon installation
 
 7.  Copy the CSR text and finish the Zimbra wizard, return to your CA's website and follow their process to purchase your SSL certificate.
 
-###Install Your Certificate into Zimbra.
+### Install Your Certificate into Zimbra.
 
 1.  In the Zimbra admin console, click the **Configure** menu, then **Certificates**.
 

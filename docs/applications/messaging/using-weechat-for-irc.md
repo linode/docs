@@ -3,14 +3,14 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Use WeeChat and GNU Screen to create and maintain connections to IRC networks'
-keywords: 'weechat,irc,oftc,real time,chat'
+keywords: ["weechat", "irc", "oftc", "real time", "chat"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
   name: Samuel Damashek
-modified: Thursday, March 10th, 2016
+modified: 2016-03-10
 modified_by:
     name: 'Linode'
-published: 'Wednesday, August 27th, 2014'
+published: 2014-08-27
 title: 'Using WeeChat for Internet Relay Chat'
 external_resources:
  - '[WeeChat Home Page](http://www.weechat.org/)'
@@ -20,7 +20,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 [WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.
 
@@ -59,9 +59,9 @@ A user is often represented as `nickname!username@host`.
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Using GNU Screen
 
@@ -219,22 +219,21 @@ All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*.
 
 A list of basic commands is below.
 
-  {: .table .table-striped }
-  | Command    | Description                                                                     |
-  | --------   | ------------------------------------------------------------------------------- |
-  | `/help`    | Lists commands, if a command is given then shows command usage and description  |
-  | `/join`    | Joins a channel                                                                 |
-  | `/close`   | Closes a buffer, parting the channel if you are in it                           |
-  | `/quit`    | Quit WeeChat                                                                    |
-  | `/msg`     | Send a message to a nick (or channel)                                           |
-  | `/query`   | Opens a private buffer with a nick                                              |
-  | `/ban`     | Ban a user from a channel                                                       |
-  | `/unban`   | Unban a user from a channel                                                     |
-  | `/kick`    | Kick a user from a channel                                                      |
-  | `/kickban` | Kick and ban a user from a channel                                              |
-  | `/part`    | Parts a channel but does not close the buffers                                  |
-  | `/topic`   | Sets channel topic                                                              |
-  | `/whois`   | Shows information about a user                                                  |
+| Command    | Description                                                                     |
+| --------   | ------------------------------------------------------------------------------- |
+| `/help`    | Lists commands, if a command is given then shows command usage and description  |
+| `/join`    | Joins a channel                                                                 |
+| `/close`   | Closes a buffer, parting the channel if you are in it                           |
+| `/quit`    | Quit WeeChat                                                                    |
+| `/msg`     | Send a message to a nick (or channel)                                           |
+| `/query`   | Opens a private buffer with a nick                                              |
+| `/ban`     | Ban a user from a channel                                                       |
+| `/unban`   | Unban a user from a channel                                                     |
+| `/kick`    | Kick a user from a channel                                                      |
+| `/kickban` | Kick and ban a user from a channel                                              |
+| `/part`    | Parts a channel but does not close the buffers                                  |
+| `/topic`   | Sets channel topic                                                              |
+| `/whois`   | Shows information about a user                                                  |
 
 ### Setting Default Channels
 

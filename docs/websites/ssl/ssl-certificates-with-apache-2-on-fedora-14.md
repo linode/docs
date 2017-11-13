@@ -1,1 +1,0 @@
-../../security/ssl/ssl-certificates-with-apache-2-on-fedora-14.md
