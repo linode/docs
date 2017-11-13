@@ -39,7 +39,7 @@ To list all of the files in the current directory, including hidden files (such 
 
 To generate a list with more information about the files, the long flag, `-l` may be used. This provides information on file sizes, permissions, and last modified times (with either -a or the standard output). You may further modify the long output with an -h flag to convert the file size information from raw bytes to human-readable numbers (in KB, MB, GB, etc) for easier comprehension. This command might look like:
 
-    ls -lha 
+    ls -lha
 
 ### Navigating Directories
 
@@ -51,7 +51,7 @@ You can also use various shortcuts to navigate the file system tree. If you're i
 
     cd ../
 
-From the `/home` directory, using `cd ../` will get you to the top level of your file system (`/`). Similarly, if you were to use `cd ../jack/` from the `~/` directory, you would be placed in the `/home/jack` directory. 
+From the `/home` directory, using `cd ../` will get you to the top level of your file system (`/`). Similarly, if you were to use `cd ../jack/` from the `~/` directory, you would be placed in the `/home/jack` directory.
 
 Using `cd ./jack` in the `/home` directory, however, will also place you in the `/home/jack` directory, as the `.` indicates the working or current directory (use `pwd` to print the working directory in the terminal).
 

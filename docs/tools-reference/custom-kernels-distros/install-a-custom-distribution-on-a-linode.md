@@ -8,8 +8,8 @@ keywords: 'custom distro,custom distribution,advanced Linux,kvm'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
-  name: Nick Brewer
-modified: 'Thursday, March 2nd, 2017'
+  name: Linode
+modified: 'Monday, June 26th, 2017'
 title: Install a Custom Distribution on a Linode
 ---
 
@@ -26,7 +26,7 @@ For the sake of organization, it has been split into two main sections:
 This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
 {: .note}
->This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
+>This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
 
 ## Advantages of KVM on Linode
 
@@ -44,15 +44,15 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 ### Prepare your Linode
 
-1.  [Create two raw, unformatted disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
+1.  [Create two raw, unformatted disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labelled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
 
     {: .caution}
-    >**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.  
+    >**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
 
-2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
+2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
 
     **Installer profile**
 
@@ -80,6 +80,11 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
+
+    {: .note}
+    > If you would prefer to write the installer directly to the disk as it downloads, use:
+    >
+    >     curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
 
 3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
@@ -137,11 +142,11 @@ This section covers how to move your custom installation over to an **ext4** for
 
 ### Prepare your Linode
 
-1.  [Create a new ext4 disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk). The new disk should be large enough to accommodate the root filesystem that was created on your raw disk. You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For our example, we'll name this disk *Boot-New*.
+1.  [Create a new ext4 disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk). The new disk should be large enough to accommodate the root filesystem that was created on your raw disk. You can make this as large as you'd like, but you should leave enough space for a separate swap partition. For our example, we'll name this disk *Boot-New*.
 
 2.  From the **Create a new Disk** page, create a swap disk by choosing *swap* for the disk type. The size of this disk will depend upon your needs, but it's recommended that you make it between 256-512MB to start. We'll label this disk *Swap*.
 
-3.  [Create a new configuration profile](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) with a name of your choice. For this example, we'll call the new profile *Installer-New* and it will use the following options:
+3.  [Create a new configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with a name of your choice. For this example, we'll call the new profile *Installer-New* and it will use the following options:
 
     **Installer-New profile**
 

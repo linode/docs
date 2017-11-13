@@ -19,7 +19,7 @@ title: 'Confluence on Debian 5 (Lenny)'
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -89,7 +89,7 @@ Edit the `setenv.sh` file, adding the following lines. Adjust the full path to t
     JAVA_HOME="/usr/lib/jvm/java-6-sun"
     export JAVA_HOME
     ~~~
-    
+
 Issue the following command to return to a root shell.
 
     exit

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['web-servers/apache/mod-wsgi/debian-6-squeeze/','websites/apache/apache-and-modwsgi-on-debian-6-squeeze/']
 modified: Thursday, January 26th, 2012
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, April 5th, 2011'
 title: 'Apache and mod_wsgi on Debian 6 (Squeeze)'
 ---
@@ -19,7 +19,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -82,7 +82,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'

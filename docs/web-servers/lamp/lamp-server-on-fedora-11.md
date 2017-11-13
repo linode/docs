@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['lamp-guides/fedora-11/','websites/lamp/lamp-server-on-fedora-11/']
 modified: Monday, May 2nd, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Tuesday, September 29th, 2009'
 title: LAMP Server on Fedora 11
 external_resources:
@@ -25,7 +25,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/using-linux/administration-basics#set_the_timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/getting-started#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 
@@ -84,7 +84,7 @@ Now we will create virtual host entries for each site that we need to host with 
     </VirtualHost>
 
     <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.org     
+         ServerAdmin webmaster@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/

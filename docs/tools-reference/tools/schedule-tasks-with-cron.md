@@ -22,6 +22,8 @@ Since `cron` is a standard component of modern Linux systems, this documentation
 
 Before we get started, there are a couple of terms associated with `cron` that are non-obvious. First, the job or **cronjob** refers to the task, script, or application that `cron` runs. Second, **crontab** refers to each user's list of cronjobs.
 
+![Title graphic](/docs/assets/schedule_tasks_with_cron_smg.png)
+
 ## Using crontab
 
 To see a listing of the current user's cronjobs, issue the following command:
@@ -44,7 +46,7 @@ We'll explore each aspect of these commands later in this document. To edit the 
 
     crontab -e
 
-This will open a [text editor](/docs/using-linux/administration-basics#how_to_edit_text_interactively) and allow you to edit the `crontab`.
+This will open a [text editor](/docs/tools-reference/linux-system-administration-basics/#edit-text) and allow you to edit the `crontab`.
 
 ## Basic cron Use
 

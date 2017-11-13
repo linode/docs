@@ -5,7 +5,7 @@ author:
 description: View and organize your media library with Plex on CentOS 7
 keywords: 'plex media server, install plex, plex centos'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, May 3rd, 2017
+modified: Wednesday, June 21st, 2017
 modified_by:
   name: Nick Brewer
 published: 'Wednesday, May 3rd, 2017'
@@ -14,7 +14,7 @@ external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
 ---
 
-[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running CentOS 7, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application.
+[Plex](https://www.plex.tv/) is a feature-rich media library platform that allows you to organize and stream your digital video and audio from virtually anywhere. This guide will show you how to set up the **Plex Media Server** on your Linode running CentOS 7, as well as how to connect to your media server from a Plex [client](https://support.plex.tv/hc/en-us/categories/200006953-Plex-Apps) application. A Plex media server could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 ![Install Plex Media Server on CentOS 7](/docs/assets/install-plex-media-server-on-centos-7.png)
 

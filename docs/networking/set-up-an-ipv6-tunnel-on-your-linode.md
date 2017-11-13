@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'How to set up an IPv6 tunnel on your Linode.'
 keywords: 'ipv6,tunnel,broker,networking'
@@ -88,9 +88,9 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
     * `gateway` value with the "Server IPv6 address."
     * `endpoint` value with the endpoint, or "Server IPv4 Address," that your tunnel broker provides you. Generally this endpoint is in a geographical location that is close to your Linode.
     * `local` value with your Linode's IP address. If you have multiple IPs, make sure that this IP is set to the same address as the one you used to sign up for the tunnel.
-    
+
     Insert the following into your `/etc/network/interfaces` file:
-    
+
     {: .file-excerpt}
     /etc/network/interfaces
     : ~~~
@@ -141,11 +141,11 @@ Debian and Ubuntu users (versions before Ubuntu 16.04 are not covered here) can 
       NM_CONTROLLED=no
 
       IPV6_DEFAULTGW=2001:db8:1234:5678::1
-      IPV6_DEFAUTLDEV=he-ipv6
+      IPV6_DEFAULTDEV=he-ipv6
       ~~~
 
       In the above, replace the:
-      
+
       * `IPV6ADDR` value with your "Client IPV6 Address."
       * `IPV6TUNNELIPV4` value with your "Server IPV4 Address."
       * `IPV6TUNNELIPV4LOCAL` value with your "Client IPV4 Address."

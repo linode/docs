@@ -6,9 +6,9 @@ description: 'Use the vmstat tool to monitor your system''s virtual memory usage
 keywords: 'virtual memory,memory,linux,ram,usage,troubleshooting.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/vmstat/']
-modified: Friday, July 8th, 2011
+modified: Wednesday, October 4, 2017
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Wednesday, October 13th, 2010'
 title: Use vmstat to Monitor System Performance
 external_resources:
@@ -16,15 +16,17 @@ external_resources:
  - '[Memory Usage on Linux](http://chrisjohnston.org/2009/why-on-linux-am-i-seeing-so-much-ram-usage)'
 ---
 
+![Use vmstat to Monitor System Performance](/docs/assets/use-vmstat-to-monitor-system-performance.jpg "Use vmstat to Monitor System Performance")
+
+## What is vmstat?
+
 `vmstat` is a tool that collects and reports data about your system's memory, swap, and processor resource utilization in real time. It can be used to determine the root cause of performance and issues related to memory use.
 
-## Using vmstat
-
-### Vmstat Operation
+## How to Use vmstat
 
 Use the `vmstat` command to run the program. Consider the following output:
 
-    $ vmstat 
+    $ vmstat
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3532 148760  50700 1397880    0    0     1     2    6    6  3  1 97  0
@@ -35,11 +37,11 @@ This data provides an average view of virtual memory and system usage since the 
 
 In this example, the first line of data provides the average since the last boot time. Subsequent reports, until `[count]` is reached, report data on the current state of the system every `[interval]` seconds.
 
-### Vmstat Commands
+## vmstat Commands
 
 `vmstat` is often run with an interval of 1 second for a small number of seconds depending on kind of problem the administrator is trying to diagnose. The following example illustrates an interval of one (1) second twenty (20) times:
 
-    $ vmstat 1 20 
+    $ vmstat 1 20
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3996 168488  57100 1368636    0    0     1     2    0    0  3  1 97  0
@@ -65,7 +67,7 @@ In this example, the first line of data provides the average since the last boot
 
 You may run `vmstat` without a `[count]` argument if you want ongoing reports of the system's status in real time. In these cases, intervals of 30 seconds or more may be desirable.
 
-    $ vmstat 30 
+    $ vmstat 30
     procs -----------memory---------- ---swap-- -----io---- -system-- ----cpu----
      r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa
      0  0   3996 167868  57108 1369788    0    0     1     2    0    0  3  1 97  0
@@ -127,7 +129,7 @@ In the default operation, `vmstat` displays memory statistics in kilobytes. `vms
      0  0      3    162 55   1339    0    0 0     0  200  444  2  0 98  0
      0  0      3    162 55   1339    0    0 0     0  313  771  3  1 96  0
 
-## Interpreting Vmstat Output
+## How to Interpret vmstat Output
 
 `vmstat` reports describe the current state of a Linux system. Information regarding the running state of a system is useful when diagnosing performance related issues. Often [Linode Support](/docs/platform/support) will request `vmstat` reports in order to more conclusively diagnose some issues; however, with a little background in what all of the data represents, you can interpret this data yourself.
 
@@ -143,7 +145,7 @@ These values are often `0`.
 
 ### Memory
 
-The information displayed in the `memory` section provides the same data about [memory usage](/docs/using-linux/administration-basics#check_current_memory_usage) as the command `free -m`.
+The information displayed in the `memory` section provides the same data about [memory usage](/docs/tools-reference/linux-system-administration-basics/#check-current-memory-usage) as the command `free -m`.
 
 The `swapd` or "swapped" column reports how much memory has been swapped out to a swap file or disk. The `free` column reports the amount of unallocated memory. The `buff` or "buffers" column reports the amount of allocated memory in use. The `cache` column reports the amount of allocated memory that could be swapped to disk or unallocated if the resources are needed for another task.
 

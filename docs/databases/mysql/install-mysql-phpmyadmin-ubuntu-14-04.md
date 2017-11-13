@@ -6,7 +6,7 @@ description: 'Use phpMyAdmin to manage MySQL databases and users though a web in
 keywords: 'mysql,phpmyadmin,sql,ubuntu,precise,ubuntu 14.04,lts,ubuntu lts,localhost phpmyadmin,php mysql,http localhost phpmyadmin'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['databases/mysql/phpmyadmin-ubuntu-12-04-precise/','databases/mysql/mysql-phpmyadmin-ubuntu-14-04']
-modified: Wednesday, September 16th, 2015
+modified: 'Tuesday, August 1st, 2017'
 modified_by:
     name: Linode
 published: 'Thursday, September 12th, 2013'
@@ -15,6 +15,8 @@ external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
     - '[phpMyAdmin Documentation Page](http://www.phpmyadmin.net/home_page/docs.php)'
 ---
+
+![Install MySQL phpMyAdmin on Ubuntu 14.04](/docs/assets/how-to-install-mysql-phpmyadmin-on-ubuntu-1404.png "Install MySQL phpMyAdmin on Ubuntu 14.04")
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
@@ -36,19 +38,19 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 2.  Update your system:
 
         sudo apt-get update && sudo apt-get upgrade -y
-        
+
 3.  Set up a working LAMP stack. Please see the [LAMP on Ubuntu 14.04](/docs/websites/lamp/how-to-install-a-lamp-stack-on-ubuntu-14-04) guide if needed.
 
     {: .note}
     >
     >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
-    
+
 4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go trough the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
 5.  Install the `mcrypt` PHP module:
 
         sudo apt-get install mcrypt
-        
+
 6.  Restart Apache:
 
         sudo service apache2 restart

@@ -1,7 +1,7 @@
 ---
 deprecated: true
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
 keywords: 'social networking,planet'

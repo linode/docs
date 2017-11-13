@@ -31,7 +31,7 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
      - That the Linode's [hostname is set](/docs/getting-started#setting-the-hostname) and has a FQDN.
 
 
-     
+
     {: .note}
     >
     >The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -56,7 +56,7 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
       {: .note}
       >
-      >This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available. 
+      >This command is designed to work with CentOS 6, which uses MySQL as the default database and CentOS 7 which uses MariaDB. You will get a notice when installing that the other package is not available.
 
     - **Debian & Ubuntu**
 
@@ -91,12 +91,12 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
     You should answer yes to most of the prompts. CentOS users, make sure to set a strong password for the root user since it is initially blank. This is the root user for `mysql` and is not related to the system's root user.
 
 2.  Enter the MySQL CLI:
- 
+
         mysql -u root -p
 
     You'll need to enter the password you set in the step above, or when you installed `mysql-server`.
 
-3.  Create a database named `owadb`: 
+3.  Create a database named `owadb`:
 
         CREATE DATABASE owadb;
 
@@ -155,12 +155,12 @@ Open Web Analytics (OWA) is an open-source alternative to commercial web analyti
 
 
 2.  After clicking on **Let's Get Started**, you should see a configuration page for your OWA installation. OWA will automatically fill in the first field with the path to your OWA installation. You will need to fill in the other fields on the page with the information you set in the MySQL CLI:
- 
+
     [![Open Web Analytics set up screen.](/docs/assets/owa-install_small.png)](/docs/assets/owa-install.png)
 
-3.  Click **Continue...**. 
+3.  Click **Continue...**.
 
-4.  Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account. 
+4.  Create a user account and define a domain to track. You will log in to see your OWA statistics through this user account.
 
     {: .caution}
     > This process will display your password in plaintext once complete. Be careful if performing these steps in a public location.
@@ -172,7 +172,7 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 1.  Log in to your OWA installation. In your browser go to:
 
         http://your.domain/owa/index.php
-	
+
 2. The first time you login OWA will present you with a tracking tag (a code snippet) for the domain you defined when you created your user account. This code should be added to the html pages of the site you wish to track.
 
 3. Once the tracking tag has been added to your website pages, analysis data can be viewed under the "Reporting" section (click the button at the top of the page) which will take you to the Sites Roster page.
@@ -189,6 +189,6 @@ You will need to create site profiles and add JavaScript or PHP code to your web
 
 7.  Copy the tracking code in the language of your choice (JavaScript or PHP) and paste the code into your websites' pages. Now whenever someone loads a page with the tracking code, OWA will know about it and the data will show up in the reports.
 
-8.  Click "View Reports" in the Sites Roster page and begin happy analyzing! 
+8.  Click "View Reports" in the Sites Roster page and begin happy analyzing!
 
 

@@ -42,7 +42,7 @@ Your Linode has been booted into rescue mode. To access it, follow the instructi
 
 ### Connecting to a Linode Running in Rescue Mode
 
-To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/remote-access#sph_console-access) and [Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell). Once you've successfully logged in, you'll see the window shown below.
+To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/networking/remote-access/#console-access) and [Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell). Once you've successfully logged in, you'll see the window shown below.
 
 [![Lish console](/docs/assets/1002-rescue1-2.png)](/docs/assets/1002-rescue1-2.png)
 
@@ -147,7 +147,7 @@ If you can't rescue an existing disk, it's time to rebuild your Linode. There ar
 
 ### Restoring from Backup
 
-If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/backup-service#sph_id2). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
+If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/security/backups/linode-backup-service/#restore-from-a-backup). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
 
 ### Recovering From a System Compromise
 
@@ -159,7 +159,7 @@ Sometimes it's just easier to erase all of your Linode's disks and start over wi
 
  {: .note }
 >
-> If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
+> If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
 
 Here's how to rebuild your Linode from scratch:
 

@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
 modified: Tuesday, May 17th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Friday, February 5th, 2010'
 title: 'Django, Apache and mod_python on Ubuntu 9.10 (Karmic)'
 ---
@@ -20,7 +20,7 @@ Django is a web development framework for the Python programing language. It ena
 
 This guide provides an introduction to getting started with the Django framework. We will be installing Django and related packages from the Ubuntu repository, and deploying applications with `mod_python` and the Apache web server. This setup is generally accepted as a good platform for getting started with Django, although the framework is quite flexible with regards to how applications can be deployed. There are many base platforms that you may consider in the future as your needs grow and change.
 
-We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.10 (Karmic) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9.10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9.10-karmic) installed.
+We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.10 (Karmic) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9-10-karmic) installed.
 
 Enabling the "Universe" Repository
 ----------------------------------
@@ -31,8 +31,8 @@ The package that contains the Django application is contained in the "universe" 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted 
+    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
     deb http://security.ubuntu.com/ubuntu karmic-security main restricted
     deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
@@ -116,7 +116,7 @@ Apache Virtual Host Configuration
             PythonDebug Off
         </Location>
 
-        ErrorLog /srv/logs/error.log 
+        ErrorLog /srv/logs/error.log
         CustomLog /srv/logs/access.log combined
     </VirtualHost>
     ~~~

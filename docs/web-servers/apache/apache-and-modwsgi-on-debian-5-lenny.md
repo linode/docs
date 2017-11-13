@@ -21,7 +21,7 @@ The WSGI specification provides a standard and efficient method for dynamic web 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](web-servers/apache/apache-and-modwsgi-on-debian-5-lenny). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -84,7 +84,7 @@ Consider the following example Web.py *application* which is embedded in a `appl
         '/(.*)', 'hello'
     )
 
-    class hello:        
+    class hello:
         def GET(self, name):
             if not name:
                 name = 'World'

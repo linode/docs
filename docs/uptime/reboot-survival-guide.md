@@ -83,7 +83,7 @@ For future reboots, ensure that any critical stack software is configured to sta
 
         sudo update-rc.d apache2 defaults
         update-rc.d: using dependency based boot sequencing
-        
+
         sudo update-rc.d -f rsyslog remove
         update-rc.d: using dependency based boot sequencing
 
@@ -167,12 +167,12 @@ Remember, if you use SSL certificates that require a passphrase, enter the passp
 
 The console does not display any characters (ex: **\***) as you enter your passphrase.
 
-{: .note} 
+{: .note}
 >If you use full-disk encryption, enter your password in the LISH console after a reboot.
 
 ## Firewall Rules
 
-If you followed the [Creating a Firewall](/docs/security/securing-your-server#configuring-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot. 
+If you followed the [Creating a Firewall](/docs/security/securing-your-server#configure-a-firewall) section of our [Securing your Server](/docs/security/securing-your-server) guide, your firewall rules should already be saved, and loaded on boot automatically. If, however, you've manually configured your `iptables` exceptions live, they may not persist through a server reboot.
 
 1.  Ensure that your custom firewall rules are saved:
 

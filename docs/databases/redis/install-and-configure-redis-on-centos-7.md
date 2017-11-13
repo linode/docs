@@ -18,13 +18,11 @@ external_resources:
  - '[Redis Security](http://redis.io/topics/security)'
 ---
 
-# Install Redis & Set Up Master/Slave Replication on CentOS 7
+Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster.
 
-Redis is an open-source, in-memory, data structure store with optional disk writes for persistence. It can be used as a key-value database, or as a cache and message broker. Redis features built-in transactions, replication, and support for a variety of data structures such as strings, hashes, lists, sets, and others. Redis can be made highly available with Redis Sentinel and supports automatic partitioning with Redis Cluster. This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7.
+This document provides both instructions for deploying the Redis server, and an overview of best practices for maintaining Redis instances on CentOS 7. Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high_memory) with this guide.
 
 ![Deploy Redis on CentOS 7](/docs/assets/deploy-redis-on-centos-7.png "Deploy Redis on CentOS 7")
-
-Since Redis serves all data from memory, we recommend using a [high memory Linode](https://www.linode.com/pricing#high_memory) with this guide.
 
 ## Before You Begin
 
@@ -40,7 +38,7 @@ Since Redis serves all data from memory, we recommend using a [high memory Linod
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 >
-> To utilize the [replication](#set-up-masterslave-replication) steps in this guide, you will need at least two Linodes.
+>To utilize the [replication](/docs/databases/redis/install-and-configure-redis-on-centos-7#prepare-your-linodes) steps in this guide, you will need at least two Linodes.
 
 ## Install Redis
 
@@ -118,7 +116,7 @@ This immediately changes the overcommit memory setting, but the change will not 
 
 ### Additional Swap
 
-Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) in the Linode Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
+Depending upon your usage, you may find it necessary to add extra swap disk space. You can add swap by [resizing your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) in the Linode Manager. The [Redis documentation](https://redis.io/topics/admin) recommends the size of your swap disk match the amount of memory available to your system.
 
 ## Distributed Redis
 
@@ -140,7 +138,7 @@ For this section, you will use two Linodes, a master and a slave.
 
 ###  Prepare Your Linodes
 
-1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles) option in the Linode Manager.
+1.  Set up both Linodes with a Redis instance, using the [Installation](#install-redis) and [Configuration](#configure-redis) steps from this guide. You can also copy your initially configured disk to another Linode using the [Clone](/docs/platform/disk-images/disk-images-and-configuration-profiles#cloning-disks-and-configuration-profiles) option in the Linode Manager.
 
 2.  Configure [Private IP Addresses](/docs/networking/remote-access#adding-private-ip-addresses) on both Linodes, and make sure you can access the master Linode's private IP address from  the slave. You will use only private addresses for replication traffic for security reasons.
 
@@ -258,7 +256,7 @@ For an added layer of security, use password authentication to secure the connec
         redis-cli
         127.0.0.1:6379> AUTH slave_password
 
-3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to to the master server:
+3.  Once you've authenticated, use `INFO` to confirm your slave Linode's role, and its connection to the master server:
 
         127.0.0.1:6379> INFO replication
         # Replication

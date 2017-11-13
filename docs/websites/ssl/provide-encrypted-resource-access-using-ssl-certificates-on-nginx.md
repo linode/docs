@@ -1,1 +1,0 @@
-../../security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx.md

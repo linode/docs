@@ -16,13 +16,13 @@ In this guide, you'll learn how to set up a secure mail server with Postfix, Dov
 
 ![Email with Postfix, Dovecot, and MySQL](/docs/assets/email_with_postfix_dovecot_and_mysql.png "Setting up a mail server with Postfix, Dovecot, and MySQL")
 
-For a different Linux distribution or different mail server, review our [email tutorials](/docs/email). 
+For a different Linux distribution or different mail server, review our [email tutorials](/docs/email).
 
 ### Before You Begin
 
 1.  Set up the Linode as specified in the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/securing-your-server) guides.
 
-2.  Ensure that the iptables [firewall](/docs/securing-your-server#creating-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
+2.  Ensure that the iptables [firewall](/docs/securing-your-server#configure-a-firewall) is not blocking any of the standard mail ports (`25`, `465`, `587`, `110`, `995`, `143`, and `993`). If using a different form of firewall, confirm that it is not blocking any of the needed ports either.
 
 ### Configure DNS
 
@@ -117,7 +117,7 @@ The next steps are to install the required packages on the Linode.
 
 ### Adding Data
 
-Now that the database and tables have been created, add some data to MySQL. 
+Now that the database and tables have been created, add some data to MySQL.
 
 1.  Add the domains to the `virtual_domains` table. Replace the values for `example.com` and `hostname` with your own settings.
 
@@ -133,7 +133,7 @@ Now that the database and tables have been created, add some data to MySQL.
     >
     > Note which `id` goes with which domain, the `id` is necessary for the next two steps.
 
-2.  Add email addresses to the `virtual_users` table. Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords. 
+2.  Add email addresses to the `virtual_users` table. Replace the email address values with the addresses that you wish to configure on the mailserver. Replace the `password` values with strong passwords.
 
         INSERT INTO `mailserver`.`virtual_users`
           (`id`, `domain_id`, `password` , `email`)
@@ -243,6 +243,8 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       smtpd_tls_key_file=/etc/dovecot/private/dovecot.pem
       smtpd_use_tls=yes
       smtpd_tls_auth_only = yes
+      smtp_tls_security_level = may
+      smtpd_tls_security_level = may
 
       #Enabling SMTP for authenticated users, and handing off authentication to Dovecot
       smtpd_sasl_type = dovecot
@@ -327,7 +329,7 @@ Next, set up Postfix so the server can accept incoming messages for the domains.
       query = SELECT email FROM virtual_users WHERE email='%s'
       ~~~
 
-7.  Save the changes you've made to the `/etc/postfix/mysql-virtual-email2email.cf` file, and restart Postfix: 
+7.  Save the changes you've made to the `/etc/postfix/mysql-virtual-email2email.cf` file, and restart Postfix:
 
         sudo service postfix restart
 
@@ -433,7 +435,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
       !include_try /usr/share/dovecot/protocols.d/*.protocol
       protocols = imap pop3 lmtp
 
-      # A comma separated list of IPs or hosts where to listen in for connections. 
+      # A comma separated list of IPs or hosts where to listen in for connections.
       # "*" listens in all IPv4 interfaces, "::" listens in all IPv6 interfaces.
       # If you want to specify non-default ports or anything more complex,
       # edit conf.d/master.conf.
@@ -455,7 +457,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
       #login_trusted_networks =
 
       # Sepace separated list of login access check sockets (e.g. tcpwrap)
-      #login_access_sockets = 
+      #login_access_sockets =
 
       # Show more verbose process titles (in ps). Currently shows user name and
       # IP address. Useful for seeing who are actually using the IMAP processes
@@ -589,7 +591,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
-    > Click here to see the final, complete version of <a href="/docs/assets/1238-dovecot_10-auth.conf.txt" target="_blank">`10-auth.conf`<a/>.
+    > [Here](/docs/assets/1238-dovecot_10-auth.conf.txt) is an example of a complete `10-auth.conf` file.
 
     Save the changes to the `/etc/dovecot/conf.d/10-auth.conf` file.
 
@@ -652,7 +654,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
-    > Click the link to see the final, complete version of <a href="/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt" target="_blank">dovecot-sql.conf.ext</a>.
+    > [Here](/docs/assets/1284-dovecot__dovecot-sql.conf.ext.txt) is an example of a complete `dovecot-sql.conf.ext` file.
 
     Save the changes to the `/etc/dovecot/dovecot-sql.conf.ext` file.
 
@@ -668,7 +670,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
-    > Click this link to see the final version of <a href="/docs/assets/1240-dovecot_10-master.conf.txt" target="_blank">10-master.conf</a>. There are many nested blocks of code in this file, so please pay close attention to the brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
+    > [Here](/docs/assets/1240-dovecot_10-master.conf.txt) is an example of a complete `10-master.conf` file. There are many nested blocks of code in this file, so please pay close attention to the brackets. It's probably better if you edit line by line, rather than copying large chunks of code. If there's a syntax error, Dovecot will crash silently, but you can check `/var/log/upstart/dovecot.log` to help you find the error.
 
 16. Disable unencrypted IMAP and POP3 by setting the protocols' ports to 0, as shown below. Ensure that the entries for port and ssl below the IMAPS and pop3s entries are uncommented:
 
@@ -783,7 +785,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 
     {:.note}
     >
-    > Click the link to see the final, complete version of <a href="/docs/assets/1241-dovecot_10-ssl.conf.txt" target="_blank">10-ssl.conf</a>.
+    > [Here](/docs/assets/1241-dovecot_10-ssl.conf.txt) is an example of a complete `10-ssl.conf` file.
 
 19. Verify that the `ssl_cert` setting has the correct path to the certificate, and that the `ssl_key` setting has the correct path to the key. The default setting displayed uses Dovecot's built-in certificate, so you can leave this as-is if using the Dovecot certificate. Update the paths accordingly if you are using a different certificate and key.
 
@@ -812,7 +814,7 @@ Dovecot allows users to log in and check their email using POP3 and IMAP. In thi
 ## Test Email
 
 1.  Set up a test account in an email client to ensure that everything is working. Many clients detect server settings automatically. However, manual configuration requires the following parameters:
-    
+
     -   the full email address, including the `@example.com` part, is the username.
     -   the password should be the one you added to the MySQL table for this email address.
     -   The incoming and outgoing server names must be a domain that resolves to the Linode.
@@ -861,7 +863,7 @@ Although the mail server is up and running, eventually you'll probably need to a
 
 ### Domains
 
-1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started#sph_logging-in-for-the-first-time).
+1.  To add a new domain, open a terminal window and [log in to the Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
 
 2.  Log in to the MySQL server with an appropriately privileged user. For this example, use the `root` user:
 

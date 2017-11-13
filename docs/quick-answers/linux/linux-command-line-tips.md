@@ -7,7 +7,7 @@ keywords: 'terminal,command line,shell,tips,tricks,easy linux,cli'
 alias: ['quick-answers/linux-command-line-tips/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Thursday, April 13, 2017'
-modified: 'Thursday, April 13, 2017'
+modified: 'Monday, July 17, 2017'
 modified_by:
   name: Edward Angert
 title: 'Linux Command Line Tips'
@@ -32,7 +32,7 @@ These are just a few of the many commands and tricks available in the Linux term
 
 ## Quickly Find and Replace within the Last-Entered Command
 
-This is especially useful for both fixing typos and re-running system commands. 
+This is especially useful for both fixing typos and re-running system commands.
 
 In the following example, we correct the typo in the first line using the command in the second:
 

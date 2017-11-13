@@ -236,7 +236,7 @@ This runs a vmstat every second, twenty times, giving a sample of the current st
      0  0      4  33388  47888 110912    0    0 0     0   89  144  0  0 100  0
      0  0      4  33380  47888 110912    0    0 0     0  181  185  0  0 99  0
 
-The memory and swap columns provide the same kind of information provided by the "[free -m](#check_current_memory_usage)" command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for I/O operations to complete.
+The memory and swap columns provide the same kind of information provided by the "[free -m](#check-current-memory-usage)" command, albeit in a slightly harder to understand format. The most relevant information produced by this command is the `wa` column, which is the final column in most implementations. This field displays the amount of time the CPU spends waiting for I/O operations to complete.
 
 If this number is consistently and considerably higher than 0, you might consider taking measures to address your IO usage. However, if the `vmstat` output resembles the above, you can be sure in the knowledge that you're not experiencing an IO-related issues.
 
@@ -341,7 +341,7 @@ To **delete** a file:
 
 This will delete the `scratch.txt` file from the current directory.
 
-For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/using-linux/using-the-terminal#file-system-navigation).
+For more information about file system navigation and manipulation, please consider our documentation of [file system navigation](/docs/tools-reference/ssh/using-the-terminal/#file-system-navigation).
 
 ## Package Management
 
@@ -495,7 +495,7 @@ Running `pacman` with the `-Si` option generates the package's record from the d
 
 The first command only searches the database for package names. The second command searches through the database for package names and descriptions. These commands will allow you to search your local package tree (i.e., portage) for the specific package name or term. The output of either command is similar to the excerpt below.
 
-    Searching...   
+    Searching...
      [ Results for search key : wget ]
      [ Applications found : 4 ]
 
@@ -610,7 +610,7 @@ In order to provide these resources to users, your Linode needs to be running a 
 
 Once you've chosen a web server, you need to decide what (if any) scripting support you need to install. Scripting support allows you to run dynamic content with your web server and program server side scripts in languages such as Python, PHP, Ruby, and Perl.
 
-If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/websites/frameworks/).
+If you need a full web application stack, we encourage you to consider one of our more full-featured [LAMP stack guides](/docs/websites/lamp/). If you need support for a specific web development framework, consult our tutorials for installing and using specific [web application frameworks](/docs/development/frameworks/).
 
 ### How to Choose a Web Server
 

@@ -21,7 +21,7 @@ Prior to beginning this guide, please complete the [getting started guide](/docs
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -151,7 +151,7 @@ If you installed the web server after compiling it from source you have a number
 
         include /opt/etc/nginx/sites-enabled/*;
 
-        # [...]       
+        # [...]
     }
     ~~~
 
@@ -165,7 +165,7 @@ Modify the include statement to point to the path of your `sites-enabled` direct
 
         include /opt/nginx-sites.conf;
 
-        # [...]       
+        # [...]
     }
     ~~~
 
@@ -265,7 +265,7 @@ When you've completed the modifications to the configuration, make sure that the
 
     /etc/init.d/nginx restart
 
-Congratulations! You can now deploy PHP scripts with with your LEMP stack.
+Congratulations! You can now deploy PHP scripts with your LEMP stack.
 
 Install MySQL Database Server
 -----------------------------

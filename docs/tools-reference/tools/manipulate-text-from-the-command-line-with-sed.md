@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/sed/']
 modified: Thursday, March 23rd, 2017
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 1st, 2010'
 title: Manipulate Text from the Command Line with sed
 external_resources:
@@ -83,7 +83,7 @@ bash function
 :   ~~~ bash
     txt2text (){
         for i in `ls -1`
-        do 
+        do
             mv $i `echo $i | sed 's/.*\.txt$/.text/'`
         done
     }

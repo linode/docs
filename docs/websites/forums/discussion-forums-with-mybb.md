@@ -1,6 +1,6 @@
 ---
 author:
-  name: Amanda Folson
+  name: Linode
   email: docs@linode.com
 description: 'Configuring the MyBB system for hosting web-based discussion forums.'
 keywords: 'mybb,forum software,web applications,PHP'

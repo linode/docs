@@ -23,7 +23,7 @@ Prior to beginning this document to install a basic Postfix email gateway, we as
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -36,7 +36,7 @@ Installing Postfix
 Before we begin to install the basic email gateway, issue the following commands to ensure that your system is up to date and that the latest version of the package repository has been installed:
 
     apt-get update
-    apt-get upgrade 
+    apt-get upgrade
 
 To install the Postfix MTA issue the following command:
 
@@ -74,7 +74,7 @@ Add the following lines to your configuration file. This configures postfix for 
 
 Furthermore, this ensures that the domains listed in `mydestination` do not conflict with the address that you will receive or forward email with. The `home_mailbox` value determines the name of the folder where email messages are delivered when local delivery is configured. For the user `username` with a home directory of `/home/username/` new mail would be delivered in a `Maildir` directory located at `/home/username/mail/`. When you've completed this configuration, issue the following command to reload the mail server:
 
-    /etc/init.d/postfix reload 
+    /etc/init.d/postfix reload
 
 In the future, if you want to stop, start, or restart Postfix, issue the correct command from the following:
 
@@ -165,12 +165,12 @@ Save the following script in the `/opt` directory on the system you wish to send
     ## 25, or if you need to start the tunnel as a non-root user, as
     ## OpenSSH only allows root users to start tunnels to low-numbered
     ## "privileged ports." If this is the case you will also need to
-    ## modify the configuration of your local mail sending agent. 
+    ## modify the configuration of your local mail sending agent.
 
     $local_ip    = "127.0.0.1";
     $local_port  = "25";
 
-    ## You do not need to edit this file beyond this point. 
+    ## You do not need to edit this file beyond this point.
 
     ######################################################################
 
@@ -211,12 +211,12 @@ Save the following script in the `/opt` directory on the system you wish to send
 Edit this file to include your username and the location of your email gateway. If you can run this script as root on your local system or the system you want to send mail from, it is easiest to leave `$local_port` set to `25`, otherwise use an alternate port like `2525` or `2255`. When you've completed these operations run the following commands to make this script executable and start the tunnel:
 
     cd /opt/
-    chmod +x /opt/smtp-tunnel 
-    /opt/smtp-tunnel start 
+    chmod +x /opt/smtp-tunnel
+    /opt/smtp-tunnel start
 
 You may want to consider issuing the command to start the tunnel (`/opt/smtp-tunnel start`) as part of your boot script by including it in your `/etc/rc.local` file, or by creating a `@reboot` [cron job](/docs/linux-tools/utilities/cron). If your network configuration utility allows you to establish pre- and post-connection scripts, you may want to instantiate and destroy the tunnel during this process. To destroy the tunnel, issue the following command:
 
-    /opt/smtp-tunnel stop 
+    /opt/smtp-tunnel stop
 
 When the tunnel is active, you will be able to configure your local mail sending agent to send using the SMTP server "localhost" and port 25, or the alternate `$local_port` you configured. To configure the `msmtp` mail sending agent on an Mac OS X or Linux-based system consider the following configuration file:
 

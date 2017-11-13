@@ -2,15 +2,16 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Using the Apache web server with Debian 7 Wheezy to serve Ruby on Rails applications.'
+description: 'Using the Apache web server with Debian 8 Wheezy to serve Ruby on Rails applications.'
 keywords: 'ruby on rails,rails on debian,rails apps,rails and apache'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/ror/ruby-on-rails-apache-debian-8/']
-modified: Monday, July 13th, 2015
+modified: Wednesday, September 13th, 2017
 modified_by:
   name: Elle Krout
 published: 'Monday, July 13th, 2013'
-title: 'Ruby on Rails with Apache on Debian 8'
+title: 'Install Ruby on Rails with Apache on Debian 8'
+og_description: 'This tutorial will teach you how to use an Apache web server with Debian 8 to serve Ruby on Rails applications'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
  - '[mod_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
@@ -74,7 +75,7 @@ Ruby on Rails is a rapid development web framework that allows web designers and
     Any other dependencies can be installed mimicking the steps above: Install the needed packages, then the needed gem.
 
 5.  Add `rails` to your $PATH environment variable. Make sure to replace `VERSION` with the version of Ruby you are running:
-        
+
         ls /var/lib/gems
         PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/var/lib/gems/VERSION/bin"
 
@@ -117,7 +118,7 @@ There are a number of strategies for deploying more than one Rails application u
     :   ~~~ conf
         DocumentRoot /var/www/html/example.com/public_html/
         RailsBaseURI /app1
-        RailsBaseURI /app2 
+        RailsBaseURI /app2
         RailsBaseURI /app3
         ~~~
 

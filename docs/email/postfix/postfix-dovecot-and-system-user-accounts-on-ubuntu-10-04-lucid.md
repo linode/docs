@@ -16,12 +16,12 @@ title: 'Postfix, Dovecot, and System User Accounts on Ubuntu 10.04 (Lucid)'
 
 
 
-Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10.04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10.04-lucid/).
+Postfix is a popular mail transfer agent or "MTA". This document will allow you to create a mail system using Postfix as the core component and aims to provide a simple email solution that uses system user accounts for authentication and mail delivery and Dovecot for remote mailbox access. If you do not need to authenticate to Postfix for SMTP service or use POP or IMAP to download email, you may consider using the [Basic Email Gateway with Postfix](/docs/email/postfix/gateway-ubuntu-10-04-lucid) document to install a more minimal email system. If you plan to host a larger number of domains and email aliases, you may want to consider a more sophisticated hosting solution like the [Email Server with Postfix, MySQL and Dovecot](/docs/email/postfix/dovecot-mysql-ubuntu-10-04-lucid/).
 
 Set the Hostname
 ----------------
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -92,7 +92,7 @@ Postfix
 
 At this point you should be able to send email using your Postfix instance by authenticating with SMTP. Authentication credentials are your [system user accounts](/docs/tools-reference/linux-users-and-groups/).
 
-Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10.04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
+Consider the [basic email gateway guide](/docs/email/postfix/gateway-ubuntu-10-04-lucid) for more information regarding Postfix virtual hosting configuration. If you need to deliver mail locally, continue for documentation of mail routing and the Dovecot POP3/IMAP server.
 
 ### Configure Mail Delivery
 
@@ -138,7 +138,7 @@ Edit the `/etc/alias` file to add the following line. This will to reroute all l
 
 When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
 
-    postalias /etc/alias 
+    postalias /etc/alias
 
 > postmap /etc/postfix/virtual /etc/init.d/postfix restart
 
@@ -187,7 +187,7 @@ More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
-- [Basic Email Gateway with Postfix on Ubuntu 10.04 (Lucid)](/docs/email/postfix/gateway-ubuntu-10.04-lucid)
+- [Basic Email Gateway with Postfix on Ubuntu 10.04 (Lucid)](/docs/email/postfix/gateway-ubuntu-10-04-lucid)
 
 
 

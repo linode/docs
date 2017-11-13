@@ -27,7 +27,7 @@ Prior to beginning this guide, please complete the [Getting Started guide](/docs
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -122,7 +122,7 @@ Below is a sample Nginx virtual host configuration file. Modify your configurati
 
         location / {
             index index.html index.htm index.php;
-        }   
+        }
     ~~~
 
 In addition, with in the Nginx virtual host file, ensure the `location ~ \.php$ { }` block resembles the one in this example:
@@ -171,7 +171,7 @@ When you have completed the modifications to the configuration, make sure that t
 
     /etc/init.d/nginx restart
 
-You are now able to deploy PHP scripts with with your LEMP stack.
+You are now able to deploy PHP scripts with your LEMP stack.
 
 ## Install MySQL Database Server
 

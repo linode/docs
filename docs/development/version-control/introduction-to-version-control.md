@@ -12,7 +12,7 @@ modified_by:
 published: 'Wednesday, September 18th, 2013'
 title: Introduction to Version Control
 external_resources:
- - '[Version Control Systems](/docs/linux-tools/version-control)'
+ - '[Version Control Systems](/docs/development/version-control/)'
 ---
 
 In the [Hosting a Website](/docs/hosting-website) guide, you learned how to host your website by installing and configuring a web server, database, and PHP. Now it's time to implement version control to protect your data and handle code updates smoothly. By the time you reach the end of this guide, you'll know how to use many of the version control methods and tools used by large organizations.
@@ -65,7 +65,7 @@ For an added layer of protection, you can store your files in *both* a local and
 
 You can install Git on your desktop computer, your Linode, or both. Getting started with Git is easy. All you have to do is install Git on your Linode, create a repository, and make an initial commit. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-to-the-linode-manager).
 2.  Install Git on your Linode by entering the following commands, one by one:
 
         sudo apt-get update

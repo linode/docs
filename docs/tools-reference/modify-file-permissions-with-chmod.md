@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['linux-tools/common-commands/chmod/']
 modified: Thursday, July 7th, 2011
 modified_by:
-  name: Amanda Folson
+  name: Linode
 published: 'Thursday, July 1st, 2010'
 title: Modify File Permissions with chmod
 external_resources:
@@ -18,11 +18,16 @@ external_resources:
 
 Unix-like systems, including the Linux systems that run on the Linode platform, have an incredibly robust access control system that allows systems administrators to effectively permit multiple users access to a single system without giving every user access to every file on the file system. The `chmod` command is the best and easiest way to modify these file permissions.
 
+![Title graphic](/docs/assets/modify_file_permissions_with_chmod_smg.png)
+
 This document provides a brief overview of file permissions and the operation of the `chmod` command in addition to a number of practical examples and applications of `chmod`. If you find this guide helpful, please consider our [basic administration practices guide](/docs/using-linux/administration-basics) and the [Linux users and groups guide](/docs/tools-reference/linux-users-and-groups/).
 
 ## Using Chmod
 
-In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, chmod is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+In this guide, `chmod` refers to recent versions of `chmod` such as those provided by the GNU project. By default, `chmod` is included with all images provided by Linode, and as part of the common "base" selection of packages provided in nearly all distributions of Linux-based operating systems.
+
+<div class="wistia_responsive_padding" style="padding:56.25% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><iframe src="https://fast.wistia.net/embed/iframe/h5sfokgpgm?videoFoam=true" title="Linode - How to use the chmod command" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen mozallowfullscreen webkitallowfullscreen oallowfullscreen msallowfullscreen width="100%" height="100%"></iframe></div></div>
+<script src="https://fast.wistia.net/assets/external/E-v1.js" async></script>
 
 ### File Permission Basics
 
@@ -36,7 +41,7 @@ The first block of data contains information regarding the file permissions and 
 
 The remaining characters represent the core permissions. In groupings of three, these characters represent read, write, and execute permissions. The first grouping represents the owners permissions, the second grouping represents the usergroup that owns the file, and the final grouping represents the permissions of all users on the system.
 
-Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional_file_permissions) that control other aspects of access to files.
+Any object on the file system may have any combination of permissions. Note, access to the files targeted by symbolic links is controlled by the permissions of the targeted file, not the permissions of the link object. There are [additional file permissions](/docs/tools-reference/linux-users-and-groups#additional-file-permissions) that control other aspects of access to files.
 
 ### The Chmod Command
 
@@ -61,12 +66,12 @@ The `-R` option applies the modification to the permissions recursively to the d
 The notation used in this document thus far can be confusing for particularly complex file permission requirements. `chmod` provides an alternate "octal" notation that you may find more sensible:
 
     0 ---      indicates no permissions
-    1 --x      indicates execute permissions 
-    2 -w-      indicates write permissions 
+    1 --x      indicates execute permissions
+    2 -w-      indicates write permissions
     3 -wx      indicates write and execute permissions
     4 r--      indicates read permissions
     5 r-x      indicates read and execute permissions
-    6 rw-      indicates read and write permissions 
+    6 rw-      indicates read and write permissions
     7 rwx      indicates read, write, and execute permissions
 
 Each digit is independent of the other two. Therefore, 777 creates read, write, and execute privileges for all users. 744, which is a typical default permission, allows read, write, and execute permissions for the owner, and read permissions for the group and world users. To chmod the "roster.py" file so that the owner can read, write, and execute the file, the group can read and execute the file, and the world can execute the file, issue the following command:

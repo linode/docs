@@ -34,13 +34,13 @@ The Debian project provides two possible paths to installing the Plone project a
 
 To install the `plone3-site`, issue the following command:
 
-    apt-get install plone3-site 
+    apt-get install plone3-site
 
 The installation interface will present several questions during the installation process in order to create an administrative user account for this Plone instance. Additionally you will be asked to supply a port for running Plone's HTTP service. If you choose to run Plone on a port *other* than `8081` please make note of this alteration. In general, you may select the default options during the configuration process. When the installation is complete, you can issue the following command to start the Zope server:
 
     /etc/init.d/zope2.10 start
 
-Now, assuming that you have an [A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
+Now, assuming that you have an [A Record](/docs/networking/dns/dns-records-an-introduction#a-and-aaaa) for the domain `example.com` pointed to the IP address for the Linode that is running this Plone instance, you can visit the address `http://example.com:8081` to visit the new Plone site. To login to the Zope administrative interface, visit `http://example.com:8081/manage` and authenticate using the credentials created during the installation process.
 
 You can now proceed with the development of your Plone website!
 
@@ -118,7 +118,7 @@ Apache Virtual Host Configuration
         ServerAlias www.example.com
         DocumentRoot /srv/www/example.com/public_html/
 
-        ErrorLog /srv/www/example.com/logs/error.log 
+        ErrorLog /srv/www/example.com/logs/error.log
         CustomLog /srv/www/example.com/logs/access.log combined
 
         ProxyPreserveHost On
@@ -130,7 +130,7 @@ Apache Virtual Host Configuration
 
 Issue the following command to restart apache:
 
-    /etc/init.d/apache2 restart      
+    /etc/init.d/apache2 restart
 
 In this example, requests for content will **only** be proxied to Plone **if** resources matching these requests do not exist in the `DocumentRoot` directory (e.g. `/srv/www/example.com/public_html`). This solution may be able to use system resources more effectively if you have a large Plone site with a great deal of static content.
 

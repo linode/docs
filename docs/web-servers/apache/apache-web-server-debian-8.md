@@ -6,15 +6,17 @@ description: 'Install Apache on your Debian 8 (Jessie) server, configure virtual
 keywords: 'apache debian 8,apache debian jessie,linux web server,apache on debian,apache jessie,apache,debian,web server'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['websites/apache/apache-web-server-debian-8/']
-modified: Monday, June 29th, 2015
+modified: Tuesday, September 5, 2017
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 'Monday, June 29th, 2015'
 title: 'Apache Web Server on Debian 8 (Jessie)'
 external_resources:
  - '[Apache HTTP Server Version 2.4 Documentation](http://httpd.apache.org/docs/2.4/)'
  - '[Apache Configuration](/docs/web-servers/apache/configuration/)'
 ---
+
+![apache_banner](/docs/assets/Apache_Web_Server_on_Debian_8_Jessie_smg.jpg)
 
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This guide explains how to install and configure an Apache web server on Debian 8.
 

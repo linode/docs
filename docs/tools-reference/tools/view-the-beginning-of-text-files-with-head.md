@@ -15,6 +15,8 @@ title: View the Beginning of Text Files with head
 
 The `head` command is a core Linux utility used to view the very beginning of a text file. Despite its narrow functionality, `head` is useful in many systems administration and scripting tasks. For similar functionality that address the end of a file, consider the tail utility.
 
+![Title graphic](/docs/assets/view_the_beginning_of_text_files_with_head_smg.png)
+
 ## Using head
 
 Consider the following invocation:
@@ -41,10 +43,10 @@ If a file is smaller than the specified number of lines, `head` will print the e
 
 `head` can process multiple files at once. Consider the following:
 
-    $ ls 
+    $ ls
     example  roster
 
-    $ head * 
+    $ head *
     ==> example <==
     lollipop
     The Joke
@@ -55,7 +57,7 @@ If a file is smaller than the specified number of lines, `head` will print the e
     ==> roster <==
     John
     Susan
-    Michael 
+    Michael
     Robert
     Justin
 

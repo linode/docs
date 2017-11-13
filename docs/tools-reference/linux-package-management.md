@@ -6,7 +6,7 @@ description: Guides for installing and managing software on major Linux operatin
 keywords: 'Linux package management,rpm,apt,dpkg,apt-get,apt-cache,pacman,yum'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 alias: ['using-linux/package-management/']
-modified: Thursdsay, February 23rd, 2017
+modified: Thursday, February 23rd, 2017
 modified_by:
   name: Linode
 published: 'Thursday, July 16th, 2009'
@@ -59,7 +59,7 @@ While `apt-get` provides the most often-used functionality, APT provides additio
 -   `apt-cache search package-name(s)` - If you know the name of a piece of software but `apt-get install` fails or points to the wrong software, this looks for other possible names.
 -   `apt-cache show package-name(s)` - Shows dependency information, version numbers and a basic description of the package.
 -   `apt-cache depends package-name(s)` - Lists the packages that the specified packages depends upon in a tree. These are the packages that will be installed with the `apt-get install` command.
--   `apt-cache rdepends package-name(s)` - Outputs a list of packages that that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command, like `less`.
+-   `apt-cache rdepends package-name(s)` - Outputs a list of packages that depend upon the specified package. This list can often be rather long, so it is best to pipe its output through a command, like `less`.
 -   `apt-cache pkgnames` - Generates a list of the currently installed packages on your system. This list is often rather long, so it is best to pipe its output through a program, like `less`, or direct the output to a text file.
 
 Combining most of these commands with `apt-cache show` can provide you with a lot of useful information about your system, the software that you might want to install, and the software that you have already installed. If you're overwhelmed by `apt-cache` check out the following resources for easy-to-read lists of available packages:
@@ -88,7 +88,7 @@ Here are some examples:
     deb http://mirrors.linode.com/debian/ jessie main contrib
     deb http://www.deb-multimedia.org jessie main non-free
 
-The first line specifies the Linode mirror for the the Debian 8 (code named Jessie) Linux distribution, as well as the main and contributed components. The next line specifies the deb-multimedia.org repository for Jessie, which provides some multimedia packages unavailable in the main repositories for licensing reasons, and its main and non-free components.
+The first line specifies the Linode mirror for the Debian 8 (code named Jessie) Linux distribution, as well as the main and contributed components. The next line specifies the deb-multimedia.org repository for Jessie, which provides some multimedia packages unavailable in the main repositories for licensing reasons, and its main and non-free components.
 
 In general, one does not want to add new entries to `sources.list` without a lot of scrutiny and diligence, as updating the package cache with additional repositories and running upgrades can sometimes result in the installation of broken packages, unmet dependencies, and system instability. In Debian systems, downgrading is often difficult.
 
@@ -336,7 +336,7 @@ Edit `/etc/abs.conf` so that the `REPOS` line indicates the proper repositories.
 
     REPOS=(core extra community !testing)
 
-To create a local ABS tree in `/var/abs`, run the the `abs` command as root. You may now browse `/var/abs`, which contains a representation of the package collection with folders representing each repository, category, and piece of software.
+To create a local ABS tree in `/var/abs`, run the `abs` command as root. You may now browse `/var/abs`, which contains a representation of the package collection with folders representing each repository, category, and piece of software.
 
 Arch recommends that you create a build directory at another location, such as `~/abs/`, where actual building will occur.
 

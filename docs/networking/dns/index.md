@@ -3,7 +3,7 @@ title: DNS
 featured:
  - dns-records-an-introduction.md
  - dns-manager-overview.md
- - setting-reverse-dns.md
+ - configure-your-linode-for-reverse-dns.md
  - common-dns-configurations.md
  - previewing-websites-without-dns.md
  - use-dig-to-perform-manual-dns-queries.md

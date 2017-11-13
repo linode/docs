@@ -6,7 +6,7 @@ author:
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
 keywords: 'apache,apache ubuntu 8.04,apache ubuntu hardy,web server,apache on ubuntu,apache hardy'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-8-04-hardy/','web-servers/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/','websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
+alias: ['web-servers/apache/installation/ubuntu-8-04-hardy/','websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
 modified: Tuesday, May 17th, 2011
 modified_by:
   name: Linode
@@ -39,7 +39,7 @@ Various packages discussed in this guide require the `universe` repositories to 
 /etc/apt/sources.list
 :   ~~~
     ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy main restricted         
+    deb http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
     deb-src http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
 
     deb http://security.ubuntu.com/ubuntu hardy-security main restricted
@@ -148,7 +148,7 @@ Next, create example.org (`/etc/apache2/sites-available/example.org`) so that it
 /etc/apache2/sites-available/example.org
 :   ~~~ apache
     <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.org     
+         ServerAdmin webmaster@example.org
          ServerName example.org
          ServerAlias www.example.org
          DocumentRoot /srv/www/example.org/public_html/
