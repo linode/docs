@@ -229,9 +229,9 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
             . . .
             ~~~
 
-       Copy the text entry preceeding `submenu`, in this example the text would be: **Advanced options for Debian GNU/Linux**.
+3. Copy the text entry directly after `submenu` and paste to a convenient, temporary location. In this example the text would be: **Advanced options for Debian GNU/Linux**.
 
-3. Within the `grub.cfg` file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored:
+4. Within the `grub.cfg` file underneath the "submenu" line, you will see multiple indented "menuentry" sections. These represent the available kernels. From these, you need to locate the newly installed OpenVZ kernel menu entry. It should look similar to the content below. Note that some will be recovery kernels and should be ignored:
 
     {: .file}
     /boot/grub/grub.cfg
@@ -258,23 +258,23 @@ The system must be configured to boot the OpenVZ kernel each time the server is 
             . . .
             ~~~
 
-         Again, write down the text directly after "menuentry" in single quotes. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
+5. Again, write down the text directly after "menuentry" in single quotes. Here, the text to copy is **Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64**.
 
-4. Close the **grub.cfg** file and open **/etc/default/grub** in your preferred text editor. Locate the line that begins with `GRUB_DEFAULT=`. Delete the default value for this parameter and enter the text you copied in the previous steps, following the format below. With the example above, the value would be the following:
+6. Close the **grub.cfg** file and open **/etc/default/grub** in your preferred text editor. Locate the line that begins with `GRUB_DEFAULT=`. Delete the default value for this parameter and enter the text you copied in the previous steps, following the format below. With the example above, the value would be the following:
 
         GRUB_DEFAULT="Advanced options for Debian GNU/Linux>Debian GNU/Linux, with Linux 2.6.32-openvz-042stab123.9-amd64"
 
     Note that both copied strings are separated with the carrot ">" character.
 
-5. Save and close the **grub** file, and issue the below command to reload the grub bootloader with the new kernel value:
+7. Save and close the **grub** file, and issue the below command to reload the grub bootloader with the new kernel value:
 
         update-grub
 
-6. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
+8. By default, kernel loading is not handled by Grub, but by the Linode Manager. Login to your Linode Manager and select your Linode. Click on your configuration profile. Under the "Boot Settings" section, select "GRUB 2" from the Kernel dropdown-list (see image below). Save your changes and exit.
 
      ![Linode Manager - Select Kernel](/docs/assets/openvz/openvz_one.PNG)
 
-7. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
+9. Reboot your server and issue the command below to verify the OpenVZ kernel was loaded:
 
         uname -r
 
