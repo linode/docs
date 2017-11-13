@@ -70,6 +70,19 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL
 >
 >Allowing unrestricted access to MySQL on a public IP not advised but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
+## Prepare for mysql secure installation
+
+1. Get Temporary password
+```
+sudo cat /var/log/mysqld.log | grep "temporary password"
+```
+2. Copy the temporary password
+
+```
+2015-12-16T01:42:21.194212Z 1 [Note] A temporary password is generated for root@localhost: b3grs$!GQ4;r
+```
+
+
 ## Harden MySQL Server
 
 1. Run the `mysql_secure_installation` script to address several security concerns in a default MySQL installation.
