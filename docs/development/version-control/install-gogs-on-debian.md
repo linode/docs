@@ -2,22 +2,20 @@
 author:
     name: Linode Community
     email: docs@linode.com
-description: 'Install Gogs, a Self-hosted Git Service Written in Go, on Your Debian 8 (Jessie) Server.'
-keywords: 'gogs, go git service,golang,git,debian 8, nginx, postgresql'
+description: 'Install Gogs on Debian for a self-hosted Git service written in Go.'
+keywords: 'gogs, git, nginx, postgresql'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 'Friday, October 9th, 2015'
-alias: ['applications/development/install-gogs-on-debian-jessie/','applications/development/install-gogs-on-debian-8-jessie/']
-modified: Wednesday, June 21st, 2017
+alias: ['applications/development/install-gogs-on-debian-jessie/','applications/development/install-gogs-on-debian-8-jessie/','development/version-control/install-gogs-on-debian-8-jessie']
+modified: Thursday, November 9th, 2017
 modified_by:
     name: Linode
-title: 'Install Gogs on Debian 8 Jessie'
+title: 'Install Gogs on Debian 9 with nginx and PostgreSQL'
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/flow__free
 external_resources:
-    - '[Gogs official site](http://gogs.io)'
     - '[Gogs documentation](http://gogs.io/docs)'
-    - '[Gogs: GitLab alternative in Go](http://blog.gopheracademy.com/birthday-bash-2014/gogs-gitlab-alternative-in-go/)'
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
@@ -26,9 +24,9 @@ external_resources:
 
 [Gogs](http://gogs.io) is a self-hosted Git service, similar to GitLab. It is written in [Go](http://golang.org) and aims to be the easiest and most painless way to set up self-hosted Git service. Gogs is one of the best choices if you need to set up a private Git repository, but don't want to pay for the private plans on other Git services.
 
-![Install Gogs on Debian 8 Jessie](/docs/assets/gogs_tg.png "Install Gogs on Debian 8 Jessie")
+![Install Gogs on Debian](/docs/assets/gogs_tg.png "Install Gogs on Debian")
 
-This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and Nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+This tutorial shows you how to install and configure Gogs, using PostgreSQL for the database server and nginx for the reverse proxy server. We will use `example.com` as the domain name for the site. Hosting your own software projects could benefit from large amounts of disk space, so consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 {: .note}
 >
@@ -36,15 +34,15 @@ This tutorial shows you how to install and configure Gogs, using PostgreSQL for 
 
 ## Before Installing Gogs
 
-1.  Ensure that you have followed the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
+1.  Follow the [Getting Started](/docs/getting-started) and [Securing Your Server](/docs/security/securing-your-server) guides, and make sure your Linode's [hostname is set](/docs/getting-started#setting-the-hostname).
 
 2.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 3.  Install `git`:
 
-        sudo apt-get install -y git
+        sudo apt install git
 
 4.  When you install Go and Gogs, it will be under the user `git`. So, create that user:
 
@@ -64,7 +62,7 @@ In this section we will download the latest version of Go (version 1.7 at the ti
         wget https://storage.googleapis.com/golang/go1.7.linux-amd64.tar.gz
         tar -C /home/git/local -xvzf go1.7.linux-amd64.tar.gz
 
-3.  Set the `GOPATH` environment variable to specify the location of our workspace. We will set the variables in our `.bashrc` file, so they will be available everytime we enter the shell:
+3.  Set the `GOPATH` environment variable to specify the location of our workspace. We will set the variables in our `.bashrc` file so they will be available every time we enter the shell.
 
         echo 'export GOROOT=$HOME/local/go' >> $HOME/.bashrc
         echo 'export GOPATH=$HOME/go' >> $HOME/.bashrc
@@ -157,17 +155,17 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
         \q
 
 
-## Install Nginx
+## Install nginx
 
-We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let Nginx handle the HTTPS for our Gogs site.
+We will use nginx as the reverse proxy for Gogs so we can access Gogs using our domain name rather than using our host's IP address. In addition, we will let nginx handle the HTTPS connections for our Gogs site.
 
 1.  Create a [self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate) or buy a [commercial SSL certificate](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) from a certificate authority (CA).
 
-2.  Install Nginx from the repository:
+2.  Install nginx from the repository:
 
         sudo apt-get install -y nginx
 
-3.  Set Nginx as the reverse proxy for Gogs. Using `sudo`, create a new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
+3.  Set nginx as the reverse proxy for Gogs. Using `sudo`, create a new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
 
     {: .file }
     /etc/nginx/sites-available/gogs
@@ -196,14 +194,14 @@ We will use Nginx as the reverse proxy for Gogs, so we can access Gogs using our
 
         sudo ln -s /etc/nginx/sites-available/gogs /etc/nginx/sites-enabled/gogs
 
-5.  Restart Nginx:
+5.  Restart nginx:
 
         sudo systemctl restart nginx
 
 
-## Setup systemd unit file
+## Automatic Startup with systemd
 
-In this section we will setup Gogs to run automatically on boot by creating a systemd unit file.
+In this section we will set up Gogs to run automatically on boot by creating a systemd unit file.
 
 1.  Using `sudo`, create `/etc/systemd/system/gogs.service`:
 
@@ -258,7 +256,7 @@ In this section we will setup Gogs to run automatically on boot by creating a sy
         ...
 
 
-## Configure Gogs using the web installer
+## Configure Gogs Using the Web Installer
 
 Open `https://example.com:3000` in your browser. It will redirect you to the installation page:
 
@@ -277,24 +275,25 @@ Set your domain and URL under the General Settings section:
 - **Domain** = `example.com`
 - **Application URL** = `https://example.com`
 
+Under **Application General Settings**, check the box for **Enable Builtin SSH Server**
+
 Also, you might want to setup an admin account at the bottom of the installation page. Click the **Install Gogs** button when you're ready to start the installation. When it's finished, you will see the login page:
 
 ![Gogs Login Page](/docs/assets/gogs_debian_jessie_login_page.png)
 
 Congratulations! You have successfully installed Gogs on your server.
 
-## Disable the access to non-SSL version of Gogs
 
-If you notice, the Gogs site is still accessible using the plain HTTP via `http://example.com:3000`. This is because the Gogs web server listens to all network interfaces on port 3000. If you want your Gogs site to be secure, you need to configure Gogs to listen *only* to your loopback interface.
+## Disable HTTP Access to Gogs
+
+The Gogs site is still accessible over unsecured HTTP via `http://example.com:3000`. This is because the Gogs web server listens to all network interfaces on port 3000. If you want your Gogs site to be secure, you need to configure Gogs to listen *only* to your loopback interface.
 
 1.  Login as user `git` and go to the Gogs installation directory:
 
         sudo su - git
         cd $GOPATH/src/github.com/gogits/gogs
 
-
-
-2.  Open the generated configuration file `custom/conf/app.ini`. Add a new configuration value `HTTP_ADDR` under the `[server]` section. The section should look like this:
+2.  Open the configuration file `custom/conf/app.ini`. Add a new configuration value `HTTP_ADDR` under the `[server]` section. The section should look like this:
 
     {: .file-excerpt}
     /home/git/go/src/github.com/gogits/gogs/custom/conf/app.ini
