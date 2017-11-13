@@ -92,7 +92,7 @@ These are only a few basic configuration options that are set by default.
 
 We **strongly** recommend uncommenting the `security` section and adding the following:
 
-{{< file-excerpt "/etc/mongod.conf" aconf >}}
+{{< file-excerpt "/etc/mongod.conf" conf >}}
 security:
   authorization: enabled
 
@@ -135,15 +135,17 @@ If you enabled role-based access control in the [Configure MongoDB](#configure-m
 
     Keep these credentials in a safe place for future reference. The output will display all the information written to the database except the password:
 
-        Successfully added user: {
-            "user" : "mongo-admin",
-            "roles" : [
-                    {
-                        "role" : "userAdminAnyDatabase",
-                        "db" : "admin"
-                    }
-            ]
-        }
+        {{< output >}}
+Successfully added user: {
+    "user" : "mongo-admin",
+    "roles" : [
+            {
+                "role" : "userAdminAnyDatabase",
+                "db" : "admin"
+            }
+    ]
+}
+{{< /output >}}
 
 4.  Exit the mongo shell:
 

@@ -14,8 +14,6 @@ published: 2010-01-28
 title: 'Oracle 10g Express Edition on Debian 5 (Lenny)'
 ---
 
-
-
 Oracle 10g is a robust, enterprise-grade relational database management system (RDBMS). The Oracle database platform was the first commercially available SQL-based DBMS, and is a great choice for applications that require large, distributed databases. This guide will help you get started with Oracle 10g XE (Express Edition) on your Debian 5 (Lenny) Linode.
 
 It is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). All configuration will be performed in a terminal session; make sure you're logged into your Linode as root via SSH.
@@ -32,7 +30,7 @@ First, make sure your Linode has a private IP address assigned to it. To do so, 
 
 Edit your network interfaces file to define your public and private IPs. Change the values shown below to match your Linode's network configuration, paying special attention to the subnet mask for the private IP.
 
-{{< file "/etc/network/interfaces" >}}
+{{< file "/etc/network/interfaces" conf >}}
 auto lo
 iface lo inet loopback
 
@@ -46,16 +44,14 @@ auto eth0:0
 iface eth0:0 inet static
 address 192.168.146.68
 netmask 255.255.128.0
-
 {{< /file >}}
 
 Make sure your `/etc/hosts` file contains valid entries. You can use the following example for reference; substitute your Linode's IP addresses and hostname information for the values shown below.
 
-{{< file "/etc/hosts" >}}
+{{< file "/etc/hosts" conf >}}
 127.0.0.1        localhost.localdomain            localhost
-69.164.198.62    saturn.example.com           saturn
+69.164.198.62    saturn.example.com               saturn
 192.168.146.68   oracle
-
 {{< /file >}}
 
 
@@ -82,7 +78,6 @@ Add the following repository to your `/etc/apt/sources.list` file:
 
 {{< file-excerpt "/etc/apt/sources.list" >}}
 deb http://oss.oracle.com/debian unstable main non-free
-
 {{< /file-excerpt >}}
 
 Since you added a new repository, issue the following commands to update your package lists and install any outstanding updates:

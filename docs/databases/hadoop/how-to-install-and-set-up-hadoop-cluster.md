@@ -71,7 +71,7 @@ A **master node** keeps knowledge about the distributed file system, like the `i
 
 For each node to communicate with its names, edit the `/etc/hosts` file to add the IP address of the three servers. Don't forget to replace the sample IP with your IP:
 
-{{< file-excerpt "/etc/hosts" aconf >}}
+{{< file-excerpt "/etc/hosts" >}}
 192.0.2.1    node-master
 192.0.2.2    node1
 192.0.2.3    node2

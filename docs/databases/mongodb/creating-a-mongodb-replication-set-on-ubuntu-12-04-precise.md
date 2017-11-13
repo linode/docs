@@ -293,7 +293,6 @@ To clarify how data is stored it is important to understand how MongoDB classifi
 
 ### Basic MongoDB Commands
 
-|--------------------|------------------------------------------------------------------------|
 | Command            | Description                                                            |
 |--------------------|------------------------------------------------------------------------|
 | `help`             | displays a short list of help commands                                 |
@@ -309,7 +308,6 @@ To clarify how data is stored it is important to understand how MongoDB classifi
 | `save`             | updates an existing document in a collection or inserts a new document |
 | `remove`           | deletes a document from a collection                                   |
 | `drop`             | removes a collection completely                                        |
-|--------------------|------------------------------------------------------------------------|
 
 It is important to note that MongoDB uses parentheses () at the end of several commands, comparable to the semicolon in SQL.
 

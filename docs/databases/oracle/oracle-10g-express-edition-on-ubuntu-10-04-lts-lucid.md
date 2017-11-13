@@ -30,7 +30,7 @@ First, make sure your Linode has a private IP address assigned to it. To do so, 
 
 Edit your network interfaces file to define your public and private IPs. Change the values shown below to match your Linode's network configuration, paying special attention to the subnet mask for the private IP.
 
-{{< file "/etc/network/interfaces" >}}
+{{< file "/etc/network/interfaces" conf >}}
 auto lo
 iface lo inet loopback
 
@@ -44,17 +44,15 @@ auto eth0:0
 iface eth0:0 inet static
 address 192.168.146.68
 netmask 255.255.128.0
-
 {{< /file >}}
 
 
 Make sure your `/etc/hosts` file contains valid entries. You can use the following example for reference; substitute your Linode's IP addresses and hostname information for the values shown below.
 
-{{< file "/etc/hosts" >}}
+{{< file "/etc/hosts" conf >}}
 127.0.0.1        localhost.localdomain            localhost
-69.164.198.62    saturn.example.com           saturn
+69.164.198.62    saturn.example.com               saturn
 192.168.146.68   oracle
-
 {{< /file >}}
 
 
@@ -81,7 +79,6 @@ Add the following repository to your `/etc/apt/sources.list` file:
 
 {{< file-excerpt "/etc/apt/sources.list" >}}
 deb http://oss.oracle.com/debian unstable main non-free
-
 {{< /file-excerpt >}}
 
 

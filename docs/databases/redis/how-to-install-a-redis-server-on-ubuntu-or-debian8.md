@@ -23,7 +23,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/linode-writers-guide/) and earn $250 per published guide.*
-<hr>
+
+---
 
 ![Redis Server on Ubuntu or Debian](/docs/assets/how-to-install-a-redis-server-on-ubuntu-or-debian/How_to_Install_a_Redis_Server_smg.jpg)
 
@@ -122,7 +123,6 @@ Because the point-in-time snapshot persistence is enabled by default, you only n
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 appendonly yes
 appendfsync everysec
-
 {{< /file-excerpt >}}
 
 
@@ -172,13 +172,12 @@ For this section of the guide, you will use two Linodes, respectively named `mas
 
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 bind 127.0.0.1 192.0.2.100
-
 {{< /file-excerpt >}}
 
 
-        Restart `redis-server` to apply the changes:
+    Restart `redis-server` to apply the changes:
 
-            sudo service redis-server restart
+        sudo service redis-server restart
 
 ### Configure the Slave Linode
 
@@ -186,7 +185,6 @@ bind 127.0.0.1 192.0.2.100
 
     {{< file-excerpt "/etc/redis/redis.conf" >}}
 slaveof 192.0.2.100 6379
-
 {{< /file-excerpt >}}
 
 
@@ -209,9 +207,9 @@ Test that the replication works. On master Linode, run `redis-cli` and execute c
 Type `exit` or press **Ctrl-C** to exit from `redis-cli` prompt.
 Then, run `redis-cli` on `slave` and execute `get 'a'`, which should return the same value as that on `master`:
 
-	redis-cli
-	127.0.0.1:6379> get 'a'
-	"1"
+    redis-cli
+    127.0.0.1:6379> get 'a'
+    "1"
 
 Your master/slave replication setup is working properly.
 

@@ -62,7 +62,7 @@ Whether you're using public or private IP addresses to send data, you'll need to
 
 Each member of your replica set should have a hostname that identifies it as a member of the set. This way, you'll be able to keep your infrastructure organized at scale (for example, if you add more replica sets). In order to simplify the configuration of your replica set, add the following lines to the `/etc/hosts` file on each member of the replica set:
 
-{{< file-excerpt "/etc/hosts" aconf >}}
+{{< file-excerpt "/etc/hosts" conf >}}
 192.0.2.1    mongo-repl-1
 192.0.2.2    mongo-repl-2
 192.0.2.3    mongo-repl-3
@@ -125,7 +125,7 @@ In this section you'll create a key file that will be used to secure authenticat
 
 On each of your Linodes, make the following changes to your `/etc/mongod.conf` file:
 
-{{< file-excerpt "/etc/mongod.conf" aconf >}}
+{{< file-excerpt "/etc/mongod.conf" conf >}}
 net:
   port: 27017
   bindIp: 127.0.0.1,192.0.2.1
@@ -165,11 +165,13 @@ If your connection is refused, be sure that the address for localhost (`127.0.0.
 
     This command initiates a replica set with the current host as its only member. This is confirmed by the output, which should resemble the following:
 
-    {
-        "info2" : "no configuration specified. Using a default configuration for the set",
-        "me" : "192.0.2.1:27017",
-        "ok" : 1
-    }
+        {{< output >}}
+{
+    "info2" : "no configuration specified. Using a default configuration for the set",
+    "me" : "192.0.2.1:27017",
+    "ok" : 1
+}
+{{< /output >}}
 
 3.  While still connected to the `mongo` shell, add the other hosts to the replica set:
 
@@ -230,3 +232,4 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 ## Next Steps
 
 Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb).
+

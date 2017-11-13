@@ -19,7 +19,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
+
+---
 
 ![Deploy MySQL Workbench for Database Administration](/docs/assets/deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 
@@ -253,7 +254,7 @@ You can run a SQL query on a table by entering it at the top of the table view.
 
 ### Export / Import Data
 
-####To Export
+#### To Export
 
 Exporting data is handy for backing up database content or moving a database to a new server.  It's always a good idea to export the database prior to any major changes in structure or the installation of a new application, just in case something goes awry or you want to revert to your pre-install state.
 
@@ -274,7 +275,7 @@ Exporting data is handy for backing up database content or moving a database to 
 7. Click **Start Export**.
 
 
-####To Import
+#### To Import
 
 Importing data can restore a backup created with **Data Export** or can load a database sent to you by a co-worker.
 

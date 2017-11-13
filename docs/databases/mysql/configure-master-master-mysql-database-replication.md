@@ -37,7 +37,7 @@ Use the following commands to install MySQL on each of the Linodes:
 
     **Server 1:**
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
 server_id           = 1
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -54,7 +54,7 @@ auto-increment-offset = 1
 
     **Server 2:**
 
-    {{< file-excerpt "/etc/mysql/my.cnf" aconf >}}
+    {{< file-excerpt "/etc/mysql/my.cnf" >}}
 server_id           = 2
 log_bin             = /var/log/mysql/mysql-bin.log
 log_bin_index       = /var/log/mysql/mysql-bin.log.index
@@ -132,13 +132,14 @@ bind-address    = x.x.x.x
 
 5.  Test by creating a database and inserting a row:
 
-    Server 1:
+    **Server 1:**
 
         create database test;
         create table test.flowers (`id` varchar(10));
 
-    Server 2:
+    **Server 2:**
 
         show tables in test;
 
 When queried, you should see the tables from Server 1 replicated on Server 2.  Congratulations, you now have a MySQL Master-Master cluster!
+

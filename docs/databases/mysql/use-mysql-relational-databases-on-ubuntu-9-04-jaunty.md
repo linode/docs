@@ -14,8 +14,6 @@ published: 2009-08-11
 title: 'Use MySQL Relational Databases on Ubuntu 9.04 (Jaunty)'
 ---
 
-
-
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu Jaunty Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
 # Installing MySQL
@@ -35,10 +33,9 @@ You will be prompted to set a password for the MySQL root user. Choose a strong 
 
 The MySQL server package will be installed on your server, along with dependencies and client libraries. Next, make sure your `/etc/hosts` file has proper entries, similar to the ones shown below:
 
-{{< file "/etc/hosts" >}}
+{{< file "/etc/hosts" conf >}}
 127.0.0.1    localhost.localdomain    localhost
 12.34.56.78  servername.mydomain.com  servername
-
 {{< /file >}}
 
 
@@ -54,7 +51,7 @@ After running `mysql_secure_installation`, MySQL is secure and ready to be confi
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in the configuration file (`/etc/mysql/my.cnf`) as follows:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" >}}
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
 key_buffer = 16M
 max_allowed_packet = 1M
 thread_stack = 64K
@@ -122,21 +119,21 @@ To generate a list of commands for the MySQL prompt type `\h`:
 
 Let's create a database and assign a user to it. Issue the following commands at the MySQL prompt:
 
-    CREATE DATABASE testdb;
-
-    CREATE USER 'testuser'@localhost IDENTIFIED BY 's8723hk2';
-
-    GRANT ALL PRIVILEGES ON testdb.* TO 'testuser'@localhost;
-
-    exit
+{{< highlight sql >}}
+CREATE DATABASE testdb;
+CREATE USER 'testuser'@localhost IDENTIFIED BY 's8723hk2';
+GRANT ALL PRIVILEGES ON testdb.* TO 'testuser'@localhost;
+exit
+{{< /highlight >}}
 
 Now let's log back into the MySQL client as `testuser` and create a sample table called "customers." Issue the following commands:
 
     mysql -u testuser -p
 
-    USE testdb;
-
-    CREATE TABLE customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+{{< highlight sql >}}
+USE testdb;
+CREATE TABLE customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+{{< /highlight >}}
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this on a customer, but it's a good example of a common case nonetheless.
 

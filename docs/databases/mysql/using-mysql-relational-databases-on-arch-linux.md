@@ -20,7 +20,7 @@ MySQL is a popular database management system, used as the data storage provider
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
-{{< file "/etc/hosts" >}}
+{{< file "/etc/hosts" conf >}}
 127.0.0.1 localhost.localdomain localhost
 12.34.56.78 servername.mydomain.com servername
 
@@ -73,52 +73,52 @@ The standard tool for interacting with MySQL is the `mysql` client program. To g
 
 You will be prompted to enter the root MySQL user's password. Enter the password you assigned when you installed MySQL, and you'll be presented with the MySQL monitor display:
 
-	    Welcome to the MySQL monitor.  Commands end with ; or \g.
-	Your MySQL connection id is 2
-	Server version: 5.5.9-log Source distribution
+        Welcome to the MySQL monitor.  Commands end with ; or \g.
+    Your MySQL connection id is 2
+    Server version: 5.5.9-log Source distribution
 
-	Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
+    Copyright (c) 2000, 2010, Oracle and/or its affiliates. All rights reserved.
 
-	Oracle is a registered trademark of Oracle Corporation and/or its
-	affiliates. Other names may be trademarks of their respective
-	owners.
+    Oracle is a registered trademark of Oracle Corporation and/or its
+    affiliates. Other names may be trademarks of their respective
+    owners.
 
-	Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+    Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-	mysql>
+    mysql>
 
 To generate a list of commands for the MySQL prompt, type `\h`:
 
-	    List of all MySQL commands:
-	Note that all text commands must be first on line and end with ';'
-	?         (\?) Synonym for `help'.
-	clear     (\c) Clear the current input statement.
-	connect   (\r) Reconnect to the server. Optional arguments are db and host.
-	delimiter (\d) Set statement delimiter.
-	edit      (\e) Edit command with $EDITOR.
-	ego       (\G) Send command to mysql server, display result vertically.
-	exit      (\q) Exit mysql. Same as quit.
-	go        (\g) Send command to mysql server.
-	help      (\h) Display this help.
-	nopager   (\n) Disable pager, print to stdout.
-	notee     (\t) Don't write into outfile.
-	pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
-	print     (\p) Print current command.
-	prompt    (\R) Change your mysql prompt.
-	quit      (\q) Quit mysql.
-	rehash    (\#) Rebuild completion hash.
-	source    (\.) Execute an SQL script file. Takes a file name as an argument.
-	status    (\s) Get status information from the server.
-	system    (\!) Execute a system shell command.
-	tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
-	use       (\u) Use another database. Takes database name as argument.
-	charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
-	warnings  (\W) Show warnings after every statement.
-	nowarning (\w) Don't show warnings after every statement.
+        List of all MySQL commands:
+    Note that all text commands must be first on line and end with ';'
+    ?         (\?) Synonym for `help'.
+    clear     (\c) Clear the current input statement.
+    connect   (\r) Reconnect to the server. Optional arguments are db and host.
+    delimiter (\d) Set statement delimiter.
+    edit      (\e) Edit command with $EDITOR.
+    ego       (\G) Send command to mysql server, display result vertically.
+    exit      (\q) Exit mysql. Same as quit.
+    go        (\g) Send command to mysql server.
+    help      (\h) Display this help.
+    nopager   (\n) Disable pager, print to stdout.
+    notee     (\t) Don't write into outfile.
+    pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+    print     (\p) Print current command.
+    prompt    (\R) Change your mysql prompt.
+    quit      (\q) Quit mysql.
+    rehash    (\#) Rebuild completion hash.
+    source    (\.) Execute an SQL script file. Takes a file name as an argument.
+    status    (\s) Get status information from the server.
+    system    (\!) Execute a system shell command.
+    tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+    use       (\u) Use another database. Takes database name as argument.
+    charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+    warnings  (\W) Show warnings after every statement.
+    nowarning (\w) Don't show warnings after every statement.
 
-	For server side help, type 'help contents'
+    For server side help, type 'help contents'
 
-	mysql>
+    mysql>
 
 Let's create a database and assign a user to it. Issue the following commands at the MySQL prompt:
 

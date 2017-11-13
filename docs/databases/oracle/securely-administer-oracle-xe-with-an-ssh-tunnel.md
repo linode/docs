@@ -46,7 +46,7 @@ Once you've connected to the remote server with this tunnel configuration, you'l
 
 Save the following Perl script to your local home directory as `oracle-tunnel.pl`:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" >}}
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
 #!/usr/bin/perl
 
 # Oracle XE Homepage Tunnel Tool for MacOS X and Linux
