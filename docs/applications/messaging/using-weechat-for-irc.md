@@ -20,7 +20,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 [WeeChat](https://weechat.org/) is a multi-platform, terminal-based Internet Relay Chat (IRC) client written in C. Weechat is intended to be flexible and extensible, and thus has all sorts of plugins written in different languages including Python, Perl, and Ruby.
 
@@ -219,21 +219,21 @@ All WeeChat commands begin with a **/**. Every channel in WeeChat is a *buffer*.
 
 A list of basic commands is below.
 
-    | Command    | Description                                                                     |
-  | --------   | ------------------------------------------------------------------------------- |
-  | `/help`    | Lists commands, if a command is given then shows command usage and description  |
-  | `/join`    | Joins a channel                                                                 |
-  | `/close`   | Closes a buffer, parting the channel if you are in it                           |
-  | `/quit`    | Quit WeeChat                                                                    |
-  | `/msg`     | Send a message to a nick (or channel)                                           |
-  | `/query`   | Opens a private buffer with a nick                                              |
-  | `/ban`     | Ban a user from a channel                                                       |
-  | `/unban`   | Unban a user from a channel                                                     |
-  | `/kick`    | Kick a user from a channel                                                      |
-  | `/kickban` | Kick and ban a user from a channel                                              |
-  | `/part`    | Parts a channel but does not close the buffers                                  |
-  | `/topic`   | Sets channel topic                                                              |
-  | `/whois`   | Shows information about a user                                                  |
+| Command    | Description                                                                     |
+| --------   | ------------------------------------------------------------------------------- |
+| `/help`    | Lists commands, if a command is given then shows command usage and description  |
+| `/join`    | Joins a channel                                                                 |
+| `/close`   | Closes a buffer, parting the channel if you are in it                           |
+| `/quit`    | Quit WeeChat                                                                    |
+| `/msg`     | Send a message to a nick (or channel)                                           |
+| `/query`   | Opens a private buffer with a nick                                              |
+| `/ban`     | Ban a user from a channel                                                       |
+| `/unban`   | Unban a user from a channel                                                     |
+| `/kick`    | Kick a user from a channel                                                      |
+| `/kickban` | Kick and ban a user from a channel                                              |
+| `/part`    | Parts a channel but does not close the buffers                                  |
+| `/topic`   | Sets channel topic                                                              |
+| `/whois`   | Shows information about a user                                                  |
 
 ### Setting Default Channels
 

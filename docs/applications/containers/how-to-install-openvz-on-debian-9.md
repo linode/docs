@@ -39,17 +39,12 @@ OpenVZ is a software-based OS virtualization tool enabling the deployment, manag
 Although not required, it is recommended to create a separate Ext4 filesystem partition for OpenVZ templates. By default, both the Debian 9 installer and the Linode Manager format newly created partitions with Ext4. For information on how to accomplish this configuration, follow the steps appropriate for your environment in the [Disks and Configuration Profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles) guide.
 {{< /note >}}
 
-### Create A Separate Partition For OpenVZ Templates
-
-
-{{< caution >}}
-This step is optional.
-{{< /caution >}}
+### Optional: Create A Separate Partition For OpenVZ Templates
 
 If you intend to dedicate an entire Linode VPS to running OpenVZ and no other services, it's recommended to create separate partitions for the host server and its processes, and any OpenVZ virtual server templates. The following table illustrates the recommended partitioning scheme:
 
-|:----------:|:-----------:|:-----------:|
 | Partition | Description | Typical Size |
+|:---------:|:-----------:|:------------:|
 | /         | Root partition | 4-12 GB   |
 | swap      | Paging partition | 2 times RAM or RAM + 2GB (depending on available hard drive space) |
 | /vz       | Partition to host OpenVZ templates | All remaining hard drive space |
@@ -182,9 +177,8 @@ deb http://download.openvz.org/debian wheezy main
 
 3. Create file `vznet.conf` and paste in the line below:
 
-    {{< file "/etc/vz/vznet.conf" aconf >}}
+    {{< file "/etc/vz/vznet.conf" >}}
 EXTERNAL_SCRIPT="/usr/sbin/vznetaddbr"
-
 {{< /file >}}
 
 
@@ -294,7 +288,6 @@ submenu 'Advanced options for Debian GNU/Linux' $menuentry_id_option 'gnulinux-a
 
     {{< file-excerpt "/etc/vz/vz.conf" >}}
 VE_LAYOUT=simfs
-
 {{< /file-excerpt >}}
 
 
@@ -322,7 +315,7 @@ VE_LAYOUT=simfs
 
     You may also configure other options at your discrection, such as SWAP and RAM allocation. Save and close when finished.
 
-    {{< file "/etc/vz/conf/101.conf" aconf >}}
+    {{< file "/etc/vz/conf/101.conf" >}}
 . . .
 
 # RAM

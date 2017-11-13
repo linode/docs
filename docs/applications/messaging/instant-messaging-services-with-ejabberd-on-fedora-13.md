@@ -43,14 +43,13 @@ Run the following commands the set the hostname of your Linode:
 In this case, the hostname will be set to "example". Along with this, you will need to open the `/etc/sysconfig/network` file and change the `HOSTNAME` line to reflect your newly set hostname:
 
 {{< file-excerpt "/etc/sysconfig/network" >}}
-NETWORKING=yes NETWORKING\_IPV6=no HOSTNAME=example
-
+NETWORKING=yes NETWORKING_IPV6=no HOSTNAME=example
 {{< /file-excerpt >}}
 
 
 Finally, open `/etc/hosts` and put in your IP address, fully qualified domain name (FQDN), and hostname. See the example below:
 
-{{< file-excerpt "/etc/hosts" >}}
+{{< file-excerpt "/etc/hosts" conf >}}
 123.123.123.123 example.com example
 
 {{< /file-excerpt >}}
@@ -73,7 +72,6 @@ Some users will need the ability to administer the XMPP server remotely. By defa
 
 {{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
 {acl, admin, {user, "admin", "example.com"}}.
-
 {{< /file-excerpt >}}
 
 
@@ -114,7 +112,6 @@ TCP port number 5222 is the conventional "XMPP" port. If you want to change the 
 
 {{< file-excerpt "/etc/ejabberd/ejabberd.cfg" >}}
 {certfile, "/etc/ejabberd/ejabberd.pem"}, starttls,
-
 {{< /file-excerpt >}}
 
 
@@ -127,7 +124,6 @@ Additionally, you may want to enable SSL access for client-to-server (c2s) SSL/T
     {max_stanza_size, 65536},
     tls, {certfile, "/etc/ejabberd/server.pem"}
 ]},
-
 {{< /file-excerpt >}}
 
 

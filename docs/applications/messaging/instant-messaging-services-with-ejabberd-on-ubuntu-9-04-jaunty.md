@@ -38,12 +38,10 @@ Though you can successfully run an XMPP server with only a passing familiarity o
 Prior to installing the ejabberd daemon, you will need to enable the `universe` repository. Open `/etc/apt/sources.list` with your favorite text editor.
 
 {{< file-excerpt "/etc/apt/sources.list" >}}
-#deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
-
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty universe
 {{< /file-excerpt >}}
 
-
-Uncomment this line be deleting the hash symbol (`#`). Close the file and run the following command:
+Add this to the source list then update:
 
     apt-get update
     apt-get upgrade

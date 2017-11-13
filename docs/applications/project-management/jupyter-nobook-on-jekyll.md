@@ -59,20 +59,16 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
 4.  After installation, the terminal will show the new group it created. Exit out of the terminal session and SSH back into the Linode:
 
-    {{< output >}}
-~~~
-    Creating group 'rvm'
-{{< /output >}}
+        Creating group 'rvm'
 
-    Installing RVM to /usr/share/rvm/
-    Installation of RVM in /usr/share/rvm/ is almost complete:
-    
-      * First you need to add all users that will be using rvm to 'rvm' group,
-        and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
-     
-      * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
-        in all your open shell windows, in rare cases you need to reopen all shell windows.
-    ~~~
+        Installing RVM to /usr/share/rvm/
+        Installation of RVM in /usr/share/rvm/ is almost complete:
+
+          * First you need to add all users that will be using rvm to 'rvm' group,
+            and logout - login again, anyone using rvm will be operating with `umask u=rwx,g=rwx,o=rx`.
+
+          * To start using RVM you need to run `source /etc/profile.d/rvm.sh`
+            in all your open shell windows, in rare cases you need to reopen all shell windows.
 
 5.  Install Ruby:
 
@@ -95,21 +91,17 @@ Install Ruby Version Manager (RVM). RVM is recommended for a few reasons:
 
     The directory tree should be similar to:
 
-    {{< output >}}
-~~~
-    exampleblog/
-    ├── 404.html
-    ├── about.md
-    ├── assets
-    │   └── images
-    ├── _config.yml
-    ├── Gemfile
-    ├── Gemfile.lock
-    ├── index.md
-    └── _posts
-        └── 2017-10-10-welcome-to-jekyll.markdown
-    ~~~
-{{< /output >}}
+        exampleblog/
+        ├── 404.html
+        ├── about.md
+        ├── assets
+        │   └── images
+        ├── _config.yml
+        ├── Gemfile
+        ├── Gemfile.lock
+        ├── index.md
+        └── _posts
+            └── 2017-10-10-welcome-to-jekyll.markdown
 
 3.  Run the Jekyll server. Using a web browser, navigate to your Linode's public IP address (port `4000`) to preview the site. There should be a default first post.
 
@@ -157,7 +149,7 @@ This section demonstrates some common features of a Jupyter Notebook that can be
 
 2.  The demo code used in this guide is below:
 
-    {{< file "example.ipynb" >}}
+    {{< file "example.ipynb" py >}}
 \begin{equation*}
 \mathbf{V}_1 \times \mathbf{V}_2 =  \begin{vmatrix}
 \mathbf{i} & \mathbf{j} & \mathbf{k} \\
@@ -188,7 +180,7 @@ sns.pairplot(x_vars=["petal-length"], y_vars=["petal-width"], data=iris, hue="cl
 
 4.  The markdown file should begin with three dashes and contain headers which provide information for Jekyll to populate the post with the appropriate page data. The date must be in the format specified. The hours, minutes, seconds, and timezone adjustment are optional:
 
-    {{< file "YYYY-MM-DD-example-post.md" >}}
+    {{< file "YYYY-MM-DD-example-post.md" yaml >}}
 ---
 layout: post
 title:  "Awesome Data Visualization"
@@ -218,7 +210,7 @@ Tabular output in Jupyter is converted to an HTML table. This section covers how
 
 1.  In `/exampleblog/assets`, create a new file called `main.scss`. This imports the existing minima theme SCSS and adds the following:
 
-    {{< file "main.scss" >}}
+    {{< file "main.scss" css >}}
 ---
 ---
 @import "minima";
@@ -256,7 +248,7 @@ margin-bottom: 0; }
 
 2.  The HTML table will have the new styles applied.
 
-    ![Jupyter Table](/docs/assets/jupyter_table.png "Jupyter Table") | ![Jekyll Table](/docs/assets/jekyll/jekyll_table.png "Jekyll Table")
+    ![Jupyter Table](/docs/assets/jupyter_table.png "Jupyter Table") ![Jekyll Table](/docs/assets/jekyll/jekyll_table.png "Jekyll Table")
 
 ### Add an Image in Jekyll
 
@@ -268,7 +260,6 @@ Adding an image through markdown requires having the images stored in the projec
 
     {{< file-excerpt "YYYY-MM-DD-example-post.md" >}}
 ![png]({{ "/assets/images/example_notebook_5_0.png" }})
-
 {{< /file-excerpt >}}
 
 
@@ -284,11 +275,7 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
 
 1.  In order for Jekyll to convert LaTeX to PNG, a CDN is available through MathJax. Copy the following HTML tag and paste it below the metadata section of `YYYY-MM-DD-example-post.md`:
 
-    {{< output >}}
-~~~
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
-    ~~~
-{{< /output >}}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
 
 2.  The default Jekyll **minima** theme has the `_layouts` and `_includes` directory packaged with the gem. Navigate to this directory by:
 
@@ -296,37 +283,33 @@ Content Delivery Networks(CDNs) are a great way to add functionality on a websit
 
     The directory tree contains other HTML files for integrating Disqus and Google Analytics.
 
-    {{< output >}}
-~~~
-    minima-2.1.1/
-    ├── assets
-    │   └── main.scss
-    ├── _includes
-    │   ├── disqus_comments.html
-    │   ├── footer.html
-    │   ├── google-analytics.html
-    │   ├── header.html
-    │   ├── head.html
-    │   ├── icon-github.html
-    │   ├── icon-github.svg
-    │   ├── icon-twitter.html
-    │   ├── icon-twitter.svg
-    │   └── scripts.html
-    ├── _layouts
-    │   ├── default.html
-    │   ├── home.html
-    │   ├── page.html
-    │   └── post.html
-    ├── LICENSE.txt
-    ├── README.md
-    └── _sass
-        ├── minima
-            │   ├── _base.scss
-                │   ├── _layout.scss
-                    │   └── _syntax-highlighting.scss
-                        └── minima.scss
-    ~~~
-{{< /output >}}
+        minima-2.1.1/
+        ├── assets
+        │   └── main.scss
+        ├── _includes
+        │   ├── disqus_comments.html
+        │   ├── footer.html
+        │   ├── google-analytics.html
+        │   ├── header.html
+        │   ├── head.html
+        │   ├── icon-github.html
+        │   ├── icon-github.svg
+        │   ├── icon-twitter.html
+        │   ├── icon-twitter.svg
+        │   └── scripts.html
+        ├── _layouts
+        │   ├── default.html
+        │   ├── home.html
+        │   ├── page.html
+        │   └── post.html
+        ├── LICENSE.txt
+        ├── README.md
+        └── _sass
+            ├── minima
+                │   ├── _base.scss
+                    │   ├── _layout.scss
+                        │   └── _syntax-highlighting.scss
+                            └── minima.scss
 
     {{< note >}}
 The default theme is installed as a gem. If there is another `_layouts` or `_includes` folder in the project root, those HTML files will override the theme.
@@ -340,7 +323,6 @@ The default theme is installed as a gem. If there is another `_layouts` or `_inc
         src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
 </script>
 {% endif %}
-
 {{< /file-excerpt >}}
 
 
@@ -358,7 +340,7 @@ layout: default
 
 5.  Edit the header `/exampleblog/_posts/YYYY-MM-DD-example-post.md` with `mathjax: true`. Wrap the LaTeX in `$$` to create a math block. Remember to include the two lines of `---`:
 
-    {{< file-excerpt "YYYY-MM-DD-example-post.md" >}}
+    {{< file-excerpt "YYYY-MM-DD-example-post.md" yaml >}}
 ---
 layout: post
 mathjax: true
@@ -382,4 +364,4 @@ $$
 
 6.  The browser should use MathJax to display output identical to a Jupyter Notebook.
 
-    ![Jupyter Mathjax](/docs/assets/jupyter_mathjax.png "Jupyter Mathjax") | ![Jekyll Mathjax](/docs/assets/jekyll/jekyll_mathjax.png "Jekyll Mathjax")
+    ![Jupyter Mathjax](/docs/assets/jupyter_mathjax.png "Jupyter Mathjax") ![Jekyll Mathjax](/docs/assets/jekyll/jekyll_mathjax.png "Jekyll Mathjax")

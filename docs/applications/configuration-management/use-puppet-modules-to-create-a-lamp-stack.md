@@ -72,7 +72,7 @@ class apache {
 
     Create and open `params.pp`:
 
-    {{< file "/etc/puppet/modules/apache/manifests/params.pp" >}}
+    {{< file "/etc/puppet/modules/apache/manifests/params.pp" puppet >}}
 class apache::params {
 
 }
@@ -295,9 +295,9 @@ class apache::vhosts {
 {{< /file >}}
 
 
-        Both distribution families call to the `file` resource and take on the title of the virtual host's location on the respective distribution. For Debian, this once more means referencing the `$servername` value. The `content` attribute calls to the respective templates.
+    Both distribution families call to the `file` resource and take on the title of the virtual host's location on the respective distribution. For Debian, this once more means referencing the `$servername` value. The `content` attribute calls to the respective templates.
 
-        {{< note >}}
+    {{< note >}}
 Values containing variables, such as the name of the Debian file resource above, need to be wrapped in double quotes (`"`). Any variables in single quotes (`'`) are parsed exactly as written and will not pull in a variable.
 {{< /note >}}
 
@@ -355,7 +355,7 @@ class apache::vhosts {
 
 2.  Navigate to the `examples` directory within the `apache` module. Create an `init.pp` file and include the created classes. Provide variables for `servername` and `adminemail`:
 
-    {{< file "/etc/puppet/modules/apache/examples/init.pp" >}}
+    {{< file "/etc/puppet/modules/apache/examples/init.pp" puppet >}}
 $serveremail = 'webmaster@example.com'
 $servername = 'example.com'
 
@@ -497,7 +497,7 @@ databases:
 
 6.  Return to the `hieradata` directory and create the file `common.yaml`. It will be used to define the default `root` password for MySQL:
 
-    {{< file "/etc/puppet/hieradata/common.yaml" >}}
+    {{< file "/etc/puppet/hieradata/common.yaml" yaml >}}
 mysql::server::root_password: 'password'
 
 {{< /file >}}

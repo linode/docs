@@ -234,9 +234,11 @@ Since access to the cluster manager provides access to all Storm and Zookeeper c
          cd storm-linode
          cp api_env_example.conf api_env_linode.conf
 
-15.  Open the newly created `api_env_linode.conf` in a text editor and set `LINODE_KEY` to your API key. Set `CLUSTER_MANAGER_NODE_PASSWORD` to the password you set for the *clustermgr* user in Step 11.
+15.  Open the newly created `api_env_linode.conf` in a text editor and set `LINODE_KEY` to your API key.
 
-        {{< file-excerpt "~/storm-linode/api_env_linode.conf" aconf >}}
+     Set `CLUSTER_MANAGER_NODE_PASSWORD` to the password you set for the *clustermgr* user in Step 11.
+
+     {{< file-excerpt "~/storm-linode/api_env_linode.conf" aconf >}}
 export LINODE_KEY=fnxaZ5HMsaImTTRO8SBtg48...
 ...
 export CLUSTER_MANAGER_NODE_PASSWORD=changeme
@@ -244,7 +246,7 @@ export CLUSTER_MANAGER_NODE_PASSWORD=changeme
 {{< /file-excerpt >}}
 
 
-            Save your changes and close the editor.
+      Save your changes and close the editor.
 
 16.  The cluster manager Linode is now ready to create Apache Storm clusters. Add the public keys of anyone who will manage the clusters to `/home/clustermgr/.ssh/authorized_keys`, so that they can connect via SSH to the Cluster Manager Linode as user `clustermgr`.
 

@@ -68,7 +68,7 @@ Now, you'll want to modify the configuration. This is necessary to specify passw
 
 2.  This will bring up the configuration file for editing, as shown below.
 
-    {{< file "/home/shoutcast/sc/sc_serv_basic.conf" >}}
+    {{< file "/home/shoutcast/sc/sc_serv_basic.conf" conf >}}
 ; NOTE: for any relative paths specified are relative to
 ; sc_serv and not to where the conf file is being stored
 
@@ -210,7 +210,7 @@ This example will walk you through a basic configuration.
 
 2.  You can modify the bitrate to change the sound quality of the music and limit the amount of bandwidth consumed. If you purchase MP3 licensing, you can modify the encoder section to add the MP3 encoding and your unlock data:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" >}}
+    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; for testing we will only setup a single encoder though it
 ; is easy to add in additional encoder configurations and
 ; we are using an aac plus encoder as the default due to
@@ -227,9 +227,9 @@ unlockkeycode=YourUnlockCode
 {{< /file-excerpt >}}
 
 
-3.  Next, modify the sc\_trans to sc\_serv connection details:
+3.  Next, modify the sc_trans to sc_serv connection details:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc\\_trans\\_basic.conf" >}}
+    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; this is where we define the details required for sc_trans
 ; to connect to the sc_serv instance being used where the
 ; details must match those specified in sc_serv_basic.conf
@@ -253,7 +253,7 @@ endpointname_1=/Bob
 
 4.  This step is optional, but you can also update your stream information:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc\\_trans\\_basic.conf" >}}
+    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; here you would provide any information to fill in details
 ; provided to clients about the stream. it us up to you what
 ; is entered though do not do anything which will annoy, etc
@@ -266,17 +266,16 @@ genre=Misc
 
 5.  Set your playlist file for an automated stream:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc\\_trans\\_basic.conf" >}}
+    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; here we specify a playlist to use as the master list from
 ; which to play files from.
 playlistfile=playlists/main.lst
-
 {{< /file-excerpt >}}
 
 
 6.  Now set the port, username, and password for the transcoder admin panel access:
 
-    {{< file-excerpt "/home/shoutcast/sct/sc\\_trans\\_basic.conf" >}}
+    {{< file-excerpt "/home/shoutcast/sct/sc_trans_basic.conf" conf >}}
 ; these options will allow you access the admin interfaces
 ; of sc_trans though also allows the 'testui' example to be
 ; accessed. remember to change the password, etc as needed
@@ -330,3 +329,4 @@ To shut down the transcoder, you'll just need to issue a kill command:
 SHOUTcast's Source DSP plugin was developed for use with WinAmp version 5.5 and newer. This plugin gives you the ability to use WinAmp as a source for your sc\_serv (DNAS) or sc\_trans (Transcoder). It will also allow you to capture an audio input from your sound card and its line-in or microphone inputs. You will need a working installation of either the DNAS by itself, or the Transcoder feeding into a DNAS installation, before you can use the DSP WinAmp plugin. The download for the DSP plugin is near the bottom of the [broadcast tools page](http://www.shoutcast.com/broadcast-tools).
 
 Instructions for installation and configuration are located in the [WinAmp wiki](http://wiki.winamp.com/wiki/Source_DSP_Plug-in#Installing_the_Plug-in).
+

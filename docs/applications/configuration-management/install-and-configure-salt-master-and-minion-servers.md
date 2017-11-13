@@ -33,17 +33,15 @@ The steps in this section will need to be run on *each* of your Linodes.
 
 1.  Create the file `/etc/apt/sources.list.d/salt.list` and enter the following lines to add the Salt repository:
 
-	{{< file "/etc/apt/sources.list.d/salt.list" >}}
+    {{< file "/etc/apt/sources.list.d/salt.list" >}}
 # salt
 deb http://debian.saltstack.com/debian jessie-saltstack main
-
-
 {{< /file >}}
 
 
 2.  Add the repository key:
 
-		wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
+        wget -q -O- "http://debian.saltstack.com/debian-salt-team-joehealy.gpg.key" | apt-key add -
 
 3.  Update your Linode:
 
@@ -64,14 +62,12 @@ The following steps will be run only on the Linode designated as your Salt maste
     {{< file "/etc/salt/master" >}}
 # The address of the interface to bind to:
   interface: <master Linode IP address>
-
 {{< /file >}}
 
-
-        {{< note >}}
+    {{< note >}}
 As part of this step, you can also configure the user you wish to issue Salt commands to your minions. Uncomment the `#user:` line and enter your desired username to modify this setting. You will also need to issue the following command to set the required permissions for the user in question.
 
-chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
+    chown -R user /etc/salt /var/cache/salt /var/log/salt /var/run/salt
 
 Once this setting has been modified, you will need to issue any further Salt commands on your Salt Master while logged in as that user.
 {{< /note >}}
@@ -172,11 +168,10 @@ Salt Formulas create a framework of software and configurations to be deployed t
 
 2.  Create a state file to store your configuration. For this example, we'll create a simple Apache state:
 
-    {{< file "/srv/salt/apache.sls" yaml >}}
+    {{< file "/srv/salt/apache.sls" >}}
 apache2:
   pkg:
     - installed
-
 {{< /file >}}
 
 

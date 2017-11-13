@@ -78,9 +78,8 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
 7. Add the new hostname to `/etc/hosts`. The second line in the file should look like this:
 
-    {{< file-excerpt "/etc/hosts" aconf >}}
+    {{< file-excerpt "/etc/hosts"  conf >}}
 127.0.1.1    members.linode.com     seafile
-
 {{< /file-excerpt >}}
 
 
@@ -99,7 +98,7 @@ If you don't want UFW allowing SSH on port 22 for both IPv4 and IPv6, you can de
 
         sudo mysql_secure_installation
 
-	For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
+    For more info on MySQL, see our guide: [Install MySQL on Ubuntu](/docs/databases/mysql/install-mysql-on-ubuntu-14-04)
 
 ## Create a TLS Certificate for use with nginx
 
@@ -120,15 +119,15 @@ If you don't already have an SSL/TLS certificate, you can create one. This certi
 
 2.  Create the site configuration file. The only line you need to change below is `server_name`. For more HTTPS configuration options, see our guide on [TLS Best Practices with nginx](/docs/web-servers/nginx/nginx-ssl-and-tls-deployment-best-practices).
 
-    {{< file "/etc/nginx/sites-available/seafile.conf" aconf >}}
+    {{< file "/etc/nginx/sites-available/seafile.conf" nginx >}}
 server{
-	listen 80;
-	server_name example.com;
-	rewrite ^ https://$http_host$request_uri? permanent;
-	proxy_set_header X-Forwarded-For $remote_addr;
+    listen 80;
+    server_name example.com;
+    rewrite ^ https://$http_host$request_uri? permanent;
+    proxy_set_header X-Forwarded-For $remote_addr;
     }
  server {
-	listen 443 ssl http2;
+    listen 443 ssl http2;
     ssl on;
     ssl_certificate /etc/ssl/cacert.pem;
     ssl_certificate_key /etc/ssl/privkey.pem;
@@ -180,7 +179,7 @@ server{
     location /media {
         root /home/sfadmin/sfroot/seafile-server-latest/seahub;
     }
-	}
+    }
 
 {{< /file >}}
 
@@ -198,7 +197,7 @@ server{
 
 ## Configure and Install Seafile
 
-1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example	`haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
+1.  The [Seafile manual](https://manual.seafile.com/deploy/using_mysql.html) advises to use a particular directory structure to ease upgrades. We'll do the same here, but instead of using the example `haiwen` directory found in the Seafile manual, we'll create a directory called `sfroot` in the `sfadmin` home folder.
 
         mkdir ~/sfroot && cd ~/sfroot
 
@@ -240,7 +239,7 @@ The `seafile.sh` and `seahub.sh` scripts don't automatically run if your Linode 
 
 1.  Create the systemd unit files:
 
-    {{< file "/etc/systemd/system/seafile.service" aconf >}}
+    {{< file "/etc/systemd/system/seafile.service" >}}
 [Unit]
 Description=Seafile Server
 After=network.target mysql.service
@@ -260,7 +259,7 @@ WantedBy=multi-user.target
 
 
 
-    {{< file "/etc/systemd/system/seahub.service" aconf >}}
+    {{< file "/etc/systemd/system/seahub.service" >}}
 [Unit]
 Description=Seafile Hub
 After=network.target seafile.service

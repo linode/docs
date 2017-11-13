@@ -38,9 +38,8 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
-    {{< file-excerpt "/etc/selinux/config" aconf >}}
+    {{< file-excerpt "/etc/selinux/config" >}}
 SELINUX=disabled
-
 {{< /file-excerpt >}}
 
 
@@ -75,7 +74,7 @@ iptables will be used to secure the Linode against unwanted traffic. The Linode 
 
 2.  Create `/etc/iptables.firewall.rules` using your preferred text editor. This file will be used to activate the firewall with the desired rules every time the Linode boots.
 
-    {{< file "/etc/iptables.firewall.rules" aconf >}}
+    {{< file "/etc/iptables.firewall.rules" >}}
 *filter
 
 #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0

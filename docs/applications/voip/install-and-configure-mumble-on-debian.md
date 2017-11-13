@@ -18,7 +18,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+
+---
 
 [Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.
 
@@ -32,7 +33,7 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
- {{< note >}}
+    {{< note >}}
 This guide is written for non-root users. Commands that require elevated privileges are prefixed with sudo. If you are not familiar with the sudo command, you can check out our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
@@ -57,11 +58,11 @@ If you wish to disable the server starting at boot, you can use your init system
 
 For Debian 8:
 
-sudo systemctl disable mumble-server
+`sudo systemctl disable mumble-server`
 
 For Debian 7 or earlier:
 
-sudo service mumble-server disable
+`sudo service mumble-server disable`
 {{< /note >}}
 
 4.  Mumble will then ask if you want to reduce latency by setting a higher CPU and network priority.
@@ -81,16 +82,17 @@ sudo service mumble-server disable
 1.  If you need to address more exact configuration specifics, such as assigning port numbers and/or maximum users, Murmur has a settings file at `/etc/mumble-server.ini`. Below is a partial list of settings included; more settings exist and are further explained in the file.
 
 
-        |:----------------------|:----------------------------------------------------------------------------------------|
-    | **autobanAttempts**   | Set how many times someone can fail to connect to the server within a given timeframe.  |
-    | **autobanTimeframe**  | Set the given timeframe for attempts to login to the server.                            |
-    | **autobanTime**       | Set the amount of time that the login ban lasts.                                        |
-    | **logfile**           | Set the location of the log file, if you want it to reside in a different location.     |
-    | **welcometext**       | Set the text that shows in the text chat log when you login.                            |
-    | **port**              | Set the port you wish to bind to and have your users connect to.                        |
-    | **serverpassword**    | Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different. |
-    | **bandwidth**         | Set the maximum bandwith (in bits per second) each user can use.                        |
-    | **users**             | Set the maximum number of users that can connect to the server at once.                 |
+    | Setting               | Description
+    |:----------------------|:----------------------------------------------------------------------------------------|
+    | autobanAttempts   | Set how many times someone can fail to connect to the server within a given timeframe.  |
+    | autobanTimeframe  | Set the given timeframe for attempts to login to the server.                            |
+    | autobanTime       | Set the amount of time that the login ban lasts.                                        |
+    | logfile           | Set the location of the log file, if you want it to reside in a different location.     |
+    | welcometext       | Set the text that shows in the text chat log when you login.                            |
+    | port              | Set the port you wish to bind to and have your users connect to.                        |
+    | serverpassword    | Set a password that users will have to use to login.  This is not the same as the SuperUser password and therefore, should be different. |
+    | bandwidth         | Set the maximum bandwith (in bits per second) each user can use.                        |
+    | users             | Set the maximum number of users that can connect to the server at once.                 |
 
 
 2.  Once you are done, save and restart Murmur.
@@ -121,9 +123,9 @@ After installing the client and server, if you want to grant permissions to othe
 
 1.  To connect, open the client, then click **Server**, then **Connect**.  This opens the Mumble Server Connect dialog.
 
-	[![Server List](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
+    [![Server List](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
 
-	Next, click **Add New** at the bottom and enter the following.
+    Next, click **Add New** at the bottom and enter the following.
 
     - **Label** - Name this anything you want.
     - **Address** - Enter the IP address or domain name of the server.
@@ -135,15 +137,15 @@ After installing the client and server, if you want to grant permissions to othe
 
 2.  Once these additions have been made to your server list, select it and click **Connect**.
 
-	[![Server List With Favorite.](/docs/assets/mumble-server-list-with-favorite.png)](/docs/assets/mumble-server-list-with-favorite.png)
+    [![Server List With Favorite.](/docs/assets/mumble-server-list-with-favorite.png)](/docs/assets/mumble-server-list-with-favorite.png)
 
 3.  Mumble may then ask you if you want to accept a self-signed certificate.  Since we never set up an SSL certificate, select **Yes**.
 
-	[![Certificate accept](/docs/assets/mumble-accept-certificate.png)](/docs/assets/mumble-accept-certificate.png)
+    [![Certificate accept](/docs/assets/mumble-accept-certificate.png)](/docs/assets/mumble-accept-certificate.png)
 
 4.  You should now be connected as SuperUser. You can make changes to the server by right-clicking the *Root* channel and selecting **Edit**. Please refer to the [Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page) for more information on how to configure channels.
 
-	[![Connected as SuperUser.](/docs/assets/mumble_connected_as_superuser-resized.png)](/docs/assets/mumble_connected_as_superuser.png)
+    [![Connected as SuperUser.](/docs/assets/mumble_connected_as_superuser-resized.png)](/docs/assets/mumble_connected_as_superuser.png)
 
 ### Connecting As Normal User
 
@@ -151,17 +153,17 @@ When a normal user connects, you follow the same relative process as you did to 
 
 1.  To open the Mumble Server Connect dialog, first open the client, then click **Server**, and then **Connect**. The following appears on your screen:
 
-	[![Server List](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
+    [![Server List](/docs/assets/mumble-server-list.png)](/docs/assets/mumble-server-list.png)
 
 2.  At page bottom, click **Add New**, then enter the following:
 
-	- **Label** - Name this anything you want.
-	- **Address** - Enter the IP address or domain name of the server.
-	- **Port** - Leave this as default (64738), unless you changed it in the server's configuration.
-	- **Username** - Your identifier on the server, name this anything you want.
+    - **Label** - Name this anything you want.
+    - **Address** - Enter the IP address or domain name of the server.
+    - **Port** - Leave this as default (64738), unless you changed it in the server's configuration.
+    - **Username** - Your identifier on the server, name this anything you want.
 
-	[![Normal User Info.](/docs/assets/mumble-connect-as-normal-user.png)](/docs/assets/mumble-connect-as-normal-user.png)
+    [![Normal User Info.](/docs/assets/mumble-connect-as-normal-user.png)](/docs/assets/mumble-connect-as-normal-user.png)
 
-	You should now be logged in as a normal user and can use the server as a user with limited privileges.
+    You should now be logged in as a normal user and can use the server as a user with limited privileges.
 
-	[![Connected as Normal User.](/docs/assets/mumble-connected-as-normal-user-resized.png)](/docs/assets/mumble-connected-as-normal-user.png)
+    [![Connected as Normal User.](/docs/assets/mumble-connected-as-normal-user-resized.png)](/docs/assets/mumble-connected-as-normal-user.png)
