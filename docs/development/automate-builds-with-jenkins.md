@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 contributor:
   name: Damaso Sanoja
-  link: https://twitter.com/damasosanoja
+  link: https://twitter.com/<DockerHub Username>
 description: 'Creating easy automation workflows with Jenkins.'
 keywords: ''
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -345,19 +345,18 @@ Using the package maintained by the Jenkins project allows you to use a more up 
 
         sudo systemctl enable jenkins
 
-8. Use the Linode Manager to reboot your server to apply all changes, especially group permissions.
-
-        sudo reboot
+8. Use the Linode Manager to reboot your server to apply these changes.
 
 9. Use your browser to navigate to default server address:
 
         http://<LINODE_IP_OR_HOSTNAME>:8080
 
-{: .caution}
-> It's out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:
+	{{< caution >}}
+It's out of the scope of this guide to establish security parameters for Jenkins remote installation. However, be aware of these critical points that need to be addressed in a production environment:
 - When you add `jenkins` user to the Docker group you are technically giving it `root` permissions.
 - You must enforce Firewall policies for Jenkins connections.
 - It's extremely important to secure the connection between your local Workstation and your remote Linode running Jenkins. You can achieve this using SSL and a reverse Proxy (like Apache or Nginx), using a VPN, or using any other secure remote technology.
+{{< /caution >}}
 
 ## Setting up Jenkins
 
@@ -448,16 +447,15 @@ Code blocks are delimited by brackets {}. No semi-colons are used, each statemen
 
 All this actions can be executed inside your `agent` or you can also instruct Jenkins to remotely perform any of them via SSH. As you can see there are endless automation possibilities. In a simple scenario only one pipeline executing his stages sequentially is enough to achieve the desired final state, but you can also define pipelines to run in parallel if needed.
 
-{: .note}
-> For detailed information about Jenkins Declarative Pipeline Syntax please read the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
+{{< note >}}
+ For detailed information about Jenkins Declarative Pipeline Syntax please read the official [documentation.](https://jenkins.io/doc/book/pipeline/syntax/)
+{{< /note >}}
 
 ## Start working with Pipelines
 
-1. Create your first `Jenkinsfile`.
+1. Create your first `Jenkinsfile`, in the `jenkins-guide` directory on your client workstation:
 
-{:.file}
-~/<path/to/your/repository/Jenkinsfile>
-:   ~~~ conf
+{{< file "~/jenkins-guide/Jenkinsfile" conf  >}}
 pipeline {
     agent any
         stages {
@@ -478,9 +476,9 @@ pipeline {
             }
         }
     } 
-    ~~~
+{{< /file >}}
 
-2. As you can see, is only a template but have all the necessary code to start your Pipeline. Push your commit to GitHub:
+2. This is only a template, but it contains all the necessary code to start your Pipeline. Push your commit to GitHub:
 
         git add . && git commit -m "Jenkinsfile template" && git push origin master
 
@@ -500,11 +498,11 @@ pipeline {
 
     ![GitHub token](/docs/assets/jenkins/jenkins-bo-gh-token.png)
 
-7. Copy the token value and then paste it on the Blue Ocean tab, click on **Connect** button.
+7. Copy the token value and then paste it on the Blue Ocean tab, then click the **Connect** button:
 
     ![GitHub authentication BO](/docs/assets/jenkins/jenkins-bo-token.png)
 
-8. If you have Organizations along with your personal account then you will need to choose where is your repository.
+8. If you have Organizations along with your personal account then you will need to choose which organization contains your repository:
 
     ![GitHub Organization](/docs/assets/jenkins/jenkins-bo-organizations.png)
 
@@ -516,11 +514,11 @@ pipeline {
 
     ![First Build](/docs/assets/jenkins/jenkins-bo-first-build-02.png)
 
-Congratulations, you just built your first successful Pipeline! From here you can obtain valuable information regarding (1) your build number, (2) the console output for each step, (3) select each stage for further analysis, (4) browse through tabs with information about commit changes, tests results and artifacts stored, (5) replay your build, (6) edit your pipeline visually, (7) go to your pipeline settings.
+From here you can obtain valuable information regarding (1) your build number, (2) the console output for each step, (3) select each stage for further analysis, (4) browse through tabs with information about commit changes, tests results and artifacts stored, (5) replay your build, (6) edit your pipeline visually, (7) go to your pipeline settings.
 
 ### Automating your entire process with Jenkins
 
-The `Jenkinsfile` template has the most basic Pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you need to follow. As you already walked through the nodeJS example you can design a Pipeline that automates each stage. For the purpose of this guide the resulting Pipeline should:
+The `Jenkinsfile` template uses a very basic pipeline structure with only three stages. You can customize it to accommodate as many stages as needed. The final Pipeline structure is dictated by the project complexity and the development guidelines you need to follow. As you already walked through the nodeJS example you can design a pipeline that automates each stage. For the purpose of this guide the resulting pipeline should:
 
 * Build Stage:
     - Create both images and abort any further testing or deployment if any error is encountered.
@@ -544,11 +542,9 @@ The `Jenkinsfile` template has the most basic Pipeline structure with only three
 
 ### Committing changes to your Pipeline
 
-1. Start by editing your `Jenkinsfile` and pasting the following Pipeline:
+1. Start by editing your `Jenkinsfile` and pasting the following pipeline. Replace `<DockerHub Username>` with your own information, and replace the `@example.com` email addresses with your own address if you would like to receive email notifications about the status of each build.
 
-{:.file}
-~/<path/to/your/repository/Jenkinsfile>
-:   ~~~ conf
+{{< file "~/jenkins-guide/Jenkinsfile" conf >}}
 pipeline {
     environment {
       DOCKER = credentials('docker-hub')
@@ -597,8 +593,8 @@ pipeline {
         stage('Quality Tests') {
           steps {
             sh 'docker login --username $DOCKER_USR --password $DOCKER_PSW'
-            sh 'docker tag nodeapp-dev:trunk damasosanoja/nodeapp-dev:latest'
-            sh 'docker push damasosanoja/nodeapp-dev:latest'
+            sh 'docker tag nodeapp-dev:trunk <DockerHub Username>/nodeapp-dev:latest'
+            sh 'docker push <DockerHub Username>/nodeapp-dev:latest'
           }
         }
       }
@@ -638,9 +634,9 @@ pipeline {
             steps {
                     retry(3) {
                         timeout(time:10, unit: 'MINUTES') {
-                            sh 'docker tag nodeapp-dev:trunk damasosanoja/nodeapp-prod:latest'
-                            sh 'docker push damasosanoja/nodeapp-prod:latest'
-                            sh 'docker save damasosanoja/nodeapp-prod:latest | gzip > nodeapp-prod-golden.tar.gz'
+                            sh 'docker tag nodeapp-dev:trunk <DockerHub Username>/nodeapp-prod:latest'
+                            sh 'docker push <DockerHub Username>/nodeapp-prod:latest'
+                            sh 'docker save <DockerHub Username>/nodeapp-prod:latest | gzip > nodeapp-prod-golden.tar.gz'
                         }
                     }
 
@@ -671,25 +667,23 @@ pipeline {
     }
   }
 }
-    ~~~
+{{< /file >}}
 
-This larger and most complete `Jenkinsfile` is written in Declarative Syntax, and if you read it carefully you will notice that is only describing the same procedure used during the application deployment done in a previous section. Let's analyze it in more detail.
+This complete `Jenkinsfile` is written using declarative syntax, and if you read it carefully you will notice that is only describing the same procedure used during the application deployment done in a previous section. Let's analyze it in more detail.
 
 ### Agent and Environmental Variables
 
 The first block defines a globally available environmental variable called `DOCKER`. You can tell its "global" because is inside the pipeline block but outside the stages block. Next comes the `agent` any statement that means Jenkins can use any (server) agent.
 
-{:.file-excerpt}
-~/<path/to/your/repository/Jenkinsfile>
-:   ~~~ conf
+{{< file "~/jenkins-guide/Jenkinsfile" conf >}}
 pipeline {
     environment {
       DOCKER = credentials('docker-hub')
     }
   agent any
-    ~~~
+{{< /file >}}
 
-The `DOCKER` definition is done through the "credentials" feature. This allows you to use any secret without passing it to the `Jenkinsfile`. To configure this "key: value" pair you must click on the gear icon (Pipeline Settings). You will see the project's settings page, click on the **Credentials** link at the bottom of the sidebar menu.
+The `DOCKER` definition is done through the "credentials" feature. This allows you to use confidential login information without including it in the `Jenkinsfile`. To configure this key: value pair you must click on the gear icon (Pipeline Settings). You will see the project's settings page, click on the **Credentials** link at the bottom of the sidebar menu.
 
 ![Project Pipeline Settings](/docs/assets/jenkins/jenkins-pipeline-settings-sidebar.png)
 
@@ -710,7 +704,7 @@ Back to our example, when you declare the `DOCKER` variable you are creating two
 The first thing you will notice is the `parallel` code block that actually is self-explanatory: it will run sub-stages in Parallel. This is very useful to build your two Docker images at the same time using the `sh` for injecting the very same shell commands you used before. Each image is declared in its own step which is also part of an independent stage.
 
 {:.file-excerpt}
-~/<path/to/your/repository/Jenkinsfile>
+~/jenkins-guide/Jenkinsfile>
 :   ~~~ conf
 // Building your Test Images
     stage('BUILD') {
@@ -748,7 +742,7 @@ After closing the parallel stage you encounter the `post` conditionals. That mea
 As you can see, the testing stage is also using the Pipeline Parallel execution.
 
 {:.file-excerpt}
-~/<path/to/your/repository/Jenkinsfile>
+~/jenkins-guide/Jenkinsfile>
 :   ~~~ conf
 // Performing Software Tests
     stage('TEST') {
@@ -765,8 +759,8 @@ As you can see, the testing stage is also using the Pipeline Parallel execution.
         stage('Quality Tests') {
           steps {
             sh 'docker login --username $DOCKER_USR --password $DOCKER_PSW'
-            sh 'docker tag nodeapp-dev:trunk damasosanoja/nodeapp-dev:latest'
-            sh 'docker push damasosanoja/nodeapp-dev:latest'
+            sh 'docker tag nodeapp-dev:trunk <DockerHub Username>/nodeapp-dev:latest'
+            sh 'docker push <DockerHub Username>/nodeapp-dev:latest'
           }
         }
       }
@@ -859,7 +853,7 @@ Up to this point everything work as expected with no errors. But what happens wh
 1. Edit `app.js` in your local Workstation. On the Web Server change the root address `/` with `/ERROR`. This will cause an error 404 on the `express` server (page not found) so the test will fail.
 
 {:.file-except}
-~/<path/to/your/repository/app.js>
+~/jenkins-guide/app.js>
 :   ~~~ conf
 
 // Web Server 
@@ -892,13 +886,11 @@ It's time to induce an error on the `BUILD` stage.
 
 1. Edit your `express-image/package.json`. Change the express package name to `express-ERROR` to simulate a mistyping.
 
-
-{:.file-except}
-~/<path/to/your/repository/express-image/package.json.js>
-:   ~~~ conf
+	{{< file-excerpt "~/jenkins-guide/express-image/package.json" json >}}
 "dependencies": {
     "express-ERROR": "^4.13.3"
   }
+{{< /file-excerpt >}}
 
 2. Push your changes to the Jenkins Server.
 
