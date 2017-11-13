@@ -155,15 +155,15 @@ Solution: Check for incompatible settings and modules in your Apache configurati
 
 Different distributions make Apache 2.4 the norm at different times. When you upgrade to one of the distributions in this chart, you will also be upgrading to Apache 2.4 by default.
 
-|Distribution    | Version    | Release Date
-|:--------------|:------------|: -----------------
-|Ubuntu         | 13.10       | out
-|Ubuntu         | 14.04 LTS   | April 17, 2014
-|Debian         | 8.0         | late 2015 ?
-|CentOS         | ?           | ?
-|Fedora         | 19          | out
-|Fedora         | 20          | out
-|Gentoo         | NA          | ?
-|Arch           | NA          | in the AUR
+| Distribution | Version     | Release Date    |
+|:------------:|:-----------:|:---------------:|
+|Ubuntu        | 13.10       | out             |
+|Ubuntu        | 14.04 LTS   | April 17, 2014  |
+|Debian        | 8.0         | late 2015 ?     |
+|CentOS        | ?           | ?               |
+|Fedora        | 19          | out             |
+|Fedora        | 20          | out             |
+|Gentoo        | NA          | ?               |
+|Arch          | NA          | in the AUR      |
 
 Use this information to prepare for a smooth upgrade.

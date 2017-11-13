@@ -294,7 +294,7 @@ Appropriate firewall rules depend on the services being run. Below are iptables 
 
 **IPv4**
 
-{{< file "/tmp/v4" aconf >}}
+{{< file "/tmp/v4" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -347,7 +347,7 @@ COMMIT
 
 If you would like to supplement your web server's IPv4 rules with IPv6 as well, this ruleset will allow HTTP/S access and all ICMP functions.
 
-{{< file "/tmp/v6" aconf >}}
+{{< file "/tmp/v6" >}}
 *filter
 
 # Allow all loopback (lo0) traffic and reject traffic
@@ -486,52 +486,48 @@ Check your Linode's firewall rules with the `v` option for a verbose output:
 
 The output for IPv4 rules should show:
 
-    {{< output >}}
-Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
-    0     0 REJECT     all  --  !lo    any     loopback/8           anywhere             reject-with icmp-port-unreachable
-    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp destination-unreachable
-    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp echo-request
-    0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp time-exceeded
-    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh state NEW
-    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http state NEW
-    0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https state NEW
-    0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
-    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
-    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
-
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
-    0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
-
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-{{< /output >}}
+    Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+        0     0 ACCEPT     all  --  lo     any     anywhere             anywhere
+        0     0 REJECT     all  --  !lo    any     loopback/8           anywhere             reject-with icmp-port-unreachable
+        0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp destination-unreachable
+        0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp echo-request
+        0     0 ACCEPT     icmp --  any    any     anywhere             anywhere             icmp time-exceeded
+        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:ssh state NEW
+        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:http state NEW
+        0     0 ACCEPT     tcp  --  any    any     anywhere             anywhere             tcp dpt:https state NEW
+        0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+        0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
+        0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+    
+    Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+        0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
+        0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
+    
+    Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
 
 Output for IPv6 rules will look like this:
 
-{{< output >}}
-Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 ACCEPT     all      lo     any     anywhere             anywhere
-    0     0 REJECT     all      !lo    any     localhost            anywhere             reject-with icmp6-port-unreachable
-    0     0 ACCEPT     ipv6-icmp    any    any     anywhere             anywhere
-    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:http state NEW
-    0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:https state NEW
-    0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
-    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
-    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
-
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-    0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
-    0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
-
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination
-{{< /output >}}
+    Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+        0     0 ACCEPT     all      lo     any     anywhere             anywhere
+        0     0 REJECT     all      !lo    any     localhost            anywhere             reject-with icmp6-port-unreachable
+        0     0 ACCEPT     ipv6-icmp    any    any     anywhere             anywhere
+        0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:http state NEW
+        0     0 ACCEPT     tcp      any    any     anywhere             anywhere             tcp dpt:https state NEW
+        0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
+        0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
+        0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+    
+    Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
+        0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
+        0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
+    
+    Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+     pkts bytes target     prot opt in     out     source               destination
 
 Your firewall rules are now in place and protecting your Linode. Remember, you may need to edit these rules later if you install other packages that require network access.
 

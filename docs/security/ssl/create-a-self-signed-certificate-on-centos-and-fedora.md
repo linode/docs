@@ -33,11 +33,11 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     * On CentOS and Fedora 21 or below:
 
-          sudo yum update
+            sudo yum update
 
     * On Fedora 22 and above:
 
-          sudo dnf upgrade
+            sudo dnf upgrade
 
 ## Create a Self-Signed Certificate
 

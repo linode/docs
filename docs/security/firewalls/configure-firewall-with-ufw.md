@@ -51,9 +51,9 @@ By default, UFW's rulesets are blank so it is not enforcing any firewall rules--
 
 ### Debian / Ubuntu
 
-1.  Install UFW
+Install UFW
 
-        sudo apt-get install ufw
+    sudo apt-get install ufw
 
 ## Use UFW to Manage Firewall Rules
 

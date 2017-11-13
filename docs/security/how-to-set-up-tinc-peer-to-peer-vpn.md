@@ -72,22 +72,22 @@ Ubuntu 16.04 will be used for all of the Linodes in this guide. Other distros ca
 
 1. Install the necessary dependencies for building tinc:
 
-       sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev
+        sudo apt install build-essential automake libssl-dev liblzo2-dev libbz2-dev zlib1g-dev
 
 2. Get the latest version of tinc from the developer's site:
 
-       wget http://tinc-vpn.org/packages/tinc-1.0.31.tar.gz
+        wget http://tinc-vpn.org/packages/tinc-1.0.31.tar.gz
 
 3. Extract the archive in a temporary folder:
 
-       tar -xf tinc-1.0.31.tar.gz
+        tar -xf tinc-1.0.31.tar.gz
 
 4. Compile tinc on your system:
 
-       cd tinc-1.0.31
-       ./configure --prefix=
-       make
-       sudo make install
+        cd tinc-1.0.31
+        ./configure --prefix=
+        make
+        sudo make install
 
 ### Create VPN Working Directory
 
@@ -218,7 +218,7 @@ ip link set $INTERFACE down
 
 In order to run tinc as a service on startup, you'll need to set up the proper Unit file for each server. Edit the following file from both the application and database servers.
 
-{{< file "/etc/systemd/system/tinc.service" aconf >}}
+{{< file "/etc/systemd/system/tinc.service" >}}
 [Unit]
 Description=Tinc net linodeVPN
 After=network.target
@@ -407,7 +407,7 @@ WantedBy=multi-user.target
 
 10.  Finally, modify the `tinc.conf` file on `appserver` and `dbserver`. The new configuration files need to tell tinc to look for other nodes:
 
-        {{< file "/etc/tinc/linodeVPN/tinc.conf" aconf >}}
+    {{< file "/etc/tinc/linodeVPN/tinc.conf" aconf >}}
 Name = appserver
 Device = /dev/net/tun
 AddressFamily = ipv4
@@ -416,9 +416,7 @@ ConnectTo = webserver
 
 {{< /file >}}
 
-
-
-        {{< file "/etc/tinc/linodeVPN/tinc.conf" aconf >}}
+    {{< file "/etc/tinc/linodeVPN/tinc.conf" aconf >}}
 Name = dbserver
 Device = /dev/net/tun
 AddressFamily = ipv4
@@ -426,7 +424,6 @@ ConnectTo = appserver
 ConnectTo = webserver
 
 {{< /file >}}
-
 
 11.  Now you can start the tinc service on the webserver:
 

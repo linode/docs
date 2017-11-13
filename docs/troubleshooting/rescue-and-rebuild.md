@@ -54,15 +54,15 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 1.  Enter the `df` command to verify that your primary disks are not currently mounted. Your primary disks should not appear in the list. For example, when [we booted into rescue mode earlier](#booting-into-rescue-mode), we specified two disks: Ubuntu at `/dev/sda` and Swap at `/dev/sdb`, neither of which are shown as being mounted in the screenshot below.
 
-[![Output of df command](/content/assets/999-rescue2.png)](/content/assets/999-rescue2.png)
+    [![Output of df command](/content/assets/999-rescue2.png)](/content/assets/999-rescue2.png)
 
- {{< note >}}
+     {{< note >}}
 You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
 {{< /note >}}
 
 2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/sda`, the Swap disk is `/dev/sdb`, and the Finnix partition is `/dev/sdh`.
 
-[![Output of fdisk -l command](/content/assets/1001-rescue4.png)](/content/assets/1001-rescue4.png)
+    [![Output of fdisk -l command](/content/assets/1001-rescue4.png)](/content/assets/1001-rescue4.png)
 
 3.  Run `fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
@@ -70,11 +70,11 @@ You should never run `fsck` on a mounted disk. Do not continue unless you're sur
 
 4.  If no problems are detected, `fsck` will display a message indicating that the file system is "clean," as shown below.
 
-[![Output of e2fsck command](/content/assets/1003-rescue5.png)](/content/assets/1003-rescue5.png)
+    [![Output of e2fsck command](/content/assets/1003-rescue5.png)](/content/assets/1003-rescue5.png)
 
 5.  If `fsck` determines that there is a problem with your file system, it will perform several tests and prompt you to fix problems as they are found, as shown below. Press enter to automatically attempt to fix the problems.
 
-[![Output of e2fsck command](/content/assets/1007-rescue6-1.png)](/content/assets/1007-rescue6-1.png)
+    [![Output of e2fsck command](/content/assets/1007-rescue6-1.png)](/content/assets/1007-rescue6-1.png)
 
 Once the file system check completes, any problems detected should be fixed. You can try restarting the Linode now. With any luck, `fsck` fixed your problem and the Linode will boot normally.
 
@@ -169,7 +169,7 @@ Here's how to rebuild your Linode from scratch:
 4.  Select a Linode. The Linode's dashboard appears.
 5.  Click the **Rebuild** tab. The webpage shown below appears.
 
-[![The "Rebuild" tab of the Linode Manager](/content/assets/1006-rescue7-small.png)](/content/assets/1005-rescue7.png)
+    [![The "Rebuild" tab of the Linode Manager](/content/assets/1006-rescue7-small.png)](/content/assets/1005-rescue7.png)
 
 6.  Select Linux distribution from the **Distribution** menu.
 7.  Enter a size for the new disk in the **Deployment Disk Size**.

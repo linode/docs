@@ -170,9 +170,6 @@ You should now be able to visit your site with SSL enabled. Congratulations, you
 More Information
 ----------------
 
-More Information
-----------------
-
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
 - [Apache HTTP Server Version 2.0 Documentation](http://httpd.apache.org/content/2.0/)

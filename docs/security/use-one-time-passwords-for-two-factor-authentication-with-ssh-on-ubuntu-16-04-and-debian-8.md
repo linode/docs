@@ -127,7 +127,6 @@ auth    required      pam_google_authenticator.so
 
 {{< /file-excerpt >}}
 
-
     The first line tells PAM to authenticate with a normal Unix user password before other methods. The second line specifies an additional method of authentication, which in this case, is the TOTP software we installed earlier.
 
 2.  Edit `/etc/ssh/sshd_config` to include the following lines, replacing `example-user` with any system user for which you'd like to enable two-factor authentication. Comments (preceded by #) are included here, but should not be added to your actual configuration file:
