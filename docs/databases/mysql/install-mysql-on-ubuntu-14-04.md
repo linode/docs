@@ -126,14 +126,18 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 ### Create a New MySQL User and Database
 1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
-        create database testdb;
-        create user 'testuser'@'localhost' identified by 'password';
-        grant all on testdb.* to 'testuser';
+    {{<  highlight sql >}}
+create database testdb;
+create user 'testuser'@'localhost' identified by 'password';
+grant all on testdb.* to 'testuser';
+{{< /highlight >}}
 
     You can shorten this process by creating the user *while* assigning database permissions:
 
-        create database testdb;
-        grant all on testdb.* to 'testuser' identified by 'password';
+    {{< highlight sql >}}
+create database testdb;
+grant all on testdb.* to 'testuser' identified by 'password';
+{{< /highlight >}}
 
 2.  Exit MySQL.
 
@@ -147,8 +151,10 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 
 2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
 
-        use testdb;
-        create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+    {{< highlight sql >}}
+use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+{{< /highlight >}}
 
 3.  Then exit MySQL.
 
@@ -187,3 +193,4 @@ You'll now be able to log in again using `mysql -u root -p`.
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
 MySQL Tuner is an excellent starting point to optimize a MySQL server, but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
+

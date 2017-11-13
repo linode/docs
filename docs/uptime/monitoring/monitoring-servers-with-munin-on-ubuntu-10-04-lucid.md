@@ -14,8 +14,6 @@ published: 2010-05-20
 title: 'Monitoring Servers with Munin on Ubuntu 10.04 (Lucid)'
 ---
 
-
-
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. For instance, if you need to monitor memory usage or resource consumption on a per-process level, a more precise monitoring tool like Munin might be helpful.
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
@@ -64,7 +62,10 @@ The first section of the file contains the paths to the directories used by Muni
 
 {{< /file-excerpt >}}
 
-> \# dbdir /var/lib/munin \# htmldir /var/cache/munin/www \# logdir /var/log/munin \# rundir /var/run/munin
+        # dbdir /var/lib/munin
+        # htmldir /var/cache/munin/www
+        # logdir /var/log/munin
+        # rundir /var/run/munin
 
 There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](http://munin-monitoring.org/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
 
@@ -78,7 +79,39 @@ The last section of the `munin.conf` file defines the hosts Munin retrieves info
 For more complex configurations, including grouping domains, see the comment section in the file, reproduced below for your convenience:
 
 {{< file-excerpt "/etc/munin/munin.conf" >}}
-\# A more complex example of a host tree \# \#\# First our "normal" host. \# [fii.foo.com] \# address foo \# \#\# Then our other host... \# [fay.foo.com] \# address fay \# \#\# Then we want totals... \# [foo.com;Totals] \#Force it into the "foo.com"-domain... \# update no \# Turn off data-fetching for this "host". \# \# \# The graph "load1". We want to see the loads of both machines... \# \# "fii=fii.foo.com:load.load" means "label=machine:graph.field" \# load1.graph\_title Loads side by side \# load1.graph\_order fii=fii.foo.com:load.load fay=fay.foo.com:load.load \# \# \# The graph "load2". Now we want them stacked on top of each other. \# load2.graph\_title Loads on top of each other \# load2.dummy\_field.stack fii=fii.foo.com:load.load fay=fay.foo.com:load.l\$ \# load2.dummy\_field.draw AREA \# We want area instead the default LINE2. \# load2.dummy\_field.label dummy \# This is needed. Silly, really. \# \# \# The graph "load3". Now we want them summarized into one field \# load3.graph\_title Loads summarized \# load3.combined\_loads.sum fii.foo.com:load.load fay.foo.com:load.load \# load3.combined\_loads.label Combined loads \# Must be set, as this is \# \# not a dummy field! \# \#\# ...and on a side note, I want them listen in another order (default is \#\# alphabetically) \# \# \# Since [foo.com] would be interpreted as a host in the domain "com", we \# \# specify that this is a domain by adding a semicolon. \# [foo.com;] \# node\_order Totals fii.foo.com fay.foo.com \#
+# A more complex example of a host tree
+# First our "normal" host.
+[fii.foo.com]
+# address foo
+# Then our other host...
+[fay.foo.com]
+# address fay
+# Then we want totals...
+[foo.com;Totals]
+#Force it into the "foo.com"-domain...
+update no
+# Turn off data-fetching for this "host". The graph "load1". We want to see the loads of both machines...
+# "fii=fii.foo.com:load.load" means "label=machine:graph.field"
+load1.graph_title Loads side by side
+load1.graph_order fii=fii.foo.com:load.load fay=fay.foo.com:load.load
+# The graph "load2". Now we want them stacked on top of each other.
+load2.graph_title Loads on top of each other
+load2.dummy_field.stack fii=fii.foo.com:load.load fay=fay.foo.com:load.l\$
+load2.dummy_field.draw AREA
+# We want area instead the default LINE2.
+load2.dummy_field.label dummy
+# This is needed. Silly, really.
+# The graph "load3". Now we want them summarized into one field
+load3.graph_title Loads summarized
+load3.combined_loads.sum fii.foo.com:load.load fay.foo.com:load.load
+load3.combined_loads.label Combined loads
+# Must be set, as this is
+# not a dummy field!
+# ...and on a side note, I want them listen in another order (default is \#\# alphabetically)
+# Since [foo.com] would be interpreted as a host in the domain "com", we
+# specify that this is a domain by adding a semicolon.
+[foo.com;]
+# node_order Totals fii.foo.com fay.foo.com
 {{< /file-excerpt >}}
 
 ### Munin Node Configuration
@@ -86,11 +119,14 @@ For more complex configurations, including grouping domains, see the comment sec
 The default `/etc/munin/munin-node.conf` file contains several variables you'll want to adjust to your preference. For a basic configuration, you'll only need to add the IP address of the master Munin server as a regular expression. Simply follow the style of the existing `allow` line if you're unfamiliar with regular expressions.
 
 {{< file-excerpt "/etc/munin/munin-node.conf" >}}
-\# A list of addresses that are allowed to connect. This must be a \# regular expression, due to brain damage in Net::Server, which \# doesn't understand CIDR-style network notation. You may repeat \# the allow line as many times as you'd like
+# A list of addresses that are allowed to connect. This must be a
+# regular expression, due to brain damage in Net::Server, which
+# doesn't understand CIDR-style network notation. You may repeat
+# the allow line as many times as you'd like
 
 allow \^127.0.0.1\$
 
-\# Replace this with the master munin server IP address allow \^123.45.67.89\$
+# Replace this with the master munin server IP address allow \^123.45.67.89\$
 {{< /file-excerpt >}}
 
 The above line tells the munin-node that the master Munin server is located at IP address `123.45.67.89`. After updating this file, restart the `munin-node`. In Ubuntu, use the following command:
@@ -103,7 +139,7 @@ You can use Munin with the web server of your choice, simply point your web serv
 
 If you are using the [Apache HTTP Server](/docs/web-servers/apache/) you can create a Virtual Host configuration to serve the reports from Munin. In this scenario, we've created a subdomain in the DNS Manager and are now creating the virtual host file:
 
-{{< file-excerpt "/etc/apache2/sites-available/stats.example.org" >}}
+{{< file-excerpt "/etc/apache2/sites-available/stats.example.org" apache >}}
 <VirtualHost 12.34.56.78:80>
    ServerAdmin webmaster@stats.example.org
    ServerName stats.example.org
@@ -140,6 +176,5 @@ You may wish to consult the following resources for additional information on th
 - [Installing Munin on Other Linux Distributions](http://munin-monitoring.org/wiki/MuninInstallationLinux)
 - [Installing Munin on Mac OSX](http://munin-monitoring.org/wiki/MuninInstallationDarwin)
 - [Installing Munin on Solaris](http://munin-monitoring.org/wiki/MuninInstallationSolaris)
-
 
 

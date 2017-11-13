@@ -59,6 +59,7 @@ The useradd command utilizes a variety of variables, some of which are shown in 
 | `-e <date>`     | the date when the account will expire                              | `user add <name>** -e <YYYY-MM-DD>`        |
 | `-f <inactive>` | the number of days before the account expires                      | `useradd <name> -f <0 or -1>`              |
 | `-s <shell>`    | sets the default shell type                                        | `useradd <name> -s /bin/<shell>`           |
+
 You will need to set a password for the new user by using the `passwd` command. Note, you will need root privileges to change a user password. The syntax is as follows:
 
     passwd <username>
@@ -184,15 +185,15 @@ To view file permissions and ownership on files and directories, use the `ls -al
 
 The first column with the ten letters and dashes shows the permissions of the file or directory. The second column (with the single number) indicates the number of files or directories contained in the directory. The next column indicates the owner, followed by the group name, the size, date, and time of last access, and finally the name of the file . For example, using the first line from the output above, the details are as follows:
 
-    ``drwxr-xr-x`` are the permissions
-    ``2`` is the number of files or directories
-    ``user`` is the owner
-    ``user`` is the group
-    ``4096`` is the size
-    ``Jan  9 10:11`` is the date/time of last access
-    ``documents`` is the directory
+    `drwxr-xr-x` are the permissions
+    `2` is the number of files or directories
+    `user` is the owner
+    `user` is the group
+    `4096` is the size
+    `Jan  9 10:11` is the date/time of last access
+    `documents` is the directory
 
- {{< note >}}
+{{< note >}}
 Since a directory itself is a file, any directory will always show `4096` as it's size. This does not reflect the size of the contents of the directory.
 {{< /note >}}
 
@@ -211,6 +212,7 @@ The command `chmod` is short for change mode. Chmod is used to change permission
 | u      | Current permissions the file has for owner                   |
 | g      | Current permissions the file has for users in the same group |
 | o      | Current permissions the file has for others not in the group |
+
 It is important to remember that the first character of the first column of a file listing denotes whether it is a directory or a file. The other nine characters are the permissions for the file/directory. The first three characters are for the user, the next three are for the group, and the last three are for others. The example **drwxrw-r--** is broken down as follows:
 
 > **d** is a directory

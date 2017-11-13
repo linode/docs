@@ -52,20 +52,20 @@ In this tutorial, you will learn how to install and link together ElasticSearch,
 
 ## Before You Begin
 
-1. Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
+1.  Working through this tutorial requires the use of a limited user account. If you have yet to create one, follow the steps in the [Securing Your Server](/docs/security/securing-your-server) guide.
 
-2. Ideally, your Linode should possess at least 4GB of RAM. While the Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
+2.  Ideally, your Linode should possess at least 4GB of RAM. While the Elastic Stack will run on less RAM, the Wazuh Manager will crash if RAM is depleted at any time during use.
 
-  {{< note >}}
+    {{< note >}}
 Some of the commands below require elevated privileges to execute, and should be prefixed with `sudo` when necessary.
 {{< /note >}}
 
-3. You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
+3.  You will need to have either Nginx or Apache installed. If you have yet to install a webserver, follow the instructions in the below guide that best describes your Linux environment.
 
     - [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi)
     - [LAMP on CentOS 7](/docs/web-servers/lamp/lamp-on-centos-7)
 
-4. Configure your webserver for virtual domain hosting. Follow the tutorial best suited for your installed webserver.
+4.  Configure your webserver for virtual domain hosting. Follow the tutorial best suited for your installed webserver.
 
     **Nginx**
 
@@ -81,11 +81,11 @@ Installing the Elastic Stack components can be accomplished in various ways. Ins
 
 ## Update System and Install Prerequisites
 
-1. Update system packages.
+1.  Update system packages.
 
         yum update -y && yum upgrade -y
 
-2. Install Java 8 JDK.
+2.  Install Java 8 JDK.
 
         yum install java-1.8.0-openjdk.x86_64
 
@@ -99,15 +99,15 @@ Installing the Elastic Stack components can be accomplished in various ways. Ins
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
 
-3. Install final pre-requisites.
+3.  Install final pre-requisites.
 
         yum install wget
 
 ## Install Wazuh
 
-1. Create the file `/etc/yum.repos.d/wazuh.repo` and paste the following text using your preferred text editor:
+1.  Create the file `/etc/yum.repos.d/wazuh.repo` and paste the following text using your preferred text editor:
 
-      {{< file "/etc/yum.repos.d/wazuh.repo" >}}
+    {{< file "/etc/yum.repos.d/wazuh.repo" >}}
 [wazuh_repo]
 gpgcheck=1
 gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
@@ -117,18 +117,18 @@ baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
 protect=1
 {{< /file >}}
 
-2. Install the Wazuh Manager:
+2.  Install the Wazuh Manager:
 
         yum install wazuh-manager
 
-3. Install the Wazuh API:
+3.  Install the Wazuh API:
 
-    1. Add the EPEL repository and install Node.js:
+    1.  Add the EPEL repository and install Node.js:
 
             yum install epel-release
             yum install nodejs
 
-    2. Install Wazuh API:
+    2.  Install Wazuh API:
 
             yum install wazuh-api
 
@@ -138,7 +138,7 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
 ### ElasticSearch
 
-1. Download the ElasticSearch rpm file into the `/opt` directory.
+1.  Download the ElasticSearch rpm file into the `/opt` directory.
 
         cd /opt
         wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.2.rpm
@@ -147,12 +147,12 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
         rpm -ivh elasticsearch-5.6.2.rpm
 
-3. Enable ElasticSearch on system boot.
+3.  Enable ElasticSearch on system boot.
 
         systemctl enable elasticsearch
         systemctl start elasticsearch
 
-4. Load The Wazuh ElasticSearch template.
+4.  Load The Wazuh ElasticSearch template.
 
         wget https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/2.1/server/startup/integration_files/template_file.json
         curl -XPUT http://localhost:9200/_template/wazuh/ -d @template_file.json
@@ -160,27 +160,27 @@ Install the Elastic Stack via rpm files to get the latest versions of all the so
 
 ### Logstash
 
-1. Download the Logstash rpm file into the `/opt` directory.
+1.  Download the Logstash rpm file into the `/opt` directory.
 
         cd /opt
         wget https://artifacts.elastic.co/downloads/logstash/logstash-5.6.2.rpm
 
-2. Install Logstash.
+2.  Install Logstash.
 
         rpm -ivh logstash-5.6.2.rpm
 
-3. Enable Logstash on system boot.
+3.  Enable Logstash on system boot.
 
         systemctl daemon-reload
         systemctl enable logstash
         systemctl start logstash
 
-4. Download the Wazuh config and template files for Logstash.
+4.  Download the Wazuh config and template files for Logstash.
 
         curl -o /etc/logstash/conf.d/01-wazuh.conf https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/logstash/01-wazuh.conf
         curl -o /etc/logstash/wazuh-elastic5-template.json https://raw.githubusercontent.com/wazuh/wazuh/2.0/extensions/elasticsearch/wazuh-elastic5-template.json
 
-5. Modify the *01-wazuh.conf* file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the "Remote Wazuh Manager" section and uncommenting the "Local Wazuh Manager" section.
+5.  Modify the *01-wazuh.conf* file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the "Remote Wazuh Manager" section and uncommenting the "Local Wazuh Manager" section.
 
     {{< file-excerpt "/etc/logstash/conf.d/01-wazuh.conf" >}}
 # Wazuh - Logstash configuration file
@@ -206,15 +206,15 @@ input {
 . . .
 {{< /file-excerpt >}}
 
-6. Add the Logstash user to the "ossec" group to allow access to restricted files.
+6.  Add the Logstash user to the "ossec" group to allow access to restricted files.
 
         usermod -aG ossec logstash
 
-7. Follow this step if you are using CentOS 6 or RHEL 6.
+7.  Follow this step if you are using CentOS 6 or RHEL 6.
 
-    1. Edit the file `/etc/logstash/startup.options` and in line 30 change the `LS_GROUP=logstash` to `LS_GROUP=ossec`.
+    1.  Edit the file `/etc/logstash/startup.options` and in line 30 change the `LS_GROUP=logstash` to `LS_GROUP=ossec`.
 
-      {{< file-excerpt "/etc/logstash/startup.options" >}}
+        {{< file-excerpt "/etc/logstash/startup.options" >}}
 . . .
 
 # user and group id to be invoked as
@@ -224,39 +224,39 @@ LS_GROUP=ossec
 . . .
 {{< /file-excerpt >}}
 
-    2. Update the service with the new parameters.
+    2.  Update the service with the new parameters.
 
             /usr/share/logstash/bin/system-install
 
-    3. Restart Logstash.
+    3.  Restart Logstash.
 
             systemctl restart logstash
 
 ### Install Kibana
 
-1. Download the Kibana rpm file into the `/opt` directory.
+1.  Download the Kibana rpm file into the `/opt` directory.
 
         cd /opt
         wget https://artifacts.elastic.co/downloads/kibana/kibana-5.6.2-x86_64.rpm
 
-2. Install Kibana.
+2.  Install Kibana.
 
         rpm -ivh kibana-5.6.2-x86_64.rpm
 
-3. Enable Kibana on system boot.
+3.  Enable Kibana on system boot.
 
         systemctl enable kibana
         systemctl start kibana
 
-4. Install the Wazuh app for Kibana.
+4.  Install the Wazuh app for Kibana.
 
         /usr/share/kibana/bin/kibana-plugin install https://packages.wazuh.com/wazuhapp/wazuhapp.zip
 
-  {{< note >}}
+    {{< note >}}
 The Kibana app installation process takes several minutes to complete and it may appear as though the process has stalled; wait patiently and it will finish.
 {{< /note >}}
 
-5. If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values in `/etc/kibana/kibana.yml` with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
+5.  If you will be accessing Kibana remotely online, you will need to configure it to listen on your IP address. Replace the following values in `/etc/kibana/kibana.yml` with the correct parameters. If you are accessing Kibana from a localhost, you can leave the `server.host` value alone.
 
     | Value           | Parameter                                                                                  |
     | :-------------: | :----------------------------------------------------------------------------------------: |
@@ -264,16 +264,15 @@ The Kibana app installation process takes several minutes to complete and it may
     | server.host     | Set this value to your Linode's external IP address.                                        |
     | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
     | logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
-    | :-------------: | :----------------------------------------------------------------------------------------: |
 
     You may modify other values in this file as you see fit, but this configuration should work for most.
 
-6. Create a log file for Kibana and give it appropriate permissions. Make sure the file path in the command matches the `logging.dest` you set in `/etc/kibana/kibana.yml`.
+6.  Create a log file for Kibana and give it appropriate permissions. Make sure the file path in the command matches the `logging.dest` you set in `/etc/kibana/kibana.yml`.
 
         touch /var/log/kibana.log
         chmod 777 /var/log/kibana.log
 
-7. Restart Kibana.
+7.  Restart Kibana.
 
         systemctl restart kibana
 
@@ -552,28 +551,27 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 1. Login to the Linode Manager and select your Linode VPS. Click on *DNS Manager*. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
 
-    {: .table .table-striped .table-bordered }
     | Field | Value |
     | :-------------: | :-----------: |
     | Hostname | Enter your subdomain name here - ex. kibana |
     | IP Address | Set this value to your Linode's external IP address.                                        |
     | TTL | Set this to 5 minutes. |
-    | :-------------: | :-----------: |
 
 2. Click *Save Changes*.
 
 --->
+
 ## Open The Kibana Port
 
 Kibana's default access port, 5601, must be opened for TCP traffic. Instructions are presented below for UFW, Iptables, and FirewallD.
 
 **UFW**
 
-        ufw allow 5601/tcp comment "Kibana port"
+    ufw allow 5601/tcp comment "Kibana port"
 
 **Iptables**
 
-        iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
+    iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
 {{< note >}}
 To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install `iptables-persistent` to automatically save rules.
@@ -581,24 +579,24 @@ To avoid losing iptables rules after a server reboot, save your rules to a file 
 
 **FirewallD**
 
-        firewall-cmd --add-port=5601/tcp --permanent
+    firewall-cmd --add-port=5601/tcp --permanent
 
 ## Access The Wazuh API
 
 Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!
 
-1. The Wazuh API requires users to provide credentials in order to log in. Switch to a root session and configure user credentials:
+1.  The Wazuh API requires users to provide credentials in order to log in. Switch to a root session and configure user credentials:
 
         su -
         cd /var/ossec/api/configuration/auth
         node htpasswd -c user NewUserName
         exit
 
-2. Restart the Wazuh API.
+2.  Restart the Wazuh API.
 
         systemctl restart wazuh-api
 
-3. Check the status of all daemon components and verify they are running.
+3.  Check the status of all daemon components and verify they are running.
 
         systemctl -l status wazuh-api
         systemctl -l status wazuh-manager
@@ -607,13 +605,13 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status kibana
         systemctl -l status nginx
 
-{{< note >}}
+    {{< note >}}
 If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. You will find the rules and decoders in the `var/ossec/ruleset` directory. To disable, rename the file with any other file extension.
 {{< /note >}}
 
-4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL might look like *kibana.your_domain.com*. You can also reach Kibana by navigating to your server's IP address and specifying port 5601. Login with the credentials you set up for your Kibana site.
+4.  In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL might look like *kibana.your_domain.com*. You can also reach Kibana by navigating to your server's IP address and specifying port 5601. Login with the credentials you set up for your Kibana site.
 
-5. If everything is working correctly, you should have landed on the *Discover* page. Navigate to the *Wazuh* page using the left hand side menu. You will be immediately presented with the API configuration page. Underneath the *ADD NEW API* button, enter the user credentials you created for Wazuh. For *URL* and *Port*, enter "http(s)://your_ip_address" and "55000", respectively. Click *SAVE*.
+5.  If everything is working correctly, you should have landed on the *Discover* page. Navigate to the *Wazuh* page using the left hand side menu. You will be immediately presented with the API configuration page. Underneath the *ADD NEW API* button, enter the user credentials you created for Wazuh. For *URL* and *Port*, enter "http(s)://your_ip_address" and "55000", respectively. Click *SAVE*.
 
 ## Where To Go From Here
 

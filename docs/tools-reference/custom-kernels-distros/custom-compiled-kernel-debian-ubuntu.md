@@ -27,7 +27,7 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
         apt-get update && apt-get upgrade
         apt-get install -y build-essential libncurses5-dev gcc libssl-dev grub2 bc
 
-        {{< note >}}
+    {{< note >}}
 When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
 {{< /note >}}
 
@@ -86,7 +86,7 @@ Once your configuration options are set, exit the configuration interface and an
 
 3.  Edit `/etc/default/grub` and add or change the following variables to match. Comment or remove any lines starting with `GRUB_HIDDEN`, and if the word *splash* appears in the line `GRUB_CMDLINE_LINUX_DEFAULT`, remove it. There will be other variables in this file, but we are only concerned with those listed below:
 
-    {{< file-excerpt "/etc/default/grub" aconf >}}
+    {{< file-excerpt "/etc/default/grub" >}}
 GRUB_TIMEOUT=10
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8 net.ifnames=0"

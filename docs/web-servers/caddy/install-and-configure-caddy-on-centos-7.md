@@ -53,7 +53,7 @@ external_resources:
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/caddy -g www-data -s /sbin/nologin
-    
+
 4.  Create a few necessary directories for Caddy's configuration file, log file, and for the automatic TLS support:
 
         sudo mkdir -p /etc/caddy
@@ -112,11 +112,10 @@ root /var/www/my-website
 tls your-email-here@example.com
 minify
 }
-
 {{< /file >}}
 
 
-    {{< note >}}
+{{< note >}}
 If you are using a Linode without a FQDN, delete the `tls your-email-here@example.com` line from the sample Caddyfile above.
 {{< /note >}}
 

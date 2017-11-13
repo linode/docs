@@ -32,7 +32,7 @@ There are several ways to contact the support team. Please try creating a suppor
 2.  Select the **Support** link.
 3.  Select the **Open a new Support Ticket** link. The webpage shown below appears.
 
-[![The Support ticket interface.](/docs/assets/935-support1-small.png)](/docs/assets/936-support1.png)
+    [![The Support ticket interface.](/docs/assets/935-support1-small.png)](/docs/assets/936-support1.png)
 
 4.  Enter a summary of your issue in the **Summary** field.
 5.  From the **Regarding** menu, select a option related to the issue you are reporting.

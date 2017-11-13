@@ -44,8 +44,8 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 
 1.  Add two firewall rules to slightly extend the port range available to the game. This command assumes that you have **only** the iptables rules in place from the SteamCMD guide.
 
-		sudo iptables -R INPUT 5 -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
-		sudo iptables -I INPUT 7 -p udp -m udp --dport 26900:27030 -j ACCEPT
+        sudo iptables -R INPUT 5 -p udp -m udp --sport 26900:27030 --dport 1025:65355 -j ACCEPT
+        sudo iptables -I INPUT 7 -p udp -m udp --dport 26900:27030 -j ACCEPT
 
 
 ## Install Black Mesa, Dedicated Server
@@ -56,31 +56,31 @@ From the SteamCMD guide, one additional step is needed specifically for Black Me
 
 2.  Login as anonymous:
 
-		login anonymous
+        login anonymous
 
 3.  Download the server:
 
-		app_update 346680 validate
+        app_update 346680 validate
 
 4.  Exit from SteamCMD:
 
-		quit
+        quit
 
 ## Run Black Mesa, Dedicated Server
 
 1.  Go into the Black Mesa Dedicated Server folder:
 
-		cd "steamapps/common/Black Mesa Dedicated Server"
+        cd "steamapps/common/Black Mesa Dedicated Server"
 
 2.  Run the Server:
 
-		./srcds_run -game bms +hostname "My Linode" +map gasworks +maxplayers 24
+        ./srcds_run -game bms +hostname "My Linode" +map gasworks +maxplayers 24
 
 {{< note >}}
-The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
-The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br />
-The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br />
-The **maxplayers** parameter specifies the maximum number of players allowed to play on the server.<br />
+The **game** parameter specifies the game's files directory; don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br><br>
+The **hostname** parameter specifies your server's name in the browser list. By default it's specified in server.cfg, so the +hostname parameter is overridden by it.<br><br>
+The **map** parameter specifies the map with which the server needs to start. You must write the name of the map file without the prefix.<br><br>
+The **maxplayers** parameter specifies the maximum number of players allowed to play on the server.<br>
 
 You can read the entire list of parameters on the [Valve Wiki](https://developer.valvesoftware.com/wiki/Command_Line_Options).
 {{< /note >}}
@@ -100,7 +100,7 @@ At the time of writing this guide, Black Mesa has yet to share with customers an
 ### Server.cfg
 The **server.cfg** file contains the settings of your server. It is not needed because you can start the server every time by specifying desidered values using parameters.
 
-{{< file-excerpt "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg" aconf >}}
+{{< file-excerpt "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/cfg/server.cfg" java >}}
 // Black Mesa server.cfg file
 hostname "Black Mesa: Deathmatch" --> Your server's name.
 mp_timelimit 900                  --> Round time limit.
@@ -159,8 +159,8 @@ In the following example, maps that were downloaded from workshop to the list ar
 {{< file "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/addonlist.txt" resource >}}
 "AddonList"
   {
-   "workshop\432070352.vpk"		"1"
-   "workshop\432074065.vpk"		"1"
+   "workshop\432070352.vpk"     "1"
+   "workshop\432074065.vpk"     "1"
   }
 
 {{< /file >}}
@@ -193,15 +193,15 @@ To put a custom map in the rotation, simply write its name; for example: if you 
 
 1.  Open Black Mesa, and click on the **PLAY ONLINE** option:
 
-	[![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
+    [![Black Mesa Main Menu.](/docs/assets/black_mesa_menu_small.png)](/docs/assets/black_mesa_menu.png)
 
 2.  Find your server in the server list:
 
-	[![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
+    [![Black Mesa Server Browser.](/docs/assets/black_mesa_server_browser_small.png)](/docs/assets/black_mesa_server_browser.png)
 
 3.  Double click on it to connect:
 
-	[![Black Mesa In-Game.](/docs/assets/black_mesa_ingame_small.png)](/docs/assets/black_mesa_ingame.png)
+    [![Black Mesa In-Game.](/docs/assets/black_mesa_ingame_small.png)](/docs/assets/black_mesa_ingame.png)
 
 ## Extra
 
@@ -211,11 +211,11 @@ This script automatically starts a Black Mesa Dedicated Server into a **Screen s
 
 1.  Go into the **Black Mesa Dedicated Server** folder:
 
-		cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/"
+        cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/"
 
 2.  Create the file to contain the script:
 
-	{{< file "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/run.sh" sh >}}
+    {{< file "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/run.sh" sh >}}
 #!/bin/sh
 cd "$HOME/Steam/steamapps/common/Black Mesa Dedicated Server"
 screen -S "BMDS" -d -m
@@ -227,7 +227,7 @@ screen -r "BMDS" -X stuff "./srcds_run -game bms +map gasworks +maxplayers 24\n"
 
 3.  Run the script:
 
-		./run.sh
+        ./run.sh
 
 {{< note >}}
 The **game** parameter specifies the game's files directory, don't change it. This is the only parameter you can't write in server.cfg because it specifies the game folder, where the server.cfg file itself is.<br />
@@ -244,11 +244,11 @@ You can read the entire list of parameters on the [Valve Wiki](https://developer
 
 1.  Go into the **bms** folder:
 
-		cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
+        cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
 
 2.  Download **MetaMod**:
 
-		wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
+        wget http://www.metamodsource.net/mmsdrop/1.10/mmsource-1.10.7-git951-linux.tar.gz
 
       {{< note >}}
 This URL costantly changes as MetaMod is updated. Please check the downloads [page](http://www.metamodsource.net/snapshots) for the current URL.
@@ -256,16 +256,16 @@ This URL costantly changes as MetaMod is updated. Please check the downloads [pa
 
 3.  Extract the downloaded archive:
 
-		tar -zxvf mmsource-1.10.7-git951-linux.tar.gz
+        tar -zxvf mmsource-1.10.7-git951-linux.tar.gz
 
 4.  Cleanup:
 
-		rm mmsource-1.10.7-git951-linux.tar.gz
+        rm mmsource-1.10.7-git951-linux.tar.gz
 
 5.  Run the server and enter the command **meta list** in the console:
 
-		meta list
-		No plugins loaded.
+        meta list
+        No plugins loaded.
 
 If you get the same output, it means that MetaMod is working.
 
@@ -275,30 +275,30 @@ It is recommended that you install the **SourceMod** add-on. It provides useful 
 
 1.  Go into the **bms** folder:
 
-		cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
+        cd "/home/steam/Steam/steamapps/common/Black Mesa Dedicated Server/bms/"
 
 2.  Download **SourceMod**:
 
-		wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz
+        wget https://www.sourcemod.net/smdrop/1.8/sourcemod-1.8.0-git5829-linux.tar.gz
 
-	{{< note >}}
+    {{< note >}}
 This URL constantly changes as SourceMod is updated. Please check the downloads [page](https://www.sourcemod.net/downloads.php) for the current URL.
 {{< /note >}}
 
 3.  Extract the downloaded archive:
 
-		tar -zxvf sourcemod-1.8.0-git5829-linux.tar.gz
+        tar -zxvf sourcemod-1.8.0-git5829-linux.tar.gz
 
 4.  Cleanup:
 
-		rm sourcemod-1.8.0-git5829-linux.tar.gz
+        rm sourcemod-1.8.0-git5829-linux.tar.gz
 
 5.  Run the server and enter the command **meta list** in the console:
 
-		meta list
-		Listing 2 plugins:
-	 	 [01] SourceMod (1.8.0.5829) by AlliedModders LLC
-	 	 [02] SDK Tools (1.8.0.5829) by AlliedModders LLC
+        meta list
+        Listing 2 plugins:
+         [01] SourceMod (1.8.0.5829) by AlliedModders LLC
+         [02] SDK Tools (1.8.0.5829) by AlliedModders LLC
 
 If you get similar output, it means that MetaMod and SourceMod are working.
 

@@ -18,7 +18,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+
+---
 
 [Alpine Linux](http://www.alpinelinux.org/) is a small, security-oriented Linux distro.
 It's regularly updated with security patches, and runs on the [grsecurity](https://grsecurity.net/) kernel. All binaries are statically linked and built against [musl libc](http://www.musl-libc.org/intro.html).
@@ -119,7 +120,7 @@ In this section, we will modify critical system files. It is recommended that yo
 
 1.  Configure your file systems table (*fstab*), entering a single hard tab between each column. This file specifies how each disk drive is initialized or mounted into the overall filesystem:
 
-    {{< file "/alpine/etc/fstab" aconf >}}
+    {{< file "/alpine/etc/fstab" >}}
 /dev/sdb    /       ext4    defaults,noatime    0   0
 /dev/sda    /boot   ext4    defaults,noatime    0   1
 /dev/sdc    swap    swap    defaults    0   0
@@ -129,7 +130,7 @@ In this section, we will modify critical system files. It is recommended that yo
 
 2.  Modify the *inittab*. This file contains options to be read when the system boots or changes run states:
 
-    {{< file "/alpine/etc/inittab" aconf >}}
+    {{< file "/alpine/etc/inittab" >}}
 # /etc/inittab
 
 ::sysinit:/sbin/rc sysinit
@@ -154,7 +155,7 @@ ttyS0::respawn:/sbin/getty -L ttyS0 115200 vt100
 
     Create a new file, `grub.cfg` within this directory, and add the following contents. This file specifies configuration options for GRUB 2 to use during the boot process:
 
-    {{< file "/alpine/boot/grub/grub.cfg" aconf >}}
+    {{< file "/alpine/boot/grub/grub.cfg" >}}
 set root=(hd0)
 set default="Alpine Linux"
 set timeout=0
@@ -173,7 +174,7 @@ menuentry "Alpine Linux" {
 
     Create a new file, `mkinitfs.conf`, within this directory and add the following contents. This file specifies options for building the initial RAM file system (*initramfs*):
 
-    {{< file "/alpine/etc/mkinitfs/mkinitfs.conf" aconf >}}
+    {{< file "/alpine/etc/mkinitfs/mkinitfs.conf" >}}
 features="ata ide scsi virtio base ext4"
 
 {{< /file >}}

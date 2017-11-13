@@ -24,6 +24,7 @@ external_resources:
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
 
 ---
+
 ![Vim_banner](/docs/assets/Vim_Customization.jpg)
 
 ## What Is Vim?
@@ -175,7 +176,7 @@ The most effective way to install and manage plug-ins requires the use of a plug
 
 1.  Install curl.
 
-   **Fedora/RHEL based**
+     **Fedora/RHEL based**
 
         sudo yum install curl
 
@@ -240,15 +241,15 @@ If after this step you receive an error similar to `E117 Unknown Function: plug#
 
 5.  Additional commands for managing plug-ins via Vim-Plug are listed below.
 
- | Command                        | Description                                   |
- | :----------:                   | :-----------:                                 |
- | PlugInstall                    | Install plugins                               |
- | PlugUpdate                     | Install or update plugins                     |
- | PlugClean[!]                   | Delete removed plugins                        |
- | PlugUpgrade                    | Upgrade Vim-Plug                              |
- | PlugStatus                     | List plugins and current status               |
- | PlugDiff                       | Display changes made during updates           |
- | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
+    | Command                        | Description                                   |
+    | :-----------------------------:| :--------------------------------------------:|
+    | PlugInstall                    | Install plugins                               |
+    | PlugUpdate                     | Install or update plugins                     |
+    | PlugClean[!]                   | Delete removed plugins                        |
+    | PlugUpgrade                    | Upgrade Vim-Plug                              |
+    | PlugStatus                     | List plugins and current status               |
+    | PlugDiff                       | Display changes made during updates           |
+    | PlugSnapshot[1] [/output/path] | Generate script for restoring current plugins |
 
 4. The commands listed above are by no means exhaustive. Most plug-ins also offer support documentation when installed, which can be accessed by typing `help` in command mode and browsing the *Local Additions* section.
 
@@ -259,3 +260,4 @@ Many additional plug-ins and tools exist to enhance your Vim experience. The Vim
 One of the best places to search for additional plug-ins is on the VimAwesome website. Most of the plug-ins available for Vim are hosted there in a well-organized and easily searchable environment, along with instructions for installation for all the most popular plug-in management tools.
 
 Lastly, if you want to gain a deeper understanding of Vim-Plug, the project's Github page is an excellent place to start. Links for all these websites are provided in the *External Resources* section.
+

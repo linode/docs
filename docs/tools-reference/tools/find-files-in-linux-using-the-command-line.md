@@ -50,7 +50,6 @@ This command enables the maximum optimization level (-O3) and allows `find` to f
 | `find /home -name '*.jpg`                            | Find all `.jpg` files in the `/home` and sub-directories.                        |
 | `find . -type f -empty`                              | Find an empty file within the current directory.                                 |
 | `find /home -user exampleuser -mtime 7 -iname ".db"` | Find all `.db` files (ignoring text case) modified in the last 7 days by a user named exampleuser.  |
-|------------------------------------------------------|---------------------------------------------------------------------------------|
 
 
 ## Options and Optimization for Find
@@ -71,7 +70,6 @@ Optimization at the `-O2` level prioritizes file name filters, as in `-O1`, and 
 | `-not`      | Return only results that do not match the test case.                                                       |
 | `-type f`   | Search for files.                                                                                          |
 | `-type d`   | Search for directories.                                                                                    |
-|-------------|-----------------------------------------------------------------------------------------------------------|
 
 ## Find Files by Modification Time
 
@@ -117,3 +115,4 @@ Add the option `-delete` to the end of a match expression to delete all files th
 In the following example, `find` locates all files in the hierarchy starting at the current directory and fully recursing into the directory tree. In this example, `find` will delete all files that end with the characters `.bak`:
 
     find . -name "*.bak" -delete
+

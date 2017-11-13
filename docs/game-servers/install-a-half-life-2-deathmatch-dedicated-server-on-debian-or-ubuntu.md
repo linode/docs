@@ -132,7 +132,7 @@ Note that if `server.cfg` is present, its settings override any parameters that 
 
 Below is a sample server configuration:
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" aconf >}}
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/server.cfg" java >}}
 // Server name [Default: Half-Life 2 Deathmatch]
 hostname "My Linode"
 
@@ -232,7 +232,7 @@ When a match ends, the server starts a new match with the next map in the rotati
 
 If `mapcycle.txt` is not available, the system uses the default map rotation list in `mapcycle_default.txt`.
 
-{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" resource >}}
+{{< file-excerpt "~/.steam/SteamApps/common/Half-Life 2 Deathmatch Dedicated Server/hl2mp/cfg/mapcycle_default.txt" java >}}
 // Default mapcycle file for hl2mp
 //
 // DO NOT MODIFY THIS FILE!
@@ -295,4 +295,3 @@ dm_underpass
 
     [![In-game](/docs/assets/half-life-2-deathmatch-in-game_small.png)](/docs/assets/half-life-2-deathmatch-in-game.png)
 
-[GLHF](http://onlineslangdictionary.com/meaning-definition-of/glhf).

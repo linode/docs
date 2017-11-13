@@ -14,8 +14,6 @@ published: 2010-01-18
 title: 'Monitoring Resource Utilization with Cacti on Debian 5 (Lenny)'
 ---
 
-
-
 The Linode Manager provides some basic monitoring of system resource utilization, which includes information regarding Network, CPU, and Input/Output usage over the last 24 hours and 30 days. While this basic information is helpful for monitoring your system, there are cases where more fine-grained information is useful. The simple monitoring tool [Munin](/docs/uptime/monitoring/monitoring-servers-with-munin-on-debian-6-squeeze) is capable of monitoring needs of a small group of machines. In some cases, Munin may not be flexible enough for some advanced monitoring needs.
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug in framework and web-based interface.
@@ -50,21 +48,17 @@ The above command will additionally install the Apache web server. Consider our 
 
 SNMPD binds to `localhost` by default. If you only plan on using Cacti to monitor your Linode, you do not need to modify `/etc/default/snmpd`. However, if you'd like to use Cacti to monitor more than one host, you'll need to edit the `/etc/default/snmpd` file. Open the file and find the line that starts with `SNMPDOPTS=` and remove `127.0.0.1` at the end. This line should now look like this:
 
-{{< file >}}
-/etc/default/snmpd
+{{< file "/etc/default/snmpd" >}}
+SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'
 {{< /file >}}
-
-> SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'
 
 At this point SNMPD is configured to listen on all interfaces. Now we'll open `/etc/snmp/snmpd.conf` to establish which host is trusted to receive data.
 
 We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Locate the section of `snmpd.conf` that begins with `com2sec` and make sure the `readonly` line is the only uncommented line. This section of the file should now look like this:
 
-{{< file >}}
-/etc/snmp/snmpd.conf
+{{< file "/etc/snmp/snmpd.conf" >}}
+#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 {{< /file >}}
-
-> \#com2sec paranoid default public com2sec readonly localhost example \#com2sec readwrite default private
 
 If you want a remote machine to connect to Cacti, replace "localhost" with the IP address of the remote machine.
 
@@ -103,11 +97,9 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
 
 Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti. Next, we'll open the `/etc/default/snmpd` file and remove the binding on `localhost`. Like the "Configuring SNMP" section above, you'll want to find the line that begins with `SNMPDOPTS` and remove the reference to `127.0.0.1` at the end. This line should now resemble the one below:
 
-{{< file >}}
-/etc/default/snmpd
+{{< file "/etc/default/snmpd" >}}
+SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'
 {{< /file >}}
-
-> SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid'
 
 Finally, restart the SNMP daemon to push the changes you've made to these files:
 
@@ -131,6 +123,5 @@ You may wish to consult the following resources for additional information on th
 - [Cacti Users Plugin Community](http://cactiusers.org/index.php)
 - [Linux Security Basics](/docs/security/basics)
 - [Configure a Basic Firewall in Debian 5 (Lenny)](/docs/security/firewalls/arno-iptables-debian-5-lenny)
-
 
 

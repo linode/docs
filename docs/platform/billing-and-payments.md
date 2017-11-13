@@ -34,7 +34,6 @@ All services are billed automatically at the end of the month. If you used a ser
 | Linode 48GB  | $0.48/hr    | $320/mo | $0.12/hr            | $80/mo
 | Linode 64GB  | $0.72/hr    | $480/mo | $0.18/hr            | $120/mo
 | Linode 80GB  | $0.96/hr    | $640/mo | $0.24/hr            | $160/mo
-|-----------------------------------------------------------------------------
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#standard)
 
@@ -47,7 +46,6 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Linode 60GB  | $0.36/hr    | $240/mo | $0.03/hr            | $20/mo
 | Linode 104GB | $0.72/hr    | $480/mo | $0.06/hr            | $40/mo
 | Linode 200GB | $1.44/hr    | $960/mo | $0.09/hr            | $60/mo
-|-----------------------------------------------------------------------------
 
 Full specs of each plan can be found on our [pricing page](https://www.linode.com/pricing#high_memory)
 
@@ -62,7 +60,6 @@ Full specs of each plan can be found on our [pricing page](https://www.linode.co
 | Longview Pro 10  | $0.06/hr    | $40/mo
 | Longview Pro 40  | $0.15/hr    | $100/mo
 | Longview Pro 100 | $0.30/hr    | $200/mo
-|-----------------------------------------
 
 
 {{< note >}}
@@ -193,10 +190,11 @@ You can cancel your account and receive a refund. Here's how:
 
 Your account will be canceled and all of your services will be deactivated.
 
- {{< note >}}
+{{< note >}}
 You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
 {{< /note >}}
 
 ## More Information
 
 If you've signed up before hourly billing, please check out our [Prepaid Billing](/docs/prepaid-billing) guide for more information.
+

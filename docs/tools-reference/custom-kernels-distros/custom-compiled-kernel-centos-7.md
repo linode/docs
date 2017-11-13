@@ -96,7 +96,7 @@ make -j2 bzImage
 
 4.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
 
-    {{< file-excerpt "/etc/default/grub" aconf >}}
+    {{< file-excerpt "/etc/default/grub" >}}
 GRUB_TIMEOUT=10
 GRUB_DISABLE_LINUX_UUID=true
 GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8"
