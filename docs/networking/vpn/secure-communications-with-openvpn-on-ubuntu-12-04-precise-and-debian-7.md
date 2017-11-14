@@ -61,7 +61,7 @@ Follow these instructions to install OpenVPN:
 
         cd /etc/openvpn/ && make-cadir easy-rsa
 
-	Most of the relevant configuration for the OpenVPN public key infrastructure is contained in `/etc/openvpn/easy-rsa/`. We will create several files in this directory used to define the OpenVPN server and client security.
+    Most of the relevant configuration for the OpenVPN public key infrastructure is contained in `/etc/openvpn/easy-rsa/`. We will create several files in this directory used to define the OpenVPN server and client security.
 
 ### Initializing the Public Key Infrastructure (PKI)
 
@@ -79,7 +79,7 @@ In this section, you will initialize the certificate authority and the public ke
 
         source ./vars
 
-	This will return `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
+    This will return `NOTE: If you run ./clean-all, I will be doing a rm -rf on /etc/openvpn/easy-rsa/keys`
 
 4.  Execute the `clean-all` script.
 
@@ -235,7 +235,7 @@ Here we will go through installing Tunneblick on OSX:
 
     ![Splash screen for TunnelBlick.](/docs/assets/1346-tunnelblick2.png)
 
-	At the next screen click the **I have configuration files** button.
+    At the next screen click the **I have configuration files** button.
 
     ![Splash screen for TunnelBlick.](/docs/assets/1342-tunnelblick1.png)
 
@@ -328,7 +328,7 @@ exit 0
 
         apt-get install dnsmasq && dpkg-reconfigure resolvconf
 
-	{{< note >}}
+    {{< note >}}
 If you are using Debian 7, replace this command with `apt-get install dnsmasq resolvconf` and skip steps 7 through 9
 {{< /note >}}
 
@@ -364,7 +364,7 @@ bind-interfaces
 
         nano /etc/network/interfaces
 
-	{{< file-excerpt "/etc/network/interfaces" >}}
+    {{< file-excerpt "/etc/network/interfaces" >}}
 # The primary network interface
 auto eth0
 iface eth0 inet dhcp
@@ -375,7 +375,7 @@ dns-nameservers 97.107.133.4 207.192.69.4 207.192.69.5
 {{< /file-excerpt >}}
 ~
 
-	{{< note >}}
+    {{< note >}}
 If you're not utilizing IPv6, you can omit the addresses starting with 2600:
 {{< /note >}}
 

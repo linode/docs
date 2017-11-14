@@ -23,7 +23,7 @@ This document describes a compatible alternative to the **LAMP** (Linux,Apache, 
 
 Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7 (Wheezy)2")
+![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7")
 
 ## Set the Hostname
 
@@ -186,9 +186,11 @@ MySQL database engine may be the leading open source relational database engine,
 
 4.  Answer all questions when prompted during this process.
 
-> If at any point you need to reset the root password for the *MySQL* server, issue the following command:
->
->     dpkg-reconfigure mysql-server-5.0
+    {{< note >}}
+If at any point you need to reset the root password for the *MySQL* server, issue the following command:
+
+     dpkg-reconfigure mysql-server-5.0
+{{< /note >}}
 
 5.  Issue the following command to get a root prompt for the MySQL server:
 
@@ -202,7 +204,7 @@ MySQL database engine may be the leading open source relational database engine,
         GRANT ALL PRIVILEGES ON new_install.* TO 'new_user';
         exit
 
-> You may now provide the credentials for the `new_install` database and the `2nd_user` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service.
+    > You may now provide the credentials for the `new_install` database and the `2nd_user` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service.
 
 8.  Issue `sudo /etc/init.d/php-fastcgi restart` to restart the PHP service.
 

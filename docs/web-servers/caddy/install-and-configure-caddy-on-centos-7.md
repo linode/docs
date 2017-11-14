@@ -23,7 +23,7 @@ external_resources:
 
 ![Install Caddy on CentOS](/docs/assets/caddy/Caddy.jpg)
 
-[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically. 
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically.
 
 ## Before You Begin
 
@@ -39,7 +39,7 @@ external_resources:
 
 ## Install Caddy
 
-1.  Install Caddy using cURL: 
+1.  Install Caddy using cURL:
 
         sudo curl https://getcaddy.com | bash -s http.minify
 
@@ -106,7 +106,7 @@ The files in your web root directory must belong to the Caddy user (www-data). O
 
 Edit the Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Linode:
 
-{{< file "/etc/caddy/Caddyfile" aconf >}}
+{{< file "/etc/caddy/Caddyfile" caddy >}}
 203.0.113.0 {
 root /var/www/my-website
 tls your-email-here@example.com

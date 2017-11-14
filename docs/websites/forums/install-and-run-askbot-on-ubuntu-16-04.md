@@ -128,7 +128,7 @@ This section requires that you have a Fully Qualified Domain Name (FQDN) that is
 
 1.  Edit `/home/example_user/askbot/wsgi.py`:
 
-    {{< file-excerpt "/home/example_user/askbot/wsgi.py" aconf >}}
+    {{< file-excerpt "/home/example_user/askbot/wsgi.py" conf >}}
 import os
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
@@ -139,7 +139,7 @@ application = get_wsgi_application()
 
 2.  Create a `systemd` service for Gunicorn so that it can run as a service. Create the following `gunicorn.service` file:
 
-    {{< file-excerpt "/etc/systemd/system/gunicorn.service" aconf >}}
+    {{< file-excerpt "/etc/systemd/system/gunicorn.service" conf >}}
 [Unit]
 Description=gunicorn daemon
 After=network.target
@@ -177,7 +177,7 @@ WantedBy=multi-user.target
 
 7.  Add new `askbot` Nginx Server Blocks (Virtual Host) to run AskBot in the production environment:
 
-    {{< file-excerpt "/etc/nginx/sites-available/askbot" aconf >}}
+    {{< file-excerpt "/etc/nginx/sites-available/askbot" conf >}}
 server {
         listen 80;
         server_name example.com www.example.com;

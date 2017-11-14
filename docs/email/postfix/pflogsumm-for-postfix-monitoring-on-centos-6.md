@@ -19,7 +19,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
@@ -124,9 +124,7 @@ Now you'll set up a Cron job to run the Pflogsumm Perl script and send the mail 
 
 2.  Add the following line, being sure to replace **/var/log/maillog** with the mail server location, and <**YOUREMAIL@YOURDOMAIN.TLD*>\* with the email address where you want to receive the stats. It's usually a good idea to choose an email address that's not on this Postfix server.
 
-    {{< file >}}
-root's Crontab
-{{< /file >}}
+        root's Crontab
 
     {{< note >}}
 If this is your first time using Cron, you will have to select your preferred text editor.
