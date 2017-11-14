@@ -180,7 +180,7 @@ By default, PHP restricts web uploads to under two megabytes. To allow larger fi
 **Apache**: `/etc/php/7.0/apache2/php.ini`
 **nginx**: `/etc/php/7.0/fpm/php.ini`
 
-    {{< file-excerpt php >}}
+{{< file-excerpt >}}
 ; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
 upload_max_filesize = 2M

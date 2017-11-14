@@ -178,16 +178,16 @@ The value for `date.timezone` will vary based on your system's time zone. Refer 
 
 6.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
-    {{< file >}}
+{{< file >}}
 /var/www/html/example.com/public_html/phpinfo.php
-:
+
 {{< /file >}}
 
-    {{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
+{{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
 <?php phpinfo(); ?>
 {{< /file-excerpt >}}
 
-    Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
+Once you've visited this page in your browser and confirmed that PHP is working, delete the test page.
 
 ## Install Magento
 

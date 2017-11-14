@@ -18,7 +18,8 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
+
+---
 
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
 
@@ -160,7 +161,7 @@ While wkhtmltopdf version 0.12.2.4 is available in the official Ubuntu 16.04 rep
 
 2.  Next, modify the configuration file. The complete file should look similar to this, depending on your deployment needs:
 
-      {{< file "/etc/odoo-server.conf" aconf >}}
+      {{< file "/etc/odoo-server.conf" conf >}}
 [options]
 admin_passwd = admin
 db_host = False
@@ -174,15 +175,14 @@ xmlrpc_port = 8069
 
 {{< /file >}}
 
-
-          *  `admin_passwd = admin` - This is the password that allows database operations. Be sure to change `admin` to something more secure.
-          *  `db_host = False` - Unless you plan to connect to a different database server address, leave this line untouched.
-          *  `db_port = False` - Odoo uses PostgreSQL default port `5432`, change this only if you're using custom PostgreSQL settings.
-          *  `db_user = odoo` - Name of the PostgreSQL database user. In this case we used the default name, but if you used a different name when creating your user, substitute that here.
-          *  `db_password = FALSE` - Change `FALSE` to the PostgreSQL password you created previously.
-          *  `addons_path =` - Modify this line to read: `addons_path = /opt/odoo/addons`. Add `</path/to/custom/modules>` if you're using custom modules, substituting your own path.
-          *  Include the path to log files, and add a new line: `logfile = /var/log/odoo/odoo-server.log`. You can skip this line if you plan to only use `journald` for logging.
-          *  Optionally, we could include a new line specifying the Odoo Frontend port used for connection: `xmlrpc_port = 8069`. This only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation, you can skip this line and this instance of Odoo will connect by default to port `8069`.
+*  `admin_passwd = admin` - This is the password that allows database operations. Be sure to change `admin` to something more secure.
+*  `db_host = False` - Unless you plan to connect to a different database server address, leave this line untouched.
+*  `db_port = False` - Odoo uses PostgreSQL default port `5432`, change this only if you're using custom PostgreSQL settings.
+*  `db_user = odoo` - Name of the PostgreSQL database user. In this case we used the default name, but if you used a different name when creating your user, substitute that here.
+*  `db_password = FALSE` - Change `FALSE` to the PostgreSQL password you created previously.
+*  `addons_path =` - Modify this line to read: `addons_path = /opt/odoo/addons`. Add `</path/to/custom/modules>` if you're using custom modules, substituting your own path.
+*  Include the path to log files, and add a new line: `logfile = /var/log/odoo/odoo-server.log`. You can skip this line if you plan to only use `journald` for logging.
+*  Optionally, we could include a new line specifying the Odoo Frontend port used for connection: `xmlrpc_port = 8069`. This only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation, you can skip this line and this instance of Odoo will connect by default to port `8069`.
 
           {{< note >}}
 As explained in the [Configure Logs](#configure-logs) section, you have many options for Odoo logging in Ubuntu 16.04. This configuration file assumes you'll use Ubuntu system journals in addition to a custom log path.
@@ -341,7 +341,7 @@ The advantage of using the same server is that all dependencies are already meet
 
 2.  Modify the configuration file, paying attention to changes from previous installation especially the inclusion of `logfile` and the communication port:
 
-    {{< file "/etc/odoo-server.conf" aconf >}}
+    {{< file "/etc/odoo-server.conf" conf >}}
 [options]
 admin_passwd = admin
 db_host = False
