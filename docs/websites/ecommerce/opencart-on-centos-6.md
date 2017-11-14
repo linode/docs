@@ -20,7 +20,7 @@ OpenCart is an open source storefront designed to give you flexibility and fine-
 In order to use OpenCart, you will need to ensure that PHP is configured properly. Make sure the settings below match the values in your `/etc/php.ini` file:
 
 {{< file "/etc/php.ini"  >}}
-register\_globals = Off magic\_quotes\_gpc = Off file\_uploads = 1 session\_auto\_start = 0
+register_globals = Off magic_quotes_gpc = Off file_uploads = 1 session_auto_start = 0
 {{< /file >}}
 
 Additionally, you will need to make sure that the following PHP extensions are installed:

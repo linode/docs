@@ -117,19 +117,21 @@ Install Ghost 1.0.0 using the Ghost-CLI tool.
         ghost install
 
 6. Answer each question as prompted. For more information about each question, visit the [Ghost documentation](https://docs.ghost.org/docs/cli-install#section-prompts):
-{{<file>}}
-? Enter your blog URL: https://example.com
-? Enter your MySQL hostname: localhost
-? Enter your MySQL username: root
-? Enter your MySQL password: areallysecurepassword
-? Enter your Ghost database name: exampleGhost
-? Do you wish to set up Nginx? yes
-? Do you wish to set up SSL? yes
-? Enter your email (used for Let's Encrypt notifications) user@example.com
-? Do you wish to set up "ghost" mysql user? yes
-? Do you wish to set up Systemd? yes
-? Do you want to start Ghost? yes
-{{</file>}}
+
+    {{< output >}}
+    ? Enter your blog URL: https://example.com
+    ? Enter your MySQL hostname: localhost
+    ? Enter your MySQL username: root
+    ? Enter your MySQL password: areallysecurepassword
+    ? Enter your Ghost database name: exampleGhost
+    ? Do you wish to set up Nginx? yes
+    ? Do you wish to set up SSL? yes
+    ? Enter your email (used for Let's Encrypt notifications) user@example.com
+    ? Do you wish to set up "ghost" mysql user? yes
+    ? Do you wish to set up Systemd? yes
+    ? Do you want to start Ghost? yes
+{{< /output >}}
+
 7. After installation is complete, run `ghost ls` to view running Ghost processes:
 
         ghost ls
