@@ -51,7 +51,7 @@ Files located in `/usr/bin` and `/usr/sbin` are most likely the executables you 
 
 TCP wrappers rely on two files in order to work: `/etc/hosts.allow` and `/etc/hosts.deny`. If these files don't yet exist, create them:
 
-        touch /etc/hosts.{allow,deny}
+    touch /etc/hosts.{allow,deny}
 
 ### Editing hosts.allow and hosts.deny
 

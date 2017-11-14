@@ -75,13 +75,13 @@ Picking the right location for your Linode is important, you have to decide what
 
 3. If you are trying to download a large file, wget offers the `-b` option for downloading in the background:
 
-	   wget -b http://speedtest.newark.linode.com/100MB-newark.bin
-	   Continuing in background, pid 8764.
-	   Output will be written to ‘wget-log’.
+        wget -b http://speedtest.newark.linode.com/100MB-newark.bin
+        Continuing in background, pid 8764.
+        Output will be written to ‘wget-log’.
 
-   If the file is too large, or you need to resume the download at a later time, you can use the `-c` option to `c`ontinue the download:
+    If the file is too large, or you need to resume the download at a later time, you can use the `-c` option to `c`ontinue the download:
 
-	   wget -c http://speedtest.newark.linode.com/100MB-newark.bin
+        wget -c http://speedtest.newark.linode.com/100MB-newark.bin
 
 
 

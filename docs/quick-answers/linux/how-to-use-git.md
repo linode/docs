@@ -93,15 +93,15 @@ Git is a [version control system](https://en.wikipedia.org/wiki/Version_control)
 		new file:   file2.txt
 		new file:   file3.txt
 
-   Now, commit the changes:
+    Now, commit the changes:
 
         git commit -am "The end!"
 
-		[master 52a9240] The End
-		4 files changed, 1 insertion(+)
-		create mode 100644 file1.txt
-		create mode 100644 file2.txt
-		create mode 100644 file3.txt
+        [master 52a9240] The End
+        4 files changed, 1 insertion(+)
+        create mode 100644 file1.txt
+        create mode 100644 file2.txt
+        create mode 100644 file3.txt
 
 {{< note >}}
 `git add -A`, `git add .`, and `git add -u` can all be used to stage files for a commit.

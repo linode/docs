@@ -19,6 +19,7 @@ published: 2016-10-03
 ---
 
 *This is a Linode Community guide. Write for us and earn $250 per published guide.*
+
 <hr>
 
 ![GPG key for SSH Authentication](/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)

@@ -132,7 +132,7 @@ This kind of password is very hard to crack, but has the obvious disadvantage of
 
 To add the generated password to your existing private key:
 
-		ssh-keygen -p -f ~/.ssh/id_rsa
+    ssh-keygen -p -f ~/.ssh/id_rsa
 
 This assumes you keep your client's private SSH key in its default location, `~/.ssh/id_rsa`. You can modify the file location as needed and use the same command to change your password in the future.
 

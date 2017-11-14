@@ -111,13 +111,12 @@ auth    include     postlogin
 
 {{< /file-excerpt >}}
 
-
     This line specifies four criteria: the PAM OATH module as an additional method of authentication, the path for the users file, a window that specifies which passphrases will be accepted (to account for potential time syncing issues), and a verification code length of six digits.
 
     {{< note >}}
 If you follow the rest of the instructions and find that you are still unable to connect, try adding `debug=1` to the end of the `password-auth` line to provide you with more information when your authentication fails:
 
-{{< file-excerpt "> /etc/pam.d/sshd" >}}
+{{< file-excerpt "/etc/pam.d/sshd" >}}
 auth    required    password-auth debug=1
 {{< /note >}}
 
