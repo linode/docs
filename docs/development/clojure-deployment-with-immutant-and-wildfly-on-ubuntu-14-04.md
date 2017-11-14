@@ -159,7 +159,7 @@ Make sure port 3000 is open in firewall for this to work.
 
 2.  Create file `/etc/nginx/sites-available/wildfly` with the following content:
 
-    {{< file "/etc/nginx/sites-available/wildfly" aconf >}}
+    {{< file "/etc/nginx/sites-available/wildfly" nginx >}}
 upstream http_backend {
     server 127.0.0.1:8080;
 }
@@ -190,12 +190,12 @@ server {
 
     Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
-2.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
+3.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
 
         sudo ln -s /etc/nginx/sites-available/wildfly /etc/nginx/sites-enabled
         sudo rm /etc/nginx/sites-enabled/default
 
-3.  Restart nginx for changes to take effect:
+4.  Restart nginx for changes to take effect:
 
         sudo service nginx restart
 

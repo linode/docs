@@ -299,19 +299,19 @@ Set the value for user.email according to what is set in config/gitlab.yml
 
 Nginx is the only supported web server for GitLab. In this section, you will create a new virtual host for GitLab and activate the site.
 
-1. Install Nginx if you haven't installed it:
+1.  Install Nginx if you haven't installed it:
 
         sudo apt-get install nginx
 
-2. Copy the sample site config:
+2.  Copy the sample site config:
 
         sudo cp lib/support/nginx/gitlab /etc/nginx/sites-available/gitlab
 
-3. Open the config file:
+3.  Open the config file:
 
         sudo nano /etc/nginx/sites-available/gitlab
 
-4. Modify the value for `server_name` to the fully-qualified domain name of your server:
+4.  Modify the value for `server_name` to the fully-qualified domain name of your server:
 
     {{< file-excerpt "/etc/nginx/sites-available/gitlab" >}}
 listen 80;
@@ -324,11 +324,11 @@ root /home/git/gitlab/public;
 
     Save and exit the file.
 
-5. Deactivate the default virtual host
+5.  Deactivate the default virtual host
 
         sudo rm /etc/nginx/sites-enabled/default
 
-6. Activate the site and restart Nginx to take effect
+6.  Activate the site and restart Nginx to take effect
 
         sudo ln -s /etc/nginx/sites-available/gitlab /etc/nginx/sites-enabled/gitlab
         sudo service nginx restart
