@@ -52,7 +52,7 @@ Our first step in creating a high-availability setup is to install and configure
 
 Edit the `/etc/hosts` file on each Linode to match the following, substituting your own private IP addresses, fully qualified domain names, and host names:
 
-{{< file-excerpt "/etc/hosts" >}}
+{{< file-excerpt "/etc/hosts" conf >}}
 192.168.1.2    gluster1.yourdomain.com    gluster1
 192.168.3.4    gluster2.yourdomain.com    gluster2
 192.168.5.6    gluster3.yourdomain.com    gluster3
@@ -174,7 +174,7 @@ Now that we have a replicated file system, we can begin to set up our database c
 
 We'll use three 2GB Linodes with hostnames `galera1`, `galera2`, and `galera3` as our database nodes. Create these now if you have not already, and edit the `/etc/hosts` file on each to add the following, replacing the private IP addresses, fully qualified domain names, and hostnames of your database nodes:
 
-{{< file-excerpt "/etc/hosts" >}}
+{{< file-excerpt "/etc/hosts" conf>}}
 192.168.1.2    galera1.yourdomain.com    galera1
 192.168.3.4    galera2.yourdomain.com    galera2
 192.168.5.6    galera3.yourdomain.com    galera3
@@ -209,7 +209,7 @@ We will configure the cluster to use XtraBackup for *state snapshot transfer* (S
 
 1.  Make the following changes to `/etc/my.cnf` on each of your database nodes:
 
-    {{< file-excerpt "/etc/my.cnf" aconf >}}
+    {{< file-excerpt "/etc/my.cnf" conf >}}
 [mysqld]
 bind_address                   = 0.0.0.0
 
@@ -243,6 +243,7 @@ The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating u
 
 2.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
 
+  
         systemctl start mysql@bootstrap
 
     This command should be run only when bringing up a cluster for the first time, *not* for reconnecting nodes to an existing cluster.
@@ -330,7 +331,7 @@ Run the following commands on each database node.
 
 1.  Create and edit `/etc/firewalld/services/galera.xml` to match the following:
 
-    {{< file "/etc/firewalld/services/galera.xml" >}}
+    {{< file "/etc/firewalld/services/galera.xml" conf >}}
 <?xml version="1.0" encoding="utf-8"?>
 <service>
   <short>Galera Replication</short>
@@ -370,7 +371,7 @@ With file system and database clusters set up, you'll now need web servers to de
 
 Before you start, edit the `/etc/hosts` file on each application node to include the private IP address and hostname for each application node and for the file system nodes we set up previously:
 
-{{< file-excerpt "/etc/hosts" aconf >}}
+{{< file-excerpt "/etc/hosts" conf >}}
 192.168.0.1    app1.yourdomain.com        app1
 192.168.2.3    app2.yourdomain.com        app2
 192.168.4.5    app3.yourdomain.com        app3
@@ -421,7 +422,7 @@ Next, we'll mount the Gluster volume on our application servers. The steps in th
 
 2.  Add the following line to `/etc/fstab`, substituting your own GlusterFS hostnames for `gluster1`, `gluster2` and `gluster3`, and your volume name for `example-volume` if appropriate:
 
-    {{< file-excerpt "/etc/fstab" aconf >}}
+    {{< file-excerpt "/etc/fstab" conf >}}
 gluster1:/example-volume  /srv/www  glusterfs defaults,_netdev,backup-volfile-servers=gluster2:gluster3 0 0
 
 {{< /file-excerpt >}}
@@ -506,7 +507,7 @@ First, we'll configure IP failover on `galera2` and `galera3` to take on the flo
 
 1.  Edit the following line in your `/etc/sysconfig/keepalived` file on all database nodes, adding `-P` to enable virtual router redundancy protocol:
 
-    {{< file-excerpt "/etc/sysconfig/keepalived" aconf >}}
+    {{< file-excerpt "/etc/sysconfig/keepalived" conf >}}
 KEEPALIVED_OPTIONS="-D -P"
 
 {{< /file-excerpt >}}
@@ -518,7 +519,7 @@ KEEPALIVED_OPTIONS="-D -P"
 
 3.  On all database nodes, replace the original file with the following:
 
-    {{< file "/etc/keepalived/keepalived.conf" aconf >}}
+    {{< file "/etc/keepalived/keepalived.conf" conf >}}
 ! Configuration File for keepalived
 global_defs {
     notification_email {
