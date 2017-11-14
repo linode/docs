@@ -45,7 +45,7 @@ In this guide `example.com` will be used as a domain name, and `linode-user` as 
 
 ## Install Oracle JDK 8
 
-1.  Add Oracle Java 8 Installer PPA repository to the system:
+1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
 
         sudo add-apt-repository ppa:webupd8team/java
 
@@ -70,10 +70,6 @@ In this guide `example.com` will be used as a domain name, and `linode-user` as 
         Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
         Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
 
-
-{{< note >}}
-If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
-{{< /note >}}
 
 ## Install Leiningen
 
@@ -163,7 +159,7 @@ Make sure port 3000 is open in firewall for this to work.
 
 2.  Create file `/etc/nginx/sites-available/wildfly` with the following content:
 
-    {{< file "/etc/nginx/sites-available/wildfly" aconf >}}
+    {{< file "/etc/nginx/sites-available/wildfly" nginx >}}
 upstream http_backend {
     server 127.0.0.1:8080;
 }
@@ -194,12 +190,12 @@ server {
 
     Do not forget to substitute `example.com` with your Linode domain name or public IP address.
 
-2.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
+3.  Enable your newly created `wildfly` site and remove the `default` site to avoid conflicts:
 
         sudo ln -s /etc/nginx/sites-available/wildfly /etc/nginx/sites-enabled
         sudo rm /etc/nginx/sites-enabled/default
 
-3.  Restart nginx for changes to take effect:
+4.  Restart nginx for changes to take effect:
 
         sudo service nginx restart
 
@@ -241,4 +237,4 @@ To deploy Clojure application with WildFly you will need to install the Immutant
         cd ~/clj-app
         lein immutant war
 
-At this point, you should be able to open your Linode's domain or IP address in a browser and see the sample application's main page.
+    At this point, you should be able to open your Linode's domain or IP address in a browser and see the sample application's main page.
