@@ -313,7 +313,7 @@ Nginx is the only supported web server for GitLab. In this section, you will cre
 
 4. Modify the value for `server_name` to the fully-qualified domain name of your server:
 
-   {{< file-excerpt "/etc/nginx/sites-available/gitlab" >}}
+    {{< file-excerpt "/etc/nginx/sites-available/gitlab" >}}
 listen 80;
 server_name git.example.com;
 server_tokens off;
@@ -322,7 +322,7 @@ root /home/git/gitlab/public;
 {{< /file-excerpt >}}
 
 
-   Save and exit the file.
+    Save and exit the file.
 
 5. Deactivate the default virtual host
 

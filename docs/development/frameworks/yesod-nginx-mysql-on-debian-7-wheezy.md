@@ -53,13 +53,9 @@ Before you begin installing and configuring the components described below, plea
 
 ## Install Required Packages
 
-Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform.
+Since Yesod is built with the Haskell programming language, the Haskell packages are a preliminary install. The web framework Yesod requires two packages from the Haskell platform. The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
 
-1.  Issue the following command to install the Haskell packages required by Yesod:
-
-        apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
-
-    The two `lib*-dev` packages are required by the Haskell module `mysql`. If you would like to use SQLite, then you don't need to install them.
+    apt-get install haskell-platform libpcre3-dev libmysqlclient-dev
 
 ## Install Yesod
 
@@ -199,7 +195,7 @@ We don't need to modify this configuration file, it's acceptable as is. So you o
         cd $HOME/myblog
         yesod devel
 
-Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
+    Please wait for compilation, then you can see the scaffold of your site at http://www.yoursite.com:3000/, where ``www.yoursite.com`` is your FQDN. To stop it, just press ``Enter``.
 
 If your Linode has a firewall, the port ``3000`` is probably inaccessible from outside, so you will not be able to see your site at http://www.yoursite.com:3000/. This port is only for testing or developing, so don't open it on your firewall. Instead, you can set up an SSH tunnel on your Linode, and view your site at http://localhost:3000/ via this tunnel. Please check [Setting up an SSH Tunnel with Your Linode for Safe Browsing](/docs/networking/ssh/setting-up-an-ssh-tunnel-with-your-linode-for-safe-browsing/) for more details.
 

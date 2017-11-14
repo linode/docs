@@ -78,7 +78,7 @@ This repository is *not* maintained by Oracle. It does not contain actual Java f
 
         sudo add-apt-repository -r ppa:webupd8team/java
 
-## Set JAVA_HOME
+## Set Java Home Environment
 
 Many applications include code or configuration that references the `JAVA_HOME` environment variable. This variable points them to the Java binary file, allowing them to run Java code.
 

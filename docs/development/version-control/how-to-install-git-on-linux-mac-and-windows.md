@@ -5,12 +5,12 @@ author:
 description: 'Installing git on GNU/Linux, MacOSX, and Windows'
 keywords: ["git", "dvcs", "vcs", "scm", "gitweb"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/']
+aliases: ['linux-tools/version-control/git/','applications/development/git-source-control-management/','development/version-control/git-source-control-management/','development/version-control/how-to-install-git-on-mac-and-windows/']
 modified: 2017-07-03
 modified_by:
   name: Linode
 published: 2009-09-04
-title: How to Install Git on Mac and Windows
+title: How to Install Git on Linux, Mac or Windows
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
  - '[Learn Git with Bitbucket Cloud](https://www.atlassian.com/git/tutorials/learn-git-with-bitbucket-cloud)'

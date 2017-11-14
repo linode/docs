@@ -45,7 +45,7 @@ In this guide `example.com` will be used as a domain name, and `linode-user` as 
 
 ## Install Oracle JDK 8
 
-1.  Add Oracle Java 8 Installer PPA repository to the system:
+1.  Add Oracle Java 8 Installer PPA repository to the system. If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
 
         sudo add-apt-repository ppa:webupd8team/java
 
@@ -70,10 +70,6 @@ In this guide `example.com` will be used as a domain name, and `linode-user` as 
         Java(TM) SE Runtime Environment (build 1.8.0_66-b17)
         Java HotSpot(TM) 64-Bit Server VM (build 25.66-b17, mixed mode)
 
-
-{{< note >}}
-If you are not comfortable with using 3rd-party PPA, please use instructions for manual installation of Oracle Java 8 from [Java Development with WildFly on CentOS 7](/docs/applications/development/java-development-wildfly-centos-7) guide.
-{{< /note >}}
 
 ## Install Leiningen
 
@@ -241,4 +237,4 @@ To deploy Clojure application with WildFly you will need to install the Immutant
         cd ~/clj-app
         lein immutant war
 
-At this point, you should be able to open your Linode's domain or IP address in a browser and see the sample application's main page.
+    At this point, you should be able to open your Linode's domain or IP address in a browser and see the sample application's main page.
