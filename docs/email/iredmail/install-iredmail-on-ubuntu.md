@@ -79,7 +79,7 @@ A DNS MX record tells the internet where to send email directed at you domain. B
     The remainder of the installation refers to on-screen confirmation of default options and selections. With the exception of the backend and hostname selections, most users will simply confirm the default options and continue the installation.
 
     {{< note >}}
-The next few steps were taken directly from the iRedMail [Ubuntu installation steps][u].
+The next few steps were taken directly from the iRedMail [Ubuntu installation steps](https://docs.iredmail.org/install.iredmail.on.debian.ubuntu.html).
 {{< /note >}}
 
 5. Press "enter" to say "yes" to installing iRedMail. NOTE: Ctrl-C will exit the installation process when pressed at any time prior to step #12.
@@ -401,7 +401,6 @@ Familiarize yourself with the various files, configs, and settings listed in the
 [l]:https://www.linode.com
 [i]:http://www.iredmail.org
 [h]:https://www.linode.com/docs/getting-started
-[u]:http://www.iredmail.org/docs/install.iredmail.on.debian.ubuntu.html
 [d]:https://code.google.com/p/iredmail/wiki/DNS_DKIM
 [s]:https://code.google.com/p/iredmail/wiki/DNS_SPF
 [m]:http://www.mail-tester.com
