@@ -5,7 +5,7 @@ author:
 description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
 og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
 keywords: ["ipv6 networking", "IP configuration"]
-aliases: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
+aliases: ['networking/native-ipv6-networking/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-11-02
 modified_by:
@@ -58,11 +58,10 @@ IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
 | Pool   | Number of addresses                    |
-|:-------|------------------------------:|
+|:------:|:-----------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
-|--------|-------------------------------|
 
 
 ## IPv6 Forwarding and Neighbor Discovery

@@ -19,6 +19,8 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
+---
+
 Often you may need to browse the web from a public Wi-Fi access point, such as a coffee shop or library, where you do not know the security measures taken by the administrator. Your communications could be snooped on by a malicious user or even by the network owner.
 
 This guide will show you how to establish a secure connection for browsing the web through a tunnel between your computer and your Linode. With this method, you will set up a tunnel between your computer and your Linode. All your web traffic will be encrypted and forwarded from your Linode on to its final destination.
@@ -69,7 +71,7 @@ To establish a tunnel in Windows, you can use the free SSH client PuTTY. It can 
 
 3.  Then press the **Add** button. In the **Forwarded ports** text area, you will now see **D12345**.
 
-    ![PuTTY - Options controlling port forwarding with forwarding configured.](/docs/assets/1565-03-putty_tunnels2.png)]
+    ![PuTTY - Options controlling port forwarding with forwarding configured.](/docs/assets/1565-03-putty_tunnels2.png)
 
 4.  Click the **Open** button. A new window asking for your password will appear. After you type your password you will be logged in to your Linode and the tunnel will be launched. Now you can minimize this window and go to the browser.
 
