@@ -7,8 +7,6 @@ keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: {{ .Date }}
 modified: {{ .Date }}
-expiry_date: {{ .Date }}
-deprecated: {{ .Date > $.Page.Params.expiry_date }}
 modified_by:
   name: Linode
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
