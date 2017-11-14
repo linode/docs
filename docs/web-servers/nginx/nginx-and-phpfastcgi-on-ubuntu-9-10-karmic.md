@@ -108,7 +108,6 @@ location ~ \.php$ {
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
 
-
 {{< file-excerpt "/etc/nginx/sites-available/www.example.com" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
