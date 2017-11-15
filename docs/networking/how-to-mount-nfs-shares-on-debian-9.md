@@ -15,9 +15,6 @@ published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 [Network File System](https://en.wikipedia.org/wiki/Network_File_System) (NFS) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can with local storage. This is useful for sharing files across several Linodes or other computers on the internet. For example, you can share the home directories for your users, or system configuration files, over NFS.
 

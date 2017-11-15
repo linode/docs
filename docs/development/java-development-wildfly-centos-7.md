@@ -18,9 +18,6 @@ external_resources:
  - '[WildFly Administration Guide](https://books.google.com.sa/books?id=rufiBAAAQBAJ)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 JBoss AS (Renamed to [WildFly](http://wildfly.org/)) has been used for many years as one of the best known performing & free community Java Application Server. The attention even increased when Red Hat started providing commercial support to its enterprise version [JBoss EAP](http://www.redhat.com/en/technologies/jboss-middleware/application-platform) with support to on-premises, virtual, or cloud. Red Hat also provides commercial support for Red Hat Enterprise Linux & building huge ecosystem of multiple products to serve its clients.
 

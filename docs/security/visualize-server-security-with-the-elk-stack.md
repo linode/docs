@@ -26,9 +26,6 @@ external_resources:
 - '[Apache Configuration Basics](/docs/web-servers/apache-tips-and-tricks/apache-configuration-basics)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
-
----
 
 ## Introduction To This Tutorial
 

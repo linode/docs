@@ -17,9 +17,6 @@ external_resources:
  - '[Mumble Wiki](http://wiki.mumble.info/wiki/Main_Page)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-
----
 
 [Mumble](http://wiki.mumble.info/wiki/Main_Page) is an open-source VoIP client, designed for gamers, that requires a server for all clients to connect to. This guide instructs how to install and configure the Mumble server (also called Murmur) on Debian.
 

@@ -21,9 +21,6 @@ external_resources:
   - '[Adding Graphite data source to Grafana](http://docs.grafana.org/datasources/graphite/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Graphite with Grafana](/docs/assets/how-to-install-graphite-and-grafana-on-ubuntu-14-04/Deploy_Graphite_smg.jpg)
 

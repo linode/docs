@@ -17,9 +17,6 @@ external_resources:
 - '[Caddy Official Site](https://caddyserver.com)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Install Caddy on CentOS](/docs/assets/caddy/Caddy.jpg)
 
