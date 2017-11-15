@@ -243,7 +243,7 @@ The `xtrabackup-v2` service accesses the database as `sstuser`, authenticating u
 
 2.  On your first database node, start MySQL as the primary component in your cluster. This process is known as *bootstrapping*; this tells the database node to start as the primary component that the other nodes in the cluster will use as a reference point when they join the cluster and sync their data:
 
-  
+
         systemctl start mysql@bootstrap
 
     This command should be run only when bringing up a cluster for the first time, *not* for reconnecting nodes to an existing cluster.

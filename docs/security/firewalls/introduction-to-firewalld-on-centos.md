@@ -152,9 +152,9 @@ Example output:
       forward-ports:
       icmp-blocks:
       rich rules:
-    
+
       ...
-    
+
     work
       interfaces:
       sources:

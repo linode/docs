@@ -499,12 +499,12 @@ The output for IPv4 rules should show:
         0     0 ACCEPT     all  --  any    any     anywhere             anywhere             state RELATED,ESTABLISHED
         0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_INPUT_denied: "
         0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
-    
+
     Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
         0     0 LOG        all  --  any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "iptables_FORWARD_denied: "
         0     0 REJECT     all  --  any    any     anywhere             anywhere             reject-with icmp-port-unreachable
-    
+
     Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
 
@@ -520,12 +520,12 @@ Output for IPv6 rules will look like this:
         0     0 ACCEPT     all      any    any     anywhere             anywhere             state RELATED,ESTABLISHED
         0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_INPUT_denied: "
         0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
-    
+
     Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
         0     0 LOG        all      any    any     anywhere             anywhere             limit: avg 5/min burst 5 LOG level debug prefix "ip6tables_FORWARD_denied: "
         0     0 REJECT     all      any    any     anywhere             anywhere             reject-with icmp6-port-unreachable
-    
+
     Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
      pkts bytes target     prot opt in     out     source               destination
 
