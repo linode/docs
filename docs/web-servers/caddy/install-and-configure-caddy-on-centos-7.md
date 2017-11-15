@@ -20,7 +20,7 @@ external_resources:
 
 ![Install Caddy on CentOS](/docs/assets/caddy/Caddy.jpg)
 
-[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically.
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates automatically using [Let's Encrypt](https://letsencrypt.org/).
 
 ## Before You Begin
 
