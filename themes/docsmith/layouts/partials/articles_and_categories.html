@@ -6,15 +6,15 @@
       <div class="col-md-12">
         {{ $len := len . }}
         {{ range $i, $article := . }}
-        
+
         {{ if modBool $i 2 }}<div class="row">{{ end }}
-          
+
           <div class="col-md-6 library-article-blurb">
             <h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
             <p>{{ .Description }}</p>
           </div>
         {{ if (or (not (modBool $i 2)) (eq (add $i 1) $len)) }}</div>{{ end }}
-        
+
         {{ end }}
       </div>
     </div>
