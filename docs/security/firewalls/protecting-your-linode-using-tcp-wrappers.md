@@ -14,9 +14,6 @@ contributor:
     name: Francis McNamee
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 ![Protecting your Linode with TCP Wrappers](/docs/assets/protecting-your-linode-with-tcp-wrappers.png "Protecting your Linode with TCP Wrappers")
 

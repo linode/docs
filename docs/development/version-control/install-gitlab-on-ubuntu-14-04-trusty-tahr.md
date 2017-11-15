@@ -21,9 +21,6 @@ external_resources:
  - '[GitLab Manual Installation](https://gitlab.com/gitlab-org/gitlab-ce/blob/master/doc/install/installation.md)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Install Gitlab on Ubuntu](/docs/assets/install-gitlab-on-ubuntu/Install_GitLab_smg.jpg)
 

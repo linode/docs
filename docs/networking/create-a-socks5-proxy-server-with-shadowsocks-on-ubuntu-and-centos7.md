@@ -18,9 +18,6 @@ external_resources:
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something open-source for which our core audience could use a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](/docs/assets/shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 

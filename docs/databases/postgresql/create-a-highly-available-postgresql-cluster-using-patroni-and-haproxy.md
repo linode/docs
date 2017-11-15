@@ -16,9 +16,6 @@ external_resources:
  - '[etcd Documentation](https://coreos.com/etcd/docs/latest/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy](/docs/assets/postgresql-cluster-patroni.jpg "Create a Highly Available PostgreSQL Cluster Using Patroni and HAProxy")
 

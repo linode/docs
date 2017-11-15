@@ -19,9 +19,6 @@ external_resources:
 - '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![WordPress on Apache](/docs/assets/multiple-wordpress/Multiple_WordPress.jpg)
 

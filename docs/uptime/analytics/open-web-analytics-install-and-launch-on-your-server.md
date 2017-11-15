@@ -17,9 +17,6 @@ external_resources:
  - '[OWA Forum](http://www.openwebanalytics.com/?page_id=4)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-
----
 
 Open Web Analytics (OWA) is an open-source alternative to commercial web analytics software. Use it to track and analyze traffic on your websites and applications. OWA analytics can easily be added to pages with simple Javascript, PHP, or REST based APIs. OWA also comes with built-in support for tracking websites made with popular content management frameworks such as WordPress and MediaWiki.
 

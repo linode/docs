@@ -17,9 +17,6 @@ external_resources:
  - '[Official Varnish Documentation](https://www.varnish-cache.org/docs)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 Does your server need to handle lots of traffic? Caching is one of the best ways to maximize the output of your Linode. But what is caching, exactly?
 

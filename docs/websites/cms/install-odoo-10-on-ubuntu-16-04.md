@@ -17,9 +17,6 @@ external_resources:
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
 
 ![Install Odoo 10 ERP on Ubuntu 16.04](/docs/assets/install-odoo-10-on-ubuntu-16-04.png "Install Odoo 10 ERP on Ubuntu 16.04")

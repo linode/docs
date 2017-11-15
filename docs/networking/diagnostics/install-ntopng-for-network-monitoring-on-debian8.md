@@ -19,9 +19,6 @@ external_resources:
  - '[ntop Network Security Guide](http://www.ntop.org/wp-content/uploads/2017/04/NetworkSecurityUsingntopng.pdf/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Deploy network monitoring tool, ntopng, on Debian 8](/docs/assets/ntopng/ntopng-on-debian8.png "Deploy network monitoring tool, ntopng, on Debian 8")
 

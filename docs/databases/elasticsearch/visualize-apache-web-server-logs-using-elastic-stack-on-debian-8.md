@@ -18,9 +18,6 @@ modified_by:
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8](/docs/assets/elastic-stack-visualize-server-logs-title.jpg "Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8")
 

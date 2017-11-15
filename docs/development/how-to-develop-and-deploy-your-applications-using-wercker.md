@@ -17,9 +17,6 @@ external_resources:
  - '[Wercker Developer Documentation](http://devcenter.wercker.com/docs/home)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ## What is Wercker?
 

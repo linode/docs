@@ -19,9 +19,6 @@ external_resources:
 - '[KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
-
 This guide is intended to inform you of some additional configuration options that nginx uses when serving HTTPS. While these features help optimize nginx for SSL and TLS, this is by no means a complete guide to securing nginx or your Linode. The best way to ensure your server remains secure is to not only configure it properly, but to follow best security practices at all times. This guide is intended to be one of many steps toward creating the most secure environment possible.
 
 ## Before you Begin

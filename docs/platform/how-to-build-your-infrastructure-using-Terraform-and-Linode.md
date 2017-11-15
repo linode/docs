@@ -17,9 +17,6 @@ external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $300 per published guide.*
-
----
 
 Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computing environments with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
 

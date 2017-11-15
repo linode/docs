@@ -18,9 +18,6 @@ modified_by:
 published: 2016-10-03
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 ![GPG key for SSH Authentication](/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)
 
 You may be familiar with [public key authentication](/docs/security/use-public-key-authentication-with-ssh) for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.
