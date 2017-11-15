@@ -4,14 +4,15 @@ author:
   email: docs@linode.com
 description: 'This guide teaches you how to install and configure a Webmin control panel for system administration.'
 og_description: 'Install the Webmin control panel to manage your Linux system administration from a web browser, without needing to SSH into your machine. This guide shows you how.'
-keywords: 'webmin,control panel,admin panel'
+keywords: ["webmin", "control", "panel", "admin panel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/webmin/installing-webmin/']
-modified: Friday, November 10, 2017
+aliases: ['web-applications/control-panels/webmin/installing-webmin/']
+modified: 2017-11-10
 modified_by:
   name: Linode
-published: 'Wednesday, October 8th, 2014'
+published: 2014-10-08
 title: How to Install a Webmin Control Panel and Modules
+expiryDate: 2019-11-10
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
  - '[Webmin Documentation](http://www.webmin.com/docs.html)'
@@ -50,26 +51,24 @@ Once you have satisfied all dependencies, you will need to download the Webmin p
 
 1. Add the Webmin repository to your known repositories list by creating the file below:
 
-    {: .file}
-    /etc/apt/sources.list.d/webmin.list
-    :   ~~~
-        deb http://download.webmin.com/download/repository sarge contrib
-        deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
-        ~~~
+    {{< file "/etc/apt/sources.list.d/webmin.list" >}}
+deb http://download.webmin.com/download/repository sarge contrib
+deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
+{{< /file >}}
 
 2. Download and install the GPG key for the repository:
 
-       cd /tmp
-       wget http://www.webmin.com/jcameron-key.asc
-       apt-key add jcameron-key.asc
+        cd /tmp
+        wget http://www.webmin.com/jcameron-key.asc
+        apt-key add jcameron-key.asc
 
 3. Update apt:
 
-       apt-get update
+        apt-get update
 
 4. Install Webmin:
 
-       apt-get install webmin
+        apt-get install webmin
 
 5. After the installation completes, Webmin will give you a URL to visit to access the web panel. This URL will be in the form of `https://hostname:10000`, where `hostname` is the host name of your Linode. If your Linode does not have a FQDN, use your Linode's IP or a domain pointed at your Linode to access Webmin.
 
