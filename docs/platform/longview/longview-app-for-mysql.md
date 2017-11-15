@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Longview App for MySQL
-keywords: 'Longview, MySQL, statistics'
+keywords: ["Longview", " MySQL", " statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['longview/longview-for-mysql/']
-modified: Wednesday, November 6th, 2013
+aliases: ['longview/longview-for-mysql/']
+modified: 2013-11-06
 modified_by:
   name: Linode
-published: 'Wednesday, November 6th, 2013'
+published: 2013-11-06
 title: Longview App for MySQL
 ---
 
@@ -40,9 +40,9 @@ For most people, Longview should be able to configure itself automatically, and 
 
 Once you see this successful message, the Longview MySQL App should automatically start collecting MySQL data. Refresh the Longview MySQL tab in the Linode Manager to start viewing your stats.
 
- {: .note }
->
-> Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
+ {{< note >}}
+Unless you already have a specific Longview database user set up in the `/etc/linode/longview.d/MySQL.conf` file, Longview will locate and use the `debian-sys-maint` database user credentials if it can, located at `/etc/mysql/debian.cnf`.
+{{< /note >}}
 
 If you receive a failure message or the popup shown below, you should visit the [Troubleshooting](#troubleshooting) section at the end of this article.
 
@@ -59,14 +59,14 @@ To enable the MySQL Longview app manually, follow these steps on your Linode via
 
 2.  Edit `/etc/linode/longview.d/MySQL.conf` to include the same username and password you just added. It should look like the following:
 
-    {: .file }
-    /etc/linode/longview.d/MySQL.conf
-    :   ~~~ conf
-        #username root
-        #password example_password
-        username linode-longview
-        password ***************
-        ~~~
+    {{< file "/etc/linode/longview.d/MySQL.conf" aconf >}}
+#username root
+#password example_password
+username linode-longview
+password ***************
+
+{{< /file >}}
+
 
 3.  Restart Longview:
 
@@ -122,22 +122,21 @@ Longview shows the current number of queries in MySQL's cache.
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by MySQL at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/uptime/longview/#overview-tab).
+The **Memory** graph shows the amount of RAM being used by MySQL at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/uptime/longview/#disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by MySQL at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/uptime/longview/#process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by MySQL at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview#process-explorer-tab).
 
-Troubleshooting
----------------
+# Troubleshooting
 
 If you don't see Longview data for MySQL, you'll instead get an error on the page and instructions on how to fix it. As a general tip, you can check the `/var/log/linode/longview.log` file for errors as well.
 

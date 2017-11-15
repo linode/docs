@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: Forward the X11 Server Through SSH to Run GUI Applications from Your Linode
-keywords: 'x11,debian,debain 7, debian 8,x-forwarding,ssh,x over ssh'
+keywords: ["x11", "debian", "debain 7", " debian 8", "x-forwarding", "ssh", "x over ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['remote-desktops/x-forwarding-debian-7/','remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7']
-modified: Friday, April 25th, 2014
+aliases: ['remote-desktops/x-forwarding-debian-7/','remote-desktops/running-graphic-software-on-your-linode-with-xforwarding-on-debian-7']
+modified: 2014-04-25
 modified_by:
   name: Alex Fornuto
-published: 'Thursday, April 10th, 2014'
+published: 2014-04-10
 title: 'Run Graphic Software on Your Linode with X-Forwarding on Debian'
 external_resources:
  - '[Xming](http://www.straightrunning.com/XmingNotes/)'
@@ -20,9 +20,9 @@ external_resources:
 
 On occasion you may want to run an application that requires a graphic interface from your Linode. By using X forwarding, this is easy to accomplish.
 
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install X11 on your Linode
 
@@ -80,6 +80,6 @@ Connecting from a Windows machine will depend on what software you have chosen. 
 
     [![Iceweasel, running on a Linode](/docs/assets/1632-xforwarding3_small.png)](/docs/assets/1633-xforwarding_3.png)
 
- {: .note }
->
-> More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
+ {{< note >}}
+More intense graphic software may lag when running in this fashion. Using a Linode in a data center geographically close to you can help reduce latency.
+{{< /note >}}

@@ -3,13 +3,13 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,localhost phpmyadmin,php mysql,http localhost phpmyadmin,sql,debian,debian 8,php,mysql management'
+keywords: ["mysql", "phpmyadmin", "localhost phpmyadmin", "php mysql", "http localhost phpmyadmin", "sql", "debian", "debian 8", "php", "mysql management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/phpmyadmin-debian-7-wheezy/','docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/','docs/databases/mysql/install-mysql-phpmyadmin-debian-8']
-modified: Wednesday, September 16th, 2015
+aliases: ['databases/mysql/phpmyadmin-debian-7-wheezy/','docs/databases/mysql/manage-mysql-phpmyadmin-debian-8/','docs/databases/mysql/install-mysql-phpmyadmin-debian-8']
+modified: 2015-09-16
 modified_by:
     name: Elle Krout
-published: 'Thursday, January 2nd, 2014'
+published: 2014-01-02
 title: 'How to Install and Configure phpMyAdmin on Debian 8'
 ---
 
@@ -17,9 +17,9 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 ![Install and Configure phpMyAdmin on Debian 8](/docs/assets/how-to-install-and-configure-phpmyadmin-on-debian-8.png)
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -38,9 +38,9 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 3.  Set up a working LAMP stack. Please see the [LAMP on Debian 8](/docs/websites/lamp/lamp-server-debian-8) guide if needed.
 
-    {: .note}
-    >
-    >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+    {{< note >}}
+If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+{{< /note >}}
 
 4.  Set up Apache with SSL, so your passwords will not be sent over plain text. To do so, go through the [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide.
 
@@ -76,23 +76,23 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 Secure your phpMyAdmin directory using an `.htaccess file` that only allows specified IP addresses to access it. You can do this by creating an `.htaccess` file in your `phpmyadmin` directory. Substitute the proper paths and **IP addresses** for your particular configuration:
 
 
-{: .file-excerpt }
-/var/www/html/example.org/public_html/phpmyadmin/.htaccess
-:   ~~~ apache
-    order allow,deny
-    allow from 12.34.56.78
-    ~~~
+{{< file-excerpt "/var/www/html/example.org/public_html/phpmyadmin/.htaccess" apache >}}
+order allow,deny
+allow from 12.34.56.78
+
+{{< /file-excerpt >}}
+
 
 
 ### Force SSL
 
 You can force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
-{: .file-excerpt }
-/etc/phpmyadmin/config.inc.php
-:   ~~~ php
-    $cfg['ForceSSL'] = 'true';
-    ~~~
+{{< file-excerpt "/etc/phpmyadmin/config.inc.php" php >}}
+$cfg['ForceSSL'] = 'true';
+
+{{< /file-excerpt >}}
+
 
 ## Testing Your phpMyAdmin Installation
 

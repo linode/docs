@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using PHP-FastCGI for dynamic sites under Cherokee on Fedora 13'
-keywords: 'cherokee php-fastcgi,cherokee fastcgi,cherokee fedora 13,cherokee,fedora 13 web server'
+keywords: ["cherokee php-fastcgi", "cherokee fastcgi", "cherokee fedora 13", "cherokee", "fedora 13 web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/php-fastcgi-fedora-13/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/cherokee/php-fastcgi-fedora-13/','websites/cherokee/web-apps-with-cherokee-and-phpfastcgi-on-fedora-13/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Friday, September 17th, 2010'
+published: 2010-09-17
 title: 'Web Apps with Cherokee and PHP-FastCGI on Fedora 13'
 ---
 
@@ -20,8 +20,7 @@ Cherokee is a fast, flexible web server for POSIX compliant operating systems su
 
 This document assumes that your system is already running the Cherokee web server. If you haven't already installed Cherokee, please follow our [Fedora 13 Cherokee installation](/docs/web-servers/cherokee/installing-cherokee-fedora-13) guide before continuing with these instructions. Please make sure you are logged into your Linode as root via SSH.
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 Make sure your repositories and packages are up to date by issuing the following command:
 
@@ -52,8 +51,7 @@ Issue the following commands to change ownership of needed directories to the `w
     chown -R www-data:www-data /var/lib/cherokee/
     service cherokee start
 
-Configure Your Site
--------------------
+# Configure Your Site
 
 Create directories for your site by issuing the following commands. Substitute your domain name for "example.com" in these commands.
 
@@ -127,21 +125,19 @@ Save your changes and restart Cherokee.
 
 Cherokee should now be properly configured. If you receive any errors when restarting the server, please go back and review each step you took for accuracy.
 
-Test Your Configuration
------------------------
+# Test Your Configuration
 
 Create a test PHP script as follows:
 
-{: .file }
-/srv/www/example.com/www/public\_html/test.php
-:   ~~~ php
-    <?php echo "<html><body><h1>This is a test. It is only a test.</h1></body></html>"; ?>
-    ~~~
+{{< file "/srv/www/example.com/www/public\\_html/test.php" php >}}
+<?php echo "<html><body><h1>This is a test. It is only a test.</h1></body></html>"; ?>
+
+{{< /file >}}
+
 
 Visit `/test.php` on your site to verfify PHP-FastCGI is operating correctly. Congratulations, you've successfully configured PHP-FastCGI for dynamic content using the Cherokee web server!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

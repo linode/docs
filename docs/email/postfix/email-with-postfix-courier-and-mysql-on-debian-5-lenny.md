@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Postfix MTA to work with Courier and MySQL for virtual domains on Debian 5.0 (Lenny).'
-keywords: 'postfix,courier,mail server,imap,postfix on debian,postfix on linux,postfix with courier,postfix with mysql,mysql virtual domains'
+keywords: ["postfix", "courier", "mail server", "imap", "postfix on debian", "postfix on linux", "postfix with courier", "postfix with mysql", "mysql virtual domains"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/courier-mysql-debian-5-lenny/']
-modified: Tuesday, May 17th, 2011
+aliases: ['email/postfix/courier-mysql-debian-5-lenny/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Saturday, September 12th, 2009'
+published: 2009-09-12
 title: 'Email with Postfix, Courier and MySQL on Debian 5 (Lenny)'
 deprecated: true
 ---
@@ -22,8 +22,7 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 **NOTE: Please carefully read all information presented in this guide.** There are many files and commands that will need to be edited as part of the setup process; please do not simply copy and paste the example blocks.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -32,8 +31,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -62,8 +60,7 @@ When prompted, select "No" for web-based administration.
 
 This completes the initial package configuration steps. Next, we'll set up a MySQL database to handle our virtual domains and users.
 
-Set up MySQL for Virtual Domains and Users
-------------------------------------------
+# Set up MySQL for Virtual Domains and Users
 
 Start the MySQL shell by issuing the following command. You'll be prompted to enter the root password for MySQL that you assigned during the initial setup.
 
@@ -120,11 +117,11 @@ Exit the MySQL shell by issuing the following command:
 
 Check that MySQL is set up to bind to localhost (127.0.0.1) by looking at the file `/etc/mysql/my.cnf`. You should have the following line in the configuration file:
 
-{: .file-excerpt }
-/etc/mysql/my.cnf
-:   ~~~
-    bind-address = 127.0.0.1
-    ~~~
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
+bind-address = 127.0.0.1
+
+{{< /file-excerpt >}}
+
 
 This is required for Postfix to be able to communicate with the database server. If you have MySQL set up to run on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` in later Postfix configuration steps. Please note that it is *not* advisable to run MySQL on a publicly-accessible IP address.
 
@@ -134,56 +131,55 @@ If you changed MySQL's configuration, restart the database server with the follo
 
 Next, we'll perform additional Postfix configuration to set up communication with our database.
 
-Configure Postfix to work with MySQL
-------------------------------------
+# Configure Postfix to work with MySQL
 
 Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
-/etc/postfix/mysql-virtual_domains.cf
-:   ~~~
-    user = mail_admin
-    password = mail_admin_password
-    dbname = mail
-    query = SELECT domain AS virtual FROM domains WHERE domain='%s'
-    hosts = 127.0.0.1
-    ~~~
+{{< file "/etc/postfix/mysql-virtual_domains.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT domain AS virtual FROM domains WHERE domain='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
-/etc/postfix/mysql-virtual_forwardings.cf
-:   ~~~
-    user = mail_admin
-    password = mail_admin_password
-    dbname = mail
-    query = SELECT destination FROM forwardings WHERE source='%s'
-    hosts = 127.0.0.1
-    ~~~
+{{< file "/etc/postfix/mysql-virtual_forwardings.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT destination FROM forwardings WHERE source='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user. Make sure the "query =" section is all on one line; it's broken up here to prevent issues with lower browser resolutions.
 
-{: .file }
-/etc/postfix/mysql-virtual_mailboxes.cf
-:   ~~~
-    user = mail_admin
-    password = mail_admin_password
-    dbname = mail
-    query = SELECT CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/') FROM users WHERE email='%s'
-    hosts = 127.0.0.1
-    ~~~
+{{< file "/etc/postfix/mysql-virtual_mailboxes.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/') FROM users WHERE email='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf` with the following contents. Be sure to replace "mail\_admin\_password" with the password you chose earlier for the MySQL mail administrator user.
 
-{: .file }
-/etc/postfix/mysql-virtual_email2email.cf
-:   ~~~
-    user = mail_admin
-    password = mail_admin_password
-    dbname = mail
-    query = SELECT email FROM users WHERE email='%s'
-    hosts = 127.0.0.1
-    ~~~
+{{< file "/etc/postfix/mysql-virtual_email2email.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT email FROM users WHERE email='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 Set proper permissions and ownership for these configuration files by issuing the following commands:
 
@@ -221,8 +217,7 @@ Issue the following commands to complete the remaining steps required for Postfi
 
 This completes the configuration for Postfix. Next, we'll make an SSL certificate for the Postfix server that contains values appropriate for your organization.
 
-Create an SSL Certificate for Postfix
--------------------------------------
+# Create an SSL Certificate for Postfix
 
 Issue the following commands to create the SSL certificate (the `openssl` command spans two lines, but should be entered as a single command):
 
@@ -245,8 +240,7 @@ Set proper permissions for the key file by issuing the following command:
 
 This completes SSL certificate creation for Postfix. Next, we'll configure `saslauthd` to use MySQL for user authentication.
 
-Configure saslauthd to use MySQL
---------------------------------
+# Configure saslauthd to use MySQL
 
 Issue the following command to create a directory for `saslauthd`:
 
@@ -254,93 +248,93 @@ Issue the following command to create a directory for `saslauthd`:
 
 Edit the file `/etc/default/saslauthd`, setting "START" to "YES" and changing the "OPTIONS" line to match the configuration shown below.
 
-{: .file }
-/etc/default/saslauthd
-:   ~~~
-    #
-    # Settings for saslauthd daemon
-    # Please read /usr/share/doc/sasl2-bin/README.Debian for details.
-    #
+{{< file "/etc/default/saslauthd" >}}
+#
+# Settings for saslauthd daemon
+# Please read /usr/share/doc/sasl2-bin/README.Debian for details.
+#
 
-    # Should saslauthd run automatically on startup? (default: no)
-    START=yes
+# Should saslauthd run automatically on startup? (default: no)
+START=yes
 
-    # Description of this saslauthd instance. Recommended.
-    # (suggestion: SASL Authentication Daemon)
-    DESC="SASL Authentication Daemon"
+# Description of this saslauthd instance. Recommended.
+# (suggestion: SASL Authentication Daemon)
+DESC="SASL Authentication Daemon"
 
-    # Short name of this saslauthd instance. Strongly recommended.
-    # (suggestion: saslauthd)
-    NAME="saslauthd"
+# Short name of this saslauthd instance. Strongly recommended.
+# (suggestion: saslauthd)
+NAME="saslauthd"
 
-    # Which authentication mechanisms should saslauthd use? (default: pam)
-    #
-    # Available options in this Debian package:
-    # getpwent  -- use the getpwent() library function
-    # kerberos5 -- use Kerberos 5
-    # pam       -- use PAM
-    # rimap     -- use a remote IMAP server
-    # shadow    -- use the local shadow password file
-    # sasldb    -- use the local sasldb database file
-    # ldap      -- use LDAP (configuration is in /etc/saslauthd.conf)
-    #
-    # Only one option may be used at a time. See the saslauthd man page
-    # for more information.
-    #
-    # Example: MECHANISMS="pam"
-    MECHANISMS="pam"
+# Which authentication mechanisms should saslauthd use? (default: pam)
+#
+# Available options in this Debian package:
+# getpwent  -- use the getpwent() library function
+# kerberos5 -- use Kerberos 5
+# pam       -- use PAM
+# rimap     -- use a remote IMAP server
+# shadow    -- use the local shadow password file
+# sasldb    -- use the local sasldb database file
+# ldap      -- use LDAP (configuration is in /etc/saslauthd.conf)
+#
+# Only one option may be used at a time. See the saslauthd man page
+# for more information.
+#
+# Example: MECHANISMS="pam"
+MECHANISMS="pam"
 
-    # Additional options for this mechanism. (default: none)
-    # See the saslauthd man page for information about mech-specific options.
-    MECH_OPTIONS=""
+# Additional options for this mechanism. (default: none)
+# See the saslauthd man page for information about mech-specific options.
+MECH_OPTIONS=""
 
-    # How many saslauthd processes should we run? (default: 5)
-    # A value of 0 will fork a new process for each connection.
-    THREADS=5
+# How many saslauthd processes should we run? (default: 5)
+# A value of 0 will fork a new process for each connection.
+THREADS=5
 
-    # Other options (default: -c -m /var/run/saslauthd)
-    # Note: You MUST specify the -m option or saslauthd won't run!
-    #
-    # WARNING: DO NOT SPECIFY THE -d OPTION.
-    # The -d option will cause saslauthd to run in the foreground instead of as
-    # a daemon. This will PREVENT YOUR SYSTEM FROM BOOTING PROPERLY. If you wish
-    # to run saslauthd in debug mode, please run it by hand to be safe.
-    #
-    # See /usr/share/doc/sasl2-bin/README.Debian for Debian-specific information.
-    # See the saslauthd man page and the output of 'saslauthd -h' for general
-    # information about these options.
-    #
-    # Example for postfix users: "-c -m /var/spool/postfix/var/run/saslauthd"
-    #OPTIONS="-c -m /var/run/saslauthd"
-    OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd -r"
-    ~~~
+# Other options (default: -c -m /var/run/saslauthd)
+# Note: You MUST specify the -m option or saslauthd won't run!
+#
+# WARNING: DO NOT SPECIFY THE -d OPTION.
+# The -d option will cause saslauthd to run in the foreground instead of as
+# a daemon. This will PREVENT YOUR SYSTEM FROM BOOTING PROPERLY. If you wish
+# to run saslauthd in debug mode, please run it by hand to be safe.
+#
+# See /usr/share/doc/sasl2-bin/README.Debian for Debian-specific information.
+# See the saslauthd man page and the output of 'saslauthd -h' for general
+# information about these options.
+#
+# Example for postfix users: "-c -m /var/spool/postfix/var/run/saslauthd"
+#OPTIONS="-c -m /var/run/saslauthd"
+OPTIONS="-c -m /var/spool/postfix/var/run/saslauthd -r"
+
+{{< /file >}}
+
 
 Next, create the file `/etc/pam.d/smtp` and copy in the following two lines. For display purposes, each line is broken up into two lines, but these should be combined in your configuration file so that you have two lines beginning with "auth" and "account". Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
-{: .file }
-/etc/pam.d/smtp
-:   ~~~
-    auth    required   pam_mysql.so user=mail_admin passwd=mail_admin_password host=127.0.0.1
-            db=mail table=users usercolumn=email passwdcolumn=password crypt=1
-    account sufficient pam_mysql.so user=mail_admin passwd=mail_admin_password host=127.0.0.1
-            db=mail table=users usercolumn=email passwdcolumn=password crypt=1
-    ~~~
+{{< file "/etc/pam.d/smtp" >}}
+auth    required   pam_mysql.so user=mail_admin passwd=mail_admin_password host=127.0.0.1
+        db=mail table=users usercolumn=email passwdcolumn=password crypt=1
+account sufficient pam_mysql.so user=mail_admin passwd=mail_admin_password host=127.0.0.1
+        db=mail table=users usercolumn=email passwdcolumn=password crypt=1
+
+{{< /file >}}
+
 
 Create a file named `/etc/postfix/sasl/smtpd.conf` with the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
-{: .file }
-/etc/postfix/sasl/smtpd.conf
-:   ~~~
-    pwcheck_method: saslauthd
-    mech_list: plain login
-    allow_plaintext: true
-    auxprop_plugin: mysql
-    sql_hostnames: 127.0.0.1
-    sql_user: mail_admin
-    sql_passwd: mail_admin_password
-    sql_database: mail
-    sql_select: select password from users where email = '%u'
-    ~~~
+{{< file "/etc/postfix/sasl/smtpd.conf" >}}
+pwcheck_method: saslauthd
+mech_list: plain login
+allow_plaintext: true
+auxprop_plugin: mysql
+sql_hostnames: 127.0.0.1
+sql_user: mail_admin
+sql_passwd: mail_admin_password
+sql_database: mail
+sql_select: select password from users where email = '%u'
+
+{{< /file >}}
+
 
 Restrict the access for the files created above by issuing the following commands:
 
@@ -355,18 +349,17 @@ Add the Postfix user to the `sasl` group and restart Postfix and `saslauthd` by 
 
 This completes configuration for `saslauthd`. Next, we'll configure Courier to use MySQL for IMAP/POP3 user authentication.
 
-Configure Courier to use MySQL
-------------------------------
+# Configure Courier to use MySQL
 
 Edit the file `/etc/courier/authdaemonrc`, changing the "authmodulelist" line to read as follows.
 
-{: .file }
-/etc/courier/authdaemonrc
-:   ~~~
-    ...
-    authmodulelist="authmysql"
-    ...
-    ~~~
+{{< file "/etc/courier/authdaemonrc" >}}
+...
+authmodulelist="authmysql"
+...
+
+{{< /file >}}
+
 
 Back up the current `/etc/courier/authmysqlrc` file and create an empty one as follows:
 
@@ -375,22 +368,22 @@ Back up the current `/etc/courier/authmysqlrc` file and create an empty one as f
 
 Edit the file `/etc/courier/authmysqlrc`, copying in the following contents. Be sure to change "mail\_admin\_password" to the password you chose for your mail administration MySQL user earlier.
 
-{: .file }
-/etc/courier/authmysqlrc
-:   ~~~
-    MYSQL_SERVER localhost
-    MYSQL_USERNAME mail_admin
-    MYSQL_PASSWORD mail_admin_password
-    MYSQL_PORT 0
-    MYSQL_DATABASE mail
-    MYSQL_USER_TABLE users
-    MYSQL_CRYPT_PWFIELD password
-    MYSQL_UID_FIELD 5000
-    MYSQL_GID_FIELD 5000
-    MYSQL_LOGIN_FIELD email
-    MYSQL_HOME_FIELD "/home/vmail"
-    MYSQL_MAILDIR_FIELD CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/')
-    ~~~
+{{< file "/etc/courier/authmysqlrc" >}}
+MYSQL_SERVER localhost
+MYSQL_USERNAME mail_admin
+MYSQL_PASSWORD mail_admin_password
+MYSQL_PORT 0
+MYSQL_DATABASE mail
+MYSQL_USER_TABLE users
+MYSQL_CRYPT_PWFIELD password
+MYSQL_UID_FIELD 5000
+MYSQL_GID_FIELD 5000
+MYSQL_LOGIN_FIELD email
+MYSQL_HOME_FIELD "/home/vmail"
+MYSQL_MAILDIR_FIELD CONCAT(SUBSTRING_INDEX(email,'@',-1),'/',SUBSTRING_INDEX(email,'@',1),'/')
+
+{{< /file >}}
+
 
 Delete the original certificates created by Courier by issuing the following commands:
 
@@ -423,17 +416,16 @@ You should see output similar to the following in your terminal:
 
 Enter the command "quit" to return to your shell. This completes Courier configuration. Next, we'll make sure aliases are configured properly.
 
-Configure Mail Aliases
-----------------------
+# Configure Mail Aliases
 
 Edit the file `/etc/aliases`, making sure the "postmaster" and "root" directives are set properly for your organization.
 
-{: .file }
-/etc/aliases
-:   ~~~
-    postmaster: root
-    root: postmaster@example.com
-    ~~~
+{{< file "/etc/aliases" >}}
+postmaster: root
+root: postmaster@example.com
+
+{{< /file >}}
+
 
 After modifying this file, you must run the following commands to update aliases and restart Postfix:
 
@@ -442,8 +434,7 @@ After modifying this file, you must run the following commands to update aliases
 
 This completes alias configuration. Next, we'll test Postfix to make sure it's operating properly.
 
-Testing Postfix
----------------
+# Testing Postfix
 
 To test Postfix for SMTP-AUTH and TLS, issue the following command:
 
@@ -475,8 +466,7 @@ You should see output similar to the following, with the line "250-STARTTLS" inc
 
 Issue the command `quit` to terminate the Postfix connection. Next, we'll populate the MySQL database with domains and email users.
 
-Setting up Domains and Users
-----------------------------
+# Setting up Domains and Users
 
 Please note that you'll need to modify the DNS records for any domains for which you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, you'll need to either delete them or set them to a larger priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
 
@@ -497,8 +487,7 @@ Press `Ctrl+D` to complete the message. You can safely leave the field for "CC:"
 
 Congratulations, you've successfully configured Postfix, Courier, and MySQL to provide email services for virtual domains and users on your Linode. When configuring your local email client, use the full email address for the mailbox you wish to connect to as the username. Please consult the "More Information" section for additional resources that may prove useful in the administration of your new email server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

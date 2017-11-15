@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: Configure a MongoDB Replica Set
-keywords: 'mongodb,nosql,clusters,replica set'
+keywords: ["mongodb", "nosql", "clusters", "replica set"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, February 27th, 2017
+modified: 2017-02-27
 modified_by:
   name: Phil Zona
-published: 'Friday, December 2nd, 2016'
+published: 2016-12-02
 title: 'Create a MongoDB Replica Set'
 external_resources:
  - '[Getting Started with the mongo Shell](https://docs.mongodb.com/manual/mongo/)'
@@ -40,9 +40,9 @@ This guide has been tested with Ubuntu 16.04 and CentOS 7. Because most of the c
 
         sudo yum update
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Configure Networking
 
@@ -62,18 +62,19 @@ Whether you're using public or private IP addresses to send data, you'll need to
 
 Each member of your replica set should have a hostname that identifies it as a member of the set. This way, you'll be able to keep your infrastructure organized at scale (for example, if you add more replica sets). In order to simplify the configuration of your replica set, add the following lines to the `/etc/hosts` file on each member of the replica set:
 
-{: .file-excerpt}
-/etc/hosts
-:   ~~~ conf
-    192.0.2.1    mongo-repl-1
-    192.0.2.2    mongo-repl-2
-    192.0.2.3    mongo-repl-3
-    ~~~
+{{< file-excerpt "/etc/hosts" conf >}}
+192.0.2.1    mongo-repl-1
+192.0.2.2    mongo-repl-2
+192.0.2.3    mongo-repl-3
+
+{{< /file-excerpt >}}
+
 
 If you're using more than three Linodes, add all of your hosts at this stage. Replace the hostnames with your actual hostnames, and the IP addresses with the IP addresses of your Linodes.
 
-{: .note}
-> These hostnames are only given as examples, but we'll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable.
+{{< note >}}
+These hostnames are only given as examples, but we'll use these names throughout this guide to refer to members of the replica set. When you see one of these names in a command or configuration file, substitute your own hostname if applicable.
+{{< /note >}}
 
 ## Set Up MongoDB Authentication
 
@@ -124,19 +125,19 @@ In this section you'll create a key file that will be used to secure authenticat
 
 On each of your Linodes, make the following changes to your `/etc/mongod.conf` file:
 
-{: .file-excerpt}
-/etc/mongod.conf
-:   ~~~ conf
-    net:
-      port: 27017
-      bindIp: 127.0.0.1,192.0.2.1
+{{< file-excerpt "/etc/mongod.conf" conf >}}
+net:
+  port: 27017
+  bindIp: 127.0.0.1,192.0.2.1
 
-    security:
-      keyFile: /opt/mongo/mongo-keyfile
+security:
+  keyFile: /opt/mongo/mongo-keyfile
 
-    replication:
-      replSetName: rs0
-    ~~~
+replication:
+  replSetName: rs0
+
+{{< /file-excerpt >}}
+
 
 The `port` value of 27017 is the default. If you have reason to use a different port you may do so, but the rest of this guide will use the default. The `bindIp` directive specifies the IP address on which the MongoDB daemon will listen, and since we're connecting several hosts, this should be the IP address that corresponds with the Linode on which you're configuring it (the same address added to the hosts files in the previous section). Leaving the default of `127.0.0.1` allows you to connect locally as well, which may be useful for testing replication.
 
@@ -154,8 +155,9 @@ Once you've made these changes, restart the `mongod` service:
 
         mongo -u mongo-admin -p --authenticationDatabase admin
 
-    {: .note}
-    > If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
+    {{< note >}}
+If your connection is refused, be sure that the address for localhost (`127.0.0.1`) is included in your configuration's `bindIp` value.
+{{< /note >}}
 
 2.  From the `mongo` shell, initiate the replica set:
 
@@ -163,11 +165,13 @@ Once you've made these changes, restart the `mongod` service:
 
     This command initiates a replica set with the current host as its only member. This is confirmed by the output, which should resemble the following:
 
-    {
-        "info2" : "no configuration specified. Using a default configuration for the set",
-        "me" : "192.0.2.1:27017",
-        "ok" : 1
-    }
+        {{< output >}}
+{
+    "info2" : "no configuration specified. Using a default configuration for the set",
+    "me" : "192.0.2.1:27017",
+    "ok" : 1
+}
+{{< /output >}}
 
 3.  While still connected to the `mongo` shell, add the other hosts to the replica set:
 
@@ -228,3 +232,4 @@ At this stage, your replica set is fully functional and ready to use. The steps 
 ## Next Steps
 
 Replica sets can be used as standalone components of a high availability system, or as part of a [sharded database cluster](https://docs.mongodb.com/manual/core/sharded-cluster-shards/). For larger datasets, a cluster allows you to distribute data across many database servers or replica sets and route queries to them based on criteria you specify. For more information on how to create a sharded cluster, see our guide on [building database clusters with MongoDB](/docs/databases/mongodb/build-database-clusters-with-mongodb).
+

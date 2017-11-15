@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ .Title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{ if eq (getenv "HUGO_ENV") "prod" }}
+        <!-- Google Tag Manager -->
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-M3XXZX');</script>
+        <!-- End Google Tag Manager -->
+        {{ end }}
+        <meta name="description" content="{{ .Param "description" }}">
+        {{ with .Params.keywords }}<meta name="keywords" content="{{ range $i, $e := . }}{{ if $i }}, {{ end }}{{ $e }}{{ end }}">{{ end }}
+        {{ if .Params.no_index }}<meta name="robots" content="noindex" />{{ end }}
+        <meta property="og:title" content="{{ .Params.og_title | default .Title }}">
+        <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+        <meta property="og:url" content="{{ .Permalink }}">
+        <meta property="og:description" content="{{ .Params.og_description | default (.Param "description") }}">
+        <meta property="og:site_name" content="{{ .Site.Title }}">
+        {{ with .Params.image }}
+        {{ if eq (printf "%T" .) "string"}}
+        <meta property="og:image" content="{{ . }}">
+        {{ else }}
+        {{ with .file }}<meta property="og:image" content="{{ . }}">{{ end }}
+        {{ with .width }}<meta property="og:image:width" content="{{ . }}">{{ end }}
+        {{ with .height }}<meta property="og:image:height" content="{{ . }}">{{ end }}
+        {{ end }}
+        {{ end }}
+        {{ with .Params.twitter }}
+        {{ with .card }}<meta name="twitter:card" content="{{ . }}">{{ end }}
+        {{ else }}
+        <meta name="twitter:card" content="summary">
+        {{ end }}
+        <meta name="twitter:site" content="@linode">
+        {{ with  .Site.Home.OutputFormats.Get "rss" -}}<link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+{{ end }}
+        {{ if (getenv "HUGO_ENV") }}
+            {{ partial "includes_head_prod" . }}
+        {{ else }}
+             {{ partial "includes_head_dev" . }}
+        {{ end }}
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href='//fonts.googleapis.com/css?family=Lato:300,400,700,900' rel='stylesheet' type='text/css'>
+        <link rel="canonical" href="{{ .Permalink | safeURL }}">
+        {{ range .AlternativeOutputFormats -}}
+        <link rel="{{ .Rel }}" type="{{ .MediaType.Type }}" href="{{ .Permalink | safeURL }}">
+        {{ end -}}
+        <link rel="shortcut icon" href="/favicon.ico">
+    </head>
+    <body class="no-subnav">
+         {{ partial "search_modal" . }} 
+         {{ if eq (getenv "HUGO_ENV") "prod" }}
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3XXZX" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+        {{ end }}
+        <header>
+            {{ partial "nav" . }}
+            {{ partial "subnav" . }}
+        </header>
+        {{block "main" .}}{{ end }}
+        <footer>
+            {{ partial "contribute_footer" . }}
+            {{ partial "footer" . }}
+        </footer>
+        {{ if (getenv "HUGO_ENV") }}
+            {{ partial "includes_body_end_prod" . }}
+        {{ else }}
+             {{ partial "includes_body_end_dev" . }}
+        {{ end }}
+        {{ partial "js" . }}
+        {{block "body-end" .}}{{ end }}
+    </body>
+</html>

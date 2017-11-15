@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Install Asterisk and FreePBX on Your Linode to Use and Manage a Telephone Exchange.'
-keywords: 'ubuntu 12.04,asterisk,freepbx,pbx,voip,google voice,grub,lamp stack,apache,php'
+keywords: ["ubuntu 12.04", "asterisk", "freepbx", "pbx", "voip", "google voice", "grub", "lamp stack", "apache", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: [ 'communications/voip-services-ubuntu-12-04/' ]
-modified: Tuesday, June 17th, 2014
+aliases: [ 'communications/voip-services-ubuntu-12-04/' ]
+modified: 2014-06-17
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, June 17th, 2014'
+published: 2014-06-17
 title: 'Deploy VoIP Services with Asterisk and Freepbx on Ubuntu 12.04'
 external_resources:
  - '[Asterisk Documentation](http://www.asterisk.org/docs)'
@@ -25,9 +25,9 @@ For this guide we will install Asterisk from source rather than from Ubuntu's re
 
 **Please note:** Because of the special configuration options required for this setup, you should not run other services on the Linode you intend to use Asterisk on. It is also worth noting that this guide will walk you through using PV-GRUB. Any alterations to the steps in this guide will fall outside the scope of support.
 
- {: .note }
->
-> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+ {{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Terms
 
@@ -95,20 +95,20 @@ You will be presented with a menu like the one below asking you to choose a disk
 
     Change the `groot` line to resemble the following:
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-        ## default grub root device
-        ## e.g. groot=(hd0,0)
-        # groot=(hd0)
-        ~~~
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+## default grub root device
+## e.g. groot=(hd0,0)
+# groot=(hd0)
+
+{{< /file-excerpt >}}
+
 3.  Change the `indomU` line to resemble the following:
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-        # indomU=false
-        ~~~
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+# indomU=false
+
+{{< /file-excerpt >}}
+
 4.  Save and exit the file. You will now need to update GRUB again in order to apply the changes. Issue the following command:
 
         update-grub
@@ -252,12 +252,12 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
 
 7.  For this installation, we want Apache to run as the Asterisk user. This will allow Apache to access all of the files it needs in order to run FreePBX. Make sure your `/etc/apache2/envvars` file resembles the following:
 
-    {: .file-excerpt }
-    /etc/apache2/envvars
-    :   ~~~
-        export APACHE_RUN_USER=asterisk
+    {{< file-excerpt "/etc/apache2/envvars" >}}
+export APACHE_RUN_USER=asterisk
 		export APACHE_RUN_GROUP=asterisk
-        ~~~
+
+{{< /file-excerpt >}}
+
 8.  Change ownership of the Apache lock file:
 
         chown asterisk:asterisk /var/lock/apache2/
@@ -277,9 +277,9 @@ Before you can use FreePBX, you will need to set up a LAMP stack. An basic step-
         su - asterisk
         cd /opt/freepbx/
 
-    {: .note }
-    >
-    > This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
+    {{< note >}}
+This is the latest version of FreePBX at the time of this guide's publication. You can check [this page](http://www.freepbx.org/downloads/freepbx-distro/) for the latest build of FreePBX.
+{{< /note >}}
 
 2.  The FreePBX directory contains SQL files that you can insert into the database we created previously. Issue the following commands to insert this data:
 
@@ -300,16 +300,16 @@ You need to pass the credentials of the MySQL user and database you created abov
 
 Before you continue your FreePBX installation, you will want to configure a `VirtualHost` for the web interface. You should also secure your installation using SSL and an `.htaccess` file. By default, FreePBX installs files to `/var/www/html/`; you may leave this as it is. Your `VirtualHost` may resemble the following:
 
-{: .file }
-VirtualHost Entry
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin webmaster@example.com
-        ServerName example.com
-        ServerAlias www.example.com
-        DocumentRoot /var/www/html
-    </VirtualHost>
-    ~~~
+{{< file "VirtualHost Entry" apache >}}
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/html
+</VirtualHost>
+
+{{< /file >}}
+
 
 To update your Apache configuration, you will need to restart the server. Issue the following command:
 
@@ -338,9 +338,9 @@ From your web browser, go to your FreePBX web interface.
 3.  Select the **Upgrade All** link. Under the Connectivity section, select **Google Voice/Chan Motif**. If there are other modules on this list you want to install, select them now.
 4.  When finished, press the **Process** button, and then **Confirm**.
 
-    {:.note}
-    >
-    > If downloading modules fails, from the terminal run this command from the terminal: `su asterisk -c 'mkdir /var/www/html/admin/modules/_cache'`. This should resolve the issue.
+    {{< note >}}
+If downloading modules fails, from the terminal run this command from the terminal: `su asterisk -c 'mkdir /var/www/html/admin/modules/_cache'`. This should resolve the issue.
+{{< /note >}}
 
 5.  You will now see a red **Apply Config** button. Use it to enable the modules and updates you just downloaded.
 

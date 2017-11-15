@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
-keywords: 'scm,vcs,hg,mercurial,dcvs,source control management,version control,distributed version control'
+keywords: ["scm", "vcs", "hg", "mercurial", "dcvs", "source control management", "version control", "distributed version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/mercurial/','applications/development/manage-distributed-version-control-with-mercurial/']
-modified: Monday, May 23rd, 2011
+aliases: ['linux-tools/version-control/mercurial/','applications/development/manage-distributed-version-control-with-mercurial/']
+modified: 2011-05-23
 modified_by:
   name: Linode
-published: 'Monday, April 26th, 2010'
+published: 2010-04-26
 title: Manage Distributed Version Control with Mercurial
 external_resources:
  - '[Mercurial Project Home Page](http://mercurial.selenic.com/)'
@@ -18,7 +18,7 @@ external_resources:
 
 Mercurial is one of the leading distributed version control systems that allows software developers and teams of collaborators to work on a common code base without needing to rely on a centralized server or constant network connection while working. This document will provide an introduction to the Mercurial version control system so you can begin to use Mercurial to manage source control and collaboration for your development projects.
 
-Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Installing Mercurial
 

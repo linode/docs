@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for compiling and configuring a custom kernel your Debian or Ubuntu Linode'
-keywords: 'compile kernel,kernel compiling,custom linux kernel,custom linode, debian,ubuntu'
+keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", " debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, August 1st, 2017
+modified: 2017-08-01
 modified_by:
   name: Linode
-published: 'Tuesday, August 1st, 2017'
+published: 2017-08-01
 title: 'Custom Compiled Kernel on Debian & Ubuntu'
 ---
 
@@ -27,8 +27,9 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
         apt-get update && apt-get upgrade
         apt-get install -y build-essential libncurses5-dev gcc libssl-dev grub2 bc
 
-        {: .note}
-        > When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
+    {{< note >}}
+When installing `GRUB`, you'll be asked which disk images you'd like GRUB to configure. Unless you're planning on using the **Direct Disk** option in the Linode Configuration Manager, this is not required.
+{{< /note >}}
 
 2.  Since some distributions install a pre-compiled kernel package into the `/boot/` directory along with their development package, avoid confusion later by removing any existing files there. **Warning**, this will delete everything within the `/boot/` directory _without_ asking for confirmation:
 
@@ -85,17 +86,17 @@ Once your configuration options are set, exit the configuration interface and an
 
 3.  Edit `/etc/default/grub` and add or change the following variables to match. Comment or remove any lines starting with `GRUB_HIDDEN`, and if the word *splash* appears in the line `GRUB_CMDLINE_LINUX_DEFAULT`, remove it. There will be other variables in this file, but we are only concerned with those listed below:
 
-    {: .file-excerpt}
-    /etc/default/grub
-    :   ~~~ conf
-        GRUB_TIMEOUT=10
-        GRUB_DISABLE_LINUX_UUID=true
-        GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8 net.ifnames=0"
-        GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-        GRUB_TERMINAL=serial
-        GRUB_GFXPAYLOAD_LINUX=text
-        GRUB_DISABLE_OS_PROBER=true
-        ~~~
+    {{< file-excerpt "/etc/default/grub" >}}
+GRUB_TIMEOUT=10
+GRUB_DISABLE_LINUX_UUID=true
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8 net.ifnames=0"
+GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+GRUB_TERMINAL=serial
+GRUB_GFXPAYLOAD_LINUX=text
+GRUB_DISABLE_OS_PROBER=true
+
+{{< /file-excerpt >}}
+
 
 4.  Update the bootloader:
 
@@ -111,8 +112,9 @@ Once your configuration options are set, exit the configuration interface and an
 
 3.  Click **Save Changes**. You can now reboot the Linode. We suggest opening a [LISH](/docs/networking/using-the-linode-shell-lish) or [GLISH](/docs/networking/using-the-graphic-shell-glish) session first, so you can monitor the boot process and troubleshoot if necessary.
 
-    {: .note}
-    > You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+    {{< note >}}
+You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+{{< /note >}}
 
 Congratulations, you've booted your Linode using a custom-compiled kernel!
 

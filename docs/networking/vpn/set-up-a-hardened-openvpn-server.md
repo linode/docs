@@ -3,13 +3,13 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'Learn how to securely tunnel your traffic with OpenVPN and OpenSSL.'
-keywords: 'openvpn,vpn,vpn tunnel,openssl'
+keywords: ["openvpn", "vpn", "vpn tunnel", "openssl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/']
-modified: 'Tuesday, September 26th, 2017'
+aliases: ['networking/vpn/set-up-a-hardened-openvpn-server-on-debian-8/']
+modified: 2017-09-26
 modified_by:
   name: Linode
-published: 'Wednesday, December 9th, 2015'
+published: 2015-12-09
 title: 'Set up a Hardened OpenVPN Server on Debian 9'
 external_resources:
  - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation/howto.html)'
@@ -72,56 +72,56 @@ This series assumes your VPN will operate over IPv4 only. If you instead wish to
 
 4. Add IPv4 rules: `iptables-persistent` stores its rulesets in the files `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6`. Open the `rules.v4` file and replace everything in it with the information below:
 
-    {: .file}
-    /etc/iptables/rules.v4
-    :   ~~~ conf
-        *filter
+    {{< file "/etc/iptables/rules.v4" >}}
+*filter
 
-        # Allow all loopback (lo) traffic and reject anything
-        # to localhost that does not originate from lo.
-        -A INPUT -i lo -j ACCEPT
-        -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
-        -A OUTPUT -o lo -j ACCEPT
+# Allow all loopback (lo) traffic and reject anything
+# to localhost that does not originate from lo.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+-A OUTPUT -o lo -j ACCEPT
 
-        # Allow ping and ICMP error returns.
-        -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
-        -A INPUT -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
-        -A OUTPUT -p icmp -j ACCEPT
+# Allow ping and ICMP error returns.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+-A INPUT -p icmp -m state --state ESTABLISHED,RELATED -j ACCEPT
+-A OUTPUT -p icmp -j ACCEPT
 
-        # Allow SSH.
-        -A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
+# Allow SSH.
+-A INPUT -i eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT
 
-        # Allow UDP traffic on port 1194.
-        -A INPUT -i eth0 -p udp -m state --state NEW,ESTABLISHED --dport 1194 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
+# Allow UDP traffic on port 1194.
+-A INPUT -i eth0 -p udp -m state --state NEW,ESTABLISHED --dport 1194 -j ACCEPT
+-A OUTPUT -o eth0 -p udp -m state --state ESTABLISHED --sport 1194 -j ACCEPT
 
-        # Allow DNS resolution and limited HTTP/S on eth0.
-        # Necessary for updating the server and timekeeping.
-        -A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
-        -A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
-        -A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
-        -A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
+# Allow DNS resolution and limited HTTP/S on eth0.
+# Necessary for updating the server and timekeeping.
+-A INPUT -i eth0 -p udp -m state --state ESTABLISHED --sport 53 -j ACCEPT
+-A OUTPUT -o eth0 -p udp -m state --state NEW,ESTABLISHED --dport 53 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 80 -j ACCEPT
+-A INPUT -i eth0 -p tcp -m state --state ESTABLISHED --sport 443 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT
+-A OUTPUT -o eth0 -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT
 
-        # Allow traffic on the TUN interface so OpenVPN can communicate with eth0.
-        -A INPUT -i tun0 -j ACCEPT
-        -A OUTPUT -o tun0 -j ACCEPT
+# Allow traffic on the TUN interface so OpenVPN can communicate with eth0.
+-A INPUT -i tun0 -j ACCEPT
+-A OUTPUT -o tun0 -j ACCEPT
 
-        # Log any packets which don't fit the rules above.
-        # (optional but useful)
-        -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
-        -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
-        -A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
+# Log any packets which don't fit the rules above.
+# (optional but useful)
+-A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 4
+-A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 4
+-A OUTPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_OUTPUT_denied: " --log-level 4
 
-        # then reject them.
-        -A INPUT -j REJECT
-        -A FORWARD -j REJECT
-        -A OUTPUT -j REJECT
+# then reject them.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
+-A OUTPUT -j REJECT
 
-        COMMIT
-        ~~~
+COMMIT
+
+{{< /file >}}
+
 
 5.  You will disable IPv6 in the next section, so add an `ip6tables` ruleset to reject all IPv6 traffic:
 
@@ -167,11 +167,11 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
 3.  Comment out the line for IPv6 resolution over localhost in `/etc/hosts`:
 
-    {: .file}
-    /etc/hosts
-    :   ~~~ conf
-        #::1     localhost ip6-localhost ip6-loopback
-        ~~~
+    {{< file "/etc/hosts" aconf >}}
+#::1     localhost ip6-localhost ip6-loopback
+
+{{< /file >}}
+
 
 
 ## Install and Begin Configuring OpenVPN
@@ -198,9 +198,9 @@ If you are exclusively using IPv4 on your VPN, IPv6 should be disabled unless yo
 
         openssl genpkey -genparam -algorithm DH -out /etc/openvpn/server/dhp4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
-    {: .note }
-    >
-    >According to OpenSSL's man page, `genpkey -genparam` supersedes `dhparam`.
+    {{< note >}}
+According to OpenSSL's man page, `genpkey -genparam` supersedes `dhparam`.
+{{< /note >}}
 
 6.  Exit from the root shell and back to your standard user account.
 
@@ -227,19 +227,19 @@ The rest of this guide will use EasyRSA.
 
 4.  The `vars` file created in `/ca` contains presets used by EasyRSA. Here you can specify a distinguished name for your certificate authority that will be  passed to client certificates. Changing these fields is optional, and you can always input them manually during certificate creation, but setting them here creates less work during client certificate creation.
 
-    {: .file-excerpt}
-    ~/ca/vars
-    :   ~~~ conf
-        # These are the default values for fields
-        # which will be placed in the certificate.
-        # Don't leave any of these fields blank.
-        export KEY_COUNTRY="US"
-        export KEY_PROVINCE="CA"
-        export KEY_CITY="SanFrancisco"
-        export KEY_ORG="Fort-Funston"
-        export KEY_EMAIL="me@myhost.mydomain"
-        export KEY_OU="MyOrganizationalUnit"
-        ~~~
+    {{< file-excerpt "~/ca/vars" aconf >}}
+# These are the default values for fields
+# which will be placed in the certificate.
+# Don't leave any of these fields blank.
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="CA"
+export KEY_CITY="SanFrancisco"
+export KEY_ORG="Fort-Funston"
+export KEY_EMAIL="me@myhost.mydomain"
+export KEY_OU="MyOrganizationalUnit"
+
+{{< /file-excerpt >}}
+
 
 5.  From `~/ca`, [source](http://stackoverflow.com/a/9326746) the `vars` script:
 
@@ -280,10 +280,9 @@ Each client device connecting to the VPN should have its own unique key and iden
 
     cd ~/ca && source ./vars && ./build-key client1
 
-{: .note}
->
->Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
-
+{{< note >}}
+Anyone with access to `client1.key` will be able to access your VPN. To better protect against this scenario, you can issue `./build-key-pass client1` instead to build a client key which is encrypted with a passphrase.
+{{< /note >}}
 
 ## OpenVPN Configuration Files
 
@@ -291,108 +290,106 @@ Each client device connecting to the VPN should have its own unique key and iden
 
 OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the contents below to create a new file at that location on your server:
 
-{: .file}
-/etc/openvpn/server.conf
-:   ~~~ conf
-    dev tun
-    persist-key
-    persist-tun
-    topology subnet
-    port 1194
-    proto udp
-    keepalive 10 120
+{{< file "/etc/openvpn/server.conf" >}}
+dev tun
+persist-key
+persist-tun
+topology subnet
+port 1194
+proto udp
+keepalive 10 120
 
-    # Location of certificate authority's cert.
-    ca /etc/openvpn/server/ca.crt
+# Location of certificate authority's cert.
+ca /etc/openvpn/server/ca.crt
 
-    # Location of VPN server's TLS cert.
-    cert /etc/openvpn/server/server.crt
+# Location of VPN server's TLS cert.
+cert /etc/openvpn/server/server.crt
 
-    # Location of server's TLS key
-    key /etc/openvpn/server/server.key
+# Location of server's TLS key
+key /etc/openvpn/server/server.key
 
-    # Location of DH parameter file.
-    dh /etc/openvpn/server/dhp4096.pem
+# Location of DH parameter file.
+dh /etc/openvpn/server/dhp4096.pem
 
-    # The VPN's address block starts here.
-    server 10.89.0.0 255.255.255.0
+# The VPN's address block starts here.
+server 10.89.0.0 255.255.255.0
 
-    explicit-exit-notify 1
+explicit-exit-notify 1
 
-    # Drop root privileges and switch to the `ovpn` user after startup.
-    user ovpn
+# Drop root privileges and switch to the `ovpn` user after startup.
+user ovpn
 
-    # OpenVPN process is exclusive member of ovpn group.
-    group ovpn
+# OpenVPN process is exclusive member of ovpn group.
+group ovpn
 
-    # Cryptography options. We force these onto clients by
-    # setting them here and not in client.ovpn. See
-    # `openvpn --show-tls`, `openvpn --show-ciphers` and
-    #`openvpn --show-digests` for all supported options.
-    tls-auth /etc/openvpn/server/ta.key 0
-    auth SHA512    # This needs to be in client.ovpn too though.
-    tls-version-min 1.2
-    tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256
-    ncp-ciphers AES-256-GCM:AES-256-CBC
+# Cryptography options. We force these onto clients by
+# setting them here and not in client.ovpn. See
+# `openvpn --show-tls`, `openvpn --show-ciphers` and
+#`openvpn --show-digests` for all supported options.
+tls-auth /etc/openvpn/server/ta.key 0
+auth SHA512    # This needs to be in client.ovpn too though.
+tls-version-min 1.2
+tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256
+ncp-ciphers AES-256-GCM:AES-256-CBC
 
-    # Logging options.
-    ifconfig-pool-persist ipp.txt
-    status openvpn-status.log
-    log /var/log/openvpn.log
-    verb 3
-    ~~~
+# Logging options.
+ifconfig-pool-persist ipp.txt
+status openvpn-status.log
+log /var/log/openvpn.log
+verb 3
 
-{: .note}
->
->You can extract a server template from OpenVPN's sample configuration files using:
->
->       gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
+{{< /file >}}
 
+
+{{< note >}}
+You can extract a server template from OpenVPN's sample configuration files using:
+
+`gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf`
+{{< /note >}}
 
 ### Client Configuration File
 
 OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, the location of the directory where the credentials are stored doesn't matter, but this `.ovpn` file needs to be in the same directory as the client certificate and all other credentials. OpenVPN does not refer to any of these files after importing and they do not need to remain on the client system. Create this file on your Linode so that it can be distributed to your client devices:
 
-{: .file}
-client.ovpn
-:   ~~~ conf
-    # No cryptography options are specified here because we want
-    # the VPN server to push those settings to clients rather than
-    # allow clients to dictate their crypto.
+{{< file "client.ovpn" >}}
+# No cryptography options are specified here because we want
+# the VPN server to push those settings to clients rather than
+# allow clients to dictate their crypto.
 
-    client
-    dev tun
-    persist-key
-    persist-tun
-    proto udp
-    nobind
-    user ovpn
-    group ovpn
-    remote-cert-tls server
-    auth SHA512
-    verb 3
+client
+dev tun
+persist-key
+persist-tun
+proto udp
+nobind
+user ovpn
+group ovpn
+remote-cert-tls server
+auth SHA512
+verb 3
 
-    # Remote server's IP address and port. IP is
-    # preferable over hostname so as not to rely
-    # on DNS lookups.
-    remote <your_linode's IP address> 1194
+# Remote server's IP address and port. IP is
+# preferable over hostname so as not to rely
+# on DNS lookups.
+remote <your_linode's IP address> 1194
 
-    # To successfully import this profile, you
-    # want the client device's CA certificate copy,
-    # client certificate and key, and HMAC signature
-    # all in the same location as this .ovpn file.
-    ca ca.crt
-    cert client1.crt
-    key client1.key
-    tls-auth ta.key 1
-    ~~~
+# To successfully import this profile, you
+# want the client device's CA certificate copy,
+# client certificate and key, and HMAC signature
+# all in the same location as this .ovpn file.
+ca ca.crt
+cert client1.crt
+key client1.key
+tls-auth ta.key 1
 
-{: .note}
->
->You can use a client template from OpenVPN's sample configuration files using the command below. Most clients require a `.ovpn` file format instead of `.conf`.
->
->       cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn
+{{< /file >}}
 
+
+{{< note >}}
+You can use a client template from OpenVPN's sample configuration files using the command below. Most clients require a `.ovpn` file format instead of `.conf`.
+
+`cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn`
+{{< /note >}}
 
 ## Distribute Credentials
 
@@ -411,9 +408,9 @@ Start the OpenVPN daemon and enable it on reboot:
 
     sudo systemctl enable openvpn.* && sudo systemctl start openvpn.*
 
-{: .note }
->
->This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
+{{< note >}}
+This will scan the `/etc/openvpn` directory on the server for files with a `.conf` extension. For every file that it finds, it will spawn a VPN daemon (server instance) so make sure you don't have a `client.conf` or `client.ovpn` file in there.
+{{< /note >}}
 
 The logs of both the OpenVPN client and servers will contain all the information you need to confirm connection specifications, view client address assignments, and debug connection issues. Even if the connection completes without problems, the logs may contain alerts and messages, to aid in improving your setup.
 

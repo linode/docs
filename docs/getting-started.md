@@ -4,11 +4,15 @@ author:
   email: docs@linode.com
 description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, October 10th, 2017
+modified: 2017-10-10
 modified_by:
   name: Linode
-published: 'Sunday, July 19th, 2009'
+published: 2009-07-19
 title: Getting Started with Linode
+show_on_frontpage: true
+title_short: "Getting Started"
+weight: 10
+icon: "book"
 ---
 
 Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, set up a Linux distribution, boot your Linode, and perform some basic system administration tasks.
@@ -74,9 +78,9 @@ After creating a new Linode, select it to open the Linode Manager Dashboard.
 
     [![Configuration Profile](/docs/assets/linode-manager-configuration-profile_small.png)](/docs/assets/linode-manager-configuration-profile.png)
 
-    {: .note }
-    >
-    > Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
+    {{< note >}}
+Use a [StackScript](http://www.linode.com/stackscripts) to quickly deploy a customized Linux distribution. Some of the most popular StackScripts do things like install the Apache web server, configure a firewall, and set up the WordPress content management system. They're easy to use. Just find a StackScript, complete the form, and deploy.
+{{< /note >}}
 
 ## Boot Your Linode
 
@@ -146,22 +150,20 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 
         root@li123-456:~#
 
- {: .note }
->
-> If you recently rebuilt an existing Linode, you might receive an error message when you try to
-> reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
->
->To reconnect via SSH, revoke the key for that IP address.
->
->For Linux and Mac OS X:
->
-> ~~~
-> ssh-keygen -R 123.456.789
-> ~~~
->
-> For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
->
->     HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
+ {{< note >}}
+If you recently rebuilt an existing Linode, you might receive an error message when you try to
+reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
+
+To reconnect via SSH, revoke the key for that IP address.
+
+For Linux and Mac OS X:
+
+    ssh-keygen -R 123.456.789
+
+For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
+
+    HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\SshHostKeys
+{{< /note >}}
 
 ## Install Software Updates
 
@@ -173,9 +175,9 @@ Installing software updates should be performed *regularly*. If you need help re
 
     apt-get update && apt-get upgrade
 
-{: .note }
->
->Ubuntu may prompt you when the Grub package is updated. If prompted, select `keep the local version currently installed`.
+{{< note >}}
+Ubuntu may prompt you when the Grub package is updated. If prompted, select `keep the local version currently installed`.
+{{< /note >}}
 
 ### CentOS
 
@@ -221,11 +223,11 @@ Replace `example_hostname` with one of your choice.
     echo "example_hostname" > /etc/hostname
     hostname -F /etc/hostname
 
-{: .note }
->
->Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
->
->The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
+{{< note >}}
+Debian and Ubuntu include a line in their hosts file for a loopback domain by default (127.0.1.1), but even though they're closely related, the commands above to set a hostname don't change the loopback domain.
+
+The result is the message when using sudo commands: *sudo: unable to resolve host* . To fix this, add your hostname to the hosts file as shown in the last example [here](/docs/networking/dns/using-your-systems-hosts-file).
+{{< /note >}}
 
 ### CentOS 6
 

@@ -3,13 +3,13 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: 'Generate a CSR and install a commercial SSL certificate through the cPanel interface.'
-keywords: 'cpanel, ssl, ip'
+keywords: ["cpanel", " ssl", " ip"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/cpanel/ssl-on-cpanel/']
-modified: Friday, April 28th, 2017
+aliases: ['web-applications/control-panels/cpanel/ssl-on-cpanel/']
+modified: 2017-04-28
 modified_by:
   name: Jonathan Chun
-published: 'Tuesday, September 27th, 2011'
+published: 2011-09-27
 title: Install a Commercial SSL Certificate Using cPanel
 external_resources:
  - '[cPanel Home Page](https://cpanel.com)'

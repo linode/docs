@@ -4,8 +4,8 @@ author:
   email: docs@linode.com
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, FarmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, September 9th, 2017'
-modified: Wednesday, September 20th, 2017
+published: 2017-09-09
+modified: 2017-09-20
 modified_by:
     name: Linode
 title: 'Install and Configure FarmOS, an Agricultural Management, Planning and Record-Keeping Web App'

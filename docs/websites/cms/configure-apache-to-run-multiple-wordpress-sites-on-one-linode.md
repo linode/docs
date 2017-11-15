@@ -3,14 +3,14 @@ author:
   name: Jonathan Tsai
   email: docs@linode.com
 description: 'This guide shows how to configure Apache Virtual Hosts to serve multiple WordPress sites from the same Linode.'
-keywords: 'install WordPress, WordPress on Linode, multiple WordPress, how to configure WordPress'
+keywords: ["install WordPress", "WordPress on Linode", "multiple WordPress", "how to configure WordPress"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, October 27th, 2017
+modified: 2017-10-27
 modified_by:
   name: Linode
 contributor:
   name: Jonathan Tsai
-published: 'Tuesday, October 24th, 2017'
+published: 2017-10-24
 title: Set Up Apache to Run Multiple WordPress Sites on a Single Linode
 external_resources:
 - '[WordPress.org](http://wordpress.org)'
@@ -65,7 +65,6 @@ WordPress is a popular, dynamic, content management system that makes it easy to
 
 An example of a two WordPress setup is:
 
-{: .table .table-striped}
 | Hostname | Database | Username | Password |
 | ---------| ---------| ---------| -------- |
 | example1.com | example1_wordpress | example1_wpuser | password1 |
@@ -131,37 +130,42 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 3.  Put the following contents in `example1.com`:
 
-        <VirtualHost *:80>
-          # The primary domain for this host
-          ServerName example1.com
-          # Optionally have other subdomains also managed by this Virtual Host
-          ServerAlias example1.com *.example1.com
-          DocumentRoot /var/www/html/example1.com/public_html
+    {{< file-excerpt >}}
+<VirtualHost *:80>
+# The primary domain for this host
+ServerName example1.com
+# Optionally have other subdomains also managed by this Virtual Host
+ServerAlias example1.com *.example1.com
+DocumentRoot /var/www/html/example1.com/public_html
+<Directory /var/www/html/example1.com/public_html>
+Require all granted
+# Allow local .htaccess to override Apache configuration settings
+AllowOverride all
+</Directory>
+# Enable RewriteEngine
+RewriteEngine on
+RewriteOptions inherit
 
-          <Directory /var/www/html/example1.com/public_html>
-            Require all granted
-            # Allow local .htaccess to override Apache configuration settings
-            AllowOverride all
-          </Directory>
+# Block .svn, .git
+RewriteRule \.(svn|git)(/)?$ - [F]
+    
+# Catchall redirect to www.example1.com
+RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
+RewriteCond %{HTTP_HOST}   !^$
+RewriteRule ^/(.*)         https://www.example1.com/$1 [L,R]
 
-          # Enable RewriteEngine
-          RewriteEngine on
-          RewriteOptions inherit
-        
-          # Block .svn, .git
-          RewriteRule \.(svn|git)(/)?$ - [F]
-        
-          # Catchall redirect to www.example1.com
-          RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
-          RewriteCond %{HTTP_HOST}   !^$
-          RewriteRule ^/(.*)         https://www.example1.com/$1 [L,R]
+# Recommended: XSS protection
+<IfModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+</VirtualHost>
 
-          # Recommended: XSS protection
-          <IfModule mod_headers.c>
-            Header set X-XSS-Protection "1; mode=block"
-            Header always append X-Frame-Options SAMEORIGIN
-          </IfModule>
-        </VirtualHost>
+{{</file-excerpt >}}
+
+
+
+
 
 4.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:
 

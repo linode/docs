@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to the remote access area of the Linode Manager.
-keywords: 'remote access,ip addresses,ip failover,swapping ip addresses,console access'
+keywords: ["remote access", "ip addresses", "ip failover", "swapping ip addresses", "console access"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['remote-access/']
-modified: Saturday, September 6th, 2014
+aliases: ['remote-access/']
+modified: 2014-09-06
 modified_by:
   name: Phil Zona
-published: 'Tuesday, August 23rd, 2016'
+published: 2016-08-23
 title: Remote Access
 ---
 
@@ -25,9 +25,9 @@ The ability to associate an IP address with a domain name is referred to as *for
 
 Here's how to set reverse DNS for your domain names:
 
- {: .note }
->
-> Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+{{< note >}}
+Before setting reverse DNS, verify that you have created a matching forward DNS record for the IP address. For instructions, see [Adding DNS Records](/docs/hosting-website#sph_adding-dns-records). If you use a third-party DNS provider, create the forward DNS record with your provider's management tool.
+{{< /note >}}
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab.
@@ -51,9 +51,9 @@ Here's how to set reverse DNS for your domain names:
 
 You have successfully configured reverse DNS.
 
- {: .note }
->
-> If you receive the message that **no match was found**, this indicates that you need to update the forward DNS for this domain. Make sure the domain or subdomain in question resolves to the IP address for which you are trying to set the reverse DNS. If you've recently made a DNS change, you may need to wait 24-48 hours for it to propagate.
+ {{< note >}}
+If you receive the message that **no match was found**, this indicates that you need to update the forward DNS for this domain. Make sure the domain or subdomain in question resolves to the IP address for which you are trying to set the reverse DNS. If you've recently made a DNS change, you may need to wait 24-48 hours for it to propagate.
+{{< /note >}}
 
 ## Resetting Reverse DNS
 
@@ -104,9 +104,9 @@ If you want to allow one Linode to use another Linode's IP address, such as for 
 
 If you have two Linodes in the same data center, you can use the *IP swap* feature to switch their IP addresses. This could be useful in several situations. For example, if you've built a new server to replace an old one, you could swap IP addresses instead of updating the DNS records.
 
-{: .note}
->
->This process will only swap **IPv4** addresses, not IPv6.
+{{< note >}}
+This process will only swap **IPv4** addresses, not IPv6.
+{{< /note >}}
 
 Here's how to swap IP addresses:
 
@@ -120,9 +120,9 @@ Here's how to swap IP addresses:
 
 6.  From the **With Linode** menu, select a Linode.
 
-	{: .note }
-	>
-	> The menu only displays Linodes hosted in the same data center as the current Linode.
+	{{< note >}}
+The menu only displays Linodes hosted in the same data center as the current Linode.
+{{< /note >}}
 
 7.  Click **Select**. The webpage shown below appears.
 
@@ -136,14 +136,14 @@ Here's how to swap IP addresses:
 
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
 
-    {: .note }
-    >
-    > If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command:
-    >
-    >     arping -c5 -I eth0 -b -A -s 198.51.100.10 198.51.100.1
-    >     ping -c5 -I 198.51.100.10 198.51.100.1
-    >
-    > Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
+    {{< note >}}
+If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command:
+
+arping -c5 -I eth0 -b -A -s 198.51.100.10 198.51.100.1
+ping -c5 -I 198.51.100.10 198.51.100.1
+
+Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
+{{< /note >}}
 
 ## Adding Private IP Addresses
 

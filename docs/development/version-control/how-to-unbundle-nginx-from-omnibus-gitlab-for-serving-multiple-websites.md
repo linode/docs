@@ -3,16 +3,16 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Unbundle the default nginx server from Omnibus Gitlab and install and configure your own to enable virtual hosting.'
-keywords: 'version control, git, gitlab, install gitlab on ubuntu, how to manage repositories with gitlab'
+keywords: ["version control", " git", " gitlab", " install gitlab on ubuntu", " how to manage repositories with gitlab"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-alias: ['applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
+aliases: ['applications/development/how-to-unbundle-nginx-from-omnibus-gitlab-for-serving-multiple-websites/']
 contributor:
     name: Jordi Bassagañas
     link: https://twitter.com/programarivm
-modified: Wednesday, June 21st, 2017
+modified: 2017-06-21
 modified_by:
   name: Phil Zona
-published: 'Monday, February 29th, 2016'
+published: 2016-02-29
 title: 'How to Unbundle nginx from Omnibus GitLab for Serving Multiple Websites'
 external_resources:
  - '[Updating GitLab via Omnibus GitLab](https://gitlab.com/gitlab-org/omnibus-gitlab/blob/master/doc/update.md)'
@@ -20,12 +20,13 @@ external_resources:
 ---
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
+
+---
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
 This guide walks you through the process of installing and setting up your own nginx server on a typical Omnibus installation. Using the method outlined here, you are not forced to use Omnibus's default settings, and can create as many virtual hosts as you need for hosting multiple websites and apps on the same server as your GitLab.
 
-Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr "How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)"). This application stack could benefit from large amounts of disk space, so also consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
+Preconfigured software stacks sometimes bring a series of challenges to those who need to customize specific settings. If you require more control over your installation, consider [installing GitLab from source](/docs/applications/development/how-to-install-and-configure-gitlab-on-ubuntu-14-04-trusty-tahr). This application stack could benefit from large amounts of disk space, so also consider using our [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) service with this setup.
 
 
 ## Before You Begin
@@ -40,9 +41,9 @@ Preconfigured software stacks sometimes bring a series of challenges to those wh
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit our [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< /note >}}
 
 ## Install Omnibus GitLab
 
@@ -67,14 +68,14 @@ Note that nginx cannot be disabled in older versions of GitLab Community Edition
 
 1.  To unbundle nginx from GitLab, we'll need to disable the version included in the Omnibus package. Add the following lines to `/etc/gitlab/gitlab.rb`:
 
-    {: .file-excerpt}
-    /etc/gitlab/gitlab.rb
-    :   ~~~
-        # Unbundle nginx from Omnibus GitLab
-        nginx['enable'] = false
-        # Set your Nginx's username
-        web_server['external_users'] = ['www-data']
-        ~~~
+    {{< file-excerpt "/etc/gitlab/gitlab.rb" >}}
+# Unbundle nginx from Omnibus GitLab
+nginx['enable'] = false
+# Set your Nginx's username
+web_server['external_users'] = ['www-data']
+
+{{< /file-excerpt >}}
+
 
 2.  Reconfigure GitLab to apply the changes:
 
@@ -98,14 +99,15 @@ Now that GitLab's bundled nginx has been disabled, the next step is to install a
 
 3.  Add Passenger's APT repository by adding the following lines to `/etc/apt/sources.list.d/passenger.list`:
 
-    {: .file}
-    /etc/apt/sources.list.d/passenger.list
-    :   ~~~
-        deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
-        ~~~
+    {{< file "/etc/apt/sources.list.d/passenger.list" >}}
+deb https://oss-binaries.phusionpassenger.com/apt/passenger trusty main
 
-    {: .note}
-    > If you're using Ubuntu 16.04, replace `trusty` with `xenial` in the above command.
+{{< /file >}}
+
+
+    {{< note >}}
+If you're using Ubuntu 16.04, replace `trusty` with `xenial` in the above command.
+{{< /note >}}
 
 4.  Update your package repositories:
 
@@ -117,11 +119,11 @@ Now that GitLab's bundled nginx has been disabled, the next step is to install a
 
 6.  Enable the new Passenger module by uncommenting the `include /etc/nginx/passenger.conf;` line from the `/etc/nginx/nginx.conf` file:
 
-    {: .file-excerpt}
-    /etc/nginx/nginx.conf
-    :   ~~~ conf
-        include /etc/nginx/passenger.conf;
-        ~~~
+    {{< file-excerpt "/etc/nginx/nginx.conf" aconf >}}
+include /etc/nginx/passenger.conf;
+
+{{< /file-excerpt >}}
+
 
 4.  Finally, restart nginx. On Ubuntu 14.04:
 
@@ -143,36 +145,36 @@ In this section, we'll create a new virtual host to serve GitLab. Since we've un
 
 2.  Edit your new virtual host file to match the following, replacing `example.com` with your own hostname:
 
-    {: .file}
-    /etc/nginx/sites-available/example.com
-    :   ~~~
-        upstream gitlab {
-       	    server unix:/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket;
-        }
+    {{< file "/etc/nginx/sites-available/example.com" >}}
+upstream gitlab {
+    server unix:/var/opt/gitlab/gitlab-rails/sockets/gitlab.socket;
+}
 
 	    server {
-            listen 80;
-            server_name example.com;
-            server_tokens off; # don't show the version number, a security best practice
-            root /opt/gitlab/embedded/service/gitlab-rails/public;
+    listen 80;
+    server_name example.com;
+    server_tokens off; # don't show the version number, a security best practice
+    root /opt/gitlab/embedded/service/gitlab-rails/public;
 
-            # Increase this if you want to upload large attachments
-            # Or if you want to accept large git objects over http
-            client_max_body_size 250m;
+    # Increase this if you want to upload large attachments
+    # Or if you want to accept large git objects over http
+    client_max_body_size 250m;
 
-            # individual nginx logs for this gitlab vhost
-            access_log  /var/log/nginx/gitlab_access.log;
-            error_log   /var/log/nginx/gitlab_error.log;
+    # individual nginx logs for this gitlab vhost
+    access_log  /var/log/nginx/gitlab_access.log;
+    error_log   /var/log/nginx/gitlab_error.log;
 
-            location / {
-                proxy_redirect off;
-                proxy_set_header Host $http_host;
-                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-                proxy_set_header X-Real-IP $remote_addr;
-                proxy_pass http://gitlab;
-            }
-        }
-        ~~~
+    location / {
+        proxy_redirect off;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_pass http://gitlab;
+    }
+}
+
+{{< /file >}}
+
 
 3.  Enable your new virtual host by symbolically linking it to `sites-enabled` (change `example.com`):
 

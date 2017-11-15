@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: Convert your prepaid account to Hourly billing
-keywords: 'prepaid,billing,payments,hourly'
+keywords: ["prepaid", "billing", "payments", "hourly"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, February 15th, 2017
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Wednesday, February 15th, 2017'
+published: 2017-02-15
 title: 'Upgrade to Hourly Billing'
 ---
 
@@ -30,10 +30,10 @@ To upgrade to the Hourly billing system, follow these steps:
 
 5.  You will receive a confirmation message that your account has been converted to Hourly billing.
 
-    {: .note }
-    >
-    >- Prepaid discounts will not carry over to the new system
+    {{< note >}}
+- Prepaid discounts will not carry over to the new system
     - Those who remain on the prepaid billing system will not experience any changes, however newer plans and services may not be available on prepaid accounts.
+{{< /note >}}
 
 ## Possible Notices
 

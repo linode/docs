@@ -3,9 +3,9 @@ author:
   name: Sam Foo
   email: sfoo@linode.com
 description: 'This tutorial will show how to create your own private, Python package repository.'
-keywords: 'pip,Python,PyPA,virtualenv,package management'
+keywords: ["pip", "Python", "PyPA", "virtualenv", "package management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 12th, 2017
+modified: 2017-09-12
 modified_by:
   name: Sam Foo
 Published: Friday, September 15th, 2017
@@ -42,58 +42,57 @@ The basic scaffolding of a Python package contains an `__init__.py` file contain
 
         mkdir linode_example
 
-    {: .note}
-     >
-     >If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.
+    {{< note >}}
+If you choose to make your package public, there are additional considerations for deciding on a package name. The official documentation suggests using only lowercase characters - unique to PyPI - and the underscore character to separate words if needed.
+{{< /note >}}
 
 2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example**, containing `__init__.py`. The directory tree should look like this:
 
-    {:.output}
-    ~~~
+    {{< output >}}
+linode_example/
     linode_example/
-        linode_example/
-            __init__.py
-        setup.py
-        setup.cfg
-        README.md
-    ~~~
+        __init__.py
+    setup.py
+    setup.cfg
+    README.md
+{{< /output >}}
 
 3.  Edit `setup.py` to contain basic information about your Python package:
 
-    {:.file}
-    linode_example/setup.py
-    :   ~~~
-        from setuptools import setup
+    {{< file "linode_example/setup.py" >}}
+from setuptools import setup
 
-        setup(
-            name='linode_example',
-            packages=['linode_example'],
-            description='Hello world enterprise edition',
-            version='0.1',
-            url='http://github.com/example/linode_example',
-            author='Linode'
-            author_email='docs@linode.com'
-            keywords=['pip','linode','example']
-            )
-        ~~~
+setup(
+    name='linode_example',
+    packages=['linode_example'],
+    description='Hello world enterprise edition',
+    version='0.1',
+    url='http://github.com/example/linode_example',
+    author='Linode'
+    author_email='docs@linode.com'
+    keywords=['pip','linode','example']
+    )
+
+{{< /file >}}
+
 
 4.  Add an example function to `__init__.py`:
 
-    {:.file}
-    linode_example/linode_example/__init__.py
-    :   ~~~
-        def hello_word():
-            print("hello world")
-        ~~~
+    {{< file "linode_example/linode_example/__init__.py" >}}
+def hello_word():
+    print("hello world")
+
+{{< /file >}}
+
 
 5.  The `setup.cfg` file lets PyPI know the README is a markdown file:
 
-    {:.file}
-    setup.cfg
-    :   ~~~
-        [metadata]
-        description-file = README.md
-        ~~~
+    {{< file "setup.cfg" >}}
+[metadata]
+description-file = README.md
+
+{{< /file >}}
+
 
 6.  Optionally, add a `LICENSE.txt` or add information in `README.md` for good documentation practices or if you ever plan to upload the Python package into the public PyPI repository.
 
@@ -122,9 +121,9 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
 
         pip install pypiserver
 
-    {:.note}
-    >
-    > Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install via `python setup.py install`.
+    {{< note >}}
+Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/pypiserver), then navigate into the downloaded pypiserver directory and install via `python setup.py install`.
+{{< /note >}}
 
 4.  Move `linode_example-0.1.tar.gz` into `~/packages`:
 
@@ -160,38 +159,38 @@ Next, set up a server to host a package index. This guide will use `pypiserver`,
 
 4.  Inside the `~/packages` directory, create a `pypiserver.wsgi` file that creates an application object to connect between pypiserver and Apache:
 
-    {:.file}
-    packages/pypiserver.wsgi
-    :   ~~~
-    import pypiserver
-    PACKAGES = '/absolute/path/to/packages'
-    HTPASSWD = '/absolute/path/to/htpasswd.txt'
-    application = pypiserver.app(root=PACKAGES, redirect_to_fallback=True, password_file=HTPASSWD)
-        ~~~
+    {{< file "packages/pypiserver.wsgi" >}}
+import pypiserver
+PACKAGES = '/absolute/path/to/packages'
+HTPASSWD = '/absolute/path/to/htpasswd.txt'
+application = pypiserver.app(root=PACKAGES, redirect_to_fallback=True, password_file=HTPASSWD)
+
+{{< /file >}}
+
 
 5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`:
 
-    {:.file}
-    /etc/apache2/sites-available/pypiserver.conf
-    :   ~~~
-        <VirtualHost *:80>
-        WSGIPassAuthorization On
-        WSGIScriptAlias / /absolute/path/to/packages/pypiserver.wsgi
-        WSGIDaemonProcess pypiserver python-path=/absolute/path/to/packages:/absolute/path/to/packages/venv/lib/pythonX.X/site-packages
-            LogLevel info
-            <Directory /absolute/path/to/packages>
-                WSGIProcessGroup pypiserver
-                WSGIApplicationGroup %{GLOBAL}
-                Require ip 203.0.113.0
-            </Directory>
-        </VirtualHost>
-        ~~~
+    {{< file "/etc/apache2/sites-available/pypiserver.conf" >}}
+<VirtualHost *:80>
+WSGIPassAuthorization On
+WSGIScriptAlias / /absolute/path/to/packages/pypiserver.wsgi
+WSGIDaemonProcess pypiserver python-path=/absolute/path/to/packages:/absolute/path/to/packages/venv/lib/pythonX.X/site-packages
+    LogLevel info
+    <Directory /absolute/path/to/packages>
+        WSGIProcessGroup pypiserver
+        WSGIApplicationGroup %{GLOBAL}
+        Require ip 203.0.113.0
+    </Directory>
+</VirtualHost>
+
+{{< /file >}}
+
 
     The `Require ip 203.0.113.0` directive is an example IP restricting access to Apache. To grant open access, replace with `Require all granted`. For more complex access control rules, consult access control in the [Apache documentation](https://httpd.apache.org/docs/2.4/howto/access.html).
 
-    {:.note}
-    >
-    > Depending on the version of Python and virtual environment path, the WSGIDaemonProcess directive may require a different path.
+    {{< note >}}
+Depending on the version of Python and virtual environment path, the WSGIDaemonProcess directive may require a different path.
+{{< /note >}}
 
 6.  Give **www-data** ownership of the `~/packages` directory. This will allow uploading from a client using `setuptools`:
 
@@ -213,51 +212,50 @@ Recall the rather long flags declared with `pip` in order to download from a spe
 
 1.  On the client computer, create a `.pip` directory in the home directory. Inside this directory, create `pip.conf` with the following:
 
-    {:.file}
-    pip.conf
-    :   ~~~
-    [global]
-    extra-index-url = http://192.0.2.0:8080/
-    trusted-host = 192.0.2.0
-        ~~~
+    {{< file "pip.conf" >}}
+[global]
+extra-index-url = http://192.0.2.0:8080/
+trusted-host = 192.0.2.0
+
+{{< /file >}}
+
 
 2.  Install the `linode_example` package:
 
         pip install linode_example
 
-    {:.note}
-    >
-    > The terminal output or showing all packages with `pip list` will show that the underscore in the package name has transformed into a dash. This is expected as `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
+    {{< note >}}
+The terminal output or showing all packages with `pip list` will show that the underscore in the package name has transformed into a dash. This is expected as `setuptools` uses the `safe_name` utility. For an in-depth discussion about this, [see this mailing list thread](https://mail.python.org/pipermail/distutils-sig/2010-March/015650.html).
+{{< /note >}}
 
 3.  Open up a Python shell and try out the new package:
 
-    {:.output}
-    ~~~
-    >>>from linode_example import hello_world
-    >>>hello_world()
+    {{< output >}}
+>>from linode_example import hello_world
+>>hello_world()
     hello world
-    ~~~
+{{< /output >}}
 
 # Upload Remotely Using Setuptools
 Although it's possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
 1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`:
 
-    {:.file}
-    .pypirc
-    :   ~~~
-        [distutils]
-        index-servers =
-          pypi
-          linode
-        [pypi]
-        username:
-        password:
-        [linode]
-        repository: http://192.0.2.0
-        username: example_user
-        password: mypassword
-        ~~~
+    {{< file ".pypirc" >}}
+[distutils]
+index-servers =
+  pypi
+  linode
+[pypi]
+username:
+password:
+[linode]
+repository: http://192.0.2.0
+username: example_user
+password: mypassword
+
+{{< /file >}}
+
 
     Uploading to the official Python Package Index requires an account, although account information fields can be left blank. Replace *example_user* and *mypassword* with credentials defined through `htpasswd` from earlier.
 

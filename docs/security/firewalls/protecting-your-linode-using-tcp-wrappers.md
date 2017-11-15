@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Enhance your server''s security through the use of TCP wrappers'
-keywords: 'tcp wrappers,security,firewall,acl,access control'
+keywords: ["tcp wrappers", "security", "firewall", "acl", "access control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, April 30th, 2015'
-modified: Thursday, April 30th, 2015
+published: 2015-04-30
+modified: 2015-04-30
 modified_by:
   name: Elle Krout
 title: Protecting Your Linode with TCP Wrappers
@@ -51,17 +51,15 @@ Files located in `/usr/bin` and `/usr/sbin` are most likely the executables you 
 
 TCP wrappers rely on two files in order to work: `/etc/hosts.allow` and `/etc/hosts.deny`. If these files don't yet exist, create them:
 
-        touch /etc/hosts.{allow,deny}
+    touch /etc/hosts.{allow,deny}
 
 ### Editing hosts.allow and hosts.deny
 
 You can edit hosts.allow and hosts.deny with any text editor you like. Open the `hosts.deny` file in your preferred text editor. If you've never opened *hosts.deny* before it will look something like this:
 
-{: .file}
-/etc/hosts.deny
-:   ~~~
-    #
-    # hosts.deny	This file contains access rules which are used to
+{{< file "/etc/hosts.deny" >}}
+#
+# hosts.deny	This file contains access rules which are used to
 	#		deny connections to network services that either use
 	#		the tcp_wrappers library or that have been
 	#		started through a tcp_wrappers-enabled xinetd.
@@ -73,7 +71,9 @@ You can edit hosts.allow and hosts.deny with any text editor you like. Open the 
 	#		for information on rule syntax.
 	#		See 'man tcpd' for information on tcp_wrappers
 	#
-    ~~~
+
+{{< /file >}}
+
 
 Rules can be added to this file. *hosts.deny* rules have to be inserted in a certain order, rules lower down in the file will be ignored if a rule higher up applies. Rules also have a specific syntax that you must adhere to. A rule looks like this:
 

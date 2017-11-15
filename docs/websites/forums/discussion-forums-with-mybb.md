@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring the MyBB system for hosting web-based discussion forums.'
-keywords: 'mybb,forum software,web applications,PHP'
+keywords: ["mybb", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/mybb/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/bulletin-boards/mybb/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Thursday, March 18th, 2010'
+published: 2010-03-18
 title: Discussion Forums with MyBB
 deprecated: true
 ---
@@ -18,8 +18,7 @@ MyBB is a popular alternative to large forum systems like SMF and phpBB. It is d
 
 Before we begin, we assume you have followed the steps outlined in the [getting started guide](/docs/getting-started/). You will also need a working [LAMP stack](/docs/lamp-guides/).
 
-Prerequisites
--------------
+# Prerequisites
 
 You will need to create a MySQL user and database for MyBB. To do so, login to the MySQL server as root as follows:
 
@@ -34,8 +33,7 @@ You will be greeted with a prompt; enter the following commands to create a user
 
 You will now need to perform the following steps as the user you intend to run MyBB as.
 
-Installing MyBB
----------------
+# Installing MyBB
 
 The following commands should be done in the `DocumentRoot` of your website. You may need to adjust these commands depending on your setup, however these commands will set up MyBB in a directory called `forums/`.
 
@@ -64,8 +62,7 @@ After you have completed the installation, issue the following command on your L
 
 If there are no errors, you should be able to start making boards with MyBB!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -73,8 +70,7 @@ Please monitor the [MyBB mailing list](http://www.mybb.com/mailing-list) to ensu
 
 When upstream sources offer new releases, repeat the instructions for installing the MyBB software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

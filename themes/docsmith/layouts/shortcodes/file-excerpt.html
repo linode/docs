@@ -1,0 +1,21 @@
+<dl class="file">
+<dt>
+{{ if .Params }}
+{{ if gt (len .Params ) 0 }}
+		{{ .Get 0 }} {{ if gt (len .Params ) 1 }}{{ end }}
+{{ end }}
+{{ end }}
+</dt>
+<dd>
+{{ .Scratch.Set "style" "bash" }}
+{{ if .Params }}
+{{ if gt (len .Params ) 1 }}
+{{ $style := (.Get 1) }}
+{{ .Scratch.Set "style" $style }}
+{{ end }}
+{{ end }}
+{{ with .Scratch.Get "style" }}
+{{- highlight (trim $.Inner "\n" )  . "linenos=table" | -}}
+{{ end }}
+</dd>
+</dl>

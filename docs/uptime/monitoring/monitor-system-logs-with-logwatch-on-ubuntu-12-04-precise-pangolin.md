@@ -4,19 +4,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use logwatch to monitor system logs and generate reports.'
-keywords: 'logwatch,security,logging,audit'
+keywords: ["logwatch", "security", "logging", "audit"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/']
-modified: Monday, October 22nd, 2012
+aliases: ['server-monitoring/logwatch/ubuntu-12-04-precise-pangolin/']
+modified: 2012-10-22
 modified_by:
   name: Linode
-published: 'Monday, October 22nd, 2012'
+published: 2012-10-22
 title: 'Monitor System Logs with Logwatch on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
 Logwatch is a utility used to monitor system logs and create reports. These reports include failed login attempts, successful login attempts, and storage space used/available.
 
-Before installing Logwatch, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Logwatch, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Update System Packages
 
@@ -37,14 +37,14 @@ By default, Logwatch will install Postfix if you do not have an SMTP service ins
 
 Once you have installed Logwatch, you will need to configure it to email you the reports it generates. You are encouraged to look through the entire configuration, but you may safely use Logwatch after editing the lines below.
 
-{: .file }
-/usr/share/logwatch/default.conf/logwatch.conf
-:   ~~~ ini
-    Output = mail
-    Format = html
-    MailTo = myemail@mydomain.com
-    MailFrom = logwatch@mydomain.com
-    ~~~
+{{< file "/usr/share/logwatch/default.conf/logwatch.conf" ini >}}
+Output = mail
+Format = html
+MailTo = myemail@mydomain.com
+MailFrom = logwatch@mydomain.com
+
+{{< /file >}}
+
 
 These directives tell Logwatch to email you reports in an HTML format. The `MailTo` and `MailFrom` directives should be valid email addresses.
 

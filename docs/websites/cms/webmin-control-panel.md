@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Webmin control panel to maintain your Linode.'
-keywords: 'webmin,webmin debian,webmin centos,webmin ubuntu,webmin fedora,linux control panel,debian,ubuntu,centos,fedora,control panel,admin panel'
+keywords: ["webmin", "webmin debian", "webmin centos", "webmin ubuntu", "webmin fedora", "linux control panel", "debian", "ubuntu", "centos", "fedora", "control panel", "admin panel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/webmin/installing-webmin/']
-modified: Tuesday, February 21st, 2017
+aliases: ['web-applications/control-panels/webmin/installing-webmin/']
+modified: 2017-02-21
 modified_by:
   name: Nick Brewer
-published: 'Wednesday, October 8th, 2014'
+published: 2014-10-08
 title: Webmin Control Panel
 external_resources:
  - '[Webmin Home Page](http://www.webmin.com/)'
@@ -52,12 +52,12 @@ Once you have satisfied all dependencies, you will need to download the Webmin p
 
 1. Add the Webmin repository to your known repositories list by creating the file below:
 
-    {: .file}
-    /etc/apt/sources.list.d/webmin.list
-    :   ~~~
-        deb http://download.webmin.com/download/repository sarge contrib
-        deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
-        ~~~
+    {{< file "/etc/apt/sources.list.d/webmin.list" >}}
+deb http://download.webmin.com/download/repository sarge contrib
+deb http://webmin.mirror.somersettechsolutions.co.uk/repository sarge contrib
+
+{{< /file >}}
+
 
 2. Download and install the GPG key for the repository:
 

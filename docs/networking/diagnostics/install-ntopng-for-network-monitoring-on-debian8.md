@@ -3,11 +3,11 @@ author:
   name: Andrew Lescher
   email: docs@linode.com
 description: 'This Linode tutorial guides you through deploying ntopng, a powerful, lightweight network tool that monitors and analyzes web traffic and packet flows, on Debian 8.'
-keywords: 'ntopng,network monitor,debian 8,debian jessie'
+keywords: ["ntopng", "network monitor", "debian 8", "debian jessie"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, June 28, 2017'
-alias: ['networking/diagnostics/deploy-ntopng-on-debian-8/']
-modified: Wednesday, September 13, 2017
+published: 2017-06-28
+aliases: ['networking/diagnostics/deploy-ntopng-on-debian-8/']
+modified: 2017-09-13
 modified_by:
   name: Andrew Lescher
 title: 'Install ntopng for Network Monitoring on Debian 8'
@@ -29,10 +29,10 @@ external_resources:
 
 In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you'll be able to perform the following:
 
--	Monitor and analyze traffic from your Linode;
--	Create Host Pools to group connected devices together based on your own criteria;
--	Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations;
--	Monitor security threats on your machine.
+-   Monitor and analyze traffic from your Linode;
+-   Create Host Pools to group connected devices together based on your own criteria;
+-   Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations;
+-   Monitor security threats on your machine.
 
 ### Before You Begin
 
@@ -42,8 +42,9 @@ In this tutorial you will configure and install ntopng on your Linode. The tutor
 4. OpenVPN will be used as an example to demonstrate the capabilities of ntopng. You do not need to have it installed on your machine to complete this guide. However, if you are interested in learning more about OpenVPN, read the [Setting up a Hardened OpenVPN Server on Debian 8](/docs/networking/vpn/set-up-a-hardened-openvpn-server) guide.
 
 
-{: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with `sudo`. If two commands are presented in the same instance (seperated by `&&`), you must prefix each command with `sudo` (ex. `sudo [command] && sudo [command]`). For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ### Add the ntopng Repository
 
@@ -65,15 +66,15 @@ By default, ntopng is run as the user `nobody`. This is a good choice for daemon
 
 1.  Add user `ntopng`:
 
-		useradd -r -s /bin/false ntopng
+        useradd -r -s /bin/false ntopng
 
 2.  Set permissions for user `ntopng` and installation files/directories as shown:
 
-		mkdir /var/tmp/ntopng
-		chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
-		chmod 1770 -R /var/tmp/ntopng
-		find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
-		find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
+        mkdir /var/tmp/ntopng
+        chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
+        chmod 1770 -R /var/tmp/ntopng
+        find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
+        find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
 
 ## Configure ntopng
 
@@ -97,28 +98,27 @@ Ntopng has a built in web server and initializer. Configuration options can be d
 
 4.  Create `/etc/ntopng/ntopng.conf` and match the contents to the example listed below. Replace `192.0.2.0` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. If you want to review available configuration parameters, run `man ntopng` from the terminal.
 
-    {: .file }
-    **/etc/ntopng/ntopng.conf**
-    : ~~~ conf
-      --user=ntopng
-      --interface=eth0
-      -w=192.0.2.0:3005
-      --community
-      --daemon
-      --dump-flows=logstash # optional
-      --disable-autologout # optional
-      --disable-login=1 # optional
-      ~~~
+    {{< file "**/etc/ntopng/ntopng.conf**" conf >}}
+--user=ntopng
+--interface=eth0
+-w=192.0.2.0:3005
+--community
+--daemon
+--dump-flows=logstash # optional
+--disable-autologout # optional
+--disable-login=1 # optional
 
-    {: .note}
-    >
-    > The option flags commented with `# optional` are **not mandatory.** All flags requiring input must be followed by an `=` and a value. Replace `eth0` with your network interface below, if you are not using `eth0`.
+{{< /file >}}
+
+
+    {{< note >}}
+The option flags commented with `# optional` are **not mandatory.** All flags requiring input must be followed by an `=` and a value. Replace `eth0` with your network interface below, if you are not using `eth0`.
+{{< /note >}}
 
 ##### Configuration File Breakdown
 
-{:. table .table-striped .table-bordered }
-|Flags       |  Features|
-|:----------:|---------- :|
+| Flags      |  Features  |
+|:----------:|:----------:|
 | --user | Designates the user `ntopng` will run under. Leaving this flag out of the configuration file will default to `nobody`.  |
 | --interface | The network interface ntopng will monitor.  |
 | -w | HTTP address and port used to connect to the admin interface. While port `3005` is the default, you may define any.  |
@@ -130,7 +130,7 @@ Ntopng has a built in web server and initializer. Configuration options can be d
 
 ## Open Ports For ntopng
 
-###For UFW
+### For UFW
 
     ufw allow 3005:3006/tcp
 
@@ -160,17 +160,17 @@ If you want to group devices over the same network or host a home media server, 
 
     ![Currently open connections](/docs/assets/ntopng/ntopng-currently-open-connections.png "Currently open connections")
 
-    {: .note}
-    >
-    > If you want to see all the host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
+    {{< note >}}
+If you want to see all the host connections on a single page, set the number of rows to display per page next to the filtering options above the table.
+{{< /note >}}
 
 ## Enable Security
 
 Ntopng provides a simple and convenient method for monitoring threats.
 
-{: .caution}
->
->Ntopng does not replace core security features such as a properly configured firewall. It is best to run this in tandem with an existing internal setup.
+{{< caution >}}
+Ntopng does not replace core security features such as a properly configured firewall. It is best to run this in tandem with an existing internal setup.
+{{< /caution >}}
 
 1.  Near the top of the web interface, scroll over **Settings** and select **Preferences**. Click on **Alerts** in the menu to the left. Click on **Enable Alerts** and choose which alerts you’d like to enable.
 

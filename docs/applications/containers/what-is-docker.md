@@ -4,20 +4,19 @@ author:
   name: Jon Chen
   email: docs@linode.com
 description: 'An overview of Installing Docker, with an example use case for Nginx'
-keywords: 'docker, ubuntu, 12.04, centos, container'
+keywords: ["docker", " ubuntu", " 12.04", " centos", " container"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, January 28th, 2014
+modified: 2014-01-28
 modified_by:
   name: Alex Fornuto
-alias: ['containers/docker/','applications/containers/docker.md/']
-published: 'Tuesday, January 28th, 2014'
+aliases: ['containers/docker/','applications/containers/docker.md/']
+published: 2014-01-28
 title: Docker
 ---
 
 Docker is an extensible, open-source engine powered by [Linux Containers](http://linuxcontainers.org/) that automates the deployment of applications as portable, lightweight, and self-sufficient containers. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [Getting Started Guide](/docs/getting-started/), that your system is up to date, and that you've logged in to your Linode as root via SSH.
 
-Installation
-------------
+# Installation
 
 For the purposes of this guide we will show you how to install Docker on both Ubuntu 12.04 and CentOS 6.4 Docker provides repositories for each of these distributions, which makes installation easy.
 
@@ -44,15 +43,15 @@ Here we will add the Docker-maintained repository for Ubuntu and install the sof
 
     The output should resemble:
 
-    ~~~
-    # docker run -i -t ubuntu /bin/bash
-    Unable to find image 'ubuntu' (tag: latest) locally
-    Pulling repository ubuntu
-    8dbd9e392a96: Download complete
-    b750fe79269d: Download complete
-    27cf78414709: Download complete
-    root@145dfc4f6dff:/#
-    ~~~
+    {{< output >}}
+# docker run -i -t ubuntu /bin/bash
+Unable to find image 'ubuntu' (tag: latest) locally
+Pulling repository ubuntu
+8dbd9e392a96: Download complete
+b750fe79269d: Download complete
+27cf78414709: Download complete
+root@145dfc4f6dff:/#
+{{< /output >}}
 
 5.  To exit the container, type `exit`.
 
@@ -79,8 +78,7 @@ Docker is available on the [EPEL](https://fedoraproject.org/wiki/EPEL#How_can_I_
 
 6.  To exit the container, type `exit`.
 
-What Can I Do with Docker?
---------------------------
+# What Can I Do with Docker?
 
 Docker allows users to package their applications and configurations into lightweight images for deployment as portable containers.
 
@@ -169,8 +167,7 @@ Run the following command to add `/etc/nginx/sites-enabled` and `/var/log/nginx`
 
     docker run -d -p 80:80 -v /etc/nginx/sites-enabled:/etc/nginx/sites-enabled -v /var/log/nginx:/var/log/nginx bsdlp/nginx
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

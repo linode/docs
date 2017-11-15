@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'A basic Minecraft server installation for Ubuntu 12.04'
-keywords: 'minecraft,ubuntu,ubuntu precise,12.04'
+keywords: ["minecraft", "ubuntu", "ubuntu precise", "12.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/']
-modified: Tuesday, October 1st, 2013
+aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-on-linode-with-ubuntu-12-04/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Monday, September 30th, 2013'
+published: 2013-09-30
 title: 'Minecraft on Linode with Ubuntu 12.04'
 ---
 
@@ -24,8 +24,7 @@ Running your own Minecraft server allows you to control whom you play with, and 
 
 In this guide, we will show you how to install the official or *Vanilla* server version of Minecraft, but you can use the same instructions for [Craftbukkit](http://dl.bukkit.org/downloads/craftbukkit/) or [Spigot](http://www.spigotmc.org/), which are popular versions of Minecraft that allow plugins and customization. We will also show you how to create a new user to run the Minecraft server.
 
-Preparation
------------
+# Preparation
 
 In this section, we'll prepare your Linode for installing the Minecraft server.
 
@@ -83,8 +82,7 @@ For convenience, all the necessary commands for installing JRE 7 are also listed
 
 If you don’t see this output or you get errors, refer to webupd8.org’s [guide](http://www.webupd8.org/2012/01/install-oracle-java-jdk-7-in-ubuntu-via.html) for more steps. Or if you prefer, you can download the installer for Oracle’s JRE [directly from Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre7-downloads-1880261.html), and install it on your own.
 
-Installing and Setting Up Minecraft
------------------------------------
+# Installing and Setting Up Minecraft
 
 There are many popular versions of the Minecraft server, but for this guide we'll be using the official version. You can follow these same steps with the third-party servers as well. One of the more popular versions is Craftbukkit. The list of available CraftBukkit versions is available [here](http://dl.bukkit.org/downloads/craftbukkit/).
 
@@ -106,27 +104,27 @@ To find the latest version of the Minecraft server, visit the [Minecraft downloa
 
         wget https://s3.amazonaws.com/Minecraft.Download/versions/1.6.4/minecraft_server.1.6.4.jar
 
-    {:.note}
-    >
-    > This URL will change as Minecraft is updated. Please check the downloads [page](https://minecraft.net/download) for the current URL.
+    {{< note >}}
+This URL will change as Minecraft is updated. Please check the downloads [page](https://minecraft.net/download) for the current URL.
+{{< /note >}}
 
 5.  Using your preferred text editor, create the following text file. This is a script that invokes the JRE and tells it to run Minecraft:
 
-    {: .file }
-    /home/minecraft/run.sh
-    :   ~~~
-        #!/bin/sh
-        BINDIR=$(dirname "$(readlink -fn "$0")")
-        cd "$BINDIR"
+    {{< file "/home/minecraft/run.sh" >}}
+#!/bin/sh
+BINDIR=$(dirname "$(readlink -fn "$0")")
+cd "$BINDIR"
 
-        java -Xms1024M -Xmx1536M -jar minecraft_server.1.6.4.jar -o true
-        ~~~
+java -Xms1024M -Xmx1536M -jar minecraft_server.1.6.4.jar -o true
 
-    {:.note}
-    >
-    > If you are using a different or newer version of the Minecraft server, make sure to adjust this file to name the correct `.jar` file.
-    >
-    > The variable `-Xms` defines for Java the minimum amount of memory to allocate for the Minecraft server, and `-Xmx` defines the maximum. These values are set for a Linode 2GB, but you will want to adjust these numbers based on your Linode’s size and other uses.
+{{< /file >}}
+
+
+    {{< note >}}
+If you are using a different or newer version of the Minecraft server, make sure to adjust this file to name the correct `.jar` file.
+
+The variable `-Xms` defines for Java the minimum amount of memory to allocate for the Minecraft server, and `-Xmx` defines the maximum. These values are set for a Linode 2GB, but you will want to adjust these numbers based on your Linode’s size and other uses.
+{{< /note >}}
 
 6.  Make the script executable:
 
@@ -140,9 +138,9 @@ To find the latest version of the Minecraft server, visit the [Minecraft downloa
 
         screen -S minecraft
 
-    {:.note}
-    >
-    > To leave this screen session running in the background, type **CTRL-a** and then **d**. You can now safely exit from your SSH session. To reattach to the session later, use the command `screen -rd minecraft`.
+    {{< note >}}
+To leave this screen session running in the background, type **CTRL-a** and then **d**. You can now safely exit from your SSH session. To reattach to the session later, use the command `screen -rd minecraft`.
+{{< /note >}}
 
 9.  In your screen session (which you started in the previous step), switch to the **minecraft** user:
 
@@ -178,8 +176,7 @@ To find the latest version of the Minecraft server, visit the [Minecraft downloa
         2013-09-22 23:37:54 [INFO] Preparing spawn area: 95%
         2013-09-22 23:37:55 [INFO] Done (29.209s)! For help, type "help" or "?"
 
-Configuring Your Minecraft Client
----------------------------------
+# Configuring Your Minecraft Client
 
 For you and your friends to play Minecraft, you will all need to install the Minecraft client on your computers.
 
@@ -194,16 +191,15 @@ For you and your friends to play Minecraft, you will all need to install the Min
 9.  In the **Server Address** field, enter your [Linode’s IP address](/docs/getting-started#find-the-ip-address-of-your-linode), or any domain that resolves to your Linode.
 10. Click **Done** to return to the server list screen.
 
-    {:.note}
-    >
-    > Sometimes the Minecraft Client will show a newly-added server as unavailable the first time around. Just click the **Refresh** button to reload the screen.
+    {{< note >}}
+Sometimes the Minecraft Client will show a newly-added server as unavailable the first time around. Just click the **Refresh** button to reload the screen.
+{{< /note >}}
 
 11. Double-click your newly-added server to log in.
 
 Congratulations! You’ve created a working Minecraft server. Feel free to look around and begin playing, but remember that your work isn’t done yet, and your server is not yet fully configured. Once you’re ready, log out and continue with this guide.
 
-Configuring Your New Minecraft Server
--------------------------------------
+# Configuring Your New Minecraft Server
 
 Once you’re ready to continue and have logged out of your server, log back in to your Linode.
 
@@ -279,8 +275,7 @@ Any time you modify these files while the game is running, you will need to stop
 
 The directories `world`, `world_nether`, and `world-the-end` contain the map and player data for those realms in your game. We suggest [backing up](/docs/platform/backup-service) these directories on a regular basis so that you can revert to previous versions in case of catastrophe or [griefing](http://www.minecraftwiki.net/wiki/Griefing). These directories may be in different locations, depending on which version of the Minecraft server you installed. Note that the directories for the *nether* and *the end* will not be created until a player goes to this area on the server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

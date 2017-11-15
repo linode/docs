@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A quick reference cheat sheet on Docker commands for installation, containers, images and more.'
-keywords: 'docker,quick reference,cheat sheet,commands'
-alias: ['applications/containers/docker-quick-reference-cheat-sheet/']
+keywords: ["docker", "quick reference", "cheat sheet", "commands"]
+aliases: ['applications/containers/docker-quick-reference-cheat-sheet/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, March 30th, 2015
+modified: 2015-03-30
 modified_by:
   name: Linode
-published: 'Monday, March 30th, 2015'
+published: 2015-03-30
 title: A Docker Commands Quick Reference Cheat Sheet
 ---
 Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a shared operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient self-contained systems that run identically wherever deployed.
@@ -17,9 +17,8 @@ Docker is becoming increasingly popular among software developers, operators and
 Optimizing the platform's functionality begins with mastery of requisite Docker commands, especially those listed on this cheat sheet that address installation, Hub interaction, and container and image creation and use.
 
 
-##Installation
+## Installation
 
-{: .table .table-striped .table-bordered}
 | Docker Syntax | Description |
 |:-------------|:---------|
 | **curl -sSL https://get.docker.com/ \| sh**    | The Docker maintained installation script<br> for **Debian** or **Ubuntu**.   |
@@ -27,9 +26,8 @@ Optimizing the platform's functionality begins with mastery of requisite Docker 
 | **sudo service docker start** | For **Centos 7** and **Fedora 21** after install,<br> Docker must be started.      |
 
 
-##Docker Hub
+## Docker Hub
 
-{: .table .table-striped .table-bordered}
 | Docker Syntax | Description |
 |:-------------|:---------|
 | **sudo docker search** searchitem | Search Docker Hub for images. Replace <br>`searchitem` with a search-able term. |
@@ -37,9 +35,8 @@ Optimizing the platform's functionality begins with mastery of requisite Docker 
 | **sudo docker push** user/image | Uploads an image to Docker Hub. <br> A Docker Hub username is necessary. |
 
 
-##Use Containers and Images
+## Use Containers and Images
 
-{: .table .table-striped .table-bordered}
 | Docker Syntax | Description |
 |:-------------|:---------|
 | **sudo docker run -t -i** user/image | Runs an image, creating a container and<br> changing the command prompt<br> to within the container. |
@@ -51,9 +48,8 @@ Optimizing the platform's functionality begins with mastery of requisite Docker 
 | **sudo docker rm -f** 1aa | Delete a container.<br> Replace `1aa` with a container ID. |
 | **sudo docker commit** 1aa user/image | Save a container as an image.<br> Replace `1aa` with a container ID. |
 
-##Image Creation
+## Image Creation
 
-{: .table .table-striped .table-bordered}
 | Docker Syntax | Description |
 |:-------------|:---------|
 | **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **`Dockerfile`**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|

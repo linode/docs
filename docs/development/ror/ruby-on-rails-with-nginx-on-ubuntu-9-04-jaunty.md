@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.04 operating system.'
-keywords: 'ruby on rails,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-9-04-jaunty/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, August 19th, 2009'
+published: 2009-08-19
 title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -18,21 +18,20 @@ title: 'Ruby on Rails with Nginx on Ubuntu 9.04 (Jaunty)'
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 9.04 (Jaunty).
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 First, make sure you have the `universe` repository enabled in your `/etc/apt/sources.list` file. Your file should resemble the following:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty main restricted universe
 
-    deb http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
-    deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
+deb-src http://security.ubuntu.com/ubuntu jaunty-security main restricted universe
+
+{{< /file-excerpt >}}
+
 
 If you added `universe` to the items in your list, you'll need to update your repository database:
 
@@ -66,8 +65,7 @@ If you are unsure of the version you require, you can install the latest version
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-Install Passenger and Nginx
----------------------------
+# Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version):
 
@@ -89,8 +87,7 @@ When prompted for the Nginx installation method, we recommend you choose "1" to 
 
 Please do **not** remove the Passenger files from `opt` after the install. They need to stay in place or your install will not function correctly.
 
-Set up an Init Script for Nginx
--------------------------------
+# Set up an Init Script for Nginx
 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
@@ -106,22 +103,14 @@ You can now start, stop, and restart Nginx just like any other server daemon. Fo
 
 The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
-Install MySQL Support (optional)
---------------------------------
+# Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.04 (Jaunty) guide](/docs/databases/mysql/ubuntu-9-04-jaunty). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
 
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -4,13 +4,13 @@ author:
   email: docs@linode.com
 description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
 og_description: 'Wercker allows you to set up automation pipelines for your apps with only a single configuration file. This guide explains the basics of the wercker.yml file and demonstrates several basic workflows.'
-keywords: 'wercker,docker,development'
+keywords: ["wercker", "docker", "development"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, November 6th, 2017'
-modified: 'Monday, November 6th, 2017'
+published: 2017-11-06
+modified: 2017-11-06
 modified_by:
   name: Linode
-title: 'How to Develop and Deploy Your Applications Uing Wercker'
+title: 'How to Develop and Deploy Your Applications Using Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
@@ -31,9 +31,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-    This guide will use `sudo` wherever possible.
+2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
 
 3.  Update your packages:
 
@@ -88,30 +86,30 @@ This example demonstrates how to use Wercker to update the source code on a remo
 
 Create a `wercker.yml` file in the root of the `jClocksGMT` directory and paste in the content below. Replace `192.0.2.0` with the public IP address of your Linode, and update the last line to use the correct username and file path. All indentation in the `wercker.yml` must be with spaces, not tabs.
 
-{: .file}
-/path/to/jClocksGMT/wercker.yml
-:   ~~~ yml
-    box: debian
-    # Build definition
-    build:
-      # The steps that will be executed on build
-      steps:
-        # Installs openssh client and server.
-        - install-packages:
-            packages: openssh-client openssh-server
-        # Adds Linode server to the list of known hosts.
-        - add-to-known_hosts:
-                hostname: 192.0.2.0
-                local: true
-        # Adds the Wercker SSH key.
-        - add-ssh-key:
-                keyname: linode
-        # Custom code to be executed on remote Linode
-        - script:
-            name: Update code on remote Linode
-            code: |
-              ssh username@<Linode IP or hostname> git -C /path/to/jClocksGMT pull
-    ~~~
+{{< file "/path/to/jClocksGMT/wercker.yml" yaml >}}
+box: debian
+# Build definition
+build:
+  # The steps that will be executed on build
+  steps:
+    # Installs openssh client and server.
+    - install-packages:
+        packages: openssh-client openssh-server
+    # Adds Linode server to the list of known hosts.
+    - add-to-known_hosts:
+            hostname: 192.0.2.0
+            local: true
+    # Adds the Wercker SSH key.
+    - add-ssh-key:
+            keyname: linode
+    # Custom code to be executed on remote Linode
+    - script:
+        name: Update code on remote Linode
+        code: |
+          ssh username@<Linode IP or hostname> git -C /path/to/jClocksGMT pull
+
+{{< /file >}}
+
 
 Whenever a Wercker run is triggered (by a push to the repository), Wercker will load a Docker image and run the steps specified from that image. This is why all commands to be run on your Linode are prefaced with an `ssh` command. In this case, the `wercker.yml` file contains the following steps:
 
@@ -138,63 +136,63 @@ This example demonstrates a more complicated pipeline with both `build` and `dep
 
 2.  Create the `wercker.yml` file in the same directory:
 
-    {: .file}
-    /path/to/example/wercker.yml
-    :   ~~~ yml
-        box: google/golang
+    {{< file "/path/to/example/wercker.yml" yaml >}}
+box: google/golang
     
-        build:
+build:
     
-            steps:
-            # Sets the go workspace and places your package
-            # in the right place in the workspace tree
-            - setup-go-workspace
+    steps:
+    # Sets the go workspace and places your package
+    # in the right place in the workspace tree
+    - setup-go-workspace
     
-            # Build the project
-            - script:
-                name: Build application
-                code: |
-                    go get github.com/<user>/example
-                    go build -o myapp
+    # Build the project
+    - script:
+        name: Build application
+        code: |
+            go get github.com/<user>/example
+            go build -o myapp
     
-            - script:
-                name: Copy binary
-                code: |
-                  cp myapp "$WERCKER_OUTPUT_DIR"
+    - script:
+        name: Copy binary
+        code: |
+          cp myapp "$WERCKER_OUTPUT_DIR"
     
-        ### Docker Deployment
-        deploy:
+### Docker Deployment
+deploy:
     
-            # This deploys to DockerHub
-            steps:
-            - internal/docker-scratch-push:
-                username: $DOCKER_USERNAME
-                password: $DOCKER_PASSWORD
-                repository: <docker-username>/myapp
-                cmd: ./myapp
+    # This deploys to DockerHub
+    steps:
+    - internal/docker-scratch-push:
+        username: $DOCKER_USERNAME
+        password: $DOCKER_PASSWORD
+        repository: <docker-username>/myapp
+        cmd: ./myapp
     
-        ### Linode Deployment from Docker
-        linode:
+### Linode Deployment from Docker
+linode:
     
-            steps:
-            # Installs openssh client and other dependencies.
-            - install-packages:
-                packages: openssh-client openssh-server
-            # Adds Linode server to the list of known hosts.
-            - add-to-known_hosts:
-                hostname: 192.0.2.0
-                local: true
-            # Adds SSH key created by Wercker
-            - add-ssh-key:
-                keyname: linode
-            # Custom code to pull image
-            - script:
-                name: pull latest image
-                code: |
-                    ssh username@192.0.2.0 docker pull <docker-username>/myapp:latest
-                    ssh username@192.0.2.0 docker tag <docker-username>/myapp:latest <docker-username>/myapp:current
-                    ssh username@192.0.2.0 docker rmi <docker-username>/myapp:latest
-        ~~~
+    steps:
+    # Installs openssh client and other dependencies.
+    - install-packages:
+        packages: openssh-client openssh-server
+    # Adds Linode server to the list of known hosts.
+    - add-to-known_hosts:
+        hostname: 192.0.2.0
+        local: true
+    # Adds SSH key created by Wercker
+    - add-ssh-key:
+        keyname: linode
+    # Custom code to pull image
+    - script:
+        name: pull latest image
+        code: |
+            ssh username@192.0.2.0 docker pull <docker-username>/myapp:latest
+            ssh username@192.0.2.0 docker tag <docker-username>/myapp:latest <docker-username>/myapp:current
+            ssh username@192.0.2.0 docker rmi <docker-username>/myapp:latest
+
+{{< /file >}}
+
     
 There are three pipelines in this configuration:
 
@@ -243,42 +241,42 @@ This last example introduces the **Wercker CLI**. This tool requires that Docker
 
     A `wercker.yml` file should already be present:
     
-    {: .file}
-    /path/to/getting-started-golang/wercker.yml
-    :   ~~~ yml
-        box:
-        id: golang
-        ports:
-            - "5000"
+    {{< file "/path/to/getting-started-golang/wercker.yml" yaml >}}
+box:
+id: golang
+ports:
+    - "5000"
 
-        dev:
-        steps:
-        - internal/watch:
+dev:
+steps:
+- internal/watch:
+    code: |
+      go build ./...
+      ./source
+    reload: true
+
+# Build definition
+build:
+    # The steps that will be executed on build
+    steps:
+
+    # golint step
+        - wercker/golint
+
+    # Build the project
+        - script:
+            name: go build
             code: |
               go build ./...
-              ./source
-            reload: true
 
-        # Build definition
-        build:
-            # The steps that will be executed on build
-            steps:
+# Test the project
+- script:
+    name: go test
+    code: |
+      go test ./...
 
-            # golint step
-                - wercker/golint
+{{< /file >}}
 
-            # Build the project
-                - script:
-                    name: go build
-                    code: |
-                      go build ./...
-
-        # Test the project
-        - script:
-            name: go test
-            code: |
-              go test ./...
-        ~~~
 
     Only two pipelines are defined in this `yml` file: `dev` and `build`. Note that in this example, Port `5000` is exposed.
     

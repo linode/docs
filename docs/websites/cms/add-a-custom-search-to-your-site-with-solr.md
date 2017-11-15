@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Index and search your site''s content with Apache Solr, a custom, fast, enterprise-grade, open source search solution.'
-keywords: 'solr,enterprise search,lucene,web search'
+keywords: ["solr", "enterprise search", "lucene", "web search"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, September 13, 2017'
-modified: Wednesday, September 13, 2017
+published: 2017-09-13
+modified: 2017-09-13
 modified_by:
   name: Linode
 title: 'Add a Custom Search to your Site with Solr'
@@ -33,8 +33,9 @@ Apache Solr is an open source search platform that provides administrators with 
 
 3.  Update your system and package repositories and install `wget`.
 
-{: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Java
 
@@ -129,8 +130,9 @@ Solr listens on port `8983` by default. Open the port to allow access to the web
 
     iptables -A INPUT -p tcp --dport 8983 -j ACCEPT -m comment --comment "Solr port"
 
-{: .note}
-> Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
+{{< note >}}
+Save your iptables rule using *iptables-persistent*, otherwise it will be lost on the next reboot.
+{{< /note >}}
 
 ## Access the Solr Administration Page
 
@@ -146,48 +148,48 @@ Set up a password protected login page for the Solr admin page:
 
 1. Navigate to `/opt/solr/server/etc` and edit the `webdefault.xml` file. Add the following to the end of the file, before `</web-app>`:
 
-    {:.file-excerpt }
-    /opt/solr/server/etc/webdefault.xml
-    :  ~~~ conf
-       <login-config>
-             <auth-method>BASIC</auth-method>
-             <realm-name>Solr Admin Auth</realm-name>
-       </login-config>
+    {{< file-excerpt "/opt/solr/server/etc/webdefault.xml" aconf >}}
+<login-config>
+      <auth-method>BASIC</auth-method>
+      <realm-name>Solr Admin Auth</realm-name>
+</login-config>
 
-       <security-constraint>
-             <web-resource-collection>
-                   <web-resource-name>Solr Admin Auth</web-resource-name>
-                   <url-pattern>/*</url-pattern>
-               </web-resource-collection>
-               <auth-constraint>
-                   <role-name>user</role-name>
-               </auth-constraint>
-         </security-constraint>
-       ~~~
+<security-constraint>
+      <web-resource-collection>
+            <web-resource-name>Solr Admin Auth</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>user</role-name>
+        </auth-constraint>
+  </security-constraint>
+
+{{< /file-excerpt >}}
+
 
 2. In the same directory, edit the `jetty.xml` file and add the following before `</Configure>` at the end:
 
-    {: .file-excerpt }
-    /opt/solr/server/etc/jetty.xml
-    :  ~~~ conf
-       <Call name="addBean">
-           <Arg>
-               <New class="org.eclipse.jetty.security.HashLoginService">
-                   <Set name="name">Solr Admin Auth</Set>
-                   <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
-                   <Set name="refreshInterval">0</Set>
-               </New>
-           </Arg>
-        </Call>
-       ~~~
+    {{< file-excerpt "/opt/solr/server/etc/jetty.xml" aconf >}}
+<Call name="addBean">
+    <Arg>
+        <New class="org.eclipse.jetty.security.HashLoginService">
+            <Set name="name">Solr Admin Auth</Set>
+            <Set name="config"><SystemProperty name="jetty.home" default="."/>/etc/realm.properties</Set>
+            <Set name="refreshInterval">0</Set>
+        </New>
+    </Arg>
+ </Call>
+
+{{< /file-excerpt >}}
+
 
 3. Create a `realm.properties` file in the current directory to add the user login information. Replace the username `admin` and `admin123` password with the user and secure password of your choice:
 
-    {: .file }
-    /opt/solr/server/etc/realm.properties
-    : ~~~ conf
-      admin: admin123,user
-      ~~~
+    {{< file "/opt/solr/server/etc/realm.properties" aconf >}}
+admin: admin123,user
+
+{{< /file >}}
+
 
       Here, `admin:` assigns a username "admin" with the password `admin123`. `user` attributes this new user to the "user" role-name set in `webdefault.xml`.
 

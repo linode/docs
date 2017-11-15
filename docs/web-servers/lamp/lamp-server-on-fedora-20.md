@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on Fedora 20'
-keywords: 'fedora,lamp,fedora 20 lamp,lamp server,linux lamp,fedora 20 apache'
+keywords: ["fedora", "lamp", "fedora 20 lamp", "lamp server", "linux lamp", "fedora 20 apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/fedora-20/','websites/lamp/lamp-server-on-fedora-20/']
-modified: Friday, April 11th, 2014
+aliases: ['lamp-guides/fedora-20/','websites/lamp/lamp-server-on-fedora-20/']
+modified: 2014-04-11
 modified_by:
   name: Alex Fornuto
-published: 'Friday, April 11th, 2014'
+published: 2014-04-11
 title: LAMP Server on Fedora 20
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
@@ -21,9 +21,9 @@ external_resources:
 
 This guide provides step-by-step instructions for installing a full-featured LAMP stack on a Fedora 20 system. In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If you don't feel that you will need MySQL or PHP, please don't feel obligated to install them.
 
-{: .note }
->
-> The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 Throughout this guide we will offer several suggested values for specific configuration settings. Some of these values will be set by default. These settings are shown in the guide as a reference, in the event that you change these settings to suit your needs and then need to change them back.
 
@@ -60,19 +60,19 @@ By default, all files ending in the `.conf` extension in `/etc/httpd/conf.d/` ar
 
 Edit the main Apache configuration file to add these resource use settings, or create a new .conf file in `/etc/httpd/conf.d/`. The settings shown below are a good starting point for a **Linode 2GB**.
 
-{: .file }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    KeepAlive Off
+{{< file "/etc/httpd/conf/httpd.conf" apache >}}
+KeepAlive Off
 
-    <IfModule prefork.c>
-            StartServers        4
-            MinSpareServers     20
-            MaxSpareServers     40
-            MaxClients          200
-            MaxRequestsPerChild 4500
-    </IfModule>
-    ~~~
+<IfModule prefork.c>
+        StartServers        4
+        MinSpareServers     20
+        MaxSpareServers     40
+        MaxClients          200
+        MaxRequestsPerChild 4500
+</IfModule>
+
+{{< /file >}}
+
 
 Now we'll configure virtual hosting so that we can host multiple domains (or subdomains) with the server. These websites can be controlled by different users, or by a single user, as you prefer.
 
@@ -84,27 +84,27 @@ There are different ways to set up Virtual Hosts, however we recommend the metho
 
 Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /var/www/example.com/public_html/
-         ErrorLog /var/www/example.com/logs/error.log
-         CustomLog /var/www/example.com/logs/access.log combined
-    </VirtualHost>
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /var/www/example.com/public_html/
+     ErrorLog /var/www/example.com/logs/error.log
+     CustomLog /var/www/example.com/logs/access.log combined
+</VirtualHost>
 
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /var/www/example.org/public_html/
-         ErrorLog /var/www/example.org/logs/error.log
-         CustomLog /var/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /var/www/example.org/public_html/
+     ErrorLog /var/www/example.org/logs/error.log
+     CustomLog /var/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Notes regarding this example configuration:
 
@@ -189,18 +189,18 @@ Once PHP5 is installed, we'll need to tune the configuration file located in `/e
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;` character)):
 
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php/error.log
-    max_execution_time = 30
-    memory_limit = 128M
-    register_globals = Off
-    max_input_time = 30
-    ~~~
+{{< file-excerpt "/etc/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php/error.log
+max_execution_time = 30
+memory_limit = 128M
+register_globals = Off
+max_input_time = 30
+
+{{< /file-excerpt >}}
+
 
 You will need to create the log directory for PHP and give the Apache user ownership:
 
@@ -213,11 +213,11 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
 You can test PHP by creating a file with the following contents under your "public\_html" directory:
 
-{: .file }
-/var/www/example.com/public\_html/test.php
-:   ~~~ php
-    <?php phpinfo(); ?>
-    ~~~
+{{< file "/var/www/example.com/public\\_html/test.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
 You will need to restart Apache before php scripts will work:
 

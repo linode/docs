@@ -1,0 +1,69 @@
+{{ define "main" }}
+<section class="primary first-section">
+  <div class="container">
+    {{ partial "breadcrumb" . }}
+    <div class="row" itemscope itemtype="http://schema.org/TechArticle">
+      <div class="col-sm-12">
+        <div class="row">
+          <div class="col-sm-9 col-sm-offset-3">
+          </div>
+        </div>
+        <div class="row">
+          <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
+            {{ partial "article_header" . }}
+           <div class="row">
+            <div class="col-sm-9">{{ partial "signup" . }}</div>
+            <div class="col-sm-3">{{ partial "share" . }}</div>
+            </div>
+            {{ partial "github" . }}
+            {{ partial "deprecated" . }}
+            {{ .Content }}
+            {{ partial "related" . }}
+            {{ partial "more" . }}
+            {{ if (getenv "HUGO_ENV") }}
+            {{ partial "disqus" . }}
+            {{ end }}
+            {{ partial "license" . }}
+          </div>
+          <div id="doc-sidebar-container" class="col-sm-3 col-sm-pull-9 hidden-xs">
+            <div id="doc-sidebar">
+              {{ partial "sidebar_search" . }}
+                {{ with .TableOfContents }}
+              <div class="doc-sidebar-inner" id="doc-sidebar-toc">
+                <h3 id="doc-sidebar-title">In This Guide:</h3>
+                <div class="sidebar sidebar-library{{ if ge (len .) 1500 }} toc-long{{ end }} nav navbar" id="markdown-toc">
+                    {{ . }}
+                </div>
+              </div>
+              {{ end }}
+              {{ partial "rss" . }}
+              {{ partial "monthly_updates" . }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-labelledby="imageModal" aria-hidden="true">
+  <div class="modal-dialog modal-full">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 id="img-modal-title" class="modal-title">Image Detail</h4>
+      </div>
+      <div class="modal-body">
+        <img id="img-modal-image" class="img-responsive">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ define "body-end" }}
+<script type="text/javascript">
+ SidebarScroll.init()
+</script>
+{{ end }}

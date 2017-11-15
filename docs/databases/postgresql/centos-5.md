@@ -4,19 +4,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with CentOS 5.'
-keywords: 'postgresql,postgresql database,postgresql on centos,relational database'
+keywords: ["postgresql", "postgresql database", "postgresql on centos", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 24th, 2013
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Sunday, September 13th, 2009'
+published: 2009-09-13
 title: Use PostgreSQL Relational Databases on CentOS 5
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on CentOS 5. We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-Installing PostgreSQL
----------------------
+# Installing PostgreSQL
 
 Make sure your system is up to date by issuing the following command:
 
@@ -31,8 +30,7 @@ The current version of the database server will be installed, along with several
     /sbin/chkconfig --levels 235 postgresql on
     service postgresql start
 
-Configuring PostgreSQL
-----------------------
+# Configuring PostgreSQL
 
 ### Setting the postgres Password
 
@@ -110,18 +108,18 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/var/lib/pgsql/data/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all ident sameuser
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all ident sameuser
+
+{{< /file-excerpt >}}
+
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 As root, restart the Postgresql service:
 
@@ -143,16 +141,14 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-Secure Remote Database Access
------------------------------
+# Secure Remote Database Access
 
 PostgreSQL listens for connections on localhost, and it is not advised to reconfigure it to listen on public IP addresses. If you would like to access your databases remotely using a graphical tool, please follow one of these guides:
 
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Windows](/docs/databases/postgresql/pgadmin-windows)
 -   [Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X](/docs/databases/postgresql/pgadmin-macos-x)
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Improve uptime with Monit Server Monitoring. Monit will watch you system around the clock, and respond to out-of-the-norm events by following your instructions.'
-keywords: 'installing Monit for server monitoring'
+keywords: ["installing Monit for server monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday October 15th, 2015'
-modified: 'Thursday October 15th, 2015'
+published: 2015-10-15
+modified: 2015-10-15
 modified_by:
     name: Linode
 title: 'Installing Monit for Server Monitoring'
@@ -20,7 +20,7 @@ external_resources:
 
 *This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
-<hr>
+---
 
 Keeping tabs on your servers can be time-consuming. You need to make sure connectivity is good, processes are running but not running away, resources are available, and system health is good. Whether you have one server or many, it's something you may not do as often as you should.
 
@@ -37,11 +37,11 @@ With Monit you get:
 * Web interface for status monitoring.
 * Availability from main package repositories.
 
-{: .note}
->
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Installing Monit
+## Installing Monit
 
 Update your system and install Monit. Some distros require that Monit be manually enabled and started.
 
@@ -87,7 +87,7 @@ If your distro has System V (CentOS 6, Debian 7) or Upstart (Ubuntu 14.04):
 
     sudo service monit restart
 
-##Configure the Monit Daemon
+## Configure the Monit Daemon
 
 Monit's configuration is in the file `/etc/monit/monitrc`. Open this file now in your favorite text editor. We'll start by setting up the monit process itself.
 
@@ -106,7 +106,7 @@ To have Monit delay starting on system boot, include the delay line:
 
 Other processes may take some time to complete their own startup. Including the delay line will prevent Monit from sending alerts that all services are down every time you boot the server.
 
-###Alerting
+### Alerting
 
 Monit can optionally alert you by email when it triggers on an event. It can use a Mail Transfer Agent (MTA) on the local host if you have one configured, or an outside mail server that will accept incoming SMTP traffic from your host. See [Linux System Administration Basics - Sending Email From Your Server](/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server) for help with configuring this.
 
@@ -134,7 +134,7 @@ Enter the email address to which Monit should deliver its alerts:
 
 If you prefer to receive alerts as text messages, use your cell provider's email-to-text gateway if one is provided. You can find a list of providers at Wikipedia, here: [Email-to-SMS gateways](https://en.wikipedia.org/wiki/SMS_gateway#Use_with_email_clients).
 
-###Web service
+### Web service
 
 Finally, as far as configuring Monit itself, you can enable the embedded web server to display all your system tests as a web page:
 
@@ -147,13 +147,13 @@ You can optionally restrict web interface access to just your IP address.
     set httpd port 2812
         allow 10.0.0.1 (your ip address)
 
-{: .note}
->
->If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configure-a-firewall).
+{{< note >}}
+If you choose to implement the web interface, be sure the port Monit uses (default 2812) is exposed to the devices on which you'll be viewing it. You may need to configure your firewall package or iptables if you have a default deny policy. See [Securing Your Server - Configuring a Firewall](/docs/security/securing-your-server#configure-a-firewall).
+{{< /note >}}
 
-##Configure Monit's Checking Actions
+## Configure Monit's Checking Actions
 
-###System Values
+### System Values
 
 Monit can monitor server resource utilization and alert you when your server is under unusual load:
 
@@ -166,7 +166,7 @@ Here, Monit has been instructed to alert when the load average, total system mem
 
 A good way to determine the alert thresholds is to set them low (you will receive frequent alerts) and then adjust them higher if alerts are more frequent than the situation requires. The actual tested values which triggered the alert will be included in the alert message, and you can use these to gauge what is a good threshold limit for your server.
 
-###Processes
+### Processes
 
 Most servers are running a set of critical services that are their reason for existing. If those services are not running and reachable, the server is down for all practical purposes. Monit can check on running processes and stop, start or restart them as needed.
 
@@ -197,7 +197,7 @@ The commands shown above are systemd compatible for a distribution using systemd
         start program = "service apache2 start" with timeout 40 seconds
         stop program  = "service apache2 stop"
 
-###Filesystem
+### Filesystem
 
 Monit can check filesystem properties such as whether a file exists, if its size is larger or smaller than specified, and what permissions are assigned. Another useful application is to test the timestamp of log files that should be updating.
 
@@ -219,7 +219,7 @@ Then, in `/etc/monit/monitrc` you'd have:
 
 If the backup does not complete, then the next morning an alert message will be waiting, and the server's Monit web page will show nightly-backup with a red status of "Timestamp failed."
 
-###Remote Hosts
+### Remote Hosts
 
 Perhaps you are not a system admin at all; you are a web designer who works with many client sites on different hosts. Wouldn't it be nice to proactively respond to site outages even before a client calls? It is! You can configure Monit to check all your client sites' statuses and alert you immediately if they are down:
 
@@ -242,6 +242,6 @@ Note that it is possible to change the alert recipient from the globally-defined
         alert someone.else@example.com
         noalert your.email@example.com
 
-##More Monit
+## More Monit
 
 Monit is highly configurable and its capabilities go beyond what have been discussed here. If you want to understand Monit more fully, you will find more information in the Monit documentation, linked below. It's lengthy but detailed and well organized.

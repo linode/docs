@@ -3,11 +3,11 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
-keywords: 'install WP-CLI,ubuntu,wordpress,apache,bash completion,plugin,WP-CLI,themes'
-alias: ['websites/cms/install-and-configure-wordpress-using-wp-cli']
+keywords: ["install WP-CLI", "ubuntu", "wordpress", "apache", "bash completion", "plugin", "WP-CLI", "themes"]
+aliases: ['websites/cms/install-and-configure-wordpress-using-wp-cli']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, March 11th, 2016'
-modified: Wednesday, February 15th, 2017
+published: 2016-03-11
+modified: 2017-02-15
 modified_by:
     name: Linode
 title: 'Install WordPress Using WP-CLI on Ubuntu 14.04'
@@ -38,9 +38,9 @@ This guide is written for Ubuntu 14.04. Before moving ahead, make sure you have 
 * [Securing your Server](/docs/security/securing-your-server)
 * [How to Install a LAMP Stack on Ubuntu 14.04](/docs/websites/lamp/lamp-on-ubuntu-14-04)
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install WP-CLI
 
@@ -84,11 +84,11 @@ The bash completion feature of WP-CLI allows you to see all the available comman
 
 2.  Edit the `.bashrc` file so that it is loaded by the shell every time you login. Open the file and add the following line in the editor:
 
-    {: .file-excerpt}
-    ~/.bashrc
-    :   ~~~ bash
-    source /home/$USER/wp-completion.bash
-    ~~~
+    {{< file-excerpt "~/.bashrc" bash >}}
+source /home/$USER/wp-completion.bash
+
+{{< /file-excerpt >}}
+
 
 3.  Run the following command to reload the bash profile:
 

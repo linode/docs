@@ -4,19 +4,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the PostgreSQL relational database server with Debian 6 (Squeeze).'
-keywords: 'postgresql debian 6,postgresql squeeze,postgresql database,relational database'
+keywords: ["postgresql debian 6", "postgresql squeeze", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, March 8th, 2013
+modified: 2013-03-08
 modified_by:
   name: Linode
-published: 'Friday, February 18th, 2011'
+published: 2011-02-18
 title: 'Use PostgreSQL Relational Databases on Debian 6 (Squeeze)'
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-Installing PostgreSQL
----------------------
+# Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -27,8 +26,7 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
     apt-get install postgresql postgresql-contrib
 
-Configure PostgreSQL
---------------------
+# Configure PostgreSQL
 
 ### Install the adminpack
 
@@ -122,19 +120,19 @@ You will be asked to specify several values for the new user. To delete this use
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/etc/postgresql/8.4/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 Issue the following command as root to restart the database daemon and ensure that your changes have propagated:
 
@@ -152,8 +150,7 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

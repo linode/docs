@@ -3,12 +3,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Learn the basics of Git in this guide. Discover one of the most popular distributed version control and source code management systems that make contributing to projects and working with a team easy.'
-keywords: 'git,dvcs,vcs,scm,gitweb,gitolite,ubuntu,debian,arch,gentoo'
+keywords: ["git", "dvcs", "vcs", "scm", "gitweb", "gitolite", "ubuntu", "debian", "arch", "gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, July 3, 2017
+modified: 2017-07-03
 modified_by:
   name: Linode
-published: 'Friday, September 4th, 2009'
+published: 2009-09-04
 title: Getting Started with Git
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
@@ -71,7 +71,6 @@ After you have added the file, stage a commit and leave a commit message. Commit
 
 This table lists basic commands, a description, and an example of the command in use:
 
-{: .table .table-striped }
 | Command           | Description                                                                           | Example                    |
 |:------------------|:--------------------------------------------------------------------------------------|:---------------------------|
 | `git add`         | Add a file to a repository.                                                           | `git add filename`         |
@@ -89,7 +88,6 @@ Branches are used for editing files without disturbing the working portions of a
 
 The basic options used with the `git branch` command are:
 
-{: .table .table-striped}
 | Option   | Description                         |
 |:---------|:------------------------------------|
 | -r       | List the remote branches            |
@@ -123,7 +121,6 @@ The `remote` command will display the short names of your remote repositories. I
 
 Below are some basic commands for working with remote repositories:
 
-{: .table .table-striped }
 | Command                                   | Description                                                         |
 |:------------------------------------------|:--------------------------------------------------------------------|
 | `git remote add [remote-name] [url]`      | Add a new remote repository.                                        |

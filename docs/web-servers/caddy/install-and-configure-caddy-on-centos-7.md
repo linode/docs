@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This guide will show you how to install and configure Caddy and run it as a systemd service.'
-keywords: 'caddy,web server'
+keywords: ["caddy", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Thursday, September 14th, 2017'
-modified: Monday, September 18th, 2017
+published: 2017-09-14
+modified: 2017-09-18
 modified_by:
   name: Linode
 title: 'Install and Configure Caddy on CentOS 7'
@@ -23,7 +23,7 @@ external_resources:
 
 ![Install Caddy on CentOS](/docs/assets/caddy/Caddy.jpg)
 
-[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically. 
+[Caddy](https://caddyserver.com/) is a fast, open-source and security-focused web server written in [Go](https://golang.org/). Caddy includes modern features such as support for virtual hosts, minification of static files, and HTTP/2. Caddy is also the first web-server that can obtain and renew SSL/TLS certificates, using [Let's Encrypt](https://letsencrypt.org/),automatically.
 
 ## Before You Begin
 
@@ -39,7 +39,7 @@ external_resources:
 
 ## Install Caddy
 
-1.  Install Caddy using cURL: 
+1.  Install Caddy using cURL:
 
         sudo curl https://getcaddy.com | bash -s http.minify
 
@@ -53,7 +53,7 @@ external_resources:
 
         sudo groupadd www-data
         sudo useradd www-data -d /home/caddy -g www-data -s /sbin/nologin
-    
+
 4.  Create a few necessary directories for Caddy's configuration file, log file, and for the automatic TLS support:
 
         sudo mkdir -p /etc/caddy
@@ -86,9 +86,9 @@ This section will show you how to start Caddy automatically, whenever the Linode
         sudo chown www-data:www-data /var/www
         sudo chmod 555 /var/www
 
-    {:.caution}
-    >
-    >The files in your web root directory must belong to the Caddy user (www-data). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
+    {{< caution >}}
+The files in your web root directory must belong to the Caddy user (www-data). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
+{{< /caution >}}
 
 4.  If you plan to deploy your pages via an SFTP client--as an administrative user--other than **www-data** or **root**, set the following permissions. Replace `example_user` with the administrator's username:
 
@@ -106,18 +106,18 @@ This section will show you how to start Caddy automatically, whenever the Linode
 
 Edit the Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Linode:
 
-{: .file }
-/etc/caddy/Caddyfile
-:   ~~~ conf
-    203.0.113.0 {
-    root /var/www/my-website
-    tls your-email-here@example.com
-    minify
-    }
-    ~~~
+{{< file "/etc/caddy/Caddyfile" caddy >}}
+203.0.113.0 {
+root /var/www/my-website
+tls your-email-here@example.com
+minify
+}
+{{< /file >}}
 
-    {:.note}
-    > If you are using a Linode without a FQDN, delete the `tls your-email-here@example.com` line from the sample Caddyfile above.
+
+{{< note >}}
+If you are using a Linode without a FQDN, delete the `tls your-email-here@example.com` line from the sample Caddyfile above.
+{{< /note >}}
 
 ## Enable the Caddy Service
 

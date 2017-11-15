@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy Cacti, a Powerful Server-monitoring Solution That Uses SNMP to Track Resource Usage on Ubuntu 12.04.'
-keywords: 'Cacti,Ubuntu, Ubuntu 12.04,SNMP,spine,client machine'
+keywords: ["Cacti", "Ubuntu", " Ubuntu 12.04", "SNMP", "spine", "client machine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
-modified: Thursday, October 11th, 2012
+aliases: ['server-monitoring/cacti/ubuntu-12-04-precise-pangolin/','uptime/monitoring/monitoring-resource-utilization-with-cacti-on-ubuntu-12-04-precise/']
+modified: 2012-10-11
 modified_by:
   name: Linode
-published: 'Thursday, October 11th, 2012'
+published: 2012-10-11
 title: 'Use Cacti to Monitor Resource Utilization on Ubuntu 12.04'
 external_links:
  - '[Cacti Website](http://www.cacti.net/index.php)'
@@ -22,7 +22,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 For these kinds of deployments we encourage you to consider a tool like Cacti, which is a flexible front end for the RRDtool application. Cacti simply provides a framework and a mechanism to poll a number of sources for data regarding your systems, which can then be graphed and presented in a clear web-based interface. Whereas packages like Munin provide monitoring for a specific set of metrics on systems which support the Munin plug in, Cacti provides increased freedom to monitor larger systems and more complex deployment by way of its plug-in framework.
 
-Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing Cacti we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Prerequisites
 
@@ -36,17 +36,17 @@ Begin by setting the timezone of your server if it isn't already set. Set your s
 
 The `universe` repositories should be enabled on your Linode by default. You can double-check this by editing the `/etc/apt/sources.list` file, and verifying that lines resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
-    ## team. Also, please note that software in universe WILL NOT receive any
-    ## review or updates from the Ubuntu security team.
-    deb http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
-    deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
-    ~~~
+{{< file "/etc/apt/sources.list" >}}
+## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu
+## team. Also, please note that software in universe WILL NOT receive any
+## review or updates from the Ubuntu security team.
+deb http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise universe
+deb http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ precise-updates universe
+
+{{< /file >}}
+
 
 If you had to enable new repositories, issue the following command to update your package lists:
 
@@ -92,13 +92,17 @@ Since snmpd binds to localhost by default, we'll need to edit the `/etc
 
 Open the file and find the section labeled `Agent Behaviour`. Comment out the line that specifies `127.0.0.1` as the agent address by placing a `#`  in front of it. Uncomment the other line that defines the agentAddress as all  interfaces. The `Agent Behavior` section should now resemble the following:
 
-.. file:: /etc/snmp/snmpd.conf
 
-    \#  Listen for connections from the local system only     \#agentAddress  udp:127.0.0.1:161     \#  Listen for connections on all interfaces (both IPv4 \*and\* IPv6)     agentAddress udp:161,udp6:[::1]:161
+{{<file-excerpt "/etc/snmp/snmpd.conf">}}
+#  Listen for connections from the local system only
+# agentAddressudp:127.0.0.1:161
+# Listen for connections on all interfaces (both IPv4 \*and\* IPv6) agentAddress udp:161,udp6:[::1]:161
+{{</file-excerpt>}}
 
 After saving your changes to the configuration file, you'll need to reload  settings for snmpd by running the following command:
 
 `service snmpd reload`
+
 
 At this point your machine is ready for polling. Go into the Cacti interface to add the new "Device". Under the "Console" tab, select "New Graphs" and then "Create New Host". Enter the pertinent information in the fields required. Make sure to select "Ping" for "Downed Device Detection". Click the "create" button to save your configuration. On the "save successful" screen, select your newly created device and from the drop down next to "Choose an Action" select "Place on a Tree" and then click "go". Hit "yes" on the next screen. On the "New Graphs" screen, you'll be able to create several different types of graphs of your choice. Follow the on-screen instructions to add these graphs to your tree.
 
