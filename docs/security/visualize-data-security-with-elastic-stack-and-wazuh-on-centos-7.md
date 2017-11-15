@@ -2,14 +2,16 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Utilizing the Elastic Stack (ElasticSearch, Logstash, and Kibana), security data and threat alerts can be collected, logged, and visualized with the integration of Wazuh, a branch of the OSSEC Intrusion Detection System.'
+description: 'This guide shows how to use Elastic Stack (ElasticSearch, Logstash, and Kibana) to collect, log and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection System.'
+og_description: 'Elasticsearch, Logstash, Kibana, & OSSEC's Wazuh form a powerful analytics and visualizing tool that monitors security risks to your server. This guide guides you though loading, configuring and running what has been known as the ELK Stack. 
+alias: ['security/visualize-server-security-with-the-elk-stack/']
 keywords: ["ossec", "elk stack", "elk", "ossec-hids"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-11
 modified: 2017-10-12
 modified_by:
   name: Linode
-title: 'Visualize Server Security On CentOS 7 With The Elastic Stack'
+title: 'Visualize Data Security With Elasticsearch and Wazuh On CentOS 7'
 contributor:
   name: Andrew Lescher
   link: 'https://www.linkedin.com/in/andrew-lescher-87027940/'
@@ -30,25 +32,25 @@ external_resources:
 
 ---
 
-## Introduction To This Tutorial
+## What are Elasticsearch, ELK Stack and Wazuh?
 
-In this tutorial, you will learn how to install and link together ElasticSearch, Logstash, Kibana, and Wazuh OSSEC to aid in monitoring and visualizing security threats to your machine. The resulting structure can be broken down into four core components:
+In this tutorial, you will learn how to install and link together Elasticsearch, Logstash, Kibana, and Wazuh OSSEC to aid in monitoring and visualizing security threats to your machine. The resulting structure can be broken down into four core components:
 
-**ElasticSearch**
+**Elasticsearch**
 
-  - The heart of the Elastic Stack, ElasticSearch provides powerful search and analytical capabilities. It's purpose in the Elastic Stack is to centrally store and retrieve data collected by Logstash.
+  - The heart of the Elastic Stack, Elasticsearch provides powerful search and analytical capabilities. It's purpose in the Elastic Stack is to centrally store and retrieve data collected by Logstash.
 
 **Logstash**
 
-  - Receives data input from multiple sources and passes it along to a central database (ElasticSearch)
+  - Receives data input from multiple sources and passes it along to a central database (Elasticsearch)
 
 **Kibana**
 
-  - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in ElasticSearch.
+  - A self-hosted, web based tool which provides a multitude of methods to visualize and represent data stored in Elasticsearch.
 
 **Wazuh OSSEC**
 
-  - An open source branch of the orignal OSSEC HIDS developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
+  - An open-source branch of the orignal OSSEC HIDS developed for integration into the Elastic Stack. Wazuh provides the OSSEC software with the OSSEC ruleset, as well as a RESTful API Kibana plugin optimized for displaying and analyzing host IDS alerts.
 
 ## Before You Begin
 
@@ -136,23 +138,23 @@ protect=1
 
 Install the Elastic Stack via rpm files to get the latest versions of all the software. Be sure to check the Elastic website for more recent software versions. Version 5.6.2 was the most recent at the time of publishing.
 
-### ElasticSearch
+### Elasticsearch
 
-1.  Download the ElasticSearch rpm file into the `/opt` directory.
+1.  Download the Elasticsearch rpm file into the `/opt` directory.
 
         cd /opt
         wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.6.2.rpm
 
-2.  Install ElasticSearch.
+2.  Install Elasticsearch.
 
         rpm -ivh elasticsearch-5.6.2.rpm
 
-3.  Enable ElasticSearch on system boot.
+3.  Enable Elasticsearch on system boot.
 
         systemctl enable elasticsearch
         systemctl start elasticsearch
 
-4.  Load The Wazuh ElasticSearch template.
+4.  Load The Wazuh Elasticsearch template.
 
         wget https://raw.githubusercontent.com/wazuh/wazuh-kibana-app/2.1/server/startup/integration_files/template_file.json
         curl -XPUT http://localhost:9200/_template/wazuh/ -d @template_file.json
@@ -280,7 +282,7 @@ The Kibana app installation process takes several minutes to complete and it may
 
 The Elastic Stack will require some tuning before it can be accessed via the Wazuh API.
 
-1. Enable memory locking in ElasticSearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
+1. Enable memory locking in Elasticsearch to mitigate poor performance. Uncomment or add this line to `/etc/elasticsearch/elasticsearch.yml`:
 
         bootstrap.memory_lock: true
 
@@ -310,7 +312,7 @@ MAX_LOCKED_MEMORY=unlimited
 . . .
 {{< /file >}}
 
-3. Configure the ElasticSearch heap size. This figure will determine how much memory ElasticSearch is allowed to consume. You must determine the optimum heap size for ElasticSearch based on your system's hardware resources. However, the following two rules always apply:
+3. Configure the Elasticsearch heap size. This figure will determine how much memory Elasticsearch is allowed to consume. You must determine the optimum heap size for Elasticsearch based on your system's hardware resources. However, the following two rules always apply:
 
   - No more than 50% of available RAM
   - No more than 32GB of RAM
@@ -330,10 +332,10 @@ MAX_LOCKED_MEMORY=unlimited
 . . .
 {{< /file >}}
 
-This configuration configures ElasticSearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
+This configuration configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
 {{< caution >}}
-Set this value carefully. If the system RAM is completely depleted, ElasticSearch will crash.
+Set this value carefully. If the system RAM is completely depleted, Elasticsearch will crash.
 {{< /caution >}}
 
 ## Connect The Elastic Stack With The Wazuh API
