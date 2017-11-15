@@ -4,30 +4,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing and using the Apache Tomcat Java Servlet engine on Debian 5 (Squeeze.)'
-keywords: 'java,apache tomcat,java debian,java lenny'
+keywords: ["java", "apache tomcat", "java debian", "java lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/debian-6-squeeze/','websites/frameworks/apache-tomcat-on-debian-6-squeeze/']
-modified: Friday, May 13th, 2011
+aliases: ['frameworks/apache-tomcat/debian-6-squeeze/','websites/frameworks/apache-tomcat-on-debian-6-squeeze/']
+modified: 2011-05-13
 modified_by:
   name: Linode
-published: 'Thursday, February 17th, 2011'
+published: 2011-02-17
 title: 'Apache Tomcat on Debian 6 (Squeeze)'
 ---
 
 Apache Tomcat is a free and open source software implementation for JavaServlets. It provides support for Java Server Pages (JSP), which power many popular web-based applications. You may choose to run Tomcat with either Sun's Java implementation or the OpenJDK implementation of Java, and this document provides instructions for using either option.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Choose and Install a Java Implementation
-----------------------------------------
+# Choose and Install a Java Implementation
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -42,15 +40,15 @@ If you chose to run OpenJDK, then you can skip the remainder of this section. If
 
 Add the following line to your `sources.list` file:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://ftp.debian.org/debian/ squeeze non-free 
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://ftp.debian.org/debian/ squeeze non-free
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 
@@ -58,8 +56,7 @@ Now you are ready to install Sun Java with the following command (acknowledging 
 
 Now you are ready to proceed with the Apache Tomcat install.
 
-Install Apache Tomcat
----------------------
+# Install Apache Tomcat
 
 To install Tomcat, issue the following command:
 
@@ -75,17 +72,16 @@ Tomcat should now be totally functional, following installation and your next sy
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-Test and Use Tomcat
--------------------
+# Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
-{: .file-excerpt }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="username" password="examplemorris" roles="manager"/>
-    ~~~
+{{< file-excerpt "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="username" password="examplemorris" roles="manager"/>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:
 
@@ -93,8 +89,7 @@ Issue the following command to restart the Tomcat server, which will allow this 
 
 Congratulations! You know have a working Apache Tomcat installation.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

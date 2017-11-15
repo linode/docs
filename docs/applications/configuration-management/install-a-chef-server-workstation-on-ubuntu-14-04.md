@@ -2,13 +2,13 @@
 author:
   name: Elle Krout
 description: 'Instructions on how to configure a Chef server and virtual workstation and how to bootstrap a node on Ubuntu 14.04'
-keywords: 'chef,chef installation,configuration change management,server automation,chef server,chef workstation,chef-client,knife.rb,version control'
+keywords: ["chef", "chef installation", "configuration change management", "server automation", "chef server", "chef workstation", "chef-client", "knife.rb", "version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','applications/chef/setting-up-chef-ubuntu-14-04/','applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
-modified: Wednesday, June 10th, 2015
+aliases: ['applications/chef/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/','applications/chef/setting-up-chef-ubuntu-14-04/','applications/configuration-management/deploy-a-chef-server-workstation-and-node-on-ubuntu-14-04/']
+modified: 2015-06-10
 modified_by:
   name: Elle Krout
-published: 'Wednesday, June 10th, 2015'
+published: 2015-06-10
 title: 'Install a Chef Server Workstation on Ubuntu 14.04'
 external_resources:
  - '[Chef](http://www.chef.io)'
@@ -23,10 +23,11 @@ Chef is comprised of a Chef server, one or more workstations, and a number of no
 
 This guide will show users how to create and configure a Chef server, a virtual workstation, and how to bootstrap a node to run the chef-client, all on individual Linodes.
 
-{: .note }
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Prerequisites
+## Prerequisites
 
 -	One 4GB Linode to host the Chef server, running Ubuntu 14.04
 -	Two Linodes of any size to host a workstation and a node, each running Ubuntu 14.04
@@ -191,19 +192,20 @@ The workstation is used to add and edit cookbooks and other configuration files.
 
 2.	Copy the following configuration into the `knife.rb` file:
 
-	{: .file}
-	~/chef-repo/.chef/knife.rb
-	:	~~~
-		log_level                :info
-		log_location             STDOUT
-		node_name                'username'
-		client_key               '~/chef-repo/.chef/username.pem'
-		validation_client_name   'shortname-validator'
-		validation_key           '~/chef-repo/.chef/shortname.pem'
-		chef_server_url          'https://123.45.67.89/organizations/shortname'
-		syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
-		cookbook_path [ '~/chef-repo/cookbooks' ]
-		~~~
+	{{< file "~/chef-repo/.chef/knife.rb" >}}
+log_level                :info
+log_location             STDOUT
+node_name                'username'
+client_key               '~/chef-repo/.chef/username.pem'
+validation_client_name   'shortname-validator'
+validation_key           '~/chef-repo/.chef/shortname.pem'
+chef_server_url          'https://123.45.67.89/organizations/shortname'
+syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
+cookbook_path [ '~/chef-repo/cookbooks' ]
+
+
+{{< /file >}}
+
 
 	Change the following:
 
@@ -259,26 +261,27 @@ This section is optional, but provides instructions on downloading a cookbook to
 
 2.	Open the `default.rb` file to examine the default cookbook recipe:
 
-	{: .file-excerpt}
-	~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb
-	:	~~~
-		#
-		# Cookbook Name:: cron-delvalidate
-		# Recipe:: Chef-Client Cron & Delete Validation.pem
-		#
-		#
+	{{< file-excerpt "~/chef-repo/cookbooks/cron-delvalidate/recipies/default.rb" >}}
+#
+# Cookbook Name:: cron-delvalidate
+# Recipe:: Chef-Client Cron & Delete Validation.pem
+#
+#
 
-		cron "clientrun" do
-		  minute '0'
-		  hour '*/1'
-		  command "/usr/bin/chef-client"
-		  action :create
-		end
+cron "clientrun" do
+  minute '0'
+  hour '*/1'
+  command "/usr/bin/chef-client"
+  action :create
+end
 
-		file "/etc/chef/validation.pem" do
-		  action :delete
-		end
-		~~~
+file "/etc/chef/validation.pem" do
+  action :delete
+end
+
+
+{{< /file-excerpt >}}
+
 
 	The resource `cron "clientrun" do` defines the cron action. It is set to run the chef-client action (`/usr/bin/chef-client`) every hour (`*/1` with the `*/` defining that it's every hour and not 1AM daily). The `action` code denotes that Chef is *creating* a new cronjob.
 

@@ -3,18 +3,18 @@ author:
   name: Chris Walsh
   email: docs@linode.com
 description: 'Install SteamCMD, a command-line version of the Steam client, which works with games that use SteamPipe. Installing SteamCMD is a prerequisite before hosting a Steam title on your own game server.'
-keywords: 'steam,steamcmd,steam cmd,games,game server,steam server,steampipe'
+keywords: ["steam", "steamcmd", "steam cmd", "games", "game server", "steam server", "steampipe"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Tuesday, March 29th, 2016'
+modified: 2016-03-29
 modified_by:
   name: Linode
-published: 'Monday, February 15th, 2016'
+published: 2016-02-15
 title: 'Install SteamCMD for a Steam Game Server'
 external_resources:
  - '[Valve Developer Community: SteamCMD](https://developer.valvesoftware.com/wiki/SteamCMD)'
  - '[Dedicated Steam Servers for Linux](https://developer.valvesoftware.com/wiki/Dedicated_Servers_List#Linux_Dedicated_Servers)'
  - '[Steam Support: Required Ports for Steam](https://support.steampowered.com/kb_article.php)'
-alias: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
+aliases: ['applications/game-servers/install-steamcmd-for-a-steam-game-server/']
 ---
 
 SteamCMD is a command-line version of the Steam client which works with games that use [SteamPipe](https://developer.valvesoftware.com/wiki/SteamPipe). If you intend to host a Steam title on your own game server, installing SteamCMD is a prerequisite.
@@ -23,9 +23,9 @@ SteamCMD is a command-line version of the Steam client which works with games th
 
 This guide is intended to get you quickly up and running with SteamCMD on your Linode. See Valve's [SteamCMD wiki page](https://developer.valvesoftware.com/wiki/SteamCMD) for more information and advanced setups.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Install
 
@@ -56,83 +56,80 @@ Game servers and clients are an especially ripe target for attack. Use our [Secu
 
     *IPv4*
 
-    ~~~
-    *filter
+    {{< file-excerpt "iptables" >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s 127.0.0.0/8 -j REJECT
 
-    # Allow ping.
-    -A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
+# Allow ping.
+-A INPUT -p icmp -m state --state NEW --icmp-type 8 -j ACCEPT
 
-    # Allow SSH connections.
-    -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+# Allow SSH connections.
+-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-    # Allow the Steam client.
-    -A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
-    -A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
+# Allow the Steam client.
+-A INPUT -p udp -m udp --sport 27000:27030 --dport 1025:65355 -j ACCEPT
+-A INPUT -p udp -m udp --sport 4380 --dport 1025:65355 -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    # This includes ICMP error returns.
-    -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+# Allow inbound traffic from established connections.
+# This includes ICMP error returns.
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-    # Log what was incoming but denied (optional but useful).
-    -A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
-    -A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
+# Log what was incoming but denied (optional but useful).
+-A INPUT -m limit --limit 3/min -j LOG --log-prefix "iptables_INPUT_denied: " --log-level 7
+-A FORWARD -m limit --limit 3/min -j LOG --log-prefix "iptables_FORWARD_denied: " --log-level 7
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
-    -A FORWARD -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
+{{< /file-excerpt >}}
 
-    {: .note}
-    >
-    >Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
+    {{< note >}}
+Some Steam games require a few additional rules which can be found in our [Steam game guides](/docs/applications/game-servers/). Steam can also use multiple port ranges for various purposes, but they should only be allowed if your game(s) make use of those services. See [this](https://support.steampowered.com/kb_article.php?ref=8571-GLVN-8711) Steam Support page for more information.
+{{< /note >}}
 
     *IPv6*
 
     Steam currently supports multiplayer play over IPv4 only, so a Steam server only needs basic IPv6 firewall rules, shown below.
 
-    ~~~
-    *filter
+    {{< file-excerpt "iptables" >}}
+*filter
 
-    # Allow all loopback (lo0) traffic and reject traffic
-    # to localhost that does not originate from lo0.
-    -A INPUT -i lo -j ACCEPT
-    -A INPUT ! -i lo -s ::1/128 -j REJECT
+# Allow all loopback (lo0) traffic and reject traffic
+# to localhost that does not originate from lo0.
+-A INPUT -i lo -j ACCEPT
+-A INPUT ! -i lo -s ::1/128 -j REJECT
 
-    # Allow ICMP.
-    -A INPUT -p icmpv6 -j ACCEPT
+# Allow ICMP.
+-A INPUT -p icmpv6 -j ACCEPT
 
-    # Allow inbound traffic from established connections.
-    -A INPUT -m state --state ESTABLISHED -j ACCEPT
+# Allow inbound traffic from established connections.
+-A INPUT -m state --state ESTABLISHED -j ACCEPT
 
-    # Reject all other inbound.
-    -A INPUT -j REJECT
-    -A FORWARD -j REJECT
+# Reject all other inbound.
+-A INPUT -j REJECT
+-A FORWARD -j REJECT
 
-    COMMIT
-    ~~~
+COMMIT
+{{< /file-excerpt >}}
 
 5.  If you are using **firewalld** (CentOS 7, Fedora) instead of iptables, **use these rules**. If you are using iptables, do skip this step.
 
-    ~~~
-    sudo firewall-cmd --zone="public" --add-service=ssh --permanent
-    sudo firewall-cmd --zone="public" --add-forward-port=port=27000-27030:proto=udp:toport=1025-65355 --permanent
-    sudo firewall-cmd --zone="public" --add-forward-port=port=4380:proto=udp:toport=1025-65355 --permanent
-    sudo firewall-cmd --reload
-    ~~~
+        sudo firewall-cmd --zone="public" --add-service=ssh --permanent
+        sudo firewall-cmd --zone="public" --add-forward-port=port=27000-27030:proto=udp:toport=1025-65355 --permanent
+        sudo firewall-cmd --zone="public" --add-forward-port=port=4380:proto=udp:toport=1025-65355 --permanent
+        sudo firewall-cmd --reload
 
     Switch on firewalld and verify your ruleset:
 
         sudo systemctl start firewalld
         sudo systemctl enable firewalld
         sudo firewall-cmd --zone="public" --list-all
-
 
 ## Install SteamCMD
 
@@ -155,10 +152,10 @@ Installing via the package manager allows you to more easily download updates an
 
         sudo apt-get install steamcmd
 
-    {: .note}
-    >
-    >On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
-        
+    {{< note >}}
+On Debian you need to add the `non-free` area of the repository to your sources, because the package is available only there.
+{{< /note >}}
+
 2.  Create a symlink to the `steamcmd` executable in a convenient place, such as your home directory:
 
         cd ~
@@ -176,9 +173,9 @@ Installing via the package manager allows you to more easily download updates an
 
         sudo apt-get install lib32gcc1
 
-    {: .note}
-    >
-    >Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
+    {{< note >}}
+Running `dpkg --add-architecture i386` is not necessary at this point. Our Steam game guides add [multiarch support](https://wiki.debian.org/Multiarch/HOWTO) only when a game requires it.
+{{< /note >}}
 
 2.  Create the directory for SteamCMD and change to it:
 
@@ -208,11 +205,11 @@ The game server will still operate despite this error, and it should be somethin
 1.  Run the executable in a screen.
 
     If you have installed SteamCMD from repositories:
-        
+
         screen ./steamcmd
 
-    If you have installed SteamCMD manually: 
-        
+    If you have installed SteamCMD manually:
+
         screen ./steamcmd.sh
 
     That will return an output similar to below and leave you at the `Steam>` prompt:
@@ -250,18 +247,18 @@ The game server will still operate despite this error, and it should be somethin
 
         login example_user
 
-    {: .caution}
-    >
-    > Be aware that some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
+    {{< caution >}}
+Be aware that some versions of the Steam CLI do **not** obfuscate passwords. If you're signing in with your Steam account, be aware of your local screen's security.
+{{< /caution >}}
 
-    {: .note}
-    >
-    >You can exit the `Steam>` prompt at any time by typing `quit`.
+    {{< note >}}
+You can exit the `Steam>` prompt at any time by typing `quit`.
+{{< /note >}}
 
 3.  To exit the screen session without disrupting the Steam process, press **CTRL + A** and then **D**. To resume, use the `screen -r` command. For more information, check out our guide on [how to use screen sessions](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions).
 
 ## Next Steps
 
-You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings to be modified. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down. 
+You're ready to install your first Steam game server. From here, certain games may need a few more i386 libraries or firewall rules, and most will need their configuration settings to be modified. The game server should allow easy administrative access with as little interruption to players as possible. Its software should frequently be updated, and players' progress should be saved when the server is properly shut down.
 
 Our [game server guides](/docs/applications/game-servers/) cover these requirements for specific games and contain various Steam tutorials which will pick you up exactly where this page leaves off.

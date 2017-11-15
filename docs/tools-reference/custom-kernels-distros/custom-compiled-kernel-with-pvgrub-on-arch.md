@@ -1,20 +1,21 @@
 ---
+deprecated: true
 author:
     name: Linode
     email: docs@linode.com
 description: 'Instructions for configuring your Linode to run a custom compiled kernel with PV-GRUB on Arch Linux'
-keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode, arch'
+keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", " arch"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, June 19th, 2014
+modified: 2014-06-19
 modified_by:
     name: Linode
-published: 'Saturday, July 17th, 2010'
+published: 2010-07-17
 title: 'Custom Compiled Kernel with PV-GRUB on Arch Linux'
 ---
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). 
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
 
 Prior to these instructions, follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
@@ -29,7 +30,7 @@ If this is the first time compiling a kernel on the Linode, issue the following 
 
     rm -rf /boot/*
 
-##Compile and Install the Kernel
+## Compile and Install the Kernel
 
 ### Download Kernel Sources
 
@@ -74,7 +75,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         make -j3 bzImage
         make -j3 modules
-        make 
+        make
         make install
         make modules_install
 
@@ -88,15 +89,15 @@ Once your configuration options are set, exit the configuration interface and an
 
 4.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-    	timeout 5
-	
-    	title Custom Compiled, kernel 3.19.3-custom 
-    	root (hd0) 
-    	kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
-        ~~~
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+timeout 5
+
+title Custom Compiled, kernel 3.19.3-custom
+root (hd0)
+kernel /boot/vmlinuz-3.19.3-custom root=/dev/xvda ro quiet
+
+{{< /file-excerpt >}}
+
 
 Note that there is no `initrd` line. With some distributions, the `initrd` image prepared during the kernel installation process does not work correctly with the Linode, and isn't needed anyhow.
 

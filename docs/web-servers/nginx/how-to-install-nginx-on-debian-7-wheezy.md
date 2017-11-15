@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 7 (Wheezy)'
-keywords: 'nginx,http,web servers,debian,debian wheezy,debian 7, install nginx on debian 7, install nginx'
+keywords: ["nginx", "http", "web servers", "debian", "debian wheezy", "debian 7", " install nginx on debian 7", " install nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/install-nginx-debian-7/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/']
-modified: Tuesday, January 28th, 2014
+aliases: ['web-servers/nginx/installation/debian-7-wheezy/','websites/nginx/basic-nginx-installation/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/','websites/nginx/websites-with-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/install-nginx-debian-7/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/index.cfm/','websites/nginx/how-to-install-nginx-on-debian-7-wheezy/']
+modified: 2014-01-28
 modified_by:
   name: Linode
-published: 'Tuesday, January 28th, 2014'
+published: 2014-01-28
 title: 'How to Install Nginx on Debian 7 (Wheezy)'
 external_links:
  - '[Linode Nginx Documentation](/docs/web-servers/nginx/)'
@@ -24,7 +24,7 @@ Before you begin installing the Nginx web server, it is assumed that you have fo
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure the hostname is set properly:
+Before you begin installing and configuring the components described in this guide, make sure you have followed the instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure the hostname is set properly:
 
     hostname
     hostname -f

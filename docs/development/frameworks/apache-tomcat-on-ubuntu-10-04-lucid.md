@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 10.04 (Lucid).'
-keywords: 'apache tomcat ubuntu 10.04,java,java ubuntu 10.04,java servlets ubuntu lucid,java ubuntu'
+keywords: ["apache tomcat ubuntu 10.04", "java", "java ubuntu 10.04", "java servlets ubuntu lucid", "java ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-10-04-lucid/','websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/apache-tomcat/ubuntu-10-04-lucid/','websites/frameworks/apache-tomcat-on-ubuntu-10-04-lucid/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Friday, July 23rd, 2010'
+published: 2010-07-23
 title: 'Apache Tomcat on Ubuntu 10.04 (Lucid)'
 ---
 
@@ -20,18 +20,16 @@ Apache Tomcat is an open source software implementation of the Java Servlet and 
 
 Before following this guide, ensure that your system is up to date and that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend reviewing our [beginner's guide](/docs/beginners-guide/) and the article concerning [systems administration basics](/docs/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Choose and Install Java Implementation
---------------------------------------
+# Choose and Install Java Implementation
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -44,39 +42,39 @@ If you choose to run OpenJDK, you can skip the rest of this section, as OpenJDK 
 
 If you would like to run the Sun Microsystems implementation of Java, edit the `/etc/apt/sources.list` so that it resembles the following example. This will enable access to the "partner" repository:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-updates main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-updates main restricted
+deb http://security.ubuntu.com/ubuntu lucid-updates main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-updates main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories - uncomment to enable
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+## universe repositories - uncomment to enable
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
 
-    ## partner repositories 
-    deb http://archive.canonical.com/ubuntu lucid partner
-    deb-src http://archive.canonical.com/ubuntu lucid partner
+## partner repositories
+deb http://archive.canonical.com/ubuntu lucid partner
+deb-src http://archive.canonical.com/ubuntu lucid partner
 
-    deb http://archive.canonical.com/ubuntu lucid-updates partner
-    deb-src http://archive.canonical.com/ubuntu lucid-updates partner
+deb http://archive.canonical.com/ubuntu lucid-updates partner
+deb-src http://archive.canonical.com/ubuntu lucid-updates partner
 
-    deb http://archive.canonical.com/ubuntu lucid-security partner
-    deb-src http://archive.canonical.com/ubuntu lucid-security partner
-    ~~~
+deb http://archive.canonical.com/ubuntu lucid-security partner
+deb-src http://archive.canonical.com/ubuntu lucid-security partner
+
+{{< /file >}}
+
 
 Issue the following command to update your system's package repositories:
 
@@ -86,8 +84,7 @@ Now you are ready to install Sun Java with the following command (after agreeing
 
     apt-get install sun-java6-jdk
 
-Install Apache Tomcat
----------------------
+# Install Apache Tomcat
 
 To install Tomcat, issue the following command:
 
@@ -103,17 +100,16 @@ Tomcat should now be totally functional, following installation and your next sy
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-Test and Use Tomcat
--------------------
+# Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
-{: .file-excerpt }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="username" password="examplemorris" roles="manager"/>
-    ~~~
+{{< file-excerpt "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="username" password="examplemorris" roles="manager"/>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:
 
@@ -121,8 +117,7 @@ Issue the following command to restart the Tomcat server, which will allow this 
 
 Congratulations! You know have a working Apache Tomcat installation.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

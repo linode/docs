@@ -3,24 +3,24 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'A guide to installing the SquirrelMail web client for email on Ubuntu 12.04.'
-keywords: 'squirrelmail, ubuntu, 12.04, mail client'
+keywords: ["squirrelmail", " ubuntu", " 12.04", " mail client"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/squirrelmail-ubuntu12-04/']
-modified: Wednesday, January 15th, 2014
+aliases: ['email/squirrelmail-ubuntu12-04/']
+modified: 2014-01-15
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, January 14th, 2014'
+published: 2014-01-14
 title: 'Installing SquirrelMail on Ubuntu 12.04'
 external_resources:
  - '[Official SquirrelMail Documentation](http://squirrelmail.org/documentation/)'
 deprecated: true
 ---
 
-SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/lamp-guides/ubuntu-12.04-precise-pangolin) guide.
+SquirrelMail is a webmail package written in PHP. It supports both SMTP and IMAP protocols. SquirrelMail features cross-platform compatibility since all of its pages render in HTML 4.0. SquirrelMail requires a web server with PHP to run properly. For this guide we'll be using Apache 2. If you don't already have Apache and PHP installed, you can check our [LAMP Server on Ubuntu 12.04](/docs/lamp-guides/ubuntu-12-04-precise-pangolin) guide.
 
- {: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Privileges](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Installation
 
@@ -45,56 +45,56 @@ Since SquirrelMail is accessed through a web server (Apache in this example), we
 
 2.  Edit the configuration file to uncomment the `<VirtualHost *:80>` block by removing the pound symbol (`#`), as shown below. Edit the IP and ServerName to match your Linode and/or domain settings:
 
-        sudo nano /etc/apache2/sites-available/squirrelmail 
+        sudo nano /etc/apache2/sites-available/squirrelmail
 
-	{: .file }
-	/etc/apache2/sites-available/squirrelmail
-	:   ~~~ apache
-		Alias /squirrelmail /usr/share/squirrelmail
+	{{< file "/etc/apache2/sites-available/squirrelmail" apache >}}
+Alias /squirrelmail /usr/share/squirrelmail
 
-		<Directory /usr/share/squirrelmail>
-		  Options FollowSymLinks
-		  <IfModule mod_php5.c>
-		    php_flag register_globals off
-		  </IfModule>
-		  <IfModule mod_dir.c>
-		    DirectoryIndex index.php
-		  </IfModule>
+<Directory /usr/share/squirrelmail>
+  Options FollowSymLinks
+  <IfModule mod_php5.c>
+    php_flag register_globals off
+  </IfModule>
+  <IfModule mod_dir.c>
+    DirectoryIndex index.php
+  </IfModule>
 
-		  # access to configtest is limited by default to prevent information leak
-		  <Files configtest.php>
-		    order deny,allow
-		    deny from all
-		    allow from 127.0.0.1
-		  </Files>
-		</Directory>
+  # access to configtest is limited by default to prevent information leak
+  <Files configtest.php>
+    order deny,allow
+    deny from all
+    allow from 127.0.0.1
+  </Files>
+</Directory>
 
-		# users will prefer a simple URL like http://webmail.example.com
-		<VirtualHost *:80>
-		  DocumentRoot /usr/share/squirrelmail
-		  ServerName squirrelmail.example.com
-		</VirtualHost>
+# users will prefer a simple URL like http://webmail.example.com
+<VirtualHost *:80>
+  DocumentRoot /usr/share/squirrelmail
+  ServerName squirrelmail.example.com
+</VirtualHost>
 
-		# redirect to https when available (thanks omen@descolada.dartmouth.edu)
-		#
-		#  Note: There are multiple ways to do this, and which one is suitable for
-		#  your site's configuration depends. Consult the apache documentation if
-		#  you're unsure, as this example might not work everywhere.
-		#
-		#<IfModule mod_rewrite.c>
-		#  <IfModule mod_ssl.c>
-		#    <Location /squirrelmail>
-		#      RewriteEngine on
-		#      RewriteCond %{HTTPS} !^on$ [NC]
-		#      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
-		#    </Location>
-		#  </IfModule>
-		#</IfModule>
-    ~~~
+# redirect to https when available (thanks omen@descolada.dartmouth.edu)
+#
+#  Note: There are multiple ways to do this, and which one is suitable for
+#  your site's configuration depends. Consult the apache documentation if
+#  you're unsure, as this example might not work everywhere.
+#
+#<IfModule mod_rewrite.c>
+#  <IfModule mod_ssl.c>
+#    <Location /squirrelmail>
+#      RewriteEngine on
+#      RewriteCond %{HTTPS} !^on$ [NC]
+#      RewriteRule . https://%{HTTP_HOST}%{REQUEST_URI}  [L]
+#    </Location>
+#  </IfModule>
+#</IfModule>
 
-	{: .note }
-	>
-	> If Apache is serving other virtual hosts you may need to adjust them and/or this file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
+{{< /file >}}
+
+
+	{{< note >}}
+If Apache is serving other virtual hosts you may need to adjust them and/or this file to prevent any conflicts. If you're running Apache solely for SquirrelMail, you may still want to remove the default virtual host from `sites-enabled`.
+{{< /note >}}
 
 3.  Add a symbolic link to this file in the `sites-enabled folder`:
 

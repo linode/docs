@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve dynamic websites and applications with the lightweight nginx web server and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'nginx,fastscgi perl,nginx ubuntu 12.04,nginx fastcgi,nginx perl'
+keywords: ["nginx", "fastscgi perl", "nginx ubuntu 12.04", "nginx fastcgi", "nginx perl"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/perl-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: Wednesday, October 31st, 2012
+aliases: ['web-servers/nginx/perl-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/nginx-and-perlfastcgi-on-ubuntu-12-04-lts-precise-pangolin/']
+modified: 2012-10-31
 modified_by:
   name: Linode
-published: 'Wednesday, October 31st, 2012'
+published: 2012-10-31
 title: 'Nginx and Perl-FastCGI on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
@@ -25,7 +25,7 @@ It is assumed that you've already followed the steps outlined in our [getting st
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -58,82 +58,82 @@ In this guide, the domain "example.com" is used as an example site. You should s
 
 Next, you'll need to define the site's virtual host file. This example uses a UNIX socket to connect to fcgiwrap. Be sure to change all instances of "example.com" to your domain name.
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root   /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root   /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.pl$ {
-            gzip off;
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass unix:/var/run/fcgiwrap.socket;
-            fastcgi_index index.pl;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.pl$ {
+        gzip off;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass unix:/var/run/fcgiwrap.socket;
+        fastcgi_index index.pl;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 ### TCP Sockets Configuration Example
 
 Alternately, you may wish to use TCP sockets instead. If so, modify your nginx virtual host configuration file to resemble the following example. Again, make sure to replace all instances of "example.com" with your domain name.
 
-{: .file }
-/etc/nginx/sites-available/www.example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/www.example.com/logs/access.log;
-        error_log /srv/www/www.example.com/logs/error.log;
-        root   /srv/www/www.example.com/public_html;
+{{< file "/etc/nginx/sites-available/www.example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/www.example.com/logs/access.log;
+    error_log /srv/www/www.example.com/logs/error.log;
+    root   /srv/www/www.example.com/public_html;
 
-        location / {
-            index  index.html index.htm;
-        }
-
-        location ~ \.pl$ {
-            gzip off;
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:8999;
-            fastcgi_index index.pl;
-            fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html/$fastcgi_script_name;
-        }
+    location / {
+        index  index.html index.htm;
     }
-    ~~~
+
+    location ~ \.pl$ {
+        gzip off;
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:8999;
+        fastcgi_index index.pl;
+        fastcgi_param SCRIPT_FILENAME /srv/www/www.example.com/public_html/$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 If you elected to use TCP sockets instead of UNIX sockets, you'll also need to modify the fcgiwrap init script. Look for the following section in the `/etc/init.d/fcgiwrap` file:
 
-{: .file-excerpt }
-/etc/init.d/fcgiwrap
-:   ~~~
-    # FCGI_APP Variables
-    FCGI_CHILDREN="1"
-    FCGI_SOCKET="/var/run/$NAME.socket"
-    FCGI_USER="www-data"
-    FCGI_GROUP="www-data"
-    ~~~
+{{< file-excerpt "/etc/init.d/fcgiwrap" >}}
+# FCGI_APP Variables
+FCGI_CHILDREN="1"
+FCGI_SOCKET="/var/run/$NAME.socket"
+FCGI_USER="www-data"
+FCGI_GROUP="www-data"
+
+{{< /file-excerpt >}}
+
 
 Change it to match the following excerpt:
 
-{: .file-excerpt }
-/etc/init.d/fcgiwrap
-:   ~~~
-    # FCGI_APP Variables
-    FCGI_CHILDREN="1"
-    FCGI_PORT="8999"
-    FCGI_ADDR="127.0.0.1"
-    FCGI_USER="www-data"
-    FCGI_GROUP="www-data"
-    ~~~
+{{< file-excerpt "/etc/init.d/fcgiwrap" >}}
+# FCGI_APP Variables
+FCGI_CHILDREN="1"
+FCGI_PORT="8999"
+FCGI_ADDR="127.0.0.1"
+FCGI_USER="www-data"
+FCGI_GROUP="www-data"
+
+{{< /file-excerpt >}}
+
 
 ### Enable the Site
 
@@ -151,24 +151,24 @@ Start nginx and fcgiwrap by issuing the following commands:
 
 Create a file called "test.pl" in your site's "public\_html" directory with the following contents:
 
-{: .file }
-/srv/www/www.example.com/public\_html/test.pl
-:   ~~~ perl
-    #!/usr/bin/perl
+{{< file "/srv/www/www.example.com/public\\_html/test.pl" perl >}}
+#!/usr/bin/perl
 
-    print "Content-type:text/html\n\n";
-    print <<EndOfHTML;
-    <html><head><title>Perl Environment Variables</title></head>
-    <body>
-    <h1>Perl Environment Variables</h1>
-    EndOfHTML
+print "Content-type:text/html\n\n";
+print <<EndOfHTML;
+<html><head><title>Perl Environment Variables</title></head>
+<body>
+<h1>Perl Environment Variables</h1>
+EndOfHTML
 
-    foreach $key (sort(keys %ENV)) {
-        print "$key = $ENV{$key}<br>\n";
-    }
+foreach $key (sort(keys %ENV)) {
+    print "$key = $ENV{$key}<br>\n";
+}
 
-    print "</body></html>";
-    ~~~
+print "</body></html>";
+
+{{< /file >}}
+
 
 Make the script executable by issuing the following command:
 

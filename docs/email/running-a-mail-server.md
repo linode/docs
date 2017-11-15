@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
-keywords: 'mail server,linode guide,running a mail server,linode quickstart guide'
+keywords: ["mail server", "linode guide", "running a mail server", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['mailserver/']
-modified: Sunday, April 13th, 2014
+aliases: ['mailserver/']
+modified: 2014-04-13
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, June 5th, 2013'
+published: 2013-06-05
 title: Running a Mail Server
 ---
 
@@ -54,7 +54,7 @@ If the prospect of managing your own mail server is too daunting, you should con
 -   [Google Apps](http://www.google.com/intl/en/enterprise/apps/business/) uses the top-notch Gmail interface and has great uptime. It's paid and the IMAP implementation is unusual. We have a [guide](/docs/email/google-mail) on how to use Google Apps with your Linode.
 -   [Office 365](https://login.microsoftonline.com/) is the successor to Outlook.com and can support custom domains for email, amongst other services.
 
-If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager#adding-1) for your mail, using the settings provided by the third-party mail service.
+If you decide to use an outside mail service, you will still need to set up [DNS](/docs/networking/dns/dns-manager) for your mail, using the settings provided by the third-party mail service.
 
 ## How Mail Servers Work
 
@@ -77,11 +77,11 @@ MTAs are responsible for handling SMTP connections to your Linode from both outs
 Here are the most popular MTA services available:
 
 -   [Courier Mail Server](http://www.courier-mta.org) comes with Courier-IMAP, which is the popular part of the Courier mail server suite, but Courier-MTA also includes mail relaying features. It's a simpler MTA but somewhat limited.
--   [Exim](http://www.exim.org) is modern and oriented towards flexibility. It's secure, but not quite as security-oriented as Postfix. It's very customizable, but is one of the most complex MTAs to configure. We have guides for [Exim on Ubuntu 12.04](/docs/email/exim/send-only-mta-ubuntu-12.04-precise-pangolin) and [Exim on Debian 6](/docs/email/exim/send-only-mta-debian-6-squeeze).
+-   [Exim](http://www.exim.org) is modern and oriented towards flexibility. It's secure, but not quite as security-oriented as Postfix. It's very customizable, but is one of the most complex MTAs to configure. We have guides for [Exim on Ubuntu 12.04](/docs/email/exim/send-only-mta-ubuntu-12-04-precise-pangolin) and [Exim on Debian 6](/docs/email/exim/send-only-mta-debian-6-squeeze).
 -   [Postfix](http://www.postfix.org) is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql). It's modern, security-oriented, and very flexible, although not quite as flexible as Exim. It is slightly simpler to set up than Exim.
 -   [Qmail](http://www.qmail.org/top.html) is one of the older modern MTAs and supports Maildir-style directories. It's still very popular, but is no longer supported.
 -   [Sendmail](http://www.sendmail.com/sm/open_source/) is a legacy MTA that still has a large following and good support. Don't expect the most modern options and security, though.
--   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10.04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra on CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
+-   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10-04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra on CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
 
 ### Mail Delivery Agents
 
@@ -105,13 +105,13 @@ Most servers and clients support both IMAP and POP3. POP3 clients connect to the
 
 Here are the most popular IMAP and POP3 servers available:
 
--   [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. We have guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12.04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze).
+-   [Citad.l](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. We have guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12-04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze).
 -   [Courier](http://www.courier-mta.org) has a very popular IMAP server called [Courier IMAP](http://www.courier-mta.org/imap/). It's an all-in-one mail server software suite, but Courier IMAP can be installed by itself if that's the only part you need.
 -   [Cyrus](http://www.cyrusimap.org/index.php) is a modern, security-oriented IMAP/POP3 server designed to work on sealed servers where users do not log in directly.
 -   [DBMail](http://www.dbmail.org) is an open source project that stores mail in databases instead of flat files.
 -   [Dovecot](http://www.dovecot.org) is a lightweight, modern, and configurable mail server, and is part of our [recommended mail server build](/docs/email/postfix/email-with-postfix-dovecot-and-mysql).
 -   [Xmail](http://www.xmailserver.org) is a full-featured POP3 server, but does not support IMAP.
--   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10.04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
+-   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10-04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
 
 ## Building Your Mail Server
 
@@ -127,17 +127,17 @@ Any type of SSL certificate will work, but some certificates have different degr
 
 The second step is installing and configuring the MTA, MDA, and IMAP/POP3 server. You'll also probably want to install a database server like MySQL or PostgreSQL to help you manage your domains, email addresses, user credentials, aliases, etc. Providing step-by-step instructions for every possible mail server build is beyond the scope of this article. For detailed instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. Go ahead and install and configure the software you've chosen for your mail server build now.
 
-{: .note }
->
-> We've written a variety of mail server guides, including guides for older software versions and other mail-related services. See the [Email Server Guides](/docs/email) webpage for more information.
+{{< note >}}
+We've written a variety of mail server guides, including guides for older software versions and other mail-related services. See the [Email Server Guides](/docs/email) webpage for more information.
+{{< /note >}}
 
 ### DNS Records
 
 The third step is to create the DNS records, which help email reach your Linode. The right DNS records also help designate your Linode as a legitimate mail server. In this section, you'll learn how to set the appropriate MX, SPF, and PTR records for your domain and Linode.
 
-{: .note }
->
-> You should lower the time to live (TTL) on your existing DNS records to the lowest allowed value at least 24-48 hours before you make any other DNS changes. That way, any changes you make later will propagate quickly. It's also a good idea to keep your old mail server running for at least 48 hours after you start directing mail to your Linode, just in case the DNS changes take a while to propagate.
+{{< note >}}
+You should lower the time to live (TTL) on your existing DNS records to the lowest allowed value at least 24-48 hours before you make any other DNS changes. That way, any changes you make later will propagate quickly. It's also a good idea to keep your old mail server running for at least 48 hours after you start directing mail to your Linode, just in case the DNS changes take a while to propagate.
+{{< /note >}}
 
 #### MX Records
 
@@ -163,13 +163,13 @@ If your Linode is the only mail server you use, you should be able to use the ex
 
     example.com     86400   TXT     "v=spf1 a ~all"
 
-{: .note }
->
-> Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting [openspf.org](http://www.openspf.org/SPF_Record_Syntax) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< note >}}
+Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting [openspf.org](http://www.openspf.org/SPF_Record_Syntax) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< /note >}}
 
 #### Reverse DNS
 
-If you haven't yet [set reverse DNS](/docs/hosting-website#sph_setting-reverse-dns) for your mail server's domain or subdomain, do so now for the sake of your mail server. The reverse DNS for your mail server *must* match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner." If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#sph_setting-the-hostname) article.
+If you haven't yet [set reverse DNS](/docs/hosting-website#setting-reverse-dns) for your mail server's domain or subdomain, do so now for the sake of your mail server. The reverse DNS for your mail server *must* match the hostname of your Linode. If your Linode's reverse DNS and hostname do not match, email from your server may get rejected with the warning "Reverse DNS does not match SMTP Banner." If you need to check or set the hostname, see our [Getting Started](/docs/getting-started#setting-the-hostname) article.
 
 ## Next Steps
 
@@ -181,9 +181,9 @@ Outgoing spam, or spam originating from your Linode, is bad news for everyone in
 
 There are also a few other scenarios where your server could be sending spam. Your server or an installed application might get hacked, one of your users might have a compromised account, or you may be sending out email messages that are getting marked as spam. (This is more likely to occur in the case of mass mailings.) The best way to stay on top of outgoing spam is to keep an eye on your outgoing mail logs and pay attention to bounceback errors.
 
-{: .note }
->
-> If you do get added to a block list, take steps to mitigate the source of the spam. Then you will have to contact the mail provider that blocked you and follow their steps to be allowed to send mail again.
+{{< note >}}
+If you do get added to a block list, take steps to mitigate the source of the spam. Then you will have to contact the mail provider that blocked you and follow their steps to be allowed to send mail again.
+{{< /note >}}
 
 Incoming spam can also be a problem. Spam filters help you deal with spam sent to your own users. They let you filter incoming messages based on origin, content, etc. Some spam contains viruses, which can cause more serious damage to recipients.
 
@@ -213,9 +213,9 @@ Here are some of the typical mail ports:
 -   587 for SMTP (actually the preferred non-encrypted port for outgoing connections from mail clients)
 -   465 for SSMTP (encrypted)
 
-{: .note }
->
-> If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#sph_creating-a-firewall) for more information.
+{{< note >}}
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#creating-a-firewall) for more information.
+{{< /note >}}
 
 ### Webmail
 
@@ -223,11 +223,11 @@ Webmail is a type of mail client that can be installed on your server and access
 
 Here are some of the most popular webmail clients:
 
--   [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. We have guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12.04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze).
+-   [Citadel](http://www.citadel.org) is an all-in-one mail service that includes mail, calendars, instant messaging, mailing lists, and other collaboration tools. It's open source and geared towards small and medium-sized organizations. We have guides for [Citadel on Ubuntu 12.04](/docs/email/citadel/ubuntu-12-04-precise-pangolin) and [Citadel on Debian 6](/docs/email/citadel/debian-6-squeeze/).
 -   [Horde Webmail](http://www.horde.org/apps/webmail) is an open-source IMAP client paired with some additional functions like account management and calendars.
 -   [RoundCube](http://roundcube.net) is an IMAP client with modern functionality and a clean layout.
 -   [SquirrelMail](http://squirrelmail.org) is a solid option, but has an older user interface. Visit our guide to [Install SquirrelMail on Ubuntu 16.04 or Debian 8](/docs/email/clients/install-squirrelmail-on-ubuntu-16-04-or-debian-8)
--   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10.04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
+-   [Zimbra](http://www.zimbra.com) is an all-in-one mail service that's much simpler to install than other options, but less customizable. We have guides for [Zimbra on Ubuntu 10.04](/docs/email/zimbra/install-zimbra-ubuntu-10-04-lucid), [Zimbra on Debian 6](/docs/email/zimbra/install-zimbra-debian-6-squeeze), and [Zimbra CentOS 5](/docs/email/zimbra/install-zimbra-centos-5).
 
 ### Extras
 

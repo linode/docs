@@ -1,21 +1,22 @@
 ---
+deprecated: true
 author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for configuring your Debian or Ubuntu Linode to run a custom compiled kernel with PV-GRUB.'
-alias: ['custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu']
-keywords: 'compile kernel,kernel compiling,pv-grub,pvgrub,custom linux kernel,custom linode, debian,ubuntu'
+aliases: ['custom-kernels-distros/custom-compiled-kernel-with-pvgrub-debian-7-ubuntu']
+keywords: ["compile kernel", "kernel compiling", "pv-grub", "pvgrub", "custom linux kernel", "custom linode", " debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Friday, April 3, 2015'
+modified: 2015-04-03
 modified_by:
   name: Linode
-published: 'Friday, April 3, 2015'
+published: 2015-04-03
 title: 'Custom Compiled Kernel with PV-GRUB on Debian & Ubuntu'
 ---
 
 Running a custom-compiled Linux kernel is useful if you need to enable or disable certain kernel features that are unavailable in Linode-supplied or distribution-supplied kernels. For example, some users desire [SELinux](http://en.wikipedia.org/wiki/Security-Enhanced_Linux) support, which is not enabled in stock Linode kernels, and may not be enabled in some distribution-supplied kernels.
 
-If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub). 
+If you'd rather run a distribution-supplied kernel instead, please follow our guide for [Running a Distribution-Supplied Kernel](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub).
 
 Prior to these instructions, follow the steps outlined in our [Getting Started](/docs/getting-started/) guide. Then, make sure you are logged into your Linode as the `root` user.
 
@@ -31,7 +32,7 @@ If this is the first time compiling a kernel on the Linode, issue the following 
 
     rm -rf /boot/*
 
-##Compile and Install the Kernel
+## Compile and Install the Kernel
 
 ### Download Kernel Sources
 
@@ -76,7 +77,7 @@ Once your configuration options are set, exit the configuration interface and an
 
         make -j3 bzImage
         make -j3 modules
-        make 
+        make
         make install
         make modules_install
 
@@ -86,16 +87,16 @@ Once your configuration options are set, exit the configuration interface and an
 
 3.  Create a `menu.lst` file with the following contents. Adjust the "title" and "kernel" lines to reflect the actual filenames found in the `/boot` directory.
 
-    {: .file-excerpt }
-    /boot/grub/menu.lst
-    :   ~~~
-    	timeout 5
-	
-    	title Custom Compiled, kernel 3.19.3-custom 
-    	root (hd0) 
-    	kernel /boot/vmlinuz-3.19.3 root=/dev/xvda ro quiet
-        initrd /boot/initrd.img-3.19.3
-        ~~~
+    {{< file-excerpt "/boot/grub/menu.lst" >}}
+timeout 5
+
+title Custom Compiled, kernel 3.19.3-custom
+root (hd0)
+kernel /boot/vmlinuz-3.19.3 root=/dev/xvda ro quiet
+   initrd /boot/initrd.img-3.19.3
+
+{{< /file-excerpt >}}
+
 
 ## Configure for PV-GRUB
 

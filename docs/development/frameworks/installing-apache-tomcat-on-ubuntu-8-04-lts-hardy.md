@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java Servlet engine on Ubuntu 8.04 LTS (Hardy).'
-keywords: 'java,apache tomcat,java ubuntu,java hardy'
+keywords: ["java", "apache tomcat", "java ubuntu", "java hardy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/','websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/apache-tomcat/ubuntu-8-04-hardy/','websites/frameworks/installing-apache-tomcat-on-ubuntu-8-04-lts-hardy/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, September 23rd, 2009'
+published: 2009-09-23
 title: 'Installing Apache Tomcat on Ubuntu 8.04 LTS (Hardy)'
 ---
 
@@ -22,8 +22,7 @@ This guide assumes that you have a working installation of Ubuntu 8.04 (Hardy), 
 
 Tomcat version 6 was not included as part of Ubuntu Hardy because of concerns that because of how packages work, packaging Tomcat would introduce a unique class of bugs into it. In any case, installing without apt just adds a few extra steps, and is easily accomplished.
 
-Choose and Install Java Implementation
---------------------------------------
+# Choose and Install Java Implementation
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -38,16 +37,16 @@ If you chose to run OpenJDK, then you can skip the remainder of this section. If
 
 Add the following two lines to your `sources.list` list:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ hardy multiverse
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
-    apt-get update 
+    apt-get update
 
 Now you are ready to install Sun Java with the following command (acknowledging the license terms):
 
@@ -55,8 +54,7 @@ Now you are ready to install Sun Java with the following command (acknowledging 
 
 Now you are ready to proceed with the Apache Tomcat install.
 
-Installing Apache Tomcat
-------------------------
+# Installing Apache Tomcat
 
 Download the latest version of Tomcat with the following command. You may need to install `wget` first by issuing the command `apt-get install wget`.
 
@@ -78,46 +76,45 @@ Move the resulting Tomcat directory to a permanent location by issuing this comm
 
 The scripts for controlling and interacting with Tomcat are located in the `/usr/local/tomcat/bin` directory.
 
-Enable Tomcat to Start Automatically
-------------------------------------
+# Enable Tomcat to Start Automatically
 
 Borrowing from the scripts described [here](http://www.howtogeek.com/howto/linux/installing-tomcat-6-on-ubuntu/) you can enable Tomcat to start automatically with your system.
 
 Create a `tomcat` "init" file with the following content:
 
-{: .file }
-/etc/init.d/tomcat
-:   ~~~ bash
-    # Tomcat auto-start
-    #
-    # description: Auto-starts tomcat
-    # processname: tomcat
-    # pidfile: /var/run/tomcat.pid
+{{< file "/etc/init.d/tomcat" bash >}}
+# Tomcat auto-start
+#
+# description: Auto-starts tomcat
+# processname: tomcat
+# pidfile: /var/run/tomcat.pid
 
-    export JAVA_HOME=/usr/lib/jvm/java-6-sun
+export JAVA_HOME=/usr/lib/jvm/java-6-sun
 
-    case $1 in
-    start)
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    stop)  
-            sh /usr/local/tomcat/bin/shutdown.sh
-            ;;
-    restart)
-            sh /usr/local/tomcat/bin/shutdown.sh
-            sh /usr/local/tomcat/bin/startup.sh
-            ;;
-    esac   
-    exit 0
-    ~~~
+case $1 in
+start)
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+stop)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        ;;
+restart)
+        sh /usr/local/tomcat/bin/shutdown.sh
+        sh /usr/local/tomcat/bin/startup.sh
+        ;;
+esac
+exit 0
+
+{{< /file >}}
+
 
 Remember, if you installed open-jdk the `export JAVA_HOME` line should read:
 
-{: .file-excerpt }
-/etc/init.d/tomcat
-:   ~~~ bash
-    export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
-    ~~~
+{{< file-excerpt "/etc/init.d/tomcat" bash >}}
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
+
+{{< /file-excerpt >}}
+
 
 Make the script executable by issuing this command:
 
@@ -134,22 +131,11 @@ Tomcat should now be totally functional and should start automatically with the 
     /etc/init.d/tomcat stop
     /etc/init.d/tomcat restart
 
-Test and use Tomcat
--------------------
+# Test and use Tomcat
 
 You can test your Tomcat installation by pointing your browser to `http://[yourdomain-or-ip-address]:8080/`. By default, files are located at `/usr/local/tomcat/webapps/`.
 
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

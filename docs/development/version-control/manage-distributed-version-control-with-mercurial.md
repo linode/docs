@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Mercurial version control system to manage source code in distributed environments.'
-keywords: 'scm,vcs,hg,mercurial,dcvs,source control management,version control,distributed version control'
+keywords: ["scm", "vcs", "hg", "mercurial", "dcvs", "source control management", "version control", "distributed version control"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/mercurial/','applications/development/manage-distributed-version-control-with-mercurial/']
-modified: Monday, May 23rd, 2011
+aliases: ['linux-tools/version-control/mercurial/','applications/development/manage-distributed-version-control-with-mercurial/']
+modified: 2011-05-23
 modified_by:
   name: Linode
-published: 'Monday, April 26th, 2010'
+published: 2010-04-26
 title: Manage Distributed Version Control with Mercurial
 external_resources:
  - '[Mercurial Project Home Page](http://mercurial.selenic.com/)'
@@ -18,13 +18,13 @@ external_resources:
 
 Mercurial is one of the leading distributed version control systems that allows software developers and teams of collaborators to work on a common code base without needing to rely on a centralized server or constant network connection while working. This document will provide an introduction to the Mercurial version control system so you can begin to use Mercurial to manage source control and collaboration for your development projects.
 
-Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Mercurial runs on multiple platforms and you may choose to use Mercurial to manage code projects on systems running many different operating systems. Before deploying Mercurial on a Linode, we assume that you have completed our [getting started guide](/docs/tools-reference/introduction-to-linux-concepts). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Installing Mercurial
 
 Issue the following commands on Debian and Ubuntu systems to update your system's package repository, ensure that all installed packages are up to date, and install Mercurial and all of its dependencies:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
     apt-get install mercurial
 
@@ -35,7 +35,7 @@ On CentOS and Fedora systems, issue the following commands to ensure that all of
 
 On Arch Linux systems, issue the following commands to ensure that your system's package database is up to date and then install Mercurial:
 
-    pacman -Sy 
+    pacman -Sy
     pacman -S mercurial
 
 Mac OS X and Windows users can download prepared packages for Mercurial directly from the [upstream download resource](http://mercurial.selenic.com/downloads/). Once Mercurial is installed, we can begin to manage our source control projects with this tool. All Mercurial commands in the shell environment begin with `hg` in reference to the abbreviation for the element Mercury.
@@ -62,7 +62,7 @@ Once a repository exists you must add files before mercurial will be able to tra
 
 The file is now set to be included in the next commit is created. To "commit" this change and save it for future reference, issue the following command:
 
-    hg commit -m 'hello mercurial world' 
+    hg commit -m 'hello mercurial world'
 
 When complete, the new file at this iteration is saved in the Mercurial repository's database. The `-m` option causes Mercurial to store a message describing the contents of the commit change set to give your collaborators or future selves the ability to understand the contents of the commit change set. You may choose to omit the `-m` flag and the commit message, however Mercurial will open your system's default text editor so that you can edit your commit message there.
 
@@ -80,7 +80,7 @@ When you need to rename, move, or copy files or folders that are versioned by Me
 
     hg mv world hw.txt
     hg cp hw.txt hello-world
-    hg rm hw.txt 
+    hg rm hw.txt
 
 These commands, in turn, move (rename) the `world` file to `hw.txt`, copy `hw.txt` to the file `hello-world` and finally remove the file `hw.txt`. When you perform the next commit, Mercurial will include these revisions in the changeset it saves, keeping track of a file's history despite any changes in name.
 
@@ -156,7 +156,7 @@ As time passes you will probably want to update your local repositories with the
 
     hg pull http://www.example.com/lolipop/
 
-After a pull, additional revisions are stored in your local repository, but your local "working copy" has not yet been updated to reflect the change sets. In these situations, use the `hg merge`, `hg resolve`, and finally `hg commit` commands as described [above](#inserting_modifications_into_the_history) to resolve any conflicts and commit all changes to the local repository.
+After a pull, additional revisions are stored in your local repository, but your local "working copy" has not yet been updated to reflect the change sets. In these situations, use the `hg merge`, `hg resolve`, and finally `hg commit` commands as described [above](/docs/development/version-control/manage-distributed-version-control-with-mercurial#inserting-modifications-into-the-history) to resolve any conflicts and commit all changes to the local repository.
 
 If you work on one project and collaborate with two or more people who publish public Mercurial repositories, you can pull from multiple upstream repositories. Consider the following command:
 

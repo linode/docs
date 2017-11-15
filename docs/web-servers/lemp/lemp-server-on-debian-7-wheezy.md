@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Debian 7'
-keywords: 'nginx,lemp,lepp,perl,python,php,linux,web applications'
+keywords: ["nginx", "lemp", "lepp", "perl", "python", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/debian-7-wheezy/','websites/lemp/lemp-server-on-debian-7-wheezy/']
-modified: Friday, February 7th, 2014
+aliases: ['lemp-guides/debian-7-wheezy/','websites/lemp/lemp-server-on-debian-7-wheezy/']
+modified: 2014-02-07
 modified_by:
   name: Alex Fornuto
-published: 'Friday, February 7th, 2014'
+published: 2014-02-07
 title: 'LEMP Server on Debian 7 (Wheezy)'
 external_resources:
  - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
@@ -21,13 +21,13 @@ external_resources:
 
 This document describes a compatible alternative to the **LAMP** (Linux,Apache, MySQL, and PHP) stack, known as **LEMP**. The LEMP stack replaces the Apache web server component (which is the "A" in LAMP) with Nginx (pronounced "engine x", providing the "E" in LEMP). LEMP is comprised of a variety of open source software used to build and run web servers.
 
-Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide, please complete the [Getting Started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7 (Wheezy)2")
+![LEMP Server on Debian 7 (Wheezy)](/docs/assets/lemp_server_on_debian_7_wheezy.png "LEMP Server on Debian 7")
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you have followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -57,21 +57,21 @@ This will install version 1.2.1-22 of the Nginx server.
 
 You will need to configure `server` declarations to specify name-based virtual hosts. Since you are using the packages from the Debian project, create the virtual hosting configuration in the as `/etc/nginx/sites-available/example.com`. Consider the following Nginx virtual host configuration:
 
-{: .file-excerpt }
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+{{< file-excerpt "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/example.com/logs/access.log;
+    error_log /srv/www/example.com/logs/error.log;
 
-        location / {
-            root   /srv/www/example.com/public_html;
-            index  index.html index.htm;
-        }
+    location / {
+        root   /srv/www/example.com/public_html;
+        index  index.html index.htm;
     }
-    ~~~
+}
+
+{{< /file-excerpt >}}
+
 
 Create the `public_html` and `log` directories referenced in this configuration by issuing the following command (make sure to change example.com to your domain name):
 
@@ -111,40 +111,35 @@ Issue the following sequence of commands to download a small wrapper script for 
 
 Below is a sample Nginx virtual host configuration file. Modify your configuration to be similar to the one below. Remember to replace example.com with your domain.
 
-{: .file }
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
-        root /srv/www/example.com/public_html;
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/www/example.com/logs/access.log;
+    error_log /srv/www/example.com/logs/error.log;
+    root /srv/www/example.com/public_html;
 
-        location / {
-            index index.html index.htm index.php;
-        }   
-    ~~~
+    location / {
+        index index.html index.htm index.php;
+    }
+
+{{< /file >}}
 
 In addition, with in the Nginx virtual host file, ensure the `location ~ \.php$ { }` block resembles the one in this example:
 
-{: .file }
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    location ~ \.php$ {
-        include /etc/nginx/fastcgi_params;
-        fastcgi_pass  127.0.0.1:9000;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
-    }
-    ~~~
-
-    > }
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
+location ~ \.php$ {
+    include /etc/nginx/fastcgi_params;
+    fastcgi_pass  127.0.0.1:9000;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+}
+{{< /file >}}
 
 **Important security note:** If you are planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires Nginx and the php-fcgi workers to reside on the same server.
 
-~~~ nginx
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ \.php$ {
     try_files $uri =404;
     include /etc/nginx/fastcgi_params;
@@ -152,11 +147,11 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
-Additionally, it is a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
+Additionally, it is a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory:
 
-~~~ nginx
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
@@ -165,7 +160,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 When you have completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 
@@ -191,9 +186,11 @@ MySQL database engine may be the leading open source relational database engine,
 
 4.  Answer all questions when prompted during this process.
 
-> If at any point you need to reset the root password for the *MySQL* server, issue the following command:
->
->     dpkg-reconfigure mysql-server-5.0
+    {{< note >}}
+If at any point you need to reset the root password for the *MySQL* server, issue the following command:
+
+     dpkg-reconfigure mysql-server-5.0
+{{< /note >}}
 
 5.  Issue the following command to get a root prompt for the MySQL server:
 
@@ -207,7 +204,7 @@ MySQL database engine may be the leading open source relational database engine,
         GRANT ALL PRIVILEGES ON new_install.* TO 'new_user';
         exit
 
-> You may now provide the credentials for the `new_install` database and the `2nd_user` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service.
+    > You may now provide the credentials for the `new_install` database and the `2nd_user` user to your application, which will now be able to use the database for its purposes. To ensure that PHP will be able to access the MySQL connector your just installed, restart the PHP service.
 
 8.  Issue `sudo /etc/init.d/php-fastcgi restart` to restart the PHP service.
 

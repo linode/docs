@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: "Use the Linode Manager's GRUB 2 boot setting to run your distribution's native Linux kernel"
-keywords: 'kvm,custom linux, kernel,custom linode,grub,grub 2'
+keywords: ["kvm", "custom linux", " kernel", "custom linode", "grub", "grub 2"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: 'Friday, March 3, 2017'
+modified: 2017-03-03
 modified_by:
   name: Linode
-published: 'Monday, June 29th, 2015'
+published: 2015-06-29
 title: 'Run a Distribution-Supplied Kernel on a KVM Linode'
 ---
 
@@ -27,7 +27,7 @@ The steps in this section currently apply only to the distributions under *Recom
 2.  Click **Edit** to view a distribution's configuration profile options:
 
     ![Edit the configuration profile](/docs/assets/edit_config_profile_small.png "Edit the configuration profile")
-    
+
 3.  Under **Boot Settings** is a **Kernel** dropdown menu. By default, this will be set to the latest Linode-supplied 64 bit kernel:
 
     ![Our latest 64 bit kernel](/docs/assets/boot-settings-kernel-latest.png "Our latest 64 bit kernel")
@@ -64,7 +64,7 @@ The relabel process is triggered by the empty `/.autorelabel` file.
     .   .autorelabel  boot  etc   lib    lost+found  mnt  proc  run   srv  tmp  var
     ..  bin           dev   home  lib64  media       opt  root  sbin  sys  usr
 
-We include a systemd unit and bash script in our CentOS 7 and Fedora 25 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
+We include a systemd unit and bash script in our CentOS 7 images to automatically create this file when the Linode kernel is booted. This will save you from needing to do it manually before rebooting into the upstream kernel. You'll find the systemd unit file at `/etc/systemd/system/selinuxfsrelabel.service`, which calls `/usr/local/bin/selinuxfsrelabel.sh`.
 
 ## Older Distributions
 
@@ -115,11 +115,12 @@ At the time of this writing, these steps have been tested on:
 
         apt-get install linux-image-virtual grub2
 
-    {: .note }
-    > During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
+    {{< note >}}
+During the installation of `grub` you may be asked which disk image to install to. Since Linode provides the grub bootloader, the system need only provide the `grub.cfg` file, and you don't need to install `grub` to your MBR.
+{{< /note >}}
 
     You'll see the kernel and other components you just installed and generated in the `/boot` directory. For example:
- 
+
         [root@centos7 ~]# ls /boot
         config-3.10.0-514.el7.x86_64
         grub
@@ -141,15 +142,15 @@ At the time of this writing, these steps have been tested on:
 
 2.  Then add or change the following options to match the following example. There will be other variables in this file, but we are only concerned with these lines.
 
-	{:.file-excerpt }
-	/etc/default/grub
-	: ~~~
-      GRUB_TERMINAL=serial
-      GRUB_DISABLE_OS_PROBER=true
-      GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-      GRUB_DISABLE_LINUX_UUID=true
-      GRUB_GFXPAYLOAD_LINUX=text
-	  ~~~
+    {{< file-excerpt "/etc/default/grub" >}}
+GRUB_TERMINAL=serial
+GRUB_DISABLE_OS_PROBER=true
+GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+GRUB_DISABLE_LINUX_UUID=true
+GRUB_GFXPAYLOAD_LINUX=text
+
+{{< /file-excerpt >}}
+
 
 3.  Run the following command to prepare and update the bootloader:
 
@@ -165,8 +166,9 @@ At the time of this writing, these steps have been tested on:
         touch /.autorelabel
 
 
-    {: .note }
-    > The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.
+    {{< note >}}
+The autorelabel command is necessary to queue the SELinux filesystem relabeling process when rebooting from the Linode kernel to the CentOS or Fedora kernel.
+{{< /note >}}
 
     ##### Debian and Ubuntu
 

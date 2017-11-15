@@ -3,21 +3,21 @@ author:
   name: Quintin Riis
   email: docs@linode.com
 description: Mosh is a free alternative to SSH. This guide will teach you how to install and configure Mosh on Linux distributions and your desktop.
-keywords: 'mosh, ssh,'
+keywords: ["mosh", " ssh", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/mosh/','networking/ssh/mosh/', 'tools-reference/ssh/mosh/']
-modified: Friday, August 18th, 2017
+aliases: ['networking/mosh/','networking/ssh/mosh/', 'tools-reference/ssh/mosh/']
+modified: 2017-08-18
 modified_by:
   name: Linode
-published: 'Sunday, January 20th, 2013'
+published: 2013-01-20
 title: Install a Mosh Server as SSH Alternative on Linux
 ---
 
 [Mosh](http://mosh.mit.edu/) is a free replacement for SSH that allows roaming and supports intermittent connectivity. Unlike regular SSH connections, Mosh continuously syncs your local and remote sessions to ensure that your client automatically reconnects to the server when you switch between wireless networks or wake your computer from sleep. This guide explains how to install Mosh on your Linode and your personal computer.
 
- {: .note }
->
-> Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You'll still need to use SSH for these tasks.
+ {{< note >}}
+Mosh does not support port forwarding or proxying, and you cannot use mosh to copy files or mount remote directories. You'll still need to use SSH for these tasks.
+{{< /note >}}
 
 ## Mosh SSH Benefits
 
@@ -31,13 +31,13 @@ Ready to get started? Let's go!
 
 ## Preparing Your Firewall
 
-Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/securing-your-server#sph_creating-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
+Before installing Mosh, you should verify that your Linode's firewall will allow the Mosh client and server to communicate. If you [followed our instructions](/docs/securing-your-server#configure-a-firewall) to create a firewall with `iptables`, you'll need to edit `/etc/iptables.firewall.rules` and add another rule to allow the Mosh client to connect to your Linode over UDP ports 60000–61000.
 
-{: .file-excerpt }
-/etc/iptables.firewall.rules
-: ~~~
-	-A INPUT -p udp --dport 60000:61000 -j ACCEPT
-  ~~~
+{{< file-excerpt "/etc/iptables.firewall.rules" >}}
+-A INPUT -p udp --dport 60000:61000 -j ACCEPT
+
+{{< /file-excerpt >}}
+
 
 Activate the new firewall rule by entering the following command:
 
@@ -66,11 +66,11 @@ Mosh is available in Debian's backports repositories. You'll need to add squeeze
 
 1.  Edit `/etc/apt/sources.list` and add the following line:
 
-    {: .file-excerpt }
-    /etc/apt/sources.list
-    : ~~~
-        deb <http://backports.debian.org/debian-backports> squeeze-backports main
-      ~~~
+    {{< file-excerpt "/etc/apt/sources.list" >}}
+deb <http://backports.debian.org/debian-backports> squeeze-backports main
+
+{{< /file-excerpt >}}
+
 
 2.  Run `apt-get update`.
 3.  Install mosh from squeeze-backports by entering the following command:
@@ -97,7 +97,7 @@ Now you need to install Mosh on your desktop computer. Find the instructions for
 
 ### Linux
 
-Follow the instructions for your distribution listed in the [Installing Mosh on Your Linode](#installing-mosh-on-your-linode) section, or see the [Mosh website](http://mosh.mit.edu/).
+Follow the instructions for your distribution listed in the [Installing Mosh on Your Linode](#install-mosh-on-your-linode) section, or see the [Mosh website](http://mosh.mit.edu/).
 
 ### Mac OS X
 

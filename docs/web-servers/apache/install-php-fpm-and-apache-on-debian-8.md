@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Install PHP-FPM and Apache on Debian 8 for Improved Website Agility and Security'
-keywords: 'php-fpm,apache,debian 8,php5-mysql,fastcgi,php,cgi,mod_php,php pool'
+keywords: ["php-fpm", "apache", "debian 8", "php5-mysql", "fastcgi", "php", "cgi", "mod_php", "php pool"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/apache/install-php-fpm-and-apache-on-debian-8/']
-modified: Tuesday, February 21st, 2017
+aliases: ['websites/apache/install-php-fpm-and-apache-on-debian-8/']
+modified: 2017-02-21
 modified_by:
   name: Nick Brewer
-published: 'Friday, February 19th, 2016'
+published: 2016-02-19
 title: 'Install PHP-FPM and Apache on Debian 8 (Jessie)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
@@ -36,27 +36,27 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Apache and PHP-FPM
 
 1.  Due to the PHP-FPM's licensing, it's not available in Debian's main repository. Open the `sources.list` file and add `contrib` and `non-free` to each source line:
 
-    {: .file}
-    /etc/apt/sources.list
-    :   ~~~
-        deb http://mirrors.linode.com/debian/ jessie main contrib non-free
-        deb-src http://mirrors.linode.com/debian/ jessie main contrib non-free
+    {{< file "/etc/apt/sources.list" >}}
+deb http://mirrors.linode.com/debian/ jessie main contrib non-free
+deb-src http://mirrors.linode.com/debian/ jessie main contrib non-free
 
-        deb http://security.debian.org/ jessie/updates main contrib non-free
-        deb-src http://security.debian.org/ jessie/updates main non-free
+deb http://security.debian.org/ jessie/updates main contrib non-free
+deb-src http://security.debian.org/ jessie/updates main non-free
 
-        # jessie-updates, previously known as 'volatile'
-        deb http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
-        deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
-        ~~~
+# jessie-updates, previously known as 'volatile'
+deb http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
+deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free
+
+{{< /file >}}
+
 
 2.  Update `apt-get`, and install Apache, the mod-fastcgi module, and PHP-FPM:
 
@@ -67,7 +67,7 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
         sudo apt-get install php5-mysql
 
-4.  You can now [configure virtual hosting](/docs/websites/apache/apache-web-server-debian-8/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
+4.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-8#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Once your site(s) is set up, you can configure Apache to pass PHP scripts to the CGI process.
 
 ## Configure PHP-FPM
 
@@ -81,19 +81,19 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 3.  Replace the contents of `fastcgi.conf` with the following:
 
-    {: .file}
-    /etc/apache2/mods-enabled/fastcgi.conf
-    :   ~~~ conf
-        <IfModule mod_fastcgi.c>
-            AddType application/x-httpd-fastphp5 .php
-            Action application/x-httpd-fastphp5 /php5-fcgi
-            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-            FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
-            <Directory /usr/lib/cgi-bin>
-                Require all granted
-            </Directory>
-        </IfModule>
-        ~~~
+    {{< file "/etc/apache2/mods-enabled/fastcgi.conf" >}}
+<IfModule mod_fastcgi.c>
+    AddType application/x-httpd-fastphp5 .php
+    Action application/x-httpd-fastphp5 /php5-fcgi
+    Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
+    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
+    <Directory /usr/lib/cgi-bin>
+        Require all granted
+    </Directory>
+</IfModule>
+
+{{< /file >}}
+
 
 4.  Confirm that you've properly copied the correct configuration:
 
@@ -107,11 +107,11 @@ PHP-FPM also offers more security, since scripts are not run as the Apache user.
 
 6.  To confirm that PHP is working, create an `info.php` file in one of your web directories:
 
-    {: .file}
-    /var/www/example.com/public_html/info.php
-    :   ~~~ php
-        <?php phpinfo(); ?>
-        ~~~
+    {{< file "/var/www/example.com/public_html/info.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
     Navigate to `http://example.com/info.php` and look for the **Server API** line:
 
@@ -130,41 +130,42 @@ This is particularly useful when running multiple client sites because you can g
 
 2.  For each pool, adjust the pool name, user and group, and socket name:
 
-    {: .file-excerpt}
-    /etc/php5/fpm/pool.d/site1.conf
-    :   ~~~ conf
-        ; Start a new pool named 'www'.
-        ; the variable $pool can we used in any directive and will be replaced by the
-        ; pool name ('www' here)
-        [site1.com]
+    {{< file-excerpt "/etc/php5/fpm/pool.d/site1.conf" pool >}}
+; Start a new pool named 'www'.
+; the variable $pool can we used in any directive and will be replaced by the
+; pool name ('www' here)
+[site1.com]
 
-        ...
+...
 
-        ; Unix user/group of processes
-        ; Note: The user is mandatory. If the group is not set, the default user's group
-        ;       will be used.
-        user = site1
-        group = site1
+; Unix user/group of processes
+; Note: The user is mandatory. If the group is not set, the default user's group
+;       will be used.
+user = site1
+group = site1
 
-        ...
+...
 
-        ; The address on which to accept FastCGI requests.
-        ; Valid syntaxes are:
-        ;   'ip.add.re.ss:port'    - to listen on a TCP socket to a specific IPv4 address on
-        ;                            a specific port;
-        ;   '[ip:6:addr:ess]:port' - to listen on a TCP socket to a specific IPv6 address on
-        ;                            a specific port;
-        ;   'port'                 - to listen on a TCP socket to all IPv4 addresses on a
-        ;                            specific port;
-        ;   '[::]:port'            - to listen on a TCP socket to all addresses
-        ;                            (IPv6 and IPv4-mapped) on a specific port;
-        ;   '/path/to/unix/socket' - to listen on a unix socket.
-        ; Note: This value is mandatory.
-        listen = /var/run/php5-fpm-site1.com.sock
-        ~~~
+; The address on which to accept FastCGI requests.
+; Valid syntaxes are:
+;   'ip.add.re.ss:port'    - to listen on a TCP socket to a specific IPv4 address on
+;                            a specific port;
+;   '[ip:6:addr:ess]:port' - to listen on a TCP socket to a specific IPv6 address on
+;                            a specific port;
+;   'port'                 - to listen on a TCP socket to all IPv4 addresses on a
+;                            specific port;
+;   '[::]:port'            - to listen on a TCP socket to all addresses
+;                            (IPv6 and IPv4-mapped) on a specific port;
+;   '/path/to/unix/socket' - to listen on a unix socket.
+; Note: This value is mandatory.
+listen = /var/run/php5-fpm-site1.com.sock
 
-    {: .note}
-    > In the file excerpt above, three sequential dots - `...`  - denote that there is more in this file than is being shown. The three sequential dots are not a literal section to be copied.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+In the file excerpt above, three sequential dots - `...`  - denote that there is more in this file than is being shown. The three sequential dots are not a literal section to be copied.
+{{< /note >}}
 
 3.  Restart the PHP-FPM service:
 
@@ -189,23 +190,22 @@ This is particularly useful when running multiple client sites because you can g
 
 4.  Add the `<IfModule mod_fastcgi.c>` block to each virtual host block:
 
-    {: .file-excerpt}
-    /etc/apache2/sites-available/site1.com.conf
-    :   ~~~ conf
-        <VirtualHost *:80>
+    {{< file-excerpt "/etc/apache2/sites-available/site1.com.conf" aconf >}}
+<VirtualHost *:80>
 
-        ...
+...
 
-        <IfModule mod_fastcgi.c>
-            AddType application/x-httpd-fastphp5 .php
-            Action application/x-httpd-fastphp5 /php5-fcgi
-            Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-site1.com
-            FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi-site1.com -socket /var/run/php5-fpm-site1.com.sock -pass-header Authorization
-        </IfModule>
+<IfModule mod_fastcgi.c>
+    AddType application/x-httpd-fastphp5 .php
+    Action application/x-httpd-fastphp5 /php5-fcgi
+    Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi-site1.com
+    FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi-site1.com -socket /var/run/php5-fpm-site1.com.sock -pass-header Authorization
+</IfModule>
 
-        ...
+...
 
-        ~~~
+{{< /file-excerpt >}}
+
 
 5.  Test the new configuration with `sudo apache2ctl configtest`. If there are no errors, reload Apache:
 

@@ -3,10 +3,10 @@ author:
   name: Angel Guarisma
   email: docs@linode.com
 description: 'This guide shows how to securely setup ownCloud, a file-hosting service that facilitates file sharing across multiple devices, on Ubuntu 16.04.'
-keywords: 'owncloud, install owncloud, cloud storage ubuntu'
+keywords: ["owncloud", " install owncloud", " cloud storage ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, August 7th, 2017'
-modified: 'Monday, August 7th, 2017'
+published: 2017-08-07
+modified: 2017-08-07
 modified_by:
   name: Angel Guarisma
 title: 'Install and Configure ownCloud on Ubuntu 16.04'
@@ -16,7 +16,7 @@ external_resources:
 ---
 
 
-OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices. 
+OwnCloud is an open-source, cloud-based, file hosting service you can install on your Linode. OwnCloud offers a quick installation process, works out of the box, and has an extensive library of plugins available. Its cross-platform compatibility means you can access your files from most major operating systems, browsers, and mobile devices.
 
 ![ownCloud](/docs/assets/owncloud_ubuntu.jpg)
 
@@ -39,12 +39,12 @@ Add the repository key to apt, and install ownCloud:
     sudo wget -nv https://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/Release.key -O Release.key
     sudo apt-key add - < Release.key
     sudo sh -c "echo 'deb http://download.owncloud.org/download/repositories/9.1/Ubuntu_16.04/ /' > /etc/apt/sources.list.d/owncloud.list"
-    sudo apt update 
+    sudo apt update
     sudo apt install owncloud
 
 ## Configure MySQL
 
-1.  Log in to your MySQL database, and enter your root password: 
+1.  Log in to your MySQL database, and enter your root password:
 
         mysql -u root -p
 
@@ -78,7 +78,7 @@ Add the repository key to apt, and install ownCloud:
         1 row in set (0.00 sec)
 
 ## Create an Administrator Account
- 
+
 1. After ownCloud is installed and MySQL is configured, point your browser to `ip_address_or_domain/owncloud` (where, `ip_address_or_domain` is your IP or FQDN) and create an administrator account:
 
     ![ownCloud login screen](/docs/assets/ownCloud/login.png)

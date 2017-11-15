@@ -4,30 +4,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Setting up an email and groupware server using Citadel on a Debian 6 (Squeeze) Linode.'
-keywords: 'citadel debian 6,citadel debian squeeze,debian 6 mail server,groupware,email server'
+keywords: ["citadel debian 6", "citadel debian squeeze", "debian 6 mail server", "groupware", "email server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/citadel/debian-6-squeeze/']
-modified: Wednesday, November 9th, 2011
+aliases: ['email/citadel/debian-6-squeeze/']
+modified: 2011-11-09
 modified_by:
   name: Linode
-published: 'Wednesday, November 9th, 2011'
+published: 2011-11-09
 title: 'Email with Citadel on Debian 6 (Squeeze)'
 ---
 
-Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Citadel is a groupware suite that provides system administrators with an easy method to set up and manage email, calendars, mailing lists and other collaboration tools. It is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Citadel
----------------
+# Install Citadel
 
 Issue the following commands to install any outstanding package updates:
 
@@ -36,7 +34,7 @@ Issue the following commands to install any outstanding package updates:
 
 Issue the following commands to install the `citadel-suite`, `spamassassin` and `amavisd-new` packages:
 
-    apt-get install citadel-suite spamassassin amavisd-new 
+    apt-get install citadel-suite spamassassin amavisd-new
 
 The installation process will prompt you for several configuration items. Recommended answers for these prompts are as follows.
 
@@ -55,32 +53,31 @@ If you need to reconfigure any of these options later, you can use the following
 
 Check the file `/etc/default/webcit` to make sure the installer correctly set your desired HTTP and HTTPS ports. You may need to update the following lines:
 
-{: .file-excerpt }
-/etc/default/webcit
-:   ~~~
-    export WEBCIT_HTTPS_PORT='443'
-    export WEBCIT_HTTP_PORT='80'
-    ~~~
+{{< file-excerpt "/etc/default/webcit" >}}
+export WEBCIT_HTTPS_PORT='443'
+export WEBCIT_HTTP_PORT='80'
+
+{{< /file-excerpt >}}
+
 
 Finally, edit the `/etc/mailname` file to reflect your system's fully qualified domain name:
 
-{: .file }
-/etc/mailname
-:   ~~~
-    hostname.example.com
-    ~~~
+{{< file "/etc/mailname" >}}
+hostname.example.com
 
-Enable Spamassassin Filtering
------------------------------
+{{< /file >}}
+
+
+# Enable Spamassassin Filtering
 
 You'll need to edit the SpamAssassin configuration file to enable spamd:
 
-{: .file-excerpt }
-/etc/default/spamassassin
-:   ~~~
-    # Change to one to enable spamd
-    ENABLED=1
-    ~~~
+{{< file-excerpt "/etc/default/spamassassin" >}}
+# Change to one to enable spamd
+ENABLED=1
+
+{{< /file-excerpt >}}
+
 
 Start the spamassassin service as follows:
 
@@ -88,8 +85,7 @@ Start the spamassassin service as follows:
 
 Please note that you'll finish enabling SpamAssassin support within Citadel later in the "Notes" section.
 
-Configure SSL
--------------
+# Configure SSL
 
 Issue the following commands to back up the default Citadel SSL files.
 
@@ -148,18 +144,17 @@ Issue the following command to create a self-signed certificate and copy require
     openssl x509 -req -days 365 -in citadel.csr -signkey citadel.key -out citadel.cer
     cp -a citadel* /etc/ssl/webcit/
 
-Running Citadel
----------------
+# Running Citadel
 
 Customize the logon banner for your Citadel server by editing the `/etc/citadel/messages/hello` file:
 
-{: .file }
-/etc/citadel/messages/hello
-:   ~~~
-    Welcome to ^humannode!
+{{< file "/etc/citadel/messages/hello" >}}
+Welcome to ^humannode!
 
-    This logon banner resides in ^bbsdir/hello -- please customize it for your site.
-    ~~~
+This logon banner resides in ^bbsdir/hello -- please customize it for your site.
+
+{{< /file >}}
+
 
 Issue the following commands to initialize Citadel.
 
@@ -172,8 +167,7 @@ Visit the web interface in your web browser. Using our preceding example, the We
 
 At this point, your email system should be fully functional and can be configured through the web interface. To finish enabling SpamAssassin support, select "Administration" in the control panel. Next, click "Domain names and Internet mail configuration". Enter "127.0.0.1" in the box for the SpamAssassin host.
 
-Lost Password Recovery
-----------------------
+# Lost Password Recovery
 
 If you lose the password to your administrator account, issue the following command:
 
@@ -181,8 +175,7 @@ If you lose the password to your administrator account, issue the following comm
 
 When prompted for administrative account information, specify a new username and password. You may accept all other default settings. You should be able to log in as the new admin user. You may then reset the password for your original administrator account. After this is done, log back in as the original administrator and delete the temporary admin account.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

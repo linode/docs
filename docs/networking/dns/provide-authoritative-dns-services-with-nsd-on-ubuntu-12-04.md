@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configure NSD to Handle DNS Queries on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'NSD,DNS,Ubuntu,networking,zone file,name server daemon'
+keywords: ["NSD", "DNS", "Ubuntu", "networking", "zone file", "name server daemon"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, October 9th, 2012
+aliases: ['dns-guides/nsd-authoritative-dns-ubuntu-12-04-precise-pangolin/','networking/dns/provide-authoritative-dns-services-with-nsd-on-ubuntu-12-04-precise-pangolin/']
+modified: 2012-10-09
 modified_by:
   name: Linode
-published: 'Tuesday, October 9th, 2012'
+published: 2012-10-09
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 12.04'
 external_resources:
  - '[NSD Homepage](http://nlnetlabs.nl/projects/nsd/)'
@@ -23,7 +23,7 @@ Before beginning, you should be familiar with basic [DNS terminology and records
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -49,29 +49,29 @@ You will now need to configure the daemon.
 
 Edit the `nsd.conf` file to configure the behavior of the NSD service and the hosted DNS zones. The NSD package provides an example configuration file located at `/etc/nsd3/nsd.conf.sample` that you may reference. Your file should resemble the following:
 
-{: .file-excerpt }
-/etc/nsd3/nsd.conf
-: ~~~
-	server:
-	    logfile: "/var/log/nsd.log"
-	    username: nsd
-~~~
+{{< file-excerpt "/etc/nsd3/nsd.conf" >}}
+server:
+    logfile: "/var/log/nsd.log"
+    username: nsd
+
+{{< /file-excerpt >}}
+
 
 ### Host Zones with NSD
 
 You must specify at least one zone in the `/etc/nsd3/nsd.conf` file before NSD will begin serving DNS records. Refer to the following example configuration for proper syntax.
 
-{: .file-excerpt }
-/etc/nsd3/nsd.conf
-: ~~~
-	zone:
-	    name: example.com
-	    zonefile: /etc/nsd3/example.com.zone
+{{< file-excerpt "/etc/nsd3/nsd.conf" >}}
+zone:
+    name: example.com
+    zonefile: /etc/nsd3/example.com.zone
 
-	zone:
-	    name: example.org
-	    zonefile: /etc/nsd3/example.org.zone
-~~~
+zone:
+    name: example.org
+    zonefile: /etc/nsd3/example.org.zone
+
+{{< /file-excerpt >}}
+
 
 Once zones are added to the `nsd.conf` file, proceed to create a zone file for each DNS zone.
 
@@ -79,62 +79,62 @@ Once zones are added to the `nsd.conf` file, proceed to create a zone file for e
 
 Each domain has a zone file specified in the `nsd.conf` file. The syntax of an NSD zone file is similar BIND zone files. Refer to the example zone files that follow for syntax, and modify domain names and IP addresses to reflect the needs of your deployment.
 
-{: .file-excerpt }
-/etc/nsd3/example.com.zone
-: ~~~
-	$ORIGIN example.com.
-	$TTL 86400
+{{< file-excerpt "/etc/nsd3/example.com.zone" >}}
+$ORIGIN example.com.
+$TTL 86400
 
-	@       IN      SOA     ns1.example.com.      admin.example.com. (
-	                                2010011801      ; serial number
-	                                28800           ; Refresh
-	                                7200            ; Retry
-	                                864000          ; Expire
-	                                86400           ; Min TTL
-	                                )
+@       IN      SOA     ns1.example.com.      admin.example.com. (
+                                2010011801      ; serial number
+                                28800           ; Refresh
+                                7200            ; Retry
+                                864000          ; Expire
+                                86400           ; Min TTL
+                                )
 
-	                NS      ns1.example.com.
-	                NS      ns2.example.com.
+                NS      ns1.example.com.
+                NS      ns2.example.com.
 
 
-	                MX      10 mail.example.com.
+                MX      10 mail.example.com.
 
-	ns1     IN  A   11.22.33.44
-	ns2     IN  A   22.33.44.55
-	www             IN      A       77.66.55.44
-	tomato          IN      A       77.66.55.44
-	mail        IN  A   88.77.66.55
-	*               IN      A       77.66.55.44
-~~~
+ns1     IN  A   11.22.33.44
+ns2     IN  A   22.33.44.55
+www             IN      A       77.66.55.44
+tomato          IN      A       77.66.55.44
+mail        IN  A   88.77.66.55
+*               IN      A       77.66.55.44
 
-{: .file-excerpt }
-/etc/nsd3/example.org.zone
-: ~~~
-	$ORIGIN example.org.
-	$TTL 86400
-
-	@       IN      SOA     ns1.example.org.      web-admin.example.org. (
-	                                    2009011803      ; serial number
-	                                    28800           ; Refresh
-	                                    7200            ; Retry
-	                                    864000          ; Expire
-	                                    86400           ; Min TTL
-	                                    )
-
-	                NS      ns1.example.org.
-	                NS      ns2.example.org.
+{{< /file-excerpt >}}
 
 
-	                MX      10 mail.example.org.
+{{< file-excerpt "/etc/nsd3/example.org.zone" >}}
+$ORIGIN example.org.
+$TTL 86400
 
-	    ns1             IN      A       11.22.33.44
-	    ns2             IN      A       22.33.44.55
-	www             IN      A       44.33.22.11
-	paisano         IN      A       44.33.22.11
-	mail            IN      A       99.88.77.66
+@       IN      SOA     ns1.example.org.      web-admin.example.org. (
+                                    2009011803      ; serial number
+                                    28800           ; Refresh
+                                    7200            ; Retry
+                                    864000          ; Expire
+                                    86400           ; Min TTL
+                                    )
 
-	pizzapie    IN  CNAME   paisano
-~~~
+                NS      ns1.example.org.
+                NS      ns2.example.org.
+
+
+                MX      10 mail.example.org.
+
+    ns1             IN      A       11.22.33.44
+    ns2             IN      A       22.33.44.55
+www             IN      A       44.33.22.11
+paisano         IN      A       44.33.22.11
+mail            IN      A       99.88.77.66
+
+pizzapie    IN  CNAME   paisano
+
+{{< /file-excerpt >}}
+
 
 Rebuild the NSD database and restart the daemon with following command sequence:
 
@@ -180,8 +180,9 @@ Congratulations, you have successfully installed the Name Server Daemon!
 
 If you are running NSD in a low-memory environment, amending the values of the following directives in your `/etc/nsd3/nsd.conf` file will lower your memory and system resource usage.
 
-{: .file-excerpt }
-/etc/nsd3/nsd.conf
-:	~~~
-	ip4-only: yes tcp-count: 10 server-count: 1
-	~~~
+{{< file-excerpt "/etc/nsd3/nsd.conf" >}}
+ip4-only: yes tcp-count: 10 server-count: 1
+
+
+{{< /file-excerpt >}}
+

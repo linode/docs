@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use unison to synchronize files between two machines.'
-keywords: 'backup,syncronize files,unison,debian,debian lenny'
+keywords: ["backup", "syncronize files", "unison", "debian", "debian lenny"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/unison/']
-modified: Wednesday, August 23rd, 2017
+aliases: ['linux-tools/unison/']
+modified: 2017-08-23
 modified_by:
   name: Linode
-published: 'Tuesday, April 20th, 2010'
+published: 2010-04-20
 title: Synchronize Files with Unison
 external_resources:
  - '[Unison Project Home Page](http://www.cis.upenn.edu/~bcpierce/unison/)'
@@ -18,12 +18,13 @@ external_resources:
 
 Unison is a file synchronization tool that allows users to maintain two instances of a given file set on two systems up to date and identical. The tool is designed for maximum usability in a variety of contexts and uses protocols like SSH to securely transfer data between folders. Furthermore, the system is designed to be fault tolerant in the case of interruptions and modifications to both "source" and "remote," and aims to always leave both instances of a file or directory tree in a known working state. Unison can be deployed to synchronize files between systems running disparate operating systems, to backup systems, or as part of a content deployment system, among a plethora of other use cases.
 
-Before beginning this guide, we assume you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [administration basics](/docs/using-linux/administration-basics) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/docs/networking/ssh-filesystems/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
+Before beginning this guide, we assume you have completed the [getting started guide](/docs/getting-started/). If you're new to Linux system administration, we recommend considering the [introducing Linux concepts](/docs/tools-reference/introduction-to-linux-concepts) guide and the [administration basics](/docs/using-linux/administration-basics) guide. If you're simply looking to gain access to your Linode on your local system, you may want to consider deploying a [remote file system](/content/networking/ssh-filesystems/). Conversely, if you need a more complex backup system, your needs may be better served by an incremental backup system.
 
 ## Install Unison on a Linode
 
-{:.caution}
-> Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
+{{< caution >}}
+Unison is no longer [maintained under active development](https://www.cis.upenn.edu/~bcpierce/unison/status.html).
+{{< /caution >}}
 
 ### Debian 5 (Lenny)
 
@@ -39,17 +40,17 @@ Debian also includes packages for Unison version 2.13 (packaged as `unison2.13.1
 
 Edit the `/etc/apt/sources.list` to enable to the Universe repositories, so that it resembles the following:
 
-{:.file}
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted
-    
-    deb <http://security.ubuntu.com/ubuntu> lucid-security main restricted deb-src <http://security.ubuntu.com/ubuntu> lucid-security main restricted
-    
-    ## universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe
-    
-    deb <http://security.ubuntu.com/ubuntu> lucid-security universe deb-src <http://security.ubuntu.com/ubuntu> lucid-security universe
-    ~~~
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid main restricted
+
+deb <http://security.ubuntu.com/ubuntu> lucid-security main restricted deb-src <http://security.ubuntu.com/ubuntu> lucid-security main restricted
+
+## universe repositories deb <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid universe deb <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe deb-src <http://us.archive.ubuntu.com/ubuntu/> lucid-updates universe
+
+deb <http://security.ubuntu.com/ubuntu> lucid-security universe deb-src <http://security.ubuntu.com/ubuntu> lucid-security universe
+
+{{< /file >}}
+
 
 Finally, issue the following sequence of commands to: ensure that your system's package database is up to date, that all installed packages are up to date, and install Unison:
 
@@ -62,7 +63,7 @@ Finally, issue the following sequence of commands to: ensure that your system's 
 The unison packages for CentOS are not included in the base distribution, but are included in the [EPEL](https://fedoraproject.org/wiki/EPEL) repositories. Enable the EPEL repository, and ensure that your system is up to date and install unison with the following commands:
 
     rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-    yum update 
+    yum update
     yum install unison227
 
 The EPEL repository also includes a package for Unison version 2.13 in the `unison213` package. This may be helpful if you need to use this version of the client, otherwise use the more recent version of the software.
@@ -71,7 +72,7 @@ The EPEL repository also includes a package for Unison version 2.13 in the `unis
 
 On Fedora systems issue the following sequence of commands to ensure that your system is up to date and then install Unison:
 
-    yum update 
+    yum update
     yum install unison
 
 ### Arch Linux

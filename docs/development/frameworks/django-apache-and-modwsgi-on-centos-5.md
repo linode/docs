@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on CentOS 5.'
-keywords: 'django,python,apache,mod\_wsgi'
+keywords: ["django", "python", "apache", "mod\\_wsgi"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/django-apache-mod-wsgi/centos-5/','websites/frameworks/django-apache-and-modwsgi-on-centos-5/']
-modified: Monday, August 22nd, 2011
+aliases: ['frameworks/django-apache-mod-wsgi/centos-5/','websites/frameworks/django-apache-and-modwsgi-on-centos-5/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Tuesday, May 18th, 2010'
+published: 2010-05-18
 title: 'Django, Apache and mod_wsgi on CentOS 5'
 external_resources:
  - '[The Django Project Home Page](http://www.djangoproject.com/)'
@@ -27,7 +27,7 @@ This guide provides an introduction to getting started with the Django framework
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -72,7 +72,7 @@ Your application may require additional dependencies. You may install these eith
 
 There are two methods for installing Django. You may either choose to install the Django packages from the EPEL repositories, or you can install using the python `easy_install` method. Installing the EPEL packages will install version 1.1.1 of the framework, but you will have the benefit of ongoing security and bug fixes from the Fedora Project if you install by way of the EPEL repositories. To install Django in this manner:
 
-    yum install Django 
+    yum install Django
 
 If you want to install Django using the `easy_install` tool, issue the following command:
 
@@ -84,20 +84,20 @@ At the time of writing, this will install version 1.2.5 of the Django framework.
 
 In order for `mod_wsgi` to be able to provide access to your Django application, you will need to create a `django.wsgi` file inside of your application directory. For the purposes of this example, we assume that your application will be located *outside* of your `DocumentRoot` in the directory `/srv/www/example.com/application`. Modify this example and all following examples to conform to the actual files and locations used in your deployment.
 
-{: .file }
-/srv/www/example.com/application/django.wsgi
-:   ~~~ python
-    import os
-    import sys
+{{< file "/srv/www/example.com/application/django.wsgi" python >}}
+import os
+import sys
 
-    sys.path.append('/srv/www/example.com/application')
+sys.path.append('/srv/www/example.com/application')
 
-    os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
-    os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
+os.environ['PYTHON_EGG_CACHE'] = '/srv/www/example.com/.python-egg'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'settings'
 
-    import django.core.handlers.wsgi
-    application = django.core.handlers.wsgi.WSGIHandler()
-    ~~~
+import django.core.handlers.wsgi
+application = django.core.handlers.wsgi.WSGIHandler()
+
+{{< /file >}}
+
 
 You must append the path of your application to the system path as above. Additionally, declaration of the `PYTHON_EGG_CACHE` variable is optional but may be required for some applications when WSGI scripts are executed with the permissions of the web server. Finally, the `DJANGO_SETTINGS_MODULE` must refer to the Django `settings.py` file for your project. You will need to restart Apache after modifying the `django.wsgi` file.
 
@@ -105,31 +105,31 @@ You must append the path of your application to the system path as above. Additi
 
 Consider the following example virtual host configuration:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost example.com:80>
-       ServerName example.com
-       ServerAlias www.example.com
-       ServerAdmin username@example.com
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost example.com:80>
+   ServerName example.com
+   ServerAlias www.example.com
+   ServerAdmin username@example.com
 
-       DocumentRoot /srv/www/example.com/public_html
+   DocumentRoot /srv/www/example.com/public_html
 
-       WSGIScriptAlias / /srv/www/example.com/application/django.wsgi
-       <Directory /srv/www/example.com/application>
-          Order allow,deny
-          Allow from all
-       </Directory>
+   WSGIScriptAlias / /srv/www/example.com/application/django.wsgi
+   <Directory /srv/www/example.com/application>
+      Order allow,deny
+      Allow from all
+   </Directory>
 
-       Alias /robots.txt /srv/www/example.com/public_html/robots.txt
-       Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
-       Alias /images /srv/www/example.com/public_html/images 
-       Alias /static /srv/www/example.com/public_html/static
+   Alias /robots.txt /srv/www/example.com/public_html/robots.txt
+   Alias /favicon.ico /srv/www/example.com/public_html/favicon.ico
+   Alias /images /srv/www/example.com/public_html/images
+   Alias /static /srv/www/example.com/public_html/static
 
-       ErrorLog /srv/www/example.com/logs/error.log 
-       CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+   ErrorLog /srv/www/example.com/logs/error.log
+   CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 In this example, the `WSGIScriptAlias` directive tells Apache that for this virtual host, all requests below `/` should be handled by the WSGI script specified. In the directory block that follows, we allow Apache to serve these requests. Finally, the series of four `Alias` directives allow Apache to serve the `robots.txt` and `favicon.ico` files as well as all resources beneath the `/images` and `/static` locations, directly from the `DocumentRoot` without engaging the WSGI application. You can add as many Alias directives as you need to.
 
@@ -137,11 +137,11 @@ In this example, the `WSGIScriptAlias` directive tells Apache that for this virt
 
 Edit the `/etc/httpd/conf.d/wsgi.conf` file to enable the `mod_wsgi` by uncommenting or adding the following line:
 
-{: .file-excerpt }
-/etc/httpd/conf.d/wsgi.conf
-:   ~~~
-    LoadModule wsgi_module modules/mod_wsgi.so
-    ~~~
+{{< file-excerpt "/etc/httpd/conf.d/wsgi.conf" >}}
+LoadModule wsgi_module modules/mod_wsgi.so
+
+{{< /file-excerpt >}}
+
 
 When you have successfully configured your Apache virtual host, and enabled the required module, issue the following command to restart the web server:
 

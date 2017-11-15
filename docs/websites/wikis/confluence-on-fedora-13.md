@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Confluence on Fedora 13 to power a full-featured wiki system.'
-keywords: 'confluence fedora 13,confluence,confluence wiki,confluence linux'
+keywords: ["confluence fedora 13", "confluence", "confluence wiki", "confluence linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/confluence/fedora-13/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/wikis/confluence/fedora-13/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Thursday, September 9th, 2010'
+published: 2010-09-09
 title: Confluence on Fedora 13
 ---
 
@@ -18,18 +18,16 @@ title: Confluence on Fedora 13
 
 [Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Fedora 13 Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install the Java 6 JDK
-----------------------
+# Install the Java 6 JDK
 
 Issue the following command to update your package repositories and install all available application updates.
 
@@ -46,8 +44,7 @@ Visit the [Oracle Java download center](http://www.oracle.com/technetwork/java/j
 
 Java is now installed. Next, you'll install Confluence.
 
-Install Confluence
-------------------
+# Install Confluence
 
 Issue the following command to install prerequisite packages.
 
@@ -70,20 +67,20 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties
-:   ~~~
-    confluence.home=/var/lib/confluence
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+confluence.home=/var/lib/confluence
+
+{{< /file-excerpt >}}
+
 
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file and the "JAVA\_HOME" line as necessary to reflect current version numbers.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh
-:   ~~~
-    JAVA_HOME="/usr/lib/java/jdk1.6.0_21"
-    export JAVA_HOME
-    ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+JAVA_HOME="/usr/lib/java/jdk1.6.0_21"
+export JAVA_HOME
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to return to a root shell.
 
@@ -100,8 +97,7 @@ Issue the following commands to create an init script to control the Confluence 
 
 Confluence should now be installed. Next, you'll create a database to store information related to your Confluence installation.
 
-Create the Confluence Database
-------------------------------
+# Create the Confluence Database
 
 Issue the following commands to install PostgreSQL and some useful "contrib" components.
 
@@ -121,20 +117,20 @@ Issue the following commands to set a password for the `postgres` administrative
 
 Edit the file `/var/lib/pgsql/data/pg_hba.conf`. Locate the following line.
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    host all all 127.0.0.1/32 ident
-    ~~~~
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+host all all 127.0.0.1/32 ident
+
+{{< /file-excerpt >}}
+~
 
 Change it the match the following excerpt and save the file.
 
-{: .file-excerpt }
-/var/lib/pgsql/data/pg\_hba.conf
-:   ~~~
-    host all all 127.0.0.1/32 md5
-    ~~~
-    
+{{< file-excerpt "/var/lib/pgsql/data/pg\\_hba.conf" >}}
+host all all 127.0.0.1/32 md5
+
+{{< /file-excerpt >}}
+
+
 Issue the following command to create a `confluence` PostgreSQL role, making sure to assign a strong password.
 
     createuser confluence --pwprompt
@@ -158,8 +154,7 @@ Issue the following command to restart PostgreSQL.
 
 PostgreSQL should now be properly configured. Next, you'll create a virtual host for your Confluence site.
 
-Create a Virtual Host for Confluence
-------------------------------------
+# Create a Virtual Host for Confluence
 
 By default, the web interface for Confluence runs on port 8080. If you're comfortable with instructing your users to use this port, you may skip this section. Otherwise, follow these instructions to use the Apache web server to host a traditional virtual host for your Confluence installation. Issue the following command to install Apache.
 
@@ -168,43 +163,43 @@ By default, the web interface for Confluence runs on port 8080. If you're comfor
 
 Edit the `/etc/httpd/conf/httpd.conf` file, adding the following excerpt at the end.
 
-{: .file-excerpt }
-/etc/httpd/conf/httpd.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file-excerpt "/etc/httpd/conf/httpd.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 Create a file named `/etc/httpd/conf.d/vhost.conf` with the following contents, replacing "confluence.example.com" with the your actual domain name. Please note that you will need to add an "A" record to your DNS configuration to point the site to your Linode's public IP address. This example assumes that Confluence will be running on its default port (8080).
 
-{: .file }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    NameVirtualHost *:80
+{{< file "/etc/httpd/conf.d/vhost.conf" apache >}}
+NameVirtualHost *:80
 
-    <VirtualHost *:80>
-         ServerAdmin support@example.com
-         ServerName confluence.example.com
-         ProxyPass / http://localhost:8080/
-         ProxyPassReverse / http://localhost:8080/
-    </VirtualHost>
-    ~~~
+<VirtualHost *:80>
+     ServerAdmin support@example.com
+     ServerName confluence.example.com
+     ProxyPass / http://localhost:8080/
+     ProxyPassReverse / http://localhost:8080/
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to start Apache and Confluence.
 
@@ -213,8 +208,7 @@ Issue the following commands to start Apache and Confluence.
 
 Apache should now be properly configured. Next, you'll configure Confluence.
 
-Configure Confluence
---------------------
+# Configure Confluence
 
 If you created a virtual host for your Confluence installation, direct your browser to `http://confluence.example.com`, replacing "confluence.example.com" with the site you set up with Apache. Otherwise, visit the URL `http://12.34.56.78:8080`, replacing "12.34.56.78" with your Linode's public IP address. Enter your license key on the first screen and click the "Production Installation" button to continue.
 
@@ -246,8 +240,7 @@ If you elected to install the example site, you'll be greeted with a screen rese
 
 Congratulations! You've successfully installed Confluence on your Fedora 13 Linode.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

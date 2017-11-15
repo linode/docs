@@ -4,26 +4,26 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Apache web server with Ubuntu 10.04 to serve Ruby on Rails applications.'
-keywords: 'ruby on rails,rails on ubuntu,rails apps,rails and apache'
+keywords: ["ruby on rails", "rails on ubuntu", "rails apps", "rails and apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-apache/ubuntu-10-04-lucid/','websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/']
-modified: Monday, August 22nd, 2011
+aliases: ['frameworks/ruby-on-rails-apache/ubuntu-10-04-lucid/','websites/ror/ruby-on-rails-with-apache-on-ubuntu-10-04-lucid/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, August 2nd, 2010'
+published: 2010-08-02
 title: 'Ruby on Rails with Apache on Ubuntu 10.04 (Lucid)'
 external_resources:
   - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
   - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
-  - '[Install the Apache HTTP Server on Ubuntu 10.04 (Lucid)](/docs/web-servers/apache/installation/ubuntu-10.04-lucid)'
-  - '[Install the MySQL Database System on Ubuntu 10.04 (Lucid)](/docs/databases/mysql/ubuntu-10.04-lucid)'
+  - '[Install the Apache HTTP Server on Ubuntu 10.04 (Lucid)](/docs/web-servers/apache/installation/ubuntu-10-04-lucid)'
+  - '[Install the MySQL Database System on Ubuntu 10.04 (Lucid)](/docs/databases/mysql/ubuntu-10-04-lucid)'
 ---
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications quickly that is written in the Ruby programming language. Rails enables developers to produce inventive applications on tight time scales. Examples of well known Rails-powered sites include Hulu, GitHub, and the applications provided by 37 Signals, among many others. This guide deploys Rails applications using the Phusion Passenger or `mod_rails` method. Passenger allows you to embed Rails apps directly in Apache applications without needing to worry about FastCGI or complex web server proxies.
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -66,7 +66,7 @@ If you are unsure of the version you require, you can install the latest version
 
     gem install rails
 
-This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/databases/mysql/ubuntu-10.04-lucid) in Rails, issue the following commands:
+This should install the appropriate versions of all required packages including ruby, rack, and other dependencies needed for basic Rails development. To install support for the [MySQL database system](/docs/databases/mysql/ubuntu-10-04-lucid) in Rails, issue the following commands:
 
     apt-get install mysql-server libmysqlclient16 libmysqlclient16-dev mysql-client mysql-common
     gem install mysql
@@ -75,21 +75,21 @@ Additionally, the application you deploy will likely have additional dependencie
 
 ## Configuring Apache to Work with Passenger
 
-If you configured Apache virtual hosting as outlined in the [Ubuntu 10.04 (Lucid) Apache guide](/docs/web-servers/apache/installation/ubuntu-10.04-lucid), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
+If you configured Apache virtual hosting as outlined in the [Ubuntu 10.04 (Lucid) Apache guide](/docs/web-servers/apache/installation/ubuntu-10-04-lucid), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/public_html/
+
+{{< /file-excerpt >}}
+
 
 Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/application/public
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/application/public
+
+{{< /file-excerpt >}}
+
 
 Restart Apache once to ensure all settings have been loaded using the following command:
 
@@ -99,14 +99,14 @@ Restart Apache once to ensure all settings have been loaded using the following 
 
 There are a number of strategies for deploying more than one Rails application using Passenger. The most simple approach requires running multiple distinct virtual hosts configured as above to host a single Rails app each. Alternatively, you may host multiple Rails apps within a single virtual host. Add `RailsBaseURI` directives that specify the path to your Rails application within the VirtualHost configuration as in the following example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/
-    RailsBaseURI /lollipop
-    RailsBaseURI /frogs
-    RailsBaseURI /simon
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/public_html/
+RailsBaseURI /lollipop
+RailsBaseURI /frogs
+RailsBaseURI /simon
+
+{{< /file-excerpt >}}
+
 
 These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
 

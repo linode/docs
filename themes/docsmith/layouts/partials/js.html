@@ -1,0 +1,14 @@
+<script type="text/javascript">
+$( "img[src^='\/docs\/assets']" ).each(function () {
+  $( this ).parent().bind('click', false);
+  $( this ).on('click', function(e) {
+    var image_title = $( this ).attr('alt');
+    var image_href = $( this ).parent().attr('href') || $( this ).attr('src');
+    $( '#img-modal-image' ).attr('src', image_href);
+    $( '#img-modal-title' ).text(image_title);
+    $( '#img-modal' ).modal({ show: true });
+  });
+});
+</script>
+
+

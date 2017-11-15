@@ -4,29 +4,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install MongoDB for use in application development on CentOS 5.'
-keywords: 'nosql,database,mongodb,key store'
+keywords: ["nosql", "database", "mongodb", "key store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mongodb/centos-5/']
-modified: Friday, April 29th, 2011
+aliases: ['databases/mongodb/centos-5/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Wednesday, March 24th, 2010'
+published: 2010-03-24
 title: Use MongoDB to Store Application Data on CentOS 5
 ---
 
 MongoDB is a database engine that provides access to non-relational key-value databases. It is part of the growing NoSQL movement, which seeks to provide an alternative to traditional relational database management systems (RDBMS). In addition to its schema-free design and scalable architecture, MongoDB provides a JSON-based output format and specialized language specific bindings that make it particularly attractive for use in custom application development. Although MongoDB is a relatively new project and has not yet been packaged by most major operating system distributions, the software has been used in a number of large scale [production deployments](http://www.mongodb.org/display/DOCS/Production+Deployments) such as "GitHub", "SourceForge", and "DISQUS".
 
-Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing MongoDB, it is assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing MongoDB
-------------------
+# Installing MongoDB
 
 ### Install Prerequisites
 
 Issue the following commands to make sure that your system is up to date and that all of the required software is installed:
 
     yum update
-    yum install wget 
+    yum install wget
 
 ### Install MongoDB
 
@@ -44,8 +43,7 @@ MongoDB is now deployed in the `/opt/mongodb/` folder with the binaries located 
 
 In this example the name of the database will be `mongodb`; however, you can modify this name with another name or naming scheme as needed.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -56,8 +54,7 @@ Please monitor the following MongoDB mailing lists for updates to ensure that yo
 
 When upstream sources offer new releases, repeat the instructions for installing MongoDB and recompile your software when needed.
 
-Create Basic Control Scripts
-----------------------------
+# Create Basic Control Scripts
 
 In typical installations, the MongoDB server process is controlled using command line arguments to binaries located at `/opt/mongodb/bin/mongod`. In order to simplify commands, you can create control scripts named `mongodb-start` and `mongodb-stop` in the `/opt/bin/` directory. Issue the following commands to create the required directories:
 
@@ -75,26 +72,26 @@ Review the contents of the `mongodb-start` and `mongodb-stop` and modify these f
 
 Create the `/opt/config/mongodb` and use the following example as a template:
 
-{: .file }
-/opt/config/mongodb
-:   ~~~ ini
-    # Configuration Options for MongoDB
-    # 
-    # For More Information, Consider:
-    # - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
-    # - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration
+{{< file "/opt/config/mongodb" ini >}}
+# Configuration Options for MongoDB
+#
+# For More Information, Consider:
+# - Configuration Parameters: http://www.mongodb.org/display/DOCS/Command+Line+Parameters
+# - File Based Configuration: http://www.mongodb.org/display/DOCS/File+Based+Configuration
 
-    dbpath = /srv/db/mongodb
-    logpath = /srv/db/mongodb.log
-    logappend = true
+dbpath = /srv/db/mongodb
+logpath = /srv/db/mongodb.log
+logappend = true
 
-    bind_ip = 127.0.0.1
-    port = 27017
-    fork = true
+bind_ip = 127.0.0.1
+port = 27017
+fork = true
 
-    auth = true
-    # noauth = true
-    ~~~
+auth = true
+# noauth = true
+
+{{< /file >}}
+
 
 This specifies a number of important options that you may modify to control the functionality of `mongodb`. The `dbpath` option indicates that database files will be stored in `/srv/db/mongo`. The `logpath` directive indicates that MongoDB's logs will be located in the `/srv/db/log/mongodb.log` file, and that new log entries will be appended to the end of the log rather than overwriting existing log entries even after MongoDB restarts.
 
@@ -102,14 +99,13 @@ If the `bind_ip` option is not specified, MongoDB will bind to and listen for re
 
 Setting the `fork` option to equal `true` configures MongoDB to run as a daemon process in the background independently of the current user's session. Please note that MongoDB will run under the user that executes the `mongodb-start` script. We **strongly** recommend that this user *not* be root or another privileged user account. To provide additional security, it is recommended that you set the `auth` option to `true` in order to take advantage of MongoDB's internal authentication capabilities. If you need to test the database without authentication, you can replace the `auth` option to `noauth`.
 
-Using a Basic Init Script
--------------------------
+# Using a Basic Init Script
 
 We've also created a *very* basic "init script" as a wrapper around the `mongodb-start` and `mongo-stop` scripts described above. You will still need to modify and manage the configuration of your MongoDB server in the files above. This script only provides a means for ensuring that MongoDB will start at boot. Issue the following commands:
 
     wget -O init-rpm.sh http://www.linode.com/docs/assets/624-mongodb-init-rpm.sh
     mv init-rpm.sh /etc/init.d/mongodb
-    chmod +x /etc/init.d/mongodb 
+    chmod +x /etc/init.d/mongodb
     chkconfig --add mongodb
     chkconfig mongodb on
 
@@ -128,15 +124,13 @@ To start and stop MongoDB using the init script, issue the appropriate command f
 
 Congratulations, you now have a fully functional installation of the MongoDB system.
 
-Additional MongoDB Functionality
---------------------------------
+# Additional MongoDB Functionality
 
 Now that MongoDB is running properly, you can begin to explore some of its features. Most interaction with MongoDB is done via the rich set of [language-specific drivers](http://www.mongodb.org/display/DOCS/Drivers). There are also a number of tools in the `/opt/mongodb/bin/` directory that you might find useful for interacting with MongoDB databases. The `mongo` utility provides an interactive JavaScript shell for MongoDB including commands such as `mongodump` and `mongorestore` for creating and restoring backups and snapshots as well `mongoexport` and `mongoimportjson` for exporting individual collections in JSON format.
 
 You can now fully enjoy application development with MongoDB!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

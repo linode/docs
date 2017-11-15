@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
-keywords: 'php cgi,php,apache,cgi,http,php scripts,web apps,web applications'
+keywords: ["php cgi", "php", "apache", "cgi", "http", "php scripts", "web apps", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/php-cgi/centos-6/','websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/','websites/apache/run-php-cgi-apache-centos-6/']
-modified: Tuesday, January 14th, 2014
+aliases: ['web-servers/apache/php-cgi/centos-6/','websites/apache/run-php-applications-under-cgi-with-apache-on-centos-6/','websites/apache/run-php-cgi-apache-centos-6/']
+modified: 2014-01-14
 modified_by:
   name: Linode
-published: 'Tuesday, January 14th, 2014'
+published: 2014-01-14
 title: Run PHP with CGI and Apache on CentOS 6
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
@@ -19,9 +19,9 @@ external_resources:
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the proccess of setting up Apache and PHP CGI.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -48,7 +48,7 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
         sudo chkconfig httpd on
 
-    You can now [configure virtual hosting](/docs/web-servers/apache/installation/centos-5#configure_apache) in accordance with the needs of your server.
+    You can now [configure virtual hosting](/docs/web-servers/apache/apache-2-web-server-on-centos-5/#configure-apache) in accordance with the needs of your server.
 
 3.  Install the PHP CGI binaries:
 
@@ -61,13 +61,13 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
 The directives required to enable PHP CGI may be set anywhere in Apache's [configuration tree](/docs/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For CentOS systems, this is located at `/etc/httpd/conf.d/`. Regardless of their location, the relevant settings are:
 
-{: .file-excerpt }
-Apache Configuration Block
-:   ~~~ apache
-    ScriptAlias /local-bin /usr/bin
-    AddHandler application/x-httpd-php5 php
-    Action application/x-httpd-php5 /local-bin/php-cgi
-    ~~~
+{{< file-excerpt "Apache Configuration Block" apache >}}
+ScriptAlias /local-bin /usr/bin
+AddHandler application/x-httpd-php5 php
+Action application/x-httpd-php5 /local-bin/php-cgi
+
+{{< /file-excerpt >}}
+
 
 In this example, the path to the `php-cgi` binary is `/usr/bin/php-cgi`. All files with the `php` extension will be handed to the PHP CGI binary.
 
@@ -75,17 +75,17 @@ You may also choose to put these configuration directives within a virtual hosti
 
 The configuration file for PHP is located at `/etc/php.ini`. You can modify this file to suit the needs of your deployment.
 
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php.log
-    max_execution_time = 300
-    memory_limit = 64M
-    register_globals = Off
-    ~~~
+{{< file-excerpt "/etc/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php.log
+max_execution_time = 300
+memory_limit = 64M
+register_globals = Off
+
+{{< /file-excerpt >}}
+
 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
 

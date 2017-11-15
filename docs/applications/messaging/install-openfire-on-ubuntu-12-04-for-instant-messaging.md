@@ -4,13 +4,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Install Openfire on Ubuntu 12.04 for Instant Messaging.'
-keywords: 'openfire,ubuntu 12.04,instant messaging,xmpp server,collaboration software,chat software,linux jabber server,JRE,configure openfire,'
+keywords: ["openfire", "ubuntu 12.04", "instant messaging", "xmpp server", "collaboration software", "chat software", "linux jabber server", "JRE", "configure openfire", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: 'Monday, March 14, 2016'
+aliases: ['communications/xmpp/openfire/ubuntu-12-04-precise-pangolin/','applications/messaging/instant-messaging-services-with-openfire-on-ubuntu-12-04-lts-precise-pangolin/']
+modified: 2016-03-14
 modified_by:
   name: Phil Zona
-published: 'Tuesday, November 13th, 2012'
+published: 2012-11-13
 title: 'Install Openfire on Ubuntu 12.04 for Instant Messaging'
 external_resources:
  - '[Openfire Documentation](http://www.igniterealtime.org/projects/openfire/documentation.jsp)'
@@ -74,11 +74,11 @@ Installing Openfire is relatively easy and can be completed in just a few steps.
 
 6.  Edit the configuration file `/opt/openfire/conf/openfire.xml`, substituting your Linode's public IP address for `198.51.100.0` in the `<interface>` section and removing the `<!-- -->` comment markers that surround the `<network>` section. While not required, this action is helpful if your Linode has multiple IP addresses, and you wish to limit access to a single address.
 
-    {: .file-excerpt }
-    /opt/openfire/conf/openfire.xml
-    :   ~~~ xml
-        <interface>198.51.100.0</interface>
-        ~~~
+    {{< file-excerpt "/opt/openfire/conf/openfire.xml" xml >}}
+<interface>198.51.100.0</interface>
+
+{{< /file-excerpt >}}
+
 
 7.  Add a symbolic link for the daemon script to `/etc/init.d` so that you can start the daemon with a call to service:
 
@@ -107,6 +107,6 @@ This completes the initial installation steps for Openfire. Next, we'll continue
         service openfire stop
         service openfire start
 
-If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes. 
+If you're experiencing difficulty using the credentials you just created to log in, please use "admin/admin" as the username/password. You'll need to update your credentials immediately afterward for security purposes.
 
 Congratulations! You've successfully installed the Openfire RTC server on Ubuntu 12.04 LTS.

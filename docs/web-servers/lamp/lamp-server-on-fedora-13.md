@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, PHP, and Python on a Fedora 13 powered Linode.'
-keywords: 'fedora 13 lamp,lamp server,linux lamp,fedora 13 apache'
+keywords: ["fedora 13 lamp", "lamp server", "linux lamp", "fedora 13 apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/fedora-13/','websites/lamp/lamp-server-on-fedora-13/']
-modified: Monday, May 2nd, 2011
+aliases: ['lamp-guides/fedora-13/','websites/lamp/lamp-server-on-fedora-13/']
+modified: 2011-05-02
 modified_by:
   name: Linode
-published: 'Tuesday, May 25th, 2010'
+published: 2010-05-25
 title: LAMP Server on Fedora 13
 external_resources:
   - '[Fedora Home Page](http://www.fedoraproject.org/)'
@@ -25,7 +25,7 @@ This guide provides step-by-step instructions for installing a full-featured LAM
 
 ## System Configuration
 
-It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/tools-reference/linux-system-administration-basics#set-the-timezone) guide.
+It is important to make sure that your system is properly configured before installing Apache. In particular, you need to make sure that your system is up to date and that you have set the correct hostname, as well as set hosts in your `/etc/hosts` file. If you haven't configured these, you should follow the directions in the [getting started guide](/docs/getting-started/). Additionally, if you haven't configured your timezone yet, follow the instructions in our [administration basics](/docs/getting-started#set-the-timezone) guide.
 
 If your system is configured and up to date, you may begin by installing Apache on your Linode. This guide assumes that you are logged in as the root superuser on your Linode.
 
@@ -60,11 +60,11 @@ By default, Apache listens on all IP addresses available to it. We must configur
 
 Begin by adding the following line to the virtual hosting configuration file:
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    NameVirtualHost 13.34.56.78:80
-    ~~~
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+NameVirtualHost 13.34.56.78:80
+
+{{< /file-excerpt >}}
+
 
 Be sure to replace 13.34.56.78 with your own IP address.
 
@@ -72,27 +72,27 @@ Be sure to replace 13.34.56.78 with your own IP address.
 
 Now we will create virtual host entries for each site that we need to host with this server. Here are two examples for sites at "example.com" and "example.org".
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
 
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.org     
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin webmaster@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Notes regarding this example configuration:
 
@@ -176,17 +176,17 @@ Once PHP5 is installed, we'll need to tune the configuration file located in `/e
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;` character)):
 
-{: .file-excerpt }
-/etc/php.ini
-:   ~~~ ini
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php.log
-    max_execution_time = 300
-    memory_limit = 64M
-    register_globals = Off
-    ~~~
+{{< file-excerpt "/etc/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php.log
+max_execution_time = 300
+memory_limit = 64M
+register_globals = Off
+
+{{< /file-excerpt >}}
+
 
 If you need support for MySQL in PHP, then you must install the php5-mysql package with the following command:
 
@@ -194,11 +194,11 @@ If you need support for MySQL in PHP, then you must install the php5-mysql packa
 
 You can test PHP by creating a file with the following contents under your "public\_html" directory:
 
-{: .file }
-/srv/www/example.com/public\_html/test.php
-:   ~~~ php
-    <?php phpinfo(); ?>
-    ~~~
+{{< file "/srv/www/example.com/public\\_html/test.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
 When you view this page in your browser, you should be presented with detailed PHP configuration information.
 

@@ -4,13 +4,15 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Monitor resource usage through the powerful server monitoring tool Cacti on CentOS 5.'
-keywords: 'Cacti,CentOS,Monitoring,SNMP'
+keywords: ["Cacti", "CentOS", "Monitoring", "SNMP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/cacti/centos-5/']
-modified: Friday, April 29th, 2011
+aliases: ['server-monitoring/cacti/centos-5/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Friday, February 12th, 2010'
+published: 2010-02-12
+expiryDate: 2013-04-29
+deprecated: true
 title: Monitoring Resource Utilization with Cacti on CentOS 5
 ---
 
@@ -35,9 +37,9 @@ Now, make sure your package repositories and installed programs are up to date b
 
 Begin by setting the timezone of your server if it isn't already set. Set your server to your timezone or to that of the bulk of your users. If you're unsure which timezone would be best, consider using Universal Coordinated Time (or UTC, ie. Greenwich Mean Time). Keep in mind that Cacti uses the timezone set on the monitoring machine when generating its graphs. To change the time zone, you must find the proper zone file in `/usr/share/zoneinfo/` and link that file to `/etc/localtime`. See the example below for common possibilities. Please note that all contents following the double hashes (eg. `##`) are comments and need not be copied into your terminal.
 
-    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time 
+    ln -sf /usr/share/zoneinfo/UTC /etc/localtime ## for Universal Coordinated Time
 
-    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time 
+    ln -sf /usr/share/zoneinfo/EST /etc/localtime ## for Eastern Standard Time
 
     ln -sf /usr/share/zoneinfo/US/Central /etc/localtime ## for American Central time (including DST)
 
@@ -57,73 +59,16 @@ The above command will additionally install the Apache web server. Consider our 
 
 SNMPD binds to all local interface by default. If you only plan on using Cacti locally to monitor your Linode, you may want to consider modifying `/etc/sysconfig/snmpd.options` to limit the exposure of SNMP to the Internet at large. Uncomment the following line and append the addresses you would like the SNMP daemon to "listen" for data on as follows:
 
-{: .file }
-/etc/sysconfig/snmpd.options
+{{< file "/etc/sysconfig/snmpd.options" php >}}
+$database_type = "mysql";
+$database_default = "cactidb";
+$database_hostname = "localhost";
+$database_username = "cactiuser";
+$database_password = "c@t1u53r";
+$database_port = "3306";
 
-> OPTIONS="-Lsd -Lf /dev/null -p /var/run/snmpd.pid -a 192.168.169.170"
+{{< /file >}}
 
-In this example SNMPD is configured to listen for data only on the LAN IP address `192.168.169.170`. To limit access to SNMPD so that only local data can access the daemon, use `127.0.0.1` as the IP address. If, however, you need to receive data from machines on the Internet at large, do not append any IP addresses to this line.
-
-We'll create an SNMP "community" to help identify our group of devices for Cacti. In this instance, our hostname is "example.org", so we've named the community "example". The community name choice is up to the user. Add the following line to the section of `snmpd.conf` with `com2sec` directives making sure to only grant `readonly` privileges.
-
-{: .file }
-/etc/snmp/snmpd.conf
-
-> com2sec readonly localhost example
-
-If you want a remote machine to connect to Cacti, replace "localhost" with the IP address of the remote machine.
-
-You need to restart snmpd any time `/etc/snmp/snmpd.conf` is modified. Run the following commands to start the SNMPD daemon and ensure that it will run following the next boot cycle:
-
-    /etc/init.d/snmpd restart
-    chkconfig snmpd on
-
-Installing Cacti
-----------------
-
-To install the Cacti package from the distribution software repositories, issue the following command:
-
-    yum install cacti
-
-You will need to accept the EPEL repository key, and install all packages as recommended. Before we can begin using Cacti we must first configure MySQL. Use the following commands to start the MySQL server, ensure that it will run following boot, and enter the secure installation configuration process:
-
-    /etc/init.d/mysqld start
-    chkconfig mysqld on
-    mysql_secure_installation
-
-Your MySQL instance does not have a root password when installed, but you will want to set a secure password, remove anonymous users, disallow root logins, and remove all of the test databases. Finally accept the invitation to reload all privilege tables and you will return to the root prompt. Issue the following command to enter the MySQL prompt and create a database and MySQL user for Cacti:
-
-    mysql -u root -p
-
-Supply the requested password and issue the following SQL statements at the `mysql>` prompt.
-
-    CREATE DATABASE cactidb;
-
-    CREATE USER 'cactiuser'@localhost IDENTIFIED BY 'c@t1u53r';
-
-    GRANT ALL PRIVILEGES ON cactidb.* TO 'cactiuser'@localhost;
-
-    exit
-
-Before we can begin to configure Cacti in the conventional manner, we must set up the database by issuing the following commands:
-
-    cd /opt/
-    wget http://svn.cacti.net/viewvc/cacti/tags/0.8.7e/cacti.sql?view=co
-    mv cacti.sql\?view\=co cacti.sql
-    mysql -u cactiuser -p cactidb < cacti.sql
-
-Enter the password created above (e.g. `c@t1u53r`) and press return. Now edit the `/etc/cacti/db.php` file to include the relevant settings as in the example below:
-
-{: .file-excerpt }
-/etc/cacti/db.php
-:   ~~~ php
-    $database_type = "mysql";
-    $database_default = "cactidb";
-    $database_hostname = "localhost";
-    $database_username = "cactiuser";
-    $database_password = "c@t1u53r";
-    $database_port = "3306";
-    ~~~
 
 Issue the following command to start Apache if you have not already:
 
@@ -135,8 +80,9 @@ If you would like to ensure that Apache will start following the next boot cycle
 
 From this point we'll continue the configuration of Cacti through the browser. By default, the Cacti interface only accepts traffic from the local interface. Modify `/etc/httpd/conf.d/cacti.conf` to allow traffic to your local machine's IP address, as in the following example:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/httpd/conf.d/cacti.conf
+{{< /file-excerpt >}}
 
 > \<Directory /usr/share/cacti/\>
 > :   Order Deny,Allow Deny from all Allow from 193.194.195.196
@@ -158,7 +104,7 @@ At this point Cacti will contain an entry for `localhost`, which we'll need to m
 
 Click "Settings" under "Configuration" in the left menu bar and set your "SNMP Version" to "Version 1" in the drop down box. Type the name of your community for the "SNMP Community" (in this example, "example") and save. To run the data poller to collect data for the first time, issue the following command:
 
-    php /usr/share/cacti/cmd.php 
+    php /usr/share/cacti/cmd.php
 
 Since you want Cacti to collect data automatically, we'll use the "cron" tool to regularly poll for new data. Issue the following commands to install cron and create a new cron, or regular scheduled task:
 
@@ -167,8 +113,9 @@ Since you want Cacti to collect data automatically, we'll use the "cron" tool to
 
 Now insert the following line:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 crontab
+{{< /file-excerpt >}}
 
 > */5* \* \* \* /usr/bin/php /usr/share/cacti/poller.php \> /dev/null 2\>&1
 
@@ -188,8 +135,9 @@ Next we'll need to modify the `/etc/snmp/snmpd.conf` file with the name of our c
 
 Note that the format is "rocommunity community\_name", where `community_name` is the name of the community you originally used with Cacti, e.g. `example`. If you're monitoring a CentOS machine and you need to configure which interface SNMPD binds to you must edit the `/etc/sysconfig/snmpd.options` file. Append any IP address needed to the end of the following line, and uncomment it by removing the `#` at the beginning if needed. You should not need to edit this file.
 
-{: .file }
+{{< file >}}
 /etc/sysconfig/snmpd.options
+{{< /file >}}
 
 > OPTIONS='-Lsd -Lf /dev/null -I -smux -p /var/run/snmpd.pid'
 

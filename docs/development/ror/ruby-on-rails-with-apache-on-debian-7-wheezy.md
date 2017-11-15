@@ -3,13 +3,13 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'Using the Apache web server with Debian 7 Wheezy to serve Ruby on Rails applications.'
-keywords: 'ruby on rails,rails on debian,rails apps,rails and apache'
+keywords: ["ruby on rails", "rails on debian", "rails apps", "rails and apache"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-apache/debian-7-wheezy/','websites/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/']
-modified: Friday, September 13th, 2013
+aliases: ['frameworks/ruby-on-rails-apache/debian-7-wheezy/','websites/ror/ruby-on-rails-with-apache-on-debian-7-wheezy/']
+modified: 2013-09-13
 modified_by:
   name: Linode
-published: 'Friday, September 13th, 2013'
+published: 2013-09-13
 title: 'Ruby on Rails with Apache on Debian 7 (Wheezy)'
 external_resources:
  - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
@@ -20,7 +20,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -80,19 +80,19 @@ Additionally, the application you deploy will likely have additional dependencie
 
 If you configured Apache virtual hosting as outlined in the [Debian 6 (Squeeze) Apache guide](/docs/web-servers/apache/installation/debian-6-squeeze), the public directory for your domain (e.g. `example.com`) is located in `/srv/www/example.com/public_html/`, and your `<VirtualHost >` configuration block contains a line that reads:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/ 
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/public_html/
+
+{{< /file-excerpt >}}
+
 
 Modify this line to point to the `public/` folder within your Rails application's root directory. For instance, if your Rail application is located within `/srv/www/example.com/application/` then the `DocumentRoot` would point to `/srv/www/example.com/application/public/`, as in the following example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/application/public
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/application/public
+
+{{< /file-excerpt >}}
+
 
 Restart Apache once to ensure all settings have been loaded using the following command:
 
@@ -102,14 +102,14 @@ Restart Apache once to ensure all settings have been loaded using the following 
 
 There are a number of strategies for deploying more than one Rails application using Passenger. The most simple approach requires running multiple distinct virtual hosts configured as above to host a single Rails app each. Alternatively, you may host multiple Rails apps within a single virtual host. Add `RailsBaseURI` directives that specify the path to your Rails application within the VirtualHost configuration as in the following example:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    DocumentRoot /srv/www/example.com/public_html/
-    RailsBaseURI /lollipop
-    RailsBaseURI /frogs 
-    RailsBaseURI /simon
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+DocumentRoot /srv/www/example.com/public_html/
+RailsBaseURI /lollipop
+RailsBaseURI /frogs
+RailsBaseURI /simon
+
+{{< /file-excerpt >}}
+
 
 These directives configure Passenger to run three Rails apps on the `example.com` site at the three locations specified. Rather than linking the `public/` directory of your Rails app to the `public_html/` directory as above, link the `public/` directory of the application to a directory within the `public_html/` directory. These links would be created in the following manner:
 

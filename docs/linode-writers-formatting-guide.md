@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The Linode Guides & Tutorials style guide for article submissions'
-keywords: 'style guide,format,formatting,how to write,write for us,write for linode,linode docs,submissions'
+keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['style-guide/','linode-writers-guide/']
-modified: Friday, June 30, 2017
+aliases: ['style-guide/','linode-writers-guide/']
+modified: 2017 2017-06-30
 modified_by:
   name: Edward Angert
-published: 'Wednesday, January 15th, 2014'
+published: 2014-01-15
 title: Linode Writer's Formatting Guide
 external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
@@ -32,32 +32,30 @@ Linode Guides & Tutorials are written in [PHP Markdown Extra](https://michelf.ca
 
 Linode Guides & Tutorials store metadata and other information in a [YAML](http://yaml.org/) header at the top of every page. Use the template below for your own guide.
 
-{: .file-excerpt}
-Author Submission
-:   ~~~
-    ---
-    author:
-      name: Linode Community
-      email: docs@linode.com
-    description: 'Two to three sentences describing your guide.'
-    keywords: 'list,of,keywords,and key phrases'
-    license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-    published: 'Weekday, Month 00st, 2015'
-    modified: Weekday, Month 00th, 2015
-    modified_by:
-      name: Linode
-    title: 'Guide Title'
-    contributor:
-      name: Your Name
-      link: Github/Twitter Link
-      external_resources:
-    - '[Link Title 1](http://www.example.com)'
-    - '[Link Title 2](http://www.example.net)'
-    ---
+{{< file-excerpt "Author Submission" >}}
+---
+author:
+  name: Linode Community
+  email: docs@linode.com
+description: 'Two to three sentences describing your guide.'
+keywords: ["list", "of", "keywords", "and key phrases"]
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 'Weekday, Month 00st, 2015'
+modified: Weekday, Month 00th, 2015
+modified_by:
+  name: Linode
+title: 'Guide Title'
+contributor:
+  name: Your Name
+  link: Github/Twitter Link
+  external_resources:
+- '[Link Title 1](http://www.example.com)'
+- '[Link Title 2](http://www.example.net)'
+---
 
-    *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-    ----
-    ~~~
+
+{{< /file-excerpt >}}
+
 
 If you're updating an existing guide in our repository, you may also notice a `deprecated` field in the header. This defaults to false, and setting it to *true* inserts a pre-written message near the beginning stating that the guide is no longer maintained. Typically, this will be used on guides specific to applications or distributions that have reached End of Life (EOL).
 
@@ -69,36 +67,35 @@ Introductions should be concise; explain what the goal of the guide is and why. 
 
 The *Before You Begin* section is an area for basic prerequisites a reader should know or have completed before proceeding further in your guide. Use the example below and edit as needed:
 
-{: .file-excerpt}
-Author Submission
-:   ~~~
-    ## Before You Begin
+{{< file-excerpt "Author Submission" >}}
+## Before You Begin
 
-    1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
 
-    2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
+2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services. Do **not** follow the Configure a Firewall section yet--this guide includes firewall rules specifically for an OpenVPN server.
 
-    3.  Update your system:
+3.  Update your system:
 
-            sudo apt-get update && sudo apt-get upgrade
-    ~~~
+        sudo apt-get update && sudo apt-get upgrade
+
+{{< /file-excerpt >}}
 
 #### Include a Note about Root or Non-Root users
 
-{: .file-excerpt}
-Guides Written for a Non-Root User
-:   ~~~ txt
-    {: .note}
-    >
-    > This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-    ~~~
+{{< file-excerpt "Guides Written for a Non-Root User" resource >}}
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-{: .file-excerpt}
-Guides Written for a Root User
-:   ~~~ txt
-    {: .note}
-    > The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-    ~~~
+{{< /file-excerpt >}}
+
+
+{{< file-excerpt "Guides Written for a Root User" resource >}}
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
+
+{{< /file-excerpt >}}
 
 #### Include a Note about Example Variables
 
@@ -140,9 +137,9 @@ For example:
         mysql -u testuser -p
 ~~~
 
-{: .note}
->
->The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
+{{< note >}}
+The tab size is set to four, and **only** soft tabs should be used. This can be configured in the settings of most text editors.
+{{< /note >}}
 
 ## Markdown Formatting
 
@@ -154,13 +151,10 @@ Upon first mention of a new concept or software, use the full name or term, then
 
 Use a **Bold** font weight for buttons, menu selections and anything that requires emphasis or that you want to stand out to the reader. *Italicize* new terms and concepts the first time they are used.
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------|:------------|
 | \*\*bold\*\* | **bold** |
 | \*italics\* | *italics* |
-|:--------------|:------------|
-
 ### Commands
 
 Commands that are not inline with paragraph text should be indented one tab from the beginning of the copy.
@@ -177,12 +171,9 @@ For example:
 
 Inline commands should be denoted by backtics.
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------|:------------|
 | Update your system by running \`yum update\`. | Update your system by running `yum update`. |
-|:--------------|:------------|
-
 ### Example IP Addresses
 
 Example IPs should use the documentation address blocks given in IETF [RFC 5737](https://tools.ietf.org/html/rfc5737). These are:
@@ -210,31 +201,29 @@ Within the file formatting, a code language or syntax should be defined at the e
 
 **Example**: File format
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
-| {: .file }<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
+| {{< file >}}
+<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ conf<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_file.png"> |
+{{< /file >}}
 
 **Example**: File Excerpt format
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
-| {: .file-excerpt }<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_excerpt.png"> |
+| {{< file-excerpt >}}
+<br>/path/to/file.html<br>:&nbsp;&nbsp;&nbsp;~~~ ini<br>&nbsp;&nbsp;&nbsp;&nbsp;#Sample file excerpt text<br>&nbsp;&nbsp;&nbsp;&nbsp;Sample file excerpt syntax<br>&nbsp;&nbsp;&nbsp;&nbsp;~~~ | <img src="/docs/assets/example_file_excerpt.png"> |
+{{< /file-excerpt >}}
 
 ### File Paths
 
 Inline file paths should be unformatted text.
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------|:------------|
 | Navigate to \`/var/www/html\`. | Navigate to `/var/www/html`. |
-|:--------------|:------------|
-
 ### Headings
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
 | \#\# Section title (h2) | <font size="5">Section title (h2)</font> |
@@ -247,7 +236,6 @@ Images should be in *.png* or *.jpg* format. If an image is over 650 pixels wide
 When adding an image, ensure that all identifying attributes such as names and IP addresses are removed, obfuscated, or replaced with dummy text, such as **example_user** or **192.0.2.0**. Be mindful of metadata in images taken with mobile devices.
 
 
-{: .table .table-striped .table-bordered }
 | Up to 650 px wide. | Over 650 px wide. |
 |:--------------------------|:----------------------------------------------|
 | \!\[description\](/docs/assets/filename.png) | \[!\[description\](/docs/assets/filename_small.png)](/docs/assets/filename.png) |
@@ -256,17 +244,13 @@ When adding an image, ensure that all identifying attributes such as names and I
 
 When instructing a reader to use a combination of keys, format the key combination in bold:
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------|:------------|
 | Press \*\*CTRL+N\*\* then \*\*X\*\* to exit the program.  | Press **CTRL+N** then **X** to exit the program. |
-|:--------------|:------------|
-
 ### Links
 
 Internal links to other Linode guides should be relative, starting at `/docs/`, and external links should be formatted as shown below and use HTTPS URLs whenever possible.
 
-{: .table .table-striped .table-bordered }
 | Internal | External |
 |:--------------------------|:----------------------------------------------|
 | \[Getting Started\](/docs/getting-started) | \[Apache HTTP Server Documentation\](https://httpd.apache.org/docs/)] |
@@ -275,7 +259,6 @@ Internal links to other Linode guides should be relative, starting at `/docs/`, 
 
 Be sure that lists have the proper horizontal spacing. This should be *two* spaces for ordered lists and *three* for unordered. This is to keep the lists aligned properly with the four-space soft tabs used in the guides.
 
-{: .table .table-striped .table-bordered }
 | Ordered |  Unordered |
 |:--------------------------|:----------------------------------------------|
 | 1&nbsp;&nbsp;Step 1.<br><br>2&nbsp;&nbsp;Step 2.<br><br>3&nbsp;&nbsp;Step 3. | \*&nbsp;&nbsp;&nbsp;Item 1.<br><br>\*&nbsp;&nbsp;&nbsp;Item 2.<br><br>\*&nbsp;&nbsp;&nbsp;Item 3. |
@@ -284,20 +267,19 @@ Be sure that lists have the proper horizontal spacing. This should be *two* spac
 
 Notes should be important text that does not necessarily fit the narrative of the preceeding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------------------|:----------------------------------------------|
-| {: .note}<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
-| {: .caution}<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
+| {{< note >}}
+<br>><br>> This is a sample note.<br> | <img src="/docs/assets/example-note.png"> |
+| {{< caution >}}
+<br>><br>> This is a sample caution.<br> | <img src="/docs/assets/example-caution.png"> |
+{{< /note >}}
 
 ### Numerical Values
 
-{: .table .table-striped .table-bordered }
 | 1-10 | Greater than 10 |
 |:--------------|:------------|
 | Use words (one, two, three, etc.)  | Use numerical digits (11, 22, 33). |
-|:--------------|:------------|
-
 ### Sentence Spacing
 
 Use single spaces between sentences; do not double-space.
@@ -308,7 +290,6 @@ Use single spaces between sentences; do not double-space.
   <thead><th>Formatting</th><th>Example</th></thead>
   <tr>
     <td>
-{: .table .table-striped}
 <br>
 | Left-Aligned | Centered     | Right-Aligned |
 <br>
@@ -324,18 +305,15 @@ Use single spaces between sentences; do not double-space.
     <img src="/docs/assets/example-blue-stripe-table.png">
     </td>
   </tr>
-</table>   
+</table>
 
 ### Variables
 
 Variables that the reader will need to change for their system or preference should be formatted using backtics. Do not include any brackets or parentheses when using these temporary values in examples, as the reader may include them in their final version.
 
-{: .table .table-striped .table-bordered }
 | Formatting | Example |
 |:--------------|:------------|
 | Change the \`password\` and \`username\` values. | Change the `password` and `username` values. |
-|:--------------|:------------|
-
 ## Legal Information
 
 COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer for the Linode Guides & Tutorials repository and that each form of Work is being created by the writer as a “work made for hire” under the United States Copyright Act and, at all stages of development, the Work shall be and remain the sole and exclusive property of Linode. At Linode's sole, absolute and unfettered discretion, Linode may make any alterations to the Work.
@@ -343,3 +321,4 @@ COPYRIGHT OWNERSHIP. Writer agrees that the Work is being created by the writer 
 CREDIT. Nothing contained in this Agreement shall be deeded to require Linode to use the Work, or any part thereof, in connection with Linode Guides & Tutorials or otherwise. Credit for the Work shall read, "Contributed by *writer's name*."
 
 PAYMENT. Upon publication of a submission to the Linode Guides & Tutorials Repository, the writer will be paid a sum of up to USD $300.00 either in the form of a credit to their Linode account, a hardcopy check, or as an electronic payment.
+{{< /caution >}}

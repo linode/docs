@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Configure a MongoDB ReplSet
-keywords: 'mongodb,nosql,clusters,replset,databases'
+keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mongodb/centos-6/']
-modified: Wednesday, April 9th, 2014
+aliases: ['databases/mongodb/centos-6/']
+modified: 2014-04-09
 modified_by:
   name: Linode
-published: 'Wednesday, April 9th, 2014'
+published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on CentOS 6.4'
 external_resources:
  - '[MongoDB](http://www.mongodb.org/)'
@@ -33,11 +33,11 @@ This guide is written for a non-root user. Commands that require elevated privil
 
     Replace the name in brackets <> with your own hostname. This example uses the Nano text editor. However, you can use the text editor you prefer.
 
-    {: .file-excerpt }
-    /etc/hostname
-    :   ~~~
-        europa
-        ~~~
+    {{< file-excerpt "/etc/hostname" >}}
+europa
+
+{{< /file-excerpt >}}
+
 
 2.  Create a file to hold the configuration information for the MongoDB repository:
 
@@ -50,18 +50,18 @@ This guide is written for a non-root user. Commands that require elevated privil
         baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
         gpgcheck=0
         enabled=1
-    
+
     For a 32-bit system, use the following configuration:
-    
+
         [mongodb]
         name=MongoDB Repository
         baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/i686/
         gpgcheck=0
         enabled=1
 
-    {: .note }
-    >
-    > A 32-bit system is not recommended for production deployments.
+    {{< note >}}
+A 32-bit system is not recommended for production deployments.
+{{< /note >}}
 
 4.  Install MongoDB using the command:
 
@@ -79,41 +79,41 @@ Before you begin, you will need to obtain all the private IP addresses for each 
 
 Once you have all your private IPs, you can add them to the `hosts` file. Use your favorite text editor and add the addresses.
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    192.168.160.1 mongo1
-    192.168.170.1 mongo2
-    192.168.180.1 mongo3
-    ~~~
+{{< file-excerpt "/etc/hosts" >}}
+192.168.160.1 mongo1
+192.168.170.1 mongo2
+192.168.180.1 mongo3
+
+{{< /file-excerpt >}}
+
 
 Use your own IP addresses in place of the addresses in the above example. The names of the members in the replication set are also variables, so you may name them what you choose. However, it would be prudent to have some numerical or alphabetic notation as this will make it easier to identify when connecting to the different replication set members.
 
-{: .note }
->
-> Replication set member names and the actual server name are different. In this instance, the server name is **europa**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
+{{< note >}}
+Replication set member names and the actual server name are different. In this instance, the server name is **europa**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
+{{< /note >}}
 
 ### Set the Network Interfaces
 
 1.  Edit your `ifcfg-eth0` file to include the public IP address information.
 
-    {: .file-excerpt }
-    /etc/sysconfig/network-scripts/ifcfg-eth0
-    :   ~~~
-        DEVICE=eth0
-        BOOTPROTO=none
-        ONBOOT=yes
-        TYPE=Ethernet
+    {{< file-excerpt "/etc/sysconfig/network-scripts/ifcfg-eth0" >}}
+DEVICE=eth0
+BOOTPROTO=none
+ONBOOT=yes
+TYPE=Ethernet
 
-        # This line ensures that the interface will be brought up during boot.
-        ONBOOT=yes
+# This line ensures that the interface will be brought up during boot.
+ONBOOT=yes
 
-        # eth0 - This is the main IP address that will be used for most outbound connections.
-        # The address, netmask and gateway are all necessary.
-        IPADDR=xxx.xx.xxx.xx
-        NETMASK=xxx.xxx.xxx.x
-        GATEWAY=xxx.xx.xx.x
-        ~~~
+# eth0 - This is the main IP address that will be used for most outbound connections.
+# The address, netmask and gateway are all necessary.
+IPADDR=xxx.xx.xxx.xx
+NETMASK=xxx.xxx.xxx.x
+GATEWAY=xxx.xx.xx.x
+
+{{< /file-excerpt >}}
+
 
     Replace the sample addresses with your own IP information.
 
@@ -123,21 +123,21 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 3.  Now edit your newly created `eth0:1` file to reflect your private IP information:
 
-    {: .file-excerpt }
-    /etc/sysconfig/network-scripts/ifcfg-eth0:1
-    :   ~~~
-        # Configuration for eth0:1
-        DEVICE=eth0:1
-        BOOTPROTO=none
+    {{< file-excerpt "/etc/sysconfig/network-scripts/ifcfg-eth0:1" >}}
+# Configuration for eth0:1
+DEVICE=eth0:1
+BOOTPROTO=none
 
-        # This line ensures that the interface will be brought up during boot.
-        ONBOOT=yes
+# This line ensures that the interface will be brought up during boot.
+ONBOOT=yes
 
-        # eth0:1 - Private IPs have no gateway (they are not publicly routable)
-        # specify the address and netmask.
-        IPADDR=xxx.xxx.xxx.xxx
-        NETMASK=xxx.xxx.xxx.x
-        ~~~
+# eth0:1 - Private IPs have no gateway (they are not publicly routable)
+# specify the address and netmask.
+IPADDR=xxx.xxx.xxx.xxx
+NETMASK=xxx.xxx.xxx.x
+
+{{< /file-excerpt >}}
+
 
     Again you will replace the sample addresses with your own IP information.
 
@@ -149,25 +149,25 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 1.  Edit the `mongod.conf` file to add the IP address and port number.
 
-    {: .file-excerpt }
-    /etc/mongod.conf
-    :   ~~~
-        # fork and run in background
-        fork = true
+    {{< file-excerpt "/etc/mongod.conf" >}}
+# fork and run in background
+fork = true
 
-        bind_ip = 192.168.135.24
-        port = 27017
-        ~~~
+bind_ip = 192.168.135.24
+port = 27017
+
+{{< /file-excerpt >}}
+
 
     Enter the private IP address of the server you are logged onto in the bind ip section. If bind_ip is not present, you will need to add it. Leave the default port number of **27017**, and uncomment the line `fork = true`.
 
 2.  While still in the `mongodb.conf` file scroll to the bottom and add the replica set information:
 
-    {: .file-excerpt }
-    /etc/mongod.conf
-    :   ~~~
-        replSet = rs1
-        ~~~
+    {{< file-excerpt "/etc/mongod.conf" >}}
+replSet = rs1
+
+{{< /file-excerpt >}}
+
 
     In this example, the sample replication set is **rs1**, however, you may change the name as you choose.
 
@@ -219,7 +219,7 @@ A `mongod.conf` file was created during the installation. You will use this conf
         rs.conf()
 
     The output should look similar to the following:
-    
+
         rs.conf()
         {
             "_id" : "rs1",
@@ -320,7 +320,6 @@ To clarify how data is stored it is important to understand how MongoDB classifi
 
 ### Basic MongoDB Commands
 
-{: .table .table-striped}
 |--------------------|------------------------------------------------------------------------|
 | Command            | Description                                                            |
 |--------------------|------------------------------------------------------------------------|
@@ -350,6 +349,6 @@ In the event you need to restart, stop or check the status of the MongoDB servic
     sudo service mongodb restart
     sudo service mongodb status
 
-##Other Considerations
+## Other Considerations
 
 A replication set can only have seven (7) voting members maximum. In order to add another member to a set with seven voting members, the eighth member will have to be added as either a non-voting member or an existing voting member will need to be removed.

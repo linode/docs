@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 9.04 (Jaunty).'
-keywords: 'Tomcat,Java,Apache Tomcat,Ubuntu Jaunty,Ubuntu 9.04,Tomcat Linode'
+keywords: ["Tomcat", "Java", "Apache Tomcat", "Ubuntu Jaunty", "Ubuntu 9.04", "Tomcat Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-9-04-jaunty/','websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/apache-tomcat/ubuntu-9-04-jaunty/','websites/frameworks/installing-apache-tomcat-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Thursday, August 6th, 2009'
+published: 2009-08-06
 title: 'Installing Apache Tomcat on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -20,8 +20,7 @@ Apache Tomcat is an "[open source software implementation of the Java Servlet an
 
 Before beginning this guide we assume that you've completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, we recommend considering the [beginner's guide](/docs/beginners-guide/), and the article concerning [systems administration basics](/docs/using-linux/administration-basics). We also assume you're logged into your Linode via SSH as root for this guide.
 
-Choose and Install Java Implementation
---------------------------------------
+# Choose and Install Java Implementation
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -36,12 +35,12 @@ If you would like to run the Sun Microsystems implementation of Java you must fi
 
 Add the following two lines to your `sources.list` list:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    deb http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
-    deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
-    ~~~
+{{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
+deb-src http://us.archive.ubuntu.com/ubuntu/ jaunty multiverse
+
+{{< /file-excerpt >}}
+
 
 Update apt to get the necessary package lists:
 
@@ -53,8 +52,7 @@ Now you are ready to install Sun Java with the following command (acknowledging 
 
 Now you are ready to proceed with the Apache Tomcat install.
 
-Installing Apache Tomcat
-------------------------
+# Installing Apache Tomcat
 
 To install Tomcat, issue the following command:
 
@@ -70,31 +68,20 @@ Tomcat should now be totally functional and should start automatically with the 
     /etc/init.d/tomcat6 stop
     /etc/init.d/tomcat6 restart
 
-Test and Use Tomcat
--------------------
+# Test and Use Tomcat
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file (replacing "s3cret" with a more appropriate password):
 
-{: .file }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="tomcat" password="s3cret" roles="manager"/>
-    ~~~
+{{< file "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="tomcat" password="s3cret" roles="manager"/>
+
+{{< /file >}}
+
 
 Congratulations! You know have a working Apache Tomcat installation.
 
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -4,13 +4,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Get detailed website statistics such as visitor counts, pageviews, user agents percentages, and much more using the open source Webalizer package on Centos 5.'
-keywords: 'webalizer,statistics,analytics,stats,server monitoring,centos'
+keywords: ["webalizer", "statistics", "analytics", "stats", "server monitoring", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/webalizer/centos-5/']
-modified: Friday, December 2nd, 2011
+aliases: ['web-applications/analytics/webalizer/centos-5/']
+modified: 2011-12-02
 modified_by:
   name: Lee Matos
-published: 'Saturday, April 17th, 2010'
+published: 2010-04-17
 title: Webalizer on Centos 5
 external_resources:
  - '[Webalizer Homepage](http://www.mrunix.net/webalizer/)'
@@ -22,7 +22,7 @@ We assume you've followed the steps outlined in our [getting started guide](/doc
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -43,7 +43,7 @@ If you already have Apache installed and configured, you can safely skip this se
 
 Issue the following sequence of commands to start Apache for the first time and ensure that the service restarts following the next reboot:
 
-    /etc/init.d/httpd start 
+    /etc/init.d/httpd start
 
 As mentioned earlier, you will need to go to the installation guide if you wish to configure your server beyond the default configuration.
 
@@ -51,7 +51,7 @@ As mentioned earlier, you will need to go to the installation guide if you wish 
 
 At this point we're able to install the required packages for Webalizer. Run the following command:
 
-    yum install webalizer 
+    yum install webalizer
 
 ## Configuring Webalizer for Virtual Hosts
 
@@ -61,14 +61,14 @@ This section assumes that you've already configured at least one virtual host. I
 
 To process multiple virtual hosts, create a shell script. In this case, there are three virtual hosts. Be sure to substitute the correct hostname and paths for your particular virtual host configuration.
 
-{: .file-excerpt }
-/opt/webalizerScript.sh
-:   ~~~ bash
-    #!/bin/sh
-    webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
-    webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
-    webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
-    ~~~
+{{< file-excerpt "/opt/webalizerScript.sh" bash >}}
+#!/bin/sh
+webalizer -n tunahoagie -o /srv/www/example.com/public_html/webalizer /srv/www/example.com/logs/access.log
+webalizer -n tofuhoagie -o /srv/www/example.org/public_html/webalizer /srv/www/example.org/logs/access.log
+webalizer -n fuzzyshambler -o /srv/www/fuzzyshambler.com/public_html/webalizer /srv/www/fuzzyshambler.com/logs/access.log
+
+{{< /file-excerpt >}}
+
 
 Make the script executable:
 
@@ -81,7 +81,7 @@ Delete the default `/etc/cron.daily/00webalizer` script with the following comma
 Issue the following command to remove the default webalizer integration with Apache and restart the web server process:
 
     mv /etc/httpd/conf.d/webalizer.conf /etc/httpd/conf.d/webalizer
-    /etc/init.d/httpd restart        
+    /etc/init.d/httpd restart
 
 ### Finalizing Webalizer Configuration
 

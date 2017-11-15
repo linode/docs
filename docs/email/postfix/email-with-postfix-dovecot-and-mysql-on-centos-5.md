@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing Postfix with Dovecot and MySQL on CentOS.'
-keywords: 'postfix centos 5,dovecot centos 5,linux mail server,email,centos5'
+keywords: ["postfix centos 5", "dovecot centos 5", "linux mail server", "email", "centos5"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/dovecot-mysql-centos-5/']
-modified: Thursday, March 26th, 2015
+aliases: ['email/postfix/dovecot-mysql-centos-5/']
+modified: 2015-03-26
 modified_by:
   name: Elle Krout
-published: 'Friday, June 24th, 2011'
+published: 2011-06-24
 title: 'Email with Postfix, Dovecot and MySQL on CentOS 5'
 external_resources:
  - '[ISP-style Email Server with Debian-Lenny and Postfix 2.5 guide](http://workaround.org/ispmail/lenny)'
@@ -25,11 +25,11 @@ The Postfix Mail Transfer Agent (**MTA**) is a high performance open source e-ma
 
 Prior to using this guide, be sure you have followed the [getting started guide](/docs/getting-started/) and set your hostname.
 
-{: .note}
->
->The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root`, or use `su - root` to log in as root. Certain commands below cannot be run as `sudo` and must be run as root.
+{{< /note >}}
 
-##Install Required Packages
+## Install Required Packages
 
 1.  Install any outstanding package updates:
 
@@ -37,18 +37,18 @@ Prior to using this guide, be sure you have followed the [getting started guide]
 
 2.  The version of Postfix included in the main CentOS repository does not include support for MySQL; therefore, you will need install Postfix from the CentOS Plus repository. Before doing so, add exclusions to the `[base]` and `[updates]` repositories for the Postfix package to prevent it from being overwritten with updates that do not have MySQL support:
 
-    {: .file-excerpt }
-    /etc/yum.repos.d/CentOS-Base.repo
-    :   ~~~
-        [base]
-        name=CentOS-$releasever - Base
-        exclude=postfix
+    {{< file-excerpt "/etc/yum.repos.d/CentOS-Base.repo" >}}
+[base]
+name=CentOS-$releasever - Base
+exclude=postfix
 
-        #released updates
-        [updates]
-        name=CentOS-$releasever - Updates
-        exclude=postfix
-        ~~~
+# released updates
+[updates]
+name=CentOS-$releasever - Updates
+exclude=postfix
+
+{{< /file-excerpt >}}
+
 
 3.  Install the required packages:
 
@@ -59,7 +59,7 @@ Prior to using this guide, be sure you have followed the [getting started guide]
 
 Next, set up a MySQL database to handle virtual domains and users.
 
-##Set up MySQL for Virtual Domains and Users
+## Set up MySQL for Virtual Domains and Users
 
 1.  Configure MySQL to start on boot, then start MySQL:
 
@@ -107,11 +107,11 @@ Next, set up a MySQL database to handle virtual domains and users.
 
 11. Bind MySQL to localhost (127.0.0.1) by editing `/etc/my.cnf`, and adding the following to the `[mysqld]` section of the file:
 
-    {: .file-excerpt }
-    /etc/my.cnf
-    :   ~~~
-        bind-address=127.0.0.1
-        ~~~
+    {{< file-excerpt "/etc/my.cnf" >}}
+bind-address=127.0.0.1
+
+{{< /file-excerpt >}}
+
 
     This is required for Postfix to be able to communicate with the database server. If you have MySQL set up to listen on another IP address (such as an internal IP), you will need to substitute this IP address in place of `127.0.0.1` during the Postfix configuration steps. It is *not* advisable to run MySQL on a publicly-accessible IP address.
 
@@ -121,59 +121,59 @@ Next, set up a MySQL database to handle virtual domains and users.
 
 Next, perform additional Postfix configuration to set up communication with the database.
 
-##Configure Postfix to work with MySQL
+## Configure Postfix to work with MySQL
 
-{: .note}
->
->For the next four steps, replace `mail_admin_password` with the `mail_admin` password input earlier.
+{{< note >}}
+For the next four steps, replace `mail_admin_password` with the `mail_admin` password input earlier.
+{{< /note >}}
 
 1.  Create a virtual domain configuration file for Postfix called `/etc/postfix/mysql-virtual_domains.cf`:
 
-    {: .file }
-    /etc/postfix/mysql-virtual_domains.cf
-    :   ~~~
-        user = mail_admin
-        password = mail_admin_password
-        dbname = mail
-        query = SELECT domain AS virtual FROM domains WHERE domain='%s'
-        hosts = 127.0.0.1
-        ~~~
+    {{< file "/etc/postfix/mysql-virtual_domains.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT domain AS virtual FROM domains WHERE domain='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 2.  Create a virtual forwarding file for Postfix called `/etc/postfix/mysql-virtual_forwardings.cf`:
 
-    {: .file }
-    /etc/postfix/mysql-virtual_forwardings.cf
-    :   ~~~
-        user = mail_admin
-        password = mail_admin_password
-        dbname = mail
-        query = SELECT destination FROM forwardings WHERE source='%s'
-        hosts = 127.0.0.1
-        ~~~
+    {{< file "/etc/postfix/mysql-virtual_forwardings.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT destination FROM forwardings WHERE source='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 3.  Create a virtual mailbox configuration file for Postfix called `/etc/postfix/mysql-virtual_mailboxes.cf`:
 
-    {: .file }
-    /etc/postfix/mysql-virtual_mailboxes.cf
-    :   ~~~
-        user = mail_admin
-        password = mail_admin_password
-        dbname = mail
-        query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s'
-        hosts = 127.0.0.1
-        ~~~
+    {{< file "/etc/postfix/mysql-virtual_mailboxes.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT CONCAT(SUBSTRING_INDEX(email,<'@'>,-1),'/',SUBSTRING_INDEX(email,<'@'>,1),'/') FROM users WHERE email='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 4.  Create a virtual email mapping file for Postfix called `/etc/postfix/mysql-virtual_email2email.cf`:
 
-    {: .file }
-    /etc/postfix/mysql-virtual_email2email.cf
-    :   ~~~
-        user = mail_admin
-        password = mail_admin_password
-        dbname = mail
-        query = SELECT email FROM users WHERE email='%s'
-        hosts = 127.0.0.1
-        ~~~
+    {{< file "/etc/postfix/mysql-virtual_email2email.cf" >}}
+user = mail_admin
+password = mail_admin_password
+dbname = mail
+query = SELECT email FROM users WHERE email='%s'
+hosts = 127.0.0.1
+
+{{< /file >}}
+
 
 5.  Set proper permissions and ownership for these configuration files:
 
@@ -216,12 +216,12 @@ Next, perform additional Postfix configuration to set up communication with the 
 
 8.  Edit the file `/etc/postfix/master.cf` and add the Dovecot service to the bottom of the file:
 
-    {: .file-excerpt }
-    /etc/postfix/master.cf
-    :   ~~~
-        dovecot   unix  -       n       n       -       -       pipe
-            flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
-        ~~~
+    {{< file-excerpt "/etc/postfix/master.cf" >}}
+dovecot   unix  -       n       n       -       -       pipe
+    flags=DRhu user=vmail:vmail argv=/usr/libexec/dovecot/deliver -f ${sender} -d ${recipient}
+
+{{< /file-excerpt >}}
+
 
 9.  Shut down Sendmail, then configure Postfix to start on boot and start the service for the first time:
 
@@ -232,7 +232,7 @@ Next, perform additional Postfix configuration to set up communication with the 
 
 This completes the configuration for Postfix.
 
-##Configure Dovecot
+## Configure Dovecot
 
 1.  Move `/etc/dovecot.conf` to a backup file:
 
@@ -240,72 +240,72 @@ This completes the configuration for Postfix.
 
 2.  Copy the following into the now-empty `dovecot.conf` file, substituting your system's domain name for `example.com` in line 17:
 
-    {: .file }
-    /etc/dovecot.conf
-    :   ~~~
-        protocols = imap imaps pop3 pop3s
-        log_timestamp = "%Y-%m-%d %H:%M:%S "
-        mail_location = maildir:/home/vmail/%d/%n/Maildir
+    {{< file "/etc/dovecot.conf" >}}
+protocols = imap imaps pop3 pop3s
+log_timestamp = "%Y-%m-%d %H:%M:%S "
+mail_location = maildir:/home/vmail/%d/%n/Maildir
 
-        ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
-        ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
+ssl_cert_file = /etc/pki/dovecot/certs/dovecot.pem
+ssl_key_file = /etc/pki/dovecot/private/dovecot.pem
 
-        namespace private {
-            separator = .
-            prefix = INBOX.
-            inbox = yes
+namespace private {
+    separator = .
+    prefix = INBOX.
+    inbox = yes
+}
+
+protocol lda {
+    log_path = /home/vmail/dovecot-deliver.log
+    auth_socket_path = /var/run/dovecot/auth-master
+    postmaster_address = postmaster@example.com
+}
+
+protocol pop3 {
+pop3_uidl_format = %08Xu%08Xv
+}
+
+auth default {
+    user = root
+
+    passdb sql {
+        args = /etc/dovecot-sql.conf
+    }
+
+    userdb static {
+        args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
+    }
+
+    socket listen {
+        master {
+            path = /var/run/dovecot/auth-master
+            mode = 0600
+            user = vmail
         }
-    
-        protocol lda {
-            log_path = /home/vmail/dovecot-deliver.log
-            auth_socket_path = /var/run/dovecot/auth-master
-            postmaster_address = postmaster@example.com
+
+        client {
+            path = /var/spool/postfix/private/auth
+            mode = 0660
+            user = postfix
+            group = postfix
         }
 
-        protocol pop3 {
-        pop3_uidl_format = %08Xu%08Xv
-        }
+    }
 
-        auth default {
-            user = root
+}
 
-            passdb sql {
-                args = /etc/dovecot-sql.conf
-            }
+{{< /file >}}
 
-            userdb static {
-                args = uid=5000 gid=5000 home=/home/vmail/%d/%n allow_all_users=yes
-            }
-
-            socket listen {
-                master {
-                    path = /var/run/dovecot/auth-master
-                    mode = 0600
-                    user = vmail
-                }
-
-                client {
-                    path = /var/spool/postfix/private/auth
-                    mode = 0660
-                    user = postfix
-                    group = postfix
-                }
-    
-            }
-
-        }
-        ~~~
 
 3.  MySQL will be used to store password information, so `/etc/dovecot-sql.conf` must be created. Insert the following contents into the file, making sure to replace `mail_admin_password` with your mail password:
 
-    {: .file }
-    /etc/dovecot-sql.conf
-    :   ~~~
-        driver = mysql
-        connect = host=127.0.0.1 dbname=mail user=mail_admin password=mail_admin_password
-        default_pass_scheme = CRYPT
-        password_query = SELECT email as user, password FROM users WHERE email='%u';
-        ~~~
+    {{< file "/etc/dovecot-sql.conf" >}}
+driver = mysql
+connect = host=127.0.0.1 dbname=mail user=mail_admin password=mail_admin_password
+default_pass_scheme = CRYPT
+password_query = SELECT email as user, password FROM users WHERE email='%u';
+
+{{< /file >}}
+
 
 4.  Restrict access to the file by changing the permissions to allow users in the `dovecot` group to access it, while denying access to others:
 
@@ -319,14 +319,14 @@ This completes the configuration for Postfix.
 
 6.  Now check `/var/log/maillog` to make sure Dovecot started without errors. Your log should have lines similar to the following:
 
-    {: .file-excerpt }
-    /var/log/maillog
-    :   ~~~
-        Mar 18 10:00:23 li833-84 dovecot: Dovecot v1.0.7 starting up
-        Mar 18 10:00:23 li833-84 dovecot: Generating Diffie-Hellman parameters for the first time. This may take a while..
-        Mar 18 10:00:23 li833-84 dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
-        Mar 18 10:00:25 li833-84 dovecot: ssl-build-param: SSL parameters regeneration completed
-        ~~~
+    {{< file-excerpt "/var/log/maillog" >}}
+Mar 18 10:00:23 li833-84 dovecot: Dovecot v1.0.7 starting up
+Mar 18 10:00:23 li833-84 dovecot: Generating Diffie-Hellman parameters for the first time. This may take a while..
+Mar 18 10:00:23 li833-84 dovecot: auth-worker(default): mysql: Connected to 127.0.0.1 (mail)
+Mar 18 10:00:25 li833-84 dovecot: ssl-build-param: SSL parameters regeneration completed
+
+{{< /file-excerpt >}}
+
 
 7.  Test your POP3 server to make sure it's running properly:
 
@@ -343,16 +343,16 @@ This completes the configuration for Postfix.
 
 Next, you'll make sure aliases are configured properly.
 
-##Configure Mail Aliases
+## Configure Mail Aliases
 
 1.  Edit the file `/etc/aliases`, making sure the `postmaster` and `root` directives are set properly for your organization:
 
-    {: .file }
-    /etc/aliases
-    :   ~~~
-        postmaster: root
-        root: postmaster@example.com
-        ~~~
+    {{< file "/etc/aliases" >}}
+postmaster: root
+root: postmaster@example.com
+
+{{< /file >}}
+
 
 2.  Update aliases and restart Postfix:
 
@@ -361,7 +361,7 @@ Next, you'll make sure aliases are configured properly.
 
 This completes alias configuration. Next, test Postfix to make sure it's operating properly.
 
-##Testing Postfix
+## Testing Postfix
 
 1.  Test Postfix for SMTP-AUTH and TLS:
 
@@ -385,15 +385,15 @@ This completes alias configuration. Next, test Postfix to make sure it's operati
         250-8BITMIME
         250 DSN
 
-4.  Issue the command `quit` to terminate the telnet connection. 
+4.  Issue the command `quit` to terminate the telnet connection.
 
 Next, populate the MySQL database with domains and email users.
 
-##Set Up and Test Domains and Users
+## Set Up and Test Domains and Users
 
-{: .note}
->
->Before continuing, modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, either delete them or set them to a higher priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
+{{< note >}}
+Before continuing, modify the DNS records for any domains that you wish to handle email by adding an MX record that points to your mail server's fully qualified domain name. If MX records already exist for a domain you would like to handle the email for, either delete them or set them to a higher priority number than your mail server. Smaller priority numbers indicate higher priority for mail delivery, with "0" being the highest priority.
+{{< /note >}}
 
 In the following example, the MySQL shell is used to add support for the domain "example.com", which will have an email account called "sales".
 
@@ -414,38 +414,38 @@ In the following example, the MySQL shell is used to add support for the domain 
 
     Press `Ctrl+D` to complete the message. You can safely leave the field for `Cc:` blank. This completes the configuration for a new domain and email user.
 
-{: .note}
->
->Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
+{{< note >}}
+Given the possibility for virtual hosting a large number of domains on a single mail system, the username portion of an email address (i.e. before the `@` sign) is not sufficient for authentication. When email users authenticate to the server, they must supply the *entire* email address created above as their username.
+{{< /note >}}
 
-###Check Your Logs
+### Check Your Logs
 
 After the test mail is sent, check the mail logs to make sure the mail was delivered.
 
 1.  Check the `maillog` located in `/var/log/maillog`. You should see something similar to the following:
 
-    {: .file-excerpt }
-    /var/log/maillog
-    :   ~~~
-        Mar 18 10:19:08 li833-84 postfix/cleanup[4568]: 73A35BE52: message-id=<201503181419.t2IEJ7jn004561@server.example.com>
-        Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: from=<root@server.example.com>, size=630, nrcpt=1 (queue active)
-        Mar 18 10:19:08 li833-84 sendmail[4561]: t2IEJ7jn004561: to=sales@example.com, ctladdr=root (0/0), delay=00:00:01, xdelay=00:00:00, mailer=relay$
-        Mar 18 10:19:08 li833-84 postfix/smtpd[4562]: disconnect from localhost.localdomain[127.0.0.1]
-        Mar 18 10:19:08 li833-84 postfix/pipe[4570]: 73A35BE52: to=<sales@example.com>, relay=dovecot, delay=0.07, delays=0.05/0.01/0/0.01, dsn=2.0.0, s$
-        Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: removed
-        ~~~
+    {{< file-excerpt "/var/log/maillog" >}}
+Mar 18 10:19:08 li833-84 postfix/cleanup[4568]: 73A35BE52: message-id=<201503181419.t2IEJ7jn004561@server.example.com>
+Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: from=<root@server.example.com>, size=630, nrcpt=1 (queue active)
+Mar 18 10:19:08 li833-84 sendmail[4561]: t2IEJ7jn004561: to=sales@example.com, ctladdr=root (0/0), delay=00:00:01, xdelay=00:00:00, mailer=relay$
+Mar 18 10:19:08 li833-84 postfix/smtpd[4562]: disconnect from localhost.localdomain[127.0.0.1]
+Mar 18 10:19:08 li833-84 postfix/pipe[4570]: 73A35BE52: to=<sales@example.com>, relay=dovecot, delay=0.07, delays=0.05/0.01/0/0.01, dsn=2.0.0, s$
+Mar 18 10:19:08 li833-84 postfix/qmgr[4510]: 73A35BE52: removed
+
+{{< /file-excerpt >}}
+
 
 2.  Check the Dovecot delivery log located in `/home/vmail/dovecot-deliver.log`. The contents should look similar to the following:
 
-    {: .file-excerpt }
-    /home/vmail/dovecot-deliver.log
-    :   ~~~
-        deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=<<20110121200319.E1D148908@hostname.example.com>>: saved mail to INBOX
-        ~~~
+    {{< file-excerpt "/home/vmail/dovecot-deliver.log" >}}
+deliver(<sales@example.com>): 2011-01-21 20:03:19 Info: msgid=<<20110121200319.E1D148908@hostname.example.com>>: saved mail to INBOX
+
+{{< /file-excerpt >}}
+
 
 Now test to see what the users of your email server would see with their email clients.
 
-###Test the Mailbox
+### Test the Mailbox
 
 1.  To test the `sales@example.com` mailbox, navigate to the mailbox directory `/home/vmail/example.com/sales/Maildir` and issue the following command:
 
@@ -467,7 +467,7 @@ Now test to see what the users of your email server would see with their email c
 
         mutt -f .
 
-    You may be prompted to create the root mailbox. This is not required. 
+    You may be prompted to create the root mailbox. This is not required.
 
 4.  If there is an email in the inbox, Postfix, Dovecot, and MySQL have been successfully configured! To quit mutt press `q`.
 

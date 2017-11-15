@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use DNS Manager to Direct Domains to Your Linode.'
-keywords: 'dns manager,linode dns,linode manager dns,dns configuration,ttl,domain zones,domain name'
+keywords: ["dns manager", "linode dns", "linode manager dns", "dns configuration", "ttl", "domain zones", "domain name"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
-modified: Monday, May 24th, 2017
+aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/', 'networking/dns/dns-manager/']
+modified: 2017-05-24
 modified_by:
   name: Angel Guarisma
-published: 'Thursday, July 16th, 2009'
+published: 2009-07-16
 title: DNS Manager Overview
 ---
 
@@ -21,10 +21,11 @@ The *DNS Manager* is a comprehensive DNS management interface available within t
 
 The Domain Name System (DNS) attaches human-readable domain names to machine-usable IP addresses. In many ways, it is the phone book of the Internet. Just like a phone book can help you find the phone number of a business, DNS can take a domain name like `google.com` and translate it into an IP address like `74.125.19.147`, the IP address for Google's homepage. This global system allows users to remember the names of websites instead of their numeric IP addresses.
 
-{: .note}
->All steps within this guide are completed within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
->
->DNS records are only actively hosted on accounts with at least one Linode.
+{{< note >}}
+All steps within this guide are completed within the **[DNS Manager](https://manager.linode.com/dns)** tab of your Linode Manager.
+
+DNS records are only actively hosted on accounts with at least one Linode.
+{{< /note >}}
 
 ## DNS Set-Up Checklist
 
@@ -48,9 +49,9 @@ After you purchase a domain, set your domain registrar to use Linode's name serv
 
 See the instructions on your domain name registrar's website for more information.
 
- {: .note }
->
-> DNS changes can take up to 24 hours to propagate throughout the Internet, although the changes are usually visible within a couple hours.
+ {{< note >}}
+DNS changes can take up to 24 hours to propagate throughout the Internet, although the changes are usually visible within a couple hours.
+{{< /note >}}
 
 ## The DNS Manager
 
@@ -89,21 +90,22 @@ This video runs through the process of adding a new domain zone:
 
 6.  If you want to add a *slave zone* instead of a master zone, click the **I wanted a slave zone** link to the lower right.
 
-    {: .note}
-    > In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
-    >
-    >     104.237.137.10
-    >     65.19.178.10
-    >     75.127.96.10
-    >     207.192.70.10
-    >     109.74.194.10
-    >     2600:3c00::a
-    >     2600:3c01::a
-    >     2600:3c02::a
-    >     2600:3c03::a
-    >     2a01:7e00::a
+    {{< note >}}
+In order for Linode's DNS servers to function as slaves, your DNS master server must notify and allow AXFR requests from the following IP addresses:
 
-If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](#adding-1) section for instructions.
+104.237.137.10
+65.19.178.10
+75.127.96.10
+207.192.70.10
+109.74.194.10
+2600:3c00::a
+2600:3c01::a
+2600:3c02::a
+2600:3c03::a
+2a01:7e00::a
+{{< /note >}}
+
+If you selected the option to have the DNS Manager insert basic DNS records, those records will be visible, as shown above. If you elected to keep the zone empty, you can start adding DNS records now. Skip to the [Adding DNS Records](/docs/networking/dns/dns-manager-overview#add-records) section for instructions.
 
 [![This page lets you add specific DNS records.](/docs/assets/1121-dns9.png)](/docs/assets/1121-dns9.png)
 
@@ -120,14 +122,14 @@ When you first create a domain zone, you'll need to add some DNS records. The DN
 
 2.  The page is divided into different sections for each type of DNS record. Locate the section for the type of DNS record you want to add, and then click the **Add new [DNS] record** link.
 
-	{: .note }
-	>
-	> The exact form fields will vary depending on the type of DNS record you select.
+	{{< note >}}
+The exact form fields will vary depending on the type of DNS record you select.
+{{< /note >}}
 
     ![This page allows you to create a new A/AAAA record.](/docs/assets/1122-dns10.png)
 
 3.  Enter a hostname in the **Hostname** field.
-4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#finding-the-ip-address).
+4.  Enter the IP address of your server in the **IP Address** field. For instructions, see [Finding the IP Address](/docs/getting-started#find-the-ip-address-of-your-linode).
 5.  From the **TTL** menu, select a time interval. *TTL*, which stands for "time to live," controls how long DNS records are cached by DNS resolvers before the resolver must query the authoritative name servers for new records.
 6.  Click **Save Changes**.
 
@@ -157,9 +159,9 @@ Here's how to import a zone file:
 2.  Enter the domain name in the **Domain** field, as shown in the example above.
 3.  Enter the name server in the **Remote Nameserver** field.
 
-	{: .note }
-	>
-	> The name server must allow zone transfers (AXFR) from: 96.126.114.97, 96.126.114.98, 2600:3c00::5e, and 2600:3c00::5f
+	{{< note >}}
+The name server must allow zone transfers (AXFR) from: 96.126.114.97, 96.126.114.98, 2600:3c00::5e, and 2600:3c00::5f
+{{< /note >}}
 
 4.  Click **Import Zone**.
 
@@ -209,10 +211,11 @@ Click **Yes, delete this sucker** to permanently delete the zone, including all 
 
 You have successfully removed the DNS record. It can take up to 30 minutes for the changes to be removed.
 
-{: .caution }
->Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level.
-> This is a very important step; if the entries are not removed, someone could use your domain without your
-> permission.
+{{< caution >}}
+Once removed, you **MUST** delete the Linode nameserver entries from the domain at the registrar level.
+This is a very important step; if the entries are not removed, someone could use your domain without your
+permission.
+{{< /caution >}}
 
 ### Subdomains
 
@@ -242,8 +245,9 @@ However, there are times when you'll want the TTL to be as low as possible. For 
 
 The solution is to lower your TTL before making a DNS change. You'll want to lower the TTL first, on its own, before making any other DNS changes. Here's a general overview of what should happen during a smooth DNS update:
 
-{: .note}
->TTL is always written out in seconds, so 24 hours = 86400 seconds.
+{{< note >}}
+TTL is always written out in seconds, so 24 hours = 86400 seconds.
+{{< /note >}}
 
 1.  Check the TTL on your current zone file. Typically, this will be 24 or 48 hours.
 2.  Update your current zone file 48 (for a 24-hour record) to 96 (for a 48-hour record) hours early, taking into account any intermediate DNS servers. Lower the TTL to five minutes (300 seconds, or the lowest allowed value). Do not make any other changes at this time. If you're using Linode's DNS Manager, lower the TTL to 5 minutes for each entry you're going to change.
@@ -276,6 +280,6 @@ This generates a large amount of information about the domain. The basic informa
 
 If you're on a Windows machine, or you're more comfortable using a web-based tool, you can also use [kloth.net](http://www.kloth.net/services/dig.php) for dig requests and [whois.net](http://whois.net/) for WHOIS requests. Note that since you're running these lookups from a third-party website, the information they find is not necessarily what your local computer has cached. There should be a difference only if you've made recent changes to your DNS information.
 
-##Next Steps
+## Next Steps
 
 Now that you are familiar with Linode's DNS Manager, you should set up your [reverse DNS configuration](/docs/networking/dns/setting-reverse-dns), and consider looking at our [Common DNS Configurations](/docs/networking/dns/common-dns-configurations) guide.

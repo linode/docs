@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Configuring the phpBB system for hosting web-based discussion forums on Centos 5.'
-keywords: 'phpBB,forum software,web applications,PHP'
+keywords: ["phpBB", "forum software", "web applications", "PHP"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/bulletin-boards/phpbb/centos-5/']
-modified: Monday, May 9th, 2011
+aliases: ['web-applications/bulletin-boards/phpbb/centos-5/']
+modified: 2011-05-09
 modified_by:
   name: Linode
-published: 'Friday, April 2nd, 2010'
+published: 2010-04-02
 title: Discussion Forums with phpBB on Centos 5
 external_resources:
  - '[phpBB Styles Database](http://www.phpbb.com/styles/)'
@@ -60,7 +60,7 @@ This will move the PHP instance into a directory called `forum/`. You can move t
 
 Before you can install phpBB, you need to make sure that it has access to write to the config file. Issue the following command to make sure that phpBB can write to `config.php`:
 
-    chmod 0777 /srv/www/example.com/public_html/forum/config.php 
+    chmod 0777 /srv/www/example.com/public_html/forum/config.php
 
 Click the "Install" tab in the top left region of the page. You should be looking at a requirements page. If you followed the [LAMP guide](/docs/lamp-guides/centos-5/), your server will meet the requirements specified by the phpBB installation process. Click "Proceed to next step." The next page is simply a confirmation that your server meets the minimum installation requirements. Click "Start Install."
 

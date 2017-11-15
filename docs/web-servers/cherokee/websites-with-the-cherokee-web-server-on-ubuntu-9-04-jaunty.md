@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Cherokee web server on Ubuntu 9.04 (Jaunty).'
-keywords: 'cherokee,web sever,cherokee on ubuntu,ubuntu jaunty'
+keywords: ["cherokee", "web sever", "cherokee on ubuntu", "ubuntu jaunty"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/']
-modified: Friday, April 29th, 2011
+aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-9-04-jaunty/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-9-04-jaunty/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Monday, September 14th, 2009'
+published: 2009-09-14
 title: 'Websites with the Cherokee Web Server on Ubuntu 9.04 (Jaunty)'
 ---
 
@@ -22,16 +22,15 @@ This tutorial explains how to install and configure the Cherokee web server on U
 
 This document assumes that you already have a working and up to date Ubuntu 9.04 (Jaunty) system. If you have not followed our [getting started](/docs/getting-started/) guide, we recommend that you do so prior to following these instructions.
 
-Check Package Sources
----------------------
+# Check Package Sources
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file-excerpt }
-/etc/sources.list
-:   ~~~
-    ## main & restricted repositories
-    ~~~
+{{< file-excerpt "/etc/sources.list" >}}
+## main & restricted repositories
+
+{{< /file-excerpt >}}
+
 
     > deb <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted deb-src <http://us.archive.ubuntu.com/ubuntu/> jaunty main restricted
     >
@@ -48,8 +47,7 @@ If you had to enable new repositories, issue the following command to update you
 
 Next, we'll get Cherokee installed and configured.
 
-Install Cherokee
-----------------
+# Install Cherokee
 
 Enter the following command to install the Cherokee web server, its documentation and a collection of utilities.
 
@@ -57,8 +55,7 @@ Enter the following command to install the Cherokee web server, its documentatio
 
 Several packages will be installed in addition to the main server package. You may visit your Linode's IP address (or domain name, if you have it pointed to the IP) in a web browser to verify that Cherokee is running. You should see the default Cherokee test page.
 
-Configuring Cherokee
---------------------
+# Configuring Cherokee
 
 The Cherokee web server includes an easy to use, comprehensive administration interface. This interface, known as `cherokee-admin`, is the recommended means of administering your web server.
 
@@ -118,13 +115,11 @@ Click "Open" to connect to your server and start the tunnel. You may receive a w
 
 Click "Yes" to continue, and log into your Linode as you normally would. As long as the SSH session is open you'll be able to navigate to `http://localhost:9090` in your web browser to access the Cherokee admin panel via the secure tunnel.
 
-Conclusion
-----------
+# Conclusion
 
 Be sure to stop `cherokee-admin` using the `killall` command shown above once you're done configuring your system. Congratulations, you've successfully installed the Cherokee web server on your Linode!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

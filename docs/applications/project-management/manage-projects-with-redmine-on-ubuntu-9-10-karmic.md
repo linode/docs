@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on an Ubuntu 9.10 (Karmic) Linode.'
-keywords: 'redmine,redmine ubuntu 9.10,project management software,redmine postgresql,redmine linux'
+keywords: ["redmine", "redmine ubuntu 9.10", "project management software", "redmine postgresql", "redmine linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-applications/project-management/redmine/ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, November 23rd, 2009'
+published: 2009-11-23
 title: 'Manage Projects with Redmine on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -20,49 +20,46 @@ Redmine is a popular open source project management system. Written in Ruby on R
 
 We assume you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, we use the example domain "example.com"; please be sure to substitute your own domain name for each step.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Enable Package Repositories
----------------------------
+# Enable Package Repositories
 
 Edit the file /etc/apt/sources.list and uncomment the `universe` repositories if they're not already enabled. Your repository list should resemble this:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file-excerpt >}}
+
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
     apt-get update
     apt-get upgrade --show-upgraded
 
-Nginx Installation and Configuration
-------------------------------------
+# Nginx Installation and Configuration
 
 ### Install Prerequisite Packages
 
@@ -72,8 +69,8 @@ Issue the following command to install packages required for Ruby on Rails.
 
 Create symbolic links to the installed version of Ruby:
 
-    ln -s /usr/bin/ruby1.8 /usr/bin/ruby 
-    ln -s /usr/bin/irb1.8 /usr/bin/irb 
+    ln -s /usr/bin/ruby1.8 /usr/bin/ruby
+    ln -s /usr/bin/irb1.8 /usr/bin/irb
 
 Fetch the newest version of the RubyGems source from the [RubyForge download page](http://rubyforge.org/projects/rubygems/). Issue the following commands, substituting the download link for the current version:
 
@@ -81,7 +78,7 @@ Fetch the newest version of the RubyGems source from the [RubyForge download pag
     tar -xf rubygems*tgz
     cd rubygems*
     ruby setup.rb
-    ln -s /usr/bin/gem1.8 /usr/bin/gem 
+    ln -s /usr/bin/gem1.8 /usr/bin/gem
 
 Install some required gems:
 
@@ -98,7 +95,7 @@ Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site an
 
     cd /opt
     wget http://rubyforge.org/frs/download.php/71376/passenger-2.2.15.tar.gz
-    tar xzvf passenger*.gz 
+    tar xzvf passenger*.gz
 
 Run the Phusion Passenger installer for Nginx:
 
@@ -117,12 +114,11 @@ Nginx is now installed in `/opt/nginx`, but we need a way of controlling it. Iss
     wget -O init-nginx-deb.sh http://www.linode.com/docs/assets/704-init-nginx-deb.sh
     mv /opt/init-nginx-deb.sh /etc/init.d/nginx
     chmod +x /etc/init.d/nginx
-    /usr/sbin/update-rc.d -f nginx defaults 
+    /usr/sbin/update-rc.d -f nginx defaults
 
 You can now start, stop, and restart Nginx like any other server daemon.
 
-Proxying Redmine with Apache
-----------------------------
+# Proxying Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -132,21 +128,21 @@ Issue the following commands to enable proxy support:
     a2enmod proxy_http
     /etc/init.d/apache2 restart
 
-Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9.10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
+Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Ubuntu 9.10 LAMP guide](/docs/lamp-guides/ubuntu-9-10-karmic/). Remember to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/apache2/sites-available/redmine.example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin support@example.com
-         ServerName redmine.example.com
+{{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin support@example.com
+     ServerName redmine.example.com
 
-         ProxyPass / http://localhost:8080/
+     ProxyPass / http://localhost:8080/
 
-         # Uncomment the line below if your site uses SSL.
-         #SSLProxyEngine On
-    </VirtualHost>
-    ~~~
+     # Uncomment the line below if your site uses SSL.
+     #SSLProxyEngine On
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site and reload Apache:
 
@@ -155,14 +151,13 @@ Issue the following commands to enable the site and reload Apache:
 
 Next, you'll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    listen 8080;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+listen 8080;
 
-Installing and Configuring Redmine
-----------------------------------
+{{< /file-excerpt >}}
+
+
+# Installing and Configuring Redmine
 
 ### Obtain Redmine
 
@@ -192,18 +187,18 @@ Issue these commands in the `psql` shell to set up the database for Redmine. Be 
 
 Create the file `config/database.yml` with the following contents:
 
-{: .file }
-config/database.yml
-:   ~~~ yaml
-    production:
-      adapter: postgresql
-      database: redmine
-      host: localhost
-      username: redmine
-      password: changeme
-      encoding: utf8
-      schema_search_path: public
-    ~~~
+{{< file "config/database.yml" yaml >}}
+production:
+  adapter: postgresql
+  database: redmine
+  host: localhost
+  username: redmine
+  password: changeme
+  encoding: utf8
+  schema_search_path: public
+
+{{< /file >}}
+
 
 Issue the following commands to complete database configuration:
 
@@ -259,17 +254,17 @@ Enter "root" and an email address at your domain for the postmaster mail query.
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 
-{: .file }
-config/email.yml
-:   ~~~ yaml
-    production:
-      delivery_method: :smtp
-      smtp_settings:
-        address: 127.0.0.1
-        port: 25
-        domain: redmine.example.com
-        authentication: :none
-    ~~~
+{{< file "config/email.yml" yaml >}}
+production:
+  delivery_method: :smtp
+  smtp_settings:
+    address: 127.0.0.1
+    port: 25
+    domain: redmine.example.com
+    authentication: :none
+
+{{< /file >}}
+
 
 This completes email configuration for your Redmine installation.
 
@@ -285,30 +280,30 @@ We'll create a "redmine" user to manage the installation. Issue the following co
 
 Edit the file `/opt/nginx/conf/nginx.conf`, setting the "user" parameter to "redmine":
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    user  redmine;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+user  redmine;
+
+{{< /file-excerpt >}}
+
 
 Add a server section after the first example server as follows. If you're proxying to nginx from another web server, be sure to change the `listen` directive to `listen 8080;` instead of the default.
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    server {
-         listen 80;
-         server_name  redmine.example.com;
-         root /srv/www/redmine.example.com/redmine/public/;
-         access_log /srv/www/redmine.example.com/redmine/log/access.log;
-         error_log /srv/www/redmine.example.com/redmine/log/error.log;
-         index index.html;
-         location / {
-            passenger_enabled on;
-            allow all;
-         }
-    }
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+server {
+     listen 80;
+     server_name  redmine.example.com;
+     root /srv/www/redmine.example.com/redmine/public/;
+     access_log /srv/www/redmine.example.com/redmine/log/access.log;
+     error_log /srv/www/redmine.example.com/redmine/log/error.log;
+     index index.html;
+     location / {
+        passenger_enabled on;
+        allow all;
+     }
+}
+
+{{< /file-excerpt >}}
+
 
 Start nginx:
 
@@ -316,8 +311,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". Congratulations, you've installed Redmine for project management on your Linode!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -328,8 +322,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 
 When upstream sources offer new releases, repeat the instructions for installing Redmine software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

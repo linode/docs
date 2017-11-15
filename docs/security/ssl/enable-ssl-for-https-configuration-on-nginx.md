@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide will teach you how to provide encrypted access to resources using TSL/SSL for HTTP connections on Nginx.'
-keywords: 'ssl,tls,nginx,https,secure http,encryption for HTTP,SSL certificates with Nginx,certificate signing request'
+keywords: ["ssl", "tls", "nginx", "https", "secure http", "encryption for HTTP", "SSL certificates with Nginx", "certificate signing request"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
-modified: Tuesday, June 10th, 2014
+aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
+modified: 2014-06-10
 modified_by:
   name: Alex Fornuto
-published: 'Monday, November 8th, 2010'
+published: 2010-11-08
 title: 'Enable SSL for HTTPS Configuration on nginx'
 external_resources:
  - '[Nginx Project Home Page](http://nginx.org)'
@@ -126,11 +126,11 @@ In some cases, certificate authorities will sign certificates using a chained au
 
 Then, specify the `/srv/ssl/example.com.combined.crt` file in the `ssl_certificate` configuration directive within your nginx configuration, as follows:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~
-    ssl_certificate /srv/ssl/example.com.combined.crt;
-    ~~~
+{{< file-excerpt "nginx.conf" >}}
+ssl_certificate /srv/ssl/example.com.combined.crt;
+
+{{< /file-excerpt >}}
+
 
 You can append as many chain certificates as you require. Make sure that the certificate you generate for your site is at the beginning of the file.
 
@@ -140,26 +140,26 @@ Compared to conventional HTTP, HTTPS (or HTTP with SSL) requires additional over
 
 Begin optimization by setting the number of worker processes. Ensure that the number of worker processes equals the number of accessible processor cores. This allows nginx to use the full processing capability of the server. This configuration directive is placed at the beginning, or "root" level, of the configuration:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~
-    worker_processes 4;
-    ~~~
+{{< file-excerpt "nginx.conf" >}}
+worker_processes 4;
+
+{{< /file-excerpt >}}
+
 Within the `http {}` block, add the following directives to control and limit the default SSL session settings:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~
-    ssl_session_cache shared:SSL:10m;
-    ssl_session_timeout 10m;
-    ~~~
+{{< file-excerpt "nginx.conf" >}}
+ssl_session_cache shared:SSL:10m;
+ssl_session_timeout 10m;
+
+{{< /file-excerpt >}}
+
 Inside of the `server {}` configuration blocks for virtual hosts that serve HTTPS, set the `keepalive_timeout` to 70 seconds. This prevents stale sessions from consuming resources and additional overhead on reconnections.
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~
-    keepalive_timeout 70;
-    ~~~
+{{< file-excerpt "nginx.conf" >}}
+keepalive_timeout 70;
+
+{{< /file-excerpt >}}
+
 
 You may now continue to configure virtual hosts for your server.
 
@@ -171,21 +171,21 @@ HTTPS operates on port 443 instead of port 80. Take note of the version of nginx
 
 In addition to basic [nginx virtual host configuration](/docs/websites/nginx/basic-nginx-configuration), using SSL with nginx requires a modification to the `listen` directive and three ssl-related directives as shown in the following examples:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    server {
+{{< file-excerpt "nginx.conf" nginx >}}
+server {
 
-          # [...]
+      # [...]
 
-          listen 443;
-          ssl on; 
-          ssl_certificate      /srv/ssl/nginx.pem;
-          ssl_certificate_key  /srv/ssl/nginx.key;  
+      listen 443;
+      ssl on;
+      ssl_certificate      /srv/ssl/nginx.pem;
+      ssl_certificate_key  /srv/ssl/nginx.key;
 
-          # [...]
-    }
-    ~~~
+      # [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Modify the directives above to point to the proper certificates and keys. If you have a commercially signed certificate, the `ssl_certificate` directive may resemble the following:
 
@@ -195,50 +195,50 @@ Be sure to add other required configuration directives to control the functional
 
 Using SNI it's possible to host multiple SSL-encrypted sites from the same IP address, but some older web browsers may not be compatible with SNI. If you need to host more than one site with SSL for end users on these older systems, you will need to have separate IP addresses for each site. The following example illustrates how each site can listen on its own IP address:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    server {
-          listen 12.34.56.78:443;
-          server_name example.com;
+{{< file-excerpt "nginx.conf" nginx >}}
+server {
+      listen 12.34.56.78:443;
+      server_name example.com;
 
-          ssl on; 
-          ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+      ssl on;
+      ssl_certificate      /srv/ssl/example.com.pem;
+      ssl_certificate_key  /srv/ssl/example.com.key;
 
-          # [...]
-    }
+      # [...]
+}
 
-    server {
-          listen 12.34.56.79:443;
-          server_name example.com;
+server {
+      listen 12.34.56.79:443;
+      server_name example.com;
 
-          ssl on; 
-          ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+      ssl on;
+      ssl_certificate      /srv/ssl/example.com.pem;
+      ssl_certificate_key  /srv/ssl/example.com.key;
 
-          # [...]
-    }
-    ~~~
+      # [...]
+}
+
+{{< /file-excerpt >}}
+
 
 ### Use SSL with Versions of Nginx After 0.7.14
 
 Following version 0.7.14 of nginx, you may omit the `ssl` directive and include these declarations as arguments to the `listen` directive. This modification is optional, but is the preferred syntax. The following example illustrates the preferred usage of SSL declarations:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    server {
+{{< file-excerpt "nginx.conf" nginx >}}
+server {
 
-          # [...]
+      # [...]
 
-          listen 443 ssl;
-          ssl_certificate      /srv/ssl/nginx.pem;
-          ssl_certificate_key  /srv/ssl/nginx.key;  
+      listen 443 ssl;
+      ssl_certificate      /srv/ssl/nginx.pem;
+      ssl_certificate_key  /srv/ssl/nginx.key;
 
-          # [...]
-    }
-    ~~~
+      # [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Modify the directives above to point to the proper certificates and keys. If you have a commercially signed certificate, the `ssl_certificate` directive may resemble the following:
 
@@ -248,62 +248,62 @@ Be sure to add other required configuration directives to control the functional
 
 There is no consistent way to host more than one site using SSL on a single IP. If you need to host more than one site with SSL, you will need to have separate IP addresses for each site. The following example illustrates how each site can listen on its own IP address:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    server {
-          listen 12.34.56.78:443 ssl;
-          server_name example.com;
+{{< file-excerpt "nginx.conf" nginx >}}
+server {
+      listen 12.34.56.78:443 ssl;
+      server_name example.com;
 
-          ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+      ssl_certificate      /srv/ssl/example.com.pem;
+      ssl_certificate_key  /srv/ssl/example.com.key;
 
-          # [...]
-    }
+      # [...]
+}
 
-    server {
-          listen 12.34.56.79:443 ssl;
-          server_name example.com;
+server {
+      listen 12.34.56.79:443 ssl;
+      server_name example.com;
 
-          ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+      ssl_certificate      /srv/ssl/example.com.pem;
+      ssl_certificate_key  /srv/ssl/example.com.key;
 
-          # [...]
-    }
-    ~~~
+      # [...]
+}
+
+{{< /file-excerpt >}}
+
 
 ## Configure Multiple Sites with a Single SSL Certificate
 
 If you have access to a certificate that is valid for multiple host names, such as a wild card certificate or a certificate with "subject alternate names", configure nginx in the following manner:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    http {
-        ssl_certificate   /srv/ssl/example.com.crt;
-        ssl_certificate_key  /srv/ssl/example.com.key;
+{{< file-excerpt "nginx.conf" nginx >}}
+http {
+    ssl_certificate   /srv/ssl/example.com.crt;
+    ssl_certificate_key  /srv/ssl/example.com.key;
 
-        server {
-           listen       12.3.45.6:443;
-           server_name      example.com www.example.com;
-           ssl on; 
+    server {
+       listen       12.3.45.6:443;
+       server_name      example.com www.example.com;
+       ssl on;
 
-           location / {
-                 root /srv/www/example.com/public_html;
-           }
-        }                 
-        server {
-           listen       12.3.45.7:443;
-           server_name      team.example.com;
-           ssl on; 
+       location / {
+             root /srv/www/example.com/public_html;
+       }
+    }
+    server {
+       listen       12.3.45.7:443;
+       server_name      team.example.com;
+       ssl on;
 
-           location / {
-                 root /srv/www/team.example.com/public_html;
-           }
+       location / {
+             root /srv/www/team.example.com/public_html;
+       }
 
-        # [...]
-        }                 
-    ~~~
+    # [...]
+    }
+
+{{< /file-excerpt >}}
+
 
 In this example, the wild card certificate is specified once in the root level of the `http {}` configuration, and the domains `example.com`, `www.example.com`, and `team.example.com` are all served using the `/srv/ssl/example.com.crt` certificate.
 
@@ -313,36 +313,36 @@ If you are running a version of nginx newer than 0.7.14, omit the `ssl on;` dire
 
 If you want to redirect all HTTP traffic for a domain to HTTPS, insert the following `rewrite` directive in a `location / {}` configuration block:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    rewrite ^ https://example.com$request_uri permanent;
-    ~~~
+{{< file-excerpt "nginx.conf" nginx >}}
+rewrite ^ https://example.com$request_uri permanent;
+
+{{< /file-excerpt >}}
+
 
 Once you have added this line, your config should resemble the following:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    server {
-          listen 12.34.56.78:80;
-          server_name example.com;
+{{< file-excerpt "nginx.conf" nginx >}}
+server {
+      listen 12.34.56.78:80;
+      server_name example.com;
 
-          location / {
-              rewrite ^ https://$server_name$request_uri permanent;
-          }
+      location / {
+          rewrite ^ https://$server_name$request_uri permanent;
+      }
 
-          # [...]
-    }
-    server {
-          listen 12.34.56.79:443 ssl;
-          server_name example.com;
+      # [...]
+}
+server {
+      listen 12.34.56.79:443 ssl;
+      server_name example.com;
 
-          ssl_certificate      /srv/ssl/example.com.pem;
-          ssl_certificate_key  /srv/ssl/example.com.key;  
+      ssl_certificate      /srv/ssl/example.com.pem;
+      ssl_certificate_key  /srv/ssl/example.com.key;
 
-          # [...]
-    }
-    ~~~
+      # [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Modify the configuration of the `ssl` directive if you're using a version of nginx prior to `0.7.14`.

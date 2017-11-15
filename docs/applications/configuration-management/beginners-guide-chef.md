@@ -3,13 +3,13 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'A look into Chef''s primary components, features, and configurations for the new Chef user'
-keywords: 'chef,automation,chefdk,chef server,chef development kit,cookbooks,beginners,server automation,configuration management'
+keywords: ["chef", "automation", "chefdk", "chef server", "chef development kit", "cookbooks", "beginners", "server automation", "configuration management"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/chef/beginners-guide-chef/']
-modified: Wednesday, June 10th, 2015
+aliases: ['applications/chef/beginners-guide-chef/']
+modified: 2015-06-10
 modified_by:
   name: Elle Krout
-published: 'Wednesday, June 10th, 2015'
+published: 2015-06-10
 title: A Beginner's Guide to Chef
 external_resources:
  - '[Chef](http://www.chef.io)'
@@ -57,23 +57,24 @@ Originally the `chef-repo` had to be pulled from GitHub using git commands, but 
 
 The `knife` command communicates between the `chef-repo` located on a workstation and the Chef server. `knife` is configured with the `knife.rb` file, and is used from the workstation:
 
-{: .file}
-~/chef-repo/.chef/knife.rb
-:	~~~ ruby
-	log_level                :info
-	log_location             STDOUT
-	node_name                'username'
-	client_key               '~/chef-repo/.chef/username.pem'
-	validation_client_name   'shortname-validator'
-	validation_key           '~/chef-repo/.chef/shortname.pem'
-	chef_server_url          'https://123.45.67.89/organizations/shortname'
-	syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
-	cookbook_path [ '~/chef-repo/cookbooks' ]
-	~~~
+{{< file "~/chef-repo/.chef/knife.rb" ruby >}}
+log_level                :info
+log_location             STDOUT
+node_name                'username'
+client_key               '~/chef-repo/.chef/username.pem'
+validation_client_name   'shortname-validator'
+validation_key           '~/chef-repo/.chef/shortname.pem'
+chef_server_url          'https://123.45.67.89/organizations/shortname'
+syntax_check_cache_path  '~/chef-repo/.chef/syntax_check_cache'
+cookbook_path [ '~/chef-repo/cookbooks' ]
+
+
+{{< /file >}}
+
 
 The default `knife.rb` file is defined with the following properties:
 
--	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`. 
+-	**log_level:** The amount of logging that will be stored in the log file. The default value, `:info`, notes that any informational messages will be logged. Other values include `:debug:`, `:warn`, `:error`, and `:fatal`.
 -	**log_location:** The location of the log file. The default value, `STOUT` is for *standard output logging*. If set to another value standard output logging will still be performed.
 -	**node_name:**	The username of the person using the workstation. This user will need a valid authorization key located on the workstation.
 -	**client_key:** The location of the user's authorization key.
@@ -117,36 +118,38 @@ Environments are defined in `chef-repo/environments` and saved as Ruby or JSON f
 
 As a Ruby file:
 
-{: .file}
-chef-repo/environments/environame.rb
-:	~~~ ruby
-	name "environmentname"
-	description "environment_description"
-	cookbook_versions  "cookbook" => "cookbook_version"
-	default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
-	override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
-	~~~
-	
+{{< file "chef-repo/environments/environame.rb" ruby >}}
+name "environmentname"
+description "environment_description"
+cookbook_versions  "cookbook" => "cookbook_version"
+default_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
+override_attributes "node" => { "attribute" => [ "value", "value", "etc." ] }
+
+
+{{< /file >}}
+
+
 As a JSON:
 
-{: .file}
-chef-repo/environments/environame.json
-:	~~~ json
-	{
-	  "name": "environmentname",
-	  "description": "a description of the environment",
-	  "cookbook_versions": {
+{{< file "chef-repo/environments/environame.json" json >}}
+{
+  "name": "environmentname",
+  "description": "a description of the environment",
+  "cookbook_versions": {
 
-	  },
-	  "json_class": "Chef::Environment",
-	  "chef_type": "environment",
-	  "default_attributes": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
 
-	  },
-	  "override_attributes": {
+  },
+  "override_attributes": {
 
-	  }
-	~~~  
+  }
+
+
+{{< /file >}}
+
 
 All nodes are automatically set to the "default" environment upon bootstrap. To change this, the environment should be defined in the `client.rb` file found in `/etc/chef` on the nodes.
 

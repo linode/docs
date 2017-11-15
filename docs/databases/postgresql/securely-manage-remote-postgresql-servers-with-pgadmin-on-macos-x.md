@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Open-source PgAdmin Program to Securely Manage Remote PostgreSQL Databases from a Mac OS X Workstation.'
-keywords: 'pgadmin,mac os x,postgresql gui,manage postgresql databases,ssh tunnel'
+keywords: ["pgadmin", "mac os x", "postgresql gui", "manage postgresql databases", "ssh tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, May 11th, 2016
+modified: 2016-05-11
 modified_by:
   name: Phil Zona
-published: 'Friday, April 30th, 2010'
+published: 2010-04-30
 title: Securely Manage Remote PostgreSQL Servers with pgAdmin on Mac OS X
-alias: ['databases/postgresql/pgadmin-macos-x/']
+aliases: ['databases/postgresql/pgadmin-macos-x/']
 external_resources:
  - '[pgAdmin Documentation](http://www.pgadmin.org/docs/)'
  - '[PostgreSQL Documentation](http://www.postgresql.org/docs/)'
@@ -33,7 +33,7 @@ While PostgreSQL supports SSL connections, it is not advisable to instruct it to
     ssh -f -L 5433:127.0.0.1:5432 username@remote-host -N
 
 Although PostgreSQL uses port 5432 for TCP connections, we're using the local port 5433 in case you decide to install PostgreSQL locally later on.
-   
+
 ## Use pgAdmin
 
 1.  Launch pgAdmin and you'll be presented with a default view containing no servers. Click "File -> Add Server" as shown below.
@@ -42,13 +42,13 @@ Although PostgreSQL uses port 5432 for TCP connections, we're using the local po
 
 2.  If you're having problems connectiong you may need to check PostgreSQL's configuration to ensure it accepts connections. Modify the following lines in `/etc/postgresql/9.5/main/postgresql.conf` if necessary:
 
-    {: .file-excerpt}
-    /etc/postgresql/9.5/main/postgresql.conf
-    :   ~~~conf
-        listen_addresses = 'localhost'
-        
-        port = 5432
-        ~~~
+    {{< file-excerpt "/etc/postgresql/9.5/main/postgresql.conf" aconf >}}
+listen_addresses = 'localhost'
+
+port = 5432
+
+{{< /file-excerpt >}}
+
 
     Restart PostgreSQL to activate these changes. This command may vary among different distributions:
 

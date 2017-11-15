@@ -4,13 +4,13 @@ author:
     name: Alex Fornuto
     email: afornuto@linode.com
 description: 'Get Started with MySQL for Web and Server Applications on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'mysql,ubuntu 12.04,mysql ubuntu,mysql on linux,mysql Linode'
+keywords: ["mysql", "ubuntu 12.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-12-04-precise-pangolin/','databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin']
-modified: Friday, September 11th, 2015
+aliases: ['databases/mysql/ubuntu-12-04-precise-pangolin/','databases/using-mysql-relational-databases-on-ubuntu-12-04-precise-pangolin']
+modified: 2015-09-11
 modified_by:
     name: Linode
-published: 'Monday, October 8th, 2012'
+published: 2012-10-08
 title: 'Deploy MySQL Relational Databases on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
     - '[MySQL 5.1 Reference Manual](http://dev.mysql.com/doc/refman/5.1/en/)'
@@ -21,9 +21,9 @@ external_resources:
 
 MySQL is a popular database management system used for web and server applications. This guide will introduce how to install, configure and manage MySQL on a Linode running Ubuntu 12.04 LTS (Precise Pangolin).
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prerequisites
 
@@ -49,12 +49,11 @@ During the installation process, you will be prompted to set a password for the 
 
 [![Setting the MySQL root password in Ubuntu 14.04 LTS (Trusty Tahr).](/docs/assets/mysql-root-pw.png)](/docs/assets/mysql-root-pw.png)
 
-MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](securely-administer-mysql-with-an-ssh-tunnel) for information on connecting to your databases using an SSH tunnel.
+MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using an SSH tunnel.
 
-{: .note}
->
->Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
-
+{{< note >}}
+Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< /note >}}
 
 ## Harden MySQL Server
 
@@ -69,7 +68,7 @@ You will be given the choice to change the MySQL root password, remove anonymous
 
 The standard tool for interacting with MySQL is the `mysql` client, which installs with the `mysql-server` package.
 
-###Root Login
+### Root Login
 
 1.  To log in to MySQL as the root user:
 
@@ -134,7 +133,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         grant all on testdb.* to 'testuser' identified by 'password';
 
 2.  Exit MySQL.
-    
+
         exit
 
 ### Create a Sample Table
@@ -149,7 +148,7 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
         create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
 
 3.  Then exit MySQL.
-    
+
         exit
 
 ## Reset the MySQL Root Password

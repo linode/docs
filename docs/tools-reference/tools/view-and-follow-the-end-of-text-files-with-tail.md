@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the Linux command tail to view and follow the end of text files.'
-keywords: 'tail,linux commands,linux,common commands,unix,cli'
+keywords: ["tail", "linux commands", "linux", "common commands", "unix", "cli"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/tail/']
-modified: Tuesday, May 17th, 2011
+aliases: ['linux-tools/common-commands/tail/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, November 29th, 2010'
+published: 2010-11-29
 title: View and Follow the End of Text Files with tail
 ---
 
@@ -74,7 +74,7 @@ The "follow" mode of `tail` is very useful when troubleshooting issues because i
 The [grep](/docs/tools-reference/search-and-filter-text-with-grep) tool can be combined with `tail` to filter the contents of a log file in real time. Consider the following examples:
 
     tail -F procmail.log | grep -e "^Subject"
-    tail -F access.log | grep "404" 
+    tail -F access.log | grep "404"
 
 In the first command, only the lines of the `procmail.log` file that begin with the characters `Subject` are printed. All other lines are discarded.
 

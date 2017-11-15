@@ -4,20 +4,19 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: Zabbix
-keywords: 'zabbix, server monitoring, monitoring, server monitor'
+keywords: ["zabbix", " server monitoring", " monitoring", " server monitor"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/zabbix/']
-modified: Monday, August 20th, 2012
+aliases: ['server-monitoring/zabbix/']
+modified: 2012-08-20
 modified_by:
   name: Linode
-published: 'Monday, August 20th, 2012'
+published: 2012-08-20
 title: Monitoring Servers with Zabbix
 ---
 
 Zabbix is an open source software application that can monitor servers, networks, and applications. You can use Zabbix with any of our plans, and it works on every Linux distribution we offer. Full hardware and software requirements can be found on the [Zabbix requirements page](http://www.zabbix.com/requirements.php).
 
-Deciding How to Install Zabbix
-------------------------------
+# Deciding How to Install Zabbix
 
 There are two ways to install Zabbix. You can compile and install Zabbix from source, or you can install Zabbix packages, if your distribution supports it.
 
@@ -27,9 +26,9 @@ Installing the packages is faster and makes things easier to maintain, but the i
 
 If you're running Ubuntu or Debian and would like to install the Zabbix packages, follow these instructions:
 
- {: .note }
->
-> Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
+ {{< note >}}
+Other distributions may also have packages for Zabbix. Check the distribution's website for more information.
+{{< /note >}}
 
 1.  Install Zabbix server by entering the following command:
 
@@ -45,16 +44,15 @@ If you're running Ubuntu or Debian and would like to install the Zabbix packages
 
 Zabbix is now installed and running on your Linode.
 
- {: .note }
->
-> If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
+ {{< note >}}
+If you install the Zabbix packages, you do not need to follow the rest of the instructions in this guide.
+{{< /note >}}
 
 ### Compiling and Installing from Source
 
 If you decide not install the Zabbix packages, or your distribution does not support it, use the instructions in the rest of this guide to compile and install Zabbix from source.
 
-Prerequisites
--------------
+# Prerequisites
 
 You'll need to install some software before you actually install Zabbix itself. It requires a database backend, and in this example we'll use MySQL, but you can also use PostgreSQL, SQLite, Oracle, or IBM DB2. Other mandatory requirements are a C compiler and GNU Make. Optionally, you can also include NET-SNMP for SNMP support, lksemel to enable Jabber messaging, and/or Libcurl to enable the WEB monitoring module.
 
@@ -116,7 +114,7 @@ Zabbix requires Apache and PHP to be installed. Here's how to install them:
 
         sudo apt-get install libmysqlclient-dev libcurl3-gnutls libcurl3-gnutls-dev
 
-4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts).
+4.  Verify that you have configured a name-based virtual host for Apache. This is required for the Zabbix web interface. For instructions, see [Configuring Name-based Virtual Hosts](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts).
 
 The required applications, modules, and libraries have been installed on your Linode.
 
@@ -130,20 +128,20 @@ Now you'll want to make some adjustments to your `php.ini` file for Zabbix. Here
 
 2.  Verify that the following settings are set in the `php.ini` file.
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    memory_limit = 128M
-    post_max_size = 32M
-    upload_max_filesize = 16M
-    max_execution_time = 600
-    max_input_time = 600
-    date.timezone = America/New_York
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+memory_limit = 128M
+post_max_size = 32M
+upload_max_filesize = 16M
+max_execution_time = 600
+max_input_time = 600
+date.timezone = America/New_York
 
- {: .note }
->
-> You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
+{{< /file-excerpt >}}
+
+
+ {{< note >}}
+You can [use this webpage](http://php.net/manual/en/timezones.php) to find the correct date.timezone value.
+{{< /note >}}
 
 3.  Save the changes by restarting Apache. Enter the following command:
 
@@ -165,8 +163,7 @@ You'll need a C compiler and `make` to install Zabbix. If your Linode is running
 
 You have installed the C compiler and `make` on your Linode.
 
-Zabbix Server
--------------
+# Zabbix Server
 
 Now that all of the Zabbix prerequisites are ready, we can start installing.
 
@@ -216,7 +213,7 @@ Now we're ready to compile and install Zabbix server. Here's how:
 
 5.  Enter the following command to install Zabbix:
 
-        sudo make install 
+        sudo make install
 
 You have successfully compiled and installed Zabbix.
 
@@ -250,14 +247,14 @@ Now you'll need to create a configuration file for the Zabbix server in your /et
 
 7.  Add the following to the `zabbix_server.conf` file. At this point, it only requires your database connection details, though we will also be adding a Zabbix server log as well.
 
-    > {: .file }
-/etc/zabbix/zabbix\_server.conf
-    >
-    > > DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
+    {{< file-excerpt "/etc/zabbix/zabbix_server.conf" >}}
 
- {: .note }
->
-> A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
+DBName = zabbix DBPassword = YourZabbixMySQLpassword DBUser = zabbix LogFile = /var/log/zabbix.log
+{{< /file-excerpt>}}
+
+    {{< note >}}
+A full list of configuration parameters for `zabbix_server.conf` are [available here](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_server).
+{{< /note >}}
 
 8.  Close and save the file by pressing Control X and then Y.
 
@@ -295,8 +292,7 @@ Zabbix is now running on your Linode! To verify, enter the following command:
 
     ps -aux | grep zabbix
 
-Zabbix Agent
-------------
+# Zabbix Agent
 
 The Zabbix Agent (`zabbix_agentd`) is placed on the client servers you want to monitor.
 
@@ -343,14 +339,15 @@ Now you'll want to create directories for the Zabbix files on your client server
 
 7.  The only option that is required is the `Server` parameter, which is the IP address of your Zabbix monitoring server. Copy and paste the following line into the configuration file, replacing `12.34.56.78` with the IP address of your Zabbix monitoring server.
 
-    > {: .file }
-/etc/zabbix/zabbix\_agentd.conf
-    >
-    > > Server = 12.34.56.78
+     {{< file "/etc/zabbix/zabbix_agentd.conf" >}}
 
- {: .note }
->
-> A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
+
+Server = 12.34.56.78
+{{< /file >}}
+
+    {{< note >}}
+A full listing of supported parameters, as well as their default values, is available in [the Zabbix manual](http://www.zabbix.com/documentation/1.8/manual/processes/zabbix_agentd).
+{{< /note >}}
 
 8.  Open the `/etc/services` file for editing by entering the following command:
 
@@ -358,8 +355,8 @@ Now you'll want to create directories for the Zabbix files on your client server
 
 9.  Copy and paste the following lines into the `/etc/services` file:
 
-        zabbix_agent 10050/tcp 
-        zabbix_trap 10051/tcp 
+        zabbix_agent 10050/tcp
+        zabbix_trap 10051/tcp
 
 You have successfully installed and configured the agent.
 
@@ -371,8 +368,7 @@ Once you have your files copied and the configuration file in place, start the a
 
 The agent is now running.
 
-Zabbix Web Interface
---------------------
+# Zabbix Web Interface
 
 Zabbix also has a front-end component that you'll want to install. These instructions show you how.
 
@@ -380,9 +376,9 @@ Zabbix also has a front-end component that you'll want to install. These instruc
 
 The Zabbix frontend is written in PHP. You'll want to copy the front-end files to your web server's public directory. Here's how to create a subdirectory and copy the Zabbix front-end files to it:
 
- {: .note }
->
-> We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+ {{< note >}}
+We assume that you followed the Hosting a Website guide. If you're using a different DocumentRoot directive than /home/example\_user/public/example.com/public for your virtual host, you'll need to update the path to correctly reflect your DocumentRoot.
+{{< /note >}}
 
 1.  Change to your virtual host directory by entering the following command, replacing `example_user` with your username and `example.com` with your domain name:
 
@@ -438,8 +434,7 @@ You'll need to complete the installation of the Zabbix web interface with your w
 
 After you've finished the front-end installation, you'll be forwarded to the Zabbix login page. The default username is `Admin`, the default password is `zabbix`.
 
-Monitoring a Host
------------------
+# Monitoring a Host
 
 Now you have the Zabbix server and web admin installed, and you just set up the `zabbix_agentd` on your first monitored host. Now you can add that host to your web admin so you can actually monitor it. Here's how:
 
@@ -471,8 +466,7 @@ If you would like the base graphs for your new monitored host, you can copy thos
 
 Note that the [Zabbix manual](http://www.zabbix.com/documentation/2.0) has complete documentation on setting up the various actions and operations Zabbix can perform.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

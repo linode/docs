@@ -3,30 +3,30 @@ author:
   name: Nick Brewer
   email: docs@linode.com
 description: This tutorial will guide you through creating a secure, LUKS-encrypted Debian installation.
-alias: ['security/full-disk-encryption/']
+aliases: ['security/full-disk-encryption/']
 keywords: full disk encryption, debian, luks
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, November 2nd, 2016
+modified: 2016-11-02
 modified_by:
   name: Linode
-published: 'Wednesday, November 2nd, 2016'
+published: 2016-11-02
 title: How to Use LUKS for Full Disk Encryption on Linux
 image: https://linode.com/docs/assets/full_disk_encryption.png
 ---
 ## Using LUKS encryption to Create a Secure Disk on Debian 8
-Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files. 
+Full disk encryption protects the information stored on your Linode's disks by converting it into unreadable code that can only be deciphered with a unique password. Nearly everything on the disk is encrypted, including the swap space and temporary files.
 
 This guide will show you how to deploy a Linux distribution with [LUKS](https://en.wikipedia.org/wiki/Linux_Unified_Key_Setup) filesystem encryption. While this demonstration will use Debian 8 (Jessie), the process should be similar for any Linux distribution, provided that the respective distro's installer includes a LUKS encryption option.
 
 The Debian 8 guided encryption option in this guide makes use of a process commonly referred to as *LVM on LUKS*, which allows you to create several logical volumes within an encrypted block device. This method offers advantages in terms of scalability and convenience, as your password only needs to be entered once to access all of the volumes within your encrypted disk.
 
-{: .caution}
->
->Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
->
->Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/security/backups/linode-backup-service) can't mount encrypted disks.
->
-> Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/platform/support).
+{{< caution >}}
+Full disk encryption does a great job of keeping your data secure, but there are a few caveats. To decrypt and mount the disk, you'll need to enter the encryption passphrase in the console every time your Linode boots.
+
+Since this setup makes use of raw disk images, it will not be possible to reduce the disk image space at a later date, and you'll need to manually increase the size of your filesystem should you choose to expand the raw disk size. You'll also need to implement your own backup solution since the [Linode Backup Service](/docs/security/backups/linode-backup-service) can't mount encrypted disks.
+
+Please note that this is an non-standard configuration. Troubleshooting encrypted disk configurations falls outside the scope of [Linode Support](/docs/platform/support).
+{{< /caution >}}
 
 ## Before you Begin
 
@@ -36,12 +36,12 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
 ## Prepare Your Linode for Encrypted Debian Installation
 
-1.  [Create two raw disk images](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#creating-a-blank-disk) from the Linode's Dashboard:
+1.  [Create two raw disk images](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) from the Linode's Dashboard:
 
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labelled **Boot**. This will take up the rest of the free space available on your Linode.
 
-2.  [Create two configuration profiles](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
+2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** drop down menu:
 
     **Installer profile**
 
@@ -62,8 +62,9 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
 4.  Once in Rescue Mode, download the Debian installation media and copy it to your *Installer* disk:
 
-    {: .note}
-    > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
+    {{< note >}}
+As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
+{{< /note >}}
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
@@ -130,8 +131,9 @@ The Debian 8 guided encryption option in this guide makes use of a process commo
 
     [![Debian 8 Encryption Passphrase Warning](/docs/assets/fde-weak-passphrase-warning-small.png)](/docs/assets/fde-weak-passphrase-warning.png)
 
-    {: .caution}
-    > If you lose or forget this password, the data on this disk image will be **irrecoverable**.
+    {{< caution >}}
+If you lose or forget this password, the data on this disk image will be **irrecoverable**.
+{{< /caution >}}
 
 14. Next you'll receive a full overview of the partitioning scheme being applied to your disk. Once you've confirmed the changes, select **Finish partitioning and write changes to disk**:
 
@@ -169,14 +171,14 @@ By default the GRUB menu will only work with the Glish interface. This section e
 
 3.  Open the GRUB configuration file under `/etc/default/grub` with the text editor of your choice. Make the following changes to the appropriate directives:
 
-    {:.file-excerpt }
-    /etc/default/grub
-    : ~~~
-      GRUB_TIMEOUT=10
-      GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
-      GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-      GRUB_TERMINAL=serial
-      ~~~
+    {{< file-excerpt "/etc/default/grub" >}}
+GRUB_TIMEOUT=10
+GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
+GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+GRUB_TERMINAL=serial
+
+{{< /file-excerpt >}}
+
 
 4.  Save your changes, then apply them to your GRUB configuration:
 
@@ -203,4 +205,4 @@ Your output will be similar to this:
     mode:    read/write
 
 
-You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides to begin configuring your Linode.    
+You now have a securely LUKS-encrypted Debian installation. You can follow the steps in our [Getting Started](/docs/getting-started) and [Securing your Server](/docs/security/securing-your-server) guides to begin configuring your Linode.

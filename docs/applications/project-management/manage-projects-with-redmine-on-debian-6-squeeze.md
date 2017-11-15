@@ -4,30 +4,28 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring Redmine, an open source project management system on a Debian 6 (Squeeze) Linode running nginx.'
-keywords: 'redmine,redmine debian 6,redmine linux,project management software,redmine postgresql'
+keywords: ["redmine", "redmine debian 6", "redmine linux", "project management software", "redmine postgresql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/redmine/debian-6-squeeze/']
-modified: Tuesday, June 7th, 2011
+aliases: ['web-applications/project-management/redmine/debian-6-squeeze/']
+modified: 2011-06-07
 modified_by:
   name: Linode
-published: 'Monday, May 16th, 2011'
+published: 2011-05-16
 title: 'Manage Projects with Redmine on Debian 6 (Squeeze)'
 ---
 
 This guide will help you install Redmine on your Debian 6 (Squeeze) Linode. It is assumed that you've already followed the steps outlined in our [getting started guide](/docs/getting-started/). Please make sure you're logged into your Linode as root via an SSH session before proceeding. Throughout this guide, the example domain "example.com" is used. Please be sure to replace it with your own domain name wherever it is found.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Rails Packages and nginx with Phusion Passenger
--------------------------------------------------------
+# Install Rails Packages and nginx with Phusion Passenger
 
 Issue the following commands to update your local package database and install any outstanding updates.
 
@@ -75,79 +73,78 @@ You'll be greeted by the Phusion Passenger nginx installer program. Press "Enter
 
 Next, create the file `/etc/init.d/nginx` with the following contents:
 
-{: .file }
-/etc/init.d/nginx
-:   ~~~ bash
-    #!/bin/sh
+{{< file "/etc/init.d/nginx" bash >}}
+#!/bin/sh
 
-    ### BEGIN INIT INFO
-    # Provides:          nginx
-    # Required-Start:    $all
-    # Required-Stop:     $all
-    # Default-Start:     2 3 4 5
-    # Default-Stop:      0 1 6
-    # Short-Description: starts the nginx web server
-    # Description:       starts nginx using start-stop-daemon
-    ### END INIT INFO
+### BEGIN INIT INFO
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
 
-    PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
-    DAEMON=/opt/nginx/sbin/nginx
-    NAME=nginx
-    DESC=nginx
+PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/opt/nginx/sbin/nginx
+NAME=nginx
+DESC=nginx
 
-    test -x $DAEMON || exit 0
+test -x $DAEMON || exit 0
 
-    # Include nginx defaults if available
-    if [ -f /etc/default/nginx ] ; then
-            . /etc/default/nginx
-    fi
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ] ; then
+        . /etc/default/nginx
+fi
 
-    set -e
+set -e
 
-    case "$1" in
-      start)
-            echo -n "Starting $DESC: "
-            start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
-                    --exec $DAEMON -- $DAEMON_OPTS
-            echo "$NAME."
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+        start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+        start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON
+        echo "$NAME."
+        ;;
+  restart|force-reload)
+        echo -n "Restarting $DESC: "
+        start-stop-daemon --stop --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON
+        sleep 1
+        start-stop-daemon --start --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  reload)
+          echo -n "Reloading $DESC configuration: "
+          start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
+              --exec $DAEMON
+          echo "$NAME."
+          ;;
+      *)
+            N=/etc/init.d/$NAME
+            echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+            exit 1
             ;;
-      stop)
-            echo -n "Stopping $DESC: "
-            start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
-                    --exec $DAEMON
-            echo "$NAME."
-            ;;
-      restart|force-reload)
-            echo -n "Restarting $DESC: "
-            start-stop-daemon --stop --quiet --pidfile \
-                    /opt/nginx/logs/$NAME.pid --exec $DAEMON
-            sleep 1
-            start-stop-daemon --start --quiet --pidfile \
-                    /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
-            echo "$NAME."
-            ;;
-      reload)
-              echo -n "Reloading $DESC configuration: "
-              start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
-                  --exec $DAEMON
-              echo "$NAME."
-              ;;
-          *)
-                N=/etc/init.d/$NAME
-                echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
-                exit 1
-                ;;
-    esac
-    exit 0
-    ~~~
+esac
+exit 0
+
+{{< /file >}}
+
 
 Issue the following commands the make the script executable and set it to start on boot:
 
     chmod +x /etc/init.d/nginx
     update-rc.d -f nginx defaults
 
-Optional: Proxy Redmine with Apache
------------------------------------
+# Optional: Proxy Redmine with Apache
 
 If you're already running Apache on your Linode, you'll need to tell nginx to run on a different port and proxy requests for your Redmine installation back to it. If you're running another web server, you'll need to perform similar steps to modify its configuration to support this. This section is entirely optional, and only applies to Apache users.
 
@@ -159,20 +156,20 @@ Issue the following commands to enable proxy support:
 
 Configure an Apache virtualhost for your Redmine installation. The example shown below assumes Apache is configured as recommended in our [Debian 6 LAMP guide](/docs/lamp-guides/debian-6-squeeze). Remember to replace "12.34.56.78" with your Linode's IP address, `support@example.com` with your administrative email address, and "redmine.example.com" with your Redmine domain.
 
-{: .file }
-/etc/apache2/sites-available/redmine.example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin support@example.com
-         ServerName redmine.example.com
+{{< file "/etc/apache2/sites-available/redmine.example.com" apache >}}
+<VirtualHost *:80>
+     ServerAdmin support@example.com
+     ServerName redmine.example.com
 
-         ProxyPass / http://localhost:8080/
-         ProxyPassReverse / http://localhost:8080/
+     ProxyPass / http://localhost:8080/
+     ProxyPassReverse / http://localhost:8080/
 
-         # Uncomment the line below if your site uses SSL.
-         #SSLProxyEngine On
-    </VirtualHost>
-    ~~~
+     # Uncomment the line below if your site uses SSL.
+     #SSLProxyEngine On
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site and reload Apache:
 
@@ -181,14 +178,13 @@ Issue the following commands to enable the site and reload Apache:
 
 Next, you'll need to tell nginx to run on a different port. Edit your nginx configuration file, setting the following value:
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    listen 8080;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+listen 8080;
 
-Install and Configure Redmine
------------------------------
+{{< /file-excerpt >}}
+
+
+# Install and Configure Redmine
 
 ### Obtain Redmine
 
@@ -218,18 +214,18 @@ Issue these commands in the `psql` shell to set up the database for Redmine. Be 
 
 Create the file `config/database.yml` with the following contents, replacing "changeme" with the password you assigned in the last step.
 
-{: .file }
-config/database.yml
-:   ~~~ yaml
-    production:
-      adapter: postgresql
-      database: redmine
-      host: localhost
-      username: redmine
-      password: changeme
-      encoding: utf8
-      schema_search_path: public
-    ~~~
+{{< file "config/database.yml" yaml >}}
+production:
+  adapter: postgresql
+  database: redmine
+  host: localhost
+  username: redmine
+  password: changeme
+  encoding: utf8
+  schema_search_path: public
+
+{{< /file >}}
+
 
 Issue the following commands to complete database configuration:
 
@@ -240,20 +236,20 @@ Issue the following commands to complete database configuration:
 
 If you receive an error message after issuing the `rake db:migrate` command, edit the `config/environment.rb` file to include the following excerpt between the bootstrap and initializer sections. After editing the file, retry the `rake db:migrate` command.
 
-{: .file-excerpt }
-config/environment.rb
-:   ~~~ ruby
-    if Gem::VERSION >= "1.3.6"
-        module Rails
-            class GemDependency
-                def requirement
-                    r = super
-                    (r == Gem::Requirement.default) ? nil : r
-                end
+{{< file-excerpt "config/environment.rb" ruby >}}
+if Gem::VERSION >= "1.3.6"
+    module Rails
+        class GemDependency
+            def requirement
+                r = super
+                (r == Gem::Requirement.default) ? nil : r
             end
         end
     end
-    ~~~
+end
+
+{{< /file-excerpt >}}
+
 
 ### Configure Email Service
 
@@ -302,17 +298,17 @@ Enter "root" and an email address at your domain for the postmaster mail query.
 
 Create the file `config/email.yml` and copy in the following contents. Be sure to replace the domain field with your fully qualified domain name.
 
-{: .file }
-config/email.yml
-:   ~~~ yaml
-    production:
-      delivery_method: :smtp
-      smtp_settings:
-        address: 127.0.0.1
-        port: 25
-        domain: redmine.example.com
-        authentication: :none
-    ~~~
+{{< file "config/email.yml" yaml >}}
+production:
+  delivery_method: :smtp
+  smtp_settings:
+    address: 127.0.0.1
+    port: 25
+    domain: redmine.example.com
+    authentication: :none
+
+{{< /file >}}
+
 
 This completes email configuration for your Redmine installation.
 
@@ -328,30 +324,30 @@ We'll create a "redmine" user to manage the installation. Issue the following co
 
 Edit the file `/opt/nginx/conf/nginx.conf`, setting the "user" parameter to "redmine":
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    user redmine;
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+user redmine;
+
+{{< /file-excerpt >}}
+
 
 Add a server section after the first example server as follows. If you're proxying to nginx from another web server, be sure to change the `listen` directive to `listen 8080;` instead of the default. Be sure to replace "redmine.example.com" with the domain for your Redmine site.
 
-{: .file-excerpt }
-/opt/nginx/conf/nginx.conf
-:   ~~~ nginx
-    server {
-         listen 80;
-         server_name  redmine.example.com;
-         root /srv/www/redmine.example.com/redmine/public/;
-         access_log /srv/www/redmine.example.com/redmine/log/access.log;
-         error_log /srv/www/redmine.example.com/redmine/log/error.log;
-         index index.html;
-         location / {
-            passenger_enabled on;
-            allow all;
-         }
-    }
-    ~~~
+{{< file-excerpt "/opt/nginx/conf/nginx.conf" nginx >}}
+server {
+     listen 80;
+     server_name  redmine.example.com;
+     root /srv/www/redmine.example.com/redmine/public/;
+     access_log /srv/www/redmine.example.com/redmine/log/access.log;
+     error_log /srv/www/redmine.example.com/redmine/log/error.log;
+     index index.html;
+     location / {
+        passenger_enabled on;
+        allow all;
+     }
+}
+
+{{< /file-excerpt >}}
+
 
 Start nginx:
 
@@ -359,8 +355,7 @@ Start nginx:
 
 Your Redmine installation should be accessible at `http://redmine.example.com`; if you encounter issues, please refer to your log files for a listing of any errors that may have occurred. The default login is username "admin" and password "admin". You should change the admin password immediately. Congratulations, you've installed Redmine for project management on your Linode!
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -369,8 +364,7 @@ Please monitor the Redmine project issue queue and news feed to ensure that you 
 -   [Redmine News Feed](http://www.redmine.org/projects/redmine/issues)
 -   [Redmine Issue Queue](http://www.redmine.org/projects/redmine/news)
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

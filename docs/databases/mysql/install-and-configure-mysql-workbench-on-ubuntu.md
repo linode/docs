@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide shows how to install and configure MySQL Workbench and includes a sample MySQL database for testing.'
-keywords: 'mysql,mysql workbench,mysql sample database'
+keywords: ["mysql", "mysql workbench", "mysql sample database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/mysql-workbench']
-modified: Tuesday, August 8, 2017
+aliases: ['databases/mysql/mysql-workbench']
+modified: 2017-08-08
 modified_by:
   name: Linode
-published: 'Tuesday, August 8, 2017'
+published: 2017-08-08
 title: 'Install and Configure MySQL Workbench on Ubuntu 16.04'
 external_resources:
  - '[MySQL Workbench Manual](https://dev.mysql.com/doc/workbench/en/)'
@@ -58,7 +58,7 @@ To open the preferences, click on `Edit`, then `Preferences` in the main menu:
 
 See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases/mysql/install-mysql-on-ubuntu-14-04) or [Debian 8](/docs/databases/mysql/how-to-install-mysql-on-debian-8) for more information on creating or logging into a MySQL server.
 
-1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started#connecting-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
+1.  Access the MySQL server on your Linode [via SSH](/docs/getting-started#connect-to-your-linode-via-ssh) and download the sample [Sakila database provided in the MySQL documentation](http://downloads.mysql.com/docs/sakila-db.tar.gz):
 
         wget http://downloads.mysql.com/docs/sakila-db.tar.gz
 
@@ -74,9 +74,9 @@ See the guide on how to [Install a MySQL server on Ubuntu 14.04](/docs/databases
 
     ![MySQL Workbench Connection](/docs/assets/mysql-workbench-connection.png "MySQL Workbench Connection")
 
-    {: .note}
-    >
-    >The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration) for more information.
+    {{< note >}}
+The MySQL server default port should be `3306` on `l27.0.0.1`. If you wish to connect to another server with a different port, update the inputs accordingly. See [Deploy MySQL Workbench for Database Administration](/docs/databases/mysql/deploy-mysql-workbench-for-database-administration) for more information.
+{{< /note >}}
 
 5.  Under **File**, select **Run SQL Script...**. Select `sakila-schema.sql` then click **Run**:
 

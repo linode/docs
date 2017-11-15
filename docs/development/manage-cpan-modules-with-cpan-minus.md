@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use CPAN Minus to install and manage Perl modules easily.'
-keywords: 'cpan,perl,cpanm'
+keywords: ["cpan", "perl", "cpanm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/']
-modified: Wednesday, November 16th, 2011
+aliases: ['linux-tools/utilities/cpanm/','applications/development/manage-cpan-modules-with-cpan-minus/']
+modified: 2011-11-16
 modified_by:
   name: Linode
-published: 'Monday, April 12th, 2010'
+published: 2010-04-12
 title: Manage CPAN Modules with CPAN Minus
 external_resources:
  - '[CPAN Minus Documentation](http://search.cpan.org/~miyagawa/App-cpanminus-0.9929/lib/App/cpanminus.pm)'
@@ -26,14 +26,14 @@ The CPAN Minus, or cpanm, client attempts to make the power of CPAN accessible t
 
 If you have not yet installed a development tool chain including Perl and its dependencies, issue the following commands on Debian and Ubuntu systems to install this software and make sure that your system's package database and installed software are up to date:
 
-    apt-get update 
+    apt-get update
     apt-get upgrade
     apt-get install perl build-essential curl
 
 Similarly on CentOS and Fedora Systems, use the following commands to update the system and install the required software:
 
     yum update
-    yum install perl perl-devel curl gcc 
+    yum install perl perl-devel curl gcc
 
 On Arch Linux systems issue the following command to download the latest package database and install the Perl dependencies:
 
@@ -81,7 +81,7 @@ These commands download the `WebService::Linode` module, the Perl bindings for t
 
 If at any subsequent point you want to check and see what modules in CPAN have been updated recently, issue the following command:
 
-    cpanm --recent 
+    cpanm --recent
 
 If you want to fetch the information regarding a package in CPAN, issue the following command:
 

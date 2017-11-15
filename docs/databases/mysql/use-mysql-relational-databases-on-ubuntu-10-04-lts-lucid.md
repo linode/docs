@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'mysql ubuntu 10.04,mysql ubuntu,mysql on linux,mysql Linode'
+keywords: ["mysql ubuntu 10.04", "mysql ubuntu", "mysql on linux", "mysql Linode"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-10-04-lucid/']
-modified: Tuesday, September 24th, 2013
+aliases: ['databases/mysql/ubuntu-10-04-lucid/']
+modified: 2013-09-24
 modified_by:
   name: Linode
-published: 'Friday, April 30th, 2010'
+published: 2010-04-30
 title: 'Use MySQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -18,18 +18,17 @@ title: 'Use MySQL Relational Databases on Ubuntu 10.04 LTS (Lucid)'
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on an Ubuntu 10.04 LTS (Lucid) Linode. For purposes of this tutorial, we'll assume you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH. If you're performing these steps as a standard user with sudo privileges, remember to prepend "sudo" to the commands shown below.
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 servername.example.com servername
-    ~~~
-    
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 servername.example.com servername
+
+{{< /file >}}
+
+
 Next, make sure your Linode's hostname is set to the short value you specified in `/etc/hosts`:
 
     echo "servername" > /etc/hostname
@@ -37,28 +36,27 @@ Next, make sure your Linode's hostname is set to the short value you specified i
 
 To make sure `universe` repositories are enabled, modify your `/etc/apt/sources.list` file to mirror the example file below.
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted 
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
 
-Installing MySQL
-----------------
+{{< /file >}}
+
+
+# Installing MySQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -79,21 +77,20 @@ The MySQL server package will be installed on your server, along with dependenci
 
 After running `mysql_secure_installation`, MySQL is secure and ready to be configured.
 
-Configuring MySQL
------------------
+# Configuring MySQL
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
-{: .file-excerpt }
-/etc/mysql/my.cnf
-:   ~~~ ini
-    key_buffer = 16M
-    max_allowed_packet = 1M
-    thread_stack = 64K
-    table_cache = 4
-    sort_buffer = 64K
-    net_buffer_length = 2K
-    ~~~
+{{< file-excerpt "/etc/mysql/my.cnf" ini >}}
+key_buffer = 16M
+max_allowed_packet = 1M
+thread_stack = 64K
+table_cache = 4
+sort_buffer = 64K
+net_buffer_length = 2K
+
+{{< /file-excerpt >}}
+
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources on this topic.
 
@@ -101,8 +98,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secur
 
 Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Using MySQL
------------
+# Using MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -173,8 +169,7 @@ This creates a table with a customer ID field of the type INT for integer (auto-
 
 By default, access to databases will be limited to connections from localhost. To securely administer your databases from a remote location, please follow our guide for [securely administering mysql with an SSH tunnel](/docs/databases/mysql/mysql-ssh-tunnel). It is *not* a good practice to run MySQL on your public IP address, unless you have a very good reason for doing so.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

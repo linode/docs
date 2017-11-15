@@ -3,13 +3,13 @@ author:
   name: Chris Ciufo
   email: docs@linode.com
 description: How to set up DNS on your cPanel server
-keywords: 'DNS, cPanel'
+keywords: ["DNS", " cPanel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/cpanel/dns-on-cpanel/']
-modified: Wednesday, February 15th, 2017
+aliases: ['web-applications/control-panels/cpanel/dns-on-cpanel/']
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Friday, November 4th, 2011'
+published: 2011-11-04
 title: Set Up DNS Services on cPanel
 external_links:
  - '[cPanel Home Page](https://www.cpanel.com/)'
@@ -59,38 +59,38 @@ To get your cPanel Linode ready as your master DNS server, you'll need to make a
 
 The transfer of DNS records from your Master DNS server to the Linode DNS servers is done through AXFR queries. By default these are not allowed. Add these sections to `options`:
 
-{: .file-excerpt }
-/etc/named.conf
-:   ~~~
-    allow-transfer {
-         104.237.137.10;
-         65.19.178.10;
-         75.127.96.10;
-         207.192.70.10;
-         109.74.194.10;
-         2600:3c00::a;
-         2600:3c01::a;
-         2600:3c02::a;
-         2600:3c03::a;
-         2a01:7e00::a;
-     };
-     also-notify {
-         104.237.137.10;
-         65.19.178.10;
-         75.127.96.10;
-         207.192.70.10;
-         109.74.194.10;
-         2600:3c00::a;
-         2600:3c01::a;
-         2600:3c02::a;
-         2600:3c03::a;
-         2a01:7e00::a;
-     };
-    ~~~
+{{< file-excerpt "/etc/named.conf" >}}
+allow-transfer {
+     104.237.137.10;
+     65.19.178.10;
+     75.127.96.10;
+     207.192.70.10;
+     109.74.194.10;
+     2600:3c00::a;
+     2600:3c01::a;
+     2600:3c02::a;
+     2600:3c03::a;
+     2a01:7e00::a;
+ };
+ also-notify {
+     104.237.137.10;
+     65.19.178.10;
+     75.127.96.10;
+     207.192.70.10;
+     109.74.194.10;
+     2600:3c00::a;
+     2600:3c01::a;
+     2600:3c02::a;
+     2600:3c03::a;
+     2a01:7e00::a;
+ };
 
-After your updates are complete, save and close the `named.conf` file. 
+{{< /file-excerpt >}}
 
-Check that the configuration file is usable by issuing the command : 
+
+After your updates are complete, save and close the `named.conf` file.
+
+Check that the configuration file is usable by issuing the command :
 
     named-checkconf /etc/named.conf
 
@@ -100,7 +100,7 @@ Once the check is OK, the BIND service will need to be restarted in order for th
 
 On the left side in WHM under "Restart Services," click DNS Server (BIND/NSD/My).
 
-Click Yes to restart the service. Allow a few minutes for the service to restart. 
+Click Yes to restart the service. Allow a few minutes for the service to restart.
 
 You'll then want to begin adding your domains to the Linode DNS Manager as slave zones.
 
@@ -113,5 +113,6 @@ You'll then want to begin adding your domains to the Linode DNS Manager as slave
 
 5.  Click the "Add a Slave Zone" button.
 
-    {: .note }
-    > Once you save your slave zone, you'll see a new text field titled "Domain Transfers". You can leave this empty.
+    {{< note >}}
+Once you save your slave zone, you'll see a new text field titled "Domain Transfers". You can leave this empty.
+{{< /note >}}

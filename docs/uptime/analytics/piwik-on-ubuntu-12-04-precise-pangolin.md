@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Get in-depth website visitor statistics with Piwik, a self-hosted, open source analytics solution on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'open source analytics,piwik ubuntu 12.04,piwik,analytics,ubuntu,tracking,statistics'
+keywords: ["open source analytics", "piwik ubuntu 12.04", "piwik", "analytics", "ubuntu", "tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, January 28th, 2014
+aliases: ['web-applications/analytics/piwik/ubuntu-12-04-precise-pangolin/']
+modified: 2014-01-28
 modified_by:
   name: Linode
-published: 'Wednesday, October 10th, 2012'
+published: 2012-10-10
 title: 'Piwik on Ubuntu 12.04 (Precise Pangolin)'
 ---
 
@@ -33,22 +33,22 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#sph_a-aaaa-records)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.org`:
 
-{: .file }
-/etc/apache2/sites-available/stats.example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin admin@stats.example.org
-        ServerName stats.example.org
-        ServerAlias stats.example.org
-        DocumentRoot /srv/www/stats.example.org/public_html/
-        ErrorLog /srv/www/stats.example.org/logs/error.log
-        CustomLog /srv/www/stats.example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/stats.example.org" apache >}}
+<VirtualHost *:80>
+    ServerAdmin admin@stats.example.org
+    ServerName stats.example.org
+    ServerAlias stats.example.org
+    DocumentRoot /srv/www/stats.example.org/public_html/
+    ErrorLog /srv/www/stats.example.org/logs/error.log
+    CustomLog /srv/www/stats.example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 We'll need to create the `logs/` and `public_html/` directories by issuing the following commands:
 

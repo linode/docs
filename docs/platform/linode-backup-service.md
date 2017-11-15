@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Use the Linode Backup Service to protect and secure your data.'
-keywords: 'backup service,linode platform,linode backup service,enable a backup,manage a backup,schedule a backup,disable a backup,restore from a backup,boot from a backup'
+keywords: ["backup service", "linode platform", "linode backup service", "enable a backup", "manage a backup", "schedule a backup", "disable a backup", "restore from a backup", "boot from a backup"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['backup-service/','platform/backup-service/']
-modified: Friday, February 24th, 2017
+aliases: ['backup-service/','platform/backup-service/', 'security/backups/linode-backup-service/']
+modified: 2017-02-24
 modified_by:
   name: Linode
-published: 'Wednesday, March 14th, 2012'
+published: 2012-03-14
 title: 'Use the Linode Backup Service to Protect and Secure Your Data'
 ---
 
@@ -21,7 +21,6 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 
 ### Standard Plans
 
-{: .table .table-striped }
 | Service      | Backups Hourly Rate | Backups Monthly
 |:-------------|:--------------------|:---------------
 | Linode 1GB   | $0.003/hr           | $2/mo
@@ -37,7 +36,6 @@ Pricing is per Linode and varies depending upon your Linode's plan:
 
 ### High Memory Plans
 
-{: .table .table-striped }
 | Service      | Backups Hourly Rate | Backups Monthly
 |:-------------|:--------------------|:---------------
 | Linode 16GB  | $0.008/hr           | $5/mo
@@ -104,9 +102,9 @@ You can make a manual backup of your Linode by taking a *snapshot*. Here's how:
 2.  Click the **Backups** tab.
 3.  Click **Take a New Snapshot Now**.
 
-    {: .note }
-    >
-    > Taking a new snapshot will overwrite a saved snapshot.
+    {{< note >}}
+Taking a new snapshot will overwrite a saved snapshot.
+{{< /note >}}
 
 4.  A warning appears asking if you would like to overwrite the previous snapsnot. Click **OK**.
 
@@ -116,9 +114,9 @@ The Linode Backup Service initiates the manual snapshot. Be patient. Creating th
 
 This section will show you how to restore a backup to a [new](#restore-to-a-new-linode) Linode, or to an [existing](#restore-to-an-existing-linode) Linode.
 
-{: .note }
->
-> The size of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
+{{< note >}}
+The size of the disk(s) created by the restore process will be slightly larger than the total size of the files restored. You may want to resize your disk(s) after the restore process is completed.
+{{< /note >}}
 
 To restore a backup to a different data center, first restore to a Linode in the same data center, creating a new one if necessary. Once the restore is complete, use the [Clone](/docs/migrate-to-linode/disk-images/clone-your-linode) tab to copy the disk(s) to a Linode in a different data center.
 
@@ -157,7 +155,7 @@ To restore a backup to an existing Linode, you will need to make sure that you h
 
 	Here you can see that the Linode has a total of 30720MB of storage space available, but all of it is currently assigned to the Linode's two disks.
 
-4.  Now that you know how much space you'll need to free in order to restore the backup, [resize your disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to make room for it.
+4.  Now that you know how much space you'll need to free in order to restore the backup, [resize your disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) to make room for it.
 
 5.  Once the disk resize has completed, check the storage indicator on your Linode's Dashboard to confirm that you've freed up enough space for your backup:
 

@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to rescuing and rebuilding your Linode.'
-keywords: 'rescue,rebuild'
+keywords: ["rescue", "rebuild"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
-modified: Thursday, August 18th, 2016
+aliases: ['rescue-and-rebuild/','troubleshooting/finnix-rescue-mode/']
+modified: 2016-08-18
 modified_by:
   name: Linode
-published: 'Thursday, May 31st, 2012'
+published: 2012-05-31
 title: Rescue and Rebuild
 ---
 
@@ -32,9 +32,9 @@ Here's how to boot your Linode into Rescue Mode:
 
 5.  In the **Rescue Mode** section, select the disks you want to be mounted.
 
-    {: .note }
-    >
-    > Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
+    {{< note >}}
+Make a note of where the disks are located. For example, in the screenshot shown above, the Ubuntu disk is at `/dev/sda`. You will need this information later.
+{{< /note >}}
 
 6.  Click **Reboot into Rescue Mode**. The Linode's dashboard appears. Watch the *Host Job Queue* on the Dashboard to monitor the progress.
 
@@ -42,7 +42,7 @@ Your Linode has been booted into rescue mode. To access it, follow the instructi
 
 ### Connecting to a Linode Running in Rescue Mode
 
-To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/remote-access#sph_console-access) and [Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell). Once you've successfully logged in, you'll see the window shown below.
+To access your Linode when it's running in rescue mode, you'll need to use the Linode shell (Lish). For instructions, see [Console Access](/docs/networking/remote-access/#console-access) and [Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell). Once you've successfully logged in, you'll see the window shown below.
 
 [![Lish console](/docs/assets/1002-rescue1-2.png)](/docs/assets/1002-rescue1-2.png)
 
@@ -54,15 +54,16 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 1.  Enter the `df` command to verify that your primary disks are not currently mounted. Your primary disks should not appear in the list. For example, when [we booted into rescue mode earlier](#booting-into-rescue-mode), we specified two disks: Ubuntu at `/dev/sda` and Swap at `/dev/sdb`, neither of which are shown as being mounted in the screenshot below.
 
-[![Output of df command](/docs/assets/999-rescue2.png)](/docs/assets/999-rescue2.png)
+    [![Output of df command](/content/assets/999-rescue2.png)](/content/assets/999-rescue2.png)
 
- {: .note }
->
-> You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
+     {{< note >}}
+You should never run `fsck` on a mounted disk. Do not continue unless you're sure that the target disk is unmounted.
+{{< /note >}}
 
 2.  To verify the location of your disks, enter the `fdisk -l` command. The disk layout will appear, as shown below. Notice that the Ubuntu disk is `/dev/sda`, the Swap disk is `/dev/sdb`, and the Finnix partition is `/dev/sdh`.
 
-[![Output of fdisk -l command](/docs/assets/1001-rescue4.png)](/docs/assets/1001-rescue4.png)
+
+    [![Output of fdisk -l command](/content/assets/1001-rescue4.png)](/content/assets/1001-rescue4.png)
 
 3.  Run `fsck` by entering the following command, replacing `/dev/sda` with the location of the disk you want to check and repair:
 
@@ -70,11 +71,11 @@ You can use the `fsck` system utility (short for "file system check") to check t
 
 4.  If no problems are detected, `fsck` will display a message indicating that the file system is "clean," as shown below.
 
-[![Output of e2fsck command](/docs/assets/1003-rescue5.png)](/docs/assets/1003-rescue5.png)
+    [![Output of e2fsck command](/content/assets/1003-rescue5.png)](/content/assets/1003-rescue5.png)
 
 5.  If `fsck` determines that there is a problem with your file system, it will perform several tests and prompt you to fix problems as they are found, as shown below. Press enter to automatically attempt to fix the problems.
 
-[![Output of e2fsck command](/docs/assets/1007-rescue6-1.png)](/docs/assets/1007-rescue6-1.png)
+    [![Output of e2fsck command](/content/assets/1007-rescue6-1.png)](/content/assets/1007-rescue6-1.png)
 
 Once the file system check completes, any problems detected should be fixed. You can try restarting the Linode now. With any luck, `fsck` fixed your problem and the Linode will boot normally.
 
@@ -147,7 +148,7 @@ If you can't rescue an existing disk, it's time to rebuild your Linode. There ar
 
 ### Restoring from Backup
 
-If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/backup-service#sph_id2). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
+If you previously enabled the Linode Backup Service, you may be able to restore one of the backups to your Linode. For instructions on restoring from a backup created by the Linode Backup Service, see [Restoring from a Backup](/docs/platform/linode-backup-service/#restore-from-a-backup). If you created backups with an application other than the Linode Backup Service, review the application's instructions to restore a backup to your Linode.
 
 ### Recovering From a System Compromise
 
@@ -157,9 +158,9 @@ Did an unauthorized intruder gain access to your Linode? Since it is virtually i
 
 Sometimes it's just easier to erase all of your Linode's disks and start over with a fresh Linux distribution. This is the "nuclear option" that will erase *everything* on your Linode.
 
- {: .note }
->
-> If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/docs/disk-images-config-profiles#sph_creating-a-disk-image-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
+ {{< note >}}
+If you'd like to deploy a new Linux distribution without erasing your existing disks, see [Creating a Disk with a Linux Distribution Installed](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-disk-with-a-linux-distribution-installed). This is a better option for those who need create a new distribution, but also need to save their existing data.
+{{< /note >}}
 
 Here's how to rebuild your Linode from scratch:
 
@@ -169,7 +170,7 @@ Here's how to rebuild your Linode from scratch:
 4.  Select a Linode. The Linode's dashboard appears.
 5.  Click the **Rebuild** tab. The webpage shown below appears.
 
-[![The "Rebuild" tab of the Linode Manager](/docs/assets/1006-rescue7-small.png)](/docs/assets/1005-rescue7.png)
+    [![The "Rebuild" tab of the Linode Manager](/content/assets/1006-rescue7-small.png)](/content/assets/1005-rescue7.png)
 
 6.  Select Linux distribution from the **Distribution** menu.
 7.  Enter a size for the new disk in the **Deployment Disk Size**.

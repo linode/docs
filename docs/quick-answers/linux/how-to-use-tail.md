@@ -3,13 +3,13 @@ author:
   name: Phil Zona
   email: docs@linode.com
 description: 'View and follow the end of files with the tail command.'
-keywords: 'linux,how to,tail,last lines,file'
+keywords: ["linux", "how to", "tail", "last lines", "file"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['quick-answers/how-to-use-tail/']
-modified: 'Monday, April 10th, 2017'
+aliases: ['quick-answers/how-to-use-tail/']
+modified: 2017-04-10
 modified_by:
   name: Phil Zona
-published: 'Monday, April 10th, 2017'
+published: 2017-04-10
 title: How to Use the Tail Command
 ---
 
@@ -22,7 +22,7 @@ In this guide, you'll learn how to use the `tail` command. Using `tail` is a sim
 
         tail /var/log/auth.log
 
-    This will print the last ten lines of the `/var/log/auth.log` file to your terminal output. 
+    This will print the last ten lines of the `/var/log/auth.log` file to your terminal output.
 
 2.  To change the number of lines displayed, use the `-n` option:
 

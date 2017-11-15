@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a fully featured wiki text with the DokuWiki software.'
-keywords: 'wiki,doku wiki,php'
+keywords: ["wiki", "doku wiki", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/dokuwiki/']
-modified: Thursday, July 27th, 2017
+aliases: ['web-applications/wikis/dokuwiki/']
+modified: 2017-07-27
 modified_by:
   name: Linode
-published: 'Saturday, April 17th, 2010'
+published: 2010-04-17
 title: DokuWiki Engine
 external_resources:
  - '[The Doku Wiki Project Home Page](http://www.dokuwiki.org/dokuwiki)'
@@ -20,7 +20,7 @@ DokuWiki is a flexible and extensible wiki engine that aims to be easy to manage
 
 ![DokuWiki Title Graphic](/docs/assets/dokuwiki_title_graphic.png)
 
-Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning the installation of DokuWiki, we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Install Prerequisites
 
@@ -47,7 +47,7 @@ At the time of writing, the latest stable version of DokuWiki is 2009-12-25c. Ho
     mkdir -p /srv/www/example.com/src/
     cd /srv/www/example.com/src/
     wget http://www.splitbrain.org/_media/projects/dokuwiki/dokuwiki-2009-12-25c.tgz
-    tar -zxvf dokuwiki-2009-12-25c.tgz 
+    tar -zxvf dokuwiki-2009-12-25c.tgz
     cp -R /srv/www/example.com/src/dokuwiki-2009-12-25/* /srv/www/example.com/public_html/
     chmod -R 777 /srv/www/example.com/public_html/data/ /srv/www/example.com/public_html/conf/
 

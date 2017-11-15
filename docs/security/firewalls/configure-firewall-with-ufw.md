@@ -3,12 +3,12 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'Use UFW (Uncomplicated Firewall) to manage your firewall on Ubuntu, Debian, or Arch Linux; this guide contains instructions for setting up default rules, adding/removing rules, setting up logging, and some advanced features.'
-keywords: 'ufw,uncomplicated firewall,ubuntu ufw,linux ufw,ufw tutorial,ubuntu firewall,iptables,networking,firewalls,filtering,firewall setup,ubuntu,debian,arch'
+keywords: ["ufw", "uncomplicated firewall", "ubuntu ufw", "linux ufw", "ufw tutorial", "ubuntu firewall", "iptables", "networking", "firewalls", "filtering", "firewall setup", "ubuntu", "debian", "arch"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, December 1st, 2015
+modified: 2015-12-01
 modified_by:
   name: Linode
-published: 'Tuesday, November 17th, 2015'
+published: 2015-11-17
 title: How to Configure a Firewall with UFW
 ---
 
@@ -51,9 +51,9 @@ By default, UFW's rulesets are blank so it is not enforcing any firewall rules--
 
 ### Debian / Ubuntu
 
-1.  Install UFW
+Install UFW
 
-        sudo apt-get install ufw
+    sudo apt-get install ufw
 
 ## Use UFW to Manage Firewall Rules
 
@@ -66,8 +66,9 @@ Most systems will need a only a small number of ports open for incoming connecti
 
 The `ufw default` command also allows for the use of the `reject` parameter.
 
-{:.caution}
->Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
+{{< caution >}}
+Configuring a default reject or deny rule can lock you out of your Linode unless explicit allow rules are in place.  Ensure that you have configured allow rules for SSH and other critical services as per the section below before applying default deny or reject rules.
+{{< /caution >}}
 
 ### Add Rules
 
@@ -80,7 +81,7 @@ For example, to allow both incoming and outgoing connections on port 22 for SSH,
 You can also run:
 
     sudo ufw allow 22
-    
+
 Similarly, to **deny** traffic on a certain port (in this example, 111) you would only have to run:
 
     sudo ufw deny 111
@@ -133,7 +134,7 @@ An additional configuration file is located at `/etc/default/ufw`. From here IPv
 You can check the status of UFW at any time with the command: `sudo ufw status`. This will show a list of all rules, and whether or not UFW is active:
 
     Status: active
-    
+
     To                         Action      From
     --                         ------      ----
     22                         ALLOW       Anywhere
@@ -153,9 +154,9 @@ Similarly, to disable UFW's rules:
 
     sudo ufw disable
 
-{: .note}
->
->This still leaves the UFW service running and enabled on reboots.
+{{< note >}}
+This still leaves the UFW service running and enabled on reboots.
+{{< /note >}}
 
 ## Logging
 
@@ -164,7 +165,7 @@ You can enable logging with the command:
     sudo ufw logging on
 
 Log levels can be set by running `sudo ufw logging low|medium|high`, selecting either `low`, `medium`, or `high` from the list. The default setting is `low`.
-    
+
 A normal log entry will resemble the following, and will be located at `/var/logs/ufw`:
 
     Sep 16 15:08:14 <hostname> kernel: [UFW BLOCK] IN=eth0 OUT= MAC=00:00:00:00:00:00:00:00:00:00:00:00:00:00 SRC=123.45.67.89 DST=987.65.43.21 LEN=40 TOS=0x00 PREC=0x00 TTL=249 ID=8475 PROTO=TCP SPT=48247 DPT=22 WINDOW=1024 RES=0x00 SYN URGP=0

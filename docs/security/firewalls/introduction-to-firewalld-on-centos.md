@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.'
-keywords: 'centos firewall,centos firewall config,centos firewall gui,centos configure firewall,Linux,Linode,cloud,firewall,firewalld,Fedora,CentOS,iptables,security'
+keywords: ["centos firewall", "centos firewall config", "centos firewall gui", "centos configure firewall", "Linux", "Linode", "cloud", "firewall", "firewalld", "Fedora", "CentOS", "iptables", "security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 28th, 2015'
-modified: Monday, October 12th, 2015
+published: 2015-09-28
+modified: 2015-10-12
 modified_by:
     name: Linode
 title: Introduction to FirewallD on CentOS
@@ -18,9 +18,6 @@ external_resources:
  - '[Fedora Wiki: FirewallD](https://fedoraproject.org/wiki/FirewallD)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 ![Introduction to FirewallD on CentOS](/docs/assets/introduction-to-firewalld-on-centos.png "Introduction to FirewallD on CentOS")
 
@@ -29,9 +26,9 @@ external_resources:
 1.  FirewallD uses *zones* and *services* instead of chain and rules.
 2.  It manages rulesets dynamically, allowing updates without breaking existing sessions and connections.
 
-{: .note}
->
->FirewallD is a wrapper for iptables to allow easier management of iptables rules--it is **not** an iptables replacement. While iptables commands are still available to FirewallD, it's recommended to use only FirewallD commands with FirewallD.
+{{< note >}}
+FirewallD is a wrapper for iptables to allow easier management of iptables rules--it is **not** an iptables replacement. While iptables commands are still available to FirewallD, it's recommended to use only FirewallD commands with FirewallD.
+{{< /note >}}
 
  This guide will introduce you to FirewallD, its notions of zones and services, and show you some basic configuration steps.
 
@@ -59,16 +56,14 @@ FirewallD is included by default with CentOS 7 but it's inactive. Controlling it
 
     Example output:
 
-    ~~~
-firewalld.service - firewalld - dynamic firewall daemon
-   Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled)
-   Active: active (running) since Wed 2015-09-02 18:03:22 UTC; 1min 12s ago
- Main PID: 11954 (firewalld)
-   CGroup: /system.slice/firewalld.service
-           └─11954 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
-    ~~~
+        firewalld.service - firewalld - dynamic firewall daemon
+           Loaded: loaded (/usr/lib/systemd/system/firewalld.service; disabled)
+           Active: active (running) since Wed 2015-09-02 18:03:22 UTC; 1min 12s ago
+         Main PID: 11954 (firewalld)
+           CGroup: /system.slice/firewalld.service
+                   └─11954 /usr/bin/python -Es /usr/sbin/firewalld --nofork --nopid
 
-5.  To reload a FirewallD configuration:
+4.  To reload a FirewallD configuration:
 
         sudo firewall-cmd --reload
 
@@ -97,9 +92,9 @@ By default, `firewall-cmd` commands apply to runtime configuration but using the
         sudo firewall-cmd --zone=public --add-service=http --permanent
         sudo firewall-cmd --reload
 
-      {: .note}
-      >
-      >The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
+      {{< note >}}
+The reload command drops all runtime configurations and applies a permanent configuration. Because firewalld manages the ruleset dynamically, it won’t break an existing connection and session.
+{{< /note >}}
 
 ### Firewall Zones
 
@@ -148,29 +143,27 @@ To get all configurations for all zones:
 
 Example output:
 
-~~~
-block
-  interfaces:
-  sources:
-  services:
-  ports:
-  masquerade: no
-  forward-ports:
-  icmp-blocks:
-  rich rules:
+    block
+      interfaces:
+      sources:
+      services:
+      ports:
+      masquerade: no
+      forward-ports:
+      icmp-blocks:
+      rich rules:
 
-  ...
+      ...
 
-work
-  interfaces:
-  sources:
-  services: dhcpv6-client ipp-client ssh
-  ports:
-  masquerade: no
-  forward-ports:
-  icmp-blocks:
-  rich rules:
-~~~
+    work
+      interfaces:
+      sources:
+      services: dhcpv6-client ipp-client ssh
+      ports:
+      masquerade: no
+      forward-ports:
+      icmp-blocks:
+      rich rules:
 
 ### Working with Services
 
@@ -220,7 +213,7 @@ As an example, here is how you would use FirewallD to assign basic rules to your
 
         sudo firewall-cmd --set-default-zone=dmz
         sudo firewall-cmd --zone=dmz --add-interface=eth0
-      
+
 2.  Add permanent service rules for HTTP and HTTPS to the dmz zone:
 
         sudo firewall-cmd --zone=dmz --add-service=http --permanent
@@ -232,17 +225,15 @@ As an example, here is how you would use FirewallD to assign basic rules to your
 
     If you now run `firewall-cmd --zone=dmz --list-all`, this should be the output:
 
-    ~~~
-    dmz (default)
-      interfaces: eth0
-      sources:
-      services: http https ssh
-      ports:
-      masquerade: no
-      forward-ports:
-      icmp-blocks:
-      rich rules:
-    ~~~
+        dmz (default)
+          interfaces: eth0
+          sources:
+          services: http https ssh
+          ports:
+          masquerade: no
+          forward-ports:
+          icmp-blocks:
+          rich rules:
 
     This tells us that the **dmz** zone is our **default** which applies to the **eth0 interface**, all network **sources** and **ports**. Incoming HTTP (port 80), HTTPS (port 443) and SSH (port 22) traffic is allowed and since there are no restrictions on IP versioning, this will apply to both IPv4 and IPv6. **Masquerading** and **port forwarding** are not allowed. We have no **ICMP blocks**, so ICMP traffic is fully allowed, and no **rich rules**. All outgoing traffic is allowed.
 

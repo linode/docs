@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Build a groupware system with eGroupware.'
-keywords: 'groupware,email,collaboration,centos'
+keywords: ["groupware", "email", "collaboration", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/egroupware/centos-5/']
-modified: Monday, August 22nd, 2011
+aliases: ['web-applications/project-management/egroupware/centos-5/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Wednesday, February 3rd, 2010'
+published: 2010-02-03
 title: Power Team Collaboration with eGroupware on CentOS 5
 external_resources:
  - '[eGroupware Home Page](http://www.egroupware.org/)'
@@ -20,7 +20,7 @@ external_resources:
 
 The eGroupware suite provides a group of server-based applications that offer collaboration and enterprise-targeted tools to help enable communication and information sharing between teams and institutions. These tools are tightly coupled and allow users to take advantage of data from one system, like the address book, and make use of it in other systems, including the calendar, CRM, and email systems. eGroupware is designed to be flexible and adaptable, and is capable of scaling to meet the demands of a diverse class of enterprise needs and work groups, all without the need to rely on a third-party vendor. As eGroupware provides its applications entirely independent of any third party service, the suite is a good option for organizations who need web-based groupware solutions, but do not want to rely on a third party provider for these services.
 
-Before installing eGroupware, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).Additionally, you will need install a [LAMP stack](/docs/lamp-guides/centos-5) as a prerequisite for installing eGroupware.
+Before installing eGroupware, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).Additionally, you will need install a [LAMP stack](/content/lamp-guides/centos-5) as a prerequisite for installing eGroupware.
 
 ## Install eGroupware
 
@@ -42,20 +42,20 @@ Congratulations, you've now installed eGroupware!
 
 The configuration options for eGroupware are located in the file `/etc/httpd/conf.d/egroupware`. Add the following line to your virtual hosting configuration:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration
-:   ~~~ apache
-    Alias /egroupware /usr/share/egroupware
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration" apache >}}
+Alias /egroupware /usr/share/egroupware
+
+{{< /file-excerpt >}}
+
 
 When inserted into the virtual hosting configuration for `example.com`, accessing the URL `http://example.com/egroupware/` will allow you to access your eGroupware site. If you do not have virtual hosting configured, eGroupware will be accessible at `/egroupware` of the default Apache host.
 
 Before continuing with the installation of eGroupware, issue the following commands to start the webserver and database server for the first time. Furthermore the `chkconfig` commands will ensure that these services are initiated following reboots:
 
     /etc/init.d/httpd start
-    /etc/init.d/mysqld start 
-    chkconfig mysqld on 
-    chkconfig httpd on  
+    /etc/init.d/mysqld start
+    chkconfig mysqld on
+    chkconfig httpd on
 
 ## Configure eGroupware
 

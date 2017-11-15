@@ -4,17 +4,17 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy a Cherokee web server on Ubuntu 12.04 LTS (Precise Pangolin).'
-keywords: 'cherokee,web sever,ubuntu 12.04,precise pangolin,cherokee-admin'
+keywords: ["cherokee", "web sever", "ubuntu 12.04", "precise pangolin", "cherokee-admin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/']
-modified: Wednesday, October 10th, 2012
+aliases: ['web-servers/cherokee/installing-cherokee-ubuntu-12-04-precise-pangolin/','websites/cherokee/websites-with-the-cherokee-web-server-on-ubuntu-12-04-lts-precise-pangolin/','websites/cherokee/deploy-websites-with-a-cherokee-web-server-on-ubuntu-12-04/']
+modified: 2012-10-10
 modified_by:
   name: Linode
-published: 'Wednesday, October 10th, 2012'
+published: 2012-10-10
 title: 'Deploy Websites with a Cherokee Web Server on Ubuntu 12.04'
 external_resources:
  - '[Cherokee Web Server Documentation](http://www.cherokee-project.com/doc/)'
- - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10.04-lucid)'
+ - '[Host Web Apps with Cherokee and PHP-FastCGI on Ubuntu 10.04 LTS (Lucid)](/docs/web-servers/cherokee/php-fastcgi-ubuntu-10-04-lucid)'
 ---
 
 Cherokee is a fast, flexible web server for POSIX compliant operating systems such as Linux. It's designed to be easy to administer, and includes support for a wide range of common web server functions.
@@ -25,7 +25,7 @@ This document assumes that you already have a working and up-to-date Ubuntu 12.0
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -36,26 +36,26 @@ The first command should show your short hostname, and the second command should
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted         
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file-excerpt "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
 
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+
+{{< /file-excerpt >}}
+
 
 If you had to enable new repositories, issue the following commands to update your package lists:
 

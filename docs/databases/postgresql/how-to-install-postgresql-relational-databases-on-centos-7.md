@@ -3,17 +3,17 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The PostgreSQL relational database is a powerful open source database platform. Learn how to install it on CentOS 7 in this simple tutorial.'
-keywords: 'postgresql,CentOS 7,open source database,relational database'
+keywords: ["postgresql", "CentOS 7", "open source database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, December 12th, 2016
+modified: 2016-12-12
 modified_by:
   name: Nick Brewer
-published: 'Monday, December 12th, 2016'
+published: 2016-12-12
 title: 'How to Install PostgreSQL Relational Databases on CentOS 7'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
-alias: ['databases/postgresql/use-postgresql-relational-databases-on-centos-7/']
+aliases: ['databases/postgresql/use-postgresql-relational-databases-on-centos-7/']
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your CentOS 7 Linode.
@@ -30,9 +30,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
         sudo yum update
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< /note >}}
 
 ## Install PostgreSQL
 
@@ -55,13 +55,13 @@ Unless otherwise noted, the instructions in subsequent sections of this guide wi
 
         sudo systemctl enable postgresql
 
-### Install From the Postgres Repositories  
+### Install From the Postgres Repositories
 
 Alternatively, you can install the latest version from the Postgres repositories. As of this publication, PostgreSQL `9.6.3` is the most recent version available for CentOS 7, but these steps can be applied to any RPM-based installation.
 
-{: .note}
->
->When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
+{{< note >}}
+When Postgres is installed using this method, the version number is included in its configuration directories. For example, `/var/lib/pgsql` becomes `/var/lib/pgsql/9.6`. This is also the case with systemd units; `systemctl status postgresql` becomes `systemctl status postgresql-9.6`.
+{{< /note >}}
 
 1.  Select the version you wish to install from the [Postgres Yum repositories](https://yum.postgresql.org/repopackages.php). Locate the CentOS 7 link for your chosen version and download it to your Linode:
 
@@ -91,9 +91,9 @@ Alternatively, you can install the latest version from the Postgres repositories
 
 By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{: .caution}
->
->The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< caution >}}
+The `postgres` user should not be used for other purposes (e.g., connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< /caution >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -106,7 +106,7 @@ By default, PostgreSQL will create a Linux user named `postgres` to access the d
 
     Note that this user is distinct from the `postgres` Linux user. The Linux user is used to access the database, and the PostgreSQL user is used to perform administrative tasks on the databases.
 
-    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](#secure-local-postgresql-access) for information about changing this setting.
+    The password set in this step will be used to connect to the database via the network. Peer authentication will be used by default for local connections. See the [Secure Local PostgreSQL Access section](/docs/databases/postgresql/how-to-install-postgresql-relational-databases-on-centos-7#secure-local-access) for information about changing this setting.
 
 ### Access the PostgreSQL Shell
 
@@ -186,8 +186,9 @@ You can delete, or *drop*, databases with the `dropdb` command. For example, to 
 
     dropdb mytestdb
 
-{: .caution}
->Deleted databases cannot be recovered.
+{{< caution >}}
+Deleted databases cannot be recovered.
+{{< /caution >}}
 
 ## Work With Tables
 
@@ -438,18 +439,18 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 1.  Edit the `/var/lib/pgsql/data/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
-    {: .file-excerpt }
-    /var/lib/pgsql/data/pg_hba.conf
-    :   ~~~
-        # "local" is for Unix domain socket connections only
-        local    all        all             peer
-        ~~~
+    {{< file-excerpt "/var/lib/pgsql/data/pg_hba.conf" >}}
+# "local" is for Unix domain socket connections only
+local    all        all             peer
+
+{{< /file-excerpt >}}
+
 
     Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
-    {: .note}
-    >
-    >If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
+    {{< note >}}
+If you installed PostgreSQL from the [Postgres repositories](#install-from-the-postgres-repositories), you will need to specify your version number in this file path, for example: `/var/lib/pgsql/9.6/data/pg_hba.conf`.
+{{< /note >}}
 
 2.  To enable these changes, you need to restart PostgreSQL. However, you did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 

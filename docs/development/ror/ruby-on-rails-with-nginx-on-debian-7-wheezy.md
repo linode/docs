@@ -3,13 +3,13 @@ author:
   name: Jonathan Frederickson
   email: docs@linode.com
 description: Using the Ruby on Rails framework for Nginx web applications on Debian 7
-keywords: 'ruby on rails,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/debian-7-wheezy/','websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
-modified: Tuesday, December 9th, 2014
+aliases: ['frameworks/ruby-on-rails-nginx/debian-7-wheezy/','websites/ror/ruby-on-rails-with-nginx-on-debian-7-wheezy/']
+modified: 2014-12-09
 modified_by:
   name: James Stewart
-published: 'Tuesday, February 11th, 2014'
+published: 2014-02-11
 title: 'Ruby on Rails with Nginx on Debian 7 (Wheezy)'
 external_resources:
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
@@ -25,7 +25,7 @@ Ruby on Rails is a popular rapid development web framework that allows web desig
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f

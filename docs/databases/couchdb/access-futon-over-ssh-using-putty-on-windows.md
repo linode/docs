@@ -3,16 +3,16 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This tutorial will teach you how to access your CouchDB database remotely by creating an SSH tunnel with PuTTY.'
-keywords: 'futon, couchdb, apache, ssh, putty, windows, os x, osx'
+keywords: ["futon", " couchdb", " apache", " ssh", " putty", " windows", " os x", " osx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/couchdb/ssh-tunnel/','databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel']
-modified: Wednesday, July 19th, 2017
+aliases: ['databases/couchdb/ssh-tunnel/','databases/couchdb/securely-administer-couchdb-with-an-ssh-tunnel']
+modified: 2017-07-19
 modified_by:
   name: Linode
-published: 'Thursday, February 4th, 2010'
+published: 2010-02-04
 title: Access Futon Over SSH to Administer CouchDB
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Linode Docs - CouchDB](/docs/databases/couchdb/)'
 ---
 
@@ -48,6 +48,6 @@ Once the SSH connection is established, open a web browser on your local compute
 
 ![Futon interface](/docs/assets/couchdb-futon.png)
 
-{: .note}
->
-> You will also be able to access CouchDB directly over its HTTP interface at `http://localhost:5984` without needing to access the server over a public IP.
+{{< note >}}
+You will also be able to access CouchDB directly over its HTTP interface at `http://localhost:5984` without needing to access the server over a public IP.
+{{< /note >}}

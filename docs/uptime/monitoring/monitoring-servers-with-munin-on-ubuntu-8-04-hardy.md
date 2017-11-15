@@ -4,13 +4,15 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Keep track of vital system statistics and troubleshoot performance problems with Munin on Ubuntu 8.04 (Hardy).'
-keywords: 'munin,monitoring'
+keywords: ["munin", "monitoring"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/munin/ubuntu-8-04-hardy/']
-modified: Tuesday, May 17th, 2011
+aliases: ['server-monitoring/munin/ubuntu-8-04-hardy/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Monday, February 22nd, 2010'
+published: 2010-02-22
+expiryDate: 2013-05-17
+deprecated: true
 title: 'Monitoring Servers with Munin on Ubuntu 8.04 (Hardy)'
 ---
 
@@ -20,7 +22,7 @@ The Linode Manager provides some basic monitoring of system resource utilization
 
 Munin is a system and network monitoring tool that uses RRDTool to generate useful visualizations of resource usage. The primary goal of the Munin project is to provide an easy to use tool that is simple to install and configure and provides information in an accessible web based interface. Munin also makes it possible to monitor multiple "nodes" with a single installation.
 
-Before installing Munin, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/ubuntu-8.04-hardy) in order to use the web interface.
+Before installing Munin, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/platform/linode-beginners-guide/) and [administration basics guide](/docs/tools-reference/linux-system-administration-basics/). Additionally, you'll need to install a web server such as [Apache](/docs/web-servers/apache/installation/ubuntu-8-04-hardy) in order to use the web interface.
 
 Installing Munin
 ----------------
@@ -49,84 +51,23 @@ The master configuration file for Munin is `/etc/munin/munin.conf`. This file is
 
 The first section of the file contains the paths to the directories used by Munin. When configuring your web server with Munin, make sure to point the root folder to the path of `htmldir`.
 
-{: .file-excerpt }
-/etc/munin/munin.conf
+{{< file-excerpt "/etc/munin/munin.conf" apache >}}
+<VirtualHost 123.45.67.89:80>
+   ServerAdmin webmaster@stats.example.com
+   ServerName stats.example.com
+   DocumentRoot /var/www/munin
+   <Directory />
+       Options FollowSymLinks
+       AllowOverride None
+   </Directory>
+   LogLevel notice
+   CustomLog /var/log/apache2/access.log combined
+   ErrorLog /var/log/apache2/error.log
+   ServerSignature On
+</VirtualHost>
 
-> \# Configfile for Munin master dbdir /var/lib/munin/ htmldir /var/www/munin/ logdir /var/log/munin/ rundir /var/run/munin/
+{{< /file-excerpt >}}
 
-There are additional directives after the directory location block such as `tmpldir`, which shows Munin where to look for HTML templates, and others that allow you to configure mail to be sent when something on the server changes. These additional directives are explained more in depth on the [munin.conf page of the Munin website](`
-`
-http://munin-monitoring.org/wiki/munin.conf). You can also find quick explanations inside the file itself via hash (`#`) comments. Take note that these global directives must be defined prior to defining hosts monitored by Munin. Do not place global directives at the bottom of the `munin.conf` file.
-
-The last section of the `munin.conf` file defines the hosts Munin retrieves information from. For a default configuration, adding a host can be done in the form shown below:
-
-{: .file }
-/etc/munin/munin.conf
-
-> [example.com]
-> :   address example.com
->
-For more complex configurations, including grouping domains, see the comment section in the file, reproduced below for your convenience:
-
-{: .file }
-/etc/munin/munin.conf
-
-> \# From and including the first host, no more global directives can be defined. \# Everything after one host definition belongs to that host, until another host definition is found.
->
-> [foo.example.com] \# Defines the group "example.com" and then
-> :   \# "foo.example.com" under that group.
->
-> > address localhost \# The address (IP or host name) of the host, where munin-node is running.
->
-> [example.com;bar.example.com] \# Same as above, but with an explicit definition.
-> :   \# of the host's group.
->
-> address bar.example.com \# The address.
-> :   df.contacts no \# Don't warn Nagios (or whatever) if the 'df' plugin exceed warning values.
->
-> [Groupname;baz.example.com] \# Associates the host baz.example.com to this group
-> :   address baz.example.com \# The address of the host, where munin-node is running. update no \# Specifies that no services on this host should be updated by munin-update
->
-### Munin Node Configuration
-
-The default `/etc/munin/munin-node.conf` file contains several variables you'll want to adjust to your preference. For a basic configuration, you'll only need to add the IP address of the master Munin server as a regular expression. Simply follow the style of the existing `allow` line if you're unfamiliar with regular expressions.
-
-{: .file }
-/etc/munin/munin-node.conf
-
-> \# A list of addresses that are allowed to connect. This must be a \# regular expression, due to brain damage in Net::Server, which \# doesn't understand CIDR-style network notation. You may repeat \# the allow line as many times as you'd like
->
-> allow \^127.0.0.1\$
->
-> \# Replace this with the master munin server IP address allow \^123.45.67.89\$
-
-The above line tells the munin-node that the master Munin server is located at IP address `123.45.67.89`. After updating this file, restart the `munin-node`. In Ubuntu, use the following command:
-
-    /etc/init.d/munin-node restart
-
-### Web Interface Configuration
-
-You can use Munin with the web server of your choice, simply point your web server to provide access to resources created by Munin. By default, these resources are located at `/var/www/munin`.
-
-If you are using the [Apache HTTP server](/docs/web-servers/apache/) you can create a Virtual Host configuration to serve the reports from Munin. In this scenario, we've created a subdomain in the DNS Manager and are now creating the virtual host file:
-
-{: .file }
-/etc/apache2/sites-available/stats.example.com
-:   ~~~ apache
-    <VirtualHost 123.45.67.89:80>
-       ServerAdmin webmaster@stats.example.com
-       ServerName stats.example.com
-       DocumentRoot /var/www/munin
-       <Directory />
-           Options FollowSymLinks
-           AllowOverride None
-       </Directory>
-       LogLevel notice
-       CustomLog /var/log/apache2/access.log combined
-       ErrorLog /var/log/apache2/error.log
-       ServerSignature On
-    </VirtualHost>
-    ~~~
 
 If you use this configuration you will want to issue the following commands to ensure that all required directories exist, and that your site is enabled:
 

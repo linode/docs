@@ -4,20 +4,20 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install a LEMP stack to serve websites and applications on Ubuntu 12.04'
-keywords: 'nginx,lemp,php,linux,web applications'
+keywords: ["nginx", "lemp", "php", "linux", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lemp-guides/ubuntu-12-04-precise-pangolin/','websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/']
-modified: Thursday, September 12th, 2013
+aliases: ['lemp-guides/ubuntu-12-04-precise-pangolin/','websites/lemp/lemp-server-on-ubuntu-12-04-precise-pangolin/']
+modified: 2013-09-12
 modified_by:
   name: Linode
-published: 'Tuesday, October 9th, 2012'
+published: 2012-10-09
 title: 'LEMP Server on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Basic nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
  - '[Clustered Web Servers and Software Load Balancing with nginx](/docs/uptime/loadbalancing/how-to-use-nginx-as-a-front-end-proxy-server-and-software-load-balancer)'
- - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
- - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10.04-lucid)'
- - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10.04-lucid)'
+ - '[Deploy CGI and Perl Scripts with Perl-FastCGI and nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10-04-lucid)'
+ - '[Use PostgeSQL as an Alternative to MySQL for data storage](/docs/databases/postgresql/ubuntu-10-04-lucid)'
+ - '[Deploy Python Applications with uWSGI and nginx](/docs/web-servers/nginx/python-uwsgi/ubuntu-10-04-lucid)'
 ---
 
 This document describes a compatible alternative to the "LAMP" (Linux, Apache, MySQL, and PHP) stack, known as "LEMP." The LEMP stack replaces the Apache web server component with nginx (pronounced "engine x," providing the "E" in LEMP,) which can increase the ability of the server to scale in response to demand.
@@ -46,7 +46,7 @@ There are several viable and popular options for installing the nginx software. 
 
 The second option requires downloading the source for nginx from the upstream provider and compiling the software manually. Manual compilation makes it possible to run the most current version of the software at the expense of the testing and automatic updates from the Ubuntu project. All options are compatible, but in most cases we recommend using the packages from the Ubuntu repositories unless your needs require a version newer than the one available in the Ubuntu repositories. Possible reasons for compiling nginx yourself include access to optional compile-time modules and features added in more recent versions.
 
-For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10.04-lucid).
+For more in-depth installation instructions consider our [guide to installing nginx](/docs/web-servers/nginx/installation/ubuntu-10-04-lucid).
 
 ### Deploy from Ubuntu Project Packages
 
@@ -110,21 +110,21 @@ Now, issue the following command to start the web-server:
 
 Regardless of the method you use to install nginx, you will need to configure `server` declarations to specify name-based virtual hosts. There are a number of approaches to organizing configuration files with nginx. Regardless of the organizational strategy, all virtual host configurations are contained within `server` configuration blocks that are in turn contained within the `http` block in the `nginx.conf` file. Consider the following nginx virtual host configuration:
 
-{: .file-excerpt }
-/etc/nginx/nginx.conf
-:   ~~~ nginx
-    server {
-        listen   80;
-        server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
+{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+server {
+    listen   80;
+    server_name www.example.com example.com;
+    access_log /srv/www/example.com/logs/access.log;
+    error_log /srv/www/example.com/logs/error.log;
 
-        location / {
-            root   /srv/www/example.com/public_html;
-            index  index.html index.htm;
-        }
+    location / {
+        root   /srv/www/example.com/public_html;
+        index  index.html index.htm;
     }
-    ~~~
+}
+
+{{< /file-excerpt >}}
+
 
 Create the directories referenced in this configuration by issuing the following commands:
 
@@ -145,31 +145,31 @@ The source file is saved, and the site can be re-enabled at any time.
 
 If you installed the web server after compiling it from source you have a number of options. You may insert the server directives directly into the `http` section of the `/opt/nginx/conf/nginx.conf` or `/etc/nginx/nginx.conf` file, although this may be difficult to manage. You may also replicate the management system created by the Ubuntu packages by creating `sites-available/` and `sites-enabled/` directories and inserting the following line into your `nginx.conf` file:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    http {
-    # [...]
+{{< file-excerpt "nginx.conf" nginx >}}
+http {
+# [...]
 
-    include /opt/etc/nginx/sites-enabled/*;
+include /opt/etc/nginx/sites-enabled/*;
 
-    # [...]       
-    }
-    ~~~
+# [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Modify the include statement to point to the path of your `sites-enabled` directory. In some circumstances, it may make more sense to create and include a file named `/opt/nginx-sites.conf` that is included in the `nginx.conf` file as follows:
 
-{: .file-excerpt }
-nginx.conf
-:   ~~~ nginx
-    http {
-    # [...]
+{{< file-excerpt "nginx.conf" nginx >}}
+http {
+# [...]
 
-    include /opt/nginx-sites.conf;
+include /opt/nginx-sites.conf;
 
-    # [...]       
-    }
-    ~~~
+# [...]
+}
+
+{{< /file-excerpt >}}
+
 
 Then, depending on the size and nature of your deployment, place your virtual host configurations either directly in the `/opt/nginx-sites.conf` file or include statements for server-specific configuration files in the `nginx-sites.file`. For more information regarding nginx configuration options, consider our [overview of nginx configuration](/docs/websites/nginx/basic-nginx-configuration).
 
@@ -181,39 +181,39 @@ Make sure that the directories referenced in your configuration exist on your fi
 
 ## Deploy PHP with FastCGI
 
-In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10.04-lucid). Begin the deployment process by issuing the following command to install the required dependencies:
+In order to deploy PHP applications, you will need to implement the following "PHP-FastCGI" solution to allow nginx to properly handle and serve pages that contain PHP code. For a more complete introduction to this subject, consider our dedicated guide to [PHP FastCGI with Nginx](/docs/web-servers/nginx/php-fastcgi/ubuntu-10-04-lucid). Begin the deployment process by issuing the following command to install the required dependencies:
 
     apt-get install php5-cli php5-cgi php5-fpm
 
 Consider the following nginx virtual host configuration. Modify your configuration to resemble the one below, and ensure that the `location ~ \.php$ { }` resembles the one in this example:
 
-{: .file }
-nginx virtual host configuration
-:   ~~~ nginx
-    server {
-        server_name www.example.com example.com;
-        access_log /srv/www/example.com/logs/access.log;
-        error_log /srv/www/example.com/logs/error.log;
-        root /srv/www/example.com/public_html;
+{{< file "nginx virtual host configuration" nginx >}}
+server {
+    server_name www.example.com example.com;
+    access_log /srv/www/example.com/logs/access.log;
+    error_log /srv/www/example.com/logs/error.log;
+    root /srv/www/example.com/public_html;
 
-        location / {
-            index index.html index.htm index.php;
-        }
-
-        location ~ \.php$ {
-            include /etc/nginx/fastcgi_params;
-            fastcgi_pass  127.0.0.1:9000;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
-        }
+    location / {
+        index index.html index.htm index.php;
     }
-    ~~~
+
+    location ~ \.php$ {
+        include /etc/nginx/fastcgi_params;
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 **Important security note:** If you're planning to run applications that support file uploads (images, for example), the above configuration may expose you to a security risk by allowing arbitrary code execution. The short explanation for this behavior is that a properly crafted URI which ends in ".php", in combination with a malicious image file that actually contains valid PHP, can result in the image being processed as PHP. For more information on the specifics of this behavior, you may wish to review the information provided on [Neal Poole's blog](https://nealpoole.com/blog/2011/04/setting-up-php-fastcgi-and-nginx-dont-trust-the-tutorials-check-your-configuration/).
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive. Please note that this fix requires nginx and the php-fcgi workers to reside on the same server.
 
-~~~ nginx
+{{< file-excerpt "nginx virtual host configuration" nginx >}}
 location ~ \.php$ {
     try_files $uri =404;
     include /etc/nginx/fastcgi_params;
@@ -221,11 +221,11 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an "/images" directory.
 
-~~~ nginx
+{{< file-excerpt "nginx virtual host configuration" nginx >}}
 location ~ \.php$ {
     include /etc/nginx/fastcgi_params;
     if ($uri !~ "^/images/") {
@@ -234,7 +234,7 @@ location ~ \.php$ {
     fastcgi_index index.php;
     fastcgi_param SCRIPT_FILENAME /srv/www/example.com/public_html$fastcgi_script_name;
 }
-~~~
+{{< /file-excerpt >}}
 
 When you've completed the modifications to the configuration, make sure that the virtual host is enabled and issue the following command to restart the web server:
 

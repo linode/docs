@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to installing and using Linode Longview.
-keywords: 'system monitoring,longview,troubleshooting'
+keywords: ["system monitoring", "longview", "troubleshooting"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['longview/']
-modified: Friday, May 26, 2017
+aliases: ['longview/', 'uptime/longview/']
+modified: 2017-05-26
 modified_by:
   name: Angel Guarisma
-published: 'Wednesday, March 27th, 2013'
+published: 2013-03-27
 title: Longview
 ---
 
@@ -34,15 +34,15 @@ To access Longview, log in to the [Linode Manager](https://manager.linode.com) a
 
 2.  This guide will use `sudo` wherever possible.
 
-3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.   
+3. This guide uses `iptables` for firewall configuration. If you followed our [Configure a Firewall with UFW](/docs/security/firewalls/configure-firewall-with-ufw) guide, you learned about ufw: a manager for iptables. In this guide we chose to interface directly with `iptables`, instead of using `ufw`. You can use both, interchangeably without issue.
 
 ## Adding Systems
 
 To add a Longview system, first add a system to the Longview interface in the Linode Manager. Then install the Longview client application on your system. At that point, the Longview client application will start transferring your system statistics to Linode's servers.
 
- {: .note }
->
-> Longview can monitor any Linux system running a supported distribution - including systems not hosted by Linode.
+ {{< note >}}
+Longview can monitor any Linux system running a supported distribution - including systems not hosted by Linode.
+{{< /note >}}
 
 ### Supported Distributions
 
@@ -69,7 +69,7 @@ To start monitoring a system with Longview, you'll need to add the system to the
     [![Adding a system to Linode Longview.](/docs/assets/1383-lv_install.png)](/docs/assets/1383-lv_install.png)
 
 4.  Copy the Longview installation command to your clipboard.
-5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-for-the-first-time).
 6.  Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.
 
 You have successfully installed the Longview client on your system. Longview will start collecting system-level data immediately. Repeat this process to add additional systems to Longview.
@@ -82,7 +82,7 @@ If the installation process described above doesn't work, you'll need to manuall
 
 If you're running a Debian or Ubuntu distribution, follow these steps to manually install the Longview client on your system:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-for-the-first-time).
 2.  Find the name of your distribution by entering the following command. For example, if you're running Ubuntu 12.04, the output will be `precise`. Remember this name - you'll need it later.
 
         lsb_release -sc
@@ -140,7 +140,7 @@ Congratulations! The Longview client is now installed on your Ubuntu or Debian s
 
 If you're running a Fedora or CentOS distribution, follow these steps to manually install the Longview client on your system:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-for-the-first-time).
 2.  Create a file to hold the repository by entering the following command:
 
         sudo nano /etc/yum.repos.d/longview.repo
@@ -153,9 +153,9 @@ If you're running a Fedora or CentOS distribution, follow these steps to manuall
         enabled=1
         gpgcheck=1
 
- {: .note }
->
-> You can find your distribution's name and version number by entering the following command: `cat /etc/redhat-release`
+ {{< note >}}
+You can find your distribution's name and version number by entering the following command: `cat /etc/redhat-release`
+{{< /note >}}
 
 4.  Save the changes to the file by pressing **Control-X**, and then **Y**.
 5.  Download the key to your system by entering the following command:
@@ -211,7 +211,7 @@ Follow these commands to install Longview on your Linode manually:
     [![Adding a system to Linode Longview.](/docs/assets/1383-lv_install.png)](/docs/assets/1383-lv_install.png)
 
 4.  Copy the Longview installation command to your clipboard.
-5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+5.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-for-the-first-time).
 6.  Paste the Longview installation command into the terminal window, and then press Return. The Longview client will be installed on your system.
 7.  View the output as Longview's core dependencies are installed. If you're missing any core dependencies, you'll need to look up the corresponding error and install or reconfigure the appropriate item. On a successful installation, you should see output like the following:
 
@@ -224,13 +224,13 @@ Follow these commands to install Longview on your Linode manually:
         Successfully installed DBI-1.630
         29 distributions installed
 
-    {:.note}
-    >
-    > If you don't have MySQL installed, you'll receive an error about dependencies for Longview-MySQL. You can safely ignore the error if MySQL isn't installed. Here's an example of the output:
-    >
-    > ==== Installing Longview-MySQL dependencies ==== ! Configure failed for DBD-mysql-4.025. See /root/.cpanm/work/1384896259.21932/build.log for details. ==== Translating Headers ==== /usr/include/syscall.h -\> /usr/include/syscall.ph
-    >
-    > ...
+    {{< note >}}
+If you don't have MySQL installed, you'll receive an error about dependencies for Longview-MySQL. You can safely ignore the error if MySQL isn't installed. Here's an example of the output:
+
+==== Installing Longview-MySQL dependencies ==== ! Configure failed for DBD-mysql-4.025. See /root/.cpanm/work/1384896259.21932/build.log for details. ==== Translating Headers ==== /usr/include/syscall.h -\> /usr/include/syscall.ph
+
+...
+{{< /note >}}
 
 Congratulations! The Longview client is now installed.
 
@@ -244,7 +244,7 @@ If your Linode has a firewall, it will need to allow communication with Longview
 
 2. In order for your Linode to provide its metrics to Longview you will want to allow the same address through the OUTPUT chain of your Firewall.
 
-        iptables -I OUTPUT -d longview.linode.com -j ACCEPT 
+        iptables -I OUTPUT -d longview.linode.com -j ACCEPT
 
 If you followed the instructions for setting up a firewall in our [Securing Your Server](/docs/security/securing-your-server) guide, go back to [this section](/docs/security/securing-your-server#step_6) to find additional rules for Longview.
 
@@ -289,9 +289,9 @@ This tab is simply designed to give you a basic idea of what's going on with you
 
 The **Network** tab allows you to monitor the inbound and outbound traffic to your system, as shown below. The graph at the top of the page shows the combined inbound and outbound data transfer. The other graphs show the data transfer over the IPv4 and IPv6 public and private networks.
 
- {: .note }
->
-> If you are monitoring a non-Linode system, only a single graph will be shown for each network interface.
+ {{< note >}}
+If you are monitoring a non-Linode system, only a single graph will be shown for each network interface.
+{{< /note >}}
 
 [![The Network tab in Linode Longview.](/docs/assets/1387-lv_network_sm.png)](/docs/assets/1406-lv_network.png)
 
@@ -325,13 +325,13 @@ To inspect the services that are actively waiting for a connection, select the *
 
 See who's connected to your system by selecting the **active connections** link, as shown above. All users with active connections are displayed.
 
- {: .note }
->
-> The `root` user may also appear in the list if there is an active SSH connection. That's because SSH runs as `root` before dropping privileges to the non-root account, and it never closes the file handle. This *does not* necessarily mean that the `root` user is connected via SSH.
+ {{< note >}}
+The `root` user may also appear in the list if there is an active SSH connection. That's because SSH runs as `root` before dropping privileges to the non-root account, and it never closes the file handle. This *does not* necessarily mean that the `root` user is connected via SSH.
+{{< /note >}}
 
 [![The System Info tab in Linode Longview: Available Packages.](/docs/assets/1402-lv_updates_sm.png)](/docs/assets/1403-lv_updates.png)
 
-If there are updates available for your system's distribution, you can see them by selecting the **available package updates** link, as shown above. The available updates are listed by name, current version number, and new version number. To install the updates, you'll need to log in to your system and [update the installed packages](/docs/monitoring-and-maintaining#sph_updating-installed-packages).
+If there are updates available for your system's distribution, you can see them by selecting the **available package updates** link, as shown above. The available updates are listed by name, current version number, and new version number. To install the updates, you'll need to log in to your system and [update the installed packages](/docs/uptime/monitoring-and-maintaining-your-server/#updating-installed-packages).
 
 ## Using the Interface
 
@@ -345,9 +345,9 @@ By default, Longview displays statistics for the past twelve hours. However, if 
 
 All of the graphs will be updated to display data for the time interval you selected. To reset the time interval and reenable live updating, select **Past 30 minutes (live)** from the viewing history menu.
 
- {: .note }
->
-> If you have selected a time interval other than **Past 30 minutes (live)**, the graphs will not be automatically updated with new data.
+ {{< note >}}
+If you have selected a time interval other than **Past 30 minutes (live)**, the graphs will not be automatically updated with new data.
+{{< /note >}}
 
 ### Zooming
 
@@ -392,8 +392,8 @@ Longview will start collecting more than twelve hours of performance data after 
 If you're experiencing problems with the Longview client application, please perform the following steps:
 
 -   [Check the list of supported Linux distributions](#supported-distributions).
--   [Install all available package updates](/docs/monitoring-and-maintaining#sph_updating-installed-packages). Longview requires Perl 5.8 or later.
--   Check that your system is [using the latest kernel](/docs/monitoring-and-maintaining#sph_applying-kernel-updates). Use a newer kernel if possible. Linux 2.6.18 is supported, but does not include full functionality.
+-   [Install all available package updates](/docs/uptime/monitoring-and-maintaining-your-server/#updating-installed-packages). Longview requires Perl 5.8 or later.
+-   Check that your system is [using the latest kernel](/docs/uptime/monitoring-and-maintaining-your-server/#applying-kernel-updates). Use a newer kernel if possible. Linux 2.6.18 is supported, but does not include full functionality.
 -   Make sure the Longview client is running on your system by entering the following command:
 
         service longview status
@@ -409,17 +409,17 @@ If you're experiencing problems with the Longview client application, please per
 
     **Debian/Ubuntu:** :
 
-        /etc/init.d/longview debug 
+        /etc/init.d/longview debug
 
     **Fedora/CentOS:** :
 
         /opt/linode/longview/Linode/Longview.pl debug
 
--   Verify that the Longview client can communicate with our servers. Add the following line to your [firewall rules](/docs/securing-your-server#sph_creating-a-firewall):
+-   Verify that the Longview client can communicate with our servers. Add the following line to your [firewall rules](/docs/securing-your-server#configure-a-firewall):
 
         iptables -A OUTPUT -p tcp --dport 443 -d longview.linode.com -j ACCEPT
 
-If you still need assistance after performing these steps, please open a [support ticket](/docs/support#sph_contacting-linode-support).
+If you still need assistance after performing these steps, please open a [support ticket](/docs/platform/support/#contacting-linode-support).
 
 ## Updating Longview
 
@@ -470,7 +470,7 @@ The system has been removed from the Longview interface in the Linode Manager. R
 
 Next, you should remove the Longview client application from the system you want to stop monitoring. Here's how:
 
-1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#logging-in-for-the-first-time).
+1.  Open a terminal window and [log in to your Linode via SSH](/docs/getting-started#log-in-for-the-first-time).
 2.  If you are using Debian or Ubuntu, enter the following command into the terminal window:
 
         sudo apt-get remove linode-longview

@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'How to upgrade from Debian 7 (Wheezy) to Debian 8 (Jessie).'
-keywords: 'debian,upgrade,wheezy,jessie'
+keywords: ["debian", "upgrade", "wheezy", "jessie"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, April 29th, 2015
+modified: 2015-04-29
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, April 29th, 2015'
+published: 2015-04-29
 title: 'Upgrading to Debian 8 (Jessie)'
 ---
 
@@ -16,8 +16,9 @@ Debian 8 (Jessie) is the most recent version of Debian, released in April 2015. 
 
 Bear in mind that while package and distribution maintainers try to ensure cross-compatibility and problem-free upgrades, there is always the lingering possiblity of something not working out as planned. This is one reason why backing up your data is so important.
 
-{: .note }
-> If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](https://www.linode.com/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4) guide before continuing.
+{{< note >}}
+If you use the Apache web server, be aware that Debian 8 moves from Apache 2.2 to 2.4. This version change requires several adjustments to configuration files, and can break an existing website. Please follow our [Upgrading Apache](/docs/security/upgrading/updating-virtual-host-settings-from-apache-2-2-to-apache-2-4) guide before continuing.
+{{< /note >}}
 
 ## Preparing to Upgrade
 
@@ -32,7 +33,7 @@ You should install all available updates for Debian 7 before upgrading to Debian
 
 ### Backing Up Your Linode
 
-It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/platform/backup-service/#taking-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
+It's a good idea to [back up](/docs/platform/backup-service) your Linode before performing a major upgrade. If you subscribe to the Linode Backup Service, we recommend that you [take a manual snapshot](/docs/security/backups/linode-backup-service/#take-a-manual-snapshot) before upgrading to Debian 8. If you use another backup service or application, we recommend that you make a manual backup now. You may also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. See our [backup guides](/docs/security/backups/) for more information.
 
 ### Checking Your Kernel
 
@@ -66,23 +67,23 @@ You are now ready to install Debian 8 on your Linode.
 
 1.  Edit your `/etc/apt/sources.list` file and change all instances of `wheezy` to `jessie`. Once you have finished, your `/etc/apt/sources.list` should resemble the following:
 
-    {: .file-excerpt }
-    /etc/apt/sources.list
-    :   ~~~
-        deb http://ftp.us.debian.org/debian/ jessie main
-        deb-src http://ftp.us.debian.org/debian/ jessie main
+    {{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://ftp.us.debian.org/debian/ jessie main
+deb-src http://ftp.us.debian.org/debian/ jessie main
 
-        deb http://security.debian.org/ jessie/updates main
-        deb-src http://security.debian.org/ jessie/updates main
+deb http://security.debian.org/ jessie/updates main
+deb-src http://security.debian.org/ jessie/updates main
 
-        # jessie-updates, previously known as 'volatile'
-        deb http://ftp.us.debian.org/debian/ jessie-updates main
-        deb-src http://ftp.us.debian.org/debian/ jessie-updates main
-        ~~~
+# jessie-updates, previously known as 'volatile'
+deb http://ftp.us.debian.org/debian/ jessie-updates main
+deb-src http://ftp.us.debian.org/debian/ jessie-updates main
 
-    {: .note}
-    >
-    > Check your `/etc/apt/sources.list.d` for additional package repositories, and ensure that they are querying for packages from `jessie`.  You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+Check your `/etc/apt/sources.list.d` for additional package repositories, and ensure that they are querying for packages from `jessie`.  You will need to check with the maintainers of each package to ensure that their own repositories have been updated.
+{{< /note >}}
 
 2.  Update your package lists:
 
@@ -96,9 +97,9 @@ You are now ready to install Debian 8 on your Linode.
 
         sudo apt-get dist-upgrade
 
-     {: .note }
-    >
-    > Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+     {{< note >}}
+Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
+{{< /note >}}
 
     During the upgrade process, configuration files that you've modified and require updates will be presented for manual review. Here's an example:
 

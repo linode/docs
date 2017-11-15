@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Longview App for Apache
-keywords: 'Longview, Apache, statistics, mod\_status'
+keywords: ["Longview", " Apache", " statistics", " mod\\_status"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['longview/longview-for-apache/']
-modified: Monday, January 6th, 2014
+aliases: ['longview/longview-for-apache/']
+modified: 2014-01-06
 modified_by:
   name: Linode
-published: 'Monday, November 4th, 2013'
+published: 2013-11-04
 title: Longview App for Apache
 external_resources:
  - '[cPanel Products News](https://news.cpanel.com/category/products/)'
@@ -58,26 +58,26 @@ To enable the Apache Longview app manually, follow these steps on your Linode vi
 
 2.  Your `httpd.conf` file (or the file where you enabled mod\_status; `status.conf` is another common location) should look like the following:
 
-    {: .file-excerpt }
-    httpd.conf
-    :   ~~~
-        <IfModule mod_status.c>
-            ExtendedStatus On
-            <Location /server-status>
-                SetHandler server-status
-                Order deny,allow
-                Deny from all
-                Allow from 127.0.0.1
-            </Location>
-        </IfModule>
-        ~~~
+    {{< file-excerpt "httpd.conf" >}}
+<IfModule mod_status.c>
+    ExtendedStatus On
+    <Location /server-status>
+        SetHandler server-status
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.1
+    </Location>
+</IfModule>
+
+{{< /file-excerpt >}}
+
 3.  Edit `/etc/linode/longview.d/Apache.conf` to look like the following:
 
-    {: .file }
-    /etc/linode/longview.d/Apache.conf
-    :   ~~~
-        location http://127.0.0.1/server-status?auto
-        ~~~
+    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+location http://127.0.0.1/server-status?auto
+
+{{< /file >}}
+
 4.  Restart Apache:
 
     Debian and Ubuntu:
@@ -110,7 +110,7 @@ Click the image for a full-size view.
 
 You'll see the current version of Apache listed on the upper right.
 
-Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](longview#using-the-interface). The next sections cover the Longview Apache App in detail.
+Mouse over a data point to see the exact numbers for that time. You can also zoom in on data points, or view older time periods with Longview Pro. For details, jump to this section in the main article about [navigating the Longview interface](/docs/platform/longview/longview#using-the-interface). The next sections cover the Longview Apache App in detail.
 
 ### Requests
 
@@ -137,19 +137,19 @@ The **Workers** graph shows all of the Apache workers at the selected time. The 
 
 ### CPU
 
-The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **CPU** graph shows the percentage of your Linode's CPU being used by Apache at the selected time. If you want to see the total CPU use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Memory
 
-The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/longview#sph_overview-tab).
+The **Memory** graph shows the amount of RAM being used by Apache at the selected time. If you want to see your Linode's total memory use instead, check the [Overview tab](/docs/platform/longview/longview#overview-tab).
 
 ### Disk IO
 
-The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/longview#sph_disks-tab).
+The **Disk IO** graph shows the amount of input to and output from the disk caused by Apache at the selected time. To see the total IO instead, visit the [Disks tab](/docs/platform/longview/longview#disks-tab).
 
 ### Process Count
 
-The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/longview#sph_process-explorer-tab).
+The **Process Count** graph shows the total number of processes on your Linode spawned by Apache at the selected time. If you want to see more details, and how this stacks up against the total number of processes on your Linode, see the [Process Explorer tab](/docs/platform/longview/longview#process-explorer-tab).
 
 ## Troubleshooting
 
@@ -204,9 +204,9 @@ More specifically, the error will state `Unable to access local server status fo
 
 2.  An Apache virtual host configuration is interfering with web requests to the `mod_status` location.
 
- {: .note }
->
-> This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.
+ {{< note >}}
+This error occurs when Longview attempts to check the status page `location` listed in `/etc/linode/longview.d/Apache.conf`, or the default page at `127.0.0.1/server-status?auto`, but receives a non-200 HTTP response code. Basically, it means that the status page Longview is expecting is not being returned by the server.
+{{< /note >}}
 
 To fix this, follow these steps:
 
@@ -226,32 +226,32 @@ To fix this, follow these steps:
 
 3.  Check the location for `mod_status`. The default location on Debian and Ubuntu systems is `http://127.0.0.1/server-status?auto` on localhost. In the Apache configuration file (typically `httpd.conf` or `status.conf`), this is designated with the lines:
 
-    {: .file-excerpt }
-    httpd.conf
-    :   ~~~
-        <Location /server-status>
-            SetHandler server-status
-        ~~~
+    {{< file-excerpt "httpd.conf" >}}
+<Location /server-status>
+    SetHandler server-status
+
+{{< /file-excerpt >}}
+
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
 
-    #####On cPanel/WHM
+    ##### On cPanel/WHM
 
-    To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following: 
+    To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following:
 
-    {: .file}
-    /etc/linode/longview.d/Apache.conf
-    :   ~~~
-        location http://localhost/whm-server-status?auto
-        ~~~
+    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+location http://localhost/whm-server-status?auto
+
+{{< /file >}}
+
 
 4.  Longview is designed to check the default location automatically. If you use the default location shown above, you should be done. Refresh the Longview Apache tab in the Linode Manager to verify that it's working now.
 5.  If you're not using the default location, you need to create a new file, `/etc/linode/longview.d/Apache.conf`, and set the `location` variable to match what you set in the Apache configuration file:
 
-    {: .file }
-    /etc/linode/longview.d/Apache.conf
-    :   ~~~
-        location http://127.0.0.1/custom/location/path
-        ~~~
+    {{< file "/etc/linode/longview.d/Apache.conf" >}}
+location http://127.0.0.1/custom/location/path
+
+{{< /file >}}
+
 6.  Determine if an Apache virtual host configuration is interfering with requests to the mod_status location. Use a tool like `curl` or `wget` to request the server status location:
 
         curl http://127.0.0.1/server-status?auto
@@ -269,9 +269,9 @@ To fix this, follow these steps:
 
 More specifically, the error will state `The Apache status page doesn't look right. Check <http://example.com/example?auto> and investigate any redirects for misconfiguration.` This error occurs when Longview is able to reach the `mod_status` page, but doesn't receive the expected content.
 
- {: .note }
->
-> This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can't scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn't have the right content. If, for example, Longview was to check your website's home page, you would get this error.
+ {{< note >}}
+This error occurs when Longview attempts to check the status page, and receives a 200 HTTP response code, but can't scrape the expected status content from the page. That is, the page exists on your Linode, but it doesn't have the right content. If, for example, Longview was to check your website's home page, you would get this error.
+{{< /note >}}
 
 To resolve this issue, follow these steps:
 
@@ -296,12 +296,12 @@ If some of your Apache graphs are missing, you may see the error `Enable Extende
 
 This indicates that you need to add the following line to your Apache configuration file (typically `httpd.conf` or `status.conf`) in the `<IfModule mod_status.c>` section:
 
-{: .file-excerpt }
-httpd.conf
-:   ~~~
-    ExtendedStatus On
-    ~~~
-    
+{{< file-excerpt "httpd.conf" >}}
+ExtendedStatus On
+
+{{< /file-excerpt >}}
+
+
 When you've finished modifying the configuration file, restart Apache:
 
 Debian and Ubuntu:

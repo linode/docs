@@ -4,19 +4,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use the PostgreSQL relational database server with Debian 6 (Squeeze).'
-keywords: 'postgresql debian 6,postgresql squeeze,postgresql database,relational database'
+keywords: ["postgresql debian 6", "postgresql squeeze", "postgresql database", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, March 8th, 2013
+modified: 2013-03-08
 modified_by:
   name: Linode
-published: 'Friday, February 18th, 2011'
+published: 2011-02-18
 title: 'Use PostgreSQL Relational Databases on Debian 6 (Squeeze)'
 ---
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Debian 6 (Squeeze). It is assumed that you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-Installing PostgreSQL
----------------------
+# Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -27,8 +26,7 @@ Issue the following command to install PostgreSQL, required dependencies, and so
 
     apt-get install postgresql postgresql-contrib
 
-Configure PostgreSQL
---------------------
+# Configure PostgreSQL
 
 ### Install the adminpack
 
@@ -63,16 +61,16 @@ Issue the following commands to set a password for the `postgres` administrative
 
 Switch to the "postgres" user and create a database by issuing the following commands:
 
-    su - postgres 
-    createdb mytestdb 
+    su - postgres
+    createdb mytestdb
 
 Connect to the test database by issuing the following command:
 
-    psql mytestdb 
+    psql mytestdb
 
 You should see output similar to the following:
 
-    postgres@archimedes:~$ psql mytestdb 
+    postgres@archimedes:~$ psql mytestdb
     psql (8.4.5)
     Type "help" for help.
 
@@ -88,53 +86,53 @@ You may find more information on a specific command by adding it after the `\h` 
 
 To create a table in your test database called "employees", issue the following command:
 
-    CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar); 
+    CREATE TABLE employees (employee_id int, first_name varchar, last_name varchar);
 
 To insert a record into the table, you would issue a statement like this:
 
-    INSERT INTO employees VALUES (1, 'Jack', 'Sprat'); 
+    INSERT INTO employees VALUES (1, 'Jack', 'Sprat');
 
 To see the contents of the "employees" table, you would issue a SELECT statement similar to the following:
 
-    SELECT * FROM employees; 
+    SELECT * FROM employees;
 
 This would produce output similar to the following:
 
-    mytestdb=# SELECT * FROM employees; 
-     employee_id | first_name | last_name 
+    mytestdb=# SELECT * FROM employees;
+     employee_id | first_name | last_name
     -------------+------------+-----------
                1 | Jack       | Sprat
     (1 row)
 
 To exit the `psql` shell, issue this command:
 
-    \q 
+    \q
 
 ### Create PostgreSQL Users (Roles)
 
 PostgreSQL refers to users as "roles", which may have different privileges on your databases. If a user is classified as a "superuser," it will have total administrative access to the database system. To add a new user to PostgreSQL, issue the following command as the `postgres` user:
 
-    createuser alison --pwprompt 
+    createuser alison --pwprompt
 
 You will be asked to specify several values for the new user. To delete this user, issue the following command:
 
-    dropuser alison 
+    dropuser alison
 
 By default, PostgreSQL uses `ident` authentication. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a program (local scripts, CGI/FastCGI processes owned by separate users, etc). However, you may wish to change this behavior to require passwords. To do so, edit the file `/etc/postgresql/8.4/main/pg_hba.conf` as root or the postgres user. Find the following line:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all ident
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all ident
+
+{{< /file-excerpt >}}
+
 
 Change it to the following to use password authentication:
 
-{: .file-excerpt }
-/etc/postgresql/8.4/main/pg\_hba.conf
-:   ~~~
-    local all all md5
-    ~~~
+{{< file-excerpt "/etc/postgresql/8.4/main/pg\\_hba.conf" >}}
+local all all md5
+
+{{< /file-excerpt >}}
+
 
 Issue the following command as root to restart the database daemon and ensure that your changes have propagated:
 
@@ -142,18 +140,17 @@ Issue the following command as root to restart the database daemon and ensure th
 
 To grant all privileges on the table "employees" to a user named "alison", issue the following commands as the `postgres` user:
 
-    psql mytestdb 
-    GRANT ALL ON employees TO alison; 
+    psql mytestdb
+    GRANT ALL ON employees TO alison;
     \q
 
 To use the database "mytestdb" as "alison", issue the following command:
 
-    psql -U alison -W mytestdb 
+    psql -U alison -W mytestdb
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Creating a LAMP stack with Apache, MySQL, and PHP on a Gentoo Linux powered Linode.'
-keywords: 'LAMP,Gentoo Linux,Gentoo'
+keywords: ["LAMP", "Gentoo Linux", "Gentoo"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/gentoo/','websites/lamp/set-up-a-lamp-server-on-gentoo/']
-modified: Thursday, October 24th, 2013
+aliases: ['lamp-guides/gentoo/','websites/lamp/set-up-a-lamp-server-on-gentoo/']
+modified: 2013-10-24
 modified_by:
   name: Linode
-published: 'Friday, December 2nd, 2011'
+published: 2011-12-02
 title: Set Up a LAMP Server on Gentoo
 external_resources:
   - '[Gentoo Documentation](http://www.gentoo.org/doc/en/index.xml)'
@@ -27,7 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname and Configure /etc/hosts
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname) and [configuring /etc/hosts](/docs/getting-started#sph_update-etc-hosts). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     echo "HOSTNAME=\"titan\"" > /etc/conf.d/hostname
     /etc/init.d/hostname restart
@@ -36,17 +36,15 @@ The first command should show your short hostname, and the second should show yo
 
 Next, edit your `/etc/hosts` file to resemble the following example, replacing "titan" with your chosen hostname, "example.com" with your system's domain name, and "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 titan.example.com titan
+{{< file "/etc/hosts" apache >}}
+127.0.0.1 localhost.localdomain localhost 12.34.56.78 titan.example.com titan
+{{< /file >}}
 
 If you have IPv6 enabled on your Linode, you will also want to add an entry for your IPv6 address, as shown in this example:
 
-{: .file }
-/etc/hosts
-
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 titan.example.com titan 2600:3c01::a123:b456:c789:d012 titan.example.com titan
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost 12.34.56.78 titan.example.com titan 2600:3c01::a123:b456:c789:d012 titan.example.com titan
+{{< /file >}}
 
 The value you assign as your system's FQDN should have an "A" record in DNS pointing to your Linode's IPv4 address. For Linodes with IPv6 enabled, you should also set up a "AAAA" record in DNS pointing to your Linode's IPv6 address. For more information on configuring DNS, please see our guide on [configuring DNS with the Linode Manager](/docs/dns-guides/configuring-dns-with-the-linode-manager).
 
@@ -79,11 +77,9 @@ By default, Apache listens on all available IP addresses. While this may be idea
 
 Begin by replacing the existing `NameVirtualHost` line in the `/etc/apache2/vhosts.d/00_default_vhost.conf` so that it reads:
 
-{: .file }
-/etc/apache2/vhosts.d/00\_default\_vhost.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:80
-    ~~~
+{{< file-excerpt "/etc/apache2/vhosts.d/00\_default\_vhost.conf" >}}
+NameVirtualHost 12.34.56.78:80
+{{< /file-excerpt >}}
 
 Be sure to replace "12.34.56.78" with your Linode's public IP address.
 
@@ -91,18 +87,18 @@ There are numerous ways to configure virtual hosts, but we recommend that you do
 
 Now we will create virtual host entries for each site that we need to host with this server. We'll want to replace the existing `VirtualHost` blocks with ones that resemble the following.
 
-{: .file }
-/etc/apache2/vhosts.d/example.conf
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin username@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/vhosts.d/example.conf" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin username@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 `ErrorLog` and `CustomLog` entries are suggested for more fine-grained logging, but are not required. If they are defined (as shown above), the `logs` directories must be created before you restart Apache.
 
@@ -180,9 +176,9 @@ Gentoo includes portage scripts for installing PHP from the terminal. Issue the 
 
 Before we can use PHP with Apache, we'll need to add the `-D PHP5` option in the `APACHE2_OPTS` setting in the `/etc/conf.d/apache2` file, if it isn't already set. This line should now resemble:
 
-**File excerpt:** */etc/conf.d/apache2* :
-
-    APACHE2_OPTS="-D DEFAULT_VHOST -D INFO -D LANGUAGE -D SSL -D SSL_DEFAULT_VHOST -D PHP5"
+{{< file-excerpt "/etc/conf.d/apache2" >}}
+APACHE2_OPTS="-D DEFAULT_VHOST -D INFO -D LANGUAGE -D SSL -D SSL_DEFAULT_VHOST -D PHP5"
+{{< /file-excerpt >}}
 
 Now, restart Apache with the following command:
 
@@ -192,14 +188,14 @@ Once PHP is installed and enabled, we'll need to tune the configuration file loc
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;` character)):
 
-**File excerpt:** */etc/php/apache2-php5.5/php.ini* :
-
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php.log
-    max_execution_time = 300
-    memory_limit = 64M
-    register_globals = Off
+{{< file-excerpt "/etc/php/apache2-php5.5/php.ini" >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php.log
+max_execution_time = 300
+memory_limit = 64M
+register_globals = Off
+{{< /file-excerpt >}}
 
 If you decide to use PHP via the CGI interface later, you'll need to edit the `/etc/php/cgi-php5/php.ini` file.

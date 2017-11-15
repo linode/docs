@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Instructions for compiling and configuring a custom kernel on your CentOS 7 Linode'
-keywords: 'compile kernel,kernel compiling,custom linux kernel,custom linode, centos'
+keywords: ["compile kernel", "kernel compiling", "custom linux kernel", "custom linode", " centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Tuesday, August 1st, 2017'
+modified: 2017-08-01
 modified_by:
   name: Linode
-published: 'Tuesday, August 2nd, 2016'
+published: 2016-08-02
 title: 'Custom Compiled Kernel on CentOS 7'
 ---
 
@@ -41,7 +41,7 @@ Prior to these instructions, follow the steps outlined in our [Getting Started g
 
 2.  Expand the archived file and change directories:
 
-        tar -xvf linux-4.7.tar.xz 
+        tar -xvf linux-4.7.tar.xz
         cd linux-4.7
 
 ### Configure the Kernel
@@ -76,14 +76,15 @@ Once your configuration options are set, exit the configuration interface and an
 
         make bzImage
         make modules
-        make 
+        make
         make install
         make modules_install
 
-    {: .note}
-    > If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
-    >    
-    >     make -j2 bzImage
+    {{< note >}}
+If you're using a Linode with multiple cores, you can use the `j` option to spawn multiple simultaneous jobs to increase speed. For example:
+
+make -j2 bzImage
+{{< /note >}}
 
 2.  Give the kernel a more descriptive name. Modify `vmlinuz-4.7-custom` in the command below to reflect the kernel version you've just compiled:
 
@@ -95,15 +96,15 @@ Once your configuration options are set, exit the configuration interface and an
 
 4.  Edit `/etc/default/grub` and add or change the following variables to match. There will be other variables in this file, but we are only concerned with those listed below:
 
-    {: .file-excerpt}
-    /etc/default/grub
-    :   ~~~ conf
-        GRUB_TIMEOUT=10
-        GRUB_DISABLE_LINUX_UUID=true
-        GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8"
-        GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-        GRUB_TERMINAL="serial console"
-        ~~~
+    {{< file-excerpt "/etc/default/grub" >}}
+GRUB_TIMEOUT=10
+GRUB_DISABLE_LINUX_UUID=true
+GRUB_CMDLINE_LINUX="console=tty1 console=ttyS0,19200n8"
+GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+GRUB_TERMINAL="serial console"
+
+{{< /file-excerpt >}}
+
 
     Comment or remove any lines starting with `GRUB_HIDDEN`.
 
@@ -128,6 +129,7 @@ Note that if you install an updated kernel, you need to create a new `initrd` fi
 Congratulations, you've booted your Linode using a custom-compiled kernel!
 
 
-{: .note}
-> You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+{{< note >}}
+You may need to run `cp /boot/grub/unicode.pf2 /boot/grub/fonts/` for the boot menu to properly display in GLISH. Your Linode will still boot, assuming there are no configuration issues, without this command.
+{{< /note >}}
 

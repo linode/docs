@@ -3,13 +3,13 @@ author:
   name: Brett Kaplan
   email: docs@linode.com
 description: 'Use the Mono project''s Apache module to run ASP.NET applications.'
-keywords: 'apache,mono,.net,asp.net,mod\_mono'
+keywords: ["apache", "mono", ".net", "asp.net", "mod\\_mono"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/mod-mono/debian-5-lenny/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/']
-modified: Friday, September 27th, 2013
+aliases: ['frameworks/mod-mono/debian-5-lenny/','websites/frameworks/build-aspnetmono-applications-with-modmono-and-apache-on-debian-5-lenny/']
+modified: 2013-09-27
 modified_by:
   name: Linode
-published: 'Thursday, August 5th, 2010'
+published: 2010-08-05
 title: 'Build ASP.NET/Mono Applications with mod_mono and Apache on Debian 5 (Lenny)'
 deprecated: true
 ---
@@ -18,18 +18,16 @@ deprecated: true
 
 This guide assumes that you've followed the steps outlined in our [getting started guide](/docs/getting-started/). You will install the [Apache web server](/docs/web-servers/apache/installation/debian-5-lenny) with very minimal configuration. If you already have Apache installed and configured, you may omit these steps; however, if you have not installed Apache and are unfamiliar with this server read the installation guide for additional documentation. Additionally, `mod_mono` is incompatible with the integrated PHP interpreter described in other guides. If you need to have both mod\_mono and PHP running on the same Apache server you will need to run [PHP scripts using the CGI method](/docs/web-servers/apache/php-cgi/debian-5-lenny)
 
-Set the Hostname
-----------------
+# Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_set-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Required Software
--------------------------
+# Install Required Software
 
 Before beginning the installation process, issue the following command to update your package lists:
 
@@ -56,44 +54,44 @@ At this point we're able to install the required packages for `mod_mono`. Run th
 
 When the installation process completes start Apache with the following command:
 
-    /etc/init.d/apache2 start 
+    /etc/init.d/apache2 start
 
 ### Configure Apache
 
-We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](/docs/web-servers/apache/installation/debian-5-lenny#configure_apache_for_named_based_virtual_hosting).
+We recommend using name-based virtual hosts for web hosting. Refer to the Apache documentation for [setting up Name-based virtual hosts](/docs/web-servers/apache/apache-2-web-server-on-debian-5-lenny#configure-name-based-virtual-hosts).
 
 Recent versions of `mod_mono` utilize the `AutoHosting` method of application deployment. This allows non-privileged users to deploy new applications without modifying Apache configuration files. While this provides great flexibility, it may also present a security risk. As a result, `mod_mono` must be enabled on a per-virtual host basis.
 
 For the sake of this guide, we're going to create a site on the root of our example domain, `example.com`. If you already have an Apache configuration for the root of your site, you will need to modify your existing virtual host file or create a new one on a subdomain of your site. Create the virtual host file, taking the following example virtual host configuration and modifying it to suit your needs. You may also use the [Mod\_Mono Configuration Generator](http://go-mono.com/config-mod-mono/) to generate your own custom configuration.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-      ServerName example.com
-      ServerAdmin admin@example.com
-      ServerAlias www.example.com
-      DocumentRoot /srv/www/example.com/public_html
-      ErrorLog /srv/www/example.com/logs/error.log
-      CustomLog /srv/www/example.com/logs/access.log combined
+{{< file-excerpt "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost *:80>
+  ServerName example.com
+  ServerAdmin admin@example.com
+  ServerAlias www.example.com
+  DocumentRoot /srv/www/example.com/public_html
+  ErrorLog /srv/www/example.com/logs/error.log
+  CustomLog /srv/www/example.com/logs/access.log combined
 
-      MonoServerPath example.com "/usr/bin/mod-mono-server2"
-      MonoDebug example.com true
-      MonoSetEnv example.com MONO_IOMAP=all
-      MonoApplications example.com "/:/srv/www/example.com/public_html"
-      <Location "/">
-        Allow from all
-        Order allow,deny
-        MonoSetServerAlias example.com
-        SetHandler mono
-        SetOutputFilter DEFLATE
-        SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
-      </Location>
-      <IfModule mod_deflate.c>
-        AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
-      </IfModule>
-    </VirtualHost>
-    ~~~
+  MonoServerPath example.com "/usr/bin/mod-mono-server2"
+  MonoDebug example.com true
+  MonoSetEnv example.com MONO_IOMAP=all
+  MonoApplications example.com "/:/srv/www/example.com/public_html"
+  <Location "/">
+    Allow from all
+    Order allow,deny
+    MonoSetServerAlias example.com
+    SetHandler mono
+    SetOutputFilter DEFLATE
+    SetEnvIfNoCase Request_URI "\.(?:gif|jpe?g|png)$" no-gzip dont-vary
+  </Location>
+  <IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/xml text/javascript
+  </IfModule>
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Save and close the file, and create the directories referenced in the `DocumentRoot` and `ErrorLog` directive:
 
@@ -110,14 +108,13 @@ Since we have modified the virtual host configuration, Apache must be reloaded:
 
 Note: Should you restart Apache in the future, you will see an error that will look similar to this:
 
-    [crit] (13)Permission denied: Failed to attach to existing dashboard, 
-    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed 
+    [crit] (13)Permission denied: Failed to attach to existing dashboard,
+    and removing dashboard file '/tmp/mod_mono_dashboard_XXGLOBAL_1' failed
     (Operation not permitted). Further action impossible.
 
 You can safely ignore this warning, as it won't affect deployment using the methods explained in this guide.
 
-Installing MySQL Connector/Net for ASP.NET
-------------------------------------------
+# Installing MySQL Connector/Net for ASP.NET
 
 This section assumes that you already have a functioning MySQL installation. Please refer to our [MySQL Installation Guide](/docs/databases/mysql/debian-5-lenny) for more detailed instructions for installing MySQL, otherwise issue the following command:
 
@@ -130,10 +127,9 @@ In order for your ASP.NET application to communicate properly with your MySQL se
     unzip -d mysqlConnector mysql-connector-net-6.2.3-noinstall.zip
     cd mysqlConnector
     gacutil -i mysql.data.dll
-    gacutil -i mysql.web.dll 
+    gacutil -i mysql.web.dll
 
-Creating a Database to Test the MySQL Connector
------------------------------------------------
+# Creating a Database to Test the MySQL Connector
 
 Now that the MySQL Connector has been installed, you should test it by creating a sample database and a test table. First you must log in to your MySQL DBMS:
 
@@ -156,73 +152,71 @@ Finally you must create a test user named "testuser" and give that user access t
     GRANT ALL PRIVILEGES ON sample.* TO 'testuser'@'localhost';
     FLUSH PRIVILEGES;
 
-Creating a Simple ASP.NET Application
--------------------------------------
+# Creating a Simple ASP.NET Application
 
 Now that you have created a sample database, you can test your installation with the following test page. This will not only test your Mono installation but it will also will test your MySQL connector configuration. First create a file called `testdb.aspx` in your `DocumentRoot` and paste the text below into it. Be sure to change the `User ID` and `Password` to match what you specified above.
 
-{: .file-excerpt }
-/srv/www/example.com/public_html/testdb.aspx
-:   ~~~ aspx
-    <%@ Page Language="C#" %>
-    <%@ Import Namespace="System.Data" %>
-    <%@ Import Namespace="MySql.Data.MySqlClient" %>
-    <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-    <head>
-    <title>ASP and MySQL Test Page</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+{{< file-excerpt "/srv/www/example.com/public_html/testdb.aspx" aspx-cs >}}
+<%@ Page Language="C#" %>
+<%@ Import Namespace="System.Data" %>
+<%@ Import Namespace="MySql.Data.MySqlClient" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>ASP and MySQL Test Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <script runat="server">
-    private void Page_Load(Object sender, EventArgs e)
-    {
-    string connectionString = "Server=127.0.0.1;Database=sample;User ID=testuser;Password=somepassword;Pooling=false;";
-    MySqlConnection dbcon = new MySqlConnection(connectionString);
-    dbcon.Open();
+<script runat="server">
+private void Page_Load(Object sender, EventArgs e)
+{
+string connectionString = "Server=127.0.0.1;Database=sample;User ID=testuser;Password=somepassword;Pooling=false;";
+MySqlConnection dbcon = new MySqlConnection(connectionString);
+dbcon.Open();
 
-    MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM test", dbcon);
-    DataSet ds = new DataSet();
-    adapter.Fill(ds, "result");
+MySqlDataAdapter adapter = new MySqlDataAdapter("SELECT * FROM test", dbcon);
+DataSet ds = new DataSet();
+adapter.Fill(ds, "result");
 
-    dbcon.Close();
-    dbcon = null;
+dbcon.Close();
+dbcon = null;
 
-    SampleControl.DataSource = ds.Tables["result"];
-    SampleControl.DataBind();
-    }
-    </script>
+SampleControl.DataSource = ds.Tables["result"];
+SampleControl.DataBind();
+}
+</script>
 
-    </head>
+</head>
 
-    <body>
-    <h1>Testing Sample Database</h1>
-    <asp:DataGrid runat="server" id="SampleControl" />
-    </body>
+<body>
+<h1>Testing Sample Database</h1>
+<asp:DataGrid runat="server" id="SampleControl" />
+</body>
 
-    </html>
-    ~~~
+</html>
+
+{{< /file-excerpt >}}
+
 
 Next you will need to create a `web.config` file. You can copy and paste the example below. Please note that `Custom Errors` have been turned off in this web.config for debugging purposes. The `customErrors mode` line should be removed in a production environment.
 
-{: .file-excerpt }
-/srv/www/example.com/public_html/web.config
-:   ~~~
-    <configuration>
-      <system.web>
-        <customErrors mode="Off"/>
-        <compilation>
-          <assemblies>
-            <add assembly="MySql.Data"/>
-          </assemblies>
-        </compilation>
-      </system.web>
-    </configuration>
-    ~~~
+{{< file-excerpt "/srv/www/example.com/public_html/web.config" >}}
+<configuration>
+  <system.web>
+    <customErrors mode="Off"/>
+    <compilation>
+      <assemblies>
+        <add assembly="MySql.Data"/>
+      </assemblies>
+    </compilation>
+  </system.web>
+</configuration>
+
+{{< /file-excerpt >}}
+
 
 Visit the `testdb.aspx` file in a web browser. If you see the text "Testing Sample Databases" in your browser with the information that you inserted into the database above, you now have a functioning `mod_mono` installation and can continue with the development and deployment of your own application!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

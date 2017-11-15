@@ -4,13 +4,13 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Ubuntu 12.04 LTS (Precise Pangolin)'
-keywords: 'nginx,nginx ubuntu 12.04,http,web servers,ubuntu,ubuntu l2.04,ubuntu precise pangolin'
+keywords: ["nginx", "nginx ubuntu 12.04", "http", "web servers", "ubuntu", "ubuntu l2.04", "ubuntu precise pangolin"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/','websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/']
-modified: Wednesday, September 16th, 2015
+aliases: ['web-servers/nginx/installation/ubuntu-12-04-precise-pangolin','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/','websites/nginx/websites-with-nginx-on-ubuntu-12-04-lts-precise-pangolin/index.cfm/','websites/nginx/install-nginx-ubuntu-12-04/','websites/nginx/installing-nginx-on-ubuntu-12-04-lts-precise-pangolin/']
+modified: 2015-09-16
 modified_by:
   name: Elle Krout
-published: 'Wednesday, October 24th, 2012'
+published: 2012-10-24
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
 external_links:
  - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
@@ -21,9 +21,9 @@ external_links:
 
 Nginx is a lightweight, high performance web server designed to deliver large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache server](/docs/web-servers/apache/), Nginx uses an asynchronous event-driven model which provides more predictable performance under load.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -67,16 +67,16 @@ The binary packages from Nginx's repo will update you to new versions of the web
 
 1.  Add the Nginx repository to Ubuntu's `sources.list` file:
 
-    {: .file-excerpt}
-    /etc/apt/sources.list
-    :   ~~~
-        deb http://nginx.org/packages/ubuntu/ trusty nginx
-        deb-src http://nginx.org/packages/ubuntu/ trusty nginx
-        ~~~
+    {{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://nginx.org/packages/ubuntu/ trusty nginx
+deb-src http://nginx.org/packages/ubuntu/ trusty nginx
 
-    {: .note}
-    >
-    >The `deb-src` line is only needed if you want repository access to Nginx's source code.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+The `deb-src` line is only needed if you want repository access to Nginx's source code.
+{{< /note >}}
 
 2.  Download and add Nginx's repository key to your GPG keyring:
 
@@ -172,72 +172,72 @@ Compiling from source gives you the most flexibility and choice for optimization
 
 8.  Installing from source doesn't include an init file to control when Nginx starts and stops during boot and shutdown. You can either extract that file from the *[nginx-common](http://packages.ubuntu.com/trusty/nginx-common)* package at packages.ubuntu.com, or create an SysV script to manage NGINX as shown below:
 
-    {: .file}
-    /etc/init.d/nginx
-    :   ~~~
-        #! /bin/sh
+    {{< file "/etc/init.d/nginx" >}}
+#! /bin/sh
 
-        ### BEGIN INIT INFO
-        # Provides:          nginx
-        # Required-Start:    $all
-        # Required-Stop:     $all
-        # Default-Start:     2 3 4 5
-        # Default-Stop:      0 1 6
-        # Short-Description: starts the nginx web server
-        # Description:       starts nginx using start-stop-daemon
-        ### END INIT INFO
+### BEGIN INIT INFO
+# Provides:          nginx
+# Required-Start:    $all
+# Required-Stop:     $all
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: starts the nginx web server
+# Description:       starts nginx using start-stop-daemon
+### END INIT INFO
 
-        PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
-        DAEMON=/opt/nginx/sbin/nginx
-        NAME=nginx
-        DESC=nginx
+PATH=/opt/nginx/sbin:/sbin:/bin:/usr/sbin:/usr/bin
+DAEMON=/opt/nginx/sbin/nginx
+NAME=nginx
+DESC=nginx
 
-        test -x $DAEMON || exit 0
+test -x $DAEMON || exit 0
 
-        # Include nginx defaults if available
-        if [ -f /etc/default/nginx ] ; then
-                . /etc/default/nginx
-        fi
+# Include nginx defaults if available
+if [ -f /etc/default/nginx ] ; then
+        . /etc/default/nginx
+fi
 
-        set -e
+set -e
 
-        case "$1" in
-          start)
-                echo -n "Starting $DESC: "
-                start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
-                        --exec $DAEMON -- $DAEMON_OPTS
-                echo "$NAME."
-                ;;
-          stop)
-                echo -n "Stopping $DESC: "
-                start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
-                        --exec $DAEMON
-                echo "$NAME."
-                ;;
-          restart|force-reload)
-                echo -n "Restarting $DESC: "
-                start-stop-daemon --stop --quiet --pidfile \
-                        /opt/nginx/logs/$NAME.pid --exec $DAEMON
-                sleep 1
-                start-stop-daemon --start --quiet --pidfile \
-                        /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
-                echo "$NAME."
-                ;;
-          reload)
-                  echo -n "Reloading $DESC configuration: "
-                  start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
-                      --exec $DAEMON
-                  echo "$NAME."
-                  ;;
-              *)
-                    N=/etc/init.d/$NAME
-                    echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
-                    exit 1
-                    ;;
-            esac
+case "$1" in
+  start)
+        echo -n "Starting $DESC: "
+        start-stop-daemon --start --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  stop)
+        echo -n "Stopping $DESC: "
+        start-stop-daemon --stop --quiet --pidfile /opt/nginx/logs/$NAME.pid \
+                --exec $DAEMON
+        echo "$NAME."
+        ;;
+  restart|force-reload)
+        echo -n "Restarting $DESC: "
+        start-stop-daemon --stop --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON
+        sleep 1
+        start-stop-daemon --start --quiet --pidfile \
+                /opt/nginx/logs/$NAME.pid --exec $DAEMON -- $DAEMON_OPTS
+        echo "$NAME."
+        ;;
+  reload)
+          echo -n "Reloading $DESC configuration: "
+          start-stop-daemon --stop --signal HUP --quiet --pidfile     /opt/nginx/logs/$NAME.pid \
+              --exec $DAEMON
+          echo "$NAME."
+          ;;
+      *)
+            N=/etc/init.d/$NAME
+            echo "Usage: $N {start|stop|restart|reload|force-reload}" >&2
+            exit 1
+            ;;
+    esac
 
-            exit 0
-        ~~~
+    exit 0
+
+{{< /file >}}
+
 
 9.  Make the file executable and add it to the default run levels:
 

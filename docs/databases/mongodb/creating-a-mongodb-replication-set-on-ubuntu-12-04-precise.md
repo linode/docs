@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Configure a MongoDB ReplSet
-keywords: 'mongodb,nosql,clusters,replset,databases'
+keywords: ["mongodb", "nosql", "clusters", "replset", "databases"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mongodb/ubuntu-12/']
-modified: Wednesday, August 13, 2014
+aliases: ['databases/mongodb/ubuntu-12/']
+modified: 2014-08-13
 modified_by:
   name: Linode
-published: 'Wednesday, April 9th, 2014'
+published: 2014-04-09
 title: 'Creating a MongoDB Replication Set on Ubuntu 12.04 (Precise)'
 external_resources:
  - '[MongoDB](http://www.mongodb.org/)'
@@ -35,11 +35,11 @@ The MongoDB repository provides the latest stable release (currently mongodb-10g
 
     Replace the name in brackets <> with your own hostname. This example uses the Nano text editor. However, you may use the text editor you prefer.
 
-    {: .file-excerpt }
-    /etc/hostname
-    :   ~~~ bash
-        hana
-        ~~~
+    {{< file-excerpt "/etc/hostname" bash >}}
+hana
+
+{{< /file-excerpt >}}
+
 
     Ubuntu's package management tool requires distributors to sign packages with GPG keys, this ensures consistency and authenticity. Therefore, you will need to copy the MongoDB public GPG key.
 
@@ -71,40 +71,40 @@ Before you begin, you will need to obtain all the private IP addresses for each 
 
 Once you have all your private IPs, add them to the `hosts` file. Use your favorite text editor and add the addresses.
 
-{: .file-excerpt }
-/etc/hosts
-:   ~~~
-    192.168.160.1 mongo1
-    192.168.170.1 mongo2
-    192.168.180.1 mongo3
-    ~~~
+{{< file-excerpt "/etc/hosts" >}}
+192.168.160.1 mongo1
+192.168.170.1 mongo2
+192.168.180.1 mongo3
+
+{{< /file-excerpt >}}
+
 
 Use your own IP addresses in place of the addresses in the above example. The names of the members in the replication set are also variables, so you may name them what you choose. However, it would be prudent to have some numerical or alphabetic notation as this will make it easier to identify when connecting to the different replication set members.
 
-{: .note }
->
-> Replication set member names and the actual server name are different. In this instance, the server name is **hana**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
+{{< note >}}
+Replication set member names and the actual server name are different. In this instance, the server name is **hana**, and the replication set members are **mongo1**, **mongo2**, and **mongo3** respectively.
+{{< /note >}}
 
 ### Set the Network Interfaces
 
 1.  Edit your `interfaces` file to reflect both the public and private IP address information. Do not omit the `auto eth0 eth0:1` declaration.
 
-    {: .file-excerpt }
-    /etc/network/interfaces
-    :   ~~~
-        auto eth0 eth0:1
+    {{< file-excerpt "/etc/network/interfaces" >}}
+auto eth0 eth0:1
 
-        # eth0 - Public IP
-        iface eth0 inet static
-        address xx.xxx.xx.xx
-        netmask 255.xxx.xxx.x
-        gateway xxx.xx.xx.x
+# eth0 - Public IP
+iface eth0 inet static
+address xx.xxx.xx.xx
+netmask 255.xxx.xxx.x
+gateway xxx.xx.xx.x
 
-        # eth0:1 - Private IP
-        iface eth0:1 inet static
-        address 192.168.160.1
-        netmask 255.xxx.xxx.xxx
-        ~~~
+# eth0:1 - Private IP
+iface eth0:1 inet static
+address 192.168.160.1
+netmask 255.xxx.xxx.xxx
+
+{{< /file-excerpt >}}
+
 
     Again you will replace the sample addresses with your own IP information.
 
@@ -116,23 +116,23 @@ Use your own IP addresses in place of the addresses in the above example. The na
 
 1.  Edit the `mongodb.conf` file to add the IP address and port number.
 
-    {: .file-excerpt }
-    /etc/mongodb.conf
-    :   ~~~
-        bind_ip = 192.168.160.1
-        port = 27017
-        ~~~
+    {{< file-excerpt "/etc/mongodb.conf" >}}
+bind_ip = 192.168.160.1
+port = 27017
+
+{{< /file-excerpt >}}
+
 
     Enter the private IP address of the server you are logged onto in the bind ip section. If the bind_ip variable is not present, you will need to add it. Uncomment the default port number **27017**.
 
 2.  While still in the `mongodb.conf` file, scroll to the bottom and add the following information:
 
-    {: .file-excerpt }
-    /etc/mongodb.conf
-    :   ~~~
-        fork = true
-        replSet = rs1
-        ~~~
+    {{< file-excerpt "/etc/mongodb.conf" >}}
+fork = true
+replSet = rs1
+
+{{< /file-excerpt >}}
+
 
     In this example, the sample replication set is **rs1**, however, you may change the name as you choose.
 
@@ -152,7 +152,7 @@ A `mongodb.conf` file was created during the installation. You will use this con
 
 2.  If the service is already running, you will need to stop it using the command:
 
-        sudo service mongodb stop   
+        sudo service mongodb stop
 
 3.  Now start the daemon on **every** replication set member with the command:
 
@@ -293,8 +293,6 @@ To clarify how data is stored it is important to understand how MongoDB classifi
 
 ### Basic MongoDB Commands
 
-{: .table .table-striped}
-|--------------------|------------------------------------------------------------------------|
 | Command            | Description                                                            |
 |--------------------|------------------------------------------------------------------------|
 | `help`             | displays a short list of help commands                                 |
@@ -310,7 +308,6 @@ To clarify how data is stored it is important to understand how MongoDB classifi
 | `save`             | updates an existing document in a collection or inserts a new document |
 | `remove`           | deletes a document from a collection                                   |
 | `drop`             | removes a collection completely                                        |
-|--------------------|------------------------------------------------------------------------|
 
 It is important to note that MongoDB uses parentheses () at the end of several commands, comparable to the semicolon in SQL.
 

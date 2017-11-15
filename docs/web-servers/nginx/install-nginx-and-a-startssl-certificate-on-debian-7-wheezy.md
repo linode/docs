@@ -4,22 +4,19 @@ author:
   name: Linode Community
   email: contribute@linode.com
 description: 'Install Nginx and Deploy a StartSSL Certificate on Debian 7 (Wheezy).'
-keywords: 'startssl,nginx,install nginx,ssl certificate,debian 7,wheezy,nginx repositories,certificate signing request, CSR,domain name)'
+keywords: ["startssl", "nginx", "install nginx", "ssl certificate", "debian 7", "wheezy", "nginx repositories", "certificate signing request", " CSR", "domain name)"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/']
-modified: Monday, July 13, 2015
+aliases: ['websites/nginx/startssl-wth-latest-nginx-debian-7/','websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/','websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-7-wheezy/']
+modified: 2015-07-13
 modified_by:
   name: Ryan Laverdiere
-published: Monday, October 20, 2014
+published: 2014-10-20
 title: 'Install Nginx and a StartSSL Certificate on Debian 7 (Wheezy)'
 contributor:
     name: Ryan Laverdiere
     link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 This guide is going to show you how to install the latest stable version of Nginx on Debian Wheezy. It will also deploy a free SSL certificate from StartSSL that will get you an A on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In order to achieve an "A" on the test, we are going to configure Nginx to prefer server ciphers, only use strong ciphers, and disable vulnerable protocols SSLv2 and SSLv3.
 
@@ -230,9 +227,9 @@ You should now be logged into your StartSSL account.
             }
         }
 
-    {: .note }
-    >
-    >The changes are to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ssl_session_cache`, `ssl_ciphers`, and the removal of # signs. Also note, the addition of `ssl_protocols`.
+    {{< note >}}
+The changes are to `server_name`, `ssl_certificate`, `ssl_certificate_key`, `ssl_session_cache`, `ssl_ciphers`, and the removal of # signs. Also note, the addition of `ssl_protocols`.
+{{< /note >}}
 
 3.  Restart Nginx to apply your changes.
 

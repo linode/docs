@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring a LAMP stack with Apache, MySQL, PHP and on Ubuntu Linux 11.04 (Natty).'
-keywords: 'ubuntu lamp server,ubuntu 11.04 lamp,natty lamp,ubuntu web server,ubuntu natty'
+keywords: ["ubuntu lamp server", "ubuntu 11.04 lamp", "natty lamp", "ubuntu web server", "ubuntu natty"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['lamp-guides/ubuntu-11-04-natty/','websites/lamp/lamp-server-on-ubuntu-11-04-natty/']
-modified: Monday, February 18th, 2013
+aliases: ['lamp-guides/ubuntu-11-04-natty/','websites/lamp/lamp-server-on-ubuntu-11-04-natty/']
+modified: 2013-02-18
 modified_by:
   name: Linode
-published: 'Thursday, June 9th, 2011'
+published: 2011-06-09
 title: 'LAMP Server on Ubuntu 11.04 (Natty)'
 external_resources:
   - '[Ubuntu Server Edition Homepage](http://www.ubuntu.com/server)'
@@ -27,7 +27,7 @@ In this guide, you will be instructed on setting up Apache, MySQL, and PHP. If y
 
 ## Set the Hostname
 
-Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#sph_setting-the-hostname). Issue the following commands to make sure it is set properly:
+Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
@@ -48,31 +48,31 @@ There are different ways to set up virtual hosts, however we recommend the metho
 
 First, create a file in the `/etc/apache2/sites-available/` directory for each virtual host that you want to set up. Name each file with the domain for which you want to provide virtual hosting. See the following example configurations for the hypothetical "example.com" and "example.org" domains. Substitute your own domain names for those shown below.
 
-{: .file }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
 
-{: .file }
-/etc/apache2/sites-available/example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.org     
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< /file >}}
+
+
+{{< file "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 Notes regarding this example configuration:
 
@@ -156,17 +156,17 @@ Once PHP5 is installed, you'll need to tune the configuration file located in `/
 
 Make sure that the following values are set, and relevant lines are uncommented (comments are lines beginning with a semi-colon (`;`)):
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    max_execution_time = 30
-    memory_limit = 64M
-    error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-    display_errors = Off
-    log_errors = On
-    error_log = /var/log/php.log
-    register_globals = Off
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+max_execution_time = 30
+memory_limit = 64M
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php.log
+register_globals = Off
+
+{{< /file-excerpt >}}
+
 
 After making changes to the PHP configuration file, restart Apache by issuing the following command:
 

@@ -4,27 +4,27 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Set up and manage an online storefront with OpenCart.'
-keywords: 'opencart,ecommerce,commerce,store,fedora'
+keywords: ["opencart", "ecommerce", "commerce", "store", "fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/e-commerce/opencart/fedora-15/']
-modified: Thursday, October 3rd, 2013
+aliases: ['web-applications/e-commerce/opencart/fedora-15/']
+modified: 2013-10-03
 modified_by:
   name: Linode
-published: 'Tuesday, September 27th, 2011'
+published: 2011-09-27
 title: OpenCart on Fedora 15
 ---
 
 
 
-OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#sph_set-the-hostname).
+OpenCart is an open source storefront designed to give you flexibility and fine-grained control over your online storefront. Before getting started, you should have already set up a [LAMP stack](/docs/lamp-guides) on your Linode. You should have also [set the hostname](/docs/getting-started#setting-the-hostname).
 
-PHP Settings
-------------
+# PHP Settings
 
 In order to use OpenCart, you will need to ensure that PHP is configured properly. Make sure the settings below match the values in your `/etc/php.ini` file:
 
-{: .file }
+{{< file >}}
 /etc/php.ini
+{{< /file >}}
 
 > register\_globals = Off magic\_quotes\_gpc = Off file\_uploads = 1 session\_auto\_start = 0
 
@@ -32,19 +32,17 @@ Additionally, you will need to make sure that the following PHP extensions are i
 
     yum install php-mysql php-gd php-common
 
-MySQL Credentials
------------------
+# MySQL Credentials
 
 You will also need to create a database and a database user for OpenCart. To create a database and grant your users permissions on it, issue the following command. Note, the semi-colons (`;`) at the end of the lines are crucial for ending the commands. Your command should look like this:
 
-    create database mystore; 
-    grant all on mystore.* to 'opencart' identified by 'p@$$w0rD'; 
+    create database mystore;
+    grant all on mystore.* to 'opencart' identified by 'p@$$w0rD';
     flush privileges;
 
 In the example above, `mystore` is the name of the database for your store, `opencart` is the username, and `p@$$w0rD` is the password.
 
-Install OpenCart
-----------------
+# Install OpenCart
 
 Issue the following commands to download and unpack OpenCart:
 

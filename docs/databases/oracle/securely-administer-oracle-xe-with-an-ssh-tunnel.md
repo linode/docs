@@ -3,16 +3,16 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Accessing Oracle databases remotely using an SSH tunnel.'
-keywords: 'Oracle tunnel,Oracle over SSH,SSH tunnel'
+keywords: ["Oracle tunnel", "Oracle over SSH", "SSH tunnel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/oracle/ssh-tunnel/']
-modified: Tuesday, May 17th, 2011
+aliases: ['databases/oracle/ssh-tunnel/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Thursday, January 28th, 2010'
+published: 2010-01-28
 title: Securely Administer Oracle XE with an SSH Tunnel
 external_resources:
- - '[Using PuTTY](/docs/networking/using-putty#using_ssh_tunnels)'
+ - '[Using PuTTY](/docs/networking/using-putty)'
  - '[Oracle XE Documentation](http://www.oracle.com/pls/xe102/homepage)'
 ---
 
@@ -32,7 +32,7 @@ Enter the hostname or IP address of the system you'd like to log into and click 
 
 In this case, PuTTY is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection and posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to PuTTY with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Console" tab in the Linode Manager) and executing the following command:
 
-    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub 
+    ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
 The key fingerprints should match; click "Yes" to accept the warning and cache this host key in the registry. You won't receive further warnings unless the key presented to PuTTY changes for some reason. Typically, this should only happen if you reinstall the remote server's operating system. If you should receive this warning again from a system you already have the host key cached on, you should not trust the connection and investigate matters further.
 
@@ -46,7 +46,7 @@ Once you've connected to the remote server with this tunnel configuration, you'l
 
 Save the following Perl script to your local home directory as `oracle-tunnel.pl`:
 
-~~~ perl
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
 #!/usr/bin/perl
 
 # Oracle XE Homepage Tunnel Tool for MacOS X and Linux
@@ -95,7 +95,7 @@ else
  print "Usage: oracle-tunnel.pl [start|stop]\n";
  exit 1;
 }
-~~~
+{{< /file-excerpt >}}
 
 Modify the variables "\$remote\_user" and "\$remote\_host" to reflect your remote user account and server name. Make the script executable by issuing the following command in a terminal window:
 

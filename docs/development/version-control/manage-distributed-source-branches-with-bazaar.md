@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Bazaar version management system.'
-keywords: 'bzr,bazaar,vcs,scm,dcvs'
+keywords: ["bzr", "bazaar", "vcs", "scm", "dcvs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
-modified: Monday, May 23rd, 2011
+aliases: ['linux-tools/version-control/bazaar/','applications/development/manage-distributed-source-branches-with-bazaar/']
+modified: 2011-05-23
 modified_by:
   name: Linode
-published: 'Monday, January 18th, 2010'
+published: 2010-01-18
 title: Manage Distributed Source Branches with Bazaar
 external_resources:
  - '[The Bazaar Project](http://bazaar.canonical.com/en/)'
@@ -20,7 +20,7 @@ Bazaar is a distributed version control system similar to [git](/docs/linux-tool
 
 Like all distributed version control systems, Bazaar can work "offline," and does not require a connection to a central repository to perform commits, consult previous versions of the history, or perform other operations on the local "branch" of project. Publishing "branches" is also straightforward.
 
-This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+This document provides an introduction to all aspects of the Bazaar version control system: beginning with the installation of Bazaar, moving through several standard Bazaar-based workflows and concluding with a review of common Bazaar commands. However, before we begin discussing the use and operating of Bazaar we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), the [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Installing Bazaar
 
@@ -58,7 +58,7 @@ The Bazaar developers also provide application builds for [Windows](http://wiki.
 
 ## Using Bazaar to Manage Projects
 
-This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](#common_bazaar_commands).
+This section covers many common operations and tasks that you may encounter during typical Bazaar usage. This will guide you through common Bazaar workflows: beginning with branch creation creating a branch, continuing with creating commits to that branch and an overview of common usage scenarios, and finally concluding with branch publication. Consider the following section for a more direct guide to individual [Bazaar commands](/docs/development/version-control/manage-distributed-source-branches-with-bazaar#common-bazaar-commands).
 
 ### Initializing a Project and Creating Commits
 
@@ -112,11 +112,11 @@ While Bazaar is capable of maintaining project histories on a single system for 
 
 The simplest way to share changes between users is to generate a patch using the `bzr diff` command. Consider the command:
 
-    bzr diff -r12..20 > ~/new-feature.r20.patch 
+    bzr diff -r12..20 > ~/new-feature.r20.patch
 
 This creates a file named `new-feature.r20.patch` that you can distribute to your collaborators. The option `-r12..20` specifies that the "base revision" of the patch is revision number 12 and the final commit to be included in the patch is revision number 20. In turn, you collaborators can use the following command to apply your patch:
 
-    bzr patch ~/new--feature.r20.patch 
+    bzr patch ~/new--feature.r20.patch
 
 Bazaar also includes the ability to use more "centralized" workflows, which allows contributors to a project to have a single shared repository that the entire team can use to publish changes. Shared repositories allow for a more fluid method of sharing changes between developers making it feasible for team members to always have the most up to date iteration of a document, without impacting individual workflows. To create a shared remote Bazaar project issue a command in the following form:
 

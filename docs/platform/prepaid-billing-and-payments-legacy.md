@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to billing and payments
-keywords: 'prepaid,billing,payments,credit,referral,invoice'
+keywords: ["prepaid", "billing", "payments", "credit", "referral", "invoice"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['prepaid-billing/']
-modified: Wednesday, February 15th, 2017
+aliases: ['prepaid-billing/']
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Thursday, April 5th, 2012'
+published: 2012-04-05
 title: 'Prepaid Billing and Payments (Legacy)'
 ---
 
@@ -18,17 +18,17 @@ Use this guide to learn how our prepaid billing system works and how to make pay
 
 This guide applies to customers using Linode's prepaid billing system. For current information, please see [the current billing guide](/docs/billing-and-payments).
 
-{: .note }
->
-> To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/upgrade-to-hourly-billing).
+{{< note >}}
+To convert your prepaid account to Hourly billing, see [this guide](/docs/platform/upgrade-to-hourly-billing).
+{{< /note >}}
 
 ## How Prepaid Billing Works
 
 All services are billed automatically on the first of the month, and all fees billed to your account are prorated for the current billing cycle. This means that if you sign up or purchase extras in the middle of the billing cycle, you will be charged a prorated amount for the amount of time left in the cycle. At the beginning of the next billing cycle, your account will be billed the full cost of your Linode and any extra services.
 
- {: .note }
->
-> If you sign up after the 19th of the month, your account will be billed for the time left in the current month, plus the full amount of the next month.
+ {{< note >}}
+If you sign up after the 19th of the month, your account will be billed for the time left in the current month, plus the full amount of the next month.
+{{< /note >}}
 
 ## Payment Methods
 
@@ -89,9 +89,9 @@ Keep your credit card information up to date to prevent service interruptions. H
 
 Your credit card information will be updated.
 
- {: .note }
->
-> If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
+ {{< note >}}
+If you have an outstanding balance, you will need to make a manual payment to bring your account up to date. See the [Making a Payment](#making-a-payment) section for more information.
+{{< /note >}}
 
 ## Removing Services
 
@@ -118,6 +118,6 @@ You can cancel your account and receive a refund. Here's how:
 
 Your account will be canceled and all of your services will be deactivated.
 
- {: .note }
->
-> You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
+ {{< note >}}
+You do not have to cancel your account to prevent recurring charges. Instead, you can remove all Linodes and services from your account via the **Linodes** tab in the Linode Manager. This will allow you to retain your Linode account. If you use Longview with non-Linode services, or want to keep your account name and history, you may find this to be a useful option. See the [Removing Services](#removing-services) section for more information.
+{{< /note >}}

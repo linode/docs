@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to managing accounts and passwords.
-keywords: 'accounts,passwords,linode manager,manager'
+keywords: ["accounts", "passwords", "linode manager", "manager"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['accounts-and-passwords/']
-modified: Monday, February 10th, 2014
+aliases: ['accounts-and-passwords/']
+modified: 2014-02-10
 modified_by:
   name: Linode
-published: 'Tuesday, April 3rd, 2012'
+published: 2012-04-03
 title: Accounts and Passwords
 ---
 
@@ -19,9 +19,9 @@ Maintaining your accounts, passwords, and contact information in the Linode Mana
 
 You can grant other users access to the Linode Manager by creating *accounts* and assigning *permissions* to restrict access to certain areas of the control panel. Adding users and configuring permissions is useful for groups that need to grant all team members access to the Linode Manager, or organizations that just want their billing department to have a separate account to receive invoices and billing information.
 
- {: .note }
->
-> Your account was automatically created when you signed up for Linode. If you will be the only person accessing the Linode Manager, you won't need to create any other user accounts.
+ {{< note >}}
+Your account was automatically created when you signed up for Linode. If you will be the only person accessing the Linode Manager, you won't need to create any other user accounts.
+{{< /note >}}
 
 ### Adding a User
 
@@ -62,9 +62,9 @@ Here's how to set a user's access permissions:
 
 5.  Select checkboxes in the **Global Grants** section to allow the user to add Linodes, Domains, and NodeBalancers to the account, create StackScripts, access all billing information, and cancel the entire account.
 
- {: .note }
->
-> Granting access to settings denoted with a dollar sign (\$) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+ {{< note >}}
+Granting access to settings denoted with a dollar sign (\$) will allow the user perform actions that incur billing costs, such as adding or resizing a Linode.
+{{< /note >}}
 
 6.  Select checkboxes in the other sections to allow the user to access certain features and sections of the Linode Manager.
 7.  When you have finished configuring the user's permissions, click **Update Grants**.
@@ -149,9 +149,9 @@ Did you forget your Linode Manager password? Reset it with the *Forgot Password*
 1.  Visit the [Forgot Password](https://manager.linode.com/session/forgot/password) webpage.
 2.  Enter your username in the **Username** field.
 
- {: .note }
->
-> If you've forgotten your Linode Manager username, see [Recovering a Lost Username](#recovering-a-lost-username).
+ {{< note >}}
+If you've forgotten your Linode Manager username, see [Recovering a Lost Username](#recovering-a-lost-username).
+{{< /note >}}
 
 3.  Check your email for a message containing further instructions.
 
@@ -170,7 +170,7 @@ If you can't remember the password for the `root` user on a Linode, use the Lino
 7.  Click **Reset Root Password**. The Linode's dashboard appears.
 8.  Click **Boot** to turn on your Linode.
 
-Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connecting-to-your-linode) for more information about connecting.
+Now you can use the new `root` user password to log in to your Linode. See [Connecting to Your Linode](/docs/getting-started#connect-to-your-linode-via-ssh) for more information about connecting.
 
 ## Next Steps
 

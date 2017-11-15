@@ -4,19 +4,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Joomla! content management system to ease administration overhead for websites.'
-keywords: 'joomla,cms,content management systems'
+keywords: ["joomla", "cms", "content management systems"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/joomla/']
-modified: Tuesday, April 19th, 2011
+aliases: ['web-applications/cms-guides/joomla/']
+modified: 2011-04-19
 modified_by:
   name: Linode
-published: 'Friday, January 22nd, 2010'
+published: 2010-01-22
 title: 'Manage Web Content with Joomla!'
 ---
 
-Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/web-applications/cms-guides/drupal/) and [WordPress](/docs/web-applications/cms-guides/wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/frameworks/) and [Django](/docs/frameworks/). Deployed on top of the industry standard [LAMP Stack](/docs/lamp-guides/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
+Joomla is an advanced "content management system" (CMS) used to facilitate the easy creation and ongoing maintenance of dynamic websites. Comparable in some respects to other web applications like [Drupal](/docs/web-applications/cms-guides/drupal/) and [WordPress](/docs/web-applications/cms-guides/wordpress/), Joomla also has advanced features that resemble web-development frameworks like [Ruby On Rails](/docs/frameworks/) and [Django](/content/frameworks/). Deployed on top of the industry standard [LAMP Stack](/content/lamp-guides/), Joomla is designed to be both easy to use and manage from the end-user's perspective and easy to administer and host.
 
-Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/docs/lamp-guides) appropriate for the distribution you have deployed.
+Before installing Joomla, we assume that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Additionally, you will need to follow the [LAMP Guide](/content/lamp-guides) appropriate for the distribution you have deployed.
 
 ## Installing Prerequisites
 
@@ -64,7 +64,7 @@ We encourage you to monitor the [Joomla download page](http://www.joomla.org/dow
 Before we proceed with the installation of Joomla, we must create a configuration file that Joomla can write to. Issue the following sequence of commands:
 
     touch /srv/www/example.com/public_html/configuration.php
-    chmod 777 /srv/www/example.com/public_html/configuration.php       
+    chmod 777 /srv/www/example.com/public_html/configuration.php
 
 Now, visit your site in your web browser. In the case of our example, this would correspond to the URL of `http://example.com/`. Follow the steps laid out in the Joomla installer presented on your screen. We do not recommend that you install or enable an FTP server. When the installation is complete, issue the following commands to remove the installation files and secure the `configuration.php` file:
 

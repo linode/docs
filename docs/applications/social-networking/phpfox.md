@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installation, configuration and usage guides for phpFox.'
-keywords: 'social networking,phpfox,community'
+keywords: ["social networking", "phpfox", "community"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/phpfox/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/phpfox/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Monday, January 31st, 2011'
+published: 2011-01-31
 title: phpFox
 deprecated: true
 ---

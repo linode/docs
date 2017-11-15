@@ -3,25 +3,25 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Installation of MultiCraft on a Linode running Debian or Ubuntu'
-keywords: 'minecraft,debian,multicraft'
+keywords: ["minecraft", "debian", "multicraft"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 external_resources:
  - '[Multicraft Documentation](http://www.multicraft.org/site/userguide?view=index)'
  - '[Minecraft.net](https://minecraft.net/)'
-modified: Wednesday, February 4, 2015
+modified: 2015-02-04
 modified_by:
   name: Alex Fornuto
-published: ''
 title: 'Installing Multicraft on Debian'
-alias: ['applications/game-servers/multicraft-on-debian/']
+aliases: ['applications/game-servers/multicraft-on-debian/']
 ---
 
 [Multicraft](http://www.multicraft.org/) is a control panel for single or multiple Minecraft servers Free and paid versions are available. This guide will help you install Multicraft on a Linode running Debian 7.
 
-{: .note }
->The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-##Prerequisites
+## Prerequisites
 
 Multicraft for Linux depends on several software packages in order to run.
 
@@ -35,25 +35,25 @@ Multicraft for Linux depends on several software packages in order to run.
 
 3.  In Apache's default virtual host file under the `<Directory /var/www/>` section, change the `AllowOverride` value to `all`.
 
-    {: .file-excerpt}
-    /etc/apache2/sites-enabled/000-default
-    :   ~~~ apache
-        <Directory /var/www/>
-                Options Indexes FollowSymLinks MultiViews
-                AllowOverride all
-                Order allow,deny
-                allow from all
-        </Directory>
-        ~~~
+    {{< file-excerpt "/etc/apache2/sites-enabled/000-default" apache >}}
+<Directory /var/www/>
+        Options Indexes FollowSymLinks MultiViews
+        AllowOverride all
+        Order allow,deny
+        allow from all
+</Directory>
 
-        {: .note}
-        >If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configuring-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+{{< /file-excerpt >}}
+
+        {{< note >}}
+If you want a dedicated Apache virtual host for Multicraft, follow the instructions [here](/docs/websites/hosting-a-website#configure-name-based-virtual-hosts). Be sure to configure the `AllowOverride` option on your custom virtual host.
+{{< /note >}}
 
 4.  Reload the Apache configuration:
 
         service apache2 reload
 
-##Installing Multicraft
+## Installing Multicraft
 
 1.  Download the Multicraft installer:
 
@@ -73,10 +73,11 @@ Multicraft for Linux depends on several software packages in order to run.
 
     This will launch an interactive script that will prompt you to configure several options. If you've purchased a license for Multicraft, enter it when prompted. If you're unsure which option to choose, press `return` to select the default option.
 
-    {: .caution }
-    > Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
+    {{< caution >}}
+Because of the insecure nature of FTP, we strongly recommend that you **not** enable the built-in FTP server when prompted.
+{{< /caution >}}
 
-##Configuring the Control Panel
+## Configuring the Control Panel
 
 1.  In your local web browser, navigate to `http://12.34.56.78/multicraft/install.php`, replacing `12.34.56.78` with your Linode's IP address or domain name. Click on `Start Installation`:
 
@@ -117,7 +118,7 @@ Multicraft for Linux depends on several software packages in order to run.
 
         rm /var/www/multicraft/install.php
 
-##Install Minecraft
+## Install Minecraft
 
 1.  Navigate to the directory where Multicraft stores `jar` files. If you used the default options, it will be `/home/minecraft/multicraft/jar/`:
 
@@ -141,12 +142,12 @@ Multicraft for Linux depends on several software packages in order to run.
 
 5.  After reading the End User License Agreement, open the file `eula.txt` in your terminal, and change the value of `eula` to `true`:
 
-    {: .file}
-    /home/minecraft/multicraft/servers/server1/eula.txt
-    :   ~~~ conf
-        #By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
-        #Wed Feb 04 22:24:38 UTC 2015
-        eula=true
-        ~~~
+    {{< file "/home/minecraft/multicraft/servers/server1/eula.txt" aconf >}}
+#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
+#Wed Feb 04 22:24:38 UTC 2015
+eula=true
 
-    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connecting-to-your-minecraft-server).
+{{< /file >}}
+
+
+    You can now successfully start and manage your Minecraft server through Multicraft! For instructions on connecting to your Minecraft server, click [here](/docs/applications/game-servers/minecraft-on-debian-and-ubuntu#connect-to-your-minecraft-server).

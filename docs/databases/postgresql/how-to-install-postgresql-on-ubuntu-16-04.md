@@ -3,22 +3,24 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A tutorial on installing and configuring the PostgreSQL relational database system on Ubuntu distributions.'
-keywords: 'postgresql,ubuntu 16.04,postgresql database,open source database,relational database'
-alias: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
+keywords: ["postgresql", "ubuntu 16.04", "postgresql database", "open source database", "relational database"]
+aliases: ['databases/postgresql/use-postgresql-relational-databases-on-ubuntu-16-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, May 20th, 2016
+modified: 2016-05-20
 modified_by:
   name: Phil Zona
-published: 'Friday, May 20th, 2016'
-title: 'How to Install PostgreSQL On Ubuntu 16.04'
+published: 2016-05-20
+title: 'How to Install PostgreSQL on Ubuntu 16.04'
 external_resources:
  - '[PostgreSQL Online Documentation](http://www.postgresql.org/docs/)'
  - '[psql manual page](http://www.rootr.net/man/man/psql/1)'
 ---
 
-#A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
+![How to Install PostgreSQL on Ubuntu 16.04](/docs/assets/how-to-install-postgresql-on-ubuntu-16-04.jpg "How to Install PostgreSQL on Ubuntu 16.04")
 
-The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode. 
+# A Guide to Installing PostgreSQL Relational Databases on Ubuntu 16.04
+
+The [PostgreSQL](http://www.postgresql.org/) relational database system is a powerful, scalable, and standards-compliant open-source database platform. This guide will help you install and configure PostgreSQL on your Ubuntu 16.04 LTS (Xenial Xerus) Linode.
 
 ## Before You Begin
 
@@ -30,9 +32,9 @@ The [PostgreSQL](http://www.postgresql.org/) relational database system is a pow
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, visit the [Users and Groups guide](/docs/tools-reference/linux-users-and-groups) for more information.
+{{< /note >}}
 
 ## Install PostgreSQL
 
@@ -44,11 +46,11 @@ Install PostgreSQL from the Ubuntu package repository:
 
 ### Modify the Postgres Users
 
-By default, PostgreSQL will create a Linux user named `postgres` to access the database software. 
+By default, PostgreSQL will create a Linux user named `postgres` to access the database software.
 
-{: .caution}
->
->The `postgres` user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< caution >}}
+The `postgres` user should not be used for for other purposes (e.g. connecting to other networks). Doing so presents a serious risk to the security of your databases.
+{{< /caution >}}
 
 1.  Change the `postgres` user's Linux password:
 
@@ -107,7 +109,7 @@ This section contains examples which create a test database with an employee's f
                    1 | John       | Doe
         (1 row)
 
-4.  Exit the PostgreSQL shell by entering the `\q` command. 
+4.  Exit the PostgreSQL shell by entering the `\q` command.
 
 ### Create PostgreSQL Roles
 
@@ -135,20 +137,20 @@ The example commands in this section should be run as the `postgres` Linux user.
 
 ### Secure Local PostgreSQL Access
 
-PostgreSQL uses *peer authentication* by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases. 
+PostgreSQL uses *peer authentication* by default. This means database connections will be granted to local system users that own or have privileges on the database being connected to. Such authentication is useful in cases where a particular system user will be running a local program (e.g. scripts, CGI/FastCGI processes owned by separate users, etc.), but for greater security, you may wish to require passwords to access your databases.
 
 Commands in this section should be run as the `postgres` Linux user unless otherwise specified.
 
 1.  Edit the `/etc/postgresql/9.5/main/pg_hba.conf` file, under the `# "local" is for Unix domain socket connections only` header:
 
-    {: .file-excerpt }
-    /etc/postgresql/9.5/main/pg_hba.conf
-    :   ~~~
-        # "local" is for Unix domain socket connections only
-        local    all        all             peer
-        ~~~
+    {{< file-excerpt "/etc/postgresql/9.5/main/pg_hba.conf" >}}
+# "local" is for Unix domain socket connections only
+local    all        all             peer
 
-    Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash. 
+{{< /file-excerpt >}}
+
+
+    Replace `peer` with `md5` on this line to activate password authentication using an MD5 hash.
 
 2.  To enable these changes, we need to restart PostgreSQL. However, we did not grant the `postgres` user sudo privileges for security reasons. Return to the normal user shell:
 
@@ -161,7 +163,7 @@ Commands in this section should be run as the `postgres` Linux user unless other
 
 4.  As `postgres`, connect to the test database as the `examplerole` PostgreSQL user:
 
-        psql -U examplerole -W mytestdb 
+        psql -U examplerole -W mytestdb
 
     You will be prompted to enter the password for the `examplerole` user and given `psql` shell access to the database. When using a database, you may check access privileges for each of its tables with the `\z` command.
 

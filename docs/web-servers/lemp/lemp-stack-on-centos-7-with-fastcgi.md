@@ -3,13 +3,13 @@ author:
     name: Linode
     email: docs@linode.com
 description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
-keywords: 'nginx,lemp,php,fastcgi,linux,web applications, CentOS'
+keywords: ["nginx", "lemp", "php", "fastcgi", "linux", "web applications", " CentOS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/lemp-guides/centos-7','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
-modified: Thursday, December 11, 2014
+aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
+modified: 2014-12-11
 modified_by:
     name: Ryan Arlan
-published:
+published: 2014-12-11
 title: Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
 - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
@@ -24,7 +24,7 @@ Make sure that before starting this guide you have read through and completed ou
 
 ## Set the hostname
 
-Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#sph_setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
+Before you install any packages, ensure that your hostname is correct by completing the [Setting Your Hostname](/docs/getting-started#setting-the-hostname) section of the Getting Started guide. Issue the following commands to verify:
 
     hostname
     hostname -f
@@ -66,21 +66,21 @@ You can then check the status to make sure it is running at any time:
 
 Once Nginx is installed, you need to configure your 'server' directives to specify your server blocks.  Each server block needs to have a server and location directive.  You can do this multiple ways, either through different server block files or all in the `/etc/nginx/nginx.conf` file.  In this example, we will use the multiple file approach.  By default, Nginx uses the `/etc/nginx/conf.d directory`, and will include any files ending in `.conf`:
 
-{: .file-excerpt }
-/etc/nginx/conf.d/example.com.conf
-:   ~~~ nginx
-    server {
-    listen  80;
-    server_name www.example.com example.com;
-    access_log /var/www/example.com/logs/access.log;
-    error_log /var/www/example.com/logs/error.log;
+{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+server {
+listen  80;
+server_name www.example.com example.com;
+access_log /var/www/example.com/logs/access.log;
+error_log /var/www/example.com/logs/error.log;
 
-    location / {
-        root  /var/www/example.com/public_html;
-        index index.html index.htm index.php;
-        }
+location / {
+    root  /var/www/example.com/public_html;
+    index index.html index.htm index.php;
     }
-    ~~~
+}
+
+{{< /file-excerpt >}}
+
 
 Any additional websites you like to host can be added as new files in the `/etc/nginx/conf.d/` directory.  Once you set the configuration, you need to make the directories for your public html files, and your logs:
 
@@ -90,8 +90,7 @@ Once you have configured your virtual hosts, you'll need to restart nginx for yo
 
     systemctl restart nginx.service
 
-Deploy PHP with FastCGI
------------------------
+# Deploy PHP with FastCGI
 
 If you are using PHP code with your application, you will need to implement "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code.  You can install this via YUM from the EPEL repository that was previously installed:
 
@@ -99,25 +98,25 @@ If you are using PHP code with your application, you will need to implement "PHP
 
 Once PHP-FastCGI is installed, you will need to create a script to start and control the php-cgi process.  Create the `/usr/bin/php-fastcgi` file in your favorite editor and place the following lines into the file:
 
-{: .file-excerpt }
-/usr/bin/php-fastcgi
-:   ~~~ bash
-    #!/bin/sh
-    if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
-        FASTCGI_USER=nginx
-    elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
-        FASTCGI_USER=www-data
-    elif [ `grep -c "http" /etc/passwd` = "1" ]; then
-        FASTCGI_USER=http
-    else
-    # Set the FASTCGI_USER variable below to the user that
-    # you want to run the php-fastcgi processes as
+{{< file-excerpt "/usr/bin/php-fastcgi" bash >}}
+#!/bin/sh
+if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
+    FASTCGI_USER=nginx
+elif [ `grep -c "www-data" /etc/passwd` = "1" ]; then
+    FASTCGI_USER=www-data
+elif [ `grep -c "http" /etc/passwd` = "1" ]; then
+    FASTCGI_USER=http
+else
+# Set the FASTCGI_USER variable below to the user that
+# you want to run the php-fastcgi processes as
 
-    FASTCGI_USER=
-    fi
+FASTCGI_USER=
+fi
 
-    /usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -C 6 -u $FASTCGI_USER -f /usr/bin/php-cgi
-    ~~~
+/usr/bin/spawn-fcgi -a 127.0.0.1 -p 9000 -C 6 -u $FASTCGI_USER -f /usr/bin/php-cgi
+
+{{< /file-excerpt >}}
+
 
 Once the `/usr/bin/php-fastcgi` file has been created, you need to make sure the script is executable:
 
@@ -129,19 +128,19 @@ You can then run the file manually, or for easier administration, you can set up
 
 When PHP-FastCGI is installed it does not automatically get set up as a service in systemd. If you want to be able to more easily control PHP-FastCGI with systemd, you can configure PHP-FastCGI as a systemd service. To do this, you need to create a service file that points to the /usr/bin/php-fastcgi file you created:
 
-{: .file }
-/etc/systemd/system/php-fastcgi.service
-:   ~~~ ini
-    [Unit]
-    Description=php-fastcgi systemd service script
+{{< file "/etc/systemd/system/php-fastcgi.service" ini >}}
+[Unit]
+Description=php-fastcgi systemd service script
 
-    [Service]
-    Type=forking
-    ExecStart=/usr/bin/php-fastcgi start
+[Service]
+Type=forking
+ExecStart=/usr/bin/php-fastcgi start
 
-    [Install]
-    WantedBy=multi-user.target
-    ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
 Once the file has been created, you will need to reload the systemd daemons, enable the service, then start it:
 

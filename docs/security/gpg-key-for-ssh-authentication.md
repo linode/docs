@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Generate a GPG key-pair, and convert it to an SSH key for authentication with your Linode.'
-keywords: 'gpg,ssh,authentication,ssh-agent,gpg-agent,yubikey,smartcard,ssh key'
+keywords: ["gpg", "ssh", "authentication", "ssh-agent", "gpg-agent", "yubikey", "smartcard", "ssh key"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 title: 'How to use a GPG key for SSH authentication'
 contributor:
@@ -12,14 +12,13 @@ contributor:
 external_resources:
  - '[Securely set up smartcard](https://gist.github.com/abeluck/3383449)'
  - '[Instructions for GPG 2.1](https://incenp.org/notes/2015/gnupg-for-ssh-authentication.html)'
-modified: Monday, October 3rd, 2016
+modified: 2016-10-03
 modified_by:
   name: Alex Fornuto
-published: 'Monday, October 3rd, 2016'
+published: 2016-10-03
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
+![GPG key for SSH Authentication](/docs/assets/gpg-key-for-ssh-authentication/How_to_use_a_GPG_key_smg.jpg)
 
 You may be familiar with [public key authentication](/docs/security/use-public-key-authentication-with-ssh) for Secure Shell (SSH) on your Linode. But you may not have known that you can also use a GNU Privacy Guard (GPG) keypair to authenticate with SSH.
 
@@ -29,9 +28,9 @@ This guide will show you how to generate a GPG key, set up your computer to serv
 
 ## Before You Begin
 
-{: .note}
->
-> This guide will only work on UNIX-based (Linux & OS X) machines! The process is very complicated on Windows but may be possible with some research.
+{{< note >}}
+This guide will only work on UNIX-based (Linux & OS X) machines! The process is very complicated on Windows but may be possible with some research.
+{{< /note >}}
 
 This guide assumes:
 
@@ -45,9 +44,9 @@ You don't necessarily need to be familiar with [SSH public key authentication](/
 
 This section explains how to generate a new GPG keypair. If you already have one, you may skip these steps, as the next section will include instructions for how to create a subkey to use specifically for authentication. You will just need the 8-digit ID for your existing key to do so.
 
-{: .caution}
->
-> As an additional security measure, this process may be undertaken on an offline (non network-connected) machine or single-use Virtual Machine (VM). After installing the pre-requisite packages and *only* the pre-requisite packages, disconnect it from the network and continue with the steps below.
+{{< caution >}}
+As an additional security measure, this process may be undertaken on an offline (non network-connected) machine or single-use Virtual Machine (VM). After installing the pre-requisite packages and *only* the pre-requisite packages, disconnect it from the network and continue with the steps below.
+{{< /caution >}}
 
 All of these steps should be performed on a local machine, *not* your Linode.
 
@@ -56,13 +55,13 @@ All of these steps should be performed on a local machine, *not* your Linode.
     On Debian and its derivatives:
 
         sudo apt-get install gnupg2
-    
+
     On OS X:
 
     [GPGTools](https://gpgtools.org) provides the simplest implementation of GPG for OS X. Otherwise, you could run `brew install gnupg2` if you have [Homebrew](https://brew.sh).
-    
+
     On other operating systems, this process should be fairly clear. GPG is likely already installed, but if it isn't, a quick internet search should give you the instructions you need.
-    
+
 2.  Open a command prompt and execute:
 
         gpg2 --gen-key
@@ -88,7 +87,7 @@ Once this is done, your output should resemble the following:
     Your selection? 1
     RSA keys may be between 1024 and 4096 bits long.
     What keysize do you want? (2048) 4096
-    Requested keysize is 4096 bits       
+    Requested keysize is 4096 bits
     Please specify how long the key should be valid.
              0 = key does not expire
           <n>  = key expires in n days
@@ -98,22 +97,22 @@ Once this is done, your output should resemble the following:
     Key is valid for? (0) 1y
     Key expires at Sun Apr  9 18:27:05 2017 AEST
     Is this correct? (y/N) y
-                            
+
     GnuPG needs to construct a user ID to identify your key.
-    
+
     Real name: Your Name
     Email address: you@yoursite.net
     Comment: Test for GPG -> SSH
-    You selected this USER-ID:  
+    You selected this USER-ID:
         "Your Name (Test for GPG -> SSH) <you@yoursite.net>"
-    
+
     Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? O
-    You need a Passphrase to protect your secret key.    
-    
+    You need a Passphrase to protect your secret key.
+
     We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse, utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.
     gpg: key 71735D23 marked as ultimately trusted
     public and secret key created and signed.
-    
+
     pub   4096R/71735D23 2016-04-09 [expires: 2017-04-09]
           Key fingerprint = 4B63 8069 E016 F6E9 35BA  24B9 FFDD B2DF 7173 5D23
     uid       [ultimate] Your Name (Test for GPG -> SSH) <you@yoursite.net>
@@ -126,13 +125,13 @@ This process has created a master GPG key and a subkey for encrypting messages a
 1.  In a command prompt or terminal, type:
 
         gpg2 --expert --edit-key key-id
-        
-    Replace `key-id` with the eight-character string output from the key generation process. This will be found in the line beginning with `pub`. In the example above, the ID is `71735D23`. 
-    
+
+    Replace `key-id` with the eight-character string output from the key generation process. This will be found in the line beginning with `pub`. In the example above, the ID is `71735D23`.
+
 2.  At the new `gpg> ` prompt, enter:
 
         addkey
-        
+
 3.  When prompted, enter your passphrase.
 
 4.  When asked for the type of key you want, select: `(8) RSA (set your own capabilities)`.
@@ -149,28 +148,28 @@ This process has created a master GPG key and a subkey for encrypting messages a
 
 10. Enter an expiration date, just as before. You should probably keep this the same as the first one. If you choose a lower expiration date, your main private key will continue to function but your SSH authentication will break on this date.
 
-11. When you're sure all of the information entered is correct, enter `y` at the `Really create? (y/N)` prompt to complete the process. 
+11. When you're sure all of the information entered is correct, enter `y` at the `Really create? (y/N)` prompt to complete the process.
 
 12. Once the key is created, enter `quit` to leave the gpg prompt, and `y` at the prompt to save changes.
 
 Your terminal should now look like this:
 
     $ gpg2 --expert --edit-key 71735D23
-    
+
     Secret key is available.
-    
-    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC  
+
+    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
                          trust: ultimate      validity: ultimate
-    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E   
+    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
     [ultimate] (1). Your Name (Test for GPG -> SSH) <you@yoursite.net>
 
     gpg> addkey
     Key is protected.
-    
+
     You need a passphrase to unlock the secret key for
     user: "Your Name (Test for GPG -> SSH) <you@yoursite.net>"
     4096-bit RSA key, ID 71735D23, created 2016-04-09
-    
+
     Please select what kind of key you want:
        (3) DSA (sign only)
        (4) RSA (sign only)
@@ -179,49 +178,49 @@ Your terminal should now look like this:
        (7) DSA (set your own capabilities)
        (8) RSA (set your own capabilities)
     Your selection? 8
-                     
-    Possible actions for a RSA key: Sign Encrypt Authenticate 
-    Current allowed actions: Sign Encrypt 
-    
+
+    Possible actions for a RSA key: Sign Encrypt Authenticate
+    Current allowed actions: Sign Encrypt
+
        (S) Toggle the sign capability
        (E) Toggle the encrypt capability
        (A) Toggle the authenticate capability
        (Q) Finished
-    
+
     Your selection? S
-                     
-    Possible actions for a RSA key: Sign Encrypt Authenticate 
-    Current allowed actions: Encrypt 
-    
+
+    Possible actions for a RSA key: Sign Encrypt Authenticate
+    Current allowed actions: Encrypt
+
        (S) Toggle the sign capability
        (E) Toggle the encrypt capability
        (A) Toggle the authenticate capability
        (Q) Finished
-    
+
     Your selection? E
-                     
-    Possible actions for a RSA key: Sign Encrypt Authenticate 
-    Current allowed actions: 
-    
+
+    Possible actions for a RSA key: Sign Encrypt Authenticate
+    Current allowed actions:
+
        (S) Toggle the sign capability
        (E) Toggle the encrypt capability
        (A) Toggle the authenticate capability
        (Q) Finished
-    
+
     Your selection? A
-                     
-    Possible actions for a RSA key: Sign Encrypt Authenticate 
-    Current allowed actions: Authenticate 
-    
+
+    Possible actions for a RSA key: Sign Encrypt Authenticate
+    Current allowed actions: Authenticate
+
        (S) Toggle the sign capability
        (E) Toggle the encrypt capability
        (A) Toggle the authenticate capability
        (Q) Finished
-    
+
     Your selection? Q
     RSA keys may be between 1024 and 4096 bits long.
     What keysize do you want? (2048) 4096
-    Requested keysize is 4096 bits       
+    Requested keysize is 4096 bits
     Please specify how long the key should be valid.
              0 = key does not expire
           <n>  = key expires in n days
@@ -231,23 +230,23 @@ Your terminal should now look like this:
     Key is valid for? (0) 1y
     Key expires at Sun Apr  9 18:49:58 2017 AEST
     Is this correct? (y/N) y
-    Really create? (y/N) y  
+    Really create? (y/N) y
     We need to generate a lot of random bytes. It is a good idea to perform some other action (type on the keyboard, move the mouse, utilize the disks) during the prime generation; this gives the random number generator a better chance to gain enough entropy.
-    
-    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC  
+
+    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
                          trust: ultimate      validity: ultimate
-    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E   
-    sub  4096R/48B9C23C  created: 2016-04-09  expires: 2017-04-09  usage: A   
+    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
+    sub  4096R/48B9C23C  created: 2016-04-09  expires: 2017-04-09  usage: A
     [ultimate] (1). Your Name (Test for GPG -> SSH) <you@yoursite.net>
-    
+
     gpg> quit
     Save changes? (y/N) y
 
 ### Secure Your GPG Key
 
-{: .caution}
->
-> If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+{{< caution >}}
+If you fail to back up or otherwise secure your key, any hardware failure will lead to you being unable to access your Linode with this key. If you lock out password access through SSH, you'll need to use [Lish](/docs/networking/using-the-linode-shell-lish) to regain access.
+{{< /caution >}}
 
 You should always have a backup of your private key in case something goes wrong and you end up locked out of everything that requires it. This private key, along with the instructions in this guide, will be enough to get your setup working again if you need to start afresh on a new computer.
 
@@ -264,7 +263,7 @@ You should always have a backup of your private key in case something goes wrong
 3.  Back up your subkeys, replacing `key-id` with the eight-character key ID for each subkey:
 
         gpg2 -a --export-secret-subkeys key-id >> /Volumes/USB_DEVICE/<key id>.sub.key
-        
+
 If something bad happens and you lose your keys, you can re-import them by overwriting the `~/.gnupg` directory with your copy, and using:
 
     gpg2 --allow-secret-key-import --import key-file
@@ -283,17 +282,17 @@ You can reimport it with the ever-handy `gpg2 --import key-file` command.
 
 ## Move Your Key to a Smartcard or YubiKey (Optional)
 
-{: .note}
->
-> If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personlisation Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
+{{< note >}}
+If you're using a brand new YubiKey, you'll need to enable OpenPGP Card / CCID Mode first. This can be done through the YubiKey Personlisation Tool, or by running `ykpersonalise -m82`. `ykpersonalise` can be installed through your package manager.
+{{< /note >}}
 
 ### Secure Your Card
 
 It is assumed that you have already configured your card/YubiKey's (herein referred to as 'GPG device') owner information. It is highly recommended that you secure your card before you start this section.
 
-{: .note}
->
-> Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or review online documentation.
+{{< note >}}
+Some of these commands may ask for a PIN or Admin PIN. The default PIN is usually `123456`, and the default Admin PIN is usually `12345678`. If these don't work, contact the manufacturer or review online documentation.
+{{< /note >}}
 
 1.  Plug in the device and execute:
 
@@ -318,22 +317,22 @@ For reference, your window should resemble the following. This example is abbrev
     $ gpg2 --card-edit
     gpg/card> admin
     Admin commands are allowed
-    
+
     gpg/card> passwd
     gpg: OpenPGP card no. D0000000000000000000000000000000 detected
-    
+
     1 - change PIN
     2 - unblock PIN
     3 - change Admin PIN
     4 - set the Reset Code
     Q - quit
-    
+
     Your selection? 1
     PIN changed.
     Your selection? 3
     PIN changed.
     Your selection? q
-    
+
     gpg/card> quit
 
 ### Transfer Your Subkey
@@ -350,12 +349,12 @@ For reference, your window should resemble the following. This example is abbrev
 
         key 2
 
-    Remember, if you have more subkeys this command should be changed as appropriate. 
+    Remember, if you have more subkeys this command should be changed as appropriate.
 
 4.  Transfer the key:
 
         keytocard
-        
+
 5.  Select `(3) Authentication key` to store your key on the third slot of the device. If this is not an option, ensure that you've selected the appropriate subkey.
 
 6.  Enter your passphrase.
@@ -367,52 +366,53 @@ For reference, your window should resemble the following. This example is abbrev
         gpg -a --export-secret-subkeys key-id >> /Volumes/USB_DEVICE/key-id.stubs.gpg
 
     Be sure to substitute your own key ID for `key-id`. You can reimport these with an ordinary `gpg2 --import <stub file>` on your private machine.
-    
+
 After all this, your output should resemble the following:
 
     $ gpg2 --edit-key 71735D23
-    
+
     Secret key is available.
-    
-    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC  
+
+    pub  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09  usage: SC
                      trust: ultimate      validity: ultimate
-    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E   
+    sub  4096R/693C5635  created: 2016-04-09  expires: 2017-04-09  usage: E
     sub  4096R/48B9C23C  created: 2016-04-09  expires: 2017-04-09  usage: A
     [ultimate] (1) Your Name <you@yoursite.net>
-    
+
     gpg> toggle
-    
+
     sec  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09
-    ssb  4096R/693C5635  created: 2016-04-09  expires: never     
-    ssb  4096R/48B9C23C  created: 2016-04-09  expires: never  
+    ssb  4096R/693C5635  created: 2016-04-09  expires: never
+    ssb  4096R/48B9C23C  created: 2016-04-09  expires: never
     (1) Your Name <you@yoursite.net>
-    
+
     gpg> key 2
-    
+
     sec  4096R/71735D23  created: 2016-04-09  expires: 2017-04-09
-    ssb  4096R/693C5635  created: 2016-04-09  expires: never     
+    ssb  4096R/693C5635  created: 2016-04-09  expires: never
     ssb* 4096R/48B9C23C  created: 2016-04-09  expires: never
     (1) Your Name <you@yoursite.net>
-    
+
     gpg> keytocard
     Signature key ....: none
     Encryption key....: none
     Authentication key: none
-    
+
     Please select where to store the key:
        (3) Authentication key
     Your selection? 3
-    
+
     You need a passphrase to unlock the secret key for
     user: "Your Name <you@yoursite.net>"
     4096-bit RSA key, ID 71735D23, created 2016-04-09
-    
+
     gpg> save
 
 Congratulations! You've successfully transferred your authentication subkey to your device.
 
-{: .caution}
->If you weren't using a VM or offline machine, back up your local copies of the private keys, delete them, and ensure that the rest of the keys are still on the card.
+{{< caution >}}
+If you weren't using a VM or offline machine, back up your local copies of the private keys, delete them, and ensure that the rest of the keys are still on the card.
+{{< /caution >}}
 
 ## Serve Your GPG key Instead of an SSH key
 
@@ -424,53 +424,53 @@ Return to your local machine, import all of the appropriate GPG keys and insert 
 
     **Linux:**
 
-    {: .file-excerpt}
-    ~/.bash_profile
-    :   ~~~
-        if [ -f "${HOME}/.gpg-agent-info" ]; then
-             source "${HOME}/.gpg-agent-info"
-               export GPG_AGENT_INFO
-               export SSH_AUTH_SOCK
-               export SSH_AGENT_PID
-        else
-            eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
-        fi
-        ~~~
-    
+    {{< file-excerpt "~/.bash_profile" >}}
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+     source "${HOME}/.gpg-agent-info"
+       export GPG_AGENT_INFO
+       export SSH_AUTH_SOCK
+       export SSH_AGENT_PID
+else
+    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+fi
+
+{{< /file-excerpt >}}
+
+
     **OS X**
-    
-    {: .file-excerpt}
-    ~/.bash_profile
-    :   ~~~
-        [ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
-        if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
-            export GPG_AGENT_INFO
-            export SSH_AUTH_SOCK
-            export SSH_AGENT_PID
-        else
-            eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
-        fi
-        ~~~
-    
+
+    {{< file-excerpt "~/.bash_profile" >}}
+[ -f ~/.gpg-agent-info ] && source ~/.gpg-agent-info
+if [ -S "${GPG_AGENT_INFO%%:*}" ]; then
+    export GPG_AGENT_INFO
+    export SSH_AUTH_SOCK
+    export SSH_AGENT_PID
+else
+    eval $( gpg-agent --daemon --write-env-file ~/.gpg-agent-info )
+fi
+
+{{< /file-excerpt >}}
+
+
     This ensures that SSH can 'see' your GPG keys and automatically starts `gpg-agent` as needed.
-    
+
 2.  Edit or create `~/.gnupg/gpg-agent.conf`:
-    
-    {: .file-excerpt}
-    ~/.gnupg/gpg-agent.conf
-    :   ~~~
-        default-cache-ttl 600
-        max-cache-ttl 7200
-        enable-ssh-support
-        write-env-file ~/.gpg-agent-info
-        ~~~
-        
+
+    {{< file-excerpt "~/.gnupg/gpg-agent.conf" >}}
+default-cache-ttl 600
+max-cache-ttl 7200
+enable-ssh-support
+write-env-file ~/.gpg-agent-info
+
+{{< /file-excerpt >}}
+
+
     If you're on OS X and previously installed [GPGTools](https://gpgtools.org/), you can also add the line:
 
         pinentry-program /usr/local/MacGPG2/libexec/pinentry-mac.app/Contents/MacOS/pinentry-mac
-    
+
     This allows you to use the PIN entry program provided by GPGTools.
-    
+
 3.  Restart the GPG agent:
 
         sudo killall gpg-agent

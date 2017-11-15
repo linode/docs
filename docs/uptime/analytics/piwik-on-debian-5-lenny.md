@@ -4,24 +4,23 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'Get in-depth web analytics with Piwik, a self-hosted, open source solution on Debian Lenny.'
-keywords: 'open source analytics,piwik debian,piwik,analytics,debian. tracking,statistics'
+keywords: ["open source analytics", "piwik debian", "piwik", "analytics", "debian. tracking", "statistics"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/analytics/piwik/debian-5-lenny/']
-modified: Tuesday, January 28th, 2014
+aliases: ['web-applications/analytics/piwik/debian-5-lenny/']
+modified: 2014-01-28
 modified_by:
   name: Linode
-published: 'Thursday, December 10th, 2009'
+published: 2009-12-10
 title: 'Piwik on Debian 5 (Lenny)'
 ---
 
 Piwik is a "downloadable, open source (GPL licensed) web analytics software program." As an alternative to services like Google Analytics, Piwik allows you to host your statistics services on your own server and have full ownership of control of the data collected from your visitors.
 
-For the purpose of this guide, we assume that you have running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+For the purpose of this guide, we assume that you have running and functional server, and have followed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 Beyond the basics, Piwik requires a functioning LAMP stack, which is outlined in our [Debian 5 (Lenny) LAMP guide](/docs/lamp-guides/debian-5-lenny/). Make sure you follow the steps for installing PHP and PHP-MySQL support. You will also want to be logged in over SSH as root.
 
-Prerequisites
--------------
+# Prerequisites
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -36,11 +35,11 @@ Piwik requires a few additional dependencies beyond LAMP fundamentals. Most impo
 
 If you followed our recommended settings in the LAMP guide for Debian, you would have set PHP's `memory_limit` value to 64 megabytes. For "medium to high traffic" sites, Piwik's creators recommend setting this value to 128 megabytes. Edit the `php.ini` file so `memory_limit` setting is reflects this value:
 
-{: .file-excerpt }
-/etc/php5/apache2/php.ini
-:   ~~~ ini
-    memory_limit = 128M
-    ~~~
+{{< file-excerpt "/etc/php5/apache2/php.ini" ini >}}
+memory_limit = 128M
+
+{{< /file-excerpt >}}
+
 
 ### Restart the Web Server
 
@@ -48,27 +47,26 @@ You'll need to restart Apache after installing php5-gd and modifying the PHP set
 
     /etc/init.d/apache2 restart
 
-Configure a Dedicated Virtual Host for Piwik
---------------------------------------------
+# Configure a Dedicated Virtual Host for Piwik
 
 This phase of the installation process is optional, but recommended. Here we configure a subdomain and virtual host configuration in Apache specifically for Piwik. This makes it easy to separate the statistics package from the website or websites that Piwik monitors.
 
-To create a virtual host we need to add an "[A Record](/docs/dns-guides/introduction-to-dns#a_aaaa_records)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
+To create a virtual host we need to add an "[A Record](/docs/networking/dns/dns-records-an-introduction/#a-and-aaaa)," for the subdomain that Piwik will use; in our example this is `stats.example.com`. If your DNS is hosted with Linode's DNS servers, you can configure the A record in the [DNS manager](/docs/dns-guides/configuring-dns-with-the-linode-manager). Additionally, we'll need to create a new virtual hosting file for this sub domain.
 
 We'll create the following host file, located at `/etc/apache2/sites-available/stats.example.com`:
 
-{: .file }
-/etc/apache2/sites-available/stats.example.org
-:   ~~~ apache
-    <VirtualHost *:80>
-        ServerAdmin admin@stats.example.org
-        ServerName stats.example.org
-        ServerAlias stats.example.org
-        DocumentRoot /srv/www/stats.example.org/public_html/
-        ErrorLog /srv/www/stats.example.org/logs/error.log
-        CustomLog /srv/www/stats.example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/stats.example.org" apache >}}
+<VirtualHost *:80>
+    ServerAdmin admin@stats.example.org
+    ServerName stats.example.org
+    ServerAlias stats.example.org
+    DocumentRoot /srv/www/stats.example.org/public_html/
+    ErrorLog /srv/www/stats.example.org/logs/error.log
+    CustomLog /srv/www/stats.example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 We'll need to create the `logs/` and `public_html/` directories by issuing the following commands:
 
@@ -82,8 +80,7 @@ Enable the virtual host and reload the web server's configuration with the follo
 
 Remember that the configuration of a special virtual host for Piwik is optional. If you use a web server other than Apache, you will need to pursue different steps to configure the virtual host.
 
-Installing Piwik
-----------------
+# Installing Piwik
 
 First we'll download the latest distribution of the Piwik package. Issue the following two commands:
 
@@ -108,8 +105,7 @@ When Piwik's installation process is complete, you will receive JavaScript snipp
 
 Congratulations! You now have a fully functional statistics and web traffic analytics package running on your own server.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 

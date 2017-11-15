@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to monitoring and maintaining your server.
-keywords: 'monitor,monitoring,maintaining,maintenance'
+keywords: ["monitor", "monitoring", "maintaining", "maintenance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['monitoring-and-maintaining/']
-modified: Wednesday, February 22nd, 2017
+aliases: ['monitoring-and-maintaining/']
+modified: 2017-02-22
 modified_by:
   name: Linode
-published: 'Wednesday, August 22nd, 2012'
+published: 2012-08-22
 title: Monitoring and Maintaining Your Server
 ---
 
@@ -66,7 +66,7 @@ If you're new to performance monitoring, you can get started by logging in to th
 -   **CPU Utilization:** Monitor how your Linode's CPU cores are being utilized. Note that each of your Linode's CPU cores is capable of 100% utilization, which means you could see this graph spike well over 100%, depending on your Linode plan size.
 -   **Network Traffic:** Keep tabs on how much incoming and outgoing bandwidth your server is using.
 -   **IPv6 Network Traffic:** Wondering if any of your visitors are using IPv6? Check this graph to see how much bandwidth has been transferred over IPv6.
--   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/quick-start-troubleshooting#sph_is-there-a-disk-i-o-bottleneck).
+-   **Disk IO:** Watch for [disk input/output bottlenecks](/docs/troubleshooting/troubleshooting/#is-there-a-disk-io-bottleneck).
 
 When you first start monitoring the graphs, you won't know what numbers are normal. Don't worry. With time and practice, you'll learn what the graphs are supposed to look like when your server is operating normally. Then you'll be able to spot performance abnormalities before they turn into full-blown problems.
 
@@ -89,9 +89,9 @@ Here's how to turn on and customize the alerts:
 
 You have successfully configured email alerts in the Linode Manager.
 
- {: .note }
->
-> If you receive an email threshold alert from the Linode Manager, don't panic. There's not necessarily anything wrong with your Linode. For example, your server may be operating above the threshold if you're compiling software or if a major website just linked to your blog.
+ {{< note >}}
+If you receive an email threshold alert from the Linode Manager, don't panic. There's not necessarily anything wrong with your Linode. For example, your server may be operating above the threshold if you're compiling software or if a major website just linked to your blog.
+{{< /note >}}
 
 ### Using Linode Longview
 
@@ -138,15 +138,15 @@ To check for software updates and install them in Ubuntu or Debian, enter the fo
     apt-get update
     apt-get upgrade --show-upgraded
 
- {: .note }
->
-> If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/using-linux/package-management).
+{{< note >}}
+If you're using a distribution other than Ubuntu or Debian, you can learn more about package management by reading our [Linux Package Management guide](/docs/using-linux/package-management).
+{{< /note >}}
 
 There are ways to automate the installation of software updates, but this is not recommended. You should always manually review the lists of available patches before installing updates.
 
 ### Applying Kernel Updates
 
-When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/disk-images-config-profiles#sph_id5) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
+When you first sign up for Linode and create a virtual server, the Linode Manager automatically creates a [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) with the latest kernel selected. We [update the kernels](http://www.linode.com/kernels/) as necessary and make them available in the Linode Manager. In most cases, new kernels will automatically be selected in the configuration profile in the Linode Manager — once we release a new kernel, all you have to do is reboot your Linode to start using it.
 
 Here's how to check for a new kernel and start using it on your Linode:
 
@@ -167,9 +167,9 @@ Here's how to check for a new kernel and start using it on your Linode:
 
 7.  From the **Kernel** menu, verify that **Latest 64 bit** is selected, as shown below.
 
- {: .note }
->
-> Be sure to select the correct kernel (32- or 64-bit) for your distribution. The 64-bit kernels are available by selecting **Latest 64 bit**.
+ {{< note >}}
+Be sure to select the correct kernel (32- or 64-bit) for your distribution. The 64-bit kernels are available by selecting **Latest 64 bit**.
+{{< /note >}}
 
 [![Selecting the latest kernel](/docs/assets/1194-monitor7.png)](/docs/assets/1194-monitor7.png)
 
@@ -188,6 +188,6 @@ There are two ways to upgrade a Linode running an unsupported release. You can u
 -   To upgrade your server, use one of our [Upgrading Guides](/docs/upgrading) or check the distribution's website for instructions.
 -   To create a new Linode and transfer your files from the old server, use our [Getting Started](/docs/getting-started) guide and then [migrate the disk](/docs/migrate-to-linode/disk-images/migrating-a-server-to-your-linode) from the old server to transfer the files, or use an FTP client.
 
- {: .note }
->
-> Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
+ {{< note >}}
+Check the distribution's website to learn when support for your release will be discontinued. Ubuntu offers a *long-term support* (LTS) release that is supported for five years.
+{{< /note >}}

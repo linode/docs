@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Create Custom Instances and Automate Deployment with StackScripts.'
-keywords: 'ami,automation,elasticity,cloud,custom instance'
+keywords: ["ami", "automation", "elasticity", "cloud", "custom instance"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['stackscripts/']
-modified: Wednesday, November 12, 2014
+aliases: ['stackscripts/']
+modified: 2014-11-12
 modified_by:
   name: Ricardo Feliciano
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: Automate Deployment with StackScripts
 external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
@@ -21,13 +21,13 @@ external_resources:
 
 StackScripts are usually Bash scripts, stored in the Linode Manager, and can be accessed when you use the **Rebuild** link from the Linode Dashboard. During the first boot job of the newly created disks, the StackScript will run, using any variable you may have added, and perform the scripted commands.
 
- {: .caution }
->
-> The **Rebuild** option will destroy all existing disks and profiles.
+ {{< caution >}}
+The **Rebuild** option will destroy all existing disks and profiles.
+{{< /caution >}}
 
 ## Deploying from a StackScript
 
-1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#resizing-a-disk#resizing-a-disk) or [remove](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
+1.  We start by navigating to the Linode Dashboard. Before deploying a new disk, make sure you have enough storage space available. If not you may need to [resize](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) or [remove](/docs/platform/disk-images/disk-images-and-configuration-profiles/#removing-a-disk) a disk. Alternately you can create a new Linode for testing purposes.
 2.  Click on the **Deploy a Linux Distribution** link.
 
     [![Click the 'Deploy a Distribution' link.](/docs/assets/1682-stackscripts-1.png)](/docs/assets/1682-stackscripts-1.png)
@@ -80,34 +80,34 @@ Alternatively, you can follow along with this video, which will show you how to 
 
     Here's the code used in our example script. The comment lines explain what each section does:
 
-    {: .file }
-    Initial Setup StackScript
-    : ~~~ bash
-      #!/bin/bash
-      # This block defines the variables the user of the script needs to input
-      # when deploying using this script.
-      #
-      #
-      #<UDF name="hostname" label="The hostname for the new Linode.">
-      # HOSTNAME=
-      #
-      #<UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
-      # FQDN=
+    {{< file "Initial Setup StackScript" bash >}}
+#!/bin/bash
+# This block defines the variables the user of the script needs to input
+# when deploying using this script.
+#
+#
+#<UDF name="hostname" label="The hostname for the new Linode.">
+# HOSTNAME=
+#
+#<UDF name="fqdn" label="The new Linode's Fully Qualified Domain Name">
+# FQDN=
 
-      # This sets the variable $IPADDR to the IP address the new Linode receives.
-      IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
+# This sets the variable $IPADDR to the IP address the new Linode receives.
+IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
 
-      # This updates the packages on the system from the distribution repositories.
-      apt-get update
-      apt-get upgrade -y
+# This updates the packages on the system from the distribution repositories.
+apt-get update
+apt-get upgrade -y
 
-      # This section sets the hostname.
-      echo $HOSTNAME > /etc/hostname
-      hostname -F /etc/hostname
+# This section sets the hostname.
+echo $HOSTNAME > /etc/hostname
+hostname -F /etc/hostname
 
-      # This section sets the Fully Qualified Domain Name (FQDN) in the hosts file.
-      echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
-      ~~~
+# This section sets the Fully Qualified Domain Name (FQDN) in the hosts file.
+echo $IPADDR $FQDN $HOSTNAME >> /etc/hosts
+
+{{< /file >}}
+
 
 3.  Once you've written the StackScript press **Save Changes**. Remember, you can always edit the script later if you want to make adjustments.
 4.  Now you can go back to the **Deploy from StackScript** page to see that your new StackScript is available. It can be deployed following the same procedure as step 2 of [Using a Community StackScript](#using-a-community-stackscript)
@@ -161,74 +161,74 @@ You can see the [community StackScript Library](http://linode.com/stackscripts/)
 
 If you have an existing deployment script, you can use StackScripts to deploy instances with this script. Consider the following methods for "bootstrapping" one script with StackScripts:
 
-{: .file }
-StackScript
-:   ~~~ bash
-    #!/bin/bash
+{{< file "StackScript" bash >}}
+#!/bin/bash
 
-    wget http://example.com/ --output-document=/opt/deployment-script.pl
-    chmod +x /opt/deployment-script.pl
+wget http://example.com/ --output-document=/opt/deployment-script.pl
+chmod +x /opt/deployment-script.pl
 
-    ./opt/deployment-script.pl
-    ~~~
+./opt/deployment-script.pl
+
+{{< /file >}}
+
 
 This approach is useful for bootstrapping scripts written in languages that are not included in the default instance template, as in the following example:
 
-{: .file }
-StackScript
-:   ~~~ bash
-    #!/bin/bash
+{{< file "StackScript" bash >}}
+#!/bin/bash
 
-    if [ -f /etc/apt/sources.list ]; then
-       apt-get upgrade
-       apt-get -y install php5
-    elif [-f /etc/yum.conf ]; then
-       yum -y install php
-    elif [-f /etc/pacman.conf ]; then
-       pacman -Sy
-       pacman -S --noconfirm pacman
-       pacman -S --noconfirm php
-    else
-       echo "Your distribution is not supported by this StackScript"
-       exit
-    fi
+if [ -f /etc/apt/sources.list ]; then
+   apt-get upgrade
+   apt-get -y install php5
+elif [-f /etc/yum.conf ]; then
+   yum -y install php
+elif [-f /etc/pacman.conf ]; then
+   pacman -Sy
+   pacman -S --noconfirm pacman
+   pacman -S --noconfirm php
+else
+   echo "Your distribution is not supported by this StackScript"
+   exit
+fi
 
-    wget http://example.com/ --output-document=/opt/deployment-script.php
-    chmod +x /opt/deployment-script.php
+wget http://example.com/ --output-document=/opt/deployment-script.php
+chmod +x /opt/deployment-script.php
 
-    ./opt/deployment-script.php
-    ~~~
+./opt/deployment-script.php
+
+{{< /file >}}
+
 
 If you do not want to rely on an existing external server to host your scripts for download, you can embed the bootstrapped script in the StackScript. Consider the following example:
 
-{: .file }
-StackScript
-:   ~~~ bash
-    #!/bin/bash
+{{< file "StackScript" bash >}}
+#!/bin/bash
 
-    if [ -f /etc/apt/sources.list ]; then
-       apt-get upgrade
-       apt-get -y install php5
-    elif [-f /etc/yum.conf ]; then
-       yum -y install php
-    elif [-f /etc/pacman.conf ]; then
-       pacman -Sy
-       pacman -S --noconfirm pacman
-       pacman -S --noconfirm php
-    else
-       echo "Your distribution is not supported by this StackScript"
-       exit
-    fi
+if [ -f /etc/apt/sources.list ]; then
+   apt-get upgrade
+   apt-get -y install php5
+elif [-f /etc/yum.conf ]; then
+   yum -y install php
+elif [-f /etc/pacman.conf ]; then
+   pacman -Sy
+   pacman -S --noconfirm pacman
+   pacman -S --noconfirm php
+else
+   echo "Your distribution is not supported by this StackScript"
+   exit
+fi
 
-    cat >/opt/deployment-script.php <<EOF
-    #!/usr/bin/php
-    <?php print('Hello World!'); ?>
-    EOF
+cat >/opt/deployment-script.php <<EOF
+#!/usr/bin/php
+<?php print('Hello World!'); ?>
+EOF
 
-    chmod +x /opt/deployment-script.php
+chmod +x /opt/deployment-script.php
 
-    ./opt/deployment-script.php
-    ~~~
+./opt/deployment-script.php
+
+{{< /file >}}
+
 
 ### Using StackScripts from the Linode API
 
@@ -240,9 +240,9 @@ The [Linode API](http://www.linode.com/api/index.cfm) contains support for manag
 -   [stackscript.update](https://www.linode.com/api/stackscript/stackscript.update)
 -   [linode.disk.createfromstackscript](https://www.linode.com/api/linode/linode.disk.createfromstackscript)
 
-    {: .note }
-    >
-    > If creating a disk with `linode.disk.createfromstackscript`, you will need to create a configuration profile and attach the disk to the profile before you can boot and run the StackScript.
+    {{< note >}}
+If creating a disk with `linode.disk.createfromstackscript`, you will need to create a configuration profile and attach the disk to the profile before you can boot and run the StackScript.
+{{< /note >}}
 
 ### Variables and UDFs
 
@@ -250,7 +250,6 @@ The StackScript system provides a basic markup specification that interfaces wit
 
 The UDF tags are explained in the table below:
 
-{: .table .table-striped}
 |Label    | Description           | Requirements
 |--------------------------------------------
 |name     | The variable name     | Alphanumeric, len <64, must be unique
@@ -263,47 +262,45 @@ The UDF tags are explained in the table below:
 
 Below is an example implementation of the UDF variables:
 
-{: .file-excerpt }
-StackScript
-:   ~~~ bash
-    # [...]
-    <UDF name="var1" Label="A question" default="" example="Enter something here." />
-    <UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
-    <UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
-    <UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
-    # [...]
-    ~~~
+{{< file-excerpt "StackScript" bash >}}
+# [...]
+<UDF name="var1" Label="A question" default="" example="Enter something here." />
+<UDF name="var2" Label="Pick one of" oneOf="foo,bar" example="Enter something here." />
+<UDF name="var3" Label="A question" oneOf="foo,bar" default="foo" />
+<UDF name="var4" Label="Pick several from" manyOf="foo,bar" default="foo,bar" />
+# [...]
 
-{: .note }
-> If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
+{{< /file-excerpt >}}
+
+
+{{< note >}}
+If you would like to create a masked password input field, use the word 'password' anywhere in the UDF name.
+{{< /note >}}
 
 There are also a set of Linode created environmental variables that can be used for API calls or other tasks from within the script.
 
-{: .table .table-striped}
 | Environment Variable               | Description                                                                               |
 |:-----------------------------------|:------------------------------------------------------------------------------------------|
 | `LINODE_ID=123456`                 | The Linode's ID number                                                                    |
 | `LINODE_LISHUSERNAME=linode123456` | The Linode's full lish-accessible name                                                    |
 | `LINODE_RAM=1024`                  | The RAM available on this Linode's plan                                                   |
 | `LINODE_DATACENTERID=6`            | The ID number of the data center containing the Linode. See our API for more information. |
-|:-----------------------------------|:------------------------------------------------------------------------------------------|
-
 
 
 If you do not want to use the StackScript system to set your environment variables, you might consider hosting files with settings on a different system. This is accomplished with the following fragment:
 
-{: .file-excerpt }
-StackScript
-:   ~~~ bash
-    # [...]
-    IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
+{{< file-excerpt "StackScript" bash >}}
+# [...]
+IPADDR=$(/sbin/ifconfig eth0 | awk '/inet / { print $2 }' | sed 's/addr://')
 
-    wget http://example.com/base.env --output-document=/tmp/base.env
-    wget http://example.com/$IPADDR.env --output-document=/tmp/system.env
+wget http://example.com/base.env --output-document=/tmp/base.env
+wget http://example.com/$IPADDR.env --output-document=/tmp/system.env
 
-    source /tmp/base.env
-    source /tmp/system.env
-    # [...]
-    ~~~
+source /tmp/base.env
+source /tmp/system.env
+# [...]
+
+{{< /file-excerpt >}}
+
 
 Make sure that there are files accessible via `HTTP` hosted on the `example.com` domain for both basic environment (e.g. `base.env`) and machine specific (e.g. `[ip-address].env`) files before launching this StackScript. Also consider the possible security implications of allowing any file with sensitive information regarding your deployment to be publicly accessible.

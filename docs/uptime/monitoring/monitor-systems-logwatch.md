@@ -3,12 +3,12 @@ author:
   name: Elle Krout
   email: ekrout@linode.com
 description: 'Use Logwatch to generate digests and analyze your server logs'
-keywords: 'logwatch,security,logging,audit,logs'
+keywords: ["logwatch", "security", "logging", "audit", "logs"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, August 12th, 2015
+modified: 2015-08-12
 modified_by:
   name: Elle Krout
-published: 'Tuesday, August 12th, 2015'
+published: 2015-08-12
 title: Monitor System Logs with Logwatch
 ---
 
@@ -16,9 +16,9 @@ title: Monitor System Logs with Logwatch
 
 By default, Logwatch uses Sendmail to send digests.
 
-{: .note}
->
->The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root**. If logged in as a superuser, it is recommended that you `su` into root. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Logwatch and Sendmail
 
@@ -34,30 +34,29 @@ By default, Logwatch uses Sendmail to send digests.
 
 	Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
 
-	{: .note}
-	>
-	>Other SMTP clients can also be used for delivering Logwatch messages.
+	{{< note >}}
+Other SMTP clients can also be used for delivering Logwatch messages.
+{{< /note >}}
 
 3.	Edit the `/etc/postfix/main.cf` file to add your domain information, and allow for send-only mail, replacing `hostname.example.com` with your own hostname and domain:
 
-	{: .file-excerpt}
-	/etc/postfix/main.cf
-	:	~~~ conf
-		myhostname = hostname.example.com
-		inet_interfaces = loopback-only
-		~~~
+	{{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+myhostname = hostname.example.com
+inet_interfaces = loopback-only
 
-	{: .note}
-	>
-	>Both A/AAAA, and MX records will need to be set for your domain.
+
+{{< /file-excerpt >}}
+
+
+	{{< note >}}
+Both A/AAAA, and MX records will need to be set for your domain.
+{{< /note >}}
 
 4.	Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
 
-	{: .file-excerpt}
-	/etc/postfix/aliases
-	:	~~~ conf
-		root:           root@hostname.example.com
-		~~~
+	{{< file-excerpt "/etc/postfix/aliases" >}}
+root:           root@hostname.example.com
+{{< /file-excerpt >}}
 
 5.  Run `newaliases` after editing the aliases list.
 
@@ -121,20 +120,21 @@ The default configuration file for Logwatch is located at `/usr/share/logwatch/d
 
 The following settings are the most comment configuration changes that will need to be made. Others can be found in the `logwatch.conf` file, explained in the comments.
 
-{: .note}
->
->If Logwatch initially does not appear to run, within the `logwatch.conf` file, change the `Details` setting to `Med`.
+{{< note >}}
+If Logwatch initially does not appear to run, within the `logwatch.conf` file, change the `Details` setting to `Med`.
+{{< /note >}}
 
 ### Log Directories
 
 By default, Logwatch digests will include all logs contained within `/var/log`. If any other directories contain logs, such as website directories, they can be added by including additional `LogDir` lines. For example:
 
-{: .file-excerpt}
-/usr/share/logwatch/default.conf/logwatch.conf
-:	~~~
-	LogDir = /var/log
-	LogDir = /var/www/example.com/logs
-	~~~
+{{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
+LogDir = /var/log
+LogDir = /var/www/example.com/logs
+
+
+{{< /file-excerpt >}}
+
 
 ### Print Logwatch Digest to Console
 
@@ -145,21 +145,22 @@ The default Logwatch configuration will output the digest to your Linode's conso
 
 The Logwatch digest can be sent to local users or external email addresses, in plain text or HTML formats.
 
-{: .note}
->
->Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your choosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
->
->If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.
+{{< note >}}
+Prior to sending mail externally or locally ensure you have Sendmail installed on the Linode. If you choose to use a different MTA client, change the `mailer` line in the Logwatch configuration file to contain the directory of your choosen MTA, or alias `/usr/sbin/sendmail` to your MTA.
+
+If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.
+{{< /note >}}
 
 1.	Change the `Output` value to `mail`. If you wish to recieve the messages in HTML format change the `Format` value to `html`.
 
 2.	Change the `MailTo` address to a valid email address, or local account user. For example, to send mail to the `root` user change the line to read:
 
-	{: .file-excerpt}
-	/usr/share/logwatch/default.conf/logwatch.conf
-	:	~~~
-		MailTo = root
-		~~~
+	{{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
+MailTo = root
+
+
+{{< /file-excerpt >}}
+
 
 3.	Change the `MailFrom` value to a valid email address, or to a local user. This can also be left as `Logwatch`.
 
@@ -196,10 +197,11 @@ Logwatch often works best when configured to run daily and send or save a report
 
 2.	Add a line for Logwatch. The following code is configured to run at 00:30 each day:
 
-	{: .file-excerpt}
-	/etc/crontab
-	:	~~~
-		30 0  * * *          /usr/sbin/logwatch
-		~~~
-		
+	{{< file-excerpt "/etc/crontab" >}}
+30 0  * * *          /usr/sbin/logwatch
+
+
+{{< /file-excerpt >}}
+
+
 	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).

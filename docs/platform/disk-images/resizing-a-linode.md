@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to upgrading and resizing your Linode
-keywords: 'upgrading,resizing'
+keywords: ["upgrading", "resizing"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['resizing/','migrate-to-linode/disk-images/resizing-a-linode/']
-modified: Thursday, March 2nd, 2017
+aliases: ['resizing/','migrate-to-linode/disk-images/resizing-a-linode/']
+modified: 2017-03-02
 modified_by:
   name: Linode
-published: 'Tuesday, February 14th, 2017'
+published: 2017-02-14
 title: Resizing a Linode
 ---
 
@@ -17,17 +17,17 @@ We make it easy to upgrade or downgrade your Linode by changing plans and adding
 
 ![Resizing a Linode](/docs/assets/resizing_a_linode.png "Resizing a Linode")
 
-{: .note }
->
-> Linodes can be resized to a smaller or larger plan. A [standard](https://www.linode.com/pricing#standard) plan can also be converted to a [high memory](https://www.linode.com/pricing#high-memory) plan, or vice versa.
+{{< note >}}
+Linodes can be resized to a smaller or larger plan. A [standard](https://www.linode.com/pricing#standard) plan can also be converted to a [high memory](https://www.linode.com/pricing#high-memory) plan, or vice versa.
+{{< /note >}}
 
 ## Resizing Your Linode
 
 You can move your Linode from one plan to another by using the *resize* feature. To complete the resizing process, your Linode will be powered off and migrated to a different host in the same data center. Your data, configuration profiles, and IP addresses will be all be moved to the new host. Please note that the migration will take approximately 1 minute for every 3-5 gigabytes of data.
 
- {: .note }
->
-> If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/disk-images-config-profiles#resizing-a-disk).
+{{< note >}}
+If you're downgrading your plan, verify that your disks are using less space than the new plan provides. for more information, see our documentation on [resizing a disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk).
+{{< /note >}}
 
 Here's how to resize your Linode:
 

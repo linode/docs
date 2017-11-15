@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use PHP CGI to run PHP scripts as indivudual users.'
-keywords: 'php cgi,php,apache,cgi,php scripts,web apps,web applications'
+keywords: ["php cgi", "php", "apache", "cgi", "php scripts", "web apps", "web applications"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/php-cgi/debian-7-wheezy/','websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','websites/apache/run-php-cgi-apapache-debian-7/']
-modified: Wednesday, November 18th, 2015
+aliases: ['web-servers/apache/php-cgi/debian-7-wheezy/','websites/apache/run-php-applications-under-cgi-with-apache-on-debian-7-wheezy/','websites/apache/run-php-cgi-apapache-debian-7/']
+modified: 2015-11-18
 modified_by:
   name: Linode
-published: 'Monday, January 13th, 2014'
+published: 2014-01-13
 title: 'Run PHP with CGI and Apache on Debian 7 (Wheezy)'
 external_resources:
  - '[The PHP Homepage](http://php.net/)'
@@ -19,9 +19,9 @@ external_resources:
 
 In instances where running the `mod_php` module to run PHP scripts on Apache is not sufficient, PHP can be run as a CGI binary. Combined with the `itk` multi-processing module (MPM), PHP scripts can be run as user processes in a per-virtual host setup. This guide will walk users through the proccess of setting up Apache and PHP CGI.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -44,7 +44,7 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
         sudo apt-get install apache2
 
-2.  You can now [configure virtual hosting](/docs/web-servers/apache/installation/debian-7-wheezy#configure_apache_for_named_based_virtual_hosting) in accordance with the needs of your server. Next, install the CGI binaries:
+2.  You can now [configure virtual hosting](/docs/web-servers/apache/apache-web-server-debian-7/#configure-apache-for-virtual-hosting) in accordance with the needs of your server. Next, install the CGI binaries:
 
         sudo apt-get install php5-cgi
 
@@ -58,13 +58,14 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
 2.  The required directives can be set anywhere in Apache's [configuration tree](/docs/web-servers/apache/configuration/configuration-basics). We recommend creating the `php-cgi.conf` file in Apache's `conf.d/` directory and setting these variables there. For Debian systems this directory is located at `/etc/apache2/conf.d/`. You may also choose to place these settings in your `/etc/apache2/httpd.conf` file. Regardless of their location, the relevant settings are:
 
-    {: .file-excerpt }
-    Apache Configuration Block
-    :   ~~~ apache
-	ScriptAlias /local-bin /usr/bin
-	AddHandler application/x-httpd-php5 php
-	Action application/x-httpd-php5 /local-bin/php-cgi
-	~~~
+    {{< file-excerpt "Apache Configuration Block" apache >}}
+ScriptAlias /local-bin /usr/bin
+AddHandler application/x-httpd-php5 php
+Action application/x-httpd-php5 /local-bin/php-cgi
+
+
+{{< /file-excerpt >}}
+
 
     In this example, the path to the `php-cgi` binary is `/usr/bin/php-cgi`. All files with the `php` extension will be handed to the PHP CGI binary.
 
@@ -72,17 +73,18 @@ In instances where running the `mod_php` module to run PHP scripts on Apache is 
 
     The configuration file for the CGI executable of PHP is located at `/etc/php5/cgi/php.ini`. You can modify this file to suit the needs of your deployment.
 
-    {: .file-excerpt }
-    /etc/php5/cgi/php.ini
-    :   ~~~ ini
-	error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
-	display_errors = Off
-	log_errors = On
-	error_log = /var/log/php.log
-	max_execution_time = 30
-	memory_limit = 64M
-	register_globals = Off
-	~~~
+    {{< file-excerpt "/etc/php5/cgi/php.ini" ini >}}
+error_reporting = E_COMPILE_ERROR|E_RECOVERABLE_ERROR|E_ERROR|E_CORE_ERROR
+display_errors = Off
+log_errors = On
+error_log = /var/log/php.log
+max_execution_time = 30
+memory_limit = 64M
+register_globals = Off
+
+
+{{< /file-excerpt >}}
+
 
 3.  If you need support for MySQL in PHP, then you must install the php5-mysql package:
 
@@ -104,12 +106,13 @@ This may not be ideal if you have multiple users running publicly accessible scr
 
 2.  In the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-avalible/`) add the following sub-block:
 
-    {: .file-excerpt }
-    Apache Virtual Hosting Configuration Block
-    :   ~~~ apache
-	<IfModule mpm_itk_module>
-	   AssignUserId webeditor webgroup
-	</IfModule>
-	~~~
+    {{< file-excerpt "Apache Virtual Hosting Configuration Block" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+
+{{< /file-excerpt >}}
+
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the user group that "owns" the web server related files and processes for this host. Remember that you must create the user accounts and groups using the `useradd` command. Consider our documentation of [user groups and permissions](/docs/tools-reference/linux-users-and-groups) for more information about creating the necessary users and groups.

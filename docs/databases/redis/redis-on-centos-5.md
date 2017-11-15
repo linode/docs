@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Deploy applications that depend on the high performance key-value store Redis.'
-keywords: 'redis centos 5,redis,nosql,database,key-value store'
+keywords: ["redis centos 5", "redis", "nosql", "database", "key-value store"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/redis/centos-5/']
-modified: Sunday, July 7th, 2013
+aliases: ['databases/redis/centos-5/']
+modified: 2013-07-07
 modified_by:
   name: Linode
-published: 'Thursday, August 5th, 2010'
+published: 2010-08-05
 title: Redis on CentOS 5
 external_resources:
  - '[Redis Project Home Page](http://redis.io/)'
@@ -21,7 +21,7 @@ external_resources:
 
 Redis a high performance persistent key-value store, and is intended as a datastore solution for applications where performance and flexibility are more critical than persistence and absolute data integrity. As such, Redis may be considered a participant in the "NoSQL" movement and is an attractive tool for developers of some kinds of applications. This document provides both instructions for deploying the Redis server and an overview of best practices for maintaining Redis instances.
 
-Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Prior to beginning this guide for installing Redis, we assume that you have completed the steps outlined in our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 ## Install Redis
 
@@ -43,7 +43,7 @@ Begin the installation process by issuing the following sequence of commands to 
 
     cd /opt/
     mkdir /opt/redis
-    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz 
+    wget http://redis.googlecode.com/files/redis-2.2.2.tar.gz
     tar -zxvf /opt/redis-2.2.2.tar.gz
     cd /opt/redis-2.2.2/
     make
@@ -69,34 +69,34 @@ All Redis configuration options can be specified in the `redis.conf` file locate
 
 Consider the following configuration:
 
-{: .file }
-redis.conf
-:   ~~~
-    daemonize yes
-    pidfile /var/run/redis.pid
-    logfile /var/log/redis.log
+{{< file "redis.conf" >}}
+daemonize yes
+pidfile /var/run/redis.pid
+logfile /var/log/redis.log
 
-    port 6379
-    bind 127.0.0.1
-    timeout 300
+port 6379
+bind 127.0.0.1
+timeout 300
 
-    loglevel notice
+loglevel notice
 
-    ## Default configuration options
-    databases 16
+## Default configuration options
+databases 16
 
-    save 900 1
-    save 300 10
-    save 60 10000
+save 900 1
+save 300 10
+save 60 10000
 
-    rdbcompression yes
-    dbfilename dump.rdb
+rdbcompression yes
+dbfilename dump.rdb
 
-    dir /opt/redis/
-    appendonly no
+dir /opt/redis/
+appendonly no
 
-    glueoutputbuf yes
-    ~~~
+glueoutputbuf yes
+
+{{< /file >}}
+
 
 Most of the values in this configuration mirror the default Redis configuration. However, this configuration configures Redis to run in a daemon mode bound only to the local network interface. You may want to change these values depending on the needs of your application.
 
@@ -108,7 +108,7 @@ Please monitor the [Redis Project mailing lists](http://groups.google.com/group/
 
 When upstream sources offer new releases, repeat the instructions for installing Redis and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-##Managing Redis Instances
+## Managing Redis Instances
 
 ### Running a Redis Datastore
 
@@ -150,12 +150,12 @@ If persistence is a major issue for your application, it is possible to use Redi
 
 To use this mode, ensure that the following values are set in `redis.conf`:
 
-{: .file-excerpt }
-redis.conf
-:   ~~~
-    appendonly yes
-    appendfsync everysec
-    ~~~
+{{< file-excerpt "redis.conf" >}}
+appendonly yes
+appendfsync everysec
+
+{{< /file-excerpt >}}
+
 The first directive enables the journaled "append only file" mode, while the second directive forces Redis to write the journal to the disk every second. The `appendfsync` directive also accepts the argument `always` to force writes after every operation which provides maximum durability, or `never` which allows the operating system to control when data is written to disk which is less reliable.
 
 After applying these configuration changes, restart Redis. All modifications to the data store will be logged. Every time Redis restarts it will "replay" all transactions and ensure that your data store matches the log. However, in some conditions this may render the data-store unusable while the database restores. To avoid this condition, issue the following command to the Redis command line:
@@ -170,11 +170,11 @@ Redis contains limited support for master-slave replication which allows you to 
 
 To configure master-slave operation, ensure that the following configuration options are applied to the *slave* instance:
 
-{: .file-excerpt }
-redis.conf
-:   ~~~
-    slaveof 192.168.10.101 6379
-    ~~~
+{{< file-excerpt "redis.conf" >}}
+slaveof 192.168.10.101 6379
+
+{{< /file-excerpt >}}
+
 
 The `slaveof` directive takes two arguments: the first is the IP address of the master node, and the second is the Redis port specified in the master's configuration.
 

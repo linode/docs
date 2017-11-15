@@ -2,15 +2,16 @@
 author:
   name: Chris Walsh
   email: docs@linode.com
-description: 'This is a starting point of best practices for hardening a production server. Topics include user accounts, an iptables firewall, SSH and disabling unused network services.'
-keywords: 'security,secure,firewall,ssh,add user,quick start'
+description: 'This guide covers basic best practices for securing a production server, including setting up user accounts,  configuring a firewall, securing SSH, and disabling unused network services.'
+og_description: 'This guide serves as a starting point from which to secure your Linode against unauthorized access and includes topics such as user account set up, configuring a firewall, securing SSH, and disabling unused network services.'
+keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 'Wednesday, July 12th, 2017'
+aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
+modified: 2017-10-27
 modified_by:
   name: Linode
-published: 'Friday, February 17th, 2012'
-title: Securing Your Server
+published: 2012-02-17
+title: How to Secure Your Server
 ---
 
 In the [Getting Started](/docs/getting-started) guide, you learned how to deploy a Linux distribution, boot your Linode and perform basic administrative tasks. Now it's time to harden your Linode against unauthorized access.
@@ -24,7 +25,7 @@ Keeping your software up to date is the single biggest security precaution you c
 
 ### Automatic Security Updates
 
-There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates.
+There are arguments for and against automatic updates on servers. [Fedora's Wiki](https://fedoraproject.org/wiki/AutoUpdates#Why_use_Automatic_updates.3F) has a good breakdown of the pros and cons, but the risk of automatic updates will be minimal if you limit them to security updates. Not all package managers make that easy or possible, though.
 
 The practicality of automatic updates is something you must judge for yourself because it comes down to what *you* do with your Linode. Bear in mind that automatic updates apply only to packages sourced from repositories, not self-compiled applications. You may find it worthwhile to have a test environment that replicates your production server. Updates can be applied there and reviewed for issues before being applied to the live environment.
 
@@ -38,10 +39,11 @@ The practicality of automatic updates is something you must judge for yourself b
 
 Up to this point, you have accessed your Linode as the `root` user, which has unlimited privileges and can execute *any* command--even one that could accidentally disrupt your server. We recommend creating a limited user account and using that at all times. Administrative tasks will be done using `sudo` to temporarily elevate your limited user's privileges so you can administer your server.
 
-{: .note}
-> Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
+{{< note >}}
+Not all Linux distributions include `sudo` on the system by default, but all the images provided by Linode have sudo in their package repositories. If you get the output `sudo: command not found`, install sudo before continuing.
+{{< /note >}}
 
-To add a new user, first [log in to your Linode](/docs/getting-started#logging-in-for-the-first-time) via SSH.
+To add a new user, first [log in to your Linode](/docs/getting-started#log-in-for-the-first-time) via SSH.
 
 ### CentOS / Fedora
 
@@ -52,6 +54,10 @@ To add a new user, first [log in to your Linode](/docs/getting-started#logging-i
 2.  Add the user to the `wheel` group for sudo privileges:
 
         usermod -aG wheel example_user
+
+       {{< caution >}}
+       In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
+{{< /caution >}}
 
 ### Ubuntu
 
@@ -97,8 +103,9 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
     **Linux / OS X**
 
-    {: .caution}
-    > If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
+    {{< caution >}}
+If you've already created an RSA key-pair, this command will overwrite it, potentially locking you out of other systems. If you've already created a key-pair, skip this step. To check for existing keys, run `ls ~/.ssh/id_rsa*`.
+{{< /caution >}}
 
         ssh-keygen -b 4096
 
@@ -126,9 +133,9 @@ By default, password authentication is used to connect to your Linode via SSH. A
 
         scp ~/.ssh/id_rsa.pub example_user@203.0.113.10:~/.ssh/authorized_keys
 
-    {: .note}
-    >
-    >`ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
+    {{< note >}}
+`ssh-copy-id` is available in [Homebrew](http://brew.sh/) if you prefer it over SCP. Install with `brew install ssh-copy-id`.
+{{< /note >}}
 
     **Windows**
 
@@ -157,26 +164,26 @@ By default, password authentication is used to connect to your Linode via SSH. A
 1.  **Disallow root logins over SSH.** This requires all SSH connections be by non-root users. Once a limited user account is connected, administrative privileges are accessible either by using `sudo` or changing to a root shell using `su -`.
 
 
-    {: .file-excerpt}
-    /etc/ssh/sshd_config
-    :   ~~~ conf
-        # Authentication:
-        ...
-        PermitRootLogin no
-        ~~~
+    {{< file-excerpt "/etc/ssh/sshd_config" aconf >}}
+# Authentication:
+...
+PermitRootLogin no
+
+{{< /file-excerpt >}}
+
 
 2.  **Disable SSH password authentication.** This requires all users connecting via SSH to use key authentication. Depending on the Linux distribution, the line `PasswordAuthentication` may need to be added, or uncommented by removing the leading `#`.
 
-    {: .file-excerpt}
-    /etc/ssh/sshd_config
-    :   ~~~ conf
-        # Change to no to disable tunnelled clear text passwords
-        PasswordAuthentication no
-        ~~~
+    {{< file-excerpt "/etc/ssh/sshd_config" aconf >}}
+# Change to no to disable tunnelled clear text passwords
+PasswordAuthentication no
 
-    {: .note}
-    >
-    >You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+You may want to leave password authentication enabled if you connect to your Linode from many different computers. This will allow you to authenticate with a password instead of generating and uploading a key-pair for every device.
+{{< /note >}}
 
 3.  **Listen on only one internet protocol.** The SSH daemon listens for incoming connections over both IPv4 and IPv6 by default. Unless you need to SSH into your Linode using both protocols, disable whichever you do not need. *This does not disable the protocol system-wide, it is only for the SSH daemon.*
 
@@ -220,7 +227,7 @@ To see your Linode's running network services:
 
 The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
 
-~~~
+    {{< output >}}
 Active Internet connections (only servers)
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      3539/systemd-resolv
@@ -240,7 +247,7 @@ unix  2      [ ACC ]     STREAM     LISTENING     15990    3974/systemd         
 unix  2      [ ACC ]     STREAM     LISTENING     13007    1/init               /run/uuidd/request
 unix  2      [ ACC ]     STREAM     LISTENING     13010    1/init               /var/run/dbus/system_bus_socket
 unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               /run/systemd/private
-~~~
+{{< /output >}}
 
 `ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 

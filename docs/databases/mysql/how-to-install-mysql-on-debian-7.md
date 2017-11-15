@@ -3,13 +3,13 @@ author:
   name: Mike Rosabal
   email: docs@linode.com
 description: 'Getting started with MySQL on Debian 7.'
-keywords: 'MySQL on Linux,Debian 7,Debian Wheezy,Debian,cloud,cloud hosting,Linux,MySQL,database,MariaDB,install MySQL,secure MySQL,mysqltuner'
+keywords: ["MySQL on Linux", "Debian 7", "Debian Wheezy", "Debian", "cloud", "cloud hosting", "Linux", "MySQL", "database", "MariaDB", "install MySQL", "secure MySQL", "mysqltuner"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
-modified: Tuesday, September 5, 2017
+aliases: ['databases/mysql/debian-7-wheezy/','databases/mysql/using-mysql-relational-databases-on-debian-7-wheezy/']
+modified: 2017-09-05
 modified_by:
   name: Linode
-published: 'Tuesday, January 14th, 2014'
+published: 2014-01-14
 title: 'How to Install MySQL on Debian 7'
 external_resources:
  - '[MySQL 5.5 Reference Manual](https://dev.mysql.com/doc/refman/5.5/en/index.html)'
@@ -25,9 +25,9 @@ MySQL is a popular database management system used for web and server applicatio
 
 Large MySQL databases can require a considerable amount of memory. For this reason, we recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) for such setups.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -56,9 +56,9 @@ During the installation process, you will be prompted to set a password for the 
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases with local clients.
 
-{: .note}
->
->Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< note >}}
+Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< /note >}}
 
 ## Harden MySQL Server
 
@@ -72,7 +72,7 @@ You will be given the choice to change the MySQL root password, remove anonymous
 
 The standard tool for interacting with MySQL is the `mysql` client which installs with the `mysql-server` package. The MySQL client is used through a terminal.
 
-###Root Login
+### Root Login
 
 1.  To log in to MySQL as the root user:
 

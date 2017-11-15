@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Beginner''s Guide to Linode''s Platform answers common configuration questions about the Linode cloud.'
-keywords: 'linode beginners guide,linux beginner,linode beginner,Linode guide'
+keywords: ["linode beginners guide", "linux beginner", "linode beginner", "Linode guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['beginners-guide/']
-modified: Thursday, March 2nd, 2017
+aliases: ['beginners-guide/']
+modified: 2017-03-02
 modified_by:
   name: Phil Zona
-published: 'Monday, November 16th, 2009'
+published: 2009-11-16
 title: 'Linode Beginner''s Guide'
 ---
 
@@ -19,7 +19,7 @@ If you're relatively new to Linux system administration, or just new to our plat
 
 ## How do I log into my Linode?
 
-By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connecting_to_your_linode_with_ssh) section of our [Getting Started](/docs/getting-started/) guide.
+By default, all Linodes are deployed with SSH enabled. This allows command line access through the shell. You can learn more about connecting to your Linode for the first time in the [connecting to your Linode with SSH](/docs/getting-started/#connect-to-your-linode-via-ssh) section of our [Getting Started](/docs/getting-started/) guide.
 
 ## How do I host websites on my Linode?
 
@@ -57,7 +57,7 @@ First, you might want to give the [Linode Backup Service](http://www.linode.com/
 
 -   [Introduction to Rsync](/docs/tools-reference/tools/introduction-to-rsync/) - Using `rsync` to mirror files to another server.
 -   [Using Rdiff-backup with SSHFS](/docs/security/backups/using-rdiff-backup-with-sshfs/) - An easy approach to using the `rdiff-backup` utility to maintain differential backups.
--   [Duplicating a Disk](/docs/migrate-to-linode/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
+-   [Duplicating a Disk](/docs/platform/disk-images/disk-images-and-configuration-profiles/#duplicating-a-disk) - Creating an exact copy of a disk in the Linode Manager.
 -   [Copying a Disk Over SSH](/docs/migrate-to-linode/disk-images/copying-a-disk-image-over-ssh) - How to download an exact binary image of your Linode's disk over SSH.
 
 ## How can I install software on my Linode?
@@ -68,8 +68,9 @@ Please refer to our guide on [Linux package management](/docs/tools-reference/li
 
 You may add an additional public IP address from the "Remote Access" tab in the Linode Manager. After you've added a new IP address, you must [configure static networking](/docs/networking/linux-static-ip-configuration/) or enable [Network Helper](/docs/platform/network-helper#turn-network-helper-on-for-individual-configuration-profiles) and reboot your Linode before it can be used.
 
-{: .note}
-> We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
+{{< note >}}
+We require technical justification for the issuance of new IP addresses; you may need to open a ticket from the "Support" tab of the Linode Manager explaining the reason for the new IP.
+{{< /note >}}
 
 If you'd like to take advantage of our private networking feature, you may add a private IP to your Linode from the "Remote Access" tab of the Linode Manager. Private IP addresses are not publicly accessible, although they are accessible from other Linodes in the same datacenter. Although we take measures to prevent others from intercepting your private IP traffic, you may still wish to configure a firewall to allow access from only the Linodes that you operate.
 
@@ -105,7 +106,7 @@ For those just getting started with Linux systems, we've created a series of gui
 
 -   [Introduction to Linux Concepts](/docs/tools-reference/introduction-to-linux-concepts/) - An introduction to Linux and Unix-like systems.
 -   [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) - An introduction to the principal concepts and use of the users and groups system.
--   [Using the Terminal](/docs/tools-reference/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
+-   [Using the Terminal](/docs/networking/ssh/using-the-terminal/) - Introducing the command line interface known as the shell or terminal.
 -   [Linux Package Management](/docs/tools-reference/linux-package-management/) - How to install software on your Linode.
 -   [Securing your Server](/docs/security/securing-your-server) - Keeping your Linode safe from unauthorized access or abuse.
 
