@@ -85,7 +85,7 @@
 
             var title = searchStore.store[item.ref]
             var url = item.ref
-            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + '</a><span class="badge">' + item.score.toFixed(2) + '</span></li>';
+            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + '</li>';
             resultList.append(searchitem);
         }
         resultList.show();
@@ -168,6 +168,7 @@
 
 
 })(jQuery);
+
 (function($) {
 
     SidebarScroll = {
