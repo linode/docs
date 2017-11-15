@@ -55,6 +55,6 @@ def test_404():
     process.start()
     f = open('temp.csv')
     os.remove('temp.csv')
-    assert sum([1 for line in f]) == 1,'404 response in HTML - see scraper logs'
+    assert sum([1 for line in f]) == 0,'404 response in HTML - see scraper logs'
 
 

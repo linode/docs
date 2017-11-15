@@ -138,29 +138,29 @@ This example demonstrates a more complicated pipeline with both `build` and `dep
 
     {{< file "/path/to/example/wercker.yml" yaml >}}
 box: google/golang
-    
+
 build:
-    
+
     steps:
     # Sets the go workspace and places your package
     # in the right place in the workspace tree
     - setup-go-workspace
-    
+
     # Build the project
     - script:
         name: Build application
         code: |
             go get github.com/<user>/example
             go build -o myapp
-    
+
     - script:
         name: Copy binary
         code: |
           cp myapp "$WERCKER_OUTPUT_DIR"
-    
+
 ### Docker Deployment
 deploy:
-    
+
     # This deploys to DockerHub
     steps:
     - internal/docker-scratch-push:
@@ -168,10 +168,10 @@ deploy:
         password: $DOCKER_PASSWORD
         repository: <docker-username>/myapp
         cmd: ./myapp
-    
+
 ### Linode Deployment from Docker
 linode:
-    
+
     steps:
     # Installs openssh client and other dependencies.
     - install-packages:
@@ -193,7 +193,7 @@ linode:
 
 {{< /file >}}
 
-    
+
 There are three pipelines in this configuration:
 
 1. `build`: The obligatory pipeline that is used in this case to build your application. Since this example uses Go, the most convenient `box` is the official `google/golang` that comes with the necessary tools configured. The steps performed by this pipeline are:
@@ -204,10 +204,10 @@ There are three pipelines in this configuration:
 2. `deploy`: Takes your binary from `$WERCKER_OUTPUT_DIR` and then pushes it to your Docker account.
     - `internal/docker-scratch-push`: Makes all the magic happen. Using the environmental variables `$DOCKER_USERNAME` and `$DOCKER_PASSWORD`, this saves your binary to a lightweight `scratch` image. The `repository` parameter specifies the desired Docker repository to use.
 
-3. `linode`: The fist three steps, `install-packages`, `add-to-known_hosts` and `add-ssh-key` were explained in the previous example: they are responsible for the SSH communication between your pipeline's container and your Linode. 
+3. `linode`: The fist three steps, `install-packages`, `add-to-known_hosts` and `add-ssh-key` were explained in the previous example: they are responsible for the SSH communication between your pipeline's container and your Linode.
 
     The custom `-script`, `pull latest image`, which begins on Line 48 in the above example:
-    
+
     - Pulls your most recent image build from Docker Hub. By default this image is tagged `latest` unless specified otherwise.
     - Clones your latest image and tag it `current`.
     - Removes the pulled image tagged `latest` in preparation for your next update.
@@ -240,7 +240,7 @@ This last example introduces the **Wercker CLI**. This tool requires that Docker
         cd /path/of/your/getting-started-golang
 
     A `wercker.yml` file should already be present:
-    
+
     {{< file "/path/to/getting-started-golang/wercker.yml" yaml >}}
 box:
 id: golang
@@ -279,7 +279,7 @@ build:
 
 
     Only two pipelines are defined in this `yml` file: `dev` and `build`. Note that in this example, Port `5000` is exposed.
-    
+
       - `dev`: This special type of pipeline can only be used locally, and serves the purpose of application testing.
       - `internal/watch`: Watches for source code changes. If any occur, it triggers a build of your application again (`reload: true`). This is useful for debugging processes.
       - `build`: This was usually your first step for building your application. But now you can use it to check your code for any errors during the `build` step (`wercker/golint`).
@@ -303,7 +303,7 @@ As the name implies, Wercker applications correspond to each of your projects. B
 4.  Choose whether your application should be private (default) or public. Mark the example as public and click the **Finish** button.
 
     A greeting message indicates you are almost ready to start building your application. It offers to start a wizard to help you create the application `wercker.yml` file, but that won't be necessary because you already did that in the previous section.
-    
+
     ![YML Wizard](/docs/assets/wercker/wercker-yml-wizard.jpg "YML Wizard")
 
 5.  Repeat the same procedure for the other two example projects.

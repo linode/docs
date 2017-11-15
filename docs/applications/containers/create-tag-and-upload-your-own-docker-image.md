@@ -43,7 +43,7 @@ Create a new local image based on the latest Ubuntu Docker image. Although the r
         apt-get install lamp-server^
 
     This upgrade and installation will take longer than it would if you were working on a standard server. During the installation of the LAMP stack, you will be prompted to create a MySQL root user password. When the installation completes, exit the container:
-    
+
         exit
 
 4.  Use `docker ps -a` to list all of the available containers:

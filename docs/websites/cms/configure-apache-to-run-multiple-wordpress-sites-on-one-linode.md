@@ -148,7 +148,7 @@ RewriteOptions inherit
 
 # Block .svn, .git
 RewriteRule \.(svn|git)(/)?$ - [F]
-    
+
 # Catchall redirect to www.example1.com
 RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
 RewriteCond %{HTTP_HOST}   !^$

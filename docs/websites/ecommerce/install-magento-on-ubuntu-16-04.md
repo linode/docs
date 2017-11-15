@@ -126,7 +126,7 @@ Magento is a PHP application, so you'll need to make some adjustments to your sy
 
 1.  Modify the following settings in your `php.ini` files for the CLI and Apache PHP configurations. These files can be found at `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`:
 
-   
+
     It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use.  This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
     {{< note >}}
