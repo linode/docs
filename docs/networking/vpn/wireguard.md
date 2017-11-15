@@ -115,7 +115,6 @@ Look for following entries and uncomment them by removing a '#' in beginning .
     net.ipv4.ip_forward=1
     net.ipv6.conf.all.forwarding = 1
 
-
 Save, exit and then enable it as follows:
 
     # sysctl -p
@@ -135,8 +134,6 @@ Allowing connections to SSH and WireGuard VPN port in *ufw* before enabling it:
     # ufw enable
 
 Enabling ufw with ufw enable, would give you a warning, “Command may disrupt existing ssh connections. Proceed with operation (y|n)?”
-
-Type y without any hesitation.
 
 Once enabled verify it with the following command:
 
