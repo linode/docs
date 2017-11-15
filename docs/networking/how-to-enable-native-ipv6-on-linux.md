@@ -62,7 +62,6 @@ You can request additional IPv6 addresses at any time by opening a [support tick
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
-|--------|-------------------------------|
 
 ### IPv6 Neighbor Discovery
 
@@ -122,13 +121,13 @@ iface eth0 inet6 static
 {{< /file >}}
 
 
-        {{< note >}}
+    {{< note >}}
 On Debian Jessie, your default IPv6 address provided by SLAAC will no longer be automatically assigned after you request a /64 pool. You will need to manually add it as a static address or IPv6 routing will not work.
 {{< /note >}}
 
 2.  For /56 and /64 pools, addresses within your pool will be routed to your Linode's default IP address, or another Linode on your account in the same datacenter. You will see where the pool is routed under "Public IP Pools" within the Linode Manager's Remote Access tab. You must enable packet forwarding on that Linode to allow it to act as a router and enable external traffic from addresses within your IPv6 pool:
 
-    {{< file "/etc/sysctl.conf" aconf >}}
+    {{< file "/etc/sysctl.conf" >}}
 # Uncomment the next line to enable packet forwarding for IPv6
 #  Enabling this option disables Stateless Address Autoconfiguration
 #  based on Router Advertisements for this host

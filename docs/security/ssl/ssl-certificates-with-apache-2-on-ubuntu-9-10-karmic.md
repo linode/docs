@@ -150,7 +150,7 @@ For example, if we downloaded a root cert for Verisign, we would save it to `/et
 
 Next, we'll add an entry to `/etc/apache2/ports.conf` for the IP address you'll be using to host your SSL-enabled site.
 
-    {{< file-excerpt "/etc/apache2/ports.conf" apache>}}
+{{< file-excerpt "/etc/apache2/ports.conf" apache>}}
 NameVirtualHost 12.34.56.78:443
 {{< /file-excerpt >}}
 
@@ -179,7 +179,7 @@ Restart Apache:
 
 You should now be able to visit your site with SSL enabled. Congratulations, you've installed a commercial SSL certificate!
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

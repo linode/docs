@@ -1,4 +1,5 @@
 ---
+deprecated: true
 author:
   name: Christopher Piccini
   email: cpiccini11@gmail.com
@@ -65,17 +66,17 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Activate Environment
 
-1.  Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
+Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
 
-        source env/bin/activate
-        (env) testuser@localhost:~/python-environments$
+    source env/bin/activate
+    (env) testuser@localhost:~/python-environments$
 
-    Now that the environment is active, you can install executables and packages only to this virtual environment.
+Now that the environment is active, you can install executables and packages only to this virtual environment.
 
 ## Deactivate Environment
 
 To deactivate an active virtual environment:
 
-        deactivate
+    deactivate
 
 Congratulations! You have created an isolated, Python Virtualenv on your Linode.

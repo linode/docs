@@ -157,7 +157,7 @@ While wkhtmltopdf version 0.12.2.4 is available in the official Ubuntu 16.04 rep
 
 2.  Next, modify the configuration file. The complete file should look similar to this, depending on your deployment needs:
 
-      {{< file "/etc/odoo-server.conf" conf >}}
+    {{< file "/etc/odoo-server.conf" conf >}}
 [options]
 admin_passwd = admin
 db_host = False
@@ -171,7 +171,6 @@ xmlrpc_port = 8069
 
 {{< /file >}}
 
-{{<note>}}
 *  `admin_passwd = admin` - This is the password that allows database operations. Be sure to change `admin` to something more secure.
 *  `db_host = False` - Unless you plan to connect to a different database server address, leave this line untouched.
 *  `db_port = False` - Odoo uses PostgreSQL default port `5432`, change this only if you're using custom PostgreSQL settings.
@@ -180,8 +179,8 @@ xmlrpc_port = 8069
 *  `addons_path =` - Modify this line to read: `addons_path = /opt/odoo/addons`. Add `</path/to/custom/modules>` if you're using custom modules, substituting your own path.
 *  Include the path to log files, and add a new line: `logfile = /var/log/odoo/odoo-server.log`. You can skip this line if you plan to only use `journald` for logging.
 *  Optionally, we could include a new line specifying the Odoo Frontend port used for connection: `xmlrpc_port = 8069`. This only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation, you can skip this line and this instance of Odoo will connect by default to port `8069`.
-{{</note>}}
-          {{< note >}}
+
+    {{< note >}}
 As explained in the [Configure Logs](#configure-logs) section, you have many options for Odoo logging in Ubuntu 16.04. This configuration file assumes you'll use Ubuntu system journals in addition to a custom log path.
 {{< /note >}}
 

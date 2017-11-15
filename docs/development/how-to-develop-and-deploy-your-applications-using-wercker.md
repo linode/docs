@@ -10,7 +10,7 @@ published: 2017-11-06
 modified: 2017-11-06
 modified_by:
   name: Linode
-title: 'How to Develop and Deploy Your Applications Uing Wercker'
+title: 'How to Develop and Deploy Your Applications Using Wercker'
 contributor:
   name: Damaso Sanoja
 external_resources:
@@ -28,9 +28,7 @@ This guide will use three example [Go](https://golang.org/) apps to demonstrate 
 
 1.  Complete the [Getting Started](/docs/getting-started) guide to create a Linode. The commands in this guide are written for Ubuntu 16.04, but should also work with other distributions.
 
-2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services.
-
-    This guide will use `sudo` wherever possible.
+2.  Follow the [Securing Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services. This guide will use `sudo` wherever possible.
 
 3.  Update your packages:
 

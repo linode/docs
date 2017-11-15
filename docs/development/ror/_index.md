@@ -1,4 +1,4 @@
 ---
-title: Ruby On Rails
+title: Ruby on Rails
 show_in_lists: true
 ---

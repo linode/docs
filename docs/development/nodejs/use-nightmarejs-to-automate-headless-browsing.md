@@ -34,6 +34,7 @@ external_resources:
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 {{< /note >}}
 
 ## Install Node.js
@@ -46,6 +47,7 @@ The Ubuntu 16.04 repository is slower to release recent versions of Node.js. Ins
 
     {{< note >}}
 This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
+
 {{< /note >}}
 
 2.  Install Node.js and NPM with the following command:

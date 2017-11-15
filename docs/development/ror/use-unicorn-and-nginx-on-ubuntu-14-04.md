@@ -190,11 +190,11 @@ Make sure you change the username and example with the appropriate values.
 
 - To start Unicorn in the development environment:
 
-      sudo unicorn -c config/unicorn.rb -E development -D
+        sudo unicorn -c config/unicorn.rb -E development -D
 
 - To start Unicorn in the production environment:
 
-      sudo unicorn -c config/unicorn.rb -E production -D
+        sudo unicorn -c config/unicorn.rb -E production -D
 
     {{< note >}}
 Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
@@ -202,4 +202,4 @@ Make sure you are in the application directory; otherwise, you will need to type
 
 - To stop Unicorn, issue the following command:
 
-      sudo pkill unicorn
+        sudo pkill unicorn

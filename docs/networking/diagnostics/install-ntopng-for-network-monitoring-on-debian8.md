@@ -26,10 +26,10 @@ external_resources:
 
 In this tutorial you will configure and install ntopng on your Linode. The tutorial will also cover configuration examples and suggestions for the web administration interface. After you complete the tutorial and have the network monitor deployed, you'll be able to perform the following:
 
--	Monitor and analyze traffic from your Linode;
--	Create Host Pools to group connected devices together based on your own criteria;
--	Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations;
--	Monitor security threats on your machine.
+-   Monitor and analyze traffic from your Linode;
+-   Create Host Pools to group connected devices together based on your own criteria;
+-   Have a general idea of how to work in the user interface and view statistics, as well as make your own configurations;
+-   Monitor security threats on your machine.
 
 ### Before You Begin
 
@@ -63,15 +63,15 @@ By default, ntopng is run as the user `nobody`. This is a good choice for daemon
 
 1.  Add user `ntopng`:
 
-		useradd -r -s /bin/false ntopng
+        useradd -r -s /bin/false ntopng
 
 2.  Set permissions for user `ntopng` and installation files/directories as shown:
 
-		mkdir /var/tmp/ntopng
-		chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
-		chmod 1770 -R /var/tmp/ntopng
-		find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
-		find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
+        mkdir /var/tmp/ntopng
+        chown -R ntopng:ntopng /usr/share/ntopng /var/tmp/ntopng
+        chmod 1770 -R /var/tmp/ntopng
+        find /usr/share/ntopng -type d -print0 | xargs -0 chmod 744
+        find /usr/share/ntopng -type f -print0 | xargs -0 chmod 755
 
 ## Configure ntopng
 
@@ -95,7 +95,7 @@ Ntopng has a built in web server and initializer. Configuration options can be d
 
 4.  Create `/etc/ntopng/ntopng.conf` and match the contents to the example listed below. Replace `192.0.2.0` with your Linode’s domain or public IP address. If needed, replace `eth0` with your primary network interface. If you want to review available configuration parameters, run `man ntopng` from the terminal.
 
-    {{< file "**/etc/ntopng/ntopng.conf**" aconf >}}
+    {{< file "**/etc/ntopng/ntopng.conf**" conf >}}
 --user=ntopng
 --interface=eth0
 -w=192.0.2.0:3005
@@ -114,9 +114,8 @@ The option flags commented with `# optional` are **not mandatory.** All flags re
 
 ##### Configuration File Breakdown
 
-{:. table .table-striped .table-bordered }
-|Flags       |  Features|
-|:----------:|---------- :|
+| Flags      |  Features  |
+|:----------:|:----------:|
 | --user | Designates the user `ntopng` will run under. Leaving this flag out of the configuration file will default to `nobody`.  |
 | --interface | The network interface ntopng will monitor.  |
 | -w | HTTP address and port used to connect to the admin interface. While port `3005` is the default, you may define any.  |

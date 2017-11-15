@@ -39,7 +39,6 @@ Before restarting Apache, modify your `php.ini` file to match MantisBT's upload 
 {{< file "/etc/php.ini" ini >}}
 ; Maximum allowed size for uploaded files.
 upload_max_filesize = 5M
-
 {{< /file >}}
 
 
