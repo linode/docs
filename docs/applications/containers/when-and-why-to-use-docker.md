@@ -2,8 +2,13 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
+<<<<<<< Updated upstream
 description: 'Two to three sentences describing your guide.'
 keywords: ['list','of','keywords','and key phrases']
+=======
+description: 'This guide discusses the pros and cons of using Docker, and when Docker is a good choice for a project.'
+keywords: ['docker','containers','docker hub']
+>>>>>>> Stashed changes
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-10
 modified: 2017-11-10
@@ -11,8 +16,14 @@ modified_by:
   name: Linode
 title: "When and Why to Use Docker"
 external_resources:
+<<<<<<< Updated upstream
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
+=======
+- '[Docker](https://www.docker.com)'
+- '[Docker Hub](http://www.dockerhub.net)'
+- '[When Not to Use Docker](http://www.channelfutures.com/open-source/when-not-use-docker-understanding-limitations-containers)'
+>>>>>>> Stashed changes
 ---
 
 Since its release in 2012, [Docker](https://www.docker.com) has become one of the fastest-growing technologies in devops and web development. Like any new technology, however, it is still under development, has some limitations, and is not right for every project. This guide provides an overview of the pros and cons of Docker so that you can decide whether it would be a good addition to your project.
@@ -23,7 +34,11 @@ For a more basic introduction to Docker concepts and terminology, see our [An In
 
 ## Benefits of Docker
 
+<<<<<<< Updated upstream
 1.  **Reproducibility**: Similar to a Java application, which will run exactly the same on any device capable of running a Java Virtual Machine, a Docker container is guaranteed to be identical on any computer or VPS that can run Docker. The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically.
+=======
+1.  **Reproducibility**: Similar to a Java application, which will run exactly the same on any device capable of running a Java Virtual Machine, a Docker container is guaranteed to be identical on any computer or VPS that can run Docker. The exact specifications of a container are stored in a Dockerfile. By distributing this file among team members, an organization can guarantee that all images built from the same Dockerfile will function identically. In addition, having an environment that is constant and well-documented makes it easier to keep track of your application and identify problems.
+>>>>>>> Stashed changes
 
 2.  **Isolation**: Dependencies or settings within a container will not affect any installations or configurations on your computer, or on any other containers that may be running. By using separate containers for each component of an application (for example a webserver, front end, and database for hosting a web site), you can avoid conflicting dependencies. You can also have multiple projects on a single server without worrying about creating conflicts on your system.
 
@@ -35,6 +50,7 @@ For a more basic introduction to Docker concepts and terminology, see our [An In
 
 6.  **Continuous Integration**: Docker works well as part of continuous integration pipelines with tools like Travis, Jenkins, and Wercker. Every time your source code is updated, one of these tools can save the new version as a Docker image, tag it with a version number and push it to Docker Hub, then deploy it to your production box.
 
+<<<<<<< Updated upstream
 ## Limitations of Docker
 
 1. **Clustering**: TBD
@@ -46,6 +62,8 @@ For a more basic introduction to Docker concepts and terminology, see our [An In
 4. **Limited GUI suppport**:
 
 
+=======
+>>>>>>> Stashed changes
 ## When to Use Docker
 
 If your application fits into one or more of the following categories, Docker may be a good fit:
@@ -54,14 +72,26 @@ If your application fits into one or more of the following categories, Docker ma
 
       sudo docker run -d -p 9411:9411 openzipkin/zipkin
 
+<<<<<<< Updated upstream
   This makes it easy to experiment.
 
 2.  **Basic use cases**: Pulling images from Docker Hub is also a good solution if your application is basic or standard enough to work with a default Docker image. Cases such as hosting a website using a LAMP stack, running
 
+=======
+  This makes it easy to experiment with new tools.
+
+2.  **Basic use cases**: Pulling images from Docker Hub is also a good solution if your application is basic or standard enough to work with a default Docker image. Cases such as hosting a website using a LAMP stack, running
+
+3.  **App isolation**: If you want to run multiple applications on one server, keeping the components of each application in separate containers will prevent problems with dependency management.
+
+4.  **Developer teams**: If you have developers working in different locations, Docker provides a way to have local development environments that closely match the production environment, without needing to ssh into a remote box.
+
+>>>>>>> Stashed changes
 ## When Not to Use Docker
 
 On the other hand, there are also times when Docker isn't the best solution. Here are some examples:
 
+<<<<<<< Updated upstream
 1.  **Your app is complicated and you are not a professional sysadmin.** For complicated applications, using a pre-made Dockerfile or pulling an existing image will not be sufficient. Building, editing, and managing communication between multiple containers is still a time-consuming task.
 
 2.  **Performance is critical to your application.** Docker shines compared to virtual machines when it comes to performance, since its containers share the host kernel and do not emulate a full operating system. However, Docker does impose performance costs. Processes run from within a container will not be quite as fast as those run on the native OS. If you need to get the best possible performance out of your server, you may want to avoid Docker.
@@ -69,3 +99,14 @@ On the other hand, there are also times when Docker isn't the best solution. Her
 3.  **Multiple operating systems.** If you want to run or test the same application on different operating systems, you will need to use virtual machines instead of Docker.
 
 4.  **Clusters.** Docker containers on separate servers can be combined to form a cluster with Docker Swarm. However, Docker does not take the place of provisioning or automation tools such as Ansible, SaltStack, and Chef. In addition, Docker has recently announced support for Kubernetes, hinting that Docker Swarm may not be sufficient as a stand-alone cluster manager.
+=======
+1.  **Your app is complicated and you are not/do not have a sysadmin.** For large or complicated applications, using a pre-made Dockerfile or pulling an existing image will not be sufficient. Building, editing, and managing communication between multiple containers on multiple servers is a time-consuming task.
+
+2.  **Performance is critical to your application.** Docker shines compared to virtual machines when it comes to performance, since its containers share the host kernel and do not emulate a full operating system. However, Docker does impose performance costs. Processes run from within a container will not be quite as fast as those run on the native OS. If you need to get the best possible performance out of your server, you may want to avoid Docker.
+
+3.  **You don't want upgrade hassles.** Docker is a new technology that is still under development. To get new features you will likely have to update versions frequently, and backward compatibility with previous versions is not guaranteed.
+
+4.  **Multiple operating systems.** Since Docker containers share the host computer's operating system, if you want to run or test the same application on different operating systems, you will need to use virtual machines instead of Docker.
+
+5.  **Clusters.** Docker containers on separate servers can be combined to form a cluster with Docker Swarm. However, Docker does not take the place of provisioning or automation tools such as Ansible, SaltStack, and Chef. In addition, Docker has recently announced support for Kubernetes, hinting that Docker Swarm may not be sufficient as a stand-alone cluster manager.
+>>>>>>> Stashed changes
