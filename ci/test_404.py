@@ -6,6 +6,7 @@ from scrapy import Item, Field
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from scrapy.crawler import CrawlerProcess
+from test_alias import localserver
 
 class Docs404Item(Item):
     referer = Field()
@@ -45,7 +46,7 @@ class Docs404Spider(CrawlSpider):
             item['url'] = response.url
             return item
 
-
+@localserver
 def test_404():
     import os
     process = CrawlerProcess({ 'USER_AGENT': 'docs404',
