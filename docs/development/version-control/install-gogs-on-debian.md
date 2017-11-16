@@ -137,7 +137,9 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
 3.  Create new user for Gogs:
 
-        CREATE USER gogs CREATEDB;
+    {{< highlight sql >}}
+CREATE USER gogs CREATEDB;
+{{< /highlight >}}
 
 4.  Set the password for user `gogs`:
 
@@ -147,7 +149,9 @@ Using a database server for Gogs is completely optional. Feel free to skip this 
 
 5.  Create new database for Gogs:
 
-        CREATE DATABASE gogs OWNER gogs;
+    {{< highlight sql >}}
+CREATE DATABASE gogs OWNER gogs;
+{{< /highlight >}}
 
 6.  Exit the `psql` terminal:
 
@@ -166,7 +170,7 @@ We will use nginx as the reverse proxy for Gogs, so we can access Gogs using our
 
 3.  Set nginx as the reverse proxy for Gogs. Using `sudo`, create a new file named `/etc/nginx/sites-available/gogs`, and set the content as shown below:
 
-    {{< file "/etc/nginx/sites-available/gogs" aconf >}}
+    {{< file "/etc/nginx/sites-available/gogs" nginx >}}
 server {
     listen 80;
     server_name example.com;
