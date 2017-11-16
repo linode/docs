@@ -136,6 +136,7 @@ Other types of virtual devices like cache and log can be used when dealing with 
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 1.  Familiarize yourself with the [Getting Started](/docs/getting-started) guide, deploy an Ubuntu 16.04 image and complete the steps for setting your Linode's hostname and timezone.
 
@@ -306,9 +307,9 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 2.  The memory used by the Adaptive Replacement Cache shows up as used instead of cached in various utilities such as `free` or `htop`. This can make it seem like the ARC is chewing up RAM. However, the ARC frees up memory when other utilities need it. This allows a ZFS filesystem to run even with modest RAM.
 
-3. By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes, a storage server loses of approximately 20% RAM that could be put to good use. So follow these instructions only if you're not using your Linode to run other applications and have at least 4GB of RAM.
+3.  By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes, a storage server loses of approximately 20% RAM that could be put to good use. So follow these instructions only if you're not using your Linode to run other applications and have at least 4GB of RAM.
 
-The numbers in `zfs.conf` represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as 7000000000 to reserve approximately 7GB. As a rule of thumb, set **zfs_arc_max** to total memory available minus 1GB.  **zfs_arc_min** can be set to 50% of total RAM. For example if you have 16GB available, zfs_arc_max would be 15000000000 and zfs_arc_min would be 8000000000.
+    The numbers in `zfs.conf` represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as 7000000000 to reserve approximately 7GB. As a rule of thumb, set **zfs_arc_max** to total memory available minus 1GB.  **zfs_arc_min** can be set to 50% of total RAM. For example if you have 16GB available, zfs_arc_max would be 15000000000 and zfs_arc_min would be 8000000000.
 
 4. Open the `zfs.conf` file. Paste these lines into the editor and then adjust the two numerical values:
 
