@@ -9,7 +9,7 @@ modified: 'Tuesday, October 24th, 2017'
 modified_by:
   name: Matt Vass
 published: ' '
-title: 'Install Icinga2 in Debian 9.2'
+title: 'Install Icinga2 in Debian 9'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 ---
@@ -62,7 +62,7 @@ Backup and open the file for editing:
 Search and update time zone variable in `php.ini` configuration file:
 
 ~~~
-date.timezone = Europe/London
+date.timezone = America/Phoenix
 ~~~
 
 
@@ -349,7 +349,7 @@ That’s all! You have successfully installed, set-up and secured Icinga2 engine
 
 ### Monitor Remote Hosts via Simple Host Monitoring
 
-In order to monitor a host and its external services via regular command checks, Icinga2 uses a mechanism that issues a ping command at regular time intervals against the server's IP address and also, using its internal built-in commands, regularly verifies the state of remote network services protocols, such as HTTP, SSH, SMTP, IMAP, POP or others. Icinga2 stores Host definitions in objects. These objects with their attributes used for applying rules for Service, Notification, Dependency and Scheduled Downtime can be found in `hosts.conf` file, which can be located in `/etc/icinga2/conf.d/` directory. To add a new host definition in order to be periodically monitored by Icinga2 engine via ICMP checks, in order to check if the host is online, open `hosts.conf` configuration file for editing and add the following lines add the bottom of the file.
+In order to monitor a host and its external services via regular command checks, Icinga2 uses a mechanism that issues a ping command at regular time intervals against the server's IP address and also, using its internal built-in commands, regularly verifies the state of remote network services protocols, such as HTTP, SSH, SMTP, IMAP, POP or others. Icinga2 stores Host definitions in objects. These objects with their attributes used for applying rules for Service, Notification, Dependency and Scheduled Downtime can be found in `hosts.conf` file, which can be located in `/etc/icinga2/conf.d/` directory. To add a new host definition in order to be periodically monitored by Icinga2 engine via ICMP checks, to determine if the host is online, open `hosts.conf` configuration file for editing and add the following lines add the bottom of the file.
 
 `nano /etc/icinga2/conf.d/hosts.conf`
 
@@ -365,7 +365,7 @@ object Host "WebServer VPS" {
 ~~~
 
 
-Assuming that you want to check the status of a web server that runs in this node, add the following lines after host definition. This check will verify if the web server is alive and responds with the proper HTTP codes.
+Assuming that you want to check the status of a web server that runs in this node, add the following lines after host definition. The command will query the web server to determine if it's alive and replies with the correct HTTP exit codes.
 
 ~~~ conf
 object Service "http" {
@@ -383,7 +383,7 @@ Verify the state of the new added host by navigating to **Overview -> Hosts** in
 
 ![description](/docs/assets/23.PNG)
 
-To display the status of the host’s HTTP service, navigate to **Overview -> Servicegroups** and hit on HTTP Checks. In the right plane you should see health status of the external web service.
+To display the status of the host’s HTTP service, navigate to **Overview -> Servicegroups** and click on HTTP Checks. In the right plane you should see health status of the external web service.
 
 ![description](/docs/assets/24.PNG)
 
