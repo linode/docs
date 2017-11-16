@@ -19,7 +19,6 @@ external_resources:
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 ---
 
-
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](/docs/assets/elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
 
 ## Introduction to Elastic (ELK) Stack
@@ -116,7 +115,7 @@ protect=1
     2. Install NodeJS:
 
             yum install nodejs
-
+    
     3. Install Wazuh API:
 
             yum install wazuh-api
@@ -158,7 +157,7 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 3. Enable Logstash on system boot:
 
-        systemctl daemon-reload
+        systemctl daemon-reload 
         systemctl enable logstash
         systemctl start logstash
 
@@ -183,11 +182,11 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 #}
 # Local Wazuh Manager - JSON file input
 input {
- file {
-     type => "wazuh-alerts"
-     path => "/var/ossec/logs/alerts/alerts.json"
-     codec => "json"
- }
+   file {
+       type => "wazuh-alerts"
+       path => "/var/ossec/logs/alerts/alerts.json"
+       codec => "json"
+   }
 }
 . . .
 {{< /file-excerpt >}}
@@ -240,6 +239,7 @@ LS_GROUP=logstash
 
 5. If you will access Kibana remotely, configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a local host, you can leave the `server.host` value alone.
 
+    {: .table .table-striped .table-bordered }
     | Value           | Parameter                                                                                  |
     | :-------------: | :----------------------------------------------------------------------------------------: |
     | server.port     | Change this value if the default port, `5601`, is in use.                                  |
@@ -269,13 +269,13 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
     Edit the systemd init file and add the following line:
 
     {{< file-excerpt "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
-. . .
+. . . 
 LimitMEMLOCK=infinity
-. . .
+. . . 
 {{< /file-excerpt >}}
 
     **System V**
-
+      
     Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line:
 
     {{< file-excerpt "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
@@ -299,7 +299,7 @@ MAX_LOCKED_MEMORY=unlimited
 
 -Xms4g
 -Xmx4g
-. . .
+. . . 
 {{< /file-excerpt >}}
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
@@ -310,7 +310,7 @@ A reverse proxy server allows you to secure the Kibana web interface with SSL an
 
 ### Set up a Reverse Proxy Server to Host Kibana as a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended. 
 
 #### nginx
 
@@ -320,22 +320,22 @@ If you have SSL encryption enabled on your domain, follow the instructions in th
 
     {{< file-excerpt "/etc/nginx/conf.d or /etc/nginx/conf" >}}
 server {
-  listen 80;
-  # Remove the line below if you do not have IPv6 enabled.
-  listen [::]:80;
-  server_name kibana.exampleIPorDomain;
+    listen 80;
+    # Remove the line below if you do not have IPv6 enabled.
+    listen [::]:80;
+    server_name kibana.exampleIPorDomain;
 
-  location / {
-      proxy_pass http://exampleIPorDomain:5601;
-      proxy_http_version 1.1;
-      proxy_set_header Upgrade $http_upgrade;
-      proxy_set_header Connection 'upgrade';
-      proxy_set_header Host $host;
-      proxy_cache_bypass $http_upgrade;
-  }
+    location / {
+        proxy_pass http://exampleIPorDomain:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
 
-  auth_basic "Restricted Access";
-  auth_basic_user_file /etc/nginx/htpasswd.users;
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
 }
 {{< /file-excerpt >}}
 
@@ -493,6 +493,7 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 1. Login to the Linode Manager and select your Linode VPS. Click on *DNS Manager*. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
 
+    {: .table .table-striped .table-bordered }
     | Field | Value |
     | :-------------: | :-----------: |
     | Hostname | Enter your subdomain name here - ex. kibana |
@@ -514,15 +515,14 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
-{{< note >}}
-To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
-{{< /note >}}
+{: .note}
+> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
 
 **FirewallD**
 
     firewall-cmd --add-port=5601/tcp --permanent
 
-## ## Connect the Elastic Stack with the Wazuh API
+## Connect the Elastic Stack with the Wazuh API
 
 Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!
 
