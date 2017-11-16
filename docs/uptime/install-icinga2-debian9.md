@@ -9,12 +9,12 @@ modified: 'Tuesday, October 24th, 2017'
 modified_by:
   name: Matt Vass
 published: ' '
-title: 'Install Icinga2 in Debian 9.2'
+title: 'Install Icinga2 in Debian 9'
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 ---
 
-Icinga, previously a fork of popular Nagios monitoring system, is an Open-Source network monitoring application that can be used to monitor critical services and systems over your premises. Icinga2 can check and monitor hosts in a network or it can verify network external protocols, such as the state of a HTTP server, a mail server a file share service or others. However, Icinga2 can be configured to monitor internal systems state and check the load, the memory, the disk free space or other internal parameters via Icinga agents deployed in every node that needs to me monitored. Icinga can also be configured to send notifications and alerts via e-mail or SMS to the system administrators defined in contacts.  Icinga is highly deployed in Linux on top of Apache web server, PHP server-side interpreted programming language and MySQL or MariaDB database. These components make what we know as the LAMP stack.
+Icinga (a Nagios fork) is an Open-Source network monitoring tool that used for monitoring critical services and systems over your premises. Icinga2 can check and monitor hosts in a network or it can verify network external protocols, such as the state of a HTTP server, a mail server a file share service or others. However, Icinga2 can be configured to monitor internal systems state and check the load, the memory, the disk free space or other internal parameters via Icinga agents deployed in every node that needs to me monitored. Icinga can also be configured to send notifications and alerts via e-mail or SMS to the system administrators defined in contacts.  Icinga is highly deployed in Linux on top of Apache web server, PHP server-side interpreted programming language and MySQL or MariaDB database. These components make what we know as the LAMP stack.
 
 
 In this tutorial we’ll cover how to install and configure the latest version Icinga2 web monitoring tool in Debian 9.2 in order to monitor our network infrastructure. We’ll also cover how we can setup icinga2 to monitor remote hosts services, such as HTTP servers, via regular command checks and how to deploy Icinga2 agent-based services running on the nodes that needs to be monitored in order to securely collect internal nodes system information, such as memory consumption, the system load degree, number of running processes or other important internal system parameters.
@@ -22,16 +22,15 @@ In this tutorial we’ll cover how to install and configure the latest version I
 
 ## Prerequisites
 
--	Debian 9.2 installed on a virtual private server
--	Root account access via console or remotely via SSH service or `sudo` root privileges for a local or remote account
--	A domain name, private or public, depending on your deployment, with the proper DNS records configured for web services
--	A mail service properly configured at your premises in order to send mail alerts
+-	A Debian 9 Linode VPS
+-	Root account access via console or remotely via SSH service to your VPS or `sudo` root privileges for a local machine account
+-	A mail service for sending mail alerts
 
 
 
 ### Initial System Configurations
 
-Before deploying Icinga2 web monitoring application in your own VPS, first assure the system meets all the software requirements for compiling and installing the application.  On the first step, update your system repositories and software packages by issuing the below command.
+Before deploying Icinga2 web monitoring application in your Linode VPS, first update the system by issuing the following command.
 
 
   `apt update`
@@ -39,78 +38,20 @@ Before deploying Icinga2 web monitoring application in your own VPS, first assur
   `apt upgrade`
 
 
-On the next, setup your system hostname by executing the following command. Replace your hostname variable accordingly.
+Reboot the machine in order to apply kernel updates with the below command. 
 
-`hostnamectl set-hostname icinga`
-
-
-Verify machine hostname and hosts file by issuing the below commands.
-
-`hostnamectl`
-
-`cat /etc/hostname`
+`init 6`
 
 
-Finally, reboot the Debian VPS server in order to apply all kernel updates and set machine hostname changes properly.
+Icinga2 network monitoring application needs a web server, such as Apache HTTP server, and a PHP pre-processing language interpreter gateway and a RDMBS database, such as MySQL/MariaDB to store information. Install Apache web server, PHP interpreter modules required by Icinga and MariaDB database backend in one-shot by executing the below command.
 
-`systemctl reboot`
+`apt install apache2 libapache2-mod-php7.0 php7.0-xml php7.0-curl php7.0-ldap php7.0-cli php7.0-gd php7.0-intl php7.0-readline php7.0-xml php7.0-mbstring php7.0-json php7.0-opcache php7.0-mysql mariadb-server mariadb-client`
 
 
 
-Icinga2 network monitoring application needs a web server, such as Apache HTTP server, and a PHP pre-processing language interpreter gateway to run properly. Install Apache web server and the PHP interpreter alongside with all required PHP modules needed by Icinga to run properly in your system by issuing the following command in your VPS console.
+Next, open and edit the follwoin line in PHP configuration file to change PHP time zone setting. 
 
-`apt install apache2 libapache2-mod-php7.0 php7.0-xml php7.0-opcache php7.0-xml php7.0-mbstring php7.0-json php7.0-curl php7.0-ldap php7.0-cli php7.0-gd php7.0-intl php7.0-readline`
-
-
-
-After Apache web server and PHP interpreter had been installed in your Debian system, test if the web server is up and running and listening for network connections on port 80 by issuing the following command with root privileges. The result shoud be similar as shown in the below image.
-
-`ss- tulpn`
-
-![description](/docs/assets/1.png)
-
-
-
-In case you have a firewall enabled in your Debian system, such as UFW firewall application, you should add a new rule to allow HTTP traffic to pass through firewall by issuing the following command.
-
-`ufw allow WWW`
-
-or
-
-`ufw allow 80/tcp`
-
-
-
-If you’re using `iptables` raw rules to manage Firewall rules in your Debian server, add the following rule to allow port 80 inbound traffic on the firewall so that visitors can browse Icinga2 web interface.
-
-`apt-get install -y iptables-persistent`
-
-`iptables -I INPUT -p tcp --destination-port 80 -j ACCEPT`
-
-`systemctl iptables-persistent save`
-
-`systemctl iptables-persistent reload`
-
-
-
-Next, enable and apply the following Apache modules which will be used to redirect HTTP connections to HTTPS, by issuing the below command.
-
-`a2enmod rewrite`
-
-`systemctl restart apache2`
-
-
-
-Finally, test if Apache web server default web page can be displayed in your client’s browsers by visiting your Debian VPS IP address or your domain name or server FQDN via HTTP protocol. If you don’t know your machine IP address, execute `ip a` command to reveal the IP address of your server. The default Apache page for Debian will be displayed in your browser, as shown in the below screenshot.
-
-[http://your_domain.tld](http://your_domain.tld)
-
-
-![description](/docs/assets/2.png)
-
-
-
-On the next step we need to make some further changes to PHP default configuration file in order to assure that the PHP timezone setting is correctly configured and matches your system geographical location. Open `/etc/php/7.0/apache2/php.ini` file for editing and assure that the following lines are setup as follows. Also, initially, make a backup of PHP configuration file.
+Backup and open the file for editing:
 
 `cp /etc/php/7.0/apache2/php.ini{,.backup}`
 
@@ -118,125 +59,29 @@ On the next step we need to make some further changes to PHP default configurati
 
 
 
-Search, edit and change the following variables in `php.ini` configuration file:
+Search and update time zone variable in `php.ini` configuration file:
 
 ~~~
-date.timezone = Europe/London
-~~~
-
-
-
-Replace the timezone variable accordingly to your physical time by consulting the list of time zones provided by PHP docs at the following link http://php.net/manual/en/timezones.php 
-
-
-If you want to increase the load speed of your application via OPCache plugin available in PHP7, append the following OPCache settings at the bottom of the PHP interpreter configuration file, as detailed below:
-
- 
-~~~ conf
-opcache.enable=1 
-opcache.enable_cli=1 
-opcache.interned_strings_buffer=8 
-opcache.max_accelerated_files=10000 
-opcache.memory_consumption=128 
-opcache.save_comments=1
-opcache.revalidate_freq=1
+date.timezone = America/Phoenix
 ~~~
 
 
 
-After you’ve made all changes explained above, restart apache daemon to apply the new changes by issuing the following command.
+Replace the timezone value to match VPS geographical location. Consult PHP docs at the following link http://php.net/manual/en/timezones.php to update time zone setting.
+
+
+
+
+Finally, restart apache daemon to pick-up PHP changes by issuing the following command.
 
 `systemctl restart apache2`
 
 
+
 ## Configure Icinga2 Databases
 
-Next, we’ll start by installing the backend database needed by Icinga2 monitoring web application and Icinga Web 2 frontend to store users, contacts and other collected data. Execute the following command to install MariaDB database and PHP module needed to access MySQL database in Debian 9.
-
-`apt install php7.0-mysql mariadb-server mariadb-client`
-
-
-Then, log in to MySQL console and secure MariaDB root account by issuing the following commands.
-
-`mysql -h localhost`
-~~~
-use mysql;
-update user set plugin='' where user='root';
-flush privileges;
-exit
-~~~
-
-On the next step, you need to further secure MariaDB database by executing the script `mysql_secure_installation`. This script will ask a series of questions designed to secure MariaDB database: change MySQL root password, remove anonymous users, disable remote root logins and delete the test database. Execute the script by issuing the below command and say yes to all asked questions, as shown in the below script output except.
-
-`sudo mysql_secure_installation`
-
-<pre>
-NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
-      SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
  
-In order to log into MariaDB to secure it, we'll need the current
-password for the root user.  If you've just installed MariaDB, and
-you haven't set the root password yet, the password will be blank,
-so you should just press enter here.
- 
-Enter current password for root (enter for none):
-OK, successfully used password, moving on...
- 
-Setting the root password ensures that nobody can log into the MariaDB
-root user without the proper authorisation.
- 
-You already have a root password set, so you can safely answer 'n'.
- 
-<b>Change the root password? [Y/n] y</b>
-
-New password:
-Re-enter new password:
-Password updated successfully!
-Reloading privilege tables..
- ... Success!
- 
- 
-By default, a MariaDB installation has an anonymous user, allowing anyone
-to log into MariaDB without having to have a user account created for
-them.  This is intended only for testing, and to make the installation
-go a bit smoother.  You should remove them before moving into a
-production environment.
- 
-<b>Remove anonymous users? [Y/n] y </b>
- ... Success!
- 
-Normally, root should only be allowed to connect from 'localhost'.  This
-ensures that someone cannot guess at the root password from the network.
- 
-<b>Disallow root login remotely? [Y/n] y </b>
- ... Success!
- 
-By default, MariaDB comes with a database named 'test' that anyone can
-access.  This is also intended only for testing, and should be removed
-before moving into a production environment.
- 
-<b>Remove test database and access to it? [Y/n] y </b>
- - Dropping test database...
- ... Success!
- - Removing privileges on test database...
- ... Success!
- 
-Reloading the privilege tables will ensure that all changes made so far
-will take effect immediately.
- 
-<b>Reload privilege tables now? [Y/n] y </b>
- ... Success!
- 
-Cleaning up...
- 
-All done!  If you've completed all of the above steps, your MariaDB
-installation should now be secure.
- 
-Thanks for using MariaDB!
-</pre>
- 
- 
-Next, logged in to MariaDB database console and create the database for Icinga2 application.  Also create a user with a strong password to manage Icinga2 application database, by issuing the following commands. You should replace database name, user and password used in this example with your own database name and credentials.
+Log in to MariaDB database console and create Icinga2 database application.  Also create a user with a strong password to manage Icinga2 application database, by issuing the following commands. You should replace database name, user and password used in this example with your own database name and credentials.
 
 `mysql –u root -p`
 ~~~
@@ -246,7 +91,7 @@ flush privileges
 exit
 ~~~
 
-Create the second MySQL database used by Icinga2 web to store its interface users and groups, by issuing the following commands. Also, as on the above database, make sure you replace the database name and credentials accordingly and choose a strong password for database user. To ease the database administration process you can use the same MySQL user account to manage both databases simultaneously (`icinga_user'@'localhost`)
+Next, create Icinga2 database that will be used to store web interface users and groups. To ease the database administration process you can use the same MySQL user account to manage both Icinga2 databases simultaneously (`icinga_user'@'localhost`)
 
 
 `mysql –u root –p`
@@ -265,20 +110,15 @@ The installation of Icinga2 will be done via Debian 9 Apt Package Manager tool w
 `apt install icinga2 icinga2-ido-mysql`
 
 
-During the installation of Icinag2 via Debian 9 repositories, you will be asked a series of question that will help you in setting-up the application. In the first question prompt, you will be asked if you want to configure and enable Icinga2 to use MySQL module. Select Yes from the prompt and hit [enter] key to continue as illustrated in the below image.
+During the installation of Icinag2 via Debian 9 repositories, you will be asked a series of question that will help you in setting-up the application. In the first question prompt select "Yes" configure and enable Icinga2 to use MySQL module.
 
-![description](/docs/assets/Picture1.png)
+![description](/docs/assets/incinga2/Picture1.png)
 
 
-The next prompt question will ask you if you want to configure database for icinga2-ido-mysql with dbconfig-common option. Choose No from the prompt and press [enter] key to finish Icinga2 installation.
+The next prompt select "No" in order to configure icinga2-ido-mysql without dbconfig-common option.
 
-![description](/docs/assets/Picture2.png)
+![description](/docs/assets/incinga2/Picture2.png)
 
-After Icinga2 application has been installed in your Debian VPS, start Icinga2 service and check the daemon status by running the following commands.
-
-`systemctl start icinga2.service`
-
-`systemctl status icinga2.service`
 
 
 ### Install Icinga2 Web Interface
@@ -286,14 +126,6 @@ After Icinga2 application has been installed in your Debian VPS, start Icinga2 s
 In order to manage Icinga2 engine via a web control panel interface or visualize the state of services and hosts status from browsers, you need to install Icinga2 web interface and Icinga2 command line utility packages by issuing the below command. This packages will be also pulled from Debian 9 repositories.
 
 `apt install icingaweb2 icingacli`
-
-
-Afterwards, restart Icinga2 daemon to reflect changes and verify Icinga2 daemon engine status by issuing the below command.
-
-`systemctl restart icinga2.service`
-
-`systemctl status icinga2.service`
-
 
 
 Finally, before starting to set-up Icinga2 via its web interface, go ahead and install MySQL schema required Icinga2 database by executing the following command. Icinga2 MySQL database schema is can be found in `/usr/share/icinga2-ido-mysql/schema/` system path.
@@ -319,10 +151,11 @@ object IdoMysqlConnection "ido-mysql" {
 ~~~
 
 
-Save the file and restart Icinga2 daemon to apply settings by issuing the following command. 
-
+Finally, restart Icinga2 daemon to reflect changes and verify Icinga2 daemon engine status by issuing the below command.
 
 `systemctl restart icinga2.service`
+
+`systemctl status icinga2.service`
 
 
 You need to also execute the following commands in order to create Icinga Web 2 log directory and add the proper file system permissions in order to grant Icinga2 group with write permissions to this system path.
@@ -362,38 +195,38 @@ Start Icinga2 confguration process by opening a browser and navigate your VPS IP
 
 In the first installation stage, you will be asked to fill the token filed with the generated token from command line in order to start the installation process, as shown in the below screenshot. Add the generated toked copied to clipboard and press the Next button to continue the configuration process.
 
-![description](/docs/assets/3.png)
+![description](/docs/assets/incinga2/3.png)
 
 
 On the next screen select and enable Doc and Monitoring modules and hit on Next button to continue, as illustrated in the below image.
 
-![description](/docs/assets/4.png)
+![description](/docs/assets/incinga2/4.png)
 
 Next, Icinga2 will check your system requirements and PHP modules to see if all requirements are meet to continue with the installation and configuration process. Scroll down to the end of the page and hit on Next button to continue. This step is illustrated in the following two images.
 
-![description](/docs/assets/5.png)
+![description](/docs/assets/incinga2/5.png)
 
-![description](/docs/assets/6.png)
+![description](/docs/assets/incinga2/6.png)
 
 
 On the next screen, choose **Authentication Type = Database** and hit Next button to continue.
 
-![description](/docs/assets/7.png)
+![description](/docs/assets/incinga2/7.png)
 
 
 In the next step add the credentials need to access Icinga2 database created for storing web interface users and groups. First add the name of the MySQL database (add database information of the second database created earlier). Use `icingaweb_db` as a name for this resource and leave the Host, Port and Character set variables as default.  Also, don’t enable Persistent and SSL options and hit on **Validate Configuration button** to validate the database. After the database has been validated successfully, hit on Next button to continue to the next phase of Icinga2’s configuration process.
 
-![description](/docs/assets/8.png)
+![description](/docs/assets/incinga2/8.png)
 
 Next, define a name for database authentication backed (you can use the default value) and hit on Next button to continue, as illustrated in the below screenshot
 
-![description](/docs/assets/9.png)
+![description](/docs/assets/incinga2/9.png)
 
 
 
 On the next screen, add a username with a strong password in order to log in to Icinga2 web interface and further manage Icinga2 engine and click on the Next button to continue the configuration process.
 
-![description](/docs/assets/10.png)
+![description](/docs/assets/incinga2/10.png)
 
 
 Next, adjust Icinga2 application and logging configurations by using the below settings:
@@ -412,25 +245,25 @@ Next, adjust Icinga2 application and logging configurations by using the below s
 Hit on the Next button to continue the set-up process.
 
 
-![description](/docs/assets/13.png)
+![description](/docs/assets/incinga2/13.png)
 
 The next configuration screen will present a summary of Icinga2 configuration will all configuration made until reaching this step. Review the information report and hit on Next button to continue further with the configuration process.
 
-![description](/docs/assets/14.png)
+![description](/docs/assets/incinga2/14.png)
 
 
 At the following installation screen, press on Next button to continue with setting-up Icinga2 engine monitoring module.
 
-![description](/docs/assets/15.png)
+![description](/docs/assets/incinga2/15.png)
 
 
 In the next setup screen add a name for Icinga2 Backend, select **IDO** as Backend Type and hit on Next button to continue.
 
-![description](/docs/assets/16.png)
+![description](/docs/assets/incinga2/16.png)
 
 Next, add Icinga2 engine database credentials in order to setup the IDO resource environment. After adding Icinga2 database credentials, hit on **Validate Configuration** button to validate Icinga2 Monitoring IDO Resource and, then, after the successfully validated message appears in the screen, hit on Next button to continue to next setup stage.
 
-![description](/docs/assets/17.png)
+![description](/docs/assets/incinga2/17.png)
 
 
 Next, configure Icinga2 Command Transport module with the below configurations and hit on Next button to continue the setup process.
@@ -442,31 +275,31 @@ Next, configure Icinga2 Command Transport module with the below configurations a
 -Command File = `/var/run/icinga2/cmd/icinga2.cmd`
 
 
-![description](/docs/assets/18.png)
+![description](/docs/assets/incinga2/18.png)
 
 On the next screen configure the monitoring security environment variables in order protect eavesdropping sensitive information and hit the Next button to continue. You should be safe to continue with the default values provided by Icinga2.
 
-![description](/docs/assets/19.png)
+![description](/docs/assets/incinga2/19.png)
 
 
 The next configuration screen will display a detailed report with all configurations made until this step. A message will also show you that Icinga2 Monitoring module has been successfully configured. Review all the configurations made so far and hit on the Finish button to complete the setup process.
 
-![description](/docs/assets/20.png)
+![description](/docs/assets/incinga2/20.png)
 
 
 Finally, after the installation and setup-up process completes, a green message will inform you that Icinga Web 2 has been successfully set up. The only thing left now is to hit on the Login to Icinga Web 2 button in order to exit the setup process and log in to Icinga Web 2 login webpage.
 
-![description](/docs/assets/21.png)
+![description](/docs/assets/incinga2/21.png)
 
 
 Log in to Icinga Web 2 with the account credentials configured during the installation process and you will be directed to Icinga Web 2 Dashboard, where you should see the default services and VPS system resources that are currently monitored by Icinga2 engine.
 
-![description](/docs/assets/22.png)
+![description](/docs/assets/incinga2/22.png)
 
 
 ## Secure Icinga Web 2 Interface Via TLS
 
-To access Icinga2 monitoring application via HTTPS protocol that will secure the traffic for your clients, issue the following command to enable Apache web server SSL module and SSL site configuration file. Also, enable Apache rewrite module in order to force users to visit the interface via HTTPS.
+To access Icinga2 monitoring application via HTTPS application protocol that will secure the traffic for your clients, issue the following command to enable Apache web server SSL module and SSL site configuration file. Also, enable Apache rewrite module in order to force users to visit the interface via HTTPS.
 
 `a2enmod ssl rewrite`
 
@@ -482,13 +315,10 @@ Insert the below lines of code after DocumentRoot statement as shown in the belo
 
 ~~~ conf
 <Directory /var/www/html>
-  Options +FollowSymlinks
   AllowOverride All
   Require all granted
 </Directory>
 ~~~
-
-![description](/docs/assets/Picture3.png)
 
 
 Finally, restart Apache daemon to apply the new configuration file and visit your domain name or your VPS IP address via HTTP protocol. Because you’re using the Self-Signed certificate generated by Apache, an error warning should be displayed in the browser. Accept the warning in order to continue and be redirected to Icinga Web 2 via HTTPS protocol.
@@ -497,19 +327,6 @@ Finally, restart Apache daemon to apply the new configuration file and visit you
 
 
 [https://your_VPS_IP](https://your_VPS_IP)
-
-In case the UFW firewall application blocks incoming network connections to HTTPS port, you should add a new rule to allow HTTPS traffic to pass through firewall by issuing the following command.
-
-`ufw allow 443/tcp`
-
-
-If `iptables` is the default firewall application installed to protect your Debian system at network level, add the following rule to allow port 443 inbound traffic in the firewall so that visitors can browse your domain name.
-
-`iptables -I INPUT -p tcp --destination-port 443 -j ACCEPT`
-
-`systemctl iptables-persistent save`
-
-`systemctl iptables-persistent reload`
 
 
 Finally, to force visitors to browse Icinga Web 2 interface via HTTPS protocol, create a new `.htaccess` file in your web server document root path with the following content.
@@ -532,7 +349,7 @@ That’s all! You have successfully installed, set-up and secured Icinga2 engine
 
 ### Monitor Remote Hosts via Simple Host Monitoring
 
-In order to monitor a host and its external services via regular command checks, Icinga2 uses a mechanism that issues a ping command at regular time intervals against the server's IP address and also, using its internal built-in commands, regularly verifies the state of remote network services protocols, such as HTTP, SSH, SMTP, IMAP, POP or others. Icinga2 stores Host definitions in objects. These objects with their attributes used for applying rules for Service, Notification, Dependency and Scheduled Downtime can be found in `hosts.conf` file, which can be located in `/etc/icinga2/conf.d/` directory. To add a new host definition in order to be periodically monitored by Icinga2 engine via ICMP checks, in order to check if the host is online, open `hosts.conf` configuration file for editing and add the following lines add the bottom of the file.
+In order to monitor a host and its external services via regular command checks, Icinga2 uses a mechanism that issues a ping command at regular time intervals against the server's IP address and also, using its internal built-in commands, regularly verifies the state of remote network services protocols, such as HTTP, SSH, SMTP, IMAP, POP or others. Icinga2 stores Host definitions in objects. These objects with their attributes used for applying rules for Service, Notification, Dependency and Scheduled Downtime can be found in `hosts.conf` file, which can be located in `/etc/icinga2/conf.d/` directory. To add a new host definition in order to be periodically monitored by Icinga2 engine via ICMP checks, to determine if the host is online, open `hosts.conf` configuration file for editing and add the following lines add the bottom of the file.
 
 `nano /etc/icinga2/conf.d/hosts.conf`
 
@@ -548,7 +365,7 @@ object Host "WebServer VPS" {
 ~~~
 
 
-Assuming that you want to check the status of a web server that runs in this node, add the following lines after host definition. This check will verify if the web server is alive and responds with the proper HTTP codes.
+Assuming that you want to check the status of a web server that runs in this node, add the following lines after host definition. The command will query the web server to determine if it's alive and replies with the correct HTTP exit codes.
 
 ~~~ conf
 object Service "http" {
@@ -564,11 +381,11 @@ Finally, to apply the Host definitions and start periodically monitor the new ho
 Verify the state of the new added host by navigating to **Overview -> Hosts** in Icinga’s Web 2 interface. In the right plane you should see the health status of the new added host. 
 
 
-![description](/docs/assets/23.PNG)
+![description](/docs/assets/incinga2/23.PNG)
 
-To display the status of the host’s HTTP service, navigate to **Overview -> Servicegroups** and hit on HTTP Checks. In the right plane you should see health status of the external web service.
+To display the status of the host’s HTTP service, navigate to **Overview -> Servicegroups** and click on HTTP Checks. In the right plane you should see health status of the external web service.
 
-![description](/docs/assets/24.PNG)
+![description](/docs/assets/incinga2/24.PNG)
 
 
 
@@ -805,7 +622,7 @@ apply Service "procs" {
 
 Finally, to apply all the configurations made so far, restart icinga2 service and navigate to Icinga Web 2 interface to verify if the command checks are running on the remote node host. If the configuration is correctly configured you should see a list of internal parameters displayed for your remote client endpoint node.
 
-![description](/docs/assets/25.PNG)
+![description](/docs/assets/incinga2/25.PNG)
 
 
 That’s all! You have successfully configured Icinga2 as a master node and added a CentOS 7 machine client node to be remotely checked via Icinga2 agent-based monitoring system and another remote host to be actively monitored via external services command checks.
