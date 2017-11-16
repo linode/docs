@@ -111,14 +111,26 @@ The installation of Icinga2 will be done via Debian 9 Apt Package Manager tool w
 
 
 During the installation of Icinag2 via Debian 9 repositories, you will be asked a series of question that will help you in setting-up the application. In the first question prompt select "Yes" configure and enable Icinga2 to use MySQL module.
+<<<<<<< HEAD
+=======
+
+![description](/docs/assets/Picture1.png)
+>>>>>>> c9c1d3187ef27063195277343fb4aa8f46dd553f
 
 ![description](/docs/assets/incinga2/Picture1.png)
 
+<<<<<<< HEAD
+=======
+The next prompt select "No" in order to configure icinga2-ido-mysql without dbconfig-common option.
+>>>>>>> c9c1d3187ef27063195277343fb4aa8f46dd553f
 
 The next prompt select "No" in order to configure icinga2-ido-mysql without dbconfig-common option.
 
+<<<<<<< HEAD
 ![description](/docs/assets/incinga2/Picture2.png)
 
+=======
+>>>>>>> c9c1d3187ef27063195277343fb4aa8f46dd553f
 
 
 ### Install Icinga2 Web Interface
