@@ -12,6 +12,6 @@ def test_whitespace(md_filepaths):
         if has_trailing:
             has_whitespace = True
             print("Trailing whitespace at " + str(line_number) + \
-                  ":" + str(match.start()))
+                  ":" + str(has_trailing.start()))
     assert has_whitespace == False
 
