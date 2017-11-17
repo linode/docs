@@ -54,6 +54,9 @@ external_resources:
 
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/my-website/index.html
 
+3.  Restore the correct selinux labels on the web root:
+
+        sudo restorecon -r /var/www/my-website
 
 ## Configure the Caddyfile
 
