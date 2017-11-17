@@ -49,21 +49,8 @@ external_resources:
 1.  Set up a home directory, **web root**, for your website:
 
         sudo mkdir -p /var/www/my-website
-        sudo chown www-data:www-data /var/www
-        sudo chmod 555 /var/www
 
-    {{< caution >}}
-The files in your web root directory must belong to the Caddy user (www-data). Otherwise, your regular user as well as the Caddy user, has read permission on all files served, and execute permission on all directories.
-{{< /caution >}}
-
-2.  If you plan to deploy your pages via an SFTP client--as an administrative user--other than **www-data** or **root**, set the following permissions. Replace `example_user` with the administrator's username:
-
-        sudo usermod -g www-data example_user
-        sudo chown -R example_user:www-data /var/www/
-        sudo chmod -R 755 /var/www/my-website
-        sudo chmod 755 /var/www
-
-3.  Create a test page:
+2.  Create a test page:
 
         echo '<!doctype html><head><title>Caddy Test Page</title></head><body><h1>Hello, World!</h1></body></html>' > /var/www/my-website/index.html
 
