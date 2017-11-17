@@ -72,8 +72,6 @@ root /var/www/my-website
 
 1.  Enable the Caddy service:
 
-        sudo systemctl enable caddy.service
-        sudo systemctl start caddy.service
-        sudo systemctl status caddy.service
+        sudo systemctl enable --now caddy.service
 
 2.  Type your domain into a browser window on your local machine and you should see the test page. If everything is configured correctly, you should see a green lock symbol in the URL bar, indicating that your connection is secure.
