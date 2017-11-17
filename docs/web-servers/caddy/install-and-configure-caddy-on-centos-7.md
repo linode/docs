@@ -28,7 +28,7 @@ external_resources:
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) guide to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  If you want to set up your site for HTTPS using Let's Encrypt, you will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
+3.  You will need to register your site's domain name and follow our [DNS Manager Overview](/docs/networking/dns/dns-manager-overview#add-records) guide to point your domain to your Linode.
 
 4.  Update your system:
 
@@ -70,19 +70,13 @@ The files in your web root directory must belong to the Caddy user (www-data). O
 
 ## Configure the Caddyfile
 
-Edit the Caddyfile. Replace `203.0.113.0` with the IP address or FQDN of your Linode:
+Add your hostname and web root to the Caddy configuration. Replace `example.com` with your site's domain name:
 
 {{< file "/etc/caddy/conf.d/my-website.conf" caddy >}}
-203.0.113.0 {
+example.com {
 root /var/www/my-website
-tls your-email-here@example.com
 }
 {{< /file >}}
-
-
-{{< note >}}
-If you are using a Linode without a FQDN, delete the `tls your-email-here@example.com` line from the sample Caddyfile above.
-{{< /note >}}
 
 ## Enable the Caddy Service
 
@@ -92,4 +86,4 @@ If you are using a Linode without a FQDN, delete the `tls your-email-here@exampl
         sudo systemctl start caddy.service
         sudo systemctl status caddy.service
 
-2.  The `status` command above will show you the url where Caddy is listening (e.g., `https://203.0.113.0`). Type this url into a browser window, on your local machine and you should see the test page rendered in the browser. If you are using a FQDN and the SSL Certificate integration was successful, you will also see a green lock symbol in the URL bar, indicating that your connection is secure.
+2.  Type your domain into a browser window on your local machine and you should see the test page. If everything is configured correctly, you should see a green lock symbol in the URL bar, indicating that your connection is secure.
