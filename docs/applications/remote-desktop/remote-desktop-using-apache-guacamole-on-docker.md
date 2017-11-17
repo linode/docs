@@ -153,7 +153,7 @@ PostgreSQL are MariaDB are also supported but MySQL will be demonstrated in this
 
 2.  Link containers so Guacamole can verify credentials stored in the MySQL database.
 
-        docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE='guacamole_db' -e MYSQL_USER='guacamole_user' -e MYSQL_PASSWORD='guacamole_user_password' -d -p 8080:8080 guacamole/guacamole
+        docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE='guacamole_db' -e MYSQL_USER='guacamole_user' -e MYSQL_PASSWORD='guacamole_user_password' -d -p 127.0.0.1:8080:8080 guacamole/guacamole
 
     {{< note >}}
 To see all running and non-running Docker containers:
