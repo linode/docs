@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This tutorial shows how to set up an NFS server and client for remote file access on Debian.'
-og_description: ' With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
+og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
 keywords: ["NFS", "network file system"]
 aliases: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/','networking/how-to-mount-nfs-shares-on-debian-8/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,6 +15,9 @@ published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
 ---
 
+![How to Mount NFS Shares on Debian 9](/docs/assets/networking/mount-nfs-shares-deb-9-title.jpg "How to Mount NFS Shares on Debian 9")
+
+## What is Network File System (NFS)
 
 [Network File System](https://en.wikipedia.org/wiki/Network_File_System) (NFS) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can with local storage. This is useful for sharing files across several Linodes or other computers on the internet. For example, you can share the home directories for your users, or system configuration files, over NFS.
 
