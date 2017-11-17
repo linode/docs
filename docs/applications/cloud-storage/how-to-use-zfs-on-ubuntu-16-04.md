@@ -191,15 +191,15 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     `testpool` is the name of the pool. This will be automatically mounted in `/testpool`. You can choose a different mountpoint with the -m switch: `zpool create -f -m /othermountpoint testpool /dev/disk/by-id/scsi-0Linode_Volume_d1`.
 
-3.  To change this mountpoint later on:
+2.  To change this mountpoint later on:
 
         zfs set mountpoint=/somewhereelse testpool
 
-4.  To add more disks to the array:
+3.  To add more disks to the array:
 
         zpool add -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d4
 
-5.  Destroy the test pool so you can proceed through the next examples:
+4.  Destroy the test pool so you can proceed through the next examples:
 
         zpool destroy testpool
 
