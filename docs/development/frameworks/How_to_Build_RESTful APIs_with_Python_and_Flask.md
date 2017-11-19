@@ -17,30 +17,38 @@ external_resources:
 
 Flask is a Python-based microframework that enables you to quickly build web applications; the “micro” in microframework simply means Flask aims to keep the core simple but [extensible](http://flask.pocoo.org/docs/0.12/foreword/#what-does-micro-mean).
 
-This guide will walk you through building a Restful APi with Flask coupled with other extensions like Flask-RESTful etc. At the end, you build a simple Commenting API. The API will have endpoints that can be used to `add category`, `view categories`, `add comments` and `view comments`.
+## What is REST?
 
-  :light: Flask does not come out of the box with all the extension needed to buld this API. However there are lot's of extension that can be pluged into Flask to enable you build our awesome applications.
+**REST** is acronym for **RE**presentational **S**tate **T**ransfer. It is an architectural style, and an approach to communications that is often used in the development of Web services.
 
-Below are the endpoints that we'll be created at the end of this guide:
+**REST** web services are a way of providing interoperability between computer systems on the Internet. REST-compliant Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform and predefined set of stateless operations.
 
-- GET  - /api/Category - Retrieve all the stored categories
-- POST - /api/Category - Add new category
+This guide will walk you through building a Restful APi with Flask coupled with other extensions like Flask-RESTful etc. At the end, you'll build a simple Commenting API. The API will have endpoints that can be used to `add category`, `view categories`, `update category`, `delete category`, `add comments` and `view comments`.
 
-- GET  - /api/Comment -  Retrieve all the stored comments
-- POST - /api/Comment -  Add new comment
+>:light: Flask does not come out of the box with all the extension needed to buld a full fledge API. However there are lot's of extension that can be pluged into Flask to enable you build our awesome APIs.
+
+At the end of this guide, you should have this API endpoints available:
+
+- **GET**    - `/api/Category` - Retrieve all categories
+- **POST**   - `/api/Category` - Add a new category
+- **PUT**    - `/api/Category` - Update a category
+- **DELETE** - `/api/Category` - Delete a category
+
+- **GET**    - `/api/Comment`  -  Retrieve all the stored comments
+- **POST**   - `/api/Comment`  -  Add new comment
 
 ## Before You Begin
 
 - Make sure you have [Python3.x](https://www.python.org) installed on your system.
 
-- We'll use [PostgreSQL](https://www.postgresql.org) database for this tutorial. Install Postgres database if you don't have it already.
+- We'll use [PostgreSQL](https://www.postgresql.org) database for this tutorial. Install Postgres database if you don't have it installed already.
 
 - Make sure [virtualenv](http://docs.python-guide.org/en/latest/dev/virtualenvs/#lower-level-virtualenv) is installed on your system.
 
 
 ## Step 0: Setting up the application
 
-- First, Create the structure of the app anywhere on your system:
+- First, create the structure of the app at any location on your system:
 
 ```
 project/
@@ -53,11 +61,11 @@ project/
 └── run.py
 ```
 
-- Then open up your command prompt and CD into the app root folder - `project`.
+- Then open up your terminal and CD(change directory) into the app root folder - `project`.
 
 - Now, create and activate a [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/#lower-level-virtualenv).
 
-  virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that a Python project would need.
+> :light: virtualenv is a tool to create isolated Python environments. virtualenv creates a folder which contains all the necessary executables to use the packages that a Python project would need.
 
 Creates virtual environment
 
@@ -74,28 +82,28 @@ source env/bin/activate
 Add the folowing extensions to `requirements.txt`:
 
 ```
-flask
-flask_restful
-flask_script
-flask_migrate
-marshmallow
-flask_sqlalchemy
-flask_marshmallow
-marshmallow-sqlalchemy
-psycopg2
+flask==0.12.2
+flask_restful==0.3.6
+flask_script==2.0.6
+flask_migrate==2.1.1
+marshmallow==2.14.0
+flask_sqlalchemy==2.3.2
+flask_marshmallow==0.8.0
+marshmallow-sqlalchemy==0.13.2
+psycopg2==2.7.3.2
 ```
 
-The above file contains all python extensions the API will need.
+The above file contains all python extensions the API will use.
 
 - [flask](http://flask.pocoo.org) - This is a microframework for Python
 
-- [flask_restful](https://flask-restful.readthedocs.io/) - This is an extension for Flask that adds support for quickly building REST APIs.
+- [flask_restful](https://flask-restful.readthedocs.io/) - This is an extension for Flask that adds support for quickly building of REST APIs.
 
-- [flask_script](https://flask-script.readthedocs.io/) - This is extension provides support for writing external scripts in Flask.
+- [flask_script](https://flask-script.readthedocs.io/) - This is an extension that provides support for writing external scripts in Flask.
 
 - [flask_migrate](https://flask-migrate.readthedocs.io) - This is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic.
 
-- [marshmallow](https://marshmallow.readthedocs.io/) - This is an ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes. We'll use this for validation.
+- [marshmallow](https://marshmallow.readthedocs.io/) - This is an ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes. We'll use this for validation. This is used to Serializing and Deserializing Objects.
 
 - [flask_sqlalchemy](http://flask-sqlalchemy.pocoo.org) - This is an extension for Flask that adds support for SQLAlchemy.
 
@@ -114,9 +122,9 @@ From your terminal, make sure you are in the root folder of the project then run
 pip install -r requirements.txt
 ```
 
-This will download and install all the extensions inside `requirements.txt`
+This will download and install all the extensions in `requirements.txt`.
 
-## Step 3: Set app config
+## Step 3: Setting up configuration
 
 Add the following code to `config.py`:
 
@@ -130,17 +138,17 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_DATABASE_URI = "postgresql://username:password@localhost/database_name"
 ```
 
-We have defined the configuration that the API will be using. We are also using postgreSQL database. You can use any database type that you prefer, you just have to modify the value accordingly.
+Here, we have defined the configuration that the API will be using. We are also using postgreSQL database. If you prefer other database, you just have to modify the value accordingly.
 
-example: if you want to use SQLite, this how this line should be:
+example: if you want to use `SQLite`, you should modify this line as:
 
 ```
 SQLALCHEMY_DATABASE_URI = "sqlite:///app.db"
 ```
 
-  Make sure you change the above settings with the appropriate values for your configuration.
+>Make sure you change the above settings with the appropriate values for your configuration.
 
-## Step 1: Create the API entry point
+## Step 1: Create the API entry points
 
 Add the following code to `app.py`:
 
@@ -155,9 +163,9 @@ api = Api(api_bp)
 # Route
 api.add_resource(Hello, '/Hello')
 ```
-Here we imported `Blueprint` from flask, and also `Api` from flask_restful. The imported `Api` will add some functionality to flask which will help us to add routes and simplify some process.
+Here we imported `Blueprint` from flask, and also `Api` from flask_restful. The imported `Api` will add some functionality to flask which will help us to add routes and simplify some processes.
 
-`api_bp = Blueprint('api', __name__)` - created a Blueprint which we'll register to the app later.
+`api_bp = Blueprint('api', __name__)` - creates a Blueprint which we'll register to the app later.
 
 `api.add_resource(Hello, '/Hello')` - creates a route - `/Hello`. add_resource has two parameter - `Hello` and `/Hello`.
 `Hello` is the class we have imported and `/Hello` is the route we defined for that Resource. 
@@ -173,9 +181,9 @@ class Hello(Resource):
         return {"message": "Hello, World!"}
 ```
 
-In the Hello class, we have a defined a function - `get`. This means that any GET Request on the `/Hello` endpoint will be hitting that function.
+In the Hello class, we have a defined a function - `get`. This means that any GET Request on the `/Hello` endpoint will be hitting this function.
 
-So if you need a POST method, you should have something like:
+So if you need a POST method, you should have something like( you don;t need to add this now):
 
 ```python
     def post(self):
@@ -194,6 +202,9 @@ def create_app(config_filename):
     
     from app import api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
+
+    from Model import db
+    db.init_app(app)
 
     return app
 
@@ -272,7 +283,7 @@ class Category(db.Model):
 
 
 class CategorySchema(ma.Schema):
-    id = fields.Integer(dump_only=True)
+    id = fields.Integer()
     name = fields.String(required=True)
 
 
@@ -300,7 +311,7 @@ Moving on, the `CategorySchema` and `CommentSchema` are used for validation. In 
 
 ## Step 4: Running migrations
 
-Create a new file - `migrate.py` in the root folder of the app. Then add the following code to it:
+In the `migrate.py` file add the following code to it:
 
 ```python
 from flask_script import Manager
@@ -375,48 +386,9 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 015c8b601c6b, empty messag
 
   Each time the database models change repeat the `migrate` and `upgrade` commands. 
 
-## Step 5: Add resources
+## Step 5: Adding Category resources
 
-Create a new file `resources/Comment.py`. This will take care of all Comments related Logic.
-
-```python
-from flask import jsonify, request
-from flask_restful import Resource
-from Model import db, Comment, Category, CommentSchema
-
-comments_schema = CommentSchema(many=True)
-comment_schema = CommentSchema()
-
-class CommentResource(Resource):
-    def get(self):
-        comments = Comment.query.all()
-        comments = comments_schema.dump(comments).data
-        return comments
-
-    def post(self):
-        json_data = request.get_json(force=True)
-        if not json_data:
-               return {'message': 'No input data provided'}, 400
-        # Validate and deserialize input
-        data, errors = comment_schema.load(json_data)
-        if errors:
-            return {"status": "error", "data": errors}, 422
-        category_id = Category.query.filter_by(id=data['category_id']).first()
-        if not category_id:
-            return {'status': 'error', 'message': 'comment category not found'}, 400
-        comment = Comment(
-            category_id=data['category_id'], 
-            comment=data['comment']
-            )
-        db.session.add(comment)
-        db.session.commit()
-
-        result = comment_schema.dump(comment).data
-
-        return {'status': "success", 'data': result}, 201
-```
- 
-Also,  Create a new file `resources/Category.py`. This will take care of all Category related Logic.
+Create a new file `resources/Category.py`. This will take care of all Category related Logic. Add the below code to `resources/Category.py`:
 
 ```python
 from flask import request
@@ -430,32 +402,120 @@ class CategoryResource(Resource):
     def get(self):
         categories = Category.query.all()
         categories = categories_schema.dump(categories).data
-        return categories
+        return {'status': 'success', 'data': categories}, 200
+```
+Here, we have created a `get` method for fetching categories. We now have a new endpoint - `http://127.0.0.1:5000/api/Category`.
 
+Using `Category.query.all()`, we fetched all categories in the database and using `categories_schema.dump(categories).data`, we deserialized the data fetched.
+
+
+Next, lets add a POST method for creating new category. Add the following code to `resources/Category.py`:
+
+```python
+...
     def post(self):
         json_data = request.get_json(force=True)
         if not json_data:
                return {'message': 'No input data provided'}, 400
         # Validate and deserialize input
         data, errors = category_schema.load(json_data)
-        pprint(errors)
         if errors:
             return errors, 422
         category = Category.query.filter_by(name=data['name']).first()
         if category:
             return {'message': 'Category already exists'}, 400
         category = Category(
-            name=json_data['name']on] Will assume non-transactional DDL.
-INFO  [alembic.runtime.migration] Running upgrade  -> 015c8b601c6b, empty message
+            name=json_data['name']
+            )
+
+        db.session.add(category)
+        db.session.commit()
+
+        result = category_schema.dump(category).data
+
+        return { "status": 'success', 'data': result }, 201
 ```
 
-## Step 5: Add resources
+Next, lets add a PUT method for updating category. Update `resources/Category.py` as below:
+
+```python
+...
+    def put(self):
+        json_data = request.get_json(force=True)
+        if not json_data:
+               return {'message': 'No input data provided'}, 400
+        # Validate and deserialize input
+        data, errors = category_schema.load(json_data)
+        if errors:
+            return errors, 422
+        category = Category.query.filter_by(id=data['id']).first()
+        if not category:
+            return {'message': 'Category does not exist'}, 400
+        category.name = data['name']
+        db.session.commit()
+
+        result = category_schema.dump(category).data
+
+        return { "status": 'success', 'data': result }, 204
+```
+
+Finally, lets add a DELETE method for deleting category. Add the following code to `resources/Category.py`:
+
+```python
+...
+    def delete(self):
+        json_data = request.get_json(force=True)
+        if not json_data:
+               return {'message': 'No input data provided'}, 400
+        # Validate and deserialize input
+        data, errors = category_schema.load(json_data)
+        if errors:
+            return errors, 422
+        category = Category.query.filter_by(id=data['id']).delete()
+        db.session.commit()
+
+        result = category_schema.dump(category).data
+
+        return { "status": 'success', 'data': result}, 204
+```
+
+Next, import these resources to `app.py`. Update `app.py` exactly as below:
+
+Finally, import these resources to `app.py`. Update `app.py` exactly as below:
+
+```python
+from flask import Blueprint
+from flask_restful import Api
+from resources.Hello import Hello
+from resources.Category import CategoryResource
+
+
+api_bp = Blueprint('api', __name__)
+api = Api(api_bp)
+
+# Routes
+
+api.add_resource(Hello, '/Hello')
+api.add_resource(CategoryResource, '/Category')
+```
+
+In the Category resources, we have creating 4 endpoints:
+
+GET - http://127.0.0.1:5000/api/Category
+
+POST - http://127.0.0.1:5000/api/Category
+
+PUT - http://127.0.0.1:5000/api/Category
+
+DELETE - http://127.0.0.1:5000/api/Category
+
+## Step 6: Adding Comment resources
 
 Create a new file `resources/Comment.py`. This will take care of all Comments related Logic.
 
 ```python
 from flask import jsonify, request
-from flask_restf ul import Resource
+from flask_restful import Resource
 from Model import db, Comment, Category, CommentSchema
 
 comments_schema = CommentSchema(many=True)
@@ -488,57 +548,19 @@ class CommentResource(Resource):
         result = comment_schema.dump(comment).data
 
         return {'status': "success", 'data': result}, 201
-```
- 
-Also,  Create a new file `resources/Category.py`. This will take care of all Category related Logic.
 
-```python
-from flask import request
-from flask_restful import Resource
-from Model import db, Category, CategorySchema
-
-categories_schema = CategorySchema(many=True)
-category_schema = CategorySchema()
-
-class CategoryResource(Resource):
-    def get(self):
-        categories = Category.query.all()
-        categories = categories_schema.dump(categories).data
-        return {'status': 'success', 'data': categories}, 200
-
-    def post(self):
-        json_data = request.get_json(force=True)
-        if not json_data:
-               return {'message': 'No input data provided'}, 400
-        # Validate and deserialize input
-        data, errors = category_schema.load(json_data)
-        pprint(errors)
-        if errors:
-            return errors, 422
-        category = Category.query.filter_by(name=data['name']).first()
-        if category:
-            return {'message': 'Category already exists'}, 400
-        category = Category(
-            name=json_data['name']
-            )
-
-        db.session.add(category)
-        db.session.commit()
-
-        result = category_schema.dump(category).data
-
-        return { "status": 'success', 'data': result}
+    # You can add the other methods here...
 ```
 
 
-Finaly, Import these resources to `app.py`. Update `app.py` exactly as below:
+Finally, import these resources to `app.py`. Update `app.py` exactly as below:
 
 ```python
 from flask import Blueprint
 from flask_restful import Api
 from resources.Hello import Hello
-from resources.Comment import CommentResource
 from resources.Category import CategoryResource
+from resources.Comment import CommentResource
 
 
 api_bp = Blueprint('api', __name__)
@@ -551,7 +573,7 @@ api.add_resource(CategoryResource, '/Category')
 api.add_resource(CommentResource, '/Comment')
 ```
 
-## Step 6: Test Enpoints
+## Step 7: Test Enpoints
 
 We now have the following endpoints available:
 
