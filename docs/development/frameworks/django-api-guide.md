@@ -499,7 +499,7 @@ urlpatterns = [
 
 #### Run pplication
 
-Now issue the runserver command ``python manage.py runserver`` , navigate to ``http://127.0.0.1:8000/products/``.You can be able to view all products as well as add new products to your store.
+Now issue the runserver command ``python manage.py runserver`` , navigate to ``http://127.0.0.1:8000/products_list/``.You can be able to view all products as well as add new products to your store.
 
 #### Update and delete products
 Let's create a view that enables us to delete and update a product.
