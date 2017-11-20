@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-12
 modified_by:
   name: Sam Foo
-Published: Friday, September 15th, 2017
+published: 2017-09-15
 title: 'How to Create a Private Python Package Repository'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
@@ -48,18 +48,16 @@ If you choose to make your package public, there are additional considerations f
 
 2.  Navigate into the newly created directory. Create a file called `setup.py` and another directory called **linode_example**, containing `__init__.py`. The directory tree should look like this:
 
-    {{< output >}}
-linode_example/
-    linode_example/
-        __init__.py
-    setup.py
-    setup.cfg
-    README.md
-{{< /output >}}
+        linode_example/
+            linode_example/
+                __init__.py
+            setup.py
+            setup.cfg
+            README.md
 
 3.  Edit `setup.py` to contain basic information about your Python package:
 
-    {{< file "linode_example/setup.py" >}}
+    {{< file "linode_example/setup.py" py >}}
 from setuptools import setup
 
 setup(
@@ -78,7 +76,7 @@ setup(
 
 4.  Add an example function to `__init__.py`:
 
-    {{< file "linode_example/linode_example/__init__.py" >}}
+    {{< file "linode_example/linode_example/__init__.py" py >}}
 def hello_word():
     print("hello world")
 
@@ -87,7 +85,7 @@ def hello_word():
 
 5.  The `setup.cfg` file lets PyPI know the README is a markdown file:
 
-    {{< file "setup.cfg" >}}
+    {{< file "setup.cfg" ini >}}
 [metadata]
 description-file = README.md
 
@@ -159,7 +157,7 @@ Alternatively, [download pypiserver from Gitub](https://github.com/pypiserver/py
 
 4.  Inside the `~/packages` directory, create a `pypiserver.wsgi` file that creates an application object to connect between pypiserver and Apache:
 
-    {{< file "packages/pypiserver.wsgi" >}}
+    {{< file "packages/pypiserver.wsgi" py >}}
 import pypiserver
 PACKAGES = '/absolute/path/to/packages'
 HTPASSWD = '/absolute/path/to/htpasswd.txt'
@@ -170,7 +168,7 @@ application = pypiserver.app(root=PACKAGES, redirect_to_fallback=True, password_
 
 5.  Create a configuration file for the pypiserver located in `/etc/apache2/sites-available/`:
 
-    {{< file "/etc/apache2/sites-available/pypiserver.conf" >}}
+    {{< file "/etc/apache2/sites-available/pypiserver.conf" apache >}}
 <VirtualHost *:80>
 WSGIPassAuthorization On
 WSGIScriptAlias / /absolute/path/to/packages/pypiserver.wsgi
@@ -212,9 +210,9 @@ Recall the rather long flags declared with `pip` in order to download from a spe
 
 1.  On the client computer, create a `.pip` directory in the home directory. Inside this directory, create `pip.conf` with the following:
 
-    {{< file "pip.conf" >}}
+    {{< file "pip.conf" ini >}}
 [global]
-extra-index-url = http://192.0.2.0:8080/
+extra-index-url = http://192.0.2.0/
 trusted-host = 192.0.2.0
 
 {{< /file >}}
@@ -230,18 +228,18 @@ The terminal output or showing all packages with `pip list` will show that the u
 
 3.  Open up a Python shell and try out the new package:
 
-    {{< output >}}
->>from linode_example import hello_world
->>hello_world()
-    hello world
-{{< /output >}}
+    {{< highlight py >}}
+>> from linode_example import hello_world
+>> hello_world()
+hello world
+{{< /highlight >}}
 
 # Upload Remotely Using Setuptools
 Although it's possible to use `scp` to transfer tar.gz files to the repository, there are other tools such as `twine` and `easy_install` which can also be used.
 
 1.  On a client computer, create a new configuration file in the home directory called `.pypirc`. The remote repository will be called `linode`:
 
-    {{< file ".pypirc" >}}
+    {{< file ".pypirc" ini >}}
 [distutils]
 index-servers =
   pypi
