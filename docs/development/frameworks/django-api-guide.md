@@ -551,14 +551,14 @@ Update url's  as shown and don't forget to import the relevant views.
 Now navigate to ``http://127.0.0.1:8000/store/products_list/1/`` and you should be able to update the details of the given product or delete it altogether
 
 #### Viewing and Adding Products
-![ecommerce app - add](docs/docs/assets/django/update_and_update.png )
+![view](docs/docs/assets/django/update_and_update.png)
  
 
 
 
 #### Deleting and Updating a Product
 
-![ecommerce app - update](assets/django/update_and_update.png)
+![update](assets/django/update_and_update.png)
 
 
 
