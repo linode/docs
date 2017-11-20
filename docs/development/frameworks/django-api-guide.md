@@ -29,7 +29,6 @@ Let's assume we have a  Product model instance as shown below:
 ```sh
 
 from django.db import models
-from django.contrib.postgres.fields import JSONField
 
 
 class Product(models.Model):
@@ -62,7 +61,7 @@ The ``ModelSerializer`` class lets you automatically create a Serializer class w
 We can now use ProductSerializer to serialize a product or list of products.
 
 ```sh 
-
+product = Product.objects.all()
 serializer = ProductSerializer(product)
 serializer.data
 
@@ -88,7 +87,7 @@ return Response(data)
 ```
 
 ### Class-based Views
-REST framework provides an APIView class, which subclasses Django's View class.This class works well with the Request instances and also catches exceptions accordingly.
+REST framework provides an ``APIView`` class, which subclasses the Django's View class.This class works well with the Request instances and also catches exceptions accordingly.
 
 Let's create a view for viewing products.
 
@@ -144,18 +143,6 @@ router.register(r'products', views.ProductViewSet)
 
 ```
 
-
-The API URLs are now determined automatically by the router.
-Additionally, we include the login URLs for the browsable API.
-
-```sh
-
-urlpatterns = [
-    url(r'^', include(router.urls)),
-    url(r'^api-prod/', include('rest_framework.urls', namespace='rest_framework'))
-]
-
-```
 
 ### Permissions and Authentication
 DRF handles authentication and permissions for you so you don't have to build an authentication system from scratch.
@@ -353,10 +340,9 @@ INSTALLED_APPS = [
 ]
 
 ```
-Now the store application has integrated with the rest of the project.
 
+#### Setting up Database for an eCommerce project.
 
-Setting up Database for an eCommerce project.
 We are going to use PostgreSQL database because its more stable.
 
 #### Create Database and User
@@ -383,7 +369,7 @@ CREATE ROLE linode  WITH LOGIN PASSWORD 'asdfgh';
 Grant access to the the user ``linode``
 
 ```sh
-GRANT ALL PRIVILEGES ON DATABASE bucketlist TO linode;
+GRANT ALL PRIVILEGES ON DATABASE ecommerce TO linode;
 ```
 Install the psycopg2 package that will allow us to use the database we configured:
 
@@ -425,8 +411,7 @@ class Products(models.Model):
     price = models.DecimalField(
         max_digits=10, decimal_places=2, null=True, blank=True)
     name = models.CharField(max_length=300)
-    decription = models.CharField(max_length=1000)
-    removed = models.BooleanField(default=False)
+    description = models.CharField(max_length=1000)
     created = models.DateTimeField(auto_now_add=True, editable=False)
     updated = models.DateTimeField(auto_now=True, editable=False)
 
@@ -439,11 +424,11 @@ class Products(models.Model):
 #### Migrations.
 Migrations provide a way of updating your database schema every time your models change without losing data.
 
-Create an initial migration for our products model, and sync the database for the first time.
+Create an initial migration, and sync the database for the first time.
 
 ```sh
 
-python manage.py make migrations products
+python manage.py make migrations store
 python manage.py migrate
 
 ```
@@ -463,14 +448,13 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Products
-        fields = ('id', 'name', 'price', 'decription')
+        fields = ('id', 'name', 'price', 'description')
       
 
 ```
 
 
 Here we are using the ``ModelSerializer`` class provided by Django.
-The ``created`` and ``updated`` fields are set to ``editable== False``, so by default, they are read_only_fields.
 
 
 ### Writing the Views
@@ -478,12 +462,11 @@ Open ecommerceapp/store/views.py and start writing your views. We want to be abl
 
 ```sh
 
-from django.shortcuts import render
-from rest_framework import viewsets
-from rest_framework.views import APIView
+from __future__ import unicode_literals
 from .serializers import ProductSerializer
 from rest_framework import generics
 from rest_framework.response import Response
+
 from .models import Products
 
 # Create your views here.
@@ -514,11 +497,12 @@ urlpatterns = [
 ]
 ```
 
-Run pplication
-Now issue the runserver command ``python manage.py runserver`` , navigate to ``http://127.0.0.1:8000/products/``.As you can see you can be able to view all products as well as add new products to your store.
+#### Run pplication
+
+Now issue the runserver command ``python manage.py runserver`` , navigate to ``http://127.0.0.1:8000/products/``.You can be able to view all products as well as add new products to your store.
 
 #### Update and delete products
-Let's create a view that enables us to delete and update products.
+Let's create a view that enables us to delete and update a product.
 
 ```sh
 
@@ -552,13 +536,16 @@ Now navigate to ``http://127.0.0.1:8000/store/products_list/1/`` and you should 
 
 #### #### Viewing and Adding a Product
 
-![view](https://github.com/essykings/docs/blob/e9980d5cb35b3d3409f3feb5324ec5f80ea22547/docs/assets/django/update_and_update.png)
+![view](https://github.com/essykings/docs/blob/e9980d5cb35b3d3409f3feb5324ec5f80ea22547/docs/assets/django/view_products.png)
 
 
 #### Deleting and Updating a Product
 ![update](https://github.com/essykings/docs/blob/e9980d5cb35b3d3409f3feb5324ec5f80ea22547/docs/assets/django/update_and_update.png)
 
 
+## Conclusion
+
+The above guide basically covers what is necessary to build a REST API with Django. For more information, visit the Django [documentation](http://www.django-rest-framework.org/)
 
 
 
