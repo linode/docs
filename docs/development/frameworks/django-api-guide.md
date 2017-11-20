@@ -550,14 +550,15 @@ Update url's  as shown and don't forget to import the relevant views.
 
 Now navigate to ``http://127.0.0.1:8000/store/products_list/1/`` and you should be able to update the details of the given product or delete it altogether
 
-#### Adding a Product
+#### #### Viewing and Adding a Product
 
+![view](https://github.com/essykings/docs/blob/e9980d5cb35b3d3409f3feb5324ec5f80ea22547/docs/assets/django/update_and_update.png)
 
-
-#### Viewing Products
 
 
 #### Deleting and Updating a Product
+![update](https://github.com/essykings/docs/blob/e9980d5cb35b3d3409f3feb5324ec5f80ea22547/docs/assets/django/update_and_update.png)
+
 
 
 
