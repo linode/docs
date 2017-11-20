@@ -573,9 +573,9 @@ api.add_resource(CategoryResource, '/Category')
 api.add_resource(CommentResource, '/Comment')
 ```
 
-## Step 7: Test Enpoints
+## Step 7: Test Endpoints
 
-We now have the following endpoints available:
+Open up [Postman](https://www.getpostman.com/) and test the endpoints created:
 
  * POST - http://127.0.0.1:5000/api/category - for adding categories.
 
