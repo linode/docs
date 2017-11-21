@@ -23,11 +23,11 @@ Flask is a Python-based microframework that enables you to quickly build web app
 
 **REST** web services are a way of providing interoperability between computer systems on the Internet. REST-compliant Web services allow requesting systems to access and manipulate textual representations of Web resources using a uniform and predefined set of stateless operations.
 
-This guide will walk you through building a Restful APi with Flask coupled with other extensions like Flask-RESTful etc. At the end, you'll build a simple Commenting API. The API will have endpoints that can be used to `add category`, `view categories`, `update category`, `delete category`, `add comments` and `view comments`.
+This guide will walk you through building a Restful API with Flask coupled with other extensions like Flask-RESTful etc. In the end, you'll build a simple Commenting API. The API will have endpoints that can be used to `add category`, `view categories`, `update category`, `delete category`, `add comments` and `view comments`.
 
->:light: Flask does not come out of the box with all the extension needed to buld a full fledge API. However there are lot's of extension that can be pluged into Flask to enable you build our awesome APIs.
+>:light: Flask does not come out of the box with all the extension needed to build a full-fledged API. However, there are lots of extensions that can be plugged into Flask to enable you to build our awesome APIs.
 
-At the end of this guide, you should have this API endpoints available:
+At the end of this guide, you should have these API endpoints available:
 
 - **GET**    - `/api/Category` - Retrieve all categories
 - **POST**   - `/api/Category` - Add a new category
@@ -90,7 +90,6 @@ marshmallow==2.14.0
 flask_sqlalchemy==2.3.2
 flask_marshmallow==0.8.0
 marshmallow-sqlalchemy==0.13.2
-psycopg2==2.7.3.2
 ```
 
 The above file contains all python extensions the API will use.
@@ -103,15 +102,13 @@ The above file contains all python extensions the API will use.
 
 - [flask_migrate](https://flask-migrate.readthedocs.io) - This is an extension that handles SQLAlchemy database migrations for Flask applications using Alembic.
 
-- [marshmallow](https://marshmallow.readthedocs.io/) - This is an ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes. We'll use this for validation. This is used to Serializing and Deserializing Objects.
+- [marshmallow](https://marshmallow.readthedocs.io/) - This is an ORM/ODM/framework-agnostic library for converting complex datatypes, such as objects, to and from native Python datatypes. We'll use this for validation. This is used for Serializing and Deserializing Objects.
 
 - [flask_sqlalchemy](http://flask-sqlalchemy.pocoo.org) - This is an extension for Flask that adds support for SQLAlchemy.
 
 - [flask_marshmallow](https://flask-marshmallow.readthedocs.io) - This is an ntegration layer for Flask and marshmallow (an object serialization/deserialization library) that adds additional features to marshmallow.
 
-- [marshmallow-sqlalchemy](https://marshmallow-sqlalchemy.readthedocs.io) - This adds additional features to marshmallow.
-
-- [psycopg](http://initd.org/psycopg/) - This is a PostgreSQL adapter for the Python programming language.
+- [marshmallow-sqlalchemy](https://marshmallow-sqlalchemy.readthedocs.io/en/latest/) - This is an [SQLAlchemy](http://www.sqlalchemy.org/) integration with the [marshmallow](https://marshmallow.readthedocs.io/en/latest/) (de)serialization library.
 
 
 ## Step 1: Install all dependencies:
@@ -138,7 +135,7 @@ SQLALCHEMY_TRACK_MODIFICATIONS = True
 SQLALCHEMY_DATABASE_URI = "postgresql://username:password@localhost/database_name"
 ```
 
-Here, we have defined the configuration that the API will be using. We are also using postgreSQL database. If you prefer other database, you just have to modify the value accordingly.
+Here, we have defined the configuration that the API will be using. We are also using PostgreSQL database. If you prefer another database, you just have to modify the value accordingly.
 
 example: if you want to use `SQLite`, you should modify this line as:
 
@@ -183,7 +180,7 @@ class Hello(Resource):
 
 In the Hello class, we have a defined a function - `get`. This means that any GET Request on the `/Hello` endpoint will be hitting this function.
 
-So if you need a POST method, you should have something like( you don;t need to add this now):
+So if you need a POST method, you should have something like( you don't need to add this now):
 
 ```python
     def post(self):
@@ -306,8 +303,7 @@ We've also defined columns for our table using eg:
 
 The `id` and `name` are the columns for the table and the the value after the `=` defines column structure. You can read more on creating table schema [here](http://docs.sqlalchemy.org/en/latest/orm/tutorial.html#create-a-schema)
 
-Moving on, the `CategorySchema` and `CommentSchema` are used for validation. In there, we have defined some rules( eg: `required=True`). You can read more [here](https://flask-marshmallow.readthedocs.io/en/latest/)
-
+Moving on, the `CategorySchema` and `CommentSchema` are used for validation, (de)serialization. In there, we have defined some rules( eg: `required=True`). You can read more [here](https://flask-marshmallow.readthedocs.io/en/latest/). We'll make use of this later when we want to (de)serialize data.
 
 ## Step 4: Running migrations
 
@@ -408,6 +404,17 @@ Here, we have created a `get` method for fetching categories. We now have a new 
 
 Using `Category.query.all()`, we fetched all categories in the database and using `categories_schema.dump(categories).data`, we deserialized the data fetched.
 
+Notice also, the schema data we declared in the Model file:
+
+```python
+categories_schema = CategorySchema(many=True)
+category_schema = CategorySchema()
+```
+
+We have also serialized the data fetched from the db here:
+```python
+categories_schema.dump(categories).data
+```
 
 Next, lets add a POST method for creating new category. Add the following code to `resources/Category.py`:
 
@@ -459,7 +466,7 @@ Next, lets add a PUT method for updating category. Update `resources/Category.py
         return { "status": 'success', 'data': result }, 204
 ```
 
-Finally, lets add a DELETE method for deleting category. Add the following code to `resources/Category.py`:
+Next, lets add a DELETE method for deleting category. Add the following code to `resources/Category.py`:
 
 ```python
 ...
@@ -479,7 +486,6 @@ Finally, lets add a DELETE method for deleting category. Add the following code 
         return { "status": 'success', 'data': result}, 204
 ```
 
-Next, import these resources to `app.py`. Update `app.py` exactly as below:
 
 Finally, import these resources to `app.py`. Update `app.py` exactly as below:
 
@@ -577,18 +583,18 @@ api.add_resource(CommentResource, '/Comment')
 
 Open up [Postman](https://www.getpostman.com/) and test the endpoints created:
 
- * POST - http://127.0.0.1:5000/api/category - for adding categories.
+ * POST - http://127.0.0.1:5000/api/Category - for adding categories.
 
 ![Creating Cetegories](../../assets/how_to_build_restful_apis_using_flask/how_to_build_restful_apis_using_flask_creating_categories.png)
 
- * GET  -  http://127.0.0.1:5000/api/category - for listing categories.
+ * GET  -  http://127.0.0.1:5000/api/Category - for listing categories.
 
 ![Listing Cetegories](../../assets/how_to_build_restful_apis_using_flask/how_to_build_restful_apis_using_flask_listing_categories.png)
 
- * POST - http://127.0.0.1:5000/api/comment - for adding comment.
+ * POST - http://127.0.0.1:5000/api/Comment - for adding comment.
 
 ![Creating Comment](../../assets/how_to_build_restful_apis_using_flask/how_to_build_restful_apis_using_flask_creating_comment.png)
 
- * GET  -  http://127.0.0.1:5000/api/comment - for listing comments.
+ * GET  -  http://127.0.0.1:5000/api/Comment - for listing comments.
 
 ![Listing Comment](../../assets/how_to_build_restful_apis_using_flask/how_to_build_restful_apis_in_flask_listing_comments.png)
