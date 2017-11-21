@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
+description: 'Set up WireGuard VPN server and clients.'
 keywords: ['wireguard','vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
@@ -11,7 +11,7 @@ modified_by:
   name: Linode
 title: "Set Up WireGuard VPN on Ubuntu"
 contributor:
-  name: Sunit Knandi
+  name: Sunit Nandi
   link:
 ---
 
