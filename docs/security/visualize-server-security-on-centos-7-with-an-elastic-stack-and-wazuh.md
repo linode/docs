@@ -115,7 +115,7 @@ protect=1
     2. Install NodeJS:
 
             yum install nodejs
-    
+
     3. Install Wazuh API:
 
             yum install wazuh-api
@@ -157,7 +157,7 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 3. Enable Logstash on system boot:
 
-        systemctl daemon-reload 
+        systemctl daemon-reload
         systemctl enable logstash
         systemctl start logstash
 
@@ -269,13 +269,13 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
     Edit the systemd init file and add the following line:
 
     {{< file-excerpt "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
-. . . 
+. . .
 LimitMEMLOCK=infinity
-. . . 
+. . .
 {{< /file-excerpt >}}
 
     **System V**
-      
+
     Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line:
 
     {{< file-excerpt "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
@@ -299,7 +299,7 @@ MAX_LOCKED_MEMORY=unlimited
 
 -Xms4g
 -Xmx4g
-. . . 
+. . .
 {{< /file-excerpt >}}
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
@@ -310,7 +310,7 @@ A reverse proxy server allows you to secure the Kibana web interface with SSL an
 
 ### Set up a Reverse Proxy Server to Host Kibana as a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended. 
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
 #### nginx
 
