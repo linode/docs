@@ -17,7 +17,6 @@ external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 ---
 

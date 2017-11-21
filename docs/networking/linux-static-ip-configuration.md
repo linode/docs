@@ -236,7 +236,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32 
+  address 2001:db8:2000:aff0::2/32
 {{< /file-excerpt >}}
 
 2.  Populate `resolv.conf` with DNS resolver addresses and resolv.conf options ([see man 5 resolv.conf](https://linux.die.net/man/5/resolv.conf)). Be aware that resolv.conf can only use up to three `nameserver` entries. The *domain* and *options* lines aren't necessary, but useful to have.
@@ -351,7 +351,7 @@ iface eth0 inet6 static
 
 # Add a second IPv6 address.
 iface eth0 inet6 static
-  address 2001:db8:2000:aff0::2/32 
+  address 2001:db8:2000:aff0::2/32
 {{< /file-excerpt >}}
 
 

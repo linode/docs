@@ -4,11 +4,26 @@ from contextlib import redirect_stdout
 import re
 import ast
 from datetime import datetime
+import requests
 import urllib.request
 from urllib.error import HTTPError, URLError
 from conftest import file_io, LOCALHOST
 
 
+def _localserve_running():
+    """
+    Check if local server is running on 1313
+    """
+    try:
+        requests.get('http://localhost:1313/docs/')
+        return True
+    except requests.exceptions.ConnectionError:
+        return False
+
+localserver = pytest.mark.skipif(not _localserve_running(),
+                                 reason="Local server not running on port 1313")
+
+@localserver
 @file_io
 def test_alias(md_filepaths):
     aliases = []

@@ -18,9 +18,6 @@ external_resources:
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 ## What is Tahoe-LAFS?
 
@@ -31,7 +28,7 @@ While Tahoe-LAFS might resemble other decentralized or distributed file system, 
     *  If the server is hacked, your data could be stolen.
     *  An user with read access might accidentally leak data or purposely steal it for their own gain.
 
-    By encrypting data before it reaches your storage servers, these risks are reduced. 
+    By encrypting data before it reaches your storage servers, these risks are reduced.
 
 2.  **Data integrity**: If the encrypted data is compromised, the software detects the change, and in some cases, may still restore the original.
 
@@ -99,7 +96,7 @@ After you get acquainted with the initial introducer setup, you can [read about 
 
         tahoe run --basedir introducer
 
-    The last line of output should mention `introducer running`. Press **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated. 
+    The last line of output should mention `introducer running`. Press **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated.
 
 6.  Display the FURL using `cat`:
 
@@ -303,7 +300,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
     *  **SDMF (Small Mutable Distributed Files)**: Initially designed for small files, but supports larger sizes as well. May be slow for large files because it has to replace all blocks even when a few bytes have changed.
     *  **MDMF (Medium Distributed Mutable Files)**: Allows large files to be modified in-place, with only the segments that have changed, it allows you to append data, and selectively retrieve only certain blocks that the user requests. Use this for large files that you update often.
 
-3.  After you upload a file, you get a *capability* or filecap. An SDMF filecap for example looks something like: 
+3.  After you upload a file, you get a *capability* or filecap. An SDMF filecap for example looks something like:
 
         URI:SSK:4a4hv34xtt43a6s7ft76i563oa:7s643ebsf2yujglqhn55xo7c5ohunx2tpoi32dahgr23seob7t5q
 
@@ -363,11 +360,11 @@ While the web user interface is easy to work with, it has some limitations. Anot
 *  To display a list of available commands:
 
        tahoe
-    
+
 *  If you need additional help on a command:
 
        tahoe name-of-command --help
-    
+
     For example: `tahoe ls --help`. For more information about Tahoe-LAFS, visit the [official documentation](http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html).
 
 ## Possible Next Steps

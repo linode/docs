@@ -18,9 +18,6 @@ external_resources:
  - '[Tiny Tiny RSS Installation Notes](https://tt-rss.org/gitlab/fox/tt-rss/wikis/InstallationNotes)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr/>
 
 [Tiny Tiny RSS](https://tt-rss.org/) (or tt-rss for short) is an open-source, self-hosted RSS reader that runs on PHP and a traditional SQL database. Running your own RSS aggregator puts you in control of your data, and Tiny Tiny RSS even supports [mobile apps](https://play.google.com/store/apps/details?id=org.ttrssreader) that connect to your server.
 

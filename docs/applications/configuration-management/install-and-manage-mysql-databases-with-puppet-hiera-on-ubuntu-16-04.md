@@ -21,9 +21,6 @@ external_resources:
   - '[Facter](https://docs.puppet.com/facter/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04](/docs/assets/puppet/manage-mysql-with-puppet-hiera.jpg "Install and Manage MySQL Databases with Puppet Hiera on Ubuntu 16.04")
 

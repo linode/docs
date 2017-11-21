@@ -18,9 +18,6 @@ external_resources:
  - '[Pagespeed Filter Examples](https://www.ngxpagespeed.com/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $300 per published guide.*
-<hr>
-
 Pagespeed is a tool built by Google that boosts the speed and performance of a website by automatically minifying assets (such as CSS, Javascript, and images), and applying other web performance best practices.
 
 This guide will show you how to use Pagespeed with Nginx to reduce the page load times of your website, using the [ngx_pagespeed](https://developers.google.com/speed/pagespeed/module/) module.

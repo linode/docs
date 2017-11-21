@@ -311,7 +311,7 @@ You will be prompted for the root MySQL user's password. Once the correct creden
 
         mysql -u root -p -h localhost
 
-2.  You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database. 
+2.  You will be prompted for the root MySQL user's password. After you have provided the correct credentials, you must create the destination database. For the purpose of this example we will create the `customer` database.
 
     {{< highlight sql >}}
 CREATE DATABASE customer;

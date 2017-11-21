@@ -10,6 +10,7 @@ modified: 2011-08-22
 modified_by:
   name: Linode
 published: 2010-06-13
+expiryDate: 2017-11-14
 title: Manage and Automate Systems Configuration with Puppet
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'

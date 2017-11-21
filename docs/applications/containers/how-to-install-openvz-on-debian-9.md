@@ -19,9 +19,6 @@ external_resources:
   - '[OpenVZ User Contributed Templates](https://openvz.org/Download/template/precreated)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
-
----
 
 ## What is OpenVZ?
 

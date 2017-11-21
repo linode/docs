@@ -19,9 +19,6 @@ external_resources:
  - '[Installing Passenger + nginx](https://www.phusionpassenger.com/library/install/nginx/install/oss/trusty/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 Omnibus GitLab is a software package (or software stack) that allows you to easily install and run GitLab on your Linode.
 This guide walks you through the process of installing and setting up your own nginx server on a typical Omnibus installation. Using the method outlined here, you are not forced to use Omnibus's default settings, and can create as many virtual hosts as you need for hosting multiple websites and apps on the same server as your GitLab.

@@ -20,9 +20,6 @@ external_resources:
  - '[Far.vim](https://github.com/brooth/far.vim)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![How to Install NeoVim and Plugins with vim-plug](/docs/assets/neovim/neovim-basics-title.jpg "How to Install NeoVim and Plugins with vim-plug")
 

@@ -20806,6 +20806,9 @@ div.library-tile .tile-title + .lead {
   width: 90%;
   padding-top: 90px;
 }
+.modal-body {
+  overflow: scroll;
+}
 div#search {
   height: 57px;
 }

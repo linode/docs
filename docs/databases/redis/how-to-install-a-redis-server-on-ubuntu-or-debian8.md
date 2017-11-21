@@ -22,9 +22,6 @@ external_resources:
  - '[Redis Security](http://redis.io/security)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/linode-writers-guide/) and earn $250 per published guide.*
-
----
 
 ![Redis Server on Ubuntu or Debian](/docs/assets/how-to-install-a-redis-server-on-ubuntu-or-debian/How_to_Install_a_Redis_Server_smg.jpg)
 

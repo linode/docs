@@ -17,9 +17,6 @@ external_resources:
  - '[Pflogsumm](http://jimsun.linxnet.com/postfix_contrib.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 Pflogsumm is a simple Perl script that monitors your [Postfix](/docs/email/postfix) mail server's activity. This guide will show you how to install Pflogsumm on CentOS 6 and configure it to send you a daily email with your mail server stats.
 
