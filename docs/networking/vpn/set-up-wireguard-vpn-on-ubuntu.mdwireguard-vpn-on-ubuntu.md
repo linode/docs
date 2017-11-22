@@ -2,7 +2,8 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Set up WireGuard VPN server and clients.'
+description: 'Wireguard encrypts your traffic quickly and safely, this guide will show you how to set up WireGuard VPN server and clients.'
+og_description: 'This guide will show you how to install WireGuard, a fast and secure VPN, on Linode.'
 keywords: ['wireguard','vpn']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-14
@@ -216,6 +217,6 @@ This indicates that you now have a private connection between the server and cli
 
 ## Next steps
 
-The process used in this guide can be extended to configure different network topologies. You can also use the link in the More Information section below to experiment with setting up port forwarding, so that all of your client traffic will be routed through the server.
+The process used in this guide can be extended to configure network topologies. You can also use the link in the More Information section below to experiment with setting up port forwarding, so that all of your client traffic will be routed through the server.
 
 As mentioned previously, Wireguard is an evolving technology. If you use WireGuard, you should monitor the [official documentation](https://www.wireguard.com/) and [todo list](https://www.wireguard.com/todo/) for critical updates and new/upcoming features.
