@@ -2,10 +2,11 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install and configure the MariaDB database server on Debian 9.'
+description: 'This guide shows how to install and configure the MariaDB database server on Debian 9.'
+og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/docs/databases/mariadb/mariadb-setup-debian']
+aliases: ['databases/mariadb/mariadb-setup-debian/']
 modified: 2017-11-22
 contributor:
     name: Nashruddin Amin
@@ -20,14 +21,15 @@ external_resources:
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
 ---
 
+## What is MariaDB?
 
-MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on Debian 9 (Stretch).
+MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable and reliable SQL Server. This guide will help beginners install and configure MariaDB on Debian 9 (Stretch).
 
  {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-## Installing MariaDB
+## Install MariaDB
 
 In this section, you will install MariaDB and set the password for the MariaDB root user. MariaDB maintains a shell script that automatically sets up the necessary package repositories.
 
@@ -166,21 +168,21 @@ Output:
 
     For server side help, type 'help contents'
 
-## Configuring MariaDB
+## Configure MariaDB
 
-To configure MariaDB to run the way you want, edit the `/etc/mysql/my.cnf` file. This file controls most of the server system variables, which you will generally want to leave at default.
+To configure MariaDB to run the way you want, edit the `/etc/mysql/my.cnf` file. This file controls most of the server system variables, which you will generally want to leave at the default setting.
 
 Whenever you make changes to `/etc/mysql/my.cnf`, restart the server by issuing the following command:
 
     service mysql restart
 
-## Securing MariaDB Server
+## Secure MariaDB Server
 
 MariaDB recommends that you secure your installation by executing the following command:
 
     mysql_secure_installation
 
-You will be asked to change the root password, remove anonymous users, disable root logins outside of localhost, remove anonymous users, and remove the test database. It is recommended that you answer **Y** for all of the questions.
+You will be asked to change the root password, remove anonymous users, disable root logins outside of localhost, and remove the test database. It is recommended that you answer **Y** for all questions.
 
 ## Remote User Connections
 
@@ -190,7 +192,7 @@ This section will demonstrate how to allow the previously created user, **testus
 Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/security/firewalls/iptables) rules that allow connections only from specific IP addresses.
 {{< /caution >}}
 
-1.  First, we need to grant user connections from remote hosts for the **testuser** user. Log in to MariaDB as root:
+1.  Log in to MariaDB as root:
 
         mysql -u root -p
 
@@ -200,27 +202,23 @@ Opening a MariaDB server up to the internet makes it less secure. If you need to
         FLUSH PRIVILEGES;
         quit
 
-3.  Configure MariaDB to listen to all network interfaces. Open the `/etc/mysql/my.cnf` file:
-
-        nano /etc/mysql/my.cnf
-
-4.  Edit the `bind-address` variable to listen to all network interfaces:
+3.  Configure MariaDB to listen to all network interfaces. Open the `/etc/mysql/my.cnf` file and edit the `bind-address` variable to listen to all network interfaces:
 
     {{< file-excerpt "/etc/mysql/my.cnf" >}}
 bind-address = 0.0.0.0
 {{< /file-excerpt >}}
 
-5.  Restart the server:
+4.  Restart the server:
 
         service mysql restart
 
-6.  Test your connection from your *local computer* to your MariaDB server, replacing **testuser** with your username, and **example.com** with your domain or IP address:
+5.  Test the connection from your local computer to the MariaDB server, replacing **testuser** with your username, and **example.com** with your domain or IP address:
 
         mysql -u testuser -h example.com -p
 
-If the login is successful, you should see the MariaDB welcome message and the shell prompt.
+    If the login is successful, you should see the MariaDB welcome message and the shell prompt.
 
-## Tuning MariaDB
+## Tune MariaDB
 
 MySQL Tuner is a useful tool that connects to a running instance of MariaDB and provides configuration recommendations based on workload. You should let your MariaDB instance run for at least 24 hours before running the tuner. The longer the instance has been running, the better advice the tuner will provide.
 
@@ -232,10 +230,9 @@ MySQL Tuner is a useful tool that connects to a running instance of MariaDB and 
 
       mysqltuner
 
+## Reset MariaDB's Root Password
 
-## Reset MariaDB's root Password
-
-If you forget your root password, you can reset it by following the instructions below:
+If you forget your root password, reset it with these steps:
 
 1.  Stop the MariaDB server:
 
