@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
 modified: 2017-11-22
 modified_by:
-  name:Linode
+  name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
 ---
