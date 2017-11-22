@@ -22,9 +22,6 @@ external_resources:
  - '[DMARC Record Assistant](http://kitterman.com/dmarc/assistant.html) provides a web form to generate a DMARC record for you based on your selections.'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 ![SPF and DKIM with Postfix](/docs/assets/Configure_SPF_and_DKIM_with_Postfix_on_Debian_8_smg.jpg)
 
 [SPF (Sender Policy Framework)](http://www.openspf.org/) is a system that identifies to mail servers what hosts are allowed to send email for a given domain. Setting up SPF helps to prevent your email from being classified as spam.
@@ -333,7 +330,7 @@ If everything is OK you shouldn't get any output. If you want to see more inform
 
 2.  Set the correct socket for Postfix in the OpenDKIM defaults file `/etc/default/opendkim`:
 
-    {{< file "/etc/default/opendkim" aconf >}}
+    {{< file "/etc/default/opendkim" >}}
 # Command-line options specified here will override the contents of
 # /etc/opendkim.conf. See opendkim(8) for a complete list of options.
 #DAEMON_OPTS=""

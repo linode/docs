@@ -17,9 +17,6 @@ external_resources:
  - '[Terraform Documentation](https://www.terraform.io/docs/index.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $300 per published guide.*
-
----
 
 Infrastructure as code (IaC) is software that gives the developer the ability to build, manage, and provision computing environments with a high-level programming language. Some key benefits of this technology are: enforcing DevOps best practices, processes automation and the opportunity to version control systems for greater visibility and collaboration within a team.
 
@@ -66,7 +63,7 @@ In the particular case of Linode there is no official Terraform plugin yet.
 
 4.  Next step is to add `Go` to the `PATH`. For convenience the folder `~/go_projects/bin` will be included for Terraform and plugin packages.
 
-    {{< file-excerpt "~/.profile" aconf >}}
+    {{< file-excerpt "~/.profile" conf >}}
 export PATH=$PATH:/usr/local/go/bin
 export PATH=$PATH:$HOME/go_projects/bin
 export GOPATH="$HOME/go_projects"
@@ -136,7 +133,7 @@ Terraform can understand two types of configuration files: JSON and HashiCorp Co
 
 1.  Open `linode-template.tf` in a text editor and add the following content. Fill in your Linode API key, public SSH key, and desired root password where indicated:
 
-    {{< file "~/go_projects/bin/linode-template.tf" aconf >}}
+    {{< file "~/go_projects/bin/linode-template.tf" conf >}}
 provider "linode" {
   key = "your-linode-API-key-here"
 }
@@ -210,7 +207,7 @@ Now that you have a `linode-example` running, imagine you need to implement a ty
 
 1.  From the `linode-template.tf` create another file called `linode-www.tf` (don't delete `linode-template.tf`):
 
-    {{< file "~/go_projects/bin/linode-www.tf" aconf >}}
+    {{< file "~/go_projects/bin/linode-www.tf" conf >}}
 resource "linode_linode" "terraform-www" {
   image = "CentOS 7"
   kernel = "Latest 64 bit"
@@ -258,7 +255,7 @@ To expand this example a bit further just imagine you want to change the first s
 
 1.  Modify the `linode-template.tf`
 
-    {{< file "~/go_projects/bin/linode-template.tf" aconf >}}
+    {{< file "~/go_projects/bin/linode-template.tf" conf >}}
 provider "linode" {
   key = "your-linode-API-key-here"
 }
@@ -342,7 +339,7 @@ root_password ="your-root-password-here"
 
 7.  Create a new configuration file called `linode-mod-template.tf`
 
-    {{< file "~/go_projects/bin/linode-mod-template.tf" aconf >}}
+    {{< file "~/go_projects/bin/linode-mod-template.tf" conf >}}
 # Linode Provider definition
 
 provider "linode" {
@@ -420,7 +417,7 @@ There is a directory called `modules` containing the reusable code blocks in thi
 
 Module structure is flexible, you can use as many terraform files as needed to describe your infrastructure. This example contains just one main configuration file describing the reusable code:
 
-{{< file "~/go_projects/bin/modules/appserver/main.tf" aconf >}}
+{{< file "~/go_projects/bin/modules/appserver/main.tf" conf >}}
 # Application Server
 
 resource "linode_linode" "appserver" {
@@ -455,7 +452,7 @@ Notice the use of variables, you can choose how many and where to use them. For 
 
 The next file contains variables definitions:
 
-{{< file "~/go_projects/bin/modules/appserver/variables.tf" aconf >}}
+{{< file "~/go_projects/bin/modules/appserver/variables.tf" conf >}}
 variable "appserver_name" {
     description = "The name for the Application Server"
     default = "default-app"
@@ -495,7 +492,7 @@ It's necessary to assign a default value for each variable. That value will be u
 
 Finally, you need a "main" configuration file that uses the module you just created:
 
-{{< file "~/go_projects/bin/testing/main.tf" aconf >}}
+{{< file "~/go_projects/bin/testing/main.tf" conf >}}
 # Newark Testing Environment Infrastructure
 
 provider "linode" {

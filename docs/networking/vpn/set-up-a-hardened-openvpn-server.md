@@ -72,7 +72,7 @@ This series assumes your VPN will operate over IPv4 only. If you instead wish to
 
 4. Add IPv4 rules: `iptables-persistent` stores its rulesets in the files `/etc/iptables/rules.v4` and `/etc/iptables/rules.v6`. Open the `rules.v4` file and replace everything in it with the information below:
 
-    {{< file "/etc/iptables/rules.v4" aconf >}}
+    {{< file "/etc/iptables/rules.v4" >}}
 *filter
 
 # Allow all loopback (lo) traffic and reject anything
@@ -290,7 +290,7 @@ Anyone with access to `client1.key` will be able to access your VPN. To better p
 
 OpenVPN's server-side configuration file is `/etc/openvpn/server.conf`. Use the contents below to create a new file at that location on your server:
 
-{{< file "/etc/openvpn/server.conf" aconf >}}
+{{< file "/etc/openvpn/server.conf" >}}
 dev tun
 persist-key
 persist-tun
@@ -344,14 +344,14 @@ verb 3
 {{< note >}}
 You can extract a server template from OpenVPN's sample configuration files using:
 
-gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf
+`gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz > /etc/openvpn/server.conf`
 {{< /note >}}
 
 ### Client Configuration File
 
 OpenVPN's client-side configuration file is `client.ovpn`. When you import an OpenVPN profile, the location of the directory where the credentials are stored doesn't matter, but this `.ovpn` file needs to be in the same directory as the client certificate and all other credentials. OpenVPN does not refer to any of these files after importing and they do not need to remain on the client system. Create this file on your Linode so that it can be distributed to your client devices:
 
-{{< file "client.ovpn" aconf >}}
+{{< file "client.ovpn" >}}
 # No cryptography options are specified here because we want
 # the VPN server to push those settings to clients rather than
 # allow clients to dictate their crypto.
@@ -388,7 +388,7 @@ tls-auth ta.key 1
 {{< note >}}
 You can use a client template from OpenVPN's sample configuration files using the command below. Most clients require a `.ovpn` file format instead of `.conf`.
 
-cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn
+`cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf /etc/openvpn/client/client.ovpn`
 {{< /note >}}
 
 ## Distribute Credentials

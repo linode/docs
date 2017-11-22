@@ -234,7 +234,7 @@ To fix this, follow these steps:
 
     The `SetHandler server-status` line indicates that this is the location block for mod\_status. The location line itself sets the location.
 
-    #####On cPanel/WHM
+    ##### On cPanel/WHM
 
     To direct Longview to the cPanel customized status page, edit the `location` line in `/etc/linode/longview.d/Apache.conf` to match the following:
 

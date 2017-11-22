@@ -16,9 +16,6 @@ external_resources:
  - '[Zimbra OSE Documentation](https://www.zimbra.com/documentation/zimbra-collaboration-open-source)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 [Zimbra](https://www.zimbra.com/) is a complete mail server that provides a configured Postfix with OpenDKIM, Amavis, ClamAV, and Nginx, ready to handle mail for one or more domains. Zimbra on a Linode is one of the quickest paths to an up-and-running mail server that you will find. This guide will take you through the Zimbra installation procedure.
 
@@ -264,7 +261,7 @@ Zimbra installs a default class of service which will be applied to all new acco
 
 You received an admin account when you installed Zimbra. The Open Source Edition has no limit on the number of accounts you can have. It is only limited by your server's ability to handle the traffic. If you have been through the **Classes of Service**, creating another account will be a trip through familiar territory, as most of the settings are the same, but applicable to this individual account.
 
-####Creating Accounts
+#### Creating Accounts
 
 1.  from the **Home** page click **Manage**. The **Accounts** page will be displayed.
 
@@ -280,7 +277,7 @@ You received an admin account when you installed Zimbra. The Open Source Edition
 
 5.  Once you have created the account, it is immediately ready to use.
 
-####Managing Accounts
+#### Managing Accounts
 
 When users forget their passwords, resets are easily accomplished.
 

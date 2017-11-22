@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-[![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
+    [![Check Linode boot status.](/content/assets/952-troubleshooting1-1-small.png)](/content/assets/953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.
@@ -175,7 +175,7 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
- {{< note >}}
+     {{< note >}}
 You must run `iotop` as `root` or with `sudo`.
 {{< /note >}}
 

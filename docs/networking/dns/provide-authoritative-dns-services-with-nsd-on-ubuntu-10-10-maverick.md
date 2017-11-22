@@ -14,8 +14,6 @@ published: 2011-01-25
 title: 'Provide Authoritative DNS Services with NSD on Ubuntu 10.10 (Maverick)'
 ---
 
-
-
 NSD is a light-weight yet full-featured open source name server daemon created to provide an alternative to BIND.
 
 Before beginning, you should be familiar with basic [DNS terminology and records](/docs/dns-guides/introduction-to-dns). You will also need to ensure that your current Linode plan has enough memory to run the NSD daemon. Use the developer's [memory usage calculator](http://www.nlnetlabs.nl/projects/nsd/nsd-memsize.html) to determine the memory requirement for your NSD deployment.
@@ -48,69 +46,61 @@ You will now need to configure the daemon.
 
 Edit the `nsd.conf` file to configure the behavior of the NSD service and the hosted DNS zones. The NSD package provides an example configuration file located at `/etc/nsd3/nsd.conf.sample` that you may reference. Your file should resemble the following:
 
-{{< file-excerpt >}}
-/etc/nsd3/nsd.conf
+{{< file-excerpt "/etc/nsd3/nsd.conf" conf >}}
+server:
+:   logfile: "/var/log/nsd.log" username: nsd
 {{< /file-excerpt >}}
 
-> server:
-> :   logfile: "/var/log/nsd.log" username: nsd
->
 ### Host Zones with NSD
 
 You must specify at least one zone in the `/etc/nsd3/nsd.conf` file before NSD will begin serving DNS records. Refer to the following example configuration for proper syntax.
 
-{{< file-excerpt >}}
-/etc/nsd3/nsd.conf
+{{< file-excerpt "/etc/nsd3/nsd.conf" conf >}}
+zone:
+:   name: example.com zonefile: /etc/nsd3/example.com.zone
+
+zone:
+:   name: example.org zonefile: /etc/nsd3/example.org.zone
 {{< /file-excerpt >}}
 
-> zone:
-> :   name: example.com zonefile: /etc/nsd3/example.com.zone
->
-> zone:
-> :   name: example.org zonefile: /etc/nsd3/example.org.zone
->
 Once zones are added to the `nsd.conf` file, proceed to create a zone file for each DNS zone.
 
 # Creating Zone Files
 
 Each domain has a zone file specified in the `nsd.conf` file. The syntax of an NSD zone file is similar BIND zone files. Refer to the example zone files that follow for syntax, and modify domain names and IP addresses to reflect the needs of your deployment.
 
-{{< file-excerpt >}}
-/etc/nsd3/example.com.zone
+{{< file-excerpt "/etc/nsd3/example.com.zone" conf >}}
+$ORIGIN example.com. $TTL 86400
+
+@ IN SOA ns1.example.com. admin.example.com. (
+:   2010011801 ; serial number 28800 ; Refresh 7200 ; Retry 864000 ; Expire 86400 ; Min TTL )
+
+NS ns1.example.com.
+:   NS ns2.example.com.
+
+    MX 10 mail.example.com.
+
+ns1 IN A 11.22.33.44 ns2 IN A 22.33.44.55 www IN A 77.66.55.44 tomato IN A 77.66.55.44 mail IN A 88.77.66.55 \* IN A 77.66.55.44
 {{< /file-excerpt >}}
 
-> \$ORIGIN example.com. \$TTL 86400
->
-> @ IN SOA ns1.example.com. admin.example.com. (
-> :   2010011801 ; serial number 28800 ; Refresh 7200 ; Retry 864000 ; Expire 86400 ; Min TTL )
->
-> NS ns1.example.com.
-> :   NS ns2.example.com.
->
->     MX 10 mail.example.com.
->
-> ns1 IN A 11.22.33.44 ns2 IN A 22.33.44.55 www IN A 77.66.55.44 tomato IN A 77.66.55.44 mail IN A 88.77.66.55 \* IN A 77.66.55.44
+{{< file-excerpt "/etc/nsd3/example.org.zone" conf >}}
+$ORIGIN example.org. $TTL 86400
 
-{{< file-excerpt >}}
-/etc/nsd3/example.org.zone
+@ IN SOA ns1.example.org. web-admin.example.org. (
+:   2009011803 ; serial number 28800 ; Refresh 7200 ; Retry 864000 ; Expire 86400 ; Min TTL )
+
+NS ns1.example.org.
+:   NS ns2.example.org.
+
+    MX 10 mail.example.org.
+
+ns1 IN A 11.22.33.44
+:   ns2 IN A 22.33.44.55
+
+www IN A 44.33.22.11 paisano IN A 44.33.22.11 mail IN A 99.88.77.66
+
+pizzapie IN CNAME paisano
 {{< /file-excerpt >}}
-
-> \$ORIGIN example.org. \$TTL 86400
->
-> @ IN SOA ns1.example.org. web-admin.example.org. (
-> :   2009011803 ; serial number 28800 ; Refresh 7200 ; Retry 864000 ; Expire 86400 ; Min TTL )
->
-> NS ns1.example.org.
-> :   NS ns2.example.org.
->
->     MX 10 mail.example.org.
->
-> ns1 IN A 11.22.33.44
-> :   ns2 IN A 22.33.44.55
->
-> www IN A 44.33.22.11 paisano IN A 44.33.22.11 mail IN A 99.88.77.66
->
-> pizzapie IN CNAME paisano
 
 Rebuild the NSD database and restart the daemon with following command sequence:
 
@@ -152,11 +142,9 @@ Congratulations, you have successfully installed NSD!
 
 If you are running NSD in a low-memory environment, amending the values of the following directives in your `/etc/nsd3/nsd.conf` file will lower your memory and system resource usage.
 
-{{< file-excerpt >}}
-/etc/nsd3/nsd.conf
+{{< file-excerpt "/etc/nsd3/nsd.conf" >}}
+ip4-only: yes tcp-count: 10 server-count: 1
 {{< /file-excerpt >}}
-
-> ip4-only: yes tcp-count: 10 server-count: 1
 
 # More Information
 
@@ -164,6 +152,5 @@ You may wish to consult the following resources for additional information on th
 
 - [NSD Homepage](http://nlnetlabs.nl/projects/nsd/)
 - [NSD Memory Usage Calculator](http://nlnetlabs.nl/projects/nsd/nsd-memsize.html)
-
 
 

@@ -31,11 +31,11 @@ If hosting multiple websites with commercial SSL certificates on the same IP add
 
    * On CentOS and Fedora 21 or below:
 
-         sudo yum update
+            sudo yum update
 
    * On Fedora 22 and above:
 
-         sudo dnf upgrade
+            sudo dnf upgrade
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.

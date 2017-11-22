@@ -18,7 +18,7 @@ Bug Genie is an issue tracking system used to help manage all phases of the deve
 
 Before beginning this guide we assume that you have completed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/content/lamp-guides/) for your operating system.
 
-# Installing Prerequisites
+## Installing Prerequisites
 
 If you're running Debian or Ubuntu systems, ensure that your system's package repository is up to date and that all installed packages have been upgraded with the latest bug fixes and security patches. Additionally, install all prerequisite packages by issuing these commands:
 
@@ -33,7 +33,7 @@ On CentOS and Fedora systems, issue the following command to ensure your system'
 
 For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. Furthermore, in this document you will install Bug Genie in this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
-# Install Bug Genie
+## Install Bug Genie
 
 This document contains specific instructions for installing version 2.1.1 of Bug Genie. Although work proceeds on version 3 of Bug Genie, we recommend installing the latest stable version in the 2.x series. Check the [upstream](http://www.thebuggenie.com/) to confirm that 2.1.1 is the current version of Bug Genie and that there are no vulnerabilities or bugs with this version of the software. Issue the following sequence of commands to download, extract, move the Bug Genie files to your web server's document root, and properly configure file permissions:
 
@@ -55,7 +55,7 @@ Now visit `http://example.com/install.php` in your web browser, and follow the s
 
 Congratulations! You have now successfully deployed Bug Genie.
 
-# Monitor for Software Updates and Security Notices
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -66,7 +66,7 @@ Please monitor the following pages for updates regarding Bug Genie to ensure tha
 
 When upstream sources offer new releases, repeat the instructions for installing The Bug Genie and recompile your software when needed. These practices are crucial for the ongoing security and functioning of your system.
 
-# More Information
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -18,9 +18,6 @@ external_resources:
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ## Introduction
 
@@ -126,9 +123,7 @@ OWASP CRS builds on top of ModSecurity so that existing rules can be extended.
 
     The response code should be 403. There should be a message in the logs that shows the defined ModSecurity rule worked. You can check using: `sudo tail -f /var/log/apache2/error.log`
 
-    {{< output >}}
-ModSecurity: Access denied with code 403 (phase 2). String match "test" at ARGS:testparam. [file "/etc/apache2/sites-enabled/000-default.conf"] [line "24"] [id "1234"] [msg "Our test rule has triggered"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnEd38AAAEAAEnQyBAAAAAB"]
-{{< /output >}}
+    > ModSecurity: Access denied with code 403 (phase 2). String match "test" at ARGS:testparam. [file "/etc/apache2/sites-enabled/000-default.conf"] [line "24"] [id "1234"] [msg "Our test rule has triggered"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnEd38AAAEAAEnQyBAAAAAB"]
 
 3.  Verify the OWASP CRS is in effect:
 
@@ -136,9 +131,7 @@ ModSecurity: Access denied with code 403 (phase 2). String match "test" at ARGS:
 
     Check the error logs again: the rule has caught the attempted execution of an arbitrary bash script.
 
-    {{< output >}}
-ModSecurity: Warning. Matched phrase "bin/bash" at ARGS:. [file "/etc/modsecurity/rules/REQUEST-932-APPLICATION-ATTACK-RCE.conf"] [line "448"] [id "932160"] [rev "1"] [msg "Remote Command Execution: Unix Shell Code Found"] [data "Matched Data: bin/bash found within ARGS:: exec/bin/bash"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [maturity "1"] [accuracy "8"] [tag "application-multi"] [tag "language-shell"] [tag "platform-unix"] [tag "attack-rce"] [tag "OWASP_CRS/WEB_ATTACK/COMMAND_INJECTION"] [tag "WASCTC/WASC-31"] [tag "OWASP_TOP_10/A1"] [tag "PCI/6.5.2"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnVf38AAAEAAEqya3YAAAAC"]
-{{< /output >}}
+    > ModSecurity: Warning. Matched phrase "bin/bash" at ARGS:. [file "/etc/modsecurity/rules/REQUEST-932-APPLICATION-ATTACK-RCE.conf"] [line "448"] [id "932160"] [rev "1"] [msg "Remote Command Execution: Unix Shell Code Found"] [data "Matched Data: bin/bash found within ARGS:: exec/bin/bash"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [maturity "1"] [accuracy "8"] [tag "application-multi"] [tag "language-shell"] [tag "platform-unix"] [tag "attack-rce"] [tag "OWASP_CRS/WEB_ATTACK/COMMAND_INJECTION"] [tag "WASCTC/WASC-31"] [tag "OWASP_TOP_10/A1"] [tag "PCI/6.5.2"] [hostname "localhost"] [uri "/index.html"] [unique_id "WfnVf38AAAEAAEqya3YAAAAC"]
 
 ## Next Steps
 

@@ -39,7 +39,7 @@ This will give an extended device utilization report five times at two second in
 
 In your MySQL configuration file (typically found in `/etc/mysql/my.cnf`), change your entries for the various settings shown below to match the recommended values:
 
-    {{< file-excerpt "/etc/mysql/my.cnf" >}}
+{{< file-excerpt "/etc/mysql/my.cnf" >}}
 key_buffer = 16K
 max_allowed_packet = 1M
 thread_stack = 64K
@@ -70,7 +70,7 @@ Determine the type of MPM in use by your Apache install by issuing the following
 
 In your Apache 2 configuration file (typically found at `/etc/apache2/apache2.conf` in Debian and Ubuntu systems, and `/etc/httpd/httpd.conf` in CentOS and other similar systems), change your entries for the various settings shown below to match the recommended values.
 
-    {{< file-excerpt "/etc/apache2/apache2.conf" >}}
+{{< file-excerpt "/etc/apache2/apache2.conf" >}}
 KeepAlive Off
 ---
 

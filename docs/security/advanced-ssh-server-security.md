@@ -18,9 +18,6 @@ external_resources:
  - '[Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 There's a good chance you've been using SSH (Secure Shell) to access your Linode from your computer. Although SSH is a secure protocol, most system compromises are a result of human error or failure to take advantage of the security features offered. In this guide, we'll cover a few key features provided by OpenSSH.
 
 ![Use Advanced OpenSSH Features to Harden Access to Your Linode](/docs/assets/advanced-ssh-server-security.png "Use Advanced OpenSSH Features to Harden Access to Your Linode")
@@ -132,7 +129,7 @@ This kind of password is very hard to crack, but has the obvious disadvantage of
 
 To add the generated password to your existing private key:
 
-		ssh-keygen -p -f ~/.ssh/id_rsa
+    ssh-keygen -p -f ~/.ssh/id_rsa
 
 This assumes you keep your client's private SSH key in its default location, `~/.ssh/id_rsa`. You can modify the file location as needed and use the same command to change your password in the future.
 

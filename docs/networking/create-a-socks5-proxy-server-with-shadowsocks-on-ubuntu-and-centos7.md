@@ -18,9 +18,6 @@ external_resources:
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something open-source for which our core audience could use a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](/docs/assets/shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
@@ -76,7 +73,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **CentOS 7**
 
-	adduser --system --no-create-home -s /bin/false shadowsocks
+        adduser --system --no-create-home -s /bin/false shadowsocks
 
 2. Create a new directory for the configuration file:
 
@@ -86,17 +83,17 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 ## shadowsocks.json Breakdown
 
- |  **Property**  | **Explanation** | **Possible Values** |
- |:----------:|:-----------:|:---------------:|
- | server | Enter your server's public IP address. | User determined |
- | server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
- | local_address | Local listening address. Use your loopback address, `127.0.0.1`. | Loopback address |
- | local_port | Local listening port. Use the default value of `1080`. | User determined |
- | password | Connection password. Set a strong password. | User determined |
- | timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
- | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
- | fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
- | nameserver | Name servers for internal DNS resolver. | User determined |
+|  **Property**  | **Explanation** | **Possible Values** |
+|:--------------:|:---------------:|:-------------------:|
+| server | Enter your server's public IP address. | User determined |
+| server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
+| local_address | Local listening address. Use your loopback address, `127.0.0.1`. | Loopback address |
+| local_port | Local listening port. Use the default value of `1080`. | User determined |
+| password | Connection password. Set a strong password. | User determined |
+| timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
+| method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
+| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
+| nameserver | Name servers for internal DNS resolver. | User determined |
 
 {{< file "**/etc/shadowsocks/shadowsocks.json**" json >}}
 {
@@ -123,7 +120,7 @@ Apply the following optimizations to your system kernel to provide for a smooth 
 These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
 {{< /caution >}}
 
-    {{< file "/etc/sysctl.d/local.conf" aconf >}}
+    {{< file "/etc/sysctl.d/local.conf" >}}
 # max open files
 fs.file-max = 51200
 # max read buffer
@@ -257,3 +254,4 @@ Press the **Global Mode** button to enable Shadowsocks globally on your computer
 ## Where to Go from Here
 
 Once your Shadowsocks server is online, configure a client on your mobile phone, tablet, or any other devices you use. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms.
+

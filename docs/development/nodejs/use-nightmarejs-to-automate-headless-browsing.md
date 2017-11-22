@@ -19,9 +19,6 @@ external_resources:
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 **Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around [Electron](https://electron.atom.io/), which Nightmare.js uses as a browser to interact with web sites. This guide helps you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need for a graphical user interface.
 
@@ -37,6 +34,7 @@ external_resources:
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
 {{< /note >}}
 
 ## Install Node.js
@@ -49,6 +47,7 @@ The Ubuntu 16.04 repository is slower to release recent versions of Node.js. Ins
 
     {{< note >}}
 This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
+
 {{< /note >}}
 
 2.  Install Node.js and NPM with the following command:

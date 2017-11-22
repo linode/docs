@@ -14,9 +14,6 @@ contributor:
     name: Francis McNamee
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 ![Protecting your Linode with TCP Wrappers](/docs/assets/protecting-your-linode-with-tcp-wrappers.png "Protecting your Linode with TCP Wrappers")
 
@@ -51,7 +48,7 @@ Files located in `/usr/bin` and `/usr/sbin` are most likely the executables you 
 
 TCP wrappers rely on two files in order to work: `/etc/hosts.allow` and `/etc/hosts.deny`. If these files don't yet exist, create them:
 
-        touch /etc/hosts.{allow,deny}
+    touch /etc/hosts.{allow,deny}
 
 ### Editing hosts.allow and hosts.deny
 

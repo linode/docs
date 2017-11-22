@@ -63,7 +63,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
 
 3.  Modify the virtual host file for your Magento site to resemble the example below. If you have not previously created a virtual host file, do so now and refer to the [Configure Virtual Hosts](/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/#configure-virtual-hosts) section of the LAMP on Ubuntu 16.04 guide for additional guidance.
 
-    {{< file "/etc/apache2/sites-available/example.com.conf" aconf >}}
+{{< file "/etc/apache2/sites-available/example.com.conf" conf >}}
 <Directory /var/www/html/example.com/public_html>
     Require all granted
 </Directory>
@@ -126,12 +126,12 @@ Magento is a PHP application, so you'll need to make some adjustments to your sy
 
 1.  Modify the following settings in your `php.ini` files for the CLI and Apache PHP configurations. These files can be found at `/etc/php/7.0/apache2/php.ini` and `/etc/php/7.0/cli/php.ini`:
 
-    {{< file-excerpt "/etc/php/7.0/apache2/php.ini & /etc/php/7.0/cli/php.ini" >}}
-It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use. This value is recommended for a 4GB Linode, but could be increased for a larger server.
 
-{{< note >}}
-The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php) and ensure this value matches the time zone you set when you configured your Linode.
-{{< /note >}}
+    It is necessary to modify **both** files. This sets the time zone for PHP's `date()` function and imposes a 2GB limit to the amount of memory PHP can use.  This value is recommended for a 4GB Linode, but could be increased for a larger server.
+
+    {{< note >}}
+  The value for `date.timezone` will vary based on your system's time zone. Refer to the [PHP time zone documentation](http://php.net/manual/en/timezones.php)     and ensure this value matches the time zone you set when you configured your Linode.
+    {{< /note >}}
 
 2.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 

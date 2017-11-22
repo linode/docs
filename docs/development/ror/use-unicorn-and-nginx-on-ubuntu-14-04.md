@@ -18,9 +18,6 @@ external_resources:
  - '[Ruby on Rails](http://rubyonrails.org/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 Ruby on Rails is a popular web-application framework that allows developers to create dynamic web applications. This guide describes how to deploy Rails applications on servers using Unicorn and nginx on Ubuntu 14.04.
 
 Unicorn is an HTTP server, just like Passenger or Puma. Since Unicorn cannot be accessed by users directly we will be using nginx as the reverse proxy that will buffer requests and response between users and Rails application.
@@ -193,11 +190,11 @@ Make sure you change the username and example with the appropriate values.
 
 - To start Unicorn in the development environment:
 
-      sudo unicorn -c config/unicorn.rb -E development -D
+        sudo unicorn -c config/unicorn.rb -E development -D
 
 - To start Unicorn in the production environment:
 
-      sudo unicorn -c config/unicorn.rb -E production -D
+        sudo unicorn -c config/unicorn.rb -E production -D
 
     {{< note >}}
 Make sure you are in the application directory; otherwise, you will need to type in the whole path	name.
@@ -205,4 +202,4 @@ Make sure you are in the application directory; otherwise, you will need to type
 
 - To stop Unicorn, issue the following command:
 
-      sudo pkill unicorn
+        sudo pkill unicorn

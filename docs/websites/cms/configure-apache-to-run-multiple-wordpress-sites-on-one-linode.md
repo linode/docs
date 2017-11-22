@@ -19,9 +19,6 @@ external_resources:
 - '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![WordPress on Apache](/docs/assets/multiple-wordpress/Multiple_WordPress.jpg)
 
@@ -130,37 +127,39 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 3.  Put the following contents in `example1.com`:
 
-        <VirtualHost *:80>
-          # The primary domain for this host
-          ServerName example1.com
-          # Optionally have other subdomains also managed by this Virtual Host
-          ServerAlias example1.com *.example1.com
-          DocumentRoot /var/www/html/example1.com/public_html
+    {{< file-excerpt "example1.conf" apache >}}
+<VirtualHost *:80>
+# The primary domain for this host
+ServerName example1.com
+# Optionally have other subdomains also managed by this Virtual Host
+ServerAlias example1.com *.example1.com
+DocumentRoot /var/www/html/example1.com/public_html
+<Directory /var/www/html/example1.com/public_html>
+Require all granted
+# Allow local .htaccess to override Apache configuration settings
+AllowOverride all
+</Directory>
+# Enable RewriteEngine
+RewriteEngine on
+RewriteOptions inherit
 
-          <Directory /var/www/html/example1.com/public_html>
-            Require all granted
-            # Allow local .htaccess to override Apache configuration settings
-            AllowOverride all
-          </Directory>
+# Block .svn, .git
+RewriteRule \.(svn|git)(/)?$ - [F]
 
-          # Enable RewriteEngine
-          RewriteEngine on
-          RewriteOptions inherit
-        
-          # Block .svn, .git
-          RewriteRule \.(svn|git)(/)?$ - [F]
-        
-          # Catchall redirect to www.example1.com
-          RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
-          RewriteCond %{HTTP_HOST}   !^$
-          RewriteRule ^/(.*)         https://www.example1.com/$1 [L,R]
+# Catchall redirect to www.example1.com
+RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
+RewriteCond %{HTTP_HOST}   !^$
+RewriteRule ^/(.*)         https://www.example1.com/$1 [L,R]
 
-          # Recommended: XSS protection
-          <IfModule mod_headers.c>
-            Header set X-XSS-Protection "1; mode=block"
-            Header always append X-Frame-Options SAMEORIGIN
-          </IfModule>
-        </VirtualHost>
+# Recommended: XSS protection
+<IfModule mod_headers.c>
+Header set X-XSS-Protection "1; mode=block"
+Header always append X-Frame-Options SAMEORIGIN
+</IfModule>
+</VirtualHost>
+
+{{</file-excerpt >}}
+
 
 4.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:
 

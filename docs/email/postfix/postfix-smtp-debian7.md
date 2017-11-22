@@ -16,7 +16,6 @@ title: Configure Postfix to Send Mail Using an External SMTP Server
 image: https://linode.com/docs/assets/external_smtp_tg.png
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
 
 There are many reasons why you would want to configure Postfix to send email using an external SMTP provider such as Mandrill, SendGrid, Amazon SES, or any other SMTP server. One reason is to avoid getting your mail flagged as spam if your current server's IP has been added to a spam list.
 
@@ -91,7 +90,7 @@ If you want to use [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-f
 
 2.  Add your destination (SMTP Host), username, and password in the following format:
 
-    {{< file "/etc/postfix/sasl\\_passwd" >}}
+    {{< file "/etc/postfix/sasl_passwd" >}}
 [mail.isp.example] username:password
 
 {{< /file >}}
@@ -100,7 +99,7 @@ If you want to use [Mandrill](#settings-for-mandrill), or [SendGrid](#settings-f
     {{< note >}}
 If you want to specify a non-default TCP Port (such as 587), then use the following format:
 
-{{< file "> /etc/postfix/sasl\\_passwd" >}}
+{{< file "/etc/postfix/sasl_passwd" >}}
 [mail.isp.example]:587 username:password
 {{< /note >}}
 
@@ -188,7 +187,7 @@ Use these settings for Mandrill.
 
 1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
 
-    {{< file "/etc/postfix/sasl\\_passwd" >}}
+    {{< file "/etc/postfix/sasl_passwd" >}}
 [smtp.mandrillapp.com]:587 USERNAME:API_KEY
 
 {{< /file >}}
@@ -216,7 +215,7 @@ Use these settings for SendGrid.
 
 1.  For `/etc/postfix/sasl_passwd`, use the following configuration with your own credentials:
 
-    {{< file "/etc/postfix/sasl\\_passwd" >}}
+    {{< file "/etc/postfix/sasl_passwd" >}}
 [smtp.sendgrid.net]:587 USERNAME:PASSWORD
 
 {{< /file >}}
