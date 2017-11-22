@@ -6,7 +6,7 @@ description: 'This guide shows how to install and configure the MariaDB database
 og_description: 'MariaDB is a robust, scalable and reliable SQL Server that can serve as a drop-in replacement for MySQL. This guide shows how to install and configure it on Debian 9.'
 keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['/docs/databases/mariadb/mariadb-setup-debian']
+aliases: ['databases/mariadb/mariadb-setup-debian/']
 modified: 2017-11-22
 contributor:
     name: Nashruddin Amin
@@ -192,7 +192,7 @@ This section will demonstrate how to allow the previously created user, **testus
 Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/security/firewalls/iptables) rules that allow connections only from specific IP addresses.
 {{< /caution >}}
 
-1.  First, you need to grant user connections from remote hosts for the **testuser** user. Log in to MariaDB as root:
+1.  Log in to MariaDB as root:
 
         mysql -u root -p
 
@@ -202,25 +202,21 @@ Opening a MariaDB server up to the internet makes it less secure. If you need to
         FLUSH PRIVILEGES;
         quit
 
-3.  Configure MariaDB to listen to all network interfaces. Open the `/etc/mysql/my.cnf` file:
-
-        nano /etc/mysql/my.cnf
-
-4.  Edit the `bind-address` variable to listen to all network interfaces:
+3.  Configure MariaDB to listen to all network interfaces. Open the `/etc/mysql/my.cnf` file and edit the `bind-address` variable to listen to all network interfaces:
 
     {{< file-excerpt "/etc/mysql/my.cnf" >}}
 bind-address = 0.0.0.0
 {{< /file-excerpt >}}
 
-5.  Restart the server:
+4.  Restart the server:
 
         service mysql restart
 
-6.  Test your connection from your *local computer* to your MariaDB server, replacing **testuser** with your username, and **example.com** with your domain or IP address:
+5.  Test the connection from your local computer to the MariaDB server, replacing **testuser** with your username, and **example.com** with your domain or IP address:
 
         mysql -u testuser -h example.com -p
 
-If the login is successful, you should see the MariaDB welcome message and the shell prompt.
+    If the login is successful, you should see the MariaDB welcome message and the shell prompt.
 
 ## Tune MariaDB
 
@@ -234,10 +230,9 @@ MySQL Tuner is a useful tool that connects to a running instance of MariaDB and 
 
       mysqltuner
 
-
 ## Reset MariaDB's Root Password
 
-If you forget your root password, you can reset it by following the instructions below:
+If you forget your root password, reset it with these steps:
 
 1.  Stop the MariaDB server:
 
