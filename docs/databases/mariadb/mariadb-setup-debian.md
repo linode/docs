@@ -64,7 +64,7 @@ After installation, Debian will start the MariaDB server and also set the servic
 
 In this section you will learn how to connect to MariaDB and perform basic SQL commands.
 
-1.  The standard tool for interacting with MariaDB is the MySQL client program. To get started, issue the following command to connect to MariaDB as the root user:
+1.  The standard tool for interacting with MariaDB is the MySQL client. To get started, issue the following command to connect to MariaDB as the root user:
 
         mysql -u root -p
 
@@ -82,7 +82,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
     Note the `(none)` text in the MariaDB prompt. It will be used to display the current working database. Since you haven't selected any database yet, it is displayed as `(none)`.
 
-2.  Let's try to create a sample database, which we'll later populate with data. Type the following commands to create a database named **testdb**, which is owned by a new user **testuser**. These commands also set the password **secretpassword** for the new user:
+2.  Create a sample database, to be populated with sample data. Use the following commands to create a database named **testdb**, which is owned by a new user **testuser**. These commands also set the password **secretpassword** for the new user:
 
         CREATE DATABASE testdb;
         CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'password';
@@ -100,7 +100,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
         USE testdb;
 
-5.  Create a new table and populate it with sample data:
+5.  Databases are composed of multiple **tables**. Create a new table and populate it with sample data:
 
         CREATE TABLE products (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(6,2));
         INSERT INTO products (name, price) VALUES ('MacBook Pro', 1600.0);
@@ -126,7 +126,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
         quit
 
-For more information about SQL commands, you might want to check the [SQL Commands](https://mariadb.com/kb/en/sql-commands/) page on the MariaDB Knowledge Base. To view MariaDB's command list from within the client, type:
+For more information about SQL commands, refer to the [SQL Commands](https://mariadb.com/kb/en/sql-commands/) page on the MariaDB Knowledge Base. To view MariaDB's command list from within the client, type:
 
     \h
 
@@ -176,7 +176,7 @@ Whenever you make changes to `/etc/mysql/my.cnf`, restart the server by issuing 
 
 ## Securing MariaDB Server
 
-We recommend that you secure your MariaDB server by executing the following command:
+MariaDB recommends that you secure your installation by executing the following command:
 
     mysql_secure_installation
 
@@ -184,7 +184,7 @@ You will be asked to change the root password, remove anonymous users, disable r
 
 ## Remote User Connections
 
-Let's take a look at how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
+This section will demonstrate how to allow the previously created user, **testuser**, to connect to MariaDB remotely (by default, MariaDB will allow connections from only localhost).
 
  {{< caution >}}
 Opening a MariaDB server up to the internet makes it less secure. If you need to connect from somewhere other than localhost, make sure you implement [firewall](/docs/security/firewalls/iptables) rules that allow connections only from specific IP addresses.
@@ -208,7 +208,6 @@ Opening a MariaDB server up to the internet makes it less secure. If you need to
 
     {{< file-excerpt "/etc/mysql/my.cnf" >}}
 bind-address = 0.0.0.0
-
 {{< /file-excerpt >}}
 
 5.  Restart the server:
@@ -225,74 +224,18 @@ If the login is successful, you should see the MariaDB welcome message and the s
 
 MySQL Tuner is a useful tool that connects to a running instance of MariaDB and provides configuration recommendations based on workload. You should let your MariaDB instance run for at least 24 hours before running the tuner. The longer the instance has been running, the better advice the tuner will provide.
 
-Install MySQL Tuner by issuing the following command:
+1.  Install MySQL Tuner by issuing the following command:
 
-    apt-get install mysqltuner
+      apt install mysqltuner
 
-Run MySQL tuner with the following command:
+2.  Run MySQL tuner with the following command:
 
-    mysqltuner
+      mysqltuner
 
-Below is some sample output:
 
-     >>  MySQLTuner 1.1.1 - Major Hayden <major@mhtx.net>
-     >>  Bug reports, feature requests, and downloads at http://mysqltuner.com/
-     >>  Run with '--help' for additional options and output filtering
-    Please enter your MySQL administrative login: root
-    Please enter your MySQL administrative password:
+## Reset MariaDB's root Password
 
-    -------- General Statistics --------------------------------------------------
-    [--] Skipped version check for MySQLTuner script
-    [OK] Currently running supported MySQL version 5.5.37-MariaDB-1~wheezy-log
-    [OK] Operating on 32-bit architecture with less than 2GB RAM
-
-    -------- Storage Engine Statistics -------------------------------------------
-    [--] Status: +Archive -BDB +Federated +InnoDB -ISAM -NDBCluster
-    [--] Data in PERFORMANCE_SCHEMA tables: 0B (Tables: 17)
-    [!!] InnoDB is enabled but isn't being used
-    [OK] Total fragmented tables: 0
-
-    -------- Security Recommendations  -------------------------------------------
-    [OK] All database users have passwords assigned
-
-    -------- Performance Metrics -------------------------------------------------
-    [--] Up for: 32m 45s (193 q [0.098 qps], 47 conn, TX: 60K, RX: 8K)
-    [--] Reads / Writes: 100% / 0%
-    [--] Total buffers: 496.0M global + 7.4M per thread (100 max threads)
-    [!!] Maximum possible memory usage: 1.2G (245% of installed RAM)
-    [OK] Slow queries: 0% (0/193)
-    [OK] Highest usage of available connections: 2% (2/100)
-    [OK] Key buffer size / total MyISAM indexes: 128.0M/99.0K
-    [!!] Key buffer hit rate: 92.5% (53 cached / 4 reads)
-    [!!] Query cache efficiency: 0.0% (0 cached / 72 selects)
-    [OK] Query cache prunes per day: 0
-    [OK] Temporary tables created on disk: 11% (10 on disk / 89 total)
-    [OK] Thread cache hit rate: 95% (2 created / 47 connections)
-    [OK] Table cache hit rate: 70% (41 open / 58 opened)
-    [OK] Open file limit used: 5% (53/1K)
-    [OK] Table locks acquired immediately: 100% (139 immediate / 139 locks)
-    [!!] Connections aborted: 19%
-
-    -------- Recommendations -----------------------------------------------------
-    General recommendations:
-        Add skip-innodb to MySQL configuration to disable InnoDB
-        MySQL started within last 24 hours - recommendations may be inaccurate
-        Reduce your overall MySQL memory footprint for system stability
-        Enable the slow query log to troubleshoot bad queries
-        Your applications are not closing MySQL connections properly
-    Variables to adjust:
-      *** MySQL's maximum memory usage is dangerously high ***
-      *** Add RAM before increasing MySQL buffer variables ***
-        query_cache_limit (> 128K, or use smaller result sets)
-{{< output >}}
-
-{{< /output >}}
-
-Pay attention to the output, especially the recommendations at the end. It will point you towards which variables you should adjust in the `[mysqld]` section of your `/etc/mysql/my.cnf` file.
-
-## How to Reset MariaDB's root Password
-
-If you forget your root password, you can easily reset it by following the instructions below:
+If you forget your root password, you can reset it by following the instructions below:
 
 1.  Stop the MariaDB server:
 
