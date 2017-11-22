@@ -2,79 +2,55 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Install and configure the MariaDB database server on Debian 7.'
-keywords: ["mariadb", " debian 7", " reset", " root", " password", " install", " configure"]
+description: 'Install and configure the MariaDB database server on Debian 9.'
+keywords: ["mariadb", "debian 9", "debian", "database", "mysql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2014-06-12
+aliases: ['/docs/databases/mariadb/mariadb-setup-debian']
+modified: 2017-11-22
 contributor:
     name: Nashruddin Amin
     link: https://twitter.com/bsd_noobz
 modified_by:
   name: Linode
 published: 2014-06-12
-title: MariaDB Setup on Debian 7
+title: How to Set Up MariaDB on Debian 9
 external_resources:
  - '[MariaDB Knowledge Base](https://mariadb.com/kb/en)'
  - '[MariaDB FAQ](https://mariadb.com/kb/en/mariadb-mariadb-faq/)'
  - '[MariaDB SQL commands](https://mariadb.com/kb/en/sql-commands/)'
- - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
 ---
 
 
-MariaDB is a drop-in replacement for MySQL and it strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on a Debian 7 (Wheezy) Linode.
+MariaDB is a drop-in replacement for MySQL. It strives to be the logical choice for database professionals looking for a robust, scalable, and reliable SQL Server. This guide will help beginners get started with MariaDB on Debian 9 (Stretch).
 
  {{< note >}}
 The steps required in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-## Prerequisites
-
-Execute the following commands to ensure that your system's package database is up to date and that all installed software is running at the latest version:
-
-    apt-get update
-    apt-get upgrade
-
 ## Installing MariaDB
 
-In this section, you will install MariaDB and set the password for the MariaDB root user.
+In this section, you will install MariaDB and set the password for the MariaDB root user. MariaDB maintains a shell script that automatically sets up the necessary package repositories.
 
-1.  First, import the GPG key so that APT can verify the integrity of the packages it downloads:
+1.  Update your system and install dependencies:
 
-        apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+        apt update && apt upgrade
+        apt install dirmngr
 
-    Sample output:
+2.  Add the MariaDB signing key:
 
-        Executing: gpg --ignore-time-conflict --no-options --no-default-keyring --secret-keyring /tmp/tmp.THMA4yorjI --trustdb-name /etc/apt//trustdb.gpg --keyring /etc/apt/trusted.gpg --primary-keyring /etc/apt/trusted.gpg --keyring /etc/apt/trusted.gpg.d//debian-archive-squeeze-automatic.gpg --keyring /etc/apt/trusted.gpg.d//debian-archive-squeeze-stable.gpg --keyring /etc/apt/trusted.gpg.d//debian-archive-wheezy-automatic.gpg --keyring /etc/apt/trusted.gpg.d//debian-archive-wheezy-stable.gpg --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-        gpg: requesting key 1BB943DB from hkp server keyserver.ubuntu.com
-        gpg: key 1BB943DB: public key "MariaDB Package Signing Key <package-signing-key@mariadb.org>" imported
-        gpg: no ultimately trusted keys found
-        gpg: Total number processed: 1
-        gpg:               imported: 1
+        apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
 
-2.  Next, locate the MariaDB repository that's closest to your Linode datacenter location, using MariaDB's [repository configuration tool](http://downloads.mariadb.org/mariadb/repositories/). With the repository configuration tool, select **Debian**, then **Debian 7 (Wheezy)**, then **5.5**, and then select a mirror.
-3.  Add your chosen MariaDB repository to your `sources.list` file. Open your `/etc/apt/sources.list` file for editing:
+3.  Download and execute the script:
 
-        nano /etc/apt/sources.list
+		curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 
-    Add your chosen repository to the bottom of the file:
+4.  Update your sources list:
 
-    {{< file-excerpt "/etc/apt/sources.list" >}}
-# MariaDB 5.5 repository list
-deb http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
-deb-src http://ftp.osuosl.org/pub/mariadb/repo/5.5/debian wheezy main
-
-{{< /file-excerpt >}}
-
-
-    Remember to choose the repository nearest to your server location.
-
-4.  Retrieve the information APT needs to install MariaDB:
-
-        apt-get update
+        apt update
 
 5.  Install MariaDB:
 
-        apt-get install mariadb-server
+        apt install mariadb-server
 
     You will be prompted to set a password for the MariaDB root user:
 
@@ -109,7 +85,8 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 2.  Let's try to create a sample database, which we'll later populate with data. Type the following commands to create a database named **testdb**, which is owned by a new user **testuser**. These commands also set the password **secretpassword** for the new user:
 
         CREATE DATABASE testdb;
-        GRANT ALL PRIVILEGES ON testdb.* TO testuser@localhost IDENTIFIED BY 'secretpassword';
+        CREATE USER 'testuser'@'localhost' IDENTIFIED BY 'password';
+        GRANT ALL PRIVILEGES ON testdb.* TO testuser@localhost;
         FLUSH PRIVILEGES;
         quit
 
@@ -123,7 +100,7 @@ In this section you will learn how to connect to MariaDB and perform basic SQL c
 
         USE testdb;
 
-5.  Create a new table and populate it with some data:
+5.  Create a new table and populate it with sample data:
 
         CREATE TABLE products (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), price DECIMAL(6,2));
         INSERT INTO products (name, price) VALUES ('MacBook Pro', 1600.0);
@@ -203,80 +180,7 @@ We recommend that you secure your MariaDB server by executing the following comm
 
     mysql_secure_installation
 
-You will be asked to change the root password, remove anonymous users, disable root logins outside of localhost, remove anonymous users, and remove the test database. It is recommended that you answer **Y** for all of the questions. View the sample output below:
-
-    /usr/bin/mysql_secure_installation: 379: /usr/bin/mysql_secure_installation: find_mysql_client: not found
-
-    NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
-          SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
-
-    In order to log into MariaDB to secure it, we'll need the current
-    password for the root user.  If you've just installed MariaDB, and
-    you haven't set the root password yet, the password will be blank,
-    so you should just press enter here.
-
-    Enter current password for root (enter for none):
-    OK, successfully used password, moving on...
-
-    Setting the root password ensures that nobody can log into the MariaDB
-    root user without the proper authorization.
-
-    You already have a root password set, so you can safely answer 'n'.
-
-    Change the root password? [Y/n]
-    New password:
-    Re-enter new password:
-    Password updated successfully!
-    Reloading privilege tables..
-     ... Success!
-
-
-    By default, a MariaDB installation has an anonymous user, allowing anyone
-    to log into MariaDB without having to have a user account created for
-    them.  This is intended only for testing, and to make the installation
-    go a bit smoother.  You should remove them before moving into a
-    production environment.
-
-    Remove anonymous users? [Y/n]
-     ... Success!
-
-    Normally, root should only be allowed to connect from 'localhost'.  This
-    ensures that someone cannot guess at the root password from the network.
-
-    Disallow root login remotely? [Y/n]
-     ... Success!
-
-    By default, MariaDB comes with a database named 'test' that anyone can
-    access.  This is also intended only for testing, and should be removed
-    before moving into a production environment.
-
-    Remove test database and access to it? [Y/n]
-     - Dropping test database...
-    ERROR 1008 (HY000) at line 1: Can't drop database 'test'; database doesn't exist
-     ... Failed!  Not critical, keep moving...
-     - Removing privileges on test database...
-     ... Success!
-
-    Reloading the privilege tables will ensure that all changes made so far
-    will take effect immediately.
-
-    Reload privilege tables now? [Y/n]
-     ... Success!
-
-    Cleaning up...
-
-    All done!  If you've completed all of the above steps, your MariaDB
-    installation should now be secure.
-
-    Thanks for using MariaDB!
-
- {{< note >}}
-Do not be concerned about the `find_mysql_client: not found` message. This is a known bug as described in this [MariaDB mailing list](https://lists.launchpad.net/maria-developers/msg05358.html). Also, unlike MySQL, MariaDB does not install a test database by default, so you can ignore this error message:
-
-ERROR 1008 (HY000) at line 1: Can't drop database 'test'; database doesn't exist
-
-In short, neither warning is a problem.
-{{< /note >}}
+You will be asked to change the root password, remove anonymous users, disable root logins outside of localhost, remove anonymous users, and remove the test database. It is recommended that you answer **Y** for all of the questions.
 
 ## Remote User Connections
 
@@ -392,11 +296,11 @@ If you forget your root password, you can easily reset it by following the instr
 
 1.  Stop the MariaDB server:
 
-        service mysql stop
+        systemctl restart mysql
 
 2.  Start the server with the `skip-grant-tables` setting so you can log in to MariaDB without the password:
 
-        mysqld_safe --skip-grant-tables &
+        mysqld_safe --skip-grant-tables --skip_networking &
 
 3.  Now you can connect to the MariaDB server as root without a password:
 
@@ -404,8 +308,9 @@ If you forget your root password, you can easily reset it by following the instr
 
 4.  Within the MariaDB client, issue the following commands to reset the password for the **root** user and log out:
 
-        USE mysql
-        UPDATE user SET password=PASSWORD('yournewpassword') WHERE user='root';
+        FLUSH PRIVILEGES;
+        USE mysql;
+        ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
         FLUSH PRIVILEGES;
         quit
 
