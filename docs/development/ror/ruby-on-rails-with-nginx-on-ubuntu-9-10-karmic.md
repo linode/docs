@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the Ruby on Rails framework for Nginx web applications on the Ubuntu 9.10 operating system.'
-keywords: 'ruby on rails,ruby on nginx,rails apps'
+keywords: ["ruby on rails", "ruby on nginx", "rails apps"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/']
-modified: Friday, April 29th, 2011
+aliases: ['frameworks/ruby-on-rails-nginx/ubuntu-9-10-karmic/','websites/ror/ruby-on-rails-with-nginx-on-ubuntu-9-10-karmic/']
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Monday, February 22nd, 2010'
+published: 2010-02-22
 title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -18,30 +18,29 @@ title: 'Ruby on Rails with Nginx on Ubuntu 9.10 (Karmic)'
 
 Ruby on Rails is a popular rapid development web framework that allows web designers and developers to implement fully featured dynamic web applications using the Ruby programming language. This guide describes the required process for deploying Ruby on Rails with Passenger and the nginx web server on Ubuntu 9.10 (Karmic).
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 First, make sure you have the `universe` repositories enabled on your system. Your `/etc/apt/sources.list` should resemble the following (you may have to uncomment or add the `universe` lines):
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 If you added `universe` to the items in your list, you'll need to update your repository database:
 
@@ -74,8 +73,7 @@ If you are unsure of the version you require, you can install the latest version
 
 Additionally, the application you deploy will likely have additional dependencies. Install these dependencies before proceeding.
 
-Install Passenger and Nginx
----------------------------
+# Install Passenger and Nginx
 
 Proceed to the [Phusion Passenger](http://www.modrails.com/install.html) site and locate the link for the current source code tarball. Download it as follows (substitute the link for the current version). You may need to install `wget` first by issuing the command `apt-get install wget`.
 
@@ -96,8 +94,7 @@ When prompted for the nginx installation method, we recommend you choose "1" to 
 
 Please do **not** remove the Passenger files from `opt` after the installation. They need to stay in place or your installation will not function correctly.
 
-Set up an Init Script for Nginx
--------------------------------
+# Set up an Init Script for Nginx
 
 Nginx is now installed in `/opt/nginx`, but there are no "init" scripts to control this process. Issue the following sequence of commands to download a script, move it to the proper directory, set the proper permissions and set system startup links:
 
@@ -113,22 +110,14 @@ You can now start, stop, and restart Nginx just like any other server daemon. Fo
 
 The configuration file for Nginx is located at `/opt/nginx/conf/nginx.conf`. This is the file you'll need to edit to add support for your Rails applications. A default server is already configured in this file, and it also contains examples for alternate virtual host and SSL configurations.
 
-Install MySQL Support (optional)
---------------------------------
+# Install MySQL Support (optional)
 
 If your application uses MySQL, install the database server by following our [MySQL on Ubuntu 9.10 (Karmic) guide](/docs/databases/mysql/ubuntu-9-10-karmic). Once it's installed and configured properly, issue the following commands:
 
     apt-get install libmysqlclient15-dev libmysql-ruby
     gem install mysql --no-rdoc --no-ri -- --with-mysql-dir=/usr/bin --with-mysql-lib=/usr/lib/mysql --with-mysql-include=/usr/include/mysql
 
-More Information
-----------------
-
-More Information
-----------------
-
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

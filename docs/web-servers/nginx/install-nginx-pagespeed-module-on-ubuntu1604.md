@@ -4,9 +4,9 @@ author:
     email: docs@linode.com
 description: 'PageSpeed is an open source Google project created to optimize website performance. Learn how to set up PageSpeed for Nginx.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/ ', 'web-servers/nginx/nginx-with-pagespeed-on-ubuntu-16-04/']
-published: 'Tuesday, November 3rd, 2015'
-modified: Thursday, September 14th, 2017
+aliases: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/ ', 'web-servers/nginx/nginx-with-pagespeed-on-ubuntu-16-04/']
+published: 2015-11-03
+modified: 2017-09-14
 modified_by:
     name: Linode
 title: 'Install Nginx ngx_pagespeed Module on Ubuntu 16.04'
@@ -17,9 +17,6 @@ external_resources:
  - '[Google PageSpeed Filter Docs](https://developers.google.com/speed/pagespeed/module/config_filters)'
  - '[Pagespeed Filter Examples](https://www.ngxpagespeed.com/)'
 ---
-
-*This is a Linode Community guide. Write for us and earn $300 per published guide.*
-<hr>
 
 Pagespeed is a tool built by Google that boosts the speed and performance of a website by automatically minifying assets (such as CSS, Javascript, and images), and applying other web performance best practices.
 
@@ -51,9 +48,10 @@ Download and install the `ngx_pagespeed` module and its dependencies.
 
         NPS_VERSION=1.12.34.2-stable
 
-    {:.note}
-    > This guide uses the current stable version as of this writing. However, you can check
-    > the [ngx_pagespeed release notes](https://www.modpagespeed.com/doc/release_notes) and update this command with the most recent version.
+    {{< note >}}
+This guide uses the current stable version as of this writing. However, you can check
+the [ngx_pagespeed release notes](https://www.modpagespeed.com/doc/release_notes) and update this command with the most recent version.
+{{< /note >}}
 
 4.  Download the module source code:
 
@@ -72,7 +70,7 @@ Download and install the `ngx_pagespeed` module and its dependencies.
         wget ${psol_url}
         tar -xzvf $(basename ${psol_url})
 
-##Download and build Nginx
+## Download and build Nginx
 
 Now compile Nginx with the `ngx_pagespeed` module.
 
@@ -118,17 +116,17 @@ Now compile Nginx with the `ngx_pagespeed` module.
 
 3.  Open `/usr/local/nginx/conf/nginx.conf` and add the following code to the server block where you want to enable the PageSpeed module:
 
-    {: .file-excerpt}
-    /usr/local/nginx/conf/nginx.conf
-    :   ~~~ conf
-        pagespeed on;
-        pagespeed FileCachePath /var/ngx_pagespeed_cache;
-        location ~ "\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+" {
-         add_header "" "";
-        }
-        location ~ "^/pagespeed_static/" { }
-        location ~ "^/ngx_pagespeed_beacon$" { }
-        ~~~
+    {{< file-excerpt "/usr/local/nginx/conf/nginx.conf" aconf >}}
+pagespeed on;
+pagespeed FileCachePath /var/ngx_pagespeed_cache;
+location ~ "\.pagespeed\.([a-z]\.)?[a-z]{2}\.[^.]{10}\.[^.]+" {
+ add_header "" "";
+}
+location ~ "^/pagespeed_static/" { }
+location ~ "^/ngx_pagespeed_beacon$" { }
+
+{{< /file-excerpt >}}
+
 
 Also make sure that Nginx is running as `www-data`. In the top of the `conf` file, uncomment `user` and replace `nobody` with `www-data`.
 

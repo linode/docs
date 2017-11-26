@@ -4,12 +4,12 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using the PostgreSQL relational database server with Ubuntu 8.04 (Hardy).'
-keywords: 'postgresql,postgresql database,postgresql on ubuntu,relational database'
+keywords: ["postgresql", "postgresql database", "postgresql on ubuntu", "relational database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, April 29th, 2011
+modified: 2011-04-29
 modified_by:
   name: Linode
-published: 'Sunday, September 13th, 2009'
+published: 2009-09-13
 title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
 ---
 
@@ -17,8 +17,7 @@ title: 'Use PostgreSQL Relational Databases on Ubuntu 8.04 (Hardy)'
 
 The [PostgreSQL](http://www.postgresql.org/) relational database system is a fast, scalable, and standards-compliant open source database platform. This guide will help you install and configure PostgreSQL on Ubuntu 8.04 LTS (Hardy). We assume you've followed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via SSH.
 
-Installing PostgreSQL
----------------------
+# Installing PostgreSQL
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -31,8 +30,7 @@ Issue the following command to install PostgreSQL and required dependencies:
 
 The current version of the database server will be installed, along with several supporting packages.
 
-Configuring PostgreSQL
-----------------------
+# Configuring PostgreSQL
 
 ### Creating a Database
 
@@ -120,11 +118,9 @@ To use the database "mytestdb" as "alison", issue the following command:
 
 You will be prompted to enter the password for the "alison" user and given `psql` shell access to the database.
 
-More Information
-----------------
+# More Information
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

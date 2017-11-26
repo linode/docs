@@ -4,22 +4,21 @@ author:
   name: Linode
   email: docs@linode.com
 description: A basic guide to installing nginx from source on Fedora 14
-keywords: 'nginx fedora 14,nginx fedora,nginx,http,web servers,fedora 14'
+keywords: ["nginx fedora 14", "nginx fedora", "nginx", "http", "web servers", "fedora 14"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/fedora-14/','websites/nginx/websites-with-nginx-on-fedora-14/']
-modified: Thursday, March 27th, 2014
+aliases: ['web-servers/nginx/installation/fedora-14/','websites/nginx/websites-with-nginx-on-fedora-14/']
+modified: 2014-03-27
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, December 7th, 2010'
+published: 2010-12-07
 title: Websites with Nginx on Fedora 14
 ---
 
 Nginx is a lightweight and high performance HTTP web server designed with the purpose of delivering large amounts of static content quickly and with efficient use of system resources. In contrast to the [Apache HTTP server](/docs/web-servers/apache/) that uses a threaded or process-oriented approach to handling requests, nginx uses an asynchronous event-driven model which can provide more predictable performance under load.
 
-It is assumed that you have followed our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). You should be logged into your Linode as the "root" user before proceeding.
+It is assumed that you have followed our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). You should be logged into your Linode as the "root" user before proceeding.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install nginx from EPEL Packages
---------------------------------
+# Install nginx from EPEL Packages
 
 Nginx is included in the Fedora software repositories. While using this method to install nginx will leave you with a working web server, it is not the preferred method for installing nginx. Nevertheless, if you want to install in this manner, use the process that follows.
 
@@ -44,8 +42,7 @@ Once finished, start nginx the following command:
 
 You can now continue with the [configuration](/docs/websites/nginx/basic-nginx-configuration) of nginx. Installing nginx in this manner will allow you to rely on the Fedora package maintainers to provide quality control, testing, and security updates to ensure that you're running the best possible version of the software. However, the packages provided by the Fedora project may not track the latest development of the nginx server and do not allow you to enable certain nginx options at compile time. Given the rapid development of nginx and variances between recent versions, installing from distribution packages is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-Install nginx from the Source Distribution
-------------------------------------------
+# Install nginx from the Source Distribution
 
 ### Prerequisites
 
@@ -132,8 +129,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
 Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

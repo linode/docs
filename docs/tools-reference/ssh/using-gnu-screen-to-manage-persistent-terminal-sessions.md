@@ -1,1 +1,0 @@
-../../networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions.md

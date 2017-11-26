@@ -1,0 +1,21 @@
+<div class="row breadcrumb-row">
+  <div class="col-sm-12">
+    <ol class="breadcrumb library-breadcrumb">
+      {{ template "breadcrumb" (dict "p1" . "p2" .) }}
+    </ol>
+  </div>
+</div>
+{{ define "breadcrumb" }}
+{{ if .p1.Parent }}
+{{ template "breadcrumb" (dict "p1" .p1.Parent "p2" .p2 )  }}
+{{ else if not .p1.IsHome }}
+{{ template "breadcrumb" (dict "p1" .p1.Site.Home "p2" .p2 )  }}
+{{ end }}
+<li>
+  {{ if eq .p1 .p2 }}
+  {{ .p1.Title }}
+  {{ else }}
+  <a href="{{ .p1.Permalink }}">{{ .p1.Title }}</a>
+  {{ end }}
+</li>
+{{ end }}

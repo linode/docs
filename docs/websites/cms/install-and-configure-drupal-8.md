@@ -3,13 +3,13 @@ author:
     name: Chris Walsh
     email: docs@linode.com
 description: 'Drupal 8 is the lastest version of the popular Drupal content management system. This guide will show you how to install, configure, and optimize the Drupal CMS on your Linode so you can begin developing your own websites.'
-keywords: 'drupal,cms,apache,php,content management system,drupal 8'
+keywords: ["drupal", "cms", "apache", "php", "content management system", "drupal 8"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/cms-guides/drupal/','websites/cms/managing-web-content-with-drupal-8-beta/']
-modified: Thursday, November 19, 2015
+aliases: ['web-applications/cms-guides/drupal/','websites/cms/managing-web-content-with-drupal-8-beta/']
+modified: 2015-11-19
 modified_by:
     name: Linode
-published: 'Thursday, November 19, 2015'
+published: 2015-11-19
 title: Install and Configure Drupal 8
 ---
 
@@ -42,9 +42,9 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
         cd /var/www/html/example.com
         sudo wget http://ftp.drupal.org/files/projects/drupal-8.0.5.tar.gz
 
-    {: .caution}
-    >
-    >Ensure that the version number matches the Drupal 8 version you wish to download.
+    {{< caution >}}
+Ensure that the version number matches the Drupal 8 version you wish to download.
+{{< /caution >}}
 
 2.  Extract the downloaded tarball's contents into Apache's DocumentRoot:
 
@@ -62,18 +62,18 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 5.  Enforce [trusted hostnames](https://www.drupal.org/node/2410395) with those that users will access your site by.
 
-    {: .file-excerpt}
-    /var/www/html/example.com/public_html/sites/default/settings.php
-    :   ~~~ conf
-        $settings['trusted_host_patterns'] = array(
-          '^www\.example\.com$',
-          '^example\.com$',
-          );
-        ~~~
+    {{< file-excerpt "/var/www/html/example.com/public_html/sites/default/settings.php" conf >}}
+$settings['trusted_host_patterns'] = array(
+  '^www\.example\.com$',
+  '^example\.com$',
+  );
 
-    {: .note}
-    >
-    >*trusted_host_patterns* also accepts IP addresses or localhost.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+*trusted_host_patterns* also accepts IP addresses or localhost.
+{{< /note >}}
 
 ## Configure Apache 2.4
 
@@ -83,21 +83,21 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
 2.  Then specify the rewrite conditions for DocumentRoot in Apache's configuration file.
 
-    {: .file-excerpt}
-    /etc/apache2/apache2.conf
-    :   ~~~ conf
-        <Directory /var/www/>
-        Options Indexes FollowSymLinks
-        AllowOverride All
-        Require all granted
-          RewriteEngine on
-            RewriteBase /
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{REQUEST_FILENAME} !-d
-            RewriteCond %{REQUEST_URI} !=/favicon.ico
-            RewriteRule ^ index.php [L]
-        </Directory>
-        ~~~
+    {{< file-excerpt "/etc/apache2/apache2.conf" conf >}}
+<Directory /var/www/>
+Options Indexes FollowSymLinks
+AllowOverride All
+Require all granted
+  RewriteEngine on
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} !=/favicon.ico
+    RewriteRule ^ index.php [L]
+</Directory>
+
+{{< /file-excerpt >}}
+
 
 3.  Change ownership of Apache's DocumentRoot from the system's root user to Apache. This allows you to install modules and themes, and to update Drupal, all without being prompted for FTP credentials.
 
@@ -125,9 +125,9 @@ Drupal 8 is the lastest version of the popular [Drupal](https://www.drupal.org/)
 
     [![Drupal 8 database configuration.](/docs/assets/drupal-database-configuration-small.png)](/docs/assets/drupal-database-configuration.png)
 
-    {: .note }
-    >
-    >If you forgot the name of your database, log back in to MySQL with: `mysql -u root -p` and enter: `show databases;`.
+    {{< note >}}
+If you forgot the name of your database, log back in to MySQL with: `mysql -u root -p` and enter: `show databases;`.
+{{< /note >}}
 
 4.  After Drupal 8 installs your site, you'll be shown a site configuration page where you must create the admin user for your website. Do not use the same password that you used for your database.
 

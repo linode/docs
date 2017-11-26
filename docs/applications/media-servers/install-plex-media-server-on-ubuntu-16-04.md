@@ -3,12 +3,12 @@ author:
   name: Nick Brewer
   email: nbrewer@linode.com
 description: View and organize your media library with Plex on Ubuntu 16.04
-keywords: 'plex media server, install plex, plex ubuntu'
+keywords: ["plex media server", " install plex", " plex ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, June 21st, 2017
+modified: 2017-06-21
 modified_by:
   name: Nick Brewer
-published: 'Wednesday, May 3rd, 2017'
+published: 2017-05-03
 title: Install Plex Media Server on Ubuntu 16.04
 external_resources:
 - '[Plex Media Server Documentation](https://support.plex.tv/hc/en-us/categories/200007567-Plex-Media-Server)'
@@ -18,9 +18,9 @@ external_resources:
 
 ![Install Plex Media Server on Ubuntu 16.04](/docs/assets/install-plex-media-server-on-ubuntu-16-04.png)
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before you Begin
 

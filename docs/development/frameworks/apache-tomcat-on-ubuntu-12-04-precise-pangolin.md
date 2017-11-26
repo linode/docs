@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for installing the Apache Tomcat Java servlet engine on Ubuntu 12.04 (Precise Pangolin).'
-keywords: 'apache tomcat ubuntu 12.04,java,java ubuntu 12.04,java servlets ubuntu lucid,java ubuntu'
+keywords: ["apache tomcat ubuntu 12.04", "java", "java ubuntu 12.04", "java servlets ubuntu lucid", "java ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/apache-tomcat/ubuntu-12-04-precise-pangolin/','websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/']
-modified: Tuesday, November 13th, 2012
+aliases: ['frameworks/apache-tomcat/ubuntu-12-04-precise-pangolin/','websites/frameworks/apache-tomcat-on-ubuntu-12-04-precise-pangolin/']
+modified: 2012-11-13
 modified_by:
   name: Linode
-published: 'Tuesday, November 13th, 2012'
+published: 2012-11-13
 title: 'Apache Tomcat on Ubuntu 12.04 (Precise Pangolin)'
 external_resources:
  - '[Tomcat Home Page](http://tomcat.apache.org/)'
@@ -41,9 +41,9 @@ To install Tomcat, issue the following command:
 
     apt-get install tomcat6
 
- {: .note }
->
-> OpenJDK will be installed as a dependency when you install the `tomcat6` package. OpenJDK is pulled in by the `default-java` meta package in Ubuntu.
+ {{< note >}}
+OpenJDK will be installed as a dependency when you install the `tomcat6` package. OpenJDK is pulled in by the `default-java` meta package in Ubuntu.
+{{< /note >}}
 
 You may also want to install the `tomcat6-docs`, `tomcat6-examples`, and `tomcat6-admin` tools which provide web-based applications that document, test, and allow you to administer Tomcat. You can install all three with the following command:
 
@@ -59,12 +59,12 @@ Tomcat should now be totally functional, following installation and your next sy
 
 You can test your Tomcat installation by pointing your browser at `http://[yourdomain-or-ip-address]:8080/`. By default, files are located in the `/usr/share/tomcat6` directory. To configure the admin area, you'll need to add the following lines to the end of your `tomcat-users.xml` file, substituting your own username and password. Make sure you keep the "manager" role.
 
-{: .file-excerpt }
-/etc/tomcat6/tomcat-users.xml
-:   ~~~ xml
-    <role rolename="manager"/>
-    <user username="username" password="examplemorris" roles="manager"/>
-    ~~~
+{{< file-excerpt "/etc/tomcat6/tomcat-users.xml" xml >}}
+<role rolename="manager"/>
+<user username="username" password="examplemorris" roles="manager"/>
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to restart the Tomcat server, which will allow this change to take effect:
 

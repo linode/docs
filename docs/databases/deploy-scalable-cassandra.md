@@ -3,10 +3,10 @@ author:
    name: Andrew Lescher
    email: docs@linode.com
 description: 'This guide presents instructions to deploy a scalable and development-driven NoSQL database with Apache Cassandra for both the Ubuntu 17.04 and CentOS 7 distros.'
-keywords: 'cassandra, apache cassandra, centos 7, ubuntu 17.04, database, nosql'
+keywords: ["cassandra", " apache cassandra", " centos 7", " ubuntu 17.04", " database", " nosql"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, June 12th, 2017'
-modified: Saturday, June 24th, 2017
+published: 2017-06-12
+modified: 2017-06-24
 modified_by:
   name: 'Andrew Lescher'
 title: 'How to Install Apache Cassandra on Ubuntu 17.04 and CentOS 7'
@@ -21,9 +21,6 @@ external_resources:
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Deploy a scalable and development driven NoSQL DB with Cassandra](/docs/assets/Cassandra/Apache_Cassandra.png)
 
@@ -44,81 +41,81 @@ After completing this guide, you will have a single-node, production-ready insta
 
 Add required repositories/gpg keys. Be sure to run the key add commands in the order shown.
 
-{: .caution}
->
->  (Ubuntu only) If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.
+{{< caution >}}
+(Ubuntu only) If you receive an error while running `apt update` that pertains to a missing key, copy the key listed in the error message and add it to your keyring using the commands in step 4. As of this publish date, the only keys required are listed below.
+{{< /caution >}}
 
 **Ubuntu 17.04**
 
-1. Add the package `software-properties-common`:
+1.  Add the package `software-properties-common`:
 
-	   apt install software-properties-common
+        apt install software-properties-common
 
-2. Add the Java repository:
+2.  Add the Java repository:
 
-	   add-apt-repository ppa:webupd8team/java
+        add-apt-repository ppa:webupd8team/java
 
-3. Add the apache repository:
+3.  Add the apache repository:
 
-	   echo "deb http://www.apache.org/dist/cassandra/debian 39x main" |  tee /etc/apt/sources.list.d/cassandra.list
+        echo "deb http://www.apache.org/dist/cassandra/debian 39x main" |  tee /etc/apt/sources.list.d/cassandra.list
 
-{: .note}
->
-> You may want to follow the link to the Apache repository to confirm that "39x" is the latest available version.
+    {{< note >}}
+You may want to follow the link to the Apache repository to confirm that "39x" is the latest available version.
+{{< /note >}}
 
-4. Download the two public keys needed to access these repositories:
+4.  Download the two public keys needed to access these repositories:
 
-		      gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
-		      gpg --export --armor 749D6EEC0353B12C | apt-key add -
+        gpg --keyserver pgp.mit.edu --recv-keys 749D6EEC0353B12C
+        gpg --export --armor 749D6EEC0353B12C | apt-key add -
 
-		      gpg --keyserver pgp.mit.edu --recv-keys A278B781FE4B2BDA
-		      gpg --export --armor A278B781FE4B2BDA | apt-key add -
+        gpg --keyserver pgp.mit.edu --recv-keys A278B781FE4B2BDA
+        gpg --export --armor A278B781FE4B2BDA | apt-key add -
 
 **CentOS 7**
 
-1. Install the "yum-utils" package:
+1.  Install the "yum-utils" package:
 
-		      yum install yum-utils -y
+        yum install yum-utils -y
 
-2. Add the Datastax repository:
+2.  Add the Datastax repository:
 
-		      yum-config-manager --add-repo http://rpm.datastax.com/community
+        yum-config-manager --add-repo http://rpm.datastax.com/community
 
-4. Add the public key for the datastax repository. Create a directory for the downloaded key:
+4.  Add the public key for the datastax repository. Create a directory for the downloaded key:
 
-		      mkdir ~/.keys
+        mkdir ~/.keys
 
-5. Navigate to the ".keys" directory you just created and download the public key:
+5.  Navigate to the ".keys" directory you just created and download the public key:
 
-		      wget http://rpm.datastax.com/rpm/repo_key
+        wget http://rpm.datastax.com/rpm/repo_key
 
-6. The key should now be contained in a file called "repo_key". Install the key with the package manager:
+6.  The key should now be contained in a file called "repo_key". Install the key with the package manager:
 
-		      rpm --import repo_key
+        rpm --import repo_key
 
 ## Install Cassandra and Supporting Applications
 
 Update the system and install Java along with Cassandra. Answer "yes" to the Java installation prompts regarding the license terms (Ubuntu only). NTP will help keep the Cassandra node synced to the correct time.
 
-1. Install Cassandra, Java, and NTP:
+1.  Install Cassandra, Java, and NTP:
 
-	**Ubuntu 17.04**
+    **Ubuntu 17.04**
 
-		apt-get update && apt-get upgrade -yuf
-		apt-get install oracle-java8-set-default cassandra ntp -y
+        apt-get update && apt-get upgrade -yuf
+        apt-get install oracle-java8-set-default cassandra ntp -y
 
-	**CentOS 7**
+    **CentOS 7**
 
-		yum update && yum upgrade -y
-		yum install java dsc30 cassandra30-tools ntp -y
+        yum update && yum upgrade -y
+        yum install java dsc30 cassandra30-tools ntp -y
 
 ## Activate Cassandra
 
 1. Enable Cassandra on system boot and verify that it is running:
 
-		systemctl enable cassandra
-        	systemctl start cassandra
-		systemctl -l status cassandra
+        systemctl enable cassandra
+        systemctl start cassandra
+        systemctl -l status cassandra
 
 3. Check the status of the Cassandra cluster:
 
@@ -126,95 +123,91 @@ Update the system and install Java along with Cassandra. Answer "yes" to the Jav
 
 If `UN` is displayed in the output, the cluster is working. Your output should resemble this:
 
-	Status=Up/Down
-	|/ State=Normal/Leaving/Joining/Moving
-	--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
-	UN  127.0.0.1  103.51 KiB  256          100.0%            c43a2db6-8e5f-4b5e-8a83-d9b6764d923d  rack1
+    Status=Up/Down
+    |/ State=Normal/Leaving/Joining/Moving
+    --  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+    UN  127.0.0.1  103.51 KiB  256          100.0%            c43a2db6-8e5f-4b5e-8a83-d9b6764d923d  rack1
 
 
 If you are receiving connection errors, open the `cassandra-env.sh` file in a text editor:
 
-  **Ubuntu 17.04**
+**Ubuntu 17.04**
 
-          vim /etc/cassandra/cassandra-env.sh
+    vim /etc/cassandra/cassandra-env.sh
 
-  **CentOS 7**
+**CentOS 7**
 
-          vim /etc/cassandra/conf/cassandra-env.sh
+    vim /etc/cassandra/conf/cassandra-env.sh
 
 Search for `-Djava.rmi.server.hostname=` in the file. Uncomment this line and add your loopback address or public IP address by replacing `<public name>` at the end of the line:
 
-          JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
+    JVM_OPTS="$JVM_OPTS -Djava.rmi.server.hostname=<public name>"
 
 Restart Cassandra with `systemctl restart Cassandra` and check the node status `nodetool status`.
 
-{: .note}
->
-> It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
-
+{{< note >}}
+It may take a few seconds for Cassandra to refresh the configuration. If you receive another connection error, try waiting 15 seconds before rechecking the node status.
+{{< /note >}}
 
 ### Configure Cassandra
 
 #### Enable Security Features
 
-1. Enable user login authentication. Make a backup of the Cassandra configuration file "cassandra.yaml."
+1.  Enable user login authentication. Make a backup of the Cassandra configuration file "cassandra.yaml."
 
-{: .note}
->
-> The CentOS 7 installation already includes a backup file located at `/etc/cassandra/conf/cassandra.yaml.orig`.
+    {{< note >}}
+The CentOS 7 installation already includes a backup file located at `/etc/cassandra/conf/cassandra.yaml.orig`.
+{{< /note >}}
 
-  **Ubuntu 17.04**
+    **Ubuntu 17.04**
 
-	cp /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.backup
+        cp /etc/cassandra/cassandra.yaml /etc/cassandra/cassandra.yaml.backup
 
-2. Open "cassandra.yaml" in your preferred text editor:
+2.  Open "cassandra.yaml" in your preferred text editor:
 
-		**Ubuntu 17.04**
+    **Ubuntu 17.04**
 
-			    vim /etc/cassandra/cassandra.yaml
+        vim /etc/cassandra/cassandra.yaml
 
-		**CentOS 7**
+    **CentOS 7**
 
-			    vim /etc/cassandra/conf/cassandra.yaml
+        vim /etc/cassandra/conf/cassandra.yaml
 
-3. Match the following variables in the file to the values shown below. If any values are commented out, uncomment them. The rest of the properties found in the cassandra.yaml config file should be set based on your project's particular requirements and how you plan to utilize Cassandra. The default configuration should work well for development.
+3.  Match the following variables in the file to the values shown below. If any values are commented out, uncomment them. The rest of the properties found in the cassandra.yaml config file should be set based on your project's particular requirements and how you plan to utilize Cassandra. The default configuration should work well for development.
 
-More information on this file can be found by following the *Cassandra .yaml Configuration File Overview* link in the "External Resources" section.
+    More information on this file can be found by following the *Cassandra .yaml Configuration File Overview* link in the "External Resources" section.
 
-After editing the file restart Cassandra.
+    After editing the file restart Cassandra.
 
-{: .file}
-Ubuntu /etc/cassandra/cassandra.yaml
-Centos /etc/cassandra/conf/cassandra.yaml
-: ~~~ yaml
-  authenticator: org.apache.cassandra.auth.PasswordAuthenticator
-  authorizer: org.apache.cassandra.auth.CassandraAuthorizer
-  role_manager: CassandraRoleManager
-  roles_validity_in_ms: 0
-  permissions_validity_in_ms: 0
-  ~~~
+    {{< file "Ubuntu /etc/cassandra/cassandra.yaml" yaml >}}
+authenticator: org.apache.cassandra.auth.PasswordAuthenticator
+authorizer: org.apache.cassandra.auth.CassandraAuthorizer
+role_manager: CassandraRoleManager
+roles_validity_in_ms: 0
+permissions_validity_in_ms: 0
+{{< /file >}}
 
 ### Add An Administration Superuser
 
-1. Open the Cassandra command terminal by typing `cqlsh`. Login with the credentials shown below for the default user "Cassandra":
+1.  Open the Cassandra command terminal by typing `cqlsh`. Login with the credentials shown below for the default user "Cassandra":
 
-		cqlsh -u cassandra -p cassandra
+        cqlsh -u cassandra -p cassandra
 
-2. Create a new superuser. Replace the brackets as well as the content inside with the applicable information:
+2.  Create a new superuser. Replace the brackets as well as the content inside with the applicable information:
 
-		cassandra@cqlsh> CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
+        cassandra@cqlsh> CREATE ROLE [new_superuser] WITH PASSWORD = '[secure_password]' AND SUPERUSER = true AND LOGIN = true;
 
-3. Log out by typing exit.
+3.  Log out by typing exit.
 
-4. Log back in with the new superuser account using the new credentials, and remove the elevated permissions from the Cassandra account:
+4.  Log back in with the new superuser account using the new credentials, and remove the elevated permissions from the Cassandra account:
 
-		superuser@cqlsh> ALTER ROLE cassandra WITH PASSWORD = 'cassandra' AND SUPERUSER = false AND LOGIN = false;
+        superuser@cqlsh> ALTER ROLE cassandra WITH PASSWORD = 'cassandra' AND SUPERUSER = false AND LOGIN = false;
 
-	    	superuser@cqlsh> REVOKE ALL PERMISSIONS ON ALL KEYSPACES FROM cassandra;
+        superuser@cqlsh> REVOKE ALL PERMISSIONS ON ALL KEYSPACES FROM cassandra;
 
-5. Grant all permissions to the new superuser account. Replace the brackets and contents inside with your superuser account username:
+5.  Grant all permissions to the new superuser account. Replace the brackets and contents inside with your superuser account username:
 
-		superuser@cqlsh> GRANT ALL PERMISSIONS ON ALL KEYSPACES TO [superuser];
+        superuser@cqlsh> GRANT ALL PERMISSIONS ON ALL KEYSPACES TO [superuser];
 
 ## Edit The Console Configuration File
 
@@ -222,84 +215,84 @@ The *cqlshrc* file holds configuration settings that influence user preferences 
 
 Since your Cassandra username and password can be stored here in plaintext, this should only be accessible to your administrative user account, and is designed to be inaccessible to other accounts on your Linux system. Do not set this up as the root user. Caution: Before proceeding, fully evaluate the security risks and consequences to your node cluster before adding the [Authentication] section.
 
-1. Create the file *cqlshrc* using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
+1.  Create the file *cqlshrc* using your preferred text editor. If the `~/.cassandra` directory does not exist, create it:
 
-		      sudo mkdir ~/.cassandra
-		      sudo vim ~/.cassandra/cqlshrc
+        sudo mkdir ~/.cassandra
+        sudo vim ~/.cassandra/cqlshrc
 
-2. Copy any sections below that you wish to add to your configuration. Details for this file can be found by following the "Cassandra cqlshrc File Configuration Overview" link in the "External Resources" section.
+2.  Copy any sections below that you wish to add to your configuration. Details for this file can be found by following the "Cassandra cqlshrc File Configuration Overview" link in the "External Resources" section.
 
-{: .note}
->
-> CentOS 7 users can find a sample file containing all the configuration options at `/etc/cassandra/conf/cqlshrc.sample`.
+    {{< note >}}
+CentOS 7 users can find a sample file containing all the configuration options at `/etc/cassandra/conf/cqlshrc.sample`.
+{{< /note >}}
 
-{:.file}
-.cassandra/cqlshrc
-: ~~~ conf
+    {{< file ".cassandra/cqlshrc" >}}
+;; Options that are common to both COPY TO and COPY FROM
 
-	;; Options that are common to both COPY TO and COPY FROM
+[copy]
+;; The string placeholder for null values
+nullval=null
+;; For COPY TO, controls whether the first line in the CSV output file will
+;; contain the column names.  For COPY FROM, specifies whether the first
+;; line in the CSV file contains column names.
+header=true
+;; The string literal format for boolean values
+boolstyle = True,False
+;; Input login credentials here to automatically login to the Cassandra command line without entering them each time. When this
+;; is enabled, just type "cqlsh" to start Cassandra.
+[authentication]
+username=[superuser]
+password=[password]
 
-	[copy]
-	;; The string placeholder for null values
-	nullval=null
-	;; For COPY TO, controls whether the first line in the CSV output file will
-	;; contain the column names.  For COPY FROM, specifies whether the first
-	;; line in the CSV file contains column names.
-	header=true
-	;; The string literal format for boolean values
-	boolstyle = True,False
-	;; Input login credentials here to automatically login to the Cassandra command line without entering them each time. When this
-	;; is enabled, just type "cqlsh" to start Cassandra.
-	[authentication]
-	username=[superuser]
-	password=[password]
+;; Uncomment to automatically use a certain keyspace on login
+;; keyspace=[keyspace]
 
-	;; Uncomment to automatically use a certain keyspace on login
-	;; keyspace=[keyspace]
+[ui]
+color=on
+datetimeformat=%Y-%m-%d %H:%M:%S%z
+completekey=tab
+;; The number of digits displayed after the decimal point
+;; (note that increasing this to large numbers can result in unusual values)
+float_precision = 5
+;; The encoding used for characters
+encoding = utf8
 
-	[ui]
-	color=on
-	datetimeformat=%Y-%m-%d %H:%M:%S%z
-	completekey=tab
-	;; The number of digits displayed after the decimal point
-	;; (note that increasing this to large numbers can result in unusual values)
-	float_precision = 5
-	;; The encoding used for characters
-	encoding = utf8
-~~~
+{{< /file >}}
 
-3. Save and close the file. Update the file and directory with the following permissions:
 
-	    	sudo chmod 1700 ~/.cassandra/cqlshrc
-        	sudo chmod 700 ~/.cassandra
+3.  Save and close the file. Update the file and directory with the following permissions:
 
-5. If you enabled the auto-login feature, login by typing `cqlsh`. The command terminal should open, and your superuser name should be visible in the command line.
+        sudo chmod 1700 ~/.cassandra/cqlshrc
+        sudo chmod 700 ~/.cassandra
+
+5.  If you enabled the auto-login feature, login by typing `cqlsh`. The command terminal should open, and your superuser name should be visible in the command line.
 
 ## Rename the Cluster
 
 Update your default cluster name from "Test Cluster" to your desired name.
 
-1. Login to the control terminal with cqlsh. Replace [new_name] with your new cluster name:
+1.  Login to the control terminal with cqlsh. Replace [new_name] with your new cluster name:
 
-		UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
+        UPDATE system.local SET cluster_name = '[new_name]' WHERE KEY = 'local';
 
-2. Edit the cassandra.yaml file and replace the value in the cluster_name variable with the new cluster name you just set.
+2.  Edit the cassandra.yaml file and replace the value in the cluster_name variable with the new cluster name you just set.
 
-3. Save and close.
+3.  Save and close.
 
-  **Ubuntu 17.04**
+    **Ubuntu 17.04**
 
-	vim /etc/cassandra/cassandra.yaml
+        vim /etc/cassandra/cassandra.yaml
 
 
-  **CentOS 7**
+    **CentOS 7**
 
-	vim /etc/cassandra/conf/cassandra.yaml
+        vim /etc/cassandra/conf/cassandra.yaml
 
-3. From the Linux terminal (not cqlsh), run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
+4.  From the Linux terminal (not cqlsh), run `nodetool flush system`. This will clear the system cache and preserve all data in the node.
 
-4. Restart Cassandra. Log in with cqlsh and verify the new cluster name is visible.
+5.  Restart Cassandra. Log in with cqlsh and verify the new cluster name is visible.
 
 ### Where To Go From Here
 
 Be sure to check out the links in the "External Resources" section, which will help you further configure Cassandra to your needs, as well as provide resources to improve your understanding and ability to use Cassandra. To fully utilize the capabilities of Cassandra in a production setting, additional nodes should be added to your cluster. See the companion guide, "Deploy Additional Nodes To The Cassandra Cluster" to get started.
+

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configuring Exim to serve as a lightweight, send-only SMTP server on Ubuntu 10.04 LTS (Lucid).'
-keywords: 'exim,exim ubuntu 10.04,send email ubuntu,mail server,linux mail,smtp server,ubuntu exim'
+keywords: ["exim", "exim ubuntu 10.04", "send email ubuntu", "mail server", "linux mail", "smtp server", "ubuntu exim"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/exim/send-only-mta-ubuntu-10-04-lucid/']
-modified: Thursday, September 26th, 2013
+aliases: ['email/exim/send-only-mta-ubuntu-10-04-lucid/']
+modified: 2013-09-26
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: 'Send-only Mail Server with Exim on Ubuntu 10.04 LTS (Lucid)'
 ---
 
@@ -20,40 +20,38 @@ Many Linux server applications need to send email; cron jobs use mail services t
 
 You'll gain the ability to send mail from `localhost` through either a traditional "sendmail" style interface, or via port 25 locally. As this guide is not intended to provide a full send/receive mail solution, please refer to our other [email guides](/docs/email/) for ways to implement such configurations.
 
-We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). Make sure you're logged into your Linode as "root" via SSH before proceeding.
+We assume that you've already followed the steps outlined in our [getting started](/docs/getting-started/) guide. If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). Make sure you're logged into your Linode as "root" via SSH before proceeding.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
     hostname
     hostname -f
 
-Install Required Packages
--------------------------
+# Install Required Packages
 
 Make sure you have the "universe" repositories enabled. Your `/etc/apt/sources.list` file should resemble this:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid main restricted
 
-    deb http://security.ubuntu.com/ubuntu lucid-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb http://security.ubuntu.com/ubuntu lucid-security main restricted
+deb-src http://security.ubuntu.com/ubuntu lucid-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
-    deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid universe
+deb http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ lucid-updates universe
 
-    deb http://security.ubuntu.com/ubuntu lucid-security universe
-    deb-src http://security.ubuntu.com/ubuntu lucid-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu lucid-security universe
+deb-src http://security.ubuntu.com/ubuntu lucid-security universe
+
+{{< /file >}}
+
 
 Issue the following commands to update your package repositories, upgrade your system, and install Exim:
 
@@ -61,8 +59,7 @@ Issue the following commands to update your package repositories, upgrade your s
     apt-get upgrade
     apt-get install exim4-daemon-light mailutils
 
-Configure Exim for Local Mail Service
--------------------------------------
+# Configure Exim for Local Mail Service
 
 Issue the following command to start Exim configuration:
 
@@ -100,8 +97,7 @@ Accept the default "non-split" option for your mail configuration file. Enter at
 
 [![Exim4 postmaster recipient configuration on Ubuntu 10.04 LTS (Lucid).](/docs/assets/142-10-exim4-ubuntu-10-04-postmater-mail.png)](/docs/assets/142-10-exim4-ubuntu-10-04-postmater-mail.png)
 
-Test Your Mail Configuration
-----------------------------
+# Test Your Mail Configuration
 
 Issue the following command to send a test email, substituting an external email address for `someone@somedomain.com`.
 
@@ -109,8 +105,7 @@ Issue the following command to send a test email, substituting an external email
 
 Congratulations! You've configured Exim to send email from your Linode.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

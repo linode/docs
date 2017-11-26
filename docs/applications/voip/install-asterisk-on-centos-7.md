@@ -3,10 +3,10 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'Installing Asterisk 13 on CentOS 7'
-keywords: 'asterisk 13,centos 7,centos,open source,private branch exchange,pbx,asterisk pbx,sip,session initiation protocol,sip protocol,IP PBX systems,VoIP gateways'
+keywords: ["asterisk 13", "centos 7", "centos", "open source", "private branch exchange", "pbx", "asterisk pbx", "sip", "session initiation protocol", "sip protocol", "IP PBX systems", "VoIP gateways"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, September 30th, 2015'
-modified: Wednesday, September 30th, 2015
+published: 2015-09-30
+modified: 2015-09-30
 modified_by:
     name: Linode
 title: 'How to Install Asterisk on CentOS 7'
@@ -14,9 +14,6 @@ contributor:
     name: Nick Rahl
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 ![How to Install Asterisk on CentOS 7](/docs/assets/how-to-install-asterisk-on-centos-7.jpg "How to Install Asterisk on CentOS 7")
 
@@ -26,10 +23,9 @@ Asterisk is an open source *private branch exchange* (PBX) server that uses *Ses
 
 This guide covers the steps necessary to provision a new CentOS 7 Linode as a dedicated Asterisk server for your home or office.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -39,11 +35,10 @@ This guide covers the steps necessary to provision a new CentOS 7 Linode as a de
 
 3.  Edit `/etc/selinux/config` to ensure SELinux is disabled:
 
-    {: .file-excerpt}
-    /etc/selinux/config
-    :   ~~~ config
-        SELINUX=disabled
-        ~~~
+    {{< file-excerpt "/etc/selinux/config" >}}
+SELINUX=disabled
+{{< /file-excerpt >}}
+
 
 4.  Update your packages:
 
@@ -76,64 +71,64 @@ iptables will be used to secure the Linode against unwanted traffic. The Linode 
 
 2.  Create `/etc/iptables.firewall.rules` using your preferred text editor. This file will be used to activate the firewall with the desired rules every time the Linode boots.
 
-    {:.file }
-    /etc/iptables.firewall.rules
-    :   ~~~ conf
-        *filter
+    {{< file "/etc/iptables.firewall.rules" >}}
+*filter
 
-        #  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
-        -A INPUT -i lo -j ACCEPT
-        -A INPUT -d 127.0.0.0/8 -j REJECT
+#  Allow all loopback (lo0) traffic and drop all traffic to 127/8 that doesn't use lo0
+-A INPUT -i lo -j ACCEPT
+-A INPUT -d 127.0.0.0/8 -j REJECT
 
-        #  Accept all established inbound connections
-        -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+#  Accept all established inbound connections
+-A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
 
-        #  Allow all outbound traffic - you can modify this to only allow certain traffic
-        -A OUTPUT -j ACCEPT
+#  Allow all outbound traffic - you can modify this to only allow certain traffic
+-A OUTPUT -j ACCEPT
 
-        #  Allow SSH connections
-        #
-        #  The -dport number should be the same port number you set in sshd_config, ie 8050
-        #
-        -A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
+#  Allow SSH connections
+#
+#  The -dport number should be the same port number you set in sshd_config, ie 8050
+#
+-A INPUT -p tcp -m state --state NEW --dport 22 -j ACCEPT
 
-        # SIP on UDP port 5060, 5061 for secure signaling. Used for signals such as "hang up"
-        -A INPUT -p udp -m udp --dport 5060 -j ACCEPT
-        -A INPUT -p udp -m udp --dport 5061 -j ACCEPT
+# SIP on UDP port 5060, 5061 for secure signaling. Used for signals such as "hang up"
+-A INPUT -p udp -m udp --dport 5060 -j ACCEPT
+-A INPUT -p udp -m udp --dport 5061 -j ACCEPT
 
-        # IAX2- the IAX protocol - comment out if you don't plan to use IAX
-        # -A INPUT -p udp -m udp --dport 4569 -j ACCEPT
+# IAX2- the IAX protocol - comment out if you don't plan to use IAX
+# -A INPUT -p udp -m udp --dport 4569 -j ACCEPT
 
-        # IAX - old IAX protocol, uncomment if needed for legacy systems.
-        # -A INPUT -p udp -m udp --dport 5036 -j ACCEPT
+# IAX - old IAX protocol, uncomment if needed for legacy systems.
+# -A INPUT -p udp -m udp --dport 5036 -j ACCEPT
 
-        # RTP - the media stream - you can change this in /etc/asterisk/rtp.conf
-        -A INPUT -p udp -m udp --dport 10000:20000 -j ACCEPT
+# RTP - the media stream - you can change this in /etc/asterisk/rtp.conf
+-A INPUT -p udp -m udp --dport 10000:20000 -j ACCEPT
 
-        # MGCP - if you use media gateway control protocol in your configuration
-        -A INPUT -p udp -m udp --dport 2727 -j ACCEPT
+# MGCP - if you use media gateway control protocol in your configuration
+-A INPUT -p udp -m udp --dport 2727 -j ACCEPT
 
 
-        # Uncomment these lines if you plan to use FreePBX to manage Asterisk
-        # -A INPUT -p tcp --dport 80 -j ACCEPT
-        # -A INPUT -p tcp --dport 443 -j ACCEPT
+# Uncomment these lines if you plan to use FreePBX to manage Asterisk
+# -A INPUT -p tcp --dport 80 -j ACCEPT
+# -A INPUT -p tcp --dport 443 -j ACCEPT
 
-        #  Allow ping
-        -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+#  Allow ping
+-A INPUT -p icmp --icmp-type echo-request -j ACCEPT
 
-        #  Log iptables denied calls
-        -A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
+#  Log iptables denied calls
+-A INPUT -m limit --limit 5/min -j LOG --log-prefix "iptables denied: " --log-level 7
 
-        #  Drop all other inbound - default deny unless explicitly allowed policy
-        -A INPUT -j DROP
-        -A FORWARD -j DROP
+#  Drop all other inbound - default deny unless explicitly allowed policy
+-A INPUT -j DROP
+-A FORWARD -j DROP
 
-        COMMIT
-        ~~~
+COMMIT
 
-    {:.note}
-    >
-    >Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+{{< /file >}}
+
+
+    {{< note >}}
+Leave IAX commented out unless you know you need it. IAX is "Inter-Asterisk Exchange" and was meant to allow multiple Asterisk servers to communicate with one another. Some VOIP trunking providers use this, but most use SIP. Unless your VOIP provider requires it or you are running multiple Asterisk servers, you probably won't need IAX or IAX2.
+{{< /note >}}
 
 ### Start Firewall at Boot
 
@@ -279,10 +274,9 @@ Since DAHDI is a kernel module it needs kernel headers in order to compile. The 
 
 Follow the instructions at [Run a Distribution-Supplied Kernel on a XEN Linode](/docs/tools-reference/custom-kernels-distros/run-a-distributionsupplied-kernel-with-pvgrub) or [Run a Distribution-Supplied Kernel on a KVM Linode](/docs/tools-reference/custom-kernels-distros/run-a-distribution-supplied-kernel-with-kvm) before continuing with the next steps.
 
-{: .caution}
->
->You should not attempt to replace the Kernel on a system that is currently in production.
-
+{{< caution >}}
+You should not attempt to replace the Kernel on a system that is currently in production.
+{{< /caution >}}
 
 #### Build DAHDI
 
@@ -305,9 +299,9 @@ With the new Kernel in place, you're now ready to build DAHDI.
         cd dahdi-linux-complete-2.10.2+2.10.2/
 
 
-    {: .note}
-    >
-    >Your version may be different, so substitute `2.10.2` with the version that was extracted.
+    {{< note >}}
+Your version may be different, so substitute `2.10.2` with the version that was extracted.
+{{< /note >}}
 
 5.  Build DAHDI:
 
@@ -416,11 +410,11 @@ Congratulations! You now have a working Asterisk phone server. Let's fire up Ast
 
     Once disconnected, Asterisk continues to run in the background.
 
-##Next Steps
+## Next Steps
 
 Now that you have an Asterisk server running on your Linode, it's time to connect some phones, add extensions, and configure the various options that are available with Asterisk. For detailed instructions, check out
 the Asterisk Project's guide to [Configuring Asterisk](https://wiki.asterisk.org/wiki/display/AST/Basic+PBX+Functionality).
 
-{: .caution}
->
-> When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
+{{< caution >}}
+When running a phone system on a remote server such as a Linode, it's always good practice to secure the signaling data with TLS and the audio portion of calls using SRTP to prevent eavesdropping. Once you have a working dial-plan, be sure to follow the [Secure Calling Guide](https://wiki.asterisk.org/wiki/display/AST/Secure+Calling) to encrypt your communications.
+{{< /caution >}}

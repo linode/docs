@@ -3,11 +3,11 @@ author:
     name: Linode Community
     email: docs@linode.com
 description: 'An introduction to configuration management with the Ansible IT automation platform including installation, configuration and playbook set up.'
-keywords: 'ansible,ansible configuration,ansible provisioning,ansible infrastructure,ansible automation,ansible configuration,ansible configuration change management,ansible server automation'
+keywords: ["ansible", "ansible configuration", "ansible provisioning", "ansible infrastructure", "ansible automation", "ansible configuration", "ansible configuration change management", "ansible server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/ansible/getting-started-with-ansible/','applications/configuration-management/getting-started-with-ansible/']
-published: 'Monday, September 8, 2015'
-modified: Monday, September 8, 2015
+aliases: ['applications/ansible/getting-started-with-ansible/','applications/configuration-management/getting-started-with-ansible/']
+published: 2015-09-08
+modified: 2015-09-08
 modified_by:
     name: Linode
 title: 'Learn How to Install Ansible and Run Playbooks'
@@ -30,10 +30,9 @@ Consider the monotony of administering a server fleet; keeping them all updated,
 
 This guide will introduce you to the basics of Ansible. By the end of this guide, you'll have the tools needed to turn a brand new Linode into a simple web server (Apache, MySQL, PHP), easily replicable and adjustable.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide. Some systems may require you to run Ansible commands as root. If so, prefix the `ansible` commands in this guide with `sudo`.
+{{< /note >}}
 
 ## Installing Ansible
 
@@ -50,9 +49,9 @@ Make sure that you have Python 2.x available on the control machine. Ansible is 
 
       sudo yum install ansible
 
-  {: .note}
-  >
-  >The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
+  {{< note >}}
+The EPEL-Release repository may need to be added on certain versions of CentOS, RHEL, and Scientific Linux.
+{{< /note >}}
 
 - Ubuntu:
 
@@ -72,15 +71,17 @@ We'll get to groups in just a moment, but for now, let's try to make a simple co
 
 By default Ansible will use the same username as your current machine's username. If this will not match up, pass the proper username in using the `-u username` argument.
 
-{: .note}
-> If you don't want to use SSH keys, you can add the `--ask-pass` switch.
+{{< note >}}
+If you don't want to use SSH keys, you can add the `--ask-pass` switch.
+{{< /note >}}
 
 To try an Ansible command without any additional setup, we'll add a few extra arguments for now. Format a test command like the following:
 
     ansible all -i myserver.com, -m ping
 
-{: .note}
-> The extra directives are the `all -i` and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we'll learn about later.
+{{< note >}}
+The extra directives are the `all -i` and the comma after your server name. This is temporary, and is only there to tell Ansible to try connecting directly to the server without an inventory file, which we'll learn about later.
+{{< /note >}}
 
 If you are successful you should see output similar to the following:
 
@@ -99,34 +100,35 @@ You executed an Ansible command against one client, but it would be cumbersome t
 1.  By default, the inventory file is expected to be `/etc/ansible/hosts`. Create that path and file if it does not already exist.
 
 
-    {: .note }
-    > If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:
-    >
-    >     mkdir ~/Path/To/ansible
-    >     touch ~/Path/To/ansible/hosts
-    >     touch ~/.ansible.cfg
-    >
-    >Open `~/.ansible.cfg` file and add the following lines:
-    >
-    > {: .file-excerpt}
-    > ~/.ansible.cfg
-    > :   ~~~ ini
-    >     [defaults]
-    >     inventory = ~/Path/To/ansible/hosts
-    >     ~~~
+    {{< note >}}
+If you are running OS X, you may want to create your own Ansible directory elsewhere and then set the path in an Ansible configuration file:
+
+mkdir ~/Path/To/ansible
+touch ~/Path/To/ansible/hosts
+touch ~/.ansible.cfg
+
+Open `~/.ansible.cfg` file and add the following lines:
+
+{{< file-excerpt "> ~/.ansible.cfg" ini >}}
+[defaults]
+inventory = ~/Path/To/ansible/hosts
+{{< /note >}}
+
+{{< /file-excerpt >}}
+
 
 2.  Add an entry to your hosts file, pointing to a server that you connected to in the previous section.  You can include multiple servers in this file, using either domains or IP addresses, and can even group them:
 
-    {: .file-excerpt}
-    ~/Path/To/ansible/hosts
-    :   ~~~ ini
-        mainserver.com
-        myserver.net:2222
+    {{< file-excerpt "~/Path/To/ansible/hosts" ini >}}
+mainserver.com
+myserver.net:2222
 
-        [mailservers]
-        mail1.mainserver.com
-        mail2.mainserver.com
-        ~~~
+[mailservers]
+mail1.mainserver.com
+mail2.mainserver.com
+
+{{< /file-excerpt >}}
+
 
 3.  Use the `all` directive to ping all servers in your `hosts` file via Ansible:
 
@@ -145,43 +147,43 @@ You can write playbooks to perform initial server configurations, add users and 
 
 A playbook is a YAML file, and typically follows this structure:
 
-{: .file-excerpt}
-Sample Playbook YAML file
-:   ~~~ yaml
-    ---
-    - hosts: [target hosts]
-      remote_user: [yourname]
-      tasks:
-        - [task 1]
-        - [task 2]
-    ~~~
+{{< file-excerpt "Sample Playbook YAML file" yaml >}}
+---
+- hosts: [target hosts]
+  remote_user: [yourname]
+  tasks:
+    - [task 1]
+    - [task 2]
+
+{{< /file-excerpt >}}
+
 
 For example, the following playbook would log in to all servers in the `marketingservers` group and ensure Apache was started.
 
-{: .file-excerpt}
-Sample service check playbook
-:   ~~~ yaml
-    ---
-    - hosts: [marketingservers]
-      remote_user: webadmin
-      tasks:
-        - name: Ensure the Apache daemon has started
-          service: name=httpd state=started
-          become: yes
-          become_method: sudo
-    ~~~
+{{< file-excerpt "Sample service check playbook" yaml >}}
+---
+- hosts: [marketingservers]
+  remote_user: webadmin
+  tasks:
+    - name: Ensure the Apache daemon has started
+      service: name=httpd state=started
+      become: yes
+      become_method: sudo
+
+{{< /file-excerpt >}}
+
 
 In the playbook above is an example of a task:
 
-{: .file-excerpt}
-Playbook task
-:   ~~~ yaml
-      tasks:
-        - name: Ensure the Apache daemon has started
-          service: name=httpd state=started
-          become: yes
-          become_method: sudo
-    ~~~
+{{< file-excerpt "Playbook task" yaml >}}
+tasks:
+  - name: Ensure the Apache daemon has started
+    service: name=httpd state=started
+    become: yes
+    become_method: sudo
+
+{{< /file-excerpt >}}
+
 
 Every task should have a name, which is logged and can help you track progress. Following the name line is the module that will be run (in this case, the [service module](http://docs.ansible.com/ansible/service_module.html)), and the other attributes provide more options, in this case instructing Ansible to use `sudo` privileges (which we will configure later).
 
@@ -222,8 +224,9 @@ A few common core modules you might be interested in learning first include:
 
 As an example, we'll use Ansible to turn a freshly created Linode server into a web server, configured with Apache, MySQL, and PHP, ready to serve up dynamic sites and configured with the proper users and permissions. For brevity we won't handle all of the features and configuration that might normally be involved, but will cover enough to get you started.
 
-  {: .caution}
-  > The following playbooks are for learning purposes only, and will NOT result in a hardened or secure server. Use them to learn from, but do not use them for production instances!
+  {{< caution >}}
+The following playbooks are for learning purposes only, and will NOT result in a hardened or secure server. Use them to learn from, but do not use them for production instances!
+{{< /caution >}}
 
 ### Prerequisites
 
@@ -243,38 +246,38 @@ As an example, we'll use Ansible to turn a freshly created Linode server into a 
 
 2.  Add your new server's IP address to your Ansible `hosts` file so that we can address it. Remove any previous entries you may have added in the test sections above. Give the new server a group name to make it easier to refer to later. In our example the group name is `linode`.
 
-    {: .file}
-    /etc/ansible/hosts
-    :   ~~~ ini
-        [linode]
-        123.123.123.123
-        ~~~
+    {{< file "/etc/ansible/hosts" ini >}}
+[linode]
+123.123.123.123
+
+{{< /file >}}
+
 
 3.  Write a playbook that creates a new normal user, adds in our public key, and adds the new user to the `sudoers` file.
 
     We're introducing a new aspect of Ansible here: *variables*. Note the `vars:` entry and the `NORMAL_USER_NAME` line. You'll notice that it is reused twice in the file so that we only have to change it once. Replace `yourusername` with your choosen username, `localusername` in the path for the `authorized_key`, and the password hash.
 
-    {: .file}
-    initialize_basic_user.yml
-    :   ~~~ yaml
-        ---
-        - hosts: linode
-          remote_user: root
-          vars:
-            NORMAL_USER_NAME: 'yourusername'
-          tasks:
-            - name: "Create a secondary, non-root user"
-              user: name={{ NORMAL_USER_NAME }}
-                    password='$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0'
-                    shell=/bin/bash
-            - name: Add remote authorized key to allow future passwordless logins
-              authorized_key: user={{ NORMAL_USER_NAME }} key="{{ lookup('file', '/Users/localusername/.ssh/id_rsa.pub') }}"
-            - name: Add normal user to sudoers
-              lineinfile: dest=/etc/sudoers
-                          regexp="{{ NORMAL_USER_NAME }} ALL"
-                          line="{{ NORMAL_USER_NAME }} ALL=(ALL) ALL"
-                          state=present
-        ~~~
+    {{< file "initialize_basic_user.yml" yaml >}}
+---
+- hosts: linode
+  remote_user: root
+  vars:
+    NORMAL_USER_NAME: 'yourusername'
+  tasks:
+    - name: "Create a secondary, non-root user"
+      user: name={{ NORMAL_USER_NAME }}
+            password='$6$rounds=656000$W.dSlhtSxE2HdSc1$4WbCFM6zQV1hTQYTCqmcddnKrSXIZ9LfWRAjJBervBFG.rH953lTa7rMeZNrN65zPzEONntMtYt9Bw74PvAei0'
+            shell=/bin/bash
+    - name: Add remote authorized key to allow future passwordless logins
+      authorized_key: user={{ NORMAL_USER_NAME }} key="{{ lookup('file', '/Users/localusername/.ssh/id_rsa.pub') }}"
+    - name: Add normal user to sudoers
+      lineinfile: dest=/etc/sudoers
+                  regexp="{{ NORMAL_USER_NAME }} ALL"
+                  line="{{ NORMAL_USER_NAME }} ALL=(ALL) ALL"
+                  state=present
+
+{{< /file >}}
+
 
 4.  Save the playbook file as `initialize_basic_user.yml` and run the playbook with the following command. Note how we specify the use of a particular user (`-u root`) and force Ansible to prompt us for the password (`-ask-pass`) since we don't have key authentication set up yet:
 
@@ -286,32 +289,32 @@ You should see output from Ansible that reports that the three tasks all complet
 
 Let's take care of some common server setup tasks, such as setting the timezone, updating the hosts file, and updating packages. Here's a playbook covering those steps:
 
-{: .file}
-common_server_setup.yml
-:   ~~~ yaml
-    ---
-    - hosts: linode
-      remote_user: yourusername
-      become: yes
-      become_method: sudo
-      vars:
-        LOCAL_HOSTNAME: 'web01'
-        LOCAL_FQDN_NAME: 'www.example.com'
-      tasks:
-        - name: Set the timezone for the server to be UTC
-          command: ln -sf /usr/share/zoneinfo/UTC /etc/localtime
-        - name: Set up a unique hostname
-          hostname: name={{ LOCAL_HOSTNAME }}
-        - name: Add the server's domain to the hosts file
-          lineinfile: dest=/etc/hosts
-                      regexp='.*{{ item }}$'
-                      line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}"
-                      state=present
-          when: hostvars[item].ansible_default_ipv4.address is defined
-          with_items: "{{ groups['linode'] }}"
-        - name: Update packages
-          apt: update_cache=yes upgrade=dist
-    ~~~
+{{< file "common_server_setup.yml" yaml >}}
+---
+- hosts: linode
+  remote_user: yourusername
+  become: yes
+  become_method: sudo
+  vars:
+    LOCAL_HOSTNAME: 'web01'
+    LOCAL_FQDN_NAME: 'www.example.com'
+  tasks:
+    - name: Set the timezone for the server to be UTC
+      command: ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+    - name: Set up a unique hostname
+      hostname: name={{ LOCAL_HOSTNAME }}
+    - name: Add the server's domain to the hosts file
+      lineinfile: dest=/etc/hosts
+                  regexp='.*{{ item }}$'
+                  line="{{ hostvars[item].ansible_default_ipv4.address }} {{ LOCAL_FQDN_NAME }} {{ LOCAL_HOSTNAME }}"
+                  state=present
+      when: hostvars[item].ansible_default_ipv4.address is defined
+      with_items: "{{ groups['linode'] }}"
+    - name: Update packages
+      apt: update_cache=yes upgrade=dist
+
+{{< /file >}}
+
 
 Run this playbook:
 
@@ -325,40 +328,40 @@ Finally, let's get a very basic server set up with Apache and PHP, and a test My
 
 1.  The following playbook downloads the appropriate packages, turns on the Apache and MySQL services, and creates a basic database and user.
 
-    {: .file}
-    setup_webserver.yml
-    :   ~~~ yaml
-        ---
-        - hosts: linode
-          remote_user: yourusername
-          become: yes
-          become_method: sudo
-          tasks:
-            - name: "Install Apache, MySQL, and PHP5"
-              apt: name={{ item }} state=present
-              with_items:
-                - apache2
-                - mysql-server
-                - python-mysqldb
-                - php5
-                - php-pear
-                - php5-mysql
+    {{< file "setup_webserver.yml" yaml >}}
+---
+- hosts: linode
+  remote_user: yourusername
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: "Install Apache, MySQL, and PHP5"
+      apt: name={{ item }} state=present
+      with_items:
+        - apache2
+        - mysql-server
+        - python-mysqldb
+        - php5
+        - php-pear
+        - php5-mysql
 
-            - name: "Turn on Apache and MySQL and set them to run on boot"
-              service: name={{ item }} state=started enabled=yes
-              with_items:
-                - apache2
-                - mysql
+    - name: "Turn on Apache and MySQL and set them to run on boot"
+      service: name={{ item }} state=started enabled=yes
+      with_items:
+        - apache2
+        - mysql
 
-            - name: Create a test database
-              mysql_db: name=testDb
-                        state=present
+    - name: Create a test database
+      mysql_db: name=testDb
+                state=present
 
-            - name: Create a new user for connections
-              mysql_user: name=webapp
-                          password=mypassword
-                          priv=*.*:ALL state=present
-        ~~~
+    - name: Create a new user for connections
+      mysql_user: name=webapp
+                  password=mypassword
+                  priv=*.*:ALL state=present
+
+{{< /file >}}
+
 
 2.  Run the playbook from your control machine with the following command:
 

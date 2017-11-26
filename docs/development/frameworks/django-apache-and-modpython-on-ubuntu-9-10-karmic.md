@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the Django web application development framework for Apache on Ubuntu 9.10 (Karmic).'
-keywords: 'django,python,apache,mod\_python,ubuntu,ubuntu 9.10,karmic'
+keywords: ["django", "python", "apache", "mod\\_python", "ubuntu", "ubuntu 9.10", "karmic"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
-modified: Tuesday, May 17th, 2011
+aliases: ['frameworks/django-apache-mod-python/ubuntu-9-10-karmic/','websites/frameworks/django-apache-and-modwsgi-on-ubuntu-9-10-karmic/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Friday, February 5th, 2010'
+published: 2010-02-05
 title: 'Django, Apache and mod_python on Ubuntu 9.10 (Karmic)'
 ---
 
@@ -22,30 +22,29 @@ This guide provides an introduction to getting started with the Django framework
 
 We assume that you've completed the [getting started guide](/docs/getting-started/) and have a running and up to date Ubuntu 9.10 (Karmic) system. Furthermore, you will want to have a running [Apache web server](/docs/web-servers/apache/installation/ubuntu-9-10-karmic) and a functional [MySQL database](/docs/databases/mysql/ubuntu-9-10-karmic) installed.
 
-Enabling the "Universe" Repository
-----------------------------------
+# Enabling the "Universe" Repository
 
 The package that contains the Django application is contained in the "universe" repository for Ubuntu Karmic. Edit your `/etc/apt/sources.list` file to enable the "universe" repositories by removing the hash symbol in front of the universe lines. The file should resemble the following example:
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+{{< file "/etc/apt/sources.list" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic main restricted
 
-    deb http://security.ubuntu.com/ubuntu karmic-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb http://security.ubuntu.com/ubuntu karmic-security main restricted
+deb-src http://security.ubuntu.com/ubuntu karmic-security main restricted
 
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
-    deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic universe
+deb http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ karmic-updates universe
 
-    deb http://security.ubuntu.com/ubuntu karmic-security universe
-    deb-src http://security.ubuntu.com/ubuntu karmic-security universe
-    ~~~
+deb http://security.ubuntu.com/ubuntu karmic-security universe
+deb-src http://security.ubuntu.com/ubuntu karmic-security universe
+
+{{< /file >}}
+
 
 When you have saved this file, issue the following command to refresh your system's package database:
 
@@ -54,8 +53,7 @@ When you have saved this file, issue the following command to refresh your syste
 
 With these prerequisites out of the way, we can begin installing tools for running Django applications on our server.
 
-Installing Python Dependencies
-------------------------------
+# Installing Python Dependencies
 
 There are a number of packages that we need to install before we can deploy a Django application. The following command will download and install all of these dependencies:
 
@@ -72,104 +70,100 @@ You may also want to install the following libraries and tools with apt:
 
 Any of these tools can be installed with `apt-get install` followed by the package or packages listed above. There are many additional Python-related packages in the operating system repositories. You can search the package database using the `apt-cache search python` command. If you need more information about a package, use the `apt-cache show [package-name]` command.
 
-Configuring Apache
-------------------
+# Configuring Apache
 
 With all of the dependencies installed, we must configure Apache for virtual hosting. You will want to insert a `Location` block inside of the virtual hosting block for the domain where you want the Django application to run. The location block looks like this:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/">
+    SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+    SetEnv DJANGO_SETTINGS_MODULE mysite.settings
+    PythonDebug Off
+</Location>
+
+{{< /file-excerpt >}}
+
+
+You may need to change the `mysite.settings` to correspond to the settings file for your application in the Python path. The Python path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, we'll need to specify a `PythonPath` variable in the `Location` block above by adding the following line:
+
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+PythonPath "['/srv/www/brackley.net/application'] + sys.path"
+
+{{< /file-excerpt >}}
+
+
+This line will allow mod\_python to look for your settings file in the `/srv/www/brackley.net/application` directory, for an application in the "brackley.net" virtual host entry.
+
+The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `example.com` domain, then all requests for the URL `http://example.com/` would be directed to the Django application. Consider the following complete virtual host configuration:
+
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<VirtualHost 12.34.56.78:80>
+    ServerName example.com
+    ServerAdmin webmaster@example.com
+    DocumentRoot /srv/www/example.com/public_html
+
+    PythonPath "['/srv/www/example.com/application'] + sys.path"
     <Location "/">
         SetHandler python-program
         PythonHandler django.core.handlers.modpython
         SetEnv DJANGO_SETTINGS_MODULE mysite.settings
         PythonDebug Off
     </Location>
-    ~~~
 
-You may need to change the `mysite.settings` to correspond to the settings file for your application in the Python path. The Python path is specific to the instance and version of Python that you're using and can be modified in your Python settings. If you want to store your Django application in another location, we'll need to specify a `PythonPath` variable in the `Location` block above by adding the following line:
+    ErrorLog /srv/logs/error.log
+    CustomLog /srv/logs/access.log combined
+</VirtualHost>
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    PythonPath "['/srv/www/brackley.net/application'] + sys.path"
-    ~~~
+{{< /file-excerpt >}}
 
-This line will allow mod\_python to look for your settings file in the `/srv/www/brackley.net/application` directory, for an application in the "brackley.net" virtual host entry.
-
-The `Location` block tells Apache what to do when a request comes in for a given URL location. For instance, if the above block is located in the `VirtualHost` entry for the `example.com` domain, then all requests for the URL `http://example.com/` would be directed to the Django application. Consider the following complete virtual host configuration:
-
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-        ServerName example.com
-        ServerAdmin webmaster@example.com
-        DocumentRoot /srv/www/example.com/public_html
-
-        PythonPath "['/srv/www/example.com/application'] + sys.path"
-        <Location "/">
-            SetHandler python-program
-            PythonHandler django.core.handlers.modpython
-            SetEnv DJANGO_SETTINGS_MODULE mysite.settings
-            PythonDebug Off
-        </Location>
-
-        ErrorLog /srv/logs/error.log
-        CustomLog /srv/logs/access.log combined
-    </VirtualHost>
-    ~~~
 
 Given this configuration the `DocumentRoot` is optional, but we recommend that you keep this directive in your configuration.
 
-Hosting Static Content
-----------------------
+# Hosting Static Content
 
 If you wanted to have a static page located at the root of the domain and only use Django to power a blog at the URL `http://example.com/blog/`, the above block would begin with `<Location "/blog">`. In this situation, you would need to set up a DocumentRoot to contain the files for the static portion of the site.
 
 Typically, Django applications use a secondary "media" web server to more efficiently serve static content like images, video, audio, and even static text resources. This permits more effective scaling possibilities. If you need to turn off Django and `mod_python` for a particular URL, add a second location block, like so:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <Location "/files/">
-        SetHandler None
-    </Location>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/files/">
+    SetHandler None
+</Location>
+
+{{< /file-excerpt >}}
+
 
 In the above example, this would allow any static content requested with the URL `http://example.com/files/` to be served without Django interference. An alternate, and potentially easier solution, would use a second VirtualHost for all non-Python content.
 
-Hosting Multiple Django Applications
-------------------------------------
+# Hosting Multiple Django Applications
 
 The easiest way to host multiple Django applications with one instance of Apache is to place each application in its own virtual host. If, however, you need to host more than one application within a single `VirtualHost` entry you'll need to specify different locations in `Location` blocks *within* that `VirtualHost` entry. Here are two example location blocks that would be inserted in your `VirtualHost` entry:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <Location "/lollipop">
-    SetHandler python-program
-    PythonHandler django.core.handlers.modpython
-    SetEnv DJANGO_SETTINGS_MODULE lollipop.site.settings
-    PythonDebug Off
-    PythonInterpreter lollipop
-    </Location>
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<Location "/lollipop">
+SetHandler python-program
+PythonHandler django.core.handlers.modpython
+SetEnv DJANGO_SETTINGS_MODULE lollipop.site.settings
+PythonDebug Off
+PythonInterpreter lollipop
+</Location>
 
-    <Location "/funnyjoke">
-    SetHandler python-program
-        PythonHandler django.core.handlers.modpython
-    SetEnv DJANGO_SETTINGS_MODULE funnyjoke.site.settings
-    PythonDebug Off
-    PythonInterpreter funnyjoke
-    ~~~
+<Location "/funnyjoke">
+SetHandler python-program
+    PythonHandler django.core.handlers.modpython
+SetEnv DJANGO_SETTINGS_MODULE funnyjoke.site.settings
+PythonDebug Off
+PythonInterpreter funnyjoke
+
+{{< /file-excerpt >}}
+
 
     > \</Location\>
 
 Note that the `PythonInterpreter` option needs to be set in these situations to avoid confusing `mod_python`, and your applications must be configured to properly handle these requests.
 
-Using Django
-------------
+# Using Django
 
 Once you have the base system installed and `mod_python` configured properly with Django, the majority of your time can be spent developing your application. There are, however, a few concerns you should be aware of.
 
@@ -181,8 +175,7 @@ As the site and your Django application begin receiving additional traffic, ther
 
 The first step is to separate services onto different servers. If you're having performance issues, move the database (e.g. MySQL or PostgreSQL) onto its own server or even a cluster of database servers. We alluded to this earlier with regard to static files, but it's often easier and more efficient to use a separate high-performance web server like nginx or lighttpd for static content. Such a server may also run on a separate Linode, isolated from the Apache instance running the Django application. Advanced solutions including front end reverse proxies like Squid, or hosting duplicate copies of your application servers and using a round-robin DNS setup, can offer you a great deal of scalability for high-demand situations.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

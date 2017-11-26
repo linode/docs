@@ -3,13 +3,13 @@ author:
   name: Christopher S. Aker
   email: caker@linode.com
 description: NodeBalancer Reference Guide
-keywords: 'load balancing,nodebalancer'
+keywords: ["load balancing", "nodebalancer"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['nodebalancers/reference/','linode-platform/nodebalancer-reference/']
-modified: Thursday, February 23rd, 2017
+aliases: ['nodebalancers/reference/','linode-platform/nodebalancer-reference/']
+modified: 2017-02-23
 modified_by:
   name: Linode
-published: 'Friday, July 8th, 2011'
+published: 2011-07-08
 title: NodeBalancer Reference Guide
 ---
 
@@ -43,9 +43,9 @@ You can choose either TCP, HTTP, or HTTPS. HTTP and HTTPS enable some additional
 
 If **HTTP** or **HTTPS** is selected, the NodeBalancer will add an X-Forwarded-Proto header, with a value of either `http` or `https`, to all requests sent to the backend. The header value is based on the type of request (HTTP or HTTPS) originally received by the NodeBalancer.
 
- {: .note }
->
-> Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
+ {{< note >}}
+Note that HTTPS requests (and HTTP requests, for that matter) are terminated on the NodeBalancer itself, and that's where the encryption over a public network ends. NodeBalancers use the HTTP protocol to communicate with your backends over a private network. You should have your backends listen to the NodeBalancer over HTTP, not HTTPS.
+{{< /note >}}
 
 ### Algorithm
 

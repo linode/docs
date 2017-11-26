@@ -3,25 +3,22 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Install and Configure mod_fastcgi and PHP-FPM on Debian with Apache'
-keywords: 'apache,fastcgi,php-fpm,php,php pool'
+keywords: ["apache", "fastcgi", "php-fpm", "php", "php pool"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/','websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/']
+aliases: ['websites/apache/php-fpm/debian-7/','web-servers/apache/php-fpm/apache-php-fpm-debian-ubuntu/','websites/apache/running-fastcgi-php-fpm-on-debian-7-with-apache/']
 contributor:
     name: Jesin A
     link: https://twitter.com/jesin_a
 external_resources:
  - '[PHP-FPM configuration directives](http://php.net/manual/en/install.fpm.configuration.php)'
  - '[mod_fastcgi configuration directives](http://www.fastcgi.com/mod_fastcgi/docs/mod_fastcgi.html)'
-modified: Saturday, August 16, 2014
+modified: 2014-08-16
 modified_by:
   name: Linode
-published: 'Monday, June 16, 2014'
+published: 2014-06-16
 title: 'Running mod_fastcgi and PHP-FPM on Debian 7 (Wheezy) with Apache'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 This article explains how to configure and install `mod_fastcgi` and `PHP-FPM` on a Debian 7 instance using Apache. Apache's default configuration, which uses `mod_php` instead of `mod_fastcgi`, uses a significant amount of system resources.
 
@@ -47,34 +44,34 @@ Both `mod_fastcgi` and `PHP-FPM` are part of repositories for aptitude supported
 
     a) If you are using Linode's mirrors:
 
-    {: .file-excerpt }
-    /etc/apt/sources.list
-    :   ~~~
-        deb http://mirrors.linode.com/debian/ wheezy main contrib non-free
-        deb-src http://mirrors.linode.com/debian/ wheezy main contrib non-free
+    {{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://mirrors.linode.com/debian/ wheezy main contrib non-free
+deb-src http://mirrors.linode.com/debian/ wheezy main contrib non-free
 
-        deb http://mirrors.linode.com/debian-security/ wheezy/updates main contrib non-free
-        deb-src http://mirrors.linode.com/debian-security/ wheezy/updates main contrib non-free
+deb http://mirrors.linode.com/debian-security/ wheezy/updates main contrib non-free
+deb-src http://mirrors.linode.com/debian-security/ wheezy/updates main contrib non-free
 
-        # wheezy-updates, previously known as 'volatile'
-        deb http://mirrors.linode.com/debian/ wheezy-updates main
-        deb-src http://mirrors.linode.com/debian/ wheezy-updates main
-        ~~~
+# wheezy-updates, previously known as 'volatile'
+deb http://mirrors.linode.com/debian/ wheezy-updates main
+deb-src http://mirrors.linode.com/debian/ wheezy-updates main
+
+{{< /file-excerpt >}}
+
 
     b) If you are using Debian's mirrors:
 
-    {: .file-excerpt }
-    /etc/apt/sources.list
-    :    ~~~
-         deb http://ftp.es.debian.org/debian stable main contrib non-free
-         deb-src http://ftp.es.debian.org/debian stable main contrib non-free
+    {{< file-excerpt "/etc/apt/sources.list" >}}
+deb http://ftp.es.debian.org/debian stable main contrib non-free
+deb-src http://ftp.es.debian.org/debian stable main contrib non-free
 
-         deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
-         deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+deb http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
+deb-src http://ftp.debian.org/debian/ wheezy-updates main contrib non-free
 
-         deb http://security.debian.org/ wheezy/updates main contrib non-free
-         deb-src http://security.debian.org/ wheezy/updates main contrib non-free
-         ~~~
+deb http://security.debian.org/ wheezy/updates main contrib non-free
+deb-src http://security.debian.org/ wheezy/updates main contrib non-free
+
+{{< /file-excerpt >}}
+
 
 4.  Update the apt-get repositories.
 
@@ -105,19 +102,19 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
 3.  If no output is returned, you will need to edit the following file and add this line:
 
-    {: .file-excerpt }
-    etc/php5/fpm/pool.d/www.conf
-    :   ~~~
-        listen = /var/run/php5-fpm.sock
-        ~~~
+    {{< file-excerpt "etc/php5/fpm/pool.d/www.conf" >}}
+listen = /var/run/php5-fpm.sock
+
+{{< /file-excerpt >}}
+
 
 4.  Find the following line and remove it.
 
-    {: .file-excerpt }
-    /etc/php5/fpm/pool.d/www.conf
-    :   ~~~
-        listen = 127.0.0.1:9000
-        ~~~
+    {{< file-excerpt "/etc/php5/fpm/pool.d/www.conf" >}}
+listen = 127.0.0.1:9000
+
+{{< /file-excerpt >}}
+
 
 5.  Restart the php5-fpm daemon for these changes to take effect.
 
@@ -131,32 +128,32 @@ We will now configure Apache to pass all requests for PHP files, with the _php_ 
 
     **Apache 2.2 or earlier**
 
-    {: .file-excerpt }
-    /etc/apache2/mods-enabled/fastcgi.conf
-    :   ~~~
-        <IfModule mod_fastcgi.c>
-         AddType application/x-httpd-fastphp5 .php
-         Action application/x-httpd-fastphp5 /php5-fcgi
-         Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-         FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
-        </IfModule>
-        ~~~
+    {{< file-excerpt "/etc/apache2/mods-enabled/fastcgi.conf" >}}
+<IfModule mod_fastcgi.c>
+ AddType application/x-httpd-fastphp5 .php
+ Action application/x-httpd-fastphp5 /php5-fcgi
+ Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
+ FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
     **Apache 2.4 or later**
 
-    {: .file-excerpt }
-    /etc/apache2/mods-enabled/fastcgi.conf
-    :   ~~~
-        <IfModule mod_fastcgi.c>
-         AddType application/x-httpd-fastphp5 .php
-         Action application/x-httpd-fastphp5 /php5-fcgi
-         Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
-         FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
-         <Directory /usr/lib/cgi-bin>
-          Require all granted
-         </Directory>
-        </IfModule>
-        ~~~
+    {{< file-excerpt "/etc/apache2/mods-enabled/fastcgi.conf" >}}
+<IfModule mod_fastcgi.c>
+ AddType application/x-httpd-fastphp5 .php
+ Action application/x-httpd-fastphp5 /php5-fcgi
+ Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
+ FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -socket /var/run/php5-fpm.sock -pass-header Authorization
+ <Directory /usr/lib/cgi-bin>
+  Require all granted
+ </Directory>
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 8.  Save the file and check for configuration errors.
 
@@ -184,26 +181,26 @@ In this section we will create a pool for the domain example.com which is owned 
 
 2.  Edit the file to change the site name, socket name, and user/group.
 
-    {: .file-excerpt }
-    /etc/php5/fpm/pool.d/example.com.conf
-    :   ~~~
-        ; Start a new pool named 'www'.
-        ; the variable $pool can we used in any directive and will be replaced by the
-        ; pool name ('www' here)
-        [example.com]
+    {{< file-excerpt "/etc/php5/fpm/pool.d/example.com.conf" >}}
+; Start a new pool named 'www'.
+; the variable $pool can we used in any directive and will be replaced by the
+; pool name ('www' here)
+[example.com]
 
-        ...
+...
 
-        ; Unix user/group of processes
-        ; Note: The user is mandatory. If the group is not set, the default user's group
-        ;       will be used.
-        user = bob
-        group = bob
+; Unix user/group of processes
+; Note: The user is mandatory. If the group is not set, the default user's group
+;       will be used.
+user = bob
+group = bob
 
-        ...
+...
 
-        listen = /var/run/php5-fpm_example.com.sock
-        ~~~
+listen = /var/run/php5-fpm_example.com.sock
+
+{{< /file-excerpt >}}
+
 
 3.  Restart the php5-fpm process for the new pool to be created.
 
@@ -211,26 +208,26 @@ In this section we will create a pool for the domain example.com which is owned 
 
 4.  Edit the virtual host file of example.com to use this PHP-FPM pool
 
-    {: .file-excerpt }
-    /etc/apache2/sites-available/example.com.conf
-    :   ~~~
-        <VirtualHost *:80>
-            ServerAdmin webmaster@example.com
-            ServerName example.com
-            ServerAlias www.example.com
-            DocumentRoot /var/www/example.com/public_html/
-            ErrorLog /var/www/example.com/error.log
-            CustomLog /var/www/example.com/access.log combined
+    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf" >}}
+<VirtualHost *:80>
+    ServerAdmin webmaster@example.com
+    ServerName example.com
+    ServerAlias www.example.com
+    DocumentRoot /var/www/example.com/public_html/
+    ErrorLog /var/www/example.com/error.log
+    CustomLog /var/www/example.com/access.log combined
 
-            <IfModule mod_fastcgi.c>
-                AddType application/x-httpd-fastphp5 .php
-                Action application/x-httpd-fastphp5 /php5-fcgi
-                Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi_example.com
-                FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi_example.com -socket /var/run/php5-fpm_example.com.sock -pass-header Authorization
-            </IfModule>
+    <IfModule mod_fastcgi.c>
+        AddType application/x-httpd-fastphp5 .php
+        Action application/x-httpd-fastphp5 /php5-fcgi
+        Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi_example.com
+        FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi_example.com -socket /var/run/php5-fpm_example.com.sock -pass-header Authorization
+    </IfModule>
 
-        </VirtualHost>
-        ~~~
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 5.  Check the configuration file for errors.
 
@@ -242,14 +239,14 @@ In this section we will create a pool for the domain example.com which is owned 
 
 7.  Create a PHP file inside the `DocumentRoot` of this domain to check the owner of this PHP-FPM pool.
 
-    {: .file-excerpt }
-    /var/www/example.com/public_html/user.php
-    :   ~~~
-        <?php
-        $processUser = posix_getpwuid( posix_geteuid() );
-        print $processUser('name');
-        ?>
-        ~~~
+    {{< file-excerpt "/var/www/example.com/public_html/user.php" >}}
+<?php
+$processUser = posix_getpwuid( posix_geteuid() );
+print $processUser('name');
+?>
+
+{{< /file-excerpt >}}
+
 
 8.  Access the following URL in a web browser, replacing example.com with your domain or IP address.
 

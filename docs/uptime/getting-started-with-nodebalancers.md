@@ -1,1 +1,0 @@
-../platform/nodebalancer/getting-started-with-nodebalancers.md

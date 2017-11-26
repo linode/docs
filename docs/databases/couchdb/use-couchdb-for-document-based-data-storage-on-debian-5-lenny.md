@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'An introduction and getting started guide for CouchDB on Debian 5 (Lenny) systems.'
-keywords: 'couchdb,nosql,json,debian'
+keywords: ["couchdb", "nosql", "json", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/couchdb/debian-5-lenny/']
-modified: Wednesday, October 3rd, 2012
+aliases: ['databases/couchdb/debian-5-lenny/']
+modified: 2012-10-03
 modified_by:
   name: Linode
-published: 'Monday, February 8th, 2010'
+published: 2010-02-08
 title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
 ---
 
@@ -18,10 +18,9 @@ title: 'Use CouchDB for Document Based Data Storage on Debian 5 (Lenny)'
 
 CouchDB is a non-relational document-based database. Like other entrants into the "NoSQL" field, CouchDB attempts to provide a more flexible data storage system for use in custom application development. CouchDB is written in the Erlang programing language which supports an innovative concurrency model. CouchDB does not use an SQL interface, opting for an HTTP interface and JSON as a data format for easy integration in application development.
 
-Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before installing CouchDB, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Installing CouchDB
-------------------
+# Installing CouchDB
 
 Before proceeding with the installation of CouchDB, make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -40,8 +39,7 @@ CouchDB will start as soon as the application is fully installed. You can use th
 
 Congratulations! In most use cases, you will not need to modify CouchDB's configuration file. However, should you need to modify any of its settings, a number of options are set in the `/etc/couchdb/couch.ini` file.
 
-Using CouchDB
--------------
+# Using CouchDB
 
 Most of your interaction with CouchDB will occur by way of the system's HTTP and JSON interface. CouchDB comes with a web-based administrative interface called "Futon". Since CouchDB is only accessible over the local interface by default, you will want to [create a secure ssh tunnel](/docs/databases/couchdb/ssh-tunnel) in order to access CouchDB or Futon from your local machine to avoid sending data in the clear.
 
@@ -55,9 +53,7 @@ Now issue the following command:
 
 In response, CouchDB will return the following:
 
-~~~ js
-{"couchdb":"Welcome","version":"0.8.0-incubating"}
-~~~
+    {"couchdb":"Welcome","version":"0.8.0-incubating"}
 
 With the SSH tunnel active, you can access the Futon interface by visiting the URL `http://localhost:5984/_utils/` in a web browser on your local system.
 
@@ -67,8 +63,7 @@ Additionally, CouchDB provides an embedded JavaScript interpreter if you would l
 
 Where, `duck-team-check.js` is a file containing JavaScript code for the CouchDB interpreter.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

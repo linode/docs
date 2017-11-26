@@ -3,10 +3,10 @@ author:
   name: Angel
   email: docs@linode.com
 description: 'This guide shows how to install and set up Redmine, a free and open-source project management web application, written using Ruby on Rails, that is is cross-platform and cross-database.'
-keywords: 'nginx,ubuntu,redmine'
+keywords: ["nginx", "ubuntu", "redmine"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: Thursday, September 14, 2017
-modified: Tuesday, September 26, 2017
+published: 2017-09-14
+modified: 2017-09-26
 modified_by:
   name: Linode
 title: 'How to Install and Configure Redmine on Ubuntu 16.04'
@@ -23,9 +23,9 @@ This guide will show you how to install and set up Redmine on Ubuntu 16.04 throu
 
 ### Before You Begin
 
-{: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Dependencies
 
@@ -100,24 +100,23 @@ Passenger has now installed Nginx with Passenger compiled in. You have to config
 
 1. Uncomment the `include /etc/nginx/passenger.conf;` line in `/etc/nginx/nginx.conf`. Edit your config file to resemble the one below:
 
-    {:.file}
-    /etc/nginx/nginx.conf
-    : ~~~ conf
-      ##
-      # Phusion Passenger config
-      ##
-      # Uncomment it if you installed passenger or passenger-enterprise
-      ##
+    {{< file "/etc/nginx/nginx.conf" aconf >}}
+##
+# Phusion Passenger config
+##
+# Uncomment it if you installed passenger or passenger-enterprise
+##
 
-      include /etc/nginx/passenger.conf;
+include /etc/nginx/passenger.conf;
 
-      ##
-      # Virtual Host Configs
-      ##
+##
+# Virtual Host Configs
+##
 
-      include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/conf.d/*.conf;
 
-      ~~~
+{{< /file >}}
+
 
 2. Copy the default nginx site configuration file. The working configuration file in this guide will be `/etc/nginx/sites-available/default`:
 
@@ -125,25 +124,25 @@ Passenger has now installed Nginx with Passenger compiled in. You have to config
 
 3. Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
 
-    {:.file}
-    /etc/nginx/sites-availble/default
-    : ~~~ conf
-        root /data/redmine/redmine/public;
-        passenger_enabled on;
-        client_max_body_size 10m;
-      ~~~
+    {{< file "/etc/nginx/sites-availble/default" aconf >}}
+root /data/redmine/redmine/public;
+passenger_enabled on;
+client_max_body_size 10m;
+
+{{< /file >}}
+
 
 4. In the same file, comment out the `#location` section:
 
-    {:.file}
-    /etc/ningx/site-available/default
-    : ~~~ conf
-      #location / {
-      # First attempt to serve request as file, then
-      # as directory, then fall back to displaying a 404.
-          #try_files $uri $uri/ =404;
-      #}
-      ~~~
+    {{< file "/etc/ningx/site-available/default" aconf >}}
+#location / {
+# First attempt to serve request as file, then
+# as directory, then fall back to displaying a 404.
+    #try_files $uri $uri/ =404;
+#}
+
+{{< /file >}}
+
 
 5. Change the permissions for `/var/www`:
 

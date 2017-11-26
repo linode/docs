@@ -4,13 +4,13 @@ author:
   name: Stan Schwertly
   email: docs@linode.com
 description: 'A collection of guides that introduce and support the use of Nagios.'
-keywords: 'nagios,server monitoring,nagios linux'
+keywords: ["nagios", "server monitoring", "nagios linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['server-monitoring/nagios/']
-modified: Tuesday, April 19th, 2011
+aliases: ['server-monitoring/nagios/']
+modified: 2011-04-19
 modified_by:
   name: Linode
-published: 'Tuesday, November 30th, 2010'
+published: 2010-11-30
 title: Nagios Server Monitoring
 ---
 

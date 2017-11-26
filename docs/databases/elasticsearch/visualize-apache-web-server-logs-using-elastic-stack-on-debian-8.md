@@ -9,34 +9,30 @@ description: 'This guide will show how to use Elasticsearch, Logstash, and Kiban
 og_description: 'The Elastic Stack - Elasticsearch, Logstash, & Kibana - provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install all three components to explore Apache web server logs in Kibana.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
-keywords: 'apache debian 8,linux web server,elasticsearch,logstash,kibana,elk stack,elastic stack'
+keywords: ["apache debian 8", "linux web server", "elasticsearch", "logstash", "kibana", "elk stack", "elastic stack"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 18th, 2017'
-modified: Monday, November 6, 2017
+published: 2017-09-18
+modified: 2017-11-06
 modified_by:
   name: Linode
 title: 'Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8](/docs/assets/elastic-stack-visualize-server-logs-title.jpg "Visualize Apache Web Server Logs Using an Elastic Stack on Debian 8")
 
 
 ## What is an Elastic Stack?
 
-The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
+The [Elastic](https://www.elastic.co/) stack, which includes Elasticsearch, Logstash, and Kibana, is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time.
 
 This guide will explain how to install all three components and use them to explore Apache web server logs in Kibana, the browser-based component that visualizes data.
 
 This guide will walk through the installation and set up of version 5 of the Elastic stack, which is the latest at time of this writing.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -102,12 +98,12 @@ Before configuring and loading log data, install each piece of the stack, indivi
 
 2.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to the following, and leave the other values in this file unchanged:
 
-    {: .file}
-    /etc/elasticsearch/jvm.options
-    :   ~~~ conf
-        -Xms512m
-        -Xmx512m
-        ~~~
+    {{< file "/etc/elasticsearch/jvm.options" aconf >}}
+-Xms512m
+-Xmx512m
+
+{{< /file >}}
+
 
 3.  Start and enable the `elasticsearch` service:
 
@@ -154,19 +150,19 @@ By default, Elasticsearch will create five shards and one replica for every inde
 
 1.  Create a temporary JSON file with an *index template* that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard `*`):
 
-    {: .file}
-    template.json
-    :   ~~~ json
-        {
-          "template": "*",
-          "settings": {
-            "index": {
-              "number_of_shards": 1,
-              "number_of_replicas": 0
-            }
-          }
-        }
-        ~~~
+    {{< file "template.json" json >}}
+{
+  "template": "*",
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 0
+    }
+  }
+}
+
+{{< /file >}}
+
 
 2.  Use `curl` to create an index template with these settings that'll be applied to all indices created hereafter:
 
@@ -182,25 +178,25 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
 1.  Create the following Logstash configuration:
 
-    {: .file}
-    /etc/logstash/conf.d/apache.conf
-    :   ~~~ conf
-        input {
-          file {
-            path => '/var/www/*/logs/access.log'
-          }
-        }
+    {{< file "/etc/logstash/conf.d/apache.conf" aconf >}}
+input {
+  file {
+    path => '/var/www/*/logs/access.log'
+  }
+}
 
-        filter {
-          grok {
-            match => { "message" => "%{COMBINEDAPACHELOG}" }
-          }
-        }
+filter {
+  grok {
+    match => { "message" => "%{COMBINEDAPACHELOG}" }
+  }
+}
 
-        output {
-          elasticsearch { }
-        }
-        ~~~
+output {
+  elasticsearch { }
+}
+
+{{< /file >}}
+
 
 2.  Start and enable `logstash`:
 
@@ -212,12 +208,12 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
 1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port `5601`.
 
-    {:.file-excerpt}
-    /etc/kibana/kibana.yml
-    :  ~~~
-       server.port: 5601
-       server.host: "localhost"
-       ~~~
+    {{< file-excerpt "/etc/kibana/kibana.yml" >}}
+server.port: 5601
+server.host: "localhost"
+
+{{< /file-excerpt >}}
+
 
 2.  Enable and start the Kibana service:
 
@@ -234,9 +230,9 @@ In order to collect Apache access logs, Logstash must be configured to watch any
 
     This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
 
-    {: .note}
-    >
-    >Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
+    {{< note >}}
+Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
+{{< /note >}}
 
 ## View Logs
 
@@ -254,7 +250,7 @@ In order to view the details of a log entry, click the drop-down arrow to see in
 
 Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
 
-### Analyze Logs 
+### Analyze Logs
 
 Before continuing, generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:
 

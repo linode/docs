@@ -3,14 +3,14 @@ author:
   name: Angel Guarisma
   email: aguarisma@linode.com
 description: This tutorial shows how to install Java on CentOS 7.
-keywords: 'CentOS,install Java,CENTOS,Java JRE,Java JDK'
+keywords: ["CentOS", "install Java", "CENTOS", "Java JRE", "Java JDK"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, June 1st, 2017
+modified: 2017-06-01
 modified_by:
   name: Angel Guarisma
-published: 'Thursday, June 1st, 2017'
+published: 2017-06-01
 title: Install Java on Centos 7
-alias: ['development/INSTALLING-JAVA-ON-CENTOS/']
+aliases: ['development/installing-java-on-centos/']
 external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 ---
@@ -44,10 +44,10 @@ After the installation finishes, verify its completion using `yum list installed
 
 If you plan on using Java to write or edit programs on your Linode, install the JDK.
 
-	sudo yum install java-1.8.0-openjdk-devel
+    sudo yum install java-1.8.0-openjdk-devel
 
 After the installation finishes, verify its completion using `yum list installed | grep "openjdk-devel"`. The output should be:
 
-	java-1.8.0-openjdk-devel.x86_64      1:1.8.0.131-3.b12.el7_3           @updates
+    java-1.8.0-openjdk-devel.x86_64      1:1.8.0.131-3.b12.el7_3           @updates
 
 You can also verify by running the Java compiler, `javac`. If you need to compile Java code on your Linode, run `javac foobar.java`. Then, run the application with `java foobar`.

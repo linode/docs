@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'How to install and connect to a desktop environment on your Linode'
-keywords: 'vnc,remote desktop,ubuntu,16.04'
+keywords: ["vnc", "remote desktop", "ubuntu", "16.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, June 21st, 2016
+modified: 2016-06-21
 modified_by:
   name: Phil Zona
-published: 'Tuesday, June 21st, 2016'
+published: 2016-06-21
 title: 'Install VNC on Ubuntu 16.04'
 external_resources:
  - '[VNC on Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
@@ -31,9 +31,9 @@ This guide explains how to install a graphic desktop environment on your Linode 
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install a Desktop and VNC Server on your Linode
 
@@ -41,10 +41,11 @@ This guide explains how to install a graphic desktop environment on your Linode 
 
         sudo apt-get install ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-    {: .note}
-    > This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
-    >
-    >     sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    {{< note >}}
+This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
+
+sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+{{< /note >}}
 
     During the install process, you will be asked whether or not to change a system file to the new version:
 
@@ -145,27 +146,27 @@ In the next few steps, we'll configure VNC to launch the full Unity desktop when
 
 2.  Edit the end of your `~/.vnc/xstartup` file to match the following configuration. This starts the desktop dependencies as background processes upon starting the VNC server:
 
-    {: .file-excerpt }
-    ~/.vnc/xstartup
-    :   ~~~
-        #!/bin/sh
+    {{< file-excerpt "~/.vnc/xstartup" >}}
+#!/bin/sh
 
-        # Uncomment the following two lines for normal desktop:
-        # unset SESSION_MANAGER
-        # exec /etc/X11/xinit/xinitrc
+# Uncomment the following two lines for normal desktop:
+# unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
 
-        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-        [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-        xsetroot -solid grey
-        vncconfig -iconic &
-        x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
-        x-window-manager &
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
 
-        gnome-panel &
-        gnome-settings-daemon &
-        metacity &
-        nautilus &
-        ~~~
+gnome-panel &
+gnome-settings-daemon &
+metacity &
+nautilus &
+
+{{< /file-excerpt >}}
+
 
 3.  Save and exit the file. Begin another VNC session:
 
@@ -194,34 +195,34 @@ Below we've outlined optional steps to ensure that the VNC server starts automat
 
 2.  Add `@reboot /usr/bin/vncserver :1` to the bottom of the file. Your crontab should look like this:
 
-    {: .file-excerpt }
-    crontab
-    :   ~~~
-        # Edit this file to introduce tasks to be run by cron.
-        #
-        # Each task to run has to be defined through a single line
-        # indicating with different fields when the task will be run
-        # and what command to run for the task
-        #
-        # To define the time you can provide concrete values for
-        # minute (m), hour (h), day of month (dom), month (mon),
-        # and day of week (dow) or use '*' in these fields (for 'any').
-        #
-        # Notice that tasks will be started based on the cron's system
-        # daemon's notion of time and timezones.
-        #
-        # Output of the crontab jobs (including errors) is sent through
-        # email to the user the crontab file belongs to (unless redirected).
-        #
-        # For example, you can run a backup of all your user accounts
-        # at 5 a.m every week with:
-        # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-        #
-        # For more information see the manual pages of crontab(5) and cron(8)
-        #
-        # m h dom mon dow command
+    {{< file-excerpt "crontab" >}}
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h dom mon dow command
 
-        @reboot /usr/bin/vncserver :1
-        ~~~
+@reboot /usr/bin/vncserver :1
+
+{{< /file-excerpt >}}
+
 
 3.  Save and exit the file. You can test by rebooting your Linode and attempting to connect to the VNC server.

@@ -2,11 +2,11 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with, and keeps redundant copies on multiple servers."
-keywords: 'confidential, encrypted, integrity, redundant, private, filesystem, storage'
+description: "Tahoe-LAFS keeps your data encrypted, validates at read time that it hasn't been tampered with and keeps redundant copies on multiple servers."
+keywords: ["confidential", " encrypted", " integrity", " redundant", " private", " filesystem", " storage"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, October 24th, 2017'
-modified: Thursday, October 26th, 2017
+published: 2017-10-24
+modified: 2017-10-26
 modified_by:
   name: Linode
 title: 'How to Keep Your Data Private in the Cloud with Tahoe-LAFS'
@@ -18,9 +18,6 @@ external_resources:
 - '[Tahoe-LAFS Documentation](http://tahoe-lafs.readthedocs.io)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 ## What is Tahoe-LAFS?
 
@@ -31,7 +28,7 @@ While Tahoe-LAFS might resemble other decentralized or distributed file system, 
     *  If the server is hacked, your data could be stolen.
     *  An user with read access might accidentally leak data or purposely steal it for their own gain.
 
-    By encrypting data before it reaches your storage servers, these risks are reduced. 
+    By encrypting data before it reaches your storage servers, these risks are reduced.
 
 2.  **Data integrity**: If the encrypted data is compromised, the software detects the change, and in some cases, may still restore the original.
 
@@ -45,8 +42,9 @@ All of these things make Tahoe-LAFS a good fit for securely storing sensitive da
 
 ## Before You Begin
 
-{: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 (Stretch) image and complete the steps for setting your Linode's hostname and timezone.
 
@@ -98,7 +96,7 @@ After you get acquainted with the initial introducer setup, you can [read about 
 
         tahoe run --basedir introducer
 
-    The last line of output should mention `introducer running`. Press **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated. 
+    The last line of output should mention `introducer running`. Press **CTRL+C** to stop the program. The identifier that is needed, called a *FURL* is now generated.
 
 6.  Display the FURL using `cat`:
 
@@ -112,22 +110,22 @@ After you get acquainted with the initial introducer setup, you can [read about 
 
 8.  To automatically start up the introducer on boot, create a systemd service file with the following:
 
-      {:.file-excerpt}
-      /etc/systemd/system/tahoe-autostart-introducer.service
-      : ~~~
-        [Unit]
-        Description=Tahoe-LAFS autostart introducer
-        After=network.target
+      {{< file-excerpt "/etc/systemd/system/tahoe-autostart-introducer.service" >}}
+[Unit]
+Description=Tahoe-LAFS autostart introducer
+After=network.target
 
-        [Service]
-        Type=simple
-        User=tahoe
-        WorkingDirectory=/home/tahoe
-        ExecStart=/usr/bin/tahoe run introducer --logfile=logs/introducer.log
+[Service]
+Type=simple
+User=tahoe
+WorkingDirectory=/home/tahoe
+ExecStart=/usr/bin/tahoe run introducer --logfile=logs/introducer.log
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file-excerpt >}}
+
 
     While a rule to restart the process in case of a crash can be added here, it's better to inspect the Linode each time a node, client or introducer crashes, before restarting the process.
 
@@ -157,13 +155,13 @@ Restart the service:
 
 Although the process can be automated so that you can easily expand your storage pool, set up your first node manually to get a better understanding of how things work and where certain files are located. The initial steps from the [Before You Begin](#before-you-begin) section apply here as well.
 
-{: .note}
->
-> If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode).
->
-> Configure block storage before the other steps in this section.
->
-> When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in [the next subsection](#automatically-configure-storage-nodes-with-linode-stackscripts).
+{{< note >}}
+If you need large amounts of disk space, [configure block storage devices on your Linode](/docs/platform/how-to-use-block-storage-with-your-linode).
+
+Configure block storage before the other steps in this section.
+
+When you configure `/etc/fstab`, instead of mounting your volume in `/mnt/BlockStorage1` as instructed in the tutorial, mount it in `/home`. Use the same location when using the `mount` command. Unfortunately, going this route, has the added disadvantage that you won't be able to automate the creation of storage nodes with the steps provided in [the next subsection](#automatically-configure-storage-nodes-with-linode-stackscripts).
+{{< /note >}}
 
 1.  After you launch a new Linode and deploy Debian 9, login as root and create an unprivileged user:
 
@@ -189,22 +187,22 @@ Although the process can be automated so that you can easily expand your storage
 
 6.  Create a systemd service file:
 
-      {:.file}
-      /etc/systemd/system/tahoe-autostart-node.service
-      : ~~~
-        [Unit]
-        Description=Tahoe-LAFS autostart node
-        After=network.target
+      {{< file "/etc/systemd/system/tahoe-autostart-node.service" >}}
+[Unit]
+Description=Tahoe-LAFS autostart node
+After=network.target
 
-        [Service]
-        Type=simple
-        User=tahoe
-        WorkingDirectory=/home/tahoe
-        ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
+[Service]
+Type=simple
+User=tahoe
+WorkingDirectory=/home/tahoe
+ExecStart=/usr/bin/tahoe run .tahoe --logfile=logs/node.log
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
 7.  Enable the service to autostart the storage node at boot:
 
@@ -220,9 +218,9 @@ Since some users may require tens or hundreds of storage nodes, automate configu
 
 To confirm each successful setup instead of launching all instances before verifying that they work, you can temporarily skip to the next two sections, and use the web user interface in your local browser. Then, return to this section, and after launching each Linode refresh the page after a few minutes. The new storage node should appear along with a green checkmark next to it.
 
-{: .note}
->
-> This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
+{{< note >}}
+This StackScript relies on *icanhazip.com* to retrieve each Linode's external IP address. While the site has redundant servers, there is a chance it may unavailable at times.
+{{< /note >}}
 
 1.  [Familiarize yourself with StackScripts](/docs/platform/stackscripts), then navigate to the [StackScripts page](https://manager.linode.com/stackscripts/index) to add a new StackScript.
 
@@ -302,7 +300,7 @@ The web interface is the most user-friendly way to interact with your grid. One 
     *  **SDMF (Small Mutable Distributed Files)**: Initially designed for small files, but supports larger sizes as well. May be slow for large files because it has to replace all blocks even when a few bytes have changed.
     *  **MDMF (Medium Distributed Mutable Files)**: Allows large files to be modified in-place, with only the segments that have changed, it allows you to append data, and selectively retrieve only certain blocks that the user requests. Use this for large files that you update often.
 
-3.  After you upload a file, you get a *capability* or filecap. An SDMF filecap for example looks something like: 
+3.  After you upload a file, you get a *capability* or filecap. An SDMF filecap for example looks something like:
 
         URI:SSK:4a4hv34xtt43a6s7ft76i563oa:7s643ebsf2yujglqhn55xo7c5ohunx2tpoi32dahgr23seob7t5q
 
@@ -362,11 +360,11 @@ While the web user interface is easy to work with, it has some limitations. Anot
 *  To display a list of available commands:
 
        tahoe
-    
+
 *  If you need additional help on a command:
 
        tahoe name-of-command --help
-    
+
     For example: `tahoe ls --help`. For more information about Tahoe-LAFS, visit the [official documentation](http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html).
 
 ## Possible Next Steps

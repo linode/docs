@@ -3,10 +3,10 @@ author:
     name: Scott Sumner
     email: scottinthebooth@gmail.com
 description: 'Access Google Drive from your Linode with Ubuntu 14.04'
-keywords: 'google,drive,console,fuse,apt,ubuntu'
+keywords: ["google", "drive", "console", "fuse", "apt", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 28th, 2015'
-modified: 'Thursday, March 17, 2016'
+published: 2015-09-28
+modified: 2016-03-17
 modified_by:
     name: Linode
 title: 'Access Google Drive from Linode with Ubuntu 14.04'
@@ -14,9 +14,6 @@ contributor:
     name: Scott Sumner
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 If you've used Google Drive, you know that it can be an indispensable tool for remote file access. While one of the standard counter-arguments to remote storage is "just carry a flash drive," that only works until you need to add a file to your Linode. This guide will show you how to install and configure a great piece of free software to access your Google Drive from your Linode running Ubuntu version 14.04 or newer.
 

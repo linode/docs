@@ -3,10 +3,10 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This tutorial details how to install Shadowsocks-libev, a full-featured, resource-efficient port of the web proxy tool, Shadowsocks.'
-keywords: 'shadowsocks,proxy,shadowsocks server,ubuntu,centos, strong vpn'
+keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Wednesday, August 16, 2017'
-modified: Wednesday, August 16, 2017
+published: 2017-08-16
+modified: 2017-08-16
 modified_by:
   name: Linode
 title: Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7
@@ -18,9 +18,6 @@ external_resources:
  - '[Shadowsocks-libev GitHub](https://github.com/shadowsocks/shadowsocks-libev)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something open-source for which our core audience could use a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7](/docs/assets/shadowsocks.jpg "Create a SOCKS5 Proxy Server with Shadowsocks on Ubuntu and CentOS 7")
 
@@ -76,7 +73,7 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **CentOS 7**
 
-	adduser --system --no-create-home -s /bin/false shadowsocks
+        adduser --system --no-create-home -s /bin/false shadowsocks
 
 2. Create a new directory for the configuration file:
 
@@ -86,34 +83,32 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
 ## shadowsocks.json Breakdown
 
-{: .table .table-striped .table-bordered}
- |  **Property**  | **Explanation** | **Possible Values** |
- |:----------:|:-----------:|:---------------:|
- | server | Enter your server's public IP address. | User determined |
- | server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
- | local_address | Local listening address. Use your loopback address, `127.0.0.1`. | Loopback address |
- | local_port | Local listening port. Use the default value of `1080`. | User determined |
- | password | Connection password. Set a strong password. | User determined |
- | timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
- | method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
- | fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
- | nameserver | Name servers for internal DNS resolver. | User determined |
+|  **Property**  | **Explanation** | **Possible Values** |
+|:--------------:|:---------------:|:-------------------:|
+| server | Enter your server's public IP address. | User determined |
+| server_port | Shadowsocks will listen on this port. Use the default value of `8388`. | User determined |
+| local_address | Local listening address. Use your loopback address, `127.0.0.1`. | Loopback address |
+| local_port | Local listening port. Use the default value of `1080`. | User determined |
+| password | Connection password. Set a strong password. | User determined |
+| timeout | Connection timeout in seconds. The default value should be sufficient here. | User determined |
+| method | Encryption method. Using AEAD algorithms is recommended. | See [Stream Ciphers](https://shadowsocks.org/en/spec/Stream-Ciphers.html) and [AEAD Ciphers](https://shadowsocks.org/en/spec/AEAD-Ciphers.html) |
+| fast_open | Reduces latency when turned on. Can only be used with kernel versions 3.7.1 or higher. Check your kernel version with `umame -r`. | true, false |
+| nameserver | Name servers for internal DNS resolver. | User determined |
 
-{: .file}
-**/etc/shadowsocks/shadowsocks.json**
-: ~~~ json
-  {
-      "server":"192.0.0.1",
-      "server_port":8388,
-      "local_address": "127.0.0.1",
-      "local_port":1080,
-      "password":"mypassword",
-      "timeout":300,
-      "method":"aes-256-gcm",
-      "fast_open": true,
-      "nameserver":"8.8.8.8"
-  }
-  ~~~
+{{< file "**/etc/shadowsocks/shadowsocks.json**" json >}}
+{
+    "server":"192.0.0.1",
+    "server_port":8388,
+    "local_address": "127.0.0.1",
+    "local_port":1080,
+    "password":"mypassword",
+    "timeout":300,
+    "method":"aes-256-gcm",
+    "fast_open": true
+}
+
+{{< /file >}}
+
 
 ## Optimize Shadowsocks
 
@@ -121,58 +116,59 @@ Apply the following optimizations to your system kernel to provide for a smooth 
 
 1. Create the `/etc/sysctl.d/local.conf` system optimization file and paste the contents shown below into your file.
 
-    {: .caution}
-    > These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
+    {{< caution >}}
+These settings provide the optimal kernel configuration for Shadowsocks. If you have previously configured your system kernel settings for any reason, make sure no conflicts exist.
+{{< /caution >}}
 
-    {: .file }
-    /etc/sysctl.d/local.conf
-    : ~~~ conf
-      # max open files
-      fs.file-max = 51200
-      # max read buffer
-      net.core.rmem_max = 67108864
-      # max write buffer
-      net.core.wmem_max = 67108864
-      # default read buffer
-      net.core.rmem_default = 65536
-      # default write buffer
-      net.core.wmem_default = 65536
-      # max processor input queue
-      net.core.netdev_max_backlog = 4096
-      # max backlog
-      net.core.somaxconn = 4096
+    {{< file "/etc/sysctl.d/local.conf" >}}
+# max open files
+fs.file-max = 51200
+# max read buffer
+net.core.rmem_max = 67108864
+# max write buffer
+net.core.wmem_max = 67108864
+# default read buffer
+net.core.rmem_default = 65536
+# default write buffer
+net.core.wmem_default = 65536
+# max processor input queue
+net.core.netdev_max_backlog = 4096
+# max backlog
+net.core.somaxconn = 4096
 
-      # resist SYN flood attacks
-      net.ipv4.tcp_syncookies = 1
-      # reuse timewait sockets when safe
-      net.ipv4.tcp_tw_reuse = 1
-      # turn off fast timewait sockets recycling
-      net.ipv4.tcp_tw_recycle = 0
-      # short FIN timeout
-      net.ipv4.tcp_fin_timeout = 30
-      # short keepalive time
-      net.ipv4.tcp_keepalive_time = 1200
-      # outbound port range
-      net.ipv4.ip_local_port_range = 10000 65000
-      # max SYN backlog
-      net.ipv4.tcp_max_syn_backlog = 4096
-      # max timewait sockets held by system simultaneously
-      net.ipv4.tcp_max_tw_buckets = 5000
-      # turn on TCP Fast Open on both client and server side
-      net.ipv4.tcp_fastopen = 3
-      # TCP receive buffer
-      net.ipv4.tcp_rmem = 4096 87380 67108864
-      # TCP write buffer
-      net.ipv4.tcp_wmem = 4096 65536 67108864
-      # turn on path MTU discovery
-      net.ipv4.tcp_mtu_probing = 1
+# resist SYN flood attacks
+net.ipv4.tcp_syncookies = 1
+# reuse timewait sockets when safe
+net.ipv4.tcp_tw_reuse = 1
+# turn off fast timewait sockets recycling
+net.ipv4.tcp_tw_recycle = 0
+# short FIN timeout
+net.ipv4.tcp_fin_timeout = 30
+# short keepalive time
+net.ipv4.tcp_keepalive_time = 1200
+# outbound port range
+net.ipv4.ip_local_port_range = 10000 65000
+# max SYN backlog
+net.ipv4.tcp_max_syn_backlog = 4096
+# max timewait sockets held by system simultaneously
+net.ipv4.tcp_max_tw_buckets = 5000
+# turn on TCP Fast Open on both client and server side
+net.ipv4.tcp_fastopen = 3
+# TCP receive buffer
+net.ipv4.tcp_rmem = 4096 87380 67108864
+# TCP write buffer
+net.ipv4.tcp_wmem = 4096 65536 67108864
+# turn on path MTU discovery
+net.ipv4.tcp_mtu_probing = 1
 
-      # for high-latency network
-      net.ipv4.tcp_congestion_control = hybla
+# for high-latency network
+net.ipv4.tcp_congestion_control = hybla
 
-      # for low-latency network, use cubic instead
-      net.ipv4.tcp_congestion_control = cubic
-      ~~~
+# for low-latency network, use cubic instead
+net.ipv4.tcp_congestion_control = cubic
+
+{{< /file >}}
+
 
 2. Apply optimizations:
 
@@ -184,22 +180,22 @@ The Shadowsocks systemd service allows the daemon to automatically start on syst
 
 1. Create a systemd file with the following content:
 
-    {: .file }
-    /etc/systemd/system/shadowsocks.service
-    : ~~~ service
-      [Unit]
-      Description=Shadowsocks proxy server
+    {{< file "/etc/systemd/system/shadowsocks.service" service >}}
+[Unit]
+Description=Shadowsocks proxy server
 
-      [Service]
-      User=root
-      Group=root
-      Type=simple
-      ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v start
-      ExecStop=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v stop
+[Service]
+User=root
+Group=root
+Type=simple
+ExecStart=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v start
+ExecStop=/usr/local/bin/ss-server -c /etc/shadowsocks/shadowsocks.json -a shadowsocks -v stop
 
-      [Install]
-      WantedBy=multi-user.target
-      ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
 2. Enable and start `shadowsocks.service`:
 
@@ -258,3 +254,4 @@ Press the **Global Mode** button to enable Shadowsocks globally on your computer
 ## Where to Go from Here
 
 Once your Shadowsocks server is online, configure a client on your mobile phone, tablet, or any other devices you use. The [Shadowsocks client download](https://shadowsocks.org/en/download/clients.html) page supports all mainstream platforms.
+

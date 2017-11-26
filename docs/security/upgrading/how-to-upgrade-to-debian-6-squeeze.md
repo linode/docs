@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to upgrade from Debian 5 (Lenny) to Debian 6 (Squeeze).'
-keywords: 'debian upgrade,upgrade distro,squeeze upgrade,squeeze'
+keywords: ["debian upgrade", "upgrade distro", "squeeze upgrade", "squeeze"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-debian-6-squeeze/']
-modified: Tuesday, October 1st, 2013
+aliases: ['upgrading/upgrade-to-debian-6-squeeze/']
+modified: 2013-10-01
 modified_by:
   name: Linode
-published: 'Saturday, February 5th, 2011'
+published: 2011-02-05
 title: 'How to Upgrade to Debian 6 (Squeeze)'
 ---
 
@@ -18,8 +18,7 @@ title: 'How to Upgrade to Debian 6 (Squeeze)'
 
 This guide explains how to upgrade your system to Debian 6 (Squeeze) from Debian 5 (Lenny). Before you begin, you should make sure that you have a working backup or a copy of your data. If you haven't already done so, you will also want to back up your configuration files (usually located in `/etc/`) in case they have changed in later versions of the software you are using. You should be logged in as root while performing these steps.
 
-Preparing to Upgrade
---------------------
+# Preparing to Upgrade
 
 Make sure that you have properly set your hostname in `/etc/hostname`. If you have not set a hostname for your system yet, issue the following commands:
 
@@ -30,21 +29,21 @@ Be sure to replace "titan" with the name that you wish to give to your server.
 
 Edit your `/etc/apt/sources.list` file and change instances of `lenny` to `squeeze`. Once you have finished this, your `/etc/apt/sources.list` should resemble the following:
 
-{: .file-excerpt }
-/etc/apt/sources.list
-:   ~~~
-    # main repo
-    deb http://ftp.debian.org/debian/ squeeze main
-    deb-src http://ftp.debian.org/debian/ squeeze main
-    deb http://security.debian.org/ squeeze/updates main
-    deb-src http://security.debian.org/ squeeze/updates main
+{{< file-excerpt "/etc/apt/sources.list" >}}
+# main repo
+deb http://ftp.debian.org/debian/ squeeze main
+deb-src http://ftp.debian.org/debian/ squeeze main
+deb http://security.debian.org/ squeeze/updates main
+deb-src http://security.debian.org/ squeeze/updates main
 
-    # contrib & non-free repos
-    #deb http://ftp.debian.org/debian/ squeeze contrib non-free
-    #deb-src http://ftp.debian.org/debian/ squeeze contrib non-free
-    #deb http://security.debian.org/debian/ squeeze/updates contrib non-free
-    #deb-src http://security.debian.org/debian/ squeeze/updates contrib non-free
-    ~~~
+# contrib & non-free repos
+#deb http://ftp.debian.org/debian/ squeeze contrib non-free
+#deb-src http://ftp.debian.org/debian/ squeeze contrib non-free
+#deb http://security.debian.org/debian/ squeeze/updates contrib non-free
+#deb-src http://security.debian.org/debian/ squeeze/updates contrib non-free
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to update your package lists:
 
@@ -62,8 +61,7 @@ If at any time you get disconnected from your server, you can log back in and is
 
     screen -Dr
 
-Upgrading
----------
+# Upgrading
 
 Issue the following command to grab the latest version of key system utilities:
 
@@ -81,8 +79,7 @@ You will also be advised that services using "NSS" (Network Security Services) a
 
 The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell).
 
-System Errors
--------------
+# System Errors
 
 You may receive some errors similar to "missing LSB tags and overrides" or "package removed but not purged" when attempting to upgrade your system. The LSB tags error can be safely ignored. More information on why you are receiving this error can be found in [Debian's dependency based boot sequence article](http://wiki.debian.org/LSBInitScripts/DependencyBasedBoot).
 

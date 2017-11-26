@@ -3,13 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Puppet for configuration change management.'
-keywords: 'puppet,puppet configuration,puppet linux,configuration change management,server automation'
+keywords: ["puppet", "puppet configuration", "puppet linux", "configuration change management", "server automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['application-stacks/puppet/automation/']
-modified: Monday, August 22nd, 2011
+aliases: ['application-stacks/puppet/automation/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Sunday, June 13th, 2010'
+published: 2010-06-13
+expiryDate: 2017-11-14
 title: Manage and Automate Systems Configuration with Puppet
 external_resources:
  - '[Puppet Labs Home Page](http://www.puppetlabs.com/)'
@@ -64,34 +65,34 @@ All Puppet files are stored in the `/etc/puppet/manifests/` directory, and Puppe
 
 Consider the following class, which is an elaboration on the canonical example Puppet `sudo` class:
 
-{: .file }
-/etc/puppet/manifests/classes/sudo.pp
-:   ~~~ pp
-    # /etc/puppet/manifests/classes/sudo.pp
+{{< file "/etc/puppet/manifests/classes/sudo.pp" puppet >}}
+# /etc/puppet/manifests/classes/sudo.pp
 
-    class sudo {
-        file { "/etc/sudoers":
-               owner => "root",
-               group => "root",
-               mode  => 440,
-               source => "puppet://example.com/files/sudoers"
-        }
+class sudo {
+    file { "/etc/sudoers":
+           owner => "root",
+           group => "root",
+           mode  => 440,
+           source => "puppet://example.com/files/sudoers"
     }
-    ~~~
+}
+
+{{< /file >}}
+
 
 In this example, configuration for the `/etc/sudoers` file is described, owned by the `root` user and group, with permissions of 440 that only allow read access for the owner and the members of the owner group. When applied, this manifest will ensure that the system in question has the above configuration applied to the `/etc/sudoers` file. The `source` specification allows puppet to copy a specific file from the Puppetmaster server. Distributing files with puppet will be covered [later](#serving_files).
 
-{: .file }
-/etc/puppet/manifests/site.pp
-:   ~~~ pp
-    # /etc/puppet/manifests/site.pp
+{{< file "/etc/puppet/manifests/site.pp" puppet >}}
+# /etc/puppet/manifests/site.pp
 
-    import "classes/*"
+import "classes/*"
 
-    node default {
-        include sudo
-    }
-    ~~~
+node default {
+    include sudo
+}
+
+{{< /file >}}
+
 
 This file imports all of the classes described in the `/etc/puppet/manifests/classes` directory. Then, into the `default` node it includes the configuration described in the `sudo` class. The `default` node is a special node identifier that includes all Puppet client nodes that connect to the local Puppetmaster daemon.
 
@@ -101,56 +102,56 @@ By default, `puppetd` runs as a client on the machine that `puppetmasterd` is in
 
 As above, the `default` node provides a space to specify the configuration for all Puppet nodes. Of course, it is also possible to configure node descriptions in more specific terms. Consider the following setup:
 
-{: .file-excerpt }
-/etc/puppet/manifests/site.pp
-:   ~~~ pp
-    # /etc/puppet/manifests/site.pp
+{{< file-excerpt "/etc/puppet/manifests/site.pp" puppet >}}
+# /etc/puppet/manifests/site.pp
 
-    import "classes/*"
+import "classes/*"
 
-    ## Base Nodes
+## Base Nodes
 
-    node default {
-        include sudo
-        include sshkeys
-    }
+node default {
+    include sudo
+    include sshkeys
+}
 
-    node appserverbasic {
-        include django
-        include apacheconf
-        include app
-    }
+node appserverbasic {
+    include django
+    include apacheconf
+    include app
+}
 
-    node loadbalancer {
-        include nginxlb
-        include monitoring
-    }
+node loadbalancer {
+    include nginxlb
+    include monitoring
+}
 
-    ## Specific Nodes
+## Specific Nodes
 
-    node 'fore.example.com' inherits loadbalancer {
-        include django
-        include apacheconf
-        include app
-        include backups
-    }
+node 'fore.example.com' inherits loadbalancer {
+    include django
+    include apacheconf
+    include app
+    include backups
+}
 
-    node 'lb1.example.com' inherits loadbalancer {
-    }
+node 'lb1.example.com' inherits loadbalancer {
+}
 
-    node 'hostname.example.com' inherits appserverbasic {
-        include monitoring
-        include backups
-    }
+node 'hostname.example.com' inherits appserverbasic {
+    include monitoring
+    include backups
+}
 
-    node 'test.hostname.example.com' inherits appserverbasic {
-    }
+node 'test.hostname.example.com' inherits appserverbasic {
+}
 
-    node 'monitoring1.example.com', 'monitoring2.example.com' {
-        include monitoring
-        include monitoringhub
-    }
-    ~~~
+node 'monitoring1.example.com', 'monitoring2.example.com' {
+    include monitoring
+    include monitoringhub
+}
+
+{{< /file-excerpt >}}
+
 
 In this example, we create several "base nodes" which each include a number of classes from the `classes/` directory. There are four specific nodes created, which specify in single quotes the names of machines. These machines are identified by a hostname, configured when the Puppetmaster node signed the certificate of the Puppet nodes. All nodes receive the `default` node configuration, the configuration specified in their description and all of the configuration options specified in the node description of the "inherited" nodes.
 
@@ -170,74 +171,74 @@ This makes it possible to write Puppet manifests that are sensitive to the actua
 
 While Puppet contains powerful abstractions for specifying configurations, in some cases it's necessary to deploy files to systems that are not configured using Puppet. The above example regarding the `/etc/sudoers` file presents one such situation. Puppet's fileserver is configured in the `/etc/puppet/fileserver.conf` file. Consider the following example configuration:
 
-{: .file-excerpt }
-/etc/puppet/fileserver.conf
-:   ~~~
-    [files]
-      path /etc/puppet/files
-      allow *.example.com
-      allow 192.168.0.0/24
-    ~~~
+{{< file-excerpt "/etc/puppet/fileserver.conf" >}}
+[files]
+  path /etc/puppet/files
+  allow *.example.com
+  allow 192.168.0.0/24
+
+{{< /file-excerpt >}}
+
 
 In the Puppet fileserver configuration, the order of `allow` and `deny` statements does not carry any weight. Puppet will deny access to hosts by default. In this example, the only hosts that are allowed access to the server are hosts which have certificates signed for names within the `.example.com` name space, and any host accessing the Puppet server with an IP in the non-public address space beginning with `192.168.` as would be the case with access to Puppet over the LAN.
 
 You may specify a `source` for a file object in Puppet manifests. Consider the following example:
 
-{: .file-excerpt }
-Puppet Configuration Manifest
-:   ~~~ pp
-    file { "/etc/httpd/conf.d":
-        source => "puppet://example.com/files/web-server/httpd/conf.d",
-        recurse => "true"
-    }
-    ~~~
+{{< file-excerpt "Puppet Configuration Manifest" puppet >}}
+file { "/etc/httpd/conf.d":
+    source => "puppet://example.com/files/web-server/httpd/conf.d",
+    recurse => "true"
+}
+
+{{< /file-excerpt >}}
+
 Nodes that implemented the above configuration will recursively copy files from the Puppetmaster node located at `/etc/puppet/files/web-server/httpd/conf.d/` to `/etc/httpd/conf.d/`. Recursive file system sources are very useful for deploying basic configurations to a number of different machines; however, these recursive options can be taxing on a Puppet master node using the default Puppetmaster server. When deploying services with Puppet, consider the scale of your deployment and the need for this kind of recursive operation.
 
 ### Describing Services
 
 Puppet makes it possible to require that nodes have configuration and services that extend beyond ensuring that files are present on a system, and can ensure that certain services are running. Consider the following example:
 
-{: .file-excerpt }
-Puppet Configuration Manifest
-:   ~~~ pp
-    package { "openssh-server":
-            ensure => latest
-        }
-    service { "sshd":
-        ensure => running,
-        require => Package["opennssh-server"],
-        subscribe => File[sshdconfig],
+{{< file-excerpt "Puppet Configuration Manifest" puppet >}}
+package { "openssh-server":
+        ensure => latest
     }
-    ~~~
+service { "sshd":
+    ensure => running,
+    require => Package["opennssh-server"],
+    subscribe => File[sshdconfig],
+}
+
+{{< /file-excerpt >}}
+
 
 By defining the `sshd` service within a class with these parameters, puppet will ensure that the SSH daemon is running. Furthermore, if the `sshdconfig` file (which is defined elsewhere) changes, Puppet will restart the daemon. In the following example we define an `apache2` service for Debian and Ubuntu systems:
 
-{: .file-excerpt }
-Puppet Configuration Manifest
-:   ~~~ pp
-    package { "apache2":
-            ensure => latest
-        }
-    service { "apache2":
-        ensure => running,
-        require => Package["apache2"],
-        subscribe => File[httpdconf],
+{{< file-excerpt "Puppet Configuration Manifest" puppet >}}
+package { "apache2":
+        ensure => latest
     }
-    ~~~
+service { "apache2":
+    ensure => running,
+    require => Package["apache2"],
+    subscribe => File[httpdconf],
+}
+
+{{< /file-excerpt >}}
+
 This will ensure that the `apache2` service is running, that the required package is installed on the system, and restart the service if the `httpdconf` file is changed. In both of these examples, the use of `File[]` and `Package[]` syntax marks a reference to descriptions in another part of the class. References to other definitions are capitalized.
 
 ### Defining Commands
 
 Puppet attempts to normalize the way administrators interact with all resources, regardless of their type. Puppet makes it possible to define arbitrary commands that you want to execute. Consider the following example:
 
-{: .file-excerpt }
-File Path
-:   ~~~
-    exec {"rsync_config":
-        command => "/usr/bin/rsync -a username@hostname.example.com:/srv/puppet/www-config /opt/config",
-        unless => "/bin/test -e /opt/config/fresh",
-    }
-    ~~~
+{{< file-excerpt "File Path" >}}
+exec {"rsync_config":
+    command => "/usr/bin/rsync -a username@hostname.example.com:/srv/puppet/www-config /opt/config",
+    unless => "/bin/test -e /opt/config/fresh",
+}
+
+{{< /file-excerpt >}}
+
 This instructs Puppet to run the specified command, in this case an `rsync` command. The `unless` parameter runs tests for the existence of a file before running the command, to avoid running a command unnecessarily.
 
 ## Advanced Puppet Usage

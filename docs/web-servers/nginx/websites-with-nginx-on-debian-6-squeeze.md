@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A basic guide to installing nginx from source on Debian 6 (Squeeze)'
-keywords: 'nginx,http,web servers,debian,debian squeeze,debian 6'
+keywords: ["nginx", "http", "web servers", "debian", "debian squeeze", "debian 6"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/installation/debian-6-squeeze/','websites/nginx/websites-with-nginx-on-debian-6-squeeze/']
-modified: Tuesday, January 28th, 2014
+aliases: ['web-servers/nginx/installation/debian-6-squeeze/','websites/nginx/websites-with-nginx-on-debian-6-squeeze/']
+modified: 2014-01-28
 modified_by:
   name: Linode
-published: 'Wednesday, February 23rd, 2011'
+published: 2011-02-23
 title: 'Websites with nginx on Debian 6 (Squeeze)'
 ---
 
@@ -20,10 +20,9 @@ Nginx is a lightweight and high performance web server designed with the purpose
 
 Although nginx is a relatively new entrant in the web server field, it has achieved a great deal of respect for its agility and efficiency, particularly in high profile situations. Many very high traffic and profile websites have begun to use nginx for its efficiency. At the same time, administrators of smaller systems have found nginx ideal for their systems for its slim memory footprint.
 
-Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before we begin installing the nginx web server, we assume that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -32,8 +31,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Installing nginx from Debian Packages
--------------------------------------
+# Installing nginx from Debian Packages
 
 Nginx is included in the Debian software repositories. While using this method to install nginx will leave you with a working web server *it is not the preferred method for installing nginx.* Nevertheless, if you want to install in this manner, the following sequence of commands first ensures that your system's package databases and installed programs are up to date and then installs the nginx web server:
 
@@ -43,8 +41,7 @@ Nginx is included in the Debian software repositories. While using this method t
 
 Installing nginx in this manner will allow you to rely on the Debian package maintainers to provide quality control, testing, and security updates to ensure that you're running the best possible version of the software. However, the packages provided by the Debian project do not track the latest development of the nginx server. Given the rapid development of nginx and variances between recent versions this is not ideal for many users. Continue to the next section to install nginx directly from source.
 
-Installing nginx from the Source Distribution
----------------------------------------------
+# Installing nginx from the Source Distribution
 
 ### Install Prerequisites
 
@@ -115,8 +112,7 @@ You can now start, stop, and restart nginx just like any other server daemon. Fo
 
 Congratulations! You now have a running and fully functional HTTP server powered by the nginx web server. Continue reading our introduction to [basic nginx configuration](/docs/websites/nginx/basic-nginx-configuration) for more information about using and setting up the web server.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

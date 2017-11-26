@@ -2,12 +2,12 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Use this guide to visualize security data using an Elasticsearch, Logstash, and Kibana Elastic Stack with Wazuh intrusion detection.'
+description: 'This guide shows how to use the Elastic Stack (Elasticsearch, Logstash, and Kibana) to collect, log, and visualize security data and threat alerts through Wazuh, part of OSSEC Intrusion Detection.'
 og_description: 'An Elastic Stack combines Elasticsearch, Logstash, and Kibana. With the help of Wazuh endpoint security, this guide shows how to visualize server security data on your Linode.'
-keywords: 'ossec,elk stack,elk,ossec-hids'
+keywords: ["ossec", "elk stack", "elk,ossec-hids"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Tuesday, October 17, 2017'
-modified: Tuesday, October 17, 2017
+published: 2017-10-17
+modified: 2017-10-17
 modified_by:
   name: Linode
 title: 'Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh'
@@ -19,13 +19,9 @@ external_resources:
   - '[OSSEC Official Documentation](http://ossec-docs.readthedocs.io/en/latest/index.html)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
-
 ![Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh](/docs/assets/elastic-stack-security-title.jpg "Visualize Server Security on CentOS 7 with an Elastic Stack and Wazuh")
 
-## Introduction to Elastic (ELK) Stack
+## What are Elasticsearch, ELK Stack, and Wazuh?
 
 An Elastic Stack, formerly known as an ELK Stack, is a combination of Elasticsearch, Logstash, and Kibana. In this tutorial, you will learn how to install and link together ElasticSearch, Logstash, Kibana, with Wazuh OSSEC to help monitor and visualize security threats to your machine. The resulting structure can be broken down into three core components that work with Wazuh's endpoint security:
 
@@ -96,17 +92,15 @@ Wazuh is an open source branch of the orignal [OSSEC HIDS](https://ossec.github.
 
 1. Create the `wazuh.repo` repository file and paste the text below:
 
-    {: .file}
-    /etc/yum.repos.d/wazuh.repo
-    : ~~~ .repo
-      [wazuh_repo]
-      gpgcheck=1
-      gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
-      enabled=1
-      name=CentOS-$releasever - Wazuh
-      baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
-      protect=1
-      ~~~
+    {{< file "/etc/yum.repos.d/wazuh.repo" >}}
+[wazuh_repo]
+gpgcheck=1
+gpgkey=https://packages.wazuh.com/key/GPG-KEY-WAZUH
+enabled=1
+name=CentOS-$releasever - Wazuh
+baseurl=https://packages.wazuh.com/yum/el/$releasever/$basearch
+protect=1
+{{< /file >}}
 
 2. Install Wazuh Manager:
 
@@ -121,7 +115,7 @@ Wazuh is an open source branch of the orignal [OSSEC HIDS](https://ossec.github.
     2. Install NodeJS:
 
             yum install nodejs
-    
+
     3. Install Wazuh API:
 
             yum install wazuh-api
@@ -163,7 +157,7 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 3. Enable Logstash on system boot:
 
-        systemctl daemon-reload 
+        systemctl daemon-reload
         systemctl enable logstash
         systemctl start logstash
 
@@ -174,30 +168,28 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 5. Modify the `01-wazuh.conf` file to indicate a single-host architecture. Replicate the contents below into your own file. The changes consist of commenting out the `Remote Wazuh Manager` section and uncommenting the `Local Wazuh Manager` section:
 
-    {: .file-excerpt}
-    /etc/logstash/conf.d/01-wazuh.conf
-    : ~~~ conf
-      # Wazuh - Logstash configuration file
-      ## Remote Wazuh Manager - Filebeat input
-      #input {
-      #    beats {
-      #        port => 5000
-      #        codec => "json_lines"
-      ##        ssl => true
-      ##        ssl_certificate => "/etc/logstash/logstash.crt"
-      ##        ssl_key => "/etc/logstash/logstash.key"
-      #    }
-      #}
-      # Local Wazuh Manager - JSON file input
-      input {
-         file {
-             type => "wazuh-alerts"
-             path => "/var/ossec/logs/alerts/alerts.json"
-             codec => "json"
-         }
-      }
-      . . .
-      ~~~
+    {{< file-excerpt "/etc/logstash/conf.d/01-wazuh.conf" >}}
+# Wazuh - Logstash configuration file
+## Remote Wazuh Manager - Filebeat input
+#input {
+#    beats {
+#        port => 5000
+#        codec => "json_lines"
+##        ssl => true
+##        ssl_certificate => "/etc/logstash/logstash.crt"
+##        ssl_key => "/etc/logstash/logstash.key"
+#    }
+#}
+# Local Wazuh Manager - JSON file input
+input {
+   file {
+       type => "wazuh-alerts"
+       path => "/var/ossec/logs/alerts/alerts.json"
+       codec => "json"
+   }
+}
+. . .
+{{< /file-excerpt >}}
 
 6. Add the Logstash user to the "ossec" group to allow access to restricted files:
 
@@ -207,15 +199,13 @@ Install the Elastic Stack via RPM files to get the latest versions of all the so
 
 1.  Edit `/etc/logstash/startup.options` to change the `LS_GROUP=logstash` to `LS_GROUP=ossec`:
 
-    {: .file-excerpt}
-    /etc/logstash/startup.options
-    : ~~~ options
-      . . .
-      # user and group id to be invoked as
-      LS_USER=logstash
-      LS_GROUP=logstash
-      . . .
-      ~~~
+    {{< file-excerpt "/etc/logstash/startup.options" >}}
+. . .
+# user and group id to be invoked as
+LS_USER=logstash
+LS_GROUP=logstash
+. . .
+{{< /file-excerpt >}}
 
 2. Update the service with the new parameters:
 
@@ -278,25 +268,21 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
 
     Edit the systemd init file and add the following line:
 
-    {: .file-excerpt}
-    /etc/systemd/system/multi-user.target.wants/elasticsearch.service
-    : ~~~ service
-      . . . 
-      LimitMEMLOCK=infinity
-      . . . 
-      ~~~
+    {{< file-excerpt "/etc/systemd/system/multi-user.target.wants/elasticsearch.service" >}}
+. . .
+LimitMEMLOCK=infinity
+. . .
+{{< /file-excerpt >}}
 
     **System V**
-      
+
     Edit the `/etc/sysconfig/elasticsearch` file for RPM or `/etc/default/elasticsearch` for Debian and Ubuntu. Add or change the following line:
 
-    {: .file-excerpt}
-    /etc/sysconfig/elasticsearch or /etc/default/elasticsearch
-    : ~~~
-      . . .
-      MAX_LOCKED_MEMORY=unlimited
-      . . .
-      ~~~
+    {{< file-excerpt "/etc/sysconfig/elasticsearch or /etc/default/elasticsearch" >}}
+. . .
+MAX_LOCKED_MEMORY=unlimited
+. . .
+{{< /file-excerpt >}}
 
 3. Configure the Elasticsearch heap size based on your Linode's resources. This figure will determine how much memory Elasticsearch is allowed to consume. Keep the following rules in mind:
 
@@ -306,17 +292,15 @@ The Elastic Stack will require some tuning before it can be accessed via the Waz
 
     Open the `jvm.options` file and navigate to the block shown here:
 
-    {: .file-excerpt}
-    /etc/elasticsearch/jvm.options
-    : ~~~ options
-      . . .
-      # Xms represents the initial size of total heap space
-      # Xmx represents the maximum size of total heap space
+    {{< file-excerpt "/etc/elasticsearch/jvm.options" >}}
+. . .
+# Xms represents the initial size of total heap space
+# Xmx represents the maximum size of total heap space
 
-      -Xms4g
-      -Xmx4g
-      . . . 
-      ~~~
+-Xms4g
+-Xmx4g
+. . .
+{{< /file-excerpt >}}
 
     This configures Elasticsearch with 4GB of allotted RAM. You may also use the `M` letter to specify megabytes, `Xms4096M` in this example. View your current RAM consumption with the `htop` command. If you do not have htop installed, install it with your distribution's package manager. Allocate as much RAM as you can, up to 50% of the max, while leaving enough available for other daemon and system processes.
 
@@ -326,7 +310,7 @@ A reverse proxy server allows you to secure the Kibana web interface with SSL an
 
 ### Set up a Reverse Proxy Server to Host Kibana as a Subdomain
 
-If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended. 
+If you have SSL encryption enabled on your domain, follow the instructions in the **SSL** section. If not, follow the instructions included in the **Non SSL** section. Although you may skip this section if you wish to access Kibana through its server port, this approach is recommended.
 
 #### nginx
 
@@ -334,73 +318,69 @@ If you have SSL encryption enabled on your domain, follow the instructions in th
 
     **Non SSL**
 
-    {: .file-excerpt}
-    /etc/nginx/conf.d or /etc/nginx/conf
-    : ~~~ conf
-      server {
-          listen 80;
-          # Remove the line below if you do not have IPv6 enabled.
-          listen [::]:80;
-          server_name kibana.exampleIPorDomain;
-      
-          location / {
-              proxy_pass http://exampleIPorDomain:5601;
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection 'upgrade';
-              proxy_set_header Host $host;
-              proxy_cache_bypass $http_upgrade;
-          }
-      
-          auth_basic "Restricted Access";
-          auth_basic_user_file /etc/nginx/htpasswd.users;
-      }
-      ~~~
+    {{< file-excerpt "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+server {
+    listen 80;
+    # Remove the line below if you do not have IPv6 enabled.
+    listen [::]:80;
+    server_name kibana.exampleIPorDomain;
+
+    location / {
+        proxy_pass http://exampleIPorDomain:5601;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    auth_basic "Restricted Access";
+    auth_basic_user_file /etc/nginx/htpasswd.users;
+}
+{{< /file-excerpt >}}
 
     **SSL**
 
-    {: .file-excerpt}
-    /etc/nginx/conf.d or /etc/nginx/conf
-    : ~~~ conf
-      server {
-          listen 80;
-          # Remove the line below if you do note have IPv6 enabled.
-          listen [::]:80;
-          server_name kibana.exampleIPorDomain;
-      
-          location / {
-              proxy_pass http://exampleIPorDomain:5601;
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection 'upgrade';
-              proxy_set_header Host $host;
-              proxy_cache_bypass $http_upgrade;
-          }
-      }
-      
-      server {
-          listen 443 ssl;
-      
-          # Remove the line below if you do not have IPv6 enabled.
-          listen [::]:443 ssl;
-          server_name kibana.exampleIPorDomain;
-      
-          location / {
-              proxy_pass http://exampleIPorDomain:5601;
-              proxy_http_version 1.1;
-              proxy_set_header Upgrade $http_upgrade;
-              proxy_set_header Connection 'upgrade';
-              proxy_set_header Host $host;
-              proxy_cache_bypass $http_upgrade;
-          }
-      
-          ssl_certificate /path/to/ssl/certificate.crt;
-          ssl_certificate_key /path/to/ssl/certificate.key;
-      
-          auth_basic "Restricted Access";
-          auth_basic_user_file /etc/nginx/htpasswd.users;
-      }
-      ~~~
+    {{< file-excerpt "/etc/nginx/conf.d or /etc/nginx/conf" >}}
+server {
+  listen 80;
+  # Remove the line below if you do note have IPv6 enabled.
+  listen [::]:80;
+  server_name kibana.exampleIPorDomain;
+
+  location / {
+      proxy_pass http://exampleIPorDomain:5601;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+}
+
+server {
+  listen 443 ssl;
+
+  # Remove the line below if you do not have IPv6 enabled.
+  listen [::]:443 ssl;
+  server_name kibana.exampleIPorDomain;
+
+  location / {
+      proxy_pass http://exampleIPorDomain:5601;
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+  }
+
+  ssl_certificate /path/to/ssl/certificate.crt;
+  ssl_certificate_key /path/to/ssl/certificate.key;
+
+  auth_basic "Restricted Access";
+  auth_basic_user_file /etc/nginx/htpasswd.users;
+}
+{{< /file-excerpt >}}
 
 2. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
 
@@ -425,83 +405,77 @@ If you have SSL encryption enabled on your domain, follow the instructions in th
 
 2. Enable the necessary mods in Apache. Open `00-proxy.conf` and verify that the lines below are included:
 
-    {: .file-excerpt}
-    /etc/httpd/conf.modules.d/00-proxy.conf
-    : ~~~ conf
-      . . . 
-      LoadModule proxy_module modules/mod_proxy.so
-      LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
-      LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
-      LoadModule proxy_http_module modules/mod_proxy_http.so
-      . . . 
-      ~~~
+    {{< file-excerpt "/etc/httpd/conf.modules.d/00-proxy.conf" >}}
+. . .
+LoadModule proxy_module modules/mod_proxy.so
+LoadModule lbmethod_byrequests_module modules/mod_lbmethod_byrequests.so
+LoadModule proxy_balancer_module modules/mod_proxy_balancer.so
+LoadModule proxy_http_module modules/mod_proxy_http.so
+. . .
+{{< /file-excerpt >}}
 
 3. Create a new virtual config file for the Kibana site. Add the contents below to this file. If you do not have a domain name available, replace the `server_name` parameter value with your Linode's public IP address. Replace `kibana.exampleIPorDomain` and `http://exampleIPorDomain` with your specific values:
 
     **Non SSL**
 
-    {: .file}
-    /etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf
-    : ~~~ conf
-      <VirtualHost *:80>
-          ServerName kibana.exampleIPorDomain
-          ProxyPreserveHost On
-      
-          ProxyPass / http://exampleIPorDomain:5601
-          ProxyPassReverse / http://exampleIPorDomain:5601
-      
-          <Directory "/">
-              AuthType Basic
-              AuthName "Restricted Content"
-              AuthUserFile /etc/apache2/.htpasswd
-              Require valid-user
-          </Directory>
-      </VirtualHost>
-      ~~~
+    {{< file "/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf" >}}
+<VirtualHost *:80>
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  <Directory "/">
+      AuthType Basic
+      AuthName "Restricted Content"
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  </Directory>
+</VirtualHost>
+{{< /file >}}
 
     **SSL**
 
-    {: .file}
-    /etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf
-    : ~~~ conf
-      <VirtualHost *:80>
-          ServerName kibana.exampleIPorDomain
-          ProxyPreserveHost On
-      
-          ProxyPass / http://exampleIPorDomain:5601
-          ProxyPassReverse / http://exampleIPorDomain:5601
-      
-          <Directory "/">
-              AuthType Basic
-              AuthName "Restricted Content"
-              AuthUserFile /etc/apache2/.htpasswd
-              Require valid-user
-          </Directory>
-      </VirtualHost>
-      
-      <VirtualHost *:443
-          ServerName kibana.exampleIPorDomain
-          ProxyPreserveHost On
-      
-          ProxyPass / http://exampleIPorDomain:5601
-          ProxyPassReverse / http://exampleIPorDomain:5601
-      
-          SSLEngine on
-          SSLProtocol all -SSLv2
-          SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM
-          
-          SSLCertificateFile /path/to/cert_file/ssl.crt
-          SSLCertificateKeyFile /path/to/ssl/private.key
-          SSLCertificateChainFile /path/to/ssl/server.ca.pem
-      
-          <Directory "/">
-              AuthType Basic
-              AuthName "Restricted Content"
-              AuthUserFile /etc/apache2/.htpasswd
-              Require valid-user
-          </Directory>
-      </VirtualHost>
-      ~~~
+    {{< file "/etc/httpd/sites-available/kibana.conf or /etc/apache2/sites-available/kibana.conf" >}}
+<VirtualHost *:80>
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  <Directory "/">
+      AuthType Basic
+      AuthName "Restricted Content"
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  </Directory>
+</VirtualHost>
+
+<VirtualHost *:443
+  ServerName kibana.exampleIPorDomain
+  ProxyPreserveHost On
+
+  ProxyPass / http://exampleIPorDomain:5601
+  ProxyPassReverse / http://exampleIPorDomain:5601
+
+  SSLEngine on
+  SSLProtocol all -SSLv2
+  SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM
+
+  SSLCertificateFile /path/to/cert_file/ssl.crt
+  SSLCertificateKeyFile /path/to/ssl/private.key
+  SSLCertificateChainFile /path/to/ssl/server.ca.pem
+
+  <Directory "/">
+      AuthType Basic
+      AuthName "Restricted Content"
+      AuthUserFile /etc/apache2/.htpasswd
+      Require valid-user
+  </Directory>
+</VirtualHost>
+{{< /file >}}
 
 4. Secure your Kibana site with a login page. Create a **.htpasswd** file first if you do not have one:
 
@@ -548,7 +522,7 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 
     firewall-cmd --add-port=5601/tcp --permanent
 
-## ## Connect the Elastic Stack with the Wazuh API
+## Connect the Elastic Stack with the Wazuh API
 
 Now you are ready to access the API and begin making use of your OSSEC Elastic Stack!
 
@@ -569,8 +543,9 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status kibana
         systemctl -l status nginx
 
-    {: .note}
-    > If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
+    {{< note >}}
+    If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
+{{< /note >}}
 
 4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to `kibana.exampleIPorDomain`. You can also reach Kibana by navigating to your server's IP address and specifying port `5601`. Login with the credentials you setup for your Kibana site.
 

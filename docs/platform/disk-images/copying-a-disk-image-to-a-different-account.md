@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to copying a disk to a different Linode account
-keywords: 'disk,migration,moving to different accounts'
+keywords: ["disk", "migration", "moving to different accounts"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/','migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
-modified: Thursday, June 12th, 2014
+aliases: ['migration/copy-disk-image-different-account/','linode-platform/manager/managing-disk-images/','migrate-to-linode/disk-images/copying-a-disk-image-to-a-different-account/']
+modified: 2014-06-12
 modified_by:
   name: Alex Fornuto
-published: 'Friday, June 1st, 2012'
+published: 2012-06-01
 title: Copying a Disk to a Different Account
 ---
 

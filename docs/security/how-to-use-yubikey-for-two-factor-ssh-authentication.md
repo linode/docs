@@ -3,11 +3,11 @@ author:
   name: Huw Evans
   email: me@huw.nu
 description: 'This guide shows you how to use a YubiKey for Two-Factor secure shell authentication - or make it the primary access method.'
-keywords: 'ssh,yubikey,2fa,2 factor authentication,otp'
+keywords: ["ssh", "yubikey", "2fa", "2 factor authentication", "otp"]
 license: '[CC BY-ND 3.0](http://creativecommons.org/licenses/by-nd/3.0/us/)'
 title: 'How to use a YubiKey for Two-Factor Secure Shell Authentication'
-published: Monday, August 28, 2017
-modified: Wednesday, September 6, 2017
+published: 2017-08-28
+modified: 2017-09-06
 modified_by:
   name: Linode
 contributor:
@@ -17,8 +17,6 @@ external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
 ## What is Yubikey?
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey4/) are small USB dongles that you can plug into your computer. They can simulate keyboard input, allowing you to enter One Time Passwords (OTPs) with the press of a button to authenticate with services like Google, Dropbox and GitHub.
@@ -39,8 +37,9 @@ If you want to work through this guide but don't have a YubiKey, you can find on
 
 4. Test your YubiKey at [demo.yubico.com](https://demo.yubico.com) to make sure it's working correctly.
 
-{: .note}
-> Replace each instance of `user@example.com` in this guide with your site's domain name and the appropriate user.
+{{< note >}}
+Replace each instance of `user@example.com` in this guide with your site's domain name and the appropriate user.
+{{< /note >}}
 
 ## Configure Your YubiKey
 
@@ -50,19 +49,19 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 2. Click on the 'Yubico OTP' menu in the top-left corner, and select 'Quick'. Your screen should look like the one below.
 
-[![YubiKey Personalization Tool](/docs/assets/yubikey-personalization-small.png)](/docs/assets/yubikey-personalization.png)
+    [![YubiKey Personalization Tool](/content/assets/yubikey-personalization-small.png)](/content/assets/yubikey-personalization.png)
 
 3. Click 'Write Configuration'. Click 'Cancel' on the pop-up window that asks where to save the log file.
 
-![Prompt to save the log file](/docs/assets/yubikey-log-window.png)
+    ![Prompt to save the log file](/content/assets/yubikey-log-window.png)
 
 4. Now select 'Upload to Yubico'. In the web form that opens, fill in your email address. Select the field asking for an 'OTP from the YubiKey' and touch the button on your YubiKey (or touch and hold if you programmed slot 2). This should fill the field with a string of letters. Complete the captcha and press 'Upload AES key'.
 
-![AES key upload form](/docs/assets/yubikey-upload-form.png)
+    ![AES key upload form](/content/assets/yubikey-upload-form.png)
 
-{:.note}
->
-> The page will respond with a table containing your key information. You should keep this data in a safe place. Should you ever lose your YubiKey, you will need this data to reconfigure a new one with the same settings.
+    {{< note >}}
+The page will respond with a table containing your key information. You should keep this data in a safe place. Should you ever lose your YubiKey, you will need this data to reconfigure a new one with the same settings.
+{{< /note >}}
 
 5. Test that your key works by following the instructions for single-factor authentication on [demo.yubico.com](https://demo.yubico.com). If it doesn't, you may need to wait up to 15 minutes for your key to process on their servers.
 
@@ -70,9 +69,9 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 1. Register for an API key [here](https://upgrade.yubico.com/getapikey/), by entering your email address and (with the 'YubiKey one time password' field selected) touching the button on your YubiKey. Keep the Client ID and Secret Key returned by the website.
 
-    {:.note}
-    >
-    >On Ubuntu, you may need to install `software-properties-common` and `python-software-properties` to add the repository.
+    {{< note >}}
+On Ubuntu, you may need to install `software-properties-common` and `python-software-properties` to add the repository.
+{{< /note >}}
 
 2. On your Linode, install the `pam_yubico` package.
 
@@ -92,9 +91,9 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
     Yubico's documentation also has instructions on [how to build `pam_yubico` from source](https://developers.yubico.com/yubico-pam/).
 
-    {: .note}
-    >
-    > You may need to move `pam_yubico.so` to wherever PAM modules are stored on your system (usually `lib/security`). The Ubuntu package will automatically install the module in the appropriate location, but you can check to see whether it's in the right location with `ls /lib/security`. It may also be stored in `/usr/local/lib/security`, in which case you will need to move it manually.
+    {{< note >}}
+You may need to move `pam_yubico.so` to wherever PAM modules are stored on your system (usually `lib/security`). The Ubuntu package will automatically install the module in the appropriate location, but you can check to see whether it's in the right location with `ls /lib/security`. It may also be stored in `/usr/local/lib/security`, in which case you will need to move it manually.
+{{< /note >}}
 
 3. Create the file `/etc/ssh/authorized_yubikeys`:
 
@@ -102,44 +101,44 @@ If your YubiKey still has its default configuration, you can skip this step. If 
 
 4. Populate this file with the usernames for which you want to enable two-factor authentication and their YubiKey IDs. You can obtain the ID by opening a text editor and touching the button on the YubiKey, and selecting *only the first 12 characters*. The first line below would be a typical configuration. The subsequent lines show a configuration where users `user2`, `user3`, and `user4` use multiple YubiKeys and plan to access the server with all of them.
 
-    {: .file}
-    /etc/ssh/authorized_yubikeys
-    :   ~~~
-        user1:vvklhtiubdcu
-        user2:ccurrufnjder:ccturefjtehv:cctbhunjimko
-        user3:ccdvnvlcbdre:vvvglinuddek
-        user4:vvddhfjjasui:vvfjidkflssd
-        ~~~
+    {{< file "/etc/ssh/authorized_yubikeys" >}}
+user1:vvklhtiubdcu
+user2:ccurrufnjder:ccturefjtehv:cctbhunjimko
+user3:ccdvnvlcbdre:vvvglinuddek
+user4:vvddhfjjasui:vvfjidkflssd
+
+{{< /file >}}
+
 
 5. Add `auth required pam_yubico.so id=client id authfile=/etc/ssh/yubikeys` to the start of `/etc/pam.d/sshd`. Replace `client id` with the ID you retrieved when applying for an API key, and `secret key` with the secret key. If you only want single-factor authentication (either a YubiKey or a password), change `required` to `sufficient` to tell the system that a valid YubiKey will be enough to log in.
 
-    {: .file-excerpt}
-    /etc/pam.d/sshd
-    :   ~~~
-        # PAM configuration for the Secure Shell service
+    {{< file-excerpt "/etc/pam.d/sshd" >}}
+# PAM configuration for the Secure Shell service
 
-        # Add your line below this one
-        # v v v v v v
-        auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/yubikeys
-        # ^ ^ ^ ^ ^ ^
-        # Add your line above this one
+# Add your line below this one
+# v v v v v v
+auth required pam_yubico.so id=client id key=secret key authfile=/etc/ssh/yubikeys
+# ^ ^ ^ ^ ^ ^
+# Add your line above this one
 
-        # Standard Un*x authentication.
-        @include common-auth
-        ~~~
+# Standard Un*x authentication.
+@include common-auth
 
-    {: .note}
-    >
-    > On some systems, like Arch Linux, you will need to edit `/etc/pam.d/system-remote-login` instead of `/etc/pam.d/sshd`.
+{{< /file-excerpt >}}
+
+
+    {{< note >}}
+On some systems, like Arch Linux, you will need to edit `/etc/pam.d/system-remote-login` instead of `/etc/pam.d/sshd`.
+{{< /note >}}
 
 6. In `/etc/ssh/sshd_config`, add or edit the following settings:
 
-    {: .file-excerpt}
-    /etc/ssh/sshd_config
-    :   ~~~
-        ChallengeResponseAuthentication yes
-        UsePAM yes
-        ~~~
+    {{< file-excerpt "/etc/ssh/sshd_config" >}}
+ChallengeResponseAuthentication yes
+UsePAM yes
+
+{{< /file-excerpt >}}
+
 
     If you want to only use a YubiKey for single-factor authentication, set `PasswordAuthentication no`.
 
@@ -159,11 +158,11 @@ If you encounter any problems, make sure you've followed all of the steps in thi
 
 1. Add the word `debug` to the end of the line you added in `/etc/pam.d/sshd`:
 
-    {: .file-excerpt}
-    /etc/pam.d/sshd
-    :   ~~~
-        auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/yubikeys debug
-        ~~~
+    {{< file-excerpt "/etc/pam.d/sshd" >}}
+auth required pam_yubico.so id=<client id> key=<secret key> authfile=/etc/ssh/yubikeys debug
+
+{{< /file-excerpt >}}
+
 
 2. Create a debug log file:
 

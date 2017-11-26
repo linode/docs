@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to running a mail server on your Linode.'
-keywords: 'mail server,linode guide,running a mail server,linode quickstart guide'
+keywords: ["mail server", "linode guide", "running a mail server", "linode quickstart guide"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['mailserver/']
-modified: Sunday, April 13th, 2014
+aliases: ['mailserver/']
+modified: 2014-04-13
 modified_by:
   name: Alex Fornuto
-published: 'Wednesday, June 5th, 2013'
+published: 2013-06-05
 title: Running a Mail Server
 ---
 
@@ -127,17 +127,17 @@ Any type of SSL certificate will work, but some certificates have different degr
 
 The second step is installing and configuring the MTA, MDA, and IMAP/POP3 server. You'll also probably want to install a database server like MySQL or PostgreSQL to help you manage your domains, email addresses, user credentials, aliases, etc. Providing step-by-step instructions for every possible mail server build is beyond the scope of this article. For detailed instructions, see our [Postfix, Dovecot, and MySQL](/docs/email/postfix/email-with-postfix-dovecot-and-mysql) guide. Go ahead and install and configure the software you've chosen for your mail server build now.
 
-{: .note }
->
-> We've written a variety of mail server guides, including guides for older software versions and other mail-related services. See the [Email Server Guides](/docs/email) webpage for more information.
+{{< note >}}
+We've written a variety of mail server guides, including guides for older software versions and other mail-related services. See the [Email Server Guides](/docs/email) webpage for more information.
+{{< /note >}}
 
 ### DNS Records
 
 The third step is to create the DNS records, which help email reach your Linode. The right DNS records also help designate your Linode as a legitimate mail server. In this section, you'll learn how to set the appropriate MX, SPF, and PTR records for your domain and Linode.
 
-{: .note }
->
-> You should lower the time to live (TTL) on your existing DNS records to the lowest allowed value at least 24-48 hours before you make any other DNS changes. That way, any changes you make later will propagate quickly. It's also a good idea to keep your old mail server running for at least 48 hours after you start directing mail to your Linode, just in case the DNS changes take a while to propagate.
+{{< note >}}
+You should lower the time to live (TTL) on your existing DNS records to the lowest allowed value at least 24-48 hours before you make any other DNS changes. That way, any changes you make later will propagate quickly. It's also a good idea to keep your old mail server running for at least 48 hours after you start directing mail to your Linode, just in case the DNS changes take a while to propagate.
+{{< /note >}}
 
 #### MX Records
 
@@ -163,9 +163,9 @@ If your Linode is the only mail server you use, you should be able to use the ex
 
     example.com     86400   TXT     "v=spf1 a ~all"
 
-{: .note }
->
-> Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting [openspf.org](http://www.openspf.org/SPF_Record_Syntax) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< note >}}
+Make sure your SPF records are not too strict. If you accidentally exclude a legitimate mail server, its messages could get marked as spam. We strongly recommend visiting [openspf.org](http://www.openspf.org/SPF_Record_Syntax) to learn how SPF records work and how to construct one that works for your setup. Their [examples](http://www.openspf.org/FAQ/Examples) are also helpful.
+{{< /note >}}
 
 #### Reverse DNS
 
@@ -181,9 +181,9 @@ Outgoing spam, or spam originating from your Linode, is bad news for everyone in
 
 There are also a few other scenarios where your server could be sending spam. Your server or an installed application might get hacked, one of your users might have a compromised account, or you may be sending out email messages that are getting marked as spam. (This is more likely to occur in the case of mass mailings.) The best way to stay on top of outgoing spam is to keep an eye on your outgoing mail logs and pay attention to bounceback errors.
 
-{: .note }
->
-> If you do get added to a block list, take steps to mitigate the source of the spam. Then you will have to contact the mail provider that blocked you and follow their steps to be allowed to send mail again.
+{{< note >}}
+If you do get added to a block list, take steps to mitigate the source of the spam. Then you will have to contact the mail provider that blocked you and follow their steps to be allowed to send mail again.
+{{< /note >}}
 
 Incoming spam can also be a problem. Spam filters help you deal with spam sent to your own users. They let you filter incoming messages based on origin, content, etc. Some spam contains viruses, which can cause more serious damage to recipients.
 
@@ -213,9 +213,9 @@ Here are some of the typical mail ports:
 -   587 for SMTP (actually the preferred non-encrypted port for outgoing connections from mail clients)
 -   465 for SSMTP (encrypted)
 
-{: .note }
->
-> If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#creating-a-firewall) for more information.
+{{< note >}}
+If you're using a firewall, be sure to edit the rules for your mail server's ports. See [these instructions](/docs/securing-your-server#creating-a-firewall) for more information.
+{{< /note >}}
 
 ### Webmail
 

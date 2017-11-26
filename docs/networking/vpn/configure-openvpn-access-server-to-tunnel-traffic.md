@@ -3,21 +3,18 @@ author:
   name: Linode Community
   email: contribute@linode.com
 description: 'Easily tunnel web traffic through OpenVPN Access Server'
-keywords: 'openvpn,networking,vpn,tunnel'
+keywords: ["openvpn", "networking", "vpn", "tunnel"]
 license: '[CC BY-ND 4.0](http://creativecommons.org/licenses/by-nd/4.0/)'
-modified: Thursday, November 3rd, 2016
+modified: 2016-11-03
 modified_by:
   name: Nick Brewer
-published: 'Thursday, November 3, 2016'
+published: 2016-11-03
 title: 'How to Configure OpenVPN Access Server to Tunnel Traffic'
 contributor:
   name: Neal Sebastian
   link: https://github.com/yoneal
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-
-<hr>
 
 *VPN tunneling* is a method of forwarding internet traffic through your VPN connection. This is useful if you want to evade censorship, IP geolocation, or a firewall on your local network.
 

@@ -3,12 +3,12 @@ author:
   name: Alex Fornuto
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 16.04 LTS'
-keywords: 'upgrading,ubuntu,16.04'
+keywords: ["upgrading", "ubuntu", "16.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, March 15th, 2017
+modified: 2017-03-15
 modified_by:
   name: Nick Brewer
-published: 'Tuesday, April 26th, 2016'
+published: 2016-04-26
 title: 'How to Upgrade to Ubuntu 16.04 LTS'
 ---
 
@@ -16,20 +16,22 @@ title: 'How to Upgrade to Ubuntu 16.04 LTS'
 
 Ubuntu 16.04 is a Long-Term Support (LTS) release that will be supported by Canonical until April 2021. This guide explains how to upgrade your Linode from Ubuntu 14.04 (Trusty Tahr) to Ubuntu 16.04 (Xenial Xerus).
 
- {: .caution }
- >Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
- >
+{{< caution >}}
+Distribution upgrades sometimes yield unpredictable results. If possible, use these steps as an alternative to the upgrade method described in this guide:
+
  - Create a new Linode with the latest disk template
  - Rebuild your stack
  - Transfer your data
  - Swap IP addresses
- >
- > The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
->
->**Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
 
-{: .note}
->The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+The upgrade may be incomplete or your system may be corrupted if your internet connection is interrupted. Use [Lish](/docs/networking/using-the-linode-shell-lish) or [Glish](/docs/networking/use-the-graphic-shell-glish) to perform this upgrade in a stable environment that does not rely on an active internet connection to your Linode.
+
+**Important:** Ubuntu 16.04 ships with OpenSSH 7.2p2, which does not allow `ssh-dss` host authentication, or use of the SSH version 1 protocol.
+{{< /caution >}}
+
+{{< note >}}
+The steps required in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prepare to Upgrade
 
@@ -77,27 +79,27 @@ Remember to perform these steps in a Lish or Glish session:
 
 2.  Open `/etc/update-manager/release-upgrades` and verify that the `Prompt` value is set to `lts`:
 
-    {: .file}
-    /etc/update-manager/release-upgrades
-    :   ~~~
-        # Default behavior for the release upgrader.
+    {{< file "/etc/update-manager/release-upgrades" >}}
+# Default behavior for the release upgrader.
 
-        [DEFAULT]
-        # Default prompting behavior, valid options:
-        #
-        #  never  - Never check for a new release.
-        #  normal - Check to see if a new release is available.  If more than one new
-        #           release is found, the release upgrader will attempt to upgrade to
-        #           the release that immediately succeeds the currently-running
-        #           release.
-        #  lts    - Check to see if a new LTS release is available.  The upgrader
-        #           will attempt to upgrade to the first LTS release available after
-        #           the currently-running one.  Note that this option should not be
-        #           used if the currently-running release is not itself an LTS
-        #           release, since in that case the upgrader won't be able to
-        #           determine if a newer release is available.
-        Prompt=lts
-        ~~~
+[DEFAULT]
+# Default prompting behavior, valid options:
+#
+#  never  - Never check for a new release.
+#  normal - Check to see if a new release is available.  If more than one new
+#           release is found, the release upgrader will attempt to upgrade to
+#           the release that immediately succeeds the currently-running
+#           release.
+#  lts    - Check to see if a new LTS release is available.  The upgrader
+#           will attempt to upgrade to the first LTS release available after
+#           the currently-running one.  Note that this option should not be
+#           used if the currently-running release is not itself an LTS
+#           release, since in that case the upgrader won't be able to
+#           determine if a newer release is available.
+Prompt=lts
+
+{{< /file >}}
+
 
 3.  You're now ready to begin the upgrade to Ubuntu 16.04 LTS:
 

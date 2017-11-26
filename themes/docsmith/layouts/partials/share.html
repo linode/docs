@@ -1,0 +1,27 @@
+<div class="social-share">
+    <div class="btn-group share-group">
+        <a data-toggle="dropdown" class="btn btn-info">
+            <i class="fa fa-share-alt fa-inverse"></i>
+        </a>
+        <button href="#" data-toggle="dropdown" class="btn btn-info dropdown-toggle share">
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+            <li>
+                <a data-original-title="Twitter" rel="tooltip"  href="https://twitter.com/share?url={{ .Permalink }}&via=linode&text={{ .Title | truncate 30 }}" class="btn btn-twitter" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Facebook" rel="tooltip"  href="http://www.facebook.com/sharer.php?u={{ .Permalink }}" class="btn btn-facebook" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-facebook"></i>
+                </a>
+            </li>
+            <li>
+                <a data-original-title="Hacker News" rel="tooltip"  href="https://news.ycombinator.com/submitlink?u={{ .Permalink }}&t={{ .Title }}" class="btn btn-hacker-news" data-placement="left" target="_blank" rel="noopener">
+                    <i class="fa fa-hacker-news "></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

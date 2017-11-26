@@ -4,10 +4,10 @@ author:
     email: docs@linode.com
 description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. As you explore and manipulate your data using Workbench, you will discover many more features and shortcuts that can make managing your databases easier.'
 og_description: 'MySQL Workbench is a graphical tool for working with MySQL databases in a client/server model. This tutorial will guide you through installing Workbench.'
-keywords: 'MySQL,MySQL Workbench,workbench,administer database'
+keywords: ["MySQL", "MySQL Workbench", "workbench", "administer database"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Friday, December 4th, 2015'
-modified: 'Tuesday, August 1st, 2017'
+published: 2015-12-04
+modified: 2017-08-01
 modified_by:
     name: Linode
 title: 'Install MySQL Workbench for Database Administration'
@@ -18,8 +18,6 @@ external_resources:
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
 
 ![Deploy MySQL Workbench for Database Administration](/docs/assets/deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 
@@ -43,9 +41,9 @@ Download and install MySQL workbench from the [downloads page](https://www.mysql
 
 There are `.deb` and `.rpm` packages available on the Workbench [download page](https://www.mysql.com/products/workbench/). Alternatively, some distributions have MySQL Workbench in their repositories.
 
-{: .note}
->
->The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other plaforms.
+{{< note >}}
+The screenshots in this guide were taken in Ubuntu but once Workbench is installed on your system, the subsequent steps should be similar for other plaforms.
+{{< /note >}}
 
 When you start MySQL Workbench, you'll land at the home screen. Once you configure your database servers, as we'll do next, then they'll have shortcuts on the home screen.
 
@@ -83,9 +81,9 @@ The first step after running MySQL Workbench is to add your Linode as a database
 
 2.  Once you've configured everything, click **Test Connection**.  If you didn't save your passwords then Workbench will prompt for them.
 
-    {: .note}
-    >
-    >Pay attention to the **Service** area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.
+    {{< note >}}
+Pay attention to the **Service** area of each dialog.  Use the appropriate password (SSH or MySQL) or the connection will fail.
+{{< /note >}}
 
     ![The **SSH** password dialog](/docs/assets/workbenchPassword.png)
 
@@ -143,9 +141,9 @@ MySQL Workbench is deployed in safe mode by default. This will not allow certain
 
 3. Uncheck the line beginning with **"Safe Updates".**
 
-    {: .note}
-    >
-    >In some instances, this may instead be found under **SQL Editor**.
+    {{< note >}}
+In some instances, this may instead be found under **SQL Editor**.
+{{< /note >}}
 
 4. Click **OK**.
 
@@ -253,7 +251,7 @@ You can run a SQL query on a table by entering it at the top of the table view.
 
 ### Export / Import Data
 
-####To Export
+#### To Export
 
 Exporting data is handy for backing up database content or moving a database to a new server.  It's always a good idea to export the database prior to any major changes in structure or the installation of a new application, just in case something goes awry or you want to revert to your pre-install state.
 
@@ -274,7 +272,7 @@ Exporting data is handy for backing up database content or moving a database to 
 7. Click **Start Export**.
 
 
-####To Import
+#### To Import
 
 Importing data can restore a backup created with **Data Export** or can load a database sent to you by a co-worker.
 

@@ -1,1 +1,0 @@
-../../networking/ssh/using-the-terminal.md

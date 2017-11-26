@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use OpenVPN to securely connect separate networks on a Debian 6 (Squeeze) Linode.'
-keywords: 'openvpn debian 6,openvpn debian,debian vpn'
+keywords: ["openvpn debian 6", "openvpn debian", "debian vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/openvpn/debian-6-squeeze/']
-modified: Thursday, August 22nd, 2013
+aliases: ['networking/openvpn/debian-6-squeeze/']
+modified: 2013-08-22
 modified_by:
   name: Linode
-published: 'Tuesday, April 5th, 2011'
+published: 2011-04-05
 title: 'Secure Communications with OpenVPN on Debian 6 (Squeeze)'
 deprecated: true
 ---
@@ -18,10 +18,9 @@ OpenVPN, or Open Virtual Private Network, is a tool for creating networking "tun
 
 For many private networking tasks, we urge users to consider the many capabilities of the OpenSSH package, which can provide easier VPN and VPN-like services. OpenSSH is also installed and configured by default on all Linodes. Nevertheless, if your deployment requires a more traditional VPN solution like OpenVPN, this document covers the installation and configuration of the OpenVPN software.
 
-Before installing OpenVPN, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/docs/security/basics) article as well.
+Before installing OpenVPN, it is assumed that you have followed our [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). If you're concerned about securing and "hardening" the system on your Linode, you might be interested in our [security basics](/content/security/basics) article as well.
 
-Install OpenVPN
----------------
+# Install OpenVPN
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -42,15 +41,15 @@ Most of the relevant configuration for the OpenVPN public key infrastructure is 
 
 Before you can generate the public key infrastructure for OpenVPN, you must configure a few variables that the easy-rsa scripts will use to generate the scripts. These variables are set near the end of the `/etc/openvpn/easy-rsa/2.0/vars` file. Here is an example of the relevant values:
 
-{: .file }
-/etc/openvpn/easy-rsa/2.0/vars
-:   ~~~
-    export KEY_COUNTRY="US"
-    export KEY_PROVINCE="OH"
-    export KEY_CITY="Oxford"
-    export KEY_ORG="My Company"
-    export KEY_EMAIL="username@example.com"
-    ~~~
+{{< file "/etc/openvpn/easy-rsa/2.0/vars" >}}
+export KEY_COUNTRY="US"
+export KEY_PROVINCE="OH"
+export KEY_CITY="Oxford"
+export KEY_ORG="My Company"
+export KEY_EMAIL="username@example.com"
+
+{{< /file >}}
+
 
 Alter the examples to reflect your configuration. This information will be included in certificates you create and it is important that the information be accurate, particularly the `KEY_ORG` and `KEY_EMAIL` values.
 
@@ -128,8 +127,7 @@ If you need to remove a user's access to the VPN server, issue the following com
 
 This will revoke the ability of users who have the `client1` certificate to access the VPN. For this reason, keeping track of which users are in possession of which certificates is crucial.
 
-Configure the Virtual Private Network
--------------------------------------
+# Configure the Virtual Private Network
 
 We'll now need to configure our server file. There is an example file in `/usr/share/doc/openvpn/examples/sample-config-files`. Issue the following sequence of commands to retrieve the example configuration file and move it to the `/etc/openvpn` directory:
 
@@ -141,35 +139,34 @@ We'll now need to configure our server file. There is an example file in `/usr/s
 
 Modify the `remote` line in your `~/client.conf` file to reflect the OpenVPN server's name.
 
-{: .file }
-~/client.conf
-:   ~~~
-    # The hostname/IP and port of the server.
-    # You can have multiple remote entries
-    # to load balance between the servers.
-    remote example.com 1194
-    ~~~
+{{< file "~/client.conf" >}}
+# The hostname/IP and port of the server.
+# You can have multiple remote entries
+# to load balance between the servers.
+remote example.com 1194
+
+{{< /file >}}
+
 
 Edit the `client.conf` file to reflect the name of your key. In this example we use `client1` for the file name.
 
-{: .file }
-~/client.conf
-:   ~~~
-    # SSL/TLS parms.
-    # See the server config file for more
-    # description. It's best to use
-    # a separate .crt/.key file pair
-    # for each client. A single ca
-    # file can be used for all clients.
-    ca ca.crt
-    cert client1.crt
-    key client1.key
-    ~~~
+{{< file "~/client.conf" >}}
+# SSL/TLS parms.
+# See the server config file for more
+# description. It's best to use
+# a separate .crt/.key file pair
+# for each client. A single ca
+# file can be used for all clients.
+ca ca.crt
+cert client1.crt
+key client1.key
+
+{{< /file >}}
+
 
 Copy the `~/client1.conf` file to your client system. You'll need to repeat the entire key generation and distribution process for every user and every key that will connect to your network.
 
-Connect to the VPN
-------------------
+# Connect to the VPN
 
 To initialize the OpenVPN server process, run the following command:
 
@@ -183,8 +180,7 @@ Most network management tools provide some facility for managing connections to 
 
 If you use Mac OS X, we have found that the [Tunnelblick](http://code.google.com/p/tunnelblick/) tool provides an easy method for managing OpenVPN connections. If you use Windows, the [OpenVPN GUI](http://openvpn.se/) tool may be an effective tool for managing your connections too. Linux desktop users can install the OpenVPN package and use the network management tools that come with your desktop environment.
 
-Using OpenVPN
--------------
+# Using OpenVPN
 
 ### Connect Remote Networks Securely With the VPN
 
@@ -194,19 +190,19 @@ Once configured, the OpenVPN server allows you to encrypt traffic between your l
 
 By deploying the following configuration, you will be able to forward *all* traffic from client machines through your Linode, and encrypt it with transport layer security (TLS/SSL) between the client machine and the Linode. Begin by adding the following parameter to the `/etc/openvpn/server.conf` file to enable "full tunneling":
 
-{: .file-excerpt }
-/etc/openvpn/server.conf
-:   ~~~
-    push "redirect-gateway def1"
-    ~~~
+{{< file-excerpt "/etc/openvpn/server.conf" >}}
+push "redirect-gateway def1"
+
+{{< /file-excerpt >}}
+
 
 Now edit the `/etc/sysctl.conf` file to uncomment or add the following line to ensure that your system is able to forward IPv4 traffic:
 
-{: .file-excerpt }
-/etc/sysctl.conf
-:   ~~~
-    net.ipv4.ip_forward=1
-    ~~~
+{{< file-excerpt "/etc/sysctl.conf" >}}
+net.ipv4.ip_forward=1
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to set this variable for the current session:
 
@@ -221,20 +217,20 @@ Issue the following commands to configure `iptables` to properly forward traffic
 
 Before continuing, insert these `iptables` rules into your system's `/etc/rc.local` file to ensure that theses `iptables` rules will be recreated following your next reboot cycle:
 
-{: .file-excerpt }
-/etc/rc.local
-:   ~~~
-    #!/bin/sh -e
-    #
-    # [...]
-    #
+{{< file-excerpt "/etc/rc.local" >}}
+#!/bin/sh -e
+#
+# [...]
+#
 
-    iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
-    iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
-    iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -s 10.8.0.0/24 -j ACCEPT
+iptables -A FORWARD -j REJECT iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
-    exit 0
-    ~~~
+exit 0
+
+{{< /file-excerpt >}}
+
 
 This will enable all client traffic *except* DNS queries to be forwarded through the VPN. To forward DNS traffic through the VPN you will need to install the `dnsmasq` package and modify the `/etc/opnevpn/server.conf` package. Begin by issuing the following command:
 
@@ -242,33 +238,33 @@ This will enable all client traffic *except* DNS queries to be forwarded through
 
 After completing the installation the configuration will need to be modified so that dnsmasq is not listening on a public interface. You will need to find the following lines in the configuration file and make sure the lines are uncommented and have the appropriate values:
 
-{: .file-excerpt }
-/etc/dnsmasq.conf
-:   ~~~
-    listen-address=127.0.0.1,10.8.0.1
+{{< file-excerpt "/etc/dnsmasq.conf" >}}
+listen-address=127.0.0.1,10.8.0.1
 
-    bind-interfaces
-    ~~~
+bind-interfaces
+
+{{< /file-excerpt >}}
+
 
 This will configure dnsmasq to listen on localhost and the gateway IP address of your OpenVPN's tun device.
 
 When your system boots, dnsmasq will try to start prior to the OpenVPN tun device being enabled. This will cause dnsmasq to fail at boot. To ensure that dnsmasq is properly started at boot, you'll need to modify your `/etc/rc.local` file once again. By adding the following line, dnsmasq will start after all the init scripts have finished. You should place the restart command below your iptables rules:
 
-{: .file-excerpt }
-/etc/rc.local
-:   ~~~
-    /etc/init.d/dnsmasq restart
+{{< file-excerpt "/etc/rc.local" >}}
+/etc/init.d/dnsmasq restart
 
-    exit 0
-    ~~~
+exit 0
+
+{{< /file-excerpt >}}
+
 
 Add the following directive to the `/etc/openvpn/server.conf` file:
 
-{: .file-excerpt }
-/etc/openvpn/server.conf
-:   ~~~
-    push "dhcp-option DNS 10.8.0.1"
-    ~~~
+{{< file-excerpt "/etc/openvpn/server.conf" >}}
+push "dhcp-option DNS 10.8.0.1"
+
+{{< /file-excerpt >}}
+
 
 Finally, before attempting to connect to the VPN in any configuration, restart the OpenVPN server and dnsmasq by issuing the following commands:
 
@@ -277,8 +273,7 @@ Finally, before attempting to connect to the VPN in any configuration, restart t
 
 Once these configuration options have been implemented, you can test the VPN connection by connecting to the VPN from your local machine, and access one of the many websites that will display your IP address. If the IP address displayed matches the IP address of your Linode, all network traffic from your local machine will be filtered through your Linode and encrypted over the VPN between your Linode and your local machine. If, however, your apparent public IP address is different from your Linode's IP address, your traffic is not being filtered through your Linode or encrypted by the VPN.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 
