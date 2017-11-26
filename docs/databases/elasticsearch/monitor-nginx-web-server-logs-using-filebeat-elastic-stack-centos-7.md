@@ -5,36 +5,32 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide will show how to use Elasticsearch, Filebeat, and Kibana to collect and visualize web server logs.'
-og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install three components of the stack - Filebeat, Elasticsearch, and Kibana - to visualize nginx web server logs.'
+description: 'This guide will show how to use Elasticsearch, Filebeat, Metricbeat, and Kibana to monitor webserver logs and metrics.'
+og_description: 'The Elastic Stack provides a free, open-source solution to search, collect, and analyze data. This guide shows how to install four components of the stack - Filebeat, Metricbeat, Elasticsearch, and Kibana - to monitor a typical nginx webserver.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
-keywords: 'nginx centos 7,linux web server,elasticsearch,filebeat,beats,kibana,elk stack,elastic stack'
+keywords: 'nginx centos 7,linux web server,elasticsearch,filebeat,metricbeat,beats,kibana,elk stack,elastic stack'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, September 18th, 2017'
-modified: Monday, November 6, 2017
+published: 'Monday, November 27th, 2017'
+modified: Monday, November 27th, 2017
 modified_by:
   name: Linode
-title: 'Monitor nginx Web Server Logs Using the Elastic Stack on Centos 7'
+title: 'Monitor an nginx Web Server Using the Elastic Stack on Centos 7'
 ---
 
 *This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
 
 ---
 
-
 ## What is the Elastic Stack?
 
-The [Elastic](https://www.elastic.co/) stack is a troika of tools that provides a free and open-source solution that searches, collects and analyzes data from any source and in any format and visualizes it in real time. 
+The [Elastic](https://www.elastic.co/) Stack is a set of open-source tools that aid in analyzing different types of data. Tools such as Filebeat and Metricbeat can collect system and webserver logs and send them along to Elasticsearch where the data can be searched, analyzed, and visualized in Kibana, a browser-based application.
 
-This guide will explain how to install components of the stack - namely, Elasticsearch, Filebeat, and Kibana - and use them to explore nginx web server logs in Kibana, the browser-based component that visualizes data.
-
-This guide will walk through the installation and set up of version 5 of the Elastic stack, which is the latest at time of this writing.
+This guide will explain how to install components of the stack to monitor a typical webserver host. The versions of each tool mentioned here will be based upon version 6 of each element of the stack, which is a recent release featuring additional features and fixes.
 
 {: .note}
 >
 >This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-
 
 ## Before You Begin
 
@@ -50,7 +46,7 @@ This guide will walk through the installation and set up of version 5 of the Ela
 
 ## Install OpenJDK 8
 
-Elasticsearch requires the most recent versions of Java. On CentOS 7, OpenJDK 8 is available for installation from the official repositories, so install the package in preparation to run Elasticsearch.
+Elasticsearch requires the most recent versions of Java. On CentOS 7, OpenJDK 8 is available for installation from the official repositories, which will be used as the Java environment for Elasticsearch.
 
 1.  Install the headless OpenJDK package:
 
@@ -79,9 +75,9 @@ The Elastic Yum package repository contains all the necessary packages for the r
         {: .file}
         /etc/yum.repos.d/elastic.repo
         :   ~~~ ini
-            [elasticsearch-5.x]
-            name=Elasticsearch repository for 5.x packages
-            baseurl=https://artifacts.elastic.co/packages/5.x/yum
+            [elasticsearch-6.x]
+            name=Elastic repository for 6.x packages
+            baseurl=https://artifacts.elastic.co/packages/6.x/yum
             gpgcheck=1
             gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
             enabled=1
@@ -95,16 +91,20 @@ The Elastic Yum package repository contains all the necessary packages for the r
 
 ## Install Stack Components
 
-This tutorial will use several parts of the Elastic Stack to view and analyze logs. Before starting, it may be help to summarize how each piece will help form the final stack of software:
+This tutorial will use several parts of the Elastic Stack for log analysis and machine metrics. Before starting, it may be helpful to summarize how each piece will help form the final stack of software:
 
 - Filebeat will watch and collect web server access logs from nginx. Filebeat will also manage configuring Elasticsearch to ensure logs are parsed as expected and loaded into the correct indices.
-- Elasticsearch will store logs sent to it from Filebeat. 
+- Metricbeat will collect system metrics such as CPU, memory, and disk usage, and store this as numerical data in Elasticsearch.
+- Elasticsearch will store logs and metrics sent to it from each Beat. Documents are indexed for searching and available over the default Elasticsearch port (9200).
+- Kibana will connect to Elasticsearch to expose indexed documents in a searchable browser-based visualization interface.
 
 ### Elasticsearch
 
+In order to provide a datastore for Beats and Kibana, Elasticsearch must first be installed and configured with the following steps.
+
 1.  Install the `elasticsearch` package:
 
-         sudo apt-get install elasticsearch
+         sudo yum install elasticsearch
 
 2.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to the following, and leave the other values in this file unchanged:
 
@@ -115,44 +115,60 @@ This tutorial will use several parts of the Elastic Stack to view and analyze lo
         -Xmx512m
         ~~~
 
-3.  Start and enable the `elasticsearch` service:
+3.  In order for Filebeat to properly parse and process certain documents, two _ingest_ plugins must be installed for elasticsearch. First, install the `ingest-user-agent` plugin, which enables elasticsearch to accurately parse user-agent strings.
+
+         sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-user-agent
+
+4.  Next, install the geoip processor plugin. Note that the `elasticsearch-plugin` command may ask for confirmation to make changes to the `/etc/elasticsearch` path, which is safe to do.
+
+        sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-geoip
+
+5.  Start and enable the `elasticsearch` service:
 
          sudo systemctl enable elasticsearch
          sudo systemctl start elasticsearch
 
-3.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
+6.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
 
          curl localhost:9200
 
     Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs. The Elasticsearch REST API should return a JSON response similar to the following:
 
-         {
-           "name" : "e5iAE99",
-           "cluster_name" : "elasticsearch",
-           "cluster_uuid" : "lzuLNZa0Qo-7_puJZZjR4Q",
-           "version" : {
-             "number" : "5.5.2",
-             "build_hash" : "b2f0c09",
-             "build_date" : "2017-08-14T12:33:14.154Z",
-             "build_snapshot" : false,
-             "lucene_version" : "6.6.0"
-           },
-           "tagline" : "You Know, for Search"
-         }
+        {
+          "name" : "Q1R2Oz7",
+          "cluster_name" : "elasticsearch",
+          "cluster_uuid" : "amcxppmvTkmuApEdTz673A",
+          "version" : {
+            "number" : "6.0.0",
+            "build_hash" : "8f0685b",
+            "build_date" : "2017-11-10T18:41:22.859Z",
+            "build_snapshot" : false,
+            "lucene_version" : "7.0.1",
+            "minimum_wire_compatibility_version" : "5.6.0",
+            "minimum_index_compatibility_version" : "5.0.0"
+          },
+          "tagline" : "You Know, for Search"
+        }
 
-### Logstash
+### Filebeat
 
-Install the `logstash` package:
+Install the `filebeat` package:
 
-     sudo apt-get install logstash
+     sudo yum install filebeat
+
+### Metricbeat
+
+Install the `metricbeat` package:
+
+     sudo yum install metricbeat
 
 ### Kibana
 
 Install the `kibana` package:
 
-     sudo apt-get install kibana
+     sudo yum install kibana
 
-## Configure Elastic Stack
+## Configure The Stack
 
 ### Elasticsearch
 
@@ -176,149 +192,202 @@ By default, Elasticsearch will create five shards and one replica for every inde
 
 2.  Use `curl` to create an index template with these settings that'll be applied to all indices created hereafter:
 
-        curl -XPUT http://localhost:9200/_template/defaults -d @template.json
+        curl -H'Content-Type: application/json' -XPUT http://localhost:9200/_template/defaults -d @template.json
 
 3.  Elasticsearch should return:
 
         {"acknowledged":true}
 
-### Logstash
+### Kibana
 
-In order to collect Apache access logs, Logstash must be configured to watch any necessary files and then process them, eventually sending them to Elasticsearch. This configuration file assumes that a site has been set up according to the previously mentioned [Apache Web Server on Debian 8 (Jessie)](/docs/web-servers/apache/apache-web-server-debian-8) guide to find the correct log path.
+Enable and start the Kibana service:
 
-1.  Create the following Logstash configuration:
+    sudo systemctl enable kibana
+    sudo systemctl start kibana
+
+In order to securely access Kibana, this guide will use an SSH tunnel to access the web application to avoid opening Kibana on a publicly accessible IP address and port.
+
+By default, Kibana will be listening for requests from its local address only. In order to view Kibana in a local browser, issue the following command in a new terminal window or tab which can be left in the background while working with Kibana:
+
+    ssh -L 5601:localhost:5601 yourusername@yourlinodeaddress -N
+
+Replace `yourusername` and `yourlinodeaddress` with the unix user and IP address or hostname you use to access your linode over SSH.
+
+### Filebeat
+
+Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the nginx module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs. Note that the host should have nginx configured following the
+[Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide.
+
+1.  Create the following Filebeat configuration:
 
     {: .file}
-    /etc/logstash/conf.d/apache.conf
-    :   ~~~ conf
-        input {
-          file {
-            path => '/var/www/*/logs/access.log'
-          }
+    /etc/filebeat/filebeat.yml
+    :   ~~~ yaml
+        filebeat.config.modules:
+          path: ${path.config}/modules.d/*.yml
+
+        setup.kibana:
+          host: "localhost:5601"
+
+        output.elasticsearch:
+          hosts: ["localhost:9200"]
+
+        setup.dashboards.enabled: true
+        ~~~
+
+2.  Rename Filebeat's default module files in order to enable them. The following commands enable the nginx module.
+
+        sudo mv /etc/filebeat/modules.d/nginx.yml.disabled /etc/filebeat/modules.d/nginx.yml
+
+2.  Start and enable the `filebeat` service:
+
+        sudo systemctl enable filebeat
+        sudo systemctl start filebeat
+
+### Metricbeat
+
+Like Filebeat, Metricbeat also provides a variety of built-in modules to help configure itself to monitor different aspects of the host system automatically. The following steps will configure Metricbeat to use these features and enable the system service.
+
+1.  Create the following Metricbeat configuration:
+
+    {: .file}
+    /etc/metricbeat/metricbeat.yml
+    :   ~~~ yaml
+        metricbeat.config.modules:
+          path: ${path.config}/modules.d/*.yml
+
+        setup.kibana:
+          host: "localhost:5601"
+
+        output.elasticsearch:
+          hosts: ["localhost:9200"]
+
+        setup.dashboards.enabled: true
+        ~~~
+
+2.  Rename several of the preconfigured module configuration files in order to enable them. The following commands will enable the Elasticsearch, Kibana, and nginx modules:
+
+        sudo mv /etc/metricbeat/modules.d/elasticsearch.yml.disabled /etc/metricbeat/modules.d/elasticsearch.yml
+        sudo mv /etc/metricbeat/modules.d/kibana.yml.disabled /etc/metricbeat/modules.d/kibana.yml
+        sudo mv /etc/metricbeat/modules.d/nginx.yml.disabled /etc/metricbeat/modules.d/nginx.yml
+
+2.  Start and enable the `metricbeat` service:
+
+        sudo systemctl enable metricbeat
+        sudo systemctl start metricbeat
+
+## Creating and Using Visualizations
+
+The rest of this guide will use Kibana's browser-based interface in order to view and search machine data.
+
+Although Filebeat is now monitoring nginx access and error logs, traffic must be generated to create data to visualize in Kibana. Run the following command in another terminal window or tab in order to generate webserver requests in the background:
+
+    while true ; do n=$(( RANDOM % 10 )) ; curl "localhost/?$n" ; sleep $n ; done
+
+Next, open Kibana in your browser by opening the URL `http://localhost:5601` in a browser to access the SSH-forwarded port. The landing page should look similar to the following:
+
+![Kibana 6 Landing Page](/docs/assets/elastic-stack-centos-7-kibana-landing-page.png "Kibana 6 Landing Page")
+
+The interface asks for a default index pattern to be selected from either `filebeat-*` or `metricbeat-*` from the left-hand sidebar. This will instruct Kibana to use the documents that either Filebeat or Metricbeat have indexed by default when presenting search dashboards. Click on `filebeat-*` in order to view the Filebeat index pattern.
+
+From this screen, select the star icon to choose `filebeat-*` as the default index pattern.
+
+![Kibana 6 Select Default Index](/docs/assets/elastic-stack-centos-7-kibana-default-index-pattern.png "Kibana 6 Select Default Index")
+
+Next, click on "Discover" from the far left sidebar in order to view logs that are being indexed by Filebeat. A screen similar to the one shown below should appear:
+
+![Kibana 6 Discover](/docs/assets/elastic-stack-centos-7-kibana-discover.png "Kibana 6 Select Discover")
+
+From this screen, logs can be easily searched and analyzed. For example, to search the nginx access logs for all requests for `/?5` that are being generated by the running shell loop in the background, enter the following into the search box and click the magnifying glass or hit **Enter**:
+
+    nginx.access.url:"/?5"
+
+The interface will perform an Elasticsearch query and show only matching documents.
+
+{: .note}
+>
+>Throughout this guide, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
+
+### Filebeat Dashboards
+
+In addition to collecting nginx access logs, Filebeat also installs several dashboards into Kibana in order to provide useful default visualizations for your data.
+
+From the "Discover" screen, select the "Dashboard" item from the sidebar menu.
+
+![Kibana 6 Dashboards](/docs/assets/elastic-stack-centos-7-kibana-dashboard-menu.png "Kibana 6 Dashboards")
+
+This screen will appear, which lists all dashboards available to Kibana.
+
+![Kibana 6 Dashboard List](/docs/assets/elastic-stack-centos-7-kibana-dashboard-list.png "Kibana 6 Dashboard List")
+
+In the search box, enter "nginx" to search for all nginx dashboards. In the list of results, select the dashboard titled "[Filebeat Nginx] Access and error logs". The following dashboard will load:
+
+![Kibana 6 Filebeat Nginx](/docs/assets/elastic-stack-centos-7-kibana-filebeat-nginx.png "Kibana 6 Filebeat Nginx")
+
+Scroll further down to view several vizualizations available in this default dashboard. There are several virtualizations including a geolocation map, response codes by URL, user-agent summaries, and more. These dashboards can help to summarize traffic to a webserver in addition to debugging issues. For example, when the Metricbeat nginx module was enabled, we did not enable the nginx server-status endpoint for use with Metricbeat. This dashboard can help find this misconfiguration.
+
+To begin, scroll to the "Response codes over time" visualization in this dashboard. Observe that there are many 404 responses and click on one of the color-coded 404 bars:
+
+![Kibana 6 Filter by 404](/docs/assets/elastic-stack-centos-7-kibana-404-filter.png "Kibana 6 Filter by 404")
+
+Scroll to the top of the Kibana interface and click the "Apply Now" button to filter the access logs only for logs that returned 404 to the user.
+
+![Kibana 6 Apply Filter](/docs/assets/elastic-stack-centos-7-kibana-404-filter-apply.png "Kibana 6 Apply Filter")
+
+After applying this filter, scroll down again to view the visualizations for all 404 logs. Observe that "Response codes by top URLs" visualization indicates that nginx is only returning 404 response codes for the `/server-status` url:
+
+![Kibana 6 404 URL](/docs/assets/elastic-stack-centos-7-kibana-404-url.png "Kibana 6 404 URL")
+
+We can now fix the nginx configuration to resolve this error.
+
+#### Reconfiguring nginx
+
+Open the `/etc/nginx/nginx.conf` file and add the following `location` block in between the `include` and `location /` lines:
+
+    {: .file}
+    /etc/nginx/nginx.conf
+    :   ~~~ yaml
+        include /etc/nginx/default.d/*.conf;
+
+        location /server-status {
+                stub_status on;
+                access_log off;
+                allow 127.0.0.1;
+                allow ::1;
+                deny all;
         }
 
-        filter {
-          grok {
-            match => { "message" => "%{COMBINEDAPACHELOG}" }
-          }
-        }
-
-        output {
-          elasticsearch { }
+        location / {
         }
         ~~~
 
-2.  Start and enable `logstash`:
+Then restart nginx:
 
-        sudo systemctl enable logstash
-        sudo systemctl start logstash
+    sudo systemctl restart nginx
 
-### Kibana
+Then perform steps similar to the preceding section in order to observe response code history. 404 response codes should gradually stop appearing as you perform fresh searches in Kibana to view new logs.
 
+### Metricbeat
 
-1.  Open `/etc/kibana/kibana.yml`. Uncomment the following two lines and replace `localhost` with the public IP address of your Linode. If you have a firewall enabled on your server, make sure that the server accepts connections on port `5601`.
+In addition to web server access logs, host metrics can be viewed in Kibana by using visualizations created by Metricbeat. From the left-hand sidebar, select "Dashboard" and enter "metricbeat" in order to filter for Metricbeat dashboards. Select the dashboard named "[Metricbeat System] Overview".
 
-    {:.file-excerpt}
-    /etc/kibana/kibana.yml
-    :  ~~~
-       server.port: 5601
-       server.host: "localhost"
-       ~~~
+A new dashboard should open with visualizations similar to the following:
 
-2.  Enable and start the Kibana service:
+![Kibana 6 Metricbeat Overview](/docs/assets/elastic-stack-centos-7-kibana-metricbeat-overview.png "Kibana 6 Metricbeat Overview")
 
-        sudo systemctl enable kibana
-        sudo systemctl start kibana
+This dashboard provides a high-level overview of host metrics including CPU, memory, disk, and network use. Note that if you install Metricbeat on any additional hosts and send metrics to a central Elasticsearch instance, Kibana provides a centralized monitoring view for a fleet of individual hosts. From this dashboard, select "Host Overview" from the "System Navigation" section of the dashboard.
 
-3.  In order for Kibana to find log entries to configure an *index pattern*, logs must first be sent to Elasticsearch. With the three daemons started, log files should be collected with Logstash and stored in Elasticsearch. To generate logs, issue several requests to Apache:
+From this dashboard, scroll down to view all of the host data being collected by Metricbeat. These visualizations provide a wealth of information.
 
-        for i in `seq 1 5` ; do curl localhost ; sleep 0.2 ; done
-
-4.  Next, open Kibana in your browser. Kibana listens for requests on port `5601`, so depending on your Linode's configuration, you may need to port-forward Kibana through SSH. The landing page should look similar to the following:
-
-    ![Kibana 5 Index Pattern Configuration](/docs/assets/elastic-stack-debian-8-kibana-index-pattern.png "Kibana 5 Index Pattern Configuration")
-
-    This screen permits you to create an index pattern, which is a way for Kibana to know which indices to search for when browsing logs and creating dashboards. The default value of `logstash-*` matches the default indices created by Logstash. Clicking "Create" on this screen is enough to configure Kibana and begin reading logs.
-
-    {: .note}
-    >
-    >Throughout this section, logs will be retrieved based upon a time window in the upper right corner of the Kibana interface (such as "Last 15 Minutes"). If at any point, log entries no longer are shown in the Kibana interface, click this timespan and choose a wider range, such as "Last Hour" or "Last 1 Hour" or "Last 4 Hours," to see as many logs as possible.
-
-## View Logs
-
-After the previously executed `curl` commands created entries in the Apache access logs, Logstash will have indexed them in Elasticsearch. These are now visible in Kibana.
-
-The "Discover" tab on the left-hand side of Kibana's interface (which should be open by default after configuring your index pattern) should show a timeline of log events:
-
-![Kibana 5 Discover Tab](/docs/assets/elastic-stack-debian-8-kibana-discover.png "Kibana 5 Discover Tab")
-
-Over time, and as other requests are made to the web server via `curl` or a browser, additional logs can be seen and searched from Kibana. The Discover tab is a good way to familiarize yourself with the structure of the indexed logs and determine what to search and analyze.
-
-In order to view the details of a log entry, click the drop-down arrow to see individual document fields:
-
-![Kibana 5 Document Fields](/docs/assets/elastic-stack-debian-8-kibana-field-dropdown.png "Kibana 5 Document Fields")
-
-Fields represent the values parsed from the Apache logs, such as `agent`, which represents the `User-Agent` header, and `bytes`, which indicates the size of the web server response.
-
-### Analyze Logs 
-
-Before continuing, generate a couple of dummy 404 log events in your web server logs to demonstrate how to search and analyze logs within Kibana:
-
-    for i in `seq 1 2` ; do curl localhost/notfound-$i ; sleep 0.2 ; done
-
-#### Search Data
-
-The top search bar within the Kibana interface allows you to search for queries following the [query string syntax](https://www.elastic.co/guide/en/elasticsearch/reference/5.5/query-dsl-query-string-query.html#query-string-syntax) to find results.
-
-For example, to find the 404 error requests you generated from among 200 OK requests, enter the following in the search box:
-
-    response:404
-
-Then, click the magnifying glass search button.
-
-![Kibana 5 Search Bar](/docs/assets/elastic-stack-debian-8-kibana-search-bar.png "Kibana 5 Search Bar")
-
-The user interface will now only return logs that contain the "404" code in their response field.
-
-#### Analyze Data
-
-Kibana supports many types of Elasticsearch queries to gain insight into indexed data. For example, consider the traffic that resulted in a "404 - not found" response code. Using [aggregations](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html), useful summaries of data can be extracted and displayed natively in Kibana.
-
-To create one of these visualizations, begin by selecting the "Visualize" tab:
-
-![Kibana 5 Visualize Tab](/docs/assets/elastic-stack-debian-8-kibana-visualize-tab.png "Kibana 5 Visualize Tab")
-
-Then, select one of the icons to create a visualization:
-
-![Kibana 5 Create Visualization](/docs/assets/elastic-stack-debian-8-kibana-create-visualization.png "Kibana 5 Create Visualization")
-
-Select "Pie" to create a new pie chart:
-
-![Kibana 5 Select Pie Chart Visualization](/docs/assets/elastic-stack-debian-8-kibana-pie-chart.png "Kibana 5 Select Pie Chart Visualization")
-
-Then select the `logstash-*` index pattern to determine from where the data for the pie chart will come:
-
-![Kibana 5 Select Pie Chart Index](/docs/assets/elastic-stack-debian-8-kibana-vis-index.png "Kibana 5 Select Pie Chart Index")
-
-At this point, a pie chart should appear in the interface ready to be configured. Follow these steps to configure the visualization in the user interface pane that appears to the left of the pie chart:
-
-- Select "Split Slices" to create more than one slice in the visualization.
-- From the "Aggregation" drop-down menu, select "Terms" to indicate that unique terms of a field will be the basis for each slice of the pie chart.
-- From the "Field" drop-down menu, select `response.keyword`. This indicates that the `response` field will determine the size of the pie chart slices.
-- Finally, click the "Play" button to update the pie chart and complete the visualization.
-
-![Kibana 5 Select Pie Chart Configuration](/docs/assets/elastic-stack-debian-8-kibana-finished-pie.png "Kibana 5 Select Pie Chart Configuration")
-
-Observe that only a portion of requests have returned a 404 response code (remember to change the aforementioned time span if your curl requests occurred earlier than you are currently viewing). This approach of collecting summarized statistics about the values of fields within your logs can be similarly applied to other fields, such as the http verb (GET, POST, etc.), or can even create summaries of numerical data, such as the total amount of bytes transferred over a given time period.
-
-If you wish to save this visualization for use later use, click the "Save" button near the top of the browser window to name the visualization and save it permanently to Elasticsearch.
+![Kibana 6 Metricbeat Host View](/docs/assets/elastic-stack-centos-7-kibana-metricbeat-host.png "Kibana 6 Metricbeat Host View")
 
 ## Further Reading
 
-Although this tutorial has provided an overview of each piece of the Elastic stack, more reading is available to learn additional ways to process and view data, such as additional Logstash filters to enrich log data, or other Kibana visualizations to present data in new and useful ways.
+This tutorial has covered only a portion of the data available for searching and analysis that Filebeat and Metricbeat provide. By drawing upon existing dashboards for examples, additional charts, graphs, and other visualizations can be created to answer specific questions and provide useful dashboards for individual purposes.
 
 Comprehensive documentation for each piece of the stack is available from the Elastic web site:
 
 - The [Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html) contains additional information regarding how to operate Elasticsearch, including clustering, managing indices, and more.
-- The [Logstash documentation](https://www.elastic.co/guide/en/logstash/current/index.html) contains useful information on additional plug-ins that can further process raw data, such as geolocating IP addresses, parsing user-agent strings, and other plug-ins.
+- [Metricbeat's documentation](https://www.elastic.co/guide/en/beats/metricbeat/current/index.html) provides additional information regarding configuration options and modules for other projects such as Apache, MySQL, and more.
+- The [Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/index.html) is useful if additional logs need to be collected and processed outside of the logs covered in this tutorial.
 - [Kibana's documentation pages](https://www.elastic.co/guide/en/kibana/current/index.html) provide additional information regarding how to create useful visualizations and dashboards.
