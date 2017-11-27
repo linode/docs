@@ -61,7 +61,7 @@ Just as `psql` allows you to connect to a remote host, `pg_dump` can be run from
 
 	pg_dump -h 198.51.100.0 -p 5432 dbname > dbname.bak
 	
-### All Databases 
+### All Databases
 
 Because `pg_dump` only creates a backup of one database at a time, it does not store information about database roles or other cluster-wide configuration. To store this information, and back up all of your databases simultaneously, you can use `pg_dumpall`.
 
