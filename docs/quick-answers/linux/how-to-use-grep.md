@@ -2,7 +2,8 @@
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'Filter system output with the grep command.'
+description: 'Use our guide to filter system output with the grep command.'
+og_description: 'Use the grep command to filter output from administrative commands, so you get only relevant data. This guide shows you how.'
 keywords: ["linux", "how to", "grep", "filter"]
 aliases: ['quick-answers/how-to-use-grep/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
