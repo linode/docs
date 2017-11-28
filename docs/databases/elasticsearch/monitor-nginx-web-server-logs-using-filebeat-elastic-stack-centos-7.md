@@ -55,9 +55,9 @@ Elasticsearch requires recent versions of Java. On CentOS 7, OpenJDK 8 is availa
 2.  Ensure that Java is ready for use by Elasticsearch by checking that the installed version is at least at version 1.8.0:
 
         java -version
-        
+
     The installed version should be similar to the following:
-    
+
         openjdk version "1.8.0_151"
         OpenJDK Runtime Environment (build 1.8.0_151-b12)
         OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)
