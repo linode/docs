@@ -2,77 +2,77 @@
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com
-description: 'This guide shows how to install, configure and use Salt Cloud'
+description: 'This guide shows how to install, configure and use Salt Cloud.'
 keywords: ["SaltStack", "Salt", "salt-cloud"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-27
 modified: 2017-11-01
 modified_by:
-    name: Linode
+  name: Linode
 title: 'Configure and Use Salt Cloud'
 contributor:
   name: Sergey Bulavintsev
 ---
 
-
 ## Introduction to Salt Cloud
 
-[Salt Cloud](https://docs.saltstack.com/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud/hypervisors.
-As Salt Cloud is part of Salt, the two are tightly integrated. For example, the default behaviour of Salt Cloud is to install Salt on all provisioned systems. This allows you to easily put systems into desired state during provisioning.
-Also, Salt Cloud allows you to gather information on your systems and manage their lifecycle through a CLI.
-Salt Cloud supports Linode as a provider out of the box. You do not have to install any additional plugins.
-This guide will provide instructions on installing Salt Cloud and configuring it to work with Linode. You will also find out how to use Salt Cloud for managing complex environments.
+[Salt Cloud](https://docs.saltstack.com/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud hosts or hypervisors. During installation, Salt Cloud installs Salt on all provisioned systems by default. This enables the user to put systems into the desired state during provisioning.
+
+Salt Cloud:
+
+* Helps gather information on your systems and manage their lifecycle through a Command Line Interface (CLI).
+* Supports Linode as a provider out of the box. You do not have to install any additional plugins.
+
+This guide shows how to install Salt Cloud and configure it to work on a Linode.
 
 ## Before You Begin
 
-1.  You will need a management server, which will be used to create and manage your linode servers. You can host management server on Linode, use any other server or even your laptop. The only condition is that it is capable of installing and executing Salt Cloud.
+1.  Create a management server which will be used to create and manage your Linode servers. You can host the management server remotely on a Linode, or on a local machine. The only condition is that it is capable of installing and executing Salt Cloud.
 
 2.  This guide assumes that Salt Cloud will be installed together with Salt master server.
 
-3.  Generate API key to access Linode API. This key will be used by Salt Cloud to manage your instances. Use [API key](https://www.linode.com/docs/platform/api/api-key) guide to do this. Make sure to keep your API key safe.
+3.  Generate an [API key](/docs/platform/api/api-key) to access Linode API. This key will be used by Salt Cloud to manage your instances. Make sure to keep your API key safe.
 
-4.  Your management server must have access to the Linode API (non-proxy internet access).
+4.  The management server must have access to the Linode API (non-proxy internet access).
 
-## Install Salt, Salt Cloud via bootstrap script.
+## Install Salt and Salt Cloud via Bootstrap Script
 
-The recommended way to install Salt Cloud is to use Salt Bootstrap script. This script will install salt, salt-cloud packages and all required dependencies. This script has large variety of supported options. Run script with `-h` option to check them or refer to [Salt Bootstrap Guide](https://docs.saltstack.com/en/latest/topics/tutorials/salt_bootstrap.html) for detailed instructions.
+The recommended way to install Salt Cloud is with a Salt Bootstrap script. This script will install Salt, Salt Cloud packages, and all required dependencies. Run the script with the `-h` flag to view the additional options available, or refer to [Salt Bootstrap Guide](https://docs.saltstack.com/en/latest/topics/tutorials/salt_bootstrap.html) for detailed instructions.
 
-1. Download the Salt bootstrap script via curl:
+1. Download the Salt Bootstrap script via curl:
 
         curl -o bootstrap-salt.sh -L https://bootstrap.saltstack.com
 
-2. Use the `-L` option of Salt bootstrap script to install Salt and Salt Cloud.
+2. Execute the script and use the `-L` option to install Salt and Salt Cloud:
 
         sh bootstrap-salt.sh -L
 
-    {{< note >}}
-You will require root privileges to execute this script.
-{{< /note >}}
-
 ## Configure Salt Cloud
 
-1.  Set up provider configuration.
+### Set up Provider Configuration:
 
-    First, configure access to the Linode API. Edit file `/etc/salt/cloud.providers.d/linode.conf` with your text editor of choice. First string in this file is name of your provider configuration. Salt Cloud will use it during operations with instances in CLI. Due to this use short and reasonable name (or abbreviation like `li`). You can also specify multiple linode providers for managing multiple accounts. Linode requires the default root password for the new servers to be set. This password needs to be eight characters and contain lowercase, uppercase, and numbers.
+Configure and test access to the Linode API. 
+
+1.  Edit `/etc/salt/cloud.providers.d/linode.conf` to configure the name of your provider configuration. Salt Cloud will use it during operations with instances in the CLI. Use a short name (or abbreviation like `li`) that will be easy to remember. You can also specify multiple Linode providers for managing multiple accounts. Linode requires the default root password for the new servers to be set. This password needs to be eight characters and contain lowercase, uppercase, and numbers.
 
     {{< file-excerpt "/etc/salt/cloud.providers.d/linode.conf" conf >}}
 linode-provider:
     apikey: <Your API key>
     password: <Default password for the new instances>
         driver: linode
-{{< /note >}}
+{{< /file-excerpt >}}
 
     {{< note >}}
-All configuration files stores data in YAML format. Be careful with indentation - use only spaces and not tabs. Each level of indentation is usually separated with 2 spaces.
+All configuration files store data in YAML format. Be careful with indentation - use only spaces and not tabs. Each level of indentation is usually separated with 2 spaces.
 {{< /note >}}
 
 2. Test access to Linode API
 
     Execute the following command from your master to test access to the Linode API:
 
-       salt-cloud --list-locations linode-provider
+        salt-cloud --list-locations linode-provider
 
-    If you have set up connection to Linode properly, you will see output similar to:
+    If you have set up the connection to Linode properly, you will see output similar to:
 
         linode_provider:
             ----------
@@ -87,28 +87,33 @@ All configuration files stores data in YAML format. Be careful with indentation 
                     LOCATION:
                         Atlanta, GA, USA
 
-3. List available locations, images and sizes
+## Create a New Salt Cloud Instance
 
-    Before creating new instances, you have to specify instance size(amount of system memory, cpu and storage), location(physical location of datacenter) and image(operating system).
-    You can obtain this information by executing following commands:
+### List Available Locations, Images and Sizes
 
-    *  Get available locations:
+Before creating new instances, specify instance size: amount of system memory, CPU, and storage; location: physical location of datacenter; and image: operating system.
 
-            salt-cloud --list-locations linode-provider
+You can obtain this information with the following commands:
 
-    *   Get available sizes:
+*  Available locations:
 
-            salt-cloud --list-sizes linode-provider
+        salt-cloud --list-locations linode-provider
 
-    *   Get available images:
+*  Available sizes:
 
-            salt-cloud --list-images linode-provider
+        salt-cloud --list-sizes linode-provider
 
-4. Set up profile configuration
+*  Available images:
 
-    Next step is to create an instance profile. In this profile you describe a server which will be created in your Linode account. Minimal configuration should include provider, size, image and location.
-    For this example, create an instance with minimal size, using CentOS 7 image, located in London.
-    Open `/etc/salt/cloud.profiles.d/linode-london-1024.conf` and paste the following:
+        salt-cloud --list-images linode-provider
+
+### Set up Profile Configuration
+
+Create an instance profile. In this profile you describe a server which will be created on your Linode account. Minimal configuration should include provider, size, image and location.
+
+For this example, create an instance with minimal size, using a CentOS 7 image, located in London.
+
+1.  Open `/etc/salt/cloud.profiles.d/linode-london-1024.conf` and paste the following:
 
     {{< file-excerpt "/etc/salt/cloud.profiles.d/linode-london-1024.conf" conf >}}
 linode_1024:
@@ -118,11 +123,11 @@ linode_1024:
     location: London, England, UK
 {{< /file-excerpt >}}
 
-    {{< note >}}
-You can use one file for all profiles, or use one file per instance profile. All files from `/etc/salt/cloud.profiles.d/` are read during execution.
-{{< /note >}}
+    You can use one file for all profiles, or use one file per instance profile. All files from `/etc/salt/cloud.profiles.d/` are read during execution.
 
-    By default, Salt Cloud will install Salt Minion on all provisioned servers. Let us pass master hostname to deploy script. This will allow provisioned systems to connect to the master. To do this, set the default master configuration for all provisioned systems. Edit `/etc/salt/cloud.conf.d/master.conf` and paste the following content, replacing `saltmaster.example.com` with the IP address or domain name of your master server:
+2.  By default, Salt Cloud will install Salt Minion on all provisioned servers. To allow provisioned systems to connect to the master, set the default master configuration for all provisioned systems.
+
+    Edit `/etc/salt/cloud.conf.d/master.conf` and paste the following content, replacing `saltmaster.example.com` with the IP address or domain name of your master server:
 
     {{< file-excerpt "/etc/salt/cloud.conf.d/master.conf" >}}
 minion:
@@ -141,7 +146,7 @@ provider: linode-provider
         master: mymaster.example.com
 {{< /file-excerpt >}}
 
-    Finally, let us set up [SSH key authentication](https://www.linode.com/docs/security/use-public-key-authentication-with-ssh) for your instance. To do this during provisioning set up profile as following, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an ssh key on your master server:
+3.  Set up [SSH key authentication](/docs/security/use-public-key-authentication-with-ssh) for your instance. To do this during provisioning, set up the profile as follows, replacing the `ssh_pubkey` and `ssh_key_file` with key information for an SSH key on your master server:
 
     {{< file-excerpt "/etc/salt/cloud.profiles.d/linode-london-1024.conf" conf >}}
 linode_1024_with_ssh_key:
@@ -154,86 +159,97 @@ linode_1024_with_ssh_key:
 {{< /file-excerpt >}}
 
     {{< note >}}
-Please notice that if your master server is located behind a firewall, you will have to open ports 4505-4506 in [firewall](https://docs.saltstack.com/en/latest/topics/tutorials/firewall.html). Depending on your network configuration, you may have to set up port forwarding for these ports.
+If your master server is located behind a firewall, you will have to open ports `4505-4506` in [firewall](https://docs.saltstack.com/en/latest/topics/tutorials/firewall.html). Depending on your network configuration, you may have to set up port forwarding for these ports.
 {{< /note >}}
 
 ## Salt Cloud Interface
 
 ### Create Linode Instances
 
-With this configuration complete, creating new instances in Linode requires just a single command:
+There are several ways to create new instances:
 
-    salt-cloud -p linode_1024 linode1
+*  **Create a single new instance**:
 
-Creating the instance and installing salt-minion on it might take some time. When deployment is finished, you will see following summary:
+        salt-cloud -p linode_1024 linode1
 
-    linode1:
-        ----------
-        deployed:
-            True
-        id:
-            <ID>
-        image:
-            CentOS 7
-        name:
-            linode1
-        private_ips:
-        public_ips:
-            - <ip_address>
-        size:
-            Linode 1024
-        state:
-            Running
+    Creating the instance and installing Salt Minion on it might take some time.
 
-You can connect to this instance using user `root` and the default password specified in the config file.
+    When deployment is complete, you will see following summary:
 
-To create multiple servers in one command type the following:
-
-    salt-cloud -p linode_1024 linode1 linode2
-
-{{< note >}}
-Instance names, which you provide in the command above is Linode labels. They are used to manage instances internally and they aren not connected to instance hostname. Linode labels may only contain ASCII letters or numbers, dashes, and underscores; must begin and end with letters or numbers, and be at least three characters in length.
-{{< /note >}}
-
-Normally when creating Linode instances they are executed serially. You can use `salt-cloud` command with `-P` option to create instances in parallel allowing for deployment.
-
-    salt-cloud -P -p linode_1024 linode1 linode2
-
-Finally, if you do not want to install Salt Minion on provisioned server, you can run `salt-cloud` with `--no-deploy` option.
-
-    salt-cloud -p linode_1024 --no-deploy linode3
-
-Salt cloud will generate error message, but instance will be created:
-
-    linode3:
-        ----------
-        Error:
+        linode1:
             ----------
-            No Deploy:
-                'deploy' is not enabled. Not deploying.
+            deployed:
+                True
+            id:
+                <ID>
+            image:
+                CentOS 7
+            name:
+                linode1
+            private_ips:
+            public_ips:
+                - <ip_address>
+            size:
+                Linode 1024
+            state:
+                Running
 
+*  You can connect to the instance using user `root` and the password specified in the config file.
 
-### Destroy Linode Instance
+*  To **create multiple servers in one command** type the following:
 
-1.  To destroy a Linode instance, execute `salt-cloud` with `-d` option:
+        salt-cloud -p linode_1024 linode1 linode2
+
+    The instance names which you provide in this command are used to manage instances internally and they are not connected to the instance hostname.
+
+    Linode labels:
+
+    *  May only contain ASCII letters or numbers, dashes, and underscores
+    *  Must begin and end with letters or numbers, and
+    *  Be at least three characters in length.
+
+*  Normally when creating instances, they are executed serially. Use the `salt-cloud` command with `-P` option to **create instances in parallel allowing for deployment**:
+
+        salt-cloud -P -p linode_1024 linode1 linode2
+
+*  **If you do not want to install Salt Minion on the provisioned server**, run `salt-cloud` with the `--no-deploy` option:
+
+        salt-cloud -p linode_1024 --no-deploy linode3
+
+    Salt cloud will generate an error message, but the instance will be created:
+
+        linode3:
+            ----------
+            Error:
+                ----------
+                No Deploy:
+                    'deploy' is not enabled. Not deploying.
+
+### Destroy Salt Cloud Instances
+
+1.  To destroy an instance, execute `salt-cloud` with `-d` option:
 
         salt-cloud -d linode1
 
-2.  Confirm the deletion when prompted, and the server will be destroyed in a couple of seconds.
+2.  The server will be destroyed after you confirm the deletion.
 
 ### Get Information About Running Instances
 
-There are a couple of options to get information about instances are available.
+**Partial Information**
 
-1. Gather partial information by executing `salt-cloud` with the `-Q` option:
+Gather partial information by executing `salt-cloud` with the `-Q` option:
 
-        salt-cloud -Q
+    salt-cloud -Q
 
-2.  Get full information about instances using -F option:
+**Full Information**
 
-        salt-cloud -F
+Get full information about instances using `-F` option:
 
-3.  Configure a selective query. In order to do this, edit `/etc/salt/cloud.conf.d/query.conf` and paste in fields which you would like to select:
+    salt-cloud -F
+
+**Configure a Selective Query**
+
+1.  Edit `/etc/salt/cloud.conf.d/query.conf` and add the fields you would like to select:
 
     {{< file-excerpt "/etc/salt/cloud.conf.d/query.conf" >}}
 query.selection:
@@ -241,7 +257,7 @@ query.selection:
     - size
 {{< /file-excerpt >}}
 
-4.  Execute selective query using `-S` option:
+2.  Execute selective query using `-S` option:
 
         salt-cloud -S
 
@@ -254,29 +270,29 @@ query.selection:
             size:
                 1024
 
-## Performing Actions on Instances
+## How to Perform Actions on Salt Cloud Instances
 
-Actions are features that applied to a specific instance and thus require an instance name to be passed in.
-Currently, the following actions are supported with Linode:
+Actions are features that apply to a specific instance. Currently, the following actions are supported:
 
-    * show_instance
-    * start
-    * stop
+* `show_instance`
+* `start`
+* `stop`
 
-For example, to stop a running linode1 instance, execute `salt-cloud` command with `-a` option and `stop` command:
+For example, to stop a running `linode1` instance, execute the `salt-cloud` command with the `-a` option and `stop` command:
 
-      salt-cloud -a stop linode1
+    salt-cloud -a stop linode1
 
+## Use Cloud Map Files to Manage Complex Environments
 
-## Using Cloud Map Files to Manage Complex Environments
+Scaling, creating, and destroying servers one at a time can be cumbersome. To alleviate this, use Cloud Map files.
 
-When you are scaling up, creating and destroying servers one-by-one becoming cumbersome. To solve this problem, you can use cloud map files. Cloud maps assigns profiles to a list of  instances. During execution Salt Cloud will try to bring state of these instances into agreement with the map file. New instances will be created, and existing instances will remain unmodified.
+Cloud maps assign profiles to a list of instances. During execution Salt Cloud will try to bring the state of these instances into agreement with the map file. New instances will be created, and existing instances will remain unmodified.
 
 ### Configure Cloud Map
 
-This example cloud map will define two instances: linode_web and linode_db. Both these instances will use profile linode_1024, which we defined earlier.
+In this example, Cloud map will define two instances: `linode_web` and `linode_db`. Both instances will use the profile `linode_1024`, defined earlier.
 
-1.  Edit `/etc/salt/cloud.conf.d/linode.map` and paste in following:
+1.  Edit `/etc/salt/cloud.conf.d/linode.map` and paste the following:
 
     {{< file-excerpt "/etc/salt/cloud.conf.d/linode.map" >}}
 linode_1024:
@@ -284,15 +300,13 @@ linode_1024:
     - linode_db
 {{< /file-excerpt >}}
 
-    {{< note >}}
-Cloud map file allows you to define instances from several Linode accounts or even from different provider. Please check the [cloud map](https://docs.saltstack.com/en/latest/topics/cloud/map.html) for an in-depth guide.
-{{< /note >}}
+    Cloud map file allows you to define instances from several Linode accounts or even from a different provider. Check the [Cloud Map documentation](https://docs.saltstack.com/en/latest/topics/cloud/map.html) for an in-depth guide.
 
-2.  To create instances from cloud map file, execute salt-cloud with `-m` option and point to cloud map file.
+2.  To create instances from the Cloud map file, execute `salt-cloud` with the `-m` option and point to the `.map` file:
 
         salt-cloud -m /etc/salt/cloud.conf.d/linode.map
 
-3.  Salt cloud will ask you to confirm the target configuration:
+3.  Salt Cloud will ask you to confirm the target configuration:
 
         The following virtual machines are set to be created:
             linode_web
@@ -302,33 +316,31 @@ Cloud map file allows you to define instances from several Linode accounts or ev
         ... proceeding
         .  .  .
 
-{{< note >}}
-To create instances in parallel, use `-P` option with cloud map files just like with regular provisioning.
-{{< /note >}}
+    To create instances in parallel, use `-P` option with Cloud map files.
 
 ### Delete Instances Created by Cloud Map Files
 
-If an existing instance is removed from the cloud map file, it will remain running. To delete instances created by map files, you have several options:
+If an existing instance is removed from the Cloud map file, it will remain running. To delete instances created by map files:
 
-* Delete a single or multiple instances, by specifying their names:
+* Delete single or multiple instances, specify their names:
 
         salt-cloud -d linode_web linode_db
 
-* Delete all instances, described in map file:
+* Delete all instances, described in the `map` file:
 
         salt-cloud -d -m /etc/salt/cloud.conf.d/linode.map
 
-* Allow Salt Cloud to destroy every instance, not described in map file. SaltStack considers that deleting such instances is very dangerous. Due to that such behaviour is disabled by default and you have to enable it. In order to do this:
+* Allow Salt Cloud to destroy every instance not described in the `map` file. SaltStack considers deleting such instances dangerous. This is disabled by default. To enable it:
 
-  1. Modify `/etc/salt/cloud` and add following:
+    1. Modify `/etc/salt/cloud` and add:
 
         {{< file-excerpt "/etc/salt/cloud" >}}
 enable_hard_maps: True
 {{< /file-excerpt >}}
 
-  2. Execute salt-cloud, passing `--hard` as an option:
+    2. Execute `salt-cloud` with the `--hard` option:
 
             salt-cloud -d -m /etc/salt/cloud.maps.d/linode.map
 
-  3. Confirm the deletion when prompted.
+    3. Confirm the deletion when prompted.
 
