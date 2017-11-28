@@ -32,46 +32,46 @@ PostgreSQL provides the `pg_dump` utility to simplify the process of backing up 
 
 1.  Log in as the `postgres` user:
 
-		su - postgres
+        su - postgres
 
 2.  Dump the contents of a database to a file by running the following command. Replace `dbname` with the name of the database to be backed up.
 
-		pg_dump dbname > dbname.bak
+        pg_dump dbname > dbname.bak
 
-	The resulting backup file, `dbname.bak`, can be transferred to another host with `scp` or stored locally for later use.
+    The resulting backup file, `dbname.bak`, can be transferred to another host with `scp` or stored locally for later use.
 
 3.  To demonstrate restoring lost data, delete your example database and create an empty database in its place:
 
-		dropdb dbname
-		createdb dbname
+        dropdb dbname
+        createdb dbname
 
 4.  Restore the database using `psql`:
 
-		psql test < dbname.bak
+        psql test < dbname.bak
 
 {{< note >}}
 By default, PostgreSQL will ignore any errors that occur during the backup process. This can result in an incomplete backup. To prevent this, you can run the `pg_dump` command with the `-1` option. This will treat the entire backup procedure as a single transaction, which will prevent partial backups in the event of an error:
 
-	pg_dump -1 dbname > dbname.bak
+    pg_dump -1 dbname > dbname.bak
 {{< /note >}}
 
 ### Remote Database
 
 Just as `psql` allows you to connect to a remote host, `pg_dump` can be run from a client computer to back up data on a remote server. Use the `-h` flag to specify the IP address of your Linode and `-p` to identify the port on which PostgreSQL is listening:
 
-	pg_dump -h 198.51.100.0 -p 5432 dbname > dbname.bak
-	
+    pg_dump -h 198.51.100.0 -p 5432 dbname > dbname.bak
+
 ### All Databases
 
 Because `pg_dump` only creates a backup of one database at a time, it does not store information about database roles or other cluster-wide configuration. To store this information, and back up all of your databases simultaneously, you can use `pg_dumpall`.
 
 1.  Create a backup file:
 
-		pg_dumpall > pg_backup.bak
+        pg_dumpall > pg_backup.bak
 
 2.  Restore all databases from the backup:
 
-		psql -f pg_backup.bak postgres
+        psql -f pg_backup.bak postgres
 
 ## Automate Backups with a Cron Task
 
@@ -79,19 +79,19 @@ You may want to set up a cron job so that your database will be backed up automa
 
 1.  Make sure you are logged in as the `postgres` user:
 
-		su - postgres
+        su - postgres
 
 2.  Create a directory to store the automatic backups:
 
-		mkdir -p ~/postgres/backups
+        mkdir -p ~/postgres/backups
 
 3.  Edit the crontab to create the new cron task:
 
-		crontab -e
+        crontab -e
 
 4.  Add the following line to the end of the crontab:
 
-	{{< file-excerpt crontab >}}
+    {{< file-excerpt crontab >}}
 0 * * * 0 pg_dump -U postgres dbname > ~/postgres/backups/dbname.bak
 {{< /file-excerpt >}}
 
