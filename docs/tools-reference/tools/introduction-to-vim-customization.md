@@ -21,9 +21,6 @@ external_resources:
  - '[The Vim Tips Wiki](http://vim.wikia.com/wiki/Vim_Tips_Wiki)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
-
----
 
 ![Vim_banner](/docs/assets/Vim_Customization.jpg)
 

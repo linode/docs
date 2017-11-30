@@ -3,6 +3,7 @@ author:
   name: James Stewart
   email: jstewart@linode.com
 description: 'Learn how to set up master-master MySQL databases replication in this simple step-by-step tutorial.'
+og_description: 'MySQL Master-Master replication adds speed and redundancy. With replication, two separate MySQL servers act as a cluster, particularly useful for high availability website configurations. Use this guide to configure database replication on your Linode.'
 keywords: ["set up mysql", "replication", "master-master", "high availability"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/', 'databases/mysql/mysql-master-master/', 'databases/mysql/mysql-master-master-replication/']
@@ -15,10 +16,14 @@ external_resources:
  - '[MySQL Reference Manuals](http://dev.mysql.com/doc/)'
 ---
 
+![Configure Master-Master MySQL Database Replication](/docs/assets/mysql/mysql-master-master-replication-title.jpg "Configure Master-Master MySQL Database Replication")
+
+## What is MySQL Master-Master Replication?
+
 MySQL Master-Master replication adds speed and redundancy for active websites. With replication, two separate MySQL servers act as a cluster. Database clustering is particularly useful for high availability website configurations. Use two separate Linodes to configure database replication, each with private IPv4 addresses.
 
 {{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with ``sudo``. If you're not familiar with the ``sudo`` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 This guide is written for Debian 7 or Ubuntu 14.04.
 {{< /note >}}

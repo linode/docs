@@ -61,7 +61,7 @@ First, you need to establish a basic connection to your Linode:
     [![An unknown host key warning in PuTTY on Windows.](/docs/assets/362-putty-02-host-key-warning.png)](/docs/assets/362-putty-02-host-key-warning.png)
 
     {{< note >}}
-This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the AJAX console (see the **Console** tab in the Linode Manager) and executing the following command:
+This warning appears because PuTTY wants you to verify that the server you're logging in to is who it says it is. It is unlikely, but possible, that someone could be eavesdropping on your connection and posing as your Linode. To verify the server, compare the key fingerprint shown in the PuTTY warning - the string of numbers and letters starting with **ssh-rsa** in the image above - with your Linode's public key fingerprint. To get your Linode's fingerprint, log in to your Linode via the Lish console (see the **Console** tab in the Linode Manager) and executing the following command:
 
 `ssh-keygen -l -f /etc/ssh/ssh\_host\_rsa\_key.pub`
 

@@ -21,9 +21,6 @@ external_resources:
   - '[nginx Configuration](/docs/websites/nginx/how-to-configure-nginx)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 [Django](https://www.djangoproject.com/) is a high-level Python Web framework that encourages rapid development and clean, pragmatic design. This guide provides an introduction to deploying Django applications using [uWSGI](https://uwsgi-docs.readthedocs.org/) and [nginx](https://www.nginx.com/) on Ubuntu 14.04.
 
 ## Before You Begin

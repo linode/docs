@@ -20,9 +20,6 @@ image: https://linode.com/docs/assets/varnish-nginx-ssl.png
 ---
 
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 **Varnish** is a powerful and flexible caching HTTP reverse proxy. It can be installed in front of any web server to cache its contents, which will improve speed and reduce server load. When a client requests a webpage, Varnish first tries to send it from the cache. If the page is not cached, Varnish forwards the request to the backend server, fetches the response, stores it in the cache, and delivers it to the client.
 
 ![Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8](/docs/assets/use_varnish_nginx_to_serve_wordpress_over_ssl_http_on_debian_8.png "Use Varnish & nginx to Serve WordPress over SSL & HTTP on Debian 8")

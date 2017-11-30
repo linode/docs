@@ -17,10 +17,6 @@ external_resources:
  - '[Odoo Developer Documentation](https://www.odoo.com/documentation/10.0)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
-
 [Odoo](https://www.odoo.com/) (formerly known as OpenERP) is an open-source suite of business applications including customer relationship management (CRM), sales pipeline, project management, manufacturing, invoicing, accounting, eCommerce, and inventory tools, just to name a few. There are thirty-four main applications created by the Odoo team and more than 5,500 developed by community members, covering a wide range of business needs.
 
 ![Install Odoo 10 ERP on Ubuntu 16.04](/docs/assets/install-odoo-10-on-ubuntu-16-04.png "Install Odoo 10 ERP on Ubuntu 16.04")
@@ -161,7 +157,7 @@ While wkhtmltopdf version 0.12.2.4 is available in the official Ubuntu 16.04 rep
 
 2.  Next, modify the configuration file. The complete file should look similar to this, depending on your deployment needs:
 
-      {{< file "/etc/odoo-server.conf" conf >}}
+    {{< file "/etc/odoo-server.conf" conf >}}
 [options]
 admin_passwd = admin
 db_host = False
@@ -184,7 +180,7 @@ xmlrpc_port = 8069
 *  Include the path to log files, and add a new line: `logfile = /var/log/odoo/odoo-server.log`. You can skip this line if you plan to only use `journald` for logging.
 *  Optionally, we could include a new line specifying the Odoo Frontend port used for connection: `xmlrpc_port = 8069`. This only makes sense if you're planning to run multiple Odoo instances (or versions) on the same server. For normal installation, you can skip this line and this instance of Odoo will connect by default to port `8069`.
 
-          {{< note >}}
+    {{< note >}}
 As explained in the [Configure Logs](#configure-logs) section, you have many options for Odoo logging in Ubuntu 16.04. This configuration file assumes you'll use Ubuntu system journals in addition to a custom log path.
 {{< /note >}}
 

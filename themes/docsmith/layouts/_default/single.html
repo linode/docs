@@ -16,10 +16,11 @@
             <div class="col-sm-3">{{ partial "share" . }}</div>
             </div>
             {{ partial "github" . }}
+            {{ partial "contribute_header" . | markdownify }}
             {{ partial "deprecated" . }}
             {{ .Content }}
-            {{ partial "related" . }}
             {{ partial "more" . }}
+            {{ partial "related" . }}
             {{ if (getenv "HUGO_ENV") }}
             {{ partial "disqus" . }}
             {{ end }}

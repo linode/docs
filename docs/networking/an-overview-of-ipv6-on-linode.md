@@ -23,6 +23,14 @@ All Linodes are created with one IPv6 address, which is acquired by Stateless Ad
 
 Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your transfer quota, so you can use your default IPv6 address as if it were a private IP address.
 
+{{< note >}}
+In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
+
+Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-server#configure-a-firewall), for example in `iptables`:
+
+`-A INPUT -p icmpv6 -j ACCEPT`
+{{< /note >}}
+
 ## How to Find Your IPv6 Address
 
 To find your Linode's IPv6 address, see the [Remote Access](/docs/networking/remote-access) tab of your Linode's dashboard or use the `ip` tool:
@@ -57,7 +65,7 @@ IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and
 
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
-| Pool   | Number of addresses                    |
+| Pool   | Number of addresses           |
 |:------:|:-----------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |

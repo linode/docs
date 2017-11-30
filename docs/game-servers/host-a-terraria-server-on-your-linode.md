@@ -21,9 +21,6 @@ external_resources:
 aliases: ['applications/game-servers/host-a-terraria-server-on-your-linode/']
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-<hr>
-
 ![Hosta a Terraria Server on Your Linode](/docs/assets/terraria-server.png "Hosta a Terraria Server on Your Linode")
 
 [Terraria](https://terraria.org/) is a two-dimensional sandbox game, similar to [Minecraft](https://minecraft.net/), which allows players to explore, build, and battle in an open world. In 2015, the Terraria developers announced [support for Linux](http://terraria.org/news/terraria-1-3-0-8-now-for-mac-linux-too), which means that players can host their own standalone Terraria servers.

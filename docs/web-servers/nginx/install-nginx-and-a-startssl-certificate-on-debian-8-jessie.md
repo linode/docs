@@ -16,9 +16,6 @@ contributor:
   link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will result in an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide we are going to configure nginx to prefer strong server-side cipher suites and disable the vulnerable SSLv2 and SSLv3 protocols.
 

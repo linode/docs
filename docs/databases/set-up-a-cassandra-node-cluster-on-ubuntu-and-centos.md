@@ -19,9 +19,6 @@ external_resources:
  - '[Client-to-node encryption](http://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/secureSSLClientToNode.html)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7](/docs/assets/Cassandra/cass.png "Deploy A Production-Ready Cassandra Node Cluster on Ubuntu 16.04 and CentOS 7")
 

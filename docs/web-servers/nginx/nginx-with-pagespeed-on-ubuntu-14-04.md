@@ -19,9 +19,6 @@ external_resources:
  - '[Google PageSpeed Filter Docs](https://developers.google.com/speed/pagespeed/module/config_filters)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 ## What is PageSpeed?
 
 PageSpeed is an open source Google project created to optimize website performance using modules for Apache and nginx. PageSpeed is available as .deb or .rpm binaries, or can be compiled from source.

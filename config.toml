@@ -16,7 +16,7 @@ pygmentsUseClassic = false
 # Also see pygmentsUseClasses above.
 pygmentsStyle = "perldoc"
 
-disqusShortname="TODO"
+disqusShortname="linode-1"
 
 disableKinds = ["taxonomy", "taxonomyTerm"]
 

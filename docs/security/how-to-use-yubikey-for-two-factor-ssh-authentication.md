@@ -17,9 +17,6 @@ external_resources:
 - '[Official Yubico PAM Module Documentation](https://developers.yubico.com/yubico-pam/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 ## What is Yubikey?
 
 [YubiKeys](https://www.yubico.com/products/yubikey-hardware/yubikey4/) are small USB dongles that you can plug into your computer. They can simulate keyboard input, allowing you to enter One Time Passwords (OTPs) with the press of a button to authenticate with services like Google, Dropbox and GitHub.

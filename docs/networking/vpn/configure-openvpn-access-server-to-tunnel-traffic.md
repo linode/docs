@@ -15,9 +15,6 @@ contributor:
   link: https://github.com/yoneal
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-
-<hr>
 
 *VPN tunneling* is a method of forwarding internet traffic through your VPN connection. This is useful if you want to evade censorship, IP geolocation, or a firewall on your local network.
 

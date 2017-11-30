@@ -16,9 +16,6 @@ external_resources:
 - '[Mail-in-a-Box Official Website](https://mailinabox.email/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![How to Create an Email Server with Mail-in-a-Box](/docs/assets/Mail_in_a_box.jpg "How to Create an Email Server with Mail-in-a-Box")
 

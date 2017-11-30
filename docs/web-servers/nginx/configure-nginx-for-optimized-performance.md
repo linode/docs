@@ -16,9 +16,6 @@ contributor:
     link: https://github.com/bobstrecansky
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 nginx is known for its use in both high performance load balancing, and caching static and dynamic web content.  This guide aims to provide assistance in determining the best performance optimizations to make to an nginx server in order to speed up delivery of content to your end users.
 

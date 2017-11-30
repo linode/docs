@@ -21,9 +21,6 @@ external_resources:
    - '[The Cassandra Query Language (CQL)](http://cassandra.apache.org/doc/latest/cql/index.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Deploy a scalable and development driven NoSQL DB with Cassandra](/docs/assets/Cassandra/Apache_Cassandra.png)
 

@@ -19,9 +19,6 @@ external_resources:
 - '[Apache Virtual Host documentation](http://httpd.apache.org/docs/current/vhosts/)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![WordPress on Apache](/docs/assets/multiple-wordpress/Multiple_WordPress.jpg)
 
@@ -130,7 +127,7 @@ Up until this point, the steps have been fairly straightforward and similar to s
 
 3.  Put the following contents in `example1.com`:
 
-    {{< file-excerpt >}}
+    {{< file-excerpt "example1.conf" apache >}}
 <VirtualHost *:80>
 # The primary domain for this host
 ServerName example1.com
@@ -148,7 +145,7 @@ RewriteOptions inherit
 
 # Block .svn, .git
 RewriteRule \.(svn|git)(/)?$ - [F]
-    
+
 # Catchall redirect to www.example1.com
 RewriteCond %{HTTP_HOST}   !^www.example1\.com [NC]
 RewriteCond %{HTTP_HOST}   !^$
@@ -162,9 +159,6 @@ Header always append X-Frame-Options SAMEORIGIN
 </VirtualHost>
 
 {{</file-excerpt >}}
-
-
-
 
 
 4.  Enable the site. This will create a symlink to the `example.com` Apache conf file in `/etc/apache2/sites-enabled/`:
