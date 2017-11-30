@@ -20,7 +20,7 @@ external_resources:
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
 ---
 
-![Kubernetes on Linode](/docs/assets/kubernetes_nginx.jpg)
+![Kubernetes on Linode](/docs/assets/Nginx_Kubernetes.jpg)
 
 ## What is Kubernetes?
 
