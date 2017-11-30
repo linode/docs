@@ -172,7 +172,13 @@ Running `ls` from the Hugo root directory reveals the following structure:
 		git tag 2017-01-01
 		git push origin 2017-01-01
 
-7.  When everything is ready, deploy the site to production (or test).
+7.  Set permissions and add the production boxes to your known hosts:
+         
+        chmod 400 ~/.ssh/production_key
+        ssh-keyscan 173.255.236.165 >> ~/.ssh/known_hosts
+        ssh-keyscan 23.239.11.188 >> ~/.ssh/known_hosts 
+        
+8.  When everything is ready, deploy the site to production (or test).
 
 		gulp publish --target='production' --username='youruser' --version=2017-01-01
 
@@ -206,15 +212,7 @@ The gulp publish task can deploy to any server listed in `linode/hugo/tasks/conf
 
 {{< /file >}}
 		
-### Docs1 and Docs2
 
-The two soon-to-be-production boxes at this time are:
-
-- docs1@45.33.8.121
-- docs2@198.58.105.109
-
-
-They are configured via Salt-ssh, on box salt-master@45.56.97.222 --These three boxes are on the linodedemo account, and the root password can be reset through the manager.
 
 
 
