@@ -326,7 +326,7 @@ group ovpn
 # setting them here and not in client.ovpn. See
 # `openvpn --show-tls`, `openvpn --show-ciphers` and
 #`openvpn --show-digests` for all supported options.
-tls-auth /etc/openvpn/server/ta.key 0
+tls-crypt /etc/openvpn/server/ta.key
 auth SHA512    # This needs to be in client.ovpn too though.
 tls-version-min 1.2
 tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256
@@ -380,7 +380,7 @@ remote <your_linode's IP address> 1194
 ca ca.crt
 cert client1.crt
 key client1.key
-tls-auth ta.key 1
+tls-crypt ta.key
 
 {{< /file >}}
 

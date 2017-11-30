@@ -21,9 +21,6 @@ external_resources:
 aliases: ['applications/game-servers/install-black-mesa-on-debian-or-ubuntu/']
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 This guide will show you how to set up your own [Black Mesa](https://blackmesasource.com/) server on a Linode running Debian or Ubuntu.
 

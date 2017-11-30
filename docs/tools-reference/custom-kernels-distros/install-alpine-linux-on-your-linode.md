@@ -17,9 +17,6 @@ external_resources:
 - '[Alpine Linux](http://www.alpinelinux.org/)'
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-
----
 
 [Alpine Linux](http://www.alpinelinux.org/) is a small, security-oriented Linux distro.
 It's regularly updated with security patches, and runs on the [grsecurity](https://grsecurity.net/) kernel. All binaries are statically linked and built against [musl libc](http://www.musl-libc.org/intro.html).

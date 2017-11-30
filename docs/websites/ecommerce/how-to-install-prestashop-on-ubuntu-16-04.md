@@ -15,9 +15,6 @@ contributor:
   name: Alexandru Andrei
 ---
 
-*This is a Linode Community guide. If you're an expert on something we need a guide on, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ![Prestashop_banner](/docs/assets/PrestaShop.jpg)
 

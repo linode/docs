@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: contribute@linode.com
 description: 'Set up, configure, and customize a Minecraft server using Spigot'
-keywords: ["minecraft", "spigot", ""]
+keywords: ["minecraft", "spigot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-applications/game-servers/minecraft-ubuntu12-04/','applications/game-servers/minecraft-with-spigot-ubuntu/']
 published: 2015-04-21
@@ -15,11 +15,6 @@ contributor:
     name: Sam Mauldin
     link: https://github.com/Sxw1212
 ---
-
-*This is a Linode Community guide. [Write for us](/docs/contribute) and
-earn $250 per published guide.*
-
-<hr>
 
 This guide shows you how to setup your own Minecraft server on a Linode running Ubuntu 14.04/14.10. You can play online with your friends or host a public server.
 

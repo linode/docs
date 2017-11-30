@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2015-02-23
 title: 'How to install Docker and deploy a LAMP Stack'
+deprecated: true
 external_resources:
  - '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
  - '[Docker Docs](http://docs.docker.com/)'

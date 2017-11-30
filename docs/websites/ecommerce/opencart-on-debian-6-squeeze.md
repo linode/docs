@@ -25,7 +25,6 @@ register_globals = Off magic_quotes_gpc = Off file_uploads = 1 session_auto_star
 {{< /file >}}
 
 
-
 Additionally, you will need to make sure that the following PHP extensions are installed:
 
     apt-get install php5-mysql php5-gd php5-curl php5-zip

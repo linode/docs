@@ -5,12 +5,12 @@ author:
 description: 'How to serve multiple SSL-enabled websites from a single public IP using the SubjectAltName feature of OpenSSL.'
 keywords: ["openssl", "apache ssl", "subjectaltname", "ssl linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssl-certificates/subject-alternate-names/']
-modified: 2012-11-14
+aliases: ['security/ssl-certificates/subject-alternate-names/','security/ssl/multipls-ssl-sites-using-subjectaltname/']
+modified: 2017-11-27
 modified_by:
   name: Lukas Sabota
 published: 2009-11-16
-title: Multiple SSL Sites Using SubjectAltName
+title: Using OpenSSL's subjectAltName with Multiple Site Domains
 external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---

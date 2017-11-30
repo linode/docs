@@ -73,6 +73,32 @@ This guide will focus on working with the documentation setup from the perspecti
 		cd hugo
 		npm install
 
+
+# Configure SSH
+ 
+The SSH keys necessary for publishing are included in the private linode/hugo repository. To use these with the gulp publish task, you will need to configure your `~/.ssh/config` file.
+
+1.  Copy the public and private `production` keys to your `~/.ssh` folder:
+
+		cd ~/linode/hugo
+		cp production_key* ~/.ssh/
+
+2.  Edit '~/.ssh/config`:
+
+	{{< file-excerpt "~/.ssh/config" >}}
+Host 173.255.236.165
+    Hostname  173.255.236.165
+    User docs
+    IdentityFile ~/.ssh/production_key
+
+Host 23.239.11.188
+    Hostname 23.239.11.188
+    User docs
+    IdentityFile ~/.ssh/production_key
+{{< /file-excerpt >}}
+		
+	When running the gulp tasks below, `gulp-rsync` will automatically match the hostnames to the matching configuration profile and will use the correct SSH key automatically.
+
 # Basic Gulp Tasks
 
 When working with the Hugo repo, most of the workflow will use Gulp. This section will review the available Gulp tasks.
@@ -95,7 +121,7 @@ When working with the Hugo repo, most of the workflow will use Gulp. This sectio
 
 3.  Publish the Hugo repo:
 
-		gulp publish --target=test --username=youruser --version=v1.0.0
+		gulp publish --target=test --version=v1.0.0
 
 	This will publish the changes to a target server, generally either `test` or `production`. Choose the server to deploy to using the `--target` option. You **must** specify a version to publish or the deployment will fail. Use `git tag` to list the available tags.
 
