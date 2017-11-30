@@ -2,7 +2,8 @@
 author:
     name: Linode
     email: docs@linode.com
-description: This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.
+description: 'This guide will teach you how to install a LEMP stack (Linux, Nginx, MariaDB, and PHP) with fastcgi on CentOS 7.'
+og_description: 'This guide explains how to install a Linux, nginx, MariaDB and PHP server, a.k.a. a LEMP stack, on CentOS 7 and then configure php-fastcgi as a service in `systemd` for easier administration.'
 keywords: ["nginx", "lemp", "php", "fastcgi", "linux", "web applications", " CentOS"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/lemp-guides/centos-7/','websites/lemp/lemp-server-on-centos-7-with-fastcgi/','web-servers/lemp/lemp-server-on-centos-7-with-fastcgi/']
@@ -10,13 +11,19 @@ modified: 2017-11-21
 modified_by:
     name: Jared Kobos
 published: 2014-12-11
-title: Install a LEMP Stack on CentOS 7 with FastCGI
+title: How to Install a LEMP Stack on CentOS 7 with FastCGI
 external_resources:
 - '[Basic Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration/)'
 - '[Nginx Documentation](http://nginx.org/en/docs/)'
 - '[MariaDB Knowledgebase](https://mariadb.com/kb/en/)'
 - '[MariaDB and MySQL compatibility](https://mariadb.com/kb/en/mariadb/mariadb-vs-mysql-compatibility/)'
 ---
+
+## What is a LEMP stack?
+
+The LEMP stack is an alternative to the LAMP stack, swapping Nginx ("E") for Apache ("A"), for web app development and deployment.
+
+PHP's fastcgi process manager is an alternative PHP FastCGI tool with advanced features that can facilitate heavy-loaded site development.
 
 This guide describes how to install a Linux, nginx, MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in `systemd` for easier administration.
 
