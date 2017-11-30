@@ -20,6 +20,8 @@ external_resources:
 - '[CNI Spec](https://github.com/containernetworking/cni/blob/master/SPEC.md)'
 ---
 
+![Kubernetes on Linode](/docs/assets/kubernetes_nginx.jpg)
+
 ## What is Kubernetes?
 
 [Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.
