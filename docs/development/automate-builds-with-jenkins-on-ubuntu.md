@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 contributor:
   name: Damaso Sanoja
-description: 'This how-to guide let's you create easy automation workflows with Jenkins.'
+description: 'This how-to guide lets you create easy automation workflows with Jenkins.'
  +og_description: 'Jenkins builds pipelines that automate setup, testing and deploying applications. Following this guide will expedite your Continuous Integration and Continuous Delivery (CI/CD) process in a basic workflow.'
 keywords: ['jenkins','pipeline','ci','automation']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
