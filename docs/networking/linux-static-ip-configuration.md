@@ -109,7 +109,7 @@ Address=2001:db8:2000:aff0::3/32
 {{< /file-excerpt >}}
 
 {{< note >}}
-On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence over the ethernet config file above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
+On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence on reboots over the eth0 configuration above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
 {{< /note >}}
 
 ### CentOS 7, Fedora
