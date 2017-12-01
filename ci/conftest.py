@@ -20,7 +20,6 @@ def file_io(func):
         return r
     return wrapper
 
-
 @pytest.fixture(scope='module', autouse=True)
 def md_index(path='.', extension='*.md'):
     """

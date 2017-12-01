@@ -18,9 +18,6 @@ external_resources:
   - '[Resetting MySQL Root Password](https://dev.mysql.com/doc/refman/5.0/en/resetting-permissions.html)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 ![Deploy MySQL Workbench for Database Administration](/docs/assets/deploy-mysql-workbench-for-database-administration.png "Deploy MySQL Workbench for Database Administration")
 

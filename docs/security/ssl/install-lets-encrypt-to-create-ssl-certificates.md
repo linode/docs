@@ -17,9 +17,6 @@ contributor:
     "[Let's Encrypt Homepage](https://letsencrypt.org/)"
 ---
 
-*This is a Linode Community guide. Write for us and earn $250 per published guide.*
-<hr>
-
 ![Let's Encrypt](/docs/assets/Install_Lets_Encrypt_to_Create_SSL_Certificates_smg.jpg)
 
 [Let's Encrypt](https://letsencrypt.org/) is an SSL certificate authority managed by the Internet Security Research Group (ISRG). It utilizes the [Automated Certificate Management Environment](https://github.com/ietf-wg-acme/acme/) (ACME) to automatically deploy free SSL certificates that are trusted by nearly all major browsers.
@@ -106,7 +103,7 @@ Let's Encrypt **does not** deploy wildcard certificates. Each subdomain requires
           also contain certificates and private keys obtained by Let's
           Encrypt, so making regular backups of this folder is ideal.
         - If you like Let's Encrypt, please consider supporting our work by
-        
+
           Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
           Donating to EFF:                    https://eff.org/donate-le
 

@@ -18,9 +18,6 @@ external_resources:
  - '[OWASP ModSecurity Core Rule Set Wiki](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project#tab=Installation)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ## Introduction
 

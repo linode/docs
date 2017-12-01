@@ -1,5 +1,4 @@
 ---
-deprecated: false
 author:
   name: Alex Fornuto
   email: docs@linode.com
@@ -11,6 +10,8 @@ modified_by:
   name: Linode
 title: Network Helper
 ---
+
+![Network Helper](/docs/assets/network-helper-title-graphic.jpg "Network Helper")
 
 Network Helper automatically deposits a static networking configuration in to your Linode at boot. Thanks to Network Helper, you don't have to worry about altering your network configuration when you:
 

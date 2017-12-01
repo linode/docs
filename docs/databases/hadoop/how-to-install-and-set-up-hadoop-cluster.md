@@ -21,9 +21,6 @@ external_resources:
 - '[core-site.xml properties](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-common/yarn-default.xml)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
 
 ## What is Hadoop?
 

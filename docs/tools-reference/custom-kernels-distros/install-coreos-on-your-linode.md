@@ -18,9 +18,6 @@ contributor:
   - '[CoreOS official documentation pages](https://coreos.com/docs/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 {{< note >}}
 CoreOS Container Linux is now available for deployment from the Linode Manager.

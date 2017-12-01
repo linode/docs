@@ -12,9 +12,6 @@ published: 2015-11-06
 title: 'Access Your Box.com Account from Your Linode'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
----
 
 If you've discovered [Box](https://www.box.com/) then you know that it can be a great tool for storage, moving and managing files. The following tutorial helps you install and configure a free piece of software that facilitates Box access from your Linode.
 

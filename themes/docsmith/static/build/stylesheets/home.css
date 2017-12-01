@@ -9419,6 +9419,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .output:before {
   content: "Output";
 }
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  white-space: pre;
+}
 .variable {
   background-color: #cff0df;
   border-width: 1px;
@@ -11419,6 +11427,7 @@ code {
   border-radius: 0px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
+  word-wrap: break-word;
 }
 .amp {
   font-family: "Helvetica", sans-serif;
@@ -20805,6 +20814,9 @@ div.library-tile .tile-title + .lead {
 .modal-full {
   width: 90%;
   padding-top: 90px;
+}
+.modal-body {
+  overflow: scroll;
 }
 div#search {
   height: 57px;

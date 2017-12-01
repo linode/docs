@@ -71,7 +71,7 @@ To verify that your Linode is operating correctly, you should try to log in with
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
-5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears.
+5.  Select the **Launch Lish Console** link. The LISH console window appears.
 6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
 7.  If the console is not responding, [contact Linode support](/docs/support).
 
@@ -134,7 +134,7 @@ The applications on your Linode require a certain amount of physical memory to f
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
-5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
+5.  Select the **Launch Lish Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
 6.  Your Linode might be out of memory even if you do not see any error messages in the LISH console. Execute the following command in the LISH console or a terminal window to determine whether or not your Linode still has free memory available:
 
         free -m

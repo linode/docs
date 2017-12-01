@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'This tutorial shows how to set up an NFS server and client for remote file access on Debian.'
-og_description: ' With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
+og_description: 'With NFS, computer users can access files across multiple servers on a network. This guide sets up two Linodes for file sharing as an NFS server and client.'
 keywords: ["NFS", "network file system"]
 aliases: ['networking/file-transfer/basic-nfs-debian/','networking/basic-nfs-configuration-on-debian-7/','networking/how-to-mount-nfs-shares-on-debian-8/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -15,16 +15,16 @@ published: 2014-02-27
 title: How to Mount NFS Shares on Debian 9
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
+![How to Mount NFS Shares on Debian 9](/docs/assets/networking/mount-nfs-shares-deb-9-title.jpg "How to Mount NFS Shares on Debian 9")
 
----
+## What is Network File System (NFS)
 
 [Network File System](https://en.wikipedia.org/wiki/Network_File_System) (NFS) is a file system protocol that allows users of Unix-like systems to access files over a network in much the same way they can with local storage. This is useful for sharing files across several Linodes or other computers on the internet. For example, you can share the home directories for your users, or system configuration files, over NFS.
 
 However, be aware that one limitation of NFS (versions 3 and older) is that servers and clients must be restricted to a local or trusted private network since data travels unencrypted from one machine to the other. This drawback was addressed with NFS version 4, which relies on Kerberos for authentication and encryption. Unfortunately, setting up Kerberos for use with NFS is rather complicated and requires a Key Distribution Center, which is out of the scope of this tutorial.
 
 This guide walks you through the setup of two Linodes; one is the NFS server, and the other acting as the client. In this example, both Linodes are in the same data center and will communicate using their private IP addresses, so your data will never leave Linode's network. **Caution**: Other NFS setups can potentially send traffic over the public internet.
- 
+
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}

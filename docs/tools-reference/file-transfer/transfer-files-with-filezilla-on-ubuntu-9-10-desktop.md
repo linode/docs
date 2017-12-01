@@ -48,7 +48,7 @@ If this is the first time you've connected to your Linode with an SSH or SFTP pr
 
 [![Unknown SSH key warning in Filezilla on Ubuntu 9.10 desktop edition.](/docs/assets/184-filezilla-ubuntu-unknown-key.png)](/docs/assets/184-filezilla-ubuntu-unknown-key.png)
 
-This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to Filezilla with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Console" tab in the Linode Manager) and executing the following command:
+This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to Filezilla with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the "Console" tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 

@@ -17,6 +17,8 @@ external_resources:
  - '[RealVNC](https://www.realvnc.com/)'
 ---
 
+![Using VNC to Operate a Desktop on Ubuntu 12.04](/docs/assets/using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")
+
 This guide details how to install a graphic desktop environment on your Linode running Ubuntu 12.04 and connect to it from your local computer using VNC.
 
 ## Installing a Desktop and VNC on your Linode
