@@ -15,6 +15,8 @@ external_resources:
  - '[OpenSSL Documentation](http://www.openssl.org/docs/)'
 ---
 
+![OpenSSL_SubjectAltName](/docs/assets/OpenSSL_subjectAltName.jpg)
+
 If you're generating your own SSL certificates, you may wish to create a certificate that is valid for multiple DNS names. Using this approach, you can host multiple SSL sites on a single IP address. We assume you've completed the steps detailed in our [getting started guide](/docs/getting-started/), and that you're logged into your Linode as root via an SSH session.
 
 ## Install OpenSSL
