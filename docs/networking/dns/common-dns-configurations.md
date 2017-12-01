@@ -14,6 +14,7 @@ published: 2015-01-20
 title: Common DNS Configurations
 ---
 
+![Common DNS Configurations](/docs/assets/common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
 
 ## Setting Up a Domain
 

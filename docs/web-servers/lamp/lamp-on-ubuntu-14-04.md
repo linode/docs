@@ -18,6 +18,8 @@ external_resources:
  - '[PHP Documentation](http://www.php.net/docs.php)'
 ---
 
+![Lamp on Ubuntu 14.04](/docs/assets/lamp-on-ubuntu-1404-title-graphic.jpg "Lamp on Ubuntu 14.04")
+
 A LAMP (Linux, Apache, MySQL, PHP) stack is a common web stack used for hosting web content. This guide shows you hot to install a LAMP stack on an Ubuntu 14.04 (LTS) server.
 
 {{< note >}}

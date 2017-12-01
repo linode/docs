@@ -15,6 +15,8 @@ external_resources:
 - '[Fedora Wiki Java Entry](https://fedoraproject.org/wiki/Java)'
 ---
 
+![Install Java on CentOS 7](/docs/assets/install-java-on-centos-7-title-graphic.jpg "Install Java on CentOS 7")
+
 Java is a powerful programming language. Software written in Java can compile and run on any system. Unlike Python or C, Java does not come pre-installed on Linode distribution images. This guide installs the OpenJDK 8 runtime environment and development kit in CentOS 7. OpenJDK is the free and open-source implementation of the Java SE Development Kit.
 
 ## Before You Begin

@@ -18,6 +18,8 @@ external_resources:
 - '[XtraBackup](https://www.percona.com/doc/percona-xtrabackup/2.4/index.html)'
 ---
 
+![Host a Website with High Availability](/docs/assets/host-a-website-with-high-availability-title-graphic.jpg "Host a Website with High Availability")
+
 When deploying a website or application, one of the most important elements to consider is availability, or the period of time for which your content is accessible to users. High availability is a term used to describe server setups that eliminate single points of failure by offering redundancy, monitoring, and failover. This ensures that even if one component of your web stack goes down, the content will still be accessible.
 
 In this guide, we'll explain how to host a highly available website with Wordpress. However, you can use this setup to serve other types of content as well. This guide is intended to be a tutorial on the setup of such a system. For more information on how each element in the high availability stack functions, refer to our [introduction to high availability](/docs/websites/introduction-to-high-availability).
