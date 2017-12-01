@@ -2,19 +2,20 @@
 author:
   name: Sergey Bulavintsev
   email: bulavintsev.sergey@gmail.com
-description: 'This guide shows how to install, configure and use Salt Cloud.'
+description: "This guide shows how to install, configure, and use Salt Cloud to provision multiple Linodes from the command line."
+og_description: "Salt Cloud is a part of the SaltStack that makes provisioning multiple cloud systems easy. Use our guide to create, manage, and map your own Salt Cloud."
 keywords: ["SaltStack", "Salt", "salt-cloud"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-10-27
 modified: 2017-11-01
 modified_by:
   name: Linode
-title: 'Configure and Use Salt Cloud'
+title: 'Configure and Use Salt Cloud and Cloud Maps to Provision Systems'
 contributor:
   name: Sergey Bulavintsev
 ---
 
-## Introduction to Salt Cloud
+## What is Salt Cloud?
 
 [Salt Cloud](https://docs.saltstack.com/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud hosts or hypervisors. During installation, Salt Cloud installs Salt on all provisioned systems by default. This enables the user to put systems into the desired state during provisioning.
 
@@ -51,7 +52,7 @@ The recommended way to install Salt Cloud is with a Salt Bootstrap script. This 
 
 ### Set up Provider Configuration:
 
-Configure and test access to the Linode API. 
+Configure and test access to the Linode API.
 
 1.  Edit `/etc/salt/cloud.providers.d/linode.conf` to configure the name of your provider configuration. Salt Cloud will use it during operations with instances in the CLI. Use a short name (or abbreviation like `li`) that will be easy to remember. You can also specify multiple Linode providers for managing multiple accounts. Linode requires the default root password for the new servers to be set. This password needs to be eight characters and contain lowercase, uppercase, and numbers.
 
@@ -66,7 +67,7 @@ linode-provider:
 All configuration files store data in YAML format. Be careful with indentation - use only spaces and not tabs. Each level of indentation is usually separated with 2 spaces.
 {{< /note >}}
 
-2. Test access to Linode API
+2. Test access to the Linode API:
 
     Execute the following command from your master to test access to the Linode API:
 
@@ -343,4 +344,3 @@ enable_hard_maps: True
             salt-cloud -d -m /etc/salt/cloud.maps.d/linode.map
 
     3. Confirm the deletion when prompted.
-
