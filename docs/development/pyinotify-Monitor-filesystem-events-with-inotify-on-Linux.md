@@ -13,7 +13,7 @@ title: 'pyinotify - Monitor filesystem events with inotify on Linux'
 contributor:
   name: Md. Sabuj Sarker
   link: http://sabuj.me
-  external_resources:
+external_resources:
 - '[Github repository of pyinotify](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify wiki](http://github.com/seb-m/pyinotify/wiki)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
@@ -21,63 +21,39 @@ contributor:
 - '[Wikipedia article on inotify](https://en.wikipedia.org/wiki/Inotify)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 Real time file system monitoring is a big problem of various types of real life application development. In our program we can go over our file system, list every files and directories, cache their metadata and at some interval we can go over the file system over and over again and check the differences between what on the disk and what in the cache.
 
 Working in the way described above is not efficient and may render our application unresponsive. It would be great if the kernel notified us of file system changes. That way we did not have to check each and every file and directory over and over again. In modern Linux kernels this is a built-in feature. We call this subsystem of kernel known as `inotify`. When writing our applications in Python we can use a Python library called `pyinotify` to interact with `inotify`. In this guide we will see how to work with `pyinotify` to get notified about different changes in the file system in details.
 
-## Before You Begin
-1.  This is not an introductory Python guide and thus make sure that you have basic Python knowledge before starting.
-2.  Make sure that you have familiarity with command lines or terminal emulators.
-2.  The library says that it is compatible with Python ≥ 2.4, but we are going to use Python 3 for running our examples. So, keep in mind that though all the examples will run seamlessly on Python 2, there is no guarantee.
-3.  `inotify` is available from Linux ≥ 2.6.13, so make sure that your Linux distribution comes with kernel with version of 2.6.13 or above.
-4.  Installations in this guide are shown for Debian based Linux distros, so make sure you have a Debian based distro on your Linode cloud or on your personal computer. If you are using non Debian based system, e.g. CentOS, find specific commands for them yourself.
-5.  Remember that the examples shown in this guide will run both on your Linode server or on your personal Linux desktop. For ease of use and learning you are free to use your personal Linux desktop.
-6.  Use any pain text editor or special code editor for writing examples shown in this guide. You are free to use IDEs, but that is not recommended.
-7.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
 
-## Install Python, pip, pyinotify, virtualenv and Create Scripts
-As mentioned in the previous section, we are going to use Python 3 and thus if you do not have Python 3 installed on your system you can follow instructions below. We need to install `pip3` for Python 3 and we also need `pip3` for installing `pyinotify`.
+## Install Python 3
 
-1.  Install Python 3:
-        
-        sudo apt-get install python3
-    
-2.  Install pip3:
+{{< section file="/shortguides/install_python_miniconda.md" >}}
 
-        sudo apt-get install python3-pip
+## Install pyinotify
 
-3.  Install VirtualEnv:
-        
-        sudo pip3 install virtualenv
+It is recommended to install pyinotify within a virtual environment. This guide will use Anaconda, but Virtualenv can also be used.
 
-4.  Install pyinotify inside a virtual environment:
-    Whether we are working on a Linode cloud server or personal Linux desktop, we do not want to mess our default Python environment up. Instead, we are going to create a virtual environment and start working there. So, choose or create a directory where you want to put your Python code and point your command line's current working directory to your chosen directory. Create a virtual environment named `myvenv` with the following command:
+1.  Create a virtual environment in Anaconda:
 
-        virtualenv myvenv
-    
-    Activate this virtual environment with the following command:
-        
-        source myvenv/bin/activate
-    
-    Now, install the pyinotify library with the following command:
+        conda create -n myenv python=3
 
-        pip3 install pyinotify
-    
-5. Create a Python script:
-    In your chosen working directory create a file with name `notify_me.py`. We will use this file to write our python code for pyinotify.
+2.  Activate the new environment:
 
-## Understanding Different Components of pyinotify
+        source activate myenv
+
+3.  Install pyinotify within the virtual environment:
+
+        pip install pyinotify
+
+## Understand Different Components of pyinotify
 To monitor file system with `pyinotify` we need to to understand different components (classes, functions, methods along with other codes) of it to move forward. A file system notification system in `pyinotify` needs the following components:
 
 1.  **Watch manager:**
     A watch manager is an instance of class `WatchManager` from pyinotify library.
 2.  **Event processor:**
-    An event processor is a subclass of `ProcessEvent`. In the subclass we need to create and override various methods for accepting and processing different file system events. We need to instantiate the subclass for interacting with the events. 
+    An event processor is a subclass of `ProcessEvent`. In the subclass we need to create and override various methods for accepting and processing different file system events. We need to instantiate the subclass for interacting with the events.
 3.  **Event notifier:**
     A notifier is an instance is of class `Notifier`. A notifier makes the match of the watch manager and the event processor. There are few variants of `Notifier` with different class names.
 4.  **Watch:**
@@ -102,11 +78,11 @@ notify_me.py
 ## Creating an Event Processor
 As mentioned earlier, event processors are subclass of `ProcessEvent` class. But, subclassing is not the end of the story. We need to define various methods for handing events of different types. Every event processing method starts with `process_` and ends with an event code except for the default event processing method. All these methods receives an instance of `Event`. We can define the following methods:
 
--   **process_IN_CREATE(event):**    
+-   **process_IN_CREATE(event):**
     This method is called when a new file or directory is created in the watched directory. You can get the directory name in which this event took place from `event.path`
 -   **process_IN_OPEN(event):**
     This method is invoked when a file or directory is opened in a watched directory. For example, if you open a file in Python with the `open()` function and the directory the file is living in is being watched, this method will be invoked.
-    
+
     {: .note}
     > Inexperienced programmers tend to think that directories are not opened - only files are opened. But, that is not true, files are also opened. For example, when your are invoking `listdir()` function from `os` module, it is actually opening the directory, listing the paths and closing it. We will see a proof of this statement in a later section.
 -   **process_IN_ACCESS(event):**
@@ -134,7 +110,7 @@ As mentioned earlier, event processors are subclass of `ProcessEvent` class. But
 -   **process_IN_Q_OVERFLOW(event):**
     The kernel has limitations on how many files or directories an application can monitor. This method is invoked when the limit is crossed - that is the event queue is overflowed. This method is defined in the `ProcessEvent` class. By default, it only reports warning messages. To provide a custom behavior to it, override this method in your subclass.
 -   **process_IN_UNMOUNT(event):**
-    This is invoked when the file system on which the watched file or directory is living is unmounted from the system. 
+    This is invoked when the file system on which the watched file or directory is living is unmounted from the system.
 -   **process_default(event):**
     This is the default event processing method. That means, if an appropriate method for an event type is not defined in the event processor subclass, this method is called. But remember that this method is not called for the event type `IN_Q_OVERFLOW` no matter whether the method is overridden or not. This method is defined in the `ProcessEvent` class that does nothing. Override it to provide custom behavior.
 
@@ -199,7 +175,7 @@ notify_me.py
   ~~~
 
 ## Creating Event Notifier
-An event notifier is created by instantiating the `Notifier` class with an instance of `WatchManager` as the first argument and a `ProcessEvent` subclass instance as the second argument. There are three other non-required keyword arguments that we are not going to use or discuss in this guide. 
+An event notifier is created by instantiating the `Notifier` class with an instance of `WatchManager` as the first argument and a `ProcessEvent` subclass instance as the second argument. There are three other non-required keyword arguments that we are not going to use or discuss in this guide.
 
 {: .file}
 notify_me.py
@@ -328,7 +304,7 @@ When we told our system to list directory with the help of `ls` command it threw
 > In a previous section it was said that not only files are opened but also directories are opened too. You can see the proof in the above output.
 
 Now, change the current working directory of the terminal or command line to `notification_dir` with `cd` command:
-    
+
     cd notification_dir
 
 
@@ -364,7 +340,7 @@ In the example shown in this guide, the call to `loop()` is blocking the current
     If your Python application is using Python's asynchronous feature then you can use AsyncNotifier instead of Notifier.
 
         event_notifier = pyinotify.AsyncNotifier(watch_manager, EventProcessor())
-        
+
     And then just call the `loop()` function of the `asyncore` module.
 
         import asyncore
