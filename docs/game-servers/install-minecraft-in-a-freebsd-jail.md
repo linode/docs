@@ -70,7 +70,7 @@ Add the following to /etc/rc.conf via your favorite text editor.
       ipv4_addrs_lo1="127.0.1.1-9/29"
        ~~~
 
-Time to create /etc/pf.conf, which will contain our NAT rules. 
+Time to create /etc/pf.conf, which will contain our NAT rules.
 You can add more IP_JAILNAME arguments as well, specifying the jail's private IP address. This will allow you to separate services.
 
      {:.file-excerpt}
@@ -86,7 +86,7 @@ You can add more IP_JAILNAME arguments as well, specifying the jail's private IP
       ## JAIL IPS. Follow IP_JAILNAME ##
       IP_MINECRAFTJAIL="127.0.1.2"
 
-      ## RULES ##          
+      ## RULES ##
       scrub in all
       # NAT for jails on private net
       nat pass on $(ext_if) from $NET_JAIL to any -> $(ext_if)
