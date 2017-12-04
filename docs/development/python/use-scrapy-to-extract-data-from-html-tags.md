@@ -2,14 +2,14 @@
 author:
   name: Florent Houbart
   email: docs@linode.com
-description: 'A linode guide for scraping the web with Python Scrapy'
+description: 'A guide for scraping the web with Python Scrapy.'
 keywords: ["Scrapy", "Python", "crawling", "spider", "web scraping"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-20
-modified: 2017-11-20
+published: 2017-12-04
+modified: 2017-12-04
 modified_by:
   name: Linode
-title: 'Extra Data From HTML Tags Using Scrapy'
+title: 'Use Scrapy to Extract Data From HTML Tags'
 contributor:
   name: Florent Houbart
 external_resources:
@@ -17,15 +17,9 @@ external_resources:
 - '[Official Scrapy Documentation](https://doc.scrapy.org/en/latest/index.html)'
 ---
 
-![ADD PICTURE HERE](/docs/assets/scrapy/scrapy-logo.png)
+Scrapy is a Python framework for creating web scraping applications. It provides a programming interface to crawl the web by identifying new links, and extracts structured data from the downloaded content.
 
-Scrapy is a Python framework for creating web scraping applications. It provides a programming interface to crawl the web by identifying new links while browsing the web and extracts structured data from the downloaded content.
-
-This guide will provide you with step by step instructions to build a spider that recursively check all `<a>` tags of a website and track broken links.
-
-{{< note >}}
-This guide is written for Python version 3.4 or above, and with Scrapy version 1.4. It will NOT work on a Python 2 environment.
-{{< /note >}}
+This guide will provide you with instructions to build a spider which recursively checks all `<a>` tags of a website and tracks broken links. This guide is written for Python version 3.4 or above, and with Scrapy version 1.4. It will not work on a Python 2 environment.
 
 ## Before You Begin
 
@@ -62,7 +56,7 @@ On most systems, including Debian 9 and CentOS 7, the default Python version is 
 
 ### On CentOS 7 System
 
-1. On a Centos system, install Python, PIP and some dependencies from EPEL repositories:
+1. On a CentOS system, install Python, PIP and some dependencies from EPEL repositories:
 
         sudo yum install epel-release
         sudo yum install python34 python34-pip gcc python34-devel
@@ -78,15 +72,15 @@ On most systems, including Debian 9 and CentOS 7, the default Python version is 
 
 ## Install Scrapy
 
-### System Wide Installation (Not recommended)
+### System-wide Installation (Not recommended)
 
-System wide installation is easiest but may conflict with other Python scripts that require different versions of libraries. Use this methode only if your system is dedicated to Scrapy:
+System-wide installation is the easiest method, but may conflict with other Python scripts that require different library versions. Use this method only if your system is dedicated to Scrapy:
 
-    sudo pip3 install Scrapy
+    sudo pip3 install scrapy
 
 ### Install Scrapy Inside a Virtual Environment
 
-This is the recommanded installation method. Scrapy will be installed in a `virtualenv` environment to prevent any conflicts with system wide library.
+This is the recommended installation method. Scrapy will be installed in a `virtualenv` environment to prevent any conflicts with system wide library.
 
 1. On a CentOS system, `virtualenv` for Python 3 is installed with Python. However, on a Debian 9 it require a few more steps:
 
@@ -101,17 +95,15 @@ This is the recommanded installation method. Scrapy will be installed in a `virt
 
         source ~/scrapyenv/bin/activate
 
-    Your shell prompt will change to indicate which environment you are using
+    Your shell prompt will then change to indicate which environment you are using.
 
-4.  Install Scrapy in the virtuel environment. Note that you don't need `sudo` anymore, the library will be installed only in your newly created virtual environment:
+4.  Install Scrapy in the virtual environment. Note that you don't need `sudo` anymore, the library will be installed only in your newly created virtual environment:
 
         pip3 install scrapy
 
-    {{< note >}}
-All the following commands are done inside the virtual environment. If you restart your session, don't forget to reactivate `scrapyenv`.
-{{< /note >}}
-
 ## Create Scrapy Project
+
+All the following commands are done inside the virtual environment. If you restart your session, don't forget to reactivate `scrapyenv`.
 
 1.  Create a directory to hold your Scrapy project:
 
@@ -119,7 +111,7 @@ All the following commands are done inside the virtual environment. If you resta
         cd ~/scrapy
         scrapy startproject linkChecker
 
-2.  Go to your new Scrapy project and create a spider:
+2.  Go to your new Scrapy project and create a spider. This guide uses a starting URL for scraping `http://www.example.com`. Adjust it to the web site you want to scrape.
 
         cd linkChecker
         scrapy genspider link_checker www.example.com
@@ -132,34 +124,34 @@ All path and commands in the below section are relative to the new scrapy projec
 
 ## Run Your Spider
 
-Start your spider with the `scrapy crawl` command line. The Spider registers itself in Scrapy with its name that is defined in the `name` attribute of your Spider class.
+1.  Start your spider with:
 
-Start the `link_checker` Spider:
+        `scrapy crawl`
 
-    cd ~/scrapy/linkChecker
-    scrapy crawl link_checker
+    The Spider registers itself in Scrapy with its name that is defined in the `name` attribute of your Spider class.
 
-The newly created Spider do nothing more that downloading the `www.example.com` page. We will now create the crawling logic.
+2.  Start the `link_checker` Spider:
 
-{{< note >}}
-This guide uses a starting url for scraping `http://www.example.com`. Adjust it to the web site you want to scrape.
-{{< /note >}}
+        cd ~/scrapy/linkChecker
+        scrapy crawl link_checker
+
+    The newly created spider does nothing more than downloads the page `www.example.com`. We will now create the crawling logic.
 
 ## Use the Scrapy Shell
 
-Scrapy provides two easy ways for extracting content from html:
+Scrapy provides two easy ways for extracting content from HTML:
 
--  The `response.css()` method get tags with a CSS selector. To get all links with css class `btn`:
+-  The `response.css()` method get tags with a CSS selector. To retrieve all links in a `btn` CSS class:
 
         response.css("a.btn::attr(href)")
 
--  The `response.xpath()` method gets tags from a XPath query. To get all urls of all images that are inside a link, use:
+-  The `response.xpath()` method gets tags from a XPath query. To retrieve the URLs of all images that are inside a link, use:
 
         response.xpath("//a/img/@src")
 
-You can try your selectors with the interactive Scrapy Shell:
+You can try your selectors with the interactive Scrapy shell:
 
-1.  Run the Scrapy Shell on your web page:
+1.  Run the Scrapy shell on your web page:
 
         scrapy shell "http://www.example.com"
 
@@ -167,13 +159,13 @@ You can try your selectors with the interactive Scrapy Shell:
 
         response.xpath("//a/@href").extract()
 
-For more information about Selectors, refer to the [Scrapy Selector documentation](https://doc.scrapy.org/en/latest/topics/selectors.html).
+For more information about Selectors, refer to the [Scrapy selector documentation](https://doc.scrapy.org/en/latest/topics/selectors.html).
 
 ## Write the Crawling Logic
 
-The Spider parses the downloaded pages with the `parse(self,response)` method. This method returns an *iterable* of new urls that will be added to the downloading queue for futur crawling and parsing.
+The Spider parses the downloaded pages with the `parse(self,response)` method. This method returns an *iterable* of new URLs that will be added to the downloading queue for future crawling and parsing.
 
-1.  Edit your `linkChecker/spiders/link_checker.py` file to extract all the `<a>` tags and get the `href` link text. Return the link url with the `yield` keyword to add it to the download queue:
+1.  Edit your `linkChecker/spiders/link_checker.py` file to extract all the `<a>` tags and get the `href` link text. Return the link URL with the `yield` keyword to add it to the download queue:
 
     {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
 import scrapy
@@ -205,21 +197,22 @@ class LinkCheckerSpider(scrapy.Spider):
 
         scrapy crawl link_checker
 
-    You will see the Spider going through all the links. It won't go out of the *www.example.com* domain because of the `allowed_domains` attributes. Depending of the size of the site, this may take some time. Stop the process with `Ctrl-C`.
+    You will then see the Spider going through all the links. It won't go out of the *www.example.com* domain because of the `allowed_domains` attribute. Depending of the size of the site, this may take some time. Stop the process with `Ctrl+C`.
 
 ### Add Request Meta Information
 
-The Spider will traverse links in queue recursively. When parsing a downloaded page, it does not have any information about the previously parsed pages such as which page was linking the the new one. To pass more information to the `parse` method, Scrapy provide a `Request.meta()` method that attachs some key/value pairs to the request. They are available in the response object in the `parse()` method.
+The Spider will traverse links in queue recursively. When parsing a downloaded page, it does not have any information about the previously parsed pages such as which page was linking the the new one. To pass more information to the `parse` method, Scrapy provides a `Request.meta()` method that attaches some key/value pairs to the request. They are available in the response object in the `parse()` method.
 
 The meta information is used for two purposes:
 
-- To make the `parse` method aware of some data coming from the page that triggered the request: the url of the page (`from_url`), and the text of the link (`from_text`)
+- To make the `parse` method aware of data coming from the page that triggered the request: the URL of the page (`from_url`), and the text of the link (`from_text`)
 
-- To compute the level of recursion in the `parse` method so that we can limit the maximum depth of the crawling
+- To compute the level of recursion in the `parse` method so the maximum depth of the crawling can be limited.
 
-1.  Starting to the previous Spider, add an attribute to store the maximum depth (`maxdepth`) and update the `parse` function to be the following:
+1.  Starting with the previous spider, add an attribute to store the maximum depth (`maxdepth`) and update the `parse` function to the following:
 
     {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
+
 # Add a maxdepth attribute
 maxdepth = 2
 
@@ -255,21 +248,21 @@ def parse(self, response):
             yield request
 {{< /file-excerpt >}}
 
-2.  Run the updated Spider:
+2.  Run the updated spider:
 
         scrapy crawl link_checker
 
-    Your Spider will no longer go deeper than 2 pages and will stop by itself when all the pages are downloaded. Output will show what page linked to the downloaded page and what was the text of link.
+    Your spider will no longer go deeper than 2 pages and will stop by itself when all the pages are downloaded. The output will show what page linked to the downloaded page and what was the text of link.
 
 ### Set Handled HTTP Status
 
-By default Scrapy parses only successful HTTP requests. All errors are excluded from parsing. To collect the broken links, the 404 responses must be parsed as well. Create two arrays, `valid_url` and `invalid_url`, that will store the valid and the broken links respectively.
+By default Scrapy parses only successful HTTP requests; all errors are excluded from parsing. To collect the broken links, the 404 responses must be parsed as well. Create two arrays, `valid_url` and `invalid_url`, that will store the valid and the broken links respectively.
 
-1.  Set the list of HTTP error status that are parsed in the `handle_httpstatus_list` Spider attribute:
+1.  Set the list of HTTP error status that are parsed in the `handle_httpstatus_list` spider attribute:
 
         handle_httpstatus_list = [404]
 
-2.  Update the parsing logic to check for HTTP status and populate the good array. The Spider now looks like:
+2.  Update the parsing logic to check for HTTP status and populate the good array. The spider now looks like:
 
     {{< file "linkChecker/spiders/link_checker.py" py >}}
 class LinkCheckerSpider(scrapy.Spider):
@@ -310,17 +303,17 @@ class LinkCheckerSpider(scrapy.Spider):
                     yield request
 {{< /file-excerpt >}}
 
-3.  Run your updated Spider:
+3.  Run your updated spider:
 
         scrapy crawl link_checker
 
-    This should prints nothing more than before. The two arrays are populated but never printed to console. A Spider has to dump them at the end of the crawling with signal handlers.
+    This should print nothing more than before. The two arrays are populated but never printed to console. A spider has to dump them at the end of the crawling with signal handlers.
 
 ### Set Signal Handlers
 
-Scrapy let us add some handlers at various points in the scraping process. Signal handlers are set with the `crawler.signals.connect()` method and the `crawler` object being available in the `from_crawler()` method of the `Spider` class.
+Scrapy lets you add some handlers at various points in the scraping process. Signal handlers are set with the `crawler.signals.connect()` method and the `crawler` object being available in the `from_crawler()` method of the `Spider` class.
 
-To add a handler at the end of the Scraping process to print information about broken links, overwrite the `from_crawler` method to register a handler for the `signals.spider_closed` signal:
+To add a handler at the end of the scraping process to print information about broken links, overwrite the `from_crawler` method to register a handler for the `signals.spider_closed` signal:
 
 {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
 # Overwrite the from_crawler method
@@ -350,9 +343,9 @@ Run the Spider again, and you will see the detail of the broken links before the
 
 ### Get Start URL from Command Line
 
-The starting url is hardcoded in the source code of your Spider. It will be far better if we could set it when starting the Spider, without changing the code. The `scrapy crawl` command line allow passing parameters from the command line that is passed through the `__init__()` class contructor.
+The starting URL is hardcoded in the source code of your spider. It will be far better if we could set it when starting the spider, without changing the code. The `scrapy crawl` command line allow passing parameters from the command line that is passed through the `__init__()` class constructor.
 
-1.  Add a `__init__()` method to our Spider with a `url` parameter:
+1.  Add a `__init__()` method to our spider with a `url` parameter:
 
     {{< file-excerpt "linkChecker/spiders/link_checker.py" py >}}
 # Add a custom constructor with the url parameter
@@ -369,7 +362,7 @@ def __init__(self, url='http://www.example.com', *args, **kwargs):
 
 ## Edit your Project Settings
 
-Default Scrapy settings of your Spider are defined in `settings.py` file. Set the maximum download size to 3Mb to prevent Scrapy from downloading big files like video or binaries.
+Default Scrapy settings of your spider are defined in `settings.py` file. Set the maximum download size to 3 MB to prevent Scrapy from downloading big files like video or binaries.
 
 Edit `~/scrapy/linkChecker/linkChecker/settings.py` and add the following line:
 
@@ -379,18 +372,18 @@ DOWNLOAD_MAXSIZE = 3000000
 
 ## Remove Domain Limitation
 
-Our Spider has an attribute called `allowed_domains` to prevent downloading unwanted URLs. Without this attribute, the Spider spider may attempt to traverse the entire web and never complete its task.
+Our spider has an attribute called `allowed_domains` to prevent downloading unwanted URLs. Without this attribute, the spider may attempt to traverse the entire web and never complete its task.
 
-If a link in the *www.example.com* domain to an external domain is broken, it will be undetected because the Spider will not crawl it. Delete the `allowed_domains` attribute to add a custom logic that will download an external domain page, but not recursively browse its links.
+If a link in the *www.example.com* domain to an external domain is broken, it will be undetected because the spider will not crawl it. Delete the `allowed_domains` attribute to add a custom logic that will download an external domain page, but not recursively browse its links.
 
-1.  Add to package for url and regex management:
+1.  Add to package for URL and regex management:
 
     {{< highlight py >}}
 import re
 from urllib.parse import urlparse
 {{< /highlight >}}
 
-2.  Add a `domain = ''` attribute that will hold the main domain. It starts uninitialized and is set at the first download be the actual url. Actual url may be differents than starting url in case of HTTP redirect.
+2.  Add a `domain = ''` attribute that will hold the main domain. It starts uninitialized and is set at the first download be the actual URL. The actual URL may be different than the starting URL in case of HTTP redirect.
 
 3.  Remove the `allowed_domains` attribute
 
@@ -402,19 +395,20 @@ if len(self.domain) == 0:
     self.domain = parsed_uri.netloc
 {{< /highlight >}}
 
-5.  Update the expression to allow yielding new URLs from links to add domain check in addition to depth check:
+5.  Update the expression to add domain check in addition to depth check for new URLs:
 
     {{< highlight py >}}
 parsed_uri = urlparse(response.url)
-# Yield new links with previous logic
+
+# Apply previous logic to new links
 if parsed_uri.netloc == self.domain and depth < self.maxdepth:
 {{< /highlight >}}
 
-See the full Spider in the next section where this code is integrated inside the previous one.
+See the full spider in the next section where this code is integrated inside the previous additions.
 
-## Final version of the Spider
+## Final Version of the Spider
 
-Here is the fully functional Spider. A few hacks has been added to get the domain of the response and prevent recursive browsing of other domains links. Otherwise, your Spider will attempt to parse the whole web!
+Here is the fully functional spider. A few hacks have been added to get the domain of the response and prevent recursive browsing of other domains links. Otherwise, your spider will attempt to parse the whole web!
 
 {{< file "linkChecker/spiders/link_checker.py" py >}}
 import re
@@ -507,9 +501,9 @@ class LinkCheckerSpider(scrapy.Spider):
 
 ## Monitor a Running Spider
 
-Scrapy provides a telnet interface on port 6023 to monitor a running Spider. The telnet session is a Python shell where you can execute methods on the exposed scrapy object.
+Scrapy provides a telnet interface on port 6023 to monitor a running spider. The telnet session is a Python shell where you can execute methods on the exposed Scrapy object.
 
-1.  Run your Spider in background
+1.  Run your spider in the background:
 
         scrapy crawl link_checker -a url="http://www.linode.com" > 404.txt &
 
@@ -517,7 +511,7 @@ Scrapy provides a telnet interface on port 6023 to monitor a running Spider. The
 
         telnet localhost 6023
 
-3.  Print a report of the Scrapy Engine Status:
+3.  Print a report of the Scrapy engine status:
 
         est()
 
@@ -532,4 +526,3 @@ Scrapy provides a telnet interface on port 6023 to monitor a running Spider. The
 6.  Stop your scraping;
 
         engine.stop()
-
