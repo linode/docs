@@ -10,7 +10,7 @@ modified: Weekday, Month 00th, 2015
 modified_by:
   name: Linode
 title: 'How to Use tmux, a Terminal Multiplexer'
-contributor: 
+contributor:
   name: Alexandru Andrei
   link: Github/Twitter Link
   external_resources:
@@ -53,7 +53,7 @@ tmux is also often used as a container for processes that should always be on. F
 
         ls
 
-3.  Tmux uses a so-called *prefix key*, which is **CTRL+b** by default. This allows you to signal that the next key you press is meant to be caught by the application. Press **CTRL+b**, release both keys and then press **d**. 
+3.  Tmux uses a so-called *prefix key*, which is **CTRL+b** by default. This allows you to signal that the next key you press is meant to be caught by the application. Press **CTRL+b**, release both keys and then press **d**.
 
 4.  To re-attach to the previous session enter the following command:
 
@@ -75,7 +75,7 @@ Press **CTRL+b**, release both keys and then press **c**.
 
 ## Manage tmux Panes
 
-Another way to run multiple jobs in one session is to split a window in panes. This is usually useful when you want to have outputs from multiple processes visible in a single window. 
+Another way to run multiple jobs in one session is to split a window in panes. This is usually useful when you want to have outputs from multiple processes visible in a single window.
 
 *   Split the window horizontally by pressing **CTRL+b** then **"**.
 *   Split the window vertically with **CTRL+b** then **%**.
@@ -93,7 +93,7 @@ Sometimes even multiple windows and panes aren't enough and you need to separate
 
 It's also possible to type shorter versions of a command, for example: "new-se". But it will work only if it there isn't another command that starts with the same string of characters.
 
-*   Switch to the previous session by pressing **CTRL+b** then **(**. 
+*   Switch to the previous session by pressing **CTRL+b** then **(**.
 *   Switch to the next session with **CTRL+b** then **)**.
 *   Display an interactive session list with **CTRL+b** then **s**.
 
@@ -116,15 +116,15 @@ There is a third way to interact with tmux, the regular command line:
 /path/to/file.html
 :   ~~~ conf
     # Uncomment the lines with the options you want to activate (by deleting the preceding "#")
-    
+
     # Allow mouse interaction
     set-option -g mouse on
-    
+
     # Change prefix key to CTRL+A. "C-" stands for CTRL, "M-" stands for ALT key
     #set-option -g prefix C-a
     #unbind-key C-b
     #bind-key C-a send-prefix
-    
+
     # Display CPU load average for the last 1,5 and 15 minutes, in the status bar
     set -g status-right "#(cut -d ' ' -f -3 /proc/loadavg) %H:%M %d-%b-%y"
     ~~~
