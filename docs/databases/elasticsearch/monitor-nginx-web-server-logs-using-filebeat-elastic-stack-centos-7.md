@@ -18,20 +18,16 @@ modified_by:
 title: 'Monitor an nginx Web Server Using the Elastic Stack on Centos 7'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
----
-
 ## What is the Elastic Stack?
 
 The [Elastic](https://www.elastic.co/) Stack is a set of open-source tools that aid in analyzing different types of data. Tools such as Filebeat and Metricbeat can collect system and webserver logs and send them along to Elasticsearch where the data can be searched, analyzed, and visualized using Kibana as a browser-based application.
 
 This guide will explain how to install different components of the stack in order to monitor a typical webserver host. The versions of each tool mentioned here will be based upon versions 6 for each, which is a recent release featuring additional features and fixes.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
 
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.
@@ -71,19 +67,16 @@ The Elastic Yum package repository contains all the necessary packages for the r
         sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 2.  Create a yum repository configuration to use the Elastic yum repository:
-
-        {: .file}
-        /etc/yum.repos.d/elastic.repo
-        :   ~~~ ini
-            [elasticsearch-6.x]
-            name=Elastic repository for 6.x packages
-            baseurl=https://artifacts.elastic.co/packages/6.x/yum
-            gpgcheck=1
-            gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-            enabled=1
-            autorefresh=1
-            type=rpm-md
-            ~~~
+{{< file-excerpt "elastic.repo" ini >}}
+[elasticsearch-6.x]
+name=Elastic repository for 6.x packages
+baseurl=https://artifacts.elastic.co/packages/6.x/yum
+gpgcheck=1
+gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+autorefresh=1
+type=rpm-md
+{{< /file-excerpt >}}
 
 3.  Update the `yum` cache to ensure any new packages become available:
 
@@ -108,12 +101,11 @@ In order to provide a datastore for each Beat and Kibana, Elasticsearch must fir
 
 2.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to the following, and leave the other values in this file unchanged:
 
-    {: .file}
-    /etc/elasticsearch/jvm.options
-    :   ~~~ conf
-        -Xms512m
-        -Xmx512m
-        ~~~
+    {{< file-excerpt "/etc/elasticsearch/jvm.options" yaml >}}
+
+-Xms512m
+-Xmx512m
+{{< /file-excerpt >}}
 
 3.  In order for Filebeat to properly parse and process certain documents, two _ingest_ plugins must be installed for elasticsearch. First, install the `ingest-user-agent` plugin, which enables elasticsearch to accurately parse user-agent strings.
 
@@ -176,19 +168,13 @@ By default, Elasticsearch will create five shards and one replica for every inde
 
 1.  Create a temporary JSON file with an *index template* that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard `*`):
 
-    {: .file}
-    template.json
-    :   ~~~ json
-        {
-          "template": "*",
-          "settings": {
-            "index": {
-              "number_of_shards": 1,
-              "number_of_replicas": 0
-            }
-          }
-        }
-        ~~~
+    {{< file-excerpt "template.json" conf >}}  
+"template": "*",
+"settings": 
+"index": 
+"number_of_shards": 1,
+"number_of_replicas": 0
+{{< /file-excerpt >}}
 
 2.  Use `curl` to create an index template with these settings that'll be applied to all indices created hereafter:
 
@@ -218,22 +204,18 @@ Replace `your-user-name` and `your-linode-address` with the unix user and IP add
 Filebeat version 6 ships with the ability to use [modules](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-modules.html) in order to automate how logs are collected, indexed, and visualized. This guide will use the nginx module in order to handle most of the necessary configuration in order to instruct the stack how to process system logs. Note that the host should have nginx configured following the [Install a LEMP Stack on CentOS 7 with FastCGI](/docs/web-servers/lemp/lemp-stack-on-centos-7-with-fastcgi) guide.
 
 1.  Create the following Filebeat configuration:
+{{< file-excerpt "/etc/filebeat/filebeat.yml" yaml >}}
+filebeat.config.modules:
+    path: ${path.config}/modules.d/*.yml
 
-    {: .file}
-    /etc/filebeat/filebeat.yml
-    :   ~~~ yaml
-        filebeat.config.modules:
-          path: ${path.config}/modules.d/*.yml
+setup.kibana:
+    host: "localhost:5601"
 
-        setup.kibana:
-          host: "localhost:5601"
+output.elasticsearch:
+    hosts: ["localhost:9200"]
 
-        output.elasticsearch:
-          hosts: ["localhost:9200"]
-
-        setup.dashboards.enabled: true
-        ~~~
-
+setup.dashboards.enabled: true
+{{< /file-excerpt >}}
 2.  Rename Filebeat's default module files in order to enable them. The following commands enable the nginx module.
 
         sudo mv /etc/filebeat/modules.d/nginx.yml.disabled /etc/filebeat/modules.d/nginx.yml
@@ -248,21 +230,19 @@ Filebeat version 6 ships with the ability to use [modules](https://www.elastic.c
 Like Filebeat, Metricbeat also provides a variety of built-in modules to help configure itself to monitor different aspects of the host system automatically. The following steps will configure Metricbeat to use these features and enable the system service.
 
 1.  Create the following Metricbeat configuration:
+{{< file-excerpt "/etc/metricbeat/metricbeat.yml" yaml >}}
+metricbeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
 
-    {: .file}
-    /etc/metricbeat/metricbeat.yml
-    :   ~~~ yaml
-        metricbeat.config.modules:
-          path: ${path.config}/modules.d/*.yml
+setup.kibana:
+  host: "localhost:5601"
 
-        setup.kibana:
-          host: "localhost:5601"
+output.elasticsearch:
+  hosts: ["localhost:9200"]
 
-        output.elasticsearch:
-          hosts: ["localhost:9200"]
+setup.dashboards.enabled: true
 
-        setup.dashboards.enabled: true
-        ~~~
+{{< /file-excerpt >}}
 
 2.  Rename several of the preconfigured module configuration files in order to enable them. The following commands will enable the Elasticsearch, Kibana, and nginx modules:
 
@@ -344,23 +324,22 @@ We can now fix the nginx configuration to resolve this error.
 #### Reconfiguring nginx
 
 Open the `/etc/nginx/nginx.conf` file and add the following `location` block in between the `include` and `location /` lines:
+{{< file-excerpt "/etc/nginx/nginx.conf" nginx>}}
+            
+include /etc/nginx/default.d/*.conf;
 
-    {: .file}
-    /etc/nginx/nginx.conf
-    :   ~~~ yaml
-        include /etc/nginx/default.d/*.conf;
-
-        location /server-status {
-                stub_status on;
-                access_log off;
-                allow 127.0.0.1;
-                allow ::1;
-                deny all;
+    location /server-status {
+            stub_status on
+            access_log off;
+            allow 127.0.0.1;
+            allow ::1;
+            deny all;
         }
 
-        location / {
+    location / {
         }
-        ~~~
+       
+{{< /file-excerpt >}} 
 
 Then restart nginx:
 
