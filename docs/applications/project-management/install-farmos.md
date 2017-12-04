@@ -2,6 +2,7 @@
 author:
   name: Angel G
   email: docs@linode.com
+keywords: ["farmos", "Drupal", "LAMP"]
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, FarmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-09
@@ -139,7 +140,3 @@ If you want to register a domain name (e.g., `yourfarm.com`), check out our guid
 
 ### Generate a Google API Key
 FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.
-
-
-
-

@@ -2,6 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
+keywords: ["getting started, intro, basics, first steps"]
 description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-10-10
