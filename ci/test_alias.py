@@ -25,10 +25,10 @@ localserver = pytest.mark.skipif(not _localserve_running(),
 
 @localserver
 @file_io
-def test_alias(md_filepaths):
+def test_alias(md_filepath):
     aliases = []
     valid_alias = True
-    for line in md_filepaths:
+    for line in md_filepath:
         # Check if file is expired
         today = datetime.now()
         has_exp_header = re.match(r'^expiryDate: ', line)
