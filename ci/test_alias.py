@@ -44,7 +44,7 @@ def test_alias(md_filepath):
             aliases += ast.literal_eval(new_line[new_line.find("["):])
 
     #Check case where alias points back to URL
-    if md_filepaths.name.lstrip('./content/')[:-3] in \
+    if md_filepath.name.lstrip('./content/')[:-3] in \
             [a.rstrip('/') for a in aliases]:
         valid_alias = False
         print('Circular alias: ' + path)
