@@ -5,8 +5,8 @@ author:
 description: 'This is a detailed guide on pyinotify. Pyinotify is a Python library for using Linux inotify. Linux inotify is a Linux kernel subsystem for monitoring file system changes'
 keywords: 'inotify,pyinotify,file system change monitoring,python,linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Saturday, November 11th, 2017'
-modified: 'Saturday, November 11th, 2017'
+published: 2017-12-05
+modified: 2017-12-05
 modified_by:
   name: Md. Sabuj Sarker
 title: 'pyinotify - Monitor filesystem events with inotify on Linux'
@@ -14,7 +14,7 @@ contributor:
   name: Md. Sabuj Sarker
   link: http://sabuj.me
 external_resources:
-- '[Github repository of pyinotify](https://github.com/seb-m/pyinotify)'
+- '[pyinotify on Github](https://github.com/seb-m/pyinotify)'
 - '[Pyinotify wiki](http://github.com/seb-m/pyinotify/wiki)'
 - '[Pyinotify API documentation](http://seb-m.github.com/pyinotify)'
 - '[Inotify manpage](http://www.kernel.org/doc/man-pages/online/pages/man7/inotify.7.html)'
@@ -23,9 +23,7 @@ external_resources:
 
 Real time file system monitoring is a big problem of various types of real life application development. In our program we can go over our file system, list every files and directories, cache their metadata and at some interval we can go over the file system over and over again and check the differences between what on the disk and what in the cache.
 
-Working in the way described above is not efficient and may render our application unresponsive. It would be great if the kernel notified us of file system changes. That way we did not have to check each and every file and directory over and over again. In modern Linux kernels this is a built-in feature. We call this subsystem of kernel known as `inotify`. When writing our applications in Python we can use a Python library called `pyinotify` to interact with `inotify`. In this guide we will see how to work with `pyinotify` to get notified about different changes in the file system in details.
-
-
+Working in the way described above is not efficient and may render our application unresponsive. It would be great if the kernel notified us of file system changes. That way we did not have to check each and every file and directory over and over again. In modern Linux kernels this is a built-in feature. We call this subsystem of kernel known as `inotify`. Python applications can use a Python library called `pyinotify` to interact with `inotify`. This guide will describe how to work with `pyinotify` to get notified about different changes in the file system.
 
 ## Install Python 3
 
@@ -57,25 +55,24 @@ To monitor file system with `pyinotify` we need to to understand different compo
 3.  **Event notifier:**
     A notifier is an instance is of class `Notifier`. A notifier makes the match of the watch manager and the event processor. There are few variants of `Notifier` with different class names.
 4.  **Watch:**
-    A watch is an object that holds the path of files or directories that we are interested in receiving the events for, the type of file system events we are interested in and few other things. We do not need to create watches directly - they are created when we call `add_watch()` on the watch managers. Watches are instances of class `Watch`.
+    A watch is an object that holds the path of files or directories that we are interested in receiving the events for, the type of file system events we are interested in and few other things. Watches are created when we call `add_watch()` on the watch managers. Watches are instances of class `Watch`.
 5.  **Event codes:**
-    Event codes in pyinotify are the class attributes of EventsCodes. With the help of these codes we tell pyinotify about what event we want to monitor. These class variables can also be accessed from pyinotify module instead of directly referring to the class.
+    Event codes in pyinotify are the class attributes of EventsCodes. With the help of these codes we tell pyinotify what event we want to monitor. These class variables can also be accessed from pyinotify module instead of directly referring to the class.
 6.  **Event:**
     Events are instances of the `Event` class. These instances are passed to event processing methods. Event objects holds various information about the file system change event along with the file or directory path.
 
-These are pretty much all the components that we need to interact with. There are few other components that pyinotify will interact with on our behalf. Along with these you may also take a look at the exceptions pyinotify throws.
+## Set Up Filesystem Tracking
 
-## Creating a Watch Manager
-Let's start our coding for pyinotify by creating a watch manager. Open the file `notify_me.py` with your preferred editor. On a server environment you can do this by using `vi`, `vim`, `emacs` or `nano` along with many other command line based editing programs.
+### Create a Watch Manager
 
-{: .file}
-notify_me.py
-: ~~~ python
-  import pyinotify
-  watch_manager = pyinotify.WatchManager()
-  ~~~
+Open `notify_me.py` in a text editor.
 
-## Creating an Event Processor
+{{< file "~/notify_me.py" python >}}
+import pyinotify
+watch_manager = pyinotify.WatchManager()
+{{< /file >}}
+
+### Create an Event Processor
 As mentioned earlier, event processors are subclass of `ProcessEvent` class. But, subclassing is not the end of the story. We need to define various methods for handing events of different types. Every event processing method starts with `process_` and ends with an event code except for the default event processing method. All these methods receives an instance of `Event`. We can define the following methods:
 
 -   **process_IN_CREATE(event):**
@@ -83,8 +80,9 @@ As mentioned earlier, event processors are subclass of `ProcessEvent` class. But
 -   **process_IN_OPEN(event):**
     This method is invoked when a file or directory is opened in a watched directory. For example, if you open a file in Python with the `open()` function and the directory the file is living in is being watched, this method will be invoked.
 
-    {: .note}
-    > Inexperienced programmers tend to think that directories are not opened - only files are opened. But, that is not true, files are also opened. For example, when your are invoking `listdir()` function from `os` module, it is actually opening the directory, listing the paths and closing it. We will see a proof of this statement in a later section.
+    {{< note >}}
+Inexperienced programmers tend to think that directories are not opened - only files are opened. But, that is not true, files are also opened. For example, when your are invoking `listdir()` function from `os` module, it is actually opening the directory, listing the paths and closing it. We will see a proof of this statement in a later section.
+{{< /note >}}
 -   **process_IN_ACCESS(event):**
     This method will be called when a file or directory is accessed. A very common file accessing operation is reading a file. From the perspective of python, an example of file accessing is invoking `read()` method on an open file object.
 -   **process_IN_ATTRIB(event):**
@@ -114,238 +112,243 @@ As mentioned earlier, event processors are subclass of `ProcessEvent` class. But
 -   **process_default(event):**
     This is the default event processing method. That means, if an appropriate method for an event type is not defined in the event processor subclass, this method is called. But remember that this method is not called for the event type `IN_Q_OVERFLOW` no matter whether the method is overridden or not. This method is defined in the `ProcessEvent` class that does nothing. Override it to provide custom behavior.
 
-Enough theory! Now, let's get our hand dirty with coding. We will implement and override all the methods mentioned above. In our methods we are just going to write code to show the name of the method by which the event is being processed, the event name and the path name.
+We will implement and override all the methods mentioned above. For demonstration purposes, the examples in this guide will show the name of the method by which the event is being processed, the event name and the path name.
 
-{: .note}
-> `maskname` on the event object is the name of the event. It can be combination of more than one events. Event masks are combined by bitwise or '|' operator. Event codes are represented with event masks.
+{{< note >}}
+`maskname` on the event object is the name of the event. It can be combination of more than one events. Event masks are combined by bitwise or '|' operator. Event codes are represented with event masks.
+{{< /note >}}
 
-{: .file}
-notify_me.py
-: ~~~ python
-  class EventProcessor(pyinotify.ProcessEvent):
+{{< file-excerpt "notify_me.py" python >}}
+class EventProcessor(pyinotify.ProcessEvent):
 
-      def process_IN_CREATE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CREATE", event.pathname, event.maskname))
+  def process_IN_CREATE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CREATE", event.pathname, event.maskname))
 
-      def process_IN_OPEN(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_OPEN", event.pathname, event.maskname))
+  def process_IN_OPEN(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_OPEN", event.pathname, event.maskname))
 
-      def process_IN_ACCESS(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ACCESS", event.pathname, event.maskname))
+  def process_IN_ACCESS(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ACCESS", event.pathname, event.maskname))
 
-      def process_IN_ATTRIB(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ATTRIB", event.pathname, event.maskname))
+  def process_IN_ATTRIB(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ATTRIB", event.pathname, event.maskname))
 
-      def process_IN_CLOSE_NOWRITE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_NOWRITE", event.pathname, event.maskname))
+  def process_IN_CLOSE_NOWRITE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_NOWRITE", event.pathname, event.maskname))
 
-      def process_IN_CLOSE_WRITE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSW_WRITE", event.pathname, event.maskname))
+  def process_IN_CLOSE_WRITE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_WRITE", event.pathname, event.maskname))
 
-      def process_IN_DELETE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE", event.pathname, event.maskname))
+  def process_IN_DELETE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE", event.pathname, event.maskname))
 
-      def process_IN_DELETE_SELF(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE_SELF", event.pathname, event.maskname))
+  def process_IN_DELETE_SELF(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE_SELF", event.pathname, event.maskname))
 
-      def process_IN_IGNORED(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_IGNORED", event.pathname, event.maskname))
+  def process_IN_IGNORED(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_IGNORED", event.pathname, event.maskname))
 
-      def process_IN_MODIFY(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MODIFY", event.pathname, event.maskname))
+  def process_IN_MODIFY(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MODIFY", event.pathname, event.maskname))
 
-      def process_IN_MOVE_SELF(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVE_SELF", event.pathname, event.maskname))
+  def process_IN_MOVE_SELF(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVE_SELF", event.pathname, event.maskname))
 
-      def process_IN_MOVED_FROM(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_FROM", event.pathname, event.maskname))
+  def process_IN_MOVED_FROM(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_FROM", event.pathname, event.maskname))
 
-      def process_IN_MOVED_TO(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_TO", event.pathname, event.maskname))
+  def process_IN_MOVED_TO(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_TO", event.pathname, event.maskname))
 
-      def process_IN_Q_OVERFLOW(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_Q_OVERFLOW", event.pathname, event.maskname))
+  def process_IN_Q_OVERFLOW(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_Q_OVERFLOW", event.pathname, event.maskname))
 
-      def process_IN_UNMOUNT(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_UNMOUNT", event.pathname, event.maskname))
+  def process_IN_UNMOUNT(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_UNMOUNT", event.pathname, event.maskname))
 
-      def process_default(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("default", event.pathname, event.maskname))
+  def process_default(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("default", event.pathname, event.maskname))
+{{< /file-excerpt >}}
 
-  ~~~
+### Create an Event Notifier
+An event notifier is created by instantiating the `Notifier` class with an instance of `WatchManager` as the first argument and a `ProcessEvent` subclass instance as the second argument.
 
-## Creating Event Notifier
-An event notifier is created by instantiating the `Notifier` class with an instance of `WatchManager` as the first argument and a `ProcessEvent` subclass instance as the second argument. There are three other non-required keyword arguments that we are not going to use or discuss in this guide.
+{{< file-excerpt "notify_me.py" python >}}
+event_notifier = pyinotify.Notifier(watch_manager, EventProcessor())
+{{< /file-excerpt >}}
 
-{: .file}
-notify_me.py
-: ~~~ python
-  event_notifier = pyinotify.Notifier(watch_manager, EventProcessor())
-  ~~~
+### Add a Watch
 
-## Adding Watch
-By adding watch we mean to add files or directories to be watched for file system change events. Let's create a directory in the directory where `notify_me.py` is living. Let's name it `notification_dir`. We want to add this directory to our file system notification system for watching change events. We need to call `add_watch()` on our watch manager instance `watch_manager`.
+By adding a watch we mean to add files or directories to be watched for file system change events.
 
-{: .file}
-notify_me.py
-: ~~~ python
-  import os
-  watch_this = os.path.abspath("notification_dir")
-  watch_manager.add_watch(watch_this, pyinotify.ALL_EVENTS)
-  ~~~
+1.  Create a sample directory called `notification_dir` in your home directory:
+
+      mkdir ~/notification_dir
+
+2.  Add this directory to our file system notification system for watching change events. We need to call `add_watch()` on our watch manager instance `watch_manager`.
+
+{{< file-excerpt "notify_me.py" python >}}
+import os
+watch_this = os.path.abspath("notification_dir")
+watch_manager.add_watch(watch_this, pyinotify.ALL_EVENTS)
+{{< /file-excerpt >}}
 
 ## Starting to Watch
 Adding a watch does not start watching the files or directories in the file system until we tell our event notifier to do so. Let's start monitoring our file system by calling `loop()` on the notifier.
 
-{: .file}
-notify_me.py
-: ~~~ python
-  event_notifier.loop()
-  ~~~
+{{< file-excerpt "notify_me.py" python >}}
+event_notifier.loop()
+{{< /file-excerpt >}}
 
-## Putting the Pieces of the Puzzle Together
+## Complete Script
 If we put different parts of our python code together, we get this:
 
-{: .file}
-notify_me.py
-: ~~~ python
-  import os
-  import pyinotify
-  watch_manager = pyinotify.WatchManager()
+{{< file-excerpt "notify_me.py" python >}}
+
+import os
+import pyinotify
+watch_manager = pyinotify.WatchManager()
 
 
-  class EventProcessor(pyinotify.ProcessEvent):
+class EventProcessor(pyinotify.ProcessEvent):
 
-      def process_IN_CREATE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CREATE", event.pathname, event.maskname))
+  def process_IN_CREATE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CREATE", event.pathname, event.maskname))
 
-      def process_IN_OPEN(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_OPEN", event.pathname, event.maskname))
+  def process_IN_OPEN(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_OPEN", event.pathname, event.maskname))
 
-      def process_IN_ACCESS(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ACCESS", event.pathname, event.maskname))
+  def process_IN_ACCESS(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ACCESS", event.pathname, event.maskname))
 
-      def process_IN_ATTRIB(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ATTRIB", event.pathname, event.maskname))
+  def process_IN_ATTRIB(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_ATTRIB", event.pathname, event.maskname))
 
-      def process_IN_CLOSE_NOWRITE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_NOWRITE", event.pathname, event.maskname))
+  def process_IN_CLOSE_NOWRITE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_NOWRITE", event.pathname, event.maskname))
 
-      def process_IN_CLOSE_WRITE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSW_WRITE", event.pathname, event.maskname))
+  def process_IN_CLOSE_WRITE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_CLOSE_WRITE", event.pathname, event.maskname))
 
-      def process_IN_DELETE(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE", event.pathname, event.maskname))
+  def process_IN_DELETE(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE", event.pathname, event.maskname))
 
-      def process_IN_DELETE_SELF(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE_SELF", event.pathname, event.maskname))
+  def process_IN_DELETE_SELF(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_DELETE_SELF", event.pathname, event.maskname))
 
-      def process_IN_IGNORED(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_IGNORED", event.pathname, event.maskname))
+  def process_IN_IGNORED(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_IGNORED", event.pathname, event.maskname))
 
-      def process_IN_MODIFY(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MODIFY", event.pathname, event.maskname))
+  def process_IN_MODIFY(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MODIFY", event.pathname, event.maskname))
 
-      def process_IN_MOVE_SELF(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVE_SELF", event.pathname, event.maskname))
+  def process_IN_MOVE_SELF(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVE_SELF", event.pathname, event.maskname))
 
-      def process_IN_MOVED_FROM(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_FROM", event.pathname, event.maskname))
+  def process_IN_MOVED_FROM(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_FROM", event.pathname, event.maskname))
 
-      def process_IN_MOVED_TO(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_TO", event.pathname, event.maskname))
+  def process_IN_MOVED_TO(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_MOVED_TO", event.pathname, event.maskname))
 
-      def process_IN_Q_OVERFLOW(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_Q_OVERFLOW", event.pathname, event.maskname))
+  def process_IN_Q_OVERFLOW(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_Q_OVERFLOW", event.pathname, event.maskname))
 
-      def process_IN_UNMOUNT(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_UNMOUNT", event.pathname, event.maskname))
+  def process_IN_UNMOUNT(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("IN_UNMOUNT", event.pathname, event.maskname))
 
-      def process_default(self, event):
-          print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("default", event.pathname, event.maskname))
+  def process_default(self, event):
+      print("Method name: process_%s()\nPath name: %s\nEvent Name: %s\n" % ("default", event.pathname, event.maskname))
 
-  event_notifier = pyinotify.Notifier(watch_manager, EventProcessor())
+event_notifier = pyinotify.Notifier(watch_manager, EventProcessor())
 
-  watch_this = os.path.abspath("notification_dir")
-  watch_manager.add_watch(watch_this, pyinotify.ALL_EVENTS)
-  event_notifier.loop()
-  ~~~
-
-
-## Making File System Changes and Watching Results
-To see our file system notification python script in action run the following command:
-
-    python3 notify_me.py
-
-Now, open another terminal session to make some changes to the file system. Change the working directory of the command line to the directory where your `notify_me.py` file lives.
-
-Run the following command:
-
-    ls notification_dir
-
-You will see output like below:
-
-    Method name: process_IN_OPEN()
-    Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
-    Event Name: IN_OPEN|IN_ISDIR
-
-    Method name: process_IN_ACCESS()
-    Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
-    Event Name: IN_ACCESS|IN_ISDIR
-
-    Method name: process_IN_CLOSE_NOWRITE()
-    Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
-    Event Name: IN_CLOSE_NOWRITE|IN_ISDIR
+watch_this = os.path.abspath("notification_dir")
+watch_manager.add_watch(watch_this, pyinotify.ALL_EVENTS)
+event_notifier.loop()
+{{< /file-excerpt >}}
 
 
-When we told our system to list directory with the help of `ls` command it threw three events. It told us that the `notification_dir` was opened, then accessed and then closed in non-writable mode.
+## Test Notification Script
 
-{: .note}
-> In a previous section it was said that not only files are opened but also directories are opened too. You can see the proof in the above output.
+In this section you will run the completed script and make changes to the file system to trigger the configured notifications.
 
-Now, change the current working directory of the terminal or command line to `notification_dir` with `cd` command:
+1.  Run the script:
 
-    cd notification_dir
+        python notify_me.py
+
+2.  Open another terminal session and use `ls` to view the contents of the `notification_dir` folder:
+
+        ls notification_dir
+
+    This should trigger the pyinotify script in the original terminal session, and display the following output:
+
+        Method name: process_IN_OPEN()
+        Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
+        Event Name: IN_OPEN|IN_ISDIR
+
+        Method name: process_IN_ACCESS()
+        Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
+        Event Name: IN_ACCESS|IN_ISDIR
+
+        Method name: process_IN_CLOSE_NOWRITE()
+        Path name: /home/sabuj/Desktop/linode_pyinotify/notification_dir
+        Event Name: IN_CLOSE_NOWRITE|IN_ISDIR
 
 
-Try different other shell commands to fire other events and as a result invocation of different other methods. Below are few examples:
+    This output shows that the `ls` command involves three filesystem events: the `notification_dir` was opened, accessed, and then closed in non-writable mode.
 
--   Creating a file:
+    {{< note >}}
+In a previous section it was said that not only files are opened but also directories are opened too. You can see the proof in the above output.
+{{< /note >}}
 
-        touch a_file.txt
+3.  Change the current working directory of the terminal or command line to `notification_dir` with `cd` command:
 
--   Renaming a file:
-
-        mv a_file.txt
-
--   Deleting a file:
-
-        rm a_file.txt
+        cd notification_dir
 
 
-## The Non-blocking Way
-In the example shown in this guide, the call to `loop()` is blocking the current process. If we want our Python script to do  anything else, it will not be able to do that. But, a real life application does many thing at the same time. We have three other options to do the same in a non-blocking responsive fashion.
+4.  Use different shell commands to manipulate files within the watched directory to fire other events:
+
+  -   Create a new file:
+
+            touch test_file.txt
+
+  -   Rename a file:
+
+            mv test_file.txt test_file2.txt
+
+  -   Delete a file:
+
+            rm test_file.txt
+
+
+## Non-Blocking
+In the example shown in this guide, the call to `loop()` is blocking the current process. A real world application does many things at the same time. We have three options to do the same in a non-blocking responsive fashion.
 
 -   Notifier with a timeout:
     At the time of constructing the notifier we can use the `timeout` keyword argument to tell our notifier to get change notification at certain interval.
 
-            event_notifier = pyinotify.Notifier(watch_manager, EventProcessor(), timeout=10)
+        event_notifier = pyinotify.Notifier(watch_manager, EventProcessor(), timeout=10)
 
-    When using timeout, the application will not get file system change notification automatically. You need to explicitly call `event_notifier.process_events()` and `event_notifier.read_events()` at different times. Optionally you can call `event_notifier.check_events()` to check if there is any events waiting for being processed.
+    When using timeout, the application will not get file system change notification automatically. You need to explicitly call `event_notifier.process_events()` and `event_notifier.read_events()` at different times. Optionally you can call `event_notifier.check_events()` to check if there are any events waiting for processing.
 
--   Using Thread:
-    To make our application responsive, we can deploy our file system notifier in a different thread. But, it is not necessary to create thread explicitly. We can use `ThreadNotifier` class instead of `Notifier` and call `event_notifier.start()` to start event processing.
+-   Using ThreadedNotifier:
+    To make the application responsive, we can deploy our file system notifier in a different thread. It is not necessary to create thread explicitly. We can use `ThreadedNotifier` class instead of `Notifier` and call `event_notifier.start()` to start event processing:
+
+      {{< file-excerpt "notify_me.py" python >}}
+event_notifier = pyinotify.ThreadedNotifier(watch_manager, EventProcessor())
+
+watch_this = os.path.abspath("notification_dir")
+watch_manager.add_watch(watch_this, pyinotify.ALL_EVENTS)
+event_notifier.start()
+{{< /file-excerpt >}}
+
 
 -   Using AsyncNotifier:
-    If your Python application is using Python's asynchronous feature then you can use AsyncNotifier instead of Notifier.
+    If your Python application is using Python's [asynchronous feature](https://docs.python.org/3/library/asyncio.html) then you can use AsyncNotifier instead of Notifier.
 
         event_notifier = pyinotify.AsyncNotifier(watch_manager, EventProcessor())
 
-    And then just call the `loop()` function of the `asyncore` module.
+    Then just call the `loop()` function of the `asyncore` module.
 
         import asyncore
         asyncore.loop()
-
-
-## More Information
-You might be interested in digging deeper and more getting information about `inotify` and `pyinotify`. Below are few links that may help you.
