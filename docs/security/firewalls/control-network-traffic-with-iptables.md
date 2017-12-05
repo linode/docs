@@ -625,7 +625,7 @@ When you're applying network rules, especially with both IPv4 and IPv6 and multi
 
 1.  Connect to your Linode Manager.
 2.  Click on the Remote Access tab.
-3.  Under the section entitled "Console Access," click on the **Launch Lish Ajax Console** link.
+3.  Under the section entitled "Console Access," click on the **Launch Lish Console** link.
 4.  Login with your root or sudo user name and password.
 5.  [Remove any rules](#configure-iptables) causing the connectivity issues.
 6.  Log out of the Lish window.

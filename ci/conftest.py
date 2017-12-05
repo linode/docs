@@ -11,9 +11,9 @@ def file_io(func):
     Open and close file objects for tests
     """
     @wraps(func)
-    def wrapper(md_filepaths):
+    def wrapper(md_filepath):
         # Before test
-        f = open(md_filepaths, 'r')
+        f = open(md_filepath, 'r')
         # After test
         r = func(f)
         f.close()
@@ -26,21 +26,18 @@ def md_index(path='.', extension='*.md'):
     Traverses root directory
     """
     index = []
-    exclude = ['node_modules']
+    exclude_dir = ['node_modules', 'archetypes']
+    exclude_file = ['_index.md']
     for root, dirnames, filenames in os.walk(path):
-        dirnames[:] = [d for d in dirnames if d not in exclude]
+        dirnames[:] = [d for d in dirnames if d not in exclude_dir]
         for filename in fnmatch.filter(filenames, extension):
+            if filename in exclude_file:
+                continue
             index.append(os.path.join(root, filename))
     return index
 
 
 @pytest.fixture(params=md_index())
-def md_filepaths(request):
+def md_filepath(request):
     return request.param
-
-
-#@pytest.fixture(params=[open(i) for i in md_index()])
-#def md_files(request):
-#    return request.param
-
 

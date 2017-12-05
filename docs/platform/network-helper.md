@@ -1,5 +1,4 @@
 ---
-deprecated: false
 author:
   name: Alex Fornuto
   email: docs@linode.com
@@ -7,10 +6,13 @@ description: 'Information on the Network Helper option.'
 keywords: ["network", " networking", " network helper", " ip", " ip address", " static ip", ""]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-04-28
+published: 2014-12-08
 modified_by:
   name: Linode
 title: Network Helper
 ---
+
+![Network Helper](/docs/assets/network-helper-title-graphic.jpg "Network Helper")
 
 Network Helper automatically deposits a static networking configuration in to your Linode at boot. Thanks to Network Helper, you don't have to worry about altering your network configuration when you:
 

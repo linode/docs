@@ -15,7 +15,7 @@ title: Using Your System's hosts File
 The Linux [hosts file](http://man7.org/linux/man-pages/man5/hosts.5.html) lives at `/etc/hosts`, and creates static associations between IP addresses and hostnames, domains or machine aliases. Your Linode then gives those associations higher priority than hostnames or domains which must be resolved by DNS.
 
 
-## Example hosts Entries
+## Example Host Entries
 
 There are many different ways to use entries in the hosts file, and the types of associations you set would depend on your specific use case. Below are some examples.
 

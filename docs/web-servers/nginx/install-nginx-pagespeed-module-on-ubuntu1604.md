@@ -2,6 +2,7 @@
 author:
     name: Linode Community
     email: docs@linode.com
+keywords: ["nginx", "ubuntu", "pagespeed"]
 description: 'PageSpeed is an open source Google project created to optimize website performance. Learn how to set up PageSpeed for Nginx.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/nginx/nginx-with-pagespeed-on-ubuntu-14-04/','web-servers/nginx/nginx-with-pagespeed-on-ubuntu-14-04/ ', 'web-servers/nginx/nginx-with-pagespeed-on-ubuntu-16-04/']
