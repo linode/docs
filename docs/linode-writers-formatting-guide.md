@@ -294,11 +294,11 @@ Be sure that lists have the proper horizontal spacing. This should be *two* spac
 Notes should be important text that does not necessarily fit the narrative of the preceding step or paragraph. If a step in your guide can cause any major issues with the user's Linode or computer, a caution note should be included.
 
     {{</* note */>}}
-    This is a sample note. 
+    This is a sample note.
     {{</* /note */>}}
 
 {{< note >}}
-This is a sample note. 
+This is a sample note.
 {{< /note >}}
 
     {{</* caution */>}}
