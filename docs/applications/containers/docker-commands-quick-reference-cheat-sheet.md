@@ -6,55 +6,66 @@ description: 'A quick reference cheat sheet on Docker commands for installation,
 keywords: ["docker", "quick reference", "cheat sheet", "commands"]
 aliases: ['applications/containers/docker-quick-reference-cheat-sheet/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2015-03-30
+modified: 2017-11-20
 modified_by:
   name: Linode
 published: 2015-03-30
-title: A Docker Commands Quick Reference Cheat Sheet
+title: Docker Commands Quick Reference Cheat Sheet
+external_resources:
+  - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
 ---
-Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a shared operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient self-contained systems that run identically wherever deployed.
 
-Optimizing the platform's functionality begins with mastery of requisite Docker commands, especially those listed on this cheat sheet that address installation, Hub interaction, and container and image creation and use.
+Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a host operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient, self-contained systems that run identically wherever deployed.
 
+Optimizing the platform's functionality begins with mastery of the core Docker commands. This cheat sheet is a reference for the most basic Docker commands that address installation, Hub interaction, and working with containers and images.
 
-## Installation
+As of this writing, the recommended Docker installation is Docker Community Edition ([Docker CE](https://docs.docker.com/engine/installation/)). See the official docs or our [How to Install Docker](https://www.linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide for more details.
 
-| Docker Syntax | Description |
-|:-------------|:---------|
-| **curl -sSL https://get.docker.com/ \| sh**    | The Docker maintained installation script<br> for **Debian** or **Ubuntu**.   |
-| **sudo yum -y install docker** | The install command for **Centos 7**<br> or **Fedora 21** and up. |
-| **sudo service docker start** | For **Centos 7** and **Fedora 21** after install,<br> Docker must be started.      |
-
+{{< note >}}
+If you have not added your limited user account to the `docker` group (with `sudo usermod -aG docker username`), all of the commands in this cheatsheet will need to be run with `sudo`.
+{{< /note >}}
 
 ## Docker Hub
 
 | Docker Syntax | Description |
 |:-------------|:---------|
-| **sudo docker search** searchitem | Search Docker Hub for images. Replace <br>`searchitem` with a search-able term. |
-| **sudo docker pull** user/image | Downloads an image from Docker Hub. |
-| **sudo docker push** user/image | Uploads an image to Docker Hub. <br> A Docker Hub username is necessary. |
+| **docker search** searchterm | Search Docker Hub for images. |
+| **docker pull** user/image | Downloads an image from Docker Hub. |
+| **docker login** | Authenticate to Docker Hub <br> (or other Docker registry). |
+| **docker push** user/image | Uploads an image to Docker Hub. <br> You must be authenticated to run this command. |
 
-
-## Use Containers and Images
+## Image and Container Information
 
 | Docker Syntax | Description |
 |:-------------|:---------|
-| **sudo docker run -t -i** user/image | Runs an image, creating a container and<br> changing the command prompt<br> to within the container. |
-| **sudo docker run -p 80:3000 -t -i** user/image | Similar to the command above<br> but with port forwarding. |
-| **`ctrl+p` then `ctrl+q`** | From the container's command prompt,<br> detach and return to the host's prompt. |
-| **sudo docker attach** 1aa| Changes the command prompt<br> from the host to a running container.<br> Replace `1aa` with a container ID. |
-| **sudo docker ps -a** | List all container instances, with their ID,<br> and status. |
-| **sudo docker images** | Lists all images on the local machine. |
-| **sudo docker rm -f** 1aa | Delete a container.<br> Replace `1aa` with a container ID. |
-| **sudo docker commit** 1aa user/image | Save a container as an image.<br> Replace `1aa` with a container ID. |
+| **docker ps** | List all running containers. |
+| **docker ps -a** | List all container instances, with their ID<br> and status. |
+| **docker images** | Lists all images on the local machine. |
+| **docker history** user/image | Lists the history of an image. |
+| **docker logs** [container name or ID] | Displays the logs from a running container. |
+| **docker port** [container name or ID] | Displays the exposed port of a running container. |
+| **docker diff** [container name or ID] | Lists the changes made to a container. |
+
+## Work With Images and Containers
+
+| Docker Syntax | Description |
+|:-------------|:---------|
+| **docker run** -it user/image | Runs an image, creating a container and<br> changing the termihnal<br> to the terminal within the container. |
+| **docker run** -p $HOSTPORT:$CONTAINERPORT -d user/image | Run an image in detached mode<br> with port forwarding. |
+| **`ctrl+p` then `ctrl+q`** | From within the container's command prompt,<br> detach and return to the host's prompt. |
+| **docker attach** [container name or ID] | Changes the command prompt<br> from the host to a running container. |
+| **docker start** [container name or ID] | Start a container.  |
+| **docker stop** [container name or ID] | Stop a container.  |
+| **docker rm -f** [container name or ID] | Delete a container. |
+| **docker rmi** | Delete an image. |
+| **docker tag** user/image:tag user/image:newtag | Add a new tag to an image. |
+| **docker exec** [container name or ID] shell command | Executes a command within a running container. |
 
 ## Image Creation
 
 | Docker Syntax | Description |
 |:-------------|:---------|
-| **FROM ubuntu:14.04 <br> MAINTAINER Sample User** <user.email@email.com> <br> **RUN apt-get update** | Create an empty directory <br> with a file named **`Dockerfile`**, <br> then insert this syntax. <br> From the new directory,<br> run the build command,<br> listed below.|
-| **sudo docker build -t sampleuser/ubuntu .** | Builds a Docker image<br> from a Docker file,<br> as shown above. |
-
-
-
-
+| **docker commit** user/image | Save a container as an image. |
+| **docker save** user/image | Save an image to a tar archive. |
+| **docker build -t sampleuser/ubuntu .** | Builds a Docker image<br> from a Dockerfile<br> in the current directory. |
+| **docker load** | Loads an image from file.|
