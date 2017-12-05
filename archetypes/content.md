@@ -7,8 +7,6 @@ keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: {{ .Date }}
 modified: {{ .Date }}
-expiry_date: {{ .Date }}
-deprecated: {{ .Date > $.Page.Params.expiry_date }}
 modified_by:
   name: Linode
 title: "{{ replace .TranslationBaseName "-" " " | title }}"
@@ -19,10 +17,6 @@ external_resources:
 - '[Link Title 1](http://www.example.com)'
 - '[Link Title 2](http://www.example.net)'
 ---
-
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 <!---  See https://www.linode.com/docs/style-guide for more details on guide formatting.  --->
 
