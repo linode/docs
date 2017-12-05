@@ -15,7 +15,7 @@ external_resources:
   - '[Docker Cheat Sheet (Github)](https://github.com/wsargent/docker-cheat-sheet)'
 ---
 
-Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a shared operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient self-contained systems that run identically wherever deployed.
+Docker is becoming increasingly popular among software developers, operators and enterprises as a software container platform. Containers package software in a format that can run isolated on a host operating system. Bundled with only essential libraries and settings, Docker renders lightweight, efficient, self-contained systems that run identically wherever deployed.
 
 Optimizing the platform's functionality begins with mastery of the core Docker commands. This cheat sheet is a reference for the most basic Docker commands that address installation, Hub interaction, and working with containers and images.
 
@@ -50,9 +50,9 @@ If you have not added your limited user account to the `docker` group (with `sud
 
 | Docker Syntax | Description |
 |:-------------|:---------|
-| **docker run** -it user/image | Runs an image, creating a container and<br> changing the command prompt<br> to within the container. |
+| **docker run** -it user/image | Runs an image, creating a container and<br> changing the termihnal<br> to the terminal within the container. |
 | **docker run** -p $HOSTPORT:$CONTAINERPORT -d user/image | Run an image in detached mode<br> with port forwarding. |
-| **`ctrl+p` then `ctrl+q`** | From the container's command prompt,<br> detach and return to the host's prompt. |
+| **`ctrl+p` then `ctrl+q`** | From within the container's command prompt,<br> detach and return to the host's prompt. |
 | **docker attach** [container name or ID] | Changes the command prompt<br> from the host to a running container. |
 | **docker start** [container name or ID] | Start a container.  |
 | **docker stop** [container name or ID] | Stop a container.  |
