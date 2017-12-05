@@ -18,7 +18,7 @@ external_resources:
 
 CPAN, the Comprehensive Perl Archive Network, is the primary source for publishing and fetching the latest modules and libraries for the Perl programming language. The default method for installing Perl modules, using the **CPAN Shell**, provides users with a great deal of power and flexibility, but this comes at the cost of a complex configuration and an inelegant default setup.
 
-The `cpanm` client attempts to make the power of CPAN accessible to all users, particularly those who aren't Perl developers with a great deal of experience with the CPAN shell. This document outlines the procedures for installing cpanminus and demonstrates a number of basic use cases. If you're new to the world of Linux systems administration, you might want to review our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [administration basics guide](/docs/using-linux/administration-basics) before completing this guide.
+The `cpanm` client attempts to make the power of CPAN accessible to all users, particularly those who aren't Perl developers, but have experience with the CPAN shell. This document outlines the procedures for installing cpanminus and demonstrates a number of basic use cases. If you're new to the world of Linux systems administration, you may want to review our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/) and [administration basics guide](/docs/using-linux/administration-basics) before completing this guide.
 
 ## Install Dependencies
 
@@ -62,7 +62,7 @@ You can also use the `--skip-installed` option to avoid reinstalling modules whe
 
     cpanm --sudo --skip-installed Catalyst::Runtime Class::Inspector
 
-This installs the specified modules to the system location (with `--sudo`), but only if they have not been installed already.
+This installs the specified modules to the system location (with `--sudo`), but only if they haven't been installed already.
 
 ### Install from Remote URL
 
