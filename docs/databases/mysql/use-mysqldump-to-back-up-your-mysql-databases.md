@@ -18,7 +18,7 @@ external_resources:
 
 ![Use mysqldump to Back Up Your MySQL Database](/docs/assets/back_up_your_mysql-databases.png "Use mysqldump to Back Up Your MySQL Database")
 
-[MySQL](http://www.mysql.com/) provides the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database, or system of databases. 
+[MySQL](http://www.mysql.com/) provides the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database, or system of databases.
 
 
 ## Before You Begin
