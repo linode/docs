@@ -23,7 +23,7 @@ external_resources:
 
 ## Before You Begin
 
-You should have a working installation of MySQL on your system before beginning this guide, and a MySQL user to run the backup as. A MySQL user with read (e.g. `SELECT`) permission is able to use both the `mysqldump` and MySQL client tools to take backups as described below. See our [How to Install MySQL on Debian](docs/databases/mysql/how-to-install-mysql-on-debian-8/) guide to install MySQL and create a sample database.
+You should have a working installation of MySQL on your system before beginning this guide, and a MySQL user to run the backup as. A MySQL user with read (e.g. `SELECT`) permission is able to use both the `mysqldump` and MySQL client tools to take backups as described below. See our [How to Install MySQL on Debian](/docs/databases/mysql/how-to-install-mysql-on-debian-8/) guide to install MySQL and create a sample database.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
