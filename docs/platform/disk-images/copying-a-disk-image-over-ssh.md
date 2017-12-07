@@ -62,7 +62,7 @@ The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode i
         2097152000 bytes (2.1 GB) copied, 364.002 s, 5.8 MB/s
 
     {{< note >}}
-Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the ssh command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this step.  
+Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this step.
 {{< /note >}}
 
 ## Verifying the Disk
