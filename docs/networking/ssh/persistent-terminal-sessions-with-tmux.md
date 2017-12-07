@@ -12,7 +12,6 @@ modified_by:
 title: 'How to Use tmux, a Terminal Multiplexer'
 contributor:
   name: Alexandru Andrei
-  link: Github/Twitter Link
 external_resources:
 - '[tmux Manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1)'
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
@@ -142,4 +141,4 @@ set -g status-right "#(cut -d ' ' -f -3 /proc/loadavg) %H:%M %d-%b-%y"
 
 3.  With the mouse option enabled you can use the pointer to interact with tmux panes, windows and status bar. For example you can click on a window name in the status bar to switch to it or you can click and drag a delimiting pane line to resize it.
 
-4.  Other configuration options are available in the [tmux manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1#OPTIONS).
+4.  Other configuration options are available in the [tmux manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1).
