@@ -130,4 +130,4 @@ If the contents of your Google Drive do not load automatically, it's likely that
 
 6.  Remount your Google Drive:
 
-    google-drive-ocamlfuse -label me google-drive
+        google-drive-ocamlfuse -label me google-drive

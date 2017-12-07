@@ -1,4 +1,5 @@
 ---
+Deprecated: true
 author:
   name: Angel Guarisma
   email: aguarisma@linode.com
@@ -9,7 +10,7 @@ aliases: ['docs/applications/project-manager/setting-up-taskwarrior-on-ubuntu-16
 modified: 2017-05-23
 modified_by:
   name: Angel
-Published: Tuesday, July 1, 2017
+published: 2017-07-01
 title: 'Install Taskwarrior on Ubuntu 16.10'
 external_resources:
  - '[Taskwarrior Official Documentation](https://taskwarrior.org/docs/)'

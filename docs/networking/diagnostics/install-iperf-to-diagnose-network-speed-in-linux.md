@@ -52,6 +52,12 @@ To install iPerf on your Arch Linux instance run:
 
     pacman -S iperf
 
+### openSUSE
+
+Use `zypper` to install iPerf on openSUSE:
+
+    zypper install iperf
+
 ### Gentoo
 
 Use Portage to install iPerf on your Gentoo instance:

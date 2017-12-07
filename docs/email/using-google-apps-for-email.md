@@ -9,6 +9,7 @@ aliases: ['email/google-mail/']
 modified: 2014-08-05
 modified_by:
   name: Linode
+published: 2014-08-05
 title: Using Google Apps for Email
 ---
 

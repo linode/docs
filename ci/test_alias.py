@@ -25,10 +25,10 @@ localserver = pytest.mark.skipif(not _localserve_running(),
 
 @localserver
 @file_io
-def test_alias(md_filepaths):
+def test_alias(md_filepath):
     aliases = []
     valid_alias = True
-    for line in md_filepaths:
+    for line in md_filepath:
         # Check if file is expired
         today = datetime.now()
         has_exp_header = re.match(r'^expiryDate: ', line)
@@ -44,7 +44,7 @@ def test_alias(md_filepaths):
             aliases += ast.literal_eval(new_line[new_line.find("["):])
 
     #Check case where alias points back to URL
-    if md_filepaths.name.lstrip('./content/')[:-3] in \
+    if md_filepath.name.lstrip('./content/')[:-3] in \
             [a.rstrip('/') for a in aliases]:
         valid_alias = False
         print('Circular alias: ' + path)
