@@ -3,33 +3,33 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for backing up MySQL databases using the mysqldump tool.'
-keywords: ["mysql", "backup", "mysqldump"]
+keywords: ["mysql", "mariadb", backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/', 'security/backups/back-up-your-mysql-databases/','databases/mysql/back-up-your-mysql-databases/']
 modified: 2017-12-06
 modified_by:
   name: Linode
 published: 2017-12-06
-title: Use mysqldump to Back Up Your MySQL Databases
+title: Use mysqldump to Back Up Your MySQL or MariaDB Databases
 external_resources:
  - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
  - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
 ---
 
-![Use mysqldump to Back Up Your MySQL Database](/docs/assets/back_up_your_mysql-databases.png "Use mysqldump to Back Up Your MySQL Database")
+![Use mysqldump to Back Up Your MySQL or MariaDB Database](/docs/assets/back_up_your_mysql-databases.png "Use mysqldump to Back Up Your MySQL Database")
 
-[MySQL](http://www.mysql.com/) provides the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database, or system of databases.
+[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) provide the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database, or system of databases. Using mysqldump is a form of *logical backup*, as opposed to *physical backup*, which is a copy of the filesystem structure which contains your data. For simplification, the name MySQL will be used throughout this guide when the instructions apply to both MySQL and MariaDB.
 
 
 ## Before You Begin
 
-You should have a working installation of MySQL on your system before beginning this guide, and a MySQL user to run the backup as. A MySQL user with read (e.g. `SELECT`) permission is able to use both the `mysqldump` and MySQL client tools to take backups as described below. See our [How to Install MySQL on Debian](/docs/databases/mysql/how-to-install-mysql-on-debian-8/) guide to install MySQL and create a sample database.
+You should have a working installation of MySQL or MariaDB on your system before beginning this guide, and a database user to run the backup as. See our guides for how to install MySQL on Ubuntu or [MariaDB on Debian](/docs/databases/mariadb/mariadb-setup-debian/) for more information.
 
 {{< note >}}
 The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 {{< /note >}}
 
-## MySQL Backups
+## Back up a Database
 
 The backup command's general syntax is shown below. You will be prompted for a password before `mysqldump` begins it's backup process. Depending on the size of the database, it could take a while to complete. The database backup will be created in the directory the command is run from, and the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
 
