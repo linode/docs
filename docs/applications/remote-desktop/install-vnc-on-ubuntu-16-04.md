@@ -45,7 +45,7 @@ This guide is written for a non-root user. Commands that require elevated privil
     {{< note >}}
 This will install the full Ubuntu desktop environment, including office and web browsing tools. To install the desktop without these packages, run:
 
-	sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
+    sudo apt-get install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 {{< /note >}}
 
     During the install process, you will be asked whether or not to change a system file to the new version:
@@ -115,7 +115,7 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
-3.  You will be prompted to enter the password you specified in Step 4 of [the previous section](#install-a-desktop-and-vnc-on-your-linode).
+3.  You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
 
     [![The VNC password prompt.](/docs/assets/vnc/vnc_viewer_password.png)](/docs/assets/vnc/vnc_viewer_password.png)
 
@@ -129,7 +129,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter `localhost:1` in the server field. The `:1` in the server field corresponds to the display number. In the password section fill in the password you specified in Step 4 of [the previous section](#install-a-desktop-and-vnc-server-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter `localhost:1` in the server field. The `:1` in the server field corresponds to the display number. In the password section fill in the password you specified in [Secure your VNC Connection](#secure-your-vnc-connection):
 
     [![Settings for a Remmina remote desktop connection.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
