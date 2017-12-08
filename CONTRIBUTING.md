@@ -1,6 +1,6 @@
 # Contribute to Linode
 
-This guide describes how to write and submit a guide for the Linode docs. If you would like to write on on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
+This guide describes how to write and submit a guide for the Linode docs. If you would like to write on a topic, please visit our [Contribute](http://www.linode.com/contribute) page to choose a topic and submit a writing sample. When you have received an email notifying you that your topic has been accepted, you are ready to follow the steps in this guide.
 
 ## Fork the Linode Library
 
@@ -86,7 +86,7 @@ The `ci/` directory contains tests written in Python to ensure a given guide mee
 
 ## Write and Submit
 
-Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](/docs/linode-writers-formatting-guide/) for more information.
+Your local Hugo development server has hot-reloading enabled, so you will be able to view changes to your guide as you save them. Please see our [Linode Writer's Formatting guide](https://www.linode.com/docs/linode-writers-formatting-guide/) for more information.
 
 If your guide requires any images, create a subdirectory in the `content/assets` folder and place all images there.
 

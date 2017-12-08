@@ -34,4 +34,3 @@ def test_yaml(md_filepath):
                 parse(str(parsed_yaml[requirement]))
             except ValueError:
                 assert False, 'YAML metadata formatting error: ' + requirement + ' date parse failed.'
-
