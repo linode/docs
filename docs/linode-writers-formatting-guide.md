@@ -6,7 +6,7 @@ description: 'The Linode Guides & Tutorials style guide for article submissions'
 keywords: ["style guide", "format", "formatting", "how to write", "write for us", "write for linode", "linode docs", "submissions"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['style-guide/','linode-writers-guide/']
-modified: 2017-11-30
+modified: 2017-12-08
 modified_by:
   name: Linode
 published: 2014-01-15
@@ -208,10 +208,39 @@ If you wish to provide links to external sites for the user to review after goin
 > - [Link Title 1](http://www.example.com)
 > - [Link Title 2](http://www.example.net)
 
+### Shortguides
+
+For common tasks such as basic software installation, consider using the `section` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
+
+First, review the available shortguides in the `docs/shortguides` folder to see if there is already an installation guide for the software you would like to install. If not, you may want to write your own set of instructions and store it in this directory. The filename should make it clear what the instructions are meant to accomplish, for example `install_python_miniconda.md`.
+
+Shortguides should consist entirely of numbered steps, as they are intended to be inserted into multiple guides:
+
+{{< file "install_python_miniconda.md"  text >}}
+<!-- Installation instructions for Python 3. -->
+
+1.  Download and install Miniconda:
+
+        curl -OL https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+        bash Miniconda3-latest-Linux-x86.64.sh
+
+2.  You will be prompted several times during the installation process. Review the terms and conditions and select "yes" for each prompt.
+
+
+3.  Check your Python version:
+
+        python --version
+{{< /file >}}
+
+To use a shortguide in another guide, use the following syntax:
+
+{{< file-excerpt "sample_guide.md" >}}
+{{</* section file="/shortguides/install_nginx.md" */>}}
+{{< /file-excerpt >}}
+
 ### Files and File Excerpts
 
 Use the *file* shortcode to add the entire contents of a file to a guide. If only quoting a portion of the file, use the *file excerpt* shortcode. Exceptionally long files should be shown in parts and have the whole file linked, if needed.
-<!--- Note to editors: please double check the link to Chroma. The list may not be satisfactory for use. -->
 For each file or file excerpt, a code language or syntax should be defined in the shortcode tag to set how the text is displayed. A list of supported languages can be found [on GitHub](https://github.com/alecthomas/chroma).
 
 **Example**: File shortcode
