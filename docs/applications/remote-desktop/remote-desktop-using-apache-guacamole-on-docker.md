@@ -5,7 +5,7 @@ author:
 description: 'Create a remote desktop on a Linode.'
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-17
+modified: 2017-12-08
 modified_by:
   name: Sam Foo
 published: 2017-11-17
@@ -20,30 +20,7 @@ Apache Guacamole is an HTML5 application useful for accessing a remote desktop t
 # Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-1.  Update packages and install dependencies.
-
-        sudo apt-get update
-        sudo apt-get install apt-transport-https ca-certificates curl software-properties-common
-
-2.  Add Docker gpg key:
-
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-3.  Confirm key fingerprint:
-
-        sudo apt-key fingerprint 0EBFCD88
-
-4.  Add package to repository:
-
-        sudo add-apt-repository \
-           "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-           $(lsb_release -cs) \
-           stable"
-
-5.  Update and install Docker CE:
-
-        sudo apt-get update
-        sudo apt-get install docker-ce
+{{< section file="/shortguides/docker/install_docker_ce.md" >}}
 
 # Initialize Guacamole Authentication with MySQL
 PostgreSQL are MariaDB are also supported but MySQL will be demonstrated in this guide.
