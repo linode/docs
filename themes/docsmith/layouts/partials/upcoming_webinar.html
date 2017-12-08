@@ -1,0 +1,24 @@
+{{ if and .Params.upcoming_webinar .Params.upcoming_webinar.webinar_datetime }}
+{{ $theDate := .Params.upcoming_webinar.webinar_datetime | time }}
+{{ $today := now.Truncate ( duration "hour" 24 ) }}
+{{ if ge $theDate $today }}
+<hr />
+<div align="center">
+	<p>Our Next Live Webinar:</p>
+	<h3>{{ .Params.upcoming_webinar.webinar_title }}</h3>
+	{{ .Params.upcoming_webinar.webinar_datetime }}
+	<p></p>
+	<p><small>
+		{{ .Params.upcoming_webinar.webinar_description }}
+	</small></p>
+	<p>
+		<form action="{{ .Params.upcoming_webinar.webinar_registration_url }}" method="post" role="form">
+			<span class="input-group-btn">
+				<button type="submit" class="btn btn-blue">Register for the webinar</button>
+			</span>
+		</form>
+	</p>
+</div>
+<hr />
+{{ end }}
+{{ end }}

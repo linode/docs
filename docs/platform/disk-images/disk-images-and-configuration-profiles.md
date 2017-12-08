@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to disks and configuration profiles
-keywords: 'disks,config profiles'
+keywords: ["disks", "config profiles"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
-modified: Thursday, June 19th, 2014
+aliases: ['disk-images-config-profiles/','migrate-to-linode/disk-images/disk-images-and-configuration-profiles/']
+modified: 2014-06-19
 modified_by:
   name: Linode
-published: 'Tuesday, April 24th, 2012'
+published: 2012-04-24
 title: Disks and Configuration Profiles
 ---
 
@@ -46,9 +46,9 @@ Just like your desktop computer has a physical hard drive that can be partitione
 
 The Linode Manager makes it easy to create a new disk with a fresh Linux distribution installed. This is a fast and easy way to try out other distributions. Here's how to create a disk with a Linux distribution installed:
 
- {: .note }
->
-> A new configuration profile will automatically be created when you make a disk this way. After the disk is created, you can select the new configuration profile to boot your Linode from the new disk.
+ {{< note >}}
+A new configuration profile will automatically be created when you make a disk this way. After the disk is created, you can select the new configuration profile to boot your Linode from the new disk.
+{{< /note >}}
 
 1.  Log in to the [Linode Manager](https://manager.linode.com).
 2.  Click the **Linodes** tab.
@@ -59,9 +59,9 @@ The Linode Manager makes it easy to create a new disk with a fresh Linux distrib
 
 5.  Select a Linux distribution from the **Distribution** menu.
 
- {: .note }
->
-> You can install a customized Linux distribution on your disk by clicking **Deploying using StackScripts**. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up the WordPress.
+ {{< note >}}
+You can install a customized Linux distribution on your disk by clicking **Deploying using StackScripts**. Some of the most popular StackScripts do things like install Apache, configure a firewall, and set up the WordPress.
+{{< /note >}}
 
 6.  Enter a size for the disk in the **Deployment Disk Size** field. The size must be smaller than the amount of storage space remaining in your Linode plan.
 7.  By default, the new disk is set to use your existing swap disk. If you'd like to create a new swap disk, select a size from the **Swap Disk** menu.

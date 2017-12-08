@@ -3,13 +3,13 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Install the Oracle Java development kit'
-keywords: 'oracle,java,JDK,install java,ubuntu'
+keywords: ["oracle", "java", "JDK", "install java", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['applications/development/install-java-on-ubuntu-16-04/']
-modified: 'Tuesday, May 30th, 2017'
+aliases: ['applications/development/install-java-on-ubuntu-16-04/']
+modified: 2017-05-30
 modified_by:
   name: Phil Zona
-published: 'Tuesday, May 30th, 2017'
+published: 2017-05-30
 title: 'Install Java on Ubuntu 16.04'
 contributor:
   name: Phil Zona
@@ -47,8 +47,9 @@ The Oracle JDK, includes a development environment for building applications wit
 
         sudo add-apt-repository ppa:webupd8team/java
 
-    {: .note}
-    > This repository is *not* maintained by Oracle. It does not contain actual Java files, but does allow us to download installers for Oracle Java software. Before using the installers, you'll be prompted to accept a license agreement, which can be found in its entirety [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
+    {{< note >}}
+This repository is *not* maintained by Oracle. It does not contain actual Java files, but does allow us to download installers for Oracle Java software. Before using the installers, you'll be prompted to accept a license agreement, which can be found in its entirety [here](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
+{{< /note >}}
 
 3.  Update the local package cache:
 
@@ -77,7 +78,7 @@ The Oracle JDK, includes a development environment for building applications wit
 
         sudo add-apt-repository -r ppa:webupd8team/java
 
-## Set JAVA_HOME
+## Set Java Home Environment
 
 Many applications include code or configuration that references the `JAVA_HOME` environment variable. This variable points them to the Java binary file, allowing them to run Java code.
 
@@ -111,5 +112,6 @@ However, if you only need to run applications that you've already downloaded, yo
 
 Note that this is unnecessary if you've installed OpenJDK, since it includes the JRE.
 
-{: .caution}
-> OpenJDK and Oracle Java are *not* identical. There may be licensing, performance, and stability differences, and this should be considered carefully when developing production applications.
+{{< caution >}}
+OpenJDK and Oracle Java are *not* identical. There may be licensing, performance, and stability differences, and this should be considered carefully when developing production applications.
+{{< /caution >}}

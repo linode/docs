@@ -4,20 +4,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use Confluence on Ubuntu 10.04 (Lucid) to power a full-featured wiki system.'
-keywords: 'confluence ubuntu 10.04,confluence,confluence wiki,confluence linux'
+keywords: ["confluence ubuntu 10.04", "confluence", "confluence wiki", "confluence linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/wikis/confluence/ubuntu-10-04-lucid/']
-modified: Tuesday, June 7th, 2011
+aliases: ['web-applications/wikis/confluence/ubuntu-10-04-lucid/']
+modified: 2011-06-07
 modified_by:
   name: Linode
-published: 'Sunday, September 5th, 2010'
+published: 2010-09-05
 title: 'Confluence on Ubuntu 10.04 (Lucid)'
 ---
 
 [Confluence](http://www.atlassian.com/software/confluence/) is a popular wiki system that features easy editing and publishing, Microsoft Office and SharePoint integration, the ability to add custom features via plugins, and more. It is [free for use](http://www.atlassian.com/software/jira/licensing.jsp#nonprofit) by official non-profit organizations, charities, educational institutions, and established open source projects. These guides will help you get started with Confluence on your Ubuntu 10.04 (Lucid) Linode. It is assumed that you're starting with a freshly deployed system. If you've already deployed applications to your Linode, you may need to make some adjustments to these instructions to accommodate your existing setup. It is also assumed that you've already obtained a license key for Confluece; if not, please do so before proceeding. These steps should be performed as the "root" user via an SSH session.
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -26,8 +25,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Confluence
-------------------
+# Install Confluence
 
 Issue the following commands to update your package repositories, install all available application updates, and add the Ubuntu partner repository. The partner repository is required to allow the installation of the Sun Java 6 JDK; alternate Java JDK packages (such as OpenJDK) are not supported by Confluence as of this writing.
 
@@ -68,20 +66,20 @@ Visit the [Confluence download page](http://www.atlassian.com/software/confluenc
 
 Edit the `confluence-init.properties` file, adding the following line to it. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties
-: ~~~
-  confluence.home=/var/lib/confluence
-  ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/confluence/WEB-INF/classes/confluence-init.properties" >}}
+confluence.home=/var/lib/confluence
+
+{{< /file-excerpt >}}
+
 
 Edit the `setenv.sh` file, adding the following lines. Adjust the full path to the file as necessary to reflect the current version number.
 
-{: .file-excerpt }
-/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh
-:  ~~~
-   JAVA_HOME="/usr/lib/jvm/java-6-sun"
-   export JAVA_HOME
-   ~~~
+{{< file-excerpt "/usr/local/confluence/confluence-3.3.1-std/bin/setenv.sh" >}}
+JAVA_HOME="/usr/lib/jvm/java-6-sun"
+export JAVA_HOME
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to return to a root shell.
 
@@ -97,8 +95,7 @@ Issue the following commands to create an init script to control the Confluence 
 
 Confluence should now be installed. Next, you'll create a database to store information related to your Confluence installation.
 
-Create the Confluence Database
-------------------------------
+# Create the Confluence Database
 
 Issue the following commands to install PostgreSQL and some useful "contrib" components.
 
@@ -146,8 +143,7 @@ Create the Confluence database by issuing the following commands.
 
 PostgreSQL should now be properly configured. Next, you'll create a virtual host for your Confluence site.
 
-Create a Virtual Host for Confluence
-------------------------------------
+# Create a Virtual Host for Confluence
 
 By default, the web interface for Confluence runs on port 8080. If you're comfortable with instructing your users to use this port, you may skip this section. Otherwise, follow these instructions to use the Apache web server to host a traditional virtual host for your Confluence installation.
 
@@ -159,41 +155,41 @@ Issue the following commands to install Apache and enable proxy modules.
 
 Edit the `/etc/apache2/mods-available/proxy.conf` file to match the following example.
 
-{: .file }
-/etc/apache2/mods-available/proxy.conf
-:   ~~~ apache
-    <IfModule mod_proxy.c>
-            #turning ProxyRequests on and allowing proxying from all may allow
-            #spammers to use your proxy to send email.
+{{< file "/etc/apache2/mods-available/proxy.conf" apache >}}
+<IfModule mod_proxy.c>
+        #turning ProxyRequests on and allowing proxying from all may allow
+        #spammers to use your proxy to send email.
 
-            ProxyRequests Off
+        ProxyRequests Off
 
-            <Proxy *>
-                    AddDefaultCharset off
-                    Order deny,allow
-                    Allow from all
-            </Proxy>
+        <Proxy *>
+                AddDefaultCharset off
+                Order deny,allow
+                Allow from all
+        </Proxy>
 
-            # Enable/disable the handling of HTTP/1.1 "Via:" headers.
-            # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
-            # Set to one of: Off | On | Full | Block
+        # Enable/disable the handling of HTTP/1.1 "Via:" headers.
+        # ("Full" adds the server version; "Block" removes all outgoing Via: headers)
+        # Set to one of: Off | On | Full | Block
 
-            ProxyVia On
-    </IfModule>
-    ~~~
+        ProxyVia On
+</IfModule>
+
+{{< /file >}}
+
 
 Create a virtual host configuration file for your Confluence site. Use the following example, editing the filename and contents as necessary to reflect your actual domain name and public IP address. Please note that you will need to add an "A" record to your DNS configuration to point the site to your Linode's public IP address. This example assumes that Confluence will be running on its default port (8080).
 
-{: .file }
-/etc/apache2/sites-available/confluence.example.com
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin support@example.com
-         ServerName confluence.example.com
-         ProxyPass / http://localhost:8080/
-         ProxyPassReverse / http://localhost:8080/
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/confluence.example.com" apache >}}
+<VirtualHost *:80>
+     ServerAdmin support@example.com
+     ServerName confluence.example.com
+     ProxyPass / http://localhost:8080/
+     ProxyPassReverse / http://localhost:8080/
+</VirtualHost>
+
+{{< /file >}}
+
 
 Issue the following commands to enable the site, restart Apache, and start Confluence.
 
@@ -203,8 +199,7 @@ Issue the following commands to enable the site, restart Apache, and start Confl
 
 Apache should now be properly configured. Next, you'll configure Confluence.
 
-Configure Confluence
---------------------
+# Configure Confluence
 
 If you created a virtual host for your Confluence installation, direct your browser to `http://confluence.example.com`, replacing "confluence.example.com" with the site you set up with Apache. Otherwise, visit the URL `http://12.34.56.78:8080`, replacing "12.34.56.78" with your Linode's public IP address. Enter your license key on the first screen and click the "Production Installation" button to continue.
 
@@ -236,8 +231,7 @@ If you elected to install the example site, you'll be greeted with a screen rese
 
 Congratulations! You've successfully installed Confluence on your Ubuntu 10.04 (Lucid) Linode system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

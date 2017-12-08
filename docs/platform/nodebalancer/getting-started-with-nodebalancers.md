@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Using a NodeBalancer to begin managing a simple web application.'
-keywords: 'nodebalancers,nodebalancer,load balancers,load balancer,load balancing,high availability,ha'
+keywords: ["nodebalancers", "nodebalancer", "load balancers", "load balancer", "load balancing", "high availability", "ha"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['nodebalancers/getting-started/','linode-platform/nodebalancer-howto/']
-modified: 'Friday, December 18th, 2015'
+aliases: ['nodebalancers/getting-started/','linode-platform/nodebalancer-howto/']
+modified: 2015-12-18
 modified_by:
   name: Linode
-published: 'Thursday, February 12, 2015'
+published: 2015-02-12
 title: Getting Started with NodeBalancers
 ---
 
@@ -93,9 +93,9 @@ You might not see the web application that you expect when you go directly to th
 
 It is important to configure the "default" virtual host in your web server to point at something useful. NodeBalancer will pass the Host header from a browser untouched, so virtual hosts will work entirely normally once you are pointing a domain at the NodeBalancer. It is only mentioned here because testing NodeBalancers can demonstrate quirks in a web server's configuration, particularly when browsing by the NodeBalancer's IP address.
 
- {: .note }
->
-> Health checks are transmitted with a Host header (in HTTP/1.0 mode).
+ {{< note >}}
+Health checks are transmitted with a Host header (in HTTP/1.0 mode).
+{{< /note >}}
 
 ## Putting the NodeBalancer in Charge
 

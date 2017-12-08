@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: Our guide to copying a disk over SSH
-keywords: 'copy,disk,ssh'
+keywords: ["copy", "disk", "ssh"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['migration/ssh-copy/','migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/']
-modified: Thursday, April 13, 2017
+aliases: ['migration/ssh-copy/','migrate-to-linode/disk-images/copying-a-disk-image-over-ssh/']
+modified: 2017-12-07
 modified_by:
   name: Linode
-published: 'Monday, June 4th, 2012'
+published: 2012-06-04
 title: Copying a Disk Over SSH
 ---
 
@@ -17,11 +17,11 @@ You can use SSH to copy a Linode's disk to a system that resides on a different 
 
 ![Our guide to copying a disk over SSH](/docs/assets/copying_a_disk_over_ssh_smg.png "Our guide to copying a disk over SSH")
 
-##Preparing the Receiving Computer
+## Preparing the Receiving Computer
 
 Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment.
 
-##Starting Your Linode in Rescue Mode
+## Starting Your Linode in Rescue Mode
 
 Before you initiate the transfer, start your Linode in *Rescue Mode* and start SSH by following these guides:
 
@@ -29,7 +29,7 @@ Before you initiate the transfer, start your Linode in *Rescue Mode* and start S
 2.  [Connecting to a Linode Running in Rescue Mode via LISH](/docs/troubleshooting/rescue-and-rebuild/#connecting-to-a-linode-running-in-rescue-mode).
 3.  [Start the SSH server on your Linode](/docs/troubleshooting/rescue-and-rebuild/#starting-ssh).
 
-##Copying the Disk
+## Copying the Disk
 
 Now that the Linode is running in Rescue Mode, you can transfer the disk from the Linode to the receiving machine over SSH:
 
@@ -37,9 +37,9 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
 
         ssh root@123.45.67.89 "dd if=/dev/sda " | dd of=/home/archive/linode.img
 
-    {: .note}
-    >
-    >The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
+    {{< note >}}
+The device `/dev/sda` is used for Linodes running on top of KVM. If you Linode is still using XEN, then throughout this guide you must use `/dev/xvda` instead.
+{{< /note >}}
 
 2.  The receiving machine will connect to the Linode. Type `yes` and press Enter to continue connecting:
 
@@ -61,13 +61,11 @@ Now that the Linode is running in Rescue Mode, you can transfer the disk from th
         4096000+0 records out
         2097152000 bytes (2.1 GB) copied, 364.002 s, 5.8 MB/s
 
-    {: .note}
-    >
-    >Copying your disk can take a while. Please be patient. If you receive a `Write failed: Broken pipe` error, repeat this step.
+    {{< note >}}
+Copying your disk can take a while. Please be patient. If you have a slow internet connection, add the `-C` option to the SSH command; this enables gzip compression for data transfer. If you receive a `Write failed: Broken pipe` error, repeat this step.
+{{< /note >}}
 
-
-
-##Verifying the Disk
+## Verifying the Disk
 
 Once the copy has completed, you can verify it by mounting the image on the receiving machine.
 
@@ -94,9 +92,9 @@ Once the copy has completed, you can verify it by mounting the image on the rece
 
 You have successfully transferred your Linode's disk to another host using SSH.
 
-##Uploading the Disk
+## Uploading the Disk
 
-Once you have a copy of your Linode's disk you may want to upload that copy from your receiving machine to a *receiving Linode* in the future.
+Once you have a copy of your Linode's disk you may want to upload that copy from your local machine to a Linode in the future.
 
 1.  Prepare your empty Linode by creating a new disk. Access your Linode through the Linode Manager and select **Create a new disk**:
 
@@ -119,11 +117,11 @@ Once you have a copy of your Linode's disk you may want to upload that copy from
         49807360+0 records out
         25501368320 bytes (26 GB) copied, 9462.12 s, 2.7 MB/s
 
-    {: .note}
-    >
-    >Copying your disk can take a while. Please be patient. If you receive a `Write failed: Broken pipe` error, repeat this step.
+    {{< note >}}
+Copying your disk can take a while. Please be patient. If you receive a `Write failed: Broken pipe` error, repeat this step.
+{{< /note >}}
 
-###Verifying the Disk
+### Verifying the Disk
 
 As above, you will want to verify the disk by mounting it on the receiving Linode. Log in to your Linode through SSH.
 
@@ -144,7 +142,7 @@ As above, you will want to verify the disk by mounting it on the receiving Linod
         bin   dev  home  lib64       media  opt   root  sbin     srv  tmp  var
         boot  etc  lib   lost+found  mnt    proc  run   selinux  sys  usr
 
-###Expanding the Filesystem
+### Expanding the Filesystem
 
 If the disk you created on the receiving Linode is larger than the source disk (for example you're transferring a disk from a smaller linode to a larger linode), you'll have to resize the filesystem in order to make use of the new space.
 
@@ -169,7 +167,7 @@ In the above example, the values in the **Size** column don't match. Although th
 
 If your Linode still has enough space for a swap disk, simply [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) one from your Linode's Dashboard by selecting `swap` from the **Type** drop down menu. A swap disk is typically between 256MB and 512MB in size, but can be made larger or smaller depending upon your needs. If all of the free space on your Linode is assigned to the disk you created previously, [resize](/docs/platform/disk-images/disk-images-and-configuration-profiles/#resizing-a-disk) the disk to make enough room for the swap disk, and then follow the steps to [create](/docs/platform/disk-images/disk-images-and-configuration-profiles/#creating-a-blank-disk) it.
 
-###Booting from the Disk
+### Booting from the Disk
 
 You will now need to create a new configuration profile on the receiving Linode to boot from.
 

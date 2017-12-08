@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Fedora 14.'
-keywords: 'apache fedora 14,fedora web server,linux web server'
+keywords: ["apache fedora 14", "fedora web server", "linux web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/fedora-14/','websites/apache/apache-2-web-server-on-fedora-14/']
-modified: Friday, October 4th, 2013
+aliases: ['web-servers/apache/installation/fedora-14/','websites/apache/apache-2-web-server-on-fedora-14/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Tuesday, December 7th, 2010'
+published: 2010-12-07
 title: Apache 2 Web Server on Fedora 14
 ---
 
@@ -18,8 +18,7 @@ title: Apache 2 Web Server on Fedora 14
 
 This tutorial explains how to install and configure the Apache web server on Fedora 14. All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Fedora 14](/docs/lamp-guides/fedora-14).
 
-Set the Hostname
-----------------
+# Set the Hostname
 
 Before you begin installing and configuring the components described in this guide, please make sure you've followed our instructions for [setting your hostname](/docs/getting-started#setting-the-hostname). Issue the following commands to make sure it is set properly:
 
@@ -28,8 +27,7 @@ Before you begin installing and configuring the components described in this gui
 
 The first command should show your short hostname, and the second should show your fully qualified domain name (FQDN).
 
-Install Apache HTTP Server
---------------------------
+# Install Apache HTTP Server
 
 Before beginning the installation process, ensure that you are running a complete and update version of your system. Issue the following command:
 
@@ -39,8 +37,7 @@ Enter the following command to install the Apache HTTP Server:
 
     yum install httpd
 
-Install Support for Scripting
------------------------------
+# Install Support for Scripting
 
 The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
 
@@ -70,8 +67,7 @@ If you're also hoping to run PHP with mysql, then also install mySQL support:
 
     yum install php-mysql
 
-Configure Apache
-----------------
+# Configure Apache
 
 All configuration for Apache is contained in the `httpd.conf` file, which is located at `/etc/httpd/conf.d/httpd.conf`. We advise you to make a backup of this file into your home directory by issuing the following commands:
 
@@ -87,27 +83,27 @@ There are different ways to set up Virtual Hosts, however we recommend the metho
 
 Now you will create virtual host entries for each site that you need to host with this server. Here are two examples for sites at "example.org" and "example.net".
 
-{: .file-excerpt }
-/etc/httpd/conf.d/vhost.conf
-:   ~~~ apache
-    <VirtualHost *:80>
-         ServerAdmin webmaster@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
+{{< file-excerpt "/etc/httpd/conf.d/vhost.conf" apache >}}
+<VirtualHost *:80>
+     ServerAdmin webmaster@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
 
-    <VirtualHost *:80>
-         ServerAdmin admin@example.net
-         ServerName example.net
-         ServerAlias www.example.net
-         DocumentRoot /srv/www/example.net/public_html/
-         ErrorLog /srv/www/example.net/logs/error.log
-         CustomLog /srv/www/example.net/logs/access.log combined
-    </VirtualHost>
-    ~~~
+<VirtualHost *:80>
+     ServerAdmin admin@example.net
+     ServerName example.net
+     ServerAlias www.example.net
+     DocumentRoot /srv/www/example.net/public_html/
+     ErrorLog /srv/www/example.net/logs/error.log
+     CustomLog /srv/www/example.net/logs/access.log combined
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 Notes regarding this example configuration:
 
@@ -131,8 +127,7 @@ Any time you change an option in your `vhost.conf` file or any other Apache conf
 
     /etc/init.d/httpd reload
 
-Configuration Options
----------------------
+# Configuration Options
 
 One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache on Fedora 14, the main configuration file is located at `/etc/httpd/conf/httpd.conf`, but Apache configuration is also loaded from files in a number of different locations in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
@@ -149,8 +144,7 @@ In accordance with best practices, we do not recommend modifying the default con
 
 Generally, as specified above and in our [LAMP guide for Fedora 14](/docs/lamp-guides/fedora-14) configuration files related to virtually hosted sites should be located in hosts should be located in a specific virtual host file such as `/etc/httpd/conf.d/vhost.conf`, though you can split site-specific configuration information into additional files if needed.
 
-Install Apache Modules
-----------------------
+# Install Apache Modules
 
 One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules are located in the `/etc/httpd/modules/` directory. Configuration directives for the default modules are located in `/etc/httpd/conf/httpd.conf`, while configuration options for optional modules installed with yum are generally placed in `.conf` files in `/etc/httpd/conf.d/`.
 
@@ -171,15 +165,13 @@ You can then install one of these modules with the command:
 
 Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
-Understanding .htaccess Configuration
--------------------------------------
+# Understanding .htaccess Configuration
 
 The `.htaccess` file is the Apache configuration interface that many webmasters and developers have the most experience with. Entering configuration options in these files allows you to control Apache's behavior on a per-directory basis. This allows you to "lock" a directory behind a password wall to prevent general access to it. Additionally, directory specific `.htaccess` files are a common location to specify rules for rewriting URLs.
 
 Remember that options specified in an `.htaccess` file apply to all directories below the file. Furthermore, note that all options specified in `.htaccess` files can specify higher level configuration locations. If this kind of configuration organization is desirable for your setup you can specify directory-level options using `<Directory >` blocks within your virtual host.
 
-Password Protecting Directories
--------------------------------
+# Password Protecting Directories
 
 In a **non** web accessible directory, we need to create a .htpasswd file. For example, if the document root for your Virtual Host is `/srv/www/example.com/public_html/`, use `/srv/www/example.com/`. Enter this directory:
 
@@ -195,37 +187,36 @@ These usernames and passwords need not (and should not) correspond to system use
 
 In the .htaccess file for the directory that you want to protect, add the following lines:
 
-{: .file-excerpt }
-.htaccess
-:   ~~~ apache
-    AuthUserFile /srv/www/example.com/.htpasswd
-    AuthType Basic
-    AuthName "Advanced Choreographic Information"
-    Require valid-user
-    ~~~
+{{< file-excerpt ".htaccess" apache >}}
+AuthUserFile /srv/www/example.com/.htpasswd
+AuthType Basic
+AuthName "Advanced Choreographic Information"
+Require valid-user
+
+{{< /file-excerpt >}}
+
 
 Note, that the `AuthName` is presented to the user as an explanation in the authentication dialog for what they are requesting access to on the server.
 
-Rewriting URLs with mod\_rewrite
---------------------------------
+# Rewriting URLs with mod\_rewrite
 
 The mod\_rewrite engine is very powerful, and is available for your use by default. Although the capabilities of mod\_rewrite far exceed the scope of this section, we hope to provide a brief outline and some common use cases.
 
 In a `<Directory >` block or `.htaccess` file, enable mod\_rewrite with the following line:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
-:   ~~~ apache
-    RewriteEngine on
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration File or .htaccess" apache >}}
+RewriteEngine on
+
+{{< /file-excerpt >}}
+
 
 You may create any number of separate rewrite rules. These rules provide a pattern that the server compares incoming requests against, and if a request matches a rewrite pattern, the server provides an alternate page. Here is an example rewrite rule:
 
-{: .file-excerpt }
-Apache Virtual Hosting Configuration File or .htaccess
-:   ~~~ apache
-    RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
-    ~~~
+{{< file-excerpt "Apache Virtual Hosting Configuration File or .htaccess" apache >}}
+RewriteRule ^post-id/([0-9]+)$ /posts/$1.html
+
+{{< /file-excerpt >}}
+
 
 Let's parse this rule. First, note that the first string is the pattern for matching against incoming requests. The second string specifies the actual files to be served. Mod\_rewrite patterns use regular expression syntax: the `^` matches to the beginning of the string, and the `$` matches to the end of the string, meaning that the rewrite engine won't rewrite strings that partially match the pattern.
 
@@ -233,8 +224,7 @@ The string in question rewrites all URLs that specify paths that begin with `/po
 
 There are many other possibilities for using mod\_rewrite to allow users to see and interact with useful URLs, while maintaining a file structure that makes sense from a development or deployment perspective.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

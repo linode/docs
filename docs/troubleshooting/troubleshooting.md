@@ -5,11 +5,11 @@ author:
 description: Our guide to performing basic troubleshooting.
 keywords: troubleshooting
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['quick-start-troubleshooting/']
-modified: Monday, March 6th, 2017
+aliases: ['quick-start-troubleshooting/']
+modified: 2017-03-06
 modified_by:
   name: Nick Brewer
-published: 'Thursday, April 5th, 2012'
+published: 2012-04-05
 title: Troubleshooting
 ---
 
@@ -34,7 +34,7 @@ You can turn off a Linode, just like a physical computer. If you attempt to conn
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears, as shown below.
 
-[![Check Linode boot status.](/docs/assets/952-troubleshooting1-1-small.png)](/docs/assets/953-troubleshooting1-1.png)
+    [![Check Linode boot status.](/content/assets/952-troubleshooting1-1-small.png)](/content/assets/953-troubleshooting1-1.png)
 
 4.  Review the *Server Status* box on the sidebar to determine whether or not the server is powered on.
 5.  If the server is powered off, click the **Boot** button to turn it on. Wait a couple of minutes for the server to boot.
@@ -71,15 +71,15 @@ To verify that your Linode is operating correctly, you should try to log in with
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
-5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears.
+5.  Select the **Launch Lish Console** link. The LISH console window appears.
 6.  Log in as `root` or another user. If you don't see a login prompt, press Enter. If you can't log in, [reset the root password](/docs/platform/accounts-and-passwords/#resetting-the-root-password) and try again.
 7.  If the console is not responding, [contact Linode support](/docs/support).
 
-If you can log in, continue to the next section, even if there are error messages visible on the console.
+    If you can log in, continue to the next section, even if there are error messages visible on the console.
 
- {: .note }
->
-> For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+    {{< note >}}
+For more information about LISH, see [this guide](/docs/networking/using-the-linode-shell-lish).
+{{< /note >}}
 
 ### Is your disk full?
 
@@ -134,7 +134,7 @@ The applications on your Linode require a certain amount of physical memory to f
 2.  Click the **Linode** tab. A list of your Linodes appears.
 3.  Select a Linode. The Linode's dashboard appears.
 4.  Click the **Remote Access** tab.
-5.  Select the **Launch Lish Ajax Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
+5.  Select the **Launch Lish Console** link. The LISH console window appears. If memory errors are displayed in the LISH console, stop some running services to free up memory or upgrade to larger plan.
 6.  Your Linode might be out of memory even if you do not see any error messages in the LISH console. Execute the following command in the LISH console or a terminal window to determine whether or not your Linode still has free memory available:
 
         free -m
@@ -175,9 +175,9 @@ Disk input/output (I/O) bottlenecks can occur when an application or service is 
 4.  If your I/O wait percentage is above zero, verify that your server has enough free memory available. In many cases, high I/O is an indication that your server has started "swapping," or using disk space as memory.
 5.  If your server has free memory available and is not using swap space, use `iotop` or [vmstat](/docs/uptime/monitoring/use-vmstat-to-monitor-system-performance) to find the application responsible for the excessive I/O. Databases are the usual suspects. You may need to stop and/or reconfigure the application.
 
- {: .note }
->
-> You must run `iotop` as `root` or with `sudo`.
+     {{< note >}}
+You must run `iotop` as `root` or with `sudo`.
+{{< /note >}}
 
 6.  If you cannot determine the source of the IO bottleneck, contact [Linode support](/docs/support) for assistance.
 
@@ -187,9 +187,9 @@ Since `top` only reports what is currently happening, and most I/O issues are te
 
 Use the following checklist if your website is not loading when you try to connect to it.
 
- {: .note }
->
-> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+ {{< note >}}
+You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+{{< /note >}}
 
 ### Have you added DNS records?
 
@@ -274,9 +274,9 @@ If you recently added a new IP address for an SSL certificate and it's not worki
 
 Use the following checklist if you cannot connect to your Linode via SSH or an FTP client application.
 
- {: .note }
->
-> You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+ {{< note >}}
+You should follow all steps in the [Linode is Slow or Unresponsive](#linode-is-slow-or-unresponsive) section before using this checklist.
+{{< /note >}}
 
 ### Are you using Telnet or FTP?
 

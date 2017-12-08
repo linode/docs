@@ -6,12 +6,12 @@ contributor:
   name: Jack Wallen
   link: https://twitter.com/jlwallen
 description: 'An introduction to using Docker, containers, and dockerfiles on your Linode.'
-keywords: 'docker,container,dockerfile'
+keywords: ["docker", "container", "dockerfile"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, June 28, 2017
+modified: 2017-06-28
 modified_by:
   name: Linode
-published: 'Wednesday, June 28, 2017'
+published: 2017-06-28
 title: 'An Introduction to Docker'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'
@@ -58,13 +58,13 @@ A Dockerfile uses the following commands for building the images:
 
 Not every command must be used. Below is a working Dockerfile example, using only the `MAINTAINER`, `FROM`, and `RUN` commands:
 
-{: .file }
-dockerfile
-:   ~~~ docker
-    MAINTAINER NAME EMAIL
-    FROM ubuntu:latest
-    RUN apt-get -y update && apt-get -y upgrade && apt-get install -y build-essential
-    ~~~
+{{< file "dockerfile" docker >}}
+MAINTAINER NAME EMAIL
+FROM ubuntu:latest
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y build-essential
+
+{{< /file >}}
+
 
 ## Docker Swarm
 

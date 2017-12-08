@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Serve Dynamic Websites and Applications with the Lightweight Nginx Web Server and PHP-FastCGI on Ubuntu 16.04 LTS'
-keywords: 'nginx,ubuntu 16.04,fastcgi,php'
+keywords: ["nginx", "ubuntu 16.04", "fastcgi", "php"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/']
-modified: Tuesday, September 13, 2016
+aliases: ['web-servers/nginx/php-fastcgi/ubuntu-12-04-precise-pangolin/','websites/nginx/install-and-configure-nginx-and-php-fastcgi-on-ubuntu-16-04/']
+modified: 2016-09-13
 modified_by:
   name: Edward Angert
-published: 'Friday, June 12th, 2015'
+published: 2015-06-12
 title: 'Install and configure nginx and PHP-FastCGI on Ubuntu 16.04'
 external_resources:
  - '[The nginx Homepage](http://nginx.org/)'
@@ -22,8 +22,9 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 
 ![Install and configure nginx and PHP-FastCGI on Ubuntu 16.04](/docs/assets/nginx-php-fcgi-tg.png "Install and configure nginx and PHP-FastCGI on Ubuntu 16.04")
 
-{: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the **sudo** prefix. For more information on privileges, see our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -41,10 +42,6 @@ The nginx web server is a fast, lightweight server designed to efficiently handl
 - Update your system:
 
       sudo apt-get update && sudo apt-get upgrade
-
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
 
 ## Install nginx, PHP for Processing, and Required Packages
 
@@ -68,29 +65,29 @@ Nginx uses `server` directives to specify name-based virtual hosts. Nginx calls 
 
 2.  You should now have the following server block in the nginx virtual host configuration. Replace all instances of `example.com` with your domain, modify the **root** path as shown below, and add the `location ~ \.php$` block:
 
-    {: .file }
-    /etc/nginx/sites-available/example.com
-    :   ~~~ nginx
-        server {
-            listen 80;
-            listen [::]:80;
+    {{< file "/etc/nginx/sites-available/example.com" nginx >}}
+server {
+    listen 80;
+    listen [::]:80;
 
-            server_name example.com;
+    server_name example.com;
 
-            root   /var/www/html/example.com/public_html;
-            index  index.html index.php;
+    root   /var/www/html/example.com/public_html;
+    index  index.html index.php;
 
-            location / {
-                try_files $uri $uri/ =404;
-            }
-            location ~ \.php$ {
-                    include snippets/fastcgi-php.conf;
-                    include fastcgi_params;
-                    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-                    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
-            }
-        }
-        ~~~
+    location / {
+        try_files $uri $uri/ =404;
+    }
+    location ~ \.php$ {
+            include snippets/fastcgi-php.conf;
+            include fastcgi_params;
+            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+            fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html$fastcgi_script_name;
+    }
+}
+
+{{< /file >}}
+
 
 3.  Create the root directory referenced in this configuration, replacing `example.com` with your domain name:
 
@@ -123,42 +120,42 @@ If you're planning to run applications that support file uploads (images, for ex
 
 To mitigate this issue, you may wish to modify your configuration to include a `try_files` directive as shown in this excerpt:
 
-{: .file}
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    location ~ \.php$ {
-        try_files $uri =404;
-        include /etc/nginx/fastcgi_params;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
-    }
-    ~~~
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
+location ~ \.php$ {
+    try_files $uri =404;
+    include /etc/nginx/fastcgi_params;
+    fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
+}
+
+{{< /file >}}
+
 
 Additionally, it's a good idea to secure any upload directories your applications may use. The following configuration excerpt demonstrates securing an `/images` directory:
 
-{: .file}
-/etc/nginx/sites-available/example.com
-:   ~~~ nginx
-    location ~ \.php$ {
-        include /etc/nginx/fastcgi_params;
-        if ($uri !~ "^/images/") {
-            fastcgi_pass unix:/run/php/php7.0-fpm.sock;
-        }
-        fastcgi_index index.php;
-        fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
+{{< file "/etc/nginx/sites-available/example.com" nginx >}}
+location ~ \.php$ {
+    include /etc/nginx/fastcgi_params;
+    if ($uri !~ "^/images/") {
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
     }
-    ~~~
+    fastcgi_index index.php;
+    fastcgi_param SCRIPT_FILENAME /var/www/html/example.com/public_html/$fastcgi_script_name;
+}
+
+{{< /file >}}
+
 
 ## Test PHP with FastCGI
 
 Create a file called `test.php` in your site's `public_html` directory with the following contents:
 
-{: .file }
-/var/www/html/example.com/public_html/test.php
-:   ~~~ php
-    <?php phpinfo(); ?>
-    ~~~
+{{< file "/var/www/html/example.com/public_html/test.php" php >}}
+<?php phpinfo(); ?>
+
+{{< /file >}}
+
 
 When you visit `http://www.example.com/test.php` in your browser, the standard "PHP info" output is shown.
 

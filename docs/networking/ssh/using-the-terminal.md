@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Accomplishing system administration tasks from a command prompt.'
-keywords: 'Linux terminal,terminal HOWTO,Linode terminal tutorial'
+keywords: ["Linux terminal", "terminal HOWTO", "Linode terminal tutorial"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['using-linux/using-the-terminal/']
-modified: Wednesday, February 15th, 2017
+aliases: ['using-linux/using-the-terminal/', 'tools-reference/ssh/using-the-terminal/']
+modified: 2017-02-15
 modified_by:
   name: Linode
-published: 'Sunday, August 2nd, 2009'
+published: 2009-08-02
 title: Using the Terminal
 external_resources:
  - '[Command Line at FLOSS Manuals](http://en.flossmanuals.net/gnulinux/index.php)'

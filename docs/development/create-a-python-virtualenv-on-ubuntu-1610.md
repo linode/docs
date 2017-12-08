@@ -1,14 +1,15 @@
 ---
+deprecated: true
 author:
   name: Christopher Piccini
   email: cpiccini11@gmail.com
 description: 'This guide will show you how to create a Python virtual environment on your Ubuntu 16.10 Linode.'
-keywords: 'python,python virtual environment,virtualenv'
+keywords: ["python", "python virtual environment", "virtualenv"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, August 14, 2017
+modified: 2017-08-14
 modified_by:
   name: Linode
-published: 'Wednesday, August 13, 2017'
+published: 2017-08-13
 title: 'Create a Python Virtual Environment on Ubuntu 16.10'
 contributor:
   name: Christopher Piccini
@@ -65,17 +66,17 @@ The purpose of this tutorial is to allow you to create and run Python virtual en
 
 ## Activate Environment
 
-1.  Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
+Activate the newly created virtual environment (the name of the working environment will appear in parentheses):
 
-        source env/bin/activate
-        (env) testuser@localhost:~/python-environments$
+    source env/bin/activate
+    (env) testuser@localhost:~/python-environments$
 
-    Now that the environment is active, you can install executables and packages only to this virtual environment.
+Now that the environment is active, you can install executables and packages only to this virtual environment.
 
 ## Deactivate Environment
 
 To deactivate an active virtual environment:
 
-        deactivate
+    deactivate
 
 Congratulations! You have created an isolated, Python Virtualenv on your Linode.

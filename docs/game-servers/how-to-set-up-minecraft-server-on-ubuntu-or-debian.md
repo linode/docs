@@ -2,14 +2,14 @@
 author:
   name: Alex Fornuto
   email: docs@linode.com
-description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian
-distributions'
-alias: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
+keywords: ["minecraft", "ubuntu", "debian"]
+description: 'This tutorial will teach you basic installation and configuration of a Minecraft server on Ubuntu and Debian'
+aliases: ['applications/game-servers/minecraft-on-debian-and-ubuntu/','game-servers/minecraft-on-debian-and-ubuntu/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Monday, July 30th, 2017
+modified: 2017-07-30
 modified_by:
   name: Linode
-published: 'Wednesday, January 28, 2015'
+published: 2015-01-28
 title: 'How to Set Up a Minecraft Server on Ubuntu or Debian'
 external_resources:
  - '[Minecraft.net](https://minecraft.net/)'
@@ -36,10 +36,10 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 3.  Install *OpenJDK*, an open-source implementation of Java, and the GNU Screen package.
 
-	{: .note}
-	> Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
-	> `sudo apt remove openjdk-7-\*` before continuing with this guide.
-
+	{{< note >}}
+Minecraft version 1.12 is only compatible with OpenJDK 8. If you are using OpenJDK 7 you must remove it using this command
+`sudo apt remove openjdk-7-\*` before continuing with this guide.
+{{< /note >}}
 
     - In Ubuntu 16.04:
 
@@ -55,10 +55,11 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
     Assign a secure password, and configure any additional [SSH hardening](/docs/security/use-public-key-authentication-with-ssh) options at this time.
 
-{: .note }
-> If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
->
->     -A INPUT -p tcp --dport 25565 -j ACCEPT
+{{< note >}}
+If you have a firewall configured according to our [Securing Your Server](/docs/security/securing-your-server) guide, add the following line to your `iptables.firewall.rules` file to add an exception for port 25565:
+
+-A INPUT -p tcp --dport 25565 -j ACCEPT
+{{< /note >}}
 
 ## Install Minecraft
 
@@ -72,18 +73,19 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 3.  Create a script to run the Minecraft server:
 
-    {: .file }
-    /home/minecraft/run.sh
-    :   ~~~ sh
-        #!/bin/sh
-        BINDIR=$(dirname "$(readlink -fn "$0")")
-        cd "$BINDIR"
+    {{< file "/home/minecraft/run.sh" sh >}}
+#!/bin/sh
+BINDIR=$(dirname "$(readlink -fn "$0")")
+cd "$BINDIR"
 
-        java -Xms1024M -Xmx1536M -jar minecraft_server.1.12.jar -o true
-        ~~~
+java -Xms1024M -Xmx1536M -jar minecraft_server.1.12.jar -o true
 
-    {: .note }
-    > The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minecraft server will use. The settings above are recommended for a Linode 2GB used solely for this purpose. Adjust these values to fit your needs.
+{{< /file >}}
+
+
+    {{< note >}}
+The `Xms` and `Xmx` flags define the minimum and maximum amount of RAM the Minecraft server will use. The settings above are recommended for a Linode 2GB used solely for this purpose. Adjust these values to fit your needs.
+{{< /note >}}
 
 4.  Make `run.sh` executable:
 
@@ -104,13 +106,13 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
 
 2.  Open the `eula.txt` file and change the value of `eula` to true:
 
-    {: .file }
-    /home/minecraft/eula.txt
-    :   ~~~ sh
-        #By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
-        #Tue Jan 27 21:40:00 UTC 2015
-        eula=true
-        ~~~
+    {{< file "/home/minecraft/eula.txt" sh >}}
+#By changing the setting below to TRUE you are indicating your agreement to our EULA (https://account.mojang.com/documents/minecraft_eula).
+#Tue Jan 27 21:40:00 UTC 2015
+eula=true
+
+{{< /file >}}
+
 
 
 3.  To ensure that the Minecraft server runs independent of an SSH connection, execute `run.sh` from within a [GNU Screen](/docs/networking/ssh/using-gnu-screen-to-manage-persistent-terminal-sessions) session:
@@ -136,8 +138,9 @@ This guide shows you how to set up a personal [Minecraft](https://minecraft.net/
         [22:00:21] [Server thread/INFO]: Preparing spawn area: 96%
         [22:00:22] [Server thread/INFO]: Done (14.737s)! For help, type "help" or "?"
 
-    {: .note}
-    > To disconnect from the screen session without stopping the game server, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
+    {{< note >}}
+To disconnect from the screen session without stopping the game server, press **CTRL+a** and then **d**. To resume the running screen session, use the command `screen -r`.
+{{< /note >}}
 
 4.  Optionally, you can take this opportunity to disconnect from the screen session and customize your game settings. When the `run.sh` script is executed, a world is created with the default variables. If you would like to create a new world with updated variables (like [world seeds](http://minecraft.gamepedia.com/Seed_(level_generation))), change the `level-name` directive in the `server.properties` file and modify other settings accordingly.
 

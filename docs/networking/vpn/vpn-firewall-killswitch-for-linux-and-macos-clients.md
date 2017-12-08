@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 description: 'How to set up a VPN firewall on OpenVPN clients'
 og_description: 'This guide will show you how to set up a VPN Killswitch with iptables on OpenVPN clients.'
-keywords: 'vpn, security'
+keywords: ["vpn", " security"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Friday, September 29th, 2017'
+modified: 2017-09-29
 modified_by:
   name: Linode
-published: 'Friday, September 29th, 2017'
+published: 2017-09-29
 title: iptables Configuration for VPN Killswitch
 external_resources:
 - '[Official OpenVPN Documentation](https://openvpn.net/index.php/open-source/documentation.html)'
@@ -51,19 +51,19 @@ On your client, change the `client.ovpn` configuration file as follows:
 
 1.  You should already have the setting  *dev tun* to specify the virtual network adapter. Change it to tun0 so it can be referred to in firewall rules:
 
-    {:.file-excerpt}
-    client.ovpn
-    :   ~~~
-        dev tun0
-        ~~~
+    {{< file-excerpt "client.ovpn" >}}
+dev tun0
+
+{{< /file-excerpt >}}
+
 
 2.  Make sure your VPN server is listed by its IP address instead of a hostname. For example:
 
-    {:.file-excerpt}
-    client.ovpn
-    :   ~~~
-        remote 198.51.100.0 1194
-        ~~~
+    {{< file-excerpt "client.ovpn" >}}
+remote 198.51.100.0 1194
+
+{{< /file-excerpt >}}
+
 
 ## GNU/Linux Clients
 
@@ -71,31 +71,30 @@ The majority of GNU/Linux users use either `iptables` or `ufw` to manage their f
 
 ### VPN firewall using iptables
 
-{: .caution}
->
-> You may want to back up your current iptables ruleset with `iptables-save`.
+{{< caution >}}
+You may want to back up your current iptables ruleset with `iptables-save`.
+{{< /caution >}}
 
 1.  Create a shell script with the following `iptables` ruleset:
 
-    {:.file}
-    iptables-vpn.sh
-    :   ~~~
+    {{< file "iptables-vpn.sh" >}}
+#!/bin/bash
+iptables --flush
+iptables --delete-chain
+iptables -t nat --flush
+iptables -t nat --delete-chain
+iptables -P OUTPUT DROP
+iptables -A INPUT -j ACCEPT -i lo
+iptables -A OUTPUT -j ACCEPT -o lo
+iptables -A INPUT --src 192.168.0.0/24 -j ACCEPT -i wlp6s0
+iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT -o wlp6s0
+iptables -A OUTPUT -j ACCEPT -d 198.51.100.0 -o wlp6s0 -p udp -m udp --dport 1194
+iptables -A INPUT -j ACCEPT -s 198.51.100.0 -i wlp6s0 -p udp -m udp --sport 1194
+iptables -A INPUT -j ACCEPT -i tun0
+iptables -A OUTPUT -j ACCEPT -o tun0
 
-        #!/bin/bash
-        iptables --flush
-        iptables --delete-chain
-        iptables -t nat --flush
-        iptables -t nat --delete-chain
-        iptables -P OUTPUT DROP
-        iptables -A INPUT -j ACCEPT -i lo
-        iptables -A OUTPUT -j ACCEPT -o lo
-        iptables -A INPUT --src 192.168.0.0/24 -j ACCEPT -i wlp6s0
-        iptables -A OUTPUT -d 192.168.0.0/24 -j ACCEPT -o wlp6s0
-        iptables -A OUTPUT -j ACCEPT -d 198.51.100.0 -o wlp6s0 -p udp -m udp --dport 1194
-        iptables -A INPUT -j ACCEPT -s 198.51.100.0 -i wlp6s0 -p udp -m udp --sport 1194
-        iptables -A INPUT -j ACCEPT -i tun0
-        iptables -A OUTPUT -j ACCEPT -o tun0
-        ~~~
+{{< /file >}}
+
 
 2.  Save the script as `iptables-vpn.sh`, then set the permissions using `chmod` and execute the script:
 
@@ -108,26 +107,26 @@ Your VPN firewall is now active, but this ruleset is only temporary and will be 
 
 ### VPN Firewall using ufw
 
-{: .caution}
->
-> You may want to back up your current firewall ruleset.
+{{< caution >}}
+You may want to back up your current firewall ruleset.
+{{< /caution >}}
 
 1.  Create a new shell script containing the following commands:
 
-    {:.file}
-    ufw-vpn.sh
-    :   ~~~
-        ufw --force reset
-        ufw default deny incoming
-        ufw default deny outgoing
-        ufw allow in on tun0
-        ufw allow out on tun0
-        ufw allow in on wlp6s0 from 192.168.0.0/24
-        ufw allow out on wlp6s0 to 192.168.0.0/24
-        ufw allow out on wlp6s0 to 198.51.100.0 port 1194  proto udp
-        ufw allow in on wlp6s0 from 198.51.100.0 port 1194 proto udp
-        ufw enable
-        ~~~
+    {{< file "ufw-vpn.sh" >}}
+ufw --force reset
+ufw default deny incoming
+ufw default deny outgoing
+ufw allow in on tun0
+ufw allow out on tun0
+ufw allow in on wlp6s0 from 192.168.0.0/24
+ufw allow out on wlp6s0 to 192.168.0.0/24
+ufw allow out on wlp6s0 to 198.51.100.0 port 1194  proto udp
+ufw allow in on wlp6s0 from 198.51.100.0 port 1194 proto udp
+ufw enable
+
+{{< /file >}}
+
 
 2.  Save the script as `ufw-vpn.sh`, then set the permissions using `chmod` and execute the script:
 
@@ -142,14 +141,14 @@ Your VPN firewall is now active. Use `ufw disable` if you want to disable the fi
 
 1.  Edit the `pf` configuration file:
 
-    {:.file-excerpt}
-    /etc/pf.conf
-    :   ~~~
-        block drop all
-        pass on lo0
-        pass on utun0
-        pass out proto udp from any to 198.51.100.0 port 1194
-        ~~~
+    {{< file-excerpt "/etc/pf.conf" >}}
+block drop all
+pass on lo0
+pass on utun0
+pass out proto udp from any to 198.51.100.0 port 1194
+
+{{< /file-excerpt >}}
+
 
 2.  Import the newly added rules as follows:
 

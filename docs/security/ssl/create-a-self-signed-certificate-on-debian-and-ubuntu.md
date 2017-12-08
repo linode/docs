@@ -3,17 +3,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Create an SSL Certificate on a Linux Server Running Debian or Ubuntu'
-keywords: 'ssl certificate,ssl cert,self signed,debian,ubuntu'
+keywords: ["ssl certificate", "ssl cert", "self signed", "debian", "ubuntu"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['security/ssl-certificates/self-signed/']
-modified: Friday, August 16th, 2016
+aliases: ['security/ssl-certificates/self-signed/']
+modified: 2016-08-16
 modified_by:
   name: Nick Brewer
-published: 'Monday, November 16th, 2009'
+published: 2009-11-16
 title: 'Create a Self-Signed Certificate on Debian and Ubuntu'
 external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
+
+![Create a Self-Signed Certificate on Debian and Ubuntu](/docs/assets/create-a-self-signed-certificate-on-debian-and-ubuntu-title-graphic.jpg "Create a Self-Signed Certificate on Debian and Ubuntu")
 
 This guide details the process for creating a self-signed SSL certificate on Debian or Ubuntu. Self-signed certificates are suitable for personal use or for applications used internally within an organization.
 
@@ -21,8 +23,9 @@ If you intend to use your SSL certificate on a website powered by Apache, contin
 
 For an SSL setup with Nginx, please start with our [Nginx and SSL](/docs/security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx) guide.
 
-{: .note}
->The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 

@@ -4,20 +4,19 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Our guide to upgrading to Ubuntu 12.04'
-keywords: 'upgrading,ubuntu,precise'
+keywords: ["upgrading", "ubuntu", "precise"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-ubuntu-12-04-precise/']
-modified: Tuesday, February 5th, 2013
+aliases: ['upgrading/upgrade-to-ubuntu-12-04-precise/']
+modified: 2013-02-05
 modified_by:
   name: Linode
-published: 'Friday, June 1st, 2012'
+published: 2012-06-01
 title: 'How to Upgrade to Ubuntu 12.04 (Precise)'
 ---
 
 Ubuntu 12.04 is a long-term support (LTS) release that will be supported until April 2017. This guide explains how to upgrade your Linode from Ubuntu 10.04 LTS (Lucid) or Ubuntu 11.04 (Natty) to Ubuntu 12.04 LTS (Precise).
 
-Preparing to Upgrade
---------------------
+# Preparing to Upgrade
 
 Prepare your Linode for Ubuntu 12.04 LTS by installing available updates, backing up your Linode, checking your kernel, stopping services, and starting a screen session.
 
@@ -67,8 +66,7 @@ We recommend that you start a screen session to ensure that the updates will con
 
 You are now ready to install Ubuntu 12.04 LTS on your Linode.
 
-Upgrading from Ubuntu 10.04 LTS
--------------------------------
+# Upgrading from Ubuntu 10.04 LTS
 
 Here's how to upgrade from Ubuntu 10.04 LTS to Ubuntu 12.04 LTS:
 
@@ -102,8 +100,7 @@ Here's how to upgrade from Ubuntu 10.04 LTS to Ubuntu 12.04 LTS:
 
 Your Linode is now running Ubuntu 12.04 LTS.
 
-Upgrading from Ubuntu 11.10
----------------------------
+# Upgrading from Ubuntu 11.10
 
 Here's how to upgrade from Ubuntu 11.10 to Ubuntu 12.04 LTS:
 
@@ -129,8 +126,7 @@ Here's how to upgrade from Ubuntu 11.10 to Ubuntu 12.04 LTS:
 
 Your Linode is now running Ubuntu 12.04 LTS.
 
-Upgrading from Previous Ubuntu Releases
----------------------------------------
+# Upgrading from Previous Ubuntu Releases
 
 If your Linode is running an release of Ubuntu older than 10.04 LTS, use the upgrade guides in the [Troubleshooting](/docs/troubleshooting) section to upgrade to Ubuntu 10.04 LTS or Ubuntu 11.10 first. You may then upgrade your Linode to Ubuntu 12.04 LTS.
 

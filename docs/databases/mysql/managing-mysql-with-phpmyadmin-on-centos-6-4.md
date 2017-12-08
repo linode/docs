@@ -3,13 +3,13 @@ author:
     name: Linode
     email: docs@linode.com
 description: 'Use phpMyAdmin to manage MySQL databases and users though a web interface.'
-keywords: 'mysql,phpmyadmin,sql,centos'
+keywords: ["mysql", "phpmyadmin", "sql", "centos"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/phpmyadmin-centos-6/']
-modified: 'Tuesday, August 1st, 2017'
+aliases: ['databases/mysql/phpmyadmin-centos-6/']
+modified: 2017-08-01
 modified_by:
     name: Linode
-published: 'Tuesday, February 4th, 2014'
+published: 2014-02-04
 title: 'How to Install and Configure phpMyAdmin on CentOS 6'
 external_resources:
     - '[phpMyAdmin Home page](http://www.phpmyadmin.net/home_page/index.php)'
@@ -20,9 +20,9 @@ external_resources:
 
 phpMyAdmin is a web application that provides a GUI to aid in MySQL database administration. It supports multiple MySQL servers and is a robust and easy alternative to using the MySQL command line client.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -41,9 +41,9 @@ phpMyAdmin is a web application that provides a GUI to aid in MySQL database adm
 
 3.  Set up a working LAMP stack. Please see the [LAMP on CentOS 6](/docs/websites/lamp/lamp-server-on-centos-6) guide if needed.
 
-    {: .note}
-    >
-    >If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+    {{< note >}}
+If you have installed the `php-suhosin` package, there are some known issues when using phpMyAdmin. Please visit the [Suhosin phpMyAdmin Compatibility Issues page](http://www.hardened-php.net/hphp/troubleshooting.html) for more information about tuning and workarounds.
+{{< /note >}}
 
 4.  Enable the EPEL Repository:
 
@@ -92,11 +92,11 @@ Since you are required to enter your MySQL credentials when using phpMyAdmin, we
 
 1.  Force phpMyAdmin to use SSL in the phpMyAdmin configuration file `/etc/phpmyadmin/config.inc.php` by adding the following lines under the `Server(s) configuration` section:
 
-    {: .file-excerpt }
-    /etc/phpmyadmin/config.inc.php
-    :   ~~~ php
-        $cfg['ForceSSL'] = 'true';
-        ~~~
+    {{< file-excerpt "/etc/phpmyadmin/config.inc.php" php >}}
+$cfg['ForceSSL'] = 'true';
+
+{{< /file-excerpt >}}
+
 
 2.  Restart Apache:
 

@@ -3,12 +3,12 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Install and configure Postfix on Debian and Ubuntu to send email through Gmail and Google Apps.'
-keywords: 'Postfix, Ubuntu, Debian, SMTP, Gmail'
+keywords: ["Postfix", " Ubuntu", " Debian", " SMTP", " Gmail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Tuesday, September 5, 2017
+modified: 2017-09-05
 modified_by:
   name: Edward Angert
-published: 'Tuesday, December 13, 2016'
+published: 2016-12-13
 title: Configure Postfix to Send Mail Using Gmail and Google Apps on Debian or Ubuntu
 ---
 
@@ -29,9 +29,9 @@ In this guide, you will learn how to install and configure a Postfix server on D
 
 3.  Use your web browser to confirm your email login credentials by logging in to [Gmail](https://gmail.com).
 
-{: .note }
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install Postfix
 
@@ -51,11 +51,11 @@ In this section, you will install Postfix as well as *libsasl2*, a package which
 
 4.  Once the installation is complete, confirm that the `myhostname` parameter is configured with your server's FQDN:
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        myhostname = fqdn.example.com
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+myhostname = fqdn.example.com
+
+{{< /file-excerpt >}}
+
 
 ## Generate an App Password for Postfix
 
@@ -79,11 +79,11 @@ Usernames and passwords are stored in `sasl_passwd` in the `/etc/postfix/sasl/` 
 
 1.  Open or create the `/etc/postfix/sasl/sasl_passwd` file and add the SMTP Host, username, and password information:
 
-    {: .file }
-    /etc/postfix/sasl/sasl\_passwd
-    :   ~~~
-        [smtp.gmail.com]:587 username@gmail.com:password
-        ~~~
+    {{< file "/etc/postfix/sasl/sasl\\_passwd" >}}
+[smtp.gmail.com]:587 username@gmail.com:password
+
+{{< /file >}}
+
 
 2.  Create the hash db file for Postfix by running the `postmap` command:
 
@@ -106,28 +106,28 @@ In this section, you will configure the `/etc/postfix/main.cf` file to use Gmail
 
 1.  Find and modify `relayhost` in `/etc/postfix/main.cf` to match the following example:
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        relayhost = [smtp.gmail.com]:587
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+relayhost = [smtp.gmail.com]:587
+
+{{< /file-excerpt >}}
+
 
 2.  At the end of the file, add the following parameters to enable authentication:
 
-    {: .file-excerpt }
-    /etc/postfix/main.cf
-    :   ~~~
-        # Enable SASL authentication
-        smtp_sasl_auth_enable = yes
-        # Disallow methods that allow anonymous authentication
-        smtp_sasl_security_options = noanonymous
-        # Location of sasl_passwd
-        smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
-        # Enable STARTTLS encryption
-        smtp_tls_security_level = encrypt
-        # Location of CA certificates
-        smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-        ~~~
+    {{< file-excerpt "/etc/postfix/main.cf" >}}
+# Enable SASL authentication
+smtp_sasl_auth_enable = yes
+# Disallow methods that allow anonymous authentication
+smtp_sasl_security_options = noanonymous
+# Location of sasl_passwd
+smtp_sasl_password_maps = hash:/etc/postfix/sasl/sasl_passwd
+# Enable STARTTLS encryption
+smtp_tls_security_level = encrypt
+# Location of CA certificates
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+
+{{< /file-excerpt >}}
+
 
 3.  Save your changes and close the file.
 

@@ -3,13 +3,13 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: 'Install MySQL on Ubuntu 14.04. - a getting-started guide.'
-keywords: 'MySQL on Linux,Ubuntu,Ubuntu 14.04,Linux,MySQL,install MySQL,install MySQL on ubuntu,mysqltuner,MySQL tuner,harden mysql,root password,sample table'
+keywords: ["MySQL on Linux", "Ubuntu", "Ubuntu 14.04", "Linux", "MySQL", "install MySQL", "install MySQL on ubuntu", "mysqltuner", "MySQL tuner", "harden mysql", "root password", "sample table"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/', 'databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
-modified: Wednesday, August 26, 2015
+aliases: ['databases/mysql/ubuntu-14.04-trusty-pangolin/', 'databases/mysql/using-mysql-relational-databases-on-ubuntu-14-04-lts-trusty-tahr/', 'databases/mysql/how-to-install-mysql-on-ubuntu-14-04/']
+modified: 2015-08-26
 modified_by:
   name: Linode
-published: 'Monday, October 8th, 2012'
+published: 2012-10-08
 title: 'Install MySQL on Ubuntu 14.04'
 external_resources:
  - '[MySQL 5.5 Reference Manual](http://dev.mysql.com/doc/refman/5.5/en/)'
@@ -24,9 +24,9 @@ MySQL is a popular database management system used for web and server applicatio
 
 We recommend using a [high memory Linode](https://www.linode.com/pricing#high-memory) with this guide.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Before You Begin
 
@@ -55,9 +55,9 @@ During the installation process, you will be prompted to set a password for the 
 
 MySQL will bind to localhost (127.0.0.1) by default. Please reference our [MySQL remote access guide](/docs/databases/mysql/create-an-ssh-tunnel-for-mysql-remote-access) for information on connecting to your databases using SSH.
 
-{: .note}
->
->Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< note >}}
+Allowing unrestricted access to MySQL on a public IP is not advised, but you may change the address it listens on by modifying the `bind-address` parameter in `/etc/my.cnf`. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
+{{< /note >}}
 
 ## Harden MySQL Server
 
@@ -72,7 +72,7 @@ You will be given the choice to change the MySQL root password, remove anonymous
 
 The standard tool for interacting with MySQL is the `mysql` client, which installs with the `mysql-server` package. The MySQL client is accessed through a terminal.
 
-###Root Login
+### Root Login
 
 1.  To log in to MySQL as the root user:
 
@@ -126,14 +126,18 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 ### Create a New MySQL User and Database
 1.  In the example below, `testdb` is the name of the database, `testuser` is the user, and `password` is the user's password.
 
-        create database testdb;
-        create user 'testuser'@'localhost' identified by 'password';
-        grant all on testdb.* to 'testuser';
+    {{<  highlight sql >}}
+create database testdb;
+create user 'testuser'@'localhost' identified by 'password';
+grant all on testdb.* to 'testuser';
+{{< /highlight >}}
 
     You can shorten this process by creating the user *while* assigning database permissions:
 
-        create database testdb;
-        grant all on testdb.* to 'testuser' identified by 'password';
+    {{< highlight sql >}}
+create database testdb;
+grant all on testdb.* to 'testuser' identified by 'password';
+{{< /highlight >}}
 
 2.  Exit MySQL.
 
@@ -147,8 +151,10 @@ The standard tool for interacting with MySQL is the `mysql` client, which instal
 
 2.  Create a sample table called `customers`. This creates a table with a customer ID field of the type `INT` for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name.
 
-        use testdb;
-        create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+    {{< highlight sql >}}
+use testdb;
+create table customers (customer_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, first_name TEXT, last_name TEXT);
+{{< /highlight >}}
 
 3.  Then exit MySQL.
 
@@ -187,3 +193,4 @@ You'll now be able to log in again using `mysql -u root -p`.
     You will be asked for the MySQL root user's name and password. The output will show two areas of interest: General recommendations and Variables to adjust.
 
 MySQL Tuner is an excellent starting point to optimize a MySQL server, but it would be prudent to perform additional research for configurations tailored to the application(s) utilizing MySQL on your Linode.
+

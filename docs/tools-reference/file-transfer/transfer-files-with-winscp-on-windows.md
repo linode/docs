@@ -4,13 +4,13 @@ author:
   email: docs@linode.com
 deprecated: yes
 description: 'Securely copying files to and from your Linode with WinSCP, a free and open source file transfer client for Microsoft Windows systems.'
-keywords: 'winscp,ftp,windows scp,sftp,windows sftp program'
+keywords: ["winscp", "ftp", "windows scp", "sftp", "windows sftp program"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/file-transfer/transfer-files-winscp/']
-modified: Monday, August 22nd, 2011
+aliases: ['networking/file-transfer/transfer-files-winscp/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Monday, October 19th, 2009'
+published: 2009-10-19
 title: Transfer Files with WinSCP on Windows
 ---
 
@@ -20,7 +20,7 @@ You'll need to make sure your Linode is running an SSH daemon (all Linodes run a
 
 ![winscp](/docs/assets/transfer_files_with_winscp_on_windows_smg.png)
 
-##Obtaining and Installing WinSCP
+## Obtaining and Installing WinSCP
 
 
 You can obtain the software from the [WinSCP download page](http://winscp.net/eng/download.php). Click the link for "Installation package" and save the file to your desktop. After downloading the installer, double-click its icon to launch it. You will be presented with the WinSCP setup wizard; please click "Next" to continue.
@@ -41,8 +41,7 @@ When presented with a choice between "Commander" or "Explorer" interface styles,
 
 After clicking "Continue" once more, the program should be installed. You'll be given an opportunity to allow the installer to launch WinSCP for you.
 
-Using WinSCP
-------------
+# Using WinSCP
 
 Once launched, you'll be presented with a screen similar to the following:
 
@@ -56,7 +55,7 @@ If you haven't previously logged into your Linode from this workstation with Win
 
 [![WinSCP host key verification dialog.](/docs/assets/169-winscp-key-warning.png)](/docs/assets/169-winscp-key-warning.png)
 
-In this case, WinSCP is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to WinSCP with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Console" tab in the Linode Manager) and executing the following command:
+In this case, WinSCP is asking you to verify that the server you're logging into is who it says it is. This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to WinSCP with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the "Console" tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
@@ -68,8 +67,7 @@ Once you've accepted the host key, you'll be presented with a dual-pane session 
 
 You can navigate your local filesystem in the left view pane, while your Linode's filesystem is displayed on the right side. You may copy files between the two systems by simply dragging and dropping them between the panes. Congratulations, you're now able to visually manage your remote filesystem using WinSCP!
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -4,59 +4,45 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Instructions for getting started with the Apache web server on Ubuntu 8.04 LTS (Hardy).'
-keywords: 'apache,apache ubuntu 8.04,apache ubuntu hardy,web server,apache on ubuntu,apache hardy'
+keywords: ["apache", "apache ubuntu 8.04", "apache ubuntu hardy", "web server", "apache on ubuntu", "apache hardy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/installation/ubuntu-8-04-hardy/','websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
-modified: Tuesday, May 17th, 2011
+aliases: ['web-servers/apache/installation/ubuntu-8-04-hardy/','websites/apache/apache-2-web-server-on-ubuntu-8-04-lts-hardy/']
+modified: 2011-05-17
 modified_by:
   name: Linode
-published: 'Tuesday, August 11th, 2009'
+published: 2009-08-11
 title: 'Apache 2 Web Server on Ubuntu 8.04 LTS (Hardy)'
 ---
 
 
 
-This tutorial explains how to install and configure the Apache web server on Ubuntu 8.04 (Hardy). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 8.04](/docs/lamp-guides/ubuntu-8.04-hardy).
+This tutorial explains how to install and configure the Apache web server on Ubuntu 8.04 (Hardy). All configuration will be done through the terminal; make sure you are logged in as root via SSH. If you have not followed the [getting started](/docs/getting-started/) guide, it is recommended that you do so prior to beginning this guide. Also note that if you're looking to install a full LAMP stack, you may want to consider using our [LAMP guide for Ubuntu 8.04](/docs/lamp-guides/ubuntu-8-04-hardy).
 
-Basic System Configuration
---------------------------
+# Basic System Configuration
 
 Make sure your `/etc/hosts` file contains sensible values. In the example file below, you would replace "12.34.56.78" with your Linode's IP address, and "servername.example.com" with your Linode's fully qualified domain name (FQDN). It is advisable to use something unique and memorable for "servername" in this file.
 
-{: .file }
-/etc/hosts
+{{< file "/etc/hosts" >}}
+## main & restricted repositories
+deb http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
+deb-src http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
 
-> 127.0.0.1 localhost.localdomain localhost 12.34.56.78 servername.example.com servername
+deb http://security.ubuntu.com/ubuntu hardy-security main restricted
+deb-src http://security.ubuntu.com/ubuntu hardy-security main restricted
 
-Next, make sure your Linode's hostname is set to the short value you specified in `/etc/hosts`:
+## universe repositories
+deb http://us.archive.ubuntu.com/ubuntu/ hardy universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ hardy universe
+deb http://us.archive.ubuntu.com/ubuntu/ hardy-updates universe
+deb-src http://us.archive.ubuntu.com/ubuntu/ hardy-updates universe
 
-    echo "servername" > /etc/hostname
-    hostname -F /etc/hostname
+deb http://security.ubuntu.com/ubuntu hardy-security universe
+deb-src http://security.ubuntu.com/ubuntu hardy-security universe
 
-Various packages discussed in this guide require the `universe` repositories to be enabled. To enable `universe`, first modify your `/etc/apt/sources.list` file to mirror the example file below. You'll need to uncomment the universe lines:
+{{< /file >}}
 
-{: .file }
-/etc/apt/sources.list
-:   ~~~
-    ## main & restricted repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy main restricted
 
-    deb http://security.ubuntu.com/ubuntu hardy-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu hardy-security main restricted
-
-    ## universe repositories
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy universe
-    deb http://us.archive.ubuntu.com/ubuntu/ hardy-updates universe
-    deb-src http://us.archive.ubuntu.com/ubuntu/ hardy-updates universe
-
-    deb http://security.ubuntu.com/ubuntu hardy-security universe
-    deb-src http://security.ubuntu.com/ubuntu hardy-security universe
-    ~~~
-
-Install Apache 2
-----------------
+# Install Apache 2
 
 Make sure your package repositories and installed programs are up to date by issuing the following commands:
 
@@ -67,8 +53,7 @@ Enter the following command to install the Apache 2 web server, its documentatio
 
     apt-get install apache2 apache2-doc apache2-utils
 
-Install Support for Scripting
------------------------------
+# Install Support for Scripting
 
 The following commands are optional, and should be run if you want to have support within Apache for server-side scripting in PHP, Ruby, Python, or Perl.
 
@@ -100,17 +85,16 @@ If you're also hoping to run PHP with MySQL, then also install MySQL support:
 
     apt-get install php5-mysql
 
-Configure Apache for Named-Based Virtual Hosting
-------------------------------------------------
+# Configure Apache for Named-Based Virtual Hosting
 
 Apache supports both IP-based and name-based virtual hosting, allowing you to host multiple domains on a single server. To begin configuration, edit Apache's `ports.conf` file so the `NameVirtualHost` section resembles the following. Please be sure to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file-excerpt }
-/etc/apache2/ports.conf
-:   ~~~ apache
-    NameVirtualHost 12.34.56.78:80
-    Listen 80
-    ~~~
+{{< file-excerpt "/etc/apache2/ports.conf" apache >}}
+NameVirtualHost 12.34.56.78:80
+Listen 80
+
+{{< /file-excerpt >}}
+
 
 Next, issue the following command to disable the default Apache virtual host.
 
@@ -120,42 +104,42 @@ Each additional virtual host needs its own file in the `/etc/apache2/sites-avail
 
 First create example.com (`/etc/apache2/sites-available/example.com`) so that it resembles the following. Make sure to replace "12.34.56.78" with your Linode's IP address.
 
-{: .file }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.com
-         ServerName example.com
-         ServerAlias www.example.com
-         DocumentRoot /srv/www/example.com/public_html/
-         ErrorLog /srv/www/example.com/logs/error.log
-         CustomLog /srv/www/example.com/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.com" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin webmaster@example.com
+     ServerName example.com
+     ServerAlias www.example.com
+     DocumentRoot /srv/www/example.com/public_html/
+     ErrorLog /srv/www/example.com/logs/error.log
+     CustomLog /srv/www/example.com/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 If you would like to enable Perl support, add the following lines to the `VirtualHost` entry above.
 
-{: .file-excerpt }
-/etc/apache2/sites-available/example.com
-:   ~~~ apache
-    Options ExecCGI
-    AddHandler cgi-script .pl
-    ~~~
+{{< file-excerpt "/etc/apache2/sites-available/example.com" apache >}}
+Options ExecCGI
+AddHandler cgi-script .pl
+
+{{< /file-excerpt >}}
+
 
 Next, create example.org (`/etc/apache2/sites-available/example.org`) so that it resembles this:
 
-{: .file }
-/etc/apache2/sites-available/example.org
-:   ~~~ apache
-    <VirtualHost 12.34.56.78:80>
-         ServerAdmin webmaster@example.org
-         ServerName example.org
-         ServerAlias www.example.org
-         DocumentRoot /srv/www/example.org/public_html/
-         ErrorLog /srv/www/example.org/logs/error.log
-         CustomLog /srv/www/example.org/logs/access.log combined
-    </VirtualHost>
-    ~~~
+{{< file "/etc/apache2/sites-available/example.org" apache >}}
+<VirtualHost 12.34.56.78:80>
+     ServerAdmin webmaster@example.org
+     ServerName example.org
+     ServerAlias www.example.org
+     DocumentRoot /srv/www/example.org/public_html/
+     ErrorLog /srv/www/example.org/logs/error.log
+     CustomLog /srv/www/example.org/logs/access.log combined
+</VirtualHost>
+
+{{< /file >}}
+
 
 You'll note that some basic options are specified for both sites, including where the files for the site will reside (under `/srv/www/`). You can add (or remove) additional configuration options, such as the Perl support, on a site-by-site basis to these files as your needs dictate.
 
@@ -182,8 +166,7 @@ When you create or edit any virtual host file, you'll need to reload the config,
 
 Congratulations! You now have Apache installed on your Ubuntu Linode and have configured the server for virtual hosting.
 
-Install Apache Modules
-----------------------
+# Install Apache Modules
 
 One of Apache's prime strengths is its extreme customizability and flexibility. With its support for a large number of modules, there are few web serving tasks that Apache cannot fulfill. By default, modules and their configuration files are installed in the `/etc/apache2/mods-available/` directory. Generating a list of this directory will tell you what modules are installed. To enable a module listed in this directory, use the following command:
 
@@ -205,8 +188,7 @@ To install one of these modules use the command:
 
 Modules should be enabled and ready to use following installation, though you may have to apply additional configuration options to have access to the modules' functionality. Consult the [Apache module documentation](http://httpd.apache.org/docs/2.0/mod/) for more information regarding the configuration of specific modules.
 
-Configuration Options
----------------------
+# Configuration Options
 
 One of the strengths, and obstacles, of Apache is the immense amount of flexibility offered in its configuration files. In the default installation of Apache 2 on Ubuntu, the main configuration is located in the `/etc/apache2/apache2.conf` files, but Apache configuration directives are loaded from files in a number of different locations, in a specific order. Configuration files are read in the following order, with items specified later taking precedence over earlier and potentially conflicting options:
 
@@ -224,12 +206,11 @@ Apache will follow symbolic links to read configuration files, so you can create
 
 Best practices for most installations dictate that we don't recommend modifying the following default configuration files: `/etc/apache2/httpd.conf`, files in `/etc/apache2/mods-enabled/`, and in most cases `/etc/apache2/apache2.conf`. This is to avoid unnecessary confusion and unintended conflicts in the future.
 
-Generally, as specified in our [LAMP guide for Ubuntu 8.04 LTS (Hardy)](/docs/lamp-guides/ubuntu-8.04-hardy) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
+Generally, as specified in our [LAMP guide for Ubuntu 8.04 LTS (Hardy)](/docs/lamp-guides/ubuntu-8-04-hardy) and elsewhere, files that configure virtual hosts should be located in the `/etc/apache2/sites-available/` directory (and symbolically linked to `sites-enabled/` with the `a2ensite` tool. This allows for a clear and specific per-site configuration.
 
 In practice, the vast majority of configuration options will probably be located in site-specific virtual host configuration files. If you need to set a system-wide configuration option or aren't using virtual hosting, the best practice is to specify options in files created beneath the `conf.d/` directory.
 
-Multi-Processing Module
------------------------
+# Multi-Processing Module
 
 The default Apache configuration uses a tool called MPM-prefork, which allows Apache to handle requests without threading for greater compatibility with some software. Furthermore, using MPM allows Apache to isolate requests in separate processes so that if one request fails for some reason, other requests will be unaffected.
 
@@ -241,18 +222,17 @@ Begin by installing the mpm-itk module:
 
 Now, in the `<VirtualHost >` entries for your sites (the site-specific files in `/etc/apache2/sites-available/`) add the following sub-block:
 
-{: .file-excerpt }
-Apache Virtual Host Configuration
-:   ~~~ apache
-    <IfModule mpm_itk_module>
-       AssignUserId webeditor webgroup
-    </IfModule>
-    ~~~
+{{< file-excerpt "Apache Virtual Host Configuration" apache >}}
+<IfModule mpm_itk_module>
+   AssignUserId webeditor webgroup
+</IfModule>
+
+{{< /file-excerpt >}}
+
 
 In this example, `webeditor` is the name of the user of the specific site in question, and `webgroup` is the name of the particular group that "owns" the web server related files and processes. Remember that you must create the user accounts and groups using the `useradd` command.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

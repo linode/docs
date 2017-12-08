@@ -3,25 +3,35 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide is a brief overview of IPv6 resources and support afforded by and available with Linode.'
-og_description: 'This guide is a brief overview of IPv6 support on Linode, including how to find the IPv6 address of your Linode, how to request additional addresses, and information about address pools and forwarding.'
-keywords: 'ipv6,networking,IP configuration'
-alias: ['networking/how-to-enable-native-ipv6-on-linux/','networking/native-ipv6-networking/']
+og_description: "This guide is a brief overview of IPv6 support on Linode, including how to find your Linode's IPv6 address, how to request additional addresses, and information about address pools and forwarding."
+keywords: ["ipv6 networking", "IP configuration"]
+aliases: ['networking/native-ipv6-networking/','networking/how-to-enable-native-ipv6-on-linux/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Thursday, November 2nd, 2017
+modified: 2017-11-02
 modified_by:
-    name: Linode
-published: 'Tuesday, May 3rd, 2011'
+  name: Linode
+published: 2011-05-03
 title: An Overview of IPv6 on Linode
 external_resources:
  - '[Understanding IP Addressing](http://www.ripe.net/internet-coordination/press-centre/understanding-ip-addressing)'
  - '[IPv6 Subnet Cheat Sheet](http://www.ipv6ve.info/project-definition/ipv6-subnet-cheat-sheet-and-ipv6-cheat-sheet-reference)'
 ---
 
+![An Overview of IPv6 on Linode](/docs/assets/an-overview-of-ipv6-on-linode-title-graphic.jpg "An Overview of IPv6 on Linode")
+
 ## Default IPv6 Configuration
 
 All Linodes are created with one IPv6 address, which is acquired by Stateless Address Autoconfiguration (SLAAC). IPv6 is fully enabled on all of Linode's supported operating systems and uses hardware-based addressing.
 
 Linode does not offer private IPv6 address allocations. Our IPv6 accounting was designed so that local IPv6 traffic does not count against your transfer quota, so you can use your default IPv6 address as if it were a private IP address.
+
+{{< note >}}
+In order for your Linode to receive its SLAAC address, it must respond to IPv6's ping protocol.
+
+Please be sure to allow ICMPv6 in your [firewall](/docs/security/securing-your-server#configure-a-firewall), for example in `iptables`:
+
+`-A INPUT -p icmpv6 -j ACCEPT`
+{{< /note >}}
 
 ## How to Find Your IPv6 Address
 
@@ -57,13 +67,11 @@ IPv6 addresses are allocated in *pools*. The IPv6 pool sizes Linode provides and
 
 You will see where the pool is routed under *Public IP Pools* on the Linode Manager's Remote Access tab.
 
-{: .table .table-striped }
-| Pool   | Number of addresses                    |
-|:-------|------------------------------:|
+| Pool   | Number of addresses           |
+|:------:|:-----------------------------:|
 | /56    | 4,722,366,482,869,645,213,696 |
 | /64    | 18,446,744,073,709,551,616    |
 | /116   | 4,096                         |
-|--------|-------------------------------|
 
 
 ## IPv6 Forwarding and Neighbor Discovery

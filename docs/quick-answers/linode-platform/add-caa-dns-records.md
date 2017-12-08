@@ -4,12 +4,12 @@ author:
   email: docs@linode.com
 description: 'This quick answer shows how to create CAA records for domains and subdomains.'
 og_description: 'This quick answer will show you how to create a CAA record for domains and subdomains'
-keywords: 'caa,dns,records,subdomain,domain'
+keywords: ["caa", "dns", "records", "subdomain", "domain"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Friday, November 3rd, 2017'
+modified: 2017-11-03
 modified_by:
   name: Linode
-published: 'Friday, November 3rd, 2017'
+published: 2017-11-03
 title: Add CAA Records in the Linode Manager
 external_resources:
  - '[CAA Records, DNSimple](https://support.dnsimple.com/articles/caa-record/)'

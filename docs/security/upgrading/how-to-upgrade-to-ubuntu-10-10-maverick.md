@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'How to avoid common pitfalls when upgrading your Linode to Ubuntu 10.10.'
-keywords: 'ubuntu 10.10 upgrade,ubuntu maverick upgrade,distro upgrade,linux upgrade howto'
+keywords: ["ubuntu 10.10 upgrade", "ubuntu maverick upgrade", "distro upgrade", "linux upgrade howto"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['upgrading/upgrade-to-ubuntu-10-10-maverick/']
-modified: Friday, May 10th, 2013
+aliases: ['upgrading/upgrade-to-ubuntu-10-10-maverick/']
+modified: 2013-05-10
 modified_by:
   name: Linode
-published: 'Wednesday, October 13th, 2010'
+published: 2010-10-13
 title: 'How to Upgrade to Ubuntu 10.10 (Maverick)'
 ---
 
@@ -20,15 +20,15 @@ This guide explains how to upgrade your Linode to Ubuntu 10.10 (Maverick). As wi
 
 **Important:** If it isn't already selected in your Linode's configuration profile, you must edit the profile to use the "Latest 3.0" kernel (either 32-bit or 64-bit, depending on what architecture you have deployed).
 
-Upgrade Instructions
---------------------
+# Upgrade Instructions
 
 You should stop as many services as possible before upgrading your system. This should include web server deaemons (Apache, nginx, etc), database servers (PostgreSQL, MySQL, etc), and any other non-critical services.
 
 If you are running Ubuntu 8.04 or 9.10, edit your `/etc/fstab` file to include the following line (see later notes on Ubuntu 9.04).
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/fstab
+{{< /file-excerpt >}}
 
 > dev /dev devtmpfs rw 0 0
 
@@ -43,8 +43,9 @@ Issue the following command to install the `screen` utility and the update manag
 
 Edit the `/etc/update-manager/release-upgrades` file, setting "Prompt=normal" as shown below. Please note that if you are running Ubuntu 9.04, you will be upgraded to Ubuntu 9.10 instead of Ubuntu 10.10; afterward, you may upgrade to Ubuntu 10.10 by rebooting your Linode and repeating the `do-release-upgrade` process. Likewise, if you're running Ubuntu 9.10, you'll be upgraded to Ubuntu 10.04 first.
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /etc/update-manager/release-upgrades
+{{< /file-excerpt >}}
 
 > Prompt=normal
 
@@ -89,8 +90,7 @@ Enter "n" to avoid rebooting from the console. Reboot your Linode using the "Reb
 
 If you were running Ubuntu 9.04 previously and have gone through this guide once, you're now running Ubuntu 9.10. If you were running Ubuntu 9.10, you're now running Ubuntu 10.04, and will need to repeat this process to finish upgrading to Ubuntu 10.10.
 
-Fixing a Broken System
-----------------------
+# Fixing a Broken System
 
 If you've already attempted to upgrade but your Linode is failing to boot properly, you'll need to start by creating a [Finnix rescue profile](/docs/troubleshooting/finnix-rescue-mode). In that profile, set your Ubuntu disk to attach to `xvda`. Boot into Finnix and issue the following command to open your Linode's `fstab` file for editing:
 
@@ -99,8 +99,9 @@ If you've already attempted to upgrade but your Linode is failing to boot proper
 
 Add the following line to your file:
 
-{: .file-excerpt }
+{{< file-excerpt >}}
 /media/xvda/etc/fstab
+{{< /file-excerpt >}}
 
 > dev /dev devtmpfs rw 0 0
 

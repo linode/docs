@@ -3,13 +3,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'A step-by-step guide to updating virtual host settings from Apache 2.2 to Apache 2.4'
-keywords: 'Apache 2.2, Apache 2.4, Ubuntu, Debian, CentOS, Fedora, Arch, Gentoo, update, upgrade'
+keywords: ["Apache 2.2", " Apache 2.4", " Ubuntu", " Debian", " CentOS", " Fedora", " Arch", " Gentoo", " update", " upgrade"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-servers/apache/2-2-2-4-upgrade/']
-modified: Wednesday, March 12th, 2014
+aliases: ['web-servers/apache/2-2-2-4-upgrade/']
+modified: 2014-03-12
 modified_by:
   name: Linode
-published: 'Wednesday, March 12th, 2014'
+published: 2014-03-12
 title: 'Updating Virtual Host Settings from Apache 2.2 to Apache 2.4'
 external_resources:
  - '[apache.org](http://httpd.apache.org/docs/2.4/upgrading.html)'
@@ -36,13 +36,14 @@ You will have to make changes to your Apache 2.2 virtual hosts settings to make 
 -   Ubuntu and Debian: Virtual host configuration files in the `sites-available` directory must now use the `.conf` extension
 -   Virtual host configuration files must have the `Require all granted` line in an appropriate `Directory` block:
 
-    {: .file-excerpt }
-    virtual host configuration file
-    :   ~~~
-        <Directory /path/to/public/website/>
-           Require all granted
-        </Directory>
-	~~~
+    {{< file-excerpt "virtual host configuration file" >}}
+<Directory /path/to/public/website/>
+   Require all granted
+</Directory>
+
+
+{{< /file-excerpt >}}
+
 
 Ubuntu and Debian users will need to make both changes. Users of other distributions will need to make the second change. We'll go into detail on how to make these changes in the next two sections.
 
@@ -86,17 +87,17 @@ If you are utilizing access control rules within your virtual host files, you wi
 
 2.  Within the `VirtualHost` block for this website, locate or create the `Directory` block for your website's public directory. Add the line `Require all granted`. (If the line `Require all denied` is already there, update it to `Require all granted`). View a sample file below (replace **/path/to/public/website/** with your website's public directory):
 
-    {: .file-excerpt }
-    /etc/apache2/sites-available/example.com.conf or /etc/httpd/conf.d/vhost.conf
-    :   ~~~
-        <VirtualHost *:80>
-          ...
-          <Directory /path/to/public/website/>
-             Require all granted
-          </Directory>
-          ...
-        </VirtualHost>
-        ~~~
+    {{< file-excerpt "/etc/apache2/sites-available/example.com.conf or /etc/httpd/conf.d/vhost.conf" >}}
+<VirtualHost *:80>
+  ...
+  <Directory /path/to/public/website/>
+     Require all granted
+  </Directory>
+  ...
+</VirtualHost>
+
+{{< /file-excerpt >}}
+
 
 3.  Save your changes.
 4.  Repeat Steps 1-3 for all of your virtual hosts.
@@ -114,9 +115,9 @@ If you are utilizing access control rules within your virtual host files, you wi
 
         systemctl reload httpd.service
 
- {: .note }
->
-> For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
+    {{< note >}}
+For more information on how you can enable or restrict access to your websites with various `Require` lines, see the [Apache website](http://httpd.apache.org/docs/current/howto/access.html). Most users will want to use the `Require all granted` line, but there may be exceptions.
+{{< /note >}}
 
 Check your websites. If you have completed these steps correctly, they should now be working again.
 
@@ -154,16 +155,15 @@ Solution: Check for incompatible settings and modules in your Apache configurati
 
 Different distributions make Apache 2.4 the norm at different times. When you upgrade to one of the distributions in this chart, you will also be upgrading to Apache 2.4 by default.
 
-{: .table .table-striped }
-|Distribution    | Version    | Release Date
-|:--------------|:------------|: -----------------
-|Ubuntu         | 13.10       | out
-|Ubuntu         | 14.04 LTS   | April 17, 2014
-|Debian         | 8.0         | late 2015 ?
-|CentOS         | ?           | ?
-|Fedora         | 19          | out
-|Fedora         | 20          | out
-|Gentoo         | NA          | ?
-|Arch           | NA          | in the AUR
+| Distribution | Version     | Release Date    |
+|:------------:|:-----------:|:---------------:|
+|Ubuntu        | 13.10       | out             |
+|Ubuntu        | 14.04 LTS   | April 17, 2014  |
+|Debian        | 8.0         | late 2015 ?     |
+|CentOS        | ?           | ?               |
+|Fedora        | 19          | out             |
+|Fedora        | 20          | out             |
+|Gentoo        | NA          | ?               |
+|Arch          | NA          | in the AUR      |
 
 Use this information to prepare for a smooth upgrade.

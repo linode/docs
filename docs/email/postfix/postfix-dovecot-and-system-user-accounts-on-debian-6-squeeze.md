@@ -3,13 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use system user accounts, postfix, and dovecot to provide'
-keywords: 'postfix,dovecot,system users,email'
+keywords: ["postfix", "dovecot", "system users", "email"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['email/postfix/dovecot-system-users-debian-6-squeeze/']
-modified: Wednesday, September 25th, 2013
+aliases: ['email/postfix/dovecot-system-users-debian-6-squeeze/']
+modified: 2013-09-25
 modified_by:
   name: Linode
-published: 'Thursday, February 17th, 2011'
+published: 2011-02-17
+expiryDate: 2013-09-25
 title: 'Postfix, Dovecot, and System User Accounts on Debian 6 (Squeeze)'
 deprecated: true
 ---
@@ -51,68 +52,37 @@ SASL Authentication
 
 Edit the `/etc/default/saslauthd` file to allow the SASL authentication daemon to start. Uncommon or add the following line:
 
-{: .file-excerpt }
-/etc/default/saslauthd
-:   ~~~ ini
-    START=yes
-    ~~~
+{{< file-excerpt "/etc/default/saslauthd" ini >}}
+START=yes
+
+{{< /file-excerpt >}}
+
 
 Create the `/etc/postfix/sasl/smtpd.conf` file, and insert the following line:
 
-{: .file }
-/etc/postfix/sasl/smtpd.conf
+{{< file "/etc/postfix/sasl/smtpd.conf" ini >}}
+smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
+smtpd_tls_key_file=/etc/ssl/private/postfix.key
 
-> pwcheck\_method: saslauthd
+smtp_use_tls = yes
+smtpd_use_tls = yes
+smtp_tls_note_starttls_offer = yes
+smtpd_tls_loglevel = 1
+smtpd_tls_received_header = yes
 
-Issue the following command to start the SASL daemon for the first time:
+smtpd_sasl_type = dovecot
+smtpd_sasl_path = private/auth
+smtpd_sasl_auth_enable = yes
 
-    /etc/init.d/saslauthd start
+smtpd_sasl_security_options = noanonymous
+smtpd_sasl_local_domain = $myhostname
+smtpd_sasl_application_name = smtpd
+broken_sasl_auth_clients = yes
 
-Configure SSL
--------------
+smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
 
-SSL or TLS provides a method of encrypting the communication between your remote users and your mail servers. While this does not encrypt your email messages from end to end, it does ensure that your login credentials are transmitted securely and that communications are secure between your client machine and the email server.
+{{< /file >}}
 
-Issue the following command to install the prerequisites and [generate a self-signed SSL certificate](/docs/security/ssl/how-to-make-a-selfsigned-ssl-certificate):
-
-    openssl req -new -x509 -sha256 -days 365 -nodes -out /etc/ssl/certs/postfix.pem -keyout /etc/ssl/private/postfix.key
-
-Be sure to generate a certificate with a "Common Name" that corresponds to the host name that your users will connect your mail server (e.g. `mail.example.com`).
-
-Mail clients may have an issue with certificates generated in this manner because they are not signed by a recognized certificate authority. Consider our documentation for generating [commercial ssl certificates](/docs/security/ssl/obtaining-a-commercial-ssl-certificate) if you need a commercially verified certificate.
-
-You can use any SSL certificate with Postfix. If you already have a commercial certificate or another SSL certificate for your web server, you can use these `.pem` and `.key` files.
-
-Postfix
--------
-
-### Configure Outbound Mail Service
-
-Edit the `/etc/postfix/main.cf` file to edit or add the following lines:
-
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    smtpd_tls_cert_file=/etc/ssl/certs/postfix.pem
-    smtpd_tls_key_file=/etc/ssl/private/postfix.key
-
-    smtp_use_tls = yes
-    smtpd_use_tls = yes
-    smtp_tls_note_starttls_offer = yes
-    smtpd_tls_loglevel = 1
-    smtpd_tls_received_header = yes
-
-    smtpd_sasl_type = dovecot
-    smtpd_sasl_path = private/auth
-    smtpd_sasl_auth_enable = yes
-
-    smtpd_sasl_security_options = noanonymous
-    smtpd_sasl_local_domain = $myhostname
-    smtpd_sasl_application_name = smtpd
-    broken_sasl_auth_clients = yes
-
-    smtpd_recipient_restrictions = reject_unknown_sender_domain, reject_unknown_recipient_domain, reject_unauth_pipelining, permit_mynetworks, permit_sasl_authenticated, reject_unauth_destination
-    ~~~
 
 These settings make it possible for the SASL authentication process to interact with Postfix, and for Postfix to use the SSL certificate generated above. If you're using an SSL certificate with a different name, modify the first two lines of this configuration section.
 
@@ -128,13 +98,13 @@ Consider the [basic email gateway guide](/docs/email/postfix/gateway-debian-6-sq
 
 The above Postfix configuration makes it possible to *send* mail using postfix. If your server receives email, Postfix requires additional configuration to deliver mail locally. Edit the `main.cf` file to insert or modify the following configuration directives:
 
-{: .file-excerpt }
-/etc/postfix/main.cf
-:   ~~~ ini
-    myhostname = lollipop.example.com
-    virtual_alias_maps = hash:/etc/postfix/virtual
-    home_mailbox = mail/
-    ~~~
+{{< file-excerpt "/etc/postfix/main.cf" ini >}}
+myhostname = lollipop.example.com
+virtual_alias_maps = hash:/etc/postfix/virtual
+home_mailbox = mail/
+
+{{< /file-excerpt >}}
+
 
 Issue the following command to ensure that new user accounts have a `~/mail` directory:
 
@@ -146,86 +116,48 @@ Every existing user that receives email will also need to make their own `Maildi
 
 Create a `/etc/postfix/virtual` file to map incoming email addresses to their destinations. Consider the following example:
 
-{: .file }
-/etc/postfix/virtual
+{{< file "/etc/postfix/virtual" INI >}}
+protocols = imap imaps pop3 pop3s
+log_timestamp = "%Y-%m-%d %H:%M:%S "
+mail_privileged_group = mail
+ssl_cert_file = /etc/ssl/certs/postfix.pem
+ssl_key_file = /etc/ssl/private/postfix.key
+mail_location = maildir:~/mail:LAYOUT=fs:INBOX=~/mail/
 
-> <username@example.com> username <username@example.net> username <username@example.com> username
->
-> <fore@example.com> <foreman@example.com> <fore@example.net> <foreman@example.com> <fore@example.com> <foreman@example.com>
->
-> <team@example.com> username, <foreman@example.com> <team@example.net> username, <foreman@example.com> <team@example.com> username, <foreman@example.com>
+protocol imap {
+}
 
-Here, all mail sent to the three addresses beginning with the characters `username@` are delivered to the local user "username" and deposited to a Maildir in the `/home/username/mail/` directory. The three addresses that begin with the characters `fore@` are delivered to the email address `foreman@example.com`. The final set of three email addresses beginning with `team@` are both delivered locally and sent to the `foreman@example.com` email address.
+protocol pop3 {
+    pop3_uidl_format = %08Xu%08Xv
+}
 
-You can add additional lines in the same format as the above to control how all incoming email is delivered to local or external destinations. Remember that incoming email has no firm relationship to the name of the user account.
+protocol managesieve {
+}
 
-Edit the `/etc/alias` file to add the following line. This will to reroute all local mail delivered to the root user to another user account. In the following example, all mail delivered to `root` will be delivered to the `username` user's mail box.
-
-{: .file-excerpt }
-/etc/aliases
-
-> root: username
-
-When you have configured mail delivery issue the following command to recreate the aliases database, rebuild the virtual alias database, and restart the mail server:
-
-    postalias /etc/alias
-
-> postmap /etc/postfix/virtual /etc/init.d/postfix restart
-
-Dovecot
--------
-
-Dovecot is a contemporary POP3/IMAP server that makes it possible to access and download mail from your mail server remotely onto your local system.
-
-### Configure Remote Mail Access
-
-Issue the following command to create a back up of the default `/etc/dovecot/dovecot.conf` file and remove the original. Then recreate it using the following template:
-
-    cp /etc/dovecot/dovecot.conf /etc/dovecot/dovecot.conf-backup
-    rm /etc/dovecot/dovecot.conf
-
-{: .file }
-/etc/dovecot/dovecot.conf
-:   ~~~ INI
-    protocols = imap imaps pop3 pop3s
-    log_timestamp = "%Y-%m-%d %H:%M:%S "
-    mail_privileged_group = mail
-    ssl_cert_file = /etc/ssl/certs/postfix.pem
-    ssl_key_file = /etc/ssl/private/postfix.key
-    mail_location = maildir:~/mail:LAYOUT=fs:INBOX=~/mail/
-
-    protocol imap {
-    }
-
-    protocol pop3 {
-        pop3_uidl_format = %08Xu%08Xv
-    }
-
-    protocol managesieve {
-    }
-
-    auth default {
-          mechanisms = plain login
-          passdb pam {
-          }
-          userdb passwd {
-          }
-          socket listen {
-            client {
-              path = /var/spool/postfix/private/auth
-              mode = 0660
-              user = postfix
-              group = postfix
-            }
-          }
+auth default {
+      mechanisms = plain login
+      passdb pam {
+      }
+      userdb passwd {
+      }
+      socket listen {
+        client {
+          path = /var/spool/postfix/private/auth
+          mode = 0660
+          user = postfix
+          group = postfix
         }
-
-    dict {
+      }
     }
 
-    plugin {
-    }
-    ~~~
+dict {
+}
+
+plugin {
+}
+
+{{< /file >}}
+
 
 Modify the `ssl` configuration directives if you're using ssl certificates located at alternate paths. Once configured, issue the following command to restart the Dovecot instance:
 

@@ -2,14 +2,15 @@
 author:
   name: Phil Zona
   email: docs@linode.com
-description: 'Filter system output with the grep command.'
-keywords: 'linux,how to,grep,filter'
-alias: ['quick-answers/how-to-use-grep/']
+description: 'Use our guide to filter system output with the grep command.'
+og_description: 'Use the grep command to filter output from administrative commands, so you get only relevant data. This guide shows you how.'
+keywords: ["linux", "how to", "grep", "filter"]
+aliases: ['quick-answers/how-to-use-grep/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Monday, April 10th, 2017'
+modified: 2017-11-27
 modified_by:
   name: Phil Zona
-published: 'Monday, April 10th, 2017'
+published: 2017-04-10
 title: How to Use the Grep Command
 ---
 
@@ -23,9 +24,9 @@ In this guide, you'll learn how to use the `grep` command. When performing admin
 
 2.  You may also redirect output from a command to `grep` using a [pipe](http://man7.org/linux/man-pages/man2/pipe.2.html):
 
-        cat /etc/ssh/sshd_config | grep 'some text'
+        tail -f /var/log/apache/error.log | grep 'some text'
 
-    This will display only the lines of output that contain the given string.
+    This will monitor your Apache error logs, and display only the lines of output that contain the given string.
 
 3.  Regex patterns are also supported by the `-E` option if you want to search for a set of strings rather than one literal:
 

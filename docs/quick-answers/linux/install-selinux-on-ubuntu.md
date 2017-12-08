@@ -3,12 +3,12 @@ author:
   name: Angel
   email: docs@linode.com
 description: 'This Quick Answer guide shows you how to install SELinux on Ubuntu after you uninstall AppArmor'
-keywords: 'linux,selinux,apparmor,Mandatory Access Control system'
+keywords: ["linux", "selinux", "apparmor", "Mandatory Access Control system"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 'Sunday, June 30th, 2017'
+modified: 2017-06-30
 modified_by:
   name: Angel Guarisma
-published: 'Sunday, June 30th, 2017'
+published: 2017-06-30
 title: How to Install SELinux on Ubuntu
 ---
 
@@ -25,10 +25,10 @@ If you are using a Linode, instead of using the `reboot` command, reboot the mac
 
 ### Remove AppArmor
 
-{:.caution}
->
->At this point in the tutorial AppArmor is your default security module. Removing but not replacing AppArmor can put your system at risk.
->Do not purge AppArmor if you believe you may reuse it in the future.
+{{< caution >}}
+At this point in the tutorial AppArmor is your default security module. Removing but not replacing AppArmor can put your system at risk.
+Do not purge AppArmor if you believe you may reuse it in the future.
+{{< /caution >}}
 
 1. Stop the AppArmor script in `/etc/init.d/`:
 
@@ -58,22 +58,22 @@ If you are using a Linode, instead of using the `reboot` command, reboot the mac
 		root@ubuntu:~# getenforce
 		Enforcing
 
-    {: .note}
-    >
-    >If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If not, ensure the selected kernel is GRUB2 and try installing SELinux again.
+    {{< note >}}
+If you receive the error message, `setenforce: SELinux is disabled`, check if you are still using the Linode custom kernel. If not, ensure the selected kernel is GRUB2 and try installing SELinux again.
+{{< /note >}}
 
 3. To maintain `enforcing` mode after reboot, modify the SELinux configuration file in `/etc/selinux/config` from the default `SELINUX=permissive` to `SELINUX=enforcing`:
 
-    {: .file-excerpt }
-    /etc/selinx/config
-    :   ~~~
-        # This file controls the state of SELinux on the system.
-        # SELINUX= can take one of these three values:
-        # enforcing - SELinux security policy is enforced.
-        # permissive - SELinux prints warnings instead of enforcing.
-        # disabled - No SELinux policy is loaded.
-        SELINUX=enforcing
-        ~~~
+    {{< file-excerpt "/etc/selinx/config" >}}
+# This file controls the state of SELinux on the system.
+# SELINUX= can take one of these three values:
+# enforcing - SELinux security policy is enforced.
+# permissive - SELinux prints warnings instead of enforcing.
+# disabled - No SELinux policy is loaded.
+SELINUX=enforcing
+
+{{< /file-excerpt >}}
+
 
 ## Next Steps
 After installing SELinux on your system, use our [Getting Started with SELinux Guide](/docs/security/getting-started-with-selinux) to learn the basics of SELinux security.

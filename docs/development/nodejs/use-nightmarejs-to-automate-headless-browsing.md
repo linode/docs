@@ -4,10 +4,10 @@ author:
   email: nashruddin.amin@gmail.com
 description: 'Automate browsing tasks with Nightmare.js, a high-level browser automation library.'
 og_description: 'Nightmare.js is an automated, headless browsing tool that can be configured to self-navigate websites, automate data scraping, and quicken QA.'
-keywords: 'nightmare.js, node.js, headless browser, automation'
+keywords: ["nightmare.js", " node.js", " headless browser", " automation"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, October 9, 2017'
-modified: Monday, October 9, 2017
+published: 2017-10-09
+modified: 2017-10-09
 modified_by:
   name: Linode
 title: 'Use Nightmare.js to Automate Headless Browsing'
@@ -19,9 +19,6 @@ external_resources:
   - '[Nightmare.js Github Repository](https://github.com/segmentio/nightmare)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 **Nightmare.js** is a high-level browser automation library, designed to automate browsing tasks for sites that don't have APIs. The library itself is a wrapper around [Electron](https://electron.atom.io/), which Nightmare.js uses as a browser to interact with web sites. This guide helps you install Nightmare.js on Ubuntu 16.04 and run automation scripts without the need for a graphical user interface.
 
@@ -35,9 +32,10 @@ external_resources:
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
-> This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+
+{{< /note >}}
 
 ## Install Node.js
 
@@ -47,9 +45,10 @@ The Ubuntu 16.04 repository is slower to release recent versions of Node.js. Ins
 
         curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-    {: .note}
-    >
-    > This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
+    {{< note >}}
+This command fetches the latest version of Node.js 6. To install a [specific version](https://nodejs.org/en/download/releases/), replace the `6.x` in this example.
+
+{{< /note >}}
 
 2.  Install Node.js and NPM with the following command:
 
@@ -89,42 +88,42 @@ Nightmare.js is an NPM module, so it can be imported from within a Node.js scrip
 
 2. Create `linode.js` inside the automation directory and add the following:
 
-    {: .file }
-    ~/automation/linode.js
-    :   ~~~ javascript
-        const Nightmare = require('nightmare');
-        const nightmare = Nightmare({show: true});
+    {{< file "~/automation/linode.js" javascript >}}
+const Nightmare = require('nightmare');
+const nightmare = Nightmare({show: true});
 
 
-        nightmare
-            .goto('https://www.linode.com/docs')
-            .insert('#gsc-i-id1', 'ubuntu')
-            .click('input.gsc-search-button-v2')
-            .wait('#search-results')
-            .evaluate(function() {
-                    let searchResults = [];
+nightmare
+    .goto('https://www.linode.com/docs')
+    .insert('#gsc-i-id1', 'ubuntu')
+    .click('input.gsc-search-button-v2')
+    .wait('#search-results')
+    .evaluate(function() {
+            let searchResults = [];
 
-                    const results =  document.querySelectorAll('h6.library-search-result-title a');
-                    results.forEach(function(result) {
-                            let row = {
-                                            'title':result.innerText,
-                                            'url':result.href
-                                      }
-                            searchResults.push(row);
-                    });
-                    return searchResults;
-            })
-            .end()
-            .then(function(result) {
-                    result.forEach(function(r) {
-                            console.log('Title: ' + r.title);
-                            console.log('URL: ' + r.url);
-                    })
-            })
-            .catch(function(e)  {
-                    console.log(e);
+            const results =  document.querySelectorAll('h6.library-search-result-title a');
+            results.forEach(function(result) {
+                    let row = {
+                                    'title':result.innerText,
+                                    'url':result.href
+                              }
+                    searchResults.push(row);
             });
-        ~~~
+            return searchResults;
+    })
+    .end()
+    .then(function(result) {
+            result.forEach(function(r) {
+                    console.log('Title: ' + r.title);
+                    console.log('URL: ' + r.url);
+            })
+    })
+    .catch(function(e)  {
+            console.log(e);
+    });
+
+{{< /file >}}
+
 
 3.  Run the script:
 
@@ -154,8 +153,8 @@ For more information about using Cron, see our [Schedule Tasks with Cron](/docs/
 
 2.  Add the following line to the end of the file:
 
-    {: .file-excerpt}
-    crontab
-    :  ~~~ cron
-       0 * * * * cd ~/automation && xvfb-run node linode.js >> data_$(date +\%Y_\%m_\%d_\%I_\%M_\%p).txt
-       ~~~
+    {{< file-excerpt "crontab" cron >}}
+0 * * * * cd ~/automation && xvfb-run node linode.js >> data_$(date +\%Y_\%m_\%d_\%I_\%M_\%p).txt
+
+{{< /file-excerpt >}}
+

@@ -3,29 +3,26 @@ author:
     name: Karthik Shiraly
     email: docs@linode.com
 description: 'Turbocharge your WordPress blog search using Solr search engine.'
-keywords: 'wordpress,search,solr,ubuntu,debian'
+keywords: ["wordpress", "search", "solr", "ubuntu", "debian"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 contributor:
     name: Karthik Shiraly
     link: https://twitter.com/pathbreaksoft
-modified: Friday, April 3, 2015
+modified: 2015-04-03
 modified_by:
     name: James Stewart
-published: 'Friday, April 3, 2015'
+published: 2015-04-03
 title: 'Turbocharge Your WordPress Search Using Solr'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 The standard search that is built into WordPress does not provide the best search experience you can offer your visitors, given its inability to suggest search phrases, catch typos, understand word variations, organize and filter results, and index documents for search results. *Full text search engines* often offer these features and **Apache Solr** is a free, open-source option that does.
 
 In this guide, you will learn how to install Java, install and configure Solr on Ubuntu 14.x or Debian 7.x, and integrate it into your WordPress blog using the WPSolr plugin.
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Prerequisites
 
@@ -86,9 +83,9 @@ Since Solr is a Java web application, it requires a *Java Runtime Environment (J
 
 4.  Click on the highest available 4.x version to see the files in that release:
 
-    {: .note}
-    >
-    > Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
+    {{< note >}}
+Since Solr 5.x is still in beta, its configuration procedures are different from 4.x, and WPSolr is not yet compatible with the 5.x release.
+{{< /note >}}
 
     ![Solr release directory listing](/docs/assets/wpsolr_directory_files.png)
 
@@ -144,26 +141,26 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 2.  Locate the section where listening host and port are set:
 
-    {: .file-excerpt}
-    /opt/solr-4.10.4/example/etc/jetty.xml
-    :   ~~~
-        <!--
-            <Call name="addConnector">
-              <Arg>
-                  <New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
-                    <Set name="host"><SystemProperty name="jetty.host" /></Set>
-                    <Set name="port"><SystemProperty name="jetty.port" default="8983"/></Set>
-                    <Set name="maxIdleTime">50000</Set>
-                    <Set name="Acceptors">2</Set>
-                    <Set name="statsOn">false</Set>
-                    <Set name="confidentialPort">8443</Set>
-                    <Set name="lowResourcesConnections">5000</Set>
-                    <Set name="lowResourcesMaxIdleTime">5000</Set>
-                  </New>
-              </Arg>
-            </Call>
-        -->
-        ~~~
+    {{< file-excerpt "/opt/solr-4.10.4/example/etc/jetty.xml" >}}
+<!--
+    <Call name="addConnector">
+      <Arg>
+          <New class="org.eclipse.jetty.server.nio.SelectChannelConnector">
+            <Set name="host"><SystemProperty name="jetty.host" /></Set>
+            <Set name="port"><SystemProperty name="jetty.port" default="8983"/></Set>
+            <Set name="maxIdleTime">50000</Set>
+            <Set name="Acceptors">2</Set>
+            <Set name="statsOn">false</Set>
+            <Set name="confidentialPort">8443</Set>
+            <Set name="lowResourcesConnections">5000</Set>
+            <Set name="lowResourcesMaxIdleTime">5000</Set>
+          </New>
+      </Arg>
+    </Call>
+-->
+
+{{< /file-excerpt >}}
+
 
 3.  Set the appropriate listening IP address:
 
@@ -182,9 +179,9 @@ By default, Solr listens for search requests on all IP addresses at port 8983. F
 
 For security purposes, Solr should run with its own user account and group.
 
-{: .note}
->
->The following commands should be run on the server where **Solr** is installed.
+{{< note >}}
+The following commands should be run on the server where **Solr** is installed.
+{{< /note >}}
 
 1.  Create a group named `solr`:
 
@@ -203,9 +200,9 @@ For security purposes, Solr should run with its own user account and group.
 
 ### Configure Solr as a Startup Service
 
-{: .note}
->
->Run the following commands on the server where **Solr** is installed.
+{{< note >}}
+Run the following commands on the server where **Solr** is installed.
+{{< /note >}}
 
 1.  Use a text editor to create a new script `/etc/init.d/solr`.  Alternatively, you can download it from [this link](/docs/assets/solr):
 
@@ -213,190 +210,190 @@ For security purposes, Solr should run with its own user account and group.
 
 2.  Copy the following text into the editor, save and close it:
 
-    {: .note}
-    >
-    >If using a different version of Solr, change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
+    {{< note >}}
+If using a different version of Solr, change the `JETTY_HOME=/opt/solr-4.10.4/example` line to match the installed version.
+{{< /note >}}
 
-    {:.file }
-    /etc/init.d/solr
-    :   ~~~
-        #!/bin/sh -e
-        #
-        # /etc/init.d/solr -- startup script for Apache Solr
-        #
-        #
-        ### BEGIN INIT INFO
-        # Provides:          solr
-        # Required-Start:    $local_fs $remote_fs $network
-        # Required-Stop:     $local_fs $remote_fs $network
-        # Should-Start:      $named
-        # Should-Stop:       $named
-        # Default-Start:     2 3 4 5
-        # Default-Stop:      0 1 6
-        # Short-Description: Start Solr
-        # Description:       Start Apache Solr jetty server
-        ### END INIT INFO
+    {{< file "/etc/init.d/solr" >}}
+#!/bin/sh -e
+#
+# /etc/init.d/solr -- startup script for Apache Solr
+#
+#
+### BEGIN INIT INFO
+# Provides:          solr
+# Required-Start:    $local_fs $remote_fs $network
+# Required-Stop:     $local_fs $remote_fs $network
+# Should-Start:      $named
+# Should-Stop:       $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start Solr
+# Description:       Start Apache Solr jetty server
+### END INIT INFO
 
-        PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-        NAME=solr
-        DESC="Solr search engine"
-        JETTY_HOME=/opt/solr-4.10.4/example
-        START_JAR="$JETTY_HOME/start.jar"
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+NAME=solr
+DESC="Solr search engine"
+JETTY_HOME=/opt/solr-4.10.4/example
+START_JAR="$JETTY_HOME/start.jar"
 
-        if [ `id -u` -ne 0 ]; then
-                echo "You need root privileges to run this script"
+if [ `id -u` -ne 0 ]; then
+        echo "You need root privileges to run this script"
+        exit 1
+fi
+
+# Make sure jetty is started with system locale
+if [ -r /etc/default/locale ]; then
+        . /etc/default/locale
+        export LANG
+fi
+
+. /lib/lsb/init-functions
+
+if [ -r /etc/default/rcS ]; then
+        . /etc/default/rcS
+fi
+
+# Run Jetty as this user ID (default: jetty)
+# Set this to an empty string to prevent Jetty from starting automatically
+SOLR_USER=solr
+
+SOLR_GROUP=solr
+
+export JAVA="/usr/bin/java"
+
+# Extra options to pass to the JVM
+# Set java.awt.headless=true if JAVA_OPTIONS is not set so the
+# Xalan XSL transformer can work without X11 display on JDK 1.4+
+# It also sets the maximum heap size to 256M to deal with most cases.
+JAVA_OPTIONS="-Djava.awt.headless=true"
+
+# Timeout in seconds for the shutdown of all webapps
+JETTY_SHUTDOWN=30
+
+JETTY_STOP_PORT=17935
+JETTY_STOP_KEY=stopsolr
+JETTY_ARGS="-Djetty.home=$JETTY_HOME -DSTOP.PORT=$JETTY_STOP_PORT -DSTOP.KEY=$JETTY_STOP_KEY"
+
+# Define other required variables
+PIDFILE="/var/run/$NAME.pid"
+WEBAPPDIR="$JETTY_HOME/webapps"
+
+##################################################
+# Do the action
+##################################################
+case "$1" in
+    start)
+        log_daemon_msg "Starting $DESC." "$NAME"
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+
+                if [ -f $PIDFILE ] ; then
+                      log_warning_msg "$PIDFILE exists, but solr was not running. Ignoring $PIDFILE"
+                fi
+
+                start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$SOLR_USER:$SOLR_GROUP" \
+                    --chdir "$JETTY_HOME" --background --make-pidfile --startas $JAVA -- \
+                    $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --daemon
+
+                log_daemon_msg "$DESC started" "$NAME"
+
+                sleep 5
+                if start-stop-daemon --test --start --pidfile "$PIDFILE" \
+                        --user $SOLR_USER --group $SOLR_GROUP  --startas "$JAVA" > /dev/null; then
+                        log_end_msg 1
+                else
+                        log_end_msg 0
+                fi
+
+        else
+                log_warning_msg "(already running)."
+                log_end_msg 0
                 exit 1
         fi
+        ;;
 
-        # Make sure jetty is started with system locale
-        if [ -r /etc/default/locale ]; then
-                . /etc/default/locale
-                export LANG
-        fi
+    stop)
+        log_daemon_msg "Stopping $DESC." "$NAME"
 
-        . /lib/lsb/init-functions
-
-        if [ -r /etc/default/rcS ]; then
-                . /etc/default/rcS
-        fi
-
-        # Run Jetty as this user ID (default: jetty)
-        # Set this to an empty string to prevent Jetty from starting automatically
-        SOLR_USER=solr
-
-        SOLR_GROUP=solr
-
-        export JAVA="/usr/bin/java"
-
-        # Extra options to pass to the JVM
-        # Set java.awt.headless=true if JAVA_OPTIONS is not set so the
-        # Xalan XSL transformer can work without X11 display on JDK 1.4+
-        # It also sets the maximum heap size to 256M to deal with most cases.
-        JAVA_OPTIONS="-Djava.awt.headless=true"
-
-        # Timeout in seconds for the shutdown of all webapps
-        JETTY_SHUTDOWN=30
-
-        JETTY_STOP_PORT=17935
-        JETTY_STOP_KEY=stopsolr
-        JETTY_ARGS="-Djetty.home=$JETTY_HOME -DSTOP.PORT=$JETTY_STOP_PORT -DSTOP.KEY=$JETTY_STOP_KEY"
-
-        # Define other required variables
-        PIDFILE="/var/run/$NAME.pid"
-        WEBAPPDIR="$JETTY_HOME/webapps"
-
-        ##################################################
-        # Do the action
-        ##################################################
-        case "$1" in
-            start)
-                log_daemon_msg "Starting $DESC." "$NAME"
-                if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
-                                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
-
-                        if [ -f $PIDFILE ] ; then
-                              log_warning_msg "$PIDFILE exists, but solr was not running. Ignoring $PIDFILE"
-                        fi
-
-                        start-stop-daemon --start --pidfile "$PIDFILE" --chuid "$SOLR_USER:$SOLR_GROUP" \
-                            --chdir "$JETTY_HOME" --background --make-pidfile --startas $JAVA -- \
-                            $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --daemon
-
-                        log_daemon_msg "$DESC started" "$NAME"
-
-                        sleep 5
-                        if start-stop-daemon --test --start --pidfile "$PIDFILE" \
-                                --user $SOLR_USER --group $SOLR_GROUP  --startas "$JAVA" > /dev/null; then
-                                log_end_msg 1
-                        else
-                                log_end_msg 0
-                        fi
-
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+                if [ -x "$PIDFILE" ]; then
+                      log_warning_msg "(not running but $PIDFILE exists)."
                 else
-                        log_warning_msg "(already running)."
-                        log_end_msg 0
-                        exit 1
+                        log_warning_msg "(not running)."
                 fi
-                ;;
+        else
+                start-stop-daemon --quiet --stop \
+                        --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                        --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop > /dev/null
 
-            stop)
-                log_daemon_msg "Stopping $DESC." "$NAME"
-
-                if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
-                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
-                        if [ -x "$PIDFILE" ]; then
-                              log_warning_msg "(not running but $PIDFILE exists)."
-                        else
-                                log_warning_msg "(not running)."
-                        fi
-                else
-                        start-stop-daemon --quiet --stop \
-                                --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
-                                --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop > /dev/null
-
-                        while ! start-stop-daemon --quiet --test --start \
-                                    --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
-                                    --startas "$JAVA" > /dev/null; do
-                                sleep 1
-                                log_progress_msg "."
-                                JETTY_SHUTDOWN=`expr $JETTY_SHUTDOWN - 1` || true
-                                if [ $JETTY_SHUTDOWN -ge 0 ]; then
-                                        start-stop-daemon --oknodo --quiet --stop \
-                                                --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
-                                                --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop
-                                else
-                                        log_progress_msg " (killing) "
-                                        start-stop-daemon --stop --signal 9 --oknodo \
-                                                --quiet --pidfile "$PIDFILE" \
-                                                --user "$SOLR_USER" --group "$SOLR_GROUP"
-                                fi
-                        done
-                        rm -f "$PIDFILE"
-                        log_daemon_msg "$DESC stopped." "$NAME"
-                        log_end_msg 0
-                fi
-                ;;
-
-            status)
-                if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
-                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
-
-                        if [ -f "$PIDFILE" ]; then
-                            log_success_msg "$DESC is not running, but pid file exists."
-                                exit 1
-                        else
-                            log_success_msg "$DESC is not running."
-                                exit 3
-                        fi
-                else
-                        log_success_msg "$DESC is running with pid `cat $PIDFILE`"
-                fi
-                ;;
-
-            restart|force-reload)
-                if ! start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
-                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
-                        $0 stop $*
+                while ! start-stop-daemon --quiet --test --start \
+                            --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                            --startas "$JAVA" > /dev/null; do
                         sleep 1
+                        log_progress_msg "."
+                        JETTY_SHUTDOWN=`expr $JETTY_SHUTDOWN - 1` || true
+                        if [ $JETTY_SHUTDOWN -ge 0 ]; then
+                                start-stop-daemon --oknodo --quiet --stop \
+                                        --pidfile "$PIDFILE" --user "$SOLR_USER" --group "$SOLR_GROUP" \
+                                        --startas $JAVA -- $JAVA_OPTIONS $JETTY_ARGS -jar $START_JAR --stop
+                        else
+                                log_progress_msg " (killing) "
+                                start-stop-daemon --stop --signal 9 --oknodo \
+                                        --quiet --pidfile "$PIDFILE" \
+                                        --user "$SOLR_USER" --group "$SOLR_GROUP"
+                        fi
+                done
+                rm -f "$PIDFILE"
+                log_daemon_msg "$DESC stopped." "$NAME"
+                log_end_msg 0
+        fi
+        ;;
+
+    status)
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+
+                if [ -f "$PIDFILE" ]; then
+                    log_success_msg "$DESC is not running, but pid file exists."
+                        exit 1
+                else
+                    log_success_msg "$DESC is not running."
+                        exit 3
                 fi
+        else
+                log_success_msg "$DESC is running with pid `cat $PIDFILE`"
+        fi
+        ;;
+
+    restart|force-reload)
+        if ! start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
+                $0 stop $*
+                sleep 1
+        fi
+        $0 start $*
+        ;;
+
+    try-restart)
+        if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
+                --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
                 $0 start $*
-                ;;
+        fi
+        ;;
 
-            try-restart)
-                if start-stop-daemon --quiet --test --start --pidfile "$PIDFILE" \
-                        --user "$SOLR_USER" --group "$SOLR_GROUP" --startas "$JAVA" > /dev/null; then
-                        $0 start $*
-                fi
-                ;;
+    *)
+        log_success_msg "Usage: $0 {start|stop|restart|force-reload|try-restart|status}"
+        exit 1
+        ;;
+esac
 
-            *)
-                log_success_msg "Usage: $0 {start|stop|restart|force-reload|try-restart|status}"
-                exit 1
-                ;;
-        esac
+exit 0
 
-        exit 0
-        ~~~
+{{< /file >}}
+
 
 3.  After saving the script, run the following commands:
 
@@ -513,9 +510,9 @@ If Solr is installed on a different server from WordPress, repeat the test from 
 
 11. Go to the **Solr Operations** tab and click the **Synchronize Wordpress with my Solr index** button.
 
-    {: .note}
-    >
-    >Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.
+    {{< note >}}
+Whenever you publish a new post or page or attachment, this button must be selected for the new pages to be indexed.
+{{< /note >}}
 
     ![Solr Operations](/docs/assets/wpsolr_wpsolr_solr_operations.png)
 

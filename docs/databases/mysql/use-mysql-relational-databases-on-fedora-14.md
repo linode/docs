@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Getting started with MySQL for web and server applications on Fedora 14.'
-keywords: 'mysql fedora 14,mysql linux,mysql fedora'
+keywords: ["mysql fedora 14", "mysql linux", "mysql fedora"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['databases/mysql/fedora-14/']
-modified: Tuesday, January 28th, 2014
+aliases: ['databases/mysql/fedora-14/']
+modified: 2014-01-28
 modified_by:
   name: Alex Fornuto
-published: 'Tuesday, December 7th, 2010'
+published: 2010-12-07
 title: Use MySQL Relational Databases on Fedora 14
 ---
 
@@ -18,25 +18,23 @@ title: Use MySQL Relational Databases on Fedora 14
 
 MySQL is a popular database management system, used as the data storage provider for thousands of web and server applications. This guide will help beginners get started with MySQL on a Fedora 14 Linode. For purposes of this tutorial, it is assumed that you've followed the steps outlined in our [getting started guide](/docs/getting-started/), that your system is up to date, and that you've logged into your Linode as root via SSH.
 
-System Configuration
---------------------
+# System Configuration
 
 Make sure your `/etc/hosts` file has proper entries, similar to the ones shown below. Replace "12.34.56.78" with your Linode's public address, "servername" with your short hostname, and "mydomain.com" with your system's domain name.
 
-{: .file }
-/etc/hosts
-:   ~~~
-    127.0.0.1 localhost.localdomain localhost
-    12.34.56.78 servername.mydomain.com servername
-    ~~~
+{{< file "/etc/hosts" >}}
+127.0.0.1 localhost.localdomain localhost
+12.34.56.78 servername.mydomain.com servername
+
+{{< /file >}}
+
 
 Set your system's hostname by issuing the following commands. Replace "servername" with your system's short hostname.
 
     echo "HOSTNAME=servername" >> /etc/sysconfig/network
     hostname "servername"
 
-Install MySQL
--------------
+# Install MySQL
 
 Issue the following commands to update your system and install MySQL:
 
@@ -48,8 +46,7 @@ The MySQL server package will be installed on your server, along with dependenci
 
     service mysqld start
 
-Configure MySQL
----------------
+# Configure MySQL
 
 After installing MySQL, it's recommended that you run `mysql_secure_installation`, a program that helps secure MySQL. While running `mysql_secure_installation`, you will be presented with the opportunity to change the MySQL root password, remove anonymous user accounts, disable root logins outside of localhost, and remove test databases. It is recommended that you answer yes to these options. If you are prompted to reload the privilege tables, select yes. Run the following command to execute the program:
 
@@ -57,27 +54,27 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
 By default, MySQL makes some assumptions about your server environment with respect to memory. To configure MySQL more conservatively, you'll need to edit some settings in its configuration file. Your file should resemble the following:
 
-{: .file }
-/etc/my.cnf
-:   ~~~ ini
-    [mysqld]
-    datadir=/var/lib/mysql
-    socket=/var/lib/mysql/mysql.sock
-    user=mysql
-    # Disabling symbolic-links is recommended to prevent assorted security risks
-    symbolic-links=0
-    key_buffer = 16M
-    max_allowed_packet = 1M
-    thread_stack = 64K
-    table_cache = 4
-    sort_buffer = 64K
-    net_buffer_length = 2K
-    bind-address = 127.0.0.1
+{{< file "/etc/my.cnf" ini >}}
+[mysqld]
+datadir=/var/lib/mysql
+socket=/var/lib/mysql/mysql.sock
+user=mysql
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+key_buffer = 16M
+max_allowed_packet = 1M
+thread_stack = 64K
+table_cache = 4
+sort_buffer = 64K
+net_buffer_length = 2K
+bind-address = 127.0.0.1
 
-    [mysqld_safe]
-    log-error=/var/log/mysqld.log
-    pid-file=/var/run/mysqld/mysqld.pid
-    ~~~
+[mysqld_safe]
+log-error=/var/log/mysqld.log
+pid-file=/var/run/mysqld/mysqld.pid
+
+{{< /file >}}
+
 
 These settings are only suggested values for a low memory environment; please feel free to tune them to appropriate values for your server. Consult the "More Information" section at the end of this tutorial for additional resources for this topic.
 
@@ -89,8 +86,7 @@ MySQL will bind to localhost (127.0.0.1) by default. Please reference our [secur
 
 Allowing unrestricted access to MySQL on a public IP not advised, but you may change the address it listens on by modifying the `bind-address` parameter. If you decide to bind MySQL to your public IP, you should implement firewall rules that only allow connections from specific IP addresses.
 
-Use MySQL
----------
+# Use MySQL
 
 The standard tool for interacting with MySQL is the `mysql` client program. To get started, issue the following command at your prompt:
 
@@ -159,8 +155,7 @@ Now let's log back into the MySQL client as `testuser` and create a sample table
 
 This creates a table with a customer ID field of the type INT for integer (auto-incremented for new records, used as the primary key), as well as two fields for storing the customer's name. Of course, you'd probably want to store much more information than this for a customer, but it's a good example of a common case nonetheless.
 
-How to Reset MySQL's Root Password
-----------------------------------
+# How to Reset MySQL's Root Password
 
 If you've forgotten your root MySQL password, you may reset it by issuing the following commands:
 
@@ -179,8 +174,7 @@ Last, restart MySQL by issuing the following command:
 
     service mysqld restart
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

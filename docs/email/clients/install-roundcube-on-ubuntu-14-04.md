@@ -3,10 +3,10 @@ author:
   name: 'Linode Community'
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
-keywords: 'Roundcube,webmail,email,Ubuntu,Postfix,Dovecot'
+keywords: ["Roundcube", "webmail", "email", "Ubuntu", "Postfix", "Dovecot"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Monday, February 1st, 2016'
-modified: 'Monday, February 1st, 2016'
+published: 2016-02-01
+modified: 2016-02-01
 modified_by:
   name: 'Linode'
 title: 'Install Roundcube on Ubuntu 14.04'
@@ -37,9 +37,9 @@ Roundcube is a web-based IMAP email client that offers a user interface similar 
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note}
->
->This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Linux, Apache, MySQL and PHP (LAMP) Stack
 
@@ -92,9 +92,9 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
     - **SSLCertificateFile:** path to the SSL certificate information (`.crt`) file
     - **SSLCertificateKeyFile:** path to the SSL certificate private key (`.key`) file
 
-    {: .caution }
-    >
-    > Make sure the custom directory and desired `.log` files exist **before** specifying them in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the `www-data` user with `644` permissions.
+    {{< caution >}}
+Make sure the custom directory and desired `.log` files exist **before** specifying them in your virtual host configuration. Failure to do so will prevent Apache from starting. The files should be owned by the `www-data` user with `644` permissions.
+{{< /caution >}}
 
 7.  Rename your configuration file to match its full domain name:
 
@@ -144,9 +144,9 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
         sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
 
-    {: .note }
-    >
-    > PEAR is an acronym for "PHP Extension and Application Repository". Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the `pear` command.
+    {{< note >}}
+PEAR is an acronym for "PHP Extension and Application Repository". Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the `pear` command.
+{{< /note >}}
 
     PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
@@ -204,9 +204,9 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
     ![Roundcube Webmail Installer](/docs/assets/roundcube_webmail_installer.png)
 
-    {: .note }
-    >
-    > Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.
+    {{< note >}}
+Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.
+{{< /note >}}
 
 3.  Specify your Roundcube configuration options. The list of options below will get you a proper, working configuration, but you can adjust any unmentioned options as you see fit.
 
@@ -247,9 +247,9 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
     ![Roundcube login](/docs/assets/roundcube-login.png)
 
-    {: .note }
-    >
-    > If your email address is `somebody@example.com`, you only have to enter **somebody** as your username. Roundcube assumes that all users exist at `example.com`.
+    {{< note >}}
+If your email address is `somebody@example.com`, you only have to enter **somebody** as your username. Roundcube assumes that all users exist at `example.com`.
+{{< /note >}}
 
 ## Keeping Roundcube Updated
 

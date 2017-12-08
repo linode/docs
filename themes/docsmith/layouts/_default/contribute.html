@@ -1,0 +1,116 @@
+{{ define "main" }}
+<section class="primary extra-space" style="padding-bottom:0;margin-bottom:0;">
+    <div class="container">
+        <div class="row-content">
+            <div class="col-sm-12 text-center">
+                <h1 class="contribute">Contribute to our Tutorials</h1>
+                <img class="img-responsive" src="/docs/assets/contribute/Contribute_Tutorials.png">
+                <p class="lead text-center subtitle">
+                    Get paid up to $300 per guide
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="white extra-space bottom doc">
+    <div class="container">
+        <div class="row-tiles">
+            <div class="col-sm-10 col-sm-offset-1">
+                <p>
+                    Linode is looking for awesome technical writers and subject matter experts to contribute to our comprehensive selection of tutorials about Linux, Linode and cloud infrastructure.
+                    If you have technical knowledge and the ability to explain things clearly, our in-house editors will help you polish and publish your guide.
+                </p>
+
+                <p>
+                    Simply choose a topic from the list below and submit a writing sample.
+                    Once we’ve reviewed and approved your request, we’ll match you with one of our editors and you’ll be on your way to getting published in our rich knowledge base with over a million unique page views each month.
+                    You’ll also make <strong>up to $300</strong> depending on topic difficulty.
+                </p>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 class="current">Current Topics</h4>
+                </div>
+
+                {{ .Content }}
+            </div>
+
+            <div class="container">
+                <div class="row-content">
+                    <div class="col-sm-12 hubspot-container">
+                        <div class="hubspot-form">
+                            <h3 class="sample-header">Writing Sample</h3>
+                            <!--[if lte IE 8]>
+                            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                            <![endif]-->
+                            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
+                            <script>
+                            hbspt.forms.create({
+                                css: '',
+                                portalId: '2165147',
+                                formId: 'e6451fbb-012a-4c4a-9082-e34116d448dd',
+                                redirectUrl: 'https://www.linode.com/docs/contribute/thankyou'
+                            });
+                            </script>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <h4 style="margin-top:20px;padding-top:0;">Essential Criteria for Each Guide</h4>
+                    <br>
+                    <p><strong>Accuracy:</strong> Instructions should be straightforward, technically correct and thoroughly tested. Include brief explanations of each step to explain the purpose of each action.</p>
+                    <p><strong>Completeness:</strong> A guide should leave readers with a finished, working configuration and give them an idea of where to go from there. Considerations for security and best practices must also be made, including firewall rules.</p>
+                    <p><strong>Originality:</strong> Content should be original material written for Linode. We will not accept submissions which are duplicated from other sources.</p>
+
+                    <h4 style="padding-bottom:20px;">Sample Guides for Reference</h4>
+
+                    <p>Here are some examples of exceptional community-contributed guides. The instructions in each are accurate, complete, original and thorough. Refer to these as guidelines for your own submission.</p>
+
+                    <ul>
+                        <li><a href="https://www.linode.com/docs/websites/cms/install-odoo-9-erp-on-ubuntu-14-04">Install Odoo 9 ERP on Ubuntu 14.04</a> by Damaso Sanoja</li>
+                        <li><a href="https://www.linode.com/docs/development/version-control/install-gitlab-on-ubuntu-14-04-trusty-tahr">How to Install and Configure GitLab on Ubuntu 14.04 (Trusty Tahr)</a> by Nashruddin Amin</li>
+                        <li><a href="https://www.linode.com/docs/game-servers/host-a-terraria-server-on-your-linode">Host a Terraria Server on Your Linode</a> by Tyler Langlois</li>
+                        <li><a href="https://www.linode.com/docs/security/ossec-ids-debian-7">Install and Configure OSSEC on Debian 7</a> by Sunday Ogwu-Chinuwa</li>
+                        <li><a href="https://www.linode.com/docs/websites/cms/turbocharge-wordpress-search-with-solr">Turbocharge Your WordPress Search Using Solr</a> by Karthik Shiraly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="container contribute">
+                <div class="row">
+                    <h4 style="padding-bottom:20px;padding-top:20px;">Compensation Scale</h4>
+                    <div class="col-md-4">
+                        <img src="/docs/assets/contribute/Update_icon.png">
+                        <br>
+                        Updates <br>(e.g., Ubuntu 14.04 to 16.04)
+                        <br>
+                        <span class="money"><strong>$100</strong></span>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/docs/assets/contribute/Simple_Tutorial_icon.png">
+                        <br>
+                        Simple Tutorials <br>(500-999 words)
+                        <br>
+                        <span class="money"><strong>$200</strong></span>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="/docs/assets/contribute/Detailed_Tutorial_icon.png">
+                        <br>
+                        Detailed Tutorials <br>(1,000+ words)
+                        <br>
+                        <span class="money"><strong>$300</strong></span>
+                    </div>
+                </div>
+                <p class="compensation-footer">
+                    Whatever the compensation amount, we'll pay you by check, electronic wire, or in Linode credit. Just let us know your preference.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}

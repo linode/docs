@@ -4,18 +4,20 @@ author:
   name: Alex Fornuto
   email: afornuto@linode.com
 description: How to install and connect to a desktop environment on your Linode
-keywords: 'vnc,remote desktop,ubuntu,12.04'
+keywords: ["vnc", "remote desktop", "ubuntu", "12.04"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['remote-desktops/vnc-desktop-ubuntu-12-04/']
-modified: Thursday, August 21, 2014
+aliases: ['remote-desktops/vnc-desktop-ubuntu-12-04/']
+modified: 2014-08-21
 modified_by:
   name: James Stewart
-published: 'Thursday, April 10th, 2014'
+published: 2014-04-10
 title: 'Using VNC to Operate a Desktop on Ubuntu 12.04'
 external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/Virtual_Network_Computing)'
  - '[RealVNC](https://www.realvnc.com/)'
 ---
+
+![Using VNC to Operate a Desktop on Ubuntu 12.04](/docs/assets/using-vnc-to-operate-a-desktop-on-ubuntu-1204-title-graphic.jpg "Using VNC to Operate a Desktop on Ubuntu 12.04")
 
 This guide details how to install a graphic desktop environment on your Linode running Ubuntu 12.04 and connect to it from your local computer using VNC.
 
@@ -34,7 +36,7 @@ This guide details how to install a graphic desktop environment on your Linode r
 
         sudo apt-get install vnc4server
 
-## Securing your VNC connection
+## Secure your VNC connection
 
 The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port.
 
@@ -80,7 +82,7 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
-3.  You will be prompted to enter the password you specified in Step 4 of [the previous section](#installing-a-desktop-and-vnc-on-your-linode).
+3. You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
 
     [![The VNC password prompt.](/docs/assets/1657-vnc-3-2.png)](/docs/assets/1638-vnc-3.png)
 
@@ -98,7 +100,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in Step 4 of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in [Secure your VNC connection](#secure-your-vnc-connection):
 
     [![.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
@@ -118,22 +120,22 @@ In the next few steps we'll configure VNC to launch the full Gnome desktop.
 
 2.  In your preferred text editor, open the xstartup file in your home folder under the `.vnc` directory:
 
-    {: .file-excerpt }
-    ~/.vnc/xstartup
-    :   ~~~
-        #!/bin/sh
+    {{< file-excerpt "~/.vnc/xstartup" >}}
+#!/bin/sh
 
-        # Uncomment the following two lines for normal desktop:
-        # unset SESSION_MANAGER
-        # exec /etc/X11/xinit/xinitrc
+# Uncomment the following two lines for normal desktop:
+# unset SESSION_MANAGER
+# exec /etc/X11/xinit/xinitrc
 
-        [ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
-        [ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
-        xsetroot -solid grey
-        vncconfig -iconic &
-        x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
-        x-window-manager &
-        ~~~
+[ -x /etc/vnc/xstartup ] && exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] && xrdb $HOME/.Xresources
+xsetroot -solid grey
+vncconfig -iconic &
+x-terminal-emulator -geometry 80x24+10+10 -ls -title "$VNCDESKTOP Desktop" &
+x-window-manager &
+
+{{< /file-excerpt >}}
+
 
 3.  Edit the last line of the file, replacing it with the following:
 
@@ -167,34 +169,34 @@ Below we've outlined optional steps to ensure that the VNC server starts automat
 
 2.  Add `@reboot         /usr/bin/vncserver :1` to the bottom of the file. Your crontab should look like this:
 
-    {: .file-excerpt }
-    crontab
-    :   ~~~
-        # Edit this file to introduce tasks to be run by cron.
-        #
-        # Each task to run has to be defined through a single line
-        # indicating with different fields when the task will be run
-        # and what command to run for the task
-        #
-        # To define the time you can provide concrete values for
-        # minute (m), hour (h), day of month (dom), month (mon),
-        # and day of week (dow) or use '*' in these fields (for 'any').
-        #
-        # Notice that tasks will be started based on the cron's system
-        # daemon's notion of time and timezones.
-        #
-        # Output of the crontab jobs (including errors) is sent through
-        # email to the user the crontab file belongs to (unless redirected).
-        #
-        # For example, you can run a backup of all your user accounts
-        # at 5 a.m every week with:
-        # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
-        #
-        # For more information see the manual pages of crontab(5) and cron(8)
-        #
-        # m h dom mon dow command
+    {{< file-excerpt "crontab" >}}
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# m h dom mon dow command
 
-        @reboot /usr/bin/vncserver :1
-        ~~~
+@reboot /usr/bin/vncserver :1
+
+{{< /file-excerpt >}}
+
 
 3.  Save and exit the file. Test by rebooting your Linode and attempting to connect to the VNC server.

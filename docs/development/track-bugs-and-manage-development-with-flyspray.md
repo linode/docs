@@ -3,23 +3,22 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Install and begin using Flyspray to track project development.'
-keywords: 'bug tracking,flyspray,issue management,feature development'
+keywords: ["bug tracking", "flyspray", "issue management", "feature development"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/project-management/flyspray/','applications/development/track-bugs-and-manage-development-with-flyspray/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/project-management/flyspray/','applications/development/track-bugs-and-manage-development-with-flyspray/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Monday, May 3rd, 2010'
+published: 2010-05-03
 title: Track Bugs and Manage Development with Flyspray
 deprecated: true
 ---
 
 Flyspray is an advanced bug tracking system that allows software development teams, open source software projects, and other teams to manage development progress, issue reports, feature development, and other project tasks. Written against the popular LAMP stack, and including support for email and Jabber (XMPP) notifications, Flyspray is an ideal solution for teams that want an easy to use and manage issue tracking system with advanced features.
 
-Before beginning this guide we assume that you have completed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/docs/lamp-guides/) for your operating system. Additionally you will need to install a local [MTA to send email](/docs/tools-reference/linux-system-administration-basics#send-email-from-your-server) if you do not have an MTA installed.
+Before beginning this guide we assume that you have completed our [getting started](/docs/getting-started/) guide. If you're new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics). To complete this guide, you must also install a web server. This guide will assume that you have completed the appropriate [LAMP guide](/content/lamp-guides/) for your operating system. Additionally you will need to install a local [MTA to send email](/content/tools-reference/linux-system-administration-basics#send-email-from-your-server) if you do not have an MTA installed.
 
-Installing Prerequisites
-------------------------
+## Installing Prerequisites
 
 If you're running Debian or Ubuntu systems, ensure that your system's package repository is up to date, that all installed packages have been upgraded with the latest bug fixes and security patches with the following command sequence. Additionally, install all prerequisite packages by issuing these commands:
 
@@ -35,8 +34,7 @@ On CentOS and Fedora systems issue the following command to ensure your system's
 
 For the purpose of this guide we will assume that you have virtual hosting configured for the domain `example.com` with all publicly accessible resources located in the document root `/srv/www/example.com/public_html/`. Furthermore, in this document you will install Flyspray in this document root. Modify all of the instructions below to agree with the architecture of your deployment.
 
-Install Flyspray
-----------------
+## Install Flyspray
 
 This document contains specific instructions for installing version 0.9.9.6 of Flyspray. Check the [upstream](http://flyspray.org/download) to confirm that 0.9.9.6 is the most recent stable release of Flyspray. By installing the latest version you may be able to prevent falling victim to known vulnerabilities or bugs with older versions of the software. Issue the following sequence of commands to download, extract, move the Flyspray files to your web servers' document root, and properly configure file permissions:
 
@@ -56,8 +54,7 @@ Now visit `http://example.com/` in your web browser, and follow the setup proced
 
 Congratulations! You have now successfully deployed Flyspray.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+## Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -68,8 +65,7 @@ Please monitor the following mailing lists and bug databases to ensure that you 
 
 When upstream sources offer new releases, repeat the instructions for installing Flyspray software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+## More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

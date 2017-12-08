@@ -3,11 +3,11 @@ author:
   name: Linode Community
   email: contribute@linode.com
 description: 'How to Install Nginx and a StartSSL Certificate on Debian 8 (Jessie)'
-keywords: 'startssl,nginx,debian 8,ssl certificate,generate CSR'
+keywords: ["startssl", "nginx", "debian 8", "ssl certificate", "generate CSR"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/']
-published: Friday, October 21st, 2015
-modified: Thursday, August 18th, 2016
+aliases: ['websites/nginx/how-to-install-nginx-and-a-startssl-certificate-on-debian-8-jessie/','websites/nginx/install-nginx-and-a-startssl-certificate-on-debian-8-jessie/']
+published: 2015-10-21
+modified: 2016-08-18
 modified_by:
   name: Phil Zona
 title: 'Install nginx and a StartSSL Certificate on Debian 8 (Jessie)'
@@ -16,9 +16,6 @@ contributor:
   link: https://github.com/capecodrailfan
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn $250 per published guide.*
-
-<hr>
 
 This guide will show you how to install the latest stable version of nginx on Debian Jessie. It will also deploy a free SSL certificate from StartSSL that, when combined with our guide on [SSL and TLS deployment best practices](/docs/websites/nginx/nginx-ssl-and-tls-deployment-best-practices), will result in an "A+" grade on the [Qualys SSL Labs SSL Server Test](https://www.ssllabs.com/ssltest/). In this guide we are going to configure nginx to prefer strong server-side cipher suites and disable the vulnerable SSLv2 and SSLv3 protocols.
 
@@ -34,9 +31,9 @@ This guide will show you how to install the latest stable version of nginx on De
 
         sudo apt-get update && sudo apt-get upgrade
 
-{: .note }
->
-> Many steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+Many steps in this guide require root privileges. Be sure to run the steps below as **root** or with the `sudo` prefix. For more information on privileges see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
 ## Install nginx
 
@@ -91,26 +88,26 @@ Please understand that when using this method, you will be responsible for updat
 
 10. Create a systemd service script to run nginx:
 
-    {: .file}
-    /lib/systemd/system/nginx.service
-    :   ~~~ shell
-        [Unit]
-        Description=A high performance web server and a reverse proxy server
-        After=network.target
+    {{< file "/lib/systemd/system/nginx.service" shell >}}
+[Unit]
+Description=A high performance web server and a reverse proxy server
+After=network.target
 
-        [Service]
-        Type=forking
-        PIDFile=/opt/nginx/logs/nginx.pid
-        ExecStartPre=/opt/nginx/sbin/nginx -t -q -g 'daemon on; master_process on;'
-        ExecStart=/opt/nginx/sbin/nginx -g 'daemon on; master_process on;'
-        ExecReload=/opt/nginx/sbin/nginx -g 'daemon on; master_process on;' -s reload
-        ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /opt/nginx/logs/nginx.pid
-        TimeoutStopSec=5
-        KillMode=mixed
+[Service]
+Type=forking
+PIDFile=/opt/nginx/logs/nginx.pid
+ExecStartPre=/opt/nginx/sbin/nginx -t -q -g 'daemon on; master_process on;'
+ExecStart=/opt/nginx/sbin/nginx -g 'daemon on; master_process on;'
+ExecReload=/opt/nginx/sbin/nginx -g 'daemon on; master_process on;' -s reload
+ExecStop=-/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /opt/nginx/logs/nginx.pid
+TimeoutStopSec=5
+KillMode=mixed
 
-        [Install]
-        WantedBy=multi-user.target
-        ~~~
+[Install]
+WantedBy=multi-user.target
+
+{{< /file >}}
+
 
     If you used the build configuration options shown in Step 7, you may use this script exactly as shown. However, if you specified your own file paths, you may need to adjust the value for `PIDFile` to match your PID file, and the paths in the lines beginning with `Exec` to match your nginx binary file path. These files paths were included in the output in Step 7.
 
@@ -126,8 +123,9 @@ Please understand that when using this method, you will be responsible for updat
 
         systemctl enable nginx
 
-{: .note}
->If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths, and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).
+{{< note >}}
+If you compile from a source distribution as above, some of the files referenced in this and other nginx guides may not be created by default. You may create those files yourself at their specified file paths, and nginx will work as intended. For more information, refer to our guide on [how to configure nginx](/docs/websites/nginx/how-to-configure-nginx).
+{{< /note >}}
 
 ## Generate a Private Key and Certificate Signing Request (CSR)
 
@@ -217,8 +215,9 @@ You should now be logged into your StartSSL account.
 
 6.  Within the archive, extract the `NginxServer.zip` archive, which contains a file with the extension `.crt`. This is your SSL certificate. Open the file in a text editor on your local computer and copy the *entire* contents to your clipboard.
 
-    {: .note}
-    > The text of the `.crt` file will appear to have two certificates in it. It is important to copy everything in this file, in the order shown. Failure to do so will prevent your SSL certificate from working properly.
+    {{< note >}}
+The text of the `.crt` file will appear to have two certificates in it. It is important to copy everything in this file, in the order shown. Failure to do so will prevent your SSL certificate from working properly.
+{{< /note >}}
 
 7.  Paste the content of this file into a new file called `/etc/ssl/nginx/server.crt` on your Linode and save it. You can replace `server.crt` with your own certificate name, but it is recommended to leave the `.crt` extension for organization.
 
@@ -244,42 +243,42 @@ You should now be logged into your StartSSL account.
 
 1.  By default, nginx is configured to only serve HTTP requests on TCP port 80. To make use of SSL, you will need to configure nginx to serve HTTPS requests on TCP port 443. Open the sample nginx SSL server block configuration file and adjust your configuration so that it matches the example below.
 
-    {: .file}
-    /etc/nginx/conf.d/example_ssl.conf
-    :   ~~~ conf
-        # HTTPS server
-        #
-        server {
-            listen       443 ssl;
-            server_name  example.com;
+    {{< file "/etc/nginx/conf.d/example_ssl.conf" aconf >}}
+# HTTPS server
+#
+server {
+    listen       443 ssl;
+    server_name  example.com;
 
-            ssl_certificate      /etc/ssl/nginx/nginx.crt;
-            ssl_certificate_key  /etc/ssl/nginx/server.key;
+    ssl_certificate      /etc/ssl/nginx/nginx.crt;
+    ssl_certificate_key  /etc/ssl/nginx/server.key;
 
-            ssl_session_cache shared:SSL:10m;
-            ssl_session_timeout  5m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_timeout  5m;
 
-            ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
-            ssl_prefer_server_ciphers   on;
+    ssl_ciphers  "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH !RC4";
+    ssl_prefer_server_ciphers   on;
 
-            ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
-            location / {
-                root   /opt/nginx/html;
-                index  index.html index.htm;
-            }
-        }
-        ~~~
+    location / {
+        root   /opt/nginx/html;
+        index  index.html index.htm;
+    }
+}
+
+{{< /file >}}
+
 
     Replace the value of `server_name` with your domain or subdomain name. Make sure that the values of `ssl_certificate` and `ssl_certificate_key` match the file paths of the certificate and private key you created. The lines `ssl_session_cache`, `ssl_ciphers`, and `ssl_protocols` should match the above configuration.
 
     Depending on how you installed nginx, this file may not have been created by default. For example, if you compiled nginx from source, you will need to create the `example_ssl.conf` file and copy this configuration into it. If that is the case, you will also need to add the following line to the `http` block in your main nginx configuration file:
 
-    {: .file-excerpt}
-    /etc/nginx/nginx.conf
-    :   ~~~ conf
-            include     /etc/nginx/conf.d/*.conf;
-        ~~~
+    {{< file-excerpt "/etc/nginx/nginx.conf" aconf >}}
+include     /etc/nginx/conf.d/*.conf;
+
+{{< /file-excerpt >}}
+
 
 3.  Restart nginx to apply your changes.
 

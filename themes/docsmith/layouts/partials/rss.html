@@ -1,0 +1,5 @@
+{{ with  .Site.Home.OutputFormats.Get "rss" -}}
+<div class="library-rss">
+  <a href="{{ .Permalink }}"><i class="fa fa-rss-square"></i> RSS feed</a>
+</div>
+{{- end }}

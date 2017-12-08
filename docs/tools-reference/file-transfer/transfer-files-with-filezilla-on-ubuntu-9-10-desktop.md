@@ -4,13 +4,13 @@ author:
   email: docs@linode.com
 deprecated: yes
 description: 'Securely copying files to and from your Linode with Filezilla, a free and open source file transfer client for Linux desktop systems.'
-keywords: 'filezilla,ftp,linux scp,sftp,linux sftp program,linux ftp'
+keywords: ["filezilla", "ftp", "linux scp", "sftp", "linux sftp program", "linux ftp"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['networking/file-transfer/transfer-files-filezilla-ubuntu-9-10/']
-modified: Monday, August 22nd, 2011
+aliases: ['networking/file-transfer/transfer-files-filezilla-ubuntu-9-10/']
+modified: 2011-08-22
 modified_by:
   name: Linode
-published: 'Friday, November 13th, 2009'
+published: 2009-11-13
 title: 'Transfer Files with Filezilla on Ubuntu 9.10 Desktop'
 ---
 
@@ -18,8 +18,7 @@ Filezilla is a free, open source file transfer program written for Linux, MacOS 
 
 You'll need to make sure your Linode is running an SSH daemon (all Linodes run an OpenSSH server by default), and that you have a user account on the server before following these instructions. If you wish, you may use the `root` account on your Linode to perform file transfers, although you may need to change [file ownership and permissions](/docs/tools-reference/linux-users-and-groups) on the server after doing so.
 
-Installing Filezilla
---------------------
+# Installing Filezilla
 
 On your desktop, click "System" -\> "Administration" -\> "Synaptic Package Manager" as shown below to start the package installer.
 
@@ -35,8 +34,7 @@ You will be asked to confirm your installation request. Click the "Apply" button
 
 Filezilla and required dependency files will be installed on your system. You may close Synaptic once the install has completed.
 
-Using Filezilla
----------------
+# Using Filezilla
 
 On your desktop, click "Applications" -\> "Internet" -\> "Filezilla" to launch the program.
 
@@ -50,7 +48,7 @@ If this is the first time you've connected to your Linode with an SSH or SFTP pr
 
 [![Unknown SSH key warning in Filezilla on Ubuntu 9.10 desktop edition.](/docs/assets/184-filezilla-ubuntu-unknown-key.png)](/docs/assets/184-filezilla-ubuntu-unknown-key.png)
 
-This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to Filezilla with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the AJAX console (see the "Console" tab in the Linode Manager) and executing the following command:
+This is due to the possibility that someone could be eavesdropping on your connection, posing as the server you are trying to log into. You need some "out of band" method of comparing the key fingerprint presented to Filezilla with the fingerprint of the public key on the server you wish to log into. You may do so by logging into your Linode via the Lish console (see the "Console" tab in the Linode Manager) and executing the following command:
 
     ssh-keygen -l -f /etc/ssh/ssh_host_rsa_key.pub
 
@@ -58,8 +56,7 @@ The key fingerprints should match; click "Yes" to accept the warning and cache t
 
 When you're ready to proceed, click the "Ok" button. You'll be presented with a split view, with your local filesystem on the left and your Linode's filesystem on the right. You may transfer files by dragging and dropping them between each side.
 
-Connecting Without a Password (SSH Keys)
-----------------------------------------
+# Connecting Without a Password (SSH Keys)
 
 If you'd like to use SSH keys to allow access to your Linode without the need to specify a password, you'll need to make sure you have an SSH keypair generated for your local user account. To verify this, open a terminal (click "Applications" -\> "Accessories" -\> "Terminal") and type the following command:
 
@@ -80,8 +77,7 @@ Test the ability to log in without a password by issuing the following command:
 
 If you're asked for a password, please double-check the preceding steps in this section. If you're logged into your Linode, you may type `exit` to close the SSH connection. Provided you were able to log in without entering a password, return to Filezilla and initiate a new connection. You should now be able to connect to your Linode without entering a password in the "Password" field.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'The Planet feed aggregator provides an overview of a community by collecting all feeds produced by a community.'
-keywords: 'social networking,planet'
+keywords: ["social networking", "planet"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/social-networking/planet/']
-modified: Friday, October 4th, 2013
+aliases: ['web-applications/social-networking/planet/']
+modified: 2013-10-04
 modified_by:
   name: Linode
-published: 'Thursday, August 5th, 2010'
+published: 2010-08-05
 title: Planet Feed Aggregator
 ---
 

@@ -4,13 +4,13 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Installing and configuring the ISPConfig control panel to maintain your Linode.'
-keywords: 'ispconfig,control panel,cpanel,plesk,gui'
+keywords: ["ispconfig", "control panel", "cpanel", "plesk", "gui"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['web-applications/control-panels/ispconfig/fedora-13/']
-modified: Monday, October 8th, 2012
+aliases: ['web-applications/control-panels/ispconfig/fedora-13/']
+modified: 2012-10-08
 modified_by:
   name: Linode
-published: 'Monday, October 25th, 2010'
+published: 2010-10-25
 title: Manage a Fedora 13 Linode with ISPConfig
 ---
 
@@ -18,12 +18,11 @@ title: Manage a Fedora 13 Linode with ISPConfig
 
 ISPConfig is an open-source control panel similar to proprietary software like CPanel or Plesk. It features a wide variety of options to help you control your server and allow other users to maintain their websites.
 
-Before beginning to follow this guide we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/docs/using-linux/administration-basics).
+Before beginning to follow this guide we assume that you have completed the [getting started guide](/docs/getting-started/). If you are new to Linux server administration, you may be interested in our [introduction to Linux concepts guide](/docs/tools-reference/introduction-to-linux-concepts/), [beginner's guide](/docs/beginners-guide/) and [administration basics guide](/content/using-linux/administration-basics).
 
 This guide assumes you are installing this on a clean system. If you feel that you will not need certain features that are mentioned in this document, please feel free to exclude them from your setup.
 
-Update Your System
-------------------
+# Update Your System
 
 Ensure your package lists and packages are up to date by issuing the following commands:
 
@@ -34,8 +33,7 @@ Before you can install some components for ISPConfig, you will need to install s
     yum groupinstall 'Development Tools'
     yum groupinstall 'Development Libraries'
 
-Install Postfix, Courier, MySQL, and Dependencies
--------------------------------------------------
+# Install Postfix, Courier, MySQL, and Dependencies
 
 In order to use the email capabilities in ISPConfig, you will need to install the email applications it depends on in order to function. More information on Postfix and Courier can be found in [our documentation](/docs/email/postfix/courier-mysql-fedora-13), and you are encouraged to read it to gain a better understanding of this software. MySQL is a relational database management system (RDBMS) that is commonly used for dynamic web pages and email. If you have already installed this, you will not need to install is as part of the ISPConfig installation process. You are encouraged to read the [MySQL documentation](/docs/databases/mysql/). You will need to read the documentation for detailed installation instructions.
 
@@ -57,15 +55,13 @@ After installing MySQL, it's recommended that you run `mysql_secure_installation
 
     mysql_secure_installation
 
-Install Amavisd-new and SpamAssassin
-------------------------------------
+# Install Amavisd-new and SpamAssassin
 
 The following command will install spam protection for your email server. Please be advised that using SpamAssassin by itself may consume a vast amount of system resources depending on your configuration. You will want to tune this application according to the [low memory settings](/docs/troubleshooting/troubleshooting-memory-and-networking-issues/#reducing-spamassassin-memory-consumption). Using amavisd-new should help alleviate some of these potential issues.
 
     yum install amavisd-new spamassassin unzip bzip2 perl-DBD-mysql
 
-Install Apache, PHP, phpMyAdmin, FCGI, suExec, Pear, and mcrypt
----------------------------------------------------------------
+# Install Apache, PHP, phpMyAdmin, FCGI, suExec, Pear, and mcrypt
 
 The following command will install the Apache web server and some other applications and their dependencies. If you have already installed the LAMP stack, you will not need to install Apache again. However, you will need the other packages for other aspects of the ISPConfig installation.
 
@@ -75,8 +71,7 @@ Make sure Apache starts on boot:
 
     /sbin/chkconfig --levels 235 httpd on
 
-Install Vlogger and Webalizer
------------------------------
+# Install Vlogger and Webalizer
 
 Vlogger is a tool that logs information regarding Apache. Webalizer can then be used to analyze these logs and generate statistics. This step is completely optional, but you may find these tools useful for seeing website traffic.
 
@@ -90,8 +85,7 @@ Vlogger is a tool that logs information regarding Apache. Webalizer can then be 
 
 More information on Webalizer can be found in our [Webalizer documentation](/docs/web-applications/analytics/webalizer/).
 
-Install fail2ban
-----------------
+# Install fail2ban
 
 Installing fail2ban is entirely optional, however ISPConfig can manage this service and show you the log output from it:
 
@@ -99,8 +93,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
 More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-for-security).
 
-Installing ISPConfig
---------------------
+# Installing ISPConfig
 
 You are now ready to extract and install ISPConfig. To do this, issue the following commands:
 
@@ -123,8 +116,7 @@ Once it has completed, you may login to the control panel. By default, ISPConfig
 
 Congratulations! You now have ISPConfig installed on your Fedora 13 Linode. You are highly encouraged to see the links in the "More Information" section to help you install extra applications that may help you manage your system better.
 
-Monitor for Software Updates and Security Notices
--------------------------------------------------
+# Monitor for Software Updates and Security Notices
 
 When running software compiled or installed directly from sources provided by upstream developers, you are responsible for monitoring updates, bug fixes, and security issues. After becoming aware of releases and potential issues, update your software to resolve flaws and prevent possible system compromise. Monitoring releases and maintaining up to date versions of all software is crucial for the security and integrity of a system.
 
@@ -135,8 +127,7 @@ Please monitor the ISPConfig Newsletter and project forums to ensure that you ar
 
 When upstream sources offer new releases, repeat the instructions for installing the ISPConfig software as needed. These practices are crucial for the ongoing security and functioning of your system.
 
-More Information
-----------------
+# More Information
 
 You may wish to consult the following resources for additional information on this topic. While these are provided in the hope that they will be useful, please note that we cannot vouch for the accuracy or timeliness of externally hosted materials.
 

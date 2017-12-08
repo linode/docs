@@ -2,14 +2,14 @@
 author:
   name: Nick Brewer
   email: docs@linode.com
-published: 'Thursday, March 2nd, 2017'
+published: 2017-03-02
 description: 'Install a Custom Distribution or Linux Appliance on your KVM Linode.'
-keywords: 'custom distro,custom distribution,advanced Linux,kvm'
+keywords: ["custom distro", "custom distribution", "advanced Linux", "kvm"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
+aliases: ['tools-reference/custom-kernels-distros/running-a-custom-linux-distro-on-a-linode-vps/','tools-reference/custom-kernels-distros/custom-distro-on-kvm-linode/']
 modified_by:
   name: Linode
-modified: 'Monday, June 26th, 2017'
+modified: 2017-06-26
 title: Install a Custom Distribution on a Linode
 ---
 
@@ -25,8 +25,9 @@ For the sake of organization, it has been split into two main sections:
 
 This guide will use Debian 8 (Jessie) as an example, but the steps provided are generic in nature and should work with most distributions.
 
-{: .note}
->This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
+{{< note >}}
+This guide entails installing a custom Linux distribution on your KVM Linode. If you're currently running a Xen Linode, you can [upgrade to KVM](/docs/platform/kvm-reference/#how-to-enable-kvm), or follow our older guide on [Running a Custom Linux Distribution on a Xen Linode](/docs/tools-reference/custom-kernels-distros/install-a-custom-distribution-on-a-xen-linode).
+{{< /note >}}
 
 ## Advantages of KVM on Linode
 
@@ -49,8 +50,9 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
     * A disk labeled **Installer**. The size of this disk will depend upon the size of your distribution's installer, but it's recommended to make it slightly larger than the space taken up by the install media itself. For this example, the installer disk will be 100MB in size, giving us plenty of room for the Debian network installer.
     * A disk labelled **Boot**. If you *don't* plan to complete the next section on Linode Manager compatibility, this can take up the rest of the free space available on your Linode.
 
-    {: .caution}
-    >**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
+    {{< caution >}}
+**Important**: If you intend to continue to the next section on [Linode Manager Compatibility](#linode-manager-compatibility), you should make your boot disk no larger than necessary - in this example we'll install Debian to a 2000MB disk.
+{{< /caution >}}
 
 2.  [Create two configuration profiles](/docs/platform/disk-images/disk-images-and-configuration-profiles/#configuration-profiles) and disable the options under **Filesystem / Boot Helpers** for each of them, as well as the [Lassie](/docs/uptime/monitoring-and-maintaining-your-server#configuring-shutdown-watchdog) shutdown watchdog under the **Settings** menu. Both profiles will use the **Direct Disk** option from the **Kernel** dropdown menu:
 
@@ -75,23 +77,26 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 2.  Once in Rescue Mode, download your installation media and copy it to your *Installer* disk. In this example we're using the Debian network installer, but you can replace the URL in the first command with the location of the image you want to install:
 
-    {: .note}
-    > As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
+    {{< note >}}
+As an additional security step, you can use the keys provided in the same directory as the `iso` to [verify the authenticity](https://www.debian.org/CD/verify) of the image.
+{{< /note >}}
 
         wget http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso
         dd if=mini.iso of=/dev/sda
 
-    {: .note}
-    > If you would prefer to write the installer directly to the disk as it downloads, use:
-    >
-    >     curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+    {{< note >}}
+If you would prefer to write the installer directly to the disk as it downloads, use:
+
+curl http://ftp.debian.org/debian/dists/stable/main/installer-amd64/current/images/netboot/mini.iso | dd of=/dev/sda
+{{< /note >}}
 
 3.  Reboot into your *Installer* configuration profile, and open the [Glish](/docs/networking/use-the-graphic-shell-glish) graphical console from the **Remote Access** tab in your Linode's Dashboard. You'll see your distribution's installer, and you can begin the install process.
 
 4.  During your installer's partitioning/installation phase, be sure to instruct it to use the `/dev/sda` volume. Most installers will create separate root and swap partitions, but you can adjust this as needed.
 
-    {: .note}
-    > Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide for Linode Manager compatibility, it's important that your `/boot` directory is located on the same partition as your root filesystem.
+    {{< note >}}
+Some installers offer an option to place `/boot` on a separate partition. If you intend to make use of the steps in the [second part](#linode-manager-compatibility) of this guide for Linode Manager compatibility, it's important that your `/boot` directory is located on the same partition as your root filesystem.
+{{< /note >}}
 
 5.  Once the installation completes, reboot into your *Boot* profile and open the Glish console. You will have access to a login prompt:
 
@@ -101,15 +106,15 @@ In this section you'll install your custom distro onto a raw disk, with the *dir
 
 At this point you can connect to your Linode via SSH or the Glish graphical console, however you will not be able to connect to your Linode using the Lish serial console. To fix this, update the following settings in your `/etc/default/grub` file:
 
-{:.file-excerpt }
-/etc/default/grub
-: ~~~
-    GRUB_TIMEOUT=10
-    GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
-    GRUB_TERMINAL=serial
-    GRUB_DISABLE_LINUX_UUID=true
-    GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
-  ~~~
+{{< file-excerpt "/etc/default/grub" >}}
+GRUB_TIMEOUT=10
+GRUB_CMDLINE_LINUX="console=ttyS0,19200n8"
+GRUB_TERMINAL=serial
+GRUB_DISABLE_LINUX_UUID=true
+GRUB_SERIAL_COMMAND="serial --speed=19200 --unit=0 --word=8 --parity=no --stop=1"
+
+{{< /file-excerpt >}}
+
 
 Once you've finished editing `grub`, issue the appropriate command to apply your changes to your Grub configuration:
 
@@ -125,8 +130,9 @@ Once you've finished editing `grub`, issue the appropriate command to apply your
 
         grub-mkconfig -o /boot/grub/grub.cfg
 
-{: .note}
-> If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Boot* configuration profile.
+{{< note >}}
+If you're still not able to access your Linode via Lish after updating your GRUB configuration, a reboot may be required. If this is the case, make sure you're rebooting into your *Boot* configuration profile.
+{{< /note >}}
 
 ## Linode Manager Compatibility
 

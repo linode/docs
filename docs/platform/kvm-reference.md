@@ -3,13 +3,13 @@ author:
   name: Josh Sager
   email: docs@linode.com
 description: KVM Reference explains the differences when going from Xen to KVM virtualization.
-keywords: 'kvm,kvm reference,virtual machine mode,kvm linode,xen'
-alias: ['platform/kvm/']
+keywords: ["kvm", "kvm reference", "virtual machine mode", "kvm linode", "xen"]
+aliases: ['platform/kvm/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Wednesday, September 14th, 2016
+modified: 2016-09-14
 modified_by:
   name: Alex Fornuto
-published: 'Monday, June 15, 2015'
+published: 2015-06-15
 title: 'KVM Reference'
 ---
 
@@ -40,15 +40,15 @@ On KVM Linodes, the console device moves from *hvc0* in Xen to *ttyS0* .
 
 Virtual machine mode determines whether devices inside your virtual machine are *paravirtualized* or *fully virtualized*. The differences are listed below:
 
-{: .table .table-striped .table-bordered}
 |         | Paravirtualization  | Full-virtualization   |
 |---------|:--------------------|:----------------------|
 | Block   | Virtio SCSI         | IDE                   |
 | Net     | Virtio Net          | e1000                 |
 | Serial  | ttyS0               | ttyS0                 |
 
-{: .note }
-> If you're unfamiliar with these distinctions, choose paravirtualization
+{{< note >}}
+If you're unfamiliar with these distinctions, choose paravirtualization
+{{< /note >}}
 
 ### Custom Kernel Configuration
 
@@ -113,8 +113,9 @@ This means your Kernel doesn't have the necessary `virtio` drivers. To resolve:
 
 3.  Edit your Linode's configuration profile back to the previous setting.
 
-{: .note }
-> Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+{{< note >}}
+Remember to check [Glish](/docs/networking/use-the-graphic-shell-glish) as well as Lish while testing. Without the grub terminal set to serial, your startup output may only appear on the Glish output.
+{{< /note >}}
 
 ### CentOS 6
 

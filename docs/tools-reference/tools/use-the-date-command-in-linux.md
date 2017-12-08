@@ -3,13 +3,13 @@ author:
   name: Christopher S. Aker
   email: caker@linode.com
 description: 'This tutorial will teach you how to generate and manipulate dates using the Linux date command including examples and help with formatting.'
-keywords: 'date,time,linux commands,shell,timey wimey'
+keywords: ["date", "time", "linux commands", "shell", "timey wimey"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-alias: ['linux-tools/common-commands/date/','tools-reference/tools/linux-date-command/']
-modified: Monday, August 21st, 2017
+aliases: ['linux-tools/common-commands/date/','tools-reference/tools/linux-date-command/']
+modified: 2017-08-21
 modified_by:
   name: Linode
-published: 'Monday, August 23rd, 2010'
+published: 2010-08-23
 title: How to Use the Date Command in Linux
 ---
 
@@ -42,7 +42,6 @@ Run `date --help` to display a list of formatting options.
 
 Here's a small sample of the formatting tokens `date` supports:
 
-{: .table .table-striped}
 | Token | Output |
 | ------| ------------|
 | %a    | locale's abbreviated weekday name (e.g., Sun) |
