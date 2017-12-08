@@ -2,23 +2,23 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'This guide shows you how to install and configure Icinga2 and Icinga Web 2 on Debian 9 to monitor your Linode services and performance.'
-og_description: "Icinga is a fork of Nagios that can be used to monitor Linode services and alert administrators when an issue is encountered. Use this guide to install Icinga on your Debian 9 Linode."
+description: "This guide shows you how to install and configure Icinga2 and Icinga Web 2 on Debian 9 to monitor your Linode services and performance."
 keywords: ["debian", "icinga", "monitoring", "icinga2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+published: 2017-12-12
 modified: 2017-12-12
 modified_by:
   name: Linode
-published: 2017-12-12
-title: 'Install Icinga2 in Debian 9.2'
+title: 'Install Icinga2 Monitoring on Debian 9'
+expiryDate: 2019-12-12
 contributor:
   name: Matt Vass
-  link: linuxboxgo@gmail.com
+  link: mailto:linuxboxgo@gmail.com
 external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 ---
 
-## What is Icinga
+## What is Icinga2
 
 Icinga, previously a fork of the popular Nagios monitoring system, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts in a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file share service, or others.
 
@@ -44,7 +44,7 @@ This guide shows how to install and configure the latest version Icinga2 web mon
 
 To increase the load speed of your application via OPCache plugin available in PHP7, append the following OPCache settings at the bottom of the PHP configuration:
 
-{{< file-excerpt "php.ini" conf>
+{{< file-excerpt "php.ini" conf >}}
 opcache.enable=1 
 opcache.enable_cli=1 
 opcache.interned_strings_buffer=8 
