@@ -6,6 +6,7 @@ description: 'Using Nginx as a reverse proxy'
 keywords: 'nginx,proxy,reverse proxy'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: ''
+modified: ''
 title: 'Nginx reverse proxy'
 contributor:
   name: Mouhsen Ibrahim
