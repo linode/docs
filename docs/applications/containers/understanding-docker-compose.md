@@ -6,21 +6,42 @@ description: 'This tutorial will guide you through setup and configuration of a 
 keywords: ["shoutcast", " internet radio", " streaming media", " streaming audio"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['communications/media-servers/shoutcast/','applications/media-servers/shoutcast/']
-modified: 2017-11-16
+modified: 2017-12-12
 modified_by:
   name: Linode
 published: 2017-11-15
 title: Understanding Docker Compose
 ---
 
-# Understanding Docker Compse
+## What is Docker Compose?
 
-This guide will walk you through Docker Compose. Docker Compose is a tool that utilizes a `docker-compose.yaml` file and builds multi-container projects on the fly. The same rules apply for writing a `docker-compose.yaml` file, and writing a Dockerfile. The structure of a `docker-compose` is simple and readable. Here is an example Docker Compose file taken from the [Docker official documentation](https://docs.docker.com/compose/wordpress/#build-the-project):
+If your Docker application includes more than one container (for example, a webserver and database running in separate containers for greater modularity and flexibility), building, running, and connecting the containers from separate Dockerfiles is cumbersome and time-consuming. Docker Compose solves this problem by allowing you to use a YAML file to define multi-container apps.[<sup>1</sup>](https://docs.docker.com/compose/overview/) You can configure as many containers as you want, how they should be built and connected, and where data should be stored. When the YAML file is complete, you can run a single command to build, run, and configure all of the containers.
+
+This guide will explain how the `docker-compose.yml` file is organized, and show how to use it to create several basic app configurations.
+
+{{< note >}}
+Generally the containers in an application built using Docker Compose will all run on the same host. Managing containers running on different hosts usually requires an additional tool, such as [Docker Swarm](https://docs.docker.com/engine/swarm/) or [Kubernetes](https://kubernetes.io/).
+{{< /note >}}
+## Before You Begin
+
+### Install Docker CE
+
+You will need a Linode with Docker CE installed to follow along with the steps in this guide.
+
+{{< section file="/shortguides/docker/install_docker_ce.md" >}}
+
+### Install Docker Compose
+
+{{< section file="/shortguides/docker/install_docker_compose.md" >}}
+
+## Basic Usage
+
+This section will review an example Docker Compose file taken from the [Docker official documentation](https://docs.docker.com/compose/wordpress/#build-the-project).
+
+1.  Open `docker-compose.yml` in a text editor and add the following content:
 
 
-
-
-  {{< file-excerpt "Docker Compose" yaml >}}
+    {{< file-excerpt "docker-compose.yml" yaml >}}
 version: '3'
 
 services:
@@ -49,95 +70,59 @@ services:
 volumes:
     db_data:
 
-{{< /file-excerpt >}} 
+{{< /file-excerpt >}}
 
-If you copy that file onto your Linode, and run `docker-compose up -d`, Docker will start a Wordpress container and a MySQL container, navigating to `localhost:3306` will take you directly to your newly installed Wordpress application, just like that. However, running those commands, and copying the `Docker-compose.yml` file alone, will not give you the tools neccesary to modify, or write you rown Docker Compose files. A Docker Compose file is a yaml file that contains specific directives of indvidual [Dockerfiles](https://github.com/dockerfile). You can break the official documentation docs, down into pieces to understand them better:
+2.  Save the file and run Docker Compose from the same directory:
 
+        docker-compose up -d
 
+    This will build and run the `db` and `wordpress` containers. Just as when running a single container with `docker run`, the `-d` flag starts the containers in detached mode.
 
+3.  You now have a Wordpress container and MySQL container running on your host. Navigate to `192.0.8.1:8000/wordpress` in a web browser to see your newly installed WordPress application. You can also use `docker ps` to further explore the resulting configuration:
+
+        docker ps
+
+4.  Stop and remove the containers:
+
+        docker-compose down
+
+## Compose File Syntax
+
+A `docker-compose.yml` file is organized into four sections:
 
 |Directive    | Use
 |---|---|
-|image  |This directive sets the image or Dockerfile that will be used in the Docker-Compose file  |
-|Services   |In Docker a service is the name for a ["Container in production"](https://docs.docker.com/get-started/part3/#introduction), this line defines the containers that will be started as a part of the Docker Compose instance   |
-|db:   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
+|version  | Specifies the Compose file syntax version. This guide will use version 3 throughout.  |
+|services   |In Docker a service is the name for a ["Container in production"](https://docs.docker.com/get-started/part3/#introduction). This section defines the containers that will be started as a part of the Docker Compose instance.   |
+|networks   | This section is used to configure networking for your application. You can change the settings of the default network, connect to an external network, or define app-specific networks.     |
+|volumes  | Mounts a linked path on the host machine that can be used by the container. |
+
+Most of this guide will focus on setting up containers using the `services` section. Here are some of the common directives used to set up and configure containers:
+
+[Dockerfiles](https://github.com/dockerfile).
+
+|Directive    | Use
+|---|---|
+|image  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
+|build   | This directive can be used instead of `image`. Specifies the location of the Dockerfile that will be used to build this container.    |
+|db   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
 |restart   |This directive tells the container to restart if the system restarts.    |
 |volumes  |Mounts a linked path on the host machine that can be used by the container |
-|Environment      |These are command line variables, or arguments, passed into the Docker run command.      | 
+|environment      |Define environment variables to be passed in to the Docker run command.      |
 |depends_on| Sets a service as a dependency for the current block-defined container |
-|port   |This directive maps a port from the container to the host in the following manner: `host:container`   | 
+|port   |This directive maps a port from the container to the host in the following manner: `host:container`   |
+|links   | Link this service to any other services in the Docker Compose file by specifying their names here.  |
+
+Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
 
+## Build an Application from Scratch
 
-### Deconstructing the Docker-Compose file
+This section will create a `docker-compose.yml` file one section at a time to illustrate the steps of building a multi-container application.
 
-We can begin writing Docker-Compose files, one directive at a time: 
+### Define a Simple Service:
 
-  {{< file-excerpt "New Docker-Compse" yaml >}}
-version: '3'
-services:
-   db:
-     image: mariadb:10.3
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-     environment:
-       MYSQL_ROOT_PASSWORD: somewordpress
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpress
-       MYSQL_PASSWORD: wordpress
-volumes:
-    db_data:⏎
-
-{{< /file-excerpt >}}
-
-In this example Docker-Compose file, replacing MySQL with MariaDB in the `image` directive and running `docker-compose up -d` will start a MariaDB container, with the default root and database users, and their passwords set to the directives in the Dockerfile.
-
-
-
-
-
-
-### Handling Private Environment Variables
-
-Throughout this guide there we have been placing passwords and user variables within the `environment` directive. This can be problematic. If you share your Docker-compose file, whoever has access to it can see where your database is, and what the root and database passwords are. A solution to this involves using a `.env` file, and keeping it safely away from your Docker-Compose file. You can tehn call the `.env` file, from within the Docker-Compose file, and the variables declared in the `.env` file, will be read when Docker builds the containers. 
-
-1. Create a `.env` file within the same directory as the `Docker-compose.yml` file, and populate it with the relevant information:
-
-  {{< file-excerpt ".env" yaml >}}
-
-MYSQL_ROOT_PASSWORD: 1somewordpress
-MYSQL_DATABASE: wordpress
-MYSQL_USER: wordpress
-MYSQL_PASSWORD: wordpress
-
-{{< /file-excerpt >}}
-
-2. Inisde of your Docker-Compose file, add the following directive:
-
-  {{< file-excerpt "Docker-compose.yml" yaml >}}
-
-version: '3'
-
-services:
-   db:
-     image: mariadb:10.3
-     volumes:
-       - db_data:/var/lib/mysql
-     restart: always
-
-     env_file:
-       - .env
-volumes:
-    db_data:⏎
-{{< /file-excerpt >}}
-
-3. Run `docker-compose up -d ` to start the containers.
-
-
-### Writing a Docker-Compose.yml file from scratch
-
-1. Define your services:
+1.  Create a new `docker-compose.yml` in a text editor and add the following content:
 
     {{< file "docker-compose.yml" yaml >}}
 version: '3'
@@ -146,31 +131,39 @@ services:
   distro:
     image: alpine
     restart: always
+    container_name: Alpine_Distro
+    entrypoint: tail -f /dev/null
 {{< /file >}}
 
-Now, run `docker-compose up -d`, in the directory you created the file in. This first `docker-compose.yml` entry simply creates one container with Alpine Linux. 
+  Each entry in the `services` section will create a separate container when `docker-compose` is run. At this point, the section contains a single container based on the official Alpine distribution. The `restart` directive is used to indicate that the container should always restart (after a crash or system reboot, for example). The `container_name` directive is used to override the randomly generated container name and replace it with a name that is easier to remember and work with. Finally, the default `entrypoint` is overridden to keep the container running (Docker containers exit by default if no process is running on them. `tail -f` is an ongoing process, so it will run indefinitely and prevent the container from stopping).
 
-2. Check the status of your container:
+2.  Bring up your container:
 
-        docker -ps
+        docker-compose up -d
 
-The `docker -ps` command will have a similar output to this:
+3. Check the status of your container:
 
-    {{< output >}}
-CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                         PORTS               NAMES
-f5e8d0301b08        alpine              "/bin/sh"           14 seconds ago      Restarting (0) 2 seconds ago                       directory_distro_1
+        docker ps
+
+  The output should resemble the following:
+
+        {{< output >}}
+CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS               NAMES
+967013c36a27        alpine              "tail -f /dev/null"   3 seconds ago       Up 2 seconds                            Alpine_Distro
 {{</ output >}}
 
 
-3. Bring down your container:
+4. Bring down the container:
 
         docker-compose down
 
-#### Adding Services to Docker Compose
+### Add Additional Services
 
-With Docker-Compose you can begin to build an eco-system of containers. You can define how they work together and communicate. 
+From here you can begin to build an ecosystem of containers. You can define how they work together and communicate.
 
-{{< file "docker-compose.yml" yaml >}}
+1.  Reopen `docker-compos.yml` and add the `database` service below:
+
+    {{< file "docker-compose.yml" yaml >}}
 version: '3'
 
 services:
@@ -178,7 +171,7 @@ services:
     image: alpine
     container_name: Alpine_Distro
     restart: always
-    command: echo "Hello World"
+    entrypoint: tail -f /dev/null
 
   database:
     image: postgres:latest
@@ -189,38 +182,41 @@ services:
       - "5432:5432"
 {{</ file >}}
 
-In the `docker-compose.yml` file there are two services defined:
+    There are now two services defined:
 
-* Distro
-* Database 
- 
-The Distro service, is the same as before, however, it now uses `container_name`, and `command: echo "Hello World"`, to name the container, and run a "Hello World". The Database server contains the instructions for a postgres container, and the directives: `volumes: - ../dumps:/tmp` and `ports:-"5432:5432"`, the first directive maps the containerd `/dumps` folder to our local `/tmp` folder. The second directive maps the containers ports to the local host's ports. Mapping the ports allows the local host to serve something on port 80, to something on a mapped port locally. 
+    * Distro
+    * Database
 
-Running `docker-compose down`, shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint...", under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches once the container starts. 
+    The Distro service is the same as before. The Database server contains the instructions for a postgres container, and the directives: `volumes: - ../dumps:/tmp` and `ports:-"5432:5432"`, the first directive maps the containerd `/dumps` folder to our local `/tmp` folder. The second directive maps the containers ports to the local host's ports.
+
+2.  Check the running containers:
+
+        docker ps
+
+     This command shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint...", under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches when the container starts.
 
 
-{{< output >}}
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                        PORTS                    NAMES
-d002ceb57126        postgres:latest     "docker-entrypoint..."   9 seconds ago       Up 7 seconds                  0.0.0.0:5432->5432/tcp   postgres_db
-c9bcd8760853        alpine              "echo 'Hello World'"     9 seconds ago       Up 7 seconds                                           Alpine_Distro
-
+        {{< output >}}
+CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
+ecc37246f6ef        postgres:latest     "docker-entrypoint..."   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp   postgres_db
+35dab3e712d6        alpine              "tail -f /dev/null"      About a minute ago   Up About a minute                            Alpine_Distro
 {{</ output >}}
 
-Now running `docker-compose down` will bring down both containers. 
+3. Run `docker-compose down` to bring down both containers.
 
-#### Adding an Nginx Service
+### Add an Nginx Service
 
-Now adding the Nginx Container so that your Docker-Compose file will be ready to serve websites:
+1.  Add an nginx container so that your application will be able to serve websites:
 
-
-{{< file "docker-compose.yml" yaml >}}
+    {{< file "docker-compose.yml" yaml >}}
+version: '3'
 
 services:
   distro:
     image: alpine
     container_name: Alpine_Distro
     restart: always
-    command: echo "Hello World"
+    entrypoint: tail -f /dev/null
 
   database:
     image: postgres:latest
@@ -231,6 +227,7 @@ services:
       - "5432:5432"
   web:
     image: nginx:latest
+    container_name: nginx
     volumes:
       - ./mysite.template:/etc/nginx/conf.d/mysite.template
     ports:
@@ -239,60 +236,80 @@ services:
       - NGINX_HOST=example.com
       - NGINX_port=80
     links:
-      - database
+      - database:db
       - distro
-    
+
 {{</ file >}}
 
-This docker-compose file, contains some new directives: *environment* and *links*--the first directive sets runtime level options within the container. **Links**, creates a dependency network between the containers. Each container depends on the other to execute. While you do not need the `links` directive for the containers to talk with each other, `links` can serve as a failsafe when starting the docker-compose application. 
+    This docker-compose file contains some new directives: *environment* and *links*--the first directive sets runtime level options within the container. **Links** creates a dependency network between the containers. The nginx container depends on the other two to execute. In addition, the corresponding containers will be reachable at a hostname indicated by the alias. In this case, pinging `db` from the `web` container will reach the `database` service. While you do not need the `links` directive for the containers to talk with each other, `links` can serve as a failsafe when starting the docker-compose application.
 
 
-Now if you run, `docker-compose up`, without the `-d` flag, your command line will be flooded with the Alpine container running Hello World, and restarting itself. A quick `ctrl +C` and you will be dropped out of that screen. Running `docker -ps` will show you the status of the containers:
+2. Start Docker Compose and check the container status:
 
-{{< output >}}
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                          PORTS                    NAMES
-aac9109b4071        nginx:latest        "nginx -g 'daemon ..."   11 minutes ago      Up 11 minutes                   0.0.0.0:8080->80/tcp     Nginx-server
-3d80edb20ae2        postgres:latest     "docker-entrypoint..."   11 minutes ago      Up 11 minutes                   0.0.0.0:5432->5432/tcp   postgres_db
-dc5ce239aaff        alpine              "echo 'Hello World'"     11 minutes ago      Restarting (0) 53 seconds ago                            Alpine_Distro
-{{</ output >}}
+        docker-compose up -d
+        docker ps
 
-You can also test the Nginx Container, using `curl`:
+      The output should be similar to below:
 
+        {{< output >}}
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+55d573674e49        nginx:latest        "nginx -g 'daemon ..."   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp     nginx
+ad9e48b2b82a        alpine              "tail -f /dev/null"      3 minutes ago       Up 3 minutes                                 Alpine_Distro
+736cf2f2239e        postgres:latest     "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:5432->5432/tcp   postgres_db
+{{< /output >}}
 
-    curl -L localhost:8080
-    
-This will return the Nginx default welcome page:
+5.  Test nginx by navigating to your port 8080 on Linode's public IP address in a browser (for example `192.0.2.0:8080`). You should see the default nginx landing page displayed.
 
+### Persistent Data Storage
 
-{{</ file-excerpt html >}}
+Storing PostgreSQL data directly inside a container is not recommended. Docker containers are intended to be treated as ephemeral; your application's containers are built from scratch when running `docker-compose up` and destroyed when running `docker-compose down`. In addition, any unexpected crash or restart on your system will cause any data stored in a container to be lost.
 
-<!DOCTYPE html>
-<html>
-<head>
-<title>Welcome to nginx!</title>
-<style>
-    body {
-        width: 35em;
-        margin: 0 auto;
-        font-family: Tahoma, Verdana, Arial, sans-serif;
-    }
-</style>
-</head>
-<body>
-<h1>Welcome to nginx!</h1>
-<p>If you see this page, the nginx web server is successfully installed and
-working. Further configuration is required.</p>
+For these reasons it is important to set up a persistent volume on the host that the database containers will use to store their data.
 
-<p>For online documentation and support please refer to
-<a href="http://nginx.org/">nginx.org</a>.<br/>
-Commercial support is available at
-<a href="http://nginx.com/">nginx.com</a>.</p>
+1.  Add a `volumes` section to `docker-compose.yml` and edit the `database` service to refer to the volume:
 
-<p><em>Thank you for using nginx.</em></p>
-</body>
-</html>
+    {{< file "docker-compose.yml" yaml >}}
+version: '3'
 
-{{</ file-excerpt >}}
+services:
+  distro:
+    image: alpine
+    container_name: Alpine_Distro
+    restart: always
+    entrypoint: tail -f /dev/null
+
+  database:
+    image: postgres:latest
+    container_name: postgres_db
+    volumes:
+      - data:/var/lib/postgresql
+    ports:
+      - "5432:5432"
+  web:
+    image: nginx:latest
+    container_name: nginx
+    volumes:
+      - ./mysite.template:/etc/nginx/conf.d/mysite.template
+    ports:
+      - "8080:80"
+    environment:
+      - NGINX_HOST=example.com
+      - NGINX_port=80
+    links:
+      - database:db
+      - distro
+volumes:
+  data:
+    external: true
+{{< /file >}}
+
+2.  The `external: true` tells Docker Compose to use a pre-existing external data volume. If no volume named `data` is present, starting the application will cause an error. Create the volume:
+
+        docker volume create --name=data
+
+3.  Start the application as before:
+
+        docker-compose up -d
 
 ## Next Steps
-In conclusion, Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app, or a development environment, can utilize Docker-compose, the result is a modular and configurable environment that can be deployed anywhere. 
+In conclusion, Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app or a development environment can utilize Docker-compose. The result is a modular and configurable environment that can be deployed anywhere.
