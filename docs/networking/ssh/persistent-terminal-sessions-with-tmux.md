@@ -49,7 +49,7 @@ Install tmux with your distribution's package manager:
 
     This will return you to the basic terminal.
 
-3.  Once a session has been started, it will continue to run as long as the Linode is running, or until you stop the session. You can log out of your current session, and reattach to the previous session. 
+3.  Once a session has been started, it will continue to run as long as the Linode is running, or until you stop the session. You can log out of your current session, and reattach to the previous session.
 
         tmux attach
 
