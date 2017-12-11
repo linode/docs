@@ -168,7 +168,7 @@ You can use the Linode Manager to add additional public IP addresses to your acc
 
 ## Console Access
 
-The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/troubleshooting/using-lish-the-linode-shell).
+The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/networking/using-the-linode-shell-lish/).
 
 ### Using the Lish Console
 

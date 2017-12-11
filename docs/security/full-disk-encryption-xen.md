@@ -60,7 +60,7 @@ Congratulations! You're now ready to set up full disk encryption on your Linode.
 Now you're ready to enable full disk encryption on your Linode running Debian 7 (Wheezy). Here's how to do it:
 
 1.  [Reboot into Finnix](/docs/troubleshooting/rescue-and-rebuild/#booting-into-rescue-mode) from the **Rescue** tab in the Linode Manager.
-2.  [Connect to LISH](/docs/using-lish-the-linode-shell), which will allow you to access the Linode's virtual console.
+2.  [Connect to LISH](/docs/networking/using-the-linode-shell-lish/), which will allow you to access the Linode's virtual console.
 3.  Enter the following command to create an encrypted volume. You'll be prompted for a passphrase. Make sure that you enter a very strong passphrase, and that you store the passphrase in a physically secure location. Or better yet, memorize the passphrase and don't store it anywhere! :
 
         cryptsetup luksFormat /dev/xvdc
