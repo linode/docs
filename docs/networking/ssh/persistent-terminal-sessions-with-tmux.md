@@ -2,14 +2,15 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'Keep processes running even if your SSH connection drops. Examples on how to manage tmux sessions, windows and panes'
+description: 'Keep processes running even if your SSH connection drops. Examples on managing tmux sessions, windows and panes'
+og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window"
 keywords: 'tmux, terminal, multiplexer, attach, detach, panes, sessions'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-06
 modified: 2017-12-06
 modified_by:
   name: Linode
-title: 'How to Use tmux, a Terminal Multiplexer'
+title: 'How to Use tmux the Terminal Multiplexer'
 contributor:
   name: Alexandru Andrei
 external_resources:
@@ -19,11 +20,10 @@ external_resources:
 
 ## What is tmux?
 
-In an ordinary SSH session, you work within a single terminal window. When that window is closed or the session is exited, all of the processes that may have been running in that session are stopped. This means that if you disconnect from your server for any reason, when you reconnect you will have to start over with a new session.
 
-Tmux, on the other hand, is a **terminal multiplexer**. It creates a tmux **server** on your Linode and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode (after rebooting your computer or losing your Internet connection, for example), you can reattach to the tmux session and find all of the files you were working with still open, and the processes you had running are still active.
+Tmux, is a **terminal multiplexer**. Tmux creates a host **server** on your Linode, and connects to it with a client window. When the client is disconnected, the server keeps running. When you reconnect to your Linode after rebooting your computer or losing your Internet connection, you can reattach to the tmux session and find the files you were working with still open, and the processes you had running are still active.
 
-tmux is also often used as a container for processes that should always be on. For example you might run a game server this way or an IRC client.
+tmux is also often used as a container for processes that should always be on. For example you might run a game server or an IRC client with tmux.
 
 ## Install tmux
 
@@ -39,7 +39,7 @@ Install tmux with your distribution's package manager:
 
         tmux
 
-    Your terminal window should have a green menu bar at the bottom, similar to below:
+    Your terminal window should have a green menu bar at the bottom, similar to the one below:
 
     ![Tmux menu](/docs/assets/tmux/tmux_menu.png)
 
@@ -49,49 +49,49 @@ Install tmux with your distribution's package manager:
 
     This will return you to the basic terminal.
 
-3.  Once a session has been started, it will continue to run for as long as your Linode is running (or until you stop the session). You can log out of and then back into your SSH session and re-attach to the running session:
+3.  Once a session has been started, it will continue to run as long as the Linode is running, or until you stop the session. You can log out of your current session, and reattach to the previous session. 
 
         tmux attach
 
 ## tmux Commands
 
-There are three basic ways to send commands to tmux:
+There are three ways to issue commands to tmux:
 
-  * **shortcuts**: tmux uses what is called a *prefix key*, which is **CTRL+b** by default. tmux will interpret the  keystroke following the prefix as a tmux shortcut. For example, to detach from your session using a shortcut: press **CTRL+b**, release both keys and then press **d**.
-  * **command mode**: Enter command mode by pressing **Prefix** then **:**. This will open a command prompt at the bottom of the screen, which will accept tmux commands.
+  * **shortcuts**: tmux uses what is called a *prefix key*, which is **CTRL+b** by default. tmux will interpret the keystroke following the prefix as a tmux shortcut. For example: to detach from your session using a shortcut: press **CTRL+b**, release both keys and then press **d**.
+  * **command mode**: Enter command mode by pressing **Prefix** then <font size ="6"> **:**</font>. This will open a command prompt at the bottom of the screen, which will accept tmux commands.
   * **command line**: Commands can also be entered directly to the command line within a tmux session. Usually these commands are prefaced by `tmux`. The `tmux attach` command used in the previous section was an example of this type of command.
 
   Most tmux tasks can be accomplished using any of these three methods.
 
 {{< note >}}
-You can change the prefix key by editing your `.tmux.config` file (see below). For the remainder of this guide, **Prefix** will be used to refer to either the default **CTRL+b** or the combination you have chosen in your config file.
+You can change the prefix key by editing the `.tmux.config` file. For the remainder of this guide, **Prefix** will be used to refer to either the default **CTRL+b** or the combination you have chosen in your configuration file.
 {{< /note >}}
 
 ## Manage tmux Windows
 
-When a tmux session is started, a single window is created by default. It is possible to attach multiple windows to the same session and switch between them as needed. This can be helpful when you want to run multiple jobs in parallel.
+When a tmux session starts, a single window is created by default. It is possible to attach multiple windows to the same session and switch between them as needed. This can be helpful when you want to run multiple jobs in parallel.
 
 | Command  |  Result |
 |---|---|
 | **Prefix** + **c**  | Create a new window  |
 | **Prefix** + **p** |  Switch to the previous window |
 | **Prefix** + **n**  |  Switch to the next window |
-| **Prefix** + 0-9  |  Switch to a window by index number |
-| **Prefix** + **w**  | Choose a window from an interactive list  |
+| **Prefix** + **0-9**  |  Switch to a window using it's index number |
+| **Prefix** + **w**  | Choose a window from an interactive list |
 | **exit** |  Close a window |
-| **Prefix** + **&**  | Force kill all processes in an unresponsive window  |
+| **Prefix** + **&**  | Force kill-all processes in an unresponsive window  |
 
-By default, tmux names each window according to the process that spawned it (most commonly bash). To give windows names that are easier to remember and work with, you can rename a window with **Prefix** then **,**.
+By default, tmux names each window according to the process that spawned it (most commonly bash). To give windows names that are easier to remember and work with, you can rename a window with **Prefix** +  <font size ="8">,</font> .
 
 ## Manage tmux Panes
 
-Eash window can be divided into multiple panes. This is useful when you want to have outputs from multiple processes visible in a single window.
+Each window can be divided into multiple panes. This is useful when you want outputs from multiple processes visible within a single window.
 
 | Command  | Result  |
 |---|---|
 | **Prefix** + **"**  |  Split the active pane horizontally |
 | **Prefix** + **%**  | Split the active pane vertically  |
-| **Prefix** + arrow key  | Switch to another pane  |
+| **Prefix** + **arrow key**  | Switch to another pane  |
 | **Prefix** + **ALT+arrow**  | Resize the active pane  |
 | **Prefix** + **z**  | Zoom in on the active pane. Press the same combination again to exit zoom mode  |
 | **exit**  | Close the active pane  |
@@ -99,7 +99,7 @@ Eash window can be divided into multiple panes. This is useful when you want to 
 
 ## Manage tmux Sessions
 
-Sometimes even multiple windows and panes aren't enough and you need to separate these layouts logically by grouping them into separate sessions. Open the command prompt with **Prefix** then **:**, then start a new session:
+Sometimes even multiple windows and panes aren't enough and you need to separate the layouts logically by grouping them into separate sessions. Open the command prompt with **Prefix** then **:**, then start a new session:
 
     new-session
 
@@ -118,7 +118,7 @@ It's also possible to type shorter versions of a command, for example: "new-se".
 
 ## Create a tmux Configuration File
 
-1.  As you get comfortable with tmux, you may wish to change some of the defaults. Using a text editor, create a configuration file in your user's home directory:
+1.  As you get comfortable with tmux, you may want to change some of the defaults. Using a text editor, create a configuration file in your user's home directory:
 
     {{< file "~/.tmux.conf" conf >}}
 # Uncomment the lines with the options you want to activate (by deleting the preceding "#")
@@ -135,10 +135,10 @@ It's also possible to type shorter versions of a command, for example: "new-se".
 set -g status-right "#(cut -d ' ' -f -3 /proc/loadavg) %H:%M %d-%b-%y"
 {{< /file >}}
 
-2.  When you have saved the changes to this file, load the new configuration. Enter tmux command mode by pressing **Prefix** then **:**, then use the following command:
+2.  When you have saved your changes to this file, load the new configuration. Enter the tmux command mode by pressing **Prefix** then **:**, then use the following command:
 
         source-file ~/.tmux.conf
 
-3.  With the mouse option enabled you can use the pointer to interact with tmux panes, windows and status bar. For example you can click on a window name in the status bar to switch to it or you can click and drag a delimiting pane line to resize it.
+3.  With the mouse option enabled you can use the pointer to interact with tmux panes, windows and status bar. For example you can click on a window name in the status bar to switch to it or you can click and drag a pane line to resize it.
 
 4.  Other configuration options are available in the [tmux manual](http://man.openbsd.org/OpenBSD-current/man1/tmux.1).
