@@ -9455,7 +9455,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file dt:before small,
 .file dt:before .small {
@@ -9492,7 +9491,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file-excerpt dt:before small,
 .file-excerpt dt:before .small {
@@ -10404,6 +10402,7 @@ body.modal-open,
   }
 }
 .form-control {
+  padding-top: 8px;
   border: 1px solid #e7e6e6;
   border-radius: 0px;
   -moz-border-radius: 0px;
@@ -20928,6 +20927,7 @@ li.library-article-item:nth-child(odd) {
 }
 .hubspot-container {
   background-color: #ebeff0;
+  width: 80%;
 }
 .hubspot-form .input {
   padding-bottom: 20px;
