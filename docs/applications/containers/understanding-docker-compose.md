@@ -49,7 +49,7 @@ services:
 volumes:
     db_data:
 
-{{< /file-excerpt >}} 
+{{< /file-excerpt >}}
 
 If you copy that file onto your Linode, and run `docker-compose up -d`, Docker will start a Wordpress container and a MySQL container, navigating to `localhost:3306` will take you directly to your newly installed Wordpress application, just like that. However, running those commands, and copying the `Docker-compose.yml` file alone, will not give you the tools neccesary to modify, or write you rown Docker Compose files. A Docker Compose file is a yaml file that contains specific directives of indvidual [Dockerfiles](https://github.com/dockerfile). You can break the official documentation docs, down into pieces to understand them better:
 
@@ -63,15 +63,15 @@ If you copy that file onto your Linode, and run `docker-compose up -d`, Docker w
 |db:   | In the case of the example Dockercompose file, `db` is a variable for the container you are about to define.    |
 |restart   |This directive tells the container to restart if the system restarts.    |
 |volumes  |Mounts a linked path on the host machine that can be used by the container |
-|Environment      |These are command line variables, or arguments, passed into the Docker run command.      | 
+|Environment      |These are command line variables, or arguments, passed into the Docker run command.      |
 |depends_on| Sets a service as a dependency for the current block-defined container |
-|port   |This directive maps a port from the container to the host in the following manner: `host:container`   | 
+|port   |This directive maps a port from the container to the host in the following manner: `host:container`   |
 
 
 
 ### Deconstructing the Docker-Compose file
 
-We can begin writing Docker-Compose files, one directive at a time: 
+We can begin writing Docker-Compose files, one directive at a time:
 
   {{< file-excerpt "New Docker-Compse" yaml >}}
 version: '3'
@@ -100,7 +100,7 @@ In this example Docker-Compose file, replacing MySQL with MariaDB in the `image`
 
 ### Handling Private Environment Variables
 
-Throughout this guide there we have been placing passwords and user variables within the `environment` directive. This can be problematic. If you share your Docker-compose file, whoever has access to it can see where your database is, and what the root and database passwords are. A solution to this involves using a `.env` file, and keeping it safely away from your Docker-Compose file. You can tehn call the `.env` file, from within the Docker-Compose file, and the variables declared in the `.env` file, will be read when Docker builds the containers. 
+Throughout this guide there we have been placing passwords and user variables within the `environment` directive. This can be problematic. If you share your Docker-compose file, whoever has access to it can see where your database is, and what the root and database passwords are. A solution to this involves using a `.env` file, and keeping it safely away from your Docker-Compose file. You can tehn call the `.env` file, from within the Docker-Compose file, and the variables declared in the `.env` file, will be read when Docker builds the containers.
 
 1. Create a `.env` file within the same directory as the `Docker-compose.yml` file, and populate it with the relevant information:
 
@@ -148,7 +148,7 @@ services:
     restart: always
 {{< /file >}}
 
-Now, run `docker-compose up -d`, in the directory you created the file in. This first `docker-compose.yml` entry simply creates one container with Alpine Linux. 
+Now, run `docker-compose up -d`, in the directory you created the file in. This first `docker-compose.yml` entry simply creates one container with Alpine Linux.
 
 2. Check the status of your container:
 
@@ -168,7 +168,7 @@ f5e8d0301b08        alpine              "/bin/sh"           14 seconds ago      
 
 #### Adding Services to Docker Compose
 
-With Docker-Compose you can begin to build an eco-system of containers. You can define how they work together and communicate. 
+With Docker-Compose you can begin to build an eco-system of containers. You can define how they work together and communicate.
 
 {{< file "docker-compose.yml" yaml >}}
 version: '3'
@@ -192,11 +192,11 @@ services:
 In the `docker-compose.yml` file there are two services defined:
 
 * Distro
-* Database 
- 
-The Distro service, is the same as before, however, it now uses `container_name`, and `command: echo "Hello World"`, to name the container, and run a "Hello World". The Database server contains the instructions for a postgres container, and the directives: `volumes: - ../dumps:/tmp` and `ports:-"5432:5432"`, the first directive maps the containerd `/dumps` folder to our local `/tmp` folder. The second directive maps the containers ports to the local host's ports. Mapping the ports allows the local host to serve something on port 80, to something on a mapped port locally. 
+* Database
 
-Running `docker-compose down`, shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint...", under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches once the container starts. 
+The Distro service, is the same as before, however, it now uses `container_name`, and `command: echo "Hello World"`, to name the container, and run a "Hello World". The Database server contains the instructions for a postgres container, and the directives: `volumes: - ../dumps:/tmp` and `ports:-"5432:5432"`, the first directive maps the containerd `/dumps` folder to our local `/tmp` folder. The second directive maps the containers ports to the local host's ports. Mapping the ports allows the local host to serve something on port 80, to something on a mapped port locally.
+
+Running `docker-compose down`, shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint...", under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches once the container starts.
 
 
 {{< output >}}
@@ -206,7 +206,7 @@ c9bcd8760853        alpine              "echo 'Hello World'"     9 seconds ago  
 
 {{</ output >}}
 
-Now running `docker-compose down` will bring down both containers. 
+Now running `docker-compose down` will bring down both containers.
 
 #### Adding an Nginx Service
 
@@ -241,30 +241,28 @@ services:
     links:
       - database
       - distro
-    
+
 {{</ file >}}
 
-This docker-compose file, contains some new directives: *environment* and *links*--the first directive sets runtime level options within the container. **Links**, creates a dependency network between the containers. Each container depends on the other to execute. While you do not need the `links` directive for the containers to talk with each other, `links` can serve as a failsafe when starting the docker-compose application. 
+This docker-compose file, contains some new directives: *environment* and *links*--the first directive sets runtime level options within the container. **Links**, creates a dependency network between the containers. Each container depends on the other to execute. While you do not need the `links` directive for the containers to talk with each other, `links` can serve as a failsafe when starting the docker-compose application.
 
 
 Now if you run, `docker-compose up`, without the `-d` flag, your command line will be flooded with the Alpine container running Hello World, and restarting itself. A quick `ctrl +C` and you will be dropped out of that screen. Running `docker -ps` will show you the status of the containers:
 
-{{< output >}}
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                          PORTS                    NAMES
-aac9109b4071        nginx:latest        "nginx -g 'daemon ..."   11 minutes ago      Up 11 minutes                   0.0.0.0:8080->80/tcp     Nginx-server
-3d80edb20ae2        postgres:latest     "docker-entrypoint..."   11 minutes ago      Up 11 minutes                   0.0.0.0:5432->5432/tcp   postgres_db
-dc5ce239aaff        alpine              "echo 'Hello World'"     11 minutes ago      Restarting (0) 53 seconds ago                            Alpine_Distro
-{{</ output >}}
+        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                          PORTS                    NAMES
+    aac9109b4071        nginx:latest        "nginx -g 'daemon ..."   11 minutes ago      Up 11 minutes                   0.0.0.0:8080->80/tcp     Nginx-server
+    3d80edb20ae2        postgres:latest     "docker-entrypoint..."   11 minutes ago      Up 11 minutes                   0.0.0.0:5432->5432/tcp   postgres_db
+    dc5ce239aaff        alpine              "echo 'Hello World'"     11 minutes ago      Restarting (0) 53 seconds ago                            Alpine_Distro
 
 You can also test the Nginx Container, using `curl`:
 
 
     curl -L localhost:8080
-    
+
 This will return the Nginx default welcome page:
 
 
-{{</ file-excerpt html >}}
+{{< file-excerpt html >}}
 
 <!DOCTYPE html>
 <html>
@@ -295,4 +293,4 @@ Commercial support is available at
 {{</ file-excerpt >}}
 
 ## Next Steps
-In conclusion, Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app, or a development environment, can utilize Docker-compose, the result is a modular and configurable environment that can be deployed anywhere. 
+In conclusion, Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app, or a development environment, can utilize Docker-compose, the result is a modular and configurable environment that can be deployed anywhere.
