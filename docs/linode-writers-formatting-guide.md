@@ -24,7 +24,7 @@ This guide provides templates and guidelines to use when creating or updating a 
 
 Updates, improvements, and bug fixes to Linode documentation are always welcome through [GitHub](https://github.com/linode/docs) via pull requests (PRs) or issues.
 
-We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/docs/contribute).
+We only accept new guides and authors through our guide submission process. To apply, please fill out the form on our [contribute page](/docs/contribute/).
 
 ## General Layout
 
