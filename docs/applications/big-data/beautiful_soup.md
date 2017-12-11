@@ -6,32 +6,22 @@ description: 'This guide shows you how to use Beautiful Soup with a database to 
 og_description: 'This guide shows how to scrape web data using Beautiful Soup. Data is collected over an extended period of time and exported to a spreadsheet.'
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-08
+modified: 2017-12-11
 modified_by:
   name: Jared Kobos
 published: 'Wednesday, October 4, 2017'
 contributor:
   name: Luis Cortés
-title: 'Website Scraping with BeautifulSoup and TinyDB to Excel Spreadsheet'
+title: 'How to Scrape a Website with BeautifulSoup'
 ---
 
 ## What is Beautiful Soup?
 
 [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) is a Python library that parses HTML or XML documents into a tree structure that makes it easy to find and extract data. It is often used for scraping data from websites.
 
-Beautiful Soup features a simple, Pythonic interface and automatic encoding conversion to make it quick easy to work with website data.
+Beautiful Soup features a simple, Pythonic interface and automatic encoding conversion to make it easy to work with website data.
 
-Web pages are structured documents, and Beautiful Soup gives you the tools to walk through that complex structure and extract bits of that information. In this guide, you will write a Python script that will scrape Craigslit for motorcycle prices. The script will be set up to run at regular intervals using a cron job, and the resulting data will be exported to an Excel spreadsheet for trend analysis. You can easily adapt these steps to other websites or search queries by substituting different URLs.
-
-## Before You Begin
-
-1. This guide will use `sudo` wherever possible.
-Complete the sections of our
-[Securing Your Server](/docs/security/securing-your-server)
-to create a standard user account, harden SSH access,
-and remove unnecessary network services.
-
-2. Create a standard user account called normaluser.
+Web pages are structured documents, and Beautiful Soup gives you the tools to walk through that complex structure and extract bits of that information. In this guide, you will write a Python script that will scrape Craigslist for motorcycle prices. The script will be set up to run at regular intervals using a cron job, and the resulting data will be exported to an Excel spreadsheet for trend analysis. You can easily adapt these steps to other websites or search queries by substituting different URLs and adjusting the script accordingly.
 
 ## Install Beautiful Soup
 
@@ -49,7 +39,7 @@ and remove unnecessary network services.
 
         pip install beautifulsoup4
 
-3. Install needed dependencies:
+3. Install dependencies:
 
         pip install tinydb urllib3 xlsxwriter lxml
 
@@ -57,7 +47,7 @@ and remove unnecessary network services.
 
 ### Required Modules
 
-The BeautifulSoup class from bs4 will handle the parsing of the web pages. The datetime module provides for the manipulation of dates. Tinydb provides an API for a NoSQL database and the urllib3 module is used for making http requests. Finally, the xlsxwriter API is used to create an excel spreadsheet.
+The `BeautifulSoup` class from `bs4` will handle the parsing of the web pages. The `datetime` module provides for the manipulation of dates. `Tinydb` provides an API for a NoSQL database and the `urllib3` module is used for making http requests. Finally, the `xlsxwriter` API is used to create an excel spreadsheet.
 
 Open `craigslist.py` in a text editor and add the necessary import statements:
 
@@ -71,49 +61,19 @@ import xlsxwriter
 
 ### Globals
 
-Before the definition of global variables and to disable warning about SSL
-certs not being checked, one needs to add the urllib3.disable_warnings line.
-
-Two global variables are defined. One is the URL that is being used as the
-start page of the craigslist website. The other just tracks how many web
-pages the program traverses seeking the complete data set.
+After the import statements, add global variables and configuration options:
 
 {{< file-excerpt "craigslist.py" python >}}
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 url = 'https://elpaso.craigslist.org/search/mcy?sort=date'
-adding = 0
+total_added = 0
 {{< /file-excerpt >}}
 
-#### Coming up with the Initial URL
-
-1. Start at the home page of craigslist of a interesting city.
-
-        http://elpaso.craigslist.org
-
-2. Click on an item that is data worthy like Motorcycles under "For Sale" category. The url in the address bar of your browser should look something like this:
-
-        https://elpaso.craigslist.org/i/motorcycles
-
-3. Let's say that direct sales are of interest. So click on "BY-OWNER ONLY". The url should update to this:
-
-        https://elpaso.craigslist.org/search/mcy
-
-4. Optional, but nice to have is the data organized by date. So click on the "newest" button, and then click again and the url will change once more to this:
-
-        https://elpaso.craigslist.org/search/mcy?sort=date
-
-5. This is the final form of the url that we will use as our initial webpage for the program. This is what is assigned to the 'url' global variable.
+`url` stores the URL of the webpage to be scraped, and `total_added` will be used to keep track of the total number of results added to the database. The `urllib3.disable_warnings()` function ignores any SSL certificate warnings.
 
 ### Retrieving the webpage
-
-The **make_soup** routine is in charge of using the urllib3
-API to grab the webpage and convert it to a BeautifulSoup
-object. The module urllib does a lot in its library, so if there is an error in this routine
-then urllib probably has a way to handle it, look at these
-[urllib3 docs for help](https://urllib3.readthedocs.io/en/latest/).
-
-Also, BeautifulSoup does have different parsers available which are more or less strict about how the webpage is structured. The 'lxml' parser worked for craigslist.org, but there are more [available according to beautiful soup docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+The `make_soup` function makes a GET request to the target url and converts the resulting HTML into a BeautifulSoup object:
 
 {{< file-excerpt "craigslist.py" python >}}
 def make_soup(url):
@@ -122,20 +82,208 @@ def make_soup(url):
     return BeautifulSoup(r.data,'lxml')
 {{< /file-excerpt >}}
 
+The `urllib3` library has excellent exception-handling; if `make_soup` throws any errors, check the
+[urllib3 docs](https://urllib3.readthedocs.io/en/latest/) for detailed information.
+
+Beautiful Soup has different parsers available which are more or less strict about how the webpage is structured. The 'lxml' parser is sufficient for the example script in this guide, but depending on your needs you may need to check the other options described in the [official docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+
+### Processing the Soup Object
+
+An object of class `BeautifulSoup` is organized in a tree structure. In order to access the data you are interested in, you will have to be familiar with how the data is organized in the original HTML document. Go to the initial website in a browser, right click and select "view page source" to review the structure of the data that you would like to scrape:
+
+{{< file "https://elpaso.craigslist.org/search/mcy?sort=date" html >}}
+<li class="result-row" data-pid="6370204467">
+  <a href="https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html" class="result-image gallery" data-ids="1:01010_8u6vKIPXEsM,1:00y0y_4pg3Rxry2Lj,1:00F0F_2mAXBoBiuTS">
+    <span class="result-price">$12791</span>
+  </a>
+  <p class="result-info">
+    <span class="icon icon-star" role="button">
+    <span class="screen-reader-text">favorite this post</span>
+    </span>
+    <time class="result-date" datetime="2017-11-01 19:38" title="Wed 01 Nov 07:38:13 PM">Nov  1</time>
+    <a href="https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html" data-id="6370204467" class="result-title hdrlnk">Ducati Diavel | Dark</a>
+    <span class="result-meta">
+            <span class="result-price">$12791</span>
+            <span class="result-tags">
+            pic
+            <span class="maptag" data-pid="6370204467">map</span>
+            </span>
+            <span class="banish icon icon-trash" role="button">
+            <span class="screen-reader-text">hide this posting</span>
+            </span>
+    <span class="unbanish icon icon-trash red" role="button" aria-hidden="true"></span>
+    <a href="#" class="restore-link">
+            <span class="restore-narrow-text">restore</span>
+            <span class="restore-wide-text">restore this posting</span>
+    </a>
+    </span>
+  </p>
+</li>
+{{< /file >}}
+
+1.  Select the web page snippets by selecting just the **li** html tags and further narrow down the choices by selecting only those **li** tags that have a class of **result-row**. The **results** variable contains all the web page snippets that match this criteria:
+
+        results = soup.find_all("li", class_="result-row")
+
+2.  Attempt to create a record according to the structure of the target snippet. If the structure doesn't match, then Python will throw an exception which will cause it to skip this record and snippet:
+
+    {{< file-excerpt "craigslist.py" python >}}
+rec = {
+'pid': result['data-pid'],
+'date': result.p.time['datetime'],
+'cost': clean_money(result.a.span.string.strip()),
+'webpage': result.a['href'],
+'pic': clean_pic(result.a['data-ids']),
+'descr': result.p.a.string.strip(),
+'createdt': datetime.datetime.now().isoformat()
+}
+{{< /file-excerpt >}}
+
+3.  Use Beautiful Soup's array notation to access attributes of an HTML element:
+
+        'pid': result['data-pid']
+
+4.  Other data attributes may be nested deeper in the HTML strucure, and can be accessed using a combination of dot and array notation. For example, the date a result was posted is stored in `datetime`, which is a data attribute of the `time` element, which is a child of a `p` tag that is a child of `result`. To access this value use the following format:
+
+        'date': result.p.time['datetime']
+
+5.  Sometimes the information needed is the tag content (in between the start and end tags). To access the tag content BeautifulSoup provides the `string` method:
+
+        <span class="result-price">$12791</span>
+
+    can be accessed with:
+
+        'cost': clean_money(result.a.span.string.strip())
+
+    The value here is further processed by using the Python `strip()` function, as well as a custom function `clean_money` that removes the dollar sign.
+
+6.  Most items for sale on Craigslist include pictures of the item. The custom function `clean_pic` is used to assign the first picture's URL to **pic**:
+
+        'pic': clean_pic(result.a['data-ids'])
+
+7.  Metadata can be added to the record. For example, you can add a field to track when a particular record was created:
+
+        'createdt': datetime.datetime.now().isoformat()
+
+8.  Use the Query object to check if a record already exists in the database before inserting it. This avoids creating duplicate records.
+
+      {{< file-excerpt "craigslist.py" python >}}
+Result = Query()
+s1 = db.search(Result.pid == rec["pid"])
+
+if not s1:
+    total_added += 1
+    print ("Adding ... ", total_added)
+    db.insert(rec)
+{{< /file-excerpt >}}
+
+#### Error Handling
+
+Two types of errors are important to handle. These are not errors in the script, but instead are errors in the structure of the snippet that cause Beautful Soup's API to throw an error.
+
+An AttributeError will be thrown when the dot notation doesn't find a sibling tag to the current html tag. For example, if a particular snippet does not have the anchor tag, then the **cost** key will throw an error, because it transverses and therefore requires the anchor tag.
+
+The other error is a KeyError. It will be thrown if a required html tag attribute is missing. For example, if there is no **data-pid** attribute in a snippet, the **pid** key will throw an error.
+
+If either of these errors occurs when parsing a result, that result will be skipped to ensure that a malformed snippet isn't inserted into the database:
+
+{{< file-excerpt "craigslist.py" python >}}
+except (AttributeError, KeyError) as ex:
+    pass
+{{< /file-excerpt >}}
+
+### Cleaning Functions
+
+These are two short custom functions to clean up the snippet data. The `clean_money` function strips any dollar signs from its input:
+
+{{< file-excerpt "craigslist.py" python >}}
+def clean_money(amt):
+    return int(amt.replace("$",""))
+{{< /file-excerpt >}}
+
+The `clean_pic` function generates a URL for accessing the first image in each search result:
+
+{{< file-excerpt "craigslist.py" python >}}
+def clean_pic(ids):
+    idlist = ids.split(",")
+    first = idlist[0]
+    code = first.replace("1:","")
+    return "https://images.craigslist.org/%s_300x300.jpg" % code
+{{< /file-excerpt >}}
+
+The function extracts and cleans the id of the first image, then adds it to the base URL.
+
+### Creating the Excel Spreadsheet
+
+The `make_excel` function takes the data in the database and writes it to an Excel spreadsheet.
+
+1.  Add spreadsheet variables:
+
+    {{< file-excerpt "craigslist.py" python >}}
+Headlines = ["Pid", "Date", "Cost", "Webpage", "Pic", "Desc", "Created Date"]
+row = 0
+{{< /file-excerpt >}}
+
+    The **Headlines** variable is a list of titles for the columns in the spreadsheet. The **row** variable tracks the current spreadsheet
+row.
+
+2.  Use `xlswriter` to open a workbook and add a worksheet to receive the data.
+
+    {{< file-excerpt "craigslist.py" python >}}
+workbook = xlsxwriter.Workbook('motorcycle.xlsx')
+worksheet = workbook.add_worksheet()
+{{< /file-excerpt >}}
+
+3.  Prepare the worksheet:
+
+    {{< file-excerpt "craigslist.py" python >}}
+worksheet.set_column(0,0, 15) # pid
+worksheet.set_column(1,1, 20) # date
+worksheet.set_column(2,2, 7)  # cost
+worksheet.set_column(3,3, 10)  # webpage
+worksheet.set_column(4,4, 7)  # picture
+worksheet.set_column(5,5, 60)  # Description
+worksheet.set_column(6,6, 30)  # created date
+{{< /file-excerpt >}}
+
+    The first 2 items are always the same in the `set_column` method. That is because it is setting the attributes of a section of columns from the first indicated column to the next. The last value is the width of the column in characters.
+
+4.  Write the column headers to the worksheet:
+
+    {{< file-excerpt "craigslist.py" python >}}
+for col, title in enumerate(Headlines):
+    worksheet.write(row, col, title)
+{{< /file-excerpt >}}
+
+5.  Write the records to the database:
+
+    {{< file-excerpt "craigslist.py" python >}}
+for item in db.all():
+    row += 1
+    worksheet.write(row, 0, item['pid'] )
+    worksheet.write(row, 1, item['date'] )
+    worksheet.write(row, 2, item['cost'] )
+    worksheet.write_url(row, 3, item['webpage'], string='Web Page')
+    worksheet.write_url(row, 4, item['pic'], string="Picture" )
+    worksheet.write(row, 5, item['descr'] )
+    worksheet.write(row, 6, item['createdt'] )
+{{< /file-excerpt >}}
+
+    Most of the fields in each row can be written using `worksheet.write`; `worksheet.write_url` is used for the listing and image URLs. This makes the resulting links clickable in the final spreadsheet.
+
+6.  Close the Excel workbook:
+
+    {{< file-excerpt "craigslist.py" python >}}
+    workbook.close()
+{{< /file-excerpt >}}
+
 ### Main Routine
 
-The main routine pulls in the global variable **adding**, which is
-updated in the **soup_process** routine, but will be displayed as an
-final step. Open the database file "db.json" and create a TinyDB
-object. Process the initial URL, find the URL of the next page
-of data. If that next page of data is found, loop and process
-that web page. If there is no next page of data then it will
-fall out of the loop and print the number of new entries added and
-create or recreate the excel file.
+The main routine will iterate through every page of search results and run the **soup_process** function on each page. It also keeps track of the total number of database entries added in the global variable **total_added**, which is updated in the **soup_process** function and displayed once the scrape is complete. Finally, it creates a TinyDB database `db.json` and stores the parsed data; when the scrape is complete, the database is passed to the **make_excel** function to be written to a spreadsheet.
 
 {{< file-excerpt "craigslist.py" python >}}
 def main(url):
-    global adding
+    total_added = 0
     db = TinyDB("db.json")
 
     while url:
@@ -147,13 +295,13 @@ def main(url):
         if (nextlink):
             url = nextlink['href']
 
-    print ("Added ",adding)
+    print ("Added ",total_added)
 
     make_excel(db)
 {{< /file-excerpt >}}
 
-A sample run might look like the following. Each page's URL has the index embedded in the URL, see the 120, 240, 360, etc. This is how
-craigslist knows where the next page of data starts.
+A sample run might look like the following. Notice that each page has the index embedded in the URL; this is how
+Craigslist knows where the next page of data starts:
 
 
     $ python3 craigslist.py
@@ -168,236 +316,97 @@ craigslist knows where the next page of data starts.
     Web Page:  https://elpaso.craigslist.org/search/mcy?s=600&sort=date
     Added  3
 
+## Cron Setup
 
-### Processing the 'soup'
+This section will set up a cron task to run the scraping script automatically at regular intervals. The data
 
-The key here is the source code for the website in question.
-Different websites organize their pages differently, and craigslist
-has a very organized approach. This is wonderful from a scraping
-standpoint. Go to the initial website in a browser, right click and select "view page source" ,and with a little detective work, this pattern in the web page code can be found.
+1. Log in to your machine as a normal user:
 
-{{< file "craigslist.com" html >}}
-<li class="result-row" data-pid="6370204467">
-        <a href="https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html" class="result-image gallery" data-ids="1:01010_8u6vKIPXEsM,1:00y0y_4pg3Rxry2Lj,1:00F0F_2mAXBoBiuTS">
-                <span class="result-price">$12791</span>
-        </a>
-        <p class="result-info">
-                <span class="icon icon-star" role="button">
-                <span class="screen-reader-text">favorite this post</span>
-                </span>
-                <time class="result-date" datetime="2017-11-01 19:38" title="Wed 01 Nov 07:38:13 PM">Nov  1</time>
-                <a href="https://elpaso.craigslist.org/mcy/d/ducati-diavel-dark/6370204467.html" data-id="6370204467" class="result-title hdrlnk">Ducati Diavel | Dark</a>
-                <span class="result-meta">
-                        <span class="result-price">$12791</span>
-                        <span class="result-tags">
-                        pic
-                        <span class="maptag" data-pid="6370204467">map</span>
-                        </span>
-                        <span class="banish icon icon-trash" role="button">
-                        <span class="screen-reader-text">hide this posting</span>
-                        </span>
-                <span class="unbanish icon icon-trash red" role="button" aria-hidden="true"></span>
-                <a href="#" class="restore-link">
-                        <span class="restore-narrow-text">restore</span>
-                        <span class="restore-wide-text">restore this posting</span>
-                </a>
-                </span>
-        </p>
-</li>
-{{< /file >}}
+        ssh normaluser@<Linode Public IP>
 
-One can use a simple statement to target just the
-web page snippets by selecting just the **li** html tags and
-further narrow down the choices by selecting only those
-**li** tags that have a class of **result-row**. The **results** variable contains
-all the web page snippets that match this criteria:
+2. Make sure the complete `craigslist.py` script is in the home directory:
 
+    {{< file "craigslist.py" python >}}
+from bs4 import BeautifulSoup
+import datetime
+from tinydb import TinyDB, Query
+import urllib3
+import xlsxwriter
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+url = 'https://elpaso.craigslist.org/search/mcy?sort=date'
+total_added = 0
+
+def make_soup(url):
+    http = urllib3.PoolManager()
+    r = http.request("GET", url)
+    return BeautifulSoup(r.data,'lxml')
+
+def main(url):
+    global total_added
+    db = TinyDB("db.json")
+
+    while url:
+        print ("Web Page: ", url)
+        soup = soup_process(url, db)
+        nextlink = soup.find("link", rel="next")
+
+        url = False
+        if (nextlink):
+            url = nextlink['href']
+
+    print ("Added ",total_added)
+
+    make_excel(db)
+
+def soup_process(url, db):
+    global total_added
+
+    soup = make_soup(url)
     results = soup.find_all("li", class_="result-row")
 
-Next, the program will attempt to create a record
-according to the structure of the target snippet.
-If the structure doesn't match, then python will
-throw an exception which will cause it to skip
-this record and snippet.
+    for result in results:
+        try:
+            rec = {
+                'pid': result['data-pid'],
+                'date': result.p.time['datetime'],
+                'cost': clean_money(result.a.span.string.strip()),
+                'webpage': result.a['href'],
+                'pic': clean_pic(result.a['data-ids']),
+                'descr': result.p.a.string.strip(),
+                'createdt': datetime.datetime.now().isoformat()
+            }
 
-{{< file-excerpt "craigslist.py" python >}}
-        rec = {
-        'pid': result['data-pid'],
-        'date': result.p.time['datetime'],
-        'cost': clean_money(result.a.span.string.strip()),
-        'webpage': result.a['href'],
-        'pic': clean_pic(result.a['data-ids']),
-        'descr': result.p.a.string.strip(),
-        'createdt': datetime.datetime.now().isoformat()
-        }
-{{< /file-excerpt >}}
+            Result = Query()
+            s1 = db.search(Result.pid == rec["pid"])
 
-Focusing on the interesting cases of the **rec** dictionary.
+            if not s1:
+                total_added += 1
+                print ("Adding ... ", total_added)
+                db.insert(rec)
 
-A **result** contains one **li** tag snippet of the webpage.
-Each **li** tag may contain interesting attributes like
-**class** and **data-pid**. To access the value of
-the attribute **data-pid**, use the array notation provided
-by Beautiful Soup like so:
-
-        'pid': result['data-pid'],
-
-
-The goal being placing the "date posted" value in the **date** key of the record.
-
-Notice the **li** tag has a **p** tag as a sibling. The **p** tag has
-a **time** tag as its sibling. Finally, the **time** tag has
-an attribute of **datetime** which is the posted time. To access
-the sibling tags, dot notation can be used in conjunction with the
-array notation for the **datetime** attribute like so:
-
-
-        'date': result.p.time['datetime'],
-
-Sometimes the information needed is really in between the start tag and end tag and is otherwise known as the tag content. To access the tag content BeautifulSoup provides the **string** method. additionally, to remove pre/post white space the **strip** method can be used.
-
-        <span class="result-price">$12791</span>
-
-The value can be further processed by using a custom routine called **clean_money** that removes the dollar sign.
-
-        'cost': clean_money(result.a.span.string.strip()),
-
-Notice that on the craigslist website, one can actually
-scroll through several user pictures of the item for sale.
-
-The custom routine **clean_pic** can be used to assign
-the first picture's URL to **pic**.
-
-        'pic': clean_pic(result.a['data-ids']),
-
-Finally, meta data can be added to the record. For example,
-the time when a particular record was created can be inserted
-into the record itself. Hence the last field is not in the
-snippet at all.
-
-        'createdt': datetime.datetime.now().isoformat()
-
-Assuming a **rec** has been successfully created, use the Query object
-to check if it already exists in the database.
-Only when the **rec** doesnt exist in the database is it inserted into the database.
-
-{{< file-excerpt "craigslist.py" python >}}
-Result = Query()
-s1 = db.search(Result.pid == rec["pid"])
-
-if not s1:
-    adding += 1
-    print ("Adding ... ", adding)
-    db.insert(rec)
-{{< /file-excerpt >}}
-
-Two types of Errors are important to handle. These will not
-be errors in code, but actually errors in the structure
-of the snippet that cause Beautful Soup's API to throw an error.
-
-The AttributeError will be thrown when
-the dot notation doesn't find a *sibling tag to
-the current html tag*.
-For example, if a particular snippet does not have
-the anchor tag, then the **cost** key will throw
-an error, because it transverses and therefore
-requires the anchor tag.
-
-The other error is the KeyError. It will be thrown
-if a *required html tag attribute* is missing. So if we don't
-have a **data-pid** attribute in our snippet, the
-**pid** key will throw an error.
-
-The **pass** statement is a "do nothing" statement.
-So a malformed snippet that throws either error
-doesn't insert a record into the database.
-
-{{< file-excerpt "craigslist.py" python >}}
         except (AttributeError, KeyError) as ex:
             pass
-{{< /file-excerpt >}}
 
-### Cleaning Routines
+    return soup
 
-These are tiny custom routines to clean up the snippet data.
-In example, the **clean_money** routine looks into the **amt**
-string and checks for a dollar sign. If it finds one, it
-replaces it with nothing. Then it returns the altered string.
-
-{{< file-excerpt "craigslist.py" python >}}
 def clean_money(amt):
     return int(amt.replace("$",""))
-{{< file-excerpt >}}
 
-The second cleaning routine does a little more. We can step
-through each line to watch the string transform into the URL
-of the first picture.
-
-{{< file-excerpt "craigslist.py" python >}}
 def clean_pic(ids):
     idlist = ids.split(",")
     first = idlist[0]
     code = first.replace("1:","")
     return "https://images.craigslist.org/%s_300x300.jpg" % code
-{{< /file-excerpt >}}
 
-The first line uses **ids.split** to take the string of ids:
-
-        "1:01010_8u6vKIPXEsM,1:00y0y_4pg3Rxry2Lj,1:00F0F_2mAXBoBiuTS"
-
-and split it into python's internal list structure:
-
-        ["1:01010_8u6vKIPXEsM", "1:00y0y_4pg3Rxry2Lj", "1:00F0F_2mAXBoBiuTS"]
-
-Then **first** is assigned the first string item in our python list:
-
-        "1:01010_8u6vKIPXEsM"
-
-following, **code** is assigned the an alter version string with the text "1:" removed:
-
-        "01010_8u6vKIPXEsM"
-
-Finally, the value of **code** is inserted into a specially
-crafted craigslist URL that points to the first image:
-
-        https://images.craigslist.org/01010_8u6vKIPXEsM_300x300.jpg
-
-
-### Creating the Excel Spreadsheet
-
-The last routine is **make_excel** which takes the data
-in the database as items, each item represents a created record.
-
-The **Headlines** variable is just a list of the
-titles for the columns in the spreadsheet.
-The **row** variable tracks the current spreadsheet
-row.
-
-{{< file-excerpt "craigslist.py" python >}}
+def make_excel(db):
     Headlines = ["Pid", "Date", "Cost", "Webpage", "Pic", "Desc", "Created Date"]
     row = 0
-{{< /file-excerpt >}}
 
-The program creates a workbook object by giving it the
-filename of the spreadsheet. The worksheet is used for
-writing to the cells of the current worksheet.
-
-{{< file-excerpt "craigslist.py" python >}}
     workbook = xlsxwriter.Workbook('motorcycle.xlsx')
     worksheet = workbook.add_worksheet()
-{{< /file-excerpt >}}
 
-The first 2 items are always the same in the
-**set_column** method. That is because it is
-setting the attributes of a section of columns
-from the first indicated column to the next.
-The last value is the width of the column in characters.
-
-The # means the succeeding text is a programming comment
-and not part of code, but the comments help to document
-that column's title.
-
-{{< file-excerpt "craigslist.py" python >}}
     worksheet.set_column(0,0, 15) # pid
     worksheet.set_column(1,1, 20) # date
     worksheet.set_column(2,2, 7)  # cost
@@ -405,36 +414,10 @@ that column's title.
     worksheet.set_column(4,4, 7)  # picture
     worksheet.set_column(5,5, 60)  # Description
     worksheet.set_column(6,6, 30)  # created date
-{{< /file-excerpt >}}
 
-Next the *for* statement steps through the
-**Headlines** variable and writes each title
-to the first row.
-
-At the same time, advancing the column by using
-**col** which contains the index where it found title
-because the **enumerate** routine not only retrieves
-each title, but the index of that title too.
-
-{{< file-excerpt "craigslist.py" python >}}
     for col, title in enumerate(Headlines):
         worksheet.write(row, col, title)
-{{< /file-excerpt >}}
 
-The next goal is to display all our records
-in the database.
-
-Using another *for* statement, the program writes each **item** of our
-database to the spreadsheet. Advancing the row to ensure
-an empty row in the spreadsheet. Then writing at this row, in the
-appropriate column, the item's key's value.
-
-There are 2 special exemptions, the URL fields.
-To be able to click on them on the
-spreadsheet and jump to the webpage or see
-the image in our browser, use **worksheet.write_url**.
-
-{{< file-excerpt "craigslist.py" python >}}
     for item in db.all():
         row += 1
         worksheet.write(row, 0, item['pid'] )
@@ -444,26 +427,11 @@ the image in our browser, use **worksheet.write_url**.
         worksheet.write_url(row, 4, item['pic'], string="Picture" )
         worksheet.write(row, 5, item['descr'] )
         worksheet.write(row, 6, item['createdt'] )
-{{< /file-excerpt >}}
 
-Finally, close the Excel workbook which flushes
-all the data to the spreadsheet file and closes it.
-
-{{< file-excerpt "craigslist.py" python >}}
     workbook.close()
-{{< /file-excerpt >}}
 
-## Cron Setup
-
-1. Log in to your machine as a normal user. Assuming a normal user
-account was at some point created called **normaluser** with a suitable
-password:
-
-        ssh normaluser@machineIP
-
-2. copy the complete program to the home directory:
-
-        wget ( get the python program file from linode assets )
+main(url)
+{{< /file >}}
 
 3. Add a cron tab entry as the user:
 
@@ -473,22 +441,14 @@ This sample entry will run the python program every day at 6:30 am.
 
         30 6 * * * /usr/bin/python3 /home/normaluser/craigslist.py
 
-After it is run, as long as crontab was run as normaluser, the
-python program will drop the motorcycle.xlsx in the home directory
-of normaluser. Also, the database that accumulates data from
-consecutive runs will also be placed on the home directory.
+The python program will write the `motorcycle.xlsx` spreadsheet in `/home/normaluser/`.
 
 ## Getting the Excel Report
 
-1.  Assuming a Linux box, the following command
-can be used to drop the motorcycle.xlsx to this machine from
-the remote machine that continually is running your python program.
+1.  On Linux, the following command can be used to drop the motorcycle.xlsx to this machine from the remote machine that is running your python program.
 
-        scp normaluser@machineIP:/home/normaluser/motorcycle.xlsx .
+        scp normaluser@<Linode Public IP>:/home/normaluser/motorcycle.xlsx .
 
-2.  Assuming a Windows machine, use firefox browser
-and its sftp capabilities. Type in the following URL in the address bar in firefox and it will request a password. Afterwhich,
-a directory listing of the home directory will be
-displayed. Just click on the motorcycle.xlsx to view it.
+2.  On Windows, use the Firefox browser and its sftp capabilities. Type in the following URL in the address bar in Firefox and it will request a password. Choose the spreadsheet from the directory listing that appears.
 
-        sftp://normaluser@machineIP/home/normaluser
+        sftp://normaluser@<Linode Public IP>/home/normaluser
