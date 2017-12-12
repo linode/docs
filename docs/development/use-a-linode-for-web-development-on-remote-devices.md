@@ -29,7 +29,7 @@ This guide will walk you through the necessary steps to configure your Linode to
 
 A local development environment is usually faster, more powerful, and more comfortable than a tablet. However, there some drawbacks associated with local development:
 
-* You are bound to Workstation's operating system. You may need to employ virtual machines to overcome limitations. 
+* You are bound to Workstation's operating system. You may need to employ virtual machines to overcome limitations.
 * No matter how powerful your machine is, resources are finite, depending on the complexity of your project, scaling-up for complexity could become an issue.
 * A development environment that relies on a powerful desktop, a local NAS, multi-monitor setup, full size keyboard and mouse is not portable. You can use a good laptop to gain some freedom, but then you sacrifice CPU power and internal storage that could hinder your ability to run specific projects.
 * Last but not least, if your Workstation fails your entire development process stops.
@@ -139,7 +139,7 @@ With everything set up it's time to work with your remote development environmen
 
 ### Bind Volumes to your Container
 
-1. From the **App Templates** menu select Nginx again. 
+1. From the **App Templates** menu select Nginx again.
 
 2. Disable access control and click on **Show advanced options**. On the volume mapping section touch the **Bind** button for the container's `/usr/share/nginx/html` and set the host to `/home/username/nginx/html`.
 
