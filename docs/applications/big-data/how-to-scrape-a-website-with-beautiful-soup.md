@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-11
 modified_by:
   name: Jared Kobos
-published: 2017-12-12 
+published: 2017-12-12
 contributor:
   name: Luis Cortés
 title: 'How to Scrape a Website with BeautifulSoup'
