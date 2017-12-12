@@ -3,7 +3,7 @@ author:
   name: Linode Community
   email: docs@linode.com
 description: 'Keep processes running even if your SSH connection drops. Examples on managing tmux sessions, windows and panes'
-og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window"
+og_description: 'This guide will show you how to use tmux the terminal multiplexer. tmux allows you to save terminal sessions, and manage multiple terminal sessions within one window'
 keywords: ['tmux','terminal','multiplexer','attach','detach','panes','sessions']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-06
