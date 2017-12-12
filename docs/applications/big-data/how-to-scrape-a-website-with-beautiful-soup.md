@@ -9,7 +9,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-11
 modified_by:
   name: Jared Kobos
-published: 'Wednesday, October 4, 2017'
+published: 2017-12-12 
 contributor:
   name: Luis Cortés
 title: 'How to Scrape a Website with BeautifulSoup'
@@ -27,7 +27,7 @@ Web pages are structured documents, and Beautiful Soup gives you the tools to wa
 
 ### Install Python
 
-{{< section file="/shortcodes/install_python_miniconda.md" >}}
+{{< section file="/shortguides/install_python_miniconda.md" >}}
 
 ### Install Beautiful Soup and Dependencies
 
