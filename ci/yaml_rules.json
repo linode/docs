@@ -38,7 +38,22 @@
         "required": true,
         "type":"date",
         "elements": false
-        }
+        },
+    "og_description": {
+        "required": false,
+        "elements": false,
+        "type":"text"
+        },
+    "og_title": {
+        "required": false,
+        "elements": false,
+        "type":"text"
+        },
+	"comments": {
+		"required": false,
+		"elements": false,
+		"type": "bool"
+	}		
 }
 
 

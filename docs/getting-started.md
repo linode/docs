@@ -2,6 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
+keywords: ["getting started, intro, basics, first steps"]
 description: 'This guide will help you set up your first Linode.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-10-10
@@ -158,7 +159,7 @@ To reconnect via SSH, revoke the key for that IP address.
 
 For Linux and Mac OS X:
 
-    ssh-keygen -R 123.456.789
+    ssh-keygen -R 123.45.67.89
 
 For Windows, PuTTY users must remove the old host IP addresses manually. PuTTY's known hosts are in the registry entry:
 

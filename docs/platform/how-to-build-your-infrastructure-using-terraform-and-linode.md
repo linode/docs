@@ -80,8 +80,6 @@ export GOBIN="$GOPATH/bin"
 You can change the variables to any location that suits you, just be sure to include it in the `PATH`.
 {{< /note >}}
 
-<!---
-TODO: Make decision about binaries or compiling scripts.
 
 ## Building the Linode plugin
 
@@ -110,7 +108,6 @@ TODO: Make decision about binaries or compiling scripts.
 {{< note >}}
 AT this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
 {{< /note >}}
---->
 
 ## Install Terraform
 

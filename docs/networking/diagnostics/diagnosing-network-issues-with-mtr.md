@@ -374,8 +374,8 @@ Newer versions of MTR are now capable of running in TCP mode on a specified TCP 
 
 Running MTR in TCP mode will require super-user privileges on most machines:
 
-    sudo mtr -P 80 -i 0.5 -rw50 example.com
-    sudo mtr -P 22 -i 0.5 -rw50 example.com
+    sudo mtr -P 80 -i 0.5 -rwc 50 example.com
+    sudo mtr -P 22 -i 0.5 -rwc 50 example.com
 
 ## Resolving Routing and Networking Issues Identified in your MTR report
 

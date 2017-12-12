@@ -28,8 +28,8 @@ For a different Linux distribution or different mail server, review our [email t
 
 When ready to update the DNS and to start sending mail to the server, edit the domain's MX record so that it points to the Linode's domain or IP address, similar to the example below:
 
+    example.com         A       10      12.34.56.78
     example.com         MX      10      example.com
-    example.com         MX      10      12.34.56.78
     mail.example.com    MX      10      12.34.56.78
 
 Ensure that the MX record is changed for all domains and subdomains that might receive email. If setting up a brand new domain, these steps can be performed prior to configuring the mail server. When using Linode's [DNS Manager](/docs/dns-manager), create an MX record that points to the desired domain or subdomain, and then create an A record for that domain or subdomain, which points to the correct IP address.

@@ -9419,6 +9419,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .output:before {
   content: "Output";
 }
+pre {
+  overflow-x: auto;
+}
+pre code {
+  word-wrap: normal;
+  overflow-wrap: normal;
+  white-space: pre;
+}
 .variable {
   background-color: #cff0df;
   border-width: 1px;
@@ -9447,7 +9455,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file dt:before small,
 .file dt:before .small {
@@ -9484,7 +9491,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file-excerpt dt:before small,
 .file-excerpt dt:before .small {
@@ -10396,7 +10402,7 @@ body.modal-open,
   }
 }
 .form-control {
-  padding: 10px;
+  padding-top: 8px;
   border: 1px solid #e7e6e6;
   border-radius: 0px;
   -moz-border-radius: 0px;
@@ -11419,6 +11425,7 @@ code {
   border-radius: 0px;
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
+  word-wrap: break-word;
 }
 .amp {
   font-family: "Helvetica", sans-serif;
@@ -20920,6 +20927,7 @@ li.library-article-item:nth-child(odd) {
 }
 .hubspot-container {
   background-color: #ebeff0;
+  width: 80%;
 }
 .hubspot-form .input {
   padding-bottom: 20px;

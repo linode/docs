@@ -65,7 +65,7 @@ Throughout this guide, replace the IP address for each server with the public IP
 
 ### Install tinc VPN on Ubuntu 16.04
 
-Ubuntu 16.04 will be used for all of the Linodes in this guide. Other distros can be used, but the steps to install the latest version of tinc will vary. At the time of this writing the latest stable version of tinc is 1.0.31. Ubuntu's repositories use an older version, so you will have to build from source:
+Ubuntu 16.04 will be used for all of the Linodes in this guide. Other distros can be used, but the steps to install the latest version of tinc will vary. At the time of this writing the latest stable version of tinc is 1.0.33. Ubuntu's repositories use an older version, so you will have to build from source:
 
 1. Install the necessary dependencies for building tinc:
 
@@ -73,15 +73,15 @@ Ubuntu 16.04 will be used for all of the Linodes in this guide. Other distros ca
 
 2. Get the latest version of tinc from the developer's site:
 
-        wget http://tinc-vpn.org/packages/tinc-1.0.31.tar.gz
+        wget https://tinc-vpn.org/packages/tinc-1.0.33.tar.gz
 
 3. Extract the archive in a temporary folder:
 
-        tar -xf tinc-1.0.31.tar.gz
+        tar -xf tinc-1.0.33.tar.gz
 
 4. Compile tinc on your system:
 
-        cd tinc-1.0.31
+        cd tinc-1.0.33
         ./configure --prefix=
         make
         sudo make install

@@ -8,8 +8,8 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-12
 modified_by:
   name: Sam Foo
-Published: Friday, September 15th, 2017
-title: How to Create a Private Python Package Repository
+published: 2017-09-15
+title: 'How to Create a Private Python Package Repository'
 external_resources:
  - '[pip](https://pip.readthedocs.io/en/stable/#)'
  - '[pypiserver Documentation](https://pypiserver.readthedocs.io/en/latest/)'

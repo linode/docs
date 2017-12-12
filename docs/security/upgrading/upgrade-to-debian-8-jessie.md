@@ -112,7 +112,7 @@ Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentica
         D     : show the differences between the versions
 
 
-5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell).
+5.  Reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/networking/using-the-linode-shell-lish/).
 
 Your Linode is now running Debian 8!
 

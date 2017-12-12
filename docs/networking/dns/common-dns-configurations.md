@@ -3,17 +3,18 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Configurations for common DNS records.'
+og_description: 'This guide explains how to use the Linode DNS manager, to configure DNS records'
 keywords: ["linode dns", "linode manager dns", "dns configuration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['dns-manager/','dns-guides/configuring-dns-with-the-linode-manager/']
-modified: 2015-01-20
+modified: 2017-11-22
 modified_by:
-  name: Elle Krout
+  name: Linode
 published: 2015-01-20
 title: Common DNS Configurations
 ---
 
-After familiarizing yourself with Linode's [DNS Manager](/docs/networking/dns/dns-manager), the next step is determining which DNS records should be added. This guide discusses common DNS configurations that you can reference when creating your DNS records.
+![Common DNS Configurations](/docs/assets/common-dns-configurations-title-graphic.jpg "Common DNS Configurations")
 
 ## Setting Up a Domain
 
