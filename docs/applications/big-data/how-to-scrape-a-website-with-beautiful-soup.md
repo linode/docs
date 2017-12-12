@@ -3,13 +3,13 @@ author:
   name: Luis Cortés
   email: docs@linode.com
 description: 'This guide shows you how to use Beautiful Soup with a database to scrape data from Craigslist over an extended period of time and create an excel spreadsheet from the accumulated data.'
-og_description: 'This guide shows how to scrape web data using Beautiful Soup. Data is collected over an extended period of time and exported to a spreadsheet.'
+og_description: 'Beautiful Soup is a Python library that helps make it easy to scrape websites for data. This guide shows how to set up Beautiful Soup to collect data over an extended period of time, then export the results to a spreadsheet.'
 keywords: ['beautiful soup', 'python', 'scraping', 'tinydb', 'data']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-11
 modified_by:
   name: Jared Kobos
-published: 'Wednesday, October 4, 2017'
+published: 2017-12-12 
 contributor:
   name: Luis Cortés
 title: 'How to Scrape a Website with BeautifulSoup'
@@ -27,9 +27,9 @@ Web pages are structured documents, and Beautiful Soup gives you the tools to wa
 
 ### Install Python
 
-{{< section file="/shortcodes/install_python_miniconda.md" >}}
+{{< section file="/shortguides/install_python_miniconda.md" >}}
 
-### Install Dependencies
+### Install Beautiful Soup and Dependencies
 
 1. Update your system:
 
@@ -59,7 +59,7 @@ import urllib3
 import xlsxwriter
 {{< /file-excerpt >}}
 
-### Globals
+### Add Global Variables
 
 After the import statements, add global variables and configuration options:
 
@@ -72,7 +72,8 @@ total_added = 0
 
 `url` stores the URL of the webpage to be scraped, and `total_added` will be used to keep track of the total number of results added to the database. The `urllib3.disable_warnings()` function ignores any SSL certificate warnings.
 
-### Retrieving the webpage
+### Retrieve the Webpage
+
 The `make_soup` function makes a GET request to the target url and converts the resulting HTML into a BeautifulSoup object:
 
 {{< file-excerpt "craigslist.py" python >}}
@@ -82,14 +83,14 @@ def make_soup(url):
     return BeautifulSoup(r.data,'lxml')
 {{< /file-excerpt >}}
 
-The `urllib3` library has excellent exception-handling; if `make_soup` throws any errors, check the
+The `urllib3` library has excellent exception handling; if `make_soup` throws any errors, check the
 [urllib3 docs](https://urllib3.readthedocs.io/en/latest/) for detailed information.
 
-Beautiful Soup has different parsers available which are more or less strict about how the webpage is structured. The 'lxml' parser is sufficient for the example script in this guide, but depending on your needs you may need to check the other options described in the [official docs](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
+Beautiful Soup has different parsers available which are more or less strict about how the webpage is structured. The *lxml* parser is sufficient for the example script in this guide, but depending on your needs you may need to check the other options described in the [official documentation](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
-### Processing the Soup Object
+### Process the Soup Object
 
-An object of class `BeautifulSoup` is organized in a tree structure. In order to access the data you are interested in, you will have to be familiar with how the data is organized in the original HTML document. Go to the initial website in a browser, right click and select "view page source" to review the structure of the data that you would like to scrape:
+An object of class `BeautifulSoup` is organized in a tree structure. In order to access the data you are interested in, you will have to be familiar with how the data is organized in the original HTML document. Go to the initial website in a browser, right click and select **View page source** (or **Inspect**, depending on your browser) to review the structure of the data that you would like to scrape:
 
 {{< file "https://elpaso.craigslist.org/search/mcy?sort=date" html >}}
 <li class="result-row" data-pid="6370204467">
@@ -177,13 +178,13 @@ if not s1:
     db.insert(rec)
 {{< /file-excerpt >}}
 
-#### Error Handling
+### Error Handling
 
-Two types of errors are important to handle. These are not errors in the script, but instead are errors in the structure of the snippet that cause Beautful Soup's API to throw an error.
+Two types of errors are important to handle. These are not errors in the script, but instead are errors in the structure of the snippet that cause Beautiful Soup's API to throw an error.
 
-An AttributeError will be thrown when the dot notation doesn't find a sibling tag to the current html tag. For example, if a particular snippet does not have the anchor tag, then the **cost** key will throw an error, because it transverses and therefore requires the anchor tag.
+An `AttributeError` will be thrown when the dot notation doesn't find a sibling tag to the current HTML tag. For example, if a particular snippet does not have the anchor tag, then the **cost** key will throw an error, because it transverses and therefore requires the anchor tag.
 
-The other error is a KeyError. It will be thrown if a required html tag attribute is missing. For example, if there is no **data-pid** attribute in a snippet, the **pid** key will throw an error.
+The other error is a `KeyError`. It will be thrown if a required HTML tag attribute is missing. For example, if there is no **data-pid** attribute in a snippet, the **pid** key will throw an error.
 
 If either of these errors occurs when parsing a result, that result will be skipped to ensure that a malformed snippet isn't inserted into the database:
 
@@ -213,7 +214,7 @@ def clean_pic(ids):
 
 The function extracts and cleans the id of the first image, then adds it to the base URL.
 
-### Creating the Excel Spreadsheet
+### Write Data to an Excel Spreadsheet
 
 The `make_excel` function takes the data in the database and writes it to an Excel spreadsheet.
 
@@ -300,9 +301,7 @@ def main(url):
     make_excel(db)
 {{< /file-excerpt >}}
 
-A sample run might look like the following. Notice that each page has the index embedded in the URL; this is how
-Craigslist knows where the next page of data starts:
-
+A sample run might look like the following. Notice that each page has the index embedded in the URL. This is how Craigslist knows where the next page of data starts:
 
     $ python3 craigslist.py
     Web Page:  https://elpaso.craigslist.org/search/mcy?sort=date
@@ -316,7 +315,7 @@ Craigslist knows where the next page of data starts:
     Web Page:  https://elpaso.craigslist.org/search/mcy?s=600&sort=date
     Added  3
 
-## Cron Setup
+## Set up Cron to Scrape Automatically
 
 This section will set up a cron task to run the scraping script automatically at regular intervals. The data
 
@@ -439,16 +438,20 @@ main(url)
 
 This sample entry will run the python program every day at 6:30 am.
 
-        30 6 * * * /usr/bin/python3 /home/normaluser/craigslist.py
+    30 6 * * * /usr/bin/python3 /home/normaluser/craigslist.py
 
 The python program will write the `motorcycle.xlsx` spreadsheet in `/home/normaluser/`.
 
-## Getting the Excel Report
+## Retrieve the Excel Report
 
-1.  On Linux, the following command can be used to drop the motorcycle.xlsx to this machine from the remote machine that is running your python program.
+**On Linux**
 
-        scp normaluser@<Linode Public IP>:/home/normaluser/motorcycle.xlsx .
+Use scp to copy `motorcycle.xlsx` from the remote machine that is running your python program to this machine:
 
-2.  On Windows, use the Firefox browser and its sftp capabilities. Type in the following URL in the address bar in Firefox and it will request a password. Choose the spreadsheet from the directory listing that appears.
+    scp normaluser@<Linode Public IP>:/home/normaluser/motorcycle.xlsx .
 
-        sftp://normaluser@<Linode Public IP>/home/normaluser
+**On Windows**
+
+Use Firefox's built-in sftp capabilities. Type the following URL in the address bar and it will request a password. Choose the spreadsheet from the directory listing that appears.
+
+    sftp://normaluser@<Linode Public IP>/home/normaluser
