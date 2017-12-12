@@ -168,10 +168,10 @@ By default, Elasticsearch will create five shards and one replica for every inde
 
 1.  Create a temporary JSON file with an *index template* that instructs Elasticsearch to set the number of shards to one and number of replicas to zero for all matching index names (in this case, a wildcard `*`):
 
-    {{< file-excerpt "template.json" conf >}}  
+    {{< file-excerpt "template.json" conf >}}
 "template": "*",
-"settings": 
-"index": 
+"settings":
+"index":
 "number_of_shards": 1,
 "number_of_replicas": 0
 {{< /file-excerpt >}}
@@ -325,7 +325,7 @@ We can now fix the nginx configuration to resolve this error.
 
 Open the `/etc/nginx/nginx.conf` file and add the following `location` block in between the `include` and `location /` lines:
 {{< file-excerpt "/etc/nginx/nginx.conf" nginx>}}
-            
+
 include /etc/nginx/default.d/*.conf;
 
     location /server-status {
@@ -338,8 +338,8 @@ include /etc/nginx/default.d/*.conf;
 
     location / {
         }
-       
-{{< /file-excerpt >}} 
+
+{{< /file-excerpt >}}
 
 Then restart nginx:
 
