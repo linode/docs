@@ -40,16 +40,16 @@ The easiest way to install nginx is from the Extra Packages for Enterprise Linux
 
 1.  Update your system:
 
-    	yum update
+        yum update
 
 2.  Add the `epel-release` repository:
 
-    	yum install epel-release
-   		yum update
+        yum install epel-release
+        yum update
 
 3.  Install nginx:
 
-    	yum install nginx
+        yum install nginx
 
 ## Configure Nginx
 
@@ -57,12 +57,12 @@ The easiest way to install nginx is from the Extra Packages for Enterprise Linux
 
 1.  Start the nginx service in systemd and enable the service so that it starts automatically on boot:
 
-    	systemctl enable nginx.service
-    	systemctl start nginx.service
+        systemctl enable nginx.service
+        systemctl start nginx.service
 
 2.  Check the status to make sure the service is running:
 
-   		systemctl status nginx.service
+        systemctl status nginx.service
 
 ### Configure nginx Virtual Hosts
 
@@ -70,7 +70,7 @@ Once Nginx is installed, you need to configure your 'server' directives to speci
 
 1.  Open `/etc/nginx/conf.d/example.com.conf` in a text editor and add the following content. Replace all instances of `example.com` with your Linode's public IP address or FQDN.
 
-	{{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
 server {
 listen  80;
 server_name www.example.com example.com;
@@ -86,31 +86,31 @@ location / {
 {{< /file-excerpt >}}
 
 
-	Any additional websites you like to host can be added as new files in the `/etc/nginx/conf.d/` directory. 
+    Any additional websites you like to host can be added as new files in the `/etc/nginx/conf.d/` directory.
 
 2.  Once you set the configuration, you need to make the directories for your public html files, and your logs:
 
-    	mkdir -p /var/www/example.com/{public_html,logs}
+        mkdir -p /var/www/example.com/{public_html,logs}
 
 3.  Set ownership of the `public_html` folder so that the `nginx` user can access it:
 
-		chown nginx:nginx /var/www/example.com/public_html
+        chown nginx:nginx /var/www/example.com/public_html
 
 4.  Once you have configured your virtual hosts, restart nginx so that the changes will take effect:
 
-    	systemctl restart nginx.service
+        systemctl restart nginx.service
 
 # Deploy PHP with FastCGI
 
 If you are using PHP code with your application, you will need to install "PHP-FastCGI" in order to allow Nginx to properly handle and parse PHP code. This module is available through the EPEL release repository installed earlier.
 
-1.  Install FastCGI and its dependencies: 
+1.  Install FastCGI and its dependencies:
 
-	    yum install php-cli php spawn-fcgi
+        yum install php-cli php spawn-fcgi
 
 2.  Create a script to start and control the php-cgi process. Create the `/usr/bin/php-fastcgi` file in a text editor and add the following content:
 
-	{{< file-excerpt "/usr/bin/php-fastcgi" bash >}}
+    {{< file-excerpt "/usr/bin/php-fastcgi" bash >}}
 #!/bin/sh
 if [ `grep -c "nginx" /etc/passwd` = "1" ]; then
     FASTCGI_USER=nginx
@@ -132,9 +132,9 @@ fi
 
 3.  Set the appropriate file permissions so that the script is executable:
 
-    	chmod +x /usr/bin/php-fastcgi
+        chmod +x /usr/bin/php-fastcgi
 
-	You can then run the file manually, or for easier administration, you can set up a systemd service.
+    You can then run the file manually, or for easier administration, you can set up a systemd service.
 
 ### Configure PHP-FastCGI as a service
 
@@ -142,7 +142,7 @@ When PHP-FastCGI is installed it does not automatically get set up as a service 
 
 1.  Open `/etc/systemd/system/php-fastcgi.service` in a text editor and add the following content:
 
-	{{< file "/etc/systemd/system/php-fastcgi.service" ini >}}
+    {{< file "/etc/systemd/system/php-fastcgi.service" ini >}}
 [Unit]
 Description=php-fastcgi systemd service script
 
