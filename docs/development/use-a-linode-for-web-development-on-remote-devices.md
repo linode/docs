@@ -6,6 +6,7 @@ contributor:
   name: Damaso Sanoja
   link: https://twitter.com/damasosanoja
 description: 'This guide shows how to set up a remote development environment on your Linode. You can then connect to it from a remote device such as a tablet or laptop.'
+og_description: 'This guide will show you how to create a remote development environment on your Linode. Yo
 keywords: 'docker,container,portainer,linode,remote devices'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-05
