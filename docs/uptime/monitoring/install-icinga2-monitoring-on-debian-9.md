@@ -47,9 +47,9 @@ To increase the load speed of your application via OPCache plugin available in P
 {{< file-excerpt "php.ini" conf >}}
 opcache.enable=1 
 opcache.enable_cli=1 
-opcache.interned_strings_buffer=8 
-opcache.max_accelerated_files=10000 
-opcache.memory_consumption=128 
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=10000
+opcache.memory_consumption=128
 opcache.save_comments=1
 opcache.revalidate_freq=1
 {{< /file-excerpt >}}
@@ -100,7 +100,7 @@ Install Icinga2 and the Icinga2 MySQL module for accessing MariaDB database back
 
 During the installation, when asked:
 
-*  If Icinga2 should use the MySQL module, 
+*  If Icinga2 should use the MySQL module,
 
     *  Choose **Yes** from the prompt.
     
@@ -284,4 +284,4 @@ Add a new rule to allow HTTPS traffic to pass through the firewall.
 
 ## That’s All!
 
-You have successfully installed, set-up and secured Icinga2 engine monitoring application and Icinga Web 2 Interface in Debian 9. 
+You have successfully installed, set-up and secured Icinga2 engine monitoring application and Icinga Web 2 Interface in Debian 9.
