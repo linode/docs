@@ -20693,7 +20693,7 @@ div.library-tile .tile-title + .lead {
   font-size: 14px;
   font-size: 19px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 #doc-sidebar-title small,
 #doc-sidebar-title .small {
@@ -20723,6 +20723,7 @@ div.library-tile .tile-title + .lead {
 .sidebar-library nav > ul > li > ul > li {
   padding-left: 0;
   display: block;
+  line-height: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
