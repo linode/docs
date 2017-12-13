@@ -53,8 +53,10 @@
 		"required": false,
 		"elements": false,
 		"type": "bool"
-	}		
+	},
+	"rss_enabled": {
+		"required": false,
+		"elements": false,
+		"type": "bool"
+	}	
 }
-
-
-
