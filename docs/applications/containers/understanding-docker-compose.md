@@ -15,7 +15,7 @@ title: Understanding Docker Compose
 
 ## What is Docker Compose?
 
-If your Docker application includes more than one container (for example, a webserver and database running in separate containers for greater modularity and flexibility), building, running, and connecting the containers from separate Dockerfiles is cumbersome and time-consuming. Docker Compose solves this problem by allowing you to use a YAML file to define multi-container apps.[<sup>1</sup>](https://docs.docker.com/compose/overview/) You can configure as many containers as you want, how they should be built and connected, and where data should be stored. When the YAML file is complete, you can run a single command to build, run, and configure all of the containers.
+If your Docker application includes more than one container (for example, a webserver and database running in separate containers), building, running, and connecting the containers from separate Dockerfiles is cumbersome and time-consuming. Docker Compose solves this problem by allowing you to use a YAML file to define multi-container apps.[<sup>1</sup>](https://docs.docker.com/compose/overview/) You can configure as many containers as you want, how they should be built and connected, and where data should be stored. When the YAML file is complete, you can run a single command to build, run, and configure all of the containers.
 
 This guide will explain how the `docker-compose.yml` file is organized, and show how to use it to create several basic app configurations.
 
@@ -115,6 +115,9 @@ Most of this guide will focus on setting up containers using the `services` sect
 
 Many other configuration directives are available. See the [Compose File reference](https://docs.docker.com/compose/compose-file) for details.
 
+{{< caution >}}
+The example `docker-compose.yml` above uses the `environment` directive to store MySQL user passwords directly in the YAML file, to be imported into the container as environment variables. This is not recommended for sensitive information in production environments. Instead, sensitive information can be stored in a separate `.env` file (which is not checked into version control or made public) and accessed from within `docker-compose.yml` by using the `env_file` directive.
+{{< /caution >}}
 
 ## Build an Application from Scratch
 
@@ -193,7 +196,7 @@ services:
 
         docker ps
 
-     This command shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint...", under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches when the container starts.
+     This command shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint..." under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches when the container starts.
 
 
         {{< output >}}
@@ -303,7 +306,7 @@ volumes:
     external: true
 {{< /file >}}
 
-2.  The `external: true` tells Docker Compose to use a pre-existing external data volume. If no volume named `data` is present, starting the application will cause an error. Create the volume:
+2.  `external: true` tells Docker Compose to use a pre-existing external data volume. If no volume named `data` is present, starting the application will cause an error. Create the volume:
 
         docker volume create --name=data
 
