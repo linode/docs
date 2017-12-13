@@ -5,7 +5,7 @@ author:
 description: 'This tutorial details how to install Shadowsocks-libev, a full-featured, resource-efficient port of the web proxy tool, Shadowsocks.'
 keywords: ["shadowsocks", "proxy", "shadowsocks server", "ubuntu", "centos", " strong vpn"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-08-16
+published: 2017-12-07
 modified: 2017-08-16
 modified_by:
   name: Linode
@@ -42,14 +42,17 @@ Since there is currently no Shadowsocks package available for Ubuntu or CentOS, 
 
     **Ubuntu 17.04**
 
-        apt-get update && apt-get upgrade -yuf
-        apt-get install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev libsodium-dev git python-m2crypto
+        apt update && apt upgrade -yuf
+        apt install -y --no-install-recommends gettext build-essential autoconf libtool libpcre3-dev \
+                                               asciidoc xmlto libev-dev libudns-dev automake libmbedtls-dev \
+                                               libsodium-dev git python-m2crypto libc-ares-dev
 
     **CentOS 7**
 
         yum update && yum upgrade -y
         yum install epel-release -y
-        yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel libev-devel libsodium-devel mbedtls-devel git m2crypto
+        yum install -y gcc gettext autoconf libtool automake make pcre-devel asciidoc xmlto udns-devel \
+                       libev-devel libsodium-devel mbedtls-devel git m2crypto c-ares-devel
 
 2.  Navigate to the `/opt` directory and download the Shadowsocks Git module:
 

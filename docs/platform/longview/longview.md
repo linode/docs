@@ -104,7 +104,6 @@ deb http://apt-longview.linode.com/ xenial main
     **Debian or Ubuntu**
 
         sudo apt-get update
-        sudo apt-get install linode-longview
 
 ### Longview Client Labels
 

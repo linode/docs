@@ -120,11 +120,11 @@ You will now need to log in to the Linode Manager in order to change your Linode
 1.  Navigate to the **Dashboard** page of the Linode you are going to use for Asterisk.
 2.  Click the profile you are currently using and select **pv-grub-x86\_64** (or **pv-grub-x86\_32** if you are using a 32 bit system) from the kernel drop down.
 3.  Save this configuration profile. You may wish to change its name to indicate that this is no longer a default profile.
-4.  Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via [LISH](/docs/using-lish-the-linode-shell) to see if there are any errors.
+4.  Reboot your system to make sure that these changes are applied. You will need to do this before you can proceed. It is a good idea to watch the shutdown and reboot phases via [LISH](/docs/networking/using-the-linode-shell-lish/) to see if there are any errors.
 
 ### Troubleshoot
 
-It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
+It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [LISH](/docs/networking/using-the-linode-shell-lish/). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 
 ## Install Asterisk
 

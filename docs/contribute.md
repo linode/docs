@@ -14,18 +14,14 @@ title: "Contribute to Linode"
 ---
 
 {{< topics >}}
-* How to Benchmark your Linode
 * Advanced Caddy Configuration
 * Use Caddy as a Reverse Proxy
 * Introduction to the Kubernetes Scheduler
-* Build a Stream API with Kafka
 
 {{< /topics >}}
 
 {{< topics >}}
-* Introduction to Websockets
 * Manage a Docker Cluster with Kubernetes
-* Set Up a Tor Server
+* Build a Stream API with Kafka
 * Create a GraphQL Endpoint
-* Use Event Triggers in Salt
 {{< /topics >}}

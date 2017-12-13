@@ -12,7 +12,7 @@ published: 2016-03-14
 title: 'Install FreeBSD on Linode'
 external_resources:
  - '[The FreeBSD Handbook](https://www.freebsd.org/doc/handbook/)'
- - '[Using the Linode Shell (Lish)](/docs/troubleshooting/using-lish-the-linode-shell)'
+ - '[Using the Linode Shell (Lish)](/docs/networking/using-the-linode-shell-lish/)'
  - '[Using the Graphic Shell (Glish) - BETA](/docs/networking/using-the-graphic-shell-glish)'
  - '[FreeBSD Handbook - Comparing BSD and Linux](https://www.freebsd.org/doc/en/articles/explaining-bsd/comparing-bsd-and-linux.html)'
  - '[FreeBSD Handbook - Linux® Binary Compatibility](https://www.freebsd.org/doc/handbook/linuxemu.html)'
@@ -64,7 +64,7 @@ Begin by creating the Linode and making some preliminary changes.
     - /dev/sda: FreeBSD disk image.
     - root / boot device: Standard /dev/sda
 
-4.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/troubleshooting/using-lish-the-linode-shell) from the **Remote Access** tab of the Linode Manager.
+4.  Boot into **Rescue Mode** with the installer disk mounted to `/dev/sda` and access your Linode using [Lish via SSH](/docs/networking/using-the-linode-shell-lish/) from the **Remote Access** tab of the Linode Manager.
 
 5.  Once in Rescue Mode, run the following command, replacing latest with the latest `memstick.img` file from the [FreeBSD download page](ftp://ftp.freebsd.org/pub/FreeBSD/releases/amd64/amd64/ISO-IMAGES/):
 
