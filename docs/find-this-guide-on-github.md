@@ -11,6 +11,7 @@ modified: 2017-11-14
 modified_by:
   name: Linode
 title: Deprecated Guide
+show_on_rss_feed: false
 ---
 
 # Looks like you're trying to find a deprecated guide.

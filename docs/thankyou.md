@@ -12,6 +12,7 @@ modified: 2017-12-05
 modified_by:
   name: Sam Foo
 title: "Thank you for your submission"
+show_on_rss_feed: false
 ---
 
 Thank you for your interest in joining the Linode community as a contributing author!

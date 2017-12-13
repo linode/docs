@@ -14,6 +14,7 @@ show_on_frontpage: true
 title_short: "Getting Started"
 weight: 10
 icon: "book"
+show_on_rss_feed: false
 ---
 
 Thank you for choosing Linode as your cloud hosting provider! This guide will help you sign up for an account, set up a Linux distribution, boot your Linode, and perform some basic system administration tasks.
