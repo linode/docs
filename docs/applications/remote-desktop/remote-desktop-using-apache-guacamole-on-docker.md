@@ -3,6 +3,7 @@ author:
   name: Sam Foo
   email: sfoo@linode.com
 description: 'Create a remote desktop on a Linode.'
+og_description: 'This guide will demonstrate how to deploy Apache Guacamole, a utility that allows you to create a virtual cloud desktop on Linode'
 keywords: ["remote desktop", "Apache Guacamole", "TeamViewer", "VNC", "Chrome OS", "xfce", "unity"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-08
@@ -15,7 +16,7 @@ external_resources:
  - '[Apache Tomcat](https://tomcat.apache.org/)'
 ---
 
-Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover installation of Apache Guacamole through Docker then access a remote desktop environment hosted on a Linode.
+Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
 
 # Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
@@ -23,7 +24,7 @@ The installation method presented here will install the latest version of Docker
 {{< section file="/shortguides/docker/install_docker_ce.md" >}}
 
 # Initialize Guacamole Authentication with MySQL
-PostgreSQL are MariaDB are also supported but MySQL will be demonstrated in this guide.
+MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
 
 1.  Pull Docker images for guacamole-server, guacamole-client, and MySQL.
 
@@ -124,11 +125,11 @@ PostgreSQL are MariaDB are also supported but MySQL will be demonstrated in this
 
 # Guacamole in Browser
 
-1.  Start guacd in Docker.
+1.  Start guacd in Docker:
 
         docker run --name example-guacd -d guacamole/guacd
 
-2.  Link containers so Guacamole can verify credentials stored in the MySQL database.
+2.  Link containers so Guacamole can verify credentials stored in the MySQL database:
 
         docker run --name example-guacamole --link example-guacd:guacd --link example-mysql:mysql -e MYSQL_DATABASE='guacamole_db' -e MYSQL_USER='guacamole_user' -e MYSQL_PASSWORD='guacamole_user_password' -d -p 127.0.0.1:8080:8080 guacamole/guacamole
 
@@ -144,7 +145,7 @@ To see all running and non-running Docker containers:
 
 # VNC Server on a Linode
 
-Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and does not excessively consume system resources.
+Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and doesn't excessively consume system resources.
 
 1.  Install Xfce on the Linode.
 
@@ -154,7 +155,7 @@ Before sharing a remote desktop, a desktop environment and VNC server must be in
 
         sudo apt install --no-install-recommends ubuntu-desktop gnome-panel gnome-settings-daemon metacity nautilus gnome-terminal
 
-2.  Install VNC server. Starting VNC server will prompt for a password.
+2.  Install VNC server. Starting VNC server will prompt the user for a password.
 
         sudo apt install tightvncserver
         vncserver
@@ -224,5 +225,5 @@ If you have multiple displays running on the same Linode, increment the port num
 
     ![Guacamole Recent Connections](/docs/assets/guac_recent.png)
 
-This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are more features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
+This guide aimed to streamline the installation process through Docker and demonstrate remote desktop with Apache Guacamole as quickly as possible. There are many features such as screen recording, two factor authentication with Duo, file transfer via SFTP, and much more. As an Apache Incubator project, expect to see further developments in the near future.
 
