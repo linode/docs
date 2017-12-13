@@ -98,7 +98,7 @@ deb http://apt-longview.linode.com/ xenial main
 6.  Install Longview:
 
     **CentOS**
-    
+
         sudo yum install linode-longview
 
     **Debian or Ubuntu**
