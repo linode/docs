@@ -228,25 +228,22 @@ To see your Linode's running network services:
 The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
 
     {{< output >}}
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      3539/systemd-resolv
-tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      3539/systemd-resolv
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3913/sshd
-tcp6       0      0 :::5355                 :::*                    LISTEN      3539/systemd-resolv
-tcp6       0      0 :::22                   :::*                    LISTEN      3913/sshd
-udp        0      0 127.0.0.53:53           0.0.0.0:*                           3539/systemd-resolv
-udp        0      0 0.0.0.0:5355            0.0.0.0:*                           3539/systemd-resolv
-udp6       0      0 :::5355                 :::*                                3539/systemd-resolv
-Active UNIX domain sockets (only servers)
-Proto RefCnt Flags       Type       State         I-Node   PID/Program name     Path
-unix  2      [ ACC ]     STREAM     LISTENING     8717     1/init               /run/systemd/journal/stdout
-unix  2      [ ACC ]     SEQPACKET  LISTENING     8728     1/init               /run/udev/control
-unix  2      [ ACC ]     STREAM     LISTENING     8734     1/init               /run/systemd/fsck.progress
-unix  2      [ ACC ]     STREAM     LISTENING     15990    3974/systemd         /run/user/0/systemd/private
-unix  2      [ ACC ]     STREAM     LISTENING     13007    1/init               /run/uuidd/request
-unix  2      [ ACC ]     STREAM     LISTENING     13010    1/init               /var/run/dbus/system_bus_socket
-unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               /run/systemd/private
+Netid  State      Recv-Q Send-Q                                Local Address:Port                                               Peer Address:Port
+nl     UNCONN     0      0                                                 0:0                                                              *
+nl     UNCONN     768    0                                                 4:0                                                              *
+nl     UNCONN     4352   0                                                 4:3971                                                           *
+nl     UNCONN     0      0                                                 6:0                                                              *
+nl     UNCONN     0      0                                                 9:0                                                              *
+...
+u_dgr  UNCONN     0      0                                                 * 8701                                                          * 8700                users:(("systemd",pid=1,fd=54))
+u_dgr  UNCONN     0      0                                                 * 12586                                                         * 12585               users:(("systemd-timesyn",pid=3245,fd=10))
+u_dgr  UNCONN     0      0                                                 * 8700                                                          * 8701                users:(("systemd",pid=1,fd=53))
+u_dgr  UNCONN     0      0                                                 * 14944                                                         * 14945               users:(("systemd",pid=3868,fd=14))
+u_dgr  UNCONN     0      0                                                 * 14945                                                         * 14944               users:(("systemd",pid=3868,fd=15))
+u_dgr  UNCONN     0      0                                                 * 14916                                                         * 8716                users:(("systemd",pid=3868,fd=3))
+u_dgr  UNCONN     0      0                                                 * 14888                                                         * 8723                users:(("(sd-pam",pid=3909,fd=7))
+tcp    LISTEN     0      128                                               *:22                                                            *:*                   users:(("sshd",pid=3849,fd=3))
+tcp    LISTEN     0      128                                              :::22                                                           :::*                   users:(("sshd",pid=3849,fd=4))
 {{< /output >}}
 
 `ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
