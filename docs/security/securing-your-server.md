@@ -271,7 +271,7 @@ How to remove the offending packages will differ depending on your distribution'
 
     sudo dnf remove package_name
 
-Run `ss -atup` again to verify everything is how you want.
+Run `ss -atup` again to verify that the unwanted services are no longer running.
 
 ## Configure a Firewall
 
