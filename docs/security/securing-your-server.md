@@ -7,9 +7,9 @@ og_description: 'This guide serves as a starting point from which to secure your
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2017-10-27
+modified: 2017-12-14
 modified_by:
-  name: Linode
+  name: Jared Kobos
 published: 2012-02-17
 title: How to Secure Your Server
 ---
@@ -56,7 +56,7 @@ To add a new user, first [log in to your Linode](/docs/getting-started#log-in-fo
         usermod -aG wheel example_user
 
        {{< caution >}}
-       In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
+In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
 {{< /caution >}}
 
 ### Ubuntu
@@ -83,13 +83,13 @@ To add a new user, first [log in to your Linode](/docs/getting-started#log-in-fo
 
         adduser example_user sudo
 
-After creating your limited user, disconnect from your Linode:
+4.  After creating your limited user, disconnect from your Linode:
 
-    exit
+    	exit
 
-Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
+5.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
 
-    ssh example_user@203.0.113.10
+    	ssh example_user@203.0.113.10
 
 Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
 
