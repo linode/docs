@@ -10,7 +10,6 @@ modified: 2017-12-13
 modified_by:
   name: Linode
 published: 2013-03-27
-title: What is Longview and How to Use it
 ---
 
 ![Our guide to installing and using Linode Longview.](/docs/assets/longview_smg.png "Our guide to installing and using Linode Longview.")
@@ -25,7 +24,7 @@ The Longview client is [open source](https://github.com/linode/longview) and can
 
     ![Linode Manager Longview tab](/docs/assets/linode-manager-longview-tab.png "Linode Manager Longview tab")
 
-2.  Click the **Add Client** button. This will bring up a modal window with a `cURL` command at the center.
+2.  Click the **Add Client** tile. This will bring up a modal window with a `cURL` command at the center.
 
     ![Linode Manager Longview install](/docs/assets/linode-manager-longview-install.png "Linode Manager longview install")
 
@@ -52,7 +51,7 @@ It's also possible to manually install Longview for CentOS, Debian, and Ubuntu. 
 
     **CentOS**
 
-    Replace **REV** in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
+    Replace `REV` in the repository URL with your CentOS version (e.g., 7). If unsure, you can find your CentOS version number with `cat /etc/redhat-release`.
 
     {{< file "/etc/yum.repos.d/longview.repo" config >}}
 [longview]
@@ -122,7 +121,7 @@ If you are monitoring multiple systems with Longview, you should relabel the cli
 
 ### Longview Apps
 
-Once your system is set up as a Longview client, you can install Linode's *Longview Apps*. These extend Longview's statistics reporting to specific services running on your Linode, currently [Apache](/docs/longview/longview-for-apache), [nginx](/docs/longview/longview-for-nginx), and [MySQL/MariaDB](/docs/longview/longview-for-mysql).
+Once your system is set up as a Longview client, you will also have access to Linode's *Longview Apps*. These extend Longview's statistics reporting to specific services running on your Linode, currently [Apache](/docs/longview/longview-for-apache), [nginx](/docs/longview/longview-for-nginx), and [MySQL/MariaDB](/docs/longview/longview-for-mysql).
 
 ### Updating Longview
 
@@ -181,7 +180,9 @@ The packages button will show if there are package updates available for your Li
 
 ### Data Duration
 
-Longview displays realtime statistics from the past thirty minutes by default, and [Longview Pro](#upgrading-to-longview-pro) allows for longer durations of data. By changing the viewing history, you'll be able to see statistics for a longer period of time. However, note that graphs will not automatically update with new data for duration selections other than the default 30 minutes. To reset the time interval and re-enable live updating, select **Past 30 minutes (live)** from the viewing history dropdown menu.
+Longview displays realtime statistics from the past thirty minutes by default, and this data is kept for 12 hours. [Longview Pro](#longview-pro) allows for longer durations of data which is kept for the time you hold the upgrade subscription.
+
+By changing the viewing history, you'll be able to see statistics for a longer period of time. However, note that graphs will not automatically update with new data for duration selections other than the default 30 minutes. To reset the time interval and re-enable live updating, select **Past 30 minutes (live)** from the viewing history dropdown menu.
 
 ![Linode Manager Longview history duration](/docs/assets/linode-manager-longview-history-duration.png "Linode Manager Longview history duration")
 
@@ -200,9 +201,11 @@ All of the graphs will be updated to display data for the time interval you sele
 
 Longview Free updates every 5 minutes and provides only twelve hours of data history. The benefits of Longview Pro are that you get data resolution at 60 second intervals, and you can view a complete history of your Linode's data instead of only the previous 30 minutes. To change your plan level, follow these instructions:
 
-1.  At the bottom of the Longview overview page in the Linode Manager, click the **Subscription options** link.
+1.  At the bottom of the Longview overview page in the Linode Manager, click the **Upgrade to Longview Pro** tile.
 
-2.  You'll be taken to the Longview subscriptions page. Select radio dial of the plan you want to change to.
+    ![Linode Manager Longview Pro tile](/docs/assets/linode-manager-longview-pro-tile.png "Linode Manager Longivew Pro tile")
+
+2.  You'll be taken to the Longview subscriptions page. Select the radio dial of the plan you want to change to.
 
 3.  Click the **Continue \>\>** button.
 4.  Review your order, then click **Complete Order**.
@@ -214,38 +217,36 @@ If you're experiencing problems with the Longview client, here are several steps
 
 ### Basic Diagnostics
 
-1.  First ensure that:
+Ensure that:
 
-    - Your system is [fully updated](https://www.linode.com/docs/getting-started/). Longview requires Perl 5.8 or later and Linux 2.6.18 is supported, but does not include full functionality.
+1.  Your system is [fully updated](https://www.linode.com/docs/getting-started/). Longview requires Perl 5.8 or later and Linux 2.6.18 is supported, but Longview will not function fully.
 
-    - The Longview client is running. You can verify with one of the two commands below, depending on your distribution's init system.
+2.  The Longview client is running. You can verify with one of the two commands below, depending on your distribution's initialization system.
 
-            sudo systemctl status longview   # For distributions with systemd.
-            sudo service longview status   # For distributions without systemd.
+        sudo systemctl status longview   # For distributions with systemd.
+        sudo service longview status   # For distributions without systemd.
 
-        If the Longview client is not running, start it with one of the following commands, again depending on your distribution's init system.
+    If the Longview client is not running, start it with one of the following commands, again depending on your distribution's init system.
 
-            sudo systemctl start longview
-            sudo service longview start
+        sudo systemctl start longview
+        sudo service longview start
 
-2.  If the service fails to start, check Longview's log for errors. The log file is located in `/var/log/linode/longview.log`.
+    If the service fails to start, check Longview's log for errors. The log file is located in `/var/log/linode/longview.log`.
 
 ### Debug Mode
 
-1.  Start the Longview client in debug mode for increased logging verbosity. This is done by first stopping the client, then restarting it with the `debug` flag.
+Restart the Longview client in debug mode for increased logging verbosity.
+
+1.  First stop the Longview client:
 
         sudo systemctl stop longview   # For distributions with systemd.
         sudo service longview stop   # For distributions without systemd.
 
-    **CentOS**
+2.  Then restart Longview with the `debug` flag:
 
-        /opt/linode/longview/Linode/Longview.pl debug
+        sudo /etc/init.d/longview debug
 
-    **Debian or Ubuntu**
-
-        /etc/init.d/longview debug
-
-2.  Again review Longview's log for details and errors.
+3.  When you're finished collecting information, stop Longview and restart it again without the debug flag.
 
 ### Firewall Rules
 
@@ -263,7 +264,7 @@ If your Linode has a firewall, it must allow communication with Longview's aggre
 
     sudo ufw show added
 
-If the output of those commands show no rules for the Longview domain, then you must add them. See our [firewall documentation](https://linode.com/docs/security/firewalls/) for further instructions.
+If the output of those commands show no rules for the Longview domain, then you must add them. See our [firewall documentation](https://linode.com/docs/security/firewalls/) for more information.
 
 ### Verify API key
 
@@ -279,9 +280,11 @@ The API key given in the Linode Manager should match that on your system in `/et
 
 ### Cloned Keys
 
-If you clone a Linode which has Longview installed, you may encounter the following error: *Multiple clients appear to be posting data with this API key. Please check your clients' configuration.*
+If you clone a Linode which has Longview installed, you may encounter the following error:
 
-This is caused by both Linodes posting data using the same Longview key. To resolve it, reinstall Longview on the cloned system using the instructions [further above](/docs/platform/longview/longview/#install-the-longview-client).
+    Multiple clients appear to be posting data with this API key. Please check your clients' configuration.
+
+This is caused by both Linodes posting data using the same Longview key. To resolve it, reinstall Longview on the cloned system using the instructions [further above](/docs/platform/longview/longview/#install-the-longview-client). This will give the new Linode's system a Longview API key independent from the system which it was cloned from.
 
 ### Contact Support
 
