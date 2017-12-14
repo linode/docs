@@ -9,6 +9,7 @@ aliases: ['longview/', 'uptime/longview/']
 modified: 2017-12-13
 modified_by:
   name: Linode
+title: What is Longview and How to Use it
 published: 2013-03-27
 ---
 
