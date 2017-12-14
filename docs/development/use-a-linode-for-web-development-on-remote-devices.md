@@ -45,7 +45,7 @@ However, a simple remote development environment has its own disadvantages:
 
 ### The Hybrid Approach
 
-* Operating system agnostic. 
+* Operating system agnostic.
 * Flexibility to recreate any production scenario, but also workflow flexibility to adapt to any power user.
 * Security and data integrity.
 * Ability to scale power and storage on demand.
@@ -186,7 +186,7 @@ With everything set up it's time to work with your remote development environmen
 
         sudo docker ps
 
-11. You can work with your Docker containers through the command line as normal. The top of the virtual keyboard provides some shortcuts pre-defined for ease of use. 
+11. You can work with your Docker containers through the command line as normal. The top of the virtual keyboard provides some shortcuts pre-defined for ease of use.
 
     ![JuiceSSH Keyboard](/docs/assets/webdev-remote-devices/linode-on-remote-devices-24.png)
 
@@ -219,7 +219,6 @@ With everything set up it's time to work with your remote development environmen
 5. Enter your Linode's IP address or FQDN, desired label and username. Then select an authentication mode (you can use either a password or SSH keys).
 
 6. Touch your Linode connection and you will be forwarded to the remote directory structure. Find your nginx bind, then mount and open the `test.json` file.
- 
 
 ## Next Steps
 
