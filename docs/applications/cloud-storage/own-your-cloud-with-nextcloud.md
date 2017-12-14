@@ -69,7 +69,7 @@ gpgcheck=1
         MariaDB [(none)]> CREATE DATABASE nextcloud;
         MariaDB [(none)]> GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextclouduser'@'localhost' IDENTIFIED BY 'CREATE-PASSWORD-HERE' WITH GRANT OPTION;
         MariaDB [(none)]> FLUSH PRIVILEGES;
-        MariaDB [(none)]> quit 
+        MariaDB [(none)]> quit
 
 ## Install Apache Web Server
 
@@ -180,6 +180,6 @@ gpgcheck=1
 
 ## Where to Go from Here
 
-Once you have successfully installed you Nextcloud environment, you may want to further integrate it into an owned domain name or make adjustments to your web server to serve SSL encrypted pages. See Nextcloud's [Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl) guide to enable SSL. 
+Once you have successfully installed you Nextcloud environment, you may want to further integrate it into an owned domain name or make adjustments to your web server to serve SSL encrypted pages. See Nextcloud's [Enabling SSL](https://docs.nextcloud.com/server/12/admin_manual/installation/source_installation.html#enabling-ssl) guide to enable SSL.
 
 Although Apache was used as the web server in this guide, installing Nextcloud with nginx is possible as well. Navigate to the [Nextcloud nginx Configuration](https://docs.nextcloud.com/server/12/admin_manual/installation/nginx.html) documentation to setup Nextcloud with nginx.
