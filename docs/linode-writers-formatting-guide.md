@@ -51,9 +51,9 @@ title: 'Guide Title'
 contributor:
   name: Your Name
   link: Github/Twitter/LinkedIn URL
-  external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+external_resources:
+  - '[Link Title 1](http://www.example.com)'
+  - '[Link Title 2](http://www.example.net)'
 ---
 
 {{< /file-excerpt >}}
