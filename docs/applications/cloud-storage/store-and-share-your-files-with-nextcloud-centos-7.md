@@ -9,7 +9,7 @@ published: 2017-12-15
 modified: 2017-12-15
 modified_by:
   name: Linode
-title: 'Own Your Cloud With Nextcloud On CentOS 7'
+title: 'Store and Share your Files with Nextcloud on Centos 7'
 contributor:
   name: Andrew Lescher
   link: https://www.linkedin.com/in/andrew-lescher-87027940/
