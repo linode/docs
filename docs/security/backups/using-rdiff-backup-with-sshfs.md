@@ -54,8 +54,7 @@ Your backup server will be pulling data from remote devices by SSHFS, so SSH mus
 
 2.  Transfer the public key to the remote device to be backed up. Replace the IP address in the example below with that of your device:
 
-        ssh-copy-id user@remotehost
-
+        ssh-copy-id rdbadmin@192.0.2.0
 
 ## Configure an SSHFS Filesystem Mount
 
