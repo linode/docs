@@ -3,18 +3,19 @@ author:
     name: mouhsen_ibrahim
     email: mohsen47@hotmail.co.uk
 description: 'Using Nginx as a reverse proxy'
-keywords: 'nginx,proxy,reverse proxy'
+keywords: ["nginx","proxy","reverse proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: ''
-modified: ''
-modified_by: ''
+published: 2017-12-14
+modified: 2017-12-14
+modified_by:
+    name: Linode
 title: 'Nginx reverse proxy'
 contributor:
     name: Mouhsen Ibrahim
     link: https://github.com/mohsenSy
 external_resources:
-    - '[Nginx Documentation](https://nginx.org/en/docs)'
-    - '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
+  - '[Nginx Documentation](https://nginx.org/en/docs)'
+  - '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
 ---
 
 ## Introduction
@@ -62,7 +63,7 @@ reverse proxy, this directive can be added to any Nginx block as required.
 
 Let's say we have a site configuration called `example.conf` to define a reverse proxy in it we use:
 
-{{ < file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
+{{< file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
 location /example1 {
     proxy_pass http://www.example1.com/;
 }
@@ -86,7 +87,7 @@ directives when needed, however Nginx can proxy non-HTTP protocols using appropr
 
 {{< caution >}}
 DO NOT forget to add / to the end of URL in `proxy_pass` directive so Nginx can correctly generate a URL to be sent to the backend server.
-{{< caution >}}
+{{< /caution >}}
 
 In the following sections we will look at examples of using proxy_pass directive with different configurations.
 
@@ -221,13 +222,14 @@ it directly to the client which helps to optimize performance with slow clients,
 can be controlled with these directives `proxy_buffering`, `proxy_buffers` and `proxy_buffer_size`.
 The following shows an example
 
-{{< file-excerpt /etc/nginx/sites-enabled/example.conf nginx >}}
+{{< file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
 location /example1 {
     proxy_buffers 8 2k;
     proxy_buffer_size 2k;
     proxy_pass http://www.example1.com/;
 }
 {{< /file-excerpt >}}
+
 `proxy_buffering` directive is used to enable or disable buffering, it can be disabled with
 `proxy_buffering off;`, buffering is enabled by default.
 
@@ -241,4 +243,3 @@ In this tutorial we learned the basics of using Nginx as a reverse proxy to serv
 locations and from servers which are not exposed to the internet, we also learned about buffering responses
 from backend servers to Nginx and about using a specific IP address when connecting to the backend server
 and sending request headers to backend servers.
-----
