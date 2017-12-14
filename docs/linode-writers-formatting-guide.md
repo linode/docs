@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2014-01-15
 title: Linode Writer's Formatting Guide
+show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
