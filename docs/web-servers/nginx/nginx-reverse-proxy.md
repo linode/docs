@@ -1,7 +1,7 @@
 ---
 author:
-  name: mouhsen_ibrahim
-  email: mohsen47@hotmail.co.uk
+    name: mouhsen_ibrahim
+    email: mohsen47@hotmail.co.uk
 description: 'Using Nginx as a reverse proxy'
 keywords: 'nginx,proxy,reverse proxy'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -10,11 +10,11 @@ modified: ''
 modified_by: ''
 title: 'Nginx reverse proxy'
 contributor:
-  name: Mouhsen Ibrahim
-  link: https://github.com/mohsenSy
-  external_resources:
-- '[Nginx Documentation](https://nginx.org/en/docs)'
-- '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
+    name: Mouhsen Ibrahim
+    link: https://github.com/mohsenSy
+external_resources:
+    - '[Nginx Documentation](https://nginx.org/en/docs)'
+    - '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
 ---
 
 ## Introduction
