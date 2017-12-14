@@ -25,12 +25,12 @@ def test_yaml(md_filepath):
         req = requirements[requirement]
         if req['required']:
             assert requirement in parsed_yaml, 'YAML metadata missing required element: ' + requirement
-        if req['type'] is 'link':
+        if req['type'] == 'link':
             # Check external links have balanced brackets
             regexp = regex.compile(r'\[(.*)\]\((.*)\)')
             assert regex.match(regexp,parsed_yaml[requirement]), 'YAML metadata formatting error: ' + requirement
-        if req['type'] is 'date':
+        if req['type'] == 'date':
             try:
-                parse(str(parsed_yaml[requirement]))
+                d = parse(str(parsed_yaml[requirement]))
             except ValueError:
                 assert False, 'YAML metadata formatting error: ' + requirement + ' date parse failed.'
