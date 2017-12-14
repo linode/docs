@@ -12,9 +12,9 @@ title: 'Nginx reverse proxy'
 contributor:
   name: Mouhsen Ibrahim
   link: https://github.com/mohsenSy
-external_resources:
-  - '[Nginx Documentation](https://nginx.org/en/docs)'
-  - '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
+  external_resources:
+- '[Nginx Documentation](https://nginx.org/en/docs)'
+- '[Nginx Proxy Documentation](https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_pass)'
 ---
 
 ## Introduction
@@ -44,11 +44,11 @@ content and many other uses cases.
 ### Install Nginx
 If you are using a Debian based Linux distribution you can install Nginx with the following command
 
-`sudo apt-get install nginx`
+    sudo apt-get install nginx
 
 If you are using a Red Hat based Linux distribution you can install Nginx with these two commands
 
-`sudo yum install epel-release && sudo yum install nginx`
+    sudo yum install epel-release && sudo yum install nginx
 
 The rest of this tutorial applies to both Debian and Red Hat based distributions without any modifications.
 
@@ -62,16 +62,14 @@ reverse proxy, this directive can be added to any Nginx block as required.
 
 Let's say we have a site configuration called `example.conf` to define a reverse proxy in it we use:
 
-{: .file-excerpt }
-/etc/nginx/sites-enabled/example.conf
-:   ~~~ nginx
-    location /example1 {
-      proxy_pass http://www.example1.com/;
-    }
-    location /example2 {
-      proxy_pass http://www.example2.com/;
-    }
-    ~~~
+{{ < file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
+location /example1 {
+    proxy_pass http://www.example1.com/;
+}
+location /example2 {
+    proxy_pass http://www.example2.com/;
+}
+{{< /file-excerpt >}}
 
 The above configuration file defines two reverse proxies based on the URL.
 
@@ -99,9 +97,7 @@ Let's say we have two configuration files one for example.com and the other for 
 
 The first one is for serving the site and the other is for serving its static assets.
 
-{: .file }
-/etc/nginx/sites-enabled/example.com.conf
-:   ~~~ nginx
+{{< file "/etc/nginx/sites-enabled/example.com.conf" >}}
 server {
     listen 80;
     listen [::]:80;
@@ -112,22 +108,20 @@ server {
             proxy_pass http://localhost:8080/app/;
     }
 }
-    ~~~
+{{< /file >}}
 
-    {: .file }
-    /etc/nginx/sites-enabled/assets.example.com.conf
-    :   ~~~ nginx
-    server {
-        listen 80;
-        listen [::]:80;
+{{< file "/etc/nginx/sites-enabled/assets.example.com.conf" >}}
+server {
+    listen 80;
+    listen [::]:80;
 
-        server_name assets.example.com;
+    server_name assets.example.com;
 
-        location / {
-                proxy_pass http://localhost:8080/assets/;
-        }
+    location / {
+            proxy_pass http://localhost:8080/assets/;
     }
-        ~~~
+}
+{{< /file >}}
 
 So here a request to `example.com` will be served from the web server listening
 on port 8080 and running on localhost after adding `/app/` to the start of URL and a request to `assets.example.com` will be served from
@@ -143,9 +137,7 @@ the end of URL to make sure Nginx can generate the right URL when accessing back
 ### Use Different Ports
 Sometimes we might have a server running on a port in the private network and we want to use Nginx to access it, we can achieve as follows.
 
-{: .file }
-/etc/nginx/sites-enabled/elasticsearch.conf
-:   ~~~ nginx
+{{< file "/etc/nginx/sites-enabled/elasticsearch.conf" >}}
 server {
     listen 80;
 
@@ -157,23 +149,21 @@ server {
             auth_basic_user_file /etc/nginx/.elastic.htpasswd;
     }
 }
-    ~~~
+{{< /file >}}
 
-    {: .file }
-    /etc/nginx/sites-enabled/kibana.conf
-    :   ~~~ nginx
-    server {
-        listen 80;
+{{< file "/etc/nginx/sites-enabled/kibana.conf" >}}
+server {
+    listen 80;
 
-        server_name kibana.example.com;
+    server_name kibana.example.com;
 
-        location / {
-                proxy_pass http://kibana_host:5681/;
-                auth_basic "Private Property";
-                auth_basic_user_file /etc/nginx/.kibana.htpasswd;
-        }
+    location / {
+            proxy_pass http://kibana_host:5681/;
+            auth_basic "Private Property";
+            auth_basic_user_file /etc/nginx/.kibana.htpasswd;
     }
-        ~~~
+}
+{{< /file >}}
 
 In this case a request to `elasticsearch.example.com` will be served from `http://elastic_host:9200/`
 where an elasticsearch server is running on host called elastic_host, and if the request is for
@@ -183,18 +173,16 @@ running on a host called kibana_host.
 The `auth_basic` and `auth_basic_user_file` directives are used to force authentication using username and password
 before accessing the backend server.
 
-{: .note}
->
-> For more information about `auth_basic` and `auth_basic_user_file` directives check [this](http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html).
+{{< note >}}
+For more information about `auth_basic` and `auth_basic_user_file` directives check [this](http://nginx.org/en/docs/http/ngx_http_auth_basic_module.html).
+{{< /note >}}
 
 ### Passing Request Headers to Backend Servers
 Sometimes your web application needs to know the real IP address of the user who is visiting your website,
 in case of a reverse proxy the backend server only sees the proxy IP address, This can be solved by passing
 the IP address of the client using HTTP request headers, the `proxy_set_header` directive is used for this.
 
-{: .file }
-/etc/nginx/sites-enabled/example.com.conf
-:   ~~~ nginx
+{{< file "/etc/nginx/sites-enabled/example.com.conf" >}}
 server {
     listen 80;
 
@@ -206,7 +194,7 @@ server {
             proxy_pass http://example.org:9200/;
     }
 }
-    ~~~
+{{< /file >}}
 
 The `$remote_addr` and `$host` are built-in variables for Nginx, the first one holds the IP address of the client and the second one
 contains the hostname for the request, you can find more about those variables [here](https://nginx.org/en/docs/varindex.html).
@@ -217,14 +205,12 @@ and your proxy server has multiple network interfaces then you want your reverse
 the right source IP address when connecting to a backend server, this can be achieved with `proxy_bind`
 directive as showed next
 
-{: .file-excerpt }
-/etc/nginx/sites-enabled/example.conf
-:   ~~~ nginx
-    location /example1 {
-      proxy_bind 192.0.2.1;
-      proxy_pass http://www.example1.com/;
-    }
-    ~~~
+{{< file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
+location /example1 {
+    proxy_bind 192.0.2.1;
+    proxy_pass http://www.example1.com/;
+}
+{{< /file-excerpt >}}
 
 Now when your reverse proxy connects with the backend server it will use the source IP address
 specified in the directive which is `192.0.2.1`.
@@ -235,15 +221,13 @@ it directly to the client which helps to optimize performance with slow clients,
 can be controlled with these directives `proxy_buffering`, `proxy_buffers` and `proxy_buffer_size`.
 The following shows an example
 
-{: .file-excerpt }
-/etc/nginx/sites-enabled/example.conf
-:   ~~~ nginx
-    location /example1 {
-      proxy_buffers 8 2k;
-      proxy_buffer_size 2k;
-      proxy_pass http://www.example1.com/;
-    }
-    ~~~
+{{< file-excerpt /etc/nginx/sites-enabled/example.conf nginx >}}
+location /example1 {
+    proxy_buffers 8 2k;
+    proxy_buffer_size 2k;
+    proxy_pass http://www.example1.com/;
+}
+{{< /file-excerpt >}}
 `proxy_buffering` directive is used to enable or disable buffering, it can be disabled with
 `proxy_buffering off;`, buffering is enabled by default.
 
@@ -255,7 +239,6 @@ above there are 8 buffers with each one 2 kilobytes in size.
 ## Conclusion
 In this tutorial we learned the basics of using Nginx as a reverse proxy to serve content from multiple
 locations and from servers which are not exposed to the internet, we also learned about buffering responses
-from backend servers to Nginx and about using a specific IP address when connecting to the backend server and sending
-request headers to backend servers.
-
+from backend servers to Nginx and about using a specific IP address when connecting to the backend server
+and sending request headers to backend servers.
 ----
