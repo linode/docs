@@ -222,51 +222,33 @@ Most Linux distributions install with running network services which listen for 
 
 To see your Linode's running network services:
 
-    sudo ss -lnp
+    sudo ss -atpu
 
-
-The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
+The following is an example of the output given by `ss`, and shows that the SSH daemon (sshd) is listening and connected. Note that because distributions run different services by default, your output will differ.
 
     {{< output >}}
-Netid  State      Recv-Q Send-Q                                Local Address:Port                                               Peer Address:Port
-nl     UNCONN     0      0                                                 0:0                                                              *
-nl     UNCONN     768    0                                                 4:0                                                              *
-nl     UNCONN     4352   0                                                 4:3971                                                           *
-nl     UNCONN     0      0                                                 6:0                                                              *
-nl     UNCONN     0      0                                                 9:0                                                              *
-...
-u_dgr  UNCONN     0      0                                                 * 8701                                                          * 8700                users:(("systemd",pid=1,fd=54))
-u_dgr  UNCONN     0      0                                                 * 12586                                                         * 12585               users:(("systemd-timesyn",pid=3245,fd=10))
-u_dgr  UNCONN     0      0                                                 * 8700                                                          * 8701                users:(("systemd",pid=1,fd=53))
-u_dgr  UNCONN     0      0                                                 * 14944                                                         * 14945               users:(("systemd",pid=3868,fd=14))
-u_dgr  UNCONN     0      0                                                 * 14945                                                         * 14944               users:(("systemd",pid=3868,fd=15))
-u_dgr  UNCONN     0      0                                                 * 14916                                                         * 8716                users:(("systemd",pid=3868,fd=3))
-u_dgr  UNCONN     0      0                                                 * 14888                                                         * 8723                users:(("(sd-pam",pid=3909,fd=7))
-tcp    LISTEN     0      128                                               *:22                                                            *:*                   users:(("sshd",pid=3849,fd=3))
-tcp    LISTEN     0      128                                              :::22                                                           :::*                   users:(("sshd",pid=3849,fd=4))
+Netid State   Recv-Q Send-Q   Local Address:Port   Peer Address:Port
+tcp   LISTEN     0      128               *:ssh               *:*        users:(("sshd",pid=3675,fd=3))
+tcp   ESTAB      0      208     203.0.113.1:ssh    198.51.100.2:54820    users:(("sshd",pid=3698,fd=3))
+tcp   LISTEN     0      128              :::ssh              :::*        users:(("sshd",pid=3675,fd=4))
 {{< /output >}}
-
-`ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 
 #### TCP
 
-See the **Local Address** column of the `ss` readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+See the **Local Address:Port** column of the `ss` readout. The process `sshd` is listening on `*:ssh`, which translates into any incoming IPv4 address to port 22, and over any network interface. The next line shows an established SSH connection from IP address 203.0.113.1 via port 22. The last line, `:::ssh` denotes the `sshd` process listening for any incoming SSH connections over IPv6 to port 22, and again over any network interface.
 
 #### UDP
 
-UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*.
-
+UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*. The `ss` output above shows no UDP connections.
 
 
 ### Determine Which Services to Remove
 
-If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By [configuring a firewall](#configure-a-firewall) you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.
+A basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled would show SSH and possibly other services listening for incoming connections. By [configuring a firewall](#configure-a-firewall) you can filter those ports to your requirements. Ideally, the unused services should be disabled.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
+You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
 
-* An NTP daemon is one option for your server's timekeeping but there are alternatives. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
-
-* Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
+However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
 
 ### Uninstall the Listening Services
@@ -289,7 +271,7 @@ How to remove the offending packages will differ depending on your distribution'
 
     sudo dnf remove package_name
 
-Run `ss -lpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
+Run `ss -atup` again to verify everything is how you want.
 
 ## Configure a Firewall
 
