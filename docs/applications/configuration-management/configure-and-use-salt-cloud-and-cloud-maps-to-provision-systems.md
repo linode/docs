@@ -15,6 +15,8 @@ contributor:
   name: Sergey Bulavintsev
 ---
 
+![Salt Cloud](/docs/assets/saltcloud/SaltCloud.jpg)
+
 ## What is Salt Cloud?
 
 [Salt Cloud](https://docs.saltstack.com/en/latest/topics/cloud/) is a configuration management tool that allows users to provision systems on cloud hosts or hypervisors. During installation, Salt Cloud installs Salt on all provisioned systems by default. This enables the user to put systems into the desired state during provisioning.
