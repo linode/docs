@@ -333,7 +333,7 @@ This is a sample note.
 
     {{</* caution */>}}
     This is a sample caution.
-    {{</* caution */>}}
+    {{</* /caution */>}}
 
 {{< caution >}}
 This is a sample caution.
