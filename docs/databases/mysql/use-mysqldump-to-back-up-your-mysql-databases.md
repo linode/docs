@@ -53,11 +53,11 @@ Entries can be added to `/etc/crontab` to regularly schedule database backups. T
 
 - To back up the entire database management system every day at 1am. Replace `root` and `PASSWORD` with the username and password you would like to run the backup as.
 
-        0 1 * * * /usr/bin/mysqldump --all-databases > full-$(date +%F).sql -u root -p PASSWORD
+        0 1 * * * /usr/bin/mysqldump --all-databases > full-$(date +\%F).sql -u root -p PASSWORD
 
 - To schedule only a database backup of `db1`:
 
-        0 1 * * * /usr/bin/mysqldump db1 > db1-backup-$(date +%F).sql -u root -p PASSWORD
+        0 1 * * * /usr/bin/mysqldump db1 > db1-backup-$(date +\%F).sql -u root -p PASSWORD
 
 ## Restoring a Backup
 
