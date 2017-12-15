@@ -235,7 +235,7 @@ tcp   LISTEN     0      128              :::ssh              :::*        users:(
 
 #### TCP
 
-See the **Local Address:Port** column of the `ss` readout. The process `sshd` is listening on `*:ssh`, which translates into any incoming IPv4 address to port 22, and over any network interface. The next line shows an established SSH connection from IP address 203.0.113.1 via port 22. The last line, `:::ssh` denotes the `sshd` process listening for any incoming SSH connections over IPv6 to port 22, and again over any network interface.
+See the **Peer Address:Port** column of the `ss` readout. The process `sshd` is listening on `*:*`, which translates into any incoming IPv4 address to any port, and over any network interface. The next line shows an established SSH connection from IP address 198.51.100.2 via ephemeral port 54820. The last line, `:::*` denotes the `sshd` process listening for any incoming SSH connections over IPv6 to any port, and again over any network interface.
 
 #### UDP
 
