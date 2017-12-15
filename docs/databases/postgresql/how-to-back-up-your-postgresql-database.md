@@ -3,7 +3,7 @@ author:
   name: Jared Kobos
   email: docs@linode.com
 description: 'Two to three sentences describing your guide.'
-keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump']
+keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-27
 modified: 2017-11-27
@@ -14,7 +14,7 @@ external_resources:
 - '[PostgreSQL Documentation](https://www.postgresql.org/docs/9.1/static/)'
 ---
 
-If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you will be able to quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools that make this task simple and easy to manage.
+If you are using PostgreSQL in a production environment, it is important to take precautions to ensure that your users' data is not lost. By frequently backing up your database, and/or automating backups with a cron task, you will be able to quickly restore your system in the event that your database is lost or corrupted. Fortunately, PostgreSQL includes tools to make this task simple and easy to manage.
 
 ## Before You Begin
 
@@ -28,7 +28,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ### Single Database
 
-PostgreSQL provides the `pg_dump` utility to simplify the process of backing up a single database. This command must be run as a user that has read access to the database you intend to back up.
+PostgreSQL provides the `pg_dump` utility to simplify backing up a single database. This command must be run as a user with read permissions to the database you intend to back up.
 
 1.  Log in as the `postgres` user:
 
@@ -49,7 +49,13 @@ PostgreSQL provides the `pg_dump` utility to simplify the process of backing up 
 
         psql test < dbname.bak
 
-{{< note >}}
+    There are several options for the backup format:
+
+     - `*.bak`: compressed binary format
+     - `*.sql`: plaintext dump
+     - `*.tar`: tarball
+
+    {{< note >}}
 By default, PostgreSQL will ignore any errors that occur during the backup process. This can result in an incomplete backup. To prevent this, you can run the `pg_dump` command with the `-1` option. This will treat the entire backup procedure as a single transaction, which will prevent partial backups in the event of an error:
 
     pg_dump -1 dbname > dbname.bak
@@ -99,4 +105,6 @@ You may want to set up a cron job so that your database will be backed up automa
 
 ## Next Steps
 
-PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it will maintain a constant archive of your database and make it possible to essentially replay PostgreSQL's logs to recover the state of the database at any point in the past. This method can also be helpful if you have a very large database; continuously archiving a large database consumes resources, but it is an ongoing process. As a result, there is no need to make full backups frequently, wwhich can be time consuming.
+PostgreSQL also offers more advanced ways to back up your databases. The [official docs](https://www.postgresql.org/docs/9.1/static/continuous-archiving.html) describe how to set up continuous archiving and point-in-time recovery. This is a much more complex process, but it will maintain a constant archive of your database and make it possible replay PostgreSQL's logs to recover the state of the database at any point in the past.
+
+This method can also be helpful if you have a very large database although continuously archiving a large database consumes resources. Since the process is ongoing, there is no need to make frequent and time consuming full backups.
