@@ -21,19 +21,28 @@ This method is known as making a *physical backup*, and is often necessary in si
 
 For simplification, the name MySQL will be used throughout this guide but the instructions will work for both MySQL and MariaDB.
 
-{{< caution >}}
-If you're attempting this method directly on your running system (in other words, if you are not mounting the disks through a recovery method), ensure that the MySQL service is stopped during both backup and restore!
-{{< /caution >}}
+{{< note >}}
+The steps in this guide require root privileges. Log in as the root user with `su -` before you begin.
+{{< /note >}}
 
 ## Create a Backup
 
-1.  Locate your database directory. It should be `/var/lib/mysql/` on most systems but if that directory doesn't exist, examine `/etc/mysql/my.cnf` for a path to the data directory.
+1.  If you are not running in recovery mode, stop the `mysql` service:
 
-2.  Copy MySQL's data directory to a storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. The following example assumes that the MySQL data directory is located at `/var/lib/mysql/`, and `/opt/db-backups/` is the target directory. Change the backup's name and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
+        systemctl stop mysql
+
+
+2.  Locate your database directory. It should be `/var/lib/mysql/` on most systems but if that directory doesn't exist, examine `/etc/mysql/my.cnf` for a path to the data directory.
+
+3.  Create a directory to store your backups. This guide will use `/opt/backups` but you can alter this to suit your needs:
+
+        mkdir /opt/db-backups
+
+4.  Copy MySQL's data directory to a storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. Change the database directory, backup filename, and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
 
         tar cfvz /opt/db-backups/db-$(date +%F).tar.gz /var/lib/mysql/*
 
-3.  Restart the MySQL service:
+5.  Restart the MySQL service:
 
         systemctl restart mysql
 
@@ -43,23 +52,27 @@ If you're attempting this method directly on your running system (in other words
 
         cd
 
-2.  Extract the tarball to the working directory. Change the tarball's filename in the command to the one with the date you want to restore to.
+2.  Stop the `mysql` service:
+
+        systemctl stop mysql
+
+3. Extract the tarball to the working directory. Change the tarball's filename in the command to the one with the date you want to restore to.
 
         tar zxvf /opt/db-backups/db-archive.tar.gz -C .
 
-3.  Move the current contents of `/var/lib/mysql` to another location if you want to keep them for any reason. Or you could delete the contents entirely. Then create a new empty `mysql` folder to restore your backed up DMBS into.
+4.  Move the current contents of `/var/lib/mysql` to another location if you want to keep them for any reason, or delete them entirely. Create a new empty `mysql` folder to restore your backed up DMBS into.
 
-        mv /var/lib/mysql /var/lib/mysql-bad
+        mv /var/lib/mysql /var/lib/mysql-old
         mkdir /var/lib/mysql
 
-4.  Copy the backed up database system to the empty folder. Remember, you extracted it to your current user's home directory.
+5.  Copy the backed up database system to the empty folder:
 
         mv ~/var/lib/mysql/* /var/lib/mysql
 
-5.  Set the proper permissions for the files you just restored:
+6.  Set the proper permissions for the files you just restored:
 
         chown -R mysql:mysql /var/lib/mysql
 
-6.  Restart the MySQL service:
+7.  Restart the MySQL service:
 
         systemctl restart mysql

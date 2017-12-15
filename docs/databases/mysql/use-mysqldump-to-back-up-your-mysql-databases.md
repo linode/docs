@@ -18,7 +18,7 @@ external_resources:
 
 ![Use mysqldump to Back Up Your MySQL or MariaDB Database](/docs/assets/back_up_your_mysql-databases.png "Use mysqldump to Back Up Your MySQL Database")
 
-[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) provide the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database, or system of databases. Using mysqldump is a form of *logical backup*, as opposed to *physical backup*, which is a copy of the filesystem structure which contains your data. For simplification, the name MySQL will be used throughout this guide when the instructions apply to both MySQL and MariaDB.
+[MySQL](http://www.mysql.com/) and [MariaDB](https://mariadb.com/) provide the [mysqldump](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html) utility to simplify the process of backing up a database or system of databases. Using `mysqldump` is a form of *logical backup*, as opposed to a *physical backup*, which is a copy of the filesystem structure which contains your data. For simplification, the name MySQL will be used throughout this guide when the instructions apply to both MySQL and MariaDB.
 
 
 ## Before You Begin
@@ -31,9 +31,9 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Back up a Database
 
-The backup command's general syntax is shown below. You will be prompted for a password before `mysqldump` begins it's backup process. Depending on the size of the database, it could take a while to complete. The database backup will be created in the directory the command is run from, and the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
+The backup command's general syntax is shown below. You will be prompted for a password before `mysqldump` begins the backup process. Depending on the size of the database, it could take a while to complete. The database backup will be created in the directory the command is run from, and the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
 
-    mysql -u [username] -p [databaseName] > [filename].sql
+    mysqldump -u [username] -p [databaseName] > [filename].sql
 
  - Create a backup of an entire database management system:
 
@@ -51,13 +51,13 @@ The backup command's general syntax is shown below. You will be prompted for a p
 
 Entries can be added to `/etc/crontab` to regularly schedule database backups. The mysqldump command must be able to run without any user input, so it's important that the syntax of the username and password are given correctly. There should be no space between the `-p` flag and the password.
 
-- To back up the entire database management system at 1am. Replace `root` and `PASSWORD` with the username and password you would like to run the backup as.
+- To back up the entire database management system every day at 1am. Replace `root` and `PASSWORD` with the username and password you would like to run the backup as.
 
-        0 1 * * * /usr/bin/mysqldump --all-databases > full-$(date +%F).sql -u root -pPASSWORD
+        0 1 * * * /usr/bin/mysqldump --all-databases > full-$(date +%F).sql -u root -p PASSWORD
 
-- To schedule only a database backup of `db1`, like was done further above:
+- To schedule only a database backup of `db1`:
 
-        0 1 * * * /usr/bin/mysqldump db1 > db1-backup-$(date +%F).sql -u root -pPASSWORD
+        0 1 * * * /usr/bin/mysqldump db1 > db1-backup-$(date +%F).sql -u root -p PASSWORD
 
 ## Restoring a Backup
 
