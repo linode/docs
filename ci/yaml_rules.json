@@ -48,7 +48,15 @@
         "required": false,
         "elements": false,
         "type":"text"
-        }
+        },
+	"comments": {
+		"required": false,
+		"elements": false,
+		"type": "bool"
+	},
+	"show_on_rss_feed": {
+		"required": false,
+		"elements": false,
+		"type": "bool"
+	}	
 }
-
-

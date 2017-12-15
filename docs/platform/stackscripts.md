@@ -48,6 +48,10 @@ Alternatively, you can follow along with this video, which will show you how to 
 
 ### Using a Community StackScript
 
+{{< note >}}
+There is no default logging when using a StackScript. Output is sent to the console.
+{{< /note >}}
+
 1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the drop down menu and keywords field to narrow your search to match your distribution and goal:
 
     [![A search.](/docs/assets/1509-stackscripts_search_small.png)](/docs/assets/1510-stackscripts_search.png)

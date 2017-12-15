@@ -104,7 +104,7 @@ Installing fail2ban is entirely optional, however ISPConfig can manage this serv
 
     yum install fail2ban
 
-More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-for-security).
+More information regarding fail2ban can be found in our [fail2ban guide](/docs/security/using-fail2ban-for-security/).
 
 # Installing ISPConfig
 

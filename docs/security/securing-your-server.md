@@ -7,9 +7,9 @@ og_description: 'This guide serves as a starting point from which to secure your
 keywords: ["security", "secure", "firewall", "ssh", "add user", "quick start"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['securing-your-server/','security/linux-security-basics/','security/basics/','security/securing-your-server/index.cfm/']
-modified: 2017-10-27
+modified: 2017-12-14
 modified_by:
-  name: Linode
+  name: Jared Kobos
 published: 2012-02-17
 title: How to Secure Your Server
 ---
@@ -56,7 +56,7 @@ To add a new user, first [log in to your Linode](/docs/getting-started#log-in-fo
         usermod -aG wheel example_user
 
        {{< caution >}}
-       In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
+In CentOS 6 a wheel group is disabled by default for sudo access. You must to configure it manually. Type from root: `/usr/sbin/visudo`. Then find the line `# %wheel` and uncomment this line. To began typing in vi, press `a`. To save and exit press `Escape`, then type `:w`(press enter), `:q`(press enter)
 {{< /caution >}}
 
 ### Ubuntu
@@ -83,13 +83,13 @@ To add a new user, first [log in to your Linode](/docs/getting-started#log-in-fo
 
         adduser example_user sudo
 
-After creating your limited user, disconnect from your Linode:
+4.  After creating your limited user, disconnect from your Linode:
 
-    exit
+    	exit
 
-Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
+5.  Log back in as your new user. Replace `example_user` with your username, and the example IP address with your Linode's IP address:
 
-    ssh example_user@203.0.113.10
+    	ssh example_user@203.0.113.10
 
 Now you can administer your Linode from your new user account instead of `root`. Nearly all superuser commands can be executed with `sudo` (example: `sudo iptables -L -nv`) and those commands will be logged to `/var/log/auth.log`.
 
@@ -212,7 +212,7 @@ You may want to leave password authentication enabled if you connect to your Lin
 
 Fail2Ban can monitor a variety of protocols including SSH, HTTP, and SMTP. By default, Fail2Ban monitors SSH only, and is a helpful security deterrent for any server since the SSH daemon is usually configured to run constantly and listen for connections from any remote IP address.
 
-For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban](/docs/security/using-fail2ban-for-security).
+For complete instructions on installing and configuring Fail2Ban, see our guide: [Securing Your Server with Fail2ban](/docs/security/using-fail2ban-for-security/).
 
 ## Remove Unused Network-Facing Services
 
@@ -222,54 +222,33 @@ Most Linux distributions install with running network services which listen for 
 
 To see your Linode's running network services:
 
-    sudo ss -lnp
+    sudo ss -atpu
 
-
-The following is an example of the output given by `ss`. Note that because distributions run different services by default, your output will differ.
+The following is an example of the output given by `ss`, and shows that the SSH daemon (sshd) is listening and connected. Note that because distributions run different services by default, your output will differ.
 
     {{< output >}}
-Active Internet connections (only servers)
-Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
-tcp        0      0 0.0.0.0:5355            0.0.0.0:*               LISTEN      3539/systemd-resolv
-tcp        0      0 127.0.0.53:53           0.0.0.0:*               LISTEN      3539/systemd-resolv
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      3913/sshd
-tcp6       0      0 :::5355                 :::*                    LISTEN      3539/systemd-resolv
-tcp6       0      0 :::22                   :::*                    LISTEN      3913/sshd
-udp        0      0 127.0.0.53:53           0.0.0.0:*                           3539/systemd-resolv
-udp        0      0 0.0.0.0:5355            0.0.0.0:*                           3539/systemd-resolv
-udp6       0      0 :::5355                 :::*                                3539/systemd-resolv
-Active UNIX domain sockets (only servers)
-Proto RefCnt Flags       Type       State         I-Node   PID/Program name     Path
-unix  2      [ ACC ]     STREAM     LISTENING     8717     1/init               /run/systemd/journal/stdout
-unix  2      [ ACC ]     SEQPACKET  LISTENING     8728     1/init               /run/udev/control
-unix  2      [ ACC ]     STREAM     LISTENING     8734     1/init               /run/systemd/fsck.progress
-unix  2      [ ACC ]     STREAM     LISTENING     15990    3974/systemd         /run/user/0/systemd/private
-unix  2      [ ACC ]     STREAM     LISTENING     13007    1/init               /run/uuidd/request
-unix  2      [ ACC ]     STREAM     LISTENING     13010    1/init               /var/run/dbus/system_bus_socket
-unix  2      [ ACC ]     STREAM     LISTENING     8700     1/init               /run/systemd/private
+Netid State   Recv-Q Send-Q   Local Address:Port   Peer Address:Port
+tcp   LISTEN     0      128               *:ssh               *:*        users:(("sshd",pid=3675,fd=3))
+tcp   ESTAB      0      208     203.0.113.1:ssh    198.51.100.2:54820    users:(("sshd",pid=3698,fd=3))
+tcp   LISTEN     0      128              :::ssh              :::*        users:(("sshd",pid=3675,fd=4))
 {{< /output >}}
-
-`ss` tells us that services are running for [Remote Procedure Call](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call) (rpc.statd and rpcbind), SSH (sshd), [NTPdate](http://support.ntp.org/bin/view/Main/SoftwareDownloads) (ntpd) and [Exim](http://www.exim.org/) (exim4).
 
 #### TCP
 
-See the **Local Address** column of the `ss` readout. The process `rpcbind` is listening on `0.0.0.0:111` and `:::111` for a foreign address of `0.0.0.0:*` or `:::*`. This means that it's accepting incoming TCP connections from other RPC clients on any external address, both IPv4 and IPv6, from any port and over any network interface. We see similar for SSH, and that Exim is listening locally for traffic from the loopback interface, as shown by the `127.0.0.1` address.
+See the **Peer Address:Port** column of the `ss` readout. The process `sshd` is listening on `*:*`, which translates into any incoming IPv4 address to any port, and over any network interface. The next line shows an established SSH connection from IP address 198.51.100.2 via ephemeral port 54820. The last line, `:::*` denotes the `sshd` process listening for any incoming SSH connections over IPv6 to any port, and again over any network interface.
 
 #### UDP
 
-UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*.
-
+UDP sockets are *[stateless](https://en.wikipedia.org/wiki/Stateless_protocol)*, meaning they are either open or closed and every process's connection is independent of those which occurred before and after. This is in contrast to TCP connection states such as *LISTEN*, *ESTABLISHED* and *CLOSE_WAIT*. The `ss` output above shows no UDP connections.
 
 
 ### Determine Which Services to Remove
 
-If you were to do a basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled, SSH, RPC and NTPdate would be present in the result with ports open. By [configuring a firewall](#configure-a-firewall) you can filter those ports, with the exception of SSH because it must allow your incoming connections. Ideally, however, the unused services should be disabled.
+A basic TCP and UDP [nmap](https://nmap.org/) scan of your Linode without a firewall enabled would show SSH and possibly other services listening for incoming connections. By [configuring a firewall](#configure-a-firewall) you can filter those ports to your requirements. Ideally, the unused services should be disabled.
 
-* You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH.
+You will likely be administering your server primarily through an SSH connection, so that service needs to stay. As mentioned above, [RSA keys](/docs/security/securing-your-server/#create-an-authentication-key-pair) and [Fail2Ban](/docs/security/securing-your-server/#use-fail2ban-for-ssh-login-protection) can help protect SSH. System services like `chronyd`, `systemd-resolved`, and `dnsmasq` are usually listening on localhost and only occasionally contacting the outside world. Services like this are part of your operating system and will cause problems if removed and not properly substituted.
 
-* An NTP daemon is one option for your server's timekeeping but there are alternatives. If you prefer a time synchronization method which does not hold open network ports, and you do not need nanosecond accuracy, then you may be interested in replacing NTPdate with [OpenNTPD](https://en.wikipedia.org/wiki/OpenNTPD).
-
-* Exim and RPC, however, are unnecessary unless you have a specific use for them, and should be removed.
+However, some services are unnecessary and should be removed unless you have a specific need for them. Some examples could be [Exim](https://www.exim.org/), [Apache](https://httpd.apache.org/) and [RPC](https://en.wikipedia.org/wiki/Open_Network_Computing_Remote_Procedure_Call).
 
 
 ### Uninstall the Listening Services
@@ -292,7 +271,7 @@ How to remove the offending packages will differ depending on your distribution'
 
     sudo dnf remove package_name
 
-Run `ss -lpn` again. You should now only see listening services for SSH (sshd) and NTP (ntpdate, network time protocol).
+Run `ss -atup` again to verify that the unwanted services are no longer running.
 
 ## Configure a Firewall
 

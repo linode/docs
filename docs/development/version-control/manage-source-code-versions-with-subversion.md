@@ -232,7 +232,7 @@ In the following setup we've granted access to the `morris` Subversion repositor
 
 In this configuration, all requests for `http://svn.example.com/` will be directed to `mod_dav_svn`. In a web browser this will provide an overview of the most recent revision of the repository. Note that this setup provides *unencrypted* access to your repository over `http`.
 
-If you want secure, encrypted access to your data, configure Apache to [serve content with SSL](/docs/web-servers/apache/ssl-guides/).
+If you want secure, encrypted access to your data, configure Apache to [serve content with SSL](/docs/security/ssl/).
 
 Once your certificate files are in place set up the virtual host to respond to requests on port `443` rather than `80`. An SSL enabled virtual host might resemble the following:
 

@@ -9455,7 +9455,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file dt:before small,
 .file dt:before .small {
@@ -9492,7 +9491,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file-excerpt dt:before small,
 .file-excerpt dt:before .small {
@@ -10404,7 +10402,7 @@ body.modal-open,
   }
 }
 .form-control {
-  padding: 10px;
+  padding-top: 8px;
   border: 1px solid #e7e6e6;
   border-radius: 0px;
   -moz-border-radius: 0px;
@@ -20695,7 +20693,7 @@ div.library-tile .tile-title + .lead {
   font-size: 14px;
   font-size: 19px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 #doc-sidebar-title small,
 #doc-sidebar-title .small {
@@ -20725,6 +20723,7 @@ div.library-tile .tile-title + .lead {
 .sidebar-library nav > ul > li > ul > li {
   padding-left: 0;
   display: block;
+  line-height: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -20929,6 +20928,7 @@ li.library-article-item:nth-child(odd) {
 }
 .hubspot-container {
   background-color: #ebeff0;
+  width: 80%;
 }
 .hubspot-form .input {
   padding-bottom: 20px;

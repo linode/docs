@@ -6,7 +6,7 @@ author:
 description: 'How to prepare and submit a request for a commercially-signed SSL certificate.'
 keywords: ["openssl", "commercial ssl cert", "apache ssl", "ssl linux"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['security/ssl-certificates/commercial/']
+aliases: ['security/ssl-certificates/commercial/','websites/ssl/obtaining-a-commercial-ssl-certificate/']
 modified: 2016-08-17
 modified_by:
   name: Nick Brewer

@@ -137,10 +137,10 @@ The menu only displays Linodes hosted in the same data center as the current Lin
     If Network Helper is turned off *and* you've [configured a static IP address](/docs/networking/linux-static-ip-configuration), you'll need to update the configuration for the new addresses, or turn Network Helper on.
 
     {{< note >}}
-If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command:
+If the IP is unreachable after a few minutes, you may need to notify the router directly of the IP change with the `arp` command run on your Linode:
 
-arping -c5 -I eth0 -b -A -s 198.51.100.10 198.51.100.1
-ping -c5 -I 198.51.100.10 198.51.100.1
+arping -c5 -I eth0 -S 198.51.100.10 198.51.100.1
+ping -c5 198.51.100.10 198.51.100.1
 
 Replace `198.51.100.10` with your new IP address, and `198.51.100.1` with the gateway address listed in your Remote Access tab under "Default Gateways".
 {{< /note >}}
@@ -168,7 +168,7 @@ You can use the Linode Manager to add additional public IP addresses to your acc
 
 ## Console Access
 
-The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/troubleshooting/using-lish-the-linode-shell).
+The Lish console allows you to access your Linode at any time, even if you've messed up your network settings. To access Lish, use the Lish console or an SSH client application installed on your computer. For more information about Lish, including usage tips, see [Using the Linode Shell](/docs/networking/using-the-linode-shell-lish/).
 
 ### Using the Lish Console
 

@@ -11,21 +11,18 @@ modified: 2017-11-30
 modified_by:
   name: Jared Kobos
 title: "Contribute to Linode"
+show_on_rss_feed: false
 ---
 
 {{< topics >}}
-* How to Benchmark your Linode
 * Advanced Caddy Configuration
 * Use Caddy as a Reverse Proxy
 * Introduction to the Kubernetes Scheduler
-* Build a Stream API with Kafka
 
 {{< /topics >}}
 
 {{< topics >}}
-* Introduction to Websockets
 * Manage a Docker Cluster with Kubernetes
-* Set Up a Tor Server
+* Build a Stream API with Kafka
 * Create a GraphQL Endpoint
-* Use Event Triggers in Salt
 {{< /topics >}}

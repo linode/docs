@@ -153,7 +153,7 @@ If you're running a Fedora or CentOS distribution, follow these steps to manuall
         enabled=1
         gpgcheck=1
 
- {{< note >}}
+    {{< note >}}
 You can find your distribution's name and version number by entering the following command: `cat /etc/redhat-release`
 {{< /note >}}
 
@@ -178,7 +178,7 @@ You can find your distribution's name and version number by entering the followi
 10. Select the **Longview** tab.
 11. Click **Add Client**. The box shown below appears.
 
-    [![Manually adding a system to Linode Longview.](/docs/assets/1383-lv_install.png)](/docs/assets/1383-lv_install.png)
+    [![Manually adding a system to Linode Longview.](/docs/assets/longview_agent.png)](/docs/assets/longview_agent.png)
 
 12. Click **go back** to return to the Linode dashboard.
 13. Click the **i** button, as shown below.

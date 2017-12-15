@@ -38,50 +38,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## Install Docker
 
-1.  As of this writing, the recommended Docker installation is Docker CE. Remove any older installations of Docker that may be on your system:
-
-        apt remove docker docker-engine docker.io
-
-2.  Make sure you have the necessary packages to allow the use of Docker's repository:
-
-        apt install apt-transport-https ca-certificates curl software-properties-common
-
-3.  Add Docker's GPG key:
-
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-
-4.  Verify the fingerprint of the GPG key:
-
-        apt-key fingerprint 0EBFCD88
-
-    You should see output similar to the following:
-
-    {{< output >}}
-pub   4096R/0EBFCD88 2017-02-22
-      Key fingerprint = 9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
-uid                  Docker Release (CE deb) <docker@docker.com>
-sub   4096R/F273FCD8 2017-02-22
-{{< /output >}}
-
-5.  Add the `stable` Docker repository:
-
-        add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-
-6.  Update your package index and install Docker CE:
-
-        apt update
-        apt install docker-ce
-
-7.  Add your limited user account to the `docker` group:
-
-        usermod -aG docker exampleuser
-
-    You will need to restart your shell session for this change to take effect.
-
-8.  Check that the installation was successful by running the built-in "Hello World" program:
-
-        docker run hello-world
-
+{{< section file="/shortguides/docker/install_docker_ce.md" >}}
 
 ## Start and Enable Docker
 

@@ -39,19 +39,23 @@
             <div class="container">
                 <div class="row-content">
                     <div class="col-sm-12 hubspot-container">
-                        <div class="hubspot-form">
+                        <div class="hubspot-form" id="hubspot-form">
                             <h3 class="sample-header">Writing Sample</h3>
+                            <div class="hubspot-form-body">Oops, something went wrong. Please refresh the page to view this form.</div>
                             <!--[if lte IE 8]>
                             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                             <![endif]-->
                             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>
                             <script>
-                            hbspt.forms.create({
-                                css: '',
-                                portalId: '2165147',
-                                formId: 'e6451fbb-012a-4c4a-9082-e34116d448dd',
-                                redirectUrl: 'https://www.linode.com/docs/contribute/thankyou'
-                            });
+                            if (hbspt) {
+                              hbspt.forms.create({
+                                  css: '',
+                                  portalId: '2165147',
+                                  formId: 'e6451fbb-012a-4c4a-9082-e34116d448dd',
+                                  redirectUrl: 'https://www.linode.com/docs/contribute/thankyou',
+                                  target: ".hubspot-form-body"
+                              });
+                            }
                             </script>
                             <div class="clear"></div>
                         </div>

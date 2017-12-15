@@ -108,7 +108,7 @@ Reboot your system to make sure that these changes are applied. You will need to
 
 ### Troubleshooting
 
-It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [Lish](/docs/troubleshooting/using-lish-the-linode-shell). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
+It's very important that you follow the steps outlined above carefully or your system may not boot. It is highly recommended that you watch the console during the shutdown and reboot phases via [Lish](/docs/networking/using-the-linode-shell-lish/). If your Linode does not boot and you get an error, change your configuration profile back to the latest Paravirt kernel and read over this guide to make sure you have not missed any steps.
 
 # Install the Dahdi Module
 

@@ -36,7 +36,7 @@ This guide details how to install a graphic desktop environment on your Linode r
 
         sudo apt-get install vnc4server
 
-## Securing your VNC connection
+## Secure your VNC connection
 
 The default VNC connection is unencrypted. In order to secure your passwords and data, you will need to tunnel the traffic through an SSH connection to a local port.
 
@@ -82,7 +82,7 @@ While there are many options for OS X and Windows, this guide will use [RealVNC 
 
     [![VNC Security Warning.](/docs/assets/1656-vnc-2-2.png)](/docs/assets/1656-vnc-2-2.png)
 
-3.  You will be prompted to enter the password you specified in Step 4 of [the previous section](#installing-a-desktop-and-vnc-on-your-linode).
+3. You will be prompted to enter the password you specified when first launching the VNC Server. See [Secure your VNC Connection](#secure-your-vnc-connection) if you have not yet started a VNC server on your Linode.
 
     [![The VNC password prompt.](/docs/assets/1657-vnc-3-2.png)](/docs/assets/1638-vnc-3.png)
 
@@ -100,7 +100,7 @@ There are a variety of VNC clients available for Ubuntu desktops. You can find t
 
     [![The Remmina Software.](/docs/assets/1640-vnc-ubuntu-1.png)](/docs/assets/1640-vnc-ubuntu-1.png)
 
-2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in Step 4 of [the previous section](#installing-a-desktop-and-vnc-on-your-linode):
+2.  Click the button to `Create a new remote desktop profile`. Name your profile, specify the VNC protocol, and enter localhost :1 in the server field. Be sure to include the`:1` in the `Server` section. In the password section fill in the password you specified in [Secure your VNC connection](#secure-your-vnc-connection):
 
     [![.](/docs/assets/1641-vnc-ubuntu-2.png)](/docs/assets/1641-vnc-ubuntu-2.png)
 
