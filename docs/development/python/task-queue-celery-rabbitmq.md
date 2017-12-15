@@ -67,7 +67,7 @@ If other Python application are running on your host and you prefer to manage yo
 
 4. Install Celery in the virtual environment:
 
-        pipinstall celery
+        pip install celery
 
 {{< note >}}
 If you use a virtual environment, don't forget to activate your environment with step 3 when working on your project. All command in this guide assume the Celery virtual environment is activated.
