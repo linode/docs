@@ -2,7 +2,7 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
+description: 'This guide will show you how to link Docker containers'
 keywords: ['docker','containers','database','container communication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-29
@@ -22,11 +22,12 @@ One challenge with this setup is configuring the containers to communicate with 
 
 ## Before You Begin
 
-You will need a Linode with Docker installed in order to complete this guide. See our [How to Install Docker](/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment) guide for more information.
+### Install Docker CE
 
-{{< note >}}
-This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
-{{< /note >}}
+You will need a Linode with Docker CE installed to follow along with the steps in this guide.
+
+{{< section file="/shortguides/docker/install_docker_ce.md" >}}
+
 
 ## Example App
 
