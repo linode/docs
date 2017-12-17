@@ -111,7 +111,7 @@ These are used to create two directories where we will run the web servers insid
 terminals execute the following commands:
 
 terminal 1
-```  
+```
   cd hello1
   python -m SimpleHTTPServer 8000
 ```
@@ -375,7 +375,7 @@ server {
     location / {
             proxy_set_header X-Forwarded-For $remote_addr;
             proxy_set_header Host $host;
-            proxy_pass http://example.org:9200/;
+            proxy_pass http://localhost:8000/;
     }
 }
 {{< /file >}}
