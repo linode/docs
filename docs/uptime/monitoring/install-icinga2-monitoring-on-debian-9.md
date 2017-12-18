@@ -48,8 +48,8 @@ This guide shows how to install and configure the latest version Icinga2 web mon
 To increase the load speed of your application via OPCache plugin available in PHP7, append the following OPCache settings at the bottom of the PHP configuration:
 
 {{< file-excerpt "php.ini" conf >}}
-opcache.enable=1 
-opcache.enable_cli=1 
+opcache.enable=1
+opcache.enable_cli=1
 opcache.interned_strings_buffer=8
 opcache.max_accelerated_files=10000
 opcache.memory_consumption=128
@@ -106,7 +106,7 @@ During the installation, when asked:
 *  If Icinga2 should use the MySQL module,
 
     *  Choose **Yes** from the prompt.
-    
+
 *  To configure a database for `icinga2-ido-mysql` with `dbconfig-common` option,
 
     *  Choose **No** from the prompt.
@@ -267,7 +267,7 @@ To force visitors to browse the Icinga Web 2 interface via HTTPS, create a new `
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L] 
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 </IfModule>
 {{< /file >}}
 
