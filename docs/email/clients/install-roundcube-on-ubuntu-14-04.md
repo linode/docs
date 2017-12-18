@@ -4,12 +4,13 @@ author:
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu", "Postfix", "Dovecot"]
+alisases: ['/docs/email/clients/install-roundcube-on-ubuntu-14-04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-01
-modified: 2016-02-01
+modified: 2017-12-18
 modified_by:
   name: 'Linode'
-title: 'Install Roundcube on Ubuntu 14.04'
+title: 'Install Roundcube on Ubuntu 16.04'
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
@@ -21,7 +22,7 @@ external_resources:
 
 ## What is Roundcube?
 
-Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube over the internet using a web browser.
+Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube using a web browser.
 
 ## Before You Begin
 
@@ -59,7 +60,7 @@ This section will cover installing Apache, MySQL, PHP and SSL on your Linode fro
 
 4.  Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
-        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
+        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php/7.0/apache2/php.ini
 
 ### Create an Apache Virtual Host with SSL
 
