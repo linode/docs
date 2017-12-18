@@ -6,10 +6,10 @@ description: 'How to Set Up a Task Queue with Celery and RabbitMQ'
 keywords: ["celery", "Python", "tasks", "asynchronous", "cluster"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-11-30
-modified: 2017-11-30
+modified: 2017-12-18
 modified_by:
   name: Linode
-title: 'How to Set Up a Task Queue with Celery and RabbitMQ'
+title: 'How to Set up a Task Queue with Celery and RabbitMQ'
 contributor:
   name: Florent Houbart
 external_resources:
@@ -17,11 +17,11 @@ external_resources:
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
 ---
 
-# How to Set Up a Task Queue with Celery and RabbitMQ
+## What are Celery and RabbitMQ?
 
-Celery is a Python Task-Queue system that handle distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application just need to push messages to a broker, like RabbitMQ, and Celery workers will pop them and schedule task execution.
+Celery is a Python Task-Queue system that handles distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application pushes messages to a broker like RabbitMQ, and Celery workers will *pop* them and schedule task execution.
 
-Celery can be used in multiple configuration. Most frequent uses are horizontal application scalling by running ressource intensive tasks on Celery workers distributed accross a cluster, or to manage long asynchronous tasks in a web app, like thumbnail generation when a user post an image. This guide will take you through installation and usage of Celery with an example application that delegate file downloads to Celery workers, using Python 3, Celery 4.1.0, and RabbitMQ.
+Celery can be used in multiple configurations. Most frequent uses are horizontal application scaling by running ressource intensive tasks on Celery workers distributed across a cluster, or to manage long asynchronous tasks in a web app, like thumbnail generation when a user post an image. This guide will take you through installation and usage of Celery with an example application that delegate file downloads to Celery workers, using Python 3, Celery 4.1.0, and RabbitMQ.
 
 ## Before You Begin
 
@@ -43,54 +43,53 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install Celery
 
-Celery is available from PyPI. The easiest and recommand way is to install it with `pip`. You can go for a system wide installation for simplicity, or use a virtual environment if other Python applications runs on your system. This last method installs the libraries on a per project basis and prevent version conflicts with other applications.
+Celery is available from PyPI (the Python Package Index) using `pip`. For simplicity, install Celery system wide. If other Python applications run on your system, use a virtual environment to install the libraries on a per-project basis and prevent version conflicts with other applications.
 
-### System Wide Installation
+### Option A) System-Wide Installation
 
-Chose a system wide installation if your host won't run other python applications with specific version libraries requirements. Install Celery with the following command:
+Install Celery with the following command:
 
     pip install celery
 
-### Installation in a Python Virtual Environment
+### Option B) Python Virtual Environment
 
-If other Python application are running on your host and you prefer to manage your libraries on a per project basis, use a virtual environment installation. This guide will use Anaconda but Virtualenv is also a good choice.
+If other Python application are running on your host and you prefer to manage your libraries on a per-project basis, use a virtual environment installation. This guide will use Anaconda but Virtualenv is also a good choice.
 
-2. Create your virtual environment:
+1.  Create your virtual environment:
 
         conda create -n celeryenv
 
-3. Activate your virtual environment:
+2.  Activate your virtual environment:
 
         source activate celeryenv
 
-    Your shell prompt will change to indicate which environment you are using
+    Your shell prompt will change to indicate which environment you are using.
 
-4. Install Celery in the virtual environment:
+3.  Install Celery in the virtual environment:
 
         pip install celery
 
 {{< note >}}
-If you use a virtual environment, don't forget to activate your environment with step 3 when working on your project. All command in this guide assume the Celery virtual environment is activated.
+If you use a virtual environment, don't forget to activate your environment with Step 2 when working on your project. All commands in this guide assume the Celery virtual environment is activated.
 {{< /note >}}
-
 
 ## Install RabbitMQ
 
-* On Debian/Ubuntu:
-  - Install RabbitMQ with `apt`. The following command will install and start RabbitMQ with an acceptable default configuration:
+**On Debian/Ubuntu:**
 
-            sudo apt-get install rabbitmq-server
+- Install RabbitMQ with `apt`. The following command will install and start RabbitMQ with an acceptable default configuration:
 
-* On CentOS:
-  - Install the `rabbitmq-server.noarch` package, enable the service to start at boot time and start the RabbitMQ server:
+        sudo apt-get install rabbitmq-server
 
-            sudo yum install rabbitmq-server.noarch
-            systemctl enable rabbitmq-server
-            systemctl start rabbitmq-server
+**On CentOS:**
 
+- Install the `rabbitmq-server.noarch` package, enable the service to start at boot time and start the RabbitMQ server:
 
-      This will install RabbitMQ with the default configuration.
+        sudo yum install rabbitmq-server.noarch
+        systemctl enable rabbitmq-server
+        systemctl start rabbitmq-server
 
+This installs RabbitMQ with the default configuration.
 
 ## Write a Celery Application
 
@@ -102,7 +101,7 @@ A Celery application is composed of two parts:
 
 The tasks are defined in a module that will be used both by the workers and the client. Workers will run the code to execute tasks, and clients will only use function definitions to expose them and hide the RabbitMQ publishing complexity.
 
-1.  Create a directory `downloaderApp` to hold our new python module, and a directory `downloadedFiles` where the downloaded files will be stored:
+1.  Create a `downloaderApp` directory to hold the new python module, and a `downloadedFiles` directory to store downloaded files:
 
         mkdir ~/downloadedFiles ~/downloaderApp; cd ~/downloaderApp
 
@@ -138,22 +137,21 @@ def download(url, filename):
 def list():
     """ Return an array of all downloaded files """
     return os.listdir(BASEDIR)
+{{< /file >}}
 
-    {{< /file >}}
-
-All the magic happens in the `@app.task` annotation. This tells celery that this function will not be run on the client, but sent to the workers via RabbitMQ. All the Celery configuration happens in following line:
+All the magic happens in the `@app.task` annotation. This tells celery that the function will not be run on the client, but sent to the workers via RabbitMQ. All the Celery configuration happens in following line:
 
     app = Celery('downloaderApp', backend='rpc://', broker='pyamqp://guest@localhost//')
 
-This line creates:
+This line creates a:
 
-- A Celery application named `downloaderApp`
+- Celery application named `downloaderApp`
 
-- A `broker` on the localhost that will accept message via **Advanced Message Queuing Protocol* (AMQP), the protocol used by RabbitMQ
+- `broker` on the localhost that will accept message via **Advanced Message Queuing Protocol* (AMQP), the protocol used by RabbitMQ
 
-- A response `backend` where workers will store the return value of the task so that clients can retrieve it later (remember that task execution is asynchronous). If you omit `backend`, the task will still run, but the return value will be lost. `rpc` means the response will be sent to a RabbitMQ queue in a *Remote Procedure Call* pattern.
+- Response `backend` where workers will store the return value of the task so that clients can retrieve it later (remember that task execution is asynchronous). If you omit `backend`, the task will still run, but the return value will be lost. `rpc` means the response will be sent to a RabbitMQ queue in a *Remote Procedure Call* pattern.
 
-## Start the workers and give them some work
+## Start the Workers and Give them Some Work
 
 The command `celery worker` is used to start a Celery worker. The `-A` flag is used to set the module that contain the Celery app. The worker will read the module and connect to RabbitMQ using the parameters in the `Celery()` call.
 
@@ -161,36 +159,35 @@ The command `celery worker` is used to start a Celery worker. The `-A` flag is u
 
         celery -A downloaderApp worker --loglevel=debug
 
-2.  Open another ssh session to run the client (don't forget to activate your virtual environment if needed), go to your module folder and start a python shell:
+2.  Open another SSH session to run the client ([activate your virtual environment if needed](#install-rabbitmq)), go to your module folder and start a `python` shell:
 
         cd ~/downloaderApp
         python
 
-3.  In the python shell, call the `delay()` method to submit a job to RabbitMQ, and then use the `ready()` function to determine if the task is finished:
+3.  In the Python shell, call the `delay()` method to submit a job to RabbitMQ, and then use the `ready()` function to determine if the task is finished:
 
         from downloaderApp import download,list
         r = download.delay('https://www.python.org/static/community_logos/python-logo-master-v3-TM.png', 'python-logo.png')
         r.ready()
 
-4.  Exit the python shell, and check that the python logo has been downloaded:
+4.  Exit the Python shell, and check that the Python logo has been downloaded:
 
         ls ~/downloadedFiles
 
-5. Start the python shell again and run the `list` task. Get the result with the `get()` function:
+5.  Start the Python shell again and run the `list` task. Get the result with the `get()` function:
 
         from downloaderApp import download,list
         r = list.delay()
         r.ready()
         r.get(timeout=1)
 
-
     If you omit the `timeout` parameter, the client will wait for the task to complete in a synchronous manner. This is bad practice and should be avoided.
 
-## Start the workers as daemons
+## Start the Workers as Daemons
 
 In a production environment with more than one worker, the workers should be daemonized so that they are started automatically at server startup.
 
-1.  Using `sudo`, create a new service definition file in `/etc/systemd/system/celeryd.service`. Change the `User` and `Group` properties according to your actual user and group name:
+1.  Using `sudo`, create a new service definition file in `/etc/systemd/system/celeryd.service`. Change the `User` and `Group` properties according to your actual user and group names:
 
     {{< file "/etc/systemd/system/celeryd.service" py >}}
 [Unit]
@@ -214,9 +211,9 @@ ExecReload=/bin/sh -c '${CELERY_BIN} multi restart ${CELERYD_NODES} \
 
 [Install]
 WantedBy=multi-user.target
-    {{< /file >}}
+{{< /file >}}
 
-2.  Create a`/etc/default/celeryd` configuration file:
+2.  Create a `/etc/default/celeryd` configuration file:
 
     {{< file "/etc/default/celeryd" py >}}
 # The names of the workers. This example create two workers
@@ -235,14 +232,14 @@ CELERYD_LOG_LEVEL=INFO
 
 # Path to celery binary, that is in your virtual environment
 CELERY_BIN=/home/celery/miniconda3/bin/celery
-    {{< /file >}}
+{{< /file >}}
 
-3.  Create log and pid directories:
+3.  Create the log and pid directories:
 
         sudo mkdir /var/log/celery /var/run/celery
         sudo chown celery:celery /var/log/celery /var/run/celery
 
-4.  Reload systemctl daemon. You should run this command each time you change the service definition file.
+4.  Reload the systemctl daemon. Run this command each time you change the service definition file:
 
         sudo systemctl daemon-reload
 
@@ -250,7 +247,7 @@ CELERY_BIN=/home/celery/miniconda3/bin/celery
 
         sudo systemctl enable celeryd
 
-6.  Start the service
+6.  Start the service:
 
         sudo systemctl start celeryd
 
@@ -259,48 +256,47 @@ CELERY_BIN=/home/celery/miniconda3/bin/celery
         cat /var/log/celery/worker1.log
         cat /var/log/celery/worker2.log
 
-8. Send some tasks to both workers, in a python shell from the directory `/home/celery/downloaderApp`:
+8.  In a python shell from the directory `/home/celery/downloaderApp`, send some tasks to both workers:
 
         from downloaderApp import download,list
         r1 = download.delay('https://www.linode.com/media/images/logos/standard/light/linode-logo_standard_light_large.png', 'linode-logo.png')
         r2 = list.delay()
         r2.get(timeout=1)
 
-    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the linode logo in the list. Have a look at log files, like in step 7, and you will see which worker handled each task.
+    Depending on how quickly you enter the commands, the worker for `list` task may finish before the worker for `download` task and you may not see the Linode logo in the list. Have a look at log files, like in Step 7, and you will see which worker handled each task.
 
 ## Monitor your Celery Cluster
 
 The `celery` binary provide some commands to monitor workers and tasks, far more convenient than browsing log files:
 
-1.  Use the **status** command to get the list of workers:
+1.  `status` to get the list of workers:
 
         celery -A downloaderApp status
 
-    {{< output >}}
-worker1@celery: OK
-worker2@celery: OK
-celery@celery: OK
-{{< /output >}}
+    **Output:**
 
-2.  Use the **inspect active** command to see what the workers are currently doing:
+        worker1@celery: OK
+        worker2@celery: OK
+        celery@celery: OK
+
+2.  `inspect active` to see what the workers are currently doing:
 
         celery -A downloaderApp inspect active
 
-    {{< output >}}
--> worker1@celery: OK
-    - empty -
--> worker2@celery: OK
-    - empty -
--> celery@celery: OK
-    - empty -
-{{< /output >}}
+    **Output:**
 
-3.  Use the **inspect stats** command to get statistics about the workers. It gives lot of informations, like worker ressource usage under `rusage` key, or the total tasks completed under `total` key.
+        -> worker1@celery: OK
+            - empty -
+        -> worker2@celery: OK
+            - empty -
+        -> celery@celery: OK
+            - empty -
+
+3.  `inspect stats` to get statistics about the workers. It gives a lot of information like worker ressource usage under `rusage` key, or the total tasks completed under `total` key:
 
         celery -A downloaderApp inspect stats
 
-
-## Monitor your Celery cluster with Flower
+## Monitor your Celery Cluster with Flower
 
 Flower is a web-based monitoring tool that can be used instead of the `celery` command.
 
@@ -308,13 +304,13 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
         pip install wheel flower
 
-2. If you run CentOS, you need to open your firewall on Flower port (default 5555). Skip this step if you are on Debian:
+2.  If you run CentOS, open your firewall on the Flower port (default `5555`). Skip this step if you are on Debian:
 
     1.  Get your current zone, which will normally be `public`:
 
             firewall-cmd --get-active-zones
 
-    2.  Open port 5555 (change the zone according to your configuration):
+    2.  Open port `5555` (or change the zone according to your configuration):
 
             sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 
@@ -322,42 +318,40 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
             sudo firewall-cmd --reload
 
-3.  Navigate to the directory with your Celery app and start Flower. 5555 is the default port, but this can be changed using the `--port` flag:
+3.  Navigate to the directory with your Celery app and start Flower. `5555` is the default port, but this can be changed using the `--port` flag:
 
         cd /home/celery/downloaderApp
         celery -A downloaderApp flower --port=5555
 
-4. Point your browser to Flower and navigate through the different menus:
+4.  Point your browser to `your-IP-address/flower` and navigate through the different menus:
 
-      ![Flower screenshot](/docs/assets/celery/flower-screenshot.png)
-
+    ![Flower dashboard screenshot](/docs/assets/celery/flower-screenshot.png "Flower dashboard screenshot")
 
 ## Start Celery Tasks from Other Languages
 
 Celery's ease of use comes from the decorator `@task` that adds Celery methods to the function object. This magic cannot be used in every programming language, so Celery provides two other methods to communicate with workers:
 
-1.  [**Webhooks**](https://en.wikipedia.org/wiki/Webhook): Flower provides an API that allow you to interact with Celery by means of REST HTTP queries.
+1.  [**Webhooks**](https://en.wikipedia.org/wiki/Webhook): Flower provides an API that allows you to interact with Celery through REST HTTP queries.
 
-2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends message to the broker when you call celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for NodeJS, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
+2.  [**AMQP**](https://www.amqp.org/): The `@task` decorator sends a message to the broker when you call Celery methods like `.delay()`. Some languages provide modules that perform this task for you, including [node-celery](https://github.com/mher/node-celery) for NodeJS, or [celery-php](https://github.com/gjedeer/celery-php) for PHP.
 
-You can use `curl` to practice interacting how to use the Flower API.
-
+## Use curl to Practice Interacting with the Flower API.
 
 1. Start Flower, if it's not already running:
 
         cd /home/celery/downloaderApp
         celery -A downloaderApp flower --port=5555
 
-3. Submit a download via the task API:
+2. Submit a download via the task API:
 
         curl -X POST -d '{"args":["http://www.celeryproject.org/static/img/logo.png","celery-logo.png"]}' 'http://localhost:5555/api/task/async-apply/downloaderApp.download?refresh=True'
 
-    {{< output >}}
-{"task-id": "f29ce7dd-fb4c-4f29-9adc-f834250eb14e", "state": "PENDING"}
-{{< /output >}}
+    **Output:**
 
-    The `/api/task/async-apply` endpoint makes an asynchronous call to one of the app's tasks, in this case `doanloaderApp.download`. You can make a synchronous call with `/task/api/apply`.
+        {"task-id": "f29ce7dd-fb4c-4f29-9adc-f834250eb14e", "state": "PENDING"}
 
-4. Open Flower UI in your browser and see that the task has been accepted.
+    The `/api/task/async-apply` endpoint makes an asynchronous call to one of the app's tasks, in this case `downloaderApp.download`. You can make a synchronous call with `/task/api/apply`.
+
+3. Open the Flower UI in your browser and see that the task has been accepted.
 
 You can find a complete list of Flower API endpoints in the [official API documentation](http://flower.readthedocs.io/en/latest/api.html).
