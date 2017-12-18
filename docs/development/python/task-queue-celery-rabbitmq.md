@@ -273,24 +273,24 @@ The `celery` binary provide some commands to monitor workers and tasks, far more
 
         celery -A downloaderApp status
 
-    **Output:**
-
-        worker1@celery: OK
-        worker2@celery: OK
-        celery@celery: OK
+    {{< output >}}
+worker1@celery: OK
+worker2@celery: OK
+celery@celery: OK
+{{< /output >}}
 
 2.  `inspect active` to see what the workers are currently doing:
 
         celery -A downloaderApp inspect active
 
-    **Output:**
-
-        -> worker1@celery: OK
-            - empty -
-        -> worker2@celery: OK
-            - empty -
-        -> celery@celery: OK
-            - empty -
+    {{< output >}}
+-> worker1@celery: OK
+    - empty -
+-> worker2@celery: OK
+    - empty -
+-> celery@celery: OK
+    - empty -
+{{< /output >}}
 
 3.  `inspect stats` to get statistics about the workers. It gives a lot of information like worker ressource usage under `rusage` key, or the total tasks completed under `total` key:
 
@@ -346,9 +346,9 @@ Celery's ease of use comes from the decorator `@task` that adds Celery methods t
 
         curl -X POST -d '{"args":["http://www.celeryproject.org/static/img/logo.png","celery-logo.png"]}' 'http://localhost:5555/api/task/async-apply/downloaderApp.download?refresh=True'
 
-    **Output:**
-
-        {"task-id": "f29ce7dd-fb4c-4f29-9adc-f834250eb14e", "state": "PENDING"}
+    {{< output >}}
+{"task-id": "f29ce7dd-fb4c-4f29-9adc-f834250eb14e", "state": "PENDING"}
+{{< /output >}}
 
     The `/api/task/async-apply` endpoint makes an asynchronous call to one of the app's tasks, in this case `downloaderApp.download`. You can make a synchronous call with `/task/api/apply`.
 
