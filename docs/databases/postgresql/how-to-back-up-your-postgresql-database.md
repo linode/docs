@@ -2,11 +2,12 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'Two to three sentences describing your guide.'
+description: 'This guide shows how to use pg_dump and pg_dumpall to make backups of your PostgreSQL databases.'
+og_description: 'This guide shows how to create backups of your PostgreSQL databases using pg_dump and use them to restore a lost or broken database.'
 keywords: ['postgres', 'postgresql', 'backup', 'sql dump', 'pg_dump', 'psql']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-27
-modified: 2017-11-27
+published: 2017-12-18
+modified: 2017-12-18
 modified_by:
   name: Jared Kobos
 title: "How to Back Up Your PostgreSQL Database"
