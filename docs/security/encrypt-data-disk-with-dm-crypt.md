@@ -2,23 +2,19 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: 'How to use dm-crypt in plain mode or with LUKS to encrypt your data disk, partition or file container'
-keywords: 'dm-crypt, encrypt, plain, luks''
+description: 'This guide shows how to use dm-crypt in plain mode or with LUKS to encrypt your data disk, partition or file container.'
+keywords: ['dm-crypt', 'encryption', 'encrypt', 'luks']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 'Weekday, Month 00st, 2015'
-modified: Weekday, Month 00th, 2015
+published: 2017-12-18
+modified: 2017-12-18
 modified_by:
   name: Linode
 title: 'How to Encrypt Your Data with dm-crypt'
 contributor:
   name: Alexandru Andrei
   link:
-  external_resources:
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
 
 In this guide you will learn how to encrypt disks, partitions, swap and even use files as encrypted (and portable) containers for your sensitive data. Examples of how to use dm-crypt in plain mode or with the *LUKS (Linux Unified Key Setup)* extension will be presented, along with advantages and drawbacks of each method.
 
@@ -30,16 +26,21 @@ As part of the *device mapper* infrastructure in the Linux kernel, *dm-crypt* ma
 
 ## Before You Begin
 
-{: .note}
-> The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< note >}}
+The steps in this guide require root privileges. Be sure to run the steps below as `root` or with the `sudo` prefix. For more information on privileges, see our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
+{{< /note >}}
 
-1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 image, reserving 4000 MB or more for your operating system so that you can use the rest of your available disk space as encrypted storage. Go to the dashboard, create a new disk and select **unformatted / raw** under **Type**.
+1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide, deploy a Debian 9 image, reserving approximately 4096 MB for your operating system so that you can use the rest of your available disk space as encrypted storage:
 
-    Another way to set up an encrypted data partition is to attach [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) to your Linode, skipping the instructions about creating a filesystem and mounting the device since that will be done on the virtual device mapped by dm-crypt.
+    ![Debian Allocation](/docs/assets/dm-crypt/debian_allocation.png)
 
-    Finally, complete the steps for setting your Linode's hostname and timezone.
+2.  Go to the Linode manager dashboard, create a new disk and select **unformatted / raw** under **Type**:
 
-2.  Open your [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles) and take a look at your **Block Device Assignment**. Add your additional disk(s) and/or block storage devices if they aren't already included. Wherever you see `/dev/sdX` in this tutorial, replace it with the device you want to work with.
+    ![Data Disk](/docs/assets/dm-crypt/data_disk.png)
+
+2.  Open your [configuration profile](/docs/platform/disk-images/disk-images-and-configuration-profiles) and review your **Block Device Assignment**. Add your additional disk(s) and/or block storage devices if they aren't already included. Throughout this guide, replace `/dev/sdX` with the device name of your storage disk.
+
+    ![Configuration Profile](/docs/assets/dm-crypt/configuration_profile.png)
 
 3.  After your block device assignments are correctly configured, boot your Linode (or reboot it if it's already on).
 
@@ -51,21 +52,24 @@ As part of the *device mapper* infrastructure in the Linux kernel, *dm-crypt* ma
 
         apt install cryptsetup
 
+{{< note >}}
+Another way to set up an encrypted data partition is to attach [Block Storage](/docs/platform/how-to-use-block-storage-with-your-linode) to your Linode, skipping the instructions about creating a filesystem and mounting the device since that will be done on the virtual device mapped by dm-crypt.
+{{< /note >}}
+
 ## How to Map Whole Disks, Partitions and Files
+<!-- This section is incomplete and does not fit the flow of the guide (i.e. if you followed the steps above, running the commands will fail because there is no unallocated disk space). -->
 
-1.  Mapping a whole disk or a partition is just a matter of changing some string in a command, like `/dev/sdb` (the second disk) to `/dev/sdb1` (the first partition on the second disk).
+Mapping a whole disk or a partition is simple, and can be done by changing parameters in the `cryptsetup` command. Files can be used as block devices by dm-crypt. This is also simple, and consists of pointing `cryptsetup` to `/path/to/file` instead of `/dev/sdb`. However, you have to preallocate space used by that file beforehand. Store these files in `/root/`. The following command will preallocate a 10GB file:
 
-2.  Even files can be used as block devices by dm-crypt. This too is just a simple matter of pointing cryptsetup to `/path/to/file` instead of some `/dev/sdb`. However, you do have to preallocate space used by that file beforehand. Store these files in `/root/`. The following command will preallocate a 10GB file:
+    fallocate -l 10G /root/encrypted-container
 
-        fallocate -l 10G /root/encrypted-container
+Another way to create a 10GB file container is with this command:
 
-    Another way to create a 10GB file container is with this command:
+    truncate -s 10G /root/encrypted-container
 
-        truncate -s 10G /root/encrypted-container
+The advantage of this command is that the file starts out by occupying 0 bytes on the filesystem and grows as required.
 
-    The advantage of this command is that the file starts out by occupying 0 bytes on the filesystem and grows as required.
-
-    A benefit of using files as encrypted containers is that they're slightly easier to move around from system to system. But keep in mind that files are also more prone to being deleted accidentally.
+A benefit of using files as encrypted containers is that they're slightly easier to move around from system to system. But keep in mind that files are also more prone to being deleted accidentally.
 
 ## dm-crypt in Plain Mode vs dm-crypt with LUKS Extension
 
@@ -100,8 +104,9 @@ Disadvantages of LUKS:
 
 ## How to Use dm-crypt in Plain Mode (without LUKS)
 
-{: .note}
-> Remember to replace `sdX` with the name of the device you want to encrypt.
+{{< note >}}
+Remember to replace `sdX` with the name of the device you want to encrypt.
+{{< /note >}}
 
 1.  To map your device in plain mode:
 
@@ -125,9 +130,9 @@ Disadvantages of LUKS:
 
         cd /root/ && umount /root/encrypted && cryptsetup close sdX-plain
 
-{: .caution}
->
-> As mentioned earlier, dm-crypt in plain mode doesn't check if you're using the same password or encryption settings as last time, exposing you to the risk of re-encrypting and overwriting useful data. The default crypto settings have been used in this tutorial but these values may change when Debian gets upgraded to version 10. You can check the defaults that `cryptsetup` uses in Debian 9 with `cryptsetup --help`. It's a good idea to make it a habit to specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
+{{< caution >}}
+As mentioned earlier, dm-crypt in plain mode doesn't check if you're using the same password or encryption settings as last time, exposing you to the risk of re-encrypting and overwriting useful data. The default crypto settings have been used in this tutorial but these values may change when Debian gets upgraded to version 10. You can check the defaults that `cryptsetup` uses in Debian 9 with `cryptsetup --help`. It's a good idea to make it a habit to specify encryption settings on the command line every time you use dm-crypt in plain mode. Here's an example you can use: `cryptsetup --verify-passphrase --hash ripemd160 --cipher aes-cbc-essiv:sha256 --key-size 256 open --type plain /dev/sdX sdX-plain`
+{{< /caution >}}
 
 ## How to Use dm-crypt with LUKS
 
@@ -175,6 +180,9 @@ Disadvantages of LUKS:
 
 ### Manage LUKS Keys
 
+LUKS provides eight key slots, each of which can be used to store a password that can be used to access and decrypt your data. This section will review the basic commands to edit, add, and delete these passwords.
+
+
 1.  To change your passphrase:
 
         cryptsetup luksChangeKey /dev/sdX
@@ -193,38 +201,26 @@ Disadvantages of LUKS:
 
 ## Encrypt Swap
 
-Swapped memory keeps data indefinitely on the physical device, until it is overwritten, exposing you to the possibility of leaking private information. You can either disable it entirely if you have plenty of Random Access Memory on your Linode or encrypt it with a random key each time your Linode boots.
+Swapped memory keeps data indefinitely on the physical device until it is overwritten, exposing you to the possibility of leaking private information. You can either disable it entirely if you have plenty of RAM on your Linode or encrypt it with a random key each time your Linode boots.
 
-1.  Open the following configuration file:
 
-        nano /etc/crypttab
+1.  Open `/etc/crypttab` in a text editor and append the following line, replacing `/dev/sdX` with the path to your swap device:
 
-2.  Append the following line to it, replacing `/dev/sdX` with the path to your swap device:
+    {{< file-excerpt "/etc/crypttab" conf >}}
+swap-encrypted  /dev/sdX  /dev/urandom   swap,noearly
+{{< /file-excerpt >}}
 
-    {: .file }
-    /etc/crypttab
-    :   ~~~ conf
-        swap-encrypted  /dev/sdX  /dev/urandom   swap,noearly
-        ~~~
 
-3.  After you've saved the previous file (**CTRL+x** then **y** then **ENTER**), open another for editing:
+2.  Save the file, then open `/etc/fstab` and append the following line:
 
-        nano /etc/fstab
-
-4.  Append the following line:
-
-    {: .file }
-    /etc/fstab
-    :   ~~~ conf
-        /dev/mapper/swap-encrypted none swap sw 0 0
-        ~~~
+    {{< file-excerpt "/etc/fstab" conf >}}
+/dev/mapper/swap-encrypted none swap sw 0 0
+{{< /file-excerpt >}}
 
     Also, remove the line that points to unencrypted swap. It should look similar to this:
 
-    {: .file }
-    /etc/fstab
-    :   ~~~ conf
-        /dev/sdb         none            swap    sw              0       0
-        ~~~
+    {{< file-excerpt "/etc/fstab" conf >}}
+/dev/sdb         none            swap    sw              0       0
+{{< /file-excerpt >}}
 
-5. Save the file and reboot your Linode.
+3. Save the file and reboot your Linode.
