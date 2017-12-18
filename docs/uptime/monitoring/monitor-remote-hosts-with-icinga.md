@@ -58,7 +58,7 @@ Finally, to apply the Host definitions and start periodically monitor the new ho
 
 `systemctl restart icinga2.service`
 
-Verify the state of the new added host by navigating to **Overview -> Hosts** in Icinga’s Web 2 interface. In the right plane you should see the health status of the new added host. 
+Verify the state of the new added host by navigating to **Overview -> Hosts** in Icinga’s Web 2 interface. In the right plane you should see the health status of the new added host.
 
 
 ![description](images/23.PNG)
@@ -70,7 +70,7 @@ To display the status of the host’s HTTP service, navigate to **Overview -> Se
 
 
 ### Monitor Remote Hosts via Icinga2 Agent Monitoring
-Icina2 can monitor nodes internal health parameters, such as CPU load, disk space, memory, number of running process via a secured channel setup between a master node and client node on port 5665/TCP. In this instance we’ll configure our Icinga2 to act as the master node and check the internal parameters health status of a remote client node, where a CentOS 7 server runs. In this specific type of configuration, also named Top Down Command Endpoint model, the check commands will be scheduled on the master node and then will be sent to the client via a TLS connection.  
+Icina2 can monitor nodes internal health parameters, such as CPU load, disk space, memory, number of running process via a secured channel setup between a master node and client node on port 5665/TCP. In this instance we’ll configure our Icinga2 to act as the master node and check the internal parameters health status of a remote client node, where a CentOS 7 server runs. In this specific type of configuration, also named Top Down Command Endpoint model, the check commands will be scheduled on the master node and then will be sent to the client via a TLS connection.
 
 First, we need to setup Icinga2 master node in our current Debian 9 server. Execute the below command to configure this instance of Icinga2 as a master node.
 
@@ -236,7 +236,7 @@ After the client node wizard completes, restart Icinga2 service, check Icinga2 s
 
 `firewall-cmd --reload`
 
-This last step completes the configuration on CentOS 7 Client node. 
+This last step completes the configuration on CentOS 7 Client node.
 
 
 ## Setup Icinga2 Master Agent-based Monitoring
@@ -304,10 +304,10 @@ Finally, to apply all the configurations made so far, restart icinga2 service an
 
 ![description](images/25.PNG)
 
- DEAR COPY EDITOR-- CONSIDER REMOVING THIS COMMENTED SECTION. 
+ DEAR COPY EDITOR-- CONSIDER REMOVING THIS COMMENTED SECTION.
 
 -->
 
 That’s all! You have successfully configured Icinga2 as a master node and added a CentOS 7 machine client node to be remotely checked via Icinga2 agent-based monitoring system and another remote host to be actively monitored via external services command checks.
-For further complex configurations regarding Icinga2 installation and setup and monitoring mechanisms, please visit Icinga2 documentation at the following internet address: https://www.icinga.com/docs/icinga2/latest/doc/01-about/ 
+For further complex configurations regarding Icinga2 installation and setup and monitoring mechanisms, please visit Icinga2 documentation at the following internet address: https://www.icinga.com/docs/icinga2/latest/doc/01-about/
 

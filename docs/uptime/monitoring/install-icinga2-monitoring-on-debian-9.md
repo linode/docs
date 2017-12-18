@@ -19,11 +19,11 @@ external_resources:
  - '[Official Icinga Documentation](https://www.icinga.com/docs/icinga2/latest/doc/01-about/)'
 ---
 
-![Icinga2-Banner](/docs/assets/icinga/Icinga2.jpg)
+![Install Icinga2 Monitoring on Debian 9](/docs/assets/icinga/Icinga2.jpg "Install Icinga2 Monitoring on Debian 9")
 
-## What is Icinga2
+## What is Icinga2?
 
-Icinga, previously a fork of the popular Nagios monitoring system is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts in a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file share service, or others.
+Icinga, previously a fork of the popular Nagios monitoring system, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts in a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file share service, or others.
 
 Icinga2 can be configured to monitor internal systems state and check the load, the memory, the disk free space or other internal parameters via Icinga agents deployed in every node that needs to me monitored. Icinga can also be configured to send notifications and alerts via email or SMS to the system administrators defined in contacts.
 
@@ -48,8 +48,8 @@ This guide shows how to install and configure the latest version Icinga2 web mon
 To increase the load speed of your application via OPCache plugin available in PHP7, append the following OPCache settings at the bottom of the PHP configuration:
 
 {{< file-excerpt "php.ini" conf >}}
-opcache.enable=1 
-opcache.enable_cli=1 
+opcache.enable=1
+opcache.enable_cli=1
 opcache.interned_strings_buffer=8
 opcache.max_accelerated_files=10000
 opcache.memory_consumption=128
@@ -106,7 +106,7 @@ During the installation, when asked:
 *  If Icinga2 should use the MySQL module,
 
     *  Choose **Yes** from the prompt.
-    
+
 *  To configure a database for `icinga2-ido-mysql` with `dbconfig-common` option,
 
     *  Choose **No** from the prompt.
@@ -267,7 +267,7 @@ To force visitors to browse the Icinga Web 2 interface via HTTPS, create a new `
 <IfModule mod_rewrite.c>
 RewriteEngine On
 RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L] 
+RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
 </IfModule>
 {{< /file >}}
 
@@ -287,4 +287,4 @@ Add a new rule to allow HTTPS traffic to pass through the firewall.
 
 ## That’s All!
 
-You have successfully installed, set-up and secured Icinga2 engine monitoring application and Icinga Web 2 Interface in Debian 9.
+You have successfully installed, set up, and secured the Icinga2 engine monitoring application and Icinga Web 2 Interface on Debian 9.
