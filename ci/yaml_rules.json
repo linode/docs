@@ -54,7 +54,7 @@
 		"elements": false,
 		"type": "bool"
 	},
-	"rss_enabled": {
+	"show_on_rss_feed": {
 		"required": false,
 		"elements": false,
 		"type": "bool"

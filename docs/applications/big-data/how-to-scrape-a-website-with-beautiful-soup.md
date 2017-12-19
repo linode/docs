@@ -15,6 +15,8 @@ contributor:
 title: 'How to Scrape a Website with BeautifulSoup'
 ---
 
+![Beautiful Soup](/docs/assets/beautifulsoup/BeautifulSoup.jpg)
+
 ## What is Beautiful Soup?
 
 [Beautiful Soup](https://www.crummy.com/software/BeautifulSoup/) is a Python library that parses HTML or XML documents into a tree structure that makes it easy to find and extract data. It is often used for scraping data from websites.

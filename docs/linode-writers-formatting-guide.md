@@ -11,6 +11,7 @@ modified_by:
   name: Linode
 published: 2014-01-15
 title: Linode Writer's Formatting Guide
+show_on_rss_feed: false
 external_resources:
  - '[GitHub Beginners Guide](/docs/github-guide)'
  - '[Red Hat Writing Style Guide](http://stylepedia.net/)'
@@ -50,9 +51,9 @@ title: 'Guide Title'
 contributor:
   name: Your Name
   link: Github/Twitter/LinkedIn URL
-  external_resources:
-- '[Link Title 1](http://www.example.com)'
-- '[Link Title 2](http://www.example.net)'
+external_resources:
+  - '[Link Title 1](http://www.example.com)'
+  - '[Link Title 2](http://www.example.net)'
 ---
 
 {{< /file-excerpt >}}
@@ -332,7 +333,7 @@ This is a sample note.
 
     {{</* caution */>}}
     This is a sample caution.
-    {{</* caution */>}}
+    {{</* /caution */>}}
 
 {{< caution >}}
 This is a sample caution.
