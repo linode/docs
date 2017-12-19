@@ -9385,6 +9385,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
   color: rgba(65, 255, 0, 0.85);
   padding: 0 10px;
 }
+.terminal code {
+  white-space: pre-line;
+}
 .output {
   margin-top: 40px;
   background-color: #f8f8f8;
