@@ -74,7 +74,7 @@ A benefit of using files as encrypted containers is that they're slightly easier
 ## dm-crypt in Plain Mode vs dm-crypt with LUKS Extension
 
 {{< caution >}}
-In plain mode, dm-crypt simply encrypts the device sector-by-sector, without adding any kind of headers or metadata. It's advised that beginners do not use this until they understand the risks. 
+In plain mode, dm-crypt simply encrypts the device sector-by-sector, without adding any kind of headers or metadata. It's advised that beginners do not use this until they understand the risks.
 {{</ caution >}}
 
 Advantages of using Plain Mode:
