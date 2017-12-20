@@ -8,10 +8,10 @@ matrix:
     - python: "3.6"
 
 before_install:
-    - echo "Installing Hugo 0.30.2"
+    - echo "Installing Hugo 0.31.1"
 #    - curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #    - sudo apt install nodejs
-    - wget https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.deb
+    - wget https://github.com/gohugoio/hugo/releases/download/v0.31/hugo_0.31_Linux-64bit.deb
     - sudo dpkg -i hugo*.deb
     - hugo version
 #    - sudo npm install --global gulp-cli
