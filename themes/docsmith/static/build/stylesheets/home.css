@@ -9380,6 +9380,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .deprecated strong {
   font-weight: bold;
 }
+.terminal {
+  background-color: black;
+  color: rgba(65, 255, 0, 0.85);
+  padding: 0 10px;
+}
 .output {
   margin-top: 40px;
   background-color: #f8f8f8;
@@ -9512,7 +9517,13 @@ pre code {
   white-space: pre;
 }
 .file-excerpt dt:before {
+  content: "File: ";
+}
+.file-excerpt dt:before {
   content: "File excerpt: ";
+}
+.file dt:before {
+  content: "File: ";
 }
 @media screen and (min-width: 768px) {
   .sticky-header {
