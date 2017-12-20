@@ -2,14 +2,15 @@
 author:
   name: mouhsen_ibrahim
   email: mohsen47@hotmail.co.uk
-description: 'Using Nginx as a reverse proxy'
+description: 'This guide will show you how to use nginx as a reverse proxy'
+og_description: 'This guide will show you how to use nginx as a reverse proxy.'
 keywords: ["nginx","proxy","reverse proxy"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-19
 modified: 2017-12-19
 modified_by:
   name: Linode
-title: 'Nginx Reverse Proxy'
+title: 'How to Use NGINX as a Reverse Proxy'
 contributor:
   name: Mouhsen Ibrahim
   link: https://github.com/mohsenSy
@@ -19,11 +20,15 @@ external_resources:
 ---
 
 ## What is a Reverse Proxy?
-A [reverse proxy](https://en.wikipedia.org/wiki/Reverse_proxy) is a type of proxy server which retrieves content from backend servers on behalf of the client.
 
-The backend server receives connections only from the reverse proxy and not from the client, it can be used to hide the identity of backend servers, as an application firewall to force authentication before accessing backend servers, SSL termination at the proxy level, caching content and many other uses cases.
+A reverse proxy is a type of proxy server which forwards client requests to backend servers.
+
+NGINX offers excellent security, acceleration, and load balancing features, making it one of the most popular choices to serve as a reverse proxy. Since in this configuration NGINX handles all client interaction, it can provide security and optimization to backend servers (or services running on localhost) that often lack these features.
+
+For more information on the benefits of using NGINX as a reverse proxy, see the official [documentation](https://www.nginx.com/resources/glossary/reverse-proxy-server/).
 
 ## Before You Begin
+
 1.  Complete the [Getting Started](/docs/getting-started) guide.
 
 2.  Follow the [Secure Your Server](/docs/security/securing-your-server/) guide to create a standard user account, harden SSH access and remove unnecessary network services; this guide will use `sudo` wherever possible.
@@ -32,9 +37,8 @@ The backend server receives connections only from the reverse proxy and not from
 
         sudo apt update && sudo apt upgrade -y
 
-4.  If you are a beginner at using nginx you can check this [tutorial](/docs/web-servers/nginx/how-to-configure-nginx).
+### Install NGINX
 
-### Install Nginx
 Debian and Ubuntu:
 
     sudo apt install nginx
@@ -43,22 +47,32 @@ CentOS and RHEL:
 
     sudo yum install epel-release && sudo yum install nginx
 
-## Create a Test Server with Python
+{{< note >}}
+If you are unfamiliar with NGINX configuration, see our [How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx) guide for more information.
+{{< /note >}}
+
+## Create a Python Test Server
 
 To create an HTTP server to serve requests from the proxy server, we can use the `http.server` for Python 3.4 and above.
 
 This module will create an HTTP server which will serve files from the working directory.
+
+### Install Python
+
+{{< section file="/shortguides/install_python_miniconda.md" >}}
+
+### Create a Sample App
 
 1.  Since the module will serve all files in the working directory, create a new one for this example:
 
         mkdir myapp
         cd myapp
 
-2.  Once you have navigated into the new directory, create a test page to serve.
+2.  Once you have navigated into the new directory, create a test page for the app to serve:
 
         echo "hello world" > index.html
 
-3.  Start a basic http server which will serve the files from the working directory.
+3.  Start a basic http server which will serve the files from the working directory:
 
         python -m http.server 8000 --bind 127.0.0.1
 
@@ -68,31 +82,36 @@ Python 2.7 has an equivalent module via `python -m SimpleHTTPServer 8000` that l
 Using the `http.server` module from Python 3.4 and above is highly recommanded as it allows a convenient way to bind to a specific IP. Some distributions may need to specify the Python version explicitly: `python3 -m http.server 8000 --bind 127.0.0.1`
 {{< /note >}}
 
-4.  Open a new terminal. Curl to check the header.
+4.  Open a new terminal. Use `curl` to check the header:
 
         curl -I localhost:8000
 
-    Notice the server here is `SimpleHTTP`:
+    Review the output to confirm that the server is `SimpleHTTP`:
 
-        HTTP/1.0 200 OK
-        Server: SimpleHTTP/0.6 Python/3.5.3
-        Date: Tue, 19 Dec 2017 19:56:08 GMT
-        Content-type: text/html
-        Content-Length: 12
-        Last-Modified: Tue, 19 Dec 2017 14:45:31 GMT
+    {{< output >}}
+HTTP/1.0 200 OK
+Server: SimpleHTTP/0.6 Python/3.5.3
+Date: Tue, 19 Dec 2017 19:56:08 GMT
+Content-type: text/html
+Content-Length: 12
+Last-Modified: Tue, 19 Dec 2017 14:45:31 GMT
+{{< /output >}}
 
-    Running `curl localhost:8000` will print `hello world` to console.
+5.  Test that the app is listening on `localhost`:
 
-The goal of a reverse proxy is to have nginx proxy requests and handle everything on port 80/443.
+        curl localhost:8000
+
+    This should print `hello world` to the console.
 
 ## Specify a Local Host
-While this step is optional, this allows a way to automicatically point a local host domain name.
 
-1.  Add a test domain name called `myapp.com` that will only work locally:
+While this step is optional, this allows a way to automatically point a local host domain name.
 
-    {{< file-excerpt "/etc/hosts" >}}
+Add a hostname `myapp` that will only work locally:
+
+{{< file-excerpt "/etc/hosts" >}}
 127.0.0.1       localhost
-127.0.0.1       myapp.com
+127.0.0.1       myapp
 127.0.1.1       localhost.localdomain   localhost
 
 # The following lines are desirable for IPv6 capable hosts
@@ -101,20 +120,16 @@ ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
 {{< /file-excerpt >}}
 
-2.  Check the new change with `curl myapp.com`:
-
-        curl: (7) Failed to connect to myapp.com port 80: Connection refused
-
 ## Reverse Proxy Configuration
 
-Now we will configure Nginx to serve these two HTTP endpoints on the same port `80` but with different domain names or different URLs as we like.
+In this section you will configure NGINX to serve these two HTTP endpoints on the same port `80` but with different domain names or different URLs.
 
-1.  Create an nginx configuration in `/etc/nginx/sites-available/myapp`.
+1.  Create an NGINX configuration in `/etc/nginx/sites-available/myapp`.
 
     {{< file "/etc/nginx/sites-available/myapp" nginx >}}
 server {
         listen 80;
-        server_name myapp.com;
+        server_name myapp;
 
         location / {
                 proxy_pass http://localhost:8000/;
@@ -122,10 +137,8 @@ server {
 }
 {{< /file-excerpt>}}
 
-    Replace the example under `server_name` with a domain name if applicable.
-
     {{< caution >}}
-Do not forget to add a trailing slash `/` to the end of URL in `proxy_pass` directive so Nginx can correctly generate a URL to be sent to the backend server.
+Do not forget to add a trailing slash `/` to the end of the URL in the `proxy_pass` directive so NGINX can correctly generate a URL to be sent to the backend server.
 {{< /caution >}}
 
 2.  Make a symlink to `sites-enabled`:
@@ -142,25 +155,31 @@ Do not forget to add a trailing slash `/` to the end of URL in `proxy_pass` dire
 
 5.  Test the proxy with curl:
 
-        curl -I myapp.com
+        curl -I myapp
 
-    Observe the server is now nginx. When deploying a web application, be sure to turn off this header and follow (recommended nginx security configurations)[https://www.owasp.org/index.php/SCG_WS_nginx].
+    {{< output >}}
+HTTP/1.1 200 OK
+Server: nginx/1.10.3
+Date: Tue, 19 Dec 2017 20:30:54 GMT
+Content-Type: text/html
+Content-Length: 12
+Connection: keep-alive
+Last-Modified: Tue, 19 Dec 2017 14:45:31 GMT
+{{< /output >}}
 
-        HTTP/1.1 200 OK
-        Server: nginx/1.10.3
-        Date: Tue, 19 Dec 2017 20:30:54 GMT
-        Content-Type: text/html
-        Content-Length: 12
-        Connection: keep-alive
-        Last-Modified: Tue, 19 Dec 2017 14:45:31 GMT
+    The server is now `nginx`. You can also navigate to your Linode's public IP address in a browser and confirm that the application is now being reversed proxied to port 80.
+
+{{< note >}}
+When deploying a web application, be sure to turn off the `Server` header and follow the [recommended NGINX security configurations](https://www.owasp.org/index.php/SCG_WS_nginx).
+{{< /note >}}
 
 ### Non-HTTP Protocols
-Nginx can proxy non-HTTP protocols using appropriate `*_proxy` directives such as:
+NGINX can proxy non-HTTP protocols using appropriate `*_proxy` directives such as:
 
-* fastcgi_pass passes a request to a FastCGI server
-* uwsgi_pass passes a request to a uwsgi server
-* scgi_pass passes a request to an SCGI server
-* memcached_pass passes a request to a memcached server
+* `fastcgi_pass` passes a request to a FastCGI server
+* `uwsgi_pass` passes a request to a uwsgi server
+* `scgi_pass` passes a request to an SCGI server
+* `memcached_pass` passes a request to a memcached server
 
 ### Passing Request Headers to Backend Servers
 Sometimes your web application needs to know the real IP address of the user who is visiting your website. In case of a reverse proxy, the backend server only sees the proxy IP address.
@@ -171,7 +190,7 @@ This can be solved by passing the IP address of the client using HTTP request he
 server {
     listen 80;
 
-    server_name myapp.com;
+    server_name myapp;
 
     location / {
             proxy_set_header X-Forwarded-For $remote_addr;
@@ -181,7 +200,7 @@ server {
 }
 {{< /file >}}
 
-`$remote_addr` and `$host` are built-in variables for nginx. The first one holds the IP address of the client and the second one contains the hostname for the request. You can find more about those variables [here](https://nginx.org/en/docs/varindex.html).
+`$remote_addr` and `$host` are built-in variables for NGINX. The first one holds the IP address of the client and the second one contains the hostname for the request. You can find more about those variables [here](https://nginx.org/en/docs/varindex.html).
 
 ### Choosing a Bind Address
 If your backend server is configured to only accept connections from certain IP addresses and your proxy server has multiple network interfaces, then you want your reverse proxy to choose the right source IP address when connecting to a backend serverr. This can be achieved with `proxy_bind`
@@ -197,7 +216,7 @@ Now when your reverse proxy connects with the backend server it will use the sou
 specified in the directive which is `192.0.2.1`.
 
 ### Buffering
-When nginx receives a response from the backend server, it buffers the response before sending
+When NGINX receives a response from the backend server, it buffers the response before sending
 it directly to the client which helps to optimize performance with slow clients. However, buffering
 can be controlled with these directives: `proxy_buffering`, `proxy_buffers` and `proxy_buffer_size`.
 
@@ -215,6 +234,6 @@ location / {
  - `proxy_buffer_size` controls the size of initial buffer where the response is first stored for all requests.
 
 ## Conclusion
-We learned the basics of using nginx as a reverse proxy to serve content from multiple locations and from servers which are not exposed to the internet.
+We learned the basics of using NGINX as a reverse proxy to serve content from multiple locations and from servers which are not exposed to the internet.
 
-We also learned about buffering responses from backend servers to nginx and about using a specific IP addresses when connecting to the backend server and sending request headers to backend servers.
+We also learned about buffering responses from backend servers to NGINX and about using a specific IP addresses when connecting to the backend server and sending request headers to backend servers.
