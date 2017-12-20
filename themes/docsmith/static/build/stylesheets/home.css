@@ -9388,6 +9388,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .terminal code {
   white-space: pre-line;
 }
+pre.terminal code::-moz-selection {
+  background-color: #B2D7FF;
+  color: black;
+}
+pre.terminal code::selection {
+  background-color: #B2D7FF;
+  color: black;
+}
 .output {
   margin-top: 40px;
   background-color: #f8f8f8;
@@ -10320,6 +10328,7 @@ body.modal-open,
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 .table > tbody > tr > td:last-child {
@@ -10333,6 +10342,13 @@ body.modal-open,
   display: block;
   font-size: 16px;
   color: #747474;
+}
+table.lntable tbody {
+  display: table;
+  width: inherit;
+}
+table.lntable tbody > tr > td.lntd:first-child {
+  width: 0;
 }
 .table-responsive > .table > tbody > tr:last-child {
   border-bottom-width: 0px;
@@ -19798,9 +19814,16 @@ fieldset[disabled] .btn-subdued.active {
   border-color: #d5d5d5;
   border-width: 0px 0px 2px 0px;
 }
+li.list-group-item {
+  padding: 0;
+}
 #ds-search-modal {
   margin-top: 65px;
   z-index: 9999;
+}
+#ds-search-modal a {
+  display: block;
+  padding: 10px 15px;
 }
 #ds-search-modal a:link,
 #ds-search-modal a:visited,
@@ -20388,6 +20411,7 @@ div.library-tile .tile-title + .lead {
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 #article-body table:not([class]) > tbody > tr > td:last-child {
@@ -21114,6 +21138,21 @@ h1.contribute {
 }
 #disqus_thread {
   margin-top: 40px;
+}
+.copy-code {
+  position: absolute;
+  padding-top: 0.25rem;
+  right: 1.4rem;
+  opacity: 0;
+}
+.copy-code:hover {
+  opacity: 1;
+}
+.glyphicon.glyphicon-copy {
+  font-size: 1.6rem;
+}
+.btn-copy:hover .glyphicon {
+  color: #B2D7FF;
 }
 /* Background */
 .chroma {
