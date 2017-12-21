@@ -59,7 +59,6 @@ After installing the LAMP Stack, you need to create a database for Drupal to use
 Download the following PHP libraries:
 
     sudo apt install php-gd php-xml php-xmlrpc
-
     sudo apt install php-mysql phpmyadmin
 
 If prompted to automatically configure a database, choose "yes."

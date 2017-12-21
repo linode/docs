@@ -124,24 +124,24 @@ include /etc/nginx/conf.d/*.conf;
 
 3.  Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
 
-    {{< file "/etc/nginx/sites-availble/default" aconf >}}
+    {{< file-excerpt "/etc/nginx/sites-available/default" aconf >}}
 root /data/redmine/redmine/public;
 passenger_enabled on;
 client_max_body_size 10m;
 
-{{< /file >}}
+{{< /file-excerpt >}}
 
 
 4.  In the same file, comment out the `#location` section:
 
-    {{< file "/etc/ningx/site-available/default" aconf >}}
+    {{< file-excerpt "/etc/ningx/site-available/default" aconf >}}
 #location / {
 # First attempt to serve request as file, then
 # as directory, then fall back to displaying a 404.
     #try_files $uri $uri/ =404;
 #}
 
-{{< /file >}}
+{{< /file-excerpt >}}
 
 
 5.  Change the permissions for `/var/www`:

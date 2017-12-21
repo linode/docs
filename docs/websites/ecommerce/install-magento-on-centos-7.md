@@ -75,7 +75,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
         AllowOverride All
     </Directory>
 
-        </VirtualHost>
+</VirtualHost>
 
 {{< /file-excerpt >}}
 
