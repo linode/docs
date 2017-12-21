@@ -15,7 +15,7 @@ contributor:
 title: 'How to Scrape a Website with BeautifulSoup'
 ---
 
-![Beautiful Soup](/docs/assets/beautifulsoup/BeautifulSoup.jpg)
+![How to Scrape a Website with BeautifulSoup](/docs/assets/beautifulsoup/beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")
 
 ## What is Beautiful Soup?
 
