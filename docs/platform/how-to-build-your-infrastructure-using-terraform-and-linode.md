@@ -38,7 +38,7 @@ The configurations and commands used in this guide, will result in multiple Lino
 Terraform automates the build process of an app's infrastructure, including creating the necessary amount Linodes for your project. As a result, unless otherwise specified, all commands in this guide should be run from a client machine. This guide will assume that your client machine is running Ubuntu 16.04, but similar procedures should work on other platforms.
 {{< /note >}}
 
-# Installing Terraform on Ubuntu 16.04
+### Installing Terraform on Ubuntu 16.04
 
 Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "Client-Only" architecture. In fact, Terraform is bundled as a single binary available for MacOS, FreeBSD, Linux, OpenBSD, Solaris and Windows. The binary file contains the core of the application; providers and plugins can be added as required by the user.
 
@@ -105,8 +105,8 @@ You can change the variables to any location that suits you, just be sure to inc
 
         mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/linode-template.tf ~/go_projects/bin
 
-{{< note >}}
-AT this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
+    {{< note >}}
+At this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
 {{< /note >}}
 
 ## Install Terraform
@@ -124,7 +124,7 @@ AT this point, you have all binaries needed, `terraform` which comes with the Te
         mv terraform-provider-linode ~/go_projects/bin/
         chmod 750 ~/go_projects/bin/terraform-provider-linode
 
-# Configure the Linode Provider
+### Configure the Linode Provider
 
 Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide will use the HCL format, designated by the extension `.tf`.
 

@@ -42,14 +42,14 @@ Fedora and CentOS:
 
     sudo service httpd restart
 
- {{< note >}}
+{{< note >}}
 You can use one of the following three commands instead, depending on your Linux distribution:
 
-/etc/init.d/httpd restart
+`/etc/init.d/httpd restart`
 
-/etc/init.d/apache2 restart
+`/etc/init.d/apache2 restart`
 
-/etc/rc.d/httpd restart
+`/etc/rc.d/httpd restart`
 {{< /note >}}
 
 ## Reload Apache

@@ -280,13 +280,13 @@ The next important concept is *permissions*. Every file and directory on your Li
 ### View Permissions in Linux
 View the users and permissions for a particular file or directory.
 
-1. Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
+1.  Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
 
-    ls -l my_directory
+        ls -l my_directory
 
-2. That command produces output like the following:
+2.   That command produces output like the following:
 
-    drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory
+        drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory
 
 The user and group are listed in the middle. In this case, the user is **user1** and the group is **group1**. The user is listed first and the group second. The permissions are listed at the beginning of the line. Ignoring the first character, you can see that the permissions for the `my_directory` directory are **rwxr-xr-x**.
 
@@ -346,11 +346,11 @@ You want some programs, like your web server, to run constantly. These are the p
 
 Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files.
 
-1. Use the `cd` command to move into the directory where the script is located.
-2. Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
-3. Run the script with the following syntax:
+1.  Use the `cd` command to move into the directory where the script is located.
+2.  Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
+3.  Run the script with the following syntax:
 
-    ./my_script
+        ./my_script
 
 **Scheduled:**
 
