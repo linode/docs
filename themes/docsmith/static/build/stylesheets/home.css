@@ -19866,6 +19866,16 @@ li.list-group-item {
 #ds-search-input ul li:hover {
   background-color: #e6e6e6;
 }
+.search-deprecated {
+  font-size: 9px;
+  background-color: #FFAC5F;
+  height: 43px;
+  color: white;
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
 .library-article-blurb {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -21144,6 +21154,10 @@ h1.contribute {
   padding-top: 0.25rem;
   right: 1.4rem;
   opacity: 0;
+}
+blockquote > div > div.btn-copy > .copy-code {
+  padding-top: 0.01rem;
+  right: 2.2rem;
 }
 .copy-code:hover {
   opacity: 1;

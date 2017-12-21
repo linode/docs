@@ -140,9 +140,11 @@
 (function($) {
 
     function search(query, searchStore) {
-        var result = searchStore.index.search(query);
+        // Fuzzy search with sensitivity set to one character
+        var result = searchStore.index.search(query + '~1');
         var resultList = $('#ds-search-list');
         resultList.empty();
+        var deprecatedResults = [];
         for (var i = 0; i < result.length; i++) {
             var item = result[i];
 
@@ -151,11 +153,25 @@
                 break;
             }
 
-            var title = searchStore.store[item.ref]
+            var title = searchStore.store[item.ref].title
             var url = item.ref
-            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + '</li>';
-            resultList.append(searchitem);
+            var badge = ''
+            var deprecated = searchStore.store[item.ref].deprecated
+            if (deprecated) {
+              badge = '<span class="search-deprecated">DEPRECATED</span>'
+             }
+            var searchitem = '<li class="list-group-item"><a href="' + url + '">' + title + badge + '</a></li>';
+            // Deprecated search results to end of list
+            if (deprecated) {
+              deprecatedResults.push(searchitem)
+            }
+            else {
+              resultList.append(searchitem);
+            }
         }
+        deprecatedResults.forEach(function(result) {
+          resultList.append(result);
+        });
         resultList.show();
     }
 
