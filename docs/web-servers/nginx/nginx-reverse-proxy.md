@@ -169,7 +169,7 @@ Last-Modified: Tue, 19 Dec 2017 14:45:31 GMT
 
     The server is now `nginx`. You can also navigate to your Linode's public IP address in a browser and confirm that the application is publicly accessible on port 80.
 
-{{< note >}}
+    {{< note >}}
 When deploying a web application, be sure to turn off the `Server` header and follow the [recommended NGINX security configurations](https://www.owasp.org/index.php/SCG_WS_nginx).
 {{< /note >}}
 
@@ -181,7 +181,7 @@ NGINX can proxy non-HTTP protocols using appropriate `*_proxy` directives such a
 * `scgi_pass` passes a request to an SCGI server
 * `memcached_pass` passes a request to a memcached server
 
-### Passing Request Headers to Backend Servers
+### Pass Request Headers to Backend Servers
 
 Sometimes your backend application needs to know the IP address of the user who is visiting your website. With a reverse proxy, the backend server only sees the proxy IP address. This can be solved by passing the IP address of the client using HTTP request headers. The `proxy_set_header` directive is used for this.
 
@@ -201,7 +201,7 @@ server {
 
 `$remote_addr` is a built-in variable that holds the IP address of the client; `$host` contains the hostname for the request. You can read more about these variables [here](https://nginx.org/en/docs/varindex.html).
 
-### Choosing a Bind Address
+### Choose a Bind Address
 If your backend server is configured to only accept connections from certain IP addresses and your proxy server has multiple network interfaces, then you want your reverse proxy to choose the right source IP address when connecting to a backend server. This can be achieved with `proxy_bind`:
 
 {{< file-excerpt "/etc/nginx/sites-enabled/example.conf" nginx >}}
@@ -213,7 +213,7 @@ location / {
 
 Now when your reverse proxy connects with the backend server it will use `192.0.2.1` as the source IP address.
 
-### Buffering
+### Buffers
 When NGINX receives a response from the backend server, it buffers the response before sending
 it to the client, which helps optimize performance with slow clients. Buffering
 can be turned off or customized with these directives: `proxy_buffering`, `proxy_buffers` and `proxy_buffer_size`.
