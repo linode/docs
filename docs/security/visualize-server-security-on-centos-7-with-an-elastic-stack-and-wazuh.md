@@ -544,7 +544,7 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status nginx
 
     {{< note >}}
-    If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
+If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
 {{< /note >}}
 
 4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to `kibana.exampleIPorDomain`. You can also reach Kibana by navigating to your server's IP address and specifying port `5601`. Login with the credentials you setup for your Kibana site.

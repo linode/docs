@@ -152,7 +152,7 @@ Once you have the IP address and an SSH client, you can log in via SSH. The foll
 
         root@li123-456:~#
 
- {{< note >}}
+    {{< note >}}
 If you recently rebuilt an existing Linode, you might receive an error message when you try to
 reconnect via SSH. SSH clients try to match the remote host with the known keys on your desktop computer, so when you rebuild your Linode, the remote host key changes.
 

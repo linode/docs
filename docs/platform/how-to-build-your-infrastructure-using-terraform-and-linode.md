@@ -38,7 +38,7 @@ The configurations and commands used in this guide, will result in multiple Lino
 Terraform automates the build process of an app's infrastructure, including creating the necessary amount Linodes for your project. As a result, unless otherwise specified, all commands in this guide should be run from a client machine. This guide will assume that your client machine is running Ubuntu 16.04, but similar procedures should work on other platforms.
 {{< /note >}}
 
-# Installing Terraform on Ubuntu 16.04
+### Installing Terraform on Ubuntu 16.04
 
 Unlike other tools that require server agents (Chef & Puppet,) Terraform is a "Client-Only" architecture. In fact, Terraform is bundled as a single binary available for MacOS, FreeBSD, Linux, OpenBSD, Solaris and Windows. The binary file contains the core of the application; providers and plugins can be added as required by the user.
 
@@ -105,8 +105,8 @@ You can change the variables to any location that suits you, just be sure to inc
 
         mv ~/go_projects/src/github.com/LinodeContent/terraform-provider-linode/linode-template.tf ~/go_projects/bin
 
-{{< note >}}
-AT this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
+    {{< note >}}
+At this point, you have all binaries needed, `terraform` which comes with the Terraform GitHub repository and will locate itself on `go_projects/bin` and `terraform-provider-linode` that you just built. If the rest of your clients use the same OS then you can distribute these files among them. There is no need for each client to install `Go` or build the same package.
 {{< /note >}}
 
 ## Install Terraform
@@ -124,7 +124,7 @@ AT this point, you have all binaries needed, `terraform` which comes with the Te
         mv terraform-provider-linode ~/go_projects/bin/
         chmod 750 ~/go_projects/bin/terraform-provider-linode
 
-# Configure the Linode Provider
+### Configure the Linode Provider
 
 Terraform can understand two types of configuration files: JSON and HashiCorp Configuration Language (HCL). This guide will use the HCL format, designated by the extension `.tf`.
 
@@ -198,7 +198,7 @@ This section will present three Terraform examples, ranging from a single Linode
 
 The most simple Terraform work flow is: *initialize* your configuration, *plan* to check for errors and *apply* the changes.
 
-## Two Server Configuration
+### Two Server Configuration
 
 Now that you have a `linode-example` running, imagine you need to implement a typical "Web server / Database Server" deployment. If you want to add another Linode, the procedure to add another server is very straightforward:
 
@@ -246,9 +246,9 @@ Remember:
 
 4.  Check the Linode Manager to ensure that another Linode, `www`, has been added to the `web` display group on your account.
 
-## Adjust Architecture
+### Adjust Architecture
 
-To expand this example a bit further just imagine you want to change the first server name and tag to something more relevant and also you want to increase the size to match the newly created Linode.
+To expand this example a bit further, imagine you want to change the first server name and tag to something more relevant and also you want to increase the size to match the newly created Linode.
 
 1.  Modify the `linode-template.tf`
 
@@ -291,7 +291,7 @@ Changing the size of your Linode will force your server to be powered off and mi
 4.  Open the Linode Manager to verify the changes.
 
 
-## Advanced Configuration Example
+### Advanced Configuration Example
 
 Up to this point, the procedure for adding a new node to your infrastructure was to create a new file and run the `terraform apply` command. But what happens when your planned infrastructure has dozens of servers? In this example, you will use a very simplistic version of a Terraform configuration file that uses variables.
 
@@ -392,7 +392,7 @@ resource "linode_linode" "db-01" {
 Before reading next section take a moment to experiment with Terraform commands, create new servers, change names, resize. Once you are done please destroy all Linodes and delete associated files.
 {{< /note >}}
 
-# Managing your infrastructure
+## Managing your infrastructure
 
 So far, the guide has covered the tip of the iceberg of what Terraform can do. This final section will cover briefly:
 
