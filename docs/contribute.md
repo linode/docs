@@ -21,6 +21,6 @@ show_on_rss_feed: false
 {{< /topics >}}
 
 {{< topics >}}
-* Build a Stream API with Kafka
-* Create a GraphQL Endpoint
+* Choose a Static Website Generator
+* Host a Static Website with Hugo and NGINX
 {{< /topics >}}
