@@ -34,3 +34,6 @@ def test_yaml(md_filepath):
                 d = parse(str(parsed_yaml[requirement]))
             except ValueError:
                 assert False, 'YAML metadata formatting error: ' + requirement + ' date parse failed.'
+            regex = regex.compile(r'20[0-9]{2}-[0-9]{2}-[0-9]{2}')
+            assert regex.match(regex,parsed_yaml[requiremend]), 'YAML metadata formatting error: ' + requirement + 'should use the format YYYY-MM-DD.'
+
