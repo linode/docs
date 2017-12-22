@@ -18,7 +18,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 14.04](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu 14.04")
+![Install Roundcube on Ubuntu 14.04](/docs/assets/roundcube/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu 14.04")
 
 ## What is Roundcube?
 
@@ -72,7 +72,7 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
 2.  Download a copy of our `apache2-roundcube.sample.conf` virtual host configuration file. Replace instances of `webmail.example.com` with the desired domain or subdomain of your installation.
 
-        sudo wget https://linode.com/docs/assets/apache2-roundcube.sample.conf
+        sudo wget https://linode.com/docs/assets/roundcube/apache2-roundcube.sample.conf
 
 3.  Transfer the file's ownership to **root**:
 
@@ -151,7 +151,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
     PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
-  {{< output >}}
+  	{{< output >}}
 install ok: channel://pear.php.net/Auth_SASL-1.1.0
 install ok: channel://pear.php.net/Net_IDNA2-0.1.1
 install ok: channel://pear.php.net/Mail_Mime-1.10.2
@@ -206,7 +206,7 @@ install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
 
 2.  Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an *environment check*. Click on the **NEXT** button at the bottom of the page to continue.
 
-    ![Roundcube Webmail Installer](/docs/assets/roundcube_webmail_installer.png)
+    ![Roundcube Webmail Installer](/docs/assets/roundcube/roundcube_webmail_installer.png)
 
     {{< note >}}
 Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warnings will appear under the **Checking available databases** section. MySQL was installed earlier as part of the LAMP stack, so you can ignore these warnings.
@@ -229,11 +229,11 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 5.  Complete the configuration by clicking **CONTINUE**.
 
-    [![Roundcube configuration saved successfully](/docs/assets/roundcube-configuration-saved-successfully_small.png)](/docs/assets/roundcube-configuration-saved-successfully.png)
+    [![Roundcube configuration saved successfully](/docs/assets/roundcube/roundcube-configuration-saved-successfully_small.png)](/docs/assets/roundcube/roundcube-configuration-saved-successfully.png)
 
 6.  Lastly, import Roundcube’s MySQL database structure by clicking on the **Initialize database** button.
 
-    ![Roundcube MySQL database initialization](/docs/assets/roundcube-mysql-database-initialization.png)
+    ![Roundcube MySQL database initialization](/docs/assets/roundcube/roundcube-mysql-database-initialization.png)
 
 # Remove the Installer Directory
 
@@ -247,7 +247,7 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
 1.  Navigate to `https://webmail.example.com` and log in using your email account's username and password. If your configuration is functional, Roundcube will allow you to receive, read and send emails from inside and outside of your domain name.
 
-    ![Roundcube login](/docs/assets/roundcube-login.png)
+    ![Roundcube login](/docs/assets/roundcube/roundcube-login.png)
 
 ## Keeping Roundcube Updated
 
