@@ -3,13 +3,14 @@ author:
   name: 'Linode Community'
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
-keywords: ["Roundcube", "webmail", "email", "Ubuntu", "Postfix", "Dovecot"]
+keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
+alisases: ['email/clients/install-roundcube-on-ubuntu-14-04']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-01
-modified: 2016-02-01
+modified: 2017-12-18
 modified_by:
   name: 'Linode'
-title: 'Install Roundcube on Ubuntu 14.04'
+title: 'Install Roundcube on Ubuntu 16.04'
 contributor:
   name: 'Sean Webber'
   link: 'https://github.com/seanthewebber'
@@ -17,11 +18,11 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 14.04](/docs/assets/install-roundcube-on-ubuntu-14-04.jpg "Install Roundcube on Ubuntu 14.04")
+![Install Roundcube on Ubuntu 14.04](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu 14.04")
 
 ## What is Roundcube?
 
-Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail or Microsoft’s Hotmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube over the internet using a web browser.
+Roundcube is a web-based IMAP email client that offers a user interface similar to Google’s Gmail. It is a server-side application written in PHP designed to access an email server or service. Email users interact with Roundcube using a web browser.
 
 ## Before You Begin
 
@@ -59,7 +60,7 @@ This section will cover installing Apache, MySQL, PHP and SSL on your Linode fro
 
 4.  Specify your Linode's time zone in the `/etc/php5/apache2/php.ini` PHP configuration file. If your server is not using UTC, replace it with your [local timezone listed on PHP.net](http://nl1.php.net/manual/en/timezones.php):
 
-        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php5/apache2/php.ini
+        sudo sed -i -e "s/^;date\.timezone =.*$/date\.timezone = 'UTC'/" /etc/php/7.0/apache2/php.ini
 
 ### Create an Apache Virtual Host with SSL
 
@@ -85,10 +86,10 @@ We will create a new virtual host for Roundcube in this section. This makes a ne
 
 6.  Once you have your SSL certificate, edit the following options in `apache2-roundcube.sample.conf` to match your desired configuration:
 
-    - **ServerAdmin:** administrative email address for your Linode (e.x. `admin@example.com` or `webmaster@example.com`)
-    - **ServerName:** full domain name of the virtual host (e.x. `webmail.example.com`)
-    - **ErrorLog (optional):** path to the custom error log file (e.x. `/var/log/apache2/webmail.example.com/error.log`; uncomment by removing `# `)
-    - **CustomLog (optional):** path to the custom access log file (e.x. `/var/log/apache2/webmail.example.com/access.log`; again, uncomment by removing `# `)
+    - **ServerAdmin:** administrative email address for your Linode (e.g. `admin@example.com` or `webmaster@example.com`)
+    - **ServerName:** full domain name of the virtual host (e.g. `webmail.example.com`)
+    - **ErrorLog (optional):** path to the custom error log file (e.g. `/var/log/apache2/webmail.example.com/error.log`; uncomment by removing `# `)
+    - **CustomLog (optional):** path to the custom access log file (e.g. `/var/log/apache2/webmail.example.com/access.log`; again, uncomment by removing `# `)
     - **SSLCertificateFile:** path to the SSL certificate information (`.crt`) file
     - **SSLCertificateKeyFile:** path to the SSL certificate private key (`.key`) file
 
@@ -132,9 +133,9 @@ Make sure the custom directory and desired `.log` files exist **before** specify
 
 ## Final Preparations for Roundcube
 
-1.  Install and enable the packages `php-pear`, `php5-intl`, and `php5-mcrypt`:
+1.  Install and enable required PHP packages:
 
-        sudo apt-get install php-pear php5-intl php5-mcrypt && sudo php5enmod intl mcrypt
+        sudo apt-get install php-pear php7.0-intl php7.0-mcrypt php7.0-mbstring && sudo phpenmod intl mcrypt mbstring
 
 2.  Enable the Apache modules `deflate`, `expires`, `headers`, `rewrite`, and `ssl`:
 
@@ -142,7 +143,7 @@ Make sure the custom directory and desired `.log` files exist **before** specify
 
 3.  Additionally, install the PHP PEAR packages `Auth_SASL`, `Net_SMTP`, `Net_IDNA2-0.1.1`, `Mail_mime`, and `Mail_mimeDecode`:
 
-        sudo pear install Auth_SASL Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
+        sudo pear install Auth_SASL2 Net_SMTP Net_IDNA2-0.1.1 Mail_mime Mail_mimeDecode
 
     {{< note >}}
 PEAR is an acronym for "PHP Extension and Application Repository". Common PHP code libraries, written officially or by third parties, can be easily installed and referenced using the `pear` command.
@@ -150,11 +151,14 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
     PEAR will print an **install ok** confirmation message for each package that it successfully installs. In this case, a complete installation will look similar to this:
 
-        install ok: channel://pear.php.net/Auth_SASL-1.0.6
-        install ok: channel://pear.php.net/Net_SMTP-1.7.1
-        install ok: channel://pear.php.net/Net_IDNA2-0.1.1
-        install ok: channel://pear.php.net/Mail_mime-1.10.0
-        install ok: channel://pear.php.net/Mail_mimeDecode-1.5.5
+  {{< output >}}
+install ok: channel://pear.php.net/Auth_SASL-1.1.0
+install ok: channel://pear.php.net/Net_IDNA2-0.1.1
+install ok: channel://pear.php.net/Mail_Mime-1.10.2
+install ok: channel://pear.php.net/Net_Socket-1.2.2
+install ok: channel://pear.php.net/Net_SMTP-1.8.0
+install ok: channel://pear.php.net/Mail_mimeDecode-1.5.6
+{{< /output >}}
 
 ## Download and Install Roundcube
 
@@ -162,17 +166,17 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
         cd ~/Downloads
 
-2.  Download Roundcube. At the time of this writing, the current stable version is 1.1.4, so it will be used for the rest of this guide.
+2.  Download Roundcube. At the time of this writing, the current stable version is 1.3.3, so it will be used for the rest of this guide.
 
-        wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
+        wget https://github.com/roundcube/roundcubemail/releases/download/1.3.3/roundcubemail-1.3.3-complete.tar.gz
 
-3.  Decompress and copy Roundcube to the `/var/www` directory. Again, replace any occurrences of `1.1.4` in the filename with a newer version number if necessary:
+3.  Decompress and copy Roundcube to the `/var/www` directory. Again, replace any occurrences of `1.3.3` in the filename with a newer version number if necessary:
 
-        sudo tar -zxvf roundcubemail-1.1.4.tar.gz -C /var/www
+        sudo tar -zxvf roundcubemail-1.3.3-complete.tar.gz -C /var/www
 
 4.  Eliminate the version number from Roundcube's directory name. This will make updating easier later:
 
-        sudo mv /var/www/roundcubemail-1.1.4 /var/www/roundcube
+        sudo mv /var/www/roundcubemail-1.3.3 /var/www/roundcube
 
 5.  Transfer ownership of the `/var/www/roundcube` directory to the `www-data` user. This will allow Roundcube to save its own configuration file, instead of you having to download it and then manually upload it to your Linode:
 
@@ -198,7 +202,7 @@ PEAR is an acronym for "PHP Extension and Application Repository". Common PHP co
 
 ## Configure Roundcube
 
-1.  Launch your favorite web browser and navigate to `https://webmail.example.com/installer`. Again, make sure to replace `webmail.example.com` with your chosen domain name.
+1.  Navigate to `https://webmail.example.com/installer` in a web browser. Again, make sure to replace `webmail.example.com` with your chosen domain name.
 
 2.  Begin configuring Roundcube. The first step of Roundcube’s graphical configuration is an *environment check*. Click on the **NEXT** button at the bottom of the page to continue.
 
@@ -214,11 +218,9 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
     - **General configuration > support_url:** Where should your users go if they need help? A URL to a web-based contact form or an email address should be used. (e.g. `http://example.com/support` or `mailto:support@example.com`)
     - **General configuration > skin_logo:** Replaces the default Roundcube logo with an image of your choice. The image must be located within the `/var/www/roundcube` directory and be linked relatively (e.g. `skins/larry/logo.png`). Recommended image resolution is `177px` by `49px`.
     - **Database setup > db_dsnw > Database password:** Password for the **roundcube** MySQL user you created earlier.
-    - **IMAP Settings > default_host:** Hostname of your IMAP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL.
-    - **IMAP Settings > default_port:** TCP port for incoming IMAP connections to your server. Use port `993` to ensure OpenSSL is used.
+    - **IMAP Settings > default_host:** Hostname of your IMAP server. Set this to `ssl://` plus the domain of your email server (e.g. `ssl://webmail.example.com`).
     - **IMAP Settings > username_domain:** What domain name should Roundcube assume all users are part of? This allows users to only have to type in their email username (e.g. **somebody**) instead of their full email address (e.g. `somebody@example.com`).
-    - **SMTP Settings > smtp_server:** Hostname of your SMTP server. Use `ssl://localhost` to access the local server (i.e. your server) using OpenSSL.
-    - **SMTP Settings > smtp_port:** TCP port for incoming SMTP connections to your server. Use port `587` to ensure OpenSSL is used.
+    - **SMTP Settings > smtp_server:** Hostname of your SMTP server. Set this to your email server domain, prefixed with `ssl://`.
     - **SMTP Settings > smtp_user/smtp_pass:** Click and check the **Use the current IMAP username and password for SMTP authentication** checkbox so that users can send mail without re-typing their user credentials.
     - **Display settings & user prefs > language:** Allows you to select a default [RFC1766](http://www.faqs.org/rfcs/rfc1766)-compliant locale for Roundcube. For a full listing of the supported language codes, run `cat /usr/share/i18n/SUPPORTED` on your Linode.
     - **Display settings & user prefs > draft_autosave:** Most users will expect their drafts to be saved almost instantaneously while they type them. While Roundcube does not offer instantaneous draft saving as an option, it can save a user’s draft every minute. Select `1 min` from the dropdown menu.
@@ -247,49 +249,47 @@ Since Roundcube supports six different SQL engines, five **NOT AVAILABLE** warni
 
     ![Roundcube login](/docs/assets/roundcube-login.png)
 
-    {{< note >}}
-If your email address is `somebody@example.com`, you only have to enter **somebody** as your username. Roundcube assumes that all users exist at `example.com`.
-{{< /note >}}
-
 ## Keeping Roundcube Updated
 
 1.  Compare the **Stable > Complete** package version listed on [Roundcube's download page](http://roundcube.net/download/) to the version currently installed on your Linode.
 
-2.  If a newer version is available, replace any occurrences of `1.1.4` with the newest version in the command below. This will download Roundcube to your `~/Downloads` directory:
+2.  If a newer version is available, replace any occurrences of `1.3.3` with the newest version in the command below. This will download Roundcube to your `~/Downloads` directory:
 
-        cd ~/Downloads && wget http://downloads.sourceforge.net/project/roundcubemail/roundcubemail/1.1.4/roundcubemail-1.1.4.tar.gz
+        cd ~/Downloads && wget https://github.com/roundcube/roundcubemail/releases/download/1.3.3/roundcubemail-1.3.3-complete.tar.gz
 
 3.  Extract and unzip the tarball (.tar.gz file) to `~/Downloads`:
 
-        tar -zxvf roundcubemail-1.1.4.tar.gz
+        tar -zxvf roundcubemail-1.3.3.tar.gz
 
 4.  Begin updating Roundcube by executing the `/var/www/roundcube/bin/installto.sh` PHP script. If you did not install Roundcube in the `/var/www/roundcube` directory, replace the trailing directory with that of Roundcube's on your server:
 
-        cd roundcubemail-1.1.4
+        cd roundcubemail-1.3.3
         sudo php bin/installto.sh /var/www/roundcube
 
 5.  Confirm the update by pressing **Y** and then **ENTER**. A successful upgrade will print something similar to this:
 
-        Upgrading from 1.1.4. Do you want to continue? (y/N)
-        y
-        Copying files to target location...sending incremental file list
+    {{< output >}}
+Upgrading from 1.3.3. Do you want to continue? (y/N)
+y
+Copying files to target location...sending incremental file list
 
-        ...
+...
 
-        Running update script at target...
-        Executing database schema update.
-        This instance of Roundcube is up-to-date.
-        Have fun!
-        All done.
+Running update script at target...
+Executing database schema update.
+This instance of Roundcube is up-to-date.
+Have fun!
+All done.
+{{< /output >}}
 
-    **All done** means the update was successful; unless you don't see this message, proceed to step six.
+    **All done** means the update was successful; if you see this message, proceed to step six.
 
 6.  Delete the Roundcube directory and gzipped tarball from `~/Downloads`:
 
-        cd ~/Downloads && rm -rfd roundcubemail-1.1.4 roundcubemail-1.1.4.tar.gz
+        cd ~/Downloads && rm -rfd roundcubemail-1.3.3 roundcubemail-1.3.3.tar.gz
 
 ## Conclusion
 
-Now that you have installed Roundcube, you have your very own free, web-based email client similar to Google’s Gmail or Microsoft’s Hotmail. Users can access their email by navigating to `https://webmail.example.com`.
+Now that you have installed Roundcube, you have a free, web-based email client similar to Google’s Gmail. Users can access their email by navigating to `https://webmail.example.com`.
 
 From here, you can [install plugins to add additional functionality](http://trac.roundcube.net/wiki/Doc_Plugins) and [customize the theme](http://trac.roundcube.net/wiki/Doc_Skins) to match your organization’s color scheme.
