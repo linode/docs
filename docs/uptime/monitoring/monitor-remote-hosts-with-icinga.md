@@ -47,7 +47,7 @@ object Host "Linode" {
 }
 {{< /file-excerpt >}}
 
-2.  Assuming that you want to check the status of a web server that runs in this node, add the following lines after host definition. This check will verify if the web server is alive and responds with the proper HTTP codes:
+2.  To check the status of a web server that runs in this node, add the following lines after host definition. This check will verify if the web server is alive and responds with the proper HTTP codes:
 
     {{< file-excerpt "/etc/icinga2/conf.d/hosts.conf" conf >}}
 object Service "http" {
