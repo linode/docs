@@ -20,7 +20,7 @@
 
 ## How can I write a guide?
 
-We are constantly seeking to impove the quality of our library. See our [rotating list of suggested topics](https://www.linode.com/docs/contribute/).
+We are constantly looking to impove the quality of our library. See our [rotating list of suggested topics](https://www.linode.com/docs/contribute/).
 
 More detailed instructions on submitting a pull request can be found [here](CONTRIBUTING.md).
 
