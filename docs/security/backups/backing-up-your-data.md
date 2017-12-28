@@ -20,7 +20,7 @@ If you store any customer or personal data on a Linode, it's important to make r
 
 ## Assess Your Needs
 
-Backups are not one-size-fits-all. Before you make your first backup (or create a recurring backup schedule), take a minute to consider what you need to back up and what tool is best for your situation.
+Backups are not one-size-fits-all. Before you make your first backup (or create a recurring backup schedule), consider what you need to back up and what tool is best for your situation.
 
 ### What to Back Up
 
@@ -37,7 +37,7 @@ Once you have a list of items to be backed up, find where those files are on you
 
 The type of backup that you make is important, too, because its format affects what you can do with it later. You should think about the circumstances under which you will be making the restoration, so that you make the right kind of backup. There are two basic types of backups:
 
--   **File-system backup**: Copying all or part of your file system, along with its structure and permissions, is good for HTML files, software configuration files, email (in most cases), and media. If you later restore the copied file system to a Linode, it should work the way it did before. A full-server snapshot backup is a complete file-system backup that preserves your entire server from a specific point in time. If you back up the files without preserving their permissions, you'll at least have the content, but it may take a lot longer to get the restoration working.
+-   **File-system backup**: Copying all or part of your file system, along with its structure and permissions, is good for HTML files, software configuration files, email (in most cases), and media. If you later restore the copied file system to a Linode, it should work the way it did before. A full-server snapshot backup is a complete file-system backup that preserves your entire server from a specific point in time. If you back up the files without preserving their permissions, you'll have the content, but it may take a lot longer to get the restoration working.
 -   **Database dump**: File-system backups are not always the best choice for database backups. A full-server snapshot will of course also restore your databases, but raw database files are fairly useless in a partial backup context. Running a SQL dump or something similar is better: you will get a human-readable file of SQL commands, which can be imported to any other server running the same database type.
 
 Decide whether you need a file-system backup, a database dump, or both. If you need both, the database dump can be made first, and then the dump file can be saved as part of a file-system backup.
@@ -53,7 +53,7 @@ The next consideration is how often you need to back up your data. This decision
 -   **Static site**: Every six months, or before and after making significant changes
 -   **Email server**: At least daily
 
-Your requirements should help you decide whether you can use a manual backup tool, or whether you need to automate the process.
+Your requirements should help you decide whether you can use a manual backup tool or an automated process.
 
 ### Where to Store Backups
 
@@ -67,7 +67,7 @@ You should also think about how many backups your storage platform can hold. Mos
 
 ### Backup Rotation
 
-Finally, you should decide how long to keep your old backups and how many to store at once. While one backup is better than none, most people will want *at least two.* This is because an older backup is more reliable, whereas a newer backup has the most recent changes. For example, if you replace your backup every day, and don't keep any of your old ones, you would be out of luck if you discovered that your website had been hacked a week ago. The safest option is to store backups as frequently as possible without overwriting them. Just make sure that you don't run out of space on your backup machine! Backup types that include compression and other efficiencies make it easier to store multiple backups.
+Finally, you should decide how long to keep your old backups and how many to store at once. While one backup is better than none, most people will want *at least two.* For example, if you replace your backup every day, and don't keep any of your old ones, you would be out of luck if you discovered that your website had been hacked a week ago. The safest option is to store backups as frequently as possible without overwriting them. Just make sure that you don't run out of space on your backup machine! Backup types that include compression and other efficiencies make it easier to store multiple backups.
 
 ## Choose the Right Backup Utility
 
@@ -134,7 +134,13 @@ To make human-readable backups of your databases that can be imported to a new d
 
 ### Tar
 
-Tar can copy and compress the files on your Linode into a small backup file. This has several advantages: It saves space on your backup machine, it reduces the amount of transfer used if you're saving your backup to a remote location, and it makes it easier to manipulate the backup since you're dealing with just one file. On the other hand, you'll have to uncompress your backup file to make it usable for restoration. You can't just browse through it looking for one folder.
+Tar can copy and compress the files on your Linode into a small backup file. This has several advantages:
+
+-  Saves space on your backup machine
+-  Reduces the amount of transfer used if you're saving your backup to a remote location
+-  Makes it easier to manipulate the backup since you're dealing with just one file
+
+ On the other hand, you'll have to uncompress your backup file to make it usable for restoration. You can't just browse through it looking for one folder.
 
 -   **What**: You set the file path for this file-system backup.
 -   **When**: The basic command is manual, but you can set it to run automatically with cron.
@@ -166,7 +172,7 @@ Rdiff-backup is a utility designed to make incremental backups. As their [websit
 
 For information, see [Using Rdiff-backup with SSHFS](/docs/linux-tools/rdiff-backup).
 
-## Make a Manual Backup
+## Manual Backup via Rsync
 
 The remainder of this guide will use rsync as an example; similar steps can be used with the other utilities discussed above. This section explains how to perform a one-time manual backup.
 
@@ -213,7 +219,7 @@ Follow these steps to set up automatic backups of your Linode to a Linux server:
 
 1.  Install rsync on both servers by entering the following command:
 
-        sudo apt-get install rsync
+        sudo apt install rsync
 
 2.  On your *backup\_server*, generate a passwordless SSH key by entering the following command. Press Return when prompted to enter a password - *do not enter a password*.
 
@@ -250,6 +256,7 @@ For an explanation of the rsync command's options and arguments, and to learn ho
 {{< /note >}}
 
 8.  The output should be similar to the output that was generated in Step 6. Feel free to `ls` your `~/backups/` folder to make sure everything was created.
+
 9.  Add the command to cron so it gets executed automatically every day. Open the cron file on your *backup\_server* for editing by entering the following command:
 
         crontab -e
@@ -268,7 +275,7 @@ For more information about cron, and to learn how to create a custom schedule fo
 
 Congratulations! You have now configured daily automatic snapshot-style backups. If something goes wrong with your server, you'll be able to restore from a backup at any time.
 
-## Setting Up Automatic Backups to a Desktop Computer
+## Set Up Automatic Backups to a Desktop Computer
 
 Now that you've learned how to back up your Linode to another Linux server, it's time to learn how to back up to your desktop computer. There are several reasons why you may want to do this. It's a cheaper option, for one thing. Rather than pay for two virtual servers, you can keep everything on your home computer. It's also useful for individuals who need to set up development environments on their desktop computers.
 
@@ -281,11 +288,11 @@ Verify that rsync is installed on your desktop computer. Linux users can execute
 
 ### Linux
 
-Linux users should follow the instructions presented in the previous Setting Up Automatic Backups to a Linux Server\_ section of this guide.
+Linux users should follow the instructions presented in the previous [Set Up Automatic Backups to a Linux Server](#set-up-automatic-backups-to-a-linux-server) section of this guide.
 
 ### Mac OS X
 
-OS X users can also follow the instructions presented in the previous Setting Up Automatic Backups to a Linux Server\_ section of this guide. The only difference is that you do not have to install rsync, and you have to change the use of the `date` variable slightly. Your final rsync command in Step 7 should look like this:
+OS X users can also follow the instructions presented in the previous [Set Up Automatic Backups to a Linux Server](#set-up-automatic-backups-to-a-linux-server) section of this guide. The only difference is that you do not have to install rsync, and you have to change the use of the `date` variable slightly. Your final rsync command in Step 7 should look like this:
 
     rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date +%Y-%m-%d)
 
@@ -293,7 +300,7 @@ Your final crontab entry in Step 9 should look like this:
 
     0      3       *       *       *       rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date +\%Y-\%m-\%d)
 
- {{< note >}}
+{{< note >}}
 If you run into a permissions error with cron but not when you run the command manually, you might have a password on your SSH key which doesn't normally pop up because you have it stored in the Mac OS X keychain. You might want to set up a new OS X user with a passwordless key for the purpose of this cron job.
 {{< /note >}}
 
@@ -372,7 +379,7 @@ total size is 20.73K  speedup is 7.26
             rsync -hrtvz --chmod u+rwx --delete --link-dest=/cygdrive/c/Users/user/backups/public_orig user@production_server:~/public /cygdrive/c/Users/user/backups/public_%DATE:~10,4%-%DATE:~4,2%-%DATE:~7,2%
 
         {{< note >}}
-For a deeper explanation of the rsync command's options and arguments, and to learn how to customize the command, please see the [Understanding the Rsync Command](#understanding-the-rsync-command) section of this guide.
+For a deeper explanation of the rsync command's options and arguments and customizing the command, please see the [Understand the Rsync Command](#understand-the-rsync-command) section of this guide.
 {{< /note >}}
 
     6.  Save the file.
@@ -439,7 +446,7 @@ Rsync is a powerful tool, but the half-dozen options in the example commands use
 For a basic overview of rsync, [check out the manual page](http://linux.die.net/man/1/rsync).
 {{< /note >}}
 
-At its most basic, an rsync command takes this form:
+A basic rsync command takes this form:
 
     rsync copyfrom copyto
 
@@ -458,7 +465,7 @@ Rsync can also run with additional options, which are included in the command be
 
 ### -ahvz
 
-Here are some popular options for rsync:
+Here are some standard options for rsync:
 
     -ahvz
 
@@ -473,7 +480,7 @@ These options have the following effects:
 -   -v or --verbose: Displays more output
 -   -z or --compress: Compress file data during transfer
 
-You can add or remove any of the rsync options as you see fit. For example, if you don't need to see all of the output, you could just run:
+You can add or remove any of the rsync options. For example, if you don't need to see all of the output, you could just run:
 
     -ahz
 
@@ -497,7 +504,7 @@ If you want to do a full-server backup from root, you should use `/*` as your pa
 
     --exclude={/dev/*,/proc/*,/sys/*,/tmp/*,/run/*,/mnt/*}
 
-You will also need to use either `root` or a sudo-capable user for the backup, if you are backing up from `/*` or another high-level directory. `root` is easier but less secure. If you use a sudo user, you will need to either disable the need for the password when rsync is used, or send the password to the server. The [crashingdaily blog](https://crashingdaily.wordpress.com/2007/06/29/rsync-and-sudo-over-ssh/) has a good discussion of this.
+You will also need to use either `root` or a sudo-capable user for the backup, if you are backing up from `/*` or another high-level directory. If you use a sudo user, you will need to either disable the need for the password when rsync is used, or send the password to the server. The [crashingdaily blog](https://crashingdaily.wordpress.com/2007/06/29/rsync-and-sudo-over-ssh/) has a good discussion of this.
 
 ### Target Location
 
@@ -522,7 +529,7 @@ The following command extends the previous example to enable automatic backups a
 
     0   3   *   *   *   rsync -ahvz --delete --link-dest=~/backups/public_orig user@production_server:~/public ~/backups/public_$(date -I)
 
-The series of numbers and asterisks specifies when the cron task should be run (remember, this command was added to the `crontab` file [earlier in this guide](#setting-up-automatic-backups-to-a-linux-server)).
+The series of numbers and asterisks specifies when the cron task should be run (remember, this command was added to the `crontab` file [earlier in this guide](#set-up-automatic-backups-to-a-linux-server)).
 
     0       3           *           *       *        Command
 
@@ -564,7 +571,7 @@ The trailing `/` is omitted to match the `copyto` path.
 
 This guide specifies a remote *production\_server* and a local *backup\_server*. However, rsync works equally well with a local *production\_server* and a remote *backup\_server*, with local backups to a different folder on the same device, or with two remote servers. Any remote server requires an SSH login before the file path.
 
-In technical terms, running the rsync command from the backup server is a "pulled" backup, while running it from the production server is a "pushed" backup.
+Running the rsync command from the backup server is a "pulled" backup, while running it from the production server is a "pushed" backup.
 
 Local folders don't need an SSH login, while remote folders need the SSH login and a colon (`:`) before the file path. More valid rsync command examples:
 
