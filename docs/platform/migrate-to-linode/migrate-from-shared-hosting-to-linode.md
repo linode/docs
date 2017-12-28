@@ -6,7 +6,7 @@ description: 'Migrate your website from a shared host to a Linode cloud server r
 keywords: ["shared hosting", "migrate", "website migration"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['migrate-from-shared/','migrate-to-linode/migrate-from-shared-hosting/','migrate-to-linode/migrate-from-shared-hosting-to-linode/']
-modified: 2016-09-19
+modified: 2017-09-19
 modified_by:
   name: Linode
 published: 2013-10-18
@@ -35,9 +35,9 @@ See our [Getting Started](/docs/getting-started) guide for more information on s
 
 ## Prepare Your Domain Name to Move
 
-Start by lowering the *Time to Live* (TTL) setting for your domain, so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Because DNS addresses don't often change server IP addresses, default TTL is typically about 24 hours.
+An optional but recommended first step is to lower the *Time to Live* (TTL) setting for your domain, so the migration won't have a negative impact on your site's visitors. TTL tells DNS caching servers how long to save information about your domain. Because DNS addresses don't often change server IP addresses, default TTL is typically about 24 hours.
 
-When changing servers, however, you want a shorter TTL to make sure that when you update your domain information, it takes effect quickly. Otherwise, your domain could resolve to your old server's IP address for up to 24 hours. However, changing TTL is not a guarantee because caching DNS servers ignore TTL, but it does the most to make sure that your site has a smooth transition.
+When changing servers, however, you want a shorter TTL to make sure that when you update your domain information, it takes effect quickly. Otherwise, your domain could resolve to your old server's IP address for up to 24 hours.
 
 1.  Locate your current *nameservers* in your shared hosting provider's account control panel. If you're not sure what your nameservers are, you can find out with a [Whois Search tool](http://www.internic.net/whois.html). You will see several nameservers listed, probably all at the same company.
 
@@ -50,10 +50,6 @@ When changing servers, however, you want a shorter TTL to make sure that when yo
 4.  Adjust your TTL to its shortest setting. For example, 300 seconds is equal to 5 minutes, so that's a good choice if it's available.
 
 5.  Make sure you wait out the original TTL from Step 3 before actually moving your domain. In the meantime, you can continue through this guide to back up your data, deploy your Linode and upload your website. For more information on domain TTL, see our [DNS guide](/docs/networking/dns/dns-manager-overview/#set-the-time-to-live-or-ttl).
-
-{{< note >}}
-If you can't shorten your TTL, it's not the end of the world. The first day or two of your transition to Linode may be a little bumpy, but your updated domain information will eventually spread throughout the internet, and in less than a week you won't notice any difference.
-{{< /note >}}
 
 ## Back Up Your Website
 
@@ -79,61 +75,18 @@ See [our Filezilla guide](/docs/tools-reference/file-transfer/filezilla) to use 
 
 ## Install a Basic Web Server on Your Linode
 
-The next step is to build the software environment needed for your site to function properly. Linode provides prepackaged software options called [StackScripts](https://www.linode.com/stackscripts/) that make it easy to deploy software stacks in just a few clicks. We'll go over detailed instructions for installing the basic LAMP web server. Once that's complete, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/).
+The next step is to build the software environment needed for your site to function properly. Once that's complete, you can install a content management system of your choice such as [WordPress](https://wordpress.org/) or [Drupal](https://www.drupal.com/). There are many possibilities; see our [web servers](https://linode.com/docs/web-servers/) guides for available options. This guide will assume the use of a LAMP stack, one of the most common web server configurations.
 
 ### LAMP Stack
 
 [LAMP](https://en.wikipedia.org/wiki/LAMP_%28software_bundle%29) stands for the following:
 
-*  **Linux:** Linode offers a LAMP StackScript for CentOS, Debian and Ubuntu. Which Linux distribution you choose is up to you. While there will be no discernible difference to your site's users, each distro has advantages and disadvantages to consider.
+*  **Linux:** A LAMP stack will work on most common Linux distributions. While there will be no discernible difference to your site's users, each distro has advantages and disadvantages to consider. See our [LAMP Guides] section for installation instructions on various distros.
 *  **Apache:** A web server that handles HTTP and HTTPS internet traffic.
 *  **MySQL:** A database server.
 *  **PHP:** A software language that allows you to create and configure dynamic website content.
 
-1.  After you select a data center for your Linode, you'll be prompted to deploy a *Linux distribution*. Select the option to **Deploy using StackScripts**:
-
-    [![Deploy with StackScripts](/docs/assets/1436-stackscripts_deploywith_sm.png)](/docs/assets/1420-stackscripts_deploywith.png)
-
-2.  Select **linode / LAMP**:
-
-    [![Choose the LAMP StackScript](/docs/assets/lamp-stackscript-sm.png)](/docs/assets/lamp-stackscript.png)
-
-3.  Fill in the requested details. The example given is for a new Drupal site:
-
-    [![Fill in the details as listed below.](/docs/assets/1438-stackscripts_lamp_drupal_sm.png)](/docs/assets/1422-stackscripts_lamp_drupal.png)
-
-    *  MySQL root Password: Enter a strong password and make note of it. This will be the highest-level password for your database.
-    *  Create Database: Enter a name for your database, if desired.
-    *  Create MySQL User: You should create a secondary user for your database, so you're not working in it as the DB's root user.
-    *  MySQL User's Password: This is the password for your new database user.
-    *  Distribution: Choose your preferred Linux distro. If you are relatively new to Linux, the newest Ubuntu LTS is a good start because it has five-year release cycles and widely available support.
-    *  Deployment Disk Size: Leave the default setting.
-    *  Swap Disk: Leave the default setting.
-    *  Root password: Not to be confused with the MySQL root user's password, this root password is the master key to your Linode. You want a strong password here, and ideally, to later remove password access to your Linode in exchange for [SSH key authentication](/docs/security/securing-your-server#create-an-authentication-key-pair).
-
-4.  Click the **Deploy** button. You will be redirected to your Linode's **Dashboard**. Watch the **Host Job Queue**. You should see a number of jobs in progress.
-
-    [![Wait for the jobs to finish, then boot the Linode.](/docs/assets/1421-stackscripts_lamp_boot.png)](/docs/assets/1421-stackscripts_lamp_boot.png)
-
-5.  When the **Create Disk** job is done, click the **Boot** button under your Linode.
-
-6.  To verify that LAMP installed correctly, check that a basic website framework has been added to your server. To do that, your IP address must be used, since your domain isn't pointing to Linode yet.
-
-    To find your IP, go to the **Remote Access** tab. Your IP will be in both the **SSH Access** and **Public IPs** sections:
-
-    [![Locate your IP address](/docs/assets/1712-remote_access_ip_single_small.png)](/docs/assets/1713-remote_access_ip_single.png)
-
-7.  Open a new browser tab and paste the IP address into the address bar. You should see Apache's test webpage:
-
-    ![Apache test page](/docs/assets/apache2-test-page.png)
-
-8.  Install additional software
-
-    If you need to install more software such as Drupal, cPanel or Ruby support, you have two options:
-
-    *   Search through our database of [StackScripts](https://www.linode.com/stackscripts/) for the combination of software you're looking for.
-
-    *   Install the software manually, using pages from [Linode Guides & Tutorials](/docs/) or the general internet as references.
+To install a LAMP stack on Ubuntu, follow the steps in our [How to Install a LAMP Stack on Ubuntu 16.04](https://linode.com/docs/web-servers/lamp/install-lamp-stack-on-ubuntu-16-04/) guide.
 
 ## Get Your Website Live
 
@@ -141,7 +94,7 @@ Once you've installed all the underlying software for your Linode, you can uploa
 
 1.  Follow the steps in our [hosting a website](/docs/websites/hosting-a-website/#configure-name-based-virtual-hosts) guide to configure name-based virtual hosts for Apache on your Linode.
 
-2.  Upload your website's files *from your local computer* to `/var/www/html/example.com/public_html` *on your Linode*. The process to do this is similar to how you downloaded your site's files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.
+2.  Upload your website's files from your local computer to `/var/www/html/example.com/public_html` on your Linode. The process to do this is similar to how you downloaded your site's files to your local computer when creating a backup from your shared host. The only differences are the source and destination of the transfer.
 
     For example, to *upload* to your Linode using SCP on Linux or OS X:
 
@@ -161,11 +114,11 @@ Your website may not yet function completely correctly if it is URL-dependent. A
 
 ### A Note About Email
 
-A Linode can run both your web server and an [email server](/docs/mailserver) for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may still need to consider where you're going to move your email.
+A Linode can run both your web server and an [email server](/docs/mailserver) for your site. If you use a separate email host like Google Apps, you will need to make sure you preserve the correct *MX records* for email when you move your domain. If you use a mail service at your old host, you may need to consider where you're going to move your email.
 
 ## Move Your Domain
 
-The last step in your Linode migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
+The last step in your migration is to point your domain at your Linode's IP address. If you decided to shorten your TTL, make sure you've waited out the original time period.
 
 1.  Follow our instructions on [adding a domain zone](/docs/networking/dns/dns-manager-overview#add-a-domain-zone) to create DNS records at Linode for your domain.
 

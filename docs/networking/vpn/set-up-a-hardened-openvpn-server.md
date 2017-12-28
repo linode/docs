@@ -47,7 +47,7 @@ You can manage the OpenVPN environment in [two ways](https://openvpn.net/index.p
 
 For small applications, OpenVPN Access Server is the more streamlined and user-friendly solution. The free version allows up to two simultaneous users. Although each user can have as many client devices as they like, a user's clients will all have the same keys and certificates; more can be added by buying licensing. For more advanced configurations than what the GUI offers, you would still need to edit the VPN's configuration files.
 
-If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
+If you are interested in running OpenVPN Access Server on your Linode, see our guide: [Secure Communications with OpenVPN Access Server](/docs/networking/vpn/openvpn-access-server/). **The remainder of *this* guide will focus on manual configuration using OpenVPN Community Edition.**
 
 
 ## Networking Configuration
@@ -326,7 +326,7 @@ group ovpn
 # setting them here and not in client.ovpn. See
 # `openvpn --show-tls`, `openvpn --show-ciphers` and
 #`openvpn --show-digests` for all supported options.
-tls-auth /etc/openvpn/server/ta.key 0
+tls-crypt /etc/openvpn/server/ta.key
 auth SHA512    # This needs to be in client.ovpn too though.
 tls-version-min 1.2
 tls-cipher TLS-DHE-RSA-WITH-AES-256-GCM-SHA384:TLS-DHE-RSA-WITH-AES-256-CBC-SHA256
@@ -380,7 +380,7 @@ remote <your_linode's IP address> 1194
 ca ca.crt
 cert client1.crt
 key client1.key
-tls-auth ta.key 1
+tls-crypt ta.key
 
 {{< /file >}}
 

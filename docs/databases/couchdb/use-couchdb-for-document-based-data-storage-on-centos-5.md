@@ -60,7 +60,7 @@ Once the SSH tunnel is in place or you have configured your Linode, you can acce
 
 In response, CouchDB will return the following:
 
-    {{< output >}}
+{{< output >}}
 {"couchdb":"Welcome","version":"0.10.2"}
 {{< /output >}}
 

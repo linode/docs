@@ -6,7 +6,7 @@ description: 'Set static IP, routes and DNS in Linux.'
 keywords: ["static", "ip address", "addresses"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['networking/configuring-static-ip-interfaces/']
-modified: 2017-11-02
+modified: 2017-11-30
 modified_by:
   name: Linode
 published: 2014-07-20
@@ -108,6 +108,9 @@ Address=2001:db8:2000:aff0::2/64
 Address=2001:db8:2000:aff0::3/32
 {{< /file-excerpt >}}
 
+{{< note >}}
+On Container Linux, you need to rename or remove the original cloud config data so it doesn't take precedence on reboots over the eth0 configuration above. Do this with `sudo mv /var/lib/coreos-install/user_data /var/lib/coreos-install/user_data.bak`.
+{{< /note >}}
 
 ### CentOS 7, Fedora
 

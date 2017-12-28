@@ -15,6 +15,8 @@ external_resources:
   - '[StackScript Community Library](http://linode.com/stackscripts)'
 ---
 
+![Automate Deployment with StackScripts](/docs/assets/automate-deployment-with-stackscripts-title-graphic.jpg "Automate Deployment with StackScripts")
+
 [StackScripts](http://linode.com/stackscripts/) provide Linode users with the ability to automate the deployment of custom systems on top of our default Linux distribution images. Linodes deployed with a StackScript run the script as part of the first boot process. This guide explains how StackScripts work, and offer several examples of how to use them.
 
 ## Introduction
@@ -45,6 +47,10 @@ Alternatively, you can follow along with this video, which will show you how to 
 <iframe width="825" height="465" src="https://www.youtube.com/embed/XviHHyXVH20?controls=0&amp;showinfo=0&amp;rel=0&amp;loop=1" frameborder="0" allowfullscreen></iframe>
 
 ### Using a Community StackScript
+
+{{< note >}}
+There is no default logging when using a StackScript. Output is sent to the console.
+{{< /note >}}
 
 1.  In addition to the StackScripts created by Linode, any community member who creates a StackScript has the option to make it publicly available to other customers. As seen in the image below, you can use the drop down menu and keywords field to narrow your search to match your distribution and goal:
 

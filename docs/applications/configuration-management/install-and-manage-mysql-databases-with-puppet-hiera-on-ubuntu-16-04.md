@@ -116,18 +116,17 @@ The following configuration will define Puppet variables in `common.yaml` to inj
 
 Hiera configuration files are formatted as yaml, with keys defining the Puppet parameters to inject their associated values. To get started,  set the MySQL root password. The following example of a Puppet manifest is one way to control this password:
 
-{{< file ":   ~~~ pp" >}}
+{{< file "example.pp" >}}
+class { '::mysql::server':
+  root_password => 'examplepassword',
+}
+{{< /file >}}
+
 We can also define the root password with the following Hiera configuration file. Create the following yaml file and note how the `root_password` parameter is defined as Hiera yaml:
 
-{{< file >}}
-/etc/puppetlabs/code/environments/production/hieradata/common.yaml
-:
+{{< file "/etc/puppetlabs/code/environments/production/hieradata/common.yaml" >}}
+mysql::server::root_password: examplepassword
 {{< /file >}}
-
-{{< /file >}}
- yaml
-    mysql::server::root_password: examplepassword
-    ~~~
 
 Replace `examplepassword` with the secure password of your choice. Run Puppet to set up MySQL with default settings and the chosen root password:
 

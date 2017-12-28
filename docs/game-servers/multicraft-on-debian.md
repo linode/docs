@@ -12,6 +12,7 @@ modified: 2015-02-04
 modified_by:
   name: Alex Fornuto
 deprecated: true
+published: 2015-02-04
 title: 'Installing Multicraft on Debian'
 aliases: ['applications/game-servers/multicraft-on-debian/']
 ---

@@ -15,6 +15,8 @@ external_resources:
  - '[OpenSSL documentation](http://openssl.org/docs/)'
 ---
 
+![Create a Self-Signed Certificate on Debian and Ubuntu](/docs/assets/self-signed-cert/Create_a_SelfSigned_Certificate_on_Debian_and_Ubuntu_smg.jpg "Create a Self-Signed Certificate on Debian and Ubuntu")
+
 This guide details the process for creating a self-signed SSL certificate on Debian or Ubuntu. Self-signed certificates are suitable for personal use or for applications used internally within an organization.
 
 If you intend to use your SSL certificate on a website powered by Apache, continue to our [SSL Certificates with Apache on Debian & Ubuntu](/docs/security/ssl/ssl-apache2-debian-ubuntu) guide once you've completed the process outlined here.

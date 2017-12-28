@@ -216,3 +216,14 @@ Remove the **Installer** disk and reclaim the storage that the NixOS installatio
   1. Go to your Linode's dashboard and shutdown your Linode.
   2. [Remove the *Installer* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#removing-a-disk).
   3. [Resize the *NixOS* disk](/docs/platform/disk-images/disk-images-and-configuration-profiles#resizing-a-disk) to the maximum possible size.
+
+## Enable Longview Agent (optional)
+
+After installation, Longview can be set up for your NixOS instance. Add the following [options](https://nixos.org/nixos/options.html#longview) to your `/etc/nixos/configuration.nix`:
+
+    services.longview = {
+      enable = true;
+      apiKey = "01234567-89AB-CDEF-0123456789ABCDEF";
+    };
+
+Replace `apiKey` with the one you got from [Longview](https://manager.linode.com/longview/add).

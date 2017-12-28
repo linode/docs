@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-09-06
 modified_by:
   name: Linode
-Published: Tuesday, August 14, 2017
+published: 2017-08-14
 title: 'How to Install a Turtl Server on Ubuntu'
 
 ---
@@ -132,7 +132,7 @@ QuickLisp is to Lisp what `pip` is to Python. Turtl loads its dependencies for t
 
 The successful execution of the above steps will open the CCL environment with the following output:
 
-    {{< output >}}
+{{< output >}}
 ==== quicklisp quickstart 2015-01-28 loaded ====
 
 To continue with installation, evaluate: (quicklisp-quickstart:install)

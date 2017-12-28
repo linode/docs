@@ -9380,6 +9380,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .deprecated strong {
   font-weight: bold;
 }
+.terminal {
+  background-color: black;
+  color: rgba(65, 255, 0, 0.85);
+  padding: 0 10px;
+}
+.terminal code {
+  white-space: pre-line;
+}
+pre.terminal code::-moz-selection {
+  background-color: #B2D7FF;
+  color: black;
+}
+pre.terminal code::selection {
+  background-color: #B2D7FF;
+  color: black;
+}
 .output {
   margin-top: 40px;
   background-color: #f8f8f8;
@@ -9455,7 +9471,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file dt:before small,
 .file dt:before .small {
@@ -9492,7 +9507,6 @@ pre code {
   font-size: 19px;
   font-weight: 400;
   padding-right: 5px;
-  content: "File: ";
 }
 .file-excerpt dt:before small,
 .file-excerpt dt:before .small {
@@ -9514,7 +9528,13 @@ pre code {
   white-space: pre;
 }
 .file-excerpt dt:before {
+  content: "File: ";
+}
+.file-excerpt dt:before {
   content: "File excerpt: ";
+}
+.file dt:before {
+  content: "File: ";
 }
 @media screen and (min-width: 768px) {
   .sticky-header {
@@ -10308,6 +10328,7 @@ body.modal-open,
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 .table > tbody > tr > td:last-child {
@@ -10321,6 +10342,13 @@ body.modal-open,
   display: block;
   font-size: 16px;
   color: #747474;
+}
+table.lntable tbody {
+  display: table;
+  width: inherit;
+}
+table.lntable tbody > tr > td.lntd:first-child {
+  width: 0;
 }
 .table-responsive > .table > tbody > tr:last-child {
   border-bottom-width: 0px;
@@ -10404,7 +10432,7 @@ body.modal-open,
   }
 }
 .form-control {
-  padding: 10px;
+  padding-top: 8px;
   border: 1px solid #e7e6e6;
   border-radius: 0px;
   -moz-border-radius: 0px;
@@ -19786,9 +19814,16 @@ fieldset[disabled] .btn-subdued.active {
   border-color: #d5d5d5;
   border-width: 0px 0px 2px 0px;
 }
+li.list-group-item {
+  padding: 0;
+}
 #ds-search-modal {
   margin-top: 65px;
   z-index: 9999;
+}
+#ds-search-modal a {
+  display: block;
+  padding: 10px 15px;
 }
 #ds-search-modal a:link,
 #ds-search-modal a:visited,
@@ -19828,6 +19863,19 @@ fieldset[disabled] .btn-subdued.active {
 #ds-search-input .glyphicon-search {
   font-size: 23px;
 }
+#ds-search-input ul li:hover {
+  background-color: #e6e6e6;
+}
+.search-deprecated {
+  font-size: 9px;
+  background-color: #FFAC5F;
+  height: 43px;
+  color: white;
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
 .library-article-blurb {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -19849,7 +19897,7 @@ fieldset[disabled] .btn-subdued.active {
   height: 45px;
 }
 #library-main-search input {
-  height: inherit;
+  height: 42px;
 }
 #library-main-search button {
   height: 42px;
@@ -20373,6 +20421,7 @@ div.library-tile .tile-title + .lead {
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 #article-body table:not([class]) > tbody > tr > td:last-child {
@@ -20695,7 +20744,7 @@ div.library-tile .tile-title + .lead {
   font-size: 14px;
   font-size: 19px;
   font-weight: 400;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 #doc-sidebar-title small,
 #doc-sidebar-title .small {
@@ -20725,6 +20774,7 @@ div.library-tile .tile-title + .lead {
 .sidebar-library nav > ul > li > ul > li {
   padding-left: 0;
   display: block;
+  line-height: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -20929,6 +20979,7 @@ li.library-article-item:nth-child(odd) {
 }
 .hubspot-container {
   background-color: #ebeff0;
+  width: 80%;
 }
 .hubspot-form .input {
   padding-bottom: 20px;
@@ -21097,6 +21148,25 @@ h1.contribute {
 }
 #disqus_thread {
   margin-top: 40px;
+}
+.copy-code {
+  position: absolute;
+  padding-top: 0.25rem;
+  right: 1.4rem;
+  opacity: 0;
+}
+blockquote > div > div.btn-copy > .copy-code {
+  padding-top: 0.01rem;
+  right: 2.2rem;
+}
+.copy-code:hover {
+  opacity: 1;
+}
+.glyphicon.glyphicon-copy {
+  font-size: 1.6rem;
+}
+.btn-copy:hover .glyphicon {
+  color: #B2D7FF;
 }
 /* Background */
 .chroma {

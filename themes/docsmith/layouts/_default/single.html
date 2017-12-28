@@ -21,7 +21,7 @@
             {{ .Content }}
             {{ partial "more" . }}
             {{ partial "related" . }}
-            {{ if (getenv "HUGO_ENV") }}
+            {{ if and (getenv "HUGO_ENV") (ne .Params.comments false) }}
             {{ partial "disqus" . }}
             {{ end }}
             {{ partial "license" . }}
