@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Instructions for backing up MySQL databases by copying the relevant filesystem parts.'
+description: "Instructions for backing up MySQL databases by copying the relevant filesystem parts."
 keywords: ["mysql", "mariadb", backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-06
@@ -15,9 +15,11 @@ external_resources:
  - '[Database Backup Methods; MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/backup-methods.html)'
 ---
 
-While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system, there are cases which require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.
+## Why Use Physical Backups for MySQL?
 
-This method is known as making a *physical backup*, and is often necessary in situations when you only have access to a recovery environment (such as [Finnix](/docs/troubleshooting/finnix-rescue-mode)) where you mount your system's disks as external storage devices. If you want to read about *logical backups* using `mysqldump`, [see our guide](/docs/databases/mysql/use-mysqldump-to-back-up-your-mysql-databases) on the topic.
+A *physical backup* is often necessary in situations when you only have access to a recovery environment (such as [Finnix](/docs/troubleshooting/finnix-rescue-mode)) where you mount your system's disks as external storage devices. If you want to read about *logical backups* using `mysqldump`, [see our guide](/docs/databases/mysql/use-mysqldump-to-back-up-your-mysql-databases) on the topic.
+
+While the `mysqldump` tool is the preferred backup method for a MariaDB or MySQL database or database system, there are cases which require a different approach. `mysqldump` only works when the database server is accessible and running. If the database cannot be started or the host system is inaccessible, the database can still be copied directly.
 
 For simplification, the name MySQL will be used throughout this guide but the instructions will work for both MySQL and MariaDB.
 
@@ -31,14 +33,13 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
         systemctl stop mysql
 
-
 2.  Locate your database directory. It should be `/var/lib/mysql/` on most systems but if that directory doesn't exist, examine `/etc/mysql/my.cnf` for a path to the data directory.
 
 3.  Create a directory to store your backups. This guide will use `/opt/backups` but you can alter this to suit your needs:
 
         mkdir /opt/db-backups
 
-4.  Copy MySQL's data directory to a storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. Change the database directory, backup filename, and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename.
+4.  Copy MySQL's data directory to a storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. Change the database directory, backup filename, and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename:
 
         tar cfvz /opt/db-backups/db-$(date +%F).tar.gz /var/lib/mysql/*
 
@@ -48,7 +49,7 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 ## Restore a Backup
 
-1.  Change your working directory to a place where you can extract the tarball created above. The home directory of your current user is used in this example:
+1.  Change your working directory to a place where you can extract the tarball created above. The current user's home directory is used in this example:
 
         cd
 
@@ -56,11 +57,11 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
         systemctl stop mysql
 
-3. Extract the tarball to the working directory. Change the tarball's filename in the command to the one with the date you want to restore to.
+3. Extract the tarball to the working directory. Change the tarball's filename in the command to the one with the date you want to restore to:
 
         tar zxvf /opt/db-backups/db-archive.tar.gz -C .
 
-4.  Move the current contents of `/var/lib/mysql` to another location if you want to keep them for any reason, or delete them entirely. Create a new empty `mysql` folder to restore your backed up DMBS into.
+4.  If you want to keep the current contents of `/var/lib/mysql`, move them to another location. You can also delete them entirely. Create a new empty `mysql` folder to restore your backed up DMBS into:
 
         mv /var/lib/mysql /var/lib/mysql-old
         mkdir /var/lib/mysql
