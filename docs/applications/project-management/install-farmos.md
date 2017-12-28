@@ -2,6 +2,7 @@
 author:
   name: Angel G
   email: docs@linode.com
+keywords: ["farmos", "Drupal", "LAMP"]
 description: 'This guide shows you how to prepare a system for, then install and set up the agribusiness management web app, FarmOS.'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-09-09
@@ -57,9 +58,8 @@ After installing the LAMP Stack, you need to create a database for Drupal to use
 
 Download the following PHP libraries:
 
-          sudo apt install php-gd php-xml php-xmlrpc
-
-          sudo apt install php-mysql phpmyadmin
+    sudo apt install php-gd php-xml php-xmlrpc
+    sudo apt install php-mysql phpmyadmin
 
 If prompted to automatically configure a database, choose "yes."
 
@@ -74,22 +74,22 @@ FarmOS is bundled as a Drupal distribution, so you do not need to install Drupal
 
 2. Uncompress the file:
 
-         tar -zxvf farm-7.x-1.0-beta15-core.tar.gz
+        tar -zxvf farm-7.x-1.0-beta15-core.tar.gz
 
 3. Install FarmOS, and move the contents of `farm-7.x-1.0-beta15` to `/var/www/html/example.com/public_html/FarmOS`.
 
-         sudo mv -r farm-7.x-1.0-beta15/*  /var/www/html/example.com/public_html/FarmOS
+        sudo mv -r farm-7.x-1.0-beta15/*  /var/www/html/example.com/public_html/FarmOS
 
 4. Make sure the permissions for `sites/default` and `sites/default/settings.php` are set correctly:
 
-         cd /var/www/html/example.com/public_html/FarmOS
-         sudo chmod 777 ./sites/default
-         sudo cp ./sites/default/default.settings.php ./sites/default/settings.php
-         sudo chmod 777 ./sites/default/settings.php
+        cd /var/www/html/example.com/public_html/FarmOS
+        sudo chmod 777 ./sites/default
+        sudo cp ./sites/default/default.settings.php ./sites/default/settings.php
+        sudo chmod 777 ./sites/default/settings.php
 
 5. If you've configured everything correctly, you can now point your web browser to your Linode's public IPaddress/FarmOS.
 
-         192.0.0.1/FarmOS
+        192.0.0.1/FarmOS
 
 ## Configure FarmOS
 
@@ -139,7 +139,3 @@ If you want to register a domain name (e.g., `yourfarm.com`), check out our guid
 
 ### Generate a Google API Key
 FarmOS can interface with GoogleMaps. You need a GoogleAPI key to use this feature. The FarmOS official documentation has a section about using GoogleMaps in its [docs](http://farmos.org/hosting/googlemaps/). Interfacing with GoogleMaps allows you to save certain geographical areas into FarmOS. When creating FarmOS projects and tasks, you can use the Google Maps API to pinpoint where the task takes place.
-
-
-
-

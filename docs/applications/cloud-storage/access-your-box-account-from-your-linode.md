@@ -111,7 +111,7 @@ To confirm that your Box drive is mounted:
 
 The output should look similar to this:
 
-    {{< output >}}
+{{< output >}}
 Filesystem              1K-blocks   Used Available Use% Mounted on
 /dev/root                 4122048 886316   3009636  23% /
 devtmpfs                   505636      0    505636   0% /dev

@@ -13,7 +13,8 @@
     {{ with .OutputFormats.Get "RSS" }}
 	  {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
     {{ end }}
-    {{ range .Data.Pages.ByPublishDate.Reverse}}
+    {{ $pages := where .Data.Pages ".Params.show_on_rss_feed" "!=" false }}
+    {{ range $pages.ByPublishDate.Reverse  }}
     <item>
       <title>{{ .Title }}</title>
       <link>{{ .Permalink }}</link>

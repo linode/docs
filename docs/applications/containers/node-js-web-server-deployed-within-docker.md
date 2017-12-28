@@ -9,8 +9,13 @@ modified: 2015-03-23
 modified_by:
   name: Linode
 published: 2015-03-23
-title: 'Node.js Web Server deployed within Docker'
+title: 'Node.js Web Server Deployed within Docker'
 aliases: ['applications/containers/nodejs-node-js-web-server-docker-container/']
+external_resources:
+- '[Linode Docker Hub Page](https://hub.docker.com/u/linode/)'
+- '[Docker Docs](http://docs.docker.com/)'
+- '[Docker Try it Tutorial](https://www.docker.com/tryit/)'
+- '[Docker Hub](https://hub.docker.com/)'
 ---
 
 Node.js is a server-side, JavaScript package, often used for various cloud applications. Docker is a container platform. With Docker, users can download applications without the hassle of the installation and configuration process.
@@ -57,36 +62,11 @@ Note that when an image downloads, no image containers run.
 
 1.  Run, create or activate a new container. Forward the Linode's port 80 to port 3000 of the container:
 
-        sudo docker run -p 80:3000 -t -i linode/server-node-js /bin/bash
+    {{< note >}}
+This command runs the docker image as a daemon.
+{{< /note>}}
 
-     {{< caution >}}
-This command also changes the terminal prompt to the root user within the new container.
-{{< /caution >}}
-
-2.  From the container's command prompt, change to the home directory, list the present files, and look at the server configuration:
-
-        cd
-        ls
-        cat server.js
-
-3.  Using the Node Version Manager, activate Node.js:
-
-        nvm use 0.10
-
-4.  Using the forever module, start the web server:
-
-        forever start server.js
-
-5.  To exit the container while leaving it running, press `ctrl + p` and then `ctrl + q`.
-
-6. Test the server at `123.45.67.89/test.htm`, replacing `123.45.67.89` with your Linode's IP address. A page with "Test File" should appear.
+2.  Test the server at `example.com/test.htm`, replacing `example.com` with your Linode's IP address. A page with "Test File" should appear.
 
 The [Docker Hub image page](https://registry.hub.docker.com/u/linode/server-node-js/) has information explaining what the Docker image contains.
-
-## For More Information
- - [Linode Docker Hub Page](https://hub.docker.com/u/linode/)
- - [Docker Docs](http://docs.docker.com/)
- - [Docker Try it Tutorial](https://www.docker.com/tryit/)
- - [Docker Hub](https://hub.docker.com/)
-
 

@@ -4,28 +4,28 @@ author:
   email: docs@linode.com
 contributor:
   name: Alexandru Andrei
-description: 'How to store data redundantly and be safe against silent errors'
-og_desription: 'Protect against silent data corruption using a ZFS filesystem while improving redundancy, read/write speeds, and compression.'
+description: 'How to use ZFS to store data redundantly and avoid silent data corruption.'
+og_desription: 'The Z File System (ZFS) helps protect against silent data corruption while improving redundancy, read/write speeds, and compression. This guide shows how to use ZFS and configure vdevs on a Linode.'
 keywords: ["zfs", "file system", "volume manager", "redundant", "silent corruption", "mirror", "raid", "pool"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-10-30
+modified: 2017-11-16
 modified_by:
   name: Linode
 title: 'How to Use ZFS on Ubuntu 16.04'
 published: 2017-10-30
+expiryDate: 2019-10-30
 external_resources:
  - '[Ubuntu ZFS wiki](https://wiki.ubuntu.com/Kernel/Reference/ZFS)'
  - '[RAID levels Wikipedia](https://en.wikipedia.org/wiki/Standard_RAID_levels)'
 ---
 
-
-## Introduction
+## What is Silent Data Corruption? How Does ZFS Work?
 
 *Silent data corruption* can be caused by a controller fault, firmware bug, or microscopic flaw in the design of magnetic/flash memory. The drive will write incorrect data but report a successful operation. Since no errors have been reported by the filesystem, the backups contain the corrupted files so there is no way to recover.
 
-ZFS offers protection against silent data corruption. Instead of "trusting" the storage device, it checksums the data then stores it in separate blocks from the data itself. Corrupted data will be reported and even automatically fixed if the storage pool has been setup with redundancy.
+ZFS offers protection against silent data corruption. Instead of "trusting" the storage device, it [checksums](https://en.wikipedia.org/wiki/Checksum) the data then stores it in separate blocks from the data itself. Corrupted data will be reported and even automatically fixed if the storage pool has been setup with redundancy.
 
-ZFS packs other features:
+ZFS provides other features as well:
 
  - A volume manager allows you to combine your physical storage devices into pools. This makes it possible to dynamically increase the pool size without worrying about partitioning and expanding the filesystem.
  - Most of the operations can be done online.
@@ -63,7 +63,7 @@ ZFS packs other features:
 
     For example, you could combine two physical disks into a pool and then create a volume that spans on both of the physical devices. This way a large, virtual disk can be formatted with the filesystem of your choice.
 
-### One Disk vdevs
+### Single-Disk vdev
 
 You can create a vdev out of a single disk. If you group multiple such vdevs together, you get a structure similar to RAID-0, where data is striped dynamically across all the physical devices.
 
@@ -86,7 +86,7 @@ If you couple a 1TB disk with a 2TB disk, the usable space will be cut to 1TB. T
 
 Advantages:
 
- - Fast read speeds. Slightly better than what you get with raidz; slightly worse than the previous non-redundant setup.
+ - Fast read speeds. Slightly better than what you get with RAID-Z; slightly worse than the previous non-redundant setup.
  - Fast resilvering (replacing a failed device and mirroring data back).
  - If there is at least one functional device in a mirror vdev, you can replace the failed drives and recover.
  - Redundancy can be increased later on
@@ -96,9 +96,9 @@ Disadvantages:
  - Least amount of storage space available. If there are 4 disks in a mirror vdev, the capacity that you can use to store data is the capacity of the smallest disk in that structure.
  - Weakest write performance. Basically the same as a single disk.
 
-### Raid-Z vdevs
+### RAID-Z vdevs
 
-These vdevs can be configured with single, double, or triple parity (and even more in recent versions of ZFS). Parity information is spread across all physical devices in the vdev. The usable space is roughly total storage capacity minus parity information. As an example when using a structure with double parity and the raidz2 vdev contains 9 disks of 1TB, then you can store approximately 7TB of information (9TB total - 2TB for parity).
+These vdevs can be configured with single, double, or triple parity (and even more in recent versions of ZFS). Parity information is spread across all physical devices in the vdev. The usable space is roughly total storage capacity minus parity information. As an example when using a structure with double parity and the RAID-Z2 vdev contains 9 disks of 1TB, then you can store approximately 7TB of information (9TB total - 2TB for parity).
 
 Advantages:
 
@@ -107,14 +107,14 @@ Advantages:
 
 Disadvantages:
 
- - Cannot add disks to a raidz vdev.
+ - Cannot add disks to a RAID-Z vdev.
  - Resilvering can be more time-consuming and intensive than mirrors.
 
 Other types of virtual devices like cache and log can be used when dealing with mechanical hard-drives. Spare vdevs can be set up to automatically replace failed devices.
 
-## Recommendations
+## RAID-Z and ZFS Recommendations
 
-1. When compression is turned on and raidz arrays are large or are set up with more than two parity devices, it can help a lot to use a Linode with multiple virtual CPUs (usually in intense write situations).
+1. When compression is turned on and RAID-Z arrays are large or are set up with more than two parity devices, it can help a lot to use a Linode with multiple virtual CPUs (usually in intense write situations).
 
 2.  If creating a storage server that is intensively read by other servers/services, it helps to choose a Linode with plenty of RAM so that data is cached and rapidly delivered when requested.
 
@@ -124,7 +124,7 @@ Other types of virtual devices like cache and log can be used when dealing with 
 
     For example, a 1TB disk and a 4TB disk are in a non-redundant striped array, and you write 5GB of data. ZFS will try to balance writes so that drives are filled up at the same rate. Approximately 1GB will be sent to the first disk and 4GB to the second. The 4GB drive will be the rate limiting step for writing. If they would have been the same size, the write could have been more balanced and would have finished faster.
 
-    In the case of mirrors or raidz, usable size will be capped to the smallest storage device in a vdev.
+    In the case of mirrors or RAID-Z, usable size will be capped to the smallest storage device in a vdev.
 
 4.  It's better to design it right from the start rather than starting low and then adding vdevs to your pool when you need more space. An empty vdev will get more writes than one which is half full.
 
@@ -181,29 +181,29 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     `d1`, standing for device 1, resulted in the id `scsi-0Linode_Volume_d1`. Remember to replace each instance you'll see in the following example commands with your own identifiers.
 
-### Non-redundant Pools
+### Non-redundant ZFS Pools
 
 1.  Adding two disks in a striped, non-redundant configuration is done by:
 
         zpool create -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2
 
-    -f stands for "force". Under normal circumstances, you should not use this switch so you get warnings about possible mistakes. It is used here since the devices are empty and zpool refuses to use them in their current state without the -f switch.
+    `-f` stands for "force". Under normal circumstances, you should not use this switch so you get warnings about possible mistakes. It is used here since the devices are empty and zpool refuses to use them in their current state without the `-f` switch.
 
     `testpool` is the name of the pool. This will be automatically mounted in `/testpool`. You can choose a different mountpoint with the -m switch: `zpool create -f -m /othermountpoint testpool /dev/disk/by-id/scsi-0Linode_Volume_d1`.
 
-3.  To change this mountpoint later on:
+2.  To change this mountpoint later on:
 
         zfs set mountpoint=/somewhereelse testpool
 
-4.  To add more disks to the array:
+3.  To add more disks to the array:
 
         zpool add -f testpool /dev/disk/by-id/scsi-0Linode_Volume_d4
 
-5.  Destroy the test pool so you can proceed through the next examples:
+4.  Destroy the test pool so you can proceed through the next examples:
 
         zpool destroy testpool
 
-### Mirror Pools
+### Mirror ZFS Pools
 
 1.  Create a pool by mirroring two devices:
 
@@ -229,11 +229,11 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     With `zpool status` you will see that now you have two mirrors. This combines the benefits of redundancy with the benefits of distributing writes across two vdevs.
 
-    Destroy the pool so you can also experiment with raid-z.
+    Destroy the pool so you can also experiment with RAID-Z.
 
 ### Raid-Z Pools
 
-1.  Create a raid-z pool with single parity:
+1.  Create a RAID-Z pool with single parity:
 
         zpool create -f testpool raidz1 /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2 /dev/disk/by-id/scsi-0Linode_Volume_d3 /dev/disk/by-id/scsi-0Linode_Volume_d4
 
@@ -247,11 +247,11 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
     **AVAIL** shows the storage capacity for your files and directories.
 
-3.  To create a double parity raid-z setup, destroy your pool and enter the following command:
+3.  To create a double parity RAID-Z setup, destroy your pool and enter the following command:
 
         zpool create -f testpool raidz2 /dev/disk/by-id/scsi-0Linode_Volume_d1 /dev/disk/by-id/scsi-0Linode_Volume_d2 /dev/disk/by-id/scsi-0Linode_Volume_d3 /dev/disk/by-id/scsi-0Linode_Volume_d4
 
-    Entering `zfs list` again will show there's less space available since two devices are used for parity instead of one. Parity can be further increased by changing `raidz2` in the previous command with `raidz3`, `raidz4`, or more. The more parity added, the more performance is degraded. It's usually better to have two raidz2 arrays of eight disks each rather than a single array of 16 disks.
+    Entering `zfs list` again will show there's less space available since two devices are used for parity instead of one. Parity can be further increased by changing `raidz2` in the previous command with `raidz3`, `raidz4`, or more. The more parity added, the more performance is degraded. It's usually better to have two RAID-Z2 arrays of eight disks each rather than a single array of 16 disks.
 
 ## Datasets, Snapshots and Rollbacks
 
@@ -309,7 +309,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 3.  By default, the ARC will use at most 75% of total memory. While this makes sense on a server with multiple purposes, a storage server loses of approximately 20% RAM that could be put to good use. So follow these instructions only if you're not using your Linode to run other applications and have at least 4GB of RAM.
 
-    The numbers in `zfs.conf` represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as 7000000000 to reserve approximately 7GB. As a rule of thumb, set **zfs_arc_max** to total memory available minus 1GB.  **zfs_arc_min** can be set to 50% of total RAM. For example if you have 16GB available, zfs_arc_max would be 15000000000 and zfs_arc_min would be 8000000000.
+    The numbers in `zfs.conf` represent bytes. 1GB is calculated by multiplying 2 to the power of 30 but you should use values such as `7000000000` to reserve approximately 7GB. As a rule of thumb, set `zfs_arc_max` to total memory available minus 1GB.  `zfs_arc_min` can be set to 50% of total RAM. For example if you have 16GB available, `zfs_arc_max` would be `15000000000` and `zfs_arc_min` would be `8000000000`.
 
 4. Open the `zfs.conf` file. Paste these lines into the editor and then adjust the two numerical values:
 

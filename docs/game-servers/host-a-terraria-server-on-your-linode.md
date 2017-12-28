@@ -276,7 +276,7 @@ To check if the server is running, use the command:
 
 The output should be similar to:
 
-    {{< output >}}
+{{< output >}}
 ● terraria.service
    Loaded: loaded (/etc/systemd/system/terraria.service; disabled)
    Active: active (running) since Tue 2017-03-07 17:37:03 UTC; 7s ago

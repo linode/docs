@@ -77,7 +77,7 @@ During the upgrade process, you will be asked if you want to use `dash` instead 
 
 You will also be advised that services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/networking/using-the-linode-shell-lish/).
 
 # System Errors
 

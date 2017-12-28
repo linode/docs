@@ -10,6 +10,7 @@ modified: 2013-09-11
 modified_by:
   name: Linode
 published: 2010-01-07
+deprecated: true
 title: Using Fetchmail to Retrieve Email
 external_resources:
  - '[Mailfilter MDA](http://mailfilter.sourceforge.net/)'

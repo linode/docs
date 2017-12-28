@@ -94,7 +94,7 @@ The upgrade will download and install numerous packages. Please be advised that 
 
 You will also be advised that some services need to be restarted. In most cases the default list of services to be restarted will be fine. If you have additional services that you would like to be restarted, please add them to the list.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/networking/using-the-linode-shell-lish/). When your Linode boots up again, you may notice messages on the console regarding `ureadahead` and `plymouthd` being killed; these are not a cause for concern. You can prevent such messages from appearing again by issuing the following commands:
 
     cd /etc/init
     for i in plymouth* ureadahead*; do mv ${i} ${i}.disabled; done

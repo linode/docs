@@ -61,7 +61,7 @@ You will also be advised that some services need to be restarted. In most cases 
 
 Additionally, you will also be asked if you'd like to replace some of your configuration files with the package maintainer's version. Please read through the prompts carefully and decide the best option for you.
 
-The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell).
+The installation will restart services and configure new packages. Once the system is done updating, reboot your system through the Linode Manager to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/networking/using-the-linode-shell-lish/).
 
 You may now check that you're running Ubuntu 11.10 (Oneiric) by issuing the following command as root:
 
