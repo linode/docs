@@ -2,10 +2,11 @@
 author:
   name: Jared Kobos
   email: docs@linode.com
-description: 'This guide will show you how to link Docker containers'
+description: 'This guide will show you how to link Docker containers using a Node.js application and PostgreSQL.'
+og_description: "Learn to link Docker containers using a Node.js application and PostgreSQL through a simple 'Hello World' application."
 keywords: ['docker','containers','database','container communication']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-11-29
+published: 2017-12-28
 modified: 2017-11-29
 modified_by:
   name: Jared Kobos
@@ -18,7 +19,7 @@ external_resources:
 
 When using [Docker](https://www.docker.com) to containerize your applications, it is common practice to run each component of the application in a separate container. For example, a website might have a web server, application, and database, each running in its own container.
 
-One challenge with this setup is configuring the containers to communicate with each other and with the host machine. This guide will use a simple example app to demonstrate the basics of Docker container communication. The app will consist of a Node.js app that reads data from a PostgreSQL database.
+Configuring the containers to communicate with each other and the host machine can be a challenge. This guide will use a simple example app to demonstrate the basics of Docker container communication. The app will consist of a Node.js app that reads data from a PostgreSQL database.
 
 ## Before You Begin
 
@@ -28,8 +29,7 @@ You will need a Linode with Docker CE installed to follow along with the steps i
 
 {{< section file="/shortguides/docker/install_docker_ce.md" >}}
 
-
-## Example App
+## Example Node.js Application
 
 The example app used throughout this guide will be a simple Node.js app that will read "Hello world" from a PostgreSQL database and print it to the console. In this section, you will build and test the app on your Linode without using containers.
 
@@ -43,7 +43,7 @@ The example app used throughout this guide will be a simple Node.js app that wil
 
         sudo apt install postgresql postgresql-contrib
 
-3.  Change the `postgres` user's Linux password:
+3.  Change the `postgres` user's password:
 
         sudo passwd postgres
 
@@ -75,7 +75,7 @@ The example app used throughout this guide will be a simple Node.js app that wil
 
         sudo cp /var/lib/postgresql/backup.sql ~/.
 
-10.  Since you will be connecting to this database from a container (which will have an IP address other than `locahost`), you will need to edit the PostgreSQL config file to allow connections from remote addresses. Open `/etc/postgresql/9.5/main/postgresql.conf` in a text editor. Uncomment the `listen_addresses` line and set it to '*':
+10. Since you will be connecting to this database from a container (which will have an IP address other than `locahost`), you will need to edit the PostgreSQL config file to allow connections from remote addresses. Open `/etc/postgresql/9.5/main/postgresql.conf` in a text editor. Uncomment the `listen_addresses` line and set it to '*':
 
     {{< file-excerpt "/etc/postgresql/9.5/main/postgresql.conf" >}}
 #------------------------------------------------------------------------------
@@ -87,19 +87,19 @@ The example app used throughout this guide will be a simple Node.js app that wil
 listen_addresses = '*'                  # what IP address(es) to listen on;
 {{< /file-excerpt >}}
 
-11.  Enable and start the `postgresql` service:
+11. Enable and start the `postgresql` service:
 
         sudo systemctl enable postgresql
         sudo systemctl start postgresql
 
-### Node.js App
+### Create a Hello World App
 
 1.  Install Node and NPM:
 
         curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
         sudo apt-get install nodejs
 
-2.  Navigate to the home directory of your Linode and create a directory for the Node.js app:
+2.  Navigate to the home directory and create a directory:
 
         cd
         mkdir app && cd app
@@ -139,11 +139,11 @@ The `pg` module can also use environment variables to configure the client conne
 
         node app.js
 
-  If the database is configured correctly, you will see the "Hello world" message displayed on the console.
+    If the database is configured correctly, "Hello world" will be displayed on the console.
 
 ## Connect Container to Docker Host
 
-This section will illustrate a use case where the Node.js app is run from a Docker container, and needs to connect to a database that is running on the Docker host.
+This section illustrates a use case where the Node.js app is run from a Docker container, and connects to a database that is running on the Docker host.
 
 ### Set Up Docker Container
 
@@ -266,7 +266,7 @@ You should not store production database data inside a Docker container. Contain
 
         docker run -d --name node_container --link=pg_container:database node_image
 
-    This will link the pg_container under the hostname `database`.
+    This will link the `pg_container` under the hostname `database`.
 
 6.  Open `/etc/hosts` in node_container to confirm that the link has been made:
 
@@ -274,11 +274,11 @@ You should not store production database data inside a Docker container. Contain
 
     There should be a line similar to the following:
 
-      {{< file-excerpt "/etc/hosts" >}}
+      {{< file-excerpt "/etc/hosts" conf >}}
 172.17.0.2  database  pg_container
 {{< /file-excerpt >}}
 
-    This shows that pg_container has been assigned to the IP address 172.17.0.2, and is linked to this container via the hostname `database`, as expected.
+    This shows that `pg_container` has been assigned to the IP address 172.17.0.2, and is linked to this container via the hostname `database`, as expected.
 
 7.  Since the Node.js app is still expecting to connect to a PostgreSQL database on the `database` host, no further changes are necessary. You should be able to run the app as before:
 
@@ -289,7 +289,7 @@ You should not store production database data inside a Docker container. Contain
 Using the `--link` or `--host` options every time you launch your containers can be cumbersome. If your server or any of the containers crash, they must be manually reconnected. This is not an ideal situation for any application that requires constant availability. Fortunately, Docker provides **Docker Compose** to manage multiple containers and automatically link them together when they are launched. This section will use Docker Compose to reproduce the results of the previous section.
 
 {{< note >}}
-For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/applications/container/nonexistent.md) guide.
+For a more comprehensive explanation of Docker Compose and how to write `docker-compose.yml` configuration files, see our complete [Docker Compose](/docs/applications/container/how-to-use-docker-compose) guide.
 {{< /note >}}
 
 1.  Install Docker Compose:
