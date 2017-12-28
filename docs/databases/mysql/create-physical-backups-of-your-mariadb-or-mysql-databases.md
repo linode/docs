@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Instructions for backing up MySQL databases by copying the relevant filesystem parts."
+description: "Create a physical backing up MySQL databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
 keywords: ["mysql", "mariadb", backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-06
+modified: 2017-12-28
 modified_by:
   name: Linode
-published: 2017-12-06
+published: 2017-12-29
 title: Create Physical Backups of your MariaDB or MySQL Databases
 external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'
