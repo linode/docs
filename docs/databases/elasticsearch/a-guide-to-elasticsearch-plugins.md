@@ -56,11 +56,11 @@ OpenJDK 8 is available for installation from the official repositories. Install 
 
     sudo yum install -y java-1.8.0-openjdk-headless
 
-Ensure that Java is ready for use by Elasticsearch by checking that the installed version is at least at version 1.8.0:
+Ensure that Java is ready for use by Elasticsearch by checking that the installed version is at least at version 1.8.0 by running the following command:
 
     java -version
 
-The installed version should be similar to the following:
+The command should return the installed version, which should be similar to the following:
 
     openjdk version "1.8.0_151"
     OpenJDK Runtime Environment (build 1.8.0_151-b12)
@@ -93,7 +93,7 @@ The Elastic package repositories contain the necessary Elasticsearch package. Re
         sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
 2.  Create a yum repository configuration to use the Elastic yum repository:
-{{< file-excerpt "elastic.repo" ini >}}
+{{< file-excerpt "/etc/yum.repos.d/elastic.repo" ini >}}
 [elasticsearch-6.x]
 name=Elastic repository for 6.x packages
 baseurl=https://artifacts.elastic.co/packages/6.x/yum
@@ -114,13 +114,13 @@ type=rpm-md
 
         wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
 
-2.  Install the `apt-transport-https` package, which is required to retrieve deb packages served over HTTPS on Debian 8:
+2.  Install the `apt-transport-https` package, which is required to retrieve deb packages served over HTTPS:
 
         sudo apt-get install apt-transport-https
 
 3.  Add the APT repository information to your server's list of sources:
 
-        echo "deb https://artifacts.elastic.co/packages/5.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic-5.x.list
+        echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic.list
 
 4.  Refresh the list of available packages:
 
@@ -171,6 +171,22 @@ Elasticsearch may take some time to start up. If you need to determine whether t
     }
 
 You are now ready to install and use Elasticsearch plugins.
+
+## Elasticsearch Plugins
+
+This guide will walk through several plugins with different features and use cases. Many of the following steps will involve communicating with the Elasticsearch API. There are a number of different ways to send and receive REST requests to Elasticsearch, so use whichever method is most comfortable for your environment.
+
+For example, consider how to index a sample document into Elasticsearch. A `POST` request must be sent to `/{index name}/{type}/{document id}` with a JSON payload:
+
+    POST /exampleindex/doc/1
+    {
+      "message": "this the value for the message field"
+    }
+
+There are a number of methods that could be used to issue those types of requests.
+
+- From the command line, `curl` can be used.
+  - `curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'`
 
 ## Further Reading
 
