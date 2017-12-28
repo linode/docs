@@ -2,28 +2,29 @@
 author:
   name: Linode
   email: docs@linode.com
-description: Using the Ruby on Rails framework for Nginx web applications on Debian.
+description: "This guide shows how to host a Ruby on Rails application on Debian using NGINX and Passenger."
+og_description: "This guide shows how to host a Ruby on Rails application on Debian using the NGINX web server and the Passenger app server."
 keywords: ["ruby on rails", "ruby on nginx", "rails apps", "debian", "debian 9", " ruby", " nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['websites/ror/ruby-on-rails-nginx-debian-8','development/ror/ruby-on-rails-nginx-debian-8']
-modified: 2017-11-21
+modified: 2017-12-28
 modified_by:
   name: Jared Kobos
 published: 2015-06-25
-title: 'Ruby on Rails with Nginx on Debian 9'
+title: 'Ruby on Rails with NGINX On Debian 9'
 external_resources:
  - '[Passenger Official Debian 9 Installation Guide](https://www.phusionpassenger.com/library/install/nginx/install/oss/stretch/)'
  - '[Ruby and Passenger Quickstart](https://www.phusionpassenger.com/library/walkthroughs/start/ruby.html#preparing-the-example-application)'
  - '[Ruby on Rails Home Page](http://rubyonrails.org/)'
  - '[Ruby on Rails Documentation](http://rubyonrails.org/documentation)'
- - '[Nginx Home Page](http://nginx.org/)'
- - '[Nginx Documentation](http://nginx.org/en/docs/)'
- - '[Nginx Configuration](/docs/websites/nginx/basic-nginx-configuration)'
+ - '[NGINX Home Page](http://nginx.org/)'
+ - '[NGINX Documentation](http://nginx.org/en/docs/)'
+ - '[NGINX Configuration](/docs/websites/nginx/basic-nginx-configuration)'
 ---
 
-Ruby on Rails is a rapid development web framework that allows web designers and developers to implement dynamic fully featured web applications. This guide describes the required process for deploying Ruby on Rails with Passenger and the Nginx web server on Debian 9.
-
 ![Ruby on Rails with nginx on Debian](/docs/assets/ruby_on_rails_with_nginx_debian_8_smg.png "Ruby on Rails with nginx on Debian 8")
+
+Ruby on Rails is a web framework that allows web designers and developers to implement dynamic, fully featured web applications. When deploying a Rails app in production, developers can choose from several popular app servers including Puma, Unicorn, and Passenger. This guide will use Passenger, because of its convenient integration with NGINX.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -77,9 +78,9 @@ Use the Ruby Version Manager (RVM) to install Ruby. Be sure to replace `2.4.2` i
 
         gem install rails -v 5.1.4
 
-### Install nginx and Passenger
+### Install NGINX And Passenger
 
-1.  Install nginx:
+1.  Install NGINX:
 
 		sudo apt install nginx
 
@@ -97,9 +98,9 @@ Use the Ruby Version Manager (RVM) to install Ruby. Be sure to replace `2.4.2` i
         sudo apt-get update
         sudo apt-get install libnginx-mod-http-passenger
 
-## Enable Passenger Support and Start Nginx
+## Enable Passenger Support and Start NGINX
 
-1.  Nginx is now installed on the system, but support for Phusion Passenger is not enabled. As root, or with the `sudo ` command, open the file `/etc/nginx/conf.d/mod-http-passenger.conf` and verify that the following two lines are present and uncommented:
+1.  NGINX is now installed on the system, but support for Phusion Passenger is not enabled. As root, or with the `sudo` command, open the file `/etc/nginx/conf.d/mod-http-passenger.conf` and verify that the following two lines are present and uncommented:
 
     {{< file-excerpt "/etc/nginx/conf.d/mod-http-passenger.conf" aconf >}}
 passenger_root /usr/lib/ruby/vendor_ruby/phusion_passenger/locations.ini;
@@ -110,7 +111,7 @@ passenger_ruby /usr/bin/passenger_free_ruby;
 If the file does not already exist, you will need to create it and add the lines manually.
 {{< /note >}}
 
-2.  Restart Nginx:
+2.  Restart NGINX:
 
         sudo systemctl restart nginx
 
@@ -120,12 +121,14 @@ If the file does not already exist, you will need to create it and add the lines
 
     If Passenger is running, a few running processes should be displayed under the "Passenger processes" section:
 
-        ----- Passenger processes -----
-        PID    VMSize    Private  Name
-        -------------------------------
-        14337  420.8 MB  1.1 MB   Passenger watchdog
-        14340  559.3 MB  1.4 MB   Passenger core
-        14345  292.5 MB  1.2 MB   Passenger ust-router
+    {{< output >}}
+----- Passenger processes -----
+PID    VMSize    Private  Name
+-------------------------------
+14337  420.8 MB  1.1 MB   Passenger watchdog
+14340  559.3 MB  1.4 MB   Passenger core
+14345  292.5 MB  1.2 MB   Passenger ust-router
+{{< /output >}}
 
 ## Install MySQL Support (Optional)
 
@@ -146,7 +149,7 @@ If the application deployed uses MySQL, install the database server by following
         sudo apt install nodejs
 
     {{< note >}}
-If your Gemfile already includes `therubyracer`, or you have another Javascript runtime on your system already, you can skip this step.
+If your Gemfile already includes `therubyracer`, or you have another Javascript runtime on your system, you can skip this step.
 {{< /note >}}
 
 3.  Open `/etc/nginx/sites-available/default` in a text editor and remove `default_server` from the first two lines of the `server` block:
@@ -165,14 +168,16 @@ server {
 
     The `passenger-config` command will generate several lines of output, similar to:
 
-        passenger-config was invoked through the following Ruby interpreter:
-          Command: /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
-          Version: ruby 2.4.2p198 (2017-09-14 revision 59899) [x86_64-linux]
-          To use in Apache: PassengerRuby /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
-          To use in Nginx : passenger_ruby /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
-          To use with Standalone: /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby /home/username/.rvm/gems/ruby-2.4.2/gems/passenger-5.1.11/bin/passenger start
+	{{< output >}}
+passenger-config was invoked through the following Ruby interpreter:
+  Command: /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
+  Version: ruby 2.4.2p198 (2017-09-14 revision 59899) [x86_64-linux]
+  To use in Apache: PassengerRuby /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
+  To use in Nginx : passenger_ruby /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby
+  To use with Standalone: /home/username/.rvm/gems/ruby-2.4.2/wrappers/ruby /home/username/.rvm/gems/ruby-2.4.2/gems/passenger-5.1.11/bin/passenger start
+{{< /output >}}
 
-    Copy the nginx line for use in the next step.
+    Copy the NGINX line for use in the next step.
 
 5. Configure a new site for your Rails app. Create `/etc/nginx/sites-available/railsapp` in a text editor and add the following content:
 
@@ -192,7 +197,7 @@ server {
 
         sudo ln -s /etc/nginx/sites-available/railsapp /etc/nginx/sites-enabled/railsapp
 
-7.  Restart nginx:
+7.  Restart NGINX:
 
         sudo systemctl restart nginx
 
