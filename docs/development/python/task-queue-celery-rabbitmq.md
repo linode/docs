@@ -17,8 +17,6 @@ external_resources:
 - '[Official Celery Documentation](http://docs.celeryproject.org/en/latest/index.html)'
 ---
 
-# How to Set Up a Task Queue with Celery and RabbitMQ
-
 Celery is a Python Task-Queue system that handle distribution of tasks on workers across threads or network nodes. It makes asynchronous task management easy. Your application just need to push messages to a broker, like RabbitMQ, and Celery workers will pop them and schedule task execution.
 
 Celery can be used in multiple configuration. Most frequent uses are horizontal application scalling by running ressource intensive tasks on Celery workers distributed accross a cluster, or to manage long asynchronous tasks in a web app, like thumbnail generation when a user post an image. This guide will take you through installation and usage of Celery with an example application that delegate file downloads to Celery workers, using Python 3, Celery 4.1.0, and RabbitMQ.
@@ -31,7 +29,7 @@ Celery can be used in multiple configuration. Most frequent uses are horizontal 
 
 3.  Update your system:
 
-        sudo apt-get update && sudo apt-get upgrade
+        sudo apt update && sudo apt upgrade
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you’re not familiar with the `sudo` command, see the [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -153,7 +151,7 @@ This line creates:
 
 - A response `backend` where workers will store the return value of the task so that clients can retrieve it later (remember that task execution is asynchronous). If you omit `backend`, the task will still run, but the return value will be lost. `rpc` means the response will be sent to a RabbitMQ queue in a *Remote Procedure Call* pattern.
 
-## Start the workers and give them some work
+## Start the Workers
 
 The command `celery worker` is used to start a Celery worker. The `-A` flag is used to set the module that contain the Celery app. The worker will read the module and connect to RabbitMQ using the parameters in the `Celery()` call.
 
@@ -186,7 +184,7 @@ The command `celery worker` is used to start a Celery worker. The `-A` flag is u
 
     If you omit the `timeout` parameter, the client will wait for the task to complete in a synchronous manner. This is bad practice and should be avoided.
 
-## Start the workers as daemons
+## Start the Workers as Daemons
 
 In a production environment with more than one worker, the workers should be daemonized so that they are started automatically at server startup.
 
@@ -300,7 +298,7 @@ celery@celery: OK
         celery -A downloaderApp inspect stats
 
 
-## Monitor your Celery cluster with Flower
+## Monitor a Celery Cluster with Flower
 
 Flower is a web-based monitoring tool that can be used instead of the `celery` command.
 
@@ -314,7 +312,7 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
 
             firewall-cmd --get-active-zones
 
-    2.  Open port 5555 (change the zone according to your configuration):
+    2.  Open port 5555. Change the zone according to your configuration:
 
             sudo firewall-cmd --zone=public --add-port=5555/tcp --permanent
 
@@ -327,10 +325,13 @@ Flower is a web-based monitoring tool that can be used instead of the `celery` c
         cd /home/celery/downloaderApp
         celery -A downloaderApp flower --port=5555
 
-4. Point your browser to Flower and navigate through the different menus:
+4. Point your browser to `localhost:5555` to view the dashboard:
 
       ![Flower screenshot](/docs/assets/celery/flower-screenshot.png)
 
+    {{< note >}}
+If Flower is exposed through a public IP address, be sure to take additional steps to secure this through a [reverse proxy](https://flower.readthedocs.io/en/latest/reverse-proxy.html).
+{{< /note >}}
 
 ## Start Celery Tasks from Other Languages
 
