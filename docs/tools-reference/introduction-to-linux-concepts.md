@@ -151,30 +151,31 @@ Type the following command, and press `Return` to execute it:
     ls -ahl
 
 The output should look something like this:
-
-    total 84K
-    drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
-    drwxr-xr-x  22 root root 4.0K Apr 30  2012 ..
-    drwxr-xr-x   2 root root 4.0K Nov  6 16:04 bin
-    drwxr-xr-x   3 root root 4.0K Feb  4  2013 boot
-    drwxr-xr-x  11 root root  14K Nov  6 16:17 dev
-    drwxr-xr-x  94 root root 4.0K Dec 10 20:27 etc
-    drwxr-xr-x   4 root root 4.0K Feb 19  2013 home
-    drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
-    drwx------   2 root root  16K Apr 26  2012 lost+found
-    drwxr-xr-x   3 root root 4.0K Apr 26  2012 media
-    drwxr-xr-x   2 root root 4.0K Apr 19  2012 mnt
-    drwxr-xr-x   3 root root 4.0K Nov 18 13:34 opt
-    dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
-    drwx------   3 root root 4.0K Apr  7  2013 root
-    drwxr-xr-x  15 root root  560 Dec 10 15:57 run
-    drwxr-xr-x   2 root root 4.0K Nov  6 16:04 sbin
-    drwxr-xr-x   2 root root 4.0K Mar  5  2012 selinux
-    drwxr-xr-x   2 root root 4.0K Apr 26  2012 srv
-    dr-xr-xr-x  13 root root    0 Nov  6 16:16 sys
-    drwxrwxrwt   2 root root 4.0K Dec 10 21:09 tmp
-    drwxr-xr-x  10 root root 4.0K Apr 26  2012 usr
-    drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
+{{< output >}}
+total 84K
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 .
+drwxr-xr-x  22 root root 4.0K Apr 30  2012 ..
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 bin
+drwxr-xr-x   3 root root 4.0K Feb  4  2013 boot
+drwxr-xr-x  11 root root  14K Nov  6 16:17 dev
+drwxr-xr-x  94 root root 4.0K Dec 10 20:27 etc
+drwxr-xr-x   4 root root 4.0K Feb 19  2013 home
+drwxr-xr-x  16 root root 4.0K Nov  6 16:04 lib
+drwx------   2 root root  16K Apr 26  2012 lost+found
+drwxr-xr-x   3 root root 4.0K Apr 26  2012 media
+drwxr-xr-x   2 root root 4.0K Apr 19  2012 mnt
+drwxr-xr-x   3 root root 4.0K Nov 18 13:34 opt
+dr-xr-xr-x 141 root root    0 Nov  6 16:16 proc
+drwx------   3 root root 4.0K Apr  7  2013 root
+drwxr-xr-x  15 root root  560 Dec 10 15:57 run
+drwxr-xr-x   2 root root 4.0K Nov  6 16:04 sbin
+drwxr-xr-x   2 root root 4.0K Mar  5  2012 selinux
+drwxr-xr-x   2 root root 4.0K Apr 26  2012 srv
+dr-xr-xr-x  13 root root    0 Nov  6 16:16 sys
+drwxrwxrwt   2 root root 4.0K Dec 10 21:09 tmp
+drwxr-xr-x  10 root root 4.0K Apr 26  2012 usr
+drwxr-xr-x  13 root root 4.0K Nov  6 16:04 var
+{{< /output >}}
 
 There are quite a few files inside this directory. The most important part is the list of directory and file names on the right, listed alphabetically. You'll notice the directories `lib` and `var`, as well as several others.
 
@@ -193,26 +194,28 @@ If you open the `var` directory, you'll find more directories, such as `log` for
 
         ls -ahl
 
-You'll see another list of directories:
+    You'll see another list of directories:
 
-    total 52K
-    drwxr-xr-x 13 root root     4.0K Nov  6 16:04 .
-    drwxr-xr-x 22 root root     4.0K Apr 30  2012 ..
-    drwxr-xr-x  2 root root     4.0K Nov 19 06:27 backups
-    drwxr-xr-x  9 root root     4.0K Apr  6  2013 cache
-    drwxrwsrwt  2 root whoopsie 4.0K Apr 26  2012 crash
-    drwxr-xr-x 37 root root     4.0K May 29  2013 lib
-    drwxrwsr-x  2 root staff    4.0K Apr 19  2012 local
-    lrwxrwxrwx  1 root root        9 Apr 30  2012 lock -> /run/lock
-    drwxr-xr-x 14 root root     4.0K Dec 12 06:53 log
-    drwxrwsr-x  2 root mail     4.0K Aug  8 03:50 mail
-    drwxr-xr-x  2 root root     4.0K Apr 26  2012 opt
-    lrwxrwxrwx  1 root root        4 Nov  6 16:04 run -> /run
-    drwxr-xr-x  6 root root     4.0K May 29  2013 spool
-    drwxrwxrwt  2 root root     4.0K Feb  4  2013 tmp
-    drwxr-xr-x  2 root root     4.0K Apr  6  2013 www
+    {{< output >}}
+total 52K
+drwxr-xr-x 13 root root     4.0K Nov  6 16:04 .
+drwxr-xr-x 22 root root     4.0K Apr 30  2012 ..
+drwxr-xr-x  2 root root     4.0K Nov 19 06:27 backups
+drwxr-xr-x  9 root root     4.0K Apr  6  2013 cache
+drwxrwsrwt  2 root whoopsie 4.0K Apr 26  2012 crash
+drwxr-xr-x 37 root root     4.0K May 29  2013 lib
+drwxrwsr-x  2 root staff    4.0K Apr 19  2012 local
+lrwxrwxrwx  1 root root        9 Apr 30  2012 lock -> /run/lock
+drwxr-xr-x 14 root root     4.0K Dec 12 06:53 log
+drwxrwsr-x  2 root mail     4.0K Aug  8 03:50 mail
+drwxr-xr-x  2 root root     4.0K Apr 26  2012 opt
+lrwxrwxrwx  1 root root        4 Nov  6 16:04 run -> /run
+drwxr-xr-x  6 root root     4.0K May 29  2013 spool
+drwxrwxrwt  2 root root     4.0K Feb  4  2013 tmp
+drwxr-xr-x  2 root root     4.0K Apr  6  2013 www
+{{< /output >}}
 
-Here you can see the `log` and `mail` directories, as well as several others. At the top of the list, you see two directories named `.` and `..` with periods. Similar to the tilde (**\~**) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type `cd ..`.
+    Here you can see the `log` and `mail` directories, as well as several others. At the top of the list, you see two directories named `.` and `..` with periods. Similar to the tilde (**\~**) we saw earlier, these directories are actually shortcuts or aliases, that appear in every directory. The single-period directory indicates the current directory. The double-period directory indicates the directory above the current one. If you are inside a lower-level directory and want to move to the directory above it, type `cd ..`.
 
 1. To move back up to `/` from `var`, type the following command:
 
@@ -230,22 +233,24 @@ Here you can see the `log` and `mail` directories, as well as several others. At
 
         ls -ahl
 
-  Inside, you'll see more directories and long list of library files that all start with `lib`. The output is very long, so we're just showing part of it here. The `...` indicates that the output continues.
+    Inside, you'll see more directories and long list of library files that all start with `lib`. The output is very long, so we're just showing part of it here. The `...` indicates that the output continues.
 
-    total 1.2M
-    drwxr-xr-x 16 root root 4.0K Nov  6 16:04 .
-    drwxr-xr-x 22 root root 4.0K Apr 30  2012 ..
-    lrwxrwxrwx  1 root root   21 Apr  6  2013 cpp -> /etc/alternatives/cpp
-    drwxr-xr-x  2 root root 4.0K Apr 26  2012 firmware
-    drwxr-xr-x  2 root root 4.0K Feb  4  2013 hdparm
-    drwxr-xr-x  3 root root 8.0K Oct 23 00:28 i386-linux-gnu
-    drwxr-xr-x  2 root root 4.0K Mar 18  2013 init
-    -rwxr-xr-x  1 root root  74K Mar 30  2012 klibc-LZ1cv1NoEVO2ugnvqTw3e4qPc8Y.so
-    lrwxrwxrwx  1 root root   25 Sep 30 14:38 ld-linux.so.2 -> i386-linux-gnu/ld-2.15.so
-    -rw-r--r--  1 root root 143K Mar 20  2013 libdevmapper.so.1.02.1
-    lrwxrwxrwx  1 root root   16 Apr 30  2012 libfuse.so.2 -> libfuse.so.2.8.6
-    -rw-r--r--  1 root root 179K Mar  2  2012 libfuse.so.2.8.6
-    ...
+    {{< output >}}
+total 1.2M
+drwxr-xr-x 16 root root 4.0K Nov  6 16:04 .
+drwxr-xr-x 22 root root 4.0K Apr 30  2012 ..
+lrwxrwxrwx  1 root root   21 Apr  6  2013 cpp -> /etc/alternatives/cpp
+drwxr-xr-x  2 root root 4.0K Apr 26  2012 firmware
+drwxr-xr-x  2 root root 4.0K Feb  4  2013 hdparm
+drwxr-xr-x  3 root root 8.0K Oct 23 00:28 i386-linux-gnu
+drwxr-xr-x  2 root root 4.0K Mar 18  2013 init
+-rwxr-xr-x  1 root root  74K Mar 30  2012 klibc-LZ1cv1NoEVO2ugnvqTw3e4qPc8Y.so
+lrwxrwxrwx  1 root root   25 Sep 30 14:38 ld-linux.so.2 -> i386-linux-gnu/ld-2.15.so
+-rw-r--r--  1 root root 143K Mar 20  2013 libdevmapper.so.1.02.1
+lrwxrwxrwx  1 root root   16 Apr 30  2012 libfuse.so.2 -> libfuse.so.2.8.6
+-rw-r--r--  1 root root 179K Mar  2  2012 libfuse.so.2.8.6
+...
+{{< /output >}}
 
 ### Learn More About Navigating Directories
 
@@ -280,13 +285,13 @@ The next important concept is *permissions*. Every file and directory on your Li
 ### View Permissions in Linux
 View the users and permissions for a particular file or directory.
 
-1. Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
+1.  Run the `ls -l` command replacing **my\_directory** with the name of your own file or directory:
 
-    ls -l my_directory
+        ls -l my_directory
 
-2. That command produces output like the following:
+2.   That command produces output like the following:
 
-    drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory
+        drwxr-xr-x  13 user1 group1 4.0K Nov  6 16:04 my_directory
 
 The user and group are listed in the middle. In this case, the user is **user1** and the group is **group1**. The user is listed first and the group second. The permissions are listed at the beginning of the line. Ignoring the first character, you can see that the permissions for the `my_directory` directory are **rwxr-xr-x**.
 
@@ -346,11 +351,11 @@ You want some programs, like your web server, to run constantly. These are the p
 
 Sometimes you want to run a program on an as-needed basis. For example, you might want to run a script to rename a group of files.
 
-1. Use the `cd` command to move into the directory where the script is located.
-2. Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
-3. Run the script with the following syntax:
+1.  Use the `cd` command to move into the directory where the script is located.
+2.  Run `ls -l directory` to check that your user account has [execute permissions](/docs/tools-reference/introduction-to-linux-concepts#users-and-permissions-in-linux) for the script file in the directory. If you need to modify the permissions, see the [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups#what-are-user-and-group-permissions) guide.
+3.  Run the script with the following syntax:
 
-    ./my_script
+        ./my_script
 
 **Scheduled:**
 

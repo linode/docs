@@ -102,7 +102,7 @@ deb-src http://ftp.us.debian.org/debian/ wheezy-updates main
 Services using "NSS" (Network Security Services) and "PAM" (Pluggable Authentication Modules) will need to be restarted. In most cases the default list of services to be restarted is fine. If you have additional services that you run that use NSS or PAM, please add them to the list.
 {{< /note >}}
 
-5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/troubleshooting/using-lish-the-linode-shell).
+5.  Once the system is updated, reboot your system using the [Linode Manager](https://manager.linode.com) to make sure that there were no problems during the upgrade. While your system reboots, you can watch your Linode's console for errors using the AJAX terminal or [Lish](/docs/networking/using-the-linode-shell-lish/).
 
 Your Linode is now running Debian 7.
 

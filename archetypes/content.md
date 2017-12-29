@@ -18,13 +18,6 @@ external_resources:
 - '[Link Title 2](http://www.example.net)'
 ---
 
-*This is a Linode Community guide. If you're an expert on something for which we need a guide, you too can [get paid to write for us](/docs/contribute).*
-
-----
-
-<!---  See https://www.linode.com/docs/style-guide for more details on guide formatting.  --->
-
-
 ## Before You Begin
 
 1.  Familiarize yourself with our [Getting Started](/docs/getting-started) guide and complete the steps for setting your Linode's hostname and timezone.

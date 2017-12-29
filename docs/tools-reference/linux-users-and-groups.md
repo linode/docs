@@ -284,7 +284,7 @@ In contrast to the *+s* mode for the ownership of a file, the effect of the *+s*
 
 To set the *setuid* (user id) for a directory named `/var/doc-store`, issue the following command:
 
-    chmod o+s /var/doc-store/
+    chmod u+s /var/doc-store/
 
 ### Changing File Ownership
 

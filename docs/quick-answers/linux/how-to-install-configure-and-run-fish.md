@@ -37,7 +37,7 @@ Start the Fish shell with the `fish` command:
 
 The configuration file for Fish is located at: `~/.config/fish/config.fish`. You can write commands or Fish functions to this file. The `fish_config` command, will load a customization server on the browser:
 
-![fish_config](/content/assets/fish/fish_config.png)
+![fish_config](/docs/assets/fish/fish_config.png)
 
 ## Regarding Fish
 

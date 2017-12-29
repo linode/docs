@@ -75,7 +75,7 @@ Since Magento will be served by Apache, some additional configuration is needed 
         AllowOverride All
     </Directory>
 
-		</VirtualHost>
+</VirtualHost>
 
 {{< /file-excerpt >}}
 
@@ -178,12 +178,7 @@ The value for `date.timezone` will vary based on your system's time zone. Refer 
 
 6.  **Optional**: You may want to take this opportunity to create a `phpinfo.php` page to ensure that PHP is active and working properly with Apache:
 
-{{< file >}}
-/var/www/html/example.com/public_html/phpinfo.php
-
-{{< /file >}}
-
-{{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
+    {{< file-excerpt "/var/www/html/example.com/public_html/phpinfo.php" php >}}
 <?php phpinfo(); ?>
 {{< /file-excerpt >}}
 

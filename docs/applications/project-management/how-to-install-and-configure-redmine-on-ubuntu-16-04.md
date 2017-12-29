@@ -81,24 +81,24 @@ Redmine requires Ruby to run. Use the Ruby Version Manager (RVM) to install Ruby
 
 [Passenger](https://github.com/phusion/passenger) is an application server that runs your web application then communicates with the web server. The project has well-written [documentation](https://www.phusionpassenger.com/library/install/nginx/install/oss/xenial/) on installing Passenger and Nginx on Ubuntu 16.04 with an apt repository.
 
-1. Install the Passenger PGP key and HTTPS support for the package manager:
+1.  Install the Passenger PGP key and HTTPS support for the package manager:
 
         sudo apt install -y dirmngr gnupg
         sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 561F9B9CAC40B2F7
         sudo apt install -y apt-transport-https ca-certificates
 
-2. Add the Passenger APT repository:
+2.  Add the Passenger APT repository:
 
         sudo sh -c 'echo deb https://oss-binaries.phusionpassenger.com/apt/passenger xenial main > /etc/apt/sources.list.d/passenger.list'
         sudo apt update
 
-3. Install Passenger and Nginx
+3.  Install Passenger and Nginx
 
         sudo apt install -y nginx-extras passenger
 
 Passenger has now installed Nginx with Passenger compiled in. You have to configure Nginx to make sure it uses Passenger correctly:
 
-1. Uncomment the `include /etc/nginx/passenger.conf;` line in `/etc/nginx/nginx.conf`. Edit your config file to resemble the one below:
+1.  Uncomment the `include /etc/nginx/passenger.conf;` line in `/etc/nginx/nginx.conf`. Edit your config file to resemble the one below:
 
     {{< file "/etc/nginx/nginx.conf" aconf >}}
 ##
@@ -118,42 +118,42 @@ include /etc/nginx/conf.d/*.conf;
 {{< /file >}}
 
 
-2. Copy the default nginx site configuration file. The working configuration file in this guide will be `/etc/nginx/sites-available/default`:
+2.  Copy the default nginx site configuration file. The working configuration file in this guide will be `/etc/nginx/sites-available/default`:
 
-           cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
+        cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default.orig
 
-3. Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
+3.  Change the `root` directory for the website, and add additional passenger configurations. To do this, add these lines to the `server{}` block of the file:
 
-    {{< file "/etc/nginx/sites-availble/default" aconf >}}
+    {{< file-excerpt "/etc/nginx/sites-available/default" aconf >}}
 root /data/redmine/redmine/public;
 passenger_enabled on;
 client_max_body_size 10m;
 
-{{< /file >}}
+{{< /file-excerpt >}}
 
 
-4. In the same file, comment out the `#location` section:
+4.  In the same file, comment out the `#location` section:
 
-    {{< file "/etc/ningx/site-available/default" aconf >}}
+    {{< file-excerpt "/etc/ningx/site-available/default" aconf >}}
 #location / {
 # First attempt to serve request as file, then
 # as directory, then fall back to displaying a 404.
     #try_files $uri $uri/ =404;
 #}
 
-{{< /file >}}
+{{< /file-excerpt >}}
 
 
-5. Change the permissions for `/var/www`:
+5.  Change the permissions for `/var/www`:
 
         sudo mkdir /var/www
         sudo chown -R www-data /var/www
 
-6. Restart `nginx`:
+6.  Restart `nginx`:
 
         sudo service nginx restart
 
-7. Validate the installation of Passenger and Nginx:
+7.  Validate the installation of Passenger and Nginx:
 
         sudo /usr/bin/passenger-config validate-install
 
@@ -255,7 +255,7 @@ Redmine is built to be used with plug-ins. Plug-ins are installed to `redmine/pl
 
 If not installed, install git or download the plug-in directly through the Github website:
 
-        sudo apt install git
+    sudo apt install git
 
 1. Move to `redmine/plugins` and clone the plug-in:
 
@@ -271,5 +271,5 @@ If not installed, install git or download the plug-in directly through the Githu
 
     ![scrum2b](/docs/assets/redmine/thirdscreen.png)
 
-### Next Steps
+## Next Steps
 You now have a working Redmine setup on your Linode. If you plan on using it in production, explore plug-ins that will be useful for your team. Take a look at some of the guides below to customize Redmine for your team.
