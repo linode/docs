@@ -165,7 +165,7 @@ When a directory is deleted, its weights remain in autojump's records. You shoul
 
 ## Common Issues
 
-* autojump can only be used to jump to directories that have been visited after installing autojump. If you jump to a directory not yet visited, autojump will return `.`
+* `autojump` can only be used to jump to directories that have been visited after installation. If you attempt to jump to a directory not yet visited, `autojump` will return `.`
 
     Visit the directory before attempting to jump.
 
