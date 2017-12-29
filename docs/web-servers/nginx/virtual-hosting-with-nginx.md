@@ -17,10 +17,6 @@ external_resources:
   - '[How to Configure nginx](/docs/web-servers/nginx/how-to-configure-nginx/)'
 ---
 
-*This is a Linode Community guide. [Write for us](/docs/contribute) and earn up to $300 per published guide.*
-
----
-
 ## Introduction To Virtual Hosting with Nginx
 
 This guide will outline the basic steps for hosting multiple domains on a single Nginx server instance. Upon completion, you will be able to navigate to any owned web domain on port 80 or port 443 and Nginx will automatically find and load the correct server block.
@@ -37,7 +33,7 @@ This guide will outline the basic steps for hosting multiple domains on a single
 
 A typical virtual hosting setup with Nginx will include an overall *HTTP* block in the **nginx.conf** file which will encompass any directives that should apply to all enabled domains. The *Server* block is then removed from **nginx.conf** and placed in a separate configuration file(s) for each active domain. Lastly, a *sites-enabled* and *sites-available* directory will be created to simplify the process of enabling/disabling any particular domain. The first step involves creating the necessary directories which will act as the virtual hosting framework.
 
-1. Navigate to the main Nginx directory. 
+1. Navigate to the main Nginx directory.
 
         cd /etc/nginx
 
@@ -63,7 +59,7 @@ With the framework in place, the configuration files can now be populated.
 
 1. Open the **nginx.conf** file with your preferred text editor, and replace the existing contents with the ones shown below. This file will now define the universal behavior of Nginx for each enabled domain. The following configuration should be a sufficient starting point for most users, and can be expanded upon if necessary.
 
-{{< file-excerpt "/etc/nginx/conf/nginx.conf"  >}}
+{{< file-excerpt "/etc/nginx/conf/nginx.conf" nginx >}}
 
 # Universal configuration for all Nginx virtual sites
 
@@ -134,7 +130,7 @@ http {
 
 1. A server block will need to be configured for each virtual domain in the **sites-available** directory. These configuration files will determine how Nginx serves each site individually. In the following example, replace *example-site1.com* with your own domain name. You may also need to modify any file paths listed below if they differ from your current setup. Additionally, some sections (such as the SSL section) are commented out, and you may uncomment them as needed to suit your domain setup.
 
-        {{< file-excerpt "/etc/nginx/sites-available/example-site1.com.conf" >}}
+        {{< file-excerpt "/etc/nginx/sites-available/example-site1.com.conf" nginx >}}
 
 server {
     listen 80;
