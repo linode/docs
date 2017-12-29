@@ -17,7 +17,7 @@ def test_whitespace(md_filepath):
 
 @file_io
 def test_tabs(md_filepath):
-    has_tabs = True
+    has_tabs = False
     for line_number, line in enumerate(md_filepath, 1):
         has_tabs = '\t' in list(line)
         if has_tabs:
