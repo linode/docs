@@ -2,7 +2,7 @@
 author:
   name: Sam Foo
   email: docs@linode.com
-description: 'A cd command that learns - jump to your most frequently visited directories.'
+description: 'autojump is a cd command that learns - jump to your most frequently visited directories.'
 og_description: "Navigate files in the command line more efficiently with autojump, a tool that jumps to your most frequently accessed directories."
 keywords: ["autojump", "python", "command-line"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
@@ -12,7 +12,7 @@ modified_by:
 published: 2017-12-29
 title: Faster File Navigation with autojump
 external_resources:
- - '[Github autojump](https://github.com/wting/autojump)'
+ - '[autojump GitHub](https://github.com/wting/autojump)'
  - '[Autojump Is a Faster Way to Browse Your Filesystem – Lifehacker](https://lifehacker.com/5583546/autojump-is-a-faster-way-to-browse-your-filesystem)'
 ---
 
@@ -20,9 +20,9 @@ external_resources:
 
 `autojump` is a command line utility similar to `cd`. It helps speeds up file navigation by maintaining a history of directories that have been previously navigated by the user. If there are directories with the same name, `autojump` maintains a weighted history to favor the most frequently accessed directory.
 
-## Installation
+## Install autojump
 
-This guide will cover installation on Linux and OS X. Autojump currently has only limited support for Windows.
+This guide will cover installation on Linux and MacOS. Support for Windows [is limited](https://github.com/wting/autojump#known-issues).
 
 ### Debian/Ubuntu
 
@@ -36,25 +36,23 @@ This guide will cover installation on Linux and OS X. Autojump currently has onl
 . /usr/share/autojump/autojump.sh
 {{< /file-excerpt >}}
 
-    {{< note >}}
-More information is available in the README, which you can view with `cat /usr/share/doc/autojump/README.Debian`.
-{{< /note >}}
+More information is available in the README:
+
+    cat /usr/share/doc/autojump/README.Debian
 
 ### CentOS
 
     yum install autojump
 
-{{< note >}}
 For shell specific installation, use `autojump-zsh` for zsh and `autojump-fish` for fish.
-{{< /note >}}
 
-### OS X
+### MacOS
 
-1.  The recommended installation method is to use [Homebrew](https://brew.sh/):
+The recommended installation method is to use [Homebrew](https://brew.sh/):
 
-        brew install autojump
+    brew install autojump
 
-    Be sure to follow the instructions and add the line from installation into the corresponding configuration file. If using `oh-my-zsh`, add `autojump` as a plugin.
+Be sure to follow the instructions and add the line from installation into the corresponding configuration file. If using `oh-my-zsh`, add `autojump` as a plugin.
 
     {{< output >}}
 Add the following line to your ~/.bash_profile or ~/.zshrc file (and remember
@@ -62,9 +60,9 @@ to source the file to update your current session):
   [[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
 {{< /output >}}
 
-### Installation via Python
+### Install autojump via Python
 
-1.  Ensure that git is installed, then clone the autojump repo:
+1.  Ensure that git is installed, navigate to the directory where autojump should be installed, then clone the autojump repo:
 
         git clone git://github.com/joelthelion/autojump.git
 
@@ -74,11 +72,12 @@ to source the file to update your current session):
         ./install.py
 
     {{< note >}}
-Supported versions are Python 2.6+, with the exception of 3.2.
+autojump supports Python 2.6+, with the exception of 3.2.
 {{< /note >}}
 
-## Quickstart
-Both `autojump` and `j` are equivalent for most purposes with `j` being preferred for convenience.
+## How to Use autojump
+
+Both `autojump` and `j` are equivalent for most purposes. `j` is preferred for convenience.
 
 1.  Before jumping to any directory, check the weights of the installation:
 
@@ -133,7 +132,7 @@ Jump to a directory:
 
     j bar
 
-### Jump to a Child
+### Jump to a Child Directory
 
 Jumping to a child with `c` is supported:
 
@@ -141,17 +140,17 @@ Jumping to a child with `c` is supported:
 
 ### Jump with Multiple Arguments
 
-Notice that multiple arguments can be used with partial names of the full path.
+Multiple arguments can be used with partial names of the full path.
 
     j fu bar
 
-### Open the File Manager
+### Open Using File Manager
 
 The `o` command opens the file manager and can also be used in conjunction with `c`.
 
     jco fuu
 
-### Purge Deleted Directories
+### Purge Deleted Directories from autojump
 
 When a directory is deleted, its weights remain in autojump's records. You should regularly purge these weights to prevent autojump from navigating to nonexistent directories.
 
@@ -166,20 +165,16 @@ When a directory is deleted, its weights remain in autojump's records. You shoul
 
 ## Common Issues
 
-1.  Autojump can only be used to jump to directories that have been visited (after installing autojump). If you jump to a directory not yet visited, autojump will return `.`
+* autojump can only be used to jump to directories that have been visited after installing autojump. If you jump to a directory not yet visited, autojump will return `.`
 
-    **Solution:**
+    Visit the directory before attempting to jump.
 
-    Ensure the directory has been previously visited before attempting to jump.
-
-2.  When using `oh-my-zsh`, opening a new Z shell causes the following error:
+* When using `oh-my-zsh`, opening a new Z shell causes the following error:
 
     {{< output >}}
 /Users/linode/.rvm/scripts/initialize:48: __rvm_cleanse_variables: function definition file not found
 /Users/linode/.rvm/scripts/initialize:50: command not found: rvm_error
 {{< /output >}}
-
-    **Solution:**
 
     Make sure `autojump` is added as a plugin in `.zshrc` then remove all `zcomp*` files.
 
