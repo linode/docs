@@ -144,7 +144,7 @@ Multiple arguments can be used with partial names of the full path.
 
     j fu bar
 
-### Open the autojump File Manager
+### Open Using File Manager
 
 The `o` command opens the file manager and can also be used in conjunction with `c`.
 
