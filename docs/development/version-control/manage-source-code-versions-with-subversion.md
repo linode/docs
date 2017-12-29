@@ -16,9 +16,9 @@ external_resources:
  - '[The Subversion Book from O''Reilly](http://svnbook.red-bean.com/)'
 ---
 
-Subversion is a centralized version control system. Used by software developers to track changes during the production and maintenance of a project, SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the *CVS* version control system. SVN attempts to fix many of the major problems with the CVS system without requiring any paradigm shifts in the way software is developed:
+Subversion (SVN) is a centralized [version control system](https://en.wikipedia.org/wiki/Version_control). Used by software developers to track changes during the production and maintenance of a project. SVN is a familiar and standard component in many development tool chains. Subversion was developed as a replacement for the Concurrent Versions System (CVS). SVN attempts to fix many of the major problems with CVS without requiring any paradigm shifts in the way software is developed:
 
--   *Commit* operations are atomic. When a user saves a revision and sends it to the `svn` server, the server process will not put the commit data in the server's database.
+-   *Commit* operations are [atomic](https://en.wikipedia.org/wiki/Atomic_commit). When a user saves a revision and sends it to the `svn` server, the server process will not put the commit data in the server's database until specifically told to.
 -   Files and directories can be renamed while still maintaining a coherent record of the files.
 
 Because Subversion uses a centralized architecture, in order to collaborate with others you must have a server to host the project. This guide outlines both the installation and setup of Subversion as well as the basic use of `svn` tools.
@@ -43,19 +43,25 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 Subversion is included in the software repositories of most major Linux distributions. Installing the `subversion` package installs all of the tools that you need to administer and maintain your Subversion repositories, as well as client utilities.
 
-On Debian and Ubuntu systems, install the Subversion repository by issuing the following command:
+**Debian and Ubuntu**
+
+Install the Subversion repository:
 
     apt-get install subversion
 
-On CentOS and Fedora Systems, install the `subversion` package with the following command:
+**CentOS and Fedora**
+
+Install the `subversion` package:
 
     yum install subversion
 
-On Arch Linux, install `svn` with the following command:
+**Arch**
+
+Install `svn` using pacman:
 
     pacman -S subversion
 
-On Gentoo Linux, Subversion can be installed by issuing this command:
+**Gentoo**
 
     emerge dev-util/subversion
 
@@ -65,7 +71,7 @@ On Gentoo Linux, Subversion can be installed by issuing this command:
 
         mkdir -p /srv/svn/
 
-2.  Using the `svnadmin` tool, create a new SVN repository:
+2.  Use `svnadmin` to create a new SVN repository:
 
         svnadmin create /srv/svn/subversion-test
 
@@ -99,7 +105,7 @@ In cases where you're manipulating Subversion's data store (e.g. an upgrade or m
 
         svnadmin dump /srv/svn/subversion-test > /var/svn/subversion-test-1259853077.svn
 
-    In this example, the repository is located at `/srv/svn/subversion-test` and the "dump file" is located at `/var/svn/subversion-test-1259853077.svn`. We advise you to name your svn backups with file names that refer to the revision or time when the backup was created, as well as the name of the repository contained in the backup.
+    In this example, the repository is located at `/srv/svn/subversion-test` and the *dump file* is located at `/var/svn/subversion-test-1259853077.svn`. To make it easier to organize, name your svn backups with file names that refer to the revision or time when the backup was created, as well as the name of the repository contained in the backup.
 
 3.  You can also save your backups in an incremental format, which outputs the differences between revisions rather than full copies of each revision:
 
@@ -121,15 +127,17 @@ If you store critical information in a Subversion repository, you may wish to cr
 
 By default, Subversion will track the version history for all of the files in a directory tree. Furthermore, Subversion does not specify or require any particular workflow or repository layout. However, many users organize their repositories into three directories:
 
--   The `trunk/` directory is where core development and changes are stored. A full copy of the project's source is located in the trunk directory.
--   The `tags/` directory is where snapshots of specific revisions, versions, or other meaningful points in the project are kept for future reference. Tags are frequently used to mark release versions.
--   The `branches/` directory is where copies of the project are stored in cases where developers need to track ongoing and potentially divergent revision histories. Branches are frequently used to manage the ongoing maintenance of legacy releases and host experimental development of new features.
+* `trunk`: Where core development and changes are stored. A full copy of the project's source is located in the trunk directory.
+
+* `tags`: Where snapshots of specific revisions, versions, or other meaningful points in the project are kept for future reference. Tags are frequently used to mark release versions.
+
+* `branches`: Where copies of the project are stored in cases where developers need to track ongoing and potentially divergent revision histories. Branches are frequently used to manage the ongoing maintenance of legacy releases and host experimental development of new features.
 
 Branches and tags are created using the `svn copy` command. Because Subversion tracks the history of a file independently of a filename or location on the file system, copies share history. As a result, branches and tags don't increase the amount of space a repository consumes.
 
 Subversion is a centralized version control system, which means that in order to perform version control operations on your local copy you need to have an active connection to the server that hosts the repository. While you can add, move, and delete files without a network connection, *committing* changes to the repository requires an active connection to the repository. By convention, the local copy of your repository is called the *checkout* and individual sets of changes are called *commits*.
 
-Subversion also makes it possible for you to only check out portions of a repository. If you only need to work with the `trunk/` portion of the repository, you can specify the URL to only that path of the repository.
+Subversion also makes it possible for you to only check out portions of a repository. If you only need to work with the `trunk` portion of the repository, you can specify the URL to only that path of the repository.
 
 ## Common Subversion Commands
 
