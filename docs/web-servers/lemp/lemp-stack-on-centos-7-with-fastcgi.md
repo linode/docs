@@ -23,7 +23,7 @@ external_resources:
 
 The LEMP stack is an alternative to the LAMP stack, swapping Nginx ("E") for Apache ("A"), for web app development and deployment.
 
-PHP's fastcgi process manager is an alternative PHP FastCGI tool with advanced features that can facilitate heavy-loaded site development.
+PHP's fastcgi process manager is an alternative PHP FastCGI tool with advanced features that can reduce CPU load of your PHP application.
 
 This guide describes how to install a Linux, nginx, MariaDB and PHP server, also called LEMP stack, on CentOS 7 with php-fastcgi. It includes configuring php-fastcgi as a service in `systemd` for easier administration.
 
