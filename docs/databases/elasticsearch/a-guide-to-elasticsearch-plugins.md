@@ -187,6 +187,99 @@ There are a number of methods that could be used to issue those types of request
 
 - From the command line, `curl` can be used.
   - `curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'`
+- For vim users, [vim-rest-console](https://github.com/diepm/vim-rest-console) can easily send REST requests, while Emacs users can use [es-mode](https://github.com/dakrone/es-mode).
+- If Kibana is installed, [Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) may be used to send requests directly from the browser.
+
+Whichever technique is used, the same method of annotating REST requests will be used for the rest of this guide.
+
+### Indexing and Searching
+
+Before beginning, create a test index. The following request will create an index named `test` with one shard and no replicas. While suitable for testing, additional shards and replicas should be used in a production scenario.
+
+    POST /test
+    {
+      "settings": {
+        "index": {
+          "number_of_replicas": 0,
+          "number_of_shards": 1
+        }
+      }
+    }
+
+Index a single document with a key called `message` with a freetext value to add it to the `test` index:
+
+    POST /test/doc/1
+    {
+      "message": "this is an example document"
+    }
+
+Searches can be performed by using the `_search` URL endpoint. The following query searches for the `example` term across all documents in the `message` field, which should match the indexed document.
+
+    POST /_search
+    {
+      "query": {
+        "terms": {
+          "message": ["example"]
+        }
+      }
+    }
+
+The Elasticsearch API should return the matching document.
+
+### Elasticsearch Attachment Plugin
+
+The attachment plugin lets Elasticsearch accept a base64-encoded document and index its contents for easy searching. This is useful in situations such as when PDF or rich text documents need to be searched with minimal overhead to pull out textual data.
+
+To begin, install the `ingest-attachment` plugin using the `elasticsearch-plugin` tool:
+
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-attachment
+
+Then restart elasticsearch. Note that the following command restarts Elasticsearch on systemd-based Linux distributions. Use the appropriate service manager for your system.
+
+    sudo systemctl restart elasticsearch
+
+Confirm that the plugin is installed as expected by using the `_cat` API:
+
+    GET /_cat/plugins
+
+The `ingest-attachment` plugin should be under the list of installed plugins.
+
+In order to use the attachment plugin, a _pipeline_ must be used to process base64-encoded data in the field of a document. An [ingest pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html) is a way of performing additional steps when indexing a document in Elasticsearch. While Elasticsearch comes pre-installed with some pipeline processors (which can perform actions such as removing or adding fields), the attachment plugin installs an addition _processor_ that can be used when defining a pipeline.
+
+Create a pipeline called `doc-parser` which takes data from a field called `encoded_doc` and executes the `attachment` processor on the field. By default, the attachment processor will create a new field called `attachment` with the parsed content of the target field. See the [attachment processor documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/using-ingest-attachment.html) for additional information.
+
+    PUT /_ingest/pipeline/doc-parser
+    {
+      "description" : "Extract text from base-64 encoded documents",
+      "processors" : [ { "attachment" : { "field" : "encoded_doc" } } ]
+    }
+
+Now documents can be indexed with the optional step of passing through the `doc-parser` pipeline to extract data from the `encoded_doc` field.
+
+To demonstrate using the attachment plugin, we will index an RTF (rich-text formatted) document. The following base64-encoded string is an RTF document containing text that we would like to search.
+
+    e1xydGYxXGFuc2kKSGVsbG8gZnJvbSBpbnNpZGUgb2YgYSByaWNoIHRleHQgUlRGIGRvY3VtZW50LgpccGFyIH0K
+
+In order to index this RTF document, index it in JSON form into the `test` index, indicating that the `doc-parser` pipeline should be used when indexing the document.
+
+    PUT /test/doc/rtf?pipeline=doc-parser
+    {
+      "encoded_doc": "e1xydGYxXGFuc2kKSGVsbG8gZnJvbSBpbnNpZGUgb2YgYSByaWNoIHRleHQgUlRGIGRvY3VtZW50LgpccGFyIH0K"
+    }
+
+Now perform a search for the term `rich`, which should find the indexed document.
+
+    POST /_search
+    {
+      "query": {
+        "terms": {
+          "attachment.content": ["rich"]
+        }
+      }
+    }
+
+This technique may be used to index and search other document types such as PDF, PPT, and XLS. See the [Apache Tika Project](http://tika.apache.org/) (which provides the underlying text extraction implementation) for additional supported file formats.
+
 
 ## Further Reading
 
