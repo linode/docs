@@ -57,23 +57,27 @@ Symbolic links can be moved, renamed, and removed at any time. When a link is cr
 
 Consider the output of the following sequence of commands, which creates and displays a very simple symbolic link:
 
-    $ ls -l
-    total 0
-    -rw-r--r-- 1 username username 0 Aug 27 10:35 foo
+{{< output >}}
+$ ls -l
+total 0
+-rw-r--r-- 1 username username 0 Aug 27 10:35 foo
 
-    $ ln -s foo bar
+$ ln -s foo bar
 
-    $ ls -l
-    total 0
-    lrwxrwxrwx 1 username username 3 Aug 27 10:35 bar -> foo
-    -rw-r--r-- 1 username username 0 Aug 27 10:35 fooh
+$ ls -l
+total 0
+lrwxrwxrwx 1 username username 3 Aug 27 10:35 bar -> foo
+-rw-r--r-- 1 username username 0 Aug 27 10:35 fooh
+{{< /output >}}
 
 The first column of meta data on the `bar` object is `l`, which indicates that `bar` is a link. Additionally, `ls` prints the location of the symbolic link. The above link is relative: `bar` is linked to the object `foo` in the same directory. Consider the following relative link:
 
-    $ ln -s ../example.txt
+{{< output >}}
+$ ln -s ../example.txt
 
-    $ ls -l
-    lrwxrwxrwx 1 username username 6 Aug 27 10:54 example.txt -> ../example.txt
+$ ls -l
+lrwxrwxrwx 1 username username 6 Aug 27 10:54 example.txt -> ../example.txt
+{{< /output >}}
 
 The `ln -s` command will succeed as long as a there are no files in the target directory that would conflict with the name of the link to be created. While the target file must exist when the link is created, the link or the target may be moved resulting in a broken link.
 
@@ -81,35 +85,39 @@ The `ln -s` command will succeed as long as a there are no files in the target d
 
 To avoid the pitfalls of specifying relative symbolic link targets, you may create symbolic links that point to absolute paths. Consider the following example:
 
-    $ ln -s /srv/www/example.com/public_html /home/username/public
+{{< output >}}
+$ ln -s /srv/www/example.com/public_html /home/username/public
 
-    $ ls -l /home/username
-    total 0
-    lrwxrwxrwx 1 username username 3 Aug 27 11:43 public -> /srv/www/example.com/public_html
+$ ls -l /home/username
+total 0
+lrwxrwxrwx 1 username username 3 Aug 27 11:43 public -> /srv/www/example.com/public_html
 
-    $ ls -l /home/username/public
-    total 48K
-    -rw-r--r-- 1 username username 355 2010-06-10 14:50 index.htm
-    -rw-r--r-- 1 username username 38K 2010-06-10 12:37 logo.png
+$ ls -l /home/username/public
+total 48K
+-rw-r--r-- 1 username username 355 2010-06-10 14:50 index.htm
+-rw-r--r-- 1 username username 38K 2010-06-10 12:37 logo.png
+{{< /output >}}
 
 ### Create a Hard Link
 
 In most cases, symbolic links are preferable over hard links. There are some situations that require hard links. Consider the following example:
 
-    $ ls -l
-    total 4.0K
-    -rw-r--r-- 1 username username 3 Aug 27 12:23 foo
+{{< output >}}
+$ ls -l
+total 4.0K
+-rw-r--r-- 1 username username 3 Aug 27 12:23 foo
 
-    $ ln foo bar
+$ ln foo bar
 
-    $ ls -l
-    total 8.0K
-    -rw-r--r-- 2 username username 3 Aug 27 12:23 bar
-    -rw-r--r-- 2 username username 3 Aug 27 12:23 foo
+$ ls -l
+total 8.0K
+-rw-r--r-- 2 username username 3 Aug 27 12:23 bar
+-rw-r--r-- 2 username username 3 Aug 27 12:23 foo
 
-    $ touch foo
+$ touch foo
 
-    $ ls -l
-    total 8.0K
-    -rw-r--r-- 2 username username 3 Aug 27 12:24 bar
-    -rw-r--r-- 2 username username 3 Aug 27 12:24 foo
+$ ls -l
+total 8.0K
+-rw-r--r-- 2 username username 3 Aug 27 12:24 bar
+-rw-r--r-- 2 username username 3 Aug 27 12:24 foo
+{{< /output >}}
