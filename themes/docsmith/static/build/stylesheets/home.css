@@ -21172,6 +21172,9 @@ blockquote > div > div.btn-copy > .copy-code {
 .btn-copy:hover .glyphicon {
   color: #B2D7FF;
 }
+.form_elem_email {
+  color: black;
+}
 /* Background */
 .chroma {
   background-color: #eeeedd;
