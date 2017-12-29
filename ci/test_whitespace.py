@@ -15,3 +15,12 @@ def test_whitespace(md_filepath):
                   ":" + str(has_trailing.start()))
     assert has_whitespace == False
 
+@file_io
+def test_tabs(md_filepath):
+    has_tabs = True
+    for line_number, line in enumerate(md_filepath, 1):
+        has_tabs = '\t' in list(line)
+        if has_tabs:
+            print("Mixed spacing on line " + str(line_number))
+    assert has_tabs == False
+
