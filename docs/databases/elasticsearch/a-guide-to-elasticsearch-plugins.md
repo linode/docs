@@ -280,6 +280,98 @@ Now perform a search for the term `rich`, which should find the indexed document
 
 This technique may be used to index and search other document types such as PDF, PPT, and XLS. See the [Apache Tika Project](http://tika.apache.org/) (which provides the underlying text extraction implementation) for additional supported file formats.
 
+### Phonetic Analysis Plugin
+
+Elasticsearch excels when performing textual analysis of data. Several _analyzers_ come bundled with Elasticsearch which can perform powerful analysis on text to make finding results more reliable and dynamic.
+
+One of these analyzers is the [Phonetic Analysis](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/analysis-phonetic.html) plugin. By using this plugin, searches for terms that _sound_ like other words can be found by Elasticsearch. This is a powerful technique to help users find results for items that may be searching for that audibly sound similar to the terms they enter.
+
+To begin, follow the same steps as with the attachment plugin to install the plugin:
+
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-phonetic
+
+Restart Elasticsearch:
+
+    sudo systemctl restart elasticsearch
+
+And confirm the plugin is installed by checking the API:
+
+    GET /_cat/plugins
+
+`analysis-phonetic` should be included in this list.
+
+In order to use this analyzer, a number of changes must be made to our `test` index.
+
+1. A `filter` must be created. This filter will be used to process the tokens that are created for the field of an indexed document.
+2. This filter will be used by an `analyzer`. An analyzer determines how a field is tokenized and then how those tokenized items are processed by filters.
+3. Finally, we will configure the `test` index to use this analyzer for a field in our index with a `mapping`.
+
+The following request will accomplish all of the above, and perform phonetic analysis on the `sounds_like` field for documents that we index into the `test` index.
+
+First, close the `test` index to add analyzers and filters.
+
+    POST /test/_close
+
+Then, define the analyzer and filter for the `test` index under the `_settings` API:
+
+    PUT /test/_settings
+    {
+      "analysis": {
+        "analyzer": {
+          "my_phonetic_analyzer": {
+            "tokenizer": "standard",
+            "filter": [
+              "standard",
+              "lowercase",
+              "my_phonetic_filter"
+            ]
+          }
+        },
+        "filter": {
+          "my_phonetic_filter": {
+            "type": "phonetic",
+            "encoder": "metaphone",
+            "replace": false
+          }
+        }
+      }
+    }
+
+Re-open the index to enable searching and indexing again.
+
+    POST /test/_open
+
+Define a mapping for a field named `phonetic` which will use the `my_phonetic_analyzer` analyzer that has just been defined.
+
+    POST /test/_mapping/doc
+    {
+      "properties": {
+        "phonetic": {
+          "type": "text",
+          "analyzer": "my_phonetic_analyzer"
+        }
+      }
+    }
+
+In order to demonstrate this plugin's functionality, index a document with a JSON field called `phonetic` with content that should be passed through the phonetic analyzer. For example, consider a field with a product description:
+
+    POST /test/doc
+    {
+      "phonetic": "black leather ottoman"
+    }
+
+Now perform a `match` search for the term "ottoman". However, instead of spelling the term correctly, misspell the word such that the misspelled word is phonetically similar.
+
+    POST /_search
+    {
+      "query": {
+        "match": {
+          "phonetic": "otomen"
+        }
+      }
+    }
+
+Observe that the previously-indexed document is matched. Even though the term "ottoman" is spelled differently, because "otomen" sounds similar to "ottoman", the document is still matched.
 
 ## Further Reading
 
