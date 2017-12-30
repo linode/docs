@@ -308,7 +308,7 @@ In order to use this analyzer, a number of changes must be made to our `test` in
 
 The following request will accomplish all of the above, and perform phonetic analysis on the `sounds_like` field for documents that we index into the `test` index.
 
-First, close the `test` index to add analyzers and filters.
+First, close the `test` index to add analyzers and filters:
 
     POST /test/_close
 
@@ -372,6 +372,58 @@ Now perform a `match` search for the term "ottoman". However, instead of spellin
     }
 
 Observe that the previously-indexed document is matched. Even though the term "ottoman" is spelled differently, because "otomen" sounds similar to "ottoman", the document is still matched.
+
+### Geoip Processor Plugin
+
+When indexing certain types of documents such as log files, some fields may contain fields with content like IP addresses. The Geoip plugin can process IP addresses in order to enrich documents with regional data indicating where an IP address originated from.
+
+Follow the same steps as before in order to first install the plugin:
+
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install ingest-geoip
+
+Restart Elasticsearch:
+
+    sudo systemctl restart elasticsearch
+
+And confirm the plugin is installed by checking the API:
+
+    GET /_cat/plugins
+
+`ingest-geoip` should be included in this list.
+
+As with the `ingest-attachment` pipeline plugin, the `ingest-geoip` plugin is used as a processor within an ingest pipeline. The [Geoip plugin documentation](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/using-ingest-geoip.html) outlines the available settings when creating processors within a pipeline.
+
+Create a pipeline called `parse-ip` which consumes an IP address from a field called `ip` and creates regional information underneath the default field (`geoip`):
+
+    PUT /_ingest/pipeline/parse-ip
+    {
+      "description" : "Geolocate an IP address",
+      "processors" : [ { "geoip" : { "field" : "ip" } } ]
+    }
+
+In addition, add a mapping to the index to indicate that the `ip` field should be stored as an IP address in the underlying storage engine:
+
+    POST /test/_mapping/doc
+    {
+      "properties": {
+        "ip": {
+          "type": "ip"
+        }
+      }
+    }
+
+Now index a document with the `ip` field set to an example address and pass the `pipeline=parse-ip` in the request to use the `parse-ip` pipeline to process the document:
+
+    PUT /test/doc/ipexample?pipeline=parse-ip
+    {
+      "ip": "8.8.8.8"
+    }
+
+Retrieve the document to view the fields created by the pipeline:
+
+    GET /test/doc/ipexample
+
+The response should include a `geoip` JSON key with fields such as `city_name` derived from the source IP address.
 
 ## Further Reading
 
