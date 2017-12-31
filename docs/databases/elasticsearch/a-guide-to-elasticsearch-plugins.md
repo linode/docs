@@ -5,24 +5,24 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide will walk through how to install a variety of powerful Elasticsearch plugins.'
+description: 'This guide will walk through how to install a variety of useful Elasticsearch plugins.'
 og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. This guide will explore how to manage, install, and use these plugins to better leverage Elasticsearch for different use cases.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
 keywords: 'elastic,elasticsearch,plugins,search,analytics,search engine'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-12-22
-modified: 2017-12-22
+published: 2017-12-30
+modified: 2017-12-30
 modified_by:
   name: Linode
-title: 'Elasticsearch Plugins'
+title: 'How to Install and Use Elasticsearch Plugins'
 ---
 
 ## What are Elasticsearch Plugins?
 
 [Elasticsearch](https://www.elastic.co/products/elasticsearch) is an open-source, scalable search engine. Although Elasticsearch supports a wide variety of features out-of-the-box, Elasticsearch can also be extended by a variety of [_plugins_](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/index.html) to enhance its functionality. Features such as PDF processing and advanced analysis techniques can improve an existing Elasticsearch setup.
 
-This guide will explain to how install and use a variety of useful Elasticsearch plugins. In addition to basic Elasticsearch installation steps, some basic examples using the Elasticsearch API will also be used.
+This guide will explain to how install and use a variety of useful Elasticsearch plugins. In addition to basic Elasticsearch installation steps, some basic examples using the Elasticsearch API will also be demonstrated.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -34,7 +34,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 2.  This guide will use `sudo` wherever possible. Complete the sections of our [Securing Your Server](/docs/security/securing-your-server) to create a standard user account, harden SSH access and remove unnecessary network services.
 
-3.  Update your system depending upon the distribution in use. For rpm-based distributions such as CentOS, Red Hat, and Fedora:
+3.  Update your system depending upon the distribution in use. For rpm-based distributions such as CentOS, Red Hat, and Fedora, use `yum`:
 
         sudo yum update
 
@@ -183,7 +183,7 @@ For example, consider how to index a sample document into Elasticsearch. A `POST
       "message": "this the value for the message field"
     }
 
-There are a number of methods that could be used to issue those types of requests.
+There are a number of methods that could be used to issue requests.
 
 - From the command line, `curl` can be used.
   - `curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'`
@@ -267,7 +267,7 @@ In order to index this RTF document, index it in JSON form into the `test` index
       "encoded_doc": "e1xydGYxXGFuc2kKSGVsbG8gZnJvbSBpbnNpZGUgb2YgYSByaWNoIHRleHQgUlRGIGRvY3VtZW50LgpccGFyIH0K"
     }
 
-Now perform a search for the term `rich`, which should find the indexed document.
+Now perform a search for the term `rich`, which should find the indexed document. The base64-encoded string that was just indexed contains the term "rich" in the RTF document.
 
     POST /_search
     {
@@ -278,7 +278,9 @@ Now perform a search for the term `rich`, which should find the indexed document
       }
     }
 
-This technique may be used to index and search other document types such as PDF, PPT, and XLS. See the [Apache Tika Project](http://tika.apache.org/) (which provides the underlying text extraction implementation) for additional supported file formats.
+The response from Elasticsearch should include a match for the previously-indexed document.
+
+This technique may be used to index and search other document types such as PDF, PPT, and XLS. See the [Apache Tika Project](http://tika.apache.org/) (which provides the underlying text extraction implementation) for additional supported file formats. As long as the document file is base64-encoded first, Elasticsearch can index and make various document types easily searchable.
 
 ### Phonetic Analysis Plugin
 
@@ -306,7 +308,7 @@ In order to use this analyzer, a number of changes must be made to our `test` in
 2. This filter will be used by an `analyzer`. An analyzer determines how a field is tokenized and then how those tokenized items are processed by filters.
 3. Finally, we will configure the `test` index to use this analyzer for a field in our index with a `mapping`.
 
-The following request will accomplish all of the above, and perform phonetic analysis on the `sounds_like` field for documents that we index into the `test` index.
+The following requests will accomplish all of the above, and perform phonetic analysis on the `phonetic` field for documents that we index into the `test` index.
 
 First, close the `test` index to add analyzers and filters:
 
@@ -423,7 +425,7 @@ Retrieve the document to view the fields created by the pipeline:
 
     GET /test/doc/ipexample
 
-The response should include a `geoip` JSON key with fields such as `city_name` derived from the source IP address.
+The response should include a `geoip` JSON key with fields such as `city_name` derived from the source IP address. The plugin should correctly determine that the IP address originated from California.
 
 ### User Agent Processor Plugin
 
