@@ -97,8 +97,6 @@ A `docker-compose.yml` file is organized into four sections:
 
 Most of this guide will focus on setting up containers using the `services` section. Here are some of the common directives used to set up and configure containers:
 
-[Dockerfiles](https://github.com/dockerfile).
-
 |Directive    | Use
 |---|---|
 |image  | Sets the image that will be used to build the container. Using this directive assumes that the specified image already exists either on the host or on [Docker Hub](https://hub.docker.com/). |
