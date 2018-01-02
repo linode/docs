@@ -187,15 +187,16 @@ const client = new Client({
 
     The output will resemble the following:
 
-        docker0   Link encap:Ethernet  HWaddr 02:42:1e:e8:39:54
-          inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
-          inet6 addr: fe80::42:1eff:fee8:3954/64 Scope:Link
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:3848 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:5084 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0
-          RX bytes:246416 (246.4 KB)  TX bytes:94809688 (94.8 MB)
-
+    {{< output >}}
+docker0   Link encap:Ethernet  HWaddr 02:42:1e:e8:39:54
+  inet addr:172.17.0.1  Bcast:0.0.0.0  Mask:255.255.0.0
+  inet6 addr: fe80::42:1eff:fee8:3954/64 Scope:Link
+  UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+  RX packets:3848 errors:0 dropped:0 overruns:0 frame:0
+  TX packets:5084 errors:0 dropped:0 overruns:0 carrier:0
+  collisions:0 txqueuelen:0
+  RX bytes:246416 (246.4 KB)  TX bytes:94809688 (94.8 MB)
+{{< /output >}}
     The internal IP address of the Docker host (your Linode) is 172.17.0.1.
 
 2.  Allow PostgreSQL to accept connections from the Docker interface. Open `/etc/postgresql/9.5/main/pg_hba.conf` in a text editor and add the following line:
@@ -329,7 +330,7 @@ volumes:
 
     When you run Docker Compose with this file, it will create the `pg_container` and `node_container` from the previous section. As before, the database container will use the official PostgreSQL image, while the app container will be built from your Dockerfile. The `links` entry serves the same function as the `--link` option in the `run` command used earlier.
 
-3.  Docker Compose also allows you to set up environment values, so you can simplify the app to use these rather than having the values hard-coded in your app. Edit `app.js` to remove these values:
+3.  Docker Compose also allows you to set up environment values, so you can simplify the app to use these rather than having the values hard-coded. Edit `app.js` to remove these values:
 
     {{< file "app.js" >}}
 const express = require('express')
@@ -368,6 +369,6 @@ The app should run as before.
 
 By default, Docker automatically assigns an IP address to each container and to the Docker host. You can manually connect services between containers by using these addresses (assuming that your firewall allows the connection).
 
-However, Docker also provides a number of convenient wrappers around these connections to help you speed up and simplify the connection process. You can connect your Docker host to a container with a unique hostname, or directly link two containers. Using Docker Compose can simplify this process even further by allowing you to declare connections in the `docker-compose.yml` file so that they are automatically established whenthe containers are brought up.
+However, Docker also provides a number of convenient wrappers around these connections to help you speed up and simplify the connection process. You can connect your Docker host to a container with a unique hostname, or directly link two containers. Using Docker Compose can simplify this process even further by allowing you to declare connections in the `docker-compose.yml` file so that they are automatically established when the containers are brought up.
 
 There are other connection options that were not covered in this guide. For example, you can run a container using `--net="host"`, which will share that container's network stack with the Docker host: `localhost` on the container will point to `localhost` on the Docker host. You can also expose ports on each Docker container, or configre the default bridge network for more flexibility. For a more in-depth discussion of these options, see the links in the More Info section below.
