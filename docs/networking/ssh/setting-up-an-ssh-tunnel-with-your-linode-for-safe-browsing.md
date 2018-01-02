@@ -17,9 +17,6 @@ external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/SOCKS)'
 ---
 
-
----
-
 Often you may need to browse the web from a public Wi-Fi access point, such as a coffee shop or library, where you do not know the security measures taken by the administrator. Your communications could be snooped on by a malicious user or even by the network owner.
 
 This guide will show you how to establish a secure connection for browsing the web through a tunnel between your computer and your Linode. With this method, you will set up a tunnel between your computer and your Linode. All your web traffic will be encrypted and forwarded from your Linode on to its final destination.
