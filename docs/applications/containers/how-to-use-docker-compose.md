@@ -9,7 +9,7 @@ modified: 2017-12-28
 modified_by:
   name: Linode
 published: 2018-01-02
-title: How to use Docker Compose
+title: How to Use Docker Compose
 ---
 
 ## What is Docker Compose?
