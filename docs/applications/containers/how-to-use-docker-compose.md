@@ -2,13 +2,13 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "How to use Docker Compose"
+description: "How to Use Docker Compose"
 keywords: ["docker", "compose"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-28
 modified_by:
   name: Linode
-published: 2018-01-03
+published: 2018-01-02
 title: How to use Docker Compose
 ---
 
@@ -315,3 +315,4 @@ volumes:
 ## Next Steps
 
 Docker Compose is a powerful tool for orchestrating sets of containers that can work together. Things like an app or a development environment can utilize Docker-compose. The result is a modular and configurable environment that can be deployed anywhere.
+
