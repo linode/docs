@@ -39,15 +39,13 @@ MySQL needs to be configured so that Redmine can store data. You can log in to t
 
 1.  After logging in, create a new database and database user:
 
-        CREATE DATABASE redmine;
-
-        CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'password';
-
-        GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
-
-        FLUSH PRIVILEGES;
-
-        quit;
+    {{< highlight sql >}}
+CREATE DATABASE redmine;
+CREATE USER 'redmine'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON redmine.* TO 'redmine'@'localhost';
+FLUSH PRIVILEGES;
+quit;
+{{< /highlight >}}
 
 ### Install Ruby
 
@@ -159,18 +157,19 @@ client_max_body_size 10m;
 
     Press **enter** when the first option is selected:
 
+    {{< output >}}
+ If the menu doesn't display correctly, press '!'
 
-         If the menu doesn't display correctly, press '!'
+‣ ⬢  Passenger itself
+  ⬡  Apache
 
-        ‣ ⬢  Passenger itself
-          ⬡  Apache
+  -------------------------------------------------------------------------
 
-          -------------------------------------------------------------------------
+* Checking whether this Passenger install is in PATH... ✓
+* Checking whether there are no other Passenger installations... ✓
+{{< /output >}}
 
-        * Checking whether this Passenger install is in PATH... ✓
-        * Checking whether there are no other Passenger installations... ✓
-
-        Everything looks good. :-()
+Everything looks good. :-()
 
 8.  Finally, check if Nginx has started the Passenger core process from the line uncommented earlier:
 
@@ -179,23 +178,24 @@ client_max_body_size 10m;
     If Passenger was installed with Nginx correctly, your output should resemble:
 
 
-        --------- Nginx processes ----------
-        PID   PPID  VMSize    Private  Name
-        ------------------------------------
-        6399  1     174.9 MB  0.6 MB   nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
-        6404  6399  174.9 MB  0.7 MB   nginx: worker process
-        ### Processes: 2
-        ### Total private dirty RSS: 1.23 MB
+    {{< output >}}
+--------- Nginx processes ----------
+PID   PPID  VMSize    Private  Name
+------------------------------------
+6399  1     174.9 MB  0.6 MB   nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+6404  6399  174.9 MB  0.7 MB   nginx: worker process
+### Processes: 2
+### Total private dirty RSS: 1.23 MB
 
 
-        ---- Passenger processes -----
-        PID   VMSize    Private  Name
-        ------------------------------
-        6379  441.3 MB  1.2 MB   Passenger watchdog
-        6382  660.4 MB  2.9 MB   Passenger core
-        6388  449.5 MB  1.4 MB   Passenger ust-router
-        ### Processes: 3
-
+---- Passenger processes -----
+PID   VMSize    Private  Name
+------------------------------
+6379  441.3 MB  1.2 MB   Passenger watchdog
+6382  660.4 MB  2.9 MB   Passenger core
+6388  449.5 MB  1.4 MB   Passenger ust-router
+### Processes: 3
+{{< /output >}}
 
 ### Install Redmine
 
