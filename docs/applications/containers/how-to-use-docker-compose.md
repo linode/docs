@@ -196,7 +196,7 @@ services:
 
      This command shows the status of the containers, the port mapping, the names, and the last command running on them. It's important to note that the postgres container reads "docker-entrypoint..." under commands. The Postgres [Docker Entrypoint](https://github.com/docker-library/postgres/blob/master/docker-entrypoint.sh) script is the last thing that launches when the container starts.
 
-        {{< output >}}
+    {{< output >}}
 CONTAINER ID        IMAGE               COMMAND                  CREATED              STATUS              PORTS                    NAMES
 ecc37246f6ef        postgres:latest     "docker-entrypoint..."   About a minute ago   Up About a minute   0.0.0.0:5432->5432/tcp   postgres_db
 35dab3e712d6        alpine              "tail -f /dev/null"      About a minute ago   Up About a minute                            Alpine_Distro
@@ -252,7 +252,7 @@ services:
 
       The output should be similar to:
 
-        {{< output >}}
+    {{< output >}}
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 55d573674e49        nginx:latest        "nginx -g 'daemon ..."   3 minutes ago       Up 3 minutes        0.0.0.0:8080->80/tcp     nginx
 ad9e48b2b82a        alpine              "tail -f /dev/null"      3 minutes ago       Up 3 minutes                                 Alpine_Distro
