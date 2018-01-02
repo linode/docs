@@ -18,6 +18,8 @@ external_resources:
 - '[The Tao of tmux](https://leanpub.com/the-tao-of-tmux/read)'
 ---
 
+![tmux](/docs/assets/tmux/tmux.jpg)
+
 ## What is tmux?
 
 

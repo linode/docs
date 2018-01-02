@@ -34,10 +34,10 @@ On OSX, the easiest way to install Hugo is with [Homebrew](https://brew.sh/):
 
 ### Linux
 
-Go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform. Replace each instance of `v0.30.2` in this example with the newest version:
+Go to the [Hugo releases](https://github.com/gohugoio/hugo/releases) page and download the most up to date binary for your platform. Replace each instance of `v0.31.1` in this example with the newest version:
 
-    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.30.2/hugo_0.30.2_Linux-64bit.tar.gz
-    tar -xvzf hugo_0.30.2_Linux-64bit.tar.gz
+    curl -OL https://github.com/gohugoio/hugo/releases/download/v0.31.1/hugo_0.31.1_Linux-64bit.tar.gz
+    tar -xvzf hugo_0.31.1_Linux-64bit.tar.gz
     sudo mv hugo /usr/local/bin
 
 ### Windows

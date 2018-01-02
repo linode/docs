@@ -13,7 +13,7 @@ published: 2009-08-04
 title: 'Using the Linode Shell (Lish)'
 ---
 
-![Using the Linode Shell (Lish)](/docs/assets/using-the-linode-shell-lish.jpg "Using the Linode Shell (Lish)")
+![Using the Linode Shell (Lish)](/docs/assets/using-the-linode-shell-lish.jpg)
 
 The Linode Shell (*Lish*) provides console access to all of your Linodes. It also allows you to perform actions like rebooting a Linode or switching to a different configuration profile without having to open the Linode Manager. Lish is also a good rescue tool. The console provides out-of-band access to your Linode, which means you can use Lish to access your Linode even when you are unable to connect directly via SSH. This is useful if firewall settings or a bad network configuration prevent you from accessing your Linode using SSH. Lish can also be useful if you need to access your secure server on a local computer whose public key has not been added to the allowed list.
 
@@ -48,7 +48,7 @@ You can connect to Lish with the SSH client of your choice. For example, you can
 
         ssh user@lish-newark.linode.com
 
-	{{< note >}}
+    {{< note >}}
 Users who have been granted "Access" rights on a particular Linode will have access to that Linode’s Lish console via the gateway. Linodes that a user can't access in the Linode Manager won’t show up in the Lish list. For more information about creating user accounts and configuring permissions, see [Accounts and Passwords](/docs/accounts-and-passwords).
 {{< /note >}}
 
@@ -62,7 +62,7 @@ Users who have been granted "Access" rights on a particular Linode will have acc
         Linodes located in other data centers:
         linode287497         Dallas, TX
 
-	{{< note >}}
+    {{< note >}}
 You can add a public SSH key for Lish in the Linode Manager to automatically connect to Lish without a password. See [this section](#add-your-public-key) for more information.
 {{< /note >}}
 

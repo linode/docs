@@ -78,8 +78,6 @@ Wazuh is an open source branch of the orignal [OSSEC HIDS](https://ossec.github.
 
     Your output should be similar to:
 
-    *Output*
-
         openjdk version "1.8.0_144"
         OpenJDK Runtime Environment (IcedTea 3.5.1) (suse-13.3-x86_64)
         OpenJDK 64-Bit Server VM (build 25.144-b01, mixed mode)
@@ -239,14 +237,12 @@ LS_GROUP=logstash
 
 5. If you will access Kibana remotely, configure it to listen on your IP address. Replace the following values with the correct parameters. If you are accessing Kibana from a local host, you can leave the `server.host` value alone.
 
-    {: .table .table-striped .table-bordered }
     | Value           | Parameter                                                                                  |
     | :-------------: | :----------------------------------------------------------------------------------------: |
     | server.port     | Change this value if the default port, `5601`, is in use.                                  |
     | server.host     | Set this value to your Linode's external IP address.                                       |
     | server.name     | This value is used for display purposes only. Set to anything you wish, or leave it alone. |
     | logging.dest    | Specify a location to log program information. `/var/log/kibana.log` is recommended.       |
-    | :-------------: | :----------------------------------------------------------------------------------------: |
 
     You may modify other values in this file as you see fit, but this configuration should work for most.
 
@@ -493,13 +489,11 @@ The new Kibana subdomain will need to be configured in the Linode DNS Manager.
 
 1. Login to the Linode Manager and select your Linode VPS. Click on *DNS Manager*. Add a new A/AAA record for the subdomain. Refer to the table below for the field values.
 
-    {: .table .table-striped .table-bordered }
-    | Field | Value |
-    | :-------------: | :-----------: |
-    | Hostname | Enter your subdomain name here - ex. kibana |
-    | IP Address | Set this value to your Linode's external IP address. |
-    | TTL | Set this to 5 minutes. |
-    | :-------------: | :-----------: |
+    | Field           | Value                                                |
+    | :-------------: | :--------------------------------------------------: |
+    | Hostname        | Enter your subdomain name here - ex. kibana          |
+    | IP Address      | Set this value to your Linode's external IP address. |
+    | TTL             | Set this to 5 minutes.                               |
 
 2. Click **Save Changes**.
 
@@ -515,8 +509,9 @@ Kibana's default access port, `5601`, must be opened for TCP traffic. Instructio
 
     iptables -A INPUT -p tcp --dport 5601 -m comment --comment "Kibana port" -j ACCEPT
 
-{: .note}
-> To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
+{{< note >}}
+To avoid losing iptables rules after a server reboot, save your rules to a file using `iptables-save`, or install iptables-persistent to automatically save rules.
+{{< /note >}}
 
 **FirewallD**
 
@@ -544,7 +539,7 @@ Now you are ready to access the API and begin making use of your OSSEC Elastic S
         systemctl -l status nginx
 
     {{< note >}}
-    If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
+If the Wazuh Manager fails to start and you determine the cause to be one of the OSSEC rules or decoders, disable that specific rule/decoder for now. Find the rules and decoders in the `/var/ossec/ruleset` directory. To disable, rename the file to any other file extension.
 {{< /note >}}
 
 4. In a web browser, navigate to the Kibana homepage. If you created a subdomain for Kibana, the URL will be similar to `kibana.exampleIPorDomain`. You can also reach Kibana by navigating to your server's IP address and specifying port `5601`. Login with the credentials you setup for your Kibana site.
