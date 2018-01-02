@@ -3,10 +3,10 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'This guide shows how to manage source code with Subversion, an open source version control system.'
-keywords: ["svn", "version control", "source control management"]
+keywords: ["svn", "version control", "source control management", "subversion"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/version-control/svn/','applications/development/manage-source-code-versions-with-subversion/']
-modified: 2017-12-29
+modified: 2018-01-01
 modified_by:
   name: Linode
 published: 2009-12-15
@@ -141,20 +141,20 @@ Subversion also makes it possible for you to only check out portions of a reposi
 
 ## Common Subversion Commands
 
-If you have prior experience using CVS, you will already be familiar with many of the commands used for interacting with Subversion repositories. Subversion aims to be compatible with CVS user workflows.
+If you have prior experience using a CVS, you may already be familiar with many of the commands used for interacting with Subversion repositories. Subversion aims to be compatible with CVS user workflows.
 
--   `svn checkout [repository-path]` or `svn co [repository-path]`. The `[repository-path]` refers to the location of the remote repository. You must provide the location of the repository in the form of a URL.
+- `svn checkout [repository-path]` or `svn co [repository-path]`. The `[repository-path]` refers to the location of the remote repository. You must provide the location of the repository in the form of a URL.
 
-    If you want to check out the repository at a specific revision, use the `-r [revision-number]` option with the `svn co` command to specify a particular revision.
+  If you want to check out the repository at a specific revision, use the `-r [revision-number]` option with the `svn co` command to specify a particular revision.
 
--   `svn update` or `svn up` downloads all changes and brings your copy up to date with any changes that have been committed since your last update. You should run `svn update` frequently to avoid working on an out of date code base and complicated commits.
--   `svn commit` saves the changes to the current checkout and creates a new commit on the server for this change set. Invoked without arguments, this opens your default text editor so that you can enter a commit message. If you want to specific a commit message on the command line, use the `svn commit -m "[commit-message]"` argument.
--   `svn add` stages a previously un-tracked file for the next commit.
--   `svn delete` removes a file from the next commit and deletes it from the filesystem. This command should be used instead of your system's `rm` command to allow Subversion to track the removal of files. Subversion also provides the `svn rm` and `svn del` commands, which are functionally identical to `svn delete`
--   `svn copy` creates a copy of a file in a new location and name in the repository. In these circumstances Subversion treats the history of both files (previous to the copy) as a single series of changes.
--   `svn move` moves the specified file or files to a new location while retaining the history, despite the change in file name. Functionally, this is equivalent to running the `svn copy` command followed by the `svn delete` command.
--   `svn diff` displays the differences between two revisions in the repository. Without any arguments it displays the differences between the current status of the working copy (i.e. checkout) and the latest version of the repository.
--   `svn log` generates and displays the revision history of an the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
+- `svn update` or `svn up` downloads all changes and brings your copy up to date with any changes that have been committed since your last update. Run `svn update` frequently to avoid working on an out-of-date codebase and complicated commits.
+- `svn commit` saves the changes to the current checkout and creates a new commit on the server for this change-set. When invoked without arguments, this opens your default text editor so that you can enter a commit message. If you want to specify a commit message from the command line, use `svn commit -m "[commit-message]"`.
+- `svn add` stages a previously untracked file for the next commit.
+- `svn delete` removes a file from the next commit and deletes it from the filesystem. This command should be used instead of your system's `rm` command to allow Subversion to track the removal of files. Subversion also provides the `svn rm` and `svn del` commands, which are functionally identical to `svn delete`
+- `svn copy` creates a copy of a file in a new location and name in the repository. In these circumstances Subversion treats the history of both files (previous to the copy) as a single series of changes.
+- `svn move` moves the specified file or files to a new location while retaining the history, despite the change in file name. Functionally, this is equivalent to running the `svn copy` command followed by the `svn delete` command.
+- `svn diff` displays the differences between two revisions in the repository. Without any arguments it displays the differences between the current status of the working copy (i.e. checkout) and the latest version of the repository.
+- `svn log` generates and displays the revision history of an the current directory in the filesystem. You may also specify a specific file name, for instance `svn log roster.txt` produces the revision history for the `roster.txt` file. You can also use `svn log` to access the revision history of a remote repository:
 
         svn log http://example.com/repos/subversion-test/files/txt/ roster.txt data.txt
 
@@ -162,50 +162,64 @@ If you have prior experience using CVS, you will already be familiar with many o
 
 ## Access Subversion over HTTP
 
-If you and your developers *only* need to access your repository over SSH, with the `ssh+svn://` protocols, then you can skip the remainder of this guide. If you need to access your repository over the `http://` or `https://` protocols, you will want to configure Apache to host your Subversion repository.
+If you and your developers *only* need to access your repository over SSH with the `ssh+svn://` protocols, skip the remainder of this guide.
+
+If you need to access your repository over the `http://` or `https://` protocols, configure Apache to host your Subversion repository.
 
 ### Install Apache and mod\_dav\_svn
 
-Developers frequently access Subversion repositories via the SSH protocol, and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
+Developers frequently access Subversion repositories via the SSH protocol and manage permissions and authentication credentials using OpenSSH and system user accounts. This can be difficult to manage if you are hosting a large number of repositories with a large number of users on a single server. For these cases, many users provide access to their repositories using the "WebDAV" protocol over HTTP or HTTPS with the [Apache Web Server](/docs/web-servers/apache/).
 
 Install the Apache module `mod_dav_svn`:
 
 * Debian and Ubuntu:
 
-        apt-get install libapache2-svn apache2
+    1.  Install Apache:
 
-    Afterwards, you'll need to restart Apache using `systemctl restart apache2`.
+            apt-get install libapache2-svn apache2
+
+    2.  Restart Apache:
+
+            systemctl restart apache2
 
 * CentOS and Fedora:
 
         yum install mod_dav_svn httpd
 
-* Arch Linux:
+* Arch and Gentoo:
 
-    `mod_dav_svn` is installed by default with the Apache package. Gentoo Linux users will need to compile the `subversion` package with the following `USE` flags:
+    `mod_dav_svn` is installed by default with the Apache package.
+
+    Gentoo users will need to compile the `subversion` package with the following `USE` flags:
 
         USE="apache2 webdav-neon"
 
 ### Configure Repository Permissions
 
-In order to permit the Apache module `mod_dav_svn` to provide access to your Subversion repository, you need to allow the web server process to access the repository.
+To permit the Apache module `mod_dav_svn` to provide access to your Subversion repository, allow the web server process to access the repository.
 
-On Debian and Ubuntu systems, Apache runs under the `www-data` user. On CentOS and Fedora systems, Apache runs as `apache`. On Arch Linux, Apache runs under the `nobody` user. Choose the appropriate command for your distribution:
+On Debian and Ubuntu systems, Apache runs under the `www-data` user:
 
     chown -R www-data /srv/svn/subversion-test
+
+On CentOS and Fedora systems, Apache runs as `apache` or `httpd`:
+
     chown -R apache /srv/svn/subversion-test
     chown -R httpd /srv/svn/subversion-test
+
+On Arch Linux, Apache runs under the `nobody` user:
+
     chown -R nobody /srv/svn/subversion-test
 
 ### Add a User Group
 
-If you need to access the repository with local system accounts, you will want the users to belong to the group that has ownership of the given files. The following example creates a new group and adds a number of users to a group. You can then change the group ownership of the repository as described above.
+If local system accounts need to access the repository, add those users to the group that has ownership of the given files. The following example creates a new group and adds a number of users to a group. You can then change the group ownership of the repository as described above.
 
 1.  Create a new group:
 
         groupadd svnuser
 
-2.  Add the example users `user1`, `user2`, and `user3` to the `svnuser` group (either create these users first with `useradd` or replace them with usernames already on your system):
+2.  Add the example users, `user1`, `user2`, and `user3` to the `svnuser` group.\ (either create these users first with `useradd` or replace them with usernames already on your system):
 
         usermod -G svnuser user1
         usermod -G svnuser user2
@@ -215,19 +229,19 @@ If you need to access the repository with local system accounts, you will want t
 
         chgrp -R svnuser /srv/svn/subversion-test
 
-4.  In order to avoid permission conflicts with multiple users, set the "sticky" bit for the entire repository in a recursive fashion:
+4.  In order to avoid permission conflicts with multiple users, set the *sticky bit* (`+s`) for the entire repository in a recursive (`-R`) fashion:
 
         chmod -R +s /srv/svn/subversion-test
 
     {{< caution >}}
-The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user and group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for more information.
+The sticky bit allows all users with access to the files (i.e. members of the group) to create files that are owned by the user or group that owns the directory, rather than by their own default user and group. This also allows users to execute scripts in these directories as the user that owns them, and thus poses a potential security risk. See our [Linux Users and Groups](/docs/tools-reference/linux-users-and-groups) guide for more information.
 {{< /caution >}}
 
 ### Configure the Apache Web Server
 
-{{< note >}}
-This section will demonstrate configuration on Debian and Ubuntu systems. Similar steps will work on other distributions.
-{{< /note >}}
+This section demonstrates configuration for Debian and Ubuntu systems. Similar steps will work on other distributions. Please adjust accordingly.
+
+In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/apache-access-control/#access-control-lists-with-groups) to organize your users' access.
 
 1.  Enable the `mod_dav_svn` and `mod_dav` Apache modules. This will make it possible to use the `WebDAV` system to access the Subversion repository.
 
@@ -238,13 +252,11 @@ This section will demonstrate configuration on Debian and Ubuntu systems. Simila
 
         systemctl restart apache2
 
-3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/web-servers/apache/configuration/http-authentication) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
+3.  Configure HTTP AUTH passwords for Subversion users. You can read more about HTTP AUTH in our [Apache Authentication](/docs/web-servers/apache/apache-access-control/) guide. Store your `htpasswd` file for your Subversion repositories in a location such as:
 
         /srv/www/svn.example.com/subversion-test.htpasswd
 
-In this example, `subversion-test` corresponds to the name of the repository, and `/srv/www/svn.example.com` is a directory distinct from your Subversion repositories. Maintaining a separate `htpasswd` for each repository hosted on your Linode makes sense if each repository is used by a distinctly different set of users. Conversely, if each repository that you administer is used by a subset of a larger group of users you may wish to configure [user groups](/docs/web-servers/apache/configuration/http-authentication#access-control-lists-with-groups) to organize your users' access.
-
-#### Manage A Single Repository
+#### Manage a Single Repository
 
 1.  In a text editor, open `/etc/apache2/sites-available/svn.example.com.conf` and add the following content. Replace `svn.example.com` with the public IP address or FQDN of your Linode:
 
@@ -267,10 +279,9 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
 {{< /file-excerpt >}}
 
+    This configuration forwards all requests for `http://svn.example.com/` to `mod_dav_svn`. This will provide an overview of the most recent revision of the repository within a web browser. Note that this setup provides *unencrypted* access to your repository over `http`.
 
-    This configuration forwards all requests for `http://svn.example.com/` to `mod_dav_svn`. In a web browser this will provide an overview of the most recent revision of the repository. Note that this setup provides *unencrypted* access to your repository over `http`.
-
-2.  For a secure connection, configure Apache to [serve content with SSL](/docs/security/ssl/). Once your certificate files are in place set up the virtual host to respond to requests on port `443` rather than `80`:
+2.  For a secure connection, configure Apache to [serve content with SSL](/docs/security/ssl/). Once your certificate files are in place, configure the virtual host to respond to requests on port `443` rather than `80`:
 
     {{< file-excerpt "/etc/apache2/sites-available/svn.example.com.conf" apache >}}
 <VirtualHost *:443>
@@ -299,16 +310,16 @@ In this example, `subversion-test` corresponds to the name of the repository, an
 
         mkdir /srv/www/svn.example.com/logs/
 
-4.  Enable the new site configuration and disable the default site:
+4.  Disable the default site and enable the new site configuration:
 
         a2dissite 000-default.conf
         a2ensite svn.example.com
 
-4.  Restart Apache:
+5.  Restart Apache:
 
         systemctl restart apache2
 
-5.  Navigate to your Linode's IP or FQDN in a web browser; you should see a brief overview of the most recent version of your web browser.
+6.  Navigate to your Linode's IP or FQDN in a web browser; you should see a brief overview of the most recent version in your web browser.
 
 #### Manage Multiple Repositories
 
@@ -367,9 +378,9 @@ As another option, you can specify multiple repositories using the `SVNPath` dir
 {{< /file-excerpt >}}
 
 
-#### Provide Read Only Access
+#### Provide Read-Only Access
 
-All of the preceding cases have required that a user log in before accessing your repository. If you would like to allow read only public access to your respository you can do so by adding `LimitExcept` blocks to your virtual hosts:
+All of the preceding cases have required that a user log in before accessing your repository. If you would like to allow read only public access to your repository, add `LimitExcept` blocks to your virtual hosts:
 
 {{< file-excerpt "Apache Virtual Host Configuration" apache >}}
 <VirtualHost *:80>
