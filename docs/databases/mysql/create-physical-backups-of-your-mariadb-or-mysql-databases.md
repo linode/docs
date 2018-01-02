@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: "Create a physical backing up MySQL databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
+description: "Create a physical MySQL backup databases by copying the relevant filesystem parts. Useful for recovering inaccessible databases."
 keywords: ["mysql", "mariadb", backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-28
