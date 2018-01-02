@@ -17,7 +17,7 @@ The [Linode Manager](https://manager.linode.com) is the gateway to all of your L
 
 ![Linode Manager Security Controls](/docs/assets/linode-manager-security/Linode_Manager_Security_Controls_smg.jpg)
 
-This guide documents several of Linode Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, Linode Manager's built-in security tools can help. 
+This guide documents several of Linode Manager's features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, Linode Manager's built-in security tools can help.
 
 Start by [enabling two-factor authentication](#enable-two-factor-authentication) to protect your account with a physical token, then [set up an IP address whitelist](#ip-address-whitelisting), and then [configure security event notifications](#security-event-notifications) for your Linode Manager account. You'll also learn how to [control API access](#api-access), [configure user accounts](#configure-user-accounts), and [force password expirations](#force-password-expirations).
 
