@@ -17,6 +17,8 @@ external_resources:
  - '[Tuning Your Apache Sever](/docs/websites/apache-tips-and-tricks/tuning-your-apache-server)'
 ---
 
+![Apache Web Server on Debian](/docs/assets/apache-web-server-debian-weezy/Apache_Web_Server_on_Debian_7_Wheezy_smg.jpg)
+
 The *Apache HTTP Web Sever* (Apache) is an open source web application for deploying web servers. This tutorial explains how to install and configure the Apache web server on Debian 7 (Wheezy).
 
 Note that if you're looking to install a full LAMP (Linux, Apache, MySQL and PHP) stack, you may want to consider using our [LAMP guide for Debian 7](/docs/websites/lamp/lamp-server-on-debian-7-wheezy).

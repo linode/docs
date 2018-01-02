@@ -13,6 +13,8 @@ published: 2013-05-02
 title: Linode Manager Security Controls
 ---
 
+![Linode Manager Security Controls](/docs/assets/linode-manager-security/Linode_Manager_Security_Controls_smg.jpg)
+
 The [Linode Manager](https://manager.linode.com) is the gateway to all of your Linode products and services, and you should take steps to protect it from unauthorized access. This guide documents several Linode Manager features that can help mitigate your risk. Whether you're worried about malicious users gaining access to your username and password, or authorized users abusing their access privileges, the Linode Manager's built-in security tools can help. You'll start by enabling two-factor authentication to protect your account with a physical token, setting up an IP address whitelist, and then configuring security event notifications for your Linode Manager account. You'll also learn how to control API access, configure user accounts, and force password expirations.
 
 ## Two-Factor Authentication
