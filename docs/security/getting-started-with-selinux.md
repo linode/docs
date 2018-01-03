@@ -5,7 +5,6 @@ author:
 description: 'This guide will walk you through the basics of installing and running SELinux.'
 keywords: ["Security-enhanced Linux", " secure open source", " firewall", " SELinux", " getting-started"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/license/by-nd/4.0)'
-alias:
 modified: 2017-07-21
 modified_by:
   name: Angel Guarisma

@@ -5,7 +5,6 @@ author:
 description: 'Learn how to use Postfix to send mail through an external SMTP server.'
 keywords: ["Postfix", " Debian 7", " SMTP", " Email", " Mail"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-location: ['email/postfix/postfix-smtp-debian7/']
 contributor:
     name: Santiago Ti
 modified: 2014-05-30
