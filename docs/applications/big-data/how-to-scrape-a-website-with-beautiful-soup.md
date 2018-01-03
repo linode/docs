@@ -12,7 +12,7 @@ modified_by:
 published: 2017-12-12
 contributor:
   name: Luis Cortés
-title: 'How to Scrape a Website with BeautifulSoup'
+title: 'How to Scrape a Website with Beautiful Soup'
 ---
 
 ![How to Scrape a Website with BeautifulSoup](/docs/assets/beautifulsoup/beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")
