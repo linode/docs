@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg width="1685.112" height="100.28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Generated at Wed Jan  3 14:53:23 2018 by:
+  Graph::Easy v0.64
+  Graph::Easy::As_svg v0.27
+-->
+
+<title>Untitled graph</title>
+<defs>
+ <!-- open arrow -->
+ <g id="ah" stroke-linecap="round" stroke-width="1">
+  <line x1="-8" y1="-4" x2="1" y2="0" />
+  <line x1="1" y1="0" x2="-8" y2="4" />
+ </g>
+
+ <!-- class definitions -->
+ <style type="text/css"><![CDATA[
+ .edge {
+  font-size: 13px;
+  stroke: black;
+  text-align: center;
+ }
+ .graph {
+  font-size: 16px;
+  text-align: center;
+ }
+ .node {
+  font-size: 16px;
+  text-align: center;
+ }
+ ]]></style>
+</defs>
+
+<!-- graph background with border (mainly for printing) -->
+<rect x="0.5" y="0.5" width="1683.112" height="98.28" fill="white" stroke="white" />
+
+<g id="6" class="edge">
+ <!-- from Flask Web Framework to Redis Key Value Store -->
+ <!-- horizontal -->
+ <line x1="875.9" y1="49.64" x2="985.8" y2="49.64" stroke="#000000" />
+ <use stroke="#000000" xlink:href="#ah" x="986.8" y="49.64"/>
+ <text x="882" y="44" style="font-family:sans-serif;font-size:12.8px" fill="#000000" stroke="none">cache hit</text>
+</g>
+
+<g id="8" class="edge">
+ <!-- from Redis Key Value Store to Postgresql Database Server -->
+ <!-- horizontal -->
+ <line x1="1255.91" y1="49.64" x2="1376.87" y2="49.64" stroke="#000000" />
+ <use stroke="#000000" xlink:href="#ah" x="1377.87" y="49.64"/>
+ <text x="1261" y="44" style="font-family:sans-serif;font-size:12.8px" fill="#000000" stroke="none">cache miss</text>
+</g>
+
+<g id="2" class="edge">
+ <!-- from NGINX to Gunicorn Web Server -->
+ <!-- horizontal -->
+ <line x1="106.73" y1="49.64" x2="247.55" y2="49.64" stroke="#000000" />
+ <use stroke="#000000" xlink:href="#ah" x="248.55" y="49.64"/>
+ <text x="109" y="44" style="font-family:sans-serif;font-size:12.8px" fill="#000000" stroke="none">forward proxy</text>
+</g>
+
+<g id="4" class="edge">
+ <!-- from Gunicorn Web Server to Flask Web Framework -->
+ <!-- horizontal -->
+ <line x1="501.26" y1="49.64" x2="620.06" y2="49.64" stroke="#000000" />
+ <use stroke="#000000" xlink:href="#ah" x="621.06" y="49.64"/>
+ <text x="506" y="44" style="font-family:sans-serif;font-size:12.8px" fill="#000000" stroke="none">web proxy</text>
+</g>
+
+<g id="0" class="node">
+ <!-- NGINX, rect -->
+ <rect fill="#ffffff" height="64.28" stroke="#000000" width="71" x="17.5" y="17.5" />
+ <text x="53" y="55" style="font-family:serif" fill="#000000" text-anchor="middle">NGINX</text>
+</g>
+
+<g id="1" class="node">
+ <!-- Gunicorn Web Server, rect -->
+ <rect fill="#ffffff" height="64.28" stroke="#000000" width="219" x="266.78" y="17.5" />
+ <text x="376" y="55" style="font-family:serif" fill="#000000" text-anchor="middle">Gunicorn Web Server</text>
+</g>
+
+<g id="3" class="node">
+ <!-- Flask Web Framework, rect -->
+ <rect fill="#ffffff" height="64.28" stroke="#000000" width="225" x="636.54" y="17.5" />
+ <text x="749" y="55" style="font-family:serif" fill="#000000" text-anchor="middle">Flask Web Framework</text>
+</g>
+
+<g id="5" class="node">
+ <!-- Redis Key Value Store, rect -->
+ <rect fill="#ffffff" height="64.28" stroke="#000000" width="239" x="1001.164" y="17.5" />
+ <text x="1120" y="55" style="font-family:serif" fill="#000000" text-anchor="middle">Redis Key Value Store</text>
+</g>
+
+<g id="7" class="node">
+ <!-- Postgresql Database Server, rect -->
+ <rect fill="#ffffff" height="64.28" stroke="#000000" width="273" x="1393.612" y="17.5" />
+ <text x="1530" y="55" style="font-family:serif" fill="#000000" text-anchor="middle">Postgresql Database Server</text>
+</g>
+
+</svg>
