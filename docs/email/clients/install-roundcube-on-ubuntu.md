@@ -18,7 +18,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 14.04](/docs/assets/roundcube/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu 14.04")
+![Install Roundcube on Ubuntu 16](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
 
 ## What is Roundcube?
 
