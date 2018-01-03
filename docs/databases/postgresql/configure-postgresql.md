@@ -4,7 +4,7 @@ author:
   email: docs@linode.com
 description: 'This guide will show you how to tune PostgreSQL for better performance on your Linode'
 og_description: 'PostgreSQL is a database server that focuses on standards compliance. Follow this guide to optimize PostgreSQL performance.'
-keywords: ["postgresql", "clusters", "databases", "postgres"]
+keywords: ["postgresql", "clusters", "databases", "postgres", "database configuration", "database tuning", "configure postgres"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-07
 modified_by:
@@ -15,11 +15,11 @@ external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
 ---
 
-## What is PostgreSQL
+## What is PostgreSQL?
 
-Understanding how your PostgreSQL environment works is important if you want to use PostgreSQL in a production environment. Configuring your database to fine-tune its performance is a critical part of the process.
+[PostgreSQL](https://www.postgresql.org/) is a popular, open source relational database system. Our [PostgreSQL section](/docs/databases/postgresql/) has detailed instructions on how to install PostgreSQL on different distributions. These basic installations will be sufficient for many use cases; however, PostgreSQL provides many advanced configuration options that can help optimize your databases's performance in a production environment.
 
-PostgreSQL can be configured and tuned through a series of configuration files. In this guide you will learn about the configuration files and how to fine-tune your database to fit your specific need.
+PostgreSQL can be configured and tuned through a series of configuration files. In this guide you will learn about the configuration files and how to fine-tune your database to fit your specific needs.
 
 ## Before You Begin
 
@@ -70,12 +70,12 @@ The contents of the configuration file are broken up into different sections:
 |Customized Options   | Allows you to add settings that may not fit in a particular section, or to keep your settings organized within this section. |
 
 {{< note >}}
-Some of the directives in this configuration file are **extremely** use-case specific. Please consider your specific use-case before changing directives.
+Some of the directives in this configuration file are **extremely** use-case specific. Please consider all effects carefully before changing directives.
 {{< /note >}}
 
 ### Common Postgres Configuration Options
 
-There is a reasonable level of complexity attached to configuring your Postgres database. However, below are some common configuration settings detailed in the [PostgreSQL Tuning Guide](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server), specific to Linode's Documentation best practices:
+Configuring a PostgreSQL database can be a complex process. Below are some basic configuration settings recommended when using PostgreSQL on a Linode. All of these options are explained in further detail in the [PostgreSQL Tuning Guide](https://wiki.postgresql.org/wiki/Tuning_Your_PostgreSQL_Server):
 
 |Directive   | Objective   |
 |---|---|
@@ -127,7 +127,7 @@ Sometimes, especially when connecting from remote hosts, a user's Linux username
 
 *  **MAPNAME** can be arbitrary.
 *  **SYSTEM-USERNAME** is the user's Linux username.
-*  **PG-USERNAME** is the matching database user. 
+*  **PG-USERNAME** is the matching database user.
 
 In the following example, `exampleuser` can log in to postgres as the database user `db_user`:
 
