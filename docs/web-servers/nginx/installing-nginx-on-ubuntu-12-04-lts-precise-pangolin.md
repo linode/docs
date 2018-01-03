@@ -12,7 +12,7 @@ modified_by:
   name: Elle Krout
 published: 2012-10-24
 title: 'Installing Nginx on Ubuntu 12.04 LTS (Precise Pangolin)'
-external_links:
+external_resources:
  - '[Linode nginx Documentation](/docs/web-servers/nginx/)'
  - '[nginx Community Documentation](http://wiki.nginx.org)'
  - '[Configure Perl and FastCGI with nginx](/docs/web-servers/nginx/perl-fastcgi/ubuntu-10.04-lucid)'
