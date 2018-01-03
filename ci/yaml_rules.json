@@ -4,7 +4,22 @@
         "elements":["name","email"],
         "type":"dict"
         },
-    "title": {
+    "contributor": {
+		"required": false,
+		"elements": ["name","link"],
+		"type":"dict"
+		},
+	"expiryDate": {
+		"required": false,
+		"elements": false,
+		"type": "date"
+		},
+	"image": {
+		"required": false,
+		"elements": false,
+		"type":"text"
+		},
+	"title": {
         "required": true,
         "elements": false,
         "type":"text"
@@ -53,10 +68,25 @@
 		"required": false,
 		"elements": false,
 		"type": "bool"
-	},
+		},
 	"show_on_rss_feed": {
 		"required": false,
 		"elements": false,
 		"type": "bool"
-	}	
+		},
+	"deprecated": {
+		"required": false,
+		"elements": false,
+		"type": "bool"	
+		},
+	"aliases": {
+		"required": false,
+		"elements": true,
+		"type": "list"
+		},
+	"external_resources": {
+		"required": false,
+		"elements": true,
+		"type": "list"
+		}
 }

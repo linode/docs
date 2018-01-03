@@ -29,11 +29,13 @@ def test_yaml(md_filepath):
             # Check external links have balanced brackets
             regexp = regex.compile(r'\[(.*)\]\((.*)\)')
             assert regex.match(regexp,parsed_yaml[requirement]), 'YAML metadata formatting error: ' + requirement
-        if req['type'] == 'date':
+        if req['type'] == 'date' and requirement in parsed_yaml:
             try:
                 d = parse(str(parsed_yaml[requirement]))
             except ValueError:
                 assert False, 'YAML metadata formatting error: ' + requirement + ' date parse failed.'
-            regex = regex.compile(r'20[0-9]{2}-[0-9]{2}-[0-9]{2}')
-            assert regex.match(regex,parsed_yaml[requiremend]), 'YAML metadata formatting error: ' + requirement + 'should use the format YYYY-MM-DD.'
+            regexp = regex.compile(r'20[0-9]{2}-[0-9]{2}-[0-9]{2}')
+            assert regex.match(regexp,str(parsed_yaml[requirement])), 'YAML metadata formatting error: ' + requirement + ' should use the format YYYY-MM-DD.'
 
+    for header in parsed_yaml:
+        assert header in requirements, 'YAML metadata header ' + header + ' is not a valid metadata type.' 
