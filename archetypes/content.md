@@ -5,8 +5,8 @@ author:
 description: 'Two to three sentences describing your guide.'
 keywords: ['list','of','keywords','and key phrases']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: {{ .Date }}
-modified: {{ .Date }}
+published: {{ .Date.Format "2006-01-02" }}
+modified: {{ .Date.Format "2006-01-02" }}
 modified_by:
   name: Linode
 title: "{{ replace .TranslationBaseName "-" " " | title }}"

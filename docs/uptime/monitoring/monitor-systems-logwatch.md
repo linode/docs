@@ -24,23 +24,23 @@ The steps required in this guide require root privileges. Be sure to run the ste
 
 ### Arch Linux
 
-1.	Update your system:
+1.  Update your system:
 
-		pacman -Syu
+        pacman -Syu
 
-2.	Install Logwatch and Postfix, to replace the default Sendmail, which is not in Arch's repositories.
+2.  Install Logwatch and Postfix, to replace the default Sendmail, which is not in Arch's repositories.
 
-		pacman -S logwatch postfix
+        pacman -S logwatch postfix
 
-	Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
+    Logwatch will prompt you to select which cron provider to use. Select the default, *cronie*.
 
-	{{< note >}}
+    {{< note >}}
 Other SMTP clients can also be used for delivering Logwatch messages.
 {{< /note >}}
 
-3.	Edit the `/etc/postfix/main.cf` file to add your domain information, and allow for send-only mail, replacing `hostname.example.com` with your own hostname and domain:
+3.  Edit the `/etc/postfix/main.cf` file to add your domain information, and allow for send-only mail, replacing `hostname.example.com` with your own hostname and domain:
 
-	{{< file-excerpt "/etc/postfix/main.cf" aconf >}}
+    {{< file-excerpt "/etc/postfix/main.cf" aconf >}}
 myhostname = hostname.example.com
 inet_interfaces = loopback-only
 
@@ -48,70 +48,70 @@ inet_interfaces = loopback-only
 {{< /file-excerpt >}}
 
 
-	{{< note >}}
+    {{< note >}}
 Both A/AAAA, and MX records will need to be set for your domain.
 {{< /note >}}
 
-4.	Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
+4.  Edit `/etc/postfix/aliases` to uncomment `root` and alias it to `root@hostname.example.com`, replacing `hostname.example.com` with your own hostname and domain:
 
-	{{< file-excerpt "/etc/postfix/aliases" >}}
+    {{< file-excerpt "/etc/postfix/aliases" >}}
 root:           root@hostname.example.com
 {{< /file-excerpt >}}
 
 5.  Run `newaliases` after editing the aliases list.
 
-6.	Start postfix:
+6.  Start postfix:
 
-		systemctl start postfix
+        systemctl start postfix
 
 ### CentOS 7
 
-1.	Update your system:
+1.  Update your system:
 
-		yum update
+        yum update
 
-2.	Install Logwatch and Sendmail:
+2.  Install Logwatch and Sendmail:
 
-		yum install logwatch sendmail
+        yum install logwatch sendmail
 
-3.	Start Sendmail:
+3.  Start Sendmail:
 
-		systemctl start sendmail
+        systemctl start sendmail
 
 ### Debian
 
-1.	Update your system:
+1.  Update your system:
 
-		apt-get update && apt-get upgrade
+        apt-get update && apt-get upgrade
 
-2.	Install Logwatch and Sendmail:
+2.  Install Logwatch and Sendmail:
 
-		apt-get install logwatch sendmail-bin sendmail
+        apt-get install logwatch sendmail-bin sendmail
 
 
 ### Fedora
 
-1.	Update your system:
+1.  Update your system:
 
-		dnf update
+        dnf update
 
-2.	Install Logwatch and Sendmail:
+2.  Install Logwatch and Sendmail:
 
-		dnf install logwatch sendmail
+        dnf install logwatch sendmail
 
-3.	Start Sendmail:
+3.  Start Sendmail:
 
-		systemctl start sendmail
+        systemctl start sendmail
 
 ### Ubuntu
 
-1.	Update your system:
+1.  Update your system:
 
-		apt-get update && apt-get upgrade
+        apt-get update && apt-get upgrade
 
-2.	Install Logwatch and Sendmail:
+2.  Install Logwatch and Sendmail:
 
-		apt-get install logwatch sendmail
+        apt-get install logwatch sendmail
 
 
 ## Configure Logwatch
@@ -151,27 +151,27 @@ Prior to sending mail externally or locally ensure you have Sendmail installed o
 If using Arch, and you followed the above install instructions, Sendmail is already aliased to msmtp.
 {{< /note >}}
 
-1.	Change the `Output` value to `mail`. If you wish to recieve the messages in HTML format change the `Format` value to `html`.
+1.  Change the `Output` value to `mail`. If you wish to recieve the messages in HTML format change the `Format` value to `html`.
 
-2.	Change the `MailTo` address to a valid email address, or local account user. For example, to send mail to the `root` user change the line to read:
+2.  Change the `MailTo` address to a valid email address, or local account user. For example, to send mail to the `root` user change the line to read:
 
-	{{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
+    {{< file-excerpt "/usr/share/logwatch/default.conf/logwatch.conf" >}}
 MailTo = root
 
 
 {{< /file-excerpt >}}
 
 
-3.	Change the `MailFrom` value to a valid email address, or to a local user. This can also be left as `Logwatch`.
+3.  Change the `MailFrom` value to a valid email address, or to a local user. This can also be left as `Logwatch`.
 
 
 ### Save Logwatch Digest to File
 
 Logwatch digests can also be saved to a file on your system.
 
-1.	Change the `Output` value to `file`.
+1.  Change the `Output` value to `file`.
 
-2.	Find and uncomment (remove the hashmark [**#**]) the `Filename` value. Set the path and filename in which you wish to save your Logwatch digests.
+2.  Find and uncomment (remove the hashmark [**#**]) the `Filename` value. Set the path and filename in which you wish to save your Logwatch digests.
 
 
 ## Run Logwatch
@@ -191,17 +191,17 @@ Logwatch can be run manually at any time by inputting the `logwatch` command to 
 
 Logwatch often works best when configured to run daily and send or save a report to view later. This can be achieved by setting Logwatch up to run as a cronjob.
 
-1.	Open the crontab:
+1.  Open the crontab:
 
-		crontab -e
+        crontab -e
 
-2.	Add a line for Logwatch. The following code is configured to run at 00:30 each day:
+2.  Add a line for Logwatch. The following code is configured to run at 00:30 each day:
 
-	{{< file-excerpt "/etc/crontab" >}}
+    {{< file-excerpt "/etc/crontab" >}}
 30 0  * * *          /usr/sbin/logwatch
 
 
 {{< /file-excerpt >}}
 
 
-	For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).
+    For more information on adjusting your crontab scheduling, reference our guide on [Scheduling Tasks with Cron](https://www.linode.com/docs/tools-reference/tools/schedule-tasks-with-cron).
