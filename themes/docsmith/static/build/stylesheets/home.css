@@ -21077,6 +21077,7 @@ h1.contribute {
 /* Styling of Table of Contents. */
 #doc-sidebar-container #doc-sidebar {
   margin-top: 10px;
+  max-width: 100%;
 }
 #doc-sidebar-container #doc-sidebar-toc li.active > a {
   color: #005170;
@@ -21086,6 +21087,9 @@ h1.contribute {
 }
 #doc-sidebar-container .affix {
   top: 0px;
+}
+#doc-sidebar-container .affix-bottom {
+  position: relative;
 }
 /* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
