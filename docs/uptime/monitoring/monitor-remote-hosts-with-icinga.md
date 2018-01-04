@@ -1,9 +1,9 @@
 ---
 author:
-  name: Linode Community
-  email: docs@linode.com
-description: "This guide shows how to monitor hosts with Icinga2."
-og_description: "This guide will show you how to install and configure Icinga2 to monitor your system"
+  name: Matt Vass
+  email: linuxboxgo@gmail.com
+description: "This guide shows how to configure Icinga2 to monitor remote systems on your Linode"
+og_description: "This guide will show you how to configure Icinga2 to monitor your remote systems. Icinga2 can monitor local and remote systems, and this guide shows you how to do both."
 keywords: ["debian", "icinga", "monitoring", "icinga2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2017-12-28
@@ -21,15 +21,10 @@ external_resources:
 
 ## What is Icinga2?
 
-Icinga, previously a fork of the popular Nagios monitoring system, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts on a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file-sharing service, or others.
-
-Icinga2 can be configured to monitor internal systems' state and check the load, memory, disk free space, or other internal parameters via Icinga agents deployed on each node that needs to be monitored. Icinga can also be configured to send notifications and alerts via email or SMS to the system administrators defined in contacts.
-
-This guide shows how to install and configure the latest version of Icinga2 web monitoring tool on Debian 9 to monitor network infrastructure.
+This guide is a continuation of our guide on [Icinga2](/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9).
+Icinga, is an open source network monitoring application that can be used to monitor critical services and systems on your Linode. Icinga2 can monitor hosts on a network or it can verify network external protocols, such as the state of an HTTP server, mail server, file-sharing service, or others.
 
 ## Before You Begin
-
-This guide is a continuation of our guide on [Icinga2](/docs/uptime/monitoring/install-icinga2-monitoring-on-debian-9).
 
 The steps and examples in this guide assume the defaults and configurations from the previous guide. Adjust all variables accordingly.
 
@@ -205,9 +200,11 @@ apply Service "procs" {
 
     In this configuration file we’ve defined the following services checks for the remote client:
 
-        * Verify number of users logged in to the system and the number of processes running.
-        * The `command_endpoint` lines force the service checks to be transmitted to the remote CentOS system and executed by the Icinga2 engine command endpoint.
-            * You can add as many commands as you’d like here to be executed internally on the remote host. However, if Icinga sent instructions are not present on the remote node as Nagios plugin scripts, the commands won’t execute and an error will be displayed in the icinga2 web interface.
+
+    * Verify number of users logged in to the system and the number of processes running.
+    * The `command_endpoint` lines force the service checks to be transmitted to the remote CentOS system and executed by the Icinga2 engine command endpoint.
+    * You can add as many commands as you’d like here to be executed internally on the remote host. However, if Icinga sent instructions are not present on the remote node as Nagios plugin scripts, the commands won’t execute and an error will be displayed in the icinga2 web interface.
+
 
 4.  Restart the icinga2 service to apply the configurations.
 

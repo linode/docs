@@ -2,7 +2,7 @@
 author:
   name: Linode Community
   email: docs@linode.com
-description: "This guide shows you how to install and configure Icinga2 and Icinga Web 2 on Debian 9 to monitor your Linode services and performance."
+description: "This guide shows you how to install and configure Icinga2 and Icinga Web 2 on Debian to monitor your Linode services and performance."
 og_description: "This guide will show you how to install and configure Icinga2 to monitor your system"
 keywords: ["debian", "icinga", "monitoring", "icinga2"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
