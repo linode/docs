@@ -2,58 +2,72 @@
 author:
   name: Bob Strecansky
 description: 'This guide describes how to effectively use Docker in production using a sample NGINX/Flask/Gunicorn/Redis/Postgresql Application Stack.'
-keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql"]
+og_description: 'This guide shows how to deploy a simple microservice using Docker. Best practices for using Docker in production are also demonstrated and explained.'
+keywords: ["docker", "nginx", "flask", "gunicorn", "redis", "postgresql", "microservice"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-12-21
+modified: 2018-01-04
 modified_by:
   name: Bob Strecansky
-published: 2017-12-20
-title: 'Deploying microservices with Docker'
+published: 2018-01-04
+title: 'How to Deploy Microservices with Docker'
 contributor:
   name: Bob Strecansky
   link: https://twitter.com/bobstrecansky
 external_resources:
-- '[Github Source for Project](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres)'
+- '[Github Repository for Example Microservice](https://github.com/bobstrecansky/flask-microservice)'
+- '[Using Containers to Build a Microservices Architecture](https://medium.com/aws-activate-startup-blog/using-containers-to-build-a-microservices-architecture-6e1b8bacb7d1)'
 ---
 
+## What is a Microservice?
 
-In this guide you will be able to:
+Microservices are an increasingly popular architecture for building large-scale applications. Rather than using a single, monolithic codebase, applications are broken down into a collection of smaller components called microservices. This approach offers several benefits, including the ability to scale individual microservices, keep the codebase easier to understand and test, and enable the use of different programming languages, databases, and other tools for each microservice.
 
-* Initialize all of the necessary elements (NGINX, Flask / Gunicorn, Redis, and Postgres)
+[Docker](https://www.docker.com) is an excellent tool for managing and deploying microservices. Each microservice can be further broken down into processes running in separate Docker containers, which can be specified with Dockerfiles and Docker Compose configuration files. Combined with a provisioning tool such as Kubernetes, each microservice can then be easily deployed, scaled, and collaborated on by a developer team. Specifying an environment in this way also makes it easy to link microservices together to form a larger application.
+
+This guide will show how to build and deploy an example microservice using Docker and Docker Compose. You will:
+
+* Initialize all of the necessary components (the example service will use a stack consisting of NGINX, Flask / Gunicorn, Redis, and Postgres)
 * Expose and link all of the services to each other
-* Externally expose the NGINX proxy to the docker host
+* Expose the NGINX proxy to the public IP address of the Docker host
 
+## Before You Begin
 
-## Dockerfile
+You will need a Linode with Docker and Docker Compose installed to complete this guide.
 
-Dockerfiles are the defacto way to automate installation and configuration of a docker image and it's dependencies.  You can read more about Dockerfiles in the [How To Use Dockerfiles](https://www.linode.com/docs/applications/containers/how-to-use-dockerfiles) Linode article.  Docker has also written a [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).  [Labels](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#label) can also be helpful in organization, licensing, automation, etcetera.  Having a common labeling strategy can help to organize your containers in a meaningful way, both from an organizational and automation perspective. The syntax for running a Dockerfile is as follows:
-`docker build -f {/path/to/Dockerfile} -t {tag for Dockerfile} .`
+### Install Docker
 
-The Environment you will build below will do the following:
+{{< section file="/shortguides/docker/install_docker_ce.md" >}}
 
-* Initialize all of the necessary elements (NGINX, Flask / Gunicorn, Redis, and Postgres)
-* Expose and link all of the services to each other
-* Externally expose the NGINX proxy to the docker host
+### Install Docker Compose
 
-## Prepare the environment
+{{< section file="/shortguides/docker/install_docker_compose.md" >}}
 
-1. Create the directory for the Docker-Compose files:
+## Prepare the Environment
 
-        mkdir docker-nginx-flask-redis-postgres
-2. Create the proper directory structure for you microservice within the new folder:
-        
-        cd docker-nginx-flask-redis-postgres
-        mkdir nginx postgres test web
+{{< note >}}
+This section will use Dockerfiles to configure Docker images. For more information about Dockerfile syntax and best practices, see our [How To Use Dockerfiles guide](https://www.linode.com/docs/applications/containers/how-to-use-dockerfiles) and Docker's [Dockerfile Best Practices guide](https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#sort-multi-line-arguments).
+{{< /note >}}
 
-3. Create the Dockerfile for Nginx including the `nginx.conf`:
+1. Create a directory for the microservice:
 
-    {{< file "/nginx/Dockerfile" yaml >}}
+        mkdir flask-microservice
+
+2. Create the proper directory structure for the microservice components within the new directory:
+
+        cd flask-microservice
+        mkdir nginx postgres web
+
+### NGINX
+
+1. Within the new `nginx` subdirectory, create a Dockerfile for the NGINX image:
+
+    {{< file "nginx/Dockerfile" yaml >}}
 from nginx:alpine
 COPY nginx.conf /etc/nginx/nginx.conf
-
 {{</ file >}}
 
-    
+2.  The `nginx.conf` referred to in the Dockerfile needs to be copied to the image when it is built; create this file now:
+
     {{< file "/nginx/nginx.conf" conf >}}
 
 user  nginx;
@@ -98,9 +112,14 @@ http {
 }
 
 {{</ file >}}
-4. Create the `init.sql`:
 
-    {{< file "postgresql/init.sql">}}
+### PostgreSQL
+
+The PostgreSQL image for this microservice will use the offical `postgresql` image on Docker Hub, so no Dockerfile is necessary.
+
+1. In the `postgres` subdirectory, create an `init.sql` file:
+
+    {{< file "postgres/init.sql">}}
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -122,16 +141,25 @@ CREATE TABLE visitors (
 
 ALTER TABLE visitors OWNER TO postgres;
 COPY visitors (site_id, site_name, visitor_count) FROM stdin;
-1	linodeexample.com	0
+1 	linodeexample.com  	0
 \.
 {{</ file >}}
 
+{{< caution >}}
+In line 22 of `init.sql`, make sure your text editor does not convert tabs to spaces. The app will not work without tabs between the entries in this line.
+{{< /caution >}}
 
-5. Assemble the `/web/` directory, with the following files:
+### Web
 
-        echo "3.6.0" >> /web/.python-version
+The `web` image will hold an example Flask app. Add the following files to the `web` directory to prepare the app:
 
-     {{< file "/web/Dockerfile" yaml >}}
+1. Create a `.python-version` file to specify the use of Python 3.6:
+
+        echo "3.6.0" >> web/.python-version
+
+2.  Create a Dockerfile for the `web` image:
+
+     {{< file "web/Dockerfile" yaml >}}
 from python:3.6.2-slim
 RUN groupadd flaskgroup && useradd -m -g flaskgroup -s /bin/bash flask
 RUN echo "flask ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -144,7 +172,9 @@ USER flask
 ENTRYPOINT ["/usr/local/bin/gunicorn", "--bind", ":8000", "linode:app", "--reload", "--workers", "16"]
 {{</ file >}}
 
-    {{< file "/web/linode.py" >}}
+3.  Create `web/linode.py` and add the example app script:
+
+    {{< file "web/linode.py" >}}
 from flask import Flask
 import logging
 import psycopg2
@@ -204,67 +234,62 @@ def resetcounter():
     return "Successfully deleted redis and postgres counters"
 
 {{</ file >}}
-        {{< file "requirements.txt" aconf >}}
+
+4.  Add a `requirements.txt` file with the required Python dependencies:
+
+    {{< file "web/requirements.txt" text >}}
 flask
 gunicorn
 psycopg2
 redis
 {{</ file >}}
 
-6. A test file:
+## Docker Compose
 
-    {{< file "/docker-nginx-flask-redis-postgres/test/100curl.sh" >}}
-#!/bin/bash
-for i in $(seq 1 100)
-    do
-    curl localhost/
-done
-{{</file >}}
+Docker Compose will be used to be define the connections between containers and their configuration settings.
 
+Create a `docker-compose.yml` file in the `flask-microservice` directory and add the following content:
 
-## The Docker-compose
-docker-compose has been used in the sample project in order to be able to handle all of the containers and their configuration settings. This annotated docker-compose file should help you to understand all of the individual pieces that fit together in the docker-compose puzzle. 
-This file 
 {{< file "docker-compose.yml" yaml >}}
 version: '3'
 services:
- # defining our flask web application
+ # Define the Flask web application
  flaskapp:
 
-   # build the Dockerfile that is in the web directory: http://bit.ly/2BpBPXq
+   # Build the Dockerfile that is in the web directory
    build: ./web
 
-   # always restart the container regardless of the exit status; try and restart the container indefinitely
+   # Always restart the container regardless of the exit status; try and restart the container indefinitely
    restart: always
 
-   # expose port 8000 to other containers (not to the host of the machine)
+   # Expose port 8000 to other containers (not to the host of the machine)
    expose:
      - "8000"
 
-   # mount the web directory (http://bit.ly/2BbJO6k) within the container at /home/flask/app/web
+   # Mount the web directory within the container at /home/flask/app/web
    volumes:
      - ./web:/home/flask/app/web
 
-   # don't create this container until the redis and postgres containers (below) have been created
+   # Don't create this container until the redis and postgres containers (below) have been created
    depends_on:
      - redis
      - postgres
 
-   # link the redis and postgres containers together so that they can talk to one another
+   # Link the redis and postgres containers together so that they can talk to one another
    links:
      - redis
      - postgres
 
-   # pass environment variables to the flask container (this debug lets us see more useful information)
+   # Pass environment variables to the flask container (this debug level lets you see more useful information)
    environment:
      FLASK_DEBUG: 1
 
-   # deploy with 3 replicas in the case of failure of one of the containers
+   # Deploy with 3 replicas in the case of failure of one of the containers (only in Docker Swarm)
    deploy:
      mode: replicated
      replicas: 3
 
- # defining the redis docker container for our web application
+ # Define the redis Docker container
  redis:
 
    # use the redis:alpine image: https://hub.docker.com/_/redis/
@@ -274,7 +299,7 @@ services:
      mode: replicated
      replicas: 3
 
- # defining the redis NGINX forward proxy container for our web application
+ # Define the redis NGINX forward proxy container
  nginx:
 
    # build the nginx Dockerfile: http://bit.ly/2kuYaIv
@@ -288,14 +313,14 @@ services:
      mode: replicated
      replicas: 3
 
-   # Our flask application needs to be available for NGINX to make successful proxy requests
+   # The Flask application needs to be available for NGINX to make successful proxy requests
    depends_on:
      - flaskapp
 
- # defining our postgres database for our web application
+ # Define the postgres database
  postgres:
    restart: always
-   # use the postgres alpine image: https://hub.docker.com/_/postgres/
+   # Use the postgres alpine image: https://hub.docker.com/_/postgres/
    image: postgres:alpine
 
    # Mount an initialization script and the persistent postgresql data volume
@@ -308,103 +333,59 @@ services:
      POSTGRES_PASSWORD: linode123
      POSTGRES_DB: linode
 
-   # Expose port 5432 to other docker containers
+   # Expose port 5432 to other Docker containers
    expose:
      - "5432"
 {{</ file >}}
 
 
-## Test the sample application from the repository
+## Test the Microservice
 
-You can get a full, working sample of the application written for this guide using the following steps:
+1.  Use Docker Compose to build all of the images and start the microservice:
 
-1.  make sure you have Docker installed. [This](https://linode.com/docs/applications/containers/how-to-install-docker-and-pull-images-for-container-deployment/) is a guide to get it installed locally.
-2.  start the multi-container example application:
+        cd flask-microservice/ && docker-compose up
 
-        cd docker-nginx-flask-redis-postgres/ && docker-compose up
+    You should see all of the services start in your terminal window.
 
-You should see all of the services start in your terminal window.  Example output [here](https://gist.github.com/bobstrecansky/29f473b906636fd7180e90284ce964f0)
+2.  Open a new terminal window and make a request to the example application:
 
-4.  open a new terminal window and make a request to the example application:
-        
-        ~ curl localhost
-        Hello Linode!  This page has been viewed 1 time(s).
+        curl localhost
 
-5.  reset the page hit counter:
-`~ curl localhost/resetcounter
-Successfully deleted redis and postgres counters%`
+    {{< output >}}
+Hello Linode! This page has been viewed 1 time(s).
+{{< /output >}}
 
-You should be able to see the standard out log in the initial terminal window that you ran docker-compose on:
-`flaskapp_1  | DEBUG in linode [/home/flask/app/web/linode.py:56]:
-flaskapp_1  | reset visitor count`
+5.  Reset the page hit counter:
 
+        curl localhost/resetcounter
+    {{< output >}}
+Successfully deleted redis and postgres counters
+{{< /output >}}
 
+    If you return to the terminal window where Docker Compose was started, you will see the standard out log:
 
-## The Container Commmandments:
+    {{< output >}}
+flaskapp_1  | DEBUG in linode [/home/flask/app/web/linode.py:56]:
+flaskapp_1  | reset visitor count
+{{< /output >}}
+
+## The Container Commmandments
+
+The containers used in the example microservice are intended to demonstrate the following best practices for using containers in production:
+
 Containers should be:
-1.  ephemeral (stopped and destroyed and a new one built and put into place with an absolute minimum setup and configuration)
-2.  disposable (optimized for failure)
-3.  have a short initialization time
-4.  as small in size as possible
-5.  shut down gracefully when a SIGTERM is received
-6.  typically not maintain state (Databases and Key-Value store should be containerized with great hesitation)
-7.  have all of the dependencies that are needed for the container runtime available locally
-8.  have one responsibility and one process
-9.  log to STDOUT.  This uniformity allows the docker daemon to grab the stream easily
-10. contain a restart pattern that is suitable for the application
 
-## (1.) Ephemeral
-The container produced by the image your Dockerfile should be able to be destroyed and replaced with an absolute minimum of setup and configuration.  The example application uses Dockerfiles like [This one](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/nginx/Dockerfile) which allow you to replace the NGINX configuration for the NGINX forward proxy without making any other changes to the other piece of the application stack.
-
-## (2.)  Disposable
-Docker containers should be optimized for failure.  Using a restart: on-failure option in your docker-compose file, as well as having a replica count allows the web application to be able to have some containers fail gracefully while still serving the web application with no degration back to the end user. The example application sets restart logic [here](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/docker-compose.yml#L13) and replication logic [here](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/docker-compose.yml#L38)
-
-## (3.)  Have a short initialization time
-Avoiding addititional installation steps in the Docker file, removing dependencies that aren't needed, and building a target image that can be reused are three of the most important steps in making a web application that has a quick initialization time within Docker.  The example applicaion uses short, concise, prebuilt Dockerfiles like [this one](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/nginx/Dockerfile) in order to have a short initialization time.
-
-## (4.)  As small in size as possible
-Use the smallest base container that still gives you all of the utilities that are needed to build and run your web application.  Many times particular upstream docker images are based on [Alpine Linux](https://alpinelinux.org/about/), a very small musl, libc, and busybox Linux distribution.  Not having to pull down an entire Ubuntu or Centos image for containerized applications saves a lot of network and operational overhead and greatly increases the performance of container runtime startup time.  The example application uses alpine images where applicable (NGINX, Redis, and Postgresql), and uses a python-slim base image for the gunicorn / flask application.
-
-## (5.)  Shut down gracefully when a SIGTERM is received
-Validate that a
-`docker kill --signal=SIGINT {APPNAME}`
-will indeed kill the application gracefully.  This, alongside a restart condition and a replica condition will ensure that when containers fail, they will be brought back to life in a very quick fashion.
-
-You can validate that this [like so](https://gist.github.com/bobstrecansky/8806f944c20969654f6920c6cdfc724c)
-
-    ~ docker ps -a | grep redis_1
-    f63f6b7e521e        redis:alpine                             "docker-entrypoint..."   45 seconds ago      Up 45 seconds       6379/tcp             dockernginxflaskredispostgres_redis_1
-
-    ~ docker kill --signal=SIGINT dockernginxflaskredispostgres_redis_1
-    dockernginxflaskredispostgres_redis_1
-    20:28:36 bob@blinky ~ docker ps -a | grep redis_1
-    f63f6b7e521e        redis:alpine                             "docker-entrypoint..."   About a minute ago   Exited (0) 4 seconds ago                        dockernginxflaskredispostgres_redis_1
-
-
-
-## (6.)  Typically not maintain state
-Within a dockerized web application, it's advantageous to not maintain state, attempt to maintain ephemeral docker containers (1.), and make sure that docker containers are disposable (2.).  Unfortuantely, there are times where it is necessary to maintain state in modern day web applications.  In our example:
-
-* The example NGINX container does not maintain state, only proxies requests forward to the app servers and logs accordingly to STDOUT (9.).
-* The example Gunicorn and Flask container does not maintain state, only serves back responses to requests that are made.
-* Thg example Redis container is a key value store that is available but will fail back gracefully to the database should the container not be able to respond.
-* The example Postgres container is the only container that maintains a semblance of state.  The container itself doesn't maintain this state, the persistent volume that is attached to the container [here](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/docker-compose.yml#L80) maintains the state for the application, and will get remounted if the Postgres container fails at any point.
-
-## (7.)  Have all the dependences that are needed for container runtime available locally
-The example application is written in Python.  The python dependencies are kept in a requirements.txt file [here](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/web/requirements.txt) and are installed when the flask container is initialized. [Vendoring python dependencies with pip](https://medium.com/underdog-io-engineering/vendoring-python-dependencies-with-pip-b9eb6078b9c0) is another way to keep all of your dependencies for container runtime available locally.
-
-## (8.)  Have one responsibility and one process
-The example application's Docker containers all have one responsibility and one process:
-* NGINX - runs the Nginx forward proxy and runs the nginx process.
-* Flask - runs the Flask application with a gunicorn web server process.
-* Redis - runs a Redis key value store with a redis-server process.
-* Postgresql - runs a Postgresql server with a postgresql-server process
-
-## (9.)  Log to STDOUT
-The example application logs to STDOUT.  This is helpful to have all of your logs in one place in order to assist troubleshooting all of the containers together:
-
-NGINX stdout log:  [Error Log](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/nginx/nginx.conf#L3) and [Access Log](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/nginx/nginx.conf#L21)
-Python stdout log: [Application Log](https://github.com/bobstrecansky/docker-nginx-flask-redis-postgres/blob/master/web/linode.py#L10-L12)
-
-## (10.) Contain a restart pattern that's suitable for the application
-The example application restarts all of it's containers if they are exited for any reason.  This is a great way to try and give your Dockerized application high availability and performance, even during periods of change / maintenance.
+1.  **Ephemeral**: It should be easy to stop, destroy, rebuild, and redeploy containers with a minimum of setup and configuration. The Flask microservice is an ideal example of this: the entire microservice can be brought up or down simply by using Docker Compose; no additional configuration is necessary after the containers are running, which makes it easy to modify the application.
+2.  **Disposable**: Ideally, any single container within a larger application should be able to fail without impacting the performance of the application. Using a `restart: on-failure` option in the `docker-compose.yml` file, as well as having a replica count, makes it possible for some containers in the example microservice to fail gracefully while still serving the web application with no degradation to the end user.
+{{< note >}}
+The replica count directive will only be effective when this configuration is deployed as part of a [Docker Swarm](https://linode.com/docs/applications/containers/how-to-create-a-docker-swarm-manager-and-nodes-on-linode/), which is not covered in this guide.
+{{< /note >}}
+3.  **Quick to start**: Avoiding addititional installation steps in the Docker file, removing dependencies that aren't needed, and building a target image that can be reused are three of the most important steps in making a web application that has a quick initialization time within Docker. The example applicaion uses short, concise, prebuilt Dockerfiles in order to minimize initialization time.
+4.  **Quick to stop**: Validate that a `docker kill --signal=SIGINT {APPNAME}`
+will stop the application gracefully. This, along with a restart condition and a replica condition, will ensure that when containers fail, they will be brought back online efficiently.
+5. **Lightweight**: Use the smallest base container that provides all of the utilities that are needed to build and run your application. Many Docker images are based on [Alpine Linux](https://alpinelinux.org/about/), a light and simple Linux distribution that takes up only 5MB in a Docker image. Using a small distro saves network and operational overhead and greatly increases container performance. The example application uses alpine images where applicable (NGINX, Redis, and Postgresql), and uses a python-slim base image for the gunicorn / flask application.
+6.  **Stateless**: Since they are ephemeral, containers typically shouldn't maintain state. An application's state should be stored in a separate, persistent data volume, as is the case with the microservice's PostgreSQL data store. The Redis key-value store does maintain data within a container, but this data is not application-critical; the Redis store will fail back gracefully to the database should the container not be able to respond.
+7.  **Portable**: All of an app's dependencies that are needed for the container runtime should be locally available. All of the example microservice's dependencies and startup scripts are stored in the directory for each component. These can be checked into version control, making it easy to share and deploy the application.
+8.  **Modular**: Each container should have one responsibility and one process. In this microservice, each of the major processes (NGINX, Python, Redis, and PostgreSQL) is deployed in a separate container.
+9.  **Logging**: All containers should log to STDOUT. This uniformity makes it easy to view the logs for all of the processes in a single stream.
+10. **Resilient**: The example application restarts its containers if they are exited for any reason. This helps give your Dockerized application high availability and performance, even during maintenance periods.
