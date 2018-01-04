@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2010-07-29
 title: 'Ruby on Rails with Apache on Ubuntu 9.10 (Karmic)'
-external_links:
+external_resources:
     - '[Ruby on Rails Homepage](http://rubyonrails.org/)'
     - '[mod\_rails Documentation for Apache Servers](http://www.modrails.com/documentation/Users%20guide%20Apache.html)'
     - '[Install the Apache HTTP Server on Ubuntu 9.10 (Karmic)](/docs/web-servers/apache/installation/ubuntu-9-10-karmic)'

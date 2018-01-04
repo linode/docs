@@ -9,10 +9,10 @@ description: 'Create and tag a custom Docker Image on your Linode, and upload it
 og_description: 'Docker makes it easy to develop and deploy custom and consistent environments, called images. Each image includes specific applications and dependencies. Learn how to create a custom Docker Image and upload it to Docker Hub for sharing or archiving.'
 keywords: 'docker,container,dockerfile,docker image'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: Friday, September 1, 2017
+modified: 2017-09-01
 modified_by:
   name: Linode
-published: 'Friday, September 1, 2017'
+published: 2017-09-01
 title: 'Create, Tag, and Upload Your Own Docker Image'
 external_resources:
  - '[Docker Docs](http://docs.docker.com/)'

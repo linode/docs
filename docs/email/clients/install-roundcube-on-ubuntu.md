@@ -4,7 +4,7 @@ author:
   email: 'docs@linode.com'
 description: 'Roundcube is a web-based IMAP email client that offers a user interface similar to Gmail or Hotmail. Email users interact with Roundcube over the internet using a web browser.'
 keywords: ["Roundcube", "webmail", "email", "Ubuntu"]
-alisases: ['email/clients/install-roundcube-on-ubuntu-14-04']
+aliases: ['email/clients/install-roundcube-on-ubuntu-14-04/']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2016-02-01
 modified: 2017-12-18
@@ -18,7 +18,7 @@ external_resources:
   - '[Roundcube Homepage](https://roundcube.net/)'
 ---
 
-![Install Roundcube on Ubuntu 14.04](/docs/assets/roundcube/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu 14.04")
+![Install Roundcube on Ubuntu 16](/docs/assets/roundcube/Install_Roundcube_on_Ubuntu_16_04_smg.png "Install Roundcube on Ubuntu")
 
 ## What is Roundcube?
 
