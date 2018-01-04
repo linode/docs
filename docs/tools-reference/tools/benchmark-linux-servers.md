@@ -12,7 +12,6 @@ modified_by:
 title: 'How to Benchmark a Linux Server'
 contributor:
   name: Alexandru Andrei
-  link: Github/Twitter/LinkedIn URL
 external_resources:
   - '[Manual Page for sysbench](https://manpages.debian.org/stretch/sysbench/sysbench.1.en.html
 )'
