@@ -1,0 +1,61 @@
+The Elastic package repositories contain the necessary Elasticsearch package.
+
+1.  Install the official Elastic APT package signing key:
+
+        wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+
+2.  Install the `apt-transport-https` package, which is required to retrieve deb packages served over HTTPS:
+
+        sudo apt-get install apt-transport-https
+
+3.  Add the APT repository information to your server's list of sources:
+
+        echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic.list
+
+4.  Update the list of available packages:
+
+        sudo apt-get update
+
+5.  Install the `elasticsearch` package:
+
+        sudo apt-get install -y elasticsearch
+
+6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to 512m and leave the other values in this file unchanged:
+
+    {{< file "/etc/elasticsearch/jvm.options" aconf >}}
+-Xms512m
+-Xmx512m
+{{< /file >}}
+
+7.  Start and enable the `elasticsearch` service:
+
+        sudo systemctl enable elasticsearch
+        sudo systemctl start elasticsearch
+
+8.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
+
+        curl localhost:9200
+
+    The Elasticsearch REST API should return a JSON response similar to the following:
+
+    {{< output >}}
+{
+  "name" : "Sch1T0D",
+  "cluster_name" : "docker-cluster",
+  "cluster_uuid" : "MH6WKAm0Qz2r8jFK-TcbNg",
+  "version" : {
+    "number" : "6.1.1",
+    "build_hash" : "bd92e7f",
+    "build_date" : "2017-12-17T20:23:25.338Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.1.0",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+{{</ output >}}
+
+    {{< note >}}
+Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs.
+{{< /note >}}
