@@ -19236,6 +19236,28 @@ fieldset[disabled] .resumator-basic-widget input[type="button"].active {
   outline: 0;
   text-decoration: none;
 }
+div#os-tabs .btn {
+  border: 1px solid #dadada;
+  padding: 10px;
+  width: 200px;
+  background-color: white;
+  color: black;
+}
+div#os-tabs .btn.current {
+  outline: none;
+  border-color: #9ecaed;
+  -webkit-box-shadow: 0 0 10px #9ecaed;
+          box-shadow: 0 0 10px #9ecaed;
+  max-height: inherit;
+}
+div#os-tabs span {
+  font-family: "Lato", sans-serif;
+}
+.macinstall,
+.linuxinstall,
+.windowsinstall {
+  font-size: 1.08rem;
+}
 .btn-full {
   width: 100%;
 }

@@ -1,0 +1,54 @@
+<script>
+$(document).ready(function(){
+    //detect os and display corresponding tab by default
+    if (navigator.appVersion.indexOf("Mac")!=-1) {
+        $('#os-tabs').find('button').removeClass('current');
+        $('#mac').addClass('current');
+        toggleMac();
+    }
+    if (navigator.appVersion.indexOf("Linux")!=-1) {
+        $('#os-tabs').find('button').removeClass('current');
+        $('#linux').addClass('current');
+        toggleLinux();
+    }
+    if (navigator.appVersion.indexOf("Win")!=-1) {
+        $('#os-tabs').find('button').removeClass('current');
+        $('#windows').addClass('current');
+        toggleWindows();
+    }
+
+    //handle click event for os-tab buttons
+    $('#os-tabs').on('click', 'a', function(){
+        $('#os-tabs').find('a').removeClass('current');
+        $(this).addClass('current');
+        if($(this).is('#mac')){ toggleMac(); }
+        if($(this).is('#linux')){ toggleLinux(); }
+        if($(this).is('#windows')){ toggleWindows(); }
+    });
+    function toggleMac(){
+//        $(".mac-button:first").trigger('click');
+        $(".macinstall").show();
+        $(".linuxinstall").hide();
+        $(".windowsinstall").hide();
+    }
+    function toggleLinux(){
+//        $(".linux-button:first").trigger('click');
+        $(".linuxinstall").show();
+        $(".macinstall").hide();
+        $(".windowsinstall").hide();
+    }
+    function toggleWindows(){
+//        $(".windows-button:first").trigger('click');
+        $(".windowsinstall").show();
+        $(".macinstall").hide();
+        $(".linuxinstall").hide();
+    }
+});
+</script>
+
+<div id="os-tabs">
+    <a id="mac" role="button" class="current btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-apple fa-lg" aria-hidden="true"><span> Mac</span></i></a>
+    <a id="linux" role="button" class="btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-linux fa-lg" aria-hidden="true"><span> Linux</span></i></a>
+    <a id="windows" role="button" class="btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-windows fa-lg" aria-hidden="true"><span> Windows</span></i></a>
+</div>
+
