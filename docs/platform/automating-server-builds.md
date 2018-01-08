@@ -96,9 +96,9 @@ Golden disks are capable of handling automated server builds for most individual
     - [Basic Puppet Setup and Configuration](/docs/websites/puppet/basic-puppet-setup-and-configuration/)
     - [Manage and Automate Systems Configuration with Puppet](/docs/websites/puppet/manage-and-automate-systems-configuration-with-puppet/)
 
--   **Chef:** An open source configuration management tool that allows you to "turn your infrastructure into code." See the [Chef website](https://www.chef.io/) for more information. The [knife linode](https://github.com/chef/knife-linode) subcommand can also be used to manage Linodes with Chef.
+-   **Chef:** An open source configuration management tool that allows you to "turn your infrastructure into code." See the [Chef website](https://www.chef.io/) for more information. The [knife Linode](https://github.com/chef/knife-linode) subcommand can also be used to manage Linodes with Chef.
 
--   **Ansible:** A "radically simple" open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. You can find a [Linode module for Ansible on GitHub](https://github.com/lextoumbourou/ansible-linode).
+-   **Ansible:** A "radically simple" open source platform for configuring and managing systems. It works by connecting to your systems via SSH — it doesn't install anything on the remote systems. See the [AnsibleWorks website](http://www.ansible.com/) for more information. Read more about the [Linode Module from Ansible](http://docs.ansible.com/ansible/latest/linode_module.html) in the official documentation.
 
 There are plenty of other third-party configuration management tools to be used should the above options not suit your needs.
 
