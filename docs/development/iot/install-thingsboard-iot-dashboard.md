@@ -6,22 +6,22 @@ description: 'This guide will show how to track and visualize data from an Inter
 og_description: 'This guide shows how to install the Thingsboard open source dashboard for Internet of Things devices. A Raspberry Pi is used to demonstrate sending data to the cloud dashboard.'
 keywords: ["iot", "raspberry pi", "internet of things", "dashboard"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-published: 2017-01-05
-modified: 2017-01-05
+published: 2017-01-08
+modified: 2017-01-08
 modified_by:
   name: Linode
-title: 'Analyze IoT Data with Thingsboard'
+title: 'View IoT Data with Thingsboard'
 external_resources:
   - '[Getting Started – Thingsboard](https://thingsboard.io/docs/getting-started-guides/helloworld)'
   - '[Thingsboard Github Repo](https://github.com/thingsboard/thingsboard)'
 ---
 
-[Thingsboard](https://thingsboard.io/) is an open source platform for tracking and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server, where it can be viewed or shared through a highly customizable dashboard.
+[Thingsboard](https://thingsboard.io/) is an open source platform for collecting and visualizing data from Internet of Things devices. Data from any number of devices can be sent to a cloud server, where it can be viewed or shared through a highly customizable dashboard.
 
 This guide will show how to install Thingsboard on a Linode and use a Raspberry Pi to send simple telemetry data to a cloud dashboard.
 
 {{< note >}}
-This guide will use a Raspberry Pi 3 with a Sense Hat. You can substitute any device capable of sending telemetry data, or use `curl` to experiment with Thingsboard without using any external devices.
+This guide will use a Raspberry Pi 3 with a [Sense HAT](https://www.raspberrypi.org/products/sense-hat/). You can substitute any device capable of sending telemetry data, or use `curl` to experiment with Thingsboard without using any external devices.
 {{< /note >}}
 
 ## Install Thingsboard
@@ -63,7 +63,7 @@ Thingsboard runs on Java 8, and the Oracle JDK is recommended.
 
 3.  Open `/etc/thingsboard/conf/thingsboard.yml` in a text editor and comment out the `HSQLDB DAO Configuration` section:
 
-    {{< file-excerpt "/etc/thingsboard/conf/thingsboard.yml" >}}
+    {{< file-excerpt "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
 # HSQLDB DAO Configuration
 #spring:
 #  data:
@@ -81,9 +81,9 @@ Thingsboard runs on Java 8, and the Oracle JDK is recommended.
 #    password: "${SPRING_DATASOURCE_PASSWORD:}"
 {{< /file-excerpt >}}
 
-4.  In the same section, uncomment the PostgreSQL configuration block. Replace `postgres` in the username and password fields with the username and password of your `thingsboard` user:
+4.  In the same section, uncomment the PostgreSQL configuration block. Replace `thingsboard` in the username and password fields with the username and password of your `thingsboard` user:
 
-    {{< file-excerpt >}}
+    {{< file-excerpt "/etc/thingsboard/conf/thingsboard.yml" yaml >}}
 # PostgreSQL DAO Configuration
 spring:
   data:
@@ -97,8 +97,8 @@ spring:
   datasource:
     driverClassName: "${SPRING_DRIVER_CLASS_NAME:org.postgresql.Driver}"
     url: "${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/thingsboard}"
-    username: "${SPRING_DATASOURCE_USERNAME:postgres}"
-    password: "${SPRING_DATASOURCE_PASSWORD:postgres}"
+    username: "${SPRING_DATASOURCE_USERNAME:thingsboard}"
+    password: "${SPRING_DATASOURCE_PASSWORD:thingsboard}"
 {{< /file-excerpt >}}
 
 5.  Run the installation script:
@@ -120,7 +120,7 @@ By default, Thingsboard listens on `localhost:8080`. For security purposes, it i
 
 2.  Open `/etc/nginx/sites-enabled/default` in a text editor and edit it as follows. Replace `example.com` with the public IP address or FQDN of your Linode.
 
-    {{< file "/etc/ngins/sites-enabled/default" aconf >}}
+    {{< file "/etc/nginx/sites-enabled/default" conf >}}
 server {
     listen 80;
     listen [::]:80;
@@ -148,7 +148,7 @@ server {
 
     ![Thingsboard Login](/docs/assets/thingsboard/login.png)
 
-    The demo account is `tenant@thingsboard.org` and the password is `tenant`.
+    The demo account is `tenant@thingsboard.org` and the password is `tenant`. You should change this to a more secure password after you have signed in.
 
 2.  From the main menu, click on the **Devices** icon, then click the **+** icon in the lower right to add a new device.
 
@@ -159,14 +159,14 @@ server {
 ## Configure Raspberry Pi
 
 {{< note >}}
-The following steps assume that you have terminal access to a Raspberry Pi, and that the Sense HAT and its libraries are already configured. For more information on getting started with the Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat).
+The following steps assume that you have terminal access to a Raspberry Pi, and that the Sense HAT and its libraries are already configured. For more information on getting started with the Sense HAT, see the Raspberry Pi [official documentation](https://projects.raspberrypi.org/en/projects/getting-started-with-the-sense-hat). If you would prefer to use `curl` to send mock data to Thingsboard, you can skip this section.
 {{< /note >}}
 
 ### Basic Python Script
 
 1.  Using a text editor, create `thingsboard.py` in a directory of your choice. Add the following content, using the API key copied to your clipboard in the previous section:
 
-    {{< file "thingsboard.py" >}}
+    {{< file "thingsboard.py" python >}}
 #!/usr/bin/env python
 
 import json
@@ -196,7 +196,7 @@ while True:
     sleep(5)
 {{< /file >}}
 
-3.  Test the script by running it from the command line:
+2.  Test the script by running it from the command line:
 
         python thingsboard.py
 
@@ -210,4 +210,86 @@ while True:
 {'pressure': 1020.045166015625, 'temperature': 31.92628288269043, 'humidity': 20.177040100097656}
 {{< /output >}}
 
-4.  If the script is working correctly,
+3.  If the script is working correctly, remove the `print` statement and uncomment the `r = requests.post()` line. Also increase the `sleep()` time interval:
+
+    {{< file-excerpt "thingsboard.py" python >}}
+while True:
+    data['temperature'] = sense.get_temperature()
+    data['pressure']    = sense.get_pressure()
+    data['humidity']    = sense.get_humidity()
+
+    r = requests.post(thingsboard_url, data=json.dumps(data))
+    sleep(60)
+{{< /file-excerpt >}}
+
+### Create a Systemd Service
+
+You should now be able to run the script from the command line to transmit temperature, pressure, and humidity data once per minute. However, to make sure that data is sent continually, it is a good idea to enable a new service that will run the script automatically whenever the server is restarted.
+
+1.  Copy the script to `/usr/bin/` (or another location in your $PATH) and make it executable:
+
+        cp thingsboard.py /usr/bin/thingsboard.py
+        sudo chmod +x /usr/bin/thingsboard.py
+
+2.  Create a service file to run the Python script as a service:
+
+    {{< file "/lib/systemd/system/thingsdata.service" conf >}}
+[Unit]
+Description=Push telemetry data from Sense HAT to Thingsboard.
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/thingsboard.py
+
+[Install]
+WantedBy=multi-user.target
+{{< /file >}}
+
+3.  Enable and start the service:
+
+        sudo systemctl enable thingsdata.service
+        sudo systemctl start thingsdata.service
+
+4.  Check the status of the new service:
+
+        sudo systemctl status thingsdata.service
+
+## Send Data with cURL
+
+{{< note >}}
+Skip this section if you are using a Raspberyy Pi.
+{{< /note >}}
+
+1.  Create a sample JSON file with dummy data:
+
+    {{< file "dummy_data.json" json >}}
+{
+  "temperature": 38,
+  "humidity": 50,
+  "pressure": 1100
+}
+{{< /file >}}
+
+2.  Use `curl` to send a POST request to the Thingsboard server:
+
+        curl -v -X POST -d @dummy_data.json http://$THINGSBOARD_HOST:$THINGSBOARD_PORT/api/v1/$ACCESS_TOKEN/telemetry --header "Content-Type:application/json"
+
+## View Data in Thingsboard
+
+If the service is running successfully, data should be transmitted to your Thingsboard server every 60 seconds.
+
+1.  Log back into the Thingsboard dashboard in your browser and click on your device's card in the **Devices** menu. Choose the **Latest Telemetry** tab from the resulting details page. You should see the temperature, humidity, and pressure data from your device:
+
+    ![View Latest Telemetry](/docs/assets/thingsboard/latest-telemetry.png)
+
+2.  Click the checkbox next to one of the data types and then click **Show on Widget**.
+
+3.  Use the drop-down and carousel menus to choose a one of the preset widgets to display this data type on a dashboard. Click **Add to Dashboard** when you have chosen a widget.
+
+    ![Pi Dashboard](/docs/assets/thingsboard/pi-dashboard.png)
+
+## Next Steps
+
+The widgets provided by Thingsboard can be easily edited, and it is possible to create new ones as well. Multiple widgets, representing multiple datastreams from multiple devices, can be combined to produce customized dashboards. These dashboards can then be made public, or shared with customers.
+
+For more information on how to customize and set up widgets and dashboards, see the Thingsboard [Widget Library](https://thingsboard.io/docs/user-guide/ui/widget-library/#time-series) and [Dashboard page](https://thingsboard.io/docs/user-guide/ui/dashboards/) The [Thingsboard Github repo](https://github.com/thingsboard/thingsboard) also has images of example dashboards.
