@@ -1,2 +1,7 @@
 {{$file := .Get 0}}
-{{ with .Site.GetPage "page" $file }}{{ .Content }}{{ end }}
+{{$class := .Get 1}}
+{{ with .Site.GetPage "page" $file }}
+<div class="{{ $class }}install" >
+{{ .Content }}
+</div>
+{{ end }}
