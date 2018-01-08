@@ -10,7 +10,7 @@ modified: 2017-12-22
 modified_by:
   name: Linode
 published: 2010-11-08
-title: 'Enable SSL for HTTPS Configuration on NGINX'
+title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 ---
 
 ![HTTPS Configuration on NGINX](/docs/assets/nginx-ssl/Enable_SSL_nginx.jpg)
@@ -19,7 +19,7 @@ Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), an
 
 ## Before You Begin
 
-- You will need a working NGINX configuration. See *** 
+- You will need a working NGINX configuration. See ***
 
 - If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. To see the current NGINX version and compiled options of your installation, run the command `nginx -V`.
 
@@ -29,7 +29,7 @@ Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), an
 
 A virtual host basically equates to a website in NGINX speak. A single NGINX installation can host one virtual server, or many, and any number of them can use the same TLS certificate and key, or a cert/key pair exclusively their own.
 
-The TLS certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is. We'll store them in a folder in the root user's home directory. You can point NGINX to your site's TLS certificate and key in `/etc/nginx/nginx.conf`. 
+The TLS certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is. We'll store them in a folder in the root user's home directory. You can point NGINX to your site's TLS certificate and key in `/etc/nginx/nginx.conf`.
 
 There is no official or ideal place to store the certificate and key so while you can generally keep them wherever you want on the server, you want them to remain untouched by system updates, other administrators and such things. You also will want to back up these files.
 
@@ -68,9 +68,9 @@ http {
 }
 {{< /file-excerpt >}}
 
-5.  Restart NGINX for the change to take effect. Note that NGINX has its own start/stop/restart commands separate from a Linux distribution's init system.
+5.  Reload your configuration:
 
-        service nginx restart
+        nginx -s reload
 
 6.  Now go to your Linode's IP address or your site's domain in a browser with an `https://` at the front of the URL. Your site should load over HTTPS, or in the case of a self-signed certificate, your browser will warn of an insecure connection.
 
@@ -86,29 +86,23 @@ If you have a certificate that is valid for multiple host names, such as a wild 
     server {
         listen              203.0.113.5:443 ssl;
         server_name         example.com www.example.com;
-
-        location / {
-            root /usr/share/nginx/example.com/public_html;
-            }
+        root /var/www/example.com/public_html;
         }
 
     server {
         listen              203.0.113.6:443 ssl;
         server_name         subdomain.example.com;
-
-        location / {
-            root /usr/share/nginx/subdomain.example.com/public_html;
-            }
+        root /var/www/subdomain.example.com/public_html;
         }
 {{< /file-excerpt >}}
 
 In this example, the domains `example.com`, `www.example.com`, and `subdomain.example.com` are all served using the `/srv/ssl/example.com.crt` certificate. If you instead have two completely independent websites with independent domains, then just fill out the directives accordingly.
 
-Restart NGINX once you're finished editing `nginx.conf`:
+Reload your configuration after editing `nginx.conf`:
 
-        service nginx restart
+        nginx -s reload
 
-## Redirect HTTP Virtual Hosts to HTTPS
+## Redirect Incoming HTTP Traffic HTTPS
 
 If your site is set up for HTTPS, you will likely also want to capture HTTP traffic to your domain and redirect it to HTTPS. To do this, you need two `server { }` blocks in your `nginx.conf` file: one as configured earlier to listen on port 443, and a second to listen on port 80.
 
@@ -124,9 +118,9 @@ server {
 }
 {{< /file-excerpt >}}
 
-2.  Restart NGINX:
+2.  Reload your configuration:
 
-        service nginx restart
+        nginx -s reload
 
 
 Below is an example of a full `nginx.conf` file which redirects HTTP to HTTPS and has gzip enabled:
@@ -181,6 +175,8 @@ http {
     server {
         listen              443 ssl;
         server_name         example.com www.example.com;
+        index index.php index.htm index.html;
+        root /var/www/example.com/public_html;
         }
 }
 {{< /file >}}
