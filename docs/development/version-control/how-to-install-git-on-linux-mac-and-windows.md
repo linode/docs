@@ -10,6 +10,7 @@ modified: 2017-07-03
 modified_by:
   name: Linode
 published: 2009-09-04
+os: ["mac", "linux", "windows"]
 title: How to Install Git on Linux, Mac or Windows
 external_resources:
  - '[Refspec Information](http://git-scm.com/book/ch9-5.html)'
