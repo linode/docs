@@ -185,7 +185,7 @@ You will now need to create a new configuration profile on the receiving Linode 
 
 1.  Download and install [Cygwin](https://www.cygwin.com/)
 
-2.  Install the OpenSSH package, by clicking on the Cygwin install **after** the install succeeds. 
+2.  Install the OpenSSH package, by clicking on the Cygwin install **after** the install succeeds.
 
 ![Cygwin install package](/docs/assets/cygwin/3.png)
 
