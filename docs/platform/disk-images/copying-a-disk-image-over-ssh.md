@@ -19,7 +19,7 @@ You can use SSH to copy a Linode's disk to a system that resides on a different 
 
 ## Preparing the Receiving Computer
 
-Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment.
+Verify that the receiving computer has SSH installed. (Most Linux/Unix-like systems have it installed by default.) If you're running Windows locally, you may wish to set up the [Cygwin](http://www.cygwin.com/) compatibility layer to provide a reasonably complete Unix-like environment. Instructions on setting up Cygwin are located [here](/docs/platform/disk-images/copying-a-disk-image-over-ssh/#windows-cygwin-instructions), at the bottom of the guide.
 
 ## Starting Your Linode in Rescue Mode
 
@@ -181,7 +181,7 @@ You will now need to create a new configuration profile on the receiving Linode 
 
 
 
-### Using Windows to Copy a Disk Image
+### Windows Cygwin Instructions
 
 1.  Download and install [Cygwin](https://www.cygwin.com/)
 
