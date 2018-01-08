@@ -7,6 +7,7 @@ modified: 2018-01-05
 modified_by:
   name: Sam Foo
 title: ""
+published: 2018-01-08
 shortguide: true
 ---
 
