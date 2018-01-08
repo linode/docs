@@ -15,6 +15,8 @@ external_resources:
  - '[PostgreSQL Documentation](https://www.postgresql.org/docs/)'
 ---
 
+![Configure PostgreSQL](/docs/assets/configure-postgres/Configure_PostgreSQL.jpg)
+
 ## What is PostgreSQL?
 
 [PostgreSQL](https://www.postgresql.org/) is a popular, open source relational database system. Our [PostgreSQL section](/docs/databases/postgresql/) has detailed instructions on how to install PostgreSQL on different distributions. These basic installations will be sufficient for many use cases; however, PostgreSQL provides many advanced configuration options that can help optimize your databases's performance in a production environment.
@@ -31,7 +33,7 @@ The steps in this guide require root privileges. Be sure to run the steps below 
 
 ## PostgreSQL Configuration Files
 
-### postgresql.conf
+### Understanding postgresql.conf
 
 Most global configuration settings are stored in `postgresql.conf`, which is created automatically when you install PostgreSQL. Open this file in your preferred text editor:
 
