@@ -321,49 +321,49 @@ While the web user interface is easy to work with, it has some limitations. Anot
 
 *  After you've launched the local client, open another terminal window or command prompt and create an alias:
 
-       tahoe create-alias testing
+        tahoe create-alias testing
 
     This will create a directory on the grid and associate an alias to it so you can easily access it by typing `testing:` instead of a long capability.
 
 *  To copy an existing file from your current, local working directory into your new alias:
 
-       tahoe cp file1 testing:
+        tahoe cp file1 testing:
 
 *  List the alias contents:
 
-       tahoe ls testing:
+        tahoe ls testing:
 
 *  List the file/directory capabilities:
 
-       tahoe ls --uri testing:
+        tahoe ls --uri testing:
 
 *  To upload an entire directory:
 
-       tahoe cp --recursive name-of-local-directory testing:
+        tahoe cp --recursive name-of-local-directory testing:
 
 *  Back up a directory:
 
-       tahoe backup name-of-local-directory testing:
+        tahoe backup name-of-local-directory testing:
 
     This creates incremental backups, kept in timestamped directories, and it will only upload files that have changed when running the command again.
 
 *  Fix problems and redistribute file shares when required:
 
-       tahoe deep-check --repair testing:
+        tahoe deep-check --repair testing:
 
     It's a good idea to routinely run this command on important directories and especially after you've lost a few storage nodes.
 
 *  You should also save the capabilities stored in your aliases and keep them some place safe (back them up on another machine, preferably encrypted with a strong password). You can see these with:
 
-       tahoe list-aliases
+        tahoe list-aliases
 
 *  To display a list of available commands:
 
-       tahoe
+        tahoe
 
 *  If you need additional help on a command:
 
-       tahoe name-of-command --help
+        tahoe name-of-command --help
 
     For example: `tahoe ls --help`. For more information about Tahoe-LAFS, visit the [official documentation](http://tahoe-lafs.readthedocs.io/en/latest/frontends/CLI.html).
 

@@ -12,7 +12,7 @@ modified_by:
   name: Linode
 published: 2009-10-29
 title: 'LAMP Server on Ubuntu 9.10 (Karmic)'
-external_resource:
+external_resources:
   - '[Ubuntu Linux Homepage](http://www.ubuntu.com/)'
   - '[Apache HTTP Server Documentation](http://httpd.apache.org/docs/2.0/)'
   - '[MySQL Documentation](http://dev.mysql.com/doc/)'

@@ -15,6 +15,8 @@ external_resources:
  - '[Wikipedia](http://en.wikipedia.org/wiki/Hosts_(file))'
 ---
 
+![Previewing Websites without DNS](/docs/assets/previewing-websites-without-dns/Previewing_Websites_Without_DNS_smg.jpg)
+
 Sometimes, you may want to preview your website here at Linode before you update its DNS settings. For example, if you are in the process of [migrating your website to Linode](/docs/migrate-from-shared), you might want to make sure everything looks good on the Linode side before you redirect your viewers from your old host. This can also be useful when you're creating a brand new website, or want to test your name-based virtual hosting configuration or another DNS-related feature. By making the changes described below, you can test your Linode setup from your local computer without affecting global access to your domain's current location.
 
 ## What Is a Hosts File?

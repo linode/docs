@@ -50,15 +50,19 @@ Add the repository key to apt, and install ownCloud:
 
 2.  Create a new database for ownCloud, and replace `strong_password` with a new, secure password:
 
-        CREATE DATABASE ownCloud;
-        CREATE USER ownCloud@localhost;
-        SET PASSWORD FOR 'ownCloud'@'localhost' = PASSWORD('strong_password');
+    {{< highlight sql >}}
+CREATE DATABASE ownCloud;
+CREATE USER ownCloud@localhost;
+SET PASSWORD FOR 'ownCloud'@'localhost' = PASSWORD('strong_password');
+{{< /highlight >}}
 
 3.  Assign the new user to the database:
 
-        GRANT ALL PRIVILEGES ON ownCloud.* to ownCloud@localhost;
-        FLUSH PRIVILEGES;
-        exit
+    {{< highlight sql >}}
+GRANT ALL PRIVILEGES ON ownCloud.* to ownCloud@localhost;
+FLUSH PRIVILEGES;
+exit
+{{< /highlight >}}
 
 4.  Log into MySQL as the newly created user:
 
@@ -66,7 +70,9 @@ Add the repository key to apt, and install ownCloud:
 
 5.  You can check the current user in MySQL using the `SELECT current_user();` command:
 
-        select current_user();
+    {{< highlight sql >}}
+SELECT current_user();
+{{< /highlight >}}
 
     Which will display something similar to:
 
