@@ -10,7 +10,7 @@ published: 2016-08-18
 modified: 2017-12-27
 modified_by:
   name: Linode
-title: 'NGINX SSL/TLS Deployment Best Practices'
+title: 'Getting Started with NGINX - Part 4: TLS Deployment Best Practices'
 contributor:
   name: Ryan Laverdiere
   link: https://github.com/capecodrailfan
@@ -32,24 +32,6 @@ The best way to ensure any server remains secure is to configure it properly and
 
         mv etc/nginx/nginx.conf etc/nginx/nginx.conf.bak
 
-## Disable Server Tokens
-
-By default, NGINX shares its version number with anyone who connects to the server, such as in 404 or 503 errors. Disabling server tokens makes it more difficult to determine the version of NGINX running on your Linode, and therefore more difficult to implement version-specific exploits.
-
-[![404 With NGINX Version Number](/docs/assets/404_Not_Found.jpg)](/docs/assets/404_Not_Found.jpg)
-
-1.  To disable `server_tokens`, open your `/etc/nginx/nginx.conf` file. Inside the `http { }` block, add or uncomment the following line:
-
-        server_tokens       off;
-
-2.  When you've finished editing the file, restart NGINX:
-
-        service nginx restart
-
-After restarting, direct your web browser to a directory of your server that does not exist, and NGINX will no longer share its version number.
-
-[![404 With Server Tokens Disabled](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)](/docs/assets/404_Not_Found_Server_Tokens_Off.jpg)
-
 ## Enable HTTP/2 Support
 
 [HTTP/2](https://http2.github.io/) is a new version of the HTTP standard replacing HTTP/1.1 to reduce page load time and requires less bandwidth. The [Application-Layer Protocol Negotiation](https://en.wikipedia.org/wiki/Application-Layer_Protocol_Negotiation) (ALPN) standard used with HTTP/2 requires OpenSSL 1.0.2+. If you intend to enable HTTP/2 on a Linux distribution which uses an older version of OpenSSL, you will need to compile and install OpenSSL 1.0.2 or later, and then compile NGINX to use that version of OpenSSL.
@@ -60,9 +42,9 @@ After restarting, direct your web browser to a directory of your server that doe
 
         listen    443 ssl http2;
 
-3.  Restart NGINX.
+3.  Reload NGINX:
 
-        service nginx restart
+        nginx -s reload
 
 4.  Go to the [KeyCDN HTTP/2 Test](https://tools.keycdn.com/http2-test) in a web browser. This free tool will check your server and let you know if HTTP/2 and ALPN are enabled and functioning correctly.
 
@@ -75,23 +57,25 @@ Enter your site's domain in the text box and click *Test*. Uncheck the *Public* 
 Google is now ranking websites that accept encrypted HTTPS connections higher in search results, so redirecting HTTP requests to HTTPS is one possible way to increase your page rank. Before following these steps, however, be sure to research compatibility issues that may arise with older browsers.
 
 
-1.  Add the following server block, or edit your existing server block to include the following lines. This must exist inside the `http { }` block, and be sure to replace `example.com` with your site's domain. Whether to include directives for both `example.com` or `www.example.com`, depends on which domain your TLS certificate was issued for, if not both.
+1.  Add the following to your configuration's `server { }` block, and be sure to replace `example.com` with your site's domain. Whether to include directives for both `example.com` or `www.example.com`, depends on which domain your TLS certificate was issued for, if not both.
 
     {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 server {
         listen              80;
         server_name         example.com www.example.com;
-        rewrite      ^ https://example.com$request_uri? permanent;
-        return 301 https://example.com$request_uri;
-        rewrite      ^ https://www.example.com$request_uri? permanent;
+        return 301 https://example.com$request_uri; 
         return 301 https://www.example.com$request_uri;
         }
 }
 {{< /file-excerpt >}}
 
-2.  Restart NGINX:
+    {{< note >}}
+Why use `return 301` instead of `rewrite`? The [NGINX docs](https://www.nginx.com/resources/wiki/start/topics/tutorials/config_pitfalls/#taxing-rewrites) prefer it.
+{{< /note >}}
 
-        service nginx restart
+2.  Reload NGINX:
+
+        nginx -s reload
 
 3.  Go to your site's domain or IP address in a web browser, specifying `http://`. You should be redirected to HTTPS.
 
@@ -109,15 +93,15 @@ To enable OCSP stapling, you must point NGINX to your certificate authority's TL
 
         cat example.com.crt ca-root.crt intermediate.crt > ocsp-combined.crt
 
-2.  Add the following to your `nginx.conf` or virtual host configuration file, depending on how you installed NGINX. Whether you have the `ssl_*` directives in the `http { }` or `server { }` block will depend on your needs. The `ssl_trusted_certificate` is either the combined file you made in the previous step, your CA's root certificate, or your self-signed cert. 
+2.  Add the following to your `nginx.conf` or virtual host configuration file, depending on how you installed NGINX. Whether you have the `ssl_*` directives in the `http { }` or `server { }` block will depend on your needs. The `ssl_trusted_certificate` is either the combined file you made in the previous step, your CA's root certificate, or your self-signed cert.
 
         ssl_stapling on;
         ssl_stapling_verify on;
         ssl_trusted_certificate /path/to/cert.crt;
 
-2.  Restart NGINX:
+2.  Reload NGINX:
 
-        service nginx restart
+        nginx -s reload
 
 3.  Go to the Qualys [SSL Server Test](https://www.ssllabs.com/ssltest/) in a web browser. Enter your site's domain and click *Submit*. Check the *Do not show the results on the boards* checkbox if you do not want your results displayed publicly.
 
@@ -133,13 +117,13 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
 
 1.  Add the following to your `nginx.conf` or virtual host configuration file, depending on how you installed NGINX. The `ssl_trusted_certificate` is either the combined file you made in the previous step, your CA's root certificate, or your self-signed cert.
 
-        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
+        add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; always";
 
     The `max-age` attribute sets the expiration date for this header in seconds. In the above configuration, the header will expire after 1 year. You can configure this to be longer or shorter if you choose, but a period of less than 180 days is considered too short for the Qualys test. The `includeSubdomains` argument enforces HSTS on all subdomains.
 
-2.  Restart NGINX:
+2.  Reload NGINX:
 
-        service nginx restart
+        nginx -s reload
 
 3.  If you ran a Qualys test as explained above, clear your browser cache.
 
@@ -148,20 +132,6 @@ With all traffic being redirected from HTTP to HTTPS, you may want to allow user
     Once the test is complete, scroll down to the *Protocol Details* section. Look for the *Strict Transport Security (HSTS)* line. This test will return *Yes* if NGINX is configured correctly.
 
     ![SSL Server Test HSTS](/docs/assets/HSTS_SSL_Test.jpg)
-
-## Disable Content Sniffing
-
-Content sniffing allows browsers to inspect a byte stream in order to 'guess' the file format of its contents. It is generally used to help sites that do not correctly identify the MIME type of their web content, but it also presents a vulnerability to cross-site scripting and other attacks. To disable content sniffing, add the following line to your `nginx.conf` or virtual host configuration file, depending on how you installed NGINX.
-
-    add_header X-Content-Type-Options nosniff;
-
-## Disable or Limit Embedding
-
-The HTTPS header `X-Frame-Options` can specify whether a page is able to be rendered in a frame, iframe, or object. If left unset, your site's content could be embedded into other sites' HTML code in a clickjacking attack. To disable the embedding of your content, add the following line to your configuration:
-
-    add_header X-Frame-Options DENY;
-
-If you'd like to limit embedding rather than disabling it altogether, you can replace `DENY` with `SAMEORIGIN`. This will allow your page to be embedded in a frame as long as the site attempting to do so is the same one serving your page.
 
 ## Strengthen the Diffie-Hellman Key Exchange
 
@@ -176,16 +146,16 @@ A Diffie-Hellman parameter is a set of randomly generated data used when establi
         openssl genpkey -genparam -algorithm DH -out /root/certs/dhparam4096.pem -pkeyopt dh_paramgen_prime_len:4096
 
     {{< note >}}
-According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Openssl(1)#STANDARD_COMMANDS), genpkey -genparam supersedes dhparam.
+According to the [OpenSSL manual](https://wiki.openssl.org/index.php/Manual:Openssl(1)#STANDARD_COMMANDS), `genpkey -genparam` supersedes `dhparam`.
 {{< /note >}}
 
-3.  Point NGINX to the new DH prime by adding it to your configuration. Remember to adjust the path as per step 1 above.
+3.  Add the new DH prime to your configuration. Remember to adjust the path as per step 1 above.
 
         ssl_dhparam /root/certs/dhparam4096.pem;
 
-4.  Restart NGINX:
+4.  Reload NGINX:
 
-        service nginx restart
+        nginx -s reload
 
 ## Example Configurations
 
@@ -249,19 +219,15 @@ http {
     server {
         listen              80;
         server_name         example.com www.example.com;
-        rewrite      ^ https://example.com$request_uri? permanent;
         return 301 https://example.com$request_uri;
-        rewrite      ^ https://www.example.com$request_uri? permanent;
         return 301 https://www.example.com$request_uri;
  }
 
     server {
         listen              443 ssl http2;
         server_name         example.com www.example.com;
-
-            location / {
-               root   /usr/share/nginx/html;
-            }
+        root                /var/www/example.com/public_html;
+        index               index.php index.htm index.html;
         }
 }
 {{< /file >}}
@@ -312,15 +278,15 @@ http {
     server {
         listen              203.0.113.10:80;
         server_name         example1.com www.example1.com;
-
-            location / {
-               root   /usr/share/nginx/html/example1.com;
-            }
- }
+        root                /var/www/example.com/public_html;
+        index               index.html;
+        }
 
     server {
         listen              198.51.100.4:443 ssl http2;
         server_name         example2.com;
+        root                /var/www/example2.com/public_html;
+        index               index.php;
 
         ssl_session_cache   shared:SSL:10m;
         ssl_session_timeout 10m;
@@ -333,10 +299,6 @@ http {
         ssl_trusted_certificate /path/to/cert.crt;
         ssl_dhparam /root/certs/dhparam4096.pem;
         add_header Strict-Transport-Security "max-age=31536000; includeSubdomains";
-
-            location / {
-               root   /usr/share/nginx/html/example2.com;
-            }
         }
 }
 {{< /file >}}
