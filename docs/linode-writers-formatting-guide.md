@@ -209,13 +209,17 @@ If you wish to provide links to external sites for the user to review after goin
 > - [Link Title 1](http://www.example.com)
 > - [Link Title 2](http://www.example.net)
 
-### Shortguides
+### Extend Markdown Using Shortguides
 
-For common tasks such as basic software installation, consider using the `section` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
+Using shortcodes, it is possible to extend a markdown file with another. For common tasks such as basic software installation, consider using the `content` shortcode. This allows our library to maintain consistent and up to date installation instructions for frequently used tools such as Python, MySQL, and Docker.
 
-First, review the available shortguides in the `docs/shortguides` folder to see if there is already an installation guide for the software you would like to install. If not, you may want to write your own set of instructions and store it in this directory. The filename should make it clear what the instructions are meant to accomplish, for example `install_python_miniconda.md`.
+Markdown files intended to be inserted into multiple guides are called shortguides and should be standalone documents.
 
-Shortguides should consist entirely of numbered steps, as they are intended to be inserted into multiple guides:
+Inserting `shortguide: true` in the front matter will hide the guide from the site navigation as well as the search index.
+
+#### Example Usage
+
+The shortcode will take a file path as a parameter. As long as the markdown file exists in the `content` directory, only the filename needs to be specified.
 
 {{< file "install_python_miniconda.md"  text >}}
 <!-- Installation instructions for Python 3. -->
@@ -236,8 +240,20 @@ Shortguides should consist entirely of numbered steps, as they are intended to b
 To use a shortguide in another guide, use the following syntax:
 
 {{< file-excerpt "sample_guide.md" >}}
-{{</* section file="/shortguides/install_nginx.md" */>}}
+{{</* content "install_nginx.md" */>}}
 {{< /file-excerpt >}}
+
+{{< note >}}
+Headers inside the shortguide will not be visible in the table of contents in the parent document.
+{{< /note >}}
+
+#### Hide Content Through Buttons
+
+Adding `os: ["mac", "linux", "windows"]` to the front matter inserts a jQuery script that will hide and display content shortcodes.
+
+The shortcode should contain two parameters: filepath and operating system.
+
+For example, `{{</* content "how-to-install-git-mac.md" mac */>}}` will insert a markdown snippet that will only be visible when the Mac button is in the active state.
 
 ### Files and File Excerpts
 
