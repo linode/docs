@@ -4,6 +4,7 @@ author:
   email: sfoo@linode.com
 description: 'Shortguide for installing Git'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ["mac", "git", "version"]
 modified: 2018-01-05
 modified_by:
   name: Sam Foo

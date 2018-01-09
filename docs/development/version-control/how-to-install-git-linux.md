@@ -2,11 +2,13 @@
 author:
   name: Sam Foo
   email: sfoo@linode.com
+description: 'Shortguide for installing Git on Linux'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ["linux", "git", "version"]
 modified: 2018-01-05
 modified_by:
   name: Sam Foo
-title: ""
+title: "How to install Git on Linux"
 published: 2018-01-08
 shortguide: true
 ---
