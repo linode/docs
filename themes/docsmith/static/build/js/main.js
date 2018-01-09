@@ -281,17 +281,13 @@
                 }
             });
 
-
-            // Workaround for https://github.com/twbs/bootstrap/issues/16045
-            toc.on("affixed.bs.affix", function() {
-                var style = $(this).attr("style");
-                style = style.replace("position: relative;", "");
-                $(this).attr("style", style)
+            // Ensure sidebar width is responsive and constant when scrolling
+            $('#doc-sidebar').each(function () {
+                $(this).before('<div class="affix-container" />');
             });
 
-
             var resizeFn = function() {
-                toc.css('width', $('#doc-sidebar-container').width());
+                toc.css('width', $('div.affix-container').width());
             };
 
             resizeFn();
