@@ -5,8 +5,8 @@ author:
 description: 'Install a TLS certificate into NGINX for HTTPS access.'
 keywords: ["ssl", "tls", "nginx", "https", "certificate"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','websites/ssl/ssl-certificates-with-nginx.cfm/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificates-on-nginx/index.cfm/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
-modified: 2017-12-22
+aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/','security/ssl/how-to-provide-encrypted-access-to-resources-using-ssl-certificated-on-nginx/','security/ssl/provide-encrypted-resource-access-using-ssl-certificates-on-nginx/']
+modified: 2018-01-09
 modified_by:
   name: Linode
 published: 2010-11-08
@@ -15,23 +15,27 @@ title: 'Getting Started with NGINX - Part 3: Enable TLS for HTTPS Connections'
 
 ![HTTPS Configuration on NGINX](/docs/assets/nginx-ssl/Enable_SSL_nginx.jpg)
 
-Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), and provides stronger HTTPS access to web servers from browsers and other utilities. This guide outlines several scenarios for how to add an SSL/TLS certificate to your site's NGINX configuration.
+Transport Layer Security (TLS) is the successor to Secure Socket Layer (SSL), and provides stronger HTTPS access to web servers from browsers and other tools.
+
+A single NGINX installation can host multiple websites. Any number of them can use the same TLS certificate and key, or a cert/key pair exclusively their own. This guide outlines several scenarios for how to add a TLS certificate to your site's NGINX configuration.
+
 
 ## Before You Begin
 
-- You will need a working NGINX configuration. See ***
+- This guide is Part 3 of our Getting Started with NGINX series and you will need a working NGINX setup with your site accessible via HTTP. If do not have that, then complete at least [Part 1: Basic Installation and Setup](web-servers/nginx/nginx-basic-installation-and-setup) before going further.
 
-- If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. To see the current NGINX version and compiled options of your installation, run the command `nginx -V`.
+- You will need root access to the system, or a user account with `sudo` privileges.
 
-- You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or you can use a commercial certificate chain if that's what your site calls for. If you don't already have one of these, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
+- You will need a TLS certificate and key for your site. The certificate can be self-signed if this is a private or internal site, or if you are simply experimenting. You can alternatively use a commercial certificate chain if that's what your site requires. If you don't already have a certificate and server key, see our guides for creating a [self-signed certificate](/docs/security/ssl/create-a-self-signed-tls-certificate) or a [certificate signing request](/docs/security/ssl/obtain-a-commercially-signed-tls-certificate).
 
-## Configure a Single Virtual Host
+- If you compiled NGINX from source code, ensure that it was compiled with `--with-http_ssl_module`. Verify in the output of `nginx -V`.
 
-A virtual host basically equates to a website in NGINX speak. A single NGINX installation can host one virtual server, or many, and any number of them can use the same TLS certificate and key, or a cert/key pair exclusively their own.
 
-The TLS certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is. We'll store them in a folder in the root user's home directory. You can point NGINX to your site's TLS certificate and key in `/etc/nginx/nginx.conf`.
+## Credentials Storage Location
 
-There is no official or ideal place to store the certificate and key so while you can generally keep them wherever you want on the server, you want them to remain untouched by system updates, other administrators and such things. You also will want to back up these files.
+There is no official or unanimously preferred place to store your site's certificate and key. The TLS certificate is sent to each device that connects to the server, so it's not a private file. The key, however, is.
+
+Wherever you decide to store your certificate/key pair, you want them to remain untouched by system updates and secured against other system users. As an example, we'll store them in `/root/certs/` but whatever location you decide, you should back up this folder.
 
 1.  Make the storage folder:
 
@@ -43,145 +47,140 @@ There is no official or ideal place to store the certificate and key so while yo
 
         chmod 400 /root/certs/example.com.key
 
-4.  Add/edit the appropriate lines of your `nginx.conf`. The NGINX root directory where it will look for your website's content will be `/usr/share/nginx/`, but older versions used `/var/www/html`.
 
-    Whether to include directives for both `example.com` or `www.example.com`, depends on which domain your TLS certificate was issued for, if not both.
+## Configure Your http { } Block
 
-    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+Directives you want NGINX to apply to all sites on your server should go into the `http { }` block of `nginx.conf`, including SSL/TLS directives. The directives below assume one website, or all sites on the server, using the same certificate and key.
 
-worker_processes auto;
+If you have multiple sites with their own HTTPS credentials, and/or are using a setup with HTTP and HTTPS sites, you'll want to move the `ssl_certificate` and `ssl_certificate_key` lines into the `server { }` block for the appropriate site.
 
+{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 http {
-    ssl_session_cache   shared:SSL:10m;
-    ssl_session_timeout 10m;
     ssl_certificate     /root/certs/example.com.crt;
     ssl_certificate_key /root/certs/example.com.key;
+    ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
     ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers         HIGH:!aNULL:!MD5;
-
-    keepalive_timeout   70;
-
-    server {
-        listen              443 ssl;
-        server_name         example.com www.example.com;
-        }
-}
+    ssl_session_cache   shared:SSL:10m;
+    ssl_session_timeout 10m;
+    }
 {{< /file-excerpt >}}
 
-5.  Reload your configuration:
+
+## Configure a Single Site
+
+1.  To have NGINX serve one site via HTTPS, simply use the `http { }` block configuration above. In this scenario, you do not need to add `ssl_*` directives to the site's configuration file. As an example, below is a basic site config file which works with the above `ssl_*` `http { }` header directives.
+
+    {{< file-excerpt "/etc/nginx/conf.d/example.com.conf" nginx >}}
+
+server {
+    listen              203.0.113.4:443 ssl default_server;
+    listen              [2001:DB8:32]:443 ssl default_server ;
+    server_name         example.com www.example.com;
+    root                /var/www/example.com/public_html;
+    }
+{{< /file-excerpt >}}
+
+2.  Always reload your configuration after making changes to NGINX's configuration files:
 
         nginx -s reload
 
-6.  Now go to your Linode's IP address or your site's domain in a browser with an `https://` at the front of the URL. Your site should load over HTTPS, or in the case of a self-signed certificate, your browser will warn of an insecure connection.
-
-See the NGINX docs for more information on the [SSL module](https://nginx.org/en/docs/http/ngx_http_ssl_module.html) and [HTTPS configurations](https://nginx.org/en/docs/http/configuring_https_servers.html).
+3.  Now if you go to your site's address or Linode's IP using `https://`, your site should load over HTTPS. In the case of a self-signed certificate, your browser will warn of an insecure connection.
 
 
 ## Configure Multiple Sites with a Single Certificate
 
-If you have a certificate that is valid for multiple host names, such as a wild card certificate or a certificate using *SubjectAltName*, you'll need two separate `server { }` blocks in your `nginx.conf` file, one per site IP address. The directives for the `http { }` block from above stay the same, and note how each site's IP is joined with the port number in the `listen` line.
+Scenario: You have a certificate that is valid for multiple domains, such as a wild card certificate or a certificate using *SubjectAltName*. 
 
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+In this scenario, the `http { }` block directives given above stay the same. You'll need two separate configuration files in `/etc/nginx/conf.d/`, one for each site the credentials will protect. In them it is necessary to specify the IP address for each site with the `listen` directive.
 
-    server {
-        listen              203.0.113.5:443 ssl;
-        server_name         example.com www.example.com;
-        root /var/www/example.com/public_html;
-        }
+You also don't want to use `default_server` if you have two different websites with different IPs.
 
-    server {
-        listen              203.0.113.6:443 ssl;
-        server_name         subdomain.example.com;
-        root /var/www/subdomain.example.com/public_html;
-        }
+1.  The sites `example1.com`, `example2.com` are served using the same certificate and key we placed into `root/certs/` earlier.
+
+    {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
+server {
+    listen              203.0.113.5:443 ssl;
+    listen              [2001:DB8:32]:443 ssl;
+    server_name         example.com www.example.com;
+    root                /var/www/example.com/public_html;
+    }
 {{< /file-excerpt >}}
 
-In this example, the domains `example.com`, `www.example.com`, and `subdomain.example.com` are all served using the `/srv/ssl/example.com.crt` certificate. If you instead have two completely independent websites with independent domains, then just fill out the directives accordingly.
-
-Reload your configuration after editing `nginx.conf`:
-
-        nginx -s reload
-
-## Redirect Incoming HTTP Traffic HTTPS
-
-If your site is set up for HTTPS, you will likely also want to capture HTTP traffic to your domain and redirect it to HTTPS. To do this, you need two `server { }` blocks in your `nginx.conf` file: one as configured earlier to listen on port 443, and a second to listen on port 80.
-
-1.  Add the following server block to your NGINX configuration file. This must exist inside the `http { }` block.
-
-{{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
+    {{< file-excerpt "/etc/nginx/conf.d/example2.com.conf" nginx >}}
 server {
-        listen              80;
-        server_name         example.com www.example.com;
-        return 301 https://example.com$request_uri;
-        return 301 https://www.example.com$request_uri;
-        }
-}
+    listen              203.0.113.6:443 ssl;
+    listen              [2001:DB8:33]:443 ssl;
+    server_name         example2.com www.example2.com;
+    root                /var/www/example2.com/public_html;
+    }
 {{< /file-excerpt >}}
 
 2.  Reload your configuration:
 
         nginx -s reload
 
-
-Below is an example of a full `nginx.conf` file which redirects HTTP to HTTPS and has gzip enabled:
-
-{{< file "/etc/nginx/nginx.conf" nginx >}}
-
-user  nginx;
-worker_processes  auto;
-
-error_log  /var/log/nginx/error.log warn;
-pid        /var/run/nginx.pid;
+3.  Both sites should now be accessible by HTTPS. If you use the browser to inspect the certificate properties, you'll see the one cert is serving both sites.
 
 
-events {
-    worker_connections  1024;
-}
+## Configure Multiple Sites with Different Certificates
 
+Scenario: You have two completely independent websites you want to serve with two different TLS certificate/key pairs.
+
+1.  Make sure your certificate storage is organized properly. Below is an example: 
+
+        /root/certs
+        ├── example1.com
+        │   ├── example1.com.crt
+        │   └── example1.com.key
+        └── example2.com
+            ├── example2.com.crt
+            └── example2.com.key
+
+2.  Configure the `http { }` block of your `nginx.conf` as shown above, but **without the certificate and key locations**. Those will instead go in the individual site's `server { }` blocks since they are different locations for each site. The result should be:
+
+    {{< file-excerpt "/etc/nginx/nginx.conf" nginx >}}
 
 http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
-
+    ssl_ciphers         EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH;
+    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
     ssl_session_cache   shared:SSL:10m;
     ssl_session_timeout 10m;
+}
+{{< /file-excerpt >}}
+
+3.  Add the `ssl_certificate` and `ssl_certificate_key` directives to each `server { }` block **with the correct path to each site's certificate and key file** (.pem format can also be used).
+
+    {{< file-excerpt "/etc/nginx/conf.d/example1.com.conf" nginx >}}
+server {
+    listen              203.0.113.5:443 ssl;
+    listen              [2001:DB8:32]:443 ssl;
+    server_name         example1.com www.example1.com;
+    root                /var/www/example1.com/public_html;
+
+    ssl_certificate     /root/certs/example1.com.crt;
+    ssl_certificate_key /root/certs/example1.com.key;
+    }
+{{< /file-excerpt >}}
+
+    {{< file-excerpt "/etc/nginx/conf.d/example2.com.conf" nginx >}}
+server {
+    listen              203.0.113.6:443 ssl;
+    listen              [2001:DB8:33]:443 ssl;
+    server_name         example2.com www.example2.com;
+    root                /var/www/example2.com/public_html;
+
     ssl_certificate     /root/certs/example.com.crt;
     ssl_certificate_key /root/certs/example.com.key;
-    ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers         HIGH:!aNULL:!MD5;
+    }
+{{< /file-excerpt >}}
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+4.  Reload your configuration:
 
-    access_log  /var/log/nginx/access.log  main;
+        nginx -s reload
 
-    sendfile        on;
-    #tcp_nopush     on;
-
-    keepalive_timeout  70;
-
-    gzip  on;
-
-    include /etc/nginx/conf.d/*.conf;
-
-    server {
-        listen              80;
-        server_name         example.com www.example.com;
-        return 301 https://example.com$request_uri;
-        return 301 https://www.example.com$request_uri;
- }
-
-    server {
-        listen              443 ssl;
-        server_name         example.com www.example.com;
-        index index.php index.htm index.html;
-        root /var/www/example.com/public_html;
-        }
-}
-{{< /file >}}
+5.  Now both sites should be accessible over HTTPS, but using your browser to inspect the certificates will show that site `example1.com` is using `example1.com.crt`, and `example2.com` is using `example2.com.crt`.
 
 
-## Best Practices
+## Part 4: SSL/TLS Best Practices
 
-Now that you've got NGINX serving your site over HTTPS, you'll want to see our [NGINX TLS Deployment Best Practices](/docs/web-servers/nginx/nginx-tls-deployment-best-practices/) guide to further tune your server.
+Now that you've got NGINX serving your site over HTTPS, do not simply use the above configurations as-is. They are given as examples only to get HTTPS working on your server but are inherently insecure without further configuration. To harden your server's handling of TLS connections, move on to part 4 of this series: [NGINX TLS Deployment Best Practices](/docs/web-servers/nginx/nginx-tls-deployment-best-practices/). 

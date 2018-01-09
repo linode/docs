@@ -102,7 +102,7 @@ This is when you must submit the certificate signing request to the CA for it to
 
 3.  After a few days, the signed certificate will be available for you to download and install into your server.
 
-If you intend to use your TLS certificate with Apache or NGINX, see our guides: **** 
+If you intend to use your TLS certificate with Apache or NGINX, see our guides: ****
 
 
 ## Prepare a Chained SSL Certificate

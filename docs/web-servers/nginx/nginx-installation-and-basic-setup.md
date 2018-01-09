@@ -6,11 +6,11 @@ description: 'Assessing, installing, and configuring NGINX.'
 keywords: ["nginx", "web server"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['web-servers/nginx/configuration/ssl/','security/ssl/ssl-certificates-with-nginx/index.cfm/','web-servers/nginx/install-nginx-web-server-on-debian-8/','web-servers/nginx/how-to-install-nginx-on-debian-7-wheezy/']
-modified: 2018-01-02
+modified: 2018-01-09
 modified_by:
   name: Linode
-published: 2018-01-02
-title: 'Getting Started with NGINX Part 1: Installation and Basic Setup'
+published: 2018-01-09
+title: 'Getting Started with NGINX - Part 1: Installation and Basic Setup'
 ---
 
 This series will walk you through installing NGINX Open Source from the NGINX repositories, ***
@@ -20,6 +20,8 @@ This series will walk you through installing NGINX Open Source from the NGINX re
 - You will need root access to the system, or a user account with `sudo` privileges.
 
 - Set your system's [hostname](/docs/getting-started/#setting-the-hostname).
+
+- System's firewall.***
 
 - Fully update your system's packages.
 
@@ -68,7 +70,7 @@ Two quick points:
 
 - Before going further, first preserve the default `nginx.conf` file so you have something to restore to if your customizations get so convoluted they don't work.
 
-        cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup
+        cp /etc/nginx/nginx.conf /etc/nginx/nginx.conf.backup-original
 
 - After implementing a change below, you'll want to reload your configuration with:
 
@@ -92,7 +94,7 @@ server {
 }
 {{< /file-excerpt >}}
 
-Once you specify the root location, don't forget to create the directory and give the `nginx` user recursive read/write access to it.
+Once you specify the root location, don't forget to create the directory and give the `nginx` user read/write access to it.
 
     mkdir -p /var/www/example.com
     chown -R nginx:nginx /var/www/example.com
@@ -102,7 +104,7 @@ Once you specify the root location, don't forget to create the directory and giv
 
 Add the following to `/etc/nginx/nginx.conf`, in the area just before the `http { }` block. This is called the `main { }` block, or context, though it's not marked in `nginx.conf` like the `http { }` block is. The first choice would be to set it to `auto`, or the amount of CPU cores available to your Linode.
 
-    worker_processes    auto
+    worker_processes    auto;
 
 For more information, see the sections on worker processes in [the NGINX docs](https://nginx.org/en/docs/ngx_core_module.html#worker_processes) and [this blog post](https://www.nginx.com/blog/tuning-nginx/).
 
@@ -124,15 +126,15 @@ Add the following line to the `http { }` block of `/etc/nginx/nginx.conf`:
     server_tokens    off;
 
 
-### Listen Closer
+### Listen on Your Public IP Addresses
 
-Your Linode has one public IPv4 address and one public IPv6 address by default (read how to find them [here](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). These are the primary IP addresses your domain registrar will resolve to for users connecting to your site. NGINX configurations often listen on port 80 or port 443 but on any IP address. Example:
+Your Linode has one public IPv4 address and one public IPv6 address by default (read how to find them [here](/docs/quick-answers/linode-platform/find-your-linodes-ip-address/). These are the primary IP addresses your domain registrar will resolve to for users connecting to your site. Default NGINX configurations listen on port 80 and on all IP addresses. Example:
 
     listen    80;
 
-This is unnecessary because NGINX only needs to listen for incoming traffic on your server's public IPs. It's better to be precise and absolute in configuration files than vague, so specify the IP addresses you want NGINX listening on. This is also useful when your system binds specific IPs to network interfaces.
+NGINX only needs to listen for incoming traffic on your server's public IPs. It's better to be precise and absolute in configuration files than vague, so specify the IP addresses you want NGINX listening on. This is also useful when your system binds specific IPs to network interfaces.
 
-Additionally, NGINX listens only on your server's public IPv4 address by default. Unless you intend to not make your site accessible over IPv6 (or can't for some reason) NGINX should also listen for incoming IPv6 traffic. Add the line below to your configuration's `server { }` block. Replace the example IP addresses with your Linode's public IPv4 and IPv6 address.
+Additionally, NGINX listens only on your server's public IPv4 address by default. Unless you intend your site to be inaccessible over IPv6 (or are unable to provide it for some reason), NGINX should also listen for incoming IPv6 traffic. Add the line below to your configuration's `server { }` block. Replace the example IP addresses with your Linode's public IPv4 and IPv6 address.
 
     server {
         listen     203.0.113.0:80 default_server;
@@ -145,7 +147,7 @@ The `default_server` parameter assigns that server block as the default for thos
 Should your server's IP addresses change for any reason, you will need to update this config to reflect the new IPs.
 {{< /note >}}
 
-### Decide Whether (and what) to Compress
+### About Compression
 
 You do not want to universally enable gzip compression on any web server because, depending on your site's content and whether you set session cookies, you risk vulnerability to [CRIME](https://en.wikipedia.org/wiki/CRIME) and [BREACH](http://www.breachattack.com/) exploits.
 
@@ -167,7 +169,7 @@ In cases where NGINX is serving multiple websites, some using SSl/TLS and some n
         gzip           on;
         gzip           types text/html text/css image/*;
     }
-    
+
     server {
         listen         443 ssl;
         server_name    example2.com;
@@ -175,6 +177,7 @@ In cases where NGINX is serving multiple websites, some using SSl/TLS and some n
     }
 
 There are various other options available to NGINX's gzip module. See the [NGINX docs]](https://nginx.org/en/docs/http/ngx_http_gzip_module.html) for more info, and if if you prefer to compile you NGINX build, you can include the *[ngx_http_gzip_static_module](https://nginx.org/en/docs/http/ngx_http_gzip_static_module.html)* which would further suit compression of static content.
+
 
 ## Configuration Recap
 
@@ -240,6 +243,6 @@ http {
 {{< /file >}}
 
 
-## Next Steps
+## Part 2: (a bit more) Advanced Configuration
 
-This page got you set up with a base installation and a some foundational settings to get you started. Part 2 of this series gets more advanced with its configurations, but still applicable to anyone hosting a site on a Linode.
+This page got you set up with a base installation and a some foundational settings to get you started. [Part 2](/docs/web-servers/nginx/nginx-advanced-configurations.md) of this series gets more advanced with its configurations, but still applicable to anyone hosting a site on a Linode.
