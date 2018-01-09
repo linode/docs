@@ -145,6 +145,7 @@
         var resultList = $('#ds-search-list');
         resultList.empty();
         var deprecatedResults = [];
+        var hiddenGuide = [];
         for (var i = 0; i < result.length; i++) {
             var item = result[i];
 
@@ -157,6 +158,7 @@
             var url = item.ref
             var badge = ''
             var deprecated = searchStore.store[item.ref].deprecated
+            var shortguide = searchStore.store[item.ref].shortguide
             if (deprecated) {
               badge = '<span class="search-deprecated">DEPRECATED</span>'
              }
@@ -165,12 +167,20 @@
             if (deprecated) {
               deprecatedResults.push(searchitem)
             }
-            else {
-              resultList.append(searchitem);
+            else if (shortguide) {
+              hiddenGuide.push(searchitem)
             }
+            else {
+              resultList.append(searchitem)
+            }
+            console.log(shortguide);
         }
+
         deprecatedResults.forEach(function(result) {
           resultList.append(result);
+          resultList = resultList.filter(function(val) {
+                return hiddenGuide.indexOf(val) == -1;
+            });
         });
         resultList.show();
     }
