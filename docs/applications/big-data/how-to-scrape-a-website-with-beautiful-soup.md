@@ -29,7 +29,7 @@ Web pages are structured documents, and Beautiful Soup gives you the tools to wa
 
 ### Install Python
 
-{{< section file="/shortguides/install_python_miniconda.md" >}}
+{{< content "install_python_miniconda.md" >}}
 
 ### Install Beautiful Soup and Dependencies
 

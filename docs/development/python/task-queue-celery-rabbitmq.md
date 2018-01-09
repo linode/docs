@@ -37,7 +37,7 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Install a Python 3 Environment
 
-{{< section file="/shortguides/install_python_miniconda.md" >}}
+{{< content "install_python_miniconda.md" >}}
 
 ## Install Celery
 
