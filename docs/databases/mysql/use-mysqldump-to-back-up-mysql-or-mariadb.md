@@ -16,7 +16,7 @@ external_resources:
  - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
 ---
 
-![Use mysqldump to Back Up Your MySQL or MariaDB Database](/docs/assets/back_up_your_mysql-databases.png "Use mysqldump to Back Up Your MySQL Database")
+![Use mysqldump to Back Up MySQL or MariaDB](/docs/assets/mysql/mysqldump-to-back-up-mysql-mariadb.png "Use mysqldump to Back Up MySQL or MariaDB")
 
 ## What is mysqldump?
 
