@@ -106,11 +106,23 @@
     "type": "text",
     "description": "Title to be displayed on Facebook links."
   },
+  "os": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "List of operating systems to generate buttons"
+  },
   "published": {
     "elements": false,
     "required": true,
     "type": "date",
     "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
+  },
+  "shortguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
   },
   "show_on_frontpage": {
     "elements": false,
