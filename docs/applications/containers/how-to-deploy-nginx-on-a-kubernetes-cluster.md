@@ -4,7 +4,7 @@ author:
 description: 'This guide shows how to install Kubernetes on a Linode with CentOS or Ubuntu. Includes a section on how to deploy nginx to the example cluster.'
 keywords: ["kubernetes","docker","container","deployment","nginx"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
-modified: 2017-11-27
+modified: 2018-01-08
 modified_by:
   name: Linode
 published: 2017-11-27
@@ -130,23 +130,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 ### Install Docker
 
-**Debian/Ubuntu:**
-
-    apt-get update && apt-get install -y curl apt-transport-https
-    curl -fssl https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    cat <<eof >/etc/apt/sources.list.d/docker.list
-    deb https://download.docker.com/linux/$(lsb_release -si | tr '[:upper:]' '[:lower:]') $(lsb_release -cs) stable
-    eof
-    apt-get update && apt-get install -y docker-ce=$(apt-cache madison docker-ce | grep 17.03 | head -1 | awk '{print $3}')
-
-**CentOS/RHEL:**
-
-    yum install -y docker
-    systemctl enable docker && systemctl start docker
-
- Test Docker:
-
-    docker run hello-world
+{{< section file="shortguides/docker/install_docker_ce.md" >}}
 
 ### Install kubeadm, kubectl, and kubelet
 
@@ -179,36 +163,36 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 1.  On the master node initialize your cluster using its private IP:
 
-        kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise=<private IP>
+        kubeadm init  --pod-network-cidr=192.168.0.0/16 --apiserver-advertise-address=<private IP>
 
     If you encounter a warning stating that swap is enabled, return to the [Disable Swap Memory](#disable-swap-memory) section.
 
     If successful, your output will resemble:
 
-        To start using your cluster, you need to run (as a regular user):
+	{{< output >}}
+To start using your cluster, you need to run (as a regular user):
 
-          mkdir -p $HOME/.kube
-          sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-          sudo chown $(id -u):$(id -g) $HOME/.kube/config
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
-        You should now deploy a pod network to the cluster.
-        Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
-          http://kubernetes.io/docs/admin/addons/
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  http://kubernetes.io/docs/admin/addons/
 
-        You can now join any number of machines by running the following on each node
-        as root:
+You can now join any number of machines by running the following on each node
+as root:
 
-          kubeadm join --token 921e92.d4582205da623812 <private IP>:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
+  kubeadm join --token 921e92.d4582205da623812 <private IP>:6443 --discovery-token-ca-cert-hash sha256:bd85666b6a97072709b210ddf677245b4d79dab88d61b4a521fc00b0fbcc710c
+{{< /output >}}
 
-2.  On each node, while logged in as root, run `kubeadm token create` to create a new token. By default the token is valid for 24 hours. To extend the token's life, run it with the `--ttyl` flag. For example, to create a token that does not expire: `kubeadm token create --ttyl infinity`.
-
-3.  On the master node, configure the `kubectl` tool:
+2.  On the master node, configure the `kubectl` tool:
 
         mkdir -p $home/.kube
         sudo cp -i /etc/kubernetes/admin.conf $home/.kube/config
         sudo chown $(id -u):$(id -g) $home/.kube/config
 
-4.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
+3.  Check on the status of the nodes with `kubectl get nodes`. Output will resemble:
 
         root@kube-master:~# kubectl get nodes
         name          status     roles     age       version
@@ -256,14 +240,16 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 1. Run `kubeadm join` with the `kube-master` hostname to add the first worker:
 
-       kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
+       	kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
 
 2. On the master node, use `kubectl` to see that the slave node is now ready:
 
-       root@kube-master:~# kubectl get nodes
-       name            status    roles     age       version
-       kube-master     ready     master    37m       v1.8.1
-       kube-worker-1   ready     <none>    2m        v1.8.1
+    {{< output >}}
+root@kube-master:~# kubectl get nodes
+name            status    roles     age       version
+kube-master     ready     master    37m       v1.8.1
+kube-worker-1   ready     <none>    2m        v1.8.1
+{{< /output >}}
 
 ## Deploy nginx on the Kubernetes Cluster
 
@@ -271,47 +257,45 @@ A *deployment* is a logical reference to a pod or pods and their configurations.
 
 1.  From your master node `kubectl create` an nginx deployment:
 
-        root@kube-master:~# kubectl create deployment nginx --image=nginx
-        deployment "nginx" created
+        kubectl create deployment nginx --image=nginx
 
 2.  This creates a deployment called `nginx`. `kubectl get deployments` lists all available deployments:
 
-        root@kube-master:~# kubectl get deployments
-        name      desired   current   up-to-date   available   age
-        nginx     1         1         1            1           25s
+        kubectl get deployments
 
 3.  Use `kubectl describe deployment nginx` to view more information:
 
-        root@kube-master:~# kubectl describe deployment nginx
-        Name:                   nginx
-        Namespace:              default
-        CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
-        Labels:                 app=nginx
-        Annotations:            deployment.kubernetes.io/revision=1
-        Selector:               app=nginx
-        Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
-        StrategyType:           RollingUpdate
-        MinReadySeconds:        0
-        RollingUpdateStrategy:  1 max unavailable, 1 max surge
-        Pod Template:
-          Labels:  app=nginx
-          Containers:
-            nginx:
-            Image:        nginx
-            Port:         <none>
-            Environment:  <none>
-            Mounts:       <none>
-          Volumes:        <none>
-        Conditions:
-          Type           Status  Reason
-          ----           ------  ------
-          Available      True    MinimumReplicasAvailable
-        OldReplicaSets:  <none>
-        NewReplicaSet:   nginx-68fcbc9696 (1/1 replicas created)
-        Events:
-          Type    Reason             Age   From                   Message
-          ----    ------             ----  ----                   -------
-          Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
+	{{< output >}}
+Name:                   nginx
+Namespace:              default
+CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
+Labels:                 app=nginx
+Annotations:            deployment.kubernetes.io/revision=1
+Selector:               app=nginx
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  1 max unavailable, 1 max surge
+Pod Template:
+  Labels:  app=nginx
+  Containers:
+	nginx:
+	Image:        nginx
+	Port:         <none>
+	Environment:  <none>
+	Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   nginx-68fcbc9696 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  1m    deployment-controller  Scaled up replica set nginx-68fcbc9696 to 1
+{{< /output >}}
 
     The `describe` command allows you to interrogate different kubernetes resources such as pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
 
