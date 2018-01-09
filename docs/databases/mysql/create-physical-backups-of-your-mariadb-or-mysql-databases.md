@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 modified: 2017-12-28
 modified_by:
   name: Linode
-published: 2017-12-29
+published: 2018-01-09
 title: Create Physical Backups of your MariaDB or MySQL Databases
 external_resources:
  - '[Backup and Restore Overview; MariaDB Library](https://mariadb.com/kb/en/library/backup-and-restore-overview/)'
@@ -35,11 +35,11 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 2.  Locate your database directory. It should be `/var/lib/mysql/` on most systems but if that directory doesn't exist, examine `/etc/mysql/my.cnf` for a path to the data directory.
 
-3.  Create a directory to store your backups. This guide will use `/opt/backups` but you can alter this to suit your needs:
+3.  Create a directory to store your backups. This guide will use `/opt/db-backups` but you can alter this to suit your needs:
 
         mkdir /opt/db-backups
 
-4.  Copy MySQL's data directory to a storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. Change the database directory, backup filename, and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename:
+4.  Copy MySQL's data directory to the storage location. The `cp` command, `rsync`, or other methods will work fine, but we'll use `tar` to recursively copy and gzip the backup at one time. Change the database directory, backup filename, and target directory as needed; the `-$(date +%F)` addition to the command will insert a timestamp into the filename:
 
         tar cfvz /opt/db-backups/db-$(date +%F).tar.gz /var/lib/mysql/*
 
@@ -59,7 +59,7 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 3. Extract the tarball to the working directory. Change the tarball's filename in the command to the one with the date you want to restore to:
 
-        tar zxvf /opt/db-backups/db-archive.tar.gz -C .
+        tar zxvf /opt/db-backups/db-<date>.tar.gz -C .
 
 4.  If you want to keep the current contents of `/var/lib/mysql`, move them to another location. You can also delete them entirely. Create a new empty `mysql` folder to restore your backed up DMBS into:
 
@@ -72,6 +72,7 @@ The steps in this guide require root privileges. Log in as the root user with `s
 
 6.  Set the proper permissions for the files you just restored:
 
+        chmod -R 750 /var/lib/mysql
         chown -R mysql:mysql /var/lib/mysql
 
 7.  Restart the MySQL service:
