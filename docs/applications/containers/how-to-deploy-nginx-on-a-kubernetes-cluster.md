@@ -8,11 +8,11 @@ modified: 2018-01-08
 modified_by:
   name: Linode
 published: 2017-11-27
-title: 'How to Install, Configure, and Deploy Nginx on a Kubernetes Cluster'
+title: 'How to Install, Configure, and Deploy NGINX on a Kubernetes Cluster'
 contributor:
   name: Kiran Singh
   link: https://github.com/snarik
-og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.'
+og_description: 'Kubernetes can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.'
 external_resources:
 - '[Kubernetes](https://kubernetes.io/)'
 - '[Google Borg](https://research.google.com/pubs/pub43438.html)'
@@ -24,7 +24,7 @@ external_resources:
 
 ## What is Kubernetes?
 
-[Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an nginx service.
+[Kubernetes](https://kubernetes.io/) is an open-source container management system that is based on [Google Borg](https://research.google.com/pubs/pub43438.html). It can be configured to provide highly available, horizontally autoscaling, automated deployments. This guide shows you how to set up a Kubernetes cluster on a Linode and manage the lifecycle of an NGINX service.
 
 ## Before You Begin
 
@@ -251,7 +251,7 @@ kube-master     ready     master    37m       v1.8.1
 kube-worker-1   ready     <none>    2m        v1.8.1
 {{< /output >}}
 
-## Deploy nginx on the Kubernetes Cluster
+## Deploy NGINX on the Kubernetes Cluster
 
 A *deployment* is a logical reference to a pod or pods and their configurations.
 
@@ -299,11 +299,11 @@ Events:
 
     The `describe` command allows you to interrogate different kubernetes resources such as pods, deployments, and services at a deeper level. The output above indicates that there is a deployment called `nginx` within the default namespace. This deployment has a single replicate, and is running the docker image `nginx`. The ports, mounts, volumes and environmental variable are all unset.
 
-4.  Make the nginx container accessible via the internet:
+4.  Make the NGINX container accessible via the internet:
 
         kubectl create service nodeport nginx --tcp=80:80
 
-    This creates a public facing service on the host for the nginx deployment. Because this is a nodeport deployment, kubernetes will assign this service a port on the host machine in the `32000`+ range.
+    This creates a public facing service on the host for the NGINX deployment. Because this is a nodeport deployment, kubernetes will assign this service a port on the host machine in the `32000`+ range.
 
     Try to `get` the current services:
 
@@ -312,7 +312,7 @@ Events:
         kubernetes   ClusterIP   10.96.0.1     <none>        443/TCP        5h
         nginx        NodePort    10.98.24.29   <none>        80:32555/TCP   52s
 
-5.  Verify that the nginx deployment is successful by using `curl` on the slave node:
+5.  Verify that the NGINX deployment is successful by using `curl` on the slave node:
 
         root@kube-master:~# curl kube-worker-1:32555
 
