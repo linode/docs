@@ -2,17 +2,17 @@
 $(document).ready(function(){
     //detect os and display corresponding tab by default
     if (navigator.appVersion.indexOf("Mac")!=-1) {
-        $('#os-tabs').find('button').removeClass('current');
+        $('#os-tabs').find('a').removeClass('current');
         $('#mac').addClass('current');
         toggleMac();
     }
-    if (navigator.appVersion.indexOf("Linux")!=-1) {
-        $('#os-tabs').find('button').removeClass('current');
+    if (navigator.appVersion.indexOf("Linux")!=-1 || navigator.appVersion.indexOf("X11")!=-1) {
+        $('#os-tabs').find('a').removeClass('current');
         $('#linux').addClass('current');
         toggleLinux();
     }
     if (navigator.appVersion.indexOf("Win")!=-1) {
-        $('#os-tabs').find('button').removeClass('current');
+        $('#os-tabs').find('a').removeClass('current');
         $('#windows').addClass('current');
         toggleWindows();
     }
