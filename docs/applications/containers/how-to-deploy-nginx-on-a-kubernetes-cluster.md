@@ -130,7 +130,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
 ### Install Docker
 
-{{< section file="shortguides/docker/install_docker_ce.md" >}}
+{{< content "install_docker_ce.md" >}}
 
 ### Install kubeadm, kubectl, and kubelet
 
@@ -169,7 +169,7 @@ If you are unable to ping any of your hosts by their hostnames or private IPs:
 
     If successful, your output will resemble:
 
-	{{< output >}}
+    {{< output >}}
 To start using your cluster, you need to run (as a regular user):
 
   mkdir -p $HOME/.kube
@@ -240,7 +240,7 @@ as root:
 
 1. Run `kubeadm join` with the `kube-master` hostname to add the first worker:
 
-       	kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
+        kubeadm join --token <some-token> kube-master:6443 --discovery-token-ca-cert-hash sha256:<some-sha256-hash>
 
 2. On the master node, use `kubectl` to see that the slave node is now ready:
 
@@ -265,7 +265,7 @@ A *deployment* is a logical reference to a pod or pods and their configurations.
 
 3.  Use `kubectl describe deployment nginx` to view more information:
 
-	{{< output >}}
+    {{< output >}}
 Name:                   nginx
 Namespace:              default
 CreationTimestamp:      Sun, 15 Oct 2017 06:10:50 +0000
@@ -279,11 +279,11 @@ RollingUpdateStrategy:  1 max unavailable, 1 max surge
 Pod Template:
   Labels:  app=nginx
   Containers:
-	nginx:
-	Image:        nginx
-	Port:         <none>
-	Environment:  <none>
-	Mounts:       <none>
+    nginx:
+    Image:        nginx
+    Port:         <none>
+    Environment:  <none>
+    Mounts:       <none>
   Volumes:        <none>
 Conditions:
   Type           Status  Reason
