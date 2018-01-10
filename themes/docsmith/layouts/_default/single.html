@@ -16,7 +16,6 @@
             <div class="col-sm-3">{{ partial "share" . }}</div>
             </div>
             {{ partial "github" . }}
-            {{ partial "contribute_header" . | markdownify }}
             {{ partial "operating_systems" . }}
             {{ partial "deprecated" . }}
             {{ .Content }}
@@ -32,7 +31,6 @@
               {{ partial "sidebar_search" . }}
                 {{ with .TableOfContents }}
               <div class="doc-sidebar-inner" id="doc-sidebar-toc">
-                <h3 id="doc-sidebar-title">In This Guide:</h3>
                 <div class="sidebar sidebar-library{{ if ge (len .) 1500 }} toc-long{{ end }} nav navbar" id="markdown-toc">
                     {{ . }}
                 </div>

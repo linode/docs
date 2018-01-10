@@ -20491,6 +20491,7 @@ div.library-tile .tile-title + .lead {
   background-color: #edf7fe;
   color: #747474;
   padding: 15px;
+  background-color: transparent;
   font-size: 14px;
 }
 .doc-sidebar-inner .lead a {
@@ -20758,7 +20759,9 @@ div.library-tile .tile-title + .lead {
   color: #747474;
 }
 .doc-sidebar-inner + .doc-sidebar-inner {
-  margin-top: 20px;
+  margin-top: 10px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 #doc-sidebar-title {
   font-family: "Lato", sans-serif;
@@ -20810,7 +20813,6 @@ div.library-tile .tile-title + .lead {
 .sidebar-library nav > ul > li > ul > li ul > li {
   margin-top: 2px;
   margin-bottom: 2px;
-  padding-left: 10px;
 }
 .sidebar-library nav > ul > li > ul > li ul > li > a {
   font-weight: 400;
@@ -20881,6 +20883,9 @@ div.library-tile .tile-title + .lead {
 }
 .library-rss a {
   font-size: 14px;
+}
+.library-rss a:hover {
+  color: black;
 }
 #img-modal-image {
   max-width: 1200px;
@@ -21101,8 +21106,18 @@ h1.contribute {
   margin-top: 10px;
   max-width: 100%;
 }
+#doc-sidebar-container #doc-sidebar-toc {
+  width: inherit;
+}
+#doc-sidebar-container #doc-sidebar-toc li > a {
+  padding-left: 10px;
+}
 #doc-sidebar-container #doc-sidebar-toc li.active > a {
   color: #005170;
+  border-left: 1px solid #005170;
+}
+#doc-sidebar-container #doc-sidebar-toc li > ul > li {
+  padding-left: 10px;
 }
 #doc-sidebar-container #doc-sidebar-toc .toc-long ul > li > ul > li > ul {
   display: none;
