@@ -5,13 +5,13 @@ author:
 contributor:
   name: Tyler Langlois
   link: https://tjll.net
-description: 'This guide will walk through how to install a variety of useful Elasticsearch plugins.'
+description: 'This guide will show how to install a variety of useful Elasticsearch plugins.'
 og_description: 'Elasticsearch supports a wide variety of plugins which enable more powerful search features. This guide will explore how to manage, install, and use these plugins to better leverage Elasticsearch for different use cases.'
 external_resources:
  - '[Elastic Documentation](https://www.elastic.co/guide/index.html)'
  - '[Elasticsearch reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/index.html)'
  - '[Elasticsearch Plugins Reference](https://www.elastic.co/guide/en/elasticsearch/plugins/current/index.html)'
-keywords: 'elastic,elasticsearch,plugins,search,analytics,search engine'
+keywords: ['elastic', 'elasticsearch', 'plugins', 'search', 'analytics', 'search engine']
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-09
 modified: 2018-01-09
@@ -22,9 +22,14 @@ title: 'How to Install and Use Elasticsearch Plugins'
 
 ## What are Elasticsearch Plugins?
 
-[Elasticsearch](https://www.elastic.co/products/elasticsearch) is an open-source, scalable search engine. Although Elasticsearch supports a wide variety of features out-of-the-box, it can also be extended by a variety of [plugins](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/index.html) to enhance its functionality. Features such as PDF processing and advanced analysis techniques can improve an existing Elasticsearch setup.
+[Elasticsearch](https://www.elastic.co/products/elasticsearch) is an open source, scalable search engine. Although Elasticsearch supports a large number of features out-of-the-box, it can also be extended with a variety of [plugins](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/index.html) to provide advanced analytics and process different data types.
 
-This guide will explain to how install several Elasticsearch plugins and interact with them using the Elasticsearch API.
+This guide will show to how install the following Elasticsearch plugins and interact with them using the Elasticsearch API:
+
+  * **ingest-attachment**: allows Elasticsearch to index and search base64-encoded documents in formats such as RTF, PDF, and PPT.
+  * **analysis-phonetic**: identifies search results that sound similar to the search term.
+  * **ingest-geoip**: adds location information to indexed documents based on any IP addresses within the document.
+  * **ingest-user-agent**: parses the `User-Agent` header of HTTP requests to provide identifying information about the client that sent each request.
 
 {{< note >}}
 This guide is written for a non-root user. Commands that require elevated privileges are prefixed with `sudo`. If you're not familiar with the `sudo` command, you can check our [Users and Groups](/docs/tools-reference/linux-users-and-groups) guide.
@@ -42,21 +47,19 @@ This guide is written for a non-root user. Commands that require elevated privil
 
 ## Installation
 
-Before beginning, a supported Java runtime must be installed alongside Elasticsearch. The following steps will first install Java, then version 6 of Elasticsearch.
-
 ### Java
 
-As of this writing, Elasticsearch requires Java 8 and will not work with version 9.
+As of this writing, Elasticsearch requires Java 8.
 
 1.  OpenJDK 8 is available from the official repositories. Install the headless OpenJDK 8 package:
 
-        sudo apt install -y openjdk-8-jre-headless
+        sudo apt install openjdk-8-jre-headless
 
-2.  Confirm that Java is installed and at least at version 1.8.
+2.  Confirm that Java is installed:
 
         java -version
 
-    The output of this command should be similar to the following.
+    The output should be similar to:
 
         openjdk version "1.8.0_151"
         OpenJDK Runtime Environment (build 1.8.0_151-8u151-b12-1~deb9u1-b12)
@@ -64,84 +67,24 @@ As of this writing, Elasticsearch requires Java 8 and will not work with version
 
 ### Elasticsearch
 
-The Elastic package repositories contain the necessary Elasticsearch package.
+{{< content "install_elasticsearch_debian_ubuntu.md" >}}
 
-1.  Install the official Elastic APT package signing key:
-
-        wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
-
-2.  Install the `apt-transport-https` package, which is required to retrieve deb packages served over HTTPS:
-
-        sudo apt-get install apt-transport-https
-
-3.  Add the APT repository information to your server's list of sources:
-
-        echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" | sudo tee -a /etc/apt/sources.list.d/elastic.list
-
-4.  Update the list of available packages:
-
-        sudo apt-get update
-
-5.  Install the `elasticsearch` package:
-
-        sudo apt-get install -y elasticsearch
-
-6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to 512m and leave the other values in this file unchanged:
-
-    {{< file "/etc/elasticsearch/jvm.options" conf >}}
--Xms512m
--Xmx512m
-{{< /file >}}
-
-7.  Start and enable the `elasticsearch` service:
-
-        sudo systemctl enable elasticsearch
-        sudo systemctl start elasticsearch
-
-8.  Wait a few moments for the service to start, then confirm that the Elasticsearch API is available:
-
-        curl localhost:9200
-
-    The Elasticsearch REST API should return a JSON response similar to the following:
-
-    {{< output >}}
-{
-  "name" : "Sch1T0D",
-  "cluster_name" : "docker-cluster",
-  "cluster_uuid" : "MH6WKAm0Qz2r8jFK-TcbNg",
-  "version" : {
-    "number" : "6.1.1",
-    "build_hash" : "bd92e7f",
-    "build_date" : "2017-12-17T20:23:25.338Z",
-    "build_snapshot" : false,
-    "lucene_version" : "7.1.0",
-    "minimum_wire_compatibility_version" : "5.6.0",
-    "minimum_index_compatibility_version" : "5.0.0"
-  },
-  "tagline" : "You Know, for Search"
-}
-{{</ output >}}
-
-    {{< note >}}
-Elasticsearch may take some time to start up. If you need to determine whether the service has started successfully or not, you can use the `systemctl status elasticsearch` command to see the most recent logs.
-{{< /note >}}
-
-    You are now ready to install and use Elasticsearch plugins.
+  You are now ready to install and use Elasticsearch plugins.
 
 ## Elasticsearch Plugins
 
-The remainder of this guide will walk through several plugins and their common use cases. Many of the following steps will involve communicating with the Elasticsearch API. For example, in order to index a sample document into Elasticsearch, a `POST` request with a JSON payload must be sent to `/{index name}/{type}/{document id}`:
+The remainder of this guide will walk through several plugins and common use cases. Many of the following steps will involve communicating with the Elasticsearch API. For example, in order to index a sample document into Elasticsearch, a `POST` request with a JSON payload must be sent to `/{index name}/{type}/{document id}`:
 
     POST /exampleindex/doc/1
     {
       "message": "this the value for the message field"
     }
 
-There are a number of methods that can be used to issue this request. The simplest approach would be to use `curl` from the command line:
+There are a number of tools that can be used to issue this request. The simplest approach would be to use `curl` from the command line:
 
     `curl -H'Content-Type: application/json' -XPOST localhost:9200/exampleindex/doc/1 -d '{ "message": "this the value for the message field" }'`
 
-Other alternatives include the [vim-rest-console](https://github.com/diepm/vim-rest-console), the Emacs plugin [es-mode](https://github.com/dakrone/es-mode), or the [Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) plugin for Kibana. Use whichever tool is the most convenient for you.
+Other alternatives include the [vim-rest-console](https://github.com/diepm/vim-rest-console), the Emacs plugin [es-mode](https://github.com/dakrone/es-mode), or the [Console](https://www.elastic.co/guide/en/kibana/current/console-kibana.html) plugin for Kibana. Use whichever tool is most convenient for you.
 
 ### Prepare an Index
 
@@ -170,7 +113,7 @@ These settings are suitable for testing, but additional shards and replicas shou
           "message": "this is an example document"
         }
 
-3.  Searches can be performed by using the `_search` URL endpoint. Search for `example` in the message field across all documents:
+3.  Searches can be performed by using the `_search` URL endpoint. Search for "example" in the message field across all documents:
 
         POST /_search
         {
@@ -201,7 +144,7 @@ The attachment plugin lets Elasticsearch accept a base64-encoded document and in
 
     The `ingest-attachment` plugin should be under the list of installed plugins.
 
-In order to use the attachment plugin, a _pipeline_ must be used to process base64-encoded data in the field of a document. An [ingest pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html) is a way of performing additional steps when indexing a document in Elasticsearch. While Elasticsearch comes pre-installed with some pipeline processors (which can perform actions such as removing or adding fields), the attachment plugin installs an addition _processor_ that can be used when defining a pipeline.
+In order to use the attachment plugin, a _pipeline_ must be used to process base64-encoded data in the field of a document. An [ingest pipeline](https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html) is a way of performing additional steps when indexing a document in Elasticsearch. While Elasticsearch comes pre-installed with some pipeline *processors* (which can perform actions such as removing or adding fields), the attachment plugin installs an additional processor that can be used when defining a pipeline.
 
 1.  Create a pipeline called `doc-parser` which takes data from a field called `encoded_doc` and executes the `attachment` processor on the field:
 
@@ -221,14 +164,14 @@ By default, the attachment processor will create a new field called `attachment`
 
         e1xydGYxXGFuc2kKSGVsbG8gZnJvbSBpbnNpZGUgb2YgYSByaWNoIHRleHQgUlRGIGRvY3VtZW50LgpccGFyIH0K
 
-3.  Add this document to the `test` index, using the `?pipeline=doc_parser` parameter to specify the new pipeline:
+3.  Add this document to the test index, using the `?pipeline=doc_parser` parameter to specify the new pipeline:
 
         PUT /test/doc/rtf?pipeline=doc-parser
         {
           "encoded_doc": "e1xydGYxXGFuc2kKSGVsbG8gZnJvbSBpbnNpZGUgb2YgYSByaWNoIHRleHQgUlRGIGRvY3VtZW50LgpccGFyIH0K"
         }
 
-4.  Search for the term `rich`, which should return the indexed document:
+4.  Search for the term "rich", which should return the indexed document:
 
         POST /_search
         {
@@ -243,7 +186,7 @@ By default, the attachment processor will create a new field called `attachment`
 
 ### Phonetic Analysis Plugin
 
-Elasticsearch excels when analyzing textual data. Several _analyzers_ come bundled with Elasticsearch which can perform powerful analyses on text.
+Elasticsearch excels when analyzing textual data. Several *analyzers* come bundled with Elasticsearch which can perform powerful analyses on text.
 
 One of these analyzers is the [Phonetic Analysis](https://www.elastic.co/guide/en/elasticsearch/plugins/6.1/analysis-phonetic.html) plugin. By using this plugin, it is possible to search for terms that sound similar to other words.
 
@@ -267,11 +210,11 @@ In order to use this plugin, the following changes must be made to the test inde
 
 An index must be closed before analyzers and filters can be added.
 
-1.  Close the `test` index:
+1.  Close the test index:
 
         POST /test/_close
 
-2.  Define the analyzer and filter for the `test` index under the `_settings` API:
+2.  Define the analyzer and filter for the test index under the `_settings` API:
 
         PUT /test/_settings
         {
@@ -312,7 +255,7 @@ An index must be closed before analyzers and filters can be added.
           }
         }
 
-5.  Index a document with a JSON field called `phonetic` with content that should be passed through the phonetic analyzer. For example, consider a field with a product description:
+5.  Index a document with a JSON field called `phonetic` with content that should be passed through the phonetic analyzer:
 
         POST /test/doc
         {
@@ -330,11 +273,11 @@ An index must be closed before analyzers and filters can be added.
           }
         }
 
-    The phonetic analysis pluging should be able to recognize that "otomen" and "ottoman" are phonetically similar, and return the correct result.
+    The phonetic analysis plugin should be able to recognize that "otomen" and "ottoman" are phonetically similar, and return the correct result.
 
 ### Geoip Processor Plugin
 
-When indexing documents such as log files, some fields may contain IP addresses. The Geoip plugin can process IP addresses in order to enrich documents with location data for that address.
+When indexing documents such as log files, some fields may contain IP addresses. The Geoip plugin can process IP addresses in order to enrich documents with location data.
 
 1.  Install the plugin:
 
@@ -418,8 +361,8 @@ A common use case for Elasticsearch is to index log files. By parsing certain fi
 
         GET /test/doc/agentexample
 
-    The indexed document will have several fields listed underneath the `user_agent` JSON key. The User Agent plugin understands a wide variety of `User-Agent` strings and can reliably parse `User-Agent` fields from access logs generated by web servers such as Apache and nginx.
+    The indexed document will include user data underneath the `user_agent` JSON key. The User Agent plugin understands a variety of `User-Agent` strings and can reliably parse `User-Agent` fields from access logs generated by web servers such as Apache and NGINX.
 
 ## Conclusion
 
-The plugins covered in this tutorial are a small subset of those available from Elastic or written by third parties. Whether using Elasticsearch as a log aggregation tool, traditional search engine, or document store, there is a variety of plugins that can enhance its functionality. For additional resources regarding Elasticsearch and plugin use, see the links in the **More Information** section below.
+The plugins covered in this tutorial are a small subset of those available from Elastic or written by third parties. For additional resources regarding Elasticsearch and plugin use, see the links in the **More Information** section below.

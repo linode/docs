@@ -1,3 +1,18 @@
+---
+author:
+  name: Jared Kobos
+  email: sfoo@linode.com
+description: 'Shortguide for installing Elasticsearch on Fedora systems'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ["elasticsearch", "elastic stack", "fedora", "red hat", "centos"]
+modified: 2018-01-08
+modified_by:
+  name: Linode
+title: "Install Elasticsearch on Fedora, Red Hat, and CentOS"
+published: 2018-01-09
+shortguide: true
+---
+
 1.  Trust the Elastic signing key:
 
         sudo rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch

@@ -1,3 +1,19 @@
+---
+author:
+  name: Jared Kobos
+  email: sfoo@linode.com
+description: 'Shortguide for installing Elasticsearch on Debian systems'
+license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
+keywords: ["elasticsearch", "elastic stack", "fedora", "red hat", "centos"]
+modified: 2018-01-08
+modified_by:
+  name: Linode
+title: "Install Elasticsearch on Debian and Ubuntu"
+published: 2018-01-09
+shortguide: true
+---
+
+
 The Elastic package repositories contain the necessary Elasticsearch package.
 
 1.  Install the official Elastic APT package signing key:
@@ -20,9 +36,9 @@ The Elastic package repositories contain the necessary Elasticsearch package.
 
         sudo apt-get install -y elasticsearch
 
-6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to 512m and leave the other values in this file unchanged:
+6.  Set the JVM heap size to approximately half of your server's available memory. For example, if your server has 1GB of RAM, change the `Xms` and `Xmx` values in the `/etc/elasticsearch/jvm.options` file to 512m. Leave the other values in this file unchanged:
 
-    {{< file "/etc/elasticsearch/jvm.options" aconf >}}
+    {{< file "/etc/elasticsearch/jvm.options" conf >}}
 -Xms512m
 -Xmx512m
 {{< /file >}}
