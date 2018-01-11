@@ -39,7 +39,7 @@ Intel processors are the most susceptible, though Meltdown affects ARM chips as 
 
 ## Meltdown
 
-The Linux kernel source code was [patched for Meltdown](https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.14.11) on January 2, 2018 with the release of 4.14.11. Earlier this week, Linode began updating its host systems with a patched kernel.
+The Linux kernel source code was [patched for Meltdown](https://cdn.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.14.11) on January 2, 2018 with the release of `4.14.11`. Earlier this week, Linode began updating its host systems with a patched kernel.
 
 **For your Linode to be secure against Meltdown, both our hosts and your Linode need to be patched.**
 
