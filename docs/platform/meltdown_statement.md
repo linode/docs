@@ -2,7 +2,7 @@
 author:
   name: Linode
   email: docs@linode.com
-description: 'Intel recently disclosed two vulnerabilities that affect processors in most devices over the last 23 years. Here's how that affects you and what you can do about it.'
+description: "Intel recently disclosed two vulnerabilities that affect processors in most devices over the last 23 years. Here's how that affects you and what you can do about it."
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
 modified: 2018-01-11
@@ -14,7 +14,7 @@ external_resources:
   - '[How to Install Software Updates](https://www.linode.com/docs/getting-started/#install-software-updates)'
 ---
 
-**TL;DR:** Every computer dating back the last 23 years is potentially affected by two processor vulnerabilities recently disclosed by Intel: Meltdown and Spectre. Linode is working to implement patches. Update your Linux kernel to help protect your system.
+**TL;DR:** Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is working to implement patches. Update your Linux kernel to help protect your system.
 
 ## Current Status
 
@@ -28,7 +28,7 @@ external_resources:
 
 The last two weeks have seen the tech world buzzing about two recently revealed processor vulnerabilities, *Meltdown* and *Spectre*. These are extremely complex vulnerabilities, and the extent of affected hardware is not yet fully known. In short, they allow cached information in your system’s memory to be read by an attacker.
 
-Virtually all computer hardware dating back the last 23 years is potentially vulnerable to one or both of these exploits.
+Virtually all devices, including Linode servers, are potentially vulnerable to one or both of these exploits.
 
 Intel processors are the most susceptible, though Meltdown affects ARM chips as well while Spectre can potentially be exploited on any processor type. See [meltdownattack.com](https://meltdownattack.com/) for the technical details on these vulnerabilities.
 
