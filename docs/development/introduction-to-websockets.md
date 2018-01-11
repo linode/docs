@@ -12,7 +12,7 @@ modified_by:
 title: 'Introduction to WebSockets'
 contributor:
   name: Shivam Mishra
-  link: https://github.com/scmmishra/ http://twitter.com/scmmishra
+  link: http://twitter.com/scmmishra
 external_resources:
   - '[websocket.org](https://www.websocket.org/)'
   - '[Vanessa Wang, *The Definitive Guide to HTML5 WebSocket*](https://www.apress.com/in/book/9781430247401)'
