@@ -22,6 +22,9 @@ disableKinds = ["taxonomy", "taxonomyTerm"]
 
 rssLimit = 15
 
+[blackfriday]
+fractions = false
+
 [outputs]
 home = [ "HTML", "RSS"]
 section = ["HTML"]
