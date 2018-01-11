@@ -9,7 +9,7 @@ published: 2018-01-11
 modified: 2018-01-11
 modified_by:
   name: Linode
-title: 'What You Need to do to Mitigate Meltdown and Spectre'
+title: 'What You Need to Do to Mitigate Meltdown and Spectre'
 promo: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
