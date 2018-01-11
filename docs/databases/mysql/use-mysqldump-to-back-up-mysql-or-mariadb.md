@@ -3,14 +3,14 @@ author:
   name: Linode
   email: docs@linode.com
 description: 'Use mysqldump to back up MySQL databases, tables, or entire database management systems.'
-keywords: ["mysql", "mariadb", backup", "mysqldump"]
+keywords: ["mysql", "mariadb", "backup", "mysqldump"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['databases/mysql/backup-options/','security/backups/back-up-your-mysql-databases/','databases/mysql/back-up-your-mysql-databases/']
 modified: 2018-01-10
 modified_by:
   name: Linode
 published: 2018-01-10
-title: "Use mysqldump to Back Up MySQL or MariaDB"
+title: 'Use mysqldump to Back Up MySQL or MariaDB'
 external_resources:
  - '[MySQL Database Backup Methods page](http://dev.mysql.com/doc/refman/5.1/en/backup-methods.html)'
  - '[mysqldump - A Database Backup Program, MySQL Reference Manual](https://dev.mysql.com/doc/refman/5.7/en/mysqldump.html)'
