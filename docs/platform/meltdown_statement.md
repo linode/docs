@@ -51,22 +51,40 @@ The Linux kernel source code was [patched for Meltdown](https://cdn.kernel.org/p
 
 The *Linode Latest* kernel was upgraded accordingly and `4.14.12` is currently available. If you use the Linode kernel, reboot into `4.14.11` or later to help secure your Linode against Meltdown.
 
-### How to Reboot into an Updated Kernel
+### How to Reboot into an Updated Linode Kernel
 
-1.  Shut down your Linode.
+1.  Go to your Linode's dashboard and edit your configuration profile.
 
-2.  Go to your Linode's dashboard and edit your configuration profile.
+2.  Under **Boot Settings**, select **Latest 64 Bit**.
 
-3.  Under **Boot Settings**, select **Latest 64 Bit**.
-
-4.  Boot your Linode and verify your kernel version:
+3.  Reboot your Linode and verify your kernel version:
 
         root@localhost:~# uname -r
         4.14.12-x86_64-linode92
 
-If you boot your Linode using **GRUB** or **Direct Disk** boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. You should [update your kernel](/docs/tools-reference/linux-package-management/) to the latest available version using the distribution's package manager. This is also the recommended mitigation path for any hardware you use at home–from your laptop, to network hardware, to home servers. If you’ve compiled your own kernel, you’ll need to recompile using the 4.14.11 or later source code.
+### How to Update a Distribution-Supplied Kernel
 
-For more information about about rebooting your Linode, visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/).
+If you boot your Linode using the **GRUB** or **Direct Disk** boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. If you’ve compiled your own kernel, you’ll need to recompile using the 4.14.11 or later source code.
+
+1. Update your kernel to the latest available version using the distribution's package manager:
+
+    **CentOS**
+
+        sudo yum update kernel
+
+    **Debian**
+
+        sudo apt-get update
+        sudo apt-get upgrade linux-base
+        
+    **Ubuntu**
+
+        sudo apt-get update
+        sudo apt-get upgrade linux-image
+
+2. Reboot your system. When it comes back up, use the command `uname -r` to verify you are running the new kernel against the patched version given in your distribution's security bulletin (see links below). This is also the recommended mitigation path for any hardware you use at home: your laptop, network hardware, and home servers.
+
+    [Centos 6](https://access.redhat.com/errata/RHSA-2018:0007) (see the *Overview* tab), Centos 7](https://access.redhat.com/errata/RHSA-2018:0007), [Debian](https://security-tracker.debian.org/tracker/CVE-2017-5754), [Ubuntu](https://people.canonical.com/~ubuntu-security/cve/2017/CVE-2017-5754.html).
 
 ## Spectre
 Where Meltdown is a specific attack implementation, Spectre targets the way modern CPUs work, regardless of speculative execution. Nearly all computing platforms manufactured since 1995 are vulnerable to Spectre, including non-x86 systems such as ARM, IBM PowerSystems, and other architectures.
