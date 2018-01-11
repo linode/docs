@@ -9,20 +9,23 @@ modified: 2018-01-11
 modified_by:
   name: Linode
 title: 'What You Need to Know About Meltdown and Spectre'
+promo: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
   - '[How to Install Software Updates](https://www.linode.com/docs/getting-started/#install-software-updates)'
 ---
 
-**TL;DR:** Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is working to implement patches. Update your Linux kernel to help protect your system.
+## Summary
 
-## Current Status
+Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is working to implement patches. Update your Linux kernel to help protect your system.
 
-| **Exploit**  | **Patched**  | **Date**  |
+### Current Status
+
+| **Exploit**  | **Patch Released?**  | **Date**  |
 |---|---|---|
-| **Meltdown**  | Released   | Tuesday, January 2, 2018   |
-| **Spectre -V1**  |  No | -   |
-| **Spectre -V2**   |  No | -   |
+| **Meltdown**  | Yes   | Tuesday, January 2, 2018   |
+| **Spectre-V1**  |  No | N/A   |
+| **Spectre-V2**   |  No | N/A   |
 
 ## What does this mean for Linode Customers?
 
