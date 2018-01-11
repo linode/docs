@@ -3,6 +3,7 @@ author:
   name: Linode
   email: docs@linode.com
 description: "Intel recently disclosed two vulnerabilities that affect processors in most devices over the last 23 years. Here's how that affects you and what you can do about it."
+keywords: ["meltdown", "spectre", "vulnerability", "kernel"]
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 published: 2018-01-11
 modified: 2018-01-11
@@ -12,7 +13,8 @@ title: 'What You Need to Know About Meltdown and Spectre'
 promo: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
-  - '[How to Install Software Updates](https://www.linode.com/docs/getting-started/#install-software-updates)'
+  - '[How to Install Software Updates](/docs/getting-started/#install-software-updates)'
+  - '[Reboot Survival Guide](/docs/uptime/reboot-survival-guide/)'
 ---
 
 ## Summary
@@ -43,7 +45,7 @@ The Linux kernel source code was [patched for Meltdown](https://cdn.kernel.org/p
 
 The *Linode Latest* kernel was upgraded accordingly and `4.14.12` is currently available. If you use the Linode kernel, reboot into `4.14.11` or later to help secure your Linode against Meltdown.
 
-### How to reboot into an updated kernel
+### How to Reboot into an Updated Kernel
 
 1.  Shut down your Linode.
 
@@ -57,6 +59,8 @@ The *Linode Latest* kernel was upgraded accordingly and `4.14.12` is currently a
         4.14.12-x86_64-linode92
 
 If you boot your Linode using **GRUB** or **Direct Disk** boot setting, your kernel is supplied by your distribution’s maintainers, not Linode. You should [update your kernel](/docs/tools-reference/linux-package-management/) to the latest available version using the distribution's package manager. This is also the recommended mitigation path for any hardware you use at home–from your laptop, to network hardware, to home servers. If you’ve compiled your own kernel, you’ll need to recompile using the 4.14.11 or later source code.
+
+For more information about about rebooting your Linode, visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/).
 
 ## Spectre
 Where Meltdown is a specific attack implementation, Spectre targets the way modern CPUs work, regardless of speculative execution. Nearly all computing platforms manufactured since 1995 are vulnerable to Spectre, including non-x86 systems such as ARM, IBM PowerSystems, and other architectures.
