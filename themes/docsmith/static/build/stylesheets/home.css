@@ -21211,14 +21211,15 @@ blockquote > div > div.btn-copy > .copy-code {
 .alert-banner a {
   font-family: 'Lato', sans-serif;
   font-weight: normal;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
 }
 .alert-banner a:hover {
   text-decoration: none;
+  color: #ffffff;
 }
 .alert-banner i {
   padding: 0 15px;
-  color: rgba(255, 255, 255, 0.8);
 }
 /* Background */
 .chroma {
