@@ -9,7 +9,7 @@ published: 2018-01-11
 modified: 2018-01-11
 modified_by:
   name: Linode
-title: 'What You Need to Know About Meltdown and Spectre'
+title: 'What You Need to do to Mitigate Meltdown and Spectre'
 promo: false
 external_resources:
   - '[MeltdownAttack.com](https://meltdownattack.com/)'
@@ -19,15 +19,21 @@ external_resources:
 
 ## Summary
 
-Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is working to implement patches. Update your Linux kernel to help protect your system.
+Virtually every processor manufactured in the last 23 years is potentially affected by two recently discovered processor vulnerabilities: Meltdown and Spectre. Linode is continuing to implement patches on datacenter equipment. In the meantime, update your Linux kernel and reboot to help protect your system.
 
-### Current Status
+### What Should I Do?
 
-| **Exploit**  | **Patch Released?**  | **Date**  |
+* Visit our [Reboot Survival Guide](/docs/uptime/reboot-survival-guide/) to prepare for a graceful reboot.
+* [Update your kernel](/docs/platform/meltdown_statement/#how-to-reboot-into-an-updated-kernel) and reboot.
+* [Follow our blog for updates](https://blog.linode.com/2018/01/03/cpu-vulnerabilities-meltdown-spectre/).
+
+### Linode Infrastructure Status
+
+| **Exploit**  | **Fix**  | **Information**  |
 |---|---|---|
-| **Meltdown**  | Yes   | Tuesday, January 2, 2018   |
-| **Spectre-V1**  |  No | N/A   |
-| **Spectre-V2**   |  No | N/A   |
+| **Meltdown**  | In progress   | Patching in progress.   |
+| **Spectre-V1**  |  No | No patch is available yet.   |
+| **Spectre-V2**   |  No | No patch is available yet.   |
 
 ## What does this mean for Linode Customers?
 
