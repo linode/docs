@@ -112,6 +112,12 @@
     "type": "list",
     "description": "List of operating systems to generate buttons"
   },
+  "promo": {
+    "elements": false,
+	"required": false,
+	"type": "bool",
+	"description": "Set to false to disable DOCS10 promo code message"
+  },
   "published": {
     "elements": false,
     "required": true,
