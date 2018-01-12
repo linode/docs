@@ -9380,6 +9380,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 .deprecated strong {
   font-weight: bold;
 }
+.terminal {
+  background-color: black;
+  color: rgba(65, 255, 0, 0.85);
+  padding: 0 10px;
+}
+.terminal code {
+  white-space: pre-line;
+}
+pre.terminal code::-moz-selection {
+  background-color: #B2D7FF;
+  color: black;
+}
+pre.terminal code::selection {
+  background-color: #B2D7FF;
+  color: black;
+}
 .output {
   margin-top: 40px;
   background-color: #f8f8f8;
@@ -9512,7 +9528,13 @@ pre code {
   white-space: pre;
 }
 .file-excerpt dt:before {
+  content: "File: ";
+}
+.file-excerpt dt:before {
   content: "File excerpt: ";
+}
+.file dt:before {
+  content: "File: ";
 }
 @media screen and (min-width: 768px) {
   .sticky-header {
@@ -10284,6 +10306,9 @@ body.modal-open,
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
+.table {
+  table-layout: fixed;
+}
 .table > thead > tr > th {
   color: white;
   font-family: "Lato", sans-serif;
@@ -10306,6 +10331,7 @@ body.modal-open,
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 .table > tbody > tr > td:last-child {
@@ -10319,6 +10345,13 @@ body.modal-open,
   display: block;
   font-size: 16px;
   color: #747474;
+}
+table.lntable tbody {
+  display: table;
+  width: inherit;
+}
+table.lntable tbody > tr > td.lntd:first-child {
+  width: 25px;
 }
 .table-responsive > .table > tbody > tr:last-child {
   border-bottom-width: 0px;
@@ -19203,6 +19236,28 @@ fieldset[disabled] .resumator-basic-widget input[type="button"].active {
   outline: 0;
   text-decoration: none;
 }
+div#os-tabs .btn {
+  border: 1px solid #dadada;
+  padding: 10px;
+  width: 200px;
+  background-color: white;
+  color: black;
+}
+div#os-tabs .btn.current {
+  outline: none;
+  border-color: #9ecaed;
+  -webkit-box-shadow: 0 0 10px #9ecaed;
+          box-shadow: 0 0 10px #9ecaed;
+  max-height: inherit;
+}
+div#os-tabs span {
+  font-family: "Lato", sans-serif;
+}
+.macinstall,
+.linuxinstall,
+.windowsinstall {
+  font-size: 1.08rem;
+}
 .btn-full {
   width: 100%;
 }
@@ -19784,9 +19839,16 @@ fieldset[disabled] .btn-subdued.active {
   border-color: #d5d5d5;
   border-width: 0px 0px 2px 0px;
 }
+li.list-group-item {
+  padding: 0;
+}
 #ds-search-modal {
   margin-top: 65px;
   z-index: 9999;
+}
+#ds-search-modal a {
+  display: block;
+  padding: 10px 15px;
 }
 #ds-search-modal a:link,
 #ds-search-modal a:visited,
@@ -19826,6 +19888,19 @@ fieldset[disabled] .btn-subdued.active {
 #ds-search-input .glyphicon-search {
   font-size: 23px;
 }
+#ds-search-input ul li:hover {
+  background-color: #e6e6e6;
+}
+.search-deprecated {
+  font-size: 9px;
+  background-color: #FFAC5F;
+  height: 43px;
+  color: white;
+  border-radius: 3px;
+  padding: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
 .library-article-blurb {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -19847,7 +19922,7 @@ fieldset[disabled] .btn-subdued.active {
   height: 45px;
 }
 #library-main-search input {
-  height: inherit;
+  height: 42px;
 }
 #library-main-search button {
   height: 42px;
@@ -20319,6 +20394,7 @@ div.library-tile .tile-title + .lead {
   width: 100%;
   max-width: 100%;
   margin-bottom: 22px;
+  table-layout: fixed;
 }
 #article-body table:not([class]) > thead > tr > th,
 #article-body table:not([class]) > tbody > tr > th,
@@ -20371,6 +20447,7 @@ div.library-tile .tile-title + .lead {
   padding: 17px 10px;
   vertical-align: middle;
   text-align: left;
+  width: 0;
   color: #747474;
 }
 #article-body table:not([class]) > tbody > tr > td:last-child {
@@ -21022,6 +21099,7 @@ h1.contribute {
 /* Styling of Table of Contents. */
 #doc-sidebar-container #doc-sidebar {
   margin-top: 10px;
+  max-width: 100%;
 }
 #doc-sidebar-container #doc-sidebar-toc li.active > a {
   color: #005170;
@@ -21031,6 +21109,9 @@ h1.contribute {
 }
 #doc-sidebar-container .affix {
   top: 0px;
+}
+#doc-sidebar-container .affix-bottom {
+  position: relative;
 }
 /* Adapted from 
  https://bootsnipp.com/snippets/featured/share-on-social-networks
@@ -21097,6 +21178,48 @@ h1.contribute {
 }
 #disqus_thread {
   margin-top: 40px;
+}
+.copy-code {
+  position: absolute;
+  padding-top: 0.25rem;
+  right: 1.4rem;
+  opacity: 0;
+}
+blockquote > div > div.btn-copy > .copy-code {
+  padding-top: 0.01rem;
+  right: 2.2rem;
+}
+.copy-code:hover {
+  opacity: 1;
+}
+.glyphicon.glyphicon-copy {
+  font-size: 1.6rem;
+}
+.btn-copy:hover .glyphicon {
+  color: #B2D7FF;
+}
+.form_elem_email {
+  color: black;
+}
+.alert-banner {
+  font-size: 22px;
+  background-color: #7c9fb3;
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 10px 0;
+}
+.alert-banner a {
+  font-family: 'Lato', sans-serif;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.8);
+  display: block;
+}
+.alert-banner a:hover {
+  text-decoration: none;
+  color: #ffffff;
+}
+.alert-banner i {
+  padding: 0 15px;
 }
 /* Background */
 .chroma {

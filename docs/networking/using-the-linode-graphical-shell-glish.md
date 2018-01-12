@@ -27,7 +27,7 @@ Ensure that your Linode is booted with the latest Linode kernel, which has mouse
 
 When using one of Linode's distribution templates with Distro Helper turned on, Glish accesses the `tty1` console over the virtual VGA device. If you aren't using Distro Helper, or haven't rebooted since Glish was released, manually launch a getty on `tty1`:
 
-	exec /sbin/getty -8 38400 tty1 &
+    exec /sbin/getty -8 38400 tty1 &
 
 {{< note >}}
 The process for launching a getty may differ depending on your distribution.
@@ -37,18 +37,18 @@ The process for launching a getty may differ depending on your distribution.
 
 1.  From your Linode Dashboard, click on the **Remote Access** Tab. Under **Console Access**, click on the "Launch Graphical Web Console" link:
 
-	[![Glish access link.](/docs/assets/glish-link_small.png)](/docs/assets/glish-link.png)
+    [![Glish access link.](/docs/assets/glish-link_small.png)](/docs/assets/glish-link.png)
 
     A new window will pop up:
 
-	[![Glish at the Debian login prompt.](/docs/assets/glish-debian-prompt_small.png)](/docs/assets/glish-debian-prompt.png)
+    [![Glish at the Debian login prompt.](/docs/assets/glish-debian-prompt_small.png)](/docs/assets/glish-debian-prompt.png)
 
 2.  You will need to install a desktop environment. On our Debian example Linode, we're using Xfce4:
 
-		sudo apt-get install xfce4
+        sudo apt-get install xfce4
 
 3.  After installation, launch your desktop environment from the Glish console:
 
-		startxfce4
+        startxfce4
 
-	[![Glish at the Xfce4 desktop.](/docs/assets/glish-xfce4-desktop_small.png)](/docs/assets/glish-xfce4-desktop.png)
+    [![Glish at the Xfce4 desktop.](/docs/assets/glish-xfce4-desktop_small.png)](/docs/assets/glish-xfce4-desktop.png)

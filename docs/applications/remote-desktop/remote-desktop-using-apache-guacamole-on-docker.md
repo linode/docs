@@ -20,12 +20,12 @@ external_resources:
 
 Apache Guacamole is an HTML5 application useful for accessing a remote desktop through RDP, VNC, and other protocols. You can create a virtual cloud desktop where applications can be accessed through a web browser. This guide will cover the installation of Apache Guacamole through Docker, then access a remote desktop environment hosted on a Linode.
 
-# Install Docker
+## Install Docker
 The installation method presented here will install the latest version of Docker. Consult the official documentation to install a specific version or if Docker EE is needed.
 
-{{< section file="/shortguides/docker/install_docker_ce.md" >}}
+{{< content "install_docker_ce.md" >}}
 
-# Initialize Guacamole Authentication with MySQL
+## Initialize Guacamole Authentication with MySQL
 MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alternatives.
 
 1.  Pull Docker images for guacamole-server, guacamole-client, and MySQL.
@@ -125,7 +125,7 @@ MySQL will be used in this guide, but PostgreSQL and MariaDB are supported alter
 
         exit
 
-# Guacamole in Browser
+## Guacamole in Browser
 
 1.  Start guacd in Docker:
 
@@ -145,7 +145,7 @@ To see all running and non-running Docker containers:
 
     ![Guacamole Login](/docs/assets/guacamole/guac_login.png)
 
-# VNC Server on a Linode
+## VNC Server on a Linode
 
 Before sharing a remote desktop, a desktop environment and VNC server must be installed on a Linode. This guide will use Xfce because it is lightweight and doesn't excessively consume system resources.
 
@@ -193,7 +193,7 @@ metacity &
 nautilus &
 {{< / file >}}
 
-# New Connection in Guacamole
+## New Connection in Guacamole
 
 VNC, RDP, SSH, and Telnet are supported. This section of the guide will show how to navigate the browser interface and add a new connection.
 

@@ -8,7 +8,7 @@ license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 aliases: ['linux-tools/rdiff-backup/']
 modified: 2017-11-29
 modified_by:
-  name:
+  name: Linode
 published: 2009-09-14
 title: Using rdiff-backup with SSHFS
 ---

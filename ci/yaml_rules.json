@@ -1,62 +1,169 @@
 {
-    "author": {
-        "required": true,
-        "elements":["name","email"],
-        "type":"dict"
-        },
-    "title": {
-        "required": true,
-        "elements": false,
-        "type":"text"
-        },
-    "description": {
-        "required": true,
-        "elements": false,
-        "type":"text"
-        },
-    "keywords": {
-        "required": true,
-        "elements":"list",
-        "type":"list"
-        },
-    "license": {
-        "required": true,
-        "elements": false,
-        "type":"link"
-        },
-    "modified": {
-        "required": true,
-        "elements": false,
-        "type":"date"
-        },
-    "modified_by": {
-        "required": true,
-        "elements": false,
-        "type":"text"
-        },
-    "published": {
-        "required": true,
-        "type":"date",
-        "elements": false
-        },
-    "og_description": {
-        "required": false,
-        "elements": false,
-        "type":"text"
-        },
-    "og_title": {
-        "required": false,
-        "elements": false,
-        "type":"text"
-        },
-	"comments": {
-		"required": false,
-		"elements": false,
-		"type": "bool"
-	},
-	"show_on_rss_feed": {
-		"required": false,
-		"elements": false,
-		"type": "bool"
-	}	
+  "aliases": {
+    "elements": true,
+    "required": false,
+    "type": "list",
+    "description": "Other locations where this guide can be found. Should be an array of entries in the form /applications/big-data/using-big-data/"
+  },
+  "author": {
+    "elements": [
+      "name",
+      "email"
+    ],
+    "required": true,
+    "type": "dict",
+    "description": "First and last names of the original guide author."
+  },
+  "comments": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, Disqus comments will be disabled for this guide."
+  },
+  "contributor": {
+    "elements": [
+      "name",
+      "link"
+    ],
+    "required": false,
+    "type": "dict",
+    "description": "For freelancer guides only. First and last name of the freelancer who wrote the guide."
+  },
+  "deprecated": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, guide will be displayed with a deprecated tag on view and in search results. Will not be visible on main section pages but still appears on subsections."
+  },
+  "description": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Two to three sentences describing the guide."
+  },
+  "expiryDate": {
+    "elements": false,
+    "required": false,
+    "type": "date",
+    "description": "If the date is before the current date, Hugo will not build this guide."
+  },
+  "external_resources": {
+    "elements": true,
+    "required": false,
+    "type": "list",
+    "description": "List of external links that will appear at the bottom of the guide."
+  },
+  "icon": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "For items displayed on frontpage, this specifies the icon that will identify this guide."
+  },
+  "image": {
+    "elements": false,
+    "required": false,
+    "type": "text"
+  },
+  "keywords": {
+    "elements": "list",
+    "required": true,
+    "type": "list",
+    "description": "Comma-separated array of search keywords relevant to this guide."
+  },
+  "layout": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "If a layout other than the default is needed (i.e. for the Contribute page), specify the name of the layout here."
+  },
+  "license": {
+    "elements": false,
+    "required": true,
+    "type": "link",
+    "description": "The license under which this guide is published. Should be a Markdown link to the relevant license documentation."
+  },
+  "modified": {
+    "elements": false,
+    "required": true,
+    "type": "date",
+    "description": "The date this guide was last modified. Should use the form YYYY-MM-DD."
+  },
+  "modified_by": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Name of the writer who last modified this guide."
+  },
+  "og_description": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Description to be displayed on Facebook links."
+  },
+  "og_title": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Title to be displayed on Facebook links."
+  },
+  "os": {
+    "elements": "list",
+    "required": false,
+    "type": "list",
+    "description": "List of operating systems to generate buttons"
+  },
+  "promo": {
+    "elements": false,
+	"required": false,
+	"type": "bool",
+	"description": "Set to false to disable DOCS10 promo code message"
+  },
+  "published": {
+    "elements": false,
+    "required": true,
+    "type": "date",
+    "description": "Date this guide was originally published. Should use the form YYYY-MM-DD."
+  },
+  "shortguide": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be hidden from all layouts and search index."
+  },
+  "show_on_frontpage": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If true, this guide will be displayed on the landing page at linode.com/docs/."
+  },
+  "show_on_rss_feed": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "If false, publishing or updates to this guide will not be shown in the RSS feed."
+  },
+  "slug": {
+    "elements": false,
+    "required": false,
+    "type": "bool",
+    "description": "Hugo front matter variable. Specifies the tail of the output URL for this page."
+  },
+  "title": {
+    "elements": false,
+    "required": true,
+    "type": "text",
+    "description": "Guide title."
+  },
+  "title_short": {
+    "elements": false,
+    "required": false,
+    "type": "text",
+    "description": "Short version of title to be displayed in a front page icon."
+  },
+  "weight": {
+    "elements": false,
+    "required": false,
+    "type": "number",
+    "description": "For guides displayed on the front (landing) page. Setting a higher weight will move the guide to the top of the list of icons."
+  }
 }

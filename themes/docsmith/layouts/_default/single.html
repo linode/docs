@@ -12,11 +12,13 @@
           <div id="article-body" class="col-sm-9 col-sm-push-3 doc">
             {{ partial "article_header" . }}
            <div class="row">
+            {{ if ne .Params.promo false }}
             <div class="col-sm-9">{{ partial "signup" . }}</div>
             <div class="col-sm-3">{{ partial "share" . }}</div>
+            {{ end }}
             </div>
             {{ partial "github" . }}
-            {{ partial "contribute_header" . | markdownify }}
+            {{ partial "operating_systems" . }}
             {{ partial "deprecated" . }}
             {{ .Content }}
             {{ partial "more" . }}

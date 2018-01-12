@@ -12,10 +12,10 @@ modified_by:
 published: 2017-12-12
 contributor:
   name: Luis Cortés
-title: 'How to Scrape a Website with BeautifulSoup'
+title: 'How to Scrape a Website with Beautiful Soup'
 ---
 
-![Beautiful Soup](/docs/assets/beautifulsoup/BeautifulSoup.jpg)
+![How to Scrape a Website with BeautifulSoup](/docs/assets/beautifulsoup/beautifulsoup-title-graphic.jpg "How to Scrape a Website with BeautifulSoup")
 
 ## What is Beautiful Soup?
 
@@ -29,7 +29,7 @@ Web pages are structured documents, and Beautiful Soup gives you the tools to wa
 
 ### Install Python
 
-{{< section file="/shortguides/install_python_miniconda.md" >}}
+{{< content "install_python_miniconda.md" >}}
 
 ### Install Beautiful Soup and Dependencies
 

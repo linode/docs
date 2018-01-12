@@ -47,11 +47,11 @@ HAProxy is included in the package management systems of most Linux distribution
 
 - Ubuntu 17.04:
 
-      sudo apt-get install haproxy
+        sudo apt-get install haproxy
 
 - Fedora 26:
 
-      sudo yum install haproxy
+        sudo yum install haproxy
 
 ## Initial Configuration
 

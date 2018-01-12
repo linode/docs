@@ -21,6 +21,7 @@ external_resources:
  - '[Web.py](http://webpy.org/)'
 ---
 
+![Apache and mod_wsgi on Ubuntu](/docs/assets/apache-wsgi-tahr/Apache_and_mod_wsgi_on_Ubuntu_1404_Trusty_Tahr_smg.png)
 The WSGI specification provides a standard and efficient method for dynamic web applications to communicate with web servers. `mod_wsgi` provides a method for simply deploying WSGI applications with Apache. WSGI is used to deploy applications written with frameworks and tools like Django, Web.py, Werkzug, Chery.py, TurboGears, and Flask. This guides outline this installation and configuration process for WSGI with Apache on Ubuntu 14.04.
 
 ## Before You Begin

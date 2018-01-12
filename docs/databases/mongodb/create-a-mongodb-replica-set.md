@@ -165,7 +165,7 @@ If your connection is refused, be sure that the address for localhost (`127.0.0.
 
     This command initiates a replica set with the current host as its only member. This is confirmed by the output, which should resemble the following:
 
-        {{< output >}}
+    {{< output >}}
 {
     "info2" : "no configuration specified. Using a default configuration for the set",
     "me" : "192.0.2.1:27017",
