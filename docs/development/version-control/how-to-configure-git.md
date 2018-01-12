@@ -19,7 +19,7 @@ external_resources:
 
 ![Git Started Today](/docs/assets/git_getting_started.png)
 
-# What is Git?
+## What is Git?
 
 Git was designed and developed by [Linus Torvalds](https://en.wikipedia.org/wiki/Linus_Torvalds) for Linux kernel development. Git provides support for non-linear, distributed development, allowing multiple contributors to work on a project simultaneously. Git is the most popular distributed version control and source code management system. This guide will walk you through the basics of getting started with Git, from installing the software to using basic commands on both local and remote repositories (repo).
 
@@ -80,7 +80,6 @@ This table lists basic commands, a description, and an example of the command in
 | `git commit`      | Commit all staged objects.                                                            | `git commit -m "updates"`  |
 | `git pull`        | Download all changes from the remote repo and merge them in a specified repo file.    | `git pull repo refspec`    |
 | `git push`        | Publish the changes to the remote repo.                                               | `git push repo`            |
-|-------------------|---------------------------------------------------------------------------------------|----------------------------|
 
 ### Branches
 
@@ -95,7 +94,6 @@ The basic options used with the `git branch` command are:
 | -m       | Rename an old branch                |
 | -d       | Delete a branch                     |
 | -r -d    | Delete a remote branch              |
-|----------|-------------------------------------|
 
 ## Working with Remote Repositories
 
@@ -130,4 +128,3 @@ Below are some basic commands for working with remote repositories:
 | `git remote show [remote-name]`           | Display information about the remote you specified.                 |
 | `git remote rename [old-name] [new-name]` | Rename a remote.                                                    |
 | `git remote rm [name]`                    | Remove the remote you specified.                                    |
-|-------------------------------------------|---------------------------------------------------------------------|
