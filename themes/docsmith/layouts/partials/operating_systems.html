@@ -1,3 +1,4 @@
+{{ if .Params.os }}
 <script type="text/javascript">
 $(document).ready(function(){
     //detect os and display corresponding tab by default
@@ -43,11 +44,9 @@ $(document).ready(function(){
 });
 </script>
 
-{{ if .Params.os }}
 <div id="os-tabs">
 {{ if in .Params.os "mac" }}
     <a id="mac" role="button" class="current btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-apple fa-lg" aria-hidden="true"><span>&nbsp;Mac</span></i></a>
-{{ end }}
 {{ if in .Params.os "linux" }}
     <a id="linux" role="button" class="btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-linux fa-lg" aria-hidden="true"><span>&nbsp;Linux</span></i></a>
 {{ end }}
@@ -55,4 +54,5 @@ $(document).ready(function(){
     <a id="windows" role="button" class="btn btn-primary btn-lg active" aria-pressed="true"><i class="fa fa-windows fa-lg" aria-hidden="true"><span>&nbsp;Windows</span></i></a>
 {{ end }}
 </div>
+{{ end }}
 {{ end }}

@@ -223,11 +223,11 @@ server {
 
 9.  The **www-data** group must have access to AskBot installation directory so that nginx can serve static files, media files, and access the socket files. Add the `example_user` to **www-data** group so that it has the necessary permissions:
 
-         sudo usermod -aG www-data example_user
+        sudo usermod -aG www-data example_user
 
 10.  Restart nginx so that the changes take effect:
 
-         sudo systemctl restart nginx
+        sudo systemctl restart nginx
 
 ## Set Up an AskBot Admin Account
 
