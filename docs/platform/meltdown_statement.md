@@ -76,7 +76,7 @@ If you boot your Linode using the **GRUB** or **Direct Disk** boot setting, your
 
         sudo apt-get update
         sudo apt-get upgrade linux-base
-        
+
     **Ubuntu**
 
         sudo apt-get update

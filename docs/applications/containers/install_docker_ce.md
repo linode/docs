@@ -11,6 +11,7 @@ modified_by:
 title: "How to Install Docker CE"
 published: 2018-01-08
 shortguide: true
+show_on_rss_feed: false
 ---
 
 <!-- Install Docker CE using the official Docker repositories. -->

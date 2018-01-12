@@ -5,12 +5,13 @@ author:
 description: 'Shortguide for installing Python 3 with Miniconda'
 license: '[CC BY-ND 4.0](https://creativecommons.org/licenses/by-nd/4.0)'
 keywords: ["python 3", "miniconda", "continuum"]
-modified: 2018-01-08
+modified: 2017-01-08
 modified_by:
   name: Sam Foo
 title: "How to install Python 3 with Miniconda"
 published: 2018-01-09
 shortguide: true
+show_on_rss_feed: false
 ---
 <!-- Installation instructions for Python 3. -->
 
